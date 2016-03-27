@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+
+<head>
+	
+	<meta charset="UTF-8" lang="da"/>
+
+	<title>Virtualisering med Virtualbox - Thomas Jensen</title>
+
+	<script src="js/toc2.js" type="text/javascript"></script>
+	<script src="https://code.jquery.com/jquery-2.2.2.js"></script>
+
+	<link rel="stylesheet" href="css/style.css" />
+	<link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Ubuntu+Mono|Ubuntu|Ubuntu+Condensed' rel='stylesheet' type='text/css'>
+	
+
+</head>
+
+<!-- 
+
+code converter : http://www.freebits.co.uk/convert-html-code-to-text.html 
+
+-->
+
+
+
+<html>
+
+<body onload="generateTOC(document.getElementById('toc'));">
+
+<footer id="license"></footer>
+
+	<script> $( "#license" ).load( "license.html" ); </script>
+
+	<div id="toc">
+	<p>Indholdsfortegnelse</p>
+	
+	</div>
+
+
+<div class="title">Virtualisering med VirtualBox</div>
+
+<h1>Hvad er virtualisering</h1>
+
+<p>Virtualisering er grundlæggende at lave en computer i computeren, hvor den virtuelle maskine får tildelt nogle af den fysiske computers ressourcer, som f.eks. RAM, netkort, Harddisk, tastetur og skærm. Nyere computere har masser af RAM og harddiskplads, og flere kerner i CPU'en, og især på serverområdet kan dette udnyttes. På en fysisk maskine kan der således kører flere virtuelle servere, og hvor man relativt simpelt kan tilføje eller fjerne ressourcer.</p>
+
+<p>I denne sammenhæng vil vi anvende virtualisering til at teste og konfigurere klientsystemer som Windows 7 og Ubuntu 14.04. Vi kan forbinde disse systemer med den fysiske computers netværksforbindelse, eller lave helt lukkede netværk. På denne måde behøver vi ikke at have fysiske computere, routere, switches og kabler, men vi kan virtualisere det og arbejde med det som om vi sad foran en fysisk computer.</p>
+
+<p>I denne vejledning vil du blive ført igenne at:</p>
+
+<ol>
+	<li>Hente og installere VirtualBox</li>
+	<li>Oprette en virtuel maskine</li>
+	<li>Konfigurere en virtuel maskine</li>
+	<li>Få overblik over virtuelle netværk</li>
+	<li>Anvende VirtualBox funktioner i den virtuelle maskine</li>
+</ol>
+
+<p>Konkret vil du blive ført igennem at oprette en virtuel maskine, med en delt mappe og installere Ubuntu 14.04 på den.</p>
+
+<h1>Installation af VirtualBox</h1>
+
+<p>Virtualbox hentes på hjemmesiden: <a href="https://www.virtualbox.org/wiki/" target="_blank">https://www.virtualbox.org/wiki/</a>. Her er der installationsvejledninger til både Linux, OS X og Windows</p>
+
+<p>Under installationen bliver Virtualbox nød til at genstarte netværket, og det skyldes at den skal have konfigureret netværksadgangen. Netop fordi vi roder med netværket er det en rigtig god ide at genstarte computeren efter installationen.</p>
+
+<p>Når man arbejder med virtualisering skal man være opmærksom på at man kan komme ud for fejl der ikke findes i et fysisk netværk. F.eks. kan andre programmer man har installeret på computeren ændre i værtsmaskinens netværkskonfiguration. Dette gælder specielt for windows computere.. Det kan betyde at Virtualbox' netværket kan ophøre med at fungere. Derfor kan det være nødvendigt at geninstallere Virtualbox en gang imellem, for at få de nødvendige netværksindstillinger gendannet. Dette skyldes ikke Virtualbox, men at windows tillader nogle programmer at ændre i dens netværkskonfiguration.</p>
+
+<h2>Installation på Ubuntu</h2>
+
+<p>Virtualbox installeres efter metoden angivet på hjemmesiden: <a href="https://www.virtualbox.org/wiki/Linux_Downloads" target="_blank">https://www.virtualbox.org/wiki/Linux_Downloads</a></p>
+
+	<p>Opdater repositories og styresystemet</p>
+	
+	<code class="cmd">sudo apt-get update &amp;&amp; sudo apt-get dist-upgrade -y</code>
+
+	<p>Tilføj Virtualbox' repository til <span class="inl_cmd">/etc/apt/sources.list</span> (en linie)</p>
+	
+	<code class="cmd">echo "deb http://download.virtualbox.org/virtualbox/debian $(lsb_release -cs) contrib" >> /etc/apt/sources.list</code>
+	
+	<p>Hent og tilføj sikkerhedsnøglen</p>
+	
+	<code class="cmd">wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | sudo apt-key add -</code>
+	
+	<p>Opdater repositories og styresystemet</p>
+	
+	<code class="cmd">sudo apt-get update &amp;&amp; sudo apt-get upgrade -y</code>
+	
+	<p>installer Virtualbox 5.0</p>
+	
+	<code class="cmd">sudo apt-get install virtualbox-5.0 -y</code>
+	
+	<p>Tilføj din bruger til vboxusers gruppen</p>
+	
+	<code class="cmd">sudo adduser *din_bruger* vboxusers</code>
+	
+	<p>Afslut root tilstand</p>
+	
+	<code class="cmd">exit</code>
+
+	<p>Som det sidste tilføjer du din bruger til Virtualbox gruppen.</p>
+	
+	
+<h2>Installation på Windows</h2>
+
+<p>For at installere Virtualbox på Windows skal du hente programmet på Virtualbox' hjemmeside: <a href="https://www.virtualbox.org/wiki/Downloads" target="_blank">https://www.virtualbox.org/wiki/Downloads</a>. Klik på x86/amd64 ved siden af "VirtualBox X.X.X for Windows Hosts".</p>
+
+<figure id="">
+
+	<img class="" src="images/VB_hp_download.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Efter download installeres programmet med standardindstillingerne.</p>
+
+
+<figure id="">
+
+	<img class="" src="images/VB_install_windows.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h2>Første opstart</h2>
+
+<p>Ved første opstart er vinduet tomt og have følgende udseende.</p>
+
+<figure id="">
+
+	<img class="" src="images/VB_overblik_01.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h2>Installation af extension-pack</h2>
+
+<p>For at kunne anvende USB2/3 og avanceret 3D understøttelse skal du installere VirtualBox' "extension pack". Den skal hentes på selve hjemmesiden: <a href="https://www.virtualbox.org/wiki/Downloads" target="_blank">https://www.virtualbox.org/wiki/Downloads</a>.</p>
+
+<p>Ved at installere denne pakke ændres licensen fra at være Opensource til at være PEUL (<span class="bold">P</span>ersonal <span class="bold">U</span>se and <span class="bold">E</span>valuation <span class="bold">L</span>icense. Generelt kan den anvendes frit hvis det er:</p>
+
+<ul class="disc">
+	<li>privat på en enkelt PC og med højst en klient koblet til</li>
+	<li>i undervisningssammenhæng som lærer og studerende</li>
+	<li>til evaluering (et par uger)</li>
+</ul>
+
+
+<p>Læs selv betingelserne igennem i starten af PEUL'en (<a href="https://www.virtualbox.org/wiki/VirtualBox_PUEL" target="_blank">https://www.virtualbox.org/wiki/VirtualBox_PUEL</a>).</p>
+
+<p>Efter download navigere du hen til filen og dobbeklikker på den, accepterer betingelserne og genstarter Virtualbox.</p>
+
+<figure id="">
+
+	<img class="" src="images/VB_extension_01.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h1>Overblik over VirtualBox</h1>
+
+<p>Virtualiseringssoftware er specialiseret og komplekst. Der er mange begreber, metoder og arbejdsgange der skal læres og arbejdes med. Det som softwaren gør, er at den emulerer (efterligner) en fysisk PC hvor man har stor frihed til at konfigurere den virtuelle hardware, og at ændre på den løbende.</p>
+
+<p>For at få et overblik over hvordan programfladen er opbygget vil jeg her vise det ved et screenshot af vinduet med flere virtuelle maskiner og hvor de er grupperet.</p>
+
+<figure id="">
+
+	<img class="p90" src="images/VB_overblik_02.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<ol class="">
+	<li>Ikoner til at oprette, konfigurere og starte virtuelle maskiner.</li>
+	<li>Valg mellem om du vil se den den virtuelle maskines opsætning eller antallet af øjebliksbilleder.</li>
+	<li>Oversigt over de installerede virtuelle maskiner. De virtuelle maskiner kan grupperes, så man får et bedre overblik.</li>
+	<li>Datavindue hvor man får overblik over konfiguration eller øjebliksbilleder.</li>
+</ol>
+
+
+<h1>Oprettelse af Virtuel maskine</h1>
+
+<p>Herunder vil vi oprette en virtuel maskine til Ubuntu 14.04.4 x64, som du kan hente her: <a href="http://releases.ubuntu.com/14.04/ubuntu-14.04.4-desktop-amd64.iso" target="_blank">http://releases.ubuntu.com/14.04/ubuntu-14.04.4-desktop-amd64.iso</a>. Med en god Internetforbindelse skulle den gerne være hentet når du skal anvende den.</p>
+
+<p>Oprettelsen af en ny virtuel maskine foregår i 2 trin. Først oprettes selve maskinen ved hjælp af en guide, og så færddigkonfigureres den ved at klikke på opsætning som giver adgang til den virtuelle maskines mange indstillingsmuligheder.</p>
+
+<p>Først vil den guiden til oprettelse af den virtuelle maskine blive gennemgået og herefter de enkelte menuer </p>
+
+<h2>Guidet mode</h2>
+
+<p>For at oprette en ny virtuel maskine skal den først konfigureres. Det gøres igennem en guide, som startes ved at klikke på "Ny" i øverste venstre hjørne. Når du vælger "Ny" kommer der et vindue frem, hvor du skal vælge "Expert mode".</p>
+
+<figure id="">
+
+	<img class="" src="images/VB_ny_virt_maskine_01.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>På det første vindue skal du angive:</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th></th>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Navn</td>
+			<td>Ubuntu 14.04</td>
+			<td>Navnet på den virtuelle maskine</td>
+		</tr>
+		<tr>
+			<td>Type</td>
+			<td>Linux</td>
+			<td>Hvilken type operativ system. Indstiller sig selv når du har skrevet Ubuntu i navnefeltet.</td>
+		</tr>
+		<tr>
+			<td>Version</td>
+			<td>Ubuntu (64-bit)</td>
+			<td>Hvilken version af operativsystemet du vil installere. Indstiller sig selv når du har skrevet Ubuntu i navnefeltet.</td>
+		</tr>
+		<tr>
+			<td>Hukommelsesstørrelse</td>
+			<td>2048</td>
+			<td>Mængden af RAM maskinen skal have</td>
+		</tr>
+		<tr>
+			<td>Hard disk</td>
+			<td>Create a Virtual hard disk now</td>
+			<td></td>
+		</tr>
+	</tbody>
+</table>
+
+
+
+<figure id="">
+
+	<img class="" src="images/VB_ny_virt_maskine_02.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Under installationen har VirtualBox oprettet en mappe (<span class="inl_cmd">VirtualBox VMs</span>), hvori du installerer alle dine virtuelle maskiner. Den vil blive installeret i en mappe med samme navn du angiver her.</p>
+
+<p>Herefter skal du angive størrelsen, typen og hvordan harddisken skal installeres. I denne sammenhæng vil vi blot anvende VirtualBox's eget format VDI. Den kan oprettes på to måder. Enten hvor der oprettes en fil der har den samme størrelse som du angav ovenfor eller hvor den bliver "dynamisk allokeret". Det sidste betyder at harddisken kun fylder det samme som der bliver lagt på den. I denne sammenhæng vælger vi det sidste, da den er den mest fleksible.</p>
+
+
+<figure id="">
+
+	<img class="" src="images/VB_ny_virt_maskine_03.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Efter du har trykket "Opret" har vi en funktionel virtuel maskine, som nu kan konfigueres specifikt til vores behov.</p>
+
+<h2>Generelt</h2>
+
+<p>Under generelt er der 4 faner.</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Basic</td>
+			<td>Under denne menu undstilles det mest basale: Den virtuelle maskines navn, og typen af operativsystem <br/>
+			<br/>
+			Behold standardindstillingerne</td>
+		</tr>
+		<tr>
+			<td>Avanceret</td>
+			<td>Her vælges mappen der skal indeholde øjebliksbilleder (snapshots), til at kunne gendanne den virtuelle maskine til en tidligere tilstand. Her indstilles også om der kan kopieres til og fra den virtuelle maskine ved hjælp af udklipsholderen <br/>
+			<br/>
+			Ændr både "Delt udklipsholder" og "Drag'n'Droop" til "Begge Veje", Det giver det bedste workflow. Det kan kun anvendes i GUI. <br/>
+			<br/>
+			"Øjebliksbillederne" bliver som default installeret i en undermappe, i den samme mappe som den installeres i.</td>
+		</tr>
+		<tr>
+			<td>Beskrivelse</td>
+			<td>Her kan der laves en uddybende beskrivelse og noter til den virtuelle maskine. <br/>
+			<br/>
+			Behold standardindstillingerne</td>
+		</tr>
+		<tr>
+			<td>Encryption</td>
+			<td>Under denne fane er det muligt at kryptere den virtuelle maskine. <br/>
+			<br/>
+			Behold standardindstillingerne</td>
+		</tr>
+	</tbody>
+</table>
+
+<figure id="">
+
+	<img class="" src="images/VB_indstillinger_generelt_01.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p></p>
+
+
+<figure id="">
+
+	<img class="" src="images/VB_indstillinger_generelt_02.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h2>System</h2>
+
+<p>System har tre faner:</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Bundkort</td>
+			<td>Her sættes de parametre der ligger på et bundkort (RAM, enheder, Chipsæt). <br/>
+			<br/>
+			Fjern Diskettedrev fra opstartrækkefølgen</td>
+		</tr>
+		<tr>
+			<td>CPU</td>
+			<td>VirtualBox afsætter som standard en processor til at køre den virtuelle maskine. Kræver den virtuelle maskine flere CPU kræfter kan det sættes her. <br/>
+			<br/>
+			Behold standardindstillingerne</td>
+		</tr>
+		<tr>
+			<td>Acceleration</td>
+			<td>Moderne CPU'er og styresystemer tilbyder acceleration til virtuelle maskiner. De er som standard slået til. <br/>
+			<br/>
+			Behold standardindstillingerne</td>
+		</tr>
+	</tbody>
+</table>
+
+<figure id="">
+
+	<img class="" src="images/VB_indstillinger_system_01.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<figure id="">
+
+	<img class="" src="images/VB_indstillinger_system_02.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h2>Skærm</h2>
+
+<p>Skærm har tre faner</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Screen</td>
+			<td>Her indstilles parametre for skærmen. . <br/>
+			<br/>
+			Ændr "Grafikhukommelse" til 128 MB <br/>
+			sæt et fllueben i "Tillad 3D-acceleration", hvis du har installeret extension pakken..</td></td>
+		</tr>
+		<tr>
+			<td>Fjernskærm</td>
+			<td>Her sættes indstillingerne for at andre maskiner kan tilgå skærmen på den virtuelle maskine. <br/>
+			<br/>
+			Behold standardindstillingerne</td>
+		</tr>
+		<tr>
+			<td>Videooptagelse</td>
+			<td>Her er det muligt at slå videooptagelse af skærmen på den virtuelle skærm til. <br/>
+			<br/>
+			Behold standardindstillingerne</td>
+		</tr>
+	</tbody>
+</table>
+
+<figure id="">
+
+	<img class="" src="images/VB_indstillinger_screen_01.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h2>Lagerenheder</h2>
+
+<p></p>
+
+<figure id="">
+
+	<img class="" src="images/VB_indstillinger_lagerenheder_01.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<figure id="">
+
+	<img class="p90" src="images/VB_indstillinger_lagerenheder_02.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<figure id="">
+
+	<img class="" src="images/VB_indstillinger_lagerenheder_03.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h2>Lydkort</h2>
+
+<p></p>
+
+<figure id="">
+
+	<img class="" src="images/VB_indstillinger_lydkort_01.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h2>Netværk</h2>
+
+<p>Der kan oprettes forskellige netværksopstillinger i Virtualbox. Her vil vi anvende NAT, da det egner sig til en enkelt og giver mindst udfordringer.</p>
+<figure id="">
+
+	<img class="" src="images/VB_indstillinger_netkort_01.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+
+
+<h2>Serielle porte og USB</h2>
+
+<p>Hvis du har installeret Virtualbox extension pack kan du her tilføje f.eks. dit webcam eller en USB-disk til den virtuelle maskine.</p>
+
+<figure id="">
+
+	<img class="p100" src="images/VB_indstillinger_USB_01.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h2>Delte mapper</h2>
+
+<p>Hvis du ønsker at den virtuelle maskine skal kunne dele mapper med værten. Det kan f.eks. være relevant, hvis man installerer et ekstra styresystem på maskinen og vil have adgang til f.eks. ens dokumenter og billeder.</p>
+
+<figure id="">
+
+	<img class="" src="images/VB_indstillinger_deltemapper_01.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h2>User Interface</h2>
+
+<p></p>
+
+<figure id="">
+
+	<img class="" src="images/VB_indstillinger_UserInterface_01.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h1>Øjebliksbilleder</h1>
+
+<p>En af de helt store fordele ved at anvende virtualisering er, at man kan kan klone og tage øjebliksbilleder af sin virtuelle maskine. Ved at tage et øjebliksbillede kan man gå tilbage til dette punkt igen. F.eks. har jeg en fast praksis med at tage et øjebliksbillede af nye installationer efter jeg har opdateret dem. På den måde har jeg altid en frisk maskine at kunne starte forfra med, hvis der er noget jeg ønsker at arbejde med.</p>
+
+
+
+<p>Herunder vil det blive vist hvordan man opretter og anvender øjebliksbilleder. Her anvendes kameraikonerne øverst til højre i </p>
+
+<h2>Oprettelse af øjebliksbillede</h2>
+
+<p>Herunder ser du en virtuel maskine hvor der allerede er lavet et øjebliksbillede da den var nyinstalleret. Vælg "Aktuelle tilstand" og klik på det blå kamera øverst i data vinduet.</p>
+
+<figure id="">
+
+	<img class="p100" src="images/VB_snapshot_01.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Herefter kommer der et vindue frem hvor du kan tilføje en beskrivelse af øjebliksbilledet. Dette er praktisk, hvis man f.eks. eksperimenterer med forskellige indstillinger til programmet. På den måde kan man hele tiden komme tilbage til et tidligere punkt hvis noget ikke forløber som det skulle.</p>
+
+<figure id="">
+
+	<img class="" src="images/VB_snapshot_02.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Herefter vil der være dannet et nyt øjebliksbillede, og alle ændringer vil ske i "aktuel tilstand". Læg mærke til at når du holder musen hen over øjebliksbilledet, så vil der komme en boks frem med en beskrivelse.</p>
+
+<figure id="">
+
+	<img class="p100" src="images/VB_snapshot_03.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Læg mærke til at den "aktuelle tilstand" bygger på "Installation 1".</p>
+
+
+<h2>Gendannelse af øjebliksbillede</h2>
+
+<p>Når du markere et øjebliksbillede, bliver menuen oven over dem aktiv, og du får 4 ikoner til rådighed:</p>
+
+<figure id="">
+
+	<img class="p65" src="images/VB_snapshot_04.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Ikon</th>
+			<th>Forklaring</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><img src="images/VB_snapshot_04a.png" alt="" title="" /></td>
+			<td>Genindlæser øjebliksbilledet</td>
+		</tr>
+		<tr>
+			<td><img src="images/VB_snapshot_04b.png" alt="" title="" /></td>
+			<td>Sletter et øjebliksbillede</td>
+		</tr>
+		<tr>
+			<td><img src="images/VB_snapshot_04c.png" alt="" title="" /></td>
+			<td>Viser informationer om øjebliksbilledet.</td>
+		</tr>
+		<tr>
+			<td><img src="images/VB_snapshot_04d.png" alt="" title="" /></td>
+			<td>Anvendes til at klone maskinen (Vil blive gennemgået senere).</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Her vælger jeg at gendanne "Nyinstalleret med gæstetilføjelser". Marker øjebliksbilledet og vælg ikonet "gendan". Herefter kommer der en advarsel om man ønsker at gendanne øjebliksbilledet.</p>
+
+<figure id="">
+
+	<img class="p65" src="images/VB_snapshot_06.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Når det er gendannet erstattes den "Aktuelle tilstand" med det valgte øjebliksbilledet. Læg mærke til at den nye "Aktuelle tilstand" linker direkte til "nyinstalleret med gæstetilføjelser". </p>
+
+<figure id="">
+
+	<img class="" src="images/VB_snapshot_04_2.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h2>Sletning af øjebliksbillede</h2>
+
+<p>Hvis man ved der er øjebliksbilleder, som man ikke skal anvende mere, kan de med fordel slettes, for at spare harddisk plads.</p>
+
+<p>For at slette et øjebliksbilleder sørger man for at indlæse et af de andre øjebliksbilleder, og er øjebliksbilledet ikke "rod" til andre øjebliksbilleder bliver blot slettet efter man har godkendt advarslen.</p>
+
+<figure id="">
+
+	<img class="p65" src="images/VB_snapshot_07.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Hvis ens øjebliksbillede er rod til andre øjebliksbilleder bil disse blive "merged" (samlet). Det skyldes at øjebliksbillederne bygger videre på de oprindelige images, for at spare diskplads. Når man så sletter et underliggende øjebliksbillede, sørger Virtualbox for at skrive de to øjebliksbilleder sammen (merge). Det kan godt tage længere tid, da det kan være store mængder data der skal skrives til den nye virtuelle maskine.</p>
+
+<figure id="">
+
+	<img class="p100" src="images/VB_snapshot_08.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h1>Kloning</h1>
+
+<p>Nogle gange kan man have behov for at arbejde på en nøjagtig kopi (klon) af sin virtuelle maskine, f.eks. hvis man gerne vil have adgang til et større antal ens maskiner. VirtualBox har anvender fåret <a href="https://da.wikipedia.org/wiki/F%C3%A5ret_Dolly" target="_blank">Dolly</a> som ikon til dette.</p>
+
+<p>Man bør altid klone en virtuel maskine, når den ikke er aktiv.</p>
+
+<p>For at klone en maskine markeres den og der klikkes på klonings ikonet.</p>
+
+<figure id="">
+
+	<img class="" src="images/VB_snapshot_09.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<span class="afsnit">Navn</span>
+
+<p>I "navn" skrives den nye klonede maskines navn. Dernest skal du tage stilling til hvordan maskinen skal klones:</p>
+
+<span class="afsnit">Klontype</span>
+
+<p>Forskellen mellem den fulde og den koblede klon er, at den fulde er uafhængig af den oprindelige maskine. Den koblede klon registrerer kun ændringer og anvender stadig den oprindelige virtuelle maskines harddiske og indstillinger.</p>
+
+<p>Forskellen mellem de to klontyper er lettest at forklare ved hjælp af den koblede klon. Den koblede klon er afhængig af den oprindelige virtuelle maskine, og det eneste som registreres er de ændringer man foretager. Hvis den oprindelige virtuelle maskine slettes kan den ikke længere anvendes. Den fulde klon er en nøjagtig kopi af den oprindelige virtuelle maskine, og kan køre selvstændig. Den kan også kopieres over til en anden computer.</p>
+
+<p><span class="bold">Anbefaling:</span> Anvend altid den fulde klon, med mindre du mangler plads på din harddisk. Den koblede klon fungere udemærket, og kan være langsommere end den fulde klon.</p>
+
+<span class="afsnit">Øjebliksbilleder</span>
+
+<p>Her skal du tage stilling til om du ønsker øjebliksbillederne kopieret med over til klonen. <br/><span class="bold">Anbefaling:</span> Med mindre der er en god grund til det så fravælg øjebliksbillederne. Man bør alligevel ikke klone en virtuel maskine hvis den ikke er færdig konfigueret.</p>
+
+<span class="afsnit">Reinitialiser MAC-adresse</span>
+
+<p>Alle netværkskort er født med en unik MAC-adresse. Det er disse adresser netværket anvender til at holde styr computerne. Derfor bør du altid reinitialsere netværkskortet, hvis den klonede maskine skal anvendes sammen med den oprindelige maskine. Skal den erstatte den oprindelige maskine skal netværkskortet ikke reinitialiseres.</p>
+
+
+<h1>Kørsel af VirtualBox</h1>
+
+<p>I dette kapitel gennemgås, den praktiske anvendelse brug af virtuelle maskiner</p>
+
+<h2>Gæstetilføjelser</h2>
+
+<p>Når den virtuelle klient er installeret skal man installere gæstetilføjelserne. De gør, at operativ systemet kører bedst muligt.</p>
+
+<p>Gæstetilføjelsen bliver installeret ved at vælge menuen: <span class="inl_cmd">Enheder</span> -> <span class="inl_cmd">Indsæt Gæstetilføjelser CD-aftryk...</span> og følg instruktionerne på skærmen.</p>
+
+<h2>Genvejstaster</h2>
+
+<table id="">
+	<thead>
+		<tr>
+			<th colspan="2">Den virtuelle maskine</th>
+		</tr>
+	</thead>
+	<tbody>
+
+		<tr>
+			<td><kbd>H_Ctrl</kbd>+<kbd>e</kbd></td>
+			<td>Tag et skærmbillede af den virtuelle maskine</td>
+		</tr>
+		<tr>
+			<td><kbd>H_Ctrl</kbd>+<kbd>f</kbd></td>
+			<td>Gå til fuld skærm</td>
+		</tr>
+		<tr>
+			<td><kbd>H_Ctrl</kbd>+<kbd>n</kbd></td>
+			<td>Informationer om den kørende session</td>
+		</tr>
+		<tr>
+			<td><kbd>H_Ctrl</kbd>+<kbd>m</kbd></td>
+			<td>Minimer den virtuelle maskine</td>
+		</tr>
+		<tr>
+			<td><kbd>H_Ctrl</kbd>+<kbd>s</kbd></td>
+			<td>Opsætning af den virtuelle PC</td>
+		</tr>
+		<tr>
+			<td><kbd>H_Ctrl</kbd>+<kbd>t</kbd></td>
+			<td>Tag et øjebliksbillede af den virtuelle maskine</td>
+		</tr>
+		<tr>
+			<td><kbd>H_Ctrl</kbd>+<kbd>Home</kbd></td>
+			<td>Åbner menuen inde i den virtuelle maskine</td>
+		</tr>
+	</tbody>
+</table>
+
+<table id="">
+	<thead>
+		<tr>
+			<th colspan="2">Input</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><kbd>H_Ctrl</kbd>+<kbd>h</kbd></td>
+			<td>Send et ACPI nedlukningssignal. Svarer til at trykke på tænd knappen.</td>
+		</tr>
+		<tr>
+			<td><kbd>H_Ctrl</kbd>+<kbd>p</kbd></td>
+			<td>Sæt den virtuelle maskine på pause</td>
+		</tr>
+		<tr>
+			<td><kbd>H_Ctrl</kbd>+<kbd>q</kbd></td>
+			<td>Giver dig et vindue hvor du kan vælge mellem at: <br/><br/>
+			&bull;&nbsp;&nbsp; Gemme maskinens tilstand (Lukker maskinens ned, så den kan genstartes fra samme punkt)<br/>
+			&bull;&nbsp;&nbsp; Sende signal til nedlukning (svarer til at trykke på start knappen)<br/>
+			&bull;&nbsp;&nbsp; Slukke for maskinen (Svarer til at hive ledningen ud)<br/>
+			&bull;&nbsp;&nbsp; Indlæse forrige øjebliksbillede.<br/>
+			</td>
+		</tr>
+		<tr>
+			<td><kbd>H_Ctrl</kbd>+<kbd>r</kbd></td>
+			<td>Genstart den virtuelle maskine ved hjælp af reset</td>
+		</tr>
+		<tr>
+			<td><kbd>H_Ctrl</kbd>+<kbd>Backspace</kbd></td>
+			<td>Svarer til <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Backspace</kbd></td>
+		</tr>
+		<tr>
+			<td><kbd>H_Ctrl</kbd>+<kbd>Delete</kbd></td>
+			<td>Svarer til <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Delete</kbd></td>
+		</tr>
+	</tbody>
+</table>
+
+
+
+<h1>Bilag</h2>
+
+<h2>Netværk i Virtualbox</h2>
+
+<p></p>
+
+<p>Herunder bliver nogle af grunbegreberne om netværk gennemgået:</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Router</td>
+			<td>Routeren er en intelligent bro mellem to netværk. Den sørger for at to forskellige netværk har forbindelse til hinanden. Routere har forskellige mekanismer til at styre netværkstrafikken, bl.a. NAT</td>
+		</tr>
+		<tr>
+			<td>LAN</td>
+			<td><span class="bold">L</span>ocal <span class="bold">A</span>rea <span class="bold">N</span>etwork, er betegnelse for ens lokale netværk. I et hjem svarer det til alt det som man selv har sluttet til routeren.</td>
+		</tr>
+		<tr>
+			<td>WAN</td>
+			<td><span class="bold">W</span>ide <span class="bold">A</span>rea <span class="bold">N</span>etwork er alt det som er uden for ens LAN, f.eks. Internettet.</td>
+		</tr>
+		<tr>
+			<td>Switch</td>
+			<td>En switch danner et bindeled mellem flere computere og sørger for at fordele netværkstrafikken imellem dem.</td>
+		</tr>
+		<tr>
+			<td>IP-adresser</td>
+			<td>En IP-adresse er computeren identitet på et netværk (TCP-IP). F.eks. beskriver adressen <a href="http://159.20.6.38" target="_blank">159.20.6.38</a> dr.dk's webserver <a href="http://dr.dk" target="_blank">dr.dk</a>.</td>
+		</tr>
+		<tr>
+			<td>DNS</td>
+			<td><span class="bold">D</span>omain <span class="bold">N</span>ame <span class="bold">S</span>ystem (server/service) er en tjeneste (funktionalitet) der sørger for at oversætte IP-adresser til navneopslag. Det er nemmere at huske <a href="http://dr.dk" target="_blank">dr.dk</a> fremfor IP-adressen <a href="http://159.20.6.38" target="_blank">159.20.6.38</a>.</td>
+		</tr>
+		<tr>
+			<td>DHCP</td>
+			<td><span class="bold">D</span>ynamic <span class="bold">H</span>ost <span class="bold">C</span>onfiguration <span class="bold">P</span>rotocol er en tjeneste der sørger for at uddele IP-adresser til klienter. På den måde kan man centralt styre og konfiguere computeres netværksforbindelser</td>
+		</tr>
+		<tr>
+			<td>Klient</td>
+			<td>En klient er en computer der bruger netværkets ressourcer. Den virtuelle maskine vil nogle gange blive omtalt som en klient (virtuel klient), da den netop anvender virtualiseringstjenesten på dens vært</td>
+		</tr>
+		<tr>
+			<td>Server, vært, host, </td>
+			<td>En computer der udbyder ressourcer til netværket og virtuelle maskiner</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Alle Virtualbox's netværkstyper er vist herunder:</p>
+
+<figure id="">
+
+	<img class="" src="images/VB_indstillinger_netkort_01.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h2>NAT og NAT netværk</h2>
+
+<p>NAT (<span class="inl_cmd">N</span>etwork <span class="bold">A</span>dress <span class="bold">T</span>ranslation) er en netværkstjeneste der fungere som "bro" og omstilling mellem to netværk f.eks. LAN og WAN. Den letteste måde at beskrive det på er den Internet opkobling vi bruger privat. Når vi installerer en router fra vores udbyder har vi et "hul" ud til internettet, som har en specifik IP-adresse. For at routeren kan holde styr på det har det en tabel kørende som registrere hvilke computere der sender og modtager noget. Så når en computer på LAN siden beder om at se siden <a href="https://www.virtualbox.org/" target="_blank">https://www.virtualbox.org/</a>, så "overtager" routeren forspørgslen. For Virtualbox.org ser det ud somom det er din router der beder om adressen, men når routeren modtager svar fra Virtualbox.org, så laver videresender routeren svaret til din lokale maskine. Man siger at netværket er NAT'et.</p>
+
+<p>Forskellen mellem forskellen mellem de to typer NAT netværk er, at det er muligt at sætte flere virtuelle maskiner på på NAT-netværket da dette netværk har indbygget en router.</p>
+
+<figure id="">
+
+	<img class="" src="images/VB_network_NAT.svg" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+
+<figure id="">
+
+	<img class="" src="images/VB_network_NAT_network.svg" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>En udfordring ved at anvende NAT netværk er, at man ofte bliver nød til selv at sætte DNS forbindelsen til de virtuelle klienter også selvom man anvender DHCP. Det er en bug (fejl) i virtualbox.</p>
+
+<h2>Netværksbro</h2>
+
+<p>Netværksbroen sætter den virtuelle maskine direkte på den virtuelle værts fysiske netværk. Den vil altså blive opfattet som en fysisk maskine på LAN af netværkets andre maskiner. Dette kan f.eks. anvendes hvis man ønsker at køre en selvstændig webserver.</p>
+
+<p>For at konfigurere en netværksbro skal man vælge hvilket fysisk netværkskort man ønsker maskinen skal køre på. Generelt bør man undgå at anvende WIFI til netværksbroer, da de kan være meget ustabile til dette brug. Det skyldes bl.a. at værtscomputeren nogle gange slukker for WIFI forbindelsen for at spare strøm.</p>
+
+<figure id="">
+
+	<img class="" src="images/VB_indstillinger_netkort_02.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<figure id="">
+
+	<img class="" src="images/VB_network_bridged_network.svg" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h2>Internt netværk</h2>
+
+<p>Det interne netværk er helt afskåret fra den fysiske maskines netværk. Dette kan anvendes til test af ting, man ikke ønsker skal være tilgængeligt andre steder.</p>
+
+<figure id="">
+
+	<img class="" src="images/VB_network_Internal_network.svg" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>	
+	
+<h2>Værtsbegrænset netværkskort</h2>
+
+<p>Det værtsbegrænsede netværkskort er en speciel funktion der gør det muligt at have installeret netværkstjenester, som kun programmer på værtcomputeren skal have adgang til. Det kan f.eks. være et program der skal have adgang til en database, men det er kun den lokale PC der må have denne adgang. Ved at lave netværkskortet virtuelt, kan man altså ikke tilgå netværket uden at sidde ved den fysiske maskine.</p>
+
+<figure id="">
+
+	<img class="" src="images/VB_network_Host_only.svg" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+
+
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+</body>
+
+</html>
