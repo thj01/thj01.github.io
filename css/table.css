@@ -1,0 +1,164 @@
+/*Generelle indstillinger*/
+
+
+table {
+
+width:90%;
+margin: 1em 2em;
+/*font-family: ubuntu mono, sans-serif;*/
+
+
+}
+
+table thead th {
+
+background-color: #585858 ;
+color: #E8E8E8  ;
+font-family: Ubuntu mono;
+text-align: left;
+
+}
+
+
+th, td {
+
+border: .1em solid black  ;
+padding: .5em .4em;
+
+}
+
+table.cmd_table thead tr th:first-child:before {
+
+content: "Kommando";
+
+}
+
+table.cmd_table thead tr th:nth-child(2):before {
+
+content: "Beskrivelse";
+
+}
+
+
+table.cmd_table tbody tr td {
+
+
+
+
+}
+
+
+
+
+table.cmd_table tbody tr td:first-child {
+
+/**/
+color: #404040;
+width:280px;
+font-size: 1em;
+font-family: ubuntu mono;
+font-weight: 500;
+
+}
+
+table.ugeskema {
+font-family: ubuntu;
+font-size: 1.1em;
+
+
+}
+
+table.ugeskema thead tr th:first-child {
+
+width: 10%;
+text-align: center;
+
+}
+
+table.ugeskema thead tr th:nth-child(2){
+
+width: 45%;
+text-align: center;
+
+}
+
+table.ugeskema thead tr th:nth-child(3){
+
+width: 45%;
+text-align: center;
+
+}
+
+table.ugeskema tbody tr td:first-child {
+
+text-align: center;
+
+}
+
+
+
+table.centreret {
+
+text-align: center;
+
+}
+
+table.fixed {
+table-layout: fixed;
+white-space:nowrap;
+
+}
+
+
+
+table.centreret thead th {
+
+background-color: #585858 ;
+color: #E8E8E8  ;
+font-family: Ubuntu mono;
+text-align: center;
+
+}
+
+div#grad_red {
+	
+    margin: 10px 5px;
+    height: 50px;
+    background: red; /* For browsers that do not support gradients */    
+    background: -webkit-linear-gradient(left, #000000 , #FF0000); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(right, #000000 , #FF0000); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(right, #000000 , #FF0000); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to right, #000000 , #FF0000); /* Standard syntax (must be last) */
+}
+
+div#grad_green {
+    margin: 10px 5px;
+    height: 50px;
+    background: red; /* For browsers that do not support gradients */    
+    background: -webkit-linear-gradient(left, #000000 , #00FF00); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(right, #000000 , #00FF00); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(right, #000000 , #00FF00); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to right, #000000 , #00FF00); /* Standard syntax (must be last) */
+}
+
+div#grad_blue {
+    margin: 10px 5px;
+
+    height: 50px;
+    background: red; /* For browsers that do not support gradients */    
+    background: -webkit-linear-gradient(left, #000000 , #0000FF); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(right, #000000 , #0000FF); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(right, #000000 , #0000FF); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to right, #000000 , #0000FF); /* Standard syntax (must be last) */
+}
+
+div#grad_grey {
+    margin: 10px 5px;
+
+    height: 50px;
+    background: red; /* For browsers that do not support gradients */    
+    background: -webkit-linear-gradient(left, #000000 , #FFFFFF); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(right, #000000 , #FFFFFF); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(right, #000000 , #FFFFFF); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to right, #000000 , #FFFFFF); /* Standard syntax (must be last) */
+}

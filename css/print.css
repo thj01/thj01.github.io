@@ -1,0 +1,64 @@
+ @media print {
+ 
+/*
+ * 
+ * http://www.smashingmagazine.com/2013/03/08/tips-and-tricks-for-print-style-sheets/ 
+ * 
+ * http://www.hongkiat.com/blog/css3-page-break/
+ * 
+ */ 
+ 
+@page {
+
+margin: 2cm 2cm;
+
+}
+
+header {
+
+display: none;
+
+}
+ 
+ul, ol, img, pre, table, blockquote {
+
+  page-break-inside: avoid;
+   
+}
+
+div.pagebreak {
+
+  page-break-inside: avoid;
+
+}
+
+
+
+div#toc>ul ul, div#toc {
+
+   page-break-inside: initial;
+
+}
+
+h1 {
+
+   page-break-before: always;
+   
+}
+
+p {  
+  
+    orphans: 3;  
+    
+}  
+
+ 
+ }
+
+
+@media print and (color) {
+   * {
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+   }
+}

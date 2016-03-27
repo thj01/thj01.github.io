@@ -1,0 +1,104 @@
+/* Indholdsfortegnelse */
+
+
+div#content {
+
+font-size: 1.8em;
+font-family: ubuntu,sans-serif;
+padding: .5em 0em .5em .5em;
+
+}
+
+hr #content {
+
+padding: 4.5em;
+
+
+}
+
+div#toc p {
+
+font-size: 1.3em;
+
+
+}
+
+div#toc a {
+	text-decoration: none;
+	font-family: ubuntu,sans-serif;
+	color: black;
+}
+
+div#toc a:hover {
+	text-decoration: none;
+	color: darkgrey;
+
+
+}
+
+/* formatering af H1 i indholdsfortegnelsen*/
+div#toc>ul>ul>li>a {
+	
+	font-size: 1em;
+
+}
+
+div#toc>ul>ul>li {
+
+	list-style-type: none;	
+
+}
+
+/* formatering af H2 i indholdsfortegnelsen*/
+
+div#toc>ul>ul>ul>li>a {
+	
+	font-size: 1em;
+
+}
+
+div#toc>ul>ul>ul>li {
+	
+	list-style-type: none;
+	padding-left: 1em;
+}
+
+
+
+/* formatering af H3 i indholdsfortegnelsen*/
+
+div#toc>ul>ul>ul>ul>li>a {
+	
+	font-size: 1em;
+
+}
+
+div#toc>ul>ul>ul>ul>li {
+
+	list-style-type: none;
+	padding-left: 2em;
+}
+
+
+/* formatering af H4 i indholdsfortegnelsen*/
+
+div#toc>ul>ul>ul>ul>ul>li>a {
+	
+	font-size: 1em;
+
+}
+
+div#toc>ul>ul>ul>ul>ul>li {
+
+	list-style-type: none;
+	padding-left: 3em;
+}
+
+
+/* formatering af H5 i indholdsfortegnelsen
+ * 
+ * Virker ikke :|
+ * 
+ * */
+
+

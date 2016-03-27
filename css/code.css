@@ -1,0 +1,309 @@
+/*
+ * code.css
+ * 
+ * 
+ * 
+ * 
+ * 
+*/
+
+
+code.term {
+
+font-family: ubuntu mono, mono-type;
+display:table;
+margin:0 auto ;
+font-size: 1.05em;
+font-weight: 100;
+padding: 1em 0em 1em em;
+white-space: pre-wrap;
+}
+
+code.cmd {
+
+font-family: ubuntu mono, mono-type;
+display:inline-block;
+font-size: 1.05em;
+font-weight: 100;
+padding: .5em 1em;
+margin: 8px 10px 20px 0px;
+color: #404040;
+background-color: #D8D8D8 ;
+width: 880px;
+border-left-style: ridge;
+border-left-width: .5em;
+white-space: pre-wrap;
+}
+
+code.more_cmd {
+
+font-family: ubuntu mono, mono-type;
+display:inline-block;
+font-size: 1.05em;
+font-weight: 100;
+padding: .5em 1em;
+margin: -3px 10px 20px 0px;
+color: #404040;
+background-color: #D8D8D8 ;
+width: 880px;
+border-left-style: ridge;
+border-left-width: .5em;
+white-space: pre-wrap;
+}
+
+ol code.cmd {
+
+font-family: ubuntu mono, mono-type;
+display:inline-block;
+font-size: 1.05em;
+font-weight: 100;
+padding: .5em 1em;
+margin: .65em 1em 1.3em 0em;
+color: #404040;
+background-color: #D8D8D8 ;
+width: 90%;
+border-left-style: ridge;
+border-left-width: .5em;
+white-space: pre-wrap;
+}
+
+ol code.more_cmd {
+
+font-family: ubuntu mono, mono-type;
+display:inline-block;
+font-size: 1.05em;
+font-weight: 100;
+padding: .5em 1em;
+margin: -.4em 1em 1.3em 0em;
+color: #404040;
+background-color: #D8D8D8 ;
+width: 90%;
+border-left-style: ridge;
+border-left-width: .5em;
+white-space: pre-wrap;
+}
+
+ul code.cmd {
+
+font-family: ubuntu mono, mono-type;
+display:inline-block;
+font-size: 1.05em;
+font-weight: 100;
+padding: .5em 1em;
+margin: .65em 1em 1.3em 0em;
+color: #404040;
+background-color: #D8D8D8 ;
+width: 90%;
+border-left-style: ridge;
+border-left-width: .5em;
+white-space: pre-wrap;
+}
+
+ul code.more_cmd {
+
+font-family: ubuntu mono, mono-type;
+display:inline-block;
+font-size: 1.05em;
+font-weight: 100;
+padding: .5em 1em;
+margin: -.4em 1em 1.3em 0em;
+color: #404040;
+background-color: #D8D8D8 ;
+width: 90%;
+border-left-style: ridge;
+border-left-width: .5em;
+white-space: pre-wrap;
+}
+
+
+/* pre tag formateret med sort baggrund og Ubuntu font - uden ramme */
+
+
+
+code.black {
+
+font-family:ubuntu+mono, courier  ;
+color: white;
+display:inline-block ;
+margin: auto;
+font-size: 1.15em;
+font-weight: 100;
+color: white;
+padding: .4em .9em;
+background-color: #300a24 ;
+width: 900px;
+border-style: ridge;
+border-width: .2em;
+white-space: pre-wrap;
+
+}
+
+pre.black {
+
+font-family:ubuntu+mono, courier  ;
+color: white;
+display: inline-block, table;
+font-size: 1.15em;
+font-weight: 100;
+line-height:20px;
+color: white;
+padding: 10px 8px;
+background-color: #300a24 ;
+width: 900px;
+white-space: pre-wrap;
+margin: auto;
+
+}
+
+
+/* pre tag formateret som ubuntu GUI terminal */
+
+pre.ubuntu_terminal {
+
+font-family:ubuntu+mono, courier  ;
+color: white;
+display:inline-block, table;
+font-size: 1.15em;
+font-weight: 100;
+line-height:20px;
+color: white;
+padding: 10px 5px 12px 5px;
+background-color: #300a24 ;
+width: 900px;
+border-top: 22px solid #474640;
+border-radius: 7px 7px 3px 3px;
+white-space: pre-wrap;
+margin:auto;
+margin-bottom: 16px;
+}
+
+pre code {
+
+font-family:ubuntu+mono, courier  ;
+color: white;
+display:inline-block, table;
+margin: auto;
+font-size: 1.15em;
+font-weight: 100;
+color: white;
+padding: .4em .2em;
+background-color: #300a24 ;
+width: 900px;
+border-style: ridge;
+border-width: .2em;
+white-space: pre-wrap;
+
+}
+
+blockguote.center {
+
+text-align: center;
+
+}
+
+blockquote {
+font-family: buntu, arial;
+background-color: LightBlue   ;
+padding: 1.4em 1.4em;
+margin: 1.4em;
+font-size: 1.2em;
+line-height: 1.5em;
+border-radius: 24px;
+}
+
+blockquote a {
+
+font-size: 0.7em;
+text-align: center;
+
+}
+
+
+/* http://www.w3schools.com/html/html_colornames.asp */
+
+
+span.green {color: green;}
+
+span.green1 {color: #78e234;}
+
+span.red {color: #ef2929;font-weight: 900;}
+
+span.blue {color: blue;}
+
+span.blue1 {color:#729fcf;font-weight: 900;}
+
+span.violet {color: Orchid   ;}
+
+span.purple {color: #300a24  ;}
+
+span.brown {color: Chocolate  ;}
+
+span.yellow {color: yellow  ;}
+
+span.cyan {color: DarkCyan  ;}
+
+span.turk {color: #34e2e2  ;}
+
+span.grey {color: grey}
+
+span.white {color: white;}
+
+span.white_bg {background-color: white; color: #300a24;}
+
+span.green1_bg {background-color:#78e234 ;}
+
+
+span.small {font-size: 1em;}
+
+span.bold {font-weight: 900;}
+
+span.underline {text-decoration: underline}
+
+span.right {float:right}
+
+
+
+kbd {
+font-size: 1.1em;
+border: 1px solid black;
+padding: 4px;
+margin: 0px 5px 0px 5px;
+background-color: #f8f8f8; 
+color: #333333;
+padding: 2px 6px 2px 6px;
+border-radius: 6px;}
+
+
+
+
+
+span.inl_cmd {
+
+font-family: ubuntu mono, mono-type;
+font-style: italic;
+font-size: 1.2em;
+font-weight: 100;
+letter-spacing: .05em;
+color: #000000 ;
+padding: 0em .2em 0em .2em;
+
+}
+
+/*
+ * 
+ * 
+ * span.inl_cmd {
+
+font-family: serif;
+font-size: 1.2em;
+font-weight: 100;
+color: #303030 ;
+background-color: #EDEDED  ;
+padding: 0em .4em 0em .4em;
+border-radius: 5px; 
+-moz-border-radius: 5px; 
+-webkit-border-radius: 5px; 
+}
+
+*/
+

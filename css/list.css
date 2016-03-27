@@ -1,0 +1,74 @@
+
+ul.disc {
+
+list-style-type: disc;
+padding-left: 2.5em;
+
+
+}
+
+ul.disc li {
+
+margin-bottom: .2em;
+
+
+}
+
+ul.none {
+
+list-style-type: none;
+margin-bottom: .2em;
+}
+
+ul.none li {
+list-style-type: none;
+padding-left: 1em;
+
+}
+
+
+ul.none_table li {
+
+list-style-type: none;
+padding-bottom: .4em;
+
+}
+
+ol {
+
+padding-left: 2.5em;
+
+}
+
+ol li {
+
+margin-bottom: .2em;
+
+}
+
+ol code.cmd {
+
+margin-left: -1.2em;
+
+}
+
+ol code.more_cmd {
+
+margin-left: -1.2em;
+
+}
+
+/* table lists */
+
+ul.table li {
+
+
+font-size: 1em;
+list-style-type: none;
+}
+
+ol.table li {
+
+font-size: 1em;
+
+}
