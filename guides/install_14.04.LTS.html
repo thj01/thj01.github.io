@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+
+<head>
+	
+	<meta charset="UTF-8" lang="da"/>
+
+	<title>Ubuntu 14.04 LTS Installation- Thomas Jensen</title>
+
+	<link rel="stylesheet" href="../css/styles/docco.css" />
+
+	<link rel="stylesheet" href="../css/style.css" />
+
+	<link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono|Ubuntu|Ubuntu+Condensed' rel='stylesheet' type='text/css'>
+	
+	<script src="../js/toc2.js" type="text/javascript"></script>
+	<script src="https://code.jquery.com/jquery-2.2.2.js"></script>
+	<script src="js/highlight.pack.js" type="text/javascript"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+	
+
+</head>
+
+<!-- 
+
+code highlighter : https://highlightjs.org/
+
+code converter : http://www.freebits.co.uk/convert-html-code-to-text.html 
+
+-->
+
+<html>
+
+<body onload="generateTOC(document.getElementById('toc'));">
+
+<footer id="license"></footer>
+
+	<script> $( "#license" ).load( "license.html" ); </script>
+
+	<div id="toc">
+	
+		<p>Indholdsfortegnelse</p>
+	
+	</div>
+
+<div class="title">Installation af Ubuntu 14.04 LTS</div>
+
+<h1>Guidens formål</h1>
+
+<p>Guidens formål er at installere Ubuntu 14.04.4 LTS på en ny computer. I denne guide bliver der vist på en Virtuel maskine der er sat op ved hjælp af i VirtualBox med 4 GB RAM og 100 GB harddisk. Denne maskine kan senere anvendes i andre guides.</p>
+
+<p>Installationsprocessen giver på mange områder sig selv, og der vil kun komme forklaringer hvor det er nødvendigt.</p>
+
+	
+<h1>Installation af Ubuntu</h1>
+
+
+<h2>Installationssprog, kontrol af computer og netværk</h2>
+
+<p>Efter at du har bootet DVD/USB'en kommer der først to vinduer. På det første skal du vælge sprog og den måde du vil starte Ubuntu. Hvis du vælger <span class="knap">Prøv Ubuntu</span>, vil hele installationsprocessen blive springet over i første omgang, og Ubuntu vil starte op fra boot-mediet. På den måde kan du prøve Ubuntu uden at installere det. Systemet er dog langsomt, da DVD/USB mediet ikke er lige så hurtigt og effektivt som en harddisk. Vælger du forkert er det ikke noget problem, da der vil ligger et ikon på skrivebordet til at starte installationen.</p>
+
+<p>Her vælger vi dog <span class="knap">Installér Ubuntu</span></p>
+
+
+
+<figure id="">
+
+	<img class="p90" src="images/install_ubuntu1404_01.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Før installationen går videre tjekker Ubuntu om harddisken er stor nok, om opladeren er sluttet til (ved bærbare computeren) og om der er forbindelse til Internettet.</p>
+
+<p>De to første giver sig selv, men det er vigtigt at der er forbindelse til Internettet. Linux er et netvæksoperativsystem, og skal bl.a. anvende nettet til at hente drivere, codecs (f.eks. MP3), sprogfiler og opdateringer. Sæt flueben ved begge muligheder.</p>
+
+<figure id="">
+
+	<img class="p90" src="images/install_ubuntu1404_02.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h2>Opsætning af harddisk</h2>
+
+<p>Vi vil her konfigurere harddisken så der er tre partitioner. En til system, en til data/backup og en til Swap (virtuel hukommelse). På denne måde kan man senere geninstallere Ubuntu uden at miste sine data. Den virtuelle hukommelse fungerer anderledes på Linux end på Windows. På Linux kører det på en selvstændig partition med sit eget filsystem. På den måde bliver den virtuelle hukommelse ikke spredt ud over harddisken hvor der lige nu er plads, men den vil altid blive skrevet hvor den ikke forstyrrer.</p>
+
+<p>Vi vil partitionere harddisken efter nedestående skema</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Drev</th>
+			<th>Betegnelse</th>
+			<th>Størrelse</th>
+			<th>Anvendelse</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>/dev/sda1</td>
+			<td>/</td>
+			<td>50000Mb (50Gb)</td>
+			<td>System</td>
+		</tr>
+		<tr>
+			<td>/dev/sda2</td>
+			<td>Ingen</td>
+			<td>4096MB (4GB)</td>
+			<td>Swap</td>
+		</tr>
+		<tr>
+			<td>/dev/sda3</td>
+			<td>/data</td>
+			<td>31000MB (31GB)</td>
+			<td>Data og backup</td>
+		</tr>
+		<tr>
+			<td>Ledig plads</td>
+			<td> - </td>
+			<td>20,9 GB</td>
+			<td>Linux?</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Vælg "Noget andet".</p>
+
+<figure id="">
+
+	<img class="p90" src="images/install_ubuntu1404_03.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Da harddisken ikke har været anvendt før skal der laves en partitionstabel: Vælg "Ny partitionstabel" og "Forsæt".</p>
+
+<figure id="">
+
+	<img class="p90" src="images/install_ubuntu1404_04.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p></p>
+
+
+<figure id="">
+
+	<img class="p90" src="images/install_ubuntu1404_05.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Marker "Ledig plads" og tryk på "+" for at oprette system partitionen.</p>
+
+<figure id="">
+
+	<img class="p90" src="images/install_ubuntu1404_06.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Vælg</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Størrelse:</td>
+			<td>50000 MB</td>
+		</tr>
+		<tr>
+			<td>Partitionstype:</td>
+			<td>Primær</td>
+		</tr>
+		<tr>
+			<td>Placering:</td>
+			<td>Begyndelsen</td>
+		</tr>
+		<tr>
+			<td>Brug som:</td>
+			<td>Ext4-journalsystem</td>
+		</tr>
+		<tr>
+			<td>Monteringspunkt:</td>
+			<td>/</td>
+		</tr>
+	</tbody>
+</table>
+
+<figure id="">
+
+	<img class="p50" src="images/install_ubuntu1404_07.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Marker "ledig plads" og tryk "+" og vælg</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Størrelse:</td>
+			<td>4096 MB</td>
+		</tr>
+		<tr>
+			<td>Partitionstype:</td>
+			<td>Primær</td>
+		</tr>
+		<tr>
+			<td>Placering:</td>
+			<td>Begyndelsen</td>
+		</tr>
+		<tr>
+			<td>Brug som:</td>
+			<td>Swap</td>
+		</tr>
+	</tbody>
+</table>
+
+<figure id="">
+
+	<img class="p50" src="images/install_ubuntu1404_08.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Marker "ledig plads" og tryk "+" og vælg</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Størrelse:</td>
+			<td>31000 MB</td>
+		</tr>
+		<tr>
+			<td>Partitionstype:</td>
+			<td>Primær</td>
+		</tr>
+		<tr>
+			<td>Placering:</td>
+			<td>Begyndelsen</td>
+		</tr>
+		<tr>
+			<td>Brug som:</td>
+			<td>Ext4-journalsystem</td>
+		</tr>
+		<tr>
+			<td>Monteringspunkt:</td>
+			<td>/data</td>
+		</tr>
+	</tbody>
+</table>
+
+
+<figure id="">
+
+	<img class="p50" src="images/install_ubuntu1404_09.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Tjek at du har partitioneret korrekt. Har du lavet fejl så marker partitionen og vælg "-" og dernæst sæt den korrekt på med "+"</p>
+
+
+<figure id="">
+
+	<img class="p90" src="images/install_ubuntu1404_10.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Du får nu en sidste mulighed for at tjekke om du har sat harddisken op korrekt - væg "Fortsæt".</p>
+
+
+
+<figure id="">
+
+	<img class="p50" src="images/install_ubuntu1404_11.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h2>Vælg lokation og tastetur indstillinger</h2>
+
+<figure id="">
+
+	<img class="p90" src="images/install_ubuntu1404_12.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+
+
+<figure id="">
+
+	<img class="p90" src="images/install_ubuntu1404_13.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h2>Valg af administrationsbruger og adgangskode</h2>
+
+<p>Indtast dit fulde navn og sæt dit brugernavn til dine initialer. Sæt adgangskoden til at være: 123qwe</p>
+
+<figure id="">
+
+	<img class="p90" src="images/install_ubuntu1404_14.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h2>Ubuntu installeres færdig</h2>
+
+<p>Herefter installerer Ubuntu sig færdig. Ubuntu henter opdateringer og lande/sprog konfigurationer på nettet</p>
+
+
+<figure id="">
+
+	<img class="p70" src="images/install_ubuntu1404_15.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Vælg: "Genstart nu"</p>
+
+<figure id="">
+
+	<img class="p70" src="images/install_ubuntu1404_16.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Til forskel fra Windows så beder Ubuntu dig om at fjerne boot-mediet. Det skyldes at Ubuntu ikke noget behov for at blive genstartet under installationen - og derfor heller ikke noget behov for at beholde boot-mediet monteret. Tast: [Enter]</p>
+
+<figure id="">
+
+	<img class="p90" src="images/install_ubuntu1404_17.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h2>Første opstart</h2>
+
+<p>Log på systemet med din kode og gør dig bekendt med systemet.</p>
+
+<figure id="">
+
+	<img class="p90" src="images/install_ubuntu1404_18.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<figure id="">
+
+	<img class="p90" src="images/install_ubuntu1404_19.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h1>Indledende konfiguration af Ubuntu.</h1>
+
+<p></p>
+
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+	</body>
+
+</html>
