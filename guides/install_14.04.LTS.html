@@ -87,6 +87,43 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <h2>Opsætning af harddisk</h2>
 
+<p>Her kan du vælge mellem 2 måder at sætte harddisken op på. Enten som en stor (hurtigt og simpel), eller hvor den er partitioneret.</p>
+
+<figure id="">
+
+	<img class="p90" src="images/install_ubuntu1404_03.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Du kan vælge mellemde to følgende muligheder:</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th></th>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Slet disk og Installer Ubuntu</td>
+			<td>Simpel (hurtig)</td>
+			<td>Ved denne mulighed sørger Ubuntu for at partitionere og formatere harddisken for dig (System og swap-drev). Vælger du dene mulighed fortsætter du direkte til næste afsnit 2.4 - Vælg lokation og tastetur indstillinger.</td>
+		</tr>
+		<tr>
+			<td>Noget andet</td>
+			<td>Avanceret <span class="bold">Anbefalet</span></td>
+			<td>Her vil du blive guidet igennem processen med selv at partitionere harddisken. Fordelen ved denne fremgangsmåde er, at du kan have en partition med data/backup på, som kan genmonteres hvis du senere opgraderer eller installerer en anden Linuxdistribution. Følg </td>
+		</tr>
+	</tbody>
+</table>
+
+
+<h2>Partitionering af harddisken</h2>
+
 <p>Vi vil her konfigurere harddisken så der er tre partitioner. En til system, en til data/backup og en til Swap (virtuel hukommelse). På denne måde kan man senere geninstallere Ubuntu uden at miste sine data. Den virtuelle hukommelse fungerer anderledes på Linux end på Windows. På Linux kører det på en selvstændig partition med sit eget filsystem. På den måde bliver den virtuelle hukommelse ikke spredt ud over harddisken hvor der lige nu er plads, men den vil altid blive skrevet hvor den ikke forstyrrer.</p>
 
 <p>Vi vil partitionere harddisken efter nedestående skema</p>
@@ -128,7 +165,9 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 	</tbody>
 </table>
 
-<p>Vælg "Noget andet".</p>
+<p>Grunden til at vi vælger noget ledig plads, er for at vi senere kan anvende den til at oprette en partition fra, når Ubuntu kører. Ønsker du ikke at gøre det kan du anvende pladsen til <span class="inl_cmd">/data</span> </p>
+
+<p>Vælg <span class="knap">Noget andet</span>.</p>
 
 <figure id="">
 
@@ -138,7 +177,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 </figure>
 
-<p>Da harddisken ikke har været anvendt før skal der laves en partitionstabel: Vælg "Ny partitionstabel" og "Forsæt".</p>
+<p>Da harddisken ikke har været anvendt før skal der laves en partitionstabel: Vælg <span class="knap">Ny partitionstabel</span> og <span class="knap">Forsæt</span>.</p>
 
 <figure id="">
 
@@ -159,7 +198,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 </figure>
 
-<p>Marker "Ledig plads" og tryk på "+" for at oprette system partitionen.</p>
+<p>Marker "Ledig plads" og tryk på <span class="knap">+</span> for at oprette system partitionen.</p>
 
 <figure id="">
 
@@ -169,13 +208,12 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 </figure>
 
-<p>Vælg</p>
+<p>Herefter kommer der et vindue frem, hvor du skal sætte partitionens parametre efter følgende skema.</p>
 
 <table class="">
 	<thead>
 		<tr>
-			<th></th>
-			<th></th>
+			<th colspan="2">Opsætning af /</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -202,6 +240,8 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 	</tbody>
 </table>
 
+<p>Kontroller at vinduet ser ud som herunder og tryk <span class="knap">OK</span>.</p>
+
 <figure id="">
 
 	<img class="p50" src="images/install_ubuntu1404_07.png" alt="" title="" />
@@ -210,13 +250,14 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 </figure>
 
-<p>Marker "ledig plads" og tryk "+" og vælg</p>
+<p>Gør det samme for henholdsvis <span class="inl_cmd">swap</span> og <span class="inl_cmd">/data</span>.</p>
+
+<p>Vær opmærksom på at <span class="inl_cmd">swap</span> som minimum bør være lige så stor som RAM-lageret. Det skyldes at data fra "slumre" tilstanden gemmes her. Har du kun 2-3 GB RAM til rådighed bør du sætte <span class="inl_cmd">swap</span> til det dobbelte.</p>
 
 <table class="">
 	<thead>
 		<tr>
-			<th></th>
-			<th></th>
+			<th colspan="2">Opsætning af swap</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -252,8 +293,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 <table class="">
 	<thead>
 		<tr>
-			<th></th>
-			<th></th>
+			<th colspan="2">Opsætning af /data</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -289,7 +329,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 </figure>
 
-<p>Tjek at du har partitioneret korrekt. Har du lavet fejl så marker partitionen og vælg "-" og dernæst sæt den korrekt på med "+"</p>
+<p>Tjek at du har partitioneret korrekt. Har du lavet fejl så marker partitionen og vælg <span class="knap">-</span> for at slette partitionen igen og tilføj den igen med <span class="knap">+</span>. Er det hele korrekt sat op så vælg <span class="knap">Installér nu</span>.</p>
 
 
 <figure id="">
@@ -300,7 +340,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 </figure>
 
-<p>Du får nu en sidste mulighed for at tjekke om du har sat harddisken op korrekt - væg "Fortsæt".</p>
+<p>Ubuntu udskriver endnu en gang partitioneringen før der skrives til disken. Efter du har valgt <span class="knap">Fortsæt</span> vil alt det gamle på harddisken være slettet.</p>
 
 
 
@@ -313,6 +353,8 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 </figure>
 
 <h2>Vælg lokation og tastetur indstillinger</h2>
+
+<p>De næste to indstillinger giver sig selv og Ubuntu sætter selv de rigtige indstillinger. Tryk <span class="knap">Fortsæt</span> 2 gange.</p>
 
 <figure id="">
 
@@ -334,7 +376,9 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <h2>Valg af administrationsbruger og adgangskode</h2>
 
-<p>Indtast dit fulde navn og sæt dit brugernavn til dine initialer. Sæt adgangskoden til at være: 123qwe</p>
+<p>Den første bruger der bliver oprettet er ret vigtig, da det er denne bruger der har mulighed for at udføre systemarbejde på computeren. Vær opmærksom på, at Ubuntu skelner mellem store og små bogstaver. Det betyder at der er forskel på brugernavnene <span class="inl_cmd">thoj</span> og <span class="inl_cmd">Thoj</span>. Det er normen at bruge små bogstaver til brugernavne, da man ellers risikerer problemer når man skal arbejde med andre operativsystemer (f.eks Windows)</p>
+
+<p>Indtast dit fulde navn og sæt dit brugernavn til dine initialer. Sæt en adgangskode. Er det i en virtuel maskine der skal testes på kan du anvende: <span class="inl_cmd">123qwe</span></p>
 
 <figure id="">
 
@@ -346,7 +390,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <h2>Ubuntu installeres færdig</h2>
 
-<p>Herefter installerer Ubuntu sig færdig. Ubuntu henter opdateringer og lande/sprog konfigurationer på nettet</p>
+<p>Herefter installerer Ubuntu sig færdig. Ubuntu henter opdateringer og lande/sprog konfigurationer på nettet.</p>
 
 
 <figure id="">
@@ -357,7 +401,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 </figure>
 
-<p>Vælg: "Genstart nu"</p>
+<p>Når Ubuntu er installeret så vælg <span class="knap">Genstart nu</span>. </p>
 
 <figure id="">
 
@@ -367,7 +411,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 </figure>
 
-<p>Til forskel fra Windows så beder Ubuntu dig om at fjerne boot-mediet. Det skyldes at Ubuntu ikke noget behov for at blive genstartet under installationen - og derfor heller ikke noget behov for at beholde boot-mediet monteret. Tast: [Enter]</p>
+<p>Til forskel fra Windows så beder Ubuntu dig om at fjerne boot-mediet. Ubuntu vil selv skubbe drevet ud, med mindre det er en virtuel maskine som her. Kommer menuen frem så tast <kbd>Enter</kbd></p>
 
 <figure id="">
 
@@ -377,9 +421,11 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 </figure>
 
-<h2>Første opstart</h2>
+<p>Efter genstart vil du blive mødt af loginsskærmen.</p>
 
-<p>Log på systemet med din kode og gør dig bekendt med systemet.</p>
+<span class="afsnit">Ved anvendelse af Virtualbox</span>
+
+<p>Har du anvendt virtualBox ligesom mig vil du opdage, at Ubuntu 14.04 starter op i en meget lav oplæsning. Kig i bilagene./p>
 
 <figure id="">
 
