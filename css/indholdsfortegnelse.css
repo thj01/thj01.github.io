@@ -39,7 +39,7 @@ div#toc a:hover {
 /* formatering af H1 i indholdsfortegnelsen*/
 div#toc>ul>ul>li>a {
 	
-	font-size: 1em;
+	font-size: .8em;
 
 }
 
@@ -53,7 +53,7 @@ div#toc>ul>ul>li {
 
 div#toc>ul>ul>ul>li>a {
 	
-	font-size: 1em;
+	font-size: .8em;
 
 }
 
@@ -69,14 +69,14 @@ div#toc>ul>ul>ul>li {
 
 div#toc>ul>ul>ul>ul>li>a {
 	
-	font-size: 1em;
+	font-size: .8em;
 
 }
 
 div#toc>ul>ul>ul>ul>li {
 
 	list-style-type: none;
-	padding-left: 2em;
+	padding-left: .8em;
 }
 
 
