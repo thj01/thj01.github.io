@@ -738,7 +738,7 @@ relevante mannualside.</p>
 	
 I styresystemet Linux anvendes der ikke ”efternavne” til filer som f.eks. exe, dll og inf, for at afgøre hvilken type filen er. Det styres med rettigheder. Derfor kan man ikke umiddelbart se på en fil om det er et program eller blot en tekstfil. Der anvendes dog filefternavne til filer med specifikke formater, f.eks. til tekst- og billedbehandlingsprogrammer f.eks. *.pdf, *.odt, *.jpg, *.png osv. For at kunne genkende script filer giver man dem efternavnet <span class="inl_cmd">*.sh</span>. Filrettigheder skal dog sættes rigtigt før en <span class="inl_cmd">*.sh</span> fil kan køres.</p>
 
-<h2>Navigation i filsystemet</h2>
+<h1>Navigation i filsystemet</h1>
 
 <p>For at navigere rundt i og orientere sig i filsystemet anvender man følgende kommandoer:</p>
 
@@ -751,7 +751,7 @@ I styresystemet Linux anvendes der ikke ”efternavne” til filer som f.eks. ex
 
 <p>Herunder angives eksempler med kommandoerne:</p>
 
-<h3><span class="inl_cmd">cd</span> – change directory</h3>
+<h2><span class="inl_cmd">cd</span> – change directory</h2>
 
 <table class="cmd_table">
 	<thead>
@@ -780,7 +780,7 @@ I styresystemet Linux anvendes der ikke ”efternavne” til filer som f.eks. ex
 	</tbody>
 </table>
 
-<h3><span class="inl_cmd">ls</span> - list</h3>
+<h2><span class="inl_cmd">ls</span> - list</h2>
 
 <table class="cmd_table">
 	<thead>
@@ -817,7 +817,7 @@ I styresystemet Linux anvendes der ikke ”efternavne” til filer som f.eks. ex
 	</tbody>
 </table>
 
-<h3><span class="inl_cmd">pwd</span> – print working director</h3>
+<h2><span class="inl_cmd">pwd</span> – print working director</h2>
 
 <table class="cmd_table">
 	<thead>
@@ -834,7 +834,7 @@ I styresystemet Linux anvendes der ikke ”efternavne” til filer som f.eks. ex
 	</tbody>
 </table>
 
-<h3><span class="inl_cmd">tree</span></h3>
+<h2><span class="inl_cmd">tree</span></h2>
 
 <p><span class="inl_cmd">tree</span> viser indholdet af en mappe i en træstruktur. Det følger ikke med som standard og skal derfor installeres først</p>
 
@@ -900,9 +900,9 @@ tj@tj-VirtualBox:~# tree /usr -d -L 1
 	</tbody>
 </table>
 
-<h2>Størrelse af filer</h2>
+<h1>Størrelse af filer</h1>
 
-<h3><span class="inl_cmd">du</span> - Disk usage</h3>
+<h2><span class="inl_cmd">du</span> - Disk usage</h2>
 
 <p>For at se hvor meget filerne i en folder fylder anvendes <span class="inl_cmd">du</span>.</p>
 
@@ -915,7 +915,7 @@ tj@tj-VirtualBox:~$ du -hs ~
 2,6M	/home/tj
 </pre>
 
-<h3><span class="inl_cmd">df</span></h3>
+<h2><span class="inl_cmd">df</span></h2>
 
 <p>For at se den brugte plads anvendes kommandoen <span class="inl_cmd">df</span></p>
 
@@ -954,7 +954,7 @@ Filsystem                                              Størr Brugt  Tilb Brug% 
 /dev/disk/by-uuid/c2c76ea3-8bee-4930-be2c-20d11a7358c1   46G  4,4G   40G   10% /
 </pre>
 
-<h3><span class="inl_cmd">lsblk</span> - List block devices</h3>
+<h1><span class="inl_cmd">lsblk</span> - List block devices</h1>
 
 <p><span class="inl_cmd">lsblk</span> er den bedste måde at skabe sig et overblik over harddiske og partitioner på computeren. Herunder er et eksempel:</p>
 
@@ -1025,7 +1025,7 @@ sr0     1  0  1024M rom
 	</tbody>
 </table>
 
-<h2>Indhold i filer</h2>
+<h1>Arbejde med filer</h1>
 
 <p>For at kunne navigere rundt i filsystemet anvender man primært følgende kommandoer:</p>
 
@@ -1038,7 +1038,7 @@ sr0     1  0  1024M rom
 
 </ul>
 
-<h3><span class="inl_cmd">more</span> - vis indholdet af filer</h3>
+<h2><span class="inl_cmd">more</span> - vis indholdet af filer</h2>
 
 <p>Ved hjælp af more kan man få indholdet af en fil skrevet ud på skærmen. Når skærmen er fyldt kan man se hvor stor en procentdel af filen man har fået vist. Man går en linie frem ad gangen ved at trykke på <kbd>Enter</kbd> og en side længere ned med <kbd>Mellemrum</kbd>.</p>
 
@@ -1061,7 +1061,7 @@ sr0     1  0  1024M rom
 	<a href="http://manpages.ubuntu.com/manpages/trusty/man1/more.1.html" target="_blank">
 	http://manpages.ubuntu.com/manpages/trusty/man1/more.1.html</a></p>
 
-<h3><span class="inl_cmd">Tail / head</span> – vis de sidste/ første linier af filer</h3>
+<h2><span class="inl_cmd">Tail / head</span> – vis de sidste/ første linier af filer</h2>
 
 <p>Kommandoen er god til at se om noget er blevet korrekt tilføjet til en fil.</p>
 
@@ -1097,7 +1097,7 @@ sr0     1  0  1024M rom
 	http://manpages.ubuntu.com/manpages/trusty/man1/head.1.html</a></p>
 	
 
-<h3><span class="inl_cmd">grep</span> - filtrere filer</h3>
+<h2><span class="inl_cmd">grep</span> - filtrere filer</h2>
 
 <p><span class="inl_cmd">grep</span> -  anvendes til at finde tekststrenge i en fil.</p>
 
@@ -1112,7 +1112,7 @@ thoj@thoj-VirtualBox:~$ grep backup /etc/passwd
 	<a href="http://manpages.ubuntu.com/manpages/trusty/man1/grep.1.html" target="_blank">
 	http://manpages.ubuntu.com/manpages/trusty/man1/grep.1.html</a></p>
 
-<h3><span class="inl_cmd">cat</span> – concatenate – sætte i kæde</h3>
+<h2><span class="inl_cmd">cat</span> – concatenate – sætte i kæde</h2>
 
 <p><span class="inl_cmd">cat</span> laver et output af filen, men stopper ikke når skærmen er fyldt. Derfor er programmet ikke altid velegnet til at vise indholdet af filer. F.eks:</p>
 
@@ -1135,7 +1135,7 @@ ff02::2 ip6-allrouters
 	<a href="http://manpages.ubuntu.com/manpages/trusty/man1/cat.1.html" target="_blank">
 	http://manpages.ubuntu.com/manpages/trusty/man1/cat.1.html</a></p>
 	
-<h3>Omdiriger output (redirect)</h3>
+<h2>Omdiriger output (redirect)</h2>
 
 <p>Nogen gange har man brug for at omdirigere indhold. Det kan f.eks. være at indsætte et output i en fil. Til at omdirigere anvender man <span class="inl_cmd">&gt;</span> og <span class="inl_cmd">&gt;&gt;</span>. En pil erstatter alt indhold og 2 pile tilføjer. </p>
 
@@ -1226,7 +1226,7 @@ http://askubuntu.com/questions/350208/what-does-2-dev-null-mean</a></p>
 
 
 
-<h3>Pipes</h3>
+<h2>Pipes</h2>
 
 <p>Pipes er en måde at overføre output fra en kommando til en anden. Hvis man f.eks. vil finde ud af hvor mange gange bogstavkombinationen "lib" forekommer i filnavne på roden, vil kommandoen <span class="inl_cmd">ls</span> blot liste alt indholdet op.</p>
 
@@ -1272,7 +1272,7 @@ root@thoj:~# ls / | grep lib
 	</tbody>
 </table>
 
-<h3><span class="inl_cmd">sed</span> - Erstat indhold i filer</h3>
+<h2><span class="inl_cmd">sed</span> - Erstat indhold i filer</h2>
 
 <p><span class="inl_cmd">sed</span> anvendes til at filtrere og transformere tekst i filer. Her vil vi kun se hvordan vi kan erstatte tekst ved hjælp af <span class="inl_cmd">sed</span>.</p>
 
@@ -1303,7 +1303,7 @@ Mit navn er Thomas
 
 <p><span class="inl_cmd">sed</span> er velegnet til at bruge i scripts.</p>
 
-<h2>Find mapper og filer med <span class="inl_cmd">find</span></h2>
+<h2><span class="inl_cmd">find</span> - Find mapper og filer</h2>
 
 <p>For at søge efter filer og mapper anvendes kommandoerne <span class="inl_cmd">find</span> og <span class="inl_cmd">locate</span>. Hvis du ønsker at lave en søgning i hele filstrukturen bør du søge ved hjælp af sudo eller som root. Læg også mærke til at søgningen skelner mellem små og store bogstaver. En søgning på mappen apt giver flere resultater - APT giver ingen.</p>
 
@@ -1344,11 +1344,27 @@ Mit navn er Thomas
 	
 <p><span class="bold">VIGTIGT:</span> Som med alle andre slette kommandoer skal du være varsom, da du risikerer at slette mere end du ønsker. F.eks. vil et <span class="inl_cmd">/</span> i stedet for et <span class="inl_cmd">.</span> betyde at du sletter alle JPG billeder på harddisken, i stedet for dem der ligger i dine undermapper. Derfør bør du altid have styr på hvor i filstrukturen du er. Er du i tvivl så anvend <span class="inl_cmd">pwd</span>, så får du den fulde sti som output.</p>
 
-<h2>Oprette, slette,kopiere og flytter filer og mapper</h2>
+<h2>Pakkede filer</h2>
+
+<p>Der findes mange pakkeprogrammer til Linux, men et af de mest udbredte er <span class="inl_cmd">tar</span> (<span class="bold">T</span>ape <span class="bold">AR</span>chive). <span class="inl_cmd">tar</span> lægger som udgangspunkt filerne sammen i en lang fil, men kobineres ofte med komprimeringsalgoritmen <span class="inl_cmd">gzip</span>, og angives med .gz efter filnavnet.</p>
+
+<p>Vær opmærksom på, at man som standard pakker mapper ned. Derfor kopierer/flytter man først de filer der skal transporteres ind i en mappe, hvorefter denne pakkes. Det er hvad modtageren forventer.</p>
+
+<p>For at pakke noget ned anvendes:</p>
+
+<code class="cmd">tar -cvzf *filnavn* *mappe der skal pakkes*</code>
+
+<p>For at pakke ud (her tar.gz) anvendes:</p>
+
+<code class="cmd">tar -xvzf *filnavn*.tar.gz</code>
+
+<p><span class="inl_cmd">tar</span> og <span class="inl_cmd">gzip</span> er langt fra det bedste komprimeringsprogram, men det findes på alle Linuxsystemer som standard. Pakkeformatet <span class="inl_cmd">lzma</span> er et mere moderne format, hvor det kan lade sig gøre at konfigurere alt lige fra CPU-load til hukommelsesforbrug. Det har stor fordel når man anvender det i backup sammenhæng.</p>
+
+<h1>Opret, slet,kopier, flytter filer og mapper</h1>
 
 <p>For at kunne arbejde med filer i et Linuxsystem skal man have rettigheden til at gøre det. Nogle gange kan det være nødvendigt at ændre rettighederne for filer, f.eks. hvis man ønsker at give en anden bruger ejerskab til eller adgang til en bestemt fil. Herunder køres kommandoerne din brugers egen mappe.</p>
 
-<h3><span class="inl_cmd">mkdir</span> – opret mapper</h3>
+<h2><span class="inl_cmd">mkdir</span> – opret mapper</h2>
 
 <p>Til at oprette mapper bruges kommandoen mkdir (make directory). <span class="inl_cmd">~</span> henviser til brugerens hjemmemappe.</p>
 
@@ -1386,7 +1402,7 @@ tj@tj-VirtualBox:~$ tree -L 3 ~/testmappe5
 </pre>
 
 
-<h3><span class="inl_cmd">touch</span> – ændre tidsstempel/oprette filer</h3>
+<h2><span class="inl_cmd">touch</span> – ændre tidsstempel/oprette filer</h2>
 
 <p><span class="inl_cmd">touch</span> er en kommando der anvendes til at forny en fils tidstempel. På den måde kan se hvornår en fil sidst er kørt eller opdateret. Ofte bruger man også kommandoen til at oprette filer med, som vi gør herunder.</p>
 
@@ -1418,7 +1434,7 @@ tj@tj-VirtualBox:~$ ls -al | grep testfil
 -rw-rw-r--  1 tj   tj      0 mar 15 20:14 <span class="red">testfil</span>4
 </pre>
 
-<h3><span class="inl_cmd">rm</span> – slette filer og mappper</h3>
+<h2><span class="inl_cmd">rm</span> – slette filer og mappper</h2>
 
 <p>Til at slette filer og mapper anvendes kommandoen <span class="inl_cmd">rm</span> (remove). Det er god vane, at anvende den fulde sti til det man sletter, for at undgå at slette noget forkert.</p>
 
@@ -1440,7 +1456,7 @@ rm: det er farligt at operere rekursivt på '/'
 rm: brug --no-preserve-root for at tilsidesætte denne sikring
 </pre>
 
-<h3>Kopiere og flytte filer</h3>
+<h2>Kopiere og flytte filer</h2>
 
 <p>For at holde fast i overvejelserne ovenfor er kopiering af filer den første kommando vi skal lære.</p>
 
@@ -1526,23 +1542,7 @@ rm: brug --no-preserve-root for at tilsidesætte denne sikring
 	<a href="http://manpages.ubuntu.com/manpages/trusty/man1/wget.1.html" target="_blank">
 	http://manpages.ubuntu.com/manpages/trusty/man1/wget.1.html</a></p>
 
-<h2>Komprimering og udpakning af filer</h2>
-
-<p>Der findes mange pakkeprogrammer til Linux, men et af de mest udbredte er <span class="inl_cmd">tar</span> (<span class="bold">T</span>ape <span class="bold">AR</span>chive). <span class="inl_cmd">tar</span> lægger som udgangspunkt filerne sammen i en lang fil, men kobineres ofte med komprimeringsalgoritmen <span class="inl_cmd">gzip</span>, og angives med .gz efter filnavnet.</p>
-
-<p>Vær opmærksom på, at man som standard pakker mapper ned. Derfor kopierer/flytter man først de filer der skal transporteres ind i en mappe, hvorefter denne pakkes. Det er hvad modtageren forventer.</p>
-
-<p>For at pakke noget ned anvendes:</p>
-
-<code class="cmd">tar -cvzf *filnavn* *mappe der skal pakkes*</code>
-
-<p>For at pakke ud (her tar.gz) anvendes:</p>
-
-<code class="cmd">tar -xvzf *filnavn*.tar.gz</code>
-
-<p><span class="inl_cmd">tar</span> og <span class="inl_cmd">gzip</span> er langt fra det bedste komprimeringsprogram, men det findes på alle Linuxsystemer som standard. Pakkeformatet <span class="inl_cmd">lzma</span> er et mere moderne format, hvor det kan lade sig gøre at konfigurere alt lige fra CPU-load til hukommelsesforbrug. Det har stor fordel når man anvender det i backup sammenhæng.</p>
-
-<h2>Genstart og luk computeren</h2>
+<h1>Genstart og luk computeren</h1>
 
 <p>En server lukkes ned med kommandoen:</p>
 
@@ -2007,7 +2007,7 @@ http://manpages.ubuntu.com/manpages/trusty/man1/chmod.1.html</a></p>
 </table>
 
 
-<h1>Administration af brugere og grupper</h1>
+<h1>Brugere og grupper</h1>
 
 <p>Alle rettigheder i Linux er sat ud fra ejerskab. Tilgængeligheden af filer, mapper og enheder bliver styret af disse brugerrettigigheder </p>
 
@@ -2406,58 +2406,7 @@ http://manpages.ubuntu.com/manpages/trusty/en/man1/chage.1.html</a></p>
 <a href="http://manpages.ubuntu.com/manpages/trusty/en/man8/apt-get.8.html" target="_blank">
 http://manpages.ubuntu.com/manpages/trusty/en/man8/apt-get.8.html</a></p>
 
-<h2>Tilføje repositories</h2>
-
-<h3>Ved hjælp af <span class="inl_cmd">/etc/apt/sources.list</span></h3>
-
-<p>Da ubuntu blev installeret blev <span class="inl_cmd">/etc/apt/sources.list</span> konfigureret med standard repositories. Det betyder bl.a. at "partner" repositoriet er deaktiveret. I dette reposiory ligger der proporitære og closed-source programmer som kan være praktiske at få adgang til.</p>
-
-
-<h3>Ved hjælp af PPA</h3>
-
-<p>Der findes en række repositories som er generelle for Ubuntu og Debian distributioner, og som bliver vedligeholdt til at tjene specifikke distributioner. Det hænder dog at man gerne vil have andre versioner af programmerne end disse repositories tilbyder. Dette bliver løst ved hjælp af PPA'er (<span class="bold">P</span>ersonal <span class="bold">P</span>ackage <span class="bold">A</span>archives).</p>
-
-<p>Man skal dog være klar over at man ved at tilføje PPA'er tilføjer funktionalitet til sin distribution, og derved ofte installerer nyere version af programmer og afhængigheder udviklerne af distributionen har sagt god for. Derfor er det vigtigt at man kun anvender anerkendte PPA.</p>
-
-<p>Nedestående kommando tilføjer PPA linien og sikkerhedsnøgler til systemet.</p>
-
-<code class="cmd">add-apt-repository PPA:[PPA navn] -y</code>
-
-<p>Hvis man f.eks. ønsker at have den nyeste version af GIMP'en installeret anvender man PPA'en : <span class="inl_cmd">ppa:otto-kesselgulasch/gimp</span>. Den aktiveres med følgende kommando:</p>
-
-<code class="cmd">add-apt-repository ppa:otto-kesselgulasch/gimp -y</code>
-
-<p>Herefter vil commandoen oprette to nye filer i mappen <span class="inl_cmd">/etc/apt/sources.list.d</span>, så <span class="inl_cmd">apt</span> fremover kigger i dette arkiv også.</p>
-
-<pre class="ubuntu_terminal">
-thoj@thoj:/$ ls -a /etc/apt/sources.list.d | grep otto
-<span class="red">otto</span>-kesselgulasch-gimp-trusty.list
-<span class="red">otto</span>-kesselgulasch-gimp-trusty.list.save
-
-</pre>
-
-<p>Hvis programmet indeholder afhængigheder til nyere versioner af programmer der er installeret på computeren skal man udføre en <span class="inl_cmd">dist-upgrade</span>, f.eks:</p>
-
-<code class="cmd">apt-get dist-upgrade -y</code
-
-<p>Nogle gange giver en <span class="inl_cmd">apt-get upgrade</span> beskeden, af "<span class="inl_cmd">Følgende pakker er blevet holdt tilbage</span>:</p>
-
-<pre class="ubuntu_terminal">
-thoj@thoj-VirtualBox:~$ sudo apt-get upgrade
-Indlæser pakkelisterne... Færdig
-Opbygger afhængighedstræ        
-Læser tilstandsoplysninger... Færdig
-Beregner opgraderingen ... Færdig
-Følgende pakker er blevet holdt tilbage:
-  linux-generic-lts-utopic linux-headers-generic-lts-utopic
-  linux-image-generic-lts-utopic
-0 opgraderes, 0 nyinstalleres, 0 afinstalleres og 3 opgraderes ikke.
-
-</pre>
-
-<p>Hvis du ønsker at opgradere disse ( idette tilfælde nye kerner) anvendes <span class="inl_cmd">dist-upgrade</span>.</p>
-
-<h2><span class="inl_cmd">dpkg --configure -a</span> - når en opdatering fejler</h2>
+<h2>Når <span class="inl_cmd">apt</span> fejler</h2>
 
 <p>Det hænder at <span class="inl_cmd">apt</span> fejler. Når dette sker kan det være nødvendigt at få <span class="inl_cmd">apt</span> til at reconfigurere sig selv. Det gøres med kommandoen:</p>
 
@@ -2466,6 +2415,24 @@ Følgende pakker er blevet holdt tilbage:
 <p>Når <span class="inl_cmd">apt</span> er geninitialiseret kan man genstarte processen med kommandoen, hvor -f står for "fix broken":</p>
 
 <code class="cmd">sudo apt-get install -f</code>
+
+<h2>Administration af tjenester på serveren</h2>
+
+<p>Generelt administreres tjenester på på Ubuntu med service kommandoen. Den fungerer efter nedestående skabelon:</p>
+
+<code class="cmd">service [tjeneste] {start|stop|reload|restart|force-reload|status}</code>
+
+<p>Ønsker du f.eks. at genstarte <span class="cmd_inl">bind9</span> tjenesten gøres det med kommandoen:</p>
+
+<code class="cmd">service bind9 restart</code>
+
+<p>For at tjekke om en tjeneste kører</p>
+
+<code class="cmd">service bind9 status</code>
+
+<p>man-page: <span class="inl_cmd">service</span>
+<a href="http://manpages.ubuntu.com/manpages/trusty/en/man8/service.8.html" target="_blank">
+http://manpages.ubuntu.com/manpages/trusty/en/man8/service.8.html</a></p>
 
 <h2>Fjerne overflødige kerner</h2>
 
@@ -2494,25 +2461,82 @@ Efter denne handling, vil 559 MB diskplads blive frigjort.
 Vil du fortsætte? [J/n]
 </pre>
 
-<h2>Administration af tjenester på serveren</h2>
+<h1>Tilføje repositories</h1>
 
-<p>Generelt administreres tjenester på på Ubuntu med service kommandoen. Den fungerer efter nedestående skabelon:</p>
+<h2>Ved hjælp af <span class="inl_cmd">sources.list</span></h2>
 
-<code class="cmd">service [tjeneste] {start|stop|reload|restart|force-reload|status}</code>
+<p>Da ubuntu blev installeret blev <span class="inl_cmd">/etc/apt/sources.list</span> konfigureret med standard repositories. Det betyder bl.a. at "partner" repositoriet er deaktiveret. I dette reposiory ligger der proporitære og closed-source programmer som kan være praktiske at få adgang til. Det skal vi have ændret. Åbn <span class="inl_cmd">/etc/apt/sources.list</span> med <span class="inl_cmd">nano</span> gå ned i bunden af filen:</p>
 
-<p>Ønsker du f.eks. at genstarte <span class="cmd_inl">bind9</span> tjenesten gøres det med kommandoen:</p>
+<code class="cmd">nano /etc/apt/sources.list</code>
 
-<code class="cmd">service bind9 restart</code>
+<pre class="black">
+<span class="blue1">## Uncomment the following two lines to add software from Canonical's
+## 'partner' repository.
+## This software is not part of Ubuntu, but is offered by Canonical and the
+## respective vendors as a service to Ubuntu users.
+# deb http://archive.canonical.com/ubuntu trusty partner <span class="red">&lt;-- denne linie skal ændres</span>
+# deb-src http://archive.canonical.com/ubuntu trusty partner <span class="red">&lt;-- denne linie skal ændres</span>
 
-<p>For at tjekke om en tjeneste kører</p>
+## This software is not part of Ubuntu, but is offered by third-party
+## developers who want to ship their latest software.</span>
+<span class="brown">deb</span> <span class="green1">http://extras.ubuntu.com/ubuntu</span> <span class="red">trusty</span> <span class="violet">main</span>
+<span class="brown">deb-src</span> <span class="green1">http://extras.ubuntu.com/ubuntu</span> <span class="red">trusty</span> <span class="violet">main</span>
+</pre>
 
-<code class="cmd">service bind9 status</code>
+<p>Fjern <span class="inl_cmd">#</span> foran linierne så de kommer til at se ud som herunder:</p>
 
-<p>man-page: <span class="inl_cmd">service</span>
-<a href="http://manpages.ubuntu.com/manpages/trusty/en/man8/service.8.html" target="_blank">
-http://manpages.ubuntu.com/manpages/trusty/en/man8/service.8.html</a></p>
+<pre class="black">
+<span class="brown">deb</span> <span class="green1">http://archive.canonical.com/ubuntu</span> <span class="red">trusty</span> <span class="violet">partner</span>
+<span class="brown">deb-src</span> <span class="green1">http://archive.canonical.com/ubuntu</span> <span class="red">trusty</span> <span class="violet">partner</span>
+</pre>
 
+<p>Opdater <span class="inl_cmd">apt</span>, så man fremover har adgang til programmer herfra.</p>
 
+<code class="cmd">sudo apt-get update</code>
+
+<h2>Ved hjælp af PPA</h2>
+
+<p>Der findes en række repositories som er generelle for Ubuntu og Debian distributioner, og som bliver vedligeholdt til at tjene specifikke distributioner. Det hænder dog at man gerne vil have andre versioner af programmerne end disse repositories tilbyder. Dette bliver løst ved hjælp af PPA'er (<span class="bold">P</span>ersonal <span class="bold">P</span>ackage <span class="bold">A</span>archives).</p>
+
+<p>Man skal dog være klar over at man ved at tilføje PPA'er tilføjer funktionalitet til sin distribution, og derved ofte installerer nyere version af programmer og afhængigheder udviklerne af distributionen har sagt god for. Derfor er det vigtigt at man kun anvender anerkendte PPA. Specielt når man anvender LTS systemer, vil der i løbet af 2 år komme opdateringer til programmer, som kan være nødvendige for ens workflow</p>
+
+<p>Nedestående kommando tilføjer PPA linien og sikkerhedsnøgler til systemet.</p>
+
+<code class="cmd">add-apt-repository PPA:[PPA navn] -y</code>
+
+<p>Hvis man f.eks. ønsker at have den nyeste version af GIMP'en installeret anvender man PPA'en : <span class="inl_cmd">ppa:otto-kesselgulasch/gimp</span>. Den aktiveres med følgende kommando:</p>
+
+<code class="cmd">add-apt-repository ppa:otto-kesselgulasch/gimp -y</code>
+
+<p>Herefter vil commandoen oprette to nye filer i mappen <span class="inl_cmd">/etc/apt/sources.list.d</span>, så <span class="inl_cmd">apt</span> fremover kigger i dette arkiv også.</p>
+
+<pre class="ubuntu_terminal">
+thoj@thoj:/$ ls -a /etc/apt/sources.list.d | grep otto
+<span class="red">otto</span>-kesselgulasch-gimp-trusty.list
+<span class="red">otto</span>-kesselgulasch-gimp-trusty.list.save
+</pre>
+
+<p>Hvis programmet indeholder afhængigheder til nyere versioner af programmer der er installeret på computeren skal man udføre en <span class="inl_cmd">dist-upgrade</span>, f.eks:</p>
+
+<code class="cmd">apt-get dist-upgrade -y</code>
+
+<p>Nogle gange giver en <span class="inl_cmd">apt-get upgrade</span> Besked om at nogle pakker er blevet holdt tilbage efter en PPA opdatering (se rød markering).</p>
+
+<pre class="ubuntu_terminal">
+thoj@thoj-VirtualBox:~$ sudo apt-get upgrade
+Indlæser pakkelisterne... Færdig
+Opbygger afhængighedstræ        
+Læser tilstandsoplysninger... Færdig
+Beregner opgraderingen ... Færdig
+<span class="red">Følgende pakker er blevet holdt tilbage:</span>
+  linux-generic-lts-utopic linux-headers-generic-lts-utopic
+  linux-image-generic-lts-utopic
+0 opgraderes, 0 nyinstalleres, 0 afinstalleres og 3 opgraderes ikke.
+</pre>
+
+<p>Det skyldes, at de nye versioner der skal installeres kræver nyere filer end dem der er installeret. Dem skal du opdatere og det gøres ved at sætte <span class="inl_cmd">apt</span> til at lave en <span class="inl_cmd">dist-upgrade</span></p>
+
+<code class="cmd">sudo apt-get dist-upgrade</code>
 
 <h1>Harddiske og partitioner</h1>
 
