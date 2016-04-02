@@ -3455,21 +3455,25 @@ http://manpages.ubuntu.com/manpages/trusty/man1/inxi.1.html</a></p>
 	</thead>
 	<tbody>
 		<tr>
-			<td>uname -r</td>
-			<td>Udskriver den version kernen har.</td>
-		</tr>
-		<tr>
 			<td>uname -a</td>
 			<td>Udskriv al information</td>
 		</tr>
 		<tr>
-			<td>uname -m</td>
-			<td>Viser om du kører 32 bit (i386, i586, i686) eller 64 bit (x86_64)</td>
+			<td>uname -rsp</td>
+			<td>Udskriver kernen (r), kerneversionen (s) og CPU (p)</td>
 		</tr>
 	</tbody>
 </table>
 
-<p>man-page: <span class="inl_cmd">inxi</span>
+<pre class="black">
+tj@tj-VirtualBox:~$ uname -a
+Linux tj-VirtualBox 4.2.0-34-generic #39~14.04.1-Ubuntu SMP Fri Mar 11 11:38:02 UTC 2016 x86_64 x86_64 x86_64 GNU/Linux
+tj@tj-VirtualBox:~$ uname -rsp
+Linux 4.2.0-34-generic x86_64
+</pre>
+
+
+<p>man-page: <span class="inl_cmd">uname</span>
 <a href="http://manpages.ubuntu.com/manpages/trusty/en/man1/uname.1.html" target="_blank">
 http://manpages.ubuntu.com/manpages/trusty/en/man1/uname.1.html</a></p>
 
