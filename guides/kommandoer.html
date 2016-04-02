@@ -2540,6 +2540,52 @@ Beregner opgraderingen ... Færdig
 
 <h1>Harddiske og partitioner</h1>
 
+<p>I daglig tale er harddisken den lille metalkasse der indeholder en til flere skiver, hvorpå der kan gemmes data. I computerteknologisk sammenhæng kan det dog også være andet. En harddisk er en enhed der holder på data også selvom der ikke er strøm og derudover skal den indeholde en partitionstabel. Det betyder at følgende enheder vil blive opfattet som harddiske af Linux:</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Betegnelse</th>
+			<th>Forklaring</th>
+			<th>Montering</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>HDD</td>
+			<td><span class="bold">H</span>ard <span class="bold">D</span>isk <span class="bold">D</span>rive</td>
+			<td>Internt</td>
+		</tr>
+		<tr>
+			<td>SSD</td>
+			<td><span class="bold">S</span>olid <span class="bold">S</span>tate <span class="bold">D</span>rive</td>
+			<td>Intern</td>
+		</tr>
+		<tr>
+			<td>HHD</td>
+			<td><span class="bold">H</span>ybrid <span class="bold">H</span>ard <span class="bold">D</span>rive</td>
+			<td>Intern</td>
+		</tr>
+		<tr>
+			<td>mSATA</td>
+			<td><span class="bold">m</span>ini <span class="bold">S</span>erial <span class="bold">AT</span> <span class="bold">A</span>ttachment</td>
+			<td>Intern</td>
+		</tr>
+		<tr>
+			<td>eSATA</td>
+			<td><span class="bold">e</span>xternal <span class="bold">S</span>erial <span class="bold">AT</span> <span class="bold">A</span>ttachment</td>
+			<td>Ekstern</td>
+		</tr>
+		<tr>
+			<td>USB</td>
+			<td><span class="bold">U</span>niversal <span class="bold">S</span>erial <span class="bold">B</span>us</td>
+			<td>Ekstern</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Linux kan starte fra alle partitioner, da selve bootprocessen styres af en bootmanager. Derfor kan Linux startes op både fra CD/DVD skriver og USB-drev.</p>
+
 <p>Linuxsystemet administrerer sine diske ved hjælp af den fysiske placering på bundkortet. Vores testsystem vil altså give følgende opdeling</p>
 
 <table class="">
@@ -2586,57 +2632,16 @@ sr0    rom          1024M  0 rom
 
 <p>Hvis vi kigger på harddisk <span class="inl_cmd">sda</span>, kan vi se at den er delt ind i 3 partitioner, der hver har sit monteringspunkt, hvorimod <span class="inl_cmd">sdb</span> hverken er partitioneret eller monteret.</p>
 
-<h2>Hvad er en harddisk</h2>
+<h2>Find dine harddiske</h2>
 
-<p>I daglig tale er harddisken den lille metalkasse der indeholder en til flere skiver, hvorpå der kan gemmes data. I computerteknologisk sammenhæng er det dog noget andet vi tænker på når vi kalder noget en harddisk.</p>
+<p>Fremgangsmåden til at konfigurere en harddisk er, at den skal:</p>
 
-<p>En harddisk er en enhed der holder på data også selvom der ikke er strøm og derudover skal den indeholde en partitionstabel. Det betyder at følgende enheder vil blive opfattet som harddiske af Linux:</p>
-
-<table class="">
-	<thead>
-		<tr>
-			<th>Betegnelse</th>
-			<th>Forklaring</th>
-			<th>Montering</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>HDD</td>
-			<td><span class="bold">H</span>ard <span class="bold">D</span>isk <span class="bold">D</span>rive</td>
-			<td>Internt</td>
-		</tr>
-		<tr>
-			<td>SSD</td>
-			<td><span class="bold">S</span>olid <span class="bold">S</span>tate <span class="bold">D</span>rive</td>
-			<td>Intern</td>
-		</tr>
-		<tr>
-			<td>HHD</td>
-			<td><span class="bold">H</span>ybrid <span class="bold">H</span>ard <span class="bold">D</span>rive</td>
-			<td>Intern</td>
-		</tr>
-		<tr>
-			<td>mSATA</td>
-			<td><span class="bold">m</span>ini <span class="bold">S</span>erial <span class="bold">AT</span> <span class="bold">A</span>ttachment</td>
-			<td>Intern</td>
-		</tr>
-		<tr>
-			<td>eSATA</td>
-			<td><span class="bold">e</span>xternal <span class="bold">S</span>erial <span class="bold">AT</span> <span class="bold">A</span>ttachment</td>
-			<td>Ekstern</td>
-		</tr>
-		<tr>
-			<td>USB</td>
-			<td><span class="bold">U</span>niversal <span class="bold">S</span>erial <span class="bold">B</span>us</td>
-			<td>Ekstern</td>
-		</tr>
-	</tbody>
-</table>
-
-<p>Linux kan starte fra alle partitioner, da selve bootprocessen styres af en bootmanager.</p>
-
-<h2>Harddiskens opsætning</h2>
+<ol class="">
+	<li>Identificeres,</li>
+	<li>Partitioneres,</li>
+	<li>Formateres og</li>
+	<li>Monteres</li>
+</ol>
 
 <p><span class="inl_cmd">lsblk</span> viser hvad operativsystemet kan se. Hvis vi ønsker at kigge på selve harddisken skal vi anvende programmet <span class="inl_cmd">fdisk</span>. Dette program konfigurerer selve harddisken og hvordan den er inddelt. Af samme årsag skal <span class="inl_cmd">fdisk</span> altid køres som <span class="inl_cmd">root</span>. Vi kan heller ikke se med hvilket filsystem drevet er formateret, kun hvilken type det er forberedt til.</p>
 
@@ -2688,21 +2693,7 @@ UUID=1c538622-36c6-4fcb-a127-636a82ad84e3 none            swap    sw            
 
 </pre>
 
-<h2>Opsætning af harddisk</h2>
-
-<p>I dette eksempel har vi en 100GB harddisk der endnu ikke er tilføjet til vores filsystem. Når en harddisk skal sættes op skal den:</p>
-
-<ol class="">
-	<li>Identificeres (Placering)</li>
-	<li>Sættes op (Partitioneres)</li>
-	<li>Formateres (Formateres)</li>
-</ol>
-
-<h3>Identifikation af harddiskens placering</h3>
-
-<p>For at identificere harddisken køres kommandoen <span class="inl_cmd">lsblk</span> (se ovenfor). I dette tilfælde <span class="inl_cmd">sdb</span>.</p>
-
-<h3>Partitionering af harddisken</h3>
+<h2>Partitionering af harddisken</h2>
 
 <p>Harddiske partitioneres af programmet <span class="inl_cmd">fdisk</span>, så længe de er under 2 TB. Er det over 2 TB anvendes programmet gdisk, som ikke bliver gennemgået her. Start partitioneringsprogrammet op med med:</p>
 
@@ -2836,7 +2827,7 @@ Diskidentifikation: 0xa6162a16
 /dev/sdb1            2048   209715199   104856576   83  Linux
 </pre>
 
-<h3>Formater harddisken</h3>
+<h2>Formater harddisken</h2>
 
 <p>Harddisken skal fomateres til <span class="inl_cmd">ext4</span>. Det gøres med kommandoen:</p>
 
@@ -2883,13 +2874,89 @@ sdb    disk          100G  0 disk
 sr0    rom          1024M  0 rom
 </pre>
 
-<h2>Montering af harddiske</h2>
+<h2>Fast montering i filsystemet</h2>
 
-<p>Som vi har gennemgået ovenfor, så er der to mapper i filstrukturen til at montere drev i. Det er henholdsvis <span class="inl_cmd">/mnt</span> og <span class="inl_cmd">/media</span>. Vi vil i denne sammenhæng vælge <span class="inl_cmd">/media</span> da det handler om en harddisk.</p>
+<p>Arbejdsgangen når man monterer en disk er følgende:</p>
+
+<ol class="">
+	<li>Oprette en mappe til at montere drevet i.</li>
+	<li>Find diskens UUID (<span class="bold">U</span>niversally <span class="bold">U</span>nique <span class="bold">ID</span>entifier)</li>
+	<li>Monteres på filsystemet (Montering)</li>
+	<li>Konfigureres (Rettigheder)</li>
+</ol>
+
+<p>Her vil vi montere drevet i mappen <span class="inl_cmd">/backup</span>. Opret mappen:</p>
+
+<code class="cmd">sudo mkdir /backup</code>
+
+<p>Find diskens UUID</p>
+
+<code class="cmd">sudo blkid /dev/sdb1</code>
+
+<pre class="ubuntu_terminal">
+tj@tj-VirtualBox:/media$ sudo blkid /dev/sdb1
+/dev/sdb1: UUID="6731e565-b3d7-4d81-86c7-74b6e3e1d591" TYPE="ext4" 
+</pre>
+
+<p>Det lange UUID nummer (6731e565-b3d7-4d81-86c7-74b6e3e1d591) er et tilfældigt nummer som Ubuntu har skabt og består af en 128bits kode. Det er en sikkerhedsfaktor der gør, at man ikke bare kan skifte en disk ud, uden at Ubuntu opdager det. Du skal selvfølgelig anvende den UUID dit system angiver. Åben filen <span class="inl_cmd">/etc/fstab</span> med nano og indsæt det med rødt (med din UUID):</p>
+
+<code class="cmd">sudo nano /etc/fstab</code>
+
+<pre class="black">
+# /etc/fstab: static file system information.
+#
+# Use 'blkid' to print the universally unique identifier for a
+# device; this may be used with UUID= as a more robust way to name devices
+# that works even if disks are added and removed. See fstab(5).
+#
+# <file system> <mount point>   <type>  <options>       <dump>  <pass>
+# / was on /dev/sda1 during installation
+UUID=c2c76ea3-8bee-4930-be2c-20d11a7358c1 /               ext4    errors=remount-ro 0       1
+# /data was on /dev/sda3 during installation
+UUID=a2d7f466-6131-4048-86b1-b0304e9bd905 /data           ext4    defaults        0       2
+# swap was on /dev/sda2 during installation
+UUID=1c538622-36c6-4fcb-a127-636a82ad84e3 none            swap    sw              0       0
+
+<span class="red">#Tilføjet /dev/sdb1 som /backup
+UUID=6731e565-b3d7-4d81-86c7-74b6e3e1d591 /backup ext4 defaults 0 2</span>
+</pre>
+
+<p>Når computeren starter bliver alle diske der er konfigureret i <span class="inl_cmd">/etc/fstab</span> monteret. For at få adgang til drevet med det samme køres kommandoen:</p>
+
+<code class="cmd">sudo mount -a</code>
+
+<p>Tjek at drevet er monteret med <span class="inl_cmd">lsblk</span>.</p>
+
+<pre class="ubuntu_terminal">
+tj@tj-VirtualBox:~$ lsblk
+NAME   MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
+sda      8:0    0   100G  0 disk 
+├─sda1   8:1    0  46,6G  0 part /
+├─sda2   8:2    0   3,8G  0 part [SWAP]
+└─sda3   8:3    0  28,9G  0 part /data
+sdb      8:16   0   100G  0 disk 
+└─<span class="red">sdb1   8:17   0   100G  0 part /backup</span>
+sr0     11:0    1  1024M  0 rom 
+</pre>
+
+<p>Ændre ejerskabet og rettighederne så kun du har adgang til drevet</p>
+
+<code class="cmd">sudo chown -R tj:tj /media/backup</code>
+
+<code class="more_cmd">sudo chmod -R 700 /media/backup/</code>
+
+<p>Denne metode kan anvendes både til alle former for harddiske og netværksdrev.</p>
+
+
+<p><a href="https://help.ubuntu.com/community/InstallingANewHardDrive" target="_blank">https://help.ubuntu.com/community/InstallingANewHardDrive</a></p>
+
+<h2>Midlertidig montering</h2>
+
+<p>Som vi har gennemgået ovenfor, så er der to mapper i filstrukturen til at montere ikke faste drev i. Det er henholdsvis <span class="inl_cmd">/mnt</span> og <span class="inl_cmd">/media</span>. Vi vil i denne sammenhæng vælge <span class="inl_cmd">/media</span> da det handler om en harddisk.</p>
 
 <p>Vi vil herunder gennemgå en midlertidig montering, som hvis det havde været et eSATA/USB-drev, og en fast montering i filstrukturen.</p>
 
-<h3>Midlertidig montering af harddisken</h3>
+<p>Ofte har man brug for at montere et drev midlertidigt, f.eks. et USB-drev.   </p>
 
 <p>Arbejdsgangen når man monterer en disk er følgende:</p>
 
@@ -2945,88 +3012,9 @@ drwx------   3 tj   tj   4096 mar 16 15:00 <span class="red">backup</span>
 
 <code class="cmd">umount /dev/sdb1</code>
 
-<h3>Fast montering i filsystemet</h3>
+<h2>USB-boot disk</h2>
 
-<p>Arbejdsgangen når man monterer en disk er følgende:</p>
-
-<ol class="">
-	<li>Oprette en mappe til at montere drevet i.</li>
-	<li>Find diskens UUID (<span class="bold">U</span>niversally <span class="bold">U</span>nique <span class="bold">ID</span>entifier)</li>
-	<li>Monteres på filsystemet (Montering)</li>
-	<li>Konfigureres (Rettigheder)</li>
-</ol>
-
-<p>Her vil vi montere drevet i mappen <span class="inl_cmd">/backup</span>. Opret mappen:</p>
-
-<code class="cmd">mkdir /backup</code>
-
-<p>Find diskens UUID</p>
-
-<code class="cmd">sudo blkid /dev/sdb1</code>
-
-<pre class="ubuntu_terminal">
-tj@tj-VirtualBox:/media$ sudo blkid /dev/sdb1
-/dev/sdb1: UUID="6731e565-b3d7-4d81-86c7-74b6e3e1d591" TYPE="ext4" 
-</pre>
-
-<p>Det lange UUID nummer (6731e565-b3d7-4d81-86c7-74b6e3e1d591) er et tilfældigt nummer som Ubuntu har skabt og består af en 128bits kode. Det er en sikkerhedsfaktor der gør, at man ikke bare kan skifte en disk ud, uden at Ubuntu opdager det. Du skal selvfølgelig anvende den UUID dit system angiver. Åben filen <span class="inl_cmd">/etc/fstab</span> med nano og indsæt det med rødt (med din UUID):</p>
-
-<code class="cmd">sudo nano /etc/fstab</code>
-
-<pre class="black">
-# /etc/fstab: static file system information.
-#
-# Use 'blkid' to print the universally unique identifier for a
-# device; this may be used with UUID= as a more robust way to name devices
-# that works even if disks are added and removed. See fstab(5).
-#
-# <file system> <mount point>   <type>  <options>       <dump>  <pass>
-# / was on /dev/sda1 during installation
-UUID=c2c76ea3-8bee-4930-be2c-20d11a7358c1 /               ext4    errors=remount-ro 0       1
-# /data was on /dev/sda3 during installation
-UUID=a2d7f466-6131-4048-86b1-b0304e9bd905 /data           ext4    defaults        0       2
-# swap was on /dev/sda2 during installation
-UUID=1c538622-36c6-4fcb-a127-636a82ad84e3 none            swap    sw              0       0
-
-<span class="red">#Tilføjet /dev/sdb1 som backup drev
-UUID=6731e565-b3d7-4d81-86c7-74b6e3e1d591 /backup ext4 defaults 0 2</span>
-</pre>
-
-<p>Monter alle drev fra <span class="inl_cmd">/etc/fstab</span>:</p>
-
-<code class="cmd">sudo mount -a</code>
-
-<p>Tjek at drevet er monteret med <span class="inl_cmd">lsblk</span>.</p>
-
-<pre class="ubuntu_terminal">
-tj@tj-VirtualBox:~$ lsblk
-NAME   MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
-sda      8:0    0   100G  0 disk 
-├─sda1   8:1    0  46,6G  0 part /
-├─sda2   8:2    0   3,8G  0 part [SWAP]
-└─sda3   8:3    0  28,9G  0 part /data
-sdb      8:16   0   100G  0 disk 
-└─<span class="red">sdb1   8:17   0   100G  0 part /backup</span>
-sr0     11:0    1  1024M  0 rom 
-</pre>
-
-<p>Herefter vil drevet være monteret ved hver opstart.</p>
-
-<p>Ændre ejerskabet og rettighederne så kun du har adgang til drevet</p>
-
-<code class="cmd">sudo chown -R tj:tj /media/backup</code>
-
-<code class="more_cmd">sudo chmod -R 700 /media/backup/</code>
-
-<p>Denne metode kan anvendes både til alle former for harddiske og netværksdrev.</p>
-
-
-<p><a href="https://help.ubuntu.com/community/InstallingANewHardDrive" target="_blank">https://help.ubuntu.com/community/InstallingANewHardDrive</a></p>
-
-
-<h2>Lave USB-boot disk</h2>
-
-<p>Ofte har man brug for at lave en nøjagtig kopi af en partition, f.eks. når man skal brænde en ISO fil over på en USB disk. Dette gøres med programmet <span class="inl_cmd">dd</span>. Der findes også GUI programmer til det, men min erfaring er, at de nogle gange roder med partitionstabellen, så drevet USB disken reelt bliver ubrugelig. <span class="inl_cmd">dd</span> virker altid!</p> 
+<p>Ofte har man brug for at lave en nøjagtig kopi af en partition, f.eks. når man skal brænde en ISO fil over på en USB disk. Dette gøres med programmet <span class="inl_cmd">dd</span>. Der findes også GUI programmer til det, men min erfaring er, at de nogle gange roder med partitionstabellen, så USB disken reelt bliver ubrugelig. <span class="inl_cmd">dd</span> virker altid!</p> 
 
 <code class="cmd">dd if=*input fil* of=*destinations fil* *Optioner*</code>
 <code class="more_cmd">sync</code>
@@ -3050,7 +3038,7 @@ sr0     11:0    1  1024M  0 rom
 	
 		<code class="cmd">dd if=*sti_til_filen* of=*sti_til_USB*</code>
 		
-	<li><span class="red">*VIGTIGT*</span> Kør <span class="inl_cmd">sync</span>, for at sikr dig at alle data er skrevet til USB disken </li>
+	<li>&nbsp;&nbsp;&nbsp;<span class="red">VIGTIGT</span> &nbsp;&nbsp;&nbsp;Kør <span class="inl_cmd">sync</span>, for at sikr dig at alle data er skrevet til USB disken </li>
 </ol>
 
 <p>På systemet vi her går ud fra er der i forvejen to harddiske, hvilket betyder at en USB-disk vil blive registreret som den efterfølgende, altså <span class="inl_cmd">/dev/sdc</span>.</p>
@@ -3465,13 +3453,12 @@ http://manpages.ubuntu.com/manpages/trusty/man1/inxi.1.html</a></p>
 	</tbody>
 </table>
 
-<pre class="black">
+<pre class="ubuntu_terminal">
 tj@tj-VirtualBox:~$ uname -a
 Linux tj-VirtualBox 4.2.0-34-generic #39~14.04.1-Ubuntu SMP Fri Mar 11 11:38:02 UTC 2016 x86_64 x86_64 x86_64 GNU/Linux
 tj@tj-VirtualBox:~$ uname -rsp
 Linux 4.2.0-34-generic x86_64
 </pre>
-
 
 <p>man-page: <span class="inl_cmd">uname</span>
 <a href="http://manpages.ubuntu.com/manpages/trusty/en/man1/uname.1.html" target="_blank">
@@ -3590,7 +3577,6 @@ Swap:         3,8G         0B       3,8G
 	</tbody>
 </table>
 
-<p>Læs Mere: Linux ate my RAM! <a href="http://www.linuxatemyram.com/" target="_blank">http://www.linuxatemyram.com/</a></p>
 
 <p>Derfor kan vi nu beregne mængden af fri RAM, ved at kigge på frie <span class="inl_cmd">-/+ buffers/cache</span></p>
 
@@ -3607,6 +3593,8 @@ Swap:         3,8G         0B       3,8G
 <p>Hvis du gerne vil se udviklingen af dit RAM forbrug kan du sætte <span class="inl_cmd">free</span> til at opdatere sig selv efter nogle sekunder <span class="inl_cmd">-sX</span>. Nedestående opdaterer sig selv efter 2 sek.</p>
 
 <code class="cmd">free -g -s2</code>
+
+<p>Læs Mere: Linux ate my RAM! <a href="http://www.linuxatemyram.com/" target="_blank">http://www.linuxatemyram.com/</a></p>
 
 <p>man-page: <span class="inl_cmd">free</span>
 <a href="http://manpages.ubuntu.com/manpages/trusty/man1/free.1.html" target="_blank">
