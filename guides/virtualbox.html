@@ -48,17 +48,20 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <p>I denne sammenhæng vil vi anvende virtualisering til at teste og konfigurere klientsystemer som Windows 7 og Ubuntu 14.04. Vi kan forbinde disse systemer med den fysiske computers netværksforbindelse, eller lave helt lukkede netværk. På denne måde behøver vi ikke at have fysiske computere, routere, switches og kabler, men vi kan virtualisere det og arbejde med det som om vi sad foran en fysisk computer.</p>
 
-<p>I denne vejledning vil du blive ført igenne at:</p>
+<p>I denne vejledning vil du blive ført igennem at:</p>
 
-<ol>
-	<li>Hente og installere VirtualBox</li>
+<ol class="disc">
+	<li>Installere VirtualBox</li>
 	<li>Oprette en virtuel maskine</li>
+	<li>Konfigurere et NAT-netværk (Valgfrit)</li>
 	<li>Konfigurere en virtuel maskine</li>
 	<li>Få overblik over virtuelle netværk</li>
 	<li>Anvende VirtualBox funktioner i den virtuelle maskine</li>
 </ol>
 
-<p>Konkret vil du blive ført igennem at oprette en virtuel maskine, med en delt mappe og installere Ubuntu 14.04 på den.</p>
+<p>Punkt 3 er valgfrit, da det kun er vigtigt hvis du vil have flere virtuelle maskiner på samme virtuelle netværk. Anvender du en direkte forbindelse (netværksbro), så vil din virtuelle maskine være koblet på det samme net som rigtige PC er på.</p>
+
+<p>Konkret vil du blive ført igennem at oprette en virtuel maskine, installere Ubuntu 14.04 på den.</p>
 
 <h1>Installation af VirtualBox</h1>
 
@@ -189,13 +192,10 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <p>Herunder vil vi oprette en virtuel maskine til Ubuntu 14.04.4 x64, som du kan hente her: <a href="http://releases.ubuntu.com/14.04/ubuntu-14.04.4-desktop-amd64.iso" target="_blank">http://releases.ubuntu.com/14.04/ubuntu-14.04.4-desktop-amd64.iso</a>. Med en god Internetforbindelse skulle den gerne være hentet når du skal anvende den.</p>
 
-<p>Oprettelsen af en ny virtuel maskine foregår i 2 trin. Først oprettes selve maskinen ved hjælp af en guide, og så færddigkonfigureres den ved at klikke på opsætning som giver adgang til den virtuelle maskines mange indstillingsmuligheder.</p>
-
-<p>Først vil den guiden til oprettelse af den virtuelle maskine blive gennemgået og herefter de enkelte menuer </p>
 
 <h2>Guidet mode</h2>
 
-<p>For at oprette en ny virtuel maskine skal den først konfigureres. Det gøres igennem en guide, som startes ved at klikke på "Ny" i øverste venstre hjørne. Når du vælger "Ny" kommer der et vindue frem, hvor du skal vælge "Expert mode".</p>
+<p>For at oprette en ny virtuel maskine skal den først konfigureres. Det gøres igennem en guide, som startes ved at klikke på "Ny" i øverste venstre hjørne. Når du vælger "Ny" kommer der et vindue frem, hvor du skal vælge "Expert mode". På den måde skal man kun igennem 2 vinduer for at have konfigureret sin virtuelle maskine.</p>
 
 <figure id="">
 
@@ -233,8 +233,8 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 		</tr>
 		<tr>
 			<td>Hukommelsesstørrelse</td>
-			<td>2048</td>
-			<td>Mængden af RAM maskinen skal have</td>
+			<td>2048 (4096)</td>
+			<td>Mængden af RAM maskinen skal have. Har din PC 16GB RAM anvendes 4096kb.</td>
 		</tr>
 		<tr>
 			<td>Hard disk</td>
@@ -268,6 +268,112 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 </figure>
 
 <p>Efter du har trykket "Opret" har vi en funktionel virtuel maskine, som nu kan konfigueres specifikt til vores behov.</p>
+
+<h1>Konfiguration af NAT-netværk (valgfri)</h1>
+
+<p>Nedestående er kun nødvendigt hvis du ønsker at lave et lukket natnetværk med flere computere, f.eks. til at afprøve både klient og serverdelen i Ubuntuguiden og ikke ønsker at rekonfigurere dit fysiske netværk. Ønsker du blot at virtualisere en enkelt maskine så gå videre til næste kapitel.</p>
+
+<blockquote class="alert">
+
+	<p>Nedestående er kun nødvendigt hvis du ønsker at lave et lukket natnetværk med flere computere, f.eks. til at afprøve både klient og serverdelen i Ubuntuguiden og ikke ønsker at rekonfigurere dit fysiske netværk. Ønsker du blot at virtualisere en enkelt maskine så gå videre til næste kapitel.</p>
+
+</blockquote>
+
+
+<p>Vælg menuen: Fil -> Indstillinger, eller tast <kbd>Ctrl</kbd>+<kbd>g</kbd> og marker herefter <span class="inl_cmd">Netværk</span></p>
+
+<figure id="">
+
+	<img src="images/VB_Natnetv_01.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Klik på <img src="images/VB_Natnetv_ikon_plus.png" alt="" title="" /> for lave et nyt natnetværk.</p>
+
+<figure id="">
+
+	<img src="images/VB_Natnetv_02.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Marker netværket og klik på <img src="images/VB_Natnetv_ikon_red.png" alt="" title="" /></p>
+
+<figure id="">
+
+	<img src="images/VB_Natnetv_03.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Vi vælger at bibeholde disse netværksindstillinger. Det vil være for omfattende i dette materiale at forklare netværket. Det vigtigste er, at gateway-adressen er <span class="inl_cmd">10.0.2.1</span> (den første ledige adresse), som sørger for at der er forbindelse mellem det virtuelle netværk og værtscomputerens net.</p>
+
+<p>Når du senere skal konfigurere netværket på de computere der skal ligge på nettet gælder det at:</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Gateway</td>
+			<td>10.0.2.1</td>
+		</tr>
+		<tr>
+			<td>IP-adresser</td>
+			<td>10.0.2.5-10.0.2.254</td>
+		</tr>
+		<tr>
+			<td>Netmaske</td>
+			<td>/24 eller 255.255.255.0 (Henholdsvis CIDR metoden og den fulde IP)</td>
+		</tr>
+		<tr>
+			<td>DSN</td>
+			<td>8.8.8.8 eller 8.8.4.4 (Googles DNS servere) <br/>
+				37.235.1.174 eller 37.235.1.177 (Free DNS - ingen logning)</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>De ovenstående informationer skal anvendes hvis du vælger at anvende NAT-netværk, da der er problemer med DNS integrationen i VirtualBox' NAT-netværk. Vi vil af praktiske årsager også inddele IPadresserne, sådan at <span class="inl_cmd">10.0.2.10 - 10.0.2.99</span> anvendes til statiske (faste) IP-adresser (f.eks. servere) og <span class="inl_cmd">10.0.2.100 - 10.0.2.200</span> til DHCP.</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Beskrivelse</th>
+			<th>Start IP</th>
+			<th>Slut IP</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Statiske (faste) adresser </td>
+			<td>10.0.2.5</td>
+			<td>10.0.2.99</td>
+		</tr>
+		<tr>
+			<td>Dynamiske adresser</td>
+			<td>10.2.2.100</td>
+			<td>10.0.2.200</td>
+		</tr>
+	</tbody>
+</table>
+
+
+<p>Hvis du senere ønsker at fjerne et netværk, markerer du NAT-netværket og klikker på <img src="images/VB_Natnetv_ikon_red.png" alt="" title="" /></p>
+
+
+
+<h1>Konfiguration af den virtuelle maskine</h1>
+
+<p></p>
 
 <h2>Generelt</h2>
 
@@ -462,7 +568,60 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <h2>Netværk</h2>
 
-<p>Der kan oprettes forskellige netværksopstillinger i Virtualbox. Her vil vi anvende NAT, da det egner sig til en enkelt og giver mindst udfordringer.</p>
+<p>Her skal du vælge netværkskonfiguration. I tabellen herunder er der en matricie over hvordan de 4 mest almindelige netværk anvendes:</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Netværk</th>
+			<th>Forklaring</th>
+			<th>Adgang til <br/>lokalnet</th>
+			<th>Flere <br/>computeren</th>
+			<th>Internet</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>NAT</td>
+			<td>Beregnet til en enkelt maskine. </td>
+			<td>Nej</td>
+			<td>Nej</td>
+			<td>Ja</td>
+
+		</tr>
+		<tr>
+			<td>NAT-Netværk</td>
+			<td>Beregnet til flere computere</td>
+			<td>Nej</td>
+			<td>Ja</td>
+			<td>Ja</td>
+		</tr>
+		<tr>
+			<td>Netværksbro</td>
+			<td>Den virtuelle maskine optræder som en fysisk maskine for alle computere på dit lokale netværk</td>
+			<td>Ja</td>
+			<td>Ja</td>
+			<td>Ja</td>
+		</tr>
+		<tr>
+			<td>Internt netværk</td>
+			<td>Et virtuelt netværk uden forbindelse til din fysiske maskine</td>
+			<td>Nej</td>
+			<td>Ja</td>
+			<td>Nej</td>
+		</tr>
+		<tr>
+			<td>Værtsbegrænset netværk</td>
+			<td>Et virtuel netværk der med et virtuelt netværkskort på den fysiske maskine. Det virtuelle netværk kan kun nås af din fysiske maskine som VirtualBox kører på</td>
+			<td>Nej</td>
+			<td>Ja</td>
+			<td>Nej</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Til et simpelt setup anvendes enten <span class="inl_cmd">NAT</span> eller <span class="inl_cmd">Netværksbro</span>.</p>
+
 <figure id="">
 
 	<img class="" src="images/VB_indstillinger_netkort_01.png" alt="" title="" />
@@ -471,7 +630,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 </figure>
 
-
+<p>Vil du lave et mere kompliceret setup, hvor du vil eksperimetere med klienter og servere bør du vælge <span class="inl_cmd">NAT-netværk</span>.</p>
 
 <h2>Serielle porte og USB</h2>
 
@@ -762,13 +921,9 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 	</tbody>
 </table>
 
+<h1>Virtuelle netværk</h1>
 
-
-<h1>Bilag</h2>
-
-<h2>Netværk i Virtualbox</h2>
-
-<p></p>
+<h2>Netværks begreber</h2>
 
 <p>Herunder bliver nogle af grunbegreberne om netværk gennemgået:</p>
 
@@ -819,7 +974,56 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 	</tbody>
 </table>
 
-<p>Alle Virtualbox's netværkstyper er vist herunder:</p>
+<p>Matricien herunder er en meget simpel gennemgang af VirtualBox' netværksmuligheder. Efter skemaet bliver de enkelte netværk grundere forklaret og vist ved hjælp af diagrammer.</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Netværk</th>
+			<th>Forklaring</th>
+			<th>Adgang til <br/>lokalnet</th>
+			<th>Flere <br/>computeren</th>
+			<th>Internet</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>NAT</td>
+			<td>Beregnet til en enkelt maskine. </td>
+			<td>Nej</td>
+			<td>Nej</td>
+			<td>Ja</td>
+		</tr>
+		<tr>
+			<td>NAT-Netværk</td>
+			<td>Beregnet til flere computere</td>
+			<td>Nej</td>
+			<td>Ja</td>
+			<td>Ja</td>
+		</tr>
+		<tr>
+			<td>Netværksbro</td>
+			<td>Den virtuelle maskine optræder som en fysisk maskine for alle computere på dit lokale netværk</td>
+			<td>Ja</td>
+			<td>Ja</td>
+			<td>Ja</td>
+		</tr>
+		<tr>
+			<td>Internt netværk</td>
+			<td>Et virtuelt netværk uden forbindelse til din fysiske maskine</td>
+			<td>Nej</td>
+			<td>Ja</td>
+			<td>Nej</td>
+		</tr>
+		<tr>
+			<td>Værtsbegrænset netværk</td>
+			<td>Et virtuel netværk der med et virtuelt netværkskort på den fysiske maskine. Det virtuelle netværk kan kun nås af din fysiske maskine som VirtualBox kører på</td>
+			<td>Nej</td>
+			<td>Ja</td>
+			<td>Nej</td>
+		</tr>
+	</tbody>
+</table>
 
 <figure id="">
 
@@ -852,13 +1056,13 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 </figure>
 
-<p>En udfordring ved at anvende NAT netværk er, at man ofte bliver nød til selv at sætte DNS forbindelsen til de virtuelle klienter også selvom man anvender DHCP. Det er en bug (fejl) i virtualbox.</p>
+<p>Desværre er der en fejl i VirtualBox, så man ikke kan anvende DHCP i NAT-netværket. Det skyldes at computerne på netværket ikke får en DNS-adresse. Det betyder at computerne godt nok er på netværket, men at de ikke kan få kontakt med Internettet. Af den årsag er det bedst at slå DHCP helt fra og selv sætte alle indsstillingerne.</p>
 
 <h2>Netværksbro</h2>
 
 <p>Netværksbroen sætter den virtuelle maskine direkte på den virtuelle værts fysiske netværk. Den vil altså blive opfattet som en fysisk maskine på LAN af netværkets andre maskiner. Dette kan f.eks. anvendes hvis man ønsker at køre en selvstændig webserver.</p>
 
-<p>For at konfigurere en netværksbro skal man vælge hvilket fysisk netværkskort man ønsker maskinen skal køre på. Generelt bør man undgå at anvende WIFI til netværksbroer, da de kan være meget ustabile til dette brug. Det skyldes bl.a. at værtscomputeren nogle gange slukker for WIFI forbindelsen for at spare strøm.</p>
+<p>For at konfigurere en netværksbro skal man vælge hvilket fysisk netværkskort man ønsker maskinen skal køre på. På Linux hedder netværkskortet <span class="inl_cmd">ethX</span>. <span class="inl_cmd">eth</span> er en forkortelse for ethernet og X er nummeret på netværkskortet. Første netværtkskort er nummer <span class="inl_cmd">0</span>, næste er <span class="inl_cmd">1</span> osv.. Generelt bør man undgå at anvende WIFI (<span class="inl_cmd">wlanX</span>) til netværksbroer, da de kan være ustabile. </p>
 
 <figure id="">
 
