@@ -271,8 +271,6 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <h1>Konfiguration af NAT-netværk (valgfri)</h1>
 
-<p>Nedestående er kun nødvendigt hvis du ønsker at lave et lukket natnetværk med flere computere, f.eks. til at afprøve både klient og serverdelen i Ubuntuguiden og ikke ønsker at rekonfigurere dit fysiske netværk. Ønsker du blot at virtualisere en enkelt maskine så gå videre til næste kapitel.</p>
-
 <blockquote class="alert">
 
 	<p>Nedestående er kun nødvendigt hvis du ønsker at lave et lukket natnetværk med flere computere, f.eks. til at afprøve både klient og serverdelen i Ubuntuguiden og ikke ønsker at rekonfigurere dit fysiske netværk. Ønsker du blot at virtualisere en enkelt maskine så gå videre til næste kapitel.</p>
@@ -310,7 +308,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 </figure>
 
-<p>Vi vælger at bibeholde disse netværksindstillinger. Det vil være for omfattende i dette materiale at forklare netværket. Det vigtigste er, at gateway-adressen er <span class="inl_cmd">10.0.2.1</span> (den første ledige adresse), som sørger for at der er forbindelse mellem det virtuelle netværk og værtscomputerens net.</p>
+<p>Det eneste du skal lave om på er, at fjerne fluebenet ved <span class="inl_cmd">Understøtter DHCP</span>. Det vil være for omfattende i dette materiale at forklare netværket. Det vigtigste er, at gateway-adressen er <span class="inl_cmd">10.0.2.1</span> (den første ledige adresse), som sørger for at der er forbindelse mellem det virtuelle netværk og værtscomputerens net.</p>
 
 <p>Når du senere skal konfigurere netværket på de computere der skal ligge på nettet gælder det at:</p>
 
