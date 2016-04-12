@@ -79,9 +79,9 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 	
 	<code class="cmd">sudo apt-get update &amp;&amp; sudo apt-get dist-upgrade -y</code>
 
-	<p>Tilføj Virtualbox' repository til <span class="inl_cmd">/etc/apt/sources.list</span> (en linie)</p>
+	<p>Tilføj Virtualbox' repository til afslutningen af <span class="inl_cmd">/etc/apt/sources.list</span> </p>
 	
-	<code class="cmd">echo "deb http://download.virtualbox.org/virtualbox/debian $(lsb_release -cs) contrib" >> /etc/apt/sources.list</code>
+	<code class="cmd">sudo sh -c 'echo "deb http://download.virtualbox.org/virtualbox/debian $(lsb_release -cs) contrib" >> /etc/apt/sources.list.d/virtualbox.list'</code>
 	
 	<p>Hent og tilføj sikkerhedsnøglen</p>
 	

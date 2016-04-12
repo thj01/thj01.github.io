@@ -1272,6 +1272,30 @@ root@thoj:~# ls / | grep lib
 	</tbody>
 </table>
 
+<h2><span class="inl_cmd">tee</span> - vis og gem output</h2>
+
+<p>Kommandoen virker lidt som <span class="inl_cmd">>></span>, men arbejder med output af en forudgående kommandoe f.eks:</p>
+
+<code class="cmd">date | tee ~/klokken</code>
+
+<p>Kommandoen vil skrive tidsangivelsen ind i filen <span class="inl_cmd">klokken</span>. Herunder er mit output fra filen ( <span class="inl_cmd">cat ~/klokken</span>):</p>
+
+<pre class="black">
+tir apr 12 08:35:42 CEST 2016
+</pre>
+
+<p>Hvis du kører kommandoen flere gange vil du opdage, at den erstatter filens indhold, så der hele tiden kun er en en linie i filen. Hvis du gerne vil have det nye output lagt ind neders i filen anvender du optionen <span class="inl_cmd">-a</span></p>
+
+<code class="cmd">date | tee -a ~/klokken</code>
+
+<p>Herunder er filens indhold efter 3 kørsler:</p>
+
+<pre class="black">
+tir apr 12 08:36:33 CEST 2016
+tir apr 12 08:39:19 CEST 2016
+tir apr 12 08:39:21 CEST 2016
+</pre>
+
 <h2><span class="inl_cmd">sed</span> - Erstat indhold i filer</h2>
 
 <p><span class="inl_cmd">sed</span> anvendes til at filtrere og transformere tekst i filer. Her vil vi kun se hvordan vi kan erstatte tekst ved hjælp af <span class="inl_cmd">sed</span>.</p>
