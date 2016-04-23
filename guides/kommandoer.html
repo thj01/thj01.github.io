@@ -3148,6 +3148,41 @@ lo        Link encap:Local Loopback
 
 <p>Her kan vi se der er to netværkskort: <span class="inl_cmd">eth0</span> og <span class="inl_cmd">io</span>. Hvis du kører Ubuntu på en bærbar med WiFi hedder den første <span class="inl_cmd">wlan0</span>. Den linie du især skal lægge mærke til er den jeg har markeret med rødt. Den linie fortæller alt hvad din computer har brug for, for at kunne identificeres korrekt på nettet.</p>
 
+<h2>Konfigurer netværkskortet</h2>
+
+<p>Ved hjælp af <span class="inl_cmd">ifconfig</span> kan man også konfigurere netværkskortet f.eks:</p>
+
+<code class="cmd">sudo ifconfig eth0 10.0.2.30/24</code>
+
+<p>Med denne kommando angives <span class="inl_cmd"> 10.0.2.30/24</span> som netværkskortets nye IP-adresse. Reelt fylder Linux resten af informationerne ud med standard mulighederne. Således vil følgende give følgende opstilling:</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>IP</td>
+			<td>10.0.2.30</td>
+		</tr>
+		<tr>
+			<td>Netmaske</td>
+			<td>255.255.255.0 (CIDR 24)</td>
+		</tr>
+		<tr>
+			<td>Broadcast</td>
+			<td>10.0.2.255</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Man kan også udspecificere kommandoen med følgende:</p>
+
+<code class="cmd">ifconfig eth0 10.0.2.30 netmask 255.255.255.0 broadcast 10.0.2.255</code>
+
 <h2><span class="inl_cmd">ping</span></h2>
 
 <p><span class="inl_cmd">ping</span> bruges til at undersøge om der er forbindelse mellem din og en anden computer, og hvor lang svartiden er. Kommandoen kører lige til der trykkes <kbd>Ctrl</kbd>+<kbd>c</kbd>.</p>
@@ -3363,6 +3398,61 @@ tj@tj-VirtualBox:~$ nmap 10.0.2.0/24 | grep "Nmap scan report"
 <p>man-page: <span class="inl_cmd">nmap</span>
 <a href="http://manpages.ubuntu.com/manpages/trusty/en/man1/nmap.1.html" target="_blank">
 http://manpages.ubuntu.com/manpages/trusty/en/man1/nmap.1.html</a></p>
+
+<h1>Iproute 2 suite</h1>
+
+<p>Under udarbejdelse</p>
+
+<table class="cmd_table">
+	<thead>
+		<tr>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>ip addr</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>ip alias</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>ip link</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>ip route</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>ip neigh</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>ip tunnel</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>ip maddr</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>ss</td>
+			<td></td>
+		</tr>
+	</tbody>
+</table>
+
+<h2>ip addr</h2>
+
+<code class="cmd">ip addr show eth0</code>
+
+
+
+
 
 <h1>Computerens hardware</h1>
 
