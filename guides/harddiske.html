@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+
+<head>
+	
+	<meta charset="UTF-8" lang="da"/>
+
+	<title>Harddiske, USB- og netværksdrev - Thomas Jensen</title>
+
+	<script src="../js/toc2.js" type="text/javascript"></script>
+	<script src="https://code.jquery.com/jquery-2.2.2.js"></script>
+
+	<link rel="stylesheet" href="../css/style.css" />
+	<link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Ubuntu+Mono|Ubuntu|Ubuntu+Condensed' rel='stylesheet' type='text/css'>
+	
+
+</head>
+
+
+<!-- 
+
+code highlighter : 
+
+code converter : http://www.freebits.co.uk/convert-html-code-to-text.html 
+
+
+
+
+-->
+
+
+
+<html>
+
+<body onload="generateTOC(document.getElementById('toc'));">
+
+<footer id="license"></footer>
+
+	<script> $( "#license" ).load( "license.html" ); </script>
+
+	<div id="toc">
+	<p>Indholdsfortegnelse</p>
+	
+	</div>
+	
+	<div class="title">Harddiske på Linux</div>
+
+
+
+<h1>Lagerenheder på Linux systemer</h1>
+
+<p>I Linux er lagerenheder integreret i filsystemet på to forskellige niveauer: den fysiske disk/partition og monteringspunktet. Skemaet herunder beskriver hvordan de fysiske enheder er præsenteret i filsystemet.</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td colspan="2">Harddiske og USB-diske</td>
+		</tr>
+		<tr>
+			<td>1. harddisk</td>
+			<td><span class="inl_cmd">/dev/sda</span></td>
+		</tr>
+		<tr>
+			<td>2. harddisk</td>
+			<td><span class="inl_cmd">/dev/sdb</span></td>
+		</tr>		
+		<tr>
+			<td>3. harddisk</td>
+			<td><span class="inl_cmd">/dev/sdc</span></td>
+		</tr>
+		<tr>
+			<td colspan="2">CD/DVD</td>
+		</tr>
+		<tr>
+			<td>1. CD/DVD</td>
+			<td><span class="inl_cmd">/dev/sr0</span></td>
+		</tr>			
+		<tr>
+			<td>2. CD/DVD</td>
+			<td><span class="inl_cmd">/dev/sr1</span></td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Læg mærke til at SATA og USB diske har samme betegnelse. Det skyldes at begge er indeholder partitionstabeller og dermed kan indeholde en eller flere partitioner. Modsat har CD/DVD'er ikke partitionstabeller og derved bliver monteret per enhed.</p>
+
+<p>Hvis en enhed indeholder flere partitioner angives den enkelte partition ud fra dets oprettelse. De primære med tallene 1-4 og de logiske med 5 og frem. Herunder er angivet et eksempel hvor der er installeret en harddisk og isat en USB disk:</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Fysiske disk - partition</th>
+			<th>Diskens placering i filsystemet</th>
+			<th>Navngivning i Windows 7 &#8594; </th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1. disk - 1. partition (primær)</td>
+			<td><span class="inl_cmd">/dev/sda1</span></td>
+			<td>Ikke synlig - boot partition</td>
+		</tr>
+		<tr>
+			<td>1. disk - 2. partition (primær)</td>
+			<td><span class="inl_cmd">/dev/sda2</span></td>
+			<td>C:</td>
+		</tr>
+		<tr>
+			<td>1. disk - 3. partition (logisk)</td>
+			<td><span class="inl_cmd">/dev/sda5</span></td>
+			<td>D:</td>
+		</tr>
+		<tr>
+			<td>1. disk - 4. partition (logisk)</td>
+			<td><span class="inl_cmd">/dev/sda6</span></td>
+			<td>E:</td>
+		</tr>
+		<tr>
+			<td>2. disk - 1. partition (primær)</td>
+			<td><span class="inl_cmd">/dev/sdb1</span></td>
+			<td>F:</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Navngivningen af drevene på et Windows7+ system kan være anderledes end det er angivet ovenfor. Navngivningen af C drevet vil altid være systempartitionen, men denne kan f.eks. være den 3. partition på 1. disk. Derfor bør man altid tjekke harddiskkonfigurationen med <span class="inl_cmd">lsblk</span> eller <span class="inl_cmd">fdisk -l</span>.</p>
+
+<p>Det er disse enheder der "monteres" i filsystemet. Der skal være en <span class="inl_cmd">/</span>, men ellers kan man navngive ens monteringspunkter som man vil, f.eks: <span class="inl_cmd">/minedata</span>, <span class="inl_cmd">Backup</span>. Man kan med fordel montere en fysisk partition som f.eks. <span class="inl_cmd">/home</span>. På den måde kan man installere et nyt styresystem, og montere brugerens data og indstillinger direkte på det nye system. I ovenstående tilfælde kunne man f.eks. have <span class="inl_cmd">/dev/sda1</span> monteret som <span class="inl_cmd">/</span>, </p>
+
+<h1>Montering af filsystemer</h1>
+
+<p>Linux er et netværksoperativsystem og derfor er Linux ligeglad med om det er et fysisk drev eller et netværksressource der skal monteres. Drev kan monteres ved opstart gennem filen <span class="inl_cmd">/etc/fstab</span>, men kan også anvendes til løbende montere drev efter efter behov og afmontere dem med <span class="inl_cmd">umount</span>.</p>
+
+<code class="cmd">mount -t *filsystem* *enhed* *mappe* -o *optioner*</code>
+
+<table class="cmd_table">
+	<thead>
+		<tr>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>mount</td>
+			<td>Kommandoen der monterer enhederne</td>
+		</tr>
+		<tr>
+			<td>-t [Filsystem]</td>
+			<td>Angiver hvilket filsystem der anvendes på enheden</td>
+		</tr>
+		<tr>
+			<td>enhed</td>
+			<td>Enhedens placering i <span class="inl_cmd">/dev</span></td>
+		</tr>
+		<tr>
+			<td>mappe</td>
+			<td>Der hvor drevet skal monteres i filstrukturen</td>
+		</tr>
+		<tr>
+			<td>optioner</td>
+			<td>Videre konfiguration af monteringen.</td>
+		</tr>
+	</tbody>
+</table>
+
+
+<h2>Optioner</h2>
+
+<p>Optionerne er dem som sætter egenskaberne for delingen. De startes med et <span class="inl_cmd">-o</span> fulgt af optionerne adskilt af kommaer (,). Herunder er et eksempel på et netværks drev der bliver monteret, hvor <span class="inl_cmd">/mnt/backup</span> bliver monteret som "read-only" og brugeren <span class="inl_cmd">thoj</span> til at verificere. Som det ses herunder kræver Ubuntu at få brugerens password.</p>
+
+<pre class="ubuntu_terminal">
+root@thoj /root  % mount //10.0.2.10/alle /mnt/backup -o ro, user=thoj, uid=1003
+Password for thoj@//10.0.2.10/alle:
+</pre>
+
+<p>Af skriverettigheder findes der:</p>
+
+<h3><span class="inl_cmd">ro</span> og <span class="inl_cmd">rw</span></h3>
+
+<p>Sætter skriverettighederne i drevet. Det kan være en fordel at anvende <span class="inl_cmd">ro</span> i tilfælde hvor man det er unødvendigt at skrive til et drev, f.eks. hvis NTFS filsystemer er "brudt sammen" og man har brug for at hente data ud derfra. Ofte vil man kunne hente data ud fra en NTFS partioneret harddisk ved hjælp af <span class="inl_cmd">ro</span> også i situationer hvor windows nægter at starte op.</p>
+
+<h3><span class="inl_cmd">user=*user*</span> og <span class="inl_cmd">pass=*passwd*</span> og <span class="inl_cmd">credentials=*file*</span></h3>
+
+<p>Sætter bruger credentials til at få adgang til ressourcen. Af sikkerhedshensyn bør man afholde sig fra anvende <span class="inl_cmd">password=</span> i kommandolinien og scripts. Der bør man anvende <span class="inl_cmd">credentials=</span>, og så danne en fil hvor data angives</p>
+
+<pre class="black">
+username=value
+password=value
+domain=value
+</pre>
+
+<p>Alle tre kan også anvendes i deres korte for: <span class="inl_cmd">user=</span>, <span class="inl_cmd">pass=</span> og <span class="inl_cmd">cred=</span>.</p>
+
+<h3><span class="inl_cmd">uid=*user*</span> og <span class="inl_cmd">gid=*group*</span></h3>
+
+<p>Sætter henholdsvis bruger og gruppe som ejer af filerne i den monterede mappe.</p>
+
+<h3><span class="inl_cmd">umask</span></h3>
+
+<p></p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>username=XX</td>
+			<td>Angiver med hvilken brugers rettigheder men mounter</td>
+		</tr>
+		<tr>
+			<td>password=YY</td>
+			<td>Angiver med hvilken brugers rettigheder men mounter</td>
+		</tr>
+		<tr>
+			<td>uid</td>
+			<td><span class="bold">U</span>ser <span class="bold">ID</span>entity</td>
+		</tr>
+		<tr>
+			<td>gid</td>
+			<td><span class="bold">G</span>roup <span class="bold">ID</span>entity</td>
+		</tr>
+		<tr>
+			<td>umask</td>
+			<td>sætter de rettigheder der ikke er givet.</td>
+		</tr>
+	</tbody>
+</table>
+
+<p><span class="inl_cmd">umask</span> er lidt </p>
+
+<p><a href="http://www.cyberciti.biz/tips/understanding-linux-unix-umask-value-usage.html" target="_blank">http://www.cyberciti.biz/tips/understanding-linux-unix-umask-value-usage.html</a></p>
+
+
+<h2>Montering af lokale partitioner</h2>
+
+<h3>Montering af ext2/3/4 partitioner</h3>
+
+<p><span class="inl_cmd">ext4</span> er standard filsystemet i Ubuntu og er det simpleste at montere. Det er ikke nødvnendigt at angive filsystemet. Nedestående kommando monterer <span class="inl_cmd">/dev/sdb1</span> på <span class="inl_cmd">/mnt/datadrev</span>.</p>
+
+<code class="cmd">mount /dev/sdb1 /mnt/datadrev</code>
+
+<h3>Montering af NTFS partitioner lokalt</h3>
+
+<p>For at montere NTFS partitioner anvendes <span class="inl_cmd">ntfs-3g</span> og monteringsmappen er <span class="inl_cmd">/mnt/windows</span>, da vi kun er interesseret i at kigge på windows' systemdrev. Normalt anvendes <span class="inl_cmd">ntfs-3g</span> fremfor <span class="inl_cmd">-t ntfs</span>. Det skyldes at <span class="inl_cmd">ntfs-3g</span> er bedre til at håndtere rettighederne i NTFS.</p>
+
+<code class="cmd">ntfs-3g /dev/sda2 /mnt/windows</code>
+
+<h3>Montering af ISO filer</h3>
+
+<p>ISO filer er brændt i iso9660 formatet. Nedestående kommando monterer Ubuntudesktop ISO filen i <span class="inl_cmd">/media/ubuntudesktop</span>.</p>
+
+<code class="cmd">mount -o loop -t iso9660 /srv/isofiler/ubuntu-14.04.3-desktop-amd64.iso /media/ubuntudesktop</code>
+
+<p>Læg mærke til <span class="inl_cmd">-o loop</span>. Dette er et "pseudo" enhed - egentlig blot en fil - der får det som er monteret til at opføre sig som en harddisk.</p>
+
+<h3>Montering af vfat partitioner lokalt</h3>
+
+<p>For at montere vfat anvendes <span class="inl_cmd">-t vfat</span>. Havde vi f.eks. haft et USB drev monteret på systemet ville Linux under opstarten have monteret det som en fysisk disk efter SATA drevene. I vores eksempel som <span class="inl_cmd">/dev/sdb1</span>. Læg mærke til at Linux ikke skelner mellem USB og SATA drev, men "kun" ser på at det er enheder der har et partitionstabel.</p>
+
+<code class="cmd">mount -t vfat /dev/sdb1 /mnt/USB01</code>
+
+<h2>Montering af netværksdrev</h2>
+
+<p><span class="inl_cmd">mount</span> anvendes også til montering af netværksdrev. En væsentlig forskel er, at man ofte har brug for at kunne logge på med sit brugernavn og adgangskode.</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Server IP</td>
+			<td>10.0.2.10/24</td>
+		</tr>
+		<tr>
+			<td>Deling</td>
+			<td>/srv/backup</td>
+		</tr>
+		<tr>
+			<td>Bruger</td>
+			<td>thoj</td>
+		</tr>
+	</tbody>
+</table>
+
+<h3>Montering af NFS shares (Linux)</h3>
+
+<code class="cmd">mount 10.0.2.10:/srv/backup /mnt/backup -o user=thoj</code>
+
+<p>Før du får adgang til NFS-delingen bliver du bedt om at give dit password.</p>
+
+<h3>Montering af SMB shares (Windows shares)</h3>
+
+<p>For at montere SMB/NTFS shares anvendes <span class="inl_cmd">cifs</span> -  <span class="bold">C</span>ommon <span class="bold">I</span>nternet <span class="bold">F</span>ile <span class="bold">S</span>ystem</p>
+
+<p>Herunder er et eksempel på hvordan man montere et SMB share på <span class="inl_cmd">10.0.2.10</span> som hedder <span class="inl_cmd">backup</span>. Det bliver monteret i den lokale mappe <span class="inl_cmd">/mnt/backup</span>, som er oprettet automatisk af SystemrescueCD.</p>
+
+<code class="cmd">mount -t cifs //10.0.2.10/backup /mnt/network</code>
+
+<p>Når man anvender et NTFS share spørges der til ens rettigheder. Derfor vil denne kommando ofte medføre at der spørges til roots password. Er drevet delt så alle har adgang trykker du blot [Enter].</p>
+
+<pre class="ubuntu_terminal">
+<span class="green">root@sysresccd</span> <span class="blue1">/root</span>  % mount -t cifs //10.0.2.10/alle /mnt/backup_alle  
+Password for root@//10.0.2.10/alle:
+</pre>
+
+<p>Hvis drevet er delt med rettigheder skal du medsende dine credentials f.eks:</p>
+
+<code class="cmd">mount -t cifs //10.0.2.10/admin /mnt/backup -o user=thoj,pass=123qwe</code>
+
+<p>Hvis du ikke ønsker at medsende dit password i klartekst, kan du vælge at udelade kodeordet. Mount vil spørge om kodeordet.</p>
+
+<code class="cmd">mount -t cifs //10.0.2.10/admin /mnt/backup -o user=thoj</code>
+
+<pre class="ubuntu_terminal">
+<span class="green">root@sysresccd</span> <span class="blue1">/root</span>  % mount -t cifs //10.0.2.10/alle /mnt/backup_alle  -o user=thoj
+Password for thoj@//10.0.2.10/alle:
+</pre>
+
+<p>Denne metode er på ingen måde sikker, da den ikke er krypteret, og at man sender sine kodeord i klartekst. Men for at forsimple ting kan man blot sørge for at oprette en bruger med begrænsede rettigheder til at udføre disse ting med.</p>
+
+
+
+
+
+
+<table class="">
+	<thead>
+		<tr>
+			<th>filsystem</th>
+			<th>kommando</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>FAT32</td>
+			<td><span class="inl_cmd">-t vfat</span></td>
+		</tr>
+		<tr>
+			<td>NTFS</td>
+			<td><span class="inl_cmd">-t ntfs-3g</span></td>
+		</tr>
+		<tr>
+			<td>ext2/3/4</td>
+			<td> intet - filsystemet konfigureres automatisk</td>
+		</tr>
+	</tbody>
+</table>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Netværks share</th>
+			<th>Kommando</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>NFTS share</td>
+			<td>-t cifs</td>
+		</tr>
+		<tr>
+			<td>nfs</td>
+			<td>-t nfs</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>nr. 2 harddisk monteres i computeren, der har en NTFS partition og monteres som <span class="inl_cmd">/media/backup</span></p>
+
+<code class="cmd">mount -t ntfs-3g /dev/sdb1 /media/backup</code>
+
+<p>Hvis harddisken er monteret med ext2/3/4 behøver du ikke angive <span class="inl_cmd">-t *filsystem</span>. Hvis den er FAT32 formateret anvendes <span class="inl_cmd">-t vfat</span></p>
+
+<p>Montering af Windows share "backup" på server 192.168.2.15 som <span class="inl_cmd">/media/windowsbackup</span></p>
+
+<code class="cmd">mount -t cifs //192.168.2.15/backup /mnt/windows -o user=thoj,pass=123qwe</code>
+
+<p>Læg mærke til at password og navn skal angives i klartekst, hvilket er uhensigtsmæssigt. Det kan gøres ved at anvende en "credentialsfile": <a href="https://help.ubuntu.com/community/MountWindowsSharesPermanently#Credentials_File" target="_blank">https://help.ubuntu.com/community/MountWindowsSharesPermanently#Credentials_File</a>.</p>
+
+
+
+<h2>Afmontering af filsystemer</h2>
+
+<p>Filsystemer afmonteres med <span class="inl_cmd">umount</span>. Eks:</p>
+
+<code class="cmd">umount /dev/sdb1</code>
+
+<h1>Konfigurering af harddiske på Linux</h1>
+
+<p>For at montere filsystemer permanent på et linux system skal man anvende <span class="inl_cmd">/etc/fstab</span>. Herunder er vist et eksempel som er installeret med følgende konfiguration: </p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th colspan="2">Partitioner</th>
+			<th>Størelse</th>
+			<th>Type</th>
+			<th>Opstartsflag</th>
+			<th>Beskrivelse</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td colspan="2">/boot</td>
+			<td>300 Mb</td>
+			<td>Primær</td>
+			<td>Ja</td>
+			<td>Bootfiler</td>
+		</tr>
+		<tr>
+			<td rowspan="6">LVM</td>
+			<td>/</td>
+			<td>10 Gb</td>
+			<td>-</td>
+			<td>-</td>
+			<td>OS og konfigurationsfiler</td>
+		</tr>
+		<tr>
+			<td>swap</td>
+			<td>4 Gb</td>
+			<td>-</td>
+			<td>-</td>
+			<td>Virtuel hukommelse</td>
+		</tr>
+		<tr>
+			<td>/home</td>
+			<td>20 Gb</td>
+			<td>-</td>
+			<td>-</td>
+			<td>Hjemmemapper</td>
+		</tr>
+		<tr>
+			<td>/var/www</td>
+			<td>4 Gb</td>
+			<td>-</td>
+			<td>-</td>
+			<td>Webserver</td>
+		</tr>
+		<tr>
+			<td>/srv</td>
+			<td>50 Gb</td>
+			<td>-</td>
+			<td>-</td>
+			<td>Serverdata</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>Resten</td>
+			<td>-</td>
+			<td>-</td>
+			<td>Reserveret til senere brug</td>
+		</tr>		
+	</tbody>
+</table>
+
+<pre class="black">
+# /etc/fstab: static file system information.
+#
+# Use 'blkid' to print the universally unique identifier for a
+# device; this may be used with UUID= as a more robust way to name devices
+# that works even if disks are added and removed. See fstab(5).
+#
+# <file system> <mount point>   <type>  <options>       <dump>  <pass>
+/dev/mapper/vg01-system /               ext4    errors=remount-ro 0       1
+# /boot was on /dev/sda1 during installation
+UUID=87cd86f4-194e-47c4-b818-4933534cac7f /boot           ext2    defaults        0       2
+/dev/mapper/vg01-home /home           ext4    defaults        0       2
+/dev/mapper/vg01-data /srv            ext4    defaults        0       2
+/dev/mapper/vg01-web /var/www        ext4    defaults        0       2
+/dev/mapper/vg01-swap none            swap    sw              0       0
+</pre>
+
+<p>Hver linie i filen angiver ved hjælp af forskellige parametre hvordan Linux skal anvende dem. Der er 5 parametre der skal sættes.</p>
+
+
+
+<span class="afsnit"><span class="inl_cmd">&lt; file system &gt;</span> - Partitionens adresse</span>
+
+<p>Her beskrives hvor filsystemet er monteret. Som det kan ses er det vist ved hjælp af enten en sti eller et UUID (<span class="bold">U</span>niversally <span class="bold">U</span>nique <span class="bold">ID</span>entifier). Det første filsystem er angivet ved hjælp af en sti: <span class="inl_cmd">/dev/mapper/vg01-system</span>. Dette er en sti der læses af LVM (<span class="bold">L</span>ogical <span class="bold">V</span>olume <span class="bold">M</span>anagement), som vil blive gennemgået længere nede. UUID'en angiver en fysisk partition på disken, i dette tilfælde <span class="inl_cmd">/dev/sda1</span>. Ved at anvende UUID'er som monteringspunkt bliver den fysiske harddisk unikt identificeret af systemet, og det vil blive opdaget hvis nogen har skiftet disken ud.</p>
+
+<p>UUID'en er "praktisk" unikt, forstået på den måde at UUID'en bliver dannet i det system det anvendes og at sandsynligheden for at en anden enhed i systemet får samme UUID er ekstrem lille. Du kan finde harddiskenes UUID på dit system ved at anvende kommandoen <span class="inl_cmd">sudo blkid</span>. På ovenstående system giver det:</p>
+
+<pre class="ubuntu_terminal">
+thoj@tjmainsrv:~$ sudo blkid
+[sudo] password for thoj: 
+/dev/sda1: UUID="87cd86f4-194e-47c4-b818-4933534cac7f" TYPE="ext2" 
+/dev/sda5: UUID="dX0KXS-UURF-U4b5-GuX7-Gs1X-6UTg-Fdc0JL" TYPE="LVM2_member" 
+/dev/mapper/vg01-system: UUID="040d0d5d-fa6d-4020-a295-a76581c365ae" TYPE="ext4" 
+/dev/mapper/vg01-home: UUID="6bf7a995-f118-4ddd-8f19-090355f98b61" TYPE="ext4" 
+/dev/mapper/vg01-web: UUID="c73aa339-a8f1-4f2f-84eb-2163e976e856" TYPE="ext4" 
+/dev/mapper/vg01-data: UUID="bc496005-e62f-49c3-967d-7dc0629c78b1" TYPE="ext4" 
+/dev/mapper/vg01-swap: UUID="9753858d-9567-4ff6-9afa-0dfdf49b8248" TYPE="swap" 
+thoj@tjmainsrv:~$ 
+</pre>
+
+<span class="afsnit"><span class="inl_cmd">&lt; mount point &gt;</span> - Partitionens monteringspunkt</span>
+
+<p>Fortæller hvor på filsystemet partitionen er monteret</p>
+
+<span class="afsnit"><span class="inl_cmd">&lt; type &gt;</span> - Partitionens formatering</span>
+
+<p>Fortæller hvilket filsystem partionen er formateret i.</p>
+
+<span class="afsnit"><span class="inl_cmd">&lt; options &gt;</span> - Partitionens indstillinger</span>
+
+<p>Her er det muligt at angive en række indstillinger for hvordan filsystemet skal opføre sig. På den første partition <span class="inl_cmd">/dev/mapper/vg01-system</span>, hvor roden ligger er det sat til <span class="inl_cmd">errors=remount-ro</span>. Det betyder at hvis computeren opdager en fejl (error) på dette filsystem under boot processen, så vil det blive monteret som skrivebeskyttet. På denne måde sikrer man sig at der ikke bliver skrevet på disken, men at man kan sikre sig de data der er på partitionen. </p>
+
+<span class="afsnit"><span class="inl_cmd">&lt; dump &gt;</span> - Backup</span>
+
+<p><span class="inl_cmd">dump</span> er et program, der undersøger filer på ext filsystemet og bestemmer om der er nogle der skal tages backup af. Bliver i realiteten ikke brugt, hvilket er årsagen til at det har værdien <span class="inl_cmd">0</span>.</p>
+
+<span class="afsnit"><span class="inl_cmd">&lt; pass &gt;</span> - Kontrol af partitionen</span>
+
+<p>Fortæller i hvilken prioritering kontrol af filsystemet har under opstart.</p>
+
+
+
+<p>I dette setup er der i alt 6 partitioner, hvoraf de 5 er styres af LVM (<span class="bold">L</span>ogical <span class="bold">V</span>olume <span class="bold">M</span>anagement). I Ubuntu får alle fysiske harddiske en UUID (<span class="bold">U</span>niversally <span class="bold">U</span>nique <span class="bold">ID</span>entifiers).</p>
+
+<h2>Tilføje ny harddisk </h2>
+
+<p>Denne guide er rettet mod LVM, men det kan være godt at vide hvordan man tilføjer nye harddiske til Linux. Anvender man LVM er det kun trin 1 der skal udføres, da resten skal gøres i LVM. Dette vil blive gennemgået senere.</p>
+
+<ol class="">
+	<li>Konfiguration af harddisken med <span class="inl_cmd">fdisk</span></li>
+	<li>Formatering af disken</li>
+	<li>Konfiguration af <span class="inl_cmd">/etc/fstab</span></li>
+</ol>
+
+<h3>Konfiguration af harddisken med <span class="inl_cmd">fdisk</span></h3>
+
+<p>Først skabes et overblik med <span class="inl_cmd">lsblk</span>. Herunder er outputtet fra ovenstående konfiguration isat en ny 100GB SATA disk</p>
+
+<pre class="ubuntu_terminal">
+root@tjmainsrv:~$ lsblk
+NAME                   MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
+sda                      8:0    0   100G  0 disk 
+├─sda1                   8:1    0   476M  0 part /boot
+├─sda2                   8:2    0     1K  0 part 
+└─sda5                   8:5    0  99,5G  0 part 
+  ├─vg01-system (dm-0) 252:0    0   9,3G  0 lvm  /
+  ├─vg01-home (dm-1)   252:1    0  18,6G  0 lvm  /home
+  ├─vg01-web (dm-2)    252:2    0   3,7G  0 lvm  /var/www
+  ├─vg01-data (dm-3)   252:3    0  55,9G  0 lvm  /srv
+  └─vg01-swap (dm-4)   252:4    0   2,1G  0 lvm  [SWAP]
+sdb                      8:16   0   100G  0 disk 
+</pre>
+
+<p>Kør fdisk</p>
+
+<code class="cmd">fdisk /dev/sdb</code>
+
+<pre class="ubuntu_terminal">
+root@tjmainsrv:/home/thoj# fdisk /dev/sdb
+Enheden indeholder hverken en gyldig DOS-partitionstabel eller en Sun-, SGI- 
+eller OSF-disketiket.
+Opretter en ny DOS-disketiket med diskidentifikation 0x762d3498.
+Ændringer vil holdes i hukommelsen, indtil du bestemmer dig for at
+gemme dem. Derefter kan det tidligere indhold naturligvis ikke genskabes.
+
+Advarsel: Ugyldigt flag 0x0000 for partitionstabel 4 vil blive rettet med 
+»w« (forkortelse for write; dansk=skriv)
+
+Kommando (m for hjælp): 
+</pre>
+
+<p>Ved at trykke <span class="inl_cmd">m</span> får man menuen frem:</p>
+
+<pre class="black">
+Kommandobeskrivelse
+   a   skift et opstartsflag (bootable)
+   b   skift bsd-disketiket
+   c   skift DOS-kompatilitetsflaget
+   d   slet en partition
+   l   vis liste over kendte partitionstyper
+   m   vis denne menu
+   n   tilføj en ny partition
+   o   opret en ny, tom DOS-partitionstabel
+   p   vis partitionstabellen
+   q   afslut uden at gemme ændringerne
+   s   opret en ny, tom Sun-disketiket
+   t   skift system-id for en partition
+   u   skift enheder for visning/indtastning
+   v   verificer partitionstabellen
+   w   skriv partitionstabel til disk og afslut
+   x   ekstra funktionalitet (kun for eksperter)
+
+Kommando (m for hjælp): 
+</pre>
+
+<p>Det der skal gøres er følgende:</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Trin</th>
+			<th>Input</th>
+			<th>Forklaring</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<th>1</th>
+			<td>m</td>
+			<td>* Vis alle kommandoerne</td>
+		</tr>
+		<tr>
+			<th>2</th>
+			<td>n</td>
+			<td>Opret ny partition</td>
+		</tr>
+		<tr>
+			<th>3</th>
+			<td>p</td>
+			<td>Den skal være primær</td>
+		</tr>
+		<tr>
+			<th>4</th>
+			<td>[Enter]</td>
+			<td>Du skal vælger første partition – [Enter gør det som standard]</td>
+		</tr>
+		<tr>
+			<th>5</th>
+			<td>[Enter]</td>
+			<td>Du skal vælge første sektor – [Enter gør det som standard]</td>
+		</tr>
+		<tr>
+			<th>6</th>
+			<td>[Enter]</td>
+			<td>Du skal vælge sidste sektor – [Enter gør det som standard]</td>
+		</tr>
+		<tr>
+			<th>7</th>
+			<td>p</td>
+			<td>* Tjek partionstabellen</td>
+		</tr>
+		<tr>
+			<th>8</th>
+			<td>t</td>
+			<td>Menuen til at ændre system ID'et – Vi skal lave disken om til en LVM-disk</td>
+		</tr>
+		<tr>
+			<th>9</th>
+			<td>l</td>
+			<td>* Se alle de mulige system ID'er</td>
+		</tr>
+		<tr>
+			<th>10</th>
+			<td>83</td>
+			<td>Linux</td>
+		</tr>
+		<tr>
+			<th>11</th>
+			<td>p</td>
+			<td>* Tjek partionstabellen</td>
+		</tr>
+		<tr>
+			<th>12</th>
+			<td>w</td>
+			<td>Skriv ændringerne til disken</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>I ovenstående tilfælde oprettes der en partition på harddisken, da den alligevel skal tilføjes til LVM. Hvis der ønskes flere partitioner køres punkterne 2-6 igennem for hver partition.</p>
+
+<pre class="black">
+Kommando (m for hjælp): <span class="red">n [ENTER]</span>    
+Partition type:
+   p   primary (0 primary, 0 extended, 4 free)
+   e   extended
+Select (default p): <span class="red">p [ENTER]</span>
+Partitionsnummer (1-4, standard 1): <span class="red">[ENTER]</span>
+Bruger standardværdi 1
+Første sektor (2048-209715199, standard 2048): <span class="red">[ENTER]</span>
+Bruger standardværdi 2048
+Seneste sektor, +sektorer eller +størrelse{K,M,G} (2048-209715199, standard 
+209715199): <span class="red">[ENTER]</span>
+Bruger standardværdi 209715199
+
+Kommando (m for hjælp): 
+</pre>
+
+<p>Herefter skal der vælges system-ID, som passer til det filsystem der skal anvendes. De mest anvendte er:</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Kode</th>
+			<th>Filsystem</th>
+			<th>Anvendelse</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>7</td>
+			<td>HPFS/NTFS/exFAT</td>
+			<td>Windows 7/8/10</td>
+		</tr>
+		<tr>
+			<td>c</td>
+			<td>95 FAT32 (LBA)</td>
+			<td>USB drev</td>
+		</tr>
+		<tr>
+			<td>83</td>
+			<td>Linux</td>
+			<td>ext 2/3/4</td>
+		</tr>
+		<tr>
+			<td>8e</td>
+			<td>LINUX LVM</td>
+			<td>LVM partitioner</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Angående filsystem ID kan man få et overblik frem med <span class="inl_cmd">l</span>:</p>
+
+<pre class="black">
+Kommando (m for hjælp): l
+
+ 0  Tom             24  NEC DOS         81  Minix / gammel  bf  Solaris        
+ 1  FAT12           27  Hidden NTFS Win 82  Linux swap / So c1  DRDOS/sec (FAT-
+ 2  XENIX root      39  Plan 9          <span class="red">83  Linux</span>           c4  DRDOS/sec (FAT-
+ 3  XENIX usr       3c  PartitionMagic  84  OS/2 skjult C-d c6  DRDOS/sec (FAT-
+ 4  FAT16 &lt;32M      40  Venix 80286     85  Linux udvidet   c7  Syrinx         
+ 5  Udvidet         41  PPC PReP Opstar 86  NTFS diskenheds da  Ikke-filsystemd
+ 6  FAT16           42  SFS             87  NTFS diskenheds db  CP/M / CTOS / .
+ <span class="red">7  HPFS/NTFS/exFAT</span> 4d  QNX4.x          88  Linux råtekst   de  Dell-værktøj   
+ 8  AIX             4e  QNX4.x 2. part  <span class="red">8e  Linux LVM</span>       df  BootIt         
+ 9  AIX opstartbar  4f  QNX4.x 3. part  93  Amoeba          e1  DOS access     
+ a  OS/2-opstartshå 50  OnTrack DM      94  Amoeba BBT      e3  DOS R/O        
+ b  W95 FAT32       51  OnTrack DM6 Aux 9f  BSD/OS          e4  SpeedStor      
+ <span class="red">c  W95 FAT32 (LBA)</span> 52  CP/M            a0  IBM Thinkpad dv eb  BeOS fs        
+ e  W95 FAT16 (LBA) 53  OnTrack DM6 Aux a5  FreeBSD         ee  GPT            
+ f  W95 udvidet (LB 54  OnTrackDM6      a6  OpenBSD         ef  EFI (FAT-12/16/
+10  OPUS            55  EZ-Drev         a7  NeXTSTEP        f0  Linux/PA-RISC o
+11  Skjult FAT12    56  Golden Bow      a8  Darwin UFS      f1  SpeedStor      
+12  Compaq diagnost 5c  Priam Edisk     a9  NetBSD          f4  SpeedStor      
+14  Skjult FAT16 &lt;3 61  SpeedStor       ab  Darwin opstart  f2  DOS sekundær   
+16  Skjult FAT16    63  GNU HURD eller  af  HFS / HFS+      fb  VMware VMFS    
+17  Skjult HPFS/NTF 64  Novell Netware  b7  BSDI fs         fc  VMware VMKCORE 
+18  AST SmartSleep  65  Novell Netware  b8  BSDI swap       fd  Linux raid auto
+1b  Skjult W95 FAT3 70  DiskSecure Mult bb  Boot Wizard skj fe  LANstep        
+1c  Skjult W95 FAT3 75  PC/IX           be  Solaris opstart ff  BBT            
+1e  Skjult W95 FAT1 80  Gammel Minix 
+</pre>
+
+<p>Dem der er markeret med rød er dem man ofte anvender.</p>
+
+
+
+<p>Efter partitioneringen af disken fås følgende output af <span class="inl_cmd">lsblk</span></p>
+
+<pre class="ubuntu_terminal">
+root@tjmainsrv:/home/thoj# lsblk
+NAME                   MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
+sda                      8:0    0   100G  0 disk 
+├─sda1                   8:1    0   476M  0 part /boot
+├─sda2                   8:2    0     1K  0 part 
+└─sda5                   8:5    0  99,5G  0 part 
+  ├─vg01-system (dm-0) 252:0    0   9,3G  0 lvm  /
+  ├─vg01-home (dm-1)   252:1    0  18,6G  0 lvm  /home
+  ├─vg01-web (dm-2)    252:2    0   3,7G  0 lvm  /var/www
+  ├─vg01-data (dm-3)   252:3    0  55,9G  0 lvm  /srv
+  └─vg01-swap (dm-4)   252:4    0   2,1G  0 lvm  [SWAP]
+sdb                      8:16   0   100G  0 disk 
+└─sdb1                   8:17   0   100G  0 part 
+</pre>
+
+
+<h3>Formatering af disken</h3>
+
+<p>Linux har mange forskellige filsystemer, hvor <span class="inl_cmd">ext2</span> og <span class="inl_cmd">ext4</span> er det mest almindelige. Herunder er det vist hvordan man formaterer de forskellige filsystemer:</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Filsystem</th>
+			<th>Kommando</th>
+			<th>Kontrolleres med</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>ext2</td>
+			<td><span class="inl_cmd">mkfs.ext2 *partition*</span></td>
+			<td><span class="inl_cmd">e2fsck *partition*</span></td>
+		</tr>
+		<tr>
+			<td>ext4</td>
+			<td><span class="inl_cmd">mkfs.ext4 *partitioner*</span></td>
+			<td><span class="inl_cmd">e2fsck *partition*</span></td>
+		</tr>
+		<tr>
+			<td>btrfs</td>
+			<td><span class="inl_cmd">mkfs.btrfs *partitioner*</span></td>
+			<td><span class="inl_cmd">btrfsck *partition*</span></td>
+		</tr>
+		<tr>
+			<td>vfat</td>
+			<td><span class="inl_cmd">mkfs.vfat *partitioner*</span></td>
+			<td><span class="inl_cmd">fsck.vfat *partition*</span></td>
+		</tr>
+		<tr>
+			<td>NTFS</td>
+			<td><span class="inl_cmd">mkfs.ntfs *partitioner*</span></td>
+			<td> - </td>
+		</tr>
+
+	</tbody>
+</table>
+
+<p>Herefter formateres disken med kommandoen <span class="inl_cmd">mkfs.ext4 /dev/sdb1</span></p>
+
+<pre class="ubuntu_terminal">
+root@tjmainsrv:/home/thoj# mkfs.ext4 /dev/sdb1
+mke2fs 1.42.9 (4-Feb-2014)
+Filesystem label=
+OS type: Linux
+Block size=4096 (log=2)
+Fragment size=4096 (log=2)
+Stride=0 blocks, Stripe width=0 blocks
+6553600 inodes, 26214144 blocks
+1310707 blocks (5.00%) reserved for the super user
+First data block=0
+Maximum filesystem blocks=4294967296
+800 block groups
+32768 blocks per group, 32768 fragments per group
+8192 inodes per group
+Superblock backups stored on blocks: 
+	32768, 98304, 163840, 229376, 294912, 819200, 884736, 1605632, 2654208, 
+	4096000, 7962624, 11239424, 20480000, 23887872
+
+Allocating group tables: done                            
+Writing inode tables: done                            
+Creating journal (32768 blocks): done
+Writing superblocks and filesystem accounting information: done 
+
+root@tjmainsrv:/home/thoj#  
+</pre>
+
+
+<h3>Montering af harddisken <span class="inl_cmd">/etc/fstab</span></h3>
+
+<p>Harddisken kan nu monteres på systemet. FOr at tjekke at den virker monterer vi den "løst", uden at det gemmes når maskinen bootes. For at gøre det skal vi først oprette en mappe den kan monteres i, montere disken og tjekke om den er på filsystemet</p>
+
+<code class="cmd">mkdir -p /srv/newdisk</code>
+
+<code class="more_cmd">mount /dev/sdb1 /srv/newdisk</code>
+
+<code class="more_cmd">lsblk</code>
+
+<pre class="ubuntu_terminal">
+root@tjmainsrv:/home/thoj# mkdir -p /srv/newdisk
+root@tjmainsrv:/home/thoj# mount /dev/sdb1 /srv/newdisk
+root@tjmainsrv:/home/thoj# lsblk
+NAME                   MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
+sda                      8:0    0   100G  0 disk 
+├─sda1                   8:1    0   476M  0 part /boot
+├─sda2                   8:2    0     1K  0 part 
+└─sda5                   8:5    0  99,5G  0 part 
+  ├─vg01-system (dm-0) 252:0    0   9,3G  0 lvm  /
+  ├─vg01-home (dm-1)   252:1    0  18,6G  0 lvm  /home
+  ├─vg01-web (dm-2)    252:2    0   3,7G  0 lvm  /var/www
+  ├─vg01-data (dm-3)   252:3    0  55,9G  0 lvm  /srv
+  └─vg01-swap (dm-4)   252:4    0   2,1G  0 lvm  [SWAP]
+sdb                      8:16   0   100G  0 disk 
+└─sdb1                   8:17   0   100G  0 part /srv/newdisk
+</pre>
+
+<p>For at kunne montere disken ved hjælp af <span class="inl_cmd">/etc/fstab</span>, så den også er monteret herefter skal vi finde diskens UUID og indsætte denne linie 8 <span class="inl_cmd">/etc/fstab</span>.</p>
+
+<code class="cmd">blkid | grep /dev/sdb1</code>
+
+<pre class="ubuntu_terminal">
+root@tjmainsrv:/home/thoj# blkid | grep /dev/sdb1
+<span class="red">/dev/sdb1</span>: UUID="a4ce9a3e-55c5-4015-bb2d-46147f9a3a49" TYPE="ext4"
+</pre>
+
+<p>Følgende linier indsættes i <span class="inl_cmd">/etc/fstab</span> (husk at fjerne " om UUID'en):</p>
+
+<pre class="black">
+#/srv/newdisk er indsat i filsystemet af thoj 17082015
+UUID=a4ce9a3e-55c5-4015-bb2d-46147f9a3a49 	/srv/newdisk 	ext4	defaults		0	2
+</pre>
+
+<p>Genstart maskinen og tjek at <span class="inl_cmd">/dev/sdb1</span> er monteret som <span class="inl_cmd">/srv/newdisk</span>.</p>
+
+
+<h2>Kontrol af harddiske</h2>
+
+
+<code class="cmd">e2fsck</code>
+
+<p></p>
+
+<code class="cmd">resize2fs</code>
+
+<p></p>
+
+<code class="cmd">df -h</code>
+
+<p></p>
+
+<code class="cmd">partprobe</code>
+
+<p></p>
+
+<p></p>
+
+<p></p>
+
+
+	</body>
+
+</html>
