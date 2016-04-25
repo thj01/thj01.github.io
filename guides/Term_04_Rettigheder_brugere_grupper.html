@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+
+<head>
+	
+	<meta charset="UTF-8" lang="da"/>
+
+	<title>Linux Kommandoer - Thomas Jensen</title>
+
+	<script src="../js/toc2.js" type="text/javascript"></script>
+	<script src="https://code.jquery.com/jquery-2.2.2.js"></script>
+
+	<link rel="stylesheet" href="../css/style.css" />
+	<link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Ubuntu+Mono|Ubuntu|Ubuntu+Condensed' rel='stylesheet' type='text/css'>
+	
+
+</head>
+
+<!-- 
+
+code converter : http://www.freebits.co.uk/convert-html-code-to-text.html 
+
+-->
+
+
+
+<html>
+
+<body onload="generateTOC(document.getElementById('toc'));">
+
+<footer id="license"></footer>
+
+	<script> $( "#license" ).load( "license.html" ); </script>
+
+	<div id="toc">
+	
+		<p>Indholdsfortegnelse</p>
+	
+	</div>
+	
+
+<div class="title">Kommandoer</div>
+	
+<h1>Rettigheder</h1>
+
+<p>I Linux er der 3 grundlæggende 3 rettigheder vi kan sætte på filer og mapper: read, write og execute (læse, skrive og udføre).</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Rettighed</th>
+			<th>Forklaring</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Read (læse)</td>
+			<td>man kan tilgå filen (se og åbne den) og dermed læse hvad der står i den.</td>
+		</tr>
+		<tr>
+			<td>Write (skrive)</td>
+			<td>Man kan skrive i filen. Hvis der ikke er sat read rettigheder, kan man hverken åbne filen eller se indholdet</td>
+		</tr>
+		<tr>
+			<td>Execute (udførelse)</td>
+			<td>Filen kan tolkes som et program og derfor køres af operativsystemet.</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Ved hjælp af disse 3 parametre styres alle filer, mapper og enheder på computere. Lad os kigge på et eksempel nemlig <span class="inl_cmd">/etc/passwd</span> som er den fil der styrer brugerne på Linux .</p>
+
+<code class="cmd">ls -al /etc/passwd</code>
+
+<pre class="ubuntu_terminal">
+tj@tj-VirtualBox:~$ ls -al /etc/passwd
+-rw-r--r-- 1 root root 2013 mar 16 20:05 /etc/passwd
+</pre>
+
+<p>Den linie giver os alle de informationer om rettigheder vi har behov for</p>
+
+<table class="cmd_table">
+	<tbody>
+		<tr>
+			<td>-rw-r--r--  </td>
+			<td>Oversigt over filens retttigheder</td>
+		</tr>
+		<tr>
+			<td>1</td>
+			<td>Antal af henvisninger til filen</td>
+		</tr>
+		<tr>
+			<td>root root</td>
+			<td>Brugeren og gruppen</td>
+		</tr>
+		<tr>
+			<td>2013</td>
+			<td>Filens størrelse</td>
+		</tr>
+		<tr>
+			<td>mar 16 20:05</td>
+			<td>tidsstempel</td>
+		</tr>
+		<tr>
+			<td>/etc/passwd</td>
+			<td>Filens navn</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Læg mærke til, at der både findes en bruger og en gruppe der hedder <span class="inl_cmd">root</span>. Det gælder for alle brugere på Linux.</p>
+
+<p>Rettighederne aflæses som følger</p>
+
+<table class="centreret">
+	<thead>
+		<tr>
+			<th>Filtype</th>
+			<th colspan="3">Bruger</th>
+			<th colspan="3">Gruppe</th>
+			<th colspan="3">Alle</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>type</td>
+			<td>read</td>
+			<td>write</td>
+			<td>execute</td>
+			<td>read</td>
+			<td>write</td>
+			<td>execute</td>
+			<td>read</td>
+			<td>write</td>
+			<td>execute</td>			
+		</tr>
+		<tr>
+			<td>-</td>
+			<td>r</td>
+			<td>w</td>
+			<td>-</td>
+			<td>r</td>
+			<td>-</td>
+			<td>-</td>
+			<td>r</td>
+			<td>-</td>
+			<td>-</td>			
+		</tr>
+
+	</tbody>
+</table>
+
+<p>Vi kan altså sige om denne fil at brugeren er <span class="inl_cmd">root</span>, som må læse og skrive i filen. Alle andre (gruppe og alle). De er nødvendigt for alle at kunne læse denne fil, da det er den der administrere adgangen til systemet. Kigger vi ind i filen kan vise hvad den har at sige om vores bruger, her <span class="inl_cmd">tj</span>. Da alle har ret til at læse i filen kan jeg kommandoen den som mig selv.</p>
+
+<pre class="ubuntu_terminal">
+tj@tj-VirtualBox:/home$ cat /etc/passwd | grep tj
+<span class="red">tj</span>:x:1000:1000:Thomas Jensen,,,:/home/<span class="red">tj</span>:/bin/bash
+</pre>
+
+<p>Den linie fortæller os om vores bruger, hvilket bruger- og gruppe id man har, ens hjemmemappe og hvilken kommandofortolker vi har adgang til. Det lille x i starten henviser til vores kodeord, som er lagret i filen <span class="inl_cmd">/etc/shadow</span>.</p>
+
+<p>Et andet eksempel er den partition der blev oprettet under installationen (<span class="inl_cmd">/data</span>). vi kan se rettighedern ved at køre : <span class="inl_cmd">ls -al / | grep data</span></p>
+
+<pre class="ubuntu_terminal">
+tj@tj-VirtualBox:~$ ls -al / | grep data
+drwxr-xr-x   3 root root  4096 mar 15 18:13 <span class="red">data</span>
+</pre>
+
+<p>Det første der skal gøres er, at root skal overdrage sine rettigheder til dig, og det vil i mit tilfælde sige at der skal gøres følgende to kommandoer</p>
+
+<code class="cmd">sudo chown -R thoj:thoj /data</code>
+<code class="more_cmd">sudo chmod -R 700 /data</code>
+
+<p>Kommandoerne vil blive gennemgået herunder.</p>
+
+<h2>Superbrugeren</h2>
+
+<p><span class="inl_cmd">root</span>-brugeren er ikke underlagt de rettigheder der er sat på på de enkelte filer. <span class="inl_cmd">root</span> kan og skal kunne alt. At have <span class="inl_cmd">root</span>-rettigheder på et system handler ikke kun om at man er god til Linux, men forudsætter også at man gør sig overvejelser om hvad man bruger disse rettigheder til.</p>
+
+<p>Den danske grundlov (<a href="http://grundloven.dk/" target="_blank">http://grundloven.dk/</a>) siger følgende:</p>
+
+<blockquote>
+	
+	<p><span class="bold">§ 72</span></p>
+
+	<p>Boligen er ukrænkelig. Husundersøgelser, beslaglæggelse og undersøgelse af breve og andre papirer samt brud på post-, telegraf- og telefonhemmeligheden må, hvor ingen lov hjemler en særegen undtaglse, alene ske efter en retskendelse. 
+	</p>
+	
+</blockquote>
+
+<p>Grundloven har gode retningslinier til superbrugeren. Du må alt der ikke krænker brugeren, dvs. hjælpe brugeren med at løse sin opgave. Det gælder også selvom brugeren er dit barn, din partner eller kollega.</p>
+
+<p>Den eneste undtagelse er, når brugeren har fået at vide at det ikke er brugerens private ejendom, f.eks. hvor en virksomhed eller skole stiller ressourcen til rådighed for dig.</p>
+
+<h2><span class="inl_cmd">chown</span> – change owner</h2>
+
+<p>Chown er den hurtige løsning hvis du ønsker at ændre ejeren og gruppen af en fil eller en mappe.</p>
+
+<table class="cmd_table">
+	<thead>
+		<tr>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>chown thoj ~/testfil</td>
+			<td>Ændrer ejerskabet af <span class="inl_cmd">~/testfil</span> til brugeren thoj</td>
+		</tr>
+		<tr>
+			<td>chown thoj:testgruppe ~/testfil</td>
+			<td>Ændrer ejerskabet af <span class="inl_cmd">~/testfil</span> til brugeren thoj og gruppen testgruppe</td>
+		</tr>
+		<tr>
+			<td>chown -R thoj /data</td>
+			<td>Ændre ejerskabet af alle filer og undermapper i /data til thoj</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>man-page: <span class="inl_cmd">chown</span>
+<a href="http://manpages.ubuntu.com/manpages/trusty/man1/chown.1.html" target="_blank">
+http://manpages.ubuntu.com/manpages/trusty/man1/chown.1.html</a></p>
+
+
+<h2><span class="inl_cmd">chgrp</span></h2>
+
+<p>Ligesom ovenfor, men virker på grupper</p>
+
+<h2><span class="inl_cmd">chmod</span></h2>
+
+
+
+<p>chmod ændrer rettighederne til filen og kommandoen udføres som nedenfor. Husk at anvende <span class="inl_cmd">sudo</span> hvis du ikke har rettighederne til filen:</p>
+
+<code class="cmd">chmod [-R][rettigheder] [fil/mappe]</code>
+
+<p>Skal det gælde alle undermapper indsættes -R (recursiv)</p>
+
+<p>Rettighederne kan sættes enten ved hjælp af tal eller bogstaver. Det er min anbefaling at du lærer at anvende tal til det!</p>
+
+<h2><span class="inl_cmd">chmod</span> - med tal (anbefalet metode)</h2>
+
+<p>Rettigheder kan også sættes for den enkelte kategori med en tal værdi der præsenterer summen af de binære tal.</p>
+
+<table class="centreret">
+
+	<thead>
+		<tr>
+			<th>Bruger</th>
+			<th>Gruppe</th>
+			<th>Andre</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>[ 0 - 7 ]</td>
+			<td>[ 0 - 7 ]</td>
+			<td>[ 0 - 7 ]</td>			
+		</tr>
+	</tbody>
+</table>
+
+<p>Værdierne fra 0-7 fremkommer ved at der bruges 3 bit til at sætte brugerens, gruppens og alles rettigheder med.</p> 
+
+<table class="centreret">
+	<thead>
+		<tr>
+			<th>Filtype</th>
+			<th colspan="3">Bruger</th>
+			<th colspan="3">Gruppe</th>
+			<th colspan="3">Alle</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr><td>-</td>
+			<td>r</td>
+			<td>w</td>
+			<td>x</td>
+			<td>r</td>
+			<td>w</td>
+			<td>x</td>
+			<td>r</td>
+			<td>w</td>
+			<td>x</td>			
+		</tr>
+		<tr>
+			<td></td>
+			<td>read</td>
+			<td>write</td>
+			<td>execute</td>
+			<td>read</td>
+			<td>write</td>
+			<td>execute</td>
+			<td>read</td>
+			<td>write</td>
+			<td>execute</td>			
+		</tr>
+	</tbody>
+</table>
+
+
+<p>Værdierne sættes efter nedestående skema:</p>
+
+<table class="centreret">
+	<thead>
+		<tr>
+			<th>Talværdi</th>
+			<th>r <br/> 2² = 4</th>
+			<th>w <br/> 2¹ = 2</th>
+			<th>x <br/> 2⁰ = 1</th>
+			<th>Rettigheder</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>7</td>
+			<td>1</td>
+			<td>1</td>
+			<td>1</td>
+			<td>Alle (læse, skrive og udføre)</td>
+		</tr>
+		<tr>
+			<td>6</td>
+			<td>1</td>
+			<td>1</td>
+			<td>0</td>
+			<td>Læse og skrive</td>
+		</tr>
+		<tr>
+			<td>5</td>
+			<td>1</td>
+			<td>0</td>
+			<td>1</td>
+			<td>Læse og udføre</td>
+		</tr>
+		<tr>
+			<td>4</td>
+			<td>1</td>
+			<td>0</td>
+			<td>0</td>
+			<td>Læse</td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>0</td>
+			<td>1</td>
+			<td>1</td>
+			<td>Skrive og udføre</td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>0</td>
+			<td>1</td>
+			<td>0</td>
+			<td>Skrive</td>
+		</tr>
+		<tr>
+			<td>1</td>
+			<td>0</td>
+			<td>0</td>
+			<td>1</td>
+			<td>udføre</td>
+		</tr>
+		<tr>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>Ingen</td>
+		</tr>		
+	</tbody>
+</table>
+
+<p>Eksempler</p>
+
+<table class="cmd_table">
+	<thead>
+		<tr>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>chmod 660 testfil</td>
+			<td>Kun brugeren og gruppen har læse og skriverettigheder.</td>
+		</tr>
+		<tr>
+			<td>chmod 700 testfil</td>
+			<td>Fjerner alle rettigheder fra gruppen og andre</td>
+		</tr>
+		<tr>
+			<td>chmod -R 705 /var/www/html</td>
+			<td>Giver brugeren alle rettigheder til alle filer og undermapper i <span class="inl_cmd">/var/www/html</span>.Alle kan læse og afvikle programmer. Dette er f.eks. indstillingen man anvender på de filer er skal være tilgængelig på en webserver (<span class="inl_cmd">/var/www/html</span> er Apaches standardmappe).</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Vær opmærksom på, at man ikke kan fratage root' rettigheder til en fil/mappe. Selvom man køre en <span class="inl_cmd">chmod 000</span> vil root stadig kunne tilgå dem og sætte nye rettigheder. Når man anvender Windows er det muligt at fjerne al adgang til en fil når man anvender et Windows styresystem.</p>
+
+
+<p>man-page: <span class="inl_cmd">chmod</span>
+<a href="http://manpages.ubuntu.com/manpages/trusty/man1/chmod.1.html" target="_blank">
+http://manpages.ubuntu.com/manpages/trusty/man1/chmod.1.html</a></p>
+
+<h2><span class="inl_cmd">chmod</span> - med bogstaver</h2>
+
+<p><span class="bold">NOTE</span>: Dette afsnit er medtaget, da man stadig finder guides på nettet der anvender denne metode. Jeg synes dog at den er for omstændig og kan hurtig blive uoverskuelig.</p>
+
+<p>Rettigheder sættes ved at angive hvem og hvilke rettigheder det handler om efter følgende skema. Det kan gøres på to måder: Med bogstaver og med tal.</p>
+
+<table class="">
+	<tbody>
+		<tr>
+			<td>u</td>
+			<td>Bruger (user)</td>
+			<td>Ejerens rettigheder</td>
+		</tr>
+		<tr>
+			<td>g</td>
+			<td>Gruppe (group)</td>
+			<td>Gruppens rettigheder</td>
+		</tr>
+		<tr>
+			<td>o</td>
+			<td>Andre (others)</td>
+			<td>Rettigheder der gælder alle.</td>
+		</tr>
+		<tr>
+			<td>a</td>
+			<td>Alle (all)</td>
+			<td>Alle ovenstående. ved at bruge a giver man alle samme rettigheder</td>
+		</tr>
+	</tbody>
+</table>
+
+<p><span class="inl_cmd">+</span> tilføjer rettigheder, <span class="inl_cmd">-</span> trækker fra og <span class="inl_cmd">=</span> sætter dem lig med, som du kan se i eksemplerne herunder.</p>
+
+<table class="cmd_table">
+	<thead>
+		<tr>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>chmod o+rw testfil</td>
+			<td>Giver andre skrive og læse rettigheder til testfil</td>
+		</tr>
+		<tr>
+			<td>chmod go= testfil</td>
+			<td>Fjerner alle rettigheder fra gruppen og andre</td>
+		</tr>
+		<tr>
+			<td>chmod -R ug+rw /data</td>
+			<td>Giver brugeren og gruppen læse og skrive rettigheder til alle filer og undermapper i <span class="cmd">/data</span></td>
+		</tr>
+	</tbody>
+</table>
+
+
+<h1>Brugere og grupper</h1>
+
+<p>Alle rettigheder i Linux er sat ud fra ejerskab. Tilgængeligheden af filer, mapper og enheder bliver styret af disse brugerrettigigheder </p>
+
+<h2><span class="inl_cmd">adduser</span> og <span class="inl_cmd">deluser</span> - Oprette og slette brugere</h2>
+
+<p>Man opretter og sletter brugere med kommandown <span class="inl_cmd">adduser</span>. Herunder opretter jeg brugeren <span class="inl_cmd">testuser</span>.</p>
+
+<code class="cmd">sudo adduser testuser</code>
+
+<pre class="ubuntu_terminal">
+tj@tj-VirtualBox:~$ sudo adduser testuser
+[sudo] password for tj: <span class="red">&lt;-- Indtast dit kodeord</span>
+Tilføjer bruger »testuser«...
+Tilføjer ny gruppe »testuser« (1001)...
+Tilføjer ny bruger »testuser« (1001) med gruppe »testuser«...
+Opretter hjemmemappe »/home/testuser«...
+Kopierer filer fra »/etc/skel«...
+Indtast ny UNIX-adgangskode: <span class="red">&lt;-- indtast den nye bruger password</span>
+Genindtast ny UNIX-adgangskode: <span class="red">&lt;-- skriv det igen</span>
+passwd: adgangskoden blev opdateret
+Ændrer brugeroplysninger for testuser
+Angiv ny værdi eller tryk RETUR for standardværdien
+	Fulde navn []: <span class="red">[Retur]</span>
+	Værelsesnummer []: <span class="red">[Retur]</span>
+	Arbejdstelefon []: <span class="red">[Retur]</span>
+	Telefon []: <span class="red">[Retur]</span>
+	Andet []: <span class="red">[Retur]</span>
+Er informationerne korrekte? [J/n] <span class="red">[Retur]</span>
+</pre>
+
+<p>Kontroller at han er blevet oprettet:</p>
+
+<code class="cmd">cat /etc/passwd | grep testuser</code>
+
+<pre class="ubuntu_terminal">
+tj@tj-VirtualBox:~$ cat /etc/passwd | grep testuser
+<span class="red">testuser</span>:x:1001:1001:,,,:/home/<span class="red">testuser</span>:/bin/bash
+</pre>
+
+
+<p>For at slette en bruger anvendes kommandoen <span class="inl_cmd">deluser</span></p>
+
+<code class="cmd">sudo deluser testuser</code>
+
+<p>Anvender man ovenstående kommando bliver brugerens hjemmemappe ikke slettet. For at slette alle brugerens filer skal der tilføjes<span class="inl_cmd">--remove-home</span>.</p>
+
+<p>man-page <span class="inl_cmd">adduser</span>: 
+<a href="http://manpages.ubuntu.com/manpages/trusty/man8/adduser.8.html" target="_blank">
+http://manpages.ubuntu.com/manpages/trusty/man8/adduser.8.html</a></p>
+
+<p>man-page <span class="inl_cmd">deluser</span>: 
+<a href="http://manpages.ubuntu.com/manpages/trusty/en/man8/deluser.8.html" target="_blank">
+http://manpages.ubuntu.com/manpages/trusty/en/man8/deluser.8.html</a></p>
+
+<h2><span class="inl_cmd">useradd</span></h2>
+
+<p>Når man anvender <span class="inl_cmd">userad</span> er det egentlig en scriptfil der arbejder med kommandoen <span class="inl_cmd">useradd</span>. <span class="inl_cmd">useradd</span> giver mulighed for at man kan sætte en bruger op i detaljer med en længere kommando. Kommanden anvendes ved at man tilføjer konfigurationen bagefter. Man skal huske at tilføje et password til brugeren bagefter. Se følgende eksempel:</p>
+
+<code class="cmd">sudo useradd -d /home/testuser2 -m testuser2 -u 2010 -s /bin/bash</code>
+
+<code class="more_cmd">sudo passwd testuser2</code>
+
+<pre class="ubuntu_terminal">
+tj@tj-VirtualBox:~$ sudo useradd -d /home/testuser2 -m testuser2 -u 2010 -s /bin/bash
+tj@tj-VirtualBox:~$ sudo passwd testuser2
+Indtast ny UNIX-adgangskode: <span class="red">&lt;-- indtast password f.eks. 123qwe</span>
+Genindtast ny UNIX-adgangskode: <span class="red">... og igen</span>
+passwd: adgangskoden blev opdateret
+</pre>
+
+<pre class="ubuntu_terminal">
+tj@tj-VirtualBox:~$ cat /etc/passwd | grep testuser
+<span class="red">testuser</span>:x:1001:1001:,,,:/home/<span class="red">testuser</span>:/bin/bash
+<span class="red">testuser</span>2:x:2010:2010::/home/<span class="red">testuser</span>2:/bin/bash
+</pre>
+
+<p>Kommandoen gør følgende:</p>
+
+<table class="cmd_table">
+	<thead>
+		<tr>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>-d /home/testuser2</td>
+			<td>Opretter brugeren <span class="inl_cmd">test01</span> og registrerer hans hjemmemappe som <span class="inl_cmd">/home/testuser2</span>. Selve hjemmemappen er ikke oprettet</td>
+		</tr>
+		<tr>
+			<td>-m testuser2</td>
+			<td>Opretter mappen /home/testuser2</td>
+		</tr>
+		<tr>
+			<td>-u 2010</td>
+			<td>Giver brugeren UserID 2010</td>
+		</tr>
+		<tr>
+			<td>-s /bin/bash</td>
+			<td>Giver brugeren bin-bash som komandofortolker</td>
+		</tr>
+	</tbody>
+</table>
+
+<p><span class="inl_cmd">useradd</span> giver mulighed for at installere brugere med specifikke indstillinger og kan anvendes til at oprette mange brugere ved hjælp af scripting.</p>
+
+
+<p>man-page <span class="inl_cmd">useradd</span>: 
+<a href="http://manpages.ubuntu.com/manpages/trusty/man8/useradd.8.html" target="_blank">
+http://manpages.ubuntu.com/manpages/trusty/man8/useradd.8.html</a></p>
+
+<h2><span class="inl_cmd">id</span> - Findes brugeres</h2>
+
+<p>For at checke om en bruger findes anvendes <span class="inl_cmd">id</span>.</p>
+
+<code class="cmd">id *brugernavn*</code>
+
+<pre class="ubuntu_terminal">
+tj@tj-VirtualBox:~$ id tj
+uid=1000(tj) gid=1000(tj) grupper=1000(tj),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),108(lpadmin),124(sambashare)
+tj@tj-VirtualBox:~$ id hugo
+id: hugo: ingen sådan bruger
+</pre>
+
+
+
+<h2><span class="inl_cmd">usermod</span></h2>
+
+<p><span class="inl_cmd">usermod</span> anvendes til at ændre på brugerens konto.</p>
+
+<table class="cmd_table">
+	<thead>
+		<tr>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>usermod -L testuser2</td>
+			<td>Lås testuser2' konto</td>
+		</tr>
+		<tr>
+			<td>usermod -U testuser2</td>
+			<td>Åbn testuser2' konti</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>man-page <span class="inl_cmd">usermod</span>: 
+<a href="http://manpages.ubuntu.com/manpages/trusty/en/man8/usermod.8.html" target="_blank">
+http://manpages.ubuntu.com/manpages/trusty/en/man8/usermod.8.html</a></p>
+
+<h2><span class="inl_cmd">chage</span></h2>
+
+<p><span class="inl_cmd">chage</span> anvendes til at konfigurere brugerens password og måden de skal fornys på. Hvis man ønsker at få et overblik over hvordan brugerens indstillinger kan man anvende kommandoen: </p>
+
+<code class="cmd">sudo chage -l testuser2</code>
+
+<p>Herunder er et eksemel på resultatet</p>
+
+<pre class="ubuntu_terminal">
+tj@tj-VirtualBox:~$ sudo chage -l testuser2
+Sidste ændring af adgangskode					: mar 16, 2016
+Adgangskode udløber					: aldrig
+Adgangskode inaktiv					: aldrig
+Konto udløber						: aldrig
+Minimalt antal dage mellem ændring af adgangskoden		: 0
+Maksimalt antal dage mellem ændring af adgangskoden		: 99999
+Antal dages forvarsel om adgangskodens udløb	: 7
+</pre>
+
+<p>Hvis man ønsker at ændre den måde brugerens password er sat op kan man køre nedestående kommando. Værdierne der angives er dage</p>
+
+<code class="cmd">sudo chage testuser2</code>
+
+<p>Herunder er et eksempel på resultatet af denne kommando, kørt på brugeren "chagetest"</p>
+
+<pre class="ubuntu_terminal">
+tj@tj-VirtualBox:~$ sudo chage testuser2
+Ændrer forældelsesoplysninger for testuser2
+Angiv ny værdi eller tryk RETUR for standardværdien
+
+	Minimal alder for adgangskode [0]: <span class="red">&lt;-- ny værdi eller [Enter]</span>
+	Maksimal alder for adgangskode [99999]: <span class="red">&lt;-- ny værdi eller [Enter]</span>
+	Sidste ændring af adgangskode (ÅÅÅÅ-MM-DD) [2016-03-16]: <span class="red">&lt;-- ny værdi eller [Enter]</span>
+	Advarsel om udløb af adgangskode [7]: <span class="red">&lt;-- ny værdi eller [Enter]</span>
+	Adgangskode inaktiv [-1]: <span class="red">&lt;-- ny værdi eller [Enter]</span>
+	Udløbsdato for konto (ÅÅÅÅ-MM-DD) [-1]: <span class="red">&lt;-- ny værdi eller [Enter]</span>
+</pre>
+
+<p>Hvis man ønsker at brugeren skal ændre sit passeword wed første login kan man anvende kommandoen <span class="inl_cmd">chage</span> med en option. Herunder laver vi ændringen for <span class="inl_cmd">testuser2</span></p>
+
+<code class="cmd">sudo chage -d 0 testuser2</code>
+
+<pre class="ubuntu_terminal">
+tj@tj-VirtualBox:~$ sudo chage -d 0 testuser2
+tj@tj-VirtualBox:~$ su testuser2
+Adgangskode: 
+Du skal omgående ændre din adgangskode (gennemtvunget af roden)
+Ændrer adgangskode for testuser2.
+(nuværende) UNIX-adgangskode: 
+Indtast ny UNIX-adgangskode: 
+Genindtast ny UNIX-adgangskode: 
+testuser2@tj-VirtualBox:/home/tj$
+</pre>
+
+<p>man-page <span class="inl_cmd">chage</span>: 
+<a href="http://manpages.ubuntu.com/manpages/trusty/en/man1/chage.1.html" target="_blank">
+http://manpages.ubuntu.com/manpages/trusty/en/man1/chage.1.html</a></p>
+
+
+<h2>Administration af grupper</h2>
+
+<table class="cmd_table">
+	<thead>
+		<tr>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Addgroup testgruppe</td>
+			<td>Tilføjer gruppen testgruppe</td>
+		</tr>
+		<tr>
+			<td>Delgroup testgruppe</td>
+			<td>Fjerner testgruppe</td>
+		</tr>
+		<tr>
+			<td>Adduser test testgruppe</td>
+			<td>Tilføjer brugeren test til gruppen testgruppe</td>
+		</tr>
+		<tr>
+			<td>Deluser test testgruppe</td>
+			<td>Fjerner brugeren test fra gruppe testgruppe</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Manpages til add- og delgroup er de samme som add- og deluser.</p>
+
+<p>Grupperne og deres medlemmer kan ses i filen <span class="inl_cmd">/etc/group</span>.</p>
+
+<h2><span class="inl_cmd">sudo</span>-gruppen</h2>
+
+<p>For at en bruger kan udføre administrationsarbejde skal han være medlem af sudo gruppen. Det gøres med følgende kommando:</p>
+
+<code class="cmd">sudo adduser *brugernavn* sudo </brugernavn></code>
+
+<p>Hvis man tilføjer en bruger gennem en terminal der er startet på en desktop skal man genstarte GUI'en, dvs. logge af og på igen. Det skyldes at GUI terminalen kører under samme session som GUI'en. For at genindlæse rettigheder osv. bliver man altså nød til at logge af og på igen.</p>
+
+
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+
+	</body>
+
+</html>

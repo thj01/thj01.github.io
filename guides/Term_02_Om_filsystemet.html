@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+
+<head>
+	
+	<meta charset="UTF-8" lang="da"/>
+
+	<title>Linux Kommandoer - Thomas Jensen</title>
+
+	<script src="../js/toc2.js" type="text/javascript"></script>
+	<script src="https://code.jquery.com/jquery-2.2.2.js"></script>
+
+	<link rel="stylesheet" href="../css/style.css" />
+	<link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Ubuntu+Mono|Ubuntu|Ubuntu+Condensed' rel='stylesheet' type='text/css'>
+	
+
+</head>
+
+<!-- 
+
+code converter : http://www.freebits.co.uk/convert-html-code-to-text.html 
+
+-->
+
+
+
+<html>
+
+<body onload="generateTOC(document.getElementById('toc'));">
+
+<footer id="license"></footer>
+
+	<script> $( "#license" ).load( "license.html" ); </script>
+
+	<div id="toc">
+	
+		<p>Indholdsfortegnelse</p>
+	
+	</div>
+	
+
+<div class="title">Kommandoer</div>
+	
+
+<h1>Filsystemet</h1>
+
+<p>Herunder får du præsenteret en række kommandoer, som giver dig mulighed for at administrere systemet, manipulere med filer, få informationer om hardware og netværk.</p>
+
+<p>Til forskel fra Windows der bliver konfigureret ved hjælp af registreringsdatabases styres Linux af ”flade” filer, forstået på den måde at programmer bliver konfigureret ved hjælp af en eller flere tekstbaserede konfigurationsfiler. Har man lavet ændringer i en konfigurationsfil genstarter man tjenesten, som herefter indlæser og anvender den nye konfigurationsfil. Mange af kommandoerne er vist med eksempler, der er er praktisk anvendelige. </p>
+
+<p>En af de ting der også er nyt for mange der bruger Linux er de rettigheder filerne har. Alle filer og mapper får sat læse/skrive/køre rettigheder for henholdsvis ejeren, gruppen og alle andre. <span class="inl_cmd">root</span>-brugeren (bliver også kaldt supueruser)  er dog undtaget for denne regel. <span class="inl_cmd">root</span> kan alt på en Linux computer, så derfor skal kommandoer der har med selve operativsystemet og konfigurationsfiler køres med rootbrugerens rettigheder. Man skifter til roorbrugerens rettigheder ved at køre kommandoen <span class="inl_cmd">sudo</span>. Skal man køre mange kommandoer kan man køre kommandoen <span class="inl_cmd">sudo su</span>, og ændres brugeren til <span class="inl_cmd">root</span>. I disse dokumenter har jeg valgt at vise kommandoerne uden sudo foran.</p>
+
+<h2>Alt er filer</h2>
+
+<p>I Linux er alt filer. En mappe er egentlig bare en fil, der henviser til en samling af filer, og hardware er præsenteret ved hjælp af en fil. F.eks. har den første partition på den første SATA disk i systemet filadressen <span class="inl_cmd">/dev/sda1</span> og det første netkort <span class="inl_cmd">/dev/eth0</span>. Så hvis man ønsker at skrive noget til det første netkort (f.eks. data eller konfiguration) skal det altså sendes til filen <span class="inl_cmd">/dev/eth0</span>.</p>
+
+<h2>Filsystemets opbygning</h2>
+
+<p>I Linuxsystemer er alt filer og filsystemet tager udgangspunkt i roden (/) hvorfå alle mapper er monteret. Mapperne i roden af filsystemet følger <a href="https://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard" target="_blank">FHS</a> (<span class="bold">F</span>ilesystem <span class="bold">H</span>ierarchy <span class="bold">S</span>tandarden) som bliver vedligeholdt af <a href="https://en.wikipedia.org/wiki/Linux_Foundation" target="_blank">Linux Foundattion</a>. Herunder er de mapper der ligger i roden i Ubuntu, med en kort forklaring om hvad de indeholder. De mapper der er markeret med fed er dem som man ofte vil støde i systemarbejde på Ubuntu.
+</p>
+
+<p>En anden stor fordel ved at anvende denne standard er, at man ikke skal bekymre sig om hvor f.eks. konfigurationsfilerne ligger. De vil altid ligge i <span class="inl_cmd">/etc</span>.</p>
+
+<p>Herunder er et overblik over mapperne på roden og hvad de indeholder. Mapperne der er markeret med fed, er dem man oftest skal anvende når man laver systemarbejde.</p>
+
+<table class="cmd_table">
+	<tbody>
+		<tr>
+			<td>/</td>
+			<td>Roden – det nederste niveau</td>
+		</tr>
+		<tr>
+			<td>/bin</td>
+			<td>Binære filer - Her ligger mange af systemkommandoerne f,eks. ls og cd</td>
+		</tr>
+		<tr>
+			<td>/boot</td>
+			<td>Opstartsfiler f.eks. Linux kernen</td>
+		</tr>
+		<tr>
+			<td>/dev</td>
+			<td>Devices - f.eks. harddiske (sda1) og netkort (eth0)</td>
+		</tr>
+		<tr>
+			<td><span class="bold">/etc</span></td>
+			<td><span class="bold">Konfigurationsfiler til systemet.</span></td>
+		</tr>
+		<tr>
+			<td><span class="bold">/home</span></td>
+			<td><span class="bold">Brugernes hjemmemapper</span></td>
+		</tr>
+		<tr>
+			<td>/lib</td>
+			<td>32bits programbiblioteker (libraries) der bliver delt af computerens programmer</td>
+		</tr>
+		<tr>
+			<td>/lib64</td>
+			<td>64 bits programbiblioteker</td>
+		</tr>
+		<tr>
+			<td>/lost+found</td>
+			<td>Fundne datafragmenter der ikke hører til nogle steder</td>
+		</tr>
+		<tr>
+			<td>/media</td>
+			<td>Mappen hvor transportable enheder monteres. F.eks. USB-og CD/DVD-drev.</td>
+		</tr>
+		<tr>
+			<td>/mnt</td>
+			<td>En mappe hvor man montere midlertidige drev. F.eks. netværksdrev </td>
+		</tr>
+		<tr>
+			<td>/opt</td>
+			<td>Installerede programmer der ikke administreres af apt</td>
+		</tr>
+		<tr>
+			<td>/proc</td>
+			<td>Processer - det er et real-time filsystem, der er placeret i RAM.</td>
+		</tr>
+		<tr>
+			<td>/root</td>
+			<td>Superbrugerens hjemmemappe</td>
+		</tr>
+		<tr>
+			<td>/run</td>
+			<td>En mappe der er placeret i RAM - her lægges tmp filer</td>
+		</tr>
+		<tr>
+			<td>/sbin</td>
+			<td>root's binære filer -</td>
+		</tr>
+		<tr>
+			<td><span class="bold">/srv</span></td>
+			<td><span class="bold">Servermappen. Heri lægges alle filer der deles med andre</span></td>
+		</tr>
+		<tr>
+			<td>/sys</td>
+			<td>En mappe placeret i RAM, der viser informationer om hardware</td>
+		</tr>		
+		<tr>
+			<td>/tmp</td>
+			<td>En mappe til midlertidige filer</td>
+		</tr>
+		<tr>
+			<td>/usr</td>
+			<td>Brugernes værktøjs- og programmappe. Indeholder indstillinger til de installerede programmer</td>
+		</tr>
+		<tr>
+			<td><span class="bold">/var</span></td>
+			<td><span class="bold">Variable filer - filer der ændrer sig ofte f.eks. logfiler. Det er også i denne mappe at man finder Apaches www mappe.</span></td>
+		</tr>		
+	</tbody>
+</table>
+
+
+<h2>Filnavne</h2>
+
+<p>Linux anvender modsat windows både de store og små bogstaver i alfabetet. Derfor vil der under Linux være forskel på filerne <span class="inl_cmd">data</span> og <span class="inl_cmd">Data</span> og brugerne <span class="inl_cmd">tj</span> og <span class="inl_cmd">Tj</span>.</p>
+	
+<p>Man kan heller ikke se på en fils "efternavn" om det er et program. I windows kan programmer genkendes ved deres efternavn f.eks. <span class="inl_cmd">.exe</span> eller <span class="inl_cmd">.msi</span>. I Linux gøres en fil eksekverbar, ved at man ændre i den rettigheder. Derfor kan man ikke umiddelbart se om en fil kan køres eller ej. Det er også normen at man uploader og sender programmer uden at have sat eksekverrettigheder. På den måde sikrer man sig at man ikke ved et uheld kommer til at køre en fil.</p>
+
+<p>Men efternavne på filer anvendes også i Linux, men det er mere for at programmer kan genkende filerne. Det gælder f.eks: <span class="inl_cmd">*.pdf</span>, <span class="inl_cmd">*.odt</span>, <span class="inl_cmd">*.jpg</span> og <span class="inl_cmd">*.png</span>. 
+	
+I styresystemet Linux anvendes der ikke ”efternavne” til filer som f.eks. exe, dll og inf, for at afgøre hvilken type filen er. Det styres med rettigheder. Derfor kan man ikke umiddelbart se på en fil om det er et program eller blot en tekstfil. Der anvendes dog filefternavne til filer med specifikke formater, f.eks. til tekst- og billedbehandlingsprogrammer f.eks. *.pdf, *.odt, *.jpg, *.png osv. For at kunne genkende script filer giver man dem efternavnet <span class="inl_cmd">*.sh</span>. Filrettigheder skal dog sættes rigtigt før en <span class="inl_cmd">*.sh</span> fil kan køres.</p>
+
+<h1>Navigation i filsystemet</h1>
+
+<p>For at navigere rundt i og orientere sig i filsystemet anvender man følgende kommandoer:</p>
+
+<ul class="disc">
+	<li><span class="inl_cmd">cd</span> - change directory</li>
+	<li><span class="inl_cmd">ls</span> - list</li>
+	<li><span class="inl_cmd">pwd</span> - print working directory</li>
+	<li><span class="inl_cmd">tree</span> – viser filerne i træstruktur </li>
+</ul>
+
+<p>Herunder angives eksempler med kommandoerne:</p>
+
+<h2><span class="inl_cmd">cd</span> – change directory</h2>
+
+<table class="cmd_table">
+	<thead>
+		<tr>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+		<tbody>
+		<tr>
+			<td>cd /etc/apt</td>
+			<td>Skift til mappen <span class="inl_cmd">/etc/apt</span></td>
+		</tr>
+		<tr>
+			<td>cd /</td>
+			<td>Skift til roden af filstrukturen</td>
+		</tr>
+		<tr>
+			<td>cd ..</td>
+			<td>Gå et mappeniveau ned</td>
+		</tr>
+		<tr>
+			<td>cd ~</td>
+			<td>Skift til din hjemmemappe</td>
+		</tr>
+	</tbody>
+</table>
+
+<h2><span class="inl_cmd">ls</span> - list</h2>
+
+<table class="cmd_table">
+	<thead>
+		<tr>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>ls</td>
+			<td>Viser filer og mapper</td>
+		</tr>
+		<tr>
+			<td>ls -al</td>
+			<td>Udvidet visning med de skjulte filer/mapper</td>
+		</tr>
+		<tr>
+			<td>ls -al /etc/log</td>
+			<td>Udvidet visning af <span class="inl_cmd">/etc/log</span></td>
+		</tr>
+		<tr>
+			<td>ls -d</td>
+			<td>Vis kun filer</td>
+		</tr>
+		<tr>
+			<td>ls -d .*</td>
+			<td>Vis kun skjulte filer</td>
+		</tr>
+		<tr>
+			<td>ls -d */</td>
+			<td>Viser kun mapper</td>
+		</tr>
+	</tbody>
+</table>
+
+<h2><span class="inl_cmd">pwd</span> – print working director</h2>
+
+<table class="cmd_table">
+	<thead>
+		<tr>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>pwd</td>
+			<td>Viser hvor man er i filsystemet</td>
+		</tr>
+	</tbody>
+</table>
+
+<h2><span class="inl_cmd">tree</span></h2>
+
+<p><span class="inl_cmd">tree</span> viser indholdet af en mappe i en træstruktur. Det følger ikke med som standard og skal derfor installeres først</p>
+
+<code class="cmd">sudo apt-get install tree -y</code>
+
+<p>Det kan f.eks. bruges til vise filstrukturen som herunder <span class="inl_cmd">tree /usr -d -L 1</span></p>
+
+<pre class="ubuntu_terminal">
+tj@tj-VirtualBox:~# tree /usr -d -L 1	
+<span class="blue1">/usr</span>
+├── <span class="blue1">bin</span>
+├── <span class="blue1">games</span>
+├── <span class="blue1">include</span>
+├── <span class="blue1">lib</span>
+├── <span class="blue1">local</span>
+├── <span class="blue1">sbin</span>
+├── <span class="blue1">share</span>
+└── <span class="blue1">src</span>
+
+9 directories
+</pre>
+
+<p>Kommandoen udvider ls ved at man kan vise det i flere niveauer. Prøv f.eks. at køre kommandoen:</p>
+
+<code class="cmd">tree /usr -d -L 2</code>
+
+<table class="cmd_table">
+	<thead>
+		<tr>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>tree</td>
+			<td>Viser filerne i træ struktur i den lokale mappe</td>
+		</tr>
+		<tr>
+			<td>Tree /usr</td>
+			<td>Viser træstrukturen i mappen <span class="inl_cmd">/usr</span></td>
+		</tr>
+		<tr>
+			<td>Tree /usr -d</td>
+			<td>Viser kun mapper i <span class="inl_cmd">/usr</span></td>
+		</tr>
+		<tr>
+			<td>Tree /usr -d -L 1</td>
+			<td>Viser mapperne i <span class="inl_cmd">/usr</span> i et niveauer</td>
+		</tr>
+		<tr>
+			<td>tree /usr -du -L 1</td>
+			<td>Viser mapperne i <span class="inl_cmd">/usr</span> i et niveauer med ejerskab</td>
+		</tr>
+		<tr>
+			<td>tree /usr --du -L 1</td>
+			<td>Viser mapperne i <span class="inl_cmd">/usr</span> i et niveauer med filstørrelser</td>
+		</tr>
+		<tr>
+			<td>tree /usr --dirsfirst -L 1</td>
+			<td>Viser alle filerne i <span class="inl_cmd">/usr</span>, men sætter mapperne først.</td>
+		</tr>
+	</tbody>
+</table>
+
+<h1>Størrelse af filer</h1>
+
+<h2><span class="inl_cmd">du</span> - Disk usage</h2>
+
+<p>For at se hvor meget filerne i en folder fylder anvendes <span class="inl_cmd">du</span>.</p>
+
+<code class="cmd">du -hs ~</code>
+
+<p>Herunder kan du se output fra mit eget system. Læg mærke til at der er nogle mapper selv brugerne ikke har adgang til.</p>
+
+<pre class="ubuntu_terminal">
+tj@tj-VirtualBox:~$ du -hs ~
+2,6M	/home/tj
+</pre>
+
+<h2><span class="inl_cmd">df</span></h2>
+
+<p>For at se den brugte plads anvendes kommandoen <span class="inl_cmd">df</span></p>
+
+<code class="cmd">df -h *partition*</code>
+
+<p><span class="inl_cmd">-h</span> gør at, størrelsen vises i MB og GB i stedet for Kb.</p>
+
+<table class="cmd_table">
+	<thead>
+		<tr>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>df -h</td>
+			<td>Viser brugt plads på alle mountede partitioner i GB</td>
+		</tr>
+		<tr>
+			<td>df -h /</td>
+			<td>Viser brugt plads på <span class="inl_cmd">/</span></td>
+		</tr>
+		<tr>
+			<td>df -hT /</td>
+			<td>Viser også hvilket filsystem der anvendes</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Læg mærke til at <span class="inl_cmd">df</span> viser pladsforbrug på den valgte partition, hvis du vælger en mappe derpå.</p>
+
+<pre class="ubuntu_terminal">
+tj@tj-VirtualBox:~$ df -h ~
+Filsystem                                              Størr Brugt  Tilb Brug% Monteret på
+/dev/disk/by-uuid/c2c76ea3-8bee-4930-be2c-20d11a7358c1   46G  4,4G   40G   10% /
+</pre>
+
+
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+
+	</body>
+
+</html>

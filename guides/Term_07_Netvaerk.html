@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+
+<head>
+	
+	<meta charset="UTF-8" lang="da"/>
+
+	<title>Linux Kommandoer - Thomas Jensen</title>
+
+	<script src="../js/toc2.js" type="text/javascript"></script>
+	<script src="https://code.jquery.com/jquery-2.2.2.js"></script>
+
+	<link rel="stylesheet" href="../css/style.css" />
+	<link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Ubuntu+Mono|Ubuntu|Ubuntu+Condensed' rel='stylesheet' type='text/css'>
+	
+
+</head>
+
+<!-- 
+
+code converter : http://www.freebits.co.uk/convert-html-code-to-text.html 
+
+-->
+
+
+
+<html>
+
+<body onload="generateTOC(document.getElementById('toc'));">
+
+<footer id="license"></footer>
+
+	<script> $( "#license" ).load( "license.html" ); </script>
+
+	<div id="toc">
+	
+		<p>Indholdsfortegnelse</p>
+	
+	</div>
+	
+
+<div class="title">Kommandoer</div>
+	
+
+<h1>Netværks værktøjer</h1>
+
+<p>I dette kapitel vil det blive vist hvordan man kan analysere sit netværk.</p>
+
+<h2><span class="inl_cmd">ifconfig</span></h2>
+
+<p><span class="inl_cmd">ifconfig</span> anvendes til at vise netværkskonfigurationen, men kan også anvendes til at konfigurere netværkskort. Herunder er kommandoen blevet kørt "ren".</p>
+
+<code class="cmd">ifconfig</code>
+
+<pre class="ubuntu_terminal">
+tj@tj-VirtualBox:~$ ifconfig
+eth0      Link encap:Ethernet  HWaddr 08:00:27:99:37:e3  
+<span class="red">          inet addr:10.0.2.15  Bcast:10.0.2.255  Mask:255.255.255.0</span>
+          inet6 addr: fe80::a00:27ff:fe99:37e3/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:825 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:663 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:418700 (418.7 KB)  TX bytes:52990 (52.9 KB)
+
+lo        Link encap:Local Loopback  
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          inet6 addr: ::1/128 Scope:Host
+          UP LOOPBACK RUNNING  MTU:65536  Metric:1
+          RX packets:208 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:208 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0 
+          RX bytes:18230 (18.2 KB)  TX bytes:18230 (18.2 KB)
+
+</pre>
+
+<p>Her kan vi se der er to netværkskort: <span class="inl_cmd">eth0</span> og <span class="inl_cmd">io</span>. Hvis du kører Ubuntu på en bærbar med WiFi hedder den første <span class="inl_cmd">wlan0</span>. Den linie du især skal lægge mærke til er den jeg har markeret med rødt. Den linie fortæller alt hvad din computer har brug for, for at kunne identificeres korrekt på nettet.</p>
+
+<h2>Konfigurer netværkskortet</h2>
+
+<p>Ved hjælp af <span class="inl_cmd">ifconfig</span> kan man også konfigurere netværkskortet f.eks:</p>
+
+<code class="cmd">sudo ifconfig eth0 10.0.2.30/24</code>
+
+<p>Med denne kommando angives <span class="inl_cmd"> 10.0.2.30/24</span> som netværkskortets nye IP-adresse. Reelt fylder Linux resten af informationerne ud med standard mulighederne. Således vil følgende give følgende opstilling:</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>IP</td>
+			<td>10.0.2.30</td>
+		</tr>
+		<tr>
+			<td>Netmaske</td>
+			<td>255.255.255.0 (CIDR 24)</td>
+		</tr>
+		<tr>
+			<td>Broadcast</td>
+			<td>10.0.2.255</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Man kan også udspecificere kommandoen med følgende:</p>
+
+<code class="cmd">ifconfig eth0 10.0.2.30 netmask 255.255.255.0 broadcast 10.0.2.255</code>
+
+<h2><span class="inl_cmd">ping</span></h2>
+
+<p><span class="inl_cmd">ping</span> bruges til at undersøge om der er forbindelse mellem din og en anden computer, og hvor lang svartiden er. Kommandoen kører lige til der trykkes <kbd>Ctrl</kbd>+<kbd>c</kbd>.</p>
+
+<code class="cmd">ping dr.dk</code>
+
+<pre class="ubuntu_terminal">
+tj@tj-VirtualBox:~$ ping dr.dk
+PING dr.dk (159.20.6.38) 56(84) bytes of data.
+64 bytes from 159.20.6.38: icmp_seq=1 ttl=63 time=12.8 ms
+64 bytes from 159.20.6.38: icmp_seq=2 ttl=63 time=111 ms
+64 bytes from 159.20.6.38: icmp_seq=3 ttl=63 time=13.1 ms
+64 bytes from 159.20.6.38: icmp_seq=4 ttl=63 time=13.6 ms
+64 bytes from 159.20.6.38: icmp_seq=5 ttl=63 time=14.1 ms
+^C
+--- dr.dk ping statistics ---
+5 packets transmitted, 5 received, 0% packet loss, time 4006ms
+rtt min/avg/max/mdev = 12.842/33.051/111.476/39.215 ms
+</pre>
+
+<p>Efter kommandoen er kørt vises en opsumering</p>
+
+<p>Andre eksempler med ping kommandoen:</p>
+
+<table class="cmd_table">
+	<thead>
+		<tr>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>ping -c 4 dr.dk</td>
+			<td>Kører ping i alt 4 gange</td>
+		</tr>
+		<tr>
+			<td>ping -i 2 dr.dk</td>
+			<td>der pinges med 2 sekunders mellemrum</td>
+		</tr>
+		<tr>
+			<td>ping -s 504 dr.dk</td>
+			<td>Der pinges med 512 (504+8) bytes i stedet for 64. Der skal angives 8 mindre end man ønsker, da 8 bytes bliver tilføjet (header data) </td>
+		</tr>
+	</tbody>
+</table>
+
+
+<p>man-page: <span class="inl_cmd">ping</span>
+<a href="http://manpages.ubuntu.com/manpages/trusty/en/man8/ping.8.html" target="_blank">
+http://manpages.ubuntu.com/manpages/trusty/en/man8/ping.8.html</a></p>
+
+<h2>Find din DNS-server</h2>
+
+<p>DNS serveren sørger for at man kan anvende navne på nettet i stedeet for IP-adresser. For at finde den DNS computeren er tilstluttet anvendes følgende kommando: </p>
+
+<code class="cmd">nmcli dev list iface *netværkskort* | grep IP4</code>
+
+<p>Du kan se fra <span class="inl_cmd">ifconfig</span> kommandoen hvad der skal stå i stedet for *netværkskort*. I mit tilfælde <span class="inl_cmd">eth0</span>. DNS serveren er den der heder <span class="inl_cmd">IP4.DNS[1]</span>.</p>
+
+<pre class="ubuntu_terminal">
+tj@tj-VirtualBox:~$ sudo nmcli dev list iface eth0 | grep IP4
+[sudo] password for tj: 
+<span class="red">IP4</span>.ADRESSE[1]:                         ip = 10.0.2.15/24, gw = 10.0.2.2
+<span class="red">IP4</span>.DNS[1]:                             10.0.2.3
+</pre>
+
+<p>Et <span class="inl_cmd">nslookup</span> på denne adresse giver følgende:</p>
+
+<code class="cmd">nslookup 10.0.2.3</code>
+
+
+<pre class="ubuntu_terminal">
+tj@tj-VirtualBox:~$ nslookup 10.0.2.3
+Server:		127.0.1.1
+Address:	127.0.1.1#53
+
+** server can't find 3.2.0.10.in-addr.arpa: NXDOMAIN
+</pre>
+
+<p>Det ovenstående output et meget minimalistisk. Det skyldes at Virtualbox kun har en meget minimalistisk DNS tjeneste kørende. Modsat mit rigtige system, der tager fat i Yousee's DNS servere. De samme opslag på min computer giver følgende:</p>
+
+<pre class="ubuntu_terminal">
+thoj@thoj-Precision-M4800:~$ nmcli dev list iface wlan0 | grep IP4
+<span class="red">IP4</span>.ADRESSE[1]:                         ip = 192.168.0.56/24, gw = 192.168.0.1
+<span class="red">IP4</span>.DNS[1]:                             193.162.153.164
+<span class="red">IP4</span>.DNS[2]:                             194.239.134.83
+thoj@thoj-Precision-M4800:~$ nslookup 192.162.153.164
+Server:		127.0.1.1
+Address:	127.0.1.1#53
+
+Non-authoritative answer:
+164.153.162.192.in-addr.arpa	name = ip-192-162-153-164.cyberlan.com.ua.
+
+Authoritative answers can be found from:
+153.162.192.in-addr.arpa	nameserver = ns1.cyberlan.com.ua.
+153.162.192.in-addr.arpa	nameserver = ns2.syndicate.net.ua.
+</pre>
+
+<p>man-page: <span class="inl_cmd">nslookup</span>
+<a href="http://manpages.ubuntu.com/manpages/trusty/en/man1/nslookup.1.html" target="_blank">http://manpages.ubuntu.com/manpages/trusty/en/man1/nslookup.1.html</a></p>
+
+
+<h2><span class="inl_cmd">mtr</span></h2>
+
+<p><span class="inl_cmd">mtr</span> er et program der kombinerer traceroute og ping, dvs. at det både viser hoppene mellem din computer og målcomputeren samtidig med at den viser tidsintervallerne. Installer det med følgende kommando:</p>
+
+<p>Kommandoen er:</p>
+
+<code class="cmd">mtr [--report] www.dr.dk</code>
+
+<p>	Det er valgfrit at indsætte <span class="inl_cmd">--report</span> i kommandoen. --report venter med at lave et output til det har kørt 10 omgange. </p>
+
+<pre class="ubuntu_terminal">
+tj@tj-VirtualBox:~$ mtr --report dr.dk
+Start: Sat Mar 19 00:23:28 2016
+HOST: tj-VirtualBox               Loss%   Snt   Last   Avg  Best  Wrst StDev
+  1.|-- 10.0.2.2                   0.0%    10    0.5   0.4   0.2   0.6   0.0
+  2.|-- 192.168.0.1                0.0%    10    1.6   6.8   1.4  52.9  16.2
+  3.|-- ???                       100.0    10    0.0   0.0   0.0   0.0   0.0
+  4.|-- ae11-100.odttv1nqe10.dk.i  0.0%    10   13.1  20.9  10.3 108.4  30.7
+  5.|-- ae1-0.alb2nqp7.dk.ip.tdc.  0.0%    10   34.3  23.0  11.2  56.2  14.1
+  6.|-- 194.19.204.22              0.0%    10  103.1  37.5  13.4 103.1  38.2
+  7.|-- 0xc213cf12.linknet.dk.tel  0.0%    10   14.4  15.3  13.6  17.6   0.9
+  8.|-- 159.20.6.38                0.0%    10   77.4  27.8  12.1  77.4  21.6
+</pre>
+
+<table class="cmd_table">
+	<thead>
+		<tr>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>mtr -n dr.dk</td>
+			<td>Viser IP-adresserne på routen og ikke deres DNS-opløste navne</td>
+		</tr>
+		<tr>
+			<td>mtr -c 4 --report dr.dk</td>
+			<td>Kører kun fire gennemgange før der kommer output. Uden <span class="inl_cmd">-c</span> kører kommandoen 10 gange.</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>man-page : <span class="inl_cmd">mtr</span>
+<a href="http://manpages.ubuntu.com/manpages/trusty/en/man8/mtr.8.html" target="_blank">
+http://manpages.ubuntu.com/manpages/trusty/en/man8/mtr.8.html</a></p>
+
+<h2><span class="inl_cmd">nmap</span></h2>
+
+<p><span class="inl_cmd">nmap</span> installeres med følgende kommandoen.</p>
+
+<code class="cmd">apt-get install nmap -y</code>
+
+<p><span class="inl_cmd">nmap</span> kan bruges til at scanne et netværk for åbne porte ved at angive IP adressen:</p>
+
+<code class="cmd">nmap *IP-adresse*/*Internet_adresse*</code>
+
+<pre class="ubuntu_terminal">
+tj@tj-VirtualBox:~$ nmap 10.0.2.15
+
+Starting Nmap 6.40 ( http://nmap.org ) at 2016-03-19 00:36 CET
+Nmap scan report for 10.0.2.15
+Host is up (0.00012s latency).
+All 1000 scanned ports on 10.0.2.15 are closed
+
+Nmap done: 1 IP address (1 host up) scanned in 0.06 seconds
+
+</pre>
+
+<p><span class="inl_cmd">nmap</span> kan også anvendes til at scanne computere på nettet, her dr.dk</p>
+
+<pre class="ubuntu_terminal">
+tj@tj-VirtualBox:~$ nmap dr.dk
+
+Starting Nmap 6.40 ( http://nmap.org ) at 2016-03-19 00:37 CET
+Nmap scan report for dr.dk (159.20.6.38)
+Host is up (0.022s latency).
+Not shown: 998 filtered ports
+PORT    STATE SERVICE
+80/tcp  open  http
+443/tcp open  https
+
+Nmap done: 1 IP address (1 host up) scanned in 7.48 seconds
+</pre>
+
+<p>Det viser at Danmarks Radio har sat deres server fornuftigt op, da den kun har to porte åben udadtil.</p>
+
+<p>nmap kan også anvendes til følgende:</p>
+
+<p>Scanne hele subnet (her <span class="inl_cmd">10.0.2.0/24)</span>:</p>
+
+<code class="cmd">nmap 10.0.2.0/24</code>
+
+<p>Scanne en del af et subnet (jer <span class="inl_cmd">10.0.2.10-50</span>):</p>
+
+<code class="cmd">nmap 10.0.2.10-50</code>
+
+<p>Nmap kan også anvendes til at finde alle aktive computere på et subnet med kommandoen:</p>
+
+<code class="cmd">nmap 10.0.2.0/24 | grep "Nmap scan report"</code>
+
+<pre class="ubuntu_terminal">
+tj@tj-VirtualBox:~$ nmap 10.0.2.0/24 | grep "Nmap scan report"
+<span class="red">Nmap scan report</span> for 10.0.2.2
+<span class="red">Nmap scan report</span> for 10.0.2.3
+<span class="red">Nmap scan report</span> for 10.0.2.4
+<span class="red">Nmap scan report</span> for 10.0.2.15
+</pre>
+
+<p>man-page: <span class="inl_cmd">nmap</span>
+<a href="http://manpages.ubuntu.com/manpages/trusty/en/man1/nmap.1.html" target="_blank">
+http://manpages.ubuntu.com/manpages/trusty/en/man1/nmap.1.html</a></p>
+
+<h1>Iproute 2 suite</h1>
+
+<p>Under udarbejdelse</p>
+
+<table class="cmd_table">
+	<thead>
+		<tr>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>ip addr</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>ip alias</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>ip link</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>ip route</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>ip neigh</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>ip tunnel</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>ip maddr</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>ss</td>
+			<td></td>
+		</tr>
+	</tbody>
+</table>
+
+<h2>ip addr</h2>
+
+<code class="cmd">ip addr show eth0</code>
+
+
+
+
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+
+	</body>
+
+</html>

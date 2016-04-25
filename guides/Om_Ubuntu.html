@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+
+<head>
+	
+	<meta charset="UTF-8" lang="da"/>
+
+	<title>Linux Kommandoer - Thomas Jensen</title>
+
+	<script src="../js/toc2.js" type="text/javascript"></script>
+	<script src="https://code.jquery.com/jquery-2.2.2.js"></script>
+
+	<link rel="stylesheet" href="../css/style.css" />
+	<link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Ubuntu+Mono|Ubuntu|Ubuntu+Condensed' rel='stylesheet' type='text/css'>
+	
+
+</head>
+
+<!-- 
+
+code converter : http://www.freebits.co.uk/convert-html-code-to-text.html 
+
+-->
+
+
+
+<html>
+
+<body onload="generateTOC(document.getElementById('toc'));">
+
+<footer id="license"></footer>
+
+	<script> $( "#license" ).load( "license.html" ); </script>
+
+	<div id="toc">
+	
+		<p>Indholdsfortegnelse</p>
+	
+	</div>
+	
+
+<div class="title">Kommandoer</div>
+	
+
+	
+<h1>Linux filosofien</h1>
+
+<p>Linuxfilosofien er if. Mike Gancarz:</p>
+
+<blockquote>An operating system, by its nature, embodies the philosophy of its creators... The creators of the Unix operating system started with a radical concept: they assumed that the user of their operating system would be computer literate from the start. The entire Unix philosophy revolves around the idea that the user knows what he or she is doing.<br/>
+
+<span class="right"><a href="https://en.wikipedia.org/wiki/Unix_philosophy#Mike_Gancarz:_The_UNIX_Philosophy" target="_blank">https://en.wikipedia.org/wiki/Unix_philosophy#Mike_Gancarz:_The_UNIX_Philosophy [110915]</a></span>
+
+</blockquote>
+
+<p>Eller lidt mere sat på spidsen af en anden:</p>
+
+<blockquote>Unix was not designed to stop its users from doing stupid things, as that would also stop them from doing clever things.<br/>
+
+<span class="right"><a href="http://opensource.com/business/14/12/linux-philosophy" target="_blank">http://opensource.com/business/14/12/linux-philosophy [110915]</a></span>
+
+</blockquote>
+
+<p>Det får også betydning for hvordan programmer designes. Grundlæggende er UNIX/Linux programmer bygget op med en simpel og minimalistisk tilgang. Programmer er designet til en ting ... og en ting alene. <span class="inl_cmd">rm</span> er designet til at slette - og det er det som programmet gør. Men ved hjælp af diverse flag, kan de konfigureres til at slette på en smart og intelligent måde.</p>
+
+<blockquote>This is the Unix philosophy: Write programs that do one thing and do it well. Write programs to work together. Write programs to handle text streams, because that is a universal interface. ...
+
+<br/><br/>
+
+The notion of "intricate and beautiful complexities" is almost an oxymoron. Unix programmers vie with each other for "simple and beautiful" honors — a point that's implicit in these rules, but is well worth making overt.
+
+<span class="right"><a href="https://en.wikipedia.org/wiki/Unix_philosophy#Doug_McIlroy_on_Unix_programming" target="_blank">https://en.wikipedia.org/wiki/Unix_philosophy#Doug_McIlroy_on_Unix_programming [110915]</a></span>
+
+</blockquote>
+
+<p><a href="https://en.wikipedia.org/wiki/Unix_philosophy#Doug_McIlroy_on_Unix_programming" target="_blank">https://en.wikipedia.org/wiki/Unix_philosophy#Doug_McIlroy_on_Unix_programming</a>[110915]</p>
+
+<p>Dette medfører dog også at denne simple og minimalistiske moden ender ud i "Worse is better", simpelthen fordi simpeltheden og minimalismen bliver styrende, fremfor det korrekte, ensarte og helhedsorrienteret ... og dermed bliver det uoverskueligt og komplekst. Dette giver sammen med den åbne udviklingsmodel en evolutionær udvikling, hvor de "stærke" programmer overlever ... og de svage forgår.</p>
+
+<h1>Ubuntu</h1>
+
+<p>Ubuntu findes i to versioner: LTS (<span class="bold">L</span>ong <span class="bold">T</span>erm <span class="bold">S</span>upport ) og ikke-LTS. LTS udgivelserne frigives hvert andet år, og er kendetegnet ved at der garanteres 5 års sikkerhedsopdateringer. For ikke-LTS udgaverne gælder det at de bliver sikkerhedsopdateret 9 måneder frem.</p> 
+
+<p>Forskellen mellem dem ligger i måden man udvælger softwaren og måden udviklingen og testen bliver lavet.  If. Canonical gælder det for LTS udgaverne at de er:</p>
+
+<ul class="disc">
+	<li>Virksomheds fokuseret</li>
+	<li>Kompatible med ny hardware.</li>
+	<li>Mere testet</li>
+</ul>
+
+<p>Og ikke er:</p>
+
+<ul class="disc">
+	<li>Fokuseret på nye features.</li>
+	<li>Cutting edge.</li>
+</ul>
+
+<p>Kilde: <a href="https://wiki.ubuntu.com/LTS" target="_blank">https://wiki.ubuntu.com/LTS</a></p>
+
+<p>LTS versionerne er altså ikke "cutting edge", men man er mere fokuseret på at stabilisere eksisterende funktioner end at introducere nye. Dette betyder ikke at ikke-LTS'erne er usikre eller mangler test - blot at disse er rettet mere mod udvikling, og at erfaringerne herfra kommer til at være hjørnestenen i den næste LTS version. I nedestående skema kan du se forskellen mellem dem og den ligger primært i at LTS udgaven får låst sine features 4 uger før ikke-LTS udgaven, som så anvendes til test.</p>
+
+<p>Versionsnummeret (de to første numre) angiver først udgivelsesåret året, derefter måneden og så udgaven. 14.04.2 LTS er altså den anden version af Ubuntu der er udgivet april månede 2014. Er der et ekstra tal på beskriver det versionsnummeret (point release). Man bør altid installere den nyeste version da den indeholder flere features og understøttelse for nyere hardware. Man kan løbende opgradere kernen hvis det bliver nødvendigt.</p>
+
+
+<p>Hvis du vil vide mere om selve testprocedurerne kan du kigge her:</p>
+
+<p>Kilde: <a href="https://wiki.ubuntu.com/XenialXerus/ReleaseSchedule" target="_blank">https://wiki.ubuntu.com/XenialXerus/ReleaseSchedule (16.04)</a> </br>Kilde: <a href="https://wiki.ubuntu.com/YakketyYak/ReleaseSchedule" target="_blank">https://wiki.ubuntu.com/YakketyYak/ReleaseSchedule (16.10)</a></p>
+
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+
+	</body>
+
+</html>

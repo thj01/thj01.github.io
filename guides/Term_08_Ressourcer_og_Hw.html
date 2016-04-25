@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+
+<head>
+	
+	<meta charset="UTF-8" lang="da"/>
+
+	<title>Linux Kommandoer - Thomas Jensen</title>
+
+	<script src="../js/toc2.js" type="text/javascript"></script>
+	<script src="https://code.jquery.com/jquery-2.2.2.js"></script>
+
+	<link rel="stylesheet" href="../css/style.css" />
+	<link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Ubuntu+Mono|Ubuntu|Ubuntu+Condensed' rel='stylesheet' type='text/css'>
+	
+
+</head>
+
+<!-- 
+
+code converter : http://www.freebits.co.uk/convert-html-code-to-text.html 
+
+-->
+
+
+
+<html>
+
+<body onload="generateTOC(document.getElementById('toc'));">
+
+<footer id="license"></footer>
+
+	<script> $( "#license" ).load( "license.html" ); </script>
+
+	<div id="toc">
+	
+		<p>Indholdsfortegnelse</p>
+	
+	</div>
+	
+
+<div class="title">Kommandoer</div>
+	
+
+
+<h1>Computerens hardware</h1>
+
+<h2><span class="inl_cmd">dmesg</span></h2>
+
+<p><span class="inl_cmd">dmesg</span> er en kommando det giver et output af det som kernen har indlæst, og er meget omfattende. Findes på alle computere og er især anvendeligt hvis man samtidig anvender <span class="inl_cmd">grep</span>. </p>
+
+<table class="cmd_table">
+	<thead>
+		<tr>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>dmesg</td>
+			<td>Giver et komplet output af det kernen har indlæst</td>
+		</tr>
+		<tr>
+			<td>dmesg | grep -i usb</td>
+			<td>Find henvisninger til eth0 og ETH0 i dmesg udskriften. -i gør, at søgningen både bliver efter store og små bogstaver</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>man-page: <span class="inl_cmd">dmesg</span>
+<a href="http://manpages.ubuntu.com/manpages/trusty/en/man1/dmesg.1.html" target="_blank">
+http://manpages.ubuntu.com/manpages/trusty/en/man1/dmesg.1.html</a></p>
+
+<h2><span class="inl_cmd">dmidecode</span></h2>
+
+<p>Dmidecode laver en udskrift af de beskrivelser som BIOS har om din hardware</p>
+
+<table class="cmd_table">
+	<thead>
+		<tr>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>dmidecode</td>
+			<td>Laver en komplet udskrift af din hardware</td>
+		</tr>
+		<tr>
+			<td>dmidecode -t 2</td>
+			<td>Informationer om bundkortet. Der findes mange andre <span class="inl_cmd">-t</span> værdier (o-42) som kan findes på man siden.</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>man-page: <span class="inl_cmd">dmidecode</span>
+<a href="http://manpages.ubuntu.com/manpages/trusty/man8/dmidecode.8.html" target="_blank">
+http://manpages.ubuntu.com/manpages/trusty/man8/dmidecode.8.html</a></p>
+
+<h2><span class="inl_cmd">inxi</span></h2>
+
+<p>Giver dig informationer om computerens hardware på en læselig måde. Skal førest installeres:</p>
+
+<code class="cmd">sudo apt-get install inxi</code>
+
+<pre class="ubuntu_terminal">
+tj@tj-VirtualBox:~$ inxi
+<span class="blue1">CPU</span>~Single core Intel Core i7-4600M CPU (-UP-) clocked at 2893.298 Mhz <span class="blue1">Kernel</span>~4.2.0-34-generic x86_64 <span class="blue1">Up</span>~1:45 <span class="blue1">Mem</span>~544.7/3952.5MB <span class="blue1">HDD</span>~214.7GB(2.3% used) <span class="blue1">Procs</span>~172 <span class="blue1">Client</span>~Shell <span class="blue1">inxi</span>~1.9.17  
+</pre>
+
+<table class="cmd_table">
+	<thead>
+		<tr>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>inxi -b</td>
+			<td>Giver en komprimeret oversigt over din hardware</td>
+		</tr>
+		<tr>
+			<td>inxi -v 7</td>
+			<td>Giver en oversigt over al din hardware og opsætning. Der kan anvendes værdier fra 0-7</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>man-page: <span class="inl_cmd">inxi</span>
+<a href="http://manpages.ubuntu.com/manpages/trusty/man1/inxi.1.html" target="_blank">
+http://manpages.ubuntu.com/manpages/trusty/man1/inxi.1.html</a></p>
+
+<h2><span class="inl_cmd">uname</span></h2>
+
+<p>Uname giver dig mulighed for at få informationer om systemet. F.eks:</p>
+
+<table class="cmd_table">
+	<thead>
+		<tr>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>uname -a</td>
+			<td>Udskriv al information</td>
+		</tr>
+		<tr>
+			<td>uname -rsp</td>
+			<td>Udskriver kernen (r), kerneversionen (s) og CPU (p)</td>
+		</tr>
+	</tbody>
+</table>
+
+<pre class="ubuntu_terminal">
+tj@tj-VirtualBox:~$ uname -a
+Linux tj-VirtualBox 4.2.0-34-generic #39~14.04.1-Ubuntu SMP Fri Mar 11 11:38:02 UTC 2016 x86_64 x86_64 x86_64 GNU/Linux
+tj@tj-VirtualBox:~$ uname -rsp
+Linux 4.2.0-34-generic x86_64
+</pre>
+
+<p>man-page: <span class="inl_cmd">uname</span>
+<a href="http://manpages.ubuntu.com/manpages/trusty/en/man1/uname.1.html" target="_blank">
+http://manpages.ubuntu.com/manpages/trusty/en/man1/uname.1.html</a></p>
+
+
+<h2><span class="inl_cmd">lsblk</span> - <span class="inl_cmd">lshw</span> - <span class="inl_cmd">lspci</span> - <span class="inl_cmd">lsusb</span> - <span class="inl_cmd">lpinfo</span></h2>
+
+<p>Viser detaljerede oplysninger om dit hardware.</p>
+
+<table class="cmd_table">
+	<thead>
+		<tr>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>lsblk</td>
+			<td>Informationer om diske på systemet. (gennemgået ovenfor)</td>
+		</tr>
+		<tr>
+			<td>lshw</td>
+			<td>Giver en detaljeret oversigt over  din hardware</td>
+		</tr>
+		<tr>
+			<td>lspci</td>
+			<td>Giver information om systemets PCI enheder</td>
+		</tr>
+		<tr>
+			<td>lsusb</td>
+			<td>Giver informationer om systemets usb enheder</td>
+		</tr>
+		<tr>
+			<td>lpinfo</td>
+			<td>Giver informationer om printere og printerdrivere på systemet.</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>man-page: <span class="inl_cmd">lsblk</span>
+<a href="http://manpages.ubuntu.com/manpages/trusty/en/man8/lsblk.8.html" target="_blank">
+http://manpages.ubuntu.com/manpages/trusty/en/man8/lsblk.8.html</a></p>
+
+<p>man-page: <span class="inl_cmd">lshw</span>
+<a href="http://manpages.ubuntu.com/manpages/trusty/man1/lshw.1.html" target="_blank">
+http://manpages.ubuntu.com/manpages/trusty/man1/lshw.1.html</a></p>
+
+<p>man-page: <span class="inl_cmd">lsusb</span>
+<a href="http://manpages.ubuntu.com/manpages/trusty/man8/lsusb.8.html" target="_blank">
+http://manpages.ubuntu.com/manpages/trusty/man8/lsusb.8.html</a></p>
+
+<p>man-page: <span class="inl_cmd">lspci</span>
+<a href="http://manpages.ubuntu.com/manpages/trusty/man8/lspci.8.html" target="_blank">
+http://manpages.ubuntu.com/manpages/trusty/man8/lspci.8.html</a></p>
+
+<p>man-page: <span class="inl_cmd">lpinfo</span>
+<a href="http://manpages.ubuntu.com/manpages/trusty/man8/lpinfo.8.html" target="_blank">
+http://manpages.ubuntu.com/manpages/trusty/man8/lpinfo.8.html</a></p>
+
+<h1>Computerens ressourcer</h1>
+
+<p>De nedestående programmer er allesammen ret omfattende, så der er ikke en udførlig beskrivelse af hvordan man bruger dem. De er medtaget for at du kan få et indblik i den værktøjskasse der er tilgængelig når man anvender Ubuntu som server.</p>
+
+<h2><span class="inl_cmd">free</span></h2>
+
+<p><span class="inl_cmd">free</span> angiver forbruget af RAM, og vil normalt blive anvendt med <span class="inl_cmd">-h</span> eller <span class="inl_cmd">-g</span>, da det er mere læseligt. Se nedestående eksempler.</p>
+
+<code class="cmd">free</code>
+
+<pre class="ubuntu_terminal">
+tj@tj-VirtualBox:~$ free
+             total       used       free     shared    buffers     cached
+Mem:       4047396    1414588    2632808       5552     102484     824944
+-/+ buffers/cache:     487160    3560236
+Swap:      3999740          0    3999740
+</pre>
+
+<code class="cmd">free -h</code>
+
+<pre class="ubuntu_terminal">
+tj@tj-VirtualBox:~$ free -h
+             total       used       free     shared    buffers     cached
+Mem:          3,9G       1,3G       2,5G       5,4M       100M       805M
+-/+ buffers/cache:       475M       3,4G
+Swap:         3,8G         0B       3,8G
+</pre>
+
+<p>For at forstå tallene skal man være klar over hvordan bruger vs linux forstår dem:</p>
+
+<table class="centreret">
+	<thead>
+		<tr>
+			<th>Hukommelse der...</th>
+			<th>Du kalder det:</th>
+			<th>Linux kalder det:</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>bliver anvendt af programmer</td>
+			<td><span class="red">Brugt</span></td>
+			<td><span class="red">Brugt</span></td>
+		</tr>
+		<tr>
+			<td>er tilgængelig og anvendt til noget</td>
+			<td><span class="green">Fri</span></td>
+			<td><span class="red">Brugt</span></td>
+		</tr>
+		<tr>
+			<td>ikke er anvendt</td>
+			<td><span class="green">Fri</span></td>
+			<td><span class="green">Fri</span></td>
+		</tr>
+	</tbody>
+</table>
+
+
+<p>Derfor kan vi nu beregne mængden af fri RAM, ved at kigge på frie <span class="inl_cmd">-/+ buffers/cache</span></p>
+
+<pre class="ubuntu_terminal">
+tj@tj-VirtualBox:~$ free -h
+             total       used       free     shared    buffers     cached
+Mem:          3,9G       1,3G       2,5G       5,4M       100M       805M
+-/+ buffers/cache:       475M       <span class="red">3,4G</span>
+Swap:         3,8G         0B       3,8G
+</pre>
+
+<p>Læg mærke til hvordan free beregner RAM mængden. Der er 4GB RAM i den maskine <span class="inl_cmd">free -h</span> er blevet brugt på, men taller bliver rundet ned til 3,9GB.</p>
+
+<p>Hvis du gerne vil se udviklingen af dit RAM forbrug kan du sætte <span class="inl_cmd">free</span> til at opdatere sig selv efter nogle sekunder <span class="inl_cmd">-sX</span>. Nedestående opdaterer sig selv efter 2 sek.</p>
+
+<code class="cmd">free -g -s2</code>
+
+<p>Læs Mere: Linux ate my RAM! <a href="http://www.linuxatemyram.com/" target="_blank">http://www.linuxatemyram.com/</a></p>
+
+<p>man-page: <span class="inl_cmd">free</span>
+<a href="http://manpages.ubuntu.com/manpages/trusty/man1/free.1.html" target="_blank">
+http://manpages.ubuntu.com/manpages/trusty/man1/free.1.html</a></p>
+
+
+
+<h2><span class="inl_cmd">top</span></h2>
+
+<p><span class="inl_cmd">top</span> er et program der giver informationer om processer. Programmet følger med de fleste Linux distributioner som standard. Programmet afbrydet med <kbd>Ctrl</kbd>+<kbd>c</kbd>.</p>
+
+<pre class="ubuntu_terminal">
+top - 11:36:32 up 2 min,  2 users,  load average: 0,23, 0,23, 0,10
+Tasks: <span class="bold">170</span> total,   <span class="bold">2</span> running, <span class="bold">168</span> sleeping,   <span class="bold">0</span> stopped,   <span class="bold">0</span> zombie
+%Cpu(s):  <span class="bold">7,0</span> us,  <span class="bold">1,7</span> sy,  <span class="bold">0,0</span> ni, <span class="bold">91,3</span> id,  <span class="bold">0,0</span> wa,  <span class="bold">0,0</span> hi,  <span class="bold">0,0</span> si,  <span class="bold">0,0</span> st
+KiB Mem:   <span class="bold">4047396</span> total,   <span class="bold">702860</span> used,  <span class="bold">3344536</span> free,    <span class="bold">28392</span> buffers
+KiB Swap:  <span class="bold">3999740</span> total,        <span class="bold">0</span> used,  <span class="bold">3999740</span> free.   <span class="bold">298104</span> cached Mem
+
+<span class="white_bg">  PID USER      PR  NI    VIRT    RES    SHR S %CPU %MEM     TIME+ COMMAND </span>     
+ 1037 root      20   0  442812  64476  24616 S  3,7  1,6   0:02.53 Xorg         
+ 2018 tj        20   0 1213008  94816  58028 S  3,3  2,3   0:01.90 compiz       
+ 2170 tj        20   0  576656  31360  22824 S  1,3  0,8   0:00.62 gnome-termi+ 
+<span class="bold"> 2281 tj        20   0   30616   3024   2532 R  0,3  0,1   0:00.11 top </span>         
+    1 root      20   0   33772   4348   2688 S  0,0  0,1   0:00.91 init         
+    2 root      20   0       0      0      0 S  0,0  0,0   0:00.00 kthreadd     
+    3 root      20   0       0      0      0 S  0,0  0,0   0:00.00 ksoftirqd/0  
+    4 root      20   0       0      0      0 S  0,0  0,0   0:00.00 kworker/0:0  
+    5 root       0 -20       0      0      0 S  0,0  0,0   0:00.00 kworker/0:0H 
+    6 root      20   0       0      0      0 S  0,0  0,0   0:00.00 kworker/u2:0 
+    7 root      20   0       0      0      0 S  0,0  0,0   0:00.03 rcu_sched    
+    8 root      20   0       0      0      0 S  0,0  0,0   0:00.00 rcu_bh       
+    9 root      20   0       0      0      0 R  0,0  0,0   0:00.03 rcuos/0      
+   10 root      20   0       0      0      0 S  0,0  0,0   0:00.00 rcuob/0      
+   11 root      rt   0       0      0      0 S  0,0  0,0   0:00.00 migration/0  
+   12 root      rt   0       0      0      0 S  0,0  0,0   0:00.00 watchdog/0   
+   13 root       0 -20       0      0      0 S  0,0  0,0   0:00.00 khelper      
+</pre>
+<p></p>
+
+<h2><span class="inl_cmd">htop</span></h2>
+
+<p><span class="inl_cmd">htop</span> er et interaktivt program til at kigge på processer og computerens ressourcer. Programmet tilbyder mange flere informationer end <span class="inl_cmd">top</span> , og er interaktivt. Man kan vælge med musen samt sortere og søge i data.</p>
+
+<p>Programmet installeres med kommandoen:</p>
+
+<code class="cmd">apt-get install htop -y</code>
+
+<figure id="">
+
+	<img class="" src="images/kommandoer_htop.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h2><span class="inl_cmd">uptime </span></h2>
+
+<p><span class="inl_cmd">uptime</span> giver informationer om hvor længe computeren har kørt, antallet af bruger der er logget på og systembelastningen i 1, 5 og 15 minutters intervaller
+</p>
+
+<pre class="ubuntu_terminal">
+tj@tj-VirtualBox:~$ uptime
+ 23:16:35 up 0 min,  2 users,  load average: 0,71, 0,19, 0,06
+</pre>
+
+<h1>Processer</h1>
+
+<p>Når et program startes på et Linux system får processen en unik PID (Proces ID). Man kan komme ud for situationer hvor man har behov for at lukke processer ned, f.eks. hvis programmet låser eller at det opfører sig uhensigtsmæssigt. For at gøre dette anvendes programmerne  <span class="inl_cmd">ps</span> og <span class="inl_cmd">kill</span></h2>
+
+<p>Processerne anvender den de rettigheder som brugeren der oprettede dem har. Dvs. at brugeren kan dræbe de processer som vedkommende selv har startet, inklusiv dem der er oprettet med <span class="inl_cmd">sudo</span>.</p>
+
+<p>Eksemplerne herunder er langt fra uddybende, men giver et kort indblik i de muligheder man har som administrator på systemet.</p>
+
+<h2><span class="inl_cmd">ps</span></h2>
+
+<p><span class="inl_cmd">ps</span> anvendes til at få et overblik over de processer der kører på systemet. Her er et eksempel fra en nystartet terminal hvor vi kører kommandoen <span class="inl_cmd">ps</span>.</p>
+
+<pre class="ubuntu_terminal">
+tj@tj-VirtualBox:~$ ps
+  PID TTY          TIME CMD
+ 2215 pts/11   00:00:00 bash
+ 2227 pts/11   00:00:00 ps
+</pre>
+
+<p>Vi kan se at der kører to processer: <span class="inl_cmd">bash</span> (PID 2215) og <span class="inl_cmd">ps</span> (PID 2227). Vær opmærksom på at det ikke er alle de processer der kører på computeren, men kun dem som kører i den startede session. Ønsker du et overblik over alle de processer der kører på computeren skal du anvende følgende kommando: <span class="inl_cmd">ps aux</span>. Dette overblik er langt mere detaljeret.</p>
+
+<pre class="ubuntu_terminal">
+tj@tj-VirtualBox:~$ ps aux
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root         1  0.2  0.1  33776  4260 ?        Ss   13:15   0:00 /sbin/init
+root         2  0.0  0.0      0     0 ?        S    13:15   0:00 [kthreadd]
+root         3  0.0  0.0      0     0 ?        S    13:15   0:00 [ksoftirqd/0]
+
+<span class="red">... ( Linier udeladt )</span>
+
+tj        2249  0.0  0.3 385332 13772 ?        Sl   13:18   0:00 zeitgeist-datah
+tj        2254  0.0  0.1 265744  6000 ?        Sl   13:18   0:00 /usr/bin/zeitge
+tj        2261  0.0  0.2 233188  9952 ?        Sl   13:18   0:00 /usr/lib/x86_64
+tj        2270  0.0  0.0  12888   772 ?        S    13:18   0:00 /bin/cat
+tj        2298  0.0  0.4 572816 19532 ?        Sl   13:19   0:00 update-notifier
+tj        2316  0.0  0.1 461588  7592 ?        Sl   13:20   0:00 /usr/lib/x86_64
+tj        2325  0.0  0.0  24120  2564 pts/11   R+   13:20   0:00 ps aux
+
+</pre>
+
+<h2><span class="inl_cmd">kill</span></h2>
+
+<p>Når man kender processens ID kan man anvende <span class="inl_cmd">kill</span> til at lukke programet ned. <span class="inl_cmd">kill</span> har en lang række forskellige måder at lukke programmer på og det angives ved at tilføje en option. Ønsker du at dræbe en proces anvendes <span class="inl_cmd">-9</span>. Herunder angives en måde du kan prøve det selv:</p>
+
+<p>Start en terminal og kør: <span class="inl_cmd">ps</span></p>
+
+<pre class="ubuntu_terminal">
+tj@tj-VirtualBox:~$ ps
+  PID TTY          TIME CMD
+ 2215 pts/11   00:00:00 bash
+ 2373 pts/11   00:00:00 ps
+</pre>
+
+<p>Herefter starter vi nano op i baggrunden ved at sætte <span class="inl_cmd">&amp;</span> efter kommandoen, hvorefter vi kører <span class="inl_cmd">ps</span>.</p>
+
+<code class="cmd">nano & </code>
+<code class="more_cmd">ps</code>
+
+
+<pre class="ubuntu_terminal">
+tj@tj-VirtualBox:~$ nano &
+[1] 2374
+tj@tj-VirtualBox:~$ ps
+  PID TTY          TIME CMD
+ 2215 pts/11   00:00:00 bash
+ 2374 pts/11   00:00:00 nano
+ 2375 pts/11   00:00:00 ps
+
+[1]+  Stopped                 nano
+tj@tj-VirtualBox:~$ 
+</pre>
+
+<p>For at dræbe nano anvender vi kommandoen <span class="inl_cmd">kill -9 *PID*</span> (i dette tilfælde 2374) og derefter kører vi <span class="inl_cmd">ps</span> for at se om processen er slettet:</p>
+
+<code class="cmd">kill -9 2374</code>
+<code class="more_cmd">ps</code>
+
+<pre class="ubuntu_terminal">
+tj@tj-VirtualBox:~$ kill -9 2374
+tj@tj-VirtualBox:~$ ps  
+  PID TTY          TIME CMD
+ 2215 pts/11   00:00:00 bash
+ 2376 pts/11   00:00:00 ps
+[1]+  Dræbt                  nano
+</pre>
+
+<p><span class="inl_cmd">kill</span> er et meget avanceret program, og indeholder mange måder at dræbe processer på. Hvis du ønsker at se alle mulighederne kan du anvende kommandoen <span class="inl_cmd">kill -l</span>.</p>
+
+<h2>Afledte programmer til at dræbe finde/dræbe processer</h2>
+
+<p>Man kan sagtens nøjes med <span class="inl_cmd">ps</span>, da man kan filtrere output med grep. F.eks. hvis man har startet firefox og vil finde processen</p>
+
+<pre class="ubuntu_terminal">
+tj@tj-VirtualBox:~$ ps aux | grep firefox
+tj        2380  7.5  6.5 1013652 263112 ?      Sl   13:39   0:27 /usr/lib/<span class="red">firefox</span>/<span class="red">firefox</span>
+tj        2461  0.0  0.0  17436  2092 pts/11   S+   13:46   0:00 grep --color=auto <span class="red">firefox</span>
+</pre>
+
+<p>Som det ses herover bliver firefox fanget 2 gange. En for selve programmet og en som fanger søgningen efter firefox. Det er altså proces <span class="inl_cmd">2380</span> der skal lukkes ned. Der findes en række kommandoer som automatisk integrerer søgningen: <span class="inl_cmd">pgrep</span> og <span class="inl_cmd">pkill</span>. Herunder er vist nogle eksempler med firefox:</p>
+
+<pre class="ubuntu_terminal">
+tj@tj-VirtualBox:~$ pgrep firefox
+2380
+tj@tj-VirtualBox:~$ pkill firefox
+tj@tj-VirtualBox:~$ pgrep firefox
+tj@tj-VirtualBox:~$ 
+</pre>
+
+<p>Først køres <span class="inl_cmd">pgrep</span>, som finder processen. I anden omgang anvendes <span class="inl_cmd">pkill</span> til at lukke processen og <span class="inl_cmd">pgrep firefox</span> viser at processen ikke eksisterer mere</p>
+
+
+<h2><span class="inl_cmd">xkill</span> - til GUI</h2>
+
+<p><span class="inl_cmd">xkill</span> er et program man anvender i et GUI. Alle programmer kan låse eller gå langsom hvis der sker en fejl i operativsystemet. Hvis man ønsker at dræbe en proces i et GUI, åbner man en terminal og skriver xkill. Herefter vil ens cursor ændre sig til et kryds, og hvis man klikker på et vindue med dette, vil det dræbe den proces der kører det og give nedestående i terminalen.</p>
+
+<pre class="ubuntu_terminal">
+thoj@thoj:~$ xkill
+Select the window whose client you wish to kill with button 1....
+xkill:  killing creator of resource 0x4e00143
+</pre>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+
+	</body>
+
+</html>

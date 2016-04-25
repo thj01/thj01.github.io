@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+
+<head>
+	
+	<meta charset="UTF-8" lang="da"/>
+
+	<title>Linux Kommandoer - Thomas Jensen</title>
+
+	<script src="../js/toc2.js" type="text/javascript"></script>
+	<script src="https://code.jquery.com/jquery-2.2.2.js"></script>
+
+	<link rel="stylesheet" href="../css/style.css" />
+	<link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Ubuntu+Mono|Ubuntu|Ubuntu+Condensed' rel='stylesheet' type='text/css'>
+	
+
+</head>
+
+<!-- 
+
+code converter : http://www.freebits.co.uk/convert-html-code-to-text.html 
+
+-->
+
+
+
+<html>
+
+<body onload="generateTOC(document.getElementById('toc'));">
+
+<footer id="license"></footer>
+
+	<script> $( "#license" ).load( "license.html" ); </script>
+
+	<div id="toc">
+	
+		<p>Indholdsfortegnelse</p>
+	
+	</div>
+	
+
+<div class="title">Kommandoer</div>
+	
+<h1>Terminalen - Linux' kraftværk</h1>
+
+<h2>Kapitles opbygning</h2>
+
+<p>Dette kapitel giver en grundlæggende gennemgang af filsystemet, superbrugeren og terminalen (kommandolinien) og kommandostrukturen i Linux.</p>
+
+<h2>Anvendt installation</h2>
+
+<p>For at eksemplificere guiden, er der blevet oprettet en virtuel installation med VirtualBox med følgende Indstillinger:</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>RAM</td>
+			<td>4096 MB</td>
+		</tr>
+		<tr>
+			<td>Grafik hukommelse</td>
+			<td>128 MB og 3D-acceleration </td>
+		</tr>
+		<tr>
+			<td>Harddiske</td>
+			<td>2 x 100GB (SATA)</td>
+		</tr>
+		<tr>
+			<td>Netværk</td>
+			<td>NAT</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Harddiskpartitionering</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Harddisk</th>
+			<th>Drev</th>
+			<th>Betegnelse</th>
+			<th>Størrelse</th>
+			<th>Anvendelse</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td rowspan="4">Harddisk 1 (100 GB)</td>
+			<td>/dev/sda1</td>
+			<td>/</td>
+			<td>50000Mb (50 Gb)</td>
+			<td>System</td>
+		</tr>
+		<tr>
+			<td>/dev/sda2</td>
+			<td>Ingen</td>
+			<td>4096MB (4 GB)</td>
+			<td>Swap</td>
+		</tr>
+		<tr>
+			<td>/dev/sda3</td>
+			<td>/data</td>
+			<td>31000MB (31 GB)</td>
+			<td>Data</td>
+		</tr>
+		<tr>
+			<td>Ledig plads</td>
+			<td> - </td>
+			<td>20,9 GB</td>
+			<td>Linux?</td>
+		</tr>
+		<tr>
+			<td>Harddisk 2 (100GB)</td>
+			<td colspan="4">Ikke konfigureret under installation</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Harddisk 2 vil blive konfigureret i afsnittet XXXXXXXXXXXXXXXXX</p>
+
+
+
+<h2>Hvad er en terminal</h2>
+
+<p>Terminalen er en tekstbaseret tilgang til Linux. Normalt ser vi en GUI som styresystemet, men det er reelt blot en skal hvor vi kan arbejde med programmer grafisk. Der er vi vant til at pege og vælge programmer og funktioner ved at klikke os frem. I terminalen skal vi "snakke" med maskinen og fortælle den hvad en skal gøre, hvordan den skal gøre det og hvad den skal gøre med med.</p>
+
+<p>Det som er udfordringen i starten er, at man skal lære et nyt sprog, og det kræver noget tilvending når man er vant til at pege og klikke sig frem. Det er næsten som forskellen på at læse en bogen eller se filmen. De kan begge noget specielt, men bogen har nuancer som en film ikke kan skabe - nemlig vores måde at se tingene på.</p>
+
+<h2>Tilgå terminalen</h2>
+
+<p>Når Ubuntu er startet op kører der 7 terminalsessions, som man kan logge ind på. Som standard starer man op i den 7 terminal som kører Ubuntu GUI. Disser terminaler kan tilgåes ved hjælp af tastekombinationen <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>F1</kbd> → <kbd>F7</kbd>, hvor F'taller angiver den konkrete terminal.Så længe du befinder dig i VirtualBox skal du anvende dennes interne tastekombination angivet i nedestående skema skema.</p>
+
+<table id="">
+	<thead>
+		<tr>
+			<th>Rigtige genvej</th>
+			<th>VirtualBox' genvej</th>
+			<th>Resultat</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>
+				<kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>F1</kbd> <br/><br/>til <br/><br/><kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>F6</kbd>
+			</td>
+			<td>
+				<kbd>højreCtrl</kbd>+<kbd>F1</kbd><br/><br/>til <br/><br/><kbd>højreCtrl</kbd>+<kbd>F6</kbd>
+			</td>
+			<td>Åbner de bagvedkørende sessions</td>
+		</tr>
+		<tr>
+			<td><kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>F7</kbd></td>
+			<td><kbd>højreCtrl</kbd>+<kbd>F7</kbd></td>
+			<td>Åbner den grafiske brugerflade</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Hvis man har startet Ubuntu op kan man tilgå en terminalsession ved hjælp af tastekombinationen <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>T</kbd>. Det vil starte en termial op i et nyt vindue, og hvor din bruger er logget ind.</p>
+
+<pre class="ubuntu_terminal">
+tj@tj-VirtualBox:~$ 
+
+
+
+
+
+
+</pre>
+
+<p>jo længere tid man bruger Linux - jo mere vil man anvende terminalen. Simpelthen fordi det er smartere og langt mere effektivt end at klikke sig frem. </p>
+
+<h2>Generelt om terminalen</h2>
+
+<p>Når man er logget ind får aman følgende information fra kommandolinien</p>
+
+<ol class="">
+	<li>Hvem man er,</li>
+	<li>hvilken computer man sidder ved,</li>
+	<li>hvor man står i filsystemet og </li>
+	<li>Hvilken type bruger man er</li>
+</ol>
+
+<code class="cmd">tj@tj-VirtualBox:~$ </code>
+
+<table class="">
+	<thead>
+		<tr>
+			<th></th>
+			<th></th>
+			<th></th>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>tj</td>
+			<td>@</td>
+			<td>tj-Virtualbox</td>
+			<td>~</td>
+			<td>$</td>
+		</tr>
+		<tr>
+			<td>brugernavn</td>
+			<td>på</td>
+			<td>PC-navn</td>
+			<td>Brugerens hjem</td>
+			<td>Almindelig bruger</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>$ bliver erstattet af # hvis man er superbruger (root):</p>
+
+<pre class="ubuntu_terminal">
+tj@tj-VirtualBox:~$ sudo su
+[sudo] password for tj: 
+root@tj-VirtualBox:/home/tj# 
+
+
+
+</pre>
+
+<p>De fleste kommandoer har tre sektioner:</p>
+
+<code class="cmd">[kommando] [optioner] [målet for kommandoen]</code>
+
+<p>Eksempel</p>
+
+<code class="cmd">ping -c 4 www.dr.dk</code>
+
+<table class="commands">
+	<thead>
+		<tr>
+			<th>Kommando</th>
+			<th>Option</th>
+			<th>Mål</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>ping</td>
+			<td>-c 4</td>
+			<td>www.dr.dk</td>
+		</tr>
+		<tr>
+			<td>programmet</td>
+			<td>Optionen (i dette tilfælde 4 gange)</td>
+			<td>Målet kommandoen skal arbejde med</td>
+		</tr>
+	</tbody>
+</table>
+
+
+<pre class="ubuntu_terminal">
+tj@tj-VirtualBox:~$ ping -c 4 dr.dk
+PING dr.dk (159.20.6.38) 56(84) bytes of data.
+64 bytes from 159.20.6.38: icmp_seq=1 ttl=63 time=13.0 ms
+64 bytes from 159.20.6.38: icmp_seq=2 ttl=63 time=12.9 ms
+64 bytes from 159.20.6.38: icmp_seq=3 ttl=63 time=13.3 ms
+64 bytes from 159.20.6.38: icmp_seq=4 ttl=63 time=14.0 ms
+
+--- dr.dk ping statistics ---
+4 packets transmitted, 4 received, 0% packet loss, time 3004ms
+rtt min/avg/max/mdev = 12.966/13.342/14.017/0.423 ms
+</pre>
+
+<p>Hvis optionen -c 4 ikke tilføjes, kører kommandoen indtil den bliver afbrudt med tastekombinationen <kbd>Ctrl</kbd>+<kbd>c</kbd>  (stop kommandoen) eller <kbd>Ctrl</kbd>+<kbd>z</kbd> (afbryd programmet).</p>
+
+<p>Nogle kommandoer kan indlejrer – f.eks. time (finder tidsforbruget af en kommando)</p>
+
+<code class="cmd">time ping -c 4 www.dr.dk</code>
+
+<pre class="ubuntu_terminal">
+tj@tj-VirtualBox:~$ time ping -c 4 dr.dk
+PING dr.dk (159.20.6.38) 56(84) bytes of data.
+64 bytes from 159.20.6.38: icmp_seq=1 ttl=63 time=12.6 ms
+64 bytes from 159.20.6.38: icmp_seq=2 ttl=63 time=13.9 ms
+64 bytes from 159.20.6.38: icmp_seq=3 ttl=63 time=12.3 ms
+64 bytes from 159.20.6.38: icmp_seq=4 ttl=63 time=14.6 ms
+
+--- dr.dk ping statistics ---
+4 packets transmitted, 4 received, 0% packet loss, time 3005ms
+rtt min/avg/max/mdev = 12.331/13.369/14.614/0.929 ms
+
+real	0m3.041s
+user	0m0.004s
+sys	0m0.000s
+</pre>
+
+<h2>Superbrugeren</h2>
+
+<p>Alle Linux har en superbruger (<span class="inl_cmd">root</span>), som har rettigheder til at gøre alt på maskinen. Denne bruger anvender man til at lave systemarbejde med f.eks. at konfigurere programmer og installere programmer. På Ubuntu er <span class="inl_cmd">root</span>-kontoen ikke aktiveret, men man kan "opgradere" sin bruger til at have administratorrettigheder ved hjælp af kommandoen <span class="inl_cmd">sudo</span> (<span class="bold">su</span>peruser <span class="bold">do</span>). <span class="inl_cmd">sudo</span> kommandoen undersøger om man er medlem af sudo-gruppen og giver igennem denne gruppe adgang til at man kan udføre administrationsarbejde.</p>
+
+<p>I eksemplet herunder vil jeg se informationer om den første harddisk (<span class="inl_cmd">/dev/sda</span>) ved hjælp af fdisk kommandoen <span class="inl_cmd">fdisk -d /dev/sda</span>:</p>
+
+<pre class="ubuntu_terminal">
+tj@tj-VirtualBox:~$ fdisk -l /dev/sda
+Kan ikke åbne /dev/sda
+tj@tj-VirtualBox:~$ sudo fdisk -l /dev/sda
+[sudo] password for tj: 
+
+Disk /dev/sda: 107.4 GB, 107374182400 bytes
+255 hoveder, 63 sektorer/spor, 13054 cylindre, i alt 209715200 sektorer
+Enheder = sektorer af 1 * 512 = 512 byte
+Sektorstørrelse (logisk/fysisk): 512 byte / 512 byte
+I/O-størrelse (minimum/optimal): 512 byte / 512 byte
+Diskidentifikation: 0x00031198
+
+    Enhed Opstart   Start         Slut     Blokke   Id  System
+/dev/sda1   *        2048    97656831    48827392   83  Linux
+/dev/sda2        97656832   105656319     3999744   82  Linux swap / Solaris
+/dev/sda3       105656320   166203391    30273536   83  Linux
+</pre>
+
+<p>Under første kørsel bliver det gjort med brugeren tj's rettigheder. Det medfører at <span class="inl_cmd">fdisk</span> ikke har ret til at kigge på harddiskens data. I det andet tilfælde "løfter" jeg rettighedsniveauet til <span class="inl_cmd">root</span>-niveau, som så giver mig de informationer jeg ønsker.</p>
+
+<p>Hvis der skal udføres meget administrationsarbejde vælger man ofte at bruge kommandoen <span class="inl_cmd">sudo su</span>. Denne kommando ændrer ens bruger til <span class="inl_cmd">root</span>:</p>
+
+<pre class="ubuntu_terminal">
+tj@tj-VirtualBox:~$ sudo su
+[sudo] password for tj: 
+root@tj-VirtualBox:/home/tj# 
+</pre>
+
+<p>Denne kommando gør at filen /etc/network/interfaces bliver kørt i tekstredigeringsprogrammet nano med superbrugerrettigheder.</p>
+
+<table class="cmd_table">
+	<thead>
+		<tr>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>sudo</td>
+			<td>Udfør kommandoen som superbruger</td>
+		</tr>
+		<tr>
+			<td>sudo su</td>
+			<td>Ændrer en til root bruger, så man ikke behøver at skrive sudo</td>
+		</tr>
+		<tr>
+			<td>gksudo</td>
+			<td>Starter GUI programmer op med superbrugerrettigheder</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Hvis man kører flere kommandoer med <span class="inl_cmd">sudo</span> lige efter hinanden, behøver man ikke genindtaste sit password, da rettigehden bliver husket i en længere tid. Derfor bør man altid afslutte den session man har gang i med kommandoen <span class="inl_cmd">exit</span>. Det gælder især hvis man har anvendt <span class="inl_cmd">sudo su</span>, da det logger en af <span class="inl_cmd">root</span>-kontoen.</p>
+
+<pre class="ubuntu_terminal">
+root@tj-VirtualBox:/home/tj# exit
+exit
+tj@tj-VirtualBox:~$ 
+</pre>
+
+<p>Skriver man exit i et terminalvindue vil det lukke den kørende session ned. Det betyder at hvis man lige har startet den op, med <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>t</kbd>, vil vinduet lukke ned igen.</p>
+
+<h2>man pages</h2>
+
+<p>Til alle terminalens kommandoer er der skrevet en manual, og den kan man tilgå ved med kommandoen <span class="inl_cmd">man [kommando]</span> . Her kan man læse hvordan 
+kommandoen bruges (Synopsis) og de optioner man kan tilføje (Descriptions). Herunder er de første linier af kommandoen <span class="inl_cmd">man ls</span></p>
+
+<pre class="ubuntu_terminal">
+LS(1)                            User Commands                          LS(1)
+
+<span class="bold">NAME</span>
+       ls - list directory contents
+
+<span class="bold">SYNOPSIS</span>
+       <span class="bold">ls</span> [<span class="underline">OPTION</span>]... [<span class="underline">FILE</span>]...
+
+<span class="bold">DESCRIPTION</span>
+     List  information  about  the FILEs (the current directory by default).
+     Sort entries alphabetically if none of -cftuvSUX nor --sort  is  speci‐
+     fied.
+
+     Mandatory  arguments  to  long  options are mandatory for short options
+     too.
+
+       <span class="bold">-a, --all</span>
+              do not ignore entries starting with .
+
+       <span class="bold">-A, --almost-all</span>
+              do not list implied . and ..
+</pre>
+
+<p>Man scroller med piletasterne og afslutter med [q].</p>
+
+<p>De kan også findes på Internettet. F.eks. kan man finde ls' online udgave ved at søge med ordene: <span class="inl_cmd">ubuntu man ls</span>.  Herefter vælger man sin version af Ubuntu, og får den 
+relevante mannualside.</p>
+
+<figure id="">
+
+	<img class="p90"src="images/kommandoer_man_pages_01.png" alt="" title="" />
+
+	<figcaption>man pages på Ubuntu.com</figcaption>
+
+</figure>
+
+
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+
+	</body>
+
+</html>
