@@ -4,7 +4,7 @@
 	
 	<meta charset="UTF-8" lang="da"/>
 
-	<title>Ubuntu 14.04 LTS Installation- Thomas Jensen</title>
+	<title>Ubuntu 16.04 LTS Installation- Thomas Jensen</title>
 
 	<link rel="stylesheet" href="../css/styles/docco.css" />
 
@@ -44,11 +44,11 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 	
 	</div>
 
-<div class="title">Installation af Ubuntu 14.04 LTS</div>
+<div class="title">Installation af Ubuntu 16.04 LTS</div>
 
 <h1>Guidens formål</h1>
 
-<p>Guidens formål er at installere Ubuntu 14.04.4 LTS på en ny computer. I denne guide bliver der vist på en Virtuel maskine der er sat op ved hjælp af i VirtualBox med 4 GB RAM og 100 GB harddisk. Denne maskine kan senere anvendes i andre guides.</p>
+<p>Guidens formål er at installere Ubuntu 16.04 LTS på en ny computer. I denne guide bliver der vist på en Virtuel maskine der er sat op ved hjælp af i VirtualBox med 4 GB RAM og 100 GB harddisk. Det er denne maskine installation og konfiguration der er udgangspunkt for resten af guiden.</p>
 
 <p>Installationsprocessen giver på mange områder sig selv, og der vil kun komme forklaringer hvor det er nødvendigt.</p>
 
@@ -471,6 +471,49 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 	<figcaption></figcaption>
 
 </figure>
+
+<h1>Opdatering af Ubuntu</h1>
+
+<p>Før vi går videre med at konfigurere Ubuntu skal vi opdatere. Der er 3 ting vi skal have gjort:</p>
+
+<ol class="">
+	<li>Ændre repositories fra danske til internationale og tilføjer partner repository</li>
+	<li>Opdatere <span class="inl_cmd">apt</span></li>
+	<li>Opgradere Ubuntu</li>
+</ol>
+
+<p>Ubuntu søger som standard i danske repistories efter filer. Det er min erfaring at disse er langsommere at tilgå og hente fra end de internationale. Derfor er det min anbefaling at det ændres. Vi åbner terminalen (kommandoprompten) med tastekombinationen <span class="knap">Ctrl</span>+<span class="knap">Alt</span>+<span class="knap">T</span> og kører 2 kommandoer for at fjerne alle <span class="inl_cmd">dk</span> henvisninger:</p>
+
+<pre class="ubuntu_terminal">
+To run a command as administrator (user "root"), use "sudo <command>".
+See "man sudo_root" for details.
+
+<span class="green1">thoj@thoj-VirtualBox</span>:~$
+</pre>
+
+<code class="cmd">sudo cp /etc/apt/sources.list /etc/apt/sources.list.backup</code>
+<code class="more_cmd">sudo sed -i s/dk.archive/archive/ /etc/apt/sources.list</code>
+
+<p>For at tilføje partner repositoriet skal du redigere i filen <span class="inl_cmd">/etc/apt/sources.list</span> og fjerne et hash-tag</p>
+
+<code class="cmd">nano /etc/apt/sources.list</code>
+
+<pre class="black">
+<span class="blue1">## Uncomment the following two lines to add software from Canonical's
+## 'partner' repository.
+## This software is not part of Ubuntu, but is offered by Canonical and the
+## respective vendors as a service to Ubuntu users.
+# deb http://archive.canonical.com/ubuntu xenial partner 
+# deb-src http://archive.canonical.com/ubuntu xenial partner</span>
+</pre>
+
+
+
+
+<h1>Konfiguration af Ubuntu</h1>
+
+<p></p>
+
 
 <p></p>
 

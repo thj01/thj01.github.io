@@ -70,7 +70,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 <code class="cmd">ls -al /etc/passwd</code>
 
 <pre class="ubuntu_terminal">
-tj@tj-VirtualBox:~$ ls -al /etc/passwd
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ ls -al /etc/passwd
 -rw-r--r-- 1 root root 2013 mar 16 20:05 /etc/passwd
 </pre>
 
@@ -150,7 +150,7 @@ tj@tj-VirtualBox:~$ ls -al /etc/passwd
 <p>Vi kan altså sige om denne fil at brugeren er <span class="inl_cmd">root</span>, som må læse og skrive i filen. Alle andre (gruppe og alle). De er nødvendigt for alle at kunne læse denne fil, da det er den der administrere adgangen til systemet. Kigger vi ind i filen kan vise hvad den har at sige om vores bruger, her <span class="inl_cmd">tj</span>. Da alle har ret til at læse i filen kan jeg kommandoen den som mig selv.</p>
 
 <pre class="ubuntu_terminal">
-tj@tj-VirtualBox:/home$ cat /etc/passwd | grep tj
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">/home</span>$ cat /etc/passwd | grep tj
 <span class="red">tj</span>:x:1000:1000:Thomas Jensen,,,:/home/<span class="red">tj</span>:/bin/bash
 </pre>
 
@@ -159,7 +159,7 @@ tj@tj-VirtualBox:/home$ cat /etc/passwd | grep tj
 <p>Et andet eksempel er den partition der blev oprettet under installationen (<span class="inl_cmd">/data</span>). vi kan se rettighedern ved at køre : <span class="inl_cmd">ls -al / | grep data</span></p>
 
 <pre class="ubuntu_terminal">
-tj@tj-VirtualBox:~$ ls -al / | grep data
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ ls -al / | grep data
 drwxr-xr-x   3 root root  4096 mar 15 18:13 <span class="red">data</span>
 </pre>
 
@@ -470,7 +470,7 @@ http://manpages.ubuntu.com/manpages/trusty/man1/chmod.1.html</a></p>
 <code class="cmd">sudo adduser testuser</code>
 
 <pre class="ubuntu_terminal">
-tj@tj-VirtualBox:~$ sudo adduser testuser
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ sudo adduser testuser
 [sudo] password for tj: <span class="red">&lt;-- Indtast dit kodeord</span>
 Tilføjer bruger »testuser«...
 Tilføjer ny gruppe »testuser« (1001)...
@@ -495,7 +495,7 @@ Er informationerne korrekte? [J/n] <span class="red">[Retur]</span>
 <code class="cmd">cat /etc/passwd | grep testuser</code>
 
 <pre class="ubuntu_terminal">
-tj@tj-VirtualBox:~$ cat /etc/passwd | grep testuser
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ cat /etc/passwd | grep testuser
 <span class="red">testuser</span>:x:1001:1001:,,,:/home/<span class="red">testuser</span>:/bin/bash
 </pre>
 
@@ -523,15 +523,15 @@ http://manpages.ubuntu.com/manpages/trusty/en/man8/deluser.8.html</a></p>
 <code class="more_cmd">sudo passwd testuser2</code>
 
 <pre class="ubuntu_terminal">
-tj@tj-VirtualBox:~$ sudo useradd -d /home/testuser2 -m testuser2 -u 2010 -s /bin/bash
-tj@tj-VirtualBox:~$ sudo passwd testuser2
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ sudo useradd -d /home/testuser2 -m testuser2 -u 2010 -s /bin/bash
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ sudo passwd testuser2
 Indtast ny UNIX-adgangskode: <span class="red">&lt;-- indtast password f.eks. 123qwe</span>
 Genindtast ny UNIX-adgangskode: <span class="red">... og igen</span>
 passwd: adgangskoden blev opdateret
 </pre>
 
 <pre class="ubuntu_terminal">
-tj@tj-VirtualBox:~$ cat /etc/passwd | grep testuser
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ cat /etc/passwd | grep testuser
 <span class="red">testuser</span>:x:1001:1001:,,,:/home/<span class="red">testuser</span>:/bin/bash
 <span class="red">testuser</span>2:x:2010:2010::/home/<span class="red">testuser</span>2:/bin/bash
 </pre>
@@ -579,9 +579,9 @@ http://manpages.ubuntu.com/manpages/trusty/man8/useradd.8.html</a></p>
 <code class="cmd">id *brugernavn*</code>
 
 <pre class="ubuntu_terminal">
-tj@tj-VirtualBox:~$ id tj
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ id tj
 uid=1000(tj) gid=1000(tj) grupper=1000(tj),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),108(lpadmin),124(sambashare)
-tj@tj-VirtualBox:~$ id hugo
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ id hugo
 id: hugo: ingen sådan bruger
 </pre>
 
@@ -623,7 +623,7 @@ http://manpages.ubuntu.com/manpages/trusty/en/man8/usermod.8.html</a></p>
 <p>Herunder er et eksemel på resultatet</p>
 
 <pre class="ubuntu_terminal">
-tj@tj-VirtualBox:~$ sudo chage -l testuser2
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ sudo chage -l testuser2
 Sidste ændring af adgangskode					: mar 16, 2016
 Adgangskode udløber					: aldrig
 Adgangskode inaktiv					: aldrig
@@ -640,7 +640,7 @@ Antal dages forvarsel om adgangskodens udløb	: 7
 <p>Herunder er et eksempel på resultatet af denne kommando, kørt på brugeren "chagetest"</p>
 
 <pre class="ubuntu_terminal">
-tj@tj-VirtualBox:~$ sudo chage testuser2
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ sudo chage testuser2
 Ændrer forældelsesoplysninger for testuser2
 Angiv ny værdi eller tryk RETUR for standardværdien
 
@@ -657,8 +657,8 @@ Angiv ny værdi eller tryk RETUR for standardværdien
 <code class="cmd">sudo chage -d 0 testuser2</code>
 
 <pre class="ubuntu_terminal">
-tj@tj-VirtualBox:~$ sudo chage -d 0 testuser2
-tj@tj-VirtualBox:~$ su testuser2
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ sudo chage -d 0 testuser2
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ su testuser2
 Adgangskode: 
 Du skal omgående ændre din adgangskode (gennemtvunget af roden)
 Ændrer adgangskode for testuser2.
@@ -706,13 +706,62 @@ http://manpages.ubuntu.com/manpages/trusty/en/man1/chage.1.html</a></p>
 
 <p>Grupperne og deres medlemmer kan ses i filen <span class="inl_cmd">/etc/group</span>.</p>
 
+<h1>Superbruger rettigheder</h1>
+
+<p>En af de ting der adskiller Linux fra andre systemer er brugerrettighederne. Det er på en gang en stærk feature Linux har og på samme tid det som skaber udfordringer. Som bruger kan man alt det som en bruger må og ikke andet. Det betyder bare at nedestående liste kræver superbruger rettigheder:</p>
+
+<ul class="disc">
+	<li>Opdatering af systemet</li>
+	<li>Ændring af rettigheder på filer, mapper og drev</li>
+	<li>Ændring af systemets konfigurationsfiler</li>
+	<li>Ændring af netværksindstillinger</li>
+	<li>Tilføjelse og ændring af brugere</li>
+</ul>
+
+<p>Det er egentlig ikke forskelligt fra Windows eller OS X, der har man bare valgt at tildele disse rettigheder til alle brugere som udgangspunkt eller på en måde der ikke kræver andet end et klik eller to. Men det gælder ikke blot brugere, men også programmer. Derfor vil man ofte støde på at Ubuntu beder om et password når man installerer programmer eller opdatere vigtige komponenter - f.eks. kernen.</p>
+
+<p>Ulempen ved denne tilgang er, at man vil blive spurgt om sit password når der laves væsentlige ændringer, hvilket kan virke irriterende i starten. Fordelen er, at du som bruger ved hvad der bliver installeret ... og at ingen programmer (f.eks. en browser) kan snige et program, malware eller virus ind uden at du får muligheden for at gribe ind.</p>
+
+<p>Det er kun medlemmer af <span class="inl_cmd">sudo</span>-gruppen der kan køre disse kommandoer.</p>
+
+<h2><span class="inl_cmd">sudo</span> - SuperUser DO</h2>
+
+<p>Som udgangspunkt består <span class="inl_cmd">sudo</span>-gruppen kun af en bruger, nemlig den bruger der installerede computere. Denne bruger vil altid kunne udføre administrationsarbejede på computeren ved at sætte <span class="inl_cmd">sudo</span> foran kommandoerne. Se eksemplet herunder med <span class="inl_cmd">ls -al</span> hvor jeg forsøger at se indholdet af <span class="inl_cmd">root's</span> mappe (hvor kun <span class="inl_cmd">root</span> har rettigheder):</p>
+
+<pre class="ubuntu_terminal">
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ ls -al /root
+ls: kan ikke åbne katalog '/root': Adgang nægtet
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ sudo ls -al /root
+totalt 24
+drwx------  4 root root 4096 maj  2 14:43 .
+drwxr-xr-x 25 root root 4096 maj  2 14:35 ..
+-rw-r--r--  1 root root 3106 okt 22  2015 .bashrc
+drwx------  2 root root 4096 apr 21 00:14 .cache
+drwx------  3 root root 4096 maj  2 14:43 .gnupg
+-rw-r--r--  1 root root  148 aug 17  2015 .profile
+</pre>
+
+<h2>root-shell</h2>
+
+<p>Nogle har man brug for at lave en del administrationsarbejde, og der kan det være irriterende at skulle anvende <span class="inl_cmd">sudo</span> igen og igen. Der vil det kunne betale sig at ændre bruger til <span class="inl_cmd">root</span>. Det gøres med kommandoen:</p>
+
+<code class="cmd">sudo -i</code>
+
+<pre class="ubuntu_terminal">
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ sudo -i
+[sudo] adgangskode for thoj: 
+root@thoj-VirtualBox:~#
+</pre>
+
+
 <h2><span class="inl_cmd">sudo</span>-gruppen</h2>
 
-<p>For at en bruger kan udføre administrationsarbejde skal han være medlem af sudo gruppen. Det gøres med følgende kommando:</p>
+<p>Hvis man vil have andre brugere til at kunne udføre administrationsarbejde skal de være medlem af sudo gruppen. Det gøres med følgende kommando:</p>
 
 <code class="cmd">sudo adduser *brugernavn* sudo </brugernavn></code>
 
 <p>Hvis man tilføjer en bruger gennem en terminal der er startet på en desktop skal man genstarte GUI'en, dvs. logge af og på igen. Det skyldes at GUI terminalen kører under samme session som GUI'en. For at genindlæse rettigheder osv. bliver man altså nød til at logge af og på igen.</p>
+
 
 
 <p></p>
