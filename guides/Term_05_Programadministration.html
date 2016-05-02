@@ -153,9 +153,21 @@ Efter denne handling, vil 559 MB diskplads blive frigjort.
 Vil du fortsætte? [J/n]
 </pre>
 
-<h1>Tilføje repositories</h1>
+<h1>Repositories</h1>
+
+<p>Ubuntu har adgang til sine programmer ved hjælp af repositories eller PPA'er (<span class="bold">P</span>ersonal <span class="bold">P</span>ackage <span class="bold">A</span>rchieve).</p>
+
+<p>Herunder vil du lære at aktivere, tilføje og fjerne repositories ved hjælp af at redigere i konfigurationsfilen <span class="inl_cmd">/etc/apt/sources.list</span> og ved at anvende kommandolinien.</p>
 
 <h2>Ved hjælp af <span class="inl_cmd">sources.list</span></h2>
+
+<p>Et repository bliver konfigureret ved hjælp af en "dev" linie:</p>
+
+<pre class="black">
+<span class="brown">deb</span> <span class="green1">http://extras.ubuntu.com/ubuntu</span> <span class="red">trusty</span> <span class="violet">main</span>
+</pre>
+
+<p>Linien fortæller hvor den er placeret, hvilken distribution det drejer sig om og hvad det hedder. Læg mærke til at nogle af linierne starter med <span class="brown">deb-src</span>. <span class="inl_cmd">src</span> står for source og giver adgang til programmernes kildekode. Disse linier er ikke nødvendige for langt de fleste brugere. Hvis du ikke ønsker at anvende tid på at gennemsøge disse linier kan du med fordel sætte et <span class="inl_cmd">#</span> foran så linien bliver udkommenteret.</p>
 
 <p>Da ubuntu blev installeret blev <span class="inl_cmd">/etc/apt/sources.list</span> konfigureret med standard repositories. Det betyder bl.a. at "partner" repositoriet er deaktiveret. I dette reposiory ligger der proporitære og closed-source programmer som kan være praktiske at få adgang til. Det skal vi have ændret. Åbn <span class="inl_cmd">/etc/apt/sources.list</span> med <span class="inl_cmd">nano</span> gå ned i bunden af filen:</p>
 
@@ -175,7 +187,7 @@ Vil du fortsætte? [J/n]
 <span class="brown">deb-src</span> <span class="green1">http://extras.ubuntu.com/ubuntu</span> <span class="red">trusty</span> <span class="violet">main</span>
 </pre>
 
-<p>Fjern <span class="inl_cmd">#</span> foran linierne så de kommer til at se ud som herunder:</p>
+<p>Som du kan se herover har flere af linierne et <span class="inl_cmd">#</span> foran sig. Det betyder at de er udkommenteret, og derfor ikke bliver læst af programmet. Fjern <span class="inl_cmd">#</span> foran linierne så de kommer til at se ud som herunder:</p>
 
 <pre class="black">
 <span class="brown">deb</span> <span class="green1">http://archive.canonical.com/ubuntu</span> <span class="red">trusty</span> <span class="violet">partner</span>
@@ -229,6 +241,18 @@ Beregner opgraderingen ... Færdig
 <p>Det skyldes, at de nye versioner der skal installeres kræver nyere filer end dem der er installeret. Dem skal du opdatere og det gøres ved at sætte <span class="inl_cmd">apt</span> til at lave en <span class="inl_cmd">dist-upgrade</span></p>
 
 <code class="cmd">sudo apt-get dist-upgrade</code>
+
+<h2>Fjerne PPA filer</h2>
+
+<p>Hvis man ønsker at fjerne en PPA er den bedste metode at installere programmet <span class="inl_cmd">ppa-purge</span>. Det kan gøres manuelt, men for at sikre sig at Ubuntu kun anvender de normalt tilgængelige kræver det at man afinstallerer og geninstallere programmerne.</p>
+
+<p>Installer <span class="inl_cmd">ppa-purge</span></p>
+
+<code class="cmd">sudo apt-get install ppa-purge -y</code>
+
+<p>Herefter kan en PPA-fil fjernes med kommandoen:</p>
+
+<code class="cmd">sudo ppa-purge *PPA-navn*</code>
 
 <p></p>
 <p></p>
