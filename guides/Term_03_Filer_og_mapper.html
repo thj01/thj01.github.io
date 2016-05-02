@@ -311,6 +311,30 @@ tir apr 12 08:39:19 CEST 2016
 tir apr 12 08:39:21 CEST 2016
 </pre>
 
+<p><span class="inl_cmd">tee</span> kan også anvendes til at indsætte tekstrenge i filer. Herunder opretter vi filen <span class="inl_cmd">testtee</span> i vores hjemmemappe og indsætter tekststrengen <span class="inl_cmd">hej</span>.</p>
+
+<code class="cmd">touch ~/testtee</code>
+<code class="more_cmd">echo "hej" | tee ~/testtee</code>
+
+<pre class="ubuntu_terminal">
+tj@tj-VirtualBox:~$ touch ~/testtee
+tj@tj-VirtualBox:~$ echo "hej" | tee ~/testtee
+hej
+tj@tj-VirtualBox:~$ tail ~/testtee
+hej
+</pre>
+
+<p>Vær opmærksom på at <span class="inl_cmd">tee</span> som standard erstatter indholdet af filen. Hvis vi vil indsætte en ny linie skal vi anvende omdirigering (markeret med rødt herunder):</p>
+
+<pre class="ubuntu_terminal">
+tj@tj-VirtualBox:~$ echo "hej (linie nummer 2)" | tee <span class="red">>></span> ~/testtee
+hej (linie nummer 2)
+tj@tj-VirtualBox:~$ tail ~/testtee
+hej
+hej (linie nummer 2)
+</pre>
+
+
 <h2><span class="inl_cmd">sed</span> - Erstat indhold i filer</h2>
 
 <p><span class="inl_cmd">sed</span> anvendes til at filtrere og transformere tekst i filer. Her vil vi kun se hvordan vi kan erstatte tekst ved hjælp af <span class="inl_cmd">sed</span>.</p>
