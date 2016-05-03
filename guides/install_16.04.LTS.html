@@ -55,9 +55,6 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 	
 <h1>Installation af Ubuntu</h1>
 
-
-<h2>Installationssprog, kontrol af computer og netværk</h2>
-
 <p>Efter at du har bootet DVD/USB'en kommer der først to vinduer. På det første skal du vælge sprog og den måde du vil starte Ubuntu. Hvis du vælger <span class="knap">Prøv Ubuntu</span>, vil hele installationsprocessen blive springet over i første omgang, og Ubuntu vil starte op fra boot-mediet. På den måde kan du prøve Ubuntu uden at installere det. Systemet er dog langsomt, da DVD/USB mediet ikke er lige så hurtigt og effektivt som en harddisk. Vælger du forkert er det ikke noget problem, da der vil ligger et ikon på skrivebordet til at starte installationen.</p>
 
 <p>Her vælger vi dog <span class="inl_cmd">Installer Ubuntu</span>.</p>
@@ -119,9 +116,6 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 		</tr>
 	</tbody>
 </table>
-
-
-<h2>Partitionering af harddisken</h2>
 
 <p>Vi vil her konfigurere harddisken så der er tre partitioner. En til system, en til data/backup og en til Swap (virtuel hukommelse). På denne måde kan man senere geninstallere Ubuntu uden at miste sine data. Den virtuelle hukommelse fungerer anderledes på Linux end på Windows. På Linux kører det på en selvstændig partition med sit eget filsystem. På den måde bliver den virtuelle hukommelse ikke spredt ud over harddisken hvor der lige nu er plads, men den vil altid blive skrevet hvor den ikke forstyrrer.</p>
 
@@ -349,7 +343,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 </figure>
 
-<h2>Vælg lokation og tastetur indstillinger</h2>
+<h2>Lokation, tastetur og administrationsbruger</h2>
 
 <p>De næste to indstillinger giver sig selv og Ubuntu sætter selv de rigtige indstillinger. Tryk <span class="knap">Fortsæt</span> 2 gange.</p>
 
@@ -371,8 +365,6 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 </figure>
 
-<h2>Valg af administrationsbruger og adgangskode</h2>
-
 <p>Den første bruger der bliver oprettet er ret vigtig, da det er denne bruger der har mulighed for at udføre systemarbejde på computeren. Vær opmærksom på, at Ubuntu skelner mellem store og små bogstaver. Det betyder at der er forskel på brugernavnene <span class="inl_cmd">thoj</span> og <span class="inl_cmd">Thoj</span>. Det er normen at bruge små bogstaver til brugernavne, da man ellers risikerer problemer når man skal arbejde med andre operativsystemer (f.eks Windows)</p>
 
 <p>Indtast dit fulde navn og sæt dit brugernavn til dine initialer. Sæt en adgangskode. Er det i en virtuel maskine der skal testes på kan du anvende: <span class="inl_cmd">123qwe</span>, da det er let at huske og taste ind.</p>
@@ -384,8 +376,6 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 	<figcaption></figcaption>
 
 </figure>
-
-<h2>Ubuntu installeres færdig</h2>
 
 <p>Herefter installerer Ubuntu sig færdig. Ubuntu henter opdateringer og lande/sprog konfigurationer på nettet.</p>
 
@@ -410,7 +400,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <p>Når installationen er færdig skal du fjerne installationsmediet og genstarte Ubuntu.</p>
 
-<h1>Første start</h1>
+<h2>Første start</h2>
 
 <p>Efter første genstart er Ubuntu klar efter du har logget ind.</p>
 
@@ -610,16 +600,116 @@ Læser tilstandsoplysninger... Færdig
 
 </figure>
 
+<h2>Drivere til grafikkort</h2>
 
-<p>Herudover kan du få brug for nedestående hvis du gerne vil have fuld udbytte af dit grafikkort. Dette skridt er ikke strengt nødvendig hvis din computer "kun" har et Intel grafikkort.</p>
+<p>Installer følgende for at få de nyeste funktionelle driver til dit grafikkort. Tilføj repositoriet <span class="inl_cmd">ppa:graphics-drivers/ppa</span></p>
 
 <code class="cmd">sudo add-apt-repository ppa:graphics-drivers/ppa -y</code>
-<code class="more_cmd">sudo apt-get update</code>
-<code class="more_cmd">sudo ubuntu-drivers autoinstall -y</code>
-<code class="more_cmd">sudo reboot</code>
+
+<pre class="ubuntu_terminal">
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ sudo add-apt-repository ppa:graphics-drivers/ppa -y
+gpg: nøglering »/tmp/tmpg30rca37/secring.gpg« oprettet
+gpg: nøglering »/tmp/tmpg30rca37/pubring.gpg« oprettet
+gpg: requesting key 1118213C from hkp server keyserver.ubuntu.com
+gpg: /tmp/tmpg30rca37/trustdb.gpg: trustdb oprettet
+gpg: key 1118213C: public key "Launchpad PPA for Graphics Drivers Team" imported
+gpg: Totalt antal behandl.: 1
+gpg:               importerede: 1  (RSA: 1)
+OK
+</pre>
+
+<p>Opdater dine repositories</p>
+
+<code class="cmd">sudo apt-get update</code>
+
+<p>Installer grafikdrivere</p>
+
+<code class="cmd">sudo ubuntu-drivers autoinstall</code>
+
+<p>Det er nødvendigt at reboot maskinen efter installation af grafikdrivere. Det skyldes at der er sket større ændringer i kernen.</p>
+
+<code class="cmd">sudo reboot</code>
+
+<h2>Installer Ekstra programmer</h2>
+
+<p>Her installeres en lang række programmer</p>
+
+<span class="afsnit">Utilities</span>
+
+<ul class="disc">
+	<li>gparted - harddisk opsætning</li>
+	<li>p7Zip-full - pakkeprogram</li>
+	<li>Indicator-cpufreq - Indicator til CPU-indstillinger</li>
+	<li>alacarte - Redigering af hovedmeny</li>
+	<li>Unitu-tweak-tool - Indstilling af Ubuntu's GUI</li>
+	<li>gdebi - Program til installation af deb filer</li>
+	<li>Caffeine - Program til at sætte screensaver på pause</li>
+	<li>Geany - Teksteditor</li>
+	<li>Dropbox</li>
+</ul>
+
+<code class="cmd">sudo apt-get install -y gparted p7zip-full indicator-cpufreq alacarte unity-tweak-tool gdebi caffeine geany nautilus-dropbox</code>
+
+<span class="afsnit">Media</span>
+
+<ul class="disc">
+	<li>Skype - Samtale klient</li>
+	<li>VLC - Media Afspiller</li>
+	<li>Audacity - Lydredigering</li>
+</ul>
+
+<code class="cmd">sudo apt-get install -y skype vlc audacity</code>
+
+<span class="afsnit">Grafik</span>
+
+<ul class="disc">
+	<li>Phatch - Photo Batch program</li>
+	<li>Gimp - Billedredigeringsprogram med div. plugins</li>
+	<li>Inkscape - Vektorbaseret redigeringsprogram (svg)</li>
+</ul>
+
+<code class="cmd">sudo apt-get install -y phatch gimp gimp-lensfun gimp-plugin-registry gimp-texturize inkscape</code>
+
+
+
+
+
 
 
 <p></p>
+
+
+<span class="afsnit">Diverse programmer</span>
+
+<p>Google Chrome</p>
+
+<code class="cmd">wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - </code>
+<code class="more_cmd">sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'</code>
+<code class="more_cmd">sudo apt-get install -y google-chrome-stable</code>
+
+<p>classicmenu-indicator - Et værktøjslinieprogram, der giver adgang til en programmenu</p>
+
+<code class="cmd">sudo apt-add-repository -y ppa:diesch/testing</code>
+<code class="more_cmd">sudo apt-get install -y classicmenu-indicator</code>
+<code class="more_cmd">sudo apt-get update </code>
+<code class="more_cmd">sudo apt-get install -y classicmenu-indicator</code>
+<p>VirtualBox - Virtualiseringsprogram</p>
+
+<code class="cmd">sudo wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | sudo apt-key add -
+</code>
+<code class="more_cmd">sudo sh -c 'echo "deb http://download.virtualbox.org/virtualbox/debian $(lsb_release -cs) contrib" >> /etc/apt/sources.list.d/virtualbox.list' </code>
+<code class="more_cmd">sudo apt-get update</code>
+<code class="more_cmd">sudo apt-get install -y dkms virtualbox-5.0</code>
+
+
+
+
+<h2>Fjern overflødige kerner</h2>
+
+<p></p>
+
+<code class="cmd">sudo apt-get purge $(dpkg -l linux-{image,headers}-"[0-9]*" | awk '/ii/{print $2}' | grep -ve $(uname -r | sed -r 's/-[a-z]+//') | sed ':a;N;$!ba;s/\n/ /g')
+</code>
 
 
 <p></p>
