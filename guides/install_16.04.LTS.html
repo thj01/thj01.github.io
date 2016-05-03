@@ -488,11 +488,16 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 To run a command as administrator (user "root"), use "sudo <command>".
 See "man sudo_root" for details.
 
-<span class="green1">thoj@thoj-VirtualBox</span>:~$
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$
 </pre>
 
+<p>Først tager vi en kopi af den fil vi arbejder med, så vi altid kan gå tilbage til den oprindelige tilstand.</p>
+
 <code class="cmd">sudo cp /etc/apt/sources.list /etc/apt/sources.list.backup</code>
-<code class="more_cmd">sudo sed -i s/dk.archive/archive/ /etc/apt/sources.list</code>
+
+<p>Herefter anvender vi kommandoen <span class="inl_cmd">sed</span> til at fjerne alle <span class="inl_cmd">dk</span> referencerne i <span class="inl_cmd">/etc/apt/sources.list</span>.</p>
+
+<code class="cmd">sudo sed -i s/dk.archive/archive/ /etc/apt/sources.list</code>
 
 <p>For at tilføje partner repositoriet skal du redigere i filen <span class="inl_cmd">/etc/apt/sources.list</span> og fjerne et hash-tag</p>
 
@@ -503,14 +508,116 @@ See "man sudo_root" for details.
 ## 'partner' repository.
 ## This software is not part of Ubuntu, but is offered by Canonical and the
 ## respective vendors as a service to Ubuntu users.
-# deb http://archive.canonical.com/ubuntu xenial partner 
+# deb http://archive.canonical.com/ubuntu xenial partner <span class="red">&lt;-- Denne linie skal ændres</span>
 # deb-src http://archive.canonical.com/ubuntu xenial partner</span>
 </pre>
 
+<p>Fjern <span class="inl_cmd">#</span> foran deb linien så der står:</p>
 
+<pre class="black">
+<span class="blue1">## Uncomment the following two lines to add software from Canonical's
+## 'partner' repository.
+## This software is not part of Ubuntu, but is offered by Canonical and the
+## respective vendors as a service to Ubuntu users.
+<span class="brown">deb</span> <span class="green1">http://archive.canonical.com/ubuntu</span> <span class="red">xenial</span> <span class="violet">partner</span>
+# deb-src http://archive.canonical.com/ubuntu xenial partner</span>
+</pre>
 
+<p>Opdater repository filerne</p>
+
+<code class="cmd">sudo apt-get update</code>
+
+<p>Opgrader</p>
+
+<code class="cmd">sudo apt-get dist-upgrade -y</code>
+
+<p>Herunder er terminal-output for min opdatering. Som du kan se får du en beskrivelse af hvilke papper der opggraderes, hvor mange, hvor meget der skal hentes og hvor meget det kommer til at fylde når opgraderingerne er færdige </p>
+
+<pre class="ubuntu_terminal">
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ sudo apt-get dist-upgrade -y
+Indlæser pakkelisterne... Færdig
+Opbygger afhængighedstræ        
+Læser tilstandsoplysninger... Færdig
+Beregner opgraderingen... Færdig
+Følgende pakker vil blive opgraderet:
+  bind9-host dnsutils language-selector-common language-selector-gnome
+  libbind9-140 libdns-export162 libdns162 libisc-export160 libisc160
+  libisccc140 libisccfg140 libllvm3.8 liblwres141 libtasn1-6
+  python3-distupgrade ubuntu-drivers-common ubuntu-release-upgrader-core
+  ubuntu-release-upgrader-gtk
+18 opgraderes, 0 nyinstalleres, 0 afinstalleres og 0 opgraderes ikke.
+12,9 MB skal hentes fra arkiverne.
+Efter denne handling, vil 2.048 B yderligere diskplads være brugt.
+Henter:1 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 language-selector-gnome all 0.165.1 [18,7 kB]
+.....
+</pre>
+
+<p>Fjern alle overflødige pakker</p>
+
+<code class="cmd">sudo apt-get autoremove -y</code>
+
+<p>Når man arbejder med den nyeste ubuntu lige efter udgivelsen vil der sjældent være pakker der er overflødige, men der vil ske opgradering af programmer løbende som vil efterlade filer på harddisken som er overflødige.</p>
+
+<pre class="ubuntu_terminal">
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ sudo apt-get autoremove
+Indlæser pakkelisterne... Færdig
+Opbygger afhængighedstræ        
+Læser tilstandsoplysninger... Færdig
+0 opgraderes, 0 nyinstalleres, 0 afinstalleres og 0 opgraderes ikke.
+</pre>
 
 <h1>Konfiguration af Ubuntu</h1>
+
+<p>I dette afsnit vil vi installere en lang række programmer. Det er de programmer jeg installere som standard og som jeg anvender i mit workflow.</p>
+
+<h2>Plugins, java, drivers og codecs</h2>
+
+<p>Når du installere nedestående skal du være opmærksom på at du to gange skal godkende nogle licenser. Det gælder nogle Microsoft fonte, som er "nice to have" og en driver/codec der gør at du kan afspille film.</p>
+
+<code class="cmd">sudo apt-get install -y icedtea-8-plugin openjdk-8-jre ubuntu-restricted-extras libdvd-pkg</code>
+
+<p>For at godkende licenser og tilføjelser til systemet skal du du anvende <span class="knap">Tab</span> for at vælge knapperne. Både ved <span class="inl_cmd">ttf-mscorefonts-installer</span> og <span class="inl_cmd">libdvd-pkg</span> skal du først vælge <span class="inl_cmd">&ltO.k.></span> og derefter <span class="inl_cmd">&ltJa></span>. Se screenshots herunder:</p>
+
+<figure id="">
+
+	<img src="images/install_ubuntu1604_godk_01.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<figure id="">
+
+	<img src="images/install_ubuntu1604_godk_02.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<figure id="">
+
+	<img src="images/install_ubuntu1604_godk_03.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<figure id="">
+
+	<img src="images/install_ubuntu1604_godk_04.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+
+<p>Herudover kan du få brug for nedestående hvis du gerne vil have fuld udbytte af dit grafikkort. Dette skridt er ikke strengt nødvendig hvis din computer "kun" har et Intel grafikkort.</p>
+
+<code class="cmd">sudo add-apt-repository ppa:graphics-drivers/ppa -y</code>
+<code class="more_cmd">sudo apt-get update</code>
+<code class="more_cmd">sudo ubuntu-drivers autoinstall -y</code>
+<code class="more_cmd">sudo reboot</code>
+
 
 <p></p>
 

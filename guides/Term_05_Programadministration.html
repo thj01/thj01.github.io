@@ -164,7 +164,7 @@ Vil du fortsætte? [J/n]
 <p>Et repository bliver konfigureret ved hjælp af en "dev" linie:</p>
 
 <pre class="black">
-<span class="brown">deb</span> <span class="green1">http://extras.ubuntu.com/ubuntu</span> <span class="red">trusty</span> <span class="violet">main</span>
+<span class="brown">deb</span> <span class="green1">http://extras.ubuntu.com/ubuntu</span> <span class="red">xenial</span> <span class="violet">main</span>
 </pre>
 
 <p>Linien fortæller hvor den er placeret, hvilken distribution det drejer sig om og hvad det hedder. Læg mærke til at nogle af linierne starter med <span class="brown">deb-src</span>. <span class="inl_cmd">src</span> står for source og giver adgang til programmernes kildekode. Disse linier er ikke nødvendige for langt de fleste brugere. Hvis du ikke ønsker at anvende tid på at gennemsøge disse linier kan du med fordel sætte et <span class="inl_cmd">#</span> foran så linien bliver udkommenteret.</p>
@@ -178,20 +178,20 @@ Vil du fortsætte? [J/n]
 ## 'partner' repository.
 ## This software is not part of Ubuntu, but is offered by Canonical and the
 ## respective vendors as a service to Ubuntu users.
-# deb http://archive.canonical.com/ubuntu trusty partner <span class="red">&lt;-- denne linie skal ændres</span>
-# deb-src http://archive.canonical.com/ubuntu trusty partner <span class="red">&lt;-- denne linie skal ændres</span>
+# deb http://archive.canonical.com/ubuntu xenial partner <span class="red">&lt;-- denne linie skal ændres</span>
+# deb-src http://archive.canonical.com/ubuntu xenial partner <span class="red">&lt;-- denne linie skal ændres</span>
 
 ## This software is not part of Ubuntu, but is offered by third-party
 ## developers who want to ship their latest software.</span>
-<span class="brown">deb</span> <span class="green1">http://extras.ubuntu.com/ubuntu</span> <span class="red">trusty</span> <span class="violet">main</span>
-<span class="brown">deb-src</span> <span class="green1">http://extras.ubuntu.com/ubuntu</span> <span class="red">trusty</span> <span class="violet">main</span>
+<span class="brown">deb</span> <span class="green1">http://extras.ubuntu.com/ubuntu</span> <span class="red">xenial</span> <span class="violet">main</span>
+<span class="brown">deb-src</span> <span class="green1">http://extras.ubuntu.com/ubuntu</span> <span class="red">xenial</span> <span class="violet">main</span>
 </pre>
 
 <p>Som du kan se herover har flere af linierne et <span class="inl_cmd">#</span> foran sig. Det betyder at de er udkommenteret, og derfor ikke bliver læst af programmet. Fjern <span class="inl_cmd">#</span> foran linierne så de kommer til at se ud som herunder:</p>
 
 <pre class="black">
-<span class="brown">deb</span> <span class="green1">http://archive.canonical.com/ubuntu</span> <span class="red">trusty</span> <span class="violet">partner</span>
-<span class="brown">deb-src</span> <span class="green1">http://archive.canonical.com/ubuntu</span> <span class="red">trusty</span> <span class="violet">partner</span>
+<span class="brown">deb</span> <span class="green1">http://archive.canonical.com/ubuntu</span> <span class="red">xenial</span> <span class="violet">partner</span>
+<span class="brown">deb-src</span> <span class="green1">http://archive.canonical.com/ubuntu</span> <span class="red">xenial</span> <span class="violet">partner</span>
 </pre>
 
 <p>Opdater <span class="inl_cmd">apt</span>, så man fremover har adgang til programmer herfra.</p>
