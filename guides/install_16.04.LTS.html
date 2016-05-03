@@ -630,11 +630,41 @@ OK
 
 <code class="cmd">sudo reboot</code>
 
-<h2>Installer Ekstra programmer</h2>
+<h2>Ekstra programmer</h2>
 
 <p>Her installeres en lang række programmer</p>
 
-<span class="afsnit">Utilities</span>
+<h3>Media</h3>
+
+<ul class="disc">
+	<li>Skype - Samtale klient</li>
+	<li>VLC - Media Afspiller</li>
+	<li>Audacity - Lydredigering</li>
+</ul>
+
+<code class="cmd">sudo apt-get install -y skype vlc audacity</code>
+
+<h3>Grafik</h3>
+
+<p></p>
+
+<ul class="disc">
+	<li>Phatch - Photo Batch program</li>
+	<li>Gimp - Billedredigeringsprogram med div. plugins</li>
+	<li>Inkscape - Vektorbaseret redigeringsprogram (svg)</li>
+</ul>
+
+<code class="cmd">sudo apt-get install -y phatch gimp gimp-lensfun gimp-plugin-registry gimp-texturize inkscape</code>
+
+<span class="afsnit">Darktable</span>
+
+<p>Arbejder du med RAW filer kan Darktable anbefales <span class="red">NOTE: ER ENDNU IKKE KLAR TIL UBUNTU 16.04</span></p>
+
+<code class="cmd">sudo add-apt-repository -y ppa:pmjdebruijn/darktable-release</code>
+<code class="more_cmd">sudo apt-get update</code>
+<code class="more_cmd">sudo apt-get install -y darktable</code>
+
+<h3>Utilities</h3>
 
 <ul class="disc">
 	<li>gparted - harddisk opsætning</li>
@@ -650,7 +680,15 @@ OK
 
 <code class="cmd">sudo apt-get install -y gparted p7zip-full indicator-cpufreq alacarte unity-tweak-tool gdebi caffeine geany nautilus-dropbox</code>
 
-<span class="afsnit">Kommandolinieværktøjer</span>
+<span class="afsnit">Classic Menu indicator</span>
+
+<p>classicmenu-indicator - Et værktøjslinieprogram, der giver adgang til en programmenu</p>
+
+<code class="cmd">sudo apt-add-repository -y ppa:diesch/testing</code>
+<code class="more_cmd">sudo apt-get update </code>
+<code class="more_cmd">sudo apt-get install -y classicmenu-indicator</code>
+
+<h3>Kommando linie</h3>
 
 <ul class="disc">
 	<li>tree - viser en filer og mapper i en træstruktur</li>
@@ -662,48 +700,22 @@ OK
 <code class="cmd">sudo apt-get install -y tree nmap tasksel</code>
 
 
-<span class="afsnit">Media</span>
-
-<ul class="disc">
-	<li>Skype - Samtale klient</li>
-	<li>VLC - Media Afspiller</li>
-	<li>Audacity - Lydredigering</li>
-</ul>
-
-<code class="cmd">sudo apt-get install -y skype vlc audacity</code>
-
-<span class="afsnit">Grafik</span>
-
-<ul class="disc">
-	<li>Phatch - Photo Batch program</li>
-	<li>Gimp - Billedredigeringsprogram med div. plugins</li>
-	<li>Inkscape - Vektorbaseret redigeringsprogram (svg)</li>
-</ul>
-
-<code class="cmd">sudo apt-get install -y phatch gimp gimp-lensfun gimp-plugin-registry gimp-texturize inkscape</code>
-
-<p>Arbejder du med RAW filer kan Darktable anbefales <span class="red">NOTE: ER ENDNU IKKE KLAR TIL UBUNTU 16.04</span></p>
-
-<code class="cmd">sudo add-apt-repository -y ppa:pmjdebruijn/darktable-release</code>
-<code class="more_cmd">sudo apt-get update</code>
-<code class="more_cmd">sudo apt-get install -y darktable</code>
 
 
-<span class="afsnit">Diverse programmer</span>
 
-<p>Google Chrome</p>
+<h3>Browsere</h3>
+
+<span class="afsnit">Google Chrome</span>
 
 <code class="cmd">wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - </code>
 <code class="more_cmd">sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'</code>
 <code class="more_cmd">sudo apt-get update</code>
 <code class="more_cmd">sudo apt-get install -y google-chrome-stable</code>
 
-<p>classicmenu-indicator - Et værktøjslinieprogram, der giver adgang til en programmenu</p>
+<h3>Virtualisering</h3>
 
-<code class="cmd">sudo apt-add-repository -y ppa:diesch/testing</code>
-<code class="more_cmd">sudo apt-get install -y classicmenu-indicator</code>
-<code class="more_cmd">sudo apt-get update </code>
-<code class="more_cmd">sudo apt-get install -y classicmenu-indicator</code>
+<span class="afsnit">VirtualBox</span>
+
 <p>VirtualBox - Virtualiseringsprogram</p>
 
 <code class="cmd">sudo wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | sudo apt-key add -
@@ -715,9 +727,23 @@ OK
 
 
 
-<h2>Fjern overflødige kerner</h2>
+<h2>Afsluttende arbejde</h2>
 
-<p></p>
+<p>Til allersidst gør vi følgende:</p>
+
+<ol class="">
+	<li>Fjerner overflødige programmer</li>
+	<li>Genstarter for at se om alt virker</li>
+	<li>Fjerner overflødige kerner når computeren har genstartet uden problemer</li>
+</ol>
+
+<p>Fjern overflødige programmer og genstart</p>
+
+<code class="cmd">sudo apt-get autoremove -y</code>
+
+<code class="more_cmd">sudo reboot</code>
+
+<p>Efter Computeren er genstartet og du er sikker på at alt virker kan du køre nedestående kommandolinie. Den fjerne alle overflødige kerner, som svarer til ca 2-300 Mb plads der bliver frigjort for hver kerne der fjernes.</p>
 
 <code class="cmd">sudo apt-get purge $(dpkg -l linux-{image,headers}-"[0-9]*" | awk '/ii/{print $2}' | grep -ve $(uname -r | sed -r 's/-[a-z]+//') | sed ':a;N;$!ba;s/\n/ /g')
 </code>
