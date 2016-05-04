@@ -179,13 +179,11 @@ root@thoj /root  % mount //10.0.2.10/alle /mnt/backup -o ro, user=thoj, uid=1003
 Password for thoj@//10.0.2.10/alle:
 </pre>
 
-<p>Af skriverettigheder findes der:</p>
-
-<h3><span class="inl_cmd">ro</span> og <span class="inl_cmd">rw</span></h3>
+<span class="afsnit"><span class="inl_cmd">ro</span> og <span class="inl_cmd">rw</span></span>
 
 <p>Sætter skriverettighederne i drevet. Det kan være en fordel at anvende <span class="inl_cmd">ro</span> i tilfælde hvor man det er unødvendigt at skrive til et drev, f.eks. hvis NTFS filsystemer er "brudt sammen" og man har brug for at hente data ud derfra. Ofte vil man kunne hente data ud fra en NTFS partioneret harddisk ved hjælp af <span class="inl_cmd">ro</span> også i situationer hvor windows nægter at starte op.</p>
 
-<h3><span class="inl_cmd">user=*user*</span> og <span class="inl_cmd">pass=*passwd*</span> og <span class="inl_cmd">credentials=*file*</span></h3>
+<span class="afsnit"><span class="inl_cmd">user=*user*</span> og <span class="inl_cmd">pass=*passwd*</span> og <span class="inl_cmd">cred=*file*</span></span>
 
 <p>Sætter bruger credentials til at få adgang til ressourcen. Af sikkerhedshensyn bør man afholde sig fra anvende <span class="inl_cmd">password=</span> i kommandolinien og scripts. Der bør man anvende <span class="inl_cmd">credentials=</span>, og så danne en fil hvor data angives</p>
 
@@ -195,15 +193,104 @@ password=value
 domain=value
 </pre>
 
-<p>Alle tre kan også anvendes i deres korte for: <span class="inl_cmd">user=</span>, <span class="inl_cmd">pass=</span> og <span class="inl_cmd">cred=</span>.</p>
-
-<h3><span class="inl_cmd">uid=*user*</span> og <span class="inl_cmd">gid=*group*</span></h3>
+<span class="afsnit"><span class="inl_cmd">uid=*user*</span> og <span class="inl_cmd">gid=*group*</span></span>
 
 <p>Sætter henholdsvis bruger og gruppe som ejer af filerne i den monterede mappe.</p>
 
 <h3><span class="inl_cmd">umask</span></h3>
 
-<p></p>
+<p>Som standard bliver filer oprettet med læse/skrive rettigheder til alle (<span class="inl_cmd">666</span>) og mappper med læse/skrive/udføre rettigheder (<span class="inl_cmd">777</span>). Hvis man vil ændre det gøres det med <span class="inl_cmd">umask</span>.</p>
+
+<p><span class="inl_cmd">umask</span> fungerer ved at den trækker fra i forhold til systemets standardopsætning (<span class="inl_cmd">666</span> for filer og <span class="inl_cmd">777</span> for mapper), hvor værdierne angiver henholdsvis brugerens, gruppens og alles rettigheder.</p>
+
+<table class="centreret">
+	<thead>
+		<tr>
+			<th>Talværdi</th>
+			<th>r <br/> 2² = 4</th>
+			<th>w <br/> 2¹ = 2</th>
+			<th>x <br/> 2⁰ = 1</th>
+			<th>Samlet</th>
+			<th>Rettigheder</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>7</td>
+			<td>1</td>
+			<td>1</td>
+			<td>1</td>
+			<td>rwx</td>
+			<td>Alle (læse, skrive og udføre)</td>
+		</tr>
+		<tr>
+			<td>6</td>
+			<td>1</td>
+			<td>1</td>
+			<td>0</td>
+			<td>-wx</td>
+			<td>Læse og skrive</td>
+		</tr>
+		<tr>
+			<td>5</td>
+			<td>1</td>
+			<td>0</td>
+			<td>1</td>
+			<td>r-x</td>
+			<td>Læse og udføre</td>
+		</tr>
+		<tr>
+			<td>4</td>
+			<td>1</td>
+			<td>0</td>
+			<td>0</td>
+			<td>r--</td>
+			<td>Læse</td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>0</td>
+			<td>1</td>
+			<td>1</td>
+			<td>-wx</td>
+			<td>Skrive og udføre</td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>0</td>
+			<td>1</td>
+			<td>0</td>
+			<td>-w-</td>
+			<td>Skrive</td>
+		</tr>
+		<tr>
+			<td>1</td>
+			<td>0</td>
+			<td>0</td>
+			<td>1</td>
+			<td>--x</td>
+			<td>udføre</td>
+		</tr>
+		<tr>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>---</td>
+			<td>Ingen</td>
+		</tr>		
+	</tbody>
+</table>
+
+<p><span class="inl_cmd">umask</span> fungerer som sagt ved at "trække fra", så hvis vi f.eks. ønsker at ændre </p>
+
+
+
+<p><span class="inl_cmd">umask</span> angiver med hvilke rettigheder filer skal oprettes. Rettighederne beskrives ved hjælp af bits og "modsat" den måde man sætter rettigheder med <span class="inl_cmd">chmod</span></p>
+
+
+
+
 
 <table class="">
 	<thead>
