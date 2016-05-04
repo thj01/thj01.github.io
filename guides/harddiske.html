@@ -197,7 +197,7 @@ domain=value
 
 <p>Sætter henholdsvis bruger og gruppe som ejer af filerne i den monterede mappe.</p>
 
-<h3><span class="inl_cmd">umask</span></h3>
+<h2><span class="inl_cmd">umask</span></h2>
 
 <p>Som standard bliver filer oprettet med læse/skrive rettigheder til alle (<span class="inl_cmd">666</span>) og mappper med læse/skrive/udføre rettigheder (<span class="inl_cmd">777</span>). Hvis man vil ændre det gøres det med <span class="inl_cmd">umask</span>.</p>
 
@@ -282,67 +282,118 @@ domain=value
 	</tbody>
 </table>
 
-<p><span class="inl_cmd">umask</span> fungerer som sagt ved at "trække fra", så hvis vi f.eks. ønsker at ændre </p>
+<p><span class="inl_cmd">umask</span> fungerer som sagt ved at "trække fra". Den <span class="inl_cmd">umask</span>-værdi man ofte anvender er <span class="inl_cmd">022</span>.</p>
 
+<span class="afsnit"><span class="inl_cmd">umask</span> værdi <span class="inl_cmd">022</span> for filer:</span>
 
+<ul class="disc">
+	<li>Standard filrettighed: 666</li>
+	<li><span class="inl_cmd">umask</span>: 022</li>
+	<li>Filer oprettes med: 666 - 022 = 644 (rw-r--r--)</li>
+</ul>
 
-<p><span class="inl_cmd">umask</span> angiver med hvilke rettigheder filer skal oprettes. Rettighederne beskrives ved hjælp af bits og "modsat" den måde man sætter rettigheder med <span class="inl_cmd">chmod</span></p>
+<span class="afsnit"><span class="inl_cmd">umask</span> værdi <span class="inl_cmd">022</span> for mapper:</span>
 
+<ul class="disc">
+	<li>Standard mapperettighed: 777</li>
+	<li><span class="inl_cmd">umask</span>: 022</li>
+	<li>Filer oprettes med: 777 - 022 = 755 (rwxr-xr-x)</li>
+</ul>
 
+<p>Hvis du ønsker at sætte sikkerhedsniveauet helt op anvendes en <span class="inl_cmd">umask</span> værdi på 077. Det vil medføre at alle rettigheder trækkes fra gruppen og alle</p>
 
+<ul class="disc">
+	<li>Filer: 666 - 077 = 600 (rw-------)</li>
+	<li>Mapper: 777 - 077 = 700 (rwx------)</li>
+</ul>
 
+<p>Du kan teste det ganske simpelt med følgende kommandoer (vist i terminalen). Start terminalen op med <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>T</kbd>. <span class="inl_cmd">umask</span>-værdien resetter sig selv efter at den kørende session er lukket ned.</p>
 
-<table class="">
+<pre class="ubuntu_terminal">
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ touch testfile
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ mkdir testdir
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ ls -al | grep test
+drwxrwxr-x  2 thoj thoj 4096 maj  4 12:55 <span class="red">test</span>dir
+-rw-rw-r--  1 thoj thoj    0 maj  4 12:55 <span class="red">test</span>file
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ umask 077
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ touch testfile1
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ mkdir testdir1
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ ls -al | grep test
+drwxrwxr-x  2 thoj thoj 4096 maj  4 12:55 <span class="red">test</span>dir
+drwx------  2 thoj thoj 4096 maj  4 12:59 <span class="red">test</span>dir1
+-rw-rw-r--  1 thoj thoj    0 maj  4 12:55 <span class="red">test</span>file
+-rw-------  1 thoj thoj    0 maj  4 12:59 <span class="red">test</span>file1
+</pre>
+
+<p>Her ovenfor kan du se, at de nyoprettede filer ikke har fået rettigheder til gruppe og alle.</p>
+
+<p>Vær opmærksom på at <span class="inl_cmd">umask</span> kun kan begrænse rettigheder og at<span class="inl_cmd">umask</span> ikke kan give flere rettigheder end der er i forvejen. Et hurtigt overblik over anvendte <span class="inl_cmd">umask</span>-værdier og sikkerhed:</p>
+
+<table class="centreret">
 	<thead>
 		<tr>
-			<th></th>
-			<th></th>
+			<th>umask-værdi</th>
+			<th>Sikkerheds <br/>Niveau</th>
+			<th>Mappe tilladelse</th>
+			<th>Fil tilladelse</th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr>
-			<td>username=XX</td>
-			<td>Angiver med hvilken brugers rettigheder men mounter</td>
+			<td>022</td>
+			<td>Åben</td>
+			<td>755</td>
+			<td>644</td>
 		</tr>
 		<tr>
-			<td>password=YY</td>
-			<td>Angiver med hvilken brugers rettigheder men mounter</td>
+			<td>026</td>
+			<td>Moderat</td>
+			<td>755</td>
+			<td>644</td>
 		</tr>
 		<tr>
-			<td>uid</td>
-			<td><span class="bold">U</span>ser <span class="bold">ID</span>entity</td>
+			<td>027</td>
+			<td>Moderat</td>
+			<td>750</td>
+			<td>640</td>
 		</tr>
 		<tr>
-			<td>gid</td>
-			<td><span class="bold">G</span>roup <span class="bold">ID</span>entity</td>
-		</tr>
-		<tr>
-			<td>umask</td>
-			<td>sætter de rettigheder der ikke er givet.</td>
+			<td>077</td>
+			<td>Lukket</td>
+			<td>700</td>
+			<td>600</td>
 		</tr>
 	</tbody>
 </table>
 
-<p><span class="inl_cmd">umask</span> er lidt </p>
-
-<p><a href="http://www.cyberciti.biz/tips/understanding-linux-unix-umask-value-usage.html" target="_blank">http://www.cyberciti.biz/tips/understanding-linux-unix-umask-value-usage.html</a></p>
+<p>Læs mere: <a href="http://www.cyberciti.biz/tips/understanding-linux-unix-umask-value-usage.html" target="_blank">http://www.cyberciti.biz/tips/understanding-linux-unix-umask-value-usage.html</a></p>
 
 
 <h2>Montering af lokale partitioner</h2>
 
-<h3>Montering af ext2/3/4 partitioner</h3>
+<p></p>
+
+<ul class="none">
+	<li>Montering af ext2/3/4 partitioner</li>
+	<li>Montering af NTFS partitioner lokalt</li>
+	<li>Montering af ISO filer</li>
+	<li>Montering af vfat partitioner lokalt</li>
+	
+</ul>
+
+<span class="afsnit">Montering af ext2/3/4 partitioner</span>
 
 <p><span class="inl_cmd">ext4</span> er standard filsystemet i Ubuntu og er det simpleste at montere. Det er ikke nødvnendigt at angive filsystemet. Nedestående kommando monterer <span class="inl_cmd">/dev/sdb1</span> på <span class="inl_cmd">/mnt/datadrev</span>.</p>
 
 <code class="cmd">mount /dev/sdb1 /mnt/datadrev</code>
 
-<h3>Montering af NTFS partitioner lokalt</h3>
+<span class="afsnit">Montering af NTFS partitioner lokalt</span>
 
 <p>For at montere NTFS partitioner anvendes <span class="inl_cmd">ntfs-3g</span> og monteringsmappen er <span class="inl_cmd">/mnt/windows</span>, da vi kun er interesseret i at kigge på windows' systemdrev. Normalt anvendes <span class="inl_cmd">ntfs-3g</span> fremfor <span class="inl_cmd">-t ntfs</span>. Det skyldes at <span class="inl_cmd">ntfs-3g</span> er bedre til at håndtere rettighederne i NTFS.</p>
 
 <code class="cmd">ntfs-3g /dev/sda2 /mnt/windows</code>
 
-<h3>Montering af ISO filer</h3>
+<span class="afsnit">Montering af ISO filer</span>
 
 <p>ISO filer er brændt i iso9660 formatet. Nedestående kommando monterer Ubuntudesktop ISO filen i <span class="inl_cmd">/media/ubuntudesktop</span>.</p>
 
@@ -350,7 +401,7 @@ domain=value
 
 <p>Læg mærke til <span class="inl_cmd">-o loop</span>. Dette er et "pseudo" enhed - egentlig blot en fil - der får det som er monteret til at opføre sig som en harddisk.</p>
 
-<h3>Montering af vfat partitioner lokalt</h3>
+<span class="afsnit">Montering af vfat partitioner lokalt</span>
 
 <p>For at montere vfat anvendes <span class="inl_cmd">-t vfat</span>. Havde vi f.eks. haft et USB drev monteret på systemet ville Linux under opstarten have monteret det som en fysisk disk efter SATA drevene. I vores eksempel som <span class="inl_cmd">/dev/sdb1</span>. Læg mærke til at Linux ikke skelner mellem USB og SATA drev, men "kun" ser på at det er enheder der har et partitionstabel.</p>
 
@@ -418,11 +469,6 @@ Password for thoj@//10.0.2.10/alle:
 </pre>
 
 <p>Denne metode er på ingen måde sikker, da den ikke er krypteret, og at man sender sine kodeord i klartekst. Men for at forsimple ting kan man blot sørge for at oprette en bruger med begrænsede rettigheder til at udføre disse ting med.</p>
-
-
-
-
-
 
 <table class="">
 	<thead>
@@ -561,7 +607,7 @@ Password for thoj@//10.0.2.10/alle:
 # device; this may be used with UUID= as a more robust way to name devices
 # that works even if disks are added and removed. See fstab(5).
 #
-# <file system> <mount point>   <type>  <options>       <dump>  <pass>
+# &lt;file system&gt; &lt;mount point&gt;   &lt;type&gt;  &lt;options&gt;       &lt;dump&gt;  &lt;pass&gt;
 /dev/mapper/vg01-system /               ext4    errors=remount-ro 0       1
 # /boot was on /dev/sda1 during installation
 UUID=87cd86f4-194e-47c4-b818-4933534cac7f /boot           ext2    defaults        0       2
@@ -575,7 +621,7 @@ UUID=87cd86f4-194e-47c4-b818-4933534cac7f /boot           ext2    defaults      
 
 
 
-<span class="afsnit"><span class="inl_cmd">&lt; file system &gt;</span> - Partitionens adresse</span>
+<span class="afsnit"><span class="inl_cmd">&lt;file system&gt;</span> - Partitionens adresse</span>
 
 <p>Her beskrives hvor filsystemet er monteret. Som det kan ses er det vist ved hjælp af enten en sti eller et UUID (<span class="bold">U</span>niversally <span class="bold">U</span>nique <span class="bold">ID</span>entifier). Det første filsystem er angivet ved hjælp af en sti: <span class="inl_cmd">/dev/mapper/vg01-system</span>. Dette er en sti der læses af LVM (<span class="bold">L</span>ogical <span class="bold">V</span>olume <span class="bold">M</span>anagement), som vil blive gennemgået længere nede. UUID'en angiver en fysisk partition på disken, i dette tilfælde <span class="inl_cmd">/dev/sda1</span>. Ved at anvende UUID'er som monteringspunkt bliver den fysiske harddisk unikt identificeret af systemet, og det vil blive opdaget hvis nogen har skiftet disken ud.</p>
 
@@ -594,23 +640,23 @@ thoj@tjmainsrv:~$ sudo blkid
 thoj@tjmainsrv:~$ 
 </pre>
 
-<span class="afsnit"><span class="inl_cmd">&lt; mount point &gt;</span> - Partitionens monteringspunkt</span>
+<span class="afsnit"><span class="inl_cmd">&lt;mount point&gt;</span> - Partitionens monteringspunkt</span>
 
 <p>Fortæller hvor på filsystemet partitionen er monteret</p>
 
-<span class="afsnit"><span class="inl_cmd">&lt; type &gt;</span> - Partitionens formatering</span>
+<span class="afsnit"><span class="inl_cmd">&lt;type&gt;</span> - Partitionens formatering</span>
 
 <p>Fortæller hvilket filsystem partionen er formateret i.</p>
 
-<span class="afsnit"><span class="inl_cmd">&lt; options &gt;</span> - Partitionens indstillinger</span>
+<span class="afsnit"><span class="inl_cmd">&lt;options&gt;</span> - Partitionens indstillinger</span>
 
 <p>Her er det muligt at angive en række indstillinger for hvordan filsystemet skal opføre sig. På den første partition <span class="inl_cmd">/dev/mapper/vg01-system</span>, hvor roden ligger er det sat til <span class="inl_cmd">errors=remount-ro</span>. Det betyder at hvis computeren opdager en fejl (error) på dette filsystem under boot processen, så vil det blive monteret som skrivebeskyttet. På denne måde sikrer man sig at der ikke bliver skrevet på disken, men at man kan sikre sig de data der er på partitionen. </p>
 
-<span class="afsnit"><span class="inl_cmd">&lt; dump &gt;</span> - Backup</span>
+<span class="afsnit"><span class="inl_cmd">&lt;dump&gt;</span> - Backup</span>
 
 <p><span class="inl_cmd">dump</span> er et program, der undersøger filer på ext filsystemet og bestemmer om der er nogle der skal tages backup af. Bliver i realiteten ikke brugt, hvilket er årsagen til at det har værdien <span class="inl_cmd">0</span>.</p>
 
-<span class="afsnit"><span class="inl_cmd">&lt; pass &gt;</span> - Kontrol af partitionen</span>
+<span class="afsnit"><span class="inl_cmd">&lt;pass&gt;</span> - Kontrol af partitionen</span>
 
 <p>Fortæller i hvilken prioritering kontrol af filsystemet har under opstart.</p>
 
@@ -973,10 +1019,10 @@ sdb                      8:16   0   100G  0 disk
 
 <p>For at kunne montere disken ved hjælp af <span class="inl_cmd">/etc/fstab</span>, så den også er monteret herefter skal vi finde diskens UUID og indsætte denne linie 8 <span class="inl_cmd">/etc/fstab</span>.</p>
 
-<code class="cmd">blkid | grep /dev/sdb1</code>
+<code class="cmd">sudo blkid | grep /dev/sdb1</code>
 
 <pre class="ubuntu_terminal">
-root@tjmainsrv:/home/thoj# blkid | grep /dev/sdb1
+root@tjmainsrv:/home/thoj# sudo blkid | grep /dev/sdb1
 <span class="red">/dev/sdb1</span>: UUID="a4ce9a3e-55c5-4015-bb2d-46147f9a3a49" TYPE="ext4"
 </pre>
 
@@ -992,18 +1038,39 @@ UUID=a4ce9a3e-55c5-4015-bb2d-46147f9a3a49 	/srv/newdisk 	ext4	defaults		0	2
 
 <h2>Kontrol af harddiske</h2>
 
+<p>Ubuntu kører normalt med <span class="inl_cmd">ext4</span>-filsystem, og det kan man kontrollere med <span class="inl_cmd">e2fsck</span>. Kommandoen skal køres mens partitionen ikke er monteret. Det betyder at hvis man vil kontrollere rod-drevet, så skal computeren genstartes med en live linuxdistribution som f.eks. SystemrescueCD (<a href="https://www.system-rescue-cd.org/Download" target="_blank">https://www.system-rescue-cd.org/Download</a>). Fordelen ved at anvende den fremfor Ubuntu selv er, at SystemrescueCD ikke mounter nogle drev.</p>
 
-<code class="cmd">e2fsck</code>
+<p>Herunder har jeg afmonteret <span class="inl_cmd">/data</span> (<span class="inl_cmd">/dev/sda3)</span> på min testmaskine og lavet et filcheck på den:</p>
 
-<p></p>
+<pre class="ubuntu_terminal">
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ sudo umount /dev/sda3
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ sudo e2fsck /dev/sda3
+e2fsck 1.42.13 (17-May-2015)
+/dev/sda3: ren, 11/1892352 filer, 162783/7568384 blokke
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ sudo mount -a
+</pre>
 
-<code class="cmd">resize2fs</code>
+<p>Den sidste kommando undersøger <span class="inl_cmd">/etc/fstab</span> og genmonterer de partitioner der ikke er monteret.</p>
 
-<p></p>
+<h3>Hvor meget plads er der?</h3>
 
-<code class="cmd">df -h</code>
+<p>For at finde ud af hvor meget plads der er tilgængelig på systemet anvendes kommandoen <code class="cmd">df -h</code></p>
 
-<p></p>
+<pre class="ubuntu_terminal">
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ df -h
+Filsystem      Størr Brugt  Tilb Brug% Monteret på
+udev            2,0G     0  2,0G    0% /dev
+tmpfs           396M  6,1M  390M    2% /run
+/dev/sda1        46G  4,1G   40G   10% /
+tmpfs           2,0G  252K  2,0G    1% /dev/shm
+tmpfs           5,0M  4,0K  5,0M    1% /run/lock
+tmpfs           2,0G     0  2,0G    0% /sys/fs/cgroup
+tmpfs           396M   48K  396M    1% /run/user/1000
+/dev/sda3        29G   44M   27G    1% /data
+
+</pre>
+
+<p>Hvis man har lavet ændringer på en harddisk med <span class="inl_cmd">fdisk</span>, så kan man risikere, at kernen ikke kan arbejde med de nye informationer. Det kan løses enten ved at genstarte maskinen, eller at anvende programmet <span class="inl_cmd">partprobe</span>.</p>
 
 <code class="cmd">partprobe</code>
 
