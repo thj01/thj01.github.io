@@ -50,14 +50,22 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <p>Guidens formål er at installere Ubuntu 16.04 LTS på en ny computer. I denne guide bliver der vist på en Virtuel maskine der er sat op ved hjælp af i VirtualBox med 4 GB RAM og 100 GB harddisk. Det er denne maskine installation og konfiguration der er udgangspunkt for resten af guiden.</p>
 
-<p>Installationsprocessen giver på mange områder sig selv, og der vil kun komme forklaringer hvor det er nødvendigt.</p>
+<p>Installationsprocessen giver på mange områder sig selv, og der vil kun komme uddybende forklaringer hvor det er nødvendigt.</p>
 
 	
 <h1>Installation af Ubuntu</h1>
 
-<p>Efter at du har bootet DVD/USB'en kommer der først to vinduer. På det første skal du vælge sprog og den måde du vil starte Ubuntu. Hvis du vælger <span class="knap">Prøv Ubuntu</span>, vil hele installationsprocessen blive springet over i første omgang, og Ubuntu vil starte op fra boot-mediet. På den måde kan du prøve Ubuntu uden at installere det. Systemet er dog langsomt, da DVD/USB mediet ikke er lige så hurtigt og effektivt som en harddisk. Vælger du forkert er det ikke noget problem, da der vil ligger et ikon på skrivebordet til at starte installationen.</p>
+<p>Når du booter op installations DVD/USB'en kommer Ubuntu's "Velkommen" vindue frem. Her er der to ting du skal tage stilling til: Sprog og opstartsmetode.</p>
 
-<p>Her vælger vi dog <span class="inl_cmd">Installer Ubuntu</span>.</p>
+<p><span class="knap">Prøv Ubuntu</span></p>
+
+<p>Starter Ubuntu op fra dit installationsmedie. Ubuntu startes op på en RAM-disk og fungerer somom det var en rigtig installation. Vælger du denne metode, vil der ligge en genvej på skrivebordet til at starte en frisk installation på computeren.</p>
+
+<p>Denne opstart kan også anvendes til at lave systemarbejde på computeren eller scanne ens drev.</p>
+
+<p><span class="knap">Installér Ubuntu</span></p>
+
+<p>Sætter installationsprocessen igang.</p>
 
 
 
@@ -160,7 +168,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <p>Grunden til at vi vælger noget ledig plads, er for at vi senere kan anvende den til at oprette en partition fra, når Ubuntu kører. Ønsker du ikke at gøre det kan du anvende pladsen til <span class="inl_cmd">/data</span> </p>
 
-<p>Vælg <span class="knap">Noget andet</span>.</p>
+<p>Vælg "Noget andet".</p>
 
 <figure id="">
 
@@ -481,11 +489,17 @@ See "man sudo_root" for details.
 <span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$
 </pre>
 
+<blockquote>
+	<p>
+		Læg mærke til at langt de fleste kommandoer herunder starter med <span class="inl_cmd">sudo</span>. Det skyldes at vi arbejder med systemfiler, som kræver at man er superbruger (<span class="inl_cmd">sudo</span> - <span class="bold">SU</span>peruser <span class="bold">DO</span>.
+	</p>
+</blockquote>
+
 <p>Først tager vi en kopi af den fil vi arbejder med, så vi altid kan gå tilbage til den oprindelige tilstand.</p>
 
 <code class="cmd">sudo cp /etc/apt/sources.list /etc/apt/sources.list.backup</code>
 
-<p>Herefter anvender vi kommandoen <span class="inl_cmd">sed</span> til at fjerne alle <span class="inl_cmd">dk</span> referencerne i <span class="inl_cmd">/etc/apt/sources.list</span>.</p>
+<p>Herefter anvender vi kommandoen <span class="inl_cmd">sed</span> til at fjerne alle <span class="inl_cmd">dk</span> referencerne i <span class="inl_cmd">/etc/apt/sources.list</span>. Kommandoen bytter teksstrengen <span class="inl_cmd">dk.archive</span> ud med <span class="inl_cmd">archive</span>.</p>
 
 <code class="cmd">sudo sed -i s/dk.archive/archive/ /etc/apt/sources.list</code>
 
@@ -502,7 +516,7 @@ See "man sudo_root" for details.
 # deb-src http://archive.canonical.com/ubuntu xenial partner</span>
 </pre>
 
-<p>Fjern <span class="inl_cmd">#</span> foran deb linien så der står:</p>
+<p>Fjern <span class="inl_cmd">#</span> og mellemrummet foran deb linien så der står:</p>
 
 <pre class="black">
 <span class="blue1">## Uncomment the following two lines to add software from Canonical's
@@ -556,9 +570,131 @@ Læser tilstandsoplysninger... Færdig
 0 opgraderes, 0 nyinstalleres, 0 afinstalleres og 0 opgraderes ikke.
 </pre>
 
+<h1>Adgang til <span class="inl_cmd">/data</span></h1>
+
+<p>Under installationen oprettede vi en ekstra partition vi kaldte <span class="inl_cmd">/data</span>. Du kommer ind i mappen ved at vælge filmanageren og vælge <span class="inl_cmd">Computer</span>.</p>
+
+<figure id="">
+
+	<img src="images/install_ubuntu1604_filmanager.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Hvis du er vant til at arbejde med Windows ville du her se dine drev. Linux anvender ikke drev til at adskille partitioner, men partitionerne er direkte monteret på roden. Det skyldes at vi under installationen valgte at montere den på <span class="inl_cmd">/data</span>. </p>
+
+<figure id="">
+
+	<img src="images/install_ubuntu1604_filmanager_data.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Hvis vi gerne vil se hvordan partitionerne på computeren er sat op kan vi anvende kommandoen <span class="inl_cmd">lsblk</span>. Åbn en terminal og kør kommandoen:</p>
+
+<pre class="ubuntu_terminal">
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ lsblk
+NAME   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+sda      8:0    0  100G  0 disk 
+├─sda1   8:1    0 46,6G  0 part /
+├─sda2   8:2    0  3,8G  0 part [SWAP]
+└─sda3   8:3    0 28,9G  0 part /data
+sr0     11:0    1 1024M  0 rom  
+</pre>
+
+<p>Her kan vi se at <span class="inl_cmd">/data</span> ligger på partitionen <span class="inl_cmd">/dev/sda3</span>.</p>
+
+<p>Går vi ind i mappen <span class="inl_cmd">data</span> og højreklikker, kan vise at vi ikke har mulighed for at oprette filer og mapper. Det skyldes de rettigheder der er sat på mappen.</p>
+
+<figure id="">
+
+	<img src="images/install_ubuntu1604_filmanager_data_oprette_filer_01.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>For at ændre det skal vi ejerskab og rettigheder på mappen. Først får vi et overblik over mappen:</p>
+
+<code class="cmd">ls -al / | grep data</code>
+
+<pre class="ubuntu_terminal">
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ ls -al / | grep data
+drwxr-xr-x   3 root root  4096 maj  2 14:33 <span class="red">data</span>
+</pre>
+
+<p>Det vi skal lægge mærke til er de 10 bogstaver i starten ( <span class="inl_cmd">drwxr-xr-x</span> ), samt ejer og gruppe ( <span class="inl_cmd">root root</span> ).</p>
+
+<p>Vi ændrer ejerskabet med følgende kommando:</p>
+
+<code class="cmd">sudo chown -R *brugernavn*:*brugernavn* /data</code>
+
+<p>I mit tilfælde bliver det:</p>
+
+<pre class="ubuntu_terminal">
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ sudo chown -R thoj:thoj /data
+[sudo] adgangskode for thoj: 
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ ls -al / | grep data
+drwxr-xr-x   3 thoj thoj  4096 maj  2 14:33 <span class="red">data</span>
+</pre>
+
+<p>Som du kan se ændrede det ejerskabet fra <span class="inl_cmd">root</span> til <span class="inl_cmd">thoj</span>. Nu vi har det på plads skal vi have ordnet rettighederne. Vi kan se bort fra det første bogstav (<span class="inl_cmd">d</span>), da det blot angiver at det er en mappe. En fil starter med <span class="inl_cmd">-</span>. Som det er lige nu gælder det at:</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th></th>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Bruger</td>
+			<td>rwx</td>
+			<td>Læse, skrive og udføre</td>
+		</tr>
+		<tr>
+			<td>Gruppe</td>
+			<td>r-x</td>
+			<td>Læse og udføre</td>
+		</tr>
+		<tr>
+			<td>Alle</td>
+			<td>r-x</td>
+			<td>Læse og udføre</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Det vælger vi at ændre til, at det kun er dig og ingen andre der har adgang til mappen:</p>
+
+<code class="cmd">sudo chmod -R 700 /data</code>
+
+<pre class="ubuntu_terminal">
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ sudo chmod -R 700 /data
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ ls -al / | grep data
+drwx------   3 thoj thoj  4096 maj  2 14:33 data
+</pre>
+
+<p>Går du nu tilbage til den grafiske brugerflade (GUI) vil du kunne oprette filer og mapper i <span class="inl_cmd">/data</span>.</p>
+
+<p>Herover er det kun gennemgået det mest basale hvad rettigheder angår. Du kan læse mere om rettigheder i <a href="ubuntuguiden.html#section4" target="_blank">Ubuntu Guiden</a></p>
+
+
+<figure id="">
+
+	<img src="images/install_ubuntu1604_filmanager_data_oprette_filer_02.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
 <h1>Konfiguration af Ubuntu</h1>
 
-<p>I dette afsnit vil vi installere en lang række programmer. Det er de programmer jeg installere som standard og som jeg anvender i mit workflow.</p>
+<p>I dette afsnit vil vi installere en lang række drivers, codecs og programmer. Det er de programmer jeg installere som standard og som jeg anvender i mit workflow.</p>
 
 <h2>Plugins, java, drivers og codecs</h2>
 
@@ -628,7 +764,7 @@ Læser tilstandsoplysninger... Færdig
 
 <span class="afsnit">Darktable</span>
 
-<p>Arbejder du med RAW filer kan Darktable anbefales <span class="red">NOTE: ER ENDNU IKKE KLAR TIL UBUNTU 16.04</span></p>
+<p>Arbejder du med RAW filer kan Darktable anbefales. Darktable bør installeres ved hjælp af PPA, da det er et program der er i rivende udvikling og bliver forbedret på stabilitet, features og hastighed.</p>
 
 <code class="cmd">sudo add-apt-repository -y ppa:pmjdebruijn/darktable-release</code>
 <code class="more_cmd">sudo apt-get update</code>
@@ -661,13 +797,15 @@ Læser tilstandsoplysninger... Færdig
 <h3>Kommando linie</h3>
 
 <ul class="disc">
-	<li>tree - viser en filer og mapper i en træstruktur</li>
-	<li>nmap - anvendes til at analysere netværk</li>
-	<li>tasksel - anvendes til at installere tjenester f.eks. web-server</li>
+	<li>tree - Viser en filer og mapper i en træstruktur</li>
+	<li>nmap - Anvendes til at analysere netværk</li>
+	<li>tasksel - Anvendes til at installere tjenester f.eks. web-server</li>
+	<li>inxi - Anvendes til at se hardware på computeren</li>
+	<li>htop - Anvendes til at se forbruget af ressourcer på computeren</li>
 </ul>
 
 
-<code class="cmd">sudo apt-get install -y tree nmap tasksel</code>
+<code class="cmd">sudo apt-get install -y tree nmap tasksel inxi</code>
 
 
 
@@ -694,29 +832,6 @@ Læser tilstandsoplysninger... Færdig
 <code class="more_cmd">sudo apt-get update</code>
 <code class="more_cmd">sudo apt-get install -y dkms virtualbox-5.0</code>
 
-
-
-
-<h2>Afsluttende arbejde</h2>
-
-<p>Til allersidst gør vi følgende:</p>
-
-<ol class="">
-	<li>Fjerner overflødige programmer</li>
-	<li>Genstarter for at se om alt virker</li>
-	<li>Fjerner overflødige kerner når computeren har genstartet uden problemer</li>
-</ol>
-
-<p>Fjern overflødige programmer og genstart</p>
-
-<code class="cmd">sudo apt-get autoremove -y</code>
-
-<code class="more_cmd">sudo reboot</code>
-
-<p>Efter Computeren er genstartet og du er sikker på at alt virker kan du køre nedestående kommandolinie. Den fjerne alle overflødige kerner, som svarer til ca 2-300 Mb plads der bliver frigjort for hver kerne der fjernes.</p>
-
-<code class="cmd">sudo apt-get purge $(dpkg -l linux-{image,headers}-"[0-9]*" | awk '/ii/{print $2}' | grep -ve $(uname -r | sed -r 's/-[a-z]+//') | sed ':a;N;$!ba;s/\n/ /g')
-</code>
 
 <h2>Drivere til grafikkort</h2>
 
@@ -748,7 +863,7 @@ OK
 
 <code class="cmd">sudo reboot</code>
 
-<p>Efter genstart går du ind i: <span class="inl_cmd">Systemindstillinger</span> -> <span class="inl_cmd">Software og opdateringer</span> og vælger fanen: <span class="inl_cmd">Yderligere drivere</span>. Herefter vælger du den driver du ønsker at anvende:</p>
+<p>Efter genstart går du ind i: <span class="inl_cmd">Systemindstillinger</span> -> <span class="inl_cmd">Software og opdateringer</span> og vælger fanen: <span class="inl_cmd">Yderligere drivere</span>. Herefter vælger du den driver du ønsker at anvende. Billedet herunder er taget fra min computer, der har et Nvidia Quadro 2100 graffikkort:</p>
 
 <figure id="">
 
@@ -765,6 +880,29 @@ OK
 <code class="cmd">sudo add-apt-repository -y ppa:nilarimogard/webupd8</code>
 <code class="more_cmd">sudo apt-get update</code>
 <code class="more_cmd">sudo apt-get install -y prime-indicator</code>
+
+
+
+<h2>Afsluttende arbejde</h2>
+
+<p>Til allersidst gør vi følgende:</p>
+
+<ol class="">
+	<li>Fjerner overflødige programmer</li>
+	<li>Genstarter for at se om alt virker</li>
+	<li>Fjerner overflødige kerner når computeren har genstartet uden problemer</li>
+</ol>
+
+<p>Fjern overflødige programmer og genstart</p>
+
+<code class="cmd">sudo apt-get autoremove -y</code>
+
+<code class="more_cmd">sudo reboot</code>
+
+<p>Efter Computeren er genstartet og du er sikker på at alt virker kan du køre nedestående kommandolinie. Den fjerne alle overflødige kerner, som svarer til ca 2-300 Mb plads der bliver frigjort for hver kerne der fjernes.</p>
+
+<code class="cmd">sudo apt-get purge $(dpkg -l linux-{image,headers}-"[0-9]*" | awk '/ii/{print $2}' | grep -ve $(uname -r | sed -r 's/-[a-z]+//') | sed ':a;N;$!ba;s/\n/ /g')
+</code>
 
 
 <p></p>
