@@ -185,7 +185,7 @@ sr0     11:0    1 1024M  0 rom
 <p>Optionerne er dem som sætter egenskaberne for delingen. De startes med et <span class="inl_cmd">-o</span> fulgt af optionerne adskilt af kommaer (,). Herunder er et eksempel på et netværks drev der bliver monteret, hvor <span class="inl_cmd">/mnt/backup</span> bliver monteret som "read-only" og brugeren <span class="inl_cmd">thoj</span> til at verificere. Som det ses herunder kræver Ubuntu at få brugerens password.</p>
 
 <pre class="ubuntu_terminal">
-root@thoj /root  % mount //10.0.2.10/alle /mnt/backup -o ro, user=thoj, uid=1003
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ sudo mount //10.0.2.10/alle /mnt/backup -o ro, user=thoj, uid=1003
 Password for thoj@//10.0.2.10/alle:
 </pre>
 
@@ -193,19 +193,36 @@ Password for thoj@//10.0.2.10/alle:
 
 <p>Sætter skriverettighederne i drevet. Det kan være en fordel at anvende <span class="inl_cmd">ro</span> i tilfælde hvor man det er unødvendigt at skrive til et drev, f.eks. hvis NTFS filsystemer er "brudt sammen" og man har brug for at hente data ud derfra. Ofte vil man kunne hente data ud fra en NTFS partioneret harddisk ved hjælp af <span class="inl_cmd">ro</span> også i situationer hvor windows nægter at starte op.</p>
 
-<span class="afsnit"><span class="inl_cmd">user=*user*</span> og <span class="inl_cmd">pass=*passwd*</span> og <span class="inl_cmd">cred=*file*</span></span>
-
-<p>Sætter bruger credentials til at få adgang til ressourcen. Af sikkerhedshensyn bør man afholde sig fra anvende <span class="inl_cmd">password=</span> i kommandolinien og scripts. Der bør man anvende <span class="inl_cmd">credentials=</span>, og så danne en fil hvor data angives</p>
-
-<pre class="black">
-username=value
-password=value
-domain=value
-</pre>
-
-<span class="afsnit"><span class="inl_cmd">uid=*user*</span> og <span class="inl_cmd">gid=*group*</span></span>
-
-<p>Sætter henholdsvis bruger og gruppe som ejer af filerne i den monterede mappe.</p>
+<table class="cmd_table">
+	<thead>
+		<tr>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>user=*user*</td>
+			<td>Sætter brugernavnet</td>
+		</tr>
+		<tr>
+			<td>pass=*passwd*</td>
+			<td>Sætter password. Kan ikke anbefales da det gør man skriver sin kode direkte i kommandolinien og gemmes i bash-historikken.</td>
+		</tr>
+		<tr>
+			<td>uid=*user*</td>
+			<td>Sætter brugerens id. NFS verificerer brugere ved dette ID og giver brugeren adgang til denne brugeres ressourcer på serveren</td>
+		</tr>
+		<tr>
+			<td>gid=*group*</td>
+			<td>Tilføjer brugeren til den konkrete gruppe på serveren.</td>
+		</tr>
+		<tr>
+			<td>cred=*file*</td>
+			<td>Giver adressen til en fil, hvori ens brugeroplysninger ligger</td>
+		</tr>
+	</tbody>
+</table>
 
 <h2><span class="inl_cmd">umask</span></h2>
 
