@@ -128,9 +128,19 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 	</tbody>
 </table>
 
-<p>Navngivningen af drevene på et Windows7+ system kan være anderledes end det er angivet ovenfor. Navngivningen af C drevet vil altid være systempartitionen, men denne kan f.eks. være den 3. partition på 1. disk. Derfor bør man altid tjekke harddiskkonfigurationen med <span class="inl_cmd">lsblk</span> eller <span class="inl_cmd">fdisk -l</span>.</p>
+<p>Navngivningen af drevene på et Windows7+ system kan være anderledes end det er angivet ovenfor. Navngivningen af C drevet vil altid være systempartitionen, men denne kan f.eks. være den 3. partition på 1. disk. Derfor bør man altid tjekke harddiskkonfigurationen med <span class="inl_cmd">lsblk</span> eller <span class="inl_cmd">fdisk -l</span>. Se eksemplet herunder:</p>
 
-<p>Det er disse enheder der "monteres" i filsystemet. Der skal være en <span class="inl_cmd">/</span>, men ellers kan man navngive ens monteringspunkter som man vil, f.eks: <span class="inl_cmd">/minedata</span>, <span class="inl_cmd">Backup</span>. Man kan med fordel montere en fysisk partition som f.eks. <span class="inl_cmd">/home</span>. På den måde kan man installere et nyt styresystem, og montere brugerens data og indstillinger direkte på det nye system. I ovenstående tilfælde kunne man f.eks. have <span class="inl_cmd">/dev/sda1</span> monteret som <span class="inl_cmd">/</span>, </p>
+<pre class="ubuntu_terminal">
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ lsblk
+NAME   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+sda      8:0    0  100G  0 disk 
+├─sda1   8:1    0 46,6G  0 part /
+├─sda2   8:2    0  3,8G  0 part [SWAP]
+└─sda3   8:3    0 28,9G  0 part /data
+sr0     11:0    1 1024M  0 rom 
+</pre>
+
+<p>Det er disse enheder der "monteres" i filsystemet. Der skal være en <span class="inl_cmd">/</span>, men ellers kan man navngive ens monteringspunkter som man vil, f.eks: <span class="inl_cmd">/minedata</span>, <span class="inl_cmd">Backup</span>. Man kan med fordel montere en fysisk partition som f.eks. <span class="inl_cmd">/home</span>. På den måde kan man installere et nyt styresystem, og montere brugerens data og indstillinger direkte på det nye system. I ovenstående tilfælde kunne man f.eks. have <span class="inl_cmd">/dev/sda1</span> monteret som <span class="inl_cmd">/</span>.</p>
 
 <h1>Montering af filsystemer</h1>
 
@@ -539,64 +549,47 @@ Password for thoj@//10.0.2.10/alle:
 <table class="">
 	<thead>
 		<tr>
-			<th colspan="2">Partitioner</th>
-			<th>Størelse</th>
-			<th>Type</th>
-			<th>Opstartsflag</th>
-			<th>Beskrivelse</th>
+			<th>Partition</th>
+			<th>Betegnelse</th>
+			<th>Størrelse</th>
+			<th>type</th>
+			<th>Opstartsflad</th>
+			<th>Anvendelse</th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr>
-			<td colspan="2">/boot</td>
-			<td>300 Mb</td>
+			<td>/dev/sda1</td>
+			<td>/</td>
+			<td>50000Mb (50Gb)</td>
 			<td>Primær</td>
 			<td>Ja</td>
-			<td>Bootfiler</td>
+			<td>System</td>
 		</tr>
 		<tr>
-			<td rowspan="6">LVM</td>
-			<td>/</td>
-			<td>10 Gb</td>
+			<td>/dev/sda2</td>
+			<td>Ingen</td>
+			<td>4096MB (4GB)</td>
+			<td>Primær</td>
 			<td>-</td>
-			<td>-</td>
-			<td>OS og konfigurationsfiler</td>
+			<td>Swap</td>
 		</tr>
 		<tr>
-			<td>swap</td>
-			<td>4 Gb</td>
+			<td>/dev/sda3</td>
+			<td>/data</td>
+			<td>31000MB (31GB)</td>
+			<td>Primær</td>
 			<td>-</td>
-			<td>-</td>
-			<td>Virtuel hukommelse</td>
+			<td>Data og backup</td>
 		</tr>
 		<tr>
-			<td>/home</td>
-			<td>20 Gb</td>
-			<td>-</td>
-			<td>-</td>
-			<td>Hjemmemapper</td>
+			<td>Ledig plads</td>
+			<td> - </td>
+			<td>20,9 GB</td>
+			<td> - </td>
+			<td> - </td>			
+			<td>Linux?</td>
 		</tr>
-		<tr>
-			<td>/var/www</td>
-			<td>4 Gb</td>
-			<td>-</td>
-			<td>-</td>
-			<td>Webserver</td>
-		</tr>
-		<tr>
-			<td>/srv</td>
-			<td>50 Gb</td>
-			<td>-</td>
-			<td>-</td>
-			<td>Serverdata</td>
-		</tr>
-		<tr>
-			<td></td>
-			<td>Resten</td>
-			<td>-</td>
-			<td>-</td>
-			<td>Reserveret til senere brug</td>
-		</tr>		
 	</tbody>
 </table>
 
@@ -608,13 +601,13 @@ Password for thoj@//10.0.2.10/alle:
 # that works even if disks are added and removed. See fstab(5).
 #
 # &lt;file system&gt; &lt;mount point&gt;   &lt;type&gt;  &lt;options&gt;       &lt;dump&gt;  &lt;pass&gt;
-/dev/mapper/vg01-system /               ext4    errors=remount-ro 0       1
-# /boot was on /dev/sda1 during installation
-UUID=87cd86f4-194e-47c4-b818-4933534cac7f /boot           ext2    defaults        0       2
-/dev/mapper/vg01-home /home           ext4    defaults        0       2
-/dev/mapper/vg01-data /srv            ext4    defaults        0       2
-/dev/mapper/vg01-web /var/www        ext4    defaults        0       2
-/dev/mapper/vg01-swap none            swap    sw              0       0
+# / was on /dev/sda1 during installation
+UUID=c177c89a-3ad8-4588-a172-3bdd86ccc6df /               ext4    errors=remount-ro 0       1
+# /data was on /dev/sda3 during installation
+UUID=377113e6-5f83-4153-ac47-8d6dbc98a5cb /data           ext4    defaults        0       2
+# swap was on /dev/sda2 during installation
+UUID=c4e6f606-e61c-4936-9b6e-73de38ed0b7b none            swap    sw              0       0
+
 </pre>
 
 <p>Hver linie i filen angiver ved hjælp af forskellige parametre hvordan Linux skal anvende dem. Der er 5 parametre der skal sættes.</p>
@@ -679,18 +672,14 @@ thoj@tjmainsrv:~$
 <p>Først skabes et overblik med <span class="inl_cmd">lsblk</span>. Herunder er outputtet fra ovenstående konfiguration isat en ny 100GB SATA disk</p>
 
 <pre class="ubuntu_terminal">
-root@tjmainsrv:~$ lsblk
-NAME                   MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
-sda                      8:0    0   100G  0 disk 
-├─sda1                   8:1    0   476M  0 part /boot
-├─sda2                   8:2    0     1K  0 part 
-└─sda5                   8:5    0  99,5G  0 part 
-  ├─vg01-system (dm-0) 252:0    0   9,3G  0 lvm  /
-  ├─vg01-home (dm-1)   252:1    0  18,6G  0 lvm  /home
-  ├─vg01-web (dm-2)    252:2    0   3,7G  0 lvm  /var/www
-  ├─vg01-data (dm-3)   252:3    0  55,9G  0 lvm  /srv
-  └─vg01-swap (dm-4)   252:4    0   2,1G  0 lvm  [SWAP]
-sdb                      8:16   0   100G  0 disk 
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ lsblk
+NAME   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+sda      8:0    0  100G  0 disk 
+├─sda1   8:1    0 46,6G  0 part /
+├─sda2   8:2    0  3,8G  0 part [SWAP]
+└─sda3   8:3    0 28,9G  0 part /data
+sdb      8:16   0  100G  0 disk 
+sr0     11:0    1 1024M  0 rom 
 </pre>
 
 <p>Kør fdisk</p>
@@ -698,44 +687,75 @@ sdb                      8:16   0   100G  0 disk
 <code class="cmd">fdisk /dev/sdb</code>
 
 <pre class="ubuntu_terminal">
-root@tjmainsrv:/home/thoj# fdisk /dev/sdb
-Enheden indeholder hverken en gyldig DOS-partitionstabel eller en Sun-, SGI- 
-eller OSF-disketiket.
-Opretter en ny DOS-disketiket med diskidentifikation 0x762d3498.
-Ændringer vil holdes i hukommelsen, indtil du bestemmer dig for at
-gemme dem. Derefter kan det tidligere indhold naturligvis ikke genskabes.
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ sudo fdisk /dev/sdb
+[sudo] adgangskode for thoj: 
 
-Advarsel: Ugyldigt flag 0x0000 for partitionstabel 4 vil blive rettet med 
-»w« (forkortelse for write; dansk=skriv)
+<span class="green">Welcome to fdisk (util-linux 2.27.1).</span>
+Changes will remain in memory only, until you decide to write them.
+Be careful before using the write command.
 
-Kommando (m for hjælp): 
+Device does not contain a recognized partition table.
+Created a new DOS disklabel with disk identifier 0x0da5ea98.
+
+Kommando (m for hjælp):
 </pre>
 
-<p>Ved at trykke <span class="inl_cmd">m</span> får man menuen frem:</p>
+<p>Ved at trykke <kbd>m</kbd> får man menuen frem:</p>
 
 <pre class="black">
-Kommandobeskrivelse
-   a   skift et opstartsflag (bootable)
-   b   skift bsd-disketiket
-   c   skift DOS-kompatilitetsflaget
-   d   slet en partition
-   l   vis liste over kendte partitionstyper
-   m   vis denne menu
-   n   tilføj en ny partition
-   o   opret en ny, tom DOS-partitionstabel
-   p   vis partitionstabellen
-   q   afslut uden at gemme ændringerne
-   s   opret en ny, tom Sun-disketiket
-   t   skift system-id for en partition
-   u   skift enheder for visning/indtastning
-   v   verificer partitionstabellen
-   w   skriv partitionstabel til disk og afslut
-   x   ekstra funktionalitet (kun for eksperter)
+Help:
+
+<span class="bold">  DOS (MBR)</span>
+   a   toggle a bootable flag
+   b   edit nested BSD disklabel
+   c   toggle the dos compatibility flag
+
+<span class="bold">  Generic</span>
+   d   delete a partition
+   F   list free unpartitioned space
+   l   list known partition types
+   n   add a new partition
+   p   print the partition table
+   t   change a partition type
+   v   verify the partition table
+   i   print information about a partition
+
+<span class="bold">  Misc</span>
+   m   print this menu
+   u   change display/entry units
+   x   extra functionality (experts only)
+
+<span class="bold">  Script</span>
+   I   load disk layout from sfdisk script file
+   O   dump disk layout to sfdisk script file
+
+<span class="bold">  Save & Exit</span>
+   w   write table to disk and exit
+   q   quit without saving changes
+
+<span class="bold">  Create a new label</span>
+   g   create a new empty GPT partition table
+   G   create a new empty SGI (IRIX) partition table
+   o   create a new empty DOS partition table
+   s   create a new empty Sun partition table
+
 
 Kommando (m for hjælp): 
 </pre>
 
-<p>Det der skal gøres er følgende:</p>
+<p>Før vi gør noget andet skal vi lige tjekke om vi har den rigtige harddisk. Tast <kbd>p</kbd></p>
+
+<pre class="black">
+Kommando (m for hjælp): p
+<span class="bold">Disk /dev/sdb: 100 GiB, 107374182400 bytes, 209715200 sectors</span>
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0xc0b6b3c8
+</pre>
+
+<p>Lær mærke til linien der er med fed skrift. Herefter skal der gøres er følgende:</p>
 
 <table class="">
 	<thead>
@@ -748,85 +768,83 @@ Kommando (m for hjælp):
 	<tbody>
 		<tr>
 			<th>1</th>
-			<td>m</td>
+			<td><kbd>m</kbd></td>
 			<td>* Vis alle kommandoerne</td>
 		</tr>
 		<tr>
 			<th>2</th>
-			<td>n</td>
+			<td><kbd>n</kbd></td>
 			<td>Opret ny partition</td>
 		</tr>
 		<tr>
 			<th>3</th>
-			<td>p</td>
+			<td><kbd>p</kbd></td>
 			<td>Den skal være primær</td>
 		</tr>
 		<tr>
 			<th>4</th>
-			<td>[Enter]</td>
+			<td><kbd>Enter</kbd></td>
 			<td>Du skal vælger første partition – [Enter gør det som standard]</td>
 		</tr>
 		<tr>
 			<th>5</th>
-			<td>[Enter]</td>
+			<td><kbd>Enter</kbd></td>
 			<td>Du skal vælge første sektor – [Enter gør det som standard]</td>
 		</tr>
 		<tr>
 			<th>6</th>
-			<td>[Enter]</td>
+			<td><kbd>Enter</kbd></td>
 			<td>Du skal vælge sidste sektor – [Enter gør det som standard]</td>
 		</tr>
 		<tr>
 			<th>7</th>
-			<td>p</td>
+			<td><kbd>p</kbd></td>
 			<td>* Tjek partionstabellen</td>
 		</tr>
 		<tr>
 			<th>8</th>
-			<td>t</td>
-			<td>Menuen til at ændre system ID'et – Vi skal lave disken om til en LVM-disk</td>
-		</tr>
-		<tr>
-			<th>9</th>
-			<td>l</td>
-			<td>* Se alle de mulige system ID'er</td>
-		</tr>
-		<tr>
-			<th>10</th>
-			<td>83</td>
-			<td>Linux</td>
-		</tr>
-		<tr>
-			<th>11</th>
-			<td>p</td>
-			<td>* Tjek partionstabellen</td>
-		</tr>
-		<tr>
-			<th>12</th>
-			<td>w</td>
+			<td><kbd>w</kbd></td>
 			<td>Skriv ændringerne til disken</td>
 		</tr>
 	</tbody>
 </table>
 
-<p>I ovenstående tilfælde oprettes der en partition på harddisken, da den alligevel skal tilføjes til LVM. Hvis der ønskes flere partitioner køres punkterne 2-6 igennem for hver partition.</p>
-
 <pre class="black">
-Kommando (m for hjælp): <span class="red">n [ENTER]</span>    
-Partition type:
+Kommando (m for hjælp): <span class="red">n [ENTER]</span> 
+Partition type
    p   primary (0 primary, 0 extended, 4 free)
-   e   extended
+   e   extended (container for logical partitions)
 Select (default p): <span class="red">p [ENTER]</span>
-Partitionsnummer (1-4, standard 1): <span class="red">[ENTER]</span>
-Bruger standardværdi 1
-Første sektor (2048-209715199, standard 2048): <span class="red">[ENTER]</span>
-Bruger standardværdi 2048
-Seneste sektor, +sektorer eller +størrelse{K,M,G} (2048-209715199, standard 
-209715199): <span class="red">[ENTER]</span>
-Bruger standardværdi 209715199
+Partitionsnummer (1-4, default 1): <span class="red">[ENTER]</span>
+First sector (2048-209715199, default 2048): <span class="red">[ENTER]</span>
+Last sector, +sectors or +size{K,M,G,T,P} (2048-209715199, default 209715199): <span class="red">[ENTER]</span>
 
-Kommando (m for hjælp): 
+Created a new partition 1 of type 'Linux' and of size 100 GiB.
+
+Kommando (m for hjælp): <span class="red">p [ENTER]</span>
+<span class="bold">Disk /dev/sdb: 100 GiB, 107374182400 bytes, 209715200 sectors</span>
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0xc0b6b3c8
+
+<span class="bold">Enhed      Opstart Start      Slut  Sektorer  Size Id Type</span>
+/dev/sdb1           2048 209715199 209713152  100G 83 Linux
+
+Kommando (m for hjælp): <span class="red">w [ENTER]</span>
+The partition table has been altered.
+Calling ioctl() to re-read partition table.
+Syncing disks.
 </pre>
+
+<p>Som vi kan se herover bliver harddisken som standard sat til Id/Type 83/Linux, og harddisken er sat korrekt op.</p>
+
+<h2>Ændring af ID/Type</h2>
+
+<p>Her overfor er harddisken sat op til et Linux-filsystem. Ønsker du at sætte den op til et andet filsystem (f.eks. NTFS) kan du gøre det ved at køre <span class="inl_cmd">fdisk</span> igen - eller gøre det efter trin 7 før du skriver til disken.</p>
+
+<code class="cmd">sudo fdisk /dev/sdb</code>
 
 <p>Herefter skal der vælges system-ID, som passer til det filsystem der skal anvendes. De mest anvendte er:</p>
 
@@ -862,62 +880,134 @@ Kommando (m for hjælp):
 	</tbody>
 </table>
 
+<p>Herunder vil vi ændre partitionen til NTFS</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Trin</th>
+			<th>Input</th>
+			<th>Forklaring</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<th>1</th>
+			<td><kbd>p</kbd></td>
+			<td>Tjek partionstabellen</td>
+		</tr>
+		<tr>
+			<th>2</th>
+			<td><kbd>l</kbd></td>
+			<td>Få et overblik over tilgængelige filsystemer</td>
+		</tr>
+		<tr>
+			<th>3</th>
+			<td><kbd>t</kbd></td>
+			<td>Aktivier prompten til at vælge ID</td>
+		</tr>
+		<tr>
+			<th>4</th>
+			<td><kbd>7</kbd></td>
+			<td>Vælg NTFS</td>
+		</tr>
+		<tr>
+			<th>5</th>
+			<td><kbd>p</kbd></td>
+			<td>Tjek partionstabellen</td>
+		</tr>
+		<tr>
+			<th>6</th>
+			<td><kbd>w</kbd></td>
+			<td>Skriv ændringerne til disken</td>
+		</tr>
+	</tbody>
+</table>
+
+
 <p>Angående filsystem ID kan man få et overblik frem med <span class="inl_cmd">l</span>:</p>
 
 <pre class="black">
-Kommando (m for hjælp): l
+Kommando (m for hjælp): <span class="red">p [Enter]</span>
+<span class="bold">Disk /dev/sdb: 100 GiB, 107374182400 bytes, 209715200 sectors</span>
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0xc0b6b3c8
+
+<span class="bold">Enhed      Opstart Start      Slut  Sektorer  Size Id Type</span>
+/dev/sdb1           2048 209715199 209713152  100G 83 Linux
+
+Kommando (m for hjælp): <span class="red">l [Enter]</span>
 
  0  Tom             24  NEC DOS         81  Minix / gammel  bf  Solaris        
  1  FAT12           27  Hidden NTFS Win 82  Linux swap / So c1  DRDOS/sec (FAT-
- 2  XENIX root      39  Plan 9          <span class="red">83  Linux</span>           c4  DRDOS/sec (FAT-
- 3  XENIX usr       3c  PartitionMagic  84  OS/2 skjult C-d c6  DRDOS/sec (FAT-
+ 2  XENIX root      39  Plan 9          83  Linux           c4  DRDOS/sec (FAT-
+ 3  XENIX usr       3c  PartitionMagic  84  OS/2 hidden or  c6  DRDOS/sec (FAT-
  4  FAT16 &lt;32M      40  Venix 80286     85  Linux udvidet   c7  Syrinx         
  5  Udvidet         41  PPC PReP Opstar 86  NTFS diskenheds da  Ikke-filsystemd
  6  FAT16           42  SFS             87  NTFS diskenheds db  CP/M / CTOS / .
- <span class="red">7  HPFS/NTFS/exFAT</span> 4d  QNX4.x          88  Linux råtekst   de  Dell-værktøj   
- 8  AIX             4e  QNX4.x 2. part  <span class="red">8e  Linux LVM</span>       df  BootIt         
+ 7  HPFS/NTFS/exFAT 4d  QNX4.x          88  Linux råtekst   de  Dell-værktøj   
+ 8  AIX             4e  QNX4.x 2. part  8e  Linux LVM       df  BootIt         
  9  AIX opstartbar  4f  QNX4.x 3. part  93  Amoeba          e1  DOS access     
  a  OS/2-opstartshå 50  OnTrack DM      94  Amoeba BBT      e3  DOS R/O        
  b  W95 FAT32       51  OnTrack DM6 Aux 9f  BSD/OS          e4  SpeedStor      
- <span class="red">c  W95 FAT32 (LBA)</span> 52  CP/M            a0  IBM Thinkpad dv eb  BeOS fs        
- e  W95 FAT16 (LBA) 53  OnTrack DM6 Aux a5  FreeBSD         ee  GPT            
- f  W95 udvidet (LB 54  OnTrackDM6      a6  OpenBSD         ef  EFI (FAT-12/16/
-10  OPUS            55  EZ-Drev         a7  NeXTSTEP        f0  Linux/PA-RISC o
-11  Skjult FAT12    56  Golden Bow      a8  Darwin UFS      f1  SpeedStor      
-12  Compaq diagnost 5c  Priam Edisk     a9  NetBSD          f4  SpeedStor      
-14  Skjult FAT16 &lt;3 61  SpeedStor       ab  Darwin opstart  f2  DOS sekundær   
-16  Skjult FAT16    63  GNU HURD eller  af  HFS / HFS+      fb  VMware VMFS    
-17  Skjult HPFS/NTF 64  Novell Netware  b7  BSDI fs         fc  VMware VMKCORE 
-18  AST SmartSleep  65  Novell Netware  b8  BSDI swap       fd  Linux raid auto
-1b  Skjult W95 FAT3 70  DiskSecure Mult bb  Boot Wizard skj fe  LANstep        
-1c  Skjult W95 FAT3 75  PC/IX           be  Solaris opstart ff  BBT            
-1e  Skjult W95 FAT1 80  Gammel Minix 
+ c  W95 FAT32 (LBA) 52  CP/M            a0  IBM Thinkpad dv ea  Rufus alignment
+ e  W95 FAT16 (LBA) 53  OnTrack DM6 Aux a5  FreeBSD         eb  BeOS fs        
+ f  W95 udvidet (LB 54  OnTrackDM6      a6  OpenBSD         ee  GPT            
+10  OPUS            55  EZ-Drev         a7  NeXTSTEP        ef  EFI (FAT-12/16/
+11  Skjult FAT12    56  Golden Bow      a8  Darwin UFS      f0  Linux/PA-RISC o
+12  Compaq diagnost 5c  Priam Edisk     a9  NetBSD          f1  SpeedStor      
+14  Skjult FAT16 &lt;3 61  SpeedStor       ab  Darwin opstart  f4  SpeedStor      
+16  Skjult FAT16    63  GNU HURD eller  af  HFS / HFS+      f2  DOS sekundær   
+17  Skjult HPFS/NTF 64  Novell Netware  b7  BSDI fs         fb  VMware VMFS    
+18  AST SmartSleep  65  Novell Netware  b8  BSDI swap       fc  VMware VMKCORE 
+1b  Skjult W95 FAT3 70  DiskSecure Mult bb  Boot Wizard skj fd  Linux raid auto
+1c  Skjult W95 FAT3 75  PC/IX           bc  Acronis FAT32 L fe  LANstep        
+1e  Skjult W95 FAT1 80  Gammel Minix    be  Solaris opstart ff  BBT            
+
+Kommando (m for hjælp): <span class="red">t [Enter]</span>
+Selected partition 1
+Partition type (type L to list all types): 7
+Changed type of partition 'Linux' to 'HPFS/NTFS/exFAT'.
+
+Kommando (m for hjælp): <span class="red">p [Enter]</span>
+<span class="bold">Disk /dev/sdb: 100 GiB, 107374182400 bytes, 209715200 sectors</span>
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0xc0b6b3c8
+
+<span class="bold">Enhed      Opstart Start      Slut  Sektorer  Size Id Type</span>
+/dev/sdb1           2048 209715199 209713152  100G  7 HPFS/NTFS/exFAT
+
+Kommando (m for hjælp): <span class="red">w [Enter]</span>
+The partition table has been altered.
+Calling ioctl() to re-read partition table.
+Syncing disks.
 </pre>
 
-<p>Dem der er markeret med rød er dem man ofte anvender.</p>
-
-
-
-<p>Efter partitioneringen af disken fås følgende output af <span class="inl_cmd">lsblk</span></p>
+<p>Efter partitioneringen af disken fås følgende output af <span class="inl_cmd">fdisk -l</span></p>
 
 <pre class="ubuntu_terminal">
-root@tjmainsrv:/home/thoj# lsblk
-NAME                   MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
-sda                      8:0    0   100G  0 disk 
-├─sda1                   8:1    0   476M  0 part /boot
-├─sda2                   8:2    0     1K  0 part 
-└─sda5                   8:5    0  99,5G  0 part 
-  ├─vg01-system (dm-0) 252:0    0   9,3G  0 lvm  /
-  ├─vg01-home (dm-1)   252:1    0  18,6G  0 lvm  /home
-  ├─vg01-web (dm-2)    252:2    0   3,7G  0 lvm  /var/www
-  ├─vg01-data (dm-3)   252:3    0  55,9G  0 lvm  /srv
-  └─vg01-swap (dm-4)   252:4    0   2,1G  0 lvm  [SWAP]
-sdb                      8:16   0   100G  0 disk 
-└─sdb1                   8:17   0   100G  0 part 
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ sudo fdisk -l /dev/sdb
+<span class="bold">Disk /dev/sdb: 100 GiB, 107374182400 bytes, 209715200 sectors</span>
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0xc0b6b3c8
+
+<span class="bold">Enhed      Opstart Start      Slut  Sektorer  Size Id Type</span>
+/dev/sdb1           2048 209715199 209713152  100G  7 HPFS/NTFS/exFAT
+ 
 </pre>
 
+<p><span class="red">NOTE: </span>For at fortsætte guiden skal du ændre harddisken tilbage til et Linux Filsystem (83). Kontroller med <span class="inl_cmd">fdisk -l /dev/sdb</span>.</p>
 
-<h3>Formatering af disken</h3>
+<h2>Formatering af disken</h2>
 
 <p>Linux har mange forskellige filsystemer, hvor <span class="inl_cmd">ext2</span> og <span class="inl_cmd">ext4</span> er det mest almindelige. Herunder er det vist hvordan man formaterer de forskellige filsystemer:</p>
 
@@ -925,8 +1015,8 @@ sdb                      8:16   0   100G  0 disk
 	<thead>
 		<tr>
 			<th>Filsystem</th>
-			<th>Kommando</th>
-			<th>Kontrolleres med</th>
+			<th>Formatering</th>
+			<th>Kontrol</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -939,11 +1029,6 @@ sdb                      8:16   0   100G  0 disk
 			<td>ext4</td>
 			<td><span class="inl_cmd">mkfs.ext4 *partitioner*</span></td>
 			<td><span class="inl_cmd">e2fsck *partition*</span></td>
-		</tr>
-		<tr>
-			<td>btrfs</td>
-			<td><span class="inl_cmd">mkfs.btrfs *partitioner*</span></td>
-			<td><span class="inl_cmd">btrfsck *partition*</span></td>
 		</tr>
 		<tr>
 			<td>vfat</td>
@@ -959,62 +1044,46 @@ sdb                      8:16   0   100G  0 disk
 	</tbody>
 </table>
 
-<p>Herefter formateres disken med kommandoen <span class="inl_cmd">mkfs.ext4 /dev/sdb1</span></p>
+<p>Herunder formaterer vi harddisken til ext4:</p>
+
+<code class="cmd">sudo mkfs.ext4 /dev/sdb1</code>
 
 <pre class="ubuntu_terminal">
-root@tjmainsrv:/home/thoj# mkfs.ext4 /dev/sdb1
-mke2fs 1.42.9 (4-Feb-2014)
-Filesystem label=
-OS type: Linux
-Block size=4096 (log=2)
-Fragment size=4096 (log=2)
-Stride=0 blocks, Stripe width=0 blocks
-6553600 inodes, 26214144 blocks
-1310707 blocks (5.00%) reserved for the super user
-First data block=0
-Maximum filesystem blocks=4294967296
-800 block groups
-32768 blocks per group, 32768 fragments per group
-8192 inodes per group
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ sudo mkfs.ext4 /dev/sdb1
+mke2fs 1.42.13 (17-May-2015)
+Opretter filsystem med 26214144 4k blokke og 6553600 iknuder
+Filsystem UUID: 432a02a0-2e49-4b52-b19c-e68db62baf51
 Superblock backups stored on blocks: 
 	32768, 98304, 163840, 229376, 294912, 819200, 884736, 1605632, 2654208, 
 	4096000, 7962624, 11239424, 20480000, 23887872
 
-Allocating group tables: done                            
-Writing inode tables: done                            
-Creating journal (32768 blocks): done
-Writing superblocks and filesystem accounting information: done 
+Allokerer gruppetabeller: færdig                          
+Skriver iknudetabeller: færdig                          
+Opretter journal (32768 blokke): færdig
+Skriver superblokke og filsystemets registreringsinformation: færdig 
 
-root@tjmainsrv:/home/thoj#  
 </pre>
 
 
-<h3>Montering af harddisken <span class="inl_cmd">/etc/fstab</span></h3>
+<h2>Fast montering af disken</h2>
 
-<p>Harddisken kan nu monteres på systemet. FOr at tjekke at den virker monterer vi den "løst", uden at det gemmes når maskinen bootes. For at gøre det skal vi først oprette en mappe den kan monteres i, montere disken og tjekke om den er på filsystemet</p>
+<p>I første kapitel gennemgik vi hvordan man mounter partitioner. Herunder vil vi gøre sådan at harddisken automatisk bliver monteret når computeren starter op. Vi vil montere mappen i <span class="inl_cmd">/srv/newdisk</span>, da <span class="inl_cmd">/srv</span> er standardmappen for datadiske. Først vil vi tjekke harddisken og dens opsætning og herefter oprette mappen:</p>
 
-<code class="cmd">mkdir -p /srv/newdisk</code>
-
-<code class="more_cmd">mount /dev/sdb1 /srv/newdisk</code>
-
-<code class="more_cmd">lsblk</code>
+<code class="cmd">sudo fdisk -l /dev/sdb</code>
+<code class="more_cmd">sudo mkdir -p /srv/newdisk</code>
 
 <pre class="ubuntu_terminal">
-root@tjmainsrv:/home/thoj# mkdir -p /srv/newdisk
-root@tjmainsrv:/home/thoj# mount /dev/sdb1 /srv/newdisk
-root@tjmainsrv:/home/thoj# lsblk
-NAME                   MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
-sda                      8:0    0   100G  0 disk 
-├─sda1                   8:1    0   476M  0 part /boot
-├─sda2                   8:2    0     1K  0 part 
-└─sda5                   8:5    0  99,5G  0 part 
-  ├─vg01-system (dm-0) 252:0    0   9,3G  0 lvm  /
-  ├─vg01-home (dm-1)   252:1    0  18,6G  0 lvm  /home
-  ├─vg01-web (dm-2)    252:2    0   3,7G  0 lvm  /var/www
-  ├─vg01-data (dm-3)   252:3    0  55,9G  0 lvm  /srv
-  └─vg01-swap (dm-4)   252:4    0   2,1G  0 lvm  [SWAP]
-sdb                      8:16   0   100G  0 disk 
-└─sdb1                   8:17   0   100G  0 part /srv/newdisk
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ sudo fdisk -l /dev/sdb
+<span class="bold">Disk /dev/sdb: 100 GiB, 107374182400 bytes, 209715200 sectors</span>
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0xc0b6b3c8
+
+<span class="bold">Enhed      Opstart Start      Slut  Sektorer  Size Id Type</span>
+/dev/sdb1           2048 209715199 209713152  100G 83 Linux
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ sudo mkdir -p /srv/newdisk
 </pre>
 
 <p>For at kunne montere disken ved hjælp af <span class="inl_cmd">/etc/fstab</span>, så den også er monteret herefter skal vi finde diskens UUID og indsætte denne linie 8 <span class="inl_cmd">/etc/fstab</span>.</p>
@@ -1022,19 +1091,42 @@ sdb                      8:16   0   100G  0 disk
 <code class="cmd">sudo blkid | grep /dev/sdb1</code>
 
 <pre class="ubuntu_terminal">
-root@tjmainsrv:/home/thoj# sudo blkid | grep /dev/sdb1
-<span class="red">/dev/sdb1</span>: UUID="a4ce9a3e-55c5-4015-bb2d-46147f9a3a49" TYPE="ext4"
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ sudo blkid | grep /dev/sdb1
+<span class="red">/dev/sdb1</span>: UUID="a9325cdc-bd8b-4795-b514-59f1f7453235" TYPE="ext4" PARTUUID="c0b6b3c8-01"
 </pre>
 
 <p>Følgende linier indsættes i <span class="inl_cmd">/etc/fstab</span> (husk at fjerne " om UUID'en):</p>
 
+<code class="cmd">sudo nano /etc/fstab</code>
+
 <pre class="black">
 #/srv/newdisk er indsat i filsystemet af thoj 17082015
-UUID=a4ce9a3e-55c5-4015-bb2d-46147f9a3a49 	/srv/newdisk 	ext4	defaults		0	2
+UUID=a9325cdc-bd8b-4795-b514-59f1f7453235  /srv/newdisk   ext4	defaults       0   2
 </pre>
 
-<p>Genstart maskinen og tjek at <span class="inl_cmd">/dev/sdb1</span> er monteret som <span class="inl_cmd">/srv/newdisk</span>.</p>
+<p>Herefter vil harddisken være monteret i <span class="inl_cmd">/srv/newdisk</span> efter opstart. For at mountere disken med det samme anvendes <span class="inl_cmd">mount</span> kommandoen med et <span class="inl_cmd">-a</span> bagefter. Den får Ubuntu til at genindlæse <span class="inl_cmd">/etc/fstab</span> og sørge for at alle partitioner der er nævnt deri bliver monteret. Herunder er det vist ved hjælp af <span class="inl_cmd">lsblk</span>.</p>
 
+<pre class="ubuntu_terminal">
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ lsblk
+NAME   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+sda      8:0    0  100G  0 disk 
+├─sda1   8:1    0 46,6G  0 part /
+├─sda2   8:2    0  3,8G  0 part [SWAP]
+└─sda3   8:3    0 28,9G  0 part /data
+sdb      8:16   0  100G  0 disk 
+└─sdb1   8:17   0  100G  0 part <span class="red">&lt;-- Læg mærke til denne linie </span>
+sr0     11:0    1 1024M  0 rom  
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ sudo mount -a <span class="red">Alle drev monteres</span>
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ lsblk
+NAME   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+sda      8:0    0  100G  0 disk 
+├─sda1   8:1    0 46,6G  0 part /
+├─sda2   8:2    0  3,8G  0 part [SWAP]
+└─sda3   8:3    0 28,9G  0 part /data
+sdb      8:16   0  100G  0 disk 
+└─sdb1   8:17   0  100G  0 part /srv/newdisk <span class="red">&lt;-- Læg mærke til denne linie </span>
+sr0     11:0    1 1024M  0 rom  
+</pre>
 
 <h2>Kontrol af harddiske</h2>
 
@@ -1061,13 +1153,13 @@ e2fsck 1.42.13 (17-May-2015)
 Filsystem      Størr Brugt  Tilb Brug% Monteret på
 udev            2,0G     0  2,0G    0% /dev
 tmpfs           396M  6,1M  390M    2% /run
-/dev/sda1        46G  4,1G   40G   10% /
-tmpfs           2,0G  252K  2,0G    1% /dev/shm
+/dev/sda1        46G  3,9G   40G    9% /
+tmpfs           2,0G  216K  2,0G    1% /dev/shm
 tmpfs           5,0M  4,0K  5,0M    1% /run/lock
 tmpfs           2,0G     0  2,0G    0% /sys/fs/cgroup
-tmpfs           396M   48K  396M    1% /run/user/1000
 /dev/sda3        29G   44M   27G    1% /data
-
+tmpfs           396M   52K  396M    1% /run/user/1000
+/dev/sdb1        99G   60M   94G    1% /srv/newdisk
 </pre>
 
 <p>Hvis man har lavet ændringer på en harddisk med <span class="inl_cmd">fdisk</span>, så kan man risikere, at kernen ikke kan arbejde med de nye informationer. Det kan løses enten ved at genstarte maskinen, eller at anvende programmet <span class="inl_cmd">partprobe</span>.</p>
