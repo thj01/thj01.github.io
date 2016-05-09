@@ -445,12 +445,23 @@ loop0  squashfs 338.5M loop /livemnt/squashfs
 
 <h1><span class="inl_cmd">FSArchiever</span> - <span class="bold">F</span>ile<span class="bold">S</span>ystem <span class="bold">A</span>rchiever for Linux</h1>
 
-<p><span class="inl_cmd">FSArchiver</span> er et program der specialiserer sig i at gemme filsystemer til pakkede filer. Det kan også skabe filsystemer hvor det bliver pakket ud til, så det er ikke nødvendigt at formateren en disk før den bliver gendannet fra en backup. Herunder er et eksempel, hvor der tages backup af et Windows 7 system:</p>
+<p><span class="inl_cmd">fsarchiver</span> er grundlæggende et program der gemmer indholdet af et filsystem til et pakket arkiv. Herunder er nogle af dets features:</p>
 
-<code class="cmd">fsarchiver savefs -v -z 7 -j 2 -e 'pagefile.*' -L 'Win7 Backup 300815' /srv/backup/win7_z7.fsa /dev/sda1 /dev/sda2</code>
+<span class="afsnit">Kan udnytte flere kerner</span>
+
+<p>Man kan selv vælge hvor mange af CPU'ens kerner der skal afsættes til opgaven. Det betyder både at man fuldt ud kan benytte moderne CPU'er, men også at man kan nøjes med at anvende ledige CPU'er - f.eks. på et server med mange kerner.</p>
+
+<span class="afsnit">Arbejder på filniveau</span>
+
+<p><span class="inl_cmd">fsarchiver</span> tager backup af filer, hvor der også er kørt checksum. Det betyder bl.a. at selvom der er fejl i enkelte filer, så kan <span class="inl_cmd">fsarchiver</span> stadig udpakke resten af filerne. Det betyder også at du kan udpakke filerne på et andet filsystem end det oprindelige.</p>
+
+<span class="afsnit">Et eksempel</span>
+
+<p>Herinder er et eksempel hvor der tages backup af en Windows 7 installation (boot og systemdrev) på en partition der er monteret på <span class="inl_cmd">/mnt/backup</span>:</p>
+
+<code class="cmd">fsarchiver savefs -v -z 7 -j 2 -e 'pagefile.*' -L 'Win7 Backup 010116' /mnt/backup/win7_z7.fsa /dev/sda1 /dev/sda2</code>
 
 <p>I tabellen herunder er kommandollinien forklaret</p>
-
 
 <table class="cmd_table">
 	<thead>
@@ -485,12 +496,12 @@ loop0  squashfs 338.5M loop /livemnt/squashfs
 			<td>Udelad filer der hedder <span class="inl_cmd">pagefile.*</span></td>
 		</tr>
 		<tr>
-			<td>-L 'Win7 Backup 300815'</td>
-			<td>Tilføj beskrivelsen "Win7 Backup 300815"</td>
+			<td>-L 'Win7 Backup 010116'</td>
+			<td>Tilføj beskrivelsen "Win7 Backup 010116"</td>
 		</tr>
 		<tr>
-			<td>/srv/backup/win7_z7.fsa</td>
-			<td>navgiv filen <span class="inl_cmd">/srv/backup/win7_z7.fsa</span></td>
+			<td>/mnt/backup/win7_z7.fsa</td>
+			<td>navgiv filen <span class="inl_cmd">/mnt/backup/win7_z7.fsa</span>.</td>
 		</tr>
 		<tr>
 			<td>/dev/sda1 /dev/sda2</td>
@@ -499,7 +510,7 @@ loop0  squashfs 338.5M loop /livemnt/squashfs
 	</tbody>
 </table>
 
-<p>Som du kan se af ovenstående er det muligt at konfigurere processen ned i mindste detalje, og eksemplet er langt fra uddybende.</p>
+<p>Som du kan se af ovenstående er det muligt at konfigurere processen ned i mindste detalje.</p>
 
 <p>FSArchivers hjemmeside og dokumentation er i første øjekast sparsom, men ved nærlæsning finder man ud af at den er blot er kompakt og effektivt struktureret. Du kan finde hjemmesiden her:</p>
 
@@ -513,9 +524,17 @@ loop0  squashfs 338.5M loop /livemnt/squashfs
 
 <code class="cmd">fsarchiver <span class="red">[Kommando]</span> <span class="blue">[Optioner]</span> <span class="green">[Image-fil]</span> <span class="cyan">[partition(er)]</span></code>
 
-<span class="afsnit"><span class="red">[Kommando]</span></span>
+<h3><span class="red">[Kommando]</span></h3>
 
-<p>... beskriver hvad programmet skal:</p>
+<p>Der findes 3 typer kommandoer.</p>
+
+<ol class="">
+	<li>Kommandoer rettet mod at tage backup af partitioner</li>
+	<li>Kommandoer rettet mod at tage backup af filer</li>
+	<li>Kommandoer rettet mod at analysere og få info fra backupfiler</li>
+</ol>
+
+<span class="afsnit">Kommandoer rettet mod at tage backup af partitioner</span>
 
 <table class="cmd_table">
 	<thead>
@@ -533,10 +552,49 @@ loop0  squashfs 338.5M loop /livemnt/squashfs
 			<td>restfs</td>
 			<td>Gendan filsystem (restore filesystem)</td>
 		</tr>
+
+	</tbody>
+</table>
+
+<p>Kommandoerne gør som de siger - gemmer og gendanner filsystemer</p>
+
+<span class="afsnit">Kommandoer rettet mod at tage backup af filer</span>
+
+<table class="cmd_table">
+	<thead>
+		<tr>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
 		<tr>
 			<td>savedir</td>
-			<td>Pakker mapper ned i arkivet.</td>
+			<td>Tilføjer et mappe til et arkiv</td>
 		</tr>
+		<tr>
+			<td>restdir</td>
+			<td>udpakker en mappe fra et arkiv</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Du kan også anvende fsarchiver til at lave almindelig backup af filer ved hjælp af <span class="inl_cmd">savedir</span> og <span class="inl_cmd">restdir</span>. Egentlig fungerer det ligesom tar eller zip filer, men du har fordelen ved at kunne anvende de ekstra features samt checksum. På denne måde kan du tage "snapshots af dine vigtige mapper og gendanne dem om nødvendigt.</p>
+
+<p>Du kan ikke hente enkelte mapper ud fra arkiver hvor der er anvendt <span class="inl_cmd">savefs</span> og <span class="inl_cmd">restfs</span>.</p>
+
+
+<span class="afsnit">Kommandoer rettet mod at analysere og få info fra backupfiler</span>
+
+
+<table class="cmd_table">
+	<thead>
+		<tr>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
 		<tr>
 			<td>archinfo</td>
 			<td>Vis information om arkivet</td>
@@ -552,7 +610,76 @@ loop0  squashfs 338.5M loop /livemnt/squashfs
 	</tbody>
 </table>
 
-<span class="afsnit"><span class="blue">[Optioner]</span></span>
+<p>Ved hjælp af disse kommandoer kan du få informationer om henholdsvis dine arkiver eller over computerens partitioner. Her er vist nogle eksempler</p>
+
+<p>Arkivinfo fra en fil (<span class="inl_cmd">/data/ubuntu.fsa</span>) </p>
+
+<code class="cmd">fsarchiver archinfo /data/ubuntu.fsa </code>
+
+<pre class="black">
+<span class="green">root@sysresccd</span> <span class="blue1">/root</span> % fsarchiver archinfo /data/ubuntu.fsa 
+====================== archive information ======================
+Archive type: 			filesystems
+Filesystems count: 		1
+Archive id: 			5707f249
+Archive file format: 		FsArCh_002
+Archive created with: 		0.6.21
+Archive creation date: 		2016-04-03_11-31-54
+Archive label: 			&lt;none&gt;
+Minimum fsarchiver version:	0.6.4.0
+Compression level: 		3 (gzip level 6)
+Encryption algorithm: 		none
+
+===================== filesystem information ====================
+Filesystem id in archive: 	0
+Filesystem format: 		ext4
+Filesystem label: 		
+Filesystem uuid: 		28fb75b0-085c-448e-9755-a7d0a73f9540
+Original device: 		/dev/sda1
+Original filesystem size: 	157.94 GB (169588563968 bytes)
+Space used in filesystem: 	33.54 GB (36018147328 bytes)
+</pre>
+
+<p>Overblik over partitioner:</p>
+
+<code class="cmd">fsarchiver probe</code> 
+
+<pre class="black">
+<span class="green">root@sysresccd</span> <span class="blue1">/root</span> % fsarchiver probe
+[======DISK======] [=============NAME==============] [====SIZE====] [MAJ] [MIN]
+[sda             ] [VBOX HARDDISK                  ] [   100.00 GB] [  8] [  0]
+[sdb             ] [VBOX HARDDISK                  ] [   100.00 GB] [  8] [ 16]
+[sr0             ] [CD-ROM                         ] [   459.88 MB] [ 11] [  0]
+
+[=====DEVICE=====] [==FILESYS==] [======LABEL======] [====SIZE====] [MAJ] [MIN] 
+[loop0           ] [squashfs   ] [&lt;unknown&gt;        ] [   338.45 MB] [  7] [  0] 
+[sda1            ] [ext4       ] [&lt;unknown&gt;        ] [    46.57 GB] [  8] [  1] 
+[sda2            ] [swap       ] [&lt;unknown&gt;        ] [     3.81 GB] [  8] [  2] 
+[sda3            ] [ext4       ] [&lt;unknown&gt;        ] [    28.87 GB] [  8] [  3] 
+[sdb1            ] [ext4       ] [&lt;unknown&gt;        ] [   100.00 GB] [  8] [ 17]
+</pre>
+
+<p>Man kan også anvende det detaljerede overblik. Det eneste man reelt får ud af det er, at man får enhedens "lange navn" ( f.eks: <span class="inl_cmd">/dev/sda1</span> i stedet for <span class="inl_cmd">sda1</span> og enhedens UID.</p>
+
+
+<code class="cmd">fsarchiver probe detailed</code> 
+
+<pre class="black">
+<span class="green">root@sysresccd</span> <span class="blue1">/root</span> % fsarchiver probe detailed
+[======DISK======] [=============NAME==============] [====SIZE====] [MAJ] [MIN]
+[sda             ] [VBOX HARDDISK                  ] [   100.00 GB] [  8] [  0]
+[sdb             ] [VBOX HARDDISK                  ] [   100.00 GB] [  8] [ 16]
+[sr0             ] [CD-ROM                         ] [   459.88 MB] [ 11] [  0]
+
+[=====DEVICE=====] [==FILESYS==] [======LABEL======] [====SIZE====] [MAJ] [MIN] [==============LONGNAME==============] [=================UUID=================] 
+[loop0           ] [squashfs   ] [&lt;unknown&gt;        ] [   338.45 MB] [  7] [  0] [/dev/loop0                          ] [&lt;unknown&gt;                             ] 
+[sda1            ] [ext4       ] [&lt;unknown&gt;        ] [    46.57 GB] [  8] [  1] [/dev/sda1                           ] [c177c89a-3ad8-4588-a172-3bdd86ccc6df  ] 
+[sda2            ] [swap       ] [&lt;unknown&gt;        ] [     3.81 GB] [  8] [  2] [/dev/sda2                           ] [c4e6f606-e61c-4936-9b6e-73de38ed0b7b  ] 
+[sda3            ] [ext4       ] [&lt;unknown&gt;       ] [    28.87 GB] [  8] [  3] [/dev/sda3                           ] [377113e6-5f83-4153-ac47-8d6dbc98a5cb  ] 
+[sdb1            ] [ext4       ] [&lt;unknown&gt;       ] [   100.00 GB] [  8] [ 17] [/dev/sdb1                           ] [a9325cdc-bd8b-4795-b514-59f1f7453235  ] 
+</pre>
+
+<h3><span class="blue">[Optioner]</span></h3>
 
 <p>... konfigurerer FSArchiver ned i detaljer. Herunder er nogle af mulighederne listet:</p>
 
@@ -621,83 +748,104 @@ loop0  squashfs 338.5M loop /livemnt/squashfs
 
 <p>Henvisning: <a href="http://www.fsarchiver.org/Compression" target="_blank">http://www.fsarchiver.org/Compression</a></p>
 
-<span class="afsnit"><span class="green">[Image-fil]</span></span>
+<h3><span class="green">[Image-fil]</span></h3>
 
-<p>... angiver backupfilen</p>
+<p>... angiver filnavnet på arkivet</p>
 
-<span class="afsnit"><span class="cyan">[partition(er)]</span></span>
+<h3><span class="cyan">[partition(er)]</span></h3>
 
 <p>... angiver hvilke partitioner der skal pakkes.</p>
 
-<p>Man kan senere hente specifikke partitioner ud af arkivet. Hvis man f.eks. har pakket 3 partitioner ned i arkivet f.eks. <span class="inl_cmd">/dev/sda1</span>, <span class="inl_cmd">/dev/sda2</span> og <span class="inl_cmd">/dev/sda2</span> får de hver angivet et ID. Første partition har ID=0, anden ID=1 og den tredie har ID=2.</p>
+<p>Den første partition får <span class="inl_cmd">ID = 0</span>, den anden <span class="inl_cmd"> ID=1</span> osv. På den måde vil man senere kunne angive hvilken partition der skal pakkes ud når en harddisk skal gendannes.</p>
 
-<p>Når man så senere skal udpakke arkivet skal man angive partitionens ID i den pakkede fil og destinationen. Herunder er vist hvordan man henter arkivets anden partition ud (Systemdrevet) fra en pakket fil og lægger den på <span class="inl_cmd">/dev/sda2</span>, som bliver formateret i samme proces.</p>
+
+<p>Når man så senere skal udpakke arkivet skal man angive partitionens ID i den pakkede fil og destinationen. Herunder er vist hvordan man henter arkivets anden partition ud, som vil være systemdrevet på en windows computer og lægger den på <span class="inl_cmd">/dev/sda2</span>, som bliver formateret i samme proces.</p>
 
 <code class="cmd">fsarchiver restfs -v ~/backupfil.fsa  id=1,dest=/dev/sda2,mkfs=ntfs</code>
 
+<h2>Eksempler på anvendelse</h2>
 
+<code class="cmd">fsarchiver savefs -v -z 3 -j 4 -L 'backup Ubuntu 010116' /mnt/backup/ubuntu010116.fsa /dev/sda1</code>
 
+<table class="cmd_table">
+	<thead>
+		<tr>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>savefs</td>
+			<td>gem filsystem</td>
+		</tr>
+		<tr>
+			<td>-v</td>
+			<td>Vis fremgangen i processen</td>
+		</tr>
+		<tr>
+			<td>-z 3</td>
+			<td>Anvend krypteringsalgoritme 3 (<span class="inl_cmd">gzip -6</span> - standard)</td>
+		</tr>
+		<tr>
+			<td>-j 4</td>
+			<td>Anvend 4 processorer</td>
+		</tr>
+		<tr>
+			<td>-L 'backup Ubuntu 010116'</td>
+			<td>Tilføj beskrivelsen - <span class="inl_cmd">backup Ubuntu 010116</span></td>
+		</tr>
+		<tr>
+			<td>/mnt/backup/ubuntu010116.fsa</td>
+			<td>navngiv filen <span class="inl_cmd">/mnt/backup/ubuntu010116.fsa</span> og læg den på det monterede drev i <span class="inl_cmd">/mnt/backup</span>.</td>
+		</tr>
+		<tr>
+			<td>/dev/sda1</td>
+			<td>Gemmer <span class="inl_cmd">/dev/sda1</span> </td>
+		</tr>
+	</tbody>
+</table>
 
-<h2>Eksempler med fsarchiver</h2>
+<code class="cmd">fsarchiver restfs -v -j 4 /mnt/backup/ubuntu010116.fsa id=0,dest=/dev/sda1,mkfs=ext4</code>
 
-<p>I følgende eksempel vil der blive taget udgangspunkt i et netværk med en Windows 7 klient, hvor der er et SMB share på netværket med adressen <span class="inl_cmd">//10.0.2.10/backup</span>, hvor brugeren "thoj" med adgangskoden "123qwe" har skrive rettigheder.</p>
+<table class="cmd_table">
+	<thead>
+		<tr>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>restfs</td>
+			<td>Gendan filsystem</td>
+		</tr>
+		<tr>
+			<td>-v</td>
+			<td>Vis fremgangen i processen</td>
+		</tr>
+		<tr>
+			<td>-j 4</td>
+			<td>Anvend 4 processorer</td>
+		</tr>
+		<tr>
+			<td>/mnt/backup/ubuntu010116.fsa</td>
+			<td>Anvend arkivet <span class="inl_cmd">/mnt/backup/ubuntu010116.fsa</span>.</td>
+		</tr>
+		<tr>
+			<td>id=0,dest=/dev/sda1,mkfs=ext4</td>
+			<td>Tag den første partitioner i arkivet og læg den på <span class="inl_cmd">/dev/sda1</span>, som skal formateres med <span class="inl_cmd">ext4</span>. </td>
+		</tr>
+	</tbody>
+</table>
 
-<h3>Backup af windows 7 klient - fsarchiver</h3>
+<p>Endeligt kan vi også få <span class="inl_cmd">fsarchivers</span> hjælpetekst frem med nedenstående kommando:</p>
 
-<p>Da SystemrescueCD som standard anvender root brugeren behøver vi ikke at bekymre os om rettighederne til at køre programmerne.</p>
-
-<ol class="">
-
-	<li>Få et overblik over harddiske på klienten</li>
-	
-	<code class="cmd">lsblk</code>
-	
-	<li>Monter netværksdrevet i <span class="inl_cmd">/mnt/backup</span></li>
-	
-	<code class="cmd">mount -t cifs //10.0.2.10/backup /mnt/backup -o user=thoj</code>
-	
-	<li>Tjek om netværksdrevet er monteret korrekt</li>
-	
-	<code class="cmd">ls -al /mnt/backup</code>
-	
-	<li>Kør fsarchiver</li>
-	
-	<code class="cmd">fsarchiver savefs -v -z 7 -e 'pagefile.sys' -e 'hiberfil.sys' -L 'Win7 Backup 300815' /mnt/backup/win7_z7.fsa /dev/sda1 /dev/sda2</code>
-	
-</ol>
-
-<p>Vær opmærksom på at i Ovenstående eksempel er krypteringsalgoritmen <span class="inl_cmd">-z 7</span> valgt.</p>
-
-<h3>Gendannelse af Windows7 Klient - fsarchiver</h3>
-
-<p>Jeg tager i nedestående eksempel udgangspunkt i at harddiske på klienten er partitioneret korrekt. Hvis ikke skal harddisken først partitioneres med <span class="inl_cmd">fdisk</span>.</p>
-
-<ol class="">
-	
-	<li>Monter netværksdrevet i <span class="inl_cmd">/mnt/backup</span></li>
-	
-	<code class="cmd">mount -t cifs //10.0.2.10/backup /mnt/backup -o user=thoj</code>
-	
-	<li>Tjek om netværksdrevet er monteret korrekt</li>
-	
-	<code class="cmd">ls -al /mnt/backup</code>
-	
-	<li>Lav en oversigt over arkivet og tjek at det er det rigtige</li>
-	
-	<code class="cmd">fsarchiver archinfo /mnt/backup/win7_z7.fsa</code>
-	
-	<li>Kør fsarchiver</li>
-	
-	<code class="cmd">fsarchiver restfs -v /mnt/backup/win7_z7.fsa id=0,dest=/dev/sda1,mkfs=ntfs id=1,dest=/dev/sda2,mkfs=ntfs</code>
-	
-	<li>Efter fsarchiver er færdig fjernes USB-disken og computeren genstartes</li>
-	
-	<code class="cmd">reboot</code>
-	
-</ol>
+<code class="cmd">fsarchiver -h</code>
 
 <pre class="black">
-====&gt; fsarchiver version 0.6.19 (2014-03-01) - http://www.fsarchiver.org &lt;====
+root@sysresccd /root % fsarchiver -h 
+====> fsarchiver version 0.6.22 (2016-02-13) - http://www.fsarchiver.org &lt;====
 Distributed under the GPL v2 license (GNU General Public License v2).
  * usage: fsarchiver [&lt;options&gt;] &lt;command&gt; &lt;archive&gt; [&lt;part1&gt; [&lt;part2&gt; [...]]]
 &lt;commands&gt;
@@ -755,23 +903,43 @@ Distributed under the GPL v2 license (GNU General Public License v2).
    fsarchiver restdir /data/linux-sources.fsa /tmp/extract
  * <span class="bold">show information about an archive and its file systems:</span>
    fsarchiver archinfo /data/myarchive2.fsa
-
 </pre>
 
 
 <h1>Partimage</h1>
 
-<p><span class="inl_cmd">partimage</span> er backup program, der gemmer et image af harddisken baseret på dens fysiske sektorer. Det betyder at programmet kan "streame" images uden at skulle forholde sig til filsystemet der ligger på partitionen. Det betyder så også at man ikke kan trække filer ud af imaget. Partimage er altså mest velegnet til at tage backup af partitioner der skel kunne gendannes - f.eks. et nyinstalleret operativsystem.</p>
+<p><span class="inl_cmd">partimage</span> er et ældre backup program, der er udviklet af samme som har udviklet <span class="inl_cmd">fsarchiver</span>. Der er nogle væsentlige forskelle mellem <span class="inl_cmd">partimage</span> og <span class="inl_cmd">fsarchiver</span>:</p>
 
-<p>Det betyder også at harddisken skal være renset for unødvendige filer før der tages backup. For windows 7/8/10 betyder det at man manuelt skal fjerne <span class="inl_cmd">pagefile.sys</span> og <span class="inl_cmd">hiberfil.sys</span> fra roden af systemdrevet, da disse filer fylder flere GB og bliver gendannet automatisk af Windows7/8/10. Der vil blive vist en procedure for at fjerne disse filer senere.</p>
+<span class="afsnit">Ulemper</span>
 
-<p><span class="inl_cmd">partimage</span> kan gøres både som kommandolinie og som GUI. og begge metoder vil blive gennemgået herunder.</p>
+<ul class="disc">
+	<li>Det understøtter ikke ext4/btrfs - hvilket udelukker Linux distributioner</li>
+	<li>Kopiering af data sker på sector niveau - ikke filniveau</li>
+	<li>Man kan ikke indstille antallet af anvendte CPU'er</li>
+	<li>Man kan ikke anvende moderne og mere effektive komprimeringsalgoritmer</li>
+	<li>Der sker ingen defragmentering under gendannelse</li>
+	<li>Modtagerdisken skal have samme filsystem og være formateret forud.</li>
+</ul>
+
+<span class="afsnit">Fordele</span>
+
+<ul class="disc">
+	<li>Det er meget hurtigt, da det nærmest "streamer" filerne ind i imaget ... og tilbage på disken. Det giver optimal udnyttelse af disk-cache</li>
+	<li>Simpel gendannelse. Hver fil indeholder en partitioner</li>
+	<li>God og hurtig til at spejle diske - når vi snakker NTFS</li>
+</ul>
+
+<p><span class="inl_cmd">partimage</span> kan anbefales til folk der kun arbejder med NTFS, men det reelt forældet til alle moderne Linux-distributioner, da de kører som standard kører ext4</p>
+
+
+
+<p><span class="inl_cmd">partimage</span> kan køres både som kommandolinie og som GUI. og begge metoder vil blive gennemgået herunder.</p>
 
 <h2><span class="inl_cmd">partimage</span> som kommandolinie</h2>
 
-<p>Herunder er angivet et eksempel på en kommandollinie</p>
+<p>Herunder er angivet et eksempelhvor der tages backup af et windows systemdrev:</p>
 
-<code class="cmd">partimage -f3 -d -b -V20480 save /dev/sda2 /mnt/backup/win7_nyinstallation.fsa</code>
+<code class="cmd">partimage -f3 -d -b -V20480 save /dev/sda2 /mnt/backup/win7_system</code>
 
 <table class="cmd_table">
 	<thead>
@@ -799,19 +967,19 @@ Distributed under the GPL v2 license (GNU General Public License v2).
 		</tr>
 		<tr>
 			<td>-V20480</td>
-			<td>Images deles ved 20480 MB (20 GB) - Programmet tilhører en tid hvor harddiske i GB størrelse var sjældne ;)</td>
+			<td>Images deles ved 20480 MB (20 GB) </td>
 		</tr>
 		<tr>
 			<td>save</td>
-			<td>gemmer partitionen</td>
+			<td>Gemmer partitionen</td>
 		</tr>
 		<tr>
 			<td>/dev/sda2</td>
 			<td>Partitionen der skal tages backup af</td>
 		</tr>
 		<tr>
-			<td>/mnt/backup/win7_nyinstallation.fsa</td>
-			<td>placeringen af backupfilen</td>
+			<td>/mnt/backup/win7_system</td>
+			<td>Placeringen af backupfilen. Filen kommer til at hedde <span class="inl_cmd">win7_inst.000</span>, og hvis den bliver splittet vil den næste hedde <span class="inl_cmd">001</span>, <span class="inl_cmd">002</span> osv.</td>
 		</tr>
 		
 	</tbody>
@@ -821,11 +989,11 @@ Distributed under the GPL v2 license (GNU General Public License v2).
 
 <p>Kommandoerne er bygget op over samme algoritme der følger programnavnet:</p>
 
-<code class="cmd">partimage <span class="blue">[Optioner]</span> <span class="red">[Kommando]</span> <span class="cyan">[partition(er)]</span> <span class="green">[Image-fil]</span></code>
+<code class="cmd">partimage <span class="blue">[Optioner]</span> <span class="red">[Kommando]</span> <span class="cyan">[partition]</span> <span class="green">[Image-fil]</span></code>
 
-<span class="afsnit"><span class="blue">[Optioner]</span></span>
+<h3><span class="blue">[Optioner]</span></h3>
 
-<p>... konfigurerer FSArchiver ned i detaljer. Herunder er nogle af mulighederne listet:</p>
+<p>... konfigurerer måden <span class="inl_cmd">partimage</span> skal arbejde på:</p>
 
 <table class="cmd_table">
 	<thead>
@@ -862,11 +1030,7 @@ Distributed under the GPL v2 license (GNU General Public License v2).
 	</tbody>
 </table>
 
-<p>Få en fuld liste ved at køre:</p>
-
-<code class="cmd">partimage --help</code>
-
-<span class="afsnit"><span class="red">[Kommando]</span></span>
+<h3><span class="red">[Kommando]</span></h3>
 
 <p>... beskriver hvad programmet skal:</p>
 
@@ -892,7 +1056,7 @@ Distributed under the GPL v2 license (GNU General Public License v2).
 		</tr>
 		<tr>
 			<td>restmbr</td>
-			<td>Giver et overblik over partitioner på systemet</td>
+			<td>Giver mulighed for at gendanne MBR (<span class="bold">M</span>aster <span class="bold">B</span>oot <span class="bold">R</span>ecord ud fra en imagefil.</td> 
 		</tr>
 		<tr>
 			<td>--help</td>
@@ -901,13 +1065,24 @@ Distributed under the GPL v2 license (GNU General Public License v2).
 	</tbody>
 </table>
 
+<p>Der vil komme eksempler på hvordan kommandoerne anvendes, men herunder vil jeg vise output af <span class="inl_cmd">imginfo</span></p>
+
+<code class="cmd">partimage imginfo /mnt/backup/win7_system.000</code>
 
 
-<span class="afsnit"><span class="cyan">[partition(er)]</span></span>
+		<figure id="">
+	
+			<img class="p60" src="images/backup_partimage_imginfo.png" alt="" title="" />
+	
+			<figcaption></figcaption>
+	
+		</figure>
+
+<h3><span class="cyan">[partition]</span></h3>
 
 <p>... angiver hvilke partitioner der skal pakkes.</p>
 
-<span class="afsnit"><span class="green">[Image-fil]</span></span>
+<h3><span class="green">[Image-fil]</span></h3>
 
 <p>... angiver backupfilen</p>
 
@@ -983,66 +1158,83 @@ Options:
 
 <h2>Eksempler med partimage</h2>
 
-<p>I følgende eksempel vil der blive taget udgangspunkt i et netværk med en Windows 7 klient, hvor der er et SMB share på netværket med adressen <span class="inl_cmd">//10.0.2.10/backup</span>, hvor brugeren "thoj" med adgangskoden "123qwe" har skrive rettigheder.</p>
+<code class="cmd">partimage -f3 -d -b -V20480 save /dev/sda2 /mnt/backup/win7_system</code>
 
-<p>Når man arbejder med windows7/8/10 skal man være opmærksom på at den er tilpasset den konkrete maskines hardware. Derfor vil man ikke umiddelbart kunne kopiere windows ud til andre maskiner end den som den oprindeligt er installeret og konfigureret på. Vil man kunne spejle flere maskiner ved hjælp af partimage, skal man have "sysprep'et" windows: <a href="https://technet.microsoft.com/en-us/library/cc721940(v=ws.10).aspx" target="_blank">https://technet.microsoft.com/en-us/library/cc721940(v=ws.10).aspx</a></p>
-
-
-
-<h3>Backup af windows 7 klient - partimage</h3>
-
-<ol class="">
-
-	<li>Få et overblik over harddiske på klienten</li>
-	
-	<code class="cmd">lsblk</code>
-	
-	<li>Monter netværksdrevet i <span class="inl_cmd">/mnt/backup</span></li>
-	
-	<code class="cmd">mount -t cifs //10.0.2.10/backup /mnt/backup -o user=thoj</code>
-	
-	<li>Tjek om netværksdrevet er monteret korrekt</li>
-	
-	<code class="cmd">ls -al /mnt/backup</code>
-	
-	<li>Kør partimage</li>
-	
-	<code class="cmd">partimage -f3 -d -b -V20480 save /dev/sda1 /mnt/backup/win7_boot</code>
-	<code class="cmd">partimage -f3 -d -b -V20480 save /dev/sda2 /mnt/backup/win7_system</code>
-	
-	<p>Læg mærke til at filnavnene på de arkiverne vil være lidt anderledes på serveren end du angiver her, da den vil sætte et tal for "volumen". Den første volumen vil hedde <span class="inl_cmd">*.000</span>, den anden <span class="inl_cmd">*.001</span> osv.</p>
-	
-</ol>
-
-<h3>Tjek backuparkiverne - partimage</h3>
-
-	<p>Punkterne herunder er ikke nødvendige, men giver dig mulighed for at undersøge og tjekke dine arkiver om det er korrekt dannet.</p>
-
-<ol class="">
-
-	<li>Tjek arkiverne med <span class="inl_cmd">imginfo</span></li>
-	
-	<code class="cmd">partimage imginfo /mnt/backup/win7_boot.000</code>
-	<code class="cmd">partimage imginfo /mnt/backup/win7_system.000</code>
-	
-	<p></p>
-	
-		<figure id="">
-	
-			<img class="p60" src="images/backup_partimage_imginfo.png" alt="" title="" />
-	
-			<figcaption></figcaption>
-	
-		</figure>
+<table class="cmd_table">
+	<thead>
+		<tr>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>-f3</td>
+			<td>Afslutter partimage efter at programmet har kørt</td>
+		</tr>
+		<tr>
+			<td>-d</td>
+			<td>Programmet spørger ikke om en beskrivelse af filen</td>
+		</tr>
+		<tr>
+			<td>-b</td>
+			<td>Får kommandoen til at køre i batch-mode dvs. uden GUI</td>
+		</tr>
+		<tr>
+			<td>-V20480</td>
+			<td>Images deles ved 20480 MB (20 GB) </td>
+		</tr>
+		<tr>
+			<td>save</td>
+			<td>Gemmer partitionen</td>
+		</tr>
+		<tr>
+			<td>/dev/sda2</td>
+			<td>Partitionen der skal tages backup af</td>
+		</tr>
+		<tr>
+			<td>/mnt/backup/win7_system</td>
+			<td>Placeringen af backupfilen.</td>
+		</tr>
 		
-		<p>Tryk på [Tab] for at vælge OK</p>
+	</tbody>
+</table>
 
-	<li>Tjek om arkiverne er korrekt dannet ved at køre en simulering</li>
-	
-	<code class="cmd">partimage -b -S restore /dev/sda1 /mnt/backup/win7_boot.000</code>
-	<code class="cmd">partimage -b -S restore /dev/sda2 /mnt/backup/win7_system.000</code>
-	
-	<p></p>
+<code class="cmd">partimage -b -S restore /dev/sda2 /mnt/backup/win7_system.000</code>
+
+<table class="cmd_table">
+	<thead>
+		<tr>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+		<tr>
+			<td>-b</td>
+			<td>Får kommandoen til at køre i batch-mode dvs. uden GUI</td>
+		</tr>
+		<tr>
+			<td>-S</td>
+			<td>Får Programmet til at simulere en skrivning på harddisken, hvor den tjekker om der er fejl i pakningen.</td>
+		</tr>
+		<tr>
+			<td>restore</td>
+			<td>Gemmer partitionen (simuleret)</td>
+		</tr>
+		<tr>
+			<td>/dev/sda2</td>
+			<td>Partitionen der skal gendannes på</td>
+		</tr>
+		<tr>
+			<td>/mnt/backup/win7_system</td>
+			<td>Placeringen af backupfilen.</td>
+		</tr>
+		
+	</tbody>
+</table>
+
 		
 		<figure id="">
 		
@@ -1052,39 +1244,13 @@ Options:
 		
 		</figure>
 
-</ol>
+<code class="cmd">partimage -b -f3 restore /dev/sda2 /mnt/backup/win7_system.000</code>
 
-
-<h3>Gendannelse af Windows7 Klient - partimage</h3>
-
-<p>Jeg tager i nedestående eksempel udgangspunkt i at harddiske på klienten er partitioneret korrekt. Hvis ikke skal harddisken først partitioneres med <span class="inl_cmd">fdisk</span>.</p>
-
-<ol class="">
-	
-	<li>Monter netværksdrevet i <span class="inl_cmd">/mnt/backup</span></li>
-	
-	<code class="cmd">mount -t cifs //10.0.2.10/backup /mnt/backup -o user=thoj</code>
-	
-	<li>Tjek om netværksdrevet er monteret korrekt</li>
-	
-	<code class="cmd">ls -al /mnt/backup</code>
-	
-	<li>Kør partimage</li>
-	
-	<code class="cmd">partimage -b -f3 restore /dev/sda1 /mnt/backup/win7_boot.000</code>
-	<code class="cmd">partimage -b -f3 restore /dev/sda2 /mnt/backup/win7_system.000</code>
-	
-	<p>Hvis arkivet er splittet op (f.eks. i <span class="inl_cmd">win7_system.000</span> og <span class="inl_cmd">win7_system.001</span>), vil partimage automatisk gå videre når det er færdigt med første</p>
-	
-	<li>Efter fsarchiver er færdig fjernes USB-disken og computeren genstartes</li>
-	
-	<code class="cmd">reboot</code>
-	
-</ol>
+<p>Som ovenfor - dog uden <span class="inl_cmd">-S</span> (simulate).</p>	
 
 <h2>Partimage som GUI</h2>
 
-<p><span class="inl_cmd">partimage</span> kan også anvendes ved hjælp af en GUI, hvor man har et fuldt overblik over mulighederne i programmet. I eksemplet herunder bliver der taget backup af <span class="inl_cmd">/dev/sda2</span> til filen <span class="inl_cmd">/mn/backup/win7_system</span>. GUI processen er dog langt mere omstændig end kommandolinien, men kan være mere overskuelig i starten.</p>
+<p><span class="inl_cmd">partimage</span> kan også anvendes ved hjælp af en GUI, hvor man har et fuldt overblik over mulighederne i programmet. I eksemplet herunder bliver der taget backup af <span class="inl_cmd">/dev/sda2</span> til filen <span class="inl_cmd">/mn/backup/win7_system</span>. GUI processen er dog langt mere omstændig end kommandolinien, men kan være mere overskuelig.</p>
 
 <p>Man navigerer rundt i programmet ved hjælp af piletaster, [Tab] og aktiverer sine valg med [Mellemrum]. For at gå videre i programmet anvendes [F5]. I det første skærmbillede konfigureres selve drevene.</p>
 
@@ -1102,7 +1268,7 @@ Options:
 
 </figure>
 
-<p>Hvis drevet der skal tages backup af er monteret får man en advarsel. Generelt bør man ikke tage backup af aktive og/eller monterede filsystemer, da man risikerer skrivinger til harddisken.</p>
+<p>Hvis drevet der skal tages backup af er monteret får man en advarsel.</p>
 
 <figure id="">
 
@@ -1139,7 +1305,7 @@ Options:
 
 </figure>
 
-<p>Advarsel om at NTFS understøttelse er Experimentel (læs - driveren der anvendes er ikke MS certificeret, men er lavet af openSourvemiljøet ud fra tilgængelige specifikationer (<span class="inl_cmd">ntfs-3g</span>).</p>
+<p>Advarsel om at NTFS understøttelse er Experimentel. Det skyldes at <span class="inl_cmd">NTFS</span> er proporitær software, hvilket gør at man ikke kender koden i detaljer, kukn hvad man har kunnet eksperimentere sig til. Jeg har aldrig oplevet fejl.</p>
 
 <figure id="">
 
@@ -1159,9 +1325,9 @@ Options:
 
 </figure>
 
-
-
-
+<p></p>
+<p></p>
+<p></p>
 
 <p></p>
 
