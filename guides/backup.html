@@ -173,7 +173,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 </figure>
 
-<h1>Opsætning af SystemrescueCD</h1>
+<h2>Opsætning af SystemrescueCD</h2>
 
 <p>Hvis man ønsker at anvende Systemrescue på netværk er der nogle enkelte trin man skal have gjort:</p>
 
@@ -255,7 +255,7 @@ Password:
 <span class="green">root@sysresccd</span> <span class="blue">/root</span> % 
 </pre>
 
-<h1>Overblik over computerens drev</h1>
+<h2>Overblik over computerens drev</h2>
 
 <p>For at få et overblik over computerens drev og partitioner anvendes:</p>
 
@@ -290,53 +290,169 @@ sr0    iso9660  459.9M rom
 loop0  squashfs 338.5M loop /livemnt/squashfs
 </pre>
 
-<p>Følgende gælder altså</p>
+<h1>Forberedelse til Backup</h1>
 
-<p>Ubuntu computeren har:</p>
+<p>Man kan med fordel rense sin maskine for overflødige filer. Det kan spare tid/plads især på Windows (op til flere GB). Der er skrevet <span class="inl_cmd">(opt)</span> ud for nogle af punkterne. Det betyder at der er nogle ting jeg ville gøre/fjerne. Især på windows bør det overvejes om man ønsker at opdatere først, fjerne gendannelsespunkterne ...</p>
+
+
+<h2>På Ubuntu</h2>
 
 <ul class="disc">
-	<li>/dev/sda1 (ext4)</li>
-	<li>/dev/sda2 (swap)</li>
-	<li>/dev/sda3 (ext4)</li>
-	<li>/dev/sdb1 (ext4)</li>
+	<li>Før computeren bootes med SystemrescueCD
+		<ul class="disc">
+			<li>Tøm "Hentede filer"</li>
+			<li>Opdater Ubuntu</li>
+		</ul>
+	
+	</li>
+	<li>Efter computeren er bootet med SystemrescueCD
+		<ul class="disc">
+			<li>Fjern unødenvendige systemfiler</li>
+			<li>Fjern ældre kerner (opt)</li>
+		</ul>	
+	</li>
+
 </ul>
 
+<p>Disse trin udføres før maskinen bootes op med SystemrescueCD</p>
+
+<span class="afsnit">Tøm Hentede filer og opdater Ubuntu (før)</span>
+
+<code class="cmd">rm ~/Hentede\ filer/*</code>
+
+<code class="more_cmd">sudo apt-get update && sudo apt-get dist-upgrade -y</code>
+
+<span class="afsnit">Fjern unødenvendige systemfiler</span>
+
+<code class="cmd">sudo apt-get autoremove -y</code>
+
+<span class="afsnit">Fjern ældre kerner</span>
+
+<code class="cmd">sudo apt-get purge $(dpkg -l linux-{image,headers}-"[0-9]*" | awk '/ii/{print $2}' | grep -ve $(uname -r | sed -r 's/-[a-z]+//') | sed ':a;N;$!ba;s/\n/ /g')</code>
+
+<h2>På Windows</h2>
+
+<p>På Windows er procedyren normal at man skal anvende GUI til at rense computeren. Det kan dog være en ret omfattende og tidskrævende proces. Derfor har jeg anvendt følgende metode, som kun tager en brøkdel af den tid det normalt tager</p>
+
+<ul class="disc">
+	<li>Før computeren bootes med SystemrescueCD
+		<ul class="disc">
+			<li>Tøm "Hentede filer"</li>
+			<li>Opdater Windows (opt)</li>
+		</ul>
+	</li>
+	<li>Efter computeren er bootet med SystemrescueCD
+		<ul class="disc">
+			<li>Monter systemdrevet</li>
+			<li>Fjern swap- og hibernate filerne</li>
+			<li>Fjern opdateringsfiler</li>
+			<li>Fjern gendannelsespunker (opt)</li>
+		</ul>	
+	</li>
+</ul>
+
+<p>Både swap- og hibernate filerne gendannes automatisk når windows startes igen, og de fylder ofte det samme som ens RAM-lager.</p>
 
 
+<span class="afsnit">Tøm hentede filer og opdater Windows (før)</span>
 
-<table class="">
-	<thead>
-		<tr>
-			<th>Computer</th>
-			<th>Partitioner</th>
-			<th>Filsystem</th>
-			<th>DVD-drev</th>
-			<th>Ramdiske</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td rowspan="4">Ubuntu</td>
-			<td>/dev/sda1</td>
-			<td>/dev/sr0</td>
-			<td>loop0</td>
-		</tr>
-		<tr>
-			<td></td>
-		</tr>
-		<tr>
-			<td>Windows</td>
-			<td></td>
-		</tr>
-	</tbody>
-</table>
+<p>Tøm hentede filer ved at navigere ind i mappen med stifinder og opdater windows (opt)</p>
+
+<span class="afsnit">Monter systemdrevet</span>
+
+<p>Systemdrevet vil som standard være den anden partitioner på 1. disk. Vi monterer det i mappen <span class="inl_cmd">/mnt/windows</span>, som er oprettet som standard når SystemrescueCD starter op.</p>
+
+<code class="cmd">ntfs-3g /dev/sda2 /mnt/windows</code>
+
+<span class="afsnit">Fjern swap- og hibernate filerne</span>
+
+<p>Vi vælger ikke at navigere ind i mapperne først, men angiver den fulde sti</p>
+
+<code class="cmd">rm /mnt/windows/pagefile.sys</code>
+<code class="more_cmd">rm /mnt/hiberfil.sys</code>
+
+<span class="afsnit">Fjern opdateringsfilerne</span>
+
+<p>Opdateringsfilerne bliver ikke anvendt til noget efter de har været brugt til at opdatere med. Det kan dreje sig om flere GB.</p>
+
+<code class="cmd">rm -rf /mnt/windows/Windows/SoftwareDistribution/Download/*</code>
+
+<span class="afsnit">Fjern gendannelsespunker (opt)</span>
+
+<p>Gendannelsespunkterne ligger i mappen <span class="inl_cmd">System Volume Information</span>. Jeg har altid valgt at slå denne funktion fra i Windows, da den ikke bare fylder meget på harddisken, men også gør at opdatering og installation af programmer tager ekstra tid. Anvender du denne funktion skal du ikke gennemføre følgende trin. Jeg har ikke oplevet at metoden har haft anden indvirkning på mine windowsinstallationer, end at de fylder mindre.</p>
+
+<p>Hvis man kører <span class="inl_cmd">tree</span> kan man få nedestående output:</p>
+
+<pre class="black" style="font-size:1.1em">
+<span class="green">root@sysresccd</span> <span class="blue1">/mnt/windows/System Volume Information</span> % tree --du
+<span class="blue1">.</span>
+├── [  576864256]  <span class="green1">{19ea1b42-1e26-11e5-84a9-0800277de8f7}{3808876b-c176-4e48-b7ae-04046e6cc752}</span>
+├── [  973078528]  <span class="green1">{1b51bb94-56c0-11e5-8b13-0800277de8f7}{3808876b-c176-4e48-b7ae-04046e6cc752}</span>
+├── [   54116352]  <span class="green1">{3317bf97-46fe-11e5-85d6-0800277de8f7}{3808876b-c176-4e48-b7ae-04046e6cc752}</span>
+├── [ 1638547456]  <span class="green1">{3317bf9b-46fe-11e5-85d6-0800277de8f7}{3808876b-c176-4e48-b7ae-04046e6cc752}</span>
+├── [      65536]  <span class="green1">{3808876b-c176-4e48-b7ae-04046e6cc752}</span>
+├── [  373424128]  <span class="green1">{43f51078-463e-11e5-a271-0800277de8f7}{3808876b-c176-4e48-b7ae-04046e6cc752}</span>
+├── [  585588736]  <span class="green1">{43f51108-463e-11e5-a271-0800277de8f7}{3808876b-c176-4e48-b7ae-04046e6cc752}</span>
+├── [  395657216]  <span class="green1">{9441f5f1-46fe-11e5-8943-0800277de8f7}{3808876b-c176-4e48-b7ae-04046e6cc752}</span>
+├── [  443006976]  <span class="green1">{d544f905-4c87-11e5-97e0-0800277de8f7}{3808876b-c176-4e48-b7ae-04046e6cc752}</span>
+├── [          0]  MountPointManagerRemoteDatabase
+├── [     645880]  <span class="blue1">SSP</span>
+│   ├── [      18248]  <span class="blue1">OnlineMetadataCache</span>
+│   │   ├── [       1744]  <span class="green1">{0867bb41-ba7a-4348-b8d2-d796ebeaff28}_OnDiskSnapshotProp</span>
+│   │   ├── [       1744]  <span class="green1">{0a219915-ebb9-4cf9-bbf2-fea541922d31}_OnDiskSnapshotProp</span>
+│   │   ├── [       1744]  <span class="green1">{10be7f13-29fc-4bc9-b420-ed5475a78a63}_OnDiskSnapshotProp</span>
+│   │   ├── [       1744]  <span class="green1">{33508c1e-b23e-417f-bad9-0bbf64034c34}_OnDiskSnapshotProp</span>
+│   │   ├── [       1848]  <span class="green1">{414dbcdf-d814-494c-a67b-c88c9d806f2b}_OnDiskSnapshotProp</span>
+│   │   ├── [       1744]  <span class="green1">{5730bf6e-7604-46d4-a03f-59df9b504ec2}_OnDiskSnapshotProp</span>
+│   │   ├── [       1744]  <span class="green1">{d32c3ad4-fe75-4da0-8af6-f170da1628d8}_OnDiskSnapshotProp</span>
+│   │   └── [       1840]  <span class="green1">{d7f36789-4847-4871-a876-9a8ac2a78e47}_OnDiskSnapshotProp</span>
+│   ├── [          0]  <span class="blue1">SppCbsHiveStore</span>
+│   └── [     623536]  <span class="blue1">SppGroupCache</span>
+│       ├── [      56656]  <span class="green1">{0867BB41-BA7A-4348-B8D2-D796EBEAFF28}_DriverPackageInfo</span>
+│       ├── [      30656]  <span class="green1">{0867BB41-BA7A-4348-B8D2-D796EBEAFF28}_WindowsUpdateInfo</span>
+│       ├── [      56656]  <span class="green1">{10BE7F13-29FC-4BC9-B420-ED5475A78A63}_DriverPackageInfo</span>
+│       ├── [      29624]  <span class="green1">{10BE7F13-29FC-4BC9-B420-ED5475A78A63}_WindowsUpdateInfo</span>
+│       ├── [      56656]  <span class="green1">{33508C1E-B23E-417F-BAD9-0BBF64034C34}_DriverPackageInfo</span>
+│       ├── [      30656]  <span class="green1">{33508C1E-B23E-417F-BAD9-0BBF64034C34}_WindowsUpdateInfo</span>
+│       ├── [      56656]  <span class="green1">{414DBCDF-D814-494C-A67B-C88C9D806F2B}_DriverPackageInfo</span>
+│       ├── [      32624]  <span class="green1">{414DBCDF-D814-494C-A67B-C88C9D806F2B}_WindowsUpdateInfo</span>
+│       ├── [      56656]  <span class="green1">{557AF84D-C3BA-4DD7-9EDC-F386D0BCEB79}_DriverPackageInfo</span>
+│       ├── [      29624]  <span class="green1">{557AF84D-C3BA-4DD7-9EDC-F386D0BCEB79}_WindowsUpdateInfo</span>
+│       ├── [      56872]  <span class="green1">{D32C3AD4-FE75-4DA0-8AF6-F170DA1628D8}_DriverPackageInfo</span>
+│       ├── [      32624]  <span class="green1">{D32C3AD4-FE75-4DA0-8AF6-F170DA1628D8}_WindowsUpdateInfo</span>
+│       ├── [      56760]  <span class="green1">{D7F36789-4847-4871-A876-9A8AC2A78E47}_DriverPackageInfo</span>
+│       └── [      32624]  <span class="green1">{D7F36789-4847-4871-A876-9A8AC2A78E47}_WindowsUpdateInfo</span>
+├── [     524288]  <span class="green1">Syscache.hve</span>
+├── [     128000]  <span class="green1">Syscache.hve.LOG1</span>
+├── [          0]  <span class="green1">Syscache.hve.LOG2</span>
+├── [      20480]  <span class="green1">tracking.log</span>
+└── [          0]  <span class="blue1">WindowsImageBackup</span>
+    └── [          0]  <span class="blue1">SPPMetadataCache</span>
+
+  5041676024 bytes used in 6 directories, 36 files
+<span class="green">root@sysresccd</span> <span class="blue1">/mnt/windows/System Volume Information</span> % tree --du
+</pre>
+
+<p>Alle filer her der starter med <span class="inl_cmd">{</span> er backupfiler. Fjern dem med følgende kommandoer:</p>
+
+<code class="cmd">rm -rf /mnt/windows/System\ Volume\ Information/{*</code>
+	
+<code class="more_cmd">rm -rf /mnt/windows/System\ Volume\ Information\SPP/OnlineMetadataCache/{*</code>
+	
+<code class="more_cmd">rm -rf /mnt/windows/System\ Volume\ Information\SPP/SppGroupCache/{*</code>
+
+<p>En nyinstalleret og fuldt ud opdateret windows7 installation kan hurtigt tabe sig 10-20 GB af ovenstående.</p>
+
+<h1><span class="inl_cmd">FSArchiever</span> - <span class="bold">F</span>ile<span class="bold">S</span>ystem <span class="bold">A</span>rchiever for Linux</h1>
+
+<p><span class="inl_cmd">FSArchiver</span> er et program der specialiserer sig i at gemme filsystemer til pakkede filer. Det kan også skabe filsystemer hvor det bliver pakket ud til, så det er ikke nødvendigt at formateren en disk før den bliver gendannet fra en backup. Herunder er et eksempel, hvor der tages backup af et Windows 7 system:</p>
+
+<code class="cmd">fsarchiver savefs -v -z 7 -j 2 -e 'pagefile.*' -L 'Win7 Backup 300815' /srv/backup/win7_z7.fsa /dev/sda1 /dev/sda2</code>
+
+<p>I tabellen herunder er kommandollinien forklaret</p>
 
 
-
-
-
-
-<table class="">
+<table class="cmd_table">
 	<thead>
 		<tr>
 			<th></th>
@@ -345,266 +461,302 @@ loop0  squashfs 338.5M loop /livemnt/squashfs
 	</thead>
 	<tbody>
 		<tr>
-			<td>to partitioner</td>
-			<td><span class="inl_cmd">/dev/sda1</span> <br/> <span class="inl_cmd">/dev/sda2</span></td>
+			<td>fsarchiver</td>
+			<td>Selve programmet</td>
 		</tr>
 		<tr>
-			<td>Et CDROM drev</td>
-			<td><span class="inl_cmd">/dev/sr0</span></td>
+			<td>savefs</td>
+			<td>gem filsystem</td>
 		</tr>
 		<tr>
-			<td>Et RAM drev</td>
-			<td><span class="inl_cmd">/dev/loop0</span></td>
+			<td>-v</td>
+			<td>Vis fremgangen i processen</td>
+		</tr>
+		<tr>
+			<td>-z 7</td>
+			<td>Anvend krypteringsalgoritme 7 (<span class="inl_cmd">lzma -1</span>)</td>
+		</tr>
+		<tr>
+			<td>-j 2</td>
+			<td>Anvend 2 processorer</td>
+		</tr>
+		<tr>
+			<td>-e 'pagefile.*'</td>
+			<td>Udelad filer der hedder <span class="inl_cmd">pagefile.*</span></td>
+		</tr>
+		<tr>
+			<td>-L 'Win7 Backup 300815'</td>
+			<td>Tilføj beskrivelsen "Win7 Backup 300815"</td>
+		</tr>
+		<tr>
+			<td>/srv/backup/win7_z7.fsa</td>
+			<td>navgiv filen <span class="inl_cmd">/srv/backup/win7_z7.fsa</span></td>
+		</tr>
+		<tr>
+			<td>/dev/sda1 /dev/sda2</td>
+			<td>Gem første (boot partitionen) og anden (systemdrevet)</td>
 		</tr>
 	</tbody>
 </table>
 
-<p>Selve SystemrescueCD kører i RAM-drevet (<span class="inl_cmd">/dev/loop0</span>) og påvirker derfor ikke harddisken.</p>
+<p>Som du kan se af ovenstående er det muligt at konfigurere processen ned i mindste detalje, og eksemplet er langt fra uddybende.</p>
 
-<p>For at se partitionernes filsystem anvender vi <span class="inl_cmd">fdisk -l</span>.</p>
+<p>FSArchivers hjemmeside og dokumentation er i første øjekast sparsom, men ved nærlæsning finder man ud af at den er blot er kompakt og effektivt struktureret. Du kan finde hjemmesiden her:</p>
 
-<pre class="black">
-<span class="green">root@sysresccd</span> <span class="blue1">/root</span> % fdisk -l
+<p>Hovedsiden: <a href="http://www.fsarchiver.org/Main_Page" target="_blank">http://www.fsarchiver.org/Main_Page</a></p>
 
-Disk /dev/loop0: 317.7 MiB, 333099008 bytes, 650584 sectors
-Units: sectors of 1 * 512 = 512 bytes
-Sector size (logical/physical): 512 bytes / 512 bytes
-I/O size (minimum/optimal): 512 bytes / 512 bytes
-Disk /dev/sda: 100 GiB, 107374182400 bytes, 209715200 sectors
-Units: sectors of 1 * 512 = 512 bytes
-Sector size (logical/physical): 512 bytes / 512 bytes
-I/O size (minimum/optimal): 512 bytes / 512 bytes
-Disklabel type: dos
-Disk identifier: 0x528a52f7
+<p>Quickstart: <a href="http://www.fsarchiver.org/QuickStart" target="_blank">http://www.fsarchiver.org/QuickStart</a></p>
 
-Device     Boot  Start       End   Sectors  Size Id Type
-/dev/sda1  *      2048    206847    204800  100M  7 <span class="red">HPFS/NTFS/exFAT</span>
-/dev/sda2       206848 209713151 209506304 99.9G  7 <span class="red">HPFS/NTFS/exFAT</span>
+<h2>Et overblik over <span class="inl_cmd">FSArchiver</span></h2>
 
-</pre>
+<p>Kommandoerne er bygget op over samme algoritme der følger programnavnet:</p>
 
-<p>Her kan vi se at både <span class="inl_cmd">/dev/sda1</span> og <span class="inl_cmd">/dev/sda2</span> er NTFS partitioneret (her markeret med rød)</p>
+<code class="cmd">fsarchiver <span class="red">[Kommando]</span> <span class="blue">[Optioner]</span> <span class="green">[Image-fil]</span> <span class="cyan">[partition(er)]</span></code>
 
-<h2>Partitionering af harddiske</h2>
+<span class="afsnit"><span class="red">[Kommando]</span></span>
 
-<p>Hvis windows 7 skal installeres på en helt ny harddisk skal den først partitioneres. Windows 7 har to partitioner: en til boot og en til systemet. Boot partitionen er som regel 100MB stor.</p>
+<p>... beskriver hvad programmet skal:</p>
 
-<p>Det der skal gøres er:</p>
+<table class="cmd_table">
+	<thead>
+		<tr>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>savefs</td>
+			<td>Gem filsystem (save filesystem)</td>
+		</tr>
+		<tr>
+			<td>restfs</td>
+			<td>Gendan filsystem (restore filesystem)</td>
+		</tr>
+		<tr>
+			<td>savedir</td>
+			<td>Pakker mapper ned i arkivet.</td>
+		</tr>
+		<tr>
+			<td>archinfo</td>
+			<td>Vis information om arkivet</td>
+		</tr>
+		<tr>
+			<td>probe</td>
+			<td>Giver et overblik over partitioner på systemet</td>
+		</tr>
+		<tr>
+			<td>probe detailed</td>
+			<td>Giver flere informationer om partitionner på systemet</td>
+		</tr>
+	</tbody>
+</table>
 
-<ol class="">
-	<li>Tjek harddisk opsætning med <span class="inl_cmd">lsblk</span>.</li>
-	<li>Opret <span class="inl_cmd">/dev/sda1</span> til at være 100Mb og have NTFS som filsystem</li>
-	<li>Opret <span class="inl_cmd">/dev/sda2</span> fylde resten af disken og have NTFS som filsystem</li>
-	<li>Sæt <span class="inl_cmd">/dev/sda1</span> til at være boot partition</li>
-	<li>Skriv den nye opsætning til harddisken</li>
-	<li>Thek at opsætningen er korrekt udført.</li>
-</ol>
+<span class="afsnit"><span class="blue">[Optioner]</span></span>
 
-<h3>Tjek harddisk opsætningen</h3>
+<p>... konfigurerer FSArchiver ned i detaljer. Herunder er nogle af mulighederne listet:</p>
 
-<code class="cmd">lsblk</code>
+<table class="cmd_table">
+	<thead>
+		<tr>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>-v</td>
+			<td>Verbose mode - giver informationer om programmets kørsel f.eks. procentvis fremgang</td>
+		</tr>
+		<tr>
+			<td>-A</td>
+			<td>Nødvendig hvis du vil køre fsarchiver på et drev der er aktivt (kan ikke anbefales)</td>
+		</tr>
+		<tr>
+			<td>-h</td>
+			<td>Viser hjælpemenuen og eksempler på anvendelse</td>
+		</tr>
+		<tr>
+			<td>-V</td>
+			<td>Vis versionen af programmet</td>
+		</tr>
+		<tr>
+			<td>-s *størrelse i MB*</td>
+			<td>split imaget i *mbsize* MB størrelse</td>
+		</tr>
+		<tr>
+			<td>-j *antal*</td>
+			<td>Bestemmer antallet af kerner i CPU'en du vil anvende til at pakke med.</td>
+		</tr>
+		<tr>
+			<td>-z *kompression*</td>
+			<td>Kompression metode (se skema nedenfor)</td>
+		</tr>
+		<tr>
+			<td>-L 'etiket'</td>
+			<td>Angiv en beskrivende tekststreng til arkivet</td>
+		</tr>
+		<tr>
+			<td>-e 'tekststreng'</td>
+			<td>Pakker ikke filer der matcher tekststrengen</td>
+		</tr>
+	</tbody>
+</table>
 
-<pre class="black">
-<span class="green">root@sysresccd</span> <span class="blue1">/root</span> % lsblk
-NAME  MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
-sda     8:0    0   100G  0 disk 
-sr0    11:0    1 437.9M  0 rom  /livemnt/boot
-loop0   7:0    0 317.7M  1 loop /livemnt/squashfs</pre>
-
-<p>I dette tilfælde er har harddisken <span class="inl_cmd">sda</span> ingen partitioner</p>
-
-<h3>Opret <span class="inl_cmd">/dev/sda1</span> og <span class="inl_cmd">/dev/sda2</span></h3>
-
-<p>Kør <span class="inl_cmd">fdisk</span> på /dev/sda</p>
-
-<code class="cmd">fdisk /dev/sda</code>
-
-<pre class="black">
-<span class="green">root@sysresccd</span> <span class="blue1">/root</span> % fdisk /dev/sda
-
-Welcome to fdisk (util-linux 2.25.2).
-Changes will remain in memory only, until you decide to write them.
-Be careful before using the write command.
-
-Device does not contain a recognized partition table.
-Created a new DOS disklabel with disk identifier 0x31dfa5a7.
-
-Command (m for help): 
-</pre>
-
-<p>Skab et overblik over mulighederne ved at trykke <span class="inl_cmd">[m]</span></p>
-
-<pre class="black">
-Command (m for help): m
-
-Help:
-
-  DOS (MBR)
-   a   toggle a bootable flag
-   b   edit nested BSD disklabel
-   c   toggle the dos compatibility flag
-
-  Generic
-   d   delete a partition
-   l   list known partition types
-   n   add a new partition
-   p   print the partition table
-   t   change a partition type
-   v   verify the partition table
-
-  Misc
-   m   print this menu
-   u   change display/entry units
-   x   extra functionality (experts only)
-
-  Save & Exit
-   w   write table to disk and exit
-   q   quit without saving changes
-
-  Create a new label
-   g   create a new empty GPT partition table
-   G   create a new empty SGI (IRIX) partition table
-   o   create a new empty DOS partition table
-   s   create a new empty Sun partition table
-
-</pre>
-
-<p>Sæt <span class="inl_cmd">/dev/sda1</span> op på følgende måde:</p>
-
-		<ol class="">
-			<li>n - ny partition</li>
-			<li>p - vælg primær</li>
-			<li>1 - Vælg hvilken partition</li>
-			<li>[Enter] - Vælg første cylinder (starten af disken)</li>
-			<li>100M - Sæt disken til at være 100Mb</li>
-			<li>t - ændr filsystemet</li>
-			<li>l - viser dig tilgængelige filsystemer</li>
-			<li>7 - Værdien for NTFS-filsystemet</li>
-			<li>p - tjek at det er sat rigtigt op</li>
-		</ol>
-
-<p>Kontroller at <span class="inl_cmd">/dev/sda1</span> er 100M og partitionen er type 7 - HPFS/NTFS/exFAT (linie markeret med rødt).</p>
-
-<pre class="black">
-Command (m for help): p
-Disk /dev/sda: 100 GiB, 107374182400 bytes, 209715200 sectors
-Units: sectors of 1 * 512 = 512 bytes
-Sector size (logical/physical): 512 bytes / 512 bytes
-I/O size (minimum/optimal): 512 bytes / 512 bytes
-Disklabel type: dos
-Disk identifier: 0x31dfa5a7
-
-Device     Boot Start    End Sectors  Size Id Type
-<span class="red">/dev/sda1        2048 206847  204800  100M  7 HPFS/NTFS/exFAT</span>
-</pre>
-
-<p>Sæt <span class="inl_cmd">/dev/sda2</span> op på samme måde men ændre pkt. 5 på følgende måde:</p>
-
-		<ol class="">
-			<li>n - ny partition</li>
-			<li>p - vælg primær</li>
-			<li>2 - Vælg hvilken partition</li>
-			<li>[Enter] - Vælg første cylinder (starten af disken)</li>
-			<li>[Enter] - Vælger den sidste cylinder</li>
-			<li>t - ændr filsystemet</li>
-			<li>2 - Vælger partition 2</li>
-			<li>l - viser dig tilgængelige filsystemer</li>
-			<li>7 - Værdien for NTFS-filsystemet</li>
-			<li>p - tjek at det er sat rigtigt op</li>
-		</ol>
-
-<p>Kontroller at <span class="inl_cmd">/dev/sda1</span> fylder resten af disken og partitionen er type 7 - HPFS/NTFS/exFAT (linie markeret med rødt).</p>
-
-<pre class="black">
-Command (m for help): p
-Disk /dev/sda: 100 GiB, 107374182400 bytes, 209715200 sectors
-Units: sectors of 1 * 512 = 512 bytes
-Sector size (logical/physical): 512 bytes / 512 bytes
-I/O size (minimum/optimal): 512 bytes / 512 bytes
-Disklabel type: dos
-Disk identifier: 0x31dfa5a7
-
-Device     Boot  Start       End   Sectors  Size Id Type
-/dev/sda1         2048    206847    204800  100M  7 HPFS/NTFS/exFAT
-<span class="red">/dev/sda2       206848 209715199 209508352 99.9G  7 HPFS/NTFS/exFAT</span>
-</pre>
-
-<p>Sæt <span class="inl_cmd">/dev/sda1</span> til at være boot drev</p>
+<p>Kompressionsalgoritmerne er angivet herinder. Jo højere tal inden for samme algoritme - jo hårdere og langsommere pakker de.  </p>
 
 <ol class="">
-	<li>a - sæt boot flaget</li>
-	<li>1 - vælg den første harddisk</li>
-	<li>p - tjek at første partition er sat til boot dvs. der sidder en asterisk (<span class="inl_cmd">*</span>) i boot kolonnen</li>
+	<li>lzo -3</li>
+	<li>gzip -3</li>
+	<li>gzip -6 (standard)</li>
+	<li>gzip -9</li>
+	<li>bzip -2</li>
+	<li>bzip -5</li>
+	<li>lzma -1</li>
+	<li>lzma -6</li>
+	<li>lzma -9</li>
 </ol>
 
-<pre class="black">
-Command (m for help): p
-Disk /dev/sda: 100 GiB, 107374182400 bytes, 209715200 sectors
-Units: sectors of 1 * 512 = 512 bytes
-Sector size (logical/physical): 512 bytes / 512 bytes
-I/O size (minimum/optimal): 512 bytes / 512 bytes
-Disklabel type: dos
-Disk identifier: 0x31dfa5a7
+<p>Modsatte vej gælder det dog at <span class="inl_cmd">lzma</span> udpakker med næsten 3x hastigheden af <span class="inl_cmd">bzip</span>. Hvis komprimeringstiden ikke er en væsentlig faktor så kan man altså med fordel anvende option 7/8 (<span class="inl_cmd">lzma -7/lzma -8</span>) alt efter kompressionsgrad.</p>
 
-Device     Boot  Start       End   Sectors  Size Id Type
-/dev/sda1  <span class="red">*</span>      2048    206847    204800  100M  7 HPFS/NTFS/exFAT
-/dev/sda2       206848 209715199 209508352 99.9G  7 HPFS/NTFS/exFAT
-</pre>
+<p>Henvisning: <a href="http://www.fsarchiver.org/Compression" target="_blank">http://www.fsarchiver.org/Compression</a></p>
 
-<p>Skriv ændringerne til disken</p>
+<span class="afsnit"><span class="green">[Image-fil]</span></span>
+
+<p>... angiver backupfilen</p>
+
+<span class="afsnit"><span class="cyan">[partition(er)]</span></span>
+
+<p>... angiver hvilke partitioner der skal pakkes.</p>
+
+<p>Man kan senere hente specifikke partitioner ud af arkivet. Hvis man f.eks. har pakket 3 partitioner ned i arkivet f.eks. <span class="inl_cmd">/dev/sda1</span>, <span class="inl_cmd">/dev/sda2</span> og <span class="inl_cmd">/dev/sda2</span> får de hver angivet et ID. Første partition har ID=0, anden ID=1 og den tredie har ID=2.</p>
+
+<p>Når man så senere skal udpakke arkivet skal man angive partitionens ID i den pakkede fil og destinationen. Herunder er vist hvordan man henter arkivets anden partition ud (Systemdrevet) fra en pakket fil og lægger den på <span class="inl_cmd">/dev/sda2</span>, som bliver formateret i samme proces.</p>
+
+<code class="cmd">fsarchiver restfs -v ~/backupfil.fsa  id=1,dest=/dev/sda2,mkfs=ntfs</code>
+
+
+
+
+<h2>Eksempler med fsarchiver</h2>
+
+<p>I følgende eksempel vil der blive taget udgangspunkt i et netværk med en Windows 7 klient, hvor der er et SMB share på netværket med adressen <span class="inl_cmd">//10.0.2.10/backup</span>, hvor brugeren "thoj" med adgangskoden "123qwe" har skrive rettigheder.</p>
+
+<h3>Backup af windows 7 klient - fsarchiver</h3>
+
+<p>Da SystemrescueCD som standard anvender root brugeren behøver vi ikke at bekymre os om rettighederne til at køre programmerne.</p>
 
 <ol class="">
-	<li>w - skriver ændringerne til disken</li>
+
+	<li>Få et overblik over harddiske på klienten</li>
+	
+	<code class="cmd">lsblk</code>
+	
+	<li>Monter netværksdrevet i <span class="inl_cmd">/mnt/backup</span></li>
+	
+	<code class="cmd">mount -t cifs //10.0.2.10/backup /mnt/backup -o user=thoj</code>
+	
+	<li>Tjek om netværksdrevet er monteret korrekt</li>
+	
+	<code class="cmd">ls -al /mnt/backup</code>
+	
+	<li>Kør fsarchiver</li>
+	
+	<code class="cmd">fsarchiver savefs -v -z 7 -e 'pagefile.sys' -e 'hiberfil.sys' -L 'Win7 Backup 300815' /mnt/backup/win7_z7.fsa /dev/sda1 /dev/sda2</code>
+	
+</ol>
+
+<p>Vær opmærksom på at i Ovenstående eksempel er krypteringsalgoritmen <span class="inl_cmd">-z 7</span> valgt.</p>
+
+<h3>Gendannelse af Windows7 Klient - fsarchiver</h3>
+
+<p>Jeg tager i nedestående eksempel udgangspunkt i at harddiske på klienten er partitioneret korrekt. Hvis ikke skal harddisken først partitioneres med <span class="inl_cmd">fdisk</span>.</p>
+
+<ol class="">
+	
+	<li>Monter netværksdrevet i <span class="inl_cmd">/mnt/backup</span></li>
+	
+	<code class="cmd">mount -t cifs //10.0.2.10/backup /mnt/backup -o user=thoj</code>
+	
+	<li>Tjek om netværksdrevet er monteret korrekt</li>
+	
+	<code class="cmd">ls -al /mnt/backup</code>
+	
+	<li>Lav en oversigt over arkivet og tjek at det er det rigtige</li>
+	
+	<code class="cmd">fsarchiver archinfo /mnt/backup/win7_z7.fsa</code>
+	
+	<li>Kør fsarchiver</li>
+	
+	<code class="cmd">fsarchiver restfs -v /mnt/backup/win7_z7.fsa id=0,dest=/dev/sda1,mkfs=ntfs id=1,dest=/dev/sda2,mkfs=ntfs</code>
+	
+	<li>Efter fsarchiver er færdig fjernes USB-disken og computeren genstartes</li>
+	
+	<code class="cmd">reboot</code>
+	
 </ol>
 
 <pre class="black">
-Command (m for help): w
-The partition table has been altered.
-Calling ioctl() to re-read partition table.
-Syncing disks.
+====&gt; fsarchiver version 0.6.19 (2014-03-01) - http://www.fsarchiver.org &lt;====
+Distributed under the GPL v2 license (GNU General Public License v2).
+ * usage: fsarchiver [&lt;options&gt;] &lt;command&gt; &lt;archive&gt; [&lt;part1&gt; [&lt;part2&gt; [...]]]
+&lt;commands&gt;
+ * savefs: save filesystems to an archive file (backup a partition to a file)
+ * restfs: restore filesystems from an archive (overwrites the existing data)
+ * savedir: save directories to the archive (similar to a compressed tarball)
+ * restdir: restore data from an archive which is not based on a filesystem
+ * archinfo: show information about an existing archive file and its contents
+ * probe [detailed]: show list of filesystems detected on the disks
+&lt;options&gt;
+ -o: overwrite the archive if it already exists instead of failing
+ -v: verbose mode (can be used several times to increase the level of details)
+ -d: debug mode (can be used several times to increase the level of details)
+ -A: allow to save a filesystem which is mounted in read-write (live backup)
+ -a: allow running savefs when partition mounted without the acl/xattr options
+ -e &lt;pattern&gt;: exclude files and directories that match that pattern
+ -L &lt;label&gt;: set the label of the archive (comment about the contents)
+ -z &lt;level&gt;: compression level from 1 (very fast)  to  9 (very good) default=3
+ -s &lt;mbsize&gt;: split the archive into several files of &lt;mbsize&gt; megabytes each
+ -j &lt;count&gt;: create more than one compression thread. useful on multi-core cpu
+ -c &lt;password&gt;: encrypt/decrypt data in archive, "-c -" for interactive password
+ -h: show help and information about how to use fsarchiver with examples
+ -V: show program version and exit
+&lt;information&gt;
+ * Support included for: lzo=yes, lzma=yes
+ * support for ntfs filesystems is unstable: don't use it for production.
+&lt;examples&gt;
+ * <span class="bold">save only one filesystem (/dev/sda1) to an archive:</span>
+   fsarchiver savefs /data/myarchive1.fsa /dev/sda1
+ * <span class="bold">save two filesystems (/dev/sda1 and /dev/sdb1) to an archive:</span>
+   fsarchiver savefs /data/myarchive2.fsa /dev/sda1 /dev/sdb1
+ * <span class="bold">restore the first filesystem from an archive (first = number 0):s</span>
+   fsarchiver restfs /data/myarchive2.fsa id=0,dest=/dev/sda1
+ * <span class="bold">restore the second filesystem from an archive (second = number 1):</span>
+   fsarchiver restfs /data/myarchive2.fsa id=1,dest=/dev/sdb1
+ * <span class="bold">restore two filesystems from an archive (number 0 and 1):</span>
+   fsarchiver restfs /data/arch2.fsa id=0,dest=/dev/sda1 id=1,dest=/dev/sdb1
+ * <span class="bold">restore a filesystem from an archive and convert it to reiserfs:</span>
+   fsarchiver restfs /data/myarchive1.fsa id=0,dest=/dev/sda1,mkfs=reiserfs
+ * <span class="bold">save the contents of /usr/src/linux to an archive (similar to tar):</span>
+   fsarchiver savedir /data/linux-sources.fsa /usr/src/linux
+ * <span class="bold">save a filesystem (/dev/sda1) to an archive split into volumes of 680MB:</span>
+   fsarchiver savefs -s 680 /data/myarchive1.fsa /dev/sda1
+ * <span class="bold">save a filesystem and exclude all files/dirs called 'pagefile.*':</span>
+   fsarchiver savefs /data/myarchive.fsa /dev/sda1 --exclude='pagefile.*'
+ * <span class="bold">generic exclude for 'share' such as '/usr/share' and '/usr/local/share':</span>
+   fsarchiver savefs /data/myarchive.fsa --exclude=share
+ * <span class="bold">absolute exclude valid for '/usr/share' but not for '/usr/local/share':</span>
+   fsarchiver savefs /data/myarchive.fsa --exclude=/usr/share
+ * <span class="bold">save a filesystem (/dev/sda1) to an encrypted archive:</span>
+   fsarchiver savefs -c mypassword /data/myarchive1.fsa /dev/sda1
+ * <span class="bold">Same as before but prompt for password in the terminal:</span>
+   fsarchiver savefs -c - /data/myarchive1.fsa /dev/sda1
+ * <span class="bold">extract an archive made of simple files to /tmp/extract:</span>
+   fsarchiver restdir /data/linux-sources.fsa /tmp/extract
+ * <span class="bold">show information about an archive and its file systems:</span>
+   fsarchiver archinfo /data/myarchive2.fsa
 
-<span class="green">root@sysresccd</span> <span class="blue1">/root</span> % 
 </pre>
-
-<p>Tjek systemets harddiske</p>
-
-<code class="cmd">lsblk</code>
-
-<pre class="black">
-<span class="green">root@sysresccd</span> <span class="blue1">/root</span> % lsblk 
-NAME   MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
-sda      8:0    0   100G  0 disk 
-├─sda1   8:1    0   100M  0 part 
-└─sda2   8:2    0  99.9G  0 part 
-sr0     11:0    1 437.9M  0 rom  /livemnt/boot
-loop0    7:0    0 317.7M  1 loop /livemnt/squashfs
-</pre>
-
-<p>For at være sikker på at diskene er korrekt sat op tjekker vi også med <span class="inl_cmd">fdisk</span>, da det giver flere oplysninger. I nedestående output er systemets diske (ramdisken <span class="inl_cmd">/dev/loop0</span> markeret med grøn og harddisken <span class="inl_cmd">/dev/sda</span> med rød.</p>
-<p>For at være sikker på at diskene er korrekt sat op tjekker vi også med <span class="inl_cmd">fdisk</span>, da det giver flere oplysninger. I nedestående output er systemets diske (ramdisken <span class="inl_cmd">/dev/loop0</span> markeret med grøn og harddisken <span class="inl_cmd">/dev/sda</span> med rød.</p>
-
-<code class="cmd">fdisk -l</code>
-
-<pre class="black">
-<span class="green">root@sysresccd</span> <span class="blue1">/root</span> % fdisk -l
-
-<span class="green">Disk /dev/loop0: 317.7 MiB, 333099008 bytes, 650584 sectors
-Units: sectors of 1 * 512 = 512 bytes
-Sector size (logical/physical): 512 bytes / 512 bytes
-I/O size (minimum/optimal): 512 bytes / 512 bytes</span>
-<span class="red">Disk /dev/sda: 100 GiB, 107374182400 bytes, 209715200 sectors
-Units: sectors of 1 * 512 = 512 bytes
-Sector size (logical/physical): 512 bytes / 512 bytes
-I/O size (minimum/optimal): 512 bytes / 512 bytes
-Disklabel type: dos
-Disk identifier: 0x31dfa5a7
-
-Device     Boot  Start       End   Sectors  Size Id Type
-/dev/sda1  *      2048    206847    204800  100M  7 HPFS/NTFS/exFAT
-/dev/sda2       206848 209715199 209508352 99.9G  7 HPFS/NTFS/exFAT</span>
-
-</pre>
-
 
 
 <h1>Partimage</h1>
@@ -669,9 +821,9 @@ Device     Boot  Start       End   Sectors  Size Id Type
 
 <p>Kommandoerne er bygget op over samme algoritme der følger programnavnet:</p>
 
-<code class="cmd">partimage <span class="blue1">[Optioner]</span> <span class="red">[Kommando]</span> <span class="cyan">[partition(er)]</span> <span class="green">[Image-fil]</span></code>
+<code class="cmd">partimage <span class="blue">[Optioner]</span> <span class="red">[Kommando]</span> <span class="cyan">[partition(er)]</span> <span class="green">[Image-fil]</span></code>
 
-<h3><span class="blue">[Optioner]</span></h3>
+<span class="afsnit"><span class="blue">[Optioner]</span></span>
 
 <p>... konfigurerer FSArchiver ned i detaljer. Herunder er nogle af mulighederne listet:</p>
 
@@ -714,7 +866,7 @@ Device     Boot  Start       End   Sectors  Size Id Type
 
 <code class="cmd">partimage --help</code>
 
-<h3><span class="red">[Kommando]</span></h3>
+<span class="afsnit"><span class="red">[Kommando]</span></span>
 
 <p>... beskriver hvad programmet skal:</p>
 
@@ -751,11 +903,11 @@ Device     Boot  Start       End   Sectors  Size Id Type
 
 
 
-<h3><span class="cyan">[partition(er)]</span></h3>
+<span class="afsnit"><span class="cyan">[partition(er)]</span></span>
 
 <p>... angiver hvilke partitioner der skal pakkes.</p>
 
-<h3><span class="green">[Image-fil]</span></h3>
+<span class="afsnit"><span class="green">[Image-fil]</span></span>
 
 <p>... angiver backupfilen</p>
 
@@ -835,99 +987,7 @@ Options:
 
 <p>Når man arbejder med windows7/8/10 skal man være opmærksom på at den er tilpasset den konkrete maskines hardware. Derfor vil man ikke umiddelbart kunne kopiere windows ud til andre maskiner end den som den oprindeligt er installeret og konfigureret på. Vil man kunne spejle flere maskiner ved hjælp af partimage, skal man have "sysprep'et" windows: <a href="https://technet.microsoft.com/en-us/library/cc721940(v=ws.10).aspx" target="_blank">https://technet.microsoft.com/en-us/library/cc721940(v=ws.10).aspx</a></p>
 
-<h3>Forberedelse af maskine til backup</h3>
 
-<p>Før man anvender partimage på en windows 7/8/10 computer bør man have renset systemdrevet (C:) for overfløde filer.</p>
-
-<ol class="">
-	
-	<li>Monter systemdrevet</li>
-	
-	<code class="cmd">ntfs-3g /dev/sda2 /mnt/windows</code>
-	
-	<li>Fjern swapfiler</li>
-		
-	<code class="cmd">rm /mnt/windows/pagefile.sys</code>
-	<code class="cmd">rm /mnt/hiberfil.sys</code>
-	
-	<li>Fjern opdateringsfiler</li>
-	
-	<code class="cmd">rm -rf /mnt/windows/Windows/SoftwareDistribution/Download/*</code>
-	
-	<li>Fjern gendannelsespunkter</li>
-	
-	<p>Gendannelsespunkter ligger i mappen <span class="inl_cmd">System Volume Information</span>. Gå ind i mappen</p>
-	
-	<code class="cmd">cd /mnt/windows/System\ Volume\ Information</code>
-	
-	<p>Kør en <span class="inl_cmd">tree</span> kommando:</p>
-	
-	<code class="cmd">tree</code>
-	
-	<p>Alle grønne filer der starter med <span class="inl_cmd">{</span> er filer som windows ikke anvender til andet end backup. Slet derfor alle disse filer:</p>
-		
-	<code class="cmd">rm -rf /mnt/windows/System\ Volume\ Information/{*</code>
-	<code class="cmd">rm -rf /mnt/windows/System\ Volume\ Information\SPP/OnlineMetadataCache/{*</code>
-	<code class="cmd">rm -rf /mnt/windows/System\ Volume\ Information\SPP/SppGroupCache/{*</code>
-		
-	<li>Kør <span class="inl_cmd">tree</span> igen for at tjekke at alle filer er væk</li>		
-	
-</ol>
-
-<p>Herunder er en udskrift før gendannelsespunkterne er fjernet. Filerne i <span class="inl_cmd">/mnt/windows/System\ Volume\ Information</span> (C:\System Volume Information) er gendannelsespunkter som kan fjernes.</p>
-
-<pre class="black" style="font-size:1.1em">
-<span class="green">root@sysresccd</span> <span class="blue1">/mnt/windows/System Volume Information</span> % tree --du
-<span class="blue1">.</span>
-├── [  576864256]  <span class="green1">{19ea1b42-1e26-11e5-84a9-0800277de8f7}{3808876b-c176-4e48-b7ae-04046e6cc752}</span>
-├── [  973078528]  <span class="green1">{1b51bb94-56c0-11e5-8b13-0800277de8f7}{3808876b-c176-4e48-b7ae-04046e6cc752}</span>
-├── [   54116352]  <span class="green1">{3317bf97-46fe-11e5-85d6-0800277de8f7}{3808876b-c176-4e48-b7ae-04046e6cc752}</span>
-├── [ 1638547456]  <span class="green1">{3317bf9b-46fe-11e5-85d6-0800277de8f7}{3808876b-c176-4e48-b7ae-04046e6cc752}</span>
-├── [      65536]  <span class="green1">{3808876b-c176-4e48-b7ae-04046e6cc752}</span>
-├── [  373424128]  <span class="green1">{43f51078-463e-11e5-a271-0800277de8f7}{3808876b-c176-4e48-b7ae-04046e6cc752}</span>
-├── [  585588736]  <span class="green1">{43f51108-463e-11e5-a271-0800277de8f7}{3808876b-c176-4e48-b7ae-04046e6cc752}</span>
-├── [  395657216]  <span class="green1">{9441f5f1-46fe-11e5-8943-0800277de8f7}{3808876b-c176-4e48-b7ae-04046e6cc752}</span>
-├── [  443006976]  <span class="green1">{d544f905-4c87-11e5-97e0-0800277de8f7}{3808876b-c176-4e48-b7ae-04046e6cc752}</span>
-├── [          0]  MountPointManagerRemoteDatabase
-├── [     645880]  <span class="blue1">SSP</span>
-│   ├── [      18248]  <span class="blue1">OnlineMetadataCache</span>
-│   │   ├── [       1744]  <span class="green1">{0867bb41-ba7a-4348-b8d2-d796ebeaff28}_OnDiskSnapshotProp</span>
-│   │   ├── [       1744]  <span class="green1">{0a219915-ebb9-4cf9-bbf2-fea541922d31}_OnDiskSnapshotProp</span>
-│   │   ├── [       1744]  <span class="green1">{10be7f13-29fc-4bc9-b420-ed5475a78a63}_OnDiskSnapshotProp</span>
-│   │   ├── [       1744]  <span class="green1">{33508c1e-b23e-417f-bad9-0bbf64034c34}_OnDiskSnapshotProp</span>
-│   │   ├── [       1848]  <span class="green1">{414dbcdf-d814-494c-a67b-c88c9d806f2b}_OnDiskSnapshotProp</span>
-│   │   ├── [       1744]  <span class="green1">{5730bf6e-7604-46d4-a03f-59df9b504ec2}_OnDiskSnapshotProp</span>
-│   │   ├── [       1744]  <span class="green1">{d32c3ad4-fe75-4da0-8af6-f170da1628d8}_OnDiskSnapshotProp</span>
-│   │   └── [       1840]  <span class="green1">{d7f36789-4847-4871-a876-9a8ac2a78e47}_OnDiskSnapshotProp</span>
-│   ├── [          0]  <span class="blue1">SppCbsHiveStore</span>
-│   └── [     623536]  <span class="blue1">SppGroupCache</span>
-│       ├── [      56656]  <span class="green1">{0867BB41-BA7A-4348-B8D2-D796EBEAFF28}_DriverPackageInfo</span>
-│       ├── [      30656]  <span class="green1">{0867BB41-BA7A-4348-B8D2-D796EBEAFF28}_WindowsUpdateInfo</span>
-│       ├── [      56656]  <span class="green1">{10BE7F13-29FC-4BC9-B420-ED5475A78A63}_DriverPackageInfo</span>
-│       ├── [      29624]  <span class="green1">{10BE7F13-29FC-4BC9-B420-ED5475A78A63}_WindowsUpdateInfo</span>
-│       ├── [      56656]  <span class="green1">{33508C1E-B23E-417F-BAD9-0BBF64034C34}_DriverPackageInfo</span>
-│       ├── [      30656]  <span class="green1">{33508C1E-B23E-417F-BAD9-0BBF64034C34}_WindowsUpdateInfo</span>
-│       ├── [      56656]  <span class="green1">{414DBCDF-D814-494C-A67B-C88C9D806F2B}_DriverPackageInfo</span>
-│       ├── [      32624]  <span class="green1">{414DBCDF-D814-494C-A67B-C88C9D806F2B}_WindowsUpdateInfo</span>
-│       ├── [      56656]  <span class="green1">{557AF84D-C3BA-4DD7-9EDC-F386D0BCEB79}_DriverPackageInfo</span>
-│       ├── [      29624]  <span class="green1">{557AF84D-C3BA-4DD7-9EDC-F386D0BCEB79}_WindowsUpdateInfo</span>
-│       ├── [      56872]  <span class="green1">{D32C3AD4-FE75-4DA0-8AF6-F170DA1628D8}_DriverPackageInfo</span>
-│       ├── [      32624]  <span class="green1">{D32C3AD4-FE75-4DA0-8AF6-F170DA1628D8}_WindowsUpdateInfo</span>
-│       ├── [      56760]  <span class="green1">{D7F36789-4847-4871-A876-9A8AC2A78E47}_DriverPackageInfo</span>
-│       └── [      32624]  <span class="green1">{D7F36789-4847-4871-A876-9A8AC2A78E47}_WindowsUpdateInfo</span>
-├── [     524288]  <span class="green1">Syscache.hve</span>
-├── [     128000]  <span class="green1">Syscache.hve.LOG1</span>
-├── [          0]  <span class="green1">Syscache.hve.LOG2</span>
-├── [      20480]  <span class="green1">tracking.log</span>
-└── [          0]  <span class="blue1">WindowsImageBackup</span>
-    └── [          0]  <span class="blue1">SPPMetadataCache</span>
-
-  5041676024 bytes used in 6 directories, 36 files
-<span class="green">root@sysresccd</span> <span class="blue1">/mnt/windows/System Volume Information</span> % tree --du
-</pre>
-
-
-<p></p>
 
 <h3>Backup af windows 7 klient - partimage</h3>
 
@@ -1100,362 +1160,7 @@ Options:
 </figure>
 
 
-<h1><span class="inl_cmd">FSArchiever</span> - <span class="bold">F</span>ile<span class="bold">S</span>ystem <span class="bold">A</span>rchiever for Linux</h1>
 
-<p><span class="inl_cmd">FSArchiver</span> er et program der specialiserer sig i at gemme filsystemer til pakkede filer. Det kan også skabe filsystemer hvor det bliver pakket ud til, så det er ikke nødvendigt at formateren en disk før den bliver gendannet fra en backup. Herunder er et eksempel, hvor der tages backup af et Windows 7 system:</p>
-
-<code class="cmd">fsarchiver savefs -v -z 7 -j 2 -e 'pagefile.*' -L 'Win7 Backup 300815' /srv/backup/win7_z7.fsa /dev/sda1 /dev/sda2</code>
-
-<p>I tabellen herunder er kommandollinien forklaret</p>
-
-
-<table class="cmd_table">
-	<thead>
-		<tr>
-			<th></th>
-			<th></th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>fsarchiver</td>
-			<td>Selve programmet</td>
-		</tr>
-		<tr>
-			<td>savefs</td>
-			<td>gem filsystem</td>
-		</tr>
-		<tr>
-			<td>-v</td>
-			<td>Vis fremgangen i processen</td>
-		</tr>
-		<tr>
-			<td>-z 7</td>
-			<td>Anvend krypteringsalgoritme 7 (<span class="inl_cmd">lzma -1</span>)</td>
-		</tr>
-		<tr>
-			<td>-j 2</td>
-			<td>Anvend 2 processorer</td>
-		</tr>
-		<tr>
-			<td>-e 'pagefile.*'</td>
-			<td>Udelad filer der hedder <span class="inl_cmd">pagefile.*</span></td>
-		</tr>
-		<tr>
-			<td>-L 'Win7 Backup 300815'</td>
-			<td>Tilføj beskrivelsen "Win7 Backup 300815"</td>
-		</tr>
-		<tr>
-			<td>/srv/backup/win7_z7.fsa</td>
-			<td>navgiv filen <span class="inl_cmd">/srv/backup/win7_z7.fsa</span></td>
-		</tr>
-		<tr>
-			<td>/dev/sda1 /dev/sda2</td>
-			<td>Gem første (boot partitionen) og anden (systemdrevet)</td>
-		</tr>
-	</tbody>
-</table>
-
-<p>Som du kan se af ovenstående er det muligt at konfigurere processen ned i mindste detalje, og eksemplet er langt fra uddybende.</p>
-
-<p>FSArchivers hjemmeside og dokumentation er i første øjekast sparsom, men ved nærlæsning finder man ud af at den er blot er kompakt og effektivt struktureret. Du kan finde hjemmesiden her:</p>
-
-<p>Hovedsiden: <a href="http://www.fsarchiver.org/Main_Page" target="_blank">http://www.fsarchiver.org/Main_Page</a></p>
-
-<p>Quickstart: <a href="http://www.fsarchiver.org/QuickStart" target="_blank">http://www.fsarchiver.org/QuickStart</a></p>
-
-<h2>Et overblik over <span class="inl_cmd">FSArchiver</span></h2>
-
-<p>Kommandoerne er bygget op over samme algoritme der følger programnavnet:</p>
-
-<code class="cmd">fsarchiver <span class="red">[Kommando]</span> <span class="blue1">[Optioner]</span> <span class="green">[Image-fil]</span> <span class="cyan">[partition(er)]</span></code>
-
-<h3><span class="red">[Kommando]</span></h3>
-
-<p>... beskriver hvad programmet skal:</p>
-
-<table class="cmd_table">
-	<thead>
-		<tr>
-			<th></th>
-			<th></th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>savefs</td>
-			<td>Gem filsystem (save filesystem)</td>
-		</tr>
-		<tr>
-			<td>restfs</td>
-			<td>Gendan filsystem (restore filesystem)</td>
-		</tr>
-		<tr>
-			<td>savedir</td>
-			<td>Pakker mapper ned i arkivet.</td>
-		</tr>
-		<tr>
-			<td>archinfo</td>
-			<td>Vis information om arkivet</td>
-		</tr>
-		<tr>
-			<td>probe</td>
-			<td>Giver et overblik over partitioner på systemet</td>
-		</tr>
-		<tr>
-			<td>probe detailed</td>
-			<td>Giver flere informationer om partitionner på systemet</td>
-		</tr>
-	</tbody>
-</table>
-
-<h3><span class="blue">[Optioner]</span></h3>
-
-<p>... konfigurerer FSArchiver ned i detaljer. Herunder er nogle af mulighederne listet:</p>
-
-<table class="cmd_table">
-	<thead>
-		<tr>
-			<th></th>
-			<th></th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>-v</td>
-			<td>Verbose mode - giver informationer om programmets kørsel f.eks. procentvis fremgang</td>
-		</tr>
-		<tr>
-			<td>-A</td>
-			<td>Nødvendig hvis du vil køre fsarchiver på et drev der er aktivt (kan ikke anbefales)</td>
-		</tr>
-		<tr>
-			<td>-h</td>
-			<td>Viser hjælpemenuen og eksempler på anvendelse</td>
-		</tr>
-		<tr>
-			<td>-V</td>
-			<td>Vis versionen af programmet</td>
-		</tr>
-		<tr>
-			<td>-s *størrelse i MB*</td>
-			<td>split imaget i *mbsize* MB størrelse</td>
-		</tr>
-		<tr>
-			<td>-j *antal*</td>
-			<td>Bestemmer antallet af kerner i CPU'en du vil anvende til at pakke med.</td>
-		</tr>
-		<tr>
-			<td>-z *kompression*</td>
-			<td>Kompression fra niveau 1 (meget hurtig) til 9 (meget god) standard=3</td>
-		</tr>
-		<tr>
-			<td>-L 'etiket'</td>
-			<td>Angiv en beskrivende tekststreng til arkivet</td>
-		</tr>
-		<tr>
-			<td>-e 'tekststreng'</td>
-			<td>Pakker ikke filer der matcher tekststrengen</td>
-		</tr>
-	</tbody>
-</table>
-
-<p>Kompressionsalgoritmerne er angivet herinder. Jo højere tal inden for samme algoritme - jo hårdere pakker de.  </p>
-
-<table class="">
-	<thead>
-		<tr>
-			<th>Niveau</th>
-			<th>Algoritme</th>
-			<th>Beskrivelse</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>1</td>
-			<td>lzo</td>
-			<td></td>
-		</tr>
-		<tr>
-			<td>2</td>
-			<td>gzip -3</td>
-			<td rowspan="3"></td>
-		</tr>
-		<tr>
-			<td>3</td>
-			<td>gzip -6</td>
-		</tr>
-		<tr>
-			<td>4</td>
-			<td>gzip -9</td>
-		</tr>
-		<tr>
-			<td>5</td>
-			<td>bzip2 -2</td>
-			<td rowspan="2">Pakker ca. 15% mere effektivt end gzip. Men også langsommere</td>
-		</tr>
-		<tr>
-			<td>6</td>
-			<td>bzip2 -3</td>
-		</tr>
-		<tr>
-			<td>7</td>
-			<td>lzma -1</td>
-			<td rowspan="3">Pakker ca. 15% mere effektivt end bzip2. lzma pakker generelt langsommere end bzip2, men udpakker hurtigere.
-			<br/><br/>
-			lzma er altså et rigtig godt pakke program til backup, da det er udpakningen der ofte vil være den kritiske faktor.
-			</td>
-		</tr>
-		<tr>
-			<td>8</td>
-			<td>lzma -6</td>
-
-		</tr>
-		<tr>
-			<td>9</td>
-			<td>lzma -9</td>
-		</tr>
-	</tbody>
-</table>
-
-<p>Henvisning: <a href="http://www.fsarchiver.org/Compression" target="_blank">http://www.fsarchiver.org/Compression</a></p>
-
-<h3><span class="green">[Image-fil]</span></h3>
-
-<p>... angiver backupfilen</p>
-
-<h3><span class="cyan">[partition(er)]</span></h3>
-
-<p>... angiver hvilke partitioner der skal pakkes.</p>
-
-<p>Man kan senere hente specifikke partitioner ud af arkivet. Hvis man f.eks. har pakket 3 partitioner ned i arkivet f.eks. <span class="inl_cmd">/dev/sda1</span>, <span class="inl_cmd">/dev/sda2</span> og <span class="inl_cmd">/dev/sda2</span> får de hver angivet et ID. Første partition har ID=0, anden ID=1 og den tredie har ID=2.</p>
-
-<p>Når man så senere skal udpakke arkivet skal man angive partitionens ID i den pakkede fil og destinationen. Herunder er vist hvordan man henter arkivets anden partition ud (Systemdrevet) fra en pakket fil og lægger den på <span class="inl_cmd">/dev/sda2</span>, som bliver formateret i samme proces.</p>
-
-<code class="cmd">fsarchiver restfs -v ~/backupfil.fsa  id=1,dest=/dev/sda2,mkfs=ntfs</code>
-
-
-
-
-<h2>Eksempler med fsarchiver</h2>
-
-<p>I følgende eksempel vil der blive taget udgangspunkt i et netværk med en Windows 7 klient, hvor der er et SMB share på netværket med adressen <span class="inl_cmd">//10.0.2.10/backup</span>, hvor brugeren "thoj" med adgangskoden "123qwe" har skrive rettigheder.</p>
-
-<h3>Backup af windows 7 klient - fsarchiver</h3>
-
-<p>Da SystemrescueCD som standard anvender root brugeren behøver vi ikke at bekymre os om rettighederne til at køre programmerne.</p>
-
-<ol class="">
-
-	<li>Få et overblik over harddiske på klienten</li>
-	
-	<code class="cmd">lsblk</code>
-	
-	<li>Monter netværksdrevet i <span class="inl_cmd">/mnt/backup</span></li>
-	
-	<code class="cmd">mount -t cifs //10.0.2.10/backup /mnt/backup -o user=thoj</code>
-	
-	<li>Tjek om netværksdrevet er monteret korrekt</li>
-	
-	<code class="cmd">ls -al /mnt/backup</code>
-	
-	<li>Kør fsarchiver</li>
-	
-	<code class="cmd">fsarchiver savefs -v -z 7 -e 'pagefile.sys' -e 'hiberfil.sys' -L 'Win7 Backup 300815' /mnt/backup/win7_z7.fsa /dev/sda1 /dev/sda2</code>
-	
-</ol>
-
-<p>Vær opmærksom på at i Ovenstående eksempel er krypteringsalgoritmen <span class="inl_cmd">-z 7</span> valgt.</p>
-
-<h3>Gendannelse af Windows7 Klient - fsarchiver</h3>
-
-<p>Jeg tager i nedestående eksempel udgangspunkt i at harddiske på klienten er partitioneret korrekt. Hvis ikke skal harddisken først partitioneres med <span class="inl_cmd">fdisk</span>.</p>
-
-<ol class="">
-	
-	<li>Monter netværksdrevet i <span class="inl_cmd">/mnt/backup</span></li>
-	
-	<code class="cmd">mount -t cifs //10.0.2.10/backup /mnt/backup -o user=thoj</code>
-	
-	<li>Tjek om netværksdrevet er monteret korrekt</li>
-	
-	<code class="cmd">ls -al /mnt/backup</code>
-	
-	<li>Lav en oversigt over arkivet og tjek at det er det rigtige</li>
-	
-	<code class="cmd">fsarchiver archinfo /mnt/backup/win7_z7.fsa</code>
-	
-	<li>Kør fsarchiver</li>
-	
-	<code class="cmd">fsarchiver restfs -v /mnt/backup/win7_z7.fsa id=0,dest=/dev/sda1,mkfs=ntfs id=1,dest=/dev/sda2,mkfs=ntfs</code>
-	
-	<li>Efter fsarchiver er færdig fjernes USB-disken og computeren genstartes</li>
-	
-	<code class="cmd">reboot</code>
-	
-</ol>
-
-<pre class="black">
-====&gt; fsarchiver version 0.6.19 (2014-03-01) - http://www.fsarchiver.org &lt;====
-Distributed under the GPL v2 license (GNU General Public License v2).
- * usage: fsarchiver [&lt;options&gt;] &lt;command&gt; &lt;archive&gt; [&lt;part1&gt; [&lt;part2&gt; [...]]]
-&lt;commands&gt;
- * savefs: save filesystems to an archive file (backup a partition to a file)
- * restfs: restore filesystems from an archive (overwrites the existing data)
- * savedir: save directories to the archive (similar to a compressed tarball)
- * restdir: restore data from an archive which is not based on a filesystem
- * archinfo: show information about an existing archive file and its contents
- * probe [detailed]: show list of filesystems detected on the disks
-&lt;options&gt;
- -o: overwrite the archive if it already exists instead of failing
- -v: verbose mode (can be used several times to increase the level of details)
- -d: debug mode (can be used several times to increase the level of details)
- -A: allow to save a filesystem which is mounted in read-write (live backup)
- -a: allow running savefs when partition mounted without the acl/xattr options
- -e &lt;pattern&gt;: exclude files and directories that match that pattern
- -L &lt;label&gt;: set the label of the archive (comment about the contents)
- -z &lt;level&gt;: compression level from 1 (very fast)  to  9 (very good) default=3
- -s &lt;mbsize&gt;: split the archive into several files of &lt;mbsize&gt; megabytes each
- -j &lt;count&gt;: create more than one compression thread. useful on multi-core cpu
- -c &lt;password&gt;: encrypt/decrypt data in archive, "-c -" for interactive password
- -h: show help and information about how to use fsarchiver with examples
- -V: show program version and exit
-&lt;information&gt;
- * Support included for: lzo=yes, lzma=yes
- * support for ntfs filesystems is unstable: don't use it for production.
-&lt;examples&gt;
- * <span class="bold">save only one filesystem (/dev/sda1) to an archive:</span>
-   fsarchiver savefs /data/myarchive1.fsa /dev/sda1
- * <span class="bold">save two filesystems (/dev/sda1 and /dev/sdb1) to an archive:</span>
-   fsarchiver savefs /data/myarchive2.fsa /dev/sda1 /dev/sdb1
- * <span class="bold">restore the first filesystem from an archive (first = number 0):s</span>
-   fsarchiver restfs /data/myarchive2.fsa id=0,dest=/dev/sda1
- * <span class="bold">restore the second filesystem from an archive (second = number 1):</span>
-   fsarchiver restfs /data/myarchive2.fsa id=1,dest=/dev/sdb1
- * <span class="bold">restore two filesystems from an archive (number 0 and 1):</span>
-   fsarchiver restfs /data/arch2.fsa id=0,dest=/dev/sda1 id=1,dest=/dev/sdb1
- * <span class="bold">restore a filesystem from an archive and convert it to reiserfs:</span>
-   fsarchiver restfs /data/myarchive1.fsa id=0,dest=/dev/sda1,mkfs=reiserfs
- * <span class="bold">save the contents of /usr/src/linux to an archive (similar to tar):</span>
-   fsarchiver savedir /data/linux-sources.fsa /usr/src/linux
- * <span class="bold">save a filesystem (/dev/sda1) to an archive split into volumes of 680MB:</span>
-   fsarchiver savefs -s 680 /data/myarchive1.fsa /dev/sda1
- * <span class="bold">save a filesystem and exclude all files/dirs called 'pagefile.*':</span>
-   fsarchiver savefs /data/myarchive.fsa /dev/sda1 --exclude='pagefile.*'
- * <span class="bold">generic exclude for 'share' such as '/usr/share' and '/usr/local/share':</span>
-   fsarchiver savefs /data/myarchive.fsa --exclude=share
- * <span class="bold">absolute exclude valid for '/usr/share' but not for '/usr/local/share':</span>
-   fsarchiver savefs /data/myarchive.fsa --exclude=/usr/share
- * <span class="bold">save a filesystem (/dev/sda1) to an encrypted archive:</span>
-   fsarchiver savefs -c mypassword /data/myarchive1.fsa /dev/sda1
- * <span class="bold">Same as before but prompt for password in the terminal:</span>
-   fsarchiver savefs -c - /data/myarchive1.fsa /dev/sda1
- * <span class="bold">extract an archive made of simple files to /tmp/extract:</span>
-   fsarchiver restdir /data/linux-sources.fsa /tmp/extract
- * <span class="bold">show information about an archive and its file systems:</span>
-   fsarchiver archinfo /data/myarchive2.fsa
-
-</pre>
 
 
 <p></p>
