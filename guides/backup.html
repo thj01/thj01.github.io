@@ -763,7 +763,7 @@ Space used in filesystem: 	33.54 GB (36018147328 bytes)
 
 <code class="cmd">fsarchiver restfs -v ~/backupfil.fsa  id=1,dest=/dev/sda2,mkfs=ntfs</code>
 
-<h2>Eksempler på anvendelse</h2>
+<h2>Eksempler</h2>
 
 <code class="cmd">fsarchiver savefs -v -z 3 -j 4 -L 'backup Ubuntu 010116' /mnt/backup/ubuntu010116.fsa /dev/sda1</code>
 
@@ -1152,7 +1152,7 @@ Options:
 ===============================================================================
 </pre>
 
-<h2>Eksempler med partimage</h2>
+<h2>Eksempler</h2>
 
 <code class="cmd">partimage -f3 -d -b -V20480 save /dev/sda2 /mnt/backup/win7_system</code>
 
@@ -1320,6 +1320,78 @@ Options:
 	<figcaption></figcaption>
 
 </figure>
+
+<h1><span class="inl_cmd">dd</span></h1>
+
+<p>Det kan også lade sig gøre at tage backup og klone diske uden "smarte" programmer. Til det formål anvendes <span class="inl_cmd">dd</span>.</p>
+
+<code class="cmd">dd <span class="red">if=[kilde]</span> <span class="blue">of=[Mål]</span> <span class="green">[Options]</span></code>
+
+<p><span class="inl_cmd">dd</span> kan anvendes til:</p>
+
+<ul class="disc">
+	<li>ISO (dump med filsystem)</li>
+	<li>IMG (raw dump)</li>
+	<li>Harddiske (USB/HD) - f.eks: <span class="inl_cmd">/dev/sda</span></li>
+	<li>Partitioner - f.eks: <span class="inl_cmd">/dev/sda1</span></li>
+</ul>
+
+<span class="afsnit"><span class="green">[Options]</span></span>
+
+<p><span class="inl_cmd">dd</span> er som standard sat op til at fungere meget konservativt, hvilket vil sige at den ikke udnytter moderne computeres hardware. Herunder er et eksempel på en kommando hvor <span class="inl_cmd">/dev/sda1</span> bliver klonet til <span class="inl_cmd">/dev/sdb1</span>:</p>
+
+<code class="cmd">sudo dd if=/dev/sda1 of=/dev/sdb1 bs=64K conv=noerror,sync status=progress</code> 
+
+<table class="">
+	<thead>
+		<tr>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>if=/dev/sda1</td>
+			<td>Input er første partition på harddisk 1</td>
+		</tr>
+		<tr>
+			<td>of=/dev/sdb1</td>
+			<td>Output er første partition på harddisk 2</td>
+		</tr>
+		<tr>
+			<td>bs=64k</td>
+			<td>Læs og overfør 64 kB ad gangen. (læs mere nedenfor)</td>
+		</tr>
+		<tr>
+			<td>conv=noerror,sync</td>
+			<td><span class="inl_cmd">noerror,sync</span> - sørger for at data bliver korrekt overført</td>
+		</tr>
+		<tr>
+			<td>status=progress</td>
+			<td>Viser <span class="inl_cmd">dd</span>'s fremgang</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>angåenden <span class="inl_cmd">bs=64k</span>. Som standard er <span class="inl_cmd">dd</span> sat til at læse 512 b (½ kb). Det skyldes at programmet er designet til at være bagudkompatibel. Hvis harddisken er uden fejl kan vi roligt sætte størrelsen til 64 kb eller 128 kb. Det kan mere end fordoble hastigheden på kopieringen.</p>
+
+<h2>Eksempler</h2>
+
+
+<p>Lav en iso-fil af en CD-ROM der ligger i <span class="inl_cmd">/dev/sr0</span>:</p>
+
+<code class="cmd">sudo dd if=/dev/sr0 of=~/min_cd.iso</code>
+
+<p>Lav en backup af <span class="inl_cmd">/dev/sda</span> i filen <span class="inl_cmd">~/hd_sda_backup</span>:</p>
+
+<code class="cmd">sudo dd if=/dev/sda conv=sync,noerror bs=64K | gzip -c  > *monteringssti*/hd_sda_backup</code>
+
+
+
+
+<p>Læs mere: <a href="https://wiki.archlinux.org/index.php/disk_cloning" target="_blank">https://wiki.archlinux.org/index.php/disk_cloning</a></p>
+
+<p>Læs mere: <a href="http://manpages.ubuntu.com/manpages/xenial/man1/dd.1.html" target="_blank">http://manpages.ubuntu.com/manpages/xenial/man1/dd.1.html</a></p>
 
 <p></p>
 <p></p>
