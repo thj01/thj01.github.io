@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+
+<head>
+	
+	<meta charset="UTF-8" lang="da"/>
+
+	<title>OpenSSH - Thomas Jensen</title>
+
+	<script src="../js/toc2.js" type="text/javascript"></script>
+	<script src="https://code.jquery.com/jquery-2.2.2.js"></script>
+
+	<link rel="stylesheet" href="../css/style.css" />
+	<link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Ubuntu+Mono|Ubuntu|Ubuntu+Condensed' rel='stylesheet' type='text/css'>
+	
+
+</head>
+
+
+<!-- 
+
+code highlighter : 
+
+code converter : http://www.freebits.co.uk/convert-html-code-to-text.html 
+
+
+
+
+-->
+
+
+
+<html>
+
+<body onload="generateTOC(document.getElementById('toc'));">
+
+<footer id="license"></footer>
+
+	<script> $( "#license" ).load( "license.html" ); </script>
+
+	<div id="toc">
+	<p>Indholdsfortegnelse</p>
+	
+	</div>
+<div class="title">OpenSSH</div>
+
+
+<h1>Hvad er SSH</h1>
+
+<p>SSH (<span class="bold">S</span>ecure <span class="bold">SH</span>ell) er en protokol der giver krypteret adgang til andre maskiner over netværk. Ved hjælp af SSH kan man fjernadministrere maskiner på nettet, og overføre kommandoer og data.</p>
+
+<p>I denne guide vil der bliver gennemgået følgende:</p>
+
+<ol class="">
+	<li>Noget om sikkerhed</li>
+	<li>SSH adgang ved hjælp af password</li>
+	<li>SSH adgang ved hjælp af nøglefiler</li>
+	<li>Kopiering af filer ved hjælp af SSH</li>
+	<li>Kommandoer ved hjælp af SSH</li>
+</ol>
+
+<p>Konkret vil vi anvende OpenSSH, da dette er standard på Ubuntu.</p>
+
+<h2>Noget om SSH og sikkerhed</h2>
+
+<p>SSH er når alt kommer til alt fjernadgang til en computer ved hjælp af et netværk. Som standard gælder følgende:</p>
+
+<ul class="disc">
+	<li>OpenSSH er opensource. Koden ligger tilgængelig - for alle</li>
+	<li>Krypteret kommunikationen allerede før brugernavn og kodeord er anvendt.</li>
+	<li>Stærke godkendelsesprocedurer (Strong authentication) der bl.a. forhindrer IP- og DNS-spoofing</li>
+</ul>
+
+<p>Derudover kan OpenSSH konfigureres med langt stærkere sikkerhedsfeatures.</p>
+
+<p>Den sikreste metode er at anvende en krypteret nøglefil og fjerne muligheden for at logge på med password. Med den tilgang er tilliden mellem serveren og klienten baseret på tilliden mellem serveradministratoren og brugeren. Det fjerner dog også muligheden for at andre kan tilgå serveren kun baseret på brugernavn og adgangskode.</p>
+
+<h2>Beskrivelse af netværket</h2>
+
+<p>Dette materiale tager udgangspunkt i et netværk bygget op efter nedestående illustration. SSH-serveren er på main server og bliver tilgået fra en klient på netværket</p>
+
+<pre class="black">
+	    HF-ISP                         Gateway                       HF-NET
+	
+                                                                  |---- Main server
+                               |-->   (172.16.32.69/24)           |     (10.0.2.10/24)
+     Virtuelt NAT netværk  &lt;---|           Gateway           |---&gt;|                    
+      (172.16.32.0/24)                  (10.0.2.1/24)    &lt;---|    | 
+                                                                  |-----Klient 
+                                                                        (DHCP)
+</pre>
+
+
+
+
+<h1>Installation og konfiguration af OpenSSH</h1>
+
+<p>OpenSSH installeres med følgende kommando</p>
+
+<code class="cmd">apt-get install openssh-server -y</code>
+
+<p>SSH skal ikke installeres på klienten da SSH er indbygget som standard. Herunder vil de forskellige måde at tilgå en SSH server blive gennemgået. Der vil blive vist hvad der skal gøres på både vært og klient.</p>
+
+
+<p>OpenSSH konfigureres igennem filen <span class="inl_cmd">/etc/ssh/sshd_config</span></p>
+
+<h2>Ændring af portnummer</h2>
+
+<p>Ændr <span class="inl_cmd"># What ports, IPs and protocols we listen for</span> </p>
+
+<pre class="black">
+# What ports, IPs and protocols we listen for
+Port 22 <span class="red">&#8592; Ændr dette tal</span>
+</pre>
+
+<p>Genstart ssh og test ved at logge ind igen med det nye portnummer.</p>
+
+<code class="cmd">service ssh restart</code>
+
+<h2>Fjern muligheden for root-login</h2>
+
+<p>Ændr:</p>
+
+<pre class="black">
+PermitRootLogin without-password
+</pre>
+
+<p>til</p>
+
+<pre class="black">
+PermitRootLogin no
+</pre>
+
+<p>Dette er ikke et stort problem på Ubuntu, da root ikke er aktiveret.</p>
+
+<h2>Specifier tilladte brugere</h2>
+
+<p>Dette kan gøres på to måder - enten ved en positiv- eller negativ liste over brugere. Tilføj linierne <span class="inl_cmd">AllowUsers</span> eller <span class="inl_cmd">DenyUsers</span> i bunden af filen. Hvilen man anvender må være en overvejelse over de brugere man har. Er der få der skal have adgang vil <span class="inl_cmd">AllowUsers</span> være simplest at administrere. Er der få der ikke skal have vil det være lettest at anvende <span class="inl_cmd">DenyUsers</span>.</p>
+
+<span class="afsnit">Positivliste - <span class="inl_cmd">AllowUsers</span></span>
+
+<p>Tilføj de brugere der må anvende SSH eks:</p>
+
+<pre class="black">
+Allowusers thoj anne
+</pre>
+
+<span class="afsnit">Negativliste - <span class="inl_cmd">DenyUsers</span></span>
+
+<p>Tilføj de brugere der ikke må anvende SSH eks:</p>
+
+<pre class="black">
+Denyusers wipe asti
+</pre>
+
+<p>Prøv at sætte dig selv på både positiv og negativlisten og test det.</p>
+
+<h2>Velkomst hilsen</h2>
+
+<p>Hvis du vil have at brugeren får nogle informationer ved login, kan det gøres gennem filen <span class="inl_cmd">/etc/issue.net</span>. Fjern hast foran <span class="inl_cmd">#Banner /etc/issue.net</span>.</p>
+
+<pre class="black">
+Banner /etc/issue.net
+</pre>
+<p>Rediger <span class="inl_cmd">/etc/issue.net</span>, og vær opmærksom på at tegntabellen er begrænset. Så ingen æ, ø, å. Skriv f.eks:</p>
+
+<pre class="black">
+
+***************************************************
+***                                             ***
+***  Welcome to mainsrv 10.0.2.10/24 - Behave!  ***
+***                                             ***
+***************************************************
+
+</pre>
+
+<p>Så vil enhver der logger ind ved hjælp af SSH på serveren se følgende:</p>
+
+<pre class="ubuntu_terminal">
+thoj@thoj-VirtualBox:~$ ssh thoj@10.0.2.10 -p 222
+
+***************************************************
+***                                             ***
+***  Welcome to mainsrv 10.0.2.10/24 - Behave!  ***
+***                                             ***
+***************************************************
+
+thoj@10.0.2.10's password:
+</pre>
+
+<h2>Hold liv i forbindelsen</h2>
+
+<p>SSH serveren forventer at der er aktivitet på forbindelsen, og hvis den udebliver afsluttes forbindelsen. Da det er noget klienten skal udføre skal der ændres/tilføjes i <span class="inl_cmd">/etc/ssh/ssh_config</span>. Tilføj følgende i afslutningen af filen</p>
+
+<code class="cmd">ServerAliveInterval 20</code>
+
+<p>På den måde vil din forbindelse blive fornyet hver 20 sekund</p>
+
+<h1>SSH adgang ved hjælp af password</h1>
+
+<p>Det er denne  måde SSH er konfigureret som standard, hvilket er praktisk i konfigurationsfasen. Man får adgang til en SSH server ved at anvende kommendoen:</p>
+
+<code class="cmd">ssh *brugernavn*@*IP/FQDN* -p *portnummer*</code>
+
+<p>Hvis man ikke har ændret portnummeret så vil ssh automatisk søge på port 22. Konkret vil koden her være:</p>
+
+<code class="cmd">ssh thoj@10.0.2.10 -p 22</code>
+
+<pre class="ubuntu_terminal">
+thoj@thoj-VirtualBox:~$ ssh thoj@10.0.2.10 -p 22
+The authenticity of host '10.0.2.10 (10.0.2.10)' can't be established.
+ECDSA key fingerprint is 64:6a:8a:dc:5d:9c:70:e4:bd:1b:bf:b9:a2:9e:99:a1.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added '10.0.2.10' (ECDSA) to the list of known hosts.
+thoj@10.0.2.10's password: 
+</pre>
+
+<p>Første gang man lokker på vil klienten have verifiseret host'en. Dette er en ekstra sikkerhedsforanstaltning der sikrer at man har fat i den rigtige maskine og ikke en password-logger der er blevet sat på netværket. Den bliver lagt ind i filen <span class="inl_cmd">~/.ssh/known_hosts</span> som en krypteret henvisning.</p>
+
+<pre class="ubuntu_terminal">
+thoj@thoj-VirtualBox:~$ ls -al ~/.ssh
+totalt 16
+drwx------  2 thoj thoj 4096 okt  4 11:44 .
+drwxr-xr-x 19 thoj thoj 4096 okt  4 11:44 ..
+-rw-r--r--  1 thoj thoj  222 okt  4 11:44 known_hosts
+</pre>
+
+<p>Efter du har angivet dit password er du logget på serveren som om du sad ved den selv.</p>
+
+<pre class="ubuntu_terminal">
+Welcome to Ubuntu 14.04.3 LTS (GNU/Linux 3.19.0-26-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com/
+
+  System information as of Sun Oct  4 11:43:29 CEST 2015
+
+  System load:    0.0               Memory usage: 6%   Processes:       106
+  Usage of /home: 0.2% of 18.21GB   Swap usage:   0%   Users logged in: 0
+
+  Graph this data and manage this system at:
+    https://landscape.canonical.com/
+
+Last login: Mon Sep 14 19:35:26 2015
+thoj@tjmainsrv:~$
+</pre>
+
+<p>Vær opmærksom på at man ikke behøver at angive brugernavn, hvis ens brugernavn er det samme både på maskinen du logger ind fra og serveren.</p>
+
+<h1>SSH adgang ved hjælp af nøglefiler</h1>
+
+<p>For at øge sikkerheden kan godkendelse af forbindelser sættes til også at være baseret på en krypteret nøglefil. Dette giver flere fordele. Det betyder bl.a. at man ikke skal angive sit password når man logger ind, da automatikken sørger for at godkende en. Dette skal gøres i to trin:</p>
+
+<ol class="">
+	<li>Konfigurer SSH så man kan logge ind med nøglefilerne</li>
+	<li>Opret en offentlig og en privat nøgle på din klient</li>
+	<li>Tilføj din nøgle til din konto på SSH-værten</li>
+	<li>Fjern muligheden for at logge på ved hjælp af passwords</li>
+</ol>
+
+<p>Sikkerheden opnås det ovenstående ved, at brugeren bliver "trusted". Så længe SSH-brugeren har sine credentials har han adgang til serveren. Vi vil her oprette nøgler til en bruger, kopiere dem over på serveren og herefter fjerne muligheden for at logge på ved hjælp af passwords</p>
+
+<h2>Konfigurer SSH Host</h2>
+
+<p>Konfigurer SSH så man kan logge ind med nøglefilerne. Rediger i <span class="inl_cmd">/etc/ssh/sshd_config</span> på SSH hosten.</p>
+
+<p>Fjern # foran <span class="inl_cmd">AuthorizedKeysFile</span></p>
+
+<pre class="black">
+AuthorizedKeysFile     %h/.ssh/authorized_keys
+</pre>
+
+<p>Genstart SSH</p>
+
+<code class="cmd">service ssh restart</code>
+
+<h2>Opret nøgler på klienten</h2>
+
+<p>Opret en skjult ssh mappe i dit home-dir og sæt rettigheder</p>
+
+<code class="cmd">mkdir ~/.ssh</code>
+
+<code class="more_cmd">chmod 700 ~/.ssh</code>
+
+<pre class="ubuntu_terminal">
+thoj@thoj-VirtualBox:~$ mkdir ~/.ssh
+thoj@thoj-VirtualBox:~$ chmod 700 ~/.ssh
+</pre>
+
+<p>Opret nøglen</p>
+
+<code class="more_cmd">ssh-keygen -t rsa</code>
+
+<p>Vær opmærksom på at du ikke kan se din indtastning ved "passfrase". Vil du have krypteringen op på 4096 bit sætter du <span class="inl_cmd">-b 4096</span> bagerst i kommandoen.</p>
+
+<pre class="ubuntu_terminal">
+thoj@thoj-VirtualBox:~$ ssh-keygen -t rsa
+Generating public/private rsa key pair.
+Enter file in which to save the key (/home/thoj/.ssh/id_rsa): 
+Enter passphrase (empty for no passphrase): 
+Enter same passphrase again: 
+Your identification has been saved in /home/thoj/.ssh/id_rsa.
+Your public key has been saved in /home/thoj/.ssh/id_rsa.pub.
+The key fingerprint is:
+fb:5d:24:d0:ca:b8:ea:0d:d3:d9:67:8d:c6:99:5f:2f thoj@thoj-VirtualBox
+The key's randomart image is:
++--[ RSA 2048]----+
+|                 |
+|           .     |
+|          . .    |
+|         o o     |
+|        S o . .  |
+|       . = . B   |
+|      o = . O o .|
+|       = . = oE..|
+|     .o . . . ...|
++-----------------+
+thoj@thoj-VirtualBox:~$ 
+</pre>
+
+<p>Tjek at filerne er blevet oprettet</p>
+
+<pre class="ubuntu_terminal">
+thoj@thoj-VirtualBox:~$ ls -al ~/.ssh
+totalt 16
+drwx------  2 thoj thoj 4096 okt  4 10:46 .
+drwxr-xr-x 18 thoj thoj 4096 okt  4 10:45 ..
+-rw-------  1 thoj thoj 1679 okt  4 10:46 id_rsa
+-rw-r--r--  1 thoj thoj  402 okt  4 10:46 id_rsa.pub
+</pre>
+
+<h2>Registrer din nøglefil på serveren</h2>
+
+<p>Registrer den offentlige nøgle på din bruger på serveren:</p>
+
+<code class="cmd">ssh-copy-id thoj@10.0.2.10 -p 222</code>
+
+<pre class="ubuntu_terminal">
+thoj@thoj-VirtualBox:~$ ssh-copy-id thoj@10.0.2.10 -p 222
+/usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
+/usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install the new keys
+
+***************************************************
+***                                             ***
+***  Welcome to mainsrv 10.0.2.10/24 - Behave!  ***
+***                                             ***
+***************************************************
+
+thoj@10.0.2.10's password: 
+</pre>
+
+<p>Efter du har indtastet dit password får du følgende output.</p>
+
+<pre class="ubuntu_terminal">
+Number of key(s) added: 1
+
+Now try logging into the machine, with:   "ssh -p '222' 'thoj@10.0.2.10'"
+and check to make sure that only the key(s) you wanted were added.
+
+thoj@thoj-VirtualBox:~$ 
+</pre>
+
+<p>Læg mærke til at du ikke er logget ind på serveren, men stadig er på din lokale maskine. Log ind på serveren igen</p>
+
+<code class="cmd">ssh thoj@10.0.2.10 -p 222</code>
+
+<pre class="ubuntu_terminal">
+thoj@thoj-VirtualBox:~$ ssh thoj@10.0.2.10 -p 222
+
+***************************************************
+***                                             ***
+***  Welcome to mainsrv 10.0.2.10/24 - Behave!  ***
+***                                             ***
+***************************************************
+
+</pre>
+
+<p>Her stopper programmet for at du kan bekræftige den "passphrase" du lavede din nøgle med.</p>
+
+<p>Hvis du tilgår serveren fra en Ubuntu klient, så vil du få nedestående vindue frem. Det skyldes at GUI'en anvender et program til at administrere dine nøgler på systemet. Nøgleringskoden er den samme kode som du angav, da du oprettede SSH nøglen.</p>
+
+<figure id="">
+
+	<img src="images/openssh_01.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Når du efterfølgende anvender SSH til denne server vil du ikke blive spurgt om dit password, men på en GUI kan du blive afkrævet din kode til "nøgleringsprogrammet".</p>
+
+<pre class="ubuntu_terminal">
+Welcome to Ubuntu 14.04.3 LTS (GNU/Linux 3.19.0-26-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com/
+
+  System information as of Sun Oct  4 17:35:09 CEST 2015
+
+  System load:    0.0               Processes:           120
+  Usage of /home: 0.2% of 18.21GB   Users logged in:     1
+  Memory usage:   11%               IP address for eth0: 10.0.2.10
+  Swap usage:     0%
+
+  Graph this data and manage this system at:
+    https://landscape.canonical.com/
+
+Last login: Sun Oct  4 17:35:09 2015 from tjmainsrv.tjnetwork.local
+thoj@tjmainsrv:~$ 
+</pre>
+
+<p>Fremover logger du ind uden password.</p>
+
+<h1>Kopiering af filer med SSH</h1>
+
+<p>Til at kopiere anvender vi <span class="inl_cmd">scp</span> - <span class="bold">S</span>ecure <span class="bold">C</span>o<span class="bold">P</span>y. Programmet fungerer på følgende måde:</p>
+
+<code class="cmd">scp *Kildefil* *Destinationsfil*</code>
+
+<p>Den lokale fil angives som normalt f.eks. <span class="inl_cmd">~/testfil</span>. Fjernfilen adresseres som ovenfor ved ssh, blot med den undtagelse at det skal være <span class="inl_cmd">-P</span> til at angive portnummeret:*brugernavn*@*IP*:*filnavn* -P 222.</p>
+
+<p>Hvis jeg f.eks. vil kopiere filen <span class="inl_cmd">testfil</span> over til en fjerncomputeren med port 222: </p>
+
+<code class="cmd">scp -P 222 ~/testfil thoj@10.0.2.10:/home/thoj</code>
+
+<pre class="ubuntu_terminal">
+thoj@thoj-VirtualBox:~$ scp -P 222 ~/testfil thoj@10.0.2.10:/home/thoj
+
+***************************************************
+***                                             ***
+***  Welcome to mainsrv 10.0.2.10/24 - Behave!  ***
+***                                             ***
+***************************************************
+
+testfil                                       100%    0     0.0KB/s   00:00    
+thoj@thoj-VirtualBox:~$ 
+</pre>
+
+
+
+<h1>Kommandoer ved hjælp af SSH</h1>
+
+<p>Man kan sende kommandoer (tekststrenge) med SSH ved at tilføje dem i anførselstegn f.eks.</p>
+
+<code class="cmd">ssh -p 222 thoj@10.0.2.10 "touch testfil1"</code>
+
+<p>Hvis en kommando har et output vil det blive vist :</p>
+
+<code class="cmd">ssh -p 222 thoj@10.0.2.10 "ls -al | grep testfil"</code>
+
+<pre class="ubuntu_terminal">
+thoj@thoj-VirtualBox:~$ ssh -p 222 thoj@10.0.2.10 "ls -al | grep testfil"
+
+***************************************************
+***                                             ***
+***  Welcome to mainsrv 10.0.2.10/24 - Behave!  ***
+***                                             ***
+***************************************************
+
+-rw-rw-r-- 1 thoj thoj    0 okt  4 20:02 testfil
+-rw-rw-r-- 1 thoj thoj    0 okt  4 20:19 testfil1
+thoj@thoj-VirtualBox:~$
+</pre>
+
+<p>Lad os prøve at køre en sudo kommando</p>
+
+<pre class="ubuntu_terminal">
+thoj@thoj-VirtualBox:~$ ssh -p 222 thoj@10.0.2.10 "sudo fdisk -l"
+
+***************************************************
+***                                             ***
+***  Welcome to mainsrv 10.0.2.10/24 - Behave!  ***
+***                                             ***
+***************************************************
+
+sudo: ingen tty til stede og intet askpass-program angivet <span class="red">&#8592; Fejlmeddelse</span>
+thoj@thoj-VirtualBox:~$ 
+</pre>
+
+<p>Hvis kommandoen kræver at brugeren skal indtaste noget (f.eks. et password) skal man sætte <span class="inl_cmd">-t</span> på, for at SSH kan åbne en tty (teletypewriter) eller i daglig tale en kommandoprompt : </p>
+
+<code class="cmd">ssh <span class="red">-t</span> -p 222 thoj@10.0.2.10 "sudo fdisk -l"</code>
+
+<pre class="ubuntu_terminal">
+thoj@thoj-VirtualBox:~$ ssh -t -p 222 thoj@10.0.2.10 "sudo fdisk -l"
+
+***************************************************
+***                                             ***
+***  Welcome to mainsrv 10.0.2.10/24 - Behave!  ***
+***                                             ***
+***************************************************
+
+[sudo] password for thoj: 
+</pre>
+
+<p>Efter adgangskoden er indtastet kommer resten af outputtet og forbindelsen lukkes.</p>
+
+<pre class="ubuntu_terminal">
+
+Disk /dev/sda: 107.4 GB, 107374182400 bytes
+255 hoveder, 63 sektorer/spor, 13054 cylindre, i alt 209715200 sektorer
+Enheder = sektorer af 1 * 512 = 512 byte
+Sektorstørrelse (logisk/fysisk): 512 byte / 512 byte
+I/O-størrelse (minimum/optimal): 512 byte / 512 byte
+Diskidentifikation: 0x000ad887
+
+    Enhed Opstart   Start         Slut     Blokke   Id  System
+/dev/sda1   *        2048      976895      487424   83  Linux
+/dev/sda2          978942   209713151   104367105    5  Udvidet
+/dev/sda5          978944   209713151   104367104   8e  Linux LVM
+
+Connection to 10.0.2.10 closed.
+thoj@thoj-VirtualBox:~$ 
+</pre>
+
+<h1>Montering af drev over SSH</h1>
+
+<h2>Installer SSHFS</h2>
+
+<p>Installer med kommandoen:</p>
+
+<code class="cmd">apt-get install sshfs -y</code>
+
+<p>Tilføj din bruger til fuse gruppen</p>
+
+<code class="cmd">adduser thoj fuse</code>
+
+<p>Vi vil oprette en mappe på vores SSH-vært med navnet <span class="inl_cmd">fjern_ssh</span>. Denne mappe biver så monteret lokalt i vores homedirectory i en mappe ved samme navn</p>
+
+<h2>Oprette mapper</h2>
+
+<p>Opret lokal mappe</p>
+
+<code class="cmd">mkdir ~/fjern_ssh</code>
+
+<p>Opret fjernmappe og kontroller at den er oprettet</p>
+
+<code class="cmd">ssh -p 222 thoj@10.0.2.10 "mkdir ~/fjern_ssh"</code>
+
+<code class="more_cmd">ssh -p 222 thoj@10.0.2.10 "ls -al ~ | grep fjern_ssh"</code>
+
+<pre class="ubuntu_terminal">
+thoj@thoj-VirtualBox:~$ ssh -p 222 thoj@10.0.2.10 "ls -al ~ | grep fjern_ssh"
+
+***************************************************
+***                                             ***
+***  Welcome to mainsrv 10.0.2.10/24 - Behave!  ***
+***                                             ***
+***************************************************
+
+drwxrwxr-x 2 thoj thoj 4096 okt  5 09:12 fjern_ssh
+</pre>
+
+<h2>Monter drevet ved hjælp af SSHFS</h2>
+
+<p>Brug nedestående kommando</p>
+
+<code class="cmd">sshfs -p 222 thoj@10.0.2.10:/home/thoj/fjern_ssh ~/fjern_ssh</code>
+
+<p>Læg mærke til at man ikke kan anvende <span class="inl_cmd">~</span> til at betegne hjemmemappen på fjernsystemet. Det skal gøres med den fulde sti (<span class="inl_cmd">/home/thoj/fjern_ssh</span>)</p>
+
+<p>Tjek at drevet er monteret:</p>
+
+<code class="cmd">df | grep fjern_ssh</code>
+
+<pre class="ubuntu_terminal">
+thoj@thoj-VirtualBox:~$ df | grep fjern_ssh
+thoj@10.0.2.10:/home/thoj/<span class="red">fjern_ssh</span>  19092180    45136 18054176    1% /home/thoj/<span class="red">fjern_ssh</span>
+thoj@thoj-VirtualBox:~$ 
+</pre>
+
+<p>Drevet afmonteres med: </p>
+
+<code class="cmd">umount ~/fjern_ssh</code>
+
+<p></p>
+
+
+<h1>Læs mere</h1>
+
+<p>SSH/OpenSSH/Configuring
+<a href="https://help.ubuntu.com/community/SSH/OpenSSH/Configuring" target="_blank">
+https://help.ubuntu.com/community/SSH/OpenSSH/Configuring</a></p>
+
+<p>SSH/OpenSSH/keys
+<a href="https://help.ubuntu.com/community/SSH/OpenSSH/Keys" target="_blank">
+https://help.ubuntu.com/community/SSH/OpenSSH/Keys</a></p>
+
+<p>Proper way to sudo over SSH
+<a href="http://stackoverflow.com/questions/10310299/proper-way-to-sudo-over-ssh" target="_blank">
+http://stackoverflow.com/questions/10310299/proper-way-to-sudo-over-ssh</a></p>
+
+<p>SSHFS
+<a href="https://help.ubuntu.com/community/SSHFS" target="_blank">
+https://help.ubuntu.com/community/SSHFS</a></p>
+
+
+
+
+<p></p>
+
+<p></p>
+
+<p></p>
+
+	</body>
+
+</html>
