@@ -60,8 +60,6 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <p>Konkret vil vi anvende OpenSSH, da dette er standard på Ubuntu.</p>
 
-<h2>Noget om SSH og sikkerhed</h2>
-
 <p>SSH er når alt kommer til alt fjernadgang til en computer ved hjælp af et netværk. Som standard gælder følgende:</p>
 
 <ul class="disc">
@@ -70,27 +68,50 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 	<li>Stærke godkendelsesprocedurer (Strong authentication) der bl.a. forhindrer IP- og DNS-spoofing</li>
 </ul>
 
-<p>Derudover kan OpenSSH konfigureres med langt stærkere sikkerhedsfeatures.</p>
+<p>Derudover kan OpenSSH konfigureres med langt stærkere sikkerhedsfeatures, bl.a. hvor godkendelsen er baseret på de fysiske maskiner.</p>
 
-<p>Den sikreste metode er at anvende en krypteret nøglefil og fjerne muligheden for at logge på med password. Med den tilgang er tilliden mellem serveren og klienten baseret på tilliden mellem serveradministratoren og brugeren. Det fjerner dog også muligheden for at andre kan tilgå serveren kun baseret på brugernavn og adgangskode.</p>
+<h2>Denne guide</h2>
 
-<h2>Beskrivelse af netværket</h2>
+<p>Guiden tager udgangspunkt i en selvstændig server der er sat op på dit netværk. Netværket har følgende parametre:</p>
 
-<p>Dette materiale tager udgangspunkt i et netværk bygget op efter nedestående illustration. SSH-serveren er på main server og bliver tilgået fra en klient på netværket</p>
-
-<pre class="black">
-	    HF-ISP                         Gateway                       HF-NET
-	
-                                                                  |---- Main server
-                               |-->   (172.16.32.69/24)           |     (10.0.2.10/24)
-     Virtuelt NAT netværk  &lt;---|           Gateway           |---&gt;|                    
-      (172.16.32.0/24)                  (10.0.2.1/24)    &lt;---|    | 
-                                                                  |-----Klient 
-                                                                        (DHCP)
-</pre>
-
-
-
+<table class="">
+	<thead>
+		<tr>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Netværk</td>
+			<td>10.0.2.0</td>
+		</tr>
+		<tr>
+			<td>Netmaske</td>
+			<td>255.255.255.0 (CIDR /24)</td>
+		</tr>
+		<tr>
+			<td>Gateway</td>
+			<td>10.0.2.1</td>
+		</tr>
+		<tr>
+			<td>DNS</td>
+			<td>8.8.8.8 8.8.4.4 (Googles DNS)</td>
+		</tr>
+		<tr>
+			<td>DHCP-scope</td>
+			<td>10.0.2.100 - 10.0.2.200</td>
+		</tr>
+		<tr>
+			<td>Server IP</td>
+			<td>10.0.2.10</td>
+		</tr>
+		<tr>
+			<td>FQDN</td>
+			<td>mainsrv.home.local</td>
+		</tr>
+	</tbody>
+</table>
 
 <h1>Installation og konfiguration af OpenSSH</h1>
 
@@ -98,12 +119,23 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <code class="cmd">apt-get install openssh-server -y</code>
 
-<p>SSH skal ikke installeres på klienten da SSH er indbygget som standard. Herunder vil de forskellige måde at tilgå en SSH server blive gennemgået. Der vil blive vist hvad der skal gøres på både vært og klient.</p>
+<p>SSH skal ikke installeres på Linux-klienter da SSH er indbygget som standard. Herunder vil de forskellige måde at tilgå en SSH server blive gennemgået. Der vil blive vist hvad der skal gøres på både vært og klient.</p>
 
+<ol class="">
+	<li>Ændring af portnummer</li>
+	<li>Fjern muligheden for root-login</li>
+	<li>Specifier tilladte brugere</li>
+	<li>Velkomst hilsen</li>
+	<li>Hold liv i forbindelsen</li>
+</ol>
 
-<p>OpenSSH konfigureres igennem filen <span class="inl_cmd">/etc/ssh/sshd_config</span></p>
+<p>Alle ændringer herunder skal laves i filen <span class="inl_cmd">/etc/ssh/sshd_config</span>. Åbne filen med nano:</p>
 
-<h2>Ændring af portnummer</h2>
+<code class="cmd">sudo nano /etc/ssh/sshd_config</code>
+
+<span class="afsnit">Ændring af portnummer</span>
+
+<p>Som standard er OpenSSH sat til port 22. I mange guides ændres det til 222, hvilket reelt må anses for en lige så dårlig ide. Der er i alt 16 bit numre (2¹⁶ = 65536) så du kan teoretisk vælge et tal mellem 1 og 65536. Visse numre er dog afsat til konkrete protokoller (se liste <a href="https://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers" target="_blank">her</a>).</p>
 
 <p>Ændr <span class="inl_cmd"># What ports, IPs and protocols we listen for</span> </p>
 
@@ -116,7 +148,9 @@ Port 22 <span class="red">&#8592; Ændr dette tal</span>
 
 <code class="cmd">service ssh restart</code>
 
-<h2>Fjern muligheden for root-login</h2>
+<span class="afsnit">Fjern muligheden for root-login</span>
+
+<p>Root bør ikke have adgang til at logge på over SSH, da det giver evt. hackere direkte adgang til systemet. Anvend altid en almindelig konto, som har <span class="inl_cmd">sudo</span> rettigheder.</p>
 
 <p>Ændr:</p>
 
@@ -132,21 +166,17 @@ PermitRootLogin no
 
 <p>Dette er ikke et stort problem på Ubuntu, da root ikke er aktiveret.</p>
 
-<h2>Specifier tilladte brugere</h2>
+<span class="afsnit">Specifier tilladte brugere</span>
 
-<p>Dette kan gøres på to måder - enten ved en positiv- eller negativ liste over brugere. Tilføj linierne <span class="inl_cmd">AllowUsers</span> eller <span class="inl_cmd">DenyUsers</span> i bunden af filen. Hvilen man anvender må være en overvejelse over de brugere man har. Er der få der skal have adgang vil <span class="inl_cmd">AllowUsers</span> være simplest at administrere. Er der få der ikke skal have vil det være lettest at anvende <span class="inl_cmd">DenyUsers</span>.</p>
+<p>En anden effektiv måde at begrænse brugerne på systemer er, at indføre en positiv- eller negativliste over brugere. Tilføj linierne <span class="inl_cmd">AllowUsers</span> eller <span class="inl_cmd">DenyUsers</span> i bunden af filen. Hvilen man anvender må være en overvejelse over de brugere man har. Er der få der skal have adgang vil <span class="inl_cmd">AllowUsers</span> være simplest at administrere. Er der få der ikke skal have vil det være lettest at anvende <span class="inl_cmd">DenyUsers</span>.</p>
 
-<span class="afsnit">Positivliste - <span class="inl_cmd">AllowUsers</span></span>
-
-<p>Tilføj de brugere der må anvende SSH eks:</p>
+<p>Tilføj de brugere der må anvende SSH til <span class="inl_cmd">Allowusers</span> f.eks:</p>
 
 <pre class="black">
 Allowusers thoj anne
 </pre>
 
-<span class="afsnit">Negativliste - <span class="inl_cmd">DenyUsers</span></span>
-
-<p>Tilføj de brugere der ikke må anvende SSH eks:</p>
+<p>Tilføj de brugere der ikke må anvende SSH til <span class="inl_cmd">DenyUsers</span> f.eks:</p>
 
 <pre class="black">
 Denyusers wipe asti
@@ -154,14 +184,11 @@ Denyusers wipe asti
 
 <p>Prøv at sætte dig selv på både positiv og negativlisten og test det.</p>
 
-<h2>Velkomst hilsen</h2>
+<span class="afsnit">Velkomst hilsen</span>
 
-<p>Hvis du vil have at brugeren får nogle informationer ved login, kan det gøres gennem filen <span class="inl_cmd">/etc/issue.net</span>. Fjern hast foran <span class="inl_cmd">#Banner /etc/issue.net</span>.</p>
+<p>Hvis du vil have at brugeren får nogle informationer ved login, kan det gøres gennem filen <span class="inl_cmd">/etc/issue.net</span>. Fjern hast foran <span class="inl_cmd">#Banner /etc/issue.net</span>. Nogle guides foreslår at man laver en advarsel om at misbrug vil blive meldt til myndighederne, men den er lidt fesen. For hvis de er der af misbrugsgrunde, så er de nok ret ligeglade. Jeg anvender blot: Behave!. Vær opmærksom på at tegntabellen er begrænset. Så ingen æ, ø, å</p>
 
-<pre class="black">
-Banner /etc/issue.net
-</pre>
-<p>Rediger <span class="inl_cmd">/etc/issue.net</span>, og vær opmærksom på at tegntabellen er begrænset. Så ingen æ, ø, å. Skriv f.eks:</p>
+<p>Rediger <span class="inl_cmd">/etc/issue.net</span>. Skriv f.eks:</p>
 
 <pre class="black">
 
@@ -187,7 +214,21 @@ thoj@thoj-VirtualBox:~$ ssh thoj@10.0.2.10 -p 222
 thoj@10.0.2.10's password:
 </pre>
 
-<h2>Hold liv i forbindelsen</h2>
+<p>Hvis du ønsker at lave noget acscii art kan du anvender <span class="inl_cmd">banner</span>, <span class="inl_cmd">figlet</span> eller <span class="inl_cmd">toilet</span> til at krere dine værker. Alle tre programmer skal installeres særskilt. Læs mere her: <a href="http://askubuntu.com/questions/282715/how-can-i-make-ascii-banners-from-the-command-line" target="_blank">http://askubuntu.com/questions/282715/how-can-i-make-ascii-banners-from-the-command-line</a>.</p>
+
+<pre class="ubuntu_terminal">
+thoj@thoj-Precision-M4800:~$ banner Behave!
+######                                            ###
+#     #  ######  #    #    ##    #    #  ######   ###
+#     #  #       #    #   #  #   #    #  #        ###
+######   #####   ######  #    #  #    #  #####     #
+#     #  #       #    #  ######  #    #  #
+#     #  #       #    #  #    #   #  #   #        ###
+######   ######  #    #  #    #    ##    ######   ###
+
+</pre>
+
+<span class="afsnit">Hold liv i forbindelsen</span>
 
 <p>SSH serveren forventer at der er aktivitet på forbindelsen, og hvis den udebliver afsluttes forbindelsen. Da det er noget klienten skal udføre skal der ændres/tilføjes i <span class="inl_cmd">/etc/ssh/ssh_config</span>. Tilføj følgende i afslutningen af filen</p>
 
@@ -197,7 +238,7 @@ thoj@10.0.2.10's password:
 
 <h1>SSH adgang ved hjælp af password</h1>
 
-<p>Det er denne  måde SSH er konfigureret som standard, hvilket er praktisk i konfigurationsfasen. Man får adgang til en SSH server ved at anvende kommendoen:</p>
+<p>Det er denne  måde SSH er konfigureret som standard, hvilket er praktisk i konfigurationsfasen. Man får adgang til en SSH server ved at anvende kommandoen:</p>
 
 <code class="cmd">ssh *brugernavn*@*IP/FQDN* -p *portnummer*</code>
 
