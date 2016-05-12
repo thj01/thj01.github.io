@@ -706,8 +706,7 @@ Læser tilstandsoplysninger... Færdig
 
 <p>VirtualBox - Virtualiseringsprogram</p>
 
-<code class="cmd">sudo wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | sudo apt-key add -
-</code>
+<code class="cmd">wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -</code>
 <code class="more_cmd">sudo sh -c 'echo "deb http://download.virtualbox.org/virtualbox/debian $(lsb_release -cs) contrib" >> /etc/apt/sources.list.d/virtualbox.list' </code>
 <code class="more_cmd">sudo apt-get update</code>
 <code class="more_cmd">sudo apt-get install -y dkms virtualbox-5.0</code>
