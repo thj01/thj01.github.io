@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+
+<head>
+	
+	<meta charset="UTF-8" lang="da"/>
+
+	<title>Ubuntu server Installation - Thomas Jensen</title>
+
+	<link rel="stylesheet" href="../css/styles/docco.css" />
+
+	<link rel="stylesheet" href="../css/style.css" />
+
+	<link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono|Ubuntu|Ubuntu+Condensed' rel='stylesheet' type='text/css'>
+	
+	<script src="../js/toc2.js" type="text/javascript"></script>
+	<script src="https://code.jquery.com/jquery-2.2.2.js"></script>
+	<script src="js/highlight.pack.js" type="text/javascript"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+	
+
+</head>
+
+<!-- 
+
+code highlighter : https://highlightjs.org/
+
+code converter : http://www.freebits.co.uk/convert-html-code-to-text.html 
+
+-->
+
+<html>
+
+<body onload="generateTOC(document.getElementById('toc'));">
+
+<footer id="license"></footer>
+
+	<script> $( "#license" ).load( "license.html" ); </script>
+
+	<div id="toc">
+	<p>Indholdsfortegnelse</p>
+	
+	</div>
+	
+
+<div class="title">Ubuntu server - Simpel opsætning</div>
+	
+<h1>Denne guide</h1>
+
+<p>I denne guide lærer du at sætte en basal "headless" Ubuntu-server op med en enkelt harddisk. Headless i denne sammenhæng betyder, at du kan fjerne tastetur og mus efter installationen og tilgå serveren over netværk ved hjælp af SSH</p>
+
+<p>Serveren er sat i et netværk med følgende parametre:</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Netværk</td>
+			<td>10.0.2.0</td>
+		</tr>
+		<tr>
+			<td>Netmaske</td>
+			<td>255.255.255.0 (CIDR /24)</td>
+		</tr>
+		<tr>
+			<td>Gateway</td>
+			<td>10.0.2.1</td>
+		</tr>
+		<tr>
+			<td>DNS</td>
+			<td>8.8.8.8 8.8.4.4 (Googles DNS)</td>
+		</tr>
+		<tr>
+			<td>DHCP-scope</td>
+			<td>10.0.2.100 - 10.0.2.200</td>
+		</tr>
+		<tr>
+			<td>Domain name</td>
+			<td>home.local</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>For serveren gælder der følgende:</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Server IP</td>
+			<td>10.0.2.10</td>
+		</tr>
+		<tr>
+			<td>Netmaske</td>
+			<td>255.255.255.0 (CIDR /24)</td>
+		</tr>
+		<tr>
+			<td>Gateway</td>
+			<td>10.0.2.1</td>
+		</tr>
+		<tr>
+			<td>DNS</td>
+			<td>8.8.8.8 8.8.4.4 (Googles DNS)</td>
+		</tr>
+		<tr>
+			<td>Server IP</td>
+			<td>10.0.2.10</td>
+		</tr>
+		<tr>
+			<td>FQDN</td>
+			<td>mainsrv.home.local</td>
+		</tr>
+	</tbody>
+</table>
+
+<h2>Installation af server</h2>
+
+<p></p>
+
+	
+<h1>Sprog</h1>
+
+<p>Før selve installationen starter skal du vælge sprog. Herunder kommer der skærmdumps fra installationen</p>
+
+<p>Vælg <span class="inl_cmd">dansk</span></p>
+
+<figure id="">
+
+	<img src="images/server_install_16.04_01.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Vælg den første mulighed: Installér Ubuntu Server</p>
+
+<figure id="">
+
+	<img src="images/server_install_16.04_02.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Forsæt installationen på Dansk.</p>
+
+<figure id="">
+
+	<img src="images/server_install_16.04_03.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+
+
+<figure id="">
+
+	<img src="images/server_install_16.04_04.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<figure id="">
+
+	<img src="images/server_install_16.04_05.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<figure id="">
+
+	<img src="images/server_install_16.04_06.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h1>Netværk</h1>
+
+<p></p>
+
+<figure id="">
+
+	<img src="images/server_install_16.04_07.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<figure id="">
+
+	<img src="images/server_install_16.04_08.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<figure id="">
+
+	<img src="images/server_install_16.04_09.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<figure id="">
+
+	<img src="images/server_install_16.04_10.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<figure id="">
+
+	<img src="images/server_install_16.04_11.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<figure id="">
+
+	<img src="images/server_install_16.04_12.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<figure id="">
+
+	<img src="images/server_install_16.04_13.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h1>Brugeropsætning</h1>
+
+<p></p>
+
+<figure id="">
+
+	<img src="images/server_install_16.04_14.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<figure id="">
+
+	<img src="images/server_install_16.04_15.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<figure id="">
+
+	<img src="images/server_install_16.04_16.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<figure id="">
+
+	<img src="images/server_install_16.04_17.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+
+
+<figure id="">
+
+	<img src="images/server_install_16.04_18.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<figure id="">
+
+	<img src="images/server_install_16.04_19.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+
+
+<figure id="">
+
+	<img src="images/server_install_16.04_20.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h1>Opsætning af harddisk</h1>
+
+<p>Her får du mulighed for at vælge mellem 2 forskellige setup:</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Setup</th>
+			<th>Beskrivelse</th>
+			<th>Harddiske</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Simpel</td>
+			<td>Simpel server med en enkelt harddisk.</td>
+			<td><span class="inl_cmd">/dev/sda</span></td>
+		</tr>
+		<tr>
+			<td>Avanceret</td>
+			<td>Filserver med 3 harddiske hvoraf de 2 er sat op ved hjælp af LVM.</td>
+			<td><span class="inl_cmd">/dev/sda</span> <br/><span class="inl_cmd">/dev/sdb</span> <br/><span class="inl_cmd">/dev/sdc</span></td>
+		</tr>
+	</tbody>
+</table>
+
+<h2>Simpel opsætning</h2>
+
+<p>Med denne metode sørger Ubuntu selv for at sætte harddisken op. Det gør den ved at lave 2 partitioner: root (systemdrev) og swap. Swap bliver sat nogenlunde til den samme RAM-mængde som computeren har.</p>
+
+
+<figure id="">
+
+	<img src="images/server_install_16.04_21.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+
+
+<figure id="">
+
+	<img src="images/server_install_16.04_22.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+
+<figure id="">
+
+	<img src="images/server_install_16.04_23.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h2>Avanceret opsætning</h2>
+
+<p></p>
+
+<h1>Sidste konfigurationer</h1>
+
+<p></p>
+
+<figure id="">
+
+	<img src="images/server_install_16.04_24.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+
+
+
+
+<figure id="">
+
+	<img src="images/server_install_16.04_25.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<figure id="">
+
+	<img src="images/server_install_16.04_26.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<figure id="">
+
+	<img src="images/server_install_16.04_27.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<figure id="">
+
+	<img src="images/server_install_16.04_28.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<figure id="">
+
+	<img src="images/server_install_16.04_29.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h1>Opdatering af serveren</h1>
+
+<p></p>
+
+
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+
+	</body>
+
+</html>
