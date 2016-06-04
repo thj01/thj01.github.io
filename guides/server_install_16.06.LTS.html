@@ -46,6 +46,53 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <p>I denne guide lærer du at sætte en basal "headless" Ubuntu-server op med en enkelt harddisk. Headless i denne sammenhæng betyder, at du kan fjerne tastetur og mus efter installationen og tilgå serveren over netværk ved hjælp af SSH</p>
 
+<p>Jeg har valgt ikke at kommentere hvert eneste skærmbillede, da langt de fleste af dem giver sig selv. Der er kommentarer hvor det er nødvendigt, eller hvor du som bruger skal foretage dig et aktivt valg.</p>
+
+<h2>Hardware</h2>
+
+<p>I denne guide har jeg oprettet en virtuel maskine i VirtualBox, med nedestående parametre:</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>RAM</td>
+			<td>768 MB</td>
+		</tr>
+		<tr>
+			<td>Grafikhukommelse</td>
+			<td>12 MB</td>
+		</tr>
+		<tr>
+			<td>Harddiske (simpel)</td>
+			<td>1 stk 100GB</td>
+		</tr>
+		<tr>
+			<td>Harddisk (avanceret)</td>
+			<td>2 stk 100GB</td>
+		</tr>
+		<tr>
+			<td>Lydkort</td>
+			<td>Nej</td>
+		</tr>
+		<tr>
+			<td>Netværk</td>
+			<td>Netværksbro (slutter sig til computerens netværk</td>
+		</tr>	
+	</tbody>
+</table>
+
+<span class="afsnit">Angående netværket</span>
+
+<p>Du kan med fordel anvende <span class="inl_cmd">NAT-netværk</span> hvis du ønsker at eksperimentere med DHCP og firewalling. I denne guide vil det dog være alt for avanceret at komme ind på, da det kræver netværksforståelse.</p>
+
+<h2>Netværket</h2>
+
 <p>Serveren er sat i et netværk med følgende parametre:</p>
 
 <table class="">
@@ -110,22 +157,95 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 			<td>8.8.8.8 8.8.4.4 (Googles DNS)</td>
 		</tr>
 		<tr>
-			<td>Server IP</td>
-			<td>10.0.2.10</td>
-		</tr>
-		<tr>
 			<td>FQDN</td>
 			<td>mainsrv.home.local</td>
 		</tr>
 	</tbody>
 </table>
 
-<h2>Installation af server</h2>
+<h2>Harddisk opsætning</h2>
 
-<p></p>
+<p>Der vil i denne guide være to muligheder for opsætning af harddiske. De er beskrevet her:</p>
+
+<span class="afsnit">Simpel setup</span>
+
+<p>I dette setup vil der være en harddisk (100GB), og vi vil lade installationen partitionere harddisken for os.</p>
+
+<p>Ubuntu vil lave en logisk swap-partition på størrelse med RAM og resten vil blive anvendt til en primær systempartition (<span class="inl_cmd">/</span>). I dette tilfælde</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><span class="inl_cmd">/</span></td>
+			<td>99,3 GB</td>
+		</tr>
+		<tr>
+			<td><span class="inl_cmd">swap</span></td>
+			<td>765 MB</td>
+		</tr>
+	</tbody>
+</table>
+
+<span class="afsnit">Avanceret setup</span>
+
+<p>I dette setup vil der blive anvendt 2 harddiske (2&sdot;100GB). Harddiskene vil blive sat op ved hjælp af LVM. Se nedenstående skema:</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Harddiske <br/>Physical Volumes - PV</th>
+			<th>LVM - gruppe <br/>Volume Groups - VG</th>
+			<th>Logiske grupper <br/>Logical Volumes - LV</th>
+			<th>Størrelse</th>
+			<th>Monteringspunkt</th>
+			<th>Beskrivelse</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td rowspan="5"><span class="inl_cmd">/dev/sda</span> <br/><br/><span class="inl_cmd">/dev/sdb</span></td>
+			<td rowspan="5">arkiv01</td>
+			<td>system</td>
+			<td>10 GB</td>
+			<td><span class="inl_cmd">/</span></td>
+			<td>System</td>
+		</tr>
+		<tr>
+			<td>server</td>
+			<td>120 GB</td>
+			<td><span class="inl_cmd">/srv</span></td>
+			<td>Ressourcer til netværket</td>
+		</tr>
+		<tr>
+			<td>data</td>
+			<td>30 GB</td>
+			<td><span class="inl_cmd">/data</span></td>
+			<td>backup og dokumentation</td>
+		</tr>
+		<tr>
+			<td>web</td>
+			<td>8 GB</td>
+			<td><span class="inl_cmd">/var/www</span></td>
+			<td>Placering af hjemmeside</td>
+		</tr>
+		<tr>
+			<td>swap</td>
+			<td>1 GB</td>
+			<td><span class="inl_cmd">swap</span></td>
+			<td>swap drev</td>
+		</tr>
+
+	</tbody>
+</table>
 
 	
-<h1>Sprog</h1>
+<h1>Begynd installationen</h1>
 
 <p>Før selve installationen starter skal du vælge sprog. Herunder kommer der skærmdumps fra installationen</p>
 
@@ -149,7 +269,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 </figure>
 
-<p>Forsæt installationen på Dansk.</p>
+<p>Forsæt installationen på Dansk. Vælg: <span class="terminal_valg">Ja</span> og derefter "Danmark".</p>
 
 <figure id="">
 
@@ -169,9 +289,21 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 </figure>
 
+<span class="afsnit">Tastetur</span>
+
+<p>Efter du har valgt sprog skal du vælge dit tastetur. Vælg <span class="terminal_valg">Nej</span>, da det giver dig mulighed for selv at vælge dit danske tastetur.</p>
+
 <figure id="">
 
 	<img src="images/server_install_16.04_05.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<figure id="">
+
+	<img src="images/server_install_16.04_06a.png" alt="" title="" />
 
 	<figcaption></figcaption>
 
@@ -187,7 +319,9 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <h1>Netværk</h1>
 
-<p></p>
+<p>Netværksopsætningen kan være lidt tricky. Det skyldes at serveren automatisk vil forsøge at finde en DHCP-server så den automatisk får en IP-adresse. Denne funktion vil normalt ligge i den router du har stående. Vi vil have at den får en fast IP, nemlig <span class="inl_cmd">10.0.2.10</span>.</p>
+
+<p>Den nedestående fejlmeddelelse kommer hvis du ikke har nogen DHCP-server på netværket. Vælg: <span class="terminal_valg">Fortsæt</span>.</p>
 
 <figure id="">
 
@@ -197,6 +331,20 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 </figure>
 
+<p> Hvis du har en DHCP-server på netværket vil Ubuntu selv sætte netværket op, og du ender med vinduet <span class="inl_cmd">"Angiv dette systems værtsnavn"</span>. Her skal du vælge <span class="terminal_valg">Gå tilbage</span>.</p>
+
+<figure id="">
+
+	<img src="images/server_install_16.04_07a.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h2>Manuel opsætning af netværk</h2>
+
+<p>I vinduet "Sæt netværket op" skal du vælge "Sæt netværket op manuelt".</p>
+
 <figure id="">
 
 	<img src="images/server_install_16.04_08.png" alt="" title="" />
@@ -204,6 +352,41 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 	<figcaption></figcaption>
 
 </figure>
+
+<p>Herefter skal du indtaste netværkets oplysninger. I denne opgave er de:</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Server IP</td>
+			<td>10.0.2.10/24</td>
+		</tr>
+		<tr>
+			<td>Gateway</td>
+			<td>10.0.2.1</td>
+		</tr>
+		<tr>
+			<td>DNS</td>
+			<td>8.8.8.8 8.8.4.4 (Googles DNS)</td>
+		</tr>
+		<tr>
+			<td>Værtsnavn</td>
+			<td>mainsrv</td>
+		</tr>
+		<tr>
+			<td>Domænenavn</td>
+			<td>home.local</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Når du har indtastet netværksinformationerne taster du blot <kbd>Enter</kbd>, så bliver <span class="terminal_valg">Fortsæt</span> automatisk valgt.</p>
 
 <figure id="">
 
@@ -247,7 +430,9 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <h1>Brugeropsætning</h1>
 
-<p></p>
+<p>Den første bruger man opretter på et Ubuntu-system er automatisk <span class="inl_cmd">sudo</span> bruger. Derfor er det vigtigt at du husker brugernavn og password. Er det kun til test du opretter serveren vil jeg anbefale at du anvender dine initialer og <span class="inl_cmd">123qwe</span> som adgangskode. Læg mærke til at Ubuntu advarer dig om at det er svagt password, hvis det ikke indeholder nok tegn eller en god blandning af bogstaver, tal, tegn og symboler.</p>
+
+<p>Angiv først brugerens fulde navn og herefter brugernavn på computeren:</p>
 
 <figure id="">
 
@@ -264,6 +449,8 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 	<figcaption></figcaption>
 
 </figure>
+
+<p>Angiv adgangskode:</p>
 
 <figure id="">
 
@@ -291,6 +478,8 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 </figure>
 
+<p>Du kan vælge at kryptere dit hjemmekatalog. Jeg vælger som regel <span class="terminal_valg">Nej</span></p>
+
 <figure id="">
 
 	<img src="images/server_install_16.04_19.png" alt="" title="" />
@@ -299,7 +488,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 </figure>
 
-
+<p>Vælg herefter tidszone:</p>
 
 <figure id="">
 
@@ -309,35 +498,9 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 </figure>
 
-<h1>Opsætning af harddisk</h1>
+<h1>Simpel opsætning af harddisk</h1>
 
-<p>Her får du mulighed for at vælge mellem 2 forskellige setup:</p>
-
-<table class="">
-	<thead>
-		<tr>
-			<th>Setup</th>
-			<th>Beskrivelse</th>
-			<th>Harddiske</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>Simpel</td>
-			<td>Simpel server med en enkelt harddisk.</td>
-			<td><span class="inl_cmd">/dev/sda</span></td>
-		</tr>
-		<tr>
-			<td>Avanceret</td>
-			<td>Filserver med 3 harddiske hvoraf de 2 er sat op ved hjælp af LVM.</td>
-			<td><span class="inl_cmd">/dev/sda</span> <br/><span class="inl_cmd">/dev/sdb</span> <br/><span class="inl_cmd">/dev/sdc</span></td>
-		</tr>
-	</tbody>
-</table>
-
-<h2>Simpel opsætning</h2>
-
-<p>Med denne metode sørger Ubuntu selv for at sætte harddisken op. Det gør den ved at lave 2 partitioner: root (systemdrev) og swap. Swap bliver sat nogenlunde til den samme RAM-mængde som computeren har.</p>
+<p>Med denne metode sørger Ubuntu selv for at sætte harddisken op. Det gør den ved at lave 2 partitioner: root (systemdrev) og swap. Swap bliver sat nogenlunde til den samme RAM-mængde som computeren har. Vælg "Guidet - benyt en hel disk" og derefter den disk du vil partitionere.</p>
 
 
 <figure id="">
@@ -358,6 +521,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 </figure>
 
+<p>Til sidst får du et overblik over de ændringer du har lavet på harddisken og du skal bekræftige at du vil skrive på disken. Svar <span class="terminal_valg">Ja</span>.</p>
 
 <figure id="">
 
@@ -367,13 +531,173 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 </figure>
 
-<h2>Avanceret opsætning</h2>
+<h1>Avanceret opsætning af harddiske</h1>
 
-<p></p>
+<p>I dette afsnit vil vi sætte 2 harddiske op ved hjælp af LVM (<span class="bold">L</span>ogical <span class="bold">V</span>olume <span class="bold">M</span>anagement).</p>
 
-<h1>Sidste konfigurationer</h1>
+<p>Ideen med LVM er, at man laver nogle virtuelle harddiske, der spænder over en eller flere fysiske harddiske. Fordelen er, at man ikke er bundet af størrelsen af de fysiske harddiske og at man kan tilføje, udskifte, fjerne fysiske harddiske uden nedetid, hvis man har den rigtige hardware. Herunder er en illustration der viser de tre begreber der anvendes i LVM.</p>
 
-<p></p>
+<figure id="">
+
+	<img src="images/server_install_16.04_hd_LVM.svg" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Her vil vi lave følgende opsætning ved hjælp af LVM.</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Harddiske <br/>Physical Volumes - PV</th>
+			<th>LVM - gruppe <br/>Volume Groups - VG</th>
+			<th>Logiske grupper <br/>Logical Volumes - LV</th>
+			<th>Størrelse</th>
+			<th>Monteringspunkt</th>
+			<th>Beskrivelse</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td rowspan="5"><span class="inl_cmd">/dev/sda</span> <br/><br/><span class="inl_cmd">/dev/sdb</span></td>
+			<td rowspan="5">arkiv01</td>
+			<td>system</td>
+			<td>10 GB</td>
+			<td><span class="inl_cmd">/</span></td>
+			<td>System</td>
+		</tr>
+		<tr>
+			<td>server</td>
+			<td>120 GB</td>
+			<td><span class="inl_cmd">/srv</span></td>
+			<td>Ressourcer til netværket</td>
+		</tr>
+		<tr>
+			<td>data</td>
+			<td>30 GB</td>
+			<td><span class="inl_cmd">/data</span></td>
+			<td>backup og dokumentation</td>
+		</tr>
+		<tr>
+			<td>web</td>
+			<td>8 GB</td>
+			<td><span class="inl_cmd">/var/www</span></td>
+			<td>Placering af hjemmeside</td>
+		</tr>
+		<tr>
+			<td>swap</td>
+			<td>1 GB</td>
+			<td><span class="inl_cmd">swap</span></td>
+			<td>swap drev</td>
+		</tr>
+
+	</tbody>
+</table>
+
+
+<p>Det vi skal gøre er:</p>
+
+<ol class="">
+	<li>Klargøre harddiskene</li>
+	<li>Lave en VG (Volume group) af vores to harddiske - <span class="bold">arkiv01</span></li>
+	<li>Oprette de 6 LG'er (Logical Volumes)</li>
+	<li>Montere de 6 LG'er</li>
+</ol>
+
+<p>Vælg <span class="inl_cmd">Manuelt</span> som partitioneringsmetode</p>
+
+<figure id="">
+
+	<img src="images/server_install_hd_01.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h2>Klargøring af harddiske</h2>
+
+<p>Hvis du installerer i VirtualBox som jeg gør, eller har helt nye harddiske i, skal der først oprettes partitionstabeller på harddiskene. Ubunt vil selv gøre opmærksom på det, hvis den ikke er oprettet. Vælg den første disk og tryk <kbd>Enter</kbd>.</p>
+
+<figure id="">
+
+	<img src="images/server_install_hd_02.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Vælg: <span class="terminal_valg">ja</span>, for at oprette partitionstabellen.</p>
+
+<figure id="">
+
+	<img src="images/server_install_hd_03.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Her kan du se, at der under den første harddisk nu står <span class="inl_cmd">pri/log   107.4 GB  ....</span>.</p>
+
+<figure id="">
+
+	<img src="images/server_install_hd_04.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Gør det samme ved den anden harddisk.</p>
+
+<h2>Opsæt LVM</h2>
+
+<p>Vælg <span class="inl_cmd">Opsætning af den logiske diskenhedshåndtering (LVM)</span> </p>
+
+<figure id="">
+
+	<img src="images/server_install_hd_06.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Før Vi kan sætte LVM op, skal de ændringer vi lavede før skrives til disken. Dette vil slette alt indhold der har været på diskene. Vælg <span class="terminal_valg">Ja</span>:</p>
+
+<figure id="">
+
+	<img src="images/server_install_hd_07.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h2>Opret en VG - Volume Group</h2>
+
+<p>Her skal vi oprette vores VG, som kaldes en diskenhedsgruppe på dansk. Jeg har valgt at bibeholde de engelske betegnelser i denne guide, da det er betegnelserne man skal anvende når man kigger i dokumentation og anvender kommandoer senere. Vælg: <span class="inl_cmd">Opret diskenhedsgruppe</span></p>
+
+<figure id="">
+
+	<img src="images/server_install_hd_08.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Giv den navnet:<span class="inl_cmd">arkiv01</span> og vælg <span class="terminal_valg">Fortsæt</span>.</p>
+
+<figure id="">
+
+	<img src="images/server_install_hd_09.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Tilføj dine harddiske ved ved hjælp af at markere begge harddiske og tryk på <kbd>Mellemrum</kbd>. Efter begge er valgt tryk <span class="terminal_valg">Fortsæt</span>.</p>
+
+<h1>HTTP-Proxy og opdateringer</h1>
+
+<p>Hvis du har en HTTP-proxy der skal sættes op ... så har du ikke brug for denne guide. Vælg <span class="inl_cmd">fortsæt</span> uden at skrive noget på linien:</p>
 
 <figure id="">
 
@@ -383,9 +707,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 </figure>
 
-
-
-
+<p>Konfigurer hvordan systemet skal opdateres. Hvis du blot ønsker en meget simpel server, du ikke skal have noget arbejde med, kan du roligt vælge: <span class="inl_cmd">"Installer sikkerhedsoplysninger automatisk"</span>. Hvis du selv ønsker at have kontrol over opdateringerne vælger du: <span class="inl_cmd">"Ingen automatiske opdateringer"</span> (<span class="red">ANBEFALET</span>).</p>
 
 <figure id="">
 
@@ -394,6 +716,13 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 	<figcaption></figcaption>
 
 </figure>
+
+<h1>Installer tjenester</h1>
+
+<p></p>
+
+<p>I denne opsætning vælger vi kun at installere det mest basale. <span class="inl_cmd">"Standard system utilities"</span> er valgt som standard, så du skal kun tilføje <span class="inl_cmd">"OpenSSH server"</span>, så du kan få adgang til serveren over netværket. Vælg <span class="terminal_valg">Fortsæt</span>, så installationen fortsætter.</p>
+
 
 <figure id="">
 
@@ -411,6 +740,14 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 </figure>
 
+<h1>Bootloaderen <span class="inl_cmd">GRUB</span></h1>
+
+<p><span class="inl_cmd">GRUB</span> (the <span class="bold">GR</span>and <span class="bold">U</span>nified <span class="bold">B</span>ootloader) sørger for at Ubuntu kan boote. Alt efter om du har valgt <span class="inl_cmd">simpel</span> eller <span class="inl_cmd">avanceret</span> harddiskopsætning, så vil du få et af nedestående vinduer</p>
+
+<h2>Simpel harddisk opsætning</h2>
+
+<p>Vælg at installere GRUB på opstartssporet - tryk <span class="terminal_valg">Ja</span>.</p>
+
 <figure id="">
 
 	<img src="images/server_install_16.04_28.png" alt="" title="" />
@@ -419,6 +756,20 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 </figure>
 
+<h2>Avanceret harddisk opsætning</h2>
+
+<p>Her kan du vælge hvor du vil have GRUB installeret. Vælg den første harddisk (<span class="inl_cmd">/dev/sda</span>) og tryk <kbd>Enter</kbd></p>
+
+<figure id="">
+
+	<img src="images/server_install_16.04_28a.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Herefter er installationen færdig. Tryk <span class="terminal_valg">Fortsæt</span>, fjern bootmediet og nyd din nyinstallerede server:</p>
+
 <figure id="">
 
 	<img src="images/server_install_16.04_29.png" alt="" title="" />
@@ -426,6 +777,29 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 	<figcaption></figcaption>
 
 </figure>
+
+<h1>Første start</h1>
+
+<p>Det første opstartsbillede er GRUB'en</p>
+
+<figure id="">
+
+	<img src="images/server_install_16.04_30.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Herefter melder Ubuntu sig klar, så du kan logge ind.</p>
+
+<figure id="">
+
+	<img src="images/server_install_16.04_31.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
 
 <h1>Opdatering af serveren</h1>
 

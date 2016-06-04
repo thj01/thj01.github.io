@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+
+<head>
+	
+	<meta charset="UTF-8" lang="da"/>
+
+	<title>Fildeling med Linux- Thomas Jensen</title>
+
+	<link rel="stylesheet" href="../css/styles/docco.css" />
+
+	<link rel="stylesheet" href="../css/style.css" />
+
+	<link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono|Ubuntu|Ubuntu+Condensed' rel='stylesheet' type='text/css'>
+	
+	<script src="../js/toc2.js" type="text/javascript"></script>
+	<script src="https://code.jquery.com/jquery-2.2.2.js"></script>
+	<script src="../js/highlight.pack.js" type="text/javascript"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+
+</head>
+
+<!-- 
+
+code highlighter : https://highlightjs.org/
+
+code converter : http://www.freebits.co.uk/convert-html-code-to-text.html 
+
+-->
+
+<html>
+
+<body onload="generateTOC(document.getElementById('toc'));">
+
+<footer id="license"></footer>
+
+	<script> $( "#license" ).load( "license.html" ); </script>
+
+	<div id="toc">
+	<p>Indholdsfortegnelse</p>
+	
+	</div>
+
+<div class="title">Fildeling med Linux</div>
+	
+
+<h1>Introduktion til deling af netværksdrev</h1>
+
+<p>I denne guide vil der være en gennemgang af nogle af de fildelings muligheder Ubuntu tilbyder. Der vil blive gennemgået:</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Fildeling</th>
+			<th>Beskrivelse</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>NFS</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>Samba</td>
+			<td></td>
+		</tr>
+	</tbody>
+</table>
+
+<p>For at give en praktisk ramme for dette dokument vil vi skabe rammerne for en mindre IT virksomhed. Virksomheden er ejet af Lars Thomson består af fire personer. Der skal laves 4 mapper: regnskab, it, salg og alle. Alle mapperne vil blive lagt i <span class="inl_cmd">/srv/firma</span></p>
+
+<p>For at skabe et overblik over mappestrukturen og deres tilladelser er der lavet følgende matrix, som vil blive anvendt igennem denne guide.</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th rowspan="2">Fulde navn</th>
+			<th rowspan="2">Initialer</th>
+			<th rowspan="2">Adgangskode</th>
+			<th rowspan="2">Ansvarsområde</th>
+			<th colspan="4">Grupper</th>
+		</tr>
+		<tr>
+			<th>regnskab</th>
+			<th>it</th>
+			<th>salg</th>
+			<th>alle</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Lars Thomson</td>
+			<td>lath</td>
+			<td>123qwe</td>
+			<td>Ejer, salg</td>
+			<td>x</td>
+			<td></td>
+			<td>x</td>
+			<td>x</td>
+		</tr>
+		<tr>
+			<td>Hanne Fermi</td>
+			<td>hafe</td>
+			<td>123qwe</td>
+			<td>regnskab</td>
+			<td>x</td>
+			<td></td>
+			<td></td>
+			<td>x</td>
+		</tr>
+		<tr>
+			<td>Victor Bohr</td>
+			<td>vibo</td>
+			<td>123qwe</td>
+			<td>IT</td>
+			<td></td>
+			<td>x</td>
+			<td></td>
+			<td>x</td>
+		</tr>
+		<tr>
+			<td>Mette Curie</td>
+			<td>mecu</td>
+			<td>123qwe</td>
+			<td>Web, salg</td>
+			<td></td>
+			<td>x</td>
+			<td>x</td>
+			<td>x</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Derudover gælder der følgende for netværket:</p>
+
+<table class="">
+	<tbody>
+		<tr>
+			<td>Netværk</td>
+			<td>10.0.2.0/24</td>
+		</tr>
+		<tr>
+			<td>server IP</td>
+			<td>10.0.2.10</td>
+		</tr>
+		<tr>
+			<td>Klient IP</td>
+			<td>DHCP</td>
+		</tr>
+		<tr>
+			<td>Windows - workgroup</td>
+			<td>THOJNETWORK</td>
+		</tr>
+	</tbody>
+</table>
+
+<h2>Oprettelse og konfiguration af brugere</h2>
+
+<p>Tilføj brugere</p>
+	
+<code class="cmd">adduser lath</code>
+<code class="more_cmd">adduser hafe</code>
+<code class="more_cmd">adduser vibo</code>
+<code class="more_cmd">adduser mecu</code>
+
+<p>Kontroller at de er oprettet korrekt. De nye brugere er blevet oprettet i bunden af filen <span class="inl_cmd">/etc/passwd</span></p>
+
+<code class="cmd">tail -4 /etc/passwd</code>
+
+<pre class="ubuntu_terminal">
+root@tjmainsrv:/home/thoj# tail -4 /etc/passwd
+lath:x:<span class="red">1004</span>:1004:Lars Thomsen,,,:/home/lath:/bin/bash
+hafe:x:<span class="red">1005</span>:1005:Hanne Fermi,,,:/home/hafe:/bin/bash
+vibo:x:<span class="red">1006</span>:1006:Victor Bohr,,,:/home/vibo:/bin/bash
+mecu:x:<span class="red">1007</span>:1007:Mette Curie,,,:/home/mecu:/bin/bash
+</pre>
+
+<p>Da dette er et simpelt setup, skal vi have lavet en enkelt ændring mere. Ud for hver bruger er der er UID (<span class="bold">U</span>ser <span class="bold">ID</span> (markeret med rødt ovenfor). Dette tal skal være det samme både på serveren og klienter.</p>
+
+<p>For at løse denne problemstilling skal vi manuelt redigere filerne, så hver bruger har et unikt ID på hele netværket. For at undgå sammenfald med nye brugere vælger vi at give dem numre fra 2001 og fremefter efter følgende skema. Grunden til at vi vælger et så "højt" nummer er både for at sikre os at der er plads til at oprettet nye brugere/tjenester, men også for at gøre det overskueligt.</p>
+
+<table class="fixed">
+	<thead>
+		<tr>
+			<th>Bruger</th>
+			<th>UID</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>lath</td>
+			<td>2001</td>
+		</tr>
+		<tr>
+			<td>hafe</td>
+			<td>2002</td>
+		</tr>
+		<tr>
+			<td>vibo</td>
+			<td>2003</td>
+		</tr>
+		<tr>
+			<td>mecu</td>
+			<td>2004</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Rediger <span class="inl_cmd">/etc/passwd</span> på både klienter og server så brugeren har samme UID på hele netværket. Før vi redigerer sørger vi for at tage en backup:</p>
+
+<code class="cmd">cp /etc/passwd /etc/passwd.backup</code>
+<code class="more_cmd">nano /etc/passwd</code>
+
+<pre class="black">
+...
+lath:x:<span class="red">2001</span>:1004:Lars Thomsen,,,:/home/lath:/bin/bash
+hafe:x:<span class="red">2002</span>:1005:Hanne Fermi,,,:/home/hafe:/bin/bash
+vibo:x:<span class="red">2003</span>:1006:Victor Bohr,,,:/home/vibo:/bin/bash
+mecu:x:<span class="red">2004</span>:1007:Mette Curie,,,:/home/mecu:/bin/bash
+</pre>
+
+<p>I vores tilfælde med få maskiner er det relativt let at styre brugerrettighederne, men til større systemer kan det selvfølgelig lade sig gøre at få dette styret centralt ved hjælp af LDAP (se <a href="https://help.ubuntu.com/community/SettingUpNFSHowTo" target="_blank">Setting Up NFS Howto</a> og <a href="https://help.ubuntu.com/lts/serverguide/openldap-server.html" target="_blank">OpenLDAP Server</a>.</p>
+
+
+<h2>Oprettelse af grupper</h2>
+
+<p>Når først brugerne har samme UID er det NFS-serveren der søger for at sætte gruppe rettighederne. Derfor behøver vi ikke at oprette grupperne på klienterne.</p>
+
+<code class="cmd">addgroup regnskab</code>
+<code class="more_cmd">addgroup it</code>
+<code class="more_cmd">addgroup salg</code>
+<code class="more_cmd">addgroup alle</code>
+
+<p>Kontroller at grupperne (markeret med rødt) er oprettet korrekt. De nye grupper er blevet oprettet i bunden af filen <span class="inl_cmd">/etc/group</span></p>
+
+<code class="cmd">tail -5 /etc/group</code>
+
+<pre class="ubuntu_terminal">
+root@tjmainsrv:/home/thoj# tail -4 /etc/group
+regnskab:x:1008:
+it:x:1009:
+salg:x:1010:
+alle:x:1011:
+</pre>
+
+<p>Tilføj brugerne til grupperne</p>
+
+<code class="more_cmd">usermod -a -G regnskab,salg,alle lath</code>
+<code class="more_cmd">usermod -a -G regnskab,alle hafe</code>
+<code class="more_cmd">usermod -a -G it,alle vibo</code>
+<code class="more_cmd">usermod -a -G it,salg,alle mecu</code>
+
+<p>Kontroller at brugerne (her markeret med rødt) er kommet i grupperne:</p>
+
+<pre class="ubuntu_terminal">
+root@tjmainsrv:/home/thoj# tail -4 /etc/group
+regnskab:x:1008:<span class="red">lath,hafe</span>
+it:x:1009:<span class="red">vibo,mecu</span>
+salg:x:1010:<span class="red">lath,mecu</span>
+alle:x:1011:<span class="red">lath,hafe,vibo,mecu</span>
+</pre>
+
+<h2>Oprettelse af mapper og deres rettigheder</h2>
+
+<p>Opret rodmappen til firmaet og naviger hen til den</p>
+
+<code class="cmd">mkdir -p /srv/firma</code>
+<code class="more_cmd">cd /srv/firma</code>
+
+<p>Opret mapperne:</p>
+
+<code class="cmd">mkdir regnskab salg it alle</code>
+
+<pre class="ubuntu_terminal">
+root@tjmainsrv:/srv/firma# ls -al
+total 24
+drwxr-xr-x 6 root root 4096 feb  8 12:53 <span class="blue1">.</span>
+drwxr-xr-x 6 root root 4096 feb  8 12:52 <span class="blue1">..</span>
+drwxr-xr-x 2 root root 4096 feb  8 12:53 <span class="blue1">alle</span>
+drwxr-xr-x 2 root root 4096 feb  8 12:52 <span class="blue1">it</span>
+drwxr-xr-x 2 root root 4096 feb  8 12:52 <span class="blue1">regnskab</span>
+drwxr-xr-x 2 root root 4096 feb  8 12:52 <span class="blue1">salg</span>
+</pre>
+
+<p>Vi styrer adgangen til disse mapper på gruppeniveau, så derfor ændrer vi gruppeejerskabet af mapperne, og sørger for at kun ejer og gruppe har adgang til mapperne. Læg mærke til at jeg bruger den fulde sti. Det skyldes at jeg ikke vil risikere at ramme andre filer end lige den jeg arbejder på:</p>
+
+<code class="cmd">chown -R :alle /srv/firma/alle</code>
+<code class="more_cmd">chown -R :it /srv/firma/it</code>
+<code class="more_cmd">chown -R :regnskab /srv/firma/regnskab</code>
+<code class="more_cmd">chown -R :salg /srv/firma/salg</code>
+
+<p>Kontroller at det er gjort korrekt. Gruppenavne er her markeret med rødt.</p>
+
+<pre class="ubuntu_terminal">
+root@tjmainsrv:/srv/firma# ls -al
+total 24
+drwxr-xr-x 6 root root     4096 feb  8 12:53 <span class="blue1">.</span>
+drwxr-xr-x 6 root root     4096 feb  8 12:52 <span class="blue1">..</span>
+drwxr-xr-x 2 root <span class="red">alle</span>     4096 feb  8 12:53 <span class="blue1">alle</span>
+drwxr-xr-x 2 root <span class="red">it</span>       4096 feb  8 12:52 <span class="blue1">it</span>
+drwxr-xr-x 2 root <span class="red">regnskab</span> 4096 feb  8 12:52 <span class="blue1">regnskab</span>
+drwxr-xr-x 2 root <span class="red">salg</span>     4096 feb  8 12:52 <span class="blue1">salg</span>
+</pre>
+
+<p>For alle er det kun ejer og gruppe der skal have fulde rettigheder til mapperne. Alle skal ikke have adgang. I dette tilfælde vil vi ændre rettighederne på alle fire mapper og så ændre mappen <span class="inl_cmd">alle</span> til sidst:</p>
+
+<code class="cmd">chmod -R 770 /srv/firma/*</code>
+
+<pre class="ubuntu_terminal">
+root@tjmainsrv:/srv/firma# chmod -R 770 /srv/firma/*
+root@tjmainsrv:/srv/firma# ls -al
+total 24
+drwxr-xr-x 6 root root     4096 feb  8 12:53 <span class="blue1">.</span>
+drwxr-xr-x 6 root root     4096 feb  8 12:52 <span class="blue1">..</span>
+d<span class="red">rwxrwx---</span> 2 root alle     4096 feb  8 12:53 <span class="blue1">alle</span>
+d<span class="red">rwxrwx---</span> 2 root it       4096 feb  8 12:52 <span class="blue1">it</span>
+d<span class="red">rwxrwx---</span> 2 root regnskab 4096 feb  8 12:52 <span class="blue1">regnskab</span>
+d<span class="red">rwxrwx---</span> 2 root salg     4096 feb  8 12:52 <span class="blue1">salg</span>
+</pre>
+
+<p>Nu vi har brugere og mapper på plads kan vi begynde at dele filerne over netværket.</p>
+
+<h1>NFS</h1>
+
+<h2>Hvad er NFS</h2>
+
+<p>NFS (<span class="bold">N</span>etwork <span class="bold">F</span>ile <span class="bold">S</span>ystem) er standarden for at dele filer over et Linux netværk. NFS er integreret i Linux, og anvender filsystemets rettigheder og har adgang til brugeroplysninger på NFS serveren.</p>
+
+<p>NFS fungere ved, at mapper der skal deles eksporteres, og administrationen af adgang sættes af de filrettigheder brugeren har på serveren. Det er af denne årsag vi skulle give brugerne de samme UID på både klienter og server. Man kan dele netværk både igennem <span class="inl_cmd">/etc/fstab</span> og ved at mount drevene selv.</p>
+
+<h2>NFS serverdel</h2>
+
+<p>Installer NFS serveren</p>
+
+<code class="cmd">apt-get install nfs-kernel-server -y</code>
+
+<p>Opret NFS shares i <span class="inl_cmd">/etc/exports</span> (markeret med rødt). Læg mærke til at vi "låser" disse shares til <span class="inl_cmd">10.0.2.10/24</span> netværket. Hvis vi ville have dem delt med alle netværk, anvendes en asterisk/stjerne (*).</p>
+
+<pre class="black"># /etc/exports: the access control list for filesystems which may be exported
+#               to NFS clients.  See exports(5).
+#
+# Example for NFSv2 and NFSv3:
+# /srv/homes       hostname1(rw,sync,no_subtree_check) hostname2(ro,sync,no_sub$
+#
+# Example for NFSv4:
+# /srv/nfs4        gss/krb5i(rw,sync,fsid=0,crossmnt,no_subtree_check)
+# /srv/nfs4/homes  gss/krb5i(rw,sync,no_subtree_check)
+#
+
+<span class="red">/srv/firma/regnskab   10.0.2.0/24(rw,async,no_subtree_check)
+/srv/firma/it   10.0.2.0/24(rw,async,no_subtree_check)
+/srv/firma/salg   10.0.2.0/24(rw,async,no_subtree_check)
+/srv/firma/alle   10.0.2.0/24(rw,async,no_subtree_check)
+</span>
+</pre>
+
+<p>IP adressen der kommer lige efter de shares afgrænser hvem der kan tilgå dem. Ønsker man at alle computere skal kunne tilgå ens share sætter man i stedet en asterisk (stjerne).</p>
+
+<p>Gør dem tilgængelige for systemet:</p>
+
+<code class="cmd">exportfs -a</code>
+
+<p>Start NFS tjenesten</p>
+
+<code class="cmd">service nfs-kernel-server start</code>
+
+<pre class="ubuntu_terminal">
+root@tjmainsrv:/home/thoj# service nfs-kernel-server start
+ * Exporting directories for NFS kernel daemon...                        [ OK ] 
+ * Starting NFS kernel daemon                                            [ OK ] 
+</pre>
+
+<p>Tjek om de er eksporteret korrekt med <span class="inl_cmd">showmount -e 10.0.2.10</span></p>
+
+<pre class="ubuntu_terminal">
+root@tjmainsrv:/home/thoj# showmount -e 10.0.2.10
+Export list for 10.0.2.10:
+/srv/firma/alle     10.0.2.0/24
+/srv/firma/salg     10.0.2.0/24
+/srv/firma/it       10.0.2.0/24
+/srv/firma/regnskab 10.0.2.0/24
+</pre>
+
+<h2>NFS klientdel - Linux</h2>
+
+<p>For at anvende NFS på klienterne skal brugerne oprettes, <span class="inl_cmd">nfs-common</span> skal installeres, og mappen <span class="inl_cmd">/NFS</span> oprettes.</li>
+
+<ol class="">
+	<li>Installer brugerne lath, hafe, vibo og mecu som ovenfor med samme passwords.</li>
+	
+	<li>Installer <span class="inl_cmd">nfs-common</span></li>
+	
+		<code class="cmd">apt-get install nfs-common -y </code>
+		
+	<li>Opret mappen til at dele filerne i:</li>
+	
+		<code class="cmd">mkdir /NFS</code>
+</ol>
+	
+
+
+
+
+
+<p>Naviger til mappen og kontroller indholdet.</p>
+
+<code class="cmd">cd /NFS</code>
+<code class="more_cmd">ls -al</code>
+
+
+
+<pre class="ubuntu_terminal">
+root@thoj-VirtualBox:/home/thoj# cd /NFS
+root@thoj-VirtualBox:/NFS# ls -al
+totalt 8
+drwxr-xr-x  2 root root 4096 feb  8 20:08 <span class="blue1">.</span>
+drwxr-xr-x 25 root root 4096 feb  8 20:08 <span class="blue1">..</span>
+root@thoj-VirtualBox:/NFS#
+</pre>
+
+<h3>Tilgang til shares - kommandolinie</h3>
+
+<p>NFS monteres ligesom alle andre filsystemer i Linux med kommandoen <span class="inl_cmd">mount</span>. I dette første eksempel montere vi alle de NFS-shares som serveren har:</p>
+
+<code class="cmd">mount -t nfs 10.0.2.10:/ /NFS</code>
+
+<pre class="ubuntu_terminal">
+root@thoj-VirtualBox:/NFS# ls -al
+totalt 24
+drwxr-xr-x  6 root root 4096 feb  8 12:53 <span class="blue1">.</span>
+drwxr-xr-x 25 root root 4096 feb 11 10:06 <span class="blue1">..</span>
+drwxrwx---  3 root 1011 4096 feb 11 11:09 <span class="blue1">alle</span>
+drwxrwx---  2 root 1009 4096 feb  8 12:52 <span class="blue1">it</span>
+drwxrwx---  2 root 1008 4096 feb 11 10:32 <span class="blue1">regnskab</span>
+drwxrwx---  2 root 1010 4096 feb  8 12:52 <span class="blue1">salg</span>
+root@thoj-VirtualBox:/NFS# 
+</pre>
+
+<p>Herefter kan du gå ind i mappen <span class="inl_cmd">/NFS</span> og se alle de drev serveren eksportere. Læg mærke til at du skal navigere dig igennem <span class="inl_cmd">/sev/nfs</span> før du kommer til mapperne admin og alle.</p>
+
+<pre class="ubuntu_terminal">
+
+
+* * * V I S    O U T P U T  * * *
+
+
+</pre>
+
+<p>For at ændre på dette skal vi først afmontere vores NFS-shares og "gen mounte" vores nfs-shares:</p>
+
+<code class="cmd">umount 10.0.2.10:/</code>
+<code class="more_cmd">mount -t nfs 10.0.2.10:/srv/nfs /NFS</code>
+
+<pre class="ubuntu_terminal">
+
+
+* * * V I S    O U T P U T  * * *
+
+
+</pre>
+
+<p>For at afmontere denne gang skal vi angive samme sti som vi brugte til at montere med.</p>
+
+<code class="cmd">umount 10.0.2.10:/srv/nfs</code>
+
+<p>Hvis du altså blot ønsker at importere et share giver du den fulde sti f.eks:</p>
+
+<code class="more_cmd">mount -t nfs 10.0.2.10:/srv/nfs/admin /NFS</code>
+
+<p>Læg mærke til at det er rettighederne på serveren der gælder. Derfor bør man have oprettet brugerne med de samme passwords på serveren.</p>
+
+
+<h3>Oprettelse af shares <span class="inl_cmd">/etc/fstab</span></h3>
+
+<p></p>
+
+<h2>NFS klientdel - Windows</h2>
+
+<p><a href="https://technet.microsoft.com/en-us/library/cc754350.aspx" target="_blank">https://technet.microsoft.com/en-us/library/cc754350.aspx</a></p>
+
+
+<h1>Samba</h1>
+
+<p>Samba er en fildelingstjeneste der anvender den samme protokol til fildeling som Windows. Herunder vil vi sætte samba op, så den kan dele filer med et blandet netværk bestående af både windows og Ubuntu maskiner. Samba giver computerne adgang til dens mapper ved at lave shares. I et sharenavn skelnes der ikke mellem store og små bogstaver og ikke alle tegn er anvendelige (f.eks. æøå). For at kunne lave shares med fornuftige navne kan du anvende f.eks. store og små bogstaver og underscore f.eks: <span class="inl_cmd">MitShare</span>, <span class="inl_cmd">mit_share</span>.</p>
+
+<p>Disse shares er grupperet under en arbejdsgruppe eller et domæne. Her sætter vi Samba op som en workgroup med navnet <span class="inl_cmd">HOMENETWORK</span>.</p>
+
+<p>Samba har sin egen bruger database, og det betyder at man ikke behøver at oprette brugere på Linuxmaskinen, men kan nøjes med at oprette dem i Samba.</p>
+
+
+
+<p>Samba installeres med kommandoen:</p>
+
+<code class="cmd">apt-get install samba -y</code>
+
+<p>Hvis du kommer ud i at du hellere vil geninstallere Samba for at starte forfra skal du afinstallere både <span class="inl_cmd">samba</span> og <span class="inl_cmd">samba-common</span> pakken. Herefter vil du kunne geninstallere samba.</p>
+
+<code class="cmd">sudo apt-get purge samba samba-common</code>
+
+<p>På klienterne skal der installeres følgende: <span class="inl_cmd">smbclient cifs-utils</span></p>
+
+<code class="cmd">apt-get install smbclient cifs-utils -y</code>
+
+<h2>Konfigurer Windows</h2>
+
+<p></p>
+
+<h2>Konfiguration af SAMBA</h2>
+
+<ol class="">
+	<li>Konfigurer <span class="inl_cmd">/etc/samba/smb.conf</span></li>
+	<li>Tilføj dit share til <span class="inl_cmd">/etc/samba/smb.conf</span></li>
+	<li>Opret mapperne hvor filerne skal ligge</li>
+	<li>Tilføj brugere der skal kunne anvende Samba</li>
+	<li>Genstart samba</li>
+</ol>
+
+<h3>Konfigurer <span class="inl_cmd">/etc/samba/smb.conf</span></h3>
+
+<p>Konfigurationsfilen <span class="inl_cmd">/etc/samba/smb.conf</span> styrer hele opsætningen af Samba. DVS. den indeholder både konfigurationen af selve funktionaliteten, men også de enkelte shares som sættes ind i bunden af filen. Før vi konfigurerer mapperne der skal deles skal vi have lavet nogle indledende konfigurationer. I [global] sektionen af <span class="inl_cmd">/etc/samba/smb.conf</span> sætter vi workgroup = THOJNETWORK  og tilføjer linien <span class="inl_cmd">security = user</span> lige herefter</p>
+
+<pre class="black">
+#======================= Global Settings =======================
+
+[global]
+
+## Browsing/Identification ###
+
+# Change this to the workgroup/NT-domain name your Samba server will part of
+   workgroup = THOJNETWORK
+
+   security = user
+</pre>
+
+<p>Her vil vi oprette to forskellige shares</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Share</th>
+			<th>mappe</th>
+			<th>Rettigheder</th>
+		</tr>
+	</thead>
+	<tbody>
+
+		<tr>
+			<td>alle</td>
+			<td>/srv/samba/alle</td>
+			<td>0777</td>
+		</tr>
+		<tr>
+			<td>admin</td>
+			<td>/srv/samba/admin</td>
+			<td>0700</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Før vi går igang med at konfigurere Samba opretter vi mapperne og tildeler rettigheder</p>
+
+<code class="cmd">mkdir -p /srv/samba/alle /srv/samba/admin</code>
+
+<p>Når vi sætter rettigheder, hvor alle brugere skal have adgang, så anvender vi brugeren <span class="inl_cmd">nouser</span> og gruppen <span class="inl_cmd">nogroup</span>. For at sætte rettighederne for <span class="inl_cmd">/srv/samba/alle</span>:</p>
+
+<code class="cmd">chown -R nobody.nogroup /srv/samba/alle</code>
+
+<code class="cmd">chmod -R 777 /srv/samba/alle</code>
+
+<p>Herunder forudsætter vi at brugeren <span class="inl_cmd">thoj</span> er administrator. For at sætte rettigheder for <span class="inl_cmd">/srv/samba/admin</span>:</p>
+
+<code class="cmd">chown -R thoj:thoj /srv/samba/admin</code>
+
+<code class="cmd">chmod -R 700 /srv/samba/admin</code>
+
+<p>Kontroller at rettighederner er rigtigt sat:</p>
+
+<code class="cmd">ls -al /srv/samba/</code>
+
+<pre class="ubuntu_terminal">
+root@mainsrv:/home/thoj# ls -al /srv/samba/
+totalt 16
+drwxr-xr-x 4 root   root    4096 sep 11 19:13 <span class="blue1">.</span>
+drwxr-xr-x 9 root   root    4096 sep 11 19:13 <span class="blue1">..</span>
+drwx------ 2 thoj   thoj    4096 sep 11 19:13 <span class="blue1">admin</span>
+drwxrwxrwx 2 nobody nogroup 4096 sep 11 19:13 <span class="blue1">alle</span>
+</pre>
+
+<p>Herefter kan vi oprette de enkelte shares</p>
+
+<h3>Fildeling uden brugerkontrol</h3>
+
+<p>Vi tilføjer <span class="inl_cmd">alle</span>. Nederst i <span class="inl_cmd">/etc/samba/smb.conf</span> indsætter vi følgende:</p>
+
+
+<pre class="black">
+[alle]
+    comment = Ubuntu File Server Share
+    path = /srv/samba/alle
+    browsable = yes
+    guest ok = yes
+    read only = no
+    create mask = 0755
+</pre>
+
+<h3>Fildeling med brugerkontrol</h3>
+
+<p>Tilføj nedestående til sidst i filen <span class="inl_cmd">/etc/samba/smb.conf</span></p>
+
+<pre class="black">
+[admin]			
+ comment = fildeling
+ path = /srv/samba/admin
+ browsable = yes
+ guest ok = no
+ read only = no
+ create mask = 0700
+</pre>
+
+<p>Tilføj brugeren <span class="inl_cmd">thoj</span> til samba. Du kan ikke se når du taster dit kordeord.</p>
+
+<code class="cmd">smbpasswd -a thoj</code>
+<code class="cmd">smbpasswd -a test</code>
+
+<pre class="ubuntu_terminal">
+root@tjmainsrv:/home/thoj# smbpasswd -a thoj
+New SMB password:
+Retype new SMB password:
+Added user thoj.
+</pre>
+
+<h3>Genstart Samba</h3>
+
+<code class="cmd">restart smbd && restart nmbd</code>
+
+<h3>Oprettelse af Brugeres home</h3>
+
+<p>Samba er konfigureret, så der kun skal laves få ændringer for at brugerne kan få adgang til deres private mapper. Lav følgende ændringer i afsnittet <span class="inl_cmd">"===Share definitions==="</span> der er markeret med fed skrift herunder i <span class="inl_cmd">/etc/samba/smb.conf</span>.</p>
+
+<pre class="black">#======================= Share Definitions =======================
+
+# Un-comment the following (and tweak the other settings below to suit)
+# to enable the default home directory shares. This will share each
+# user's home directory as \\server\username
+<span class="bold">[homes]
+   comment = Home Directories
+   browseable = yes</span>
+
+# By default, the home directories are exported read-only. Change the
+# next parameter to 'no' if you want to be able to write to them.
+   <span class="bold">read only = no</span>
+
+...
+
+# By default, \\server\username shares can be connected to by anyone
+# with access to the samba server.
+# Un-comment the following parameter to make sure that only "username"
+# can connect to \\server\username
+# This might need tweaking when using external authentication schemes
+   <span class="bold">valid users = %S</span>
+</pre>
+
+<p>Genstart Samba</p>
+
+<code class="cmd">restart smbd && restart nmbd</code>
+
+
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+
+
+
+
+
+	</body>
+
+</html>
+
+
+
+
+

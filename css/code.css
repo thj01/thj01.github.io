@@ -341,3 +341,24 @@ border-radius: 5px;
 
 */
 
+span.terminal_valg {
+
+font-family: ubuntu mono, mono-type;
+background-color: #cf3d2f;
+color: White;
+padding: 1px 3px;
+
+}
+
+span.terminal_valg::before {
+
+content: "<";
+
+}
+
+span.terminal_valg::after {
+
+content: ">";
+
+}
+
