@@ -244,6 +244,61 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 	</tbody>
 </table>
 
+<h2>Anvend tasteturet</h2>
+
+<p>Under installationen af Ubuntu serveren skal du anvende tasteturet. I starten er det lidt underligt at navigere ved hjælp af tasteturet, men det hurtigt og effektivt. Navigationen fungerer efter følgende skema:</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Tast</th>
+			<th>Funktion</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><kbd>Tab</kbd></td>
+			<td>Hopper mellem de forskellige punkter i installationsmenuen.</td>
+		</tr>
+		<tr>
+			<td><kbd>Mellemrum</kbd></td>
+			<td>Vælger.</td>
+		</tr>
+		<tr>
+			<td><kbd>Enter</kbd></td>
+			<td>Udfører. Ved flere menuer vil <kbd>Enter</kbd> gøre sådan at du blot accepterer der der står i installationsmenuen.</td>
+		</tr>
+		<tr>
+			<td><kbd>&larr;</kbd>, <kbd>&rarr;</kbd>, <kbd>&uarr;</kbd>, <kbd>&darr;</kbd></td>
+			<td>Kan i nogle tilfælde anvendes til at vælge med.</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Ved langt de fleste installationsmenuer står informationerne også i bunden:</p>
+
+<figure id="">
+
+	<img src="images/server_install_16.04_00a.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+
+
+<h2>Ved fejlvalg</h2>
+
+<p>Hvis du laver en fejl kan du altid gå tilbage i installtionsmetoden ved at vælge <span class="terminal_valg">Gå tilbage</span> og derefter vælge punktet hvor det gik galt. Har du lavet indtastninger husker installationen på det, så du kan nøjes med at ændre de ting der er fejl i.</p>
+
+<figure id="">
+
+	<img src="images/server_install_16.04_00.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
 	
 <h1>Begynd installationen</h1>
 
@@ -291,7 +346,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <span class="afsnit">Tastetur</span>
 
-<p>Efter du har valgt sprog skal du vælge dit tastetur. Vælg <span class="terminal_valg">Nej</span>, da det giver dig mulighed for selv at vælge dit danske tastetur.</p>
+<p>Efter du har valgt sprog skal du vælge dit tastetur. Vælg <span class="terminal_valg">Nej</span>, for at du selv kan vælge dit tastetur.</p>
 
 <figure id="">
 
@@ -331,7 +386,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 </figure>
 
-<p> Hvis du har en DHCP-server på netværket vil Ubuntu selv sætte netværket op, og du ender med vinduet <span class="inl_cmd">"Angiv dette systems værtsnavn"</span>. Her skal du vælge <span class="terminal_valg">Gå tilbage</span>.</p>
+<p> Hvis du har en DHCP-server på netværket vil Ubuntu selv sætte netværket op, og du ender med nedestående vindue <span class="inl_cmd">"Angiv dette systems værtsnavn"</span>. Her skal du ikke vælge <span class="inl_cmd">Fortsæt</span>, men vælge <span class="terminal_valg">Gå tilbage</span>, for at kunne konfigurere netværket selv.</p>
 
 <figure id="">
 
@@ -343,7 +398,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <h2>Manuel opsætning af netværk</h2>
 
-<p>I vinduet "Sæt netværket op" skal du vælge "Sæt netværket op manuelt".</p>
+<p>I vinduet "Sæt netværket op" skal du vælge <span class="terminal_valg2">Sæt netværket op manuelt</span>.</p>
 
 <figure id="">
 
@@ -468,7 +523,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 </figure>
 
-
+<p>Hvis du ligesom mig har valgt et meget simpelt password (Her har jeg valgt <span class="inl_cmd">123qwe) </span>vil installationen advare dig så du kan ændre det. Er det til testformål er det ikke vigtigt, men skal den f.eks. bruges som webserver, bør du have en adgangskode der indeholder minimum 10 tegn, og hvor det er en blanding store og små bogstaver, tal og tegn.</p>
 
 <figure id="">
 
@@ -531,21 +586,9 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 </figure>
 
-<h1>Avanceret opsætning af harddiske</h1>
+<h2>Avanceret opsætning</h2>
 
-<p>I dette afsnit vil vi sætte 2 harddiske op ved hjælp af LVM (<span class="bold">L</span>ogical <span class="bold">V</span>olume <span class="bold">M</span>anagement).</p>
-
-<p>Ideen med LVM er, at man laver nogle virtuelle harddiske, der spænder over en eller flere fysiske harddiske. Fordelen er, at man ikke er bundet af størrelsen af de fysiske harddiske og at man kan tilføje, udskifte, fjerne fysiske harddiske uden nedetid, hvis man har den rigtige hardware. Herunder er en illustration der viser de tre begreber der anvendes i LVM.</p>
-
-<figure id="">
-
-	<img src="images/server_install_16.04_hd_LVM.svg" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-
-<p>Her vil vi lave følgende opsætning ved hjælp af LVM.</p>
+<p>For at gøre denne guide overskuelig har jeg valgt at lægge den avancerede opsætning i et andet dokument. Heri vil du blive guidet igennem at sætte Ubuntu serveren op med LVM med følgende konfiguration:</p>
 
 <table class="">
 	<thead>
@@ -595,105 +638,9 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 	</tbody>
 </table>
 
+<span id="after_hd_konfiguration"></span>
 
-<p>Det vi skal gøre er:</p>
-
-<ol class="">
-	<li>Klargøre harddiskene</li>
-	<li>Lave en VG (Volume group) af vores to harddiske - <span class="bold">arkiv01</span></li>
-	<li>Oprette de 6 LG'er (Logical Volumes)</li>
-	<li>Montere de 6 LG'er</li>
-</ol>
-
-<p>Vælg <span class="inl_cmd">Manuelt</span> som partitioneringsmetode</p>
-
-<figure id="">
-
-	<img src="images/server_install_hd_01.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-
-<h2>Klargøring af harddiske</h2>
-
-<p>Hvis du installerer i VirtualBox som jeg gør, eller har helt nye harddiske i, skal der først oprettes partitionstabeller på harddiskene. Ubunt vil selv gøre opmærksom på det, hvis den ikke er oprettet. Vælg den første disk og tryk <kbd>Enter</kbd>.</p>
-
-<figure id="">
-
-	<img src="images/server_install_hd_02.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-
-<p>Vælg: <span class="terminal_valg">ja</span>, for at oprette partitionstabellen.</p>
-
-<figure id="">
-
-	<img src="images/server_install_hd_03.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-
-<p>Her kan du se, at der under den første harddisk nu står <span class="inl_cmd">pri/log   107.4 GB  ....</span>.</p>
-
-<figure id="">
-
-	<img src="images/server_install_hd_04.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-
-<p>Gør det samme ved den anden harddisk.</p>
-
-<h2>Opsæt LVM</h2>
-
-<p>Vælg <span class="inl_cmd">Opsætning af den logiske diskenhedshåndtering (LVM)</span> </p>
-
-<figure id="">
-
-	<img src="images/server_install_hd_06.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-
-<p>Før Vi kan sætte LVM op, skal de ændringer vi lavede før skrives til disken. Dette vil slette alt indhold der har været på diskene. Vælg <span class="terminal_valg">Ja</span>:</p>
-
-<figure id="">
-
-	<img src="images/server_install_hd_07.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-
-<h2>Opret en VG - Volume Group</h2>
-
-<p>Her skal vi oprette vores VG, som kaldes en diskenhedsgruppe på dansk. Jeg har valgt at bibeholde de engelske betegnelser i denne guide, da det er betegnelserne man skal anvende når man kigger i dokumentation og anvender kommandoer senere. Vælg: <span class="inl_cmd">Opret diskenhedsgruppe</span></p>
-
-<figure id="">
-
-	<img src="images/server_install_hd_08.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-
-<p>Giv den navnet:<span class="inl_cmd">arkiv01</span> og vælg <span class="terminal_valg">Fortsæt</span>.</p>
-
-<figure id="">
-
-	<img src="images/server_install_hd_09.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-
-<p>Tilføj dine harddiske ved ved hjælp af at markere begge harddiske og tryk på <kbd>Mellemrum</kbd>. Efter begge er valgt tryk <span class="terminal_valg">Fortsæt</span>.</p>
+<p>Find guiden her: <a href="server_avanceret_HD_install_16.06.LTS.html" target="_blank">server_avanceret_HD_install_16.06.LTS.html</a></p>
 
 <h1>HTTP-Proxy og opdateringer</h1>
 
@@ -707,7 +654,8 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 </figure>
 
-<p>Konfigurer hvordan systemet skal opdateres. Hvis du blot ønsker en meget simpel server, du ikke skal have noget arbejde med, kan du roligt vælge: <span class="inl_cmd">"Installer sikkerhedsoplysninger automatisk"</span>. Hvis du selv ønsker at have kontrol over opdateringerne vælger du: <span class="inl_cmd">"Ingen automatiske opdateringer"</span> (<span class="red">ANBEFALET</span>).</p>
+
+<p>Konfigurer hvordan systemet skal opdateres. Hvis du blot ønsker en meget simpel server, du ikke skal have noget arbejde med, kan du roligt vælge: <span class="terminal_valg2">Installer sikkerhedsoplysninger automatisk</span>. Hvis du selv ønsker at have kontrol over opdateringerne vælger du: <span class="terminal_valg2">Ingen automatiske opdateringer</span> (<span class="red">ANBEFALET</span>).</p>
 
 <figure id="">
 
@@ -758,7 +706,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <h2>Avanceret harddisk opsætning</h2>
 
-<p>Her kan du vælge hvor du vil have GRUB installeret. Vælg den første harddisk (<span class="inl_cmd">/dev/sda</span>) og tryk <kbd>Enter</kbd></p>
+<p>Her kan du vælge hvor du vil have GRUB installeret. Vælg den første harddisk <span class="terminal_valg2">/dev/sda ...</span> og tryk <kbd>Enter</kbd></p>
 
 <figure id="">
 
