@@ -938,25 +938,21 @@ Press return to continue
 
 <pre>
 	<code class="python">
-def is_factor(a, b):
-	
-	if b % a == 0:
-	
-		return True
-	
-	else:
-	
-		return False
-		
-print ("Er 4 en faktor i 1000: {0}".format(is_factor(4,1000)))		
-		
-print ("Er 3 en faktor i 1000: {0}".format(is_factor(3,1000)))
+
+tal = int(input("hvilket tal vil du undersøge?: "))
+
+faktor = int(input("Skriv den faktor du vil undersøge tallet med: "))
+
+
+
+print("Hvis {0} delt med {1} er 0, er {1} faktor i {0} = {2}".format(faktor,tal,tal%faktor))
 	</code>
 </pre>
 
 <pre class="ubuntu_terminal">
-Er 4 en faktor i 1000: True
-Er 3 en faktor i 1000: False
+hvilket tal vil du undersøge?: 100
+Skriv den faktor du vil undersøge tallet med: 10
+Hvis 10 delt med 100 er 0, er 100 faktor i 10 = 0
 
 
 ------------------
@@ -1519,6 +1515,21 @@ Press return to continue
 <p>Ændres værdien <span class="inl_cmd">check</span> til <span class="inl_cmd">0</span>, vil outputtet være tomt</p>
 
 <pre class="ubuntu_terminal">
+
+
+------------------
+(program exited with code: 0)
+Press return to continue
+</pre>
+
+<h2>Opgave - Er det en faktor</h2>
+
+<p>Lav funktionen <span class="inl_cmd">Factor(a,b)</span> der undersøger om a er en faktor i b. Lav et output der ligner nedestående:</p>
+
+<pre class="ubuntu_terminal">
+Undersøger om 2 er en faktor i 10
+	
+2 er en faktor i 10
 
 
 ------------------
