@@ -2032,8 +2032,142 @@ print ("\nN I C E")
 
 <p><span class="bold">HINT:</span> for at kunne få en kode til at afbryde anvender man kommandoen <span class="inl_cmd">exit()</span>. Når koden læser denne linie afsluttes kørslen. Den skal indsættes under pkt. 2.3</p>
 
+<h1>Betingede løkker</h1>
+
+<p>I de ovenstående kapitler har løkkerne været simple, fordi vi har været helt klar over hvad de skulle. Det hænder dog, at man vil sætte nogle betingelser for løkkerne. Det kan f.eks. være en kode der skal løbe indtil brugeren har valgt rigtigt.</p>
+
+<p>Forestil dig at vi laver et spørgsmål om et antal brugere, men at vi kun vil acceptere 4. Den lette løsning er, at lave en kode der forventer at brugere svarer rigtigt.</p>
+
+<pre>
+	<code class="python">
+antalBrugere = int(input("Indtast antal brugere (1-4(: "))
+	</code>
+</pre>
+
+<p>Den kode kører rigtig fint lige indtil en svarer noget andet end vi forventer. Det problem kan vi eliminere ved at gøre følgende:</p>
+
+<h2>break</h2>
+
+<p></p>
+
+<pre>
+	<code class="python">
+n = 0
+goal = 3
+while True:
+	if n == goal: 
+		break
+	else:
+		print("n er {0}. n skal være {1}".format(n, goal))
+		n +=1
+print("\nSå blev n = {0} :)".format(goal))
+	</code>
+</pre>
+
+<pre class="ubuntu_terminal">
+n er 0. n skal være 3
+n er 1. n skal være 3
+n er 2. n skal være 3
+
+Så blev n = 3 :)
+
+------------------
+(program exited with code: 0)
+Press return to continue
+</pre>
+
+<p><span class="inl_cmd">while</span>-løkken kører så længe den ikke modtager et <span class="inl_cmd">False</span>. D.v.s. den kan køre uendeligt. Det eneste som får løkken til at stoppe er fordi der er indsat en <span class="inl_cmd">break</span> kommando hvis n er lig med variablen <span class="inl_cmd">goal</span>. <span class="inl_cmd">break</span> kommandoen bryder <span class="inl_cmd">while</span>-løkken og lader programmet køre videre.</p>
+
+<h2>continue</h2>
+
+<p>Herunder vil vi sætte koden til at udskrive tallene fra 1-15, men den må ikke udskrive tal fra 3-tabellen. Det betyder at vi skal undersøge tallene ved hjælp af  <span class="inl_cmd">modulus</span> (se ovenfor):</p>
+
+<pre>
+	<code class="python">
+for i in range(1,16):
+	if i%3 == 0:
+		print("XXX", end="  ")
+		continue
+	else:
+		print(i, end="  ")
+	</code>
+</pre>
+
+<pre class="ubuntu_terminal">
+1  2  XXX  4  5  XXX  7  8  XXX  10  11  XXX  13  14  XXX  
+
+------------------
+(program exited with code: 0)
+Press return to continue
+</pre>
+
+<p>Det koden undersøger om modulus af i er = 0. Hvis den er så udskriver den <span class="inl_cmd">XXX</span> og får koden til at køre videre med næste i værdi. Det er netop forskellen mellem break og continue. <span class="inl_cmd">break</span> afbrød løkken, men <span class="inl_cmd">continue</span> lader den fortsætte.</p>
+
+<h2>pass</h2>
+
+<p><span class="inl_cmd">pass</span> er umiddelbart en underlig kommando, fordi den gør reelt ingen forskel. Men den er rigtig brugbar. Forestil dig en kode, hvor du vil udskrive tallene fra 1-10, men lige vill gøre opmærksom på at 7 er dit lykketal:</p>
+
+<pre>
+	<code class="python">
+for i in range(1,11):
+	if i == 7:
+		print("Næste tal er mit lykketal")
+		pass
+	print(i)
+	</code>
+</pre>
+
+<pre class="ubuntu_terminal">
+1
+2
+3
+4
+5
+6
+Næste tal er mit lykketal
+7
+8
+9
+10
+
+------------------
+(program exited with code: 0)
+Press return to continue
+</pre>
+
+<p><span class="inl_cmd">pass</span> kan også anvendes til at køre opmærksom på en kodestump der mangler </p>
+
+<pre>
+	<code class="python">
+for i in range(1,11):
+	if i%5==0:
+		print("Kode for tal i 5 tabellen mangler")
+		pass
+	print(i)
+	</code>
+</pre>
+
+<pre class="ubuntu_terminal">
+1
+2
+3
+4
+Kode for tal i 5 tabellen mangler
+5
+6
+7
+8
+9
+Kode for tal i 5 tabellen mangler
+10
 
 
+------------------
+(program exited with code: 0)
+Press return to continue
+</pre>
+
+<p><span class="inl_cmd">pass</span> er netop brugbar fordi den ikke gør noget ;).</p>
 
 <h1>Behandling af strenge</h1>
 
