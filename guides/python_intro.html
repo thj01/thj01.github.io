@@ -647,6 +647,247 @@ Press return to continue
 
 </pre>
 
+<h2>Computeren kan <s>ikke</s> tælle</h2>
+
+<p>En af de ting man støder på når man arbejder med programmering er, at computere tæller anderledes end vi gør. Når vi tæller starter vi fra en, og titalssystemet er anvendeligt for os fordi det passer med antallet af fingre på på hånden. Når vi har brugt alle fingrene så tæller vi antallet af fulde hænder. 22 kan altså forståes som 2 fulde hænder og 2 fingre. I 10-talssystemet skifter vi altså position (veksler til den næste enhed) når vi kommer til den 10. værdi.</p>
+
+<p>Til forskel fra en computer begynder vi ikke at tælle før vi har behov for det. Det er derfor vi definerer de naturlige tal som: &#8469; = {1, 2, 3, 4 ...}. Computeren anvender &#8469;<sub>0</sub> = {0, 1, 2, 3 ...}, fordi den først begynder at tælle når der bliver afsat hukommelse til det.</p>
+
+<p>Computerens tællemekanisme består af transistorer som enten kan være slukket eller tændte. Det præsenterer vi ved tallene <span class="inl_cmd">0</span> og <span class="inl_cmd">1</span>. For at vise dette kigger vi på en byte (der består af 8 bit) der tæller:</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Computerens</th>
+			<th colspan="8">bits</th>
+			<th>I 10-tals systemet</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1. værdi</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+		</tr>
+		<tr>
+			<td>2. værdi</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>1</td>
+			<td>1</td>
+		</tr>
+		<tr>
+			<td>3. værdi</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>1</td>
+			<td>0</td>
+			<td>2</td>
+		</tr>
+		<tr>
+			<td>4. værdi</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>1</td>
+			<td>1</td>
+			<td>3</td>
+		</tr>
+		<tr>
+			<td>5. værdi</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>1</td>
+			<td>0</td>
+			<td>0</td>
+			<td>4</td>
+		</tr>
+		<tr>
+			<td>6. værdi</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>1</td>
+			<td>0</td>
+			<td>1</td>
+			<td>5</td>
+		</tr>
+		<tr>
+			<td>7. værdi</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>1</td>
+			<td>1</td>
+			<td>0</td>
+			<td>6</td>
+		</tr>
+		<tr>
+			<td>8. værdi</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>1</td>
+			<td>1</td>
+			<td>1</td>
+			<td>7</td>
+		</tr>
+		<tr>
+			<td>9. værdi</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>1</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>8</td>
+		</tr>
+		<tr>
+			<td>10. værdi</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>1</td>
+			<td>0</td>
+			<td>0</td>
+			<td>1</td>
+			<td>9</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>2⁷</td>
+			<td>2⁶</td>
+			<td>2⁵</td>
+			<td>2⁴</td>
+			<td>2³</td>
+			<td>2²</td>
+			<td>2¹</td>
+			<td>2⁰</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>Værdi</td>
+			<td>128</td>
+			<td>64</td>
+			<td>32</td>
+			<td>16</td>
+			<td>8</td>
+			<td>4</td>
+			<td>2</td>
+			<td>1</td>
+			<td></td>
+		</tr>		
+	</tbody>
+</table>
+
+<p>Af det ovenstående kan vi omregne fra binær til decimal ved at lægge de enkelte værdier sammen:</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Binær</th>
+			<th colspan="8">Udregning</th>
+			<th>Decimal</th>
+		</tr>
+	</thead>
+	<tbody>
+
+		<tr>
+			<td></td>
+			<td>2⁷</td>
+			<td>2⁶</td>
+			<td>2⁵</td>
+			<td>2⁴</td>
+			<td>2³</td>
+			<td>2²</td>
+			<td>2¹</td>
+			<td>2⁰</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>11111111</td>
+			<td>128</td>
+			<td>64</td>
+			<td>32</td>
+			<td>16</td>
+			<td>8</td>
+			<td>4</td>
+			<td>2</td>
+			<td>1</td>
+			<td>255</td>
+		</tr>	
+		<tr>
+			<td>10101101</td>
+			<td>128</td>
+			<td></td>
+			<td>32</td>
+			<td></td>
+			<td>8</td>
+			<td>4</td>
+			<td></td>
+			<td>1</td>
+			<td>173</td>
+		</tr>
+		<tr>
+			<td>10000001</td>
+			<td>128</td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td>1</td>
+			<td>129</td>
+		</tr>
+		<tr>
+			<td>00101101</td>
+			<td></td>
+			<td></td>
+			<td>32</td>
+			<td></td>
+			<td>8</td>
+			<td>4</td>
+			<td></td>
+			<td>1</td>
+			<td>45</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Det er vigtigt at man holder styr på hvilke tal og værdier der bliver brugt fra gang til gang. Nogle gange er det den menneskelige tællemmåde  &#8469; = {1, 2, 3, 4 ...} f.eks. når man tæller antallet af elementer i en tekstreng. Andre gange er det computerens &#8469;<sub>0</sub> = {0, 1, 2, 3 ...} f.eks. når man angiver tegnets position.</p>
+
 <h2>Regningsregler</h2>
 
 <pre>
@@ -2171,251 +2412,10 @@ Press return to continue
 
 <h1>Behandling af strenge</h1>
 
-<h2>Python kan <s>ikke</s> tælle</h2>
-
-<p>En af de ting man støder på når man arbejder med programmering er, at computere tæller anderledes end vi gør. Når vi tæller starter vi fra en, og titalssystemet er anvendeligt for os fordi det passer med antallet af fingre på på hånden. Når vi har brugt alle fingrene så tæller vi antallet af fulde hænder. 22 kan altså forståes som 2 fulde hænder og 2 fingre. I 10-talssystemet skifter vi altså position (veksler til den næste enhed) når vi kommer til den 10. værdi.</p>
-
-<p>Til forskel fra en computer begynder vi ikke at tælle før vi har behov for det. Det er derfor vi definerer de naturlige tal som: &#8469; = {1, 2, 3, 4 ...}. Computeren anvender &#8469;<sub>0</sub> = {0, 1, 2, 3 ...}, fordi den allerede ved sit input får at vide om det er en talværdi eller en tekststreng. Det er årsagen til at det første værdi for computeren er <span class="inl_cmd">0</span></p>
-
-<p>Computerens tællemekanisme består af transistorer som enten kan være slukket eller tændte. Det præsenterer vi ved tallene <span class="inl_cmd">0</span> og <span class="inl_cmd">1</span>. For at vise dette kigger vi på en byte (der består af 8 bit) der tæller:</p>
-
-<table class="">
-	<thead>
-		<tr>
-			<th>Computerens</th>
-			<th colspan="8">bits</th>
-			<th>I 10-tals systemet</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>1. værdi</td>
-			<td>0</td>
-			<td>0</td>
-			<td>0</td>
-			<td>0</td>
-			<td>0</td>
-			<td>0</td>
-			<td>0</td>
-			<td>0</td>
-			<td>0</td>
-		</tr>
-		<tr>
-			<td>2. værdi</td>
-			<td>0</td>
-			<td>0</td>
-			<td>0</td>
-			<td>0</td>
-			<td>0</td>
-			<td>0</td>
-			<td>0</td>
-			<td>1</td>
-			<td>1</td>
-		</tr>
-		<tr>
-			<td>3. værdi</td>
-			<td>0</td>
-			<td>0</td>
-			<td>0</td>
-			<td>0</td>
-			<td>0</td>
-			<td>0</td>
-			<td>1</td>
-			<td>0</td>
-			<td>2</td>
-		</tr>
-		<tr>
-			<td>4. værdi</td>
-			<td>0</td>
-			<td>0</td>
-			<td>0</td>
-			<td>0</td>
-			<td>0</td>
-			<td>0</td>
-			<td>1</td>
-			<td>1</td>
-			<td>3</td>
-		</tr>
-		<tr>
-			<td>5. værdi</td>
-			<td>0</td>
-			<td>0</td>
-			<td>0</td>
-			<td>0</td>
-			<td>0</td>
-			<td>1</td>
-			<td>0</td>
-			<td>0</td>
-			<td>4</td>
-		</tr>
-		<tr>
-			<td>6. værdi</td>
-			<td>0</td>
-			<td>0</td>
-			<td>0</td>
-			<td>0</td>
-			<td>0</td>
-			<td>1</td>
-			<td>0</td>
-			<td>1</td>
-			<td>5</td>
-		</tr>
-		<tr>
-			<td>7. værdi</td>
-			<td>0</td>
-			<td>0</td>
-			<td>0</td>
-			<td>0</td>
-			<td>0</td>
-			<td>1</td>
-			<td>1</td>
-			<td>0</td>
-			<td>6</td>
-		</tr>
-		<tr>
-			<td>8. værdi</td>
-			<td>0</td>
-			<td>0</td>
-			<td>0</td>
-			<td>0</td>
-			<td>0</td>
-			<td>1</td>
-			<td>1</td>
-			<td>1</td>
-			<td>7</td>
-		</tr>
-		<tr>
-			<td>9. værdi</td>
-			<td>0</td>
-			<td>0</td>
-			<td>0</td>
-			<td>0</td>
-			<td>1</td>
-			<td>0</td>
-			<td>0</td>
-			<td>0</td>
-			<td>8</td>
-		</tr>
-		<tr>
-			<td>10. værdi</td>
-			<td>0</td>
-			<td>0</td>
-			<td>0</td>
-			<td>0</td>
-			<td>1</td>
-			<td>0</td>
-			<td>0</td>
-			<td>1</td>
-			<td>9</td>
-		</tr>
-		<tr>
-			<td></td>
-			<td>2⁷</td>
-			<td>2⁶</td>
-			<td>2⁵</td>
-			<td>2⁴</td>
-			<td>2³</td>
-			<td>2²</td>
-			<td>2¹</td>
-			<td>2⁰</td>
-			<td></td>
-		</tr>
-		<tr>
-			<td>Værdi</td>
-			<td>128</td>
-			<td>64</td>
-			<td>32</td>
-			<td>16</td>
-			<td>8</td>
-			<td>4</td>
-			<td>2</td>
-			<td>1</td>
-			<td></td>
-		</tr>		
-	</tbody>
-</table>
-
-<p>Af det ovenstående kan vi omregne fra binær til decimal ved at lægge de enkelte værdier sammen:</p>
-
-<table class="">
-	<thead>
-		<tr>
-			<th>Binær</th>
-			<th colspan="8">Udregning</th>
-			<th>Decimal</th>
-		</tr>
-	</thead>
-	<tbody>
-
-		<tr>
-			<td></td>
-			<td>2⁷</td>
-			<td>2⁶</td>
-			<td>2⁵</td>
-			<td>2⁴</td>
-			<td>2³</td>
-			<td>2²</td>
-			<td>2¹</td>
-			<td>2⁰</td>
-			<td></td>
-		</tr>
-		<tr>
-			<td>11111111</td>
-			<td>128</td>
-			<td>64</td>
-			<td>32</td>
-			<td>16</td>
-			<td>8</td>
-			<td>4</td>
-			<td>2</td>
-			<td>1</td>
-			<td>255</td>
-		</tr>	
-		<tr>
-			<td>10101101</td>
-			<td>128</td>
-			<td></td>
-			<td>32</td>
-			<td></td>
-			<td>8</td>
-			<td>4</td>
-			<td></td>
-			<td>1</td>
-			<td>173</td>
-		</tr>
-		<tr>
-			<td>10000001</td>
-			<td>128</td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td>1</td>
-			<td>129</td>
-		</tr>
-		<tr>
-			<td>00101101</td>
-			<td></td>
-			<td></td>
-			<td>32</td>
-			<td></td>
-			<td>8</td>
-			<td>4</td>
-			<td></td>
-			<td>1</td>
-			<td>45</td>
-		</tr>
-	</tbody>
-</table>
-
-<p>Det er vigtigt at man holder styr på hvilke tal og værdier der bliver brugt fra gang til gang. Nogle gange er det den menneskelige tællemmåde  &#8469; = {1, 2, 3, 4 ...} f.eks. når man tæller antallet af elementer i en tekstreng. Andre gange er det computerens &#8469;<sub>0</sub> = {0, 1, 2, 3 ...} f.eks. når man angiver tegnets position.</p>
-
 
 <h2>Slicing</h2>
 
-<p>Ved hjælp af slicing kan man undersøge dele af en tekststreng. For at udvælge tekststykket anvender vi følgende syntaks</p>
+<p>Ved hjælp af slicing kan man opdele tekststrenge i mindre stykker. For at "slice" tekststykket anvender vi følgende syntaks</p>
 
 <code class="cmd">*tekststreng* [*startposition*:*slutposition*]</code>
 
@@ -2693,14 +2693,16 @@ Press return to continue
 
 <h3>Opgave - tjek mail</h3>
 
-<p>Lav en kode hvor du tjekker en email ud fra følgende parametre ved hjælp af <span class="inl_cmd">True/False</span></p>
+<p>Lav en kode hvor du tjekker en email ud fra følgende parametre: </p>
 
 <ol class="">
 	<li>Om den har mere end 7 tegn</li>
 	<li>Der kun er et @</li>
-	<li>At det er en ".dk" mail (<span class="inl_cmd">True/False</span>)</li>
-	<li>At @ ikke står mellem de 4 sidste tegn (<span class="inl_cmd">True/False</span>)</li>
+	<li>At det er en ".dk" mail</li>
+	<li>At @ ikke står mellem de 4 sidste tegn</li>
 </ol>
+
+<p>Udskriften skal enten sige om det er en rigtig mail eller angive hvad der er fejlen og bede om en ny indtastning.</p>
 
 <h3>Opgave - tjek mail 2</h3>
 
