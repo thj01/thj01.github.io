@@ -55,18 +55,20 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <h1>If, elif - else</h1>
 
-<p>Ofte har man brug for at ens program skal gøre forskellige ting ved forskellige betingelser. Dette gøres med if-elif-else strukturer. Forestil dig der skal laves et vælg mellem om man er en dreng eller pige. Herunder er der lavet et simpelt eksempel:</p>
+<p>Ofte har man brug for at ens program skal gøre forskellige ting ved forskellige betingelser. Dette gøres med if-elif-else strukturer. Forestil dig der skal laves et vælg mellem om man er en dreng eller pige. Herunder er der lavet et eksempel hvor indtastningen <span class="inl_cmd">1</span> giver en dreng og <span class="inl_cmd">2</span> giver en pige:</p>
+
+<p>Læg mærke til at der er lighedstegn efter hinanden (<span class="inl_cmd">==</span>). Det bliver vi nød til at gøre fordi python ellers tror at vi opretter en ny variabel</p>
 
 <pre>
 	<code class="python">
 valg = int(input("Tast 1 for dreng og 2 for pige: "))
 
 if valg == 1:
-	
+
 	print ("\nDu valgte dreng")
 	
 if valg == 2:
-	
+
 	print ("\nDu valgte pige")
 	</code>
 </pre>
@@ -77,7 +79,6 @@ if valg == 2:
 Tast 1 for dreng og 2 for pige: 2     
 
 Du valgte pige
-
 
 ------------------
 (program exited with code: 0)
@@ -139,11 +140,7 @@ else:
 	<li>Hvis det hverken er 1 eller 2, så"svarer Python med "Du skal vælge enten 1 eller 2" (<span class="inl_cmd">else</span>).</li>
 </ol>
 
-<p>Læg mærke til strukturen og den orden <span class="inl_cmd">if</span>, <span class="inl_cmd">elif</span> og <span class="inl_cmd">else</span> står i. </p>
-
-
-
-<p>Læg  mærke til, at der skal anvendes en fast struktur. <span class="inl_cmd">elif</span> anvendes kun hvis der er mere end 2 betingelser der skal undersøges. Der skal altid afsluttes med <span class="inl_cmd">else</span>. Generelt kan disse betingelser skrives op på følgende formel</p>
+<p>Koden er stadig ret mangefuld, da den jo ikke gentager spørgsmålet hvis brugeren svarer forkert. Det er noget vi vil kigge på i afsnittet om løkker. Læg  mærke til, at der skal anvendes en fast struktur. <span class="inl_cmd">elif</span> anvendes kun hvis der er mere end 2 betingelser der skal undersøges. Der skal altid afsluttes med <span class="inl_cmd">else</span>. Generelt kan disse betingelser skrives op på følgende formel</p>
 
 <pre>
 	<code class="python">
@@ -165,14 +162,14 @@ else:
 
 <h2>X in Y</h2>
 
-<p>Ofte har man brug for at finde ud af om en tekststreng findes i en sætning, f.eks. om et navn er nævnt i en sætning. Ved at bruge <span class="inl_cmd">in</span> laver man denne forspørgsel, og programmet svarer tilbage med enten <span class="inl_cmd">True</span> eller <span class="inl_cmd">False</span>. Dette enten/eller svar kaldes på progammeringssprog for "boolean". Lad os afprøve det herunder.</p>
+<p>Ofte har man brug for at finde ud af om en tekststreng findes i en sætning, f.eks. om et navn er nævnt i en sætning. Det kan man gøre ved at bruge <span class="inl_cmd">in</span>. Det får programmet til at svarer tilbage med enten <span class="inl_cmd">True</span> eller <span class="inl_cmd">False</span>. Dette enten/eller svar kaldes på progammeringssprog for "boolean". Lad os afprøve det herunder.</p>
 
 <blockquote>
 	<p>"Der findes mange programmeringssprog, og de kan stort set det samme. Men de gør den på en forskellig måde. C er et meget præcist, men også meget omstændigt sprog, hvorimod Python er noget lettere at gå til."</p>
 </blockquote>
 
 
-<p>Lad os undersøge ovenstående sætning.</p>
+<p>Lad os undersøge denne sætning for følgende tekst: <span class="inl_cmd">Python</span>, <span class="inl_cmd">C</span> og <span class="inl_cmd">Java</span>.</p>
 
 <pre>
 	<code class="python">
@@ -280,11 +277,11 @@ Press return to continue
 ╚═══════════════════╝
 </pre>
 
-<p>Øverst skriver vi <span class="inl_cmd">def velkommen()</span>. Det betyder at vi nu definerer en funktion der hedder <span class="inl_cmd">velkommen</span>. Det som står i funktionen bliver først kørt når programmet støder på <span class="inl_cmd">velkommen()</span>.</p>
+<p>Øverst skriver vi <span class="inl_cmd">def Velkommen()</span>. Det betyder at vi nu definerer en funktion der hedder <span class="inl_cmd">velkommen</span>. Det som står i funktionen bliver først kørt når programmet kalder funktionen, og det gøres ved at skrive <span class="inl_cmd">Velkommen()</span>. Se her eksemplet:</p>
 
 <pre>
 	<code class="python">
-def velkommen():
+def Velkommen():
 
 	print("╔═══════════════════╗")
 	print("║                   ║")
@@ -294,7 +291,7 @@ def velkommen():
 	
 
 print("Herunder udskrives funktionen\n")
-velkommen()
+Velkommen()
 	</code>
 </pre>
 
@@ -314,115 +311,11 @@ Press return to continue
 
 </pre>
 
-<p>Som du kan se springer programmet selve funktionen over, og udfører den først når programmet rammer <span class="inl_cmd">velkommen()</span>. Definitioner skal placeres øverst i programmet, da programmet bliver indlæst fra top til bund.</p>
-
-<!--- <p>Ofte har man behov for at gentage den samme kode igen og igen. Overvej opgaven ovenfor hvor brugeren skulle vælge mellem dreng eller pige. Problemet med den løsning vi fandt er, at brugeren bliver spurgt en gang, hvilket er smart hvis han svarer rigtigt. Men brugere har det med at svare "forkert" - eller skulle man rettere sige - komme med nogle svar programmøren ikke regnede med. Derfor skal vi kunne genkalde spørgsmålene, så svaret kan løbe igennem <span class="inl_cmd">if-else</span> strukturen igen.</p>
-
-<pre>
-	<code class="python">
-def question():
-
-	valg = int(input("Tast 1 for dreng og 2 for pige: "))
-
-	if valg == 1:
-	
-		print ("\nDu valgte dreng")
-	
-	elif valg == 2:
-	
-		print ("\nDu valgte pige")
-	
-	else:
-	
-		print ("\nDu skal vælge enten 1 eller 2")
-		
-		question()
-
-question()
-	</code>
-</pre>
-
-<p>Tricket ovenfor er at flytte hele programmet ind under funktionen <span class="inl_cmd">question()</span>. Dette gøres ved at skrive linien <span class="inl_cmd">def *funktionsnavn*()</span></p>
-
-<p>Python læser filen igennem fra toppen og "indlærer" alle de linier der skal køres når <span class="inl_cmd">quiestion()</span> køres, hvorefter den får besked på at udføre den. I selve koden bliver <span class="inl_cmd">question()</span> kørt hvis brugeren vælger forkert. På den måde sikres det at spørgsmålet stilles igen og igen indtil brugeren svarer med 1 eller 2.</p>
-
-<pre class="ubuntu_terminal">
-Tast 1 for dreng og 2 for pige: 3
-Du skal vælge enten 1 eller 2
-Tast 1 for dreng og 2 for pige: 4
-Du skal vælge enten 1 eller 2
-Tast 1 for dreng og 2 for pige: 1
-
-Du valgte dreng
-
-
-------------------
-(program exited with code: 0)
-Press return to continue
-</pre>
-
-<p>Man skal dog være varsom med at anvende funktioner i funktioner, da de risikerer at "loope" programmet uden at brugeren kan afbryde den. Det kan ændres ved at indsætte en "timer".</p>
-
-<pre>
-	<code class="python">
-fail = 0
-
-def question():
-	
-	global fail
-
-	valg = int(input("Tast 1 for dreng og 2 for pige: "))
-
-	if valg == 1:
-	
-		print ("\nDu valgte dreng")
-		
-	elif valg == 2:
-	
-		print ("\nDu valgte pige")
-
-	else:
-		
-		fail += 1
-		
-		if fail == 3:
-			
-			print ("\nDu skal vist have skolepengene tilbage :|")
-			
-			exit()	
-	
-		print ("\nDu skal vælge enten 1 eller 2")		
-		
-		question()
-		
-question()
-	</code>
-</pre>
-
-<pre class="ubuntu_terminal">
-Tast 1 for dreng og 2 for pige: 3
-
-Du skal vælge enten 1 eller 2
-Tast 1 for dreng og 2 for pige: 4
-
-Du skal vælge enten 1 eller 2
-Tast 1 for dreng og 2 for pige: 5
-
-Du skal vist have skolepengene tilbage :|
-
-
-------------------
-(program exited with code: 0)
-Press return to continue
-</pre>
-
-<p>Læg mærke til at variablen <span class="inl_cmd">fail</span> der bliver lavet i toppen af dokumentet bliver henvist til i funktionen med <span class="inl_cmd">global fail</span>. Det skyldes at variabler som udgangspunkt hører til i hver deres funktioner. For at funktioner skal kunne anvende variabler der skal fungere i hele koden (globalt) skal vi gøre opmærksom på at det er en global variabel. På denne måde vil linien <span class="inl_cmd">fail = fail + 1</span> referere til den globale variabel og tælle en op hver gang brugeren fejler..</p>
-
--->
+<p>Som du kan se springer programmet selve funktionen over, og udfører den først når programmet rammer <span class="inl_cmd">Velkommen()</span>. Definitioner skal derfor placeres øverst i programmet, da programmet ellers ikke vil ane, at det skal gøre når det rammer <span class="inl_cmd">Velkommen()</span>.</p>
 
 <h2>Funktioner med parametre</h2>
 
-<p>Forestil dig en situation hvor vi skal have en blæser til at tænde når temperaturen overstiger et vist gradtal&deg;. I eksemplet herunder angiver vi selv temperaturen, men temperaturen kunne lige så godt have kommet fra en aflæsning af et digitalt termometer.</p>
+<p>Forestil dig en situation hvor vi skal have en blæser til at tænde når temperaturen overstiger et vist gradtal&deg;. I eksemplet herunder angiver vi selv temperaturen, men temperaturen kunne lige så godt have kommet fra en aflæsning af et digitalt termometer. Vi sætter <span class="inl_cmd">a</span> til at være rummets temperatur og <span class="inl_cmd">b</span> til at være den temperatur der skal til for at tænde blæseren.</p>
 
 <pre>
 	<code class="python">
@@ -455,11 +348,11 @@ tænd
 Press return to continue
 </pre>
 
-<p>Ved at angive to konstanter i funktionen kan vi "kalde" parametre fra koden ind i funktionen. På denne måde skal funktionen ikke laves om, hvis betingelserne senere ændres.</p>
+<p>Ved at angive to konstanter i funktionen kan vi "kalde" parametre fra koden ind i funktionen. På den måde kan vi lave funktioner der er meget fleksible.</p>
 
 <h2>Check kode</h2>
 
-<p>Et trick man kan anvende når man programmerer og ønsker at følge udviklingen af ens variabler er, at lave en <span class="inl_cmd">chk()</span> funktion. på den måde kan man let tjekke sine variabler, og fjerne dem alle ved at sætte <span class="inl_cmd">check</span> til noget andet end 1.</p>
+<p>Et trick man kan anvende når man programmerer og ønsker at følge udviklingen af ens variabler er, at lave en <span class="inl_cmd">chk()</span> funktion. Det betyder at når vi sætter variablen <span class="inl_cmd">check</span> = 1, så vil de udføre funktionen ellers ikke. På den måde kan man under kodningen følge med hvad der sker.</p>
 
 <pre>
 	<code class="python">

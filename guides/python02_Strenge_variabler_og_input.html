@@ -101,11 +101,13 @@ Press return to continue
                                               ^
 SyntaxError: unexpected EOF while parsing
 
-
 ------------------
 (program exited with code: 1)
 Press return to continue
 </pre>
+
+<p>Læg mærke til to ting. For det første gør Python opmærksom på at fejlen er en <span class="inl_cmd">syntax-</span>fejl. Altså en "grammatisk" fejl. For det andet afslutter programmet med en <span class="inl_cmd">code 1</span>.</p>
+
 
 <h2>Lange tekststykker</h2>
 
@@ -132,7 +134,6 @@ Roser er røde
 Python er svært
 
 		.... NOT!
-
 
 ------------------
 (program exited with code: 0)
@@ -243,7 +244,6 @@ Dette er en sætning 	 horisontal TAB
 Dette er en sætning 
                      vertical TAB
 
-
 ------------------
 (program exited with code: 0)
 Press return to continue
@@ -265,7 +265,6 @@ print(var1 + var2)
 <pre class="ubuntu_terminal">
 3
 
-
 ------------------
 (program exited with code: 0)
 Press return to continue
@@ -273,12 +272,12 @@ Press return to continue
 
 <p>Det som sker her er, at vi sætter udtrykket (variablen) <span class="inl_cmd">var1</span> til at have værdien 1 og <span class="inl_cmd">var2</span> til værdien 2. Det kan vi se når vi beder Python om at udskrive summen af <span class="inl_cmd">var1</span>  og <span class="inl_cmd">var2</span> - resultatet er 3. Man kan sige at en variable er en stedfortræder for en værdi eller en tekststreng.</p>
 
-<p>Lad os lave et eksempel med nogle tekststrenge:</p>
+<p>Lad os lave et eksempel med nogle tekststrenge (læg mærke til mellemrummet før "verden":</p>
 
 <pre>
 	<code class="python">
 var1 = "hej"
-var2 = " verden" <span class="red">&lt;-- Læg mærke til mellemrummet før verden</span> 
+var2 = " verden"
 
 print(var1 + var2)
 	</code>
@@ -287,13 +286,20 @@ print(var1 + var2)
 <pre class="ubuntu_terminal">
 hej verden
 
-
 ------------------
 (program exited with code: 0)
 Press return to continue
 </pre>
 
-<p>Man skal være opmærksom på at Python bruger <span class="inl_cmd">+</span> til at lægge værdier sammen. Havde vi ikke indsat et mellemrum før <span class="inl_cmd">verden</span>, ville udskriften have været <span class="inl_cmd">hejverden</span>. Det går godt i ovenstående tilfælde fordi første eksempel angår to tal (int) og det andet to teskstrenge (char). Men læg mærke til hvad der sker når vi blander det sammen:</p>
+<p>Man skal være opmærksom på at Python bruger <span class="inl_cmd">+</span> til at lægge værdier sammen. Havde vi ikke indsat et mellemrum før <span class="inl_cmd">verden</span>, ville udskriften have været <span class="inl_cmd">hejverden</span>. Man kunne også have udskrevet teksten ved at lægge et mellemrum til imellem variablerne:</p>
+
+<pre>
+	<code class="python">
+print(var1 + " " + var2)
+	</code>
+</pre>
+
+<p>Man skal være opmærksom på hvad man lægger sammen. Se nedenstående eksempel hvor jeg forsøger at lægge en teksstreng sammen med et tal:</p>
 
 <pre>
 	<code class="python">
@@ -310,13 +316,12 @@ Traceback (most recent call last):
     print(var1 + var2)
 TypeError: Can't convert 'int' object to str implicitly
 
-
 ------------------
 (program exited with code: 1)
 Press return to continue
 </pre>
 
-<p>Python kan ikke udføre sammenføjningen, fordi den læser <span class="inl_cmd">hej</span> som en tekststreng og <span class="inl_cmd">2</span> som et tal (int). Lektien man kan lære er, at man skal være præcis når man angiver sine variabler.</p>
+<p>Python kan ikke udføre sammenføjningen, fordi den læser <span class="inl_cmd">hej</span> som en tekststreng og <span class="inl_cmd">2</span> som et tal (int). Python kan ikke slå dem sammen til et resulatet. Vær derfor opmærksom på om du arbejder med talværdier eller tekst.</p>
 
 
 <h2>Variabler i tekststrenge</h2>
@@ -339,14 +344,13 @@ print ("Hej. Mit navn er {0}".format(tekst1))
 <pre class="ubuntu_terminal">
 Hej. Mit navn er Thomas
 
-
 ------------------
 (program exited with code: 0)
 Press return to continue
 </pre>
 
 
-<p>Det giver den fordel at man kan skrive sine sætninger, og så erstatte pladsholderne. F.eks:</p>
+<p>På den måde kan man indsætte variabler løbende mens man skriver sin tekst. Det eneste man skal være opmærksom på er rækkefølgen de optræder i, så koden indsætter den rigtige variabel. Herunder er et eksempel med 2 pladsholdere i samme sætningen</p>
 
 <pre>
 	<code class="python">
@@ -365,7 +369,6 @@ Mit navn er Thomas.
 Jeg er ved at lære Python. 
 
 	Det er "nemt".
-
 
 ------------------
 (program exited with code: 0)
@@ -419,7 +422,6 @@ print ("Du indtastede {0}".format(navn))
 Hvad er dit navn: Thomas
 Du indtastede Thomas
 
-
 ------------------
 (program exited with code: 0)
 Press return to continue
@@ -427,29 +429,73 @@ Press return to continue
 
 <h2>Indtastning af tal</h2>
 
-<p>Hvis du skal indtaste en værdi, f.eks. alder, skal du gøre python opmærksom på at det er et tal (interger). Det gøres ved at indsætte input funktionen i en <span class="inl_cmd">int()</span>.</p>
+<p>Hvis du skal indtaste en værdi, f.eks. alder, skal du gøre python opmærksom på om det er et heltal (int) eller et decimaltal (float).  Lad os først prøve at indtaste et heltal. For at få Python til at indlæse vores indtastning som et tal skal vi ændre indtastningen fra en streng til et tal. Det gør vi ved at ændre tekststrengen til et tal ved at sætte linien in i <span class="inl_cmd">int()</span> funktionen. </p>
 
 <pre>
 	<code class="python">
-# Variablen tal sættes ved hjælp af brugerens input
+talInt = int(input("Indtast et heltal: "))
 
-tal = int(input("Indtast et tal: "))
-
-print ("Det dobbelte er: {0}".format(tal*2))
+print ("Det dobbelte af heltallet er: {0}".format(talInt*2))
 	</code>
 </pre>
 
 <pre class="ubuntu_terminal">
-Indtast et tal: 45    
-Det dobbelte er: 90
+Indtast et heltal: 5
+Det dobbelte af heltallet er: 10
 
+------------------
+(program exited with code: 0)
+Press return to continue
+
+</pre>
+
+<p>Vi kan se det går galt hvis vi her vælger at indtaste et decimaltal. Vær opmærksom på, at decimaltal indtastet med <span class="inl_cmd">.</span> (punktum) og ikke <span class="inl_cmd">,</span> (komma).</p>
+
+<pre class="ubuntu_terminal">
+Indtast et heltal: 5.5
+Traceback (most recent call last):
+  File "test.py", line 1, in <module>
+    talInt = int(input("Indtast et heltal: "))
+ValueError: invalid literal for int() with base 10: '5.5'
+
+------------------
+(program exited with code: 1)
+Press return to continue
+</pre>
+
+<p>Fejlmeddelelsen er, at det tal vi taster ind ikke tilhører <span class="inl_cmd">base 10</span> hvilket er en anden betegnelse for 10-talssystemet. Laver vi nu koden om til at kunne modtage decimaltal sker der følgende (husk <span class="inl_cmd">.</span> i stedet for <span class="inl_cmd">,</span>):</p>
+
+<pre>
+	<code class="python">
+talInt = float(input("Indtast et heltal: "))
+
+print ("Det dobbelte af decimaltallet er: {0}".format(talInt*2))
+	</code>
+</pre>
+
+<pre class="ubuntu_terminal">
+Indtast et heltal: 3.14
+Det dobbelte af decimaltallet er: 6.28
 
 ------------------
 (program exited with code: 0)
 Press return to continue
 </pre>
 
-<p>Herunder er vist et eksempel hvor begge inputtyper anvendes</p>
+<p>Lad os se hvad der sker når vi indtaster et heltal:</p>
+
+<pre class="ubuntu_terminal">
+Indtast et heltal: 5
+Det dobbelte af decimaltallet er: 10.0
+
+------------------
+(program exited with code: 0)
+Press return to continue
+</pre>
+
+<p>Her kommer der ikke en fejl fordi Python kan læse tallet som et decimaltal. Og du kan se på resultatet (<span class="inl_cmd">10.0</span>) at det er et decimaltal.</p>
+
+<p>Herunder er vist et eksempel hvor der både anvendes en streng og et tal som input:</p>
 
 <pre>
 	<code class="python">
