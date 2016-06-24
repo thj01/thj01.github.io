@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+
+<head>
+	
+	<meta charset="UTF-8" lang="da"/>
+
+	<title>Python 3: Behandling af strenge - Thomas Jensen</title>
+
+	<link rel="stylesheet" href="../css/styles/docco.css" />
+
+	<link rel="stylesheet" href="../css/style.css" />
+
+	<link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono|Ubuntu|Ubuntu+Condensed' rel='stylesheet' type='text/css'>
+	
+	<script src="../js/toc2.js" type="text/javascript"></script>
+	<script src="https://code.jquery.com/jquery-2.2.2.js"></script>
+	<script src="../js/highlight.pack.js" type="text/javascript"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+
+
+</head>
+
+<!-- 
+
+code highlighter : https://highlightjs.org/
+
+code converter : http://www.freebits.co.uk/convert-html-code-to-text.html 
+
+-->
+
+
+<html>
+
+<body onload="generateTOC(document.getElementById('toc'));">
+
+<footer id="license"></footer>
+
+	<script> $( "#license" ).load( "license.html" ); </script>
+
+	<div id="toc">
+	<p>Indholdsfortegnelse</p>
+	
+	</div>
+	
+	<div class="title">Introduktion til Python 3</div>
+	
+<figure id="">
+
+	<img class="" src="images/python-logo-inkscape.svg" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+		
+
+<h1>Behandling af strenge</h1>
+
+
+<h2>Slicing</h2>
+
+<p>Ved hjælp af slicing kan man opdele tekststrenge i mindre stykker. For at "slice" tekststykket anvender vi følgende syntaks</p>
+
+<code class="cmd">*tekststreng* [*startposition*:*slutposition*]</code>
+
+<p>Tegnenes position i tekststrengen angives enten fra venstre med positive værdier eller fra Højre med negative. Her anvendt på mailen <span class="inl_cmd">hansboedker@dkmail.dk</span></p>
+
+<table class="centreret">
+	<thead>
+		<tr>
+			<th>h</th>
+			<th>a</th>
+			<th>n</th>
+			<th>s</th>
+			<th>b</th>
+			<th>o</th>
+			<th>e</th>
+			<th>d</th>
+			<th>k</th>
+			<th>e</th>
+			<th>r</th>	
+			<th>@</th>
+			<th>d</th>
+			<th>k</th>
+			<th>m</th>
+			<th>a</th>
+			<th>i</th>
+			<th>l</th>
+			<th>.</th>
+			<th>d</th>
+			<th>k</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>0</td>
+			<td>1</td>
+			<td>2</td>
+			<td>3</td>
+			<td>4</td>
+			<td>5</td>
+			<td>6</td>
+			<td>7</td>
+			<td>8</td>
+			<td>9</td>
+			<td>10</td>
+			<td>11</td>
+			<td>12</td>
+			<td>13</td>
+			<td>14</td>
+			<td>15</td>
+			<td>16</td>
+			<td>17</td>
+			<td>18</td>
+			<td>19</td>
+			<td>20</td>
+		</tr>
+		<tr>
+			<td>-21</td>
+			<td>-20</td>
+			<td>-19</td>
+			<td>-18</td>
+			<td>-17</td>
+			<td>-16</td>
+			<td>-15</td>
+			<td>-14</td>
+			<td>-13</td>
+			<td>-12</td>
+			<td>-11</td>
+			<td>-10</td>
+			<td>-9</td>
+			<td>-8</td>
+			<td>-7</td>
+			<td>-6</td>
+			<td>-5</td>
+			<td>-4</td>
+			<td>-3</td>
+			<td>-2</td>
+			<td>-1</td>
+		</tr>
+	</tbody>
+</table>
+
+
+<p>Eksempler med ovenstående mail</p>
+
+<pre><code class="python">
+string = "hansboedker@dkmail.dk"
+
+#Starter fra position 0 og slutter ved position -3
+
+print (string[:-3])
+
+#Starter fra position 4 og slutter ved 12
+
+print (string[4:11])
+
+#starter ved position -3 og slutter ved 0
+
+print (string[-3:])
+
+print ("\n***\n")
+
+print ("Det var ikke så svært"[:16])
+
+print ("Det var ikke så svært"[16:])
+
+	</code>
+</pre>
+
+<pre class="ubuntu_terminal">
+hansboedker@dkmail
+boedker
+.dk
+
+***
+
+Det var ikke så 
+svært
+
+
+------------------
+(program exited with code: 0)
+Press return to continue
+</pre>
+
+
+<h2><span class="inl_cmd">len()</span> - samlet antal tegn i en streng</h2>
+
+<p><span class="inl_cmd">len()</span> tæller det samlede antal tegn der er i en streng - også mellemrum</p>
+
+<p>Eksempel: Hvor mange tegn er der i min.email@dkmail.dk</p>
+
+<pre><code class="python">
+# variabel der sætter mailen der skal undersøges
+
+mail = "hansboedker@dkmail.dk"
+
+# Variabel der udregner antallet af tegn
+
+antal_bogstaver = len(mail)
+
+# Nedestående notationsmåde er smartere når man har flere variabler i samme sætning
+
+print ("Emailen \"{0}\" har {1} tegn".format(mail, antal_bogstaver))
+	</code>
+</pre>
+
+<pre class="ubuntu_terminal">
+Emailen "hansboedker@dkmail.dk" har 21 tegn
+
+
+------------------
+(program exited with code: 0)
+Press return to continue
+</pre>
+
+<h2><span class="inl_cmd">str.count()</span> - Antallet af specifikke tegn/strenge i en teskstreng</h2>
+
+<p>Ofte har man brug for at kunne udskille specielle tekstelementer i en teskstreng. F.eks. hvis man skal undersøge om en mail er dansk. Det kræver at den har et <span class="inl_cmd">.dk</span> i slutningen. Det kunne f.eks. være at undersøge om mailen i eksemplet ovenfor (hans.boedker@dkmail.dk).</p>
+
+<p>Lad os undersøge den for <span class="inl_cmd">dk</span></p>
+
+<pre>
+	<code class="python">
+# variabel der sætter mailen der skal undersøges
+
+string = "hansboedker@dkmail.dk"
+
+#variabel der sætter hvilken substreng der skal findes
+
+substring ="dk"
+
+# Tæller antallet af substrenge i strengen (sub betyder under)
+antal = string.count(substring)
+
+print ("Strengen {0} har \"{1}\" stående {2} gange.".format(string, substring, antal))
+	</code>
+</pre>
+
+<pre class="ubuntu_terminal">
+Strengen hans.boedker@dkmail.dk har "dk" stående 3 gange.
+
+
+------------------
+(program exited with code: 0)
+Press return to continue
+
+</pre>
+
+<p>Hvis vi vil undersøge om det specifikt er de sidste tre bogtstaver der indeholder skal vi anvende <span class="inl_cmd">string()</span> kommandoen mere specifikt. Parantesen kan udvides med start og slutposition på søgningen, sådan at den siger <span class="inl_cmd">(substring, startpos, slutpos)</span>. I dette tilfælde skal vi altså finde antallet af bogstaver og finde <span class="inl_cmd">.dk</span> blandt de sidste tre cifre. Hvis mailen f.eks. er 20 bogstaver lang skal vi altså søge fra 17 (20-3) &#8594; 20. </p>
+
+
+<pre>
+	<code class="python">
+# variabel der sætter mailen der skal undersøges
+
+string = "hansboedker@dkmail.dk"
+
+# Længden af strengen
+
+length = len(string)
+
+#variabel der sætter hvilken substreng der skal findes
+
+substring =".dk"
+
+# Tæller antallet af substrenge i strengen fra position -3 fra slutningen
+antal = string.count(substring[-3:])
+
+print ("\"{0}\" er de sidste 3 tegn emailadressen \"{1}\"".format(substring, string))
+	</code>
+</pre>
+
+<pre class="ubuntu_terminal">
+".dk" er de sidste 3 tegn emailadressen "hans.boedker@dkmail.dk"
+
+
+------------------
+(program exited with code: 0)
+Press return to continue
+</pre>
+
+<h2><span class="inl_cmd">find()</span> - Find tekstelementer i tekststrenge</h2>
+
+<p>For at finde tekstelementer i tekststrenge anvender vi funktionen <span class="inl_cmd">find()</span>.</p>
+
+<pre>
+	<code class="python">
+mail = "hansboedker@dkmail.dk" # Angiv mailadresse
+
+hvor_er_at = mail.find("@") # find position af @
+
+hvor_er_dot = mail.find(".") # find position af .
+
+# Herunder oprettes varibaler der viser udsnittet af mailen, så den kan angives som
+# *brugernavn*@*domænenavn*.*landekode*
+
+brugernavn = mail[:hvor_er_at]
+
+efternavn = mail[hvor_er_at+1:hvor_er_dot]
+
+landekode = mail[hvor_er_dot+1:]
+
+# Resultatet udskrives
+
+print("@ er på position: {0}".format(hvor_er_at)) # udskriv hvor @ er
+
+print(". er på position: {0}".format(hvor_er_dot)) # udskriv hvor . er
+
+print("\nMailadressen der undersøges: {0}".format(mail))
+
+print("\nBrugernavn: {0}".format(brugernavn))
+
+print("Domænenavn: {0}".format(efternavn))
+
+print("landekode: {0}".format(landekode))
+	</code>
+</pre>
+
+<pre class="ubuntu_terminal">
+@ er på position: 11
+. er på position: 18
+
+Mailadressen der undersøges: hansboedker@dkmail.dk
+
+Brugernavn: hansboedker
+Domænenavn: dkmail
+landekode: dk
+
+
+------------------
+(program exited with code: 0)
+Press return to continue
+
+</pre>
+
+<h3>Opgave - tjek mail</h3>
+
+<p>Lav en kode hvor du tjekker en email ud fra følgende parametre: </p>
+
+<ol class="">
+	<li>Om den har mere end 7 tegn</li>
+	<li>Der kun er et @</li>
+	<li>At det er en ".dk" mail</li>
+	<li>At @ ikke står mellem de 4 sidste tegn</li>
+</ol>
+
+<p>Udskriften skal enten sige om det er en rigtig mail eller angive hvad der er fejlen og bede om en ny indtastning.</p>
+
+<h3>Opgave - tjek mail 2</h3>
+
+<p>Ændr koden så den også svarer med alle de data du undersøger for:</p>
+
+<ol class="">
+	<li>Hvor mange tegn mailen indeholder</li>
+	<li>antal tegn for brugernavn, domæne og landekode</li>
+	<li>Antallet af @</li>
+	<li>Hvilken landekode mailen har</li>
+</ol>
+
+
+<p></p>
+
+<p></p>
+
+<p></p>
+
+
+
+	</body>
+
+</html>

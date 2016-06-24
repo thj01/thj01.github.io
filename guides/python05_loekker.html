@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+
+<head>
+	
+	<meta charset="UTF-8" lang="da"/>
+
+	<title>Python 3: Løkker - Thomas Jensen</title>
+
+	<link rel="stylesheet" href="../css/styles/docco.css" />
+
+	<link rel="stylesheet" href="../css/style.css" />
+
+	<link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono|Ubuntu|Ubuntu+Condensed' rel='stylesheet' type='text/css'>
+	
+	<script src="../js/toc2.js" type="text/javascript"></script>
+	<script src="https://code.jquery.com/jquery-2.2.2.js"></script>
+	<script src="../js/highlight.pack.js" type="text/javascript"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+
+
+</head>
+
+<!-- 
+
+code highlighter : https://highlightjs.org/
+
+code converter : http://www.freebits.co.uk/convert-html-code-to-text.html 
+
+-->
+
+
+<html>
+
+<body onload="generateTOC(document.getElementById('toc'));">
+
+<footer id="license"></footer>
+
+	<script> $( "#license" ).load( "license.html" ); </script>
+
+	<div id="toc">
+	<p>Indholdsfortegnelse</p>
+	
+	</div>
+	
+	<div class="title">Introduktion til Python 3</div>
+	
+<figure id="">
+
+	<img class="" src="images/python-logo-inkscape.svg" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+		
+<h1>Løkker - et overblik</h1>
+
+<p>Ofte har man brug for at et program skal gøre det samme igen og igen. Det kan f.eks. være at skulle udføre den samme beregning, på et stigende tal. Det kan f.eks. være at udskrive kvadrattallene (1,4,9,16,25 ...). På engelsk kaldes dette et <span class="inl_cmd">loop</span>.</p>
+
+<p>Python arbejder med 2 forskellige loops:</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th style="width:140px">Løkke type</th>
+			<th>Beskrivelse</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><span class="inl_cmd">for</span></td>
+			<td><span class="inl_cmd">for</span> løkken anvendes når man kender det nøjagtige antal gennemløb. Hvis man f.eks. ved at en funktion skal gennemløbes 10 gange vil man anvende <span class="inl_cmd">for</span>-løkken.</td>
+		</tr>
+		<tr>
+			<td><span class="inl_cmd">while</span></td>
+			<td><span class="inl_cmd">while</span>-løkken anvendes når en funktion skal gennemløbes indtil noget er opfyldt. Det kan f.eks. være at vi vil finde alle kvadrattal under 200.</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Derudover gælder der også nogle kontroludsagn (control statements), som kan ændre udførslen af løkker.</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th style="width:140px">Kontroludsagn</th>
+			<th>Beskrivelse</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><span class="inl_cmd">break</span></td>
+			<td>Bryder løkken og lader programmet fortsætte lige efter løkken</td>
+		</tr>
+		<tr>
+			<td><span class="inl_cmd">continue</span></td>
+			<td>Bryder behandlingen af koden, hopper videre til næste værdi og kører løkken derfra</td>
+		</tr>
+		<tr>
+			<td><span class="inl_cmd">pass</span></td>
+			<td><span class="inl_cmd">pass</span> er hvad man kalder en <span class="inl_cmd">null operation</span>. Med den kommando kan man indsætte ekstra kode for enkelttilfælde uden at resten af koden ændres</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>De ovenstående forklaringer ment som et indblik i hvad det er løkker og kontroludsagn gør. Herunder vil løkkerne blive gennemgået udførligt.</p>
+
+
+<h1><span class="inl_cmd">for</span> løkken</h1>
+
+<p></p>
+
+<p>Nogle gange skal man have sit program til at udgøre den samme operation flere gange. til at udføre dette anvendes man løkker.</p>
+
+<pre>
+	<code class="python">
+for i in range(5): #Udfør for de første 10 værdier
+	print (i)
+	</code>
+</pre>
+
+<pre class="ubuntu_terminal">
+0
+1
+2
+3
+4
+
+------------------
+(program exited with code: 0)
+Press return to continue
+</pre>
+
+<p>Læg mærke til at Python starter med at tælle fra <span class="inl_cmd">0</span>. Man skal vænne sig til at computere tæller fra <span class="inl_cmd">0</span> og ikke en. Hvis vi skal have computeren til at skrive tallen "menneskeligt" skal vi lægge 1 til hver gang:</p>
+
+<pre>
+	<code class="python">
+for i in range(5): #Udfør for de første 10 værdier
+	print (i + 1)
+	</code>
+</pre>
+
+<pre class="ubuntu_terminal">
+1
+2
+3
+4
+5
+
+------------------
+(program exited with code: 0)
+Press return to continue
+</pre>
+
+<p>Vi kan også vælge en delmængde f.eks. tallene fra 8-13.</p>
+
+<pre>
+	<code class="python">
+for i in range(8,13): #Udfør for værdierne 8-13
+	print (i)
+	</code>
+</pre>
+
+<pre class="ubuntu_terminal">
+8
+9
+10
+11
+12
+
+------------------
+(program exited with code: 0)
+Press return to continue
+</pre>
+
+<p>Læg mærke til værdierne den udskriver. Umiddelbart ville vi forvente at Python også skrev 13 ud, men sådan er det ikke. Så i <span class="inl_cmd">range</span> er den første værdi inkluderet men den sidste er ikke.</p>
+
+
+<p>Det kan være uhensigtsmæssigt at få talrækker som den ovenstående udskrevet med et linieskift hver gang. Ændr koden til ved at tilføje <span class="inl_cmd">end=" "</span>:</p>
+
+<pre>
+	<code class="python">
+for i in range(0,10):
+	print (i, end=" ")
+	</code>
+</pre>
+
+<pre class="ubuntu_terminal">
+0 1 2 3 4 5 6 7 8 9
+
+------------------
+(program exited with code: 0)
+Press return to continue
+</pre>
+
+<p>Dette får python til at udskrive uden at lave et linieskift hver gang.</p>
+
+<p>Ved hjælp af <span class="inl_cmd">range</span> kommandoen kan vi også få den til at udskrive hvert x'te tal f.eks. hver andet (lige tal):</p>
+
+<pre>
+	<code class="python">
+for i in range(0,10,2):
+	print (i, end=" ")		
+	</code>
+</pre>
+
+<pre class="ubuntu_terminal">
+0 2 4 6 8
+
+------------------
+(program exited with code: 0)
+Press return to continue
+
+</pre>
+
+<p>Nogle gange skal den samme programlinie køres flere gange. Det kan f.eks. være hvis man gerne vil finde de 12 første trekanttal – altså talrække 1, 3, 6, 10, 15, 21... . Man kan udregne tallene med formlen herunder:</p>
+
+<figure id="">
+
+	<img class="p40"src="images/programmering_trekantformel.svg" alt="" title="" />
+
+	<figcaption>Trekantformlen</figcaption>
+
+</figure>
+
+<p>Ved at lave en løkke der sørger for at n stiger med en hver gang kan vi altså udregne det næste trekanttal. Her anvender vi en for løkke</p>
+
+<pre>
+<code class="python">
+for i in range(1,12):
+	
+	trekanttal = ((i*(i+1))/2, end = " - ")
+	
+	print (trekanttal)
+	</code>
+</pre>
+
+<pre class="ubuntu_terminal">
+1.0-3.0-6.0-10.0-15.0-21.0-28.0-36.0-45.0-55.0-66.0-
+
+------------------
+(program exited with code: 0)
+Press return to continue
+</pre>
+
+<p>Python sætter en decimal på, fordi den har divideret. Dette kan vi fjerne ved at tvinge Python til at se resultatet som et heltal (interger)</p>
+
+
+<pre>
+<code class="python">
+for i in range(1,12):
+	
+	trekanttal = int((i*(i+1))/2)
+	
+	print (trekanttal, end=" - ")
+	</code>
+</pre>
+
+<pre class="ubuntu_terminal">
+1 - 3 - 6 - 10 - 15 - 21 - 28 - 36 - 45 - 55 - 66 - 
+
+------------------
+(program exited with code: 0)
+Press return to continue
+</pre>
+
+<p>En for løkke fungerer ved at man sætter alle betingelserne i den efterfølgende parentes. Den fortæller (Hvad er startværdien; Hvad er slutværdien; Hvad skal variablen vokse med pr. omgang).</p>
+
+<p>Start- og slutværdien er også den første og den sidste værdi $i gennemløber. Variablen behøver ikke at hedde $i, men kunne lige så godt have været $a.</p>
+
+<h2>For char in ...</h2>
+
+<p>Ofte har man brug for at kunne gennemføre en funktion på hver eneste tegn i en tekststreng. Herunder er vist et simpelt eksempel hvor man ved hjælp af en for-løkke printer hver bogstav i navnet.</p>
+
+<pre>
+	<code class="python">
+navn = "Thomas"
+
+for char in navn:
+	
+	print(char)
+	</code>
+</pre>
+
+<pre class="ubuntu_terminal">
+T
+h
+o
+m
+a
+s
+
+
+------------------
+(program exited with code: 0)
+Press return to continue
+</pre>
+
+<p>Dette kan anvendes praktisk, hvis man ønsker at finde bestemte tegn i en tekststreng, f.eks. dots (<span class="inl_cmd">.</span>) i en IP-adresse. Herunder vil vi finde placeringen af dots i IP-adressen: 192.168.2.100. Se nedestående tabel, hvor IP-adressen sættes ind i et positionsskema:</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>1</th>
+			<th>9</th>
+			<th>2</th>
+			<th>.</th>
+			<th>1</th>
+			<th>6</th>
+			<th>8</th>
+			<th>.</th>
+			<th>2</th>
+			<th>.</th>
+			<th>1</th>
+			<th>0</th>
+			<th>0</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>0</td>
+			<td>1</td>
+			<td>2</td>
+			<td>3</td>
+			<td>4</td>
+			<td>5</td>
+			<td>6</td>
+			<td>7</td>
+			<td>8</td>
+			<td>9</td>
+			<td>10</td>
+			<td>11</td>
+			<td>12</td>
+		</tr>
+	</tbody>
+</table>
+
+<pre>
+	<code class="python">
+ip = "192.168.2.100"
+
+tegn = -1 # Værdien sættes til -1, for at første værdi antager 0
+
+for char in ip:
+	
+	tegn +=1
+	
+	dot = "." in char
+	
+	if dot == True:
+		
+		print ("Here is a dot {0}".format(tegn))
+	</code>
+</pre>
+
+<pre class="ubuntu_terminal">
+Here is a dot 3
+Here is a dot 7
+Here is a dot 9
+
+
+------------------
+(program exited with code: 0)
+Press return to continue
+</pre>
+
+
+<p>Vi skal senere lære hvordan vi kan arbejde med tekstrenge, sådan at vi f.eks. kan analysere de tal der står mellem de forskellige dot's.</p>
+
+<h2>Opgaver</h2>
+
+<h3>Opgave - Vinkelsum i polygon</h3>
+
+<p>Lav en løkke der beregner den enkelte vinkel og  den samlede vinkel i en ligesidet polygon med op til 20 sider. Outputtet skal være som nedenfor:</p>
+
+<pre>
+	<code class="html">
+I en 3-kant er vinkelsummen 180&deg; og den enkelte vinkel er 60&deg;
+I en 4-kant er vinkelsummen 360&deg; og den enkelte vinkel er 90&deg;
+...
+I en 20-kant er vinkelsummen ...
+	</code>
+</pre>
+
+<p><span class="bold">Hint:</span></p>
+
+<ul class="disc">
+	<li>Formlen for en polygons vinkelsum er hvor vinkelsum = 180&deg; &middot; (n-2), og hvor n = antal kanter.</li>
+	<li>Prøvekør løkken ved at udskrive $i.</li>
+	<li>For at kunne få outputtet til at skifte linie skal du anvende HTML koden &lt;br&gt;.</li>
+</ul>
+
+<h3>Opgave - Fibonacchi tal</h3>
+
+<p>Fibonaccitallene er en talrække, som har følgende egenskab. Hvis man dividerer et tal i rækken med det forgående tal, så vil dette tal tilnærme sig værdien &phi; (1.6180339...) som også bliver kaldt det gyldne snit. </p>
+
+<p>Fibonaccitalrækken er: 1, 1, 2, 3, 5, 8, 13, 21 ... </p>
+
+<p>Man kan udregne &phi; ud fra følgende formel baseret på fibonaccitallene hvor man tager et fibonaccital og dividerer det med det efterfølgende.</p>
+
+<figure id="p60">
+
+	<img src="images/programmering_formel_for_phi.svg" alt="" title="" />
+
+	<figcaption>Formel for &phi; ud fra fibonaccitallene</figcaption>
+
+</figure>
+
+<p>Opgaven er at lave en kode der tager talrækken: 0, 1, 2, 3, 4, 5 .... og laver den om til fibonaccital. på følgende måde:</p>
+
+<ul class="none">
+	<li>0 + 1 = 1</li>
+	<li>1 + 2 = 3</li>
+	<li>2 + 3 = 5</li>
+	<li>3 + 5 = 8</li>
+	<li>5 + 8 = 13</li>	
+</ul>
+
+<p>Koden skal udregne de første 20 fibonaggital: Her er en forklaring på koden:</p>
+
+<ol class="">
+	<li>Lav to variabler a, b og sæt dem til henholdsvis 0 og 1</li>
+	<li>lav en forløkke der kører op til 20 gange baseret på i</li>
+	<li>lad i vokse med en hver gang koden køres</li>
+	<li>Udskriv a, hvis den er stærre end 0</li>
+	<li>Gem den gamle værdi for a i en ny variabel (f.eks: old_a)</li>
+	<li>Sæt a = b</li>
+	<li>Sæt b = b + den gamle værdi for a</li>
+</ol>
+
+<p>Koden skal give nedestående output</p>
+
+<pre class="ubuntu_terminal">
+1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987 1597 2584 4181 6765 
+
+------------------
+(program exited with code: 0)
+Press return to continue
+</pre>
+
+<p>Kan du ændre i koden så den også regner &phi; ud og giver nedestǻende output?</p>
+
+<pre class="ubuntu_terminal">
+Fibonacci taller er: 1 og φ er: 1.0
+Fibonacci taller er: 1 og φ er: 0.5
+Fibonacci taller er: 2 og φ er: 0.6666666666666666
+Fibonacci taller er: 3 og φ er: 0.6
+Fibonacci taller er: 5 og φ er: 0.625
+Fibonacci taller er: 8 og φ er: 0.6153846153846154
+Fibonacci taller er: 13 og φ er: 0.6190476190476191
+Fibonacci taller er: 21 og φ er: 0.6176470588235294
+Fibonacci taller er: 34 og φ er: 0.6181818181818182
+Fibonacci taller er: 55 og φ er: 0.6179775280898876
+Fibonacci taller er: 89 og φ er: 0.6180555555555556
+Fibonacci taller er: 144 og φ er: 0.6180257510729614
+Fibonacci taller er: 233 og φ er: 0.6180371352785146
+Fibonacci taller er: 377 og φ er: 0.6180327868852459
+Fibonacci taller er: 610 og φ er: 0.6180344478216818
+Fibonacci taller er: 987 og φ er: 0.6180338134001252
+Fibonacci taller er: 1597 og φ er: 0.6180340557275542
+Fibonacci taller er: 2584 og φ er: 0.6180339631667066
+Fibonacci taller er: 4181 og φ er: 0.6180339985218034
+Fibonacci taller er: 6765 og φ er: 0.618033985017358
+
+
+------------------
+(program exited with code: 0)
+Press return to continue
+</pre>
+
+<p>Lav funktionen <span class="inl_cmd">fibo(n)</span> hvor <span class="inl_cmd">n</span> er antallet af fibonaccital.</p>
+
+<h1>While</h1>
+
+<p>While betingelser angiver noget der skal ske så længe en betingelse er opfyldt. Herunder laver vi en kode, der udskriver tallet a så længe det er under 10</p>
+
+<pre>
+	<code class="python">
+a = 0
+
+while a &lt; 10:
+
+    a +=1
+
+    print (a)
+
+print ("\nNu har vi udskrevet de 10 første tal")
+	</code>
+</pre>
+
+<pre class="ubuntu_terminal">
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+
+Nu har vi udskrevet de 10 første tal
+
+
+------------------
+(program exited with code: 0)
+Press return to continue
+</pre>
+
+<p>Det som koden gør er, at mens (<span class="inl_cmd">while</span>) betingelsen er opfyldt kører den det som er rykket ind under koden. I dette tilfælde kører koden indtil a ikke længere er mindre en 10.</p>
+
+<h2>Opgaver</h2>
+
+<h3>Beskriv hvad hvad koden gør?</h3>
+
+<pre>
+	<code class="python">
+a = 0
+
+while a != 8:
+
+	a = int(input("Gæt hvilket tal jeg er: "))
+
+print ("\nN I C E")
+	</code>
+</pre>
+
+<h3>Udvid koden</h3>
+
+<ul class="disc">
+	<li>det efter 5 forsøg i input teksten skriver: Kan man virkeligt gætte forkert så mange gange?</li>
+	<li>At det skriver "Godt gættet :)!" når du rammer rigtigt</li>
+</ul>
+
+<p>Herunder kan du se en pseudo kode hertil</p>
+
+<ol class="">
+	<li>input</li>
+	<li>mens a &ne; 8
+		<ol class="">
+			<li>mens antal &lt; 5 and a &ne; 8</li>
+			<li>Mens antal &gt;4 and a &ne; 8</li>
+			<li>Mens a = 8</li>
+		</ol>
+	</li>
+</ol>
+
+<p><span class="bold">HINT:</span> for at kunne få en kode til at afbryde anvender man kommandoen <span class="inl_cmd">exit()</span>. Når koden læser denne linie afsluttes kørslen. Den skal indsættes under pkt. 2.3</p>
+
+<h1>Betingede løkker</h1>
+
+<p>I de ovenstående kapitler har løkkerne været simple, fordi vi har været helt klar over hvad de skulle. Det hænder dog, at man vil sætte nogle betingelser for løkkerne. Det kan f.eks. være en kode der skal løbe indtil brugeren har valgt rigtigt.</p>
+
+<p>Forestil dig at vi laver et spørgsmål om et antal brugere, men at vi kun vil acceptere 4. Den lette løsning er, at lave en kode der forventer at brugere svarer rigtigt.</p>
+
+<pre>
+	<code class="python">
+antalBrugere = int(input("Indtast antal brugere (1-4(: "))
+	</code>
+</pre>
+
+<p>Den kode kører rigtig fint lige indtil en svarer noget andet end vi forventer. Det problem kan vi eliminere ved at gøre følgende:</p>
+
+<h2>break</h2>
+
+<p></p>
+
+<pre>
+	<code class="python">
+n = 0
+goal = 3
+while True:
+	if n == goal: 
+		break
+	else:
+		print("n er {0}. n skal være {1}".format(n, goal))
+		n +=1
+print("\nSå blev n = {0} :)".format(goal))
+	</code>
+</pre>
+
+<pre class="ubuntu_terminal">
+n er 0. n skal være 3
+n er 1. n skal være 3
+n er 2. n skal være 3
+
+Så blev n = 3 :)
+
+------------------
+(program exited with code: 0)
+Press return to continue
+</pre>
+
+<p><span class="inl_cmd">while</span>-løkken kører så længe den ikke modtager et <span class="inl_cmd">False</span>. D.v.s. den kan køre uendeligt. Det eneste som får løkken til at stoppe er fordi der er indsat en <span class="inl_cmd">break</span> kommando hvis n er lig med variablen <span class="inl_cmd">goal</span>. <span class="inl_cmd">break</span> kommandoen bryder <span class="inl_cmd">while</span>-løkken og lader programmet køre videre.</p>
+
+<h2>continue</h2>
+
+<p>Herunder vil vi sætte koden til at udskrive tallene fra 1-15, men den må ikke udskrive tal fra 3-tabellen. Det betyder at vi skal undersøge tallene ved hjælp af  <span class="inl_cmd">modulus</span> (se ovenfor):</p>
+
+<pre>
+	<code class="python">
+for i in range(1,16):
+	if i%3 == 0:
+		print("XXX", end="  ")
+		continue
+	else:
+		print(i, end="  ")
+	</code>
+</pre>
+
+<pre class="ubuntu_terminal">
+1  2  XXX  4  5  XXX  7  8  XXX  10  11  XXX  13  14  XXX  
+
+------------------
+(program exited with code: 0)
+Press return to continue
+</pre>
+
+<p>Det koden undersøger om modulus af i er = 0. Hvis den er så udskriver den <span class="inl_cmd">XXX</span> og får koden til at køre videre med næste i værdi. Det er netop forskellen mellem break og continue. <span class="inl_cmd">break</span> afbrød løkken, men <span class="inl_cmd">continue</span> lader den fortsætte.</p>
+
+<h2>pass</h2>
+
+<p><span class="inl_cmd">pass</span> er umiddelbart en underlig kommando, fordi den gør reelt ingen forskel. Men den er rigtig brugbar. Forestil dig en kode, hvor du vil udskrive tallene fra 1-10, men lige vill gøre opmærksom på at 7 er dit lykketal:</p>
+
+<pre>
+	<code class="python">
+for i in range(1,11):
+	if i == 7:
+		print("Næste tal er mit lykketal")
+		pass
+	print(i)
+	</code>
+</pre>
+
+<pre class="ubuntu_terminal">
+1
+2
+3
+4
+5
+6
+Næste tal er mit lykketal
+7
+8
+9
+10
+
+------------------
+(program exited with code: 0)
+Press return to continue
+</pre>
+
+<p><span class="inl_cmd">pass</span> kan også anvendes til at køre opmærksom på en kodestump der mangler </p>
+
+<pre>
+	<code class="python">
+for i in range(1,11):
+	if i%5==0:
+		print("Kode for tal i 5 tabellen mangler")
+		pass
+	print(i)
+	</code>
+</pre>
+
+<pre class="ubuntu_terminal">
+1
+2
+3
+4
+Kode for tal i 5 tabellen mangler
+5
+6
+7
+8
+9
+Kode for tal i 5 tabellen mangler
+10
+
+
+------------------
+(program exited with code: 0)
+Press return to continue
+</pre>
+
+<p><span class="inl_cmd">pass</span> er netop brugbar fordi den ikke gør noget ;).</p>
+
+
+<p></p>
+
+<p></p>
+
+<p></p>
+
+
+
+	</body>
+
+</html>
