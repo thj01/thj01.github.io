@@ -89,9 +89,10 @@ Press return to continue
 
 <p>En af de ting man støder på når man arbejder med programmering er, at computere tæller anderledes end vi gør. Når vi tæller starter vi fra en, og titalssystemet er anvendeligt for os fordi det passer med antallet af fingre på på hånden. Når vi har brugt alle fingrene så tæller vi antallet af fulde hænder. 22 kan altså forståes som 2 fulde hænder og 2 fingre. I 10-talssystemet skifter vi altså position (veksler til den næste enhed) når vi kommer til den 10. værdi.</p>
 
-<p>Til forskel fra en computer begynder vi ikke at tælle før vi har behov for det. Det er derfor vi definerer de naturlige tal som: &#8469; = {1, 2, 3, 4 ...}. Computeren anvender &#8469;<sub>0</sub> = {0, 1, 2, 3 ...}, fordi den først begynder at tælle når der bliver afsat hukommelse til det.</p>
+<p>Det som vi bare ikke lægger mærke til i det ovenstående er, at vi allerede er bevidste om at vi har to hænder. De er i vores hukommelse. Når vi sætter en computer til at huske et tal tilføjer vi en ny hukommelsesblok der består af et antal transistorer som enten kan være slukket eller tændte. I starten er alle transistorerne i hukommelsesblokken sat til 0. Det svarer lidt til når vi skal flytte og anvender flyttekasser. Det første vi gør er at samle kassen hvilket giver os en tom kasse. Herefter tæller vi genstandende vi kommer i en efter en. Det er den talmængde vi kalder &#8469; = {1, 2, 3, 4 ...} og den giver mening for os. Pointen er at vi skal huske at computere anvender &#8469;<sub>0</sub> = {0, 1, 2, 3 ...}.</p>
 
-<p>Computerens tællemekanisme består af transistorer som enten kan være slukket eller tændte. Det præsenterer vi ved tallene <span class="inl_cmd">0</span> og <span class="inl_cmd">1</span>. For at vise dette kigger vi på en byte (der består af 8 bit) der tæller:</p>
+<p>For at vise dette kigger vi på en byte (der består af 8 bit) der tæller:</p>
+
 
 <table class="">
 	<thead>
@@ -324,61 +325,69 @@ Press return to continue
 	</tbody>
 </table>
 
-<p>Det er vigtigt at man holder styr på hvilke tal og værdier der bliver brugt fra gang til gang. Nogle gange er det den menneskelige tællemmåde  &#8469; = {1, 2, 3, 4 ...} f.eks. når man tæller antallet af elementer i en tekstreng. Andre gange er det computerens &#8469;<sub>0</sub> = {0, 1, 2, 3 ...} f.eks. når man angiver tegnets position.</p>
+<p>Man bliver nød til at holde tungen lige i munden, fordi vi skal holde styr på vores in- og output. Tæller vi f.eks. antallet af tegn (char) i en streng angives det i &#8469; (f.eks. Thomas = 6 tegn), men skal vi hente et tegn ud skal vi tænke &#8469;<sub>0</sub> (o er det 2 tegn i sætningen).</p>
+
+<table class="centreret">
+
+	<tbody>
+		<tr>
+			<td>Placering</td>
+			<td>0</td>
+			<td>1</td>
+			<td>2</td>
+			<td>3</td>
+			<td>4</td>
+			<td>5</td>
+		</tr>
+		<tr>
+			<td>Tegn</td>
+			<td>T</td>
+			<td>h</td>
+			<td>o</td>
+			<td>m</td>
+			<td>a</td>
+			<td>s</td>
+		</tr>
+	</tbody>
+</table>
+
 
 <h2>Regningsregler</h2>
 
+<p>Python de almindelige regningsregler. Jeg har valgt at vise det i Python-fortolkeren for at gøre det tydligere</p>
+
 <pre>
 	<code class="python">
-print ("8 + 2 = {0}".format(8+2)) # addition
-
-print ("8 - 2 = {0}".format(8-2)) # substraktion
-
-print ("8 * 2 = {0}".format(8*2)) # Multiplikation
-
-print ("8 / 2 = {0}".format(8/2)) # Division
-
-print ("2**4 = {0}".format(2**4)) # Exponent
-
-print ("10**-6 = {0}".format(10**-6)) # Negativ exponent
-
-print ("( 8 * 2 ) - 4 = {0}".format((8*2)-4)) # Parantesregning
-
-print ("8 * ( 2 - 4 ) = {0}".format(8 * ( 2 - 4 ))) # Parantesregning
+Python 3.5.1+ (default, Mar 30 2016, 22:46:26) 
+[GCC 5.3.1 20160330] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> 8+2
+10
+>>> 8*2
+16
+>>> 8/2
+4.0
+>>> 2**4
+16
+>>> pow(2,4)
+16
+>>> 2**-4
+0.0625
+>>> pow(2,-4)
+0.0625
+>>> (8*2)-4
+12
+>>> 8*(2-4)
+-16
 	</code>
-</pre>
-
-<pre class="ubuntu_terminal">
-8 + 2 = 10
-8 - 2 = 6
-8 * 2 = 16
-8 / 2 = 4.0
-2**4 = 16
-10**-6 = 1e-06
-( 8 * 2 ) - 4 = 12
-8 * ( 2 - 4 ) = -16
-
-
-------------------
-(program exited with code: 0)
-Press return to continue
 </pre>
 
 <p>En sidste regnemetode er <span class="inl_cmd">modulus</span>. Den anvendes til at finde restproduktet, som herunder hvor restproduktet af 9/5 = 4. Læg mærke til at jeg bliver nød til at skrive <span class="inl_cmd">%%</span> - altså to gange efter hinanden. Det er kun nødvendig når vi anvender pladsholdere og andre funktioner der starter med et %.</p>
 <pre>
 	<code class="python">
-print ("9 %% 5 = {0}".format(9%5))
+>>> 9%5
+4
 	</code>
-</pre>
-
-<pre class="ubuntu_terminal">
-9 % 5 = 4
-
-
-------------------
-(program exited with code: 0)
-Press return to continue
-
 </pre>
 
 <h2>En til eller fra</h2>
@@ -387,90 +396,59 @@ Press return to continue
 
 <pre>
 	<code class="python">
-a = 0
-
-print(a)
-
-a = a + 1
-
-print(a)
-	</code>
-</pre>
-
-<pre class="ubuntu_terminal">
+>>> a=0
+>>> a
 0
+>>> a+1
 1
-
-
-------------------
-(program exited with code: 0)
-Press return to continue
+	</code>
 </pre>
 
 <p>Da man gør det så ofte har man en speciel "shorthand" til at løse dette problem med:</p>
 
 <pre>
 	<code class="python">
-a = 0
-
-print(a) 	# Print a
-
-a +=1  		# Læg 1 til a
-
-print(a) 	# Print a
-
-a +=1 		#læg 1 til a
-
-print(a)
-	</code>
-</pre>
-
-<pre class="ubuntu_terminal">
-0
+>>> a=0
+>>> a +=1
+>>> a
 1
+>>> a +=1
+>>> a
 2
-
-
-------------------
-(program exited with code: 0)
-Press return to continue
+	</code>
 </pre>
 
 <p>På samme måde som ovenfor kan man også lægge til, gange og dividere</p>
 
 <pre>
 	<code class="python">
-a = 1
-
-print("a er {0}".format(a))
-
-a+=5		# lægger 5 til = 6
-
-print("a +=5 er {0}".format(a))
-
-a -=7		# trækker 7 fra = -1
-
-print("a -=7 er {0}".format(a))
-
-a *=7		# ganger med 7 = -7
-
-print("a *=7 er {0}".format(a))
-
-a /=7		# dividerer med 7 = -1
-
-print("a /=7 er {0}".format(a))
+>>> a=1
+>>> a+=5
+>>> a
+6
+>>> a -=7
+>>> a
+-1
+>>> a *=7
+>>> a
+-7
+>>> a /=7
+>>> a
+-1.0
 	</code>
 </pre>
 
-<pre class="ubuntu_terminal">
-a er 1
-a +=5 er 6
-a -=7 er -1
-a *=7 er -7
-a /=7 er -1.0
+<p>Man kan gøre det samme hvis man har lavet variabler. I eksemplet herunder lægger vi variablen <span class="inl_cmd">alder</span> til a.</p>
+
+<pre>
+	<code class="python">
+>>> a=1
+>>> alder=15
+>>> a+=alder
+>>> a
+16
+	</code>
 </pre>
-
-
 
 <h2>Integer og float</h2>
 
@@ -478,138 +456,122 @@ a /=7 er -1.0
 
 <p>I det ovenstående divisionseksempel svarede Python med et decimaltal (float). Det skyldes at Python er designet til at være så simpelt at gå til som muligt, da langt de fleste divisionsstykker resluterer i decimaltal. Derfor skal vi fortælle Python at tallet skal tolkes som et heltal (interger).</p>
 
-<p>I eksemplet herunder vises først hvordan man konverterer ovenstående resultat til en interger ved at indsætte det i funktionen <span class="inl_cmd">int()</span></p>
+<p>Herunder vises et eksempel hvor:</p>
+
+<ol class="">
+	<li>heltallet 7 bliver omdannet til <span class="inl_cmd">float</span></li>
+	<li>decimaltallet b (positivt) bliver omdannet til <span class="inl_cmd">int</span></li>
+	<li>decimaltallet c (negativt) bliver omdannet til <span class="inl_cmd">int</span>.</li>
+</ol>
 
 <pre>
 	<code class="python">
-a = -7
-
-a /=7		# dividerer med 7 = -1
-
-print ("I dette eksempel er resulatet et heltal\n")
-
-print("\t-7 divideret med 7 er (integer) = {0}".format(int(a)))
-
-print("\t-7 divideret med 7 er (float) = {0}".format(a))
+>>> a
+7
+>>> float(a)
+7.0
+>>> b=3.14
+>>> int(b)
+3
+>>> c=-3.15
+>>> int(c)
+-3
 	</code>
 </pre>
 
-<pre class="ubuntu_terminal">
-I dette eksempel er resulatet et heltal
+<p>Som du kan se herovenfor sker der følgende:</p>
 
-	-7 divideret med 7 er (integer) = -1
-	-7 divideret med 7 er (float) = -1.0
+<table class="">
+	<thead>
+		<tr>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Fra int &#8594; float</td>
+			<td>Der tilføjels decimaler</td>
+		</tr>
+		<tr>
+			<td>Fra float &#8594; int</td>
+			<td>Der rundes ned til nærmeste heltal. Det gælder både for positive og negative tal.</td>
+		</tr>
+	</tbody>
+</table>
 
-
-------------------
-(program exited with code: 0)
-Press return to continue
-</pre>
-
-<p>Man skal dog være påpasselig med hvordan det anvendes som det kan ses i eksemplet herunder. Hvis resultatet ikke er et heltal vil det blive rundet af og man mister decimalerne.</p>
+<p>Hvis du ønsker at finde ud af om et tal er en interger eller float, kan du teste det ved hjælp af <span class="inl_cmd">is_interger()</span> som vist herunder:</p>
 
 <pre>
 	<code class="python">
-b = 5
-
-b /=4 		# dividere med 4 = 1,25
-
-print ("\nI dette eksempel er resulatet et decimaltal\n")
-
-print("\t5 divideret med 4 er (float) = {0}".format(b))
-
-print("\t5 divideret med 4 er (interger) = {0}".format(int(b)))
+>>> a=3.14
+>>> a.is_integer()
+False
 	</code>
 </pre>
 
-<pre class="ubuntu_terminal">
-I dette eksempel er resulatet et decimaltal
-
-	5 divideret med 4 er (float) = 1.25
-	5 divideret med 4 er (interger) = 1
-
-
-------------------
-(program exited with code: 0)
-Press return to continue
-</pre>
-
-<p>Hvis du ønsker at finde ud af om et tal er en interger eller float, kan du teste det ved hjælp af <span class="inl_cmd">is_interger()</span>.</p>
-
-<pre>
-	<code class="python">
-a = 2.45
-
-test1 = a.is_integer()
-
-print ("%s er en integer: {0}".format(a, test1))
-	</code>
-</pre>
-
-<pre class="ubuntu_terminal">
-2.45 er en integer: False
-
-
-------------------
-(program exited with code: 0)
-Press return to continue
-</pre>
 
 <h2>Brøker</h2>
 
-<p>For at arbejde med brøker skal man "tvinge" python til ikke at regne brøken ud. Det kan være nødvendig for ikke at få afrundingsfejl. For at kunne anvende brøker skal vi importere modulet fractions. Herunder er givet et eksempel ved hjælp at et GRUK af Piet Hein, hvor der er vist forskellen mellem at anvende <span class="inl_cmd">fractions()</span> og <span class="inl_cmd">float</span>.</p>
+<p>For at arbejde med brøker skal man "tvinge" python til ikke at regne brøken ud. Det kan være nødvendig for ikke at få afrundingsfejl. For at kunne anvende brøker skal vi importere modulet fractions. Herunder er givet et eksempel ved hjælp at et GRUK af Piet Hein, hvor der er vist forskellen mellem at anvende <span class="inl_cmd">fractions()</span> og <span class="inl_cmd">float</span>. Jeg har valgt at lave dette eksempel ved hjælp af koden, da man ellers mister overblikket. Læg mærke til at jeg importere funktionen <span class="inl_cmd">Fraction(3,4)</span>.</p>
 
 <pre>
 	<code class="python">
 from fractions import Fraction
 
-brøk1 = Fraction(3, 4) # brøken 3/4;
+brøk1 = Fraction(3,4) # brøken 3/4;
 
 brøk2 = Fraction(2,3) #brøken 2/3; 
 
 brøk3 = brøk1 * brøk2
 
-brøk1_udr = 3/4
+float1 = 3/4
 
-brøk2_udr = 2/3
+float2 = 2/3
 
-brøk3_udr = brøk1_udr * brøk2_udr
+float3 = float1 * float2
 
 
 print ("""
-En halv
-er
-tænk nu hvor aparte
-to tredjedele
-af tre kvarte
-	(Piet Hein)
+	En halv er
+	tænk nu hvor aparte
+	to tredjedele
+	af tre kvarte
+			(Piet Hein)	
+			
 """)
 
-print ("Udskrevet ved hjælp af Fractions: {0} = {1} * {2}".format(brøk3, brøk2, brøk1))
+print ("Udregnet ved hjælp af Fractions:\n\n\t {0} * {1} = {2}".format(brøk1,brøk2,brøk3))
 
-print ("\nUdskrevet ved hjælp af float: {0} = {1} * {2}".format(brøk3_udr, brøk2_udr, brøk1_udr))
+print ("\nUdregnet ved hjælp af float:\n\n\t {0} * {1} = {2}".format(float1, float2,float3))
 	</code>
 </pre>
 
 <pre class="ubuntu_terminal">
-En halv
-er
-tænk nu hvor aparte
-to tredjedele
-af tre kvarte
-	(Piet Hein)
 
-Udskrevet ved hjælp af Fractions: 1/2 = 2/3 * 3/4
+	En halv er
+	tænk nu hvor aparte
+	to tredjedele
+	af tre kvarte
+			(Piet Hein)	
+			
 
-Udskrevet ved hjælp af float: 0.5 = 0.6666666666666666 * 0.75
+Udregnet ved hjælp af Fractions:
+
+	 3/4 * 2/3 = 1/2
+
+Udregnet ved hjælp af float:
+
+	 0.75 * 0.6666666666666666 = 0.5
 
 
 ------------------
 (program exited with code: 0)
 Press return to continue
+
 </pre>
 
-<p>Som det kan ses bliver 2/3 omskrevet til 0,666... hvilket kun er en tilnærmet værdi.</p>
+<p>Som det kan ses bliver 2/3 omskrevet til 0,666... hvilket kun er en tilnærmet værdi. Grunden til at det går godt er fordi Python anvender nok decimaler til at afrundingen bliver korrekt.</p>
 
 <h2>Faktorer</h2>
 
@@ -617,26 +579,29 @@ Press return to continue
 
 <pre>
 	<code class="python">
-
-tal = int(input("hvilket tal vil du undersøge?: "))
+tal = int(input("Tal der skal undersøges?: "))
 
 faktor = int(input("Skriv den faktor du vil undersøge tallet med: "))
 
+if tal%faktor == 0:
 
+	print("{0} er en faktor i {1}".format(faktor,tal))
 
-print("Hvis {0} delt med {1} er 0, er {1} faktor i {0} = {2}".format(faktor,tal,tal%faktor))
+else:
+
+	print("{0} er ikke en faktor i {1}".format(faktor,tal))
 	</code>
 </pre>
 
 <pre class="ubuntu_terminal">
-hvilket tal vil du undersøge?: 100
-Skriv den faktor du vil undersøge tallet med: 10
-Hvis 10 delt med 100 er 0, er 100 faktor i 10 = 0
-
+Tal der skal undersøges?: 20
+Skriv den faktor du vil undersøge tallet med: 7
+7 er ikke en faktor i 20
 
 ------------------
 (program exited with code: 0)
 Press return to continue
+
 </pre>
 
 
@@ -741,7 +706,7 @@ Press return to continue
 
 <span class="afsnit">VIGTIGT</span>
 
-<p>De to sidste: <span class="inl_cmd">and</span> / <span class="inl_cmd">or</span> skal vi som danskere være meget forsigtige med, fordi de er logiske og ikke sproglige. Et eksempel kan være hvor betingelsen er, at man både kan svare med <span class="inl_cmd">j</span> og <span class="afsnit">J</span> - altså både det lille og det store bogstav. Umiddelbart ville nedestående linie give mening:</p>
+<p>De to sidste: <span class="inl_cmd">and</span> / <span class="inl_cmd">or</span> skal vi som danskere være meget forsigtige med, fordi de er logiske og ikke sproglige. Et eksempel kan være hvor betingelsen er, at man både kan svare med <span class="inl_cmd">j</span> og <span class="inl_cmd">J</span> - altså både det lille <span class="bold">OG</span> det store bogstav. Umiddelbart ville nedestående linie give mening:</p>
 	
 <pre>
 	<code class="python">
@@ -749,58 +714,67 @@ if valg ==  "j" and valg == "J" : #Gælder for både lille <span class="bold">og
 	</code>
 </pre>
 
-<p>Sprogligt giver det mening, men problemet er, at brugeren aldrig vil kunne taste både j og J på samme tid. Så derfor vil Python afvise begge indtastninger. Det er ikke Python der laver fejl, men mere et udtryk for at det danske sprog er finurligt og ulogisk. F.eks. så kan vi også finde på at spørge: "er det ikke sjovt" .. når vi faktisk mener "er det sjovt". Det er ikke kun udlændninge der synes vores sprog er ulogisk.</p>
+<p>Sprogligt giver det mening, men problemet er, at brugeren aldrig vil kunne taste både j og J på samme tid. Så derfor vil Python afvise at betingelserne er opfyldt. Det er ikke Python der laver fejl, men mere et udtryk for at det danske sprog er finurligt og ulogisk. F.eks. så kan vi også finde på at spørge: "er det ikke sjovt" .. når vi faktisk mener "er det sjovt". Det er ikke kun udlændinge der synes vores sprog er ulogisk.</p>
 
 <h2>Afgrænsede områder</h2>
 
-<p>Nogle gange har man brug for at kunne afgrænse områder. Forestil dig at vi skal udvælge brugere der er fra 15 år til og med 22. Det matematiske udsagn ville være <span class="inl_cmd">15 &le; x &le; 22</span>. I Python skal vi splitte det op i to udsagn hvor vi skal beskrive den ned grænse og den øvre grænse ud fra x: <span class="inl_cmd">x &gt;= 15 <span class="blue">and</span> x &gt;= 22</span>.</p>
+<p>Nogle gange har man brug for at kunne afgrænse områder. Forestil dig at vi skal udvælge brugere der er fra 15 år til og med 22. Det matematiske udsagn ville være <span class="inl_cmd">15 &le; x &le; 22</span> da både 15 og 21 er med i talmængden. I Python skal vi splitte det op i to udsagn hvor vi skal beskrive den ned grænse og den øvre grænse ud fra x: <span class="inl_cmd">x &gt;= 15 <span class="blue">and</span> x &gt;= 22</span>.</p>
+
+<p>Her skal man igen være bevidst om hvilken talmængde man arbejder med. Skal man f.eks. gennemløbe alle bogstaverne i et navn så skal man tænke i talmængden &#8469;<sub>0</sub>.</p>
+
+<table class="centreret">
+
+	<tbody>
+		<tr>
+			<td>Placering</td>
+			<td>0</td>
+			<td>1</td>
+			<td>2</td>
+			<td>3</td>
+			<td>4</td>
+			<td>5</td>
+		</tr>
+		<tr>
+			<td>Tegn</td>
+			<td>T</td>
+			<td>h</td>
+			<td>o</td>
+			<td>m</td>
+			<td>a</td>
+			<td>s</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Hvis man spørger Python om længden på navnet, så vil vi få 6, men programmet skal gennemløbe værdierne 0-5. Umiddelbart ville vi tænke <span class="inl_cmd">1 &le; x &le; 6</span>, men det vil reelt være <span class="inl_cmd">0 &le; x &lt; 5</span>. Men som vi vil lære i afsnittet om løkker, så er det tænkt ind i syntaksen.</p>
 
 <h1>Matematiske funktioner</h1>
 
-<p>For at anvende Phytons matematiske funktioner skal man inkludere programbiblioteket math. Det kan gøres på to måder - enten ved at inkludere alle matematikfunktionerne eller ved kun at importere enkelte derfra. På den måde kan man sparepå hukommelsen.</p>
+<p>For at anvende Phytons matematiske funktioner skal man importere programbiblioteket <span class="inl_cmd">math</span>. Det kan gøres på to måder - enten ved at inkludere alle matematikfunktionerne eller ved kun at importere enkelte derfra. I praksis får det først betydning når man kompilerer programmet (laver det til en kørbar fil). Hvis man kun importere enkelte dele fra et modul er det kun dem der bliver kompileret ind i ens kode.</p>
 
 <p>Herunder er de to metoder vist med henholdsvis kvadratrod og 10-tals logaritmen. Først den generelle. Læg mærke til at der skal angives fra hvilket programbibliotek den matematiske funktion skal tages fra.</p>
 
 <pre>
 	<code class="python">
-import math
-
-print (math.sqrt(27))
-
-print (math.log10(100))
+>>> import math
+>>> math.sqrt(27)
+5.196152422706632
+>>> math.log10(100)
+2.0
 	</code>
 </pre>
 
-<pre class="ubuntu_terminal">
-5.19615242271
-2.0
 
-
-------------------
-(program exited with code: 0)
-Press return to continue
-</pre>
-
-<p>For kun at importere de nødvendige elementer fra programbiblioteket anvendes <span class="inl_cmd">from *bibliotek* import *funktioner*</span>. De enkelte funktioner adskilles med et <span class="inl_cmd">,</span>. Det er heller ikke nødvendigt at definere fra hvilket bibliotek  elementerne kommer fra.</p>
+<p>For kun at importere de nødvendige elementer fra programbiblioteket anvendes <span class="inl_cmd">from *bibliotek* import *funktioner*</span>. De enkelte funktioner adskilles med et <span class="inl_cmd">,</span>. Det er heller ikke nødvendigt at definere fra hvilket bibliotek elementerne kommer fra.</p>
 
 <pre>
 	<code class="python">
-from math import sqrt, log10
-
-print (sqrt(27))
-
-print (log10(100))
-	</code>
-</pre>
-
-<pre class="ubuntu_terminal">
-5.19615242271
+>>> from math import sqrt, log10
+>>> sqrt(27)
+5.196152422706632
+>>> log10(100)
 2.0
-
-
-------------------
-(program exited with code: 0)
-Press return to continue
+	</code>
 </pre>
 
 <p>Af vigtige matematiske funktioner kan nævnes</p>
@@ -813,17 +787,20 @@ Press return to continue
 	<thead>
 		<tr>
 			<th>Konstant</th>
-			<th>Beskrivelse</th>
+			<th>Funktion</th>
+			<th>Værdi</th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr>
+			<td>&pi;</td>
 			<td>math.pi</td>
-			<td>&pi; = 3.141592...</td>
+			<td>3.141592...</td>
 		</tr>
 		<tr>
+			<td>e</td>
 			<td>math.e</td>
-			<td>e = 2.718281...</td>
+			<td>2.718281...</td>
 		</tr>
 	</tbody>
 </table>
@@ -836,6 +813,7 @@ Press return to continue
 <table class="">
 	<thead>
 		<tr>
+			<th>Matematisk udtryk</th>
 			<th>Funktion</th>
 			<th>Inverse funktion</th>
 			<th>Beskrivelse</th>
@@ -843,14 +821,22 @@ Press return to continue
 	</thead>
 	<tbody>
 		<tr>
-			<td>math.exp</td>
+			<td>e<sup>x</sup></td>
+			<td>math.exp()</td>
 			<td>math.log(x)</td>
-			<td>Den naturlige logaritmen</td>
+			<td>Den naturlige logaritmen (grundtal e)</td>
 		</tr>
 		<tr>
+			<td>10<sup>x</sup></td>
 			<td>math.pow(10,x)</td>
 			<td>math.log10(x)</td>
-			<td>Titals logaritmen</td>
+			<td>Logaritmen (grundtal 10)</td>
+		</tr>
+		<tr>
+			<td>y<sup>x</sup></td>
+			<td>math.pow(y,x)</td>
+			<td>math.log(x,y)</td>
+			<td>Logaritmen (grundtal y)</td>
 		</tr>
 	</tbody>
 </table>
@@ -860,6 +846,7 @@ Press return to continue
 <table class="">
 	<thead>
 		<tr>
+			<th>Matematisk udtryk</th>
 			<th>Funktion</th>
 			<th>Inverse funktion</th>
 			<th>Beskrivelse</th>
@@ -867,117 +854,240 @@ Press return to continue
 	</thead>
 	<tbody>
 		<tr>
+			<td>cos(x)</td>
 			<td>math.cos(x)</td>
 			<td>math.acos(x)</td>
 			<td>Cosinus</td>
 		</tr>		
 		<tr>
+			<td>sin(x)</td>
 			<td>math.sin(x)</td>
 			<td>math.asin(x)</td>
 			<td>Sinus</td>
 		</tr>	
 		<tr>
+			<td>tan(x)</td>
 			<td>math.tan(x)</td>
 			<td>math.atan(x)</td>
 			<td>Tangens</td>
 		</tr>
+	</tbody>
+</table>
+
+<table class="">
+	<thead>
 		<tr>
-			<td colspan="2">math.degrees()</td>
-			<td>Konverterer fra rad til grader</td>
-		</tr>	
+			<th>Omskrivning</th>
+			<th>Funktioner</th>
+		</tr>
+	</thead>
+	<tbody>
 		<tr>
-			<td colspan="2">math.radians()</td>
-			<td>Konverterer fra grader til rad</td>
+			<td>fra grader &#8594; radianer</td>
+			<td>math.degrees()</td>
+		</tr>
+		<tr>
+			<td>fra radianer &#8594; grader</td>
+			<td>math.radians()</td>
 		</tr>
 	</tbody>
 </table>
 
-<h2>Talsystemer</h2>
+<h1>Talsystemer</h1>
 
-<p>For at konvertere tal med anden base til 10 talssystemet anvendes <span class="inl_cmd">int()</span>. Det fungerer ved at man i parantesen skriver tallet man vil konvertere og basen der skal konverteres fra.</p>
+<p>Vi er vant til at anvende 10-talssystemet, men i programmerings- og computersammenhænge kan det være praktisk at anvende andre talsystemer især det binære (2-talssystem) og det hexadecimale (16-talssystem). Man siger at talsystemerne har et grundtal, som bestemmer hvornår der skiftes position.</p>
+
+<p>En vigtig detalje når man snakker om talsystemer er, at der ikke er forskel på værdierne. Det er måden værdierne bliver præsenteret på. Det binære tal 1011 har samme værdi som 11 i 10-talssystemet.</p>
+
+<p>Et eksempel på hvordan man kan anvende andre talsystemer er f.eks. den måde et Linux-filsystem angiver filers rettigheder. Rettighederne er sat med tal fra 0-7, og det gør man ud fra følgende skema:</p>
+
+<table class="centreret">
+	<thead>
+		<tr>
+			<th>Talværdi</th>
+			<th>r <br/> 2² = 4</th>
+			<th>w <br/> 2¹ = 2</th>
+			<th>x <br/> 2⁰ = 1</th>
+			<th>Samlet</th>
+			<th>Rettigheder</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>7</td>
+			<td>1</td>
+			<td>1</td>
+			<td>1</td>
+			<td>rwx</td>
+			<td>Alle (læse, skrive og udføre)</td>
+		</tr>
+		<tr>
+			<td>6</td>
+			<td>1</td>
+			<td>1</td>
+			<td>0</td>
+			<td>-wx</td>
+			<td>Læse og skrive</td>
+		</tr>
+		<tr>
+			<td>5</td>
+			<td>1</td>
+			<td>0</td>
+			<td>1</td>
+			<td>r-x</td>
+			<td>Læse og udføre</td>
+		</tr>
+		<tr>
+			<td>4</td>
+			<td>1</td>
+			<td>0</td>
+			<td>0</td>
+			<td>r--</td>
+			<td>Læse</td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>0</td>
+			<td>1</td>
+			<td>1</td>
+			<td>-wx</td>
+			<td>Skrive og udføre</td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>0</td>
+			<td>1</td>
+			<td>0</td>
+			<td>-w-</td>
+			<td>Skrive</td>
+		</tr>
+		<tr>
+			<td>1</td>
+			<td>0</td>
+			<td>0</td>
+			<td>1</td>
+			<td>--x</td>
+			<td>udføre</td>
+		</tr>
+		<tr>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>---</td>
+			<td>Ingen</td>
+		</tr>		
+	</tbody>
+</table>
+
+<p>Et femtal beskriver f.eks. at man kan læse og køre filen som et program. Men man kan ikke skrive i den. 5 tallet giver altså ingen mening i sig selv, men oversat til binært <span class="inl_cmd">101</span> kan vi altså se hvad brugeren må og ikke må. I stedet for at skulle analysere 8 forskellige udfald (0-7) i vores program, kan vi altså nøjes med at undersøge 3 mulige udfald.</p>
+
+
+
+<h2>Base10 til baseX</h2>
+
+<p>Der er indbygget konvertere fra ti-talssystemet til binær, octet og hexadecimalt talsystem. Det gøres ved at anvende <span class="inl_cmd">bin()</span>, <span class="inl_cmd">oct()</span> og <span class="inl_cmd">hex()</span>.</p>
 
 <pre>
 	<code class="python">
-print ("100 i binært talsystem er\t"), int("100",2)
-
-print ("100 i 8-talssystemet (octet) er\t"), int("100",8)
-
-print ("100 i 10-talssystemet er\t"), int("100",10)
-
-print ("100 i 16-talssystemet (hex) er\t"), int("100",16)
+>>> bin(100)
+'0b1100100'
+>>> oct(100)
+'0o144'
+>>> hex(100)
+'0x64'
 	</code>
 </pre>
 
-<pre class="ubuntu_terminal">
-100 i binært talsystem er	4
-100 i 8-talssystemet (octet) er	64
-100 i 10-talssystemet er	100
-100 i 16-talssystemet (hex) er	256
+<p>Læg mærke til at talene kommer tilbage som teksstrenge og med et præfix: </p>
 
+<ul class="disc">
+	<li>0b = binær</li>
+	<li>0o = octet</li>
+	<li>0x = hexadecimal</li>
+</ul>
 
-------------------
-(program exited with code: 0)
-Press return to continue
+<p>Python bruger præfixet til at bestemme hvilket positionssystem tallet er i. Er der ikke noget præfix er det base 10.</p>
 
-</pre>
+<h2>BaseX til base10 talssystem</h2>
 
-<p>Der er indbygget konvertere fra ti-talssystemet til binær, octet og hexadecimalt talsystem. Det gøres ved at anvende <span class="inl_cmd">bin(), oct() og hex()</span> .</p>
+<p>For at konvertere tal med anden base til 10 talssystemet anvendes <span class="inl_cmd">int()</span>. Det fungerer ved at man i parantesen skriver tallet man vil konvertere og basen der skal konverteres fra. Læg mærke til at tallet skal skrives ind som en tekststreng!</p>
 
 <pre>
 	<code class="python">
-print ("100 er:")
-
-print ("----------------------------------------------")
-
-print ("{0} \ti det binære talsystem".format( bin(100)))
-
-print ("{0} \t\ti 8-talssystemet".format(oct(100)))
-
-print ("{0} \t\ti det hexadecimale talsystem".format(hex(100)))
+>>> int("100",2)
+4
+>>> int("100",8)
+64
+>>> int("100",10)
+100
+>>> int("100",16)
+256
 	</code>
 </pre>
 
-<pre class="ubuntu_terminal">
-100 er:
-----------------------------------------------
-0b1100100 	i det binære talsystem
-0144 		i 8-talssystemet
-0x64 		i det hexadecimale talsystem
+<h2>Beregninger med andre talsystemer</h2>
 
+<p>Hvis man har brug for at regne direkte med tal fra andre talsystemer skal man blot anvende talsystemets præfix. For at gøre det mere overskueligt er der lavet en tabel så du kan "beregne" de binære tals værdi</p>
 
-------------------
-(program exited with code: 0)
-Press return to continue
-</pre>
+<table class="">
+	<tbody>
+		<tr>
+			<td>Position</td>
+			<td>8</td>
+			<td>7</td>
+			<td>6</td>
+			<td>5</td>
+			<td>4</td>
+			<td>3</td>
+			<td>2</td>
+			<td>1</td>
+		</tr>
+		<tr>
+			<td>Potens</td>
+			<td>2⁷</td>
+			<td>2⁶</td>
+			<td>2⁵</td>
+			<td>2⁴</td>
+			<td>2³</td>
+			<td>2²</td>
+			<td>2¹</td>
+			<td>2⁰</td>
+		</tr>
+		<tr>
+			<td>Værdi (Pos)</td>
+			<td>128</td>
+			<td>64</td>
+			<td>32</td>
+			<td>16</td>
+			<td>8</td>
+			<td>4</td>
+			<td>2</td>
+			<td>1</td>
+		</tr>
+	</tbody>
+</table>
 
-<p>Hvis du vil fjerne de tal der står foran værdien (f.eks. 0b i det binære) kan du "slice" ved at sætte <span class="inl_cmd">[:2]</span></p>
+<p>Herunder udregnes 5 &sdot; 5:</p>
 
 <pre>
 	<code class="python">
-print ("100 er:")
-
-print ("----------------------------------------------")
-
-print ("{0} \ti det binære talsystem".format( bin(100)[2:]))
-
-print ("{0} \t\ti 8-talssystemet".format(oct(100)[2:]))
-
-print ("{0} \t\ti det hexadecimale talsystem".format(hex(100)[2:]))
+>>> 0b101 * 0b101
+25
 	</code>
 </pre>
 
-<pre class="ubuntu_terminal">
-100 er:
-----------------------------------------------
-1100100 	i det binære talsystem
-144 		i 8-talssystemet
-64 		i det hexadecimale talsystem
+<p>Som du kan se bliver tallet afleveret i base 10. Ønsker du at få resultatet med et binært output kan du vælge enten at konvertere eller beregne direkte. Vær opmærksom at resultatet afleveres som en tekststreng.</p>
 
-
-------------------
-(program exited with code: 0)
-Press return to continue
+<pre>
+	<code class="python">
+>>> bin(25)
+'0b11001'
+>>> bin(0b101 * 0b101)
+'0b11001'
+	</code>
 </pre>
+
 
 <h1>Random</h1>
 
@@ -987,17 +1097,20 @@ Press return to continue
 	<code class="python">
 from random import random, randrange
 
-print(random())
+tilfældigtal = random()
 
-print(randrange(1,6))
+terningkast = randrange(1,6)
 
+print("Et tilfældigt tal: {0}".format(tilfældigtal))
+
+print("\nEt terningkast: {0}".format(terningkast))
 	</code>
 </pre>
 
 <pre class="ubuntu_terminal">
-0.15011231380396195
-4
+Et tilfældigt tal: 0.5522756126989775
 
+Et terningkast: 5
 
 ------------------
 (program exited with code: 0)
@@ -1012,9 +1125,9 @@ Press return to continue
 	<code class="python">
 import random
 
-print(random.random())
+tilfældigtal = random.random()
 
-print(random.randrange(1,6))
+terningkast = random.randrange(1,6)
 	</code>
 </pre>
 
