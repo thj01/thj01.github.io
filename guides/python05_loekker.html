@@ -72,7 +72,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 		</tr>
 		<tr>
 			<td><span class="inl_cmd">while</span></td>
-			<td><span class="inl_cmd">while</span>-løkken anvendes når en funktion skal gennemløbes indtil noget er opfyldt. Det kan f.eks. være at vi vil finde alle kvadrattal under 200.</td>
+			<td><span class="inl_cmd">while</span>-løkken anvendes når en funktion skal gennemløbes indtil en betingelse er opfyldt. </td>
 		</tr>
 	</tbody>
 </table>
@@ -113,7 +113,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <pre>
 	<code class="python">
-for i in range(5): #Udfør for de første 10 værdier
+for i in range(5): #Udfør for de første 5 værdier
 	print (i)
 	</code>
 </pre>
@@ -134,7 +134,7 @@ Press return to continue
 
 <pre>
 	<code class="python">
-for i in range(5): #Udfør for de første 10 værdier
+for i in range(5): #Udfør for de første 5 værdier
 	print (i + 1)
 	</code>
 </pre>
@@ -172,7 +172,7 @@ for i in range(8,13): #Udfør for værdierne 8-13
 Press return to continue
 </pre>
 
-<p>Læg mærke til værdierne den udskriver. Umiddelbart ville vi forvente at Python også skrev 13 ud, men sådan er det ikke. Så i <span class="inl_cmd">range</span> er den første værdi inkluderet men den sidste er ikke.</p>
+<p>Læg mærke til værdierne den udskriver. Umiddelbart ville vi forvente at Python også skrev 13 ud, men sådan er det ikke. Så i <span class="inl_cmd">range()</span> er den første værdi inkluderet men ikke den sidste.</p>
 
 
 <p>Det kan være uhensigtsmæssigt at få talrækker som den ovenstående udskrevet med et linieskift hver gang. Ændr koden til ved at tilføje <span class="inl_cmd">end=" "</span>:</p>
@@ -209,7 +209,14 @@ for i in range(0,10,2):
 ------------------
 (program exited with code: 0)
 Press return to continue
+</pre>
 
+<p>En for løkke fungerer altså ved at man sætter alle betingelserne i den efterfølgende parentes. Den fortæller altså startværdien, slutværdien (ikke medtaget) og væksten pr. omgang).</p>
+
+<pre>
+	<code class="python">
+for i in range(startværdi, slutværdi, vækst pr. omgang)
+	</code>
 </pre>
 
 <p>Nogle gange skal den samme programlinie køres flere gange. Det kan f.eks. være hvis man gerne vil finde de 12 første trekanttal – altså talrække 1, 3, 6, 10, 15, 21... . Man kan udregne tallene med formlen herunder:</p>
@@ -242,7 +249,7 @@ for i in range(1,12):
 Press return to continue
 </pre>
 
-<p>Python sætter en decimal på, fordi den har divideret. Dette kan vi fjerne ved at tvinge Python til at se resultatet som et heltal (interger)</p>
+<p>Python sætter en decimal på, fordi den ser resulater fra divisionsstykker som <span class="inl_cmd">float</span>. Det fjernes ved at tvinge Python til at se resultatet som et heltal (interger)</p>
 
 
 <pre>
@@ -262,10 +269,6 @@ for i in range(1,12):
 (program exited with code: 0)
 Press return to continue
 </pre>
-
-<p>En for løkke fungerer ved at man sætter alle betingelserne i den efterfølgende parentes. Den fortæller (Hvad er startværdien; Hvad er slutværdien; Hvad skal variablen vokse med pr. omgang).</p>
-
-<p>Start- og slutværdien er også den første og den sidste værdi $i gennemløber. Variablen behøver ikke at hedde $i, men kunne lige så godt have været $a.</p>
 
 <h2>For char in ...</h2>
 
@@ -364,7 +367,7 @@ Press return to continue
 </pre>
 
 
-<p>Vi skal senere lære hvordan vi kan arbejde med tekstrenge, sådan at vi f.eks. kan analysere de tal der står mellem de forskellige dot's.</p>
+<p>Vi skal senere lære hvordan vi kan arbejde med tekstrenge, sådan at vi f.eks. kan analysere værdierne der står mellem de forskellige dot's.</p>
 
 <h2>Opgaver</h2>
 
@@ -385,7 +388,7 @@ I en 20-kant er vinkelsummen ...
 
 <ul class="disc">
 	<li>Formlen for en polygons vinkelsum er hvor vinkelsum = 180&deg; &middot; (n-2), og hvor n = antal kanter.</li>
-	<li>Prøvekør løkken ved at udskrive $i.</li>
+	<li>Prøvekør løkken ved at udskrive i.</li>
 	<li>For at kunne få outputtet til at skifte linie skal du anvende HTML koden &lt;br&gt;.</li>
 </ul>
 
@@ -551,40 +554,69 @@ print ("\nN I C E")
 
 <p>I de ovenstående kapitler har løkkerne været simple, fordi vi har været helt klar over hvad de skulle. Det hænder dog, at man vil sætte nogle betingelser for løkkerne. Det kan f.eks. være en kode der skal løbe indtil brugeren har valgt rigtigt.</p>
 
+<p>Vi kan betinge løkkerne ved hjælp af følgende metoder:</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Metode</th>
+			<th>Beskrivelse</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>break</td>
+			<td>Afbryder løkken og fortsætter med koden</td>
+		</tr>
+		<tr>
+			<td>continue</td>
+			<td>Afbryder den konkrete session i løkken og fortsætter med næste gennemkørsel af løkken</td>
+		</tr>
+		<tr>
+			<td>pass</td>
+			<td>Gør intet, men lader løkken fortsætte i samme session</td>
+		</tr>
+	</tbody>
+</table>
+
+<h2>break</h2>
+
 <p>Forestil dig at vi laver et spørgsmål om et antal brugere, men at vi kun vil acceptere 4. Den lette løsning er, at lave en kode der forventer at brugere svarer rigtigt.</p>
 
 <pre>
 	<code class="python">
-antalBrugere = int(input("Indtast antal brugere (1-4(: "))
+antalBrugere = int(input("Indtast antal brugere (1-4): "))
 	</code>
 </pre>
 
-<p>Den kode kører rigtig fint lige indtil en svarer noget andet end vi forventer. Det problem kan vi eliminere ved at gøre følgende:</p>
-
-<h2>break</h2>
-
-<p></p>
+<p>Problemet med denne kode er, at den vil videresende input ligegyldigt om det 17 eller -5 brugere. For at sikre os at brugeren indtaster korrekt kan vi gøre følgende:</p>
 
 <pre>
 	<code class="python">
-n = 0
-goal = 3
 while True:
-	if n == goal: 
-		break
+	
+	antalBrugere = int(input("Indtast antal brugere (1-4): "))
+
+	if antalBrugere >=1 and antalBrugere &lt;=4:
+		print("\nDer er {0} brugere)".format(antalBrugere))
+		break #Hop ud af while løkken
 	else:
-		print("n er {0}. n skal være {1}".format(n, goal))
-		n +=1
-print("\nSå blev n = {0} :)".format(goal))
+		print("\n\tDer skal være mellem 1 og 4 brugere. Prøv igen...")			
 	</code>
 </pre>
 
 <pre class="ubuntu_terminal">
-n er 0. n skal være 3
-n er 1. n skal være 3
-n er 2. n skal være 3
+Indtast antal brugere (1-4): 6
 
-Så blev n = 3 :)
+	Der skal være mellem 1 og 4 brugere. Prøv igen...
+
+Indtast antal brugere (1-4): 5
+
+	Der skal være mellem 1 og 4 brugere. Prøv igen...
+
+Indtast antal brugere (1-4): 4
+
+Der er 4 brugere)
 
 ------------------
 (program exited with code: 0)
@@ -592,6 +624,8 @@ Press return to continue
 </pre>
 
 <p><span class="inl_cmd">while</span>-løkken kører så længe den ikke modtager et <span class="inl_cmd">False</span>. D.v.s. den kan køre uendeligt. Det eneste som får løkken til at stoppe er fordi der er indsat en <span class="inl_cmd">break</span> kommando hvis n er lig med variablen <span class="inl_cmd">goal</span>. <span class="inl_cmd">break</span> kommandoen bryder <span class="inl_cmd">while</span>-løkken og lader programmet køre videre.</p>
+
+<p>Ulempen ved den kode vi har lavet er, at den vil blive ved med at køre indtil der kommer et input som opfylder betingelsen. Vi vil senere kigge på at indsætte en tæller i koden, sådan at den kun kan køre et bestemt antal gange.</p>
 
 <h2>continue</h2>
 
@@ -683,6 +717,41 @@ Press return to continue
 </pre>
 
 <p><span class="inl_cmd">pass</span> er netop brugbar fordi den ikke gør noget ;).</p>
+
+<h1>Tællere i løkker</h1>
+
+<p>Hvis vi kikker på den første betingede <span class="inl_cmd">while</span>-løkke vi lavede ovenfor, så vil den køre indtil brugeren taster rigtigt. Herunder vil vi kigge på en metode til at begrænse antallet af forsøg.</p>
+
+<p>Vi indsætter simpelthen en øvre grænse for hvor mange gange koden må løbe og laver et <span class="inl_cmd">break</span> når grænsen er nået. Jeg har valgt at kommentere direkte i koden.</p>
+
+<pre>
+	<code class="python">
+# Den øvre grænse
+limit = 3
+
+while True:
+	
+	antalBrugere = int(input("Indtast antal brugere (1-4): "))
+
+	if antalBrugere >=1 and antalBrugere &lt;=4:
+		print("\nDer er {0} brugere)".format(antalBrugere))
+		break #Hop ud af while løkken
+	else:
+		
+		#Tæller en ned på den øvre grænse når brugeren vælger forkert
+		limit -=1 
+	
+		#Det løkken gør så længe der er forsøg tilbage
+		if limit > 0: 
+			print("\n\tDer skal være mellem 1 og 4 brugere.")
+			print("\n\tDu har nu {0} forsøg tilbage\n".format(limit))
+		
+		# Det løkken gør når grænsen er nået
+		else: 
+			print("\nDu har ikke flere forsøg tilbage - bye bye")
+			break
+	</code>
+</pre>
 
 
 <p></p>

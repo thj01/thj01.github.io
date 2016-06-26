@@ -140,6 +140,26 @@ Python er svært
 Press return to continue
 </pre>
 
+<h2>Uden linieskift</h2>
+
+<p>Hvis man ikke gør noget, så vil <span class="inl_cmd">print()</span> lave et linieskift hver gang. Det kan undgås ved at indsætte <span class="inl_cmd">end=" "</span>.</p>
+
+<pre>
+	<code class="python">
+print("Python er", end=" ")
+print("ikke svært at lære.")
+	</code>
+</pre>
+
+<pre class="ubuntu_terminal">
+Python er ikke svært at lære.
+
+------------------
+(program exited with code: 0)
+Press return to continue
+</pre>
+
+
 <h2>Escape sequences</h2>
 
 <p>Escape sequences er betegnelsen for den metode man anvender for at indsætte tegn som normalt anvendes af Python f.eks: <span class="inl_cmd">', ", \</span> samt linie- og tabulatorskift. Herunder er en liste med de vigtiste tegn. Hvis man har behov for at sætte tegn ind i en streng, som python normalt vil tolke som en del af programmeringssproget</p>
