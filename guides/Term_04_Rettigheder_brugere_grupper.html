@@ -155,8 +155,8 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 <p>Vi kan altså sige om denne fil at brugeren er <span class="inl_cmd">root</span>, som må læse og skrive i filen. Alle andre (gruppe og alle). De er nødvendigt for alle at kunne læse denne fil, da det er den der administrere adgangen til systemet. Kigger vi ind i filen kan vise hvad den har at sige om vores bruger, her <span class="inl_cmd">tj</span>. Da alle har ret til at læse i filen kan jeg kommandoen den som mig selv.</p>
 
 <pre class="ubuntu_terminal">
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">/home</span>$ cat /etc/passwd | grep tj
-<span class="red">tj</span>:x:1000:1000:Thomas Jensen,,,:/home/<span class="red">tj</span>:/bin/bash
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">/home</span>$ cat /etc/passwd | grep thoj
+<span class="red">thoj</span>:x:1000:1000:Thomas Jensen,,,:/home/<span class="red">thoj</span>:/bin/bash
 </pre>
 
 <p>Den linie fortæller os om vores bruger, hvilket bruger- og gruppe id man har, ens hjemmemappe og hvilken kommandofortolker vi har adgang til. Det lille x i starten henviser til vores kodeord, som er lagret i filen <span class="inl_cmd">/etc/shadow</span>.</p>
@@ -593,8 +593,8 @@ http://manpages.ubuntu.com/manpages/trusty/man8/useradd.8.html</a></p>
 <code class="cmd">id *brugernavn*</code>
 
 <pre class="ubuntu_terminal">
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ id tj
-uid=1000(tj) gid=1000(tj) grupper=1000(tj),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),108(lpadmin),124(sambashare)
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ id thoj
+uid=1000(thoj) gid=1000(thoj) grupper=1000(thoj),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),108(lpadmin),124(sambashare)
 <span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ id hugo
 id: hugo: ingen sådan bruger
 </pre>
@@ -679,7 +679,7 @@ Du skal omgående ændre din adgangskode (gennemtvunget af roden)
 (nuværende) UNIX-adgangskode: 
 Indtast ny UNIX-adgangskode: 
 Genindtast ny UNIX-adgangskode: 
-testuser2@tj-VirtualBox:/home/tj$
+<span class="green1">testuser2@thoj-VirtualBox</span>:<span class="blue1">/home/thoj</span>$
 </pre>
 
 <p>man-page <span class="inl_cmd">chage</span>: 

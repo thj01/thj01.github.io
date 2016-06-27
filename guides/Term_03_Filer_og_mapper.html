@@ -123,7 +123,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 <code class="cmd">grep backup /etc/passwd</code>
 
 <pre class="ubuntu_terminal">
-thoj@thoj-VirtualBox:~$ grep backup /etc/passwd
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ grep backup /etc/passwd
 <span class="red">backup</span>:x:34:34:<span class="red">backup</span>:/var/<span class="red">backups</span>:/usr/sbin/nologin
 </pre>
 
@@ -138,9 +138,9 @@ thoj@thoj-VirtualBox:~$ grep backup /etc/passwd
 <code class="cmd">cat /etc/hosts</code>
 
 <pre class="ubuntu_terminal">
-tj@tj-VirtualBox:~$ cat /etc/hosts
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ cat /etc/hosts
 127.0.0.1	localhost
-127.0.1.1	tj-VirtualBox
+127.0.1.1	thoj-VirtualBox
 
 # The following lines are desirable for IPv6 capable hosts
 ::1     ip6-localhost ip6-loopback
@@ -213,10 +213,10 @@ ff02::2 ip6-allrouters
 <p>Man kan også sende output til <span class="inl_cmd">/dev/null</span>, som bedst kan beskrives som skraldespand. På den måde kan man fjerne meddelelser fra et program. Det kan være praktisk hvis man anvender kommandoer i scripts eller man ønsker at køre programmer usynligt i baggrunden. Herunder er et eksempel på anvendelse ved hjælp af <span class="inl_cmd">id</span>, hvor både et positivt output og et fejl output bliver omdirigeret til <span class="inl_cmd">/dev/null</span>.</p>
 
 <pre class="ubuntu_terminal">
-tj@tj-VirtualBox:~$ id tj
-uid=1000(tj) gid=1000(tj) grupper=1000(tj),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),108(lpadmin),124(sambashare)
-tj@tj-VirtualBox:~$ id tj 1>/dev/null
-tj@tj-VirtualBox:~$ id hugo 2>/dev/null
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ id thoj
+uid=1000(thoj) gid=1000(thoj) grupper=1000(thoj),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),108(lpadmin),124(sambashare)
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ id thoj 1>/dev/null
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ id hugo 2>/dev/null
 </pre>
 
 <p>En sidste praktisk måde at anvende omdirigering er til at indsætte tekststrenge ved hjælp af <span class="inl_cmd">echo</span>. På denne måde kan man indsætte tekstrenge i filer:</p>
@@ -250,7 +250,7 @@ http://askubuntu.com/questions/350208/what-does-2-dev-null-mean</a></p>
 <p>Pipes er en måde at overføre output fra en kommando til en anden. Hvis man f.eks. vil finde ud af hvor mange gange bogstavkombinationen "lib" forekommer i filnavne på roden, vil kommandoen <span class="inl_cmd">ls</span> blot liste alt indholdet op.</p>
 
 <pre class="ubuntu_terminal">
-root@thoj:~#  ls /
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$  ls /
 bin    data  home            lib    lost+found  opt   run   sys  var
 boot   dev   initrd.img      lib32  media       proc  sbin  tmp  vmlinuz
 cdrom  etc   initrd.img.old  lib64  mnt         root  srv   usr  vmlinuz.old
@@ -259,7 +259,7 @@ cdrom  etc   initrd.img.old  lib64  mnt         root  srv   usr  vmlinuz.old
 <p>Ved at anvende pibes (Den lodrette streg | ), kan vi "filtrere" output ved hjælp af <span class="inl_cmd">grep</span>.	</p>
 
 <pre class="ubuntu_terminal">
-root@thoj:~# ls / | grep lib
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ ls / | grep lib
 <span class="red">lib</span>
 <span class="red">lib</span>32
 <span class="red">lib</span>64
@@ -321,19 +321,19 @@ tir apr 12 08:39:21 CEST 2016
 <code class="more_cmd">echo "hej" | tee ~/testtee</code>
 
 <pre class="ubuntu_terminal">
-tj@tj-VirtualBox:~$ touch ~/testtee
-tj@tj-VirtualBox:~$ echo "hej" | tee ~/testtee
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ touch ~/testtee
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ echo "hej" | tee ~/testtee
 hej
-tj@tj-VirtualBox:~$ tail ~/testtee
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ tail ~/testtee
 hej
 </pre>
 
 <p>Vær opmærksom på at <span class="inl_cmd">tee</span> som standard erstatter indholdet af filen. Hvis vi vil indsætte en ny linie skal vi anvende omdirigering (markeret med rødt herunder):</p>
 
 <pre class="ubuntu_terminal">
-tj@tj-VirtualBox:~$ echo "hej (linie nummer 2)" | tee <span class="red">>></span> ~/testtee
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ echo "hej (linie nummer 2)" | tee <span class="red">>></span> ~/testtee
 hej (linie nummer 2)
-tj@tj-VirtualBox:~$ tail ~/testtee
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ tail ~/testtee
 hej
 hej (linie nummer 2)
 </pre>
@@ -359,12 +359,12 @@ hej (linie nummer 2)
 </ol>
 
 <pre class="ubuntu_terminal">
-tj@tj-VirtualBox:~$ touch sedfil
-tj@tj-VirtualBox:~$ echo 'Mit navn er Kurt-Georg' > sedfil
-tj@tj-VirtualBox:~$ cat sedfil
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ touch sedfil
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ echo 'Mit navn er Kurt-Georg' > sedfil
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ cat sedfil
 Mit navn er Kurt-Georg
-tj@tj-VirtualBox:~$ sed -i s/Kurt-Georg/Thomas/ sedfil 
-tj@tj-VirtualBox:~$ cat sedfil
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ sed -i s/Kurt-Georg/Thomas/ sedfil 
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ cat sedfil
 Mit navn er Thomas
 </pre>
 
@@ -529,11 +529,11 @@ Mit navn er Thomas
 <p>Vi ser mapperne med kommandoen: <span class="inl_cmd">ls -al | grep testmappe</span>.</p>
 
 <pre class="ubuntu_terminal">
-tj@tj-VirtualBox:~$ ls -al | grep testmappe
-drwxrwxr-x  2 tj   tj   4096 mar 15 20:18 <span class="red">testmappe</span>1
-drwxrwxr-x  2 tj   tj   4096 mar 15 20:18 <span class="red">testmappe</span>2
-drwxrwxr-x  2 tj   tj   4096 mar 15 20:18 <span class="red">testmappe</span>3
-drwxrwxr-x  2 tj   tj   4096 mar 15 20:19 <span class="red">testmappe</span>4
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ ls -al | grep testmappe
+drwxrwxr-x  2 thoj thoj 4096 mar 15 20:18 <span class="red">testmappe</span>1
+drwxrwxr-x  2 thoj thoj 4096 mar 15 20:18 <span class="red">testmappe</span>2
+drwxrwxr-x  2 thoj thoj 4096 mar 15 20:18 <span class="red">testmappe</span>3
+drwxrwxr-x  2 thoj thoj 4096 mar 15 20:19 <span class="red">testmappe</span>4
 </pre>
 
 <p>Har man brug for at oprette en hel mappestruktur indsætter man et <span class="inl_cmd">-p</span> i kommanoen. Herunder vil vi oprette mappestien <span class="inl_cmd">testmappe5/undermappe/underundermappe</span>.</p>
@@ -543,8 +543,8 @@ drwxrwxr-x  2 tj   tj   4096 mar 15 20:19 <span class="red">testmappe</span>4
 <p>Vi anvender <span class="inl_cmd">tree</span> til at se mapperne</p>
 
 <pre class="ubuntu_terminal">
-tj@tj-VirtualBox:~$ tree -L 3 ~/testmappe5
-<span class="blue1">/home/tj/testmappe5</span>
+thoj thoj  tree -L 3 ~/testmappe5
+<span class="blue1">/home/thoj/testmappe5</span>
 └── <span class="blue1">undermappe</span>
     └── <span class="blue1">underundermappe</span>
 
@@ -567,7 +567,7 @@ tj@tj-VirtualBox:~$ tree -L 3 ~/testmappe5
 <p>Lad os få et overblik over de oprettede filer med kommandoen: <span class="inl_cmd">ls -al | grep testfil</span></p>
 
 <pre class="ubuntu_terminal">
-tj@tj-VirtualBox:~$ ls -al | grep testfil
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ ls -al | grep testfil
 -rw-rw-r--  1 tj   tj      0 mar 15 20:06 <span class="red">testfil</span>
 -rw-rw-r--  1 tj   tj      0 mar 15 20:08 <span class="red">testfil</span>2
 -rw-rw-r--  1 tj   tj      0 mar 15 20:08 <span class="red">testfil</span>3
@@ -577,7 +577,7 @@ tj@tj-VirtualBox:~$ ls -al | grep testfil
 <p>Med den kommando filtrerer vi output fra <span class="inl_cmd">ls</span> med tekststrengen "testfil". Som du kan se er den første testfil 2 minutter bag de andre. Lad os opdatere dem alle til samme tidsstempel med <span class="inl_cmd">touch testfil*</span>.</p>
 
 <pre class="ubuntu_terminal">
-tj@tj-VirtualBox:~$ ls -al | grep testfil
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ ls -al | grep testfil
 -rw-rw-r--  1 tj   tj      0 mar 15 20:14 <span class="red">testfil</span>
 -rw-rw-r--  1 tj   tj      0 mar 15 20:14 <span class="red">testfil</span>2
 -rw-rw-r--  1 tj   tj      0 mar 15 20:14 <span class="red">testfil</span>3
@@ -601,7 +601,7 @@ tj@tj-VirtualBox:~$ ls -al | grep testfil
 <p>Teoretisk set kan den kommando slette hele ens harddisk, hvis man får / til at stå alene, da det er roden på hele systemet. Heldigvis er der indbygget en "failsafe" i kommandoen, sådan at man skal tilføje <span class="inl_cmd">--no-preserve-root</span> som en option.</p>
 
 <pre class="ubuntu_terminal">
-root@thoj:~# rm -R /
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ sudo rm -R /
 rm: det er farligt at operere rekursivt på '/'
 rm: brug --no-preserve-root for at tilsidesætte denne sikring
 </pre>

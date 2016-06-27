@@ -108,7 +108,7 @@ http://manpages.ubuntu.com/manpages/trusty/man8/dmidecode.8.html</a></p>
 <code class="cmd">sudo apt-get install inxi</code>
 
 <pre class="ubuntu_terminal">
-tj@tj-VirtualBox:~$ inxi
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ inxi
 <span class="blue1">CPU</span>~Single core Intel Core i7-4600M CPU (-UP-) clocked at 2893.298 Mhz <span class="blue1">Kernel</span>~4.2.0-34-generic x86_64 <span class="blue1">Up</span>~1:45 <span class="blue1">Mem</span>~544.7/3952.5MB <span class="blue1">HDD</span>~214.7GB(2.3% used) <span class="blue1">Procs</span>~172 <span class="blue1">Client</span>~Shell <span class="blue1">inxi</span>~1.9.17  
 </pre>
 
@@ -159,9 +159,9 @@ http://manpages.ubuntu.com/manpages/trusty/man1/inxi.1.html</a></p>
 </table>
 
 <pre class="ubuntu_terminal">
-tj@tj-VirtualBox:~$ uname -a
-Linux tj-VirtualBox 4.2.0-34-generic #39~14.04.1-Ubuntu SMP Fri Mar 11 11:38:02 UTC 2016 x86_64 x86_64 x86_64 GNU/Linux
-tj@tj-VirtualBox:~$ uname -rsp
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ uname -a
+Linux thoj-VirtualBox 4.2.0-34-generic #39~14.04.1-Ubuntu SMP Fri Mar 11 11:38:02 UTC 2016 x86_64 x86_64 x86_64 GNU/Linux
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ uname -rsp
 Linux 4.2.0-34-generic x86_64
 </pre>
 
@@ -236,7 +236,7 @@ http://manpages.ubuntu.com/manpages/trusty/man8/lpinfo.8.html</a></p>
 <code class="cmd">free</code>
 
 <pre class="ubuntu_terminal">
-tj@tj-VirtualBox:~$ free
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ free
              total       used       free     shared    buffers     cached
 Mem:       4047396    1414588    2632808       5552     102484     824944
 -/+ buffers/cache:     487160    3560236
@@ -246,7 +246,7 @@ Swap:      3999740          0    3999740
 <code class="cmd">free -h</code>
 
 <pre class="ubuntu_terminal">
-tj@tj-VirtualBox:~$ free -h
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ free -h
              total       used       free     shared    buffers     cached
 Mem:          3,9G       1,3G       2,5G       5,4M       100M       805M
 -/+ buffers/cache:       475M       3,4G
@@ -286,7 +286,7 @@ Swap:         3,8G         0B       3,8G
 <p>Derfor kan vi nu beregne mængden af fri RAM, ved at kigge på frie <span class="inl_cmd">-/+ buffers/cache</span></p>
 
 <pre class="ubuntu_terminal">
-tj@tj-VirtualBox:~$ free -h
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ free -h
              total       used       free     shared    buffers     cached
 Mem:          3,9G       1,3G       2,5G       5,4M       100M       805M
 -/+ buffers/cache:       475M       <span class="red">3,4G</span>
@@ -320,9 +320,9 @@ KiB Swap:  <span class="bold">3999740</span> total,        <span class="bold">0<
 
 <span class="white_bg">  PID USER      PR  NI    VIRT    RES    SHR S %CPU %MEM     TIME+ COMMAND </span>     
  1037 root      20   0  442812  64476  24616 S  3,7  1,6   0:02.53 Xorg         
- 2018 tj        20   0 1213008  94816  58028 S  3,3  2,3   0:01.90 compiz       
- 2170 tj        20   0  576656  31360  22824 S  1,3  0,8   0:00.62 gnome-termi+ 
-<span class="bold"> 2281 tj        20   0   30616   3024   2532 R  0,3  0,1   0:00.11 top </span>         
+ 2018 thoj      20   0 1213008  94816  58028 S  3,3  2,3   0:01.90 compiz       
+ 2170 thoj      20   0  576656  31360  22824 S  1,3  0,8   0:00.62 gnome-termi+ 
+<span class="bold"> 2281 thoj      20   0   30616   3024   2532 R  0,3  0,1   0:00.11 top </span>         
     1 root      20   0   33772   4348   2688 S  0,0  0,1   0:00.91 init         
     2 root      20   0       0      0      0 S  0,0  0,0   0:00.00 kthreadd     
     3 root      20   0       0      0      0 S  0,0  0,0   0:00.00 ksoftirqd/0  
@@ -361,7 +361,7 @@ KiB Swap:  <span class="bold">3999740</span> total,        <span class="bold">0<
 </p>
 
 <pre class="ubuntu_terminal">
-tj@tj-VirtualBox:~$ uptime
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ uptime
  23:16:35 up 0 min,  2 users,  load average: 0,71, 0,19, 0,06
 </pre>
 
@@ -378,7 +378,7 @@ tj@tj-VirtualBox:~$ uptime
 <p><span class="inl_cmd">ps</span> anvendes til at få et overblik over de processer der kører på systemet. Her er et eksempel fra en nystartet terminal hvor vi kører kommandoen <span class="inl_cmd">ps</span>.</p>
 
 <pre class="ubuntu_terminal">
-tj@tj-VirtualBox:~$ ps
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ ps
   PID TTY          TIME CMD
  2215 pts/11   00:00:00 bash
  2227 pts/11   00:00:00 ps
@@ -387,7 +387,7 @@ tj@tj-VirtualBox:~$ ps
 <p>Vi kan se at der kører to processer: <span class="inl_cmd">bash</span> (PID 2215) og <span class="inl_cmd">ps</span> (PID 2227). Vær opmærksom på at det ikke er alle de processer der kører på computeren, men kun dem som kører i den startede session. Ønsker du et overblik over alle de processer der kører på computeren skal du anvende følgende kommando: <span class="inl_cmd">ps aux</span>. Dette overblik er langt mere detaljeret.</p>
 
 <pre class="ubuntu_terminal">
-tj@tj-VirtualBox:~$ ps aux
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ ps aux
 USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
 root         1  0.2  0.1  33776  4260 ?        Ss   13:15   0:00 /sbin/init
 root         2  0.0  0.0      0     0 ?        S    13:15   0:00 [kthreadd]
@@ -395,13 +395,13 @@ root         3  0.0  0.0      0     0 ?        S    13:15   0:00 [ksoftirqd/0]
 
 <span class="red">... ( Linier udeladt )</span>
 
-tj        2249  0.0  0.3 385332 13772 ?        Sl   13:18   0:00 zeitgeist-datah
-tj        2254  0.0  0.1 265744  6000 ?        Sl   13:18   0:00 /usr/bin/zeitge
-tj        2261  0.0  0.2 233188  9952 ?        Sl   13:18   0:00 /usr/lib/x86_64
-tj        2270  0.0  0.0  12888   772 ?        S    13:18   0:00 /bin/cat
-tj        2298  0.0  0.4 572816 19532 ?        Sl   13:19   0:00 update-notifier
-tj        2316  0.0  0.1 461588  7592 ?        Sl   13:20   0:00 /usr/lib/x86_64
-tj        2325  0.0  0.0  24120  2564 pts/11   R+   13:20   0:00 ps aux
+thoj      2249  0.0  0.3 385332 13772 ?        Sl   13:18   0:00 zeitgeist-datah
+thoj      2254  0.0  0.1 265744  6000 ?        Sl   13:18   0:00 /usr/bin/zeitge
+thoj      2261  0.0  0.2 233188  9952 ?        Sl   13:18   0:00 /usr/lib/x86_64
+thoj      2270  0.0  0.0  12888   772 ?        S    13:18   0:00 /bin/cat
+thoj      2298  0.0  0.4 572816 19532 ?        Sl   13:19   0:00 update-notifier
+thoj      2316  0.0  0.1 461588  7592 ?        Sl   13:20   0:00 /usr/lib/x86_64
+thoj      2325  0.0  0.0  24120  2564 pts/11   R+   13:20   0:00 ps aux
 
 </pre>
 
@@ -412,7 +412,7 @@ tj        2325  0.0  0.0  24120  2564 pts/11   R+   13:20   0:00 ps aux
 <p>Start en terminal og kør: <span class="inl_cmd">ps</span></p>
 
 <pre class="ubuntu_terminal">
-tj@tj-VirtualBox:~$ ps
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ ps
   PID TTY          TIME CMD
  2215 pts/11   00:00:00 bash
  2373 pts/11   00:00:00 ps
@@ -425,16 +425,16 @@ tj@tj-VirtualBox:~$ ps
 
 
 <pre class="ubuntu_terminal">
-tj@tj-VirtualBox:~$ nano &
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ nano &
 [1] 2374
-tj@tj-VirtualBox:~$ ps
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ ps
   PID TTY          TIME CMD
  2215 pts/11   00:00:00 bash
  2374 pts/11   00:00:00 nano
  2375 pts/11   00:00:00 ps
 
 [1]+  Stopped                 nano
-tj@tj-VirtualBox:~$ 
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ 
 </pre>
 
 <p>For at dræbe nano anvender vi kommandoen <span class="inl_cmd">kill -9 *PID*</span> (i dette tilfælde 2374) og derefter kører vi <span class="inl_cmd">ps</span> for at se om processen er slettet:</p>
@@ -443,8 +443,8 @@ tj@tj-VirtualBox:~$
 <code class="more_cmd">ps</code>
 
 <pre class="ubuntu_terminal">
-tj@tj-VirtualBox:~$ kill -9 2374
-tj@tj-VirtualBox:~$ ps  
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ kill -9 2374
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ ps  
   PID TTY          TIME CMD
  2215 pts/11   00:00:00 bash
  2376 pts/11   00:00:00 ps
@@ -458,19 +458,19 @@ tj@tj-VirtualBox:~$ ps
 <p>Man kan sagtens nøjes med <span class="inl_cmd">ps</span>, da man kan filtrere output med grep. F.eks. hvis man har startet firefox og vil finde processen</p>
 
 <pre class="ubuntu_terminal">
-tj@tj-VirtualBox:~$ ps aux | grep firefox
-tj        2380  7.5  6.5 1013652 263112 ?      Sl   13:39   0:27 /usr/lib/<span class="red">firefox</span>/<span class="red">firefox</span>
-tj        2461  0.0  0.0  17436  2092 pts/11   S+   13:46   0:00 grep --color=auto <span class="red">firefox</span>
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ ps aux | grep firefox
+thoj      2380  7.5  6.5 1013652 263112 ?      Sl   13:39   0:27 /usr/lib/<span class="red">firefox</span>/<span class="red">firefox</span>
+thoj      2461  0.0  0.0  17436  2092 pts/11   S+   13:46   0:00 grep --color=auto <span class="red">firefox</span>
 </pre>
 
 <p>Som det ses herover bliver firefox fanget 2 gange. En for selve programmet og en som fanger søgningen efter firefox. Det er altså proces <span class="inl_cmd">2380</span> der skal lukkes ned. Der findes en række kommandoer som automatisk integrerer søgningen: <span class="inl_cmd">pgrep</span> og <span class="inl_cmd">pkill</span>. Herunder er vist nogle eksempler med firefox:</p>
 
 <pre class="ubuntu_terminal">
-tj@tj-VirtualBox:~$ pgrep firefox
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ pgrep firefox
 2380
-tj@tj-VirtualBox:~$ pkill firefox
-tj@tj-VirtualBox:~$ pgrep firefox
-tj@tj-VirtualBox:~$ 
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ pkill firefox
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ pgrep firefox
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$
 </pre>
 
 <p>Først køres <span class="inl_cmd">pgrep</span>, som finder processen. I anden omgang anvendes <span class="inl_cmd">pkill</span> til at lukke processen og <span class="inl_cmd">pgrep firefox</span> viser at processen ikke eksisterer mere</p>
@@ -481,7 +481,7 @@ tj@tj-VirtualBox:~$
 <p><span class="inl_cmd">xkill</span> er et program man anvender i et GUI. Alle programmer kan låse eller gå langsom hvis der sker en fejl i operativsystemet. Hvis man ønsker at dræbe en proces i et GUI, åbner man en terminal og skriver xkill. Herefter vil ens cursor ændre sig til et kryds, og hvis man klikker på et vindue med dette, vil det dræbe den proces der kører det og give nedestående i terminalen.</p>
 
 <pre class="ubuntu_terminal">
-thoj@thoj:~$ xkill
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ xkill
 Select the window whose client you wish to kill with button 1....
 xkill:  killing creator of resource 0x4e00143
 </pre>

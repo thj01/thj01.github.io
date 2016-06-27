@@ -138,7 +138,7 @@ http://manpages.ubuntu.com/manpages/trusty/en/man8/service.8.html</a></p>
 <code class="cmd">sudo apt-get purge $(dpkg -l linux-{image,headers}-"[0-9]*" | awk '/ii/{print $2}' | grep -ve $(uname -r | sed -r 's/-[a-z]+//') | sed ':a;N;$!ba;s/\n/ /g')</code>
 
 <pre class="ubuntu_terminal">
-thoj@thoj-VirtualBox:~$ sudo apt-get purge $(dpkg -l linux-{image,headers}-"
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ sudo apt-get purge $(dpkg -l linux-{image,headers}-"
 [0-9]*" | awk '/ii/{print $2}' | grep -ve $(uname -r | sed -r 's/-[a-z]+//') 
 | sed ':a;N;$!ba;s/\n/ /g')
 Indlæser pakkelisterne... Færdig
@@ -218,7 +218,7 @@ Vil du fortsætte? [J/n]
 <p>Herefter vil commandoen oprette to nye filer i mappen <span class="inl_cmd">/etc/apt/sources.list.d</span>, så <span class="inl_cmd">apt</span> fremover kigger i dette arkiv også.</p>
 
 <pre class="ubuntu_terminal">
-thoj@thoj:/$ ls -a /etc/apt/sources.list.d | grep otto
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ ls -a /etc/apt/sources.list.d | grep otto
 <span class="red">otto</span>-kesselgulasch-gimp-trusty.list
 <span class="red">otto</span>-kesselgulasch-gimp-trusty.list.save
 </pre>
@@ -230,7 +230,7 @@ thoj@thoj:/$ ls -a /etc/apt/sources.list.d | grep otto
 <p>Nogle gange giver en <span class="inl_cmd">apt-get upgrade</span> Besked om at nogle pakker er blevet holdt tilbage efter en PPA opdatering (se rød markering).</p>
 
 <pre class="ubuntu_terminal">
-thoj@thoj-VirtualBox:~$ sudo apt-get upgrade
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ sudo apt-get upgrade
 Indlæser pakkelisterne... Færdig
 Opbygger afhængighedstræ        
 Læser tilstandsoplysninger... Færdig

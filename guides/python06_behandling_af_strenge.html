@@ -62,7 +62,9 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <code class="cmd">*tekststreng* [*startposition*:*slutposition*]</code>
 
-<p>Tegnenes position i tekststrengen angives enten fra venstre med positive værdier eller fra Højre med negative. Her anvendt på mailen <span class="inl_cmd">hansboedker@dkmail.dk</span></p>
+<p>Hvis man ikke angiver start- eller slutpositionen, så sættes den automatisk til første og sidste tegn .Lad os prøve med at <span class="inl_cmd">slice</span> i en simpel mail: <span class="inl_cmd">hansboedker@dkmail.dk</span>.</p>
+
+<p>Tegnenes position i tekststrengen angives enten fra venstre med positive værdier eller fra Højre med negative. Se tabellen herunder:</span></p>
 
 <table class="centreret">
 	<thead>
@@ -140,49 +142,61 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 	</tbody>
 </table>
 
+<p>Først <span class="inl_cmd">slicer</span> vi navnet ud (i konsollen):</p>
 
-<p>Eksempler med ovenstående mail</p>
-
-<pre><code class="python">
-string = "hansboedker@dkmail.dk"
-
-#Starter fra position 0 og slutter ved position -3
-
-print (string[:-3])
-
-#Starter fra position 4 og slutter ved 12
-
-print (string[4:11])
-
-#starter ved position -3 og slutter ved 0
-
-print (string[-3:])
-
-print ("\n***\n")
-
-print ("Det var ikke så svært"[:16])
-
-print ("Det var ikke så svært"[16:])
-
+<pre>
+	<code class="python">
+>>> mail = "hansboedker@dkmail.dk"
+>>> mail[:11]
+'hansboedker'
 	</code>
 </pre>
 
-<pre class="ubuntu_terminal">
-hansboedker@dkmail
-boedker
-.dk
+<p>Her udskriver vi tegnene fra 0 &#8594; 11. Læg mærke til at 11 ikke er med. Nu <span class="inl_cmd">slicer</span> vi landekoden ud på to måder:</p>
 
-***
-
-Det var ikke så 
-svært
-
-
-------------------
-(program exited with code: 0)
-Press return to continue
+<pre>
+	<code class="python">
+>>> mail[19:]
+'dk'
+>>> mail[-2:]
+'dk'
+	</code>
 </pre>
 
+<p>Vi vælger altså selv om vi vil anvende de enkelte tegns positive eller negative placering. Se disse eksempler hvor domænenavnet bliver <span class="inl_cmd">slicet</span> ud:</p>
+
+<pre>
+	<code class="python">
+>>> mail[12:18]
+'dkmail'
+>>> mail[-9:-3]
+'dkmail'
+>>> mail[-9:18]
+'dkmail'
+	</code>
+</pre>
+
+<h2>bakke snagvendt</h2>
+
+<p>Som en lille sjov ting kan man også udskrive en tekststreng omvendt ved hjælp af slicing.</p>
+
+<pre>
+	<code class="python">
+>>> mail[::-1]
+'kd.liamkd@rekdeobsnah'
+	</code>
+</pre>
+
+<p>Det som koden siger er, at den skal slice strengen fra start til slut ... og så udskrive den bagfra. Den er meget logisk, for det som den ekstra parameter gør er at bestemme med hvilket spring sætningen skal udskrives. Prøv f.eks. følgende:</p>
+
+<pre>
+	<code class="python">
+>>> mail[::2]
+'hnbekrdmi.k'
+	</code>
+</pre>
+
+<p>Her udskriver den kun hver andet tegn i strengen.</p>
 
 <h2><span class="inl_cmd">len()</span> - samlet antal tegn i en streng</h2>
 
@@ -191,152 +205,123 @@ Press return to continue
 <p>Eksempel: Hvor mange tegn er der i min.email@dkmail.dk</p>
 
 <pre><code class="python">
-# variabel der sætter mailen der skal undersøges
-
-mail = "hansboedker@dkmail.dk"
-
-# Variabel der udregner antallet af tegn
-
-antal_bogstaver = len(mail)
-
-# Nedestående notationsmåde er smartere når man har flere variabler i samme sætning
-
-print ("Emailen \"{0}\" har {1} tegn".format(mail, antal_bogstaver))
+>>> len(mail)
+21
 	</code>
 </pre>
 
-<pre class="ubuntu_terminal">
-Emailen "hansboedker@dkmail.dk" har 21 tegn
+<h2><span class="inl_cmd">count()</span> - Antallet af specifikke tegn/strenge i en teskstreng</h2>
 
-
-------------------
-(program exited with code: 0)
-Press return to continue
-</pre>
-
-<h2><span class="inl_cmd">str.count()</span> - Antallet af specifikke tegn/strenge i en teskstreng</h2>
-
-<p>Ofte har man brug for at kunne udskille specielle tekstelementer i en teskstreng. F.eks. hvis man skal undersøge om en mail er dansk. Det kræver at den har et <span class="inl_cmd">.dk</span> i slutningen. Det kunne f.eks. være at undersøge om mailen i eksemplet ovenfor (hans.boedker@dkmail.dk).</p>
-
-<p>Lad os undersøge den for <span class="inl_cmd">dk</span></p>
+<p>Hvis man vil undersøge hvor mange gange noget forekommer i en tekstreng anvender man <span class="inl_cmd">count()</span>. Kommandoen fungerer på følgende måde:</p>
 
 <pre>
 	<code class="python">
-# variabel der sætter mailen der skal undersøges
-
-string = "hansboedker@dkmail.dk"
-
-#variabel der sætter hvilken substreng der skal findes
-
-substring ="dk"
-
-# Tæller antallet af substrenge i strengen (sub betyder under)
-antal = string.count(substring)
-
-print ("Strengen {0} har \"{1}\" stående {2} gange.".format(string, substring, antal))
+*streng der skal undersøges*.count(*det som skal tælles*)
 	</code>
 </pre>
 
-<pre class="ubuntu_terminal">
-Strengen hans.boedker@dkmail.dk har "dk" stående 3 gange.
-
-
-------------------
-(program exited with code: 0)
-Press return to continue
-
-</pre>
-
-<p>Hvis vi vil undersøge om det specifikt er de sidste tre bogtstaver der indeholder skal vi anvende <span class="inl_cmd">string()</span> kommandoen mere specifikt. Parantesen kan udvides med start og slutposition på søgningen, sådan at den siger <span class="inl_cmd">(substring, startpos, slutpos)</span>. I dette tilfælde skal vi altså finde antallet af bogstaver og finde <span class="inl_cmd">.dk</span> blandt de sidste tre cifre. Hvis mailen f.eks. er 20 bogstaver lang skal vi altså søge fra 17 (20-3) &#8594; 20. </p>
-
+<p>Hvis vi f.eks. vil finde antal <span class="inl_cmd">dk</span> i vores mail vil det altså blive:</p>
 
 <pre>
 	<code class="python">
-# variabel der sætter mailen der skal undersøges
+>>> mail.count("dk")
+3
+	</code>
+</pre>
 
-string = "hansboedker@dkmail.dk"
+<p>Strengen <span class="inl_cmd">dk</span> står altså i mailen 3 gange (hansboe<span class="red">dk</span>er@<span class="red">dk</span>mail.<span class="red">dk</span>).</p>
 
-# Længden af strengen
+<p>Lad os anvende dette til noget praktisk. Vi laver et program der tjekker om en mail er fra et dk domæne. For at sikre os skal der stå <span class="inl_cmd">.dk</span> til sidst:</p>
 
-length = len(string)
+<pre>
+	<code class="python">
+mail = input("Indtast mail: ")
 
-#variabel der sætter hvilken substreng der skal findes
+if mail[-3:].count(".dk") == 1:
+	
+	print("\n\tDet er en dk mail")
 
-substring =".dk"
-
-# Tæller antallet af substrenge i strengen fra position -3 fra slutningen
-antal = string.count(substring[-3:])
-
-print ("\"{0}\" er de sidste 3 tegn emailadressen \"{1}\"".format(substring, string))
+else:
+	
+	print("\n\tDet er ikke en dk mail")
 	</code>
 </pre>
 
 <pre class="ubuntu_terminal">
-".dk" er de sidste 3 tegn emailadressen "hans.boedker@dkmail.dk"
+Indtast mail: tj@udenlandskmail.com
 
+	Det er ikke en dk mail
 
 ------------------
 (program exited with code: 0)
 Press return to continue
 </pre>
+
+<p>Vi kunne også have undersøgt følgende:</p>
+
+<pre>
+	<code class="python">
+if mail[-3:] == ".dk":
+	</code>
+</pre>
+
+<p>Der er nu engang mange veje til Rom.</p>
 
 <h2><span class="inl_cmd">find()</span> - Find tekstelementer i tekststrenge</h2>
 
-<p>For at finde tekstelementer i tekststrenge anvender vi funktionen <span class="inl_cmd">find()</span>.</p>
+<p>For at finde tekstelementer i tekststrenge anvender vi funktionen <span class="inl_cmd">find()</span>. Den anvendes på følgende måde:</p>
 
 <pre>
 	<code class="python">
-mail = "hansboedker@dkmail.dk" # Angiv mailadresse
+*streng der skal undersøges*.find(*det som skal findes*)
+	</code>
+</pre>
 
-hvor_er_at = mail.find("@") # find position af @
+<p>Lad os lave et program der finder ud af hvad landekode en internetadresse har f.eks. <span class="inl_cmd">yahoo.dk</span>. Vi ved at landekoden er på enten 2 eller 3 bogstaver, så derfor skal vi finde det sidste dot mellem de 4 sidste tegn. Når vi kender positionen af det sidste dot, så kender vi også landekoden, fordi den ligger lige foran dot (dot+1). Så vi laver nedestående kode:</p>
 
-hvor_er_dot = mail.find(".") # find position af .
+<pre>
+	<code class="python">
+mail = "yahoo.dk"
 
-# Herunder oprettes varibaler der viser udsnittet af mailen, så den kan angives som
-# *brugernavn*@*domænenavn*.*landekode*
+pos_dot = mail[-4:].find(".")
 
-brugernavn = mail[:hvor_er_at]
+print("Det sidste dot er i position {0}.".format(pos_dot))
 
-efternavn = mail[hvor_er_at+1:hvor_er_dot]
+lande_kode = mail[pos_dot+1:]
 
-landekode = mail[hvor_er_dot+1:]
-
-# Resultatet udskrives
-
-print("@ er på position: {0}".format(hvor_er_at)) # udskriv hvor @ er
-
-print(". er på position: {0}".format(hvor_er_dot)) # udskriv hvor . er
-
-print("\nMailadressen der undersøges: {0}".format(mail))
-
-print("\nBrugernavn: {0}".format(brugernavn))
-
-print("Domænenavn: {0}".format(efternavn))
-
-print("landekode: {0}".format(landekode))
+print(lande_kode)
 	</code>
 </pre>
 
 <pre class="ubuntu_terminal">
-@ er på position: 11
-. er på position: 18
-
-Mailadressen der undersøges: hansboedker@dkmail.dk
-
-Brugernavn: hansboedker
-Domænenavn: dkmail
-landekode: dk
+Det sidste dot er i position 1.
+hoo.dk
 
 
 ------------------
 (program exited with code: 0)
 Press return to continue
-
 </pre>
 
-<h3>Opgave - tjek mail</h3>
+<p>Som vi kan se går det galt. Problemet er, at programmet finder ud af, at dot står på på position 1 imellem de 4 sidste tegn i mailen. Men vi beder programmet om at udskrive <span class="bold">hele</span> mailen fra positionen. Vi bliver nød til at fortælle Python at den skal finde positionen blandt de fire sidste elementer. Vi skal <span class="inl_cmd">slicen slicen</span>:</p>
 
-<p>Lav en kode hvor du tjekker en email ud fra følgende parametre: </p>
+<pre>
+	<code class="python">
+mail = "yahoo.dk"
+
+pos_dot = mail[-4:].find(".")
+
+print("Det sidste dot er i position {0}.".format(pos_dot))
+
+lande_kode = mail[-4:][pos_dot+1:] # Dobbelt op på slice
+
+print(lande_kode)
+	</code>
+</pre>
+
+<h2>Opgave - tjek mail</h2>
+
+<p>Lav en kode hvor du tjekker en indtastet mail ud fra følgende parametre: </p>
 
 <ol class="">
 	<li>Om den har mere end 7 tegn</li>
@@ -347,7 +332,7 @@ Press return to continue
 
 <p>Udskriften skal enten sige om det er en rigtig mail eller angive hvad der er fejlen og bede om en ny indtastning.</p>
 
-<h3>Opgave - tjek mail 2</h3>
+<h2>Opgave - tjek mail 2</h2>
 
 <p>Ændr koden så den også svarer med alle de data du undersøger for:</p>
 
@@ -357,6 +342,20 @@ Press return to continue
 	<li>Antallet af @</li>
 	<li>Hvilken landekode mailen har</li>
 </ol>
+
+<h2>Opgave - Bakke snagvendt</h2>
+
+<p>Lav et program hvor brugerens input bliver udskrevet baglæns</p>
+
+<pre class="ubuntu_terminal">
+Indtast tekst: Ubrugeligt... men sjovt! 
+
+	!tvojs nem ...tgilegurbU
+
+------------------
+(program exited with code: 0)
+Press return to continue
+</pre>
 
 
 <p></p>

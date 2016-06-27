@@ -55,7 +55,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 <code class="cmd">ifconfig</code>
 
 <pre class="ubuntu_terminal">
-tj@tj-VirtualBox:~$ ifconfig
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ifconfig
 eth0      Link encap:Ethernet  HWaddr 08:00:27:99:37:e3  
 <span class="red">          inet addr:10.0.2.15  Bcast:10.0.2.255  Mask:255.255.255.0</span>
           inet6 addr: fe80::a00:27ff:fe99:37e3/64 Scope:Link
@@ -120,7 +120,7 @@ lo        Link encap:Local Loopback
 <code class="cmd">ping dr.dk</code>
 
 <pre class="ubuntu_terminal">
-tj@tj-VirtualBox:~$ ping dr.dk
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ ping dr.dk
 PING dr.dk (159.20.6.38) 56(84) bytes of data.
 64 bytes from 159.20.6.38: icmp_seq=1 ttl=63 time=12.8 ms
 64 bytes from 159.20.6.38: icmp_seq=2 ttl=63 time=111 ms
@@ -174,7 +174,7 @@ http://manpages.ubuntu.com/manpages/trusty/en/man8/ping.8.html</a></p>
 <p>Du kan se fra <span class="inl_cmd">ifconfig</span> kommandoen hvad der skal stå i stedet for *netværkskort*. I mit tilfælde <span class="inl_cmd">eth0</span>. DNS serveren er den der heder <span class="inl_cmd">IP4.DNS[1]</span>.</p>
 
 <pre class="ubuntu_terminal">
-tj@tj-VirtualBox:~$ sudo nmcli dev list iface eth0 | grep IP4
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ sudo nmcli dev list iface eth0 | grep IP4
 [sudo] password for tj: 
 <span class="red">IP4</span>.ADRESSE[1]:                         ip = 10.0.2.15/24, gw = 10.0.2.2
 <span class="red">IP4</span>.DNS[1]:                             10.0.2.3
@@ -186,7 +186,7 @@ tj@tj-VirtualBox:~$ sudo nmcli dev list iface eth0 | grep IP4
 
 
 <pre class="ubuntu_terminal">
-tj@tj-VirtualBox:~$ nslookup 10.0.2.3
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ nslookup 10.0.2.3
 Server:		127.0.1.1
 Address:	127.0.1.1#53
 
@@ -200,7 +200,7 @@ thoj@thoj-Precision-M4800:~$ nmcli dev list iface wlan0 | grep IP4
 <span class="red">IP4</span>.ADRESSE[1]:                         ip = 192.168.0.56/24, gw = 192.168.0.1
 <span class="red">IP4</span>.DNS[1]:                             193.162.153.164
 <span class="red">IP4</span>.DNS[2]:                             194.239.134.83
-thoj@thoj-Precision-M4800:~$ nslookup 192.162.153.164
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ nslookup 192.162.153.164
 Server:		127.0.1.1
 Address:	127.0.1.1#53
 
@@ -227,9 +227,9 @@ Authoritative answers can be found from:
 <p>	Det er valgfrit at indsætte <span class="inl_cmd">--report</span> i kommandoen. --report venter med at lave et output til det har kørt 10 omgange. </p>
 
 <pre class="ubuntu_terminal">
-tj@tj-VirtualBox:~$ mtr --report dr.dk
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ mtr --report dr.dk
 Start: Sat Mar 19 00:23:28 2016
-HOST: tj-VirtualBox               Loss%   Snt   Last   Avg  Best  Wrst StDev
+HOST: thoj-VirtualBox             Loss%   Snt   Last   Avg  Best  Wrst StDev
   1.|-- 10.0.2.2                   0.0%    10    0.5   0.4   0.2   0.6   0.0
   2.|-- 192.168.0.1                0.0%    10    1.6   6.8   1.4  52.9  16.2
   3.|-- ???                       100.0    10    0.0   0.0   0.0   0.0   0.0
@@ -274,7 +274,7 @@ http://manpages.ubuntu.com/manpages/trusty/en/man8/mtr.8.html</a></p>
 <code class="cmd">nmap *IP-adresse*/*Internet_adresse*</code>
 
 <pre class="ubuntu_terminal">
-tj@tj-VirtualBox:~$ nmap 10.0.2.15
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ nmap 10.0.2.15
 
 Starting Nmap 6.40 ( http://nmap.org ) at 2016-03-19 00:36 CET
 Nmap scan report for 10.0.2.15
@@ -288,7 +288,7 @@ Nmap done: 1 IP address (1 host up) scanned in 0.06 seconds
 <p><span class="inl_cmd">nmap</span> kan også anvendes til at scanne computere på nettet, her dr.dk</p>
 
 <pre class="ubuntu_terminal">
-tj@tj-VirtualBox:~$ nmap dr.dk
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ nmap dr.dk
 
 Starting Nmap 6.40 ( http://nmap.org ) at 2016-03-19 00:37 CET
 Nmap scan report for dr.dk (159.20.6.38)
@@ -318,7 +318,7 @@ Nmap done: 1 IP address (1 host up) scanned in 7.48 seconds
 <code class="cmd">nmap 10.0.2.0/24 | grep "Nmap scan report"</code>
 
 <pre class="ubuntu_terminal">
-tj@tj-VirtualBox:~$ nmap 10.0.2.0/24 | grep "Nmap scan report"
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ nmap 10.0.2.0/24 | grep "Nmap scan report"
 <span class="red">Nmap scan report</span> for 10.0.2.2
 <span class="red">Nmap scan report</span> for 10.0.2.3
 <span class="red">Nmap scan report</span> for 10.0.2.4

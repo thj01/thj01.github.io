@@ -167,7 +167,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 <p>Hvis man har startet Ubuntu op kan man tilgå en terminalsession ved hjælp af tastekombinationen <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>T</kbd>. Det vil starte en termial op i et nyt vindue, og hvor din bruger er logget ind.</p>
 
 <pre class="ubuntu_terminal">
-tj@tj-VirtualBox:~$ 
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ 
 
 
 
@@ -189,7 +189,7 @@ tj@tj-VirtualBox:~$
 	<li>Hvilken type bruger man er</li>
 </ol>
 
-<code class="cmd">tj@tj-VirtualBox:~$ </code>
+<code class="cmd">thoj@thoj-VirtualBox:~$ </code>
 
 <table class="">
 	<thead>
@@ -203,9 +203,9 @@ tj@tj-VirtualBox:~$
 	</thead>
 	<tbody>
 		<tr>
-			<td>tj</td>
+			<td>thoj</td>
 			<td>@</td>
-			<td>tj-Virtualbox</td>
+			<td>thoj-Virtualbox</td>
 			<td>~</td>
 			<td>$</td>
 		</tr>
@@ -222,9 +222,9 @@ tj@tj-VirtualBox:~$
 <p>$ bliver erstattet af # hvis man er superbruger (root):</p>
 
 <pre class="ubuntu_terminal">
-tj@tj-VirtualBox:~$ sudo su
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ sudo su
 [sudo] password for tj: 
-root@tj-VirtualBox:/home/tj# 
+root@thoj-VirtualBox:/home/tj# 
 
 
 
@@ -262,7 +262,7 @@ root@tj-VirtualBox:/home/tj#
 
 
 <pre class="ubuntu_terminal">
-tj@tj-VirtualBox:~$ ping -c 4 dr.dk
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ ping -c 4 dr.dk
 PING dr.dk (159.20.6.38) 56(84) bytes of data.
 64 bytes from 159.20.6.38: icmp_seq=1 ttl=63 time=13.0 ms
 64 bytes from 159.20.6.38: icmp_seq=2 ttl=63 time=12.9 ms
@@ -281,7 +281,7 @@ rtt min/avg/max/mdev = 12.966/13.342/14.017/0.423 ms
 <code class="cmd">time ping -c 4 www.dr.dk</code>
 
 <pre class="ubuntu_terminal">
-tj@tj-VirtualBox:~$ time ping -c 4 dr.dk
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ time ping -c 4 dr.dk
 PING dr.dk (159.20.6.38) 56(84) bytes of data.
 64 bytes from 159.20.6.38: icmp_seq=1 ttl=63 time=12.6 ms
 64 bytes from 159.20.6.38: icmp_seq=2 ttl=63 time=13.9 ms
@@ -304,9 +304,9 @@ sys	0m0.000s
 <p>I eksemplet herunder vil jeg se informationer om den første harddisk (<span class="inl_cmd">/dev/sda</span>) ved hjælp af fdisk kommandoen <span class="inl_cmd">fdisk -d /dev/sda</span>:</p>
 
 <pre class="ubuntu_terminal">
-tj@tj-VirtualBox:~$ fdisk -l /dev/sda
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ fdisk -l /dev/sda
 Kan ikke åbne /dev/sda
-tj@tj-VirtualBox:~$ sudo fdisk -l /dev/sda
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ sudo fdisk -l /dev/sda
 [sudo] password for tj: 
 
 Disk /dev/sda: 107.4 GB, 107374182400 bytes
@@ -327,9 +327,9 @@ Diskidentifikation: 0x00031198
 <p>Hvis der skal udføres meget administrationsarbejde vælger man ofte at bruge kommandoen <span class="inl_cmd">sudo su</span>. Denne kommando ændrer ens bruger til <span class="inl_cmd">root</span>:</p>
 
 <pre class="ubuntu_terminal">
-tj@tj-VirtualBox:~$ sudo su
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ sudo su
 [sudo] password for tj: 
-root@tj-VirtualBox:/home/tj# 
+root@thoj-VirtualBox:/home/tj# 
 </pre>
 
 <p>Denne kommando gør at filen /etc/network/interfaces bliver kørt i tekstredigeringsprogrammet nano med superbrugerrettigheder.</p>
@@ -360,9 +360,9 @@ root@tj-VirtualBox:/home/tj#
 <p>Hvis man kører flere kommandoer med <span class="inl_cmd">sudo</span> lige efter hinanden, behøver man ikke genindtaste sit password, da rettigehden bliver husket i en længere tid. Derfor bør man altid afslutte den session man har gang i med kommandoen <span class="inl_cmd">exit</span>. Det gælder især hvis man har anvendt <span class="inl_cmd">sudo su</span>, da det logger en af <span class="inl_cmd">root</span>-kontoen.</p>
 
 <pre class="ubuntu_terminal">
-root@tj-VirtualBox:/home/tj# exit
+root@thoj-VirtualBox:/home/tj# exit
 exit
-tj@tj-VirtualBox:~$ 
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ 
 </pre>
 
 <p>Skriver man exit i et terminalvindue vil det lukke den kørende session ned. Det betyder at hvis man lige har startet den op, med <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>t</kbd>, vil vinduet lukke ned igen.</p>

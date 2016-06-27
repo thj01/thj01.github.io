@@ -123,7 +123,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 <p>Når Linux starter op registrerer det alle fysisk tilsluttede enheder og sætter dem ind i sit filsystem på ovenstående adresser. Vi kan se hvordan systemets harddiske er sat op ved hjælp af <span class="inl_cmd">lsblk</span></p>
 
 <pre class="ubuntu_terminal">
-tj@tj-VirtualBox:~$ lsblk
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ lsblk
 NAME   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
 sda      8:0    0  100G  0 disk 
 ├─sda1   8:1    0 46,6G  0 part /
@@ -137,7 +137,7 @@ sr0     11:0    1 1024M  0 rom
 <code class="cmd">sudo lsblk -o name,type,fstype,size,ro,type,mountpoint</code>
 
 <pre class="ubuntu_terminal">
-tj@tj-VirtualBox:~$ sudo lsblk -o name,type,fstype,size,ro,type,mountpoint
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ sudo lsblk -o name,type,fstype,size,ro,type,mountpoint
 NAME   TYPE FSTYPE   SIZE RO TYPE MOUNTPOINT
 sda    disk          100G  0 disk 
 ├─sda1 part ext4    46,6G  0 part /
@@ -167,7 +167,7 @@ sr0    rom          1024M  0 rom
 <p>Jeg har i nedestående kode markeret hvor informationerne om henholdsvis <span class="inl_cmd">sda</span> og <span class="inl_cmd">sdb</span> starter. Læg mærke til at <span class="inl_cmd">fdisk</span> ikke har registreret DVD-drevet, da det ikke er et fast drev.</p>
 
 <pre class="ubuntu_terminal">
-tj@tj-VirtualBox:~$ sudo fdisk -l
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ sudo fdisk -l
 
 <span class="red">Disk /dev/sda: 107.4 GB, 107374182400 bytes</span>
 255 hoveder, 63 sektorer/spor, 13054 cylindre, i alt 209715200 sektorer
@@ -219,8 +219,8 @@ UUID=1c538622-36c6-4fcb-a127-636a82ad84e3 none            swap    sw            
 <code class="cmd">sudo fdisk /dev/sdb</code>
 
 <pre class="ubuntu_terminal">
-tj@tj-VirtualBox:~$ sudo fdisk /dev/sdb
-[sudo] password for tj: 
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ sudo fdisk /dev/sdb
+[sudo] password for thoj: 
 Enheden indeholder hverken en gyldig DOS-partitionstabel eller en Sun-, SGI- eller OSF-disketiket.
 Opretter en ny DOS-disketiket med diskidentifikation 0xfad2f3ee.
 Ændringer vil holdes i hukommelsen, indtil du bestemmer dig for at
@@ -325,13 +325,13 @@ Partitionstabellen er ændret!
 
 Kalder ioctl() for at genindlæse partitionstabellen.
 Synkroniserer diske.
-tj@tj-VirtualBox:~$ 
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ 
 </pre>
 
 <p>Før vi går videre tjekker vi om disken er partitioneret korrekt med: <span class="inl_cmd">fdisk -l /dev/sdb</span></p>
 
 <pre class="ubuntu_terminal">
-tj@tj-VirtualBox:~$ sudo fdisk -l /dev/sdb
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ sudo fdisk -l /dev/sdb
 
 Disk /dev/sdb: 107.4 GB, 107374182400 bytes
 43 hoveder, 44 sektorer/spor, 110843 cylindre, i alt 209715200 sektorer
@@ -351,7 +351,7 @@ Diskidentifikation: 0xa6162a16
 <code class="cmd">sudo mkfs -t ext4 /dev/sdb1</code>
 
 <pre class="ubuntu_terminal">
-tj@tj-VirtualBox:~$ sudo mkfs -t ext4 /dev/sdb1
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ sudo mkfs -t ext4 /dev/sdb1
 mke2fs 1.42.9 (4-Feb-2014)
 Filesystem label=
 OS type: Linux
@@ -374,13 +374,13 @@ Writing inode tables: done
 Creating journal (32768 blocks): done
 Writing superblocks and filesystem accounting information: done   
 
-tj@tj-VirtualBox:~$
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$
 </pre>
 
 <p>Vi tjekker om harddisken er formateret korrekt med <span class="inl_cmd">lsblk</span> (min markering).</p>
 
 <pre class="ubuntu_terminal">
-tj@tj-VirtualBox:~$ sudo lsblk -o name,type,fstype,size,ro,type,mountpoint
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ sudo lsblk -o name,type,fstype,size,ro,type,mountpoint
 NAME   TYPE FSTYPE   SIZE RO TYPE MOUNTPOINT
 sda    disk          100G  0 disk 
 ├─sda1 part ext4    46,6G  0 part /
@@ -411,7 +411,7 @@ sr0    rom          1024M  0 rom
 <code class="cmd">sudo blkid /dev/sdb1</code>
 
 <pre class="ubuntu_terminal">
-tj@tj-VirtualBox:/media$ sudo blkid /dev/sdb1
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ sudo blkid /dev/sdb1
 /dev/sdb1: UUID="6731e565-b3d7-4d81-86c7-74b6e3e1d591" TYPE="ext4" 
 </pre>
 
@@ -445,7 +445,7 @@ UUID=6731e565-b3d7-4d81-86c7-74b6e3e1d591 /backup ext4 defaults 0 2</span>
 <p>Tjek at drevet er monteret med <span class="inl_cmd">lsblk</span>.</p>
 
 <pre class="ubuntu_terminal">
-tj@tj-VirtualBox:~$ lsblk
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ lsblk
 NAME   MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
 sda      8:0    0   100G  0 disk 
 ├─sda1   8:1    0  46,6G  0 part /
@@ -494,7 +494,7 @@ sr0     11:0    1  1024M  0 rom
 <p>Kontroller at harddisken er monteret med <span class="inl_cmd">lsblk</span>.</p>
 
 <pre class="ubuntu_terminal">
-tj@tj-VirtualBox:~$ lsblk
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ lsblk
 NAME   MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
 sda      8:0    0   100G  0 disk 
 ├─sda1   8:1    0  46,6G  0 part /
@@ -508,7 +508,7 @@ sr0     11:0    1  1024M  0 rom
 <p>Kontroller rettighederne</p>
 
 <pre class="ubuntu_terminal">
-tj@tj-VirtualBox:~$ sudo ls -al /media | grep backup
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ sudo ls -al /media | grep backup
 drwxr-xr-x   3 root root 4096 mar 16 15:00 <span class="red">backup</span>
 </pre>
 
@@ -521,8 +521,8 @@ drwxr-xr-x   3 root root 4096 mar 16 15:00 <span class="red">backup</span>
 <p>Kontroller rettighederne igen</p>
 
 <pre class="ubuntu_terminal">
-tj@tj-VirtualBox:~$ sudo ls -al /media | grep backup
-drwx------   3 tj   tj   4096 mar 16 15:00 <span class="red">backup</span>
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ sudo ls -al /media | grep backup
+drwx------   3 thoj thoj 4096 mar 16 15:00 <span class="red">backup</span>
 </pre>
 
 <p>Afmonter herefter drevet igen, for at vi kan montere det fast ved hjælp af <span class="inl_cmd">/etc/fstab</span>.</p>
@@ -569,19 +569,19 @@ drwx------   3 tj   tj   4096 mar 16 15:00 <span class="red">backup</span>
 <p>Find ISO-filens placering og navn.</p>
 
 <pre class="ubuntu_terminal">
-tj@tj-VirtualBox:~$ ls -al /data | grep *.iso
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ ls -al /data | grep *.iso
 -rw-rw-r--  1 thoj thoj 481296384 feb 25 11:40 <span class="red">systemrescuecd-x86-4.7.1.iso</span>
-tj@tj-VirtualBox:~$ sudo isohybrid /data/systemrescuecd-x86-4.7.1.iso 
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ sudo isohybrid /data/systemrescuecd-x86-4.7.1.iso 
 </pre>
 
 <p>USB-disken sættes i (vent 5 sekunder), afmonter disken og tjek at den er afmonteret</p>
 
 <pre class="ubuntu_terminal">
-tj@tj-VirtualBox:~$ lsblk | grep sdc
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ lsblk | grep sdc
 <span class="red">sdc</span>      8:16   1   3,8G  0 disk 
 └─<span class="red">sdc</span>1   8:17   1   3,8G  0 part /media/tj/663A-63FE
-tj@tj-VirtualBox:~$ sudo umount /dev/sdb1
-tj@tj-VirtualBox:~$ sudo lsblk | grep sdb
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ sudo umount /dev/sdb1
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ sudo lsblk | grep sdb
 <span class="red">sdc</span>      8:16   1   3,8G  0 disk 
 └─<span class="red">sdc</span>1   8:17   1   3,8G  0 part
 </pre>
@@ -589,13 +589,13 @@ tj@tj-VirtualBox:~$ sudo lsblk | grep sdb
 <p>Kopier ISO filen over på USB-nøglen (Det tager et par minutter alt efter størrelsen på isofilen) og kør <span class="inl_cmd">sync</span></p>
 
 <pre class="ubuntu_terminal">
-tj@tj-VirtualBox:~$ sudo dd if=/data/systemrescuecd-x86-4.7.1.iso of=/dev/sdb
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ sudo dd if=/data/systemrescuecd-x86-4.7.1.iso of=/dev/sdb
 [sudo] password for thoj: 
 940032+0 blokke ind
 940032+0 blokke ud
 481296384 byte (481 MB) kopieret, 130,186 s, 3,7 MB/s
-tj@tj-VirtualBox:~$ sync
-tj@tj-VirtualBox:~$
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ sync
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$
 </pre>
 
 <p>Herefter kan USB-drevet fjernes og anvendes til at boote med.</p>
