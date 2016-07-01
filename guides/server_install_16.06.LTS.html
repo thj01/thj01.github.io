@@ -553,7 +553,36 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 </figure>
 
-<h1>Simpel opsætning af harddisk</h1>
+<h1>Opsætning af harddisk</h1>
+
+<p>Herunder får du mulighed for at vælge to forskellige harddiskkonfigurationer.</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Opsætning</th>
+			<th>Beskrivelse</th>
+			<th>Anbefales til</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Simpel</td>
+			<td>Her vil vi lade installationen konfigurere harddisken. Der vil blive lavet en mindre <span class="inl_cmd">swap</span>-partition og resten bliver til <span class="inl_cmd">/</span></td>
+			<td>Simple backup og server løsninger</td>
+		</tr>
+		<tr>
+			<td>Avanceret</td>
+			<td>Harddisken vil blive sat op med LVM, sådan at du senere kan ændre i partitionsstørelser, udskrifte harddiske osv.</td>
+			<td>Produktionssystemer, hvor sikkerhed og drift er vigtig</td>
+		</tr>
+		
+	</tbody>
+</table>
+
+<h2>Simpel opsætning</h2>
+
+<p></p>
 
 <p>Med denne metode sørger Ubuntu selv for at sætte harddisken op. Det gør den ved at lave 2 partitioner: root (systemdrev) og swap. Swap bliver sat nogenlunde til den samme RAM-mængde som computeren har. Vælg "Guidet - benyt en hel disk" og derefter den disk du vil partitionere.</p>
 
