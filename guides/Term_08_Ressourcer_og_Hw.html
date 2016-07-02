@@ -42,8 +42,6 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 	
 
 <div class="title">Kommandoer</div>
-	
-p1 test
 
 <h1>Computerens hardware</h1>
 
@@ -231,33 +229,33 @@ http://manpages.ubuntu.com/manpages/trusty/man8/lpinfo.8.html</a></p>
 
 <h2><span class="inl_cmd">free</span></h2>
 
-<p><span class="inl_cmd">free</span> angiver forbruget af RAM, og vil normalt blive anvendt med <span class="inl_cmd">-h</span> eller <span class="inl_cmd">-g</span>, da det er mere læseligt. Se nedestående eksempler.</p>
+<p><span class="inl_cmd">free</span> angiver forbruget af RAM, og vil normalt blive anvendt med <span class="inl_cmd">-h</span> (human readable output), da det er mere læseligt. Se forskellen på nedestående eksempler.</p>
 
 <code class="cmd">free</code>
 
 <pre class="ubuntu_terminal">
 <span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ free
-             total       used       free     shared    buffers     cached
-Mem:       4047396    1414588    2632808       5552     102484     824944
--/+ buffers/cache:     487160    3560236
-Swap:      3999740          0    3999740
+              total        used        free      shared  buff/cache   available
+Mem:        4046844      566780     3031556        9864      448508     3419188
+Swap:       4191228           0     4191228
 </pre>
+
 
 <code class="cmd">free -h</code>
 
 <pre class="ubuntu_terminal">
 <span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ free -h
-             total       used       free     shared    buffers     cached
-Mem:          3,9G       1,3G       2,5G       5,4M       100M       805M
--/+ buffers/cache:       475M       3,4G
-Swap:         3,8G         0B       3,8G
+              total        used        free      shared  buff/cache   available
+Mem:           3,9G        563M        2,9G        9,6M        446M        3,3G
+Swap:          4,0G          0B        4,0G
 </pre>
 
-<p>For at forstå tallene skal man være klar over hvordan bruger vs linux forstår dem:</p>
+<p>Det som dine programmer har til rådighed er det som står under <span class="inl_cmd">available</span> i dette tilfælde 3,3 GB. For at forstå tallene skal man være klar over hvordan henholdsvis Linux og vi som brugere forstår tallene:</p>
 
-<table class="centreret">
+<table class="">
 	<thead>
 		<tr>
+			<th>Betegnelse</th>
 			<th>Hukommelse der...</th>
 			<th>Du kalder det:</th>
 			<th>Linux kalder det:</th>
@@ -265,39 +263,54 @@ Swap:         3,8G         0B       3,8G
 	</thead>
 	<tbody>
 		<tr>
-			<td>bliver anvendt af programmer</td>
-			<td><span class="red">Brugt</span></td>
-			<td><span class="red">Brugt</span></td>
+			<td>used</td>
+			<td>Er brugt af programmer</td>
+			<td><span class="red">Anvendt</span></td>
+			<td><span class="red">Anvendt</span></td>
+		</tr>
+		
+		<tr>
+			<td>free</td>
+			<td>Bliver ikke brugt til noget</td>
+			<td><span class="green">Tilgængelig</span></td>
+			<td><span class="green">Tilgængelig</span></td>
 		</tr>
 		<tr>
+			<td>buff/cache</td>
 			<td>er tilgængelig og anvendt til noget</td>
-			<td><span class="green">Fri</span></td>
-			<td><span class="red">Brugt</span></td>
+			<td><span class="green">Tilgængelig</span></td>
+			<td><span class="red">Anvendt</span></td>
 		</tr>
 		<tr>
-			<td>ikke er anvendt</td>
-			<td><span class="green">Fri</span></td>
-			<td><span class="green">Fri</span></td>
+			<td>available</td>
+			<td>Det som er tilgængelig for dine programmer</td>
+			<td><span class="green">Tilgængelig</span></td>
+			<td><span class="green">Tilgængelig</span></td>
 		</tr>
 	</tbody>
 </table>
 
 
-<p>Derfor kan vi nu beregne mængden af fri RAM, ved at kigge på frie <span class="inl_cmd">-/+ buffers/cache</span></p>
+<p>Hvis du gerne vil se udviklingen af dit RAM forbrug kan du sætte <span class="inl_cmd">free</span> til at opdatere sig selv efter nogle sekunder <span class="inl_cmd">-sX</span>. Nedestående opdaterer sig selv 3 gange (<span class="inl_cmd">-c3</span>) med 2 sekunders mellemrum (<span class="inl_cmd">-s2</span>).</p>
+
+<code class="cmd">free -h -c3-s2</code>
 
 <pre class="ubuntu_terminal">
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ free -h
-             total       used       free     shared    buffers     cached
-Mem:          3,9G       1,3G       2,5G       5,4M       100M       805M
--/+ buffers/cache:       475M       <span class="red">3,4G</span>
-Swap:         3,8G         0B       3,8G
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ free -h -c3 -s2
+              total        used        free      shared  buff/cache   available
+Mem:           3,9G        586M        2,8G        9,6M        522M        3,2G
+Swap:          4,0G          0B        4,0G
+
+              total        used        free      shared  buff/cache   available
+Mem:           3,9G        586M        2,8G        9,6M        522M        3,2G
+Swap:          4,0G          0B        4,0G
+
+              total        used        free      shared  buff/cache   available
+Mem:           3,9G        586M        2,8G        9,6M        522M        3,2G
+Swap:          4,0G          0B        4,0G
+
 </pre>
 
-<p>Læg mærke til hvordan free beregner RAM mængden. Der er 4GB RAM i den maskine <span class="inl_cmd">free -h</span> er blevet brugt på, men taller bliver rundet ned til 3,9GB.</p>
-
-<p>Hvis du gerne vil se udviklingen af dit RAM forbrug kan du sætte <span class="inl_cmd">free</span> til at opdatere sig selv efter nogle sekunder <span class="inl_cmd">-sX</span>. Nedestående opdaterer sig selv efter 2 sek.</p>
-
-<code class="cmd">free -g -s2</code>
 
 <p>Læs Mere: Linux ate my RAM! <a href="http://www.linuxatemyram.com/" target="_blank">http://www.linuxatemyram.com/</a></p>
 

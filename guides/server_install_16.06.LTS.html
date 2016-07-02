@@ -632,8 +632,8 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 	</thead>
 	<tbody>
 		<tr>
-			<td rowspan="5"><span class="inl_cmd">/dev/sda</span> <br/><br/><span class="inl_cmd">/dev/sdb</span></td>
-			<td rowspan="5">arkiv01</td>
+			<td rowspan="3"><br/><br/><span class="inl_cmd">/dev/sda</span>  (100GB)</td>
+			<td rowspan="6">arkiv01</td>
 			<td>system</td>
 			<td>10 GB</td>
 			<td><span class="inl_cmd">/</span></td>
@@ -652,6 +652,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 			<td>backup og dokumentation</td>
 		</tr>
 		<tr>
+			<td rowspan="3"><br/><br/><span class="inl_cmd">/dev/sdb</span> (100GB)</td>			
 			<td>web</td>
 			<td>8 GB</td>
 			<td><span class="inl_cmd">/var/www</span></td>
@@ -663,9 +664,17 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 			<td><span class="inl_cmd">swap</span></td>
 			<td>swap drev</td>
 		</tr>
+		<tr>
+			<td>-</td>
+			<td>31 GB</td>
+			<td>-</td>
+			<td>FRI</td>
+		</tr>
 
 	</tbody>
 </table>
+
+<p>Grunden til at der er plads til overs skyldes at denne installation vil blive anvendt i en LVM guide, så der er noget fri plads at eksperiemtere med.</p>
 
 <span id="after_hd_konfiguration"></span>
 
@@ -777,11 +786,152 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 </figure>
 
+<p>Første gang du logger på får du informationer om servere. De vigtigste du skal forholde dig til er sektionen med opdateringer.</p>
 
-<h1>Opdatering af serveren</h1>
+<figure id="">
 
-<p></p>
+	<img src="images/server_install_16.04_32.png" alt="" title="" />
 
+	<figcaption></figcaption>
+
+</figure>
+
+<h2>Opdatering af serveren</h2>
+
+<p>For at opdatere er der 3 ting vi skal have gjort:</p>
+
+<ol class="">
+	<li>Ændre repositories fra danske til internationale og tilføjer partner repository</li>
+	<li>Opdatere repository filerne</li>
+	<li>Opgradere Ubuntu</li>
+	<li>Fjerne overflødige kerner (efter kontrolopstart)</li>
+</ol>
+
+<p>Ubuntu søger som standard i danske repositories efter filer. Det er min erfaring at disse er langsommere at tilgå og hente fra end de internationale. Derfor er det min anbefaling at det ændres. Først tager vi en kopi af den fil vi arbejder med, så vi altid kan gå tilbage til den oprindelige tilstand.</p>
+
+<code class="cmd">sudo cp /etc/apt/sources.list /etc/apt/sources.list.backup</code>
+
+<p>Det som skal ændres er er adressen til opdateringerne (repositories). Da vi valgte at installere Ubuntu serveren på dansk, er adresserne sat til danske arkiver. For at ændre det skal vi fjerne referencerne til <span class="inl_cmd">dk</span> i <span class="inl_cmd">/etc/apt/sources.list</span> og til det formål anvender vi kommandoen <span class="inl_cmd">sed</span>. Kommandoen her bytter teksstrengen <span class="inl_cmd">dk.archive</span> ud med <span class="inl_cmd">archive</span>.</p>
+
+<code class="cmd">sudo sed -i s/dk.archive/archive/ /etc/apt/sources.list</code>
+
+<span class="afsnit">Opdater repository filerne</span>
+
+<code class="cmd">sudo apt-get update</code>
+
+<pre class="ubuntu_terminal">
+thoj@mainsrv:~$ sudo apt-get update
+Henter:1 http://security.ubuntu.com/ubuntu xenial-security InRelease [94,5 kB]
+Henter:2 http://archive.ubuntu.com/ubuntu xenial InRelease [247 kB]
+Henter:3 http://archive.ubuntu.com/ubuntu xenial-updates InRelease [94,5 kB]
+Henter:4 http://archive.ubuntu.com/ubuntu xenial-backports InRelease [92,2 kB]
+Henter:5 http://archive.ubuntu.com/ubuntu xenial/main amd64 Packages [1.201 kB]
+...
+</pre>
+
+<span class="afsnit">Opgrader serveren</span>
+
+<p>Det er min anbefaling at du vælger at lave en <span class="inl_cmd">dist-upgrade</span>, da det vilgive dig de nyeste filer.</p>
+
+<code class="cmd">sudo apt-get dist-upgrade -y</code>
+
+<p>Herunder er terminal-output for min opdatering. Som du kan se får du en beskrivelse af hvilke papper der opggraderes, hvor mange, hvor meget der skal hentes og hvor meget det kommer til at fylde når opgraderingerne er færdige </p>
+
+<pre class="ubuntu_terminal">
+thoj@mainsrv:~$ sudo apt-get dist-upgrade -y
+Indlæser pakkelisterne... Færdig
+Opbygger afhængighedstræ        
+Læser tilstandsoplysninger... Færdig
+Beregner opgraderingen... Færdig
+Følgende NYE pakker vil blive installeret:
+  libpython3.5 linux-headers-4.4.0-28 linux-headers-4.4.0-28-generic
+  linux-image-4.4.0-28-generic linux-image-extra-4.4.0-28-generic
+Følgende pakker vil blive opgraderet:
+  accountsservice apport apt apt-transport-https apt-utils base-files
+  bash-completion bind9-host bsdutils command-not-found command-not-found-data
+  dh-python distro-info-data dmidecode dnsmasq-base dnsutils dosfstools dpkg
+  gcc-5-base grep init init-system-helpers initramfs-tools initramfs-tools-bin
+  initramfs-tools-core language-selector-common libaccountsservice0
+  libapt-inst2.0 libapt-pkg5.0 libbind9-140 libblkid1 libdns-export162
+  libdns162 libdrm2 libexpat1 libfdisk1 libglib2.0-0 libglib2.0-data
+  libgnutls-openssl27 libgnutls30 libisc-export160 libisc160 libisccc140
+  libisccfg140 libldap-2.4-2 liblwres141 liblxc1 libmount1 libpam-systemd
+  libplymouth4 libsmartcols1 libssl1.0.0 libstdc++6 libsystemd0 libtasn1-6
+  libudev1 libuuid1 libxml2 linux-firmware linux-generic linux-headers-generic
+  linux-image-generic lsb-base lsb-release lshw lxc-common lxcfs lxd
+  lxd-client mdadm mount mtr-tiny openssh-client openssh-server
+  openssh-sftp-server openssl plymouth plymouth-theme-ubuntu-text
+  python3-apport python3-commandnotfound python3-distupgrade
+  python3-problem-report python3-software-properties python3-urllib3
+  shared-mime-info snapd software-properties-common sudo systemd systemd-sysv
+  ubuntu-core-launcher ubuntu-release-upgrader-core udev util-linux
+  uuid-runtime vim vim-common vim-runtime vim-tiny wget
+100 opgraderes, 5 nyinstalleres, 0 afinstalleres og 0 opgraderes ikke.
+142 MB skal hentes fra arkiverne.
+Efter denne handling, vil 304 MB yderligere diskplads være brugt.
+Henter:1 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 base-files amd64 9.4ubuntu4.1 [68,4 kB]
+...
+</pre>
+
+<span class="afsnit">Fjern alle overflødige pakker</span>
+
+
+<code class="cmd">sudo apt-get autoremove -y</code>
+
+<p>Når man arbejder med den nyeste ubuntu lige efter udgivelsen vil der sjældent være pakker der er overflødige, men der vil ske opgradering af programmer løbende som vil efterlade filer på harddisken som er overflødige.</p>
+
+<pre class="ubuntu_terminal">
+thoj@mainsrv:~$ sudo apt-get autoremove -y
+Indlæser pakkelisterne... Færdig
+Opbygger afhængighedstræ        
+Læser tilstandsoplysninger... Færdig
+0 opgraderes, 0 nyinstalleres, 0 afinstalleres og 0 opgraderes ikke.
+</pre>
+
+<span class="afsnit">Fjern overflødige kerner</span>
+
+<p>Du vil komme til at opleve at kerne bliver opdateret ret ofte. Det skyldes at der konstant arbejdes på at forbedre sikkerheden, drivers og hastighed. Det betyder desværre også, at man risikerer at der ligger en masse data på ens harddisk, man aldrig bruger. Før man fjerne ældre kerner kontrollerer man at systemet virker som det skal ved at genstarte systemet og tjekke de tjenester man anvender. Da det er en ny installation er der endnu ikke nogen tjenester der skal kontrolleres.</p>
+
+<p>Genstart serveren</p>
+
+<code class="cmd">sudo reboot</code>
+
+<p>Efter login kan du se at der ikke er nye opgraderinger, og at kernen i dette tilfælde er skiftet fra <span class="inl_cmd">4.4.0-21</span> til <span class="inl_cmd">4.4.0-28</span>.</p>
+
+<pre class="ubuntu_terminal">
+Welcome to Ubuntu 16.04 LTS (GNU/Linux 4.4.0-28-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+0 pakker kan opdateres.
+0 opdateringer er sikkerhedsopdateringer.
+
+
+Last login: Sat Jul  2 11:50:44 2016 from 10.0.2.50
+</pre>
+
+<p>Herefter køres følgende kommando (en linie)</p>
+
+<code class="cmd">sudo apt-get purge $(dpkg -l linux-{image,headers}-"[0-9]*" | awk '/ii/{print $2}' | grep -ve $(uname -r | sed -r 's/-[a-z]+//') | sed ':a;N;$!ba;s/\n/ /g')
+</code>
+
+<pre class="ubuntu_terminal">
+thoj@mainsrv:~$ sudo apt-get purge $(dpkg -l linux-{image,headers}-"[0-9]*" | awk '/ii/{print $2}' | grep -ve $(uname -r | sed -r 's/-[a-z]+//') | sed ':a;N;$!ba;s/\n/ /g')
+[sudo] adgangskode for thoj: 
+Indlæser pakkelisterne... Færdig
+Opbygger afhængighedstræ        
+Læser tilstandsoplysninger... Færdig
+Følgende pakker vil blive AFINSTALLERET:
+  linux-headers-4.4.0-21* linux-headers-4.4.0-21-generic*
+  linux-image-4.4.0-21-generic* linux-image-extra-4.4.0-21-generic*
+0 opgraderes, 0 nyinstalleres, 4 afinstalleres og 0 opgraderes ikke.
+Efter denne handling, vil 295 MB diskplads blive frigjort.
+Vil du fortsætte? [J/n]
+</pre>
+
+<p>Som du kan se bliver der fjernet i alt 295 MB, når du klikker <kbd>j</kbd>. Opdaterer du din server jævnlig (som du bør gøre), så vil der efterhånden kunne ligge gigabytes af forældede kerner. Så du bør rense din computer for kerner med jævne mellemrum.</p>
 
 <p></p>
 <p></p>
