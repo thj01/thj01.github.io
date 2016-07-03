@@ -933,6 +933,38 @@ Vil du fortsætte? [J/n]
 
 <p>Som du kan se bliver der fjernet i alt 295 MB, når du klikker <kbd>j</kbd>. Opdaterer du din server jævnlig (som du bør gøre), så vil der efterhånden kunne ligge gigabytes af forældede kerner. Så du bør rense din computer for kerner med jævne mellemrum.</p>
 
+<h1>Administration af server</h1>
+
+<p>Det er min anbefaling at du anvender SSH til at arbejde på serveren. På den måde kan den administreres fra en hvilken som helst PC der har en SSH klient installeret. </p>
+
+<p>Anvender du Ubuntu/Linux eller Mac, er SSH indbygget i kommandoprompten. Anvender du Windows skal du anvende en SSH klient, men Microsoft er igang med at implementere SSH i Windows (siger rygterne). Derfor skal du indtil videre anvende <span class="inl_cmd">PuTTY</span> <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html" target="_blank">http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html</a>. Hemmesiden ser meget spartansk ud, men <span class="inl_cmd">PuTTY</span> er et godt værktøj.</p>
+
+<p>Man tilgår serveren ved hjælp af kommandoen:</p>
+
+<code class="cmd">ssh *brugernavn*@*IP-adresse*</code>
+
+<p>Herunder har jeg logget på min server ved hjælp af SSH.</p>
+
+<pre class="ubuntu_terminal">
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ ssh thoj@10.0.2.10
+thoj@10.0.2.10's password: 
+Welcome to Ubuntu 16.04 LTS (GNU/Linux 4.4.0-28-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+0 pakker kan opdateres.
+0 opdateringer er sikkerhedsopdateringer.
+
+
+*** Genstart af computeren er påkrævet ***
+Last login: Sat Jul  2 12:07:12 2016 from 10.0.2.50
+<span class="green1">thoj@mainsrv</span>:<span class="blue1">~</span>$
+</pre>
+
+<p>Som du kan se er der behov for at genstarter serveren ;).</p>
+
 <p></p>
 <p></p>
 <p></p>

@@ -73,95 +73,182 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <h1>FTP</h1>
 
-<p>FTP er en funktion der giver brugere adgang til filer på serveren. Herunder opsætter vi en FTP server, hvor serverens brugere får adgang til deres hjemmemapper og intet andet. På denne måde kan de hver især tilgå deres filer og hjemmeside. For at give brugere ftpadgang til serveren anvender vi vsftpd</p>
+<p>FTP er en funktion der giver brugere adgang til filer på serveren. Herunder opsætter vi en FTP server, hvor serverens brugere får adgang til deres hjemmemapper og intet andet. På denne måde kan de hver især tilgå deres filer og hjemmeside. I denne guide anvendes <span class="inl_cmd">vsftpd</span>. Installer <span class="inl_cmd">vsftp</span> med følgende kommando:</p>
 
-<code class="cmd">apt-get install vsftpd -y</code>
+<code class="cmd">sudo apt-get install vsftpd -y</code>
 
-<p>vsftpd konfigureres igennem filen <span class="inl_cmd">/etc/vsftpd.conf</span>. Herunder konfigurerer vi vsftpd sådan, at brugeren bliver låst inde i sit hjemmebibliotek ved hjælp af chroot. Fjern # så der kommer til at stå følgende</p>
+<p>Når man installerer <span class="inl_cmd">vsftpd</span> kan man som udgangspunkt intet. Man skal konfigurere det som programmet skal kunne i filen <span class="inl_cmd">/etc/vsftpd.conf</span>. Vi vil konfigurere <span class="inl_cmd">vsftpd</span> sådan at:</p>
+
+<ol class="">
+	<li>brugere på computeren kan uploade og ændre i filer (write_enable), og at de bliver låst til deres home-mappe (chroot)</li>
+	<li>der bliver en offentlig mappe alle kan tilgå og downloade fra (anonymous FTP)</li>
+</ol>
+
+<span class="afsnit">Sætte brugerrettigheder</span>
+
+<p>For at aktivere brugerne på systemet skal der aktiveres to linier i <span class="inl_cmd">/etc/vsftpd.conf</span> ved at fjerne <span class="inl_cmd">#</span> og der skal tilføjes en linie:</p>
 
 <pre class="black">
 # Uncomment this to enable any form of FTP write command.
-write_enable=YES
+write_enable=YES <span class="red">&lt;--- hashtag (#) fjernes</span>
 
 … 
 
 # chroot_list_enable below.
-chroot_local_user=YES
+chroot_local_user=YES <span class="red">&lt;--- hashtag (#) fjernes</span>
+allow_writeable_chroot=YES <span class="red">&lt;--- Denne linie tilføjes</span>
 </pre>
 
 <p>Pga. sikkerhedsniveauet i <span class="inl_cmd">vsftpd</span> skal følgende linie tilføjes, for at brugeren kan oprette og redigere filer i sin mappe.:</p>
 
+<span class="afsnit">Opret Anononym FTP</span>
+
+<p>For at lave en offentlig FTP server, hvor folk kan downloade fra ændres følgende linie:</p>
+
 <pre class="black">
-allow_writeable_chroot=YES
+anonymous_enable=No
 </pre>
 
-<p>Hvis du ønsker anonym FTP (brugere kan få adgang uden identifikation og password) så ændr nedestående linie til "YES".</p>
+<p>til</p>
 
 <pre class="black">
 anonymous_enable=Yes
 </pre>
+
+<p>Herefter vil filer der lægges i <span class="inl_cmd">/srv/ftp</span> være offentligt tilgængelig.</p>
 
 
 <p>Genstart vsftpd</p>
 
 <code class="cmd">service vsftpd restart</code>
 
-<p>Vær opmærksom på at installationen selv har oprettet mappen, hvor anonyme brugere har r-x rettigheder til. Den anonyme bruger kan altså ikke selv skrive.:</p>
-
 <pre class="ubuntu_terminal">
-root@tjmainsrv:/home/thoj# ls -al /srv
-total 28
-drwxr-xr-x  4 root root  4096 dec  8 15:33 .
-drwxr-xr-x 22 root root  4096 dec  7 08:32 ..
-drwxr-xr-x  2 root ftp   4096 dec  8 15:33 ftp
-drwx------  2 root root 16384 dec  4 08:08 lost+found
-root@tjmainsrv:/home/thoj# 
+thoj@mainsrv:~$ service vsftpd restart
+<span class="red">==== AUTHENTICATING FOR org.freedesktop.systemd1.manage-units ===</span>
+Authentication is required to restart 'vsftpd.service'.
+Authenticating as: Thomas Jensen,,, (thoj)
+Password: 
+<span class="red">==== AUTHENTICATION COMPLETE ===</span>
 </pre>
 
-<h2>Test FTP</h2>
+<p>Hvis vi kigger på rettigheder til ftp mappen (<span class="inl_cmd">/srv/ftp</span>) kan vi se at den tilhører <span class="inl_cmd">root</span>, men at gruppen <span class="inl_cmd">ftp</span> har ret til læse og køre programmer derfra.</p>
+
+<pre class="ubuntu_terminal">
+thoj@mainsrv:~$ ls -al /srv
+totalt 28
+drwxr-xr-x  4 root root  4096 jul  2 23:48 .
+drwxr-xr-x 24 root root  4096 jul  2 12:11 ..
+drwxr-xr-x  2 root ftp   4096 jul  2 23:48 ftp
+drwx------  2 root root 16384 jul  2 11:30 lost+found
+</pre>
+
+<h2>Test FTP med Filezilla</h2>
 
 <p>Installer Filezilla på klienten.</p>
 
-<code class="cmd">apt-get install filezilla -y</code>
-
-<p>når du kører installationen kan det være du får følgende advarsel:</p>
-
-<pre class="ubuntu_terminal">
-ADVARSEL: Følgende pakkers autenticitet kunne ikke verificeres!
-  libtinyxml2.6.2 libwxbase2.8-0 libwxgtk2.8-0 filezilla-common filezilla
-E: Der er problemer og -y blev brugt uden --force-yes
-</pre>
-
-<p>Det skyldes at programmet kræver at to filer bliver installeret, og som ikke er verificeret. Havde vi ikke brugt <span class="inl_cmd">-y</span> ville vi have fået advarslen før vi skulle bekræftige installationen. Dette kan brugeren ikke vide og derfor er der lagt denne ekstra feature ind. Vi løser problemenet med kommandoen:</p>
-
-<code class="cmd">apt-get install filezilla -y --force-yes</code>
+<code class="cmd">sudo apt-get install filezilla -y</code>
 
 <p>For at teste det virker opretter vi to testfiler. En i vores hjemmemappe og en i <span class="inl_cmd">/srv/ftp</span>.</p>
 
 <pre class="ubuntu_terminal">
-thoj@tjmainsrv:~$ touch /home/thoj/testfile
-thoj@tjmainsrv:~$ sudo touch /srv/ftp/testfile_ftp
-thoj@tjmainsrv:~$ sudo chmod 755 /srv/ftp/testfile_ftp 
-thoj@tjmainsrv:~$ ls -al | grep testfile
--rw-rw-r-- 1 thoj thoj    0 dec  8 16:10 <span class="red">testfile</span>
-thoj@tjmainsrv:~$ ls -al /srv/ftp | grep testfile_ftp
--rwxr-xr-x 1 root root    0 dec  8 16:11 <span class="red">testfile_ftp</span>
-thoj@tjmainsrv:~$ 
+thoj@mainsrv:~$ touch ~/testfile
+thoj@mainsrv:~$ sudo touch /srv/ftp/testfile_ftp
 </pre>
 
-<p>Start Filezilla og med din brugers navn. Læg mærke til at "fjernstedet" bliver set som roden <span class="inl_cmd">/</span>. Det skyldes at vi har chrootet ftp brugeren.</p>
+<p>Vi behøver ikke bekymre os om filrettigheder, da de filer root opretter som standard har læseadgang for både gruppe og alle. Lad os kigge på filerne og deres rettigheder:</p>
 
+<pre class="ubuntu_terminal">
+thoj@mainsrv:~$ ls ~ -al | grep testfile 
+-rw-rw-r-- 1 thoj thoj    0 jul  3 00:31 <span class="red">testfile</span>
+thoj@mainsrv:~$ ls /srv/ftp/ -al | grep testfile 
+-rw-r--r-- 1 root root    0 jul  3 00:38 <span class="red">testfile</span>_ftp
+</pre>
 
+<p>Når man starter filezilla har man mulighed for at indtaste ens bruger oplysninger. Først med anonym bruger:</p>
 
 <figure id="">
 
-	<img class="p90" src="images/fildeling_ftp_01.png" alt="" title="" />
+	<img class="p90" src="images/ftp_filezilla_anonymous.png" alt="" title="" />
 
 	<figcaption></figcaption>
 
 </figure>
 
-<p>For at logge ind anonymt anvender du blot FTP-serverens IP-adresse og udelader brugernavn og password.</p>
+<p>På venstre side har man sin egen computer og på højre side er FTP-serveren. Som du kan se ligger filen <span class="inl_cmd">testfile_ftp</span> i mappen. Man overfører filen ved at trække den over eller dobbeltklikke på den.</p>
+
+<p>Herunder er der valgt en der har en bruger på FTP-serveren:</p>
+
+<figure id="">
+
+	<img class="p90" src="images/ftp_filezilla_user.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Læg mærke til at FTP-brugeren er låst til sin hjemmemappe. Havde vi ikke chrooted brugeren, ville brugeren have haft adgang til hele filstrukturen.</p>
+
+<h2>Test FTP med kommandolinien</h2>
+
+<p>Man kan også logge på ftp serveren ved hjælp af kommandolinien. Her kører man blot kommandoen:</p>
+
+<code class="cmd">ftp 10.0.2.10</code>
+
+<p>Efter kommandoen er kørt beder FTP-serveren om brugernavn og password. Herunder logger jeg på FTP-serveren fra en Ubuntu klient:</p>
+
+<pre class="ubuntu_terminal">
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ ftp 10.0.2.10
+Connected to 10.0.2.10.
+220 (vsFTPd 3.0.3)
+Name (10.0.2.10:thoj): thoj
+331 Please specify the password.
+Password:
+230 Login successful.
+Remote system type is UNIX.
+Using binary mode to transfer files.
+ftp> 
+</pre>
+
+<p>læg mærke til at kommandoprompten bliver afløst af: <span class="inl_cmd">ftp&gt;</span>. Her kan man køre forskellige kommandoer:</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Kommando</th>
+			<th>Beskrivelse</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>ls</td>
+			<td>Viser indholdet af mappen</td>
+		</tr>
+		<tr>
+			<td>cd</td>
+			<td>Skift mappe</td>
+		</tr>
+		<tr>
+			<td>mkdir / rmdir</td>
+			<td>Opret en mappe - slet en mappe</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+		</tr>
+	</tbody>
+</table>
+
+<h2>Test FTP med browseren</h2>
+
+<p></p>
+
+<figure id="">
+
+	<img class="p90" src="images/ftp_browser.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
 
 <h1>Fildeling over web</h1>
 

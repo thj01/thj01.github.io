@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+
+<head>
+	
+	<meta charset="UTF-8" lang="da"/>
+
+	<title>FTP-server - Thomas Jensen</title>
+
+	<link rel="stylesheet" href="../css/styles/docco.css" />
+
+	<link rel="stylesheet" href="../css/style.css" />
+
+	<link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono|Ubuntu|Ubuntu+Condensed' rel='stylesheet' type='text/css'>
+	
+	<script src="../js/toc2.js" type="text/javascript"></script>
+	<script src="https://code.jquery.com/jquery-2.2.2.js"></script>
+	<script src="../js/highlight.pack.js" type="text/javascript"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+
+</head>
+
+<!-- 
+
+code highlighter : https://highlightjs.org/
+
+code converter : http://www.freebits.co.uk/convert-html-code-to-text.html 
+
+-->
+
+<html>
+
+<body onload="generateTOC(document.getElementById('toc'));">
+
+<footer id="license"></footer>
+
+	<script> $( "#license" ).load( "license.html" ); </script>
+
+	<div id="toc">
+	<p>Indholdsfortegnelse</p>
+	
+	</div>
+
+<div class="title">FTP-server med Linux</div>
+
+<p>FTP er en funktion der giver brugere adgang til filer på serveren. Herunder opsætter vi en FTP server, hvor serverens brugere får adgang til deres hjemmemapper og intet andet. På denne måde kan de hver især tilgå deres filer og hjemmeside. I denne guide anvendes <span class="inl_cmd">vsftpd</span>. En af fordelene er, at man ved hjælp af FTP og en LAMP server kan give brugere på et system adgang til en personlig hjemmeside. Det vil blive gennemgået i webserver guiden.</p>
+
+<p>Vær opmærksom på at FTP er en ældre protokol, hvis hovedformål var at give let adgang til filer. I denne guide gennemgås en installation af en let tilgængelig FTP-server, hvor der er adgang for oprettede brugere på serveren, men også en anonym adgang, der kan anvendes af alle. FTP kan konfigureres så overførsler bliver krypteret, men det det vil ikke blive gennemgået i denne guide. Til sidst i guiden vil der være et kapitel med forslag til hvordan installationen kan sikres lidt mere og brugerne.</p>
+
+<h1>Installer <span class="inl_cmd">vsftpd</span></h1>
+
+<p>Installer <span class="inl_cmd">vsftp</span> med følgende kommando:</p>
+
+<code class="cmd">sudo apt-get install vsftpd -y</code>
+
+<p>Når man installerer <span class="inl_cmd">vsftpd</span> kan man som udgangspunkt intet. Man skal konfigurere det som programmet skal kunne i filen <span class="inl_cmd">/etc/vsftpd.conf</span>. Vi vil konfigurere <span class="inl_cmd">vsftpd</span> sådan at:</p>
+
+<ol class="">
+	<li>brugere på computeren kan uploade og ændre i filer (write_enable), og at de bliver låst til deres home-mappe (chroot)</li>
+	<li>der bliver en offentlig mappe alle kan tilgå og downloade fra (anonymous FTP)</li>
+</ol>
+
+<h1>Sæt brugerrettigheder</h1>
+
+<p>For at aktivere brugerne på systemet skal der aktiveres to linier i <span class="inl_cmd">/etc/vsftpd.conf</span> ved at fjerne <span class="inl_cmd">#</span> og der skal tilføjes en linie. Åbn filen med <span class="inl_cmd">nano</span>:</p>
+
+<code class="cmd">sudo nano /etc/vsftpd.conf</code>
+
+<p>Søg efter linierne ved at anvende genvejstasterne <kbd>Ctrl</kbd> + <kbd>w</kbd>.</p>
+
+<pre class="black">
+# Uncomment this to enable any form of FTP write command.
+write_enable=YES <span class="red">&lt;--- hashtag (#) fjernes</span>
+
+… 
+
+# chroot_list_enable below.
+chroot_local_user=YES <span class="red">&lt;--- hashtag (#) fjernes</span>
+allow_writeable_chroot=YES <span class="red">&lt;--- Denne linie tilføjes</span>
+</pre>
+
+<p>Pga. sikkerhedsniveauet i <span class="inl_cmd">vsftpd</span> skal følgende linie tilføjes, for at brugeren kan oprette og redigere filer i sin mappe.:</p>
+
+<h1>Opret Anononym FTP</h1>
+
+<p>For at lave en offentlig FTP server, hvor folk kan downloade fra ændres følgende linie:</p>
+
+<pre class="black">
+anonymous_enable=No
+</pre>
+
+<p>til</p>
+
+<pre class="black">
+anonymous_enable=Yes
+</pre>
+
+<p>Herefter vil filer der lægges i <span class="inl_cmd">/srv/ftp</span> være offentligt tilgængelig.</p>
+
+<h1>Genstart vsftpd</h1>
+
+<code class="cmd">service vsftpd restart</code>
+
+<pre class="ubuntu_terminal">
+thoj@mainsrv:~$ service vsftpd restart
+<span class="red">==== AUTHENTICATING FOR org.freedesktop.systemd1.manage-units ===</span>
+Authentication is required to restart 'vsftpd.service'.
+Authenticating as: Thomas Jensen,,, (thoj)
+Password: 
+<span class="red">==== AUTHENTICATION COMPLETE ===</span>
+</pre>
+
+<p>Hvis vi kigger på rettigheder til ftp mappen (<span class="inl_cmd">/srv/ftp</span>) kan vi se at den tilhører <span class="inl_cmd">root</span>, men at gruppen <span class="inl_cmd">ftp</span> har ret til læse og køre programmer derfra.</p>
+
+<pre class="ubuntu_terminal">
+thoj@mainsrv:~$ ls -al /srv
+totalt 28
+drwxr-xr-x  4 root root  4096 jul  2 23:48 .
+drwxr-xr-x 24 root root  4096 jul  2 12:11 ..
+drwxr-xr-x  2 root ftp   4096 jul  2 23:48 ftp
+drwx------  2 root root 16384 jul  2 11:30 lost+found
+</pre>
+
+<h1>FTP med Filezilla</h1>
+
+<p>Installer Filezilla på klienten.</p>
+
+<code class="cmd">sudo apt-get install filezilla -y</code>
+
+<p>For at teste det virker opretter vi to testfiler. En i vores hjemmemappe og en i <span class="inl_cmd">/srv/ftp</span>.</p>
+
+<pre class="ubuntu_terminal">
+thoj@mainsrv:~$ touch ~/testfile
+thoj@mainsrv:~$ sudo touch /srv/ftp/testfile_ftp
+</pre>
+
+<p>Vi behøver ikke bekymre os om filrettigheder, da de filer root opretter som standard har læseadgang for både gruppe og alle. Lad os kigge på filerne og deres rettigheder:</p>
+
+<pre class="ubuntu_terminal">
+thoj@mainsrv:~$ ls ~ -al | grep testfile 
+-rw-rw-r-- 1 thoj thoj    0 jul  3 00:31 <span class="red">testfile</span>
+thoj@mainsrv:~$ ls /srv/ftp/ -al | grep testfile 
+-rw-r--r-- 1 root root    0 jul  3 00:38 <span class="red">testfile</span>_ftp
+</pre>
+
+<p>Når man starter filezilla har man mulighed for at indtaste ens bruger oplysninger. Først med anonym bruger:</p>
+
+<figure id="">
+
+	<img class="p90" src="images/ftp_filezilla_anonymous.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>På venstre side har man sin egen computer og på højre side er FTP-serveren. Som du kan se ligger filen <span class="inl_cmd">testfile_ftp</span> i mappen. Man overfører filen ved at trække den over eller dobbeltklikke på den.</p>
+
+<p>Herunder er der valgt en der har en bruger på FTP-serveren:</p>
+
+<figure id="">
+
+	<img class="p90" src="images/ftp_filezilla_user.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Læg mærke til at FTP-brugeren er låst til sin hjemmemappe. Havde vi ikke chrooted brugeren, ville brugeren have haft adgang til hele filstrukturen.</p>
+
+<h1>FTP med kommandolinien</h1>
+
+<p>Man kan også logge på ftp serveren ved hjælp af kommandolinien. Her kører man blot kommandoen:</p>
+
+<code class="cmd">ftp 10.0.2.10</code>
+
+<p>Efter kommandoen er kørt beder FTP-serveren om brugernavn og password. Herunder logger jeg på FTP-serveren fra en Ubuntu klient:</p>
+
+<pre class="ubuntu_terminal">
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ ftp 10.0.2.10
+Connected to 10.0.2.10.
+220 (vsFTPd 3.0.3)
+Name (10.0.2.10:thoj): thoj
+331 Please specify the password.
+Password:
+230 Login successful.
+Remote system type is UNIX.
+Using binary mode to transfer files.
+ftp> 
+</pre>
+
+<p>læg mærke til at kommandoprompten bliver afløst af: <span class="inl_cmd">ftp&gt;</span>. Man kan se de forskellige kommandoer ved at skrive <span class="inl_cmd">?</span> og trykke <kbd>Enter</kbd>:</p>
+
+<pre class="ubuntu_terminal">
+ftp> ?
+Commands may be abbreviated.  Commands are:
+
+!		dir		mdelete		qc		site
+$		disconnect	mdir		sendport	size
+account		exit		mget		put		status
+append		form		mkdir		pwd		struct
+ascii		get		mls		quit		system
+bell		glob		mode		quote		sunique
+binary		hash		modtime		recv		tenex
+bye		help		mput		reget		tick
+case		idle		newer		rstatus		trace
+cd		image		nmap		rhelp		type
+cdup		ipany		nlist		rename		user
+chmod		ipv4		ntrans		reset		umask
+close		ipv6		open		restart		verbose
+cr		lcd		prompt		rmdir		?
+delete		ls		passive		runique
+debug		macdef		proxy		send
+</pre>
+
+<p>Herunder er en tabel med nogle af de vigtigste kommandoer.</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Kommando</th>
+			<th>Beskrivelse</th>
+			<th>Kommando</th>
+			<th>Beskrivelse</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>ls</td>
+			<td>Viser indholdet af mappen</td>
+			<td>get</td>
+			<td>Hent en fil</td>
+		</tr>
+		<tr>
+			<td>pwd</td>
+			<td>Viser mappen man står i</td>
+			<td>mget</td>
+			<td>Hent flere filer</td>
+		</tr>
+		<tr>
+			<td>cd</td>
+			<td>Skift mappe på FTP-serveren</td>
+			<td>put</td>
+			<td>upload en fil</td>
+		</tr>
+		<tr>
+			<td>lcd</td>
+			<td>Skifter mappe lokalt</td>
+			<td>mput</td>
+			<td>Upload flere</td>
+		</tr>
+		<tr>
+			<td>mkdir</td>
+			<td>Opret en mappe</td>
+			<td>exit / bye</td>
+			<td>Afslut FTP</td>			
+
+		</tr>
+		<tr>
+			<td>rmdir</td>
+			<td>Slet en mappe</td>
+			<td></td>
+			<td></td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Læs mere: <a href="http://www.cyberciti.biz/faq/linux-unix-ftp-commands/" target="_blank">http://www.cyberciti.biz/faq/linux-unix-ftp-commands/</a></p>
+
+<h1>FTP med browseren</h1>
+
+<p>Ved at anvende browseren får man læseadgang til FTP drevet. I stedet for at starte linien med <span class="inl_cmd">http</span> anvender man <span class="inl_cmd">ftp</span>, f.eks: <span class="inl_cmd">ftp:10.0.2.10</span>.</p>
+
+<figure id="">
+
+	<img class="p90" src="images/ftp_browser.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Vil man have adgang til en brugers FTP mappe angiver man brugernavnet sammen med adressen f.eks: <span class="inl_cmd">ftp:thoj@10.0.2.10</span>. Browseren beder herefter om ens password, hvorefter man får adgang til ens filer.</p>
+
+<figure id="">
+
+	<img class="p50" src="images/ftp_browser_user01.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+<p></p>
+<figure id="">
+
+	<img class="p90" src="images/ftp_browser_user02.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h1>Mere sikkerhed</h1>
+
+<p>Som det er lige nu udbydes FTP-tjenesten til alle brugerne på computeren. Udfordringen er, at et potentielt giver adgang til alle brugernes mapper på computeren ved hjælp af FTP. For at omgå dette kan man lave en liste med tilladte brugere. På den måde kan man oprette en specifik bruger, som man kan anvende til FTP - uden at andre brugere er tilgænglige.</p>
+
+<p>Lad os oprette brugeren <span class="inl_cmd">thoj_ftp</span></p>
+
+<code class="cmd">sudo adduser thoj_ftp</code>
+
+<p>For at afgrænse brugen af FTP til denne bruger skal følgende linier tilføjes i bunden af <span class="inl_cmd">/etc/vsftpd</span>:</p>
+
+<pre class="black">
+userlist_enable=YES
+userlist_deny=NO
+userlist_file=/etc/vsftpd.allowed_users
+</pre>
+
+<p>Opret og rediger herefter filen <span class="inl_cmd">/etc/vsftpd.allowed_users</span> og indsæt følgende:</p>
+
+<pre class="ubuntu_terminal">
+thoj_ftp
+</pre>
+
+<p>... og genstart <span class="inl_cmd">vsftpd</span></p>
+
+<code class="cmd">service vsftpd restart</code>
+
+<p>Herefter vil brugere der ikke er i <span class="inl_cmd">/etc/vsftpd.allowed_users</span> blive nægtet adgang</p>
+
+<pre class="ubuntu_terminal">
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ ftp 10.0.2.10 <span class="red">&lt;--- Login på FTP</span>
+Connected to 10.0.2.10.
+220 (vsFTPd 3.0.3)
+Name (10.0.2.10:thoj): thoj
+530 Permission denied. <span class="red">&lt;--- Brugeren "thoj" bliver afvist</span>
+Login failed.
+ftp> bye <span class="red">&lt;--- Afslut FTP</span>
+221 Goodbye.
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ ftp 10.0.2.10 <span class="red">&lt;--- Login på FTP</span>
+Connected to 10.0.2.10.
+220 (vsFTPd 3.0.3)
+Name (10.0.2.10:thoj): thoj_ftp
+331 Please specify the password.
+Password:
+230 Login successful. <span class="red">&lt;--- Brugeren "thoj_ftp" bliver godkendt</span>
+Remote system type is UNIX.
+Using binary mode to transfer files.
+ftp> 
+</pre>
+
+<p>I browseren får man følgende fejlbesked:</p>
+
+<figure id="">
+
+	<img class="p50" src="images/ftp_browser_user_denied.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Herefter kan brugere der har adgang til FTP-serveren tilføjes løbende.</p>
+
+<h1>Læs mere</h1>
+
+<p><a href="https://help.ubuntu.com/lts/serverguide/ftp-server.html#vsftpd-security" target="_blank">https://help.ubuntu.com/lts/serverguide/ftp-server.html#vsftpd-security</a></p>
+
+<p><a href="http://ubuntuforums.org/showthread.php?t=518293" target="_blank">http://ubuntuforums.org/showthread.php?t=518293</a></p>
+
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+
+
+
+
+
+	</body>
+
+</html>
+
+
+
+
+
