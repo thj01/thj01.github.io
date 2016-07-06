@@ -41,288 +41,275 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 	</div>
 
 <div class="title">Webserver med Linux</div>
-	
-<h1>Introduktion til deling af netværksdrev</h1>
 
-<p>I denne guide vil der være en gennemgang af nogle af de fildelings muligheder Ubuntu tilbyder. Der vil blive gennemgået:</p>
+<h1>Indledning</h1>
+
+<p>I denne guide vil du lære hvordan man opretter en LAMP webserver. LAMP står for <span class="bold">L</span>inux, <span class="bold">A</span>pache, <span class="bold">M</span>ySQL og <span class="bold">P</span>hp. I denne guide vil vi anvende mariaDB som SQL server i stedet for MySQL.</p>
+
+<p>De tjenester der skal tilføjes serveren er følgende:</p>
 
 <table class="">
 	<thead>
 		<tr>
-			<th>Server</th>
+			<th>Tjeneste</th>
 			<th>Beskrivelse</th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr>
-			<td>www-server</td>
-			<td></td>
-		</tr>
-
-		<tr>
-			<td>FTP</td>
+			<td>Apache 2</td>
 			<td></td>
 		</tr>
 		<tr>
-			<td>Owncloud</td>
+			<td>PHP 7</td>
 			<td></td>
 		</tr>
-		
-	</tbody>
-</table>
-
-<h1>FTP</h1>
-
-<p>FTP er en funktion der giver brugere adgang til filer på serveren. Herunder opsætter vi en FTP server, hvor serverens brugere får adgang til deres hjemmemapper og intet andet. På denne måde kan de hver især tilgå deres filer og hjemmeside. I denne guide anvendes <span class="inl_cmd">vsftpd</span>. Installer <span class="inl_cmd">vsftp</span> med følgende kommando:</p>
-
-<code class="cmd">sudo apt-get install vsftpd -y</code>
-
-<p>Når man installerer <span class="inl_cmd">vsftpd</span> kan man som udgangspunkt intet. Man skal konfigurere det som programmet skal kunne i filen <span class="inl_cmd">/etc/vsftpd.conf</span>. Vi vil konfigurere <span class="inl_cmd">vsftpd</span> sådan at:</p>
-
-<ol class="">
-	<li>brugere på computeren kan uploade og ændre i filer (write_enable), og at de bliver låst til deres home-mappe (chroot)</li>
-	<li>der bliver en offentlig mappe alle kan tilgå og downloade fra (anonymous FTP)</li>
-</ol>
-
-<span class="afsnit">Sætte brugerrettigheder</span>
-
-<p>For at aktivere brugerne på systemet skal der aktiveres to linier i <span class="inl_cmd">/etc/vsftpd.conf</span> ved at fjerne <span class="inl_cmd">#</span> og der skal tilføjes en linie:</p>
-
-<pre class="black">
-# Uncomment this to enable any form of FTP write command.
-write_enable=YES <span class="red">&lt;--- hashtag (#) fjernes</span>
-
-… 
-
-# chroot_list_enable below.
-chroot_local_user=YES <span class="red">&lt;--- hashtag (#) fjernes</span>
-allow_writeable_chroot=YES <span class="red">&lt;--- Denne linie tilføjes</span>
-</pre>
-
-<p>Pga. sikkerhedsniveauet i <span class="inl_cmd">vsftpd</span> skal følgende linie tilføjes, for at brugeren kan oprette og redigere filer i sin mappe.:</p>
-
-<span class="afsnit">Opret Anononym FTP</span>
-
-<p>For at lave en offentlig FTP server, hvor folk kan downloade fra ændres følgende linie:</p>
-
-<pre class="black">
-anonymous_enable=No
-</pre>
-
-<p>til</p>
-
-<pre class="black">
-anonymous_enable=Yes
-</pre>
-
-<p>Herefter vil filer der lægges i <span class="inl_cmd">/srv/ftp</span> være offentligt tilgængelig.</p>
-
-
-<p>Genstart vsftpd</p>
-
-<code class="cmd">service vsftpd restart</code>
-
-<pre class="ubuntu_terminal">
-thoj@mainsrv:~$ service vsftpd restart
-<span class="red">==== AUTHENTICATING FOR org.freedesktop.systemd1.manage-units ===</span>
-Authentication is required to restart 'vsftpd.service'.
-Authenticating as: Thomas Jensen,,, (thoj)
-Password: 
-<span class="red">==== AUTHENTICATION COMPLETE ===</span>
-</pre>
-
-<p>Hvis vi kigger på rettigheder til ftp mappen (<span class="inl_cmd">/srv/ftp</span>) kan vi se at den tilhører <span class="inl_cmd">root</span>, men at gruppen <span class="inl_cmd">ftp</span> har ret til læse og køre programmer derfra.</p>
-
-<pre class="ubuntu_terminal">
-thoj@mainsrv:~$ ls -al /srv
-totalt 28
-drwxr-xr-x  4 root root  4096 jul  2 23:48 .
-drwxr-xr-x 24 root root  4096 jul  2 12:11 ..
-drwxr-xr-x  2 root ftp   4096 jul  2 23:48 ftp
-drwx------  2 root root 16384 jul  2 11:30 lost+found
-</pre>
-
-<h2>Test FTP med Filezilla</h2>
-
-<p>Installer Filezilla på klienten.</p>
-
-<code class="cmd">sudo apt-get install filezilla -y</code>
-
-<p>For at teste det virker opretter vi to testfiler. En i vores hjemmemappe og en i <span class="inl_cmd">/srv/ftp</span>.</p>
-
-<pre class="ubuntu_terminal">
-thoj@mainsrv:~$ touch ~/testfile
-thoj@mainsrv:~$ sudo touch /srv/ftp/testfile_ftp
-</pre>
-
-<p>Vi behøver ikke bekymre os om filrettigheder, da de filer root opretter som standard har læseadgang for både gruppe og alle. Lad os kigge på filerne og deres rettigheder:</p>
-
-<pre class="ubuntu_terminal">
-thoj@mainsrv:~$ ls ~ -al | grep testfile 
--rw-rw-r-- 1 thoj thoj    0 jul  3 00:31 <span class="red">testfile</span>
-thoj@mainsrv:~$ ls /srv/ftp/ -al | grep testfile 
--rw-r--r-- 1 root root    0 jul  3 00:38 <span class="red">testfile</span>_ftp
-</pre>
-
-<p>Når man starter filezilla har man mulighed for at indtaste ens bruger oplysninger. Først med anonym bruger:</p>
-
-<figure id="">
-
-	<img class="p90" src="images/ftp_filezilla_anonymous.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-
-<p>På venstre side har man sin egen computer og på højre side er FTP-serveren. Som du kan se ligger filen <span class="inl_cmd">testfile_ftp</span> i mappen. Man overfører filen ved at trække den over eller dobbeltklikke på den.</p>
-
-<p>Herunder er der valgt en der har en bruger på FTP-serveren:</p>
-
-<figure id="">
-
-	<img class="p90" src="images/ftp_filezilla_user.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-
-<p>Læg mærke til at FTP-brugeren er låst til sin hjemmemappe. Havde vi ikke chrooted brugeren, ville brugeren have haft adgang til hele filstrukturen.</p>
-
-<h2>Test FTP med kommandolinien</h2>
-
-<p>Man kan også logge på ftp serveren ved hjælp af kommandolinien. Her kører man blot kommandoen:</p>
-
-<code class="cmd">ftp 10.0.2.10</code>
-
-<p>Efter kommandoen er kørt beder FTP-serveren om brugernavn og password. Herunder logger jeg på FTP-serveren fra en Ubuntu klient:</p>
-
-<pre class="ubuntu_terminal">
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ ftp 10.0.2.10
-Connected to 10.0.2.10.
-220 (vsFTPd 3.0.3)
-Name (10.0.2.10:thoj): thoj
-331 Please specify the password.
-Password:
-230 Login successful.
-Remote system type is UNIX.
-Using binary mode to transfer files.
-ftp> 
-</pre>
-
-<p>læg mærke til at kommandoprompten bliver afløst af: <span class="inl_cmd">ftp&gt;</span>. Her kan man køre forskellige kommandoer:</p>
-
-<table class="">
-	<thead>
 		<tr>
-			<th>Kommando</th>
-			<th>Beskrivelse</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>ls</td>
-			<td>Viser indholdet af mappen</td>
-		</tr>
-		<tr>
-			<td>cd</td>
-			<td>Skift mappe</td>
-		</tr>
-		<tr>
-			<td>mkdir / rmdir</td>
-			<td>Opret en mappe - slet en mappe</td>
-		</tr>
-		<tr>
+			<td>MariaDB</td>
 			<td></td>
+		</tr>
+		<tr>
+			<td>phpmyadmin</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>Nextcloud</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>Wordpress</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>Webmin</td>
 			<td></td>
 		</tr>
 	</tbody>
 </table>
 
-<h2>Test FTP med browseren</h2>
+<p>Derudover vil konfigurere serveren sådan at hver lokal bruger også får adgang til sin egen personlige web-server</p>
+
+<p>Ønsker du ikke at anvende database baserede hjemmesideframeworks som f.eks. Nextcloud, Wordpress, Joomla osv, kan du udelade afsnittet med mariaDB og PHP</p>
+
+<h1>Apache 2</h1>
+
+<p>Apache installeres med følgende kommando</p>
+
+<code class="cmd">sudo apt-get -y install apache2</code>
+
+<p>Kontroller at den virker ved at åbne en browser og indtast webserverens IP-adresse, som i dette tilfælde er <span class="inl_cmd">10.0.2.10</span>:</p>
+
+<figure id="">
+
+	<img class="p90" src="images/webserver_kontroller_apache.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Selve webserverens filer ligger i mappen <span class="inl_cmd">/var/www/html</span>:</p>
+
+<h2>Aktiver SSL (https)</h2>
+
+<p>Som standard anvender Apache HTTP. Her vil vi installere SSL, så vi kan anvende HTTPS, så siden kan godkendes med et certifikat. Vær opmærksom på at det ikke betyder at en side er sikker. Det eneste et certifikat betyder er, at der er nogen der har udstedt et certifikat til siden. Når browseren rammer en side der kræver certifikat, beder den om en bekræftigelse fra de udbydere som browseren stoler på. Hvis browseren ikke kan få bekræftiget det certifikat der ligger advarer den brugeren.</p>
+
+<p>Kør følgende kommandoer:</p>
+
+<code class="cmd">sudo a2enmod ssl</code>
+
+<code class="more_cmd">sudo a2ensite default-ssl.conf </code>
+
+<code class="more_cmd">sudo systemctl restart apache2</code>
+
+<p>Herefter vil du kunne anvende HTTPS. Vær opmærksom på, at det giver en fejl når man anvender serveren, da siden ikke har noget certifikat.</p>
+
+<figure id="">
+
+	<img class="p90" src="images/webserver_kontroller_apache_HTTPS01.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Vælg <span class="inl_cmd">Avanceret</span> og <span class="inl_cmd">Tilføj undtagelse...</span></p>
+
+<figure id="">
+
+	<img class="p90" src="images/webserver_kontroller_apache_HTTPS02.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Herefter får man mulighed for at tilføje sit eget sikkerhedscertifikat til siden:</p>
+
+<figure id="">
+
+	<img class="p70" src="images/webserver_kontroller_apache_HTTPS03.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Herefter kommer siden frem i browseren, men med et lille gult mærke ved låsen i øverste venstre hjørne. Men fremover husker browseren den sikkerhedsundtagelse man har lavet.</p>
+
+<figure id="">
+
+	<img class="p90" src="images/webserver_kontroller_apache_HTTPS04.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Siden er stadig krypteret, men for at undgå denne fejl skal man anskaffe og konfigurere et certifikat. Det kan man gøre gratis fra f.eks: <a href="https://letsencrypt.org/" target="_blank">https://letsencrypt.org/</a>.</p>
+
+
+<h1>PHP 7</h1>
 
 <p></p>
 
+<code class="cmd">sudo apt-get -y install php7.0 libapache2-mod-php7.0 php7.0-mbstring php7.0-mcrypt php7.0-xmlrpc php7.0-mysql</code>
+
+<p>Efter installationen skal Apache genstartes, så ændringer kan slå igennem:</p>
+
+<code class="cmd">sudo systemctl restart apache2</code>
+
+<p>For at kontrollere at PHP er installeret korrekt skal vi: opretter vi filen <span class="inl_cmd">/var/www/html/info.php</span> med lidt kode</p>
+
+<code class="cmd">echo "&lt;?php phpinfo(); ?&gt;" | sudo tee /var/www/html/info.php</code>
+
+<p>Tjek siden i browseren på adressen <span class="inl_cmd">10.0.2.10/info.php</span>:</p>
+
 <figure id="">
 
-	<img class="p90" src="images/ftp_browser.png" alt="" title="" />
+	<img class="p90" src="images/webserver_kontroller_php.png" alt="" title="" />
 
 	<figcaption></figcaption>
 
 </figure>
 
-<h1>Fildeling over web</h1>
+<p>Efter det er kontrolleret bør info.php slettes igen, da filen indeholder tekniske informationer om serverens installation.</p>
 
-<p>For at kunne dele filer over web, skal vi anvende en webserver - i Linux sammenhæng kaldet en LAMP server, da den består af: <span class="bold">L</span>inux, <span class="bold">A</span>pache, <span class="bold">M</span>ySQL og <span class="bold">P</span>hp.
+<code class="cmd">sudo rm /var/www/html/info.php</code>
 
-<p>Vi anvender programmet <span class="inl_cmd">tasksel</span> til at installere LAMP serveren med, da det automatiserer processen for os. Installerer du LAMP på en server er det allerede installeret, og du anvendte det til at installere OpenSSH serveren under installationen.</p>
+<h2>Optimering af PHP</h2>
 
-<h2>Installer <span class="inl_cmd">tasksel</span> (Klient)</h2>
+<p>PHP er installeret i en "standard" version, og det kan de optimeres. PHP konfigureres igennem filen <span class="inl_cmd">/etc/php/7.0/apache2/php.ini</span>. Læg mærke til at tegnet <span class="inl_cmd">;</span> udkommenterer linier og skal fjernes før linien bliver aktiv.</p>
 
-<p>Det er kun nødvendigt at installere <span class="inl_cmd">tasksel</span> hvis du anvender en klient.</p>
+<code class="cmd">sudo nano /etc/php/7.0/apache2/php.ini</code>
 
-<p><span class="inl_cmd">tasksel</span> installeres på følgende på. Husk at opdatere repositories både før og efter installationen.</p>
+<p>OPcache er en indbygget funktion i PHP, der laver en cache for kørte PHP-programmer. På den måde minimerer man belastningen af CPU og harddisk. Her laver vi et simpelt setup, hvor fire linier skal ændres:</p>
 
-<code class="cmd">apt-get update</code>
+<ol class="">
+	<li>OPcache skal aktiveres</li>
+	<li>Mængden af RAM der afsættes til cache skal sættes</li>
+	<li>Antallet af scripts der kan caches</li>
+	<li>Hvor ofte scripts skal kontrolleres for at være aktive i cachen</li>
+</ol>
 
-<code class="more_cmd">apt-get install tasksel -y</code>
+<p>Fremgangsmåden er taget fra: <a href="http://www.hostingadvice.com/how-to/enable-php-5-5-opcache-ubuntu-14-04/" target="_blank">http://www.hostingadvice.com/how-to/enable-php-5-5-opcache-ubuntu-14-04/</a></p>
 
-<code class="more_cmd">apt-get update</code>
+<p>I linien <span class="inl_cmd">;opcache.enable=0</span> fjernes <span class="inl_cmd">;</span> og værdien sættes til <span class="inl_cmd">1</span></p>
 
-<h2>Installer LAMP</h2>
+<pre class="black">
+; Determines if Zend OPCache is enabled
+opcache.enable=1 <span class="red">&lt;--- ; fjernes og værdien sættes til 1</span>
+</pre>
 
-<p>LAMP-serveren kan installeres på to måder med tasksel: Ved hjælp af kommandolinien eller ved hjælp af en GUI. For at køre installationen direkte fra kommandolinien skal du køre nedestående kommandolinie. Vær opmærksom på, at du under installationen bliver bedt om at angive en adgangskode (anvend: 123qwe) til MySQL' rootbruger.</p>
+<p>I linien <span class="inl_cmd">;opcache.memory_consumption=64</span> fjernes <span class="inl_cmd">;</span> og værdien beholdes (Antal Mb).</p>
 
-<code class="cmd">tasksel install lamp-server</code>
+<pre class="black">
+; The OPcache shared memory storage size.
+opcache.memory_consumption=64 <span class="red">&lt;--- ; fjernes og værdien beholdes</span>
+</pre>
 
-<p>For at installere ved hjælp af den GUI der følger med <span class="inl_cmd">tasksel</span> kører du blot kommandoen:</p>
+<p>I linien <span class="inl_cmd">;opcache.max_accelerated_files=2000</span> fjernes <span class="inl_cmd">;</span> og værdien beholdes</p>
 
-<code class="cmd">tasksel</code>
+<pre class="black">
+; The maximum number of keys (scripts) in the OPcache hash table.
+; Only numbers between 200 and 100000 are allowed.
+opcache.max_accelerated_files=2000 <span class="red">&lt;--- ; fjernes og værdien beholdes</span>
+</pre>
 
-<p>Herefter kommer følgende skærmbillede frem, hvor du med piletasterne vælger "LAMP server", markerer med [Mellemrum], flytter markeringen ned til "OK" med [Tab] og trykker [Enter]</p>
+<p>I linien <span class="inl_cmd">;opcache_revalidate_freq = 2</span> fjernes <span class="inl_cmd">;</span> og værdien sættes til <span class="inl_cmd">240</span> (sekunder = 4 minutter)</p>
 
-<figure id="">
+<pre class="black">
+; How often (in seconds) to check file timestamps for changes to the shared
+; memory storage allocation. ("1" means validate once per second, but only
+; once per request. "0" means always validate)
+opcache.revalidate_freq=240 <span class="red">&lt;--- ; fjernes og værdien sættes til 240 (sekunder)</span>
+</pre>
 
-	<img class="" src="images/fildeling_tasksel_LAMP.png" alt="" title="" />
+<p>Afslut <span class="inl_cmd">nano</span> og start opcache modulet.</p>
 
-	<figcaption></figcaption>
+<code class="cmd">sudo phpenmod opcache</code>
 
-</figure>
+<p>Genstart Apache</p>
 
-<h2>Adgang til webserverens html mappe</h2>
+<code class="cmd">sudo systemctl restart apache2</code>
 
-<p><span class="inl_cmd">root</span> er normalt ejeren af webserverens html mappe (<span class="inl_cmd">/var/www/html</span>), men hvis det er en lille privat server kan det være en fordel at ændre rettighederne sådan at det bliver din brugers mappe og give direkte adgang til mappen ved hjælp af et "soft-link".</p>
+<h1>Nogle tricks</h1>
 
-<p>Ændr bruger og skriverettighederne i <span class="inl_cmd">/var/www/html</span></p>
+<p>Her er nogle af de praktiske tricks jeg anvender på min webserver</p>
 
-<code class="cmd">chown -R *brugernavn*:*brugernavn* /var/www/html</code>
+<h2>Symbolsk link</h2>
 
-<code class="cmd">chmod -R 705 /var/www.html</code>
+<p>Her vil vi oprette en genvej (symbolsk link) til <span class="inl_cmd">/var/www/html</span>. Det gør vi ved at "binde" en mappe i vores hjemme-mappe til webserverens mappe. Link-mappen får samme navn som den mappe den linker til.</p>
 
-<p>Gå tilbage til din egen bruger og opret en <span class="inl_cmd">html</span> mappe i din hjemmemappe</p>
+<p>Opret det symbolske link:</p>
 
-<code class="cmd">su *brugernavn*</code>
+<code class="cmd">ln -s /var/www/html/ ~</code>
 
-<code class="more_cmd">mkdir ~/html</code>
-
-<p>Lav vi et "soft"-link, sådan at du får adgang til /var/www/html fra din egen mappe:</p>
-
-<code class="cmd">ln -s /var/www/html/ ~/html</code>
-
-<p>Herefter er mappen <span class="inl_cmd">~/html</span> linket til <span class="inl_cmd">/var/www/html</span> og du kan navigere direkte til <span class="inl_cmd">html</span> mappen fra din hjemmemappe.</p>
+<p>Tjek om linket er oprettet og det virker:</p>
 
 <pre class="ubuntu_terminal">
-thoj@testweb:~$ ln -s /var/www/html/ ~/html
-thoj@testweb:~$ ls -al
-totalt 28
-drwxr-xr-x 3 thoj thoj 4096 aug 28 13:39 .
-drwxr-xr-x 3 root root 4096 aug 24 13:45 ..
--rw------- 1 thoj thoj  141 aug 26 13:30 .bash_history
--rw-r--r-- 1 thoj thoj  220 aug 24 13:45 .bash_logout
--rw-r--r-- 1 thoj thoj 3637 aug 24 13:45 .bashrc
-drwx------ 2 thoj thoj 4096 aug 24 13:47 <span class="blue1">.cache</span>
-lrwxrwxrwx 1 thoj thoj   14 aug 28 13:39 <span class="turk">html</span> -> <span class="blue1">/var/www/html/</span>
--rw-r--r-- 1 thoj thoj  675 aug 24 13:45 .profile
+thoj@mainsrv:~$ ls -l
+totalt 0
+lrwxrwxrwx 1 thoj thoj 14 jul  3 21:11 <span class="turk">html</span> -> <span class="blue1">/var/www/html/</span>
+-rw-rw-r-- 1 thoj thoj  0 jul  3 00:31 testfile
+thoj@mainsrv:~$ cd ~/html <span class="red">&lt;--- naviger ind i html mappen</span>
+thoj@mainsrv:~/html$ ls -l
+totalt 16
+-rw-r--r-- 1 root root 11321 jul  3 20:01 index.html
+-rw-r--r-- 1 root root    20 jul  3 20:20 info.php
 </pre>
+
+<h2>Gør dig selv til ejer</h2>
+
+<p>Ved at gøre dig selv til ejer af www-serverens filer kan du redigere direkte i filerne uden at bekymre dig om rettighederne.</p>
+
+<p>Ændr ejerskab og rettigheder for filerne i mappen <span class="inl_cmd">/var/www/html</span> til dig selv - i dette tilfælde <span class="inl_cmd">thoj</span></p>
+
+<code class="cmd">sudo chown -R thoj:thoj /var/www/html</code>
+
+<code class="cmd">sudo chmod 705 -R /var/www/html</code>
+
+<pre class="ubuntu_terminal">
+thoj@mainsrv:~$ ls -l /var/www/html/
+totalt 16
+-rwx---r-x 1 thoj thoj 11321 jul  3 20:01 <span class="green1">index.html</span>
+-rwx---r-x 1 thoj thoj    26 jul  3 21:26 <span class="green1">info.php</span>
+</pre>
+
+<p>Læg mærke til at man bliver nød til at bruge den fulde sti til mappen for at se indholdet. Hvis man viser en liste ved at bruge det symbolske link sker der følgende:</p>
+
+<pre class="ubuntu_terminal">
+thoj@mainsrv:~$ ls -l ~/html
+lrwxrwxrwx 1 thoj thoj 14 jul  4 18:45 <span class="turk">/home/thoj/html</span> -> <span class="blue1">/var/www/html/</span>
+</pre>
+
+<p>Grunden til at vi ikke ser indholdet af den mappe det symbolske link henviser til skyldes, at linket egentlig er en fil. Derfor kan man ikke liste indholdet af mappen. Man kan godt godt "ramme" en fil igennem det symbolske link f.eks:</p>
+
+<code class="cmd">cat ~/html/index.html | head -5</code>
+
+<pre class="ubuntu_terminal">
+thoj@mainsrv:~$ cat ~/html/index.html | head -5
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;
+&lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;
+  &lt;!--
+    Modified from the Debian original for Ubuntu
+</pre>
+
 
 <h2>Personlige hjemmesider</h2>
 
@@ -340,41 +327,45 @@ drwxr-xr-x 98 root root 4096 dec 16 11:30 ..
 -rw-r--r--  1 root root  675 apr  9  2014 .profile
 </pre>
 
-<p>I denne mappe skal vi have oprettet en privat www-mappe</p>
+<p>I denne mappe skal vi have oprettet en privat www-mappe, som vi kalder <span class="inl_cmd">public_html</span>. I denne mappe læger vi mapperne: <span class="inl_cmd">images</span> til billeder, <span class="inl_cmd">css</span> til CSS filer og <span class="inl_cmd">js</span> til Javascript filer.</p>
 
-<code class="cmd">mkdir -p /etc/skel/public_html/images /etc/skel/public_html/css /etc/skel/public_html/js</code>
+<code class="cmd">sudo mkdir -p /etc/skel/public_html/images /etc/skel/public_html/css /etc/skel/public_html/js</code>
 
-<p>Herefter opretter vi filerne <span class="inl_cmd">index.html</span> og <span class="inl_cmd">phptest.html</span> og indsætter lidt indhold.</p>
+<p>Herefter opretter vi filerne <span class="inl_cmd">index.html</span> og <span class="inl_cmd">phptest.html</span> og indsætter lidt indhold ved hjælp af <span class="inl_cmd">echo</span>.</p>
 
-<code class="cmd">echo "&lt;h1&gt;Din hjemmeside&lt;/h1&gt;" &gt; /etc/skel/public_html/index.html </code>
+<code class="cmd">echo "&lt;h1&gt;Din hjemmeside&lt;/h1&gt;" | sudo tee /etc/skel/public_html/index.html </code>
 
-<code class="more_cmd">echo "&lt;?php phpinfo(); ?&gt;" &gt;&gt; /etc/skel/public_html/testphp.php</code>
+<code class="more_cmd">echo "&lt;?php phpinfo(); ?&gt;" | sudo tee /etc/skel/public_html/info.php</code>
+
+<p>Det sidste vi skal have gjort er at ændre filrettighederne for brugernes www-mapper.</p>
+
+<code class="cmd">sudo chmod -R 705 /etc/skel/public_html</code>
 
 <p>Vi kan tjekke filstrukturen med kommandoen:</p>
 
-<code class="cmd">tree /etc/skel -a --dirsfirst</code>
+<code class="cmd">tree /etc/skel -pua --dirsfirst</code>
 
 <pre class="ubuntu_terminal">
-root@tjmainsrv:/etc/skel/public_html# tree /etc/skel -a --dirsfirst
+thoj@mainsrv:~$ tree /etc/skel -pua --dirsfirst
 <span class="blue1">/etc/skel</span>
-├── <span class="blue1">public_html</span>
-│   ├── <span class="blue1">css</span>
-│   ├── <span class="blue1">images</span>
-│   ├── <span class="blue1">js</span>
-│   ├── index.html
-│   └── testphp.php
-├── .bash_logout
-├── .bashrc
-└── .profile
+├── [drwx---r-x root    ]  <span class="blue1">public_html</span>
+│   ├── [drwx---r-x root    ]  <span class="blue1">css</span>
+│   ├── [drwx---r-x root    ]  <span class="blue1">images</span>
+│   ├── [drwx---r-x root    ]  <span class="blue1">js</span>
+│   ├── [-rwx---r-x root    ]  <span class="green1">index.html</span>
+│   └── [-rwx---r-x root    ]  <span class="green1">info.php</span>
+├── [-rw-r--r-- root    ]  .bash_logout
+├── [-rw-r--r-- root    ]  .bashrc
+└── [-rw-r--r-- root    ]  .profile
 
 4 directories, 5 files
 </pre>
 
-<p>På webservere er det normen at man giver filerne 705 rettigheder. På den måde har ejeren af mappen læse, skrive og execute på alle filer, men alle andre kan læse og execute.</p>
+<p>På webservere er det normen at man giver filerne 705 rettigheder. På den måde har ejeren af mappen læse, skrive og udføre på alle filer, men alle kan læse og udføre når de åbner filen i en browser.</p>
 
-<code class="cmd">chmod -R 705 /etc/skel/public_html</code>
+<p>Apache2 har slået PHP fra i brugerens directories. For at slå det til skal vi udkommentere følgende i <span class="inl_cmd">/etc/apache2/mods-enabled/php7.0.conf</span>. Ændr det fra: </p>
 
-<p>Apache2 har slået PHP fra i brugerens directories. For at slå det til skal vi udkommentere følgende i <span class="inl_cmd">/etc/apache2/mods-enabled/php5.conf</span> (markeret med rød):</p>
+<code class="cmd">sudo nano /etc/apache2/mods-enabled/php7.0.conf</code>
 
 <pre class="black">
 # Running PHP scripts in user directories is disabled by default
@@ -382,123 +373,723 @@ root@tjmainsrv:/etc/skel/public_html# tree /etc/skel -a --dirsfirst
 # To re-enable PHP in user directories comment the following lines
 # (from &lt;IfModule ...&gt; to &lt;/IfModule&gt;.) Do NOT set it to On as it
 # prevents .htaccess files from disabling it.
-<span class="red">#&lt;IfModule mod_userdir.c&gt;
-#    &lt;Directory /home/*/public_html&gt;
-#        php_admin_flag engine Off
-#    &lt;/Directory&gt;
-#&lt;/IfModule&gt;</span>
+&lt;IfModule mod_userdir.c&gt;
+    &lt;Directory /home/*/public_html&gt;
+        php_admin_flag engine Off 
+    &lt;/Directory&gt; 
+&lt;/IfModule&gt; 
 </pre>
 
+<p>til ...</p>
+
+<pre class="black">
+# Running PHP scripts in user directories is disabled by default
+#
+# To re-enable PHP in user directories comment the following lines
+# (from &lt;IfModule ...&gt; to &lt;/IfModule&gt;.) Do NOT set it to On as it
+# prevents .htaccess files from disabling it.
+<span class="red">#</span>&lt;IfModule mod_userdir.c&gt; <span class="red">&lt;--- Start linien med #</span>
+<span class="red">#</span>    &lt;Directory /home/*/public_html&gt; <span class="red">&lt;--- Start linien med #</span>
+<span class="red">#</span>        php_admin_flag engine Off <span class="red">&lt;--- Start linien med #</span>
+<span class="red">#</span>    &lt;/Directory&gt; <span class="red">&lt;--- Start linien med #</span>
+<span class="red">#</span>&lt;/IfModule&gt; <span class="red">&lt;--- Start linien med #</span>
+</pre>
 
 <p>Som det sidste skal vi have aktiveret brugernes webfolders i apache2 og genstartet tjenesten</p>
 
-<code class="cmd">a2enmod userdir && service apache2 restart</code>
+<code class="cmd">sudo a2enmod userdir</code>
 
-<p>Vær opmærksom på, at du får en fejlmeddelelse hvis du genstarter Apache på en klient:</p>
-
-<pre class="ubuntu_terminal">
-root@thoj-VirtualBox:/home/thoj# service apache2 restart
- * Restarting web server apache2                                                
- AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 127.0.1.1. Set the 'ServerName' directive globally to suppress this message
-                                                                                            [ OK ]
-root@mainsrv:/home/thoj# 
-</pre>
-
-<p>Det skyldes at klienter ikke er konfigureret med et FQDN.</p>
+<code class="more_cmd">sudo systemctl restart apache2</code>
 
 <p>Test ved at oprette brugeren <span class="inl_cmd">testweb</span> og naviger til <span class="inl_cmd">10.0.2.10/~testweb</span> i en browser og tilgå brugerens mappe over FTP. Vær opmærksom på at det kun er brugere, der er oprettet efter ændringen der får oprettet disse mapper.</p>
 
+<code class="cmd">sudo adduser testweb</code>
+
+<p>Åbn browseren og sæt adressen til <span class="inl_cmd">10.0.2.10\~testweb</span> for at test den personlige hjemmeside og <span class="inl_cmd">10.0.2.10\~testweb\info.php</span> for at kontrollere PHP virker som det skal</p>
+
 <figure id="">
 
-	<img class="p90" src="images/fildeling_privat_web.png" alt="" title="" />
+	<img class="p90" src="images/webserver_kontroller_apache_lokal_bruger.png" alt="" title="" />
 
 	<figcaption></figcaption>
 
 </figure>
 
-<p>Vær opmærksom på at det kun er brugere, der er oprettet efter ændringen der får oprettet disse mapper. Ønsker du at give de oprindelige brugere deres egen web-mappe skal de kopieres ind og der skal ændres ejerskab. Erstat <span class="red">*brugernavn*</span> med brugeren der skal have adgang til web-mappen.</p>
+<figure id="">
 
-<code class="cmd">cp -R /etc/skel/public_html /home/<span class="red">*brugernavn*</span></code>
+	<img class="p90" src="images/webserver_kontroller_php_local_bruger.png" alt="" title="" />
 
-<code class="more_cmd">chown -R <span class="red">*brugenavn*</span>:<span class="red">*brugenavn*</span> /home/<span class="red">*brugenavn*</span></code>
+	<figcaption></figcaption>
 
-<h2>Optimer PHP</h2>
+</figure>
 
-<p>PHP er installeret i en  "standard" version, og derfor kan de optimeres. Vi skal have konfigureret følgende. PHP konfigureres igennem filen <span class="inl_cmd">/etc/php5/apache2/php.ini</span>. Læg mærke til at tegnet <span class="inl_cmd">;</span> udkommenterer linier og skal fjernes før linien bliver aktiv.</p>
+<p>Når der er kontrolleret at PHP virker på brugernes private hjemmesider fjernes <span class="inl_cmd">info.php</span> af sikkerhedsgrunde fra både fra <span class="inl_cmd">testweb</span>'s side og fra skabelonen:</p>
 
-<h3>OPcache</h3>
+<code class="cmd">sudo rm /home/testweb/public_html/info.php</code>
+<code class="more_cmd">sudo rm /etc/skel/public_html/info.php </code>
 
-<p>OPcache er en indbygget funktion i PHP, der laver en cache for kørte PHP-programmer. På den måde minimerer man belastningen af CPU og harddisk. Her laver vi et simpelt setup, hvor fire parametre skal ændres:</p>
+<p>Vær opmærksom på at det kun er brugere, der er oprettet efter ændringen der får oprettet disse mapper. Ønsker du at give de oprindelige brugere deres egen web-mappe skal de kopieres ind og der skal ændres ejerskab.Her gøres det for min bruger <span class="inl_cmd">thoj</span>.</p>
+
+<code class="cmd">cp -R /etc/skel/public_html /home/thoj</code>
+
+<code class="more_cmd">chown -R thoj:thoj /home/thoj/public_html/</code>
+
+<h1>mariaDB og PHPMyAdmin</h1>
+
+<p>Opsætningen af mariaDB og PHPMyAdmin skal gøres over 3 trin:</p>
 
 <ol class="">
-	<li>OPcache skal aktiveres</li>
-	<li>Mængden af RAM der afsættes til Cache skal sættes</li>
-	<li>Antallet af scripts der kan </li>
-	<li>Hvor ofte det enkelte script skal kontrolleres for at være aktivt</li>
+	<li>Installation og opsætning af mariaDB pg PHPMyAdmin</li>
+	<li>Installation af PHPMyAdmin</li>
+	<li>Sætte rettigheder for kørsel af mariaDB</li>
 </ol>
 
-<p>Fremgangsmåden er taget fra: <a href="http://www.hostingadvice.com/how-to/enable-php-5-5-opcache-ubuntu-14-04/" target="_blank">http://www.hostingadvice.com/how-to/enable-php-5-5-opcache-ubuntu-14-04/</a></p>
+<p>Grunden til at opsætningen skal køres over 3 stadier skyldes, at vi ønsker at give adgang til databasen fra andre end systemets <span class="inl_cmd">root</span>bruger. For at undgå problemer med rettighederne skal mariaDB og PHPMyAdmin sættes op før vi roder med rettighederne for tilgangen til databasen.</p>
 
-<p>I linien <span class="inl_cmd">;opcache.enable=0</span> fjernes <span class="inl_cmd">;</span> og værdien sættes til <span class="inl_cmd">1</span></p>
 
-<pre class="black">
-; Determines if Zend OPCache is enabled
-opcache.enable=1
+<h2>mariaDB</h2>
+
+<p></p>
+
+<code class="cmd">sudo apt-get install -y mariadb-server mariadb-client</code>
+
+<p>Kør konfigurationen af mariaDB</p>
+
+<code class="cmd">sudo mysql_secure_installation</code>
+
+<p>I dette script bliver <span class="inl_cmd">mariaDB</span>  sat op, så den er klar til brug. Da det er en ny installation har databasen endnu ikke noget password, så det skal vi oprette. Ellers er de svar du skal anvende angivet med en taste.</p>
+
+<pre class="ubuntu_terminal">
+thoj@mainsrv:~$ sudo mysql_secure_installation
+
+NOTE: RUNNING ALL PARTS OF THIS SCRIPT IS RECOMMENDED FOR ALL MariaDB
+      SERVERS IN PRODUCTION USE!  PLEASE READ EACH STEP CAREFULLY!
+
+In order to log into MariaDB to secure it, we'll need the current
+password for the root user.  If you've just installed MariaDB, and
+you haven't set the root password yet, the password will be blank,
+so you should just press enter here.
+
+Enter current password for root (enter for none): <kbd>Enter</kbd> 
+OK, successfully used password, moving on...
+
+Setting the root password ensures that nobody can log into the MariaDB
+root user without the proper authorisation.
+
+Set root password? [Y/n] y <kbd>y</kbd>
+New password: <span class="red">&lt;--- Indtast password for databasens root bruger</span>
+Re-enter new password: <span class="red">&lt;--- Gentag password for databasens root bruger</span>
+Password updated successfully!
+Reloading privilege tables..
+ ... Success!
+
+
+By default, a MariaDB installation has an anonymous user, allowing anyone
+to log into MariaDB without having to have a user account created for
+them.  This is intended only for testing, and to make the installation
+go a bit smoother.  You should remove them before moving into a
+production environment.
+
+Remove anonymous users? [Y/n] y <kbd>y</kbd>
+ ... Success!
+
+Normally, root should only be allowed to connect from 'localhost'.  This
+ensures that someone cannot guess at the root password from the network.
+
+Disallow root login remotely? [Y/n] y <kbd>y</kbd>
+ ... Success!
+
+By default, MariaDB comes with a database named 'test' that anyone can
+access.  This is also intended only for testing, and should be removed
+before moving into a production environment.
+
+Remove test database and access to it? [Y/n] y <kbd>y</kbd>
+ - Dropping test database...
+ERROR 1008 (HY000) at line 1: Can't drop database 'test'; database doesn't exist
+ ... Failed!  Not critical, keep moving...
+ - Removing privileges on test database...
+ ... Success!
+
+Reloading the privilege tables will ensure that all changes made so far
+will take effect immediately.
+
+Reload privilege tables now? [Y/n] <kbd>y</kbd>
+ ... Success!
+
+Cleaning up...
+
+All done!  If you've completed all of the above steps, your MariaDB
+installation should now be secure.
+
+Thanks for using MariaDB!
+thoj@mainsrv:~$
 </pre>
 
-<p>I linien <span class="inl_cmd">;opcache.memory_consumption=64</span> fjernes <span class="inl_cmd">;</span> og værdien beholdes (Antal Mb).</p>
-
-<pre class="black">
-; Determines if Zend OPCache is enabled
-opcache.memory_consumption=64
-</pre>
-
-<p>I linien <span class="inl_cmd">;opcache.max_accelerated_files=2000</span> fjernes <span class="inl_cmd">;</span> og værdien beholdes</p>
-
-<pre class="black">
-; Determines if Zend OPCache is enabled
-opcache.max_accelerated_files=2000
-</pre>
-
-<p>I linien <span class="inl_cmd">;opcache_revalidate_freq = 2</span> fjernes <span class="inl_cmd">;</span> og værdien sættes til <span class="inl_cmd">240</span> (sekunder = 4 minutter)</p>
-
-<pre class="black">
-; Determines if Zend OPCache is enabled
-;opcache_revalidate_freq = 240
-</pre>
-
-<p>Afslut <span class="inl_cmd">nano</span> og start OPcache modulet</p>
-
-<code class="cmd">php5enmod opcache</code>
-
-<p>Genstart Apache</p>
-
-<code class="cmd">service apache2 restart</code>
-
-
-<h3>xsendfile</h3>
-
-<p>Et smart program at have installeret</p>
-
-<code class="cmd">apt-get install libapache2-mod-xsendfile -y</code>
-
-<p>Installationsprocessen genstarter selv Apache serveren.</p>
-
-<h1>Webinterfaces</h1>
+<p>Der er to brugere der nu har adgang til databasen. Det er systemets root og databasens rod. Som det er lige nu er det kun systemets rod der har lov til at logge på databasen. Det skal ændres, sådan at andre brugere også kan logge på databasen. Start <span class="inl_cmd">mysql</span> som systemets rod</p>
 
 <h2>PHPMyAdmin</h2>
 
 <p>For at administrere MySQL databaser anvender man ofte PHPMyAdmin</p>
 
-<code class="cmd">apt-get install phpmyadmin -y</code>
+<code class="cmd">sudo apt-get install php-gettext phpmyadmin -y</code>
+
+<p>Under installationen skal der gøres følgende:</p>
+
+<ol class="">
+	<li>Vælge webserver der skal køre <span class="inl_cmd">PHPMyAdmin</span></li>
+	<li>Opsætning af nødvendig database til PHPMyAdmin</li>
+	<li>Lave root password til PHPMyAdmin</li>
+</ol>
+<p></p>
+
+<p>Vælg <span class="inl_cmd">Apache2</span> og vælg <span class="terminal_valg">O.k.</span></p>
 
 <figure id="">
 
-	<img class="p90" src="images/fildeling_phpmyadmin.png" alt="" title="" />
+	<img class="p80" src="images/webserver_phpmyadmin01.png" alt="" title="" />
 
 	<figcaption></figcaption>
 
 </figure>
+
+<p>Sæt databasen op ved at vælge <span class="terminal_valg">Ja</span></p>
+
+<figure id="">
+
+	<img class="p80" src="images/webserver_phpmyadmin02.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Indtast password (2 gange) til PHPMyAdmins root-konto: </p>
+
+<figure id="">
+
+	<img class="p80" src="images/webserver_phpmyadmin03.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Genstart Apache 2</p>
+
+<code class="cmd">sudo systemctl restart apache2</code>
+
+<h2>Konfiguration af mariaDB</h2>
+
+<p></p>
+
+<code class="cmd">sudo mysql</code>
+
+<pre class="ubuntu_terminal">
+thoj@mainsrv:~$ sudo mysql
+<span class="bold">Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 65
+Server version: 10.0.25-MariaDB-0ubuntu0.16.04.1 Ubuntu 16.04
+
+Copyright (c) 2000, 2016, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.</span>
+
+MariaDB [(none)]>
+</pre>
+
+<p>Herefter køres følgende kommandoer i <span class="inl_cmd">mysql</span> (markeret med rød). Husk at afslutte kommandoerne med <span class="inl_cmd">;</span>:</p>
+
+<pre class="ubuntu_terminal">
+MariaDB [(none)]> <span class="red">use mysql;</span>
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+MariaDB [mysql]> <span class="red">update user set plugin='' where User='root';</span>
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [mysql]> <span class="red">flush privileges;</span>
+Query OK, 0 rows affected (0.00 sec)
+
+MariaDB [mysql]> <span class="red">exit</span>
+Bye
+thoj@mainsrv:~$                <span class="red">&lt;--- Tilbage på kommandolinien</span>
+</pre>
+
+<p>Prøv herefter at logge på <span class="inl_cmd">mysql's</span> root, med din egen bruger (altså uden sudo):</p>
+
+<code class="cmd">mysql -u root -p</code>
+
+<pre class="ubuntu_terminal">
+thoj@mainsrv:~$ mysql -u root -p
+Enter password: 
+<span class="bold">Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 53
+Server version: 10.0.25-MariaDB-0ubuntu0.16.04.1 Ubuntu 16.04
+
+Copyright (c) 2000, 2016, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.</span>
+
+MariaDB [(none)]> exit
+<span class="bold">Bye</span>
+thoj@mainsrv:~$
+</pre>
+
+<p>Vi logger også på <span class="inl_cmd">PHPMyAdmin</span> fra en browser med adressen: <span class="inl_cmd">10.0.2.10/phpmyadmin</span></p>
+
+<figure id="">
+
+	<img class="p90" src="images/webserver_phpmyadmin_browser_01.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Efter vi er logget ind med PHPMyAdmin's <span class="inl_cmd">root</span> får vi adgang til brugerfladen.</p>
+
+<figure id="">
+
+	<img class="p90" src="images/webserver_phpmyadmin_browser_02.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+
+<h1>Nextcloud</h1>
+
+<p>Denne guide er lavet med udgangspunkt i installationsguiden fra nextclouds egen hjemmeside: <a href="https://docs.nextcloud.org/server/9/admin_manual/installation/source_installation.html" target="_blank">https://docs.nextcloud.org/server/9/admin_manual/installation/source_installation.html</a></p>
+
+<p>Nextcloud anbefaler at man installerer nogle ekstra PHP-moduler</p>
+
+<code class="cmd">sudo apt-get -y install php7.0-curl php7.0-bz2 php7.0-zip php7.0-intl php-imagick</code>
+
+<p>Herefter er vi klar til at hente Nextcloud fra serveren. Tjek efter den nyeste version på adressen: <span class="inl_cmd">https://download.nextcloud.com/server/releases/</span>. Vi skal have fat i <span class="inl_cmd">tar.bz2</span> filen.Da guiden er skrevet er det version 9.0.52 kommer kommandoen til at se ud som herunder. Ændr. versionsnummeret der står med rødt, så det passer til din version. Først navigerer vil til vores hjemmemappe, så vi ved hvor filen bliver gemt.</p>
+
+<code class="cmd">wget https://download.nextcloud.com/server/releases/nextcloud-<span class="red">9.0.52</span>.tar.bz2</code>
+
+<pre class="ubuntu_terminal">
+thoj@mainsrv:~$ wget https://download.nextcloud.com/server/releases/nextcloud-9.0.52.tar.bz2
+--2016-07-05 17:34:23--  https://download.nextcloud.com/server/releases/nextcloud-9.0.52.tar.bz2
+Løser download.nextcloud.com (download.nextcloud.com)... 88.198.160.133
+Tilslutter download.nextcloud.com (download.nextcloud.com)|88.198.160.133|:443... forbundet.
+HTTP forespørgsel sendt, afventer svar... 200 OK
+Længde: 28523179 (27M) [application/x-bzip2]
+Gemmer til: 'nextcloud-9.0.52.tar.bz2'
+
+nextcloud-9.0.52.ta 100%[==================>]  27,20M  3,41MB/s    in 8,0s    
+
+2016-07-05 17:34:32 (3,41 MB/s) - 'nextcloud-9.0.52.tar.bz2' gemt [28523179/28523179]
+</pre>
+
+<p>Udpak filen</p>
+
+<code class="cmd">tar -xjf nextcloud-9.0.52.tar.bz2</code>
+
+<p>Som du kan se herunder er filerne pakket ud i mappen <span class="inl_cmd">nextcloud</span>.</p>
+
+<pre class="ubuntu_terminal">
+thoj@mainsrv:~$ tar -xjf nextcloud-9.0.52.tar.bz2
+thoj@mainsrv:~$ ls -l
+totalt 27864
+lrwxrwxrwx  1 thoj thoj       14 jul  5 10:28 <span class="turk">html</span> -> <span class="blue1">/var/www/html/</span>
+drwxr-xr-x 14 thoj thoj     4096 jul  5 11:10 <span class="blue1">nextcloud</span>
+-rw-rw-r--  1 thoj thoj 28523179 jul  5 11:12 <span class="red">nextcloud-9.0.52.tar.bz2</span>
+drwx---r-x  5 thoj thoj     4096 jul  5 10:39 <span class="blue1">public_html</span>
+
+</pre>
+
+<p>Flyt mappen <span class="inl_cmd">nextcloud</span> til <span class="inl_cmd">/var/www</span></p>
+
+<code class="cmd">sudo cp -r nextcloud /var/www/</code>
+
+<p>Ændr rettighederne:</p>
+
+<code class="cmd">sudo chown -R www-data:www-data /var/www/nextcloud/</code>
+
+<h2>Konfigurer Apache</h2>
+
+<p>For at kunne udbyde nextcloud skal der oprettes en konfigurationsfil i Apache. Opret følgende fil <span class="inl_cmd">/etc/apache2/sites-available/nextcloud.conf</span> med nedestående indhold:</p>
+
+<code class="cmd">sudo nano /etc/apache2/sites-available/nextcloud.conf</code>
+
+<pre class="black">
+Alias /nextcloud "/var/www/nextcloud/"
+
+&lt;Directory /var/www/nextcloud/>
+  Options +FollowSymlinks
+  AllowOverride All
+
+ &lt;IfModule mod_dav.c>
+  Dav off
+ &lt;/IfModule>
+
+ SetEnv HOME /var/www/nextcloud
+ SetEnv HTTP_HOME /var/www/nextcloud
+
+&lt;/Directory>
+</pre>
+
+<p>Lav herefter et symbolsk link til filen, så Apache kan tilgå den.</p>
+
+<code class="cmd">sudo ln -s /etc/apache2/sites-available/nextcloud.conf /etc/apache2/sites-enabled/nextcloud.conf</code>
+
+<p>Som det sidste skal vi sikre os at nogle moduler er startet op i Apache</p>
+
+<code class="cmd">sudo a2enmod rewrite headers env dir mime</code>
+
+<pre class="ubuntu_terminal">
+thoj@mainsrv:~$ sudo a2enmod rewrite headers env dir mime
+Enabling module rewrite.
+Enabling module headers.
+Module env already enabled
+Module dir already enabled
+Module mime already enabled
+To activate the new configuration, you need to run:
+  service apache2 restart
+</pre>
+
+<p>Læg mærke til at Apache fortæller os hvilke moduler der allerede er aktiverede. En anden detalje er, at Apache beder om at blive genstartet med kommandoen <span class="inl_cmd">service</span>. Årsagen til at denne guide anvender <span class="inl_cmd">systemctl</span> er, at Ubuntu er skiftet over til noget der hedder system D. Genstart Apache så konfigurationsændringerne kan aktiveres</p>
+
+<code class="cmd">sudo systemctl restart apache2</code>
+
+<p>Det sidste skridt før vi starter nextcloud op er, at vi sørger for at alle filerne bliver ejet af http brugeren <span class="inl_cmd">www-data</span>:</p>
+
+<code class="cmd">sudo chown -R www-data:www-data /var/www/nextcloud/</code>
+
+<p>Kontroller at nextcloud kører ved at gå til adressen <span class="inl_cmd">https://10.0.2.10/nextcloud</span>:</p>
+
+<figure id="">
+
+	<img class="p90" src="images/webserver_nexcloud_setup.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Det vi har her er konfigurationsskærmen til Nextcloud. Som vi udfylder senere:</p>
+
+<h2>Opret database til Nextcloud</h2>
+
+<p>Før vi går i gang med at konfigurere Nextcloud skal vi have oprettet en database og en administrator til databasen. Det vi skal gøre er følgende:</p>
+
+<ol class="">
+	<li>Log på databaseserveren</li>
+	
+	<code class="cmd">mysql -u root -p</code>
+	
+	<li>Opret databasen <span class="inl_cmd">nextcloudDB</span></li>
+	
+	<code class="cmd">CREATE DATABASE nextcloudDB;</code>
+	
+	<li>Opret brugeren <span class="inl_cmd">nextcloud</span> og med password: <span class="inl_cmd">123qwe</span>.</li>
+	
+	<code class="cmd">CREATE USER nextcloud@localhost IDENTIFIED BY '123qwe'</code>
+	
+	<li>Giv brugeren <span class="inl_cmd">nextcloud</span> fulde rettigheder til databasen</li>
+	
+	<code class="cmd">GRANT ALL PRIVILEGES ON nextcloudDB.* TO nextcloud@localhost</code>
+		
+	<li>Luk forbindelsen databaseserveren</li>
+
+	<code class="cmd">exit</code>
+
+</ol>
+
+<p>Det kommer til at se ud som følger. Kommandoer er markeret med rødt:</p>
+
+<pre class="ubuntu_terminal">
+thoj@mainsrv:~$ <span class="red">mysql -u root -p</span>
+Enter password: 
+<span class="bold">Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 7
+Server version: 10.0.25-MariaDB-0ubuntu0.16.04.1 Ubuntu 16.04
+
+Copyright (c) 2000, 2016, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.</span>
+
+MariaDB [(none)]> <span class="red">CREATE DATABASE nextcloudDB;</span>
+<span class="bold">Query OK, 1 row affected (0.01 sec)</span>
+
+MariaDB [(none)]> <span class="red">CREATE USER nextcloud@localhost IDENTIFIED BY '123qwe';</span>
+<span class="bold">Query OK, 0 rows affected (0.01 sec)</span>
+
+MariaDB [(none)]> <span class="red">GRANT ALL PRIVILEGES ON nextcloudDB.* TO nextcloud@localhost;</span>
+<span class="bold">Query OK, 0 rows affected (0.00 sec)</span>
+
+MariaDB [(none)]> <span class="red">exit</span>
+<span class="bold">Bye</span>
+</pre>
+
+<h2>Opret mappe til data fra Nextcloud</h2>
+
+<p>Vi vælger at lægge data i <span class="inl_cmd">/srv/nextcloudData</span></p>
+
+<code class="cmd">sudo mkdir /srv/nextcloudData</code>
+
+<p>Sæt bruger- og filrettigheder:</p>
+
+<code class="cmd">sudo chown -R www-data:www-data /srv/nextcloudData/</code>
+
+<code class="cmd">sudo chmod -R 700 /srv/nextcloudData</code>
+
+<h2>Konfigurer Nextcloud</h2>
+
+<p>Åbn Nextcloud i browseren på adressen: <span class="inl_cmd">https://10.0.2.10/nextcloud</span>. Første gang Nextcloud startes på skal admin kontoen konfigureres. Herunder er konfigurationssiden "klippet" over:</p>
+
+<span class="afsnit">Administrator konto</span>
+
+<p>Dette er kontoen som skal anvendes til at administrere Nextcloud med. Det kan f.eks. være at oprette brugere, sætte deres rettigheder og installere apps.</p>
+
+<figure id="">
+
+	<img class="p35" src="images/webserver_nexcloud_setup01.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Felt</th>
+			<th>Beskrivelse</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Username</td>
+			<td>Indsæt navnet på den bruger der skal administrere Nextcloud. F.eks: <span class="inl_cmd">nextadmin</span></td>
+		</tr>
+		<tr>
+			<td>Password</td>
+			<td>Giv administrationsbrugeren et password. F.eks: <span class="inl_cmd">123qwe</span></td>
+		</tr>
+	</tbody>
+</table>
+
+<span class="afsnit">Placering af data</span>
+
+<p>Her placeres de data som brugerne lægger op. På den måde er data ikke tilgængelige for selve webserveren, men kræver adgang til databasen.</p>
+
+<figure id="">
+
+	<img class="p35" src="images/webserver_nexcloud_setup02.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Felt</th>
+			<th>Beskrivelse</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Data folder</td>
+			<td>Mappen som filerne fra Nextcloud skal lægges i. Her har vi valgt <span class="inl_cmd">/srv/nextcloudData</span>.S</td>
+		</tr>
+	</tbody>
+</table>
+
+<figure id="">
+
+	<img class="p35" src="images/webserver_nexcloud_setup03.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Felt</th>
+			<th>Beskrivelse</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Database user</td>
+			<td>Her skal vi angive den bruger der ejer databasen. I dette tilfælde: <span class="inl_cmd">nextcloud</span></td>
+		</tr>
+		<tr>
+			<td>Database password</td>
+			<td>Angiv password til databasen: I dette tilfælde: <span class="inl_cmd">123qwe</span></td>
+		</tr>
+		<tr>
+			<td>Database name</td>
+			<td>Angiv databasens navn: I dette tilfælde: <span class="inl_cmd">nextcloudDB</span></td>
+		</tr>
+		<tr>
+			<td>Localhost</td>
+			<td>Angiv databasens placering. I vores tilfælde skal det ikke ændres da databasen ligger på samme fysiske maskine som webserveren.</td>
+		</tr>
+	</tbody>
+</table>
+
+<span class="afsnit">Afslut installationen</span>
+
+<p>Klik på <span class="inl_cmd">Finish setup</span>, for at afslutte konfigurationen af Nextcloud.</p>
+
+<p>Herefter arbejder serveren lidt og Nextcloud starter op.</p>
+
+<figure id="">
+
+	<img class="" src="images/webserver_nexcloud_setup05.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<span class="afsnit">konfigurere sikkerheden</span>
+
+<p>Som det er nu er sikkerheden på nextcloudfilerne sat rimeligt. Men for at de bliver så sikre som muligt skal der gøres en del arbejde. Hertil anvendes der et script, som er vist her:</p>
+
+<pre class="black">
+#!/bin/bash
+
+### Scriptet er taget fra nedestående og tilrettet denn guide
+### https://docs.nextcloud.org/server/9/admin_manual/installation/installation_wizard.html#setting-strong-directory-permissions
+### Relevante linier er udkommenteret og der er indsat kommentarer ved 
+### linier der er tilføjet
+
+datapath='/srv/nextcloudData' ### Tilføjet path til data
+ncpath='/var/www/nextcloud'
+htuser='www-data'
+htgroup='www-data'
+rootuser='root'
+
+printf "Creating possible missing Directories\n"
+#mkdir -p $ncpath/data
+mkdir -p $ncpath/assets
+mkdir -p $ncpath/updater
+
+printf "chmod Files and Directories\n"
+find ${ncpath}/ -type f -print0 | xargs -0 chmod 0640
+find ${ncpath}/ -type d -print0 | xargs -0 chmod 0750
+
+### linier tilføjet for at sætte rettigheder på datapath
+find ${datapath}/ -type f -print0 | xargs -0 chmod 0640
+find ${datapath}/ -type d -print0 | xargs -0 chmod 0750
+
+printf "chown Directories\n"
+chown -R ${rootuser}:${htgroup} ${ncpath}/
+chown -R ${htuser}:${htgroup} ${ncpath}/apps/
+chown -R ${htuser}:${htgroup} ${ncpath}/assets/
+chown -R ${htuser}:${htgroup} ${ncpath}/config/
+chown -R ${htuser}:${htgroup} ${ncpath}/data/
+chown -R ${htuser}:${htgroup} ${ncpath}/themes/
+chown -R ${htuser}:${htgroup} ${ncpath}/updater/
+
+### Linie tilføjet for at sætte rettigheder på datapath
+chown -R ${htuser}:${htgroup} ${datapath}/
+
+
+chmod +x ${ncpath}/occ
+
+printf "chmod/chown .htaccess\n"
+if [ -f ${ncpath}/.htaccess ]
+ then
+  chmod 0644 ${ncpath}/.htaccess
+  chown ${rootuser}:${htgroup} ${ncpath}/.htaccess
+fi
+if [ -f ${datapath}/.htaccess ]
+ then
+  chmod 0644 ${datapath}/.htaccess
+  chown ${rootuser}:${htgroup} ${datapath}/.htaccess
+fi
+</pre>
+
+<p>Opret filen <span class="inl_cmd">nextcloud_rettigheder.sh</span> i din hjemmemappe og kopier scriptet derind:</p>
+
+<code class="cmd">cd ~</code>
+
+<code class="more_cmd">nano ~/nextcloud_rettigheder.sh</code>
+
+<p>Sæt rettigheder så filen kan køres:</p>
+
+<code class="cmd">chmod 700 nextcloud_rettigheder.sh</code>
+
+<p>Scriptet er lavet så det skal køres i en <span class="inl_cmd">root</span>-shell. Det gør vi ved at køre kommandoen <span class="inl_cmd">sudo su</span>.</p>
+
+<pre class="ubuntu_terminal">
+thoj@mainsrv:~$ sudo su
+Adgangskode: 
+root@mainsrv:/home/thoj#
+</pre>
+
+<p>Læg mærke til at linien skifter fra <span class="inl_cmd">thoj@mainsrv:~$</span> til <span class="inl_cmd">root@mainsrv:/home/thoj#</span>. Kør filen:</p>
+
+<pre class="ubuntu_terminal">
+root@mainsrv:/home/thoj# ./nextcloud_rettigheder.sh 
+Creating possible missing Directories
+chmod Files and Directories
+chown Directories
+chmod/chown .htaccess
+root@mainsrv:/home/thoj#
+</pre>
+
+<p>Efter scriptet er kørt er alle filer og mapper konfigureret på den bedst mulige måde. Afslut <span class="inl_cmd">root</span>-shell med kommandoen <span class="inl_cmd">exit</span>.</p>
+
+<pre class="ubuntu_terminal">
+root@mainsrv:/home/thoj# exit
+exit
+thoj@mainsrv:~$ 
+</pre>
+
+<h2>Konfigurering af filstørrelse</h2>
+
+<p>Som standard er Nextcloud sat til at filer ikke må være større end 513 MB. Det kan være upraktisk hvis man f.eks. ønsker at bruge nextclouod til backup eller ISO-filer. For at ændre dette skal vi have ændret i den skjulte fil <span class="inl_cmd">.htaccess</span>, der ligger i Nextclouds webmappe <span class="inl_cmd">/var/www/nextcloud</span>.</p>
+
+<code class="cmd">sudo nano /var/www/nextcloud/.htaccess</code>
+
+<p>Find tekststrengen <span class="inl_cmd">&lt;IfModule mod_php7.c></span> og de to linier med <span class="inl_cmd">upload_max_filesize</span> og <span class="inl_cmd">post_max_size</span>.</p>
+
+<pre class="black">
+&lt;IfModule mod_php7.c>
+<span class="red">  php_value upload_max_filesize 513M
+  php_value post_max_size 513M</span>
+  php_value memory_limit 512M
+  php_value mbstring.func_overload 0
+  php_value default_charset 'UTF-8'
+  php_value output_buffering 0
+  &lt;IfModule mod_env.c>
+    SetEnv htaccessWorking true
+  &lt;/IfModule>
+&lt;/IfModule>
+</pre>
+
+<p>Ændr værdierne fra <span class="inl_cmd">513M</span> til <span class="inl_cmd">4G</span> (513 Mb til 4Gb), sådan at der står:</p>
+
+<pre class="black">
+&lt;IfModule mod_php7.c>
+<span class="red">  php_value upload_max_filesize 4G
+  php_value post_max_size 4G</span>
+  php_value memory_limit 512M
+  php_value mbstring.func_overload 0
+  php_value default_charset 'UTF-8'
+  php_value output_buffering 0
+  &lt;IfModule mod_env.c>
+    SetEnv htaccessWorking true
+  &lt;/IfModule>
+&lt;/IfModule>
+</pre>
+
+<p>Genstart Apache 2 for at ændringerne slår igennem.</p>
+
+<code class="cmd">sudo systemctl restart apache2</code>
+
+<h1>Wordpress</h1>
+
+<p></p>
+
+<h1>Webinterfaces</h1>
+
+
 
 <h2>Webmin</h2>
 
@@ -532,177 +1123,6 @@ deb http://webmin.mirror.somersettechsolutions.co.uk/repository sarge contrib
 <p>Som du kan se giver webmin et overblik over serverens status, og giver adgang til de tjenester du har installeret. Webmin er et meget kraftfuldt værktøj og har automatiseret mange af de opgaver man skal udføre som administrator. Som alle andre værktøjer på en server skal man tænke sig om når man anvender det.</p>
 
 
-<h1>OwnCloud</h1>
-
-<p>Indtil videre har vi beskæftiget os med ”gamle” tjenester. I de sidste par år er skyen og onlinetjenester kommet i fokus. Google, Dropbox, iCloud og lignendeer tjenester som rigtig mange af os anvender til mail, kalender, kontaker,dokumenter, billeder, filer, backup osv.</p>
-
-<p>Owncloud er en opensource løsning for privatpersoner og firmaer, som er under konstant udvikling og med version 7 indeholder den både mulighed for at tage backup af dokumenter, skrive dokumenter osv. Med owncloud kan du køre din helt egen private løsning og få al den lagerplads du vil investere i.</p>
-
-<p>Da det er et projekt i rivende udvikling er det også mere omstændigt at installere. Du kan installere owncloud i ældre versioner med apt-get, men vi ønsker at bruge den nyeste version.</p>
-
-<h2>Installer owncloud</h2>
-
-<p>Tilføj ownclouds repositorie (skal køres som en linie)</p>
-
-<code class="cmd">sudo sh -c "echo 'deb http://download.opensuse.org/repositories/isv:/ownCloud:/community/xUbuntu_14.04/ /' >> /etc/apt/sources.list.d/owncloud.list"</code>
-
-<p>Tilføj sikkerhedsnøglen</p>
-
-<code class="cmd">cd /root</code>
-
-<code class="more_cmd">wget http://download.opensuse.org/repositories/isv:ownCloud:community/xUbuntu_14.04/Release.key -O- | apt-key add -</code>
-
-<p>Opdater og installere</p>
-
-<code class="cmd">apt-get update && apt-get install owncloud -y</code>
-
-<p>Opret mappen OwnCloud filerne skal ligge i:</p>
-
-<code class="cmd">mkdir -p /srv/owncloud</code>
-
-<p>Vi skal nu have sat rettighederne for mappen. I Ubuntu findes der en ”www-data” bruger som man anvender til at give de rigtige rettigheder til webmapper der skal være generelt tilgængelige.</p>
-
-<code class="cmd">sudo chown -R www-data:www-data /srv/owncloud</code>
-
-<p>Owncloud kan konfigureres enten ved at anvende en minimal database (SQLite) eller ved at anvende en Ordinær database. Hvis man har mange brugere og har behov for at kunne konfigurere databasen bør man vælge enten MySQL/MariaDB eller PostgreSQL - ønsker man blot at anvende det til mindre end 20-30 personer er SQLite mere end rigeligt.</p>
-
-<h2>Opret database</h2>
-
-<p>Før vi går i gang med at konfigurere owncloud skal vi have oprettet en en owncloud administrator, en database og en tabel. Det første vi skal have gjort er at oprette en forbindelse til mysql-serveren. Det gøres med kommandoen:</p>
-
-<code class="cmd">mysql -u root -p</code>
-
-<p>Kommandoen overfor logger dig på som phpmyadmins root, og beder dig om root brugerens password</p>
-
-<pre class="ubuntu_terminal">
-root@mainsrv:/home/thoj# mysql -u root -p
-Enter password: 
-Welcome to the MySQL monitor.  Commands end with ; or \g.
-Your MySQL connection id is 53
-Server version: 5.5.37-0ubuntu0.14.04.1 (Ubuntu)
-
-Copyright (c) 2000, 2014, Oracle and/or its affiliates. All rights reserved.
-
-Oracle is a registered trademark of Oracle Corporation and/or its
-affiliates. Other names may be trademarks of their respective
-owners.
-
-Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
-
-mysql>
-</pre>
-
-<p>Vi skal gøre følgende:</p>
-
-<ol class="">
-	<li>Oprette en ny database ”owncloud”</li>
-	<li>Oprette en bruger (owncloudadmin) og hans password (1234)</li>
-	<li>Give brugeren rettigheder til databasen vi har lavet</li>
-	<li>Lukke forbindelsen til MySQLserveren</li>
-</ol>
-
-<p>1. opret databasen ”owncloud”</p>
-
-<code class="cmd">CREATE DATABASE owncloud;</code>
-
-<p>2. Oprette en bruger - ”owncloudadmin” og giv ham adgangskoden "123qwe"</p>
-
-<code class="cmd">CREATE USER owncloudadmin@localhost IDENTIFIED BY '123qwe';</code>
-
-<p>Giv brugeren adgang fuld adgang til databasen vi har oprettet</p>
-
-<code class="cmd">GRANT ALL PRIVILEGES ON owncloud.* TO owncloudadmin@localhost;</code>
-
-<p>Luk forbindelsen til MySQL serveren ned</p>
-
-<code class="cmd">exit</code>
-
-<h2>Konfigurer Owncloud</h2>
-
-<p>Åbn adressen <a href="http://mainsrv.network.local/owncloud/" target="_blank">http://10.0.2.10/owncloud/</a> og konfigurer serveren færdig. (Se screenshot herunder)</p>
-
-<table class="">
-	<tbody>
-		<tr>
-			<td>Owncloud administrator</td>
-			<td>Brugernavn</td>
-		</tr>
-		<tr>
-			<td>Owncloud administrator kodeord</td>
-			<td>*****</td>
-		</tr>
-		<tr>
-			<td>Datamappe</td>
-			<td><span class="inl_cmd">/srv/owncloud</span></td>
-		</tr>
-		<tr>
-			<td>Database</td>
-			<td>MySQL / MariaDB</td>
-		</tr>
-		<tr>
-			<td>DB bruger</td>
-			<td>owncloudadmin</td>
-		</tr>
-		<tr>
-			<td>DB bruger password</td>
-			<td>123qwe</td>
-		</tr>
-		<tr>
-			<td>DB navn</td>
-			<td>owncloud</td>
-		</tr>
-		<tr>
-			<td>DB adresse</td>
-			<td>localhost</td>
-		</tr>
-	</tbody>
-</table>
-	
-	<figure id="">
-				
-		<img class="p40" src="images/fildeling_owncloud.png" alt="" title="" />
-				
-		<figcaption></figcaption>
-				
-	</figure>
-			
-<p>Når du er logget ind kan du konfigurere ownCloud færdig ved at klikke på dit brugernavn i øverste højre hjørne</p>
-
-<figure id="">
-
-	<img class="p25" src="images/owncloud_setup_02.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-
-<h2>Konfigurering af filstørrelse</h2>
-
-<p>Som standard er owncloud sat til at filer ikke må være større end 513 MB. For at ændre dette skal vi have ændret i den skjulte fil <span class="inl_cmd">.htacces</span>, der ligger i ownclouds webmappe /var/www/owncloud.</p>
-
-<code class="cmd">nano /var/www/owncloud/.htaccess</code>
-
-<pre class="black">
-&lt;IfModule mod_php5.c&gt;
-<span class="red">php_value upload_max_filesize 513M
-php_value post_max_size 513M</span>
-php_value memory_limit 512M
-php_value mbstring.func_overload 0
-&lt;IfModule env_module&gt;
-</pre>
-
-<p>Ændr <span class="inl_cmd">php_value upload_max_filesize</span> og <span class="inl_cmd">php_value post_max_size</span> fra <span class="inl_cmd">513M</span> til <span class="inl_cmd">4G</span> (513 Mb til 4Gb), sådan at der står:</p>
-
-<pre class="black">
-&lt;IfModule mod_php5.c&gt;
-<span class="red">php_value upload_max_filesize 4G
-php_value post_max_size 4G</span>
-php_value memory_limit 512M
-php_value mbstring.func_overload 0
-&lt;IfModule env_module&gt;
-</pre>
-
-<p>Da <span class="inl_cmd">.htaccess</span> bliver læst før hver request af Apache2, skal den ikke genindlæses. Efter ændringen vil brugerne kunne uploade filer på op til 4Gb.</p>
 
 <p></p>
 <p></p>

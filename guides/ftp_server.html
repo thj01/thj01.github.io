@@ -78,7 +78,9 @@ chroot_local_user=YES <span class="red">&lt;--- hashtag (#) fjernes</span>
 allow_writeable_chroot=YES <span class="red">&lt;--- Denne linie tilføjes</span>
 </pre>
 
-<p>Pga. sikkerhedsniveauet i <span class="inl_cmd">vsftpd</span> skal følgende linie tilføjes, for at brugeren kan oprette og redigere filer i sin mappe.:</p>
+<p>Genstart <span class="inl_cmd">vsftpd</span>:</p>
+
+<code class="cmd">sudo systemctl restart vsftpd</code>
 
 <h1>Opret Anononym FTP</h1>
 
@@ -91,25 +93,14 @@ anonymous_enable=No
 <p>til</p>
 
 <pre class="black">
-anonymous_enable=Yes
+anonymous_enable=YES
 </pre>
 
-<p>Herefter vil filer der lægges i <span class="inl_cmd">/srv/ftp</span> være offentligt tilgængelig.</p>
+<p>Genstart <span class="inl_cmd">vsftpd</span>:</p>
 
-<h1>Genstart vsftpd</h1>
+<code class="cmd">sudo systemctl restart vsftpd</code>
 
-<code class="cmd">service vsftpd restart</code>
-
-<pre class="ubuntu_terminal">
-thoj@mainsrv:~$ service vsftpd restart
-<span class="red">==== AUTHENTICATING FOR org.freedesktop.systemd1.manage-units ===</span>
-Authentication is required to restart 'vsftpd.service'.
-Authenticating as: Thomas Jensen,,, (thoj)
-Password: 
-<span class="red">==== AUTHENTICATION COMPLETE ===</span>
-</pre>
-
-<p>Hvis vi kigger på rettigheder til ftp mappen (<span class="inl_cmd">/srv/ftp</span>) kan vi se at den tilhører <span class="inl_cmd">root</span>, men at gruppen <span class="inl_cmd">ftp</span> har ret til læse og køre programmer derfra.</p>
+<p>Filer der skal være tilgængelig for anonym FTP lægges i mappen (<span class="inl_cmd">/srv/ftp</span>). Undersøger vi rettighederne for mappen kan vi se at den tilhører <span class="inl_cmd">root</span>, men at gruppen <span class="inl_cmd">ftp</span> har ret til læse og køre programmer derfra.</p>
 
 <pre class="ubuntu_terminal">
 thoj@mainsrv:~$ ls -al /srv
@@ -319,7 +310,7 @@ thoj_ftp
 
 <p>... og genstart <span class="inl_cmd">vsftpd</span></p>
 
-<code class="cmd">service vsftpd restart</code>
+<code class="cmd">sudo systemctl restart vsftpd</code>
 
 <p>Herefter vil brugere der ikke er i <span class="inl_cmd">/etc/vsftpd.allowed_users</span> blive nægtet adgang</p>
 
