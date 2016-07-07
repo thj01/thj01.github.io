@@ -696,16 +696,29 @@ lrwxrwxrwx  1 thoj thoj       14 jul  5 10:28 <span class="turk">html</span> -> 
 drwxr-xr-x 14 thoj thoj     4096 jul  5 11:10 <span class="blue1">nextcloud</span>
 -rw-rw-r--  1 thoj thoj 28523179 jul  5 11:12 <span class="red">nextcloud-9.0.52.tar.bz2</span>
 drwx---r-x  5 thoj thoj     4096 jul  5 10:39 <span class="blue1">public_html</span>
-
 </pre>
 
 <p>Flyt mappen <span class="inl_cmd">nextcloud</span> til <span class="inl_cmd">/var/www</span></p>
 
 <code class="cmd">sudo cp -r nextcloud /var/www/</code>
 
-<p>Ændr rettighederne:</p>
+<p>Opret mappe til data i <span class="inl_cmd">/srv/nextcloudData</span></p>
 
-<code class="cmd">sudo chown -R www-data:www-data /var/www/nextcloud/</code>
+<code class="cmd">sudo mkdir /srv/nextcloudData</code>
+
+<span class="afsnit">Midlertidige rettigheder</span>
+
+<p>Sæt midlertidige bruger- og filrettigheder på nextcloud</p>
+
+<code class="cmd">sudo chown -R www-data:www-data /var/www/nextcloud</code>
+
+<code class="more_cmd">sudo chmod -R 700 /var/www/nextcloud</code>
+
+<p>... og datamappen</p>
+
+<code class="cmd">sudo chown -R www-data:www-data /srv/nextcloudData/</code>
+
+<code class="cmd">sudo chmod -R 700 /srv/nextcloudData</code>
 
 <h2>Konfigurer Apache</h2>
 
@@ -736,20 +749,9 @@ Alias /nextcloud "/var/www/nextcloud/"
 
 <p>Som det sidste skal vi sikre os at nogle moduler er startet op i Apache</p>
 
-<code class="cmd">sudo a2enmod rewrite headers env dir mime</code>
+<code class="cmd">sudo a2enmod rewrite headers</code>
 
-<pre class="ubuntu_terminal">
-thoj@mainsrv:~$ sudo a2enmod rewrite headers env dir mime
-Enabling module rewrite.
-Enabling module headers.
-Module env already enabled
-Module dir already enabled
-Module mime already enabled
-To activate the new configuration, you need to run:
-  service apache2 restart
-</pre>
-
-<p>Læg mærke til at Apache fortæller os hvilke moduler der allerede er aktiverede. En anden detalje er, at Apache beder om at blive genstartet med kommandoen <span class="inl_cmd">service</span>. Årsagen til at denne guide anvender <span class="inl_cmd">systemctl</span> er, at Ubuntu er skiftet over til noget der hedder system D. Genstart Apache så konfigurationsændringerne kan aktiveres</p>
+<p>Genstart Apache2, så ændringer kan blive aktiveret.</p>
 
 <code class="cmd">sudo systemctl restart apache2</code>
 
@@ -769,7 +771,7 @@ To activate the new configuration, you need to run:
 
 <p>Det vi har her er konfigurationsskærmen til Nextcloud. Som vi udfylder senere:</p>
 
-<h2>Opret database til Nextcloud</h2>
+<h2>Opret database</h2>
 
 <p>Før vi går i gang med at konfigurere Nextcloud skal vi have oprettet en database og en administrator til databasen. Det vi skal gøre er følgende:</p>
 
@@ -784,11 +786,15 @@ To activate the new configuration, you need to run:
 	
 	<li>Opret brugeren <span class="inl_cmd">nextcloud</span> og med password: <span class="inl_cmd">123qwe</span>.</li>
 	
-	<code class="cmd">CREATE USER nextcloud@localhost IDENTIFIED BY '123qwe'</code>
+	<code class="cmd">CREATE USER nextcloud@localhost IDENTIFIED BY '123qwe';</code>
 	
 	<li>Giv brugeren <span class="inl_cmd">nextcloud</span> fulde rettigheder til databasen</li>
 	
-	<code class="cmd">GRANT ALL PRIVILEGES ON nextcloudDB.* TO nextcloud@localhost</code>
+	<code class="cmd">GRANT ALL PRIVILEGES ON nextcloudDB.* TO nextcloud@localhost;</code>
+	
+	<li>Genindlæs rettighedenrne for hele databasen</li>
+	
+	<code class="cmd">FLUSH PRIVILEGES;</code>
 		
 	<li>Luk forbindelsen databaseserveren</li>
 
@@ -818,21 +824,12 @@ MariaDB [(none)]> <span class="red">CREATE USER nextcloud@localhost IDENTIFIED B
 MariaDB [(none)]> <span class="red">GRANT ALL PRIVILEGES ON nextcloudDB.* TO nextcloud@localhost;</span>
 <span class="bold">Query OK, 0 rows affected (0.00 sec)</span>
 
+MariaDB [(none)]> <span class="red">FLUSH PRIVILEGES;</span>
+<span class="bold">Query OK, 0 rows affected (0.01 sec)</span>
+
 MariaDB [(none)]> <span class="red">exit</span>
 <span class="bold">Bye</span>
 </pre>
-
-<h2>Opret mappe til data fra Nextcloud</h2>
-
-<p>Vi vælger at lægge data i <span class="inl_cmd">/srv/nextcloudData</span></p>
-
-<code class="cmd">sudo mkdir /srv/nextcloudData</code>
-
-<p>Sæt bruger- og filrettigheder:</p>
-
-<code class="cmd">sudo chown -R www-data:www-data /srv/nextcloudData/</code>
-
-<code class="cmd">sudo chmod -R 700 /srv/nextcloudData</code>
 
 <h2>Konfigurer Nextcloud</h2>
 
@@ -891,7 +888,7 @@ MariaDB [(none)]> <span class="red">exit</span>
 	<tbody>
 		<tr>
 			<td>Data folder</td>
-			<td>Mappen som filerne fra Nextcloud skal lægges i. Her har vi valgt <span class="inl_cmd">/srv/nextcloudData</span>.S</td>
+			<td>Mappen som filerne fra Nextcloud skal lægges i. Her har vi valgt <span class="inl_cmd">/srv/nextcloudData</span></td>
 		</tr>
 	</tbody>
 </table>
@@ -933,21 +930,67 @@ MariaDB [(none)]> <span class="red">exit</span>
 
 <span class="afsnit">Afslut installationen</span>
 
-<p>Klik på <span class="inl_cmd">Finish setup</span>, for at afslutte konfigurationen af Nextcloud.</p>
-
-<p>Herefter arbejder serveren lidt og Nextcloud starter op.</p>
+<p>Klik på <span class="inl_cmd">Finish setup</span>, for at afslutte konfigurationen af Nextcloud. Efter lidt til start Nextcloud op.</p>
 
 <figure id="">
 
-	<img class="" src="images/webserver_nexcloud_setup05.png" alt="" title="" />
+	<img class="p90" src="images/webserver_nexcloud_setup05.png" alt="" title="" />
 
 	<figcaption></figcaption>
 
 </figure>
 
-<span class="afsnit">konfigurere sikkerheden</span>
+<span class="afsnit">Konfigurering af max filstørrelse</span>
 
-<p>Som det er nu er sikkerheden på nextcloudfilerne sat rimeligt. Men for at de bliver så sikre som muligt skal der gøres en del arbejde. Hertil anvendes der et script, som er vist her:</p>
+<p>Som standard er Nextcloud sat til at filer ikke må være større end 513 MB. Det kan være upraktisk hvis man f.eks. ønsker at bruge nextclouod til backup eller ISO-filer. For at ændre dette skal vi have ændret i den skjulte fil <span class="inl_cmd">.htaccess</span>, der ligger i Nextclouds webmappe <span class="inl_cmd">/var/www/nextcloud</span>.</p>
+
+<code class="cmd">sudo nano /var/www/nextcloud/.htaccess</code>
+
+<p>Find tekststrengen <span class="inl_cmd">&lt;IfModule mod_php7.c></span> og de to linier med <span class="inl_cmd">upload_max_filesize</span> og <span class="inl_cmd">post_max_size</span>.</p>
+
+<pre class="black">
+&lt;IfModule mod_php7.c>
+<span class="red">  php_value upload_max_filesize 513M
+  php_value post_max_size 513M</span>
+  php_value memory_limit 512M
+  php_value mbstring.func_overload 0
+  php_value default_charset 'UTF-8'
+  php_value output_buffering 0
+  &lt;IfModule mod_env.c>
+    SetEnv htaccessWorking true
+  &lt;/IfModule>
+&lt;/IfModule>
+</pre>
+
+<p>Ændr værdierne fra <span class="inl_cmd">513M</span> til <span class="inl_cmd">4G</span> (513 Mb til 4Gb), sådan at der står:</p>
+
+<pre class="black">
+&lt;IfModule mod_php7.c>
+<span class="red">  php_value upload_max_filesize 4G
+  php_value post_max_size 4G</span>
+  php_value memory_limit 512M
+  php_value mbstring.func_overload 0
+  php_value default_charset 'UTF-8'
+  php_value output_buffering 0
+  &lt;IfModule mod_env.c>
+    SetEnv htaccessWorking true
+  &lt;/IfModule>
+&lt;/IfModule>
+</pre>
+
+<p>Genstart Apache 2 for at ændringerne slår igennem.</p>
+
+<code class="cmd">sudo systemctl restart apache2</code>
+
+<h2>Forstærk sikkerheden af Nextcloud</h2>
+
+<p>Som det er nu er sikkerheden på nextcloudfilerne sat rimeligt. Men for at de bliver så sikre som muligt skal der gøres en del arbejde. Hertil anvendes der et script, som er vist herunder:</p>
+
+<p>Sørg for at du står i din home-mappe, opret filen og kopier indholdet af nedestående script in i filen <span class="inl_cmd">nextcloud_rettigheder.sh</span></p>
+
+<code class="cmd">cd ~</code>
+
+<code class="more_cmd">nano nextcloud_rettigheder.sh</code>
 
 <pre class="black">
 #!/bin/bash
@@ -1004,12 +1047,6 @@ if [ -f ${datapath}/.htaccess ]
 fi
 </pre>
 
-<p>Opret filen <span class="inl_cmd">nextcloud_rettigheder.sh</span> i din hjemmemappe og kopier scriptet derind:</p>
-
-<code class="cmd">cd ~</code>
-
-<code class="more_cmd">nano ~/nextcloud_rettigheder.sh</code>
-
 <p>Sæt rettigheder så filen kan køres:</p>
 
 <code class="cmd">chmod 700 nextcloud_rettigheder.sh</code>
@@ -1022,7 +1059,9 @@ Adgangskode:
 root@mainsrv:/home/thoj#
 </pre>
 
-<p>Læg mærke til at linien skifter fra <span class="inl_cmd">thoj@mainsrv:~$</span> til <span class="inl_cmd">root@mainsrv:/home/thoj#</span>. Kør filen:</p>
+<p>Læg mærke til at linien skifter fra <span class="inl_cmd">thoj@mainsrv:~$</span> til <span class="inl_cmd">root@mainsrv:/home/thoj#</span>. Kør scriptet i root-shell med kommandoen:</p>
+
+<code class="cmd">./nextcloud_rettigheder.sh </code>
 
 <pre class="ubuntu_terminal">
 root@mainsrv:/home/thoj# ./nextcloud_rettigheder.sh 
@@ -1041,57 +1080,356 @@ exit
 thoj@mainsrv:~$ 
 </pre>
 
-<h2>Konfigurering af filstørrelse</h2>
-
-<p>Som standard er Nextcloud sat til at filer ikke må være større end 513 MB. Det kan være upraktisk hvis man f.eks. ønsker at bruge nextclouod til backup eller ISO-filer. For at ændre dette skal vi have ændret i den skjulte fil <span class="inl_cmd">.htaccess</span>, der ligger i Nextclouds webmappe <span class="inl_cmd">/var/www/nextcloud</span>.</p>
-
-<code class="cmd">sudo nano /var/www/nextcloud/.htaccess</code>
-
-<p>Find tekststrengen <span class="inl_cmd">&lt;IfModule mod_php7.c></span> og de to linier med <span class="inl_cmd">upload_max_filesize</span> og <span class="inl_cmd">post_max_size</span>.</p>
-
-<pre class="black">
-&lt;IfModule mod_php7.c>
-<span class="red">  php_value upload_max_filesize 513M
-  php_value post_max_size 513M</span>
-  php_value memory_limit 512M
-  php_value mbstring.func_overload 0
-  php_value default_charset 'UTF-8'
-  php_value output_buffering 0
-  &lt;IfModule mod_env.c>
-    SetEnv htaccessWorking true
-  &lt;/IfModule>
-&lt;/IfModule>
-</pre>
-
-<p>Ændr værdierne fra <span class="inl_cmd">513M</span> til <span class="inl_cmd">4G</span> (513 Mb til 4Gb), sådan at der står:</p>
-
-<pre class="black">
-&lt;IfModule mod_php7.c>
-<span class="red">  php_value upload_max_filesize 4G
-  php_value post_max_size 4G</span>
-  php_value memory_limit 512M
-  php_value mbstring.func_overload 0
-  php_value default_charset 'UTF-8'
-  php_value output_buffering 0
-  &lt;IfModule mod_env.c>
-    SetEnv htaccessWorking true
-  &lt;/IfModule>
-&lt;/IfModule>
-</pre>
-
-<p>Genstart Apache 2 for at ændringerne slår igennem.</p>
-
-<code class="cmd">sudo systemctl restart apache2</code>
-
 <h1>Wordpress</h1>
+
+<p>Hent den nyeste version af wordpress</p>
+
+<code class="cmd">wget https://wordpress.org/latest.tar.gz</code>
+
+<p>Udpak filen</p>
+
+<code class="cmd">tar -xzf latest.tar.gz</code>
+
+<pre class="ubuntu_terminal">
+thoj@mainsrv:~$ tar -xzf latest.tar.gz
+thoj@mainsrv:~$ ls -l
+totalt 27864
+lrwxrwxrwx  1 thoj thoj       14 jul  5 10:28 <span class="turk">html</span> -> <span class="blue1">/var/www/html/</span>
+-rw-rw-r--  1 thoj thoj  7773389 jun 21 18:18 <span class="red">latest.tar.gz</span>
+drwxr-xr-x 14 thoj thoj     4096 jul  5 11:10 <span class="blue1">nextcloud</span>
+-rw-rw-r--  1 thoj thoj 28523179 jul  5 11:12 <span class="red">nextcloud-9.0.52.tar.bz2</span>
+drwx---r-x  5 thoj thoj     4096 jul  5 10:39 <span class="blue1">public_html</span>
+drwxr-xr-x  5 thoj thoj     4096 jul  5 10:39 <span class="blue1">wordpress</span>
+</pre>
+
+<p>Kopier Wordpress over i webserverens mappe</p>
+
+<code class="cmd">sudo cp -r wordpress/* /var/www/html</code>
+
+<p>Opret en mappe til uploads:</p>
+
+<code class="cmd">sudo mkdir /var/www/html/wp-content/uploads</code>
+
+<p>Fjern index.html, som vi oprettede ovenfor</p>
+
+<code class="cmd">code rm index.html</code>
+
+<span class="afsnit">Midlertidige rettigehder</span>
+
+<p>Sæt midlertidige ejerskab og skriverettigheder for wordpress</p>
+
+<code class="cmd">sudo chown -R www-data:www-data /var/www/html</code>
+
+<code class="more_cmd">sudo chmod -R 755 /var/www/html</code>
+
+
+<h2>Opret database</h2>
+
+<ol class="">
+	<li>Log på databaseserveren</li>
+	
+	<code class="cmd">mysql -u root -p</code>
+	
+	<li>Opret databasen <span class="inl_cmd">wordpressDB</span></li>
+	
+	<code class="cmd">CREATE DATABASE wordpressDB;</code>
+	
+	<li>Opret brugeren <span class="inl_cmd">wordpress</span> og med password: <span class="inl_cmd">123qwe</span>.</li>
+	
+	<code class="cmd">CREATE USER wordpress@localhost IDENTIFIED BY '123qwe';</code>
+	
+	<li>Giv brugeren <span class="inl_cmd">wordpress</span> fulde rettigheder til databasen</li>
+	
+	<code class="cmd">GRANT ALL PRIVILEGES ON wordpressDB.* TO wordpress@localhost;</code>
+	
+	<li>Genindlæs rettighederne for hele databasen</li>
+	
+	<code class="cmd">FLUSH PRIVILEGES;</code>
+		
+	<li>Luk forbindelsen databaseserveren</li>
+
+	<code class="cmd">exit</code>
+
+</ol>
+
+
+<pre class="ubuntu_terminal">
+thoj@mainsrv:~$ mysql -u root -p
+Enter password: 
+<span class="bold">Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 7
+Server version: 10.0.25-MariaDB-0ubuntu0.16.04.1 Ubuntu 16.04
+
+Copyright (c) 2000, 2016, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.</span>
+
+MariaDB [(none)]> CREATE DATABASE wordpressDB;
+<span class="bold">Query OK, 1 row affected (0.00 sec)</span>
+
+MariaDB [(none)]> CREATE USER wordpress@localhost IDENTIFIED BY '123qwe';
+<span class="bold">Query OK, 0 rows affected (0.00 sec)</span>
+
+MariaDB [(none)]> GRANT ALL PRIVILEGES ON wordpressDB.* TO wordpress@localhost;
+<span class="bold">Query OK, 0 rows affected (0.00 sec)</span>
+
+MariaDB [(none)]> FLUSH PRIVILEGES;
+<span class="bold">Query OK, 0 rows affected (0.00 sec)</span>
+
+MariaDB [(none)]> exit
+<span class="bold">Bye</span>
+thoj@mainsrv:~$ 
+</pre>
+
+<h2>Konfigurer Wordpress</h2>
+
+<p>Da vi har sat wordpress til at være roden på vores webserver, skal vi blot indtaste IP-adressen i browseren: <span class="inl_cmd">https://10.0.2.10/</span></p>
+
+<p>Åbn Nextcloud i browseren på adressen: https://10.0.2.10/. Første gang Wordpress startes bliver man ført igennem konfigurationen. Herunder er vist og forklaret:</p>
+
+<span class="afsnit">Vælg sprog</span>
+
+<p>Vælg dansk og tryk <span class="knap">Fortsæt</span></p>
+
+<figure id="">
+
+	<img class="p40" src="images/webserver_wordpress_setup01.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<span class="afsnit">Velkomstside med forklaring af processen</span>
+
+<p>Siden er blot til information vælg <span class="knap">Lad os komme i gang</span></p>
+
+
+<figure id="">
+
+	<img class="p90" src="images/webserver_wordpress_setup02.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<span class="afsnit">Angiv database information</span>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Felt</th>
+			<th>Beskrivelse</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Databasenavn</td>
+			<td>Angiv navnet på din database. Her: <span class="inl_cmd">wordpressDB</span>. Husk forskellen mellem store og små bogstaver.</td>
+		</tr>
+		<tr>
+			<td>Brugernavn</td>
+			<td>Angiv den bruger som administrerer databasen. Her: <span class="inl_cmd">wordpress</span>.</td>
+		</tr>
+		<tr>
+			<td>Adgangskode</td>
+			<td>Angiv databasebrugerens adgangskode. Her: <span class="inl_cmd">123qwe</span></td>
+		</tr>
+		<tr>
+			<td>Database Host</td>
+			<td>Angiv databasens adresse. På netværk anvender computere og tjenester IP-adresser til at identificere sig. Her: <span class="inl_cmd">localhost</span>. Localhost svarer til at det er den samme maskine som webserveren befinder sig på.</td>
+		</tr>
+		<tr>
+			<td>Tabelpræfiks</td>
+			<td>Er der flere Wordpress brugere i i samme database kan man adskille dem ved at indsætte et præfiks i alle tabelnavnene. På den måde kan man sortere i hvilke data der tilhører hvilke brugere. Behold <span class="inl_cmd">wp_</span>.</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Efter informationerne er indtastet. Vælg <span class="knap">Send</span> og <span class="knap">Start installation</span> på den næste side.</p>
+
+<figure id="">
+
+	<img class="p90" src="images/webserver_wordpress_setup03.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
 
 <p></p>
 
-<h1>Webinterfaces</h1>
+<figure id="">
+
+	<img class="p90" src="images/webserver_wordpress_setup04.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<span class="afsnit">Nødvendige informationer</span>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Felt</th>
+			<th>Beskrivelse</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Sidetitel</td>
+			<td>Hvad skal titlen være på siden?</td>
+		</tr>
+		<tr>
+			<td>Brugernavn</td>
+			<td>Dette brugernavn er til sidens administrator. Her har jeg valgt <span class="inl_cmd">Thomas</span></td>
+		</tr>
+		<tr>
+			<td>Adgangskode</td>
+			<td>Her skal du angive en adgangskode til administratoren. Som du kan se bliver koden <span class="inl_cmd">123qwe</span> angivet som svag. En god adgangskode bør have mindst 8 tegn (gerne mere), som er en blanding mellem store og små bogstaver, tal og tegn.<br/><br/>Af samme grund skal det bekræftiges at man anvender en svag adgangskode. </td>
+		</tr>
+		<tr>
+			<td>Din e-mail</td>
+			<td>Wordpress-administratorens email. Anvendes til notifikationer og vigtige beskeder.</td>
+		</tr>
+		<tr>
+			<td>Søgemaskinesynlighed</td>
+			<td>Ved at sætte flueben her vil nogle søgemaskiner ikke indeksere din hjemmeside. Det er ikke nogen garanti for at det også forholder sig sådan.</td>
+		</tr>
+	</tbody>
+</table>
 
 
+<figure id="">
 
-<h2>Webmin</h2>
+	<img class="p90" src="images/webserver_wordpress_setup05.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Efter at informationerne er indtastet vælges <span class="knap">Installer Wordpress</span>, og der kommer en side der bekræftiger at Wordpress er installeret med succes. Vælg <span class="knap">Login</span>.</p>
+
+<figure id="">
+
+	<img class="p90" src="images/webserver_wordpress_setup06.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<span class="afsnit">Første login</span>
+
+<p>Login med dit valgte brugernavn og kode. Vælg kun <span class="inl_cmd">Husk mig</span>, hvis du sidder på din lokale computer.</p>
+
+<figure id="">
+
+	<img class="p35" src="images/webserver_wordpress_setup07.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Efter login får du adgang til kontrolpanelet.</p>
+
+<figure id="">
+
+	<img class="p90" src="images/webserver_wordpress_setup08.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<span class="afsnit">Første kig på din side</span>
+
+<p>I øverste venstre hjørne klikker du på "Min Wordpress", hvorefter du får adgang til din hjemmeside som den ser ud for dem som besøger den.</p>
+
+<figure id="">
+
+	<img class="p70" src="images/webserver_wordpress_setup09.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<figure id="">
+
+	<img class="p90" src="images/webserver_wordpress_setup10.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h2>Sæt sikkerheden</h2>
+
+<p>Problemet med sikkerhed er, at en ting er hvad der er sikkert, og en anden ting er hvad der er let. Hvis man ønsker at det skal være let at opdatere og vedligeholde Wordpress, så bliver man nød til at åbne for rettigheder. Herunder er angivet anvisninger til en fornuftig opsætning. Og her vil vi anvende scriptet herunder:</p>
+
+<p>Sørg for at du står i din home-mappew og kopier indholdet af nedestående script ind i filen <span class="inl_cmd">wordpress_rettigheder.sh</span></p>
+
+<code class="cmd">cd ~</code>
+
+<code class="more_cmd">nano wordpress_rettigheder.sh</code>
+
+<pre class="black">
+#!/bin/bash
+
+### Scriptet er inspireret af
+### https://docs.nextcloud.org/server/9/admin_manual/installation/installation_wizard.html#setting-strong-directory-permissions
+### Rettelser er lavet efter de guidelines som anbefales af wordpress:
+### https://codex.wordpress.org/Hardening_WordPress
+
+wpPath='/var/www/html'
+htuser='www-data'
+htgroup='www-data'
+rootuser='root'
+
+printf "chmod Files and Directories\n"
+find ${wpPath}/ -type f -print0 | xargs -0 chmod 0640
+find ${wpPath}/ -type d -print0 | xargs -0 chmod 0750
+
+printf "chown Directories\n"
+chown -R ${rootuser}:${htgroup} ${wpPath}/
+chown -R ${htuser}:${htgroup} ${wpPath}/wp-admin/
+chown -R ${htuser}:${htgroup} ${wpPath}/wp-content/
+chown -R ${htuser}:${htgroup} ${wpPath}/wp-includes/
+
+printf "chmod/chown .htaccess\n"
+chmod 0644 ${wpPath}/.htaccess
+chown ${rootuser}:${htgroup} ${wpPath}/.htaccess
+</pre>
+
+<p>Sæt rettigheder så filen kan køres:</p>
+
+<code class="cmd">chmod 700 wordpress_rettigheder.sh</code>
+
+<p>Scriptet er lavet så det skal køres i en <span class="inl_cmd">root</span>-shell. Det gør vi ved at køre kommandoen <span class="inl_cmd">sudo su</span>.</p>
+
+<pre class="ubuntu_terminal">
+thoj@mainsrv:~$ sudo su
+Adgangskode: 
+root@mainsrv:/home/thoj#
+</pre>
+
+<p>Læg mærke til at linien skifter fra <span class="inl_cmd">thoj@mainsrv:~$</span> til <span class="inl_cmd">root@mainsrv:/home/thoj#</span>. Kør scriptet i root-shell med kommandoen:</p>
+
+<code class="cmd">./nextcloud_rettigheder.sh </code>
+
+<pre class="ubuntu_terminal">
+root@mainsrv:/home/thoj# ./wordpress_rettigheder.sh 
+chmod Files and Directories
+chown Directories
+chmod/chown .htaccess
+root@mainsrv:/home/thoj# 
+</pre>
+
+<p>Efter scriptet er kørt er alle filer og mapper konfigureret på den bedst mulige måde. Afslut <span class="inl_cmd">root</span>-shell med kommandoen <span class="inl_cmd">exit</span>.</p>
+
+<pre class="ubuntu_terminal">
+root@mainsrv:/home/thoj# exit
+exit
+thoj@mainsrv:~$ 
+</pre>
+
+<h1>Webmin</h1>
 
 <p>Webmin er et webinterface til at tilgå serveren med. Den indeholder mange konfigurationsmuligheder. Tilføj 2 repositories til <span class="inl_cmd">/etc/apt/sources.list</span></p>
 
