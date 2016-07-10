@@ -75,7 +75,7 @@ write_enable=YES <span class="red">&lt;--- hashtag (#) fjernes</span>
 
 # chroot_list_enable below.
 chroot_local_user=YES <span class="red">&lt;--- hashtag (#) fjernes</span>
-allow_writeable_chroot=YES <span class="red">&lt;--- Denne linie tilføjes</span>
+allow_writeable_chroot=YES <span class="red">&lt;--- Hele denne linie tilføjes</span>
 </pre>
 
 <p>Genstart <span class="inl_cmd">vsftpd</span>:</p>
@@ -161,15 +161,15 @@ thoj@mainsrv:~$ ls /srv/ftp/ -al | grep testfile
 
 <p>Man kan også logge på ftp serveren ved hjælp af kommandolinien. Her kører man blot kommandoen:</p>
 
-<code class="cmd">ftp 10.0.2.10</code>
+<code class="cmd">ftp 192.168.0.10</code>
 
 <p>Efter kommandoen er kørt beder FTP-serveren om brugernavn og password. Herunder logger jeg på FTP-serveren fra en Ubuntu klient:</p>
 
 <pre class="ubuntu_terminal">
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ ftp 10.0.2.10
-Connected to 10.0.2.10.
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ ftp 192.168.0.10
+Connected to 192.168.0.10.
 220 (vsFTPd 3.0.3)
-Name (10.0.2.10:thoj): thoj
+Name (192.168.0.10:thoj): thoj
 331 Please specify the password.
 Password:
 230 Login successful.
@@ -258,7 +258,7 @@ debug		macdef		proxy		send
 
 <h1>FTP med browseren</h1>
 
-<p>Ved at anvende browseren får man læseadgang til FTP drevet. I stedet for at starte linien med <span class="inl_cmd">http</span> anvender man <span class="inl_cmd">ftp</span>, f.eks: <span class="inl_cmd">ftp:10.0.2.10</span>.</p>
+<p>Ved at anvende browseren får man læseadgang til FTP drevet. I stedet for at starte linien med <span class="inl_cmd">http</span> anvender man <span class="inl_cmd">ftp</span>, f.eks: <span class="inl_cmd">ftp:192.168.0.10</span>.</p>
 
 <figure id="">
 
@@ -272,12 +272,14 @@ debug		macdef		proxy		send
 
 <figure id="">
 
-	<img class="p50" src="images/ftp_browser_user01.png" alt="" title="" />
+	<img class="p40" src="images/ftp_browser_user01.png" alt="" title="" />
 
 	<figcaption></figcaption>
 
 </figure>
+
 <p></p>
+
 <figure id="">
 
 	<img class="p90" src="images/ftp_browser_user02.png" alt="" title="" />
@@ -304,6 +306,8 @@ userlist_file=/etc/vsftpd.allowed_users
 
 <p>Opret og rediger herefter filen <span class="inl_cmd">/etc/vsftpd.allowed_users</span> og indsæt følgende:</p>
 
+<code class="cmd">sudo nano /etc/vsftpd.conf</code>
+
 <pre class="ubuntu_terminal">
 thoj_ftp
 </pre>
@@ -315,35 +319,29 @@ thoj_ftp
 <p>Herefter vil brugere der ikke er i <span class="inl_cmd">/etc/vsftpd.allowed_users</span> blive nægtet adgang</p>
 
 <pre class="ubuntu_terminal">
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ ftp 10.0.2.10 <span class="red">&lt;--- Login på FTP</span>
-Connected to 10.0.2.10.
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ ftp 192.168.0.10 <span class="red">&lt;--- Login på FTP</span>
+Connected to 192.168.0.10.
 220 (vsFTPd 3.0.3)
-Name (10.0.2.10:thoj): thoj
+Name (192.168.0.10:thoj): thoj
 530 Permission denied. <span class="red">&lt;--- Brugeren "thoj" bliver afvist</span>
 Login failed.
 ftp> bye <span class="red">&lt;--- Afslut FTP</span>
 221 Goodbye.
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ ftp 10.0.2.10 <span class="red">&lt;--- Login på FTP</span>
-Connected to 10.0.2.10.
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ ftp 192.168.0.10 <span class="red">&lt;--- Login på FTP</span>
+Connected to 192.168.0.10.
 220 (vsFTPd 3.0.3)
-Name (10.0.2.10:thoj): thoj_ftp
+Name (192.168.0.10:thoj): thoj_ftp
 331 Please specify the password.
 Password:
 230 Login successful. <span class="red">&lt;--- Brugeren "thoj_ftp" bliver godkendt</span>
 Remote system type is UNIX.
 Using binary mode to transfer files.
-ftp> 
+ftp> exit
+221 Goodbye.
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$
 </pre>
 
-<p>I browseren får man følgende fejlbesked:</p>
-
-<figure id="">
-
-	<img class="p50" src="images/ftp_browser_user_denied.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
+<p>Prøver man at logge ind med <span class="inl_cmd">thoj</span> ved hjælp af Chrome vil FTP-serveren blive ved med at bede om et nyt brugernavn der virker.</p>
 
 <p>Herefter kan brugere der har adgang til FTP-serveren tilføjes løbende.</p>
 

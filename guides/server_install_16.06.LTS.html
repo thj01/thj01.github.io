@@ -62,7 +62,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 	<tbody>
 		<tr>
 			<td>RAM</td>
-			<td>768 MB</td>
+			<td>1024 MB</td>
 		</tr>
 		<tr>
 			<td>Grafikhukommelse</td>
@@ -82,14 +82,10 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 		</tr>
 		<tr>
 			<td>Netværk</td>
-			<td>Netværksbro (slutter sig til computerens netværk</td>
+			<td>Netværksbro, så den virtuelle maskine er koblet på værtens netværk</td>
 		</tr>	
 	</tbody>
 </table>
-
-<span class="afsnit">Angående netværket</span>
-
-<p>Du kan med fordel anvende <span class="inl_cmd">NAT-netværk</span> hvis du ønsker at eksperimentere med DHCP og firewalling. I denne guide vil det dog være alt for avanceret at komme ind på, da det kræver netværksforståelse.</p>
 
 <h2>Netværket</h2>
 
@@ -105,7 +101,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 	<tbody>
 		<tr>
 			<td>Netværk</td>
-			<td>10.0.2.0</td>
+			<td>192.168.0.0</td>
 		</tr>
 		<tr>
 			<td>Netmaske</td>
@@ -113,7 +109,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 		</tr>
 		<tr>
 			<td>Gateway</td>
-			<td>10.0.2.1</td>
+			<td>192.168.0.1</td>
 		</tr>
 		<tr>
 			<td>DNS</td>
@@ -121,7 +117,10 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 		</tr>
 		<tr>
 			<td>DHCP-scope</td>
-			<td>10.0.2.100 - 10.0.2.200</td>
+			<td>192.168.0.50 - 192.168.0.200 
+			<br/>
+			<br/>
+			På den måde er der plads til 47 statiske IPadresser</td>
 		</tr>
 		<tr>
 			<td>Domain name</td>
@@ -142,7 +141,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 	<tbody>
 		<tr>
 			<td>Server IP</td>
-			<td>10.0.2.10</td>
+			<td>192.168.0.10</td>
 		</tr>
 		<tr>
 			<td>Netmaske</td>
@@ -150,7 +149,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 		</tr>
 		<tr>
 			<td>Gateway</td>
-			<td>10.0.2.1</td>
+			<td>192.168.0.1</td>
 		</tr>
 		<tr>
 			<td>DNS</td>
@@ -183,18 +182,18 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 	<tbody>
 		<tr>
 			<td><span class="inl_cmd">/</span></td>
-			<td>99,3 GB</td>
+			<td>99 GB</td>
 		</tr>
 		<tr>
 			<td><span class="inl_cmd">swap</span></td>
-			<td>765 MB</td>
+			<td>1 GB</td>
 		</tr>
 	</tbody>
 </table>
 
 <span class="afsnit">Avanceret setup</span>
 
-<p>I dette setup vil der blive anvendt 2 harddiske (2&sdot;100GB). Harddiskene vil blive sat op ved hjælp af LVM. Se nedenstående skema:</p>
+<p>I dette setup vil der blive anvendt 2 harddiske (2 stk. 100GB). Harddiskene vil blive sat op ved hjælp af LVM. Se nedenstående skema:</p>
 
 <table class="">
 	<thead>
@@ -372,6 +371,18 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 </figure>
 
+<p>Herefter installeres nogle filer:</p>
+
+<figure id="">
+
+	<img src="images/server_install_16.04_06b.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+
+
 <h1>Netværk</h1>
 
 <p>Netværksopsætningen kan være lidt tricky. Det skyldes at serveren automatisk vil forsøge at finde en DHCP-server så den automatisk får en IP-adresse. Denne funktion vil normalt ligge i den router du har stående. Vi vil have at den får en fast IP, nemlig <span class="inl_cmd">10.0.2.10</span>.</p>
@@ -420,11 +431,11 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 	<tbody>
 		<tr>
 			<td>Server IP</td>
-			<td>10.0.2.10/24</td>
+			<td>192.168.0.10/24</td>
 		</tr>
 		<tr>
 			<td>Gateway</td>
-			<td>10.0.2.1</td>
+			<td>192.168.0.1</td>
 		</tr>
 		<tr>
 			<td>DNS</td>
@@ -632,8 +643,8 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 	</thead>
 	<tbody>
 		<tr>
-			<td rowspan="3"><br/><br/><span class="inl_cmd">/dev/sda</span>  (100GB)</td>
-			<td rowspan="6">arkiv01</td>
+			<td rowspan="3"><br/><br/><br/><span class="inl_cmd">/dev/sda</span>  (100GB)</td>
+			<td rowspan="6"><br/><br/><br/><br/><br/><br/><span class="afsnit">Arkiv01</span></td>
 			<td>system</td>
 			<td>10 GB</td>
 			<td><span class="inl_cmd">/</span></td>
@@ -703,7 +714,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 </figure>
 
-<h1>Installer tjenester</h1>
+<h1>Installer OpenSSH server</h1>
 
 <p></p>
 
@@ -909,7 +920,7 @@ Welcome to Ubuntu 16.04 LTS (GNU/Linux 4.4.0-28-generic x86_64)
 0 opdateringer er sikkerhedsopdateringer.
 
 
-Last login: Sat Jul  2 11:50:44 2016 from 10.0.2.50
+Last login: Sat Jul  2 11:50:44 2016 from 192.168.0.77
 </pre>
 
 <p>Herefter køres følgende kommando (en linie)</p>
@@ -946,8 +957,8 @@ Vil du fortsætte? [J/n]
 <p>Herunder har jeg logget på min server ved hjælp af SSH.</p>
 
 <pre class="ubuntu_terminal">
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ ssh thoj@10.0.2.10
-thoj@10.0.2.10's password: 
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ ssh thoj@192.168.0.10
+thoj@192.168.0.10's password: 
 Welcome to Ubuntu 16.04 LTS (GNU/Linux 4.4.0-28-generic x86_64)
 
  * Documentation:  https://help.ubuntu.com
@@ -959,11 +970,13 @@ Welcome to Ubuntu 16.04 LTS (GNU/Linux 4.4.0-28-generic x86_64)
 
 
 *** Genstart af computeren er påkrævet ***
-Last login: Sat Jul  2 12:07:12 2016 from 10.0.2.50
+Last login: Fri Jul  8 10:56:45 2016 from 192.168.0.77
 <span class="green1">thoj@mainsrv</span>:<span class="blue1">~</span>$
 </pre>
 
-<p>Som du kan se er der behov for at genstarter serveren ;).</p>
+<p>Som du kan se er der behov for at genstarter serveren.</p>
+
+<code class="cmd">sudo reboot</code>
 
 <p></p>
 <p></p>

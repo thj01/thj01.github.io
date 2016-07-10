@@ -148,6 +148,7 @@ fe00::0 ip6-localnet
 ff00::0 ip6-mcastprefix
 ff02::1 ip6-allnodes
 ff02::2 ip6-allrouters
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$
 </pre>
 
 <p>man-page <span class="inl_cmd">cat</span>: 
@@ -156,7 +157,7 @@ ff02::2 ip6-allrouters
 	
 <h2>Omdiriger output (redirect)</h2>
 
-<p>Nogen gange har man brug for at omdirigere indhold. Det kan f.eks. være at indsætte et output i en fil. Til at omdirigere anvender man <span class="inl_cmd">&gt;</span> og <span class="inl_cmd">&gt;&gt;</span>. En pil erstatter alt indhold og 2 pile tilføjer. </p>
+<p>Nogen gange har man brug for at omdirigere indhold. Det kan f.eks. være at indsætte et output i en fil. Til at omdirigere anvender man <span class="inl_cmd">&gt;</span> og <span class="inl_cmd">&gt;&gt;</span>. En pil erstatter alt indhold og 2 pile tilføjer til slutningen af filen. </p>
 
 <table class="cmd_table">
 	<thead>
@@ -181,7 +182,7 @@ ff02::2 ip6-allrouters
 	</tbody>
 </table>
 
-<p>Omdirigering anvendes også til at omdirigere fejlmeddelelser. Se følgende skema</p>
+<p>Omdirigering anvendes også til at omdirigere fejlmeddelelser. Her anvender man <span class="inl_cmd">1</span>, <span class="inl_cmd">2</span> og <span class="inl_cmd">&</span> til at angive typen af output man vil omdirigere. Se følgende skema</p>
 
 <table class="cmd_table">
 	<thead>
@@ -192,12 +193,8 @@ ff02::2 ip6-allrouters
 	</thead>
 	<tbody>
 		<tr>
-			<td>&gt; fil</td>
-			<td>Sætter output ind i fil</td>
-		</tr>
-		<tr>
 			<td>1 &gt; fil</td>
-			<td>Sætter output ind i fil</td>
+			<td>Sætter "godkendte" output ind i fil</td>
 		</tr>
 		<tr>
 			<td>2 &gt; fil</td>
@@ -210,14 +207,57 @@ ff02::2 ip6-allrouters
 	</tbody>
 </table>
 
-<p>Man kan også sende output til <span class="inl_cmd">/dev/null</span>, som bedst kan beskrives som skraldespand. På den måde kan man fjerne meddelelser fra et program. Det kan være praktisk hvis man anvender kommandoer i scripts eller man ønsker at køre programmer usynligt i baggrunden. Herunder er et eksempel på anvendelse ved hjælp af <span class="inl_cmd">id</span>, hvor både et positivt output og et fejl output bliver omdirigeret til <span class="inl_cmd">/dev/null</span>.</p>
+<p>Herunder er vist nogle eksempler med eksempler med kommandoen <span class="inl_cmd">id</span>:</p>
 
 <pre class="ubuntu_terminal">
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ id thoj
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ id thoj 1> ~/test
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ cat ~/test
+uid=1000(thoj) gid=1000(thoj) grupper=1000(thoj),4(adm),24(cdrom),27(sudo),30(dip), 46(plugdev),108(lpadmin),124(sambashare)
+</pre>
+
+<p>Her bliver output fra kommandoen ledt direkte ind i filen <span class="inl_cmd">~/test</span>, hvilket vi viser ved at køre <span class="inl_cmd">cat ~/test</span>.</p>
+
+<pre class="ubuntu_terminal">
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ id thoj 2> ~/test
+uid=1000(thoj) gid=1000(thoj) grupper=1000(thoj),4(adm),24(cdrom),27(sudo),30(dip), 46(plugdev),108(lpadmin),124(sambashare)
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ cat ~/test
+</pre>
+
+<p>Her leder vi fejloutput ind i filen <span class="inl_cmd">~/test</span>. Derfor bliver output fra kommandoen vist, men der er intet i filen ~/test</p>
+
+<pre class="ubuntu_terminal">
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ id hugo 2>/dev/null
+id: 'hugo': ingen sådan bruger
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ cat ~/test
+</pre>
+
+<p>Her leder vi et fejloutput ind i filen <span class="inl_cmd">~/test</span>. Læg mærke til at det ikke bliver betragtet som en fejl at <span class="inl_cmd">id</span> ikke ikke finder en bruger. Herunder prøver vi at anvende en kommando systemet ikke kender. I stedet for at vise fejlen i terminalen skubber den fejl-output ind i filen <span class="inl_cmd">~/test</span></p>
+
+<pre class="ubuntu_terminal">
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ ifd hugo 2> ~/test
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ cat ~/test
+Ingen kommando ved navn "ifd" blev fundet. Mente du istedet:
+ Kommandoen "fid" fra pakken "id-utils" (universe)
+ Kommandoen "id" fra pakken "coreutils" (main)
+ Kommandoen "xfd" fra pakken "x11-utils" (main)
+ Kommandoen "if1" fra pakken "ctsim" (universe)
+ Kommandoen "if2" fra pakken "ctsim" (universe)
+ Kommandoen "fd" fra pakken "fdclone" (universe)
+ Kommandoen "ifp" fra pakken "ifp-line-libifp" (universe)
+ifd: kommando ikke fundet
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ 
+</pre>
+
+<p>Man kan også sende output til <span class="inl_cmd">/dev/null</span>, som bedst kan beskrives som sort hul. På den måde kan man fjerne meddelelser fra et program. Det kan være praktisk hvis man anvender kommandoer i scripts eller man ønsker at køre programmer usynligt i baggrunden.</p>
+
+<pre class="ubuntu_terminal">
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ id thoj 
 uid=1000(thoj) gid=1000(thoj) grupper=1000(thoj),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),108(lpadmin),124(sambashare)
 <span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ id thoj 1>/dev/null
 <span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ id hugo 2>/dev/null
 </pre>
+
+<p>Vil man kvæle alle putput fra en kommando anvender man <span class="inl_cmd">&>/dev/null</span>. Anvender man <span class="inl_cmd">&</span> som argument i et scripts, så kan man se at intentionen er at kvæle alle output.</p>
 
 <p>En sidste praktisk måde at anvende omdirigering er til at indsætte tekststrenge ved hjælp af <span class="inl_cmd">echo</span>. På denne måde kan man indsætte tekstrenge i filer:</p>
 
@@ -338,6 +378,20 @@ hej
 hej (linie nummer 2)
 </pre>
 
+<h2>Indsætte tekstrenge i systemfiler</h2>
+
+<p>Hvis man vil indsætte tekststrenge i filer der ikke er ejet af en selv skal man også anvende <span class="inl_cmd">tee</span>.</p>
+
+<code class="cmd">echo "hejsa root" | sudo tee /root/hej</code>
+
+<pre class="ubuntu_terminal">
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ echo "hejsa root" | sudo tee /root/hej
+hejsa root
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ sudo cat /root/hej
+hejsa root
+</pre>
+
+<p>Læg mærke til at der først skal <span class="inl_cmd">sudo</span> på efter pipen. Det skyldes at det først er under skrivningen af filen vi skal anvende root's rettigheder.</p>
 
 <h2><span class="inl_cmd">sed</span> - Erstat indhold i filer</h2>
 
@@ -411,21 +465,295 @@ Mit navn er Thomas
 	
 <p><span class="bold">VIGTIGT:</span> Som med alle andre slette kommandoer skal du være varsom, da du risikerer at slette mere end du ønsker. F.eks. vil et <span class="inl_cmd">/</span> i stedet for et <span class="inl_cmd">.</span> betyde at du sletter alle JPG billeder på harddisken, i stedet for dem der ligger i dine undermapper. Derfør bør du altid have styr på hvor i filstrukturen du er. Er du i tvivl så anvend <span class="inl_cmd">pwd</span>, så får du den fulde sti som output.</p>
 
-<h2>Pakkede filer</h2>
+<h1><span class="inl_cmd">tar</span> pakkede filer</h1>
 
-<p>Der findes mange pakkeprogrammer til Linux, men et af de mest udbredte er <span class="inl_cmd">tar</span> (<span class="bold">T</span>ape <span class="bold">AR</span>chive). <span class="inl_cmd">tar</span> lægger som udgangspunkt filerne sammen i en lang fil, men kobineres ofte med komprimeringsalgoritmen <span class="inl_cmd">gzip</span>, og angives med .gz efter filnavnet.</p>
+<p>Når man skal downloade Linuxprogrammer vil man ofte downloade dem som <span class="inl_cmd">tar</span>-filer. <span class="inl_cmd">tar</span> står for <span class="inl_cmd">T</span>ape <span class="inl_cmd">Archive</span> og er i sin oprindelige form blot en måde at lægger sekventielt efter hinanden, så de kan læses fra et bånd. Selvom man ikke anvender bånd til at lagre filer mere, er komprimerede <span class="inl_cmd">tar</span>-pakker standard for at pakke programmer på Linux. <span class="inl_cmd">tar</span>-filer bliver også kaldt <span class="inl_cmd">tarballs</span>.</p>
 
-<p>Vær opmærksom på, at man som standard pakker mapper ned. Derfor kopierer/flytter man først de filer der skal transporteres ind i en mappe, hvorefter denne pakkes. Det er hvad modtageren forventer.</p>
+<p>Som standard pakker man filer ned i mapper. På den måde sikrer man sig også at filerne ligger i den samme mappestruktur, som det blev pakket ned i.</p>
 
-<p>For at pakke noget ned anvendes:</p>
+<p>Man pakker filer ned på følgende måde:</p>
 
-<code class="cmd">tar -cvzf *filnavn* *mappe der skal pakkes*</code>
+<code class="cmd">tar *optioner* *denPakkedeFil* *mappenDerSkalPakkes*</code>
 
 <p>For at pakke ud (her tar.gz) anvendes:</p>
 
-<code class="cmd">tar -xvzf *filnavn*.tar.gz</code>
+<code class="cmd">tar *optioner* *denPakkedeFil*</code>
 
-<p><span class="inl_cmd">tar</span> og <span class="inl_cmd">gzip</span> er langt fra det bedste komprimeringsprogram, men det findes på alle Linuxsystemer som standard. Pakkeformatet <span class="inl_cmd">lzma</span> er et mere moderne format, hvor det kan lade sig gøre at konfigurere alt lige fra CPU-load til hukommelsesforbrug. Det har stor fordel når man anvender det i backup sammenhæng.</p>
+<p>Man kan kende komprimeringsalgoritmen på endelse efter tar f.eks. <span class="inl_cmd">tar.gz</span>. Herunder er de mest anvendte algoritmer gennemgået efter graden de komprimerer, samt eksempler hvor mappen <span class="inl_cmd">gif</span> bliver pakket og udpakket igen.</p>
+
+<h2>gzip</h2>
+
+<p><span class="inl_cmd">gzip</span> er en simpel og effektiv komprimeringsalgoritme. Den har den bedste hastigheds/filstørelses ratio. Kan genkendes på at <span class="inl_cmd">gz</span> eller <span class="inl_cmd">gzip</span> indgår i den pakkede fils navn.</p>
+
+<span class="afsnit">Pakning med gzip</span>
+
+<code class="cmd">tar cvfz gif_backup.tar.gz gif</code>
+
+<pre class="ubuntu_terminal">
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ tar cvzf gif_backup.tar.gz gif
+gif/
+gif/slow_clap_citizen_kane.gif
+gif/tegnefilm/
+gif/tegnefilm/run_simpson_run.gif
+gif/the bird/
+gif/the bird/thebird02.gif
+gif/the bird/thebird01.gif
+gif/the bird/thebird03.gif
+gif/the bird/thebird04.gif
+gif/mordor.gif
+gif/lachifre.gif
+</pre>
+
+<span class="afsnit">Udpakning af gzip</span>
+
+<code class="cmd">tar xvf gif_backup.tar.gz</code>
+
+<pre class="ubuntu_terminal">
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ tar xvf gif_backup.tar.gz
+gif/
+gif/slow_clap_citizen_kane.gif
+gif/tegnefilm/
+gif/tegnefilm/run_simpson_run.gif
+gif/the bird/
+gif/the bird/thebird02.gif
+gif/the bird/thebird01.gif
+gif/the bird/thebird03.gif
+gif/the bird/thebird04.gif
+gif/mordor.gif
+gif/lachifre.gif
+</pre>
+
+<h2>bzip2</h2>
+
+<p><span class="inl_cmd">bzip2</span> er komprimerer hårdere end <span class="inl_cmd">gzip</span> - men også langsommere. Algoritmen kræver også mere CPU og RAM end gzip. Kan genkendes på at <span class="inl_cmd">bz2</span> eller <span class="inl_cmd">bzip2</span> indgår i den pakkede fils navn.</p>
+
+<span class="afsnit">Pakning med bzip2</span>
+
+<code class="cmd">tar cvfj gif_backup.tar.bz gif</code>
+
+<pre class="ubuntu_terminal">
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ tar cvzf gif_backup.tar.gz gif
+gif/
+gif/slow_clap_citizen_kane.gif
+gif/tegnefilm/
+gif/tegnefilm/run_simpson_run.gif
+gif/the bird/
+gif/the bird/thebird02.gif
+gif/the bird/thebird01.gif
+gif/the bird/thebird03.gif
+gif/the bird/thebird04.gif
+gif/mordor.gif
+gif/lachifre.gif
+</pre>
+
+<span class="afsnit">Udpakning af bzip2</span>
+
+<code class="cmd">tar xvf gif_backup.tar.bz</code>
+
+<pre class="ubuntu_terminal">
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ tar xvf gif_backup.tar.gz
+gif/
+gif/slow_clap_citizen_kane.gif
+gif/tegnefilm/
+gif/tegnefilm/run_simpson_run.gif
+gif/the bird/
+gif/the bird/thebird02.gif
+gif/the bird/thebird01.gif
+gif/the bird/thebird03.gif
+gif/the bird/thebird04.gif
+gif/mordor.gif
+gif/lachifre.gif
+</pre>
+
+<h2>lzma</h2>
+
+<p><span class="inl_cmd">lzma</span> komprimerer hårdest af disse 3, men er også meget langsommere. Til gengæld dekomprimerer det rigtigt hurtigt. Fordelen ved at anvende <span class="inl_cmd">lzma</span> er, at man har en meget hård komprimering, og en rimelig hurtig udpakningstid. Formatet er især velegnet til backup af store mængder data. Kan genkendes på at <span class="inl_cmd">lz</span> eller <span class="inl_cmd">lzma</span> indgår i filnavnet.</p>
+
+<span class="afsnit">Pakning med lzma</span>
+
+<code class="cmd">tar cvf gif_backup.tar.lz --lzma gif</code>
+
+<p>Læg mærke til at <span class="inl_cmd">--lzma</span> skal stå før mappen der skal pakkes</p>
+
+<pre class="ubuntu_terminal">
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ tar cvf gif_backup.tar.lz --lzma gif
+gif/
+gif/slow_clap_citizen_kane.gif
+gif/tegnefilm/
+gif/tegnefilm/run_simpson_run.gif
+gif/the bird/
+gif/the bird/thebird02.gif
+gif/the bird/thebird01.gif
+gif/the bird/thebird03.gif
+gif/the bird/thebird04.gif
+gif/mordor.gif
+gif/lachifre.gif
+</pre>
+
+<span class="afsnit">Udpakning af lzma</span>
+
+<code class="cmd">tar xvf gif_backup.tar.lz</code>
+
+<pre class="ubuntu_terminal">
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ tar xvf gif_backup.tar.lz
+gif/
+gif/slow_clap_citizen_kane.gif
+gif/tegnefilm/
+gif/tegnefilm/run_simpson_run.gif
+gif/the bird/
+gif/the bird/thebird02.gif
+gif/the bird/thebird01.gif
+gif/the bird/thebird03.gif
+gif/the bird/thebird04.gif
+gif/mordor.gif
+gif/lachifre.gif
+</pre>
+
+
+<p>Herunder kan du se en sammenligning taget fra: <a href="http://tukaani.org/lzma/benchmarks.html" target="_blank">http://tukaani.org/lzma/benchmarks.html</a>. Testen er lavet på en mappe med i alt 203 Mb filer:</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Algoritme</th>
+			<th>Pakket</th>
+			<th>af oprindelig</th>
+			<th>Pakning</th>
+			<th>Udpakning</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>gzip</td>
+			<td>79,2 MB</td>
+			<td>37,2%</td>
+			<td>24,5 s &rArr; 8,3 MB/s</td>
+			<td>3,2 s &rArr; 63 MB/s</td>
+		</tr>
+		<tr>
+			<td>bzip</td>
+			<td>72,2 MB</td>
+			<td>34%</td>
+			<td>2m 37s &rArr; 1,3 MB/s</td>
+			<td>38,2s &rArr; 0,4 MB/s</td>
+		</tr>
+		<tr>
+			<td>lzma</td>
+			<td>54,1 MB</td>
+			<td>26,1%</td>
+			<td>8m 24s &rArr; 0,4 MB/s</td>
+			<td>10,1s &rArr; 20 MB/s</td>
+		</tr>		
+	</tbody>
+</table>
+
+<p>Kort opsumeret</p>
+
+<p>Hvis man skal konkluderer noget må det være, at forskellen mellem <span class="inl_cmd">gzip</span> pg <span class="inl_cmd">bzip2</span> er minimal. Det man vinder ved at anvende <span class="inl_cmd">bzip2</span> er at de pakkede filer fylder lidt mindre. <span class="inl_cmd">lzma</span> kan anvendes med fordel når det drejer sig om backup af store mængder af data, så vil det fylde mindre end ved <span class="inl_cmd">gzip</span> og stadig have en god udpakningshastighed. En ren win-win.</p>
+
+<h2>Indholdet af tarfiler</h2>
+
+<p>For at se indholdet af tar filer anvendes optionerne <span class="inl_cmd">-tvf</span></p>
+
+<pre class="ubuntu_terminal">
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ tar -tvf gif_backup.tar.gz
+drwxr-xr-x thoj/thoj         0 2016-07-10 12:26 gif/
+-rw-r----- thoj/thoj    805949 2016-07-10 12:26 gif/slow_clap_citizen_kane.gif
+drwxr-xr-x thoj/thoj         0 2016-07-10 12:26 gif/tegnefilm/
+-rw-r----- thoj/thoj    986614 2016-07-10 12:26 gif/tegnefilm/run_simpson_run.gif
+drwxr-xr-x thoj/thoj         0 2016-07-10 12:26 gif/the bird/
+-rw-r----- thoj/thoj   3080999 2016-07-10 12:26 gif/the bird/thebird02.gif
+-rw-r----- thoj/thoj   1890379 2016-07-10 12:26 gif/the bird/thebird01.gif
+-rw-r----- thoj/thoj    121990 2016-07-10 12:26 gif/the bird/thebird03.gif
+-rw-r----- thoj/thoj   6313886 2016-07-10 12:26 gif/the bird/thebird04.gif
+-rw-r----- thoj/thoj    954706 2016-07-10 12:26 gif/mordor.gif
+-rw-r----- thoj/thoj    137685 2016-07-10 12:26 gif/lachifre.gif
+</pre>
+
+<p>Man kan også finde teksstrenge i tar-filerne ved hjælp af <span class="inl_cmd">grep</span>.</p>
+
+<pre class="ubuntu_terminal">
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ tar -tvf gif_backup.tar.gz | grep simpson
+-rw-r----- thoj/thoj    986614 2016-07-10 12:26 gif/tegnefilm/run_<span class="red">simpson</span>_run.gif
+
+</pre>
+
+<h2>Udpak enkelte filer fra tarfiler</h2>
+
+<p>For pakke en enkelt fil ud sætter man blot filnavnet til sidst. Læg mærke til at man skal bruge den fulde sti.</p>
+
+<pre class="ubuntu_terminal">
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ tar -xvf gif_backup.tar.gz gif/tegnefilm/run_simpson_run.gif
+gif/tegnefilm/run_simpson_run.gif
+</pre>
+
+<p>Hvis man vil udpakke flere filer sætter man blot hvert filnavn ind som en tekststreng:</p>
+
+<pre class="ubuntu_terminal">
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ tar -xvf gif_backup.tar.gz gif/tegnefilm/run_simpson_run.gif gif/mordor.gif
+gif/tegnefilm/run_simpson_run.gif
+gif/mordor.gif
+</pre>
+
+<p>Eller med wildcards <span class="inl_cmd">*</span></p>
+
+<pre class="ubuntu_terminal">
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ tar -xvf gif_backup.tar.gz --wildcards *bird*
+gif/the bird/
+gif/the bird/thebird02.gif
+gif/the bird/thebird01.gif
+gif/the bird/thebird03.gif
+gif/the bird/thebird04.gif
+</pre>
+
+<p>Generelt gælder følgende options:</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Option</th>
+			<th>Beskrivelse</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>c</td>
+			<td>Lav (create) et arkiv</td>
+		</tr>
+		<tr>
+			<td>x</td>
+			<td>Udpak (extract)</td>
+		</tr>
+		<tr>
+			<td>v</td>
+			<td>Vis fremgangen når der arbejdes</td>
+		</tr>
+		<tr>
+			<td>f</td>
+			<td>Arkivets filnavn</td>	
+		</tr>
+		<tr>
+			<td>t</td>
+			<td>Se indholdet af filen</td>
+		</tr>
+		<tr>
+			<td>j</td>
+			<td>Opret en <span class="inl_cmd">bzip2</span> pakket fil</td>
+		</tr>
+		<tr>
+			<td>z</td>
+			<td>Opret en <span class="inl_cmd">gzip</span> pakket fil</td>
+		</tr>
+		<tr>
+			<td>wildcards</td>
+			<td>Udvælg filer ved hjælp af <span class="inl_cmd">*</span></td>
+		</tr>
+	</tbody>
+</table>
+
+
+<p>Læs mere: <a href="http://www.tecmint.com/18-tar-command-examples-in-linux/" target="_blank">http://www.tecmint.com/18-tar-command-examples-in-linux/</a></p>
+
 
 <h1>Redigering af filer</h1>
 
@@ -508,7 +836,7 @@ Mit navn er Thomas
 
 <p>Når du svarer y vil nano skrive filnavnet med den fulde sti, hvortil du taster <kbd>Enter</kbd>.</p>
 
-
+<p>Får du en fejlmelding om at du ikke kan gemme skyldes det oftest, at man redigerer i en fil man ikke har rettigheder til. Oftes skyldes det at man glemmer at anvende <span class="inl_cmd">sudo</span> når man redigerer i systemfiler.</p>
 
 <h1>Opret, slet,kopier, flytter filer og mapper</h1>
 

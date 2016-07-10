@@ -97,7 +97,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <code class="cmd">sudo apt-get -y install apache2</code>
 
-<p>Kontroller at den virker ved at åbne en browser og indtast webserverens IP-adresse, som i dette tilfælde er <span class="inl_cmd">10.0.2.10</span>:</p>
+<p>Kontroller at den virker ved at åbne en browser og indtast webserverens IP-adresse, som i dette tilfælde er <span class="inl_cmd">192.168.0.10</span>:</p>
 
 <figure id="">
 
@@ -121,7 +121,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <code class="more_cmd">sudo systemctl restart apache2</code>
 
-<p>Herefter vil du kunne anvende HTTPS. Vær opmærksom på, at det giver en fejl når man anvender serveren, da siden ikke har noget certifikat.</p>
+<p>Herefter vil du kunne anvende HTTPS. Skriv adressen <span class="inl_cmd">https://192.168.0.10</span>. Vær opmærksom på, at det giver en fejl når man anvender serveren, da siden ikke har noget certifikat.</p>
 
 <figure id="">
 
@@ -131,7 +131,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 </figure>
 
-<p>Vælg <span class="inl_cmd">Avanceret</span> og <span class="inl_cmd">Tilføj undtagelse...</span></p>
+<p>Vælg <span class="inl_cmd">Avanceret</span> og <span class="inl_cmd">Fortsæt til 192.168.0.10 (usikkert)</span></p>
 
 <figure id="">
 
@@ -141,17 +141,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 </figure>
 
-<p>Herefter får man mulighed for at tilføje sit eget sikkerhedscertifikat til siden:</p>
-
-<figure id="">
-
-	<img class="p70" src="images/webserver_kontroller_apache_HTTPS03.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-
-<p>Herefter kommer siden frem i browseren, men med et lille gult mærke ved låsen i øverste venstre hjørne. Men fremover husker browseren den sikkerhedsundtagelse man har lavet.</p>
+<p>Herefter kommer siden frem i browseren, hvor https er rødt og streget over. Fremover vil browseren huske undtagelsen og lade dig ind uden andre advarsler end overstregningen.</p>
 
 <figure id="">
 
@@ -192,61 +182,6 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <code class="cmd">sudo rm /var/www/html/info.php</code>
 
-<h2>Optimering af PHP</h2>
-
-<p>PHP er installeret i en "standard" version, og det kan de optimeres. PHP konfigureres igennem filen <span class="inl_cmd">/etc/php/7.0/apache2/php.ini</span>. Læg mærke til at tegnet <span class="inl_cmd">;</span> udkommenterer linier og skal fjernes før linien bliver aktiv.</p>
-
-<code class="cmd">sudo nano /etc/php/7.0/apache2/php.ini</code>
-
-<p>OPcache er en indbygget funktion i PHP, der laver en cache for kørte PHP-programmer. På den måde minimerer man belastningen af CPU og harddisk. Her laver vi et simpelt setup, hvor fire linier skal ændres:</p>
-
-<ol class="">
-	<li>OPcache skal aktiveres</li>
-	<li>Mængden af RAM der afsættes til cache skal sættes</li>
-	<li>Antallet af scripts der kan caches</li>
-	<li>Hvor ofte scripts skal kontrolleres for at være aktive i cachen</li>
-</ol>
-
-<p>Fremgangsmåden er taget fra: <a href="http://www.hostingadvice.com/how-to/enable-php-5-5-opcache-ubuntu-14-04/" target="_blank">http://www.hostingadvice.com/how-to/enable-php-5-5-opcache-ubuntu-14-04/</a></p>
-
-<p>I linien <span class="inl_cmd">;opcache.enable=0</span> fjernes <span class="inl_cmd">;</span> og værdien sættes til <span class="inl_cmd">1</span></p>
-
-<pre class="black">
-; Determines if Zend OPCache is enabled
-opcache.enable=1 <span class="red">&lt;--- ; fjernes og værdien sættes til 1</span>
-</pre>
-
-<p>I linien <span class="inl_cmd">;opcache.memory_consumption=64</span> fjernes <span class="inl_cmd">;</span> og værdien beholdes (Antal Mb).</p>
-
-<pre class="black">
-; The OPcache shared memory storage size.
-opcache.memory_consumption=64 <span class="red">&lt;--- ; fjernes og værdien beholdes</span>
-</pre>
-
-<p>I linien <span class="inl_cmd">;opcache.max_accelerated_files=2000</span> fjernes <span class="inl_cmd">;</span> og værdien beholdes</p>
-
-<pre class="black">
-; The maximum number of keys (scripts) in the OPcache hash table.
-; Only numbers between 200 and 100000 are allowed.
-opcache.max_accelerated_files=2000 <span class="red">&lt;--- ; fjernes og værdien beholdes</span>
-</pre>
-
-<p>I linien <span class="inl_cmd">;opcache_revalidate_freq = 2</span> fjernes <span class="inl_cmd">;</span> og værdien sættes til <span class="inl_cmd">240</span> (sekunder = 4 minutter)</p>
-
-<pre class="black">
-; How often (in seconds) to check file timestamps for changes to the shared
-; memory storage allocation. ("1" means validate once per second, but only
-; once per request. "0" means always validate)
-opcache.revalidate_freq=240 <span class="red">&lt;--- ; fjernes og værdien sættes til 240 (sekunder)</span>
-</pre>
-
-<p>Afslut <span class="inl_cmd">nano</span> og start opcache modulet.</p>
-
-<code class="cmd">sudo phpenmod opcache</code>
-
-<p>Genstart Apache</p>
-
-<code class="cmd">sudo systemctl restart apache2</code>
 
 <h1>Nogle tricks</h1>
 
@@ -288,7 +223,6 @@ totalt 16
 thoj@mainsrv:~$ ls -l /var/www/html/
 totalt 16
 -rwx---r-x 1 thoj thoj 11321 jul  3 20:01 <span class="green1">index.html</span>
--rwx---r-x 1 thoj thoj    26 jul  3 21:26 <span class="green1">info.php</span>
 </pre>
 
 <p>Læg mærke til at man bliver nød til at bruge den fulde sti til mappen for at se indholdet. Hvis man viser en liste ved at bruge det symbolske link sker der følgende:</p>
@@ -331,19 +265,19 @@ drwxr-xr-x 98 root root 4096 dec 16 11:30 ..
 
 <code class="cmd">sudo mkdir -p /etc/skel/public_html/images /etc/skel/public_html/css /etc/skel/public_html/js</code>
 
-<p>Herefter opretter vi filerne <span class="inl_cmd">index.html</span> og <span class="inl_cmd">phptest.html</span> og indsætter lidt indhold ved hjælp af <span class="inl_cmd">echo</span>.</p>
+<p>Herefter opretter vi filerne <span class="inl_cmd">index.html</span>, som indeholder en enkelt linie: Overskriften "Din Hjemmeside"</p>
 
 <code class="cmd">echo "&lt;h1&gt;Din hjemmeside&lt;/h1&gt;" | sudo tee /etc/skel/public_html/index.html </code>
-
-<code class="more_cmd">echo "&lt;?php phpinfo(); ?&gt;" | sudo tee /etc/skel/public_html/info.php</code>
 
 <p>Det sidste vi skal have gjort er at ændre filrettighederne for brugernes www-mapper.</p>
 
 <code class="cmd">sudo chmod -R 705 /etc/skel/public_html</code>
 
-<p>Vi kan tjekke filstrukturen med kommandoen:</p>
+<p>Vi kan tjekke filstrukturen med kommandoen tree, som vi først skal have installeret:</p>
 
-<code class="cmd">tree /etc/skel -pua --dirsfirst</code>
+<code class="cmd">sudo apt-get install tree</code>
+
+<code class="more_cmd">tree /etc/skel -pua --dirsfirst</code>
 
 <pre class="ubuntu_terminal">
 thoj@mainsrv:~$ tree /etc/skel -pua --dirsfirst
@@ -352,8 +286,7 @@ thoj@mainsrv:~$ tree /etc/skel -pua --dirsfirst
 │   ├── [drwx---r-x root    ]  <span class="blue1">css</span>
 │   ├── [drwx---r-x root    ]  <span class="blue1">images</span>
 │   ├── [drwx---r-x root    ]  <span class="blue1">js</span>
-│   ├── [-rwx---r-x root    ]  <span class="green1">index.html</span>
-│   └── [-rwx---r-x root    ]  <span class="green1">info.php</span>
+│   └── [-rwx---r-x root    ]  <span class="green1">index.html</span>
 ├── [-rw-r--r-- root    ]  .bash_logout
 ├── [-rw-r--r-- root    ]  .bashrc
 └── [-rw-r--r-- root    ]  .profile
@@ -401,11 +334,11 @@ thoj@mainsrv:~$ tree /etc/skel -pua --dirsfirst
 
 <code class="more_cmd">sudo systemctl restart apache2</code>
 
-<p>Test ved at oprette brugeren <span class="inl_cmd">testweb</span> og naviger til <span class="inl_cmd">10.0.2.10/~testweb</span> i en browser og tilgå brugerens mappe over FTP. Vær opmærksom på at det kun er brugere, der er oprettet efter ændringen der får oprettet disse mapper.</p>
+<p>Test ved at oprette brugeren <span class="inl_cmd">testweb</span> og naviger til <span class="inl_cmd">192.168.0.10/~testweb</span> i en browser og tilgå brugerens mappe over FTP. Vær opmærksom på at det kun er brugere, der er oprettet efter ændringen der får oprettet disse mapper.</p>
 
 <code class="cmd">sudo adduser testweb</code>
 
-<p>Åbn browseren og sæt adressen til <span class="inl_cmd">10.0.2.10\~testweb</span> for at test den personlige hjemmeside og <span class="inl_cmd">10.0.2.10\~testweb\info.php</span> for at kontrollere PHP virker som det skal</p>
+<p>Åbn browseren og sæt adressen til <span class="inl_cmd">192.168.0.10\~testweb</span> for at test den personlige hjemmeside.</p>
 
 <figure id="">
 
@@ -414,19 +347,6 @@ thoj@mainsrv:~$ tree /etc/skel -pua --dirsfirst
 	<figcaption></figcaption>
 
 </figure>
-
-<figure id="">
-
-	<img class="p90" src="images/webserver_kontroller_php_local_bruger.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-
-<p>Når der er kontrolleret at PHP virker på brugernes private hjemmesider fjernes <span class="inl_cmd">info.php</span> af sikkerhedsgrunde fra både fra <span class="inl_cmd">testweb</span>'s side og fra skabelonen:</p>
-
-<code class="cmd">sudo rm /home/testweb/public_html/info.php</code>
-<code class="more_cmd">sudo rm /etc/skel/public_html/info.php </code>
 
 <p>Vær opmærksom på at det kun er brugere, der er oprettet efter ændringen der får oprettet disse mapper. Ønsker du at give de oprindelige brugere deres egen web-mappe skal de kopieres ind og der skal ændres ejerskab.Her gøres det for min bruger <span class="inl_cmd">thoj</span>.</p>
 
@@ -562,7 +482,7 @@ thoj@mainsrv:~$
 
 </figure>
 
-<p>Indtast password (2 gange) til PHPMyAdmins root-konto: </p>
+<p>Indtast password 2 gange (her vælger jeg <span class="inl_cmd">123qwe</span>) til PHPMyAdmins root-konto: </p>
 
 <figure id="">
 
@@ -578,7 +498,7 @@ thoj@mainsrv:~$
 
 <h2>Konfiguration af mariaDB</h2>
 
-<p></p>
+<p>Som det er lige nu kan databasen kun tilgås ved hjælp af root-shell. Det ændrer vi, så alle brugere med mariaDB's root password kan få adgang til databasen.</p>
 
 <code class="cmd">sudo mysql</code>
 
@@ -664,7 +584,7 @@ thoj@mainsrv:~$
 
 <code class="cmd">sudo apt-get -y install php7.0-curl php7.0-bz2 php7.0-zip php7.0-intl php-imagick</code>
 
-<p>Herefter er vi klar til at hente Nextcloud fra serveren. Tjek efter den nyeste version på adressen: <span class="inl_cmd">https://download.nextcloud.com/server/releases/</span>. Vi skal have fat i <span class="inl_cmd">tar.bz2</span> filen.Da guiden er skrevet er det version 9.0.52 kommer kommandoen til at se ud som herunder. Ændr. versionsnummeret der står med rødt, så det passer til din version. Først navigerer vil til vores hjemmemappe, så vi ved hvor filen bliver gemt.</p>
+<p>Herefter er vi klar til at hente Nextcloud fra serveren. Tjek efter den nyeste version på adressen: <a href="https://download.nextcloud.com/server/releases" target="_blank">https://download.nextcloud.com/server/releases</a>. Vi skal have fat i <span class="inl_cmd">tar.bz2</span> filen.Da guiden er skrevet er det version 9.0.52 kommer kommandoen til at se ud som herunder. Ændr. versionsnummeret der står med rødt, så det passer til din version. Først navigerer vil til vores hjemmemappe, så vi ved hvor filen bliver gemt.</p>
 
 <code class="cmd">wget https://download.nextcloud.com/server/releases/nextcloud-<span class="red">9.0.52</span>.tar.bz2</code>
 
@@ -755,11 +675,7 @@ Alias /nextcloud "/var/www/nextcloud/"
 
 <code class="cmd">sudo systemctl restart apache2</code>
 
-<p>Det sidste skridt før vi starter nextcloud op er, at vi sørger for at alle filerne bliver ejet af http brugeren <span class="inl_cmd">www-data</span>:</p>
-
-<code class="cmd">sudo chown -R www-data:www-data /var/www/nextcloud/</code>
-
-<p>Kontroller at nextcloud kører ved at gå til adressen <span class="inl_cmd">https://10.0.2.10/nextcloud</span>:</p>
+<p>Kontroller at nextcloud kører ved at gå til adressen <span class="inl_cmd">https://192.168.0.10/nextcloud</span>:</p>
 
 <figure id="">
 
@@ -833,7 +749,7 @@ MariaDB [(none)]> <span class="red">exit</span>
 
 <h2>Konfigurer Nextcloud</h2>
 
-<p>Åbn Nextcloud i browseren på adressen: <span class="inl_cmd">https://10.0.2.10/nextcloud</span>. Første gang Nextcloud startes på skal admin kontoen konfigureres. Herunder er konfigurationssiden "klippet" over:</p>
+<p>Åbn Nextcloud i browseren på adressen: <span class="inl_cmd">https://192.168.0.10/nextcloud</span>. Første gang Nextcloud startes på skal admin kontoen konfigureres. Herunder er konfigurationssiden "klippet" over:</p>
 
 <span class="afsnit">Administrator konto</span>
 
@@ -940,6 +856,57 @@ MariaDB [(none)]> <span class="red">exit</span>
 
 </figure>
 
+<h2>Optimering af Nextcloud</h2>
+
+<span class="afsnit">Konfigurer datacache</span>
+
+<p>For at optimere data i nextcloud skal programmet PACu installeres:</p>
+
+<code class="cmd">sudo apt-get install php-apcu</code>
+
+<p>For at aktivere cachen skal linien <span class="inl_cmd">'memcache.local' => '\OC\Memcache\APCu',</span> indsættes i <span class="inl_cmd">/var/www/nextcloud/config/config.php</span></p>
+
+<code class="cmd">sudo nano /var/www/nextcloud/config/config.php</code>
+
+<pre class="black">
+<span class="green1">&lt;?php</span>
+$CONFIG = array (
+  'instanceid' => 'ocopuk8v1cp5',
+  'passwordsalt' => 'VvzYXbnqZRiv8fSS5NDE+zMgy6h8Uk',
+  'secret' => 'MoI6HPw1OjXv6+v5KKUgRVcnzaUQ8/4SQAwl0EfKH7ZqUOcb',
+  'trusted_domains' => 
+  array (
+    0 => '192.168.0.10',
+  ),
+  'datadirectory' => '/srv/nextcloudData',
+  'overwrite.cli.url' => 'http:<span class="blue1">//192.168.0.10/nextcloud',</span>
+  'dbtype' => 'mysql',
+  'version' => '9.0.52.0',
+  'dbname' => 'nextcloudDB',
+  'dbhost' => 'localhost',
+  'dbtableprefix' => 'oc_',
+  'dbuser' => 'nextcloud',
+  'dbpassword' => '123qwe',
+  'logtimezone' => 'UTC',
+  'installed' => true,
+<span class="red">  'memcache.local' => '\OC\Memcache\APCu',</span>
+);
+<span class="green1">?></span>
+</pre>
+
+<p>Indsæt herefter linien: <span class="inl_cmd">apc.enable_cli = 1</span> nedest i <span class="inl_cmd">/etc/php/7.0/apache2/php.ini</span></p>
+
+<code class="cmd">sudo nano /etc/php/7.0/apache2/php.ini</code>
+
+<pre class="black">
+....
+
+; Local Variables:
+; tab-width: 4
+; End:
+<span class="red">apc.enable_cli = 1</span>
+</pre>
+
 <span class="afsnit">Konfigurering af max filstørrelse</span>
 
 <p>Som standard er Nextcloud sat til at filer ikke må være større end 513 MB. Det kan være upraktisk hvis man f.eks. ønsker at bruge nextclouod til backup eller ISO-filer. For at ændre dette skal vi have ændret i den skjulte fil <span class="inl_cmd">.htaccess</span>, der ligger i Nextclouds webmappe <span class="inl_cmd">/var/www/nextcloud</span>.</p>
@@ -982,7 +949,7 @@ MariaDB [(none)]> <span class="red">exit</span>
 
 <code class="cmd">sudo systemctl restart apache2</code>
 
-<h2>Forstærk sikkerheden af Nextcloud</h2>
+<h2>Sæt sikkerheden</h2>
 
 <p>Som det er nu er sikkerheden på nextcloudfilerne sat rimeligt. Men for at de bliver så sikre som muligt skal der gøres en del arbejde. Hertil anvendes der et script, som er vist herunder:</p>
 
@@ -1004,7 +971,7 @@ datapath='/srv/nextcloudData' ### Tilføjet path til data
 ncpath='/var/www/nextcloud'
 htuser='www-data'
 htgroup='www-data'
-rootuser='root'
+rootuser='root' 
 
 printf "Creating possible missing Directories\n"
 #mkdir -p $ncpath/data
@@ -1082,6 +1049,8 @@ thoj@mainsrv:~$
 
 <h1>Wordpress</h1>
 
+<p>Wordpress er en meget populær CMS (<span class="bold">C</span>ontent <span class="bold">M</span>anagement <span class="bold">S</span>ystem, som gør det nemt at oprette en hjemmeside. Her vil vi installere Wordpress, så den overtager ens hjemmeside.</p>
+
 <p>Hent den nyeste version af wordpress</p>
 
 <code class="cmd">wget https://wordpress.org/latest.tar.gz</code>
@@ -1110,9 +1079,9 @@ drwxr-xr-x  5 thoj thoj     4096 jul  5 10:39 <span class="blue1">wordpress</spa
 
 <code class="cmd">sudo mkdir /var/www/html/wp-content/uploads</code>
 
-<p>Fjern index.html, som vi oprettede ovenfor</p>
+<p>Fjern index.html, som blev oprettet under installationen af Apache.</p>
 
-<code class="cmd">code rm index.html</code>
+<code class="cmd">sudo rm /var/www/html/index.html</code>
 
 <span class="afsnit">Midlertidige rettigehder</span>
 
@@ -1183,9 +1152,9 @@ thoj@mainsrv:~$
 
 <h2>Konfigurer Wordpress</h2>
 
-<p>Da vi har sat wordpress til at være roden på vores webserver, skal vi blot indtaste IP-adressen i browseren: <span class="inl_cmd">https://10.0.2.10/</span></p>
+<p>Da vi har sat wordpress til at være roden på vores webserver, skal vi blot indtaste IP-adressen i browseren: <span class="inl_cmd">https://192.168.0.10/</span></p>
 
-<p>Åbn Nextcloud i browseren på adressen: https://10.0.2.10/. Første gang Wordpress startes bliver man ført igennem konfigurationen. Herunder er vist og forklaret:</p>
+<p>Åbn Nextcloud i browseren på adressen: https://192.168.0.10/. Første gang Wordpress startes bliver man ført igennem konfigurationen. Herunder er vist og forklaret:</p>
 
 <span class="afsnit">Vælg sprog</span>
 
