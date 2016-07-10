@@ -324,7 +324,9 @@ Diskidentifikation: 0x00031198
 
 <p>Under første kørsel bliver det gjort med brugeren tj's rettigheder. Det medfører at <span class="inl_cmd">fdisk</span> ikke har ret til at kigge på harddiskens data. I det andet tilfælde "løfter" jeg rettighedsniveauet til <span class="inl_cmd">root</span>-niveau, som så giver mig de informationer jeg ønsker.</p>
 
-<p>Hvis der skal udføres meget administrationsarbejde vælger man ofte at bruge kommandoen <span class="inl_cmd">sudo su</span>. Denne kommando ændrer ens bruger til <span class="inl_cmd">root</span>:</p>
+<h2>root-shell</h2>
+
+<p>Hvis der skal udføres meget administrationsarbejde vælger man ofte at bruge kommandoen <span class="inl_cmd">sudo su</span>. Denne kommando ændrer ens bruger til <span class="inl_cmd">root</span>, og man får adgang til <span class="inl_cmd">root</span>-shell:</p>
 
 <pre class="ubuntu_terminal">
 <span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ sudo su
@@ -332,7 +334,12 @@ Diskidentifikation: 0x00031198
 root@thoj-VirtualBox:/home/tj# 
 </pre>
 
-<p>Denne kommando gør at filen /etc/network/interfaces bliver kørt i tekstredigeringsprogrammet nano med superbrugerrettigheder.</p>
+<p>Hvis man skal lave systemarbejde kan det nogle gange være optimalt at anvende <span class="inl_cmd">root</span>-shell. Der er to ting man skal være opmærksom på.</p>
+
+<ol class="">
+	<li>alle filer man opretter vil blive oprettet med root som ejer og gruppe.</li>
+	<li>Man kan alt ... også lave stor skade på sit system.</li>
+</ol>
 
 <table class="cmd_table">
 	<thead>
@@ -347,12 +354,12 @@ root@thoj-VirtualBox:/home/tj#
 			<td>Udfør kommandoen som superbruger</td>
 		</tr>
 		<tr>
-			<td>sudo su</td>
-			<td>Ændrer en til root bruger, så man ikke behøver at skrive sudo</td>
-		</tr>
-		<tr>
 			<td>gksudo</td>
 			<td>Starter GUI programmer op med superbrugerrettigheder</td>
+		</tr>
+		<tr>
+			<td>sudo su</td>
+			<td>Ændrer en til root bruger, så man ikke behøver at skrive sudo</td>
 		</tr>
 	</tbody>
 </table>
