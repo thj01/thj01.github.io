@@ -89,6 +89,10 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 			<td>Gennemgår apt og fjerner alle filer der ikke er i brug.</td>
 		</tr>
 		<tr>
+			<td>apt-get clean</td>
+			<td>Fjerner alle hentede pakker</td>
+		</tr>
+		<tr>
 			<td>dpkg --configure -a</td>
 			<td>Det sker at apt-get ikke kan anvendes fordi noget er låst (f.eks. hvis en proces er blevet afbrudt. Denne kommando reconfigurerer pakkesystemet.</td>
 		</tr>
@@ -105,7 +109,7 @@ http://manpages.ubuntu.com/manpages/trusty/en/man8/apt-get.8.html</a></p>
 
 <p>Det hænder at <span class="inl_cmd">apt</span> fejler. Når dette sker kan det være nødvendigt at få <span class="inl_cmd">apt</span> til at reconfigurere sig selv. Det gøres med kommandoen:</p>
 
-<code class="cmd">dpkg --configure -a</code>
+<code class="cmd">sudo dpkg --configure -a</code>
 
 <p>Når <span class="inl_cmd">apt</span> er geninitialiseret kan man genstarte processen med kommandoen, hvor -f står for "fix broken":</p>
 
@@ -115,15 +119,22 @@ http://manpages.ubuntu.com/manpages/trusty/en/man8/apt-get.8.html</a></p>
 
 <p>Generelt administreres tjenester på på Ubuntu med service kommandoen. Den fungerer efter nedestående skabelon:</p>
 
-<code class="cmd">service [tjeneste] {start|stop|reload|restart|force-reload|status}</code>
+<code class="cmd">systemctl {start|stop|reload|restart|force-reload|status} [tjeneste]</code>
 
 <p>Ønsker du f.eks. at genstarte <span class="cmd_inl">bind9</span> tjenesten gøres det med kommandoen:</p>
 
-<code class="cmd">service bind9 restart</code>
+<code class="cmd">systemctl restart bind9</code>
 
 <p>For at tjekke om en tjeneste kører</p>
 
-<code class="cmd">service bind9 status</code>
+<code class="cmd">systemctl status bind9</code>
+
+<pre class="ubuntu_terminal">
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ systemctl status bind9
+● bind9.service
+   Loaded: not-found (Reason: No such file or directory)
+   Active: inactive (dead)
+</pre>
 
 <p>man-page: <span class="inl_cmd">service</span>
 <a href="http://manpages.ubuntu.com/manpages/trusty/en/man8/service.8.html" target="_blank">

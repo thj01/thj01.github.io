@@ -61,12 +61,11 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 </figure>
 
-<p>Her vil vi lave følgende opsætning ved hjælp af LVM.</p>
+<p>Her vil vi lave følgende opsætning ved hjælp to fysiske harddiske (Physical Volumes) på 100GB, som vi lægger i .</p>
 
 <table class="">
 	<thead>
 		<tr>
-			<th>Harddiske <br/>Physical Volumes - PV</th>
 			<th>LVM - gruppe <br/>Volume Groups - VG</th>
 			<th>Logiske grupper <br/>Logical Volumes - LV</th>
 			<th>Størrelse</th>
@@ -76,10 +75,9 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 	</thead>
 	<tbody>
 		<tr>
-			<td rowspan="3"><br/><br/><br/><span class="inl_cmd">/dev/sda</span>  (100GB)</td>
-			<td rowspan="6"><br/><br/><br/><br/><br/><br/><span class="afsnit">Arkiv01</span></td>
+			<td rowspan="5"><br/><br/><br/><br/><span class="afsnit">Arkiv01</span></td>
 			<td>system</td>
-			<td>10 GB</td>
+			<td>20 GB</td>
 			<td><span class="inl_cmd">/</span></td>
 			<td>System</td>
 		</tr>
@@ -91,16 +89,9 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 		</tr>
 		<tr>
 			<td>data</td>
-			<td>30 GB</td>
+			<td>40 GB</td>
 			<td><span class="inl_cmd">/data</span></td>
 			<td>backup og dokumentation</td>
-		</tr>
-		<tr>
-			<td rowspan="3"><br/><br/><span class="inl_cmd">/dev/sdb</span> (100GB)</td>			
-			<td>web</td>
-			<td>8 GB</td>
-			<td><span class="inl_cmd">/var/www</span></td>
-			<td>Placering af hjemmeside</td>
 		</tr>
 		<tr>
 			<td>swap</td>
@@ -110,7 +101,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 		</tr>
 		<tr>
 			<td>-</td>
-			<td>31 GB</td>
+			<td>19 GB</td>
 			<td>-</td>
 			<td>FRI</td>
 		</tr>
@@ -124,8 +115,8 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 <ol class="">
 	<li>Klargøre harddiskene</li>
 	<li>Lave en VG (Volume group) af vores to harddiske - <span class="bold">arkiv01</span></li>
-	<li>Oprette de 6 LG'er (Logical Volumes)</li>
-	<li>Montere de 6 LG'er</li>
+	<li>Oprette de 4 LV'er (Logical Volumes)</li>
+	<li>Montere de 4 LV'er</li>
 </ol>
 
 <p>Vælg <span class="terminal_valg2">Manuelt</span> som partitioneringsmetode</p>
@@ -243,8 +234,6 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 <table class="">
 	<thead>
 		<tr>
-			<th>Harddiske <br/>Physical Volumes - PV</th>
-			<th>LVM - gruppe <br/>Volume Groups - VG</th>
 			<th>Logiske grupper <br/>Logical Volumes - LV</th>
 			<th>Størrelse</th>
 			<th>Monteringspunkt</th>
@@ -253,10 +242,8 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 	</thead>
 	<tbody>
 		<tr>
-			<td rowspan="5"><span class="inl_cmd">/dev/sda</span> <br/><br/><span class="inl_cmd">/dev/sdb</span></td>
-			<td rowspan="5">arkiv01</td>
 			<td>system</td>
-			<td>10 GB</td>
+			<td>20 GB</td>
 			<td><span class="inl_cmd">/</span></td>
 			<td>System</td>
 		</tr>
@@ -268,21 +255,21 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 		</tr>
 		<tr>
 			<td>data</td>
-			<td>30 GB</td>
+			<td>40 GB</td>
 			<td><span class="inl_cmd">/data</span></td>
 			<td>backup og dokumentation</td>
-		</tr>
-		<tr>
-			<td>web</td>
-			<td>8 GB</td>
-			<td><span class="inl_cmd">/var/www</span></td>
-			<td>Placering af hjemmeside</td>
 		</tr>
 		<tr>
 			<td>swap</td>
 			<td>1 GB</td>
 			<td><span class="inl_cmd">swap</span></td>
 			<td>swap drev</td>
+		</tr>
+		<tr>
+			<td>-</td>
+			<td>19 GB</td>
+			<td>-</td>
+			<td>FRI</td>
 		</tr>
 
 	</tbody>
@@ -318,7 +305,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 </figure>
 
-<p>Sæt størrelsen, her <span class="inl_cmd">10G</span> (10 GigaByte) og vælg <span class="terminal_valg">Fortsæt</span></p>
+<p>Sæt størrelsen, her <span class="inl_cmd">20G</span> (10 GigaByte) og vælg <span class="terminal_valg">Fortsæt</span></p>
 
 <figure id="">
 
@@ -354,7 +341,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 </figure>
 
-<p>Fortsæt med at oprette resten: <span class="inl_cmd">server, data, wab, swap</span> og tjek at du har gjort det korrekt ved at anvende <span class="terminal_valg2">Vis opsætningsdetaljer</span>.</p>
+<p>Fortsæt med at oprette resten: <span class="inl_cmd">server</span>, <span class="inl_cmd">data</span> og <span class="inl_cmd">swap</span>. Tjek at du har gjort det korrekt ved at anvende <br/><span class="terminal_valg2">Vis opsætningsdetaljer</span>. Læg mærke til at de bliver vist i alfabetisk orden og ikke den rækkefølge du har oprettet dem i.</p>
 
 <figure id="">
 

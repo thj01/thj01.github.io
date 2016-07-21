@@ -56,27 +56,62 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <pre class="ubuntu_terminal">
 <span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ifconfig
-eth0      Link encap:Ethernet  HWaddr 08:00:27:99:37:e3  
-<span class="red">          inet addr:10.0.2.15  Bcast:10.0.2.255  Mask:255.255.255.0</span>
-          inet6 addr: fe80::a00:27ff:fe99:37e3/64 Scope:Link
-          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
-          RX packets:825 errors:0 dropped:0 overruns:0 frame:0
-          TX packets:663 errors:0 dropped:0 overruns:0 carrier:0
+enp1s0    Link encap:Ethernet  HWaddr a0:8c:fd:XX:XX:XX  
+          UP BROADCAST MULTICAST  MTU:1500  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
           collisions:0 txqueuelen:1000 
-          RX bytes:418700 (418.7 KB)  TX bytes:52990 (52.9 KB)
+          RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)
 
 lo        Link encap:Local Loopback  
           inet addr:127.0.0.1  Mask:255.0.0.0
           inet6 addr: ::1/128 Scope:Host
           UP LOOPBACK RUNNING  MTU:65536  Metric:1
-          RX packets:208 errors:0 dropped:0 overruns:0 frame:0
-          TX packets:208 errors:0 dropped:0 overruns:0 carrier:0
-          collisions:0 txqueuelen:0 
-          RX bytes:18230 (18.2 KB)  TX bytes:18230 (18.2 KB)
+          RX packets:524 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:524 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1 
+          RX bytes:64917 (64.9 KB)  TX bytes:64917 (64.9 KB)
 
+wlp2s0    Link encap:Ethernet  HWaddr ac:2b:6e:XX:XX:XX  
+<span class="red">          inet addr:192.168.0.77  Bcast:192.168.0.255  Mask:255.255.255.0</span>
+          inet6 addr: fe80::c5cb:44c8:aeac:2770/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:11419 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:7378 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:11252135 (11.2 MB)  TX bytes:1464678 (1.4 MB)
 </pre>
 
-<p>Her kan vi se der er to netværkskort: <span class="inl_cmd">eth0</span> og <span class="inl_cmd">io</span>. Hvis du kører Ubuntu på en bærbar med WiFi hedder den første <span class="inl_cmd">wlan0</span>. Den linie du især skal lægge mærke til er den jeg har markeret med rødt. Den linie fortæller alt hvad din computer har brug for, for at kunne identificeres korrekt på nettet.</p>
+<table class="">
+	<thead>
+		<tr>
+			<th>Netkort</th>
+			<th>Forklaring</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>enp1s0</td>
+			<td>Det kablede netværkskort. På denne computer er det ikke forbundet.</td>
+		</tr>
+		<tr>
+			<td>Io</td>
+			<td>Dette netkort kaldes <span class="inl_cmd">local loopback</span>. Det er et virtuelt netværkskort som Ubuntu bruger som sit interne netværk. Hvis du f.eks. har installeret en webserver på din egen maskine kan du tilgå det med adressen: <span class="inl_cmd">127.0.0.1</span></td>
+		</tr>
+		<tr>
+			<td>wlp2s0</td>
+			<td>Computerens WiFi netkort. I det tilfælde har det fået adressen 192.168.0.77 (markeret med rødt</td>
+		</tr>
+	</tbody>
+</table>
+
+<span class="afsnit">HWadrr - MAC-adresser</span>
+
+<p>Læg mærke til at netværkskortene har en <span class="inl_cmd">HWaddr</span>. Det kaldes en MAC adresse. Denne adresse er netværkskortets fysiske adresse og er unik. Mac-adressen bruges til at indentificere netværkskortet på nettet og denne information bliver altid medsendt..MAC-adressen fortæller hvem der har produceret kortet og hvilket kort det er (P = Producenten / S = serienummer):</p>
+
+<code class="cmd">PP:PP:PP:SS:SS:SS</code>
+
+<p>Jeg har sat X'er ind på de 3 sidste pladser. Det skyldes at jeg ikke ønsker at andre skal kende mine netværkskorts fysiske denne adresser. Men af mine data kan man læse at <span class="inl_cmd">enp1s0</span> (<span class="inl_cmd">A0:8C:FD</span>) er produceceret af Hewlett Packard  og <span class="inl_cmd">wlp2s0</span> (<span class="inl_cmd">ac:2b:6e</span>) af Intel</p>
 
 <h2>Konfigurer netværkskortet</h2>
 
@@ -169,47 +204,33 @@ http://manpages.ubuntu.com/manpages/trusty/en/man8/ping.8.html</a></p>
 
 <p>DNS serveren sørger for at man kan anvende navne på nettet i stedeet for IP-adresser. For at finde den DNS computeren er tilstluttet anvendes følgende kommando: </p>
 
-<code class="cmd">nmcli dev list iface *netværkskort* | grep IP4</code>
-
-<p>Du kan se fra <span class="inl_cmd">ifconfig</span> kommandoen hvad der skal stå i stedet for *netværkskort*. I mit tilfælde <span class="inl_cmd">eth0</span>. DNS serveren er den der heder <span class="inl_cmd">IP4.DNS[1]</span>.</p>
+<code class="cmd">nmcli dev show | grep DNS</code>
 
 <pre class="ubuntu_terminal">
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ sudo nmcli dev list iface eth0 | grep IP4
-[sudo] password for tj: 
-<span class="red">IP4</span>.ADRESSE[1]:                         ip = 10.0.2.15/24, gw = 10.0.2.2
-<span class="red">IP4</span>.DNS[1]:                             10.0.2.3
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ nmcli dev show | grep DNS
+IP4.<span class="red">DNS</span>[1]:                             193.162.153.164
+IP4.<span class="red">DNS</span>[2]:                             194.239.134.83
 </pre>
 
-<p>Et <span class="inl_cmd">nslookup</span> på denne adresse giver følgende:</p>
+<p>Nu kan vi undersøge de to DNS adresser ved hjælp af <span class="inl_cmd">nslookup</span></p>
 
-<code class="cmd">nslookup 10.0.2.3</code>
+<code class="cmd">nslookup 193.162.153.164</code>
 
-
-<pre class="ubuntu_terminal">
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ nslookup 10.0.2.3
-Server:		127.0.1.1
-Address:	127.0.1.1#53
-
-** server can't find 3.2.0.10.in-addr.arpa: NXDOMAIN
-</pre>
-
-<p>Det ovenstående output et meget minimalistisk. Det skyldes at Virtualbox kun har en meget minimalistisk DNS tjeneste kørende. Modsat mit rigtige system, der tager fat i Yousee's DNS servere. De samme opslag på min computer giver følgende:</p>
+<p>De interessante oplysninger er markeret med rødt.</p>
 
 <pre class="ubuntu_terminal">
-thoj@thoj-Precision-M4800:~$ nmcli dev list iface wlan0 | grep IP4
-<span class="red">IP4</span>.ADRESSE[1]:                         ip = 192.168.0.56/24, gw = 192.168.0.1
-<span class="red">IP4</span>.DNS[1]:                             193.162.153.164
-<span class="red">IP4</span>.DNS[2]:                             194.239.134.83
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ nslookup 192.162.153.164
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ nslookup 193.162.153.164
 Server:		127.0.1.1
 Address:	127.0.1.1#53
 
 Non-authoritative answer:
-164.153.162.192.in-addr.arpa	name = ip-192-162-153-164.cyberlan.com.ua.
+164.153.162.193.in-addr.arpa	name = ns3.inet.tele.dk.
 
 Authoritative answers can be found from:
-153.162.192.in-addr.arpa	nameserver = ns1.cyberlan.com.ua.
-153.162.192.in-addr.arpa	nameserver = ns2.syndicate.net.ua.
+153.162.193.in-addr.arpa	nameserver = ns01.tdchosting.dk.
+153.162.193.in-addr.arpa	nameserver = ns02.tdchosting.dk.
+<span class="red">ns01.tdchosting.dk	internet address = 62.243.74.198
+ns02.tdchosting.dk	internet address = 92.43.121.6</span>
 </pre>
 
 <p>man-page: <span class="inl_cmd">nslookup</span>
@@ -222,77 +243,61 @@ Authoritative answers can be found from:
 
 <p>Kommandoen er:</p>
 
-<code class="cmd">mtr [--report] www.dr.dk</code>
+<code class="cmd">mtr -rw www.dr.dk</code>
 
-<p>	Det er valgfrit at indsætte <span class="inl_cmd">--report</span> i kommandoen. --report venter med at lave et output til det har kørt 10 omgange. </p>
+<p>Ved at indsætte <span class="inl_cmd">-rw</span> i kommandoen venter <span class="inl_cmd">mtr</span> med at lave et output til det har kørt 10 omgange. </p>
 
 <pre class="ubuntu_terminal">
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ mtr --report dr.dk
-Start: Sat Mar 19 00:23:28 2016
-HOST: thoj-VirtualBox             Loss%   Snt   Last   Avg  Best  Wrst StDev
-  1.|-- 10.0.2.2                   0.0%    10    0.5   0.4   0.2   0.6   0.0
-  2.|-- 192.168.0.1                0.0%    10    1.6   6.8   1.4  52.9  16.2
-  3.|-- ???                       100.0    10    0.0   0.0   0.0   0.0   0.0
-  4.|-- ae11-100.odttv1nqe10.dk.i  0.0%    10   13.1  20.9  10.3 108.4  30.7
-  5.|-- ae1-0.alb2nqp7.dk.ip.tdc.  0.0%    10   34.3  23.0  11.2  56.2  14.1
-  6.|-- 194.19.204.22              0.0%    10  103.1  37.5  13.4 103.1  38.2
-  7.|-- 0xc213cf12.linknet.dk.tel  0.0%    10   14.4  15.3  13.6  17.6   0.9
-  8.|-- 159.20.6.38                0.0%    10   77.4  27.8  12.1  77.4  21.6
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ mtr -rw dr.dk
+Start: Sun Jul 10 16:58:20 2016
+HOST: tj-HP-ProBook-450-G3            Loss%   Snt   Last   Avg  Best  Wrst StDev
+  1.|-- 192.168.0.1                      0.0%    10    1.5   1.9   1.2   4.1   0.7
+  2.|-- 10.29.0.1                        0.0%    10    9.4  18.5   8.3 101.7  29.2
+  3.|-- ae11-100.odnqe10.dk.ip.tdc.net   0.0%    10    8.5   9.3   8.0  12.1   1.0
+  4.|-- ae1-0.alb2nqp7.dk.ip.tdc.net     0.0%    10   11.9  11.7  10.7  12.9   0.5
+  5.|-- 194.19.204.22                    0.0%    10   13.2  14.7  12.9  17.4   1.3
+  6.|-- 0xc213cf12.linknet.dk.telia.net  0.0%    10   44.5  20.2  12.1  44.5  10.7
+  7.|-- 159.20.6.38                      0.0%    10   28.6  20.9  12.4  67.4  17.0
+
 </pre>
 
-<table class="cmd_table">
-	<thead>
-		<tr>
-			<th></th>
-			<th></th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>mtr -n dr.dk</td>
-			<td>Viser IP-adresserne på routen og ikke deres DNS-opløste navne</td>
-		</tr>
-		<tr>
-			<td>mtr -c 4 --report dr.dk</td>
-			<td>Kører kun fire gennemgange før der kommer output. Uden <span class="inl_cmd">-c</span> kører kommandoen 10 gange.</td>
-		</tr>
-	</tbody>
-</table>
+<p>Kører man kommandoen uden <span class="inl_cmd">-rw</span>, så vil kommandoen fortsætte med at køre indtil den bliver afbrudt med <kbd>Ctrl</kbd>+<kbd>c</kbd>. </p>
+
+<p>Køres kommandoen med <span class="inl_cmd">n</span> som en ekstra option, så vises IP-adresserne fremfor de DNS-opløste navne:</p>
+
+<pre class="ubuntu_terminal">
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ mtr -rwn dr.dk
+Start: Sun Jul 10 17:02:55 2016
+HOST: tj-HP-ProBook-450-G3 Loss%   Snt   Last   Avg  Best  Wrst StDev
+  1.|-- 192.168.0.1           0.0%    10    1.7   1.9   1.0   5.1   1.1
+  2.|-- 10.29.0.1             0.0%    10    8.6   9.1   7.5  12.5   1.3
+  3.|-- 94.189.51.70          0.0%    10   12.4  10.6   8.4  16.6   2.3
+  4.|-- 83.88.21.83           0.0%    10   13.6  16.9  10.5  58.7  14.9
+  5.|-- 194.19.204.22         0.0%    10   14.8  14.5  12.6  17.6   1.3
+  6.|-- 194.19.207.18         0.0%    10   14.5  14.3  12.8  16.0   0.7
+  7.|-- 159.20.6.38           0.0%    10   13.1  14.3  12.6  20.3   2.1
+</pre>
 
 <p>man-page : <span class="inl_cmd">mtr</span>
 <a href="http://manpages.ubuntu.com/manpages/trusty/en/man8/mtr.8.html" target="_blank">
 http://manpages.ubuntu.com/manpages/trusty/en/man8/mtr.8.html</a></p>
 
-<h2><span class="inl_cmd">nmap</span></h2>
+<h1><span class="inl_cmd">nmap</span> skanning af netværk</h1>
 
 <p><span class="inl_cmd">nmap</span> installeres med følgende kommandoen.</p>
 
 <code class="cmd">apt-get install nmap -y</code>
 
-<p><span class="inl_cmd">nmap</span> kan bruges til at scanne et netværk for åbne porte ved at angive IP adressen:</p>
+<p><span class="inl_cmd">nmap</span> anvendes til at scanne netværk for åbne porte f.eks:</p>
 
-<code class="cmd">nmap *IP-adresse*/*Internet_adresse*</code>
-
-<pre class="ubuntu_terminal">
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ nmap 10.0.2.15
-
-Starting Nmap 6.40 ( http://nmap.org ) at 2016-03-19 00:36 CET
-Nmap scan report for 10.0.2.15
-Host is up (0.00012s latency).
-All 1000 scanned ports on 10.0.2.15 are closed
-
-Nmap done: 1 IP address (1 host up) scanned in 0.06 seconds
-
-</pre>
-
-<p><span class="inl_cmd">nmap</span> kan også anvendes til at scanne computere på nettet, her dr.dk</p>
+<code class="cmd">nmap dr.dk</code>
 
 <pre class="ubuntu_terminal">
 <span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ nmap dr.dk
 
-Starting Nmap 6.40 ( http://nmap.org ) at 2016-03-19 00:37 CET
+Starting Nmap 7.01 ( https://nmap.org ) at 2016-07-10 17:08 CEST
 Nmap scan report for dr.dk (159.20.6.38)
-Host is up (0.022s latency).
+Host is up (0.018s latency).
 Not shown: 998 filtered ports
 PORT    STATE SERVICE
 80/tcp  open  http
@@ -301,28 +306,69 @@ PORT    STATE SERVICE
 Nmap done: 1 IP address (1 host up) scanned in 7.48 seconds
 </pre>
 
-<p>Det viser at Danmarks Radio har sat deres server fornuftigt op, da den kun har to porte åben udadtil.</p>
+<p>Her kan vi se at <span class="inl_cmd">dr.dk</span> har 2 porte åbne: <span class="inl_cmd">80</span> g <span class="inl_cmd">443</span>. Det er de to porte som anvendes til hjemmesider, så de har sikkerheden i top.</p>
 
-<p>nmap kan også anvendes til følgende:</p>
+<p>En skanning på min lokale computer giver nedestående og viser at min computer ikke har nogle porte åbne.</p>
 
-<p>Scanne hele subnet (her <span class="inl_cmd">10.0.2.0/24)</span>:</p>
+<pre class="ubuntu_terminal">
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ nmap localhost
 
-<code class="cmd">nmap 10.0.2.0/24</code>
+Starting Nmap 7.01 ( https://nmap.org ) at 2016-07-10 17:10 CEST
+Nmap scan report for localhost (127.0.0.1)
+Host is up (0.000039s latency).
+All 1000 scanned ports on localhost (127.0.0.1) are closed
 
-<p>Scanne en del af et subnet (jer <span class="inl_cmd">10.0.2.10-50</span>):</p>
+Nmap done: 1 IP address (1 host up) scanned in 0.04 seconds
+</pre>
 
-<code class="cmd">nmap 10.0.2.10-50</code>
+<span class="afsnit">Skanning af hele eller dele af subnet</span>
+
+<p>For at skanne en del af ens subnet angiver man de adresser man ønsker der skal skannes. Her adresserne fra <span class="inl_cmd">192.168.0.1</span> - <span class="inl_cmd">192.168.0.49</span></p>
+
+<pre class="ubuntu_terminal">
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$  nmap 192.168.0.1-49
+
+Starting Nmap 7.01 ( https://nmap.org ) at 2016-07-10 17:16 CEST
+Nmap scan report for 192.168.0.1
+Host is up (0.016s latency).
+Not shown: 996 filtered ports
+PORT     STATE  SERVICE
+23/tcp   closed telnet
+80/tcp   open   http
+1900/tcp closed upnp
+8080/tcp closed http-proxy
+
+Nmap scan report for 192.168.0.10
+Host is up (0.0026s latency).
+Not shown: 996 closed ports
+PORT    STATE SERVICE
+21/tcp  open  ftp
+22/tcp  open  ssh
+80/tcp  open  http
+443/tcp open  https
+
+Nmap done: 49 IP addresses (2 hosts up) scanned in 5.59 seconds
+</pre>
+
+<p>Det man ser herover er routeren (<span class="inl_cmd">192.168.0.1</span>) og en lokal server</p>
+
+<p>På samme måde kan man skanne et helt netværk</p>
+
+<code class="cmd">nmap 192.168.0.0/24</code>
+
+<span class="afsnit">Finde aktive computere</span>
+
+<code class="cmd">nmap 192.168.0.0/24 | grep "Nmap scan report"</code>
 
 <p>Nmap kan også anvendes til at finde alle aktive computere på et subnet med kommandoen:</p>
 
 <code class="cmd">nmap 10.0.2.0/24 | grep "Nmap scan report"</code>
 
 <pre class="ubuntu_terminal">
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ nmap 10.0.2.0/24 | grep "Nmap scan report"
-<span class="red">Nmap scan report</span> for 10.0.2.2
-<span class="red">Nmap scan report</span> for 10.0.2.3
-<span class="red">Nmap scan report</span> for 10.0.2.4
-<span class="red">Nmap scan report</span> for 10.0.2.15
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ nmap 192.168.0.0/24 | grep "Nmap scan report"
+<span class="red">Nmap scan report</span> for 192.168.0.1
+<span class="red">Nmap scan report</span> for 192.168.0.10
+<span class="red">Nmap scan report</span> for 192.168.0.77
 </pre>
 
 <p>man-page: <span class="inl_cmd">nmap</span>

@@ -418,63 +418,6 @@ http://manpages.ubuntu.com/manpages/trusty/man1/chown.1.html</a></p>
 <a href="http://manpages.ubuntu.com/manpages/trusty/man1/chmod.1.html" target="_blank">
 http://manpages.ubuntu.com/manpages/trusty/man1/chmod.1.html</a></p>
 
-<h2><span class="inl_cmd">chmod</span> - med bogstaver</h2>
-
-<p><span class="bold">NOTE</span>: Dette afsnit er medtaget, da man stadig finder guides på nettet der anvender denne metode. Jeg synes dog at den er for omstændig og kan hurtig blive uoverskuelig.</p>
-
-<p>Rettigheder sættes ved at angive hvem og hvilke rettigheder det handler om efter følgende skema. Det kan gøres på to måder: Med bogstaver og med tal.</p>
-
-<table class="">
-	<tbody>
-		<tr>
-			<td>u</td>
-			<td>Bruger (user)</td>
-			<td>Ejerens rettigheder</td>
-		</tr>
-		<tr>
-			<td>g</td>
-			<td>Gruppe (group)</td>
-			<td>Gruppens rettigheder</td>
-		</tr>
-		<tr>
-			<td>o</td>
-			<td>Andre (others)</td>
-			<td>Rettigheder der gælder alle.</td>
-		</tr>
-		<tr>
-			<td>a</td>
-			<td>Alle (all)</td>
-			<td>Alle ovenstående. ved at bruge a giver man alle samme rettigheder</td>
-		</tr>
-	</tbody>
-</table>
-
-<p><span class="inl_cmd">+</span> tilføjer rettigheder, <span class="inl_cmd">-</span> trækker fra og <span class="inl_cmd">=</span> sætter dem lig med, som du kan se i eksemplerne herunder.</p>
-
-<table class="cmd_table">
-	<thead>
-		<tr>
-			<th></th>
-			<th></th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>chmod o+rw testfil</td>
-			<td>Giver andre skrive og læse rettigheder til testfil</td>
-		</tr>
-		<tr>
-			<td>chmod go= testfil</td>
-			<td>Fjerner alle rettigheder fra gruppen og andre</td>
-		</tr>
-		<tr>
-			<td>chmod -R ug+rw /data</td>
-			<td>Giver brugeren og gruppen læse og skrive rettigheder til alle filer og undermapper i <span class="cmd">/data</span></td>
-		</tr>
-	</tbody>
-</table>
-
-
 <h1>Brugere og grupper</h1>
 
 <p>Alle rettigheder i Linux er sat ud fra ejerskab. Tilgængeligheden af filer, mapper og enheder bliver styret af disse brugerrettigigheder </p>
@@ -532,7 +475,7 @@ http://manpages.ubuntu.com/manpages/trusty/en/man8/deluser.8.html</a></p>
 
 <h2><span class="inl_cmd">useradd</span></h2>
 
-<p>Når man anvender <span class="inl_cmd">userad</span> er det egentlig en scriptfil der arbejder med kommandoen <span class="inl_cmd">useradd</span>. <span class="inl_cmd">useradd</span> giver mulighed for at man kan sætte en bruger op i detaljer med en længere kommando. Kommanden anvendes ved at man tilføjer konfigurationen bagefter. Man skal huske at tilføje et password til brugeren bagefter. Se følgende eksempel:</p>
+<p>Når man anvender <span class="inl_cmd">adduser</span> er det egentlig en scriptfil der arbejder med kommandoen <span class="inl_cmd">useradd</span>. <span class="inl_cmd">useradd</span> giver mulighed for at man kan sætte en bruger op i detaljer med en længere kommando. Kommanden anvendes ved at man tilføjer konfigurationen bagefter. Man skal huske at tilføje et password til brugeren bagefter. Se følgende eksempel:</p>
 
 <code class="cmd">sudo useradd -d /home/testuser2 -m testuser2 -u 2010 -s /bin/bash</code>
 
@@ -778,7 +721,14 @@ root@thoj-VirtualBox:~#
 
 <p>Hvis man tilføjer en bruger gennem en terminal der er startet på en desktop skal man genstarte GUI'en, dvs. logge af og på igen. Det skyldes at GUI terminalen kører under samme session som GUI'en. For at genindlæse rettigheder osv. bliver man altså nød til at logge af og på igen.</p>
 
+<p>For at se hvilke brugere der tilhører <span class="inl_cmd">sudo</span> gruppen kan du køre:</p>
 
+<code class="cmd">cat /etc/group | grep sudo</code>
+
+<pre class="ubuntu_terminal">
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ cat /etc/group | grep sudo
+<span class="red">sudo</span>:x:27:thoj
+</pre>
 
 <p></p>
 <p></p>
