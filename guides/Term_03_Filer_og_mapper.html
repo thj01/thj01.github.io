@@ -395,7 +395,9 @@ hejsa root
 
 <h2><span class="inl_cmd">sed</span> - Erstat indhold i filer</h2>
 
-<p><span class="inl_cmd">sed</span> anvendes til at filtrere og transformere tekst i filer. Her vil vi kun se hvordan vi kan erstatte tekst ved hjælp af <span class="inl_cmd">sed</span>.</p>
+p><span class="inl_cmd">sed</span> anvendes til at filtrere og transformere tekst i filer. Her vil vi kun se hvordan vi kan erstatte tekst ved hjælp af <span class="inl_cmd">sed</span>. Generelt fungerer kommandoen på følgende måde hvis man vil erstatte <span class="inl_cmd">a</span> med <span class="inl_cmd">b</span>:</p>
+
+<code class="cmd">sed -i s,a,b,</code>
 
 <ol class="disc">
 	<li>Opret <span class="inl_cmd">sedfil</span></li>
@@ -408,7 +410,7 @@ hejsa root
 	
 	<li>Erstat <span class="inl_cmd">Kurt-Georg</span> med dit eget navn</li>
 	
-	<code class="cmd">sed -i s/Kurt-Georg/Thomas/ sedfil</code>
+	<code class="cmd">sed -i s,Kurt-Georg,Thomas, sedfil</code>
 	
 </ol>
 
@@ -417,10 +419,14 @@ hejsa root
 <span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ echo 'Mit navn er Kurt-Georg' > sedfil
 <span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ cat sedfil
 Mit navn er Kurt-Georg
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ sed -i s/Kurt-Georg/Thomas/ sedfil 
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ sed -i s,Kurt-Georg,Thomas, sedfil 
 <span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ cat sedfil
 Mit navn er Thomas
 </pre>
+
+<p>Hvis du kommer i en situation, hvor du skal indsætte kommaer (<span class="inl_cmd">,</span>) i teksten kan du bruge <span class="inl_cmd">/</span> som separator.</p>
+
+<code class="cmd">sed -i s/a/b/</code>
 
 <p><span class="inl_cmd">sed</span> er velegnet til at bruge i scripts.</p>
 
