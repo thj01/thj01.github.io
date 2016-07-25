@@ -47,6 +47,37 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <p>En filserver er en computer der giver netværkets computere mulighed for at gemme eller hente filer. Det kan den gøre ved give alle adgang eller styre det ved hjælp af rettigheder. Det kan både være på bruger og/eller maskinniveau.</p>
 
+<p>Denne guide sigter mod et simpelt hjemmenetværk med få brugere, og hvor brugeropsætning skal foregå på de enkelte maskiner</p>
+
+<p>Ubuntuserveren er sat op på følgende netværk:</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Netværk</td>
+			<td>192.168.0.0/24</td>
+		</tr>
+		<tr>
+			<td>server IP</td>
+			<td>192.168.0.10</td>
+		</tr>
+		<tr>
+			<td>Klient IP</td>
+			<td>DHCP</td>
+		</tr>
+		<tr>
+			<td>Windows - workgroup (kun SAMBA/CIFS)</td>
+			<td>HOMENETWORK</td>
+		</tr>
+	</tbody>
+</table>
+
 <p>I denne guide vil det blive gennemgået hvordan man deler filer på et Linux system ved hjælp af NFS og SAMBA/CIFS.</p>
 
 <span class="afsnit">NFS</span>
@@ -65,7 +96,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <h2>Praktisk</h2>
 
-<p>Til ver af protokollerne vil der blive lavet følgende:</p>
+<p>Til hver af protokollerne vil der blive lavet følgende:</p>
 
 <table class="">
 	<thead>
@@ -107,115 +138,82 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <p>Jeg vælger at lægge brugernes private filer i samme mappe som alle de andre. Det er for at gøre det nemmere at have overblik og lave backup. Har man derudover valgt at installere med LVM, så vil man løbende kunne udvide <span class="inl_cmd">/srv</span> partitionen når der er behov for det</p>
 
-<p>For at give en praktisk ramme for dette dokument vil vi skabe rammerne for en mindre IT virksomhed. Virksomheden er ejet af Lars Thomson består af fire personer. Der skal laves 4 mapper: regnskab, it, salg og alle. Alle mapperne vil blive lagt i <span class="inl_cmd">/srv/firma</span></p>
+<p>For at eksemplificere opretter vi en familie med forældrene <span class="inl_cmd">hans</span> og <span class="inl_cmd">grethe</span> samt barnet <span class="inl_cmd">klaus</span>. Forældrene er medlemme er gruppen <span class="inl_cmd">parents</span>.</p>
 
-<p>For at skabe et overblik over mappestrukturen og deres tilladelser er der lavet følgende matrix, som vil blive anvendt igennem denne guide.</p>
+<p>Da der skal laves en del systemarbejde vælger jeg at skifte til root-shell. Det er for at undgå at skulle skrive <span class="inl_cmd">sudo</span> foran alle kommandoerne.</p>
 
+<code class="cmd">sudo su</code>
 
+<pre class="ubuntu_terminal">
+thoj@mainsrv:~$ sudo su
+[sudo] adgangskode for thoj: 
+root@mainsrv:/home/thoj#
+</pre>
 
-<p>Derudover gælder der følgende for netværket:</p>
+<h2>Oprettelse brugere</h2>
 
-<table class="">
-	<tbody>
-		<tr>
-			<td>Netværk</td>
-			<td>192.168.0.0/24</td>
-		</tr>
-		<tr>
-			<td>server IP</td>
-			<td>192.168.0.10</td>
-		</tr>
-		<tr>
-			<td>Klient IP</td>
-			<td>DHCP</td>
-		</tr>
-		<tr>
-			<td>Windows - workgroup (kun SAMBA/CIFS)</td>
-			<td>THOJNETWORK</td>
-		</tr>
-	</tbody>
-</table>
-
-<h2>Oprettelse og konfiguration af brugere</h2>
-
-<p>Tilføj brugere</p>
+<p>Herunder opretter vi brugerne på systemet. Ved at anvende <span class="inl_cmd">useradd</span> kan vi konfigurere brugeren med det samme. Bl.a. opretter vi ikke nogen hjemmemappe til brugerne, da de ikke har brug for den, og de får heller ikke adgang til selve system, da de ikke kan åbne en shell.</p>
 	
-<code class="cmd">adduser lath</code>
-<code class="more_cmd">adduser hafe</code>
-<code class="more_cmd">adduser vibo</code>
-<code class="more_cmd">adduser mecu</code>
+<code class="cmd">sudo useradd -M -u 2010 -s /bin/false hans</code>
+<code class="more_cmd">sudo useradd -M -u 2011 -s /bin/false grethe</code>
+<code class="more_cmd">sudo useradd -M -u 2012 -s /bin/false klaus</code>
 
 <p>Kontroller at de er oprettet korrekt. De nye brugere er blevet oprettet i bunden af filen <span class="inl_cmd">/etc/passwd</span></p>
 
-<code class="cmd">tail -4 /etc/passwd</code>
+<code class="cmd">tail -3 /etc/passwd</code>
 
 <pre class="ubuntu_terminal">
-root@tjmainsrv:/home/thoj# tail -4 /etc/passwd
-lath:x:<span class="red">1004</span>:1004:Lars Thomsen,,,:/home/lath:/bin/bash
-hafe:x:<span class="red">1005</span>:1005:Hanne Fermi,,,:/home/hafe:/bin/bash
-vibo:x:<span class="red">1006</span>:1006:Victor Bohr,,,:/home/vibo:/bin/bash
-mecu:x:<span class="red">1007</span>:1007:Mette Curie,,,:/home/mecu:/bin/bash
+root@mainsrv:/home/thoj# tail -3 /etc/passwd
+hans:x:2010:2010::/home/hans:/bin/false
+grethe:x:2011:2011::/home/grethe:/bin/false
+klaus:x:2012:2012::/home/klaus:/bin/false
 </pre>
 
-<p>Da dette er et simpelt setup, skal vi have lavet en enkelt ændring mere. Ud for hver bruger er der er UID (<span class="bold">U</span>ser <span class="bold">ID</span> (markeret med rødt ovenfor). Dette tal skal være det samme både på serveren og klienter.</p>
+<p>Opret herefter et password til hver af brugerne ved hjælp af kommandoen <span class="inl_cmd">passwd</span>. Herunder er det vist med brugeren <span class="inl_cmd">hans</span></p>
 
-<p>For at løse denne problemstilling skal vi manuelt redigere filerne, så hver bruger har et unikt ID på hele netværket. For at undgå sammenfald med nye brugere vælger vi at give dem numre fra 2001 og fremefter efter følgende skema. Grunden til at vi vælger et så "højt" nummer er både for at sikre os at der er plads til at oprettet nye brugere/tjenester, men også for at gøre det overskueligt.</p>
+<code class="cmd">passwd hans</code>
 
-<table class="fixed">
-	<thead>
-		<tr>
-			<th>Bruger</th>
-			<th>UID</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>lath</td>
-			<td>2001</td>
-		</tr>
-		<tr>
-			<td>hafe</td>
-			<td>2002</td>
-		</tr>
-		<tr>
-			<td>vibo</td>
-			<td>2003</td>
-		</tr>
-		<tr>
-			<td>mecu</td>
-			<td>2004</td>
-		</tr>
-	</tbody>
-</table>
+<pre class="ubuntu_terminal">
+root@mainsrv:/home/thoj# passwd hans
+Indtast ny UNIX-adgangskode: <span class="red">&lt;-- Indtast password (f.eks: 123qwe)</span>
+Genindtast ny UNIX-adgangskode: <span class="red">&lt;-- Indtast password (f.eks: 123qwe)</span>
+passwd: password updated successfully
+</pre>
 
-<p>Rediger <span class="inl_cmd">/etc/passwd</span> på både klienter og server så brugeren har samme UID på hele netværket. Før vi redigerer sørger vi for at tage en backup:</p>
-
-<code class="cmd">cp /etc/passwd /etc/passwd.backup</code>
-<code class="more_cmd">nano /etc/passwd</code>
+<p>Læg mærke til at der ud for hver bruger står et tal:</p>
 
 <pre class="black">
-...
-lath:x:<span class="red">2001</span>:1004:Lars Thomsen,,,:/home/lath:/bin/bash
-hafe:x:<span class="red">2002</span>:1005:Hanne Fermi,,,:/home/hafe:/bin/bash
-vibo:x:<span class="red">2003</span>:1006:Victor Bohr,,,:/home/vibo:/bin/bash
-mecu:x:<span class="red">2004</span>:1007:Mette Curie,,,:/home/mecu:/bin/bash
+hans:x:<span class="red">2010</span>:<span class="red">2010</span>::/home/hans:/bin/false
 </pre>
+
+<p>Dette tal er brugerens UID (<span class="bold">U</span>ser <span class="bold">ID</span>entification. Det er detta tal som NFS anvender til at verifcere brugeren. Brugeren Hans skal have det samme <span class="inl_cmd">UID</span> på de maskiner han anvender til at tilgå NFS serveren</p>
+
 
 <p>I vores tilfælde med få maskiner er det relativt let at styre brugerrettighederne, men til større systemer kan det selvfølgelig lade sig gøre at få dette styret centralt ved hjælp af LDAP (se <a href="https://help.ubuntu.com/community/SettingUpNFSHowTo" target="_blank">Setting Up NFS Howto</a> og <a href="https://help.ubuntu.com/lts/serverguide/openldap-server.html" target="_blank">OpenLDAP Server</a>.</p>
 
 
 <h2>Oprettelse af grupper</h2>
 
-<p>Når først brugerne har samme UID er det NFS-serveren der søger for at sætte gruppe rettighederne. Derfor behøver vi ikke at oprette grupperne på klienterne.</p>
+<p></p>
 
-<code class="cmd">addgroup regnskab</code>
-<code class="more_cmd">addgroup it</code>
-<code class="more_cmd">addgroup salg</code>
-<code class="more_cmd">addgroup alle</code>
+<p>Opret gruppen <span class="inl_cmd">parents</span></p>
 
-<p>Kontroller at grupperne (markeret med rødt) er oprettet korrekt. De nye grupper er blevet oprettet i bunden af filen <span class="inl_cmd">/etc/group</span></p>
+<code class="cmd">addgroup parents</code>
 
-<code class="cmd">tail -5 /etc/group</code>
+<p>Kontroller at gruppen er oprettet korrekt. De nye grupper er blevet oprettet i bunden af filen <span class="inl_cmd">/etc/group</span></p>
+
+<code class="cmd">tail -3 /etc/group</code>
+
+<pre class="ubuntu_terminal">
+root@mainsrv:/home/thoj# addgroup parents
+Tilføjer gruppe »parents« (GID 1001)...
+Færdig.
+root@mainsrv:/home/thoj# tail -3 /etc/group
+grethe:x:2011:
+klaus:x:2012:
+parents:x:1001:
+</pre>
+
 
 <pre class="ubuntu_terminal">
 root@tjmainsrv:/home/thoj# tail -4 /etc/group
