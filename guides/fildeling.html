@@ -43,92 +43,75 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 <div class="title">Fildeling med Linux</div>
 	
 
-<h1>Introduktion til deling af netværksdrev</h1>
+<h1>Introduktion</h1>
 
-<p>I denne guide vil der være en gennemgang af nogle af de fildelings muligheder Ubuntu tilbyder. Der vil blive gennemgået:</p>
+<p>En filserver er en computer der giver netværkets computere mulighed for at gemme eller hente filer. Det kan den gøre ved give alle adgang eller styre det ved hjælp af rettigheder. Det kan både være på bruger og/eller maskinniveau.</p>
+
+<p>I denne guide vil det blive gennemgået hvordan man deler filer på et Linux system ved hjælp af NFS og SAMBA/CIFS.</p>
+
+<span class="afsnit">NFS</span>
+
+<p>NFS står for <span class="inl_cmd"><span class="bold">N</span>etwork <span class="bold">F</span>ile <span class="bold">System</span></span>. Fordelen ved at anvende NFS er, at det er en integreret del af Linux. Det betyder at man administrerer brugere og rettigheder til filer/mapper direkte.</p>
+
+<span class="afsnit">SAMBA/CIFS</span>
+
+<p>SAMBA og CIFS står for henholdsvis <span class="inl_cmd"><span class="bold">S</span>erver <span class="bold">M</span>essage <span class="bold">B</span>lock</span> og <span class="inl_cmd"><span class="bold">C</span>ommon <span class="bold">I</span>nternet <span class="bold">F</span>ile <span class="bold">S</span>ystem</span>. SMB protokollen er oprindeligt udviklet af IBM, men blev senere videreudviklet af Microsoft som kaldte deres omplementering for CIFS.</p>
+
+<span class="afsnit">Hvad skal du vælge</span>
+
+<p>Svaret er meget simpelt. Skal du dele filer med andet end Linuxcomputere, så skal du vælge SAMBA/CIFS. Det er kun de færreste Windows versioner hvor man kan installere drivere til NFS. Selvom protokollen er Opensource har Microsft valgt ikke at omplementere de. Anvender du kun Linux, så kan du med fordel anvende NFS.</p>
+
+<p>For at gøre dette praktisk vil der for både NFS og SAMBA/CIFS blive oprettet tre forskellige shares der er afgrænset af henholdsvis brugeren, gruppen og alle.</p>
+
+<h2>Praktisk</h2>
+
+<p>Til ver af protokollerne vil der blive lavet følgende:</p>
 
 <table class="">
 	<thead>
 		<tr>
-			<th>Fildeling</th>
+			<th>Protokol</th>
+			<th>Adresse</th>
 			<th>Beskrivelse</th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr>
-			<td>NFS</td>
+			<td rowspan="3">NFS</td>
+			<td><span class="inl_cmd">/srv/NFS/brugere/*bruger*</span></td>
+			<td>Brugerens private filer</td>
+		</tr>
+		<tr>
+			<td><span class="inl_cmd">/srv/NFS/grupper/*gruppe*</span></td>
+			<td>Gruppens filer</td>
+		</tr>
+		<tr>
+			<td><span class="inl_cmd">/srv/NFS/alle</span></td>
 			<td></td>
 		</tr>
 		<tr>
-			<td>Samba</td>
+			<td rowspan="3">SMB/CIFS</td>
+			<td><span class="inl_cmd">/srv/SMB/brugere/*bruger*</span></td>
+			<td>Brugerens private filer</td>
+		</tr>
+		<tr>
+			<td><span class="inl_cmd">/srv/SMB/grupper/*gruppe*</span></td>
+			<td>Gruppens filer</td>
+		</tr>
+		<tr>
+			<td><span class="inl_cmd">/srv/SMB/alle</span></td>
 			<td></td>
 		</tr>
 	</tbody>
 </table>
+
+<p>Jeg vælger at lægge brugernes private filer i samme mappe som alle de andre. Det er for at gøre det nemmere at have overblik og lave backup. Har man derudover valgt at installere med LVM, så vil man løbende kunne udvide <span class="inl_cmd">/srv</span> partitionen når der er behov for det</p>
 
 <p>For at give en praktisk ramme for dette dokument vil vi skabe rammerne for en mindre IT virksomhed. Virksomheden er ejet af Lars Thomson består af fire personer. Der skal laves 4 mapper: regnskab, it, salg og alle. Alle mapperne vil blive lagt i <span class="inl_cmd">/srv/firma</span></p>
 
 <p>For at skabe et overblik over mappestrukturen og deres tilladelser er der lavet følgende matrix, som vil blive anvendt igennem denne guide.</p>
 
-<table class="">
-	<thead>
-		<tr>
-			<th rowspan="2">Fulde navn</th>
-			<th rowspan="2">Initialer</th>
-			<th rowspan="2">Adgangskode</th>
-			<th rowspan="2">Ansvarsområde</th>
-			<th colspan="4">Grupper</th>
-		</tr>
-		<tr>
-			<th>regnskab</th>
-			<th>it</th>
-			<th>salg</th>
-			<th>alle</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>Lars Thomson</td>
-			<td>lath</td>
-			<td>123qwe</td>
-			<td>Ejer, salg</td>
-			<td>x</td>
-			<td></td>
-			<td>x</td>
-			<td>x</td>
-		</tr>
-		<tr>
-			<td>Hanne Fermi</td>
-			<td>hafe</td>
-			<td>123qwe</td>
-			<td>regnskab</td>
-			<td>x</td>
-			<td></td>
-			<td></td>
-			<td>x</td>
-		</tr>
-		<tr>
-			<td>Victor Bohr</td>
-			<td>vibo</td>
-			<td>123qwe</td>
-			<td>IT</td>
-			<td></td>
-			<td>x</td>
-			<td></td>
-			<td>x</td>
-		</tr>
-		<tr>
-			<td>Mette Curie</td>
-			<td>mecu</td>
-			<td>123qwe</td>
-			<td>Web, salg</td>
-			<td></td>
-			<td>x</td>
-			<td>x</td>
-			<td>x</td>
-		</tr>
-	</tbody>
-</table>
+
 
 <p>Derudover gælder der følgende for netværket:</p>
 
@@ -136,18 +119,18 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 	<tbody>
 		<tr>
 			<td>Netværk</td>
-			<td>10.0.2.0/24</td>
+			<td>192.168.0.0/24</td>
 		</tr>
 		<tr>
 			<td>server IP</td>
-			<td>10.0.2.10</td>
+			<td>192.168.0.10</td>
 		</tr>
 		<tr>
 			<td>Klient IP</td>
 			<td>DHCP</td>
 		</tr>
 		<tr>
-			<td>Windows - workgroup</td>
+			<td>Windows - workgroup (kun SAMBA/CIFS)</td>
 			<td>THOJNETWORK</td>
 		</tr>
 	</tbody>
