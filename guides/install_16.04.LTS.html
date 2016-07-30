@@ -708,29 +708,15 @@ Læser tilstandsoplysninger... Færdig
 <code class="more_cmd">sudo apt-get install -y dkms virtualbox-5.0</code>
 
 
-<h2>Drivere til grafikkort</h2>
+<h2>NVIDIA grafikkort</h2>
 
-<p>Installer følgende for at få de nyeste funktionelle driver til dit grafikkort. Tilføj repositoriet <span class="inl_cmd">ppa:graphics-drivers/ppa</span></p>
+<p>Installer følgende for at få de nyeste driver fra NVIDIA. Tilføj repositoriet <span class="inl_cmd">ppa:graphics-drivers/ppa</span> og opdater dine repositories</p>
 
 <code class="cmd">sudo add-apt-repository ppa:graphics-drivers/ppa -y</code>
 
-<pre class="ubuntu_terminal">
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ sudo add-apt-repository ppa:graphics-drivers/ppa -y
-gpg: nøglering »/tmp/tmpg30rca37/secring.gpg« oprettet
-gpg: nøglering »/tmp/tmpg30rca37/pubring.gpg« oprettet
-gpg: requesting key 1118213C from hkp server keyserver.ubuntu.com
-gpg: /tmp/tmpg30rca37/trustdb.gpg: trustdb oprettet
-gpg: key 1118213C: public key "Launchpad PPA for Graphics Drivers Team" imported
-gpg: Totalt antal behandl.: 1
-gpg:               importerede: 1  (RSA: 1)
-OK
-</pre>
+<code class="more_cmd">sudo apt-get update</code>
 
-<p>Opdater dine repositories</p>
-
-<code class="cmd">sudo apt-get update</code>
-
-<p>Installer grafikdrivere</p>
+<p>Ubuntu har en smart metode til at opdatere sine hardwaredrivere:</p>
 
 <code class="cmd">sudo ubuntu-drivers autoinstall</code>
 
@@ -748,7 +734,7 @@ OK
 
 </figure>
 
-<p>Det er svært at råde dig til hvilken driver du skal vælge, da der især på bærbare er mange hardware konfigurationer, som skal overvejes. Det bedste råd jeg kan give dig er at vælge den nyeste proporitære driver, men hvis du ønsker at have adgang til de nyeste features bør du vælge den nyeste med åben kildetekst. <span class="inl_cmd">Nouveau</span> driveren kan kun anbefales til dem som kun vil have kode uden proporitære dele.</p>
+<p>Det er svært at råde dig til hvilken driver du skal vælge, da der især på bærbare er mange hardware konfigurationer, som skal overvejes. Det bedste råd jeg kan give dig er at vælge den nyeste proporitære driver, da den understøtter både <span class="inl_cmd">OpenCL</span> og <span class="inl_cmd">CUDA</span>. <span class="inl_cmd">Nouveau</span> driveren kan kun anbefales til dem der ønsker kode med mindst mulige proporitære dele. Den kan ikke anbefales til 3D-spil.</p>
 
 <p>Efter du har valgt din driver vælger du: <span class="knap">Anvend ændringer</span> og Ubuntu installerer driveren for dig.</p>
 
@@ -757,8 +743,6 @@ OK
 <code class="cmd">sudo add-apt-repository -y ppa:nilarimogard/webupd8</code>
 <code class="more_cmd">sudo apt-get update</code>
 <code class="more_cmd">sudo apt-get install -y prime-indicator</code>
-
-
 
 <h2>Afsluttende arbejde</h2>
 
