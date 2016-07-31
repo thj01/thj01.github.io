@@ -289,65 +289,19 @@ familie:x:3001:hans,grethe,klaus <span class="red">&lt;-- medlemmer af gruppen f
 
 <h2>Opret mapper</h2>
 
-<p>Opret rodmappen til firmaet og naviger hen til den</p>
+<p>Opret mapper til de delte filer</p>
 
-<code class="cmd">mkdir -p /srv/filer</code>
-<code class="more_cmd">cd /srv/filer</code>
+<span class="afsnit">Opret mapper til brugernes private filer</span>
 
-<span class="afsnit">Opret første niveau af mapperne</span>
-
-<code class="cmd">mkdir grupper brugere alle</code>
-
-<p>Kontroller</p>
-
-<code class="cmd">ls -l /srv/filer</code>
-
-<pre class="ubuntu_terminal">
-root@mainsrv:/srv/filer# ls -l /srv/filer
-totalt 12
-drwxr-xr-x 2 root root 4096 jul 26 00:08 <span class="blue1">alle</span>
-drwxr-xr-x 2 root root 4096 jul 26 00:08 <span class="blue1">brugere</span>
-drwxr-xr-x 2 root root 4096 jul 26 00:08 <span class="blue1">grupper</span>
-</pre>
-
-<span class="afsnit">Opret brugernes private mapper i mappen <span class="inl_cmd">brugere</span></span>
-
-<code class="cmd">cd /srv/filer/brugere</code>
-
-<code class="more_cmd">mkdir hans grethe klaus</code>
-
-<p>Kontroller</p>
-
-<code class="cmd">ls -l /srv/filer/brugere</code>
-
-<pre class="ubuntu_terminal">
-root@mainsrv:/srv/filer# cd brugere/
-root@mainsrv:/srv/filer/brugere# mkdir hans grethe klaus
-root@mainsrv:/srv/filer/brugere# ls -l
-totalt 12
-drwxr-xr-x 2 root root 4096 jul 26 00:13 <span class="blue1">grethe</span>
-drwxr-xr-x 2 root root 4096 jul 26 00:13 <span class="blue1">hans</span>
-drwxr-xr-x 2 root root 4096 jul 26 00:13 <span class="blue1">klaus</span>
-</pre>
+<code class="cmd">mkdir -p /srv/filer/brugere/{hans,grethe,klaus}</code>
 
 <span class="afsnit">Opret gruppernes mapper i mappen <span class="inl_cmd">grupper</span></span>
 
-<code class="cmd">cd /srv/filer/grupper</code>
+<code class="cmd">mkdir -p /srv/filer/grupper/{parents,familie}</code>
 
-<code class="more_cmd">mkdir parents familie</code>
+<span class="afsnit">Opret delt mappe til alle brugere på systemet</span>
 
-<p>Kontroller</p>
-
-<code class="cmd">ls -l /srv/filer/grupper</code>
-
-<pre class="ubuntu_terminal">
-root@mainsrv:/srv/filer# cd /srv/filer/grupper
-root@mainsrv:/srv/filer/grupper# mkdir parents familie
-root@mainsrv:/srv/filer/grupper# ls -l
-totalt 8
-drwxr-xr-x 2 root root 4096 jul 26 00:54 <span class="blue1">familie</span>
-drwxr-xr-x 2 root root 4096 jul 26 00:54 <span class="blue1">parents</span>
-</pre>
+<code class="cmd">mkdir -p /srv/filer/alle</code>
 
 <p>For at få et overblik over hele filstrukturen anvender vi kommandoen <span class="inl_cmd">tree</span>. Hvis den ikke er installerer skal den installeres først:</p>
 

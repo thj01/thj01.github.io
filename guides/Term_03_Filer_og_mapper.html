@@ -870,7 +870,7 @@ drwxrwxr-x  2 thoj thoj 4096 mar 15 20:18 <span class="red">testmappe</span>3
 drwxrwxr-x  2 thoj thoj 4096 mar 15 20:19 <span class="red">testmappe</span>4
 </pre>
 
-<p>Har man brug for at oprette en hel mappestruktur indsætter man et <span class="inl_cmd">-p</span> i kommanoen. Herunder vil vi oprette mappestien <span class="inl_cmd">testmappe5/undermappe/underundermappe</span>.</p>
+<p>Har man brug for at oprette mapper under hinanden  indsætter man et <span class="inl_cmd">-p</span> i kommanoen. Herunder vil vi oprette mappestien <span class="inl_cmd">testmappe5/undermappe/underundermappe</span>.</p>
 
 <code class="cmd">mkdir -p  ~/testmappe5/undermappe/underundermappe</code>
 
@@ -883,6 +883,21 @@ thoj thoj  tree -L 3 ~/testmappe5
     └── <span class="blue1">underundermappe</span>
 
 2 directories, 0 files
+</pre>
+
+<p>Man kan også oprettere flere undermapper med en kommando:</p>
+
+<code class="cmd">mkdir -p ~/testmappe6/{undermappe1,undermappe2,undermappe3}</code>
+
+<pre class="ubuntu_terminal">
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ mkdir -p ~/testmappe6/{undermappe1,undermappe2,undermappe3}
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ tree ~/testmappe6/
+<span class="blue1">/home/tj/testmappe6/</span>
+├── <span class="blue1">undermappe1</span>
+├── <span class="blue1">undermappe2</span>
+└── <span class="blue1">undermappe3</span>
+
+3 directories, 0 files
 </pre>
 
 
