@@ -828,10 +828,10 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <span class="afsnit">Opdater repository filerne</span>
 
-<code class="cmd">sudo apt-get update</code>
+<code class="cmd">sudo apt update</code>
 
 <pre class="ubuntu_terminal">
-thoj@mainsrv:~$ sudo apt-get update
+thoj@mainsrv:~$ sudo apt update
 Henter:1 http://security.ubuntu.com/ubuntu xenial-security InRelease [94,5 kB]
 Henter:2 http://archive.ubuntu.com/ubuntu xenial InRelease [247 kB]
 Henter:3 http://archive.ubuntu.com/ubuntu xenial-updates InRelease [94,5 kB]
@@ -844,12 +844,12 @@ Henter:5 http://archive.ubuntu.com/ubuntu xenial/main amd64 Packages [1.201 kB]
 
 <p>Det er min anbefaling at du vælger at lave en <span class="inl_cmd">dist-upgrade</span>, da det vilgive dig de nyeste filer.</p>
 
-<code class="cmd">sudo apt-get dist-upgrade -y</code>
+<code class="cmd">sudo apt dist-upgrade -y</code>
 
 <p>Herunder er terminal-output for min opdatering. Som du kan se får du en beskrivelse af hvilke papper der opggraderes, hvor mange, hvor meget der skal hentes og hvor meget det kommer til at fylde når opgraderingerne er færdige </p>
 
 <pre class="ubuntu_terminal">
-thoj@mainsrv:~$ sudo apt-get dist-upgrade -y
+thoj@mainsrv:~$ sudo apt dist-upgrade -y
 Indlæser pakkelisterne... Færdig
 Opbygger afhængighedstræ        
 Læser tilstandsoplysninger... Færdig
@@ -887,12 +887,12 @@ Henter:1 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 base-files a
 <span class="afsnit">Fjern alle overflødige pakker</span>
 
 
-<code class="cmd">sudo apt-get autoremove -y</code>
+<code class="cmd">sudo apt autoremove -y</code>
 
 <p>Når man arbejder med den nyeste ubuntu lige efter udgivelsen vil der sjældent være pakker der er overflødige, men der vil ske opgradering af programmer løbende som vil efterlade filer på harddisken som er overflødige.</p>
 
 <pre class="ubuntu_terminal">
-thoj@mainsrv:~$ sudo apt-get autoremove -y
+thoj@mainsrv:~$ sudo apt autoremove -y
 Indlæser pakkelisterne... Færdig
 Opbygger afhængighedstræ        
 Læser tilstandsoplysninger... Færdig
@@ -925,11 +925,11 @@ Last login: Sat Jul  2 11:50:44 2016 from 192.168.0.77
 
 <p>Herefter køres følgende kommando (en linie)</p>
 
-<code class="cmd">sudo apt-get purge $(dpkg -l linux-{image,headers}-"[0-9]*" | awk '/ii/{print $2}' | grep -ve $(uname -r | sed -r 's/-[a-z]+//') | sed ':a;N;$!ba;s/\n/ /g')
+<code class="cmd">sudo apt purge $(dpkg -l linux-{image,headers}-"[0-9]*" | awk '/ii/{print $2}' | grep -ve $(uname -r | sed -r 's/-[a-z]+//') | sed ':a;N;$!ba;s/\n/ /g')
 </code>
 
 <pre class="ubuntu_terminal">
-thoj@mainsrv:~$ sudo apt-get purge $(dpkg -l linux-{image,headers}-"[0-9]*" | awk '/ii/{print $2}' | grep -ve $(uname -r | sed -r 's/-[a-z]+//') | sed ':a;N;$!ba;s/\n/ /g')
+thoj@mainsrv:~$ sudo apt purge $(dpkg -l linux-{image,headers}-"[0-9]*" | awk '/ii/{print $2}' | grep -ve $(uname -r | sed -r 's/-[a-z]+//') | sed ':a;N;$!ba;s/\n/ /g')
 [sudo] adgangskode for thoj: 
 Indlæser pakkelisterne... Færdig
 Opbygger afhængighedstræ        
