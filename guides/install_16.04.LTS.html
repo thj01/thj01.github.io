@@ -472,7 +472,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <ol class="">
 	<li>Ændre repositories fra danske til internationale og tilføjer partner repository</li>
-	<li>Opdatere <span class="inl_cmd">apt</span></li>
+	<li>Opdatere repositories</li>
 	<li>Opgradere Ubuntu</li>
 </ol>
 
@@ -501,7 +501,7 @@ See "man sudo_root" for details.
 
 <p>For at tilføje partner repositoriet skal du redigere i filen <span class="inl_cmd">/etc/apt/sources.list</span> og fjerne et hash-tag</p>
 
-<code class="cmd">nano /etc/apt/sources.list</code>
+<code class="cmd">sudo nano /etc/apt/sources.list</code>
 
 <pre class="black">
 <span class="blue1">## Uncomment the following two lines to add software from Canonical's
@@ -525,16 +525,16 @@ See "man sudo_root" for details.
 
 <p>Opdater repository filerne</p>
 
-<code class="cmd">sudo apt-get update</code>
+<code class="cmd">sudo apt update</code>
 
 <p>Opgrader</p>
 
-<code class="cmd">sudo apt-get dist-upgrade -y</code>
+<code class="cmd">sudo apt dist-upgrade -y</code>
 
 <p>Herunder er terminal-output for min opdatering. Som du kan se får du en beskrivelse af hvilke papper der opggraderes, hvor mange, hvor meget der skal hentes og hvor meget det kommer til at fylde når opgraderingerne er færdige </p>
 
 <pre class="ubuntu_terminal">
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ sudo apt-get dist-upgrade -y
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ sudo apt dist-upgrade -y
 Indlæser pakkelisterne... Færdig
 Opbygger afhængighedstræ        
 Læser tilstandsoplysninger... Færdig
@@ -554,12 +554,12 @@ Henter:1 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 language-sel
 
 <p>Fjern alle overflødige pakker</p>
 
-<code class="cmd">sudo apt-get autoremove -y</code>
+<code class="cmd">sudo apt autoremove -y</code>
 
 <p>Når man arbejder med den nyeste ubuntu lige efter udgivelsen vil der sjældent være pakker der er overflødige, men der vil ske opgradering af programmer løbende som vil efterlade filer på harddisken som er overflødige.</p>
 
 <pre class="ubuntu_terminal">
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ sudo apt-get autoremove
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ sudo apt autoremove
 Indlæser pakkelisterne... Færdig
 Opbygger afhængighedstræ        
 Læser tilstandsoplysninger... Færdig
@@ -575,7 +575,7 @@ Læser tilstandsoplysninger... Færdig
 
 <p>Når du installere nedestående skal du være opmærksom på at du to gange skal godkende nogle licenser. Det gælder nogle Microsoft fonte, som er "nice to have" og en driver/codec der gør at du kan afspille film.</p>
 
-<code class="cmd">sudo apt-get install -y icedtea-8-plugin ubuntu-restricted-extras libdvd-pkg</code>
+<code class="cmd">sudo apt install -y icedtea-8-plugin ubuntu-restricted-extras libdvd-pkg</code>
 
 <p>For at godkende licenser og tilføjelser til systemet skal du du anvende <span class="knap">Tab</span> for at vælge knapperne. Både ved <span class="inl_cmd">ttf-mscorefonts-installer</span> og <span class="inl_cmd">libdvd-pkg</span> skal du først vælge <span class="terminal_valg">Ok</span> og derefter <span class="terminal_valg">Ja</span>. Se screenshots herunder:</p>
 
@@ -624,7 +624,7 @@ Læser tilstandsoplysninger... Færdig
 
 </ul>
 
-<code class="cmd">sudo apt-get install -y skype vlc audacity</code>
+<code class="cmd">sudo apt install -y skype vlc audacity</code>
 
 <h3>Grafik</h3>
 
@@ -637,17 +637,17 @@ Læser tilstandsoplysninger... Færdig
 	<li>exfat drev - Automatisk mount af exfat drev - f.eks. memory kort fra kamera</li>
 </ul>
 
-<code class="cmd">sudo apt-get install -y phatch gimp gimp-lensfun gimp-plugin-registry gimp-texturize inkscape  exfat-fuse exfat-utils</code>
+<code class="cmd">sudo apt install -y phatch gimp gimp-lensfun gimp-plugin-registry gimp-texturize inkscape exfat-fuse exfat-utils</code>
 
 <span class="afsnit">Darktable</span>
 
 <p>Arbejder du med RAW filer kan Darktable anbefales. Darktable bør installeres ved hjælp af PPA, da det er et program der er i rivende udvikling og bliver forbedret på stabilitet, features og hastighed.</p>
 
 <code class="cmd">sudo add-apt-repository -y ppa:pmjdebruijn/darktable-release</code>
-<code class="more_cmd">sudo apt-get update</code>
-<code class="more_cmd">sudo apt-get install -y darktable</code>
+<code class="more_cmd">sudo apt update</code>
+<code class="more_cmd">sudo apt install -y darktable</code>
 
-<h3>Utilities</h3>
+ <h3>Utilities</h3>
 
 <ul class="disc">
 	<li>gparted - harddisk opsætning</li>
@@ -661,15 +661,25 @@ Læser tilstandsoplysninger... Færdig
 	<li>Dropbox</li>
 </ul>
 
-<code class="cmd">sudo apt-get install -y gparted p7zip-full indicator-cpufreq alacarte unity-tweak-tool gdebi caffeine geany nautilus-dropbox</code>
+<code class="cmd">sudo apt install -y gparted p7zip-full indicator-cpufreq alacarte unity-tweak-tool gdebi caffeine geany nautilus-dropbox</code>
+
+<p><span class="bold">NB:</span> Installerer du på Virtualbox skal du ikke tage <span class="inl_cmd">indicator-cpufreq</span> med, da programmet ikke virker med en virtuel CPU.</p>
 
 <span class="afsnit">Classic Menu indicator</span>
 
-<p>classicmenu-indicator - Et værktøjslinieprogram, der giver adgang til en programmenu</p>
+<p><span class="inl_cmd">classicmenu-indicator</span> er et program der ligger i den øverste linie og som laver liste over de installerede programmer. </p>
+
+<figure id="">
+
+	<img class="p70" src="images/install_ubuntu1604_classic_menu_indicator.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
 
 <code class="cmd">sudo apt-add-repository -y ppa:diesch/testing</code>
-<code class="more_cmd">sudo apt-get update </code>
-<code class="more_cmd">sudo apt-get install -y classicmenu-indicator</code>
+<code class="more_cmd">sudo apt update </code>
+<code class="more_cmd">sudo apt install -y classicmenu-indicator</code>
 
 <h3>Kommando linie</h3>
 
@@ -682,7 +692,7 @@ Læser tilstandsoplysninger... Færdig
 </ul>
 
 
-<code class="cmd">sudo apt-get install -y tree nmap tasksel inxi htop</code>
+<code class="cmd">sudo apt install -y tree nmap tasksel inxi htop</code>
 
 
 
@@ -692,9 +702,9 @@ Læser tilstandsoplysninger... Færdig
 <span class="afsnit">Google Chrome</span>
 
 <code class="cmd">wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - </code>
-<code class="more_cmd">sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'</code>
-<code class="more_cmd">sudo apt-get update</code>
-<code class="more_cmd">sudo apt-get install -y google-chrome-stable</code>
+<code class="more_cmd">sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'</code>
+<code class="more_cmd">sudo apt update</code>
+<code class="more_cmd">sudo apt install -y google-chrome-stable</code>
 
 <h3>Virtualisering</h3>
 
@@ -704,8 +714,24 @@ Læser tilstandsoplysninger... Færdig
 
 <code class="cmd">wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -</code>
 <code class="more_cmd">sudo sh -c 'echo "deb http://download.virtualbox.org/virtualbox/debian $(lsb_release -cs) contrib" >> /etc/apt/sources.list.d/virtualbox.list' </code>
-<code class="more_cmd">sudo apt-get update</code>
-<code class="more_cmd">sudo apt-get install -y dkms virtualbox-5.0</code>
+<code class="more_cmd">sudo apt update</code>
+<code class="more_cmd">sudo apt install -y dkms virtualbox-5.1</code>
+
+<h3>Netværk</h3>
+
+<p>Man har ofte brug for at dele filer mellem forskellige PC'er og der findes mange løsninger til dette. En af de simpleste er <span class="inl_cmd">Nitroshare</span> (<a href="https://nitroshare.net/" target="_blank">https://nitroshare.net/</a>), som kører på Linux, Windows og Mac. Dette program skal blot installeres og så vil det automatisk finde alle andre maskiner der kører programmet.</p>
+
+<figure id="">
+
+	<img class="p30" src="images/install_ubuntu1604_nitroshare.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<code class="cmd">sudo add-apt-repository -y ppa:george-edison55/nitroshare </code>
+<code class="more_cmd">sudo apt update</code>
+<code class="more_cmd">sudo apt install -y nitroshare</code>
 
 
 <h2>NVIDIA grafikkort</h2>
@@ -714,7 +740,7 @@ Læser tilstandsoplysninger... Færdig
 
 <code class="cmd">sudo add-apt-repository ppa:graphics-drivers/ppa -y</code>
 
-<code class="more_cmd">sudo apt-get update</code>
+<code class="more_cmd">sudo apt update</code>
 
 <p>Ubuntu har en smart metode til at opdatere sine hardwaredrivere:</p>
 
@@ -724,7 +750,7 @@ Læser tilstandsoplysninger... Færdig
 
 <code class="cmd">sudo reboot</code>
 
-<p>Efter genstart går du ind i: <span class="inl_cmd">Systemindstillinger</span> -> <span class="inl_cmd">Software og opdateringer</span> og vælger fanen: <span class="inl_cmd">Yderligere drivere</span>. Herefter vælger du den driver du ønsker at anvende. Billedet herunder er taget fra min computer, der har et Nvidia Quadro 2100 graffikkort:</p>
+<p>Efter genstart går du ind i: <span class="inl_cmd">Systemindstillinger</span> -> <span class="inl_cmd">Software og opdateringer</span> og vælger fanen: <span class="inl_cmd">Yderligere drivere</span>. Herefter vælger du den driver du ønsker at anvende. Billedet herunder er taget fra en DELL M4800, der har et Nvidia Quadro 2100 graffikkort:</p>
 
 <figure id="">
 
@@ -741,8 +767,8 @@ Læser tilstandsoplysninger... Færdig
 <p>Har du NVIDIA og Intel grafik i din computer bør du installere programmet <span class="inl_cmd">Prime Indicator</span>. Det laver et ikon i menulinien, hvor du hurtigt kan skifte mellem de to graffikkort.</p>
 
 <code class="cmd">sudo add-apt-repository -y ppa:nilarimogard/webupd8</code>
-<code class="more_cmd">sudo apt-get update</code>
-<code class="more_cmd">sudo apt-get install -y prime-indicator</code>
+<code class="more_cmd">sudo apt update</code>
+<code class="more_cmd">sudo apt install -y prime-indicator</code>
 
 <h2>Afsluttende arbejde</h2>
 
@@ -756,13 +782,13 @@ Læser tilstandsoplysninger... Færdig
 
 <p>Fjern overflødige programmer og genstart</p>
 
-<code class="cmd">sudo apt-get autoremove -y</code>
+<code class="cmd">sudo apt autoremove -y</code>
 
 <code class="more_cmd">sudo reboot</code>
 
 <p>Efter Computeren er genstartet og du er sikker på at alt virker kan du køre nedestående kommandolinie. Den fjerne alle overflødige kerner, som svarer til ca 2-300 Mb plads der bliver frigjort for hver kerne der fjernes.</p>
 
-<code class="cmd">sudo apt-get purge $(dpkg -l linux-{image,headers}-"[0-9]*" | awk '/ii/{print $2}' | grep -ve $(uname -r | sed -r 's/-[a-z]+//') | sed ':a;N;$!ba;s/\n/ /g')
+<code class="cmd">sudo apt purge $(dpkg -l linux-{image,headers}-"[0-9]*" | awk '/ii/{print $2}' | grep -ve $(uname -r | sed -r 's/-[a-z]+//') | sed ':a;N;$!ba;s/\n/ /g')
 </code>
 
 

@@ -95,7 +95,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <p>Apache installeres med følgende kommando</p>
 
-<code class="cmd">sudo apt-get -y install apache2</code>
+<code class="cmd">sudo apt -y install apache2</code>
 
 <p>Kontroller at den virker ved at åbne en browser og indtast webserverens IP-adresse, som i dette tilfælde er <span class="inl_cmd">192.168.0.10</span>:</p>
 
@@ -158,7 +158,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <p></p>
 
-<code class="cmd">sudo apt-get -y install php7.0 libapache2-mod-php7.0 php7.0-mbstring php7.0-mcrypt php7.0-xmlrpc php7.0-mysql</code>
+<code class="cmd">sudo apt -y install php7.0 libapache2-mod-php7.0 php7.0-mbstring php7.0-mcrypt php7.0-xmlrpc php7.0-mysql</code>
 
 <p>Efter installationen skal Apache genstartes, så ændringer kan slå igennem:</p>
 
@@ -275,7 +275,7 @@ drwxr-xr-x 98 root root 4096 dec 16 11:30 ..
 
 <p>Vi kan tjekke filstrukturen med kommandoen tree, som vi først skal have installeret:</p>
 
-<code class="cmd">sudo apt-get install tree</code>
+<code class="cmd">sudo apt install tree</code>
 
 <code class="more_cmd">tree /etc/skel -pua --dirsfirst</code>
 
@@ -371,7 +371,7 @@ thoj@mainsrv:~$ tree /etc/skel -pua --dirsfirst
 
 <p></p>
 
-<code class="cmd">sudo apt-get install -y mariadb-server mariadb-client</code>
+<code class="cmd">sudo apt install -y mariadb-server mariadb-client</code>
 
 <p>Kør konfigurationen af mariaDB</p>
 
@@ -451,7 +451,7 @@ thoj@mainsrv:~$
 
 <p>For at administrere MySQL databaser anvender man ofte PHPMyAdmin</p>
 
-<code class="cmd">sudo apt-get install php-gettext phpmyadmin -y</code>
+<code class="cmd">sudo apt install php-gettext phpmyadmin -y</code>
 
 <p>Under installationen skal der gøres følgende:</p>
 
@@ -582,7 +582,7 @@ thoj@mainsrv:~$
 
 <p>Nextcloud anbefaler at man installerer nogle ekstra PHP-moduler</p>
 
-<code class="cmd">sudo apt-get -y install php7.0-curl php7.0-bz2 php7.0-zip php7.0-intl php-imagick</code>
+<code class="cmd">sudo apt -y install php7.0-curl php7.0-bz2 php7.0-zip php7.0-intl php-imagick</code>
 
 <p>Herefter er vi klar til at hente Nextcloud fra serveren. Tjek efter den nyeste version på adressen: <a href="https://download.nextcloud.com/server/releases" target="_blank">https://download.nextcloud.com/server/releases</a>. Vi skal have fat i <span class="inl_cmd">tar.bz2</span> filen.Da guiden er skrevet er det version 9.0.52 kommer kommandoen til at se ud som herunder. Ændr. versionsnummeret der står med rødt, så det passer til din version. Først navigerer vil til vores hjemmemappe, så vi ved hvor filen bliver gemt.</p>
 
@@ -862,7 +862,7 @@ MariaDB [(none)]> <span class="red">exit</span>
 
 <p>For at optimere data i nextcloud skal programmet PACu installeres:</p>
 
-<code class="cmd">sudo apt-get install php-apcu</code>
+<code class="cmd">sudo apt install php-apcu</code>
 
 <p>For at aktivere cachen skal linien <span class="inl_cmd">'memcache.local' => '\OC\Memcache\APCu',</span> indsættes i <span class="inl_cmd">/var/www/nextcloud/config/config.php</span></p>
 
@@ -1415,7 +1415,7 @@ deb http://webmin.mirror.somersettechsolutions.co.uk/repository sarge contrib
 
 <p>Opdater apt og installer webmin</p>
 
-<code class="cmd">apt-get update && apt-get install webmin -y</code>
+<code class="cmd">apt update && apt install webmin -y</code>
 
 <p>Efter installationen er færdig kan du tilgå webmin ved at anvende adressen <a href="https://10.0.2.10:10000" target="_blank">https://10.0.2.10:10000</a>. Logger du ind med en bruger fra sudo gruppen har du administratorrettigheder når webmin kører.</p>
 

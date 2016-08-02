@@ -44,7 +44,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <h1>Programadministration</h1>
 
-<h2><span class="inl_cmd">apt-get</span> - program administration og vedligeholdelse</h2>
+<h2><span class="inl_cmd">apt</span> - program administration og vedligeholdelse</h2>
 
 <p>Ubuntu anvender Debians pakkesystem <span class="inl_cmd">dpkg</span> (Debian package management system), som bliver administreret af programmet <span class="inl_cmd">apt</span> (Advances Packaging tool). Gevinsten ved at bruge kommandolinien er et stærkt og fleksibelt værktøj til at administrere ens programmer.</p>
 
@@ -61,49 +61,49 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 	</thead>
 	<tbody>
 		<tr>
-			<td>apt-get update</td>
+			<td>apt update</td>
 			<td>Synkroniserer din lokale apt med dine repositories.</td>
 		</tr>
 		<tr>
-			<td>apt-get upgrade</td>
+			<td>apt upgrade</td>
 			<td>Opgraderer alle programmer på computeren som apt kontrollerer.</td>
 		</tr>
 		<tr>
-			<td>apt-get upgrade -y</td>
+			<td>apt upgrade -y</td>
 			<td>Som ovenfor, men udfører kommandoen automatisk. Alle kommandoerne kan køres med -y</td>
 		</tr>
 		<tr>
-			<td>apt-get dist-upgrade</td>
+			<td>apt dist-upgrade</td>
 			<td>Opgraderer programmer samt de nødvendige programmer til den nyeste version der findes i <span class="inl_cmd">/etc/apt/sources.list</span> også selvom det ikke er din servers foretrukne version af programmet.</td>
 		</tr>
 		<tr>
-			<td>apt-get remove [program]</td>
+			<td>apt remove [program]</td>
 			<td>Fjerner [program]</td>
 		</tr>
 		<tr>
-			<td>apt-get purge [program]</td>
+			<td>apt purge [program]</td>
 			<td>Fjerner program og alle dets filer - også konfigurationsfiler</td>
 		</tr>
 		<tr>
-			<td>apt-get autoremove</td>
+			<td>apt autoremove</td>
 			<td>Gennemgår apt og fjerner alle filer der ikke er i brug.</td>
 		</tr>
 		<tr>
-			<td>apt-get clean</td>
+			<td>apt clean</td>
 			<td>Fjerner alle hentede pakker</td>
 		</tr>
 		<tr>
 			<td>dpkg --configure -a</td>
-			<td>Det sker at apt-get ikke kan anvendes fordi noget er låst (f.eks. hvis en proces er blevet afbrudt. Denne kommando reconfigurerer pakkesystemet.</td>
+			<td>Det sker at apt ikke kan anvendes fordi noget er låst (f.eks. hvis en proces er blevet afbrudt. Denne kommando reconfigurerer pakkesystemet.</td>
 		</tr>
 	</tbody>
 </table>
 
 <p>Man bør opdatere sine repositories og have alle programmer på computeren opdateret før man installerer nye programmer. Det er især vigtigt at opdatere hvis man lige har tilføjet  nye repositories eller PPA'er, da de ellers ikke vil blive anvendt.</p>
 
-<p>man-page: <span class="inl_cmd">apt-get</span>
-<a href="http://manpages.ubuntu.com/manpages/trusty/en/man8/apt-get.8.html" target="_blank">
-http://manpages.ubuntu.com/manpages/trusty/en/man8/apt-get.8.html</a></p>
+<p>man-page: <span class="inl_cmd">apt</span>
+<a href="http://manpages.ubuntu.com/manpages/xenial/en/man8/apt.8.html" target="_blank">
+http://manpages.ubuntu.com/manpages/xenial/en/man8/apt.8.html</a></p>
 
 <h2>Når <span class="inl_cmd">apt</span> fejler</h2>
 
@@ -113,7 +113,7 @@ http://manpages.ubuntu.com/manpages/trusty/en/man8/apt-get.8.html</a></p>
 
 <p>Når <span class="inl_cmd">apt</span> er geninitialiseret kan man genstarte processen med kommandoen, hvor -f står for "fix broken":</p>
 
-<code class="cmd">sudo apt-get install -f</code>
+<code class="cmd">sudo apt install -f</code>
 
 <h2>Administration af tjenester på serveren</h2>
 
@@ -146,10 +146,10 @@ http://manpages.ubuntu.com/manpages/trusty/en/man8/service.8.html</a></p>
 
 <p>De kan fjernes med følgende kommando (en linie):</p>
 
-<code class="cmd">sudo apt-get purge $(dpkg -l linux-{image,headers}-"[0-9]*" | awk '/ii/{print $2}' | grep -ve $(uname -r | sed -r 's/-[a-z]+//') | sed ':a;N;$!ba;s/\n/ /g')</code>
+<code class="cmd">sudo apt purge $(dpkg -l linux-{image,headers}-"[0-9]*" | awk '/ii/{print $2}' | grep -ve $(uname -r | sed -r 's/-[a-z]+//') | sed ':a;N;$!ba;s/\n/ /g')</code>
 
 <pre class="ubuntu_terminal">
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ sudo apt-get purge $(dpkg -l linux-{image,headers}-"
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ sudo apt purge $(dpkg -l linux-{image,headers}-"
 [0-9]*" | awk '/ii/{print $2}' | grep -ve $(uname -r | sed -r 's/-[a-z]+//') 
 | sed ':a;N;$!ba;s/\n/ /g')
 Indlæser pakkelisterne... Færdig
@@ -210,7 +210,7 @@ Vil du fortsætte? [J/n]
 
 <p>Opdater <span class="inl_cmd">apt</span>, så man fremover har adgang til programmer herfra.</p>
 
-<code class="cmd">sudo apt-get update</code>
+<code class="cmd">sudo apt update</code>
 
 <h2>Ved hjælp af PPA</h2>
 
@@ -236,12 +236,12 @@ Vil du fortsætte? [J/n]
 
 <p>Hvis programmet indeholder afhængigheder til nyere versioner af programmer der er installeret på computeren skal man udføre en <span class="inl_cmd">dist-upgrade</span>, f.eks:</p>
 
-<code class="cmd">apt-get dist-upgrade -y</code>
+<code class="cmd">apt dist-upgrade -y</code>
 
-<p>Nogle gange giver en <span class="inl_cmd">apt-get upgrade</span> Besked om at nogle pakker er blevet holdt tilbage efter en PPA opdatering (se rød markering).</p>
+<p>Nogle gange giver en <span class="inl_cmd">apt upgrade</span> Besked om at nogle pakker er blevet holdt tilbage efter en PPA opdatering (se rød markering).</p>
 
 <pre class="ubuntu_terminal">
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ sudo apt-get upgrade
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ sudo apt upgrade
 Indlæser pakkelisterne... Færdig
 Opbygger afhængighedstræ        
 Læser tilstandsoplysninger... Færdig
@@ -254,7 +254,7 @@ Beregner opgraderingen ... Færdig
 
 <p>Det skyldes, at de nye versioner der skal installeres kræver nyere filer end dem der er installeret. Dem skal du opdatere og det gøres ved at sætte <span class="inl_cmd">apt</span> til at lave en <span class="inl_cmd">dist-upgrade</span></p>
 
-<code class="cmd">sudo apt-get dist-upgrade</code>
+<code class="cmd">sudo apt dist-upgrade</code>
 
 <h2>Fjerne PPA filer</h2>
 
@@ -262,7 +262,7 @@ Beregner opgraderingen ... Færdig
 
 <p>Installer <span class="inl_cmd">ppa-purge</span></p>
 
-<code class="cmd">sudo apt-get install ppa-purge -y</code>
+<code class="cmd">sudo apt install ppa-purge -y</code>
 
 <p>Herefter kan en PPA-fil fjernes med kommandoen:</p>
 
