@@ -702,7 +702,7 @@ Læser tilstandsoplysninger... Færdig
 <span class="afsnit">Google Chrome</span>
 
 <code class="cmd">wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - </code>
-<code class="more_cmd">sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'</code>
+<code class="more_cmd">sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'</code>
 <code class="more_cmd">sudo apt update</code>
 <code class="more_cmd">sudo apt install -y google-chrome-stable</code>
 
