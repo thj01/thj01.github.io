@@ -566,6 +566,21 @@ Læser tilstandsoplysninger... Færdig
 0 opgraderes, 0 nyinstalleres, 0 afinstalleres og 0 opgraderes ikke.
 </pre>
 
+<h2>PPA - Personal Package Archive</h2>
+
+<p>Denne guide tager udgangspunkt i at du anvender Ubuntu's LTS version. Det giver den fordel at installationen er sikret opgraderinger  i en periode på 5 år. Det har så til gengæld den konsekvens, at de programmer der bliver installeret og vedligeholdt af Canonical heller ikke bliver opdateret.</p>
+
+<p>Det er her hvor PPA'erne kommer ind. Ligesom vi ovenfor konfigurerede de repositories Ubuntu skal hente opdateringer fra, så kan vi tilføje nogle private repositories, som også bliver undersøgt når man kører <span class="inl_cmd">apt update</span>. Et eksempel kan være kontorpakken <span class="inl_cmd">Libreoffice</span>. For at man hele tiden får den nyeste stabile version af Libreoffice skal man tilføje PPA'en <span class="inl_cmd">ppa:libreoffice/ppa</span>. Herefter vil <span class="inl_cmd">apt update</span> ikke blot kigge i de medfølgende repositories for at finde opdateringer, men også i <span class="inl_cmd">ppa:libreoffice/ppa</span>.</p>
+
+<p>En PPA tilføjes på følgende måde:</p>
+
+<code class="cmd">sudo add-apt-repository -y ppa:libreoffice/ppa</code>
+
+<p>Herefter vil der blive oprettet en fil i mappen <span class="inl_cmd">/etc/apt/sources.list.d</span> (i dette tilfælde <span class="inl_cmd">libreoffice-ubuntu-ppa-xenial.list</span>, som herefter vil blive tjekket når ens repositories bliver opdateret med kommandoen:</p>
+
+<code class="cmd">sudo apt update</code>
+
+<p>I kapitlet om konfiguration af Ubuntu, har jeg valgt at anvende PPA'er i nogle tilfælde, for at du som bruger får adgang til de nyeste muligheder i programmerne.</p>
 
 <h1>Konfiguration af Ubuntu</h1>
 
@@ -611,57 +626,102 @@ Læser tilstandsoplysninger... Færdig
 
 </figure>
 
-<h2>Ekstra programmer</h2>
+<h2>Kontorprogrammer</h2>
 
-<p>Her installeres en lang række programmer</p>
+<ul class="disc">
+	<li>Libreoffice - Kontorprogram</li>
+	<li>Geany - Teksteditor</li>
+</ul>
 
-<h3>Media</h3>
+<span class="afsnit">Installer PPA'er</span>
+
+<ol class="">
+	<li>PPA til Libreoffice</li>
+	<code class="cmd">sudo add-apt-repository -y ppa:libreoffice/ppa</code>
+	<li>PPA til geany</li>
+	<code class="cmd">sudo add-apt-repository -y ppa:geany-dev/ppa</code>
+	<li>Opdater repositories</li>
+	<code class="cmd">sudo apt update</code>
+</ol>
+
+<p>Da libreoffice er installeret som standard skal programmet ikke installeres, men selve Ubuntu skal opdateres</p>
+
+<code class="cmd">sudo apt upgrade</code>
+
+<p>Geany installeres med kommandoen:</p>
+
+<code class="more_cmd">sudo apt install -y geany</code>
+
+<h2>Media</h2>
 
 <ul class="disc">
 	<li>Skype - Samtale klient</li>
 	<li>VLC - Media Afspiller</li>
 	<li>Audacity - Lydredigering</li>
-
 </ul>
+
+<span class="afsnit">Installer programmerne</span>
 
 <code class="cmd">sudo apt install -y skype vlc audacity</code>
 
-<h3>Grafik</h3>
-
-<p></p>
+<h2>Grafik</h2>
 
 <ul class="disc">
-	<li>Phatch - Photo Batch program</li>
+	<li>Darktable - RAW photo editor</li>
 	<li>Gimp - Billedredigeringsprogram med div. plugins</li>
+	<li>Phatch - Photo Batch program</li>
 	<li>Inkscape - Vektorbaseret redigeringsprogram (svg)</li>
 	<li>exfat drev - Automatisk mount af exfat drev - f.eks. memory kort fra kamera</li>
 </ul>
 
-<code class="cmd">sudo apt install -y phatch gimp gimp-lensfun gimp-plugin-registry gimp-texturize inkscape exfat-fuse exfat-utils</code>
+<span class="afsnit">Installer PPA'er</span>
 
-<span class="afsnit">Darktable</span>
+<ol class="">
+	<li>PPA til Darktable</li>
+	<code class="cmd">sudo add-apt-repository -y ppa:pmjdebruijn/darktable-release</code>
+	<li>PPA til GIMP'en</li>
+	<code class="cmd">sudo add-apt-repository -y ppa:otto-kesselgulasch/gimp</code>
+	<li>PPA til Inkscape</li>
+	<code class="cmd">sudo add-apt-repository -y ppa:inkscape.dev/stable</code>
+	<li>Opdater repositories</li>
+	<code class="cmd">sudo apt update</code>
+</ol>
 
-<p>Arbejder du med RAW filer kan Darktable anbefales. Darktable bør installeres ved hjælp af PPA, da det er et program der er i rivende udvikling og bliver forbedret på stabilitet, features og hastighed.</p>
+<span class="afsnit">Installer programmerne</span>
 
-<code class="cmd">sudo add-apt-repository -y ppa:pmjdebruijn/darktable-release</code>
-<code class="more_cmd">sudo apt update</code>
-<code class="more_cmd">sudo apt install -y darktable</code>
+<code class="cmd">sudo apt install -y darktable gimp gimp-lensfun gimp-plugin-registry gimp-texturize phatch inkscape exfat-fuse exfat-utils </code>
 
- <h3>Utilities</h3>
+
+<h2>Utilities</h2>
 
 <ul class="disc">
 	<li>gparted - harddisk opsætning</li>
 	<li>p7Zip-full - pakkeprogram</li>
 	<li>Indicator-cpufreq - Indicator til CPU-indstillinger</li>
+	<li>Touchpad-indicator - anvendes til at slukke touchpad på en bærbar</li>
+	<li>Classicmenu-indicator - Menu til alle installerede programmer</li>
 	<li>alacarte - Redigering af hovedmeny</li>
 	<li>Unitu-tweak-tool - Indstilling af Ubuntu's GUI</li>
 	<li>gdebi - Program til installation af deb filer</li>
 	<li>Caffeine - Program til at sætte screensaver på pause</li>
-	<li>Geany - Teksteditor</li>
 	<li>Dropbox</li>
+	<li>Psensor - Program til værktøjslinien der giver informationer om CPU, HD, RAM ... </li>
 </ul>
 
-<code class="cmd">sudo apt install -y gparted p7zip-full indicator-cpufreq alacarte unity-tweak-tool gdebi caffeine geany nautilus-dropbox</code>
+<span class="afsnit">Installer PPA'er</span>
+
+<ol class="">
+	<li>PPA til Touchpad-Indicator</li>
+	<code class="cmd">sudo add-apt-repository -y ppa:atareao/atareao</code>
+	<li>PPA til Classic-menuindicator</li>
+	<code class="cmd">sudo apt-add-repository -y ppa:diesch/testing</code>
+	<li>Opdater repositories</li>
+	<code class="cmd">sudo apt update</code>
+</ol>
+
+<span class="afsnit">Installer programmerne</span>
+
+<code class="cmd">sudo apt install -y gparted p7zip-full indicator-cpufreq alacarte unity-tweak-tool gdebi caffeine  nautilus-dropbox classicmenu-indicator touchpad-indicator psensor</code>
 
 <p><span class="bold">NB:</span> Installerer du på Virtualbox skal du ikke tage <span class="inl_cmd">indicator-cpufreq</span> med, da programmet ikke virker med en virtuel CPU.</p>
 
@@ -677,11 +737,8 @@ Læser tilstandsoplysninger... Færdig
 
 </figure>
 
-<code class="cmd">sudo apt-add-repository -y ppa:diesch/testing</code>
-<code class="more_cmd">sudo apt update </code>
-<code class="more_cmd">sudo apt install -y classicmenu-indicator</code>
 
-<h3>Kommando linie</h3>
+<h2>Kommando linie</h2>
 
 <ul class="disc">
 	<li>tree - Viser en filer og mapper i en træstruktur</li>
@@ -697,7 +754,7 @@ Læser tilstandsoplysninger... Færdig
 
 
 
-<h3>Browsere</h3>
+<h2>Browsere</h2>
 
 <span class="afsnit">Google Chrome</span>
 
@@ -706,7 +763,7 @@ Læser tilstandsoplysninger... Færdig
 <code class="more_cmd">sudo apt update</code>
 <code class="more_cmd">sudo apt install -y google-chrome-stable</code>
 
-<h3>Virtualisering</h3>
+<h2>Virtualisering</h2>
 
 <span class="afsnit">VirtualBox</span>
 
@@ -717,7 +774,7 @@ Læser tilstandsoplysninger... Færdig
 <code class="more_cmd">sudo apt update</code>
 <code class="more_cmd">sudo apt install -y dkms virtualbox-5.1</code>
 
-<h3>Netværk</h3>
+<h2>Netværk</h2>
 
 <p>Man har ofte brug for at dele filer mellem forskellige PC'er og der findes mange løsninger til dette. En af de simpleste er <span class="inl_cmd">Nitroshare</span> (<a href="https://nitroshare.net/" target="_blank">https://nitroshare.net/</a>), som kører på Linux, Windows og Mac. Dette program skal blot installeres og så vil det automatisk finde alle andre maskiner der kører programmet.</p>
 
