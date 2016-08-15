@@ -395,9 +395,9 @@ hejsa root
 
 <h2><span class="inl_cmd">sed</span> - Erstat indhold i filer</h2>
 
-p><span class="inl_cmd">sed</span> anvendes til at filtrere og transformere tekst i filer. Her vil vi kun se hvordan vi kan erstatte tekst ved hjælp af <span class="inl_cmd">sed</span>. Generelt fungerer kommandoen på følgende måde hvis man vil erstatte <span class="inl_cmd">a</span> med <span class="inl_cmd">b</span>:</p>
+<p><span class="inl_cmd">sed</span> anvendes til at filtrere og transformere tekst i filer. Her vil vi kun se hvordan vi kan erstatte tekst ved hjælp af <span class="inl_cmd">sed</span>. Generelt fungerer kommandoen på følgende måde hvis man vil erstatte <span class="inl_cmd">a</span> med <span class="inl_cmd">b</span>:</p>
 
-<code class="cmd">sed -i s,a,b,</code>
+<code class="cmd">sed -i s,a,b,*filnavn*</code>
 
 <ol class="disc">
 	<li>Opret <span class="inl_cmd">sedfil</span></li>
@@ -426,7 +426,7 @@ Mit navn er Thomas
 
 <p>Hvis du kommer i en situation, hvor du skal indsætte kommaer (<span class="inl_cmd">,</span>) i teksten kan du bruge <span class="inl_cmd">/</span> som separator.</p>
 
-<code class="cmd">sed -i s/a/b/</code>
+<code class="cmd">sed -i s/a/b/*filnavn*</code>
 
 <p><span class="inl_cmd">sed</span> er velegnet til at bruge i scripts.</p>
 

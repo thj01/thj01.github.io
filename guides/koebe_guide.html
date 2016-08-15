@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+
+<head>
+	
+	<meta charset="UTF-8" lang="da"/>
+
+	<title>Købe Guide - Thomas Jensen</title>
+
+	<link rel="stylesheet" href="../css/styles/docco.css" />
+
+	<link rel="stylesheet" href="../css/style.css" />
+
+	<link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono|Ubuntu|Ubuntu+Condensed' rel='stylesheet' type='text/css'>
+	
+	<script src="../js/toc2.js" type="text/javascript"></script>
+	<script src="https://code.jquery.com/jquery-2.2.2.js"></script>
+	<script src="../js/highlight.pack.js" type="text/javascript"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+
+</head>
+
+<!-- 
+
+code highlighter : https://highlightjs.org/
+
+code converter : http://www.freebits.co.uk/convert-html-code-to-text.html 
+
+-->
+
+<html>
+
+<body onload="generateTOC(document.getElementById('toc'));">
+
+<footer id="license"></footer>
+
+	<script> $( "#license" ).load( "license.html" ); </script>
+
+	<div id="toc">
+	<p>Indholdsfortegnelse</p>
+	
+	</div>
+
+<div class="title">Købe Guide</div>
+	
+
+<h1>Introduktion</h1>
+
+<p>Alle har brug for en computer i dag, men hvordan vælger man den rigtige computer til ens reelle behov. Det er det spørgsmål denne guide forsøger at hjælpe dig med at besvare.</p>
+
+<p>Problemet med at købe en computer er, at der ofte mangler reelle informationer når man læser om computere i diverse tilbudsaviser og man bliver sjældent klogere når man spørger en af sælgerne. De vil svare med gigabytes, gigaherz og smarte betegnelser som dual/quadcore, og det fortæller reelt ikke hvad systemet kan. Det betyder i nogle tilfælde at man forkøber sig eller at man køber noget, som reelt ikke opfylder ens behov.</p>
+
+<p>Jeg har valgt at rette denne guide mod en Intel baseret platform. Jeg har ingen bedre begrundelse end den, at det er hvad jeg altid har købt, og at Intel aktivt arbejder med opensource miljøet. Selvom du ikke anvender Intel eller vil købe det, så vil du stadig kunne læse dele af denne guide for at forstå grundbegreberne</p>
+
+<span class="afsnit"><span class="bold red">*** VIGTIGT ***</span></span>
+
+<p>Denne guide er "as it is" - og anvendes under eget ansvar. Den er ment som en introduktion, sådan at du selv kan undersøge videre og måske være klædt på til at foretage dig et bedre valg, når du skal anskaffe dig nyt udstyr.</p>
+
+<h1>Grundbegreber</h1>
+
+<h2>Størrelser</h2>
+
+<p>I tekniske sammenhænge anvender man præfix til at fortælle hvor stort et tal er. Se nedestående tabel hvor de vigtigste præfixer er nævnt:</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Præfix</th>
+			<th>Symbol</th>
+			<th>Betegnelse</th>
+			<th>Notation</th>
+			<th>Decimal</th>
+			<th>Værdi</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>tera</td>
+			<td>T</td>
+			<td>billion</td>
+			<td>10<sup>12</sup></td>
+			<td>1000<sup>4</sup></td>
+			<td>1 000 000 000 000</td>
+		</tr>
+		<tr>
+			<td>giga</td>
+			<td>G</td>
+			<td>milliard</td>
+			<td>10<sup>9</sup></td>
+			<td>1000<sup>3</sup></td>
+			<td>1 000 000 000</td>
+		</tr>
+		<tr>
+			<td>mega</td>
+			<td>M</td>
+			<td>million</td>
+			<td>10<sup>6</sup></td>
+			<td>1000<sup>2</sup></td>
+			<td>1 000 000</td>
+		</tr>
+		<tr>
+			<td>kilo</td>
+			<td>K</td>
+			<td>tusinde</td>
+			<td>10<sup>3</sup></td>
+			<td>1 000</td>
+			<td>1000</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Det vil sige at en harddisk på 8 TB (terabytes) altså kan indeholde det der svarer til 8000 GB (gigabytes). Herunder er de næste 3 præfix nævnt, da de vil komme i spil over de næste par år. Nogle af de nye filsystemer der er ved at komme frem f.eks: <span class="inl_cmd">Btrfs</span> kan tage exabytes, som svarer til en milliard GB</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Præfix</th>
+			<th>Symbol</th>
+			<th>Betegnelse</th>
+			<th>Notation</th>
+			<th>Decimal</th>
+			<th>Værdi</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>zetta</td>
+			<td>Z</td>
+			<td>trilliard</td>
+			<td>10<sup>21</sup></td>
+			<td>1000<sup>7</sup></td>
+			<td>1 000 000 000 000 000 000 000</td>
+		</tr>
+		<tr>
+			<td>exa</td>
+			<td>E</td>
+			<td>trillion</td>
+			<td>10<sup>18</sup></td>
+			<td>1000<sup>6</sup></td>
+			<td>1 000 000 000 000 000 000</td>
+		</tr>
+		<tr>
+			<td>peta</td>
+			<td>P</td>
+			<td>billiard</td>
+			<td>10<sup>15</sup></td>
+			<td>1000<sup>5</sup></td>
+			<td>1 000 000 000 000 000</td>
+		</tr>
+	</tbody>
+</table>
+
+<h2>Hertz</h2>
+
+<p>Hertz (Hz) er måleenheden for antallet af svingninger i sekundet. Antallet af Hertz bliver også kaldet <span class="inl_cmd">frekvensen</span></p>
+
+<figure id="">
+
+	<img class="p40" src="images/Wave_frequency.gif" alt="" title="" />
+
+	<figcaption><a title="By No machine-readable author provided. Superborsuk assumed (based on copyright claims). [GFDL (http://www.gnu.org/copyleft/fdl.html), CC-BY-SA-3.0 (http://creativecommons.org/licenses/by-sa/3.0/) or CC BY-SA 2.5-2.0-1.0 (http://creativecommons.org/licenses/by-sa/2.5-2.0-1.0)], via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File%3AWave_frequency.gif">https://commons.wikimedia.org/wiki/File%3AWave_frequency.gif</a></figcaption>
+
+</figure>
+
+<p>Den strøm vi har i vores stikkontakter er vekselstrøm som har en frekvens på 50 Hz. Det betyder at den svinger mellem + og - 50 gange i sekundet. I computersammenhæng anvendes Hz til at beskrive hvor mange gange i sekundet noget kan modtage og afgive information. En 4-kernet i7 processor der kører ved 4,0 GHz kan altså modtage og videregive nye informationer 4 x 4 milliarder gange i sekundet - teoretisk. Det kræver det perfekte samspil mellem hardware, operativsystem og software.</p>
+
+<p>Det mest reelle man kan sige er, at et 4,0 GHz system teoretisk set er hurtigere end et på 3,2 GHz. I praksis kan det "langsomme" system være hurtigere.</p>
+
+<h2>bit</h2>
+
+<p>Computere består af en masse transistorer, som reelt ikke kan andet end at være tændt og slukkede. Hver af disse transistorer præsenterer en bit. En bit har enheden <span class="inl_cmd">b</span>, men der vil ofte stå <span class="inl_cmd">bit</span>.</p>
+
+<p>Lige nu er vi ved at skifte over fra 32 bit systemer til 64 bit systemer. Det er meget komplekts, men en forsimplet forklaring er, at et 32 bit system kan arbejde med 32 bit og et 64 bit system med 64 bit. Det giver sig selv at 64 bit er langt mere krævende at styre, men til gengæld kan man gøre mere pr gang. ... Igen 64 bit er ikke hurtigere eller bedre end 32/16/8 bit, men det kan noget andet. Og vigtigst af alt - det giver adgang til mere RAM!</p>
+
+<h2>byte</h2>
+
+<p>En byte består af 8 bit. Det vil altså sige at hvis man har et Gbit netværk (1000 Mbit) så kan den altså teoretisk overføre 1/8 MB svarende til 125 MB/s. Igen det er teoretisk.</p>
+
+<p>Her kommer også en forklaring på hvorfor der kan være forskel på den størrelse en harddisk har ved forhandleren, og når computeren får den installeret. Hvis man køber en harddisk på 250 GB, så kan dette tal både være angivet ud fra decimalsystemet og ud fra det binære talsystem. Det ene tal er menneske læsbart (human readable) og det andet tal er anvendeligt af computeren.</p>
+
+
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Præfix</th>
+			<th>Symbol</th>
+			<th>Betegnelse</th>
+			<th>Notation</th>
+			<th>Decimal</th>
+			<th>Værdi</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>tebi</td>
+			<td>TiB</td>
+			<td>tebibyte</td>
+			<td>2<sup>40</sup></td>
+			<td>1024<sup>4</sup></td>
+			<td>1 099 511 627 776</td>
+		</tr>
+		<tr>
+			<td>gibi</td>
+			<td>GiB</td>
+			<td>gibibyte</td>
+			<td>2<sup>30</sup></td>
+			<td>1024<sup>3</sup></td>
+			<td>1 073 741 824</td>
+		</tr>
+		<tr>
+			<td>mebi</td>
+			<td>MiB</td>
+			<td>mebibyte</td>
+			<td>2<sup>20</sup></td>
+			<td>1024<sup>2</sup></td>
+			<td>1 048 576</td>
+		</tr>
+		<tr>
+			<td>kibi</td>
+			<td>KiB</td>
+			<td>kibibyte</td>
+			<td>2<sup>10</sup></td>
+			<td>1024</td>
+			<td>1024</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Derfor vil en harddisk på 250 GB være mindre når computeren udregner størrelsen. Den vil være </p>
+
+<figure id="">
+
+	<img class="" src="images/koebe_guide_GB_to_GiB.svg" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Der er altså ikke forsvundet noget plads på harddisken. Den er blot blevet skrevet om fra GB til GiB - fra menneskelæseligt til computerlæseligt.</p>
+
+<h2>Watt</h2>
+
+<p>Watt anvendes til at beskrive den mængde energi der anvendes. Hvis man blot ønsker at bygge en maskine med en harddisk og anvender den indbyggede grafik, så behøver man ikke købe andet end en standard strømforsyning på 250 Watt. Ønsker man til gengæld at installere et større grafikkort og mange harddiske, så er det væsentligt at strømforsyningen kan levere rigeligt med Watt.</p>
+
+<p>Hvis du gerne vil have at dit system anvender så lidt strøm som muligt skal du kigge efter Watt betegnelse på de enheder der er i systemet. Vær opmærksom på at det ikke er den mængde strøm som enhederne bruger hele tiden, men at det er deres maksimale forbrug. Herunder er et eksempel på et system og dets (maksimale) Watt forbrug</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Enhed</th>
+			<th>Version</th>
+			<th>Forbrug</th>
+			<th>Henvisning</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>CPU</td>
+			<td>Intel i7 6700k</td>
+			<td>91 W</td>
+			<td><a href="https://en.wikipedia.org/wiki/List_of_CPU_power_dissipation_figures#Intel_Core_i7" target="_blank">link</a></td>
+		</tr>
+		<tr>
+			<td>CPU køler</td>
+			<td>Hyper 212 EVO</td>
+			<td>3 W</td>
+			<td><a href="http://www.coolermaster.com/cooling/cpu-air-cooler/hyper-212-evo/" target="_blank">Link</a></td>
+		</tr>
+		<tr>
+			<td>Motherboard</td>
+			<td>Standard</td>
+			<td>40 W (gæt)</td>
+			<td><a href="http://www.buildcomputers.net/power-consumption-of-pc-components.html" target="_blank">Link</a></td>
+		</tr>
+		<tr>
+			<td>RAM</td>
+			<td>16GB DDR4</td>
+			<td>6 W (gæt)</td>
+			<td><a href="http://www.tomshardware.com/reviews/intel-core-i7-5960x-haswell-e-cpu,3918-13.html" target="_blank">Link</a></td>
+		</tr>
+		<tr>
+			<td>HD</td>
+			<td>Samsung EVO 850 250GB</td>
+			<td>5 W (Gæt)</td>
+			<td><a href="http://www.samsung.com/semiconductor/minisite/ssd/product/consumer/850evo.html" target="_blank">Link</a></td>
+		</tr>
+		<tr>
+			<td>Grafikkort</td>
+			<td>MSI GeForce GTX 960 GAMING</td>
+			<td>120 W</td>
+			<td><a href="https://www.msi.com/Graphics-card/GTX-960-GAMING-2G.html#hero-specification" target="_blank">Link</a></td>
+		</tr>
+		<tr>
+			<td>Kabinet</td>
+			<td>2x blæsere</td>
+			<td>4 W (gæt)</td>
+			<td><a href="http://superuser.com/questions/179751/how-many-watts-do-case-fans-generally-use" target="_blank">Link</a></td>
+		</tr>
+		<tr>
+			<td>I alt</td>
+			<td>Maksimalt forbrug</td>
+			<td>269 W</td>
+			<td></td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Når der står (gæt) betyder det at jeg ikke har kunnet finde producentens angivelse, men har taget den fra andre kilder på nettet. Som du kan se herover er det især CPU og Graffikkort du skal være opmærksom på når der skal vælges strømforsyning. Vær opmærksom på at det er et middel-graffikkort i eksemplet.</p>
+
+<h1>Hvad er dit behov</h1>
+
+<blockquote>
+	<p>
+		Det er svært at spå ... især om fremtiden
+	</p>
+</blockquote>
+
+<p>Der findes en ufravigelig sandhed når man har med computere at gøre. Hvis man mener at ens computer burde gøre noget hurtigere end den gør, så er den for langsom. Og vi har alle oplevet at vores computere ikke er hurtige nok - uanset hvor hurtige de har været.</p>
+
+<p>For at give en forståelse for computerens opbygning og hvordan de forskellige elementer arbejder sammen kan vi kigge på denne simple model over computerens opbygning:</p>
+
+<p></p>
+
+<figure id="">
+
+	<img class="p90" src="images/koebe_guide_computerens_opbygning_01.svg" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<span class="afsnit">Hardware</span>
+
+<p>Hardwaren er selve den fysiske enhed f.eks. en harddisk, CPU' eller bundkort. </p>
+
+<span class="afsnit">Drivere</span>
+
+<p>Drivere er mellemleddet mellem operativsystemet og hardwaren. Hvis Operativsystemet gerne vil skrive til harddisken er det driveren der oversætter mellem dem.</p>
+
+<span class="afsnit">Operativsystem</span>
+
+<p>Operativsystemet er det led som giver os adgang til computeren. Når vi vil noget, så fortæller vi operativsyemet hvad det skal gøre, og ved hjælp af drivere for operativsystemet adgang til hardwaren</p>
+
+<span class="afsnit">Software</span>
+
+<p>Softwaren er egentlig årsagen til at vi bruger computere. Softwaren har ikke direkte adgang til hardwaren, men gør det igennem operativsystemet.</p>
+
+<h2>Opgradere eller købe nyt</h2>
+
+<p>Der findes en tommelfinger regel for om noget er som det skal være, og den lyder: <span class="inl_cmd">"When in doubt there is no doubt"</span> - når man er i tvivl så er man ikke i tvivl. Men skal man opgradere eller skal man investere i nyt. Her er der fire overvejelser du bør gøre:</p>
+
+<ul class="disc">
+	<li>Fungerer din nuværende computer optimalt</li>
+	<li>Bærbar/stationær</li>
+	<li>Hvordan er din økonomi</li>
+	<li>Hvilken hardware har du</li>
+</ul>
+
+<span class="afsnit">Fungerer din nuværende computer optimalt</span>
+
+<p>En computer er avanceret og kræver løbende vedligeholdelse, for at den kører optimalt. Så før man tager en beslutning om den skal opgraderes eller udskiftes bør man have kørt nedestående punkter igennem:</p>
+
+<ul class="disc">
+	
+	<li><span class="bold">Er operativsystemet opdateret</span></li>
+	
+	<p>Det er vigtigt du sørger for at operativsystemet er opdateret, for det forbedrer både sikkerheden og hastigheden på systemet.</p>
+	
+	<li><span class="bold">Er harddisken optimeret</span></li>
+	
+	<p>Dette er især vigtigt hvis du anvender Windows, da NTFS (filsystemet) bliver langsommere ved længere brug pga defragmentering.</p>
+	
+	<li><span class="bold">Er hardware drivere opdateret</span></li>	
+	
+	<p>Her er der især tre drivere der skal være opdateret: BIOS, Bundkort og grafik.</p>
+	
+	<li><span class="bold">Er dine programmer opdateret</span></li>
+	
+	<p>Der kommer løbende fejlrettelser til programmer, som korrigerer fejl.</p>
+</ul>
+
+<p>Derudover bør man også overveje om ens forventning overhovedet kan opfyldes. Der er igen tvivl om at alle de dele en computere er sammensat af bliver mere effektive år for år, og at de får flere features. Men udviklingen af computere er kommet så langt, at den hastighedsforøgelse hardwaren kunne give brugeren er minimal. Det skyldes flere ting, bl.a. at operativsystemer og programmer får flere og flere features. Så selvom computeren bliver hurtigere og mere effektiv så kræver programmerne mere og mere af hardwaren. Et godt eksempel på det er udviklingen af spil, som kræver konstant udskiftning af grafikkort, hvis man vil følge med.</p>
+
+<p>Et andet problem er det som man kalder <span class="inl_cmd">flaskehalse</span>. Selvom man har den bedst mulige hardware kan man opleve at systemer ikke lever op til ens forventninger. Det kan f.eks. være indlæsning af filer i et program, hvor hard- og software ikke arbejder ordentlig sammen.</p>
+
+<span class="afsnit">Bærbar/Stationær</span>
+
+<p>Har du en bærbar computer vil svaret altid være at du skal købe nyt. Bærbare computere er ikke bygget til at blive opgraderet, med mindre vi snakker om lidt ekstra RAM eller fra en mekanisk harddisk til en SSD. At gå fra 4 &#8594; 8GB RAM vil give en mere "glidende" fornemmelse og en SSD vil gøre computeren mærkbar hurtigere til at starte op og køre programmer. Men det vil ikke gøre den meget bedre til f.eks. spil eller billedbehandling.</p>
+
+<p>Og når man tænker på at en opgradering af harddisk og RAM hurtigt kan koste omkring 1000,- kr, så er det reelt udbetalingen til en ny computer.</p>
+
+<span class="afsnit">Din økonomi</span>
+
+<p>Hvor meget vil du ofre på en computer i forhold til det den skal anvendes til og hvor god skal hardwaren være?</p>
+
+<p>Det er meget svært at sætte en vejledende pris på hvor meget en computer skal koste, da det helt er afhængig af om man:</p>
+
+<ul class="disc">
+	<li>Bygger den selv</li>
+	<li>Køber den hos en af computerforretningerne på nettet</li>
+	<li>Køber den i BILKA, elgiganten eller Power</li>
+	<li>Køber mærkevare f.eks. Apple eller DELL</li>
+</ul>
+
+<p>Det mest avancerede er at bygge den selv (eller få en bekendt til det), for så kan man håndplukke den hardware man ønsker. Hvis man køber en samlet PC skal man huske at den er lavet med øje på fortjeneste. Det kan godt være det man kan bygge selv koster det samme som forretningen tilbyder, men der kan være stor kvalitets og ydelsesforskel på de to produkter. </p>
+
+
+
+
+<h2>Anvendelse af computeren</h2>
+
+<p>Før du overhovedet overvejer hvad du skal købe skal du tænke igennem hvad computeren skal bruges til. Herunder er der forskellige scenarier:</p>
+
+<ol class="">
+	<li>Simpel brug</li>
+	<li>Lyd og billedbehandling</li>
+	<li>Spil, 3D-modellering og video</li>
+	<li>Fil- og webserver</li>
+</ol>
+
+<p>I hvert afsnit vil der være en anbefaling fordelt på henholdsvis en stationær og en bærbar computer. Der er ved den bærbare computer taget hensyn til at hardwaren generelt er dyrere og derfor kan anbefalingen være anderledes. Det skyldes også at en bærbar computer der kan levere maksimal ydelse vil være meget dyrere end en tilsvarende stationær.</p>
+
+<p>Alle anbefalinger er det jeg mindst vil anbefale.</p>
+
+<span class="afsnit">Simpel brug</span>
+
+<p>Med simpel brug menest der, at computeren ikke skal anvendes til noget specielt, men blot anvendes til forefaldende opgaver. Herunder er eksempler på simpel brug:</p>
+
+<ul class="disc">
+	<li>Tekstbehandling, regneark og præsentation</li>
+	<li>Internet</li>
+	<li>Sociale netværk</li>
+	<li>Mindre spil</li>
+</ul>
+
+<p>Computere til denne form for anvendelse har ikke nogle særlige krav. Det eneste du bør være opmærksom på er, at der ikke er nogen årsag til at forkøbe dig. Du har hverken brug for en hurtig processor, en større mængde RAM eller noget specielt grafikkort. </p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Enhed</th>
+			<th>Stationær PC</th>
+			<th>Bærbar</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>CPU</td>
+			<td>Intel i3</td>
+			<td>intel i3</td>
+		</tr>
+		<tr>
+			<td>RAM</td>
+			<td>4 GB</td>
+			<td>4 GB</td>
+		</tr>
+		<tr>
+			<td>Harddisk</td>
+			<td>120 GB SSD</td>
+			<td>120 GB SSD</td>
+		</tr>
+		<tr>
+			<td>Grafikkort</td>
+			<td>Intern Grafikkort</td>
+			<td>Intern Grafikkort</td>
+		</tr>
+		<tr>
+			<td>Skærm</td>
+			<td>17" 1600x1200</td>
+			<td>13,1" 1366x768</td>
+		</tr>
+	</tbody>
+</table>
+
+<span class="afsnit">Billedbehandling</span>
+
+<p>Hvis du gerne vil arbejde med billedbehandling bør du fokusere på at have en hurtig processor og rigeligt med RAM.</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Enhed</th>
+			<th>Stationær PC</th>
+			<th>Bærbar</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>CPU</td>
+			<td>Intel i5 4 kerner</td>
+			<td>intel i7 2 kerner</td>
+		</tr>
+		<tr>
+			<td>RAM</td>
+			<td>16 GB</td>
+			<td>8 GB</td>
+		</tr>
+		<tr>
+			<td>Harddisk</td>
+			<td>250 GB SSD</td>
+			<td>250 GB SSD</td>
+		</tr>
+		<tr>
+			<td>Grafikkort</td>
+			<td>Intern Grafikkort</td>
+			<td>Intern Grafikkort</td>
+		</tr>
+		<tr>
+			<td>Skærm</td>
+			<td>+20" 1920x1080</td>
+			<td>+15" 1920x1080</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Et af de steder du kan vælge at bruge ekstra penge på CPU og graffikkortet. Der findes funktioner i billedbehandlingsprogrammer der kan anvende funktionalitet fra graffikkortet, men står valget mellem en hurtigere processor og et 3D-graffikkort, så vælg den hurtigere processor.</p>
+
+<span class="afsnit">3D-grafik og video</span>
+
+<p>3D-grafik og video er noget af det mest krævende du kan udsætte en computer for. Her skal alle enheder i computeren være i fokus. Man kan købe bærbare (slæbbare?) til dette, men det er meget dyre. Men ligegyldig hvad, så er computere designet til dette formål det dyreste du kan komme i nærheden af</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Enhed</th>
+			<th>Stationær PC</th>
+			<th>Bærbar</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>CPU</td>
+			<td>Intel i7 8 kerner</td>
+			<td>intel i7 2 kerner</td>
+		</tr>
+		<tr>
+			<td>RAM</td>
+			<td>32 GB</td>
+			<td>16 GB</td>
+		</tr>
+		<tr>
+			<td>Harddisk</td>
+			<td>250 GB SSD + 4 TB HD</td>
+			<td>500 GB SSD</td>
+		</tr>
+		<tr>
+			<td>Grafikkort</td>
+			<td>3D-Grafik Nvidia Quadro 4 GB</td>
+			<td>3D-Grafik Nvidia Quadro 2 GB</td>
+		</tr>
+		<tr>
+			<td>Skærm</td>
+			<td>+22" 3840 x 2160 (4K)</td>
+			<td>+15" 1920x1080</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Et sted der kan spares lidt er på graffikkortet. Ved at vælge et grafikkort i NVidia's GeForce klasse kan der spares nogle penge.</p>
+
+<span class="afsnit">Spil</span>
+
+<p>Spillecomputeren er egentlig meget lig computere til 3D-grafik og video. På et punkt adskiller de sig, og det er i kravene til CPU og Grafikkort. Computerspil udnytter 3D-graffikort til det yderste og derfor er det vigtigere at lægge pengene der end på CPU'en. Generelt for bærbare spillecomputere gælder det at de ikke kan sammenlignes med stationære computere. Det skyldes at CPU og grafikkort som regel er <span class="inl_cmd">mobile</span> udgaver, som er gjort energieffektive (læs meget langsommere) end deres "rigtige" udgaver. Derudover vil bærbare computere til spil også have en udfordring med varme, hvilket igen gøre at de støjer en del.</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Enhed</th>
+			<th>Stationær PC</th>
+			<th>Bærbar</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>CPU</td>
+			<td>Intel i5 4 kerner</td>
+			<td>intel i7 2 kerner</td>
+		</tr>
+		<tr>
+			<td>RAM</td>
+			<td>16 GB</td>
+			<td>8 GB</td>
+		</tr>
+		<tr>
+			<td>Harddisk</td>
+			<td>500 GB SSD + 1 TB HD</td>
+			<td>500 GB SSD</td>
+		</tr>
+		<tr>
+			<td>Grafikkort</td>
+			<td>3D-Grafik Nvidia GeForce 4 GB</td>
+			<td>3D-Grafik Nvidia GeForce 2 GB</td>
+		</tr>
+		<tr>
+			<td>Skærm</td>
+			<td>+22" 3840 x 2160 (4K)</td>
+			<td>+15" 1920x1080</td>
+		</tr>
+	</tbody>
+</table>
+
+
+
+<span class="afsnit">Fil og webserver</span>
+
+<p>En server til hjemmet kræver ikke meget, og her er en bærbar uegnet, da man ikke kan udvide med ekstra harddiske:</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Enhed</th>
+			<th>Stationær PC</th>
+			<th>Bærbar</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>CPU</td>
+			<td>Celeron 1900</td>
+			<td>-</td>
+		</tr>
+		<tr>
+			<td>RAM</td>
+			<td>4 GB</td>
+			<td>-</td>
+		</tr>
+		<tr>
+			<td>Harddisk</td>
+			<td>4 TB HD</td>
+			<td>-</td>
+		</tr>
+		<tr>
+			<td>Grafikkort</td>
+			<td>Intern grafik</td>
+			<td>-</td>
+		</tr>
+		<tr>
+			<td>Skærm</td>
+			<td>ingen</td>
+			<td>-</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>En filserver bør ikke have en skærm monteret. Den skal sættes op så den kører "<span class="inl_cmd">headless</span>" (uden skærm og tastetur), ved hjælp af enten SSH eller et webinterface.</p>
+
+<h2>Bærbar eller stationær</h2>
+
+<p>Generelt så gælder det, at hvis man sammenligner krone for krone så får man hurtigere hardware i en stationær, og hvis man går efter en Apple computer så går omkring 20% afprisen til selve Apple-designet.</p>
+
+<p>En anden ting man skal overveje er at effektiv (læs hurtig) elektronik udvikler varme. Varme er elektronikkens værste fjende og den vil over tid "slide" på hardwaren og for at få varmen væk skal der anvendes der blæsere. Og reglen er, jo større blæser og kølerprofil - jo mere varme kan der ledes væk. For at løse dette problem anvender man mobile versioner af hardware i bærbare computere, som betyder at de er udvalgt som et kompromis mellem varme, ydelse og strømforbrug.</p>
+
+<p>Hvis ydelse er vigtigst for dig skal du købe en stationær computer - eller du skal være parat til at smide +12.000,- kr - og det vil stadig være et kompromis.</p>
+
+<h2>Overclocking</h2>
+
+<p>Overclocking betyder at man tvinger ens hardware til at køre hurtigere end det er købt til. Det er især anvendeligt for folk der brugeres deres computere til spil, 3D-grafik og komplekse beregninger. Det er en billig medtode til at tvinge hardware til at yde bedre. Det kræver dog at man anvender effektiv køling.</p>
+
+<p>Og det kræver at du selv kan bygge din computer og har en forståelse for hard- og software der går udover det som denne guide dækker ;).</p>
+
+<h1>Computerens hardware</h1>
+
+<p>Herunder vil der være en overordnet gennemgang af den hardware der er i en computer. Gennemgangen vil blive holdt på et simpelt niveau, og vil have fokus på forståelse fremfor teknikken.</p>
+
+<p>For at forsimple guiden har jeg valgt at holde mig til Intel og NVidia baserede computere. Det skyldes at jeg altid er endt med at købe Intel hardware og at det generelt fungerer med Ubuntu.</p>
+
+<h2>Bundkort</h2>
+
+<p>Bundkortet der den centrale del i en computer og som skaber forbindelse mellem hardwaren. Det er bundkortet at hardwaren skal købes ud fra, så derfor er det vigtigt at man køber det rigtige fra starten af.</p>
+
+<figure id="">
+
+	<img class="p70" src="http://www.asrock.com/mb/photo/Z170%20Pro4S(L2).jpg" alt="" title="" />
+
+	<figcaption><a href="http://www.asrock.com/mb/Intel/Z170%20Pro4S/index.us.asp" target="_blank">http://www.asrock.com/mb/Intel/Z170%20Pro4S/index.us.asp</a></figcaption>
+
+</figure>
+
+<p>Ting du skal være opmærksom på:</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Cipsæt</td>
+			<td>Chipsættet er det som styrer bundkortet og de enheder der sluttes til. Som privat bruger bør du kigge efter det som Intel kalder et <a href="http://www.intel.com/content/www/us/en/chipsets/performance-chipsets/laptop-desktop-performance-chipsets.html" target="_blank">Performance chipset</a>. Z170 som er vist i eksemplet herover er et godt chipset der giver adgang til rigtig mange features - også overclocking.</td>
+		</tr>
+		<tr>
+			<td>CPU socket</td>
+			<td>Her skal CPU'en (processoren) monteres. Den nyeste sokkel som Intel anvender er i dag socket 1151</td>
+		</tr>
+		<tr>
+			<td>RAM Type</td>
+			<td>I dag er DDR4 standarden for RAM. Det man skal være opmærksom på er antallet af moduler der kan monteres</td>
+		</tr>
+		<tr>
+			<td>SATA tilslutninger</td>
+			<td>Angiver hvor mange harddiske og drev man kan have monteret på systemet</td>
+		</tr>
+		<tr>
+			<td>M.2.</td>
+			<td>Hvis motherboarded har en M.2. tilslutning kan man installere nogle af de nye, hurtige ... og dyre harddiske</td>
+		</tr>
+		<tr>
+			<td>PCI tilslutninger</td>
+			<td>Man bruger PCI til at montere grafikkort og andre specialkort. Et bundkort bør indeholdet både PCIe x16 til grafikkort og PCIe x1 til net og lydkort.</td>
+		</tr>
+		<tr>
+			<td>Tilslutningsmuligheder</td>
+			<td>Når man undersøger tilslutninger så sikr dig at der er der nok grafik, net, USB og lydporte. Et godt bundkort bør have HDMI, DVI_D, lyd, net og 4-6 USB porte. I dag bør man ikke bekymre sig specifikationer på tilslutningerne da de i dag er standardiserede med Dolby 7.1 lyd, gigabit netkort og USB 3.0.</td>
+		</tr>
+	</tbody>
+</table>
+
+
+<h2>CPU</h2>
+
+<p>CPU'en (<span class="bold">C</span>entral <span class="bold">P</span>rocessing <span class="inl_cmd">U</span>nit) er selve hjernen i computeren. Før vi gennemgår de forskellige processortyper er der nogle begreber vi skal have styr på. Beskrivelsen tager udgangspunkt i en <a href="http://ark.intel.com/products/88195/Intel-Core-i7-6700K-Processor-8M-Cache-up-to-4_20-GHz" target="_blank">Intel i7 6700K</a>:</p>
+
+<figure id="">
+
+	<img class="p25" src="images/Koebeguide_CPU_01.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<span class="afsnit">Socket</span>
+
+<p>De forskellige CPU'er har forskellige antal kontakter. De nyeste Processorer fra Intel sidder i en FCLGA 1151, og det er den type du bør satse på at få, da de både indeholder den nyeste teknologi og er mest effektive.</p>
+
+<span class="afsnit">Kerner og tråde</span>
+
+<p>Kerner og tråde angiver hvor mange processer en CPU kan køre ad gangen. i7 6700K har 4 kerner med hver 2 tråde, hvilket betyder at den kan køre 8 processer ad gangen. Fordelen ved at have flere kerner/tråde er, at man kan reservere dem enkeltvis eller i grupper til at køre forskellige dele af et program. Hvis man f.eks. arbejder med 3D kan man f.eks. have reserveret 2 kerner til at arbejde med at rendere sine billeder.</p>
+
+<p>Det er vigtigt at forstå, at en CPU med 8 kerner ikke nødvendigvis er hurtigere end en tilsvarende med 4 kerner. Og måske endnu mere vigtigt - det dobbelte antal kerner gør ikke afviklingen af programmer dobbelt så hurtig Det er kun hvis man anvender programmer de kan udnytte det, at man får nogen fordel. Du bør overveje mere end 4 kerner hvis:</p>
+
+<ul class="disc">
+	<li>Du har dual-grafikkort, spiller meget anvancerede spil og kun det bedste er godt nok</li>
+	<li>Du arbejder med Video og 3D grafik</li>
+</ul>
+
+<span class="afsnit">Cache</span>
+
+<p>Moderne CPU'er har indbygget en lille mængdre RAM der anvendes til at "parkere" instruktioner internt i processoren i stedet for at skulle gemme dem i computerens RAM-laver. Det medfører at CPU'en bliver mere effektiv til at arbejde med programmerne.</p>
+
+<span class="afsnit">Grafik</span>
+
+<p>I dag har stort set alle CPU'er indbygget et grafikkort, som er god nok til almindelig brug og mindre spil. Hvis man bygger en computer til nye og avancerede 3D-spil er d. ette frafikkort ikke nok. Er man i tvivl bør man vente med at købe et 3D-grafikkort til man har prøvet om det er nødvendigt. De indbyggede grafikkort er bedre end man skulle tro.</p>
+
+<span class="afsnit">Base/turbo frekvens</span>
+
+<p>CPU'er har angivet to forskellige hastigheder: <span class="inl_cmd">base</span> og <span class="inl_cmd">turbo</span>. De to værdier skal forstås på den måde at CPU normalt vil arbejde med <span class="inl_cmd">base</span> frekvensen, men at CPU'en i perioder vil kunne gå i <span class="inl_cmd">turbo</span> mode </p>
+
+<h3>CPU typer</h3>
+
+<p>Jeg har valgt kun at forholde mig til 4 typer af CPU, som dækker de behov langt de fleste brugere har. Jeg har valgt kun at forholde mig til dem der kommer til den nyeste socket FCLGA 1151 Det er:</p>
+
+<span class="afsnit">Celeron</span>
+
+<p>Anvendense:</p>
+
+<ul class="disc">
+	<li>simpel workstation</li>
+	<li>NAS/server</li>
+	<li>Mediacenter</li>
+</ul>
+
+<p>Celeron-processoren er et ældre design, som  er billig og meget energieffektiv. Derfor er den egnet til computere der skal lave simple opgaver. Skal en PC ikke anvendes til andet en at surfe og lave teksstbehandling klarer den opgaven. Som en filserver og mediacenter er den nærmest perfekt, da der kan købes bundkort hvor CPU'en er integreret i bundkortet til omkring 400,-.</p>
+
+<span class="afsnit">i3 / i5 / i7</span>
+
+<p>I skemaet herunder er der vist nogle af forskellene mellem de tre nyeste Intel CPU-typer</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>CPU</th>
+			<th>Kerner</th>
+			<th>Tråde</th>
+			<th>Cache</th>
+			<th>Turbo</th>
+			<th>Anvendelse</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>i3</td>
+			<td>2</td>
+			<td>x2</td>
+			<td>3MB</td>
+			<td>-</td>
+			<td>Kontor, små spil og Internet</td>
+		</tr>
+		<tr>
+			<td>i5</td>
+			<td>2-4</td>
+			<td>-</td>
+			<td>3-6MB</td>
+			<td>Ja</td>
+			<td>Spil, god balance mellem ydelse og pris</td>
+		</tr>
+		<tr>
+			<td>i7</td>
+			<td>2-4</td>
+			<td>x2</td>
+			<td>4-8MB</td>
+			<td>Ja</td>
+			<td>Krævende brug</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>De ovenstående betegnelser i3, i5 og i7 er kun en del af beskrivelsen. Til hver modelnummer er der også knyttet nogle bogstaver f.eks. i7-6700K. Se i tabellen herunder:</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Betegnelse</th>
+			<th>Beskrivelse</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>U</td>
+			<td>Ultra low power - Anvendes til bærbare og andre mobile enheder. Har 2 kerner.</td>
+		</tr>
+		<tr>
+			<td>T</td>
+			<td>Optimeret til Desktop computere</td>
+		</tr>
+		<tr>
+			<td>Q</td>
+			<td>Quadcore - CPU'en har 4 kerner</td>
+		</tr>
+		<tr>
+			<td>H</td>
+			<td>High performance grafik</td>
+		</tr>
+		<tr>
+			<td>K</td>
+			<td>Kan overklokkes (Unlocked)</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Tommelfingerreglen er - jo dyrere CPU'en er - jo bedre er den .... hvis den bliver brugt på den rigtige måde.</p>
+
+<p>Det betyder f.eks. at man med fordel kan kan vælge en billigere i5 med et godt grafikkort fremfor en i7 med et billigere grafikkort - simpelthen fordi spil har mere brug for at graffikkortet yder en processoren.</p>
+
+
+<p><a href="http://www.makeuseof.com/tag/intel-core-i3-vs-i5-vs-i7-one-really-need/" target="_blank">http://www.makeuseof.com/tag/intel-core-i3-vs-i5-vs-i7-one-really-need/</a></p>
+
+<span class="afsnit">Xeon</span>
+
+<p>Som en sidte processor skal Intel's Xeon nævnes. Denne processor er ikke egnet til almindelige brugere, men sigter mod dem som arbejder med CAD og 3D samt servere. De kan købes med op til 24 kerner og 60 MB cache og denne model koster næsten 7000,- $</p>
+
+<h2>Kabinet</h2>
+
+<p>Kabinettet er og bliver en af de svære beslutninger, da det er synligt hele tiden. For at tage den rigtige beslutning bør man først overveje kabinettets funktion og først derefter kabinettets udseende. På den måde ender man ikke med at købe noget der senere skal udskiftes</p>
+
+<p>Kabinettets funktion:</p>
+
+<ul class="disc">
+	<li>Hvor mange harddiske skal det kunne rumme. Skal der monteres flere harddiske</li>
+	<li>Skal der være plads til et eller to grafikkort</li>
+	<li>Skal CPU'en have en støjsvag køler, hvilket kræver plads</li>
+	<li>Skal det være let at komme til bundkortet og montere nye enheder</li>
+	<li>Skal kabinettet være støjdæmpet</li>
+	<li>Skal USB og lyd være tilgængelig uden at skulle om på bagpladen</li>
+</ul>
+
+<p>Kabinettets udseende:</p>
+
+<ul class="disc">
+	<li>Skal man kunne se ind på hardwaren</li>
+	<li>Skal kabinettet stå på gulvet eller være på bordet</li>
+	<li>Hvor stort skal det være</li>
+	<li>Hvad farve skal det være</li>
+</ul>
+
+<p>Desværre er kabinetter ikke kønne. Det er en klods der kommer til at være synlig om vi vil det eller ej. Jeg mener dog stadig at det er vigtigst at lade sig styre af kabinettets funktion fremfor dets udseende. Generelt må man nok også erkende at computere ikke hører til i stuen, men et sted hvor man kan arbejde på den ude at forstyrre ... og blive forstyrret.</p>
+
+<span class="afsnit">Støjdæmpning</span>
+
+<p>Støjdæmpning kræver to ting: God plads til luftgennemstrømning, så der kan komme store blæsere i og et kabinet som er solidt bygget evt med ekstra polstring. På den måde undgår man vibrationer der er med til at forstørke støjen.</p>
+
+<h2>Køling</h2>
+
+<p>Varme er al elektroniks værste fjende, derfor er det vigtigt at du også tænker på køling. Her er der to ting der skal være i fokus: Støjniveau og køling.</p>
+
+<p>I en moderne PC er der 4 elementer der skal køles: CPU, grafikkort, strømforsyning og kabinet. Det findes grundlæggende 3 typer køling:</p>
+
+<ul class="disc">
+	<li>Luft: Køling med blæsere</li>
+	<li>Passiv: Køling med metalprofiler</li>
+	<li>Væske: Køling hvor varmen ledes væk af væske</li>
+</ul>
+
+<span class="afsnit">Køling med blæsere</span>
+
+<p>Den billigste løsning er blæsere, og der er grundreglen at jo større de er jo mindre støjer de. Det skyldes at de kan flytte mere luft ved færre omdrejninger. Generelt er kabinet-, strømforsynings- og graffikkortblæsere meget støjsvage. En støjsvag køler til en CPU er ofte meget stor se f.eks. <a href="http://www.coolermaster.com/cooling/cpu-air-cooler/hyper-212-evo/" target="_blank">Hyper 212 EVO</a></p>
+
+<figure id="">
+
+	<img class="p40" src="http://assets.coolermaster.com/global/uploadfile/fileproduct_list/P1302180416de94/PRDPIC/13_a7aed3358bcfe7ddf322e2344dc929fc_1444192430.jpg" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Den er lavet af aluminium, som leder varmen væk fra CPU'en. Varmen bliver så led væk af en blæser med en diameter på 120 mm. Du kan læse om den her: <a href="http://www.coolermaster.com/cooling/cpu-air-cooler/hyper-212-evo/" target="_blank">http://www.coolermaster.com/cooling/cpu-air-cooler/hyper-212-evo/</a>.</p>
+
+<span class="afsnit">Passiv køling</span>
+
+<p>Ved passiv køling forstås, at al kølingen bliver foretaget ved at varmen ledes væk. På den måde kan elekstronikken blive holdt kold ved hjælp af kølerne i kabinettet. Problemet med denne form for køling er, at der er begrænsning på hvor meget varme der kan ledes væk. Passiv kølet hardware er som regel </p>
+
+<h2>RAM</h2>
+
+<p></p>
+
+<h2>Harddisk</h2>
+
+<p></p>
+
+<span class="afsnit">NAS-diske</span>
+
+<p></p>
+
+<h2>Grafikkort</h2>
+
+<p></p>
+
+<h2>DVD/Blueray</h2>
+
+<p></p>
+
+<h2>Strømforsyning</h2>
+
+<p></p>
+
+<h2>Skærm</h2>
+
+<p></p>
+
+<h2>Tastetur og mus</h2>
+
+<p></p>
+
+<span class="afsnit">Tegneplade</span>
+
+<p></p>
+
+
+
+<p></p>
+<p></p>
+
+
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+
+
+
+
+
+	</body>
+
+</html>
+
+
+
+
+

@@ -515,7 +515,13 @@ Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.</
 MariaDB [(none)]>
 </pre>
 
-<p>Herefter køres følgende kommandoer i <span class="inl_cmd">mysql</span> (markeret med rød). Husk at afslutte kommandoerne med <span class="inl_cmd">;</span>:</p>
+<p>Herefter køres følgende kommandoer i <span class="inl_cmd">mysql</span>. Husk at afslutte kommandoerne med <span class="inl_cmd">;</span>:</p>
+
+<code class="cmd">use mysql;</code>
+<code class="more_cmd">update user set plugin='' where User='root';</code>
+<code class="more_cmd">flush privileges;</code>
+<code class="more_cmd">exit</code>
+
 
 <pre class="ubuntu_terminal">
 MariaDB [(none)]> <span class="red">use mysql;</span>
@@ -524,14 +530,14 @@ You can turn off this feature to get a quicker startup with -A
 
 Database changed
 MariaDB [mysql]> <span class="red">update user set plugin='' where User='root';</span>
-Query OK, 1 row affected (0.00 sec)
-Rows matched: 1  Changed: 1  Warnings: 0
+<span class="bold">Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0</span>
 
 MariaDB [mysql]> <span class="red">flush privileges;</span>
-Query OK, 0 rows affected (0.00 sec)
+<span class="bold">Query OK, 0 rows affected (0.00 sec)</span>
 
 MariaDB [mysql]> <span class="red">exit</span>
-Bye
+<span class="bold">Bye</span>
 thoj@mainsrv:~$                <span class="red">&lt;--- Tilbage på kommandolinien</span>
 </pre>
 
@@ -1083,7 +1089,7 @@ drwxr-xr-x  5 thoj thoj     4096 jul  5 10:39 <span class="blue1">wordpress</spa
 
 <code class="cmd">sudo rm /var/www/html/index.html</code>
 
-<span class="afsnit">Midlertidige rettigehder</span>
+<span class="afsnit">Midlertidige rettigheder</span>
 
 <p>Sæt midlertidige ejerskab og skriverettigheder for wordpress</p>
 
