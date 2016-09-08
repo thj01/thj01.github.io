@@ -1156,6 +1156,24 @@ MariaDB [(none)]> exit
 thoj@mainsrv:~$ 
 </pre>
 
+<h2>Sæt upload indstillinger</h2>
+
+<p>Som standard er Wordpress sat til at uploade filer der maksimalt er 2 MB store. Dette er uhensigtsmæssigt, hvis man vil lægge video og lignene på på sin side. Derfor vil vi ændre det til 64 MB. Ændr følgende 4 linier i filen <span class="inl_cmd">/etc/php/7.0/apache2/php.ini</span>. Åbn <span class="inl_cmd">php.ini</span> med kommandoen:</p>
+
+<code class="cmd">sudo nano /etc/php/7.0/apache2/php.ini</code>
+
+<p>Find nedestående linier og ændr størrelsen til <span class="inl_cmd">64MB</span> og <span class="inl_cmd">300</span>.</p>
+
+<pre class="black">
+upload_max_filesize <span class="red">64M</span>
+
+post_max_size <span class="red">64M</span>
+
+max_execution_time <span class="red">300</span>
+
+max_input_time <span class="red">300</span>
+</pre>
+
 <h2>Konfigurer Wordpress</h2>
 
 <p>Da vi har sat wordpress til at være roden på vores webserver, skal vi blot indtaste IP-adressen i browseren: <span class="inl_cmd">https://192.168.0.10/</span></p>

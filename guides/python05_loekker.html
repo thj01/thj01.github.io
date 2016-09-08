@@ -68,16 +68,16 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 	<tbody>
 		<tr>
 			<td><span class="inl_cmd">for</span></td>
-			<td><span class="inl_cmd">for</span> løkken anvendes når man kender det nøjagtige antal gennemløb. Hvis man f.eks. ved at en funktion skal gennemløbes 10 gange vil man anvende <span class="inl_cmd">for</span>-løkken.</td>
+			<td>... anvendes når man kender det nøjagtige antal gennemløb. Hvis man f.eks. ved at en funktion skal gennemløbes 10 gange vil man anvende <span class="inl_cmd">for</span>-løkken.</td>
 		</tr>
 		<tr>
 			<td><span class="inl_cmd">while</span></td>
-			<td><span class="inl_cmd">while</span>-løkken anvendes når en funktion skal gennemløbes indtil en betingelse er opfyldt. </td>
+			<td>... anvendes når man ikke på forhånd kender antallet af gennemløb. Funktionen gennemløbes indtil en betingelse er opfyldt.</td>
 		</tr>
 	</tbody>
 </table>
 
-<p>Derudover gælder der også nogle kontroludsagn (control statements), som kan ændre udførslen af løkker.</p>
+<p>Derudover gælder der også nogle <span class="inl_cmd">control statements</span> (kontroludsagn), som kan ændre udførslen af løkker.</p>
 
 <table class="">
 	<thead>
@@ -102,7 +102,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 	</tbody>
 </table>
 
-<p>De ovenstående forklaringer ment som et indblik i hvad det er løkker og kontroludsagn gør. Herunder vil løkkerne blive gennemgået udførligt.</p>
+<p>De ovenstående forklaringer er ment som et indblik i hvad det er løkker og kontroludsagn gør. Herunder vil løkkerne blive gennemgået udførligt.</p>
 
 
 <h1><span class="inl_cmd">for</span> løkken</h1>
@@ -114,7 +114,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 <pre>
 	<code class="python">
 for i in range(5): #Udfør for de første 5 værdier
-	print (i)
+    print (i)
 	</code>
 </pre>
 
@@ -135,7 +135,7 @@ Press return to continue
 <pre>
 	<code class="python">
 for i in range(5): #Udfør for de første 5 værdier
-	print (i + 1)
+    print (i + 1)
 	</code>
 </pre>
 
@@ -156,7 +156,7 @@ Press return to continue
 <pre>
 	<code class="python">
 for i in range(8,13): #Udfør for værdierne 8-13
-	print (i)
+    print (i)
 	</code>
 </pre>
 
@@ -172,7 +172,7 @@ for i in range(8,13): #Udfør for værdierne 8-13
 Press return to continue
 </pre>
 
-<p>Læg mærke til værdierne den udskriver. Umiddelbart ville vi forvente at Python også skrev 13 ud, men sådan er det ikke. Så i <span class="inl_cmd">range()</span> er den første værdi inkluderet men ikke den sidste.</p>
+<p>Læg mærke til at <span class="inl_cmd">13</span> ikke udskrives, som vi umiddelbart ville forvente. I <span class="inl_cmd">range()</span> er den første værdi inkluderet men ikke den sidste. Det giver den fordel at den udskriver præcis <span class="inl_cmd">13-8=5</span> værdier.</p>
 
 
 <p>Det kan være uhensigtsmæssigt at få talrækker som den ovenstående udskrevet med et linieskift hver gang. Ændr koden til ved at tilføje <span class="inl_cmd">end=" "</span>:</p>
@@ -180,7 +180,7 @@ Press return to continue
 <pre>
 	<code class="python">
 for i in range(0,10):
-	print (i, end=" ")
+    print (i, end=" ")
 	</code>
 </pre>
 
@@ -199,7 +199,7 @@ Press return to continue
 <pre>
 	<code class="python">
 for i in range(0,10,2):
-	print (i, end=" ")		
+    print (i, end=" ")		
 	</code>
 </pre>
 
@@ -235,9 +235,9 @@ for i in range(startværdi, slutværdi, vækst pr. omgang)
 <code class="python">
 for i in range(1,12):
 	
-	trekanttal = ((i*(i+1))/2, end = " - ")
+    trekanttal = ((i*(i+1))/2, end = " - ")
 	
-	print (trekanttal)
+    print (trekanttal)
 	</code>
 </pre>
 
@@ -256,9 +256,9 @@ Press return to continue
 <code class="python">
 for i in range(1,12):
 	
-	trekanttal = int((i*(i+1))/2)
-	
-	print (trekanttal, end=" - ")
+    trekanttal = int((i*(i+1))/2)
+
+    print (trekanttal, end=" - ")
 	</code>
 </pre>
 
@@ -280,7 +280,7 @@ navn = "Thomas"
 
 for char in navn:
 	
-	print(char)
+    print(char)
 	</code>
 </pre>
 
@@ -345,13 +345,13 @@ tegn = -1 # Værdien sættes til -1, for at første værdi antager 0
 
 for char in ip:
 	
-	tegn +=1
-	
-	dot = "." in char
-	
-	if dot == True:
+    tegn +=1
+
+    dot = "." in char
+
+    if dot == True:
 		
-		print ("Here is a dot {0}".format(tegn))
+        print ("Here is a dot {0}".format(tegn))
 	</code>
 </pre>
 
@@ -518,11 +518,13 @@ Press return to continue
 
 <pre>
 	<code class="python">
+print("Gæt på et tal mellem 1 og 9\n")
+
 a = 0
 
 while a != 8:
 
-	a = int(input("Gæt hvilket tal jeg er: "))
+    a = int(input("Gæt hvilket tal jeg er: "))
 
 print ("\nN I C E")
 	</code>
@@ -531,24 +533,14 @@ print ("\nN I C E")
 <h3>Udvid koden</h3>
 
 <ul class="disc">
-	<li>det efter 5 forsøg i input teksten skriver: Kan man virkeligt gætte forkert så mange gange?</li>
+	<li>tallet der skal gættes laves af funktionen <span class="inl_cmd">randrange()</span></li>
+	<li>det efter 4 forsøg i input teksten skriver: Kan man virkeligt gætte forkert så mange gange?</li>
+	<li>At koden af afbrydes med beskeden <span class="inl_cmd">Du er vist useriøs</span>, hvis man ikke skriver et tal mellem 1 og 9.</li>
 	<li>At det skriver "Godt gættet :)!" når du rammer rigtigt</li>
 </ul>
 
-<p>Herunder kan du se en pseudo kode hertil</p>
 
-<ol class="">
-	<li>input</li>
-	<li>mens a &ne; 8
-		<ol class="">
-			<li>mens antal &lt; 5 and a &ne; 8</li>
-			<li>Mens antal &gt;4 and a &ne; 8</li>
-			<li>Mens a = 8</li>
-		</ol>
-	</li>
-</ol>
-
-<p><span class="bold">HINT:</span> for at kunne få en kode til at afbryde anvender man kommandoen <span class="inl_cmd">exit()</span>. Når koden læser denne linie afsluttes kørslen. Den skal indsættes under pkt. 2.3</p>
+<p><span class="bold">HINT:</span> for at kunne få en kode til at afbryde anvender man kommandoen <span class="inl_cmd">exit()</span>. Når koden læser denne linie afsluttes kørslen.</p>
 
 <h1>Betingede løkker</h1>
 
@@ -595,24 +587,24 @@ antalBrugere = int(input("Indtast antal brugere (1-4): "))
 	<code class="python">
 while True:
 	
-	antalBrugere = int(input("Indtast antal brugere (1-4): "))
+    antalBrugere = int(input("Indtast antal brugere (1-4): "))
 
-	if antalBrugere >=1 and antalBrugere &lt;=4:
-		print("\nDer er {0} brugere)".format(antalBrugere))
-		break #Hop ud af while løkken
-	else:
-		print("\n\tDer skal være mellem 1 og 4 brugere. Prøv igen...")			
+    if antalBrugere >=1 and antalBrugere &lt;=4:
+	    print("\nDer er {0} brugere)".format(antalBrugere))
+	    break #Hop ud af while løkken
+    else:
+        print("\n\tDer skal være mellem 1 og 4 brugere. Prøv igen...")			
 	</code>
 </pre>
 
 <pre class="ubuntu_terminal">
 Indtast antal brugere (1-4): 6
 
-	Der skal være mellem 1 og 4 brugere. Prøv igen...
+    Der skal være mellem 1 og 4 brugere. Prøv igen...
 
 Indtast antal brugere (1-4): 5
 
-	Der skal være mellem 1 og 4 brugere. Prøv igen...
+    Der skal være mellem 1 og 4 brugere. Prøv igen...
 
 Indtast antal brugere (1-4): 4
 
@@ -629,21 +621,21 @@ Press return to continue
 
 <h2>continue</h2>
 
-<p>Herunder vil vi sætte koden til at udskrive tallene fra 1-15, men den må ikke udskrive tal fra 3-tabellen. Det betyder at vi skal undersøge tallene ved hjælp af  <span class="inl_cmd">modulus</span> (se ovenfor):</p>
+<p>Herunder vil vi lave koden til matematiklegen BUM. Programmet skal udskrive tallene fra 1-15, men den må ikke udskrive tal fra 3-tabellen. Det betyder at vi skal undersøge tallene ved hjælp af  <span class="inl_cmd">modulus</span> (se ovenfor):</p>
 
 <pre>
 	<code class="python">
 for i in range(1,16):
-	if i%3 == 0:
-		print("XXX", end="  ")
-		continue
-	else:
-		print(i, end="  ")
+    if i%3 == 0:
+        print("BUM", end="  ")
+        continue
+    else:
+        print(i, end="  ")
 	</code>
 </pre>
 
 <pre class="ubuntu_terminal">
-1  2  XXX  4  5  XXX  7  8  XXX  10  11  XXX  13  14  XXX  
+1  2  BUM  4  5  BUM  7  8  BUM  10  11  BUM  13  14  BUM  
 
 ------------------
 (program exited with code: 0)
@@ -659,10 +651,10 @@ Press return to continue
 <pre>
 	<code class="python">
 for i in range(1,11):
-	if i == 7:
-		print("Næste tal er mit lykketal")
-		pass
-	print(i)
+    if i == 7:
+        print("Næste tal er mit lykketal")
+        pass
+    print(i)
 	</code>
 </pre>
 
@@ -689,10 +681,10 @@ Press return to continue
 <pre>
 	<code class="python">
 for i in range(1,11):
-	if i%5==0:
-		print("Kode for tal i 5 tabellen mangler")
-		pass
-	print(i)
+    if i%5==0:
+        print("Kode for tal i 5 tabellen mangler")
+        pass
+    print(i)
 	</code>
 </pre>
 
@@ -716,7 +708,7 @@ Kode for tal i 5 tabellen mangler
 Press return to continue
 </pre>
 
-<p><span class="inl_cmd">pass</span> er netop brugbar fordi den ikke gør noget ;).</p>
+<p><span class="inl_cmd">pass</span> er brugbar fordi den ikke gør noget ved koden;).</p>
 
 <h1>Tællere i løkker</h1>
 
@@ -731,25 +723,25 @@ limit = 3
 
 while True:
 	
-	antalBrugere = int(input("Indtast antal brugere (1-4): "))
-
-	if antalBrugere >=1 and antalBrugere &lt;=4:
-		print("\nDer er {0} brugere)".format(antalBrugere))
-		break #Hop ud af while løkken
-	else:
-		
-		#Tæller en ned på den øvre grænse når brugeren vælger forkert
-		limit -=1 
+    antalBrugere = int(input("Indtast antal brugere (1-4): "))
+    
+    if antalBrugere >=1 and antalBrugere &lt;=4:
+        print("\nDer er {0} brugere)".format(antalBrugere))
+        break #Hop ud af while løkken
+    else:
 	
-		#Det løkken gør så længe der er forsøg tilbage
-		if limit > 0: 
-			print("\n\tDer skal være mellem 1 og 4 brugere.")
-			print("\n\tDu har nu {0} forsøg tilbage\n".format(limit))
-		
-		# Det løkken gør når grænsen er nået
-		else: 
-			print("\nDu har ikke flere forsøg tilbage - bye bye")
-			break #Hop ud af while løkken
+        #Tæller en ned på den øvre grænse når brugeren vælger forkert
+        limit -=1 
+	
+        #Det løkken gør så længe der er forsøg tilbage
+        if limit > 0: 
+            print("\n\tDer skal være mellem 1 og 4 brugere.")
+            print("\n\tDu har nu {0} forsøg tilbage\n".format(limit))
+
+        # Det løkken gør når grænsen er nået
+        else: 
+            print("\nDu har ikke flere forsøg tilbage - bye bye")
+            break #Hop ud af while løkken
 	</code>
 </pre>
 

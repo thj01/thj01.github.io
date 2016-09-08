@@ -61,7 +61,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 <p>Angående tal skal man ikke definere om man arbejder med heltal (også kaldet intergers) eller kommatal (floating point). De defineres sammen med variablen. Det er et af områder hvor Python virkeligt adskiller sig fra andre programmeringssprog, og det betyder at den som laver programmet ikke skal forholde sig til hvordan et tal skal anvendes. Python gør det automatisk for dig.</p>
 
 <p>
-Læg mærke til at man bruger punktum (<span class="inl_cmd">.</span>) til at angive overgangen mellem hel- og decimaltal.</p>
+Læg mærke til at man bruger punktum (<span class="inl_cmd">.</span>) og ikke komma <span class="inl_cmd">,</span> til at angive overgangen mellem hel- og decimaltal.</p>
 
 <pre>
 	<code class="python">
@@ -382,7 +382,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 	</code>
 </pre>
 
-<p>En sidste regnemetode er <span class="inl_cmd">modulus</span>. Den anvendes til at finde restproduktet, som herunder hvor restproduktet af 9/5 = 4. Læg mærke til at jeg bliver nød til at skrive <span class="inl_cmd">%%</span> - altså to gange efter hinanden. Det er kun nødvendig når vi anvender pladsholdere og andre funktioner der starter med et %.</p>
+<p>En sidste regnemetode er <span class="inl_cmd">modulus</span>. Den anvendes til at finde restproduktet, som herunder hvor restproduktet af 9/5 = 4.</p>
 <pre>
 	<code class="python">
 >>> 9%5
@@ -585,11 +585,11 @@ faktor = int(input("Skriv den faktor du vil undersøge tallet med: "))
 
 if tal%faktor == 0:
 
-	print("{0} er en faktor i {1}".format(faktor,tal))
+    print("{0} er en faktor i {1}".format(faktor,tal))
 
 else:
 
-	print("{0} er ikke en faktor i {1}".format(faktor,tal))
+    print("{0} er ikke en faktor i {1}".format(faktor,tal))
 	</code>
 </pre>
 
@@ -706,7 +706,7 @@ Press return to continue
 
 <span class="afsnit">VIGTIGT</span>
 
-<p>De to sidste: <span class="inl_cmd">and</span> / <span class="inl_cmd">or</span> skal vi som danskere være meget forsigtige med, fordi de er logiske og ikke sproglige. Et eksempel kan være hvor betingelsen er, at man både kan svare med <span class="inl_cmd">j</span> og <span class="inl_cmd">J</span> - altså både det lille <span class="bold">OG</span> det store bogstav. Umiddelbart ville nedestående linie give mening:</p>
+<p>De to sidste (<span class="inl_cmd">and</span> og  <span class="inl_cmd">or</span>) skal vi som danskere være meget forsigtige med, fordi de er logiske og ikke sproglige. Et eksempel kan være hvor betingelsen er, at man både kan svare med <span class="inl_cmd">j</span> og <span class="inl_cmd">J</span> - altså både det lille <span class="bold">OG</span> det store bogstav. Umiddelbart ville nedestående linie give mening:</p>
 	
 <pre>
 	<code class="python">
@@ -714,11 +714,11 @@ if valg ==  "j" and valg == "J" : #Gælder for både lille <span class="bold">og
 	</code>
 </pre>
 
-<p>Sprogligt giver det mening, men problemet er, at brugeren aldrig vil kunne taste både j og J på samme tid. Så derfor vil Python afvise at betingelserne er opfyldt. Det er ikke Python der laver fejl, men mere et udtryk for at det danske sprog er finurligt og ulogisk. F.eks. så kan vi også finde på at spørge: "er det ikke sjovt" .. når vi faktisk mener "er det sjovt". Det er ikke kun udlændinge der synes vores sprog er ulogisk.</p>
+<p>Sprogligt giver det mening, men problemet er, at brugeren aldrig vil kunne taste både j og J på samme tid. Så derfor vil Python afvise at betingelserne er opfyldt. Det er ikke Python der laver fejl, men mere et udtryk for at det danske sprog er finurligt og ulogisk. F.eks. så kan vi også finde på at spørge: "er det ikke sjovt" .. når vi faktisk mener "er det sjovt". Det er ikke kun udlændinge der synes vores sprog er ulogisk. Computere kan heller ikke forstå os ;).</p>
 
 <h2>Afgrænsede områder</h2>
 
-<p>Nogle gange har man brug for at kunne afgrænse områder. Forestil dig at vi skal udvælge brugere der er fra 15 år til og med 22. Det matematiske udsagn ville være <span class="inl_cmd">15 &le; x &le; 22</span> da både 15 og 21 er med i talmængden. I Python skal vi splitte det op i to udsagn hvor vi skal beskrive den ned grænse og den øvre grænse ud fra x: <span class="inl_cmd">x &gt;= 15 <span class="blue">and</span> x &gt;= 22</span>.</p>
+<p>Nogle gange har man brug for at kunne afgrænse områder. Forestil dig at vi skal udvælge brugere der er fra 15 år til og med 22. Det matematiske udsagn ville være <span class="inl_cmd">15 &le; x &le; 22</span> da både 15 og 21 er med i talmængden. I Python skal vi splitte det op i to udsagn hvor vi skal beskrive den ned grænse og den øvre grænse ud fra x: <span class="inl_cmd">x &ge; 15 <span class="blue">and</span> x &le; 22</span>.</p>
 
 <p>Her skal man igen være bevidst om hvilken talmængde man arbejder med. Skal man f.eks. gennemløbe alle bogstaverne i et navn så skal man tænke i talmængden &#8469;<sub>0</sub>.</p>
 
@@ -746,7 +746,7 @@ if valg ==  "j" and valg == "J" : #Gælder for både lille <span class="bold">og
 	</tbody>
 </table>
 
-<p>Hvis man spørger Python om længden på navnet, så vil vi få 6, men programmet skal gennemløbe værdierne 0-5. Umiddelbart ville vi tænke <span class="inl_cmd">1 &le; x &le; 6</span>, men det vil reelt være <span class="inl_cmd">0 &le; x &lt; 5</span>. Men som vi vil lære i afsnittet om løkker, så er det tænkt ind i syntaksen.</p>
+<p>Hvis man spørger Python om længden på navnet, så vil vi få 6, men programmet skal gennemløbe værdierne 0-5. Umiddelbart ville vi tænke <span class="inl_cmd">1 &le; x &le; 6</span>, men det vil reelt være <span class="inl_cmd">0 &le; x &le; 5</span>. Men som vi vil lære i afsnittet om løkker, så er det tænkt ind i syntaksen.</p>
 
 <h1>Matematiske funktioner</h1>
 
@@ -1117,7 +1117,7 @@ Et terningkast: 5
 Press return to continue
 </pre>
 
-<p>I dette eksempel importeres enkelt elementerne fra modulet. Det gør at vi kan kalde modulets funktioner direkte i vores kode. Dvs. for at kunne lave et random tal skal vi blot angive <span class="inl_cmd">random()</span>).</p>
+<p>I dette eksempel importeres enkelt elementerne fra modulet. Det gør at vi kan kalde modulets funktioner direkte i vores kode. Dvs. for at kunne lave et random tal skal vi blot angive <span class="inl_cmd">random()</span>.</p>
 
 <p>Hvis vi blot importerer modulet skal vi hver gang vi anvender noget fra modulet angive både modulets navn og funktion (<span class="inl_cmd">random.random()</span>).</p>
 
@@ -1192,7 +1192,7 @@ Press return to continue
 
 <h3>Opgave - Ordsprog</h3>
 
-<p>Lav ved hjælp af en dictionary et program, som udskriver et tilfældigt ordsprog når det startes.</p>
+<p>Lav et program der ved hjælp af <span class="inl_cmd">random()</span> udskriver mindst 4 ordsprog.</p>
 
 
 

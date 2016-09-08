@@ -265,7 +265,7 @@ if mail[-3:] == ".dk":
 	</code>
 </pre>
 
-<p>Der er nu engang mange veje til Rom.</p>
+<p>... men så havde vi ikke brugt <span class="inl_cmd">count()</span> ;).</p>
 
 <h2><span class="inl_cmd">find()</span> - Find tekstelementer i tekststrenge</h2>
 
@@ -277,7 +277,7 @@ if mail[-3:] == ".dk":
 	</code>
 </pre>
 
-<p>Lad os lave et program der finder ud af hvad landekode en internetadresse har f.eks. <span class="inl_cmd">yahoo.dk</span>. Vi ved at landekoden er på enten 2 eller 3 bogstaver, så derfor skal vi finde det sidste dot mellem de 4 sidste tegn. Når vi kender positionen af det sidste dot, så kender vi også landekoden, fordi den ligger lige foran dot (dot+1). Så vi laver nedestående kode:</p>
+<p>Lad os lave et program der finder ud af hvad landekode en internetadresse har f.eks. <span class="inl_cmd">yahoo.dk</span>. Vi ved at landekoder er på enten 2 eller 3 bogstaver, så derfor skal vi finde ud af om det er et mellem de 4 sidste tegn. Koden er kommenteret.</p>
 
 <pre>
 	<code class="python">
@@ -303,7 +303,7 @@ hoo.dk
 Press return to continue
 </pre>
 
-<p>Som vi kan se går det galt. Problemet er, at programmet finder ud af, at dot står på på position 1 imellem de 4 sidste tegn i mailen. Men vi beder programmet om at udskrive <span class="bold">hele</span> mailen fra positionen. Vi bliver nød til at fortælle Python at den skal finde positionen blandt de fire sidste elementer. Vi skal <span class="inl_cmd">slicen slicen</span>:</p>
+<p>Som vi kan se går det galt. Problemet er, at programmet finder ud af, at dot står på på position 1 imellem de 4 sidste tegn i mailen. Men vi beder programmet om at udskrive <span class="bold">hele</span> mailen fra positionen. Vi bliver nød til at fortælle Python at den skal finde positionen blandt de fire sidste elementer. Vi skal <span class="inl_cmd">slice slicen</span>:</p>
 
 <pre>
 	<code class="python">
@@ -348,9 +348,13 @@ print(lande_kode)
 <p>Lav et program hvor brugerens input bliver udskrevet baglæns</p>
 
 <pre class="ubuntu_terminal">
-Indtast tekst: Ubrugeligt... men sjovt! 
+Skriv en tekst der skal "Bakkes snavendt"
 
-	!tvojs nem ...tgilegurbU
+Skriv tekst: Ubrugeligt... men sjovt
+
+
+	tvojs nem ...tgilegurbU
+
 
 ------------------
 (program exited with code: 0)
