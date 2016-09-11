@@ -47,63 +47,74 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <div class="title">Regneark</div>
 
+<p>I dette dokument er der en oversigt over anvendelige funktioner for matematik C EUX Merkantil og HHX. Regnearksfunktionerne vil blive gennemgået for Microsoft Excel, Libreoffice Calc og Google Sheets.</p>
+
 <h1>Almindelige funktioner</h1>
 
 <table class="">
 	<thead>
 		<tr>
-			<th></th>
-			<th></th>
+			<th>Excel/Calc</th>
+			<th>Sheets*</th>
+			<th>Beskrivelse</th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr>
 			<td>sum(Område)</td>
+			<td>sum(Område)</td>
 			<td>Lægger tallene i et område sammen</td>
 		</tr>
 		<tr>
+			<td>abs(Tal)</td>
 			<td>abs(Tal)</td>
 			<td>Returnerer den positive værdi af et tal</td>
 		</tr>
 		<tr>
 			<td>afrund(Tal)</td>
+			<td>round(tal)</td>
 			<td>Afrunder et tal med det valgte antal decimaler</td>
 		</tr>
 		<tr>
-			<td>afkort(Tal)</td>
+			<td>afkort(Tal;decimaler)</td>
+			<td>trunc(tal;decimaler)</td>
 			<td>Afkort et med til det valgte antal decimaler</td>
 		</tr>
 		<tr>
 			<td>tæl(Område)</td>
+			<td>count()</td>
 			<td>Tæller antallet af celler med talværdier i et område</td>
 		</tr>
 		<tr>
 			<td>tælv(Område)</td>
+			<td>counta(Område)</td>
 			<td>Tæller antallet af celler med talværdier og strenge i et område</td>
 		</tr>
 		<tr>
 			<td>tæl.hvis(Område;Betingelse)</td>
+			<td>countif(Område;Betingelse)</td>
 			<td>Tæller antallet af celler med talværdier og strenge i et område</td>
 		</tr>
 		<tr>
-			<td>tælv.hvis(Område;Tal)</td>
-			<td>Tæller antallet af celler med talværdier og strenge, hvis de har den angivne værdi</td>
-		</tr>
-		<tr>
 			<td>heltal(Tal)</td>
+			<td>int(tal)</td>
 			<td>Ændrer decimaltal til heltal</td>
 		</tr>
 		<tr>
 			<td>lige(Tal)</td>
+			<td>even(Tal)</td>
 			<td>Runder op til næste hele tal</td>
 		</tr>
 		<tr>
 			<td>ulige(Tal)</td>
+			<td>odd(Tal)</td>
 			<td>Runder op til næste ulige tal</td>
 		</tr>
 		
 	</tbody>
 </table>
+
+<p>* Hvis man indtaster de danske funktioner i Google Sheets, så vil de automatisk blive omdannet til de engelske funktioner.</p>
 
 <h1>Logiske funktioner</h1>
 
@@ -113,7 +124,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 	<thead>
 		<tr>
 			<th>Matematik</th>
-			<th>Excel</th>
+			<th>Excel/Calc/Sheets</th>
 			<th>Forklaring</th>
 		</tr>
 	</thead>
