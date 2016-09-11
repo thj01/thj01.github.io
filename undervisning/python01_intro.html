@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+
+<head>
+	
+	<meta charset="UTF-8" lang="da"/>
+
+	<title>Python 3: Introduktion - Thomas Jensen</title>
+
+	<link rel="stylesheet" href="../css/styles/docco.css" />
+
+	<link rel="stylesheet" href="../css/style.css" />
+
+	<link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono|Ubuntu|Ubuntu+Condensed' rel='stylesheet' type='text/css'>
+	
+	<script src="../js/toc2.js" type="text/javascript"></script>
+	<script src="https://code.jquery.com/jquery-2.2.2.js"></script>
+	<script src="../js/highlight.pack.js" type="text/javascript"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+
+
+</head>
+
+<!-- 
+
+code highlighter : https://highlightjs.org/
+
+code converter : http://www.freebits.co.uk/convert-html-code-to-text.html 
+
+-->
+
+
+<html>
+
+<body onload="generateTOC(document.getElementById('toc'));">
+
+<footer id="license"></footer>
+
+	<script> $( "#license" ).load( "license.html" ); </script>
+
+	<div id="toc">
+	<p>Indholdsfortegnelse</p>
+	
+	</div>
+	
+
+<figure id="">
+
+	<img class="" src="images/python-logo-inkscape.svg" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<div class="title">Introduktion til Python 3</div>
+
+<h1>Introduktion til Python 3</h1>
+
+<p>Python er et højniveau programmeringssprog som lægger vægt på at koden er let læselig og kræver så få linier som muligt. Med andre ord er det et programmeringssprog der hurtigt at komme igang med. Men ligesom alle andre programmeringssprog kræver det viden og erfaring at lave større kodearbejde.</p>
+
+<p>Dette materiale er skabt sådan, at du metodisk bliver ført ind i hvordan Python virker ved hjælp af eksempler og forklaringer. For at lære mest muligt bør du indtaste kodeeksemplerne fremfor at kopiere dem, da det vil hjælpe dig til at lære mere effektiv. Materialet er lavet og testet på Ubuntu 16.04 sammen med Python 3.5.</p>
+
+
+<a href="https://en.wikipedia.org/wiki/Python_(programming_language)" target="_blank">https://en.wikipedia.org/wiki/Python_(programming_language)</a>
+		
+<h1>Installation</h1>
+
+<p>I dette kapitel vil vi gøre computeren klar til at arbejde med Python. I dette materiale anvendes Geany som teksteditor</p>
+
+<h2>På Ubuntu</h2>
+
+<p>På Ubuntu 16.04 LTS er både Python 2 og 3 installeret fra start. Derfor skal vi kun have installeret Geany. Har du installeret Ubuntu 16.04 efter Ubuntuguiden, så er Geany allerede installeret. Hvis ikke anvender du nedestående kommando.</p>
+
+<code class="cmd">sudo apt-get install geany -y</code>
+
+<p>Geany er som standard sat til at anvende Python 2, men vi vil anvende version 3. Geany skal konfigureres i to skridt: Først skal dokumentet sættes til at være en phyton fil - og derefter skal Geany' "build command" sættes korrekt</p>
+
+<p>For at ændre dokumenttypen bruges menuerne: <span class="bold">Document</span>  &#8594; <span class="bold">Set File Type</span> &#8594; <span class="bold">Scripting Languages</span> &#8594; <span class="bold">Python Source File</span></p>
+
+<p>Konfigurer "Build Command" ved at åbne menuerne: <span class="bold">Build</span>  &#8594; <span class="bold">Set Build Commands</span> og sæt et 3'tal efter <span class="inl_cmd">python</span> i de to linier: Compile og Execute (se nedenfor).</p>
+
+<figure id="">
+
+	<img src="images/programmering_setbuild_geany.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Herefter vil python afvikle og kompilere kode med udgangspunkt i Python3.</p>
+
+<h2>Installer på Windows</h2>
+
+<p>Vi skal installere både Python og Geany på Windows. Det gøres på følgende måde:</p>
+
+<span class="afsnit">Installer Geany</span>
+
+<p>Download og installer nyest version af Geany her: <a href="http://www.geany.org/Download/Releases#windowsBinaries" target="_blank">http://www.geany.org/Download/Releases#windowsBinaries</a>. Sørg for at vælge versionen "Full Installer including GTK".</p>
+
+<span class="afsnit">Installer Python 3</span>
+
+<p>Download nyeste version af Python her: <a href="https://www.python.org/downloads/" target="_blank">https://www.python.org/downloads/</a>. Vælg <span class="inl_cmd">Windows x86-64 executable installer</span>.</p>
+
+<p>Under installationen skal du sætte flueben i <span class="inl_cmd">Add Python 3.5 to PATH</span>, så koden kan eksekveres fra hele systemet.</p>
+
+<figure id="">
+
+	<img class="80" src="images/programmering_Windowsinstall_python01.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Download nyeste version af Geany her: <a href="http://www.geany.org/Download/Releases" target="_blank">https://www.python.org/downloads/</a>. Vælg <span class="inl_cmd">geany-X.XX_setup.exe </span>, hvor X.XX er versionsnummeret.</p>
+
+<p>Igennem hele installationen vælges standardindstillingerne.</p>
+
+<h1>Noget grundlæggende</h1>
+
+<p>Før vi går igang med at programmere skal vi have en vigtig ting afklaret.</p>
+
+<p>Computere og dermed også programmeringssprog er "dumme".</p>
+
+<p>Hvis jeg i en samtale sagde: "Terninger har 6 sider", så vil modtageren vide at <span class="inl_cmd">terninger</span> og <span class="inl_cmd">sider</span> er beskrivelser af "noget", og at <span class="inl_cmd">6</span> er et tal. Det ved Python ikke med med mindre man fortæller den det. Faktisk vil computeren opfatte ovenstående sætning som 22 tegn. Derfor er det programmørens opgave at beskrive overfor Python hvad der er tegn og hvad der er tal.</p>
+
+
+<h2>Vigtige begreber</h2>
+
+<p>Herunder er et skema med nogle vigtige begreber:</p>
+
+<span class="afsnit">Char og strings - (karakterer og strenge)</span>
+
+<p><span class="inl_cmd">Char</span> dækker over det enkelte tegn og <span class="inl_cmd">strings</span> over en samling af <span class="inl_cmd">char's</span>. I Ovenstående sætning vil tallet 6 blive opfattet som en <span class="inl_cmd">char</span> og man vil altså ikke kunne regne med det.</p>
+
+<span class="afsnit">Integer</span>
+
+<p>En <span class="inl_cmd">integer</span> er et heltal. For at få Python til at forstå tegnet <span class="inl_cmd">6</span> til at være et heltal, skal det altså konverteres først. Her skal man også huske på at <span class="inl_cmd">A</span> også kan tolkes som et heltal nemlig den 11. værdi i det hexadecimale talsystem. Pointen er, at programmøren skal fortælle det python hvad der er tal og hvad der er tegn.</p>
+
+<span class="afsnit">Float</span>
+
+<p>Decimaltal kaldes for <span class="inl_cmd">float</span>. En af fordelene ved at anvende Python er, at det selv konverterer mellem hel- og decimal tal. Hvis man f.eks. lægger 2 og 1,5 sammen vil det give 3,5 i Python, hvor det i andre programmeringssprog (f.eks. C/C++ og C#) vil få programmet til at melde fejl.</p>
+
+<span class="afsnit">Funktioner</span>
+
+<p>Funktioner angives med en parantes til sidst f.eks. <span class="inl_cmd">print()</span>. Det som den funktion gør er at udskrive det som står i parantesen. Hvis du vil se en liste over de indbyggede funktioner i Python kan du gå hertil: <a href="https://docs.python.org/3.5/library/functions.html" target="_blank">https://docs.python.org/3.5/library/functions.html</a></p>
+
+
+<p>Du vil løbende lære nye udtryk, men de ovenstående er vigtige for at komme godt igang.</p>
+
+<h2>Python fortolker</h2>
+
+<p>Der er indbygget en fortolker i python. Den kan man få frem ved at køre kommandoen <span class="inl_cmd">python3</span> fra en terminal.</p>
+
+<pre class="ubuntu_terminal">
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ python3
+Python 3.5.1+ (default, Mar 30 2016, 22:46:26)   <span class="red">&lt;--- Her starter fortolkeren!</span>
+[GCC 5.3.1 20160330] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> 
+</pre>
+
+<p>Efter <span class="inl_cmd">>>></span> står der en cursor og blinker. Prøv at indtaste <span class="inl_cmd">ord("d")</span> og se hvad Python "svarer".</p>
+
+<pre class="black">
+Python 3.5.1+ (default, Mar 30 2016, 22:46:26) 
+[GCC 5.3.1 20160330] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> ord("d")  <span class="red">&lt;--- Indtastningen</span>
+100   <span class="red">&lt;--- Pythons svar</span>
+>>>
+</pre>
+
+<p>Python svarer tilbage med 100, fordi tegnet d er tegn nr 100. Det kan vi tjekke igen ved at indtaste <span class="inl_cmd">chr(100)</span>:</p>
+
+<pre class="black">
+Python 3.5.1+ (default, Mar 30 2016, 22:46:26) 
+[GCC 5.3.1 20160330] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> ord("d")
+100
+>>> chr(100)   <span class="red">&lt;--- Ny indtastningen</span>
+'d'   <span class="red">&lt;--- Pythons svar</span>
+>>> 
+</pre>
+
+<p>For at komme ud af kommendofortolkeren kører du kommandoen <span class="inl_cmd">exit()</span></p>
+
+<p>I dette materiale vil vi anvende Geany til at skrive programmerne i og udføre dem derfra. Men hvis ønsker at teste nogle ting, kan du åbne en Python fortolker, og teste tingene der.</p>
+
+<h1>Ressourcer på nettet</h1>
+
+<p><a href="https://www.raspberrypi.org/documentation/usage/python/" target="_blank">https://www.raspberrypi.org/documentation/usage/python/</a></p>
+
+<p><a href="https://www.raspberrypi.org/documentation/usage/python/more.md" target="_blank">https://www.raspberrypi.org/documentation/usage/python/more.md</a></p>
+
+<p><a href="https://docs.python.org/3/" target="_blank">https://docs.python.org/3/</a></p>
+
+<a href="http://www.tutorialspoint.com/python/index.htm" target="_blank">http://www.tutorialspoint.com/python/index.htm (skrevet til Python2)</a>
+
+<p></p>
+
+<p></p>
+
+<p></p>
+
+<p></p>
+
+
+
+	</body>
+
+</html>
