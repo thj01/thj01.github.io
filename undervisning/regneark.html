@@ -61,58 +61,58 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 	</thead>
 	<tbody>
 		<tr>
-			<td>sum(Område)</td>
-			<td>sum(Område)</td>
+			<td>SUM(Område)</td>
+			<td>SUM(Område)</td>
 			<td>Lægger tallene i et område sammen</td>
 		</tr>
 		<tr>
-			<td>abs(Tal)</td>
-			<td>abs(Tal)</td>
+			<td>ABS(Tal)</td>
+			<td>ABS(Tal)</td>
 			<td>Returnerer den positive værdi af et tal</td>
 		</tr>
 		<tr>
-			<td>afrund(Tal)</td>
-			<td>round(tal)</td>
+			<td>AFRUND(Tal)</td>
+			<td>ROUND(tal)</td>
 			<td>Afrunder et tal med det valgte antal decimaler</td>
 		</tr>
 		<tr>
-			<td>rest(tal;division)</td>
-			<td>mod(tal;division)</td>
+			<td>REST(tal;division)</td>
+			<td>MOD(tal;division)</td>
 			<td>Finder rest (modulus) efter division f.eks. <span class="inl_cmd">modulus 5/4 = 1</span> </td>
 		</tr>
 		<tr>
-			<td>afkort(Tal;decimaler)</td>
-			<td>trunc(tal;decimaler)</td>
+			<td>AFKORT(Tal;decimaler)</td>
+			<td>TRUNC(tal;decimaler)</td>
 			<td>Afkort et med til det valgte antal decimaler</td>
 		</tr>
 		<tr>
-			<td>tæl(Område)</td>
-			<td>count()</td>
+			<td>TÆL(Område)</td>
+			<td>COUNT(Område)</td>
 			<td>Tæller antallet af celler med talværdier i et område</td>
 		</tr>
 		<tr>
-			<td>tælv(Område)</td>
-			<td>counta(Område)</td>
+			<td>TÆLV(Område)</td>
+			<td>COUNTA(Område)</td>
 			<td>Tæller antallet af celler med talværdier og strenge i et område</td>
 		</tr>
 		<tr>
-			<td>tæl.hvis(Område;Betingelse)</td>
-			<td>countif(Område;Betingelse)</td>
+			<td>TÆL.HVIS(Område;Betingelse)</td>
+			<td>COUNTIF(Område;Betingelse)</td>
 			<td>Tæller antallet af celler med talværdier og strenge i et område</td>
 		</tr>
 		<tr>
-			<td>heltal(Tal)</td>
-			<td>int(tal)</td>
+			<td>HELTAL(Tal)</td>
+			<td>INT(tal)</td>
 			<td>Ændrer decimaltal til heltal</td>
 		</tr>
 		<tr>
-			<td>lige(Tal)</td>
-			<td>even(Tal)</td>
+			<td>LIGE(Tal)</td>
+			<td>EVEN(Tal)</td>
 			<td>Runder op til næste hele tal</td>
 		</tr>
 		<tr>
-			<td>ulige(Tal)</td>
-			<td>odd(Tal)</td>
+			<td>ULIGE(Tal)</td>
+			<td>ODD(Tal)</td>
 			<td>Runder op til næste ulige tal</td>
 		</tr>
 		
@@ -297,17 +297,42 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <p>Funktionen <span class="inl_cmd">YDELSE()</span> bliver brugt til beregne lån og opsparinger. Herunder vil følgende blive gennemgået:</p>
 
-<ul class="none">
-	<li>YDELSE() - den samlede ydelse på lån/opsparing</li>
-	<li>R.YDELSE() - renten i den konkrete periode</li>
-	<li>H.YDELSE() - Ydelsen på lånet/opsparingen i perioden</li>
-</ul>
+<table class="">
+	<thead>
+		<tr>
+			<th>Excel/Calc</th>
+			<th>Sheets*</th>
+			<th>Beskrivelse</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>YDELSE(Område)</td>
+			<td>PMT(Område)</td>
+			<td>Den samlede ydelse på lån/opsparing</td>
+		</tr>
+		<tr>
+			<td>R.YDELSE()</td>
+			<td>IPMT(Tal)</td>
+			<td>Renten i den konkrete periodel</td>
+		</tr>
+		<tr>
+			<td>H.YDELSE()</td>
+			<td>PPMT(tal)</td>
+			<td>Ydelsen på lånet/opsparingen i perioden</td>
+		</tr>
+
+	</tbody>
+</table>
+
 
 <p></p>
 
 <span class="afsnit">YDELSE()</span>
 
 <p>Giver det beløb man skal betale hver periode. Her skal man ikke angive perioden, da ydelsen er den samme i alle perioder.</p>
+
+<p>Funktion i Sheets: PMT().</p>
 
 <p><span class="bold">Anvendelse: </span><span class="inl_cmd">ydelse(rente;Nper;Nv;Fv;Type)</span></p>
 
@@ -356,22 +381,36 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 	<li>Bidrag i 13 periode: <span class="red">-555,05</span> (553,94+1,11 = 555.05)</li>
 </ul>
 
-<h2>VARIGHED()</h2>
+<p></p>
 
-<p>Udregner antallet af perioder der går for at et  beløb får den ønskede værdi</p>
+<h1>FV()</h1>
 
-<p><span class="bold">Anvendelse: </span>VARIGHED(Rente;Nv;Fv)</p>
+<p><span class="red">** IKKE FÆRDIG **</span></p>
 
-<p>Herunder vises det hvor lang tid der går før kr. 10000,- er vokset til 15000 ved 2% p.a.</p>
+<p>Giver Fremtidsværdien af en investering baseret på faste ydelser og fast rente</p>
 
-<p><span class="inl_cmd">VARIGHED(0,02;10000;15000)</span> = 20,48 perioder (21 år)</p>
+<p>Funktion i Sheets: FV().</p>
 
-<p><span class="bold">Opsparing (13. periode)</span>: <span class="inl_cmd">H.YDELSE(0,002/12;1;3*12;0;20000)</span> = <span class="red">-555,05</span></p>
+<p><span class="bold">Anvendelse: </span><span class="inl_cmd">FV(rente;Nper;Ydelse;NV)</span></p>
 
 <ul class="none">
-	<li>Afdrag i 13 periode: <span class="red">-270,44</span></li>
-	<li>Bidrag i 13 periode: <span class="red">-555,05</span> (553,94+1,11 = 555.05)</li>
+	<li>Rente - fast rente pr periode i opsparingens løbetid</li>
+	<li>Nper - Antal perioder i alt</li>
+	<li>Ydelse - Den faste ydelse pr månede</li>
+	<li>NV - Opsparingens startbeløb</li>
 </ul>
+
+<p><span class="bold">Lån</span>: <span class="inl_cmd">FV(0,002/12;3*12;1500;0)</span> = <span class="red">-302,41</span></p>
+
+<p>Tallene bliver negative da det er noget du skel indbetale - altså noget du har mindre.</p>
+
+<ul class="none">
+	<li>Afdrag på lån pr månede: 302,41</li>
+</ul>
+
+
+
+
 
 <h1>Matematiske funktioner</h1>
 
