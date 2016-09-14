@@ -206,24 +206,12 @@ Press return to continue
 <table class="">
 	<tbody>
 		<tr>
-			<td>\f</td>
-			<td>Formfeed</td>
-		</tr>
-		<tr>
 			<td>\n</td>
 			<td>Linefeed</td>
 		</tr>
 		<tr>
-			<td>\r</td>
-			<td>Carriage return</td>
-		</tr>
-		<tr>
 			<td>\t</td>
 			<td>Horisontal TAB</td>
-		</tr>
-		<tr>
-			<td>\v</td>
-			<td>Vertikal TAB</td>
 		</tr>
 	</tbody>
 </table>
@@ -232,39 +220,17 @@ Press return to continue
 
 <pre>
 	<code class="python">
-print ("Dette er en sætning \f med formfeed")
-
-print ("----------------------------------------------")
-
-print ("Dette er en sætning \nmed linefeed")
-
-print ("----------------------------------------------")
-
-print ("Dette er en sætning \rmed carriage return")
-
-print ("----------------------------------------------")
+print ("Dette er en sætning \nmed linefeed\n")
 
 print ("Dette er en sætning \t horisontal TAB")
-
-print ("----------------------------------------------")
-
-print ("Dette er en sætning \v vertical TAB")
 	</code>
 </pre>
 
 <pre class="ubuntu_terminal">
 Dette er en sætning 
-                     med formfeed
-----------------------------------------------
-Dette er en sætning 
 med linefeed
-----------------------------------------------
-med carriage return 
-----------------------------------------------
+
 Dette er en sætning 	 horisontal TAB
-----------------------------------------------
-Dette er en sætning 
-                     vertical TAB
 
 ------------------
 (program exited with code: 0)
