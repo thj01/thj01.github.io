@@ -382,7 +382,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <p></p>
 
-<h2>FV()</h1>
+<h2>FV()</h2>
 
 <p>Giver Fremtidsværdien af en investering baseret på faste ydelser og fast rente</p>
 
@@ -393,6 +393,22 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 <p>Husk ydelsen skal angives negativ, da det er noget man udbetaler til lånet.</p>
 
 <p><span class="bold">Lån</span>: <span class="inl_cmd">FV(0,002/12;3*12;-1500;0)</span> = kr. 54.157.80</p>
+
+<h2>NPER()</h2>
+
+<p>Giver antallet af ydelser for et lån eller en investering:</p>
+
+<p>Funktion i Sheets: NPER().</p>
+
+<p><span class="bold">Anvendelse: </span><span class="inl_cmd">NPER(rente;Ydelse;NV;FV;Type)</span></p>
+
+<p>Herunder er udregningen på et lån på kr. 20.000, 2% pa. og en ydelse på kr. 1.500,-. Husk ydelsen skal angives negativ, da det er noget man udbetaler til lånet/opsparingen.</p>
+
+<p><span class="bold">Lån</span>: <span class="inl_cmd">NPER(0,002/12;-1500;20000;0)</span> = 13,35 ydelser</p>
+
+<h2>NV()</h2> <span class="red">IKKE FÆRDIG</span>
+
+
 
 
 <h1>Matematiske funktioner</h1>
