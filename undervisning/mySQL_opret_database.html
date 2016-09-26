@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+
+<head>
+	
+	<meta charset="UTF-8" lang="da"/>
+
+	<title>MySQL - Opret database - Thomas Jensen</title>
+
+	<link rel="stylesheet" href="../css/styles/docco.css" />
+
+	<link rel="stylesheet" href="../css/style.css" />
+
+	<link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono|Ubuntu|Ubuntu+Condensed' rel='stylesheet' type='text/css'>
+	
+	<script src="../js/toc2.js" type="text/javascript"></script>
+	<script src="https://code.jquery.com/jquery-2.2.2.js"></script>
+	<script src="../js/highlight.pack.js" type="text/javascript"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+
+</head>
+
+<!-- 
+
+code highlighter : 
+
+code converter : http://www.freebits.co.uk/convert-html-code-to-text.html 
+
+
+
+
+-->
+
+
+
+<html>
+
+<body onload="generateTOC(document.getElementById('toc'));">
+
+<footer id="license"></footer>
+
+	<script> $( "#license" ).load( "license.html" ); </script>
+
+	<div id="toc">
+	<p>Indholdsfortegnelse</p>
+	
+	</div>
+
+<div class="title">MySQL - Opret en database</div>
+
+<h1>Overblik over phpMyAdmin</h1>
+
+
+<h2>Hovedvindue</h2>
+
+<p></p>
+
+<figure id="">
+
+	<img class="p90" src="images/mysql_main_window_01.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h2>Databaser</h2>
+
+<p></p>
+
+<figure id="">
+
+	<img class="" src="images/mysql_main_window_Databaser.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h2>SQL</h2>
+
+<p></p>
+
+
+<figure id="">
+
+	<img class="" src="images/mysql_main_window_SQL.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h2>Status</h2>
+
+<p></p>
+
+<figure id="">
+
+	<img class="" src="images/mysql_main_window_Status.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h2>Brugerkonti</h2>
+
+<p></p>
+
+<figure id="">
+
+	<img class="" src="images/mysql_main_window_Brugerkonti.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h1>Grundbegreber</h1>
+
+<span class="afsnit">Database</span>
+
+<p></p>
+
+<span class="afsnit">Tabel</span>
+
+<p></p>
+
+<span class="afsnit">Post</span>
+
+<p></p>
+
+<span class="afsnit">Nøgle</span>
+
+<p></p>
+
+<h1>Datatyper</h1>
+
+<p>Herunder kan du se de mest anvendte datatyper. Se her for en komplet liste: <a href="http://www.w3schools.com/sql/sql_datatypes.asp" target="_blank">http://www.w3schools.com/sql/sql_datatypes.asp</a></p>
+
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Datatype</th>
+			<th>Beskrivelse</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>CHAR(str)</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>VARCHAR(str)</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>TEXT</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>TINYINT(str)</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>INT(Str)</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>FLOAT(Str,Dec)</td>
+			<td></td>
+		</tr>
+	</tbody>
+</table>
+
+
+<h1>Normalisering</h1>
+
+<p>En database er grundlæggende en samling data der er organiseret i rækker og kolonner. I rækkerne (kaldes også en <span class="inl_cmd">post</span>) har vi de enkelte opslag og i kolonnerne de kategorier opslaget skal indeholde. Herunder er et skema over mentorfordelingen på en mindre skole. </p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Mentor</th>
+			<th>Klasse 1</th>
+			<th>Klasse 2</th>
+			<th>Klasse 3</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Thomas</td>
+			<td>1a (17 elever)</td>
+			<td>2a (22 elever)</td>
+			<td>3a (21 elever)</td>
+		</tr>
+		<tr>
+			<td>Bent</td>
+			<td>1b (16 elever)</td>
+			<td>2b (24 elever)</td>
+			<td>3b (22 elever)</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Skemaet ovenfor er let at læse for os, men det for at gøre det til effektiv til en database skal vi anvende <span class="inl_cmd">normalisering</span>. Normaliseringsprocessen sikrer at data ikke bliver gentaget flere steder og data er entydig. Det man vil undgå er <span class="inl_cmd">redundans</span> og <span class="inl_cmd">inkonsistens</span>.</p>
+
+<p>Normalisering er den proces, man gennemløber i designfasen af sin database, og den sker i tre trin:</p>
+
+<ol class="">
+	<li>Normalform 1 (NF1)</li>
+	
+	<ul class="disc">
+		<li>Tabellen har en nøgle</li>
+		<li>Der må kun være en værdi af samme type i hver post</li>
+		<li>Alle poster skal være lige lange</li>
+	</ul>
+	
+	<li>Normalform 2 (NF2)</li>
+	
+	<ul class="disc">
+		<li>Tabellen opfylder NF1</li>
+		<li>Der må kun være en nøgle i hver tabel, der entydigt bestemmer indholdet.</li>
+
+	</ul>
+		
+	<li>Normalform 3 (NF3)</li>
+	
+	<ul class="disc">
+		<li>Tabellen opfylder NF2</li>
+		<li>Hvis der er mere end et feldt der kan sættes som nøgle for andre felter skal tabellen opdeles i flere.</li>
+	</ul>
+</ol>
+
+<p>Her kan du finde en (relativ) <a href="http://laerer.rhs.dk/psl/rhs/HHX-materiale/Databaser/Database%20-%20Design/Pr%C3%A6sentationer/Del%208%20-%20Normalisering.ppt" target="_blank">let gennemgang af normaliseringsprocessen</a>.</p>
+
+<h2>Et eksempel på Nomalisering</h2>
+
+<p>Lad os kigge på mentorskemaet ovenfor</p>
+
+<span class="afsnit">Normalform 1 (NF1)</span>
+
+<p>Lige nu er skemaet menneskelæseligt, men for at computeren kan arbejde med det skal vi have ændret på nogle ting.</p>
+
+<ol class="">
+	<li>Mentoren opgivet ved sit navn, men det kan ikke anvendes som nøgle, da flere mentorer kan have samme fornavn. Derfor tilføjes mentorens initialer som nøgle og navnefeltet udvides med efternavnet.</li>
+	<li>Der laves 3 poster for hvert klasse mentoren er ansvarlig for</li>
+</ol>
+
+<table class="">
+	<thead>
+		<tr>
+			<th colspan="4">Tabel 1 - Mentorer, klasser og elever</th>
+		</tr>
+		<tr>
+			<th>Mentor (Nøgle)</th>
+			<th>Navn</th>
+			<th>Klasse</th>
+			<th>Antal elever</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>tj</td>
+			<td>Thomas Jensen</td>
+			<td>1a</td>
+			<td>17</td>
+		</tr>
+		<tr>
+			<td>tj</td>
+			<td>Thomas Jensen</td>
+			<td>2a</td>
+			<td>22</td>
+		</tr>
+		<tr>
+			<td>tj</td>
+			<td>Thomas Jensen</td>
+			<td>3a</td>
+			<td>21</td>
+		</tr>
+		<tr>
+			<td>ba</td>
+			<td>Bent Andersen</td>
+			<td>1b</td>
+			<td>16</td>
+		</tr>
+		<tr>
+			<td>ba</td>
+			<td>Bent Andersen</td>
+			<td>2b</td>
+			<td>24</td>
+		</tr>
+		<tr>
+			<td>ba</td>
+			<td>Bent Andersen</td>
+			<td>3b</td>
+			<td>22</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Nu har vi sikret os, at der kun er en type data i hvert feldt.</p>
+
+
+<span class="afsnit">Normalform 2 (NF2)</span>
+
+<p>Hvis vi kigger på tabellen fra NF1 opdager vi at feltet <span class="inl_cmd">Mentor</span> og <span class="inl_cmd">Navn</span> begge kan ses som entydige nøgler. Da der kun må være en nøgle i NF2 må vi altså splitte tabellen i 2.</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th colspan="4">Tabel 1 - Mentorer, klasser og elever</th>
+		</tr>
+		<tr>
+			<th>Mentor (Nøgle)</th>
+			<th>Klasse</th>
+			<th>Antal elever</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>tj</td>
+			<td>1a</td>
+			<td>17</td>
+		</tr>
+		<tr>
+			<td>tj</td>
+			<td>2a</td>
+			<td>22</td>
+		</tr>
+		<tr>
+			<td>tj</td>
+			<td>3a</td>
+			<td>21</td>
+		</tr>
+		<tr>
+			<td>ba</td>
+			<td>1b</td>
+			<td>16</td>
+		</tr>
+		<tr>
+			<td>ba</td>
+			<td>2b</td>
+			<td>24</td>
+		</tr>
+		<tr>
+			<td>ba</td>
+			<td>3b</td>
+			<td>22</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>og</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th colspan="4">Tabel 2 - Mentorer</th>
+		</tr>
+		<tr>
+			<th>Mentor (Nøgle)</th>
+			<th>Navn</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>tj</td>
+			<td>Thomas Jensen</td>
+		</tr>
+		<tr>
+			<td>ba</td>
+			<td>Bent Andersen</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Ved at anvende NF2 har vi sikret os at den samme informationer ikke skal gentages mere end en gang ud over nøglen.</p>
+
+<span class="afsnit">Normalform 3 (NF3)</span>
+
+<p>Ved NF3 graver vi et spadestik dybere og søger efter sammenhænge i vores tabel som kan splittes ud i andre tabeller. Kigger vi på <span class="inl_cmd">Tabel 1</span> kan vi se at <span class="inl_cmd">Klasse</span> og <span class="inl_cmd">Antal elever</span> er afhængige af hinanden. Ved at sætte klassenavnet som nøgle for antallet af elever har vi gjort databasen mere entydig. På den måde har vi sikret os, at vi kan tilføje data </p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th colspan="4">Tabel 1 - Mentorer og klasser</th>
+		</tr>
+		<tr>
+			<th>Mentor (Nøgle)</th>
+			<th>Klasse</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>tj</td>
+			<td>1a</td>
+		</tr>
+		<tr>
+			<td>tj</td>
+			<td>2a</td>
+		</tr>
+		<tr>
+			<td>tj</td>
+			<td>3a</td>
+		</tr>
+		<tr>
+			<td>ba</td>
+			<td>1b</td>
+		</tr>
+		<tr>
+			<td>ba</td>
+			<td>2b</td>
+		</tr>
+		<tr>
+			<td>ba</td>
+			<td>3b</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>og</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th colspan="4">Tabel 2 - Mentorer</th>
+		</tr>
+		<tr>
+			<th>Mentor (Nøgle)</th>
+			<th>Navn</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>tj</td>
+			<td>Thomas Jensen</td>
+		</tr>
+		<tr>
+			<td>ba</td>
+			<td>Bent Andersen</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>og</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th colspan="4">Tabel 3 - Klasser og elever</th>
+		</tr>
+		<tr>
+			<th>Klasse (Nøgle)</th>
+			<th>Antal elever</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1a</td>
+			<td>17</td>
+		</tr>
+		<tr>
+			<td>2a</td>
+			<td>22</td>
+		</tr>
+		<tr>
+			<td>3a</td>
+			<td>21</td>
+		</tr>
+		<tr>
+			<td>1b</td>
+			<td>16</td>
+		</tr>
+		<tr>
+			<td>2b</td>
+			<td>24</td>
+		</tr>
+		<tr>
+			<td>3b</td>
+			<td>22</td>
+		</tr>
+	</tbody>
+</table>
+
+<h2>Opsamling</h2>
+
+<p>Umiddelbart så ser det ud somom vi har lavet det endnu mere bøvlet end vores udgangspunkt, men metoden sikrer, at det bliver lettere at udvide og tilføje data til vores database. Ved at have opdelt databasen i 3 tabeller kan vi tilføje mobil, email og adresse til mentorerne (tabel 3 NF3)Vi vil kunne udvide tabel 3 (NF3), så den indeholder elevernes navne, mobil, email, adresse. Og når vi har tilføjet alle disse nye data kan vi nøjes med at køre normaliserings processen på de tabeller vi arbejder med uden at det vil påvirke resten af databasen.</p>
+
+<h1>kald af data</h1>
+
+<p></p>
+
+<h2>Kald fra flere tabeller</h2>
+
+<p></p>
+
+
+<pre>
+	<code class="SQL">
+SELECT * FROM [tabel1],[tabel2]
+WHERE [tabel1].[kolonne] = [*værdi*] AND [tabel2].[kolonne] = [*værdi*];
+	</code>
+</pre>
+<p></p>
+
+
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+	</body>
+
+</html>
