@@ -47,6 +47,20 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <div class="title">MySQL - Opret en database</div>
 
+<h1>Installation af XAMPP</h1>
+
+<p>For at kunne arbejde med MySQL skal den installeres. På windows er det lettest at installere en samlet pakke, som giver adgang til en fuld webserver, da det hele er konfigureret fra start. Her anbefales det at du anvender <a href="https://www.apachefriends.org/index.html" target="_blank">XAMPP</a>.</p>
+
+<h2>Installer XAMPP</h2>
+
+<p>Du kan vælge at installere XAMPP på to måder:</p>
+
+<ol class="">
+	<li>Rigtig installation via <a href="https://www.apachefriends.org/index.html" target="_blank">https://www.apachefriends.org/index.html</a></li>
+	<li>Portable installation via <a href="http://portableapps.com/apps/development/xampp" target="_blank">http://portableapps.com/apps/development/xampp</a>. (ikke Lite-versionen).</li>
+</ol>
+
+
 <h1>Overblik over phpMyAdmin</h1>
 
 
@@ -229,13 +243,13 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 	</thead>
 	<tbody>
 		<tr>
-			<td>Thomas</td>
+			<td>Thomas (tj)</td>
 			<td>1a (17 elever)</td>
 			<td>2a (22 elever)</td>
 			<td>3a (21 elever)</td>
 		</tr>
 		<tr>
-			<td>Bent</td>
+			<td>Bent (ba)</td>
 			<td>1b (16 elever)</td>
 			<td>2b (24 elever)</td>
 			<td>3b (22 elever)</td>
@@ -245,6 +259,10 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <p>Skemaet ovenfor er let at læse for os, men det for at gøre det til effektiv til en database skal vi anvende <span class="inl_cmd">normalisering</span>. Normaliseringsprocessen sikrer at data ikke bliver gentaget flere steder og data er entydig. Det man vil undgå er <span class="inl_cmd">redundans</span> og <span class="inl_cmd">inkonsistens</span>.</p>
 
+<h2>Hvad er normalisering</h2>
+
+<p></p>
+
 <p>Normalisering er den proces, man gennemløber i designfasen af sin database, og den sker i tre trin:</p>
 
 <ol class="">
@@ -253,7 +271,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 	<ul class="disc">
 		<li>Tabellen har en nøgle</li>
 		<li>Der må kun være en værdi af samme type i hver post</li>
-		<li>Alle poster skal være lige lange</li>
+		<li>Alle poster skal være lige lange (have samme antal poster)</li>
 	</ul>
 	
 	<li>Normalform 2 (NF2)</li>
