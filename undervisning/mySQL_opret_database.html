@@ -125,6 +125,10 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <p></p>
 
+<span class="afsnit">Felt</span>
+
+<p></p>
+
 <span class="afsnit">Nøgle</span>
 
 <p></p>
@@ -138,25 +142,30 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 	<thead>
 		<tr>
 			<th>Datatype - tekst</th>
+			<th>Størrelse</th>
 			<th>Beskrivelse</th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr>
 			<td>CHAR(str)</td>
-			<td></td>
+			<td>8 bit</td>
+			<td>Indeholder en teksstreng af en fast længde længde på maksimalt 256 tegn. <span class="inl_cmd">CHAR(4)</span> skal altså indeholde 4 tegn</td>
 		</tr>
 		<tr>
 			<td>VARCHAR(str)</td>
-			<td></td>
+			<td>8 bit</td>
+			<td>Indeholder en tekstreng med en variable længde på maksimalt 256 tegn. <span class="inl_cmd">CHAR(32)</span> kan altså indeholde op til 32 tegn</td>
 		</tr>
 		<tr>
 			<td>TEXT</td>
-			<td></td>
+			<td>16 bit</td>
+			<td>En variabel teksstreng der indeholder op til 65535 tegn</td>
 		</tr>
 		<tr>
 			<td>ENUM(x,y,z, ... )</td>
-			<td></td>
+			<td>-</td>
+			<td>Giver mulighed for at lave en liste af op til 65535 mulige værdier f.eks. <span class="inl_cmd">ENUM(s,m,l,xl)</span></td>
 		</tr>
 	</tbody>
 </table>
@@ -165,21 +174,35 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 	<thead>
 		<tr>
 			<th>Datatype - tal</th>
+			<th>Størrelse</th>
 			<th>Beskrivelse</th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr>
 			<td>TINYINT(str)</td>
-			<td></td>
+			<td>8 bit</td>
+			<td>Heltal fra -128 til 127 (0 til 255 UNSIGNED*)</td>
+		</tr>
+		<tr>
+			<td>SMALLINT(str)</td>
+			<td>15 bit</td>
+			<td>Heltal fra -32768 til 32767. (0 til 65535 UNSIGNED*)</td>
 		</tr>
 		<tr>
 			<td>INT(Str)</td>
-			<td></td>
+			<td>32 bit</td>
+			<td>Heltal fra -2147483648 til 2147483647. (0 til 4294967295 UNSIGNED*)</td>
 		</tr>
 		<tr>
 			<td>FLOAT(Str,Dec)</td>
-			<td></td>
+			<td>-</td>
+			<td>Bedst til videnskabelige beregninger</td>
+		</tr>
+		<tr>
+			<td>Decimal(Str,Dec)</td>
+			<td>65 cifre</td>
+			<td>Bedst til financielle beregninger. Tallet kan have ialt 65 cifre, og maksimalt 30 decimaler</td>
 		</tr>
 	</tbody>
 </table>
