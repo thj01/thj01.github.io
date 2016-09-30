@@ -153,6 +153,73 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <p>Herunder kan du se de mest anvendte datatyper. Se her for en komplet liste: <a href="http://www.w3schools.com/sql/sql_datatypes.asp" target="_blank">http://www.w3schools.com/sql/sql_datatypes.asp</a></p>
 
+<h2>Numerisk</h2>
+
+<p></p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th rowspan="2">Datatype</th>
+			<th rowspan="2">Størrelse <br/>(byte)</th>
+			<th colspan="2"></th>
+			<th colspan="2">UNSIGNED</th>
+		</tr>
+		<tr>
+			<th>Min. værdi</th>
+			<th>Maks. værdi</th>
+			<th>Min. værdi</th>
+			<th>Maks. værdi</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>TINYINT</td>
+			<td>1</td>
+			<td>-128</td>
+			<td>127</td>
+			<td>0</td>
+			<td>255</td>
+		</tr>
+		<tr>
+			<td>SMALLINT</td>
+			<td>2</td>
+			<td>-32768</td>
+			<td>32767</td>
+			<td>0</td>
+			<td>65535</td>
+		</tr>
+		<tr>
+			<td>INT</td>
+			<td>4</td>
+			<td>-2147483648</td>
+			<td>2147483647</td>
+			<td>0</td>
+			<td>4294967295</td>
+		</tr>
+	</tbody>
+</table>
+
+<span class="afsnit">DECIMAL(*cifre*,*decimaler*)</span>
+
+<p><span class="inl_cmd">DECIMAL</span> anvendes til at lagre præcise tal, og i parentensen sættes det samlede antal cifre og hvilket antal decimaler tallet indeholder. F.eks. vil <span class="inl_cmd">DECIMAL(6,2)</span> give mulighed for at lagre tal mellem <span class="inl_cmd">-9999.99</span>  og <span class="inl_cmd">9999.99</span>.</p>
+
+<p>Det maksimale antal cifre er 65.</p>
+
+<p>Hvis der ikke angives noget i parantesen vil det blive tolket som <span class="inl_cmd">DECIMAL(10,0)</span> dvs. 10 cifre og ingen decimaler (fra -9999999999 til 9999999999).</p>
+
+<span class="afsnit">FLOAT(*cifre*,*decimaler*)</span>
+
+<p></p>
+
+
+<p>Læs mere om heltal: <a href="http://dev.mysql.com/doc/refman/5.7/en/integer-types.html" target="_blank">http://dev.mysql.com/doc/refman/5.7/en/integer-types.html</a></p>
+
+<p>Læs mere om DECIMAL(): <a href="http://dev.mysql.com/doc/refman/5.7/en/fixed-point-types.html" target="_blank">http://dev.mysql.com/doc/refman/5.7/en/fixed-point-types.html</a></p>
+
+<p>Læs mere om FLOAT(): <a href="http://dev.mysql.com/doc/refman/5.7/en/floating-point-types.html" target="_blank">http://dev.mysql.com/doc/refman/5.7/en/floating-point-types.html</a></p>
+
+<h2>Teksstrenge</h2>
 
 <table class="">
 	<thead>
@@ -186,42 +253,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 	</tbody>
 </table>
 
-<table class="">
-	<thead>
-		<tr>
-			<th>Datatype - tal</th>
-			<th>Størrelse</th>
-			<th>Beskrivelse</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>TINYINT(str)</td>
-			<td>8 bit</td>
-			<td>Heltal fra -128 til 127 (0 til 255 UNSIGNED*)</td>
-		</tr>
-		<tr>
-			<td>SMALLINT(str)</td>
-			<td>15 bit</td>
-			<td>Heltal fra -32768 til 32767. (0 til 65535 UNSIGNED*)</td>
-		</tr>
-		<tr>
-			<td>INT(Str)</td>
-			<td>32 bit</td>
-			<td>Heltal fra -2147483648 til 2147483647. (0 til 4294967295 UNSIGNED*)</td>
-		</tr>
-		<tr>
-			<td>FLOAT(Str,Dec)</td>
-			<td>-</td>
-			<td>Bedst til videnskabelige beregninger</td>
-		</tr>
-		<tr>
-			<td>Decimal(Str,Dec)</td>
-			<td>65 cifre</td>
-			<td>Bedst til financielle beregninger. Tallet kan have ialt 65 cifre, og maksimalt 30 decimaler</td>
-		</tr>
-	</tbody>
-</table>
+
 
 <table class="">
 	<thead>
