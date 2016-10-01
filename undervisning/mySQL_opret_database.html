@@ -151,9 +151,13 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <h1>Datatyper</h1>
 
-<p>Herunder kan du se de mest anvendte datatyper. Se her for en komplet liste: <a href="http://www.w3schools.com/sql/sql_datatypes.asp" target="_blank">http://www.w3schools.com/sql/sql_datatypes.asp</a></p>
+<p>Herunder kan du se de mest anvendte datatyper. 
 
-<h2>Numerisk</h2>
+<p>Læs mere: <a href="http://dev.mysql.com/doc/refman/5.7/en/data-types.html" target="_blank">http://dev.mysql.com/doc/refman/5.7/en/data-types.html</a></p>
+
+<p>Læs mere: <a href="http://www.w3schools.com/sql/sql_datatypes.asp" target="_blank">http://www.w3schools.com/sql/sql_datatypes.asp</a></p>
+
+<h2>Heltal - Integers</h2>
 
 <p></p>
 
@@ -190,6 +194,14 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 			<td>65535</td>
 		</tr>
 		<tr>
+			<td>MEDIUMINT</td>
+			<td>3</td>
+			<td>-8388608</td>
+			<td>8388607</td>
+			<td>0</td>
+			<td>16777215</td>
+		</tr>
+		<tr>
 			<td>INT</td>
 			<td>4</td>
 			<td>-2147483648</td>
@@ -200,24 +212,88 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 	</tbody>
 </table>
 
+<p>For at præcisere dine tal kan man "låse" antallet af cifre ved at angive det i en parantes. F.eks. vil <span class="inl_cmd">SMALLINT(4)</span> gøre, at feltet maksimalt kan indeholde 4 cifre. Det eneste du skal være opmærksom på er, at man ikke kan overskride antallet af cifre i den type man anvender f.eks: <span class="inl_cmd">TINYINT(4)</span>, da typens maksimale værdi er <span class="inl_cmd">255</span>.</p>
+
+<p>Læs mere om heltal: <a href="http://dev.mysql.com/doc/refman/5.7/en/integer-types.html" target="_blank">http://dev.mysql.com/doc/refman/5.7/en/integer-types.html</a></p>
+
+<h2>Decimaltal</h2>
+
+<p>Der findes to metoder til at anvende decimaltal. Den ene er binær og den anden er baseret på 10 talssystemet. Grunden til at man anvender to forskellige er, den hastighed systemet kan anvende tallene med og belastningen af CPU'en. Computeren er hurtigere til at regne med binære tal end tal fra 10 talssystemet. Se nedestående skema:</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Datatype</th>
+			<th>Størrelse <br/>(byte)</th>
+			<th>Talsystem</th>
+			<th>Antal cifre/decimaler (præcission)</th>
+			<th>Anvendelsesområde</th>
+			<th>Nøjagtighed</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>FLOAT</td>
+			<td>4</td>
+			<td>Binær</td>
+			<td>&sim; 7 decimaler</td>
+			<td>Videnskabeligt</td>
+			<td>Præcis</td>
+		</tr>
+		<tr>
+			<td>DOUBLE</td>
+			<td>8</td>
+			<td>Binær</td>
+			<td>&sim; 14 decimaler</td>
+			<td>Videnskabeligt</td>
+			<td>Præcis</td>
+		</tr>
+		<tr>
+			<td>Decimal</td>
+			<td>-</td>
+			<td>10</td>
+			<td>65 cifre, 30 decimaler</td>
+			<td>Financiel</td>
+			<td>Eksakt</td>
+		</tr>
+	</tbody>
+</table>
+
+<span class="afsnit">Forskel på videnskabelig og "almindelige" tal</span>
+
+<p>Videnskabelige tal angives ved hjælp af et heltal efterfulgt af en 10'er potens der angiver kommaets position f.eks. som ved Faradays konstant (F' = 9,6485309 &sdot; 10<sup>4</sup> C/mol). I decimaltal vil det være 96485,309 C/mol. Det som er problemet med det tal jeg skriver her er, at det reelt kun er præcist ned til den 7'ende decimal. Det er rigeligt i videnskabelig sammenhæng, men kan være mangelfuldt i andre sammenhænge f.eks. finansielle beregninger. Dette er årsagen til, at <span class="inl_cmd">FLOAT</span> og <span class="inl_cmd">DOUBLE</span> bliver angivet som værende præcise, og <span class="inl_cmd">DECIMAL</span> til at være eksakt.</p>
+
+<p>Sagt på en anden måde. <span class="inl_cmd">FLOAT</span> og <span class="inl_cmd">DOUBLE</span> er præcise nok til at arbejde med tal, hvor der kun er brug for et mindre antal decimaler (videnskab), men ikke når der er brug for mange (finans).</p>
+
+<p>Ligesom ved heltallene kan decimaltallene også præciseres (låses) ved hjælp af at angive antallet af cifre og decimaler i en parantes bagefter f.eks: DECIMAL(8,4) </p>
+
+
+
+<p>Læs mere: <a href="http://code.rohitink.com/2013/06/12/mysql-integer-float-decimal-data-types-differences/" target="_blank">http://code.rohitink.com/2013/06/12/mysql-integer-float-decimal-data-types-differences/</a></p>
+
 <span class="afsnit">DECIMAL(*cifre*,*decimaler*)</span>
 
-<p><span class="inl_cmd">DECIMAL</span> anvendes til at lagre præcise tal, og i parentensen sættes det samlede antal cifre og hvilket antal decimaler tallet indeholder. F.eks. vil <span class="inl_cmd">DECIMAL(6,2)</span> give mulighed for at lagre tal mellem <span class="inl_cmd">-9999.99</span>  og <span class="inl_cmd">9999.99</span>.</p>
+<p><span class="inl_cmd">DECIMAL</span> anvendes til at lagre præcise tal f.eks: finansielle tal.</p>
+
+<p>I parentensen sættes det samlede antal cifre og hvilket antal decimaler tallet indeholder. F.eks. vil <span class="inl_cmd">DECIMAL(6,2)</span> give mulighed for at lagre tal mellem <span class="inl_cmd">-9999.99</span>  og <span class="inl_cmd">9999.99</span>.</p>
 
 <p>Det maksimale antal cifre er 65.</p>
 
 <p>Hvis der ikke angives noget i parantesen vil det blive tolket som <span class="inl_cmd">DECIMAL(10,0)</span> dvs. 10 cifre og ingen decimaler (fra -9999999999 til 9999999999).</p>
 
-<span class="afsnit">FLOAT(*cifre*,*decimaler*)</span>
-
-<p></p>
-
-
-<p>Læs mere om heltal: <a href="http://dev.mysql.com/doc/refman/5.7/en/integer-types.html" target="_blank">http://dev.mysql.com/doc/refman/5.7/en/integer-types.html</a></p>
-
 <p>Læs mere om DECIMAL(): <a href="http://dev.mysql.com/doc/refman/5.7/en/fixed-point-types.html" target="_blank">http://dev.mysql.com/doc/refman/5.7/en/fixed-point-types.html</a></p>
 
+<span class="afsnit">FLOAT(*cifre*,*decimaler*)</span>
+
+<p><span class="inl_cmd">FLOAT</span> anvendes til at tilnærmede (approximerede) tal.</p>
+
+
+
+
+
 <p>Læs mere om FLOAT(): <a href="http://dev.mysql.com/doc/refman/5.7/en/floating-point-types.html" target="_blank">http://dev.mysql.com/doc/refman/5.7/en/floating-point-types.html</a></p>
+
+
 
 <h2>Teksstrenge</h2>
 
