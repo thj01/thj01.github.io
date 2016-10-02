@@ -393,20 +393,28 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 			<td>Ja</td>
 		</tr>
 		<tr>
+			<td>TIME</td>
+			<td>HHH:MM:SS</td>
+			<td>-838:59:59</td>
+			<td>838:59:59</td>
+			<td>Nej</td>
+		</tr>
+		<tr>
+			<td>YEAR</td>
+			<td>YYYY</td>
+			<td>1901</td>
+			<td>2155</td>
+			<td>Nej</td>
+		</tr>
+		<tr>
 			<td colspan="5">YYYY = År , MM = måned , DD= dag , HH = timer , MM = minutter , SS = sekunder</td>
 		</tr>
-
 	</tbody>
 </table>
 
 <p><span class="inl_cmd">DATETIME</span> og <span class="inl_cmd">TIMESTAMP</span> kan sættes til at opdatere automatisk når en post bliver bliver oprettet eller ændret. Begge datatyper kan også tilføjes en værdi for dele af sekundet til en præcission på mikrosekunder (6 decimaler). Det gøres ved at indsætte præcissionen i en parantes efter datatypen f.eks: <span class="inl_cmd">DATETIME(3)</span>, hvilket angiver tusindedele af et sekund.</p>
 
 <p>Læs mere: <a href="http://dev.mysql.com/doc/refman/5.7/en/datetime.html" target="_blank">http://dev.mysql.com/doc/refman/5.7/en/datetime.html</a></p>
-
-<span class="afsnit">TIME()</span>
-
-<p></p>
-
 
 <h1>Normalisering</h1>
 
@@ -423,16 +431,22 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 	</thead>
 	<tbody>
 		<tr>
-			<td>Thomas (tj)</td>
+			<td>Thomas Jensen (tj)</td>
 			<td>1a (17 elever)</td>
 			<td>2a (22 elever)</td>
 			<td>3a (21 elever)</td>
 		</tr>
 		<tr>
-			<td>Bent (ba)</td>
+			<td>Bent Andersen (ba)</td>
 			<td>1b (16 elever)</td>
 			<td>2b (24 elever)</td>
 			<td>3b (22 elever)</td>
+		</tr>
+		<tr>
+			<td>Christina Carlsen (cc)</td>
+			<td>1x (28 elever)</td>
+			<td>2x (31 elever)</td>
+			<td>&nbsp;-&nbsp;</td>
 		</tr>
 	</tbody>
 </table>
@@ -441,32 +455,29 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <h2>Hvad er normalisering</h2>
 
-<p></p>
-
 <p>Normalisering er den proces, man gennemløber i designfasen af sin database, og den sker i tre trin:</p>
 
 <ol class="">
 	<li>Normalform 1 (NF1)</li>
 	
 	<ul class="disc">
-		<li>Tabellen har en nøgle</li>
+		<li>Tabellen har et nøglefelt (behøver ikke at være unikt)</li>
 		<li>Der må kun være en værdi af samme type i hver post</li>
-		<li>Alle poster skal være lige lange (have samme antal poster)</li>
+		<li>Alle poster skal være lige lange dvs. have samme antal felter</li>
 	</ul>
 	
 	<li>Normalform 2 (NF2)</li>
 	
 	<ul class="disc">
 		<li>Tabellen opfylder NF1</li>
-		<li>Der må kun være en nøgle i hver tabel, der entydigt bestemmer indholdet.</li>
-
+		<li>Der skal være en nøgle i hver tabel, der entydigt bestemmer indholdet.</li>
 	</ul>
 		
 	<li>Normalform 3 (NF3)</li>
 	
 	<ul class="disc">
 		<li>Tabellen opfylder NF2</li>
-		<li>Hvis der er mere end et feldt der kan sættes som nøgle for andre felter skal tabellen opdeles i flere.</li>
+		<li>Hvis der er mere end et felt der kan sættes som nøgle for andre felter skal tabellen opdeles i flere.</li>
 	</ul>
 </ol>
 
@@ -476,23 +487,31 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <p>Lad os kigge på mentorskemaet ovenfor</p>
 
-<span class="afsnit">Normalform 1 (NF1)</span>
+<h3>Normalform 1 (NF1)</h3>
 
-<p>Lige nu er skemaet menneskelæseligt, men for at computeren kan arbejde med det skal vi have ændret på nogle ting.</p>
+<p>Lige nu er skemaet menneskelæseligt, men for at få tabellen til at opfylde <span class="inl_cmd">NF1</span> skal vi have ændret på nogle ting.</p>
 
 <ol class="">
-	<li>Mentoren opgivet ved sit navn, men det kan ikke anvendes som nøgle, da flere mentorer kan have samme fornavn. Derfor tilføjes mentorens initialer som nøgle og navnefeltet udvides med efternavnet.</li>
-	<li>Der laves 3 poster for hvert klasse mentoren er ansvarlig for</li>
+	<li>Vi gør lærerens initialer til nøglefelt</li>
+	<li>Vi inddeler tabellen i 4 kolonner (Initialer, Mentor, Klasse, Antal elever)</li>
 </ol>
 
+<p>Resultaet herunder opfylder de 3 krav til NF1:</p>
+
+<ul class="disc">
+	<li>Der er et nøglefelt</li>
+	<li>Der er kun en værdi af samme type i hver post</li>
+	<li>Alle poster er på 4 felter</li>
+</ul>
+
 <table class="">
 	<thead>
 		<tr>
 			<th colspan="4">Tabel 1 - Mentorer, klasser og elever</th>
 		</tr>
 		<tr>
-			<th>Mentor (Nøgle)</th>
-			<th>Navn</th>
+			<th>Initialer</th>
+			<th>Mentor</th>
 			<th>Klasse</th>
 			<th>Antal elever</th>
 		</tr>
@@ -534,125 +553,145 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 			<td>3b</td>
 			<td>22</td>
 		</tr>
+		<tr>
+			<td>cc</td>
+			<td>Christina Carlsen</td>
+			<td>1x</td>
+			<td>28</td>
+		</tr>
+		<tr>
+			<td>cc</td>
+			<td>Christina Carlsen</td>
+			<td>2x</td>
+			<td>31</td>
+		</tr>
 	</tbody>
 </table>
 
-<p>Nu har vi sikret os, at der kun er en type data i hvert feldt.</p>
 
+<h3>Normalform 2 (NF2)</h3>
 
-<span class="afsnit">Normalform 2 (NF2)</span>
-
-<p>Hvis vi kigger på tabellen fra NF1 opdager vi at feltet <span class="inl_cmd">Mentor</span> og <span class="inl_cmd">Navn</span> begge kan ses som entydige nøgler. Da der kun må være en nøgle i NF2 må vi altså splitte tabellen i 2.</p>
+<p>For at opfylde NF2 skal tabellen først opfylde NF1, men derudover skal tabellen have en unik nøgle. Lærerens initialer og navn er ikke unik da samme lærer kan have flere klasser. Herunder vælger vi at klassenavnet skal være den unikke nøgle</p>
 
 <table class="">
 	<thead>
 		<tr>
-			<th colspan="4">Tabel 1 - Mentorer, klasser og elever</th>
+			<th colspan="4">Tabel 1 - Klasser, mentorer og elever</th>
 		</tr>
 		<tr>
-			<th>Mentor (Nøgle)</th>
-			<th>Klasse</th>
+			<th>Klasse (Nøgle)</th>
+			<th>Mentor</th>
+			<th>Navn</th>
 			<th>Antal elever</th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr>
-			<td>tj</td>
 			<td>1a</td>
+			<td>tj</td>
+			<td>Thomas Jensen</td>
 			<td>17</td>
 		</tr>
 		<tr>
-			<td>tj</td>
 			<td>2a</td>
+			<td>tj</td>
+			<td>Thomas Jensen</td>
 			<td>22</td>
 		</tr>
 		<tr>
-			<td>tj</td>
 			<td>3a</td>
+			<td>tj</td>
+			<td>Thomas Jensen</td>
 			<td>21</td>
 		</tr>
 		<tr>
-			<td>ba</td>
 			<td>1b</td>
+			<td>ba</td>
+			<td>Bent Andersen</td>
 			<td>16</td>
 		</tr>
 		<tr>
-			<td>ba</td>
 			<td>2b</td>
+			<td>ba</td>
+			<td>Bent Andersen</td>
 			<td>24</td>
 		</tr>
 		<tr>
-			<td>ba</td>
 			<td>3b</td>
+			<td>ba</td>
+			<td>Bent Andersen</td>
 			<td>22</td>
 		</tr>
-	</tbody>
-</table>
-
-<p>og</p>
-
-<table class="">
-	<thead>
 		<tr>
-			<th colspan="4">Tabel 2 - Mentorer</th>
+			<td>1x</td>
+			<td>cc</td>
+			<td>Christina Carlsen</td>
+			<td>28</td>
 		</tr>
 		<tr>
-			<th>Mentor (Nøgle)</th>
-			<th>Navn</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>tj</td>
-			<td>Thomas Jensen</td>
-		</tr>
-		<tr>
-			<td>ba</td>
-			<td>Bent Andersen</td>
+			<td>2x</td>
+			<td>cc</td>
+			<td>Christina Carlsen</td>
+			<td>31</td>
 		</tr>
 	</tbody>
 </table>
 
-<p>Ved at anvende NF2 har vi sikret os at den samme informationer ikke skal gentages mere end en gang ud over nøglen.</p>
+<h3>Normalform 3 (NF3)</h3>
 
-<span class="afsnit">Normalform 3 (NF3)</span>
+<p>NF 2 sikrer, at vi kan tilgå tabellen igennem en unik nøgle og at den er sammenhængende. Men den bliver hurtig uoverskuelig. Derfor vælger vi at analysere tabellen for om den kan slittes op i mindre tabeller, hvor felter der afhænger af andre får deres egne tabeller. </p>
 
-<p>Ved NF3 graver vi et spadestik dybere og søger efter sammenhænge i vores tabel som kan splittes ud i andre tabeller. Kigger vi på <span class="inl_cmd">Tabel 1</span> kan vi se at <span class="inl_cmd">Klasse</span> og <span class="inl_cmd">Antal elever</span> er afhængige af hinanden. Ved at sætte klassenavnet som nøgle for antallet af elever har vi gjort databasen mere entydig. På den måde har vi sikret os, at vi kan tilføje data </p>
+<p>Her vælger vi at opdele tabellen i 3:</p>
+
+<ul class="disc">
+	<li>En tabel der angiver den mentor der er tilknyttet klassen</li>
+	<li>En tabel med informationer om mentoren</li>
+	<li>En tabel med informationer om klassen</li>
+</ul>
+
 
 <table class="">
 	<thead>
 		<tr>
-			<th colspan="4">Tabel 1 - Mentorer og klasser</th>
+			<th colspan="4">Tabel 1 - Klasser og mentorer</th>
 		</tr>
 		<tr>
-			<th>Mentor (Nøgle)</th>
-			<th>Klasse</th>
+			<th>Klasse (Primær nøgle)</th>
+			<th>Mentor</th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr>
-			<td>tj</td>
 			<td>1a</td>
+			<td>tj</td>
 		</tr>
 		<tr>
-			<td>tj</td>
 			<td>2a</td>
-		</tr>
-		<tr>
 			<td>tj</td>
+		</tr>
+		<tr>
 			<td>3a</td>
+			<td>tj</td>
 		</tr>
 		<tr>
-			<td>ba</td>
 			<td>1b</td>
+			<td>ba</td>
 		</tr>
 		<tr>
-			<td>ba</td>
 			<td>2b</td>
+			<td>ba</td>
 		</tr>
 		<tr>
-			<td>ba</td>
 			<td>3b</td>
+			<td>ba</td>
+		</tr>
+		<tr>
+			<td>1x</td>
+			<td>cc</td>
+		</tr>
+		<tr>
+			<td>2x</td>
+			<td>cc</td>
 		</tr>
 	</tbody>
 </table>
@@ -665,7 +704,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 			<th colspan="4">Tabel 2 - Mentorer</th>
 		</tr>
 		<tr>
-			<th>Mentor (Nøgle)</th>
+			<th>Mentor (Primær nøgle)</th>
 			<th>Navn</th>
 		</tr>
 	</thead>
@@ -677,6 +716,10 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 		<tr>
 			<td>ba</td>
 			<td>Bent Andersen</td>
+		</tr>
+		<tr>
+			<td>cc</td>
+			<td>Christina Carlsen</td>
 		</tr>
 	</tbody>
 </table>
@@ -689,7 +732,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 			<th colspan="4">Tabel 3 - Klasser og elever</th>
 		</tr>
 		<tr>
-			<th>Klasse (Nøgle)</th>
+			<th>Klasse (Primær nøgle)</th>
 			<th>Antal elever</th>
 		</tr>
 	</thead>
@@ -718,16 +761,284 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 			<td>3b</td>
 			<td>22</td>
 		</tr>
+		<tr>
+			<td>1x</td>
+			<td>28</td>
+		</tr>
+		<tr>
+			<td>2x</td>
+			<td>31</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Fordelen ved at gøre dette er, at vi nu kan tilføje data til tabellerne uden at bryde sammenhængen mellem dem. Vi kan f.eks. udvide tabel 2 og 3 med flere informationer om mentorerne.</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th colspan="5">Tabel 2 (udvidet) - Mentorer</th>
+		</tr>
+		<tr>
+			<th>Mentor (Primær nøgle)</th>
+			<th>Navn</th>
+			<th>Lokale</th>
+			<th>Mobil</th>
+			<th>Mail</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>tj</td>
+			<td>Thomas Jensen</td>
+			<td>17</td>
+			<td>23344517</td>
+			<td>tj@fakemail.dk</td>
+		</tr>
+		<tr>
+			<td>ba</td>
+			<td>Bent Andersen</td>
+			<td>18</td>
+			<td>23344518</td>
+			<td>ba@fakemail.dk</td>			
+		</tr>
+		<tr>
+			<td>cc</td>
+			<td>Christina Carlsen</td>
+			<td>19</td>
+			<td>23344519</td>
+			<td>cc@fakemail.dk</td>			
+		</tr>
+	</tbody>
+</table>
+
+<p></p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th colspan="6">Tabel 3 (udvidet)- Klasser og elever</th>
+		</tr>
+		<tr>
+			<th>Klasse (Primær nøgle)</th>
+			<th>Antal elever</th>
+			<th>Piger</th>
+			<th>Drenge</th>
+			<th>Startår</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1a</td>
+			<td>17</td>
+			<td>9</td>
+			<td>8</td>
+			<td>2016</td>
+		</tr>
+		<tr>
+			<td>2a</td>
+			<td>22</td>
+			<td>10</td>
+			<td>12</td>
+			<td>2015</td>
+		</tr>
+		<tr>
+			<td>3a</td>
+			<td>21</td>
+			<td>8</td>
+			<td>13</td>
+			<td>2014</td>
+		</tr>
+		<tr>
+			<td>1b</td>
+			<td>16</td>
+			<td>8</td>
+			<td>8</td>
+			<td>2016</td>
+		</tr>
+		<tr>
+			<td>2b</td>
+			<td>24</td>
+			<td>13</td>
+			<td>11</td>
+			<td>2015</td>
+		</tr>
+		<tr>
+			<td>3b</td>
+			<td>22</td>
+			<td>9</td>
+			<td>13</td>
+			<td>2014</td>
+		</tr>
+		<tr>
+			<td>1x</td>
+			<td>28</td>
+			<td>13</td>
+			<td>15</td>
+			<td>2016</td>
+		</tr>
+		<tr>
+			<td>2x</td>
+			<td>31</td>
+			<td>17</td>
+			<td>14</td>
+			<td>2015</td>
+		</tr>
 	</tbody>
 </table>
 
 <h2>Opsamling</h2>
 
-<p>Umiddelbart så ser det ud somom vi har lavet det endnu mere bøvlet end vores udgangspunkt, men metoden sikrer, at det bliver lettere at udvide og tilføje data til vores database. Ved at have opdelt databasen i 3 tabeller kan vi tilføje mobil, email og adresse til mentorerne (tabel 3 NF3)Vi vil kunne udvide tabel 3 (NF3), så den indeholder elevernes navne, mobil, email, adresse. Og når vi har tilføjet alle disse nye data kan vi nøjes med at køre normaliserings processen på de tabeller vi arbejder med uden at det vil påvirke resten af databasen.</p>
+<p>Ved at anvende normalisering på vores database får vi en opbygning der sikrer at vi ikke har redundans (gentagelser) og at der er sammenhæng imellem og i de enkelte tabeller. Det sikrer også, at tabellen bliver nemmere at vedligeholde og udvide med flere informationer.</p>
+
+<p>Hver eneste gang man udvider sin database bør man sikre sig at databasen overholder de tre normaliseringskrav.</p>
+
+<h1>Indtast tabellerne</h1>
+
+<p></p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th colspan="4">Tabel 1: Klasser_og_mentorer</th>
+		</tr>
+		<tr>
+			<th>Kolonnenavn</th>
+			<th>Datatype</th>
+			<th>Længde/værdi</th>
+			<th>Indeks</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Klasse</td>
+			<td>VARCHAR</td>
+			<td>3</td>
+			<td>PRIMARY</td>
+		</tr>
+		<tr>
+			<td>Mentor</td>
+			<td>VARCHAR</td>
+			<td>3</td>
+			<td>&nbsp;-&nbsp;</td>
+		</tr>
+	</tbody>
+</table>
+
+<table class="">
+	<thead>
+		<tr>
+			<th colspan="4">Tabel 2: Mentorer</th>
+		</tr>
+		<tr>
+			<th>Kolonnenavn</th>
+			<th>Datatype</th>
+			<th>Længde/værdi</th>
+			<th>Indeks</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Mentor</td>
+			<td>VARCHAR</td>
+			<td>3</td>
+			<td>PRIMARY</td>
+		</tr>
+		<tr>
+			<td>Navn</td>
+			<td>VARCHAR</td>
+			<td>50</td>
+			<td>&nbsp;-&nbsp;</td>
+		</tr>
+		<tr>
+			<td>Lokale</td>
+			<td>VARCHAR</td>
+			<td>4</td>
+			<td>&nbsp;-&nbsp;</td>
+		</tr>
+		<tr>
+			<td>Mobil</td>
+			<td>INT</td>
+			<td>8</td>
+			<td>&nbsp;-&nbsp;</td>
+		</tr>
+		<tr>
+			<td>Mail</td>
+			<td>VARCHAR</td>
+			<td>50</td>
+			<td>&nbsp;-&nbsp;</td>
+		</tr>
+	</tbody>
+</table>
+
+<table class="">
+	<thead>
+		<tr>
+			<th colspan="4">Tabel 3: Klasser_og_elever</th>
+		</tr>
+		<tr>
+			<th>Kolonnenavn</th>
+			<th>Datatype</th>
+			<th>Længde/værdi</th>
+			<th>Indeks</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Klasse</td>
+			<td>VARCHAR</td>
+			<td>3</td>
+			<td>PRIMARY</td>
+		</tr>
+		<tr>
+			<td>Antal Elever</td>
+			<td>TINYINT</td>
+			<td>2</td>
+			<td>&nbsp;-&nbsp;</td>
+		</tr>
+		<tr>
+			<td>Piger</td>
+			<td>TINYINT</td>
+			<td>2</td>
+			<td>&nbsp;-&nbsp;</td>
+		</tr>
+		<tr>
+			<td>Drenge</td>
+			<td>TINYINT</td>
+			<td>2</td>
+			<td>&nbsp;-&nbsp;</td>
+		</tr>
+		<tr>
+			<td>Startår</td>
+			<td>YEAR</td>
+			<td>4</td>
+			<td>&nbsp;-&nbsp;</td>
+		</tr>
+	</tbody>
+</table>
 
 <h1>kald af data</h1>
 
-<p></p>
+<h2>Kald en post</h2>
+<pre>
+	<code class="SQL">
+SELECT * From Mentorer WHERE Navn="Thomas Jensen"
+	</code>
+</pre>
+
+
+
+
+<h2>Kald hele tabellen</h2>
+
+<pre>
+	<code class="SQL">
+SELECT * FROM `Mentorer`
+	</code>
+</pre>
+
+
+
 
 <h2>Kald fra flere tabeller</h2>
 
@@ -740,6 +1051,18 @@ SELECT * FROM [tabel1],[tabel2]
 WHERE [tabel1].[kolonne] = [*værdi*] AND [tabel2].[kolonne] = [*værdi*];
 	</code>
 </pre>
+
+<h2>Søg med *</h2>
+
+<pre>
+	<code class="SQL">
+SELECT * FROM `Mentorer` WHERE Navn LIKE 'Thomas%'
+	</code>
+</pre>
+
+<p></p>
+
+
 <p></p>
 
 
