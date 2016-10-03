@@ -131,23 +131,31 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <span class="afsnit">Database</span>
 
-<p></p>
+<p>En database er en struktureret samling af data, som er sat op i tabeller, med rækker og kolonner. Ved hjælp af kommandoer kan man manpulere med, søge i og sortere data.</p>
+
+<p>En relationel database indeholder flere tabeller, som kan sammenkædes og kombineres.</p>
 
 <span class="afsnit">Tabel</span>
 
-<p></p>
+<p>En tabel er en samling af data der er struktureret indefor et afgrænset område f.eks: medarbejdere og deres kontaktoplysninger</p>
 
 <span class="afsnit">Post</span>
 
-<p></p>
+<p>En post er de enkelte data rækker f.eks. den enkelte medarbejder og dennes kontaktoplysninger</p>
 
 <span class="afsnit">Felt</span>
 
-<p></p>
+<p>Et felt er de enkelte data i en post f.eks. medarbejderens mail</p>
+
+<span class="afsnit">Datatype</span>
+
+<p>For at gemme og strukturere data skal der for hvert felt angives hvilken type data det indeholder. Det kan f.eks. være et tal, tekst eller tidsformat.</p>
 
 <span class="afsnit">Nøgle</span>
 
-<p></p>
+<p>For at kunne skabe sammenhæng i databasen bliver der defineret en nøgle i tabellerne, som anvendes til at sammenkæde de forskellige tabeller. Det kan f.eks. være en medarbejders initialer.</p>
+
+
 
 <h1>Datatyper</h1>
 
@@ -483,11 +491,8 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <p>Her kan du finde en (relativ) <a href="http://laerer.rhs.dk/psl/rhs/HHX-materiale/Databaser/Database%20-%20Design/Pr%C3%A6sentationer/Del%208%20-%20Normalisering.ppt" target="_blank">let gennemgang af normaliseringsprocessen</a>.</p>
 
-<h2>Et eksempel på Nomalisering</h2>
 
-<p>Lad os kigge på mentorskemaet ovenfor</p>
-
-<h3>Normalform 1 (NF1)</h3>
+<h2>Normalform 1 (NF1)</h2>
 
 <p>Lige nu er skemaet menneskelæseligt, men for at få tabellen til at opfylde <span class="inl_cmd">NF1</span> skal vi have ændret på nogle ting.</p>
 
@@ -569,7 +574,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 </table>
 
 
-<h3>Normalform 2 (NF2)</h3>
+<h2>Normalform 2 (NF2)</h2>
 
 <p>For at opfylde NF2 skal tabellen først opfylde NF1, men derudover skal tabellen have en unik nøgle. Lærerens initialer og navn er ikke unik da samme lærer kan have flere klasser. Herunder vælger vi at klassenavnet skal være den unikke nøgle</p>
 
@@ -637,7 +642,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 	</tbody>
 </table>
 
-<h3>Normalform 3 (NF3)</h3>
+<h2>Normalform 3 (NF3)</h2>
 
 <p>NF 2 sikrer, at vi kan tilgå tabellen igennem en unik nøgle og at den er sammenhængende. Men den bliver hurtig uoverskuelig. Derfor vælger vi at analysere tabellen for om den kan slittes op i mindre tabeller, hvor felter der afhænger af andre får deres egne tabeller. </p>
 
@@ -1017,9 +1022,35 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 	</tbody>
 </table>
 
-<h1>kald af data</h1>
+<h1>Søgning i databasen</h1>
+
+<p>Når databasen er oprettet kan man søge i databasen ved hjælp af et SQL (<span class="bold">S</span>tructured <span class="bold">Q</span>uery <span class="bold">L</span>anguage). I første omgang kan det virke uoverskueligt, men når man først forstår strukturen kan man lave meget præcise søgninger i sin(e) database(r). Se eksemplet herunder:</p>
+
+<pre>
+	<code class="SQL">
+SELECT * From Klasser_og_elever WHERE Klasse='1a' OR Klasse='1b'
+	</code>
+</pre>
+
+
+
+<p>Læs mere: <a href="http://www.w3schools.com/sql/default.asp" target="_blank">http://www.w3schools.com/sql/default.asp</a></p>
+
+<h2>Kald en kolonne</h2>
+
+<p></p>
+
+<pre>
+	<code class="SQL">
+SELECT Mentor,Navn From Mentorer
+	</code>
+</pre>
+
 
 <h2>Kald en post</h2>
+
+<p></p>
+
 <pre>
 	<code class="SQL">
 SELECT * From Mentorer WHERE Navn="Thomas Jensen"
@@ -1030,6 +1061,8 @@ SELECT * From Mentorer WHERE Navn="Thomas Jensen"
 
 
 <h2>Kald hele tabellen</h2>
+
+<p></p>
 
 <pre>
 	<code class="SQL">
@@ -1052,7 +1085,9 @@ WHERE [tabel1].[kolonne] = [*værdi*] AND [tabel2].[kolonne] = [*værdi*];
 	</code>
 </pre>
 
-<h2>Søg med *</h2>
+<h2>Søg med wildcard</h2>
+
+<p></p>
 
 <pre>
 	<code class="SQL">
