@@ -350,6 +350,66 @@ Press return to continue
 
 <p>Ved at angive to konstanter i funktionen kan vi "kalde" parametre fra koden ind i funktionen. På den måde kan vi lave funktioner der er meget fleksible.</p>
 
+<h2>Variabler i funktioner</h2>
+
+<p>Lad os forestille os at vi vil lave en funktion der ganger et indtastet tal med 2. I selve funktionen laver vi den nye variabel, som efterfølgende skal skrives ud:</p>
+
+<pre>
+	<code class="python">
+def skriv_tal():
+	
+	valgt_tal=int(input("Skriv et tal: "))
+	dobbelt_a=valgt_tal*2
+	
+skriv_tal()
+
+print("Det fordoblede tal er: {0}".format(dobbelt_a))
+	</code>
+</pre>
+
+<pre class="ubuntu_terminal">
+Skriv et tal: 5
+Traceback (most recent call last):
+  File "test.py", line 10, in <module>
+    print(dobbelt_a)
+NameError: name 'dobbelt_a' is not defined
+
+
+------------------
+(program exited with code: 1)
+Press return to continue
+</pre>
+
+<p>Fejlkoden fortæller os at den ikke kan finde variablen <span class="inl_cmd">dobbelt_a</span>. Det skyldes at variablen er sat inde i funktionen <span class="inl_cmd">skriv_tal()</span> og derfor kun kan anvendes der.</p>
+
+<p>For at omgå dette må vi gøre sådan at variablen bliver tilgængelig i hele programmet. Det opnås ved at oprette variablen globalt før værdien sættes ved at skrive: <span class="inl_cmd">global dobbelt_a</span></p>
+
+<pre>
+	<code class="python">
+def skriv_tal():
+	
+	valgt_tal=int(input("Skriv et tal: "))
+	
+	global dobbelt_a
+	
+	dobbelt_a=valgt_tal*2
+	
+skriv_tal()
+
+print("Det fordoblede tal er: {0}".format(dobbelt_a))
+	</code>
+</pre>
+
+<pre class="ubuntu_terminal">
+Skriv et tal: 5
+Det fordoblede tal er: 10
+
+
+------------------
+(program exited with code: 0)
+Press return to continue
+</pre>
+
 <h2>Check kode</h2>
 
 <p>Et trick man kan anvende når man programmerer og ønsker at følge udviklingen af ens variabler er, at lave en <span class="inl_cmd">chk()</span> funktion. Det betyder at når vi sætter variablen <span class="inl_cmd">check</span> = 1, så vil de udføre funktionen ellers ikke. På den måde kan man under kodningen følge med hvad der sker.</p>

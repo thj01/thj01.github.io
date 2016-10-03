@@ -459,11 +459,9 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 	</tbody>
 </table>
 
-<p>Skemaet ovenfor er let at læse for os, men det for at gøre det til effektiv til en database skal vi anvende <span class="inl_cmd">normalisering</span>. Normaliseringsprocessen sikrer at data ikke bliver gentaget flere steder og data er entydig. Det man vil undgå er <span class="inl_cmd">redundans</span> og <span class="inl_cmd">inkonsistens</span>.</p>
+<p>Skemaet ovenfor er let at læse for os, men det for at gøre det til effektiv til en database skal vi anvende <span class="inl_cmd">normalisering</span>. Normaliseringsprocessen sikrer at data ikke bliver gentaget flere steder og data er entydig. Det man vil undgå er <span class="inl_cmd">redundans</span> (gentagelser) og <span class="inl_cmd">inkonsistens</span> (mangel på sammenhæng).</p>
 
-<h2>Hvad er normalisering</h2>
-
-<p>Normalisering er den proces, man gennemløber i designfasen af sin database, og den sker i tre trin:</p>
+<p>For at undgå redundans og inkonsistens gennemløber man i databasens designfase disse tre trin:</p>
 
 <ol class="">
 	<li>Normalform 1 (NF1)</li>
@@ -892,9 +890,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 	</tbody>
 </table>
 
-<h2>Opsamling</h2>
-
-<p>Ved at anvende normalisering på vores database får vi en opbygning der sikrer at vi ikke har redundans (gentagelser) og at der er sammenhæng imellem og i de enkelte tabeller. Det sikrer også, at tabellen bliver nemmere at vedligeholde og udvide med flere informationer.</p>
+<p>Ved at anvende normalisering på vores database får vi en opbygning der sikrer at vi ikke har redundans (gentagelser) og inkonsistens (mangel på sammenhæng) i de enkelte tabeller. Det sikrer også, at tabellen bliver nemmere at vedligeholde og udvide med flere informationer.</p>
 
 <p>Hver eneste gang man udvider sin database bør man sikre sig at databasen overholder de tre normaliseringskrav.</p>
 
@@ -1028,23 +1024,54 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <pre>
 	<code class="SQL">
-SELECT * From Klasser_og_elever WHERE Klasse='1a' OR Klasse='1b'
+SELECT * From Klasse_og_elever WHERE Klasse='1a' OR Klasse='1b'
 	</code>
 </pre>
 
+<p>Koden betyder:</p>
 
+<ul class="disc">
+	<li><pre><code class="SQL">SELECT * </code></pre></li>
+	
+		<p>Vælg alt ...</p>
+	
+	<li><pre><code class="SQL">From Klasse_og_elever</code></pre></li>
+	
+		<p>... fra tabellen <span class="inl_cmd">Klasse_og_elever</span></p>
+	
+	<li><pre><code class="SQL">WHERE Klasse='1a' OR Klasse='1b'</code></pre></li>
+	
+		<p>... hvor der står <span class="inl_cmd">1a</span> eller <span class="inl_cmd">1b</span></p>
+	
+</ul>
+
+<figure id="">
+
+	<img class="" src="images/mysql_kald_eksempel.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
 
 <p>Læs mere: <a href="http://www.w3schools.com/sql/default.asp" target="_blank">http://www.w3schools.com/sql/default.asp</a></p>
 
-<h2>Kald en kolonne</h2>
+<h2>Kald hele tabellen</h2>
 
 <p></p>
 
 <pre>
 	<code class="SQL">
-SELECT Mentor,Navn From Mentorer
+SELECT * FROM `Mentorer`
 	</code>
 </pre>
+
+<figure id="">
+
+	<img class="" src="images/mysql_kald_hele_tabellen.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
 
 
 <h2>Kald en post</h2>
@@ -1057,35 +1084,33 @@ SELECT * From Mentorer WHERE Navn="Thomas Jensen"
 	</code>
 </pre>
 
+<figure id="">
 
+	<img class="" src="images/mysql_kald_en_post.png" alt="" title="" />
 
+	<figcaption></figcaption>
 
-<h2>Kald hele tabellen</h2>
+</figure>
+
+<h2>Kald bestemte felter</h2>
 
 <p></p>
 
 <pre>
 	<code class="SQL">
-SELECT * FROM `Mentorer`
+SELECT Mentor,Mail From Mentorer
 	</code>
 </pre>
 
+<figure id="">
 
+	<img class="" src="images/mysql_kald_bestemte_felter.png" alt="" title="" />
 
+	<figcaption></figcaption>
 
-<h2>Kald fra flere tabeller</h2>
+</figure>
 
-<p></p>
-
-
-<pre>
-	<code class="SQL">
-SELECT * FROM [tabel1],[tabel2]
-WHERE [tabel1].[kolonne] = [*værdi*] AND [tabel2].[kolonne] = [*værdi*];
-	</code>
-</pre>
-
-<h2>Søg med wildcard</h2>
+<h2>Kald med wildcard</h2>
 
 <p></p>
 
@@ -1095,8 +1120,50 @@ SELECT * FROM `Mentorer` WHERE Navn LIKE 'Thomas%'
 	</code>
 </pre>
 
+<figure id="">
+
+	<img class="" src="images/mysql_kald_med_wildcard.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h2>Kald fra flere tabeller</h2>
+
 <p></p>
 
+
+<pre>
+	<code class="SQL">
+SELECT * FROM Klasser_og_mentorer,Mentorer WHERE Klasser_og_mentorer.Mentor='tj' AND Mentorer.Mentor="tj" 
+	</code>
+</pre>
+
+<figure id="">
+
+	<img class="" src="images/mysql_kald_med_flere_tabeller.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Den søgning kan vi gøre mere præcis ved at udvælge de felter der skal udskrives fra tabellerne.</p>
+
+<pre>
+	<code class="SQL">
+SELECT Klasser_og_mentorer.Klasse,Mentorer.Navn,Mentorer.Mobil,Mentorer.Mail 
+FROM Klasser_og_mentorer,Mentorer 
+WHERE Klasser_og_mentorer.Mentor='tj' AND Mentorer.Mentor="tj"
+	</code>
+</pre>
+
+<figure id="">
+
+	<img class="" src="images/mysql_kald_med_flere_tabeller2.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
 
 <p></p>
 

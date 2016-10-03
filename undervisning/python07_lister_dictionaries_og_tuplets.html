@@ -94,11 +94,13 @@ print (navne)
 
 # Udskriver det x'te element af listen. Husk at computere tæller fra 0 
 
-antal_navne = len(navne)
+print(navne[0])
 
-for i in range(antal_navne):
+print(navne[1])
 
-	print(navne[i])
+print(navne[2])
+
+print(navne[3])
 	</code>
 </pre>
 
@@ -115,6 +117,28 @@ Dennis
 Press return to continue
 </pre>
 
+<p>Koden kan også laves, hvor listens elementer printes ud ved hjælp af en løkke. Læg mærke til at antallet af elementer i listen findes ved at anvende <span class="inl_cmd">len()</span>.</p>
+
+<pre>
+	<code class="python">
+# Liste med navne
+
+navne = ["Anne", "Bent", "Cecilie", "Dennis"] 
+
+#udskriver hele listen
+
+print (navne)
+
+# Udskriver det x'te element af listen. Husk at computere tæller fra 0 
+
+antal_navne = len(navne)
+
+for i in range(antal_navne):
+
+	print(navne[i])
+	</code>
+</pre>
+
 <h2>Ændring af listeelement</h2>
 
 <p>Hvis man ønsker at ændre et element i en liste angiver man blot en ny variabel</p>
@@ -123,19 +147,19 @@ Press return to continue
 	<code class="python">
 # Liste med navne
 
-names = ["Anne", "Bent", "Cecilie", "Dennis"]
+navne = ["Anne", "Bent", "Cecilie", "Dennis"]
 
 #udskriver hele listen
 
-print (names)
+print (navne)
 
 # Ændring af det 4 element i listen
 
-names[3] = "Dorthe"
+navne[3] = "Dorthe"
 
-print ("Den nye liste")
+print ("Den nye liste", end=" ")
 
-print (names)
+print (navne)
 	</code>
 </pre>
 
@@ -156,17 +180,17 @@ Press return to continue
 	<code class="python">
 # Liste med navne
 
-names = ["Anne", "Bent", "Cecilie", "Dorthe"]
+navne = ["Anne", "Bent", "Cecilie", "Dorthe"]
 
 #udskriver hele listen
 
-print (names)
+print (navne)
 
 # Tilføj ekstra element
 
-names.append("Egon")
+navne.append("Egon")
 
-print (names)
+print (navne)
 	</code>
 </pre>
 
@@ -192,17 +216,17 @@ Press return to continue
 	<code class="python">
 # Liste med navne
 
-names = ["Anne", "Bent", "Cecilie", "Dorthe", "Egon"]
+navne = ["Anne", "Bent", "Cecilie", "Dorthe", "Egon"]
 
 #udskriver hele listen
 
-print (names)
+print (navne)
 
 # Fjerne det sidste element
 
-del names[-1]
+del navne[-1]
 
-print (names)
+print (navne)
 	</code>
 </pre>
 
@@ -224,17 +248,17 @@ Press return to continue
 	<code class="python">
 # Liste med navne
 
-names = ["Anne", "Bent", "Cecilie", "Dorthe", "Egon"]
+navne = ["Anne", "Bent", "Cecilie", "Dorthe", "Egon"]
 
 #udskriver hele listen
 
-print (names)
+print (navne)
 
 # Fjern "Cecilie"
 
-del names[2]
+del navne[2]
 
-print (names)
+print (navne)
 	</code>
 </pre>
 
@@ -256,13 +280,13 @@ Press return to continue
 	<code class="python">
 # Liste med navne
 
-names = ["Anne", "Bent", "Cecilie", "Dorthe", "Egon"]
+navne = ["Anne", "Bent", "Cecilie", "Dorthe", "Egon"]
 
-name_to_find = "Dorthe"
+find_navn = "Dorthe"
 
-listnumber = names.index(name_to_find)
+listnumber = navne.index(find_navn)
 
-print ("\"{0}\" er nummer {1} i listen".format(name_to_find,listnumber))
+print ("\"{0}\" er nummer {1} i listen".format(find_navn,listnumber))
 	</code>
 </pre>
 
@@ -285,13 +309,13 @@ Press return to continue
 	<code class="python">
 # Liste med navne
 
-names = ["Anne", "Bent", "Cecilie", "Dorthe", "Egon"]
+navne = ["Anne", "Bent", "Cecilie", "Dorthe", "Egon"]
 
-navn =  "Dorthe"
+navn_der_testes =  "Dorthe"
 
-is_name = navn in names
+findes_navn = navn_der_testes in navne
 
-print ("{0} er i listen: {1}".format(navn,is_name))
+print ("{0} er på listen: {1}".format(navn_der_testes,findes_navn))
 	</code>
 </pre>
 
@@ -312,13 +336,13 @@ Press return to continue
 	<code class="python">
 # Liste med navne
 
-names = ["Anne", "Bent", "Cecilie", "Dorthe", "Egon"]
+navne = ["Anne", "Bent", "Cecilie", "Dorthe", "Egon"]
 
-navn =  "Dorthe"
+navn_der_testes =  "Dorthe"
 
-is_name = navn not in names
+findes_navn = navn_der_testes not in navne
 
-print ("{0} er IKKE i listen: {1}".format(navn,is_name))
+print ("{0} er IKKE i listen: {1}".format(navn_der_testes,findes_navn))
 	</code>
 </pre>
 
