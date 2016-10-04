@@ -1057,7 +1057,7 @@ SELECT * From Klasse_og_elever WHERE Klasse='1a' OR Klasse='1b'
 
 <h2>Kald hele tabellen</h2>
 
-<p></p>
+<p>For at kalde fra hele tabellen skal vi først fortælle at vi vil kigge på alt inholdet og hvilken tabel det drejer sig om.</p>
 
 <pre>
 	<code class="SQL">
@@ -1076,7 +1076,7 @@ SELECT * FROM `Mentorer`
 
 <h2>Kald en post</h2>
 
-<p></p>
+<p>For at se en hel post, skal vi igen vælge alt indholdet, og tabellen vi vil undersøge. Herefter fortæller vi hvilken data vi vil finde. Husk at angive tekststrenge med anførselstegn (<span class="inl_cmd">"*tekststreng*"</span>) eller citationstegn (<span class="inl_cmd">'*tekststreng*'</span>).</p>
 
 <pre>
 	<code class="SQL">
@@ -1094,7 +1094,7 @@ SELECT * From Mentorer WHERE Navn="Thomas Jensen"
 
 <h2>Kald bestemte felter</h2>
 
-<p></p>
+<p>Hvis vi kun vil have fra i nogle enkelte felter i hver post fortæller vi hvilke felter vi vil se og hvilken tabel det kommer fra.</p>
 
 <pre>
 	<code class="SQL">
@@ -1112,7 +1112,9 @@ SELECT Mentor,Mail From Mentorer
 
 <h2>Kald med wildcard</h2>
 
-<p></p>
+<p>Nogle gange har man behov for at finde data, der har nogle fælles tegn. Det løser vi ved at anvende <span class="inl_cmd">"wildcards"</span>. Normal vil man i computerverdenen angive et wildcard med <span class="inl_cmd">*</span>, men i programmeringsverdenen har man anvendt procenttegnet (<span class="inl_cmd">%</span>) i tekststrenge.</p>
+
+<p>Vi vælger igen alle data, i tabellen og søger denne gang med <span class="inl_cmd">LIKE</span> i stedet for <span class="inl_cmd">=</span>.</p>
 
 <pre>
 	<code class="SQL">
@@ -1130,7 +1132,7 @@ SELECT * FROM `Mentorer` WHERE Navn LIKE 'Thomas%'
 
 <h2>Kald fra flere tabeller</h2>
 
-<p></p>
+<p>For at kalde fra Flere tabeller skal vi i <span class="inl_cmd">FROM</span> angive de tabeller vi vil søge i. Herefter skal vi angive i hvilke felter det vi søger står i. Det gøres ved at bygge stien op til feltet. Herunder vil vi anvende feltet <span class="inl_cmd">Mentor</span> fra begge tabeller. For at ramme det rigtige felt skriver vi først hvilken tabel det handler om, efterfulgt af et punktum og feltets navn. <span class="inl_cmd">Klasser_og_mentorer.Mentor</span> fortæller altså at det er feltet <span class="inl_cmd">Mentor</span> i tabellen <span class="inl_cmd">Klasser_og_mentorer</span>.</p>
 
 
 <pre>
@@ -1147,7 +1149,7 @@ SELECT * FROM Klasser_og_mentorer,Mentorer WHERE Klasser_og_mentorer.Mentor='tj'
 
 </figure>
 
-<p>Den søgning kan vi gøre mere præcis ved at udvælge de felter der skal udskrives fra tabellerne.</p>
+<p>Den søgning kan vi gøre mere præcis ved at udvælge de felter der skal udskrives fra tabellerne. Vi erstatter <span class="inl_cmd">SELECT *</span>, med den konkrete felter med den fulde adresse.</p>
 
 <pre>
 	<code class="SQL">
