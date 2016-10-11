@@ -59,21 +59,18 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 <p>Denne guide handler om det mest basale i alle programmeringssprog, nemlig hvad data er og hvordan man behandler dem.</p>
 
 		
-<h1>Strenge</h1>
+<h1>Et simpelt program</h1>
 
-<p>Det første program vi skal lave er meget simpelt. Det består af en kort tekst vi vil have skrevet ud i terminalen. Tekst man vil have skrevet ud på skærmen kaldes en <span class="inl_cmd">streng</span>, og skal placeres mellem to <span class="inl_cmd">"   "</span> eller <span class="inl_cmd">'   '</span>.</p>
-
-<p>Lad os lave et simpelt program der skriver: "Hej". Indtast nedestående og tryk på <kbd>F5</kbd></p>
+<p>Lad os lave et simpelt program der udskriver tekstrengen: "Hej". Indtast nedestående og tryk på <kbd>F5</kbd></p>
 
 <pre>
 	<code class="python">
-# Dette er en kommentar
-print ("hej") # Dette er også en kommentar
+print("Hej")
 	</code>
 </pre>
 
 <pre class="ubuntu_terminal">
-hej
+Hej
 
 
 ------------------
@@ -81,32 +78,95 @@ hej
 Press return to continue
 </pre>
 
-<p>Når vi trykker på <kbd>F5</kbd> kører geany programmet for os i en terminal</p>
+<p>Programmet er opbygget af funktionen <span class="inl_cmd">print()</span>, som laver et output af det som står i parantesen. I dette tilfælde af tektstrengen <span class="inl_cmd">Hej</span>. Som du kan se i programmet omgiver vi teksstrengen <span class="inl_cmd">Hej</span> med udråbtegn <span class="inl_cmd">"   "</span>. Det er nødvendigt fordi Python skal vide om vi indsætter en værdi eller en tekststreng. Vi fortæller altså python om det er en værdi ved enten at sætte udråbstegn omkring eller at udelade dem.</p>
 
-<p>Koden består af to linier:</p>
-
-<pre><code class="python"># Dette er en kommentar</code></pre>
-
-<p>Når der sætter et hash <span class="inl_cmd">#</span> så vil python #springe over# resten af linen. Ved det første <span class="inl_cmd">#</span> springer python altså linien over, og ved det andet stopper python med at læse efter <span class="inl_cmd">#</span> mærket.</p>
-
-<pre><code class="python">print ("hej") # Dette er også en kommentar</code></pre>
-
-<p><span class="inl_cmd">print</span> laver et output af det efterfølgende. I dette tilfælde af tektstrengen <span class="inl_cmd">"hej"</span>. Man kan anvende både <span class="inl_cmd">"</span> og <span class="inl_cmd">'</span> til at omgive teksstrenge.</p>
-
-<p>Hvis du har lavet en fejl svarer Python tilbage med en fejlmeddelelse. I dette eksempel fjernede jeg den slutningen på parantesen i <span class="inl_cmd">print</span> sætningen:</p>
+<pre>
+	<code class="python">
+print("Hej")
+print(4)
+	</code>
+</pre>
 
 <pre class="ubuntu_terminal">
-  File "test.py", line 3
-    
-                                              ^
-SyntaxError: unexpected EOF while parsing
+Hej
+4
+
+------------------
+(program exited with code: 0)
+Press return to continue
+</pre>
+ 
+<h2>Kommentarer</h2>
+
+<p>For at gøre koden lettere at læse indsætter man kommentarer i den. Det kan gøres på to måder. Se eksemplet herunder:</p>
+
+
+<pre>
+	<code class="python">
+"""
+Dette program viser noget om kommentarer i kode
+"""		
+		
+# Dette er en kommentar
+print ("Hej") # Dette er også en kommentar
+	</code>
+</pre>
+
+<pre class="ubuntu_terminal">
+Hej
+
+------------------
+(program exited with code: 0)
+Press return to continue
+</pre>
+
+<p>Der er to typer af kommentarer her. Den store kommentar i starten der er omgivet af tre anførselstegn (<span class="inl_cmd">""" *kommentar* """</span>) og de to mindre der er lavet ved at sætte et hashtag (<span class="inl_cmd">#</span>) foran. Den tekst der kommer imellem <span class="inl_cmd">"""</span> eller efter <span class="inl_cmd">#</span> bliver sprunget over når kompileren læser og udfører koden.</p>
+
+<h2>Fejlmeddelelser</h2>
+
+<p>Lad os se på koden herover, hvor vi udskriver en tekststreng og et tal men hvor vi udelader de afsluttende parantes i første linie.</p>
+
+<pre>
+	<code class="python">
+print("Hej"
+print(4)
+	</code>
+</pre>
+
+<pre class="ubuntu_terminal">
+  File "test.py", line 2
+    print(4)
+        ^
+SyntaxError: invalid syntax
 
 ------------------
 (program exited with code: 1)
 Press return to continue
 </pre>
 
-<p>Læg mærke til to ting. For det første gør Python opmærksom på at fejlen er en <span class="inl_cmd">syntax-</span>fejl. Altså en "grammatisk" fejl. For det andet afslutter programmet med en <span class="inl_cmd">code 1</span>.</p>
+<p>Python gør os opmærksom på at der er en <span class="inl_cmd">syntaksfejl</span> og den peger på linie 2. Grunden til at Python peger på linie 2 er, at den ikke får afsluttet parantesen i linie 1, og derfor forventer at der sker noget mere i linie 2 der er forbundet med linie 1. Men her starter en ny funktion. Dette er en syntaksfejl ... en fejl hvor koden ikke har den rigtige "grammatik".</p>
+
+<p>Andre fejl kan f.eks. være, at man ikke angiver den rigtige type. Se nedestående eksempel, hvor <span class="inl_cmd">Hej</span> ikke er omsluttet af anførselstegn (<span class="inl_cmd">"</span>):</p>
+
+<pre>
+	<code class="python">
+print(Hej)
+print(4)
+	</code>
+</pre>
+
+<pre class="ubuntu_terminal">
+Traceback (most recent call last):
+  File "test.py", line 1, in <module>
+    print(Hej)
+NameError: name 'Hej' is not defined
+
+------------------
+(program exited with code: 1)
+Press return to continue
+</pre>
+
+<p>Her får vi en <span class="inl_cmd">navnefejl</span>. Python forventer en talværdi, da der ikke er nogen anførselstegn ... og <span class="inl_cmd">Hej</span> er ikke et tal.</p>
 
 
 <h2>Lange tekststykker</h2>
