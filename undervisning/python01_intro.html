@@ -112,7 +112,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <p>Download nyeste version af Geany her: <a href="http://www.geany.org/Download/Releases" target="_blank">https://www.python.org/downloads/</a>. Vælg <span class="inl_cmd">geany-X.XX_setup.exe </span>, hvor X.XX er versionsnummeret.</p>
 
-<p>Igennem hele installationen vælges standardindstillingerne.</p>
+<p>Vælg <span class="inl_cmd">Install Now</span>.</p>
 
 <h1>Noget grundlæggende</h1>
 
@@ -146,7 +146,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <p>Du vil løbende lære nye udtryk, men de ovenstående er vigtige for at komme godt igang.</p>
 
-<h2>Python fortolker</h2>
+<h1>Python fortolker</h1>
 
 <p>Der er indbygget en fortolker i python. Den kan man få frem ved at køre kommandoen <span class="inl_cmd">python3</span> fra en terminal.</p>
 
@@ -185,6 +185,39 @@ Type "help", "copyright", "credits" or "license" for more information.
 <p>For at komme ud af kommendofortolkeren kører du kommandoen <span class="inl_cmd">exit()</span></p>
 
 <p>I dette materiale vil vi anvende Geany til at skrive programmerne i og udføre dem derfra. Men hvis ønsker at teste nogle ting, kan du åbne en Python fortolker, og teste tingene der.</p>
+
+<h2>Idle</h2>
+
+<p>Anvender du Windows eller Mac vil programmet <span class="inl_cmd">IDLE</span> også blive installeret. Det er en grafisk program der giver adgang til en Python fortolker.</p>
+
+<h1>Ekstre biblioteker</h1>
+
+<p>Nogle gange har man brug for at hente ekstre funktionalitet ind i Python, som ikke kommer med som standard. Disse biblioteker installeres lidt forskelligt alt efter system. Herunder er det vist ved hjælp af biblioteket <span class="inl_cmd">sympy</span></p>
+
+<h2>Sympy - Ubuntu</h2>
+
+<p>I Ubuntu er der to muligheder. Enten at installere pakken <span class="inl_cmd">python3-sympy</span> eller at anvende <span class="inl_cmd">pip3</span>.</p>
+
+<p>Forskellen mellem de to metoder er, at <span class="inl_cmd">pip3</span> kun installere selve pakken grundpakken, men at <span class="inl_cmd">python3-pip</span> installere alle afhængigheder der kan tænkes. <span class="inl_cmd">python3-pip</span> fylder hos mig omkring 2 Gb. Af denne årsag anbefaler jeg <span class="inl_cmd">pip3</span></p>
+
+<code class="cmd">sudo apt install python3-pip</code>
+
+<code class="more_cmd">sudo pip install sympy</code>
+
+<h2>Sympy - Windows</h2>
+
+<p><span class="inl_cmd">pip3</span> er installeret som standard og her køres kommandoen:</p>
+
+<code class="cmd">pip3 sympy</code>
+
+<h2>Sympy - Mac</h2>
+
+<p><span class="inl_cmd">pip3</span> er installeret som standard og her køres kommandoen:</p>
+
+<code class="cmd">sudo pip3 sympy</code>
+
+
+
 
 <h1>Ressourcer på nettet</h1>
 
