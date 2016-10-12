@@ -53,6 +53,200 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <div class="title">Matematik med Python 3</div>
 
+<p>I dette kursus vil du lære at anvende Python 3 til at lave beregninger, løse ligninger og lave grafer.</p>
+
+
+
+
+<h1>Basisviden</h1>
+
+<p>I dette materiale vil vi anvende <span class="inl_cmd">Python shell</span>, som er en kommandolinie som fungerer ved hjælp af Python. Den tilgås ved at skrive nedestående kommandoer.</p>
+
+<span class="afsnit">Python shell på Ubuntu</span>
+
+<code class="cmd">python3</code>
+
+<p>Grunden til at kommendoen er lidt anderledes på Ubuntu er, at Python 2 er installeret som standard, og at det er Python3 der skal startes.</p>
+
+<span class="afsnit">Python shell  på Windows og Mac</span>
+
+<code class="cmd">python</code>
+
+<p>Herefter starte <span class="inl_cmd">Python shell</span> op, og der kan indtastes kommandoer efter <span class="inl_cmd">>>></span>:</p>
+
+<pre class="ubuntu_terminal">
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ python3
+Python 3.5.2 (default, Sep 10 2016, 08:21:44) 
+[GCC 5.4.0 20160609] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>>
+</pre>
+
+<h2>Variabler</h2>
+
+<p>En variable er en betegnelse man sætter lig med en værdi eller en tekstreng der kan blive ændret. Herunder sættes <span class="inl_cmd">a</span> først til <span class="inl_cmd">4</span> og ændres herefter til <span class="inl_cmd">Python er let at lære</span></p>
+
+<pre class="ubuntu_terminal">
+>>> a=4
+>>> a
+4
+>>> a="Python er let at lære"
+>>> a
+'Python er let at lære'
+</pre>
+
+<h2>Tekstrenge og værdier</h2>
+
+<p>I Python anvender to typer input: tal og teksstrenge. Talværdier skrives direkte ind, men tekstrenge skal have anførselstegn som start og slut (se ovenfor)</p>
+
+<p>I dette materiale kommer vi til at arbejde med 3 taltyper:</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Betegnelse</th>
+			<th>Talmængde</th>
+			<th>Beskrivelse</th>
+			<th>Eksempel</th>
+			<th>Læg mærke til</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><span class="inl_cmd">int</span></td>
+			<td><img src="images/mat_not_mathbbN_0.svg" alt="" title="" /></td>
+			<td>Heltal (kaldes integer på engelsk)</td>
+			<td>1 ; 17 ; 2499</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td><span class="inl_cmd">float</span></td>
+			<td><img src="images/mat_not_mathbbR.svg" alt="" title="" /></td>
+			<td>Decimaltal</td>
+			<td>0.5 ; 3,141592 ; 0.6666</td>
+			<td>... at der anvendes punktum og ikke komma</td>
+		</tr>
+		<tr>
+			<td><span class="inl_cmd">Fraction</span></td>
+			<td><img src="images/mat_not_mathbbQ.svg" alt="" title="" /></td>
+			<td>Brøker</td>
+			<td>1/2 ; 22/7 ; 2/3</td>
+			<td>Resultatet kommer ud i formen: Fraction(tæller,nævner)</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Senere vil det blive vist hvordan man anvender de forskellige talmængder til beregninger.</p>
+
+<h2>Regningsarter</h2>
+
+<p>Regningsarterne fungerer ved at anvende tegnene: <span class="inl_cmd">+</span>, <span class="inl_cmd">-</span>, <span class="inl_cmd">*</span> og <span class="inl_cmd">/</span>. Se herunder:</p>
+
+<pre class="ubuntu_terminal">
+>>> 6+3
+9
+>>> 6-3
+3
+>>> 6*3
+18
+>>> 6/3
+2.0
+</pre>
+
+<p>Læg mærke til at der bliver anvendt <span class="inl_cmd">int</span> i alle eksemplerne, og at resultatet bliver leveret på samme måde ved <span class="inl_cmd">+</span>, <span class="inl_cmd">-</span> og <span class="inl_cmd">*</span>. Men ved division bliver resulatet ændret til <span class="inl_cmd">float</span>. Se nedestående eksempel</p>
+
+<pre class="ubuntu_terminal">
+>>> 2/3
+0.6666666666666666
+</pre>
+
+<h2>Regneregler</h2>
+
+<p>Python anvender korrekte regningsregler, hvilket vil sige at <span class="inl_cmd">+</span> og <span class="inl_cmd">-</span> adskiller ledene, og at de skal sættes paranteser for at omgå dette. Se eksemplerne herunder:</p>
+
+<pre class="ubuntu_terminal">
+>>> 3+2*6
+15
+>>> (3+2)*6
+30
+>>> 3+6/2
+6.0
+>>> (3+6)/2
+4.5
+</pre>
+
+<h2>Modulus og floor division</h2>
+
+<p>To funktioner som ikke giver mening normalt i matematik er modulus og "floor division".</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Funktion</th>
+			<th>Tegn</th>
+			<th>Beskrivelse</th>
+			<th>Eksempel</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><span class="inl_cmd">modulus</span></td>
+			<td><span class="inl_cmd">%</span></td>
+			<td>Returnere "resten" efter division</td>
+			<td>9%5 = 4 </td>
+		</tr>
+		<tr>
+			<td><span class="inl_cmd">floor division</span></td>
+			<td><span class="inl_cmd">//</span></td>
+			<td>Returnerer heltallet efter division</td>
+			<td>9//5 = 1</td>
+		</tr>
+	</tbody>
+</table>
+
+<pre class="ubuntu_terminal">
+>>> 9%5
+4
+>>> 9//5
+1
+</pre>
+
+<p>Det smarte ved at <span class="inl_cmd">modulus</span> og <span class="inl_cmd">floor division</span> er, at man kan få leveret alle tallene i en blandet brøk. Herved kan man lave bregninger uden at miste decimaler.</p>
+
+
+<h2>Potens og rødder</h2>
+
+<p>For at finde potens tal og rødder anvendes funktionen <span class="inl_cmd">pow(a,b)</span>, hvor <span class="inl_cmd">a</span> er grundtallet og <span class="inl_cmd">b</span> er potensen. Se nedestående eksempler:</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><img src="images/mat_not_a^b.svg" alt="" title="" /></td>
+			<td><span class="inl_cmd">pow(a,b)</span></td>
+		</tr>
+		<tr>
+			<td><img src="images/mat_not_sqrtb_a.svg" alt="" title="" /></td>
+			<td><span class="inl_cmd">pow(a,1/b)</span></td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Eksempler med 2² og kvadratroden af 9:</p>
+
+<pre class="ubuntu_terminal">
+>>> pow(4,2) 
+16
+>>> pow(9,1/2)
+3.0
+</pre>
+
+<p>Som før omskriver Python automatisk rødder til decimaltal.</p>
 
 <p></p>
 <p></p>
