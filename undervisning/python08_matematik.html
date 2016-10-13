@@ -355,7 +355,27 @@ Decimal('2.5000')
 
 <h2>Fraction</h2>
 
-<p>For at arbejde med brøker skal funktionen kaldes og brøker skrives ved at anvende formen: <span class="inl_cmd">Fraction(a,b)</span> hvor a er tælleren og b er nævneren.</p>
+<p>For at arbejde med brøker skal funktionen kaldes og brøker skrives ved at anvende formen: <span class="inl_cmd">Fraction(a,b)</span> hvor a er tælleren og b er nævneren. Herunder vises udregningen bag Piet Heins digt både som <span class="inl_cmd">Fraction</span> og som <span class="inl_cmd">float</span>.</p>
+
+<blockquote class="center">
+	<p>
+		En halv er <br/> tænk nu hvor aparte <br/>to trediedele <br/>af trekvarte <br/><br/>
+		<img src="images/Piet_hein_gruk.svg" alt="" title="" />
+	</p>
+</blockquote>
+
+<pre class="ubuntu_terminal">
+>>> from fractions import Fraction
+>>> brøk1 = Fraction(2,3)
+>>> brøk2 = Fraction(3,4)
+>>> brøk1*brøk2
+Fraction(1, 2)
+>>> float1=float(2/3)
+>>> float2=float(3/4)
+>>> float1*float2
+0.5
+</pre>
+
 
 <h2>Konvertering af taltyper</h2>
 
