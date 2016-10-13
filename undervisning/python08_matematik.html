@@ -127,6 +127,13 @@ Type "help", "copyright", "credits" or "license" for more information.
 			<td>... at der anvendes punktum og ikke komma</td>
 		</tr>
 		<tr>
+			<td><span class="inl_cmd">Decimal</span></td>
+			<td><img src="images/mat_not_mathbbR.svg" alt="" title="" /></td>
+			<td>Decimaltal</td>
+			<td>0.5 ; 3,141592 ; 0.6666</td>
+			<td>... at der anvendes punktum og ikke komma</td>
+		</tr>
+		<tr>
 			<td><span class="inl_cmd">Fraction</span></td>
 			<td><img src="images/mat_not_mathbbQ.svg" alt="" title="" /></td>
 			<td>Brøker</td>
@@ -135,6 +142,8 @@ Type "help", "copyright", "credits" or "license" for more information.
 		</tr>
 	</tbody>
 </table>
+
+<p>Forskellen mellem <span class="inl_cmd">float</span> og <span class="inl_cmd">decimal</span> er præcissionen. I almindelige matematik og fysik er <span class="inl_cmd">float</span> nøjagtig nok, men hvis vi taler om fincielle beregner bør man anvende <span class="inl_cmd">decimal</span>.</p>
 
 <p>Senere vil det blive vist hvordan man anvender de forskellige talmængder til beregninger.</p>
 
@@ -246,7 +255,141 @@ Type "help", "copyright", "credits" or "license" for more information.
 3.0
 </pre>
 
-<p>Som før omskriver Python automatisk rødder til decimaltal.</p>
+<p>Som før omskriver Python automatisk rødder til <span class="inl_cmd">float</span>.</p>
+
+<h2>Absolutte tal</h2>
+
+<p>Hvis man vil arbejde med absolutte tal anvender man funktionen <span class="inl_cmd">abs()</span>. Det gør at resultatet bliver repræsenteret med sin positive værdi. Se eksemplerne:</p>
+
+<pre class="ubuntu_terminal">
+>>> a=-2
+>>> a
+-2
+>>> abs(a)
+2
+</pre>
+
+<h1>Taltyper</h1>
+
+<p>I Python anvendes grundlæggende 4 taltyper</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Betegnelse</th>
+			<th>Talmængde</th>
+			<th>Beskrivelse</th>
+			<th>Eksempel</th>
+			<th>Læg mærke til</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><span class="inl_cmd">int</span></td>
+			<td><img src="images/mat_not_mathbbN_0.svg" alt="" title="" /></td>
+			<td>Heltal (kaldes integer på engelsk)</td>
+			<td>1 ; 17 ; 2499</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td><span class="inl_cmd">float</span></td>
+			<td><img src="images/mat_not_mathbbR.svg" alt="" title="" /></td>
+			<td>Decimaltal</td>
+			<td>0.5 ; 3,141592 ; 0.6666</td>
+			<td>... at der anvendes punktum og ikke komma</td>
+		</tr>
+		<tr>
+			<td><span class="inl_cmd">Decimal</span></td>
+			<td><img src="images/mat_not_mathbbR.svg" alt="" title="" /></td>
+			<td>Decimaltal</td>
+			<td>0.5 ; 3,141592 ; 0.6666</td>
+			<td>... at der anvendes punktum og ikke komma</td>
+		</tr>
+		<tr>
+			<td><span class="inl_cmd">Fraction</span></td>
+			<td><img src="images/mat_not_mathbbQ.svg" alt="" title="" /></td>
+			<td>Brøker</td>
+			<td>1/2 ; 22/7 ; 2/3</td>
+			<td>Resultatet kommer ud i formen: Fraction(tæller,nævner)</td>
+		</tr>
+	</tbody>
+</table>
+
+<h2>int</h2>
+
+<p><span class="inl_cmd">int</span> er heltal og anvendes ofte i programmering til at tælle og holde styr på antallet af gange noget skal ske. Det er samtidig den taltype der fylder mindst i hukommelsen og computeren kan beregne hurtigt.</p>
+
+
+<h2>float</h2>
+
+<p><span class="inl_cmd">float</span> er simple decimaltal og kan anvendes til langt de fleste beregninger. Men taller er ikke præcist se nedestående eksempel: </p>
+
+<pre class="ubuntu_terminal">
+>>> 3*0.1-0.3
+5.551115123125783e-17
+</pre>
+
+<p>Resultatet burde give <span class="inl_cmd">0</span> men giver en rest. Det er ikke fordi computeren ikke kan regne, men skyldes at <span class="inl_cmd">float</span> er binært defineret, hvilket giver disse afvigelser - i dette tilfælde efter den 17 decimal. Men anvender man få decimaler er float rigeligt. I forhold til <span class="inl_cmd">Decimal</span> fylder det mindre i hukommelsen og er lettere at beregne for computeren.</p>
+
+<h2>Decimal</h2>
+
+<p><span class="inl_cmd">Decimal</span> er eksakte tal og kan sættes til en nøjagtighed på 28 cifre og decimaler i alt. Det er en funktion der skal kaldes. Herunder er regnestykket <span class="inl_cmd">1.30+1.20</span> udregnet både med <span class="inl_cmd">float</span> og <span class="inl_cmd">Decimal</span>:</p>
+
+<pre class="ubuntu_terminal">
+>>> from decimal import Decimal
+>>> 1.30+1.20
+2.5
+>>> Decimal(1.30)+Decimal(1.20)
+Decimal('2.500000000000000000000000000')
+</pre>
+
+<p>Man kan også sætte antallet af decimaler der skal svares med på følgende måde</p>
+
+<pre class="ubuntu_terminal">
+>>> getcontext().prec=5
+>>> Decimal(1.30)+Decimal(1.20)
+Decimal('2.5000')
+</pre>
+
+<p>Læs mere: <a href="https://docs.python.org/3.5/library/decimal.html" target="_blank">https://docs.python.org/3.5/library/decimal.html</a></p>
+
+<h2>Fraction</h2>
+
+<p>For at arbejde med brøker skal funktionen kaldes og brøker skrives ved at anvende formen: <span class="inl_cmd">Fraction(a,b)</span> hvor a er tælleren og b er nævneren.</p>
+
+<h2>Konvertering af taltyper</h2>
+
+<p>Python er designet til hele tiden at vælge den bedst mulige taltype, hvilket betyder at tal der fremkommer ved hjælp af division automatisk bliver konverteret til <span class="inl_cmd">float</span>. Det vi skal kigge på her er hvordan vi konverterer mellem taltyper og finder ud af hvilken taltype det er.</p>
+
+<table class="">
+	<tbody>
+		<tr>
+			<td></td>
+			<td><span class="inl_cmd">int</span></td>
+			<td><span class="inl_cmd">float</span></td>
+			<td><span class="inl_cmd">Fraction</span></td>
+		</tr>
+		<tr>
+			<td><span class="inl_cmd">int</span></td>
+			<td></td>
+			<td><span class="inl_cmd">int(*værdi*)</span></td>
+			<td><span class="inl_cmd">Fraction(*værdi*)</span></td>
+		</tr>
+		<tr>
+			<td><span class="inl_cmd">float</span></td>
+			<td><span class="inl_cmd">float(*værdi*)</span></td>
+			<td></td>
+			<td><span class="inl_cmd">Fraction(*værdi*)</span></td>
+		</tr>
+		<tr>
+			<td><span class="inl_cmd">Fraction</span></td>
+			<td><span class="inl_cmd">Fraction(*værdi*)</span></td>
+			<td><span class="inl_cmd">Fraction(*værdi*)</span></td>
+			<td></td>
+		</tr>
+	</tbody>
+</table>
+
 
 <p></p>
 <p></p>
