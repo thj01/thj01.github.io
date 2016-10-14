@@ -760,6 +760,80 @@ y=1.0x + 1.0
 
 <p>Ændr funktionen så der kan indtastes Relle tal (<span class="inl_cmd">float</span>)</p>
 
+<h1>Løkker</h1>
+
+<p></p>
+
+<p>Løkker bruges til at køre et program et antal gange. Der er 2 betingelser vi kan sætte. Den ene berører <span class="inl_cmd">HVIS</span> noget sker og den anden <span class="inl_cmd">NÅR</span> det sker. Det første kaldes en <span class="inl_cmd">if/else</span> betingelse og det andet en <span class="inl_cmd">while</span></p>
+
+
+<h2>for løkkern</h2>
+
+<p></p>
+
+<pre class="ubuntu_terminal">
+>>> for i in range(5):
+...&nbsp;&nbsp;&nbsp;&nbsp;print(i)
+	
+0
+1
+2
+3
+4
+</pre>
+
+<p>Læg mærke til, at Python tæller fra 0 og fem værdier frem. Denne funktion kan f.eks. anvendes til at skrive de første 5 kvadrattal. For at i starter med være en sætter sætter jeg både start- og slutværdi på <span class="inl_cmd">range</span>. Den går fra 1 til 6 for at jeg får 5 værdier.</p>
+
+<pre class="ubuntu_terminal">
+>>> for i in range(1,6):
+...&nbsp;&nbsp;&nbsp;&nbsp;print(pow(i,2))
+
+1
+4
+9
+16
+25
+</pre>
+
+<p>Man kan også få den til at springe i værdierne. Herunder udskriver jeg de lige tal i intervallet 1-10:</p>
+
+<pre class="ubuntu_terminal">
+>>> for i in range(2,11,2):
+...&nbsp;&nbsp;&nbsp;&nbsp;print(i)
+
+2
+4
+6
+8
+10
+</pre>
+
+<h2>Udskriv tallene på en række</h2>
+
+<p>Nogle gange kan det være uhensigtsmæssigt at resulaterne udskrives på en lang række. Det gøres ved at tilføje <span class="inl_cmd">end="*separator*"</span> i print parantesen</p>
+
+<pre class="ubuntu_terminal">
+>>> for i in range(10):
+...&nbsp;&nbsp;&nbsp;&nbsp;print(i, end=" - ")
+	
+0 - 1 - 2 - 3 - 4 - 5 - 6 - 7 - 8 - 9 - 
+</pre>
+
+
+<h2>Opgave</h2>
+
+<p>Lav funktionen <span class="inl_cmd">lilletabel()</span> der udskriver de 10 første tal i den tabel der angives i parantesen.</p>
+
+<pre class="ubuntu_terminal">
+>>> lilletabel(5)
+5 - 10 - 15 - 20 - 25 - 30 - 35 - 40 - 45 - 50 - 
+>>> lilletabel(7)
+7 - 14 - 21 - 28 - 35 - 42 - 49 - 56 - 63 - 70 -
+</pre>
+
+<h1>Betingelser</h1>
+
+
 
 
 
