@@ -53,102 +53,37 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <div class="title">Betingelser, Løkker og funktioner</div>
 
-<h1>Generelt</h1>
-
-<p>I sig selv giver <span class="inl_cmd">betingelser</span> og <span class="inl_cmd">løkker</span> ikke den store mening, når vi snakker om matematik. Men når vi senere skal kigge på at lave vores egne funktioner skal vi anvende metoderne.</p>
-
-<p>Derfor er det vigtigt at du har en grundlæggende forståelse for hvordan betingelser og løkker fungerer.</p>
-
-
-<h1>Betingelser</h1>
-
-
-<p>Betingelser bruges når man vil have koden til at udføre noget i specielle tilfælde. Det kan f.eks. være at man vil undersøge om et tal er i en tabellen</p>
-
-<pre class="ubuntu_terminal">
->>> tal=32 
->>> tabel=8
->>> if tal%tabel==0:
-...     print("Tallet er tabellen")
-... else:
-...     print("Tallet er ikke i tabellen")
-... 
-Tallet er i tabellen
-</pre>
-
-<p>Det koden undersøger er om tallet modulus tabellen giver 0 - altså om tallet går op. Hvis den gør printes <span class="inl_cmd">Tallet er i tabellen</span> ellers <span class="inl_cmd">Tallet er ikke i tabellen</span>.</p>
-
-
-
-
-<h2>if/else</h2>
+<p>På denne side bliver <span class="inl_cmd">for</span>-løkker, <span class="inl_cmd">if/elif/else</span>-betingelser og <span class="inl_cmd">while</span>-løkker gennemgået.</p>
 
 <p></p>
 
-<pre class="ubuntu_terminal">
->>> a=7
->>> if a==7:
-...     print("a er 7")
-... 
-a er 7
->>> if a !=6:
-...     print("a er ikke 6")
-... 
-a er ikke 6
-</pre>
+<ul class="none">
+	
+	<li><span class="bold">for (løkke)</span></li>
+	
+		<p>... når man kender antallet af gange en kode skal køre.</p>
 
-<h2>if/elif/else</h2>
+		<p>F.eks. hvis man vil undersøge tallene mellem 1-100 for om de er lige eller primtal, eller at man vil finde de første 10 kvadrattal</p>
+		
+	<li><span class="afsnit">if/elif/else (betingelse)</span></li>
+	
+		<p>... når man har brug for at køre forskellig kode under forskellige betingelser.</p>
+
+		<p>F.eks. hvis man vil lave en funktion der beregner antallet af løsninger i en 2. gradsligning. Her skal der sættes forskellige betingelser op når: <span class="inl_cmd">D &lt; 0</span>, <span class="inl_cmd">D = 0</span> og <span class="inl_cmd">D &gt; 0</span> (3 betingelser). Det kan også være noget så simpelt som at undersøge om et tal er lige eller ej (2 betingelser).</p> 
+	
+	<li><span class="afsnit">while (betinget løkke)</span></li>
+
+		<p>... når man ikke kender antallet af gange en kode skal køre, da den er betingen af en anden del af koden.</p>
+
+		<p>F.eks. hvis man vil udskrive kvadrattal der er mindre en 1000. Her skal man udskrive kvadrattallet lige så længe at resultatet ikke er 1000 eller derover.</p>
+	
+</ul>
 
 <p></p>
 
-<h1>Løkker</h1>
+<h1>Operatorer</h1>
 
-<p>Hvis man ønsker at en funktion skal køre mer end en gang, så anvender man en løkke. Python har to slags løkker: <span class="inl_cmd">for</span> og <span class="inl_cmd">while</span>.</p>
-
-<table class="">
-	<thead>
-		<tr>
-			<th style="width:140px">Løkke type</th>
-			<th>Beskrivelse</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td><span class="inl_cmd">for</span></td>
-			<td>... anvendes når man kender det nøjagtige antal gennemløb. Hvis man f.eks. ved at en funktion skal gennemløbes 10 gange vil man anvende <span class="inl_cmd">for</span>-løkken.<br/>
-			Herunder er den generelle anvendelsen af løkken vist.<br/><br/><span class="inl_cmd">for *tæller* in range(*startværdi*, *slutværdi*,*spring*):</span>
-			</td>
-		</tr>
-
-		<tr>
-			<td><span class="inl_cmd">while</span></td>
-			<td>... anvendes når man ikke på forhånd kender antallet af gennemløb. Funktionen gennemløbes indtil en betingelse er opfyldt.<br/>
-			Herunder er den generelle anvendelsen af løkken vist.<br/><br/><span class="inl_cmd">while *betingelse*:</span></td>
-		</tr>
-	</tbody>
-</table>
-
-<span class="afsnit">generelt om løkker og betingelser</span>
-
-<p>Når man skriver kode i Python som er betinget af noget, så gør man det ved at rykke den betingede under betingelsen. Det gør man enten ved at bruge 4x<kbd>Mellemrum</kbd> eller <kbd>Tab</kbd>. Når Python registrerer at der er skrevet en betingelse så sættes der 3 punktummer (<span class="inl_cmd">...</span>). Det er efter disse punktummer man rykker den næste kodelinie ind.</p>
-
-<p>Når man er færdig med at skrive sin kode trykker man <kbd>Enter</kbd> 2 gange og koden udføres.</p>
-
-<pre class="ubuntu_terminal">
-*betingelse*
-
-...&nbsp;&nbsp;&nbsp;&nbsp;*kode der skal køres*
-    
-*Ny betingelse*
-
-...&nbsp;&nbsp;&nbsp;&nbsp;*kode der skal køres*
-</pre>
-
-<p>Når man vil afslutte koden under betingelsen trykke man <kbd>Enter</kbd>2 gange</p>
-
-<h2>Operatorer</h2>
-
-<p>For at sætte betingelserne anvendes der <span class="inl_cmd">operatorer</span> Operatorerne er angivet i nedestående skema.</p>
+<p>For at sætte betingelserne anvendes der <span class="inl_cmd">operatorer</span>. Operatorerne er angivet i nedestående skema.</p>
 
 <table class="">
 	<thead>
@@ -202,13 +137,11 @@ a er ikke 6
 	</tbody>
 </table>
 
-<p>I matematik er vi vant til at kunne beskrive intervaller på ved hjælp af udsagn som dette: <span class="inl_cmd">3 &le; x &le; 7 </span>, men det kan man ikke når man programmerer. Der bliver man nød til at "skille" udsagnet ad, så det bliver:</p>
+<p>I matematik er vi vant til at kunne beskrive intervaller på ved hjælp af udsagn som dette: <span class="inl_cmd">3 &le; x &le; 7 </span>, men når man programmerer skal man "skille" udsagnet ad, så det bliver: <span class="inl_cmd">3&lt;=x and 7&lt;=x</span></p>
 
-<p> <span class="inl_cmd">3&lt;= x and 7&lt;=x</span></p>
+<h1>Vækst</h1>
 
-<span class="afsnit">Vækst</span>
-
-<p>Ofte har man brug for at en variabel vokser eller aftager med en konstant eller en faktor.</p>
+<p>Ofte har man brug for at en variabel vokser eller aftager med en konstant eller en faktor. Eksemplet i tabellen tager udgangspunkt i at <span class="inl_cmd">a = 8</span>.</p>
 
 <table class="">
 	<thead>
@@ -247,8 +180,43 @@ a er ikke 6
 	</tbody>
 </table>
 
+<h1>Indrykninger</h1>
 
-<h2>for-løkker</h2>
+<p>Når man skriver kode i Python som er betinget af noget, så gør man det ved at rykke den betingede under betingelsen. Det gør man enten ved at bruge 4x<kbd>Mellemrum</kbd> eller <kbd>Tab</kbd>. Når Python registrerer at der er skrevet en betingelse så sættes der 3 punktummer (<span class="inl_cmd">...</span>). Det er efter disse punktummer man rykker den næste kodelinie ind. Læg også mærke til at der er kolon (<span class="inl_cmd">:</span>) efter hver betingelse. Det er dette tegn der fortæller Python at der kommer kode herunder der er afhængig af betingelsen.</p>
+
+<p>Når man er færdig med at skrive sin kode trykker man <kbd>Enter</kbd> 2 gange og koden udføres. Generelt ser koden ud som herunder:</p>
+
+<pre class="ubuntu_terminal">
+*betingelse*:
+
+...&nbsp;&nbsp;&nbsp;&nbsp;*kode der skal køres*
+    
+*Ny betingelse*:
+
+...&nbsp;&nbsp;&nbsp;&nbsp;*kode der skal køres*
+</pre>
+
+<p>Man kan også indsætte betingelser i betingelser:</p>
+
+<pre class="ubuntu_terminal">
+*betingelse*:
+
+...&nbsp;&nbsp;&nbsp;&nbsp;*kode der skal køres*
+    
+...&nbsp;&nbsp;&nbsp;&nbsp;*Underbetingelse*:
+
+...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*kode der skal køres hvis underbetingelsen er ramt*
+</pre>
+
+
+<h1>for-løkker</h1>
+
+<p><span class="inl_cmd">for</span>-løkken køres når man kender antallet af gange en kode skal køre. Funktionen anvendes på følgende måde:</p>
+
+<p><span class="inl_cmd">for *tæller* in range(*startværdi*, *slutværdi*, spring*):</span></p>
+
+<p>I dette materiale anvender jeg <span class="inl_cmd">i</span> som tælleren. Man anvender <span class="inl_cmd">i</span> som standard fordi det er første bogstav i heltalsbegrebet man anvneder i programmering: <span class="inl_cmd">integer</span></p>
+
 
 <p>Herunder er nogle eksempler hvor nogle funktioner køres et bestemt antal gange. Herunder printes de første 5 værdier af <span class="inl_cmd">i</span>. Læg mærke til at Python tæller fra værdien <span class="inl_cmd">0</span> og så 5 værdier frem.</p>
 
@@ -290,6 +258,59 @@ a er ikke 6
 </pre>
 
 <p>Når man anvender <span class="inl_cmd">for</span> løkker skal man definere talområdet meget præcist. Det er både det som er fordelen og udfordringen ved at anvende <span class="inl_cmd">for</span>-løkker.</p>
+
+<h2>Udskriv tallene på en række</h2>
+
+<p>Nogle gange kan det være uhensigtsmæssigt at resulaterne udskrives på en lang række. Det gøres ved at tilføje <span class="inl_cmd">end="*separator*"</span> i print parantesen. Herudskrives tallene fra 1 - 10 vandret.</p>
+
+<pre class="ubuntu_terminal">
+>>> for i in range(1,11):
+...     print(i, end=" - ")
+... 
+1 - 2 - 3 - 4 - 5 - 6 - 7 - 8 - 9 - 10 -
+</pre>
+
+<h1>if/elif/else</h1>
+
+<p>Betingelser bruges når man vil have koden til at udføre noget i specielle tilfælde. Det kan f.eks. være at man vil undersøge om et tal er lige. Altså om tallet <span class="inl_cmd">modulus</span> 2 (f.eks: <span class="inl_cmd">6%2</span>) er 0:</p>
+
+<pre class="ubuntu_terminal">
+>>> for i in range(1,11):
+...     if i%2==0:
+...             print("{0} er lige".format(i))
+... 
+2 er lige
+4 er lige
+6 er lige
+8 er lige
+10 er lige
+</pre>
+
+<p>Koden kan udvides til også at beskrive de ulige tal:</p>
+
+<pre class="ubuntu_terminal">
+>>> for i in range(1,11):
+...     if i%2==0:
+...             print("{0} er lige".format(i))
+...     else:
+...             print("{0} er ulige".format(i))
+... 
+1 er ulige
+2 er lige
+3 er ulige
+4 er lige
+5 er ulige
+6 er lige
+7 er ulige
+8 er lige
+9 er ulige
+10 er lige
+</pre>
+
+<h2>if/else</h2>
+
+
+
 
 
 <h1>while-løkker</h1>
@@ -357,16 +378,6 @@ a er ikke 6
 
 
 
-<h2>Udskriv tallene på en række</h2>
-
-<p>Nogle gange kan det være uhensigtsmæssigt at resulaterne udskrives på en lang række. Det gøres ved at tilføje <span class="inl_cmd">end="*separator*"</span> i print parantesen</p>
-
-<pre class="ubuntu_terminal">
->>> for i in range(10):
-...&nbsp;&nbsp;&nbsp;&nbsp;print(i, end=" - ")
-	
-0 - 1 - 2 - 3 - 4 - 5 - 6 - 7 - 8 - 9 - 
-</pre>
 
 
 <h2>Opgave</h2>
