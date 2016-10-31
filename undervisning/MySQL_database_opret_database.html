@@ -47,383 +47,6 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <div class="title">MySQL - Opret en database</div>
 
-<h1>Installation af XAMPP</h1>
-
-<p>For at kunne arbejde med MySQL skal den installeres. På windows er det lettest at installere en samlet pakke, som giver adgang til en fuld webserver, da det hele er konfigureret fra start. Her anbefales det at du anvender <a href="https://www.apachefriends.org/index.html" target="_blank">XAMPP</a>.</p>
-
-<h2 id="tilbage">Installer XAMPP</h2>
-
-<p>Du kan vælge at installere XAMPP på to måder:</p>
-
-<ol class="">
-	<li>Rigtig installation via <a href="https://www.apachefriends.org/index.html" target="_blank">https://www.apachefriends.org/index.html</a></li>
-	<li>Portable installation via <a href="http://portableapps.com/apps/development/xampp" target="_blank">http://portableapps.com/apps/development/xampp</a>. (ikke Lite-versionen).</li>
-</ol>
-
-<p>Hvis du vil have en gennemgang af installationen så gå ind på denne side: <a href="http://www.vidas.dk/undervisning/mySQL_installer_XAMPP.html" target="_blank">http://www.vidas.dk/undervisning/mySQL_installer_XAMPP.html</a></p>
-
-
-<h1>Overblik over phpMyAdmin</h1>
-
-
-<h2>Hovedvindue</h2>
-
-<p></p>
-
-<figure id="">
-
-	<img class="p90" src="images/mysql_main_window_01.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-
-<h2>Databaser</h2>
-
-<p></p>
-
-<figure id="">
-
-	<img class="" src="images/mysql_main_window_Databaser.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-
-<h2>SQL</h2>
-
-<p></p>
-
-
-<figure id="">
-
-	<img class="" src="images/mysql_main_window_SQL.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-
-<h2>Status</h2>
-
-<p></p>
-
-<figure id="">
-
-	<img class="" src="images/mysql_main_window_Status.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-
-<h2>Brugerkonti</h2>
-
-<p></p>
-
-<figure id="">
-
-	<img class="" src="images/mysql_main_window_Brugerkonti.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-
-<h1>Grundbegreber</h1>
-
-<span class="afsnit">Database</span>
-
-<p>En database er en struktureret samling af data, som er sat op i tabeller, med rækker og kolonner. Ved hjælp af kommandoer kan man manpulere med, søge i og sortere data.</p>
-
-<p>En relationel database indeholder flere tabeller, som kan sammenkædes og kombineres.</p>
-
-<span class="afsnit">Tabel</span>
-
-<p>En tabel er en samling af data der er struktureret indefor et afgrænset område f.eks: medarbejdere og deres kontaktoplysninger</p>
-
-<span class="afsnit">Post</span>
-
-<p>En post er de enkelte data rækker f.eks. den enkelte medarbejder og dennes kontaktoplysninger</p>
-
-<span class="afsnit">Felt</span>
-
-<p>Et felt er de enkelte data i en post f.eks. medarbejderens mail</p>
-
-<span class="afsnit">Datatype</span>
-
-<p>For at gemme og strukturere data skal der for hvert felt angives hvilken type data det indeholder. Det kan f.eks. være et tal, tekst eller tidsformat.</p>
-
-<span class="afsnit">Nøgle</span>
-
-<p>For at kunne skabe sammenhæng i databasen bliver der defineret en nøgle i tabellerne, som anvendes til at sammenkæde de forskellige tabeller. Det kan f.eks. være en medarbejders initialer.</p>
-
-
-
-<h1>Datatyper</h1>
-
-<p>Herunder kan du se de mest anvendte datatyper. 
-
-<p>Læs mere: <a href="http://dev.mysql.com/doc/refman/5.7/en/data-types.html" target="_blank">http://dev.mysql.com/doc/refman/5.7/en/data-types.html</a></p>
-
-<p>Læs mere: <a href="http://www.w3schools.com/sql/sql_datatypes.asp" target="_blank">http://www.w3schools.com/sql/sql_datatypes.asp</a></p>
-
-<h2>Heltal - Integers</h2>
-
-<p></p>
-
-<table class="">
-	<thead>
-		<tr>
-			<th rowspan="2">Datatype</th>
-			<th rowspan="2">Størrelse <br/>(byte)</th>
-			<th colspan="2"></th>
-			<th colspan="2">UNSIGNED</th>
-		</tr>
-		<tr>
-			<th>Min. værdi</th>
-			<th>Maks. værdi</th>
-			<th>Min. værdi</th>
-			<th>Maks. værdi</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>TINYINT</td>
-			<td>1</td>
-			<td>-128</td>
-			<td>127</td>
-			<td>0</td>
-			<td>255</td>
-		</tr>
-		<tr>
-			<td>SMALLINT</td>
-			<td>2</td>
-			<td>-32768</td>
-			<td>32767</td>
-			<td>0</td>
-			<td>65535</td>
-		</tr>
-		<tr>
-			<td>MEDIUMINT</td>
-			<td>3</td>
-			<td>-8388608</td>
-			<td>8388607</td>
-			<td>0</td>
-			<td>16777215</td>
-		</tr>
-		<tr>
-			<td>INT</td>
-			<td>4</td>
-			<td>-2147483648</td>
-			<td>2147483647</td>
-			<td>0</td>
-			<td>4294967295</td>
-		</tr>
-	</tbody>
-</table>
-
-<p>For at præcisere dine tal kan man "låse" antallet af cifre ved at angive det i en parantes. F.eks. vil <span class="inl_cmd">SMALLINT(4)</span> gøre, at feltet maksimalt kan indeholde 4 cifre. Det eneste du skal være opmærksom på er, at man ikke kan overskride antallet af cifre i den type man anvender f.eks: <span class="inl_cmd">TINYINT(4)</span>, da typens maksimale værdi er <span class="inl_cmd">255</span>.</p>
-
-<p>Læs mere om heltal: <a href="http://dev.mysql.com/doc/refman/5.7/en/integer-types.html" target="_blank">http://dev.mysql.com/doc/refman/5.7/en/integer-types.html</a></p>
-
-<h2>Decimaltal</h2>
-
-<p>Der findes to metoder til at anvende decimaltal. Den ene er binær og den anden er baseret på 10 talssystemet. Grunden til at man anvender to forskellige er, den hastighed systemet kan anvende tallene med og belastningen af CPU'en. Computeren er hurtigere til at regne med binære tal end tal fra 10 talssystemet. Se nedestående skema:</p>
-
-<table class="">
-	<thead>
-		<tr>
-			<th>Datatype</th>
-			<th>Størrelse <br/>(byte)</th>
-			<th>Talsystem</th>
-			<th>Antal cifre/decimaler (præcission)</th>
-			<th>Anvendelsesområde</th>
-			<th>Nøjagtighed</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>FLOAT</td>
-			<td>4</td>
-			<td>Binær</td>
-			<td>&sim; 7 decimaler</td>
-			<td>Videnskabeligt</td>
-			<td>Præcis</td>
-		</tr>
-		<tr>
-			<td>DOUBLE</td>
-			<td>8</td>
-			<td>Binær</td>
-			<td>&sim; 14 decimaler</td>
-			<td>Videnskabeligt</td>
-			<td>Præcis</td>
-		</tr>
-		<tr>
-			<td>Decimal</td>
-			<td>-</td>
-			<td>10</td>
-			<td>65 cifre, maks. 30 decimaler</td>
-			<td>Financiel</td>
-			<td>Eksakt</td>
-		</tr>
-	</tbody>
-</table>
-
-<span class="afsnit">Forskel på videnskabelig og "almindelige" tal</span>
-
-<p>Videnskabelige tal angives ved hjælp af et heltal efterfulgt af en 10'er potens der angiver kommaets position f.eks. som ved Faradays konstant (F' = 9,6485309 &sdot; 10<sup>4</sup> C/mol). I decimaltal vil det være 96485,309 C/mol. Det som er problemet med det tal jeg skriver her er, at det reelt kun er præcist ned til den 7'ende decimal. Det er rigeligt i videnskabelig sammenhæng, men kan være mangelfuldt i andre sammenhænge f.eks. finansielle beregninger. Dette er årsagen til, at <span class="inl_cmd">FLOAT</span> og <span class="inl_cmd">DOUBLE</span> bliver angivet som værende præcise, og <span class="inl_cmd">DECIMAL</span> til at være eksakt.</p>
-
-<p>Sagt på en anden måde. <span class="inl_cmd">FLOAT</span> og <span class="inl_cmd">DOUBLE</span> er præcise nok til at arbejde med tal, hvor der kun er brug for et mindre antal decimaler (videnskab), men ikke når der er brug for mange (finans).</p>
-
-<p>Ligesom ved heltallene kan decimaltallene også præciseres (låses) ved hjælp af at angive antallet af cifre og decimaler i en parantes bagefter f.eks: DECIMAL(10,4). Det svarer til 10 cifre hvoraf de 4 er decimaler f.eks: 345987.4563</p>
-
-
-
-<p>Læs mere: <a href="http://code.rohitink.com/2013/06/12/mysql-integer-float-decimal-data-types-differences/" target="_blank">http://code.rohitink.com/2013/06/12/mysql-integer-float-decimal-data-types-differences/</a></p>
-
-<p>Om <span class="inl_cmd">FLOAT</span> og <span class="inl_cmd">DOUBLE</span>: <a href="http://dev.mysql.com/doc/refman/5.7/en/floating-point-types.html" target="_blank">http://dev.mysql.com/doc/refman/5.7/en/floating-point-types.html</a></p>
-
-<p>Om <span class="inl_cmd">DECIMAL</span>: <a href="http://dev.mysql.com/doc/refman/5.7/en/fixed-point-types.html" target="_blank">http://dev.mysql.com/doc/refman/5.7/en/fixed-point-types.html</a></p>
-
-
-<h2>Teksstrenge</h2>
-
-<span class="afsnit">VARCHAR()</span>
-
-<p><span class="inl_cmd">VARCHAR(*antal_tegn*)</span> gemmer op til det antal tegn (0-65635) der bliver sat i parantesen. Se skemaet herunder:</p>
-
-<table class="">
-	<thead>
-		<tr>
-			<th>Teksttreng</th>
-			<th>VARCHAR(5)</th>
-			<th>Beskrivelse</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>''</td>
-			<td>''</td>
-			<td>Ingen tegn bliver glemt</td>
-		</tr>
-		<tr>
-			<td>'abc'</td>
-			<td>'abc'</td>
-			<td>abc bliver gemt</td>
-		</tr>
-		<tr>
-			<td>'abcdefgh'</td>
-			<td>'abcde'</td>
-			<td>fgh bliver ikke gemt da det er udover de 5 tegn.</td>
-		</tr>
-	</tbody>
-</table>
-
-<p>Felternes størrelse er afhængig af indholdet</p>
-
-<p>Læs mere: <a href="http://dev.mysql.com/doc/refman/5.7/en/char.html" target="_blank">http://dev.mysql.com/doc/refman/5.7/en/char.html</a></p>
-
-<span class="afsnit">CHAR()</span>
-
-<p><span class="inl_cmd">CHAR(*antal_tegn*)</span> gemmer det antal tegn (0-255) der bliver sat i parantesen. Se skemaet herunder:</p>
-
-<table class="">
-	<thead>
-		<tr>
-			<th>Teksttreng</th>
-			<th>CHAR(5)</th>
-			<th>Beskrivelse</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>''</td>
-			<td>'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'</td>
-			<td>5 tomme tegn.</td>
-		</tr>
-		<tr>
-			<td>'abc'</td>
-			<td>'abc&nbsp;&nbsp;'</td>
-			<td>abc og 2 tomme tegn.</td>
-		</tr>
-		<tr>
-			<td>'abcdefgh'</td>
-			<td>'abcde'</td>
-			<td>fgh bliver ikke gemt da det er udover de 5 tegn.</td>
-		</tr>
-	</tbody>
-</table>
-
-<p>Felternes størrelse er afhængig af værdien der er sat.</p>
-
-<p>Læs mere: <a href="http://dev.mysql.com/doc/refman/5.7/en/char.html" target="_blank">http://dev.mysql.com/doc/refman/5.7/en/char.html</a></p>
-
-<span class="afsnit">Hvornår anvende VARCHAR() og CHAR()</span>
-
-<p>Hvis man er i tvivl bør man altid anvende VARCHAR(). Kan man holde alle sine data til CHAR() kan det i nogle tilfælde give en hastighedsfordel, men det kræver igen store databaser før det er en reel effekt.</p>
-
-<span class="afsnit">ENUM()</span>
-
-<p>Med <span class="inl_cmd">ENUM()</span> kan man angive nogle foruddefinerede værdier som feltet kan indeholde. Det kan f.eks. være tøjstørrelser: <span class="inl_cmd">ENUM('X-SMALL','SMALL','MEDIUM','LARGE','X-LARGE','XX-LARGE')</span>. Fordelen ved at anvende <span class="inl_cmd">ENUM()</span> til at lagre værdier er, at de fylder langt mindre end <span class="inl_cmd">VARCHAR</span>, da værdierne bliver gemt i feltet som et tal der henviser til den konkrete tekststreng. 0 &#8594; X_SMALL, 1 &#8594; SMALL, 2 &#8594; MEDIUM osv. </p>
-
-<p>Læs mere: <a href="http://dev.mysql.com/doc/refman/5.7/en/enum.html" target="_blank">http://dev.mysql.com/doc/refman/5.7/en/enum.html</a></p>
-
-<h2>Tid</h2>
-
-<table class="">
-	<thead>
-		<tr>
-			<th>Datatype</th>
-			<th>Format</th>
-			<th>Første værdi</th>
-			<th>Sidste værdi</th>
-			<th>Opdaterbar</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>DATE</td>
-			<td>YYYY-MM-DD</td>
-			<td>1000-01-01</td>
-			<td>9999-12-31</td>
-			<td>Nej</td>
-		</tr>
-		<tr>
-			<td>DATETIME</td>
-			<td>YYYY-MM-DD HH:MM:SS</td>
-			<td>1000-01-01 00:00:00</td>
-			<td>9999-12-31 23:59:59</td>
-			<td>Ja</td>
-		</tr>
-		<tr>
-			<td>TIMESTAMP</td>
-			<td>YYYY-MM-DD HH:MM:SS</td>
-			<td>1970-01-01 00:00:00</td>
-			<td>2038-01-19 03:14:07</td>
-			<td>Ja</td>
-		</tr>
-		<tr>
-			<td>TIME</td>
-			<td>HHH:MM:SS</td>
-			<td>-838:59:59</td>
-			<td>838:59:59</td>
-			<td>Nej</td>
-		</tr>
-		<tr>
-			<td>YEAR</td>
-			<td>YYYY</td>
-			<td>1901</td>
-			<td>2155</td>
-			<td>Nej</td>
-		</tr>
-		<tr>
-			<td colspan="5">YYYY = År , MM = måned , DD= dag , HH = timer , MM = minutter , SS = sekunder</td>
-		</tr>
-	</tbody>
-</table>
-
-<p><span class="inl_cmd">DATETIME</span> og <span class="inl_cmd">TIMESTAMP</span> kan sættes til at opdatere automatisk når en post bliver bliver oprettet eller ændret. Begge datatyper kan også tilføjes en værdi for dele af sekundet til en præcission på mikrosekunder (6 decimaler). Det gøres ved at indsætte præcissionen i en parantes efter datatypen f.eks: <span class="inl_cmd">DATETIME(3)</span>, hvilket angiver tusindedele af et sekund.</p>
-
-<p>Læs mere: <a href="http://dev.mysql.com/doc/refman/5.7/en/datetime.html" target="_blank">http://dev.mysql.com/doc/refman/5.7/en/datetime.html</a></p>
-
 <h1>Normalisering</h1>
 
 <p>En database er grundlæggende en samling data der er organiseret i rækker og kolonner. I rækkerne (kaldes også en <span class="inl_cmd">post</span>) har vi de enkelte opslag og i kolonnerne de kategorier opslaget skal indeholde. Herunder er et skema over mentorfordelingen på en mindre skole. </p>
@@ -894,7 +517,23 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <p>Hver eneste gang man udvider sin database bør man sikre sig at databasen overholder de tre normaliseringskrav.</p>
 
-<h1>Indtast tabellerne</h1>
+<h1>Opret databasen</h1>
+
+<p>I dette kapitel vil vi oprette databasen med de tre tabeller vi har lavet ved hjælp af normaliseringsprocessen, og kalde den: <span class="inl_cmd">mentorer</span>. Tabellerne skal oprettes efter nedestående skemaer, og vil blive eksemplificeret ved hjælp af <span class="inl_cmd">tabel 1: klasser_og_mentorer</span>:</p>
+
+<p>Det vi skal gøre er følgende:</p>
+
+<ol class="">
+	<li>Start XXAMP og start phpMyAdmin</li>
+	<li>Opret databasen</li>
+	<li>Opret tabel 1</li>
+	<li>Indtast data</li>
+	<li>Opret tabel 2</li>
+	<li>...</li>
+
+</ol>
+
+<span class="afsnit">Skemaer til tabellerne</span>
 
 <p></p>
 
@@ -1018,13 +657,111 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 	</tbody>
 </table>
 
+<h2>XAMPP og phpMyadmin</h2>
+
+<p>Start <span class="inl_cmd">XXAMP</span> og aktiver <span class="inl_cmd">Apache</span> og <span class="inl_cmd">phpMyAdmin</span>. Det gøres ved at vælger knapperne <span class="knap">Start</span> i kolonnen <span class="bold">Actions</span>. Du kan se modulerne er aktive når de bliver grønne, og at der på knappen står <span class="knap">Stop</span>.</p>
+
+<figure id="">
+
+	<img class="p60" src="images/MySQL_XXAMP_opstart.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Åben browseren (Chrome eller Firefox) på adressen: <span class="inl_cmd">localhost</span> eller <span class="inl_cmd">127.0.0.1</span>. Begge adresser er lokale adresser der kun fungerer på selve computeren og de peger på den webserver er er installeret. Vælg <span class="inl_cmd">phpMyAdmin</span> øverst th.</p>
+
+<figure id="">
+
+	<img class="p90" src="images/mysql_XAMPP_start_PhpMyAdmin.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p><span class="inl_cmd">phpMyAdmin</span> starter op.</p>
+
+<figure id="">
+
+	<img class="p90" src="images/mysql_XAMPP_opret_tabel1_01.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h2>Opret database og tabeller</h2>
+
+<p>Når databasen er startet op får vi adgang til hovedvinduet. For at oprette en ny dtabase vælger vi <span class="inl_cmd">Ny</span> i menuen til venstre. I feltet <span class="bold">Databasenavn</span> skriver du: <span class="inl_cmd">mentorer</span> og i <span class="bold">Tegnsæt (sortering)</span> vælger du: <span class="inl_cmd">utf8_danish_ci</span> og klikker på <span class="knap">Opret</span>.</p>
+
+<figure id="">
+
+	<img class="p90" src="images/mysql_XAMPP_opret_tabel1_02.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Da det er den første tabel gør MySQL opmærksom på, at der ingen tabeller er i databasen. Opret tabellen: <span class="inl_cmd">klasser_og_mentorer</span>, og sæt antallet af kolonner til <span class="inl_cmd">2</span>. Klik på <span class="knap">Udfør</span>.</p>
+
+<figure id="">
+
+	<img class="p90" src="images/mysql_XAMPP_opret_tabel1_03.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>I dette vindue skal du konfigurere de enkelte felter i databasen. I denne tabel er der to felter i hver post: <span class="inl_cmd">Klasse</span> og <span class="inl_cmd">Mentor</span>. Konfigurer dem som her, men vent med at trykke <span class="knap">Gem</span> indtil vi har sat <span class="inl_cmd">Primærnøglen</span>:</p>
+
+<figure id="">
+
+	<img class="p90" src="images/mysql_XAMPP_opret_tabel1_04.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Før vi gemmer skal vi sætte feltet <span class="inl_cmd">Klasse</span> til at være primærnøgle. Kør vinduet mod venstre og find feltet <span class="inl_cmd">Indeks</span> og vælg <span class="inl_cmd">Primary</span>.</p>
+
+<figure id="">
+
+	<img class="p90" src="images/mysql_XAMPP_opret_tabel1_05.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p> Når du vælger <span class="inl_cmd">Primary</span> popper vunduet <span class="inl_cmd">Tilføj indeks</span> op. Her vælger du blot <span class="knap">Udfør</span>, da vi ikke ønsker at konfigurere det mere:</p>
+
+<figure id="">
+
+	<img class="p40" src="images/mysql_XAMPP_opret_tabel1_06.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Vælg <span class="knap">Udfør</span> og når du er tilbage i hovedvinduet vælger du <span class="knap">Gem</span></p>
+
+<p>Her kan du kontrollere at din tabel er blevet oprettet korrekt. Læg mærke til at nøglen i det primære felt er "sølvfarvet".</p>
+
+<figure id="">
+
+	<img class="p90" src="images/mysql_XAMPP_opret_tabel1_07.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Opret herefter de 3 andre tabeller.</p>
+
 <h1>Søgning i databasen</h1>
 
 <p>Når databasen er oprettet kan man søge i databasen ved hjælp af et SQL (<span class="bold">S</span>tructured <span class="bold">Q</span>uery <span class="bold">L</span>anguage). I første omgang kan det virke uoverskueligt, men når man først forstår strukturen kan man lave meget præcise søgninger i sin(e) database(r). Se eksemplet herunder:</p>
 
 <pre>
 	<code class="SQL">
-SELECT * From Klasse_og_elever WHERE Klasse='1a' OR Klasse='1b'
+SELECT * FROM Klasse_og_elever WHERE Klasse='1a' OR Klasse='1b';
 	</code>
 </pre>
 
@@ -1035,13 +772,17 @@ SELECT * From Klasse_og_elever WHERE Klasse='1a' OR Klasse='1b'
 	
 		<p>Vælg alt ...</p>
 	
-	<li><pre><code class="SQL">From Klasse_og_elever</code></pre></li>
+	<li><pre><code class="SQL">FROM Klasse_og_elever</code></pre></li>
 	
 		<p>... fra tabellen <span class="inl_cmd">Klasse_og_elever</span></p>
 	
 	<li><pre><code class="SQL">WHERE Klasse='1a' OR Klasse='1b'</code></pre></li>
 	
 		<p>... hvor der står <span class="inl_cmd">1a</span> eller <span class="inl_cmd">1b</span></p>
+		
+	<li><pre><code class="SQL">;</code></pre></li>
+	
+		<p>Alle forspørgsler skal afsluttes med et semikolon (<span class="inl_cmd">;</span>) Det virker umiddelbart som unødvendigt, men det er praktisk senere når forspørgslerne bliver lange. Der vil man kunne lave linieskift mellem de enkelte dele af forspørgslen og først når <span class="inl_cmd">;</span> kommer vil det blive udført.!</p>
 	
 </ul>
 
@@ -1061,7 +802,7 @@ SELECT * From Klasse_og_elever WHERE Klasse='1a' OR Klasse='1b'
 
 <pre>
 	<code class="SQL">
-SELECT * FROM `Mentorer`
+SELECT * FROM `Mentorer`;
 	</code>
 </pre>
 
@@ -1080,7 +821,7 @@ SELECT * FROM `Mentorer`
 
 <pre>
 	<code class="SQL">
-SELECT * From Mentorer WHERE Navn="Thomas Jensen"
+SELECT * FROM Mentorer WHERE Navn="Thomas Jensen";
 	</code>
 </pre>
 
@@ -1098,7 +839,7 @@ SELECT * From Mentorer WHERE Navn="Thomas Jensen"
 
 <pre>
 	<code class="SQL">
-SELECT Mentor,Mail From Mentorer
+SELECT Mentor,Mail FROM Mentorer;
 	</code>
 </pre>
 
@@ -1112,13 +853,13 @@ SELECT Mentor,Mail From Mentorer
 
 <h2>Kald med wildcard</h2>
 
-<p>Nogle gange har man behov for at finde data, der har nogle fælles tegn. Det løser vi ved at anvende <span class="inl_cmd">"wildcards"</span>. Normal vil man i computerverdenen angive et wildcard med <span class="inl_cmd">*</span>, men i programmeringsverdenen har man anvendt procenttegnet (<span class="inl_cmd">%</span>) i tekststrenge.</p>
+<p>Nogle gange har man behov for at finde data, der har nogle fælles tegn. Det løser vi ved at anvende <span class="inl_cmd">"wildcards"</span>. Normal vil man i computerverdenen angive et wildcard med <span class="inl_cmd">*</span>, men i programmeringsverdenen har man oprindeligt anvendt procenttegnet (<span class="inl_cmd">%</span>) i tekststrenge.</p>
 
 <p>Vi vælger igen alle data, i tabellen og søger denne gang med <span class="inl_cmd">LIKE</span> i stedet for <span class="inl_cmd">=</span>.</p>
 
 <pre>
 	<code class="SQL">
-SELECT * FROM `Mentorer` WHERE Navn LIKE 'Thomas%'
+SELECT * FROM `Mentorer` WHERE Navn LIKE 'Thomas%';
 	</code>
 </pre>
 
@@ -1137,7 +878,7 @@ SELECT * FROM `Mentorer` WHERE Navn LIKE 'Thomas%'
 
 <pre>
 	<code class="SQL">
-SELECT * FROM Klasser_og_mentorer,Mentorer WHERE Klasser_og_mentorer.Mentor='tj' AND Mentorer.Mentor="tj" 
+SELECT * FROM Klasser_og_mentorer,Mentorer WHERE Klasser_og_mentorer.Mentor='tj' AND Mentorer.Mentor="tj";
 	</code>
 </pre>
 
@@ -1155,7 +896,7 @@ SELECT * FROM Klasser_og_mentorer,Mentorer WHERE Klasser_og_mentorer.Mentor='tj'
 	<code class="SQL">
 SELECT Klasser_og_mentorer.Klasse,Mentorer.Navn,Mentorer.Mobil,Mentorer.Mail 
 FROM Klasser_og_mentorer,Mentorer 
-WHERE Klasser_og_mentorer.Mentor='tj' AND Mentorer.Mentor="tj"
+WHERE Klasser_og_mentorer.Mentor='tj' AND Mentorer.Mentor="tj";
 	</code>
 </pre>
 
