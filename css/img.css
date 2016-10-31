@@ -40,6 +40,8 @@ content: "Screenshot: ";
 
 }*/
 
+
+
 figure img.p25 {
 
 width: 25%;
@@ -158,5 +160,12 @@ width: 90%;
 img.p100 {
 
 width: 100%;
+
+}
+
+img.math {
+position: absolute;
+margin-left: 140px;
+margin-top: -15px;
 
 }
