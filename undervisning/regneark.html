@@ -308,18 +308,18 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 	</thead>
 	<tbody>
 		<tr>
-			<td>YDELSE(Område)</td>
-			<td>PMT(Område)</td>
+			<td><span class="inl_cmd">YDELSE()</span></td>
+			<td><span class="inl_cmd">PMT()</span></td>
 			<td>Den samlede ydelse på lån/opsparing</td>
 		</tr>
 		<tr>
-			<td>R.YDELSE()</td>
-			<td>IPMT(Tal)</td>
+			<td><span class="inl_cmd">R.YDELSE()</span></td>
+			<td><span class="inl_cmd">IPMT()</span></td>
 			<td>Renten i den konkrete periodel</td>
 		</tr>
 		<tr>
-			<td>H.YDELSE()</td>
-			<td>PPMT(tal)</td>
+			<td><span class="inl_cmd">H.YDELSE()</span></td>
+			<td><span class="inl_cmd">PPMT()</span></td>
 			<td>Ydelsen på lånet/opsparingen i perioden</td>
 		</tr>
 
@@ -333,7 +333,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <p>Giver det beløb man skal betale hver periode. Her skal man ikke angive perioden, da ydelsen er den samme i alle perioder.</p>
 
-<p>Funktion i Sheets: PMT().</p>
+<p>Funktion i Sheets: <span class="inl_cmd">PMT()</span></p>
 
 <p><span class="bold">Anvendelse: </span><span class="inl_cmd">ydelse(rente;Nper;Nv;Fv;Type)</span></p>
 
@@ -356,7 +356,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
   
 <p><span class="bold">Lån (13. periode)</span>: <span class="inl_cmd">R.YDELSE(0,056/12;13;3*12;10000;0)</span> = <span class="red">-31,97</span></p>
 
-<p><span class="bold">Opsparing (13. periode)</span>: <span class="inl_cmd">R.YDELSE(0,002/12;1;3*12;0;20000)</span> = 1,11</p>
+<p><span class="bold">Opsparing (13. periode)</span>: <span class="inl_cmd">R.YDELSE(0,002/12;13;3*12;0;20000)</span> = 1,11</p>
 
 <ul class="none">
 	<li>Rente i 13 periode: <span class="red">-31,97</span></li>
