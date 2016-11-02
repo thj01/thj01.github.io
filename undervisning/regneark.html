@@ -256,7 +256,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 		</tr>
 		<tr>
 			<td>Type</td>
-			<td>Hvornår ydelsen skal falder. <span class="inl_cmd">0</span> er starten på perioden (default) og <span class="inl_cmd">1</span> er slutningen.</td>
+			<td>Hvornår ydelsen skal falder. <span class="inl_cmd">0</span> er afslutning af perioden (default) og <span class="inl_cmd">1</span> er starten.</td>
 		</tr>
 	</tbody>
 </table>
@@ -367,9 +367,9 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <span class="afsnit">H.YDELSE()</span>
 
-<p>Giver renten i den konkrete periode</p>
+<p>Giver Afdraget i den konkrete periode</p>
 
-<p><span class="bold">Anvendelse: </span>R.YDELSE(Rente;Periode;Nper;Nv;Fv;Type)</p>
+<p><span class="bold">Anvendelse: </span>H.YDELSE(Rente;Periode;Nper;Nv;Fv;Type)</p>
 
 <p><span class="bold">Lån (13. periode)</span>: <span class="inl_cmd">H.YDELSE(0,056/12;1;3*12;10000;0)</span> = <span class="red">-270,44</span></p>
 
@@ -379,6 +379,32 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 	<li>Afdrag i 13 periode: <span class="red">-270,44</span></li>
 	<li>Bidrag i 13 periode: <span class="red">-555,05</span> (553,94+1,11 = 555.05)</li>
 </ul>
+
+<p></p>
+
+<h2>RENTE()</h2>
+
+<p>Giver den relle rente pr termin af et lån</p>
+
+<p>Funktion i Sheets: .</p>
+
+<p><span class="bold">Anvendelse: </span>RENTE(nper;Ydelse;Nv;Fv;Type;gæt)</p>
+
+<p>Læg mærke til feltet <span class="inl_cmd">gæt</span>. Hvis ens rente er langt fra 10% skal man forsøge sig frem med et gæt.</p>
+
+<p>Lad os kigge på eksemplet ovenfor, hvor vi har beregnet at ydelsen på lånet er <span class="inl_cmd">-302,41</span>. Her laver vi et gæt, da det er et meget lille tal, og vi sætter gættet til 0,5%</p>
+
+<p><span class="bold">Den reelle rente pr. periode:</span> <span class="inl_cmd">RENTE(36;-302,41;10000;0;0,005)</span> = 0,46679%</p>
+<p></p>
+<span class="afsnit">EFFEKTIV.RENTE()</span>
+
+<p>Giver den effektive rente pr. år</p>
+
+<p>Funktion i Sheets: .</p>
+
+<p><span class="bold">Anvendelse: </span>EFFEKTIV.RENTE(nominel_rente;nperår)</p>
+
+<p><span class="bold">Den effektive rente pr. år:</span> <span class="inl_cmd">EFFEKTIV.RENTE(0,056;12)</span> = 5,746%</p>
 
 <p></p>
 
