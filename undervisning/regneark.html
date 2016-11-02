@@ -379,25 +379,94 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 	<li>Bidrag i 13 periode: <span class="red">-555,05</span> (553,94+1,11 = 555.05)</li>
 </ul>
 
+<p>Her er et regneark med eksemplerne ovenfor <a href="files/regneark_eksempler_01.xls" target="_blank">regneark_eksempler_01.xls</a></p>
+
 <p></p>
 
-<h2>RENTE()</h2>
+<h2>Amortisationstabel</h2>
 
-<p>Giver den relle rente pr termin af et lån</p>
+<p>Amortisationstabeller beskriver hvordan et lån udvikler sig/afskrives. Selve ordet amortisation stammer fra det franske <span class="inl_cmd">amortir</span>, som betyder "dræbe" ("bring to death").</p>
 
-<p>Funktion i Sheets: .</p>
+<p>Normalt vil en amortisationstabel være opbygget efter følgende skabelon:</p>
 
-<p><span class="bold">Anvendelse: </span>RENTE(nper;Ydelse;Nv;Fv;Type;gæt)</p>
+<table class="">
+	<thead>
+		<tr>
+			<th>Termin</th>
+			<th>Primo restgæld</th>
+			<th>Ydelse</th>
+			<th>Rente</th>
+			<th>Afdrag</th>
+			<th>Ultimo Restgæld</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Den gældende periode</td>
+			<td>Gælden i starten af perioden</td>
+			<td>Ydelse i perioden</td>
+			<td>Renten i perioden</td>
+			<td>Afdraget (Ydelse-Rente)</td>
+			<td>Gæld efter afdrag</td>
+		</tr>
+	</tbody>
+</table>
 
-<p>Læg mærke til feltet <span class="inl_cmd">gæt</span>. Hvis ens rente er langt fra 10% skal man forsøge sig frem med et gæt.</p>
+<p>Forklaring til på kolonnerne</p>
 
-<p>Lad os kigge på eksemplet ovenfor, hvor vi har beregnet at ydelsen på lånet er <span class="inl_cmd">-302,41</span>. Her laver vi et gæt, da det er et meget lille tal, og vi sætter gættet til 0,5%</p>
+<table class="">
+	<thead>
+		<tr>
+			<th>Kolonne</th>
+			<th>Beskrivelse</th>
+			<th>Handling</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Termin</td>
+			<td>Den gældende periode</td>
+			<td>Indsættes manuelt</td>
+		</tr>
+		<tr>
+			<td>Primo restgæld</td>
+			<td>Gælden i starten af perioden</td>
+			<td>Indsættes manuelt første gang, men overføres herefter fra <span class="inl_cmd">ultimo restgæld</span></td>
+		</tr>
+		<tr>
+			<td>Ydelse</td>
+			<td>Ydelsen i perioden</td>
+			<td>Beregnes med <span class="inl_cmd">YDELSE</span></td>
+		</tr>
+		<tr>
+			<td>Rente</td>
+			<td>Renten i perioden</td>
+			<td>Beregnes med <span class="inl_cmd">R.YDELSE</span></td>
+		</tr>
+		<tr>
+			<td>Afdrag</td>
+			<td>Periodens afdrag på gælden</td>
+			<td>Beregnes med <span class="inl_cmd">H.YDELSE</span> eller <span class="inl_cmd">Ydelse - Afdrag</span></td>
+		</tr>
+		<tr>
+			<td>Ultimo Restgæld</td>
+			<td>Gælden efter afdrag</td>
+			<td>Beregnes med <span class="inl_cmd">Primo restgæld - Afdrag</span></td>
+		</tr>
+	</tbody>
+</table>
 
-<p><span class="bold">Den reelle rente pr. periode:</span> <span class="inl_cmd">RENTE(36;-302,41;10000;0;0,005)</span> = 0,46679%</p>
+<p>Herunder er et eksempel på en amortisationstabel, og det kan downloades her: <a href="files/regneark_amortisationstabel.xls" target="_blank">regneark_amortisationstabel.xls</a></p>
 
-<p>Kigger vi på tallene er der ikke stor forskel (0,46679-0,46667= 0,00012), men det skyldes at renten er meget lav.</p>
+<figure id="">
 
-<span class="afsnit">EFFEKTIV.RENTE()</span>
+	<img class="p70" src="images/regneark_amoritationstabel_eksempel.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h2>EFFEKTIV.RENTE()</h2>
 
 <p>Giver den effektive rente pr. år</p>
 
@@ -407,6 +476,8 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 <p><span class="bold">Anvendelse: </span>EFFEKTIV.RENTE(nominel_rente;nperår)</p>
 
 <p><span class="bold">Den effektive rente pr. år:</span> <span class="inl_cmd">EFFEKTIV.RENTE(0,056;12)</span> = 5,746%</p>
+
+<p>Læg mærke til at jeg amortisationstabellen har indsat den effektive rente.</p>
 
 <p></p>
 

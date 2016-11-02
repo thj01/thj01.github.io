@@ -325,23 +325,17 @@ padding: 0em .2em 0em .2em;
 
 }
 
-/*
- * 
- * 
- * span.inl_cmd {
+td span.inl_cmd {
 
-font-family: serif;
-font-size: 1.2em;
-font-weight: 100;
-color: #303030 ;
-background-color: #EDEDED  ;
-padding: 0em .4em 0em .4em;
-border-radius: 5px; 
--moz-border-radius: 5px; 
--webkit-border-radius: 5px; 
+font-family: ubuntu mono, mono-type;
+font-style: italic;
+font-size: 1em;
+font-weight: 700;
+letter-spacing: .05em;
+color: #050505 ;
+padding: 0em .2em 0em .2em;
+
 }
-
-*/
 
 span.terminal_valg, span.terminal_valg2 {
 
