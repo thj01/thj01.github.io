@@ -49,26 +49,36 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <h1>Overblik over phpMyAdmin</h1>
 
+<p>I dette kapitel vil du få et overblik over phpMyAdmins opbygning. Hovedvinduet består grundlæggende af 2 dele. I venstre side er der et filtræ, hvor man kan se alle databaserne. Man kan udvide træet ved at klikke på det lille <span class="inl_cmd">+</span>.</p>
 
-<h2>Hovedvindue</h2>
-
-<p></p>
+<p>I den højre side har man selve den del af programmet man arbejder med. Den er opdelt i 3 niveauer. Den grå linie øverst fortæller hvor man er, og fanerne derunder giver adgang til forskellig funktionalitet. </p>
 
 <figure id="">
 
-	<img class="p90" src="images/mysql_main_window_01.png" alt="" title="" />
+	<img class="p90" src="images/mysql_main_window.png" alt="" title="" />
 
 	<figcaption></figcaption>
 
 </figure>
 
+<p>Herunder vil vi kort gennemgå fanerne:</p>
+
+<ul class="disc">
+	<li>Databaser</li>
+	<li>SQL</li>
+	<li>Status</li>
+	<li>Brugerkonti</li>
+</ul>
+
 <h2>Databaser</h2>
 
-<p></p>
+<p>I dette vindue oprettes og slettes databaser.</p>
+
+<p>Vær opmærksom på at sætte <span class="inl_cmd">tegnsættet</span> rigtigt fra starten af, så du ikke skal ændre tegnsættet for hver eneste felt du skal oprette. Vælg altid <span class="inl_cmd">utf8_danish_ci</span>!</p>
 
 <figure id="">
 
-	<img class="" src="images/mysql_main_window_Databaser.png" alt="" title="" />
+	<img class="p90" src="images/mysql_main_window_Databaser.png" alt="" title="" />
 
 	<figcaption></figcaption>
 
@@ -76,12 +86,11 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <h2>SQL</h2>
 
-<p></p>
-
+<p>Denne fane giver adgang til at indskrive <span class="inl_cmd">SQL</span> kommandoer. Når man begynder at arbejde mere med databaser finder man ud af at nogle ting er meget nemmere at gøre ved hjælp af kommandoer end at klikke sig frem igennem et hav af menuer.</p>
 
 <figure id="">
 
-	<img class="" src="images/mysql_main_window_SQL.png" alt="" title="" />
+	<img class="p90" src="images/mysql_main_window_SQL.png" alt="" title="" />
 
 	<figcaption></figcaption>
 
@@ -89,11 +98,11 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <h2>Status</h2>
 
-<p></p>
+<p>Hvis man er database administrator kan det være godt at holde øje med denne fane, da den fortæller noget om hvor stort presset er på databasen.</p>
 
 <figure id="">
 
-	<img class="" src="images/mysql_main_window_Status.png" alt="" title="" />
+	<img class="p90" src="images/mysql_main_window_Status.png" alt="" title="" />
 
 	<figcaption></figcaption>
 
@@ -101,11 +110,11 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <h2>Brugerkonti</h2>
 
-<p></p>
+<p>En af styrkerne ved at anvende MySQL er, at man kan oprette flere brugere, som kun har adgang til forskellige dele af databasen. Man kan altså oprette brugere til enkelte databaser og sørge for at deres rettigheder kun gælder denne.</p>
 
 <figure id="">
 
-	<img class="" src="images/mysql_main_window_Brugerkonti.png" alt="" title="" />
+	<img class="p90" src="images/mysql_main_window_Brugerkonti.png" alt="" title="" />
 
 	<figcaption></figcaption>
 
@@ -1028,8 +1037,219 @@ WHERE Klasser_og_mentorer.Mentor='tj' AND Mentorer.Mentor="tj";
 
 </figure>
 
+<h1>Eksporter og importer</h1>
+
+<blockquote class="center">
+	<p>
+		Rigtige mænd tager ikke backup ... de græder bare
+	</p>
+</blockquote>
+
+<p>Når man arbejder med data i alle sammenhænge bør man have backup af sine vigtige filer. phpMyAdmin gør det nemt at tage backup af ens database. I database sammenhæng eksporterer man.</p>
+
+<h2>Eksporter databasen</h2>
+
+<p>For at eksportere en database vælger man menuen <span class="inl_cmd">Eksporter</span>:</p>
+
+<figure id="">
+
+	<img class="p90" src="images/mysql_eksporter.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Vi beholder det forudvalgte <span class="inl_cmd">SQL</span>format og klikker på <span class="knap">Udfør</span>. Herefter bliver filen gem i mappen <span class="inl_cmd">Overførsler</span> under det samme navn som databasen hedder med endelsen <span class="inl_cmd">.sql</span>. I dette tilfælde <span class="inl_cmd">mentorer.sql</span>.</p>
+
+<p>Det kan anbefales at filen med det samme omdøbes, så det bliver tydeligt hvornår backup'en er taget f.eks: <span class="inl_cmd">mentorer031116</span>.</p>
+
+<p>Indholdet af denne fil er de kommandoer der skal til for at gendanne databasen:</p>
+
+<details>
+
+	<summary>Vis koden i den eksporterede fil</summary>
+
+<pre>
+	<code class="SQL">
+-- phpMyAdmin SQL Dump
+-- version 4.5.1
+-- http://www.phpmyadmin.net
+--
+-- Vært: 127.0.0.1
+-- Genereringstid: 03. 11 2016 kl. 17:06:25
+-- Serverversion: 10.1.16-MariaDB
+-- PHP-version: 5.6.24
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `mentorer`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Struktur-dump for tabellen `klasser_og_mentorer`
+--
+
+CREATE TABLE `klasser_og_mentorer` (
+  `Klasse` varchar(3) COLLATE utf8_danish_ci NOT NULL,
+  `Mentor` varchar(3) COLLATE utf8_danish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_danish_ci;
+
+--
+-- Data dump for tabellen `klasser_og_mentorer`
+--
+
+INSERT INTO `klasser_og_mentorer` (`Klasse`, `Mentor`) VALUES
+('1a', 'tj'),
+('1b', 'ba'),
+('1x', 'cc'),
+('2a', 'tj'),
+('2b', 'ba'),
+('2x', 'cc'),
+('3a', 'tj'),
+('3b', 'ba');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur-dump for tabellen `klasse_og_elever`
+--
+
+CREATE TABLE `klasse_og_elever` (
+  `Klasse` varchar(3) COLLATE utf8_danish_ci NOT NULL,
+  `Antal Elever` tinyint(2) NOT NULL,
+  `Piger` tinyint(2) NOT NULL,
+  `Drenge` tinyint(2) NOT NULL,
+  `Startår` year(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_danish_ci;
+
+--
+-- Data dump for tabellen `klasse_og_elever`
+--
+
+INSERT INTO `klasse_og_elever` (`Klasse`, `Antal Elever`, `Piger`, `Drenge`, `Startår`) VALUES
+('1a', 17, 9, 8, 2016),
+('1b', 16, 8, 8, 2016),
+('1x', 28, 13, 15, 2016),
+('2a', 22, 10, 12, 2015),
+('2b', 24, 13, 11, 2015),
+('2x', 31, 17, 14, 2015),
+('3a', 21, 8, 13, 2015),
+('3b', 22, 9, 13, 2015);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur-dump for tabellen `mentorer`
+--
+
+CREATE TABLE `mentorer` (
+  `Mentor` varchar(3) COLLATE utf8_danish_ci NOT NULL,
+  `Navn` varchar(50) COLLATE utf8_danish_ci NOT NULL,
+  `Lokale` varchar(4) COLLATE utf8_danish_ci NOT NULL,
+  `Mobil` int(8) NOT NULL,
+  `Mail` varchar(50) COLLATE utf8_danish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_danish_ci;
+
+--
+-- Data dump for tabellen `mentorer`
+--
+
+INSERT INTO `mentorer` (`Mentor`, `Navn`, `Lokale`, `Mobil`, `Mail`) VALUES
+('ba', 'Bent Andersen', '18', 23344518, 'ba@fakemail.dk'),
+('cc', 'Christina Carlsen', '19', 23344519, 'cc@fakemail.dk'),
+('tj', 'Thomas Jensen', '17', 23344517, 'tj@fakemail.dk');
+
+--
+-- Begrænsninger for dumpede tabeller
+--
+
+--
+-- Indeks for tabel `klasser_og_mentorer`
+--
+ALTER TABLE `klasser_og_mentorer`
+  ADD PRIMARY KEY (`Klasse`);
+
+--
+-- Indeks for tabel `klasse_og_elever`
+--
+ALTER TABLE `klasse_og_elever`
+  ADD PRIMARY KEY (`Klasse`);
+
+--
+-- Indeks for tabel `mentorer`
+--
+ALTER TABLE `mentorer`
+  ADD PRIMARY KEY (`Mentor`);
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+	</code>
+</pre>
+
+</details>
+
+<h2>Importer</h2>
+
+<p>Vi kan prøve at importere databasen under et andet navn. Det første vi gør er at oprette en ny database til indholdet. Husk at sætte tegnsæt(<span class="inl_cmd">utf8-danish_ci</span>). Herefter vælger vi fanen <span class="inl_cmd">Importer</span></p>
+
+<figure id="">
+
+	<img class="p90" src="images/mysql_importer.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Herefter skal du:</p>
+
+<ol class="">
+	<li>Klikke på <span class="knap">Vælg fil</span></li>
+	<li>Navigere hen til din fil og klikke på <span class="knap">Åbn</span></li>
+	<li>Scrolle ned ad siden og klikke på <span class="knap">Udfør</span> </li>
+</ol>
+
 <p></p>
 
+<figure id="">
+
+	<img class="p90" src="images/mysql_importer_succes.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>For at teste om det er lykkes vælger du fanen <span class="inl_cmd">Struktur</span>.</p>
+
+<figure id="">
+
+	<img class="p90" src="images/mysql_importer_succes_tjek.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h2>Ryd op i dine backups</h2>
+
+<figure id="">
+
+	<img class="p40" src="http://imgs.xkcd.com/comics/old_files.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Taget fra: <a href="https://xkcd.com/1360/" target="_blank">https://xkcd.com/1360/</a></p>
 
 <p></p>
 <p></p>
