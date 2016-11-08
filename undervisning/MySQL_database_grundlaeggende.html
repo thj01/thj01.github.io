@@ -117,26 +117,26 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 		<tr>
 			<td>SMALLINT</td>
 			<td>2</td>
-			<td>-32768</td>
-			<td>32767</td>
+			<td>-32.768</td>
+			<td>32.767</td>
 			<td>0</td>
-			<td>65535</td>
+			<td>65.535</td>
 		</tr>
 		<tr>
 			<td>MEDIUMINT</td>
 			<td>3</td>
-			<td>-8388608</td>
-			<td>8388607</td>
+			<td>-8.388.608</td>
+			<td>8.388.607</td>
 			<td>0</td>
-			<td>16777215</td>
+			<td>16.777.215</td>
 		</tr>
 		<tr>
 			<td>INT</td>
 			<td>4</td>
-			<td>-2147483648</td>
-			<td>2147483647</td>
+			<td>-2.147.483.648</td>
+			<td>2.147.483.647</td>
 			<td>0</td>
-			<td>4294967295</td>
+			<td>4.294.967.295</td>
 		</tr>
 	</tbody>
 </table>
@@ -192,11 +192,20 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <p>Videnskabelige tal angives ved hjælp af et heltal efterfulgt af en 10'er potens der angiver kommaets position f.eks. som ved Faradays konstant (F' = 9,6485309 &sdot; 10<sup>4</sup> C/mol). I decimaltal vil det være 96485,309 C/mol. Det som er problemet med det tal jeg skriver her er, at det reelt kun er præcist ned til den 7'ende decimal. Det er rigeligt i videnskabelig sammenhæng, men kan være mangelfuldt i andre sammenhænge f.eks. finansielle beregninger. Dette er årsagen til, at <span class="inl_cmd">FLOAT</span> og <span class="inl_cmd">DOUBLE</span> bliver angivet som værende præcise, og <span class="inl_cmd">DECIMAL</span> til at være eksakt.</p>
 
+<p>Her er et eksempel hvor der anvendes <span class="inl_cmd">float</span> i Python:</p>
+
+<pre class="ubuntu_terminal">
+>>> 3*0.1
+0.30000000000000004
+>>> 3*0.1-0.3
+5.551115123125783e-17
+</pre>
+
+<p>Læg mærke til at <span class="inl_cmd">3*0.1</span> ikke giver <span class="inl_cmd">3.0</span> som vi forventer det.  Læg også mærke til at hvis vi tager samme regnestykke og trækker <span class="inl_cmd">0.3</span> fra, så giver det ikke <span class="inl_cmd">4.xxxe-17</span> som vi ville forvente efter forrige regnestykke. Det skyldes at Python regner med <span class="inl_cmd">float</span>, og derfor kun kan lave en binær repræsentation af decimaltallet.</p>
+
 <p>Sagt på en anden måde. <span class="inl_cmd">FLOAT</span> og <span class="inl_cmd">DOUBLE</span> er præcise nok til at arbejde med tal, hvor der kun er brug for et mindre antal decimaler (videnskab), men ikke når der er brug for mange (finans).</p>
 
-<p>Ligesom ved heltallene kan decimaltallene også præciseres (låses) ved hjælp af at angive antallet af cifre og decimaler i en parantes bagefter f.eks: DECIMAL(10,4). Det svarer til 10 cifre hvoraf de 4 er decimaler f.eks: 345987.4563</p>
-
-
+<p>Ligesom ved heltallene kan decimaltallene også præciseres (låses) ved hjælp af at angive antallet af cifre og decimaler i en parantes bagefter f.eks: DECIMAL(10,4). Det svarer til 10 cifre hvoraf de 4 er decimaler f.eks: 345987,4563</p>
 
 <p>Læs mere: <a href="http://code.rohitink.com/2013/06/12/mysql-integer-float-decimal-data-types-differences/" target="_blank">http://code.rohitink.com/2013/06/12/mysql-integer-float-decimal-data-types-differences/</a></p>
 
