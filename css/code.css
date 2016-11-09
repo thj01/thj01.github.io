@@ -274,6 +274,20 @@ span.underline {text-decoration: underline}
 
 span.right {float:right}
 
+span.math {
+font-family: serif;
+font-style: italic;
+font-size: 1.1em;
+padding-left: .25em;
+padding-right: .25em;
+font-weight: 500;
+}
+
+span.math sub {
+
+font-size: .7em;	
+
+}
 
 
 kbd {
