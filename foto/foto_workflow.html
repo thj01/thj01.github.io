@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+
+<head>
+	
+	<meta charset="UTF-8" lang="da"/>
+
+	<title>Workflow - Thomas Jensen</title>
+
+	<link rel="stylesheet" href="../css/styles/docco.css" />
+
+	<link rel="stylesheet" href="../css/style.css" />
+
+	<link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono|Ubuntu|Ubuntu+Condensed' rel='stylesheet' type='text/css'>
+	
+	<script src="../js/toc2.js" type="text/javascript"></script>
+	<script src="https://code.jquery.com/jquery-2.2.2.js"></script>
+	<script src="../js/highlight.pack.js" type="text/javascript"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+
+</head>
+
+<!-- 
+
+code highlighter : 
+
+code converter : http://www.freebits.co.uk/convert-html-code-to-text.html 
+
+-->
+
+
+
+<html>
+
+<body onload="generateTOC(document.getElementById('toc'));">
+
+<footer id="license"></footer>
+
+	<script> $( "#license" ).load( "license.html" ); </script>
+
+	<div id="toc">
+	<p>Indholdsfortegnelse</p>
+	
+	</div>
+
+<div class="title">Foto workflow med Linux</div>
+
+<p>Jeg har anvendt Opensource programmer i snart 15 år, og da jeg tog fotografering op som en hobby valgte jeg at holde fast i det. Og det selvom jeg havde mulighed for at anvende de nyste adobe Software igennem mit arbejde. Og det har selvfølgelig fået betydning for min måde at arbejde med billeder på. Den største udfordring har været, at det er "learning by doing".</p>
+
+<p>En af de ting man skal vænnes sig til når man arbejder med Linux er, at de betalingsprogrammer man anvender på Windows/Mac ikke findes til Linux. Det skyldes primært at deres potentielle Linuxkunder foretrækker de løsninger som ligger frit tilgængelige på nettet og derfor ikke vil kunne give et fornuftigt afkast. Der er ingen tvivl om at brugervenligheden og udviklingen af plugins i f.eks. Photoshop er foran mange opensource programmer, men det ændrer ikke på, at de samme effekter kan opnås med Linuxprogrammer. I dette materiale har jeg valgt at fokusere på de 3 opensource programmet jeg anvender i mit workflow.</p>
+
+<ul class="disc">
+	<li>Darktable - RAW-filer</li>
+	<li>GIMP'en - bitmap-grafik</li>
+	<li>Inkscape - Vector-grafik</li>
+</ul>
+
+<p>Det bør dog nævnes at hvis man arbejder i meget avancerede setups, hvor der er involveret avancerede trykpresser kan man støde ind i udfordringer.</p>
+
+
+<h1>Mit workflow - overordnet</h1>
+
+<p>Når man har taget billeder et stykke tid så finder man ud af hvordan arbejdsprocessen virker bedst for en. Herunder er den opdelt i 5 faser:</p>
+
+<ol class="">
+	<li>Shoot</li>
+	<li>Sortering og navngivning</li>
+	<li>Darktable - fokus på lys og skygger, farver, beskæring og effekter</li>
+	<li>GIMP'en - fokus på reperation, forbedringer samt logo.</li>
+	<li>Konvertering</li>
+</ol>
+
+<h1>Shoot</h1>
+
+<p>Et shoot forløber som regel på følgende måde:</p>
+
+<ol class="">
+	<li>Snak om selve shootet</li>
+	<li>opstilling af udstyr, model gøres klar osv.</li>
+	<li>fotosession</li>
+	<li>1. gennemsyn</li>
+	<li>fotosession</li>
+	<li>1. gennemsyn</li>
+	<li>nedpakning</li>
+	<li>2. gennemsyn</li>
+</ol>
+
+<h2>Gennemsyn af billeder</h2>
+
+
+<p>Grunden til at der er to forskellige sorteringer er, at de har hver deres fokus:</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Gennemsyn</th>
+			<th>Beskrivelse</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1.</td>
+			<td>Billederne gennemses, og de billeder man tænker ”nej” til bliver som udgangspunkt slettet med det samme – med mindre der er indsigelse. Her bliver teknisk dårlige billeder, dårlig positurer, lukkede/halvåbne øjne osv. bliver slettet.<br/><br/>
+			Restpuljen af billederne gennemses kritisk og diskuteres af parterne, med fokus på udtryk, æstetik, skygger, positur osv. </td>
+		</tr>
+		<tr>
+			<td>2.</td>
+			<td>Grunden til at jeg har lagt en 2. sortering ind her, er for at minimere min egen arbejdsproces. Da alle de dårlige billeder er blevet sorteret fra vil der være en langt mere kritisk tilgang til de resterende. De allerbedste billeder vil stå meget tydeligt frem og betyde at mange "gode" og "brugbare" billeder bliver slettet.<br/><br/>
+			Hvis der er billeder der virkeligt gør sig godt får de 5 stjerner. Er der billeder der ligner hinanden meget, bliver det op til fotografen at udvælge det/de bedst egnede, da det drejer sig meget mere om bearbejdningen af billedet end billedet i sig selv.
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Læg mærke til at billeder der sorteres fra bliver slettet. Nogle vælger at gemme alt de tager billeder af, men der er jeg langt mere pragmatisk. Hvorfor gemme noget man ikke er tilfreds med kvaliteten af</p>
+
+<h1>Sortering og navngivning</h1>
+
+<p>Den endelige sortering kan være lidt forskellig fra situation til situation.</p>
+
+<p>Efter nogle dage kigger jeg på billederne igen og denne gang laver jeg en sortering ud fra 3 kategorier:</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Kategori</th>
+			<th>Beskrivelse</th>
+			<th style="width:130px">Billedformat</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Prioriterede</td>
+			<td>Billeder som står ud fra de andre <br/><br/>Jeg udvælger maksimalt 8, da disse billeder skal efterbehandles grundigt. Det er disse billeder der kan bruges udadtil og som skal indeholde mit logo og disse billeder skal krediteres når de anvendes. Disse billeder får model og MUA tilsendt</td>
+			<td>2x jpg med logo<br/><br/>max opløsning<br/><br/>Facebook opløsning (2048px)</td>
+		</tr>
+		<tr>
+			<td>Gemmes</td>
+			<td>Gode billeder <br/><br/>
+				Disse billeder får en hurtig behandling, men er ikke beregnet til at skulle anvendes offentligt.<br/><br/>
+				Ofte ender disse billeder også med at blive slettet...</td>
+			<td>Gemmes i første omgang</td>
+		</tr>
+		<tr>
+			<td>Kasseres</td>
+			<td>Billeder der skal slettes <br/><br/>Billeder som ikke rammer i kategori 1 eller 2 bliver slettet</td>
+			<td>Slettes</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Er jeg i tvivl om et billede er kategori 2 eller 3 sørger jeg for at modellen og MUA får billederne at se. På den måde kan billeder til- og fravælges i fællesskab. Oftest er det noget der er overladt til mig selv.</p>
+
+<p>Efter 3. sorteringen ændrer jeg filnavnene så de bliver mere beskrivende ved hjælp af <span class="inl_cmd">pyRenamer</span> (se nedefor).</p>
+
+<h1>Darktable</h1>
+
+<span class="afsnit"><a href="http://www.darktable.org/" target="_blank">Darktable</a> ... foto-workflow og RAW-editor</span>
+
+<p>Darktable anvendes til:</p>
+
+<ul class="disc">
+	<li>Sortering og kategorisering af billeder ved hjælp af stjerner og farver.</li>
+	<li>Billed redigering med fokus på lys, farver, effekter og beskæring (RAW-format)</li>
+	<li>Eksportering af billeder som png for at undgå tab af data</li>
+</ul>
+
+<p>Darktable arbejder i RAW, hvilket betyder at man ikke ændrer selve billedets data, men måde defremvises. Ændringer lægges i en tilhørende tekstfil. Fordelen ved at arbejde i RAW er, at man kan arbejde med meget nøjagtigt med lys og skygger, farver og nuancer, effekter og beskæring - vel at mærke uden at der bliver ændret i billedets oprindelige data. Billedet forlader først Darktable når der ikke mangler andet end billedbehandling, der kræver ændring af pixelse.</p>
+
+<p>Når billedet er redigeret færdigt eksporteres det som <span class="inl_cmd">png (8-bit)</span> og <span class="inl_cmd">sRGB</span>. Grunden til at jeg anvender png-formatet er, at de enkelte pixels i billedet forbliver uforandret (<span class="inl_cmd">loosless compression</span>). Hvis man anvender <span class="inl_cmd">jpg</span> vil billedet blive komprimeret (<span class="inl_cmd">lossy compression</span>).</p>
+
+<h1>GIMP'en</h1>
+
+<span class="afsnit"><span class="afsnit"><a href="http://www.gimp.org/" target="_blank">GIMP'en</a> ... billedbehandler</span></span>
+
+<p>GIMP'en anvendes til:</p>
+
+<ul class="disc">
+	<li>Billedmanipulation f.eks: kloning og reparation</li>
+	<li>Logo tilføjes</li>
+	<li>Billeder gemmes som png og eksporteres til jpg hvis nødvendigt.</li>
+</ul>
+
+<p>Jeg anvender primært GIMP'en til at reparere fejl og fjerne ting der ikke hører til. Det kan være alt fra en termostat til en bums på panden. Hvis nogle områder f.eks. er udblændet pga. genskind kan disse områder også repareres. Det er mest klonings- og reparationsværktøjet jeg anvender. Når redigeringen er færdig gemmer jeg dem i <span class="inl_cmd">png</span>, så billederne ikke bliver komprimeret.</p>
+
+<p>Erfaring har lært mig at man på dette tidspunkt skal holde en holde en pause med billederne og så tage dem frem igen efter nogle timer, da jeg ofte opdager noget jeg ikke har fået rettet ordentligt op på.</p>
+
+<h1>Inkscape</h1>
+
+<p>Inkscape er et vektorbaseret illustrationsprogram. Grunden til, at det ikke er nævnt i mit almindelige workflow, er at programmet anvendes efter behov, f.eks. når der skal laves logoer og stregtegninger. Fordelen ved at anvende vektorbaseret grafik er, at illustrationerne ikke bliver pixeleret når de skaleres, men står knivskarpt.</p>
+
+<span class="afsnit"><a href="https://inkscape.org/en/" target="_blank">Inkscape</a> ... vektorgraffikprogram</span>
+
+
+<h1>Navngivning</h1>
+
+<span class="afsnit"><a href="https://launchpad.net/pyrenamer" target="_blank">pyRenamer</a> ... ændring af filnavne</span>
+
+<p>pyRenamer er et simpelt og effektivt program til at ændre og manipulere med filnavne.</p>
+
+
+
+
+<h1>Konvertering</h1>
+
+<span class="afsnit"><a href="https://help.ubuntu.com/community/UsingTheTerminal" target="_blank">Terminalen</a> ... Linux powertool</span>
+
+<p>Til at konvertere mellem filformater anvender jeg nogle scripts der kører ved hjælp af terminalen. Jeg har tidligere anvendt GUI (<span class="bold">G</span>raphic <span class="bold">U</span>ser <span class="bold">I</span>nterface) til det, men har fundet ud af at det kan gøres langt smartere ved hjælp af kommandolinien. F.eks. kan nedestående script konvertere et <span class="inl_cmd">PNG</span> billede til <span class="inl_cmd">JPG</span> hvor den længste side er 2048 pixel.</p>
+
+<pre>
+	<code class="bash">
+for file in *; do
+filename=${file%.*}
+convert "$filename.png" -resize 2048x2048 -quality 90 "2048_$filename.jpg"
+done
+	</code>
+</pre>
+
+<p>Kender man lidt til filformater vil man let kunne ændre i scriptet for at ændre i på filindstillingerne ... og tilføje flere. Det er også muligt at indsætte ens logo ved hjælp af scripts</p>
+
+<p>Generelt er kommandolinien et stærk værktøj, som giver adgang til en del muligheder.</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Program</th>
+			<th>Beskrivelse</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><a href="http://www.imagemagick.org/script/index.php" target="_blank">ImageMagick</a></td>
+			<td>Et program der spænder vidt og på mange platforme. Der findes et hav af scripts og tutorials på nettet til hvordan det kan anvendes.</td>
+		</tr>
+		<tr>
+			<td><a href="http://gphoto.org/" target="_blank">gphoto2</a></td>
+			<td>En samling af programmer og drivere der anvendes til at skabe kontakt mellem computeren og det digitale kamera. Med en enkelt kommando kan man få udskrevet sit shuttercount: <br/><br/><span class="inl_cmd">gphoto2 --get-config /main/status/shuttercounter</span>.<br/><br/>Se den imponerende liste over understøttede kameraer <a href="http://gphoto.org/proj/libgphoto2/support.php" target="_blank">her</a></td>
+		</tr>
+	</tbody>
+</table>
+
+<h1>Formater jeg anvender</h1>
+
+<p>Jeg opdeler formaterne i 2 grupper: De billeder som jeg arbejder med, og de billeder jeg sender videre og anvender på diverse fora.</p>
+
+<h2>Arbejdsbilleder</h2>
+
+<p>I mit interne workflow anvender jeg den oprindelige <span class="inl_cmd">RAW</span>-fil, som jeg konverterer til 8 bit <span class="inl_cmd">PNG</span> i <span class="inl_cmd">sRGB</span>. På den måde sikrer jeg mig at jeg ikke mister billedinformation ved komprimering og holder mig til det farverum som langt størsteparten af dem der skal kigge på mine billeder kan se.</p>
+
+<h2>Publicerede billeder</h2>
+
+<p>Jeg konverterer billeder der skal sendes videre eller anvendes på nettet til <span class="inl_cmd">JPG</span> i tre formater</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Opløsning</th>
+			<th>Beskrivelse</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Fuld</td>
+			<td>Dette billede er konverteret i fuld opløsning inklusiv logo og sendes til model og MUA og anvendes på sites som <a href="https://500px.com/thj001" target="_blank">500px</a>. Disse billeder anvedes med fuld kreditering til alle medvirkende</td>
+		</tr>
+		<tr>
+			<td>2048px</td>
+			<td>Her er billedet konverteret til den opløsning der ofte anvendes på Facebook og andre lignende sites. Det skal ses som en ren service</td>
+		</tr>
+		<tr>
+			<td>1200px</td>
+			<td>Jeg konverterer ofte til denne størrelse, hvis billeder skal sendes rundt, for at vælge mellem billeder. Det er i mine øjne et passende kompromis mellem størrelse af billederne og de detaljer man kan se.</td>
+		</tr>
+	</tbody>
+</table>
+
+
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+	</body>
+
+</html>

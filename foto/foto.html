@@ -54,290 +54,31 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 	<li>Inkscape - Vector-grafik</li>
 </ul>
 
-<p>Det bør dog nævnes at hvis man arbejder i meget avancerede setups, hvor der er involveret avancerede trykpresser og avancerede filformater, så kan man støde ind i problemer.</p>
+<p>Derudover anvender jeg andre værktøjer til konvertering af filer og navngivning.</p>
 
-<h1>Fotoprogrammer til Linux</h1>
-
-<p>De programmer jeg anvender og anbefaler er:</p>
-
-<span class="afsnit"><a href="http://www.darktable.org/" target="_blank">Darktable</a> ... foto-workflow og RAW-editor</span>
-
-<p>Darktable anvendes til:</p>
-
-<ul class="disc">
-	<li>Sortering og kategorisering af billeder ved hjælp af stjerner og farver.</li>
-	<li>Billed redigering med fokus på lys, farver, effekter og beskæring (RAW-format)</li>
-	<li>Eksportering af billeder som png for at undgå tab af data</li>
-</ul>
-
-<span class="afsnit"><span class="afsnit"><a href="http://www.gimp.org/" target="_blank">GIMP'en</a> ... billedbehandler</span></span>
-
-<p>GIMP'en anvendes til:</p>
-
-<ul class="disc">
-	<li>Billedmanipulation f.eks: kloning og reparation</li>
-	<li>Logo tilføjes</li>
-	<li>Billeder gemmes som png og eksporteres til jpg hvis nødvendigt.</li>
-</ul>
-
-<span class="afsnit"><a href="https://inkscape.org/en/" target="_blank">Inkscape</a> ... vektorgraffikprogram</span>
-
-<p>Inkscape anvendes til alle former for vektorgrafik f.eks. logo og mere tekniske tegninger.</p>
-
-
-
-<span class="afsnit"><a href="https://launchpad.net/pyrenamer" target="_blank">pyRenamer</a> ... ændring af filnavne</span>
-
-<p>pyRenamer er et simpelt og effektivt program til at ændre filnavne</p>
-
-<span class="afsnit"><a href="https://help.ubuntu.com/community/UsingTheTerminal" target="_blank">Terminalen</a> ... Linux powertool</span>
-
-<p>En af de store fordele man har ved at anvende terminalen på Linux er, at man får direkte adgang de programmer og drivere som GUI-programmerne anvender (<span class="bold">G</span>raphic <span class="bold">U</span>ser<span class="bold">I</span>nterface). I stedet for at klikke sig frem til konvertering mellem formater og ændre størrelser åbner jeg mapperne billederne ligger i og kører en kommando. Her er der primært to programmer jeg vil nævne:</p>
-
-<table class="">
-	<thead>
-		<tr>
-			<th>Program</th>
-			<th>Beskrivelse</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td><a href="http://www.imagemagick.org/script/index.php" target="_blank">ImageMagick</a></td>
-			<td>Et program der spænder vidt og på mange platforme. Der findes et hav af scripts og tutorials på nettet til hvordan det kan anvendes.</td>
-		</tr>
-		<tr>
-			<td><a href="http://gphoto.org/" target="_blank">gphoto2</a></td>
-			<td>En samling af programmer og drivere der anvendes til at skabe kontakt mellem computeren og det digitale kamera. Med en enkelt kommando kan man få udskrevet sit shuttercount: <br/><br/><span class="inl_cmd">gphoto2 --get-config /main/status/shuttercounter</span>.<br/><br/>Se den imponerende liste over understøttede kameraer <a href="http://gphoto.org/proj/libgphoto2/support.php" target="_blank">her</a></td>
-		</tr>
-	</tbody>
-</table>
-
-<p></p>
-
-
-
-
-<p>Jeg har efterhånden fået lavet en del scripts ved hjælp af , som konverterer mellem forskellige formater og billedopløsninger.  F.eks. findes der også programmet <span class="inl_cmd">gphoto2</span>, som kan aflæse antaller af eksponeringer på kameraet (shuttercount). </p>
-
-<h1>Mit workflow</h1>
-
-<p>Når man har taget billeder et stykke tid så finder man ud af hvordan arbejdsprocessen virker bedst for en. Herunder er den opdelt i 5 faser:</p>
+<h1>Workflow</h1>
 
 <ol class="">
-	<li>Shoot</li>
-	<li>Sortering og navngivning</li>
-	<li>Darktable - fokus på lys og skygger, farver, beskæring og effekter</li>
-	<li>GIMP'en - fokus på reperation, forbedringer samt logo.</li>
-	<li>Konvertering</li>
+	<li><a href="<a href="foto_workflow.html" target="_blank">Mit workflow</a></li>
 </ol>
 
-<h2>Shoot</h2>
 
-<p>Et shoot forløber som regel på følgende måde:</p>
+<h1>Programmer til Linux</h1>
 
 <ol class="">
-	<li>Snak om selve shootet</li>
-	<li>opstilling af udstyr, model gøres klar osv.</li>
-	<li>fotosession</li>
-	<li>1. gennemsyn</li>
-	<li>fotosession</li>
-	<li>1. gennemsyn</li>
-	<li>nedpakning</li>
-	<li>2. gennemsyn</li>
+	<li><a href="<a href="foto_programmer.html" target="_blank">Foto programmer</a></li>
 </ol>
 
-<p>Grunden til at der er to forskellige sorteringer er, at de har hver deres fokus:</p>
+<h1>Om farver og formater</h1>
 
-<table class="">
-	<thead>
-		<tr>
-			<th>Gennemsyn</th>
-			<th>Beskrivelse</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>1.</td>
-			<td>Billederne gennemses, og de billeder man tænker ”nej” til bliver som udgangspunkt slettet med det samme – med mindre der er indsigelse. Her bliver teknisk dårlige billeder, dårlig positurer, lukkede/halvåbne øjne osv. bliver slettet.<br/><br/>
-			Restpuljen af billederne gennemses kritisk og diskuteres af parterne, med fokus på udtryk, æstetik, skygger, positur osv. </td>
-		</tr>
-		<tr>
-			<td>2.</td>
-			<td>Grunden til at jeg har lagt en 2. sortering ind her, er for at minimere min egen arbejdsproces. Da alle de dårlige billeder er blevet sorteret fra vil der være en langt mere kritisk tilgang til de resterende. De allerbedste billeder vil stå meget tydeligt frem og betyde at mange "gode" og "brugbare" billeder bliver slettet.<br/><br/>
-			Hvis der er billeder der virkeligt gør sig godt får de 5 stjerner. Er der billeder der ligner hinanden meget, bliver det op til fotografen at udvælge det/de bedst egnede, da det drejer sig meget mere om bearbejdningen af billedet end billedet i sig selv.
-			</td>
-		</tr>
-	</tbody>
-</table>
-
-<p>Læg mærke til at billeder der sorteres fra bliver slettet. Nogle vælger at gemme alt de tager billeder af, men der er jeg langt mere pragmatisk. Hvorfor gemme noget man ikke er tilfreds med kvaliteten af</p>
-
-<h2>Sortering og navngivning</h2>
-
-<p>Den endelige sortering kan være lidt forskellig fra situation til situation.</p>
-
-<p>Efter nogle dage kigger jeg på billederne igen og denne gang laver jeg en sortering ud fra 3 kategorier:</p>
-
-<table class="">
-	<thead>
-		<tr>
-			<th>Kategori</th>
-			<th>Beskrivelse</th>
-			<th style="width:130px">Billedformat</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>Prioriterede</td>
-			<td>Billeder som står ud fra de andre <br/><br/>Jeg udvælger maksimalt 8, da disse billeder skal efterbehandles grundigt. Det er disse billeder der kan bruges udadtil og som skal indeholde mit logo og disse billeder skal krediteres når de anvendes. Disse billeder får model og MUA tilsendt</td>
-			<td>2x jpg med logo<br/><br/>max opløsning<br/><br/>Facebook opløsning (2048px)</td>
-		</tr>
-		<tr>
-			<td>Gemmes</td>
-			<td>Gode billeder <br/><br/>
-				Disse billeder får en hurtig behandling, men er ikke beregnet til at skulle anvendes offentligt.</td>
-			<td>1x jpg u logo <br/><br/>Facebook opløsning (2048px)</td>
-		</tr>
-		<tr>
-			<td>Kasseres</td>
-			<td>Billeder der skal slettes <br/><br/>Billeder som ikke rammer i kategori 1 eller 2 bliver slettet</td>
-			<td>Slettes</td>
-		</tr>
-	</tbody>
-</table>
-
-<p>Er jeg i tvivl om et billede er kategori 2 eller 3 sørger jeg for at modellen og MUA får billederne at se. På den måde kan billeder til- og fravælges i fællesskab. Oftest er det noget der er overladt til mig selv.</p>
-
-<p>Efter 3. sorteringen ændrer jeg filnavnene så de bliver mere beskrivende ved hjælp af <span class="inl_cmd">pyRenamer</span> (se nedefor).</p>
-
-<h2>Darktable</h2>
-
-<p>Darktable arbejder i RAW, hvilket betyder at man ikke ændrer selve billedets data, men måde defremvises. Ændringer lægges i en tilhørende tekstfil. Fordelen ved at arbejde i RAW er, at man kan arbejde med meget nøjagtigt med lys og skygger, farver og nuancer, effekter og beskæring - vel at mærke uden at der bliver ændret i billedets oprindelige data. Billedet forlader først Darktable når der ikke mangler andet end billedbehandling, der kræver ændring af pixelse.</p>
-
-<p>Når billedet er redigeret færdigt eksporteres det som <span class="inl_cmd">png (8-bit)</span> og <span class="inl_cmd">sRGB</span>. Grunden til at jeg anvender png-formatet er, at de enkelte pixels i billedet forbliver uforandret (<span class="inl_cmd">loosless compression</span>). Hvis man anvender <span class="inl_cmd">jpg</span> vil billedet blive komprimeret (<span class="inl_cmd">lossy compression</span>).</p>
-
-<h2>GIMP'en</h2>
-
-<p>Jeg anvender primært GIMP'en til at reparere fejl og fjerne ting der ikke hører til. Det kan være alt fra en termostat til en bums på panden. Hvis nogle områder f.eks. er udblændet pga. genskind kan disse områder også repareres. Det er mest klonings- og reparationsværktøjet jeg anvender. Når redigeringen er færdig gemmer jeg dem i <span class="inl_cmd">png</span>, så billederne ikke bliver komprimeret.</p>
-
-<p>Erfaring har lært mig at man på dette tidspunkt skal holde en holde en pause med billederne og så tage dem frem igen efter nogle timer, da jeg ofte opdager noget jeg ikke har fået rettet ordentligt op på.</p>
-
-<h2>Konvertering</h2>
-
-<p>Jeg anvender billederne i 3 formater på nettet, og de er alle jpg.</p>
-
-<p>De prioriterede</p>
-
-<ul class="disc">
-	<li>Fuld opløsning med logo</li>
-	<li></li>
-</ul>
-
-<ul class="disc">
-	<li>Fuld størrelse 8-bit png</li>
-	<li>Fuld størrelse </li>
-</ul>
+<ol class="">
+	<li><a href="foto_farver_og_formater.html" target="_blank">Om farver og formater</a></li>
+</ol>
 
 
-<h1>Darktable</h1>
-
-<p></p>
-
-<figure id="">
-
-	<img class="p90" src="images/darktable_lighttable.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-
-<figure id="">
-
-	<img class="p90" src="images/darktable_darkroom.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
 
 
-<h1>GIMP'en</h1>
 
-<p></p>
-
-<h1>Inkscape</h1>
-
-<p></p>
-
-<h1>pyRenamer</h1>
-
-<p>Når man tager billeder vil de være navngivet efter kameraets indstillinger. For at skabe et bedre overblik over de filer der er tilbage efter sorteringen plejer jeg at ændre filnavnene, så der bliver mere sigende. Til dette formål er <span class="inl_cmd">pyRenamer</span> velegnet.</p>
-
-<figure id="">
-
-	<img class="p90" src="images/pyrenamer_main_windows.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-
-<p>I det ovenstående screendump ændrer jeg kameraets filnavn til et mere sigende filnavn, og en fortløbende nummerering. Jeg vælger hele filnavnet (<span class="inl_cmd">{X}</span>) og ændrer det ved hjælp af nogle af de indbyggede patterns her <span class="inl_cmd">hanne_E{year}_{num3}.cr2</span>.</p>
-
-<p>I dette tilfælde ændrer jeg filnavnene fra: <span class="inl_cmd">20160110_0011.cr2</span> til <span class="inl_cmd">hanne_E2016_000.cr2</span>.</p>
-
-<p>Før man kører selve omdøbningen af filerne køres der er en preview, så man ved det bliver korrekt. Det er især vigtigt at man husker at få filtypen med.</p>
-
-<p>Man kan se alle "patterns" ved at holde musen over tekstfeltet. Andre brugbarepatterns er:</p>
-
-<table class="cmd_table">
-	<thead>
-		<tr>
-			<th></th>
-			<th></th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>{num2}</td>
-			<td>01, 02, 03 ...</td>
-		</tr>
-		<tr>
-			<td>{date}</td>
-			<td>20okt2016</td>
-		</tr>
-		<tr>
-			<td>{year}</td>
-			<td>2016</td>
-		</tr>
-		<tr>
-			<td>{month}</td>
-			<td>10</td>
-		</tr>
-		<tr>
-			<td>{day}</td>
-			<td>20</td>
-		</tr>
-		<tr>
-			<td>{daysimp}</td>
-			<td>tor</td>
-		</tr>
-	</tbody>
-</table>
-
-
-<p>Mere om pyRenamer patterns: <a href="https://ubuntuforums.org/showthread.php?t=1254333" target="_blank">https://ubuntuforums.org/showthread.php?t=1254333</a></p>
-
-<h1>Terminalen</h1>
-
-<p></p>
-
-<h1>Farveteori</h1>
-
-<p></p>
-
-<h1></h1>
-
-<p></p>
 
 
 <p></p>
