@@ -172,12 +172,9 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 	</tbody>
 </table>
 
-<p>Her skal vi forestille os at vi har et sort stykke karton, hvor vi får to lamper til at lyse på papiret. Den ene lampe sender rødt lys ud, den anden grøn (blandingsfarve gul/blå). </p>
+<p>Her skal vi forestille os at vi har et sort stykke karton, hvor vi får to lamper til at lyse på papiret. Den ene lampe sender rødt lys ud, den anden grøn (blandingsfarve gul/blå). Tricket er, at den grønne farve består af både gul og blå. Men når den røde farve er der kan den blå ikke komme igennem. Den vil altså blive elimineret. Den røde farve kan ikke trænge igennem den grønne, og dermed er den eneste farve der ikke er blokeret den gule.</p>
 
-
-<p>Tricket er, at den grønne farve består af både gul og blå. Men når den røde farve er der kan den blå ikke komme igennem. Den vil altså blive elimineret. Den røde farve kan ikke trænge igennem den grønne, og dermed står den gule tilbage. På lignende måde bliver de andre farver konstrueret.</p>
-
-<p>Når der der intet lys er bliver farven sort, og når RGB farverne har samme niveau udelukker de hinanden og vi får en grå nuance (se længere nede)</p>
+<p>Når der der intet lys er bliver farven sort, og når RGB farverne har samme niveau udelukker de hinanden og vi får en grå nuance (se længere nede). Den ægte hvide farver opstår når alle farver er tilstede.Kigger du nærmere på din skærm vil du opdage at selv de hvide flader ikke er helt hvide. De er "beskidt" hvide. Det skyldes simpelthen at din skærm ikke kan producere alle farver med en nødvendig intensitet. På samme måde er den sorte farve på din skræm begrænset af hvor mørkt materialet din skærm er bygget af. "Rigtig" sort, er så mørkt at man ikke kan se nogen dybde overhovedet, og det er en ikke-farve der er meget svær at lave.</p>
 
 <figure id="">
 
@@ -189,25 +186,27 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <h2>Substraktive farver</h2>
 
-<p>Her snakker vi om CMYK farver (<span class="bold">C</span>yan, <span class="bold">M</span>agenta, <span class="bold">Y</span>llow og <span class="bold">K</span>ey color). I teorien burde blandingen af CMY farverne give sort, men her havner vi i det kemiske problem vi gennemgik ovenfor. For at omgå denne har man indsat en sort farve (Key color) til at sørge for ægte sort og grå nuancer.</p>
+<p>Substraktive farver fungerer modsat additive farver. Her "blokerer" man for for de uønskede farver. Hvor de additive farver vil danne farver på et sort grundlag kræver substraktive farver et hvidt underlag. De farver man anvender her kaldes for CMY (<span class="bold">C</span>yan, <span class="bold">M</span>agenta og <span class="bold">Y</span>llow).</p>
 
-<p>Det smarte ved at anvende CMYK farver er, at man udnytter det hvide papir (transperans) til at skabe "lysheden" i farverne. Teknikken bruger også væsentlig mindre farvestof end en RGB printer ville.<p>
-	
-<p>Herunder vil det blive forklaret hvordan den røde farve dannes</p>
-	
 <table class="centreret fixed">
 	<tbody>
 		<tr>
 			<td style="background-color:magenta"><br/>Magenta<br/><br/>(Blandingsfarve rød/blå)<br/><br/></td>
 			<td style="background-color:Yellow"><br/>Gul<br/><br/>(grundfarve)<br/><br/></td>
 			<td style="background-color:Cyan"><br/>Cyan<br/><br/>(Blandingsfarve grøn/blå)<br/><br/></td>
-			<td style="background-color:black"><span class="white"><br/>Key color<br/><br/>(Kulsort)<br/><br/></span></td>
-
 		</tr>
 	</tbody>
 </table>	
 
-<p>Modsat den forrige fremgangsmåde som lagde farver sammen, så trækker denne metode farver fra den hvide farve - altså papiret. Fra RGB modellen ovenfor ved vi at den magenta farve er en blandingsfarve mellem rød og blå </p>
+<p>Til tryk anvendes CMYK (<span class="bold">C</span>yan, <span class="bold">M</span>agenta, <span class="bold">Y</span>llow og <span class="bold">K</span>ey color), som udvider <span class="inl_cmd">CMY</span> farverne med <span class="inl_cmd">Key</span>. <span class="inl_cmd">Key</span> er en kulsort farve man supplerer med fordi:</p>
+
+<ul class="disc">
+	<li>man kan spare på de dyre <span class="inl_cmd">CMY</span>-farver, og</li>
+	<li>den sorte farve der dannes af <span class="inl_cmd">CMY</span>-farverne reelt er en mørkesortbrun farve</li>
+</ul>
+
+	
+<p>For at forstå måden farver dannes ved <span class="inl_cmd">CMYK</span>modellen kræver det en dybere gennemgang af komplementære farver. Det ligger uden for denne guide,</p>
 
 <figure id="">
 
@@ -217,13 +216,11 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 </figure>
 
-<h2>RGB</h2>
+<h2>Digitale farver</h2>
 
-<p><span class="inl_cmd">RGB</span> (<span class="bold">R</span>ed <span class="bold">G</span>reen <span class="bold">B</span>lue)</p>
+<p>Digitale farverdannelse anvender den substraktive farvemodel, dvs. <span class="inl_cmd">RGB</span> (<span class="bold">R</span>ed <span class="bold">G</span>reen <span class="bold">B</span>lue) farver. Hver af disse farver kan beskrives 256 niveauer.</p>
 
-<p>Det vi så på ovenfor er analoge farver. Det som vi skal kigge på nu er digitale farver. Her har man besluttet sig for at farver skal forstås som en blanding mellem RGB faverne <span class="bold">R</span>ød, <span class="bold">G</span>røn og <span class="bold">B</span>lå.</p>
-
-<p>Hver af disse farver beskrives med deres hexadecimale værdi hvor 00 = 0 og FF = 255 og skrives ved at angive værdierne for de enekelte farver efter et hasttag #</p> 
+<p><span class="inl_cmd">RGB</span> farver er beskrevet ved hjælp af hashtag (<span class="inl_cmd">#</span>) efterfulgt af 6 hexadecimale cifre, der parvist definerer hver farve: #<span class="red">XX</span><span class="green">XX</span><span class="blue">XX</span>. Herunder er farverne vist hver for sig. Læg mærke til sort, som er defineret ved at skærmen reelt set er slukket (intet signal) og at hvis er fuld udblæsning på alle RGB farver.</p>
 
 <table class="centreret fixed">
 	<tbody>
@@ -237,19 +234,8 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 	</tbody>
 </table>
 
-<p>Hvis du ønsker at eksperimentere med farverne kan du prøve nedestående side:</p>
+<p>For at se nuancerne kan vi anvende CSS3 til at vise alle 256 nuancer. Herunder er browseren programmeret til at starte med den laveste værdi (<span class="inl_cmd">00</span> og slutte af med den højeste <span class="inl_cmd">FF</span>. Har du forskellige enheder hos dig, f.eks. andre computere, bærbare, tablets og telefoner kan du prøve at kigge på hvordan farverne herover og nuanceforløbet herunder bliver vist.</p>
 
-<p><a href="http://www.colorsontheweb.com/colorwizard.asp" target="_blank">http://www.colorsontheweb.com/colorwizard.asp</a></p>
-
-<h2>CMYK</h2>
-
-<p><span class="inl_cmd">CMYK</span> (<span class="bold">C</span>yan, <span class="bold">M</span>agenta, <span class="bold">Y</span>ellow og <span class="bold">K</span>ey)</p>
-
-<h1>Farverum</h1>
-
-<p></p>
-
-<p>For at computeren skal kunne tolke farverne skal de altså angives ved hjælp af blandingsforholdet mellem de 3 farver defineret igennem disse 256 niveauer for hver farven. Det du ser herunder er din skærms evne til at gengive den digitale standard sRGB. Farveovergangen er skabt ved hjælp af CSS3, som kan graduere farver.</p>
 
 <p>Rød (#<span class="red">00</span>0000 - #<span class="red">FF</span>0000)</p>
 
@@ -263,11 +249,36 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <div id="grad_blue"></div>
 
+<p>Disse "nuance" bånd er lavet ved hjælp af <span class="inl_cmd">CCS3</span> og er din browsers forsøg på at </p>
+
+
+
+
 <p>Gråtonerne herunder er lidt specielle, da de fremkommer ved at værdierne for hver af farverne er den samme.</p>
 
 <p>Gråtoner #(<span class="red">000000</span> - #<span class="red">FFFFFF</span>)</p>
 
 <div id="grad_grey"></div>
+
+<p>For at computeren skal kunne tolke farverne skal de altså angives ved hjælp af blandingsforholdet mellem de 3 farver defineret igennem disse 256 niveauer for hver farven. Det du ser herunder er din skærms evne til at gengive den digitale standard sRGB. Farveovergangen er skabt ved hjælp af CSS3, som kan graduere farver.</p>
+
+
+
+
+<p>Hvis du ønsker at eksperimentere med farverne kan du prøve nedestående side:</p>
+
+<p><a href="http://www.colorsontheweb.com/colorwizard.asp" target="_blank">http://www.colorsontheweb.com/colorwizard.asp</a></p>
+
+<h2>CMYK</h2>
+
+<p><span class="inl_cmd">CMYK</span> (<span class="bold">C</span>yan, <span class="bold">M</span>agenta, <span class="bold">Y</span>ellow og <span class="bold">K</span>ey)</p>
+
+<h1>Farverum</h1>
+
+<p></p>
+
+
+
 
 
 
