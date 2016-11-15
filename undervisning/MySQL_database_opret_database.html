@@ -616,14 +616,67 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <p>Hver eneste gang man udvider sin database bør man sikre sig at databasen overholder de tre normaliseringskrav.</p>
 
-<h1>Opret databasen</h1>
+<h1>Klargør databasen</h1>
+
+<h2>Opstart af XAMPP</h2>
+
+<span class="afsnit">Windows</span>
+
+<p>Start <span class="inl_cmd">XXAMP</span> og aktiver <span class="inl_cmd">Apache</span> og <span class="inl_cmd">phpMyAdmin</span>. Det gøres ved at vælger knapperne <span class="knap">Start</span> i kolonnen <span class="bold">Actions</span>. Du kan se modulerne er aktive når de bliver grønne, og at der på knappen står <span class="knap">Stop</span>.</p>
+
+<figure id="">
+
+	<img class="p60" src="images/MySQL_XXAMP_opstart.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<span class="afsnit">Mac</span>
+
+<p>For at starte webserveren og MySQL op skal du vælge fanen <span class="knap">Manage Servers</span>, klikke på <span class="inl_cmd">MySQL Database</span> og vælge <span class="knap">Start</span>. Når knappen foran <span class="inl_cmd">MySQL Database</span> lyser grønt er databasen startet.</p>
+
+<figure id="">
+
+	<img class="p60" src="images/xampp_install_15_mac.PNG" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h2>Tilgå phpMyAdmin</h2>
+
+<p></p>
+
+<p>Åben browseren (Chrome eller Firefox) på adressen: <span class="inl_cmd">localhost</span> eller <span class="inl_cmd">127.0.0.1</span>. Begge adresser er lokale adresser der kun fungerer på selve computeren og de peger på den webserver er er installeret. Vælg <span class="inl_cmd">phpMyAdmin</span> øverst th.</p>
+
+<figure id="">
+
+	<img class="p90" src="images/mysql_XAMPP_start_PhpMyAdmin.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p><span class="inl_cmd">phpMyAdmin</span> starter op.</p>
+
+<figure id="">
+
+	<img class="p90" src="images/mysql_XAMPP_opret_tabel1_01.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h1>Opret database og tabeller</h1>
+
+<p></p>
 
 <p>I dette kapitel vil vi oprette databasen med de tre tabeller vi har lavet ved hjælp af normaliseringsprocessen, og kalde den: <span class="inl_cmd">mentorer</span>. Tabellerne skal oprettes efter nedestående skemaer, og vil blive eksemplificeret ved hjælp af <span class="inl_cmd">tabel 1: klasser_og_mentorer</span>:</p>
 
 <p>Det vi skal gøre er følgende:</p>
 
 <ol class="">
-	<li>Start XXAMP og start phpMyAdmin</li>
 	<li>Opret databasen</li>
 	<li>Opret tabel 1</li>
 	<li>Indtast data</li>
@@ -756,57 +809,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 	</tbody>
 </table>
 
-<h2>Opstart af XAMPP</h2>
 
-<span class="afsnit">Windows</span>
-
-<p>Start <span class="inl_cmd">XXAMP</span> og aktiver <span class="inl_cmd">Apache</span> og <span class="inl_cmd">phpMyAdmin</span>. Det gøres ved at vælger knapperne <span class="knap">Start</span> i kolonnen <span class="bold">Actions</span>. Du kan se modulerne er aktive når de bliver grønne, og at der på knappen står <span class="knap">Stop</span>.</p>
-
-<figure id="">
-
-	<img class="p60" src="images/MySQL_XXAMP_opstart.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-
-<span class="afsnit">Mac</span>
-
-<p>For at starte webserveren og MySQL op skal du vælge fanen <span class="knap">Manage Servers</span>, klikke på <span class="inl_cmd">MySQL Database</span> og vælge <span class="knap">Start</span>. Når knappen foran <span class="inl_cmd">MySQL Database</span> lyser grønt er databasen startet.</p>
-
-<figure id="">
-
-	<img class="p60" src="images/xampp_install_15_mac.PNG" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-
-<h2>Tilgå phpMyAdmin</h2>
-
-<p></p>
-
-<p>Åben browseren (Chrome eller Firefox) på adressen: <span class="inl_cmd">localhost</span> eller <span class="inl_cmd">127.0.0.1</span>. Begge adresser er lokale adresser der kun fungerer på selve computeren og de peger på den webserver er er installeret. Vælg <span class="inl_cmd">phpMyAdmin</span> øverst th.</p>
-
-<figure id="">
-
-	<img class="p90" src="images/mysql_XAMPP_start_PhpMyAdmin.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-
-<p><span class="inl_cmd">phpMyAdmin</span> starter op.</p>
-
-<figure id="">
-
-	<img class="p90" src="images/mysql_XAMPP_opret_tabel1_01.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-
-<h2>Opret database og tabeller</h2>
 
 <p>Tabellerne der arbejdes med i denne opgave kan downloades i PDF udgave her: <a href="files/tabeller_udskrift.pdf" target="_blank" download>tabeller_udskrift.pdf</a></p>
 
@@ -872,7 +875,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 </figure>
 
-<h2>Indtast data</h2>
+<h1>Indtast data</h1>
 
 <p>Vælg menuen indsæt og indtast indholdet</p>
 
