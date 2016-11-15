@@ -188,6 +188,16 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <h2>Normalform 1 (NF1)</h2>
 
+
+
+<blockquote>
+	<ul class="disc">
+		<li>Tabellen har et nøglefelt (behøver ikke at være unikt)</li>
+		<li>Der må kun være en værdi af samme type i hver post</li>
+		<li>Alle poster skal være lige lange dvs. have samme antal felter</li>
+	</ul>
+</blockquote>
+
 <p>Lige nu er skemaet menneskelæseligt, men for at få tabellen til at opfylde <span class="inl_cmd">NF1</span> skal vi have ændret på nogle ting.</p>
 
 <ol class="">
@@ -270,6 +280,13 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <h2>Normalform 2 (NF2)</h2>
 
+<blockquote>
+	<ul class="disc">
+		<li>Tabellen opfylder NF1</li>
+		<li>Der skal være en nøgle i hver tabel, der entydigt bestemmer indholdet.</li>
+	</ul>
+</blockquote>
+
 <p>For at opfylde NF2 skal tabellen først opfylde NF1, men derudover skal tabellen have en unik nøgle. Lærerens initialer og navn er ikke unik da samme lærer kan have flere klasser. Herunder vælger vi at klassenavnet skal være den unikke nøgle</p>
 
 <table class="">
@@ -337,6 +354,15 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 </table>
 
 <h2>Normalform 3 (NF3)</h2>
+
+<blockquote>
+
+	<ul class="disc">
+		<li>Tabellen opfylder NF2</li>
+		<li>Hvis der er mere end et felt der kan sættes som nøgle for andre felter skal tabellen opdeles i flere.</li>
+	</ul>
+
+</blockquote>
 
 <p>NF 2 sikrer, at vi kan tilgå tabellen igennem en unik nøgle og at den er sammenhængende. Men den bliver hurtig uoverskuelig. Derfor vælger vi at analysere tabellen for om den kan slittes op i mindre tabeller, hvor felter der afhænger af andre får deres egne tabeller. </p>
 
