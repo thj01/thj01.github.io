@@ -386,3 +386,41 @@ content: ">";
 
 }
 
+details {
+font-size: .9em;
+border-left: 1.5px solid #b6b6b6;
+border-top: 1.5px solid #b6b6b6;
+border-right: 1.5px solid #b6b6b6;
+border-bottom: 1.5px solid #949494;
+padding: 4px;
+margin: 0px 5px 0px 5px;
+color: #333333;
+padding: 2px 6px 2px 6px;
+border-radius: 6px;
+
+/* IE10+ */ 
+background-image: -ms-linear-gradient(top, #f3f3f3 0%, #cccccc 100%);
+
+/* Mozilla Firefox */ 
+background-image: -moz-linear-gradient(top, #f3f3f3 0%, #cccccc 100%);
+
+/* Opera */ 
+background-image: -o-linear-gradient(top, #f3f3f3 0%, #cccccc 100%);
+
+/* Webkit (Safari/Chrome 10) */ 
+background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #f3f3f3), color-stop(100, #cccccc));
+
+/* Webkit (Chrome 11+) */ 
+background-image: -webkit-linear-gradient(top, #f3f3f3 0%, #cccccc 100%);
+
+/* W3C Markup */ 
+background-image: linear-gradient(to bottom, #f3f3f3 0%, #cccccc 100%);
+
+}
+
+details summary {
+font-size: 1.2em;
+padding: 10px 5px;
+
+
+}
