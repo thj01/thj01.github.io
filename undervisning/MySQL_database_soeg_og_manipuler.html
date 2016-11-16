@@ -231,7 +231,7 @@ UPDATE `Mentorer` SET `Navn` = 'Dennis Domino' WHERE `Mentorer`.`Mentor` = 'dd';
 
 <pre>
 	<code class="sql">
-ALTER TABLE mentorer change mentorer Lærere varchar(3)
+RENAME table Mentorer to Lærere;
 	</code>
 </pre>
 
@@ -241,9 +241,11 @@ ALTER TABLE mentorer change mentorer Lærere varchar(3)
 
 <pre>
 	<code class="sql">
-RENAME table mentorer to Lærere
+ALTER TABLE Lærere change Mentor Lærere varchar(3);
 	</code>
 </pre>
+
+
 
 <h1>Oprette ...</h1>
 
