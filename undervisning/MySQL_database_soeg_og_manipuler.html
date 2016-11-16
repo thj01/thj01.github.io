@@ -215,7 +215,7 @@ VALUES
 	</code>
 </pre>
 
-<h2>Ændr felt</h2>
+<h2>Ændr felt værdi</h2>
 
 <p></p>
 
@@ -225,6 +225,25 @@ UPDATE `Mentorer` SET `Navn` = 'Dennis Domino' WHERE `Mentorer`.`Mentor` = 'dd';
 	</code>
 </pre>
 
+<h2>Ændr kolonnenavn</h2>
+
+<p></p>
+
+<pre>
+	<code class="sql">
+ALTER TABLE mentorer change mentorer Lærere varchar(3)
+	</code>
+</pre>
+
+<h2>Ændr tabelnavn</h2>
+
+<p></p>
+
+<pre>
+	<code class="sql">
+RENAME table mentorer to Lærere
+	</code>
+</pre>
 
 <h1>Oprette ...</h1>
 
@@ -279,11 +298,29 @@ ADD `fag2` VARCHAR(10) NOT NULL AFTER `fag1`;
 	</code>
 </pre>
 
+<h1>Information</h1>
 
+<p></p>
 
+<h2>Informationer om tabel</h2>
 
+<p></p>
 
+<pre>
+	<code class="sql">
+DESCRIBE klasse_og_elever
+	</code>
+</pre>
 
+<h2>Informationer om række</h2>
+
+<p></p>
+
+<pre>
+	<code class="sql">
+DESCRIBE klasse_og_elever "Startår"
+	</code>
+</pre>
 
 <p></p>
 <p></p>
