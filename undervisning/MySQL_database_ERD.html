@@ -59,16 +59,21 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <ol class="">
 	<li><a href="http://dtu20.be/ERdiagram.pdf" target="_blank">http://dtu20.be/ERdiagram.pdf</a></li>
+	<li><a href="https://pdfs.semanticscholar.org/e4cd/a968b46b3147bf9e8102543b927d28529ecc.pdf" target="_blank">https://pdfs.semanticscholar.org/e4cd/a968b46b3147bf9e8102543b927d28529ecc.pdf</a></li>
 	<li><a href="http://bit.csc.lsu.edu/~chen/pdf/ER_C.pdf" target="_blank">http://bit.csc.lsu.edu/~chen/pdf/ER_C.pdf</a></li>
 	<li><a href="http://slideplayer.dk/slide/3215117/" target="_blank">http://slideplayer.dk/slide/3215117/</a></li>
 	<li><a href="https://docs.oracle.com/cd/A87860_01/doc/java.817/a81358/05_deva.gif" target="_blank">https://docs.oracle.com/cd/A87860_01/doc/java.817/a81358/05_deva.gif</a></li>
 	<li><a href="https://www.smartdraw.com/entity-relationship-diagram/" target="_blank">https://www.smartdraw.com/entity-relationship-diagram/</a></li>
+	
+	<li><a href="https://www.youtube.com/watch?v=4_NPdw2Anf8" target="_blank">foreign key: https://www.youtube.com/watch?v=4_NPdw2Anf8</a></li>
 </ol>
 
 
-<h1>ERD</h1>
+<h1>ER-modellen</h1>
 
-<p><span class="inl_cmd">ERD</span> (<span class="bold">E</span>ntity <span class="bold">R</span>elationship <span class="bold">D</span>iagram) anvendes til at få overblik over sammenhænge og relationer, og er blevet udviklet videre så det kan anvendes på databaser. I denne guide vil <span class="inl_cmd">ERD</span> først blive gennemgået generelt og senere vil det blive overført til databaser.</p>
+<p><span class="inl_cmd">ER</span>-modellen (<span class="bold">E</span>ntity <span class="bold">R</span>elationship) anvendes til at få overblik over sammenhænge og relationer, og er oprindeligt blevet udviklet af <a href="https://pdfs.semanticscholar.org/e4cd/a968b46b3147bf9e8102543b927d28529ecc.pdf" target="_blank">Peter Pin-Shan Chen i 1976</a>. Modellen har vist sig så så robust at den stadig anvendes.</p>
+
+<p>Værktøjet kan bruges både til at beskrive og modellere databaser, men kan også anvendes til at beskrive relationer mellem mennesker. I denne guide vil <span class="inl_cmd">ERD</span> først blive gennemgået ud fra fra relationer mellem mennesker for at du får en ide om hvordan den kan anvendes til at få overblik over komplekse situationer. Overordnet set gælder følgende:</p>
 
 <table class="">
 	<thead>
@@ -97,34 +102,51 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 		<tr>
 			<td>Relation</td>
 			<td>Linie</td>
-			<td>Måden de forskellige elementer i <span class="inl_cmd">ERD</span> diagrammet forholder sig til  hinanden. DEt kan f.eks. være en til en, en til mange, og mange til mange</td>
+			<td>Måden de forskellige elementer i <span class="inl_cmd">ERD</span> diagrammet forholder sig til  hinanden. Det kan f.eks. være en til en, en til mange, og mange til mange</td>
 		</tr>
 	</tbody>
 </table>
 
-<p>Herunder kan du se et eksempel hvor de ovenstående symboler er anvendt for at vise nogle af de relationer der er i spil i en undervisningssituation.</p>
 
-<figure id="">
 
-	<img class="p90" src="images/mysql_erd_01.svg" alt="" title="" />
 
-	<figcaption></figcaption>
 
-</figure>
+<h1>ERD og databaser</h1>
 
-<p>Man kan anvende denne ERD til at få et overblik over forskellige scenarier. Forestil dig følgende scenarie der beskriver 3 venner/veninder, hvor en af parterne har en kæreste:</p>
+<p>Når vi anvender <span class="inl_cmd">ERD</span> i database sammenhæng anvender vi det på samme måde, blot langt mere konkret med data. Der findes forskellige variationer i måden man annvender modellen og tegner relationerne, og her anvendes den notation som anvendes i phpMyAdmin. I skemaet herunder er begreberne beskrevet ud fra en database sammenhæng.</p>
 
-<figure id="">
+<table class="">
+	<thead>
+		<tr>
+			<th>E/R-diagram</th>
+			<th>Symbol</th>
+			<th>Database design</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Entitet</td>
+			<td>Rektangel</td>
+			<td>Tabel</td>
+		</tr>
+		<tr>
+			<td>Attribut</td>
+			<td>Rhombe</td>
+			<td>Kolonne/Felt</td>
+		</tr>
+		<tr>
+			<td>Relation</td>
+			<td>Streg</td>
+			<td>Primær- og fremmednøgle</td>
+		</tr>
+	</tbody>
+</table>
 
-	<img class="p90" src="images/mysql_erd_02.svg" alt="" title="" />
+<p>I denne guide vil jeg gennemgå to måder at at anvende modellen til at tegne diagrammer over vores database: Den simple og den informationsrige.</p>
 
-	<figcaption></figcaption>
+<h2>Anvendelse</h2>
 
-</figure>
-
-<p>Prøv at forholde dig til den relation der er imellem <span class="math">V<sub>1</sub></span> og <span class="math">V<sub>2</sub></span>, og så den relationde begge har til <span class="math">V<sub>3</sub></span>. Hvad med kæresten?</p>
-
-<p>Hvad med nedestående scenarie</p>
+<p>I den simple model er god at anvende i planlægsningsfasen, da den giver et overordnet billede af databasen opbygning med tabeller og relationer. I den model vil mentordatabasen se ud som herunder.</p>
 
 <figure id="">
 
@@ -134,62 +156,27 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 </figure>
 
-<p>Det vi kan med ERD diagrammer er at lave et overblik, så vi med en simpel model kan overskue den interaktion der er mellem entititer.</p>
-
-<p>Download diagramboxe i PDF-format: <a href="files/er_diagram_boxe.pdf" target="_blank">er_diagram_boxe.pdf</a></p>
-
-
-<h1>ERD og databaser</h1>
-
-<p>Når vi anvender <span class="inl_cmd">ERD</span> i database sammenhæng anvender vi samme tænkning som der ligger bag <span class="inl_cmd">ERD</span>, men vi ændrer lidt på symbolerne. Der findes mange måder at gøre det på, og gennemgangen her er en tilnærmet version der giver redskaber til at skabe relativt simple databaser. I skemaet herunder er begreberne beskrevet ud fra en database sammenhæng.</p>
-
-<table class="">
-	<thead>
-		<tr>
-			<th>E/R-diagram</th>
-			<th>Database design</th>
-			<th>Forklaring</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>Entitet</td>
-			<td>Tabel</td>
-		</tr>
-		<tr>
-			<td>Attribut</td>
-			<td>Kolonne/Felt</td>
-		</tr>
-		<tr>
-			<td>Relation</td>
-			<td>Fremmednøgle/(tabel)</td>
-		</tr>
-		<tr>
-			<td>Unik identifikator</td>
-			<td>Primærnøgle</td>
-		</tr>
-	</tbody>
-</table>
+<p>Den ovenstående model viser os hvordan de enkelte tabeller forholder sig til hinanden, men fortæller intet om indholdet i databasen. Her kan man anvende en mere avanceret model som du kan se herunder:</p>
 
 <figure id="">
 
-	<img class="p90" src="images/mysql_erd_04.svg" alt="" title="" />
+	<img class="p50" src="images/mysql_erd_04.svg" alt="" title="" />
 
 	<figcaption></figcaption>
 
 </figure>
 
+<p>Det er den model som phpMyAdmin anvender når den skal vise et grafisk billede af databasen </p>
 
-<h2>Relationer</h2>
+
+<h1>Relationer</h1>
 
 <p>Relationerne mellem tabellerne beskrives ved at sætte nogle linier imellem tabellerne. På disse linier kan der sættes forskellige symboler som forklarer hvordan relationen er mellem tabellerne/kolonnerne er.</p>
 
 <p>Herunder er nævnt både de almindelige og  bede betingende relationer. De betingede er gode at anvende under designet af en databasestruktur, da de kan være med til at afgøre om nogle tabeller skal oprettes eller ej.</p>
 
 
-<h3>Almindelige relationer</h3>
-
-<p></p>
+<h2>Almindelige relationer</h2>
 
 <span class="afsnit">En til en</span>
 
@@ -208,7 +195,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 <p><img class="" src="images/mysql_erd_05d.svg" alt="" title="" /></p>
 
 
-<h3>Betingede relationer</h3>
+<h2>Betingede relationer</h2>
 
 <p></p>
 
@@ -251,6 +238,24 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 		</tr>
 	</tbody>
 </table>
+
+<h1>Lave diagrammer</h1>
+
+<p></p>
+
+<p>Download diagramboxe i PDF-format: <a href="files/er_diagram_boxe.pdf" target="_blank">er_diagram_boxe.pdf</a></p>
+
+
+<h2>Draw.io</h2>
+
+<p></p>
+
+<a href="https://www.draw.io/" target="_blank">https://www.draw.io/</a>
+
+<h1>Andre anvendelser</h1>
+
+<p></p>
+
 
 <p></p>
 <p></p>
