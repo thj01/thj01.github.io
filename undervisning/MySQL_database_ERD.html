@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+
+<head>
+	
+	<meta charset="UTF-8" lang="da"/>
+
+	<title>MySQL - E/R-diagrammer og fremmednøgler - Thomas Jensen</title>
+
+	<link rel="stylesheet" href="../css/styles/docco.css" />
+
+	<link rel="stylesheet" href="../css/style.css" />
+
+	<link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono|Ubuntu|Ubuntu+Condensed' rel='stylesheet' type='text/css'>
+	
+	<script src="../js/toc2.js" type="text/javascript"></script>
+	<script src="https://code.jquery.com/jquery-2.2.2.js"></script>
+	<script src="../js/highlight.pack.js" type="text/javascript"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+
+</head>
+
+<!-- 
+
+code highlighter : 
+
+code converter : http://www.freebits.co.uk/convert-html-code-to-text.html 
+
+
+
+
+-->
+
+
+
+<html>
+
+<body onload="generateTOC(document.getElementById('toc'));">
+
+<footer id="license"></footer>
+
+	<script> $( "#license" ).load( "license.html" ); </script>
+
+	<div id="toc">
+	<p>Indholdsfortegnelse</p>
+	
+	</div>
+
+<div class="title">MySQL - E/R-diagrammer og fremmednøgler</div>
+
+<p>Video: <a href="https://youtu.be/B5r8CcTUs5Y" target="_blank">https://youtu.be/B5r8CcTUs5Y</a></p>
+
+<p>Henvisninger: <a href="https://www.youtube.com/results?search_query=eddie+who+database" target="_blank">https://www.youtube.com/results?search_query=eddie+who+database</a></p>
+
+<p>E/R-Diagrammer: <a href="http://dtu20.be/ERdiagram.pdf" target="_blank">http://dtu20.be/ERdiagram.pdf</a></p>
+
+<p></p>
+
+<span class="afsnit">E/R diagrammer</span>
+
+<ol class="">
+	<li><a href="http://dtu20.be/ERdiagram.pdf" target="_blank">http://dtu20.be/ERdiagram.pdf</a></li>
+	<li><a href="http://bit.csc.lsu.edu/~chen/pdf/ER_C.pdf" target="_blank">http://bit.csc.lsu.edu/~chen/pdf/ER_C.pdf</a></li>
+	<li><a href="http://slideplayer.dk/slide/3215117/" target="_blank">http://slideplayer.dk/slide/3215117/</a></li>
+	<li><a href="https://docs.oracle.com/cd/A87860_01/doc/java.817/a81358/05_deva.gif" target="_blank">https://docs.oracle.com/cd/A87860_01/doc/java.817/a81358/05_deva.gif</a></li>
+	<li><a href="https://www.smartdraw.com/entity-relationship-diagram/" target="_blank">https://www.smartdraw.com/entity-relationship-diagram/</a></li>
+</ol>
+
+
+<h1>ERD</h1>
+
+<p><span class="inl_cmd">ERD</span> (<span class="bold">E</span>ntity <span class="bold">R</span>elationship <span class="bold">D</span>iagram) anvendes til at få overblik over sammenhænge og relationer, og er blevet udviklet videre så det kan anvendes på databaser. I denne guide vil <span class="inl_cmd">ERD</span> først blive gennemgået generelt og senere vil det blive overført til databaser.</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>E/R-diagram</th>
+			<th>Symbol</th>
+			<th>Forklaring</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Entitet</td>
+			<td>Rektangel</td>
+			<td>Et objekt eller en genstand, som indeholder information.</td>
+		</tr>
+		<tr>
+			<td>Handling</td>
+			<td>Rhombe</td>
+			<td>Det som binder entiteterne sammen - den handling der sker imellem dem, den måde de relaterer til hinanden.</td>
+		</tr>
+		<tr>
+			<td>Attributter</td>
+			<td>Oval</td>
+			<td>De egenskaber en entity har. En bil har f.eks. en hastighed eller et max antal passagerer</td>
+		</tr>
+		<tr>
+			<td>Relation</td>
+			<td>Linie</td>
+			<td>Måden de forskellige elementer i <span class="inl_cmd">ERD</span> diagrammet forholder sig til  hinanden. DEt kan f.eks. være en til en, en til mange, og mange til mange</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Herunder kan du se et eksempel hvor de ovenstående symboler er anvendt for at vise nogle af de relationer der er i spil i en undervisningssituation.</p>
+
+<figure id="">
+
+	<img class="p90" src="images/mysql_erd_01.svg" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Man kan anvende denne ERD til at få et overblik over forskellige scenarier. Forestil dig følgende scenarie der beskriver 3 venner/veninder, hvor en af parterne har en kæreste:</p>
+
+<figure id="">
+
+	<img class="p90" src="images/mysql_erd_02.svg" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Prøv at forholde dig til den relation der er imellem <span class="math">V<sub>1</sub></span> og <span class="math">V<sub>2</sub></span>, og så den relationde begge har til <span class="math">V<sub>3</sub></span>. Hvad med kæresten?</p>
+
+<p>Hvad med nedestående scenarie</p>
+
+<figure id="">
+
+	<img class="p90" src="images/mysql_erd_03.svg" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Det vi kan med ERD diagrammer er at lave et overblik, så vi med en simpel model kan overskue den interaktion der er mellem entititer.</p>
+
+<p>Download diagramboxe i PDF-format: <a href="files/er_diagram_boxe.pdf" target="_blank">er_diagram_boxe.pdf</a></p>
+
+
+<h1>ERD og databaser</h1>
+
+<p>Når vi anvender <span class="inl_cmd">ERD</span> i database sammenhæng anvender vi samme tænkning som der ligger bag <span class="inl_cmd">ERD</span>, men vi ændrer lidt på symbolerne. Der findes mange måder at gøre det på, og gennemgangen her er en tilnærmet version der giver redskaber til at skabe relativt simple databaser. I skemaet herunder er begreberne beskrevet ud fra en database sammenhæng.</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>E/R-diagram</th>
+			<th>Database design</th>
+			<th>Forklaring</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Entitet</td>
+			<td>Tabel</td>
+		</tr>
+		<tr>
+			<td>Attribut</td>
+			<td>Kolonne/Felt</td>
+		</tr>
+		<tr>
+			<td>Relation</td>
+			<td>Fremmednøgle/(tabel)</td>
+		</tr>
+		<tr>
+			<td>Unik identifikator</td>
+			<td>Primærnøgle</td>
+		</tr>
+	</tbody>
+</table>
+
+<figure id="">
+
+	<img class="p90" src="images/mysql_erd_04.svg" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+
+<h2>Relationer</h2>
+
+<p>Relationerne mellem tabellerne laves med streger.</p>
+
+<figure id="">
+
+	<img class="p90" src="images/mysql_erd_05.svg" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<span class="afsnit">En til en</span>
+
+<p><img class="" src="images/mysql_erd_05a.svg" alt="" title="" /></p>
+
+<span class="afsnit">En til en (alternativ)</span>
+
+<p><img class="" src="images/mysql_erd_05b.svg" alt="" title="" /></p>
+
+<span class="afsnit">En til mange</span>
+
+<p><img class="" src="images/mysql_erd_05c.svg" alt="" title="" /></p>
+
+<span class="afsnit">Mange til mange</span>
+
+<p><img class="" src="images/mysql_erd_05d.svg" alt="" title="" /></p>
+
+<span class="afsnit">En og kun en </span>
+
+<p><img class="" src="images/mysql_erd_05e.svg" alt="" title="" /></p>
+
+
+<p>Betingede relationer</p>
+
+<span class="afsnit">Ingen eller en</span>
+
+<p><img class="" src="images/mysql_erd_05f.svg" alt="" title="" /></p>
+
+<span class="afsnit">Ingen eller mange</span>
+
+<p><img class="" src="images/mysql_erd_05g.svg" alt="" title="" /></p>
+
+<span class="afsnit">En eller flere end en</span>
+
+<p><img class="" src="images/mysql_erd_05h.svg" alt="" title="" /></p>
+
+
+<table class="fixed">
+	<thead>
+		<tr>
+			<th>Relation</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1-1</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>1-m</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>m-m</td>
+			<td></td>
+		</tr>
+	</tbody>
+</table>
+
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+	</body>
+
+</html>

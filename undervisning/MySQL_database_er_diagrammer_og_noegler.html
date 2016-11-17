@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+
+<head>
+	
+	<meta charset="UTF-8" lang="da"/>
+
+	<title>MySQL - E/R-diagrammer og fremmednøgler - Thomas Jensen</title>
+
+	<link rel="stylesheet" href="../css/styles/docco.css" />
+
+	<link rel="stylesheet" href="../css/style.css" />
+
+	<link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono|Ubuntu|Ubuntu+Condensed' rel='stylesheet' type='text/css'>
+	
+	<script src="../js/toc2.js" type="text/javascript"></script>
+	<script src="https://code.jquery.com/jquery-2.2.2.js"></script>
+	<script src="../js/highlight.pack.js" type="text/javascript"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+
+</head>
+
+<!-- 
+
+code highlighter : 
+
+code converter : http://www.freebits.co.uk/convert-html-code-to-text.html 
+
+
+
+
+-->
+
+
+
+<html>
+
+<body onload="generateTOC(document.getElementById('toc'));">
+
+<footer id="license"></footer>
+
+	<script> $( "#license" ).load( "license.html" ); </script>
+
+	<div id="toc">
+	<p>Indholdsfortegnelse</p>
+	
+	</div>
+
+<div class="title">MySQL - E/R-diagrammer og fremmednøgler</div>
+
+<p>Video: <a href="https://youtu.be/B5r8CcTUs5Y" target="_blank">https://youtu.be/B5r8CcTUs5Y</a></p>
+
+<p>Henvisninger: <a href="https://www.youtube.com/results?search_query=eddie+who+database" target="_blank">https://www.youtube.com/results?search_query=eddie+who+database</a></p>
+
+<p>E/R-Diagrammer: <a href="http://dtu20.be/ERdiagram.pdf" target="_blank">http://dtu20.be/ERdiagram.pdf</a></p>
+
+<p></p>
+
+<span class="afsnit">E/R diagrammer</span>
+
+<ol class="">
+	<li><a href="http://dtu20.be/ERdiagram.pdf" target="_blank">http://dtu20.be/ERdiagram.pdf</a></li>
+	<li><a href="http://bit.csc.lsu.edu/~chen/pdf/ER_C.pdf" target="_blank">http://bit.csc.lsu.edu/~chen/pdf/ER_C.pdf</a></li>
+	<li><a href="http://slideplayer.dk/slide/3215117/" target="_blank">http://slideplayer.dk/slide/3215117/</a></li>
+	<li><a href="https://docs.oracle.com/cd/A87860_01/doc/java.817/a81358/05_deva.gif" target="_blank">https://docs.oracle.com/cd/A87860_01/doc/java.817/a81358/05_deva.gif</a></li>
+	<li><a href="https://www.smartdraw.com/entity-relationship-diagram/" target="_blank">https://www.smartdraw.com/entity-relationship-diagram/</a></li>
+</ol>
+
+
+<h1>ERD</h1>
+
+<p><span class="inl_cmd">ERD</span> (<span class="bold">E</span>ntity <span class="bold">R</span>elationship <span class="bold">D</span>iagram) anvendes til at få overblik over sammenhænge og relationer, og er blevet udviklet videre så det kan anvendes på databaser. I denne guide vil <span class="inl_cmd">ERD</span> først blive gennemgået generelt og senere vil det blive overført til databaser.</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>E/R-diagram</th>
+			<th>Symbol</th>
+			<th>Forklaring</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Entitet</td>
+			<td>Rektangel</td>
+			<td>Et objekt eller en genstand, som indeholder information.</td>
+		</tr>
+		<tr>
+			<td>Handling</td>
+			<td>Rhombe</td>
+			<td>Det som binder entiteterne sammen - den handling der sker imellem dem, den måde de relaterer til hinanden.</td>
+		</tr>
+		<tr>
+			<td>Attributter</td>
+			<td>Oval</td>
+			<td>De egenskaber en entity har. En bil har f.eks. en hastighed eller et max antal passagerer</td>
+		</tr>
+		<tr>
+			<td>Relation</td>
+			<td>Linie</td>
+			<td>Måden de forskellige elementer i <span class="inl_cmd">ERD</span> diagrammet forholder sig til  hinanden. DEt kan f.eks. være en til en, en til mange, og mange til mange</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Download diagramboxe i PDF-format: <a href="files/er_diagram_boxe.pdf" target="_blank">er_diagram_boxe.pdf</a></p>
+
+
+<h2>ERD og databaser</h2>
+
+<p></p>
+<table class="">
+	<thead>
+		<tr>
+			<th>E/R-diagram</th>
+			<th>Database design</th>
+			<th>Forklaring</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Entitet</td>
+			<td>Tabel</td>
+		</tr>
+		<tr>
+			<td>Attribut</td>
+			<td>Kolonne/Felt</td>
+		</tr>
+		<tr>
+			<td>Forekomst/instans</td>
+			<td>Række/Post</td>
+		</tr>
+		<tr>
+			<td>Relation</td>
+			<td>Fremmednøgle/(tabel)</td>
+		</tr>
+		<tr>
+			<td>Unik identifikator</td>
+			<td>Primærnøgle</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Relationer</p>
+
+<table class="fixed">
+	<thead>
+		<tr>
+			<th>Relation</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1-1</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>1-m</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>m-m</td>
+			<td></td>
+		</tr>
+	</tbody>
+</table>
+
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+	</body>
+
+</html>
