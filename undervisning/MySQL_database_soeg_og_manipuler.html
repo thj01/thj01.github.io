@@ -215,6 +215,14 @@ VALUES
 	</code>
 </pre>
 
+<figure id="">
+
+	<img class="" src="images/mysql_tilfoej_post.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
 <h2>Ændr felt værdi</h2>
 
 <p></p>
@@ -224,6 +232,14 @@ VALUES
 UPDATE `Mentorer` SET `Navn` = 'Dennis Dahl' WHERE `Mentorer`.`Mentor` = 'dd';
 	</code>
 </pre>
+
+<figure id="">
+
+	<img class="" src="images/mysql_aendr_post.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
 
 <h2>Ændr kolonnenavn</h2>
 
@@ -235,9 +251,49 @@ RENAME table Mentorer to Lærere;
 	</code>
 </pre>
 
-<h2>Ændr tabelnavn</h2>
+<figure id="">
+
+	<img class="" src="images/mysql_rename_tabel.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h2>Tilføj kolonner</h2>
 
 <p></p>
+
+<pre>
+	<code class="sql">
+ALTER TABLE `Lærere` 
+ADD `fag1` VARCHAR(10) NOT NULL AFTER `Mail`,
+ADD `fag2` VARCHAR(10) NOT NULL AFTER `fag1`;
+	</code>
+</pre>
+
+<p>Før</p>
+
+<figure id="">
+
+	<img class="p90" src="images/mysql_tilfoej_felter_a.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Efter</p>
+
+<figure id="">
+
+	<img class="p90" src="images/mysql_tilfoej_felter_b.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h2>Ændr feltnavn</h2>
+
+<p>Da vi nu skal have alle lærere ind i listen skal vi have omdøbt feltnavnet <span class="inl_cmd">Mentorer</span> til <span class="inl_cmd">Lærere</span>.</p>
 
 <pre>
 	<code class="sql">
@@ -245,6 +301,19 @@ ALTER TABLE Lærere change Mentor Lærere varchar(3);
 	</code>
 </pre>
 
+<figure id="">
+
+	<img class="p90" src="images/mysql_rename_felt.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h2>Ændr database navn</h2>
+
+<p>Man kan ikke umiddelbart ændre navnet på en database. For at gøre det skal man reelt oprette en ny database, med det nye navn og derefter kopiere tabellerne fra den oprindelige database ind i den.</p>
+
+<p>Backup af den ændrede database: <a href="files/mentor_db_v2.sql" target="_blank">mentor_db_v2.sql</a></p>
 
 
 <h1>Oprette ...</h1>
@@ -288,17 +357,7 @@ ALTER TABLE `Lærere` ADD PRIMARY KEY(`Lærer`);
 </pre>
 
 
-<h2>Tilføj kolonner</h2>
 
-<p></p>
-
-<pre>
-	<code class="sql">
-ALTER TABLE `Lærere` 
-ADD `fag1` VARCHAR(10) NOT NULL AFTER `Mail`,
-ADD `fag2` VARCHAR(10) NOT NULL AFTER `fag1`;
-	</code>
-</pre>
 
 <h1>Information</h1>
 
@@ -314,6 +373,15 @@ DESCRIBE klasse_og_elever
 	</code>
 </pre>
 
+<figure id="">
+
+	<img class="p40" src="images/mysql_describe_tabel.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+
 <h2>Informationer om række</h2>
 
 <p></p>
@@ -323,6 +391,14 @@ DESCRIBE klasse_og_elever
 DESCRIBE klasse_og_elever "Startår"
 	</code>
 </pre>
+
+<figure id="">
+
+	<img class="p40" src="images/mysql_describe_felt.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
 
 <p></p>
 <p></p>
