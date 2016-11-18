@@ -95,7 +95,7 @@ SELECT * FROM Klasse_og_elever WHERE Klasse='1a' OR Klasse='1b';
 
 <pre>
 	<code class="SQL">
-SELECT * FROM Mentorer;
+SELECT * FROM mentorer;
 	</code>
 </pre>
 
@@ -114,7 +114,7 @@ SELECT * FROM Mentorer;
 
 <pre>
 	<code class="SQL">
-SELECT * FROM Mentorer WHERE Navn="Thomas Jensen";
+SELECT * FROM mentorer WHERE Navn="Thomas Jensen";
 	</code>
 </pre>
 
@@ -132,7 +132,7 @@ SELECT * FROM Mentorer WHERE Navn="Thomas Jensen";
 
 <pre>
 	<code class="SQL">
-SELECT Mentor,Mail FROM Mentorer;
+SELECT Mentor,Mail FROM mentorer
 	</code>
 </pre>
 
@@ -152,7 +152,7 @@ SELECT Mentor,Mail FROM Mentorer;
 
 <pre>
 	<code class="SQL">
-SELECT * FROM `Mentorer` WHERE Navn LIKE 'Thomas%';
+SELECT * FROM mentorer WHERE Navn LIKE 'Thomas%'
 	</code>
 </pre>
 
@@ -171,7 +171,7 @@ SELECT * FROM `Mentorer` WHERE Navn LIKE 'Thomas%';
 
 <pre>
 	<code class="SQL">
-SELECT * FROM Klasser_og_mentorer,Mentorer WHERE Klasser_og_mentorer.Mentor='tj' AND Mentorer.Mentor="tj";
+SELECT * FROM klasser_og_mentorer, mentorer WHERE klasser_og_mentorer.mentor='tj' AND mentorer.mentor="tj"
 	</code>
 </pre>
 
@@ -187,9 +187,10 @@ SELECT * FROM Klasser_og_mentorer,Mentorer WHERE Klasser_og_mentorer.Mentor='tj'
 
 <pre>
 	<code class="SQL">
-SELECT Klasser_og_mentorer.Klasse,Mentorer.Navn,Mentorer.Mobil,Mentorer.Mail 
-FROM Klasser_og_mentorer,Mentorer 
-WHERE Klasser_og_mentorer.Mentor='tj' AND Mentorer.Mentor="tj";
+SELECT klasser_og_mentorer.Klasse, mentorer.Navn, mentorer.Mobil, mentorer.Mail 
+FROM klasser_og_mentorer, mentorer 
+WHERE klasser_og_mentorer.mentor='tj' AND mentorer.mentor="tj"
+;
 	</code>
 </pre>
 
@@ -207,12 +208,10 @@ WHERE Klasser_og_mentorer.Mentor='tj' AND Mentorer.Mentor="tj";
 
 <pre>
 	<code class="sql">
-INSERT INTO `Mentorer` 
-(`Mentor`, `Navn`, `Lokale`, `Mobil`, `Mail`)
-VALUES
-('dd', 'Dennis Dinesen', '20', '23344520', 'dd@fakemail.dk')
-;
-	</code>
+INSERT INTO mentorer
+(`Mentor`, `Navn`, `Lokale`, `Mobil`, `Mail`) 
+VALUES ('dd', 'Dennis Dinesen', '20', '23344520', 'dd@fakemail.dk')
+;	</code>
 </pre>
 
 <figure id="">
@@ -229,7 +228,7 @@ VALUES
 
 <pre>
 	<code class="sql">
-UPDATE `Mentorer` SET `Navn` = 'Dennis Dahl' WHERE `Mentorer`.`Mentor` = 'dd';
+UPDATE mentorer SET Navn = 'Dennis Dahl' WHERE mentorer.Mentor = 'dd'
 	</code>
 </pre>
 
@@ -247,7 +246,7 @@ UPDATE `Mentorer` SET `Navn` = 'Dennis Dahl' WHERE `Mentorer`.`Mentor` = 'dd';
 
 <pre>
 	<code class="sql">
-RENAME table Mentorer to Lærere;
+RENAME table mentorer to lærere;
 	</code>
 </pre>
 
@@ -265,9 +264,9 @@ RENAME table Mentorer to Lærere;
 
 <pre>
 	<code class="sql">
-ALTER TABLE `Lærere` 
-ADD `fag1` VARCHAR(10) NOT NULL AFTER `Mail`,
-ADD `fag2` VARCHAR(10) NOT NULL AFTER `fag1`;
+ALTER TABLE lærere
+ADD fag1 VARCHAR(10) NOT NULL AFTER Mail,
+ADD fag2 VARCHAR(10) NOT NULL AFTER fag1;
 	</code>
 </pre>
 
@@ -297,7 +296,7 @@ ADD `fag2` VARCHAR(10) NOT NULL AFTER `fag1`;
 
 <pre>
 	<code class="sql">
-ALTER TABLE Lærere change Mentor Lærer varchar(3);
+ALTER TABLE lærere change Mentor Lærer varchar(3);
 	</code>
 </pre>
 
@@ -375,7 +374,7 @@ DESCRIBE klasse_og_elever
 
 <figure id="">
 
-	<img class="p40" src="images/mysql_describe_tabel.png" alt="" title="" />
+	<img class="p50" src="images/mysql_describe_tabel.png" alt="" title="" />
 
 	<figcaption></figcaption>
 
