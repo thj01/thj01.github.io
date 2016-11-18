@@ -132,7 +132,7 @@ SELECT * FROM mentorer WHERE Navn="Thomas Jensen";
 
 <pre>
 	<code class="SQL">
-SELECT Mentor,Mail FROM mentorer
+SELECT Mentor,Mail FROM mentorer;
 	</code>
 </pre>
 
@@ -152,7 +152,7 @@ SELECT Mentor,Mail FROM mentorer
 
 <pre>
 	<code class="SQL">
-SELECT * FROM mentorer WHERE Navn LIKE 'Thomas%'
+SELECT * FROM mentorer WHERE Navn LIKE 'Thomas%';
 	</code>
 </pre>
 
@@ -171,7 +171,7 @@ SELECT * FROM mentorer WHERE Navn LIKE 'Thomas%'
 
 <pre>
 	<code class="SQL">
-SELECT * FROM klasser_og_mentorer, mentorer WHERE klasser_og_mentorer.mentor='tj' AND mentorer.mentor="tj"
+SELECT * FROM klasser_og_mentorer, mentorer WHERE klasser_og_mentorer.mentor='tj' AND mentorer.mentor="tj";
 	</code>
 </pre>
 
@@ -325,9 +325,17 @@ ALTER TABLE lærere change Mentor Lærer varchar(3);
 
 <pre>
 	<code class="sql">
-CREATE DATABASE inventar
+CREATE DATABASE nyDB;
 	</code>
 </pre>
+
+<figure id="">
+
+	<img class="p90" src="images/mysql_opret_database.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
 
 <h2>Opret tabel</h2>
 
@@ -335,28 +343,59 @@ CREATE DATABASE inventar
 
 <pre>
 	<code class="sql">
-CREATE TABLE `test`.`Lærere`
+CREATE TABLE nyDB.nyTabel
 (
-`Lærer` VARCHAR(3) NOT NULL ,
-`Navn` VARCHAR(50) NOT NULL ,
-`Mobil` VARCHAR(8) NOT NULL ,
-`Mail` VARCHAR(50) NOT NULL 
+felt1 VARCHAR(3) NOT NULL ,
+felt2 VARCHAR(50) NOT NULL ,
+felt3 TINYINT(2) NOT NULL ,
+felt4 INT(8) NOT NULL 
 );
 	</code>
 </pre>
 
-<h2>Lav Unik nøgle</h2>
+<figure id="">
+
+	<img class="p90" src="images/mysql_opret_tabel.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h2>Drop tabel</h2>
 
 <p></p>
 
 <pre>
 	<code class="sql">
-ALTER TABLE `Lærere` ADD PRIMARY KEY(`Lærer`);
+DROP TABLE nyDB.nyTabel;
 	</code>
 </pre>
 
+<figure id="">
 
+	<img class="p90" src="images/mysql_drop_tabel.png" alt="" title="" />
 
+	<figcaption></figcaption>
+
+</figure>
+
+<h2>Drop database</h2>
+
+<p></p>
+
+<pre>
+	<code class="sql">
+DROP DATABASE nyDB;
+	</code>
+</pre>
+
+<figure id="">
+
+	<img class="p90" src="images/mysql_drop_database.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
 
 <h1>Information</h1>
 
