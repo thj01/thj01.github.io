@@ -179,6 +179,8 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <p>I dette kapitel vil vi oprette databasen med de tre tabeller vi har lavet ved hjælp af normaliseringsprocessen, og kalde den: <span class="inl_cmd">mentorer</span>. Tabellerne skal oprettes efter nedestående skemaer, og vil blive eksemplificeret ved hjælp af <span class="inl_cmd">tabel 1: klasser_og_mentorer</span>:</p>
 
+<h2>Overblik</h2>
+
 <p>Det vi skal gøre er følgende:</p>
 
 <ol class="">
@@ -190,14 +192,16 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 </ol>
 
-<span class="afsnit">Skemaer til tabellerne</span>
 
-<p></p>
+
+<h2>Skemaer til tabellerne</h2>
+
+<h3>Skema tabel 1</h3>
 
 <table class="">
 	<thead>
 		<tr>
-			<th colspan="4">Tabel 1: Klasser_og_mentorer</th>
+			<th colspan="4">Tabel 1: klasser_og_mentorer</th>
 		</tr>
 		<tr>
 			<th>Kolonnenavn</th>
@@ -222,10 +226,60 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 	</tbody>
 </table>
 
+<p></p>
+
 <table class="">
 	<thead>
 		<tr>
-			<th colspan="4">Tabel 2: Mentorer</th>
+			<th colspan="2">Tabel 1: klasser_og_mentorer</th>
+		</tr>
+		<tr>
+			<th>Klasse (primær nøgle)</th>
+			<th>Mentor</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1a</td>
+			<td>tj</td>
+		</tr>
+		<tr>
+			<td>2a</td>
+			<td>tj</td>
+		</tr>
+		<tr>
+			<td>3a</td>
+			<td>tj</td>
+		</tr>
+		<tr>
+			<td>1b</td>
+			<td>ba</td>
+		</tr>
+		<tr>
+			<td>2b</td>
+			<td>ba</td>
+		</tr>
+		<tr>
+			<td>3b</td>
+			<td>ba</td>
+		</tr>
+		<tr>
+			<td>1x</td>
+			<td>cc</td>
+		</tr>
+		<tr>
+			<td>2x</td>
+			<td>cc</td>
+		</tr>
+	</tbody>
+</table>
+
+<h3>Skema tabel 2</h3>
+
+<table class="">
+	<thead>
+		<tr>
+			<th colspan="4">Tabel 2: mentorer</th>
 		</tr>
 		<tr>
 			<th>Kolonnenavn</th>
@@ -268,10 +322,52 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 	</tbody>
 </table>
 
+<p></p>
+
 <table class="">
 	<thead>
 		<tr>
-			<th colspan="4">Tabel 3: Klasser_og_elever</th>
+			<th colspan="5">Tabel 2: mentorer</th>
+		</tr>
+		<tr>
+			<th>Mentor (Primær nøgle)</th>
+			<th>Navn</th>
+			<th>Lokale</th>
+			<th>Mobil</th>
+			<th>Mail</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>tj</td>
+			<td>Thomas Jensen</td>
+			<td>17</td>
+			<td>23344517</td>
+			<td>tj@fakemail.dk</td>
+		</tr>
+		<tr>
+			<td>ba</td>
+			<td>Bent Andersen</td>
+			<td>18</td>
+			<td>23344518</td>
+			<td>ba@fakemail.dk</td>
+		</tr>
+		<tr>
+			<td>cc</td>
+			<td>Christina Carlsen</td>
+			<td>19</td>
+			<td>23344519</td>
+			<td>cc@fakemail.dk</td>
+		</tr>
+	</tbody>
+</table>
+
+<h3>Skema tabel 3</h3>
+
+<table class="">
+	<thead>
+		<tr>
+			<th colspan="4">Tabel 3: klasser_og_elever</th>
 		</tr>
 		<tr>
 			<th>Kolonnenavn</th>
@@ -314,9 +410,88 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 	</tbody>
 </table>
 
+<p></p>
 
+<table class="">
+	<thead>
+		<tr>
+			<th colspan="5">Tabel 3: klasser_og_elever</th>
+		</tr>
+		<tr>
+			<th>Klasse (Primær nøgle)</th>
+			<th>Antal elever</th>
+			<th>Piger</th>
+			<th>Drenge</th>
+			<th>Startår</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1a</td>
+			<td>17</td>
+			<td>9</td>
+			<td>8</td>
+			<td>2016</td>
+		</tr>
+		<tr>
+			<td>2a</td>
+			<td>22</td>
+			<td>10</td>
+			<td>12</td>
+			<td>2015</td>
+		</tr>
+		<tr>
+			<td>3a</td>
+			<td>21</td>
+			<td>8</td>
+			<td>13</td>
+			<td>2014</td>
+		</tr>
+		<tr>
+			<td>1b</td>
+			<td>16</td>
+			<td>8</td>
+			<td>8</td>
+			<td>2016</td>
+		</tr>
+		<tr>
+			<td>2b</td>
+			<td>24</td>
+			<td>13</td>
+			<td>11</td>
+			<td>2015</td>
+		</tr>
+		<tr>
+			<td>3b</td>
+			<td>22</td>
+			<td>9</td>
+			<td>13</td>
+			<td>2014</td>
+		</tr>
+		<tr>
+			<td>1x</td>
+			<td>28</td>
+			<td>13</td>
+			<td>15</td>
+			<td>2016</td>
+		</tr>
+		<tr>
+			<td>2x</td>
+			<td>31</td>
+			<td>17</td>
+			<td>14</td>
+			<td>2015</td>
+		</tr>
+	</tbody>
+</table>
 
-<p>Tabellerne der arbejdes med i denne opgave kan downloades i PDF udgave her: <a href="files/tabeller_udskrift.pdf" target="_blank" download>tabeller_udskrift.pdf</a></p>
+<h3>Udskriv skemaer</h3>
+
+<p></p>
+
+<p>Tabeloversigterne kan udskrives her: <a href="MySQL_database_tabeloversigt_print.html" target="_blank">MySQL_database_tabeloversigt_print.html</a></p>
+
+<h2>Indtastning</h2>
 
 <p>Når databasen er startet op får vi adgang til hovedvinduet. For at oprette en ny dtabase vælger vi <span class="inl_cmd">Ny</span> i menuen til venstre. I feltet <span class="bold">Databasenavn</span> skriver du: <span class="inl_cmd">mentorer</span> og i <span class="bold">Tegnsæt (sortering)</span> vælger du: <span class="inl_cmd">utf8_danish_ci</span> og klikker på <span class="knap">Opret</span>.</p>
 

@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+
+<head>
+	
+	<meta charset="UTF-8" lang="da"/>
+
+	<title>MySQL - Opret database - Thomas Jensen</title>
+
+	<link rel="stylesheet" href="../css/styles/docco.css" />
+
+	<link rel="stylesheet" href="../css/style.css" />
+
+	<link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono|Ubuntu|Ubuntu+Condensed' rel='stylesheet' type='text/css'>
+	
+	<script src="../js/toc2.js" type="text/javascript"></script>
+	<script src="https://code.jquery.com/jquery-2.2.2.js"></script>
+	<script src="../js/highlight.pack.js" type="text/javascript"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+
+</head>
+
+<!-- 
+
+code highlighter : 
+
+code converter : http://www.freebits.co.uk/convert-html-code-to-text.html 
+
+
+
+
+-->
+
+
+
+<html>
+
+<body class="print" onload="generateTOC(document.getElementById('toc'));">
+
+<footer id="license"></footer>
+
+	<script> $( "#license" ).load( "license.html" ); </script>
+
+<!--	<div id="toc">
+	<p>Indholdsfortegnelse</p>
+	
+	</div>
+
+-->
+
+<div class="title">Skemaer til tabellerne</div>
+
+<p>Denne side indeholder tabellerne der er udarbejdet til MySQL guiden på Vidas.dk.Den kan udskrives direkte hvis det ønskes eller gemmes som PDF.</p>
+
+
+<div class="pagebreak">
+
+<span class="afsnit">Skema tabel 1</span>
+
+<p></p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th colspan="4">Tabel 1: klasser_og_mentorer</th>
+		</tr>
+		<tr>
+			<th>Kolonnenavn</th>
+			<th>Datatype</th>
+			<th>Længde/værdi</th>
+			<th>Indeks</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Klasse</td>
+			<td>VARCHAR</td>
+			<td>3</td>
+			<td>PRIMARY</td>
+		</tr>
+		<tr>
+			<td>Mentor</td>
+			<td>VARCHAR</td>
+			<td>3</td>
+			<td>&nbsp;-&nbsp;</td>
+		</tr>
+	</tbody>
+</table>
+
+<p></p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th colspan="2">Tabel 1: klasser_og_mentorer</th>
+		</tr>
+		<tr>
+			<th>Klasse (primær nøgle)</th>
+			<th>Mentor</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1a</td>
+			<td>tj</td>
+		</tr>
+		<tr>
+			<td>2a</td>
+			<td>tj</td>
+		</tr>
+		<tr>
+			<td>3a</td>
+			<td>tj</td>
+		</tr>
+		<tr>
+			<td>1b</td>
+			<td>ba</td>
+		</tr>
+		<tr>
+			<td>2b</td>
+			<td>ba</td>
+		</tr>
+		<tr>
+			<td>3b</td>
+			<td>ba</td>
+		</tr>
+		<tr>
+			<td>1x</td>
+			<td>cc</td>
+		</tr>
+		<tr>
+			<td>2x</td>
+			<td>cc</td>
+		</tr>
+	</tbody>
+</table>
+
+</div>
+
+<div class="pagebreak">
+
+<span class="afsnit">Skema tabel 2</span>
+
+<p></p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th colspan="4">Tabel 2: mentorer</th>
+		</tr>
+		<tr>
+			<th>Kolonnenavn</th>
+			<th>Datatype</th>
+			<th>Længde/værdi</th>
+			<th>Indeks</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Mentor</td>
+			<td>VARCHAR</td>
+			<td>3</td>
+			<td>PRIMARY</td>
+		</tr>
+		<tr>
+			<td>Navn</td>
+			<td>VARCHAR</td>
+			<td>50</td>
+			<td>&nbsp;-&nbsp;</td>
+		</tr>
+		<tr>
+			<td>Lokale</td>
+			<td>VARCHAR</td>
+			<td>4</td>
+			<td>&nbsp;-&nbsp;</td>
+		</tr>
+		<tr>
+			<td>Mobil</td>
+			<td>INT</td>
+			<td>8</td>
+			<td>&nbsp;-&nbsp;</td>
+		</tr>
+		<tr>
+			<td>Mail</td>
+			<td>VARCHAR</td>
+			<td>50</td>
+			<td>&nbsp;-&nbsp;</td>
+		</tr>
+	</tbody>
+</table>
+
+<p></p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th colspan="5">Tabel 2: mentorer</th>
+		</tr>
+		<tr>
+			<th>Mentor (Primær nøgle)</th>
+			<th>Navn</th>
+			<th>Lokale</th>
+			<th>Mobil</th>
+			<th>Mail</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>tj</td>
+			<td>Thomas Jensen</td>
+			<td>17</td>
+			<td>23344517</td>
+			<td>tj@fakemail.dk</td>
+		</tr>
+		<tr>
+			<td>ba</td>
+			<td>Bent Andersen</td>
+			<td>18</td>
+			<td>23344518</td>
+			<td>ba@fakemail.dk</td>
+		</tr>
+		<tr>
+			<td>cc</td>
+			<td>Christina Carlsen</td>
+			<td>19</td>
+			<td>23344519</td>
+			<td>cc@fakemail.dk</td>
+		</tr>
+	</tbody>
+</table>
+
+</div>
+
+<div class="pagebreak">
+
+<span class="afsnit">Skema tabel 3</span>
+
+<p></p>
+<table class="">
+	<thead>
+		<tr>
+			<th colspan="4">Tabel 3: klasser_og_elever</th>
+		</tr>
+		<tr>
+			<th>Kolonnenavn</th>
+			<th>Datatype</th>
+			<th>Længde/værdi</th>
+			<th>Indeks</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Klasse</td>
+			<td>VARCHAR</td>
+			<td>3</td>
+			<td>PRIMARY</td>
+		</tr>
+		<tr>
+			<td>Antal Elever</td>
+			<td>TINYINT</td>
+			<td>2</td>
+			<td>&nbsp;-&nbsp;</td>
+		</tr>
+		<tr>
+			<td>Piger</td>
+			<td>TINYINT</td>
+			<td>2</td>
+			<td>&nbsp;-&nbsp;</td>
+		</tr>
+		<tr>
+			<td>Drenge</td>
+			<td>TINYINT</td>
+			<td>2</td>
+			<td>&nbsp;-&nbsp;</td>
+		</tr>
+		<tr>
+			<td>Startår</td>
+			<td>YEAR</td>
+			<td>4</td>
+			<td>&nbsp;-&nbsp;</td>
+		</tr>
+	</tbody>
+</table>
+
+<p></p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th colspan="5">Tabel 3: klasser_og_elever</th>
+		</tr>
+		<tr>
+			<th>Klasse (Primær nøgle)</th>
+			<th>Antal elever</th>
+			<th>Piger</th>
+			<th>Drenge</th>
+			<th>Startår</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1a</td>
+			<td>17</td>
+			<td>9</td>
+			<td>8</td>
+			<td>2016</td>
+		</tr>
+		<tr>
+			<td>2a</td>
+			<td>22</td>
+			<td>10</td>
+			<td>12</td>
+			<td>2015</td>
+		</tr>
+		<tr>
+			<td>3a</td>
+			<td>21</td>
+			<td>8</td>
+			<td>13</td>
+			<td>2014</td>
+		</tr>
+		<tr>
+			<td>1b</td>
+			<td>16</td>
+			<td>8</td>
+			<td>8</td>
+			<td>2016</td>
+		</tr>
+		<tr>
+			<td>2b</td>
+			<td>24</td>
+			<td>13</td>
+			<td>11</td>
+			<td>2015</td>
+		</tr>
+		<tr>
+			<td>3b</td>
+			<td>22</td>
+			<td>9</td>
+			<td>13</td>
+			<td>2014</td>
+		</tr>
+		<tr>
+			<td>1x</td>
+			<td>28</td>
+			<td>13</td>
+			<td>15</td>
+			<td>2016</td>
+		</tr>
+		<tr>
+			<td>2x</td>
+			<td>31</td>
+			<td>17</td>
+			<td>14</td>
+			<td>2015</td>
+		</tr>
+	</tbody>
+</table>
+
+</div>
+
+
+
+
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+	</body>
+
+</html>
