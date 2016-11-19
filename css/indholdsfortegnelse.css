@@ -1,20 +1,46 @@
-/* Indholdsfortegnelse 
+
+/* Sidebar */
+
+#indholds_ikon:before {
+content:"☰";
+position: fixed;
+font-size: 2em;
+margin-left: -20px;
+padding: 5px;
+background-color:rgba(220, 220, 220, 0.90);
+
+}
 
 div#toc {
-margin:0;
-padding:0;
-border:0;
-outline:0;
-font-size:100%;
-vertical-align:baseline;
-background:transparent
-}*/
+
+display: none;
+
+}
+
+div#toggle:hover div#toc {
+
+display: block;
+position: fixed;
+margin-top: 41px;
+margin-left: -20px;
+padding: 10px 10px 10px 0px;
+background-color:rgba(220, 220, 220, 0.90);
+
+}
+
+
+
+
+
+
 
 /* Indholdsfortegnelse */
 
-div#toc p {
+#toc_title:before {
 
+content: "Indholdsfortegnelse";
 font-size: 1.3em;
+font-family: ubuntu,sans-serif;
 
 
 }
