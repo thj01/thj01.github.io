@@ -6,15 +6,17 @@ content:"☰";
 position: fixed;
 font-size: 2em;
 margin-left: -20px;
-margin-top: px;
 padding: 5px;
-background-color:rgba(220, 220, 220, 0.90);
+color: #e0e0e0;
+background-color:rgba(6,6,6, 0.8);
+
 
 }
 
 div#toc {
 
 display: none;
+width: 350px;
 
 }
 
@@ -22,13 +24,21 @@ div#toggle:hover div#toc {
 
 display: block;
 position: fixed;
-margin-top: 41px;
+margin-top: 26px;
 margin-left: -20px;
 padding: 10px 10px 10px 0px;
-background-color:rgba(220, 220, 220, 0.90);
+background-color:rgba(6,6,6, 0.8);
 
 }
 
+#toggle:hover #indholds_ikon:before{ 
+
+color: #DD4814;
+-webkit-transition: all 0.2s ease;
+-moz-transition: all 0.2s ease;
+transition: all 0.2s ease;
+
+ }
 
 
 
@@ -40,31 +50,42 @@ background-color:rgba(220, 220, 220, 0.90);
 #toc_title:before {
 
 content: "Indholdsfortegnelse";
-font-size: 1.3em;
-font-family: ubuntu,sans-serif;
-
 
 }
 
+#toc_title {
+
+font-size: 1.3em;
+font-family: ubuntu,sans-serif;
+padding-bottom: .6em;
+padding-left: .5em;
+color: #e0e0e0;
+
+}
 
 
 div#toc a {
 	text-decoration: none;
 	font-family: ubuntu,sans-serif;
-	color: black;
+	color: lightgrey;
+	padding-left: .6em;
+	
 }
 
 div#toc a:hover {
 	text-decoration: none;
-	color: darkgrey;
 
+	color: #e0e0e0;
+	padding-left: .65em;
+	width: 200px;
 
 }
 
 /* formatering af H1 i indholdsfortegnelsen*/
 div#toc>ul>ul>li>a {
 	
-	font-size: .8em;
+	font-size: 1em;
+
 
 
 }
@@ -73,6 +94,7 @@ div#toc>ul>ul>li {
 
 	list-style-type: none;	
 	margin: .1em 0em;
+	padding-bottom: .2em;
 
 }
 
@@ -80,7 +102,7 @@ div#toc>ul>ul>li {
 
 div#toc>ul>ul>ul>li>a {
 	
-	font-size: .8em;
+	font-size: .85em;
 
 }
 
@@ -88,7 +110,10 @@ div#toc>ul>ul>ul>li {
 	
 	list-style-type: none;
 	padding-left: .5em;
-	margin: .1em 0em;
+	margin-top: -.2em;
+	margin-bottom: 0em;
+
+	
 
 }
 
