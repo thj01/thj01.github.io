@@ -471,9 +471,7 @@ Fraction(2, 3)
 	<li><span class="inl_cmd">Fraction()</span> - omskrivning til brøk</li>
 </ul>
 
-<span class="afsnit">Konvertering til int (heltal)</span>
-
-<p></p>
+<h3>...til int (ℕ - Integers) </h3>
 
 <p>Man skal være opmærksom på at man ved en omskrivning kan miste decimaler. Hvis man omskriver en brøk eller et decimaltal til en <span class="inl_cmd">int</span>, så mister man alle decimalerne. Se eksemplerne herunder:</p>
 
@@ -489,7 +487,7 @@ Fraction(2, 3)
 1
 </pre>
 
-<span class="afsnit">Konvertering til float (Relle tal)</span>
+<h3>... til float (ℝ - Relle tal)</h3>
 
 <p>Når der omskrives til <span class="inl_cmd">float</span> sættes der minimum en decimal på.</p>
 
@@ -523,7 +521,7 @@ Decimal('0.66666666666666662965923251249478198587894439697265625')
 
 -->
 
-<span class="afsnit">Konvertering til Fraction (Brøker - Rationelle tal)</span>
+<h3>...til Fraction (ℚ - Rationelle tal)</h3>
 
 <p>For at arbejde med <span class="inl_cmd">Fraction</span> skal funktionen først importeres:</p>
 
@@ -543,6 +541,118 @@ Fraction(6004799503160661, 9007199254740992)
 <p>Læg mærke til at omskrivningen fra <span class="inl_cmd">2/3</span> bliver til <span class="inl_cmd">6004799503160661/9007199254740992</span>. Det skyldes at variablen c ikke bliver gemt som en brøk (<span class="inl_cmd">Fraction</span>), men som et <span class="inl_cmd">float</span>. Derved kommer der en unøjagtighed ind i decimalerne som bliver nedarvet.</p>
 
 <p>Det man kan lære af det er, at man skal arbejde med de rigtige taltyper hele tiden, da man ellers risikerer unøjagtige resultater.</p>
+
+<h2>Opgave</h2>
+
+<p>Beregn ved hjælp af pythin hvad forskellen er mellem <span class="inl_cmd">c</span> og <span class="inl_cmd">Fraction(c)</span> fra eksemplet ovenfor.</p>
+
+
+<h1>Print og input</h1>
+
+<p>Hvis man vil lave matematikprogrammer får man brug for at kunne lave brugerinputs og udskrive resulater. Det gøres henholdsvise med funktionerne <span class="inl_cmd">print()</span> og <span class="inl_cmd">input()</span>. Det man skal være opmærksom på er, at alle input bliver tolket som tekststrenge. Den skal altså konverteres med det samme. Det gøres ved at pakke funktionerne ind i hinanden:</p>
+
+<h2>print()</h2>
+
+<p>Funktionen gør nøjagtigt det som den siger. Den printer indholdet af parantesen. Indholdet i parantesen skal være være enten en værdi (angives med talværdier) eller en tekststreng</p>
+
+<pre class="ubuntu_terminal">
+>>> a=1
+>>> print(a)
+1
+>>> print(a*2)
+2
+>>> print("Dette er en sætning")
+Dette er en sætning
+</pre>
+
+<h2>Pladsholdere</h2>
+
+<p>Man kan indsætte variabler i en teksstreng ved hjælp af pladsholdere. Se herunder:</p>
+
+<pre class="ubuntu_terminal">
+>>> navn="Thomas"
+>>> print("Variablens navn er {0}".format(navn))
+Variablens navn er Thomas
+</pre>
+
+<p>Pladsholderne angives ved hjælp af <span class="inl_cmd">{0}</span>, <span class="inl_cmd">{1}</span>,<span class="inl_cmd">{2}</span>  ... og indsættes ved hjælp af at sætte <span class="inl_cmd">.format()</span> på tekststrengen. I parantesen angives variablerne i rækkefølge adskilt af <span class="inl_cmd">,</span>.</p>
+
+<h2>input()</h2>
+
+<p>For at få brugerinput anvendes funktionen <span class="inl_cmd">input()</span>. Funktionen udskriver tekststrengen inde i parantensen, og venter på brugerens input. Som standard læses input som en tekststreng. Hvis input er en talværdi konverteres den til den taltype man ønsker ved at pakke input funktionen ind i funktionen for taltypen f.eks:</p>
+
+<code class="cmd">int(input(*tekststreng*))  <span class="red">&lt;-- Husk to paranteser til sidst</span></code>
+
+<p>Grunden til at jeg fremhæver det med de to paranteser til slut er, at det er en meget typisk fejl, at man glemmer at afslutte alle paranteserne.</p>
+
+<h2>Et eksempel</h2>
+
+<p>I dette eksempel er brugerens input farvet blå for at tydeliggøre det som sker.</p>
+
+<pre class="ubuntu_terminal">
+>>> navn=input("Skriv dit navn: ")
+Skriv dit navn: <span class="blue1">Thomas</span>
+>>> tal=int(input("Skriv et tal: ")) <span class="red">&lt;-- Husk to paranteser til sidst</span>
+Skriv et tal: <span class="blue1">6</span>
+>>> print("Det dobbelte af {0} er {1}".format(tal,tal*2)) <span class="red">&lt;-- Husk to paranteser til sidst</span>
+Det dobbelte af 6 er 12
+</pre>
+
+<p>Hvad er det vi gør:</p>
+
+<ol class="">
+	<li><code class="cmd">navn=input("Skriv dit navn: ")</code></li>
+	
+	<p>Vi opretter variablen <span class="inl_cmd">navn</span> og indhenter navnet (en tekststreng) ved hjælp af <span class="inl_cmd">input()</span></p>
+
+	<li><code class="cmd">tal=int(input("Skriv et tal: "))</code></li>
+	
+	<p>Vi opretter variablen tal og indhenter tallet (en tekststreng) ved hjælp af <span class="inl_cmd">input()</span>. Men vi konverterer tekststrengen til et tal med det samme ved at pakke hele funktionen ind i <span class="inl_cmd">int()</span></p>
+
+	<li><code class="cmd">print("Det dobbelte af {0} er {1}".format(tal,tal*2)) </code></li>
+	
+	<p>Vi printer resultatet ved hjælp af <span class="inl_cmd">print()</span>, og indsætter variablerne ved hjælp af pladsholdere</p>
+</ol>
+
+
+
+<p>Hvis vi f.eks. ville udregne en brøk kan vi få brugeren til først at indtaste tælleren og derefter nævneren:</p>
+
+<pre class="ubuntu_terminal">
+>>> tæller=int(input("Indtast tæller: "))
+Indtast tæller: 3
+>>> nævner=int(input("Indtast nævner: "))
+Indtast nævner: 4
+>>> tæller/nævner
+0.75
+>>> type(_)
+&lt;class 'float'&gt;
+</pre>
+
+<p>Læg mærke til 2 ting:</p>
+
+<ul class="disc">
+	<li>Divisionsstykket konvertere de to <span class="inl_cmd">int</span> tal til <span class="inl_cmd">float</span></li>
+	<li>Man kan kalde det sidste output ved at anvende <span class="inl_cmd">_</span> (underscore)</li>
+</ul>
+
+<h2>Opgave</h2>
+
+<p>Lav et program hvor du sætter variablerne med input. Du skal finde ud af:</p>
+
+<ol class="">
+	<li>Fornavn</li>
+	<li>Alder</li>
+	<li>Mobilnr</li>
+</ol>
+
+<p>Lav et output der siger</p>
+
+<pre class="ubuntu_terminal">
+Jeg hedder *fornavn*, og er *alder* år gammel. Mit mobilnr er: *mobilnr*
+</pre>
+
+<p>Overvej om <span class="inl_cmd">alder</span> og <span class="inl_cmd">mobilnr</span> skal være tekststrenge eller værdier</span>. Begrund dine valg.</p>
 
 <h1>Konstanter og regnefunktioner 	</h1>
 
@@ -627,95 +737,11 @@ Fraction(6004799503160661, 9007199254740992)
 2.0
 </pre>
 
+<h2>Opgave</h2>
 
-<h1>Print og input</h1>
-
-<p>Hvis man vil lave matematikprogrammer får man brug for at kunne lave brugerinputs og udskrive resulater. Det gøres henholdsvise med funktionerne <span class="inl_cmd">print()</span> og <span class="inl_cmd">input()</span>. Det man skal være opmærksom på er, at alle input bliver tolket som tekststrenge. Den skal altså konverteres med det samme. Det gøres ved at pakke funktionerne ind i hinanden:</p>
-
-<span class="afsnit">print()</span>
-
-<p>Funktionen gør nøjagtigt det som den siger. Den printer indholdet af parantesen. Indholdet i parantesen skal være være enten en værdi (angives med talværdier) eller en tekststreng</p>
-
-<pre class="ubuntu_terminal">
->>> a=1
->>> print(a)
-1
->>> print(a*2)
-2
->>> print("Dette er en sætning")
-Dette er en sætning
-</pre>
-
-<span class="afsnit">Pladsholdere</span>
-
-<p>Man kan indsætte variabler i en teksstreng ved hjælp af pladsholdere. Se herunder:</p>
-
-<pre class="ubuntu_terminal">
->>> navn="Thomas"
->>> print("Variablen navn er {0}".format(navn))
-Variablen navn er Thomas
-</pre>
-
-<p>Pladsholderne angives ved hjælp af <span class="inl_cmd">{0}</span>, <span class="inl_cmd">{1}</span>,<span class="inl_cmd">{2}</span>  ... og indsættes ved hjælp af at sætte <span class="inl_cmd">.format()</span> på tekststrengen. I parantesen angives variablerne i rækkefølge adskilt af <span class="inl_cmd">,</span>.</p>
-
-<span class="afsnit">input()</span>
-
-<p>For at få brugerinput anvendes funktionen <span class="inl_cmd">input()</span>. Funktionen udskriver tekststrengen inde i parantensen, og venter på brugerens input. Som standard læses input som en tekststreng. Hvis input er en talværdi konverteres den til den taltype man ønsker ved at pakke input funktionen ind i funktionen for taltypen f.eks:</p>
-
-<code class="cmd">int(input(*tekststreng*))  <span class="red">&lt;-- Husk to paranteser til sidst</span></code>
-
-<p>Grunden til at jeg fremhæver det med de to paranteser til slut er, at det er en meget typisk fejl, at man glemmer at afslutte alle paranteserne.</p>
-
-<span class="afsnit">Et eksempel</span>
-
-<p>I dette eksempel er brugerens input farvet blå for at tydeliggøre det som sker.</p>
-
-<pre class="ubuntu_terminal">
->>> navn=input("Skriv dit navn: ")
-Skriv dit navn: <span class="blue1">Thomas</span>
->>> tal=int(input("Skriv et tal: ")) <span class="red">&lt;-- Husk to paranteser til sidst</span>
-Skriv et tal: <span class="blue1">6</span>
->>> print("Det dobbelte af {0} er {1}".format(tal,tal*2)) <span class="red">&lt;-- Husk to paranteser til sidst</span>
-Det dobbelte af 6 er 12
-</pre>
-
-<p>Hvad er det vi gør:</p>
-
-<ol class="">
-	<li><code class="cmd">navn=input("Skriv dit navn: ")</code></li>
-	
-	<p>Vi opretter variablen <span class="inl_cmd">navn</span> og indhenter navnet (en tekststreng) ved hjælp af <span class="inl_cmd">input()</span></p>
-
-	<li><code class="cmd">tal=int(input("Skriv et tal: "))</code></li>
-	
-	<p>Vi opretter variablen tal og indhenter tallet (en tekststreng) ved hjælp af <span class="inl_cmd">input()</span>. Men vi konverterer tekststrengen til et tal med det samme ved at pakke hele funktionen ind i <span class="inl_cmd">int()</span></p>
-
-	<li><code class="cmd">print("Det dobbelte af {0} er {1}".format(tal,tal*2)) </code></li>
-	
-	<p>Vi printer resultatet ved hjælp af <span class="inl_cmd">print()</span>, og indsætter variablerne ved hjælp af pladsholdere</p>
-</ol>
+<p>Lav et program der udregner omkredsen og arealet af en cirkel ved hjælp af at brugeren indtaster radius.</p>
 
 
-
-<p>Hvis vi f.eks. ville udregne en brøk kan vi få brugeren til først at indtaste tælleren og derefter nævneren:</p>
-
-<pre class="ubuntu_terminal">
->>> tæller=int(input("Indtast tæller: "))
-Indtast tæller: 3
->>> nævner=int(input("Indtast nævner: "))
-Indtast nævner: 4
->>> tæller/nævner
-0.75
->>> type(_)
-&lt;class 'float'&gt;
-</pre>
-
-<p>Læg mærke til 2 ting:</p>
-
-<ul class="disc">
-	<li>Divisionsstykket konvertere de to <span class="inl_cmd">int</span> tal til <span class="inl_cmd">float</span></li>
-	<li>Man kan kalde det sidste output ved at anvende <span class="inl_cmd">_</span> (underscore)</li>
-</ul>
 
 <p></p>
 <p></p>
