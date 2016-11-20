@@ -5,13 +5,22 @@
 content:"☰";
 position: fixed;
 font-size: 2em;
-margin-left: -20px;
+margin-left: -58px;
 padding: 5px;
 color: #e0e0e0;
 background-color:rgba(6,6,6, 0.8);
 
 
 }
+
+#toggle:hover #indholds_ikon:before{ 
+
+color: #DD4814;
+-webkit-transition: all 0.2s ease;
+-moz-transition: all 0.2s ease;
+transition: all 0.2s ease;
+
+ }
 
 div#toc {
 
@@ -24,8 +33,8 @@ div#toggle:hover div#toc {
 
 display: block;
 position: fixed;
-margin-top: 26px;
-margin-left: -20px;
+margin-top: 42px;
+margin-left: -59px;
 padding: 10px 10px 10px 0px;
 background-color:rgba(6,6,6, 0.8);
 
@@ -67,17 +76,22 @@ color: #e0e0e0;
 div#toc a {
 	text-decoration: none;
 	font-family: ubuntu,sans-serif;
-	color: lightgrey;
+	color: #c0c0c0;
 	padding-left: .6em;
 	
 }
 
 div#toc a:hover {
 	text-decoration: none;
-
-	color: #e0e0e0;
+	color: #f9f9f9;
 	padding-left: .65em;
 	width: 200px;
+
+}
+
+div#toc:active  {
+
+display: none;
 
 }
 
@@ -102,7 +116,7 @@ div#toc>ul>ul>li {
 
 div#toc>ul>ul>ul>li>a {
 	
-	font-size: .85em;
+	font-size: .9em;
 
 }
 
@@ -113,25 +127,22 @@ div#toc>ul>ul>ul>li {
 	margin-top: -.2em;
 	margin-bottom: 0em;
 
-	
-
 }
-
-
 
 /* formatering af H3 i indholdsfortegnelsen*/
 
 div#toc>ul>ul>ul>ul>li>a {
 	
-	font-size: .8em;
+	font-size: .9em;
 
 }
 
 div#toc>ul>ul>ul>ul>li {
 
 	list-style-type: none;
-	padding-left: .8em;
-	margin: .1em 0em;
+	padding-left: 1.2em;
+	margin-top: -.2em;
+	margin-bottom: .1em;
 
 }
 
