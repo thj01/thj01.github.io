@@ -188,29 +188,57 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 <p>Når man er færdig med at skrive sin kode trykker man <kbd>Enter</kbd> 2 gange og koden udføres. Generelt ser koden ud som herunder:</p>
 
 <pre class="ubuntu_terminal">
-*betingelse*:
+<span class="bold">*udsagn_1*:</span>
 
-...&nbsp;&nbsp;&nbsp;&nbsp;*kode der skal køres*
+...&nbsp;&nbsp;&nbsp;&nbsp;*kode der skal køres når udsagn_1 er sandt*
     
-*Ny betingelse*:
+<span class="bold">*udsagn_2*:</span>
 
-...&nbsp;&nbsp;&nbsp;&nbsp;*kode der skal køres*
+...&nbsp;&nbsp;&nbsp;&nbsp;*kode der skal køres når udsagn_2 er sandt*
 </pre>
 
 <p>Man kan også indsætte betingelser i betingelser:</p>
 
 <pre class="ubuntu_terminal">
-*betingelse*:
+<span class="bold">*udsagn_a*:</span>
 
 ...&nbsp;&nbsp;&nbsp;&nbsp;*kode der skal køres*
     
-...&nbsp;&nbsp;&nbsp;&nbsp;*Underbetingelse*:
+...&nbsp;&nbsp;&nbsp;&nbsp;<span class="bold">*udsagn_b*:</span>
 
-...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*kode der skal køres hvis underbetingelsen er ramt*
+...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*kode der skal køres hvis udsagn_b er sandt*
 </pre>
 
 
-<h1>for-løkker</h1>
+<h1>Løkker</h1>
+
+<p>Når man programmerer har man ofte brug for at programmet undersøger noget igen og igen. Hertil anvender man løkker. Python anvender to typer løkker: <span class="inl_cmd">for</span> og <span class="inl_cmd">while</span></p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Type</th>
+			<th>Anvendes når ...</th>
+			<th>Beskrivelse</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><span class="inl_cmd">for</span></td>
+			<td>Man kender antal gennemløb</td>
+			<td><span class="inl_cmd">for</span>-løkken anvendes når man ved hvor mange gange den skal gøre. Det kan f.eks. være at vi gerne vil have at den kører 10 gange, eller lige så mange gange der er tegn i en tekststreng</td>
+		</tr>
+		<tr>
+			<td><span class="inl_cmd">while</span></td>
+			<td>Man ikke kender antal gennemløb</td>
+			<td><span class="inl_cmd">while</span>-løkken anvendes når vi ikke ved hvornår løkken skal stoppe. Det kan f.eks. være når resultatet overstiger en værdi, eller inde for en tidsramme.</td>
+		</tr>
+	</tbody>
+</table>
+
+<h2>for - løkker</h2>
+
+<p></p>
 
 <p><span class="inl_cmd">for</span>-løkken køres når man kender antallet af gange en kode skal køre. Funktionen anvendes på følgende måde:</p>
 
@@ -260,6 +288,33 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <p>Når man anvender <span class="inl_cmd">for</span> løkker skal man definere talområdet meget præcist. Det er både det som er fordelen og udfordringen ved at anvende <span class="inl_cmd">for</span>-løkker.</p>
 
+
+
+<h2>while-løkker</h2>
+
+<p>Når man anvender <span class="inl_cmd">while</span>-løkker, så skal man selv sætte udgangspunktet for betingelsen og selve betingelsen op.</p>
+
+<p><span class="inl_cmd">while</span>-løkken køres når man ikke kender antallet af gange en kode skal køre. Funktionen anvendes på følgende måde:</p>
+
+<p><span class="inl_cmd">while *betingelse*:</span></p>
+
+<p>Koden er forklaret med rødt.</p>
+
+<pre class="ubuntu_terminal">
+>>> i=0 <span class="red">--&gt; variablen i sættes til 0</span>
+>>> while i&lt;5: <span class="red">--&gt; Så længe i er mindre end 5</span>
+...     print(i) <span class="red">--&gt; udskriv i</span>
+...     i +=1 <span class="red">--&gt; læg 1 til i</span>
+... 
+0
+1
+2
+3
+4 
+</pre>
+
+<p>Løkken stopper ved 4, da der bliver lagt en til i koden (i += 1). Da i nu er over 5, kommer koden inde i <span class="inl_cmd">while</span> ikke til at blive kørt.</p>
+
 <h2>Udskriv tallene på en række</h2>
 
 <p>Nogle gange kan det være uhensigtsmæssigt at resulaterne udskrives på en lang række. Det gøres ved at tilføje <span class="inl_cmd">end="*separator*"</span> i print parantesen. Herudskrives tallene fra 1 - 10 vandret.</p>
@@ -271,7 +326,11 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 1 - 2 - 3 - 4 - 5 - 6 - 7 - 8 - 9 - 10 -
 </pre>
 
-<h1>if/elif/else</h1>
+<h1>Betingelser</h1>
+
+
+<h2>if</h2>
+
 
 <p>Betingelser bruges når man vil have koden til at udføre noget i specielle tilfælde. Det kan f.eks. være at man vil undersøge om et tal er lige. Altså om tallet <span class="inl_cmd">modulus</span> 2 (f.eks: <span class="inl_cmd">6%2</span>) er 0:</p>
 
@@ -286,6 +345,10 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 8 er lige
 10 er lige
 </pre>
+
+<h2>if/else</h2>
+
+<p></p>
 
 <p>Koden kan udvides til også at beskrive de ulige tal:</p>
 
@@ -308,32 +371,15 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 10 er lige
 </pre>
 
-<h2>if/else</h2>
+<h2>if/elif/else</h2>
 
 
 
 
 
-<h1>while-løkker</h1>
 
-<p>Når man anvender <span class="inl_cmd">while</span>-løkker, så skal man selv sætte udgangspunktet for betingelsen og selve betingelsen op. Koden er forklaret med rødt.</p>
 
-<pre class="ubuntu_terminal">
->>> i=0 <span class="red">--&gt; variablen i sættes til 0</span>
->>> while i&lt;5: <span class="red">--&gt; Så længe i er mindre end 5</span>
-...     print(i) <span class="red">--&gt; udskriv i</span>
-...     i +=1 <span class="red">--&gt; læg 1 til i</span>
-... 
-0
-1
-2
-3
-4 
-</pre>
-
-<p>Løkken stopper ved 4, da der bliver lagt en til i koden (i += 1). Da i nu er over 5, kommer koden inde i <span class="inl_cmd">while</span> ikke til at blive kørt.</p>
-
-<span class="afsnit">Control statements</span>
+<h1>Control statements</h1>
 
 <p>Derudover gælder der også nogle <span class="inl_cmd">control statements</span> (kontroludsagn), som kan stoppe og ændre udførslen af løkker.</p>
 
