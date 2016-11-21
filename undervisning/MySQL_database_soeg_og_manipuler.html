@@ -310,6 +310,24 @@ ALTER TABLE lærere change Mentor Lærer varchar(3);
 
 </figure>
 
+<h2>Ændre felt datatype</h2>
+
+<p>Her ændrer vi feltettypen <span class="inl_cmd">Navn</span> fra <span class="inl_cmd">varchar(50)</span> til <span class="inl_cmd">varchar(60)</span>. </p>
+
+<pre>
+	<code class="sql">
+ALTER TABLE lærere MODIFY Navn varchar(60) NOT NULL;
+	</code>
+</pre>
+
+<figure id="">
+
+	<img class="p90" src="images/mysql_modify_felt.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
 <h2>Ændr database navn</h2>
 
 <p>Man kan ikke umiddelbart ændre navnet på en database. For at gøre det skal man reelt oprette en ny database, med det nye navn og derefter kopiere tabellerne fra den oprindelige database ind i den.</p>
