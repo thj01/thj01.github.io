@@ -302,17 +302,102 @@ Type "help", "copyright", "credits" or "license" for more information.
 3.0
 </pre>
 
-<p>Som før omskriver Python automatisk rødder til <span class="inl_cmd">float</span>.</p>
+<p>Læg mærke til at Python udregner rødder som <span class="inl_cmd">float</span>.</p>
+
+<figure id="">
+
+	<img class="" src="images/python_pow_opgaver.svg" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h2>Logartimer</h2>
+
+<p></p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Matematisk udtryk</th>
+			<th>Funktion</th>
+			<th>Inverse funktion</th>
+			<th>Beskrivelse</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>y<sup>x</sup></td>
+			<td>pow(y,x)</td>
+			<td>math.log(x,y)</td>
+			<td>Logaritmen (grundtal y)</td>
+		</tr>
+		<tr>
+			<td>10<sup>x</sup> = y</td>
+			<td>pow(10,x)</td>
+			<td>math.log10(x)</td>
+			<td>Logaritmen (grundtal 10)</td>
+		</tr>
+		<tr>
+			<td>e<sup>x</sup> = y</td>
+			<td>math.exp(x)</td>
+			<td>math.log(y)</td>
+			<td>Den naturlige logaritmen (grundtal e)</td>
+		</tr>
+	</tbody>
+</table>
+
+<pre class="ubuntu_terminal">
+>>> math.log10(100)
+2.0
+>>> math.log10(pow(10,2))
+2.0
+>>> math.log(pow(math.e,2))
+2.0
+</pre>
+
+<h2>Konstanter</h2>
+
+<p>I matematik er der konstanter som man ikke kommer uden om herunder konstanten <span class="inl_cmd">&pi;</span> og <span class="inl_cmd">e</span></p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Konstant</th>
+			<th>Funktion</th>
+			<th>Værdi</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>&pi;</td>
+			<td>math.pi</td>
+			<td>3.141592...</td>
+		</tr>
+		<tr>
+			<td>e</td>
+			<td>math.e</td>
+			<td>2.718281...</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>De kan kaldes ved at importere dem fra pakken <span class="inl_cmd">math</span></p>
+
+<pre class="ubuntu_terminal">
+>>> import math
+>>> math.pi
+3.141592653589793
+>>> math.e
+2.718281828459045
+</pre>
 
 <h2>Absolutte tal</h2>
 
 <p>Hvis man vil arbejde med absolutte tal anvender man funktionen <span class="inl_cmd">abs()</span>. Det gør at resultatet bliver repræsenteret med sin positive værdi. Se eksemplerne:</p>
 
 <pre class="ubuntu_terminal">
->>> a=-2
->>> a
--2
->>> abs(a)
+>>> abs(-2)
 2
 </pre>
 
@@ -437,7 +522,7 @@ Fraction(1, 2)
 0.5
 </pre>
 
-<h2>Konvertering af taltyper</h2>
+<h1>Konvertering af taltyper</h1>
 
 <p>Hvis man vil undersøge hvilken taltype en variabel er anvender man funktionen <span class="inl_cmd">type()</span>. Lad os prøve det ved at anvende variablerne fra eksemplet ovenfor:</p>
 
@@ -471,7 +556,7 @@ Fraction(2, 3)
 	<li><span class="inl_cmd">Fraction()</span> - omskrivning til brøk</li>
 </ul>
 
-<h3>...til int (ℕ - Integers) </h3>
+<h2>...til int (ℕ - Integers) </h2>
 
 <p>Man skal være opmærksom på at man ved en omskrivning kan miste decimaler. Hvis man omskriver en brøk eller et decimaltal til en <span class="inl_cmd">int</span>, så mister man alle decimalerne. Se eksemplerne herunder:</p>
 
@@ -487,7 +572,7 @@ Fraction(2, 3)
 1
 </pre>
 
-<h3>... til float (ℝ - Relle tal)</h3>
+<h2>... til float (ℝ - Relle tal)</h2>
 
 <p>Når der omskrives til <span class="inl_cmd">float</span> sættes der minimum en decimal på.</p>
 
@@ -521,7 +606,7 @@ Decimal('0.66666666666666662965923251249478198587894439697265625')
 
 -->
 
-<h3>...til Fraction (ℚ - Rationelle tal)</h3>
+<h2>...til Fraction (ℚ - Rationelle tal)</h2>
 
 <p>For at arbejde med <span class="inl_cmd">Fraction</span> skal funktionen først importeres:</p>
 
@@ -546,10 +631,9 @@ Fraction(6004799503160661, 9007199254740992)
 
 <p>Beregn ved hjælp af pythin hvad forskellen er mellem <span class="inl_cmd">c</span> og <span class="inl_cmd">Fraction(c)</span> fra eksemplet ovenfor.</p>
 
+<h1>Print</h1>
 
-<h1>Print og input</h1>
-
-<p>Hvis man vil lave matematikprogrammer får man brug for at kunne lave brugerinputs og udskrive resulater. Det gøres henholdsvise med funktionerne <span class="inl_cmd">print()</span> og <span class="inl_cmd">input()</span>. Det man skal være opmærksom på er, at alle input bliver tolket som tekststrenge. Den skal altså konverteres med det samme. Det gøres ved at pakke funktionerne ind i hinanden:</p>
+<p>Hvis man vil lave matematikprogrammer får man brug for at kunne udskrive resulater. Det gøres med funktion <span class="inl_cmd">print()</span>:</p>
 
 <h2>print()</h2>
 
@@ -575,7 +659,21 @@ Dette er en sætning
 Variablens navn er Thomas
 </pre>
 
-<p>Pladsholderne angives ved hjælp af <span class="inl_cmd">{0}</span>, <span class="inl_cmd">{1}</span>,<span class="inl_cmd">{2}</span>  ... og indsættes ved hjælp af at sætte <span class="inl_cmd">.format()</span> på tekststrengen. I parantesen angives variablerne i rækkefølge adskilt af <span class="inl_cmd">,</span>.</p>
+<p>Pladsholderne angives ved hjælp af <span class="inl_cmd">{0}</span>, <span class="inl_cmd">{1}</span>,<span class="inl_cmd">{2}</span>  ... og indholdet indsættes ved at sætte  <span class="inl_cmd">.format()</span> på lige efter teksstrengen. I parantesen angives variablerne i rækkefølge adskilt af komma (<span class="inl_cmd">,</span>).</p>
+
+<p>Herunder er eksempel på anvendelse af flere pladsholdere</p>
+
+<pre class="ubuntu_terminal">
+>>> navn = "Thomas"
+>>> alder = 46
+>>> mail = "tj@fakemail.dk"
+>>> print("Mit navn er {0}, og jeg er {1} år gammel. Min mail er: {2}".format(navn,alder,mail))
+Mit navn er Thomas, og jeg er 46 år gammel. Min mail er: tj@fakemail.dk
+</pre>
+
+
+<!--
+
 
 <h2>input()</h2>
 
@@ -654,92 +752,11 @@ Jeg hedder *fornavn*, og er *alder* år gammel. Mit mobilnr er: *mobilnr*
 
 <p>Overvej om <span class="inl_cmd">alder</span> og <span class="inl_cmd">mobilnr</span> skal være tekststrenge eller værdier</span>. Begrund dine valg.</p>
 
-<h1>Konstanter og regnefunktioner 	</h1>
 
-<p>I matematik er der konstanter som man ikke kommer uden om herunder konstanten <span class="inl_cmd">&pi;</span> og <span class="inl_cmd">e</span></p>
 
-<table class="">
-	<thead>
-		<tr>
-			<th>Konstant</th>
-			<th>Funktion</th>
-			<th>Værdi</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>&pi;</td>
-			<td>math.pi</td>
-			<td>3.141592...</td>
-		</tr>
-		<tr>
-			<td>e</td>
-			<td>math.e</td>
-			<td>2.718281...</td>
-		</tr>
-	</tbody>
-</table>
+-->
 
-<p>De kan kaldes ved at importere dem fra pakken <span class="inl_cmd">math</span></p>
 
-<pre class="ubuntu_terminal">
->>> import math
->>> a=math.pi
->>> a=math.pi
->>> b=math.e
->>> a
-3.141592653589793
->>> b
-2.718281828459045
-</pre>
-
-<h2>potenser og logartimer</h2>
-
-<p></p>
-
-<table class="">
-	<thead>
-		<tr>
-			<th>Matematisk udtryk</th>
-			<th>Funktion</th>
-			<th>Inverse funktion</th>
-			<th>Beskrivelse</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>y<sup>x</sup></td>
-			<td>pow(y,x)</td>
-			<td>math.log(x,y)</td>
-			<td>Logaritmen (grundtal y)</td>
-		</tr>
-		<tr>
-			<td>10<sup>x</sup> = y</td>
-			<td>pow(10,x)</td>
-			<td>math.log10(x)</td>
-			<td>Logaritmen (grundtal 10)</td>
-		</tr>
-		<tr>
-			<td>e<sup>x</sup> = y</td>
-			<td>math.exp(x)</td>
-			<td>math.log(y)</td>
-			<td>Den naturlige logaritmen (grundtal e)</td>
-		</tr>
-	</tbody>
-</table>
-
-<pre class="ubuntu_terminal">
->>> math.log10(100)
-2.0
->>> math.log10(pow(10,2))
-2.0
->>> math.log(pow(math.e,2))
-2.0
-</pre>
-
-<h2>Opgave</h2>
-
-<p>Lav et program der udregner omkredsen og arealet af en cirkel ved hjælp af at brugeren indtaster radius.</p>
 
 
 

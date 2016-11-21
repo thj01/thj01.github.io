@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+
+<head>
+	
+	<meta charset="UTF-8" lang="da"/>
+
+	<title>Python 3: Matematik - Thomas Jensen</title>
+
+	<link rel="stylesheet" href="../css/styles/docco.css" />
+
+	<link rel="stylesheet" href="../css/style.css" />
+
+	<link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono|Ubuntu|Ubuntu+Condensed' rel='stylesheet' type='text/css'>
+	
+	<script src="../js/toc2.js" type="text/javascript"></script>
+	<script src="https://code.jquery.com/jquery-2.2.2.js"></script>
+	<script src="../js/highlight.pack.js" type="text/javascript"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+
+
+</head>
+
+<!-- 
+
+code highlighter : https://highlightjs.org/
+
+code converter : http://www.freebits.co.uk/convert-html-code-to-text.html 
+
+-->
+
+
+<html>
+
+<body onload="generateTOC(document.getElementById('toc'));">
+
+<footer id="license"></footer>
+
+	<script> $( "#license" ).load( "license.html" ); </script>
+
+<div id="toggle" ><span id="indholds_ikon"></span>
+
+	<div id="toc">
+		<div id="toc_title"></div>
+	</div>
+</div>
+	
+
+
+<h1>Print og input</h1>
+
+<p>Hvis man vil lave matematikprogrammer får man brug for at kunne lave brugerinputs og udskrive resulater. Det gøres henholdsvise med funktionerne <span class="inl_cmd">print()</span> og <span class="inl_cmd">input()</span>. Det man skal være opmærksom på er, at alle input bliver tolket som tekststrenge. Den skal altså konverteres med det samme. Det gøres ved at pakke funktionerne ind i hinanden:</p>
+
+<h2>print()</h2>
+
+<p>Funktionen gør nøjagtigt det som den siger. Den printer indholdet af parantesen. Indholdet i parantesen skal være være enten en værdi (angives med talværdier) eller en tekststreng</p>
+
+<pre class="ubuntu_terminal">
+>>> a=1
+>>> print(a)
+1
+>>> print(a*2)
+2
+>>> print("Dette er en sætning")
+Dette er en sætning
+</pre>
+
+<h2>Pladsholdere</h2>
+
+<p>Man kan indsætte variabler i en teksstreng ved hjælp af pladsholdere. Se herunder:</p>
+
+<pre class="ubuntu_terminal">
+>>> navn="Thomas"
+>>> print("Variablens navn er {0}".format(navn))
+Variablens navn er Thomas
+</pre>
+
+<p>Pladsholderne angives ved hjælp af <span class="inl_cmd">{0}</span>, <span class="inl_cmd">{1}</span>,<span class="inl_cmd">{2}</span>  ... og indsættes ved hjælp af at sætte <span class="inl_cmd">.format()</span> på tekststrengen. I parantesen angives variablerne i rækkefølge adskilt af <span class="inl_cmd">,</span>.</p>
+
+
+
+<h2>input()</h2>
+
+<p>For at få brugerinput anvendes funktionen <span class="inl_cmd">input()</span>. Funktionen udskriver tekststrengen inde i parantensen, og venter på brugerens input. Som standard læses input som en tekststreng. Hvis input er en talværdi konverteres den til den taltype man ønsker ved at pakke input funktionen ind i funktionen for taltypen f.eks:</p>
+
+<code class="cmd">int(input(*tekststreng*))  <span class="red">&lt;-- Husk to paranteser til sidst</span></code>
+
+<p>Grunden til at jeg fremhæver det med de to paranteser til slut er, at det er en meget typisk fejl, at man glemmer at afslutte alle paranteserne.</p>
+
+<h2>Et eksempel</h2>
+
+<p>I dette eksempel er brugerens input farvet blå for at tydeliggøre det som sker.</p>
+
+<pre class="ubuntu_terminal">
+>>> navn=input("Skriv dit navn: ")
+Skriv dit navn: <span class="blue1">Thomas</span>
+>>> tal=int(input("Skriv et tal: ")) <span class="red">&lt;-- Husk to paranteser til sidst</span>
+Skriv et tal: <span class="blue1">6</span>
+>>> print("Det dobbelte af {0} er {1}".format(tal,tal*2)) <span class="red">&lt;-- Husk to paranteser til sidst</span>
+Det dobbelte af 6 er 12
+</pre>
+
+<p>Hvad er det vi gør:</p>
+
+<ol class="">
+	<li><code class="cmd">navn=input("Skriv dit navn: ")</code></li>
+	
+	<p>Vi opretter variablen <span class="inl_cmd">navn</span> og indhenter navnet (en tekststreng) ved hjælp af <span class="inl_cmd">input()</span></p>
+
+	<li><code class="cmd">tal=int(input("Skriv et tal: "))</code></li>
+	
+	<p>Vi opretter variablen tal og indhenter tallet (en tekststreng) ved hjælp af <span class="inl_cmd">input()</span>. Men vi konverterer tekststrengen til et tal med det samme ved at pakke hele funktionen ind i <span class="inl_cmd">int()</span></p>
+
+	<li><code class="cmd">print("Det dobbelte af {0} er {1}".format(tal,tal*2)) </code></li>
+	
+	<p>Vi printer resultatet ved hjælp af <span class="inl_cmd">print()</span>, og indsætter variablerne ved hjælp af pladsholdere</p>
+</ol>
+
+
+
+<p>Hvis vi f.eks. ville udregne en brøk kan vi få brugeren til først at indtaste tælleren og derefter nævneren:</p>
+
+<pre class="ubuntu_terminal">
+>>> tæller=int(input("Indtast tæller: "))
+Indtast tæller: 3
+>>> nævner=int(input("Indtast nævner: "))
+Indtast nævner: 4
+>>> tæller/nævner
+0.75
+>>> type(_)
+&lt;class 'float'&gt;
+</pre>
+
+<p>Læg mærke til 2 ting:</p>
+
+<ul class="disc">
+	<li>Divisionsstykket konvertere de to <span class="inl_cmd">int</span> tal til <span class="inl_cmd">float</span></li>
+	<li>Man kan kalde det sidste output ved at anvende <span class="inl_cmd">_</span> (underscore)</li>
+</ul>
+
+<h2>Opgave</h2>
+
+<p>Lav et program hvor du sætter variablerne med input. Du skal finde ud af:</p>
+
+<ol class="">
+	<li>Fornavn</li>
+	<li>Alder</li>
+	<li>Mobilnr</li>
+</ol>
+
+<p>Lav et output der siger</p>
+
+<pre class="ubuntu_terminal">
+Jeg hedder *fornavn*, og er *alder* år gammel. Mit mobilnr er: *mobilnr*
+</pre>
+
+<p>Overvej om <span class="inl_cmd">alder</span> og <span class="inl_cmd">mobilnr</span> skal være tekststrenge eller værdier</span>. Begrund dine valg.</p>
+
+
+
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+
+
+	</body>
+
+</html>
