@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+
+<head>
+	
+	<meta charset="UTF-8" lang="da"/>
+
+	<title>Python 3: Matematik - Thomas Jensen</title>
+
+	<link rel="stylesheet" href="../css/styles/docco.css" />
+
+	<link rel="stylesheet" href="../css/style.css" />
+
+	<link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono|Ubuntu|Ubuntu+Condensed' rel='stylesheet' type='text/css'>
+	
+	<script src="../js/toc2.js" type="text/javascript"></script>
+	<script src="https://code.jquery.com/jquery-2.2.2.js"></script>
+	<script src="../js/highlight.pack.js" type="text/javascript"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+
+
+</head>
+
+<!-- 
+
+code highlighter : https://highlightjs.org/
+
+code converter : http://www.freebits.co.uk/convert-html-code-to-text.html 
+
+-->
+
+
+<html>
+
+<body onload="generateTOC(document.getElementById('toc'));">
+
+<footer id="license"></footer>
+
+	<script> $( "#license" ).load( "license.html" ); </script>
+
+<div id="toggle" ><span id="indholds_ikon"></span>
+
+	<div id="toc">
+		<div id="toc_title"></div>
+	</div>
+</div>
+
+<div class="title">Matematik med</div>
+
+<figure id="">
+
+	<img class="" src="images/python-logo-inkscape.svg" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<div class="title">Funktioner</div>
+
+<p>Dette kan vi kombinere i en funktion, som skal udføre følgende kommandoerne lige efter hinanden ved at definere funktionen <span class="inl_cmd">brøkregner()</span>. Herunder laver vi funktionen <span class="inl_cmd">brøkregner()</span>. Det vi gør er reelt at samle det program der står ovenfor. Det er altså:</p>
+
+<ul class="disc">
+	<li>Indhente tælleren (brugerinput)</li>
+	<li>Indhente nævneren (brugerinput)</li>
+	<li>beregne og udskrive brøkens <span class="inl_cmd">float</span> værdi (output)</li>
+</ul>
+
+<p>Når programmet tastes ind kommer det til at se ud som følger</p>
+
+<pre class="ubuntu_terminal">
+>>> def brøkregner():
+...     a=int(input("Skriv tæller: "))
+...     b=int(input("Skriv nævner: "))
+...     print(a/b)
+... 
+>>>
+</pre>
+
+<p>Vi tager det linie for linie:</p>
+
+<ol class="">
+	<li><span class="inl_cmd">def brøkregner():</span></li>
+	
+	<p><span class="inl_cmd">def</span> fortæller at vi vil definere funktionen <span class="inl_cmd">brøkregner()</span>. Linien skal afsluttes med et <span class="inl_cmd">:</span> (kolon), for at vise at der høre noget kode ind under funktionen. Herefter skiftes der til næste linie hvor <span class="inl_cmd">>>></span> erstattes af <span class="inl_cmd">...</span>, som angiver roden af programmet.</p>
+	
+	<li><span class="inl_cmd">... &nbsp;&nbsp;&nbsp;&nbsp;a=int(input("Skriv tæller: "))</span></li>
+	
+	<p>Næste linie der henter tælleren er rykket ind under <span class="inl_cmd">def brøkregner():</span>. Det er måden man indlejrer kode under noget andet. Det gøres med <kbd>Tabulator</kbd> eller ved at bruge 4*<kbd>Mellemrum</kbd></p>
+	
+	<li><span class="inl_cmd">... &nbsp;&nbsp;&nbsp;&nbsp;b=int(input("Skriv nævner: "))</span></li>
+	
+	<p>Er rykket ind ligesom ovenstående linie og henter nævneren</p>
+	
+	<li><span class="inl_cmd">... &nbsp;&nbsp;&nbsp;&nbsp;print(a/b)</span></li>
+
+	<p>Udskriver resultatet af funktionen</p>
+	
+</ol>
+
+<p>Nu kan funktionen køres i pythonfortolkeren som enhver anden funktion:</p>
+
+<pre class="ubuntu_terminal">
+>>> brøkregner()
+Skriv tæller: 3
+Skriv nævner: 7
+0.42857142857142855
+>>> 
+</pre>
+
+<h2>Smarte funktioner</h2>
+
+<p>Funktioner kan gøres rigtig smarte, så de ikke behøver brugerinput, men kan nøjes med at angive inputs i parantesen. Se nedestående eksempel:</p>
+
+<pre class="ubuntu_terminal">
+>>> def nybrøkregner(a,b):
+....	print("Brøken {0}/{1} giver {2}".format(a,b,a/b))
+....
+>>> nybrøkregner(3,4)
+Brøken 3/4 giver 0.75
+</pre>
+
+<p>I selve funktionen defineres værdierne <span class="inl_cmd">a</span> og <span class="inl_cmd">b</span>. Disse to værdier hives ned i koden og giver et svar.</p>
+
+
+<h2>Opgaver</h2>
+
+<span class="afsnit">Opgave 1</span>
+
+<p>Lav funktionerne <span class="inl_cmd">retlinie(x1,y1,x2,y2)</span> der ud fra 2 punkter (angivet med hele tal) angiver den rette linie punkterne tilhører.</p>
+
+<pre class="ubuntu_terminal">
+>>> retlinie(1,2,3,4)
+y=1.0x + 1.0
+</pre>
+
+<p>Ændr funktionen så der kan indtastes Relle tal (<span class="inl_cmd">float</span>)</p>
+
+<span class="bold">opgave 2</span>
+
+<p>Lav lignende opgaver til eksponentialfunktioner, fordoblings- og halveringskonstanter, potensfunktioner og pythagoras.</p>
+
+<span class="afsnit">Opgave 3</span>
+
+<p>Ændre programmet for bum, så du kan angive den ønskede tabel funktionen, og så den kører indtil 10 gange den givne tabel.</p>
+
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+
+
+	</body>
+
+</html>

@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+
+<head>
+	
+	<meta charset="UTF-8" lang="da"/>
+
+	<title>Python 3: Matematik - Thomas Jensen</title>
+
+	<link rel="stylesheet" href="../css/styles/docco.css" />
+
+	<link rel="stylesheet" href="../css/style.css" />
+
+	<link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono|Ubuntu|Ubuntu+Condensed' rel='stylesheet' type='text/css'>
+	
+	<script src="../js/toc2.js" type="text/javascript"></script>
+	<script src="https://code.jquery.com/jquery-2.2.2.js"></script>
+	<script src="../js/highlight.pack.js" type="text/javascript"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+
+
+</head>
+
+<!-- 
+
+code highlighter : https://highlightjs.org/
+
+code converter : http://www.freebits.co.uk/convert-html-code-to-text.html 
+
+-->
+
+
+<html>
+
+<body onload="generateTOC(document.getElementById('toc'));">
+
+<footer id="license"></footer>
+
+	<script> $( "#license" ).load( "license.html" ); </script>
+
+<div id="toggle" ><span id="indholds_ikon"></span>
+
+	<div id="toc">
+		<div id="toc_title"></div>
+	</div>
+</div>
+
+<div class="title">Matematik med</div>
+
+<figure id="">
+
+	<img class="" src="images/python-logo-inkscape.svg" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<div class="title">Løkker</div>
+
+<p>Når man programmerer har man ofte brug for at programmet undersøger noget igen og igen. Hertil anvender man løkker. Python anvender to typer løkker: <span class="inl_cmd">for</span> og <span class="inl_cmd">while</span></p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Type</th>
+			<th>Anvendes når ...</th>
+			<th>Beskrivelse</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><span class="inl_cmd">for</span></td>
+			<td>Man kender antal gennemløb</td>
+			<td><span class="inl_cmd">for</span>-løkken anvendes når man ved hvor mange gange den skal gøre. Det kan f.eks. være at vi gerne vil have at den kører 10 gange, eller lige så mange gange der er tegn i en tekststreng</td>
+		</tr>
+		<tr>
+			<td><span class="inl_cmd">while</span></td>
+			<td>Man ikke kender antal gennemløb</td>
+			<td><span class="inl_cmd">while</span>-løkken anvendes når vi ikke ved hvornår løkken skal stoppe. Det kan f.eks. være når resultatet overstiger en værdi, eller inde for en tidsramme.</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Før vi når til løkkerne skal vi lærer om <span class="inl_cmd">Operatorer</span> og <span class="inl_cmd">Væktstal</span>.</p>
+
+<h1>Operatorer</h1>
+
+<p>For at sætte betingelserne anvendes der <span class="inl_cmd">operatorer</span>. Operatorerne er angivet i nedestående skema.</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Operator</th>
+			<th>Beskrivelse</th>
+			<th>Eksempel</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>&gt;</td>
+			<td>større end</td>
+			<td>5 &gt; 8 → falsk</td>
+		</tr>
+		<tr>
+			<td>&lt;</td>
+			<td>mindre end</td>
+			<td>5 &lt; 8 → sand</td>
+		</tr>
+		<tr>
+			<td>&gt;=</td>
+			<td>Større end eller lig med</td>
+			<td>5 &gt;= 8 → falsk</td>
+		</tr>
+		<tr>
+			<td>&lt;=</td>
+			<td>Mindre end eller lig med</td>
+			<td>5 &lt;= 8 → sand</td>
+		</tr>
+		<tr>
+			<td>==</td>
+			<td>Lig med</td>
+			<td>5 == 8 → falsk</td>
+		</tr>
+		<tr>
+			<td>!=</td>
+			<td>Ikke lig med</td>
+			<td>5 != 8 → sand</td>
+		</tr>
+		<tr>
+			<td>x and y</td>
+			<td >Både x og y skal være sand</td>
+			<td >x=6 ; y=3<br /><br />(x &lt; 10 and y &gt; 1) →  sand</td>
+		</tr>
+		<tr>
+			<td>x or y</td>
+			<td>Kun en behøver at være sand</td>
+			<td>x=6 ; y=3<br /><br/>(x == 6 or y == 1) → sand</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>I matematik er vi vant til at kunne beskrive intervaller på ved hjælp af udsagn som dette: <span class="inl_cmd">3 &le; x &le; 7 </span>, men når man programmerer skal man "skille" udsagnet ad, så det bliver: <span class="inl_cmd">3&lt;=x and 7&lt;=x</span></p>
+
+<h1>Vækst</h1>
+
+<p>Ofte har man brug for at en variabel vokser eller aftager med en konstant eller en faktor. Eksemplet i tabellen tager udgangspunkt i at <span class="inl_cmd">a = 8</span>.</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Operator</th>
+			<th>Beskrivelse</th>
+			<th>Eksempel (a=8)</th>
+			<th>Ny værdi</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>*tæller* += *konstant*</td>
+			<td>vokser med</td>
+			<td>a += 2</td>
+			<td>10</td>
+		</tr>
+		<tr>
+			<td>*tæller* -= *konstant*</td>
+			<td>formindskes med</td>
+			<td>a -= 2</td>
+			<td>6</td>
+		</tr>
+		<tr>
+			<td>*tæller* *= *konstant*</td>
+			<td>ganges med</td>
+			<td>a *= 2</td>
+			<td>16</td>
+		</tr>
+		<tr>
+			<td>*tæller* /= *Konstant*</td>
+			<td>divideres med</td>
+			<td>a /= 2</td>
+			<td>4</td>
+		</tr>
+	</tbody>
+</table>
+
+<h1>Indrykninger</h1>
+
+<p>Når man skriver kode i Python som er betinget af noget, så gør man det ved at rykke den betingede under betingelsen. Det gør man enten ved at bruge 4x<kbd>Mellemrum</kbd> eller <kbd>Tab</kbd>. Når Python registrerer at der er skrevet en betingelse så sættes der 3 punktummer (<span class="inl_cmd">...</span>). Det er efter disse punktummer man rykker den næste kodelinie ind. Læg også mærke til at der er kolon (<span class="inl_cmd">:</span>) efter hver betingelse. Det er dette tegn der fortæller Python at der kommer kode herunder der er afhængig af betingelsen.</p>
+
+<p>Når man er færdig med at skrive sin kode trykker man <kbd>Enter</kbd> 2 gange og koden udføres. Generelt ser koden ud som herunder:</p>
+
+<pre class="ubuntu_terminal">
+<span class="bold">*udsagn_1*:</span>
+
+...&nbsp;&nbsp;&nbsp;&nbsp;*kode der skal køres når udsagn_1 er sandt*
+    
+<span class="bold">*udsagn_2*:</span>
+
+...&nbsp;&nbsp;&nbsp;&nbsp;*kode der skal køres når udsagn_2 er sandt*
+</pre>
+
+<p>Man kan også indsætte betingelser i betingelser:</p>
+
+<pre class="ubuntu_terminal">
+<span class="bold">*udsagn_a*:</span>
+
+...&nbsp;&nbsp;&nbsp;&nbsp;*kode der skal køres*
+    
+...&nbsp;&nbsp;&nbsp;&nbsp;<span class="bold">*udsagn_b*:</span>
+
+...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*kode der skal køres hvis udsagn_b er sandt*
+</pre>
+
+
+<h1>for - løkker</h1>
+
+<p></p>
+
+<p><span class="inl_cmd">for</span>-løkken køres når man kender antallet af gange en kode skal køre. Funktionen anvendes på følgende måde:</p>
+
+<p><span class="inl_cmd">for *tæller* in range(*startværdi*, *slutværdi*, spring*):</span></p>
+
+<p>I dette materiale anvender jeg <span class="inl_cmd">i</span> som tælleren. Man anvender <span class="inl_cmd">i</span> som standard fordi det er første bogstav i heltalsbegrebet man anvender i programmering: <span class="inl_cmd">integer</span></p>
+
+
+<p>Herunder er nogle eksempler hvor nogle funktioner køres et bestemt antal gange. Herunder printes de første 5 værdier af <span class="inl_cmd">i</span>. Læg mærke til at Python tæller fra værdien <span class="inl_cmd">0</span> og så 5 værdier frem.</p>
+
+<pre class="ubuntu_terminal">
+>>> for i in range(5):
+...&nbsp;&nbsp;&nbsp;&nbsp;print(i)
+...	
+0
+1
+2
+3
+4
+</pre>
+
+<p>Denne funktion kan f.eks. anvendes til at skrive de første 5 kvadrattal. For at i starter med være en sætter sætter jeg både start- og slutværdi på <span class="inl_cmd">range</span>. Den går fra 1 til 6 for at jeg får 5 værdier, da den 6. værdi ikke er med.</p>
+
+<pre class="ubuntu_terminal">
+>>> for i in range(1,6):
+...&nbsp;&nbsp;&nbsp;&nbsp;print(pow(i,2))
+...
+1
+4
+9
+16
+25
+</pre>
+
+<p>Man kan også få den til at springe i værdierne. Herunder udskriver jeg de lige tal i intervallet 1-10. Jeg definerer den første og den sidste værdi og til sidst hvor meget den skal springe pr. gang.</p>
+
+<pre class="ubuntu_terminal">
+>>> for i in range(2,11,2):
+...&nbsp;&nbsp;&nbsp;&nbsp;print(i)
+...
+2
+4
+6
+8
+10
+</pre>
+
+<p>Når man anvender <span class="inl_cmd">for</span> løkker skal man definere talområdet meget præcist. Det er både det som er fordelen og udfordringen ved at anvende <span class="inl_cmd">for</span>-løkker.</p>
+
+<h2>Tæl baglæns</h2>
+
+<p>For at tælle baglæns anvendes <span class="inl_cmd">reversed()</span></p>
+
+<pre class="ubuntu_terminal">
+>>> for i in reversed(range(6,1)):
+...&nbsp;&nbsp;&nbsp;&nbsp;print(i)
+... 
+4
+3
+2
+1
+0
+</pre>
+
+<h1>while-løkker</h1>
+
+<p>Når man anvender <span class="inl_cmd">while</span>-løkker, så skal man selv sætte udgangspunktet for betingelsen og selve betingelsen op.</p>
+
+<p><span class="inl_cmd">while</span>-løkken køres når man ikke kender antallet af gange en kode skal køre. Funktionen anvendes på følgende måde:</p>
+
+<p><span class="inl_cmd">while *betingelse*:</span></p>
+
+<p>Koden er forklaret med rødt.</p>
+
+<pre class="ubuntu_terminal">
+>>> i=0 <span class="red">--&gt; variablen i sættes til 0</span>
+>>> while i&lt;5: <span class="red">--&gt; Så længe i er mindre end 5</span>
+...     print(i) <span class="red">--&gt; udskriv i</span>
+...     i +=1 <span class="red">--&gt; læg 1 til i</span>
+... 
+0
+1
+2
+3
+4 
+</pre>
+
+<p>For hver gang løkken kører bliver der lagt en til <span class="inl_cmd">i</span>. Når <span class="inl_cmd">i</span> rammer værdien <span class="inl_cmd">5</span> køres <span class="inl_cmd">while</span>-løkken ikke mere.</p>
+
+
+<h1>Output på en række</h1>
+
+<p>Nogle gange kan det være uhensigtsmæssigt at resulaterne udskrives på en lang række. Det gøres ved at tilføje <span class="inl_cmd">end="*separator*"</span> i print parantesen. Herudskrives tallene fra 1 - 10 vandret.</p>
+
+<pre class="ubuntu_terminal">
+>>> for i in range(1,11):
+...     print(i, end=" - ")
+... 
+1 - 2 - 3 - 4 - 5 - 6 - 7 - 8 - 9 - 10 -
+</pre>
+
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+
+
+	</body>
+
+</html>

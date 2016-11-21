@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+
+<head>
+	
+	<meta charset="UTF-8" lang="da"/>
+
+	<title>Python 3: Matematik - Thomas Jensen</title>
+
+	<link rel="stylesheet" href="../css/styles/docco.css" />
+
+	<link rel="stylesheet" href="../css/style.css" />
+
+	<link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono|Ubuntu|Ubuntu+Condensed' rel='stylesheet' type='text/css'>
+	
+	<script src="../js/toc2.js" type="text/javascript"></script>
+	<script src="https://code.jquery.com/jquery-2.2.2.js"></script>
+	<script src="../js/highlight.pack.js" type="text/javascript"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+
+
+</head>
+
+<!-- 
+
+code highlighter : https://highlightjs.org/
+
+code converter : http://www.freebits.co.uk/convert-html-code-to-text.html 
+
+-->
+
+
+<html>
+
+<body onload="generateTOC(document.getElementById('toc'));">
+
+<footer id="license"></footer>
+
+	<script> $( "#license" ).load( "license.html" ); </script>
+
+<div id="toggle" ><span id="indholds_ikon"></span>
+
+	<div id="toc">
+		<div id="toc_title"></div>
+	</div>
+</div>
+	
+<div class="title">Matematik med</div>
+
+<figure id="">
+
+	<img class="" src="images/python-logo-inkscape.svg" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<div class="title">Basisviden</div>
+
+<p>I dette materiale vil vi anvende <span class="inl_cmd">Python shell</span>, som er en kommandolinie som fungerer ved hjælp af Python. Den tilgås ved at skrive nedestående kommandoer.</p>
+
+<span class="afsnit">Python shell på Ubuntu</span>
+
+<code class="cmd">python3</code>
+
+<p>Grunden til at kommendoen er lidt anderledes på Ubuntu er, at Python 2 er installeret som standard, og at det er Python3 der skal startes.</p>
+
+<span class="afsnit">Python shell  på Windows og Mac</span>
+
+<code class="cmd">python</code>
+
+<p>Herefter starte <span class="inl_cmd">Python shell</span> op, og der kan indtastes kommandoer efter <span class="inl_cmd">>>></span>:</p>
+
+<pre class="ubuntu_terminal">
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ python3
+Python 3.5.2 (default, Sep 10 2016, 08:21:44) 
+[GCC 5.4.0 20160609] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>>
+</pre>
+
+<h2>Variabler</h2>
+
+<p>En variable er en betegnelse man sætter lig med en værdi eller en tekstreng der kan blive ændret. Herunder sættes <span class="inl_cmd">a</span> først til <span class="inl_cmd">4</span> og ændres herefter til <span class="inl_cmd">Python er let at lære</span></p>
+
+<pre class="ubuntu_terminal">
+>>> a=4
+>>> a
+4
+>>> a="Python er let at lære"
+>>> a
+'Python er let at lære'
+</pre>
+
+<p>Man kan kalde det sidst output fra en funktion ved at bruge <span class="inl_cmd">_</span> (underscore).</p>
+
+<pre class="ubuntu_terminal">
+>>> a=3
+>>> b=4
+>>> a*b
+12
+>>> _*2
+24
+</pre>
+
+
+<h2>Tekstrenge og værdier</h2>
+
+<p>I Python anvender to typer input: tal og teksstrenge. Talværdier skrives direkte ind, men tekstrenge skal have anførselstegn som start og slut (se ovenfor)</p>
+
+<p>I dette materiale kommer vi til at arbejde med 3 taltyper:</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Betegnelse</th>
+			<th>Talmængde</th>
+			<th>Beskrivelse</th>
+			<th>Eksempel</th>
+			<th>Læg mærke til</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><span class="inl_cmd">int</span></td>
+			<td><img src="images/mat_not_mathbbN_0.svg" alt="" title="" /></td>
+			<td>Heltal (kaldes integer på engelsk)</td>
+			<td>1 ; 17 ; 2499</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td><span class="inl_cmd">float</span></td>
+			<td><img src="images/mat_not_mathbbR.svg" alt="" title="" /></td>
+			<td>Decimaltal</td>
+			<td>0.5 ; 3,141592 ; 0.6666</td>
+			<td>... at der anvendes punktum og ikke komma</td>
+		</tr>
+<!-- 		<tr>
+			<td><span class="inl_cmd">Decimal</span></td>
+			<td><img src="images/mat_not_mathbbR.svg" alt="" title="" /></td>
+			<td>Decimaltal</td>
+			<td>0.5 ; 3,141592 ; 0.6666</td>
+			<td>... at der anvendes punktum og ikke komma</td>
+		</tr>
+		
+-->
+		<tr>
+			<td><span class="inl_cmd">Fraction</span></td>
+			<td><img src="images/mat_not_mathbbQ.svg" alt="" title="" /></td>
+			<td>Brøker</td>
+			<td>1/2 ; 22/7 ; 2/3</td>
+			<td>Resultatet kommer ud i formen: Fraction(tæller,nævner)</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Forskellen mellem <span class="inl_cmd">float</span> og <span class="inl_cmd">decimal</span> er præcissionen. I almindelige matematik og fysik er <span class="inl_cmd">float</span> nøjagtig nok, men hvis vi taler om fincielle beregner bør man anvende <span class="inl_cmd">decimal</span>.</p>
+
+<p>Senere vil det blive vist hvordan man anvender de forskellige talmængder til beregninger.</p>
+
+<h2>print()</h2>
+
+<p>Hvis man vil lave matematikprogrammer får man brug for at kunne udskrive resulater. Det gøres med funktion <span class="inl_cmd">print()</span>:</p>
+
+<p>Funktionen gør nøjagtigt det som den siger. Den printer indholdet af parantesen. Indholdet i parantesen skal være være enten en værdi (angives med talværdier) eller en tekststreng</p>
+
+<pre class="ubuntu_terminal">
+>>> a=1
+>>> print(a)
+1
+>>> print(a*2)
+2
+>>> print("Dette er en sætning")
+Dette er en sætning
+</pre>
+
+<h2>Pladsholdere</h2>
+
+<p>Man kan indsætte variabler i en teksstreng ved hjælp af pladsholdere. Se herunder:</p>
+
+<pre class="ubuntu_terminal">
+>>> navn="Thomas"
+>>> print("Variablens navn er {0}".format(navn))
+Variablens navn er Thomas
+</pre>
+
+<p>Pladsholderne angives ved hjælp af <span class="inl_cmd">{0}</span>, <span class="inl_cmd">{1}</span>,<span class="inl_cmd">{2}</span>  ... og indholdet indsættes ved at sætte  <span class="inl_cmd">.format()</span> på lige efter teksstrengen. I parantesen angives variablerne i rækkefølge adskilt af komma (<span class="inl_cmd">,</span>).</p>
+
+<p>Herunder er eksempel på anvendelse af flere pladsholdere</p>
+
+<pre class="ubuntu_terminal">
+>>> navn = "Thomas"
+>>> alder = 46
+>>> mail = "tj@fakemail.dk"
+>>> print("Mit navn er {0}, og jeg er {1} år gammel. Min mail er: {2}".format(navn,alder,mail))
+Mit navn er Thomas, og jeg er 46 år gammel. Min mail er: tj@fakemail.dk
+</pre>
+
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+
+
+	</body>
+
+</html>

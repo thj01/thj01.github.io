@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+
+<head>
+	
+	<meta charset="UTF-8" lang="da"/>
+
+	<title>Python 3: Matematik - Thomas Jensen</title>
+
+	<link rel="stylesheet" href="../css/styles/docco.css" />
+
+	<link rel="stylesheet" href="../css/style.css" />
+
+	<link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono|Ubuntu|Ubuntu+Condensed' rel='stylesheet' type='text/css'>
+	
+	<script src="../js/toc2.js" type="text/javascript"></script>
+	<script src="https://code.jquery.com/jquery-2.2.2.js"></script>
+	<script src="../js/highlight.pack.js" type="text/javascript"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+
+
+</head>
+
+<!-- 
+
+code highlighter : https://highlightjs.org/
+
+code converter : http://www.freebits.co.uk/convert-html-code-to-text.html 
+
+-->
+
+
+<html>
+
+<body onload="generateTOC(document.getElementById('toc'));">
+
+<footer id="license"></footer>
+
+	<script> $( "#license" ).load( "license.html" ); </script>
+
+<div id="toggle" ><span id="indholds_ikon"></span>
+
+	<div id="toc">
+		<div id="toc_title"></div>
+	</div>
+</div>
+
+<div class="title">Matematik med</div>
+
+<figure id="">
+
+	<img class="" src="images/python-logo-inkscape.svg" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<div class="title">Betingelser</div>
+
+<p>Betingelser anvendes til at kunne køre kode når forskellige betingelser er opfyldt. Der er ingen grænse for hvor mange betingelser man kan sætte op. Herunder vil der blive gennemgået hvordan <span class="inl_cmd">if/elif/else</span> anvnedes.</p>
+
+<h2>if</h2>
+
+<p>Betingelser bruges når man vil have koden til at udføre noget i specielle tilfælde. Det kan f.eks. være at man vil undersøge om et tal er lige. Altså om tallet <span class="math">x%2 = 0</span>.</p>
+
+<pre class="ubuntu_terminal">
+>>> for i in range(1,11):
+...&nbsp;&nbsp;&nbsp;&nbsp;if i%2==0:
+...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("{0} er lige".format(i))
+... 
+2 er lige
+4 er lige
+6 er lige
+8 er lige
+10 er lige
+</pre>
+
+<h2>if/else</h2>
+
+<p>Herunder udvider vi koden, så der udskrives om tallet er lige eller ulige</p>
+
+<pre class="ubuntu_terminal">
+>>> for i in range(1,11):
+...&nbsp;&nbsp;&nbsp;&nbsp;if i%2==0:
+...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tal="lige"
+...&nbsp;&nbsp;&nbsp;&nbsp;else:
+...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tal="ulige"
+...&nbsp;&nbsp;&nbsp;&nbsp;print("{0} er {1}".format(i,tal))
+... 
+1 er ulige
+2 er lige
+3 er ulige
+4 er lige
+5 er ulige
+6 er lige
+7 er ulige
+8 er lige
+9 er ulige
+10 er lige
+
+</pre>
+
+<h2>if/elif/else</h2>
+
+<p>I dette eksempel udskriver koden om tallet <span class="inl_cmd">i</span> er positivt, 0 eller negativt</p>
+
+<pre class="ubuntu_terminal">
+>>>for i in range(-5,6):
+...&nbsp;&nbsp;&nbsp;&nbsp;if i==0:
+...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("{0} er hverken negativt eller positivt".format(i))
+...&nbsp;&nbsp;&nbsp;&nbsp;elif i&lt;0:
+...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("{0} er negativt".format(i))
+...&nbsp;&nbsp;&nbsp;&nbsp;else:
+...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("{0} er positivt".format(i))
+...
+-5 er negativt
+-4 er negativt
+-3 er negativt
+-2 er negativt
+-1 er negativt
+0 er hverken negativt eller positivt
+ 1 er positivt
+ 2 er positivt
+ 3 er positivt
+ 4 er positivt
+ 5 er positivt
+</pre>
+
+
+
+
+
+<h1>Control statements</h1>
+
+<p>Derudover gælder der også nogle <span class="inl_cmd">control statements</span> (kontroludsagn), som kan stoppe og ændre udførslen af løkker.</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th style="width:140px">Kontroludsagn</th>
+			<th>Beskrivelse</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><span class="inl_cmd">break</span></td>
+			<td>Bryder den ingangværende løkke</td>
+		</tr>
+		<tr>
+			<td><span class="inl_cmd">continue</span></td>
+			<td>Bryder behandlingen af koden, hopper videre til næste værdi og kører løkken derfra</td>
+		</tr>
+		<tr>
+			<td><span class="inl_cmd">pass</span></td>
+			<td><span class="inl_cmd">pass</span> er hvad man kalder en <span class="inl_cmd">null operation</span>. Med den kommando kan man indsætte ekstra kode for enkelttilfælde uden at resten af koden ændres</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>I det ovenstående eksempel kørte koden indtil den ramte en værdi. Men vi kan også køre koden indtil den rammer en sand eller falsk tilstand. Hvis vi f.eks. vil have en kode kører indtil noget er opfyldt</p>
+
+<p>I eksemplet herunder er der en kode der finder de lige tal i en talmængde (her op til 11). Læg mærke til at jeg anvender en <span class="inl_cmd">for</span>-løkke til at gennemløbe tallene og indlejrer <span class="inl_cmd">while</span>-løkken deri. Koden er forklaret med rødt:</p>
+
+<pre class="ubuntu_terminal">
+>>> for i in range(1,11): <span class="red">--&gt; sørger for at tallene fra 1-10 bliver anvendt</span>
+...&nbsp;&nbsp;&nbsp;&nbsp;while i%2==0: <span class="red">--&gt; Så længe 2 går op (rest=0)</span>
+...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print(i) <span class="red">--&gt; Udskriv i</span>
+...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break <span class="red">--&gt; Bryder while-løkken og så range-løkken kan tælle videre</span>
+... 
+2
+4
+6
+8
+10
+</pre>
+
+<p>Grunden til at whileløkken skal brydes er, at i aldrig når at vokse. Den vil blive ved med at køre indtil koden afbrydes af brugeren med tasterne <span class="knap">Ctrl</span>+<span class="knap">c</span>. Prøv selv</p>
+
+<pre class="ubuntu_terminal">
+>>> for i in range(1,11):
+...&nbsp;&nbsp;&nbsp;&nbsp;while i%2==0:
+...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print(i)
+... 
+2
+2
+2
+2
+.
+.
+.
+2
+2
+2
+<span class="red">^CTraceback (most recent call last):
+  File "&lt;stdin>", line 3, in &lt;module>
+KeyboardInterrupt</span>
+2
+</pre>
+
+
+
+<h2>Opgave1</h2>
+
+<span class="afsnit">Opgave 1</span>
+
+<p>Lav funktionen <span class="inl_cmd">lilletabel()</span> der udskriver de 10 første tal i den tabel der angives i parantesen.</p>
+
+<pre class="ubuntu_terminal">
+>>> lilletabel(5)
+5 - 10 - 15 - 20 - 25 - 30 - 35 - 40 - 45 - 50 - 
+>>> lilletabel(7)
+7 - 14 - 21 - 28 - 35 - 42 - 49 - 56 - 63 - 70 -
+</pre>
+
+<span class="afsnit">Opgave 2 - BUM</span>
+
+<p>Lav spillet bum, hvor man computeren skal sige "bum" når den rammer et tal i 3 tabellen. Lad det køre fra 1-30.</p>
+
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+
+
+	</body>
+
+</html>
