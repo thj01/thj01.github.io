@@ -56,101 +56,167 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <div class="title">Funktioner</div>
 
-<p>Dette kan vi kombinere i en funktion, som skal udføre følgende kommandoerne lige efter hinanden ved at definere funktionen <span class="inl_cmd">brøkregner()</span>. Herunder laver vi funktionen <span class="inl_cmd">brøkregner()</span>. Det vi gør er reelt at samle det program der står ovenfor. Det er altså:</p>
+<h1>Funktioner</h1>
 
-<ul class="disc">
-	<li>Indhente tælleren (brugerinput)</li>
-	<li>Indhente nævneren (brugerinput)</li>
-	<li>beregne og udskrive brøkens <span class="inl_cmd">float</span> værdi (output)</li>
-</ul>
+<p>Når man skal den samme programsekvens flere gange, kan definere en funktion. Det kan f.eks. være en funktion der skal udskrive den lille tabel for et tal. Lad os kalde den <span class="inl_cmd">tabel()</span>.</p>
 
-<p>Når programmet tastes ind kommer det til at se ud som følger</p>
+<p>Du kan se programmet herunder</p>
 
 <pre>
 	<code class="python">
-from fractions import Fraction 
-
-def brøkregner(a,b):
-	floor= a//b
-	tæller = (a-(floor*b))
-	restbrøk = Fraction(tæller,b)
-	print("Heltallet er {0} og brøken er {1}".format(floor,restbrøk)) 
-
-brøkregner(45,37)
+>>>def tabel(a):
+>>>&nbsp;&nbsp;&nbsp;&nbsp;for i in range(1,11):
+>>>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("{0} gange {1} er {2}".format(i,a,a*i))
+>>>
+>>>
 	</code>
-</pre>
-
-<pre class="ubuntu_terminal">
-Heltallet er 1 og brøken er 8/37
-Press any key to continue . . .
 </pre>
 
 <p>Vi tager det linie for linie:</p>
 
 <ol class="">
-	<li><span class="inl_cmd">def brøkregner():</span></li>
+	<li><span class="inl_cmd">def tabel(a):</span></li>
 	
-	<p><span class="inl_cmd">def</span> fortæller at vi vil definere funktionen <span class="inl_cmd">brøkregner()</span>. Linien skal afsluttes med et <span class="inl_cmd">:</span> (kolon), for at vise at der høre noget kode ind under funktionen. Herefter skiftes der til næste linie hvor <span class="inl_cmd">>>></span> erstattes af <span class="inl_cmd">...</span>, som angiver roden af programmet.</p>
+	<p><span class="inl_cmd">def</span> er måde vi fortælle Python, at nu kommer der en funktion, og at vi kalder den <span class="inl_cmd">tabel()</span>. <span class="afsnit">a</span> er den variabel vi skal anvende i funktionen.
 	
-	<li><span class="inl_cmd">... &nbsp;&nbsp;&nbsp;&nbsp;a=int(input("Skriv tæller: "))</span></li>
+	<li><span class="inl_cmd">&nbsp;&nbsp;&nbsp;&nbsp;for i in range(1,11):</span></li>
 	
-	<p>Næste linie der henter tælleren er rykket ind under <span class="inl_cmd">def brøkregner():</span>. Det er måden man indlejrer kode under noget andet. Det gøres med <kbd>Tabulator</kbd> eller ved at bruge 4*<kbd>Mellemrum</kbd></p>
+	<p>Linien rykkes ind under funktionen. Der køres en løkke hvor i går fra 1 til 10, og som udskriver tabellen.</p>
 	
-	<li><span class="inl_cmd">... &nbsp;&nbsp;&nbsp;&nbsp;b=int(input("Skriv nævner: "))</span></li>
+	<li><span class="inl_cmd">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("{0} gange {1} er {2}".format(i,a,a*i))</span></li>
 	
-	<p>Er rykket ind ligesom ovenstående linie og henter nævneren</p>
+	<p>Linien udskriver en linie i tabellen.</p>
 	
-	<li><span class="inl_cmd">... &nbsp;&nbsp;&nbsp;&nbsp;print(a/b)</span></li>
+	<li><span class="inl_cmd">tabel(4)</span></li>
 
-	<p>Udskriver resultatet af funktionen</p>
+	<p>Funktionen sættes igang med tallet 4 som <span class="inl_cmd">a</span>.</p>
 	
 </ol>
 
-<p>Nu kan funktionen køres i pythonfortolkeren som enhver anden funktion:</p>
+<p>Når koden er tastet ind sker der ikke noget. Vi skal altså køre den nye funktion som herunder:</p>
 
 <pre class="ubuntu_terminal">
->>> brøkregner()
-Skriv tæller: 3
-Skriv nævner: 7
-0.42857142857142855
->>> 
+>>>tabel(4)
+1 gange 4 er 4
+2 gange 4 er 8
+3 gange 4 er 12
+4 gange 4 er 16
+5 gange 4 er 20
+6 gange 4 er 24
+7 gange 4 er 28
+8 gange 4 er 32
+9 gange 4 er 36
+10 gange 4 er 40
 </pre>
 
-<h2>Smarte funktioner</h2>
+<h2>IDE</h2>
 
-<p>Funktioner kan gøres rigtig smarte, så de ikke behøver brugerinput, men kan nøjes med at angive inputs i parantesen. Se nedestående eksempel:</p>
+<p>Det kan anbefales at du overveje et IDE (<span class="bold">I</span>ntegrated <span class="bold">D</span>evelopment <span class="bold">E</span>nviroment). Du kan finde henvisninger til nogle her: <a href="python_matematik_ide.html" target="_blank">python_matematik_ide.html</a></p>
+
+
+
+
+<h1>Opgaver</h1>
+
+<h2>Trekantal</h2>
+
+<p>Lav funktionen <span class="inl_cmd">trekantal(a)</span> der udregner de <span class="inl_cmd">a</span> første trekantal. Tallene skal udskrives som <span class="inl_cmd">int</span>.</p>
+
+<figure id="">
+
+	<img class="p40"src="images/programmering_trekantformel.svg" alt="" title="" />
+
+	<figcaption>Trekantformlen</figcaption>
+
+</figure>
+
+<h2>Fibonaggi tal</h2>
+
+<p>Lav funktionen <span class="inl_cmd">fibonaggi(a)</span> der udregner de <span class="inl_cmd">a</span> første fibonaggital </p>
+
+<figure id="p60">
+
+	<img src="images/programmering_formel_for_phi.svg" alt="" title="" />
+
+	<figcaption>Formel for &phi; ud fra fibonaccitallene</figcaption>
+
+</figure>
+
+<p>Eksempel på output (20 første fibonaggital)</p>
 
 <pre class="ubuntu_terminal">
->>> def nybrøkregner(a,b):
-....	print("Brøken {0}/{1} giver {2}".format(a,b,a/b))
-....
->>> nybrøkregner(3,4)
-Brøken 3/4 giver 0.75
+1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987 1597 2584 4181 6765 
+
+------------------
+(program exited with code: 0)
+Press return to continue
 </pre>
 
-<p>I selve funktionen defineres værdierne <span class="inl_cmd">a</span> og <span class="inl_cmd">b</span>. Disse to værdier hives ned i koden og giver et svar.</p>
+<p>Du kan se <a href="python_matematik_loekker.html#fibonaggital" target="_blank">hvordan koden skal skrives her</a>.</p>
+
+<h2>BUM</h2>
+
+<p>Lav funktionen <span class="inl_cmd">bum(a)</span>, hvor computeren siger <span class="inl_cmd">BUM</span> når den rammer et tal i tabellen <span class="inl_cmd">a</span>. Funktionen skal køre igennem igennem hele den lille tabel - altså op til <span class="inl_cmd">a*10</span>.</p>
+
+<h2>Matematiske funktioner</h2>
+
+<p>Du skal lave nogle funktioner, som udregner forskriften ved hjælp af punkterne <span class="math">P=(x<sub>1</sub>,y<sub>1</sub>)</span> og <span class="math">Q=(x<sub>2</sub>,y<sub>2</sub>)</span></p>
+
+<p>Funktionerne skal hedde:</p>
+
+<ol class="">
+	<li><span class="inl_cmd">linie(x1,y1,x2,y2)</span></li>
+	<li><span class="inl_cmd">potens(x1,y1,x2,y2)</span></li>
+	<li><span class="inl_cmd">eksponential(x1,y1,x2,y2)</span></li>
+</ol>
+
+<p>Ved eksponentialfunktion skal du funktionen også udskrive <span class="math">T<sub>2</sub></span> og <span class="math">T<sub>1/2</sub></span>.</p>
+
+<p>Du kan funde noget om funktionerne her: <a href="funktioner.html" target="_blank">funktioner.html</a></p>
+
+<h2>Andengradsligningen</h2>
+
+<p>Andengradsligningen har normalformen:</p>
+
+	<img class="math" src="images/funktioner_andengradsligning_normalform.svg" alt="" title="" />
+	
+<p>Formlerne til andengradsligningen er:</p>
+
+	<img class="math" src="images/funktioner_andengradsligning_loesning_x.svg" alt="" title="" />
+
+<p>og toppunktsformlen er:</p>
+
+	<img class="math" src="images/funktioner_andengradsligning_loesning_TP.svg" alt="" title="" />
 
 
-<h2>Opgaver</h2>
+<p>Du kan funde noget om andengradsfunktionen her: <a href="funktioner.html" target="_blank">funktioner.html</a></p>
 
-<span class="afsnit">Opgave 1</span>
+<p>Lav funktionen <span class="inl_cmd">2grad(a,b,c)</span>, så den svarer på:</p>
 
-<p>Lav funktionerne <span class="inl_cmd">retlinie(x1,y1,x2,y2)</span> der ud fra 2 punkter (angivet med hele tal) angiver den rette linie punkterne tilhører.</p>
+<ol class="">
+	<li>Antal løsninger (skæringer med x-aksen)</li>
+	
+	<ul class="none">
+		<li><span class="math">D &lt; 0</span> &#x21D2; ingen løsninger</li>
+		<li><span class="math">D = 0</span> &#x21D2; 1 løsning</li>
+		<li><span class="math">D &gt; 0</span> &#x21D2; 2 løsninger</li>
+	</ul>
+	
+	<li>Løsningerne for x</li>
+	
+	<li>Om gaflerne vender opad</li>
+	
+	<ul class="none">
+		<li><span class="math">a &lt; 0</span> &#x21D2; gafler vender nedad</li>
+		<li><span class="math">a &gt; 0</span> &#x21D2; gafler vender opad</li>
+	</ul>
+	
+	<li>Parablens toppunkt</li>
+	
+</ol>
 
-<pre class="ubuntu_terminal">
->>> retlinie(1,2,3,4)
-y=1.0x + 1.0
-</pre>
 
-<p>Ændr funktionen så der kan indtastes Relle tal (<span class="inl_cmd">float</span>)</p>
 
-<span class="bold">opgave 2</span>
-
-<p>Lav lignende opgaver til eksponentialfunktioner, fordoblings- og halveringskonstanter, potensfunktioner og pythagoras.</p>
-
-<span class="afsnit">Opgave 3</span>
-
-<p>Ændre programmet for bum, så du kan angive den ønskede tabel funktionen, og så den kører indtil 10 gange den givne tabel.</p>
 
 <p></p>
 <p></p>
