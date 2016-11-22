@@ -116,11 +116,6 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 	</tbody>
 </table>
 
-
-
-
-
-
 <h2>Potens og rødder</h2>
 
 <p>For at finde potens tal og rødder anvendes funktionen <span class="inl_cmd">pow(a,b)</span>, hvor <span class="inl_cmd">a</span> er grundtallet og <span class="inl_cmd">b</span> er potensen. Se nedestående eksempler:</p>
@@ -128,21 +123,26 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 <table class="">
 	<thead>
 		<tr>
-			<th></th>
-			<th></th>
+			<th>Matematisk udtryk</th>
+			<th>Python funktion</th>
+			<th>Alternativ</th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr>
 			<td><img src="images/mat_not_a^b.svg" alt="" title="" /></td>
 			<td><span class="inl_cmd">pow(a,b)</span></td>
+			<td><span class="inl_cmd">a**b</span></td>
 		</tr>
 		<tr>
 			<td><img src="images/mat_not_sqrtb_a.svg" alt="" title="" /></td>
 			<td><span class="inl_cmd">pow(a,1/b)</span></td>
+			<td><span class="inl_cmd">a**(1/b)</span></td>
 		</tr>
 	</tbody>
 </table>
+
+<p>Det anbefales at man anvender funktionen <span class="inl_cmd">pow()</span> fremfor <span class="inl_cmd">**</span>. Det gør koden mere læselig.</p>
 
 <p>Eksempler med 2<sup>4</sup> og kvadratroden af 4:</p>
 
@@ -153,14 +153,21 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 2.0
 </pre>
 
-<p>Man kan have funktioner inde i funktioner, f.eks. hvis man skal tage den 3. rod af 7<sup>2</sup></p>
+<p>Man kan have funktioner inde i funktioner, f.eks:</p>
+
+<figure id="">
+
+	<img class="" src="images/python_math_pow572.svg" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
 
 <pre class="ubuntu_terminal">
->>> pow( pow(7,2) , 1/3)
-3.6593057100229713
+>>> pow( pow(7,2) , 1/5 )
+2.17790642448278
 </pre>
 
-<p>Læg mærke til at <span class="inl_cmd">pow()</span> returnere resulatet som <span class="inl_cmd">float</span>.</p>
 
 <h3>Opgave</h3>
 
@@ -176,7 +183,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <h2>Logartimer</h2>
 
-<p></p>
+<p>For at anvende logaritmer skal pakken <span class="inl_cmd">math</span> importeres</p>
 
 <table class="">
 	<thead>
@@ -212,6 +219,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 <p></p>
 
 <pre class="ubuntu_terminal">
+>>> import math
 >>> math.log10(100)
 2.0
 >>> math.log10(pow(10,2))
@@ -221,6 +229,8 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 </pre>
 
 <h2>Konstanter</h2>
+
+<p>For at anvende logaritmer skal pakken <span class="inl_cmd">math</span> importeres</p>
 
 <p>I matematik er der konstanter som man ikke kommer uden om herunder konstanten <span class="math">&pi;</span> og <span class="math">e</span></p>
 

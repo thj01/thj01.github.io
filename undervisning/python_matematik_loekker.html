@@ -331,10 +331,41 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <pre class="ubuntu_terminal">
 >>> for i in range(1,11):
-...     print(i, end=" - ")
+...&nbsp;&nbsp;&nbsp;&nbsp;print(i, end=" - ")
 ... 
 1 - 2 - 3 - 4 - 5 - 6 - 7 - 8 - 9 - 10 -
 </pre>
+
+<h1>Opsummering af resultater</h1>
+
+<p>Ofte har man brug for at opsummere resultatet af ens udregning. Herunder vil vi lave et eksempel hvor vi opsummerer tallene fra 1-5:</p>
+
+<pre class="ubuntu_terminal">
+>>> a = 0 
+>>> for i in range(1,6):
+...&nbsp;&nbsp;&nbsp;&nbsp;a+= i
+...&nbsp;&nbsp;&nbsp;&nbsp;print(a)
+... 
+1
+3
+6
+10
+15
+</pre>
+
+<p>Først laver man en variabel, som man sætter til <span class="inl_cmd">0</span>. I løkken kører vi den ønskede matematiske beregning, og lægger resultatet til <span class="inl_cmd">a</span>. Herefter udskrives <span class="inl_cmd">a</span>. Ulempen ved at anvende denne kode i <span class="inl_cmd">Idle</span> er, at Python udskriver resultatet efter hvert gennemløb af <span class="inl_cmd">i</span>. For at undgå dette må vi ændre i koden, og selv hente resultatet:</p>
+
+<pre class="ubuntu_terminal">
+>>> a = 0
+>>> for i in range(1,6):
+...&nbsp;&nbsp;&nbsp;&nbsp;a+=i
+... 
+>>> a
+15
+</pre>
+
+<p>Forklaringen er, at <span class="inl_cmd">Idle</span> kun kan tage en kommando ad gangen. Så vi bliver nød til først at opmsummere vores tal, og til sidst bede Python om at udskrive værdien.</p>
+
 
 <h1>Opgaver</h1>
 
@@ -356,55 +387,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 1 - 3 - 6 - 10 - 15 - 21 - 28 - 36 - 45 - 55 - 66 - 78 - 91 - 105 - 120 - 136 - 153 - 171 - 190 - 210 - 
 </pre>
 
-<span id="fibonaggital"></span>
 
-<h2>Fibonaggi tal</h2>
-
-<p>Fibonaccitallene er en talrække, som har følgende egenskab. Hvis man dividerer et tal i rækken med det forgående tal, så vil dette tal tilnærme sig værdien &phi; (1.6180339...) som også bliver kaldt det gyldne snit. </p>
-
-<p>Fibonaccitalrækken er: 1, 1, 2, 3, 5, 8, 13, 21 ... </p>
-
-<p>Man kan udregne &phi; ud fra følgende formel baseret på fibonaccitallene hvor man tager et fibonaccital og dividerer det med det efterfølgende.</p>
-
-<figure id="p60">
-
-	<img src="images/programmering_formel_for_phi.svg" alt="" title="" />
-
-	<figcaption>Formel for &phi; ud fra fibonaccitallene</figcaption>
-
-</figure>
-
-<p>Opgaven er at lave en kode der tager talrækken: 0, 1, 2, 3, 4, 5 .... og laver den om til fibonaccital. på følgende måde:</p>
-
-<ul class="none">
-	<li>0 + 1 = 1</li>
-	<li>1 + 2 = 3</li>
-	<li>2 + 3 = 5</li>
-	<li>3 + 5 = 8</li>
-	<li>5 + 8 = 13</li>	
-</ul>
-
-<p>Koden skal udregne de første 20 fibonaggital: Her er en forklaring på koden:</p>
-
-<ol class="">
-	<li>Lav to variabler a, b og sæt dem til henholdsvis 0 og 1</li>
-	<li>lav en forløkke der kører op til 20 gange baseret på i</li>
-	<li>lad i vokse med en hver gang koden køres</li>
-	<li>Udskriv a, hvis den er stærre end 0</li>
-	<li>Gem den gamle værdi for a i en ny variabel (f.eks: old_a)</li>
-	<li>Sæt a = b</li>
-	<li>Sæt b = b + den gamle værdi for a</li>
-</ol>
-
-<p>Koden skal give nedestående output</p>
-
-<pre class="ubuntu_terminal">
-1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987 1597 2584 4181 6765 
-
-------------------
-(program exited with code: 0)
-Press return to continue
-</pre>
 <p></p>
 <p></p>
 

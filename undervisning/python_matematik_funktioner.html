@@ -130,29 +130,8 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 </figure>
 
-<h2>Fibonaggi tal</h2>
 
-<p>Lav funktionen <span class="inl_cmd">fibonaggi(a)</span> der udregner de <span class="inl_cmd">a</span> første fibonaggital </p>
 
-<figure id="p60">
-
-	<img src="images/programmering_formel_for_phi.svg" alt="" title="" />
-
-	<figcaption>Formel for &phi; ud fra fibonaccitallene</figcaption>
-
-</figure>
-
-<p>Eksempel på output (20 første fibonaggital)</p>
-
-<pre class="ubuntu_terminal">
-1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987 1597 2584 4181 6765 
-
-------------------
-(program exited with code: 0)
-Press return to continue
-</pre>
-
-<p>Du kan se <a href="python_matematik_loekker.html#fibonaggital" target="_blank">hvordan koden skal skrives her</a>.</p>
 
 <h2>BUM</h2>
 
@@ -173,6 +152,54 @@ Press return to continue
 <p>Ved eksponentialfunktion skal du funktionen også udskrive <span class="math">T<sub>2</sub></span> og <span class="math">T<sub>1/2</sub></span>.</p>
 
 <p>Du kan funde noget om funktionerne her: <a href="funktioner.html" target="_blank">funktioner.html</a></p>
+
+<h2>Fibonaggi tal</h2>
+
+<p>Fibonaccitallene er en talrække, som har følgende egenskab. Hvis man dividerer et tal i rækken med det forgående tal, så vil dette tal tilnærme sig værdien &phi; (1.6180339...) som også bliver kaldt det gyldne snit. </p>
+
+<p>Fibonaccitalrækken er: 1, 1, 2, 3, 5, 8, 13, 21 ... </p>
+
+<p>Man kan udregne &phi; ud fra følgende formel baseret på fibonaccitallene hvor man tager et fibonaccital og dividerer det med det efterfølgende.</p>
+
+<figure id="p60">
+
+	<img src="images/programmering_formel_for_phi.svg" alt="" title="" />
+
+	<figcaption>Formel for &phi; ud fra fibonaccitallene</figcaption>
+
+</figure>
+
+<p>Opgaven er at lave en kode der tager talrækken: 0, 1, 2, 3, 4, 5 .... og laver den om til fibonaccital. på følgende måde:</p>
+
+<ul class="none">
+	<li>0 + 1 = 1</li>
+	<li>1 + 2 = 3</li>
+	<li>2 + 3 = 5</li>
+	<li>3 + 5 = 8</li>
+	<li>5 + 8 = 13</li>	
+</ul>
+
+<p>Koden skal udregne de første 20 fibonaggital: Her er en forklaring på koden:</p>
+
+<ol class="">
+	<li>Lav to variabler a, b og sæt dem til henholdsvis 0 og 1</li>
+	<li>lav en forløkke der kører op til 20 gange baseret på i</li>
+	<li>lad i vokse med en hver gang koden køres</li>
+	<li>Udskriv a, hvis den er stærre end 0</li>
+	<li>Gem den gamle værdi for a i en ny variabel (f.eks: old_a)</li>
+	<li>Sæt a = b</li>
+	<li>Sæt b = b + den gamle værdi for a</li>
+</ol>
+
+<p>Koden skal give nedestående output</p>
+
+<pre class="ubuntu_terminal">
+1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987 1597 2584 4181 6765 
+
+------------------
+(program exited with code: 0)
+Press return to continue
+</pre>
 
 <h2>Andengradsligningen</h2>
 
