@@ -4,7 +4,7 @@
 	
 	<meta charset="UTF-8" lang="da"/>
 
-	<title>MySQL - Opgave - Thomas Jensen</title>
+	<title>MySQL - Fremmednøgler - Thomas Jensen</title>
 
 	<link rel="stylesheet" href="../css/styles/docco.css" />
 
@@ -47,41 +47,42 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 	</div>
 </div>
 
-<div class="title">MySQL - Opgave</div>
+<div class="title">MySQL - Fremmednøgler</div>
 
-<h1>Opgave</h1>
+<p>Video: <a href="https://youtu.be/4_NPdw2Anf8" target="_blank">https://youtu.be/4_NPdw2Anf8</a></p>
 
-<p>Lav følgende database, og indsæt minimum</p>
+<p>MySQL er en relations database, og man skaber relationerne mellem tabellerne ved hjælp af nøgler. Relationerne skabes ved at man forbinder to felter med hinanden, og kaldes et <span class="inl_cmd">foreign key relationship</span>. Det vil ofte være i <span class="inl_cmd">en til mange</span> relationer, hvor "hjemmenøglen" er tabellens unikke felt. Det smarte ved det er, at databasen bliver i stand til at forhindre fejl. Fremmednøgler kan korrigere for at der bliver slettet data som en anden tabel er afhængig af.</p>
 
-<ul class="disc">
-	<li>2 kunder</li>
-	<li>4 ordrer (2 til hver kunde</li>
-	<li>5 produkter (hvoraf 4 er købt af kunder)</li>
-</ul>
+<p>Forestil dig en tabel med lærere, hvoraf nogle er mentorer og der er oprettet en selvstændig tabel der omhandler mentorer. For at undgå redundans vil man igennem normaliseringsprocessen sørge for at data kun står et sted, og derfor vil mentortabellen være afhængig af data i lærertabellen. Fremmednøglen forhindrer at man kan slettet en lærer i lærertabellen, hvis den bliver anvendt i mentortabellen.  </p>
 
-<p>Sikr dig ved hjælp af fremmednøgler, at man ikke kan slette hverken kunder eller ordrer der er i anvendelse</p>
+<p>I denne guide vil vi oprette en fremmednøgle mellem de to tabeller <span class="inl_cmd">klasser_og_mentorer</span> og <span class="inl_cmd">lærere</span></p>
 
-<h1>ER-diagram</h1>
+<h1>Krav til fremmednøgler</h1>
 
-<figure id="">
+<p>For at man kan oprette relationer mellem tabeller kræver det at databeserne er af typen <span class="inl_cmd">InnoDB</span> (som er standard for MySQL), og at de har et index. så det eneste vi skal have gjort er, at sikre os at feltet som skal have koblet fremmednøglen på sig er indekseret.</p>
 
-	<img class="p90" src="images/mysql_erdiagram_opgave.svg" alt="" title="" />
+<h1>Indekser et felt</h1>
 
-	<figcaption></figcaption>
+<p>Her vil blive gjort </p>
 
-</figure>
 
-<h1>Detaljeret diagram</h1>
-
-<figure id="">
-
-	<img class="p90" src="images/mysql_erdiagram_opgave_detaljeret.svg" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
+<h2>Opret indeks kommando</h2>
 
 <p></p>
+
+<pre>
+	<code class="sql">
+ALTER TABLE `klasser_og_mentorer` ADD INDEX(`Mentor`);
+	</code>
+</pre>
+<h2>Vis indeks</h2>
+
+<pre>
+	<code class="sql">
+SHOW INDEX FROM klasser_og_mentorer;
+	</code>
+</pre>
+
 <p></p>
 
 <p></p>
