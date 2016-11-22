@@ -290,8 +290,8 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 <pre class="ubuntu_terminal">
 >>> i=0 <span class="red">--&gt; variablen i sættes til 0</span>
 >>> while i&lt;5: <span class="red">--&gt; Så længe i er mindre end 5</span>
-...     print(i) <span class="red">--&gt; udskriv i</span>
-...     i +=1 <span class="red">--&gt; læg 1 til i</span>
+...&nbsp;&nbsp;&nbsp;&nbsp;print(i) <span class="red">--&gt; udskriv i</span>
+...&nbsp;&nbsp;&nbsp;&nbsp;i +=1 <span class="red">--&gt; læg 1 til i</span>
 ... 
 0
 1
@@ -301,6 +301,28 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 </pre>
 
 <p>For hver gang løkken kører bliver der lagt en til <span class="inl_cmd">i</span>. Når <span class="inl_cmd">i</span> rammer værdien <span class="inl_cmd">5</span> køres <span class="inl_cmd">while</span>-løkken ikke mere.</p>
+
+<h1>Løkker i løkker</h1>
+
+<p>Her vi vi anvende en <span class="inl_cmd">while</span>-løkke i et <span class="inl_cmd">for</span>-løkke til at udskrive tallene i 4 tabellen:</p>
+
+<pre class="ubuntu_terminal">
+>>> for i in range(1,41):
+...&nbsp;&nbsp;&nbsp;&nbsp;while i%2==0:
+...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print(i)
+...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break
+...
+4
+8
+12
+16
+20
+24
+28
+32
+36
+40
+</pre>
 
 
 <h1>Output på en række</h1>
@@ -313,6 +335,69 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 ... 
 1 - 2 - 3 - 4 - 5 - 6 - 7 - 8 - 9 - 10 -
 </pre>
+
+<h1>Opgaver</h1>
+
+<h2>Trekanttal</h2>
+
+<p>Udskriv de første 20 trekantal givet ved formlen:</p>
+
+<figure id="">
+
+	<img class="p40"src="images/programmering_trekantformel.svg" alt="" title="" />
+
+	<figcaption>Trekantformlen</figcaption>
+
+</figure>
+<h2>Fibonaggi tal</h2>
+
+<p>Fibonaccitallene er en talrække, som har følgende egenskab. Hvis man dividerer et tal i rækken med det forgående tal, så vil dette tal tilnærme sig værdien &phi; (1.6180339...) som også bliver kaldt det gyldne snit. </p>
+
+<p>Fibonaccitalrækken er: 1, 1, 2, 3, 5, 8, 13, 21 ... </p>
+
+<p>Man kan udregne &phi; ud fra følgende formel baseret på fibonaccitallene hvor man tager et fibonaccital og dividerer det med det efterfølgende.</p>
+
+<figure id="p60">
+
+	<img src="images/programmering_formel_for_phi.svg" alt="" title="" />
+
+	<figcaption>Formel for &phi; ud fra fibonaccitallene</figcaption>
+
+</figure>
+
+<p>Opgaven er at lave en kode der tager talrækken: 0, 1, 2, 3, 4, 5 .... og laver den om til fibonaccital. på følgende måde:</p>
+
+<ul class="none">
+	<li>0 + 1 = 1</li>
+	<li>1 + 2 = 3</li>
+	<li>2 + 3 = 5</li>
+	<li>3 + 5 = 8</li>
+	<li>5 + 8 = 13</li>	
+</ul>
+
+<p>Koden skal udregne de første 20 fibonaggital: Her er en forklaring på koden:</p>
+
+<ol class="">
+	<li>Lav to variabler a, b og sæt dem til henholdsvis 0 og 1</li>
+	<li>lav en forløkke der kører op til 20 gange baseret på i</li>
+	<li>lad i vokse med en hver gang koden køres</li>
+	<li>Udskriv a, hvis den er stærre end 0</li>
+	<li>Gem den gamle værdi for a i en ny variabel (f.eks: old_a)</li>
+	<li>Sæt a = b</li>
+	<li>Sæt b = b + den gamle værdi for a</li>
+</ol>
+
+<p>Koden skal give nedestående output</p>
+
+<pre class="ubuntu_terminal">
+1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987 1597 2584 4181 6765 
+
+------------------
+(program exited with code: 0)
+Press return to continue
+</pre>
+<p></p>
+<p></p>
 
 <p></p>
 <p></p>
