@@ -66,13 +66,23 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <p>Når programmet tastes ind kommer det til at se ud som følger</p>
 
+<pre>
+	<code class="python">
+from fractions import Fraction 
+
+def brøkregner(a,b):
+	floor= a//b
+	tæller = (a-(floor*b))
+	restbrøk = Fraction(tæller,b)
+	print("Heltallet er {0} og brøken er {1}".format(floor,restbrøk)) 
+
+brøkregner(45,37)
+	</code>
+</pre>
+
 <pre class="ubuntu_terminal">
->>> def brøkregner():
-...     a=int(input("Skriv tæller: "))
-...     b=int(input("Skriv nævner: "))
-...     print(a/b)
-... 
->>>
+Heltallet er 1 og brøken er 8/37
+Press any key to continue . . .
 </pre>
 
 <p>Vi tager det linie for linie:</p>
