@@ -173,7 +173,8 @@ SELECT * FROM mentorer WHERE Navn LIKE 'Thomas%';
 
 <pre>
 	<code class="SQL">
-SELECT * FROM klasser_og_mentorer, mentorer WHERE klasser_og_mentorer.mentor='tj' AND mentorer.mentor="tj";
+SELECT * FROM klasser_og_mentorer, mentorer 
+WHERE klasser_og_mentorer.mentor='tj' AND mentorer.mentor="tj";
 	</code>
 </pre>
 
@@ -230,7 +231,8 @@ VALUES ('dd', 'Dennis Dinesen', '20', '23344520', 'dd@fakemail.dk')
 
 <pre>
 	<code class="sql">
-UPDATE mentorer SET Navn = 'Dennis Dahl' WHERE mentorer.Mentor = 'dd'
+UPDATE mentorer SET Navn = 'Dennis Dahl' 
+WHERE mentorer.Mentor = 'dd'
 	</code>
 </pre>
 
@@ -298,7 +300,8 @@ ADD fag2 VARCHAR(10) NOT NULL AFTER fag1;
 
 <pre>
 	<code class="sql">
-ALTER TABLE lærere change Mentor Lærer varchar(3);
+ALTER TABLE lærere 
+CHANGE Mentor Lærer varchar(3);
 	</code>
 </pre>
 
@@ -316,7 +319,8 @@ ALTER TABLE lærere change Mentor Lærer varchar(3);
 
 <pre>
 	<code class="sql">
-ALTER TABLE lærere MODIFY Navn varchar(60) NOT NULL;
+ALTER TABLE lærere 
+MODIFY Navn varchar(60) NOT NULL;
 	</code>
 </pre>
 

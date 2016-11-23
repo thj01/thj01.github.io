@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
 <svg
    xmlns:xhtml="http://www.w3.org/1999/xhtml"
    xmlns:dc="http://purl.org/dc/elements/1.1/"
@@ -6,15 +8,48 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="157.32001mm"
+   height="46.543179mm"
+   viewBox="0 0 557.4331 164.91677"
+   id="svg2"
    version="1.1"
-   id="svg5457"
-   viewBox="0 0 522.00003 42"
-   height="11.853333mm"
-   width="147.32001mm">
+   inkscape:version="0.91 r"
+   sodipodi:docname="mysql_erd_03.svg">
   <defs
-     id="defs5459" />
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.4"
+     inkscape:cx="248.62547"
+     inkscape:cy="-6.2423731"
+     inkscape:document-units="px"
+     inkscape:current-layer="g4146-6"
+     showgrid="false"
+     showguides="true"
+     inkscape:guide-bbox="true"
+     fit-margin-top="5"
+     fit-margin-left="5"
+     fit-margin-right="5"
+     fit-margin-bottom="5"
+     inkscape:window-width="1855"
+     inkscape:window-height="1176"
+     inkscape:window-x="65"
+     inkscape:window-y="24"
+     inkscape:window-maximized="1">
+    <sodipodi:guide
+       position="214.80274,100.01968"
+       orientation="0,1"
+       id="guide4256" />
+  </sodipodi:namedview>
   <metadata
-     id="metadata5462">
+     id="metadata7">
     <rdf:RDF>
       <cc:Work
          rdf:about="">
@@ -26,102 +61,41 @@
     </rdf:RDF>
   </metadata>
   <g
-     transform="translate(-82.961165,-192.877)"
-     id="layer1">
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-145.56917,-111.91539)">
     <g
-       transform="translate(82.961165,192.877)"
-       id="g6009">
-      <rect
-         style="fill:#ffffff;stroke:#000000;stroke-width:2"
-         x="361"
-         y="1"
-         width="160"
-         height="40"
-         rx="4"
-         ry="4"
+       id="g4140"
+       transform="translate(293.28571,215.64792)">
+      <path
+         id="path4142"
          pointer-events="none"
-         id="rect6011" />
+         stroke-miterlimit="10"
+         d="m -8.7900001,-34.884286 80.0000001,0"
+         inkscape:connector-curvature="0"
+         style="fill:none;stroke:#000000;stroke-miterlimit:10" />
+      <rect
+         id="rect4144"
+         pointer-events="none"
+         ry="10"
+         rx="10"
+         height="100"
+         width="120"
+         y="-84.714287"
+         x="-129"
+         style="fill:#ffffff;stroke:#000000;stroke-width:2" />
       <g
-         transform="translate(383.5,14.5)"
-         id="g6013">
+         id="g4146"
+         transform="translate(-117.5,-41.214286)">
         <switch
-           id="switch6015">
+           id="switch4148">
           <foreignObject
-             style="overflow:visible;"
-             pointer-events="all"
-             width="114"
+             requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
              height="12"
-             requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
-            <xhtml:div
-               style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 116px; white-space: nowrap; word-wrap: normal; text-align: center;">
-              <xhtml:div
-                 style="display:inline-block;text-align:inherit;text-decoration:inherit;">Klasser_og_mentorer</xhtml:div>
-            </xhtml:div>
-          </foreignObject>
-          <text
-             style="font-size:12px;font-family:Helvetica;text-anchor:middle;fill:#000000"
-             x="57"
-             y="12"
-             font-size="12px"
-             id="text6017">Klasser_og_mentorer</text>
-        </switch>
-      </g>
-      <rect
-         style="fill:#ffffff;stroke:#000000;stroke-width:2"
-         x="218"
-         y="1"
-         width="100"
-         height="40"
-         rx="4"
-         ry="4"
-         pointer-events="none"
-         id="rect6019" />
-      <g
-         transform="translate(243.5,14.5)"
-         id="g6021">
-        <switch
-           id="switch6023">
-          <foreignObject
-             style="overflow:visible;"
-             pointer-events="all"
-             width="48"
-             height="12"
-             requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
-            <xhtml:div
-               style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 50px; white-space: nowrap; word-wrap: normal; text-align: center;">
-              <xhtml:div
-                 style="display:inline-block;text-align:inherit;text-decoration:inherit;">Mentorer</xhtml:div>
-            </xhtml:div>
-          </foreignObject>
-          <text
-             style="font-size:12px;font-family:Helvetica;text-anchor:middle;fill:#000000"
-             x="24"
-             y="12"
-             font-size="12px"
-             id="text6025">Mentorer</text>
-        </switch>
-      </g>
-      <rect
-         style="fill:#ffffff;stroke:#000000;stroke-width:2"
-         x="1"
-         y="1"
-         width="160"
-         height="40"
-         rx="4"
-         ry="4"
-         pointer-events="none"
-         id="rect6027" />
-      <g
-         transform="translate(32.5,14.5)"
-         id="g6029">
-        <switch
-           id="switch6031">
-          <foreignObject
-             style="overflow:visible;"
-             pointer-events="all"
              width="96"
-             height="12"
-             requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+             pointer-events="all"
+             style="overflow:visible;">
             <xhtml:div
                style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 96px; white-space: nowrap; word-wrap: normal; text-align: center;">
               <xhtml:div
@@ -129,37 +103,189 @@
             </xhtml:div>
           </foreignObject>
           <text
-             style="font-size:12px;font-family:Helvetica;text-anchor:middle;fill:#000000"
-             x="48"
-             y="12"
+             id="text4150"
              font-size="12px"
-             id="text6033">Klasse_og_elever</text>
+             y="12"
+             x="48"
+             style="font-size:12px;font-family:Helvetica;text-anchor:middle;fill:#000000">Klasse_og_elever</text>
         </switch>
       </g>
       <path
-         style="fill:none;stroke:#000000;stroke-miterlimit:10"
-         d="m 318,21 20,0 q 10,0 1.5,0 l -4.25,0 Q 331,21 341,21 l 20,0"
-         stroke-miterlimit="10"
+         id="path4152"
          pointer-events="none"
-         id="path6035" />
+         stroke-miterlimit="10"
+         d="m 191.21,-34.884286 80,0"
+         inkscape:connector-curvature="0"
+         style="fill:none;stroke:#000000;stroke-miterlimit:10" />
       <path
-         style="fill:none;stroke:#000000;stroke-miterlimit:10"
-         d="m 353,25 0,-8 m 8,0 -8,4 8,4"
-         stroke-miterlimit="10"
+         id="path4154"
          pointer-events="none"
-         id="path6037" />
-      <path
-         style="fill:none;stroke:#000000;stroke-miterlimit:10"
-         d="m 160.83,21.17 20,0 q 10,0 8.75,0 l -0.62,0 q -0.63,0 9.37,0 l 20,0"
          stroke-miterlimit="10"
+         d="m 131,-84.714286 60,50 -60,50 -60,-50 z"
+         inkscape:connector-curvature="0"
+         style="fill:#ffffff;stroke:#000000;stroke-width:2;stroke-miterlimit:10" />
+      <switch
+         id="switch4158"
+         transform="translate(99.785714,-58.142857)">
+        <foreignObject
+           style="overflow:visible;"
+           pointer-events="all"
+           width="60"
+           height="38"
+           requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+          <xhtml:div
+             style="display: inline-block; font-size: 17px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 62px; white-space: nowrap; word-wrap: normal; text-align: center;">
+            <xhtml:div
+               style="display:inline-block;text-align:inherit;text-decoration:inherit;">
+              <xhtml:font
+                 style="font-size: 12px">Klasser_og</xhtml:font>
+              <xhtml:div>
+                <xhtml:font
+                   style="font-size: 12px">_mentorer</xhtml:font>
+              </xhtml:div>
+            </xhtml:div>
+          </xhtml:div>
+        </foreignObject>
+      </switch>
+      <rect
+         id="rect4162"
          pointer-events="none"
-         id="path6039" />
-      <path
-         style="fill:none;stroke:#000000;stroke-miterlimit:10"
-         d="m 210.33,25.17 0,-8 m 8,0 -8,4 8,4"
-         stroke-miterlimit="10"
-         pointer-events="none"
-         id="path6041" />
+         ry="10"
+         rx="10"
+         height="100"
+         width="120"
+         y="-84.714287"
+         x="271"
+         style="fill:#ffffff;stroke:#000000;stroke-width:2" />
+      <g
+         id="g4164"
+         transform="translate(311.5,-41.214286)">
+        <switch
+           id="switch4166">
+          <foreignObject
+             requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
+             height="12"
+             width="38"
+             pointer-events="all"
+             style="overflow:visible;">
+            <xhtml:div
+               style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 40px; white-space: nowrap; word-wrap: normal; text-align: center;">
+              <xhtml:div
+                 style="display:inline-block;text-align:inherit;text-decoration:inherit;">Lærere</xhtml:div>
+            </xhtml:div>
+          </foreignObject>
+          <text
+             id="text4168"
+             font-size="12px"
+             y="12"
+             x="19"
+             style="font-size:12px;font-family:Helvetica;text-anchor:middle;fill:#000000">Lærere</text>
+        </switch>
+      </g>
+      <g
+         id="g4146-6"
+         transform="translate(96.175339,-50.434002)" />
+      <g
+         id="g4146-6-4"
+         transform="translate(-37.114641,-130.05673)">
+        <switch
+           id="switch4148-2-9">
+          <foreignObject
+             requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
+             height="12"
+             width="96"
+             pointer-events="all"
+             style="overflow:visible;">
+            <xhtml:div
+               style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 96px; white-space: nowrap; word-wrap: normal; text-align: center;">
+              <xhtml:div
+                 style="display:inline-block;text-align:inherit;text-decoration:inherit;">Klasse_og_elever</xhtml:div>
+            </xhtml:div>
+          </foreignObject>
+          <text
+             id="text4150-8-1"
+             font-size="12px"
+             y="91.285713"
+             x="36.214287"
+             style="font-size:12px;font-family:Helvetica;text-anchor:middle;fill:#000000">1</text>
+        </switch>
+      </g>
+      <g
+         id="g4146-6-4-7"
+         transform="translate(27.982234,-130.82863)">
+        <switch
+           id="switch4148-2-9-8"
+           transform="translate(0,0.75761441)">
+          <foreignObject
+             requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
+             height="12"
+             width="96"
+             pointer-events="all"
+             style="overflow:visible;">
+            <xhtml:div
+               style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 96px; white-space: nowrap; word-wrap: normal; text-align: center;">
+              <xhtml:div
+                 style="display:inline-block;text-align:inherit;text-decoration:inherit;">Klasse_og_elever</xhtml:div>
+            </xhtml:div>
+          </foreignObject>
+          <text
+             id="text4150-8-1-8"
+             font-size="12px"
+             y="91.285713"
+             x="36.214287"
+             style="font-size:12px;font-family:Helvetica;text-anchor:middle;fill:#000000">1</text>
+        </switch>
+      </g>
+      <g
+         id="g4146-6-4-2"
+         transform="translate(162.66371,-130.31743)">
+        <switch
+           id="switch4148-2-9-1">
+          <foreignObject
+             requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
+             height="12"
+             width="96"
+             pointer-events="all"
+             style="overflow:visible;">
+            <xhtml:div
+               style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 96px; white-space: nowrap; word-wrap: normal; text-align: center;">
+              <xhtml:div
+                 style="display:inline-block;text-align:inherit;text-decoration:inherit;">Klasse_og_elever</xhtml:div>
+            </xhtml:div>
+          </foreignObject>
+          <text
+             id="text4150-8-1-0"
+             font-size="12px"
+             y="91.553574"
+             x="36.035717"
+             style="font-size:12px;font-family:Helvetica;text-anchor:middle;fill:#000000">M</text>
+        </switch>
+      </g>
+      <g
+         id="g4146-6-4-4"
+         transform="translate(226.68157,-130.13886)">
+        <switch
+           id="switch4148-2-9-7">
+          <foreignObject
+             requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
+             height="12"
+             width="96"
+             pointer-events="all"
+             style="overflow:visible;">
+            <xhtml:div
+               style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 96px; white-space: nowrap; word-wrap: normal; text-align: center;">
+              <xhtml:div
+                 style="display:inline-block;text-align:inherit;text-decoration:inherit;">Klasse_og_elever</xhtml:div>
+            </xhtml:div>
+          </foreignObject>
+          <text
+             id="text4150-8-1-86"
+             font-size="12px"
+             y="91.285713"
+             x="36.214287"
+             style="font-size:12px;font-family:Helvetica;text-anchor:middle;fill:#000000">1</text>
+        </switch>
+      </g>
     </g>
   </g>
 </svg>
