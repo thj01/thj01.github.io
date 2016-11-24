@@ -6,16 +6,19 @@
 
 	<title>Fotoprogrammer til Linux  - Thomas Jensen</title>
 
-	<link rel="stylesheet" href="../css/styles/docco.css" />
+	<script src="js/toc2.js" type="text/javascript"></script>
 
-	<link rel="stylesheet" href="../css/style.css" />
-
-	<link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono|Ubuntu|Ubuntu+Condensed' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="./css/style.css" />
 	
-	<script src="../js/toc2.js" type="text/javascript"></script>
-	<script src="https://code.jquery.com/jquery-2.2.2.js"></script>
-	<script src="../js/highlight.pack.js" type="text/javascript"></script>
-	<script>hljs.initHighlightingOnLoad();</script>
+	<link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono|Ubuntu|Ubuntu+Condensed' rel='stylesheet' type='text/css'>
+
+	<script src="http://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+	
+	<script> 
+		$(function(){
+			$("#license").load("license.html"); 
+		});
+    </script> 
 
 </head>
 
@@ -32,10 +35,8 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 <html>
 
 <body onload="generateTOC(document.getElementById('toc'));">
-
+	
 <footer id="license"></footer>
-
-	<script> $( "#license" ).load( "./license.html" ); </script>
 	
 <div id="toggle" ><span id="indholds_ikon"></span>
 
