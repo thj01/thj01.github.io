@@ -45,7 +45,9 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <p>Video: <a href="https://youtu.be/4_NPdw2Anf8" target="_blank">https://youtu.be/4_NPdw2Anf8</a></p>
 
-<p>MySQL er en relations database, og man skaber relationerne mellem tabellerne ved hjælp af nøgler. Relationerne skabes ved at man forbinder to felter med hinanden, og kaldes et <span class="inl_cmd">foreign key relationship</span>. Det vil ofte være i <span class="inl_cmd">en til mange</span> relationer, hvor "hjemmenøglen" er tabellens unikke felt. Det smarte ved det er, at databasen bliver i stand til at forhindre fejl. Fremmednøgler kan korrigere for at der bliver slettet data som en anden tabel er afhængig af.</p>
+<p>MySQL er en relations database, og man skaber relationerne mellem tabellerne ved hjælp af nøgler. Relationerne skabes ved at man forbinder to felter med hinanden, og kaldes et <span class="inl_cmd">foreign key relationship</span>. De to nøgletyper vi vil anvende i denne sammenhæng er <span class="inl_cmd">primary key</span> og <span class="inl_cmd">foreign key</span>, som også bliver kaldt for en <span class="inl_cmd">fremmednøgle</span>.
+
+<p>Relationen kan mellem <span class="inl_cmd">primary key</span> og <span class="inl_cmd">foreign key</span> kan have mange funktionaliteter, men vi vil i denne sammenhæng anvende dem til at sikre, at data der anvendes andre steder ikke kan blive slettet.</p>
 
 <p>Forestil dig en tabel med lærere, hvoraf nogle er mentorer og der er oprettet en selvstændig tabel der omhandler mentorer. For at undgå redundans vil man igennem normaliseringsprocessen sørge for at data kun står et sted, og derfor vil mentortabellen være afhængig af data i lærertabellen. Fremmednøglen forhindrer at man kan slettet en lærer i lærertabellen, hvis den bliver anvendt i mentortabellen.  </p>
 
@@ -53,13 +55,85 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <h1>Krav til fremmednøgler</h1>
 
-<p>For at man kan oprette relationer mellem tabeller kræver det at databeserne er af typen <span class="inl_cmd">InnoDB</span> (som er standard for MySQL), og at de har et index. så det eneste vi skal have gjort er, at sikre os at feltet som skal have koblet fremmednøglen på sig er indekseret.</p>
+<p>For at man kan oprette relationer mellem tabeller kræver det at databeserne er af typen <span class="inl_cmd">InnoDB</span> (som er standard for MySQL), og at felterne der skal anvendes er indekseret. At et felt er indekseret betyder at MySQL kender til feltet.</p>
 
 <h1>Indekser et felt</h1>
 
-<p>Her vil blive gjort </p>
+<h2>I phpMyAdmin</h2>
 
+<p>Åbn tabellen <span class="inl_cmd">klasser_og_mentorer</span> i <span class="inl_cmd">Struktur</span>-fanen.</p>
 
+<figure id="">
+
+	<img class="p90" src="images/mysql_fremmednoegle_01.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<figure id="">
+
+	<img class="p90" src="images/mysql_fremmednoegle_02.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<figure id="">
+
+	<img class="p90" src="images/mysql_fremmednoegle_03.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<figure id="">
+
+	<img class="p90" src="images/mysql_fremmednoegle_04.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<figure id="">
+
+	<img class="p90" src="images/mysql_fremmednoegle_05.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<figure id="">
+
+	<img class="p90" src="images/mysql_fremmednoegle_06.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<figure id="">
+
+	<img class="p90" src="images/mysql_fremmednoegle_07.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<figure id="">
+
+	<img class="p90" src="images/mysql_fremmednoegle_08.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<figure id="">
+
+	<img class="p90" src="images/mysql_fremmednoegle_09.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
 <h2>Opret indeks kommando</h2>
 
 <p></p>
