@@ -114,6 +114,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <h1>Dannelse af farve</h1>
 
+<!--
 <p>Når vi taler om digitale farver taler vi om <span class="inl_cmd">additive</span> farver - altså farver der bliver lagt sammen.</p>
 
 <figure id="">
@@ -125,6 +126,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 </figure>
 
 <p>På illustrationen herover er taget fra <a href="https://da.wikipedia.org/wiki/Farvesystem" target="_blank">https://da.wikipedia.org/wiki/Farvesystem</a>, som kort gennemgang af farvesystemer.</p>
+-->
 
 
 <h2>Grundfarver</h2>
@@ -217,23 +219,23 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <h2>Digitale farver</h2>
 
-<p>Digitale farverdannelse anvender den substraktive farvemodel, dvs. <span class="inl_cmd">RGB</span> (<span class="bold">R</span>ed <span class="bold">G</span>reen <span class="bold">B</span>lue) farver. Hver af disse farver kan beskrives 256 niveauer.</p>
+<p>Digitale farverdannelse anvender den substraktive farvemodel, dvs. <span class="inl_cmd">RGB</span> (<span class="bold">R</span>ed <span class="bold">G</span>reen <span class="bold">B</span>lue) farver. Hver af disse farver kan beskrives 256 niveauer og det gøres med <span class="inl_cmd">hexadecimale</span>tal, hvor hver position har værdien op til 16 (hexa).For at beskrive tallen anvendes værdierne 1, 2 ... 9, A, B, C, D, E, F.</p>
 
-<p><span class="inl_cmd">RGB</span> farver er beskrevet ved hjælp af hashtag (<span class="inl_cmd">#</span>) efterfulgt af 6 hexadecimale cifre, der parvist definerer hver farve: #<span class="red">XX</span><span class="green">XX</span><span class="blue">XX</span>. Herunder er farverne vist hver for sig. Læg mærke til sort, som er defineret ved at skærmen reelt set er slukket (intet signal) og at hvis er fuld udblæsning på alle RGB farver.</p>
+<p><span class="inl_cmd">RGB</span> farver er beskrevet ved hjælp af hashtag (<span class="inl_cmd">#</span>) efterfulgt af 6 hexadecimale cifre, der parvist definerer hver farve: #<span class="bold"><span class="red">XX</span><span class="green">XX</span><span class="blue">XX</span></span>. Herunder er farverne vist hver for sig. Læg mærke til sort, som er defineret ved at skærmen reelt set er slukket (intet signal) og at hvis er fuld udblæsning på alle RGB farver.</p>
 
 <table class="centreret fixed">
 	<tbody>
 		<tr>
 			<td style="background-color:#000000"><span class="white"><br/>Sort <br/><br/>#000000 <br/><br/></span></td>
-			<td style="background-color:#FF0000"><br/>Rød <br/><br/>#FF0000<br/><br/></td>
-			<td style="background-color:#00FF00"><br/>Grøn <br/><br/>#00FF00<br/><br/></td>
-			<td style="background-color:#0000FF"><br/>Blå <br/><br/>#0000FF<br/><br/></td>
-			<td style="background-color:#FFFFFF"><br/>Hvid <br/><br/>#FFFFFF<br/><br/></td>
+			<td style="background-color:#FF0000"><span class="white"><br/>Rød <br/><br/>#<span class="bold">FF</span>0000</span><br/><br/></td>
+			<td style="background-color:#00FF00"><br/>Grøn <br/><br/>#00<span class="bold">FF</span>00<br/><br/></td>
+			<td style="background-color:#0000FF"><br/>Blå <br/><br/><span class="white">#0000<span class="bold">FF</span></span><br/><br/></td>
+			<td style="background-color:#FFFFFF"><br/>Hvid <br/><br/>#<span class="bold">FF</span><br/><br/></td>
 		</tr>
 	</tbody>
 </table>
 
-<p>For at se nuancerne kan vi anvende CSS3 til at vise alle 256 nuancer. Herunder er browseren programmeret til at starte med den laveste værdi (<span class="inl_cmd">00</span> og lave en glidende overgang til den højeste værdi (<span class="inl_cmd">FF</span>). Har du forskellige enheder hos dig, f.eks. andre computere, bærbare, tablets og telefoner kan du prøve at kigge på hvordan farverne herover og nuanceforløbet herunder bliver vist.</p>
+<p>For at se nuancerne kan vi anvende CSS3 til at vise alle 256 nuancer. Herunder er browseren programmeret til at starte med den laveste værdi (<span class="inl_cmd">00</span> og lave en glidende overgang til den højeste værdi (<span class="inl_cmd">FF</span>).</p>
 
 
 <p>Rød ( #<span class="red">00</span>0000 - #<span class="red">FF</span>0000 )</p>
@@ -260,6 +262,31 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 <p>Hvis du ønsker at eksperimentere med farverne kan du prøve nedestående side:</p>
 
 <p><a href="http://www.colorsontheweb.com/colorwizard.asp" target="_blank">http://www.colorsontheweb.com/colorwizard.asp</a></p>
+
+<h2>Farveoutput</h2>
+
+<p>Har du forskellige enheder hos dig, f.eks. andre computere, bærbare, tablets og telefoner kan du prøve at kigge på hvordan farverne, farveovergangene og gråtonerne bliver vist. Herunder kan du se et eksempel fra min DELL 100% sRGB skærm (øverst) og en god standard Asus skærm (nederst). Billedet er taget med en Nexus 5 telefon, hvor skærmene er under samme lysforhold. De farvenuance bølger du kan se ved output fra Dell skærmen skyldes <a href="https://en.wikipedia.org/wiki/Moir%C3%A9_pattern" target="_blank">moire</a> effekten pga. Dellskærmens høje DPI-opløsning</p>
+
+<p>Dell 24" skærm </p>
+
+<figure id="">
+
+	<img class="p90" src="images/farver_srgbh_dell_top_asus_bottom.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Asus 23" skærm</p>
+
+<p>Hvis vi kun vælger at forholde os til farverne på de to skærme er det tydeligt at se at der er forskel på dem. De "ens" farver repræsenterer nøjagtigt de samme værdier, da de begge er beregnet af computeren ud fra hjemmesiden og vist på skærmen. Men det er tydeligt at se at farverne er mere klare og "levende" ved Dell skærmen.</p>
+
+<p>Det som man igen skal tage højde for her er, at telefonens kamera og software har tolket skærmenes output og gemt det kameraet så i de billedfiler jeg har lagt op her. Så billederne er ikke et udtryk for den synlige forskel der er i mit setup, hvor det er langt tydligere at Dell skærmen er mere levende, og langt mere sprød i farverne end Asus skærmen.</p>
+
+<h2>Problemet med digitale farver</h2>
+
+<p>Problemet med digitale farver ligger ikke i selve teknikken. Computeren og programmerne har fuldstændig styr på den farve de vil vise. problemet ligger i de output-enheder computeren har, om det så end er en skærm, projektor eller printer. De enheder</p>
+
 
 
 <h1>Farverum</h1>
