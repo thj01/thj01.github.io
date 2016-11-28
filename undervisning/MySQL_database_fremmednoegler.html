@@ -55,7 +55,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <h1>Krav til fremmednøgler</h1>
 
-<p>For at man kan oprette relationer mellem tabeller kræver det at databeserne er af typen <span class="inl_cmd">InnoDB</span> (som er standard for MySQL), og at felterne der skal anvendes er indekseret. At et felt er indekseret betyder at MySQL kender til feltet.</p>
+<p>For at man kan oprette relationer mellem tabeller kræver det at databeserne er af typen <span class="inl_cmd">InnoDB</span> (som er standard for MySQL), og at felterne der skal anvendes er indekseret. At et felt er indekseret betyder at MySQL kender til feltet og derfor kan danne relationer mellem kendte felter.</p>
 
 <h1>Indekser et felt</h1>
 
@@ -71,6 +71,8 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 </figure>
 
+<p>Klik på <span class="inl_cmd">indeks</span>, for at se hvilke felter i tabellen der er er indekseret</p>
+
 <figure id="">
 
 	<img class="p90" src="images/mysql_fremmednoegle_02.png" alt="" title="" />
@@ -78,6 +80,8 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 	<figcaption></figcaption>
 
 </figure>
+
+<p>For at få feltet <span class="inl_cmd">Mentor</span> til at være indekseret, går du ud mod højre på linien og klikker på <span class="inl_cmd">Indeks</span>. I dette tilfælde er vinduet forstørret, så feltet står i menuen <span class="inl_cmd">Mere</span>.</p>
 
 <figure id="">
 
@@ -87,13 +91,17 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 </figure>
 
+<p>Bekræft at du vil oprette indekset</p>
+
 <figure id="">
 
-	<img class="p90" src="images/mysql_fremmednoegle_04.png" alt="" title="" />
+	<img class="p35" src="images/mysql_fremmednoegle_04.png" alt="" title="" />
 
 	<figcaption></figcaption>
 
 </figure>
+
+<p>Du kan kontrollere om indekset er oprettet ved at klikke på <span class="inl_cmd">indeks</span></p>
 
 <figure id="">
 
@@ -102,6 +110,13 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 	<figcaption></figcaption>
 
 </figure>
+
+
+
+
+<h1>Opret primær og fremmednøgle</h1>
+
+<p></p>
 
 <figure id="">
 
