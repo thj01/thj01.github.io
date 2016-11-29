@@ -68,10 +68,21 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <p>For at gemme og strukturere data skal der for hvert felt angives hvilken type data det indeholder. Det kan f.eks. være et tal, tekst eller tidsformat.</p>
 
-<h2>Primærnøgle</h2>
+<h2>Indeks-felt</h2>
 
-<p>For at kunne skabe sammenhæng i databasen bliver der defineret en primærnøgle i tabellerne, som anvendes til at sammenkæde de forskellige tabeller. Det kan f.eks. være en medarbejders initialer. Primærnøglen er også nødvendig for at der senere kan ændres på felter i posterne.</p>
+<p>For at felter i tabellerne kan indgå relationer mellem hinanden skal de være synlige for databasen. Det gøres ved at indeksere felterne. Det svarer til at der er et katalog, der angiver hvor de enkelte felter er. Alle felter kan indekseres, men man bør kun indeksere de felter der skal anvendes til at lave relationer med.</p>
 
+<h2>Unik-felt</h2>
+
+<p>Unikke felter er som indeks, men kræver at deres værdi ikke findes i andre felter. Det kan f.eks. være et personnummer.</p>
+
+<h2>Primær nøgle</h2>
+
+<p>En primær-nøgle er et felt, der ud over at være unikt også identificere en post i tabellen. Det kan f.eks. være et kunde ID eller en persons initialer</p>
+
+<h2>Fremmednøgler</h2>
+
+<p>Fremmenøgler er felter som har forbindelse til primærfelter, og hvor der er sat en binding op imellem dem. Fremmednøgler er afhængige af deres primærnøgler. Dette kan bruges til at opdatere felter, sådan at hvis primær nøglen ændres, så vil fremmednøglen også blive ændre. Det kan også anvendes til at sikre, at man ikke sletter en primærnøgle der er i anvendelse et andet sted i databasen.</p>
 
 
 <h1>Datatyper</h1>
