@@ -4,7 +4,7 @@
 #indholds_ikon:before {
 content:"☰";
 position: fixed;
-font-size: 2em;
+font-size: 1.3em;
 margin-left: 0px;
 padding: 5px;
 color: #e0e0e0;
@@ -33,7 +33,7 @@ div#toggle:hover div#toc {
 
 display: block;
 position: fixed;
-margin-top: 42px;
+margin-top: 30px;
 margin-left: -59px;
 padding: 10px 10px 10px 0px;
 background-color:rgba(6,6,6, 0.8);
@@ -49,7 +49,25 @@ transition: all 0.2s ease;
 
  }
 
+div#toggle:active div#toc {
 
+display: block;
+position: fixed;
+margin-top: 30px;
+margin-left: -59px;
+padding: 10px 10px 10px 0px;
+background-color:rgba(6,6,6, 0.8);
+
+}
+
+#toggle:active #indholds_ikon:before{ 
+
+color: #DD4814;
+-webkit-transition: all 0.2s ease;
+-moz-transition: all 0.2s ease;
+transition: all 0.2s ease;
+
+ }
 
 
 
