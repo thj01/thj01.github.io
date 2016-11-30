@@ -19,7 +19,11 @@
 		$(function(){
 			$("#license").load("../license.html"); 
 		});
-    </script> 
+    </script>
+    
+    <script type="text/javascript" async
+		src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+	</script>
 
 </head>
 
@@ -45,11 +49,17 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <h1>Lineære funktioner</h1>
 
+
+
 <p>Lineære funktioners normalform er:</p>
+<span class="latex">$$ y=ax+b $$</span>
 
 	<img class="math" src="images/funktioner_lineaerfunktion_01.svg" alt="" title="" />
 
 <p>Man kan finde ligningen til den lineære funktionen ved hjælp af to punkter på linien.</p>
+
+<span class="latex">$$ P=(x_1,y_1) \wedge Q=(x_2,y_2) $$</span>
+
 
 	<img class="math" src="images/funktioner_eksponentialfunktion_P.svg" alt="" title="" />
 	
@@ -501,11 +511,33 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 </figure>
 
-<p>Den differentierede funktion af <span class="math">f(x)</span> kaldes for <span class="math">f '(x)</span> - "f mærke af x". I dette tilfælde giver det:</p>
+<p>Den differentierede funktion af <span class="math">f(x)</span> kaldes for <span class="math">f '(x)</span> - "f mærke af x". Læg mærke til at <span class="math">c</span>-leddet forsvinder i den differentierede funktion. Vi kan altså ikke gå fra <span class="math">f '(x)</span> til <span class="math">f(x)</span> igen.</p>
 
 	<img class="math" src="images/funktioner_andengradsligning_toppunkt_fmaerke.svg" alt="" title="" />
 
-<p>Læg mærke til at <span class="math">c</span>-leddet forsvinder i den differentierede funktion. Vi kan altså ikke gå fra <span class="math">f '(x)</span> til <span class="math">f(x)</span> igen. </p>
+<p>Da vi ved at den differentierede værdi i toppunktet kan vi altså lave følgende udsagn:</p>
+
+	<img class="math" src="images/funktioner_andengradsligning_toppunkt_bevisx_01.svg" alt="" title="" />
+
+<p>Vi isolerer <span class="math">x</span></p>
+
+	<img class="math" src="images/funktioner_andengradsligning_toppunkt_bevisx_02.svg" alt="" title="" />
+	
+<p>Da vi nu kender x, kan vi indsætte denne værdi i den oprindelige ligning:</p>
+
+	<img class="math" src="images/funktioner_andengradsligning_toppunkt_bevisy_01.svg" alt="" title="" />
+
+<p>Vi kvadrerer og ganger ind i paranteser </p>
+
+	<img class="math" src="images/funktioner_andengradsligning_toppunkt_bevisy_02.svg" alt="" title="" />
+
+<p>Vi forkorter</p>
+
+	<img class="math" src="images/funktioner_andengradsligning_toppunkt_bevisy_03.svg" alt="" title="" />
+
+<p>Vi giver alle ledene fællesnævneren <span class="math">4a</span>:</p>
+
+	<img class="math" src="images/funktioner_andengradsligning_toppunkt_bevisy_04.svg" alt="" title="" />
 
 
 <p></p>
