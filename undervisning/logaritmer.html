@@ -303,33 +303,61 @@ Taget fra: https://da.wikipedia.org/wiki/Logaritme#/media/File:Log4.svg
 
 <p>Sæt:</p>
 
+	<div class="latex">$$ a = \frac{a}{b} \cdot b $$</div>
+
+<!--
 <img class="math" src="images/logaritme_bevis2_trick.svg" alt="" title="" />
+-->
 
 <p><span class="bold">Bevis 2</span></p>
 
+	<div class="latex">$$ a = \frac{a}{b} \cdot b ~\Leftrightarrow ~ log(a) = log\left( \frac{a}{b} \cdot b \right) ~\Leftrightarrow~ log(a) = log\left( \frac{a}{b} \right) +log(b) \Leftrightarrow ~log(a)-log(b) = log(\frac{a}{b}) $$</div>
+
+<!--
 <img class="math" src="images/logaritme_log_regneregel_fuld_bevis_2.svg" alt="" title="" />
+-->
 
 <p><span class="bold">Beviset opdelt og forklaret</span></p>
 
 <p>Først laver vi følgende sande udsagn</p>
 
+	<div class="latex">$$ a = \frac{a}{b} \cdot b $$</div>
+
+<!--
 <img class="math" src="images/logaritme_bevis2_trick.svg" alt="" title="" />
+-->
 
 <p>Anvend logaritmen på begge sider af lighedstegnet</p>
 
+	<div class="latex">$$ log(a) = log\left( \frac{a}{b} \cdot b \right) $$</div>
+
+<!--
 <img class="math" src="images/logaritme_log_regneregel_bevis_2_01.svg" alt="" title="" />
+-->
 
 <p>Regneregel 1 anvendes:</p>
 
+	<div class="latex">$$ log(a) = log\left( \frac{a}{b} \right) +log(b) $$</div>
+
+<!--
 <img class="math" src="images/logaritme_log_regneregel_bevis_2_02.svg" alt="" title="" />
+-->
 
 <p>Brøken isoleres:</p>
 
+	<div class="latex">$$ log(a)-log(b) = log(\frac{a}{b}) $$</div>
+
+<!--
 <img class="math" src="images/logaritme_log_regneregel_bevis_2_03.svg" alt="" title="" />
+-->
 
 <p>Beviset er hermed gennemført</p>
 
+	<div class="latex">$$ log(\frac{a}{b}) = log(a) - log(b) $$</div>
+
+<!--
 <img class="math" src="images/logaritme_log_regneregel_2.svg" alt="" title="" />
+-->
 
 <h2>Bevis regneregel 3</h2>
 
@@ -343,35 +371,67 @@ Taget fra: https://da.wikipedia.org/wiki/Logaritme#/media/File:Log4.svg
 
 <p>For at kunne gennemføre beviset laver vi først en værdi for <span class="math">\( \alpha \)</span> som omskrives ved hjælp af sætning 1.</p>
 
+	<div class="latex">$$ \alpha = log(a) \Leftrightarrow a = 10^\alpha $$</div>
+
+<!--
 <img class="math" src="images/logaritme_alpha.svg" alt="" title="" /> <br/>
+-->
 
 <p><span class="bold">Bevis 3</span></p>
 
+	<div class="latex">$$ log(a^x) = log((10^\alpha)^x) =  log(10^{\alpha \cdot x}) = \alpha \cdot x   =  log(a) \cdot x  $$</div>
+
+<!--
 <img class="math" src="images/logaritme_log_regneregel_fuld_bevis_3.svg" alt="" title="" />
+-->
 
 <p><span class="bold">Beviset opdelt og forklaret</span></p>
 
+	<div class="latex">$$ log(a^x) $$</div>
+
+<!--
 	<img class="math" src="images/logaritme_log_regneregel_bevis_3_01.svg" alt="" title="" />
+-->
 	
 <p>Vi anvender sætningen for <span class="math">\( \alpha \)</span> og omskriver</p>
 
+	<div class="latex">$$ log((10^\alpha)^x) $$</div>
+
+<!--
 	<img class="math" src="images/logaritme_log_regneregel_bevis_3_02.svg" alt="" title="" />
+-->
 	
 <p>Vi anvender regnereglen for potens: &nbsp;&nbsp;<span class="math">\( ({a^n})^m = a^{n \cdot m} \)</span></p>
-	
+
+	<div class="latex">$$ log(10^{\alpha \cdot x}) $$</div>
+
+<!--
 	<img class="math" src="images/logaritme_log_regneregel_bevis_3_03.svg" alt="" title="" />
+-->
 	
 <p>Vi anvender sætning 2</p>
+
+	<div class="latex">$$ \alpha \cdot x $$</div>
 	
+<!--
 	<img class="math" src="images/logaritme_log_regneregel_bevis_3_04.svg" alt="" title="" />
+-->
 
 <p>Vi erstatter <span class="math">\( \alpha \)</span> med dens <span class="math">\( log \)</span>-værdi</p>
+
+	<div class="latex">$$ log(a) \cdot x $$</div>						
 	
+<!--
 	<img class="math" src="images/logaritme_log_regneregel_bevis_3_05.svg" alt="" title="" />
+-->
 	
 <p>Beviset er hermed gennemført</p>
 
+	<div class="latex">$$ log(a^x) = x \cdot log(a) $$</div>
+
+<!--
 <img class="math" src="images/logaritme_log_regneregel_3.svg" alt="" title="" />
+-->
 
 <h2>Bevis regneregel 4</h2>
 
@@ -385,25 +445,46 @@ Taget fra: https://da.wikipedia.org/wiki/Logaritme#/media/File:Log4.svg
 
 <p><span class="bold">Bevis 3</span></p>
 
+	<div class="latex">$$ a^{log_a(x)} = x ~\Leftrightarrow~ log_b(a^{log_a(x)}) = log_b(x) ~\Leftrightarrow~ log_a(x) \cdot log_b(a) = log_b(x) ~\Leftrightarrow~ log_a(x) = \frac{ log_b(x) }{ log_b(a)} $$</div>
+
+<!--
 <img class="math" src="images/logaritme_log_regneregel_fuld_bevis_4.svg" alt="" title="" />
+-->
 
 <p><span class="bold">Beviset opdelt og forklaret</span></p>
 
 <p>For at komme frem til vores resultat opstiller vi følgende sande udsagn (sætning 3)</p>
 
+	<div class="latex">$$ a^{log_a(x)} = x $$</div>
+
+
+<!--
 <img class="math" src="images/logaritme_log_regneregel_bevis_4_01.svg" alt="" title="" />
+-->
 
 <p>Vi tager logaritmen med grundtallet <span class="math">\( b \)</span> på begge sider, altså: <span class="math">\( log_b \)</span> .</p>
 
+	<div class="latex">$$ log_b(a^{log_a(x)}) = log_b(x)  $$</div>
+
+<!--
 <img class="math" src="images/logaritme_log_regneregel_bevis_4_02.svg" alt="" title="" />
+-->
 
 <p>Vi anvender regneregel 3</p>
 
+	<div class="latex">$$ log_a(x) \cdot log_b(a) = log_b(x) $$</div>
+
+<!--
 <img class="math" src="images/logaritme_log_regneregel_bevis_4_03.svg" alt="" title="" />
+-->
 
 <p>Til sidst isolerer vi <span class="math">\( log_a(x) \)</span>.</p>
 
+	<div class="latex">$$ log_a(x) = \frac{ log_b(x) }{ log_b(a)} $$</div>
+
+<!--
 <img class="math" src="images/logaritme_log_regneregel_bevis_4_04.svg" alt="" title="" />
+-->
 
 <p>Beviset er hermed gennemført</p>
 
