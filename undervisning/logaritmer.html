@@ -20,6 +20,12 @@
 			$("#license").load("../license.html"); 
 		});
     </script> 
+    
+    <script type="text/javascript" async
+		src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+		MathJax.Hub.Config({ jax: ["input/TeX","output/HTML-CSS"], displayAlign: "left"
+ 		});
+	</script>
 
 </head>
 
@@ -81,75 +87,124 @@ Taget fra: https://da.wikipedia.org/wiki/Logaritme#/media/File:Log4.svg
 
 <p>Grundtallet 2 bliver anvendt i informationsteknologiske sammenhænge, da computere anvender det binære talsystem.</p>
 
-<p>Grundtallet <span class="math">e &asymp; 2,718281828</span> (også kaldet Eulers tal), er grundtallet i den naturlige logaritme, <span class="math">ln</span>. Den kaldes naturlig, da den kan anvendes i mange sammenhænge, hvor man forsøger at beskrive naturen, og den har mange praktiske anvendelsesmuligheder..</p>
+<p>Grundtallet <span class="math">\( e \approx 2,718281828 \)</span> (også kaldet Eulers tal), er grundtallet i den naturlige logaritme, <span class="math">\( ln \)</span>. Den kaldes naturlig, da den kan anvendes i mange sammenhænge, hvor man forsøger at beskrive naturen, og den har mange praktiske anvendelsesmuligheder..</p>
 
 <h1>Definitioner</h1>
 
 <p>Logaritmer </p>
 
-<p>Logaritmefunktionen <span class="math">log<sub>a</sub> (x)</span> er defineret på følgende måde:</p>
-
-<p>Definition 0</p>
-
-<img class="math" src="images/logaritme_loga_def0.svg" alt="" title="" />
+<p>Logaritmefunktionen <span class="math">\( log_a(x) \)</span> er defineret på følgende måde:</p>
 
 <p>Definition 1</p>
 
-<img class="math" src="images/logaritme_loga_def1.svg" alt="" title="" />
+	<div class="latex">$$ log_a(a^x) = x $$</div>
+
+<!--
+<img class="math" src="images/logaritme_loga_def0.svg" alt="" title="" />
+-->
 
 <p>Definition 2</p>
 
-<img class="math" src="images/logaritme_loga_def2.svg" alt="" title="" />
+
+	<div class="latex">$$ log_a(x) = y \Leftrightarrow a^y = x $$</div>
+
+<!--
+<img class="math" src="images/logaritme_loga_def1.svg" alt="" title="" />
+-->
 
 <p>Definition 3</p>
 
+	<div class="latex">$$ log_a(1) = 0 $$</div>
+
+
+<!--
+<img class="math" src="images/logaritme_loga_def2.svg" alt="" title="" />
+-->
+
+<p>Definition 4</p>
+
+	<div class="latex">$$ log_a(a) = 1 $$</div>
+
+<!--
 <img class="math" src="images/logaritme_loga_def3.svg" alt="" title="" />
+-->
 
 <h2>10-tals logoritmen</h2>
 
 <p></p>
 
-<p>Hvis der ikke er skrevet noget til logaritmefunktionen er det underforstået at det er 10-tals logaritmen: <span class="math">log<sub>10</sub> (x)</span>.</p>
+<p>Hvis der ikke er skrevet noget til logaritmefunktionen er det underforstået at det er 10-tals logaritmen: <span class="math">\( log_{10}(x) \)</span>.</p>
 
 <p>Der gælder altså:</p>
 
 <p>Sætning 1)</p>
 
+	<div class="latex">$$ log(x) = y \Leftrightarrow 10^y = x $$</div>
+
+<!--
 <p><img class="math" src="images/logaritme_log_def1.svg" alt="" title="" /></p>
+-->
 
 <p>Sætning 2)</p>
 
+	<div class="latex">$$ log(10^x) = x $$</div>
+
+<!--
 <p><img class="math" src="images/logaritme_log_def2.svg" alt="" title="" /></p>
+-->
 
 <p>Sætning 3)</p>
 
+	<div class="latex">$$ 10^{log(x)} = x $$</div>
+
+<!--
 <p><img class="math" src="images/logaritme_log_def3.svg" alt="" title="" /></p>
+-->
 
 <h1>Regneregler</h1>
 
 <p>De generelle regnereglerne for logaritmer er:</p>
 
+	<div class="latex">$$ for ~ a,b > 0 \wedge x \in \mathbb{R} $$</div>
+
+<!--
 <p><img src="images/logaritme_log_def_maengde.svg" alt="" title="" /></p>
+-->
 
 <p>1)</p>
 
+	<div class="latex">$$ log(a \cdot b) = log(a) + log(b) $$</div>
+
+<!--
 <img class="math" src="images/logaritme_log_regneregel_1.svg" alt="" title="" /> 	
+-->
 
 
 <p>2) </p>
 
+	<div class="latex">$$ log(\frac{a}{b}) = log(a) - log(b) $$</div>
+
+<!--
 <img class="math" src="images/logaritme_log_regneregel_2.svg" alt="" title="" />
+-->
 
 
 <p>3)</p>
 
+	<div class="latex">$$ log(a^x) = x \cdot log(a) $$</div>
+<!--
 <img class="math" src="images/logaritme_log_regneregel_3.svg" alt="" title="" />
+-->
 
 <p>Hvis man har behov for at omregne en logaritme fra en base til en anden anvendes følgende formel:</p>
 
 <p>4)</p>
 
+	<div class="latex">$$ log_a(x) = \frac{ log_b(x) }{ log_b(a)} $$</div>
+
+<!--
 <img class="math" src="images/logaritme_log_regneregel_4.svg" alt="" title="" />
+-->
 
 <h1>Beviser</h1>
 
@@ -159,9 +214,13 @@ Taget fra: https://da.wikipedia.org/wiki/Logaritme#/media/File:Log4.svg
 
 <p></p>
 
-<img class="math" src="images/logaritme_log_regneregel_1.svg" alt="" title="" />
+	<div class="latex">$$ log(a \cdot b) = log(a) + log(b) $$</div>
 
-<p>For at kunne gennemføre beviset laver vi først nogle værdier for <span class="math">&alpha;</span> og <span class="math">&beta;</span>, som omskrives ved hjælp af sætning 1.</p>
+<!--
+<img class="math" src="images/logaritme_log_regneregel_1.svg" alt="" title="" />
+-->
+
+<p>For at kunne gennemføre beviset laver vi først nogle værdier for <span class="math">\( \alpha \)</span> og <span class="math">\( \beta \)</span>, som omskrives ved hjælp af sætning 1.</p>
 
 <img class="math" src="images/logaritme_alpha.svg" alt="" title="" /> <br/>
 
@@ -180,11 +239,11 @@ Taget fra: https://da.wikipedia.org/wiki/Logaritme#/media/File:Log4.svg
 	<img class="math" src="images/logaritme_log_regneregel_bevis_1_01.svg" alt="" title="" />
 
 
-<p>Vi anvender sætningerne for <span class="math">&alpha;</span> og <span class="math">&beta;</span> og omskriver:</p>
+<p>Vi anvender sætningerne for <span class="math">\( \alpha \)</span> og <span class="math">\( \beta \)</span> og omskriver:</p>
 
 	<img class="math" src="images/logaritme_log_regneregel_bevis_1_02.svg" alt="" title="" />
 	
-<p>Vi anvender regnereglen for potens: &nbsp;&nbsp;<span class="math">a<sup> n</sup>&sdot; a<sup> m</sup>= a<sup> n+m</sup></span></p>
+<p>Vi anvender regnereglen for potens: &nbsp;&nbsp;<span class="math">\( a^n \cdot a^m= a^{n+m} \)</span></p>
 
 	<img class="math" src="images/logaritme_log_regneregel_bevis_1_03.svg" alt="" title="" />
 
@@ -192,7 +251,7 @@ Taget fra: https://da.wikipedia.org/wiki/Logaritme#/media/File:Log4.svg
 
 	<img class="math" src="images/logaritme_log_regneregel_bevis_1_04.svg" alt="" title="" />
 	
-<p>Vi erstatter <span class="math">&alpha;</span> og <span class="math">&beta;</span> med deres <span class="math">log</span>-værdier</p>
+<p>Vi erstatter <span class="math">\( \alpha \)</span> og <span class="math">\( \beta \)</span> med deres <span class="math">\( log \)</span>-værdier</p>
 
 	<img class="math" src="images/logaritme_log_regneregel_bevis_1_05.svg" alt="" title="" />
 	
@@ -204,7 +263,11 @@ Taget fra: https://da.wikipedia.org/wiki/Logaritme#/media/File:Log4.svg
 
 <p></p>
 
+	<div class="latex">$$ log(\frac{a}{b}) = log(a) - log(b) $$</div>
+
+<!--
 <img class="math" src="images/logaritme_log_regneregel_2.svg" alt="" title="" />
+-->
 
 <p>For at kunne gennemføre beviset skal vi først have udført et lille trick.</p>
 
@@ -242,9 +305,13 @@ Taget fra: https://da.wikipedia.org/wiki/Logaritme#/media/File:Log4.svg
 
 <p></p>
 
-<img class="math" src="images/logaritme_log_regneregel_3.svg" alt="" title="" />
+	<div class="latex">$$ log(a^x) = x \cdot log(a) $$</div>
 
-<p>For at kunne gennemføre beviset laver vi først en værdi for <span class="math">&alpha;</span> som omskrives ved hjælp af sætning 1.</p>
+<!--
+<img class="math" src="images/logaritme_log_regneregel_3.svg" alt="" title="" />
+-->
+
+<p>For at kunne gennemføre beviset laver vi først en værdi for <span class="math">\( \alpha \)</span> som omskrives ved hjælp af sætning 1.</p>
 
 <img class="math" src="images/logaritme_alpha.svg" alt="" title="" /> <br/>
 
@@ -256,11 +323,11 @@ Taget fra: https://da.wikipedia.org/wiki/Logaritme#/media/File:Log4.svg
 
 	<img class="math" src="images/logaritme_log_regneregel_bevis_3_01.svg" alt="" title="" />
 	
-<p>Vi anvender sætningen for <span class="math">&alpha;</span> og omskriver</p>
+<p>Vi anvender sætningen for <span class="math">\( \alpha \)</span> og omskriver</p>
 
 	<img class="math" src="images/logaritme_log_regneregel_bevis_3_02.svg" alt="" title="" />
 	
-<p>Vi anvender regnereglen for potens: &nbsp;&nbsp;<span class="math">a<sup> n<sup> m</sup></sup>= a<sup> n&sdot;m</sup></span></p>
+<p>Vi anvender regnereglen for potens: &nbsp;&nbsp;<span class="math">\( ({a^n})^m = a^{n \cdot m} \)</span></p>
 	
 	<img class="math" src="images/logaritme_log_regneregel_bevis_3_03.svg" alt="" title="" />
 	
@@ -268,7 +335,7 @@ Taget fra: https://da.wikipedia.org/wiki/Logaritme#/media/File:Log4.svg
 	
 	<img class="math" src="images/logaritme_log_regneregel_bevis_3_04.svg" alt="" title="" />
 
-<p>Vi erstatter <span class="math">&alpha;</span> med dens <span class="italic">log</span>-værdi</p>
+<p>Vi erstatter <span class="math">\( \alpha \)</span> med dens <span class="math">\( log \)</span>-værdi</p>
 	
 	<img class="math" src="images/logaritme_log_regneregel_bevis_3_05.svg" alt="" title="" />
 	
@@ -280,7 +347,11 @@ Taget fra: https://da.wikipedia.org/wiki/Logaritme#/media/File:Log4.svg
 
 <p>Beviset for denne formel er lidt anderledes end for de ovenstående. Det skyldes at de ovenstående gælder for alle grundtal (baser). Her skal vi omskrive en logaritme fra et grundtal til et anden, så vi bliver nød til at bibeholde basebetegnelsen igennem hele beviset.</p>
 
+	<div class="latex">$$ log_a(x) = \frac{ log_b(x) }{ log_b(a)} $$</div>
+
+<!--
 <img class="math" src="images/logaritme_log_regneregel_4.svg" alt="" title="" />
+-->
 
 <p><span class="bold">Bevis 3</span></p>
 
@@ -292,7 +363,7 @@ Taget fra: https://da.wikipedia.org/wiki/Logaritme#/media/File:Log4.svg
 
 <img class="math" src="images/logaritme_log_regneregel_bevis_4_01.svg" alt="" title="" />
 
-<p>Vi tager logaritmen med grundtallet <span class="math">b</span> på begge sider, altså: <span class="math">log<sub>b</sub></span> .</p>
+<p>Vi tager logaritmen med grundtallet <span class="math">\( b \)</span> på begge sider, altså: <span class="math">\( log_b \)</span> .</p>
 
 <img class="math" src="images/logaritme_log_regneregel_bevis_4_02.svg" alt="" title="" />
 
@@ -300,7 +371,7 @@ Taget fra: https://da.wikipedia.org/wiki/Logaritme#/media/File:Log4.svg
 
 <img class="math" src="images/logaritme_log_regneregel_bevis_4_03.svg" alt="" title="" />
 
-<p>Til sidst isolerer vi <span class="math">log <sub>a</sub>(x)</span>.</p>
+<p>Til sidst isolerer vi <span class="math">\( log_a(x) \)</span>.</p>
 
 <img class="math" src="images/logaritme_log_regneregel_bevis_4_04.svg" alt="" title="" />
 
