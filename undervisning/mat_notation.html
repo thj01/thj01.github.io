@@ -20,6 +20,12 @@
 			$("#license").load("../license.html"); 
 		});
     </script> 
+    
+    <script type="text/javascript" async
+		src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+		MathJax.Hub.Config({ jax: ["input/TeX","output/HTML-CSS"], displayAlign: "left"
+ 		});
+	</script>
 
 </head>
 
@@ -66,7 +72,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <p>Følgende tegn kan anvendes direkte</p>
 
-<p>+ &nbsp;&nbsp; - &nbsp;&nbsp; = &nbsp;&nbsp; ! &nbsp;&nbsp; / &nbsp;&nbsp; ( &nbsp;&nbsp; ) &nbsp;&nbsp; [ &nbsp;&nbsp; ] &nbsp;&nbsp; &lt; &nbsp;&nbsp; &gt; &nbsp;&nbsp;| &nbsp;&nbsp; ' &nbsp;&nbsp; :</p>
+<p><span class="math">\(  + ~~ - ~~ = ~~ ! ~~ / ~~ ( ~~ ) ~~ [ ~~ ] ~~ < ~~ > ~~ | ~~ ' ~~ : \)</span></p>
 
 <table class="">
 	<thead>
@@ -80,13 +86,19 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 	<tbody>
 		<tr>
 			<td><img src="images/mat_not_pm.svg" alt="" title="" /></td>
+<!--
+			<td><span class="math">\( \pm \)</span></td>
+-->
 			<td>+-</td>
 			<td>+-</td>
 			<td>\pm</td>
 		</tr>
 		<tr>
+<!--
 			<td><img src="images/mat_infinity.svg" alt="" title="" /></td>
-			<td>\infty</td>
+-->
+			
+			<td><span class="math">\( \infty \)</span></td><td>\infty</td>
 			<td>infty</td>
 			<td>\infty</td>
 		</tr>
