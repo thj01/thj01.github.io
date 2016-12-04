@@ -1,0 +1,309 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0088)http://www.jankoatwarpspeed.com/wp-content/uploads/examples/table-of-contents/demo1.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Automatically generate table of contents using jQuery - Demo 1 - Janko At Warp Speed demos</title>
+    <script src="./test3_files/jquery.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#toc").append('<p>In this article:</p>')
+            $("h1, h2, h3").each(function(i) {
+                var current = $(this);
+                current.attr("id", "title" + i);
+
+                $("#toc").append("<a id='link" + i + "' href='#title" + i + "' title='" + current.attr("tagName") + "'>" + current.html() + "</a>");
+            });
+        });
+    </script>
+    <style type="text/css">
+        body { font-family:Arial, Sans-Serif; font-size:13px;}
+        #content { width:80%; }
+        #toc a { display:block; color:#0094FF;}
+        
+        #toc a[title=H1] { font-size:18px;}
+        #toc a[title=H2] { font-size:14px; display:none}
+        #toc a[title=H3] { font-size:10px; display:none}
+    </style>
+</head>
+<body>
+    <div id="toc"><p>In this article:</p><a id="link0" href="http://www.jankoatwarpspeed.com/wp-content/uploads/examples/table-of-contents/demo1.html#title0" title="H1">Article title</a><a id="link1" href="http://www.jankoatwarpspeed.com/wp-content/uploads/examples/table-of-contents/demo1.html#title1" title="H2">Header Level 2</a><a id="link2" href="http://www.jankoatwarpspeed.com/wp-content/uploads/examples/table-of-contents/demo1.html#title2" title="H3">Header Level 3</a><a id="link3" href="http://www.jankoatwarpspeed.com/wp-content/uploads/examples/table-of-contents/demo1.html#title3" title="H3">Header level 3 again</a><a id="link4" href="http://www.jankoatwarpspeed.com/wp-content/uploads/examples/table-of-contents/demo1.html#title4" title="H3">Header level 3 once again</a></div>
+    <div id="content">
+        <p style="font-size:24px; font-weight:bold;">Janko At Warp Speed demos</p>
+        <p style="font-size:18px; font-weight:bold;"><a href="http://www.jankoatwarpspeed.com/post/2009/08/20/Table-of-contents-using-jQuery.aspx">Automatically generate table of contents using jQuery</a></p>
+        <h1 id="title0">Article title</h1>
+        <p>
+            <strong>Pellentesque habitant morbi tristique</strong> senectus et netus et malesuada
+            fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget,
+            tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. <em>Aenean ultricies
+                mi vitae est.</em> Mauris placerat eleifend leo. Quisque sit amet est et sapien
+            ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, <code>commodo vitae</code>,
+            ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum
+            rutrum orci, sagittis tempus lacus enim ac dui. <a href="http://www.jankoatwarpspeed.com/wp-content/uploads/examples/table-of-contents/demo1.html#">Donec non enim</a> in
+            turpis pulvinar facilisis. Ut felis.</p>
+        <h1 id="title1">Header Level 2</h1>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec dictum, lectus sed
+            scelerisque tempor, mauris mauris laoreet ante, ac elementum nulla massa eget est.
+            Phasellus ac ornare felis. Nam eu lorem eget magna venenatis facilisis quis eu sem.
+            Vestibulum ac nulla mauris. Pellentesque egestas consequat pellentesque. Cum sociis
+            natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Fusce
+            et leo sagittis orci porta fringilla non non lectus. Class aptent taciti sociosqu
+            ad litora torquent per conubia nostra, per inceptos himenaeos. Ut gravida cursus
+            placerat. Phasellus metus elit, posuere eget ornare quis, vulputate id ante. Maecenas
+            venenatis accumsan arcu.
+        </p>
+        <ol>
+            <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
+            <li>Aliquam tincidunt mauris eu risus.</li>
+        </ol>
+        <p>
+            Vestibulum eu risus quis diam fringilla volutpat. Etiam volutpat dui nec tellus
+            interdum hendrerit. In hac habitasse platea dictumst. Nullam leo quam, blandit feugiat
+            tincidunt egestas, molestie vel nisl. Phasellus nibh elit, rhoncus non vehicula
+            eget, varius eget velit. Phasellus id pharetra ligula. Proin faucibus elementum
+            libero non molestie. Nulla ut congue diam. Suspendisse ultrices mi sit amet turpis
+            fringilla blandit. Nullam eu nisi in est accumsan faucibus. Nam pulvinar commodo
+            metus, id volutpat dolor interdum et. Vivamus et dolor eu odio lobortis commodo
+            id vitae lacus. Cras interdum tristique tempus.
+        </p>
+        <p>
+            Aliquam at commodo sapien. Curabitur elementum nulla ac justo viverra in interdum
+            ipsum luctus. Pellentesque dolor dui, ultrices at lobortis a, congue vel elit. Suspendisse
+            vel leo est. Cras ac adipiscing augue. Suspendisse pretium ligula id metus cursus
+            eget malesuada arcu faucibus. Suspendisse quam tellus, volutpat quis fermentum a,
+            ornare eu erat. Suspendisse sit amet metus nisi. Ut et vulputate ligula. Vestibulum
+            egestas ullamcorper varius. In in lorem sit amet lorem commodo feugiat. Quisque
+            in elit nunc, eget imperdiet tellus. Donec pharetra orci id ligula dapibus faucibus.
+            Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos
+            himenaeos. Suspendisse potenti. Sed tincidunt venenatis imperdiet. Suspendisse eleifend
+            faucibus tellus ac aliquet. Proin nibh est, molestie ac ullamcorper eget, tincidunt
+            ut massa. Donec faucibus rhoncus congue.
+        </p>
+        <p>
+            Donec non metus neque. Nullam eget mauris et enim commodo porttitor. Integer congue
+            est pulvinar risus aliquam vel aliquam lacus cursus. Integer id euismod arcu. Etiam
+            venenatis arcu ut purus vestibulum sed ornare mi luctus. Nulla rutrum neque pharetra
+            nibh fringilla ut tempor felis accumsan. Mauris vel ipsum ligula. Etiam non justo
+            quam, vitae feugiat arcu. Morbi egestas venenatis dui, vitae pulvinar nisl tristique
+            id. Maecenas luctus metus eget eros euismod vitae ornare eros porta. Praesent porta
+            scelerisque quam, sed sodales est porta vitae.
+        </p>
+        <blockquote>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus magna. Cras in
+                mi at felis aliquet congue. Ut a est eget ligula molestie gravida. Curabitur massa.
+                Donec eleifend, libero at sagittis mollis, tellus est malesuada tellus, at luctus
+                turpis elit sit amet quam. Vivamus pretium ornare est.</p>
+        </blockquote>
+        <p>
+            Duis rhoncus aliquam tincidunt. Etiam semper orci at ante egestas vel tincidunt
+            lacus fringilla. Donec ullamcorper diam vel diam tempor imperdiet. Etiam viverra
+            ante ac justo iaculis id commodo magna interdum. Quisque vitae odio ac nunc adipiscing
+            vulputate. Sed in sem sit amet nisi ultricies rutrum sit amet iaculis tellus. Vivamus
+            vel mauris metus. Quisque vitae massa augue, eu rhoncus mauris. Pellentesque habitant
+            morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nullam egestas
+            elementum fringilla. In et neque nec elit condimentum tincidunt. Nulla et magna
+            sit amet purus dignissim consequat ac eget lorem. Vivamus placerat, turpis sed sagittis
+            tincidunt, lorem augue condimentum orci, nec gravida enim dui at orci. Lorem ipsum
+            dolor sit amet, consectetur adipiscing elit. Aenean nec risus ante, ac lacinia magna.
+            Integer vulputate tempus purus, quis iaculis turpis consequat eu.
+        </p>
+        <p>
+            Nullam hendrerit consectetur diam eu convallis. Maecenas eu est turpis, a pulvinar
+            risus. In vel sem eu leo sodales mollis eget ut turpis. Vestibulum porta molestie
+            leo nec tempor. Vestibulum luctus iaculis malesuada. In sit amet est odio. Phasellus
+            condimentum rhoncus ligula quis aliquet. Morbi nibh est, suscipit eu consequat ut,
+            blandit nec libero. Donec sed justo urna. Vestibulum ante ipsum primis in faucibus
+            orci luctus et ultrices posuere cubilia Curae; Praesent sapien odio, cursus nec
+            tincidunt id, facilisis sit amet mauris. Aliquam dignissim tempor nibh, vel gravida
+            est semper eu. Praesent eget auctor nibh. Etiam vitae urna risus. Proin faucibus
+            vulputate faucibus. Etiam id blandit eros. Praesent lobortis leo eget massa volutpat
+            eget vulputate lacus venenatis. Vivamus tempus, augue vitae cursus eleifend, ante
+            lectus facilisis tortor, quis malesuada metus massa at elit.
+        </p>
+        <h3 id="title2">Header Level 3</h3>
+        <p>
+            Donec lobortis nulla nec arcu eleifend ut rutrum sapien ultricies. Curabitur non
+            diam nec ipsum eleifend sagittis vitae quis enim. Aenean molestie nibh ac risus
+            dictum rutrum. Aliquam pulvinar quam mollis leo commodo volutpat. Mauris vitae quam
+            sem, at scelerisque massa. Donec ut ipsum nec odio gravida venenatis. Duis arcu
+            mi, semper quis egestas a, auctor id velit. Nam eu euismod velit. Nulla lacus ligula,
+            consectetur gravida rhoncus eget, auctor id odio. Nulla venenatis convallis nulla,
+            quis molestie metus elementum egestas. Morbi dapibus lectus erat. Mauris et mi nisl.
+            Duis lobortis felis vitae velit gravida ut scelerisque urna mollis.
+        </p>
+        <p>
+            Curabitur et purus elit, eget ultrices metus. Maecenas eget lacus sapien. Sed tellus
+            turpis, ornare eget aliquam lobortis, auctor ut massa. Nulla porta, ligula ultrices
+            lobortis tempor, risus velit venenatis erat, a tristique leo nibh viverra mi. Etiam
+            ut arcu dui. Integer posuere convallis quam, in elementum urna mattis quis. Maecenas
+            in tincidunt diam. In imperdiet massa ac ante accumsan vel aliquam velit molestie.
+            Donec posuere mi in mi bibendum a dictum augue imperdiet. Phasellus eleifend purus
+            nec lorem lobortis in volutpat purus tristique. Fusce pellentesque commodo porta.
+            Quisque lectus felis, mollis vitae viverra nec, imperdiet sed dui. Nunc eu odio
+            non est semper ullamcorper. Fusce lectus lorem, porta at aliquet at, auctor non
+            tellus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere
+            cubilia Curae;
+        </p>
+        <p>
+            Aenean volutpat vestibulum urna at pharetra. Phasellus sed turpis nibh. Suspendisse
+            interdum porttitor egestas. Donec vitae urna justo. Fusce posuere, nulla quis sollicitudin
+            consectetur, velit velit posuere metus, tristique tempus mauris nisl vitae nisl.
+            Aenean elit urna, dignissim eget ultricies eu, vulputate sit amet dolor. Praesent
+            adipiscing egestas tristique. Praesent luctus mattis iaculis. Fusce id nisl et nisi
+            rhoncus sagittis ac id sem. Fusce rhoncus nulla tortor, pellentesque venenatis nulla.
+            Vivamus ultricies leo et ipsum gravida blandit vestibulum nec metus. Ut condimentum
+            vestibulum laoreet. Pellentesque habitant morbi tristique senectus et netus et malesuada
+            fames ac turpis egestas. Integer non condimentum eros. Duis malesuada volutpat velit
+            eu porta.
+        </p>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur augue neque,
+            imperdiet egestas pharetra at, sodales ac eros. Aenean nunc neque, molestie a feugiat
+            a, molestie sit amet tellus. Quisque ut leo neque. Duis libero lorem, congue quis
+            aliquet id, facilisis sit amet justo. Sed faucibus nibh in odio tristique consectetur.
+            Maecenas a magna mauris. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Integer in justo augue, euismod lacinia elit. Praesent velit erat, molestie eu venenatis
+            nec, porta a ante. Morbi pharetra suscipit magna, vitae vulputate nisl tincidunt
+            sit amet. Duis id magna ipsum, eget commodo purus. Suspendisse tempor placerat velit
+            vel tincidunt. In lorem est, vehicula tincidunt egestas nec, elementum et diam.
+            In venenatis quam vitae tellus vehicula sodales. Donec at sollicitudin tellus. Sed
+            ligula nibh, fermentum sed rhoncus a, hendrerit vitae nunc. Maecenas tincidunt tempus
+            orci cursus sollicitudin. Donec scelerisque sodales accumsan. Nullam porta aliquam
+            elit non dictum. Phasellus a risus a lorem sagittis volutpat a non libero.
+        </p>
+        <p>
+            Nullam convallis augue ut ante rutrum vitae fringilla ligula posuere. Donec rhoncus
+            tortor ac leo bibendum id consequat urna suscipit. Maecenas sit amet nibh in lacus
+            tempor rutrum et non felis. Proin sodales nisi a purus mattis sollicitudin. Fusce
+            porta est sed nulla imperdiet aliquet. Donec vitae libero quam. Phasellus eu lobortis
+            tortor. Duis non felis elit, vel vestibulum mauris. Vestibulum sed commodo odio.
+            Suspendisse sit amet tellus justo. Nullam gravida eros eu orci vulputate a eleifend
+            urna vestibulum. In mollis, augue id viverra ullamcorper, mi arcu mattis lacus,
+            non convallis magna magna nec elit. Sed id felis id dui dictum sagittis. Etiam vulputate
+            volutpat felis, vel consequat sapien mollis non. Sed quis nisl arcu. Pellentesque
+            quis nulla turpis, non eleifend mi. Vestibulum elit erat, viverra vel tincidunt
+            vehicula, rhoncus eget turpis. Nam vitae aliquet sapien.
+        </p>
+        <p>
+            Etiam sed erat ac purus blandit rutrum. Vivamus eget ornare mauris. Lorem ipsum
+            dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Pellentesque eget tortor
+            mauris, et auctor nibh. Donec dignissim dui nec turpis lacinia et placerat mauris
+            facilisis. Integer id dui sed nibh luctus rhoncus. In quis justo volutpat libero
+            aliquet elementum. Aenean faucibus, sem ac tristique facilisis, nisl dui rutrum
+            dui, vitae ultrices mauris nunc at leo. Nullam egestas aliquet turpis et eleifend.
+            Nam hendrerit felis at neque consequat interdum. Ut tristique, dolor vitae pulvinar
+            dapibus, turpis velit adipiscing nibh, blandit vulputate dui lorem ut arcu. Quisque
+            ullamcorper dictum risus, ac consequat nunc luctus porta. Suspendisse id tellus
+            magna, sed pharetra libero. Suspendisse potenti. Morbi porta aliquam pretium. Nam
+            pellentesque nisi eu purus convallis cursus. Sed porttitor pulvinar turpis ut mattis.
+            Nunc volutpat ligula in quam vehicula vitae pellentesque massa facilisis. In at
+            risus id quam lacinia laoreet ut ac sem.
+        </p>
+        <h3 id="title3">Header level 3 again</h3>
+        <p>
+            Cras fermentum turpis a ipsum scelerisque pulvinar. Ut aliquet faucibus tellus,
+            a tincidunt orci sagittis eu. Mauris in urna vitae risus pellentesque venenatis.
+            Pellentesque eu odio nunc, quis posuere dui. Praesent imperdiet, erat sit amet gravida
+            feugiat, tortor libero ullamcorper eros, a dictum odio sem at urna. Aliquam pharetra
+            adipiscing nunc. Vivamus turpis urna, vulputate non pharetra a, sagittis eget quam.
+            Nam accumsan mauris luctus elit interdum viverra. Donec sed pellentesque massa.
+            Suspendisse porttitor pretium ipsum ac rhoncus. Pellentesque venenatis tortor eu
+            metus rhoncus sagittis. Ut quis mi sem, eu bibendum arcu. Cras elit ligula, malesuada
+            nec dignissim a, aliquam quis quam. Praesent massa mi, dictum vel lacinia ultrices,
+            mattis non purus.
+        </p>
+        <p>
+            Integer felis orci, tincidunt at malesuada eget, cursus interdum augue. Phasellus
+            consequat aliquam commodo. Duis tristique, erat nec lobortis elementum, metus mauris
+            hendrerit purus, vitae lacinia lectus lorem ut nibh. Nullam tincidunt tincidunt
+            erat, ac laoreet leo placerat nec. In gravida luctus nulla, non molestie orci molestie
+            in. Pellentesque dignissim tellus vulputate lorem pellentesque rhoncus laoreet lacus
+            consequat. Aliquam eget dui elit, id pulvinar justo. Etiam in sapien vel felis ultricies
+            cursus id et sem. Duis facilisis risus sit amet nibh elementum nec dapibus dolor
+            dapibus. Etiam sed purus a purus ullamcorper tempus vitae quis sapien. Suspendisse
+            sit amet augue eget justo euismod ullamcorper. Suspendisse non magna sem, non molestie
+            velit.
+        </p>
+        <p>
+            Phasellus urna purus, semper in viverra in, tempus in eros. Ut in urna sit amet
+            nibh ornare lobortis at id lectus. Nulla in luctus est. Duis sem elit, volutpat
+            at egestas eget, ultrices quis tortor. Cras quis volutpat lacus. Cras id libero
+            in lorem mollis tincidunt. Sed congue, urna vitae porta sollicitudin, tortor felis
+            malesuada ligula, in vehicula sapien urna quis urna. Nulla fermentum est et urna
+            auctor in vehicula diam volutpat. Cras feugiat, nibh ac venenatis mattis, risus
+            lacus venenatis dui, ac bibendum elit risus sit amet odio. Proin congue nisi sit
+            amet orci consequat auctor. Curabitur tortor sapien, ullamcorper non semper at,
+            elementum vel tellus. Pellentesque habitant morbi tristique senectus et netus et
+            malesuada fames ac turpis egestas. Integer consectetur porta condimentum. In hac
+            habitasse platea dictumst. Pellentesque dolor est, sagittis quis bibendum at, dictum
+            quis orci. Etiam aliquam dapibus tellus non volutpat.
+        </p>
+        <h3 id="title4">Header level 3 once again</h3>
+        <p>
+            Cras fermentum turpis a ipsum scelerisque pulvinar. Ut aliquet faucibus tellus,
+            a tincidunt orci sagittis eu. Mauris in urna vitae risus pellentesque venenatis.
+            Pellentesque eu odio nunc, quis posuere dui. Praesent imperdiet, erat sit amet gravida
+            feugiat, tortor libero ullamcorper eros, a dictum odio sem at urna. Aliquam pharetra
+            adipiscing nunc. Vivamus turpis urna, vulputate non pharetra a, sagittis eget quam.
+            Nam accumsan mauris luctus elit interdum viverra. Donec sed pellentesque massa.
+            Suspendisse porttitor pretium ipsum ac rhoncus. Pellentesque venenatis tortor eu
+            metus rhoncus sagittis. Ut quis mi sem, eu bibendum arcu. Cras elit ligula, malesuada
+            nec dignissim a, aliquam quis quam. Praesent massa mi, dictum vel lacinia ultrices,
+            mattis non purus.
+        </p>
+        <p>
+            Integer felis orci, tincidunt at malesuada eget, cursus interdum augue. Phasellus
+            consequat aliquam commodo. Duis tristique, erat nec lobortis elementum, metus mauris
+            hendrerit purus, vitae lacinia lectus lorem ut nibh. Nullam tincidunt tincidunt
+            erat, ac laoreet leo placerat nec. In gravida luctus nulla, non molestie orci molestie
+            in. Pellentesque dignissim tellus vulputate lorem pellentesque rhoncus laoreet lacus
+            consequat. Aliquam eget dui elit, id pulvinar justo. Etiam in sapien vel felis ultricies
+            cursus id et sem. Duis facilisis risus sit amet nibh elementum nec dapibus dolor
+            dapibus. Etiam sed purus a purus ullamcorper tempus vitae quis sapien. Suspendisse
+            sit amet augue eget justo euismod ullamcorper. Suspendisse non magna sem, non molestie
+            velit.
+        </p>
+        <p>
+            Phasellus urna purus, semper in viverra in, tempus in eros. Ut in urna sit amet
+            nibh ornare lobortis at id lectus. Nulla in luctus est. Duis sem elit, volutpat
+            at egestas eget, ultrices quis tortor. Cras quis volutpat lacus. Cras id libero
+            in lorem mollis tincidunt. Sed congue, urna vitae porta sollicitudin, tortor felis
+            malesuada ligula, in vehicula sapien urna quis urna. Nulla fermentum est et urna
+            auctor in vehicula diam volutpat. Cras feugiat, nibh ac venenatis mattis, risus
+            lacus venenatis dui, ac bibendum elit risus sit amet odio. Proin congue nisi sit
+            amet orci consequat auctor. Curabitur tortor sapien, ullamcorper non semper at,
+            elementum vel tellus. Pellentesque habitant morbi tristique senectus et netus et
+            malesuada fames ac turpis egestas. Integer consectetur porta condimentum. In hac
+            habitasse platea dictumst. Pellentesque dolor est, sagittis quis bibendum at, dictum
+            quis orci. Etiam aliquam dapibus tellus non volutpat.
+        </p>
+        <p>
+            Integer felis orci, tincidunt at malesuada eget, cursus interdum augue. Phasellus
+            consequat aliquam commodo. Duis tristique, erat nec lobortis elementum, metus mauris
+            hendrerit purus, vitae lacinia lectus lorem ut nibh. Nullam tincidunt tincidunt
+            erat, ac laoreet leo placerat nec. In gravida luctus nulla, non molestie orci molestie
+            in. Pellentesque dignissim tellus vulputate lorem pellentesque rhoncus laoreet lacus
+            consequat. Aliquam eget dui elit, id pulvinar justo. Etiam in sapien vel felis ultricies
+            cursus id et sem. Duis facilisis risus sit amet nibh elementum nec dapibus dolor
+            dapibus. Etiam sed purus a purus ullamcorper tempus vitae quis sapien. Suspendisse
+            sit amet augue eget justo euismod ullamcorper. Suspendisse non magna sem, non molestie
+            velit.
+        </p>
+        <p>
+            Phasellus urna purus, semper in viverra in, tempus in eros. Ut in urna sit amet
+            nibh ornare lobortis at id lectus. Nulla in luctus est. Duis sem elit, volutpat
+            at egestas eget, ultrices quis tortor. Cras quis volutpat lacus. Cras id libero
+            in lorem mollis tincidunt. Sed congue, urna vitae porta sollicitudin, tortor felis
+            malesuada ligula, in vehicula sapien urna quis urna. Nulla fermentum est et urna
+            auctor in vehicula diam volutpat. Cras feugiat, nibh ac venenatis mattis, risus
+            lacus venenatis dui, ac bibendum elit risus sit amet odio. Proin congue nisi sit
+            amet orci consequat auctor. Curabitur tortor sapien, ullamcorper non semper at,
+            elementum vel tellus. Pellentesque habitant morbi tristique senectus et netus et
+            malesuada fames ac turpis egestas. Integer consectetur porta condimentum. In hac
+            habitasse platea dictumst. Pellentesque dolor est, sagittis quis bibendum at, dictum
+            quis orci. Etiam aliquam dapibus tellus non volutpat.
+        </p>
+    </div>
+
+
+<div id="window-resizer-tooltip"><a href="http://www.jankoatwarpspeed.com/wp-content/uploads/examples/table-of-contents/demo1.html#" title="Edit settings"></a><span class="tooltipTitle">Window size: </span><span class="tooltipWidth" id="winWidth"></span> x <span class="tooltipHeight" id="winHeight"></span><br><span class="tooltipTitle">Viewport size: </span><span class="tooltipWidth" id="vpWidth"></span> x <span class="tooltipHeight" id="vpHeight"></span></div></body></html>
