@@ -6,11 +6,11 @@ content:"☰ Indholdsfortegnelse";
 font-family: ubuntu,sans-serif;
 position: fixed;
 width: 350px;
-font-size: 1.3em;
+font-size: 1.1em;
 margin-left: -20px;
-padding: 5px;
+padding: .2em;
 color: #e0e0e0;
-background-color:rgba(10,10,10, .8);
+background-color:rgba(10,10,10, .85);
 
 
 }
@@ -18,7 +18,7 @@ background-color:rgba(10,10,10, .8);
 
 header:hover .show:before{ 
 
-color: #fbfbfb;
+color: white;
 
 -webkit-transition: all 0.2s ease;
 -moz-transition: all 0.2s ease;
@@ -31,14 +31,14 @@ transition: all 0.2s ease;
 div#toc {
 
 display: none;
-width: 350px;
+width: 349px;
 position: fixed;
 font-size: 1.3em;
 margin-left: -20px;
-margin-top: 31px;
-padding: 20px 5px 15px 5px;
+margin-top: 25px;
+padding: 20px .2em 15px .2em;
 color: #e0e0e0;
-background-color:rgba(10,10,10, .8);
+background-color:rgba(10,10,10, .85);
 
 }
 
