@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+
+<head>
+	
+	<meta charset="UTF-8" lang="da"/>
+
+	<title>Vidas.dk</title>
+
+	<link rel="stylesheet" href="../css/style.css" />
+	<link rel="stylesheet" href="../css/styles/docco.css" />
+	<link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono|Ubuntu|Ubuntu+Condensed' rel='stylesheet' type='text/css'>
+
+	<script src="http://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+	<script src="../js/toc2.js" type="text/javascript"></script>
+	<script>$(function(){$("#license").load("license.html"); });</script>
+	<script type="text/javascript" async
+		src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+		MathJax.Hub.Config({ jax: ["input/TeX","output/HTML-CSS"], displayAlign: "left"
+ 		});
+	</script>
+        <script>
+	$(document).ready(function(){
+		$(".hide").click(function(){$("#toc").hide();});
+		$(".show").click(function(){$("#toc").show();});
+	});
+	</script>
+	<script src="../js/highlight.pack.js" type="text/javascript"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+</head>
+<!-- 
+code highlighter : https://highlightjs.org/
+code converter : http://www.freebits.co.uk/convert-html-code-to-text.html 
+-->
+<html>
+<body onload="generateTOC(document.getElementById('toc'));">
+
+<footer id="license"></footer>
+
+<header>
+	<div class="show" id="toggle_menu"></div> 
+</header>
+
+<div class="toggle">
+	<div id="toc" class="hide">
+		<div id="toc_title"><span class=""><a href="#" target="">(Luk)</a></span></div>	
+	</div>
+</div>
+		
+<p></p><p></p>
+
+
+<div class="title">Formelsamling</div>
+
+<h1>Brøkregneregler</h1>
+
+<p>Brøker tilhører talmængden <span class="math">\( \mathbb{Q} \)</span>. For at kunne beskrive brøker anvender vi begreberne tæller og nævner:</p>
+
+	<div class="latex">$$ \frac{tæller}{nævner} $$</div>
+
+<span class="afsnit">Addition og substraktion</span>
+
+<p>For at kunne lægge brøker sammen skal de have samme nævner</p>
+
+	<div class="latex">$$ \frac{a}{c} + \frac{b}{c} = \frac{a+b}{c} $$</div>
+
+	<div class="latex">$$ \frac{a}{c} - \frac{b}{c} = \frac{a-b}{c} $$</div>
+	
+<span class="afsnit">Gange</span>
+
+	<div class="latex">$$ a \cdot \frac{b}{c} = \frac{a \cdot b}{c} $$</div>
+	
+<span class="afsnit">Division</span>
+
+<p>Når man dividerer med en brøk så ganger man med den <span class="inl_cmd">reciprokke</span> (modsatte) værdi</p>
+
+	<div class="latex">$$ a : \frac{b}{c} = a \cdot \frac{c}{b} =  \frac{a \cdot c}{b} $$</div>
+
+	<div class="latex">$$ \frac{a}{b} : c = \frac{a}{b} : \frac{c}{1} = \frac{a}{b} \cdot \frac{1}{c} =  \frac{a}{b \cdot c} $$</div>
+	
+	<div class="latex">$$ \frac{a}{b} : \frac{c}{d} = \frac{a}{b} : \frac{d}{c} $$</div>
+
+<h1>Potensregler</h1>
+
+<p></p>
+
+
+
+
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+	</body>
+
+</html>
