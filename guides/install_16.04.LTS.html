@@ -83,7 +83,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <p>Før installationen går videre tjekker Ubuntu om harddisken er stor nok, om opladeren er sluttet til (ved bærbare computeren) og om der er forbindelse til Internettet.</p>
 
-<p>De to første giver sig selv, men det er vigtigt at der er forbindelse til Internettet. Linux er et netvæksoperativsystem, og skal bl.a. anvende nettet til at hente drivere, codecs (f.eks. MP3), sprogfiler og opdateringer. Sæt flueben ved begge muligheder.</p>
+<p>De to første giver sig selv, men det er vigtigt at der er forbindelse til Internettet. Linux er et netvæksoperativsystem, og skal bl.a. anvende nettet til at hente drivere, codecs (f.eks. MP3), sprogfiler og opdateringer. Sæt flueben ved begge muligheder og vælg <span class="knap">Fortsæt</span>.</p>
 
 <figure id="">
 
@@ -95,267 +95,35 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <h2>Opsætning af harddisk</h2>
 
-<p>Her kan du vælge mellem 2 måder at sætte harddisken op på. Enten som en stor (hurtigt og simpel), eller hvor den er partitioneret.</p>
+<p>Det næste der skal gøres er at forberede harddisken. I denne guide bliver der gennemgået en simpel opsætning af harddisken, hvor vi lader Ubuntu formatere disken med et system- og et swapdrev. Vær opmærksom på at nedestående metode sletter al indhold på din harddisk.</p>
+
+<p>Ønsker du en lave en installation med flere partitioner skal du følge guiden her: <a href="install_16.04.LTS_advanced_HD.html" target="_blank">install_16.04.LTS_advanced_HD.html</a>.</p>
+
+<p>For at lave en simpel installation skal du markere punktet "Slet disk og installer Ubuntu" og vælge <span class="knap">Installér nu</span></p>
 
 <figure id="">
 
-	<img class="p90" src="images/install_ubuntu1604_03.png" alt="" title="" />
+	<img class="p90" src="images/install_ubuntu1604_03_simple.png" alt="" title="" />
 
 	<figcaption></figcaption>
 
 </figure>
 
-<p>Du kan vælge mellemde to følgende muligheder:</p>
-
-<table class="">
-	<thead>
-		<tr>
-			<th></th>
-			<th></th>
-			<th></th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>Slet disk og Installer Ubuntu</td>
-			<td>Simpel (hurtig)</td>
-			<td>Ved denne mulighed sørger Ubuntu for at partitionere og formatere harddisken for dig (System og swap-drev). Vælger du dene mulighed fortsætter du direkte til næste afsnit 2.4 - Vælg lokation og tastetur indstillinger.</td>
-		</tr>
-		<tr>
-			<td>Noget andet</td>
-			<td>Avanceret <span class="bold">Anbefalet</span></td>
-			<td>Her vil du blive guidet igennem processen med selv at partitionere harddisken. Fordelen ved denne fremgangsmåde er, at du kan have en partition med data/backup på, som kan genmonteres hvis du senere opgraderer eller installerer en anden Linuxdistribution. Følg </td>
-		</tr>
-	</tbody>
-</table>
-
-<p>Vi vil her konfigurere harddisken så der er tre partitioner. En til system, en til data/backup og en til Swap (virtuel hukommelse). På denne måde kan man senere geninstallere Ubuntu uden at miste sine data. Den virtuelle hukommelse fungerer anderledes på Linux end på Windows. På Linux kører det på en selvstændig partition med sit eget filsystem. På den måde bliver den virtuelle hukommelse ikke spredt ud over harddisken hvor der lige nu er plads, men den vil altid blive skrevet hvor den ikke forstyrrer.</p>
-
-<p>Vi vil partitionere harddisken efter nedestående skema</p>
-
-<table class="">
-	<thead>
-		<tr>
-			<th>Drev</th>
-			<th>Betegnelse</th>
-			<th>Størrelse</th>
-			<th>Anvendelse</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>/dev/sda1</td>
-			<td>/</td>
-			<td>50000Mb (50Gb)</td>
-			<td>System</td>
-		</tr>
-		<tr>
-			<td>/dev/sda2</td>
-			<td>Ingen</td>
-			<td>4096MB (4GB)</td>
-			<td>Swap</td>
-		</tr>
-		<tr>
-			<td>/dev/sda3</td>
-			<td>/data</td>
-			<td>31000MB (31GB)</td>
-			<td>Data og backup</td>
-		</tr>
-		<tr>
-			<td>Ledig plads</td>
-			<td> - </td>
-			<td>20,9 GB</td>
-			<td>Linux?</td>
-		</tr>
-	</tbody>
-</table>
-
-<p>Grunden til at vi vælger noget ledig plads, er for at vi senere kan anvende den til at oprette en partition fra, når Ubuntu kører. Ønsker du ikke at gøre det kan du anvende pladsen til <span class="inl_cmd">/data</span> </p>
-
-<p>Vælg "Noget andet".</p>
-
-<figure id="">
-
-	<img class="p90" src="images/install_ubuntu1604_03.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-
-<p>Da harddisken ikke har været anvendt før skal der laves en partitionstabel: Vælg <span class="knap">Ny partitionstabel</span> og <span class="knap">Forsæt</span>.</p>
-
-<figure id="">
-
-	<img class="p90" src="images/install_ubuntu1604_04.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-
-<p></p>
-
-
-<figure id="">
-
-	<img class="p90" src="images/install_ubuntu1604_05.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-
-<p>Marker "Ledig plads" og tryk på <span class="knap">+</span> for at oprette system partitionen.</p>
-
-<figure id="">
-
-	<img class="p90" src="images/install_ubuntu1604_06.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-
-<p>Herefter kommer der et vindue frem, hvor du skal sætte partitionens parametre efter følgende skema.</p>
-
-<table class="">
-	<thead>
-		<tr>
-			<th colspan="2">Opsætning af /</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>Størrelse:</td>
-			<td>50000 MB</td>
-		</tr>
-		<tr>
-			<td>Partitionstype:</td>
-			<td>Primær</td>
-		</tr>
-		<tr>
-			<td>Placering:</td>
-			<td>Begyndelsen</td>
-		</tr>
-		<tr>
-			<td>Brug som:</td>
-			<td>Ext4-journalsystem</td>
-		</tr>
-		<tr>
-			<td>Monteringspunkt:</td>
-			<td>/</td>
-		</tr>
-	</tbody>
-</table>
-
-<p>Kontroller at vinduet ser ud som herunder og tryk <span class="knap">OK</span>.</p>
-
-<figure id="">
-
-	<img class="p50" src="images/install_ubuntu1604_07.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-
-<p>Gør det samme for henholdsvis <span class="inl_cmd">swap</span> og <span class="inl_cmd">/data</span>.</p>
-
-<p>Vær opmærksom på at <span class="inl_cmd">swap</span> som minimum bør være lige så stor som RAM-lageret. Det skyldes at data fra "slumre" tilstanden gemmes her. Har du kun 2-3 GB RAM til rådighed bør du sætte <span class="inl_cmd">swap</span> til det dobbelte.</p>
-
-<table class="">
-	<thead>
-		<tr>
-			<th colspan="2">Opsætning af swap</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>Størrelse:</td>
-			<td>4096 MB</td>
-		</tr>
-		<tr>
-			<td>Partitionstype:</td>
-			<td>Primær</td>
-		</tr>
-		<tr>
-			<td>Placering:</td>
-			<td>Begyndelsen</td>
-		</tr>
-		<tr>
-			<td>Brug som:</td>
-			<td>Swap</td>
-		</tr>
-	</tbody>
-</table>
-
-<figure id="">
-
-	<img class="p50" src="images/install_ubuntu1604_08.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-
-<table class="">
-	<thead>
-		<tr>
-			<th colspan="2">Opsætning af /data</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>Størrelse:</td>
-			<td>31000 MB</td>
-		</tr>
-		<tr>
-			<td>Partitionstype:</td>
-			<td>Primær</td>
-		</tr>
-		<tr>
-			<td>Placering:</td>
-			<td>Begyndelsen</td>
-		</tr>
-		<tr>
-			<td>Brug som:</td>
-			<td>Ext4-journalsystem</td>
-		</tr>
-		<tr>
-			<td>Monteringspunkt:</td>
-			<td>/data</td>
-		</tr>
-	</tbody>
-</table>
-
-
-<figure id="">
-
-	<img class="p50" src="images/install_ubuntu1604_09.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-
-<p>Tjek at du har partitioneret korrekt. Har du lavet fejl så marker partitionen og vælg <span class="knap">-</span> for at slette partitionen igen og tilføj den igen med <span class="knap">+</span>. Er det hele korrekt sat op så vælg <span class="knap">Installér nu</span>.</p>
-
-
-<figure id="">
-
-	<img class="p90" src="images/install_ubuntu1604_10.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-
-<p>Ubuntu viser endnu en gang partitioneringen, før der skrives til disken. Efter du har valgt <span class="knap">Fortsæt</span> vil alt det gamle på harddisken være slettet.</p>
+<p>Ubuntu vil nu spørge om du ønsker at lave ændringer på harddisken. Vælg <span class="knap">Fortsæt</span></p>
 
 
 
 <figure id="">
 
-	<img class="p90" src="images/install_ubuntu1604_11.png" alt="" title="" />
+	<img class="p90" src="images/install_ubuntu1604_11_simple.png" alt="" title="" />
 
 	<figcaption></figcaption>
 
 </figure>
 
-<h2>Lokation, tastetur og administrationsbruger</h2>
+
+
+<h2 id="fra_avanceret_HD_opsaetning">Lokation og tastetur</h2>
 
 <p>De næste to indstillinger giver sig selv og Ubuntu sætter selv de rigtige indstillinger. Tryk <span class="knap">Fortsæt</span> 2 gange.</p>
 
@@ -376,6 +144,8 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 	<figcaption></figcaption>
 
 </figure>
+
+<h2>Brugeroprettelse</h2>
 
 <p>Den første bruger der bliver oprettet er ret vigtig, da det er denne bruger der har mulighed for at udføre systemarbejde på computeren. Vær opmærksom på, at Ubuntu skelner mellem store og små bogstaver. Det betyder at der er forskel på brugernavnene <span class="inl_cmd">thoj</span> og <span class="inl_cmd">Thoj</span>. Det er normen at bruge små bogstaver til brugernavne, da man ellers risikerer problemer når man skal arbejde med andre operativsystemer (f.eks Windows)</p>
 
@@ -434,13 +204,23 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <h2>Ved installation på Virtualbox</h2>
 
-<p>Hvis man installerer Ubuntu på Virtualbox, vil Ubuntu være låst i en lav opløsning. Dette skyldes grafikdriveren, der ikke er optimeret til VirtualBox. For at ændre dette skal du installere Gæstetilføjelserne fra VirtualBox's menu: Enheder -> Indsæt Gæstetilføjelser CD-aftryk. Herefter monteres gæstetilføjelserne som en CD-ROM på systemet som automatisk starter op.</p>
+<p>For at få det optimale ud af en Virtualbox installation bør man installere gæstetilføjelserne, som sætter det virtualiserede system optimalt op. For at installere Gæstetilføjelserne skal du gå op i menuen og vælge: <span class="inl_cmd">Enheder</span> &#8594; <span class="inl_cmd">Indsæt Gæstetilføjelser CD-aftryk</span>.</p>
+
+<figure id="">
+
+	<img class="p60" src="images/install_ubuntu1604_19a.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p> Herefter monteres gæstetilføjelserne som en CD-ROM på systemet som automatisk starter op.</p>
 
 <p>Vælg: <span class="knap">Kør</span></p>
 
 <figure id="">
 
-	<img class="p60" src="images/install_ubuntu1604_19.png" alt="" title="" />
+	<img class="p55" src="images/install_ubuntu1604_19.png" alt="" title="" />
 
 	<figcaption></figcaption>
 
@@ -450,7 +230,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <figure id="">
 
-	<img class="p60" src="images/install_ubuntu1604_20.png" alt="" title="" />
+	<img class="p55" src="images/install_ubuntu1604_20.png" alt="" title="" />
 
 	<figcaption></figcaption>
 
@@ -458,13 +238,13 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <figure id="">
 
-	<img class="p70" src="images/install_ubuntu1604_21.png" alt="" title="" />
+	<img class="p80" src="images/install_ubuntu1604_21.png" alt="" title="" />
 
 	<figcaption></figcaption>
 
 </figure>
 
-<p>Efter installatione skal du genstarte Ubuntu, for at få ændringerne til at slå igennem.</p>
+<p>For at afslutte installationen skal du taste <span class="knap">Enter</span>, for at få lukke terminalen. Herefter skal du genstarte Ubuntu, for at få ændringerne til at slå igennem.</p>
 
 <figure id="">
 
@@ -484,7 +264,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 	<li>Opgradere Ubuntu</li>
 </ol>
 
-<p>Ubuntu søger som standard i danske repositories efter filer. Det er min erfaring at disse er langsommere at tilgå og hente fra end de internationale. Derfor er det min anbefaling at det ændres. Vi åbner terminalen (kommandoprompten) med tastekombinationen <span class="knap">Ctrl</span>+<span class="knap">Alt</span>+<span class="knap">T</span> og kører 2 kommandoer for at fjerne alle <span class="inl_cmd">dk</span> henvisninger:</p>
+<p>Ubuntu søger som standard i danske repositories efter filer, men de er efter min erfaring langsommere end de internationale. Derfor er det min anbefaling at det ændres. Åbn terminalen (kommandoprompten) med tastekombinationen <span class="knap">Ctrl</span>+<span class="knap">Alt</span>+<span class="knap">T</span> og kører 2 kommandoer for at fjerne alle <span class="inl_cmd">dk</span> henvisninger:</p>
 
 <pre class="ubuntu_terminal">
 To run a command as administrator (user "root"), use "sudo <command>".
@@ -531,7 +311,27 @@ See "man sudo_root" for details.
 # deb-src http://archive.canonical.com/ubuntu xenial partner</span>
 </pre>
 
-<p>Opdater repository filerne</p>
+<p></p>
+
+<p>For at gemme ændringer skal du gøre følgende, tast <span class="knap">Ctrl</span>+<span class="knap">x</span>. Nederst på skærmen kommer følgende frem</p>
+
+<pre class="black">
+<span class="white_bg">Gem ændret buffer (AT SVARE "Nej" VIL ØDELÆGGE ÆNDRINGER)?                                          </span>                    
+<span class="white_bg"> J</span> Ja
+<span class="white_bg"> N</span> Nej          <span class="white_bg">^C</span> Annullér
+</pre>
+
+<p>Tast <span class="knap">j</span></p>
+
+<pre class="black">
+<span class="white_bg">Filnavn at skrive: /etc/apt/sources.list                                                            </span>                                       
+<span class="white_bg">^G</span> Få hjælp     <span class="white_bg">M-D</span> DOS-format  <span class="white_bg">M-A</span> Tilføj ved e<span class="white_bg">M-b</span> SikrKopiér f
+<span class="white_bg">^C</span> Annullér     <span class="white_bg">M-M</span> Mac-format  <span class="white_bg">M-P</span> Tilføj ved s<span class="white_bg">^T</span> Til filer
+</pre>
+
+<p>Tast <span class="knap">Enter</span>, og du er tilbage i selve terminalen.</p>
+
+<span class="afsnit">Opdater repository filerne</span>
 
 <code class="cmd">sudo apt update</code>
 
@@ -560,7 +360,7 @@ Henter:1 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 language-sel
 .....
 </pre>
 
-<p>Fjern alle overflødige pakker</p>
+<span class="afsnit">Fjern overflødige pakker</span>
 
 <code class="cmd">sudo apt autoremove -y</code>
 
