@@ -50,45 +50,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <div class="title">Avanceret HD opsætning</div>
 
-<h2>Opsætning af harddisk</h2>
-
-<p>Her kan du vælge mellem 2 måder at sætte harddisken op på. Enten som en stor (hurtigt og simpel), eller hvor den er partitioneret.</p>
-
-<figure id="">
-
-	<img class="p90" src="images/install_ubuntu1604_03.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-
-<p>Du kan vælge mellemde to følgende muligheder:</p>
-
-<table class="">
-	<thead>
-		<tr>
-			<th></th>
-			<th></th>
-			<th></th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>Slet disk og Installer Ubuntu</td>
-			<td>Simpel (hurtig)</td>
-			<td>Ved denne mulighed sørger Ubuntu for at partitionere og formatere harddisken for dig (System og swap-drev). Vælger du dene mulighed fortsætter du direkte til næste afsnit 2.4 - Vælg lokation og tastetur indstillinger.</td>
-		</tr>
-		<tr>
-			<td>Noget andet</td>
-			<td>Avanceret <span class="bold">Anbefalet</span></td>
-			<td>Her vil du blive guidet igennem processen med selv at partitionere harddisken. Fordelen ved denne fremgangsmåde er, at du kan have en partition med data/backup på, som kan genmonteres hvis du senere opgraderer eller installerer en anden Linuxdistribution. Følg </td>
-		</tr>
-	</tbody>
-</table>
-
-<p>Vi vil her konfigurere harddisken så der er tre partitioner. En til system, en til data/backup og en til Swap (virtuel hukommelse). På denne måde kan man senere geninstallere Ubuntu uden at miste sine data. Den virtuelle hukommelse fungerer anderledes på Linux end på Windows. På Linux kører det på en selvstændig partition med sit eget filsystem. På den måde bliver den virtuelle hukommelse ikke spredt ud over harddisken hvor der lige nu er plads, men den vil altid blive skrevet hvor den ikke forstyrrer.</p>
-
-<p>Vi vil partitionere harddisken efter nedestående skema</p>
+<p>Her vil du blive guidet til at sætte Ubuntu op med 2 partitioner, hvoraf den ene er til system og den anden er et data-drev. Data-drevet kan anvendes til at gemme backups på, så du kan installere en ny version af Ubuntu uden at skulle have fat i ekstern backup diske. Ubuntu vil blive sat op efter følgende skema, som er tilpasset en 100GB harddisk.</p>
 
 <table class="">
 	<thead>
@@ -129,7 +91,9 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <p>Grunden til at vi vælger noget ledig plads, er for at vi senere kan anvende den til at oprette en partition fra, når Ubuntu kører. Ønsker du ikke at gøre det kan du anvende pladsen til <span class="inl_cmd">/data</span> </p>
 
-<p>Vælg "Noget andet".</p>
+<p>Hvis du fortryder kan du <a href="install_16.04.LTS.html#fortryd_avanceret_HD_opsaetning" target="_blank">gå tilbage til installationsguiden</a></p>
+
+<p>For at køre den avancerede opsætning skal du vælge punktet <span class="inl_cmd">Noget andet</span> og vælge <span class="knap">Fortsæt</span></p>
 
 <figure id="">
 
@@ -159,6 +123,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 	<figcaption></figcaption>
 
 </figure>
+
 
 <p>Marker "Ledig plads" og tryk på <span class="knap">+</span> for at oprette system partitionen.</p>
 
