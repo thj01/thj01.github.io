@@ -4,42 +4,49 @@
 	
 	<meta charset="UTF-8" lang="da"/>
 
-	<title>Python 3: Matematik - Thomas Jensen</title>
-	
+	<title>Vidas.dk</title>
+
 	<link rel="stylesheet" href="../css/style.css" />
 	<link rel="stylesheet" href="../css/styles/docco.css" />
 	<link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono|Ubuntu|Ubuntu+Condensed' rel='stylesheet' type='text/css'>
 
+	<script src="http://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
 	<script src="../js/toc2.js" type="text/javascript"></script>
+	<script>$(function(){$("#license").load("license.html"); });</script>
+	<script type="text/javascript" async
+		src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+		MathJax.Hub.Config({ jax: ["input/TeX","output/HTML-CSS"], displayAlign: "left"
+ 		});
+	</script>
+        <script>
+	$(document).ready(function(){
+		$(".hide").click(function(){$("#toc").hide();});
+		$(".show").click(function(){$("#toc").show();});
+	});
+	</script>
 	<script src="../js/highlight.pack.js" type="text/javascript"></script>
 	<script>hljs.initHighlightingOnLoad();</script>
-	<script src="http://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-	
-	<script> 
-		$(function(){
-			$("#license").load("../license.html"); 
-		});
-    </script> 
-
 </head>
-
 <!-- 
-code highlighter : 
+code highlighter : https://highlightjs.org/
 code converter : http://www.freebits.co.uk/convert-html-code-to-text.html 
 -->
-
 <html>
-
 <body onload="generateTOC(document.getElementById('toc'));">
-	
-<footer id="license"></footer>
-	
-<div id="toggle" ><span id="indholds_ikon"></span>
 
-	<div id="toc">
-		<div id="toc_title"></div>
+<footer id="license"></footer>
+
+<header>
+	<div class="show" id="toggle_menu"></div> 
+</header>
+
+<div class="toggle">
+	<div id="toc" class="hide">
+		<div id="toc_title"><span class=""><a href="#" target="">(Luk)</a></span></div>	
 	</div>
 </div>
+		
+<p></p><p></p>
 
 <div class="title">Matematik med</div>
 
