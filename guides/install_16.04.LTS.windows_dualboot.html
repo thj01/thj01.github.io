@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+
+<head>
+	
+	<meta charset="UTF-8" lang="da"/>
+
+	<title>Vidas.dk</title>
+
+	<link rel="stylesheet" href="../css/style.css" />
+	<link rel="stylesheet" href="../css/styles/docco.css" />
+	<link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono|Ubuntu|Ubuntu+Condensed' rel='stylesheet' type='text/css'>
+
+	<script src="http://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+	<script src="../js/toc2.js" type="text/javascript"></script>
+	<script>$(function(){$("#license").load("license.html"); });</script>
+	<script type="text/javascript" async
+		src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+		MathJax.Hub.Config({ jax: ["input/TeX","output/HTML-CSS"], displayAlign: "left"
+ 		});
+	</script>
+        <script>
+	$(document).ready(function(){
+		$(".hide").click(function(){$("#toc").hide();});
+		$(".show").click(function(){$("#toc").show();});
+	});
+	</script>
+	<script src="../js/highlight.pack.js" type="text/javascript"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+</head>
+<!-- 
+code highlighter : https://highlightjs.org/
+code converter : http://www.freebits.co.uk/convert-html-code-to-text.html 
+-->
+<html>
+<body onload="generateTOC(document.getElementById('toc'));">
+
+<footer id="license"></footer>
+
+<header>
+	<div class="show" id="toggle_menu"></div> 
+</header>
+
+<div class="toggle">
+	<div id="toc" class="hide">
+		<div id="toc_title"><span class=""><a href="#" target="">(Luk)</a></span></div>	
+	</div>
+</div>
+		
+<p></p><p></p>
+
+
+<div class="title">Dualboot <br/> Windows 10 opsætning</div>
+
+<h1>Forbered Windows</h1>
+
+<p>Gå ind i programmet <span class="inl_cmd">Computeradministration</span> ved at klikke på forstørrelsesglasset og skriv <span class="inl_cmd">compmgmt.msc</span></p>
+
+<figure id="">
+
+	<img class="p80" src="images/Install_ubuntu1604_dualboot_windows10_prepare_01.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Højreklik på den partition der skal formindskes (her <span class="inl_cmd">C:</span>) og vælg <span class="inl_cmd">Formindsk diskenhed</span>.</p>
+
+<figure id="">
+
+	<img class="p90" src="images/Install_ubuntu1604_dualboot_windows10_prepare_02.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Windows tjekker drevet for ledig plads.</p>
+
+<figure id="">
+
+	<img class="p45" src="images/Install_ubuntu1604_dualboot_windows10_prepare_03.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Det næste vindue fortæller dig hvor stor din partition er og hvor meget du kan formindske den med. Mit råd er at du vælger mindst 20 GB, så du ikke løber tør for plads lige med det samme. Her vælger jeg 30GB ( 30000MB ).</p>
+
+<figure id="">
+
+	<img class="p45" src="images/Install_ubuntu1604_dualboot_windows10_prepare_04.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>På næste vindue kan du se resultatet. Ubuntu vil blive installeret på den <span class="inl_cmd">ikke-allokerede</span> del af harddisken.</p>
+
+<figure id="">
+
+	<img class="p90" src="images/Install_ubuntu1604_dualboot_windows10_prepare_05.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h2>Tjek harddisken</h2>
+
+<p>For at sikre os vælger vi at kontrollere den partition vi formindskede. Egentlig bør det ikke være nødvendigt, for Windows laver selv en hurtigt kontrol når vinduet <span class="inl_cmd">Computeradministration</span> opdateres. Vi gør det, fordi det er en ekstra sikkerhed for at Windows er OK.</p>
+
+<p>Højreklik på den formindskede partition ( her <span class="inl_cmd">C:</span>) og vælg <span class="inl_cmd">Egenskaber</span>.</p>
+
+<figure id="">
+
+	<img class="p90" src="images/Install_ubuntu1604_dualboot_windows10_prepare_06.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Klik på <span class="inl_cmd">Funktioner</span> og klik på <span class="inl_cmd">Undersøg</span> i feltet fejlsøgning.</p>
+
+<figure id="">
+
+	<img class="p45" src="images/Install_ubuntu1604_dualboot_windows10_prepare_07.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Som skrevet ovenfor har windows lige kontrolleret drevet og gør opmærksom på at det ikke er nødvendigt. Vi gør det alligevel for det skader ikke noget.</p>
+
+<figure id="">
+
+	<img class="p45" src="images/Install_ubuntu1604_dualboot_windows10_prepare_08.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Læn dig tilbage og lad Windows køre sin fejlsøgning af drevet.</p>
+
+<figure id="">
+
+	<img class="p45" src="images/Install_ubuntu1604_dualboot_windows10_prepare_09.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Windows svarer til bage at der ikke er fundet nogle fejl.</p>
+
+<figure id="">
+
+	<img class="p45" src="images/Install_ubuntu1604_dualboot_windows10_prepare_10.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Melder windows fejl her, så følg den vejledning Windows giver.</p>
+
+
+<p>Gå tilbage til Installationsguiden: <a href="install_16.04.LTS.html#back_from_windows_prepare" target="_blank">install_16.04.LTS.html</a></p>
+
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+	</body>
+
+</html>
