@@ -50,14 +50,21 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <div class="title">Avanceret HD opsætning</div>
 
-<p>Her vil du blive guidet til at sætte Ubuntu op med 2 partitioner, hvoraf den ene er til system og den anden er et data-drev. Data-drevet kan anvendes til at gemme backups på, så du kan installere en ny version af Ubuntu uden at skulle have fat i ekstern backup diske. Ubuntu vil blive sat op efter følgende skema, som er tilpasset en 100GB harddisk.</p>
+<h1>Overblik</h1>
+
+<p>Her vil du blive guidet til at sætte Ubuntu op med 2 partitioner og et swap-drev, hvoraf den ene er til system og den anden er et data-drev. Data-drevet kan anvendes til at gemme backups på, så du kan installere en ny version af Ubuntu uden at skulle have fat i ekstern backup diske. </p>
+
+<p>Hvis du fortryder kan du <a href="install_16.04.LTS.html#fortryd_avanceret_HD_opsaetning" target="_blank">gå tilbage til installationsguiden</a></p>
+
+<p>Her vil vi sætte PC'en op efter nedestående skema:</p>
 
 <table class="">
 	<thead>
 		<tr>
 			<th>Drev</th>
-			<th>Betegnelse</th>
+			<th>Placering</th>
 			<th>Størrelse</th>
+			<th>Filsystem</th>
 			<th>Anvendelse</th>
 		</tr>
 	</thead>
@@ -66,32 +73,34 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 			<td>/dev/sda1</td>
 			<td>/</td>
 			<td>50000Mb (50Gb)</td>
+			<td>Ext4</td>
 			<td>System</td>
 		</tr>
 		<tr>
 			<td>/dev/sda2</td>
 			<td>Ingen</td>
 			<td>4096MB (4GB)</td>
+			<td>Ext4</td>
 			<td>Swap</td>
 		</tr>
 		<tr>
 			<td>/dev/sda3</td>
 			<td>/data</td>
 			<td>31000MB (31GB)</td>
+			<td>Ext4</td>
 			<td>Data og backup</td>
 		</tr>
 		<tr>
 			<td>Ledig plads</td>
 			<td> - </td>
 			<td>20,9 GB</td>
+			<td>Ext4</td>
 			<td>Linux?</td>
 		</tr>
 	</tbody>
 </table>
 
 <p>Grunden til at vi vælger noget ledig plads, er for at vi senere kan anvende den til at oprette en partition fra, når Ubuntu kører. Ønsker du ikke at gøre det kan du anvende pladsen til <span class="inl_cmd">/data</span> </p>
-
-<p>Hvis du fortryder kan du <a href="install_16.04.LTS.html#fortryd_avanceret_HD_opsaetning" target="_blank">gå tilbage til installationsguiden</a></p>
 
 <p>For at køre den avancerede opsætning skal du vælge punktet <span class="inl_cmd">Noget andet</span> og vælge <span class="knap">Fortsæt</span></p>
 
