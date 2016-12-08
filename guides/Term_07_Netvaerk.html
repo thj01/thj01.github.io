@@ -53,94 +53,11 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <h1>Netværks værktøjer</h1>
 
-<p>I dette kapitel vil det blive vist hvordan man kan analysere sit netværk.</p>
+<p>Der findes en lang række værktøjer til netværk, og i denne guide vil du blive introduceret for nogle af de vigtiste.</p>
 
-<h2><span class="inl_cmd">ip addr</span></h2>
+<h1>Virker netværket</h1>
 
-<p><span class="inl_cmd">ip addr</span> anvendes til at vise netværkskonfigurationen, men kan også anvendes til at konfigurere netværkskort. Herunder er kommandoen blevet kørt på en bærbar med en aktivt wifi forbindelse og et inaktivt fysisk netkort.</p>
-
-<code class="cmd">ip addr</code>
-
-<pre class="ubuntu_terminal">
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ ip addr
-1: lo: &lt;LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1
-    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
-    inet 127.0.0.1/8 scope host lo
-       valid_lft forever preferred_lft forever
-    inet6 ::1/128 scope host 
-       valid_lft forever preferred_lft forever
-2: enp1s0: &lt;NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc pfifo_fast state DOWN group default qlen 1000
-    link/ether a0:8c:fd:XX:XX:XX brd ff:ff:ff:ff:ff:ff
-3: wlp2s0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP group default qlen 1000
-    link/ether ac:2b:6e:XX:XX:XX brd ff:ff:ff:ff:ff:ff
-    <span class="red">inet 192.168.0.54/24 brd 192.168.0.255 scope global dynamic wlp2s0</span>
-       valid_lft 3595sec preferred_lft 3595sec
-    inet6 fe80::930d:4960:54c0:9aea/64 scope link 
-       valid_lft forever preferred_lft forever
-</pre>
-
-<p>Det fortæller os at:</p>
-
-<ul class="disc">
-	<li>Computeren har to netkort: <span class="inl_cmd">enp1s0</span> og <span class="inl_cmd">wlp2s0</span></li>
-	<li><span class="inl_cmd">wlp2s0</span> er aktivt, da det har angivet en IP-adresse (se rød markering)</li>
-</ul>
-
-<p>Den enhed der kaldes <span class="inl_cmd">io</span> er styresystemets interne IP-adresse (<span class="inl_cmd">127.0.0.1</span>). Hvis du f.eks. skal ramme en tjeneste der er på din maskine kan du anvende denne IP-adresse.</p>
-
-<p>Navnene på netkortene er lavet på følgende måde. De to første bogstaver angiver interfacetypen:</p>
-
-<ul class="disc">
-	<li>en &rarr; Kablet netkort (Ethernet)</li>
-	<li>wl &rarr; Trådløst netkort (wireless)</li>
-</ul>
-
-<p>De fire sidste cifre angiver hvor netkortet er fysisk placeret. Vi vil ikke her gennemgå deres betydning da det kræver mere viden om hardware. Det du skal vide er, at man ved hjælp af netkortets navn kan se hvor kortet fysisk er placeret. Du kan læse mere her i de to følgende henvisninger (teknisk):</p>
-
-<p><span class="red">BEMÆRK</span>: Herunder og fremefter er kommandoen kørt på en stationær computer med kun et aktivt netkort <span class="inl_cmd">enp0s3</span></p>
-
-<p>Vi kunne også have valgt kun at se et af vores netkort ved at gøre kommandoen mere præcis og målrette den et af vores netkort.</p>
-
-<code class="cmd">ip addr show enp0s3</code>
-
-<pre class="ubuntu_terminal">
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ ip addr show enp0s3 
-2: enp0s3: &lt;BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
-    link/ether 08:00:27:XX:XX:XX brd ff:ff:ff:ff:ff:ff
-    inet 192.168.0.65/24 brd 192.168.0.255 scope global dynamic enp0s3
-       valid_lft 2795sec preferred_lft 2795sec
-    inet6 fe80::710f:8d4b:cf57:b187/64 scope link 
-       valid_lft forever preferred_lft forever
-</pre>
-
-
-<ol class="none">
-	<li><a href="https://www.freedesktop.org/wiki/Software/systemd/PredictableNetworkInterfaceNames/" target="_blank">Henvisning 1</a></li>
-	<li><a href="https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/Networking_Guide/sec-Understanding_the_Predictable_Network_Interface_Device_Names.html" target="_blank">Henvisning 2</a></li>
-</ol>
-
-<h2>De fysiske kort</h2>
-
-<p>Vi kan også anvende ip til at give os informationer om de fysiske kort (<span class="inl_cmd">link</span>) i maskinen.</p>
-
-<code class="cmd">ip link show</code>
-
-<pre class="ubuntu_terminal">
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ ip link show
-1: lo: &lt;LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1
-    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
-2: enp0s3: &lt;BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP mode DEFAULT group default qlen 1000
-    link/ether 08:00:27:63:8e:71 brd ff:ff:ff:ff:ff:ff
-</pre>
-
-
-<h2>MAC-adresser</h2>
-
-<p>Læg mærke til linien <span class="inl_cmd">link/ether ac:2b:6e:XX:XX:XX</span> . Det kaldes en MAC adresse. Denne adresse er netværkskortets fysiske adresse og er unik. Mac-adressen bruges til at indentificere netværkskortet på nettet og denne information bliver altid medsendt. MAC-adressen fortæller hvem der har produceret kortet og hvilket kort det er (<span class="red">P</span> = Producenten / <span class="blue">S</span> = serienummer):</p>
-
-<code class="cmd"><span class="red">PP</span>:<span class="red">PP</span>:<span class="red">PP</span>:<span class="blue">SS</span>:<span class="blue">SS</span>:<span class="blue">SS</span></code>
-
-<p>Jeg har sat X'er ind på de 3 sidste pladser. Det skyldes at jeg ikke ønsker at andre skal kende mine netværkskorts fysiske denne adresser. Men af mine data kan man læse at <span class="inl_cmd">enp1s0</span> (<span class="inl_cmd">A0:8C:FD</span>) er produceceret af Hewlett Packard  og <span class="inl_cmd">wlp2s0</span> (<span class="inl_cmd">ac:2b:6e</span>) af Intel. Anvender du Virtualbox vil tallene være <span class="inl_cmd">08:00:27</span>.</p>
+<p>I dette afsnit vil vi se på de mest grundlæggende færdigheder man har brug for, nemlig at kontrollere om der er forbindelse til netværket og hvordan computerens netværk er konfigureret. Det gøres med værktøjerne <span class="inl_cmd">ping</span> og <span class="inl_cmd">ip</span> fra programpakken <span class="inl_cmd">iproute2</span>.</p>
 
 <h2><span class="inl_cmd">ping</span> - Tjek netværket</h2>
 
@@ -194,6 +111,101 @@ rtt min/avg/max/mdev = 12.842/33.051/111.476/39.215 ms
 <a href="http://manpages.ubuntu.com/manpages/trusty/en/man8/ping.8.html" target="_blank">
 http://manpages.ubuntu.com/manpages/trusty/en/man8/ping.8.html</a></p>
 
+<h2><span class="inl_cmd">ip</span> - dine netkort</h2>
+
+<p><span class="inl_cmd">ip addr</span> anvendes til at vise netværkskonfigurationen, men kan også anvendes til at konfigurere netværkskort. Herunder er kommandoen blevet kørt på en bærbar med en aktivt wifi forbindelse og et inaktivt fysisk netkort.</p>
+
+<code class="cmd">ip addr</code>
+
+<pre class="ubuntu_terminal">
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ ip addr
+1: lo: &lt;LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+2: enp0s3: &lt;BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+    link/ether 08:00:27:63:8e:71 brd ff:ff:ff:ff:ff:ff
+    <span class="red">inet 192.168.0.65/24 brd 192.168.0.255</span> scope global dynamic enp0s3
+       valid_lft 3578sec preferred_lft 3578sec
+    inet6 fe80::fce5:928a:b597:7f4e/64 scope link 
+       valid_lft forever preferred_lft forever
+</pre>
+
+<p>Det fortæller os at der er to aktive netværkskort: <span class="inl_cmd">io</span> og <span class="inl_cmd">enp0s3</span>. Det der er markeret med rødt er informationer om computerens IP-adresse.</p>
+
+<ul class="none">
+	<li>IP-adresse : <span class="inl_cmd">192.168.0.65</span></li>
+	<li>Netmaske/subnet : <span class="inl_cmd">/24</span> (svarer til: <span class="inl_cmd">255.255.255.0</span>)</li>
+	<li>Broadcast-adresse: 192.168.0.255</li>
+</ul>
+
+<span class="afsnit">io</span>
+
+<p><span class="inl_cmd">io</span> er et virtuelt netværkskort der er forbeholdt den lokale computer og har IP-adressen 127.0.0.1. Der er den adresse man kan anvende hvis man vil have adgang til en lokal webserver, og andre IP-baserede netværkstjenester på PC'en.</p>
+
+<span class="">enp0s3</span>
+
+<p>Dette er det fysiske netkort, og man kan ud fra betegnelsen se hvilken fysisk enhed det er i maskinen. Navnet på netkortet er dannet på følgende måde. De to første bogstaver angiver interfacetypen:</p>
+
+<ul class="none">
+	<li>en &rarr; Kablet netkort (Ethernet)</li>
+	<li>wl &rarr; Trådløst netkort (wireless)</li>
+</ul>
+
+<p>De fire sidste cifre angiver hvor netkortet er fysisk placeret. Vi vil ikke her gennemgå deres betydning da det kræver mere viden om hardware. Det du skal vide er, at man ved hjælp af netkortets navn kan se hvor hardwaren fysisk er placeret i computeren. Du kan læse mere her i de to følgende henvisninger (teknisk):</p>
+
+<p>Vi kunne også have valgt kun at se et af vores netkort ved at gøre kommandoen mere præcis og målrette den et af vores netkort.</p>
+
+<code class="cmd">ip addr show enp0s3</code>
+
+<pre class="ubuntu_terminal">
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ ip addr show enp0s3 
+2: enp0s3: &lt;BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+    link/ether 08:00:27:XX:XX:XX brd ff:ff:ff:ff:ff:ff
+    inet 192.168.0.65/24 brd 192.168.0.255 scope global dynamic enp0s3
+       valid_lft 2795sec preferred_lft 2795sec
+    inet6 fe80::710f:8d4b:cf57:b187/64 scope link 
+       valid_lft forever preferred_lft forever
+</pre>
+
+
+<ol class="none">
+	<li><a href="https://www.freedesktop.org/wiki/Software/systemd/PredictableNetworkInterfaceNames/" target="_blank">Henvisning 1</a></li>
+	<li><a href="https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/Networking_Guide/sec-Understanding_the_Predictable_Network_Interface_Device_Names.html" target="_blank">Henvisning 2</a></li>
+</ol>
+
+<h1>Det fysiske netværk</h1>
+
+<p>Vi kan også anvende ip til at give os informationer om de fysiske kort (<span class="inl_cmd">link</span>) i maskinen.</p>
+
+<code class="cmd">ip link show</code>
+
+<pre class="ubuntu_terminal">
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ ip link show
+1: lo: &lt;LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+2: enp0s3: &lt;BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP mode DEFAULT group default qlen 1000
+    link/ether 08:00:27:63:8e:71 brd ff:ff:ff:ff:ff:ff
+</pre>
+
+<h2>MAC-adresser</h2>
+
+<p>Læg mærke til linien <span class="inl_cmd">link/ether 08:00:27:63:8e:71</span> . Det kaldes en MAC adresse. Denne adresse er netværkskortets fysiske adresse og er unik. Mac-adressen bruges til at indentificere netværkskortet på nettet og denne information bliver altid medsendt. MAC-adressen fortæller hvem der har produceret kortet og hvilket kort det er (<span class="red">P</span> = Producenten / <span class="blue">S</span> = serienummer):</p>
+
+<code class="cmd"><span class="red">PP</span>:<span class="red">PP</span>:<span class="red">PP</span>:<span class="blue">SS</span>:<span class="blue">SS</span>:<span class="blue">SS</span></code>
+
+<p>I dette tilfælde kan man se på tallene: <span class="inl_cmd">08:00:27</span>, at det er et netkort fra Virtualbox.</p>
+
+<p>Men af mine data kan man læse at <span class="inl_cmd">enp1s0</span> (<span class="inl_cmd">A0:8C:FD</span>) er produceceret af Hewlett Packard  og <span class="inl_cmd">wlp2s0</span> (<span class="inl_cmd">ac:2b:6e</span>) af Intel. Anvender du Virtualbox vil tallene være <span class="inl_cmd">08:00:27</span>.</p>
+
+<p>Du kan tjekke din producent her: <a href="https://macvendors.com/" target="_blank">https://macvendors.com/</a></p>
+
+<h1>Netværks kommandoer</h1>
+
+<p></p>
+
 <h2>Stop og start netværk</h2>
 
 <p>Man kan stoppe og starte netværkskort ved hjælp af <span class="inl_cmd">ip</span> kommandoen. For at stoppe netværket anvender man følgende kommando:</p>
@@ -223,10 +235,6 @@ PING dr.dk (159.20.6.38) 56(84) bytes of data.
 4 packets transmitted, 4 received, 0% packet loss, time 3004ms
 rtt min/avg/max/mdev = 11.952/12.590/13.239/0.513 ms
 </pre>
-
-<h1><span class="red">HER ER JEG NÅET TIL </span></h1>
-
-<p></p>
 
 <h2>Konfigurer netværkskortet</h2>
 
@@ -262,6 +270,12 @@ rtt min/avg/max/mdev = 11.952/12.590/13.239/0.513 ms
 <p>Man kan også udspecificere kommandoen med følgende:</p>
 
 <code class="cmd">ifconfig eth0 192.168.0.100 netmask 255.255.255.0 broadcast 192.168.0.255</code>
+
+<h2>Guide til <span class="inl_cmd">iproute2</span></h2>
+
+<p>Her er en omfattende guide til hvordan man anvender <span class="inl_cmd">iproute2</span>.</p>
+
+<p>Oversigt over kommandoer: <a href="http://baturin.org/docs/iproute2/#Show all addresses" target="_blank">http://baturin.org/docs/iproute2/#Show all addresses</a></p>
 
 <h1>GUI til <span class="inl_cmd">ip</span></h1>
 
