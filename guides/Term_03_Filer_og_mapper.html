@@ -217,13 +217,15 @@ ff02::2 ip6-allrouters
 
 <p>Herunder er vist nogle eksempler med eksempler med kommandoen <span class="inl_cmd">id</span>:</p>
 
+<p>Her bliver output fra kommandoen ledt direkte ind i filen <span class="inl_cmd">~/test</span>, hvilket vi viser ved at køre <span class="inl_cmd">cat ~/test</span>.</p>
+
 <pre class="ubuntu_terminal">
 <span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ id thoj 1> ~/test
 <span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ cat ~/test
 uid=1000(thoj) gid=1000(thoj) grupper=1000(thoj),4(adm),24(cdrom),27(sudo),30(dip), 46(plugdev),108(lpadmin),124(sambashare)
 </pre>
 
-<p>Her bliver output fra kommandoen ledt direkte ind i filen <span class="inl_cmd">~/test</span>, hvilket vi viser ved at køre <span class="inl_cmd">cat ~/test</span>.</p>
+<p>Her leder vi fejloutput ind i filen <span class="inl_cmd">~/test</span>. Derfor bliver output fra kommandoen vist, men der er intet i filen <span class="inl_cmd">~/test</span>, fordi der ikke er noget fejloutput</p>
 
 <pre class="ubuntu_terminal">
 <span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ id thoj 2> ~/test
@@ -231,7 +233,9 @@ uid=1000(thoj) gid=1000(thoj) grupper=1000(thoj),4(adm),24(cdrom),27(sudo),30(di
 <span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ cat ~/test
 </pre>
 
-<p>Her leder vi fejloutput ind i filen <span class="inl_cmd">~/test</span>. Derfor bliver output fra kommandoen vist, men der er intet i filen ~/test</p>
+
+<p>Her leder vi et fejloutput ind i filen <span class="inl_cmd">~/test</span>. Læg mærke til at det ikke bliver betragtet som en fejl at <span class="inl_cmd">id</span> ikke ikke finder en bruger. Herunder prøver vi at anvende en kommando systemet ikke kender. I stedet for at vise fejlen i terminalen skubber den fejl-output ind i filen <span class="inl_cmd">~/test</span></p>
+
 
 <pre class="ubuntu_terminal">
 <span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ id hugo 2>/dev/null
@@ -239,7 +243,8 @@ id: 'hugo': ingen sådan bruger
 <span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ cat ~/test
 </pre>
 
-<p>Her leder vi et fejloutput ind i filen <span class="inl_cmd">~/test</span>. Læg mærke til at det ikke bliver betragtet som en fejl at <span class="inl_cmd">id</span> ikke ikke finder en bruger. Herunder prøver vi at anvende en kommando systemet ikke kender. I stedet for at vise fejlen i terminalen skubber den fejl-output ind i filen <span class="inl_cmd">~/test</span></p>
+<p>Man kan også sende output til <span class="inl_cmd">/dev/null</span>, som bedst kan beskrives som sort hul. På den måde kan man fjerne meddelelser fra et program. Det kan være praktisk hvis man anvender kommandoer i scripts eller man ønsker at køre programmer usynligt i baggrunden.</p>
+
 
 <pre class="ubuntu_terminal">
 <span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ ifd hugo 2> ~/test
@@ -256,7 +261,7 @@ ifd: kommando ikke fundet
 <span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ 
 </pre>
 
-<p>Man kan også sende output til <span class="inl_cmd">/dev/null</span>, som bedst kan beskrives som sort hul. På den måde kan man fjerne meddelelser fra et program. Det kan være praktisk hvis man anvender kommandoer i scripts eller man ønsker at køre programmer usynligt i baggrunden.</p>
+<p>Vil man kvæle alle putput fra en kommando anvender man <span class="inl_cmd">&>/dev/null</span>. Anvender man <span class="inl_cmd">&</span> som argument i et scripts, så kan man se at intentionen er at kvæle alle output.</p>
 
 <pre class="ubuntu_terminal">
 <span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ id thoj 
@@ -265,7 +270,6 @@ uid=1000(thoj) gid=1000(thoj) grupper=1000(thoj),4(adm),24(cdrom),27(sudo),30(di
 <span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ id hugo 2>/dev/null
 </pre>
 
-<p>Vil man kvæle alle putput fra en kommando anvender man <span class="inl_cmd">&>/dev/null</span>. Anvender man <span class="inl_cmd">&</span> som argument i et scripts, så kan man se at intentionen er at kvæle alle output.</p>
 
 <p>En sidste praktisk måde at anvende omdirigering er til at indsætte tekststrenge ved hjælp af <span class="inl_cmd">echo</span>. På denne måde kan man indsætte tekstrenge i filer:</p>
 
@@ -955,7 +959,7 @@ thoj thoj  tree -L 3 ~/testmappe5
 
 <code class="cmd">rm -R ~/testmap1</code>
 
-<p>Teoretisk set kan den kommando slette hele ens harddisk, hvis man får / til at stå alene, da det er roden på hele systemet. Heldigvis er der indbygget en "failsafe" i kommandoen, sådan at man skal tilføje <span class="inl_cmd">--no-preserve-root</span> som en option.</p>
+<p>Teoretisk set kan den kommando slette hele ens harddisk, hvis man får / til at stå alene, da det er roden på hele systemet. Heldigvis er der indbygget en "failsafe" i kommandoen, sådan at man skal tilføje <span class="inl_cmd">--no-preserve-root</span> til kommandoen for at den vil køre. Man skal tvinge kommandoen <span class="inl_cmd">sudo rm -R</span> til at køre.</p>
 
 <pre class="ubuntu_terminal">
 <span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ sudo rm -R /

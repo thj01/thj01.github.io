@@ -61,7 +61,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <h2>Alt er filer</h2>
 
-<p>I Linux er alt filer. En mappe er egentlig bare en fil, der henviser til en samling af filer, og hardware er præsenteret ved hjælp af en fil. F.eks. har den første partition på den første SATA disk i systemet filadressen <span class="inl_cmd">/dev/sda1</span> og det første netkort <span class="inl_cmd">/dev/eth0</span>. Så hvis man ønsker at skrive noget til det første netkort (f.eks. data eller konfiguration) skal det altså sendes til filen <span class="inl_cmd">/dev/eth0</span>.</p>
+<p>I Linux er alt filer. En mappe er egentlig bare en fil, der henviser til en samling af filer, og hardware er præsenteret ved hjælp af en fil. F.eks. har den første partition på den første SATA disk i systemet filadressen <span class="inl_cmd">/dev/sda1</span>, den næste <span class="inl_cmd">/dev/sda2</span> osv. Selve harddisken hedder i filsystemet <span class="inl_cmd">/dev/sda</span>.</p>
 
 <h2>Filsystemets opbygning</h2>
 
@@ -166,11 +166,9 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <p>Linux anvender modsat windows både de store og små bogstaver i alfabetet. Derfor vil der under Linux være forskel på filerne <span class="inl_cmd">data</span> og <span class="inl_cmd">Data</span> og brugerne <span class="inl_cmd">tj</span> og <span class="inl_cmd">Tj</span>.</p>
 	
-<p>Man kan heller ikke se på en fils "efternavn" om det er et program. I windows kan programmer genkendes ved deres efternavn f.eks. <span class="inl_cmd">.exe</span> eller <span class="inl_cmd">.msi</span>. I Linux gøres en fil eksekverbar, ved at man ændre i den rettigheder. Derfor kan man ikke umiddelbart se om en fil kan køres eller ej. Det er også normen at man uploader og sender programmer uden at have sat eksekverrettigheder. På den måde sikrer man sig at man ikke ved et uheld kommer til at køre en fil.</p>
+<p>Man kan heller ikke se på filens "efternavn" om det er et program. I windows kan programmer genkendes ved deres efternavn f.eks. <span class="inl_cmd">.exe</span> eller <span class="inl_cmd">.msi</span>. I Linux gøres en fil eksekverbar, ved at man ændre i den rettigheder. Derfor kan man ikke umiddelbart se om en fil kan køres eller ej. Det er også normen at man uploader og sender programmer uden at have sat eksekverrettigheder. På den måde sikrer man sig at man ikke ved et uheld kommer til at køre en fil.</p>
 
-<p>Men efternavne på filer anvendes også i Linux, men det er mere for at programmer kan genkende filerne. Det gælder f.eks: <span class="inl_cmd">*.pdf</span>, <span class="inl_cmd">*.odt</span>, <span class="inl_cmd">*.jpg</span> og <span class="inl_cmd">*.png</span>. 
-	
-I styresystemet Linux anvendes der ikke ”efternavne” til filer som f.eks. exe, dll og inf, for at afgøre hvilken type filen er. Det styres med rettigheder. Derfor kan man ikke umiddelbart se på en fil om det er et program eller blot en tekstfil. Der anvendes dog filefternavne til filer med specifikke formater, f.eks. til tekst- og billedbehandlingsprogrammer f.eks. *.pdf, *.odt, *.jpg, *.png osv. For at kunne genkende script filer giver man dem efternavnet <span class="inl_cmd">*.sh</span>. Filrettigheder skal dog sættes rigtigt før en <span class="inl_cmd">*.sh</span> fil kan køres.</p>
+<p>Efternavne på filer anvendes i Linux, men det er for at programmer kan genkende filerne. Det gælder f.eks: <span class="inl_cmd">*.pdf</span>, <span class="inl_cmd">*.odt</span>, <span class="inl_cmd">*.jpg</span> og <span class="inl_cmd">*.png</span>. Man anvender altså filnavnene for at programmer kan kende filerne, men også for at brugeren kan se det. F.eks. sætter man ofte <span class="inl_cmd">.sh</span> på shell-script filer, for at man som bruger kan genkende filer der kan køres som programmer.</p>
 
 <h1>Navigation i filsystemet</h1>
 
