@@ -137,7 +137,7 @@ http://manpages.ubuntu.com/manpages/trusty/en/man8/ping.8.html</a></p>
 
 <ul class="none">
 	<li>IP-adresse : <span class="inl_cmd">192.168.0.65</span></li>
-	<li>Netmaske/subnet : <span class="inl_cmd">/24</span> (svarer til: <span class="inl_cmd">255.255.255.0</span>)</li>
+	<li>CIDR/Netmaske : <span class="inl_cmd">/24</span> (svarer til: <span class="inl_cmd">255.255.255.0</span>)</li>
 	<li>Broadcast-adresse: 192.168.0.255</li>
 </ul>
 
@@ -204,7 +204,7 @@ http://manpages.ubuntu.com/manpages/trusty/en/man8/ping.8.html</a></p>
 
 <h1>Netværks kommandoer</h1>
 
-<p></p>
+<p>Herunder gennemgås det hvordan du kan anvende <span class="inl_cmd">ip</span> til at ændre i netværkskonfigurationen</p>
 
 <h2>Stop og start netværk</h2>
 
@@ -235,6 +235,14 @@ PING dr.dk (159.20.6.38) 56(84) bytes of data.
 4 packets transmitted, 4 received, 0% packet loss, time 3004ms
 rtt min/avg/max/mdev = 11.952/12.590/13.239/0.513 ms
 </pre>
+
+<h2>Ændr IP-adresse</h2>
+
+<p>se: <a href="https://wiki.gentoo.org/wiki/Iproute2" target="_blank">https://wiki.gentoo.org/wiki/Iproute2</a></p>
+
+<code class="cmd">ip addr add 192.168.0.120</code>
+
+
 
 <h2>Konfigurer netværkskortet</h2>
 
