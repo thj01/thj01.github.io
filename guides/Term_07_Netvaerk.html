@@ -183,7 +183,7 @@ http://manpages.ubuntu.com/manpages/trusty/en/man8/ping.8.html</a></p>
 <code class="cmd">ip link show</code>
 
 <pre class="ubuntu_terminal">
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ ip link show
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ ip link
 1: lo: &lt;LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1
     link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
 2: enp0s3: &lt;BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP mode DEFAULT group default qlen 1000
@@ -205,6 +205,26 @@ http://manpages.ubuntu.com/manpages/trusty/en/man8/ping.8.html</a></p>
 <h1>Netværks kommandoer</h1>
 
 <p>Herunder gennemgås det hvordan du kan anvende <span class="inl_cmd">ip</span> til at ændre i netværkskonfigurationen</p>
+
+<h2>Forny IP-adresse</h2>
+
+<p>For at forny netværksindstillingerne skal du først nulstille dem og derefter indhente en ny IP adresse.
+</p>
+
+<p>Slip din IP-adresse</p>
+
+<code class="cmd">sudo dhclient -r enpos3</code>
+
+<p>Forny din IP-adresse</p>
+
+<code class="cmd">sudo dhclient enpos3</code>
+
+<span class="afsnit">I GUI</span>
+
+<p>Anvender du <span class="inl_cmd">network-manager</span> skal du genstarte tjenesten:</p>
+
+<code class="cmd">sudo service network-manager restart</code>
+
 
 <h2>Stop og start netværk</h2>
 
@@ -236,56 +256,9 @@ PING dr.dk (159.20.6.38) 56(84) bytes of data.
 rtt min/avg/max/mdev = 11.952/12.590/13.239/0.513 ms
 </pre>
 
-<h2>Ændr IP-adresse</h2>
-
-<p>se: <a href="https://wiki.gentoo.org/wiki/Iproute2" target="_blank">https://wiki.gentoo.org/wiki/Iproute2</a></p>
-
-<code class="cmd">ip addr add 192.168.0.120</code>
 
 
-
-<h2>Konfigurer netværkskortet</h2>
-
-<p>Ved hjælp af <span class="inl_cmd">ifconfig</span> kan man også konfigurere netværkskortet f.eks:</p>
-
-<code class="cmd">sudo ifconfig enp0s3 192.168.0.100/24</code>
-
-<p>Med denne kommando angives <span class="inl_cmd">192.168.0.100/24</span> som netværkskortets nye IP-adresse. Reelt fylder Linux resten af informationerne ud med standard mulighederne. Således vil følgende give følgende opstilling:</p>
-
-<table class="">
-	<thead>
-		<tr>
-			<th></th>
-			<th></th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>IP</td>
-			<td>192.168.0.100</td>
-		</tr>
-		<tr>
-			<td>Netmaske</td>
-			<td>255.255.255.0 (CIDR 24)</td>
-		</tr>
-		<tr>
-			<td>Broadcast</td>
-			<td>10.0.2.255</td>
-		</tr>
-	</tbody>
-</table>
-
-<p>Man kan også udspecificere kommandoen med følgende:</p>
-
-<code class="cmd">ifconfig eth0 192.168.0.100 netmask 255.255.255.0 broadcast 192.168.0.255</code>
-
-<h2>Guide til <span class="inl_cmd">iproute2</span></h2>
-
-<p>Her er en omfattende guide til hvordan man anvender <span class="inl_cmd">iproute2</span>.</p>
-
-<p>Oversigt over kommandoer: <a href="http://baturin.org/docs/iproute2/#Show all addresses" target="_blank">http://baturin.org/docs/iproute2/#Show all addresses</a></p>
-
-<h1>GUI til <span class="inl_cmd">ip</span></h1>
+<h2>GUI til <span class="inl_cmd">ip</span></h2>
 
 <p></p>
 
@@ -466,64 +439,16 @@ Nmap done: 49 IP addresses (2 hosts up) scanned in 5.59 seconds
 <a href="http://manpages.ubuntu.com/manpages/trusty/en/man1/nmap.1.html" target="_blank">
 http://manpages.ubuntu.com/manpages/trusty/en/man1/nmap.1.html</a></p>
 
-<h1>Iproute 2 suite</h1>
-
-<p>Under udarbejdelse</p>
-
-<table class="cmd_table">
-	<thead>
-		<tr>
-			<th></th>
-			<th></th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>ip addr</td>
-			<td></td>
-		</tr>
-		<tr>
-			<td>ip alias</td>
-			<td></td>
-		</tr>
-		<tr>
-			<td>ip link</td>
-			<td></td>
-		</tr>
-		<tr>
-			<td>ip route</td>
-			<td></td>
-		</tr>
-		<tr>
-			<td>ip neigh</td>
-			<td></td>
-		</tr>
-		<tr>
-			<td>ip tunnel</td>
-			<td></td>
-		</tr>
-		<tr>
-			<td>ip maddr</td>
-			<td></td>
-		</tr>
-		<tr>
-			<td>ss</td>
-			<td></td>
-		</tr>
-	</tbody>
-</table>
-
-<h2>ip addr</h2>
-
-<code class="cmd">ip addr show eth0</code>
-
-
-
-
 <p></p>
 <p></p>
 <p></p>
 <p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+
+
 
 	</body>
 
