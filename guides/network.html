@@ -77,7 +77,32 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <p>Internettet som vi kender det i dag startede som projekt under det amerikanske forsvar i starten af 1960'erne </p>
 
+<h1>TCP/IP modellen</h1>
 
+<p>TCP/IP modellen blev oprindeligt beskrevet i 1974 af Vint Cerf og Bob Kahn, og den version vi anvender i dag er <span class="inl_cmd">RFC 1122 Internet STD3</span>. TCP/IP modellen beskriver de trin der skal til for at man kan sende og modtage data over et netværk. Disse trin kalder man i netværkssammnhæng for <span class="inl_cmd">lag</span>. TCP/IP modellen har fire lag.</p>
+
+<ul class="none">
+	<li>Applikation</li>
+	<li>Transport</li>
+	<li>Internet</li>
+	<li>Link</li>
+</ul>
+
+<h2>Applikation</h2>
+
+<p>Dette lag svarer til det du arbejder med i det daglige. Det er de data som computerens operativsystem kan anvende.  </p>
+
+<h2>Transport</h2>
+
+<p>For at kunne transportere disse data bliver det delt op i mindre enheder. Disse dataenheder bliver pakket ind ved hjælp af <span class="inl_cmd">TCP</span>, sådan at man kan sikre sig at indholdet ikke er ødelagt.</p>
+
+<h2>Internet</h2>
+
+<p>På dette lag får data-pakken en adresse, så den ved hvor den skal hen. Det er det sidste led i TCP/IP protokollen</p>
+
+<h2>Link</h2>
+
+<p>På dette link får datapakken en unik adresse, som </p>
 
 
 
@@ -87,12 +112,9 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <table class="">
 	<thead>
+
 		<tr>
-			<th colspan="4">OSI (Open Systems Interconnection) modellen</th>
-		</tr>
-		<tr>
-			<th></th>
-			<th colspan="2">Lag</th>
+			<th colspan="3">Lag</th>
 			<th>Funktion</th>
 		</tr>
 	</thead>
@@ -100,7 +122,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 		<tr>
 			<td rowspan="4">Værts <br/> Lagene</td>
 			<td>7</td>
-			<td>Application/td>
+			<td>Application</td>
 			<td>bindeled mellem netværk og program</td>
 		</tr>
 		<tr>
