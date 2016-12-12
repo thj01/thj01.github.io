@@ -77,722 +77,153 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <p>Internettet som vi kender det i dag startede som projekt under det amerikanske forsvar i starten af 1960'erne </p>
 
-<h1>TCP/IP modellen</h1>
+<h1>Netværk på Ubuntu</h1>
 
-<p>TCP/IP modellen blev oprindeligt beskrevet i 1974 af Vint Cerf og Bob Kahn, og den version vi anvender i dag er <span class="inl_cmd">RFC 1122 Internet STD3</span>. TCP/IP modellen beskriver de trin der skal til for at man kan sende og modtage data over et netværk. Disse trin kalder man i netværkssammnhæng for <span class="inl_cmd">lag</span>. TCP/IP modellen har fire lag.</p>
+<p>TCP/IP protokollen er i dag standarden på netværk. Det er den der driver Internettet og holder styr på de mange computere der er på internettet.</p>
+
+<h2>IP-adresser</h2>
+
+<p>Alle computer på netværket har en unik IP-adresse, sådan at man kan sende data mellem dem. Her i denne guide vil vi tage udgangspunkt i IPv4 (herefter blot omtalt som IP), som er den mest udbredte, og den version din Ubuntu computer anvender (IPv6 vil blive gennemgået længere nede).</p>
+
+<p>IP adresser består af 4 oktetter af binære tal der tilsammen danner en unik adresse. Normal vil man ikke anvende binære tal, men 10-talsystemet til at skrive værdierne. Det betyder at hver oktet kan have værdierne 0 - 255, da man tæller fra 0 når man arbejder med computere. For at finde din computers IP-adresse bruger du nedestående kommando. Ip-adressen er markeret med rødt:</p>
+
+<code class="cmd">ip addr</code>
+
+<pre class="ubuntu_terminal">
+1: lo: &lt;LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+2: enp0s3: &lt;BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+    link/ether 08:00:27:63:8e:71 brd ff:ff:ff:ff:ff:ff
+    <span class="red">inet 192.168.0.65/24 brd 192.168.0.255 scope global dynamic enp0s3</span>
+       valid_lft 2704sec preferred_lft 2704sec
+    inet6 fe80::fce5:928a:b597:7f4e/64 scope link 
+       valid_lft forever preferred_lft forever
+</pre>
+
+<p>Den ovenstående IP adresse (<span class="inl_cmd">192.168.0.65</span>) ville på binær være: <span class="inl_cmd">11000000.10101000.00000000.01000001</span></p>
+
+<p>Ved hjælp af den linie får jeg alle de informationer der skal til for at jeg kender min maskines adresse og det netværk den befinder sig på. De informationer der kan læses ud af denne linie er:</p>
 
 <ul class="none">
-	<li>Applikation</li>
-	<li>Transport</li>
-	<li>Internet</li>
-	<li>Link</li>
+	<li>IP-adresse: 192.168.0.65</li>
+	<li>Netmaske: /24 (eller 255.255.255.0)</li>
+	<li>Broadcast-adresse: 192.168.0.255</li>
+	<li>Netværks-adresse: 192.168.0.0</li>
 </ul>
 
-<h2>Applikation</h2>
+<p>Da vi har gennemgået hvad selve IP-adressen er så lad os kigge på de andre:</p>
 
-<p>Dette lag svarer til det du arbejder med i det daglige. Det er de data som computerens operativsystem kan anvende.  </p>
+<h2>Netmaske</h2>
 
-<h2>Transport</h2>
+<p>Netmasken beskriver størrelsen på netværket. Prøv at se nedestående skema, hvor <span class="bold"><span class="red">N</span></span> står for de bits netværket er tildelt og <span class="bold"><span class="blue">K</span></span> for de bits der tilhører klienterne.</p>
 
-<p>For at kunne transportere disse data bliver det delt op i mindre enheder. Disse dataenheder bliver pakket ind ved hjælp af <span class="inl_cmd">TCP</span>, sådan at man kan sikre sig at indholdet ikke er ødelagt.</p>
-
-<h2>Internet</h2>
-
-<p>På dette lag får data-pakken en adresse, så den ved hvor den skal hen. Det er det sidste led i TCP/IP protokollen</p>
-
-<h2>Link</h2>
-
-<p>På dette link får datapakken en unik adresse, som </p>
-
-
-
-<h1>OSI (Open Systems Interconnection) modellen</h1>
-
-<p>Nedestående skema er en modificeret udgave af: <a href="http://en.wikipedia.org/wiki/OSI_model" target="_blank">http://en.wikipedia.org/wiki/OSI_model</a></p>	
-
-<table class="">
+<table id="">
 	<thead>
-
 		<tr>
-			<th colspan="3">Lag</th>
-			<th>Funktion</th>
+			<th colspan="2">Netmaske</th>
+			<th>Oversigt</th>
+			<th>Antal <br/>adresser</th>
+			<th>Mulige <br/>hosts</th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr>
-			<td rowspan="4">Værts <br/> Lagene</td>
-			<td>7</td>
-			<td>Application</td>
-			<td>bindeled mellem netværk og program</td>
+			<td>/8</td>
+			<td>255.0.0.0</td>
+			<td><span class="red">NNNNNNNN</span> . <span class="blue">KKKKKKKK</span> . <span class="blue">KKKKKKKK</span> . <span class="blue">KKKKKKKK</span></td>
+			<td><span class="math">\( 2^{24} = 16.777.216 \)</span></td>
+			<td><span class="math">\( 16.777.214 \)</span></td>
 		</tr>
 		<tr>
-			<td>6</td>
-			<td>Presentation</td>
-			<td>Kryptering og dekryptering af data. Konvertere maskinafhængig data til maskinuafhængig data</td>
+			<td>/16</td>
+			<td>255.255.0.0</td>
+			<td><span class="red">NNNNNNNN</span> . <span class="red">NNNNNNNN</span> . <span class="blue">KKKKKKKK</span> . <span class="blue">KKKKKKKK</span></td>
+			<td><span class="math">\( 2^{16} = 65.536 \)</span></td>
+			<td><span class="math">\( 65.534 \)</span></td>
 		</tr>
 		<tr>
-			<td>5</td>
-			<td>Session</td>
-			<td>Deler data op i pakker og mærker pakkerne så afsender og modtager ved hvorfra de bliver sendt/modtaget.</td>
-		</tr>
-		<tr>
-			<td>4</td>
-			<td>Transport</td>
-			<td>Sender og sikrer data mellem afsender og modtager (TCP)</td>
-		</tr>
-		<tr>
-			<td rowspan="3">Medie lag</td>
-			<td>3</td>
-			<td>Network</td>
-			<td>Rutebestemmelse og logisk Adressering (IP)</td>
-		</tr>
-		<tr>
-			<td>2</td>
-			<td>Data Link</td>
-			<td>Fysisk adressering (MAC & LLC)</td>
-		</tr>
-		<tr>
-			<td>1</td>
-			<td>Physical</td>
-			<td>bits - elektriske signaler</td>
+			<td>/24</td>
+			<td>255.255.255.0</td>
+			<td><span class="red">NNNNNNNN</span> . <span class="red">NNNNNNNN</span> . <span class="red">NNNNNNNN</span> . <span class="blue">KKKKKKKK</span></td>
+			<td><span class="math">\( 2^8 = 256 \)</span></td>
+			<td><span class="math">\( 254 \)</span></td>
 		</tr>
 	</tbody>
 </table>
 
-<p>En god huskeregel til OSI modellen er : <span class="bold">A</span>ll <span class="bold">P</span>eople <span class="bold">S</span>eem <span class="bold">T</span>o <span class="bold">N</span>eed <span class="bold">D</span>ata <span class="bold">P</span>rocessing</p>
+<p>Forskellen mellem de 3 forskellige netmasker er, antallet af mulige <span class="inl_cmd">klienter</span> på netværket. Man anvender netmasken til at subnette ( segmenterer / opdele ) netværket, for at mindske datamængden, og for at kunne styre adgang og rettigheder til og fra maskinerne.</p>
 
-<h2>De enkelte lag uddybet</h2>
+<p>Der vil senere komme et afsnit om subnetting.</p>
 
-<p>OSI-modellen er skabt for at give et overblik over de elementer der indgår i computernetværk. Den skal ikke forstås sådan at man kan oversætte de enkelte lag til et specifikt stykke hard- eller software. Modellen hjælper til at forstå hvordan netværket fungerer og er et redskab til at analysere fejl.</p>
+<h2>Netværks-adresse</h2>
 
-<p>Lag 1-3 vil således beskrive de funktioner og egenskaber hardwaren skal opfylde for at sikre datakommunikation. En switch (lag2) vil rent hardwaremæssigt operere på alle de to første lag, hvorimod et patchpanel kun er relevant på lag 1.</p>
+<p>Man anvender den først tilgængelige adresse i netværket som netværkets navn. I det ovenstående tilfælde vil det altså være den første af de tilgængelige adresser. Og da computere tæller fra 0 bliver det 192.168.0.0</p>
 
-<figure id="">
+<h2>Broadcast-adresse</h2>
 
-	<img class="p50"src="images/uskaermet-patch-panel-cat5e-24-port-big.png" alt="" title="" />
-
-	<figcaption>Patchpanel</figcaption>
-
-</figure>
-
-<p>Samarbejdet mellem lagene foregår ved ved hjælp af SAP - Service Access Points. Da hvert lag styrer en afgrænset proces skal der være nogle procedurer for hvordan lagene udveksler data. Når f.eks. transport-laget har klargjort pakkerne så sender det dem til netværkslaget og modsat. Denne transmission foregår ved hjælp af SAP.</p>
-
-<p>Det som er væsentligt at forstå her er, at lagene interagerer med henholdsvis det underliggende og det overliggende lag. Det er den enkelte model/specifikation der definerer hvad og hvordan transmissionen skal foregå.</p>
-
-<figure id="">
-
-	<img class="p40"src="images/kommunikation_mellem_lag.svg" alt="" title="" />
-
-	<figcaption>Egenproduceret model udfra: Stein-Olsen & Stalheim s. 9 (1998)</figcaption>
-
-</figure>
-
-<p>Nedestående illustration viser interaktionen mellem de enkelte lag. Herunder bliver det kaldt virtuel kommunikation, og det skal forstås sådan,  at de enkelte lag kun "ser" de modstående lag. Altså hvis man skal løse/forstå en problemstilling på layer 5, så skal man kigge på I/O (Input/Output) delen af dem. Hver enkelt lag vil tilgå kommunikationen, som om det arbejder med samme lag i det andet system.</p>
-
-<figure id="">
-
-	<img class="p60"src="images/OSI_virtuel_kommunikation.svg" alt="" title="" />
-
-	<figcaption>Egenproduceret model udfra: Stein-Olsen & Stalheim s. 9 (1998)</figcaption>
-
-</figure>
-
-<div class="fed">Lag 1: Det fysiske lag</div>
-
-<p>Det fysiske lag består af selve hardwaren (de fysiske enheder) der forbinder computerne. Forbindelsen mellem disse er ikke nødvendigvis troværdige. Det definerer elektriske og fysiske egenskaber samt etablerer og terminerer forbindelsen mellem to fysiske enheder (nodes) </p>
-
-<div class="fed">Lag 2: Data link</div>
-
-<p>Datalink laget sikrer, at data er adresseret og at det kommer rigtigt frem. TCP/IP pakkerne "frames" dvs de bliver pakket sammen med MAC-adresser sådan at pakken kan finde frem til den rigtige destination og tilbage igen. Ved at pakke netværksdata ind i frames bliver data protokoluafhængig og kan derved sendes som rå-data.</p>
-
-<div class="fed">Lag 3: Netværk</div>
-
-<p>Netværkslaget sikrer at data kommer de rigtige steder hen. Enhederne kan også ind- og  udpakke samt rapportere om datafejl. På dette lag kan data routes f.eks. ved hjælp af IP-protokollen.</p>
-
-<div class="fed">Lag 4: Transport</div>
-
-<p>På dette lag kan pakkedata kontrolleres for fejl og gensende hvis der er sket fejl på netværket (TCP-protokollen). Lagets funktion er bl.a. at skjule kompleksiteten i de underliggende lag (lag 1-3).</p>
-
-<div class="fed">Lag 5: Session</div>
-
-<p>Dette lag kontrollerer dialogen mellem computere. </p>
-
-<div class="fed">Lag 6: Præsentation</div>
-
-<p>Dette lag oversætter program-/maskinafhængig kode til uafhængig data og modsat. På denne bliver data uafhængig af det oprindelige format.</p>
-
-<div class="fed">Lag 7: Applikation</div>
-
-<p>Lag 7 er grænsefladen mellem programmet og netværket.</p>
-
-<p>OSI modellen er også lavet i nogle mere letspiselige opstillinger f.eks. denne af Dick Lewis, hvor han forklarer modellen ved hjælp af James Bond: <a href="http://www.lewistech.com/rlewis/Resources/james.aspx" target="_blank">http://www.lewistech.com/rlewis/Resources/james.aspx</a></p>
-
-<h1>Andre modeller</h1>
-
-
-<p>Der igennem tiden blevet udviklet andre modeller, og herunder har jeg sidestillet de to ovenfor gennemgåede modeller med dem. Alle modellerne sigter mod det samme mål: sikker datatransmission. Bagved dem ligger der arbejdspapirer der går ind i de tekniske detaljer hvis man ønsker at udvikle nyt programmel efter dem.</p>
-
-<table class="">
-	<thead>
-		<tr>
-			<th>OSI</th>
-			<th>TCP/IP<br/>RFC 1122 Internet STD3</th>
-			<th>Cisco <br/>Acadamy</th>
-			<th>RFC871 <br/>Arpanet ref model</th>			
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>Application</td>
-			<td rowspan="3">Applikation</td>
-			<td rowspan="3">Applikation</td>
-			<td rowspan="3">Applikation/Proces</td>
-		</tr>
-		<tr>
-			<td>Presentation</td>
-		</tr>
-		<tr>
-			<td>Session</td>
-		</tr>
-		<tr>
-			<td>Transport</td>
-			<td>Transport</td>
-			<td>Transport</td>
-			<td rowspan="2">Host-to-host</td>
-		</tr>
-		<tr>
-			<td>Network</td>
-			<td>Internet</td>
-			<td>Internetwork</td>
-		</tr>
-		<tr>
-			<td>Data link</td>
-			<td>Link</td>
-			<td rowspan="2">Network Interface</td>
-			<td rowspan="2">Network Interface</td>
-		</tr>
-		<tr>
-			<td>Physical</td>
-			<td>(n/a)</td>
-
-		</tr>
-		
-	</tbody>
-</table>
-
-<p><a href="http://en.wikipedia.org/wiki/Internet_protocol_suite#cite_note-21" target="_blank">http://en.wikipedia.org/wiki/Internet_protocol_suite#cite_note-21</a></p>
-
-
-
-
-
-<h1>Det binære, decimale og hexadecimale talsystem</h1>
-
-<p>Før vi går igang med at kigge på TCP/IP modellen, IPv4 og IPv6 er det vigtigt at have forståelse for det binære, deciamle og hexadeciamle talsystem. Mennesker er ananolog og læser titalsystemer og derfor anvender vi titalssystemet til at repræsentere IP-adresser. Computere arbejder digitalt og binært</p>
-
-<p>I det decimale talsystem skifter vi position når tallet når værdien 10. Denne værdi er 2 for det binære talsystem og 16 for det hexadecimale.</p>
-
-<table class="">
-	<thead>
-		<tr>
-			<th>binær talsystem</th>
-			<th>titalssystem</th>
-			<th>Hexadecimale talsystem</th>
-			<th></th>
-			<th>binær talsystem</th>
-			<th>titalssystem</th>
-			<th>Hexadecimale talsystem</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>0</td>
-			<td>0</td>
-			<td>0</td>
-			<td rowspan="8"></td>
-			<td>1000</td>
-			<td>8</td>
-			<td>8</td>
-		</tr>
-		<tr>
-			<td>1</td>
-			<td>1</td>
-			<td>1</td>
-			<td>1001</td>
-			<td>9</td>
-			<td>9</td>
-		</tr>
-		<tr>
-			<td>10</td>
-			<td>2</td>
-			<td>2</td>
-			<td>1010</td>
-			<td>10</td>
-			<td>A</td>
-		</tr>
-		<tr>
-			<td>11</td>
-			<td>3</td>
-			<td>3</td>
-			<td>1011</td>
-			<td>11</td>
-			<td>B</td>
-		</tr>
-		<tr>
-			<td>100</td>
-			<td>4</td>
-			<td>4</td>
-			<td>1100</td>
-			<td>12</td>
-			<td>C</td>
-		</tr>
-		<tr>
-			<td>101</td>
-			<td>5</td>
-			<td>5</td>
-			<td>1101</td>
-			<td>13</td>
-			<td>D</td>
-		</tr>
-		<tr>
-			<td>110</td>
-			<td>6</td>
-			<td>6</td>
-			<td>1110</td>
-			<td>14</td>
-			<td>E</td>
-		</tr>
-		<tr>
-			<td>111</td>
-			<td>7</td>
-			<td>7</td>
-			<td>1111</td>
-			<td>15</td>
-			<td>F</td>
-		</tr>
-	</tbody>
-</table>
-
-<h2>Eksempel med decimalt tal</h2>
-
-<table class="">
-	<tbody>
-		<tr>
-			<td>Position</td>
-			<td>7</td>
-			<td>6</td>
-			<td>5</td>
-			<td>4</td>
-			<td>3</td>
-			<td>2</td>
-			<td>1</td>
-		</tr>
-		<tr>
-			<td>Potens</td>
-			<td>10⁶</td>
-			<td>10⁵</td>
-			<td>10⁴</td>
-			<td>10³</td>
-			<td>10²</td>
-			<td>10¹</td>
-			<td>10⁰</td>
-		</tr>
-		<tr>
-			<td>Værdi (Pos)</td>
-			<td>1.000.000</td>
-			<td>100.000</td>
-			<td>10.000</td>
-			<td>1.000</td>
-			<td>100</td>
-			<td>10</td>
-			<td>1</td>
-		</tr>
-	</tbody>
-</table>
-
-<p>Derved kan vi finde værdiet for et tal f.eks: 3476</p>
-
-<table class="">
-	<tbody>
-		<tr>
-			<td>Position</td>
-			<td>4</td>
-			<td>3</td>
-			<td>2</td>
-			<td>1</td>
-		</tr>
-		<tr>
-			<td>Antal</td>
-			<td>3</td>
-			<td>4</td>
-			<td>7</td>
-			<td>6</td>
-		</tr>
-		<tr>
-			<td>Antal &middot; Potens</td>
-			<td>3 &middot; 10³</td>
-			<td>4 &middot; 10²</td>
-			<td>7 &middot; 10¹</td>
-			<td>6 &middot; 10⁰</td>
-		</tr>
-		<tr>
-			<td>Værdi (Pos)</td>
-			<td>3000</td>
-			<td>400</td>
-			<td>70</td>
-			<td>6</td>
-		</tr>
-		<tr>
-			<td></td>
-			<td colspan="5">Decimal værdi i alt = 3476</td>
-		</tr>
-	</tbody>
-</table>
-
-
-
-<h2>Eksempel med binært tal</h2>
-
-<p>Ud fra cifrets position kan man finde det binære tals værdi med nedestående nøgle.</p>
-
-<table class="">
-	<tbody>
-		<tr>
-			<td>Position</td>
-			<td>8</td>
-			<td>7</td>
-			<td>6</td>
-			<td>5</td>
-			<td>4</td>
-			<td>3</td>
-			<td>2</td>
-			<td>1</td>
-		</tr>
-		<tr>
-			<td>Potens</td>
-			<td>2⁷</td>
-			<td>2⁶</td>
-			<td>2⁵</td>
-			<td>2⁴</td>
-			<td>2³</td>
-			<td>2²</td>
-			<td>2¹</td>
-			<td>2⁰</td>
-		</tr>
-		<tr>
-			<td>Værdi (Pos)</td>
-			<td>128</td>
-			<td>64</td>
-			<td>32</td>
-			<td>16</td>
-			<td>8</td>
-			<td>4</td>
-			<td>2</td>
-			<td>1</td>
-		</tr>
-	</tbody>
-</table>
-
-<p>F.eks: 10111001</p>
-
-<table class="">
-	<tbody>
-		<tr>
-			<td>Position</td>
-			<td>8</td>
-			<td>7</td>
-			<td>6</td>
-			<td>5</td>
-			<td>4</td>
-			<td>3</td>
-			<td>2</td>
-			<td>1</td>
-		</tr>
-		<tr>
-			<td>Antal &middot; Potens</td>
-			<td>1 &middot; 2⁷</td>
-			<td>0 &middot; 2⁶</td>
-			<td>1 &middot; 2⁵</td>
-			<td>1 &middot; 2⁴</td>
-			<td>1 &middot; 2³</td>
-			<td>0 &middot; 2²</td>
-			<td>0 &middot; 2¹</td>
-			<td>1 &middot; 2⁰</td>
-		</tr>
-		<tr>
-			<td>Værdi (Pos)</td>
-			<td>128</td>
-			<td>0</td>
-			<td>32</td>
-			<td>16</td>
-			<td>8</td>
-			<td>0</td>
-			<td>0</td>
-			<td>1</td>
-		</tr>
-		<tr>
-			<td></td>
-			<td colspan="8">Decimal værdi i alt = 185</td>
-		</tr>
-	</tbody>
-</table>
-
-
-<h2>Eksempel med hexadecimalt tal</h2>
-
-<p>Ud fra cifrets position kan man finde det binære tals værdi med nedestående nøgle. Da hexadecimale tal ofte anvendes skrives de ved hjælp af prefixet "0x*hex-tal" - f.eks: 0xB92D.</p>
-
-<table class="">
-	<tbody>
-		<tr>
-			<td>Position</td>
-			<td>4</td>
-			<td>3</td>
-			<td>2</td>
-			<td>1</td>
-		</tr>
-		<tr>
-			<td>Potens</td>
-			<td>16³</td>
-			<td>16²</td>
-			<td>16¹</td>
-			<td>16⁰</td>
-		</tr>
-		<tr>
-			<td>Værdi (Pos)</td>
-			<td>4096</td>
-			<td>256</td>
-			<td>16</td>
-			<td>1</td>
-		</tr>
-	</tbody>
-</table>
-
-<p>F.eks: 0xB92D</p>
-
-<table class="">
-	<tbody>
-		<tr>
-			<td>Position</td>
-			<td>4</td>
-			<td>3</td>
-			<td>2</td>
-			<td>1</td>
-		</tr>
-		<tr>
-			<td>Binært ciffer</td>
-			<td>B</td>
-			<td>9</td>
-			<td>2</td>
-			<td>D</td>
-		</tr>
-		<tr>
-			<td>Potens</td>
-			<td>11 &middot; 16³</td>
-			<td>9 &middot; 16²</td>
-			<td>2 &middot; 16¹</td>
-			<td>13 &middot; 16⁰</td>
-		</tr>
-		<tr>
-			<td>Værdi (pos)</td>
-			<td>45.056</td>
-			<td>2304</td>
-			<td>32</td>
-			<td>13</td>
-		</tr>
-		<tr>
-			<td></td>
-			<td colspan="4">Decimalt = 47.405</td>
-		</tr>
-	</tbody>
-</table>
-
-
-<h1>TCP/IP modellen</h1>
-
-<p>OSI-modellen der blev gennemgået ovenfor er en bredt anvendt model, hvor man har forsøgt at medtage så mange elementer som muligt. TCP/IP modellen er en praktisk implementeret tilgang til netværk som giver bedre muligheder for at beskrive hvad det er der sker.</p>
-
-<table class="">
-	<thead>
-		<tr>
-			<th colspan="6">TCP/IP modellen</th>
-		</tr>
-		<tr>
-			<th colspan="3">OSI modellens lag</th>
-			<th>TCP/IP<br/>RFC 1122 Internet STD3</th>
-			<th>Protokoller</th>
-			<th>Funktion</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td rowspan="4">Host<br/>lag</td>
-			<td>7</td>
-			<td>Application</td>
-			<td rowspan="3">Applikation</td>
-			<td rowspan="3">Proces <br/><br/> SSH, FTP, HTTP</td>
-			<td rowspan="3">Pakker brugerdata ind, så en anden vært kan læse det</td>
-		</tr>
-		<tr>
-			<td>6</td>
-			<td>Presentation</td>
-		</tr>
-		<tr>
-			<td>5</td>
-			<td>Session</td>
-		</tr>
-		<tr>
-			<td>4</td>
-			<td>Transport</td>
-			<td>Transport</td>
-			<td>Host-til-Host<br/><br/> TCP, UDP</td>
-			<td>UDP til streaming og TCP til Data</td>
-		</tr>
-		<tr>
-			<td rowspan="3">Media <br/>lag</td>
-			<td>3</td>
-			<td>Network</td>
-			<td>Internet</td>
-			<td>Internet <br/><br/>IP</td>
-			<td>Internet Protokoller <br/>Pakker data ind i IP pakker, så netværket ved hvor pakkerne skal sendes hen</td>
-		</tr>
-		<tr>
-			<td>2</td>
-			<td>Data Link</td>
-			<td rowspan="">Link</td>
-			<td colspan="2" rowspan="2">Pakker data ind (Frames) så det kan sendes over nettet.</td>
-		</tr>
-		<tr>
-			<td>1</td>
-			<td>Physical</td>
-			<td>n/a</td>
-		</tr>
-	</tbody>
-</table>
-
-<div class="fed">Application</div>
-
-<p>På applikationslaget bliver befinder brugerdata sig. Det er denne data, som programmer kan læse og anvende. Det er på dette lag et protokoller som FTP (port 21), SSH (port 22) og HTTP (port 80) opererer. Processer bliver adresseret via porte</p>
-
-<div class="fed">Transport lag</div>
-
-<p>Transportlaget har ansvaret for host-til-host kommunikation. Dette kan være internt i maskinen, i det lokale eller fjernnetværk. Data kan pakkes enteo som TCP (Transmission Control Protocol) eller UDP (User Datagram Protocol). Hvis det er vigtigt at Data kommer korrekt frem anvendes TCP, som sørger for at modtageren kan tjekke om indholdet er kommet frem korrekt. UDP fejltjekkes ikke og er derfor kun egnet til data, hvor der godt må være en fejlrate i f.eks. video og audio straming.</p>
-
-<table class="">
-	<thead>
-		<tr>
-			<th>TCP</th>
-			<th>UDP</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>Transmission Control Protocol</td>
-			<td>User Datagram Protocol</td>
-		</tr>
-		<tr>
-			<td>Sikker, ordnet og fejlkorrigeret</td>
-			<td>Simpel uden fejlkorrigering</td>
-		</tr>
-		<tr>
-			<td>Egnet til data</td>
-			<td>Egnet til video og audio</td>
-		</tr>
-	</tbody>
-</table>
-
-<p>Herunder kan du se en model af TCP pakken.</p>
-
-<figure id="">
-
-	<img class="p60" src="images/tcp_udp_pakke.svg" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-
-<div class="pagebreak">
-
-<div class="fed">Internet</div>
-
-<p>Internet laget sørger for at addressere datapakker på Internettet. Herunder er en model af TCP/IP pakken, hvor TCP delen er pakket ind i IP. </p>
-
-<figure id="">
-
-	<img class="p60"src="images/IP_pakke.svg" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-
-<p>Når IP pakkerne er sendt ud på nettet er det kun selve IP delen der bliver behandlet. Selve dataindholdet bliver først åbnet igen nå IP pakken når sin destination. Det er dette lagsom muliggør netværk.</p>
-
-
-</div><!-- Pagebreak end -->
-
-<div class="fed">Link</div>
-
-<p>På dette lag bliver TCP/IP pakkerne lagt i "frames". Frames gør at pakken bliver protokoluafhængig og kan behandles som en ren data strøm. Dette lag udgør både lag 1 og 2 i OSI-modellen.</p>
-
-<figure id="">
-
-	<img src="images/IP_pakke_frame.svg" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-
-<div class="fed">Topologi og dataflow</div>
-
-<p>Herunder er et skematisk overblik over anvendelsen af TCP/IP.</p>
-
-<figure id="">
-
-	<img class="p50" src="images/IP_stack_connections.svg" alt="" title="" />
-
-	<figcaption><a href="http://en.wikipedia.org/wiki/Internet_protocol_suite" target="_blank"> http://en.wikipedia.org/wiki/Internet_protocol_suite</a></figcaption>
-
-</figure>
-
-<p>Herunder er en fremstilling af en TCP/IP pakkes opbygning.</p>
+<p>Den sidste adresse i et netværk anvendes til <span class="inl_cmd">broadcast</span>. Det er en adresse alle computerne i netværket lytter til, og som kan anvendes til at sende globale beskeder igennem. </p>
 
 <h1>Netværkets hardware</h1>
 
-<p>I et fysisk netværk indgår der noget hardware, som udfører forskellige opgaver. Herunder kommer vi ind på:</p>
+<p>I et fysisk netværk indgår der noget hardware, som udfører forskellige opgaver. Herunder kommer vi ind på de to vigtigste enheder på et simpelt netværk: <span class="inl_cmd">Routere</span> og <span class="inl_cmd">switche</span>.</p>
 
-<ul class="disc">
-	<li>Repeater</li>
-	<li>Bridge</li>
-	<li>Router</li>
-	<li>Gateway</li>
-	<li>Switch</li>
+<h2>Hvad er en switch</h2>
 
+<p></p>
+
+<ul class="none">
+	<li><span class="bold">Anvender</span>: MAC-adresser</li>
+	<li><span class="bold">Lag</span>: Link</li>
 </ul>
 
+<p>En switch forbinder computere ved at anvende <span class="code">MAC</span>-adresserne i de modtagne frames. Ved hjælp af MAC-adresser sendes pakkerne til den rette destination. Switche er uafhængige af protokoller, da de arbejder på <span class="inl_cmd">link</span>-laget (binær data).</p>
 
-<h2>Repeater</h2>
+<p>Grunden til at vi anvender switche på vores netværk er, at de er effektive til at sende data-trafik det rigtige sted hen. Den ved hvilken af sine porte modtagercomputeren er forbundet til. Er det et kablet netværk kan datatrafikken kontrolleres effektivt.</p>
 
-<p>Repeatere er regenerer/genopbygger/sync'er signaler på netværk, hvor afstanden er stor. Dette skyldes at der er modstand i ledninger og at de kan blive udsat for elektromagnetisk støj. Repeatere arbejder på Lag 1. Støj og modstand i netværket kan også modvirkes ved at anvende bedre kabler.</p>
+<span class="afsnit">Trådløse switche</span>
 
-<h2>Switch</h2>
+<p>Når vi anvender det trådløse netværk anvender vi reelt nogle virtuelle porte. De er langt mindre effektive end de kablede, da der ikke er selvstændige sendere og modtagere til hver enhed. Der arbejdes konstant på at forbedre hastigheden og effektiviteten af trådløse de trådløse switche</p>
 
-<p>En switch forbinder netværksegmenter ved at kigge på MAC adresserne i de modtagne frames. Ved hjælp af MAC-adresser sendes de til den rette destination. Switche  er uafhængige af protokoller, da de arbejder på Link laget (OSI Lag2: Data-Link).</p>
+<h2>Hvad er en router</h2>
 
-<h2>Router</h2>
+<p></p>
 
-<p>En router er en multiportsenhed, der dirigerer data mellem forskellige enheder på et netværk ved hjælp af f.eks. IP. Dette kan være både hosts, servere og andet netværksudstyr. Routere arbejder på Internet laget (OSI lag 3: Network). </p>
+<ul class="none">
+	<li><span class="bold">Anvender</span>: IP-adresser</li>
+	<li><span class="bold">Lag</span>: Internet</li>
+</ul>
 
-<h2>Layer 3 Switch</h2>
+<p>Router skaber forbindelse mellem netværk. Den enhed vi har monteret i vores hjem, skaber forbindelse mellem internettet og det netværk vi har i hjemmet. Routere er afhængig af protokoller og arbejder på <span class="inl_cmd">Internet</span>-laget.</p>
 
-<p>En Layer 3 switch fungerer ligesom ovenfor, men kan derudover arbejde med IP-adresser. En Layer 3 switch kræver konfiguration.</p>
+<h2>En hjemme-"router"</h2>
 
-<h2>Gateway</h2>
+<p>En hjemmerouter er reelt en router og en switch der er pakket ind i den samme kasse. Se nedestående diagram</p>
 
-<p>En gateway fungerer som bindeled mellem 2 forskellige netværk f.eks. LAN (<span class="bold">L</span>ocal <span class="bold">A</span>rea <span class="bold">N</span>etwork) og WAN (<span class="bold">W</span>ide <span class="bold">A</span>rea <span class="bold">N</span>etwork). Dette kan både være en enhed der fungerer på de øverste niveaur af OSI modellen f.eks. som et bindeled mellem et TCP/IP baseret netværk og et andet der er baseret på IPX (Novel netværk), eller som ovenfor hvor det er routeren der forbinder det lokale netværk med Internettet.</p>
+<figure id="">
+
+	<img class="p60" src="images/network_hjemmerouter.svg" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
 
 <h2>Kabler</h2>
 
-<p>Herunder er en oversigt over de forskellige kabel-kategorier.</p>
+<p>til almindelige netværk anvendes der ethernet, og det stik man anvender kaldes RJ45. Et ethernet kabel har 8 ledere, som parvist er snoet om hinanden, hvilket er årsagen til at man også kalder kablerne for <span class="bold">T</span>wisteds <span class="bold">P</span>air (<span class="inl_cmd">TP</span>). Det gør man for at forhindre elektromagnetisk støj. Efterhånden er den metode ikke effektiv nok, så man er begyndt yderligere at skærme kablerne for elektromagnetisk støj (se længere nede).</p>
+
+<figure id="">
+
+	<img class="p25" src="images/network_rj45.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Det man skal være opmærksom på er typen af kabler man anvender. Herunder er der en tabel over kablernes egenskaber. Hastigheden der er angivet henviser til den hastighed de er specificeret til. Hvis man f.eks. har GiB (gigabit) internet, så skal man altså som minimum anvende kategori 5e.</p>
 
 <table class="">
 	<thead>
@@ -803,44 +234,44 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 	</thead>
 	<tbody>
 		<tr>
-			<td>Categori</td>
+			<td>Kategori</td>
 			<td>Type</td>
 			<td>Hastighed</td>
 			<td>Båndbredde</td>
 		</tr>
 		<tr>
-			<td>3</td>
-			<td>UTP<sup>*</sup></td>
+			<td>cat 3</td>
+			<td>UTP</td>
 			<td>10 Mbps</td>
 			<td>16 MHz</td>
 		</tr>
 		<tr>
-			<td>5</td>
-			<td>UTP<sup>*</sup></td>
+			<td>cat 5</td>
+			<td>UTP</td>
 			<td>10/100 Mbps</td>
 			<td>100 MHz</td>
 		</tr>
 		<tr>
-			<td>5e</td>
-			<td>UTP<sup>*</sup></td>
+			<td>cat 5e</td>
+			<td>UTP</td>
 			<td>1000 Mbps</td>
 			<td>100 MHz</td>
 		</tr>
 		<tr>
-			<td>6</td>
-			<td>UTP/STP<sup>*</sup></td>
+			<td>cat 6</td>
+			<td>UTP/STP</td>
 			<td>1000 Mbps</td>
 			<td>250 MHz</td>
 		</tr>
 		<tr>
-			<td>6a</td>
-			<td>STP<sup>*</sup></td>
+			<td>cat 6a</td>
+			<td>STP</td>
 			<td>10.000 Mbps</td>
 			<td>500 MHz</td>
 		</tr>
 		<tr>
-			<td>7</td>
-			<td>SSTP<sup>*</sup></td>
+			<td>cat 7</td>
+			<td>SSTP</td>
 			<td>10.000 Mbps</td>
 			<td>600 MHz</td>
 		</tr>
@@ -852,962 +283,20 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 <span class="bold">SSTP</span>: Screened Shielded Twisted Pair
 </div>
 
-
-<h1>IP - Internet Protokoller</h1>
-
-<p>Der findes 2 IP protokoller: En version 4 (IPv4) og en version 6 (IPv6). Udfordringen med IPv4 er, at vi er ved at løbe tør for adresser. Dette skyldes bl.a. designet af IPv4 hvilket gør at under 20% af alle tilgængelige adresser er i funktion. Dette skyldes bl.a. protokollens oprindelige mangel på at kunne underinddele netværk. Det man skal huske på i denne sammenhæng er, at man i Internettets barndom ikke havde forstillet sig den eksplosive udvikling der er sket.</p>
-
-<p>For at imødekomme dette problem har man skabt IPv6 protokollen, som ikke er bagudkompatibel. På denne måde har man kunne designe det, så det passer til en fremtid hvor ikke bare computere, men også telfoner, tablets, køleskabe, fjernsyn ... kommer på nettet.</p>
-
-<p>En af udfordringerne ved at forstå netværksadresser og opsætning er, at der er forskel på den måde computere og mennesker opfatter og forstår tal. Computere arbejder i elektriske signaler og alting skal være defineret for den for at forstå dem. Derfor er IP-adresser som 192.168.1.17 (IPv4) og 2001:DB8:AC10:FE01::20 (IPv6) IP notationer som er menneskelæsbare. Tegnene . og : som bruges i IP-adresserne er ikke-eksisterende for computeren og er kun sat som et visuelt hjælpemiddel. Computeren arbejder med disse adresser binært dvs med 32 bit (32 cifre) for IPv4 og 128 bit (128 cifre)for IPv6.</p>
-
-<h2>IPv4</h2>
-
-<p>IPv4 adressen er en 32 bit adresse, dvs. at den består af 32 binære cifre f.eks: <span class="inl_cmd">11000000101010000000000100010001</span>. For læsbarhedens plejer man at indskyde et punktum eller et mellemrum imellem hver oktet dvs. hver 8 ciffer: <span class="inl_cmd">11000000.10101000.00000001.00010001</span>. Denne adresse vil være præsenteret som 192.168.1.17 i decimal notation. Herunder kan du se IP-adresse præsenteret binær, decimal og hexadecimal.</p>
-
-
-<table id="">
-	<thead>
-		<tr>
-			<th colspan="5">Computer læsbart</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td></td>
-			<td>1. oktet</td>
-			<td>2. oktet</td>
-			<td>3. oktet</td>
-			<td>4. oktet</td>
-		</tr>
-		<tr>
-			<td>binær oktet</td>
-			<td>11000000</td>
-			<td>10101000</td>
-			<td>00000001</td>
-			<td>00010001</td>
-		</tr>
-		<tr>
-			<td>Binær samlet</td>
-			<td colspan="4">11000000101010000000000100010001</td>
-		</tr>
-	</tbody>
-</table>
-
 <p></p>
 
-<table class="">
-	<thead>
-		<tr>
-			<th colspan="5">Menneskelæsbart</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>Decimal oktet</td>
-			<td>192</td>
-			<td>168</td>
-			<td>1</td>
-			<td>17</td>
-		</tr>
-		<tr>
-			<td>Decimal samlet</td>
-			<td colspan="4">3232235793</td>
-		</tr>
-		<tr>
-			<td>hexadecimal oktet</td>
-			<td>0xC0</td>
-			<td>0xA8</td>
-			<td>0x01</td>
-			<td>0x11</td>
-		</tr>		
-		<tr>
-			<td>hexadecimalt samlet</td>
-			<td colspan="4">0xC0A80111</td>
-		</tr>
-	</tbody>
-</table>
+<span class="afsnit">Skærmede kabler</span>
 
+<p>Når man sender data igennem kabler så kan de blive udsat for elektromagnetisk støj. Det kan betyde at data-signalet bliver ødelagt. Det kan f.eks. være tilfældet hvis der ligger mange netværkskabler samlet. For at omgå dette problem skærmer man kablerne for den elektromagnetiske støj.</p>
 
+<p>Jo mere elektronik vi får, og jo flere kabler vi lægger samlet, jo større bliver problemet med elektromagnetisk støj. For at imødegå problemet begyndte man at skærme (<span class="inl_cmd">STP</span>) kablerne. De nye kategorier er endda dobbeltskærmet (<span class="inl_cmd">SSTP</span>)for at sikre dataoverførslen. En problematik man også skal tage med i denne sammenhæng er, at det reelt er muligt at aflytte den data-trafik der er i kablerne, og det er også en af årsagerne til at man vælger at skærme kablerne.</p>
 
-<h3>Offentlige og private netværk samt NAT</h3>
+<p>Til almindeligt hjemmebrug er <span class="inl_cmd">Cat5e</span> rigeligt og praktisk. Problemet med at gå op i cat6 og derover er, at de bliver for stive og har svært ved at "knække" rundt om hjørner. Men arbejder man et sted hvor data-strømmen er kritisk og at den skal sikres mest muligt, så skal man op i SSTP kabler.</p>
 
-<p>Et offentligt netværk består af maskiner som er tilgængelig for alle f.eks. Internettet. Her kan man tilgå alle maskinerne med ingen eller få begrænsninger. Man har fra starten defineret nogle netværksadresser til at være private, og disse netværk anvendes i lukkede netværk</p>
 
-<table id="">
-	<thead>
-		<tr>
-			<th colspan="5">Private netværk</th>
-		</tr>
-		<tr>
-			<th>CIDR-blok</th>
-			<th>Private netværksadresser <br/>(RFC1597/RFC1918)</th>
-			<th>Netværks <br/>bit</th>
-			<th>Host <br/>bit</th>
-			<th>Mulige <br/>hosts</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>10.0.0.0/8</td>
-			<td>10.0.0.0 – 10.255.255.255</td>
-			<td>8</td>
-			<td>24 bit</td>
-			<td>16,777,216 (256³)</td>
-		</tr>
-		<tr>
-			<td>172.16.0.0/12</td>
-			<td>172.16.0.0 - 172.31.255.255</td>
-			<td>12</td>
-			<td>20 bit</td>
-			<td>1,048,576 (16 &middot; 256²)</td>
-		</tr>
-		<tr>
-			<td>192.168.0.0/16</td>
-			<td>192.168.0.0 - 192.168.255.255</td>
-			<td>16</td>
-			<td>16 bit</td>
-			<td>65,536 (256²)</td>
-		</tr>
-	</tbody>
-</table>
 
-<p>Maskinerne i et privat netværk er lukket af fra det offentlige, og hvis en klient fra et lukket netværk ønsker at tilgå det offentlige netværk (f.eks. Internettet) ledes signalet til en gateway. Her bliver klientens interne IP-adresse erstattet med en adresse som Internettet kan anvende. Denne proces kaldes for NAT (Network Address Translation).</p>
 
-<p>Du kan læse mere om IPv4 her: <a href="http://en.wikipedia.org/wiki/IPv4" target="_blank">http://en.wikipedia.org/wiki/IPv4</a></p>
 
-<h2>IPv6</h2>
-
-<p>IPv6 protokollener lavet som en reaktion på, at man er ved at løbe tør for IPv4 adresserne og består af en 128 bits adresse mod IPv4' 32 bit. En IPv6 adresse vil således bestå af 128 binære cifre. For at en IPv6 adresse bliver læsbar, skrives den med 8 felter med et 4 cifrede hexcadecimale tal adskilt af kolon (:).</p>
-
-<table class="">
-	<tbody>
-		<tr>
-			<td></td>
-			<td>2001</td>
-			<td>0DB8</td>
-			<td>AC10</td>
-			<td>FE01</td>
-			<td>0</td>
-			<td>0</td>
-			<td>0</td>
-			<td>20</td>
-		</tr>
-		<tr>
-			<td>Eks.</td>
-			<td>2001</td>
-			<td>0DB8</td>
-			<td>AC10</td>
-			<td>FE01</td>
-			<td>0</td>
-			<td>0</td>
-			<td>0</td>
-			<td>20</td>
-		</tr>
-		<tr>
-			<td>antal Hex</td>
-			<td>0xFFFF</td>
-			<td>0xFFFF</td>
-			<td>0xFFFF</td>
-			<td>0xFFFF</td>
-			<td>0xFFFF</td>
-			<td>0xFFFF</td>
-			<td>0xFFFF</td>
-			<td>0xFFFF</td>
-		</tr>
-		<tr>
-			<td>Antal dec</td>
-			<td>65.536 <br/>(16⁴)</td>
-			<td>65.536 <br/>(16⁴)</td>
-			<td>65.536 <br/>(16⁴)</td>
-			<td>65.536 <br/>(16⁴)</td>
-			<td>65.536 <br/>(16⁴)</td>
-			<td>65.536 <br/>(16⁴)</td>
-			<td>65.536 <br/>(16⁴)</td>
-			<td>65.536 <br/>(16⁴)</td>
-		</tr>
-		<tr>
-			<td>i alt</td>
-			<td colspan="4">3,4 &middot; 10<sup>38</sup></td>
-			<td colspan="4">7,9 &middot; 10<sup>28</sup> mere end IPv6</td>
-		</tr>
-	</tbody>
-</table>
-
-<p>Den ovenstående IPv6 adresse: <span class="inl_cmd">2001:ODB8:AC10:FE01:0:0:0:20</span>, kan omskrives til <span class="inl_cmd">2001:ODB8:AC10:FE01::20</span>. Man kan altså fjerne en længere række af nuller ved at indsætte et dobbelt Kolon, dog kun en gang.</p>
-
-<p>IPv6 bliver også kaldet IPng (Internet Protokol next generation), og det skal ses som et udtryk for at man har forsøgt at imødekomme de mange problemstillinger der er ved IPv4 protokollen. En af disse er opbygningen af IPv6 adresser:</p>
-
-<figure id="">
-
-	<img src="images/IPv6_b.svg" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-
-<h2>Faste IP-adresser</h2>
-
-<p>I både IPv4 og IPv6 er der nogle enkelte adresser der er låst til helt specifik anvendelse. Nedenfor er der et skema</p>
-
-<table class="">
-	<thead>
-		<tr>
-			<th>IPv6</th>
-			<th>IPv4</th>
-			<th>Beskrivelse</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td><span class="inl_cmd">::1/128</span></td>
-			<td><span class="inl_cmd">127.0.0.1/8</span></td>
-			<td>Loopback adresse</td>
-		</tr>
-		<tr>
-			<td><span class="inl_cmd">FE80::/10</span></td>
-			<td><span class="inl_cmd">169.254.0.0/16</span></td>
-			<td>Denne adresse er en Lokal Link adresse, der kun fungerer internt på maskinen. Anvendes hvis maskinen ikke får en IP adresse.</td>
-		</tr>
-		<tr>
-			<td><span class="inl_cmd">FC00::/7</span></td>
-			<td><span class="inl_cmd">10.0.0.0/8</span><br/>
-			<span class="inl_cmd">172.16.0.0/12</span><br/>
-			<span class="inl_cmd">192.168.0.0/16</span></td>
-			<td>Unik Lokal adresse</td>
-		</tr>
-		<tr>
-			<td><span class="inl_cmd">::FFFF:0:0/96</span></td>
-			<td>n/a</td>
-			<td>en IPv4 mappet IPv6 adresse. Ved denne adresse bliver de to sidste grupper oversat til IPv4 adresser.</td>
-		</tr>
-		<tr>
-			<td><span class="inl_cmd">2001:0DB8::/32</span></td>
-			<td><span class="inl_cmd">192.0.2.0/24</span><br/>
-			<span class="inl_cmd">198.51.100.0/24</span><br/>
-			<span class="inl_cmd">203.0.113.0/24</span></td>
-			<td>Anvendes i dokumentation</td>
-		</tr>
-	</tbody>
-</table>
-
-<p>Skråstregen efter IP-adressen er CIDR adressen. Den vil blive gennemgået senere</p>
-
-
-<h1>Subnetting</h1>
-
-<p>Efterhånden som der kom flere og flere computere på de enkelte netværk blev det nødvendigt at kunne opdele/segmentere netværk. Problemet er, at jo flere computere der er på netværket jo mere trafik kommer der. Derfor er det fornuftigt at inddele netværket i mindre enheder adskilt af routere.</p>
-
-
-
-<p>Pointen i det ovenstående er, at når vi læser en IP adresse som: <span class="inl_cmd">192.168.19.43</span>, så er det som computeren ser: <span class="inl_cmd">11000000.10101000.00010011.00101011</span></p>
-
-<p>Med denne PHP-side kan du konvertere mellem binære og titals IP-adresser: <a href="ip_converter.php" target="_blank">ip_converter.php</a></p>
-
-<p>IP-adresser er altså opbygget af 4 oktetter, hver bestående af 1 byte (8 bit) hvilket betyder at tallet består af 4 &middot; 8 binære tal.</p>
-
-<h2>Classfull adressing</h2>
-
-<p>Før vi går igang med at snakke om subnetting kigger vi på den oprindelige (pre 1985) og simple måde at dele nettet.</p>
-
-<table id="">
-	<thead>
-		<tr>
-			<th>Klasse</th>
-			<th>Netmaske</th>
-			<th>CIDR</th>
-			<th>Oversigt</th>
-			<th>Mulige hosts</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>A</td>
-			<td>255.0.0.0</td>
-			<td>/8</td>
-			<td><span class="red">NNNNNNNN</span>.<span class="blue">HHHHHHHH</span>.<span class="blue">HHHHHHHH</span>.<span class="blue">HHHHHHHH</span></td>
-			<td>16.777.214 (256³-2)</td>
-		</tr>
-		<tr>
-			<td>B</td>
-			<td>255.255.0.0</td>
-			<td>/16</td>
-			<td><span class="red">NNNNNNNN</span>.<span class="red">NNNNNNNN</span>.<span class="blue">HHHHHHHH</span>.<span class="blue">HHHHHHHH</span></td>
-			<td>65.534 (256²-2)</td>
-		</tr>
-		<tr>
-			<td>C</td>
-			<td>255.255.255.0</td>
-			<td>/24</td>
-			<td><span class="red">NNNNNNNN</span>.<span class="red">NNNNNNNN</span>.<span class="red">NNNNNNNN</span>.<span class="blue">HHHHHHHH</span></td>
-			<td>254 (256¹-2)</td>
-		</tr>
-	</tbody>
-</table>
-
-<p>Man fik altså tildelt et adresserum der passede til det antal af computere man havde. Denne måde anvendte man i mange år, men i 1985 indførte man subnetting for at kunne anvende nettets ressourcer bedre. Ved hjælp af subnetting kan man underinddele nettet og adskille de forskellige subnets ved hjælp af routere. Routere der ligger på lag 3 i OSI-modellen kan adskille intern og ekstern netværkstrafik fra hinanden.</p>
-	
-<h2>Klasse netværk</h2>
-
-<p>Det er de binære tal der angiver hvilken klasse netværket har. Det er værdierne i den første oktet der angiver klassen:</p>	
-
-<table class="">
-	<thead>
-		<tr>
-			<th>Første bits</th>
-			<th>Klasse</th>
-			<th>Omfang</th>
-			<th>netværk-bits</th>
-			<th>vært-bits</th>
-			<th>Vist binært</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>0</td>
-			<td>A</td>
-			<td>0-126</td>
-			<td>8 (1. oktet)</td>
-			<td>24 (2.-4. oktet)</td>
-			<td><span class="red">0</span>nnnnnnn.vvvvvvvv.vvvvvvvv.vvvvvvvv</td>
-		</tr>
-		<tr>
-			<td>10</td>
-			<td>B</td>
-			<td>128-191</td>
-			<td>16 (1.-2. oktet)</td>
-			<td>16 (3.-4. oktet)</td>
-			<td><span class="red">10</span>nnnnnn.nnnnnnnn.vvvvvvvv.vvvvvvvv</td>
-
-		</tr>
-		<tr>
-			<td>110</td>
-			<td>C</td>
-			<td>192-223</td>
-			<td>24 (1.-3. oktet)</td>
-			<td>8 (4. oktet)</td>
-			<td><span class="red">110</span>nnnnn.nnnnnnnn.nnnnnnnn.vvvvvvvv</td>
-		</tr>
-		<tr>
-			<td>1110</td>
-			<td>D -multicast</td>
-			<td>224-239</td>
-			<td>ikke def</td>
-			<td>ikke def</td>
-			<td><span class="red">1110</span>nnnn.nnnnnnnn.nnnnnnnn.vvvvvvvv</td>
-		</tr>
-		<tr>
-			<td>1111</td>
-			<td>E -reserveret</td>
-			<td>240 - 255</td>
-			<td>ikke def</td>
-			<td>ikke def</td>
-			<td><span class="red">1111</span>nnnn.nnnnnnnn.nnnnnnnn.vvvvvvvv</td>
-		</tr>
-	</tbody>
-</table>
-
-<p>Adressen 127 anvendes til computerens interne kommunikation. Læs evt mere her: <a href="http://en.wikipedia.org/wiki/Classful_network#Introduction_of_address_classes" target="_blank">http://en.wikipedia.org/wiki/Classful_network#Introduction_of_address_classes</a></p>
-
-<p>Udover at definere de ovenstående klassenetværk, definerede man også hvad der var netværkbits (dem som definerer netværket) og hvilke bits der kan bruges af værter på nettet. På denne måde kunne man uddele store netværk til dem der havde behov for det og mindre til resten. Problemet er stadig, at der i et klasse A netværk potentielt kan være over 16 millioner computere, hvilket ikke skaber overblik. Dette problem blev løst med at indføre subnetting og dermed muligheden for at designe netværk i passende størrelser.</p>
-
-<h2>Netmasken</h2>
-
-<p>Et netværk er defineret af 3 parametre: netværkets adresse, broadcastadressen og netmasken. En computer i hjemmenetværk vil ofte være konfigureret i et privat klasse C netværk da 254 mulige værter er rigeligt i et almindeligt hjem. Det kunne f.eks. være konfigureret som her:</p>
-
-<table class="">
-	<thead>
-		<tr>
-			<th>Betegnelse</th>
-			<th>IP</th>
-			<th>Beskrivelse</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>Computerens adresse</td>
-			<td>192.168.1.10</td>
-			<td>Dette er computeren unikke adresse</td>
-		</tr>
-		<tr>
-			<td>Netmasken</td>
-			<td>255.255.255.0</td>
-			<td>Beskriver hvilke bits der tilhører netværket og hvilket der tilhører hosts</td>
-		</tr>
-		<tr>
-			<td>netværket</td>
-			<td>192.168.1.0</td>
-			<td>Denne adresse beskriver de første adresse i netværket (nedre grænse)</td>
-		</tr>
-		<tr>
-			<td>Broadcast</td>
-			<td>192.168.1.255</td>
-			<td>Den øverste grænse for netværket - og den adresse som alle maskiner lytter på for at modtage netværksbeskeder</td>
-		</tr>
-	</tbody>
-</table>
-
-<p>Disse 4 tal giver computeren de oplysninger den har brug for:</p>
-
-<table class="">
-	<thead>
-		<tr>
-			<th>IP</th>
-			<th>Kort beskrivelse</th>
-			<th>binær</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td><span class="inl_cmd">192.168.1.10</span></td>
-			<td>Hvad hedder jeg</td>
-			<td><span class="inl_cmd">11000000.10101000.00000001.00001010</span></td>
-		</tr>
-		<tr>
-			<td>255.255.255.0</td>
-			<td>Hvor stort er netværket</td>
-			<td><span class="inl_cmd">11111111.11111111.11111111.00000000</span></td>
-		</tr>
-		<tr>
-			<td>192.168.1.0</td>
-			<td>Hvad er den første adresse i netværket</td>
-			<td><span class="inl_cmd">11000000.10101000.00000001.00000000</span></td>
-		</tr>
-		<tr>
-			<td>192.168.1.255</td>
-			<td>Den sidste adresse i netværket - og den adresse alle maskiner i netværket lytter til.</td>
-			<td><span class="inl_cmd">11000000.10101000.00000001.11111111</span></td>
-		</tr>
-	</tbody>
-</table>
-
-<p>Den eneste adresse i ovenstående som er fundamentalt anderledes er netmasken. Den er også anderledes end de andre, da den bruges til at afgrænse netværket med. Den betyder noget i retningen af: I de tre første oktetter er alle adresser fastlåste, men den sidste oktet er ikke er låst - hvilket giver 256 tilgængelige adresser.</p>
-
-<h2>Subnetting</h2>
-
-<p>Lad os kigge på et eksempel.</p>
-
-<table class="">
-	<thead>
-		<tr>
-			<th></th>
-			<th>1. oktet</th>
-			<th>2. oktet</th>
-			<th>3. oktet</th>
-			<th>4. oktet</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>IP (dec)</td>
-			<td>10</td>
-			<td>0</td>
-			<td>0</td>
-			<td>0</td>
-		</tr>
-		<tr>
-			<td>IP (bin)</td>
-			<td>00001010</td>
-			<td>00000000</td>
-			<td>00000000</td>
-			<td>00000000</td>
-		</tr>
-		<tr>
-			<td>Netmask (dec)</td>
-			<td>255</td>
-			<td>0</td>
-			<td>0</td>
-			<td>0</td>
-		</tr>
-
-		<tr>
-			<td>Netmask (bin)</td>
-			<td>11111111</td>
-			<td>00000000</td>
-			<td>00000000</td>
-			<td>00000000</td>
-		</tr>
-	</tbody>
-</table>
-
-<p>Her ovenfor er der defineret et privat klasse A netværk og dets tilhørende netmaske. Ved hjælp af netmasken låses den førte oktet, mens de andre står fri. Dette er et stort netværk som indeholder 2<sup>24</sup>-2=16.777.214 mulige værter. Det kan vi splitte op i mindre netværk ved at fastfryse nogle værts-bit </p>
-
-<table class="">
-	<thead>
-		<tr>
-			<th></th>
-			<th>1. oktet</th>
-			<th>2. oktet</th>
-			<th>3. oktet</th>
-			<th>4. oktet</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>IP (dec)</td>
-			<td>10</td>
-			<td>0</td>
-			<td>0</td>
-			<td>0</td>
-		</tr>
-		<tr>
-			<td>IP (bin)</td>
-			<td>00001010</td>
-			<td>00000000</td>
-			<td>00000000</td>
-			<td>00000000</td>
-		</tr>
-		<tr>
-			<td>Netmask (dec)</td>
-			<td>255</td>
-			<td><span class="red">255</span></td>
-			<td><span class="red">255</span></td>
-			<td>0</td>
-		</tr>
-
-		<tr>
-			<td>Netmask (bin)</td>
-			<td>11111111</td>
-			<td><span class="red">11111111</span></td>
-			<td><span class="red">11111111</span></td>
-			<td>00000000</td>
-		</tr>
-		<tr>
-			<td></td>
-			<td>net adresse</td>
-			<td colspan="2">subnet</td>
-			<td>værter</td>
-		</tr>
-	</tbody>
-</table>
-
-<p>I det nederste har vi fastlåst 2 oktetter af der egentlig tilhørte værterne på netværket. Vi har lavet nogle subnets. I alt har vi lavet 2<sup>16</sup>= 65336 subnets inde i vores klasse A netværk. Dem kan vi så udnytte feks ved at lægge alle enheder i afdeling 2 i subnettet 10.129.56.0. Fordelen herved er også at man kan lukke denne afdeling inde bag en router og derved sørge for at al intern trafik til f.eks. printere og lokale servere ikke kommer ud i resten af netværket.</p>
-
-<p>Antallet af subnets kan regnes ud ved at hjælp af formlen: 2<sup>(subnet bits)</sup>. Hvis der altså er 10 subnetbits klasse A netværk  vil antaller af subnets være:</p>
-
-<p>Antal subnets: 2<sup>10</sup> = 1024</p>
-
-<p>Antallet af værter kan regnes ud med formlen: 2<sup>(antal værts bit)</sup> - 2. Hvis vi fortsætter med netværket ovenfor (Klasse A, 10 subnetbits) vil der altså være 24-10= 14 bits tilbage til værterne:</p>
-
-<p>Antal værter pr subnet: 2<sup>14</sup>-2 = 16.382 værter i hvert subnet.</p>
-
-<h2>Mere om subnetting</h2>
-
-<p>Herunder vil vi lave en nøgle til at bestemme antallet af subnets.</p>
-
-
-<table class="">
-	<thead>
-		<tr>
-			<th colspan="8">Netmaske <br/>
-			Binær værdi / decimal værdi	</th>
-			<th>dec værdi</th>
-			<th>Antal subnets</th>
-			<th>adr/subnet</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>2⁷/128</td>
-			<td>2⁶/64</td>
-			<td>2⁵/32</td>
-			<td>2⁴/16</td>
-			<td>2³/8</td>
-			<td>2²/4</td>
-			<td>2¹/2</td>
-			<td>2⁰/1</td>
-			<td colspan="3"></td>
-		</tr>
-		<tr>
-			<td>0</td>
-			<td>0</td>
-			<td>0</td>
-			<td>0</td>
-			<td>0</td>
-			<td>0</td>
-			<td>0</td>
-			<td>0</td>
-			<td>0</td>
-			<td>1</td>
-			<td>256</td>
-		</tr>
-		<tr>
-			<td>1</td>
-			<td>0</td>
-			<td>0</td>
-			<td>0</td>
-			<td>0</td>
-			<td>0</td>
-			<td>0</td>
-			<td>0</td>
-			<td>128</td>
-			<td>2</td>
-			<td>128</td>
-		</tr>
-		<tr>
-			<td>1</td>
-			<td>1</td>
-			<td>0</td>
-			<td>0</td>
-			<td>0</td>
-			<td>0</td>
-			<td>0</td>
-			<td>0</td>
-			<td>192</td>
-			<td>4</td>
-			<td>64</td>
-		</tr>
-		<tr>
-			<td>1</td>
-			<td>1</td>
-			<td>1</td>
-			<td>0</td>
-			<td>0</td>
-			<td>0</td>
-			<td>0</td>
-			<td>0</td>
-			<td>224</td>
-			<td>8</td>
-			<td>32</td>
-		</tr>
-		<tr>
-			<td>1</td>
-			<td>1</td>
-			<td>1</td>
-			<td>1</td>
-			<td>0</td>
-			<td>0</td>
-			<td>0</td>
-			<td>0</td>
-			<td>240</td>
-			<td>16</td>
-			<td>16</td>
-		</tr>
-		<tr>
-			<td>1</td>
-			<td>1</td>
-			<td>1</td>
-			<td>1</td>
-			<td>1</td>
-			<td>0</td>
-			<td>0</td>
-			<td>0</td>
-			<td>248</td>
-			<td>32</td>
-			<td>8</td>
-		</tr>
-		<tr>
-			<td>1</td>
-			<td>1</td>
-			<td>1</td>
-			<td>1</td>
-			<td>1</td>
-			<td>1</td>
-			<td>0</td>
-			<td>0</td>
-			<td>252</td>
-			<td>64</td>
-			<td>4</td>
-		</tr>
-		<tr>
-			<td>1</td>
-			<td>1</td>
-			<td>1</td>
-			<td>1</td>
-			<td>1</td>
-			<td>1</td>
-			<td>1</td>
-			<td>0</td>
-			<td>254</td>
-			<td>128</td>
-			<td>2</td>
-		</tr>
-		<tr>
-			<td>1</td>
-			<td>1</td>
-			<td>1</td>
-			<td>1</td>
-			<td>1</td>
-			<td>1</td>
-			<td>1</td>
-			<td>1</td>
-			<td>255</td>
-			<td>256</td>
-			<td>1</td>
-		</tr>
-	</tbody>
-</table>
-
-<p>Netmasken 255.255.255.224 angiver altså, at nettet er delt op i 8 subnets med 32 adresser i hver. Heraf er de 2 henholdsvis netværks- og broadcastadressen.</p>
-
-<div class="pagebreak">
-
-<h2>CIDR adresse - Classless Inter-Domain Routing</h2>
-
-<p>Disse netværk kan også angives ved hjælp af en CIDR adresse. Denne adresse angiver ved hjælp af en streng alle fire netværksbeskrivelser: IP, netmask, netværk og broadcast. Det CIDR -notationen gør er, at den angiver antallet af bits der er låst - altså netmasken. Således vil IP-adressen 192.168.1.34/24 angive at de første 24 bits i netmasken er låst - altså en 255.255.255.0. Netværks- og broadcast adressen er automatisk sat til at være henholdsvis den første 192.168.1.0 og 192.168.1.255.</p>
-
-<p>Denne notation er smart, fordi den sparer plads i hukommelsen på routere og anvender deres CPU til at beregne de andrer ting. Den er også smart fordi den gør det simplere at angive supnetmasks og supermasks hvilket vi vil se på i næste afsnit.</p>
-
-<table class="">
-	<thead>
-		<tr>
-			<th>IP/CIDR</th>
-			<th>Mask (dec)</th>
-			<th>Mask (bin)</th>
-			<th>hosts</th>
-			<th>Størrelse</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>a.b.c.d/27</td>
-			<td>255.255.255.<span class="red">224</span></td>
-			<td>11111111.11111111.11111111.111<span class="red">00000</span></td>
-			<td>32</td>
-			<td>1/8 C</td>
-		</tr>
-		<tr>
-			<td>a.b.c.d/26</td>
-			<td>255.255.255.192</td>
-			<td>11111111.11111111.11111111.11000000</td>
-			<td>64</td>
-			<td>1/4 C</td>
-		</tr>
-		<tr>
-			<td>a.b.c.d/25</td>
-			<td>255.255.255.128</td>
-			<td>11111111.11111111.11111111.10000000</td>
-			<td>128</td>
-			<td>1/2 C</td>
-		</tr>
-		<tr>
-			<td>a.b.c.d/24</td>
-			<td>255.255.255.0</td>
-			<td>11111111.11111111.11111111.00000000</td>
-			<td>256</td>
-			<td>1 C</td>
-		</tr>
-		<tr>
-			<td>a.b.c.0/23</td>
-			<td>255.255.254.0</td>
-			<td>11111111.11111111.11111110.00000000</td>
-			<td>512</td>
-			<td>2 C</td>
-		</tr>
-		<tr>
-			<td>a.b.c.0/22</td>
-			<td>255.255.252.0</td>
-			<td>11111111.11111111.11111100.00000000</td>
-			<td>1.024</td>
-			<td>4 C</td>
-		</tr>
-		<tr>
-			<td>a.b.c.0/21</td>
-			<td>255.255.248.0</td>
-			<td>11111111.11111111.11111000.00000000</td>
-			<td>2.048</td>
-			<td>8 C</td>
-		</tr>
-		<tr>
-			<td>a.b.c.0/20</td>
-			<td>255.255.240.0</td>
-			<td>11111111.11111111.11110000.00000000</td>
-			<td>4.096</td>
-			<td>16 C</td>
-		</tr>
-		<tr>
-			<td>a.b.c.0/19</td>
-			<td>255.255.224.0</td>
-			<td>11111111.11111111.11100000.00000000</td>
-			<td>8.192</td>
-			<td>32 C</td>
-		</tr>
-		<tr>
-			<td>a.b.c.0/18</td>
-			<td>255.255.192.0</td>
-			<td>11111111.11111111.11000000.00000000</td>
-			<td>16.384</td>
-			<td>64 C</td>
-		</tr>
-		<tr>
-			<td>a.b.c.0/17</td>
-			<td>255.255.128.0</td>
-			<td>11111111.11111111.10000000.00000000</td>
-			<td>32.768</td>
-			<td>128 C</td>
-		</tr>
-		<tr>
-			<td>a.b.0.0/16</td>
-			<td>255.255.0.0</td>
-			<td>11111111.11111111.00000000.00000000</td>
-			<td>65.536</td>
-			<td>256 C = 1 B</td>
-		</tr>
-	</tbody>
-</table>
-
-<p>Antallet af tilgængelige adresser kan udregnes ved hjælp af formel: 2<sup>32-/CIDR</sup>. Antalet af adresser i en /22 CIDR er altså:</p>
-
-<p>2<sup>32-22</sup> = 2<sup>10</sup> = 1024</p>
-
-<p>Antallet af tilgængelige adresser er: 1024 -2 = 1022</p>
-
-</div><!-- Pagebreak end -->
-
-<h2>Et praktisk eksempel</h2>
-
-<p>Lad os kigge på et eksempel: 10.129.56.0/26 (svarer til en netmaske på 255.255.255.192. I binært hedder netværket: 00001010.10000001.00111000.00000000, hvoraf de første 26 bit tilhører netværket og de sidste 6 tilhører værterne. De røde er netværkets bits og de grønne er værterne</p>
-
-<span class="inl_cmd"><span class="red">00001010.10000001.00111000.00</span><span class="green">000000</span></span>
-
-<p>Ved at kigge på den sidste oktet har vi altså 2 bit til at lave netværk med (<span class="red">nn</span><span class="green">vvvvvv</span>) og 6 til værterne.</p>
-
-<table class="">
-	<thead>
-		<tr>
-			<th>Subnet</th>
-			<th>Subnet<br/>binært</th>
-			<th>Subnet<br/>decimalt</th>
-			<th>Netværk</th>
-			<th>Broadcast</th>
-			<th>Antal<br/>adresser</th>
-			<th>Antal<br/>værter</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td><span class="red">00</span></td>
-			<td><span class="red">00</span><span class="green">000000</span> - <span class="red">00</span><span class="green">111111</span></td>
-			<td>0 - 63</td>
-			<td>10.129.56.<span class="red">0</span></td>
-			<td>10.129.56.<span class="red">63</span></td>
-			<td rowspan="4">64</td>
-			<td rowspan="4">62</td>
-		</tr>
-		<tr>
-			<td><span class="red">01</span></td>
-			<td><span class="red">01</span><span class="green">000000</span> - <span class="red">01</span><span class="green">111111</span></td>
-			<td>64 - 127</td>
-			<td>10.129.56.<span class="red">64</span></td>
-			<td>10.129.56.<span class="red">127</span></td>
-		</tr>
-		<tr>
-			<td><span class="red">10</span></td>
-			<td><span class="red">10</span><span class="green">000000</span> - <span class="red">10</span><span class="green">111111</span></td>
-			<td>128 - 191</td>
-			<td>10.129.56.<span class="red">128</span></td>
-			<td>10.129.56.<span class="red">191</span></td>
-		</tr>
-		<tr>
-			<td><span class="red">11</span></td>
-			<td><span class="red">11</span><span class="green">000000</span> - <span class="red">11</span><span class="green">111111</span></td>
-			<td>192 - 255</td>
-			<td>10.129.56.<span class="red">192</span></td>
-			<td>10.129.56.<span class="red">255</span></td>
-		</tr>
-	</tbody>
-</table>
-
-<p>I ovenstående skema kan du se logikken bag subnet. I hver af de binære adresser kan de 6 sidste bit antage alle værdier kun separeret ved hjælp af de 2 første bit. Ovenstående opdeling kan altså inddele et klasse</p>
-
-<h2>Supernetting</h2>
-
-<p>Supernetting er at udvide netværket ud over et "normalt" netværk. Det kan f.eks. være med netmasken 255.255.254.0 (CIDR /23). Hvis man f.eks. får adressen 10.129.56.83/23 til sin server, vil følgende altså være gældende:</p>
-
-<table class="">
-	<thead>
-		<tr>
-			<th>Betegnelse</th>
-			<th>IP</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>adresse</td>
-			<td>10.129.56.83</td>
-		</tr>
-		<tr>
-			<td>netværk</td>
-			<td>10.129.56.0</td>
-		</tr>
-		<tr>
-			<td>netmask</td>
-			<td>255.255.254.0</td>
-		</tr>
-		<tr>
-			<td>Broadcast</td>
-			<td>10.129.57.255</td>
-		</tr>
-		<tr>
-			<td>Første adresse</td>
-			<td>10.129.56.1</td>
-		</tr>
-		<tr>
-			<td>Sidste adresse</td>
-			<td>10.129.57.254</td>
-		</tr>
-		<tr>
-			<td>antal værter</td>
-			<td>510</td>
-		</tr>
-	</tbody>
-</table>
-
-<h1>Beregninger i netværk</h1>
-
-<p>Til at lave beregninger til et IP netværk findes der smarte programmer. F.eks. <a href="http://www.iptools.dk/ip-calc/" target="_blank">http://www.iptools.dk/ip-calc/</a></p>
-
-<p>Eller nedestående til Android.</p>
-
-<figure id="">
-
-	<img class="p60" src="images/IP_Network_Calculator.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-
-<p>Når man starter programmet op får man en menu hvor man kan taste sin netværksadresse ind, og trække en skyder indtil man opnår den ønskede mængde adresser i sit subnet.</p>
-
-<figure id="">
-
-	<img class="p40" src="images/IPv4Calc_screenshot.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-
-
-<h1>Henvisninger</h1>
-
-<p>Osi modellen (eng): <a href="http://en.wikipedia.org/wiki/OSI_model" target="_blank">http://en.wikipedia.org/wiki/OSI_model</a></p>
-
-<p>Osi modellen (da): <a href="http://da.wikipedia.org/wiki/OSI-model" target="_blank">http://da.wikipedia.org/wiki/OSI-model</a></p>
-
-<p>Classfull network: <a href="http://en.wikipedia.org/wiki/Classful_network" target="_blank">http://en.wikipedia.org/wiki/Classful_network</a></p>
-
-<p>Subnetting: <a href="http://en.wikipedia.org/wiki/Subnetwork" target="_blank">http://en.wikipedia.org/wiki/Subnetwork</a></p>
-
-<p>Supernetwork: <a href="http://en.wikipedia.org/wiki/Supernetwork" target="_blank">http://en.wikipedia.org/wiki/Supernetwork</a></p>
-
-<p>Internet protocol (eng): <a href="http://en.wikipedia.org/wiki/Internet_Protocol" target="_blank">http://en.wikipedia.org/wiki/Internet_Protocol</a></p>
-
-<p>Internet protocol (da): <a href="http://da.wikipedia.org/wiki/Internetprotokol" target="_blank">http://da.wikipedia.org/wiki/Internetprotokol</a></p>
-
-<p>OSI Model forklaret med James Bond (side 2): <a href="http://www.lewistech.com/rlewis/Resources/james.aspx" target="_blank">http://www.lewistech.com/rlewis/Resources/james.aspx</a></p>
-
-<p>Internet Protocol Suite: <a href="http://en.wikipedia.org/wiki/Internet_protocol_suite" target="_blank">http://en.wikipedia.org/wiki/Internet_protocol_suite</a></p>
-
-<p>CIDR: <a href="http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing" target="_blank">http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing</a></p>
-
-<p>Video om subnetting: <a href="https://www.youtube.com/watch?v=GSX1GlaznKM" target="_blank">https://www.youtube.com/watch?v=GSX1GlaznKM</a></p>
-
-<iframe width="420" height="315" src="https://www.youtube.com/embed/GSX1GlaznKM" frameborder="0" allowfullscreen></iframe>
-
-<h2>Litteraturliste</h2>
-
-<p>Stein-Olsen & Stalheim s. 9 (1998): Netværk, Geir Steen-Olsen & Arnie Stalheim, IDG Bøger A/S, 1. udg. 1.oplag, ISBN: 87-7843-121-2 <br/>
-<a href="http://www.libris.dk/produkt/Introduktion_til_netvaerk_3_udgave.htm" target="_blank">http://www.libris.dk/produkt/Introduktion_til_netvaerk_3_udgave.htm</a></p>
 
 
 	</body>
