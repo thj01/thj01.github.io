@@ -293,7 +293,61 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <p>Til almindeligt hjemmebrug er <span class="inl_cmd">Cat5e</span> rigeligt og praktisk. Problemet med at gå op i cat6 og derover er, at de bliver for stive og har svært ved at "knække" rundt om hjørner. Men arbejder man et sted hvor data-strømmen er kritisk og at den skal sikres mest muligt, så skal man op i SSTP kabler.</p>
 
+<h1>WAN og LAN</h1>
 
+<p>Man skelner mellem to typer af netværk: <span class="inl_cmd">WAN</span> ( <span class="bold">W</span>ide <span class="bold">A</span>rea <span class="bold">N</span>etwork ) og <span class="inl_cmd">LAN</span> ( <span class="bold">L</span>ocal <span class="bold">A</span>rea <span class="bold">N</span>etwork ).</p>
+
+<p></p>
+
+
+<h1>Private netværk</h1>
+
+<p>Som en del af <span class="inl_cmd">IPv4</span> specifikationen er der lavet nogle netværksadresser der er forbeholdt private netværk. At et netværk er privat betyder, at
+	
+	
+	Et offentligt netværk består af maskiner som er tilgængelig for alle f.eks. Internettet. Her kan man tilgå alle maskinerne med ingen eller få begrænsninger. Man har fra starten defineret nogle netværksadresser til at være private, og disse netværk anvendes i lukkede netværk</p>
+
+<table id="">
+	<thead>
+		<tr>
+			<th colspan="5">Private netværk</th>
+		</tr>
+		<tr>
+			<th>CIDR-blok</th>
+			<th>Private netværksadresser <br/>(RFC1597/RFC1918)</th>
+			<th>Netværks <br/>bit</th>
+			<th>Host <br/>bit</th>
+			<th>Mulige <br/>hosts</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>10.0.0.0/8</td>
+			<td>10.0.0.0 – 10.255.255.255</td>
+			<td>8</td>
+			<td>24 bit</td>
+			<td>16,777,216 (256³)</td>
+		</tr>
+		<tr>
+			<td>172.16.0.0/12</td>
+			<td>172.16.0.0 - 172.31.255.255</td>
+			<td>12</td>
+			<td>20 bit</td>
+			<td>1,048,576 (16 &middot; 256²)</td>
+		</tr>
+		<tr>
+			<td>192.168.0.0/16</td>
+			<td>192.168.0.0 - 192.168.255.255</td>
+			<td>16</td>
+			<td>16 bit</td>
+			<td>65,536 (256²)</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Maskinerne i et privat netværk er lukket af fra det offentlige, og hvis en klient fra et lukket netværk ønsker at tilgå det offentlige netværk (f.eks. Internettet) ledes signalet til en gateway. Her bliver klientens interne IP-adresse erstattet med en adresse som Internettet kan anvende. Denne proces kaldes for NAT (Network Address Translation).</p>
+
+<p>Du kan læse mere om IPv4 her: <a href="http://en.wikipedia.org/wiki/IPv4" target="_blank">http://en.wikipedia.org/wiki/IPv4</a></p>
 
 
 

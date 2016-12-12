@@ -305,46 +305,21 @@ traceroute to dr.dk (159.20.6.38), 30 hops max, 60 byte packets
 
 <h1>IP - Internet Protokoller</h1>
 
-<p>Der findes 2 IP protokoller: En version 4 (IPv4) og en version 6 (IPv6). Udfordringen med IPv4 er, at vi er ved at løbe tør for adresser. Dette skyldes bl.a. designet af IPv4 hvilket gør at under 20% af alle tilgængelige adresser er i funktion. Dette skyldes bl.a. protokollens oprindelige mangel på at kunne underinddele netværk. Det man skal huske på i denne sammenhæng er, at man i Internettets barndom ikke havde forstillet sig den eksplosive udvikling der er sket.</p>
+<p>Der findes 2 IP protokoller: <span class="inl_cmd">IPv4</span> og <span class="inl_cmd">IPv6</span>. <span class="inl_cmd">IPv4</span> er den oprindelige og var designet til at have <span class="math">\( 2^32 = 4294967296 \)</span> unikke adresser. Designet har været effektivt, men den digitale udvikling har gjort at der skal bruges flere adresser.<\p>
 
-<p>For at imødekomme dette problem har man skabt IPv6 protokollen, som ikke er bagudkompatibel. På denne måde har man kunne designe det, så det passer til en fremtid hvor ikke bare computere, men også telfoner, tablets, køleskabe, fjernsyn ... kommer på nettet.</p>
+<p>For at imødekomme dette behov har man udviklet <span class="inl_cmd">IPv6</span> som på mange områder minder om <span class="inl_cmd">IPv4</span>, men er blevet tilpasset og designet til den digitale fremtid vi er på vej ind i. F.eks. er der nu <span class="math">\( 2^128 = 3,402 \cdot 10^{38} \)</span> adresser. <span class="inl_cmd">IPv6</span> er så smart designet, at de gamle <span class="inl_cmd">IPv4</span> adresser kan køre videre upåvirket på <span class="inl_cmd">IPv6</span> netværk. Vevd hjælp af <span class="inl_cmd">IPv6</span> kan man nu sætte alle de ting man vil på internettet.</p>
 
-<p>En af udfordringerne ved at forstå netværksadresser og opsætning er, at der er forskel på den måde computere og mennesker opfatter og forstår tal. Computere arbejder i elektriske signaler og alting skal være defineret for den for at forstå dem. Derfor er IP-adresser som 192.168.1.17 (IPv4) og 2001:DB8:AC10:FE01::20 (IPv6) IP notationer som er menneskelæsbare. Tegnene . og : som bruges i IP-adresserne er ikke-eksisterende for computeren og er kun sat som et visuelt hjælpemiddel. Computeren arbejder med disse adresser binært dvs med 32 bit (32 cifre) for IPv4 og 128 bit (128 cifre)for IPv6.</p>
+<h2>IP-adresser</h2>
 
-<h2>IPv4</h2>
+<p>Som du kunne læse ovenfor er antallet af mulige adresser enorm både i <span class="inl_cmd">IPv4</span> og <span class="inl_cmd">Ipv6</span>. For lettere at kunne arbejde med disse adresser bliver de omskrevet. <span class="inl_cmd">IPv4</span> bliver omskrevet til 10-tals systemet og <span class="inl_cmd">Ipv6</span> til det hexadecimale system. Herunder er der et eksempel på hver af adresserne:</p>
 
-<p>IPv4 adressen er en 32 bit adresse, dvs. at den består af 32 binære cifre f.eks: <span class="inl_cmd">11000000101010000000000100010001</span>. For læsbarhedens plejer man at indskyde et punktum eller et mellemrum imellem hver oktet dvs. hver 8 ciffer: <span class="inl_cmd">11000000.10101000.00000001.00010001</span>. Denne adresse vil være præsenteret som 192.168.1.17 i decimal notation. Herunder kan du se IP-adresse præsenteret binær, decimal og hexadecimal.</p>
+<p><span class="inl_cmd"><span class="bold">IPv4</span></span>: 192.168.1.17</p>
 
+<p><span class="inl_cmd"><span class="bold">IPv6</span></span>: 2001:DB8:AC10:FE01::20</p>
 
-<table id="">
-	<thead>
-		<tr>
-			<th colspan="5">Computer læsbart</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td></td>
-			<td>1. oktet</td>
-			<td>2. oktet</td>
-			<td>3. oktet</td>
-			<td>4. oktet</td>
-		</tr>
-		<tr>
-			<td>binær oktet</td>
-			<td>11000000</td>
-			<td>10101000</td>
-			<td>00000001</td>
-			<td>00010001</td>
-		</tr>
-		<tr>
-			<td>Binær samlet</td>
-			<td colspan="4">11000000101010000000000100010001</td>
-		</tr>
-	</tbody>
-</table>
+<p>Tegnene . og : som bruges i IP-adresserne er sat for at gøre adresserne læselige for os . Computeren arbejder med disse adresser binært dvs med 32 bit (32 cifre) for IPv4 og 128 bit (128 cifre)for IPv6.</p>
 
-<p></p>
+<p>Herunder kan du se forskellige repræsentationer for den samme <span class="inl_cmd">IPv4</span> adresse:</p>
 
 <table class="">
 	<thead>
@@ -360,6 +335,18 @@ traceroute to dr.dk (159.20.6.38), 30 hops max, 60 byte packets
 			<td>1</td>
 			<td>17</td>
 		</tr>
+		<tr>
+			<td>Binær samlet</td>
+			<td colspan="4">11000000101010000000000100010001</td>
+		</tr>
+		<tr>
+			<td>binær oktet</td>
+			<td>11000000</td>
+			<td>10101000</td>
+			<td>00000001</td>
+			<td>00010001</td>
+		</tr>
+
 		<tr>
 			<td>Decimal samlet</td>
 			<td colspan="4">3232235793</td>
@@ -379,52 +366,6 @@ traceroute to dr.dk (159.20.6.38), 30 hops max, 60 byte packets
 </table>
 
 
-
-<h3>Offentlige og private netværk samt NAT</h3>
-
-<p>Et offentligt netværk består af maskiner som er tilgængelig for alle f.eks. Internettet. Her kan man tilgå alle maskinerne med ingen eller få begrænsninger. Man har fra starten defineret nogle netværksadresser til at være private, og disse netværk anvendes i lukkede netværk</p>
-
-<table id="">
-	<thead>
-		<tr>
-			<th colspan="5">Private netværk</th>
-		</tr>
-		<tr>
-			<th>CIDR-blok</th>
-			<th>Private netværksadresser <br/>(RFC1597/RFC1918)</th>
-			<th>Netværks <br/>bit</th>
-			<th>Host <br/>bit</th>
-			<th>Mulige <br/>hosts</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>10.0.0.0/8</td>
-			<td>10.0.0.0 – 10.255.255.255</td>
-			<td>8</td>
-			<td>24 bit</td>
-			<td>16,777,216 (256³)</td>
-		</tr>
-		<tr>
-			<td>172.16.0.0/12</td>
-			<td>172.16.0.0 - 172.31.255.255</td>
-			<td>12</td>
-			<td>20 bit</td>
-			<td>1,048,576 (16 &middot; 256²)</td>
-		</tr>
-		<tr>
-			<td>192.168.0.0/16</td>
-			<td>192.168.0.0 - 192.168.255.255</td>
-			<td>16</td>
-			<td>16 bit</td>
-			<td>65,536 (256²)</td>
-		</tr>
-	</tbody>
-</table>
-
-<p>Maskinerne i et privat netværk er lukket af fra det offentlige, og hvis en klient fra et lukket netværk ønsker at tilgå det offentlige netværk (f.eks. Internettet) ledes signalet til en gateway. Her bliver klientens interne IP-adresse erstattet med en adresse som Internettet kan anvende. Denne proces kaldes for NAT (Network Address Translation).</p>
-
-<p>Du kan læse mere om IPv4 her: <a href="http://en.wikipedia.org/wiki/IPv4" target="_blank">http://en.wikipedia.org/wiki/IPv4</a></p>
 
 <h2>IPv6</h2>
 
