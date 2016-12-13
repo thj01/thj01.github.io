@@ -358,54 +358,93 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <h1>Private netværk</h1>
 
-<p>Som en del af <span class="inl_cmd">IPv4</span> specifikationen er der lavet nogle netværksadresser der er forbeholdt private netværk. Det specielle ved private netværk er, at IP-adresserne i netværket ikke kan routes. Det betyder, at en IP-adresse der tilhører et privat netværk ikke kan tilgås fra <span class="inl_cmd">WAN</span> siden af et netværk. 
-	
-	
-	Et offentligt netværk består af maskiner som er tilgængelig for alle f.eks. Internettet. Her kan man tilgå alle maskinerne med ingen eller få begrænsninger. Man har fra starten defineret nogle netværksadresser til at være private, og disse netværk anvendes i lukkede netværk</p>
+<p>Som en del af <span class="inl_cmd">IPv4</span> specifikationen er der lavet nogle netværksadresser der er forbeholdt private netværk. Det specielle ved private netværk er, at IP-adresserne i netværket ikke kan routes. Det betyder, at en IP-adresse der tilhører et privat netværk ikke kan tilgås fra <span class="inl_cmd">WAN</span> siden af et netværk. De private netværk er:</p>
 
 <table id="">
 	<thead>
 		<tr>
-			<th colspan="5">Private netværk</th>
-		</tr>
-		<tr>
-			<th>CIDR-blok</th>
-			<th>Private netværksadresser <br/>(RFC1597/RFC1918)</th>
+			<th>Version</th>
+			<th>Netværk</th>
 			<th>Netværks <br/>bit</th>
-			<th>Host <br/>bit</th>
-			<th>Mulige <br/>hosts</th>
+			<th>Antal IP-adresser</th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr>
+			<td>IPv4</td>
 			<td>10.0.0.0/8</td>
-			<td>10.0.0.0 – 10.255.255.255</td>
-			<td>8</td>
-			<td>24 bit</td>
-			<td>16,777,216 (256³)</td>
+			<td>24</td>
+			<td><span class="math">\( 2^{24}  = 16,777,216 \)</span></td>
 		</tr>
 		<tr>
+			<td>IPv4</td>
 			<td>172.16.0.0/12</td>
-			<td>172.16.0.0 - 172.31.255.255</td>
-			<td>12</td>
-			<td>20 bit</td>
-			<td>1,048,576 (16 &middot; 256²)</td>
+			<td>20</td>
+			<td><span class="math">\( 2^{20} = 1,048,576 \)</span></td>
 		</tr>
 		<tr>
+			<td>IPv4</td>
 			<td>192.168.0.0/16</td>
-			<td>192.168.0.0 - 192.168.255.255</td>
 			<td>16</td>
-			<td>16 bit</td>
-			<td>65,536 (256²)</td>
+			<td><span class="math">\( 2^{16} = 65,536 \)</span></td>
+		</tr>
+		<tr>
+			<td>IPv6</td>
+			<td>FC00::/7</td>
+			<td>121</td>
+			<td><span class="math">\( 2^{121} = 2,658 \cdot 10^{36} \)</span></td>
 		</tr>
 	</tbody>
 </table>
 
-<p>Maskinerne i et privat netværk er lukket af fra det offentlige, og hvis en klient fra et lukket netværk ønsker at tilgå det offentlige netværk (f.eks. Internettet) ledes signalet til en gateway. Her bliver klientens interne IP-adresse erstattet med en adresse som Internettet kan anvende. Denne proces kaldes for NAT (Network Address Translation).</p>
+<p>IP-adresserne i et privat netværk er usynlige fra <span class="inl_cmd">WAN</span>-siden, og kræver at derer en router med <span class="inl_cmd">NAT</span> ( <span class="bold">N</span>etwork <span class="bold">A</span>ddress <span class="bold">T</span>ranslation ). <span class="inl_cmd">NAT</span> funktionen gør, at routeren har en tabel, hvor den holder styr på hvilke IP-adresser på <span class="inl_cmd">LAN</span> siden der har kontakt med hvilke IP-adresser på <span class="inl_cmd">WAN</span> siden.</p>
 
 <p>Du kan læse mere om IPv4 her: <a href="http://en.wikipedia.org/wiki/IPv4" target="_blank">http://en.wikipedia.org/wiki/IPv4</a></p>
 
+<h1>Låste IP-addresser</h1>
 
+<p>I både IPv4 og IPv6 er der nogle adresser der er låst til nogle helt specifikke formål anvendelse. Kig i skemaet herunder</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>IPv4</th>
+			<th>IPv6</th>
+			<th>Beskrivelse</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><span class="inl_cmd">127.0.0.1/8</span></td>
+			<td><span class="inl_cmd">::1/128</span></td>
+			<td>Denne adresse kaldes <span class="inl_cmd">Loopback</span>. Det fungerer som et virtuel netværkskort, som den lokale computer kan anvende til interne <span class="inl_cmd">TCP/IP</span> funktioner </td>
+		</tr>
+		<tr>
+			<td><span class="inl_cmd">169.254.0.0/16</span></td>
+			<td><span class="inl_cmd">FE80::/10</span></td>
+			<td>Denne adresse kaldes <span class="inl_cmd">Lokal Link</span>. Hvis netværkskortet ikke får en IP-adresse fra netværket eller ikke er konfigureret korrekt vil <span class="inl_cmd">IPv4</span> sørge for at give netkortet en vilkårlig adresse i dette netværk</td>
+		</tr>
+		<tr>
+			<td><span class="inl_cmd">10.0.0.0/8</span><br/>
+			<span class="inl_cmd">172.16.0.0/12</span><br/>
+			<span class="inl_cmd">192.168.0.0/16</span></td>
+			<td><span class="inl_cmd">FC00::/7</span></td>
+			<td>Private netværk (se ovenfor)</td>
+		</tr>
+		<tr>
+			<td>n/a</td>
+			<td><span class="inl_cmd">::FFFF:0:0/96</span></td>
+			<td>Denne <span class="inl_cmd">IPv6</span>-adresse indeholder en <span class="inl_cmd">IPv4</span>-adresse. På denne måde sikrer man sig at netværk der stadig kører med <span class="inl_cmd">IPv4</span> er tilgængelige når <span class="inl_cmd">IPv6</span> slår helt igennem</td>
+		</tr>
+		<tr>
+			<td><span class="inl_cmd">192.0.2.0/24</span><br/>
+			<span class="inl_cmd">198.51.100.0/24</span><br/>
+			<span class="inl_cmd">203.0.113.0/24</span></td>
+			<td><span class="inl_cmd">2001:0DB8::/32</span></td>
+			<td>Disse IP-adresser anbefales til dokumentation.</td>
+		</tr>
+	</tbody>
+</table>
 
 
 
