@@ -171,7 +171,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <p>I et fysisk netværk indgår der noget hardware, som udfører forskellige opgaver. Herunder kommer vi ind på de to vigtigste enheder på et simpelt netværk: <span class="inl_cmd">Routere</span> og <span class="inl_cmd">switche</span>.</p>
 
-<h2>Hvad er en switch</h2>
+<h2>Switch'en</h2>
 
 <p></p>
 
@@ -188,7 +188,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <p>Når vi anvender det trådløse netværk anvender vi reelt nogle virtuelle porte. De er langt mindre effektive end de kablede, da der ikke er selvstændige sendere og modtagere til hver enhed. Der arbejdes konstant på at forbedre hastigheden og effektiviteten af trådløse de trådløse switche</p>
 
-<h2>Hvad er en router</h2>
+<h2>Routeren</h2>
 
 <p></p>
 
@@ -293,12 +293,56 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <p>Til almindeligt hjemmebrug er <span class="inl_cmd">Cat5e</span> rigeligt og praktisk. Problemet med at gå op i cat6 og derover er, at de bliver for stive og har svært ved at "knække" rundt om hjørner. Men arbejder man et sted hvor data-strømmen er kritisk og at den skal sikres mest muligt, så skal man op i SSTP kabler.</p>
 
-<h1>WAN og LAN</h1>
+<h1>Netværkstyper</h1>
 
-<p>Man skelner mellem to typer af netværk: <span class="inl_cmd">WAN</span> ( <span class="bold">W</span>ide <span class="bold">A</span>rea <span class="bold">N</span>etwork ) og <span class="inl_cmd">LAN</span> ( <span class="bold">L</span>ocal <span class="bold">A</span>rea <span class="bold">N</span>etwork ).</p>
+<p>For at adskille og beskrive de forskellige typer af netværk anvender man følgende betegnelser:</p>
 
-<p></p>
+<table class="">
+	<thead>
+		<tr>
+			<th>Netværkstype</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><span class="bold">LAN</span></td>
+			<td><span class="bold">L</span>ocal <span class="bold">A</span>rea <span class="bold">N</span>etwork</td>
+		</tr>
+		<tr>
+			<td><span class="bold">WAN</span></td>
+			<td><span class="bold">W</span>ide <span class="bold">A</span>rea <span class="bold">N</span>etwork</td>
+		</tr>
+		<tr>
+			<td><span class="bold">WLAN</span></td>
+			<td><span class="bold">W</span>ireless <span class="bold">L</span>ocal <span class="bold">A</span>rea <span class="bold">N</span>etwork</td>
+		</tr>
+		<tr>
+			<td><span class="bold">SAN</span></td>
+			<td><span class="bold">S</span>torage <span class="bold">L</span>ocal <span class="bold">A</span>rea <span class="bold">N</span>etwork</td>
+		</tr>
+		<tr>
+			<td><span class="bold">VPN</span></td>
+			<td><span class="bold">V</span>irtual <span class="bold">P</span>rivate <span class="bold">N</span>etwork</td>
+		</tr>
+	</tbody>
+</table>
 
+<h2>LAN og WAN</h2>
+
+<p>Dette er de to grundlæggende netværkstyper. Forskellen mellem dem er, at <span class="inl_cmd">LAN</span> er afgrænset og <span class="inl_cmd">WAN</span> ikke er det. Det kan f.eks. være et firmanetværk (LAN) og Internettet (WAN). Disse netværk er adskilt af routere.</p>
+
+<h2>WLAN og SAN</h2>
+
+<p>Disse to er egentlig bare afarter af <span class="inl_cmd">LAN</span>, hvor <span class="inl_cmd">WLAN</span> beskriver trådløse netværk og <span class="inl_cmd">SAN</span> beskriver netværk der indeholder harddisk-arrays, som er servere der kun er beregnet til at opbevare data.</p>
+
+<h2>VPN</h2>
+
+<p>VPN er en netværksforbindelse der skabes mellem to computeren uafhængig af netværket omkring dem. Denne form for netværk bliver også omtalt som en "tunnel". Det har den fordel at resten af netværket ikke kan se trafikken. Hvis man ønsker at sikre datastrømmen yderligere kan man kryptere den. Det kan f.eks. være en fordel hvis man som rejsenden sælger skal kunne tilgå sine filer sikkert på serveren i virksomheden.</p>
+
+<p>VPN bliver også misbrugt f.eks. til nogle af de "smarte" programmer man downloader til sin browser for at kunne få adgang til bestemte typer filer. Det betyder f.eks. at ens datatrafik ikke bliver administreret af ens lokale netværk, men af udbyderen. I realititen kan udbyderen vælge at anvende denne dataforbindelse til at opbevare data på den lokale PC. Nogle af disse "smarte" programmer anvender kun VPN funktionen når programmet kører, hvorimod andre helt overtager ens datatrafik.</p>
+
+<p>Når man installerer programmer fra nettet der lover at forbedre ens ydelse, eller som giver adgang til specielle typer af programmer, så bør man undersøge om det gøres gennem VPN.</p>
 
 <h1>Private netværk</h1>
 
