@@ -328,7 +328,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 	</tbody>
 </table>
 
-<h2>LAN og WAN</h2>
+<span class="afsnit">LAN og WAN</span>
 
 <p>Dette er de to grundlæggende netværkstyper. Forskellen mellem dem er, at <span class="inl_cmd">LAN</span> er afgrænset og <span class="inl_cmd">WAN</span> ikke er det. Det kan f.eks. være et firmanetværk (LAN) og Internettet (WAN). Disse netværk er adskilt af routere.</p>
 
@@ -344,11 +344,11 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 
 
-<h2>WLAN og SAN</h2>
+<span class="afsnit">WLAN og SAN</span>
 
 <p>Disse to er egentlig bare afarter af <span class="inl_cmd">LAN</span>, hvor <span class="inl_cmd">WLAN</span> beskriver trådløse netværk og <span class="inl_cmd">SAN</span> beskriver netværk der indeholder harddisk-arrays, som er servere der kun er beregnet til at opbevare data.</p>
 
-<h2>VPN</h2>
+<span class="afsnit">VPN</span>
 
 <p>VPN er en netværksforbindelse der skabes mellem to computeren uafhængig af netværket omkring dem. Denne form for netværk bliver også omtalt som en "tunnel". Det har den fordel at resten af netværket ikke kan se trafikken. Hvis man ønsker at sikre datastrømmen yderligere kan man kryptere den. Det kan f.eks. være en fordel hvis man som rejsenden sælger skal kunne tilgå sine filer sikkert på serveren i virksomheden.</p>
 
@@ -356,9 +356,22 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <p>Når man installerer programmer fra nettet der lover at forbedre ens ydelse, eller som giver adgang til specielle typer af programmer, så bør man undersøge om det gøres gennem VPN.</p>
 
-<<h1>Netværkstopologier</h1>
+<h1>Netværkstopologier</h1>
 
-<p>Ordet netværkstopologi henviser til den måde netværket er opbygget. Her vil to af dem blive gennemgået: Stjerne- og ringtopologi. </p>
+<p>Ordet netværkstopologi henviser til den måde netværket er opbygget. Her vil to af dem blive gennemgået: Stjerne- og ringtopologi.</p>
+
+<span class="afsnit">Stjernetopologi</span>
+
+<p>Stjerne-topologien er den mest anvendte netværksopbygning. Det er den type netværk man får når forbinder sine computere med både trådede og trådløse switche.</p>
+
+<span class="afsnit">Fordele:</span>
+
+<ul class="disc">
+	<li>Nemt at sætte op</li>
+	<li>Nemt at administrere</li>
+	<li>Nemt at tilføje flere computere til</li>
+	<li>Nettet har stor fejltolerence</li>
+</ul>
 
 <figure id="">
 
@@ -368,6 +381,21 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 </figure>
 
+<span class="afsnit">Ring-topologi</span>
+
+<p>Denne type netværk anvendes i "backbones" hvilket vil sige i centrale dele af store netværk. Fordelen ved at sætte maskinerne i en ring er, at datapakkerne bliver sendt i en retning. Det giver et stærkere signal og dermed kan hastigheden øges. </p>
+
+<p>Ulempen ved denne netværks-topologi er stort set det modsatte af fordelene ved stjerne-topologien, men skal man have stor ydelse er ring-topologien vejen frem. </p>
+
+<figure id="">
+
+	<img class="p50" src="images/network_ring_topology.svg" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Mere om topologier: <a href="https://en.wikipedia.org/wiki/Network_topology" target="_blank">https://en.wikipedia.org/wiki/Network_topology</a></p>
 
 <h1>Private netværk</h1>
 
