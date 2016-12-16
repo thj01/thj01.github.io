@@ -84,7 +84,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <span class="afsnit">Resultat af koden</span>
 
-<p><abbr title="Central Intelligense Agency">CIA</abbr> er en forkortelse for <b>C</b>entral <b>I</b>ntelligense <b>a</b>gency, som er en del af <abbr title="United States of America">USA</abbr>'s efterretningstjeneste.</p>
+<p><abbr title="Central Intelligense Agency">CIA</abbr> er en forkortelse for <b>C</b>entral <b>I</b>ntelligense <b>A</b>gency, som er en del af <abbr title="United States of America">USA</abbr>'s efterretningstjeneste.</p>
 
 <p>Læg mærke til at der kommer en stiplet linie under de forkortelser der er pakket ind i <span class="inl_cmd">&lt;abbr></span>. Det er din browser som markere forkortelser på den måde. Holder du musen hen over feltet forvandler den sig til et spørgsmålstegn og der kommer en sort boks der viser hvad der står i <span class="inl_cmd">title=""</span> feltet.</p>
 
@@ -107,6 +107,8 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 	<figcaption></figcaption>
 
 </figure>
+
+<p>En skabelon: <a href="html_skabelon.html" download>HTML skabelon</a></p>
 
 <h1>Overordnede tags</h1>
 
@@ -198,8 +200,10 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 <details>
 
 	<summary>Se resultatet - original billede 512x512px</summary>
+	
+	<br/><hr/><br/><br/>
 
-<img src="https://www.w3.org/html/logo/downloads/HTML5_Logo_512.png" alt="HTML5 logo" />
+	<img src="https://www.w3.org/html/logo/downloads/HTML5_Logo_512.png" alt="HTML5 logo" />
 
 </details>
 
@@ -217,7 +221,9 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 	<summary>Se resultatet med <span class="inl_cmd">width="200px"</span>.</summary>
 
-<img src="https://www.w3.org/html/logo/downloads/HTML5_Logo_512.png" alt="HTML5 logo" width="200px"/>
+	<br/><hr/><br/><br/>
+
+	<img src="https://www.w3.org/html/logo/downloads/HTML5_Logo_512.png" alt="HTML5 logo" width="200px"/>
 
 </details>
 
@@ -232,8 +238,10 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 <details>
 
 	<summary>Se resultatet med <span class="inl_cmd">height="300px"</span>.</summary>
+	
+	<br/><hr/><br/><br/>
 
-<img src="https://www.w3.org/html/logo/downloads/HTML5_Logo_512.png" alt="HTML5 logo" height="300px"/>
+	<img src="https://www.w3.org/html/logo/downloads/HTML5_Logo_512.png" alt="HTML5 logo" height="300px"/>
 
 </details>
 
@@ -249,7 +257,10 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 	<summary>Se resultatet med <span class="inl_cmd">width="800"</span> og <span class="inl_cmd">height="100px"</span>.</summary>
 
-<img src="https://www.w3.org/html/logo/downloads/HTML5_Logo_512.png" alt="HTML5 logo" width="800" height="100px"/>
+	<br/><hr/><br/><br/>
+
+	<img src="https://www.w3.org/html/logo/downloads/HTML5_Logo_512.png" alt="HTML5 logo" width="800" height="100px"/>
+
 
 </details>
 
@@ -273,9 +284,10 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 	<li>Første punkt</li>
 	<li>Andet punkt</li>
 	<li>Tredie punkt</li>
+		<b>...	 </b>
 </ol>
 
-<h2>Ordnede lister med andet end tal</h2>
+<h3>Ordnede lister med andet end tal</h3>
 
 <p>Man kan indsætte andet end tal ved at anvende attributten <span class="inl_cmd">type=""</span> f.eks:</p>
 
@@ -293,6 +305,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 	<li>Første punkt</li>
 	<li>Andet punkt</li>
 	<li>Tredie punkt</li>
+	<b>...	 </b>
 </ol>
 
 <p>Mulighederne er:</p>
@@ -348,6 +361,51 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 	</tbody>
 </table>
 
+<h3>Andre muligheder</h3>
+
+<p>Det kan også lade sig gøre at lave lister, hvor man tæller ned eller hvor man starter med en anden værdi.</p>
+
+<span class="afsnit">Start med en anden værdi</span>
+
+<p>For at starte med en anden værdi indsætter man attributten <span class="inl_cmd">start=""</span>.</p>
+
+<pre><code class="html">&lt;ol start="5">
+	&lt;li>Første punkt&lt;/li>
+	&lt;li>Andet punkt&lt;/li>
+	&lt;li>Tredie punkt&lt;/li>
+	...
+&lt;/ol></code>
+</pre>
+
+<span class="afsnit">Resulat:</span>
+
+<ol start="5">
+	<li>Første punkt</li>
+	<li>Andet punkt</li>
+	<li>Tredie punkt</li>
+	<b>...	 </b>
+</ol>
+
+<span class="afsnit">Tæl ned</span>
+
+<p>For at tælle den modsatte vej indsættes attributten <span class="inl_cmd">reversed</span></p>
+
+<pre><code class="html">&lt;ol reversed>
+	&lt;li>Første punkt&lt;/li>
+	&lt;li>Andet punkt&lt;/li>
+	&lt;li>Tredie punkt&lt;/li>
+	...
+&lt;/ol></code>
+</pre>
+
+<span class="afsnit">Resulat:</span>
+
+<ol reversed>
+	<li>Første punkt</li>
+	<li>Andet punkt</li>
+	<li>Tredie punkt</li>
+	<b>...	 </b>
+</ol>
 
 <h2>Uordnede lister</h2>
 
@@ -355,6 +413,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 	&lt;li>Første punkt&lt;/li>
 	&lt;li>Andet punkt&lt;/li>
 	&lt;li>Tredie punkt&lt;/li>
+	...
 &lt;/ul></code>
 </pre>
 
@@ -364,13 +423,41 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 	<li>Første punkt</li>
 	<li>Andet punkt</li>
 	<li>Tredie punkt</li>
+	<b>...	 </b>
 </ul>
 
-<h1>Tabeller</h1>
+<h2>Lister i flere niveauer</h2>
 
-<p></p>
+<p>For at lave lister i flere niveauer indsætter man blot en liste i en liste. Herunder har har jeg lavet en nummereret liste, hvor det første punkt skal have underpunkter. Det gøres ved at indsætte en liste i den <span class="inl_cmd">&lt;li></span> der skal have underpunkterne.</p>
 
+<p>Læg mærke til at man kan ændre typen for hver liste, også selvom den er indlejret i andre lister.</p>
 
+<pre><code class="html">&lt;ol class="">
+	&lt;li>Første punkt
+		&lt;ol type="a">
+			&lt;li>Første punkt&lt;/li>
+			&lt;li>Andet punkt&lt;/li>
+			&lt;li>Tredie punkt&lt;/li>
+		&lt;/ol>
+	&lt;/li>
+	&lt;li>Andet punkt&lt;/li>
+	&lt;li>Tredie punkt&lt;/li>
+&lt;/ol></code>
+</pre>
+
+<span class="afsnit">Resulat:</span>
+
+<ol class="">
+	<li>Første punkt
+		<ol type="a">
+			<li>Første punkt</li>
+			<li>Andet punkt</li>
+			<li>Tredie punkt</li>
+		</ol>
+	</li>
+	<li>Andet punkt</li>
+	<li>Tredie punkt</li>
+</ol>
 
 <p></p>
 <p></p>
