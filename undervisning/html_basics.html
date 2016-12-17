@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+
+<head>
+	
+	<meta charset="UTF-8" lang="da"/>
+
+	<title>Vidas.dk</title>
+
+	<link rel="stylesheet" href="../css/style.css" />
+	<link rel="stylesheet" href="../css/styles/docco.css" />
+	<link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono|Ubuntu|Ubuntu+Condensed' rel='stylesheet' type='text/css'>
+
+	<script src="http://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+	<script src="../js/toc2.js" type="text/javascript"></script>
+	<script>$(function(){$("#license").load("license.html"); });</script>
+	<script type="text/javascript" async
+		src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+		MathJax.Hub.Config({ jax: ["input/TeX","output/HTML-CSS"], displayAlign: "left"
+ 		});
+	</script>
+        <script>
+	$(document).ready(function(){
+		$(".hide").click(function(){$("#toc").hide();});
+		$(".show").click(function(){$("#toc").show();});
+	});
+	</script>
+	<script src="../js/highlight.pack.js" type="text/javascript"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+</head>
+<!-- 
+code highlighter : https://highlightjs.org/
+code converter : http://www.freebits.co.uk/convert-html-code-to-text.html 
+-->
+<html>
+<body onload="generateTOC(document.getElementById('toc'));">
+
+<footer id="license"></footer>
+
+<header>
+	<div class="show" id="toggle_menu"></div> 
+</header>
+
+<div class="toggle">
+	<div id="toc" class="hide">
+		<div id="toc_title"><span class=""><a href="#" target="">(Luk)</a></span></div>	
+	</div>
+</div>
+		
+<p></p><p></p>
+
+<figure id="">
+
+	<img class="p25" src="images/HTML5_Logo.svg" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+
+<div class="title">Sidens opbygning</div>
+
+
+
+<h1>HTML5</h1>
+
+<p><abbr title="Hyper Text Markup Language">HTML</abbr> står for <b>H</b>yper <b>T</b>ext <b>M</b>arkup <b>L</b>anguage og version 5 er designet med fokus på det semantiske web, hvor fokus er på betydningen af tekst og ord. Det skyldes at Internettet har udviklet sig fra at være en platform til at vise tekst, til at det skal kunne læses af ikke bare mennesker men også computere. Ved at markere semantikken i et dokument gør man dokumenterne søgbare i en lang højere grad. F.eks. kan man opmarkere:
+
+<ul class="none">
+	<li>Forkortelser - <span class="inl_cmd">&lt;abbr></span> f.eks CIA</li>
+	<li>Akronymer - <span class="inl_cmd">&lt;acronym></span> f.eks. ASAP</li>
+	<li>Titler - <span class="inl_cmd">&lt;cite></span> f.eks. Eiffeltårnet</li>
+	<li>Definitioner - <span class="inl_cmd">&lt;dfn></span> f.eks. HTML</li>
+</ul> 
+
+<p>Det er ord og begreber vi godt kan læse og omsætte som mennesker, men computeren opfatter  bare tegnene som et ord (en samling af bogstaver), uden at vide hvad de står for. Ved hjælp af disse tags kan man lave "intelligente" søgemaskiner.</p>
+
+<h2>Anvendelse af tags</h2>
+
+<p>Man anvender tags ved at pakke ord/ordene ind i dem. Man anvender et tag både før og efter det man vil have tagget, hvor man sætter en <span class="inl_cmd">/</span> ind i det afsluttende tag. Se koden herunder og resulatet af den:</p>
+
+<pre>
+	<code class="html">
+&lt;abbr title="Central Intelligense Agency">CIA&lt;/abbr> er en forkortelse for &lt;b>C&lt;/b>entral &lt;b>I&lt;/b>ntelligense &lt;b>A&lt;/b>gency, som er en del af &lt;abbr title="United States of America">USA&lt;/abbr>'s efterretningstjeneste.
+	</code>
+</pre>
+
+<span class="afsnit">Resultat af koden</span>
+
+<p><abbr title="Central Intelligense Agency">CIA</abbr> er en forkortelse for <b>C</b>entral <b>I</b>ntelligense <b>A</b>gency, som er en del af <abbr title="United States of America">USA</abbr>'s efterretningstjeneste.</p>
+
+<p>Læg mærke til at der kommer en stiplet linie under de forkortelser der er pakket ind i <span class="inl_cmd">&lt;abbr></span>. Det er din browser som markere forkortelser på den måde. Holder du musen hen over feltet forvandler den sig til et spørgsmålstegn og der kommer en sort boks der viser hvad der står i <span class="inl_cmd">title=""</span> feltet.</p>
+
+<p><span class="inl_cmd">&lt;b></span> ændrer indholdet så det bliver skrevet med fed skrift, og det er igen noget browseren gør. Formateringen af teksten inde i <span class="inl_cmd">tags</span> kan ændres ved hjælp af <abbr title="Cascading Style Sheets">CSS</abbr></p>
+
+
+
+<p>Du kan se en komplet liste over tags her: <a href="http://www.w3schools.com/tags/" target="_blank">http://www.w3schools.com/tags/</a>.</p>
+
+<h1>Opbygning af HTML</h1>
+
+<p>Illustrationen herunder viser hvordan en webside er bygget op efter HTML5 specifikationen. Siden starter med at sige at det er en HTML5 side (<span class="inl_cmd">&lt;!DOCTYPE></span>). Denne linie sørger for at browseren vil læse dokumentet som et HTML5 dokument. Når dokumenttypen er erklæret, kommer indholdet, som er pakket ind i <span class="inl_cmd">tags</span>.</p>
+
+<p>Du kan se grundopbygningen af et HTML dokument herunder</p>
+
+<figure id="">
+
+	<img class="p60" src="images/html_opbygning af dokument_01.svg" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h2>En HTML skabelon</h2>
+
+<p>For at komme hurtigt igang har jeg har indlagt en grundskabelon med følgende indhold:</p>
+
+<pre>
+	<code class="html">&lt;!DOCTYPE html>
+	
+&lt;html>
+
+&lt;head>
+
+	&lt;meta charset="UTF-8" lang="da"/>
+
+	&lt;title>&lt;/title>
+
+	&lt;script>
+
+	&lt;/script>
+
+&lt;/head>
+
+&lt;body>
+
+	&lt;h1>Overskrift&lt;/h1>
+	
+	&lt;p>Brødtekst&lt;/p>
+		
+&lt;/body>
+
+&lt;/html>	</code>
+</pre>
+
+<p>Du kan enten kopiere indholdet af filen her fra siden eller hente skabelonen her: <a href="html_skabelon.html" download>HTML skabelon</a></p>
+
+<h1>Nødvendige tags</h1>
+
+<p>Her er de tags som et HTML5 dokument skal indeholde.</p>
+
+
+<h2>&lt;html></h2>
+
+<p>Selve HTML dokumentet skal være omgivet af et <span class="inl_cmd">html</span> tag. På den måde ved browseren hvornår html-koden starter og stopper.</p>
+
+<h2>&lt;head></h2>
+
+<p>I <span class="inl_cmd">head</span> sættes alle de paramtrere der overordnet gælder for hele dokumentet. Det er her sidens titel, sprog, tegnsæt, opsætning og scripts sættes og aktiveres.</p>
+
+<p>Har man store dokumenter, kan man med fordel sætte javascripts i bunden af dokumentet efter <span class="inl_cmd">&lt;body></span>, da det kan gøre kørslen af koden hurtigere.</p>
+
+<h2>&lt;body></h2>
+
+<p>I <span class="inl_cmd">body</span> er de data der vises af browseren.</p>
+
+<h2>&lt;div></h2>
+
+<p>På illustrationen ovenfor er <span class="inl_cmd">div</span> ikke med, men det kan være praktisk at sætte sektioner af ens dokument ind i afsluttede tags. Disse tags vil ofte være grupperet enten med et id (f.eks: <span class="inl_cmd">&ltdiv id="*ID_NAVN*"></span> eller en klasse <span class="inl_cmd">&ltdiv class="*KLASSE_NAVN"></span>. På den måde kan man sørge for at specielle design og scripts kun rammer disse  <span class="inl_cmd">div</span>'er.</p>
+
+
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+	</body>
+
+</html>

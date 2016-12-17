@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+
+<head>
+	
+	<meta charset="UTF-8" lang="da"/>
+
+	<title>Vidas.dk</title>
+
+	<link rel="stylesheet" href="../css/style.css" />
+	<link rel="stylesheet" href="../css/styles/docco.css" />
+	<link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono|Ubuntu|Ubuntu+Condensed' rel='stylesheet' type='text/css'>
+
+	<script src="http://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+	<script src="../js/toc2.js" type="text/javascript"></script>
+	<script>$(function(){$("#license").load("license.html"); });</script>
+	<script type="text/javascript" async
+		src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+		MathJax.Hub.Config({ jax: ["input/TeX","output/HTML-CSS"], displayAlign: "left"
+ 		});
+	</script>
+        <script>
+	$(document).ready(function(){
+		$(".hide").click(function(){$("#toc").hide();});
+		$(".show").click(function(){$("#toc").show();});
+	});
+	</script>
+	<script src="../js/highlight.pack.js" type="text/javascript"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+</head>
+<!-- 
+code highlighter : https://highlightjs.org/
+code converter : http://www.freebits.co.uk/convert-html-code-to-text.html 
+-->
+<html>
+<body onload="generateTOC(document.getElementById('toc'));">
+
+<footer id="license"></footer>
+
+<header>
+	<div class="show" id="toggle_menu"></div> 
+</header>
+
+<div class="toggle">
+	<div id="toc" class="hide">
+		<div id="toc_title"><span class=""><a href="#" target="">(Luk)</a></span></div>	
+	</div>
+</div>
+		
+<p></p><p></p>
+
+<figure id="">
+
+	<img class="p25" src="images/HTML5_Logo.svg" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<div class="title">Tekst og billeder</div>
+
+
+
+
+<h1>Vigtige tags</h1>
+
+<p>Herunder er de vigtigste tags nævnt.</p>
+
+<ul class="none">
+	<li><b>&lt;1> - &lt;6></b> &nbsp;- &nbsp; overskrifter</li>
+	<li><b>&lt;p></b> &nbsp;- &nbsp; brødtekst/paragraffer</li>
+	<li><b>&lt;a></b> &nbsp;- &nbsp; henvisninger</li>
+	<li><b>&lt;img></b> &nbsp;- &nbsp; billeder</li>
+</ul>
+
+<h2>Overskrifter og brødtekst</h2>
+
+<p>De to mest almindelige former for tekst er overskrifter og brødtekst. </p>
+
+<p>Der er indbygget 6 niveauer af overskrifter i <abbr title="">HTML5</abbr>, der som udgangspunkt blot får en mindre skriftstørrelse jo lavere niveau den er på. <span class="inl_cmd">&lt;h1></span> er det højeste niveau og man kan gå ned til <span class="inl_cmd">&lt;h6></span>.</p>
+
+<p>Brødtekst pakkes ind i <span class="inl_cmd">&lt;b></span> tags.</p>
+
+
+<p><b>Se eksempel med overskrifter og brødtekst:</b> <a href="html_eksempel_overskrifter_og_broedtekst.html" target="_blank">html_eksempel_overskrifter_og_broedtekst.html</a></p>
+
+<h2>Henvisninger (links)</h2>
+
+<p>En af styrkerne ved <abbr title="">HTML5</abbr> er, at man kan skabe forbindelse mellem dokumenterne. Det gør man ved at anvende <span class="inl_cmd">&lt;a></span>. Se eksemplet herunder, hvor der indsættes en henvisning. Når man klikker på det vil <span class="inl_cmd">google.com</span> åbnes i den samme fane man står i:</p>
+
+<pre>
+	<code class="html">
+&lt;a href="http:\\www.google.com">google.com&lt;/a>
+	</code>
+</pre>
+
+<p><b>Se resultatet: </b>&nbsp;&nbsp;<a href="<a href="http:\\www.google.com">google.com - Samme vindue</a></p>
+
+<p><span class="inl_cmd">&lt;a></span> kan sættes op så henvisningen bliver åbnet i en anden tab, ved at man tilføjer attributten <span class="inl_cmd">target="_blank"</span></p>
+
+<pre>
+	<code class="html">
+&lt;a href="http:\\www.google.com" target="_blank">google.com&lt;/a>
+	</code>
+</pre>
+
+<p><b>Se resultatet: </b>&nbsp;&nbsp;<a href="http:\\www.google.com" target="_blank">google.com - i ny tab</a></p>
+
+<p>Vil man lave et download link tilføjer man <span class="inl_cmd">download</span> til <span class="inl_cmd">&lt;a></span>.</p>
+
+<pre>
+	<code class="html">
+&lt;a href="https://www.w3.org/html/logo/downloads/HTML5_Logo_512.png" download>HTML5 logo&lt;/a>
+	</code>
+</pre>
+
+<p><b>Se resultatet: </b>&nbsp;&nbsp;<a href="https://www.w3.org/html/logo/downloads/HTML5_Logo_512.png" download>Download HTML5 logo</a></p>
+
+<h2>&lt;img></h2>
+
+<p>For at vise billeder anvender man <span class="inl_cmd">&lt;img></span>. For at opfylde <abbr title="">HTML5</abbr> skal den indeholde både <span class="inl_cmd">src=""</span> og <span class="inl_cmd">alt=""</span> attributten. I eksemplet herunder åbnes <abbr title="">HTML5</abbr> logoet fra <a href="https://www.w3.org/html/logo/" target="_blank">https://www.w3.org/html/logo/</a>:</p>
+
+<pre>
+	<code class="html">
+&lt;img src="https://www.w3.org/html/logo/downloads/HTML5_Logo_512.png" alt="HTML5 logo" />
+	</code>
+</pre>
+
+<details>
+
+	<summary>Se resultatet - original billede 512x512px</summary>
+	
+	<br/><hr/><br/><br/>
+
+	<img src="https://www.w3.org/html/logo/downloads/HTML5_Logo_512.png" alt="HTML5 logo" />
+
+</details>
+
+<p>For at kontrollere størrelsen på billedet indsættes attributten <span class="inl_cmd">height=""</span> eller <span class="inl_cmd">width=""</span> i <span class="inl_cmd">&lt;img></span>.</p>
+
+<p><b>Eksempel med <span class="inl_cmd"><b>width=""</b></span></b></p>
+
+<pre>
+	<code class="html">
+&lt;img src="https://www.w3.org/html/logo/downloads/HTML5_Logo_512.png" alt="HTML5 logo" width="200px"/>
+	</code>
+</pre>
+
+<details>
+
+	<summary>Se resultatet med <span class="inl_cmd">width="200px"</span>.</summary>
+
+	<br/><hr/><br/><br/>
+
+	<img src="https://www.w3.org/html/logo/downloads/HTML5_Logo_512.png" alt="HTML5 logo" width="200px"/>
+
+</details>
+
+<p>Eksempel med <span class="inl_cmd">height=""</span></p>
+
+<pre>
+	<code class="html">
+&lt;img src="https://www.w3.org/html/logo/downloads/HTML5_Logo_512.png" alt="HTML5 logo" height="300px"/>
+	</code>
+</pre>
+
+<details>
+
+	<summary>Se resultatet med <span class="inl_cmd">height="300px"</span>.</summary>
+	
+	<br/><hr/><br/><br/>
+
+	<img src="https://www.w3.org/html/logo/downloads/HTML5_Logo_512.png" alt="HTML5 logo" height="300px"/>
+
+</details>
+
+<p>Det er vigtigt at man nøjes med at sætte enten <span class="inl_cmd">width</span> eller <span class="inl_cmd">height</span>. Hvis man ikke får sat de rette forhold "vrider" man billedet i stykker</p>
+
+<pre>
+	<code class="html">
+&lt;img src="https://www.w3.org/html/logo/downloads/HTML5_Logo_512.png" alt="HTML5 logo" width="800" height="100px"/>
+	</code>
+</pre>
+
+<details>
+
+	<summary>Se resultatet med <span class="inl_cmd">width="800"</span> og <span class="inl_cmd">height="100px"</span>.</summary>
+
+	<br/><hr/><br/><br/>
+
+	<img src="https://www.w3.org/html/logo/downloads/HTML5_Logo_512.png" alt="HTML5 logo" width="800" height="100px"/>
+
+
+</details>
+
+
+
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+	</body>
+
+</html>
