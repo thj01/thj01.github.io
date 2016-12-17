@@ -78,8 +78,33 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <p>Der er indbygget 6 niveauer af overskrifter i <abbr title="">HTML5</abbr>, der som udgangspunkt blot får en mindre skriftstørrelse jo lavere niveau den er på. <span class="inl_cmd">&lt;h1></span> er det højeste niveau og man kan gå ned til <span class="inl_cmd">&lt;h6></span>.</p>
 
-<p>Brødtekst pakkes ind i <span class="inl_cmd">&lt;b></span> tags.</p>
+<p>Brødtekst pakkes ind i <span class="inl_cmd">&lt;p></span> tags. Se f.eks. nedestående kode:</p>
 
+<pre>
+	<code class="html">&lt;h1>Overskrift&lt;/h1>
+	
+&lt;p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur condimentum ac nisi a sagittis. Pellentesque fringilla quis turpis vitae congue. Integer vel eleifend ex. Quisque ultricies tempor sem a facilisis.&lt;/p>
+	
+&lt;h2>Under-overskrift&lt;/h2>
+	
+&lt;p>Duis eu quam a augue commodo lobortis. Nulla quis justo ac nulla venenatis finibus. Nam non vestibulum lectus. Nunc nec sapien scelerisque, egestas felis at, suscipit elit.&lt;/p>
+	
+&lt;h3>Under-under-overskrift&lt;/h3>
+	
+&lt;p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur condimentum ac nisi a sagittis. Pellentesque fringilla quis turpis vitae congue. Integer vel eleifend ex.&lt;/p></code>
+</pre>
+
+<p>Ovenstående kode ser ud som følger:</p>
+
+<figure class="">
+
+	<img class="raw_HTML_output" src="images/html_raw_h_p.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Vrøvleteksten i eksemplet er <cite>Lorem Ipsum</cite>, og er blvet anvendt af typografer siden 1500-tallet. Du kan finde mere om den her: <a href="http://da.lipsum.com/" target="_blank">http://da.lipsum.com/</a>.</p>
 
 <p><b>Se eksempel med overskrifter og brødtekst:</b> <a href="html_eksempel_overskrifter_og_broedtekst.html" target="_blank">html_eksempel_overskrifter_og_broedtekst.html</a></p>
 
@@ -189,9 +214,84 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 	<img src="https://www.w3.org/html/logo/downloads/HTML5_Logo_512.png" alt="HTML5 logo" width="800" height="100px"/>
 
-
 </details>
 
+<h2>Billedformater</h2>
+
+<p>Når man arbejder med websider bør man grundlæggende anvende følgende 3 billedformater:</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Format</th>
+			<th>Grafik</th>
+			<th>Usynlig baggrund</th>
+			<th>Kompression</th>
+			<th>Anvendes til</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>jpg</td>
+			<td>Pixel</td>
+			<td>Nej</td>
+			<td>Ja - destruktiv</td>
+			<td>&bull; Billeder med mange farver</td>
+		</tr>
+		<tr>
+			<td>png</td>
+			<td>Pixel</td>
+			<td>Ja</td>
+			<td>ja - ikke destruktiv</td>
+			<td>&bull; Billeder med få farver<br/>&bull; Ikoner og grafik <br/>&bull; Screenshots af tekst<br/>&bull; Illustrationer hvor skarpe linier er vigtige <br/>&bull; Billeder der ikke må have destruktiv kompression</td>
+		</tr>
+		<tr>
+			<td>svg</td>
+			<td>Vektor</td>
+			<td>Ja</td>
+			<td>nej</td>
+			<td>&bull; Stregtegninger <br/>&bull; Vektorbaseret grafik. <br/>&bull; Tilføje tekst og grafik til billeder</td>
+		</tr>
+		
+	</tbody>
+</table>
+
+
+
+<h3>jpg</h3>
+
+<p><span class="inl_cmd">jpg</span> anvendes til store billeder med mange farver. Fordelen ved at anvende <span class="inl_cmd">jpg</span>-formatet er, at det er et godt kompromis mellem billedets kvalitet og kompression.</p>
+
+<p><b>Læs mere:</b> <a href="https://da.wikipedia.org/wiki/JPEG" target="_blank">https://da.wikipedia.org/wiki/JPEG</a></p>
+
+<h3>png</h3>
+
+<p><b>P</b>ortable <b>N</b>etwork <b>G</b>raphics anvendes hvis billedet ikke egner sig til <span class="inl_cmd">jpg</span>. Filerne fylder lidt mere, men vil ikke mindre pixeleret.</p>
+
+<p><span class="inl_cmd">png</span>-filer kan også hav usynlig baggrund, så man kan anvende billederne på alle former for baggrunde.</p>
+
+<p><b>Læs mere:</b> <a href="https://da.wikipedia.org/wiki/Portable_Network_Graphics" target="_blank">https://da.wikipedia.org/wiki/Portable_Network_Graphics</a></p>
+
+<h3>svg</h3>
+
+<p><b>S</b>calable <b>V</b>ector <b>G</b>raphics er udviklet af <a href="https://www.w3.org/" target="_blank">World Wide Web Consortium</a> til at kunne vise vektorbaseret grafik. Fordelen ved vektorbaseret grafik er, at det kan skaleres både op og ned uden at billedkvaliteten forringes.</p>
+
+<p>Derudover kan man indlejre både tekst og grafik i <span class="inl_cmd">svg</span>-filer.</p>
+
+<p><b>Læs mere:</b> <a href="https://da.wikipedia.org/wiki/Scalable_Vector_Graphics" target="_blank">https://da.wikipedia.org/wiki/Scalable_Vector_Graphics</a></p>
+
+<h3>Samenligning af formaterne</h3>
+
+<p>Herunder er der et eksempel på hvordan <span class="inl_cmd">jpg</span>, <span class="inl_cmd">png</span> og <span class="inl_cmd">svg</span> bliver når man anvender formaterne. Til eksemplerne har jeg anvendt et udsnit af <span class="inl_cmd">HTML5</span>-logoet: <a href="https://www.w3.org/html/logo/downloads/HTML5_Logo.svg" target="_blank">https://www.w3.org/html/logo/downloads/HTML5_Logo.svg</a>.</p>
+
+<span class="afsnit">jpg &nbsp;- <span class="inl_cmd">1,4 kB</span></span>
+<p><img class="" src="images/HTML5_Logo_jpg_udsnit.jpg" alt="" title="" width="800"/></p>
+
+<span class="afsnit">png &nbsp;- <span class="inl_cmd">18,2 kB</span></span>
+<p><img class="" src="images/HTML5_Logo_png_udsnit.png" alt="" title="" width="800"/></p>
+
+<span class="afsnit">svg &nbsp;- <span class="inl_cmd">5,6 kB</span></span>
+<p><img class="" src="images/HTML5_Logo_svg_udsnit.svg" alt="" title="" width="800"/></p>
 
 
 <p></p>

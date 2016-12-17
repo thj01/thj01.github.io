@@ -69,14 +69,27 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 	<li>Forkortelser - <span class="inl_cmd">&lt;abbr></span> f.eks CIA</li>
 	<li>Akronymer - <span class="inl_cmd">&lt;acronym></span> f.eks. ASAP</li>
 	<li>Titler - <span class="inl_cmd">&lt;cite></span> f.eks. Eiffeltårnet</li>
-	<li>Definitioner - <span class="inl_cmd">&lt;dfn></span> f.eks. HTML</li>
 </ul> 
 
 <p>Det er ord og begreber vi godt kan læse og omsætte som mennesker, men computeren opfatter  bare tegnene som et ord (en samling af bogstaver), uden at vide hvad de står for. Ved hjælp af disse tags kan man lave "intelligente" søgemaskiner.</p>
 
-<h2>Anvendelse af tags</h2>
+<p>En anden stor fordel ved tags er, at de kan gøre skriveprocessen mere struktureret. Når man skriver vil man hele tiden være bevidst om hvad man er i gang med. Det man skal lære er, at se og forstå <abbr title="Hyper Text Markup Language">HTML</abbr>-koden.</p>
 
-<p>Man anvender tags ved at pakke ord/ordene ind i dem. Man anvender et tag både før og efter det man vil have tagget, hvor man sætter en <span class="inl_cmd">/</span> ind i det afsluttende tag. Se koden herunder og resulatet af den:</p>
+<h2>Tags (elementer)</h2>
+
+<p>Man anvender tags ved at pakke ord/ordene ind i dem. Man anvender et tag både før og efter det man vil have tagget, hvor man sætter en <span class="inl_cmd">/</span> ind i det afsluttende tag. Se eksemplet herunder</p>
+
+<pre>
+	<code class="html">
+&lt;p>  <span class="red">**** en tekststreng ****</span>     &lt;/p>
+	</code>
+</pre>
+
+<p><span class="inl_cmd">&lt;p></span> beskriver indholdes som værende et tekst afsnit (en paragraf). I den afslutten tag sættes skråstregen <span class="inl_cmd">/</span> for at markere afslutningen.</p>
+
+
+
+<p>Herunder ern lidt længere <abbr title="">HTML</abbr>-kode, der viser det i anvendelse:</p>
 
 <pre>
 	<code class="html">
@@ -92,11 +105,24 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <p><span class="inl_cmd">&lt;b></span> ændrer indholdet så det bliver skrevet med fed skrift, og det er igen noget browseren gør. Formateringen af teksten inde i <span class="inl_cmd">tags</span> kan ændres ved hjælp af <abbr title="Cascading Style Sheets">CSS</abbr></p>
 
-
-
 <p>Du kan se en komplet liste over tags her: <a href="http://www.w3schools.com/tags/" target="_blank">http://www.w3schools.com/tags/</a>.</p>
 
-<h1>Opbygning af HTML</h1>
+<h2>To typer tags (elementer)</h2>
+
+<p>Overordnet set findes der to typer tags: Tomme og ikke-tomme.</p>
+
+<span class="afsnit">Det tomme tag</span>
+
+<p>Et tomt element har ingen tekstreng, og anvendes f.eks. til at angive en indstilling, som f.eks. <span class="inl_cmd">&lt;!DOCTYPE HTML></span> der fortælller angiver at det er et <abbr title="">HTML5</abbr> dokument eller <span class="inl_cmd">&lt;img></span> der angiver stien til et billede/illustration.</p>
+
+<p>Tomme tags afsluttes ikke, og har derfor ikke behov for <span class="inl_cmd">/</span> til sidst.</p>
+
+<span class="afsnit">Det ikke-tomme tag</span>
+
+<p>De ikke-tomme tags indeholder tekstrenge som f.eks. <span class="inl_cmd">&lt;p><span class="red"> *** TEKSTSTRENG *** </span>&lt;/p></span> (se ovenfor).</p>
+
+
+<h1>Opbygning af et HTML-dokument</h1>
 
 <p>Illustrationen herunder viser hvordan en webside er bygget op efter HTML5 specifikationen. Siden starter med at sige at det er en HTML5 side (<span class="inl_cmd">&lt;!DOCTYPE></span>). Denne linie sørger for at browseren vil læse dokumentet som et HTML5 dokument. Når dokumenttypen er erklæret, kommer indholdet, som er pakket ind i <span class="inl_cmd">tags</span>.</p>
 
@@ -110,7 +136,26 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 </figure>
 
-<h2>En HTML skabelon</h2>
+<h1>Nødvendige tags</h1>
+
+<p>Her er de tags som et HTML5 dokument skal indeholde, for at opfylde kravene til et HTML5 dokument..</p>
+
+
+<h2>&lt;html></h2>
+
+<p>Selve HTML dokumentet skal være omgivet af et <span class="inl_cmd">html</span> tag. På den måde ved browseren hvornår html-koden starter og stopper.</p>
+
+<h2>&lt;head></h2>
+
+<p>I <span class="inl_cmd">head</span> sættes alle de paramtrere der overordnet gælder for hele dokumentet. Det er her sidens titel, sprog, tegnsæt, opsætning og scripts sættes og aktiveres.</p>
+
+<p>Har man store dokumenter, kan man med fordel sætte javascripts i bunden af dokumentet efter <span class="inl_cmd">&lt;body></span>, da det kan gøre kørslen af koden hurtigere.</p>
+
+<h2>&lt;body></h2>
+
+<p>I <span class="inl_cmd">body</span> er de data der vises af browseren.</p>
+
+<h1>En HTML skabelon</h1>
 
 <p>For at komme hurtigt igang har jeg har indlagt en grundskabelon med følgende indhold:</p>
 
@@ -144,28 +189,6 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <p>Du kan enten kopiere indholdet af filen her fra siden eller hente skabelonen her: <a href="html_skabelon.html" download>HTML skabelon</a></p>
 
-<h1>Nødvendige tags</h1>
-
-<p>Her er de tags som et HTML5 dokument skal indeholde.</p>
-
-
-<h2>&lt;html></h2>
-
-<p>Selve HTML dokumentet skal være omgivet af et <span class="inl_cmd">html</span> tag. På den måde ved browseren hvornår html-koden starter og stopper.</p>
-
-<h2>&lt;head></h2>
-
-<p>I <span class="inl_cmd">head</span> sættes alle de paramtrere der overordnet gælder for hele dokumentet. Det er her sidens titel, sprog, tegnsæt, opsætning og scripts sættes og aktiveres.</p>
-
-<p>Har man store dokumenter, kan man med fordel sætte javascripts i bunden af dokumentet efter <span class="inl_cmd">&lt;body></span>, da det kan gøre kørslen af koden hurtigere.</p>
-
-<h2>&lt;body></h2>
-
-<p>I <span class="inl_cmd">body</span> er de data der vises af browseren.</p>
-
-<h2>&lt;div></h2>
-
-<p>På illustrationen ovenfor er <span class="inl_cmd">div</span> ikke med, men det kan være praktisk at sætte sektioner af ens dokument ind i afsluttede tags. Disse tags vil ofte være grupperet enten med et id (f.eks: <span class="inl_cmd">&ltdiv id="*ID_NAVN*"></span> eller en klasse <span class="inl_cmd">&ltdiv class="*KLASSE_NAVN"></span>. På den måde kan man sørge for at specielle design og scripts kun rammer disse  <span class="inl_cmd">div</span>'er.</p>
 
 
 <p></p>
