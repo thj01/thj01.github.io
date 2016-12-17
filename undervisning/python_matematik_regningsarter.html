@@ -134,12 +134,12 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 	</thead>
 	<tbody>
 		<tr>
-			<td><img src="images/mat_not_a^b.svg" alt="" title="" /></td>
+			<td><span class="math">\( a^b \)</span></td>
 			<td><span class="inl_cmd">pow(a,b)</span></td>
 			<td><span class="inl_cmd">a**b</span></td>
 		</tr>
 		<tr>
-			<td><img src="images/mat_not_sqrtb_a.svg" alt="" title="" /></td>
+			<td><span class="math">\( \sqrt[b]{a} \)</span></td>
 			<td><span class="inl_cmd">pow(a,1/b)</span></td>
 			<td><span class="inl_cmd">a**(1/b)</span></td>
 		</tr>
@@ -159,13 +159,8 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <p>Man kan have funktioner inde i funktioner, f.eks:</p>
 
-<figure id="">
+<div class="latex">$$ \sqrt[5]{7^2} = (7^2)^{\frac{1}{5}} = pow(~pow(7,2)~,~1/5~)$$</div>
 
-	<img class="" src="images/python_math_pow572.svg" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
 
 <pre class="ubuntu_terminal">
 >>> pow( pow(7,2) , 1/5 )
@@ -177,13 +172,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <p> Beregn følgende tal:</p>
 
-<figure id="">
-
-	<img class="" src="images/python_pow_opgaver.svg" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
+<div class="latex">$$ 2^8, ~{19^3}^7,~ \sqrt 9, ~ \sqrt[17] {256}, ~ \sqrt[3]{4}^{17}, ~ 2^{\sqrt17} $$</div>
 
 <h2>Logartimer</h2>
 
@@ -200,19 +189,19 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 	</thead>
 	<tbody>
 		<tr>
-			<td>y<sup>x</sup></td>
+			<td><span class="math">\( y^x \)</span></td>
 			<td>pow(y,x)</td>
 			<td>math.log(x,y)</td>
 			<td>Logaritmen (grundtal y)</td>
 		</tr>
 		<tr>
-			<td>10<sup>x</sup> = y</td>
+			<td><span class="math">\( 10^x=y \)</span></td>
 			<td>pow(10,x)</td>
 			<td>math.log10(x)</td>
 			<td>Logaritmen (grundtal 10)</td>
 		</tr>
 		<tr>
-			<td>e<sup>x</sup> = y</td>
+			<td><span class="math">\( e^x = y \)</span></td>
 			<td>math.exp(x)</td>
 			<td>math.log(y)</td>
 			<td>Den naturlige logaritmen (grundtal e)</td>
@@ -248,12 +237,12 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 	</thead>
 	<tbody>
 		<tr>
-			<td>&pi;</td>
+			<td><span class="math">\( \pi \)</span></td>
 			<td>math.pi</td>
 			<td>3.141592...</td>
 		</tr>
 		<tr>
-			<td>e</td>
+			<td><span class="math">\( e \)</span></td>
 			<td>math.e</td>
 			<td>2.718281...</td>
 		</tr>
@@ -310,9 +299,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <p>Man kan ved hjælp af <span class="inl_cmd">modulus</span> og <span class="inl_cmd">floor division</span> omskrive en uægte brøk til en blandet brøk efter følgende model:</p>
 
-<img class="math" src="images/python_blandetbroek.svg" alt="" title="" />
-
-<p></p>
+<div class="latex">$$ \frac{a}{b} = (a//b)~ \frac{a\%b}{b} $$</div>
 
 <span class="afsnit">Anvendelse</span>
 
@@ -349,14 +336,14 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 	<tbody>
 		<tr>
 			<td><span class="inl_cmd">int</span></td>
-			<td><img src="images/mat_not_mathbbN_0.svg" alt="" title="" /></td>
+			<td><span class="math">\( \mathbb{Z} \)</span></td>
 			<td>Heltal (kaldes integer på engelsk)</td>
 			<td>1 ; 17 ; 2499</td>
 			<td></td>
 		</tr>
 		<tr>
 			<td><span class="inl_cmd">float</span></td>
-			<td><img src="images/mat_not_mathbbR.svg" alt="" title="" /></td>
+			<td><span class="math">\( \mathbb{R} \)</span></td>
 			<td>Decimaltal</td>
 			<td>0.5 ; 3,141592 ; 0.6666</td>
 			<td>... at der anvendes punktum og ikke komma</td>
@@ -374,7 +361,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 		<tr>
 			<td><span class="inl_cmd">Fraction</span></td>
-			<td><img src="images/mat_not_mathbbQ.svg" alt="" title="" /></td>
+			<td><span class="math">\( \mathbb{Q} \)</span></td>
 			<td>Brøker</td>
 			<td>1/2 ; 22/7 ; 2/3</td>
 			<td>Resultatet kommer ud i formen: Fraction(tæller,nævner)</td>
@@ -435,7 +422,7 @@ Decimal('2.5000')
 <blockquote class="center">
 	<p>
 		En halv er <br/> tænk nu hvor aparte <br/>to trediedele <br/>af trekvarte <br/><br/>
-		<img src="images/Piet_hein_gruk.svg" alt="" title="" />
+		<span class="math">\( \frac{1}{2} = \frac{2}{3} \cdot \frac{3}{4} \)</span>
 	</p>
 </blockquote>
 
