@@ -60,18 +60,87 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <h1>Hvad er CSS</h1>
 
-<p></p>
+<p><abbr title="Cascading Style Sheets">CSS</abbr> står for <b>C</b>ascading <b>S</b>tyle <b>S</b>heets, og er den metode man anvender til at formatere sine websider. Det fungerer ved at <abbr title="">CSS</abbr> koden fortæller browseren hvordan den skal vise <abbr title="">HTML</abbr>-koden.</p>
 
+<figure id="">
+
+	<img class="p50" src="images/HTML5_html_plus_CSS_is_Design.svg" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>I praksis gør man det ved at linke til en <abbr title="">CSS</abbr>-fil i <abbr title="">HTML</abbr>-sidens <span class="inl_cmd">&lt;head></span>-sektion. Det med rødt er min tilføjelse for at gøre det tydeligt.</p>
+
+<pre>
+	<code class="html">&lt;!DOCTYPE html>
+&lt;html>
+&lt;head>
+	&lt;meta charset="UTF-8" lang="da"/>
+	
+	&lt;link rel="stylesheet" href="style.css" /> &lt;!-- Link til CSS-->
+	
+	&lt;title>HTML skabelon med CSS&lt;/title>
+	
+	..</code>
+</pre>
+
+<p>Herefter oprettes filen <span class="inl_cmd">style.css</span> i samme mappe som ens <abbr title="">HTML</abbr>-dokument, og <abbr title="">CSS</abbr> kommandoerne indsættes i <span class="inl_cmd">style.css</span>. Det kunne f.eks. være følgende kommandoer:</p>
+
+<pre>
+	<code class="css">/* Overordnet formatering der gælder alle overskrifttyper */
+h1, h2, h3 {	
+font-family: arial;
+font-weight: 900;
+}
+
+/* Formatering der gælder de enkelte overskrifttyper */
+h1 {
+font-size: 2.2em;
+}
+
+h2 {
+font-size: 1.8em;
+}
+
+h3 {
+font-size: 1.3;
+}
+
+/* Formatering der gælder &lt;p> */
+p { 
+font-family: verdana;   
+}	</code>
+</pre>
+
+<p>Resultatet af ovenstående kode kan du se her:</p>
+
+<figure id="">
+
+	<img class="raw_HTML_output" src="images/html_CSS_eksempel_01.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Ved at holde den indholdsmæssige kode væk fra designet kan man ændre sit design et sted. Derfor bør man holde design og kode skarpt adskilt. Det vil vi kigge på i denne guide.</p>
+
+<p>Du kan hente både <abbr title="">HTML</abbr>- og <abbr title="">CSS</abbr> koden til ovenstående ved at højreklikke på nedenstående henvisninger og vælge: <span class="inl_cmd">Gem link som</span>:</p>
+
+<p><abbr title="">HTML</abbr>-kode: <a href="html_skabelon_med_CSS.html" target="_blank">html_skabelon_med_CSS.html</a></p>
+
+<p><abbr title="">CSS</abbr>-kode: <a href="style.css" target="_blank">style.css</a></p>
+
+
+<h1>Målrette design</h1>
+
+<p>For at ramme de forskellige tekstelementer med anvender vi deres tags. Som du så i ovenstående eksempel skriver vi indholdet af tag'et efterfulgt af curly-brackets ( <span class="inl_cmd">{ }</span> ) og skriver <abbr title="">CSS</abbr>-koden deri.  Men nogle gange har vi behov for at formatere lidt forskelligt, og dertil er der 4 metoder:</p>
 
 <h2><span class="inl_cmd">&lt;div></span></h2>
 
 <p></p>
 
-<h1>Målrette design</h1>
-
-<p></p>
-
-<h2>tags</h2>
+<h2><span class="inl_cmd">&lt;span></span></h2>
 
 <p></p>
 
@@ -83,7 +152,21 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <p></p>
 
+<h1>Tekst</h1>
 
+<p></p>
+
+<h1>Boks modellen</h1>
+
+<p></p>
+
+<h1>Farver og baggrunde</h1>
+
+<p></p>
+
+<h1>Actions</h1>
+
+<p></p>
 
 
 
