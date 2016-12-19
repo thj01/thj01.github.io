@@ -124,7 +124,7 @@ font-family: verdana;
 
 <figure id="">
 
-	<img class="raw_HTML_output" src="images/html_CSS_eksempel_01.png" alt="" title="" />
+	<img class="p100 raw_HTML_output" src="images/html_CSS_eksempel_01.png" alt="" title="" />
 
 	<figcaption></figcaption>
 
@@ -144,37 +144,58 @@ font-family: verdana;
 <p>Som vi så ovenfor, så kan man anvende tags til at målrette sit design, men der opstår også andre situationer. Det kan man opnå med <span class="inl_cmd">&lt;div></span>, <span class="inl_cmd">&lt;span></span>, <span class="inl_cmd">id="**ID_NAVN**"</span> og <span class="inl_cmd">class="**CLASS_NAVN**"</span>:</p>
 
 <ul class="disc">
-	<li>Man skal ramme flere tags med samme design</li>
-	<li>Man skal nogle gange anvende et lidt andet design på et design, en eller flere gange.</li>
-	<li>Man skal nogle gange formatere noget inde i et tag</li>
+	<li>Man skal nogle gange anvende et lidt andet design på et design, en eller flere gange ( <span class="inl_cmd">id</span> og <span class="inl_cmd">class</span>) </li>
+	<li>Man skal ramme en gruppe af elementer ( <span class="inl_cmd">&lt;div></span> )</li>
+	<li>Man skal nogle gange formatere noget inde i et tag ( <span class="inl_cmd">&lt;span></span> )</li>
 </ul>
 
-<table class="">
-	<thead>
-		<tr>
-			<th></th>
-			<th></th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td><span class="inl_cmd">&lt;div></span></td>
-			<td></td>
-		</tr>
-		<tr>
-			<td><span class="inl_cmd">&lt;span></span></td>
-			<td></td>
-		</tr>
-		<tr>
-			<td><span class="inl_cmd">id="**ID_NAVN**"</span></td>
-			<td></td>
-		</tr>
-		<tr>
-			<td><span class="inl_cmd">class="**CLASS_NAVN**"</span></td>
-			<td></td>
-		</tr>
-	</tbody>
-</table>
+<h2><span class="inl_cmd">id</span> og <span class="inl_cmd">class</span></h2>
+
+<p><span class="inl_cmd">id</span> og <span class="inl_cmd">class</span> anvendes til at identificere enkelte elementer.</p>
+
+<p>Herinder har jeg ændret lidt i skabelonen og indsat <span class="inl_cmd"> id="red" </span> i den første <span class="inl_cmd">&lt;p></span> tag og <span class="inl_cmd"> class="blue"></span> ved de sidste to. Forskellen mellem <span class="inl_cmd">id</span> og <span class="inl_cmd">class</span> er, at <span class="inl_cmd">id</span> beskriver et konkret element og anvendes en og kun engang, hvormod <span class="inl_cmd">class</span> kan ramme mange elementer.</p>
+
+<pre>
+	<code class="html">&lt;h1>Overskrift&lt;/h1>
+	
+&lt;p id="red">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur condimentum ac nisi a sagittis. Pellentesque fringilla quis turpis vitae congue. Integer vel eleifend ex. Quisque ultricies tempor sem a facilisis.&lt;/p>
+	
+&lt;h2>Under-overskrift&lt;/h2>
+	
+&lt;p class="blue">Duis eu quam a augue commodo lobortis. Nulla quis justo ac nulla venenatis finibus. Nam non vestibulum lectus. Nunc nec sapien scelerisque, egestas felis at, suscipit elit.&lt;/p>
+	
+&lt;h3>Under-under-overskrift&lt;/h3>
+	
+&lt;p class="blue">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur condimentum ac nisi a sagittis. Pellentesque fringilla quis turpis vitae congue. Integer vel eleifend ex. .&lt;/p></code>
+</pre>
+
+<p>Derudover indsættes følgende linier i <span class="inl_cmd">css</span>-filen:</p>
+
+<pre>
+	<code class="css">p#red {
+color: red;
+}
+
+p.blue {
+color: blue;
+}</code>
+</pre>
+
+<p>Læg mærke til, at <span class="inl_cmd">#</span> anvendes ved <span class="inl_cmd">id</span> og <span class="inl_cmd">.</span> ved <span class="inl_cmd">class</span>. Resulatet af ovenstående kode er:</p>
+
+<figure id="">
+
+	<img class="p100 raw_HTML_output" src="images/html_CSS_eksempel_02.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Du kan se indholdet af filerne her:</p>
+
+<p>HTML-kode: <a href="skabelon/html_skabelon_med_id_og_class.html" target="_blank">html_skabelon_med_id_og_class.html</a></p>
+
+<p>CSS-kode: <a href="skabelon/style01.css" target="_blank">style01.css</a></p>
 
 
 <h2><span class="inl_cmd">&lt;div></span></h2>
@@ -185,13 +206,7 @@ font-family: verdana;
 
 <p></p>
 
-<h2><span class="inl_cmd">id="**ID_NAVN**"</span></h2>
 
-<p></p>
-
-<h2><span class="inl_cmd">class="**CLASS_NAVN**"</span></h2>
-
-<p></p>
 
 <h1>Tekst</h1>
 
