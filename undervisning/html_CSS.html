@@ -85,10 +85,17 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 	..</code>
 </pre>
 
-<p>Herefter oprettes filen <span class="inl_cmd">style.css</span> i samme mappe som ens <abbr title="">HTML</abbr>-dokument, og <abbr title="">CSS</abbr> kommandoerne indsættes i <span class="inl_cmd">style.css</span>. Det kunne f.eks. være følgende kommandoer:</p>
+<p>Herefter oprettes filen <span class="inl_cmd">style.css</span> i samme mappe som ens <abbr title="">HTML</abbr>-dokument, og <abbr title="">CSS</abbr> kommandoerne indsættes i <span class="inl_cmd">style.css</span>. For at ramme de forskellige tekstelementer med anvender vi deres tags. Som du så i ovenstående eksempel skriver vi indholdet af tag'et efterfulgt af curly-brackets ( <span class="inl_cmd">{ }</span> ) og skriver <abbr title="">CSS</abbr>-koden deri. Jeg har indsat kommentarfelter i CSS kode ( tekst der er omgivet af <span class="inl_cmd">/*     */</span>, for at beskrive hvad der sker.</p>
+
+<p>Læg mærke til enheden <span class="inl_cmd">em</span>. Em angiver størrelsen i forhold til den font størrelse dokumentet anvender (16px som standard). 2em svarer til <span class="math">\( 2 \cdot 16 = 32 px \)</span> og 1.5em til <span class="math">\( 1,5 \cdot 16 = 24px \)</span>. Vil man ændre størrelsen af skriften i hele dokumentet sætter man en universel standardstørrelse ved hjælp af <span class="inl_cmd">*</span> som herunder </p>
 
 <pre>
-	<code class="css">/* Overordnet formatering der gælder alle overskrifttyper */
+	<code class="css">/* Universel fontstørrelse (standard) */
+* {
+font-size: 16px;
+}
+
+/* Overordnet formatering der gælder alle overskrifttyper */	
 h1, h2, h3 {	
 font-family: arial;
 font-weight: 900;
@@ -104,7 +111,7 @@ font-size: 1.8em;
 }
 
 h3 {
-font-size: 1.3;
+font-size: 1.3em;
 }
 
 /* Formatering der gælder &lt;p> */
@@ -127,14 +134,48 @@ font-family: verdana;
 
 <p>Du kan hente både <abbr title="">HTML</abbr>- og <abbr title="">CSS</abbr> koden til ovenstående ved at højreklikke på nedenstående henvisninger og vælge: <span class="inl_cmd">Gem link som</span>:</p>
 
-<p><abbr title="">HTML</abbr>-kode: <a href="html_skabelon_med_CSS.html" target="_blank">html_skabelon_med_CSS.html</a></p>
+<p><abbr title="">HTML</abbr>-kode: <a href="skabelon/html_skabelon_med_CSS.html" target="_blank">html_skabelon_med_CSS.html</a></p>
 
-<p><abbr title="">CSS</abbr>-kode: <a href="style.css" target="_blank">style.css</a></p>
+<p><abbr title="">CSS</abbr>-kode: <a href="skabelon/style.css" target="_blank">style.css</a></p>
 
 
-<h1>Målrette design</h1>
+<h1>Målrettet design</h1>
 
-<p>For at ramme de forskellige tekstelementer med anvender vi deres tags. Som du så i ovenstående eksempel skriver vi indholdet af tag'et efterfulgt af curly-brackets ( <span class="inl_cmd">{ }</span> ) og skriver <abbr title="">CSS</abbr>-koden deri.  Men nogle gange har vi behov for at formatere lidt forskelligt, og dertil er der 4 metoder:</p>
+<p>Som vi så ovenfor, så kan man anvende tags til at målrette sit design, men der opstår også andre situationer. Det kan man opnå med <span class="inl_cmd">&lt;div></span>, <span class="inl_cmd">&lt;span></span>, <span class="inl_cmd">id="**ID_NAVN**"</span> og <span class="inl_cmd">class="**CLASS_NAVN**"</span>:</p>
+
+<ul class="disc">
+	<li>Man skal ramme flere tags med samme design</li>
+	<li>Man skal nogle gange anvende et lidt andet design på et design, en eller flere gange.</li>
+	<li>Man skal nogle gange formatere noget inde i et tag</li>
+</ul>
+
+<table class="">
+	<thead>
+		<tr>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><span class="inl_cmd">&lt;div></span></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td><span class="inl_cmd">&lt;span></span></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td><span class="inl_cmd">id="**ID_NAVN**"</span></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td><span class="inl_cmd">class="**CLASS_NAVN**"</span></td>
+			<td></td>
+		</tr>
+	</tbody>
+</table>
+
 
 <h2><span class="inl_cmd">&lt;div></span></h2>
 
