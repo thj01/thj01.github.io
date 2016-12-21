@@ -102,7 +102,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 </figure>
 
-<p>Derudover er udfordringen at farverne rent fysisk består af lys og det er bølgelængden af dette lys fotoreceptorerne i vores øjne opfanger og tolker. For at beskrive de farver der er synlige for det menneskelige øje anvender vi modellen med det mundrette navn <a href="https://en.wikipedia.org/wiki/CIE_1931_color_space" target="_blank">CIE 1931 color space</a>. Farvenavnene i modellen kommer fra <a href="https://en.wikipedia.org/wiki/Munsell_color_system" target="_blank">Munsell color system</a>.</p>
+<p>Derudover er udfordringen at farverne rent fysisk består af lys og det er bølgelængden af dette lys fotoreceptorerne i vores øjne opfanger og tolker. For at beskrive de farver der er synlige for det menneskelige øje anvender vi modellen med det mundrette navn <a href="https://en.wikipedia.org/wiki/CIE_1931_color_space" target="_blank">CIE 1931 color space</a>.</p>
 
 <figure id="">
 
@@ -292,36 +292,78 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <h2>Problemet med digitale farver</h2>
 
-<p>Problemet med digitale farver ligger altså ikke i selve teknikken og billedfilens informationer. Problemet ligger i de output-enheder computeren har, om det så end er en skærm, projektor eller printer. Løsningen på dette problem er, at man definerer hvilke farverens skærm eller printer skal kunne vise. Og her vil der blive gennemgået tre forskellige: <span class="inl_cmd">sRGB</span>, <span class="inl_cmd">aRGB</span> og <span class="inl_cmd">ProPhoto</span>.</p>
+<p>Problemet med digitale farver ligger ikke i billedfilens informationer eller den teknologi. Problemet ligger i de output-enheder vi anvender som f.eks. kan være, skærm, projektor eller print. </p>
+
+<p>Løsningen på dette problem er, at man har defineret nogle <span class="inl_cmd">farverum</span> (også kaldet <span class="inl_cmd">gamut</span>). I denne guide vil vi kigge på tre af dem: <span class="inl_cmd">sRGB</span>, <span class="inl_cmd">Adobe RGB</span> og <span class="inl_cmd">ProPhoto</span> og forklare hvad forskellen er mellem dem.</p>
 
 
 
-<h1>Farverum</h1>
+<h1>Farverum (gamut)</h1>
 
-<p></p>
+<p>Ovenfor nævnte jeg CIE-1931 diagrammet som viser de farver som det menneskelige øje kan opfange.</p>
 
-<h2>Problemet med digitale farver</h2>
+<figure id="">
 
-<p>Problemet med digitale farver handler ikke om selve den måder farverne bliver arbejdet med i programmerne, men om det output som brugeren anvender. Problemet er mangfoldigt</p>
+	<img class="" src="images/farver_CIE-1931_diagram_in_LAB_space.svg" alt="" title="" />
 
+	<figcaption><a href="https://commons.wikimedia.org/wiki/File:CIE-1931_diagram_in_LAB_space.svg#/media/File:CIE-1931_diagram_in_LAB_space.svg">CIE-1931 diagram in LAB space</a>" by <a href="//en.wikipedia.org/wiki/User:Paulschou" class="extiw" title="en:User:Paulschou">Paulschou</a> at <a class="external text" href="http://en.wikipedia.org">en.wikipedia</a>. Licensed under <a href="http://creativecommons.org/licenses/by-sa/3.0" title="Creative Commons Attribution-Share Alike 3.0">CC BY-SA 3.0</a> via <a href="https://commons.wikimedia.org/wiki/">Commons</a>.</figcaption>
 
+</figure>
 
+<p>For at kunne sikre de samme farver igennem hele arbejdsprocessen, altså lige fra produktion &#8594;
+ forarbejdning &#8594; output, har man indført nogle standarder, som man kalder <span class="inl_cmd">farverum</span> (<span class="inl_cmd">colorspace</span>/<span class="inl_cmd">gamut</span>). Vi vil her arbejde med:</p>
+ 
+<ul class="disc">
+	<li>sRGB - Standard RGB farverum</li>
+	<li>Adobe RGB - Adobe RGB farverum (ofte forkortet aRGB)</li>
+	<li>ProPhoto RGB - </li>
+</ul>
 
-<h2>Gamut</h2>
+<table class="">
+	<thead>
+		<tr>
+			<th>Farverum</th>
+			<th>Udviklet af</th>
+			<th>Mere om</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>sRGB - Standard RGB farverum</td>
+			<td>HP og Microsoft</td>
+			<td><a href="https://en.wikipedia.org/wiki/ProPhoto_RGB_color_space" target="_blank">https://en.wikipedia.org/wiki/ProPhoto_RGB_color_space</a></td>
+		</tr>
+		<tr>
+			<td>aRGB</td>
+			<td>Adobe</td>
+			<td></td>
 
-<p></p>
+		</tr>
+			<tr>
+			<td>ProPhoto RGB</td>
+			<td>Kodak</td>
+			<td></td>
+		</tr>
+	</tbody>
+</table>
 
 <h2>sRGB</h2>
 
+<p><span class="inl_cmd">sRGB</span> (<b>S</b>tandard <b>RGB</b>) blev udviklet i et samarbejde mellem Microsoft og HP i 1996</p>
+
+<p><b>Læs mere:</b> <a href="https://en.wikipedia.org/wiki/ProPhoto_RGB_color_space" target="_blank">https://en.wikipedia.org/wiki/ProPhoto_RGB_color_space</a></p>
+
+<h2>aRGB </h2>
+
 <p></p>
 
-<h2>aRGB</h2>
-
-<p></p>
+<p><b>Læs mere:</b> <a href="https://en.wikipedia.org/wiki/Adobe_RGB_color_space" target="_blank">https://en.wikipedia.org/wiki/Adobe_RGB_color_space</a></p>
 
 <h2>Prophoto RGB</h2>
 
 <p></p>
+
+<p><b>Læs mere:</b> <a href="https://en.wikipedia.org/wiki/SRGB" target="_blank">https://en.wikipedia.org/wiki/SRGB</a></p>
 
 <h1>Begreber</h1>
 
