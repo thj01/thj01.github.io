@@ -361,92 +361,128 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <h2>Større farverum, samme antal farver</h2>
 
-<p>Som vi lærte ovenfor bliver farverne dannet ud fra en kombination af <span class="inl_cmd">RGB</span>, og hver af disse farver kan antage 256 forskellige værdier. Herunder vil jeg tage udgangspunkt i  </p>
+<p>Som vi lærte ovenfor bliver farverne dannet ud fra en kombination af <span class="inl_cmd">RGB</span>, og hver af disse farver kan antage 256 forskellige værdier. For at forstå betydningen af dette vil vi her kigge på den grønne farve. Herunder forsøger CSS at vise alle nuancerne hvor kun den grønne farve er i spil. </p>
+
+<p>Grøn ( #00<span class="red">00</span>00 - #00<span class="red">FF</span>00 )</p>
+
+<div id="grad_green"></div>
+
+<p>Hvis vi sammenligner den spændvidde den grønne farve har fra spidsen og indtil den grønne farve er væk så har <span class="inl_cmd">ProPhoto</span> næsten dobbel så storspændvidde end <span class="inl_cmd">srgb</span>. Da begge længder er inddelt i 256 forskellige nuancer, så vil der altså være dobbelt så langt mellem nuancerne i <span class="inl_cmd">ProPhoto</span> end i <span class="inl_cmd">sRGB</span>. Se illustrationen herunder, hvor jeg illustrerer de manglende nuancer:</p>
+
+
+<figure class="">
+
+	<img class="p90" src="images/farver_illustration_af_nuance_spring.svg" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Problemet, at der ikke er "det rigtige" farverum, for de har forskellige egenskaber, styrker og svagheder.  </p>
+
+<h2>Flere bits</h2>
+
+<p>For at løse dette problem anvender man billeder der har en højere farveopløsning end 8 bit. Det er f.eks. ikke unormalt at mid-level kameraer kan optage RAW-filer i 12, 14 og 16 bit. mod de "normale" 8 bit. Det betyderat der bliver endnu flere niveauer at inddele farverne i farverummet: </p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>bits</th>
+			<th>Nuancer/kanal</th>
+			<th>Nuancer i alt</th>
+			<th>Ekstra nuancer <br/> pr 8 bits nuance</th>
+
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>8 bit</td>
+			<td><span class="math">\( 2^{8} = 256 \)</span></td>
+			<td><span class="math">\( (2^{8})^3 = 1,678 \cdot 10^6 \)</span></td>
+			<td><span class="math">\( 0 \)</span></td>
+		</tr>
+		<tr>
+			<td>10 bit</td>
+			<td><span class="math">\( 2^{10} = 1.024 \)</span></td>
+			<td><span class="math">\( (2^{10})^3 = 1,074 \cdot 10^9 \)</span></td>
+			<td><span class="math">\( 4 \)</span></td>
+		</tr>
+		<tr>
+			<td>12 bit</td>
+			<td><span class="math">\( 2^{12} = 4.096 \)</span></td>
+			<td><span class="math">\( (2^{12})^3 = 68,71 \cdot 10^9 \)</span></td>
+			<td><span class="math">\( 16 \)</span></td>
+		</tr>
+		<tr>
+			<td>14 bit</td>
+			<td><span class="math">\( 2^{14} = 16.384 \)</span></td>
+			<td><span class="math">\( (2^{14})^3 = 4,398 \cdot 10^{12} \)</span></td>
+			<td><span class="math">\( 64 \)</span></td>
+		</tr>
+		<tr>
+			<td>16 bit</td>
+			<td><span class="math">\( 2^{16} = 65.536 \)</span></td>
+			<td><span class="math">\( (2^{16})^3 = 2,815 \cdot 10^{14} \)</span></td>
+			<td><span class="math">\( 256 \)</span></td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Ved at hæve billedet fra 8 til f.eks. 14 bit er der altså går man fra at arbejde med 256 farvenuancer til 16.538 nuancer, og så er farveopløsningen så god, at det menneskelige øje oplever der som glidede overgang.</p> 
+
+<p>Prisen for de ekstra bits er, at filerne billedfilerne fylder mere, at programmerne skal være mere avancerede og at det kræver flere kræfter af computeren. Gevinsten er den forøgede mængde af nuancer.</p>
 
 <h2>sRGB</h2>
 
-<figure id="">
+<figure class="farverum">
 
-	<img class="p70" src="images/farver_CIE-1931_diagram_in_LAB_space_srgb.svg" alt="" title="" />
+	<img class="p80" src="images/farver_CIE-1931_diagram_in_LAB_space_srgb.svg" alt="" title="" />
 
 	<figcaption></figcaption>
 
 </figure>
 
-<p><span class="inl_cmd">sRGB</span> (<b>S</b>tandard <b>RGB</b>) blev udviklet i et samarbejde mellem Microsoft og HP i 1996</p>
+<p><span class="inl_cmd">sRGB</span> (<b>S</b>tandard <b>RGB</b>) blev udviklet i et samarbejde mellem Microsoft og HP i 1996 til at blive anvendt på monitors, printere og Internettet. Standarden er understøttet af <span class="inl_cmd">W3C</span>, <span class="inl_cmd">Intel</span>, <span class="inl_cmd">Pantone</span> og mange andre spillere på markedet.</p>
 
-<p><b>Læs mere:</b> <a href="https://en.wikipedia.org/wiki/ProPhoto_RGB_color_space" target="_blank">https://en.wikipedia.org/wiki/ProPhoto_RGB_color_space</a></p>
+<p>Hvis dit slutprodukt er web, så er <span class="inl_cmd">sRGB</span> det farverum man bør anvende, simpelthen fordi dette er det standardiserede farverum. En anden vægtig årsag til at vælge dette farverum er, at langt de fleste monitors er justeret og kontrueret til at dække <span class="inl_cmd">sRGB</span> farverummet. Ved at anvende <span class="inl_cmd">sRGB</span> har man den største kontrol over hvordan det vil se ud hos flertallet af brugerne.</p>
+
+
+<p><b>Læs mere:</b> <a href="https://en.wikipedia.org/wiki/SRGB" target="_blank">https://en.wikipedia.org/wiki/SRGB</a></p>
+
 
 <h2>aRGB </h2>
 
-<figure id="">
+<figure class="farverum">
 
-	<img class="p70" src="images/farver_CIE-1931_diagram_in_LAB_space_argb.svg" alt="" title="" />
+	<img class="p80" src="images/farver_CIE-1931_diagram_in_LAB_space_argb.svg" alt="" title="" />
 
 	<figcaption></figcaption>
 
 </figure>
 
-<p></p>
+<p><span class="inl_cmd">Adobe RGB color space</span> er udviklet af Adobe Systems i 1998 for at kunne arbejde med de farver en <span class="inl_cmd">CMYK</span>-printer kan producere. Farverne bliver dannet ved at anvende RGB farverne. I forhold til <span class="inl_cmd">sRGB</span> er det især blandt cyan og grøn, at man får flere nuancer. <span class="inl_cmd">aRGB</span> dækker omkring 50% af <span class="inl_cmd">CIE 1931</span>.</p>
+
+<p>Hvis dit slutprodukt er <span class="inl_cmd">CMYK</span>-print eller <span class="inl_cmd">sRGB</span>-kompatibelt udstyr, så kan kan dette format anbefales. Når man arbejder med <span class="inl_cmd">aRGB</span> skal man være meget bevidst om, at der er forskel på de farver man selv kan se på sin <span class="inl_cmd">aRGB</span> skærm og de farver som bliver fremvist på en <span class="inl_cmd">sRGB</span> skærm. Især de blå og de grønne farver vil miste spændvidde og billedet går hen og bliver kedeligt. Vil man selv have kontrollen med output, bør man redigere en version til print og en til web. </p>
 
 <p><b>Læs mere:</b> <a href="https://en.wikipedia.org/wiki/Adobe_RGB_color_space" target="_blank">https://en.wikipedia.org/wiki/Adobe_RGB_color_space</a></p>
 
 <h2>Prophoto RGB</h2>
 
-<figure id="">
+<figure class="farverum">
 
-	<img class="p70" src="images/farver_CIE-1931_diagram_in_LAB_space_prophotorgb.svg" alt="" title="" />
+	<img class="p80" src="images/farver_CIE-1931_diagram_in_LAB_space_prophotorgb.svg" alt="" title="" />
 
 	<figcaption></figcaption>
 
 </figure>
 
-<p></p>
+<p><span class="inl_cmd">ProPhoto color space</span> er udviklet af Kodak til fotografier. Som de to andre formater bliver farverne dannet ved hjælp af RGB og pga det den efterhåndens store afstand der er imellem de enkelte nuacner anbefales det at arbejde i 16bit farver. Når man arbejder med <span class="inl_cmd">ProPhoto</span> skal man være opmærksom på at ca 13% af farverne er imaginære - de er ikke inde for det synlige felt.</p>
 
-<p><b>Læs mere:</b> <a href="https://en.wikipedia.org/wiki/SRGB" target="_blank">https://en.wikipedia.org/wiki/SRGB</a></p>
+<p>Da <span class="inl_cmd">ProPhoto</span>'s farver har en stor spændvidde anbefales det at arbejde med 16bits farver dvs. <span class="math">\( 65536^3 = 2,815 \cdot 10^{14} \)</span> nuancer.</p>
 
-<h1>Begreber</h1>
+<p>Det giver kun mening arbejde i <span class="inl_cmd">ProPhoto</span>, hvis man har udstyret til det, og det gælder både in- og output - altså både kamera og skærm/printer.</p>
 
-<p></p>
-
-<h2>Hue</h2>
-
-<p></p>
-
-<h2>Value</h2>
-
-<p></p>
-
-<h2>Tint and Shade</h2>
-
-<p></p>
-
-<h2>Saturation</h2>
-
-<p></p>
-
-
-
-<h2>Contrast</h2>
-
-<p></p>
-
-
-<h2>Brightness</h2>
-
-<p></p>
-
-<h2>Exposure</h2>
-
-<p></p>
-
-<h2>White balance</h2>
-
-<p></p>
-
-<h2>Shadows and Hightligts</h2>
-
-<p></p>
+<p><b>Læs mere:</b> <a href="https://en.wikipedia.org/wiki/ProPhoto_RGB_color_space" target="_blank">https://en.wikipedia.org/wiki/ProPhoto_RGB_color_space</a></p>
 
 <h1>Billedformater</h1>
 
