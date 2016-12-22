@@ -56,11 +56,228 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <p></p>
 
-<h1>Blænde</h1>
+<h1>ISO</h1>
 
 <p></p>
 
-<h1>ISO</h1>
+<h1>Blænde</h1>
+
+<figure class="skub_th">
+
+	<img class="p20" src="images/RotatingDiaphragm_Derr1906.png" alt="" title="" />
+
+	<figcaption><a href="//en.wikipedia.org/wiki/File:RotatingDiaphragm_Derr1906.png" title="Public domain in the United States">PD-US</a>, <a href="https://en.wikipedia.org/w/index.php?curid=5248075">Link</a></figcaption>
+
+</figure>
+
+<p>Blænde er et tal for hvor meget lys et objektiv lukker ind. I dag er blænder meget avanceret, men oprindeligt var det blot en plade med et hul der blev skudt ind foran filmen. På mere avancerede apparater var det en plade man kunne dreje rundt for at vælge det rigtige hul. Når man drejede skiven blev hullets areal enten halveret eller fordoblet.</p>
+
+<p>I dag kan man indstille lysindfaldet meget præcist og langt de fleste kameraer kan arbejder med et lysindfald der vokser eller falder med <span class="math">\( \frac{1}{3} \)</span>. </p>
+
+<p>Blændet, og de tal der anvendes kan være svære at forstå, da det kræver man har en forståelse for brøker, kvadratrødder og brøker. Herunder har jeg indtegnet en cirkel med et indskrevet kvadrat. Det er en model af det som sker med det lys der kommer igennem et objektiv.</p>
+
+<figure class="">
+
+	<img class="p30" src="images/foto_beregning_af_kvadr2_cirkel.svg" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Kigger vi på på arealudregningen af en cirkel (<span class="math">\( A = \pi \cdot r^2 \)</span>) kan vi se, at den eneste størrelse vi kan ændre på er radius (<span class="math">\( r \)</span>). Vi skal altså finde ud af hvilken faktor vi skal gange på <span class="math">\( r \)</span> for at resultatet halveres. Vi skal altså finde ud af hvornår <span class="math">\( (r \cdot x)^2 = \frac{1}{2} \)</span>. For at gøre det lettere for os selv finder vi det generelt, altså hvor <span class="math">\( r = 1 \)</span>, dvs:</p>
+
+<div class="latex">$$ (1 \cdot x)^2 = \frac{1}{2} 
+\Leftrightarrow
+x^2 = \frac{1}{2}
+\Leftrightarrow
+x = \sqrt {\frac{1}{2}} 
+\Leftrightarrow 
+x = \frac{1}{\sqrt 2}$$</div>
+
+<p>Man definere blændet med brøken <span class="math">\( f/*værdi* \)</span>, og halveringen af det fuldt åbne blænde er altså <span class="inl_cmd">f/1,4</span> da <span class="math">\( \sqrt 2 = 1,414 \)</span>. Halveres denne værdi igen bliver tallet:</p>
+
+<div class="latex">$$ \sqrt 2 \cdot \sqrt 2 = \sqrt 2^2 = 2$$</div>
+
+<p>Generelt bliver værdierne for blændetallet, som også kaldes <span class="inl_cmd">f-stop</span>:</p>
+
+<div class="latex">$$ \sqrt 2^{formindskelsesfaktor} $$</div>
+
+<p>Da De fleste kameraer i dag kører med et formindskelsesstop på <span class="math">\( \frac{1}{3} \)</span>, får vi altså værdierne:</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Formindskelses faktor</th>
+			<th>f-stop</th>
+			<th>størrelse i forhold til fuld åbning</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><span class="math">\( 0 \)</span></td>
+			<td><span class="math">\( 1 \)</span></td>
+			<td><span class="math">\( 1 \)</span></td>
+
+		</tr>
+		<tr>
+			<td><span class="math">\( \frac{1}{3} \)</span></td>
+			<td><span class="math">\( 1,1 \)</span></td>
+			<td><span class="math">\( 0,89 \)</span></td>
+
+		</tr>
+		<tr>
+			<td><span class="math">\( \frac{2}{3} \)</span></td>
+			<td><span class="math">\( 1,3 \)</span></td>
+			<td><span class="math">\( 0.79 \)</span></td>
+
+		</tr>
+		<tr>
+			<td><span class="math">\( 1 \)</span></td>
+			<td><span class="math">\( 1,4 \)</span></td>
+			<td><span class="math">\( 0,71 \)</span></td>
+		</tr>
+		<tr>
+			<td><span class="math">\(1\frac{1}{3} \)</span></td>
+			<td><span class="math">\( 1,6 \)</span></td>
+			<td><span class="math">\( 0,63 \)</span></td>
+		</tr>
+		<tr>
+			<td><span class="math">\( 1\frac{2}{3} \)</span></td>
+			<td><span class="math">\( 1,8 \)</span></td>
+			<td><span class="math">\( 0,56 \)</span></td>
+		</tr>
+		<tr>
+			<td><span class="math">\(2 \)</span></td>
+			<td><span class="math">\( 2 \)</span></td>
+			<td><span class="math">\( 0,5 \)</span></td>
+		</tr>
+		<tr>
+			<td><span class="math">\(2\frac{1}{3} \)</span></td>
+			<td><span class="math">\( 2,2 \)</span></td>
+			<td><span class="math">\( 0,45 \)</span></td>
+		</tr>
+		<tr>
+			<td><span class="math">\( 2\frac{2}{3} \)</span></td>
+			<td><span class="math">\( 2,5 \)</span></td>
+			<td><span class="math">\( 0,4 \)</span></td>
+		</tr>
+		<tr>
+			<td><span class="math">\( 3\)</span></td>
+			<td><span class="math">\( 2,8 \)</span></td>
+			<td><span class="math">\( 0,35 \)</span></td>
+		</tr>
+		<tr>
+			<td><span class="math">\(3\frac{1}{3} \)</span></td>
+			<td><span class="math">\( 3,2 \)</span></td>
+			<td><span class="math">\( 0,31 \)</span></td>
+		</tr>
+		<tr>
+			<td><span class="math">\( 3\frac{2}{3} \)</span></td>
+			<td><span class="math">\( 3,5^* \)</span></td>
+			<td><span class="math">\( 0,28 \)</span></td>
+		</tr>
+		<tr>
+			<td><span class="math">\(4\)</span></td>
+			<td><span class="math">\( 4 \)</span></td>
+			<td><span class="math">\( 0,25 \)</span></td>
+		</tr>
+		<tr>
+			<td><span class="math">\(4 \frac{1}{3} \)</span></td>
+			<td><span class="math">\( 4,5 \)</span></td>
+			<td><span class="math">\( 0,22 \)</span></td>
+		</tr>
+		<tr>
+			<td><span class="math">\( 4\frac{2}{3} \)</span></td>
+			<td><span class="math">\( 5 \)</span></td>
+			<td><span class="math">\( 0,2 \)</span></td>
+		</tr>
+		<tr>
+			<td><span class="math">\(5\)</span></td>
+			<td><span class="math">\( 5,6^* \)</span></td>
+			<td><span class="math">\( 0,18 \)</span></td>
+		</tr>
+		<tr>
+			<td><span class="math">\(5\frac{1}{3} \)</span></td>
+			<td><span class="math">\( 6,4 \)</span></td>
+			<td><span class="math">\( 0,16 \)</span></td>
+		</tr>
+		<tr>
+			<td><span class="math">\( 5\frac{2}{3} \)</span></td>
+			<td><span class="math">\( 7,1 \)</span></td>
+			<td><span class="math">\( 0,14 \)</span></td>
+		</tr>
+		<tr>
+			<td><span class="math">\(6 \)</span></td>
+			<td><span class="math">\( 8 \)</span></td>
+			<td><span class="math">\( 0,13 \)</span></td>
+		</tr>
+		<tr>
+			<td><span class="math">\(6\frac{1}{3} \)</span></td>
+			<td><span class="math">\( 9 \)</span></td>
+			<td><span class="math">\( 0,11 \)</span></td>
+		</tr>
+		<tr>
+			<td><span class="math">\( 6\frac{2}{3} \)</span></td>
+			<td><span class="math">\( 10 \)</span></td>
+			<td><span class="math">\( 0,1 \)</span></td>
+		</tr>
+		<tr>
+			<td><span class="math">\(7 \)</span></td>
+			<td><span class="math">\( 11 \)</span></td>
+			<td><span class="math">\( 0,09 \)</span></td>
+		</tr>
+		<tr>
+			<td><span class="math">\(7\frac{1}{3} \)</span></td>
+			<td><span class="math">\( 13 \)</span></td>
+			<td><span class="math">\( 0,08 \)</span></td>
+		</tr>
+		<tr>
+			<td><span class="math">\( 7\frac{2}{3} \)</span></td>
+			<td><span class="math">\( 14 \)</span></td>
+			<td><span class="math">\( 0,07 \)</span></td>
+		</tr>
+		<tr>
+			<td><span class="math">\(8 \)</span></td>
+			<td><span class="math">\( 16 \)</span></td>
+			<td><span class="math">\( 0,06 \)</span></td>
+		</tr>
+		<tr>
+			<td><span class="math">\(8\frac{1}{3} \)</span></td>
+			<td><span class="math">\( 18 \)</span></td>
+			<td><span class="math">\( 0,06 \)</span></td>
+		</tr>
+		<tr>
+			<td><span class="math">\( 8\frac{2}{3} \)</span></td>
+			<td><span class="math">\( 20 \)</span></td>
+			<td><span class="math">\( 0,05 \)</span></td>
+		</tr>
+		<tr>
+			<td><span class="math">\(9 \)</span></td>
+			<td><span class="math">\( 20 \)</span></td>
+			<td><span class="math">\( 0,04 \)</span></td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Dem der er markeret med <span class="math">\( ^* \)</span> passer ikke helt med udregningerne, da de rammer en decimal forbi. Du kan se et regneark med tallene her: <a href="https://docs.google.com/spreadsheets/d/1IfwU4dL4zcto-_TDdbE1txQwO2CDju0cnmIqFYBjmJ8/edit?usp=sharing" target="_blank">https://docs.google.com/spreadsheets/d/1IfwU4dL4zcto-_TDdbE1txQwO2CDju0cnmIqFYBjmJ8/edit?usp=sharing</a></p>
+
+<h1>Hvad man skal være opmærksom på</h1>
+
+<p></p>
+
+<h2>DOF - Depth Of Field</h2>
+
+<p></p>
+
+<h2>Støj (ved høj ISO)</h2>
+
+<p></p>
+
+<h2>Skarphed</h2>
+
+<p></p>
+
+<h2>Sorte rande</h2>
 
 <p></p>
 
