@@ -162,3 +162,11 @@ div#grad_grey {
     background: -moz-linear-gradient(right, #000000 , #FFFFFF); /* For Firefox 3.6 to 15 */
     background: linear-gradient(to right, #000000 , #FFFFFF); /* Standard syntax (must be last) */
 }
+
+/* Classes */
+
+tr.lightgreybc {
+background:  #F0F0F0;
+
+
+}
