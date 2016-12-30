@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+
+<head>
+	
+	<meta charset="UTF-8" lang="da"/>
+
+	<title>Vidas.dk</title>
+
+	<link rel="stylesheet" href="../css/style.css" />
+	<link rel="stylesheet" href="../css/styles/docco.css" />
+	<link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono|Ubuntu|Ubuntu+Condensed' rel='stylesheet' type='text/css'>
+
+	<script src="http://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+	<script src="../js/toc2.js" type="text/javascript"></script>
+	<script>$(function(){$("#license").load("license.html"); });</script>
+	<script type="text/javascript" async
+		src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+		MathJax.Hub.Config({ jax: ["input/TeX","output/HTML-CSS"], displayAlign: "left"
+ 		});
+	</script>
+        <script>
+	$(document).ready(function(){
+		$(".hide").click(function(){$("#toc").hide();});
+		$(".show").click(function(){$("#toc").show();});
+	});
+	</script>
+	<script src="../js/highlight.pack.js" type="text/javascript"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+</head>
+<!-- 
+code highlighter : https://highlightjs.org/
+code converter : http://www.freebits.co.uk/convert-html-code-to-text.html 
+-->
+<html>
+<body onload="generateTOC(document.getElementById('toc'));">
+
+<footer id="license"></footer>
+
+<header>
+	<div class="show" id="toggle_menu"></div> 
+</header>
+
+<div class="toggle">
+	<div id="toc" class="hide">
+		<div id="toc_title"><span class=""><a href="#" target="">(Luk)</a></span></div>	
+	</div>
+</div>
+		
+<p></p><p></p>
+
+<div class="title">Statistik</div>
+
+<h1>Symboler</h1>
+
+<p></p>
+
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Symbol</th>
+			<th>Begreb</th>
+			<th>Definition</th>
+			<th>Talmængde</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><span class="math">\( x \)</span></td>
+			<td>Observation</td>
+			<td>Anvendt data</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td><span class="math">\( h(x) \)</span></td>
+			<td>Hyppighed</td>
+			<td>Hvor ofte en observation/hændelse optræder</td>
+			<td><span class="math">\( \mathbb{N}_0 \)</span></td>
+		</tr>
+		<tr>
+			<td><span class="math">\( H(x) \)</span></td>
+			<td>Summeret hyppighed</td>
+			<td>Hvor ofte denne og forgående observationer/hændelser optræder</td>
+			<td><span class="math">\( \mathbb{N}_0 \)</span></td>
+		</tr>
+		<tr>
+			<td><span class="math">\( f(x) \)</span></td>
+			<td>Frekenvens</td>
+			<td>Hvor ofte en observation/hændelse optræder i forhold til det samlede antal observationer</td>
+			<td><span class="math">\( \mathbb{R} \)</span></td>
+		</tr>
+		<tr>
+			<td><span class="math">\( F(x) \)</span></td>
+			<td>Summeret frekenvens</td>
+			<td>Hvor ofte denne og forgående observationer/hændelser optræder i forhold til det samlede antal observationer</td>
+			<td><span class="math">\( \mathbb{R} \)</span></td>
+		</tr>
+	</tbody>
+</table>
+
+<span class="afsnit">Et eksempel</span>
+
+<p>Forestil dig en tabel der angiver antal biler i en hustand</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Antal biler (<span class="math">\( x \)</span>)</th>
+			<th><span class="math">\( h(x) \)</span></th>
+			<th><span class="math">\( H(x) \)</span></th>
+			<th><span class="math">\( f(x) \)</span></th>
+			<th><span class="math">\( F(x) \)</span></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><span class="math">\( 0 \)</span></td>
+			<td><span class="math">\( 40 \)</span></td>
+			<td><span class="math">\( 40 \)</span></td>
+			<td><span class="math">\( 0,40 \)</span></td>
+			<td><span class="math">\( 0,40 \)</span></td>
+		</tr>
+		<tr>
+			<td><span class="math">\( 1 \)</span></td>
+			<td><span class="math">\( 44 \)</span></td>
+			<td><span class="math">\( 84 \)</span></td>
+			<td><span class="math">\( 0,44 \)</span></td>
+			<td><span class="math">\( 0,84 \)</span></td>
+		</tr>
+		<tr>
+			<td><span class="math">\( 2 \)</span></td>
+			<td><span class="math">\( 14 \)</span></td>
+			<td><span class="math">\( 98 \)</span></td>
+			<td><span class="math">\( 0,14 \)</span></td>
+			<td><span class="math">\( 0,98 \)</span></td>
+		</tr>
+		<tr>
+			<td><span class="math">\( 3+ \)</span></td>
+			<td><span class="math">\( 2 \)</span></td>
+			<td><span class="math">\( 100 \)</span></td>
+			<td><span class="math">\( 0,02 \)</span></td>
+			<td><span class="math">\( 1,00 \)</span></td>
+		
+		</tr>
+
+	</tbody>
+</table>
+
+<p>Tallene er lavet ud fra Danmarks statistik for 2016: <a href="https://www.dst.dk/da/Statistik/emner/biler/familiernes-bilraadighed" target="_blank">https://www.dst.dk/da/Statistik/emner/biler/familiernes-bilraadighed</a></p>
+
+<p>Ved at anvende den summerede <span class="inl_cmd">frekvens</span> og <span class="inl_cmd">hyppgihed</span>, kan man beregne intervaller. Hvis man gerne vil finde frekvensen af antallet af familier der har 1 eller 2 biler anvender man følgende beregning:</p>
+
+<div class="latex">$$ F(2)-F(0) = 0,98-0,40 = 58\% $$</div>
+
+<h2>Observation/hændelse/udfald ... </h2>
+
+<p>Man anvender det ord der giver bedst mening.</p>
+
+<span class="afsnit">Observation</span>
+
+<p>Anvendes når der er noget specifikt man undersøger, f.eks. hvilke tøjmærker der er populære eller hvilke partier der bliver stemt på til et folketingsvalg. Man er aktivt opsøgende</p>
+
+<span class="afsnit">Hændelse</span>
+
+<p>Hændelser er noget som sker, og som man registrer</p>
+
+<span class="afsnit">Udfald</span>
+
+<p>Når det handler om sandsynligheder og hvor det er chancebetonet, så taler man om <span class="inl_cmd">udfald</span>. Det kan f.eks. være terningkast eller antal rigtige på en lottokupon.</p>
+
+
+<h2>Population og stikprøve</h2>
+
+<p>Ofte har man ikke mulighed for at få det fulde datasæt, f.eks. ved en folkeafstemning hvor man anvender <span class="inl_cmd">exit-polls</span>. Her må man leve med at man kun har en delmængde af svar ud af helheden. Man har altså en <span class="inl_cmd">stikprøve</span>, der er taget fra en <span class="inl_cmd">population</span>.</p>
+
+<h2>Datasæt</h2>
+
+<p><span class="inl_cmd">Datasættet</span> er de data man arbejder med.</p>
+
+<h2>Repræsentativ datasæt</h2>
+
+<p>Når en undersøgelse er <span class="inl_cmd">repræsentativ</span> betyder det at en stikprøve matematisk set giver et korrekt billede af populationen. For at vise det har man nogle matematiske modeller der hører til på Matematik Niv. B.</p>
+
+<h1>Diskret og kontinuert data</h1>
+
+<p>Når man har et datasæt skal man overveje hvordan det skal behandles, da det kan være forskelligt i forhold til den viden man gerne vil have. Se f.eks. på et folketingsvalg, hvor man både vil behandle tallene for de enkelte partier (diskrete observationer), men også for de politiske blokke (kontinuerte oberservationer) der går til valg.</p>
+
+<h2>Diskret data</h2>
+
+<p><span class="inl_cmd">Diskret data</span> anvendes når der er tale om eksakte værdier og anvendes når der er en klar og logisk opdeling af data. Det kan f.eks. være ved:</p>
+
+<ul class="disc">
+	<li>Terningkast</li>
+	<li>Bilmærker</li>
+	<li>Partier ved valg</li>
+	<li>Tøjmærker</li>
+	<li>...</li>
+</ul>
+
+<h2>Kontinuert data</h2>
+
+<p>Nogle gange vil ens datasæt blive uoverskueligt ved at kun at arbejde med eksakte værdier. Data kobles sammen af en sammenhæng. Her vil man vælge at gruppere observationerne i nogle praktiske og anvendelige enheder. Det kan f.eks. være ved:</p>
+
+<ul class="disc">
+	<li>Højde målinger ( -150cm, 151-160cm, 161-170 cm ...) </li>
+	<li>Aldersgrupper (-18, 19-23, 24-29 ... </li>
+	<li>...</li>
+</ul>
+
+<h1>Sandsynlighed</h1>
+
+<p>Sandsynligheden for en hændelse angives med <span class="math">\( P \)</span> (store P for <b>P</b>osibility). I forhold til skemaet begreberne ovenfor er der følgende sammenhænge:</p>
+
+<p><span class="math">\( P(X = x) \)</span> er tilsvarende frekvensen <span class="math">\( f(x) \)</span>. Den kaldes også <span class="inl_cmd">punktsandsynlighed</span>.</p>
+
+<p><span class="math">\( P(X \leq x) \)</span> er tilsvarende den summerede frekvens <span class="math">\( F(x) \)</span>.</p>
+
+<p>Det som er forskellen mellem en <span class="inl_cmd">frekvens</span> og en <span class="inl_cmd">sandsynlighed</span> er, at sandsynligheder handler at kunne forudsige udfaldet af en situation. F.eks. hvad sandsynligheden er for at en familie har 1 eller 2 biler. <span class="inl_cmd">Frekvensen</span> er et udtryk for hvor mange der er i forhold til stikprøven.</p>
+
+
+<p>Det ovenstående skema vil altså se ud som følger:</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Antal biler (<span class="math">\( x \)</span>)</th>
+			<th><span class="math">\( h(x) \)</span></th>
+			<th><span class="math">\( H(x) \)</span></th>
+			<th><span class="math">\( f(x) ~/~ P(X=x)\)</span></th>
+			<th><span class="math">\( F(x) ~/~ P(X \leq x)\)</span></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><span class="math">\( 0 \)</span></td>
+			<td><span class="math">\( 40 \)</span></td>
+			<td><span class="math">\( 40 \)</span></td>
+			<td><span class="math">\( 0,40 \)</span></td>
+			<td><span class="math">\( 0,40 \)</span></td>
+		</tr>
+		<tr>
+			<td><span class="math">\( 1 \)</span></td>
+			<td><span class="math">\( 44 \)</span></td>
+			<td><span class="math">\( 84 \)</span></td>
+			<td><span class="math">\( 0,44 \)</span></td>
+			<td><span class="math">\( 0,84 \)</span></td>
+		</tr>
+		<tr>
+			<td><span class="math">\( 2 \)</span></td>
+			<td><span class="math">\( 14 \)</span></td>
+			<td><span class="math">\( 98 \)</span></td>
+			<td><span class="math">\( 0,14 \)</span></td>
+			<td><span class="math">\( 0,98 \)</span></td>
+		</tr>
+		<tr>
+			<td><span class="math">\( 3+ \)</span></td>
+			<td><span class="math">\( 2 \)</span></td>
+			<td><span class="math">\( 100 \)</span></td>
+			<td><span class="math">\( 0,02 \)</span></td>
+			<td><span class="math">\( 1,00 \)</span></td>
+		
+		</tr>
+
+	</tbody>
+</table>
+
+<p>Dvs. hvis man vil finde sandsynligheden af at en vilkårlig familie har 1 eller 2 biler, skal man anvende følgende beregning:</p>
+
+<div class="latex">$$ P(X \leq 2) - P(X=0) = 0,98-0,40 = 58\% $$</div>
+
+
+
+<h1>Statistiske diskriptorer</h1>
+
+<p></p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Deskriptor</th>
+			<th>Forklaring</th>
+			<th>Metode</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Typetal (diskret data)</td>
+			<td>Den obeservation der forekommer flest gange</td>
+			<td>Aflæsning</td>
+		</tr>
+		<tr>
+			<td>Typeinterval (kontinuert data)</td>
+			<td>Den samling af observationer der er flest af</td>
+			<td>Aflæsning</td>
+		</tr>
+		<tr>
+			<td>Mindste værdi</td>
+			<td>Den mindst observerede værdi</td>
+			<td>Aflæsning</td>
+		</tr>
+		<tr>
+			<td>Største værdi</td>
+			<td>Den størst observerede værdi</td>
+			<td>Aflæsning</td>
+		</tr>
+		<tr>
+			<td>Median</td>
+			<td>Den midterste observation. Er det samme som 50% kvartilen (se nedenfor)</td>
+			<td>Aflæsning</td>
+		</tr>
+		<tr>
+			<td>Middelværdi</td>
+			<td>Gennemsnit</td>
+			<td>Beregning</td>
+		</tr>
+
+	</tbody>
+</table>
+
+<h2>Kvartilsæt</h2>
+
+<p>For at danne sig et overblik over ens observationer ser man på hvad værdie ved henholdsvis 25%, 50% og 75% er. På den måde kan man udtale sig om første, anden, tredie og fjerde kvartil. Den fjerde kvartil</p>
+
+<p>Kigger vi på tabellen med biler ovenfor kan vi se at:</p>
+
+<ul class="none">
+	<li>1. kvartil (25%) = 0 biler</li>
+	<li>2. kvartil (50%) = 1 bil</li>
+	<li>3. kvartil (75%) = 1 bil</li>
+</ul>
+
+<h2>Variationsbredde</h2>
+
+<p>Variationsbredden beskriver forskellen mellem mindste og største værdien. Det kan give en indikation af hvor bredt man har ramt med sin undersøgelse. Tallet findes ved beregning: </p>
+
+<p>Forstil dig eksemplet med bilerne ovenfor. Hvis vores undersøgelse havde vist at der var en person med 20 biler, så ville variationsbredden have været <span class="math">\( 20-0 = 20 \)</span>. Hvis man sammenholder den med kvartilsættet, så bliver det tydeligt at se at det på ingen måde er normen.</p>
+
+<h2>Varians</h2>
+
+<p><span class="inl_cmd">Variansen</span> fortæller noget om spredningen i datasættet, og angives <span class="math">\( Var(x) \)</span>eller <span class="math">\( s^2 \)</span>.</p>
+
+<h2>Spredning/standardafvigelse</h2>
+
+<p><span class="inl_cmd">Spredningen</span> fortæller noget om fordelingen af værdier i forhold til gennemsnittet, og angives med <span class="math">\( \sigma(x)  \)</span> (det græske bogstav sigma). Sammenhængen med variensen er <span class="math">\( \sigma(x) = \sqrt {Var(x)} = s \)</span></p>
+
+
+<h2>Normalfordeling/normaldistribution</h2>
+
+<p>Indenfor statistik anvender man begrebet normalfordeling, når data fordeler i det man kalder en "bell-curve". Årsagen til at man anvender "normal" er fordi man ofte ser den når man arbejder med statistisk materiale. </p>
+
+<figure id="">
+
+	<img class="p70" src="images/Normal_Distribution_bell_curve.svg" alt="" title="" />
+
+	<figcaption><a href="https://commons.wikimedia.org/wiki/File:Normal_Distribution_PDF.svg" target="_blank">https://commons.wikimedia.org/wiki/File:Normal_Distribution_PDF.svg</a></figcaption>
+
+</figure>
+
+<h1>Notation</h1>
+
+<p>Når man beregner Statisk meteriale anvender man en speciel form for notation, og her er der to vi skal have fat i: <span class="math">\( \overline x \)</span> og <span class="math">\( \sum \)</span></p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Symbol</th>
+			<th>Forklaring</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><span class="math">\( n \)</span></td>
+			<td>Antallet af observationer</td>
+		</tr>
+		<tr>
+			<td><span class="math">\( \overline x \)</span></td>
+			<td>Gennemsnitsværdien af <span class="math">\( x \)</span></td>
+		</tr>
+		<tr>
+			<td><span class="math">\( \sum \)</span></td>
+			<td>Summen af .... .Dette er det store bogstav <span class="inl_cmd">sigma</span> fra det græske alfabet</td>
+		</tr>
+	</tbody>
+</table>
+
+<h1>Beregninger - diskret fordeling</h1>
+
+<p></p>
+
+
+<h2>Et datasæt</h2>
+
+<p>Lad os kigge på et simpelt datasæt over karakterer</p>
+
+<table class="fixed">
+	<thead>
+		<tr>
+			<th colspan="10">Tabel 1 (diskrete observationer): Karakterer</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>7</td>
+			<td>4</td>
+			<td>12</td>
+			<td>7</td>
+			<td>10</td>
+			<td>10</td>
+			<td>7</td>
+			<td>4</td>
+			<td>7</td>
+			<td>02</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>I en tabel bliver det følgende:</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th colspan="10">Tabel 2 (Kontinuerte observationer): Karakterer</th>
+		</tr>
+		<tr>
+			<th>x</th>
+			<th><span class="math">\( h(x) \)</span></th>
+			<th><span class="math">\( f(x) \)</span></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><span class="math">\( 02 \)</span></td>
+			<td><span class="math">\( 1 \)</span></td>
+			<td><span class="math">\( 0,1 \)</span></td>
+		</tr>
+		<tr>
+			<td><span class="math">\( 4 \)</span></td>
+			<td><span class="math">\( 2 \)</span></td>
+			<td><span class="math">\( 0,2 \)</span></td>
+		</tr>
+		<tr>
+			<td><span class="math">\( 7 \)</span></td>
+			<td><span class="math">\( 4 \)</span></td>
+			<td><span class="math">\( 0,4 \)</span></td>
+		</tr>
+		<tr>
+			<td><span class="math">\( 10 \)</span></td>
+			<td><span class="math">\( 2 \)</span></td>
+			<td><span class="math">\( 0,2 \)</span></td>
+		</tr>
+		<tr>
+			<td><span class="math">\( 12 \)</span></td>
+			<td><span class="math">\( 1 \)</span></td>
+			<td><span class="math">\( 0,1 \)</span></td>
+		</tr>
+	</tbody>
+</table>
+
+<h2>Antal observationer</h2>
+
+<p>Antallet af observationer kan ved små datasæt tælles, men hvis datasættet er stort anvender man følgende formel, hvor <span class="math">\( k \)</span> er antallet af observationsværdier:</p>
+
+<div class="latex">$$ n =  \sum_{i=1}^{k} h_i $$</div>
+
+<p>Formlen skal læses på følgende måde:</p>
+
+<p>Gennemsnittet findes ved at lægge hyppighederne for hvert observationssæt sammen, f.eks. ved tabel 2:</p>
+
+<div class="latex">$$ n =  \sum_{i=1}^{k} h_i \Rightarrow  n =  \sum_{i=1}^{5} h_i = 1+2+4+2+1 = 10$$</div>
+
+
+<h2>Gennemsnit</h2>
+
+<p>Gennemsnittet vil vi beregne på følgende måde:</p>
+
+<div class="latex">$$ \overline x = \frac{x_1+x_2+ ... +x_{10}}{n} = \frac{7+4+12+7+10+10+7+4+7+02}{10} = \frac{70}{10} = 7$$</div>
+
+<p>For at skrive denne formel op generelt anvender man følgende notation:</p>
+
+<div class="latex">$$ \overline x = \frac{1 }{n} \cdot \sum_{i=1}^{n} x_i$$</div>
+
+<p>Havde vi brugt denne notation i vores beregning af gennemsnittet (tabel 1) ville den altså have set ud som følger:</p>
+
+<div class="latex">$$ \overline x = \frac{ 1}{10} \cdot \sum_{i=1}^{10} x_i = \frac{1}{10} \cdot (7+4+12+7+10+10+7+4+7+02) = \frac{70}{10} = 7$$</div>
+
+<p>Anvendt på tabel 2 kan man anvende to forskellige formler:</p>
+
+<div class="latex">$$ \overline x = \frac{1}{n} \cdot \sum_{i=1}^{n} x_i \cdot h_i ~~~~ \vee ~~~~\overline x = \sum_{i=1}^{n} x_i \cdot f_i $$</div>
+
+<p>Dette gælder da:</p>
+
+<div class="latex">$$ f_i = \frac{1}{n} \cdot h_i \Leftrightarrow f_i =  \frac{h_i}{n} $$</div>
+
+<h2>Varians</h2>
+
+<p>Variansen kan angives på flere måder <span class="math">\( s^2 , \sigma^2 , Var(x)\)</span> her vil vi anvende <span class="math">\( \sigma^2 \)</span></p>
+
+<p>Variansen udregnles med følgende formel:</p>
+
+<div class="latex">$$ \sigma^2 = \frac{1}{n-1} \cdot \sum_{i=1}^{k} (x_i-\overline x)^2 \cdot h_i $$</div>
+
+<p>Ved at anvende tabel 1:</p>
+
+<div class="latex">$$ \sigma^2 = \frac{1}{10-1} \cdot \left( (02-7)^2 \cdot 1 + (4-7)^2 \cdot 2 + (7-7)^2 \cdot 4 + (10-7)^2 \cdot 2 + (12-7)^2 \cdot 1 \right)
+
+\\ \Updownarrow \\
+
+\sigma^2 = \frac{1}{9} \cdot \left((-5)^2 \cdot 1 + (-3)^2 \cdot 2 + 0^2 \cdot 4 + 3^2 \cdot 2 + 5^2 \cdot 1 \right)
+
+\\ \Updownarrow \\
+
+\sigma^2 = \frac{1}{9} \cdot (25+18+0+18+25) = \frac{1}{9} \cdot 86 = 9\frac{5}{9} = 9,556
+
+ $$</div>
+
+
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+	</body>
+
+</html>
