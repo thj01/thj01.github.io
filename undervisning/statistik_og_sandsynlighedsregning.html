@@ -386,7 +386,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 		</tr>
 		<tr>
 			<td><span class="math">\( m \)</span></td>
-			<td>Interval midtpunkt. Den midterste værdi i et interval f.eks. <span class="math">\( 161-170 = \frac{161+170}{2} = 165.5 \)</span> </td>
+			<td>Interval midtpunkt. Den midterste værdi i et interval f.eks. <span class="math">\( ]160;170] = \frac{161+170}{2} = 165.5 \)</span> </td>
 		</tr>
 	</tbody>
 </table>
@@ -541,7 +541,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 <table class="">
 	<thead>
 		<tr>
-			<th>Højde <br/><span class="math">\( ]x_1;x_2] \)</span></th>
+			<th>Højde <br/><span class="math">\( ]x_{i-1};x_i] \)</span></th>
 			<th>Antal <br/><span class="math">\( h(x) \)</span></th>
 			<th>Frekvens <br/><span class="math">\( f(x) \)</span></th>
 			<th>Interval midtpunkt <br/><span class="math">\( m(x) \)</span></th>
@@ -590,6 +590,16 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 <p>Dvs</p>
 
 <div class="latex">$$ n = \sum_{i=1}^{k} h_i \Rightarrow n = \sum_{i=1}^{5} h_i = 3+9+4+4+1 = 20$$</div>
+
+<h2>Interval Midtpunkt</h2>
+
+<p><span class="inl_cmd">Interval midtpunktet</span> findes ved at tage halvdelen af summen af størsteværdien i intervallet (<span class="math">\( x_i \)</span>) og mindsteværdien (<span class="math">\( x_{i-1} \)</span>):</p>
+
+<div class="latex">$$ m_i = \frac{x_{i-1} + x_i}{2} $$</div>
+
+<p>F.eks. af intervallet <span class="math">\( ]180:190] \)</span></p>
+
+<div class="latex">$$ m = \frac{180+190}{2} = 185 $$</div>
 
 <h2>Middelværdi (gennemsnit)</h2>
 
