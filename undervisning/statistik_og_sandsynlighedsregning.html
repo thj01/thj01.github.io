@@ -373,12 +373,20 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 			<td>Antallet af observationer</td>
 		</tr>
 		<tr>
+			<td><span class="math">\( k \)</span></td>
+			<td>Antal observationsværdier</td>
+		</tr>
+		<tr>
 			<td><span class="math">\( \overline x \)</span></td>
 			<td>Gennemsnitsværdien af <span class="math">\( x \)</span></td>
 		</tr>
 		<tr>
 			<td><span class="math">\( \sum \)</span></td>
 			<td>Summen af .... .Dette er det store bogstav <span class="inl_cmd">sigma</span> fra det græske alfabet</td>
+		</tr>
+		<tr>
+			<td><span class="math">\( m \)</span></td>
+			<td>Interval midtpunkt. Den midterste værdi i et interval f.eks. <span class="math">\( 161-170 = \frac{161+170}{2} = 165.5 \)</span> </td>
 		</tr>
 	</tbody>
 </table>
@@ -469,7 +477,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 <div class="latex">$$ n =  \sum_{i=1}^{k} h_i \Rightarrow  n =  \sum_{i=1}^{5} h_i = 1+2+4+2+1 = 10$$</div>
 
 
-<h2>Gennemsnit</h2>
+<h2>Middelværdi (gennemsnit)</h2>
 
 <p>Gennemsnittet vil vi beregne på følgende måde:</p>
 
@@ -477,7 +485,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <p>For at skrive denne formel op generelt anvender man følgende notation:</p>
 
-<div class="latex">$$ \overline x = \frac{1 }{n} \cdot \sum_{i=1}^{n} x_i$$</div>
+<div class="latex">$$ \overline x = \frac{1 }{n} \cdot \sum_{i=1}^{k} x_i$$</div>
 
 <p>Havde vi brugt denne notation i vores beregning af gennemsnittet (tabel 1) ville den altså have set ud som følger:</p>
 
@@ -485,15 +493,18 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <p>Anvendt på tabel 2 kan man anvende to forskellige formler:</p>
 
-<div class="latex">$$ \overline x = \frac{1}{n} \cdot \sum_{i=1}^{n} x_i \cdot h_i ~~~~ \vee ~~~~\overline x = \sum_{i=1}^{n} x_i \cdot f_i $$</div>
+<div class="latex">$$ \overline x = \frac{1}{n} \cdot \sum_{i=1}^{k} x_i \cdot h_i ~~~~ \vee ~~~~\overline x = \sum_{i=1}^{k} x_i \cdot f_i $$</div>
 
 <p>Dette gælder da:</p>
 
 <div class="latex">$$ f_i = \frac{1}{n} \cdot h_i \Leftrightarrow f_i =  \frac{h_i}{n} $$</div>
 
-<h2>Varians</h2>
+<h2>Varians og spredning</h2>
 
-<p>Variansen kan angives på flere måder <span class="math">\( s^2 , \sigma^2 , Var(x)\)</span> her vil vi anvende <span class="math">\( \sigma^2 \)</span></p>
+<p><b>Variansen</b> beskriver hvor meget værdierne i gennemsnit afviger fra middelværdien. Variansen kan angives på flere måder <span class="math">\( s^2 , \sigma^2 , Var(x)\)</span>, og her vil vi anvende <span class="math">\( \sigma^2 \)</span> som er den matatisk mest korrekte.</p>
+
+<p><b>Spredningen</b> beskriver hvordan den stokastiske variabel fordeler sig omkring middelværdien. En stokastisk variabel kaldes også for en tilfældighedsvariabel. <span class="inl_cmd">Spredningen</span> er lig kvadratroden af variansen og variablen angives med <span class="math">\( \sigma \)</span>.</p>
+
 
 <p>Variansen udregnles med følgende formel:</p>
 
@@ -513,6 +524,118 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
  $$</div>
 
+<p>Spredningen er kvadratroden af variansen hvilket vil sige:</p>
+
+<div class="latex">$$ \sigma = \sqrt {\sigma^2} $$</div>
+
+<p>Spredningen er altså:</p>
+
+<div class="latex">$$ \sigma = \sqrt {9,556} = 3,091 $$</div>
+
+<h1>Beregninger - kontinuert data</h1>
+
+<h2>Et datasæt</h2>
+
+<p>Herunder er en tabel over højden på 20 volleyballspillere.</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Højde <br/><span class="math">\( ]x_1;x_2] \)</span></th>
+			<th>Antal <br/><span class="math">\( h(x) \)</span></th>
+			<th>Frekvens <br/><span class="math">\( f(x) \)</span></th>
+			<th>Interval midtpunkt <br/><span class="math">\( m(x) \)</span></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><span class="math">\( ]160;170] \)</span></td>
+			<td><span class="math">\( 3 \)</span></td>
+			<td><span class="math">\( 0,15 \)</span></td>
+			<td><span class="math">\( 165 \)</span></td>
+		</tr>
+		<tr>
+			<td><span class="math">\( ]170;180] \)</span></td>
+			<td><span class="math">\( 9 \)</span></td>
+			<td><span class="math">\( 0,45 \)</span></td>
+			<td><span class="math">\(  175\)</span></td>
+		</tr>		
+		<tr>
+			<td><span class="math">\( ]180;190] \)</span></td>
+			<td><span class="math">\( 4 \)</span></td>
+			<td><span class="math">\( 0,2 \)</span></td>
+			<td><span class="math">\( 185 \)</span></td>
+		</tr>
+		<tr>
+			<td><span class="math">\( ]190;200] \)</span></td>
+			<td><span class="math">\( 4 \)</span></td>
+			<td><span class="math">\( 0,2 \)</span></td>
+			<td><span class="math">\( 195 \)</span></td>
+		</tr>
+		<tr>
+			<td><span class="math">\( ]200;210] \)</span></td>
+			<td><span class="math">\( 1 \)</span></td>
+			<td><span class="math">\( 0,05 \)</span></td>
+			<td><span class="math">\( 205 \)</span></td>
+		</tr>
+	</tbody>
+</table>
+
+<h2>Antal observationer</h2>
+
+<p>Udregnes som ved diskret fordeling</p>
+
+<div class="latex">$$ n =  \sum_{i=1}^{k} h_i $$</div>
+
+<p>Dvs</p>
+
+<div class="latex">$$ n = \sum_{i=1}^{k} h_i \Rightarrow n = \sum_{i=1}^{5} h_i = 3+9+4+4+1 = 20$$</div>
+
+<h2>Middelværdi (gennemsnit)</h2>
+
+<p>Gennemsnittet vil vi beregne på følgende måde:</p>
+
+<div class="latex">$$ \overline x = \frac{1 }{n} \cdot \sum_{i=1}^{k} m_i \cdot x_i $$</div>
+
+<p>Middelværdien er altså:</p>
+
+<div class="latex">$$ \overline x = \frac{1}{20} \cdot \sum_{i=1}^{5} m_i \cdot x_i = 165 \cdot 3 + 175 \cdot 9 + 185 \cdot 4 +195 \cdot 4 + 205 \cdot 1 = 189,75$$</div>
+
+<p>Anvendt på tabel 2 kan man anvende to forskellige formler:</p>
+
+<div class="latex">$$ \overline x = \frac{1}{n} \cdot \sum_{i=1}^{k} m_i \cdot h_i ~~~~ \vee ~~~~\overline x = \sum_{i=1}^{k} m_i \cdot f_i $$</div>
+
+<p>Dette gælder da:</p>
+
+<div class="latex">$$ f_i = \frac{1}{n} \cdot h_i \Leftrightarrow f_i =  \frac{h_i}{n} $$</div>
+
+<h2>Varians og spredning</h2>
+
+<p>Variansen udregnles med følgende formel:</p>
+
+<div class="latex">$$ \sigma^2 = \frac{1}{n-1} \cdot \sum_{i=1}^{k} (m_i-\overline x)^2 \cdot h_i $$</div>
+
+<p>Ved at anvende tabel 1:</p>
+
+<div class="latex">$$ \sigma^2 = \frac{1}{20-1} \cdot \left( (165-189,75)^2 \cdot 3 + (175-189,75)^2 \cdot 9 + (185-189,75)^2 \cdot 4+ \\(195-189,75)^2 \cdot 4 + (205-189,75)^2 \cdot 1 \right)
+
+\\ \Updownarrow \\
+
+\sigma^2 = \frac{1}{20-1} \cdot \left( (-24,75)^2 \cdot 3 + (-14,75)^2 \cdot 9 + (-4,75)^2 \cdot 4+ (5,25)^2 \cdot 4 + (15,25)^2 \cdot 1 \right)
+
+\\ \Updownarrow \\
+
+\sigma^2 = \frac{1}{19} \cdot (1837,7+1958,1+90,25+110,25+232,56) = \frac{1}{19} \cdot 4228,86 = 222,57
+
+ $$</div>
+
+<p>Spredningen er kvadratroden af variansen hvilket vil sige:</p>
+
+<div class="latex">$$ \sigma = \sqrt {\sigma^2} $$</div>
+
+<p>Spredningen er altså:</p>
+
+<div class="latex">$$ \sigma = \sqrt {222,57} = 14,92 $$</div>
 
 <p></p>
 <p></p>
