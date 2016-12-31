@@ -202,8 +202,8 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 <p>Nogle gange vil ens datasæt blive uoverskueligt ved at kun at arbejde med eksakte værdier. Data kobles sammen af en sammenhæng. Her vil man vælge at gruppere observationerne i nogle praktiske og anvendelige enheder. Det kan f.eks. være ved:</p>
 
 <ul class="disc">
-	<li>Højde målinger ( -150cm, 151-160cm, 161-170 cm ...) </li>
-	<li>Aldersgrupper (-18, 19-23, 24-29 ... </li>
+	<li>Højde målinger ( <span class="math">\( ]150;160], ]160;170[, ]170;180[, ]180;190[  ... \)</span>) </li>
+	<li>Aldersgrupper (<span class="math">\( ]18;23[, ]23;28[, ]28;33[ ...  \)</span>)</li>
 	<li>...</li>
 </ul>
 
@@ -391,6 +391,30 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 	</tbody>
 </table>
 
+<h1>Diagrammer</h1>
+
+<p>For at skabe et hurtig overblik over sin undersøgelse kan man lave diagrammer. De to mest anvendelige i denne sammenhæng er <span class="inl_cmd">søjle-</span> og <span class="inl_cmd">lagkagediagrammet</span></p>
+
+<span class="afsnit">Søjlediagram</span>
+
+<figure id="">
+
+	<img class="p80" src="images/statistik_søjlediagram_usynlig baggund.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<span class="afsnit">Cirkeldiagram</span>
+
+<figure id="">
+
+	<img class="p70" src="images/statistik_lagkagediagram_usynlig baggund.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
 <h1>Beregninger - diskret fordeling</h1>
 
 <p></p>
@@ -398,31 +422,88 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <h2>Et datasæt</h2>
 
-<p>Lad os kigge på et simpelt datasæt over karakterer</p>
+<p>Lad os kigge på et simpelt datasæt over karakterer, hvor vi sætter karaktererne til variablen <span class="math">\( x \)</span>.</p>
 
 <table class="fixed">
 	<thead>
 		<tr>
-			<th colspan="10">Tabel 1 (diskrete observationer): Karakterer</th>
+			<th colspan="11">Tabel 1 (diskrete observationer): Karakterer</th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr>
-			<td>7</td>
-			<td>4</td>
-			<td>12</td>
-			<td>7</td>
-			<td>10</td>
-			<td>10</td>
-			<td>7</td>
-			<td>4</td>
-			<td>7</td>
-			<td>02</td>
+			<td><span class="math">\( x \)</span></td>
+			<td><span class="math">\( 7 \)</span></td>
+			<td><span class="math">\( 4 \)</span></td>
+			<td><span class="math">\( 12 \)</span></td>
+			<td><span class="math">\( 7 \)</span></td>
+			<td><span class="math">\( 10 \)</span></td>
+			<td><span class="math">\( 10 \)</span></td>
+			<td><span class="math">\( 7 \)</span></td>
+			<td><span class="math">\( 4 \)</span></td>
+			<td><span class="math">\( 7 \)</span></td>
+			<td><span class="math">\( 02 \)</span></td>
 		</tr>
 	</tbody>
 </table>
 
-<p>I en tabel bliver det følgende:</p>
+<p>Dette datasæt er meget lille og let at overskue. Vi kan tælle antallet af observationer og gennemsnittet kan vi udregne på følgende måde:</p>
+
+<div class="latex">$$ \overline x = \frac{7+4+12+7+10+10+7+4++7+02}{10} = \frac{70}{10} = 7 $$</div>
+
+<p>Hvis vi udvider vores skema vil vi kunne omskrive dette til:</p>
+
+<table class="fixed">
+	<thead>
+		<tr>
+			<th colspan="11">Tabel 1 (diskrete observationer): Karakterer</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><span class="math">\( x \)</span></td>
+			<td><span class="math">\( 7 \)</span></td>
+			<td><span class="math">\( 4 \)</span></td>
+			<td><span class="math">\( 12 \)</span></td>
+			<td><span class="math">\( 7 \)</span></td>
+			<td><span class="math">\( 10 \)</span></td>
+			<td><span class="math">\( 10 \)</span></td>
+			<td><span class="math">\( 7 \)</span></td>
+			<td><span class="math">\( 4 \)</span></td>
+			<td><span class="math">\( 7 \)</span></td>
+			<td><span class="math">\( 02 \)</span></td>
+		</tr>
+		<tr>
+			<td><span class="math">\( x_i \)</span></td>
+			<td><span class="math">\( x_1 \)</span></td>
+			<td><span class="math">\( x_2 \)</span></td>
+			<td><span class="math">\( x_3 \)</span></td>
+			<td><span class="math">\( x_4 \)</span></td>
+			<td><span class="math">\( x_5 \)</span></td>
+			<td><span class="math">\( x_6 \)</span></td>
+			<td><span class="math">\( x_7 \)</span></td>
+			<td><span class="math">\( x_8 \)</span></td>
+			<td><span class="math">\( x_9 \)</span></td>
+			<td><span class="math">\( x_k\)</span></td>
+		</tr>
+	</tbody>
+</table>
+
+<div class="latex">$$ \overline x = \frac{1}{antal~observationer} \cdot \left( x_1+x_2+x_3+ ... +x_k   \right) $$</div>
+
+<p>For at skrive dette med matematisk notation anvender vi <span class="math">\( \sum \)</span>, hvor <span class="math">\( x_i \)</span> er den enkelte fortløbende observation, <span class="math">\( n \)</span> er antallet af observationer og <span class="math">\( k \)</span> er den sidste observation:</p>
+
+<div class="latex">$$ \overline x = \frac{1}{n} \cdot \sum_{i=1}^{k} x_i $$</div>
+
+<p><span class="math">\( \sum \)</span> siger altså at man skal at opsummere fra det første <span class="math">\( x_1 \)</span> til det sidste <span class="math">\( x_k \)</span>. Altså:</p>
+
+<div class="latex">$$ \sum_{i=1}^{k} x_i= x_1+x_2+x_3+...+x_{k-1}+{x_k} $$</div>
+
+
+
+<h2>Datasæt i en tabel</h2>
+
+<p>For at få et overlbik over vores data indsætter man dem i en tabel som herunder:</p>
 
 <table class="">
 	<thead>
@@ -479,11 +560,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <h2>Middelværdi (gennemsnit)</h2>
 
-<p>Gennemsnittet vil vi beregne på følgende måde:</p>
-
-<div class="latex">$$ \overline x = \frac{x_1+x_2+ ... +x_{10}}{n} = \frac{7+4+12+7+10+10+7+4+7+02}{10} = \frac{70}{10} = 7$$</div>
-
-<p>For at skrive denne formel op generelt anvender man følgende notation:</p>
+<p>Gennemsnittet beregnes med:</p>
 
 <div class="latex">$$ \overline x = \frac{1 }{n} \cdot \sum_{i=1}^{k} x_i$$</div>
 
@@ -505,6 +582,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <p><b>Spredningen</b> beskriver hvordan den stokastiske variabel fordeler sig omkring middelværdien. En stokastisk variabel kaldes også for en tilfældighedsvariabel. <span class="inl_cmd">Spredningen</span> er lig kvadratroden af variansen og variablen angives med <span class="math">\( \sigma \)</span>.</p>
 
+<span class="afsnit">Variansen</span>
 
 <p>Variansen udregnles med følgende formel:</p>
 
@@ -520,9 +598,19 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 \\ \Updownarrow \\
 
-\sigma^2 = \frac{1}{9} \cdot (25+18+0+18+25) = \frac{1}{9} \cdot 86 = 9\frac{5}{9} = 9,556
+\sigma^2 = \frac{1}{9} \cdot (25+18+0+18+25)
+
+\\ \Updownarrow \\
+
+\sigma^2 = \frac{1}{9} \cdot 86
+
+\\ \Updownarrow \\
+
+\sigma^2 = 9,556
 
  $$</div>
+ 
+<span class="afsnit">Spredningen</span>
 
 <p>Spredningen er kvadratroden af variansen hvilket vil sige:</p>
 
@@ -621,6 +709,8 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <h2>Varians og spredning</h2>
 
+<span class="afsnit">Varians</span>
+
 <p>Variansen udregnles med følgende formel:</p>
 
 <div class="latex">$$ \sigma^2 = \frac{1}{n-1} \cdot \sum_{i=1}^{k} (m_i-\overline x)^2 \cdot h_i $$</div>
@@ -635,9 +725,19 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 \\ \Updownarrow \\
 
-\sigma^2 = \frac{1}{19} \cdot (1837,7+1958,1+90,25+110,25+232,56) = \frac{1}{19} \cdot 4228,86 = 222,57
+\sigma^2 = \frac{1}{19} \cdot (1837,7+1958,1+90,25+110,25+232,56)
+
+\\ \Updownarrow \\
+
+\sigma^2 = \frac{1}{19} \cdot 4228,86
+
+\\ \Updownarrow \\
+
+\sigma^2 =  222,57
 
  $$</div>
+ 
+ <span class="afsnit">Spredning</span>
 
 <p>Spredningen er kvadratroden af variansen hvilket vil sige:</p>
 
