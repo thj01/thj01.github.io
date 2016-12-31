@@ -94,7 +94,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 	<div class="latex">$$ \frac{a}{b} : c = \frac{a}{b} : \frac{c}{1} = \frac{a}{b} \cdot \frac{1}{c} =  \frac{a}{b \cdot c} $$</div>
 	
-	<div class="latex">$$ \frac{a}{b} : \frac{c}{d} = \frac{a}{b} : \frac{d}{c} $$</div>
+	<div class="latex">$$ \frac{a}{b} : \frac{c}{d} = \frac{a}{b} \cdot \frac{d}{c} $$</div>
 
 <h1>Potensregler</h1>
 
@@ -350,7 +350,142 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 </figure>
 
+<h1>Statistik</h1>
 
+<p></p>
+
+<h2>Diskret fordeling</h2>
+
+<span class="afsnit">Eksempel på tabel</span>
+
+<p>Denne tabel indeholder karakterfordelingen for 10 elever.</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th colspan="10">Tabel 2 (Kontinuerte observationer): Karakterer</th>
+		</tr>
+		<tr>
+			<th>x</th>
+			<th><span class="math">\( h(x) \)</span></th>
+			<th><span class="math">\( f(x) \)</span></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><span class="math">\( 02 \)</span></td>
+			<td><span class="math">\( 1 \)</span></td>
+			<td><span class="math">\( 0,1 \)</span></td>
+		</tr>
+		<tr>
+			<td><span class="math">\( 4 \)</span></td>
+			<td><span class="math">\( 2 \)</span></td>
+			<td><span class="math">\( 0,2 \)</span></td>
+		</tr>
+		<tr>
+			<td><span class="math">\( 7 \)</span></td>
+			<td><span class="math">\( 4 \)</span></td>
+			<td><span class="math">\( 0,4 \)</span></td>
+		</tr>
+		<tr>
+			<td><span class="math">\( 10 \)</span></td>
+			<td><span class="math">\( 2 \)</span></td>
+			<td><span class="math">\( 0,2 \)</span></td>
+		</tr>
+		<tr>
+			<td><span class="math">\( 12 \)</span></td>
+			<td><span class="math">\( 1 \)</span></td>
+			<td><span class="math">\( 0,1 \)</span></td>
+		</tr>
+	</tbody>
+</table>
+
+<span class="afsnit">Antal observationer</span>
+
+<div class="latex">$$ n =  \sum_{i=1}^{k} h_i $$</div>
+
+<span class="afsnit">Middelværdi (gennemsnit)</span>
+
+<div class="latex">$$ \overline x = \frac{1}{n} \cdot \sum_{i=1}^{k} x_i \cdot h_i ~~~~ \vee ~~~~\overline x = \sum_{i=1}^{k} x_i \cdot f_i $$</div>
+
+<span class="afsnit">Varians</span>
+
+<div class="latex">$$ \sigma^2 = \frac{1}{n-1} \cdot \sum_{i=1}^{k} (x_i-\overline x)^2 \cdot h_i $$</div>
+
+<span class="afsnit">Spredning/standardafvigelse</span>
+
+<div class="latex">$$ \sigma = \sqrt {\sigma^2} $$</div>
+
+<h2>Kontinuert data</h2>
+
+<p></p>
+
+<span class="afsnit">Eksempel på tabel</span>
+
+<p>Denne tabel indeholder højdefordelingen mellem 20 basketspillere.</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Højde <br/><span class="math">\( ]x_{i-1};x_i] \)</span></th>
+			<th>Antal <br/><span class="math">\( h(x) \)</span></th>
+			<th>Frekvens <br/><span class="math">\( f(x) \)</span></th>
+			<th>Interval midtpunkt <br/><span class="math">\( m(x) \)</span></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><span class="math">\( ]160;170] \)</span></td>
+			<td><span class="math">\( 3 \)</span></td>
+			<td><span class="math">\( 0,15 \)</span></td>
+			<td><span class="math">\( 165 \)</span></td>
+		</tr>
+		<tr>
+			<td><span class="math">\( ]170;180] \)</span></td>
+			<td><span class="math">\( 9 \)</span></td>
+			<td><span class="math">\( 0,45 \)</span></td>
+			<td><span class="math">\(  175\)</span></td>
+		</tr>		
+		<tr>
+			<td><span class="math">\( ]180;190] \)</span></td>
+			<td><span class="math">\( 4 \)</span></td>
+			<td><span class="math">\( 0,2 \)</span></td>
+			<td><span class="math">\( 185 \)</span></td>
+		</tr>
+		<tr>
+			<td><span class="math">\( ]190;200] \)</span></td>
+			<td><span class="math">\( 4 \)</span></td>
+			<td><span class="math">\( 0,2 \)</span></td>
+			<td><span class="math">\( 195 \)</span></td>
+		</tr>
+		<tr>
+			<td><span class="math">\( ]200;210] \)</span></td>
+			<td><span class="math">\( 1 \)</span></td>
+			<td><span class="math">\( 0,05 \)</span></td>
+			<td><span class="math">\( 205 \)</span></td>
+		</tr>
+	</tbody>
+</table>
+
+<span class="afsnit">Antal observationer</span>
+
+<div class="latex">$$ n =  \sum_{i=1}^{k} h_i $$</div>
+
+<span class="afsnit">Interval midtpunkt</span>
+
+<div class="latex">$$ m_i = \frac{x_{i-1} + x_i}{2} $$</div>
+
+<span class="afsnit">Middelværdi (gennemsnit)</span>
+
+<div class="latex">$$ \overline x = \frac{1}{n} \cdot \sum_{i=1}^{k} m_i \cdot h_i ~~~~ \vee ~~~~\overline x = \sum_{i=1}^{k} m_i \cdot f_i $$</div>
+
+<span class="afsnit">Varians</span>
+
+<div class="latex">$$ \sigma^2 = \frac{1}{n-1} \cdot \sum_{i=1}^{k} (m_i-\overline x)^2 \cdot h_i $$</div>
+
+<span class="afsnit">Spredning/standardafvigelse</span>
+
+<div class="latex">$$ \sigma = \sqrt {\sigma^2} $$</div>
 
 
 
