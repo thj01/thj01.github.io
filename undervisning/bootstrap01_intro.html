@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+
+<head>
+	
+	<meta charset="UTF-8" lang="da"/>
+
+	<title>Vidas.dk</title>
+
+	<link rel="stylesheet" href="../css/style.css" />
+	<link rel="stylesheet" href="../css/styles/docco.css" />
+	<link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono|Ubuntu|Ubuntu+Condensed' rel='stylesheet' type='text/css'>
+
+	<script src="http://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+	<script src="../js/toc2.js" type="text/javascript"></script>
+	<script>$(function(){$("#license").load("license.html"); });</script>
+	<script type="text/javascript" async
+		src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+		MathJax.Hub.Config({ jax: ["input/TeX","output/HTML-CSS"], displayAlign: "left"
+ 		});
+	</script>
+        <script>
+	$(document).ready(function(){
+		$(".hide").click(function(){$("#toc").hide();});
+		$(".show").click(function(){$("#toc").show();});
+	});
+	</script>
+	<script src="../js/highlight.pack.js" type="text/javascript"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+</head>
+<!-- 
+code highlighter : https://highlightjs.org/
+code converter : http://www.freebits.co.uk/convert-html-code-to-text.html 
+-->
+<html>
+<body onload="generateTOC(document.getElementById('toc'));">
+
+<footer id="license"></footer>
+
+<header>
+	<div class="show" id="toggle_menu"></div> 
+</header>
+
+<div class="toggle">
+	<div id="toc" class="hide">
+		<div id="toc_title"><span class=""><a href="#" target="">(Luk)</a></span></div>	
+	</div>
+</div>
+		
+<p></p><p></p>
+
+
+<div class="title">Bootstrap - Intro</div>
+
+<h1>Hvad er bootstrap</h1>
+
+<p>Bootstrap er et <span class="inl_cmd">HTML-Framework</span> der oprindeligt blev udvilket af Twitter, men som er gået hen og blevet et meget aktivt opensource projekt.</p>
+
+<p>Ved hjælp af bootstrap kan man hurtigt udvikle websider og applikationer.</p>
+
+<h2>Dette materiale</h2>
+
+<p>Dette materiale tager udgangspunkt i dokumentationen fra <a href="http://www.w3schools.com/bootstrap/default.asp" target="_blank">w3schools</a>.</p>
+
+<p>Der vil blive henvist til nogle sider som der skal arbejdes med og så vil der blive stillet nogle </p>
+
+
+<h2>Bootstrap prototyper</h2>
+
+<p></p>
+
+<p>Det er også muligt at downloade en prototyper, som man kan anvende til hurtigt at lave sider med, og den skal vi kigge på når der er forståelse for den underliggende formatering.</p>
+
+<p><b>Pingendo:</b> <a href="http://www.pingendo.com/" target="_blank">http://www.pingendo.com/</a></p>
+
+<h1>Overblik over w3schools</h1>
+
+<p><span class="inl_cmd">W3schools</span> er den online ressource man har brug for som webudvikler. Når man kommer ind på hovedsiden har den henvisinger til sine tutorials. Gå ind på: <a href="http://www.w3schools.com/" target="_blank">http://www.w3schools.com/</a>.</p>
+
+<figure id="">
+
+	<img class="p90" src="images/bootstrap_w3schools_01.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Vælg <span class="inl_cmd">Tutorials</span> og klik på <span class="inl_cmd">Learn Bootstrap</span></p>
+
+<figure id="">
+
+	<img class="p90" src="images/bootstrap_w3schools_02.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>De tutorials der skal arbejdes med står ude i venstre side</p>
+
+<figure id="">
+
+	<img class="p90" src="images/bootstrap_w3schools_03.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h1>Din første Bootstrap side</h1>
+
+<p>For at prøve din første bootstrap side af skal du scrolle lidt ned på <span class="inl_cmd">BS HOME</span> siden indtil du når til <span class="inl_cmd">Bootstrap Example</span>. Her kan du se et eksempel på den måde Bootstrap er opbygget.</p>
+
+<figure id="">
+
+	<img class="p90" src="images/bootstrap_w3schools_04.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Når du klikker på <span class="inl_cmd">Try it Yourself >></span>, kommer du ind på en interaktiv side, hvor du kan se resulatet af koden. Læg mærke til at der nu er kommet en <span class="inl_cmd">Header</span> på med henvisning til CSS- og JavaScriptfiler der skal hentes fra nettet.</p>
+
+<figure id="">
+
+	<img class="p90" src="images/bootstrap_w3schools_05.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Vil du ikke have siden opdelt højre-venstre, kan du klikke på ikonet i øverste linie så det bliver øverst-nederst.</p>
+
+<figure id="">
+
+	<img class="p90" src="images/bootstrap_w3schools_06.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h1>De første øvelser</h1>
+
+<p>Du skal nu arbejde med disse fire kapitler i denne touturial:</p>
+
+<ul class="none">
+	<li>BS HOME: <a href="http://www.w3schools.com/bootstrap/default.asp" target="_blank">http://www.w3schools.com/bootstrap/default.asp</a></li>
+	<li>BS Get Started: <a href="http://www.w3schools.com/bootstrap/bootstrap_get_started.asp" target="_blank">http://www.w3schools.com/bootstrap/bootstrap_get_started.asp</a></li>
+	<li>BS Grid Basics: <a href="http://www.w3schools.com/bootstrap/bootstrap_grid_basic.asp" target="_blank">http://www.w3schools.com/bootstrap/bootstrap_grid_basic.asp</a></li>
+	<li>BS Images: <a href="http://www.w3schools.com/bootstrap/bootstrap_images.asp" target="_blank">http://www.w3schools.com/bootstrap/bootstrap_images.asp</a></li>
+</ul>
+
+<h2>Opgave</h2>
+
+<p>Lav en simpel side ved hjælp af Bootstrap, hvor du laver en præsentation af dig selv. Du skal anvende 3 kolonner og indsætte billeder af dig selv og noget andet.</p>
+
+
+
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+	</body>
+
+</html>
