@@ -141,13 +141,7 @@ font-family: verdana;
 
 <h1>Målrettet design</h1>
 
-<p>Som vi så ovenfor, så kan man anvende tags til at målrette sit design, men der opstår også andre situationer. Det kan man opnå med <span class="inl_cmd">&lt;div></span>, <span class="inl_cmd">&lt;span></span>, <span class="inl_cmd">id="**ID_NAVN**"</span> og <span class="inl_cmd">class="**CLASS_NAVN**"</span>:</p>
-
-<ul class="disc">
-	<li>Man skal nogle gange anvende et lidt andet design på et design, en eller flere gange ( <span class="inl_cmd">id</span> og <span class="inl_cmd">class</span>) </li>
-	<li>Man skal ramme en gruppe af elementer ( <span class="inl_cmd">&lt;div></span> )</li>
-	<li>Man skal nogle gange formatere noget inde i et tag ( <span class="inl_cmd">&lt;span></span> )</li>
-</ul>
+<p>Når man skal lave nogle generelle ændringer så kan man fint anvende de tags man skriver koden med. Men nogle gange har man brug for  enkelte elementer får et andet design. Det gøres ved enten at give elementet en unik identifikation (<span class="inl_cmd">id="ID_betegnelse"</span>) eller et tilhørsforhold til en klasse (<span class="inl_cmd">class="klasse_betegnelse"</span>).</p>
 
 <h2><span class="inl_cmd">id</span> og <span class="inl_cmd">class</span></h2>
 
@@ -200,32 +194,58 @@ color: blue;
 
 <h2><span class="inl_cmd">&lt;div></span> og <span class="inl_cmd">&lt;span></span></h2>
 
-<p>Både <span class="inl_cmd">&lt;div></span> og <span class="inl_cmd">&lt;span></span> anvendes til gruppere indhold, men de fungere lidt forskelligt. <span class="inl_cmd">&lt;div></span> er et <span class="inl_cmd">block-element</span>, hvilket vil sige at browseren vil starte divsektionen i en ny linie. </p>
+<p>Hvis man ønsker at gruppere elementer anvender man enten blok-elementet <span class="inl_cmd">&lt;div></span> eller inline-elementet <span class="inl_cmd">&lt;span></span>. De har samme funktion, nemlig at gruppere elementer eller at tilføre tekstelementer nogle egenskaber, men de anvendes forskelligt.</p>
 
+<ul class="none">
+	<li><b>&lt;div></b>: anvendes som et blok-element. Bruges til at gruppere andre blok-elementer</li>
+	<li><b>&lt;span></b>: anvendes som et inline-element. Bruges til afgrænse tekst</li>
+</ul>
 
+<ul class="disc">
+	<li>Man skal nogle gange anvende et lidt andet design på et design, en eller flere gange ( <span class="inl_cmd">id</span> og <span class="inl_cmd">class</span>) </li>
+	<li>Man skal ramme en gruppe af elementer ( <span class="inl_cmd">&lt;div></span> )</li>
+	<li>Man skal nogle gange formatere noget inde i et tag ( <span class="inl_cmd">&lt;span></span> )</li>
+</ul>
 
-<h2></h2>
+<p><span class="inl_cmd">&lt;div></span> og <span class="inl_cmd">&lt;span></span> anvendes når HTML5's standard-elementer ikke er anvendelige. I ovenstående eksempel kunne vi f.eks. have pakket <span class="inl_cmd">&lt;h2></span> og <span class="inl_cmd">&lt;h3></span> inde i en <span class="inl_cmd">&lt;div></span> vi gav tilhørsforhold til klassen <span class="inl_cmd">blue</span>, og fjerne klasserne fra <span class="inl_cmd">&lt;p></span>.</p>
 
-<p></p>
+<pre>
+	<code class="html">&lt;h1>Overskrift&lt;/h1>
+	
+&lt;p id="red">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur condimentum ac nisi a sagittis. Pellentesque fringilla quis turpis vitae congue. Integer vel eleifend ex. Quisque ultricies tempor sem a facilisis.&lt;/p>
 
+&lt;div class="blue">
+	
+&lt;h2>Under-overskrift&lt;/h2>
+	
+&lt;p>Duis eu quam a augue commodo lobortis. Nulla quis justo ac nulla venenatis finibus. Nam non vestibulum lectus. Nunc nec sapien scelerisque, egestas felis at, suscipit elit.&lt;/p>
+	
+&lt;h3>Under-under-overskrift&lt;/h3>
+	
+&lt;p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur condimentum ac nisi a sagittis. Pellentesque fringilla quis turpis vitae congue. Integer vel eleifend ex. .&lt;/p>
 
+&lt;div>
+</code>
 
-<h1>Tekst</h1>
+</pre>
 
-<p></p>
+<p>For at ramme <span class="inl_cmd">&lt;p></span>-elementerne ændrer vi nu i CSS koden:</p>
 
-<h1>Boks modellen</h1>
+<pre>
+	<code class="css">p#red {
+color: red;
+}
 
-<p></p>
+.blue p {
+color: blue;
+}</code>
+</pre>
 
-<h1>Farver og baggrunde</h1>
+<p>Det vi skriver er, at CSS koden skal virke når den rammer en <span class="inl_cmd">class="blue"</span>, hvor der følger et <span class="inl_cmd">p></span> - SÅ skal den farve tekst blå.</p>
 
-<p></p>
+<p>HTML-kode: <a href="skabelon/html_skabelon_med_id_og_class2.html" target="_blank">html_skabelon_med_id_og_class.html</a></p>
 
-<h1>Actions</h1>
-
-<p></p>
-
+<p>CSS-kode: <a href="skabelon/style02.css" target="_blank">style02.css</a></p>
 
 
 

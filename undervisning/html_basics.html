@@ -107,19 +107,46 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <p>Du kan se en komplet liste over tags her: <a href="http://www.w3schools.com/tags/" target="_blank">http://www.w3schools.com/tags/</a>.</p>
 
-<h2>To typer tags (elementer)</h2>
+<h1>Forskellige typer elementer (tags)</h1>
 
-<p>Overordnet set findes der to typer tags: Tomme og ikke-tomme.</p>
+<p>Når man taler om tags er der fire egenskaber man kan sætte på dem:</p>
 
-<span class="afsnit">Det tomme tag</span>
+<ul class="disc">
+	<li>Tomme elementer</li>
+	<li>Ikke-tomme elementer</li>
+	<li>Blok-elementer</li>
+	<li>Inline-elementer</li>
+</ul>
+
+<h2>Tomme elementer</h2>
 
 <p>Et tomt element har ingen tekstreng, og anvendes f.eks. til at angive en indstilling, som f.eks. <span class="inl_cmd">&lt;!DOCTYPE HTML></span> der fortælller angiver at det er et <abbr title="">HTML5</abbr> dokument eller <span class="inl_cmd">&lt;img></span> der angiver stien til et billede/illustration.</p>
 
 <p>Tomme tags afsluttes ikke, og har derfor ikke behov for <span class="inl_cmd">/</span> til sidst.</p>
 
-<span class="afsnit">Det ikke-tomme tag</span>
+<h2>Ikke-tomme elementer</h2>
 
-<p>De ikke-tomme tags indeholder tekstrenge som f.eks. <span class="inl_cmd">&lt;p><span class="red"> *** TEKSTSTRENG *** </span>&lt;/p></span> (se ovenfor).</p>
+<p>De ikke-tomme tags indeholder tekstrenge som f.eks. <span class="inl_cmd">&lt;p><span class="red"> *** TEKSTSTRENG *** </span><span class="inl_cmd">&lt;p></span>(se ovenfor).</p>
+.
+<h2>Blok-elementer</h2>
+
+<p>Et <span class="inl_cmd">blok-element</span> resulterer i et linieskift når det slutter. <span class="inl_cmd">Blok-elementer</span> er f.eks:</p>
+
+<ul class="disc">
+	<li>&lt;div></li>
+	<li>&lt;h1> - &lth6></li>
+	<li>&lt;p></li>
+</ul>
+
+<h2>Inline-elementer</h2>
+
+<p><span class="inl_cmd">Inline-elementer</span> er afgrænset til tekststrengen, og kan anvendes inde i <span class="inl_cmd">blok-elementer</span>. <span class="inl_cmd">Inline-elementer</span> er f.eks:</p>
+
+<ul class="disc">
+	<li>&lt;span></li>
+	<li>&lt;a></li>
+	<li>&lt;img></li>
+</ul>
 
 
 <h1>Opbygning af et HTML-dokument</h1>
