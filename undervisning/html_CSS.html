@@ -87,7 +87,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <p>Herefter oprettes filen <span class="inl_cmd">style.css</span> i samme mappe som ens <abbr title="">HTML</abbr>-dokument, og <abbr title="">CSS</abbr> kommandoerne indsættes i <span class="inl_cmd">style.css</span>. For at ramme de forskellige tekstelementer med anvender vi deres tags. Som du så i ovenstående eksempel skriver vi indholdet af tag'et efterfulgt af curly-brackets ( <span class="inl_cmd">{ }</span> ) og skriver <abbr title="">CSS</abbr>-koden deri. Jeg har indsat kommentarfelter i CSS kode ( tekst der er omgivet af <span class="inl_cmd">/*     */</span>, for at beskrive hvad der sker.</p>
 
-<p>Læg mærke til enheden <span class="inl_cmd">em</span>. Em angiver størrelsen i forhold til den font størrelse dokumentet anvender (16px som standard). 2em svarer til <span class="math">\( 2 \cdot 16 = 32 px \)</span> og 1.5em til <span class="math">\( 1,5 \cdot 16 = 24px \)</span>. Vil man ændre størrelsen af skriften i hele dokumentet sætter man en universel standardstørrelse ved hjælp af <span class="inl_cmd">*</span> som herunder </p>
+<p>Læg mærke til enheden <span class="inl_cmd">em</span>, som angiver størrelsen i forhold til den font størrelse dokumentet anvender (16px som standard). 2em svarer til <span class="math">\( 2 \cdot 16 = 32 px \)</span> og 1.5em til <span class="math">\( 1,5 \cdot 16 = 24px \)</span>. Vil man ændre størrelsen af skriften i hele dokumentet sætter man en universel standardstørrelse ved hjælp af <span class="inl_cmd">*</span> som herunder </p>
 
 <pre>
 	<code class="css">/* Universel fontstørrelse (standard) */
@@ -130,13 +130,16 @@ font-family: verdana;
 
 </figure>
 
-<p>Ved at holde den indholdsmæssige kode væk fra designet kan man ændre sit design et sted. Derfor bør man holde design og kode skarpt adskilt. Det vil vi kigge på i denne guide.</p>
+<p>Ved at holde den indholdsmæssige kode væk fra designet kan man ændre sit design et sted. Derfor bør man holde design og kode skarpt adskilt.</p>
 
 <p>Du kan hente både <abbr title="">HTML</abbr>- og <abbr title="">CSS</abbr> koden til ovenstående ved at højreklikke på nedenstående henvisninger og vælge: <span class="inl_cmd">Gem link som</span>:</p>
 
 <p><abbr title="">HTML</abbr>-kode: <a href="skabelon/html_skabelon_med_CSS.html" target="_blank">html_skabelon_med_CSS.html</a></p>
 
 <p><abbr title="">CSS</abbr>-kode: <a href="skabelon/style.css" target="_blank">style.css</a></p>
+
+<p>Læs mere om CSS: <a href="http://www.w3schools.com/css/css_syntax.asp" target="_blank">http://www.w3schools.com/css/css_syntax.asp</a></p>
+
 
 
 <h1>Målrettet design</h1>
@@ -232,7 +235,7 @@ color: blue;
 <p>For at ramme <span class="inl_cmd">&lt;p></span>-elementerne ændrer vi nu i CSS koden:</p>
 
 <pre>
-	<code class="css">p#red {
+	<code class="CSS">p#red {
 color: red;
 }
 
@@ -279,11 +282,78 @@ color: blue;
 		<p>Margin angiver hvor langt der skal være fra elementets ramme til et andet elements ramme (border).</p>
 </ol>
 
-<h2>CSS-koden</h2>
+<p>Du kan anvende w3schools testfunktion til at eksperimentere med boksmodellen: <a href="http://www.w3schools.com/css/tryit.asp?filename=trycss_boxmodel" target="_blank">http://www.w3schools.com/css/tryit.asp?filename=trycss_boxmodel</a>.</p>
 
-<p></p>
+<h2>CSS-kode: <span class="inl_cmd">padding</span> og <span class="inl_cmd">margin</span></h2>
+
+<p>CSS-koden til <span class="inl_cmd">border</span> og <span class="inl_cmd">padding</span> kan sættes på 4 måder. Herunder bliver det kun vist med <span class="inl_cmd">padding</span>,da det samme gælder for <span class="inl_cmd">margin</span>.</p>
+
+<p>1. Hvis alle sider skal have samme værdi:</p>
+
+<pre>
+	<code class="css">padding: 2em;</code>
+</pre>
+
+<p>2. Hvis hver side skal have en individuel værdi:</p>
+
+<pre>
+	<code class="css">padding-top: 2em;
+padding-right: 1em;
+padding-bottom: 3em;
+padding-left: 4em;</code>
+</pre>
+
+<p>Dette har også en "shorthand", hvor man kun skriver værdierne i rækkefølgen: top, højre, bund, venstre:</p>
+
+<pre>
+	<code class="css">padding: 2em 1em 3em 4em;</code>
+</pre>
 
 
+<p>3. Hvis top/bund og siderne skal have hver deres værdi parvist. Første værdi er top/bund - den anden siderne:</p>
+
+<pre>
+	<code class="css">padding: 2em 1em;</code>
+</pre>
+
+<p><b>Vær opmærksom på: </b>Top- og bundmargin kan kolapse, forstået på den måde, at hvis man har to elementer hvor det første har en bundmargin på 50px og det andet en topmargin på 20px, så vil de 20px blive "slugt" af det øverste element.</p>
+
+<p>Du kan læse mere om padding her: <a href="http://www.w3schools.com/css/css_padding.asp" target="_blank">http://www.w3schools.com/css/css_padding.asp</a></p>
+
+<p>Du kan læse mere om margin her: <a href="http://www.w3schools.com/css/css_margin.asp" target="_blank">http://www.w3schools.com/css/css_margin.asp</a></p>
+
+<h2>CSS-kode: <span class="inl_cmd">border</span></h2>
+
+<p><span class="inl_cmd">border</span> kan sættes med en shorthand: bredde, type og farve. Det kan gøres med en "shorthand" eller udspecificeret.</p>
+
+<pre>
+	<code class="css">border: 1px solid grey;</code>
+</pre>
+
+<p>Du kan læse mere om <span class="inl_cmd">border</span> her: <a href="http://www.w3schools.com/css/css_border.asp" target="_blank">http://www.w3schools.com/css/css_border.asp</a>.</p>
+
+<h1>Læs mere om</h1>
+
+<h2>Alle guides på w3school:</h2>
+
+<p><b>Læs mere: </b> <a href="http://www.w3schools.com/css/default.asp" target="_blank">http://www.w3schools.com/css/default.asp</a></p>
+
+<h2>Syntax</h2>
+
+<p><a href="http://www.w3schools.com/css/css_syntax.asp" target="_blank">http://www.w3schools.com/css/css_syntax.asp</a></p>
+
+<h2>Farver</h2>
+
+<p><b>Grundlæggende: </b><a href="http://www.w3schools.com/css/css_colors.asp" target="_blank">http://www.w3schools.com/css/css_colors.asp</a></p>
+
+<h2>Selectors</h2>
+
+<p><b>Selectors: </b> <a href="http://www.w3schools.com/css/css_combinators.asp" target="_blank">http://www.w3schools.com/css/css_combinators.asp</a></p>
+
+
+<h2>CSS3 - Nyeste version</h2>
+
+<p><b>Instroduktion: </b> <a href="http://www.w3schools.com/css/css3_intro.asp" target="_blank">http://www.w3schools.com/css/css3_intro.asp</a></p>
 
 <p></p>
 <p></p>
