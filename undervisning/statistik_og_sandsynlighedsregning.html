@@ -436,103 +436,38 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <div class="latex">$$ \sum_{n=1}^5 n $$</div>
 
-<p>Det som notationen fortæller er, at vi skal lade <span class="math">\( n \)</span> gennemløbe værdierne fra <span class="math">\( 1 \)</span> til og med <span class="math">\( 5 \)</span> og opsummere dem.</p>
+<p>Det som notationen fortæller er, at vi skal lade <span class="math">\( n \)</span> gennemløbe værdierne fra <span class="math">\( 1 \)</span> til og med <span class="math">\( 5 \)</span>, indsætte dem i udtrykket og resultatet af udtrykkene..</p>
 
-<p>Hvis vi gerne vil de 10 første tal i 3 tabellen summeret kan vi skrive:</p>
-
-<div class="latex">$$ \sum_{n=1}^{10} 3 \cdot n $$</div>
-
-<p>Generelt kan man sige:</p>
-
-
-
-
-
-<h1>Beregninger - diskret fordeling</h1>
-
-<p></p>
-
-
-<h2>Et datasæt</h2>
-
-<p>Lad os kigge på et simpelt datasæt over karakterer, hvor vi sætter karaktererne til variablen <span class="math">\( x \)</span>.</p>
+<p>Lad os kigge på et simpelt datasæt over karakterer. For at danne os et overblik over tabellen vælger vi at lave to rækker (<span class="math">\( x \)</span> og <span class="math">\( x_i \)</span>). En hvor tallene står og en hvor vi angiver positionerne ved hjælp af værdierne <span class="math">\( x_1 \)</span> til <span class="math">\( x_k \)</span>, hvor <span class="math">\( k \)</span> er den sidste observation.</p>
 
 <table class="fixed">
 	<thead>
 		<tr>
-			<th colspan="11">Tabel 1 (diskrete observationer): Karakterer</th>
+			<th colspan="7">Generelt datasæt</th>
 		</tr>
 	</thead>
 	<tbody>
-		<tr>
-			<td><span class="math">\( x \)</span></td>
-			<td><span class="math">\( 7 \)</span></td>
-			<td><span class="math">\( 4 \)</span></td>
-			<td><span class="math">\( 12 \)</span></td>
-			<td><span class="math">\( 7 \)</span></td>
-			<td><span class="math">\( 10 \)</span></td>
-			<td><span class="math">\( 10 \)</span></td>
-			<td><span class="math">\( 7 \)</span></td>
-			<td><span class="math">\( 4 \)</span></td>
-			<td><span class="math">\( 7 \)</span></td>
-			<td><span class="math">\( 02 \)</span></td>
-		</tr>
-	</tbody>
-</table>
-
-<p>Dette datasæt er meget lille og let at overskue. Vi kan tælle antallet af observationer og gennemsnittet kan vi udregne på følgende måde:</p>
-
-<div class="latex">$$ \overline x = \frac{7+4+12+7+10+10+7+4++7+02}{10} = \frac{70}{10} = 7 $$</div>
-
-<p>Hvis vi udvider vores skema vil vi kunne omskrive dette til:</p>
-
-<table class="fixed">
-	<thead>
-		<tr>
-			<th colspan="11">Tabel 1 (diskrete observationer): Karakterer</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td><span class="math">\( x \)</span></td>
-			<td><span class="math">\( 7 \)</span></td>
-			<td><span class="math">\( 4 \)</span></td>
-			<td><span class="math">\( 12 \)</span></td>
-			<td><span class="math">\( 7 \)</span></td>
-			<td><span class="math">\( 10 \)</span></td>
-			<td><span class="math">\( 10 \)</span></td>
-			<td><span class="math">\( 7 \)</span></td>
-			<td><span class="math">\( 4 \)</span></td>
-			<td><span class="math">\( 7 \)</span></td>
-			<td><span class="math">\( 02 \)</span></td>
-		</tr>
 		<tr>
 			<td><span class="math">\( x_i \)</span></td>
 			<td><span class="math">\( x_1 \)</span></td>
 			<td><span class="math">\( x_2 \)</span></td>
 			<td><span class="math">\( x_3 \)</span></td>
-			<td><span class="math">\( x_4 \)</span></td>
-			<td><span class="math">\( x_5 \)</span></td>
-			<td><span class="math">\( x_6 \)</span></td>
-			<td><span class="math">\( x_7 \)</span></td>
-			<td><span class="math">\( x_8 \)</span></td>
-			<td><span class="math">\( x_9 \)</span></td>
+			<td><span class="math">\( ... \)</span></td>
+			<td><span class="math">\( x_{k-1} \)</span></td>
 			<td><span class="math">\( x_k\)</span></td>
 		</tr>
 	</tbody>
 </table>
 
-<div class="latex">$$ \overline x = \frac{1}{antal~observationer} \cdot \left( x_1+x_2+x_3+ ... +x_k   \right) $$</div>
+<p>Hvis vi ville opsummere tallene ville vi altså lave regnestykket: <span class="math">\( x_1+x_2+x_3+...+x_{k-1}+{x_k}  \)</span></p>
 
-<p>For at skrive dette med matematisk notation anvender vi <span class="math">\( \sum \)</span>, hvor <span class="math">\( x_i \)</span> er den enkelte fortløbende observation, <span class="math">\( n \)</span> er antallet af observationer og <span class="math">\( k \)</span> er den sidste observation:</p>
+<p>Det kan ændres til nedestående, da vi skal opsummere <span class="math">\( x_i \)</span>-værdierne fra <span class="math">\( x_1 \rightarrow x_k \)</span>:</p>
 
-<div class="latex">$$ \overline x = \frac{1}{n} \cdot \sum_{i=1}^{k} x_i $$</div>
+<div class="latex">$$ \sum_{i=1}^{k} x_i = x_1+x_2+x_3+...+x_{k-1}+{x_k}$$</div>
 
-<p><span class="math">\( \sum \)</span> siger altså at man skal at opsummere fra det første <span class="math">\( x_1 \)</span> til det sidste <span class="math">\( x_k \)</span>. Altså:</p>
+<p>Denne notationsform vil vi anvende igennem hele materialet.</p>
 
-<div class="latex">$$ \sum_{i=1}^{k} x_i= x_1+x_2+x_3+...+x_{k-1}+{x_k} $$</div>
-
-
+<h1>Beregninger - diskret fordeling</h1>
 
 <h2>Datasæt i en tabel</h2>
 
@@ -544,33 +479,39 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 			<th colspan="10">Tabel 2 (Kontinuerte observationer): Karakterer</th>
 		</tr>
 		<tr>
-			<th>x</th>
+			<th><span class="math">\( x_i \)</span></th>
+			<th><span class="math">\( x \)</span></th>
 			<th><span class="math">\( h(x) \)</span></th>
 			<th><span class="math">\( f(x) \)</span></th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr>
+			<td><span class="math">\( x_1 \)</span></td>
 			<td><span class="math">\( 02 \)</span></td>
 			<td><span class="math">\( 1 \)</span></td>
 			<td><span class="math">\( 0,1 \)</span></td>
 		</tr>
 		<tr>
+			<td><span class="math">\( x_2 \)</span></td>
 			<td><span class="math">\( 4 \)</span></td>
 			<td><span class="math">\( 2 \)</span></td>
 			<td><span class="math">\( 0,2 \)</span></td>
 		</tr>
 		<tr>
+			<td><span class="math">\( x_3 \)</span></td>
 			<td><span class="math">\( 7 \)</span></td>
 			<td><span class="math">\( 4 \)</span></td>
 			<td><span class="math">\( 0,4 \)</span></td>
 		</tr>
 		<tr>
+			<td><span class="math">\( x_3 \)</span></td>
 			<td><span class="math">\( 10 \)</span></td>
 			<td><span class="math">\( 2 \)</span></td>
 			<td><span class="math">\( 0,2 \)</span></td>
 		</tr>
 		<tr>
+			<td><span class="math">\( x_5 = x_k \)</span></td>
 			<td><span class="math">\( 12 \)</span></td>
 			<td><span class="math">\( 1 \)</span></td>
 			<td><span class="math">\( 0,1 \)</span></td>
@@ -584,30 +525,30 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <div class="latex">$$ n =  \sum_{i=1}^{k} h_i $$</div>
 
-<p>Formlen skal læses på følgende måde:</p>
-
-<p>Gennemsnittet findes ved at lægge hyppighederne for hvert observationssæt sammen, f.eks. ved tabel 2:</p>
+<p>Beregning af <span class="math">\( n \)</span></p>
 
 <div class="latex">$$ n =  \sum_{i=1}^{k} h_i \Rightarrow  n =  \sum_{i=1}^{5} h_i = 1+2+4+2+1 = 10$$</div>
 
 
 <h2>Middelværdi (gennemsnit)</h2>
 
-<p>Gennemsnittet beregnes med:</p>
-
-<div class="latex">$$ \overline x = \frac{1 }{n} \cdot \sum_{i=1}^{k} x_i$$</div>
-
-<p>Havde vi brugt denne notation i vores beregning af gennemsnittet (tabel 1) ville den altså have set ud som følger:</p>
-
-<div class="latex">$$ \overline x = \frac{ 1}{10} \cdot \sum_{i=1}^{10} x_i = \frac{1}{10} \cdot (7+4+12+7+10+10+7+4+7+02) = \frac{70}{10} = 7$$</div>
-
-<p>Anvendt på tabel 2 kan man anvende to forskellige formler:</p>
+<p>Gennemsnittet kan beregnes med 2 formler alt efter om man anvender <span class="inl_cmd">hyppighed</span> eller <span class="inl_cmd">frekvens</span>:</p>
 
 <div class="latex">$$ \overline x = \frac{1}{n} \cdot \sum_{i=1}^{k} x_i \cdot h_i ~~~~ \vee ~~~~\overline x = \sum_{i=1}^{k} x_i \cdot f_i $$</div>
 
 <p>Dette gælder da:</p>
 
 <div class="latex">$$ f_i = \frac{1}{n} \cdot h_i \Leftrightarrow f_i =  \frac{h_i}{n} $$</div>
+
+<p>Beregnet med <span class="inl_cmd">hyppighed</span>:</p>
+
+<div class="latex">$$ \overline x = \frac{ 1}{10} \cdot \sum_{i=1}^{5} x_i \cdot h_i= \frac{1}{10} \cdot (2 \cdot 1 + 4 \cdot 2 + 7 \cdot 4 + 10 \cdot 2 + 12 \cdot 1) = \frac{1}{10} \cdot 70 = 7$$</div>
+
+<p>Beregnet med <span class="inl_cmd">frekvens</span>:</p>
+
+<div class="latex">$$ \overline x = \sum_{i=1}^{5} x_i \cdot f_i= (0,1 \cdot 2 + 0,2 \cdot 4 + 0,4 \cdot 7 + 0,2 \cdot 10 + 0,1 \cdot 12) = 7$$</div>
+
+
 
 <h2>Varians og spredning</h2>
 
@@ -662,6 +603,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 <table class="">
 	<thead>
 		<tr>
+			<th><span class="math">\( x_i \)</span></th>
 			<th>Højde <br/><span class="math">\( ]x_{i-1};x_i] \)</span></th>
 			<th>Antal <br/><span class="math">\( h(x) \)</span></th>
 			<th>Frekvens <br/><span class="math">\( f(x) \)</span></th>
@@ -670,30 +612,35 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 	</thead>
 	<tbody>
 		<tr>
+			<th><span class="math">\( x_1 \)</span></th>
 			<td><span class="math">\( ]160;170] \)</span></td>
 			<td><span class="math">\( 3 \)</span></td>
 			<td><span class="math">\( 0,15 \)</span></td>
 			<td><span class="math">\( 165 \)</span></td>
 		</tr>
 		<tr>
+			<th><span class="math">\( x_2 \)</span></th>
 			<td><span class="math">\( ]170;180] \)</span></td>
 			<td><span class="math">\( 9 \)</span></td>
 			<td><span class="math">\( 0,45 \)</span></td>
 			<td><span class="math">\(  175\)</span></td>
 		</tr>		
 		<tr>
+			<th><span class="math">\( x_3 \)</span></th>
 			<td><span class="math">\( ]180;190] \)</span></td>
 			<td><span class="math">\( 4 \)</span></td>
 			<td><span class="math">\( 0,2 \)</span></td>
 			<td><span class="math">\( 185 \)</span></td>
 		</tr>
 		<tr>
+			<th><span class="math">\( x_4 \)</span></th>
 			<td><span class="math">\( ]190;200] \)</span></td>
 			<td><span class="math">\( 4 \)</span></td>
 			<td><span class="math">\( 0,2 \)</span></td>
 			<td><span class="math">\( 195 \)</span></td>
 		</tr>
 		<tr>
+			<th><span class="math">\( x_5 \)</span></th>
 			<td><span class="math">\( ]200;210] \)</span></td>
 			<td><span class="math">\( 1 \)</span></td>
 			<td><span class="math">\( 0,05 \)</span></td>
@@ -724,21 +671,26 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <h2>Middelværdi (gennemsnit)</h2>
 
-<p>Gennemsnittet vil vi beregne på følgende måde:</p>
-
-<div class="latex">$$ \overline x = \frac{1 }{n} \cdot \sum_{i=1}^{k} m_i \cdot x_i $$</div>
-
-<p>Middelværdien er altså:</p>
-
-<div class="latex">$$ \overline x = \frac{1}{20} \cdot \sum_{i=1}^{5} m_i \cdot x_i = 165 \cdot 3 + 175 \cdot 9 + 185 \cdot 4 +195 \cdot 4 + 205 \cdot 1 = 189,75$$</div>
-
-<p>Anvendt på tabel 2 kan man anvende to forskellige formler:</p>
+<p>Gennemsnittet kan beregnes med 2 formler alt efter om man anvender <span class="inl_cmd">hyppighed</span> eller <span class="inl_cmd">frekvens</span>:</p>
 
 <div class="latex">$$ \overline x = \frac{1}{n} \cdot \sum_{i=1}^{k} m_i \cdot h_i ~~~~ \vee ~~~~\overline x = \sum_{i=1}^{k} m_i \cdot f_i $$</div>
 
 <p>Dette gælder da:</p>
 
 <div class="latex">$$ f_i = \frac{1}{n} \cdot h_i \Leftrightarrow f_i =  \frac{h_i}{n} $$</div>
+
+<p>Gennemsnittet vil vi beregne på følgende måde:</p>
+
+<div class="latex">$$ \overline x = \frac{1 }{n} \cdot \sum_{i=1}^{k} m_i \cdot x_i $$</div>
+
+<p>Beregnet med <span class="inl_cmd">hyppighed</span>:</p>
+
+<div class="latex">$$ \overline x = \frac{1}{20} \cdot \sum_{i=1}^{5} m_i \cdot h_i = 165 \cdot 3 + 175 \cdot 9 + 185 \cdot 4 +195 \cdot 4 + 205 \cdot 1 = 189,75$$</div>
+
+<p>Beregnet med <span class="inl_cmd">frekvens</span>:</p>
+
+<div class="latex">$$ \overline x = \sum_{i=1}^{5} m_i \cdot f_i = 165 \cdot 0,15 + 175 \cdot 0,45 + 185 \cdot 0,2 +195 \cdot 0,2 + 205 \cdot 0,05 = 189,75 $$</div>
+
 
 <h2>Varians og spredning</h2>
 
