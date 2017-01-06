@@ -356,41 +356,6 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 </figure>
 
-<h1>Notation</h1>
-
-<p>Når man beregner Statisk meteriale anvender man en speciel form for notation, og her er der to vi skal have fat i: <span class="math">\( \overline x \)</span> og <span class="math">\( \sum \)</span></p>
-
-<table class="">
-	<thead>
-		<tr>
-			<th>Symbol</th>
-			<th>Forklaring</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td><span class="math">\( n \)</span></td>
-			<td>Antallet af observationer</td>
-		</tr>
-		<tr>
-			<td><span class="math">\( k \)</span></td>
-			<td>Antal observationsværdier/sæt</td>
-		</tr>
-		<tr>
-			<td><span class="math">\( \overline x \)</span></td>
-			<td>Gennemsnitsværdien af <span class="math">\( x \)</span></td>
-		</tr>
-		<tr>
-			<td><span class="math">\( \sum \)</span></td>
-			<td>Summen af .... .Dette er det store bogstav <span class="inl_cmd">sigma</span> fra det græske alfabet</td>
-		</tr>
-		<tr>
-			<td><span class="math">\( m \)</span></td>
-			<td>Interval midtpunkt. Den midterste værdi i et interval f.eks. <span class="math">\( ]160;170] = \frac{161+170}{2} = 165.5 \)</span> </td>
-		</tr>
-	</tbody>
-</table>
-
 <h1>Diagrammer</h1>
 
 <p>For at skabe et hurtig overblik over sin undersøgelse kan man lave diagrammer. De to mest anvendelige i denne sammenhæng er <span class="inl_cmd">søjle-</span> og <span class="inl_cmd">lagkagediagrammet</span></p>
@@ -414,6 +379,74 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 	<figcaption></figcaption>
 
 </figure>
+
+<h1>Notation</h1>
+
+<p>Når man beregner Statisk meteriale anvender man følgende notation.</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Symbol</th>
+			<th>Forklaring</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><span class="math">\( n \)</span></td>
+			<td>Antallet af observationer</td>
+		</tr>
+		<tr>
+			<td><span class="math">\( k \)</span></td>
+			<td>Antal observationssæt/værdier</td>
+		</tr>
+		<tr>
+			<td><span class="math">\( \overline x \)</span></td>
+			<td>Gennemsnitsværdien af <span class="math">\( x \)</span></td>
+		</tr>
+		<tr>
+			<td><span class="math">\( m \)</span></td>
+			<td>Interval midtpunkt. Den midterste værdi i et interval f.eks. <span class="math">\( ]160;170] = \frac{161+170}{2} = 165.5 \)</span> </td>
+		</tr>
+		<tr>
+			<td><span class="math">\( \sigma^2 \)</span></td>
+			<td>Variansen. En værdi der ofte anvendes i statistik til at lave beregninger med. Kaldes også for <span class="math">\( Var(x) \)</span>.</td>
+		</tr>
+		<tr>
+			<td><span class="math">\( \sigma \)</span></td>
+			<td>Spredningen. </td>
+		</tr>
+		<tr>
+			<td><span class="math">\( \sum \)</span></td>
+			<td>Summen af .... .Dette er det store bogstav <span class="inl_cmd">sigma</span> fra det græske alfabet</td>
+		</tr>
+
+	</tbody>
+</table>
+
+<p><span class="inl_cmd">Varians</span> og <span class="inl_cmd">spredning</span> fortæller noget om hvor stor spredningen er i datasættet. Altså om observationerne ligger kort eller langt fra middelværdien.</p>
+
+<h2><span class="math">\( \sum \) - opsummer</span></h2>
+
+<p>En af de notationsformer man anvender i statistik og sandsynlighed er <span class="math">\( \sum\)</span>, som betyder summer. Man skal simpelthen summere det som står efter <span class="math">\( \sigma \)</span>. Lad os tage et eksempel hvor vi noterer de første 5 tal.</p>
+
+<div class="latex">$$ 1+2+3+4+5 = 15 $$</div>
+
+<p>Det kan vi notere som følgende ved hjælp af <span class="math">\( \sum \)</span>:</p>
+
+<div class="latex">$$ \sum_{n=1}^5 n $$</div>
+
+<p>Det som notationen fortæller er, at vi skal lade <span class="math">\( n \)</span> gennemløbe værdierne fra <span class="math">\( 1 \)</span> til og med <span class="math">\( 5 \)</span> og opsummere dem.</p>
+
+<p>Hvis vi gerne vil de 10 første tal i 3 tabellen summeret kan vi skrive:</p>
+
+<div class="latex">$$ \sum_{n=1}^{10} 3 \cdot n $$</div>
+
+<p>Generelt kan man sige:</p>
+
+
+
+
 
 <h1>Beregninger - diskret fordeling</h1>
 
@@ -578,7 +611,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <h2>Varians og spredning</h2>
 
-<p><b>Variansen</b> beskriver hvor meget værdierne i gennemsnit afviger fra middelværdien. Variansen kan angives på flere måder <span class="math">\( s^2 , \sigma^2 , Var(x)\)</span>, og her vil vi anvende <span class="math">\( \sigma^2 \)</span> som er den matatisk mest korrekte.</p>
+<p><b>Variansen</b> beskriver hvor meget værdierne i gennemsnit afviger fra middelværdien. Variansen kan angives enten ved hjælp af <span class="math">\( Var(x) \)</span> eller <span class="math">\( \sigma^2 \)</span>. I enkelte bøger anvendes <span class="math">\( s^2 \)</span>, men den bør undgås når man har adgang til de græske bostavers</p>
 
 <p><b>Spredningen</b> beskriver hvordan den stokastiske variabel fordeler sig omkring middelværdien. En stokastisk variabel kaldes også for en tilfældighedsvariabel. <span class="inl_cmd">Spredningen</span> er lig kvadratroden af variansen og variablen angives med <span class="math">\( \sigma \)</span>.</p>
 
