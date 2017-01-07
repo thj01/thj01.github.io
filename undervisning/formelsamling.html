@@ -354,6 +354,201 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <p></p>
 
+<h2>Symboler</h2>
+
+<p></p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Symbol</th>
+			<th>Begreb</th>
+			<th>Definition</th>
+			<th>Talmængde</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><span class="math">\( x \)</span></td>
+			<td>Observation</td>
+			<td>Anvendt data</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td><span class="math">\( h(x) \)</span></td>
+			<td>Hyppighed</td>
+			<td>Hvor ofte en observation/hændelse optræder</td>
+			<td><span class="math">\( \mathbb{N}_0 \)</span></td>
+		</tr>
+		<tr>
+			<td><span class="math">\( H(x) \)</span></td>
+			<td>Summeret hyppighed</td>
+			<td>Hvor ofte denne og forgående observationer/hændelser optræder</td>
+			<td><span class="math">\( \mathbb{N}_0 \)</span></td>
+		</tr>
+		<tr>
+			<td><span class="math">\( f(x) \)</span></td>
+			<td>Frekenvens</td>
+			<td>Hvor ofte en observation/hændelse optræder i forhold til det samlede antal observationer</td>
+			<td><span class="math">\( \mathbb{R} \)</span></td>
+		</tr>
+		<tr>
+			<td><span class="math">\( F(x) \)</span></td>
+			<td>Summeret frekenvens</td>
+			<td>Hvor ofte denne og forgående observationer/hændelser optræder i forhold til det samlede antal observationer</td>
+			<td><span class="math">\( \mathbb{R} \)</span></td>
+		</tr>
+	</tbody>
+</table>
+
+<h2>Statistiske diskriptorer</h2>
+
+<p></p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Deskriptor</th>
+			<th>Forklaring</th>
+			<th>Metode</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Typetal (diskret data)</td>
+			<td>Den obeservation der forekommer flest gange</td>
+			<td>Aflæsning</td>
+		</tr>
+		<tr>
+			<td>Typeinterval (kontinuert data)</td>
+			<td>Den samling af observationer der er flest af</td>
+			<td>Aflæsning</td>
+		</tr>
+		<tr>
+			<td>Mindste værdi</td>
+			<td>Den mindst observerede værdi</td>
+			<td>Aflæsning</td>
+		</tr>
+		<tr>
+			<td>Største værdi</td>
+			<td>Den størst observerede værdi</td>
+			<td>Aflæsning</td>
+		</tr>
+		<tr>
+			<td>Median</td>
+			<td>Den midterste observation. Er det samme som 50% kvartilen (se nedenfor)</td>
+			<td>Aflæsning</td>
+		</tr>
+		<tr>
+			<td>Middelværdi</td>
+			<td>Gennemsnit</td>
+			<td>Beregning</td>
+		</tr>
+
+	</tbody>
+</table>
+
+<h2>Notation</h2>
+
+<p>Når man beregner Statisk meteriale anvender man følgende notation.</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Symbol</th>
+			<th>Forklaring</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><span class="math">\( n \)</span></td>
+			<td>Antallet af observationer</td>
+		</tr>
+		<tr>
+			<td><span class="math">\( k \)</span></td>
+			<td>Antal observationssæt/værdier</td>
+		</tr>
+		<tr>
+			<td><span class="math">\( \overline x \)</span></td>
+			<td>Gennemsnitsværdien af <span class="math">\( x \)</span></td>
+		</tr>
+		<tr>
+			<td><span class="math">\( m \)</span></td>
+			<td>Interval midtpunkt. Den midterste værdi i et interval f.eks. <span class="math">\( ]160;170] = \frac{161+170}{2} = 165.5 \)</span> </td>
+		</tr>
+		<tr>
+			<td><span class="math">\( Var(x) \)</span></td>
+			<td>Variansen. En værdi der ofte anvendes i statistik til at lave beregninger med. Nogle gang bruges <span class="math">\( \sigma^2 \)</span>.</td>
+		</tr>
+		<tr>
+			<td><span class="math">\( \sigma \)</span></td>
+			<td>Spredningen. </td>
+		</tr>
+		<tr>
+			<td><span class="math">\( \sum \)</span></td>
+			<td>Summen af .... .Dette er det store bogstav <span class="inl_cmd">sigma</span> fra det græske alfabet</td>
+		</tr>
+
+	</tbody>
+</table>
+
+<h2><span class="math">\( \sum \) - opsummer</span></h2>
+
+<p>Lad os kigge på et simpelt datasæt over karakterer. For at danne os et overblik over tabellen vælger vi at lave to rækker (<span class="math">\( x \)</span> og <span class="math">\( x_i \)</span>). En hvor tallene står og en hvor vi angiver positionerne ved hjælp af værdierne <span class="math">\( x_1 \)</span> til <span class="math">\( x_k \)</span>, hvor <span class="math">\( k \)</span> er den sidste observation.</p>
+
+<table class="fixed">
+	<thead>
+		<tr>
+			<th colspan="7">Generelt datasæt</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><span class="math">\( x_i \)</span></td>
+			<td><span class="math">\( x_1 \)</span></td>
+			<td><span class="math">\( x_2 \)</span></td>
+			<td><span class="math">\( x_3 \)</span></td>
+			<td><span class="math">\( ... \)</span></td>
+			<td><span class="math">\( x_{k-1} \)</span></td>
+			<td><span class="math">\( x_k\)</span></td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Hvis vi ville opsummere tallene ville vi altså lave regnestykket: <span class="math">\( x_1+x_2+x_3+...+x_{k-1}+{x_k}  \)</span></p>
+
+<p>Dette kan skrives som:</p>
+
+<div class="latex">$$ \sum_{i=1}^{k} x_i = x_1+x_2+x_3+...+x_{k-1}+{x_k}$$</div>
+
+<p>Udtrykket læses på denne måde: Opsummer <span class="math">\( x_i \)</span>, mens i gennemløber værdierne fra <span class="math">\( i=i \rightarrow k\)</span>.</p>
+
+<h2>Diagrammer</h2>
+
+<p>For at skabe et hurtig overblik over sin undersøgelse kan man lave diagrammer. De to mest anvendelige i denne sammenhæng er <span class="inl_cmd">søjle-</span> og <span class="inl_cmd">lagkagediagrammet</span></p>
+
+<span class="afsnit">Søjlediagram</span>
+
+<figure id="">
+
+	<img class="p50" src="images/statistik_søjlediagram_usynlig baggund.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<span class="afsnit">Cirkeldiagram</span>
+
+<figure id="">
+
+	<img class="p50" src="images/statistik_lagkagediagram_usynlig baggund.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+
+
 <h2>Diskret fordeling</h2>
 
 <span class="afsnit">Eksempel på tabel</span>
@@ -406,15 +601,27 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <span class="afsnit">Middelværdi (gennemsnit)</span>
 
-<div class="latex">$$ \overline x = \frac{1}{n} \cdot \sum_{i=1}^{k} x_i \cdot h_i ~~~~ \vee ~~~~\overline x = \sum_{i=1}^{k} x_i \cdot f_i $$</div>
+<p>1)</p>
+
+<div class="latex">$$ \overline x = \sum_{i=1}^{k} x_i \cdot f_i $$</div>
+
+<p>2)</p>
+
+<div class="latex">$$ \overline x = \frac{1}{n} \cdot \sum_{i=1}^{k} x_i \cdot h_i $$</div>
 
 <span class="afsnit">Varians</span>
 
-<div class="latex">$$ \sigma^2 = \frac{1}{n-1} \cdot \sum_{i=1}^{k} (x_i-\overline x)^2 \cdot h_i $$</div>
+<p>1)</p>
+
+<div class="latex">$$ Var(x) = \sum_{i=1}^{k} (x_i-\overline x)^2 \cdot f_i $$</div>
+
+<p>2)</p>
+
+<div class="latex">$$ Var(x) = \frac{1}{n} \cdot \sum_{i=1}^{k} (x_i-\overline x)^2 \cdot h_i $$</div>
 
 <span class="afsnit">Spredning/standardafvigelse</span>
 
-<div class="latex">$$ \sigma = \sqrt {\sigma^2} $$</div>
+<div class="latex">$$ \sigma = \sqrt {Var(x)} $$</div>
 
 <h2>Kontinuert data</h2>
 
@@ -473,19 +680,30 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <span class="afsnit">Interval midtpunkt</span>
 
-<div class="latex">$$ m_i = \frac{x_{i-1} + x_i}{2} $$</div>
+<div class="latex">$$ m_i = \frac{1}{2} \cdot (x_i +x_{i+1}) $$</div>
 
 <span class="afsnit">Middelværdi (gennemsnit)</span>
 
-<div class="latex">$$ \overline x = \frac{1}{n} \cdot \sum_{i=1}^{k} m_i \cdot h_i ~~~~ \vee ~~~~\overline x = \sum_{i=1}^{k} m_i \cdot f_i $$</div>
+<p>1)</p>
+
+<div class="latex">$$ \overline x = \sum_{i=1}^{k} m_i \cdot f_i $$</div>
+
+<p>2)</p>
+<div class="latex">$$ \overline x = \frac{1}{n} \cdot \sum_{i=1}^{k} m_i \cdot h_i  $$</div>
 
 <span class="afsnit">Varians</span>
 
-<div class="latex">$$ \sigma^2 = \frac{1}{n-1} \cdot \sum_{i=1}^{k} (m_i-\overline x)^2 \cdot h_i $$</div>
+<p>1)</p>
+
+<div class="latex">$$ Var(x) = \sum_{i=1}^{k} (m_i-\overline x)^2 \cdot f_i $$</div>
+
+<p>2)</p>
+
+<div class="latex">$$ Var(x) = \frac{1}{n} \cdot \sum_{i=1}^{k} (m_i-\overline x)^2 \cdot h_i $$</div>
 
 <span class="afsnit">Spredning/standardafvigelse</span>
 
-<div class="latex">$$ \sigma = \sqrt {\sigma^2} $$</div>
+<div class="latex">$$ \sigma = \sqrt {Var(x)} $$</div>
 
 
 
