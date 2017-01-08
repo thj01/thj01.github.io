@@ -181,7 +181,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <h2>Population og stikprøve</h2>
 
-<p>Ofte har man ikke mulighed for at få det fulde datasæt, f.eks. ved en folkeafstemning hvor man anvender <span class="inl_cmd">exit-polls</span>. Her må man leve med at man kun har en delmængde af svar ud af helheden. Man har altså en <span class="inl_cmd">stikprøve</span>, der er taget fra en <span class="inl_cmd">population</span>.</p>
+<p>Ofte har man ikke mulighed for at få det fulde datasæt, f.eks. ved en folkeafstemning hvor man anvender <span class="inl_cmd">exit-polls</span>. Her må man leve med at man kun har en delmængde af svar ud af helheden. Man har altså en <span class="inl_cmd">stikprøve</span>, der er taget fra en <span class="inl_cmd">population</span>. En population er alle data (100%).</p>
 
 <h2>Datasæt</h2>
 
@@ -567,7 +567,11 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <h2>Varians</h2>
 
-<p><b>Variansen</b> beskriver hvor meget værdierne i gennemsnit afviger fra middelværdien og angives som <span class="math">\( Var(x) \)</span> eller <span class="math">\( \sigma^2 \)</span>. Her anvender vi <span class="math">\( Var(x) \)</span> til <span class="inl_cmd">variansen</span>, da vi vil anvende <span class="math">\( \sigma \)</span> til <span class="inl_cmd">spredningen</span>.</p>
+<p><b>Variansen</b> beskriver hvor meget værdierne i gennemsnit afviger fra middelværdien. Når man angiver <span class="inl_cmd">variansen</span> skal man først forholde sig til om det er for en <span class="inl_cmd">population</span> eller en <span class="inl_cmd">stikprøve</span>.</p>
+
+<p>Er det fra en population kaldes <span class="inl_cmd">variansen</span> for <span class="math">\( \sigma^2 \)</span> eller <span class="math">\( Var(x) \)</span>. I dette materiale vil vi anvende <span class="math">\( Var(x) \)</span>.</p>
+
+<p>Er det fra en <span class="inl_cmd">stikprøve</span> kaldes den for <span class="math">\( s^2 \)</span>.</p>
 
 <p>Matematisk set beskriver man forskellen mellem to tal ved at trække værdierne fra hinanden. Derefter kvadrerer man for at værdien ikke bliver negativ:</p>
 
@@ -578,31 +582,38 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 <ol class="">
 	<li>... hvor meget den afviger for hvert observationssæt (<span class="inl_cmd">opsummering</span>) - <span class="math">\( \sum \)</span>.</li>
 	<li>... hvor stor påvirkning det enkelte led har (<span class="inl_cmd">frekvens</span> - <span class="math">\( f_i \)</span></li>
+	<li>... om datasættet omhandler en <span class="inl_cmd">population</span> eller en <span class="inl_cmd">stikprøve</span></li>
 </ol>
 
-<p>Dvs:</p>
+<p>For en population er formlen:</p>
 
-<div class="latex">$$ Var(x) = \sum_{x_i}^k (x_i- \overline x)^2 \cdot f_i$$</div>
+<p>1) </p>
 
-<p><span class="inl_cmd">Variansen</span> kan også beregnes ved hjælp af <span class="inl_cmd">hyppighed</span> da: <span class="math">\( f_i = \frac{1}{n} \cdot h_i \)</span>:</p>
+<div class="latex">$$ Var(x) = \sum_{i=1}^k (x_i- \overline x)^2 \cdot f_i$$</div>
 
-<div class="latex">$$ Var(x) = \frac{1}{n} \cdot \sum_{x_i}^k (x_i- \overline x)^2 \cdot h_i$$</div>
+<p>2) ( da: <span class="math">\( f_i = \frac{1}{n} \cdot h_i \)</span> )</p>
 
-<p>Anvendt på tabellen:</p>
+<div class="latex">$$ Var(x) = \frac{1}{n} \cdot \sum_{i=1}^k (x_i- \overline x)^2 \cdot h_i$$</div>
 
-<div class="latex">$$ Var(x) = (02-7)^2 \cdot 0,1 + (4-7)^2 \cdot 0,2 + (7-7)^2 \cdot 0,4 + (10-7)^2 \cdot 0,2 + (12-7)^2 \cdot 0,1
+<p>For en stikprøve </p>
 
-\\ \Updownarrow \\
+<div class="latex">$$ Var(x) = \frac{1}{n-1} \cdot \sum_{i=1}^k (x_i- \overline x)^2 \cdot h_i$$</div>
 
-Var(x) = (-5)^2 \cdot 0,1 + (-3)^2 \cdot 0,2 + 0^2 \cdot 0,4 + 3^2 \cdot 0,2 + 5^2 \cdot 1
+<p>Anvendt på tabellen, som er en stikprøve:</p>
 
-\\ \Updownarrow \\
-
-Var(x) = 2,5+1,8+0+1,8+2,5
+<div class="latex">$$ Var(x) = \frac{1}{10-1} \cdot \left((02-7)^2 \cdot 1 + (4-7)^2 \cdot 2 + (7-7)^2 \cdot 4 + (10-7)^2 \cdot 2 + (12-7)^2 \cdot 1 \right)
 
 \\ \Updownarrow \\
 
-Var(x) =  8,6
+Var(x) = \frac{1}{9} \cdot \left( (-5)^2 \cdot 1 + (-3)^2 \cdot 2 + 0^2 \cdot 4 + 3^2 \cdot 2 + 5^2 \cdot 1 \right)
+
+\\ \Updownarrow \\
+
+Var(x) = \frac{1}{9} \cdot (25+18+0+18+25)
+
+\\ \Updownarrow \\
+
+Var(x) =  9,556
 
  $$</div>
  
@@ -610,11 +621,17 @@ Var(x) =  8,6
 
 <p>Spredningen er kvadratroden af variansen hvilket vil sige:</p>
 
+<p>For en population:</p>
+
 <div class="latex">$$ \sigma = \sqrt {Var(x)} $$</div>
+
+<p>For en stikprøve:</p>
+
+<div class="latex">$$ s = \sqrt {s^2} $$</div>
 
 <p>Spredningen er altså:</p>
 
-<div class="latex">$$ \sigma = \sqrt {8,6} = 2,933 $$</div>
+<div class="latex">$$ s = \sqrt {s^2} = 3,091 $$</div>
 
 <h1>Beregninger - kontinuert data</h1>
 
@@ -715,31 +732,43 @@ Var(x) =  8,6
 
 <h2>Varians</h2>
 
-<span class="afsnit">Varians</span>
+<p><b>Variansen</b> beskriver hvor meget værdierne i gennemsnit afviger fra middelværdien. Når man angiver <span class="inl_cmd">variansen</span> skal man først forholde sig til om det er for en <span class="inl_cmd">population</span> eller en <span class="inl_cmd">stikprøve</span>.</p>
 
-<p><span class="inl_cmd">Variansen</span> kan udregnes med følgende 2 formler (se argumentation ovenfor):</p>
+<p>Er det fra en population kaldes <span class="inl_cmd">variansen</span> for <span class="math">\( \sigma^2 \)</span> eller <span class="math">\( Var(x) \)</span>. I dette materiale vil vi anvende <span class="math">\( Var(x) \)</span>.</p>
 
-<div class="latex">$$ Var(x) = \sum_{x_i}^k (m_i- \overline x)^2 \cdot f_i  $$</div>
+<p>Er det fra en <span class="inl_cmd">stikprøve</span> kaldes den for <span class="math">\( s^2 \)</span>.</p>
 
-<p><span class="inl_cmd">Variansen</span> kan også beregnes ved hjælp af <span class="inl_cmd">hyppighed</span> da: <span class="math">\( f_i = \frac{1}{n} \cdot h_i \)</span>:</p>
 
-<div class="latex">$$ Var(x) = \frac{1}{n} \cdot \sum_{x_i}^k (m_i- \overline x)^2 \cdot h_i $$</div>
+<p>For en population er formlen:</p>
 
-<p>Beregnet ved hjælp af <span class="inl_cmd">frekvensen</span>:</p>
+<p>1) </p>
 
-<div class="latex">$$ Var(x) = (165-189,75)^2 \cdot 0,15 + (175-189,75)^2 \cdot 0,45 + (185-189,75)^2 \cdot 0,2 + \\(195-189,75)^2 \cdot 0,2 + (205-189,75)^2 \cdot 0,05 
+<div class="latex">$$ Var(x) = \sum_{i=1}^k (m_i- \overline x)^2 \cdot f_i$$</div>
+
+<p>2) ( da: <span class="math">\( f_i = \frac{1}{n} \cdot h_i \)</span> )</p>
+
+<div class="latex">$$ Var(x) = \frac{1}{n} \cdot \sum_{i=1}^k (m_i- \overline x)^2 \cdot h_i$$</div>
+
+<p>For en stikprøve </p>
+
+<div class="latex">$$ s^2 = \frac{1}{n-1} \cdot \sum_{i=1}^k (m_i- \overline x)^2 \cdot h_i$$</div>
+
+
+<p>Anvendt på tabellen, som er en <span class="inl_cmd">stikprøve</span>:</p>
+
+<div class="latex">$$ s^2 = \frac{1}{20-1} \cdot \left( (165-189,75)^2 \cdot 3 + (175-189,75)^2 \cdot 9 + (185-189,75)^2 \cdot 4 + \\(195-189,75)^2 \cdot 4 + (205-189,75)^2 \cdot 1 \right)
 
 \\ \Updownarrow \\
 
-Var(x) =  (-24,75)^2 \cdot 0,15 + (-14,75)^2 \cdot 0,45 + (-4,75)^2 \cdot 0,2 + (5,25)^2 \cdot 0,2 + (15,25)^2 \cdot 0,15 
+s^2 = \frac{1}{19} \cdot \left( (-24,75)^2 \cdot 3 + (-14,75)^2 \cdot 9 + (-4,75)^2 \cdot 4 + (5,25)^2 \cdot 4 + (15,25)^2 \cdot 1 \right)
 
 \\ \Updownarrow \\
 
-Var(x) = 612,56 \cdot 0,15 + 217,56 \cdot 0,45 + 22,56 \cdot 0,2 + 27,56 \cdot 0,2 + 232,56 \cdot 0,15
+s^2 = \frac{1}{19} \cdot \left( 612,56 \cdot 3 + 217,56 \cdot 9 + 22,56 \cdot 4 + 27,56 \cdot 4 + 232,56 \cdot 1 \right)
 
 \\ \Updownarrow \\
 
-Var(x) = 234,70
+s^2 = 222,57
 
  $$</div>
  
@@ -747,11 +776,18 @@ Var(x) = 234,70
 
 <p>Spredningen er kvadratroden af variansen hvilket vil sige:</p>
 
+<p>For en population:</p>
+
 <div class="latex">$$ \sigma = \sqrt {Var(x)} $$</div>
+
+<p>For en stikprøve:</p>
+
+<div class="latex">$$ s = \sqrt {s^2} $$</div>
+
 
 <p>Spredningen er altså:</p>
 
-<div class="latex">$$ \sigma = \sqrt {234,70} = 15,25  $$</div>
+<div class="latex">$$ s = \sqrt {222,57} = 14,92  $$</div>
 
 <p></p>
 <p></p>

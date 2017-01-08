@@ -471,6 +471,30 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 	</tbody>
 </table>
 
+<h2>Begreber</h2>
+
+<span class="afsnit">Observation, hændelse og udfald</span>
+
+<p><span class="inl_cmd">Observation:</span> Noget man aktivt observerer.</p>
+
+<p><span class="inl_cmd">Hændelse: </span> Noget som sker f.eks. et biluheld.</p>
+
+<p><span class="inl_cmd">Udfald:</span> Noget der sker pga. en sandsynlighed f.eks. terningkast.</p>
+
+
+<span class="afsnit">Population og stikprøve</span>
+
+<p>En <span class="inl_cmd">population</span> er et datasæt der indeholder alle data... Har man ikke alle data taler man om <span class="inl_cmd">stikprøve</span>.</p>
+
+<span class="afsnit">Repræsentativt datasæt</span>
+
+<p>Et <span class="inl_cmd">datasæt</span> (stikprøve) der har data nok til at lave en nøjagtig beskrivelse af populationen.</p>
+
+<span class="afsnit">Diskret og kontinuert data</span>
+
+<p><span class="inl_cmd">Diskret data</span> er eksakte værdier, hvor <span class="inl_cmd">kontinuert data</span> er grupperede værdier.</p>
+
+
 <h2>Notation</h2>
 
 <p>Når man beregner Statisk meteriale anvender man følgende notation.</p>
@@ -639,17 +663,29 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <span class="afsnit">Varians</span>
 
-<p>1)</p>
+<p>For en population:</p>
 
-<div class="latex">$$ Var(x) = \sum_{i=1}^{k} (x_i-\overline x)^2 \cdot f_i $$</div>
+<p>1) </p>
 
-<p>2)</p>
+<div class="latex">$$ Var(x) = \sigma^2 = \sum_{i=1}^k (x_i- \overline x)^2 \cdot f_i$$</div>
 
-<div class="latex">$$ Var(x) = \frac{1}{n} \cdot \sum_{i=1}^{k} (x_i-\overline x)^2 \cdot h_i $$</div>
+<p>2) ( da: <span class="math">\( f_i = \frac{1}{n} \cdot h_i \)</span> )</p>
+
+<div class="latex">$$ Var(x) = \sigma^2 = \frac{1}{n} \cdot \sum_{i=1}^k (x_i- \overline x)^2 \cdot h_i$$</div>
+
+<p>For en stikprøve </p>
+
+<div class="latex">$$ s^2 = \frac{1}{n-1} \cdot \sum_{i=1}^k (x_i- \overline x)^2 \cdot h_i$$</div>
 
 <span class="afsnit">Spredning/standardafvigelse</span>
 
+<p>For en population:</p>
+
 <div class="latex">$$ \sigma = \sqrt {Var(x)} $$</div>
+
+<p>For en stikprøve </p>
+
+<div class="latex">$$ s = \sqrt {Var(x)} $$</div>
 
 <h2>Kontinuert data</h2>
 
@@ -719,21 +755,29 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 <p>2)</p>
 <div class="latex">$$ \overline x = \frac{1}{n} \cdot \sum_{i=1}^{k} m_i \cdot h_i  $$</div>
 
-<span class="afsnit">Varians</span>
+<p>For en population er formlen:</p>
 
-<p>1)</p>
+<p>1) </p>
 
-<div class="latex">$$ Var(x) = \sum_{i=1}^{k} (m_i-\overline x)^2 \cdot f_i $$</div>
+<div class="latex">$$ Var(x) = \sigma^2 = \sum_{i=1}^k (m_i- \overline x)^2 \cdot f_i$$</div>
 
-<p>2)</p>
+<p>2) ( da: <span class="math">\( f_i = \frac{1}{n} \cdot h_i \)</span> )</p>
 
-<div class="latex">$$ Var(x) = \frac{1}{n} \cdot \sum_{i=1}^{k} (m_i-\overline x)^2 \cdot h_i $$</div>
+<div class="latex">$$ Var(x) = \sigma^2 = \frac{1}{n} \cdot \sum_{i=1}^k (m_i- \overline x)^2 \cdot h_i$$</div>
+
+<p>For en stikprøve </p>
+
+<div class="latex">$$ s^2 = \frac{1}{n-1} \cdot \sum_{i=1}^k (m_i- \overline x)^2 \cdot h_i$$</div>
 
 <span class="afsnit">Spredning/standardafvigelse</span>
 
+<p>For en population:</p>
+
 <div class="latex">$$ \sigma = \sqrt {Var(x)} $$</div>
 
+<p>For en stikprøve:</p>
 
+<div class="latex">$$ s = \sqrt {Var(x)} $$</div>
 
 
 <p></p>
