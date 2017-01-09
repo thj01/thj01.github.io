@@ -327,7 +327,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 	</tbody>
 </table>
 
-<h2>Kvartilsæt</h2>
+<span class="afsnit">Kvartilsæt</span>
 
 <p>For at danne sig et overblik over ens observationer ser man på hvad værdie ved henholdsvis 25%, 50% og 75% er. På den måde kan man udtale sig om første, anden, tredie og fjerde kvartil. Den fjerde kvartil</p>
 
@@ -339,22 +339,41 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 	<li>3. kvartil (75%) = 1 bil</li>
 </ul>
 
-<h2>Variationsbredde</h2>
+<span class="afsnit">Variationsbredde</span>
 
 <p>Variationsbredden beskriver forskellen mellem mindste og største værdien. Det kan give en indikation af hvor bredt man har ramt med sin undersøgelse. Tallet findes ved beregning: </p>
 
 <p>Forstil dig eksemplet med bilerne ovenfor. Hvis vores undersøgelse havde vist at der var en person med 20 biler, så ville variationsbredden have været <span class="math">\( 20-0 = 20 \)</span>. Hvis man sammenholder den med kvartilsættet, så bliver det tydeligt at se at det på ingen måde er normen.</p>
 
-<h2>Varians</h2>
+<span class="afsnit">Varians</span>
 
-<p><span class="inl_cmd">Variansen</span> fortæller noget om spredningen i datasættet, og angives <span class="math">\( Var(x) \)</span>.</p>
+<p><span class="inl_cmd">Varians</span> er en matematisk størrelse der anvendes til at beskrive hvordan data fordeler sig og anvendes i forskellige sammenhænge når man regner med statistik. <span class="inl_cmd">Variansen</span> kan beregnes på to måder afhængig af ens datamateriale.</p>
 
-<h2>Spredning/standardafvigelse</h2>
+<p>Har man gennemsnitsværdien fra et andet datamateriale skal man anvende:</p>
+
+<p>1) <span class="inl_cmd">Populationsformlen</span>:</p>
+
+<div class="latex">$$ \sigma^2 = \sum_{i=1}^k (x_i- \overline x)^2 \cdot f_i ~~~~= ~~~~ \frac{1}{n} \cdot \sum_{i=1}^k (x_i- \overline x)^2 \cdot h_i$$</div>
+
+<p>Har man beregnet gennemsnitsværdien ud fra sit datamateriale skal man anvende:</p>
+
+<p>2) <span class="inl_cmd">Stikprøveformlen</span>:</p>
+
+<div class="latex">$$ s^2 = \frac{1}{n-1} \cdot \sum_{i=1}^k (x_i- \overline x)^2 \cdot h_i$$</div>
+
+<p>Årsagen hertil er, at man under beregningen af middelværdien (<span class="math">\( \overline x \)</span>) allerede har anvendt alle værdierne i datamaterialet. Man kan sige at hvis man ikke kompenserer for dette, så er <span class="inl_cmd">variansen</span> påvirket (biased) pga. dette. Sagt på en anden måde: Hvis man ved at gennemsnittet af <span class="math">\( 3 \)</span> tal er <span class="math">\( 6 \)</span>, og to af tallene er <span class="math">\( 5 \)</span> og <span class="math">\( 6 \)</span>, så skal det sidste tal være <span class="math">\( 7 \)</span>. Der er altså reelt kun <span class="math">\( n-1 \)</span> grader af frihed.</p>
+
+<p>Så hovedreglen er, at hvis man har sit gennemsnit fra samme datamateriale, så anvender man <span class="math">\(  1) \)</span> ellers <span class="math">\( 2) \)</span>.</p>
+
+
+<p><b>Læs mere:</b> <a href="http://duramecho.com/Misc/WhyMinusOneInSd.html" target="_blank">http://duramecho.com/Misc/WhyMinusOneInSd.html</a></p>
+
+<span class="afsnit">Spredning/standardafvigelse</span>
 
 <p><span class="inl_cmd">Spredningen</span> fortæller noget om fordelingen af værdier i forhold til gennemsnittet, og angives med <span class="math">\( \sigma  \)</span> (det græske bogstav sigma). Sammenhængen med variensen er <span class="math">\( \sigma = \sqrt {Var(x)} \)</span></p>
 
 
-<h2>Normalfordeling/normaldistribution</h2>
+<span class="afsnit">Normalfordeling/normaldistribution</span>
 
 <p>Indenfor statistik anvender man begrebet normalfordeling, når data fordeler i det man kalder en "bell-curve". Årsagen til at man anvender "normal" er fordi man ofte ser den når man arbejder med statistisk materiale. </p>
 
@@ -374,7 +393,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <figure id="">
 
-	<img class="p80" src="images/statistik_søjlediagram_usynlig baggund.png" alt="" title="" />
+	<img class="p70" src="images/statistik_søjlediagram_usynlig baggund.png" alt="" title="" />
 
 	<figcaption></figcaption>
 
@@ -384,7 +403,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <figure id="">
 
-	<img class="p70" src="images/statistik_lagkagediagram_usynlig baggund.png" alt="" title="" />
+	<img class="p60" src="images/statistik_lagkagediagram_usynlig baggund.png" alt="" title="" />
 
 	<figcaption></figcaption>
 
@@ -565,9 +584,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <p><b>Variansen</b> beskriver hvor meget værdierne i gennemsnit afviger fra middelværdien. Når man angiver <span class="inl_cmd">variansen</span> skal man først forholde sig til om det er for en <span class="inl_cmd">population</span> eller en <span class="inl_cmd">stikprøve</span>.</p>
 
-<p>Er det fra en population kaldes <span class="inl_cmd">variansen</span> for <span class="math">\( \sigma^2 \)</span> eller <span class="math">\( Var(x) \)</span>. I dette materiale vil vi anvende <span class="math">\( Var(x) \)</span>.</p>
-
-<p>Er det fra en <span class="inl_cmd">stikprøve</span> kaldes den for <span class="math">\( s^2 \)</span>.</p>
+<p>Er det fra en population kaldes <span class="inl_cmd">variansen</span> for <span class="math">\( \sigma^2 \)</span> og er det fra en <span class="inl_cmd">stikprøve</span> kaldes den for <span class="math">\( s^2 \)</span>.</p>
 
 <p>Matematisk set beskriver man forskellen mellem to tal ved at trække værdierne fra hinanden. Derefter kvadrerer man for at værdien ikke bliver negativ:</p>
 
@@ -577,8 +594,8 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <ol class="">
 	<li>... hvor meget den afviger for hvert observationssæt (<span class="inl_cmd">opsummering</span>) - <span class="math">\( \sum \)</span>.</li>
-	<li>... hvor stor påvirkning det enkelte led har (<span class="inl_cmd">frekvens</span> - <span class="math">\( f_i \)</span></li>
-	<li>... om datasættet omhandler en <span class="inl_cmd">population</span> eller en <span class="inl_cmd">stikprøve</span></li>
+	<li>... hvor stor påvirkning det enkelte led har (<span class="inl_cmd">frekvens</span> - <span class="math">\( f_i \)</span>).</li>
+	<li>... om middeltallet kommer udefra (<span class="inl_cmd">population</span>) eller fra datasættet (<span class="inl_cmd">stikprøve.</span>).</li>
 </ol>
 
 <p>For en population er formlen:</p>
@@ -730,9 +747,7 @@ s^2 =  9,556
 
 <p><b>Variansen</b> beskriver hvor meget værdierne i gennemsnit afviger fra middelværdien. Når man angiver <span class="inl_cmd">variansen</span> skal man først forholde sig til om det er for en <span class="inl_cmd">population</span> eller en <span class="inl_cmd">stikprøve</span>.</p>
 
-<p>Er det fra en population kaldes <span class="inl_cmd">variansen</span> for <span class="math">\( \sigma^2 \)</span> eller <span class="math">\( Var(x) \)</span>. I dette materiale vil vi anvende <span class="math">\( Var(x) \)</span>.</p>
-
-<p>Er det fra en <span class="inl_cmd">stikprøve</span> kaldes den for <span class="math">\( s^2 \)</span>.</p>
+<p>Er det fra en population kaldes <span class="inl_cmd">variansen</span> for <span class="math">\( \sigma^2 \)</span> og er det fra en <span class="inl_cmd">stikprøve</span> kaldes den for <span class="math">\( s^2 \)</span>.</p>
 
 
 <p>For en population er formlen:</p>
