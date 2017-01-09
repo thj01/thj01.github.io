@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+
+<head>
+	
+	<meta charset="UTF-8" lang="da"/>
+
+	<title>Vidas.dk</title>
+
+	<link rel="stylesheet" href="../css/style.css" />
+	<link rel="stylesheet" href="../css/styles/docco.css" />
+	<link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono|Ubuntu|Ubuntu+Condensed' rel='stylesheet' type='text/css'>
+
+	<script src="http://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+	<script src="../js/toc2.js" type="text/javascript"></script>
+	<script>$(function(){$("#license").load("license.html"); });</script>
+	<script type="text/javascript" async
+		src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+		MathJax.Hub.Config({ jax: ["input/TeX","output/HTML-CSS"], displayAlign: "left"
+ 		});
+	</script>
+        <script>
+	$(document).ready(function(){
+		$(".hide").click(function(){$("#toc").hide();});
+		$(".show").click(function(){$("#toc").show();});
+	});
+	</script>
+	<script src="../js/highlight.pack.js" type="text/javascript"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+	<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-89933285-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</head>
+<!-- 
+code highlighter : https://highlightjs.org/
+code converter : http://www.freebits.co.uk/convert-html-code-to-text.html 
+-->
+<html>
+<body onload="generateTOC(document.getElementById('toc'));">
+
+<footer id="license"></footer>
+
+<header>
+	<div class="show" id="toggle_menu"></div> 
+</header>
+
+<div class="toggle">
+	<div id="toc" class="hide">
+		<div id="toc_title"><span class=""><a href="#" target="">(Luk)</a></span></div>	
+	</div>
+</div>
+		
+<p></p><p></p>
+
+<div class="title">Finansregning</div>
+
+<h1>Annuitetsregning</h1>
+
+<p>Formlen for annuitet er:</p>
+
+<div class="latex">$$ A_n = y \cdot \frac{(1+r)^n - 1}{r} $$</div>
+
+<span class="afsnit">Udledning af formlen</span>
+
+<p>For at få et overblik overformlen laver vi følgende skema:</p>
+
+<table class="">
+	<tbody>
+		<tr>
+			<td>Termin</td>
+			<td><span class="math">\( 0 \)</span></td>
+			<td><span class="math">\( 1 \)</span></td>
+			<td><span class="math">\( 2 \)</span></td>
+			<td><span class="math">\( ... \)</span></td>
+			<td><span class="math">\( n-1 \)</span></td>
+			<td><span class="math">\( n \)</span></td>
+		</tr>
+		<tr>
+			<td>Ydelse</td>
+			<td>-</td>
+			<td><span class="math">\( y \)</span></td>
+			<td><span class="math">\( y \)</span></td>
+			<td><span class="math">\( y \)</span></td>
+			<td><span class="math">\( y \)</span></td>
+			<td><span class="math">\( y \)</span></td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Det som skemaet viser er måden ydelsen falder i forhold til terminen. For at finde en formel vil vi skrive ned hvordan den endelige ydelse vil være, og vi gør det baglæns. Dvs:</p>
+
+<div class="latex">$$ A_n = y + y \cdot (1+r)^1 + ... + y \cdot (1+r)^{n-1} $$</div>
+
+<p>For at få overblik erstatter vi <span class="math">\( (1+r) \)</span> med <span class="math">\( a \)</span>:</p>
+
+<div class="latex">$$ A_n = y + y \cdot a^1 + ... + y \cdot a^{n-1} $$</div>
+
+<p><span class="math">\( y \)</span> sættes uden for parantes:</p>
+
+<div class="latex">$$ A_n = y \cdot (1+a+...+a^{n-1}) $$</div>
+
+<p>For at komme videre laver vi et lille "trick". Vi ganger og dividerer med <span class="math">\( a-1 \)</span>:</p>
+
+<div class="latex">$$ A_n = y \cdot \frac{(1+a+...+a^{n-1}) \cdot (a-1)}{a-1}	 $$</div>
+
+<p>Gang paranteserne i tælleren sammen:</p>
+
+<div class="latex">$$ A_n = y \cdot \frac{a+a^2+...+a^n- 1 \cdot (1+a+...+a^{n-1})}{a-1}	 $$</div>
+
+<p>Gang ind i den sidste parantes:</p>
+
+<div class="latex">$$ A_n = y \cdot \frac{a+a^2+...+a^n- 1 -a-...-a^{n-1})}{a-1}	 $$</div>
+
+<p>Forkort:</p>
+
+<div class="latex">$$ A_n = y \cdot \frac{a^{n}-1}{a-1} $$</div>
+
+<p>Erstat <span class="math">\( a \)</span> med <span class="math">\( (1+r) \)</span>:</p>
+
+<div class="latex">$$ A_n = y \cdot \frac{(1+r)^{n}-1}{(1+r)-1}$$</div>
+
+<p>Forkort:</p>
+
+<div class="latex">$$ A_n = y \cdot \frac{(1+r)^{n}-1}{r} $$</div>
+
+<p>Hermed er beviset gennemført.</p>
+
+
+
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+	</body>
+
+</html>

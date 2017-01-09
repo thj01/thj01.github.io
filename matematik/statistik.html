@@ -419,12 +419,12 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 			<td>Interval midtpunkt. Den midterste værdi i et interval f.eks. <span class="math">\( ]160;170] = \frac{161+170}{2} = 165.5 \)</span> </td>
 		</tr>
 		<tr>
-			<td><span class="math">\( Var(x) \)</span></td>
-			<td>Variansen. En værdi der ofte anvendes i statistik til at lave beregninger med. Nogle gang bruges <span class="math">\( \sigma^2 \)</span>.</td>
+			<td><span class="math">\( \sigma^2 \)</span>/<span class="math">\( s^2 \)</span></td>
+			<td>Variansen. <span class="math">\( \sigma^2 \)</span> anvendes når det er en population og <span class="math">\( s^2 \)</span> når det er en stikprøve.</td>
 		</tr>
 		<tr>
-			<td><span class="math">\( \sigma \)</span></td>
-			<td>Spredningen. </td>
+			<td><span class="math">\( \sigma \)</span>/<span class="math">\( s \)</span></td>
+			<td>Spredningen.<span class="math">\( \sigma \)</span> anvendes når det er en population og <span class="math">\( s \)</span> når det er en stikprøve. </td>
 		</tr>
 		<tr>
 			<td><span class="math">\( \sum \)</span></td>
@@ -474,10 +474,6 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 <p>Det kan ændres til nedestående, da vi skal opsummere <span class="math">\( x_i \)</span>-værdierne fra <span class="math">\( x_1 \rightarrow x_k \)</span>:</p>
 
 <div class="latex">$$ \sum_{i=1}^{k} x_i = x_1+x_2+x_3+...+x_{k-1}+{x_k}$$</div>
-
-<p><span class="math">\( \sum \)</span> anvendes som ethvert andet tegn i matematikken f.eks:</p>
-
-<div class="latex">$$ \sum_{i=1}^k x_i \cdot 2 = 2 \cdot \sum_{i=k}^3 x_i$$</div>
 
 <h1>Beregninger - diskret fordeling</h1>
 
@@ -589,31 +585,31 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <p>1) </p>
 
-<div class="latex">$$ Var(x) = \sum_{i=1}^k (x_i- \overline x)^2 \cdot f_i$$</div>
+<div class="latex">$$ \sigma^2 = \sum_{i=1}^k (x_i- \overline x)^2 \cdot f_i$$</div>
 
 <p>2) ( da: <span class="math">\( f_i = \frac{1}{n} \cdot h_i \)</span> )</p>
 
-<div class="latex">$$ Var(x) = \frac{1}{n} \cdot \sum_{i=1}^k (x_i- \overline x)^2 \cdot h_i$$</div>
+<div class="latex">$$ \sigma^2 = \frac{1}{n} \cdot \sum_{i=1}^k (x_i- \overline x)^2 \cdot h_i$$</div>
 
 <p>For en stikprøve </p>
 
-<div class="latex">$$ Var(x) = \frac{1}{n-1} \cdot \sum_{i=1}^k (x_i- \overline x)^2 \cdot h_i$$</div>
+<div class="latex">$$ s^2 = \frac{1}{n-1} \cdot \sum_{i=1}^k (x_i- \overline x)^2 \cdot h_i$$</div>
 
 <p>Anvendt på tabellen, som er en stikprøve:</p>
 
-<div class="latex">$$ Var(x) = \frac{1}{10-1} \cdot \left((02-7)^2 \cdot 1 + (4-7)^2 \cdot 2 + (7-7)^2 \cdot 4 + (10-7)^2 \cdot 2 + (12-7)^2 \cdot 1 \right)
+<div class="latex">$$ s^2 = \frac{1}{10-1} \cdot \left((02-7)^2 \cdot 1 + (4-7)^2 \cdot 2 + (7-7)^2 \cdot 4 + (10-7)^2 \cdot 2 + (12-7)^2 \cdot 1 \right)
 
 \\ \Updownarrow \\
 
-Var(x) = \frac{1}{9} \cdot \left( (-5)^2 \cdot 1 + (-3)^2 \cdot 2 + 0^2 \cdot 4 + 3^2 \cdot 2 + 5^2 \cdot 1 \right)
+s^2 = \frac{1}{9} \cdot \left( (-5)^2 \cdot 1 + (-3)^2 \cdot 2 + 0^2 \cdot 4 + 3^2 \cdot 2 + 5^2 \cdot 1 \right)
 
 \\ \Updownarrow \\
 
-Var(x) = \frac{1}{9} \cdot (25+18+0+18+25)
+s^2 = \frac{1}{9} \cdot (25+18+0+18+25)
 
 \\ \Updownarrow \\
 
-Var(x) =  9,556
+s^2 =  9,556
 
  $$</div>
  
@@ -623,7 +619,7 @@ Var(x) =  9,556
 
 <p>For en population:</p>
 
-<div class="latex">$$ \sigma = \sqrt {Var(x)} $$</div>
+<div class="latex">$$ \sigma = \sqrt {s^2} $$</div>
 
 <p>For en stikprøve:</p>
 
@@ -743,11 +739,11 @@ Var(x) =  9,556
 
 <p>1) </p>
 
-<div class="latex">$$ Var(x) = \sum_{i=1}^k (m_i- \overline x)^2 \cdot f_i$$</div>
+<div class="latex">$$ \sigma^2 = \sum_{i=1}^k (m_i- \overline x)^2 \cdot f_i$$</div>
 
 <p>2) ( da: <span class="math">\( f_i = \frac{1}{n} \cdot h_i \)</span> )</p>
 
-<div class="latex">$$ Var(x) = \frac{1}{n} \cdot \sum_{i=1}^k (m_i- \overline x)^2 \cdot h_i$$</div>
+<div class="latex">$$ \sigma^2 = \frac{1}{n} \cdot \sum_{i=1}^k (m_i- \overline x)^2 \cdot h_i$$</div>
 
 <p>For en stikprøve </p>
 
@@ -778,7 +774,7 @@ s^2 = 222,57
 
 <p>For en population:</p>
 
-<div class="latex">$$ \sigma = \sqrt {Var(x)} $$</div>
+<div class="latex">$$ \sigma = \sqrt {\sigma^2} $$</div>
 
 <p>For en stikprøve:</p>
 
