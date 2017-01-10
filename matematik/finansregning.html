@@ -62,7 +62,13 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <h1>Annuitetsregning</h1>
 
-<p>Formlen for annuitet er:</p>
+<p>Annuitetsregning indeholder både ydelse og renter, som skal medtages, og den beskriver over tid (terminer) den udvikling der sker. Her taler vi om to begreber: <span class="inl_cmd">Fremtidsværdien (</span><span class="math">\( A_n \)</span>) og <span class="inl_cmd">nutidsværdien (</span><span class="math">\( A_0 \)</span>).</p>
+
+<p><span class="math">\( A_n \)</span> beskriver det beløb der står på en konto efter en ydelse er blevet indbetalt i <span class="math">\( n \)</span> terminer og <span class="math">\( A_0 \)</span> beskriver det tidspunkt hvor et lån går i nul.</p>
+
+<h2>Fremtidsværdien: <span class="math">\( A_n \)</span></h2>
+
+<p>Formlen for <span class="math">\( A_n \)</span> er:</p>
 
 <div class="latex">$$ A_n = y \cdot \frac{(1+r)^n - 1}{r} $$</div>
 
@@ -73,7 +79,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 <table class="">
 	<tbody>
 		<tr>
-			<td>Termin</td>
+			<td rowspan="2">Termin</td>
 			<td><span class="math">\( 0 \)</span></td>
 			<td><span class="math">\( 1 \)</span></td>
 			<td><span class="math">\( 2 \)</span></td>
@@ -82,22 +88,38 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 			<td><span class="math">\( n \)</span></td>
 		</tr>
 		<tr>
+			<td><span class="math">\( A_0 \)</span></td>
+			<td><span class="math">\( A_1 \)</span></td>
+			<td><span class="math">\( A_2 \)</span></td>
+			<td><span class="math">\( A_x \)</span></td>
+			<td><span class="math">\( A_{n-1} \)</span></td>
+			<td><span class="math">\( A_n \)</span></td>
+		</tr>
+		<tr>
 			<td>Ydelse</td>
-			<td>-</td>
+			<td><span class="math">\( ingen \)</span></td>
 			<td><span class="math">\( y \)</span></td>
 			<td><span class="math">\( y \)</span></td>
 			<td><span class="math">\( y \)</span></td>
 			<td><span class="math">\( y \)</span></td>
 			<td><span class="math">\( y \)</span></td>
 		</tr>
+
 	</tbody>
 </table>
 
-<p>Det som skemaet viser er måden ydelsen falder i forhold til terminen. For at finde en formel vil vi skrive ned hvordan den endelige ydelse vil være, og vi gør det baglæns. Dvs:</p>
+<p>Det som skemaet viser er måden ydelsen falder i forhold til terminen.</p>
+
+<p>Det vi ved er at rentesregning formlen er:</p>
+
+<div class="latex">$$ K_n = K_0 \cdot (1+r)^n $$</div>
+
+
+<p>Derfor har vi nu et udtryk for hvad der sker i den enkelte termin. For at finde en formel vil vi skrive ned hvordan den endelige ydelse vil være, og vi gør det baglæns. Dvs:</p>
 
 <div class="latex">$$ A_n = y + y \cdot (1+r)^1 + ... + y \cdot (1+r)^{n-1} $$</div>
 
-<p>For at få overblik erstatter vi <span class="math">\( (1+r) \)</span> med <span class="math">\( a \)</span>:</p>
+<p>Grunden til at sidste led er <span class="math">\( n-1 \)</span> er, at der i den <span class="inl_cmd">n'te</span> termin ikke er påløbet nogen rente. For at få overblik erstatter vi <span class="math">\( (1+r) \)</span> med <span class="math">\( a \)</span>:</p>
 
 <div class="latex">$$ A_n = y + y \cdot a^1 + ... + y \cdot a^{n-1} $$</div>
 
@@ -131,6 +153,74 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <p>Hermed er beviset gennemført.</p>
 
+<h2>Nutidsværdien (<span class="math">\( A_0 \)</span>)</h2>
+
+<p>Formlen for <span class="math">\( A_0 \)</span> er:</p>
+
+<div class="latex">$$ A_0 = y \cdot \frac{1-(1+r)^{-n}}{r} $$</div>
+
+<span class="afsnit">Udledning af formlen</span>
+
+<p>For at få et overblik overformlen laver vi følgende skema:</p>
+
+<table class="">
+	<tbody>
+		<tr>
+			<td rowspan="2">Termin</td>
+			<td><span class="math">\( 0 \)</span></td>
+			<td><span class="math">\( 1 \)</span></td>
+			<td><span class="math">\( 2 \)</span></td>
+			<td><span class="math">\( ... \)</span></td>
+			<td><span class="math">\( n-1 \)</span></td>
+			<td><span class="math">\( n \)</span></td>
+		</tr>
+		<tr>
+			<td><span class="math">\( A_0 \)</span></td>
+			<td><span class="math">\( A_1 \)</span></td>
+			<td><span class="math">\( A_2 \)</span></td>
+			<td><span class="math">\( A_x \)</span></td>
+			<td><span class="math">\( A_{n-1} \)</span></td>
+			<td><span class="math">\( A_n \)</span></td>
+		</tr>
+		<tr>
+			<td>Ydelse</td>
+			<td><span class="math">\( ingen \)</span></td>
+			<td><span class="math">\( y \)</span></td>
+			<td><span class="math">\( y \)</span></td>
+			<td><span class="math">\( y \)</span></td>
+			<td><span class="math">\( y \)</span></td>
+			<td><span class="math">\( y \)</span></td>
+		</tr>
+
+	</tbody>
+</table>
+
+<p>Fra vi har den sidste ydelse (<span class="math">\( A_n \)</span>) og tilbage til den første har vi n terminer. Dvs. vi får følgende udtryk:</p>
+
+<div class="latex">$$ A_0 = A_n \cdot (1+r)^{-n} $$</div>
+
+<p>Da vi kender <span class="math">\( A_n \)</span> fra før indsætter vi det i udtrykket:</p>
+
+<div class="latex">$$ A_0 = y \cdot \frac{(1+r)^{n}-1}{r} \cdot (1+r)^{-n} $$</div>
+
+<p>Vi sætter på samme brøkstreg:</p>
+
+<div class="latex">$$ A_0 = y \cdot \frac{ \left( (1+r)^{n}-1 \right) \cdot (1+r)^{-n} }{r}  $$</div>
+
+<p>Vi ganger ind i parantesen</p>
+
+<div class="latex">$$ A_0 = y \cdot \frac{  (1+r)^{n} \cdot (1+r)^{-n} - 1  \cdot (1+r)^{-n} }{r}  $$</div>
+
+<p>Vi anvender potensregler:</p>
+
+<div class="latex">$$ A_0 = y \cdot \frac{  (1+r)^{n - n} - (1+r)^{-n} }{r} = y \cdot \frac{  1 - (1+r)^{-n} }{r} $$</div>
+
+<p>... og samler udtrykket:</p>
+
+<div class="latex">$$ A_0 = y \cdot \frac{  1 - (1+r)^{-n} }{r} $$</div>
+
+
+<p>Hermed er beviset gennemført.</p>
 
 
 <p></p>
