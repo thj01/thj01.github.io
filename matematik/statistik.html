@@ -349,22 +349,19 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <p><span class="inl_cmd">Varians</span> er en matematisk størrelse der anvendes til at beskrive hvordan data fordeler sig og anvendes i forskellige sammenhænge når man regner med statistik. <span class="inl_cmd">Variansen</span> kan beregnes på to måder afhængig af ens datamateriale.</p>
 
-<p>Har man gennemsnitsværdien fra et andet datamateriale skal man anvende:</p>
+<p>Har man gennemsnitsværdien fra en population skal man anvende:</p>
 
 <p>1) <span class="inl_cmd">Populationsformlen</span>:</p>
 
 <div class="latex">$$ \sigma^2 = \sum_{i=1}^k (x_i- \overline x)^2 \cdot f_i ~~~~= ~~~~ \frac{1}{n} \cdot \sum_{i=1}^k (x_i- \overline x)^2 \cdot h_i$$</div>
 
-<p>Har man beregnet gennemsnitsværdien ud fra sit datamateriale skal man anvende:</p>
+<p>Er gennemsnitsværdien beregnet ud fra en stikprøve skal man anvende:</p>
 
 <p>2) <span class="inl_cmd">Stikprøveformlen</span>:</p>
 
 <div class="latex">$$ s^2 = \frac{1}{n-1} \cdot \sum_{i=1}^k (x_i- \overline x)^2 \cdot h_i$$</div>
 
 <p>Årsagen hertil er, at man under beregningen af middelværdien (<span class="math">\( \overline x \)</span>) allerede har anvendt alle værdierne i datamaterialet. Man kan sige at hvis man ikke kompenserer for dette, så er <span class="inl_cmd">variansen</span> påvirket (biased) pga. dette. Sagt på en anden måde: Hvis man ved at gennemsnittet af <span class="math">\( 3 \)</span> tal er <span class="math">\( 6 \)</span>, og to af tallene er <span class="math">\( 5 \)</span> og <span class="math">\( 6 \)</span>, så skal det sidste tal være <span class="math">\( 7 \)</span>. Der er altså reelt kun <span class="math">\( n-1 \)</span> grader af frihed.</p>
-
-<p>Så hovedreglen er, at hvis man har sit gennemsnit fra samme datamateriale, så anvender man <span class="math">\(  1) \)</span> ellers <span class="math">\( 2) \)</span>.</p>
-
 
 <p><b>Læs mere:</b> <a href="http://duramecho.com/Misc/WhyMinusOneInSd.html" target="_blank">http://duramecho.com/Misc/WhyMinusOneInSd.html</a></p>
 

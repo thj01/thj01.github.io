@@ -60,7 +60,110 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <div class="title">Finansregning</div>
 
+<h1>Rentes rente.</h1>
+
+<p>Formlen for renters rente er givet ved:</p>
+
+<span class="math">\( K_n = K_0 \cdot (1+r)^n \)</span>
+
+<p>Hvor:</p>
+
+<ul class="none">
+	<li><span class="math">\( n \)</span> er antallet af terminer</li>
+	<li><span class="math">\( K_0\)</span> er startkapitalen</li>
+	<li><span class="math">\( K_n \)</span> er kapitalen efter <span class="math">\( n \)</span> terminer</li>
+</ul>
+
+<h2>Induktionsbevis</h2>
+
+<p>For at bevise formlen anvender vi et induktionsbevis. For et induktionsbevis er gældende skal man vise at et udsagn <span class="math">\( P(n) \)</span> er sandt for <span class="math">\( n \in \mathbb{N}  \)</span>. Det gør man ved at gennemløbe 3 punkter</p>
+
+<ol type="a" class="">
+	<li>Vis at det gælder for <span class="math">\( n=1 \)</span></li>
+	<li>Antag at <span class="math">\( P(n) \)</span> er sand og </li>
+	<li>vis at det gælder for <span class="math">\( P(n+1) \)</span></li>
+</ol>
+
+<p>Har vi vist <span class="inl_cmd">a, b</span> og <span class="inl_cmd">c</span> må det gælde at <span class="math">\( P(1), P(2), P(3), ... \)</span>er sand. </p>
+
+<h2>Bevis: Rentes rente formlen</h2>
+
+<p>Formlen vi gerne vil bevise er:</p>
+
+<span class="math">\( K_n = K_0 \cdot (1+r)^n \)</span>
+
+<p>Først vi vi vise at det gælder for <span class="math">\( n=1 \)</span>. Vi ved at:</p>
+
+<div class="latex">$$ K_1 = K_0 \cdot (1+r)^1 $$</div>
+
+<p>Nu antager vi at det gælder for ethvert <span class="math">\( n \)</span>:</p>
+
+<div class="latex">$$ K_n = K_0 \cdot (1+r)^n $$</div>
+
+<p>Vi fremskriver <span class="math">\( K_n \)</span> med en termin:</p>
+
+<div class="latex">$$ K_{n+1} = K_n \cdot (1+r)^1 $$</div>
+
+<p>Vi indsætter formlen for <span class="math">\( K_n \)</span></p>
+
+<div class="latex">$$ K_{n+1} = K_0 \cdot (1+r)^n \cdot (1+r)^1 $$</div>
+
+<p>... og anvender potensreglen:</p>
+
+<div class="latex">$$ K_{n+1} = K_0 \cdot (1+r)^{n+1} $$</div>
+
+<p>Nu har vi ved induktionsmetoden bevist rentesrente formlen:</p>
+
+<div class="latex">\( K_n = K_0 \cdot (1+r)^n \)</div>
+
+<h2>Find renten</h2>
+
+<p>Formlen til at finde renten er:</p>
+
+<div class="latex">$$ r = \sqrt [n] { \frac{ K_n}{K_0} } -1$$</div>
+
+<span class="afsnit">Bevis</span>
+
+<div class="latex">$$ K_0 \cdot (1+r)^n = K_n \\ \Updownarrow\\
+
+(1+r)^n = \frac{K_n}{K_0} \\ \Updownarrow \\
+
+\sqrt [n] {(1+r)^n} = \sqrt { \frac{K_n}{K_0} } \\ \Updownarrow \\
+
+1+r = \sqrt { \frac{K_n}{K_0} } \\ \Updownarrow \\
+
+r = \sqrt { \frac{K_n}{K_0} - 1 }
+
+
+$$</div>
+
+<div class="latex">$$  $$</div>
+
+
+<h2>Find terminer</h2>
+
+<p>Formlen til at finde antal terminer er:</p>
+
+<div class="latex">$$ n =  \frac{ ln \left( \frac{K_n}{K_0} \right) } { ln(1+r) }$$</div>
+
+<span class="afsnit">Bevis</span>
+
+<div class="latex">$$ K_0 \cdot (1+r)^n = K_n \\ \Updownarrow\\
+
+(1+r)^n = \frac{K_n}{K_0} \\ \Updownarrow \\
+
+n \cdot ln(1+r) = ln \left( \frac{K_n}{K_0} \right) \\ \Updownarrow \\
+
+n= \frac{ ln \left( \frac{K_n}{K_0} \right)  } { ln(1+r)  }
+
+
+
+
+$$</div>
+
 <h1>Annuitetsregning</h1>
+
+
 
 <p>Annuitetsregning indeholder både ydelse og renter, som skal medtages, og den beskriver over tid (terminer) den udvikling der sker. Her taler vi om to begreber: <span class="inl_cmd">Fremtidsværdien (</span><span class="math">\( A_n \)</span>) og <span class="inl_cmd">nutidsværdien (</span><span class="math">\( A_0 \)</span>).</p>
 
@@ -221,6 +324,19 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 
 <p>Hermed er beviset gennemført.</p>
+
+<h2>Ydelsen ( <span class="math">\( y \)</span> )</h2>
+
+<p>Formlen til at finde ydelsen er:</p>
+
+<div class="latex">$$ y = A_0 \cdot \frac{ 1 }{ 1-(1+r)^{-n}}   $$</div>
+
+<h2>Antal terminer ( <span class="math">\( n \)</span>)</h2>
+
+<p>Formlen til at finde antal terminer er:</p>
+
+<div class="latex">$$ n = \frac {  ln \left(  1 - \frac{ A_0 \cdot r  } {  y }   \right) } { ln(1+r)  } $$</div>
+
 
 
 <p></p>
