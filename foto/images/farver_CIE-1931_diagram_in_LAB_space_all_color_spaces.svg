@@ -230,11 +230,11 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="5.6"
-     inkscape:cx="208.63134"
-     inkscape:cy="183.39077"
+     inkscape:zoom="2.8"
+     inkscape:cx="205.64969"
+     inkscape:cy="373.1392"
      inkscape:document-units="px"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="layer5"
      showgrid="true"
      inkscape:window-width="1855"
      inkscape:window-height="1176"
@@ -271,7 +271,7 @@
        orientation="0,1"
        id="guide4732" />
     <sodipodi:guide
-       position="330,370.00002"
+       position="195,380.00002"
        orientation="0,1"
        id="guide4734" />
     <sodipodi:guide
@@ -286,6 +286,26 @@
        position="40.000003,210.00002"
        orientation="0,1"
        id="guide3599" />
+    <sodipodi:guide
+       position="133,63.000024"
+       orientation="1,0"
+       id="guide3933" />
+    <sodipodi:guide
+       position="161,93.000024"
+       orientation="0,1"
+       id="guide3935" />
+    <sodipodi:guide
+       position="190,370.00002"
+       orientation="1,0"
+       id="guide3937" />
+    <sodipodi:guide
+       position="455,200.00002"
+       orientation="0,1"
+       id="guide3939" />
+    <sodipodi:guide
+       position="400,95.000024"
+       orientation="1,0"
+       id="guide3941" />
   </sodipodi:namedview>
   <metadata
      id="metadata10651">
@@ -1354,9 +1374,10 @@
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:17.5px;line-height:125%;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu, Normal';text-align:start;writing-mode:lr-tb;text-anchor:start">ProPhoto RGB</tspan></text>
     <path
        style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 335,52.365784 -130,0 -70,25 0,0"
+       d="M 335,52.365784 190.10025,52.113246 135,77.365784 l 0,0"
        id="path4767"
-       inkscape:connector-curvature="0" />
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccc" />
   </g>
   <g
      inkscape:groupmode="layer"
@@ -1384,10 +1405,38 @@
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:17.5px;line-height:125%;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu, Normal';text-align:start;writing-mode:lr-tb;text-anchor:start">Adobe RGB</tspan></text>
     <path
        style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 335,122.36578 -105,0 -55,25.35714"
+       d="m 335,122.36578 -105,0 -64.64286,30.17857"
        id="path4771"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="ccc" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer5"
+     inkscape:label="DCI-p3"
+     style="display:inline">
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:4, 4;stroke-dashoffset:0;stroke-opacity:1"
+       d="m 133,427.07383 267,-107 -210,-180 z"
+       id="path3943"
+       inkscape:connector-curvature="0" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="343.495"
+       y="121.14633"
+       id="text3610-1"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3612-1"
+         x="343.495"
+         y="121.14633"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:17.5px;line-height:125%;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu, Normal';text-align:start;writing-mode:lr-tb;text-anchor:start">DCI-P3</tspan></text>
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 340,115.07383 -105,0 -40,35"
+       id="path4783"
+       inkscape:connector-curvature="0" />
   </g>
   <g
      inkscape:groupmode="layer"
