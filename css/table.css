@@ -2,9 +2,12 @@
 
 
 table {
-
+margin : 0 auto;
+margin-top: 1.2em;
+margin-bottom: 1.6em;
 width:90%;
-margin: 1em 2em;
+
+
 /*font-family: ubuntu mono, sans-serif;*/
 
 
@@ -15,12 +18,12 @@ table thead th {
 background-color: #585858 ;
 color: #E8E8E8  ;
 font-family: Ubuntu mono;
-text-align: left;
-
+border: .1em solid black  ;
+padding: 1em .4em;
 }
 
 
-th, td {
+td {
 
 border: .1em solid black  ;
 padding: .5em .4em;
