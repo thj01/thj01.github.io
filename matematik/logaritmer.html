@@ -1,77 +1,39 @@
 <!DOCTYPE html>
-
+<html lang="en">
 <head>
-	
-	<meta charset="UTF-8" lang="da"/>
+  <title>Vidas.dk</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono|Ubuntu|Ubuntu+Condensed' rel='stylesheet' type='text/css'>
 
-	<title>Vidas.dk</title>
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/jquery-ui.min.css">
+  <link rel="stylesheet" href="../css/jquery.tocify.css">
+  <link rel="stylesheet" href="../css/style_new.css" />
+<!-- Scripts in bottom to speed up pageload-->
+ 
 
-	<link rel="stylesheet" href="../css/style.css" />
-	<link rel="stylesheet" href="../css/styles/docco.css" />
-	<link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono|Ubuntu|Ubuntu+Condensed' rel='stylesheet' type='text/css'>
-
-	<script src="http://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-	<script src="../js/toc2.js" type="text/javascript"></script>
-	<script>$(function(){$("#license").load("license.html"); });</script>
-	<script type="text/javascript" async
-		src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
-		MathJax.Hub.Config({ jax: ["input/TeX","output/HTML-CSS"], displayAlign: "left"
- 		});
-	</script>
-        <script>
-	$(document).ready(function(){
-		$(".hide").click(function(){$("#toc").hide();});
-		$(".show").click(function(){$("#toc").show();});
-	});
-	</script>
-	<script src="../js/highlight.pack.js" type="text/javascript"></script>
-	<script>hljs.initHighlightingOnLoad();</script>
-	<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-89933285-1', 'auto');
-  ga('send', 'pageview');
-
-</script>
 </head>
-<!-- 
-code highlighter : https://highlightjs.org/
-code converter : http://www.freebits.co.uk/convert-html-code-to-text.html 
--->
-<html>
-<body onload="generateTOC(document.getElementById('toc'));">
+<body>
+	
+	
+<div class="container-fluid">
 
-<footer id="license"></footer>
-
-<header>
-	<div class="show" id="toggle_menu"></div> 
-</header>
-
-<div class="toggle">
-	<div id="toc" class="hide">
-		<div id="toc_title"><span class=""><a href="#" target="">(Luk)</a></span></div>	
+<div class="row-fluid">
+	
+<div class="col-sm-3">
+	
+	<div id="toc">
+	
+		<div id="toc_headline"></div>
+	
 	</div>
-</div>
-		
-<p></p><p></p>
 
-<div class="title">Logaritmer</div>
-
-<figure id="">
-
-	<img class="p50" src="images/Logaritme_graf_wikipedia.svg" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-
-<!--
-Taget fra: https://da.wikipedia.org/wiki/Logaritme#/media/File:Log4.svg
--->
-
+</div><!-- Start slut 1. kolonne - TOC -->
+	
+<div class="col-sm-9">
+	
 <h1>Om logaritmer</h1>
 
 <p></p>
@@ -110,35 +72,18 @@ Taget fra: https://da.wikipedia.org/wiki/Logaritme#/media/File:Log4.svg
 
 	<div class="latex">$$ log_a(a^x) = x $$</div>
 
-<!--
-<img class="math" src="images/logaritme_loga_def0.svg" alt="" title="" />
--->
-
 <p>Definition 2</p>
 
 
 	<div class="latex">$$ log_a(x) = y \Leftrightarrow a^y = x $$</div>
 
-<!--
-<img class="math" src="images/logaritme_loga_def1.svg" alt="" title="" />
--->
-
 <p>Definition 3</p>
 
 	<div class="latex">$$ log_a(1) = 0 $$</div>
 
-
-<!--
-<img class="math" src="images/logaritme_loga_def2.svg" alt="" title="" />
--->
-
 <p>Definition 4</p>
 
 	<div class="latex">$$ log_a(a) = 1 $$</div>
-
-<!--
-<img class="math" src="images/logaritme_loga_def3.svg" alt="" title="" />
--->
 
 <h2>10-tals logoritmen</h2>
 
@@ -152,25 +97,13 @@ Taget fra: https://da.wikipedia.org/wiki/Logaritme#/media/File:Log4.svg
 
 	<div class="latex">$$ log(x) = y \Leftrightarrow 10^y = x $$</div>
 
-<!--
-<p><img class="math" src="images/logaritme_log_def1.svg" alt="" title="" /></p>
--->
-
 <p>Sætning 2)</p>
 
 	<div class="latex">$$ log(10^x) = x $$</div>
 
-<!--
-<p><img class="math" src="images/logaritme_log_def2.svg" alt="" title="" /></p>
--->
-
 <p>Sætning 3)</p>
 
 	<div class="latex">$$ 10^{log(x)} = x $$</div>
-
-<!--
-<p><img class="math" src="images/logaritme_log_def3.svg" alt="" title="" /></p>
--->
 
 <h1>Regneregler</h1>
 
@@ -178,44 +111,23 @@ Taget fra: https://da.wikipedia.org/wiki/Logaritme#/media/File:Log4.svg
 
 	<div class="latex">$$ for ~ a,b > 0 \wedge x \in \mathbb{R} $$</div>
 
-<!--
-<p><img src="images/logaritme_log_def_maengde.svg" alt="" title="" /></p>
--->
-
 <p>1)</p>
 
 	<div class="latex">$$ log(a \cdot b) = log(a) + log(b) $$</div>
-
-<!--
-<img class="math" src="images/logaritme_log_regneregel_1.svg" alt="" title="" /> 	
--->
-
 
 <p>2) </p>
 
 	<div class="latex">$$ log(\frac{a}{b}) = log(a) - log(b) $$</div>
 
-<!--
-<img class="math" src="images/logaritme_log_regneregel_2.svg" alt="" title="" />
--->
-
-
 <p>3)</p>
 
 	<div class="latex">$$ log(a^x) = x \cdot log(a) $$</div>
-<!--
-<img class="math" src="images/logaritme_log_regneregel_3.svg" alt="" title="" />
--->
 
 <p>Hvis man har behov for at omregne en logaritme fra en base til en anden anvendes følgende formel:</p>
 
 <p>4)</p>
 
 	<div class="latex">$$ log_a(x) = \frac{ log_b(x) }{ log_b(a)} $$</div>
-
-<!--
-<img class="math" src="images/logaritme_log_regneregel_4.svg" alt="" title="" />
--->
 
 <h1>Beviser</h1>
 
@@ -227,78 +139,39 @@ Taget fra: https://da.wikipedia.org/wiki/Logaritme#/media/File:Log4.svg
 
 	<div class="latex">$$ log(a \cdot b) = log(a) + log(b) $$</div>
 
-<!--
-<img class="math" src="images/logaritme_log_regneregel_1.svg" alt="" title="" />
--->
-
 <p>For at kunne gennemføre beviset laver vi først nogle værdier for <span class="math">\( \alpha \)</span> og <span class="math">\( \beta \)</span>, som omskrives ved hjælp af sætning 1.</p>
 
 	<div class="latex">$$ \alpha = log(a) \Leftrightarrow a = 10^\alpha $$</div>
 
 	<div class="latex">$$ \beta = log(b) \Leftrightarrow b = 10^\beta $$</div>
 
-<!--
-<img class="math" src="images/logaritme_alpha.svg" alt="" title="" /> <br/>
-
-<img class="math" src="images/logaritme_beta.svg" alt="" title="" />
--->
-
 <p><span class="bold">Bevis 1</span></p>
 
 	<div class="latex">$$ log(a \cdot b) = log( 10^\alpha \cdot 10^\beta) = log(10^{\alpha + \beta}) =  \alpha \cdot \beta =  log(a) + log(b)$$</div>
-
-<!--
-<img class="math" src="images/logaritme_log_regneregel_fuld_bevis_1.svg" alt="" title="" />
--->
 
 <p><span class="bold">Beviset opdelt og forklaret</span></p>
 
 	<div class="latex">$$ log(a \cdot b) $$</div>
 
-<!--
-	<img class="math" src="images/logaritme_log_regneregel_bevis_1_01.svg" alt="" title="" />
--->
-
-
 <p>Vi anvender sætningerne for <span class="math">\( \alpha \)</span> og <span class="math">\( \beta \)</span> og omskriver:</p>
 
 	<div class="latex">$$ log( 10^\alpha \cdot 10^\beta) $$</div>
-
-<!--
-	<img class="math" src="images/logaritme_log_regneregel_bevis_1_02.svg" alt="" title="" />
--->
 	
 <p>Vi anvender regnereglen for potens: &nbsp;&nbsp;<span class="math">\( a^n \cdot a^m= a^{n+m} \)</span></p>
 
 	<div class="latex">$$ log(10^{\alpha + \beta}) $$</div>
 
-<!--
-	<img class="math" src="images/logaritme_log_regneregel_bevis_1_03.svg" alt="" title="" />
--->
-
 <p>Vi anvender sætning 2</p>
 
 	<div class="latex">$$ \alpha \cdot \beta $$</div>
-
-<!--
-	<img class="math" src="images/logaritme_log_regneregel_bevis_1_04.svg" alt="" title="" />
--->
 	
 <p>Vi erstatter <span class="math">\( \alpha \)</span> og <span class="math">\( \beta \)</span> med deres <span class="math">\( log \)</span>-værdier</p>
 
 <div class="latex">$$ log(a) + log(b) $$</div>
-
-<!--
-	<img class="math" src="images/logaritme_log_regneregel_bevis_1_05.svg" alt="" title="" />
--->
 	
 <p>Beviset er hermed gennemført</p>
 
 	<div class="latex">$$ log(a \cdot b) = log(a) + log(b) $$</div>
-
-<!--
-<img class="math" src="images/logaritme_log_regneregel_1.svg" alt="" title="" /> 
--->
 
 <h2>Bevis regneregel 2</h2>
 
@@ -306,27 +179,15 @@ Taget fra: https://da.wikipedia.org/wiki/Logaritme#/media/File:Log4.svg
 
 	<div class="latex">$$ log(\frac{a}{b}) = log(a) - log(b) $$</div>
 
-<!--
-<img class="math" src="images/logaritme_log_regneregel_2.svg" alt="" title="" />
--->
-
 <p>For at kunne gennemføre beviset skal vi først have udført et lille trick.</p>
 
 <p>Sæt:</p>
 
 	<div class="latex">$$ a = \frac{a}{b} \cdot b $$</div>
 
-<!--
-<img class="math" src="images/logaritme_bevis2_trick.svg" alt="" title="" />
--->
-
 <p><span class="bold">Bevis 2</span></p>
 
 	<div class="latex">$$ a = \frac{a}{b} \cdot b ~\Leftrightarrow ~ log(a) = log\left( \frac{a}{b} \cdot b \right) ~\Leftrightarrow~ log(a) = log\left( \frac{a}{b} \right) +log(b) \Leftrightarrow ~log(a)-log(b) = log(\frac{a}{b}) $$</div>
-
-<!--
-<img class="math" src="images/logaritme_log_regneregel_fuld_bevis_2.svg" alt="" title="" />
--->
 
 <p><span class="bold">Beviset opdelt og forklaret</span></p>
 
@@ -334,41 +195,21 @@ Taget fra: https://da.wikipedia.org/wiki/Logaritme#/media/File:Log4.svg
 
 	<div class="latex">$$ a = \frac{a}{b} \cdot b $$</div>
 
-<!--
-<img class="math" src="images/logaritme_bevis2_trick.svg" alt="" title="" />
--->
-
 <p>Anvend logaritmen på begge sider af lighedstegnet</p>
 
 	<div class="latex">$$ log(a) = log\left( \frac{a}{b} \cdot b \right) $$</div>
-
-<!--
-<img class="math" src="images/logaritme_log_regneregel_bevis_2_01.svg" alt="" title="" />
--->
 
 <p>Regneregel 1 anvendes:</p>
 
 	<div class="latex">$$ log(a) = log\left( \frac{a}{b} \right) +log(b) $$</div>
 
-<!--
-<img class="math" src="images/logaritme_log_regneregel_bevis_2_02.svg" alt="" title="" />
--->
-
 <p>Brøken isoleres:</p>
 
 	<div class="latex">$$ log(a)-log(b) = log(\frac{a}{b}) $$</div>
 
-<!--
-<img class="math" src="images/logaritme_log_regneregel_bevis_2_03.svg" alt="" title="" />
--->
-
 <p>Beviset er hermed gennemført</p>
 
 	<div class="latex">$$ log(\frac{a}{b}) = log(a) - log(b) $$</div>
-
-<!--
-<img class="math" src="images/logaritme_log_regneregel_2.svg" alt="" title="" />
--->
 
 <h2>Bevis regneregel 3</h2>
 
@@ -376,73 +217,37 @@ Taget fra: https://da.wikipedia.org/wiki/Logaritme#/media/File:Log4.svg
 
 	<div class="latex">$$ log(a^x) = x \cdot log(a) $$</div>
 
-<!--
-<img class="math" src="images/logaritme_log_regneregel_3.svg" alt="" title="" />
--->
-
 <p>For at kunne gennemføre beviset laver vi først en værdi for <span class="math">\( \alpha \)</span> som omskrives ved hjælp af sætning 1.</p>
 
 	<div class="latex">$$ \alpha = log(a) \Leftrightarrow a = 10^\alpha $$</div>
-
-<!--
-<img class="math" src="images/logaritme_alpha.svg" alt="" title="" /> <br/>
--->
 
 <p><span class="bold">Bevis 3</span></p>
 
 	<div class="latex">$$ log(a^x) = log((10^\alpha)^x) =  log(10^{\alpha \cdot x}) = \alpha \cdot x   =  log(a) \cdot x  $$</div>
 
-<!--
-<img class="math" src="images/logaritme_log_regneregel_fuld_bevis_3.svg" alt="" title="" />
--->
-
 <p><span class="bold">Beviset opdelt og forklaret</span></p>
 
 	<div class="latex">$$ log(a^x) $$</div>
-
-<!--
-	<img class="math" src="images/logaritme_log_regneregel_bevis_3_01.svg" alt="" title="" />
--->
 	
 <p>Vi anvender sætningen for <span class="math">\( \alpha \)</span> og omskriver</p>
 
 	<div class="latex">$$ log((10^\alpha)^x) $$</div>
-
-<!--
-	<img class="math" src="images/logaritme_log_regneregel_bevis_3_02.svg" alt="" title="" />
--->
 	
 <p>Vi anvender regnereglen for potens: &nbsp;&nbsp;<span class="math">\( ({a^n})^m = a^{n \cdot m} \)</span></p>
 
 	<div class="latex">$$ log(10^{\alpha \cdot x}) $$</div>
-
-<!--
-	<img class="math" src="images/logaritme_log_regneregel_bevis_3_03.svg" alt="" title="" />
--->
 	
 <p>Vi anvender sætning 2</p>
 
 	<div class="latex">$$ \alpha \cdot x $$</div>
-	
-<!--
-	<img class="math" src="images/logaritme_log_regneregel_bevis_3_04.svg" alt="" title="" />
--->
 
 <p>Vi erstatter <span class="math">\( \alpha \)</span> med dens <span class="math">\( log \)</span>-værdi</p>
 
 	<div class="latex">$$ log(a) \cdot x $$</div>						
 	
-<!--
-	<img class="math" src="images/logaritme_log_regneregel_bevis_3_05.svg" alt="" title="" />
--->
-	
 <p>Beviset er hermed gennemført</p>
 
 	<div class="latex">$$ log(a^x) = x \cdot log(a) $$</div>
-
-<!--
-<img class="math" src="images/logaritme_log_regneregel_3.svg" alt="" title="" />
--->
 
 <h2>Bevis regneregel 4</h2>
 
@@ -450,17 +255,9 @@ Taget fra: https://da.wikipedia.org/wiki/Logaritme#/media/File:Log4.svg
 
 	<div class="latex">$$ log_a(x) = \frac{ log_b(x) }{ log_b(a)} $$</div>
 
-<!--
-<img class="math" src="images/logaritme_log_regneregel_4.svg" alt="" title="" />
--->
-
 <p><span class="bold">Bevis 3</span></p>
 
 	<div class="latex">$$ a^{log_a(x)} = x ~\Leftrightarrow~ log_b(a^{log_a(x)}) = log_b(x) ~\Leftrightarrow~ log_a(x) \cdot log_b(a) = log_b(x) ~\Leftrightarrow~ log_a(x) = \frac{ log_b(x) }{ log_b(a)} $$</div>
-
-<!--
-<img class="math" src="images/logaritme_log_regneregel_fuld_bevis_4.svg" alt="" title="" />
--->
 
 <p><span class="bold">Beviset opdelt og forklaret</span></p>
 
@@ -468,47 +265,68 @@ Taget fra: https://da.wikipedia.org/wiki/Logaritme#/media/File:Log4.svg
 
 	<div class="latex">$$ a^{log_a(x)} = x $$</div>
 
-
-<!--
-<img class="math" src="images/logaritme_log_regneregel_bevis_4_01.svg" alt="" title="" />
--->
-
 <p>Vi tager logaritmen med grundtallet <span class="math">\( b \)</span> på begge sider, altså: <span class="math">\( log_b \)</span> .</p>
 
 	<div class="latex">$$ log_b(a^{log_a(x)}) = log_b(x)  $$</div>
-
-<!--
-<img class="math" src="images/logaritme_log_regneregel_bevis_4_02.svg" alt="" title="" />
--->
 
 <p>Vi anvender regneregel 3</p>
 
 	<div class="latex">$$ log_a(x) \cdot log_b(a) = log_b(x) $$</div>
 
-<!--
-<img class="math" src="images/logaritme_log_regneregel_bevis_4_03.svg" alt="" title="" />
--->
-
 <p>Til sidst isolerer vi <span class="math">\( log_a(x) \)</span>.</p>
 
 	<div class="latex">$$ log_a(x) = \frac{ log_b(x) }{ log_b(a)} $$</div>
 
-<!--
-<img class="math" src="images/logaritme_log_regneregel_bevis_4_04.svg" alt="" title="" />
--->
-
 <p>Beviset er hermed gennemført</p>
 
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-	</body>
 
+	
+</div><!-- end: col-md-9 -->
+
+<footer>
+
+	<p><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons licens" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>Indholdet på Vidas.dk er  er licenseret under <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> og er skrevet af Thomas Jensen. (<a href="../hvem_er_jeg.html" target="_blank">Læs mere</a>)</p>
+
+</footer>
+	
+	
+</div><!-- end: row-fluid -->
+
+</div> <!-- end: container-fluid -->
+
+
+<!-- SCRIPT SECTION -->
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script type="text/javascript" src="../js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="../js/jquery.tocify.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+
+<!-- PRETTYFY-->
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+
+
+<!-- HIGHLIGHT -->
+	<script src="../js/highlight.pack.js" type="text/javascript"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+
+<!-- MATHJAX -->
+<script type="text/javascript" async 		src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+		MathJax.Hub.Config({ jax: ["input/TeX","output/HTML-CSS"], displayAlign: "left"	});
+</script>
+<!-- TOCIFY -->
+<script>
+	$(function() {var toc = $("#toc").tocify({ selectors: "h1, h2, h3, h4" }).data("toc-tocify"); });
+</script>
+<!-- GOOGLE ANALYTICS -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-89933285-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</body>
 </html>

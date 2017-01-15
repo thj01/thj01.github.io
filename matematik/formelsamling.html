@@ -1,64 +1,39 @@
 <!DOCTYPE html>
-
+<html lang="en">
 <head>
-	
-	<meta charset="UTF-8" lang="da"/>
+  <title>Vidas.dk</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono|Ubuntu|Ubuntu+Condensed' rel='stylesheet' type='text/css'>
 
-	<title>Vidas.dk</title>
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/jquery-ui.min.css">
+  <link rel="stylesheet" href="../css/jquery.tocify.css">
+  <link rel="stylesheet" href="../css/style_new.css" />
+<!-- Scripts in bottom to speed up pageload-->
+ 
 
-	<link rel="stylesheet" href="../css/style.css" />
-	<link rel="stylesheet" href="../css/styles/docco.css" />
-	<link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono|Ubuntu|Ubuntu+Condensed' rel='stylesheet' type='text/css'>
-
-	<script src="http://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-	<script src="../js/toc2.js" type="text/javascript"></script>
-	<script>$(function(){$("#license").load("license.html"); });</script>
-	<script type="text/javascript" async
-		src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
-		MathJax.Hub.Config({ jax: ["input/TeX","output/HTML-CSS"], displayAlign: "left"
- 		});
-	</script>
-        <script>
-	$(document).ready(function(){
-		$(".hide").click(function(){$("#toc").hide();});
-		$(".show").click(function(){$("#toc").show();});
-	});
-	</script>
-	<script src="../js/highlight.pack.js" type="text/javascript"></script>
-	<script>hljs.initHighlightingOnLoad();</script>
-	<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-89933285-1', 'auto');
-  ga('send', 'pageview');
-
-</script>
 </head>
-<!-- 
-code highlighter : https://highlightjs.org/
-code converter : http://www.freebits.co.uk/convert-html-code-to-text.html 
--->
-<html>
-<body onload="generateTOC(document.getElementById('toc'));">
+<body>
+	
+	
+<div class="container-fluid">
 
-<footer id="license"></footer>
-
-<header>
-	<div class="show" id="toggle_menu"></div> 
-</header>
-
-<div class="toggle">
-	<div id="toc" class="hide">
-		<div id="toc_title"><span class=""><a href="#" target="">(Luk)</a></span></div>	
+<div class="row-fluid">
+	
+<div class="col-sm-3">
+	
+	<div id="toc">
+	
+		<div id="toc_headline"></div>
+	
 	</div>
-</div>
-		
-<p></p><p></p>
 
-
+</div><!-- Start slut 1. kolonne - TOC -->
+	
+<div class="col-sm-9">
+	
 <div class="title">Formelsamling</div>
 
 <h1>Regneregler</h1>
@@ -97,7 +72,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 	<div class="latex">$$ \frac{tæller}{nævner} $$</div>
 
-<span class="afsnit">Addition og substraktion</span>
+<h3>Addition og substraktion</h3>
 
 <p>For at kunne lægge brøker sammen skal de have samme nævner</p>
 
@@ -105,11 +80,11 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 	<div class="latex">$$ \frac{a}{c} - \frac{b}{c} = \frac{a-b}{c} $$</div>
 	
-<span class="afsnit">Gange</span>
+<h3>Multiplikation</h3>
 
 	<div class="latex">$$ a \cdot \frac{b}{c} = \frac{a \cdot b}{c} $$</div>
 	
-<span class="afsnit">Division</span>
+<h3>Division</h3>
 
 <p>Når man dividerer med en brøk så ganger man med den <span class="inl_cmd">reciprokke</span> (modsatte) værdi</p>
 
@@ -121,7 +96,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <h2>Potensregler</h2>
 
-<span class="afsnit">Definitioner</span>
+<h3>Definitioner</h3>
 
 	<div class="latex">$$ a^n = \overbrace{a \cdot a \cdot a \cdot .... \cdot a}^{n ~ gange} $$</div>
 
@@ -129,7 +104,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 	<div class="latex">$$ a^0 = 1 $$</div>
 
-<span class="afsnit">Regneregler</span>
+<h3>Regneregler</h3>
 
 	<div class="latex">$$ a^n \cdot a^m = a^{n + m} $$</div>
 
@@ -219,23 +194,23 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <p>Herover er funktionen <span class="math">\( f \)</span> vist.</p>
 
-<span class="afsnit">Funktionsværdi</span>
+<h3>Funktionsværdi</h3>
 
 <p><span class="inl_cmd">Funktionsværdien</span> <span class="math">\( (~f(x) = y~) \)</span> er den værdi funktionen antager, når man anvender <span class="math">\( x \)</span> i funktionen.</p>
 
-<span class="afsnit">Definitionsmængden</span>
+<h3>Definitionsmængden</h3>
 
 <p><span class="inl_cmd">Definitionsmængden</span> beskriver de værdier, hvor funktionen er gyldig ( <span class="math">\( x-aksen \)</span>). Her:</p>
 
 <p><span class="math">\( Dm(f) = ] ~a~;~d~ ] \)</span> &nbsp;&nbsp;&nbsp;&nbsp; eller &nbsp;&nbsp;&nbsp;&nbsp; <span class="math">\( Dm(f) = a < x \leq d \)</span> </p>
 
-<span class="afsnit">Værdimængden</span>
+<h3>Værdimængden</h3>
 
 <p><span class="inl_cmd">Værdimængden</span> beskriver de værdier, som funktionen kan antage ( <span class="math">\( y-aksen \)</span>). Her: </p>
 
 <p><span class="math">\( Vm(f) = [ ~e~;~g~] \)</span> &nbsp;&nbsp;&nbsp;&nbsp; eller &nbsp;&nbsp;&nbsp;&nbsp; <span class="math">\( Vm(f) = e \leq y \leq g \)</span></p>
 
-<span class="afsnit">Monotoniforhold</span>
+<h3>Monotoniforhold</h3>
 
 <p>For funktionen <span class="math">\( f \)</span> gælder følgende monotoniforhold</p>
 
@@ -342,14 +317,14 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <div class="latex">$$ x_1 = \frac{b - \sqrt D}{2a}  ~~~~~~~~~~~~~~~~~~~~~~~~  x_2 = \frac{b + \sqrt D}{2a} $$</div>
 
-<span class="afsnit">Toppunkt</span>
+<h3>Toppunkt</h3>
 
 <p>For at finde parablens toppunkt anvendes følgende formel</p>
 
 	<div class="latex">$$ TP = \left( \frac{-b}{2a} , \frac{-D}{4a} \right) $$</div>
 
 
-<span class="afsnit">Antal rødder</span>
+<h3>Antal rødder</h3>
 
 <p>Diskriminanten (<span class="math">\( D \)</span>) beskriver antallet af rødder andengradsligning har.</p>
 
@@ -361,7 +336,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 </figure>
 
-<span class="afsnit">Gaflernes orrientering</span>
+<h3>Gaflernes orrientering</h3>
 
 <p>Fortegnet for <span class="math">\( a \)</span> angiver gaflernes orrientering. Hvis <span class="math">\( a \)</span> er positiv vender parablens gafler opad og hvis <span class="math">\( D \)</span> er negativ vender de nedad.</p>
 
@@ -375,9 +350,9 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <h1>Statistik</h1>
 
-<span class="afsnit">Begreber</span>
+<h2>Begreber</h2>
 
-<span class="afsnit">Observation, hændelse og udfald</span>
+<h3>Observation, hændelse og udfald</h3>
 
 <p><span class="inl_cmd">Observation:</span> Noget man aktivt observerer.</p>
 
@@ -386,19 +361,19 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 <p><span class="inl_cmd">Udfald:</span> Noget der sker pga. en sandsynlighed f.eks. terningkast.</p>
 
 
-<span class="afsnit">Population og stikprøve</span>
+<h3>Population og stikprøve</h3>
 
 <p>En <span class="inl_cmd">population</span> er et datasæt der indeholder alle data... Har man ikke alle data taler man om <span class="inl_cmd">stikprøve</span>.</p>
 
-<span class="afsnit">Repræsentativt datasæt</span>
+<h3>Repræsentativt datasæt</h3>
 
 <p>Et <span class="inl_cmd">datasæt</span> (stikprøve) der har data nok til at lave en nøjagtig beskrivelse af populationen.</p>
 
-<span class="afsnit">Diskret og kontinuert data</span>
+<h3>Diskret og kontinuert data</h3>
 
 <p><span class="inl_cmd">Diskret data</span> er eksakte værdier, hvor <span class="inl_cmd">kontinuert data</span> er grupperede værdier.</p>
 
-<span class="afsnit">Symboler</span>
+<h3>Symboler</h3>
 
 <table class="">
 	<thead>
@@ -443,7 +418,8 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 	</tbody>
 </table>
 
-<span class="afsnit">Deskriptorer</span>
+<h3>Deskriptorer</h3>
+
 <table class="">
 	<thead>
 		<tr>
@@ -487,7 +463,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 	</tbody>
 </table>
 
-<span class="afsnit">Notation</span>
+<h3>Notation</h3>
 
 <table class="">
 	<thead>
@@ -529,7 +505,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 	</tbody>
 </table>
 
-<span class="afsnit"><span class="math">\( \sum \)</span> - opsummer</span>
+<h3><span class="math">\( \sum \)</span> - opsummer</h3>
 
 <p>Lad os kigge på et simpelt datasæt over karakterer. For at danne os et overblik over tabellen vælger vi at lave to rækker (<span class="math">\( x \)</span> og <span class="math">\( x_i \)</span>). En hvor tallene står og en hvor vi angiver positionerne ved hjælp af værdierne <span class="math">\( x_1 \)</span> til <span class="math">\( x_k \)</span>, hvor <span class="math">\( k \)</span> er den sidste observation.</p>
 
@@ -573,7 +549,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <p>For at skabe et hurtig overblik over sin undersøgelse kan man lave diagrammer. De to mest anvendelige i denne sammenhæng er <span class="inl_cmd">søjle-</span> og <span class="inl_cmd">lagkagediagrammet</span></p>
 
-<span class="afsnit">Søjlediagram</span>
+<h3>Søjlediagram</h3>
 
 <figure id="">
 
@@ -583,7 +559,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 </figure>
 
-<span class="afsnit">Cirkeldiagram</span>
+<h3>Cirkeldiagram</h3>
 
 <figure id="">
 
@@ -595,7 +571,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <h2>Diskret fordeling</h2>
 
-<span class="afsnit">Eksempel på tabel</span>
+<h3>Eksempel på tabel</h3>
 
 <p>Denne tabel indeholder karakterfordelingen for 10 elever.</p>
 
@@ -639,11 +615,11 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 	</tbody>
 </table>
 
-<span class="afsnit">Antal observationer</span>
+<h3>Antal observationer</h3>
 
 <div class="latex">$$ n =  \sum_{i=1}^{k} h_i $$</div>
 
-<span class="afsnit">Middelværdi (gennemsnit)</span>
+<h3>Middelværdi (gennemsnit)</h3>
 
 <p>1)</p>
 
@@ -653,7 +629,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <div class="latex">$$ \overline x = \frac{1}{n} \cdot \sum_{i=1}^{k} x_i \cdot h_i $$</div>
 
-<span class="afsnit">Varians</span>
+<h3>Varians</h3>
 
 <p>For en population:</p>
 
@@ -669,7 +645,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <div class="latex">$$ s^2 = \frac{1}{n-1} \cdot \sum_{i=1}^k (x_i- \overline x)^2 \cdot h_i$$</div>
 
-<span class="afsnit">Spredning/standardafvigelse</span>
+<h3>Spredning/standardafvigelse</h3>
 
 <p>For en population:</p>
 
@@ -683,7 +659,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <p></p>
 
-<span class="afsnit">Eksempel på tabel</span>
+<h3>Eksempel på tabel</h3>
 
 <p>Denne tabel indeholder højdefordelingen mellem 20 basketspillere.</p>
 
@@ -730,15 +706,15 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 	</tbody>
 </table>
 
-<span class="afsnit">Antal observationer</span>
+<h3>Antal observationer</h3>
 
 <div class="latex">$$ n =  \sum_{i=1}^{k} h_i $$</div>
 
-<span class="afsnit">Interval midtpunkt</span>
+<h3>Interval midtpunkt</h3>
 
 <div class="latex">$$ m_i = \frac{1}{2} \cdot (x_i +x_{i+1}) $$</div>
 
-<span class="afsnit">Middelværdi (gennemsnit)</span>
+<h3>Middelværdi (gennemsnit)</h3>
 
 <p>1)</p>
 
@@ -761,7 +737,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <div class="latex">$$ s^2 = \frac{1}{n-1} \cdot \sum_{i=1}^k (m_i- \overline x)^2 \cdot h_i$$</div>
 
-<span class="afsnit">Spredning/standardafvigelse</span>
+<h3>Spredning/standardafvigelse</h3>
 
 <p>For en population:</p>
 
@@ -772,17 +748,53 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 <div class="latex">$$ s = \sqrt {s^2} $$</div>
 
 
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-	</body>
+	
+</div><!-- end: col-md-9 -->
 
+<footer>
+
+	<p><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons licens" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>Indholdet på Vidas.dk er  er licenseret under <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> og er skrevet af Thomas Jensen. (<a href="../hvem_er_jeg.html" target="_blank">Læs mere</a>)</p>
+
+</footer>
+	
+	
+</div><!-- end: row-fluid -->
+
+</div> <!-- end: container-fluid -->
+
+
+<!-- SCRIPT SECTION -->
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script type="text/javascript" src="../js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="../js/jquery.tocify.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+
+<!-- PRETTYFY-->
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+
+
+<!-- HIGHLIGHT -->
+	<script src="../js/highlight.pack.js" type="text/javascript"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+
+<!-- MATHJAX -->
+<script type="text/javascript" async 		src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+		MathJax.Hub.Config({ jax: ["input/TeX","output/HTML-CSS"], displayAlign: "left"	});
+</script>
+<!-- TOCIFY -->
+<script>
+	$(function() {var toc = $("#toc").tocify({ selectors: "h1, h2, h3, h4" }).data("toc-tocify"); });
+</script>
+<!-- GOOGLE ANALYTICS -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-89933285-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</body>
 </html>
