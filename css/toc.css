@@ -1,0 +1,20 @@
+#toc {
+margin-top: 1em;
+}
+
+#toc_headline:before {
+content:"Indhold";
+
+}
+
+#toc_headline {
+font-weight: 500;
+font-size: 1.4em;
+padding-top: .7em;
+padding-bottom: .7em;
+padding-left: .7em ;
+color: white;
+background-color: #337ab7;
+
+
+}
