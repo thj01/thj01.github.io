@@ -1,75 +1,48 @@
 <!DOCTYPE html>
-
+<html lang="en">
 <head>
-	
-	<meta charset="UTF-8" lang="da"/>
+  <title>Vidas.dk</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono|Ubuntu|Ubuntu+Condensed' rel='stylesheet' type='text/css'>
 
-	<title>Vidas.dk</title>
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/jquery-ui.min.css">
+  <link rel="stylesheet" href="../css/jquery.tocify.css">
+  <link rel="stylesheet" href="../css/style_new.css" />
+<!-- Scripts in bottom to speed up pageload-->
+ 
 
-	<link rel="stylesheet" href="../css/style.css" />
-	<link rel="stylesheet" href="../css/styles/docco.css" />
-	<link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono|Ubuntu|Ubuntu+Condensed' rel='stylesheet' type='text/css'>
-
-	<script src="http://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-	<script src="../js/toc2.js" type="text/javascript"></script>
-	<script>$(function(){$("#license").load("license.html"); });</script>
-	<script type="text/javascript" async
-		src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
-		MathJax.Hub.Config({ jax: ["input/TeX","output/HTML-CSS"], displayAlign: "left"
- 		});
-	</script>
-        <script>
-	$(document).ready(function(){
-		$(".hide").click(function(){$("#toc").hide();});
-		$(".show").click(function(){$("#toc").show();});
-	});
-	</script>
-	<script src="../js/highlight.pack.js" type="text/javascript"></script>
-	<script>hljs.initHighlightingOnLoad();</script>
-	<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-89933285-1', 'auto');
-  ga('send', 'pageview');
-
-</script>
 </head>
-<!-- 
-code highlighter : https://highlightjs.org/
-code converter : http://www.freebits.co.uk/convert-html-code-to-text.html 
--->
-<html>
-<body onload="generateTOC(document.getElementById('toc'));">
-
-<footer id="license"></footer>
-
-<header>
-	<div class="show" id="toggle_menu"></div> 
-</header>
-
-<div class="toggle">
-	<div id="toc" class="hide">
-		<div id="toc_title"><span class=""><a href="#" target="">(Luk)</a></span></div>	
-	</div>
-</div>
-		
-<p></p><p></p>
-
-<div class="title">Kommandoer</div>
+<body>
 	
+	
+<div class="container-fluid">
 
-<h1>Netværks værktøjer</h1>
+<div class="row-fluid">
+	
+<div class="col-sm-3">
+	
+	<div id="toc">
+	
+		<div id="toc_headline"></div>
+	
+	</div>
 
+</div><!-- Start slut 1. kolonne - TOC -->
+	
+<div class="col-sm-9">
+	
+<div class="title">Kommandoer <br/>Netværks værktøjer</div>
+	
 <p>Der findes en lang række værktøjer til netværk, og i denne guide vil du blive introduceret for nogle af de vigtiste.</p>
 
 <h1>Virker netværket</h1>
 
 <p>I dette afsnit vil vi se på de mest grundlæggende færdigheder man har brug for, nemlig at kontrollere om der er forbindelse til netværket og hvordan computerens netværk er konfigureret. Det gøres med værktøjerne <span class="inl_cmd">ping</span> og <span class="inl_cmd">ip</span> fra programpakken <span class="inl_cmd">iproute2</span>.</p>
 
-<h2><span class="inl_cmd">ping</span> - Tjek netværket</h2>
+<h1><span class="inl_cmd">ping</span> - Tjek netværket</h1>
 
 <p>Kommandoen <span class="inl_cmd">ping</span> bruges til at undersøge om der er forbindelse mellem din og en anden computer, og hvor lang svartiden er. Kommandoen kører lige til der trykkes <kbd>Ctrl</kbd>+<kbd>c</kbd>.</p>
 
@@ -121,7 +94,7 @@ rtt min/avg/max/mdev = 12.842/33.051/111.476/39.215 ms
 <a href="http://manpages.ubuntu.com/manpages/trusty/en/man8/ping.8.html" target="_blank">
 http://manpages.ubuntu.com/manpages/trusty/en/man8/ping.8.html</a></p>
 
-<h2><span class="inl_cmd">ip</span> - dine netkort</h2>
+<h1><span class="inl_cmd">ip</span> - dine netkort</h1>
 
 <p><span class="inl_cmd">ip addr</span> anvendes til at vise netværkskonfigurationen, men kan også anvendes til at konfigurere netværkskort. Herunder er kommandoen blevet kørt på en bærbar med en aktivt wifi forbindelse og et inaktivt fysisk netkort.</p>
 
@@ -200,7 +173,7 @@ http://manpages.ubuntu.com/manpages/trusty/en/man8/ping.8.html</a></p>
     link/ether 08:00:27:63:8e:71 brd ff:ff:ff:ff:ff:ff
 </pre>
 
-<h2>MAC-adresser</h2>
+<h1>MAC-adresser</h1>
 
 <p>Læg mærke til linien <span class="inl_cmd">link/ether 08:00:27:63:8e:71</span> . Det kaldes en MAC adresse. Denne adresse er netværkskortets fysiske adresse og er unik. Mac-adressen bruges til at indentificere netværkskortet på nettet og denne information bliver altid medsendt. MAC-adressen fortæller hvem der har produceret kortet og hvilket kort det er (<span class="red">P</span> = Producenten / <span class="blue">S</span> = serienummer):</p>
 
@@ -216,7 +189,7 @@ http://manpages.ubuntu.com/manpages/trusty/en/man8/ping.8.html</a></p>
 
 <p>Herunder gennemgås det hvordan du kan anvende <span class="inl_cmd">ip</span> til at ændre i netværkskonfigurationen</p>
 
-<h2>Forny IP-adresse</h2>
+<h1>Forny IP-adresse</h1>
 
 <p>For at forny netværksindstillingerne skal du først nulstille dem og derefter indhente en ny IP adresse.
 </p>
@@ -236,7 +209,7 @@ http://manpages.ubuntu.com/manpages/trusty/en/man8/ping.8.html</a></p>
 <code class="cmd">sudo service network-manager restart</code>
 
 
-<h2>Stop og start netværk</h2>
+<h1>Stop og start netværk</h1>
 
 <p>Man kan stoppe og starte netværkskort ved hjælp af <span class="inl_cmd">ip</span> kommandoen. For at stoppe netværket anvender man følgende kommando:</p>
 
@@ -268,7 +241,7 @@ rtt min/avg/max/mdev = 11.952/12.590/13.239/0.513 ms
 
 
 
-<h2>GUI til <span class="inl_cmd">ip</span></h2>
+<h1>GUI til <span class="inl_cmd">ip</span></h1>
 
 <p></p>
 
@@ -311,7 +284,7 @@ ns02.tdchosting.dk	internet address = 92.43.121.6</span>
 <a href="http://manpages.ubuntu.com/manpages/trusty/en/man1/nslookup.1.html" target="_blank">http://manpages.ubuntu.com/manpages/trusty/en/man1/nslookup.1.html</a></p>
 
 
-<h2><span class="inl_cmd">mtr</span></h2>
+<h1><span class="inl_cmd">mtr</span></h1>
 
 <p><span class="inl_cmd">mtr</span> er et program der kombinerer traceroute og ping, dvs. at det både viser hoppene mellem din computer og målcomputeren samtidig med at den viser tidsintervallerne. Installer det med følgende kommando:</p>
 
@@ -449,17 +422,55 @@ Nmap done: 49 IP addresses (2 hosts up) scanned in 5.59 seconds
 <a href="http://manpages.ubuntu.com/manpages/trusty/en/man1/nmap.1.html" target="_blank">
 http://manpages.ubuntu.com/manpages/trusty/en/man1/nmap.1.html</a></p>
 
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
 
 
+	
+</div><!-- end: col-md-9 -->
 
-	</body>
+<footer>
 
+	<p><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons licens" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>Indholdet på Vidas.dk er  er licenseret under <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> og er skrevet af Thomas Jensen. (<a href="../hvem_er_jeg.html" target="_blank">Læs mere</a>)</p>
+
+</footer>
+	
+	
+</div><!-- end: row-fluid -->
+
+</div> <!-- end: container-fluid -->
+
+
+<!-- SCRIPT SECTION -->
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script type="text/javascript" src="../js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="../js/jquery.tocify.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+
+<!-- PRETTYFY-->
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+
+
+<!-- HIGHLIGHT -->
+	<script src="../js/highlight.pack.js" type="text/javascript"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+
+<!-- MATHJAX -->
+<script type="text/javascript" async 		src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+		MathJax.Hub.Config({ jax: ["input/TeX","output/HTML-CSS"], displayAlign: "left"	});
+</script>
+<!-- TOCIFY -->
+<script>
+	$(function() {var toc = $("#toc").tocify({ selectors: "h1, h2, h3, h4" }).data("toc-tocify"); });
+</script>
+<!-- GOOGLE ANALYTICS -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-89933285-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</body>
 </html>

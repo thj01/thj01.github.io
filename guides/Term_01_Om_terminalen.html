@@ -1,73 +1,44 @@
 <!DOCTYPE html>
-
+<html lang="en">
 <head>
-	
-	<meta charset="UTF-8" lang="da"/>
+  <title>Vidas.dk</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono|Ubuntu|Ubuntu+Condensed' rel='stylesheet' type='text/css'>
 
-	<title>Vidas.dk</title>
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/jquery-ui.min.css">
+  <link rel="stylesheet" href="../css/jquery.tocify.css">
+  <link rel="stylesheet" href="../css/style_new.css" />
+<!-- Scripts in bottom to speed up pageload-->
+ 
 
-	<link rel="stylesheet" href="../css/style.css" />
-	<link rel="stylesheet" href="../css/styles/docco.css" />
-	<link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono|Ubuntu|Ubuntu+Condensed' rel='stylesheet' type='text/css'>
-
-	<script src="http://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-	<script src="../js/toc2.js" type="text/javascript"></script>
-	<script>$(function(){$("#license").load("license.html"); });</script>
-	<script type="text/javascript" async
-		src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
-		MathJax.Hub.Config({ jax: ["input/TeX","output/HTML-CSS"], displayAlign: "left"
- 		});
-	</script>
-        <script>
-	$(document).ready(function(){
-		$(".hide").click(function(){$("#toc").hide();});
-		$(".show").click(function(){$("#toc").show();});
-	});
-	</script>
-	<script src="../js/highlight.pack.js" type="text/javascript"></script>
-	<script>hljs.initHighlightingOnLoad();</script>
-	<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-89933285-1', 'auto');
-  ga('send', 'pageview');
-
-</script>
 </head>
-<!-- 
-code highlighter : https://highlightjs.org/
-code converter : http://www.freebits.co.uk/convert-html-code-to-text.html 
--->
-<html>
-<body onload="generateTOC(document.getElementById('toc'));">
+<body>
+	
+	
+<div class="container-fluid">
 
-<footer id="license"></footer>
-
-<header>
-	<div class="show" id="toggle_menu"></div> 
-</header>
-
-<div class="toggle">
-	<div id="toc" class="hide">
-		<div id="toc_title"><span class=""><a href="#" target="">(Luk)</a></span></div>	
+<div class="row-fluid">
+	
+<div class="col-sm-3">
+	
+	<div id="toc">
+	
+		<div id="toc_headline"></div>
+	
 	</div>
-</div>
-		
-<p></p><p></p>
+
+</div><!-- Start slut 1. kolonne - TOC -->
 	
-
-<div class="title">Kommandoer</div>
+<div class="col-sm-9">
 	
-<h1>Terminalen - Linux' kraftværk</h1>
-
-<h2>Kapitles opbygning</h2>
-
+<div class="title">Kommandoer <br/>Terminalen - Linux' kraftværk</div>
+	
 <p>Dette kapitel giver en grundlæggende gennemgang af filsystemet, superbrugeren og terminalen (kommandolinien) og kommandostrukturen i Linux.</p>
 
-<h2>Anvendt installation</h2>
+<h1>Anvendt installation</h1>
 
 <p>For at eksemplificere guiden, er der blevet oprettet en virtuel installation med VirtualBox med følgende Indstillinger:</p>
 
@@ -147,13 +118,13 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 
 
-<h2>Hvad er en terminal</h2>
+<h1>Hvad er en terminal</h1>
 
 <p>Terminalen er en tekstbaseret tilgang til Linux. Normalt ser vi en GUI som styresystemet, men det er reelt blot en skal hvor vi kan arbejde med programmer grafisk. Der er vi vant til at pege og vælge programmer og funktioner ved at klikke os frem. I terminalen skal vi "snakke" med maskinen og fortælle den hvad en skal gøre, hvordan den skal gøre det og hvad den skal gøre med med.</p>
 
 <p>Det som er udfordringen i starten er, at man skal lære et nyt sprog, og det kræver noget tilvending når man er vant til at pege og klikke sig frem. Det er næsten som forskellen på at læse en bogen eller se filmen. De kan begge noget specielt, men bogen har nuancer som en film ikke kan skabe - nemlig vores måde at se tingene på.</p>
 
-<h2>Tilgå terminalen</h2>
+<h1>Tilgå terminalen</h1>
 
 <p>Når Ubuntu er startet op kører der 7 terminalsessions, som man kan logge ind på. Som standard starer man op i den 7 terminal som kører Ubuntu GUI. Disser terminaler kan tilgåes ved hjælp af tastekombinationen <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>F1</kbd> → <kbd>F7</kbd>, hvor F'taller angiver den konkrete terminal.Så længe du befinder dig i VirtualBox skal du anvende dennes interne tastekombination angivet i nedestående skema skema.</p>
 
@@ -197,7 +168,7 @@ code converter : http://www.freebits.co.uk/convert-html-code-to-text.html
 
 <p>jo længere tid man bruger Linux - jo mere vil man anvende terminalen. Simpelthen fordi det er smartere og langt mere effektivt end at klikke sig frem. </p>
 
-<h2>Generelt om terminalen</h2>
+<h1>Generelt om terminalen</h1>
 
 <p>Når man er logget ind får aman følgende information fra kommandolinien</p>
 
@@ -316,7 +287,7 @@ user	0m0.004s
 sys	0m0.000s
 </pre>
 
-<h2>Superbrugeren</h2>
+<h1>Superbrugeren</h1>
 
 <p>Alle Linux har en superbruger (<span class="inl_cmd">root</span>), som har rettigheder til at gøre alt på maskinen. Denne bruger anvender man til at lave systemarbejde med f.eks. at konfigurere programmer og installere programmer. På Ubuntu er <span class="inl_cmd">root</span>-kontoen ikke aktiveret, men man kan "opgradere" sin bruger til at have administratorrettigheder ved hjælp af kommandoen <span class="inl_cmd">sudo</span> (<span class="bold">su</span>peruser <span class="bold">do</span>). <span class="inl_cmd">sudo</span> kommandoen undersøger om man er medlem af sudo-gruppen og giver igennem denne gruppe adgang til at man kan udføre administrationsarbejde.</p>
 
@@ -343,7 +314,7 @@ Diskidentifikation: 0x00031198
 
 <p>Under første kørsel bliver det gjort med brugeren tj's rettigheder. Det medfører at <span class="inl_cmd">fdisk</span> ikke har ret til at kigge på harddiskens data. I det andet tilfælde "løfter" jeg rettighedsniveauet til <span class="inl_cmd">root</span>-niveau, som så giver mig de informationer jeg ønsker.</p>
 
-<h2>root-shell</h2>
+<h1>root-shell</h1>
 
 <p>Hvis der skal udføres meget administrationsarbejde vælger man ofte at bruge kommandoen <span class="inl_cmd">sudo su</span>. Denne kommando ændrer ens bruger til <span class="inl_cmd">root</span>, og man får adgang til <span class="inl_cmd">root</span>-shell:</p>
 
@@ -393,7 +364,7 @@ exit
 
 <p>Skriver man exit i et terminalvindue vil det lukke den kørende session ned. Det betyder at hvis man lige har startet den op, med <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>t</kbd>, vil vinduet lukke ned igen.</p>
 
-<h2>man pages</h2>
+<h1>man pages</h1>
 
 <p>Til alle terminalens kommandoer er der skrevet en manual, og den kan man tilgå ved med kommandoen <span class="inl_cmd">man [kommando]</span> . Her kan man læse hvordan 
 kommandoen bruges (Synopsis) og de optioner man kan tilføje (Descriptions). Herunder er de første linier af kommandoen <span class="inl_cmd">man ls</span></p>
@@ -436,11 +407,54 @@ relevante mannualside.</p>
 </figure>
 
 
-<p></p>
-<p></p>
-<p></p>
-<p></p>
 
-	</body>
+	
+</div><!-- end: col-md-9 -->
 
+<footer>
+
+	<p><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons licens" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>Indholdet på Vidas.dk er  er licenseret under <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> og er skrevet af Thomas Jensen. (<a href="../hvem_er_jeg.html" target="_blank">Læs mere</a>)</p>
+
+</footer>
+	
+	
+</div><!-- end: row-fluid -->
+
+</div> <!-- end: container-fluid -->
+
+
+<!-- SCRIPT SECTION -->
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script type="text/javascript" src="../js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="../js/jquery.tocify.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+
+<!-- PRETTYFY-->
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+
+
+<!-- HIGHLIGHT -->
+	<script src="../js/highlight.pack.js" type="text/javascript"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+
+<!-- MATHJAX -->
+<script type="text/javascript" async 		src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+		MathJax.Hub.Config({ jax: ["input/TeX","output/HTML-CSS"], displayAlign: "left"	});
+</script>
+<!-- TOCIFY -->
+<script>
+	$(function() {var toc = $("#toc").tocify({ selectors: "h1, h2, h3, h4" }).data("toc-tocify"); });
+</script>
+<!-- GOOGLE ANALYTICS -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-89933285-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</body>
 </html>

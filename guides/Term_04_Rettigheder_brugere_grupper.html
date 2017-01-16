@@ -1,66 +1,40 @@
 <!DOCTYPE html>
-
+<html lang="en">
 <head>
-	
-	<meta charset="UTF-8" lang="da"/>
+  <title>Vidas.dk</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono|Ubuntu|Ubuntu+Condensed' rel='stylesheet' type='text/css'>
 
-	<title>Vidas.dk</title>
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/jquery-ui.min.css">
+  <link rel="stylesheet" href="../css/jquery.tocify.css">
+  <link rel="stylesheet" href="../css/style_new.css" />
+<!-- Scripts in bottom to speed up pageload-->
+ 
 
-	<link rel="stylesheet" href="../css/style.css" />
-	<link rel="stylesheet" href="../css/styles/docco.css" />
-	<link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono|Ubuntu|Ubuntu+Condensed' rel='stylesheet' type='text/css'>
-
-	<script src="http://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-	<script src="../js/toc2.js" type="text/javascript"></script>
-	<script>$(function(){$("#license").load("license.html"); });</script>
-	<script type="text/javascript" async
-		src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
-		MathJax.Hub.Config({ jax: ["input/TeX","output/HTML-CSS"], displayAlign: "left"
- 		});
-	</script>
-        <script>
-	$(document).ready(function(){
-		$(".hide").click(function(){$("#toc").hide();});
-		$(".show").click(function(){$("#toc").show();});
-	});
-	</script>
-	<script src="../js/highlight.pack.js" type="text/javascript"></script>
-	<script>hljs.initHighlightingOnLoad();</script>
-	<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-89933285-1', 'auto');
-  ga('send', 'pageview');
-
-</script>
 </head>
-<!-- 
-code highlighter : https://highlightjs.org/
-code converter : http://www.freebits.co.uk/convert-html-code-to-text.html 
--->
-<html>
-<body onload="generateTOC(document.getElementById('toc'));">
-
-<footer id="license"></footer>
-
-<header>
-	<div class="show" id="toggle_menu"></div> 
-</header>
-
-<div class="toggle">
-	<div id="toc" class="hide">
-		<div id="toc_title"><span class=""><a href="#" target="">(Luk)</a></span></div>	
-	</div>
-</div>
-		
-<p></p><p></p>
-
-<div class="title">Kommandoer</div>
+<body>
 	
-<h1>Rettigheder</h1>
+	
+<div class="container-fluid">
+
+<div class="row-fluid">
+	
+<div class="col-sm-3">
+	
+	<div id="toc">
+	
+		<div id="toc_headline"></div>
+	
+	</div>
+
+</div><!-- Start slut 1. kolonne - TOC -->
+	
+<div class="col-sm-9">
+	
+<div class="title">Kommandoer <br/>Rettigheder</div>
 
 <p>I Linux er der 3 grundlæggende 3 rettigheder vi kan sætte på filer og mapper: read, write og execute (læse, skrive og udføre).</p>
 
@@ -192,7 +166,7 @@ drwxr-xr-x   3 root root  4096 mar 15 18:13 <span class="red">data</span>
 
 <p>Kommandoerne vil blive gennemgået herunder.</p>
 
-<h2>Superbrugeren</h2>
+<h1>Superbrugeren</h1>
 
 <p><span class="inl_cmd">root</span>-brugeren er ikke underlagt de rettigheder der er sat på på de enkelte filer. <span class="inl_cmd">root</span> kan og skal kunne alt. At have <span class="inl_cmd">root</span>-rettigheder på et system handler ikke kun om at man er god til Linux, men forudsætter også at man gør sig overvejelser om hvad man bruger disse rettigheder til.</p>
 
@@ -213,7 +187,7 @@ drwxr-xr-x   3 root root  4096 mar 15 18:13 <span class="red">data</span>
 
 <h1>Ændring af ejerskab og rettigheder</h1>
 
-<h2><span class="inl_cmd">chown</span> – change owner</h2>
+<h1><span class="inl_cmd">chown</span> – change owner</h1>
 
 <p>Chown er den hurtige løsning hvis du ønsker at ændre ejeren og gruppen af en fil eller en mappe.</p>
 
@@ -245,11 +219,11 @@ drwxr-xr-x   3 root root  4096 mar 15 18:13 <span class="red">data</span>
 http://manpages.ubuntu.com/manpages/trusty/man1/chown.1.html</a></p>
 
 
-<h2><span class="inl_cmd">chgrp</span></h2>
+<h1><span class="inl_cmd">chgrp</span></h1>
 
 <p>Ligesom ovenfor, men virker på grupper</p>
 
-<h2><span class="inl_cmd">chmod</span></h2>
+<h1><span class="inl_cmd">chmod</span></h1>
 
 
 
@@ -261,7 +235,7 @@ http://manpages.ubuntu.com/manpages/trusty/man1/chown.1.html</a></p>
 
 <p>Rettighederne kan sættes enten ved hjælp af tal eller bogstaver. Det er min anbefaling at du lærer at anvende tal til det!</p>
 
-<h2><span class="inl_cmd">chmod</span> - med tal (anbefalet metode)</h2>
+<h1><span class="inl_cmd">chmod</span> - med tal (anbefalet metode)</h1>
 
 <p>Rettigheder kan også sættes for den enkelte kategori med en tal værdi der præsenterer summen af de binære tal.</p>
 
@@ -439,7 +413,7 @@ http://manpages.ubuntu.com/manpages/trusty/man1/chmod.1.html</a></p>
 
 <p>Alle rettigheder i Linux er sat ud fra ejerskab. Tilgængeligheden af filer, mapper og enheder bliver styret af disse brugerrettigigheder </p>
 
-<h2><span class="inl_cmd">adduser</span> og <span class="inl_cmd">deluser</span> - Oprette og slette brugere</h2>
+<h1><span class="inl_cmd">adduser</span> og <span class="inl_cmd">deluser</span> - Oprette og slette brugere</h1>
 
 <p>Man opretter og sletter brugere med kommandown <span class="inl_cmd">adduser</span>. Herunder opretter jeg brugeren <span class="inl_cmd">testuser</span>.</p>
 
@@ -490,7 +464,7 @@ http://manpages.ubuntu.com/manpages/trusty/man8/adduser.8.html</a></p>
 <a href="http://manpages.ubuntu.com/manpages/trusty/en/man8/deluser.8.html" target="_blank">
 http://manpages.ubuntu.com/manpages/trusty/en/man8/deluser.8.html</a></p>
 
-<h2><span class="inl_cmd">useradd</span></h2>
+<h1><span class="inl_cmd">useradd</span></h1>
 
 <p>Når man anvender <span class="inl_cmd">adduser</span> er det egentlig en scriptfil der arbejder med kommandoen <span class="inl_cmd">useradd</span>. <span class="inl_cmd">useradd</span> giver mulighed for at man kan sætte en bruger op i detaljer med en længere kommando. Kommanden anvendes ved at man tilføjer konfigurationen bagefter. Man skal huske at tilføje et password til brugeren bagefter. Se følgende eksempel:</p>
 
@@ -548,7 +522,7 @@ passwd: adgangskoden blev opdateret
 <a href="http://manpages.ubuntu.com/manpages/trusty/man8/useradd.8.html" target="_blank">
 http://manpages.ubuntu.com/manpages/trusty/man8/useradd.8.html</a></p>
 
-<h2><span class="inl_cmd">id</span> - Findes brugeres</h2>
+<h1><span class="inl_cmd">id</span> - Findes brugeres</h1>
 
 <p>For at checke om en bruger findes anvendes <span class="inl_cmd">id</span>.</p>
 
@@ -563,7 +537,7 @@ id: hugo: ingen sådan bruger
 
 
 
-<h2><span class="inl_cmd">usermod</span></h2>
+<h1><span class="inl_cmd">usermod</span></h1>
 
 <p><span class="inl_cmd">usermod</span> anvendes til at ændre på brugerens konto.</p>
 
@@ -590,7 +564,7 @@ id: hugo: ingen sådan bruger
 <a href="http://manpages.ubuntu.com/manpages/trusty/en/man8/usermod.8.html" target="_blank">
 http://manpages.ubuntu.com/manpages/trusty/en/man8/usermod.8.html</a></p>
 
-<h2><span class="inl_cmd">chage</span></h2>
+<h1><span class="inl_cmd">chage</span></h1>
 
 <p><span class="inl_cmd">chage</span> anvendes til at konfigurere brugerens password og måden de skal fornys på. Hvis man ønsker at få et overblik over hvordan brugerens indstillinger kan man anvende kommandoen: </p>
 
@@ -649,7 +623,7 @@ Genindtast ny UNIX-adgangskode:
 http://manpages.ubuntu.com/manpages/trusty/en/man1/chage.1.html</a></p>
 
 
-<h2>Administration af grupper</h2>
+<h1>Administration af grupper</h1>
 
 <table class="cmd_table">
 	<thead>
@@ -700,7 +674,7 @@ http://manpages.ubuntu.com/manpages/trusty/en/man1/chage.1.html</a></p>
 
 <p>Det er kun medlemmer af <span class="inl_cmd">sudo</span>-gruppen der kan køre disse kommandoer.</p>
 
-<h2><span class="inl_cmd">sudo</span> - SuperUser DO</h2>
+<h1><span class="inl_cmd">sudo</span> - SuperUser DO</h1>
 
 <p>Som udgangspunkt består <span class="inl_cmd">sudo</span>-gruppen kun af en bruger, nemlig den bruger der installerede computere. Denne bruger vil altid kunne udføre administrationsarbejede på computeren ved at sætte <span class="inl_cmd">sudo</span> foran kommandoerne. Se eksemplet herunder med <span class="inl_cmd">ls -al</span> hvor jeg forsøger at se indholdet af <span class="inl_cmd">root's</span> mappe (hvor kun <span class="inl_cmd">root</span> har rettigheder):</p>
 
@@ -717,7 +691,7 @@ drwx------  3 root root 4096 maj  2 14:43 .gnupg
 -rw-r--r--  1 root root  148 aug 17  2015 .profile
 </pre>
 
-<h2>root-shell</h2>
+<h1>root-shell</h1>
 
 <p>Nogle har man brug for at lave en del administrationsarbejde, og der kan det være irriterende at skulle anvende <span class="inl_cmd">sudo</span> igen og igen. Der vil det kunne betale sig at ændre bruger til <span class="inl_cmd">root</span>. Det gøres med kommandoen:</p>
 
@@ -730,7 +704,7 @@ root@thoj-VirtualBox:~#
 </pre>
 
 
-<h2><span class="inl_cmd">sudo</span>-gruppen</h2>
+<h1><span class="inl_cmd">sudo</span>-gruppen</h1>
 
 <p>Hvis man vil have andre brugere til at kunne udføre administrationsarbejde skal de være medlem af sudo gruppen. Det gøres med følgende kommando:</p>
 
@@ -747,11 +721,55 @@ root@thoj-VirtualBox:~#
 <span class="red">sudo</span>:x:27:thoj
 </pre>
 
-<p></p>
-<p></p>
-<p></p>
-<p></p>
 
-	</body>
 
+	
+</div><!-- end: col-md-9 -->
+
+<footer>
+
+	<p><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons licens" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>Indholdet på Vidas.dk er  er licenseret under <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> og er skrevet af Thomas Jensen. (<a href="../hvem_er_jeg.html" target="_blank">Læs mere</a>)</p>
+
+</footer>
+	
+	
+</div><!-- end: row-fluid -->
+
+</div> <!-- end: container-fluid -->
+
+
+<!-- SCRIPT SECTION -->
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script type="text/javascript" src="../js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="../js/jquery.tocify.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+
+<!-- PRETTYFY-->
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+
+
+<!-- HIGHLIGHT -->
+	<script src="../js/highlight.pack.js" type="text/javascript"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+
+<!-- MATHJAX -->
+<script type="text/javascript" async 		src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+		MathJax.Hub.Config({ jax: ["input/TeX","output/HTML-CSS"], displayAlign: "left"	});
+</script>
+<!-- TOCIFY -->
+<script>
+	$(function() {var toc = $("#toc").tocify({ selectors: "h1, h2, h3, h4" }).data("toc-tocify"); });
+</script>
+<!-- GOOGLE ANALYTICS -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-89933285-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</body>
 </html>
