@@ -192,8 +192,8 @@ text-align: center;
 }
 
 blockquote {
-font-family: buntu, arial;
-background-color: LightBlue   ;
+font-family: ubuntu, arial;
+background-color: #f7f7f7  ;
 padding: 1.4em 1.4em;
 margin: 1.4em;
 font-size: 1.2em;
@@ -201,10 +201,11 @@ line-height: 1.5em;
 border-radius: 24px;
 }
 
-blockquote a {
+blockquote {
 
-font-size: 0.7em;
-text-align: center;
+font-size: 1.2em;
+padding-bottom: 1em;
+margin: 1em
 }
 
 blockquote.alert{
