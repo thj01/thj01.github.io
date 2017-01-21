@@ -79,6 +79,8 @@ h1 {font-size: 3em;padding-top: 2em;}
 
 h2{font-size: 1.8em;}
 
+h3{font-size: 1.3em;}
+
 
 
 span.afsnit {
@@ -152,6 +154,33 @@ p.center { text-align: center;}
 details {
 	font-family: Ubuntu, sans-serif;
 }
+
+/*
+ * 
+ * Afsnit om fonte
+ * 
+ * */
+
+div.fonts {
+border: 1px solid black;
+margin: 1em 4em;
+padding: 1em 4em 1em 4em;
+
+}
+
+div.paper .afsnit {font-family: arial;font-size: 1.8em;}
+div.paper p {font-family: times;}
+
+div.screen {font-family: verdana;}
+div.screen .afsnit {font-size: 1.8em;}
+
+
+div.comic .afsnit {font-size: 1.8em;font-family: "Comic Sans MS"}
+div.comic p {font-family: "Comic Sans MS"}
+
+div.symboler .afsnit {font-size: 1.8em;font-family: webdings}
+div.symboler p {font-family: webdings;}
+
 
 
 

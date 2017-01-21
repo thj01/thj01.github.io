@@ -56,13 +56,13 @@
 	<li>Titler - <span class="inl_cmd">&lt;cite></span> f.eks. Eiffeltårnet</li>
 </ul> 
 
-<p>Det er ord og begreber vi godt kan læse og omsætte som mennesker, men computeren opfatter  bare tegnene som et ord (en samling af bogstaver), uden at vide hvad de står for. Ved hjælp af disse tags kan man lave "intelligente" søgemaskiner.</p>
+<p>Det er ord og begreber vi godt kan læse og omsætte som mennesker, men computeren opfatter  bare tegnene som et ord (en samling af bogstaver), uden at vide hvad de står for. Ved hjælp af disse elementer kan man lave "intelligente" søgemaskiner.</p>
 
-<p>En anden stor fordel ved tags er, at de kan gøre skriveprocessen mere struktureret. Når man skriver vil man hele tiden være bevidst om hvad man er i gang med. Det man skal lære er, at se og forstå <abbr title="Hyper Text Markup Language">HTML</abbr>-koden.</p>
+<p>En anden stor fordel ved elementerne er, at de kan gøre skriveprocessen mere struktureret. Når man skriver vil man hele tiden være bevidst om hvad man er i gang med. Det man skal lære er, at se og forstå <abbr title="Hyper Text Markup Language">HTML</abbr>-koden.</p>
 
-<h2>Tags (elementer)</h2>
+<h2>Elementer</h2>
 
-<p>Man anvender tags ved at pakke ord/ordene ind i dem. Man anvender et tag både før og efter det man vil have tagget, hvor man sætter en <span class="inl_cmd">/</span> ind i det afsluttende tag. Se eksemplet herunder</p>
+<p>Man anvender elementer ved at pakke ord/ordene ind i dem. Man anvender elementets betegnelse både før og efter det man vil have markeret, hvor man sætter en <span class="inl_cmd">/</span> foran det afsluttende elementnavn . Se eksemplet herunder</p>
 
 <pre>
 	<code class="html">
@@ -70,7 +70,7 @@
 	</code>
 </pre>
 
-<p><span class="inl_cmd">&lt;p></span> beskriver indholdes som værende et tekst afsnit (en paragraf). I den afslutten tag sættes skråstregen <span class="inl_cmd">/</span> for at markere afslutningen.</p>
+<p><span class="inl_cmd">&lt;p></span> beskriver indholdes som værende et tekst afsnit (en paragraf). På det afsluttende <span class="inl_cmd">p</span> er der en  skråstrege <span class="inl_cmd">/</span> for at markere afslutningen.</p>
 
 
 
@@ -88,13 +88,13 @@
 
 <p>Læg mærke til at der kommer en stiplet linie under de forkortelser der er pakket ind i <span class="inl_cmd">&lt;abbr></span>. Det er din browser som markere forkortelser på den måde. Holder du musen hen over feltet forvandler den sig til et spørgsmålstegn og der kommer en sort boks der viser hvad der står i <span class="inl_cmd">title=""</span> feltet.</p>
 
-<p><span class="inl_cmd">&lt;b></span> ændrer indholdet så det bliver skrevet med fed skrift, og det er igen noget browseren gør. Formateringen af teksten inde i <span class="inl_cmd">tags</span> kan ændres ved hjælp af <abbr title="Cascading Style Sheets">CSS</abbr></p>
+<p><span class="inl_cmd">&lt;b></span> ændrer indholdet så det bliver skrevet med fed skrift, og det er igen noget browseren gør. Formateringen af teksten inde i <span class="inl_cmd">elementerne</span> kan ændres ved hjælp af <abbr title="Cascading Style Sheets">CSS</abbr></p>
 
-<p>Du kan se en komplet liste over tags her: <a href="http://www.w3schools.com/tags/" target="_blank">http://www.w3schools.com/tags/</a>.</p>
+<p>Du kan se en komplet liste over elementer her: <a href="http://www.w3schools.com/tags/" target="_blank">http://www.w3schools.com/tags/</a>.</p>
 
-<h1>Forskellige typer elementer (tags)</h1>
+<h1>Forskellige typer elementer</h1>
 
-<p>Når man taler om tags er der fire egenskaber man kan sætte på dem:</p>
+<p>Når man taler om elementer er der fire egenskaber man kan sætte på dem:</p>
 
 <ul class="disc">
 	<li>Tomme elementer</li>
@@ -107,11 +107,11 @@
 
 <p>Et tomt element har ingen tekstreng, og anvendes f.eks. til at angive en indstilling, som f.eks. <span class="inl_cmd">&lt;!DOCTYPE HTML></span> der fortælller angiver at det er et <abbr title="">HTML5</abbr> dokument eller <span class="inl_cmd">&lt;img></span> der angiver stien til et billede/illustration.</p>
 
-<p>Tomme tags afsluttes ikke, og har derfor ikke behov for <span class="inl_cmd">/</span> til sidst.</p>
+<p>Tomme elementer afsluttes ikke, og har derfor ikke behov for <span class="inl_cmd">/</span> til sidst.</p>
 
 <h2>Ikke-tomme elementer</h2>
 
-<p>De ikke-tomme tags indeholder tekstrenge som f.eks. <span class="inl_cmd">&lt;p><span class="red"> *** TEKSTSTRENG *** </span><span class="inl_cmd">&lt;p></span>(se ovenfor).</p>
+<p>De ikke-tomme elementer indeholder tekstrenge som f.eks. <span class="inl_cmd">&lt;p><span class="red"> *** TEKSTSTRENG *** </span><span class="inl_cmd">&lt;p></span>(se ovenfor).</p>
 .
 <h2>Blok-elementer</h2>
 
@@ -136,7 +136,7 @@
 
 <h1>Opbygning af et HTML-dokument</h1>
 
-<p>Illustrationen herunder viser hvordan en webside er bygget op efter HTML5 specifikationen. Siden starter med at sige at det er en HTML5 side (<span class="inl_cmd">&lt;!DOCTYPE></span>). Denne linie sørger for at browseren vil læse dokumentet som et HTML5 dokument. Når dokumenttypen er erklæret, kommer indholdet, som er pakket ind i <span class="inl_cmd">tags</span>.</p>
+<p>Illustrationen herunder viser hvordan en webside er bygget op efter HTML5 specifikationen. Siden starter med at sige at det er en HTML5 side (<span class="inl_cmd">&lt;!DOCTYPE></span>). Denne linie sørger for at browseren vil læse dokumentet som et HTML5 dokument. Når dokumenttypen er erklæret, kommer indholdet, som er pakket ind i <span class="inl_cmd">elementer</span>.</p>
 
 <p>Du kan se grundopbygningen af et HTML dokument herunder</p>
 
@@ -148,14 +148,14 @@
 
 </figure>
 
-<h1>Nødvendige tags</h1>
+<h1>Nødvendige elementer</h1>
 
-<p>Her er de tags som et HTML5 dokument skal indeholde, for at opfylde kravene til et HTML5 dokument..</p>
+<p>Her er de elementer som et HTML5 dokument skal indeholde, for at opfylde kravene til et HTML5 dokument..</p>
 
 
 <h2>&lt;html></h2>
 
-<p>Selve HTML dokumentet skal være omgivet af et <span class="inl_cmd">html</span> tag. På den måde ved browseren hvornår html-koden starter og stopper.</p>
+<p>Selve HTML dokumentet skal være pakket ind i et <span class="inl_cmd">html</span> element. På den måde ved browseren hvornår html-koden starter og stopper.</p>
 
 <h2>&lt;head></h2>
 
