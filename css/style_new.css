@@ -75,7 +75,7 @@ h4 {padding: 1em 0em .3em 0em; font-size: 1.2em;}
 */
 
 
-h1 {font-size: 3em;padding-top: 2em;}
+h1 {font-size: 3em;padding-top: 1.2em;}
 
 h2{font-size: 1.8em;}
 
@@ -181,6 +181,11 @@ div.comic p {font-family: "Comic Sans MS"}
 div.symboler .afsnit {font-size: 1.8em;font-family: webdings}
 div.symboler p {font-family: webdings;}
 
+div#negativ_tekst {
+color: white;
+background-color: #707070;
+
+}
 
 
 
