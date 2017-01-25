@@ -35,6 +35,37 @@
 <div class="col-sm-9">
 	
 <div class="title">Brancherelevante <br/>IT-systemer</div>
+
+<h1>Dokumentformater og Markup Language</h1>
+
+<p>For at forstå hvordan tekstbehandlere, regneark og præsentationsprogrammer virker bliver man nød til at have en forståelse for et <span class="inl_cmd">Markup Language</span> virker. </p>
+
+<p>Herunder kan du se det <span class="inl_cmd">Markup Language</span> som Internettet bruger ( <abbr title="HyperText Markup Language">HTML</abbr> - <b>H</b>yper<b>T</b>ext <b>M</b>arkup <b>L</b>anguage), som ikke er så forskelligt fra det som vores Officeprogrammer anvender: <abbr title="eXtensible Markup Language">XML</abbr> (e<b>X</b>tensible <b>M</b>arkup <b>L</b>anguage) , men langt mere overskueligt til at forklare sammenhængen. Der er en forklaring på de enkelte elementer i den røde parantes bagefter.</p>
+
+<pre>
+	<code class="html">
+&lt;h1>Overskrift 1&lt;/h1> <span class="red">( Overskrift type 1 )</span>
+&lt;p>tekst bla bla bla&lt;/p> <span class="red">( Brødtekst )</span>
+&lt;p>Tekst bla bla bla&lt;/p> <span class="red">( Brødtekst )</span>
+&lt;img src="billedfil"/> <span class="red">( Billede )</span>
+&lt;h2>Underoverskrift 1.1&lt;/h2> <span class="red">( Overskrift type 2 )</span>
+&lt;p>Tekst bla bla bla&lt;/p> <span class="red">( Brødtekst )</span>
+&lt;img src="billedfil"/> <span class="red">( Brødtekst )</span>
+
+</code>
+</pre>
+
+<p>Dette er også forklaringen på hvorfor det nogle gange går galt når vi skriver noget. Så længe tingene er klart adskilte så vil elementer flytte sig for hinanden, men elementer står inde i hinanden, som det f.eks. sker med tekst og billede, så sker der nogle gange det at billede og tekst flytter sig på en måde vi ikke forventer det. Det betyder at vi nogle gange bliver nød til at klippe et billede ud af en tekst, og så indsætte det et andet sted, for at få det ønskede resulatet.</p>
+
+<p>Dette er et problem for alle Office programmer internt, men især eksternt. Dette giver også en forklaring på hvorfor det nogle gange kan være vanskeligt at flytte et dokument fra et Officeprogram til et andet - eller blot fra version til version. Især MS Office er problematisk her.</p>
+
+<h2>PDF</h2>
+
+<p>Svaret på ovenstående problem er at anvende et helt andet format, nemlig: <abbr title="Portable Document Format ">PDF</abbr> (<b>P</b>ortable <b>D</b>ocument <b>F</b>ormat ). Dette dokuementformat er skabt til print og kan vises på alle maskiner. Det er endda muligt i nogle versioner at beskytte dem med passwords eller at gøre sådan at man kan indtaste nye data på dem.</p>
+
+<p>Når man afleverer opgaver bør man altid aflevere i PDF format - med mindre der er krav om andet!</p>
+
+
 	
 <h1>Typografier</h1>
 
@@ -234,12 +265,21 @@ print ("\nNu har vi udskrevet de 10 første tal")
 
 <h2>Ændring af typografier</h2>
 
-<p>I Word højreklikker du på typografien og vælger <span class="inl_cmd">Rediger</span></p>
+<ul class="none">
+	<li><b>Microsoft Word: </b>Højreklik på typografien og vælg <span class="inl_cmd">Rediger</span></li>
+	<li><b>Libreoffice Writer: </b>Vælg typografien og klik på pilen og vælg <span class="inl_cmd">Rediger typografi</span></li>
+</ul>
 
-<p>I Writer klikker du på typografien og klikker på pilen og vælger <span class="inl_cmd">Rediger typografi</span></p>
+<h1>Sidehoved/fod og sidetal</h1>
 
+<p></p>
 
-
+<ul class="disc">
+	<li><b>Microsoft Word: </b> <span class="inl_cmd">Indsæt</span> &#8594; <span class="inl_cmd">Sidehovede og sidefod</span>.</li>
+<!--
+	<li><b>Libreoffice Writer: </b></li>
+-->
+</ul>
 
 <h1>Sektioner</h1>
 
@@ -247,12 +287,20 @@ print ("\nNu har vi udskrevet de 10 første tal")
 
 <ul class="none">
 	<li><b>Microsoft Word: </b> <span class="inl_cmd">Layout</span> &#8594; <span class="inl_cmd">Sideopsætning</span> &#8594; <span class="inl_cmd">Skift</span> og vælg den type du ønsker (næste side hvis hvis det er til nummerering eller ændring af sidelayout).</li>
+<!--
 	<li><b>Libreoffice Writer: </b></li>
+-->
 </ul>
 
-<h1>Sidehoved og fod</h1>
+<p>Hvis du vil ændre på sidetallet skal du klikke på Sidehovedet eller sidefoden og højreklikke på sidetallet og vælge <span class="inl_cmd">Formatér sidetal</span></p>
 
-<p></p>
+<figure id="">
+
+	<img class="p40" src="images/sidetal_word.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
 
 <h1>Fodnoter og litteraturliste</h1>
 
@@ -266,9 +314,6 @@ print ("\nNu har vi udskrevet de 10 første tal")
 
 <p></p>
 
-<h1>Dokumentformater og XML</h1>
-
-<p></p>
 
 <h2>et eksempel</h2>
 
