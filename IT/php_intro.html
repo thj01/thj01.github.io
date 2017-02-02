@@ -1,0 +1,1490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Vidas.dk</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono|Ubuntu|Ubuntu+Condensed' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/jquery-ui.min.css">
+  <link rel="stylesheet" href="../css/jquery.tocify.css">
+  <link rel="stylesheet" href="../css/style_new.css" />
+<!-- Scripts in bottom to speed up pageload-->
+ 
+
+</head>
+<body>
+	
+	
+<div class="container-fluid">
+
+<div class="row-fluid">
+	
+<div class="col-sm-3">
+	
+	<div id="toc">
+	
+		<div id="toc_headline"></div>
+	
+	</div>
+
+</div><!-- Start slut 1. kolonne - TOC -->
+	
+<div class="col-sm-9">
+	
+	<div class="title"></div>
+	
+<h1>Programmer der skal installeres</h1>
+
+<p>Vi skal anvende et programmeringsværktøj samt en webserver. </p>
+
+<p>Geany: <a href="http://www.geany.org/" target="_blank">http://www.geany.org/</a></p>
+
+<p>XAMPP: <a href="https://www.apachefriends.org/index.html" target="_blank">https://www.apachefriends.org/index.html</a></p>
+
+<p>Farvekoderne i materrialet er taget fra Geany, og gør koden lettere at overskue.</p>
+
+<h1>Grundlæggende færdigheder</h1>
+
+<p>Lad os lave et simpelt program der skriver: "Hej". Indtast nedestående</p>
+
+
+<pre>
+
+	<code class="">
+&lt;meta charset="UTF-8" lang="da"/&gt;<br />
+&lt;?php<br />
+	// Dette er en kommentar<br />
+	echo "Hej"; // Dette er også en kommentar<br />
+?&gt;
+	</code>
+
+</pre>
+
+<p class="right"><a href="php_programmer/hej.php" target="_blank">hej.php</a></p>
+
+<p>Hvis vi nedbryder koden får vi:</p>
+
+<p>Valg af tegntabel:</p>
+
+<pre><code class="html">&lt;meta charset="UTF-8" lang="da"/&gt;</code></pre>
+
+<p>Indkapsling af php kodenen</p>
+
+<pre><code class="html">&lt;?php 
+
+  *** KODE ***
+
+&gt;</code></pre>
+
+
+
+<pre><code class="php">// kommentar</code></pre>
+
+<p><span class="inl_cmd">//</span> angiver at det efterfølgende er en kommentar, også selvom det står efter noget kode.</p>
+
+<pre><code class="php">echo "Hej";</code></pre>
+
+<p><span class="inl_cmd">echo</span> gør, at det efterfølgende bliver udskrevet på skærmen. Anførselstegnene (<span class="inl_cmd">"...."</span>) angiver den tekststreng der skal udskrives. Læg mærke til tegnet <span class="inl_cmd">;</span>. PHP kan ikke se linieskift i en fil, og anvender <span class="inl_cmd">;</span> til at angive slutningen på kommandoen.</p>
+
+<p>Vær også opmærksom på at metalinien <span class="inl_cmd">&lt;meta charset="UTF-8" lang="da"/&gt;</span> ikke er taget med i alle kodeeksempler. Det er en god ide at starte alle filer med PHP-kode med denne linie så man undgår problemer med f.eks. æ. ø og å.</p>
+
+<h2>Variabler</h2>
+
+<pre>
+	<code class="php">
+&lt;?php<br />
+	$var = "Hej";<br />
+	echo $var;<br />
+?&gt;	
+	</code>
+</pre>
+
+<p class="right"><a href="php_programmer/hej_var.php" target="_blank">hej_var.php</a></p>
+
+
+<p>Man angiver en variable ved hjælp af tegnet $. I det ovenstående definerer vi $var til at være tekstrengen "hej". Når vi arbejder med tekts skal det pakkes ind i anførselstegn.</p>
+
+<p>Vi udskriver tekststrengen med echo</p>
+
+<h2>Strenge</h2>
+
+<p>Vi kan lave strenge (koble ting sammen) ved at sætte punktum imellem dem. Læg mærke til at jeg har indsat et mellemrum efter Hej, for at der også kommer et mellemrum i outputtet.</p>
+
+<pre>
+	<code class="php">
+&lt;?php<br />
+	$var1 = "Hej ";<br />
+	$var2 = "verden";<br />
+	echo $var1.$var2;<br />
+?&gt;
+	</code>
+</pre>
+
+<p class="right"><a href="php_programmer/hej_streng.php" target="_blank">hej_streng.php</a></p>
+
+
+<p>Outputtet fra ovenstående kode er : Hej verden</p>
+
+<p>Man kan også indsætte variabler i sætningen, men her skal man "lime" variablen på ved hjælp af et punktum</p>
+
+<pre>
+	<code class="php">
+&lt;?php<br />
+	$navn = "Thomas";	<br />
+	echo "Hej. Jeg hedder ".$navn;<br />
+?&gt;	
+	</code>
+</pre>
+
+<p class="right"><a href="php_programmer/hej_navn.php" target="_blank">hej_navn.php</a></p>
+
+<p>Vil man sætte variabler ind i en sætning skal man blot sørge for at "lime" variablen sammen med tekststrengen foran og bagved:</p>
+
+<pre>
+	<code class="php">
+&lt;?php<br />
+	$navn = "Thomas";	<br />
+	$prg_sprog = "PHP";	<br />
+	echo "Hej. Jeg hedder ".$navn." og jeg er ved at lære ".$prg_sprog;<br />
+?&gt;	
+	</code>
+</pre>
+
+<p class="right"><a href="php_programmer/hej_navn2.php" target="_blank">hej_navn2.php</a></p>
+
+<p>Endeligt kan man indskrive HTML i sin PHP-kode, ved at tilføje HTML-tags i teksttrengen. Disse vil blive læst af browseren som HTML tegn. F.eks.:</p>
+
+<pre>
+	<code class="php">
+&lt;?php<br />
+	$navn = "Thomas";	<br />
+	echo "&lt;h1&gt;Hej&lt;/h1&gt;&lt;p&gt; Jeg hedder ".$navn."&lt;/p&gt;;"<br/>
+?&gt;
+	</code>
+</pre>
+
+<p class="right"><a href="php_programmer/hej_navn_html.php" target="_blank">hej_navn_html.php</a></p>
+
+<h3>Opgave - teksstrenge og variabler</h3>
+
+<p></p>
+
+<p>Lav nedestående tekststykke ved hjælp af PHP hvor de ord der står mellem *'er skal angives som variabler.</p>
+
+<pre>
+	<code class="php">Mit navn er *navn*. Jeg bor i *by* og er *alder* år gammel. Mit telefonnummer er: 
+*tlf_nr* og det er en *tlf_mrk*</code>
+</pre></p>
+
+<h2>Behandling af strenge</h2>
+
+<p>Nogle gange har man brug for at analysere tekststrenge, både med antal af tegn og hvilke tegn.</p>
+
+<span class="afsnit"><span class="inl_cmd">strlen()</span> - længden af en tekststreng</span>
+
+<p>Koden undersøger hvor mange tegn der er i en teskstreng</p>
+
+<p>Eksempel:</p>
+
+<pre><code class="php">strlen("enemail@mail.dk")</code></pre>
+
+<span class="afsnit"><span class="inl_cmd">substr_count()</span>- tæller tegn i tekststreng </span>
+
+<p>Koden undersøger hvor mange gange et tegn er repræsentret i en teksttreng</p>
+
+<p>Eksempel:</p>
+
+<pre><code class="php">substr_count("enemail@mail.dk","@")</code></pre>
+
+
+
+<h1>Simple programmer</h1>
+
+<p>I dette kapitel vil du lære at lave dine første små programmer.</p>
+
+<h2>Operatorer</h2>
+
+<p>Før vi går i gang med at programmere skal du lige have et overblik over måden man laver betingelser på. Ofte vil programmer fungere efter en skabelone der siger: Hvis noget sker – så gør følgende. Her under er et overblik over de logiske operatorer (regningsarter), som du skal anvende når du programmerer</p>
+
+<pre><code class="php">echo 8 + 2; // -> 10</code></pre>
+
+<pre><code class="php">echo 8 - 2; // -> 6</code></pre>
+
+<pre><code class="php">echo 8 * 2; // -> 16</code></pre>
+
+<pre><code class="php">echo 8 / 2; // -> 4</code></pre></td>
+
+<pre><code class="php">echo ( 8 * 2 ) - 4; // -> 12</code></pre>
+
+<pre><code class="php">echo 8 * ( 2 - 4 ); // -> -16</code></pre>
+
+<p class="right"><a href="php_programmer/operatorer.php" target="_blank">operatorer.php</a></p>
+
+<p>Som du kan se overholder PHP regningsreglerne. Derudover kan du anvende andre matematisk/logiske tegn . Se nedestående skema.</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Operator</th>
+			<th>Beskrivelse</th>
+			<th>Eksempel</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>&gt;</td>
+			<td>større end</td>
+			<td>5 &gt; 8 → falsk</td>
+		</tr>
+		<tr>
+			<td>&lt;</td>
+			<td>mindre end</td>
+			<td>5 &lt; 8 → sand</td>
+		</tr>
+		<tr>
+			<td>&gt;=</td>
+			<td>Større end eller lig med</td>
+			<td>5 &gt;= 8 → falsk</td>
+		</tr>
+		<tr>
+			<td>&lt;=</td>
+			<td>Mindre end eller lig med</td>
+			<td>5 &lt;= 8 → sand</td>
+		</tr>
+		<tr>
+			<td>==</td>
+			<td>Lig med</td>
+			<td>5 == 8 → falsk</td>
+		</tr>
+		<tr>
+			<td>!==</td>
+			<td>Ikke lig med</td>
+			<td>5 !== 8 → sand</td>
+		</tr>
+		<tr>
+			<td>===</td>
+			<td>Identisk med</td>
+			<td>5 === "5" → falsk</td>
+		</tr>
+		<tr>
+			<td>!===</td>
+			<td>Ikke identisk med</td>
+			<td>5 !=== "5" → sand</td>
+		</tr>
+		<tr>
+			<td>x and y</td>
+			<td rowspan="2">Både x og y skal være sand</td>
+			<td rowspan="2">x=6 ; y=3<br /><br />(x &lt; 10 and y &gt; 1) →  sand</td>
+		</tr>
+		<tr>
+			<td>x && y</td>
+
+		</tr>
+				<tr>
+			<td>x or y</td>
+			<td rowspan="2">Kun en behøver at være sand</td>
+			<td rowspan="2">x=6 ; y=3<br /><br/>(x == 6 or y == 1) → sand</td>
+		</tr>
+		<tr>
+			<td>x || y</td>
+		</tr>
+		<tr>
+			<td>x xor y</td>
+			<td>Kun en må være sand</td>
+			<td>x=6 ; y=3<br /><br/>(x == 6 xor y == 1) → falsk</td>
+		</tr>
+		<tr>
+			<td>!x</td>
+			<td>Udsagnet x er ikke sandt</td>
+			<td>x=6 ; y=3 <br/><br/>!(x==y) → sand</td>
+		</tr>
+		
+	</tbody>
+</table>
+
+<h2>Betingelser: If – else</h2>
+
+<p>Ofte skal man opstille nogle betingelser for koden. Det kan f.eks. være at man ud fra alderen skal kunne sige om en person er myndig eller ej.</p>
+
+<pre>
+	<code class="php">
+&lt;?php<br />
+$alder = 17;<br />
+if ($alder &lt; 18) { echo "Personen er ikke myndig"; }<br />
+	else { echo "Personen er myndig"; }<br />
+?&gt;
+	</code>
+</pre>
+
+<p class="right"><a href="php_programmer/betingelser_if_else.php" target="_blank">betingelser_if_else.php</a></p>
+
+
+<p>Koden undersøger om $alder er mindre end 18. Hvis den er svarer koden med: Personen er ikke myndig.</p>
+
+<p>Der kan også opstilles flere betingelser ved at tilføje et elseif.</p>
+
+<pre>
+	<code class="php">
+if (betingelse_1) { Gør noget; }<br />
+	elseif (betingelse_2) {Gør noget andet; }<br />
+	else { gør noget tredie; }	
+	</code>
+</pre>
+
+<h3>Opgave - Pendlerkort</h3>
+
+<p>Lav en kode der undersøger om personen hos DSB er berettiget til et ungdomskort (under 18), et pensionistkort (over 65) eller skal købe en almindelig billet.</p>
+
+<h3>Opgave - Er det fredag?</h3>
+
+<p>På hjemmesiden <a href="http://www.erdetfredag.dk/" target="_blank"> http://www.erdetfredag.dk/</a> får du at vide om det er fredag. Lav en 	lignende kode, hvor svarene er:</p>
+
+
+
+	
+<ul class="disc">
+	<li>Hvis Fredag → YES det er fredag! (betingelse1)</li>
+	<li>Hvis Lørdag og Søndag → Nej... Men det er weekend! (betingelse2)</li>
+	<li>Ellers → Nej :(</li>
+
+<p><span class="bold">HINT!</span></p>
+
+	<li>PHP svarer med tid ved hjælp af funktionen date(). </li>
+	<li>Brug det logiske tegn or eller || i betingelse2</li>
+</ul>
+
+<p class="right"><a href="php_programmer/fredag.php" target="_blank">fredag.php</a></p>
+
+<h2>Løkker</h2>
+
+<p>Nogle gange skal den samme programlinie køres flere gange. Det kan f.eks. være hvis man gerne vil finde de 30 første trekanttal – altså talrække 1, 3, 6, 10, 15, 21... . Man kan udregne tallene med formlen herunder:</p>
+
+<figure id="">
+
+	<img class="p30"src="images/trekantformel.png" alt="" title="" />
+
+	<figcaption>Trekantformlen</figcaption>
+
+</figure>
+
+<p>Ved at lave en løkke der sørger for at n stiger med en hver gang kan vi altså udregne det næste trekanttal. Her anvender vi en for løkke</p>
+
+<pre>
+<code class="html">
+&lt;?php<br />
+for ($i=1;$i&lt;=20;$i++) {<br />
+	$trekanttal = ($i*($i+1))/2;<br />
+	echo $trekanttal." - ";<br />
+	}<br />
+?&gt;
+</code>
+</pre>
+
+<p class="right"><a href="php_programmer/trekanttal.php" target="_blank">trekanttal.php</a></p>
+
+<p><span class="bold">Output:</span></p>
+
+<pre>
+<code class="php">1 - 3 - 6 - 10 - 15 - 21 - 28 - 36 - 45 - 55 - 66 - 78 - 91 - 105 - 120 - 136 - 153 - 171 </code>
+</pre>
+
+<p>En for løkke fungerer ved at man sætter alle betingelserne i den efterfølgende parentes. Den fortæller (Hvad er startværdien; Hvad er slutværdien; Hvad skal variablen vokse med pr. omgang).</p>
+
+<p>Start- og slutværdien er også den første og den sidste værdi $i gennemløber. Variablen behøver ikke at hedde $i, men kunne lige så godt have været $a.</p>
+
+<h3>Opgave - Vinkelsum i polygon</h3>
+
+<p>Lav en løkke der beregner den enkelte vinkel og  den samlede vinkel i en ligesidet polygon med op til 20 sider. Outputtet skal være som nedenfor:</p>
+
+<pre>
+	<code class="html">
+I en 3-kant er vinkelsummen 180&deg; og den enkelte vinkel er 60&deg;
+I en 4-kant er vinkelsummen 360&deg; og den enkelte vinkel er 90&deg;
+...
+I en 20-kant er vinkelsummen ...
+	</code>
+</pre>
+
+<p class="right"><a href="php_programmer/vinkelsum.php" target="_blank">vinkelsum.php</a></p>
+
+<p><span class="bold">Hint:</span></p>
+
+<ul class="disc">
+	<li>Formlen for en polygons vinkelsum er hvor vinkelsum = 180&deg; &middot; (n-2), og hvor n = antal kanter.</li>
+	<li>Prøvekør løkken ved at udskrive $i.</li>
+	<li>For at kunne få outputtet til at skifte linie skal du anvende HTML koden &lt;br&gt;.</li>
+</ul>
+
+<h3>Opgave - Fibonacchi tal</h3>
+
+<p>Fibonaccitallene er en talrække, som har følgende egenskab. Hvis man dividerer et tal i rækken med det forgående tal, så vil dette tal tilnærme sig værdien &phi; (1.6180339...) som også bliver kaldt det gyldne snit. </p>
+
+<p>Talrækken er som følger: 1, 1, 2, 3, 5, 8, 13, 21 ... - eller som en formel: &phi; = (n-1)/n for n &#8594; &infin; </p>
+
+<pre>
+	<code class="php">
+&lt;?php
+
+$x = 0;
+$y = 1;
+
+for($i=0;$i&lt;=20;$i++){
+
+    $z = $x + $y;
+    echo $z.", ";
+    $x=$y;
+    $y=$z;
+    }
+    
+?&gt;
+	</code>
+</pre>
+
+<p class="right"><a href="php_programmer/fibonacci.php" target="_blank">fibonacci.php</a></p>
+
+<pre>
+	<code class="php">1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597, 2584, 4181, 6765, 10946, 17711,</code>
+</pre>
+
+<p>Hvis du ønsker at anvende de rigtige matematiske tegn skal du bruge: , , </p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th></th>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>&rArr; = &amp;rArr;</td>
+			<td>&phi; = &amp;phi;</td>
+			<td>&asymp; =  &amp;asymp;</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Kan du forbedre koden så den også regner &phi; ud?</p>
+
+<p class="right"><a href="php_programmer/fibonacci_more.php" target="_blank">fibonacci_more.php</a></p>
+
+<h1>Formularer - send.</h1>
+
+<p>Vi kan anvende PHP til at sende information mellem forskellige sider. Her vil du lære to metoder at kende. En hvor du skal tilføje tekst/tal og den anden hvor vi vælger fra en foruddefineret liste.</p>
+
+<h2>Send som tekst</h2>
+
+<p>Nedestående eksempel sender dit navn, email og telefon videre. Læg mærke til at der ikke er nogen PHP-kode i filen.</p>
+
+<pre>
+	<code class="html">
+&lt;meta charset="UTF-8" lang="da"/&gt;<br />
+&lt;form action="mail_recieve.php" method="POST" &gt;<br />
+Email: &lt;input placeholder="Din e-mail" type="email" name="email" required autofocus /&gt;<br />
+&lt;br&gt;<br/>
+&lt;input type="submit"/&gt;<br />
+&lt;/form&gt;	
+	</code>
+</pre>
+
+<p class="right"><a href="php_programmer/mail_send.php" target="_blank">mail_send.php</a></p>
+
+
+<span class="bold">Output:</span>
+
+<figure id="">
+
+	<img class="p30"src="images/mail_send.png" alt="" title="" />
+
+	<figcaption>Simpel send-form</figcaption>
+
+</figure>
+
+<p>Formularen pakkes ind i &lt;form&gt; tag'en, hvori der er to input. 
+I &lt;form&gt; tag'en er der angivet 2 parametre.</p>
+
+<table class="html">
+	<thead>
+		<tr>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>action="mail_recieve.php"</td>
+			<td>Den side der skal åbnes når der klikkes på submit</td>
+		</tr>
+		<tr>
+			<td>method="POST"</td>
+			<td>Metoden data sendes videre på (se nedenfor)</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>PHP sender data på to måder: POST og GET. Generelt kan man sige at alle data, som der er noget sikkerhed og privathed omkring bør sendes med POST. Grunden til dette er, at man kan se de sendte data i browserens adresselinie når man sender med GET. Du kan se et GET eksempel herunder.</p>
+
+<p>.../mail_recieve.php?email=thomas%40mail.local</p>
+
+<p>Der har været eksempler med større virksomheder som har sendt brugernavne og password i klartekst – og det er en utilgivelig sikkerhedsfejl.</p>
+
+<p>Data der indeholder personoplysninger og sikkerhedsoplysninger bør altid sendes med POST. Alt andet kan man sende med GET, da det ikke belaster serveren i samme grad.</p>
+
+<p>Lad os bryde de to &lt;input&gt; ned i enkeltelementer. Det første indput er selve tekstboksen.</p>
+
+<pre><code class="html">
+Email: &lt;input placeholder="Din e-mail" type="email" name="email" required autofocus /&gt;<br/>
+&lt;input type="submit"/&gt;
+</code></pre>
+
+<table class="">
+	<thead>
+		<tr>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>placeholder="Din e-mail"</td>
+			<td>Den grå tekst i tekstfeltet</td>
+		</tr>
+		<tr>
+			<td>type="email"</td>
+			<td>HTML koden tjekker om det er en valid emailadresse der bliver tastet ind. Hvis ikke får brugeren en fejlmeddelelse. Type kan også være text, url, number, date...(<a href="http://www.w3schools.com/tags/att_input_type.asp" target="_blank"> 			http://www.w3schools.com/tags/att_input_type.asp</a></td>
+		</tr>
+		<tr>
+			<td>name="email"</td>
+			<td>Den værdi som data skal kendes ved</td>
+		</tr>
+		<tr>
+			<td>required</td>
+			<td>Feltet skal udfyldes – ellers får brugeren en fejlmeddelelse</td>
+		</tr>
+		<tr>
+			<td>autofocus</td>
+			<td>Cursoren er sat inde i feltet så brugeren kan taste ind uden at vælge det med musen</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>type="submit" bliver til send knappen. Har den ikke en værdi angivet får den automatisk navnet "indsend".</p>
+
+<h2>Send som liste</h2>
+
+<p>Nogle gange skal brugeren vælge nogle faste begreber. Det kan f.eks. være personens køn (dreng/pige)</p>
+
+<pre>
+	<code class="html">
+&lt;meta charset="UTF-8" lang="da"/&gt;<br />
+&lt;form action="gender_p2.php" method="get" &gt;<br />
+	&lt;select name="gender"&gt;<br />
+		&lt;option value="Dreng"&gt;Dreng&lt;/option&gt;<br />
+		&lt;option value="Pige"&gt;Pige&lt;/option&gt;<br />
+	&lt;/select&gt;<br />
+	&lt;input type="submit" value="Vælg"/&gt;<br />
+&lt;/form&gt;	
+	</code>
+</pre>
+
+<p class="right"><a href="php_programmer/gender.php" target="_blank">gender.php</a></p>
+
+<figure id="">
+
+	<img class="p30" src="images/gender.png" alt="" title="" />
+
+	<figcaption>Send med listeform</figcaption>
+
+</figure>
+
+<h2>Formularer - modtag</h2>
+
+<pre>
+	<code class="html">
+&lt;?php<br />
+	$email = $_POST["email"];	<br />
+	echo "Du angav mailen: ".$email;<br />
+?&gt;	
+	</code>
+</pre>
+
+<p>Som du kan se henter vi data ned med $_POST["email"]. Vi har oprettet en ny variabel $email som skriver ud til skærmen ved hjælp af echo.</p>
+
+<p>Hvis vi havde sendt data ved hjælp af GET metoden skulle den første linie have heddet:</p>
+
+<pre><code class="html">$email = $_GET["email"];</code></pre>
+
+<h2>if isset</h2>
+
+<p>Denne kommando spørger serveren om noget findes: "is it set"?. Dette kan vi udnytte sådan, så det bliver usynligt for brugeren at vi har opdateret siden. Lad os kigge på hvad den gør i følgende kode</p>
+
+<pre>
+<code class="html">
+&lt;meta charset="UTF-8" lang="da"/&gt;<br />
+&lt;form method="POST" &gt;<br />
+	Email: &lt;input placeholder="Din e-mail" type="email" name="email" required autofocus /&gt;<br/>
+	&lt;br&gt;<br />
+	&lt;input type="submit" name="submit"/&gt;<br />
+&lt;/form&gt;<br />
+&lt;?php<br />
+	if (isset($_POST["submit"])) {<br />
+		$email = $_POST["email"];<br />
+		echo "&lt;hr&gt;Du angav mailen: ".$email;<br />
+	}	 <br />
+?&gt;	
+</code>
+</pre>
+
+<p class="right"><a href="php_programmer/mail_send_ifisset.php" target="_blank">mail_send_ifisset.php</a></p>
+
+<p>Første gang man åbner siden læser browseren siden igennem - den "parser" siden. Dæn læser at:</p>
+
+<ul class="disc">
+	<li>Indlæser tegnsættet</li>
+	<li>laver inputfeltet og indsendknappen</li>
+	<li>Spørger serveren om $_POST["submit"] findes</li>
+</ul>
+
+<p>Første gang den kører siden findes den ikke, for der er jo ikke lavet noget input. Derfor 
+springer browseren hele if sætningen over.</p>
+
+<p>Læg også mærke til at der mangler en "action" destination i &lt;form&gt;. Dette gør at brugeren bliver sendt tilbage til den samme side efter han har trykket indsend. når brugeren så laver sit input, så vil siden blive genopfrisket, og denne gang findes $_POST["submit"] - og derfor køres if koden.</p>
+
+<p><span class="bold">Output</span></p>
+
+<figure id="">
+
+	<img class="p30" src="images/mail_send_ifisset.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p><span class="bold">Vær opmærksom på følgende</span></p>
+
+<ul class="disc">
+	<li>name ="submit" er blevet tilføjet til send knappen. Dette angiver navnet på variablen sådan at den kan hentes igen - her med $_POST["submit"]</li>
+	<li>Der er tilføjet en linie, sådan at man tydeligt kan se adskillelsen mellem det oprindelige og det nye. Dette er gjort med &lt;hr&gt;</li>
+</ul>
+
+<p>Fordelen ved at anvende if (isset) er at man kan have koden på den samme side og at brugeren ikke oplever et sideskift hele tiden – ulempen er at koden risikerer at blive uoverskuelig.</p>
+
+<h3>Opgave</h3>
+
+<p>Lav opgaven med vinkelsummen sådan at brugeren vælger antallet af kanter i den første polygon og at output bliver skrevet nedenunder ved hjælp af if isset. Koden skal udskrive i alt 10 polygoner. Vinkelsummen skal være med 2 decimaler</p>
+
+<p><span class="bold">Hint:</span></p>
+
+<ul class="disc">
+	<li>Du skal sikre dig at brugeren ikke kan vælge værdier under 3</li>
+	<li>Den enkelte vinkel skal være med 4 decimaler brug funktionen: sprintf()</li>
+</ul>
+
+<h3>Opgave</h3>
+
+<p>Udvid ovenstående øvelse sådan at brugere vælger værdien af den første og den sidste polygon, altså sådan at han kan få vist output fra f.eks. en 20 kant til en 50 kant</p>
+
+<p><span class="bold">Hint:</span></p>
+
+<ul class="disc">
+	<li>Du skal sikre dig at slutværdien er større end eller lig med startværdien</li>
+</ul>
+
+<h2>Sessions - globale variabler</h2>
+
+<p>Nogle gange kan det være smart at en variabel kan overføres fra side til side uden t den skal defineres hver gang. Det kan f.eks. være hvis vi vil oprette en funktion der tæller antallet af gange man har gjort noget.</p>
+
+<pre>
+	<code class="html">
+&lt;?php 
+	session_start ();
+?&gt;				
+		
+&lt;meta charset="UTF-8" lang="da"/&gt;<br />
+&lt;form method="POST" &gt;<br />
+	&lt;input type="submit" value="Knap" name="submit"/&gt;<br />
+&lt;/form&gt;<br />
+&lt;?php<br />
+	if (isset($_POST["submit"])) {<br />
+		$_SESSION["antal"] = $_SESSION["antal"] + 1;<br />
+		echo "&lt;hr&gt;Du har trykket ".$_SESSION["antal"]." gange på knappen!";<br />
+	}<br />
+	else {<br />
+		$_SESSION["antal"] = 0;<br />
+		echo "&lt;hr&gt;Du har ikke trykket på knappen endnu";<br />
+	}		 <br />
+?&gt;		
+	</code>
+</pre>
+
+<p>Det anbefales at session_start() bliver lagt helt i toppen af et dokument, for så er serveren fra start opmærksom på at den kan modtage indhold.</p>
+
+<p>Første gang PHP-koden kører spørger den om der er noget der er postet, og da der ikke er går den videre til else. Her opretter den sessionen antal og sætter den til nul – og gør opmærksom på at brugeren endnu ikke har trukket på knappen.</p>
+
+<p>Vi skal have rettet koden lidt til, fordi vi vil også gerne kunne nulstille tælleren. Det kan gøres på mange måder, men her vælger vi at oprette en knap ved siden af den første knap og kalder den ”nulstil”.</p>
+
+<p>Indsæt følgende i &lt;form&gt; delen:</p>
+
+<pre><code class="">&lt;input type="submit" value="Nulstil" name="nulstil"/&gt;</code></pre>
+
+<p>og lav en ny if (isset) i bunden af koden som reagerer på værdien ”nulstil”.</p>
+
+<pre>
+<code class="html">
+	if (isset($_POST["nulstil"])) {<br />
+		session_destroy ();<br />
+	}
+</code>
+</pre>
+
+<p>Når du nu klikker på knappen ”nulstil”, vil alle sessions på serveren blive annulleret 
+og siden nulstilles. Herunder er den samlede kode</p>
+
+<pre>
+<code class="html">
+&lt;meta charset="UTF-8" lang="da"/&gt;<br />
+&lt;form method="POST" &gt;<br />
+	&lt;input type="submit" value="Knap" name="submit"/&gt;<br />
+	&lt;input type="submit" value="Nulstil" name="nulstil"/&gt;<br />
+&lt;/form&gt;<br />
+&lt;?php<br />
+	session_start ();<br />
+	if (isset($_POST["submit"])) {<br />
+		$_SESSION["antal"] = $_SESSION["antal"] + 1;<br />
+		echo "&lt;hr&gt;Du har trykket ".$_SESSION["antal"]." gange på knappen!";<br />
+	}<br />
+	else {<br />
+		$_SESSION["antal"] = 0;<br />
+		echo "Du har ikke trykket på knappen endnu";<br />
+	}<br />
+	if (isset($_POST["nulstil"])) {<br />
+		session_destroy ();<br />
+	}		 <br />
+?&gt;
+</code>
+</pre>
+
+<h3>Opgave</h3>
+
+<p>Lav en side der tæller ned fra 3 og så nulstiller koden.</p>
+
+<h1>Tabeltræner - et projekt</h1>
+
+<p>Vi skal anvende 3 sider i vores tabeltræner</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Navn</th>
+			<th>Beskrivelse</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>tabel01.php</td>
+			<td>Dette er startsiden, hvor vi skal vælge vores tabel.</td>
+		</tr>
+		<tr>
+			<td>tabel02.php</td>
+			<td>På denne side bliver brugeren spurgt om et regnestykke</td>
+		</tr>
+		<tr>
+			<td>tabel03.php</td>
+			<td>Dette er den sidste side, hvor svaret bliver evalueret og brugeren får mulighed for at forsætte med den valgte tabel, eller vælge en ny.</td>
+		</tr>
+	</tbody>
+</table>
+
+<h2>Første side - index.php</h2>
+
+<figure id="">
+
+	<img class="p30" src="images/Tabeltræner_side1.png" alt="" title="" />
+
+	<figcaption>Første side i tabeltræneren - index.php</figcaption>
+
+</figure>
+
+<pre>
+<code class="html">
+&lt;meta charset="UTF-8" lang="da"/&gt;<br />
+&lt;h1&gt;Tabeltræner&lt;/h1&gt;<br />
+&lt;p&gt;Her kan du få trænet tabellerne. Vælg den herunder&lt;/p&gt;<br />
+&lt;form action="tabel02.php" method="get" &gt;<br />
+	&lt;select name="tabel"&gt;<br />
+		&lt;option value="2"&gt;2-tabellen&lt;/option&gt;<br />
+		&lt;option value="3"&gt;3-tabellen&lt;/option&gt;<br />
+		&lt;option value="4"&gt;4-tabellen&lt;/option&gt;<br />
+		&lt;option value="5"&gt;5-tabellen&lt;/option&gt;<br />
+		&lt;option value="6"&gt;6-tabellen&lt;/option&gt;<br />
+		&lt;option value="7"&gt;7-tabellen&lt;/option&gt;<br />
+		&lt;option value="8"&gt;8-tabellen&lt;/option&gt;<br />
+		&lt;option value="9"&gt;9-tabellen&lt;/option&gt;<br />
+	&lt;/select&gt;<br />
+	&lt;input type="submit" value="Gå igang"/&gt;<br />
+&lt;/form&gt;
+</code>
+</pre>
+
+<h3>Forklaring til koden - index.php</h3>
+
+<p><span class="bold">Dropdown menu</span></p>
+
+<pre>
+<code class="html">
+&lt;select name="tabel"&gt;<br />
+	&lt;option value="2"&gt;2-tabellen&lt;/option&gt;
+</code>
+</pre>
+
+<p>For at kunne lave en dropdown menu skal du lave først en &lt;select&gt; tag og derefter indsætte &lt;option&gt; tags. Hver af disse options skal have en værdi svarende den ønskede tabel og et tekstfelt der navgiver den enkelte mulighed.</p>
+
+<p>Værdien hentes ved at tilgå værdiern for &lt;select&gt; afsnittet – her: tabel.</p>
+
+<h2>Anden side - gange.php</h2>
+
+<figure id="">
+
+	<img class="p30" src="images/Tabeltræner_side2.png" alt="" title="" />
+
+	<figcaption>Anden side i tabeltræneren - gange.php</figcaption>
+
+</figure>
+
+<pre>
+<code class="html">
+&lt;meta charset="UTF-8" lang="da"/&gt;<br />
+&lt;?php<br />
+	$tabel = $_GET["tabel"]; // Få tabellen fra første side<br />
+	$faktor = mt_rand(2,10); // Vælg et tilfældigt tal mellem 2 og 10<br />
+	$resultat = $tabel*$faktor; //resultat fra tabel * factor<br />
+?&gt;<br />
+&lt;hr&gt; <br />
+&lt;h1&gt;Hvad er &lt;?php echo $tabel ?&gt; &amp;middot; &lt;?php echo $faktor ?&gt;&lt;/h1&gt; <br />
+&lt;form method="get" action="tabel03.php"&gt;<br />
+	&lt;input type="number" name="svar" placeholder="Dit svar" autofocus /&gt;<br />
+	&lt;input type="hidden" name="tabel" value="&lt;?php echo $tabel ?&gt;" /&gt;<br />
+	&lt;input type="hidden" name="resultat" value="&lt;?php echo $resultat ?&gt;" /&gt;<br />
+	&lt;input type="hidden" name="faktor" value="&lt;?php echo $faktor ?&gt;" /&gt;<br />
+	&lt;input type="submit" value="Svar" /&gt;	<br />
+&lt;/form&gt;
+</code>
+</pre>
+
+<h3>Forklaringer til koden - gange.php</h3>
+
+<p><span class="bold">PHP-koden – vælge et tilfældigt tal</span></p>
+
+<pre><code class="html">$faktor = mt_rand(2,10);</code></pre>
+
+<p>Ved hjælp af mt_rand får vi PHP til at vælge tallen mellem 2 og 10 (begge tal er med) og vi giver det valgte tal variablen $faktor.</p>
+
+<p><span class="bold">HTML-koden – indsæt PHP-variabler</span></p>
+
+<pre><code class="html">&lt;h1&gt;Hvad er &lt;?php echo $tabel ?&gt; &amp;middot; &lt;?php echo $faktor ?&gt;&lt;/h1&gt; </code></pre>
+
+<p>Her gør vi det modsatte af ovenfor – vi indsætter PHP-variabler i HTML-koden. Vi behøver ikke at indsætte det vi skal printe ud i udråbstegn, da PHP selv indsætter variablen derefter.</p>
+
+<p>Vær også ompmærksom på tegnet  &amp;middot; ” &middot; ”. Det er HTML-koden for gangetegnet.</p>
+
+<h2>Tredie side - resultat.php</h2>
+
+<figure id="">
+
+	<img class="p30"  src="images/Tabeltræner_side3.png" alt="" title="" />
+
+	<figcaption>Tredie side i tabeltræneren - resultat.php</figcaption>
+
+</figure>
+
+<pre>
+<code class="html">
+&lt;meta charset="UTF-8" lang="da"/&gt;<br />
+&lt;?php<br />
+ $tabel = $_GET["tabel"];<br />
+ $svar = $_GET["svar"];<br />
+ $faktor = $_GET["faktor"];<br />
+ $resultat = $_GET["resultat"];<br />
+if ($svar == $resultat ) { $evaluer = "&lt;h1&gt;RIGTIGT&lt;/h1&gt;"; }<br />
+	else { $evaluer = "forkert :(";}<br />
+?&gt;<br />
+&lt;p&gt;Du svarede &lt;?php echo $svar ?&gt;, og det er &lt;?php echo $evaluer ?&gt; &lt;/p&gt;<br />
+&lt;p&gt;&lt;?php echo $tabel ?&gt; &amp;middot; &lt;?php echo $faktor ?&gt; er &lt;?php echo $resultat ?&gt;&lt;/p&gt;<br />
+&lt;form method="get" action="tabel02.php"&gt;<br />
+	&lt;input type="hidden" name="tabel" value="&lt;?php echo $tabel ?&gt;" /&gt;<br />
+	&lt;input type="submit" value="Prøv samme tabel igen"/&gt;<br />
+&lt;/form&gt;<br />
+&lt;hr&gt;<br />
+&lt;a href="tabel01.php"&gt;&lt;button type="button"&gt;Jeg vil prøve en ny tabel&lt;/button&gt;&lt;/a&gt;
+</code>
+</pre>
+
+<h3>Forklaring til koden - resulat.php</h3>
+
+<p><span class="bold">HTML-koden –  &lt;a&gt;</span></p>
+
+<pre>
+<code class="html">
+&lt;a href="index.php"&gt;&lt;button type="button"&gt;Jeg vil prøve en ny tabel &lt;/button&gt;&lt;/a&gt;
+</code>
+</pre>
+
+<p>Tag'en &lt;a&gt; indsætter en henvisning/link i teksten og hvis man klikker på indholdet af &lt;a&gt; vil man blive ført hen til det sted som står i href tag'en. I dette tilfælde tilbage til forsiden index.php.</p>
+
+<p>For at bibeholde designet har jeg valgt at gøre linket til en knap vedhjælp af &lt;button type="button"&gt;. På denne måde bliver knappen til linket.  </p>
+
+<h1>Miniprojekter</h1>
+
+<p>Du kan i disse opgaver genbruge dele af din kode, men det er vigtigt at du ikke overskriver din gamle kode. Derfor skal du gemme filerne i en ny mappe – og give dem mere forklarende navne.</p>
+
+<h2>Miniprojekt - additionstræner</h2>
+
+<p>Ændr koden, så man træner addition for tallene mellem 1 og 15?</p>
+
+<p><span class="bold">Hint!</span></p>
+
+<ul class="disc">
+	<li>Du skal ikke anvende koden fra den første side, men anvende mt_rand direkte i koden på den anden.</li>
+</ul>
+
+<h2>Miniprojekt - terningkast</h2>
+
+<p>Lav et program med terningkast der anvender henholdsvis 6, 12 og 20 sidede terninger og som har to navngivne spillere. Herunder er et billede af henholdsvis første og anden sideskift</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Side 1</th>
+			<th>Side 2</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>
+				<figure id="">
+				
+					<img src="images/terningkast_2spillere_s1.png" alt="" title="" />
+				
+					<figcaption>Side 1 i terningspil</figcaption>
+				
+				</figure>
+			</td>
+			<td>
+				<figure id="">
+				
+					<img src="images/terningkast_2spillere_s2.png" alt="" title="" />
+				
+					<figcaption>Side 2 i terningspil</figcaption>
+				
+				</figure>
+			
+			
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<p><span class="bold">Hint - første side</span></p>
+
+<ul class="disc">
+	<li>Du skal ikke anvende koden fra den første side, men anvende mt_rand direkte i koden på den anden.</li>
+</ul>
+
+<p><span class="bold">Hint - anden side</span></p>
+
+<ul class="disc">
+	<li>Du skal kunne adskille 3 muligheder for spillerne. De kan hver især vinde, men de kan også spille uafgjort. Det gøres ved at udvide if – else sætningen med en elseif</li>
+</ul>
+
+<p><span class="bold">Hint - genopfriskning af browservindue</span></p>
+
+<ul class="disc">
+	<li>Man kan altid genopfriske browseren ved at trykke på [F5].</li>
+</ul>
+
+<h2>Miniprojekt - Simpel login</h2>
+
+<p>Lav en hjemmeside med login, hvor brugeren/brugerne er sat som variabler i PHP-koden.</p>
+
+<p><span class="bold">Hint!</span></p>
+
+<ul class="disc">
+	<li>Sæt variabler på side 2 til et fast brugernavn og et fast password. Hvis brugeren har indtastet dem kommer han igennem. Hvis ikke bliver de vist hen til google.</li>
+</ul>
+
+
+
+<h2>Miniprojekt - binær oktet</h2>
+
+<p>Lav et program der tester om et input er en binær oktet.</p>
+
+<figure id="">
+
+	<img class="p40"  src="images/binary_octet.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p><span class="bold">Hint!</span></p>
+
+<ul class="disc">
+	<li>Ved at tage det samlede antal cifre og trække nuller og ettaller fra kan man se om det er binært. Hvis det giver 0 er tallet binært.</li>
+	<li>Brug strlen() til at tælle antallet af cifre.</li>
+	<li>Brug substr_count() til at tælle antallet af hvert ciffer</li>
+</ul>
+
+<h2>Miniprojekt - decimal-/binærkonverter</h2>
+
+<p>Lav nedestående program, der konvertere tal mellem det binære og det decimale talsystem:</p>
+
+<figure id="">
+
+	<img class="p40"  src="images/binary_calc.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p><span class="bold">Hint!</span></p>
+
+<ul class="disc">
+	<li>Brug if (isset) til at vise outputtet, sådan at brugeren kan indtaste et nyt tal med det samme</li>
+	<li>Brug decbin() til at konvertere fra decimal til binær og bindec() til at konvertere den anden vej.</li>
+</ul>
+
+<h2>Miniprojekt - IP-konverter</h2>
+
+<p>Lav et program der kan omskrive IP-adresser fra binær til decimal og modsat.</p>
+
+<figure id="">
+
+	<img class="p60" src="images/IP_converter_bin_dec.png" alt="" title="" />
+
+	<figcaption>IP-konverter</figcaption>
+
+</figure>
+
+<p><span class="bold">Hint!</span></p>
+
+<ul class="disc">
+	<li>Brug samme tilgang som ovenfor, men sørg for at tjekke tallet (if else), så det er gyldigt. De må ikke være mindre end 0, og den øvre grænse må ikke være større end 11111111 og 255 for henholdsvis den binære og den decimale værdi.</li>
+</ul>
+
+<h2>Projekt - Netmask validator</h2>
+
+<p>Du skal herunder lave en php-side der kan validere kode, samt give dig informationer om netværket.</p>
+
+<figure id="">
+
+	<img class="p40" src="images/netmask_validator.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+
+
+<h1>MySQL</h1>
+
+<p>Nogle gange har man brug for at have data liggende centralt. Det kan man gøre med en database. MySQL er en relationen database, hvor man kan oprette tabeller. Herunder skal vi lave en simpel loginprocedure ved hjælp af en MySQL database. En database bliver oprettet igennem 3 handlinger:</p>
+
+<ul class="disc">
+	<li>Oprettelse af databasen</li>
+	<li>Oprettelse af en tabel</li>
+	<li>Oprettelse af rækker i tabellen</li>
+</ul>
+
+<p>Alt dette kan gøres fra en kommandolinie, men vi vælger her at anvende phpMyAdmin, som er et GUI (Graphic User Interface) der kører i en browser.</p>
+
+<h2>Overblik over phpMyAdmin</h2>
+
+<p>Vi tilgår på adressen: <a href="http://127.0.0.1/phpmyadmin" target="_blank">http://127.0.0.1/phpmyadmin</a>. Normalt vil man blive mødt af et login, men XAMPP er sat op sådan at databasen er helt åben. Hvis du vil anvende XAMPP til andet end udvikling så skal dette ændres.</p>
+
+<figure id="">
+
+	<img src="images/MySQL_01_overblik_phpmyadmin.png" alt="" title="" />
+
+	<figcaption>Overblik over phpMyAdmin</figcaption>
+
+</figure>
+
+<p>Brugerfladen består af 3 områder:</p>
+
+<ul class="disc">
+	<li>Databaseoversigten (tv)</li>
+	<li>Menulinien (øverst)</li>
+	<li>Input området (resten)</li>
+</ul>
+
+<h2>Oprettelse af database og tabel</h2>
+
+<p>Databasen kan oprettes på to måder. Enten ved at klikke på ”Ny” i databaseoversigten eller på fanen ”Databaser” i menulinien. Kald databasen ”min_database” og sæt tegntabellen til ”utf8_danish_ci” og klik ”Opret”.</p>
+
+<figure id="">
+
+	<img class="p50"  src="images/MySQL_02_opret_database.png" alt="" title="" />
+
+	<figcaption>Oprettelse af database.</figcaption>
+
+</figure>
+
+<p>Herefter klikker du på din nyoprettede database i listen nedenfor (eller ude i databaseoversigten). Nu kan du oprette en tabel. Kald den ”login”, lav 3 kolonner og klik ”Udfør”</p>
+
+<figure id="">
+
+	<img class="p50"  src="images/MySQL_03_opret_tabel.png" alt="" title="" />
+
+	<figcaption>Oprettelse af tabel</figcaption>
+
+</figure>
+
+<h2>Oprettelse af kolonner i tabellen</h2>
+
+<p>Du skal nu oprette 3 kolonner med følgende værdier:</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Navn</th>
+			<th>Datatype</th>
+			<th>Længde/værdi</th>
+			<th>Attributter</th>
+			<th>Indeks</th>
+			<th>A_I</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>ID</td>
+			<td>INT</td>
+			<td>4</td>
+			<td>Unsigned</td>
+			<td>Primary</td>
+			<td>x</td>
+		</tr>
+		<tr>
+			<td>username</td>
+			<td>VARCHAR</td>
+			<td>65</td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>password</td>
+			<td>VARCHAR</td>
+			<td>65</td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+	</tbody>
+</table>
+
+<h3>Forklaring</h3>
+
+<table class="">
+	<thead>
+		<tr>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Navn</td>
+			<td>Kolonnens navn</td>
+		</tr>
+		<tr>
+			<td>Datatype</td>
+			<td>Tabellen skal kende datatypen. INT betyder tal og VARCHAR betyder forskellige slags tekst og tegn</td>
+		</tr>
+		<tr>
+			<td>Længde/værdi</td>
+			<td>Hvor mange tegn værdien må have</td>
+		</tr>
+		<tr>
+			<td>Attributter</td>
+			<td>UNSIGNED sørger for at ID ikke kan antage en negativ værdi.</td>
+		</tr>
+		<tr>
+			<td>Indeks</td>
+			<td>Alle tabeller skal have en PRIMARY kolonne. Hvis tabellen ikke har den kan man ikke redigere i den senere. </td>
+		</tr>
+		<tr>
+			<td>A_I</td>
+			<td>A_I står for ”Auto Increment”. På denne måde vil hver række automoatisk modtage et nyt nummer, og på denne måde vil hver ny bruger få et unikt nummer, der stiger med en hver gang.</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Vi skal ikke indstille tegnsættet med mindre en af tabellerne skal bruge en anden end den vi oprettede databasen med. Værdien er blevet nedarvet.</p>
+
+<p>Det sidste vi tilføjer er en tabelkommentar. Det er god skik at man dokumenterer det man laver. Skriv følgende i kommentarfeltet: ”Tabel med brugere og adgangskoder”. Herefter er tabellen oprettet i din database og er klar til indtastning.</p>
+
+<figure id="">
+
+	<img src="images/MySQL_04_indtast_i_tabel.png" alt="" title="" />
+
+	<figcaption>PHPmyAdmin med oprettet tabel</figcaption>
+
+</figure>
+
+<h2>Tilføj bruger til tabellen</h2>
+
+<p>Vi kan nu indsætte vores første bruger i tabellen. Klik på fanen ”Indsæt” i menuen eller ”indsæt” under handling.</p>
+
+<figure id="">
+
+	<img  class="p60" src="images/MySQL_05_indtast_i_tabel_2.png" alt="" title="" />
+
+	<figcaption>Indtast brugeren i tabellen</figcaption>
+
+</figure>
+
+<p>Indtast ”john” og ”1234” i username og password. Du skal ikke indtaste noget i ID, da MySQL selv  indsætter et tal. Tast ”Udskriv”</p>
+
+<p>Du har nu oprettet en database til brugernavne. Nu skal vi have lavet koden til at kunne logge ind ved hjælp af disse informationer.</p>
+
+<h1>Login kode</h1>
+
+<p>Til dette anvender vi to PHP sider: login.php og checklogin.php. Hvis brugeren findes bliver han sendt videre til www.google.com, eller får han lov til at prøve igen.</p>
+
+<h2>Første side: login.php</h2>
+
+<p>På denne side opretter vi en formular så vi kan indtaste brugernavn og password. For en uddybende forklaring se afsnit 3.4</p>
+
+<pre>
+	<code class="html">
+&lt;meta charset="UTF-8" lang="da"/&gt;<br />
+&lt;h1&gt;Login&lt;/h1&gt;<br />
+&lt;form action="checklogin.php" method="POST" &gt;<br />
+Brugernavn:&lt;input  type="text" name="username" autofocus required /&gt; &lt;br&gt; <br />
+Adgangskode: &lt;input type="text" name="password" required /&gt; &lt;br&gt; <br />
+&lt;input type="submit" name="submit" /&gt;<br />
+&lt;/form&gt;	
+	</code>
+</pre>
+
+<p>Læg mærke til at vi bruger POST her, da det drejer sig om brugernavn og password.</p>
+
+<figure id="">
+
+	<img class="p30"  src="images/MySQL_login.png" alt="" title="" />
+
+	<figcaption>Simpel loginside</figcaption>
+
+</figure>
+
+<h2>Anden side: checklogin.php</h2>
+
+<p>På den anden side skal vi udføre følgende:</p>
+
+<ul class="disc">
+	<li>Modtager brugernavn og password fra login.php</li>
+	<li>Oprette en forbindelse til databasen</li>
+	<li>Indlæse login tabellen</li>
+	<li>Undersøge om der er en række der indeholder brugernavn og adgangskode</li>
+	<li>Hvis ja – send til loginsucces</li>
+	<li>Hvis nej - afvis login</li>
+</ul>
+
+<h3>Modtage data fra login.php og oprette diverse variablerne</h3>
+
+<p>Før vi går i gang med med at skabe forbindelse til databasen opretter vi variabler til det vi skal bruge. Udover brugernavnet og adgangskoden har PHP brug får at vide diverse informationer om databasen. De kan læses i koden herunder</p>
+
+<pre>
+	<code class="php">
+//brugerens navn og adgangskode<br />
+$username = $_POST["username"]; <br />
+$password = $_POST["password"]; <br />
+$db_host="127.0.0.1"; // MySQL databasens IP-adresse<br />
+$db_username="root"; // MySQL databasens brugernavn<br />
+$db_password=""; // Mysql databasens adgangskode<br />
+$db_name="min_database"; // Databasens navn<br />
+$tbl_name="login"; // Tabellens navn	
+	</code>
+</pre>
+
+<h3>Oprette forbindelse til MySQL databasen</h3>
+
+<p>Til at oprette forbindelse til og arbejde med en mysql database har PHP en række kommandokald der alle sammen begynder med mysqli. Kommandoen vi skal bruge hedder  mysqli_connect. Indtast følgende på en linie:</p>
+
+<pre>
+	<code class="php">
+$con=mysqli_connect( $db_host , $db_username , $db_password , $db_name ) 
+or die ("Forbindelse ikke etableret");	
+	</code>
+</pre>
+
+<p>Du kan tjekke om forbindelsen virker ved at ændre i f.eks. db_username. Så kommer fejlmeddelelsen ”Forbindelse ikke etableret”.</p>
+
+<h3>Indlæs logintabellen</h3>
+
+<p>Her skal vi lave en databaseforspørgsel og det gør vi ved at anvende MySQL's kommandoer: SELECT, FROM og WHERE. Selve forspørgslen ser ud som følger</p>
+
+<pre>
+	<code class="mysql">
+SELECT * FROM $tbl_name WHERE username='$username' and password='$password'	
+	</code>
+</pre>
+
+<p>Herunder er de 3 dele forklaret</p>
+
+<pre><code class="mysql">SELECT *</code></pre>
+
+<p>Vælg alt. Stjernen er en asterisk og der kan stå alt i stedet for en stjerne.</p>
+
+<pre><code class="mysql">FROM $tbl_name</code></pre>
+
+<p>... fra <span class="inl_cmd">$table_name</span> -  i dette tilfælde login</p>
+
+<pre><code class="mysql">WHERE username='$username' and password='$password'</code></pre>
+
+<p>Hvor brugernavn og password står i samme linie.</p>
+
+
+<p>Vi indsætter den i koden som som variablen $sql.</p>
+
+<pre>
+	<code class="mysql">
+$sql = "SELECT * FROM $tbl_name WHERE username='$username' and password='$password'";
+	</code>
+</pre>
+
+<p>Læg mærke til at der kun er sat ' omkring @username og $password. Det skyldes at citations/udråbstegnene der skal stå om hele udtrykket ellers vil blive brudt.</p>
+
+<h3>Undersøg om brugeren findes</h3>
+
+<p>Vi undersøger databasen ved at tælle antallet af rækker der opfylder vores betingelse – altså hvor både brugernavn og adgangskode står i samme række. Vi ved jo at det gælder for ”john” og ”1234”. Først undersøger vi tabellen med vores SQL forspørgsel:</p>
+
+<pre>
+	<code class="mysql">
+$result=mysqli_query($con,$sql);
+	</code>
+</pre>
+
+<p>og herefter tæller vi antallet af rækker der opfylder betingelsen</p>
+
+<pre>
+	<code class="mysql">
+$count=mysqli_num_rows($result);
+	</code>
+</pre>
+
+<p>Hvis brugeren findes er variablen $count = 1, så nu kan vi anvende en simpel if else.</p>
+
+<pre>
+	<code class="php">
+if($count==1){<br />
+	echo "&lt;h1&gt;Du bliver nu logget ind.&lt;/h1&gt;";<br />
+	echo "&lt;META http-equiv='REFRESH' content='2; url=http://google.com'&gt;";<br />
+	}	<br />
+else {<br />
+	echo "&lt;h1&gt;Prøv igen&lt;/h1&gt;";<br />
+	echo "&lt;META http-equiv='REFRESH' content='2; url=login.php'&gt;";<br />
+	}	
+	</code>
+</pre>
+
+<h3>Den samlede kode - checklogin.pphp</h3>
+
+<pre>
+	<code class="html">
+&lt;meta charset="UTF-8" lang="da"/&gt;<br />
+&lt;?php<br />
+//brugerens navn og adgangskode<br />
+$username = $_POST["username"]; <br />
+$password = $_POST["password"]; <br />
+$db_host="127.0.0.1"; // MySQL databasens IP-adresse<br />
+$db_username="root"; // MySQL databasens brugernavn<br />
+$db_password=""; // Mysql databasens adgangskode<br />
+$db_name="min_database"; // Databasens navn<br />
+$tbl_name="login"; // Tabellens navn<br />
+<br />
+$con=mysqli_connect( $db_host , $db_username , $db_password , $db_name ) 
+	or die ("Forbindelse ikke etableret");<br />
+<br />
+$sql = "SELECT * FROM $tbl_name WHERE username='$username' and password='$password'";<br />
+<br />
+$result=mysqli_query($con,$sql);<br />
+$count=mysqli_num_rows($result);<br />
+<br />
+if($count==1){<br />
+	echo "&lt;h1&gt;Du bliver nu logget ind.&lt;/h1&gt;";<br />
+	echo "&lt;META http-equiv='REFRESH' content='2; url=http://google.com'&gt;";<br />
+	}	<br />
+else {<br />
+	echo "&lt;h1&gt;Prøv igen&lt;/h1&gt;";<br />
+	echo "&lt;META http-equiv='REFRESH' content='2; url=login.php'&gt;";<br />
+	}<br />
+?&gt;	
+	</code>
+</pre>
+
+<h1>Gode websites</h1>
+
+<p><a href="http://www.johnnihowardsen.dk/" target="_blank">http://www.johnnihowardsen.dk/</a></p>
+
+<p><a href="http://www.w3schools.com/php/" target="_blank">http://www.w3schools.com/php/</a></p>
+
+<p><a href="http://php.net/" target="_blank">http://php.net/</a></p>
+
+<p><a href="http://www.w3schools.com/tags/" target="_blank">http://www.w3schools.com/tags/</a></p>	
+	
+	
+	
+</div><!-- end: col-md-9 -->
+
+<footer>
+
+	<p><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons licens" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>Indholdet på Vidas.dk er licenseret under <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> og er skrevet af Thomas Jensen. (<a href="../hvem_er_jeg.html" target="_blank">Læs mere</a>)</p>
+
+</footer>
+	
+	
+</div><!-- end: row-fluid -->
+
+</div> <!-- end: container-fluid -->
+
+
+<!-- SCRIPT SECTION -->
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script type="text/javascript" src="../js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="../js/jquery.tocify.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+
+<!-- PRETTYFY-->
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+
+
+<!-- HIGHLIGHT -->
+	<script src="../js/highlight.pack.js" type="text/javascript"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+
+<!-- MATHJAX -->
+<script type="text/javascript" async 		src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+		MathJax.Hub.Config({ jax: ["input/TeX","output/HTML-CSS"], displayAlign: "left"	});
+</script>
+<!-- TOCIFY -->
+<script>
+	$(function() {var toc = $("#toc").tocify({ selectors: "h1, h2, h3, h4" }).data("toc-tocify"); });
+</script>
+<!-- GOOGLE ANALYTICS -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-89933285-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</body>
+</html>
