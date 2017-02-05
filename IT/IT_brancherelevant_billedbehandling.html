@@ -130,6 +130,7 @@
 
 <ul class="disc">
 	<li>Små detaljer er meget vigtige</li>
+	<li>Du skal bruge transparent baggrund</li>
 	<li>Billedets detaljer ikke skal ødelægges af komprimering</li>
 	<li>Det ikke er det endelige billede (der skal laves mere ved billedet)</li>
 	<li>Det er en grafisk illustration</li>
@@ -151,6 +152,278 @@
 <h2>Første opstart</h2>
 
 <p>Første gang man starter GIMP op, åbner det i 3 seperate vinduer. Ændr dette til et vindue ved at vælge <span class="inl_cmd">Vinduer</span>&#8594;<span class="inl_cmd">Tilstand med ét vindue</span>.</p>
+
+<h2>Overblik over GIMP'en'</h2>
+
+<p>Gimpens brugerflade består af 4 områder:</p>
+
+<ol class="">
+	<li>Værktøjsmenu</li>
+	<li>Værktøjsindstillinger</li>
+	<li>Arbejdsbord</li>
+	<li>Faneblade (ekstra funktionalitet)</li>
+</ol>
+
+<figure id="">
+
+	<img class="p90" src="images/gimp_overblik.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h2>Gemme billeder</h2>
+
+<p>Som standard så gemmer GIMP'en billederne i det format de er blevet åbnet i. Men hvis vi arbejder med et billede og gerne vil beholde alle de indstilliger vi har anvendt (f.eks. lag), så skal man anvende <span class="inl_cmd">xcf</span> (e<b>X</b>perimental <b>C</b>omputing <b>F</b>acility), som er GIMP'ens eget filformat. Vil man gemme billedet i et andet format skal man <span class="inl_cmd">eksportere</span> billeder. Se nedestående tabel.</p>
+
+<p>For at gemme et billede</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Gemme metode</th>
+			<th>Menu</th>
+			<th>Genvej</th>
+			<th>Genvej Mac</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Gem</td>
+			<td>fil &#8594; Gem </td>
+			<td><kbd>Ctrl</kbd>+<kbd>s</kbd></td>
+			<td><kbd>cmd</kbd>+<kbd>s</kbd></td>
+		</tr>
+		<tr>
+			<td>Gem som</td>
+			<td>fil &#8594; Gem som </td>
+			<td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>s</kbd></td>
+			<td><kbd>cmd</kbd>+<kbd>Shift</kbd>+<kbd>s</kbd></td>
+		</tr>
+		<tr>
+			<td>Eksporter</td>
+			<td>fil &#8594; Eksporter </td>
+			<td><kbd>Ctrl</kbd>+<kbd>e</kbd></td>
+			<td><kbd>cmd</kbd>+<kbd>e</kbd></td>
+		</tr>
+		<tr>
+			<td>Gem som</td>
+			<td>fil &#8594; Eksporter som </td>
+			<td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>e</kbd></td>
+			<td><kbd>cmd</kbd>+<kbd>Shift</kbd>+<kbd>e</kbd></td>
+		</tr>
+	</tbody>
+</table>
+
+<h2>Vigtige værktøjer</h2>
+
+<p>Her vil du blive introduceret til 8 centrale værktøjer til efterbehandling af billeder. Der vil ikke blive gået i dybden med det enkelte værktøj, men sådan at det kan bruges simpelt og effektivt. Ved mange af værktøjerne kan man vælge graden eller omfanget af effekten ved hjælp af en <span class="inl_cmd">skyder</span>. Man kan justere skyderen på 3 måder:</p>
+
+<ul class="disc">
+	<li>Med rulleknappen på musen</li>
+	<li>Ved at klikke på værdien og indtaste en ny</li>
+	<li>Ved at trække med musen</li>
+</ul>
+
+<p>Man kan trække med musen på to måder. Holder man musen i den øverste halvdel af skyderen (En lodret pil) justerer man værdien efter musens position på skalaen. Hvis man holder musen i den nederste halvdel kan man finjustere værdien.</p>
+
+
+
+
+<h3>Markering</h3>
+
+<p><b>Ikon: </b><img class="" src="images/gimp_markeringsvaerktoej_ikon.png" alt="" title="" /></p>
+
+<p><b>Genvejstast: </b><kbd>u</kbd></p>
+
+<p>Markeringsværktøjet bruges til at områder på billedet der har samme farvenuance. Det kan f.eks. være en blå himmel, som man gerne vil ændre noget ved.</p>
+
+<span class="afsnit">Værktøjsindstillingerne</span>
+
+<figure id="">
+
+	<img class="p45" src="images/gimp_markeringsvaerktoej_indstillinger.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Ved at justere på <span class="inl_cmd">Tærskel</span>-værdien ændrer man hvor mange farvenuancer der skal markeres. Jo mere præcis man vil gøre det - jo lavere skal den være. Hvis man ønsker at tilføje nogle flere områder til sin udvælgelse holder man <kbd>Shift</kbd> nede samtidig med at man klikker. Så bliver de nye områder tilføjet.</p>
+
+
+<h3>Beskæring - Crop</h3>
+
+<p><b>Ikon: </b><img class="" src="images/gimp_beskaeringsvaerktoej_ikon.png" alt="" title="" /></p>
+
+<p><b>Genvejstast: </b><kbd>Shift</kbd>+<kbd>c</kbd> (crop)</p>
+
+<p>Beskæringsværktøjet bruges til at tilrette et billede så de rigtige ting kommer i fokus. Når man anvender værktøjet får bliver det fravalgte område udtonet, så man kan se det færdige resulatet. Når man er tilfreds med resultatet klikker men på feltet eller trykker <kbd>Enter</kbd>.</p>
+
+<span class="afsnit">Værktøjsindstillingerne</span>
+
+<figure id="">
+
+	<img class="p45" src="images/gimp_beskaeringsvaerktoej_indstillinger.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>I denne fane er der to indstillinger der er interessante: Beskæring med fast forhold og hjælpelinier</p>
+
+<p><b>Fast beskæringsforhold</b></p>
+
+<p>Nogle gange har man brug for at en billede skal have en vis bredde eller højde - eller at der skal være et konkret forhold mellem bredde og højde. Ved fast bredde og højde angives værdien i pixels. Når man angiver et forhold skal det gøres ved hjælp af <span class="inl_cmd">:</span> (kolon). Skal siderne være lige lange skriver man f.eks. <span class="math">\( 1:1 \)</span>. hvis det skal være til en computerskærm kan det være <span class="math">\( 1920:1080 \)</span>. Herefter vil den boks man trækker være i det forhold.</p>
+
+<p><b>VIGTIGT: </b>Generelt er det en god ide, at give billedet flere pixels end angivet. Computeren vil selv tilpasse billedet korrekt, blot det har de rette forhold.</p>
+
+<p><b>Hjælpelinier</b></p>
+
+<p>For at hjælpe en med at lave en god beskæring kan man anvende hjælpelinier. De to mest anvendelige er <span class="inl_cmd">centerlinier</span> og <span class="inl_cmd">Gyldne snit</span>.</p>
+
+<table class="centreret">
+	<thead>
+		<tr>
+			<th>Centerlinier</th>
+			<th>Gyldne snit</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><p></p>
+				<img class="" src="images/gimp_beskaer_hjaelpellinier_centerlinier.png" alt="" title="" />
+			</td>
+			<td><p></p>
+				<img class="" src="images/gimp_beskaer_hjaelpellinier_gylden_snit.png" alt="" title="" />
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Med mindre noget skal stå centreret bør linierne i et billede følge det gyldne snits linier
+, da det er naturligt for os at "læse" billeder på den måde.</p>
+
+<h3>Rotering</h3>
+
+<p><b>Ikon: </b><img class="" src="images/gimp_roteringsvaerktoej_ikon.png" alt="" title="" /></p>
+
+<p><b>Genvejstast: </b><kbd>Shift</kbd>+<kbd>r</kbd></p>
+
+<p>Roteringsværktøjet bruges f.eks. til at finjustere hældningen på et billede. Det kan f.eks. være hvis horisonten på et landskabsbillede er lidt skæv. Ved at holde <kbd>Ctrl</kbd> nede rotere billedet med 15&deg; af gangen.</p>
+
+<p>Når man har roteret et billede kan man være ude for at billedet går udenfor laget. Dette retter man ved at <span class="inl_cmd">Højreklikke</span> og vælge <span class="inl_cmd">Billede</span>&#8594;<span class="inl_cmd">Tilpas lærred til lag</span>.</p>
+
+
+
+
+<span class="afsnit">Værktøjsindstillingerne</span>
+
+<p>Ingen relevante indstillinger til dette.</p>
+
+<h3>Kloning</h3>
+
+<p><b>Ikon: </b><img class="" src="images/gimp_kloningsvaerktoej_ikon.png" alt="" title="" /></p>
+
+<p><b>Genvejstast: </b><kbd>c</kbd></p>
+
+<p>Kloningsværktøjet anvendes hvis man vil erstatte noget på et billede med noget fra et andet sted. Det kan f.eks. være en en ledning man vil fjerne fra et gulvtæppe, eller en lampe man vil kopiere. Man vælger det man vil kopiere ved at sætte musen over det og venstreklikke mens man holder <kbd>Ctrl</kbd> nede. Herefter kan man "tegne" med det forvalgte område ved hjælp af musen.</p>
+
+<span class="afsnit">Værktøjsindstillingerne</span>
+
+<figure id="">
+
+	<img class="p45" src="images/gimp_kloningsvaerktoej_indstillinger.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>I denne fane er der tre indstillinger der er interessante: Pensel, størrelse og opacitet</p>
+
+<p><b>Pensel</b></p>
+
+<p>Når man arbejder med <span class="inl_cmd">tegnefunktioner</span> i GIMP'en anvender man pensler. penslerne beskriver hvordan man tegner med den effekt man har valgt. Her vil jeg gennemgå de 4 pensler jeg anvender mest - de cirkulære.</p>
+
+<figure id="">
+
+	<img class="p50" src="images/gimp_4_pensler.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Forskellen mellem dem er måden kanten på penslen fungerer. Ved den første vil kun det midsterste blive tegnet skarpt og det vil blive udtonet jo længere væk fra centrum man kommer.Ved den sidste (helt sorte cirkel) tegnes der skarpt i hele feltet.</p>
+
+<p><b>Størrelse</b></p>
+
+<p>I dette felt angives størrelsen på feltet.</p>
+
+
+<p><b>Opacitet (gennemsigtughed)</b></p>
+
+<p>Opaciteten styrer hvor meget af det oprindelige felt der tegnes. 100% betyder 100% aftegning og 0% ingenting. Dette kan anvendes hvis man gerne vil have teksturen fra det oprindelige til at blive gentaget, men at man samtidig vil beholde den lokale tekstur. Ved at sætte opaciteten lav (f.eks. 60%) vil man kunne lave en god blanding af områderne</p>
+
+
+<h3>Reparation - Heal</h3>
+
+<p><b>Ikon: </b><img class="" src="images/gimp_reparationsvaerktoej_ikon.png" alt="" title="" /></p>
+
+<p><b>Genvejstast: </b><kbd>h</kbd> (heal)</p>
+
+<p>Reperationsværktøjet minder på mange måder om kloningsværktøjet. Forskellen mellem dem er, at reperationsværktøjet forsøger at lave en kombination af det udvalgte område (vælges med museklik og <kbd>Ctrl</kbd>) og målområdet ved hjælp af matematiske beregninger. På denne måde får man en kombination af de to områder. Reparationsværktøjet kræver en del mere computerkræfter end kloningsværktøjet, men kan lave rigtig gode sammenblandinger. Dette er en fordel hvis man f.eks. ønsker at reparere områder med ustruktureret tekstur f.eks. hud, jord, blade osv.</p>
+
+<span class="afsnit">Værktøjsindstillingerne</span>
+
+<p>Reparationsværktøjet anvender de samme indstillinger som kloning.</p>
+
+<h3>Sløring/skarphed</h3>
+
+<p><b>Ikon: </b><img class="" src="images/gimp_sloerings_skarphedsvaerktoej_ikon.png" alt="" title="" /></p>
+
+<p><b>Genvejstast: </b><kbd>Shift</kbd>+<kbd>u</kbd></p>
+
+<p>Slørings- og skarphedsværktøjet (Blur/sharpen) anvendes til at enten at sløre eller gøre detaljer skarpere. Værktøjet anvendes f.eks. til at udglatte hud (sløring), eller at gøre detaljer skarpere (skarphed). Når man bare bruger funktionen laver den sløring, men hvis man gerne vil gøre ting skarpere holder man <kbd>Ctrl</kbd> nede samtidig.</p>
+
+<span class="afsnit">Værktøjsindstillingerne</span>
+
+<p>Sløring/skarphed anvender samme indstillinger som kloning og reparation, men har udover også en indstilling for <span class="inl_cmd">hastighed (rate)</span> som beskriver hvor stærk effekten skal være. </p>
+
+
+<h3>Lysne/brænde</h3>
+
+<p><b>Ikon: </b><img class="" src="images/gimp_lysne_braende_vaerktoej_ikon.png" alt="" title="" /></p>
+
+<p><b>Genvejstast: </b><kbd>Shift</kbd>+<kbd>d</kbd></p>
+
+<p>Lysne- og brændeeffekten anvendes til enten at lysne eller mørkne (<kbd>Ctrl</kbd>) områder man tegner på. Det kan f.eks. anvendes til at gøre skyggeområder lysere eller mørkere.</p>
+
+<span class="afsnit">Værktøjsindstillingerne</span>
+
+<p>Lysne- og brændeværktøjet anvender samme indstillinger som ovenfor, men har herudover også en indstilling for <span class="inl_cmd">virkningsgrad</span> som beskriver hvor stærk effekten skal være.</p>
+
+
+<h3>Niveauer - Levels</h3>
+
+<p><b>Menu: </b><span class="inl_cmd">Højreklik</span>&#8594;<span class="inl_cmd">Farver</span>&#8594;<span class="inl_cmd">Niveauer</span>.</p>
+
+<p><b>Genvejstast: </b>Desværre ingen :|</p>
+
+<p>Dette er en funktion som i nogle tilfælde kan gøre underværker ved billeder. Funktionen kan være svær at forstå, men det man gør er at flytte på hvad computeren skal tolke som sort og hvid. Det betyder at billeder kan få en bedre kontrast. Lad os prøve at kigge på et eksempel:</p>
+
+<p>Herunder er menuen for niveauer åbnet på et billede, og det man ser er en graf (kaldet et histogram), der beskriver hvilke farveniveauer fra sort (tv) til hvid (th) der er i billedet. I dette billede kan vi se at der næsten ikke er nogle sorte farver, men masser af farver i mellemområdet. </p>
+
+<figure id="">
+
+	<img class="p60" src="images/gimp_niveauer.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Det betyder at de mørke farver der er i billedet vil blive vist som grålige farver. Ved at flytte skyderen under de mørke farver. På den måde vil de grå farver blive helt mørke. Billedet vil få mere kontrast og virke mere "klar". </p>
+
+
+
 
 <h1>Inkscape</h1>	
 	
