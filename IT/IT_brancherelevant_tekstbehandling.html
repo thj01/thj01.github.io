@@ -116,7 +116,108 @@
 
 <h1>Sektioner</h1>
 
-<p>Hvis man vil have at ens tekstbehandler skal have forskellig grundopsætning på forskellige sider, skal man opdele sit dokument i sektioner. Når det er opdelt i sektioner kan man f.eks. ændre en enkelt side til at være liggende eller man kan starte sidenummereringen forfra.</p>
+<p>Hvis man vil have at nogle sider i ens dokument skal have forskellig sidedesign på forskellige sider, skal man opdele sit dokument i sektioner. Når det er opdelt i sektioner kan man f.eks. ændre sideorrienteringen eller have forskellige sidehoveder forskellige steder i dokumentet.</p>
+
+<p>Det gælder f.eks:</p>
+
+<ul class="disc">
+	<li>Hvis man vil lægge en enkelt side ned</li>
+	<li>Hvis man vil fjerne eller ændre sidehoveder i ens dokumenter</li>
+	<li>Hvis man vil have at ens sidetal skal starte forfra efter indholdsfortegnelsen.</li>
+</ul>
+
+<p>Hver gang der skal ændres i en sides opsætning skal siden være i en ny sektion. Det betyder at man skal indsætte et sektionsskifte både før og efter den/de sider man vil ændre design på</p>
+
+<h2>Opret sektioner</h2>
+
+<p>Sektioner oprettes ved at at gå til <span class="inl_cmd">Layout</span>&#8594;<span class="inl_cmd">Sideopsætning</span>&#8594;<span class="inl_cmd">Skift</span>. Grundlæggende anvendes 2 typer: </p>
+
+<ul class="disc">
+	<li>Næste side - indsætter en ny side efter sektionsskifte (anvendes i skriveprocessen)</li>
+	<li>Fortløbende - Indsætter sektionsskifte hvor cursoren er placeret (anvendes når noget skal ændres)</li>
+</ul>
+
+<p><b>NOTE: </b>Vær opmærksom på, at hvis man allerede har indsat et tvunget sideskift vil dette blive flyttet over på næste side. Man skal manuelt fjerne denne side!</p>
+
+<figure id="">
+
+	<img class="p45" src="images/word_indsaet_sektion.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h2>Ændre sidehoved/fod</h2>
+
+<p>For at have forskellige sidehoveder (eller fjerne dem) i forskellige sektioner skal de "kobles" fra hinanden.</p>
+
+<p>For at oprette et sidehovede og/eller sidefod skal du gå til <span class="inl_cmd">Indsæt</span>&#8594;<span class="inl_cmd">sidehoved og sidefod</span>. </p>
+
+<span class="afsnit">Eksempel - fjerne sidehoveder</span>
+
+<p>Her vil vi fjerne sidehovederne fra titelsiden og indholdsfortegnelsen. Det gøres ved at fjerne bindingen mellem sidehovederne i de forskellige sektioner</p>
+
+<ol class="">
+	<li>Indsæt sektionsskifte den sidste side hvor sidehovedet skal fjernes (indholdsfortegnelsen)</li>
+	<li>Dobbeltklik på sidehovedet på den efterfølgende side (den første side sidehovedet skal være på)</li>
+	<li>Dobbeltklik på <span class="inl_cmd">Sammenkæd med forrige</span></li>
+</ol>
+
+<figure id="">
+
+	<img class="p45" src="images/Word_fjern_sammenkaedning_sidehovede.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<ol class="" start="4">
+	<li>Vælg <button type="">Nej</button> (Dialogboksen er meget knudret formuleret, hvis den overhovede giver mening?)</li>
+</ol>
+
+<figure id="">
+
+	<img class="p45" src="images/Word_fjern_sammenkaedning_sidehoved_dialogbox_nej.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<ol class="" start="5">
+	<li>Fjern sidehovedet på de første sider.</li>
+	<li>Done!</li>
+</ol>
+
+<h2>Starte sidetal fra 1</h2>
+
+<ol class="">
+	<li>Dobbeltklik på sidetallet i sidehovedet.</li>
+	<li>Højreklik og vælg <span class="inl_cmd">Formater sidetal</span></li>
+	<li>Vælg <span class="inl_cmd">Begynd med</span> og skriv værdien <span class="inl_cmd">1</span></li>
+</ol>
+
+<figure id="">
+
+	<img class="p45" src="images/Word_aendr_startsidetal_i_sidehovede.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<ol class="" start="4">
+	<li>Opdater indholdsfortegnelsen</li>
+	<li>Done!</li>
+</ol>
+
+
+<h2>Vær opmærksom på</h2>
+
+<ul class="none">
+	<li>Når man arbejder med dette kan man få mystiske resultater ud af sin formatering</li>
+	<li>Hvis man lægger en side ned ændrer formateringen sig. Ændr det tilbage ved at klikke på det berørte sidehovede og vælg sidehovedskabelonen en gang til.</li>
+</ul>
+
+
 
 <p><b>Guide: </b><a href="https://support.office.com/da-dk/article/Inds%C3%A6tte-sektionsskift-eef20fd8-e38c-4ba6-a027-e503bdf8375c#ID0EAABAAA=2016,_2013" target="_blank">Indsætte sektionsskift (generelt)</a></p>
 
@@ -165,10 +266,6 @@
 
 </figure>
 -->
-
-<h1>Indsætte billeder</h1>
-
-<p></p>
 
 <h1>Brevfletning</h1>
 

@@ -202,13 +202,13 @@ $$</div>
 
 <p><span class="math">\( A_n \)</span> beskriver det beløb der står på en konto efter en ydelse er blevet indbetalt i <span class="math">\( n \)</span> terminer og <span class="math">\( A_0 \)</span> beskriver det tidspunkt hvor et lån går i nul.</p>
 
-<h2>Fremtidsværdien: <span class="math">\( A_n \)</span></h2>
+<h2>Fremtidsværdien</h2>
 
 <p>Formlen for <span class="math">\( A_n \)</span> er:</p>
 
 <div class="latex">$$ A_n = y \cdot \frac{(1+r)^n - 1}{r} $$</div>
 
-<span class="afsnit">Udledning af formlen</span>
+<h3>Udledning af formlen</h3>
 
 <p>For at få et overblik overformlen laver vi følgende skema:</p>
 
@@ -253,27 +253,69 @@ $$</div>
 
 <p>Derfor har vi nu et udtryk for hvad der sker i den enkelte termin. For at finde en formel vil vi skrive ned hvordan den endelige ydelse vil være, og vi gør det baglæns. Dvs:</p>
 
-<div class="latex">$$ A_n = y + y \cdot (1+r)^1 + ... + y \cdot (1+r)^{n-1} $$</div>
+<table class="">
+	<tbody>
+		<tr>
+			<td rowspan="2">Termin</td>
+			<td><span class="math">\( n \)</span></td>
+			<td><span class="math">\( n-1 \)</span></td>
+			<td><span class="math">\( ... \)</span></td>
+			<td><span class="math">\( 2 \)</span></td>
+			<td><span class="math">\( 1 \)</span></td>
+			<td><span class="math">\( 0 \)</span></td>
+		</tr>
+		<tr>
+			<td><span class="math">\( A_n \)</span></td>
+			<td><span class="math">\( A_{n-1} \)</span></td>
+			<td><span class="math">\( A_x \)</span></td>
+			<td><span class="math">\( A_2 \)</span></td>
+			<td><span class="math">\( A_1 \)</span></td>
+			<td><span class="math">\( A_0 \)</span></td>
+		</tr>
+		<tr>
+			<td>Ydelse</td>
+			<td><span class="math">\( y \)</span></td>
+			<td><span class="math">\( y \)</span></td>
+			<td><span class="math">\( y \)</span></td>
+			<td><span class="math">\( y \)</span></td>
+			<td><span class="math">\( y \)</span></td>
+			<td><span class="math">\( ingen \)</span></td>
+		</tr>
+		<tr>
+			<td>antal terminers rente</td>
+			<td><span class="math">\( 0 \)</span></td>
+			<td><span class="math">\( 1 \)</span></td>
+			<td><span class="math">\( x \)</span></td>
+			<td><span class="math">\( n-2 \)</span></td>
+			<td><span class="math">\( n-1 \)</span></td>
+			<td><span class="math">\( ... \)</span></td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Da vi kender formlen for rentes regning kan vi anvende den til at finde det endelige beløb ved at addere hver termin :</p>
+
+<div class="latex">$$ A_n = y + y \cdot (1+r)^1 + y \cdot (1+r)^2... + y \cdot (1+r)^{n-2} + y \cdot (1+r)^{n-1} $$</div>
 
 <p>Grunden til at sidste led er <span class="math">\( n-1 \)</span> er, at der i den <span class="inl_cmd">n'te</span> termin ikke er påløbet nogen rente. For at få overblik erstatter vi <span class="math">\( (1+r) \)</span> med <span class="math">\( a \)</span>:</p>
 
-<div class="latex">$$ A_n = y + y \cdot a^1 + ... + y \cdot a^{n-1} $$</div>
+<div class="latex">$$ A_n = y + y \cdot a^1 + y \cdot a^2 ... + y \cdot a^{n-2} + y \cdot a^{n-1} $$</div>
 
 <p><span class="math">\( y \)</span> sættes uden for parantes:</p>
 
-<div class="latex">$$ A_n = y \cdot (1+a+...+a^{n-1}) $$</div>
+<div class="latex">$$ A_n = y \cdot (1+a^1+a^2...+a^{n-2}+a^{n-1}) $$</div>
 
 <p>For at komme videre laver vi et lille "trick". Vi ganger og dividerer med <span class="math">\( a-1 \)</span>:</p>
 
-<div class="latex">$$ A_n = y \cdot \frac{(1+a+...+a^{n-1}) \cdot (a-1)}{a-1}	 $$</div>
+<div class="latex">$$ A_n = y \cdot \frac{(1+a+a^2...+a^{n-2}+a^{n-1}) \cdot (a-1)}{a-1}	 $$</div>
 
 <p>Gang paranteserne i tælleren sammen:</p>
 
-<div class="latex">$$ A_n = y \cdot \frac{a+a^2+...+a^n- 1 \cdot (1+a+...+a^{n-1})}{a-1}	 $$</div>
+<div class="latex">$$ A_n = y \cdot \frac{a+a^2+a^3...+a^{n-1}+a^n- 1 \cdot (1+a+...+a^{n-2}+a^{n-1})}  {a-1}	 $$</div>
 
 <p>Gang ind i den sidste parantes:</p>
 
-<div class="latex">$$ A_n = y \cdot \frac{a+a^2+...+a^n- 1 -a-...-a^{n-1})}{a-1}	 $$</div>
+<div class="latex">$$ A_n = y \cdot \frac{a+a^2+a^3...+a^{n-1}+a^n- 1 -a-a^2-...-a^{n-2}-a^{n-1}}{a-1}	 $$</div>
 
 <p>Forkort:</p>
 
@@ -289,15 +331,15 @@ $$</div>
 
 <p>Hermed er beviset gennemført.</p>
 
-<h2>Nutidsværdien (<span class="math">\( A_0 \)</span>)</h2>
+<h2>Nutidsværdien</h2>
 
 <p>Formlen for <span class="math">\( A_0 \)</span> er:</p>
 
 <div class="latex">$$ A_0 = y \cdot \frac{1-(1+r)^{-n}}{r} $$</div>
 
-<span class="afsnit">Udledning af formlen</span>
+<h3>Udledning af formlen</h3>
 
-<p>For at få et overblik overformlen laver vi følgende skema:</p>
+<p>For at få et overblik over formlen laver vi følgende skema:</p>
 
 <table class="">
 	<tbody>
@@ -358,13 +400,13 @@ $$</div>
 
 <p>Hermed er beviset gennemført.</p>
 
-<h2>Ydelsen ( <span class="math">\( y \)</span> )</h2>
+<h2>Ydelsen </h2>
 
 <p>Formlen til at finde ydelsen er:</p>
 
 <div class="latex">$$ y = A_0 \cdot \frac{ 1 }{ 1-(1+r)^{-n}}   $$</div>
 
-<span class="afsnit">Udledning af formlen</span>
+<h3>Udledning af formlen</h3>
 
 <div class="latex">$$ 
 
@@ -389,13 +431,13 @@ y = A_0 \cdot  \frac{ r }{ 1 - (1+r)^{-n} }
 
 
 
-<h2>Antal terminer ( <span class="math">\( n \)</span>)</h2>
+<h2>Antal terminer</h2>
 
 <p>Formlen til at finde antal terminer er:</p>
 
 <div class="latex">$$ n = \frac {  ln \left(  1 - \frac{ A_0 \cdot r  } {  y }   \right) } { ln(1+r)  } $$</div>
 
-<span class="afsnit">Udledning af formlen</span>
+<h3>Udledning af formlen</h3>
 
 <div class="latex">$$ 
 
