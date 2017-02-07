@@ -295,27 +295,27 @@ $$</div>
 
 <p>Da vi kender formlen for rentes regning kan vi anvende den til at finde det endelige beløb ved at addere hver termin :</p>
 
-<div class="latex">$$ A_n = y + y \cdot (1+r)^1 + y \cdot (1+r)^2... + y \cdot (1+r)^{n-2} + y \cdot (1+r)^{n-1} $$</div>
+<div class="latex">$$ A_n = y + y \cdot (1+r)^1 + y \cdot (1+r)^2 + ... + y \cdot (1+r)^{n-2} + y \cdot (1+r)^{n-1} $$</div>
 
 <p>Grunden til at sidste led er <span class="math">\( n-1 \)</span> er, at der i den <span class="inl_cmd">n'te</span> termin ikke er påløbet nogen rente. For at få overblik erstatter vi <span class="math">\( (1+r) \)</span> med <span class="math">\( a \)</span>:</p>
 
-<div class="latex">$$ A_n = y + y \cdot a^1 + y \cdot a^2 ... + y \cdot a^{n-2} + y \cdot a^{n-1} $$</div>
+<div class="latex">$$ A_n = y + y \cdot a^1 + y \cdot a^2 + ... + y \cdot a^{n-2} + y \cdot a^{n-1} $$</div>
 
 <p><span class="math">\( y \)</span> sættes uden for parantes:</p>
 
-<div class="latex">$$ A_n = y \cdot (1+a^1+a^2...+a^{n-2}+a^{n-1}) $$</div>
+<div class="latex">$$ A_n = y \cdot (1+a^1+a^2+ ... +a^{n-2}+a^{n-1}) $$</div>
 
 <p>For at komme videre laver vi et lille "trick". Vi ganger og dividerer med <span class="math">\( a-1 \)</span>:</p>
 
-<div class="latex">$$ A_n = y \cdot \frac{(1+a+a^2...+a^{n-2}+a^{n-1}) \cdot (a-1)}{a-1}	 $$</div>
+<div class="latex">$$ A_n = y \cdot \frac{(1+a+a^2 + ... +a^{n-2}+a^{n-1}) \cdot (a-1)}{a-1}	 $$</div>
 
 <p>Gang paranteserne i tælleren sammen:</p>
 
-<div class="latex">$$ A_n = y \cdot \frac{a+a^2+a^3...+a^{n-1}+a^n- 1 \cdot (1+a+...+a^{n-2}+a^{n-1})}  {a-1}	 $$</div>
+<div class="latex">$$ A_n = y \cdot \frac{a+a^2+a^3 + ...+a^{n-1}+a^n- 1 \cdot (1+a+...+a^{n-2}+a^{n-1})}  {a-1}	 $$</div>
 
 <p>Gang ind i den sidste parantes:</p>
 
-<div class="latex">$$ A_n = y \cdot \frac{a+a^2+a^3...+a^{n-1}+a^n- 1 -a-a^2-...-a^{n-2}-a^{n-1}}{a-1}	 $$</div>
+<div class="latex">$$ A_n = y \cdot \frac{a+a^2+a^3 + ...+a^{n-1}+a^n- 1 -a-a^2-...-a^{n-2}-a^{n-1}}{a-1}	 $$</div>
 
 <p>Forkort:</p>
 
