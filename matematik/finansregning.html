@@ -295,7 +295,7 @@ $$</div>
 
 <p>Da vi kender formlen for rentes regning kan vi anvende den til at finde det endelige beløb ved at addere hver termin :</p>
 
-<div class="latex">$$ A_n = y + y \cdot (1+r)^1 + y \cdot (1+r)^2... + y \cdot (1+r)^{n-2} + y \cdot (1+r)^{n-1} $$</div>
+<div class="latex">$$ A_n = y \cdot (1+r)^0 + y \cdot (1+r)^1 + y \cdot (1+r)^2... + y \cdot (1+r)^{n-2} + y \cdot (1+r)^{n-1} $$</div>
 
 <p>Grunden til at sidste led er <span class="math">\( n-1 \)</span> er, at der i den <span class="inl_cmd">n'te</span> termin ikke er påløbet nogen rente. For at få overblik erstatter vi <span class="math">\( (1+r) \)</span> med <span class="math">\( a \)</span>:</p>
 
@@ -339,7 +339,7 @@ $$</div>
 
 <h3>Udledning af formlen</h3>
 
-<p>For at få et overblik over formlen laver vi følgende skema:</p>
+<p>For at få et overblik over formlen kigger vi igen på skemaet for at få et overblik.:</p>
 
 <table class="">
 	<tbody>
@@ -375,6 +375,12 @@ $$</div>
 
 <p>Fra vi har den sidste ydelse (<span class="math">\( A_n \)</span>) og tilbage til den første har vi n terminer. Dvs. vi får følgende udtryk:</p>
 
+<p>Fra vi har den sidste ydelse (<span class="math">\( A_n \)</span>) og tilbage til den første har vi n terminer. Dvs. vi kan igen anvende det udtryk vi kender fra rentesregning til at beregne <span class="math">\( A_0 \)</span>:</p>
+
+<div class="latex">$$ K_0 = K_n \cdot (1+r)^{-n} $$</div>
+
+<p>Det betyder at vi får følgende udtryk når vi regner med den fremtidsværdien:</p>
+
 <div class="latex">$$ A_0 = A_n \cdot (1+r)^{-n} $$</div>
 
 <p>Da vi kender <span class="math">\( A_n \)</span> fra før indsætter vi det i udtrykket:</p>
@@ -391,7 +397,7 @@ $$</div>
 
 <p>Vi anvender potensregler:</p>
 
-<div class="latex">$$ A_0 = y \cdot \frac{  (1+r)^{n - n} - (1+r)^{-n} }{r} = y \cdot \frac{  1 - (1+r)^{-n} }{r} $$</div>
+<div class="latex">$$ A_0 = y \cdot \frac{  (1+r)^{n - n} - (1+r)^{-n} }{r} $$</div>
 
 <p>... og samler udtrykket:</p>
 
@@ -404,9 +410,33 @@ $$</div>
 
 <p>Formlen til at finde ydelsen er:</p>
 
+<p>1) Hvis vi kender <span class="math">\( A_n \)</span></p>
+
+<div class="latex">$$ y = A_n \cdot \frac{ r }{ (1+r)^n-1 } $$</div>
+
+<p>2) Hvis vi kender <span class="math">\( A_0 \)</span></p>
+
 <div class="latex">$$ y = A_0 \cdot \frac{ 1 }{ 1-(1+r)^{-n}}   $$</div>
 
-<h3>Udledning af formlen</h3>
+<h3>Udledning af formlen ved An</h3>
+
+<div class="latex">$$ 
+
+y \cdot \frac{ (1+r)^n - 1 }{ r } = A_n
+
+\\ \Updownarrow \\
+
+y \cdot ((1+r)^n - 1) = A_n \cdot r
+
+\\ \Updownarrow \\
+
+y = A_n \cdot \frac{ r }{ (1+r)^n - 1 }
+
+ $$</div>
+
+
+
+<h3>Udledning af formlen ved A0</h3>
 
 <div class="latex">$$ 
 
@@ -435,9 +465,48 @@ y = A_0 \cdot  \frac{ r }{ 1 - (1+r)^{-n} }
 
 <p>Formlen til at finde antal terminer er:</p>
 
-<div class="latex">$$ n = \frac {  ln \left(  1 - \frac{ A_0 \cdot r  } {  y }   \right) } { ln(1+r)  } $$</div>
+<p>1) hvis vi kender A_n</p>
 
-<h3>Udledning af formlen</h3>
+<div class="latex">$$ n = \frac{ ln \left( \frac{ A_n \cdot r }{ y } +1 \right) }{ ln(1+r) } $$</div>
+
+<p>2) hvis vi kender A_0</p>
+
+<div class="latex">$$ n = - \frac {  ln \left(  1 - \frac{ A_0 \cdot r  } {  y }   \right) } { ln(1+r)  } $$</div>
+
+
+<h3>Udledning af formlen ved An</h3>
+
+<div class="latex">$$ 
+
+y \cdot \frac{ (1+r)^n-1 }{ r } = A_n
+
+\\ \Updownarrow \\
+
+\frac{ (1+r)^n-1 }{ r } = \frac{ A_n }{ y }
+
+\\ \Updownarrow \\
+
+(1+r)^n-1 = \frac{ A_n \cdot r}{ y }
+
+\\ \Updownarrow \\
+
+(1+r)^n = \frac{ A_n \cdot r}{ y } + 1
+
+\\ \Updownarrow \\
+
+n \cdot ln(1+r) = ln \left(  \frac{ A_n \cdot r}{ y } + 1 \right)
+
+\\ \Updownarrow \\
+
+n = \frac{  ln \left(  \frac{ A_n \cdot r}{ y } + 1 \right)    }{ ln(1+r) }
+
+ $$</div>
+
+<p>Hermed er beviset gennemført.</p>
+
+
+
+<h3>Udledning af formlen ved A0</h3>
 
 <div class="latex">$$ 
 
@@ -477,7 +546,7 @@ n = - \frac{ ln \left( 1 - \frac{ A_0 \cdot r }{ y } \right) }{ ln(1+r) }
 
 <h1>Model</h1>
 
-<p></p>
+<p>For at få et overblik over hvilke formler man skal anvende kan du udfylde denne model. Du skal anvende den formel der tilhører den manglende værdi.</p>
 
 <figure id="">
 
