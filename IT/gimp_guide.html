@@ -85,7 +85,7 @@
 
 <h2>Eksportere som <span class="inl_cmd">jpg</span> og <span class="inl_cmd">png</span></h2>
 
-<p>Hvis ens output er alt andet end <span class="inl_cmd">xcf</span>, så skal man eksportere sine billeder. Det gøres ved at vælge menuen <span class="inl_cmd">fil</span>&#8594;<span class="inl_cmd">Eksportér</span>.</p>
+<p>Hvis ens output er alt andet end <span class="inl_cmd">xcf</span>, så skal man eksportere sine billeder. Det gøres ved at vælge menuen <span class="inl_cmd">fil</span>&#8594;<span class="inl_cmd">Eksportér</span> eller genvejstasterne <kbd>Ctrl</kbd>+<kbd>e</kbd>.</p>
 
 <figure id="">
 
@@ -95,7 +95,31 @@
 
 </figure>
 
+<h3>Eksporter som jpg</h3>
+
+<p>For at gemme som jpg navgiver man filen med <span class="inl_cmd">.jpg</span> til sidst. Når man klikker <button type="">Eksportér</button> , kommer følgende vindue frem.</p>
+
+<figure id="">
+
+	<img class="p40" src="images/gimp_eksporter_billede_jpg.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Det eneste man skal overveje er kvaliteten af jpg filen. På nedestående billede kan du se forskellen mellem niveauerne af komprimering. Det er tydeligt at se forskel mellem 100% og 10%, men svært at se mellem 100% og 80%. De 90% som Gimp'en selv foreslår er en udemærket som slutprodukt.</p>
+
+<figure id="">
+
+	<img class="p90" src="images/JPG-Compression-Sample.png" alt="" title="" />
+
+	<figcaption>Billedet er fra: <a href="https://www.gimp.org/tutorials/GIMP_Quickies/" target="_blank">https://www.gimp.org/tutorials/GIMP_Quickies/</a></figcaption>
+
+</figure>
+
 <h3>Eksporter som PNG</h3>
+
+<p>Når du gemmer som png skal du ikke ændre på noget. png anvender ikke-destruktiv komprimering og komprimeringsgraden har kun noget at gøre med størrelsen af filen.</p>
 
 <figure id="">
 
@@ -105,15 +129,7 @@
 
 </figure>
 
-<h3>Eksporter som jpg</h3>
 
-<figure id="">
-
-	<img class="p40" src="images/gimp_eksporter_billede_jpg.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
 
 
 <h2>Tasteturgenveje</h2>
@@ -197,6 +213,20 @@
 
 <p>Ved at justere på <span class="inl_cmd">Tærskel</span>-værdien ændrer man hvor mange farvenuancer der skal markeres. Jo mere præcis man vil gøre det - jo lavere skal den være. Hvis man ønsker at tilføje nogle flere områder til sin udvælgelse holder man <kbd>Shift</kbd> nede samtidig med at man klikker. Så bliver de nye områder tilføjet.</p>
 
+<h2>Fjerne baggrund</h2>
+
+<p>Hvis man vil fjerne baggrunden fra et billede skal man først sikre sig at billedet har en <span class="inl_cmd">alfa-kanal</span>. Dette er et usynligt lag, som kun kan gemmes i <span class="inl_cmd">png</span> formatet. Tjek om billedet har en alfakanal ved at højreklikke på billedet og vælg <span class="inl_cmd">lag</span>&#8594;<span class="inl_cmd">Gennemsigtighed</span>.</p>
+
+<p>Billedet har en <span class="inl_cmd">alfakanal</span> hvis du kan fjerne den - ellers ikke.</p>
+
+<figure id="">
+
+	<img class="p60" src="images/gim_tjeak_alfakanal.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
 
 <h1>Beskæring - Crop</h1>
 
@@ -275,7 +305,7 @@
 
 <p>Ingen relevante indstillinger til dette.</p>
 
-<h1>Kloning</h1>
+<h1>Kloning - Clone</h1>
 
 <p>Kloningsværktøjet anvendes hvis man vil erstatte noget på et billede med noget fra et andet sted. Det kan f.eks. være en en ledning man vil fjerne fra et gulvtæppe, eller en lampe man vil kopiere. Man vælger det man vil kopiere ved at sætte musen over det og venstreklikke mens man holder <kbd>Ctrl</kbd> nede. Herefter kan man "tegne" med det forvalgte område ved hjælp af musen.</p>
 
@@ -338,6 +368,22 @@
 <h2>Værktøjsindstillingerne</h2>
 
 <p>Reparationsværktøjet anvender de samme indstillinger som kloning.</p>
+
+<h1>Viskelæder - Erase</h1>
+
+<h2>Ikon</h2>
+
+<img class="" src="images/gimp_erase_ikon.png" alt="" title="" />
+
+<h2>Genvejstast</h2>
+
+<p><kbd>Shift</kbd>+<kbd>e</kbd> (erase)</p>
+
+<p>Viskelæderet anvendes til at fjerne ting fra billedet. </p>
+
+<h2>Værktøjsindstillingerne</h2>
+
+<p>Viskelæderet anvender de samme indstillinger som kloning.</p>
 
 <h1>Sløring/skarphed</h1>
 
