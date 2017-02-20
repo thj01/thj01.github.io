@@ -61,9 +61,9 @@
 
 </figure>
 
-<p>Denne sætning består af 3 led. Et led kan flyttes rundt efter behov, hvilket kræver en omskrivning ved negative led:</p>
+<p>Denne sætning består af 3 led. Positive led kan flyttes rundt efter behov, hvilket kræver en omskrivning af de negative led:</p>
 
-<div class="latex">$$ ax+bx-3(a+x) = ax+bx+ ^-3(a+x)  $$</div>
+<div class="latex">$$ ax+bx-3(a+x) = ax+bx+ {^-}3(a+x)  $$</div>
 
 
 <h2>Brøkregneregler</h2>
@@ -796,8 +796,85 @@
 
 <div class="latex">$$ s = \sqrt {s^2} $$</div>
 
+<h1>Finans</h1>
 
-	
+<h2>Generelle betegnelser</h2>
+
+<ul class="none">
+	<li><span class="math">\( n \)</span> er antallet af terminer</li>
+	<li><span class="math">\( K_n \)</span> er kapitalen efter <span class="math">\( n \)</span> terminer</li>
+	<li><span class="math">\( K_0\)</span> er startkapitalen</li>
+	<li><span class="math">\( r \)</span> er renten per termin</li>
+	<li><span class="math">\( y \)</span> er ydelsen per termin</li>
+</ul>
+
+<p><b>Nutidsværdi: </b>Den værdi et lån/opsparing har lige nu.</p>
+
+<p><b>Fremtidsværdi: </b>Den værdi et lån/opsparing har efter den aftalte løbetid.</p>
+
+
+<h2>Rentes rente</h2>
+
+<span class="math">\( K_n = K_0 \cdot (1+r)^n \)</span>
+
+<h3>Nutidsværdien</h3>
+
+<p><span class="math">\( K_0 \)</span> udregnes på følgende måde:</p>
+
+<p>1)</p>
+<div class="latex">$$ K_0 = \frac{K_n}{(1+r)^n} $$</div>
+<p>2)</p>
+<div class="latex">$$ K_0 = K_n \cdot (1+r)^{-n} $$</div>
+
+<h3>Rente</h3>
+
+<div class="latex">$$ r = \sqrt [n] { \frac{ K_n}{K_0} } -1$$</div>
+
+<h3>Antal terminer</h3>
+
+<div class="latex">$$ n =  \frac{ ln \left( \frac{K_n}{K_0} \right) } { ln(1+r) }$$</div>
+
+<h3>Effektiv rente</h3>
+
+<div class="latex">$$ i = (1+r)^n - 1 $$</div>
+
+<h3>Gennemsnitlig rente</h3>
+
+<div class="latex">$$ r =  \sqrt [n]{(1+r_1 ) \cdot (1+r_2) \cdot ~ ... ~\cdot (1+r_n)} -1 $$</div>
+
+<p>... hvor <span class="math">\( r_x \)</span> er renten i den gældende termin.</p>
+
+<h2>Annuitet</h2>
+
+<h3>Fremtidsværdien</h3>
+
+<div class="latex">$$ A_n = y \cdot \frac{(1+r)^n - 1}{r} $$</div>
+
+<h3>Nutidsværdien</h3>
+
+<div class="latex">$$ A_0 = y \cdot \frac{1-(1+r)^{-n}}{r} $$</div>
+
+<h3>Ydelsen</h3>
+
+<p>1) Hvis vi kender <span class="math">\( A_n \)</span></p>
+
+<div class="latex">$$ y = A_n \cdot \frac{ r }{ (1+r)^n-1 } $$</div>
+
+<p>2) Hvis vi kender <span class="math">\( A_0 \)</span></p>
+
+<div class="latex">$$ y = A_0 \cdot \frac{ r }{ 1-(1+r)^{-n}}   $$</div>
+
+<h3>Antal terminer</h3>
+
+<p>1) hvis vi kender <span class="math">\( A_n \)</span></p>
+
+<div class="latex">$$ n = \frac{ ln \left( \frac{ A_n \cdot r }{ y } +1 \right) }{ ln(1+r) } $$</div>
+
+<p>2) hvis vi kender <span class="math">\( A_0 \)</span></p>
+
+<div class="latex">$$ n = - \frac {  ln \left(  1 - \frac{ A_0 \cdot r  } {  y }   \right) } { ln(1+r)  } $$</div>
+
+
 </div><!-- end: col-md-9 -->
 
 <footer>
