@@ -335,7 +335,7 @@ $cfg['Lang'] = '';
 
 <figure id="">
 
-	<img class="p90" src="images/mysql_main_window_ny_Brugerkonti_01.png" alt="" title="" />
+	<img class="p90" src="images/mysql_ny_brugerkonti_01.png" alt="" title="" />
 
 	<figcaption></figcaption>
 
@@ -351,16 +351,74 @@ $cfg['Lang'] = '';
 	
 </ul>
 
+
+<p>Klik <span class="knap">Udfør</span> når du har lavet ændringerne.</p>
+
 <figure id="">
 
-	<img class="p90" src="images/mysql_main_window_ny_Brugerkonti_02.png" alt="" title="" />
+	<img class="p90" src="images/mysql_ny_brugerkonti_02.png" alt="" title="" />
 
 	<figcaption></figcaption>
 
 </figure>
 
 
+<p>Når der klikkes her kommer der en fejl - det skyldes at installationen ikke har oprettet alle de mapper der er nødvendige. </p>
 
+<figure id="">
+
+	<img class="p40" src="images/mysql_ny_brugerkonti_03_fejl.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Klik ved siden af fejlen og start en terminal og skrive følgende kommando:</p>
+
+<p><b>På Windows: </b></p>
+
+<code class="cmd">mkdir c:\xampp\mysql\lib\plugin</code>
+
+<p><b>På Mac:</b></p>
+
+<code class="cmd">sudo mkdir c:\xampp\mysql\lib\plugin</code>
+
+<p>Herefter skal du gå tilbage til browseren, sikre dig at du har indtastet de rigtige data og klikke på <span class="knap">Udfør</span></p>
+
+<figure id="">
+
+	<img class="p90" src="images/mysql_ny_brugerkonti_04.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Vælg menuen "<span class="inl_cmd">Brugerkonti</span>" og tjek at brugeren er opretttet med adgangskode og alle privilegier.</p>
+
+
+<figure id="">
+
+	<img class="p90" src="images/mysql_ny_brugerkonti_05.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Tjek din nye bruger af ved at logge af og på igen.</p>
+
+<p>Når du har tjekket det kan du fjerne tildelingen af de tre <span class="inl_cmd">root</span>-konti ved at fjerne deres privilegier.</p>
+
+<p>Klik på menuen "<span class="inl_cmd">Brugerkonti</span>" og "<span class="inl_cmd">Edit privileges</span>" ud for den bruger du vil fjerne tildelingerne på.</p>
+
+<figure id="">
+
+	<img class="p90" src="images/mysql_ny_brugerkonti_06.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Læg mærke til, at når du vender tilbage til oversigten over brugere ved at klikke på menuen "<span class="inl_cmd">Brugerkonti</span>", så er de tre <span class="inl_cmd">root</span>-konti ikke mere "tildelt".</p>
 	
 </div><!-- end: col-md-9 -->
 
