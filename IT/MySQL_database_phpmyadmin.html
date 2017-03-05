@@ -204,7 +204,27 @@
 
 </figure>
 
-<p>Gå til stifinder og redigere filen: <span class="inl_cmd">C:\xampp\phpmyadmin\config.inc.php</span>. Find afsnittet <span class="inl_cmd">/* Authentication type and info */</span>. Erstat ordet <span class="inl_cmd">config</span> med <span class="inl_cmd">cookie</span>, dvs. fra:</p>
+<h2>Ret fejl på Windows</h2>
+
+<p>For at rette fejlen på windows skal vi gøre følgende:</p>
+
+<ol class="">
+	<li>Hent og installer Geany (<a href="http://www.geany.org/Download/Releases" target="_blank">http://www.geany.org/Download/Releases</a>)</li>
+	<li>Hent filen ind i geany og ret en linie</li>
+	<li>Opdater browseren</li>
+</ol>
+
+<h3>Installer geany</h3>
+
+<p>Installationen er simpel, da du blot skal starte installationen og vælge <span class="knap">next</span> hver gang</p>
+
+<h3>Ændre config.inc.php</h3>
+
+<p>For at rette den fejl skal vi have ændret i en konfigurationsfilen: <span class="inl_cmd">C:\xampp\phpMyAdmin\config.inc.php</span>.</p>
+
+<p>Naviger hen til filen, højreklik på filen og vælg <span class="inl_cmd">Open with Geany</span>.</p>
+
+<p>Find nedestående kode og ændr <span class="inl_cmd">config</span> til <span class="inl_cmd">cookie</span></p>
 
 <pre>
 	<code class="php">
@@ -232,6 +252,47 @@ $cfg['Lang'] = '';
 	</code>
 </pre>
 
+<h2>Ret fejl på Mac</h2>
+
+<p>For at rette fejlen på en mac-computer skal vi anvende terminalen. Terminalen findes i Launchpad.</p>
+
+<p>Start terminalen og indtast følgende kode:</p>
+
+<code class="cmd">sudo nano /Applications/XAMPP/xamppfiles/phpmyadmin/config.inc.php</code>
+
+<p>Terminalen spørger herefter efter dit kodeord, som du indtaster og trykker <kbd>Enter</kbd>.</p>
+
+<p>Find nedestående kode og ændr <span class="inl_cmd">config</span> til <span class="inl_cmd">cookie</span></p>
+
+
+<pre>
+	<code class="php">
+/* Authentication type */
+$cfg['Servers'][$i]['auth_type'] = 'config'; <span class="red">&lt;-- Ændr denne linie</span>
+$cfg['Servers'][$i]['user'] = 'root';
+$cfg['Servers'][$i]['password'] = '';
+$cfg['Servers'][$i]['extension'] = 'mysqli';
+$cfg['Servers'][$i]['AllowNoPassword'] = true;
+$cfg['Lang'] = '';
+	</code>
+</pre>
+
+<p>... til ...</p>
+
+<pre>
+	<code class="php">
+/* Authentication type and info */
+$cfg['Servers'][$i]['auth_type'] = 'cookie'; <span class="red">&lt;-- Den ændrede linie</span>
+$cfg['Servers'][$i]['user'] = 'root';
+$cfg['Servers'][$i]['password'] = '';
+$cfg['Servers'][$i]['extension'] = 'mysqli';
+$cfg['Servers'][$i]['AllowNoPassword'] = true;
+$cfg['Lang'] = '';
+	</code>
+</pre>
+
+<h2>Opdater Browseren</h2>
+
 <p>Opdater browseren med <kbd>F5</kbd> og du kan nu logge ind med root brugeren</p>
 
 <figure id="">
@@ -241,6 +302,8 @@ $cfg['Lang'] = '';
 	<figcaption></figcaption>
 
 </figure>
+
+<h2>Ændringer</h2>
 
 <p>Læg mærke til at der nu er kommet et nyt ikon oppe i øverste venstre hjørne (døren med den grønne pil). Den bruges til at logge af phpMyAdmin.</p>
 
@@ -261,6 +324,41 @@ $cfg['Lang'] = '';
 	<figcaption></figcaption>
 
 </figure>
+
+<h1>Opret ny bruger</h1>
+
+<p>For at forhøje sikkerheden vælger vi at oprette en "ny" administrationsbruger og fjerne <span class="inl_cmd">root</span>-brugeren. På den måde kender hackeren ikke databasens administrationsbruger.</p>
+
+<p>Her vælger vi at oprette en bruger med dine initialer (to bogstaver), og med koden <span class="inl_cmd">123qwe</span>. Eksemplet vil blive gennemgået med brugernavnet <span class="inl_cmd">tj</span>.</p>
+
+<p>Klik på "<span class="inl_cmd">Add user account</span>" i sektionen <span class="inl_cmd">Ny</span></p>
+
+<figure id="">
+
+	<img class="p90" src="images/mysql_main_window_ny_Brugerkonti_01.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Indtast og vælg følgende:</p>
+
+<ul class="none">
+	<li><b>Brugernavn: </b>Vælg: <span class="inl_cmd">Brug tekstfelt</span> og skriv dine initialer</li>
+	<li><b>Host name: </b>Vælg: <span class="inl_cmd">Lokal</span>og feltet ændrer sig til <span class="inl_cmd">Localhost</span></li>
+	<li><b>Adgangskode: </b>Vælg <span class="inl_cmd">Brug tekstfelt og indtast </span><span class="inl_cmd">123qwe</span> i begge felter</li>
+	<li><b>Globale privilegier: </b> Sæt flueben i "<span class="inl_cmd">Vælg alle</span>"</li>
+	
+</ul>
+
+<figure id="">
+
+	<img class="p90" src="images/mysql_main_window_ny_Brugerkonti_02.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
 
 
 	
