@@ -352,7 +352,7 @@
 </table>
 
 
-<h2>Indtastning</h2>
+<h2>Indtastning af database</h2>
 
 <p>Når databasen er startet op får vi adgang til hovedvinduet. For at oprette en ny dtabase vælger vi <span class="inl_cmd">Ny</span> i menuen til venstre. I feltet <span class="bold">Databasenavn</span> skriver du: <span class="inl_cmd">mentorer</span> og i <span class="bold">Tegnsæt (sortering)</span> vælger du: <span class="inl_cmd">utf8_danish_ci</span> og klikker på <span class="knap">Opret</span>.</p>
 
@@ -418,7 +418,9 @@
 
 <h1>Indtast data</h1>
 
-<p>Vælg menuen indsæt og indtast indholdet</p>
+<p>Vælg menuen indsæt og indtast indholdet. </p>
+
+<p>Første gang skal du indtaste samme klasse i begge poster, nemlig <span class="inl_cmd">1a</span>. Grunden hertil er, at du skal se hvad der sker når primærnøglefelt får samme værdi.</p>
 
 <figure id="">
 
@@ -430,7 +432,6 @@
 
 <p>Når du har indtastet dine data klikker du på <span class="knap">Udfør</span></p>
 
-<p>Jeg har i dette tilfælde valgt at indtaste noget forkert. Begge indtastninger har anført <span class="inl_cmd">1a</span> som Klasse. Da vi har sat feltet Klasse til at være <span class="inl_cmd">Primary</span> brokker MySQL sig:</p>
 
 <figure id="">
 
@@ -440,7 +441,17 @@
 
 </figure>
 
-<p>Ret <span class="inl_cmd">1a</span> til <span class="inl_cmd">2a</span> i andet tilfælde og klik <span class="knap">udfør</span>.</p>
+<p>Som du kan se kommer der en fejlmeddelelse. Det skyldes at primærnøglen forhindrer at to poster kan have samme værdi. Ret <span class="inl_cmd">1a</span> til <span class="inl_cmd">2a</span> i andet tilfælde og klik <span class="knap">Udfør</span>.</p>
+
+<figure id="">
+
+	<img class="p90" src="images/mysql_XAMPP_opret_tabel1_09a.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Efter man klikker på <span class="knap">Udfør</span>, får man et vindue der bekræfter at ens indtastninger er indsat i databasen. Derudover kan man også se den kode der er blevet kørt.</p>
 
 <p>Klik på menuen <span class="inl_cmd">Vis</span>, så du kan se dine indtastede data</p>
 
@@ -452,7 +463,7 @@
 
 </figure>
 
-<p>Indtast resten af tabellen og opret herefter de 3 andre tabeller.</p>
+<p>Indtast resten af tabellen ved at vælge menuen <span class="inl_cmd">Indsæt</span> igen, og opret herefter de 2 andre tabeller.</p>
 
 <h1>Eksporter og importer</h1>
 
@@ -661,6 +672,10 @@ ALTER TABLE `mentorer`
 </figure>
 
 <h2>Ryd op i dine backups</h2>
+
+<p>Når man har haft computer i et stykke tid begynder man at have en masse backups. Nogle gange er det en god ide at kigge dem igennem og få slettet det som ikke er relevant mere. Det kan f.eks. være forskelige versioner af ens opgaver eller filer der er lavet backup af flere gange. Det kan f.eks være dokumenter og billeder.</p>
+
+<p>Det kan også være en tur ned ad memory lane.</p>
 
 <figure id="">
 
