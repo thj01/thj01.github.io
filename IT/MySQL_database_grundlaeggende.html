@@ -36,6 +36,36 @@
 	
 <div class="title">MySQL - Intro</div>
 
+<h1>Databaser</h1>
+
+<p>Databaser er grundlæggende en samling af struktueret data. Disse databaser deler vi op i det vi kalder <span class="inl_cmd">flade databaser</span> og relationsdatabaser.</p>
+
+<ul class="fat_li none">
+	<li>Flade databaser</li>
+	
+		<p>Al data er i en tabel</p>
+		
+		<p>Dette er en fordel hvis det kun er få data vi snakker om. Det kan f.eks. være en almindelig tabel i et tekstbehandlingsprogram eller et regneark. F.eks. en telefonliste, eller tabel hvor man kan se sammenhængen mellem postnummer og by. Disse tabeller kan stå helt for sig selv.</p>
+	
+	<li>Relationsdatabaser</li>
+	
+		<p>Data er fordelt i flere tabeller, hvor man har lavet relationer (forbindelser) mellem dem</p>
+		
+		<p>Forestil dig en database, hvor man skal have et overblik over de data der er på elever, lærere, klasser, personale, lokaler osv. Her vil det være en fordel at have en tabel med by og postnumre. Det vil betyde at databasen selv kan finde det bynavn, der er hører til de enkelte postnumre, sådan at selve bynavnet kun står en gang. Det sparer både indtastninger, men også plads i databasen (redundans).</p>
+		
+		<p>Det betyder også, at man kan bruge nogle rækker som kontrolinstanser. F.eks. vil et forkert postnummer kunne udløse en advarsel, fordi det ikke eksisterer. Eller man vil kunne sikre sig mod at der bliver slettet data som andre tabeller er afhængige af.</p>
+		
+		<p>Man kan ikke blot forbinde tabeller i den enkelte database med hinanden, men også forbinde forskellige databer med hinanden, sådan at man kan udnytte data fra flere kilder.</p>
+</ul>
+
+<h2>Redundans</h2>
+
+<p><span class="inl_cmd">Redundans</span> er et fint ord for data der er tilstede mere end en gang.</p>
+
+<p>I det ovenstående tilfælde nævner jeg en tabel med bynavn og postnummer. Hvis man ikke havde den tabel ville alle tabeller med adresser skulle indeholde både bynavn og postnummer. Et af disse felter ville altså være redundant. Det vil betyde at man skal bruge mere tid på at indtaste data, databasen fylder mere og databasen skal sortere i flere data for at finde sine resulater. Altsammen noget der ikke er effektivt og koster både tid og penge.</p>
+
+<p>En god database er designet så man undgår redundans, og den proces hedder <span class="inl_cmd">normalisering</span> (<a href="http://www.vidas.dk/IT/MySQL_database_normalisering.html" target="_blank">http://www.vidas.dk/IT/MySQL_database_normalisering.html</a>). Det er et område der hører til på IT B.</p>
+
 <h1>Grundbegreber</h1>
 
 <h2>Database</h2>
