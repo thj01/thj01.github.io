@@ -36,25 +36,21 @@
 	
 <div class="title">MySQL - Fremmednøgler</div>
 
-<p>Video: <a href="https://youtu.be/4_NPdw2Anf8" target="_blank">https://youtu.be/4_NPdw2Anf8</a></p>
+<h1>Fremmednøgler</h1>
 
-<p>MySQL er en relations database, og man skaber relationerne mellem tabellerne ved hjælp af nøgler. Relationerne skabes ved at man forbinder to felter med hinanden, og kaldes et <span class="inl_cmd">foreign key relationship</span>. De to nøgletyper vi vil anvende i denne sammenhæng er <span class="inl_cmd">primary key</span> og <span class="inl_cmd">foreign key</span>, som også bliver kaldt for en <span class="inl_cmd">fremmednøgle</span>.
+<p>MySQL er en relations database, og man skaber relationerne mellem tabellerne ved hjælp af nøgler. Relationerne skabes ved at man forbinder to felter med hinanden, og kaldes et <span class="inl_cmd">foreign key relationship</span>. For at kunne danne disse relationer kræver det at posterne er indekserede, at de har fået en <span class="inl_cmd">key</span>. Vi har sørget for at alle tabellerne er indekseret med en  <span class="inl_cmd">Primary Key</span>, så de felter er indekserede og klar til brug.</p>
 
-<p>Relationen kan mellem <span class="inl_cmd">primary key</span> og <span class="inl_cmd">foreign key</span> kan have mange funktionaliteter, men vi vil i denne sammenhæng anvende dem til at sikre, at data der anvendes andre steder ikke kan blive slettet.</p>
+<p>Når vi sætter en relation op skal vi bestemme om det skal være <span class="inl_cmd">1-til-1</span>, <span class="inl_cmd">1-til-mange</span>, og det er det vi skal lære her. Relationerne kan have mange funktionaliteter, men vi vil i denne sammenhæng anvende dem til at sikre, at data der anvendes andre steder ikke kan blive slettet.</p>
 
-<p>Forestil dig en tabel med lærere, hvoraf nogle er mentorer og der er oprettet en selvstændig tabel der omhandler mentorer. For at undgå redundans vil man igennem normaliseringsprocessen sørge for at data kun står et sted, og derfor vil mentortabellen være afhængig af data i lærertabellen. Fremmednøglen forhindrer at man kan slettet en lærer i lærertabellen, hvis den bliver anvendt i mentortabellen.  </p>
-
-<p>I denne guide vil vi oprette en fremmednøgle mellem de to tabeller <span class="inl_cmd">klasser_og_mentorer</span> og <span class="inl_cmd">lærere</span></p>
-
-<h1>Krav til fremmednøgler</h1>
+<p>Forestil dig en tabel med lærere, hvoraf nogle er mentorer og der er oprettet en selvstændig tabel der omhandler mentorer. For at undgå redundans vil man igennem normaliseringsprocessen sørge for at data kun står et sted, og derfor vil mentortabellen være afhængig af data i lærertabellen. Fremmednøglen forhindrer at man kan slettet en lærer i lærertabellen, hvis den bliver anvendt i mentortabellen. I denne guide vil vi oprette en fremmednøgle mellem de to tabeller <span class="inl_cmd">klasser_og_mentorer</span> og <span class="inl_cmd">lærere</span>. Herefter skal du selv oprette forbindelse mellem <span class="inl_cmd">klasse_og_elever</span> og <span class="inl_cmd">lærere</span>.</p>
 
 <p>For at man kan oprette relationer mellem tabeller kræver det at databeserne er af typen <span class="inl_cmd">InnoDB</span> (som er standard for MySQL), og at felterne der skal anvendes er indekseret. At et felt er indekseret betyder at MySQL kender til feltet og derfor kan danne relationer mellem kendte felter.</p>
 
+<p>Arbejdsprocessen er at man skal sørge for at alle felter der skal forbindes er indekseret. Dernæst skal man åbne designer vinduet og <span class="inl_cmd">forbinde</span> felterne med hinanden. Til sidst bør man </p>
+
 <h1>Indekser et felt</h1>
 
-<h2>I phpMyAdmin</h2>
-
-<p>Åbn tabellen <span class="inl_cmd">klasser_og_mentorer</span> i <span class="inl_cmd">Struktur</span>-fanen.</p>
+<p>Åbn tabellen <span class="inl_cmd">klasser_og_mentorer</span> og vælg <span class="inl_cmd">Struktur</span>-fanen.</p>
 
 <figure id="">
 
@@ -74,6 +70,8 @@
 
 </figure>
 
+<p>Som du kan se er det kun feltet <span class="inl_cmd">Klasse</span> der er indekseret som <span class="inl_cmd">PRIMARY</span>.</p>
+
 <p>For at få feltet <span class="inl_cmd">Mentor</span> til at være indekseret, går du ud mod højre på linien og klikker på <span class="inl_cmd">Indeks</span>. I dette tilfælde er vinduet forstørret, så feltet står i menuen <span class="inl_cmd">Mere</span>.</p>
 
 <figure id="">
@@ -84,7 +82,7 @@
 
 </figure>
 
-<p>Bekræft at du vil oprette indekset</p>
+<p>Bekræft at du vil oprette indekset.</p>
 
 <figure id="">
 
@@ -94,7 +92,7 @@
 
 </figure>
 
-<p>Du kan kontrollere om indekset er oprettet ved at klikke på <span class="inl_cmd">indeks</span></p>
+<p>Kontroller at indekset er oprettet ved at klikke på <span class="inl_cmd">indeks</span></p>
 
 <figure id="">
 
@@ -107,9 +105,9 @@
 
 
 
-<h1>Opret relation mellem tabeller</h1>
+<h1>Opret relationer</h1>
 
-<p>For at oprette relationer skal vi finde menuen <span class="inl_cmd">Designer</span></p>
+<p>For at oprette relationer mellem tabellerne skal vi anvende menuen <span class="inl_cmd">Designer</span></p>
 
 <figure id="">
 
@@ -119,7 +117,7 @@
 
 </figure>
 
-<p>Inde i designervinduet får vi </p>
+<p>Inde i designervinduet får vi tabellerne vist, og de kan omplaceres på samme måder som normale programmer. Arranger dem som herunder.</p>
 
 <figure id="">
 
@@ -129,6 +127,8 @@
 
 </figure>
 
+<p>Ved at holde musen henover ikonlinien til venstre kan du finde menuen <span class="inl_cmd">Opret relation</span>. Klik på den:</p>
+
 <figure id="">
 
 	<img class="p90" src="images/mysql_fremmednoegle_08.png" alt="" title="" />
@@ -137,6 +137,8 @@
 
 </figure>
 
+<p>Når du har klikket på ikonet kommer der et grønt beskrivelsesfelt med cursoren, hvor der står <span class="inl_cmd">Vælg refereret nøgle</span>. Klik på feltet <span class="inl_cmd">Klasse</span> i tabellen <span class="inl_cmd">Klasser_og_mentorer</span>.</p>
+
 <figure id="">
 
 	<img class="p90" src="images/mysql_fremmednoegle_09.png" alt="" title="" />
@@ -144,6 +146,60 @@
 	<figcaption></figcaption>
 
 </figure>
+
+<p>Herefter skifter curserens beskrivelsesfelt til <span class="inl_cmd">Vælg Fremmednøgle</span>. Klik på feltet <span class="inl_cmd">klasse</span> i tabellen <span class="inl_cmd">klasse_og_elever</span>.</p>
+
+
+<figure id="">
+
+	<img class="p90" src="images/mysql_fremmednoegle_10.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Når du har gjort det kommer der en blå boks frem. Her skal du vælge <span class="inl_cmd">RESTRICT</span> i begge felter. Det betyder at vi låser feltet med den referede nøgle, så det ikke kan slettes hvis der er forkomster af denne i fremmedtabellen.</p>
+
+<figure id="">
+
+	<img class="p30" src="images/mysql_fremmednoegle_11.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Herefter kan du se relationen som en streg mellem felterne i tabellen. Læg mærke til udformningen af den i enderne.</p>
+
+<figure id="">
+
+	<img class="p90" src="images/mysql_fremmednoegle_12.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>For at teste om det virker går vi ind i tabellen <span class="inl_cmd">klasser_og_mentorer</span>, og forsøger på at slette en af mentorerne. Klik på menuen <span class="inl_cmd">Struktur</span> og vælg tabellen <span class="inl_cmd">klasser_og_mentorer</span>. Hefter vælger du <span class="inl_cmd">slet</span> i en af dine poster.</p>
+
+<figure id="">
+
+	<img class="p50" src="images/mysql_fremmednoegle_13.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Tryk <span class="knap">OK</span>, og hvis du får følgende "fejlmeddelelse", så fungerer dine fremmednøgler</p>
+
+<figure id="">
+
+	<img class="p60" src="images/mysql_fremmednoegle_14.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Opret selv relationer med felterne <span class="inl_cmd">Mentor</span> i tabellerne <span class="inl_cmd">klasser_og_mentorer</span> og <span class="inl_cmd">mentorer</span>. Husk at vælge hele databasen.</p>
+
 <h2>Opret indeks kommando</h2>
 
 <p></p>
@@ -161,8 +217,11 @@ SHOW INDEX FROM klasser_og_mentorer;
 	</code>
 </pre>
 
+<h1>Videoer fra Youtube</h1>
 
-	
+<p>Video: <a href="https://youtu.be/4_NPdw2Anf8" target="_blank">https://youtu.be/4_NPdw2Anf8</a></p>
+
+
 </div><!-- end: col-md-9 -->
 
 <footer>
