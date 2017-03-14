@@ -34,28 +34,9 @@
 	
 <div class="col-sm-9">
 	
-<div class="title">MySQL - E/R-diagrammer og fremmednøgler</div>
+<div class="title">MySQL - E/R-diagrammer</div>
 
-<p>Video: <a href="https://youtu.be/B5r8CcTUs5Y" target="_blank">https://youtu.be/B5r8CcTUs5Y</a></p>
 
-<p>Henvisninger: <a href="https://www.youtube.com/results?search_query=eddie+who+database" target="_blank">https://www.youtube.com/results?search_query=eddie+who+database</a></p>
-
-<p>E/R-Diagrammer: <a href="http://dtu20.be/ERdiagram.pdf" target="_blank">http://dtu20.be/ERdiagram.pdf</a></p>
-
-<p></p>
-
-<span class="afsnit">E/R diagrammer</span>
-
-<ol class="">
-	<li><a href="http://dtu20.be/ERdiagram.pdf" target="_blank">http://dtu20.be/ERdiagram.pdf</a></li>
-	<li><a href="https://pdfs.semanticscholar.org/e4cd/a968b46b3147bf9e8102543b927d28529ecc.pdf" target="_blank">https://pdfs.semanticscholar.org/e4cd/a968b46b3147bf9e8102543b927d28529ecc.pdf</a></li>
-	<li><a href="http://bit.csc.lsu.edu/~chen/pdf/ER_C.pdf" target="_blank">http://bit.csc.lsu.edu/~chen/pdf/ER_C.pdf</a></li>
-	<li><a href="http://slideplayer.dk/slide/3215117/" target="_blank">http://slideplayer.dk/slide/3215117/</a></li>
-	<li><a href="https://docs.oracle.com/cd/A87860_01/doc/java.817/a81358/05_deva.gif" target="_blank">https://docs.oracle.com/cd/A87860_01/doc/java.817/a81358/05_deva.gif</a></li>
-	<li><a href="https://www.smartdraw.com/entity-relationship-diagram/" target="_blank">https://www.smartdraw.com/entity-relationship-diagram/</a></li>
-	
-	<li><a href="https://www.youtube.com/watch?v=4_NPdw2Anf8" target="_blank">foreign key: https://www.youtube.com/watch?v=4_NPdw2Anf8</a></li>
-</ol>
 
 
 <h1>ER-modellen</h1>
@@ -64,78 +45,47 @@
 
 <p>Værktøjet kan bruges både til at beskrive og modellere databaser, men kan også anvendes til at beskrive relationer mellem mennesker. I denne guide vil <span class="inl_cmd">ERD</span> først blive gennemgået ud fra fra relationer mellem mennesker for at du får en ide om hvordan den kan anvendes til at få overblik over komplekse situationer. Overordnet set gælder følgende:</p>
 
-<table class="">
-	<thead>
-		<tr>
-			<th>E/R-diagram</th>
-			<th>Symbol</th>
-			<th>Forklaring</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>Entitet</td>
-			<td>Rektangel</td>
-			<td>Et objekt eller en genstand, som indeholder information.</td>
-		</tr>
-		<tr>
-			<td>Handling</td>
-			<td>Rhombe</td>
-			<td>Det som binder entiteterne sammen - den handling der sker imellem dem, den måde de relaterer til hinanden.</td>
-		</tr>
-		<tr>
-			<td>Attributter</td>
-			<td>Oval</td>
-			<td>De egenskaber en entity har. En bil har f.eks. en hastighed eller et max antal passagerer</td>
-		</tr>
-		<tr>
-			<td>Relation</td>
-			<td>Linie</td>
-			<td>Måden de forskellige elementer i <span class="inl_cmd">ERD</span> diagrammet forholder sig til  hinanden. Det kan f.eks. være en til en, en til mange, og mange til mange</td>
-		</tr>
-	</tbody>
-</table>
+<h2>Entitet</h2>
+
+<p><abbr title="Den danske ordbog">DDO</abbr> definerer en <span class="inl_cmd">entitet</span> som en "<span class="inl_cmd">selvstændig fungerende del af en enhed</span>". I ER-diagrammer tegnes entiteter med en rektangel.</p>
+		
+<p>I vores <span class="inl_cmd">Mentor</span>-database er tabellen <span class="inl_cmd">klasse_og_elever</span> en entitet, da den beskriver alt vedrørende klasser og elever.</p>
+		
+<p><b>Figur: </b>Rektangel</p>
+		
+<h2>Relation</h2>
+
+<p>En relation beskriver et forbindelsesled mellem tabeller. I <span class="inl_cmd">Mentor</span>-databasen er tabellen <span class="inl_cmd">klasser_og_mentorer</span> det led der beskriver relationen mellem databasens andre tabeller</p>
+		
+<p><b>Figur: </b>Rhombe</p>
+
+<h2>Forbindelse</h2>
+
+<p>Forbindelsen beskriver måden <span class="inl_cmd">entiteter</span> og <span class="inl_cmd">relationer</span> forbinder sig med hinanden. der findes grundlæggende 3 former:</p>
+		
+<ol class="">
+
+	<li>En-til-mange</li>
+	
+	<p>Den mest almindelige form for forbindelse, som hjælper til at forhindre <span class="inl_cmd">redundans</span> (gentagelser) i databasen. Det kan f.eks. være en tabel med postnumre og byer, som sikrer at man f.eks. kun skal angive postnummeret når man skriver adresser. Databasen vil herefter selv hente bynavnet.</p>
+	
+	<p>Det sikrer også at det samme postnummer ikke kan have to forskellige bynavne.</p>
+	
+	<li>En-til-en</li>
+
+	<p><span class="inl_cmd">En-til-en</span> forbindelser sikrer at de to forbundne værdier kun kan have en forekomst i begge tabeller. Det kan f.eks. være smart, hvis man har et behov for at have to niveauer af datadefineret af relavans/privathed. Så kan man lave en tabel, hvor offentlige data er tilgængelige og en som indeholder de fortrolige ting.</p>
+		
+	<li>mange-til-mange</li>
+
+	<p>I avancerede databaseløsninger kan det være nødvendigt at have relationer hvor der er mange både i hjemme- og fremmedtabellen. De er ikke relevante på dette niveau. </p>
 
 
+</ol>
 
 
+<h1>Anvendelse af ER-diagrammer</h1>
 
-<h1>ERD og databaser</h1>
-
-<p>Når vi anvender <span class="inl_cmd">ERD</span> i database sammenhæng anvender vi det på samme måde, blot langt mere konkret med data. Der findes forskellige variationer i måden man annvender modellen og tegner relationerne, og her anvendes den notation som anvendes i phpMyAdmin. I skemaet herunder er begreberne beskrevet ud fra en database sammenhæng.</p>
-
-<table class="">
-	<thead>
-		<tr>
-			<th>E/R-diagram</th>
-			<th>Symbol</th>
-			<th>Database design</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>Entitet</td>
-			<td>Rektangel</td>
-			<td>Tabel</td>
-		</tr>
-		<tr>
-			<td>Attribut</td>
-			<td>Rhombe</td>
-			<td>Kolonne/Felt</td>
-		</tr>
-		<tr>
-			<td>Relation</td>
-			<td>Streg</td>
-			<td>Primær- og fremmednøgle</td>
-		</tr>
-	</tbody>
-</table>
-
-<p>I denne guide vil jeg gennemgå to måder at at anvende modellen til at tegne diagrammer over vores database: Den simple og den informationsrige.</p>
-
-<h2>Anvendelse</h2>
-
-<p>I den simple model er god at anvende i planlægsningsfasen, da den giver et overordnet billede af databasen opbygning med tabeller og relationer. I den model vil mentordatabasen se ud som herunder.</p>
+<p>ER-diagrammer er gode at anvende i databensens planlægnings- og designfase, da den giver et overblik over  databasens opbygning med tabeller og relationer. Sat op i ERD modellen vil mentordatabasen se ud som herunder.</p>
 
 <figure id="">
 
@@ -155,7 +105,7 @@
 
 </figure>
 
-<p>Det er den model som phpMyAdmin anvender når den skal vise et grafisk billede af databasen. Lad os se på den med den database vi har oprettet</p>
+<p>PhpMyAdmin kan også vise databsen ved hjælp af en ER'ish visning, ved at vælge hele databasen og vælge menuen <span class="inl_cmd">Designer</span> (står under <span class="inl_cmd">Mere</span> hvis vinduet ikke er bredt nok).</p>
 
 <figure id="">
 
@@ -185,19 +135,19 @@
 
 <span class="afsnit">En til en</span>
 
-<p><img class="" src="images/mysql_erd_05a.svg" alt="" title="" /></p>
+<p><img class="p80" src="images/mysql_erd_05a.svg" alt="" title="" /></p>
 
 <span class="afsnit">En til en (alternativ)</span>
 
-<p><img class="" src="images/mysql_erd_05b.svg" alt="" title="" /></p>
+<p><img class="p80" src="images/mysql_erd_05b.svg" alt="" title="" /></p>
 
 <span class="afsnit">En til mange</span>
 
-<p><img class="" src="images/mysql_erd_05c.svg" alt="" title="" /></p>
+<p><img class="p80" src="images/mysql_erd_05c.svg" alt="" title="" /></p>
 
 <span class="afsnit">Mange til mange</span>
 
-<p><img class="" src="images/mysql_erd_05d.svg" alt="" title="" /></p>
+<p><img class="p80" src="images/mysql_erd_05d.svg" alt="" title="" /></p>
 
 
 <h2>Betingede relationer</h2>
@@ -206,45 +156,21 @@
 
 <span class="afsnit">En og kun en </span>
 
-<p><img class="" src="images/mysql_erd_05e.svg" alt="" title="" /></p>
+<p><img class="p80" src="images/mysql_erd_05e.svg" alt="" title="" /></p>
 
 <span class="afsnit">Ingen eller en</span>
 
-<p><img class="" src="images/mysql_erd_05f.svg" alt="" title="" /></p>
+<p><img class="p80" src="images/mysql_erd_05f.svg" alt="" title="" /></p>
 
 <span class="afsnit">Ingen eller mange</span>
 
-<p><img class="" src="images/mysql_erd_05g.svg" alt="" title="" /></p>
+<p><img class="p80" src="images/mysql_erd_05g.svg" alt="" title="" /></p>
 
 <span class="afsnit">En eller flere end en</span>
 
-<p><img class="" src="images/mysql_erd_05h.svg" alt="" title="" /></p>
+<p><img class="p80" src="images/mysql_erd_05h.svg" alt="" title="" /></p>
 
-
-<table class="fixed">
-	<thead>
-		<tr>
-			<th>Relation</th>
-			<th>Beskrivelse</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>1-1</td>
-			<td>Posten findes kun en gang i hver tabel.</td>
-		</tr>
-		<tr>
-			<td>1-m</td>
-			<td>En post forekommer kun en gang i den ene tabel, men flere gange i den anden</td>
-		</tr>
-		<tr>
-			<td>m-m</td>
-			<td>Begge tabeller har flere ens poster der er relateret til hinanden</td>
-		</tr>
-	</tbody>
-</table>
-
-<h1>Lave diagrammer</h1>
+<h1>Opret diagrammer</h1>
 
 <p>Den letteste måde at tegne diagrammer er ved at anvende tegneprogrammet der ligger på <a href="https://www.draw.io/" target="_blank">draw.io</a>. Når man kommer ind på siden skal man vælge hvor den færdige tegning skal ligge. Hvis tegningen skal ligge på din computer skal du vælge <span class="inl_cmd">Device</span>.</p>
 
@@ -256,7 +182,7 @@
 
 </figure>
 
-<p>Herefter skal du vælge om du vil lave et nyt diagram eller om du vil åbne et eksisterende. Vælg <span class="inl_cmd">Crealte New Diagram</span>.</p>
+<p>Herefter skal du vælge om du vil lave et nyt diagram eller om du vil åbne et eksisterende. Vælg <span class="inl_cmd">Create New Diagram</span>.</p>
 
 <figure id="">
 
@@ -296,7 +222,9 @@
 
 </figure>
 
+<h2>Øvelse</h2>
 
+<p>Tegn <span class="inl_cmd">mentor</span>-databasen.</p>
 
 
 
@@ -304,7 +232,28 @@
 
 <p>Download diagramboxe i PDF-format: <a href="files/er_diagram_boxe.pdf" target="_blank">er_diagram_boxe.pdf</a></p>
 
+<h1>Henvisninger</h1>
 
+<p>Video: <a href="https://youtu.be/B5r8CcTUs5Y" target="_blank">https://youtu.be/B5r8CcTUs5Y</a></p>
+
+<p>Henvisninger: <a href="https://www.youtube.com/results?search_query=eddie+who+database" target="_blank">https://www.youtube.com/results?search_query=eddie+who+database</a></p>
+
+<p>E/R-Diagrammer: <a href="http://dtu20.be/ERdiagram.pdf" target="_blank">http://dtu20.be/ERdiagram.pdf</a></p>
+
+<p></p>
+
+<span class="afsnit">E/R diagrammer</span>
+
+<ol class="">
+	<li><a href="http://dtu20.be/ERdiagram.pdf" target="_blank">http://dtu20.be/ERdiagram.pdf</a></li>
+	<li><a href="https://pdfs.semanticscholar.org/e4cd/a968b46b3147bf9e8102543b927d28529ecc.pdf" target="_blank">https://pdfs.semanticscholar.org/e4cd/a968b46b3147bf9e8102543b927d28529ecc.pdf</a></li>
+	<li><a href="http://bit.csc.lsu.edu/~chen/pdf/ER_C.pdf" target="_blank">http://bit.csc.lsu.edu/~chen/pdf/ER_C.pdf</a></li>
+	<li><a href="http://slideplayer.dk/slide/3215117/" target="_blank">http://slideplayer.dk/slide/3215117/</a></li>
+	<li><a href="https://docs.oracle.com/cd/A87860_01/doc/java.817/a81358/05_deva.gif" target="_blank">https://docs.oracle.com/cd/A87860_01/doc/java.817/a81358/05_deva.gif</a></li>
+	<li><a href="https://www.smartdraw.com/entity-relationship-diagram/" target="_blank">https://www.smartdraw.com/entity-relationship-diagram/</a></li>
+	
+	<li><a href="https://www.youtube.com/watch?v=4_NPdw2Anf8" target="_blank">foreign key: https://www.youtube.com/watch?v=4_NPdw2Anf8</a></li>
+</ol>
 	
 </div><!-- end: col-md-9 -->
 
