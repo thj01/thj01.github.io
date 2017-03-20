@@ -225,6 +225,98 @@
 
 <h1>Konstruktion af andengradsfunktioner</h1>
 
+<p>Man kan konstruere en andengradsligning ved hjælp af følgende formel:</p>
+
+<div class="latex">$$ y = a(x-x_1)(x-x_2) $$</div>
+
+<p>Hvor det gælder at:</p>
+
+<div class="latex">$$ d > 0 : x_1 = \frac{ -b + \sqrt{D} }{ 2a } ~~~ og  ~~~ x_2 = \frac{ -b - \sqrt{D} }{ 2a }$$</div>
+
+<p>Måden man beviser det på er ved at regne videre</p>
+
+<div class="latex">$$ y = a \cdot (x-x_1) \cdot (x-x_2) 
+
+\\ \Updownarrow \\
+
+y = (x^2 - x_1 \cdot x - x_2 \cdot x + x_1 \cdot x_2)
+
+\\ \Updownarrow \\
+
+y = (x^2 - (x_1 + x_2) \cdot x + x_1 \cdot x_2)
+
+$$</div>
+
+<p>Nu kan vi ikke komme længere med det ovenstående, men vi ved noget om <span class="math">\( x_1 \)</span> og <span class="math">\( x_2 \)</span> da det er nulpunkter. Vi kan altså opstille følgende:</p>
+
+<div class="latex">$$ x_1 + x_2 = \frac{ -b + \sqrt{D} }{ 2a } + \frac{ -b - \sqrt{D} }{ 2a } 
+
+\\ \Updownarrow \\
+
+x_1 + x_2 = \frac{ -b - b }{ 2a }
+
+\\ \Updownarrow \\
+
+x_1 + x_2 = \frac{ -2b }{ 2a }
+
+\\ \Updownarrow \\
+
+x_1 + x_2 = \frac{ -b }{ a }
+
+
+$$</div>
+
+<p>Og vi kan opstille følgende</p>
+
+<div class="latex">$$ x_1 \cdot x_2 = \frac{ -b + \sqrt{D} }{ 2a } \cdot \frac{ -b - \sqrt{D} }{ 2a } 
+
+\\ \Updownarrow \\
+
+x_1 \cdot x_2 = \frac{ (-b + \sqrt{D})\cdot ( -b - \sqrt{D}) }{ 4a^2 }
+
+$$</div>
+
+<p>Ved hjælp af kvadratsætning 3 ovenfor kan det omskrives til:</p>
+
+<div class="latex">$$ x_1 \cdot x_2 = \frac {(-b)^2 - ( \sqrt{D})^2} {4a^2}
+
+\\ \Updownarrow \\
+
+x_1 \cdot x_2 = \frac {b^2 - D} {4a^2}
+
+\\ \Updownarrow \\
+
+x_1 \cdot x_2 = \frac {b^2 - (b^2 - 4ac} {4a^2}
+
+\\ \Updownarrow \\
+
+x_1 \cdot x_2 = \frac { -4ac} {4a^2}
+
+\\ \Updownarrow \\
+
+x_1 \cdot x_2 = \frac { c} {a}
+
+$$</div>
+
+<p>Lad os nu gå tilbage:</p>
+
+<div class="latex">$$y = (x^2 - (x_1 + x_2) \cdot x + x_1 \cdot x_2)
+
+ \\ \Updownarrow \\
+
+
+
+\\ \Updownarrow \\
+
+
+
+\\ \Updownarrow \\
+
+
+
+ $$</div>
+
+<!--
 <p>Hvis tallene <span class="math">\( \alpha \)</span> og <span class="math">\( \beta \)</span> er rødder i andengradfunktionen <span class="math">\(y = ax^2 + bx +c \)</span> gælder der:</p>
 
 <p>1. <span class="math">\( y=a(x- \alpha)(y-\beta) \)</span></p>
@@ -265,6 +357,7 @@
 <p>Anvend kvadratsætning 2 der siger at <span class="math">\( (a-b)\cdot(a-b)= a^2 - 2ab + b^2\)</span>:</p>
 
 <div class="latex">$$ y = a(x-\alpha)(x-\beta) $$</div>
+-->
 
 
 	
