@@ -80,7 +80,7 @@ INSERT INTO `klasse_og_elever` (`Klasse`, `Antal Elever`, `Piger`, `Drenge`, `St
 --
 
 CREATE TABLE `lærere` (
-  `Lærere` varchar(3) COLLATE utf8_danish_ci NOT NULL,
+  `Lærer` varchar(3) COLLATE utf8_danish_ci NOT NULL,
   `Navn` varchar(50) COLLATE utf8_danish_ci NOT NULL,
   `Lokale` varchar(4) COLLATE utf8_danish_ci NOT NULL,
   `Mobil` int(8) NOT NULL,
