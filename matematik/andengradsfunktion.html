@@ -52,11 +52,11 @@
 
 <p>For at løse andengradsliningen anvendes følgende formel </p>
 
-	<div class="latex">$$ x= \frac{b \pm \sqrt D}{2a}, ~~ hvor~ D = b^2-4ac$$</div>
+	<div class="latex">$$ x= \frac{-b \pm \sqrt D}{2a}, ~~ hvor~ D = b^2-4ac$$</div>
 	
 <p>Eller skrevet på en anden måde:</p>
 
-<div class="latex">$$ x_1 = \frac{b - \sqrt D}{2a}  ~~~~~~~~~~~~~~~~~~~~~~~~  x_2 = \frac{b + \sqrt D}{2a} $$</div>
+<div class="latex">$$ x_1 = \frac{-b - \sqrt D}{2a}  ~~~~~~~~~~~~~~~~~~~~~~~~  x_2 = \frac{-b + \sqrt D}{2a} $$</div>
 
 <p>Diskriminanten (<span class="math">\( D \)</span>) beskriver også antallet af rødder andengradsligning har. Altså hvor ligningen giver nul (<span class="math">\( ax^2 + bx +c = 0 \)</span>)</p>
 
@@ -156,11 +156,13 @@
 
 <p>Herefter isoleres x</p>
 
-	<div class="latex">$$ 2ax= -b \pm \sqrt D $$</div>
+	<div class="latex">$$ 2ax= -b \pm \sqrt D 
+	
+	\\ \Updownarrow \\
+	
+	 x= \frac {-b \pm \sqrt D}{2a} $$</div>
 
-	<div class="latex">$$ x= \frac {-b \pm \sqrt D}{2a} $$</div>
-
-<h1>Bevis Toppunktsformel</h1>
+<h1>Bevis toppunktsformel</h1>
 
 <p>For at finde toppunktet skal vi anvende en matematisk viden, som man ikke anvender på C-niveauet, nemlig differentialregning. Kort fortalt anvender man differentiering til at beskrive hældningen i et givent punkt i en kontinuerlig funktioner. I sammenhæng med toppunktet i en andengradsligning giver det mening, da tangentens hældning i toppunktet er <span class="math">\( 0 \)</span> både for <span class="math">\( a>0 \)</span> og <span class="math">\( a<0 \)</span>.</p>
 
@@ -239,11 +241,11 @@
 
 \\ \Updownarrow \\
 
-y = (x^2 - x_1 \cdot x - x_2 \cdot x + x_1 \cdot x_2)
+y = a \cdot (x^2 - x_1 \cdot x - x_2 \cdot x + x_1 \cdot x_2)
 
 \\ \Updownarrow \\
 
-y = (x^2 - (x_1 + x_2) \cdot x + x_1 \cdot x_2)
+y = a \cdot (x^2 - (x_1 + x_2) \cdot x + x_1 \cdot x_2)
 
 $$</div>
 
@@ -300,21 +302,20 @@ $$</div>
 
 <p>Lad os nu gå tilbage:</p>
 
-<div class="latex">$$y = (x^2 - (x_1 + x_2) \cdot x + x_1 \cdot x_2)
+<div class="latex">$$y = a \cdot (x^2 - (x_1 + x_2) \cdot x + x_1 \cdot x_2)
 
  \\ \Updownarrow \\
 
-
-
-\\ \Updownarrow \\
-
-
+y = a \cdot (x^2 - (\frac{ -b }{ a }) \cdot x + \frac { c} {a})
 
 \\ \Updownarrow \\
 
 
+y = ax^2 + bx + c
 
- $$</div>
+$$</div>
+
+<p>Beviset er hermed gennemført.</p>
 
 <!--
 <p>Hvis tallene <span class="math">\( \alpha \)</span> og <span class="math">\( \beta \)</span> er rødder i andengradfunktionen <span class="math">\(y = ax^2 + bx +c \)</span> gælder der:</p>
