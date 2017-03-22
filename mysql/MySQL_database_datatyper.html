@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Vidas.dk</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono|Ubuntu|Ubuntu+Condensed' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/jquery-ui.min.css">
+  <link rel="stylesheet" href="../css/jquery.tocify.css">
+  <link rel="stylesheet" href="../css/style_new.css" />
+<!-- Scripts in bottom to speed up pageload-->
+ 
+
+</head>
+<body>
+	
+	
+<div class="container-fluid">
+
+<div class="row-fluid">
+	
+<div class="col-sm-3">
+	
+	<div id="toc">
+	
+		<div id="toc_headline"></div>
+	
+	</div>
+
+</div><!-- Start slut 1. kolonne - TOC -->
+	
+<div class="col-sm-9">
+	
+<div class="title">MySQL - datatyper</div>
+
+<h1>Datatyper</h1>
+
+<p>Herunder kan du se de mest anvendte datatyper. 
+
+<p>Læs mere: <a href="http://dev.mysql.com/doc/refman/5.7/en/data-types.html" target="_blank">http://dev.mysql.com/doc/refman/5.7/en/data-types.html</a></p>
+
+<p>Læs mere: <a href="http://www.w3schools.com/sql/sql_datatypes.asp" target="_blank">http://www.w3schools.com/sql/sql_datatypes.asp</a></p>
+
+<h1>Værdier</h1> 
+ 
+<h2>Integers - heltal</h2>
+
+<p></p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th rowspan="2">Datatype</th>
+			<th rowspan="2">Størrelse <br/>(byte)</th>
+			<th colspan="2"></th>
+			<th colspan="2">UNSIGNED</th>
+		</tr>
+		<tr>
+			<th>Min. værdi</th>
+			<th>Maks. værdi</th>
+			<th>Min. værdi</th>
+			<th>Maks. værdi</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>TINYINT</td>
+			<td>1</td>
+			<td>-128</td>
+			<td>127</td>
+			<td>0</td>
+			<td>255</td>
+		</tr>
+		<tr>
+			<td>SMALLINT</td>
+			<td>2</td>
+			<td>-32.768</td>
+			<td>32.767</td>
+			<td>0</td>
+			<td>65.535</td>
+		</tr>
+		<tr>
+			<td>MEDIUMINT</td>
+			<td>3</td>
+			<td>-8.388.608</td>
+			<td>8.388.607</td>
+			<td>0</td>
+			<td>16.777.215</td>
+		</tr>
+		<tr>
+			<td>INT</td>
+			<td>4</td>
+			<td>-2.147.483.648</td>
+			<td>2.147.483.647</td>
+			<td>0</td>
+			<td>4.294.967.295</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>For at præcisere dine tal kan man "låse" antallet af cifre ved at angive det i en parantes. F.eks. vil <span class="inl_cmd">SMALLINT(4)</span> gøre, at feltet maksimalt kan indeholde 4 cifre. Det eneste du skal være opmærksom på er, at man ikke kan overskride antallet af cifre i den type man anvender f.eks: <span class="inl_cmd">TINYINT(4)</span>, da typens maksimale værdi er <span class="inl_cmd">255</span>.</p>
+
+<p>Læs mere om heltal: <a href="http://dev.mysql.com/doc/refman/5.7/en/integer-types.html" target="_blank">http://dev.mysql.com/doc/refman/5.7/en/integer-types.html</a></p>
+
+<h2>Decimaltal</h2>
+
+<p>Der findes to metoder til at anvende decimaltal. Den ene er binær og den anden er baseret på 10 talssystemet. Grunden til at man anvender to forskellige er, den hastighed systemet kan anvende tallene med og belastningen af CPU'en. Computeren er hurtigere til at regne med binære tal end tal fra 10 talssystemet. Se nedestående skema:</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Datatype</th>
+			<th>Størrelse <br/>(byte)</th>
+			<th>Talsystem</th>
+			<th>Antal cifre/decimaler (præcission)</th>
+			<th>Anvendelsesområde</th>
+			<th>Nøjagtighed</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>FLOAT</td>
+			<td>4</td>
+			<td>Binær</td>
+			<td>&sim; 7 decimaler</td>
+			<td>Videnskabeligt</td>
+			<td>Præcis</td>
+		</tr>
+		<tr>
+			<td>DOUBLE</td>
+			<td>8</td>
+			<td>Binær</td>
+			<td>&sim; 14 decimaler</td>
+			<td>Videnskabeligt</td>
+			<td>Præcis</td>
+		</tr>
+		<tr>
+			<td>Decimal</td>
+			<td>-</td>
+			<td>10</td>
+			<td>65 cifre, maks. 30 decimaler</td>
+			<td>Financiel</td>
+			<td>Eksakt</td>
+		</tr>
+	</tbody>
+</table>
+
+<span class="afsnit">Forskel på videnskabelig og "almindelige" tal</span>
+
+<p>Videnskabelige tal angives ved hjælp af et heltal efterfulgt af en 10'er potens der angiver kommaets position f.eks. som ved Faradays konstant (F' = 9,6485309 &sdot; 10<sup>4</sup> C/mol). I decimaltal vil det være 96485,309 C/mol. Det som er problemet med det tal jeg skriver her er, at det reelt kun er præcist ned til den 7'ende decimal. Det er rigeligt i videnskabelig sammenhæng, men kan være mangelfuldt i andre sammenhænge f.eks. finansielle beregninger. Dette er årsagen til, at <span class="inl_cmd">FLOAT</span> og <span class="inl_cmd">DOUBLE</span> bliver angivet som værende præcise, og <span class="inl_cmd">DECIMAL</span> til at være eksakt.</p>
+
+<p>Her er et eksempel hvor der anvendes <span class="inl_cmd">float</span> i Python:</p>
+
+<pre class="ubuntu_terminal">
+>>> 3*0.1
+0.30000000000000004 <span class="red">&lt;-- Tallet burde give 0,3</span>
+>>> 3*0.1-0.3
+5.551115123125783e-17 <span class="red">&lt;-- Tallet burde give 0</span>
+</pre>
+
+<p>Læg mærke til at <span class="inl_cmd">3*0.1</span> ikke giver <span class="inl_cmd">3.0</span> som vi forventer det.  Læg også mærke til at hvis vi tager samme regnestykke og trækker <span class="inl_cmd">0.3</span> fra, så giver det ikke <span class="inl_cmd">4.xxxe-17</span> som vi ville forvente efter forrige regnestykke. Det skyldes at Python regner med <span class="inl_cmd">float</span>, og derfor kun kan lave en binær repræsentation af decimaltallet.</p>
+
+<p>Sagt på en anden måde. <span class="inl_cmd">FLOAT</span> og <span class="inl_cmd">DOUBLE</span> er præcise nok til at arbejde med tal, hvor der kun er brug for et mindre antal decimaler (videnskab), men ikke når der er brug for mange (finans).</p>
+
+<p>Ligesom ved heltallene kan decimaltallene også præciseres (låses) ved hjælp af at angive antallet af cifre og decimaler i en parantes bagefter f.eks: DECIMAL(10,4). Det svarer til 10 cifre hvoraf de 4 er decimaler f.eks: 345987,4563</p>
+
+<p>Læs mere: <a href="http://code.rohitink.com/2013/06/12/mysql-integer-float-decimal-data-types-differences/" target="_blank">http://code.rohitink.com/2013/06/12/mysql-integer-float-decimal-data-types-differences/</a></p>
+
+<p>Om <span class="inl_cmd">FLOAT</span> og <span class="inl_cmd">DOUBLE</span>: <a href="http://dev.mysql.com/doc/refman/5.7/en/floating-point-types.html" target="_blank">http://dev.mysql.com/doc/refman/5.7/en/floating-point-types.html</a></p>
+
+<p>Om <span class="inl_cmd">DECIMAL</span>: <a href="http://dev.mysql.com/doc/refman/5.7/en/fixed-point-types.html" target="_blank">http://dev.mysql.com/doc/refman/5.7/en/fixed-point-types.html</a></p>
+
+<h1>Tekststrenge</h1>
+
+
+<h2>Varchar</h2>
+
+<p><span class="inl_cmd">VARCHAR(*antal_tegn*)</span> gemmer op til det antal tegn (0-65635) der bliver sat i parantesen. Se skemaet herunder:</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Teksttreng</th>
+			<th>VARCHAR(5)</th>
+			<th>Beskrivelse</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>''</td>
+			<td>''</td>
+			<td>Ingen tegn bliver glemt</td>
+		</tr>
+		<tr>
+			<td>'abc'</td>
+			<td>'abc'</td>
+			<td>abc bliver gemt</td>
+		</tr>
+		<tr>
+			<td>'abcdefgh'</td>
+			<td>'abcde'</td>
+			<td>fgh bliver ikke gemt da det er udover de 5 tegn.</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Felternes størrelse er afhængig af indholdet</p>
+
+<p>Læs mere: <a href="http://dev.mysql.com/doc/refman/5.7/en/char.html" target="_blank">http://dev.mysql.com/doc/refman/5.7/en/char.html</a></p>
+
+<h2>Char</h2>
+
+<p><span class="inl_cmd">CHAR(*antal_tegn*)</span> gemmer det antal tegn (0-255) der bliver sat i parantesen. Se skemaet herunder:</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Teksttreng</th>
+			<th>CHAR(5)</th>
+			<th>Beskrivelse</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>''</td>
+			<td>'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'</td>
+			<td>5 tomme tegn.</td>
+		</tr>
+		<tr>
+			<td>'abc'</td>
+			<td>'abc&nbsp;&nbsp;'</td>
+			<td>abc og 2 tomme tegn.</td>
+		</tr>
+		<tr>
+			<td>'abcdefgh'</td>
+			<td>'abcde'</td>
+			<td>fgh bliver ikke gemt da det er udover de 5 tegn.</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Felternes størrelse er afhængig af værdien der er sat.</p>
+
+<p>Læs mere: <a href="http://dev.mysql.com/doc/refman/5.7/en/char.html" target="_blank">http://dev.mysql.com/doc/refman/5.7/en/char.html</a></p>
+
+<span class="afsnit">Hvornår anvende VARCHAR() og CHAR()</span>
+
+<p>Hvis man er i tvivl bør man altid anvende VARCHAR(). Kan man holde alle sine data til CHAR() kan det i nogle tilfælde give en hastighedsfordel, men det kræver igen store databaser før det er en reel effekt.</p>
+
+<h1>Enum</h1>
+
+<p>Med <span class="inl_cmd">ENUM()</span> kan man angive nogle foruddefinerede værdier som feltet kan indeholde. Det kan f.eks. være tøjstørrelser: <span class="inl_cmd">ENUM('X-SMALL','SMALL','MEDIUM','LARGE','X-LARGE','XX-LARGE')</span>. Fordelen ved at anvende <span class="inl_cmd">ENUM()</span> til at lagre værdier er, at de fylder langt mindre end <span class="inl_cmd">VARCHAR</span>, da værdierne bliver gemt i feltet som et tal der henviser til den konkrete tekststreng. 0 &#8594; X_SMALL, 1 &#8594; SMALL, 2 &#8594; MEDIUM osv. </p>
+
+<p>Læs mere: <a href="http://dev.mysql.com/doc/refman/5.7/en/enum.html" target="_blank">http://dev.mysql.com/doc/refman/5.7/en/enum.html</a></p>
+
+<h1>Tid</h1>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Datatype</th>
+			<th>Format</th>
+			<th>Første værdi</th>
+			<th>Sidste værdi</th>
+			<th>Opdaterbar</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>DATE</td>
+			<td>YYYY-MM-DD</td>
+			<td>1000-01-01</td>
+			<td>9999-12-31</td>
+			<td>Nej</td>
+		</tr>
+		<tr>
+			<td>DATETIME</td>
+			<td>YYYY-MM-DD HH:MM:SS</td>
+			<td>1000-01-01 00:00:00</td>
+			<td>9999-12-31 23:59:59</td>
+			<td>Ja</td>
+		</tr>
+		<tr>
+			<td>TIMESTAMP</td>
+			<td>YYYY-MM-DD HH:MM:SS</td>
+			<td>1970-01-01 00:00:00</td>
+			<td>2038-01-19 03:14:07</td>
+			<td>Ja</td>
+		</tr>
+		<tr>
+			<td>TIME</td>
+			<td>HHH:MM:SS</td>
+			<td>-838:59:59</td>
+			<td>838:59:59</td>
+			<td>Nej</td>
+		</tr>
+		<tr>
+			<td>YEAR</td>
+			<td>YYYY</td>
+			<td>1901</td>
+			<td>2155</td>
+			<td>Nej</td>
+		</tr>
+		<tr>
+			<td colspan="5">YYYY = År , MM = måned , DD= dag , HH = timer , MM = minutter , SS = sekunder</td>
+		</tr>
+	</tbody>
+</table>
+
+<p><span class="inl_cmd">DATETIME</span> og <span class="inl_cmd">TIMESTAMP</span> kan sættes til at opdatere automatisk når en post bliver bliver oprettet eller ændret. Begge datatyper kan også tilføjes en værdi for dele af sekundet til en præcission på mikrosekunder (6 decimaler). Det gøres ved at indsætte præcissionen i en parantes efter datatypen f.eks: <span class="inl_cmd">DATETIME(3)</span>, hvilket angiver tusindedele af et sekund.</p>
+
+<p>Læs mere: <a href="http://dev.mysql.com/doc/refman/5.7/en/datetime.html" target="_blank">http://dev.mysql.com/doc/refman/5.7/en/datetime.html</a></p>
+
+
+
+	
+</div><!-- end: col-md-9 -->
+
+<footer>
+
+	<p><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons licens" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>Indholdet på Vidas.dk er licenseret under <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> og er skrevet af Thomas Jensen. (<a href="../hvem_er_jeg.html" target="_blank">Læs mere</a>)</p>
+
+</footer>
+	
+	
+</div><!-- end: row-fluid -->
+
+</div> <!-- end: container-fluid -->
+
+
+<!-- SCRIPT SECTION -->
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script type="text/javascript" src="../js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="../js/jquery.tocify.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+
+<!-- PRETTYFY-->
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+
+
+<!-- HIGHLIGHT -->
+	<script src="../js/highlight.pack.js" type="text/javascript"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+
+<!-- MATHJAX -->
+<script type="text/javascript" async 		src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+		MathJax.Hub.Config({ jax: ["input/TeX","output/HTML-CSS"], displayAlign: "left"	});
+</script>
+<!-- TOCIFY -->
+<script>
+	$(function() {var toc = $("#toc").tocify({ selectors: "h1, h2, h3, h4" }).data("toc-tocify"); });
+</script>
+<!-- GOOGLE ANALYTICS -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-89933285-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</body>
+</html>
