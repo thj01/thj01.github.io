@@ -38,15 +38,29 @@
 
 <h1>Opret databasen EUD-firma</h1>
 
-<p></p>
+<p>Du skal i denne opgave oprette nedestående database, hvor du selv laver tabellen <span class="inl_cmd">Kunde</span>, men importerer tabellen <span class="inl_cmd">postnr.</span></p>
+
+<figure id="">
+
+	<img class="p80" src="images/mysql_opgave_eud_erd.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Du skal indsætte 10 kunder i tabellen og vise at du kan lave en søgning så du udskrive kundens fulde navn og adresse</p>
 
 <h1>Importer postnumre</h1>
 
+<p>I stedet for at indtaste alle postnumre og tilhørende bynavne i vores database, henter vi disse data i en fil og omdanner den til en <abbr title="Comma-Separated Values">*.csv</abbr>-fil (<b>C</b>omma-<b>S</b>eparated <b>V</b>alues).</p>
+
 <p>Postnumre i <abbr title="Comma-Separated Values">*.csv</abbr>-fil: <a href="files/postnummerfil.csv" download>postnummerfil.csv</a></p>
 
-<p>Originalen er downloaded herfra: <a href="http://www.postnord.dk/da/Privat/Kundeservice/postnummerkort/Sider/postnummerkort.aspx" target="_blank">Postnord</a></p>	
+<p>Du kan også vælge at hente filen direkte fra <a href="http://www.postnord.dk/da/Privat/Kundeservice/postnummerkort/Sider/postnummerkort.aspx" target="_blank">Postnord's hjemmeside</a>. Her skal du blot være opmærksom på at filen kommer som en excel fil, og at excel gemmer <span class="inl_cmd">*.csv</span>-filer med <span class="inl_cmd">;</span> som seperator og ikke <span class="inl_cmd">,</span>. Hvordan Microsoft får en <span class="inl_cmd">komma</span>-separeret fil til at være en <span class="inl_cmd">Semikolon</span>-separeret fil må så stå hen i det uvisse.</p>	
 
-<p>Gå ind i databasen og vælg menuen <span class="inl_cmd">Importer</span>. og vælg den downloadede fil.</p>
+<p>For at importere <span class="inl_cmd">csv</span>-filen skal du gøre to ting før du trykker <span class="inl_cmd">Udfør</span>:</p>
+
+<p>gå ind i databasen og vælge menuen <span class="inl_cmd">Importer</span>. og vælg den downloadede fil.</p>
 
 <figure id="">
 
@@ -56,6 +70,9 @@
 
 </figure>
 
+<p>Sætte fluenben i "<span class="inl_cmd">Den første linie af filen indeholder tabellens kolonnenavne... </span>"</p>
+
+
 <figure id="">
 
 	<img class="p90" src="images/mysql_import_postnummer_csv_02.png" alt="" title="" />
@@ -64,10 +81,37 @@
 
 </figure>
 
+<p><b>Vær opmærksom på</b> at hvis du har eksporteret et regneark til <span class="inl_cmd">csv</span> ved hjælp af Excel, så skal du ændre feltet "<span class="inl_cmd">kolonner adskilt med</span>" fra <span class="inl_cmd">,</span> &rarr; <span class="inl_cmd">;</span>.</p>
 
+<p>Når du trykker udfør er tabellen importeret. Vælg menuen <span class="inl_cmd">Vis</span>:</p>
 
+<figure id="">
 
+	<img class="p90" src="images/mysql_import_postnummer_csv_03.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Læg mærke til at phpMyAdmin kommer med en advarsel: "Current selection does not contain a unique column". I praksis betyder det, at vi ikke kan rette, kopiere og slette i den.</p>
+
+<p>Gå ind i menuen <span class="inl_cmd">Struktur</span> og sæt <span class="inl_cmd">Postnr.</span> til at være Primær nøgle.</p>
+
+<figure id="">
+
+	<img class="p30" src="images/mysql_import_postnummer_csv_04.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Som du kan se medfører det en fejl. Postnummeret 1055 forekommer mere end en gang, og derfor kan feltet ikke være en primærnøgle. Det betyder enten, at vi må fravælge at denne tabel har en primærnøgle, eller vi må rette i filen manuelt for at fjerne alle dubletter af postnumre. Her vælger vi ikke at gøre mere</p>
+
+<p>Ændr tabellens navn til "<span class="inl_cmd">postnr</span>" ved at gå ind i menuen <span class="inl_cmd">Operationer</span> og blokken <span class="inl_cmd">Tabel-indstillinger</span>.</p>
 	
+
+
+
 	
 </div><!-- end: col-md-9 -->
 
