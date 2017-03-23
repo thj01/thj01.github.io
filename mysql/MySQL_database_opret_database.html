@@ -744,7 +744,7 @@ ALTER TABLE `mentorer`
 <p>Det kan man skrive ind i en tekstfil, ved at lade rækkerne være adskilt af linieskift og kolonnerne af kommaer (<span class="inl_cmd">,</span>). Læg mærke til at den første række indeholder kolonne navnene.</p>
 
 
-<pre class="black">Navn,Mobil,Mail 
+<pre class="black">f_navn,e_navn,Mobil,Mail 
 Anders,Andersen,23344556,aa@fakemail.dk 
 Bente,bentsen,23344557,bb@fakemail.dk
 Carl,Carlsen,23344558,cc@fakemail.dk
@@ -754,17 +754,63 @@ Frederikke,Frederiksen,23344561,ff@fakemail.dk</pre>
 
 <p>Du kan hente denne lille csv fil her: <a href="files/test_csv.csv" download>test_csv.csv</a></p>
 
-<p>Man kan importere <span class="inl_cmd">csv</span>-filer ved at vælge sin database og vælge menuen <span class="inl_cmd">Importer</span></p>
+<p>Man kan importere <span class="inl_cmd">csv</span>-filer ved at vælge sin database og vælge menuen <span class="inl_cmd">Importer</span>. Vælg databasen <span class="inl_cmd">mentorer</span> og herefter menuen <span class="inl_cmd">Importer</span>.</p>
 
+<p>Klik på knappen <span class="knap">Vælg fil</span> og find filen <span class="inl_cmd">test_csv.csv</span></p>
 
+<figure id="">
 
+	<img class="p90" src="images/mysel_import_csv01.png" alt="" title="" />
 
+	<figcaption></figcaption>
 
+</figure>
 
+<p>Når den er valgt skal du sætte formatet til <span class="inl_cmd">CSV</span> og sætte flueben i "<span class="inl_cmd">Den første linie af filen indeholder tabellens kolonnenavne</span>"</p>
 
+<figure id="">
 
+	<img class="p90" src="images/mysel_import_csv02.png" alt="" title="" />
 
+	<figcaption></figcaption>
 
+</figure>
+
+<p>Herefter kan du trykke <span class="knap">Udfør</span></p>
+
+<p>Når databasen er lagt ind kan du se den nye tabel ved at klikke på menuen <span class="inl_cmd">Struktur</span>:</p>
+
+<figure id="">
+
+	<img class="p90" src="images/mysel_import_csv03.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Vi skal lige have ændret navnet på tabellen, og det gør vi ved at klikke på tabellen <span class="inl_cmd">Table 4</span> og vælge menuen <span class="inl_cmd">Operationer</span> (du skal måske kigge under menuen <span class="inl_cmd">Mere</span>). Her ændrer vi navnet til <span class="inl_cmd">bestyrelse</span>.  </p>
+
+<figure id="">
+
+	<img class="p90" src="images/mysel_import_csv04.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Klik på <span class="knap">Udfør</span>, og se resulatet ved at vælge hele databasen igen og se resultatet:</p>
+
+<figure id="">
+
+	<img class="p90" src="images/mysel_import_csv05.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>SOm det er nu har tabellen ingen primærnøgle</p>
+
+<p>Det kan være nødvendigt at justere på datatyperne og deres længder, hvis der senere skal ændres i listen</p>
 	
 </div><!-- end: col-md-9 -->
 
