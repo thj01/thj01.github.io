@@ -695,6 +695,7 @@ ALTER TABLE `mentorer`
 <table class="">
 	<thead>
 		<tr>
+			<th>Initialer</th>
 			<th>f_Navn</th>
 			<th>e_navn</th>
 			<th>Mobil</th>
@@ -703,36 +704,42 @@ ALTER TABLE `mentorer`
 	</thead>
 	<tbody>
 		<tr>
+			<td>bs1</td>
 			<td>Anders</td>
 			<td>Andersen</td>
 			<td>23344556</td>
 			<td>aa@fakemail.dk</td>
 		</tr>
 		<tr>
+			<td>bs2</td>
 			<td>Bente</td>
 			<td>bentsen</td>
 			<td>23344556</td>
 			<td>bb@fakemail.dk</td>
 		</tr>
 		<tr>
+			<td>bs3</td>
 			<td>Carl</td>
 			<td>Carlsen</td>
 			<td>23344558</td>
 			<td>cc@fakemail.dk</td>
 		</tr>
 		<tr>
+			<td>bs4</td>
 			<td>Dorte</td>
 			<td>Dotsen</td>
 			<td>23344559</td>
 			<td>dd@fakemail.dk</td>
 		</tr>
 		<tr>
+			<td>bs5</td>
 			<td>Egon</td>
 			<td>Egonsen</td>
 			<td>23344560</td>
 			<td>ee@fakemail.dk</td>
 		</tr>
 		<tr>
+			<td>bs6</td>
 			<td>Frederikke</td>
 			<td>Frederiksen</td>
 			<td>23344561</td>
@@ -744,19 +751,19 @@ ALTER TABLE `mentorer`
 <p>Det kan man skrive ind i en tekstfil, ved at lade rækkerne være adskilt af linieskift og kolonnerne af kommaer (<span class="inl_cmd">,</span>). Læg mærke til at den første række indeholder kolonne navnene.</p>
 
 
-<pre class="black">f_navn,e_navn,Mobil,Mail 
-Anders,Andersen,23344556,aa@fakemail.dk 
-Bente,bentsen,23344557,bb@fakemail.dk
-Carl,Carlsen,23344558,cc@fakemail.dk
-Dorte,Dotsen,23344559,dd@fakemail.dk
-Egon,Egonsen,23344560,ee@fakemail.dk
-Frederikke,Frederiksen,23344561,ff@fakemail.dk</pre>
+<pre class="black">initialer,f_navn,e_navn,Mobil,Mail 
+bs1,Anders,Andersen,23344556,aa@fakemail.dk 
+bs2,Bente,bentsen,23344557,bb@fakemail.dk
+bs3,Carl,Carlsen,23344558,cc@fakemail.dk
+bs4,Dorte,Dotsen,23344559,dd@fakemail.dk
+bs5,Egon,Egonsen,23344560,ee@fakemail.dk
+bs6,Frederikke,Frederiksen,23344561,ff@fakemail.dk</pre>
 
-<p>Du kan hente denne lille csv fil her: <a href="files/test_csv.csv" download>test_csv.csv</a></p>
+<p>Du kan hente denne lille csv fil her: <a href="files/bestyrelse_csv.csv" download>bestyrelse_csv.csv</a>. Som standard bliver den lagt i mappen <span class="inl_cmd">Overførsler</span>.</p>
 
 <p>Man kan importere <span class="inl_cmd">csv</span>-filer ved at vælge sin database og vælge menuen <span class="inl_cmd">Importer</span>. Vælg databasen <span class="inl_cmd">mentorer</span> og herefter menuen <span class="inl_cmd">Importer</span>.</p>
 
-<p>Klik på knappen <span class="knap">Vælg fil</span> og find filen <span class="inl_cmd">test_csv.csv</span></p>
+<p>Klik på knappen <span class="knap">Vælg fil</span> og find filen <span class="inl_cmd">bestyrelse_csv.csv</span></p>
 
 <figure id="">
 
