@@ -477,19 +477,15 @@ DESCRIBE klasse_og_elever "Startår";
 
 <p>For at starte MySQL op fra kommandolinien skal vi først ind i <span class="inl_cmd">xampp</span>'s mappe og finde den mappe MySQL er installeret i.</p>
 
-<h2>Åbn terminalen</h2>
+<h2>Tilgå MySQL-mappen</h2>
 
 <h3>...på Windows</h3>
 
 <p>Åbn terminalen ved at søge på <span class="inl_cmd">cmd</span> og vælge <span class="inl_cmd">Kommandoprompt</span></p>
 
-<p>Naviger til mappen <span class="inl_cmd">c:\xampp\mysql\bin</span>:</p>
+<p>Naviger til mappen med kommandoen <span class="inl_cmd">c:\xampp\mysql\bin</span>:</p>
 
 <code class="cmd">cd c:\xampp\mysql\bin</code>
-
-<p>Herefter køres kommandoen:</p>
-
-<code class="cmd">mysql -h localhost -u root -p</code>
 
 <p>Har du ikke angivet noget password trykker du blot <kbd>Enter</kbd>, når du bliver bedt om et password</p>
 
@@ -497,25 +493,19 @@ DESCRIBE klasse_og_elever "Startår";
 
 <p>Åbn terminalen ved at søge på <span class="inl_cmd">Terminal</span> i <span class="inl_cmd">Launchpad</span></p>
 
-<p>Naviger til mappen <span class="inl_cmd">/Applications/XAMPP/xamppfiles/bin</span></p>
+<p>Naviger til mappen med kommandoen <span class="inl_cmd">/Applications/XAMPP/xamppfiles/bin</span></p>
 
 <code class="cmd">cd /Applications/XAMPP/xamppfiles/bin</code>
-
-<p>Herefter køres kommandoen:</p>
-
-<code class="cmd">./mysql -h localhost -u root -p</code>
-
-
-
 
 <h2>login</h2>
 
 <pre>
 	<code class="sql">
-mysql -h localhost -u root
+mysql -h localhost -u root -p
 	</code>
 </pre>
 
+<p>Har du ikke angivet noget password trykker du blot <kbd>Enter</kbd>, når du bliver bedt om et password</p>
 
 
 <pre class="ubuntu_terminal">tj@tj-desktop:~$ mysql -h localhost -u root -p
@@ -544,6 +534,22 @@ SHOW DATABASES|SCHEMAS;
 	</code>
 </pre>
 
+<pre class="black">MariaDB [(none)]> SHOW DATABASES;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mentor             |
+| mentor_ny          |
+| mysql              |
+| performance_schema |
+| phpmyadmin         |
+| test               |
++--------------------+
+7 rows in set (0.00 sec)
+MariaDB [(none)]>
+</pre>
+
 <p>Når der står <span class="inl_cmd">DATABASES|SCHEMAS</span> betyder det at man kan vælge enten at skrive <span class="inl_cmd">DATABASES</span> eller <span class="inl_cmd">SCHEMAS</span></p>
 
 <h2>Vælg database</h2>
@@ -554,6 +560,11 @@ USE mentor;
 	</code>
 </pre>
 
+<pre class="black">MariaDB [(none)]> USE mentor;
+Database changed
+MariaDB [mentor]>
+</pre>
+
 <h2>Vis tabeller</h2>
 
 <pre>
@@ -562,12 +573,41 @@ SHOW tables;
 	</code>
 </pre>
 
+<pre class="black">MariaDB [mentor]> SHOW tables;
++---------------------+
+| Tables_in_mentor    |
++---------------------+
+| klasse_og_elever    |
+| klasser_og_mentorer |
+| lærere              |
++---------------------+
+3 rows in set (0.00 sec)
+
+MariaDB [mentor]>
+</pre>
+
 <h2>Vis struktur</h2>
 
 <pre>
 	<code class="sql">
 DESCRIBE klasse_og_elever;
 	</code>
+</pre>
+
+<pre class="black">
+MariaDB [mentor]> DESCRIBE klasse_og_elever;
++--------------+------------+------+-----+---------+-------+
+| Field        | Type       | Null | Key | Default | Extra |
++--------------+------------+------+-----+---------+-------+
+| Klasse       | varchar(3) | NO   | PRI | NULL    |       |
+| Antal Elever | tinyint(2) | NO   |     | NULL    |       |
+| Piger        | tinyint(2) | NO   |     | NULL    |       |
+| Drenge       | tinyint(2) | NO   |     | NULL    |       |
+| Startår      | year(4)    | NO   |     | NULL    |       |
++--------------+------------+------+-----+---------+-------+
+5 rows in set (0.01 sec)
+
+MariaDB [mentor]>
 </pre>	
 
 <h2>Forlad MYSQL</h2>
@@ -576,6 +616,12 @@ DESCRIBE klasse_og_elever;
 	<code class="sql">
 exit
 	</code>
+</pre>
+
+<pre class="black">MariaDB [mentor]> exit
+Bye
+
+c:\xampp\mysql\bin>
 </pre>
 
 
