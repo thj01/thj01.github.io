@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Vidas.dk</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono|Ubuntu|Ubuntu+Condensed' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/jquery-ui.min.css">
+  <link rel="stylesheet" href="../css/jquery.tocify.css">
+  <link rel="stylesheet" href="../css/style_new.css" />
+<!-- Scripts in bottom to speed up pageload-->
+ 
+
+</head>
+<body>
+	
+	
+<div class="container-fluid">
+
+<div class="row-fluid">
+	
+<div class="col-sm-3">
+	
+	<div id="toc">
+	
+		<div id="toc_headline"></div>
+	
+	</div>
+
+</div><!-- Start slut 1. kolonne - TOC -->
+	
+<div class="col-sm-9">
+	
+<div class="title">MySQL - eksporter og importer database</div>
+
+
+<h1>Eksporter og importer</h1>
+
+<blockquote class="center">
+	<p>
+		Rigtige mænd tager ikke backup ... de græder bare
+	</p>
+</blockquote>
+
+<p>Når man arbejder med data i alle sammenhænge bør man have backup af sine vigtige filer. phpMyAdmin gør det nemt at tage backup af ens database. I database sammenhæng eksporterer man.</p>
+
+<h2>Eksporter databasen</h2>
+
+<p>For at eksportere en database vælger man menuen <span class="inl_cmd">Eksporter</span>:</p>
+
+<figure id="">
+
+	<img class="p90" src="images/mysql_eksporter.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Vi beholder det forudvalgte <span class="inl_cmd">SQL</span>format og klikker på <span class="knap">Udfør</span>. Herefter bliver filen gem i mappen <span class="inl_cmd">Overførsler</span> under det samme navn som databasen hedder med endelsen <span class="inl_cmd">.sql</span>. I dette tilfælde <span class="inl_cmd">mentorer.sql</span>.</p>
+
+<p>Det kan anbefales at filen med det samme omdøbes, så det bliver tydeligt hvornår backup'en er taget f.eks: <span class="inl_cmd">mentorer031116</span>.</p>
+
+<p>Indholdet af denne fil er de kommandoer der skal til for at gendanne databasen:</p>
+
+<details>
+
+	<summary>Vis koden i den eksporterede fil</summary>
+
+<pre>
+	<code class="SQL">
+-- phpMyAdmin SQL Dump
+-- version 4.5.1
+-- http://www.phpmyadmin.net
+--
+-- Vært: 127.0.0.1
+-- Genereringstid: 03. 11 2016 kl. 17:06:25
+-- Serverversion: 10.1.16-MariaDB
+-- PHP-version: 5.6.24
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `mentorer`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Struktur-dump for tabellen `klasser_og_mentorer`
+--
+
+CREATE TABLE `klasser_og_mentorer` (
+  `Klasse` varchar(3) COLLATE utf8_danish_ci NOT NULL,
+  `Mentor` varchar(3) COLLATE utf8_danish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_danish_ci;
+
+--
+-- Data dump for tabellen `klasser_og_mentorer`
+--
+
+INSERT INTO `klasser_og_mentorer` (`Klasse`, `Mentor`) VALUES
+('1a', 'tj'),
+('1b', 'ba'),
+('1x', 'cc'),
+('2a', 'tj'),
+('2b', 'ba'),
+('2x', 'cc'),
+('3a', 'tj'),
+('3b', 'ba');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur-dump for tabellen `klasse_og_elever`
+--
+
+CREATE TABLE `klasse_og_elever` (
+  `Klasse` varchar(3) COLLATE utf8_danish_ci NOT NULL,
+  `Antal Elever` tinyint(2) NOT NULL,
+  `Piger` tinyint(2) NOT NULL,
+  `Drenge` tinyint(2) NOT NULL,
+  `Startår` year(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_danish_ci;
+
+--
+-- Data dump for tabellen `klasse_og_elever`
+--
+
+INSERT INTO `klasse_og_elever` (`Klasse`, `Antal Elever`, `Piger`, `Drenge`, `Startår`) VALUES
+('1a', 17, 9, 8, 2016),
+('1b', 16, 8, 8, 2016),
+('1x', 28, 13, 15, 2016),
+('2a', 22, 10, 12, 2015),
+('2b', 24, 13, 11, 2015),
+('2x', 31, 17, 14, 2015),
+('3a', 21, 8, 13, 2015),
+('3b', 22, 9, 13, 2015);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur-dump for tabellen `mentorer`
+--
+
+CREATE TABLE `mentorer` (
+  `Mentor` varchar(3) COLLATE utf8_danish_ci NOT NULL,
+  `Navn` varchar(50) COLLATE utf8_danish_ci NOT NULL,
+  `Lokale` varchar(4) COLLATE utf8_danish_ci NOT NULL,
+  `Mobil` int(8) NOT NULL,
+  `Mail` varchar(50) COLLATE utf8_danish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_danish_ci;
+
+--
+-- Data dump for tabellen `mentorer`
+--
+
+INSERT INTO `mentorer` (`Mentor`, `Navn`, `Lokale`, `Mobil`, `Mail`) VALUES
+('ba', 'Bent Andersen', '18', 23344518, 'ba@fakemail.dk'),
+('cc', 'Christina Carlsen', '19', 23344519, 'cc@fakemail.dk'),
+('tj', 'Thomas Jensen', '17', 23344517, 'tj@fakemail.dk');
+
+--
+-- Begrænsninger for dumpede tabeller
+--
+
+--
+-- Indeks for tabel `klasser_og_mentorer`
+--
+ALTER TABLE `klasser_og_mentorer`
+  ADD PRIMARY KEY (`Klasse`);
+
+--
+-- Indeks for tabel `klasse_og_elever`
+--
+ALTER TABLE `klasse_og_elever`
+  ADD PRIMARY KEY (`Klasse`);
+
+--
+-- Indeks for tabel `mentorer`
+--
+ALTER TABLE `mentorer`
+  ADD PRIMARY KEY (`Mentor`);
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+	</code>
+</pre>
+
+<span class="afsnit"></span>
+
+<p><span class="bold">Hent filen:</span> <a href="files/mentor_db_v1.sql" target="_blank">mentor_db_v1.sql</a></p>
+
+</details>
+
+<h2>Importer</h2>
+
+<p>Vi kan prøve at importere databasen under et andet navn. Det første vi gør er at oprette en ny database til indholdet. Husk at sætte tegnsæt(<span class="inl_cmd">utf8-danish_ci</span>). Herefter vælger vi fanen <span class="inl_cmd">Importer</span></p>
+
+<figure id="">
+
+	<img class="p90" src="images/mysql_importer.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Herefter skal du:</p>
+
+<ol class="">
+	<li>Klikke på <span class="knap">Vælg fil</span></li>
+	<li>Navigere hen til din fil og klikke på <span class="knap">Åbn</span></li>
+	<li>Scrolle ned ad siden og klikke på <span class="knap">Udfør</span> </li>
+</ol>
+
+<p></p>
+
+<figure id="">
+
+	<img class="p90" src="images/mysql_importer_succes.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>For at teste om det er lykkes vælger du fanen <span class="inl_cmd">Struktur</span>.</p>
+
+<figure id="">
+
+	<img class="p90" src="images/mysql_importer_succes_tjek.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h2>Ryd op i dine backups</h2>
+
+<p>Når man har haft computer i et stykke tid begynder man at have en masse backups. Nogle gange er det en god ide at kigge dem igennem og få slettet det som ikke er relevant mere. Det kan f.eks. være forskelige versioner af ens opgaver eller filer der er lavet backup af flere gange. Det kan f.eks være dokumenter og billeder.</p>
+
+<p>Det kan også være en tur ned ad memory lane.</p>
+
+<figure id="">
+
+	<img class="p40" src="http://imgs.xkcd.com/comics/old_files.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Taget fra: <a href="https://xkcd.com/1360/" target="_blank">https://xkcd.com/1360/</a></p>
+
+
+<h1>CSV</h1>
+
+<p>Skal man indtaste meget data kan det betale sig at anvende <abbr title="Comma-Separated Values">csv</abbr> filer. Det er filer hvor man ved hjælp af simple tekstfiler kan indtaste store mængder data. Se eksemplet f.eks. tabellen herunder:</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Initialer</th>
+			<th>f_Navn</th>
+			<th>e_navn</th>
+			<th>Mobil</th>
+			<th>Mail</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>bs1</td>
+			<td>Anders</td>
+			<td>Andersen</td>
+			<td>23344556</td>
+			<td>aa@fakemail.dk</td>
+		</tr>
+		<tr>
+			<td>bs2</td>
+			<td>Bente</td>
+			<td>bentsen</td>
+			<td>23344556</td>
+			<td>bb@fakemail.dk</td>
+		</tr>
+		<tr>
+			<td>bs3</td>
+			<td>Carl</td>
+			<td>Carlsen</td>
+			<td>23344558</td>
+			<td>cc@fakemail.dk</td>
+		</tr>
+		<tr>
+			<td>bs4</td>
+			<td>Dorte</td>
+			<td>Dotsen</td>
+			<td>23344559</td>
+			<td>dd@fakemail.dk</td>
+		</tr>
+		<tr>
+			<td>bs5</td>
+			<td>Egon</td>
+			<td>Egonsen</td>
+			<td>23344560</td>
+			<td>ee@fakemail.dk</td>
+		</tr>
+		<tr>
+			<td>bs6</td>
+			<td>Frederikke</td>
+			<td>Frederiksen</td>
+			<td>23344561</td>
+			<td>ff@fakemail.dk</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Det kan man skrive ind i en tekstfil, ved at lade rækkerne være adskilt af linieskift og kolonnerne af kommaer (<span class="inl_cmd">,</span>). Læg mærke til at den første række indeholder kolonne navnene.</p>
+
+
+<pre class="black">initialer,f_navn,e_navn,Mobil,Mail 
+bs1,Anders,Andersen,23344556,aa@fakemail.dk 
+bs2,Bente,bentsen,23344557,bb@fakemail.dk
+bs3,Carl,Carlsen,23344558,cc@fakemail.dk
+bs4,Dorte,Dotsen,23344559,dd@fakemail.dk
+bs5,Egon,Egonsen,23344560,ee@fakemail.dk
+bs6,Frederikke,Frederiksen,23344561,ff@fakemail.dk</pre>
+
+<p>Du kan hente denne lille csv fil her: <a href="files/bestyrelse_csv.csv" download>bestyrelse_csv.csv</a>.</p>
+
+<p>Man kan importere <span class="inl_cmd">csv</span>-filer ved at vælge sin database og vælge menuen <span class="inl_cmd">Importer</span>. Vælg databasen <span class="inl_cmd">mentorer</span> og herefter menuen <span class="inl_cmd">Importer</span>.</p>
+
+<p>Klik på knappen <span class="knap">Vælg fil</span> og find filen <span class="inl_cmd">bestyrelse_csv.csv</span></p>
+
+<figure id="">
+
+	<img class="p90" src="images/mysel_import_csv01.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Når den er valgt skal du sætte formatet til <span class="inl_cmd">CSV</span> og sætte flueben i "<span class="inl_cmd">Den første linie af filen indeholder tabellens kolonnenavne</span>"</p>
+
+<figure id="">
+
+	<img class="p90" src="images/mysel_import_csv02.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Herefter kan du trykke <span class="knap">Udfør</span></p>
+
+<p>Når databasen er lagt ind kan du se den nye tabel ved at klikke på menuen <span class="inl_cmd">Struktur</span>:</p>
+
+<figure id="">
+
+	<img class="p90" src="images/mysel_import_csv03.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Vi skal lige have ændret navnet på tabellen, og det gør vi ved at klikke på tabellen <span class="inl_cmd">Table 4</span> og vælge menuen <span class="inl_cmd">Operationer</span> (du skal måske kigge under menuen <span class="inl_cmd">Mere</span>). Her ændrer vi navnet til <span class="inl_cmd">bestyrelse</span>.  </p>
+
+<figure id="">
+
+	<img class="p90" src="images/mysel_import_csv04.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Klik på <span class="knap">Udfør</span>, og se resulatet ved at vælge hele databasen igen og se resultatet:</p>
+
+<figure id="">
+
+	<img class="p90" src="images/mysel_import_csv05.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Som det sidste ændrer posten <span class="inl_cmd">initialer</span> til at være primærnøgle for tabellen.</p>
+
+<figure id="">
+
+	<img class="p90" src="images/mysel_import_csv06.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Læg mærke til at længderne af datatyperne er sat efter <span class="inl_cmd">csv</span>-filen. Det kan være nødvendigt at justere på datatyperne og/eller længderne af dem, hvis der senere skal ændres i listen.</p>
+
+<h2>Importer postnumre</h2>
+
+<p>Her vil vi importere de danske postnumre. Oprindeligt kommer tabellen fra <a href="http://www.postnord.dk/da/Privat/Kundeservice/postnummerkort/Sider/postnummerkort.aspx" target="_blank">Postnord's hjemmeside</a>, men til denne opgave har jeg omdannet den til <span class="inl_cmd">csv</span>-format.</p>
+
+<p>Hent filen <a href="files/postnummerfil.csv" download>postnummerfil.csv</a> og importer den i en database.</p>
+
+<blockquote>
+	<p>
+		Ofte får man leveret datafiler i excel-format. Det kræver at man i Excel gemmer filen i <span class="inl_cmd">csv</span>-format. Du skal være opmærksom på at Microsoft ikke gemmer filen korrekt, men med semikolonner (<span class="inl_cmd">;</span>) i stedet for kommaer (<span class="inl_cmd">,</span>).				
+	</p>
+	<p>
+		Så anvender du <span class="inl_cmd">csv</span>filer fra Excel skal feltet "<span class="inl_cmd">Kolonner adskilt med:</span>" ændres fra <span class="inl_cmd">,</span> til <span class="inl_cmd">;</span>
+	</p>
+</blockquote>
+
+<p>Når du importeret tabellen skal du vælge menuen <span class="inl_cmd">Vis</span>:</p>
+
+<figure id="">
+
+	<img class="p90" src="images/mysql_import_postnummer_csv_03.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Læg mærke til at phpMyAdmin kommer med en advarsel: "Current selection does not contain a unique column". Tabellen har altså ikke en PRIMÆR nøgle, og det betyder, at vi ikke kan rette, kopiere og slette i tabellen. Det skal vi have ændret. Gå ind i menuen <span class="inl_cmd">Struktur</span> og sæt <span class="inl_cmd">Postnr.</span> til at være PRIMÆR nøgle. Læg mærke til at det udløser en fejl.</p>
+
+<figure id="">
+
+	<img class="p30" src="images/mysql_import_postnummer_csv_04.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Årsagen hertil er, at bl.a. postnummeret 1055 forekommer mere end en gang, hvilket betyder at feltet ikke kan være en primærnøgle. Det betyder enten:</p>
+
+<ol class="">
+	<li>... at vi må rette og ændre i tabellen manuelt for at fjerne dubletter af postnumre.</li>
+	<li>... at vi må oprette en "<span class="inl_cmd">mange-til-mange</span>" relation</li>
+	<li>... at vi må fravælge at denne tabel har en primærnøgle</li>
+</ol>
+
+<p>I dette tilfælde vælger vi den 3. mulighed.</p>
+
+<p>Som det sidste ændrer vi tabellens navn til "<span class="inl_cmd">postnr</span>" ved at gå ind i menuen <span class="inl_cmd">Operationer</span> og blokken <span class="inl_cmd">Tabel-indstillinger</span>.</p>
+	
+	
+</div><!-- end: col-md-9 -->
+
+<footer>
+
+	<p><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons licens" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>Indholdet på Vidas.dk er licenseret under <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> og er skrevet af Thomas Jensen. (<a href="../hvem_er_jeg.html" target="_blank">Læs mere</a>)</p>
+
+</footer>
+	
+	
+</div><!-- end: row-fluid -->
+
+</div> <!-- end: container-fluid -->
+
+
+<!-- SCRIPT SECTION -->
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script type="text/javascript" src="../js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="../js/jquery.tocify.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+
+<!-- PRETTYFY-->
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+
+
+<!-- HIGHLIGHT -->
+	<script src="../js/highlight.pack.js" type="text/javascript"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+
+<!-- MATHJAX -->
+<script type="text/javascript" async 		src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+		MathJax.Hub.Config({ jax: ["input/TeX","output/HTML-CSS"], displayAlign: "left"	});
+</script>
+<!-- TOCIFY -->
+<script>
+	$(function() {var toc = $("#toc").tocify({ selectors: "h1, h2, h3, h4" }).data("toc-tocify"); });
+</script>
+<!-- GOOGLE ANALYTICS -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-89933285-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</body>
+</html>
