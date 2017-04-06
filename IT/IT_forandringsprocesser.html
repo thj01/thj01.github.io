@@ -269,23 +269,56 @@
 
 <h2>Vandfaldsmodellen</h2>
 
-<p><a href="https://da.wikipedia.org/wiki/Vandfaldsmodellen" target="_blank">Wikipedia: Vandfaldsmodellen</a></p>
+<p>Vandfaldsmodelle er udviklet af Winston W. Royce i 1970, og var egentlig tænkt som et forarbejde til en udviklingsmodel. Modellen er blevet anvendt, fordi den er meget simpel i sin struktur, og at den har "fornuftig" progression (fremdrift).</p>
 
 <ol class="">
 	<li>Kravspecifikation</li>
 	<li>Design</li>
-	<li>Konstruktion (aka: implementering eller kodning)</li>
+	<li>Konstruktion (implementering eller kodning)</li>
 	<li>Integration</li>
-	<li>Afprøvning og fejlfinding (aka: verifikation)</li>
+	<li>Afprøvning og fejlfinding (test)</li>
 	<li>Installation</li>
 	<li>Vedligeholdelse</li>	
 </ol>
 
+<p>Modellen har dog en meget stor svaghed, som netop ligger i, at modellen hele tiden skubber processen fremad. Hvis kravsspecifikationen har mangler, så vil disse mangler nedarves i hele udviklingsprocessen. Hvis designet viser sig problematisk kan det gøre afprøvningen/fejlfindingen problematisk. Derudover mangler modellen brugertest.</p>
+
+<p><a href="https://da.wikipedia.org/wiki/Vandfaldsmodellen" target="_blank">Wikipedia: Vandfaldsmodellen</a></p>
+
+<ul class="fat_li none">
+	<li>Kravspecifikation</li>
+	
+		<p>Hvad skal programmet kunne, hvilke features skal indeholde</p>
+	
+	<li>Design</li>
+	
+		<p>Hvordan skal koden laves, hvilket kodesprog, hvilke platforme skal det kunne køre på, hvordan skal brugerfladen være.</p>
+	
+	<li>Konstruktion (implementering eller kodning)</li>
+	
+		<p>Selve kodningen og arbejdet med at sætte produktet op </p>
+	
+	<li>Integration</li>
+	
+		<p>Produktet integreres (sættes sammen med) de eksisterende løsninger i et testmiljø </p>
+	
+	<li>Afprøvning og fejlfinding (test)</li>
+	
+		<p>Produktet testes, afprøves og fejlfindes</p>
+	
+	<li>Installation</li>
+	
+		<p>Produktet installeres i produktionsmiljø</p>
+	
+	<li>Vedligeholdelse</li>	
+	
+		<p>Produktet vedlligeholdes løbende med opdateringer og fejlretninger</p>
+</ul>
+
+<p>Til mindre projekter med i en kort tidsramme giver modellen mening. Når modellen anvendes i større projekter, er modellen problematisk, fordi specifikationerne løbende kan (og vil) ændre sig pga: globalisering, lovgivning, udvikling og kunden (se Leavitts model).</p>
 
 
-<h2>V-modellen</h2>
 
-<p><a href="https://en.wikipedia.org/wiki/V-Model" target="_blank">Wikipedia: V-modellen</a></p>
 
 <h1>Analysemodeller</h1>
 
@@ -321,10 +354,10 @@
 	</tbody>
 </table>
 
-<p>Denne model er god til at arbejde med ting, genstande og hændelser, men den har en svaghed når man arbejder med mennesker. Til det formål har jeg lavet en SMUT model (som en sten der smutter over vand ... når man kaster den rigtig). Det er en model jeg udviklede da jeg arbejdede hos BOAS specialisterne, hvor vi arbejdede med mennesker. Denne model arbejder med:</p>
+<p>Denne model er god til at arbejde med ting, genstande og hændelser, men den har en svaghed når man arbejder med mennesker. SWOT-modellen fokuserer på svagheder, fremfor muligheder for udviklinig. For at få fokus på udviklingspotentialet ændrede jeg SWOT til SMUT(som en sten der smutter over vand ... når man kaster den rigtig). Det er en model jeg udviklede da jeg arbejdede hos BOAS specialisterne, hvor vi arbejdede med mennesker. Denne model arbejder med:</p>
 
 <ul class="none">
-	<li><b>S</b>styrker</li>
+	<li><b>S</b>tyrker</li>
 	<li><b>M</b>uligheder</li>
 	<li><b>U</b>dfordringer</li>
 	<li><b>T</b>rusler</li>
