@@ -617,6 +617,53 @@
 	</tbody>
 </table>	
 	
+<h1>Afprøv GIMP 2.9</h1>
+
+
+<h2>På Ubuntu</h2>
+
+<span class="afsnit">GIMP 2.8 &rarr; GIMP 2.9</span>
+
+<p>Har du installerer GIMP 2.8 på Ubuntu kan du ændre version med følgende script</p>
+
+<pre>
+	<code class="bash">#Afinstaller GIMP 2.8 og installer 2.9
+sudo apt purge gimp gimp-lensfun gimp-plugin-registry gimp-texturize-y
+sudo apt autoremove -y
+sudo rm /etc/apt/sources.list.d/otto-kesselgulasch*
+sudo add-apt-repository ppa:otto-kesselgulasch/gimp-edge -y
+sudo apt update
+sudo apt install -y gimp gimp-lensfun gimp-plugin-registry gimp-texturize
+	</code>
+</pre>
+
+<p>Download scriptet her: <a href="file/gimp2.9.sh" download>gimp2.9.sh</a></p>
+
+<p>Når du har hentet scriptet skal du køre det med følgende kommandoer:</p>
+
+<code class="cmd">chmod 700 ~\Hentet\gimp2.9.sh</code>
+<code class="more_cmd">./Hentet/gimp2.9.sh </code>
+
+<span class="afsnit">GIMP 2.9 &rarr; GIMP 2.8</span>
+
+<pre>
+	<code class="bash">## Gendan GIMP 2.8
+sudo apt purge gimp gimp-lensfun gimp-plugin-registry gimp-texturize -y
+sudo apt purge libgimp2.0 -y
+sudo apt autoremove -y
+sudo rm /etc/apt/sources.list.d/otto-kesselgulasch*
+sudo add-apt-repository ppa:otto-kesselgulasch/gimp -y
+sudo apt update
+sudo apt install -y gimp gimp-lensfun gimp-plugin-registry gimp-texturize
+	</code>
+</pre>
+
+<p>Download scriptet her: <a href="file/gimp2.8.sh" download>gimp2.8.sh</a></p>
+
+<p>Når du har hentet scriptet skal du køre det med følgende kommandoer:</p>
+
+<code class="cmd">chmod 700 ~\Hentet\gimp2.8.sh</code>
+<code class="more_cmd">./Hentet/gimp2.8.sh </code>
 	
 	
 </div><!-- end: col-md-9 -->
