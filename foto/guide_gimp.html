@@ -615,8 +615,105 @@
 		</tr>
 
 	</tbody>
-</table>	
-	
+</table>
+
+<h1>Lag</h1>	
+
+<p>En af fordelene ved at arbejde med billedbehandlingsprogrammer er ikke bare at man kan ændre på farver og billedets størrelse/komposition, men også at man fjerne og tilføje elementer. Det gør man ved at arbejde i lag. Den letteste måde at forestille sig det på er, at man har en række ark man kan lægge oven på hinanden. Og ved at ændre på gennemsigtigheden (opacitet) kan man bestemme hvordan lagene ses. Her vil jeg vise hvordan man kan ændre baggrunden på et billede af en Colaflaske</p>
+
+<p>På billedet herunder har jeg frilagt en Colaflaske, som er hentet fra Wikipedia: <a href="https://da.wikipedia.org/wiki/Cola#/media/File:Flasche_Coca-Cola_0,2_Liter.jpg" target="_blank">https://da.wikipedia.org/wiki/Cola#/media/File:Flasche_Coca-Cola_0,2_Liter.jpg</a></p>
+
+<figure id="">
+
+	<img class="p90" src="images/gimp_lag_colaflaske.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Så opretter jeg en ny side på 1600x1200px ved at vælge <span class="inl_cmd">File</span>&rarr;<span class="inl_cmd">Ny(t)</span> og sætte skabelonen til <span class="inl_cmd">1600x1200</span>.</p>
+
+
+<figure id="">
+
+	<img class="p40" src="images/gimp_lag_Opret_et_nyt_billede.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Resultet er at du nu har to faner. En med en cola og en med en hvid baggrund på 1200x1600 px.</p>
+
+<figure id="">
+
+	<img class="p90" src="images/gimp_lag_nyt_lag_fra_skabelon.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Nu vil jeg kopiere colaen over på den hvide baggrund. Det gør jeg ved at:</p>
+
+<ol class="">
+	<li>vælge hele billedet med colaen og kopiere den (<kbd>Ctrl</kbd>+<kbd>a</kbd> og <kbd>Ctrl</kbd>+<kbd>c</kbd>)</li>
+	<p></p>
+	<li>Gå over på fanen med den hvide baggrund og indsætte Colaen (<kbd>Ctrl</kbd>+<kbd>v</kbd>)</li>
+</ol>
+
+<p></p>
+
+<p>Resultater bliver som herunder, hvor colaen er alt for stor. Her har jeg zoomet ud, så man kan se størrelsesforholdet.</p>
+
+<figure id="">
+
+	<img class="p90" src="images/gimp_lag_cola_indsat_paa_lag.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Da colaen er for stor ændrer vi størrelsen ved at vælge størrelsesværktøjet <img class="" src="images/gimp_resizevaerktoej_ikon.png" alt="" title="" /> og klikke på billedet. Det giver følgende menu hvor vi:</p>
+
+<ol class="">
+	<li>Klikker på kæden, for at holde billedet proportioner</li>
+	<li>Sætter højden til : <b>800</b></li>
+</ol>
+
+<p>Når man har ændret størrelsen skal vi flytte colaen ind på vores billede med flytteværktøjet (<kbd>M</kbd>) </p>
+
+<figure id="">
+
+	<img class="p90" src="images/gimp_lag_cola_indsat_paa_lag_og_formindsket.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Ude til højre har vi vores lag-menu:</p>
+
+<figure id="">
+
+	<img class="p30" src="images/gimp_lag_lagmenu_01.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Her kan vi se at vi nu har to lag, hvor det ene er en <span class="inl_cmd">flydende markering</span>. For at ændre det til et lag, skal vi højreklikke på det og vælge <span class="inl_cmd">Tilføj nyt lag</span>.</p>
+
+<figure id="">
+
+	<img class="p30" src="images/gimp_lag_lagmenu_02.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Herefter kan vi arbejde på de enkelte lag seperat, og flytte indholdet som vi har lyst til. Ved at klikke på øjet kan vi skjule laget.</p>
+
+<p>For at gemme lagene skal vi gemme billedet i GIMP'ens eget format <span class="inl_cmd">xcf</span></p>
+
+
 <h1>Afprøv GIMP 2.9</h1>
 
 <p>GIMP'en er et probjekt der er under konstant udvikling. GIMP 2.9 har mere moderne interface, flere features, og er bedre til at udnytte CPU og GPU. Derfor kan det være en fordel at afprøve den nye version. Husk dog at den er <span class="inl_cmd">unstable</span>, hvilket vil sige at den kan have fejl. Derfor kan du risikere at skulle downgrade igen.</p>
