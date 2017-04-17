@@ -371,6 +371,24 @@ CREATE DATABASE nyDB;
 
 </figure>
 
+<h2>Slet database (drop)</h2>
+
+<p></p>
+
+<pre>
+	<code class="sql">
+DROP DATABASE nyDB;
+	</code>
+</pre>
+
+<figure id="">
+
+	<img class="p90" src="images/mysql_drop_database.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
 <h2>Opret tabel</h2>
 
 <p></p>
@@ -395,7 +413,7 @@ felt4 INT(8) NOT NULL
 
 </figure>
 
-<h2>Drop tabel</h2>
+<h2>Slet tabel (drop)</h2>
 
 <p></p>
 
@@ -413,23 +431,67 @@ DROP TABLE nyDB.nyTabel;
 
 </figure>
 
-<h2>Drop database</h2>
+<h1>Nøgler og indeks</h1>
 
-<p></p>
+<p>I dette afsnit vises hvordan man arbejdet med nøgler og indeks generelt.</p>
+
+<h2>Primær nøgle</h2>
+
+<p>Primærnøglen er en post, som som har unik felter, og som samtidig fungerer som MySQL's kontakt til tabellen</p>
+
+<h3>Opret primærnøgle</h3>
 
 <pre>
 	<code class="sql">
-DROP DATABASE nyDB;
+ALTER TABLE ** tabel **
+ADD PRIMARY KEY (** Post **);
 	</code>
 </pre>
 
-<figure id="">
+<h3>Fjern primærnøgle</h3>
 
-	<img class="p90" src="images/mysql_drop_database.png" alt="" title="" />
+<pre>
+	<code class="sql">
+ALTER TABLE ** tabel **
+DROP PRIMARY KEY;
+	</code>
+</pre>
 
-	<figcaption></figcaption>
+<h2>Indeks</h2>
 
-</figure>
+<p>For at MySQL skal kunne anvende de forskellige poster i en tabel, skal den kunne skabe kontakt. Det gøres ved at indeksere de poster som skal være tilgængelige.</p>
+
+<h3>Opret indeks</h3>
+
+<pre>
+	<code class="sql">
+ALTER TABLE ** tabel **
+ADD INDEX (** Post **);
+	</code>
+</pre>
+
+<h3>Fjern indeks</h3>
+
+<pre>
+	<code class="sql">
+ALTER TABLE ** tabel **
+DROP INDEX ** post **;
+	</code>
+</pre>
+
+<h3>Unikke indeks-nøgler</h3>
+
+<p>Man kan oprette unikke index, hvis man vil sikre sig at alle felter i en post er unikke. F.eks. hvis man har et kundeID som primærnøgle, men også vil sikre sig at CPR-nummeret er unikt</p>
+
+<pre>
+	<code class="sql">
+ALTER TABLE ** tabel **
+ADD UNIQUE (** Post **);
+	</code>
+</pre>
+
+<p>Unikke nøgle fjernes som et almindeligt indeks (se ovenfor)</p>
+
 
 <h1>Information</h1>
 
@@ -508,9 +570,9 @@ mysql -h localhost -u root -p
 <p>Har du ikke angivet noget password trykker du blot <kbd>Enter</kbd>, når du bliver bedt om et password. Herunder ser du terminaludseenet fra WIndows</p>
 
 
-<pre class="windows_terminal">c:\xampp\mysql\bin>mysql -h localhost -u root -p <span class="red">&lt;-- Windows' kommandolinie</span>
-Enter password:
-Welcome to the MariaDB monitor.  Commands end with ; or \g. <span class="red">&lt;-- Output fra MySQL</span>
+<pre class="black">c:\xampp\mysql\bin>mysql -h localhost -u root -p <span class="red">&#8592; Windows' kommandolinie</span>
+Enter password: <span class="red">&#8592; Output fra MySQL</span>
+Welcome to the MariaDB monitor.  Commands end with ; or \g. <span class="red">&#8592; Output fra MySQL</span>
 Your MariaDB connection id is 2
 Server version: 10.1.21-MariaDB mariadb.org binary distribution
 
@@ -518,7 +580,7 @@ Copyright (c) 2000, 2016, Oracle, MariaDB Corporation Ab and others.
 
 Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 
-MariaDB [(none)]> <span class="red">&lt;-- MySQL's kommandolinie</span>
+MariaDB [(none)]> <span class="red">&#8592; MySQL's kommandolinie</span>
 </pre>
 
 
@@ -530,8 +592,8 @@ SHOW DATABASES|SCHEMAS;
 	</code>
 </pre>
 
-<pre class="black">MariaDB [(none)]> SHOW DATABASES; <span class="red">&lt;-- Input</span>
-+--------------------+ <span class="red">&lt;-- Output</span>
+<pre class="black">MariaDB [(none)]> SHOW DATABASES; <span class="red">&#8592; Input</span>
++--------------------+ <span class="red">&#8592; Output</span>
 | Database           |
 +--------------------+
 | information_schema |
@@ -556,8 +618,8 @@ USE mentor;
 	</code>
 </pre>
 
-<pre class="black">MariaDB [(none)]> USE mentor; <span class="red">&lt;-- Input</span>
-Database changed <span class="red">&lt;-- Output</span>
+<pre class="black">MariaDB [(none)]> USE mentor; <span class="red">&#8592; Input</span>
+Database changed <span class="red">&#8592; Output</span>
 MariaDB [mentor]>
 </pre>
 
@@ -569,8 +631,8 @@ SHOW tables;
 	</code>
 </pre>
 
-<pre class="black">MariaDB [mentor]> SHOW tables; <span class="red">&lt;-- Input</span>
-+---------------------+ <span class="red">&lt;-- Output</span>
+<pre class="black">MariaDB [mentor]> SHOW tables; <span class="red">&#8592; Input</span>
++---------------------+ <span class="red">&#8592; Output</span>
 | Tables_in_mentor    |
 +---------------------+
 | klasse_og_elever    |
@@ -591,8 +653,8 @@ DESCRIBE klasse_og_elever;
 </pre>
 
 <pre class="black">
-MariaDB [mentor]> DESCRIBE klasse_og_elever; <span class="red">&lt;-- Input</span>
-+--------------+------------+------+-----+---------+-------+ <span class="red">&lt;-- Output</span>
+MariaDB [mentor]> DESCRIBE klasse_og_elever; <span class="red">&#8592; Input</span>
++--------------+------------+------+-----+---------+-------+ <span class="red">&#8592; Output</span>
 | Field        | Type       | Null | Key | Default | Extra |
 +--------------+------------+------+-----+---------+-------+
 | Klasse       | varchar(3) | NO   | PRI | NULL    |       |
@@ -614,8 +676,8 @@ exit
 	</code>
 </pre>
 
-<pre class="black">MariaDB [mentor]> exit <span class="red">&lt;-- Input</span>
-Bye <span class="red">&lt;-- Output</span>
+<pre class="black">MariaDB [mentor]> exit <span class="red">&#8592; Input</span>
+Bye <span class="red">&#8592; Output</span>
 
 c:\xampp\mysql\bin>
 </pre>
