@@ -205,19 +205,36 @@
 
 <p>For at gemme og strukturere data skal der for hvert felt angives hvilken type data det indeholder. Det kan f.eks. være et tal, tekst eller tidsformat.</p>
 
-<h2>Indeks og nøgler</h2>
+<h1>Nøgler og indeks</h1>
 
 <p>For at felter i tabellerne kan indgå relationer mellem hinanden skal de være synlige for databasen. Det gøres ved at indeksere felterne. Det svarer til at der er et katalog, der angiver hvor de enkelte felter er. Alle felter kan indekseres, men man bør kun indeksere de felter der skal anvendes til at lave relationer med.</p>
 
-<h3>Unikke-felter</h3>
+<p>Her vil vi anvende 3 typer</p>
 
-<p>Unikke felter er som indeks, men kræver at deres værdi ikke findes i andre felter. Det kan f.eks. være et personnummer.</p>
+<ul class="none">
+	<li>Primær nøgle</li>
+	<li>Indekserede poster</li>
+	<li>Unikke poster</li>
+</ul>
 
-<h3>Primær nøgle</h3>
 
-<p>En primær-nøgle er et felt, der ud over at være unikt også identificere en post i tabellen. Det kan f.eks. være et kunde ID eller en persons initialer. Der kan kun være en primær nøgle i hver tabel.</p>
+<h2>Primær nøgle</h2>
 
-<h3>Fremmednøgler</h3>
+<p>Alle tabeller skal indehold en post der kun har unikt indhold, altså indhold der kun forekommer en gang. Det er denne post MySQL bruger til at administrere tabellen.</p>
+
+<p>Det kan være en fordel at lade dette felt være noget som identificere den enkelte post, og det kan f.eks. være et brugernavn, kunde ID, telefonnummer, mail osv.</p>
+
+<h2>Indekserede felter</h2>
+
+<p>Når en tabel er oprettet kender databasen kun til den post der er primærnøgle. Vil man skabe relationer mellem andre poster i tabellerne, skal de indekseres.  </p>
+
+<h2>Unikke-felter</h2>
+
+<p>Unikke felter er som indeks, men kræver at hver post er unik. Ved at indeksere et felt med værdien unik, kan to poster ikke have samme værdi. På den måde kan man sikre sig, at to poster ikke har samme telefonnummer, mailadresse, firmanavn osv. Databasen vil sørge for at posten er unik.</p>
+
+
+
+<h2>Fremmednøgler</h2>
 
 <p>Fremmenøgler er felter som har forbindelse til primærfelter, og hvor der er sat en binding op imellem dem. I praksis gøres det ved at indeksere et felt, så det gøres tilgængeligt for databasen.</p>
 
