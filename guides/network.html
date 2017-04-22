@@ -384,7 +384,88 @@
 
 <p>Mere om topologier: <a href="https://en.wikipedia.org/wiki/Network_topology" target="_blank">https://en.wikipedia.org/wiki/Network_topology</a></p>
 
-<h1>Private netværk</h1>
+<h1>TCP/IP</h1>
+
+<p>Den netværksprotokol vi i dag anvender i vores netværk er oprindeligt skabt af det amerikanske forsvarsministerium. Ideen var, at netværket skulle være i stand til at fungere selv hvis dele af netværket blev ødelagt. Det blev så til TCP/IP netværket. TCP står for <span class="inl_cmd"><b>T</b>ransmission <b>C</b>ontrol <b>P</b>rotocol</span> og er den del der sikrer at det er de korrekte data der afsendes og modtages. IP står for <span class="inl_cmd"><b>I</b>nternet <b>P</b>rotocol</span>, og er den del der sørger for at data kommer det rigtige sted hen.</p>
+
+<h2>IP-adresser</h2>
+
+<p>En IP-adresse er en unik talkombination der entydigt indentificerer en enhed på et netværk. I dag arbejder man med to versioner af TCP/IP: IPv4 og IPv6. IPv4 er den "gamle" protokol, som i dag har det problem at man er ved at løbe tør for unikke IP-adresser, da den "kun" har <span class="math">\( 2^{32} = 4,3 \)</span> mia selvstændige adresser. IPv6 har til sammenligning <span class="math">\( 2^{128} = 3,4 \cdot 10^{38} \)</span> mulige kombinationer.</p>
+
+<p>Danmarks Radio (<a href="http:\\159.20.6.38" target="_blank">www.dr.dk</a>) har således IP-adressen: <span class="inl_cmd">159.20.6.38</span>.</p>
+
+<h2>TCP/IP pakker</h2>
+
+<p>En TCP/IP pakke af fire lag:</p>
+
+<ul class="none fat_li">
+	<li>Applikation</li>
+	
+		<p>På applikationslaget sørger programmet for at pakke data ned så det er klar til at blive sendt.</p>
+		
+		<figure id="">
+		
+			<img class="p50" src="images/network_tcpip_lag1_applikation.svg" alt="" title="" />
+		
+			<figcaption></figcaption>
+		
+		</figure>
+	
+	<li>Transport</li>
+	
+		<p>På transport laget sørger netværksprotokollen for at data kan tjekkes for fejl og mangler. Hvis data er blevet ødelagt under transporten vil TCP sørge for at pakken bliver gensendt.</p>
+		
+		<p>Egentlig anvendes der både det som hedder TCP og UDP (<span class="inl_cmd"><b>U</b>ser <b>D</b>atagram <b>P</b>rotocol</span>). Forskellen er, at der ikke er en fejlkontrol i UDP, hvilket gør den effektiv til streaming, da enkelte fejl ikke har nogen større betydning.</p>
+		
+		<figure id="">
+		
+			<img class="p50" src="images/network_tcpip_lag2_transport.svg" alt="" title="" />
+		
+			<figcaption></figcaption>
+		
+		</figure>
+	
+	<li>Internet</li>
+	
+		<p>På Internetlaget får hver pakke en IP-adresse, så den ved hvor den skal hen.</p>
+		
+		<figure id="">
+		
+			<img class="p50" src="images/network_tcpip_lag3_internet.svg" alt="" title="" />
+		
+			<figcaption></figcaption>
+		
+		</figure>
+		
+	<li>Link</li>
+	
+		<p>På Link får pakken en MAC-adresse, som er en unik identifikation, som alle netværksenheder har. På den måde ved din datapakke hvilket router den skal finde frem til på netværket. Og det uanset om det er lokalt eller på Internettet.</p>
+		
+		<figure id="">
+		
+			<img class="p50" src="images/network_tcpip_lag4_link.svg" alt="" title="" />
+		
+			<figcaption></figcaption>
+		
+		</figure>
+		
+</ul>
+
+<p>Måden det virker på kan illustreres med nedestående model:</p>
+
+<figure id="">
+
+	<img class="p60" src="images/network_TCPIP_Dataflow.svg" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Når afsendercomputeren sender sin pakke afsted på lokalnetværket bliver den sendt til routeren. Hvis routeren ikke kender adressen spørger den på Internettet (DNS), hvor modtager computeren er. DNS servere sørger for at guide pakken frem til det rigtige sted, hvor pakken så bliver leveret til den rigtige computer.</p>
+
+<p>Det virker ret forvirrende at forstå, men vi ved alle hvor effektivt dette system er, da Internettet kører problemfrit.</p>
+
+<h2>Private netværk</h2>
 
 <p>Som en del af <span class="inl_cmd">IPv4</span> specifikationen er der lavet nogle netværksadresser der er forbeholdt private netværk. Det specielle ved private netværk er, at IP-adresserne i netværket ikke kan routes. Det betyder, at en IP-adresse der tilhører et privat netværk ikke kan tilgås fra <span class="inl_cmd">WAN</span> siden af et netværk. De private netværk er:</p>
 
@@ -429,7 +510,7 @@
 
 <p>Du kan læse mere om IPv4 her: <a href="http://en.wikipedia.org/wiki/IPv4" target="_blank">http://en.wikipedia.org/wiki/IPv4</a></p>
 
-<h1>Låste IP-addresser</h1>
+<h2>Låste IP-addresser</h2>
 
 <p>I både IPv4 og IPv6 er der nogle adresser der er låst til nogle helt specifikke formål anvendelse. Kig i skemaet herunder</p>
 
