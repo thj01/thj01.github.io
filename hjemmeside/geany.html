@@ -216,12 +216,106 @@
 
 </figure>
 
-
 <h1>Snippets</h1>
 	
+<p>Snippets er den smarte måde at arbejde med Geany. Snippets gør, at man kan lave koder, der kan "folde" sig ud til hele sætninger, f.eks. så koden <span class="inl_cmd">h1</span> bliver til <span class="inl_cmd">&lt;h1>&lt;/h1></span> med curseren inde i elementet. Man anvender en snippet ved at skrive koden og trykke på <kbd>Tab</kbd>. Disse snippets skal oprettes i filen <span class="inl_cmd">snippets.conf</span>, som tilgås ved at vælge menuen <span class="inl_cmd">Tools</span> &rarr; <span class="inl_cmd">Configuration Files</span> &rarr; <span class="inl_cmd">snippets.conf</span>. </p>
+
+<p>En snippets oprettes med følgende kode:</p>
+
+<code class="cmd"><span class="blue">**kode**</span> = **snippet**</code>
+
+<p>F.eks:</p>
+
+<code class="cmd"><span class="blue">h1</span>=&lt;h1>%cursor%&lt;/h1></code>
+
+<p>Snippets oprettes ved at indsætte dem i den rigtige sektion. Hvis det f.eks. er en snippet der skal anvendes i et HTML dokument skal det gøres i <span class="inl_cmd">[HTML]</span> delen af <span class="inl_cmd">snippets.conf</span>. Skal en snippet kunne anvendes i alle dokumenter skal den indsættes i sektionen <span class="inl_cmd">[Default]</span>, som er den første sektion i <span class="inl_cmd">snippets.conf</span>.</p>
+
+<h2>Syntaks</h2>
+
+<p>Snippets anvender standard <span class="inl_cmd">C</span> syntaks dvs:</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Tegn</th>
+			<th>Betydning</th>
+			<th>Forklaring</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>\</td>
+			<td>Escape character (indkodningstegn)</td>
+			<td>Det efterfølgende tegn skal tolkes på en anden måde</td>
+		</tr>
+		<tr>
+			<td>\n</td>
+			<td>Ny linie</td>
+			<td>Indsætter et linieskift</td>
+		</tr>
+		<tr>
+			<td>\s</td>
+			<td>Whitespace (usynligt tegn)</td>
+			<td>Indsætter et tomt tegn - et mellemrum</td>
+		</tr>
+		<tr>
+			<td>\t</td>
+			<td>Tabulator indrykning</td>
+			<td>Tegnene flyttes en tabulator hen ad linien</td>
+		</tr>
+		<tr>
+			<td>%cursor%</td>
+			<td>Cursor placering</td>
+			<td>Der hvor curseren er placeret, og hvor man starter med at skrive</td>
+		</tr>
+		<tr>
+			<td>%....%</td>
+			<td></td>
+			<td>Anvendes til at indlejere snippets i snippets. Den indlejrede snippet skal ligge i afsnittet <span class="inl_cmd">[Special]</span></td>
+		</tr>
+	</tbody>
+</table>
+
+<h2>Eksempler</h2>
+
+<p>I de nedestående eksempler er cursorplaceringen vist med en lodret rød streg <span class="red"><b>|</b></span>.</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Snippet</th>
+			<th>Man indtaster</th>
+			<th>Resulatet</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>h1=&lt;h1>%cursor%&lt;/h1></td>
+			<td>h1 <kbd>Tab</kbd></td>
+			<td>&lt;h1><span class="red"><b>|</b></span>&lt;/h1></td>
+		</tr>
+		<tr>
+			<td>tj=Forfatter:\n\tThomas Jensen\n\tLærer</td>
+			<td>tj <kbd>Tab</kbd></td>
+			<td>Forfatter:<br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Thomas Jensen <br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Lærer
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+
+
+	
 <p></p>	
-	
-	
+<p></p>	
+<p></p>	
+<p></p>	
+<p></p>	
+<p></p>	
+<p></p>	
+<p></p>	
 	
 </div><!-- end: col-md-9 -->
 
