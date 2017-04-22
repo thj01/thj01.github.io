@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Vidas.dk</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono|Ubuntu|Ubuntu+Condensed' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/jquery-ui.min.css">
+  <link rel="stylesheet" href="../css/jquery.tocify.css">
+  <link rel="stylesheet" href="../css/style_new.css" />
+<!-- Scripts in bottom to speed up pageload-->
+ 
+
+</head>
+<body>
+	
+	
+<div class="container-fluid">
+
+<div class="row-fluid">
+	
+<div class="col-sm-3">
+	
+	<div id="toc">
+	
+		<div id="toc_headline"></div>
+	
+	</div>
+
+</div><!-- Start slut 1. kolonne - TOC -->
+	
+<div class="col-sm-9">
+	
+	<div class="title">Netværk</div>
+	
+<h1>Introduktion</h1>
+
+<p>Denne guide sigter mod at give dig et indblik i hvordan et netværk er bygget op og et overblik over netværksbegreber. Der vil være en del teori og fagbegreber, som er nødvendige for at forstå hvordan netværk mellem computere er opbygget.</p>
+
+<h2>Lidt historie</h2>
+
+<p>John Cage, der var ledende forsker hos SUN, er kendt for følgende to citater:</p>
+
+<blockquote>
+	<p>
+		The network is the computer (1984)
+	</p>
+</blockquote>
+
+<p>og ...</p>
+
+<blockquote>
+	<p>
+		What stopped the Vietnam War was that we told the truth about what was happening. Today, the truth-telling mechanisms that we can put in people's hands are a million times more powerful, <br/>...<br/>And when every person on the planet has access to that power – which is what I'm trying to do – then watch what happens. (1996)<br/>
+		<span class="right"><a href="http://www.wired.com/1996/12/esgage/" target="_blank">http://www.wired.com/1996/12/esgage/</a></span>
+	</p>
+</blockquote>
+
+<p>Læg mærke til citaternes alder - og hvor præcist de beskriver den virkelighed som for alvor er ved at være vores virkelighed nu (2015).</p>
+
+<p>Internettet som vi kender det i dag startede som projekt under det amerikanske forsvar i starten af 1960'erne </p>
+	
+<h1>TCP/IP</h1>
+
+<p>Den netværksprotokol vi i dag anvender i vores netværk er oprindeligt skabt af det amerikanske forsvarsministerium. Ideen var, at netværket skulle være i stand til at fungere selv hvis dele af netværket blev ødelagt. Det blev så til TCP/IP netværket. TCP står for <span class="inl_cmd"><b>T</b>ransmission <b>C</b>ontrol <b>P</b>rotocol</span> og er den del der sikrer at det er de korrekte data der afsendes og modtages. IP står for <span class="inl_cmd"><b>I</b>nternet <b>P</b>rotocol</span>, og er den del der sørger for at data kommer det rigtige sted hen.</p>
+
+<h2>IP-adresser</h2>
+
+<p>For at kende forskel på de forskellige enheder på netværket får de hver en unik IP-adresse f.eks: <span class="inl_cmd">152.115.53.68</span>, som er adressen på folketingets web-server <a href="http://152.115.53.68" target="_blank">www.ft.dk</a>.</p>
+
+<p>I dag arbejder man med to versioner af TCP/IP: IPv4 og IPv6. IPv4 er den "gamle" protokol, som har det problem, at man er løbet tør for unikke IP-adresser, da den "kun" har <span class="math">\( 2^{32} = 4,3 \cdot 10^9 \)</span> (milliarder) selvstændige adresser. IPv6 har til sammenligning <span class="math">\( 2^{128} = 3,4 \cdot 10^{38} \)</span> mulige kombinationer.</p>
+
+<p>Danmarks Radio (<a href="http:\\159.20.6.38" target="_blank">www.dr.dk</a>) har således IP-adressen: <span class="inl_cmd">159.20.6.38</span>.</p>
+
+<h2>TCP/IP protokollen</h2>
+
+<p>TCP/IP protokollen er opbygget af 4 lag:</p>
+
+<ul class="none">
+	<li>Applikation</li>
+	<li>Transport</li>
+	<li>Internet</li>
+	<li>Link</li>
+</ul>
+
+<p>Herunder er forklaret hvad de enkelte lag gør:</p>
+
+<h3>Applikations-laget</h3>
+
+	<p>På applikationslaget sørger protokollen for at pakke data ned i små pakker, så de kan håndteres af protokollen</p>
+
+	<figure id="">
+
+		<img class="p50" src="images/network_tcpip_lag1_applikation.svg" alt="" title="" />
+
+		<figcaption></figcaption>
+
+	</figure>
+	
+<h3>Transport-laget</h3>
+
+	<p>På transport laget sørger netværksprotokollen for at data kan tjekkes for fejl og mangler. Det gøres ved at hæfte en TCP-header på datapakken. Hvis data er blevet ødelagt under transporten vil TCP opdage det og sørge for at pakken bliver gensendt.</p>
+	
+			
+	<figure id="">
+	
+		<img class="p50" src="images/network_tcpip_lag2_transport.svg" alt="" title="" />
+	
+		<figcaption></figcaption>
+	
+	</figure>
+
+<h3>Internet-laget</h3>
+
+	<p>På Internetlaget får hver pakke en IP-adresse, så den ved hvor den skal hen.</p>
+	
+	<figure id="">
+	
+		<img class="p50" src="images/network_tcpip_lag3_internet.svg" alt="" title="" />
+	
+		<figcaption></figcaption>
+	
+	</figure>
+
+<h3>Link-laget</h3>
+
+	<p>På Link får pakken en MAC-adresse, som er en unik identifikation, som alle netværksenheder har, og som er kodet ind i hardwaren. På den måde ved din datapakke hvilket router den skal finde frem til på netværket. Der findes i alt <span class="math">\( 2^{48} = 2,8 \cdot 10^{14}\)</span></p>
+	
+	<figure id="">
+	
+		<img class="p50" src="images/network_tcpip_lag4_link.svg" alt="" title="" />
+	
+		<figcaption></figcaption>
+	
+	</figure>
+
+
+
+<p>Samlet vil det se ud som herunder:</p>
+
+<figure id="">
+
+	<img class="p70" src="images/network_tcpip_alle_lag.svg" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Måden det virker på kan illustreres med nedestående model, hvor afsender og modtager er de enheder der kommunikerer med hinanden:</p>
+
+<figure id="">
+
+	<img class="p60" src="images/network_TCPIP_Dataflow.svg" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Indtil videre er det vigtigt at du forstår, hvordan protokollen virker. I næste afsnit kigger vi på den hardware der får det hele til at fungere.</p>
+
+<h1>Netværkets hardware</h1>
+
+<p>For at få netværket til at fungere anvender vi forskellige netværksudstyr. De vi vil kigge på her er:</p>
+
+<ul class="none">
+	<li>Routere</li>
+	<li>Switch</li>
+	<li>Kabler</li>
+</ul>
+
+<h2>Routeren</h2>
+
+<p></p>
+
+<ul class="none">
+	<li><b>Anvendes til: </b>At skabe forbindelse mellem forskellige netværk</li>
+	<li><b>Anvender: </b> IP-adresser</li>
+	<li><b>Lag</b>: Internet</li>
+</ul>
+
+<p>Routeren sørger for at adskille og forbinde netværk. Der sidder en router i den boks som du har siddende derhjemme på væggen, og grundlæggende sørger den for, at holde dit lokale netværk adskilt fra Internettet - og at give adgang til og fra Internettet hvis der er behov for det.</p>
+
+
+<h2>Switch'en</h2>
+
+<p></p>
+
+<ul class="none">
+	<li><b>Anvendes til: </b> at skabe forbindelse mellem computere i samme netværk</li>
+	<li><b>Anvender</b>: MAC-adresser</li>
+	<li><b>Lag</b>: Link</li>
+</ul>
+
+<p>Switchen har en tabel indbygget, så den ved hvilke enheder der er sluttet til den enkelte port. Det betyder, at hvis du sidder og sender en fil til en computer i</p>
+
+<p>En switch forbinder computere ved at anvende <span class="code">MAC</span>-adresserne i de modtagne frames. Ved hjælp af MAC-adresser sendes pakkerne til den rette destination. Switche er uafhængige af protokoller, da de arbejder på <span class="inl_cmd">link</span>-laget (binær data).</p>
+
+<p>Grunden til at vi anvender switche på vores netværk er, at de er effektive til at sende data-trafik det rigtige sted hen. Den ved hvilken af sine porte modtagercomputeren er forbundet til. Er det et kablet netværk kan datatrafikken kontrolleres effektivt.</p>
+
+<span class="afsnit">Trådløse switche</span>
+
+<p>Når vi anvender det trådløse netværk anvender vi reelt nogle virtuelle porte. De er langt mindre effektive end de kablede, da der ikke er selvstændige sendere og modtagere til hver enhed. Der arbejdes konstant på at forbedre hastigheden og effektiviteten af trådløse de trådløse switche</p>
+
+<h2>Kabler</h2>
+
+<p>til almindelige netværk anvendes der ethernet, og det stik man anvender kaldes RJ45. Et ethernet kabel har 8 ledere, som parvist er snoet om hinanden, hvilket er årsagen til at man også kalder kablerne for <span class="bold">T</span>wisteds <span class="bold">P</span>air (<span class="inl_cmd">TP</span>). Det gør man for at forhindre elektromagnetisk støj. Efterhånden er den metode ikke effektiv nok, så man er begyndt yderligere at skærme kablerne for elektromagnetisk støj (se længere nede).</p>
+
+<figure id="">
+
+	<img class="p25" src="images/network_rj45.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Det man skal være opmærksom på er typen af kabler man anvender. Herunder er der en tabel over kablernes egenskaber. Hastigheden der er angivet henviser til den hastighed de er specificeret til. Hvis man f.eks. har GiB (gigabit) internet, så skal man altså som minimum anvende kategori 5e.</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th colspan="4">Kabel kategorier</th>
+		</tr>
+
+	</thead>
+	<tbody>
+		<tr>
+			<td>Kategori</td>
+			<td>Type</td>
+			<td>Hastighed</td>
+			<td>Båndbredde</td>
+		</tr>
+		<tr>
+			<td>cat 3</td>
+			<td>UTP</td>
+			<td>10 Mbps</td>
+			<td>16 MHz</td>
+		</tr>
+		<tr>
+			<td>cat 5</td>
+			<td>UTP</td>
+			<td>10/100 Mbps</td>
+			<td>100 MHz</td>
+		</tr>
+		<tr>
+			<td>cat 5e</td>
+			<td>UTP</td>
+			<td>1000 Mbps</td>
+			<td>100 MHz</td>
+		</tr>
+		<tr>
+			<td>cat 6</td>
+			<td>UTP/STP</td>
+			<td>1000 Mbps</td>
+			<td>250 MHz</td>
+		</tr>
+		<tr>
+			<td>cat 6a</td>
+			<td>STP</td>
+			<td>10.000 Mbps</td>
+			<td>500 MHz</td>
+		</tr>
+		<tr>
+			<td>cat 7</td>
+			<td>SSTP</td>
+			<td>10.000 Mbps</td>
+			<td>600 MHz</td>
+		</tr>
+	</tbody>
+</table>
+
+<div class="ordforkl"><span class="bold">UTP</span> : Unshielded Twisted Pair; 
+<span class="bold">STP</span> : Shielded Twisted Pair, 
+<span class="bold">SSTP</span>: Screened Shielded Twisted Pair
+</div>
+
+<p></p>
+
+<span class="afsnit">Skærmede kabler</span>
+
+<p>Når man sender data igennem kabler så kan de blive udsat for elektromagnetisk støj. Det kan betyde at data-signalet bliver ødelagt. Det kan f.eks. være tilfældet hvis der ligger mange netværkskabler samlet. For at omgå dette problem skærmer man kablerne for den elektromagnetiske støj.</p>
+
+<p>Jo mere elektronik vi får, og jo flere kabler vi lægger samlet, jo større bliver problemet med elektromagnetisk støj. For at imødegå problemet begyndte man at skærme (<span class="inl_cmd">STP</span>) kablerne. De nye kategorier er endda dobbeltskærmet (<span class="inl_cmd">SSTP</span>)for at sikre dataoverførslen. En problematik man også skal tage med i denne sammenhæng er, at det reelt er muligt at aflytte den data-trafik der er i kablerne, og det er også en af årsagerne til at man vælger at skærme kablerne.</p>
+
+<p>Til almindeligt hjemmebrug er <span class="inl_cmd">Cat5e</span> rigeligt og praktisk. Problemet med at gå op i cat6 og derover er, at de bliver for stive og har svært ved at "knække" rundt om hjørner. Men arbejder man et sted hvor data-strømmen er kritisk og at den skal sikres mest muligt, så skal man op i SSTP kabler.</p>
+
+
+<h1>Specielle IP-adresser</h1>
+
+<h2>Private netværk</h2>
+
+<p>Som en del af <span class="inl_cmd">IPv4</span> specifikationen er der lavet nogle netværksadresser der er forbeholdt private netværk. Det specielle ved private netværk er, at IP-adresserne i netværket ikke kan routes. Det betyder, at en IP-adresse der tilhører et privat netværk ikke kan tilgås fra <span class="inl_cmd">WAN</span> siden af et netværk. De private netværk er:</p>
+
+<table id="">
+	<thead>
+		<tr>
+			<th>Version</th>
+			<th>Netværk</th>
+			<th>Netværks <br/>bit</th>
+			<th>Antal IP-adresser</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>IPv4</td>
+			<td>10.0.0.0/8</td>
+			<td>24</td>
+			<td><span class="math">\( 2^{24}  = 16,777,216 \)</span></td>
+		</tr>
+		<tr>
+			<td>IPv4</td>
+			<td>172.16.0.0/12</td>
+			<td>20</td>
+			<td><span class="math">\( 2^{20} = 1,048,576 \)</span></td>
+		</tr>
+		<tr>
+			<td>IPv4</td>
+			<td>192.168.0.0/16</td>
+			<td>16</td>
+			<td><span class="math">\( 2^{16} = 65,536 \)</span></td>
+		</tr>
+		<tr>
+			<td>IPv6</td>
+			<td>FC00::/7</td>
+			<td>121</td>
+			<td><span class="math">\( 2^{121} = 2,658 \cdot 10^{36} \)</span></td>
+		</tr>
+	</tbody>
+</table>
+
+<p>IP-adresserne i et privat netværk er usynlige fra <span class="inl_cmd">WAN</span>-siden, og kræver at derer en router med <span class="inl_cmd">NAT</span> ( <span class="bold">N</span>etwork <span class="bold">A</span>ddress <span class="bold">T</span>ranslation ). <span class="inl_cmd">NAT</span> funktionen gør, at routeren har en tabel, hvor den holder styr på hvilke IP-adresser på <span class="inl_cmd">LAN</span> siden der har kontakt med hvilke IP-adresser på <span class="inl_cmd">WAN</span> siden.</p>
+
+<p>Du kan læse mere om IPv4 her: <a href="http://en.wikipedia.org/wiki/IPv4" target="_blank">http://en.wikipedia.org/wiki/IPv4</a></p>
+
+<h2>Låste IP-addresser</h2>
+
+<p>I både IPv4 og IPv6 er der nogle adresser der er låst til nogle helt specifikke formål anvendelse. Kig i skemaet herunder</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>IPv4</th>
+			<th>IPv6</th>
+			<th>Beskrivelse</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><span class="inl_cmd">127.0.0.1/8</span></td>
+			<td><span class="inl_cmd">::1/128</span></td>
+			<td>Denne adresse kaldes <span class="inl_cmd">Loopback</span>. Det fungerer som et virtuel netværkskort, som den lokale computer kan anvende til interne <span class="inl_cmd">TCP/IP</span> funktioner </td>
+		</tr>
+		<tr>
+			<td><span class="inl_cmd">169.254.0.0/16</span></td>
+			<td><span class="inl_cmd">FE80::/10</span></td>
+			<td>Denne adresse kaldes <span class="inl_cmd">Lokal Link</span>. Hvis netværkskortet ikke får en IP-adresse fra netværket eller ikke er konfigureret korrekt vil <span class="inl_cmd">IPv4</span> sørge for at give netkortet en vilkårlig adresse i dette netværk</td>
+		</tr>
+		<tr>
+			<td><span class="inl_cmd">10.0.0.0/8</span><br/>
+			<span class="inl_cmd">172.16.0.0/12</span><br/>
+			<span class="inl_cmd">192.168.0.0/16</span></td>
+			<td><span class="inl_cmd">FC00::/7</span></td>
+			<td>Private netværk (se ovenfor)</td>
+		</tr>
+		<tr>
+			<td>n/a</td>
+			<td><span class="inl_cmd">::FFFF:0:0/96</span></td>
+			<td>Denne <span class="inl_cmd">IPv6</span>-adresse indeholder en <span class="inl_cmd">IPv4</span>-adresse. På denne måde sikrer man sig at netværk der stadig kører med <span class="inl_cmd">IPv4</span> er tilgængelige når <span class="inl_cmd">IPv6</span> slår helt igennem</td>
+		</tr>
+		<tr>
+			<td><span class="inl_cmd">192.0.2.0/24</span><br/>
+			<span class="inl_cmd">198.51.100.0/24</span><br/>
+			<span class="inl_cmd">203.0.113.0/24</span></td>
+			<td><span class="inl_cmd">2001:0DB8::/32</span></td>
+			<td>Disse IP-adresser anbefales til dokumentation.</td>
+		</tr>
+	</tbody>
+</table>	
+	
+	
+</div><!-- end: col-md-9 -->
+
+<footer>
+
+	<p><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons licens" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>Indholdet på Vidas.dk er licenseret under <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> og er skrevet af Thomas Jensen. (<a href="../hvem_er_jeg.html" target="_blank">Læs mere</a>)</p>
+
+</footer>
+	
+	
+</div><!-- end: row-fluid -->
+
+</div> <!-- end: container-fluid -->
+
+
+<!-- SCRIPT SECTION -->
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script type="text/javascript" src="../js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="../js/jquery.tocify.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+
+<!-- PRETTYFY-->
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+
+
+<!-- HIGHLIGHT -->
+	<script src="../js/highlight.pack.js" type="text/javascript"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+
+<!-- MATHJAX -->
+<script type="text/javascript" async 		src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+		MathJax.Hub.Config({ jax: ["input/TeX","output/HTML-CSS"], displayAlign: "left"	});
+</script>
+<!-- TOCIFY -->
+<script>
+	$(function() {var toc = $("#toc").tocify({ selectors: "h1, h2, h3, h4" }).data("toc-tocify"); });
+</script>
+<!-- GOOGLE ANALYTICS -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-89933285-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</body>
+</html>
