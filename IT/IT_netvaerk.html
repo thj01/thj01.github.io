@@ -168,6 +168,7 @@
 <ul class="none">
 	<li>Routere</li>
 	<li>Switch</li>
+	<li>Hjemme "routeren"</li>
 	<li>Kabler</li>
 </ul>
 
@@ -194,15 +195,31 @@
 	<li><b>Lag</b>: Link</li>
 </ul>
 
-<p>Switchen har en tabel indbygget, så den ved hvilke enheder der er sluttet til den enkelte port. Det betyder, at hvis du sidder og sender en fil til en computer i</p>
+<p>Switchen har en tabel indbygget, så den ved hvilke enheder der er sluttet til den enkelte port ved hjælp af deres MAC-adresser. Det betyder, at hvis du sidder og sender en fil til en computer i dit eget netværk vil switchen kunne videresende pakken uden at at spørge routeren.</p>
 
-<p>En switch forbinder computere ved at anvende <span class="code">MAC</span>-adresserne i de modtagne frames. Ved hjælp af MAC-adresser sendes pakkerne til den rette destination. Switche er uafhængige af protokoller, da de arbejder på <span class="inl_cmd">link</span>-laget (binær data).</p>
+<p>Fordelen er at datapakken kan forblive på link-laget.</p>
 
-<p>Grunden til at vi anvender switche på vores netværk er, at de er effektive til at sende data-trafik det rigtige sted hen. Den ved hvilken af sine porte modtagercomputeren er forbundet til. Er det et kablet netværk kan datatrafikken kontrolleres effektivt.</p>
 
-<span class="afsnit">Trådløse switche</span>
+<h3>Trådløse switche</h3>
 
-<p>Når vi anvender det trådløse netværk anvender vi reelt nogle virtuelle porte. De er langt mindre effektive end de kablede, da der ikke er selvstændige sendere og modtagere til hver enhed. Der arbejdes konstant på at forbedre hastigheden og effektiviteten af trådløse de trådløse switche</p>
+<p>Når vi er på det trådløse netværk, så fungerer det trådløse accespoint (den enhed som giver adgang til det trådløse net)	som en switch med virtuelle porte - en for hvor enhed der er tilsluttet. Det trådløse net er langt mindre effektivt end et kablet net, men vores erfaring viser, at det i langt de fleste tilfælde er er effektivt nok.</p>
+
+<h2>En hjemme-"router"</h2>
+
+<p>En hjemmerouter er reelt en router og en switch der er pakket ind i den samme kasse. Dvs. at der reelt er to netværksenheder i samme kasse. Det er en pakkeløsning til private, som er designet til få brugere. Se nedestående diagram</p>
+
+<figure id="">
+
+	<img class="p60" src="images/network_hjemmerouter.svg" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+
+
+
+
 
 <h2>Kabler</h2>
 
@@ -276,9 +293,8 @@
 <span class="bold">SSTP</span>: Screened Shielded Twisted Pair
 </div>
 
-<p></p>
 
-<span class="afsnit">Skærmede kabler</span>
+<h3>Skærmede kabler</h3>
 
 <p>Når man sender data igennem kabler så kan de blive udsat for elektromagnetisk støj. Det kan betyde at data-signalet bliver ødelagt. Det kan f.eks. være tilfældet hvis der ligger mange netværkskabler samlet. For at omgå dette problem skærmer man kablerne for den elektromagnetiske støj.</p>
 
@@ -286,12 +302,34 @@
 
 <p>Til almindeligt hjemmebrug er <span class="inl_cmd">Cat5e</span> rigeligt og praktisk. Problemet med at gå op i cat6 og derover er, at de bliver for stive og har svært ved at "knække" rundt om hjørner. Men arbejder man et sted hvor data-strømmen er kritisk og at den skal sikres mest muligt, så skal man op i SSTP kabler.</p>
 
+<h2>Et forklaret eksempel</h2>
+
+<p>Herunder kan du se et eksempel på et mindre firmanetværk, som består af 6 klienter og en server i LAN</p>
+
+<figure id="">
+
+	<img class="p70" src="images/network_WAN_LAN.svg" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p></p>
+
+<ul class="">
+	<li>Så længe enhederne kun kommunikerer med hinanden er switchen der klarer netværkstrafikken (Link-lag)</li>
+	<li>Når en enhed vil kommunikere med en WAN bliver routeren kontaktet (Internet-lag)</li>
+	<li>Routeren fungerer altså både som bindeled og beskyttelse for LAN</li>
+</ul>
+
 
 <h1>Specielle IP-adresser</h1>
 
 <h2>Private netværk</h2>
 
-<p>Som en del af <span class="inl_cmd">IPv4</span> specifikationen er der lavet nogle netværksadresser der er forbeholdt private netværk. Det specielle ved private netværk er, at IP-adresserne i netværket ikke kan routes. Det betyder, at en IP-adresse der tilhører et privat netværk ikke kan tilgås fra <span class="inl_cmd">WAN</span> siden af et netværk. De private netværk er:</p>
+<p>Som en del af <span class="inl_cmd">IPv4</span> specifikationen er der lavet nogle netværksadresser der er forbeholdt private netværk. Det specielle ved private netværk er, at IP-adresserne i netværket ikke kan routes. Det betyder, at en IP-adresse der tilhører et privat netværk ikke kan tilgås fra <span class="inl_cmd">WAN</span> siden af et netværk.</p>
+
+<p>I denne tabel er de private netværks IP-adresser angivet, og <span class="inl_cmd">x</span> der kan indsættes tallene fra 0-255 på dets plads.</p>
 
 <table id="">
 	<thead>
@@ -305,19 +343,19 @@
 	<tbody>
 		<tr>
 			<td>IPv4</td>
-			<td>10.0.0.0/8</td>
+			<td>10.x.x.x</td>
 			<td>24</td>
 			<td><span class="math">\( 2^{24}  = 16,777,216 \)</span></td>
 		</tr>
 		<tr>
 			<td>IPv4</td>
-			<td>172.16.0.0/12</td>
+			<td>172.16.x.x - 172.32.x.x/12</td>
 			<td>20</td>
 			<td><span class="math">\( 2^{20} = 1,048,576 \)</span></td>
 		</tr>
 		<tr>
 			<td>IPv4</td>
-			<td>192.168.0.0/16</td>
+			<td>192.168.x.x</td>
 			<td>16</td>
 			<td><span class="math">\( 2^{16} = 65,536 \)</span></td>
 		</tr>
@@ -367,7 +405,7 @@
 		<tr>
 			<td>n/a</td>
 			<td><span class="inl_cmd">::FFFF:0:0/96</span></td>
-			<td>Denne <span class="inl_cmd">IPv6</span>-adresse indeholder en <span class="inl_cmd">IPv4</span>-adresse. På denne måde sikrer man sig at netværk der stadig kører med <span class="inl_cmd">IPv4</span> er tilgængelige når <span class="inl_cmd">IPv6</span> slår helt igennem</td>
+			<td>Denne <span class="inl_cmd">IPv6</span>-adresse indeholder en <span class="inl_cmd">IPv4</span>-adresse. På denne måde kan man indlejre <span class="inl_cmd">IPv4</span> netværk i  <span class="inl_cmd">IPv6</span> netværk.</td>
 		</tr>
 		<tr>
 			<td><span class="inl_cmd">192.0.2.0/24</span><br/>
@@ -378,7 +416,118 @@
 		</tr>
 	</tbody>
 </table>	
-	
+
+<h1>Netværkstopologier</h1>
+
+<p>Ordet netværkstopologi henviser til den måde netværket er opbygget. Her vil to af dem blive gennemgået: Stjerne- og ringtopologi.</p>
+
+<h2>Stjernetopologi</h2>
+
+<p>Stjerne-topologien er den mest anvendte netværksopbygning. Det er den type netværk man får når forbinder sine computere med både trådede og trådløse switche.</p>
+
+<figure id="">
+
+	<img class="p50" src="images/network_star_topology2.svg" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Grunden til at det hedder stjernetopologi er, at alle enheder er forbundet direkte til en netværksenhed - i dette tilfælde en switch.</p>
+
+<span class="afsnit">Fordele:</span>
+
+<ul class="disc">
+	<li>Nemt at sætte op</li>
+	<li>Nemt at administrere</li>
+	<li>Nemt at tilføje flere computere til</li>
+	<li>Nettet har stor fejltolerence</li>
+</ul>
+
+
+
+<h2>Ring-topologi</h2>
+
+<p>Fordelen ved at sætte maskinerne i en ring er, at datapakkerne bliver sendt i en retning. Det giver et stærkere signal og dermed kan hastigheden øges. Denne type netværk anvendes i "backbones" hvilket vil sige i centrale dele af store netværk, hvor hastigheden mellem de enkelte enheder er vigtig. </p>
+
+<p>For at kommunikere med maskiner uden for netværket bliver en af maskinerne sat op som router.</p>
+
+
+<figure id="">
+
+	<img class="p50" src="images/network_ring_topology2.svg" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Mere om topologier: <a href="https://en.wikipedia.org/wiki/Network_topology" target="_blank">https://en.wikipedia.org/wiki/Network_topology</a></p>
+
+
+<h1>Netværkstyper</h1>
+
+<p>For at adskille og beskrive de forskellige typer af netværk anvender man følgende betegnelser:</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Netværkstype</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><span class="bold">LAN</span></td>
+			<td><span class="bold">L</span>ocal <span class="bold">A</span>rea <span class="bold">N</span>etwork</td>
+		</tr>
+		<tr>
+			<td><span class="bold">WAN</span></td>
+			<td><span class="bold">W</span>ide <span class="bold">A</span>rea <span class="bold">N</span>etwork</td>
+		</tr>
+		<tr>
+			<td><span class="bold">WLAN</span></td>
+			<td><span class="bold">W</span>ireless <span class="bold">L</span>ocal <span class="bold">A</span>rea <span class="bold">N</span>etwork</td>
+		</tr>
+		<tr>
+			<td><span class="bold">SAN</span></td>
+			<td><span class="bold">S</span>torage <span class="bold">L</span>ocal <span class="bold">A</span>rea <span class="bold">N</span>etwork</td>
+		</tr>
+		<tr>
+			<td><span class="bold">VPN</span></td>
+			<td><span class="bold">V</span>irtual <span class="bold">P</span>rivate <span class="bold">N</span>etwork</td>
+		</tr>
+	</tbody>
+</table>
+
+<h2>LAN og WAN</h2>
+
+<p>Dette er de to grundlæggende netværkstyper. Forskellen mellem dem er, at <span class="inl_cmd">LAN</span> er afgrænset og <span class="inl_cmd">WAN</span> ikke er det. Det kan f.eks. være et firmanetværk (LAN) og Internettet (WAN).</p>
+
+<p>Her er vist et eksempel:</p>
+
+<figure id="">
+
+	<img class="p70" src="images/network_WAN_LAN.svg" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Læg mærke til at der sidder en router mellem WAN og LAN, men også at der sidder en switch før routeren. Det smarte ved TCP/IP er netop, at den beskytter den interne trafik, og at</p>
+
+
+
+<h2>WLAN og SAN</h2>
+
+<p>Disse to er egentlig bare afarter af <span class="inl_cmd">LAN</span>, hvor <span class="inl_cmd">WLAN</span> beskriver trådløse netværk og <span class="inl_cmd">SAN</span> beskriver netværk der indeholder harddisk-arrays, som er servere der kun er beregnet til at opbevare data.</p>
+
+<h2>VPN</h2>
+
+<p>VPN er en netværksforbindelse der skabes mellem to computeren uafhængig af netværket omkring dem. Denne form for netværk bliver også omtalt som en "tunnel". Det har den fordel at resten af netværket ikke kan se trafikken. Hvis man ønsker at sikre datastrømmen yderligere kan man kryptere den. Det kan f.eks. være en fordel hvis man som rejsenden sælger skal kunne tilgå sine filer sikkert på serveren i virksomheden.</p>
+
+<p>VPN bliver også misbrugt f.eks. til nogle af de "smarte" programmer man downloader til sin browser for at kunne få adgang til bestemte typer filer. Det betyder f.eks. at ens datatrafik ikke bliver administreret af ens lokale netværk, men af udbyderen. I realititen kan udbyderen vælge at anvende denne dataforbindelse til at opbevare data på den lokale PC. Nogle af disse "smarte" programmer anvender kun VPN funktionen når programmet kører, hvorimod andre helt overtager ens datatrafik.</p>
+
+<p>Når man installerer programmer fra nettet der lover at forbedre ens ydelse, eller som giver adgang til specielle typer af programmer, så bør man undersøge om det gøres gennem VPN.</p>	
 	
 </div><!-- end: col-md-9 -->
 
