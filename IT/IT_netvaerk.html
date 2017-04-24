@@ -171,6 +171,7 @@
 
 </figure>
 
+<!--
 <p>Måden det virker på kan illustreres med nedestående model, hvor afsender og modtager er de enheder der kommunikerer med hinanden:</p>
 
 <figure id="">
@@ -180,6 +181,7 @@
 	<figcaption></figcaption>
 
 </figure>
+-->
 
 <p>Indtil videre er det vigtigt at du forstår, hvordan protokollen virker. I næste afsnit kigger vi på den hardware der får det hele til at fungere.</p>
 
@@ -280,8 +282,8 @@
 <p>For at få netværket til at fungere anvender vi forskellige netværksudstyr. De vi vil kigge på her er:</p>
 
 <ul class="none">
-	<li>Routere</li>
-	<li>Switch</li>
+	<li>Routeren</li>
+	<li>Switch'en</li>
 	<li>Hjemme "routeren"</li>
 	<li>DNS</li>
 	<li>Kabler</li>
@@ -302,13 +304,21 @@
 
 <h2>Switch'en</h2>
 
-<p></p>
+<figure id="">
+
+	<img class="p40" src="https://www.netgear.com/images/Products/CBUFamilyPhotos/header-cbu-switches-unmanaged-fastethernetunmanagedswitchseries-photo-large.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
 
 <ul class="none">
 	<li><b>Anvendes til: </b> at skabe forbindelse mellem computere i samme netværk</li>
 	<li><b>Anvender</b>: MAC-adresser</li>
 	<li><b>Lag</b>: Link</li>
 </ul>
+
+
 
 <p>Switchen har en tabel indbygget, så den ved hvilke enheder der er sluttet til den enkelte port ved hjælp af deres MAC-adresser. Det betyder, at hvis du sidder og sender en fil til en computer i dit eget netværk vil switchen kunne videresende pakken uden at at spørge routeren.</p>
 
@@ -330,17 +340,6 @@
 	<figcaption></figcaption>
 
 </figure>
-
-<h2>DNS</h2>
-
-<p>DNS står for <span class="inl_cmd"><b>D</b>omain <b>N</b>ame</span> <b>S</b>ystem, og er en tjeneste som TCP/IP netværk bruger til at slå adresser op i. Ofte vil man kalde det en DNS-server, da der også findes servere der kun laver dette.</p>
-
-<p>Når en router ikke ved hvor den skal sende en pakke hen, spørger den en DNS-server. Hvis DNS serveren kender adressen får routeren adressen, så den kan sende pakken rigtigt afsted. Kender DNS-serveren ikke modtageren spørger den andre DNS-servere. På den måde kan en DNS hele tiden blive klogere på nettets opbygning.</p>
-
-<p>Ofte vil man i netværk anvende nogle af de store firmaers DNS-servere, f.eks. Google, som hedder <span class="inl_cmd">8.8.8.8</span> og <span class="inl_cmd">8.8.4.4</span>.</p>
-
-
-
 
 <h2>Kabler</h2>
 
@@ -442,6 +441,90 @@
 	<li>Når en enhed vil kommunikere med en WAN bliver routeren kontaktet (Internet-lag)</li>
 	<li>Routeren fungerer altså både som bindeled og beskyttelse for LAN</li>
 </ul>
+
+<h1>DNS</h1>
+
+<p>DNS står for <span class="inl_cmd"><b>D</b>omain <b>N</b>ame</span> <b>S</b>ystem, og er en tjeneste som TCP/IP netværk bruger til at slå adresser op i. Ofte vil man kalde det en DNS-server, da der også findes servere der kun laver dette.</p>
+
+<p>Når en router ikke ved hvor den skal sende en pakke hen, spørger den en DNS-server. Hvis DNS serveren kender adressen får routeren adressen, så den kan sende pakken rigtigt afsted. Kender DNS-serveren ikke modtageren spørger den andre DNS-servere. På den måde kan en DNS hele tiden blive klogere på nettets opbygning.</p>
+
+<p>Ofte vil man i netværk anvende nogle af de store firmaers DNS-servere, f.eks. Google, som hedder <span class="inl_cmd">8.8.8.8</span> og <span class="inl_cmd">8.8.4.4</span>.</p>
+
+<h2>DNS opslag</h2>
+
+<p>Alle enheder på Internettet har som sagt en unik IP adresse. For at skabe forbindelse til en af disse forbindelser skal datapakkerne kende ruten. Her vil jeg gennemgå hvordan din router finder frem til websiden www.dr.dk.</p>
+
+<p>Systemet er bygget op af niveauer af DNS servere:</p>
+
+<ul class="none fat_li">
+	<li>Root DNS Server</li>
+	
+		<p>Root DNS Servere holder styr på de forskelle "top level" domæner også kaldet TLD. Det kan f.eks. være:</p>
+		
+		<ul class="none">
+			<li><span class="red">.dk</span></li>
+			<li><span class="red">.com</span></li>
+			<li><span class="red">.org</span></li>
+		</ul>
+		
+		<p>Du kan finde en liste over alle top level domæner her: <a href="https://www.iana.org/domains/root/db" target="_blank">https://www.iana.org/domains/root/db</a>.</p>
+	
+	<li>Top Level DNS server (TLD)</li>
+	
+		<p>TLD holder styr på de forskellige Second Level domæner (SLD). Det kan f.eks. være:</p>
+		
+		<ul class="none">
+			<li><span class="red">vidas</span>.dk</li>
+			<li><span class="red">google</span>.com</li>
+			<li><span class="red">wikipedia</span>.org</li>
+		</ul>
+	
+	<li>Second Level DNS Server (SLD)</li>
+	
+		<p>SLD holder styr på sub domænerne. Det kan f.eks. være:</p>
+		
+		<ul class="none">
+			<li><span class="red">www</span>.vidas.dk</li>
+			<li><span class="red">www</span>.google.com</li>
+			<li><span class="red">www</span>.wikipedia.org</li>
+		</ul>
+</ul>
+
+<p>Så første gang du efterspørger www.dr.dk.</p>
+
+<ul class="none">
+	<li>Root Level DNS viser hen til <span class="inl_cmd">.dk</span>'s TLD </li>
+	<li>TLD viser hen til <span class="inl_cmd">dr.dk</span>'s SLD</li>
+	<li>SLD viser hen til <span class="inl_cmd">www.dr.dk</span> serveren</li>
+</ul>
+
+<p></p>
+
+<p>Herunder er DNS systemet vist grafisk</p>
+
+<p></p>
+
+<figure id="">
+
+	<img class="p70" src="images/network_DNS_resolution.svg" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Når vi f.eks. tager en adresse som <span class="inl_cmd">www.dr.dk/nyheder</span>, så angiver det som kommer før skråstregen (<span class="inl_cmd">/</span>) den del som DNS systemet tager sig af. <span class="inl_cmd">nyheder</span> er noget som bliver admistreret lokal af Danmarks Radio.</p>
+
+<p>Så nettet læser reelt ovenstående adresse som: <span class="inl_cmd">.dk.dr.www/nyheder</span>.</p>
+
+<p>Fordelen ved dette system er, at hvis man har en lokal DNS, så kan den efterhånden huske hvor de forskellige domæner er henne. På den måde behøver man ikke at gå helt ned til Root Level DNS hver gang.</p>
+
+<h2>Administration af domæner</h2>
+
+<p>Top level domænener bliver bliver organiseret af en non-profit organistation der hedder <a href="https://www.icann.org/" target="_blank">ICANN</a> (<b>I</b>nternet <b>C</b>orporation for <b>A</b>ssigned <b>N</b>ames and <b>N</b>umbers).</p>
+
+<p>De danske domæner bliver administreret af <a href="https://www.dk-hostmaster.dk/" target="_blank">.dk hostmaster</a>. Her kan man tjekke om et domænenavn er ledigt eller informationer om ejeren af domænet.</p>
+
+
 
 <h1>Netværkstyper</h1>
 
