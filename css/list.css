@@ -80,14 +80,16 @@ font-size: 1em;
 
 }
 
-ol.fat_li li {
+ol.fat_li>li {
 
 font-weight: 900;
 
 }
 
-ul.fat_li li {
+ul.fat_li>li {
 
 font-weight: 900;
 
 }
+
+
