@@ -67,6 +67,18 @@
 
 <p>Den netværksprotokol vi i dag anvender i vores netværk er oprindeligt skabt af det amerikanske forsvarsministerium. Ideen var, at netværket skulle være i stand til at fungere selv hvis dele af netværket blev ødelagt. Det blev så til TCP/IP netværket. TCP står for <span class="inl_cmd"><b>T</b>ransmission <b>C</b>ontrol <b>P</b>rotocol</span> og er den del der sikrer at det er de korrekte data der afsendes og modtages. IP står for <span class="inl_cmd"><b>I</b>nternet <b>P</b>rotocol</span>, og er den del der sørger for at data kommer det rigtige sted hen.</p>
 
+<p>Det som er smart ved TCP/IP protokollen er:</p>
+
+<ul class="disc">
+	<li>Den sikrer den rigtige data bliver sendt afsted ... og kommer frem</li>
+	<li>Det er redeundant. Dvs. det kan fungere selvom enkelte dele af det er utilgængeligt</li>
+	<li>Netværk kan segmenteres (opdeles)</li>
+	<li>Det er frit anvendeligt - Dvs ingen ejer det</li>
+	
+</ul>
+
+<p>Wikipedia om TCP/IP: <a href="https://en.wikipedia.org/wiki/Internet_protocol_suite" target="_blank">https://en.wikipedia.org/wiki/Internet_protocol_suite</a></p>
+
 <h2>IP-adresser</h2>
 
 <p>For at kende forskel på de forskellige enheder på netværket får de hver en unik IP-adresse f.eks: <span class="inl_cmd">152.115.53.68</span>, som er adressen på folketingets web-server <a href="http://152.115.53.68" target="_blank">www.ft.dk</a>.</p>
@@ -77,16 +89,16 @@
 
 <h2>TCP/IP protokollen</h2>
 
-<p>TCP/IP protokollen er opbygget af 4 lag:</p>
+<p>TCP/IP protokollen er opbygget af 4 lag, som beskriver hvordan netværket skal fungere:</p>
 
-<ul class="none">
-	<li>Applikation</li>
-	<li>Transport</li>
-	<li>Internet</li>
-	<li>Link</li>
+<ul class="none ">
+	<li>Applikation (Data)</li>
+	<li>Transport (TCP)</li>
+	<li>Internet (IP)</li>
+	<li>Link (Hardware - det fysiske netværk)</li>
 </ul>
 
-<p>Herunder er forklaret hvad de enkelte lag gør:</p>
+<p>Herunder er forklaret hvad de enkelte lag gør under afsendelsen af en TCP/IP-pakke:</p>
 
 <h3>Applikations-laget</h3>
 
@@ -161,6 +173,98 @@
 
 <p>Indtil videre er det vigtigt at du forstår, hvordan protokollen virker. I næste afsnit kigger vi på den hardware der får det hele til at fungere.</p>
 
+<h2>Private netværk</h2>
+
+<p>Som en del af <span class="inl_cmd">IPv4</span> specifikationen er der lavet nogle netværksadresser der er forbeholdt private netværk. Det specielle ved private netværk er, at IP-adresserne i netværket ikke kan routes. Det betyder, at en IP-adresse der tilhører et privat netværk ikke kan tilgås fra <span class="inl_cmd">WAN</span> siden af et netværk.</p>
+
+<p>I denne tabel er de private netværks IP-adresser angivet, og <span class="inl_cmd">x</span> der kan indsættes tallene fra 0-255 på dets plads.</p>
+
+<table id="">
+	<thead>
+		<tr>
+			<th>Version</th>
+			<th>Netværk</th>
+			<th>Netværks <br/>bit</th>
+			<th>Antal IP-adresser</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>IPv4</td>
+			<td>10.x.x.x</td>
+			<td>24</td>
+			<td><span class="math">\( 2^{24}  = 16,777,216 \)</span></td>
+		</tr>
+		<tr>
+			<td>IPv4</td>
+			<td>172.16.x.x - 172.32.x.x/12</td>
+			<td>20</td>
+			<td><span class="math">\( 2^{20} = 1,048,576 \)</span></td>
+		</tr>
+		<tr>
+			<td>IPv4</td>
+			<td>192.168.x.x</td>
+			<td>16</td>
+			<td><span class="math">\( 2^{16} = 65,536 \)</span></td>
+		</tr>
+		<tr>
+			<td>IPv6</td>
+			<td>FC00::/7</td>
+			<td>121</td>
+			<td><span class="math">\( 2^{121} = 2,658 \cdot 10^{36} \)</span></td>
+		</tr>
+	</tbody>
+</table>
+
+<p>IP-adresserne i et privat netværk er usynlige fra <span class="inl_cmd">WAN</span>-siden, og kræver at derer en router med <span class="inl_cmd">NAT</span> ( <span class="bold">N</span>etwork <span class="bold">A</span>ddress <span class="bold">T</span>ranslation ). <span class="inl_cmd">NAT</span> funktionen gør, at routeren har en tabel, hvor den holder styr på hvilke IP-adresser på <span class="inl_cmd">LAN</span> siden der har kontakt med hvilke IP-adresser på <span class="inl_cmd">WAN</span> siden.</p>
+
+<p>Du kan læse mere om IPv4 her: <a href="http://en.wikipedia.org/wiki/IPv4" target="_blank">http://en.wikipedia.org/wiki/IPv4</a></p>
+
+<h2>Låste IP-addresser</h2>
+
+<p>I både IPv4 og IPv6 er der nogle adresser der er låst til nogle helt specifikke formål anvendelse. Kig i skemaet herunder</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>IPv4</th>
+			<th>IPv6</th>
+			<th>Beskrivelse</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><span class="inl_cmd">127.0.0.1/8</span></td>
+			<td><span class="inl_cmd">::1/128</span></td>
+			<td>Denne adresse kaldes <span class="inl_cmd">Loopback</span>. Det fungerer som et virtuel netværkskort, som den lokale computer kan anvende til interne <span class="inl_cmd">TCP/IP</span> funktioner </td>
+		</tr>
+		<tr>
+			<td><span class="inl_cmd">169.254.0.0/16</span></td>
+			<td><span class="inl_cmd">FE80::/10</span></td>
+			<td>Denne adresse kaldes <span class="inl_cmd">Lokal Link</span>. Hvis netværkskortet ikke får en IP-adresse fra netværket eller ikke er konfigureret korrekt vil <span class="inl_cmd">IPv4</span> sørge for at give netkortet en vilkårlig adresse i dette netværk</td>
+		</tr>
+		<tr>
+			<td><span class="inl_cmd">10.0.0.0/8</span><br/>
+			<span class="inl_cmd">172.16.0.0/12</span><br/>
+			<span class="inl_cmd">192.168.0.0/16</span></td>
+			<td><span class="inl_cmd">FC00::/7</span></td>
+			<td>Private netværk (se ovenfor)</td>
+		</tr>
+		<tr>
+			<td>n/a</td>
+			<td><span class="inl_cmd">::FFFF:0:0/96</span></td>
+			<td>Denne <span class="inl_cmd">IPv6</span>-adresse indeholder en <span class="inl_cmd">IPv4</span>-adresse. På denne måde kan man indlejre <span class="inl_cmd">IPv4</span> netværk i  <span class="inl_cmd">IPv6</span> netværk.</td>
+		</tr>
+		<tr>
+			<td><span class="inl_cmd">192.0.2.0/24</span><br/>
+			<span class="inl_cmd">198.51.100.0/24</span><br/>
+			<span class="inl_cmd">203.0.113.0/24</span></td>
+			<td><span class="inl_cmd">2001:0DB8::/32</span></td>
+			<td>Disse IP-adresser anbefales til dokumentation.</td>
+		</tr>
+	</tbody>
+</table>	
+
 <h1>Netværkets hardware</h1>
 
 <p>For at få netværket til at fungere anvender vi forskellige netværksudstyr. De vi vil kigge på her er:</p>
@@ -169,6 +273,7 @@
 	<li>Routere</li>
 	<li>Switch</li>
 	<li>Hjemme "routeren"</li>
+	<li>DNS</li>
 	<li>Kabler</li>
 </ul>
 
@@ -216,7 +321,13 @@
 
 </figure>
 
+<h2>DNS</h2>
 
+<p>DNS står for <span class="inl_cmd"><b>D</b>omain <b>N</b>ame</span> <b>S</b>ystem, og er en tjeneste som TCP/IP netværk bruger til at slå adresser op i. Ofte vil man kalde det en DNS-server, da der også findes servere der kun laver dette.</p>
+
+<p>Når en router ikke ved hvor den skal sende en pakke hen, spørger den en DNS-server. Hvis DNS serveren kender adressen får routeren adressen, så den kan sende pakken rigtigt afsted. Kender DNS-serveren ikke modtageren spørger den andre DNS-servere. På den måde kan en DNS hele tiden blive klogere på nettets opbygning.</p>
+
+<p>Ofte vil man i netværk anvende nogle af de store firmaers DNS-servere, f.eks. Google, som hedder <span class="inl_cmd">8.8.8.8</span> og <span class="inl_cmd">8.8.4.4</span>.</p>
 
 
 
@@ -322,148 +433,6 @@
 	<li>Routeren fungerer altså både som bindeled og beskyttelse for LAN</li>
 </ul>
 
-
-<h1>Specielle IP-adresser</h1>
-
-<h2>Private netværk</h2>
-
-<p>Som en del af <span class="inl_cmd">IPv4</span> specifikationen er der lavet nogle netværksadresser der er forbeholdt private netværk. Det specielle ved private netværk er, at IP-adresserne i netværket ikke kan routes. Det betyder, at en IP-adresse der tilhører et privat netværk ikke kan tilgås fra <span class="inl_cmd">WAN</span> siden af et netværk.</p>
-
-<p>I denne tabel er de private netværks IP-adresser angivet, og <span class="inl_cmd">x</span> der kan indsættes tallene fra 0-255 på dets plads.</p>
-
-<table id="">
-	<thead>
-		<tr>
-			<th>Version</th>
-			<th>Netværk</th>
-			<th>Netværks <br/>bit</th>
-			<th>Antal IP-adresser</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>IPv4</td>
-			<td>10.x.x.x</td>
-			<td>24</td>
-			<td><span class="math">\( 2^{24}  = 16,777,216 \)</span></td>
-		</tr>
-		<tr>
-			<td>IPv4</td>
-			<td>172.16.x.x - 172.32.x.x/12</td>
-			<td>20</td>
-			<td><span class="math">\( 2^{20} = 1,048,576 \)</span></td>
-		</tr>
-		<tr>
-			<td>IPv4</td>
-			<td>192.168.x.x</td>
-			<td>16</td>
-			<td><span class="math">\( 2^{16} = 65,536 \)</span></td>
-		</tr>
-		<tr>
-			<td>IPv6</td>
-			<td>FC00::/7</td>
-			<td>121</td>
-			<td><span class="math">\( 2^{121} = 2,658 \cdot 10^{36} \)</span></td>
-		</tr>
-	</tbody>
-</table>
-
-<p>IP-adresserne i et privat netværk er usynlige fra <span class="inl_cmd">WAN</span>-siden, og kræver at derer en router med <span class="inl_cmd">NAT</span> ( <span class="bold">N</span>etwork <span class="bold">A</span>ddress <span class="bold">T</span>ranslation ). <span class="inl_cmd">NAT</span> funktionen gør, at routeren har en tabel, hvor den holder styr på hvilke IP-adresser på <span class="inl_cmd">LAN</span> siden der har kontakt med hvilke IP-adresser på <span class="inl_cmd">WAN</span> siden.</p>
-
-<p>Du kan læse mere om IPv4 her: <a href="http://en.wikipedia.org/wiki/IPv4" target="_blank">http://en.wikipedia.org/wiki/IPv4</a></p>
-
-<h2>Låste IP-addresser</h2>
-
-<p>I både IPv4 og IPv6 er der nogle adresser der er låst til nogle helt specifikke formål anvendelse. Kig i skemaet herunder</p>
-
-<table class="">
-	<thead>
-		<tr>
-			<th>IPv4</th>
-			<th>IPv6</th>
-			<th>Beskrivelse</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td><span class="inl_cmd">127.0.0.1/8</span></td>
-			<td><span class="inl_cmd">::1/128</span></td>
-			<td>Denne adresse kaldes <span class="inl_cmd">Loopback</span>. Det fungerer som et virtuel netværkskort, som den lokale computer kan anvende til interne <span class="inl_cmd">TCP/IP</span> funktioner </td>
-		</tr>
-		<tr>
-			<td><span class="inl_cmd">169.254.0.0/16</span></td>
-			<td><span class="inl_cmd">FE80::/10</span></td>
-			<td>Denne adresse kaldes <span class="inl_cmd">Lokal Link</span>. Hvis netværkskortet ikke får en IP-adresse fra netværket eller ikke er konfigureret korrekt vil <span class="inl_cmd">IPv4</span> sørge for at give netkortet en vilkårlig adresse i dette netværk</td>
-		</tr>
-		<tr>
-			<td><span class="inl_cmd">10.0.0.0/8</span><br/>
-			<span class="inl_cmd">172.16.0.0/12</span><br/>
-			<span class="inl_cmd">192.168.0.0/16</span></td>
-			<td><span class="inl_cmd">FC00::/7</span></td>
-			<td>Private netværk (se ovenfor)</td>
-		</tr>
-		<tr>
-			<td>n/a</td>
-			<td><span class="inl_cmd">::FFFF:0:0/96</span></td>
-			<td>Denne <span class="inl_cmd">IPv6</span>-adresse indeholder en <span class="inl_cmd">IPv4</span>-adresse. På denne måde kan man indlejre <span class="inl_cmd">IPv4</span> netværk i  <span class="inl_cmd">IPv6</span> netværk.</td>
-		</tr>
-		<tr>
-			<td><span class="inl_cmd">192.0.2.0/24</span><br/>
-			<span class="inl_cmd">198.51.100.0/24</span><br/>
-			<span class="inl_cmd">203.0.113.0/24</span></td>
-			<td><span class="inl_cmd">2001:0DB8::/32</span></td>
-			<td>Disse IP-adresser anbefales til dokumentation.</td>
-		</tr>
-	</tbody>
-</table>	
-
-<h1>Netværkstopologier</h1>
-
-<p>Ordet netværkstopologi henviser til den måde netværket er opbygget. Her vil to af dem blive gennemgået: Stjerne- og ringtopologi.</p>
-
-<h2>Stjernetopologi</h2>
-
-<p>Stjerne-topologien er den mest anvendte netværksopbygning. Det er den type netværk man får når forbinder sine computere med både trådede og trådløse switche.</p>
-
-<figure id="">
-
-	<img class="p50" src="images/network_star_topology2.svg" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-
-<p>Grunden til at det hedder stjernetopologi er, at alle enheder er forbundet direkte til en netværksenhed - i dette tilfælde en switch.</p>
-
-<span class="afsnit">Fordele:</span>
-
-<ul class="disc">
-	<li>Nemt at sætte op</li>
-	<li>Nemt at administrere</li>
-	<li>Nemt at tilføje flere computere til</li>
-	<li>Nettet har stor fejltolerence</li>
-</ul>
-
-
-
-<h2>Ring-topologi</h2>
-
-<p>Fordelen ved at sætte maskinerne i en ring er, at datapakkerne bliver sendt i en retning. Det giver et stærkere signal og dermed kan hastigheden øges. Denne type netværk anvendes i "backbones" hvilket vil sige i centrale dele af store netværk, hvor hastigheden mellem de enkelte enheder er vigtig. </p>
-
-<p>For at kommunikere med maskiner uden for netværket bliver en af maskinerne sat op som router.</p>
-
-
-<figure id="">
-
-	<img class="p50" src="images/network_ring_topology2.svg" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-
-<p>Mere om topologier: <a href="https://en.wikipedia.org/wiki/Network_topology" target="_blank">https://en.wikipedia.org/wiki/Network_topology</a></p>
-
-
 <h1>Netværkstyper</h1>
 
 <p>For at adskille og beskrive de forskellige typer af netværk anvender man følgende betegnelser:</p>
@@ -528,6 +497,56 @@
 <p>VPN bliver også misbrugt f.eks. til nogle af de "smarte" programmer man downloader til sin browser for at kunne få adgang til bestemte typer filer. Det betyder f.eks. at ens datatrafik ikke bliver administreret af ens lokale netværk, men af udbyderen. I realititen kan udbyderen vælge at anvende denne dataforbindelse til at opbevare data på den lokale PC. Nogle af disse "smarte" programmer anvender kun VPN funktionen når programmet kører, hvorimod andre helt overtager ens datatrafik.</p>
 
 <p>Når man installerer programmer fra nettet der lover at forbedre ens ydelse, eller som giver adgang til specielle typer af programmer, så bør man undersøge om det gøres gennem VPN.</p>	
+
+
+<h1>Netværkstopologier</h1>
+
+<p>Ordet netværkstopologi henviser til den måde netværket er opbygget. Her vil to af dem blive gennemgået: Stjerne- og ringtopologi.</p>
+
+<h2>Stjernetopologi</h2>
+
+<p>Stjerne-topologien er den mest anvendte netværksopbygning. Det er den type netværk man får når forbinder sine computere med både trådede og trådløse switche.</p>
+
+<figure id="">
+
+	<img class="p50" src="images/network_star_topology2.svg" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Grunden til at det hedder stjernetopologi er, at alle enheder er forbundet direkte til en netværksenhed - i dette tilfælde en switch.</p>
+
+<span class="afsnit">Fordele:</span>
+
+<ul class="disc">
+	<li>Nemt at sætte op</li>
+	<li>Nemt at administrere</li>
+	<li>Nemt at tilføje flere computere til</li>
+	<li>Nettet har stor fejltolerence</li>
+</ul>
+
+
+
+<h2>Ring-topologi</h2>
+
+<p>Fordelen ved at sætte maskinerne i en ring er, at datapakkerne bliver sendt i en retning. Det giver et stærkere signal og dermed kan hastigheden øges. Denne type netværk anvendes i "backbones" hvilket vil sige i centrale dele af store netværk, hvor hastigheden mellem de enkelte enheder er vigtig. </p>
+
+<p>For at kommunikere med maskiner uden for netværket bliver en af maskinerne sat op som router.</p>
+
+
+<figure id="">
+
+	<img class="p50" src="images/network_ring_topology2.svg" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Mere om topologier: <a href="https://en.wikipedia.org/wiki/Network_topology" target="_blank">https://en.wikipedia.org/wiki/Network_topology</a></p>
+
+
+
 	
 </div><!-- end: col-md-9 -->
 
