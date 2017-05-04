@@ -51,8 +51,7 @@
 <p>Se nedestående eksempel,hvor vi anvender funktionen <span class="inl_cmd">var_dump()</span> til at finde ud af hvilken type input er.:</p>
 
 <pre>
-	<code class="php">
-&lt;?php
+	<code class="php">&lt;?php
 
 $tal1 = 7;
 $tal2 = 3.14; //husk det skal være et punktum
@@ -64,14 +63,13 @@ echo var_dump($tal2);
 echo "&lt;/br>"; // &lt;/br> indsætter et linieskift
 echo var_dump($tekst);
 
-?&gt;	
-	</code>
+?&gt;</code>
 </pre>
 
-<span class="afsnit">Browser output</span>
+<p class="browser"></p>
 <pre class="browser">int(7) 
 float(3.14)
-string(10) "Hej verden"</code></pre>
+string(10) "Hej verden"</pre>
 
 <p>Den fortæller altså at:</p>
 
@@ -86,7 +84,9 @@ string(10) "Hej verden"</code></pre>
 <p>Før vi går i gang med at programmere skal du lige have et overblik over måden man laver betingelser på. Ofte vil programmer fungere efter en skabelone der siger: Hvis noget sker – så gør følgende. Her under er et overblik over de logiske operatorer (regningsarter), som du skal anvende når du programmerer</p>
 
 <pre>
-	<code class="php">echo 8 + 2; // -> 10
+	<code class="php">&lt;?php
+	
+echo 8 + 2; // -> 10
 echo "&lt;/br>";
 echo 8 - 2; // -> 6
 echo "&lt;/br>";
@@ -96,18 +96,30 @@ echo 8 / 2; // -> 4
 echo "&lt;/br>";
 echo ( 8 * 2 ) - 4; // -> 12
 echo "&lt;/br>";
-echo 8 * ( 2 - 4 ); // -> -16</code>
+echo 8 * ( 2 - 4 ); // -> -16
+
+?></code>
 </pre>
 
-<span class="afsnit">Browser output</span>
+<p class="browser"></p>
 <pre class="browser">10
 6
 16
 4
 12
--16</code></pre>
+-16</pre>
 
 <p>Som du kan se overholder PHP regningsreglerne. </p>
+
+<p>Af andre vigtige regningsarter kan nævnes</p>
+
+<ul class="none">
+	<li><span class="math">\( \pi \)</span> skrives som <span class="inl_cmd">pi()</span></li>
+	<li><span class="math">\( \sqrt{x} \)</span> skrives som <span class="inl_cmd">sqrt(x)</span></li>
+	<li><span class="math">\( a^b \)</span> skrives som <span class="inl_cmd">pow(a,b)</span> eller <span class="inl_cmd">a**1/b</span></li>
+	<li><span class="inl_cmd">abs()</span> - returnere et tals absolutte (positive) værdi f.eks. <span class="inl_cmd">abs(-4) = 4</span></li>
+</ul>
+
 
 <h1>Logiske operatorer</h1>
 
@@ -242,25 +254,94 @@ echo 8 * ( 2 - 4 ); // -> -16</code>
 
 <h1>En til eller fra</h1>
 
-<p>Når man programmerer har man ofte brug for at lade et tal vokse mens programmet kører. Det kan f.eks. være, hvis programmet tæller antallet af loginforsøg. Se nedestående eksempel</p>
+<p>Når man programmerer har man ofte brug for at lade et tal vokse eller falde mens programmet kører. Dette kalder man for <span class="inl_cmd">increments</span>. Det kan f.eks. være, hvis programmet tæller antallet af loginforsøg. Se nedestående eksempel</p>
 
 
 <pre>
-	<code class="php">$antal = 0;
+	<code class="php">&lt;?php
+	
+$antal = 0;
 echo "Vi havde $antal og nu lægger en til";
 $antal +=1;
 echo "&lt;/br>Nyt antal: $antal ... og vi lægger en til";
 $antal +=1;
-echo "&lt;/br>Nyt antal: $antal";</code>
+echo "&lt;/br>Nyt antal: $antal";
+
+?></code>
 </pre>
 
-<span class="afsnit">Browser output</span>
+<p class="browser"></p>
 <pre class="browser">Vi havde 0 og nu lægger en til
 Nyt antal: 1 ... og vi lægger en til
-Nyt antal: 2</code></pre>
+Nyt antal: 2</pre>
 
-<p>Dette kalder man for <span class="inl_cmd">increments</span></p>
+<p></p>
 
+<p>Det samme kan man gøre med -, * og / (minus, gange og dividere). Se eksempel</p>
+
+<pre>
+	<code class="php">&lt;?php
+	
+$antal = 4;
+echo "Vi har $antal og lægger 3 til";
+$antal +=3;
+echo "&lt;/br>Vi har nu $antal ... og ganger med 4";
+$antal *=4;
+echo "&lt;/br>Vi har nu $antal ... og divderer med 7";
+$antal /=7;
+echo "&lt;/br>Vi har nu $antal ... og trækker 4 fra";
+$antal -=4;
+echo "&lt;/br>Vi har nu $antal.";
+
+?></code>
+</pre>
+
+<p class="browser"></p>
+<pre class="browser">Vi har 4 og lægger 3 til
+Vi har nu 7 ... og ganger med 4
+Vi har nu 28 ... og divderer med 7
+Vi har nu 4 ... og trækker 4 fra
+Vi har nu 0</pre>
+
+<h1>Afrunding</h1>
+
+<p>Der er tre måder at runde et tal af på med PHP</p>
+
+<ul class="none">
+	<li><span class="inl_cmd">round()</span> afrunder tallet som normalt</li>
+	<li><span class="inl_cmd">ciel()</span> runder op til det nærmeste hele tal</li>
+	<li><span class="inl_cmd">floor()</span> runder ned til det nærmeste hele tal</li>
+</ul>
+
+<h1>Tilfældige tal</h1>
+
+<p>Til at lave tilfældige tal anvender man <span class="inl_cmd">mt_rand()</span>. Herunder er der lavet et simpelt program der kaster med en 6 sidet terning.</p>
+
+<pre>
+	<code class="php">&lt;?php
+
+echo "Første kast: ".mt_rand(1,6)."&lt;/br>";
+echo "Andet kast: ". mt_rand(1,6) . "&lt;/br>";
+echo "Tredie kast: ". mt_rand(1,6) . "&lt;/br>";
+echo "Fjerde kast: ". mt_rand(1,6) . "&lt;/br>";
+
+?></code>
+</pre>
+
+<p class="browser"></p>
+<pre class="browser">Første kast: 4
+Andet kast: 4
+Tredie kast: 6
+Fjerde kast: 1</pre>
+
+
+
+
+<h1>Logaritmer</h1>
+
+<h1>Trigonometriske funktioner</h1>
+
+<h1>Talsystemer</h1>
 	
 	
 </div><!-- end: col-md-9 -->

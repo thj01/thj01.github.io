@@ -178,10 +178,30 @@ margin:auto;
 margin-bottom: 16px;
 }
 
+
+
+
+
+p.browser {
+font-family:ubuntu+mono, courier;
+color: darkblue;
+font-size: 1em;
+padding-left: 2px;
+margin-bottom: -2px;
+margin-top: 20px;
+background-color: grey ;
+color: white;
+
+}
+p.browser::before {
+content: "Browser Output:";
+
+}
+
+
+
 pre.browser {
-
 font-family:ubuntu+mono, courier  ;
-
 display:inline-block, table;
 font-size: 1.15em;
 font-weight: 100;

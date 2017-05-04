@@ -79,8 +79,8 @@ echo 4;
 
 <p>Dobbeltklik på filen <span class="inl_cmd">php_test.php</span></p>
 
-<span class="afsnit">Browser output</span>
-<pre class="browser">Hej 4</code></pre>
+<p class="browser"></p>
+<pre class="browser">Hej 4</pre>
 
 <h2>Afslut linier (<span class="inl_cmd">;</span>)</h2>
 
@@ -163,8 +163,8 @@ echo $var;
 
 <p>I koden har vi lavet en variabel, som vi kalder <span class="inl_cmd">$var</span>, og som vi samtidig har sat til tekstrengen <span class="inl_cmd">"Hej"</span>. Når vi så bagefter udskriver (<span class="inl_cmd">echo</span>) variablen svarer programmet med:</p>
 
-<span class="afsnit">Browser output</span>
-<pre class="browser">Hej</code></pre>
+<p class="browser"></p>
+<pre class="browser">Hej</pre>
 
 
 <h2>Ændring af variabler</h2>
@@ -184,8 +184,8 @@ echo $var;
 	</code>
 </pre>
 
-<span class="afsnit">Browser output</span>
-<pre class="browser">Hej med dig</code></pre>
+<p class="browser"></p>
+<pre class="browser">Hej med dig</pre>
 
 <p>Det som sker er, at PHP udskriver variablen <span class="inl_cmd">$var</span> to gange. Første gang er den: <span class="inl_cmd">"Hej"</span> og anden gang <span class="inl_cmd">" med dig"</span>. Læg mærke til at jeg har indsat et mellemrum før <span class="inl_cmd">med</span>. Ellers ville der komme til at stå: <span class="inl_cmd">Hejmed dig</span></p>
 
@@ -195,6 +195,7 @@ echo $var;
 	<code class="php">
 &lt;?php
 
+
 $antal = 10;
 $pris = 9.95;
 echo $antal * $pris;
@@ -203,8 +204,8 @@ echo $antal * $pris;
 	</code>
 </pre>
 
-<span class="afsnit">Browser output</span>
-<pre class="browser">99,5</code></pre>
+<p class="browser"></p>
+<pre class="browser">99,5</pre>
 
 
 <p>Det vi kan anvende varibler til er bl.a. at styre input. Hvis vi f.eks. skal anvende en brugers navn, så kan vi oprette variablerne <span class="inl_cmd">$f_navn</span> og <span class="inl_cmd">$e_navn</span>. Vi kan altså skrive vores kode så den gælder for alle de navne brugerne kan indtaste.</p>
@@ -225,8 +226,8 @@ echo "Mit navn er $navn og jeg er $alder gammel.";
 	</code>
 </pre>
 
-<span class="afsnit">Browser output</span>
-<pre class="browser">Mit navn er Thomas og jeg er 47 gammel.</code></pre>
+<p class="browser"></p>
+<pre class="browser">Mit navn er Thomas og jeg er 47 gammel.</pre>
 
 <h2>Formatering af tekstrenge</h2>
 
