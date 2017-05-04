@@ -48,12 +48,12 @@
 
 <p><abbr title="PHP: Hypertext Preprocessor">PHP</abbr> er et akronym for "PHP: Hypertext Preprocessor". Formålet med PHP er, at lave dynamisk indhold på hjemmesider, som både kan komme fra brugerinput og databaser. Vi skal seneer lære hvordan vi integrerer PHP-kode på hjemmesider.</p>
 
-<p>Programmerne skal køres fra en web-server, og filerne skal have endelsen <span class="inl_cmd">.php</span>. Her laver vi vores kode i filen <span class="inl_cmd">test.php</span></p>
+<p>Programmerne skal køres fra en web-server, og filerne skal have endelsen <span class="inl_cmd">.php</span>. Her laver vi vores kode i filen <span class="inl_cmd">php_test.php</span></p>
 
 
 <h1>Grundlæggende færdigheder</h1>
 
-<p>Lad os lave et simpelt program der skriver teskstrengen "Hej". Indtast nedestående og gem filen på webserveren under navnet test.php</p>
+<p>Lad os lave et simpelt program der udskriver tekstrengen "Hej" og tallet 4. Indtast nedestående og gem filen på webserveren under navnet test.php</p>
 
 
 <pre>
@@ -61,18 +61,29 @@
 	<code class="">&lt;?php
 
 echo "Hej";
+echo 4;
 
 ?&gt;</code>
 
 </pre>
 
-<pre class="browser">
-Hej
-</pre>
+<p>Start din browser op og søg adressen <span class="inl_cmd">127.0.0.1</span> eller <span class="inl_cmd">localhost</span></p>
 
+<figure id="">
+
+	<img class="p60" src="images/php_browser.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Dobbeltklik på filen <span class="inl_cmd">php_test.php</span></p>
+
+<span class="afsnit">Browser output</span>
+<pre class="browser">Hej
+4</code></pre>
 
 <pre>
-
 	<code class="">
 &lt;meta charset="UTF-8" lang="da"/&gt;<br />
 &lt;?php<br />
