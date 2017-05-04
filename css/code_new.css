@@ -178,6 +178,36 @@ margin:auto;
 margin-bottom: 16px;
 }
 
+pre.browser {
+
+font-family:ubuntu+mono, courier  ;
+color: white;
+display:inline-block, table;
+font-size: 1.15em;
+font-weight: 100;
+line-height:20px;
+color: white;
+padding: 10px 5px 12px 5px;
+background-color: #300a24 ;
+width: 900px;
+border-top: 22px solid #474640;
+border-radius: 7px 7px 3px 3px;
+white-space: pre-wrap;
+margin:auto;
+margin-bottom: 16px;
+
+
+
+
+
+
+
+
+
+
+}
+
+
 blockquote.center {
 
 text-align: center;
