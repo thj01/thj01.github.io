@@ -87,8 +87,6 @@ php > echo 8 * 2;
 16
 php > echo 8 / 2;
 4
-php > echo 8 ** 2;
-64
 php > echo ( 8 * 2 ) - 4;
 12
 php > echo 8 * ( 2 - 4 );
@@ -101,9 +99,8 @@ php > echo 8 * ( 2 - 4 );
 
 <ul class="none">
 	<li><span class="math">\( \pi \)</span> skrives som <span class="inl_cmd">pi()</span></li>
-	<li><span class="math">\( \sqrt{x} \)</span> skrives som <span class="inl_cmd">sqrt(x)</span></li>
-	<li><span class="math">\( a^b \)</span> skrives som <span class="inl_cmd">pow(a,b)</span> eller <span class="inl_cmd">a**1/b</span></li>
-	<li><span class="inl_cmd">abs()</span> - returnere et tals absolutte (positive) værdi f.eks. <span class="inl_cmd">abs(-4) = 4</span></li>
+	<li><span class="math">\( a^b \)</span> skrives som <span class="inl_cmd">pow(a,b)</span> eller <span class="inl_cmd">a**b</span></li>
+	<li><span class="math">\( \sqrt{x} \)</span> skrives som <span class="inl_cmd">sqrt(x)</span>. Man kan også skrive skrive <span class="inl_cmd">a**1/b</span> eller <span class="inl_cmd">pow(a,1/b)</span>.</li>
 </ul>
 
 <p>se eksemplerne her:</p>
@@ -111,14 +108,13 @@ php > echo 8 * ( 2 - 4 );
 <pre class="ubuntu_terminal">
 php > echo pi();
 3.1415926535898
-php > echo sqrt(64);
-8
 php > echo pow(3,3);
 27
+php > echo sqrt(64);
+8
 php > echo abs(-10);
 10
 </pre>
-
 
 <h1>Logiske operatorer</h1>
 
@@ -273,56 +269,63 @@ bool(false)
 	</tbody>
 </table>
 
+<pre class="ubuntu_terminal">
+php > $x = 6;
+php > $y = 3;
+php > var_dump($x&lt;10 and $y>1);
+bool(true)
+php > var_dump($x&lt;10 && $y>1);
+bool(true)
+php > var_dump($x==6 or $y==1);
+bool(true)
+php > var_dump($x==6 || $y==1);
+bool(true)
+php > var_dump($x==6 xor $y==1);
+bool(true)
+php > var_dump($x==6 xor $y==3);
+bool(false)
+php > var_dump(!($x==$y));
+bool(true)
+</pre>
+
 <h1>En til eller fra</h1>
 
 <p>Når man programmerer har man ofte brug for at lade et tal vokse eller falde mens programmet kører. Dette kalder man for <span class="inl_cmd">increments</span>. Det kan f.eks. være, hvis programmet tæller antallet af loginforsøg. Se nedestående eksempel</p>
 
-
-<pre>
-	<code class="php">&lt;?php
-	
-$antal = 0;
-echo "Vi havde $antal og nu lægger en til";
-$antal +=1;
-echo "&lt;/br>Nyt antal: $antal ... og vi lægger en til";
-$antal +=1;
-echo "&lt;/br>Nyt antal: $antal";
-
-?></code>
+<pre class="ubuntu_terminal">
+php > $a = 1;
+php > echo $a;
+1
+php > echo $a += 1;
+2
+php > echo $a += 1;
+3
 </pre>
-
-<p class="browser"></p>
-<pre class="browser">Vi havde 0 og nu lægger en til
-Nyt antal: 1 ... og vi lægger en til
-Nyt antal: 2</pre>
 
 <p></p>
 
 <p>Det samme kan man gøre med -, * og / (minus, gange og dividere). Se eksempel</p>
 
-<pre>
-	<code class="php">&lt;?php
-	
-$antal = 4;
-echo "Vi har $antal og lægger 3 til";
-$antal +=3;
-echo "&lt;/br>Vi har nu $antal ... og ganger med 4";
-$antal *=4;
-echo "&lt;/br>Vi har nu $antal ... og divderer med 7";
-$antal /=7;
-echo "&lt;/br>Vi har nu $antal ... og trækker 4 fra";
-$antal -=4;
-echo "&lt;/br>Vi har nu $antal.";
-
-?></code>
+<pre class="ubuntu_terminal">
+php > $antal = 4;          <span class="red">&larr; sætter a til 4</span>
+php > echo $antal +=3;     <span class="red">&larr; a + 4 = 7</span>
+7
+php > echo $antal *=4;     <span class="red">&larr; 7 * 4 = 28</span>
+28
+php > echo $antal /=7;     <span class="red">&larr; 28 / 7 = 4</span>
+4
+php > echo $antal -=4;     <span class="red">&larr; sætter 4 - 4 = 4</span>
+0
 </pre>
 
-<p class="browser"></p>
-<pre class="browser">Vi har 4 og lægger 3 til
-Vi har nu 7 ... og ganger med 4
-Vi har nu 28 ... og divderer med 7
-Vi har nu 4 ... og trækker 4 fra
-Vi har nu 0</pre>
+<h1>Absolutte tal</h1>
+
+<p>Når man programmere har man ofte brug for at kende forskellen mellem 2 tal. Problemet er, at man ikke altid kan være sikker på om forskellen er en positiv eller en negativ værdi. F.eks. kan forskellen mellem 2 temperaturer f.eks. 17&#176; og 21&#176; være både 4 og -4. Ved at bruge <span class="inl_cmd">abs()</span> kan vi sikre os at en forskel altid bliver leveret som en positiv værdi.</p>
+
+<pre class="ubuntu_terminal">
+echo abs(-4);
+4
+</pre>
 
 <h1>Afrunding</h1>
 
@@ -335,50 +338,35 @@ Vi har nu 0</pre>
 	
 </ul>
 
-<pre>
-<code class="php">
-&lt;?php
-
-echo round(2.49)."&lt;/br>";
-echo round(2.51)."&lt;/br>";
-echo ceil(2.49)."&lt;/br>";
-echo ceil(2.51)."&lt;/br>";
-echo floor(2.49)."&lt;/br>";
-echo floor(2.51)."&lt;/br>";
-
-?></code>
-</pre>
-
-<span class="afsnit">Browser output</span>
-<pre class="browser">2
-3
-3
-3
+<pre class="ubuntu_terminal">
+php > echo round(2.49);
 2
-2</code></pre>
+php > echo round(2.51);
+3
+php > echo ceil(2.49);
+3
+php > echo ceil(2.51);
+3
+php > echo floor(2.49);
+2
+php > echo floor(2.51);
+2
+</pre>
 
 <h1>Tilfældige tal</h1>
 
 <p>Til at lave tilfældige tal anvender man <span class="inl_cmd">mt_rand()</span>. Herunder er der lavet et simpelt program der kaster med en 6 sidet terning.</p>
 
-<pre>
-	<code class="php">&lt;?php
-
-echo "Første kast: ".mt_rand(1,6)."&lt;/br>";
-echo "Andet kast: ". mt_rand(1,6) . "&lt;/br>";
-echo "Tredie kast: ". mt_rand(1,6) . "&lt;/br>";
-echo "Fjerde kast: ". mt_rand(1,6) . "&lt;/br>";
-
-?></code>
+<pre class="ubuntu_terminal">
+php > echo mt_rand(1,6);
+6
+php > echo mt_rand(1,6);
+3
+php > echo mt_rand(1,6);
+1
+php > echo mt_rand(1,6);
+3
 </pre>
-
-<p class="browser"></p>
-<pre class="browser">Første kast: 4
-Andet kast: 4
-Tredie kast: 6
-Fjerde kast: 1</pre>
-
-
 
 
 <h1>Logaritmer</h1>
@@ -390,7 +378,27 @@ Fjerde kast: 1</pre>
 
 <h1>Trigonometriske funktioner</h1>
 
-<p>De trigonometriske funktioner er: <span class="inl_cmd">cos(), sin() og tan()</span>. Deres inverse funktioner er: <span class="inl_cmd">acos(), asin() og atan()</span> </p>
+<p>De trigonometriske funktioner er: <span class="inl_cmd">cos(), sin() og tan()</span>. Deres inverse funktioner er: <span class="inl_cmd">acos(), asin() og atan()</span>.</p>
+
+<p>Vær opmærksom på at PHP anvender radianer til trigonometriske beregninger.</p>
+
+<pre class="ubuntu_terminal">
+php > $a = pi();
+php > echo cos($a);
+-1
+php > echo sin($a/2);
+1
+php > echo tan($a/4);
+1
+php > echo acos(-1);
+3.1415926535898      <span class="red">= &pi;</span>
+php > echo asin(1);
+1.5707963267949      <span class="red">= &pi;/2</span>
+php > echo atan(1);
+0.78539816339745     <span class="red">= &pi;/4</span>
+</pre>
+
+
 
 <p>For at omskrive mellem grader og radianer anvendes:</p>
 
@@ -399,18 +407,43 @@ Fjerde kast: 1</pre>
 	<li><span class="inl_cmd">rad2deg()</span> - omskriver fra radianer til grader</li>
 </ul>
 
+<p></p>
+
+<pre class="ubuntu_terminal">
+php > echo deg2rad(45);
+0.78539816339745
+php > echo rad2deg(pi());
+180
+</pre>
 
 
 <h1>Talsystemer</h1>
 
 <p>For at omskrive fra fra et talsystem til et andet andvendes <span class="inl_cmd">base_convert()</span>.</p>
 
-<p>Ofte har man behov for at omskrive mellem binær og decimal. Det gøres med:</p>
+<p>Ofte har man behov for at omskrive mellem binære (2-talssystem), decimal (10-talssystem) og hexadecimal (16-talssystem). Det gøres med:</p>
 
 <ul class="none">
 	<li><span class="inl_cmd">bindec()</span> - omskriver fra binær til decimal</li>
 	<li><span class="inl_cmd">decbin()</span> - omskriver fra decimal til binær</li>
+	<li><span class="inl_cmd">hexdec()</span> - omskriver fra hexadecimal til decimal</li>
+	<li><span class="inl_cmd">dechex()</span> - omskriver fra decimal til hexadecimal</li>
 </ul>
+
+<p></p>
+
+<pre class="ubuntu_terminal">
+php > echo bindec("1001");
+9
+php > echo decbin(9);
+1001
+php > echo hexdec("FF2D");
+65325
+php > echo dechex(65325);
+ff2d
+</pre>
+
+<p>Læg mærke til at det binære og hexadecimale tal skal skrives i anførselstegn.</p>
 	
 	
 </div><!-- end: col-md-9 -->
