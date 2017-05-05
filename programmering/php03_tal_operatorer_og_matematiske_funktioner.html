@@ -309,9 +309,32 @@ Vi har nu 0</pre>
 
 <ul class="none">
 	<li><span class="inl_cmd">round()</span> afrunder tallet som normalt</li>
-	<li><span class="inl_cmd">ciel()</span> runder op til det nærmeste hele tal</li>
+	<li><span class="inl_cmd">ceil()</span> runder op til det nærmeste hele tal</li>
 	<li><span class="inl_cmd">floor()</span> runder ned til det nærmeste hele tal</li>
+	
 </ul>
+
+<pre>
+<code class="php">
+&lt;?php
+
+echo round(2.49)."&lt;/br>";
+echo round(2.51)."&lt;/br>";
+echo ceil(2.49)."&lt;/br>";
+echo ceil(2.51)."&lt;/br>";
+echo floor(2.49)."&lt;/br>";
+echo floor(2.51)."&lt;/br>";
+
+?></code>
+</pre>
+
+<span class="afsnit">Browser output</span>
+<pre class="browser">2
+3
+3
+3
+2
+2</code></pre>
 
 <h1>Tilfældige tal</h1>
 
