@@ -48,66 +48,41 @@
 
 <p><abbr title="PHP: Hypertext Preprocessor">PHP</abbr> er et akronym for "PHP: Hypertext Preprocessor". Formålet med PHP er, at lave dynamisk indhold på hjemmesider, som både kan komme fra brugerinput og databaser. Vi skal seneer lære hvordan vi integrerer PHP-kode på hjemmesider.</p>
 
-<p>Programmerne skal køres fra en web-server, og filerne skal have endelsen <span class="inl_cmd">.php</span>. Her laver vi vores kode i filen <span class="inl_cmd">php_test.php</span></p>
+<p>Programmerne kan køres på to måder. Enten igennem en browser eller ved hjælp af en <span class="inl_cmd">shell</span>. I disse dokumenter vil selve introduktionen af grundfunktionerne blive vist igennem <span class="inl_cmd">shell</span>, og senere vil vi integrere PHP'en i rigtige HTML dokumenter.</p>
 
+<p>PHP's <span class="inl_cmd">shell</span> startes op ved at at starte PHP op med <span class="inl_cmd">-a</span></p>
+
+<p>På Windows</p>
+
+<code class="cmd">c:\xampp\php\php -a</code>
+
+<p>På Mac</p>
+
+<code class="cmd"></code>
+
+<h2>PHP shell</h2>
+
+<p>Når man starter PHP shell op får man følgende resultat:</p>
+
+<pre class="ubuntu_terminal">Interactive shell
+
+php ></pre>
+
+<p>Kommandoer indtastet efter <span class="inl_cmd">php ></span></p>
 
 <h1>Mit første program</h1>
 
-<p>Lad os lave et simpelt program der udskriver tekstrengen "Hej" og tallet 4. Indtast nedestående og gem filen på webserveren under navnet test.php</p>
+<p>Lad os lave et simpelt program der udskriver tekstrengen "Hej" og tallet 4. Det gøres ved at anvende kommandoen <span class="inl_cmd">echo</span></p>
 
+<pre class="ubuntu_terminal">php > echo "Hej";       <span class="red">&larr; kommando</span>
+Hej                     <span class="red">&larr; output</span>
+php > echo 4;           <span class="red">&larr; kommando</span>
+4                       <span class="red">&larr; output</span>
+php >     </pre>
 
-<pre>
+<p>Læg mærke til at der er forskel på hvordan tekststrengen "hej" og værdien 4 bliver indtastet. Reglen er, at alt hvad PHP skal opfatte som en værdi (dvs. tal) skal skrives uden anførselstegn. Tekst skal altid omsluttes af anførselstegn.</p>
 
-	<code class="">&lt;?php
-
-echo "Hej";
-echo 4;
-
-?&gt;</code>
-
-</pre>
-
-<p>Start din browser op og søg adressen <span class="inl_cmd">127.0.0.1</span> eller <span class="inl_cmd">localhost</span></p>
-
-<figure id="">
-
-	<img class="p80" src="images/php_browser.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-
-<p>Dobbeltklik på filen <span class="inl_cmd">php_test.php</span></p>
-
-<p class="browser"></p>
-<pre class="browser">Hej 4</pre>
-
-<h2>Afslut linier (<span class="inl_cmd">;</span>)</h2>
-
-<p>Læg mærke til at at hver kodelinie er afsluttet med et semikolon (<span class="inl_cmd">;</span>). Det giver den fordel at en kommando kan fylde mere end en linie. F.eks. vil nedestående kode give samme output som ovenfor:</p>
-
-<pre>
-
-	<code class="">&lt;?php
-
-echo "
-
-Hej
-
-"
-;
-
-echo 4;
-
-?&gt;</code>
-
-</pre>
-
-<p>Senere vil vi kunne anvende dette til at lave en mere overskuelig kode.</p>
-
-<h2>Værdier og tekstrenge</h2>
-
-<p>Hvis du kigger i eksemplet ovenfor så læg mærke til at teksten står i anførselstegn og tallet uden. Det er for at PHP kan kende forskel på om vi taler om en tekststreng eller en værdi. En tekststreng består af nogle bogstaver og tal, som blot skal gengives, men værdier er værdier som kan bruges til at regne med. Tallet kan gøres større eller mindre.</p>
+<p>Det andet du skal lægge mærke til er, at alle kommandoer skal afsluttes med <span class="inl_cmd">;</span>. På den måde ved PHP at en enkelte kommando er færdig. Det kan vi senere udnytte til at skabe bedre overblik over mere komplekse kommandoer.</p>
 
 <p>Du skal altså huske:</p>
 
@@ -116,24 +91,37 @@ echo 4;
 	<li>Værdier skal ikke være omgivet af tekstrenge, og decimaltal skal adskilles af punktum (<span class="inl_cmd">.</span>) f.eks: 3.14</li>
 </ul>
 
+<h2>Escape characters</h2>
+
+<p>Når man arbejder i shell kan man nogle gange have brug for at skabe mere visuelt overblik. Her kan man anvende følgende escape characters:</p>
+
+<ul class="none">
+	<li>\n - ny linie</li>
+	<li>\t - tabulator</li>
+</ul>
+
+<pre class="ubuntu_terminal">php > echo "\nhej\n";
+
+hej
+
+php > echo "\n\thej";
+
+        hej</pre>
+
 <h1>Kommentarer</h1>
 
 <p>Når man arbejder med større programmer anvender man kommantarer til at forklare kodestumper. Her er vores ovenstående program med nogle forskellige kommentarer i</p>
 
 <pre>
 
-	<code class="">&lt;?php
-// Et lille program
+	<code class="">// Et lille program
 
 echo "Hej"; // en kommentar til denne linie
-echo 4;
 
 /*
 Dette er en længere kommentar,
 som kan fylde over flere linier
-*/
-
-?&gt;</code>
+*/</code>
 
 </pre>
 
@@ -149,63 +137,40 @@ som kan fylde over flere linier
 
 <p>Variabler er nemmere at vise end at forklare. Se nedestående eksempel.</p>
 
-
-<pre>
-	<code class="php">
-&lt;?php
-
-$var = "Hej";
-echo $var;
-
-?&gt;	
-	</code>
+<pre class="ubuntu_terminal">php > $var = "hej"
+php > echo $var;
+hej
 </pre>
 
-<p>I koden har vi lavet en variabel, som vi kalder <span class="inl_cmd">$var</span>, og som vi samtidig har sat til tekstrengen <span class="inl_cmd">"Hej"</span>. Når vi så bagefter udskriver (<span class="inl_cmd">echo</span>) variablen svarer programmet med:</p>
+<p>En variabel er noget information, som programmet kan anvende senere ved at henvise til den betegnelse vi har valgt. I dette tilfælde <span class="inl_cmd">$var</span>. Der gælder følgende for en variabel:</p>
 
-<p class="browser"></p>
-<pre class="browser">Hej</pre>
+<ul class="none">
+	<li>Alle variabler starter med <span class="inl_cmd">$</span></li>
+	<li>Et variabelnavn må ikke starte med et tal.</li>
+</ul>
 
 
 <h2>Ændring af variabler</h2>
 
 <p>En af fordelene ved at anvende variabler er, at vi kan ændre den løbende. </p>
 
-<pre>
-	<code class="php">
-&lt;?php
-
-$var = "Hej";
+<pre class="ubuntu_terminal">$var = "Hej";
 echo $var;
 $var = " med dig";
 echo $var;
-
-?&gt;	
-	</code>
 </pre>
-
-<p class="browser"></p>
-<pre class="browser">Hej med dig</pre>
 
 <p>Det som sker er, at PHP udskriver variablen <span class="inl_cmd">$var</span> to gange. Første gang er den: <span class="inl_cmd">"Hej"</span> og anden gang <span class="inl_cmd">" med dig"</span>. Læg mærke til at jeg har indsat et mellemrum før <span class="inl_cmd">med</span>. Ellers ville der komme til at stå: <span class="inl_cmd">Hejmed dig</span></p>
 
 <p>Et andet eksempel med tal kan være:</p>
 
-<pre>
-	<code class="php">
-&lt;?php
-
-
-$antal = 10;
-$pris = 9.95;
-echo $antal * $pris;
-
-?&gt;	
-	</code>
+<pre class="ubuntu_terminal">
+php > $antal = 10;
+php > $pris = 9.95;
+php > echo $antal * $pris;
+99.5
 </pre>
 
-<p class="browser"></p>
-<pre class="browser">99,5</pre>
 
 
 <p>Det vi kan anvende varibler til er bl.a. at styre input. Hvis vi f.eks. skal anvende en brugers navn, så kan vi oprette variablerne <span class="inl_cmd">$f_navn</span> og <span class="inl_cmd">$e_navn</span>. Vi kan altså skrive vores kode så den gælder for alle de navne brugerne kan indtaste.</p>
@@ -214,34 +179,10 @@ echo $antal * $pris;
 
 <p>Ofte har vi brug for at udskrive variabler som en del af en tekst. Se eksemplet herunder</p>
 
-<pre>
-	<code class="php">
-&lt;?php
-
-$navn = "Thomas";
-$alder = 47;
-echo "Mit navn er $navn og jeg er $alder gammel.";
-
-?&gt;	
-	</code>
-</pre>
-
-<p class="browser"></p>
-<pre class="browser">Mit navn er Thomas og jeg er 47 gammel.</pre>
-
-<h2>Formatering af tekstrenge</h2>
-
-<p>En af fordelene ved PHP er, at vi kan udnytte browserens muligheder for formatering. Dvs vi kan anvende tags og CSS. Herunder har jeg lavet den samme kode, men jeg har gjort sådan at min navn bliver udskrevet med fed ved hjælp af <span class="inl_cmd">&lt;b></span>-tagget og min alder med kursiv (<span class="inl_cmd">&lt;i></span>) </p>
-
-
-<pre>
-	<code class="php">
-&lt;?php<br />
-$navn = "Thomas";
-echo "Mit navn er &lt;b>$navn&lt;/b> og jeg er &lt;i>$alder&lt;/i> gammel.";
-?&gt;
-	</code>
-</pre>
+<pre class="ubuntu_terminal">php > $navn = "Thomas";
+php > $alder = 47;
+php > echo "Mit navn er $navn og jeg er $alder gammel.";
+Mit navn er Thomas og jeg er 47 gammel.</pre>
 
 <h1>Opgave</h1>
 
