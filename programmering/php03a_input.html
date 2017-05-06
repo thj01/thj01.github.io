@@ -56,7 +56,7 @@
 <pre>
 	<code class="html">
 &lt;form action="output.php" method="GET">
-	Input: &lt;input type="text" name="input">&lt;br>
+	Input: &lt;input type="text" name="input">
 	&lt;input type="submit" >
 &lt;/form>
 	</code>
@@ -101,6 +101,11 @@
 	<figcaption></figcaption>
 
 </figure>
+
+<p>Det som sker er, at browseren sender ordet <span class="inl_cmd">TEST</span> til serveren når man trykker på <span class="knap">Indsend</span>. Samtidig åbner browseren en ny side nemlig <span class="inl_cmd">output.php</span>. Det indstiller man i linien: <span class="inl_cmd">&lt;form <span class="red">action="output.php"</span> method="GET"></span>. Skulle <span class="inl_cmd">Indsend</span> aktivere andre sider skulle vi erstatte <span class="inl_cmd">output.php</span> med en anden PHP-side.</p>
+
+<p>Det er det som gør PHP til et specielt og meget anvendeligt programmeringssprog er netop, at det er designet til web. Og det specielle er også at data bliver sendt til serveren, som så den kan behandle data.</p>
+
 
 <h1>GET vs POST</h1>
 
@@ -162,7 +167,7 @@ Input: &lt;input type="text" name="input">
 
 </figure>
 
-<p>I det vi trykker <span class="knap">Indsend</span>, så sender browseren variablen <span class="inl_cmd">input</span> til serveren, som åbner den den samme side igen (<span class="inl_cmd">action="input2.php"</span>). Når browseren læser siden, så:</p>
+<p>I det vi trykker <span class="knap">Indsend</span>, sender browseren variablen <span class="inl_cmd">input</span> til serveren, som åbner den den samme side igen (<span class="inl_cmd">action="input2.php"</span>). Når browseren læser siden, så:</p>
 
 <ol class="">
 	<li>Viser den HTML koden</li>
@@ -170,6 +175,14 @@ Input: &lt;input type="text" name="input">
 	<li>Serveren svarer ja og leverer variablen tilbage til browseren</li>
 	<li><span class="inl_cmd">isset()</span> kører koden den har indlejret</li>
 </ol>
+
+<p>Egentlig har vi her foregrebet det som næste kapitel handler - nemlig at vi kan køre kode hvis (if) visse betingelser er opfyldt.</p>
+
+<h1>Hvilken metode anvender vi.</h1>
+
+<p>I resten af materialet vil vi arbejde videre med 2 filer, simpelthen fordi det giver det største overblik.</p>
+
+<p>I praksis vil man anvende en kombination af de to metoder, fordi man i nogle tilfælde vil have fordel af at lade en bruger blive på samme side. Det kan f.eks. være en loginside, hvor vi ikke ønsker at brugeren skal gå videre før han har brugt et gyldigt login - eller hans forsøg er spildt og vi sender ham videre til en anden side. Hvilket er en problemstilling vi senere vil programmere os ud af ;).</p>
 
 </div><!-- end: col-md-9 -->
 
