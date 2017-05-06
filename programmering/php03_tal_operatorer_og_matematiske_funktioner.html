@@ -159,12 +159,6 @@ php > echo abs(-10);
 			<td>Identisk med</td>
 			<td>5 === "5" → falsk</td>
 		</tr>
-		<tr>
-			<td>!===</td>
-			<td>Ikke identisk med</td>
-			<td>5 !=== "5" → sand</td>
-		</tr>
-	
 	</tbody>
 </table>
 
@@ -339,17 +333,17 @@ echo abs(-4);
 </ul>
 
 <pre class="ubuntu_terminal">
-php > echo round(2.49);
+php > echo round(2.25);
 2
-php > echo round(2.51);
+php > echo round(2.75);
 3
-php > echo ceil(2.49);
+php > echo ceil(2.25);
 3
-php > echo ceil(2.51);
+php > echo ceil(2.75);
 3
-php > echo floor(2.49);
+php > echo floor(2.25);
 2
-php > echo floor(2.51);
+php > echo floor(2.75);
 2
 </pre>
 
@@ -371,19 +365,39 @@ php > echo mt_rand(1,6);
 
 <h1>Logaritmer</h1>
 
-<p></p>
+<p>PHP har 2 logaritme funktioner. Den naturlige logaritme og 10-tals logaritmen:</p>
 
+<ul class="none">
+	<li>log() - svarer til <span class="math">\( ln(x) \)</span></li>
+	<li>log10() - svarer til  <span class="math">\( log(x) \)</span></li>
+</ul>
+
+<p>Derudover gælder det at:</p>
+
+<ul class="none">
+	<li>exp() - svarer til <span class="math">\( e^x \)</span></li>
+</ul>
+
+<pre class="ubuntu_terminal">
+php > $e = exp(1);          <span class="red">sætter $e = e</span> 
+php > echo log($e);			
+1
+php > echo log10(1000);		
+3
+</pre>
+
+<p>For at anvende den inverse funktion skal man anvende:</p>
+
+<div class="latex">$$ ln(x) = e^x ~~~ \vee ~~~ log(x) = 10^x $$</div>
 
 
 
 <h1>Trigonometriske funktioner</h1>
 
-<p>De trigonometriske funktioner er: <span class="inl_cmd">cos(), sin() og tan()</span>. Deres inverse funktioner er: <span class="inl_cmd">acos(), asin() og atan()</span>.</p>
-
-<p>Vær opmærksom på at PHP anvender radianer til trigonometriske beregninger.</p>
+<p>De trigonometriske funktioner er: <span class="inl_cmd">cos(), sin() og tan()</span>. Deres inverse funktioner er: <span class="inl_cmd">acos(), asin() og atan()</span>. Vær opmærksom på at PHP anvender radianer til trigonometriske beregninger.</p>
 
 <pre class="ubuntu_terminal">
-php > $a = pi();
+php > $a = pi();     <span class="red">sætter variablen $a = &pi;</span>
 php > echo cos($a);
 -1
 php > echo sin($a/2);
@@ -475,9 +489,17 @@ ff2d
 	<script>hljs.initHighlightingOnLoad();</script>
 
 <!-- MATHJAX -->
-<script type="text/javascript" async 		src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
-		MathJax.Hub.Config({ jax: ["input/TeX","output/HTML-CSS"], displayAlign: "left"	});
+<script type="text/javascript" 
+	src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
 </script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  displayAlign: "left",
+  displayIndent: "0em"
+});
+</script>
+
 <!-- TOCIFY -->
 <script>
 	$(function() {var toc = $("#toc").tocify({ selectors: "h1, h2, h3, h4" }).data("toc-tocify"); });

@@ -405,9 +405,18 @@ Filsystem                                              Størr Brugt  Tilb Brug% 
 	<script>hljs.initHighlightingOnLoad();</script>
 
 <!-- MATHJAX -->
-<script type="text/javascript" async 		src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
-		MathJax.Hub.Config({ jax: ["input/TeX","output/HTML-CSS"], displayAlign: "left"	});
+<script type="text/javascript" 
+	src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
 </script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  displayAlign: "left",
+  displayIndent: "0em"
+});
+</script>
+
+
 <!-- TOCIFY -->
 <script>
 	$(function() {var toc = $("#toc").tocify({ selectors: "h1, h2, h3, h4" }).data("toc-tocify"); });
