@@ -70,6 +70,37 @@ string(3) "hej"
 	<li>"Hej verden" er en tekststreng (string)</li>
 </ul>
 
+<h1>Konvertering af tekst/tal</h1>
+
+<p>Når man sender et input til PHP kommer det altid som en tekststreng. Derfor skal man kunne konvertere mellem integers, float og string (heltal, decimaltal og tekststrenge). Det gør man ved at anvende:</p>
+
+<ul class="none">
+	<li>intval() - konverterer til interger (heltal)</li>
+	<li>floatval() - konverterer til float (decimaltal)</li>
+	<li>strval() - konvertere til string (tekststreng)</li>
+</ul>
+
+<p></p>
+
+<pre class="ubuntu_terminal">
+php > $a = "7";
+php > $b = "3.14";
+php > echo var_dump($a,$b);     <span class="red">&larr; vis datatypen på variablerne a og b</span>
+string(1) "7"
+string(4) "3.14"
+php > $a = intval($a);
+php > $b = floatval($b);
+php > echo var_dump($a,$b);      <span class="red">&larr; vis de nye datatypen på variablerne a og b</span>
+int(7)
+float(3.14)
+php > $a = strval($a);
+php > $b = strval($b);
+php > echo var_dump($a,$b);      <span class="red">&larr; vis de nye datatypen på variablerne a og b</span>
+string(1) "7"
+string(4) "3.14"
+</pre>
+
+
 <h1>Regningsregler</h1>
 
 <p>Før vi går i gang med at programmere skal du lige have et overblik over måden man laver betingelser på. Ofte vil programmer fungere efter en skabelone der siger: Hvis noget sker – så gør følgende. Her under er et overblik over de logiske operatorer (regningsarter), som du skal anvende når du programmerer</p>
