@@ -343,6 +343,21 @@ php > echo $antal -=4;     <span class="red">&larr; sætter 4 - 4 = 4</span>
 0
 </pre>
 
+<p>Skal man kun lægge en til eller trække en fra, kan man også anvende <span class="inl_cmd">++</span> eller <span class="inl_cmd">--</span></p>
+
+<pre class="ubuntu_terminal">
+php > $a = 0;
+php > $a++;
+php > echo $a;
+1
+php > $a--;
+php > echo $a;
+0
+</pre>
+
+<pre><code class="php">
+$a = 0</code></pre>
+
 <h1>Absolutte tal</h1>
 
 <p>Når man programmere har man ofte brug for at kende forskellen mellem 2 tal. Problemet er, at man ikke altid kan være sikker på om forskellen er en positiv eller en negativ værdi. F.eks. kan forskellen mellem 2 temperaturer f.eks. 17&#176; og 21&#176; være både 4 og -4. Ved at bruge <span class="inl_cmd">abs()</span> kan vi sikre os at en forskel altid bliver leveret som en positiv værdi.</p>

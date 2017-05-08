@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Vidas.dk</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono|Ubuntu|Ubuntu+Condensed' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/jquery-ui.min.css">
+  <link rel="stylesheet" href="../css/jquery.tocify.css">
+  <link rel="stylesheet" href="../css/style_new.css" />
+<!-- Scripts in bottom to speed up pageload-->
+ 
+
+</head>
+<body>
+	
+	
+<div class="container-fluid">
+
+<div class="row-fluid">
+	
+<div class="col-sm-3">
+	
+	<div id="toc">
+	
+		<div id="toc_headline"></div>
+	
+	</div>
+
+</div><!-- Start slut 1. kolonne - TOC -->
+	
+<div class="col-sm-9">
+	
+	<figure id="">
+	
+		<img class="p25" src="images/PHP-logo.svg" alt="" title="" />
+	
+		<figcaption></figcaption>
+	
+	</figure>
+	
+	
+	<div class="title">Løkker</div>
+	
+<h1>Løkker - et overblik</h1>
+
+<p>Ofte har man brug for at et program skal gøre det samme igen og igen. Det kan f.eks. være at skulle udføre den samme beregning, på et stigende tal. Det kan f.eks. være at udskrive kvadrattallene (1,4,9,16,25 ...). På engelsk kaldes dette et <span class="inl_cmd">loop</span>.</p>
+
+<p>Python arbejder med 4 forskellige loops:</p>
+
+<ul class="none fat_li">
+	<li>for</li>
+	
+	<p>Anvendes når man kender det nøjagtige antal gennemløb. Hvis man f.eks. ved at en funktion skal gennemløbes 10 gange vil man anvende <span class="inl_cmd">for</span>-løkken.</span></p>
+	
+	<p><b>Anvendelse</b><span class="inl_cmd">for ( startværdi ; slutværdi ; spring ) { kode };</p>
+	
+
+
+	<li>while</li>
+	
+	<p>Anvendes når en kode skal køres <b>når</b> en betingelse er opfyldt</p>
+	
+	<p><b>Anvendelse</b>: while( betingelse ) { kode };</p>
+
+
+
+	<li>do ... while</li>
+	
+	<p>Anvendes når en kode skal køres <b>indtil</b> en betingelse er opfyldt</p>
+	
+	<p><b>Anvendelse</b>: <span class="inl_cmd">do { kode } while ( betingelse )</span></p>
+	
+</ul>
+
+<p>Derudover findes det et loop mere, som vil blive gennemgået i kapitlet om <span class="inl_cmd">array</span></p>
+
+<h2>break</h2>
+
+<p><span class="inl_cmd">break</span> er et kontroludsagn man kan indsætte i en løkke, hvis den skal afbrydes. Det kan f.eks. være hvis en speciel betingelse er opfyldt. Hvis man indsætter <span class="inl_cmd">break</span> i orden af sin kode, så afsluttes hele koden. </p>
+
+<h1>for</h1>
+
+<p>Anvendes når man kender det nøjagtige antal gennemløb. Hvis man f.eks. ved at en funktion skal gennemløbes 10 gange vil man anvende <span class="inl_cmd">for</span>-løkken.</span></p>
+	
+<p><b>Anvendelse</b><span class="inl_cmd">for ( startværdi ; slutværdi ; spring ) { kode };</p>
+
+<p>Herunder er nogle eksempler på løkker:</p>
+
+<h2>Udskriv tabel</h2>
+
+<p>Herunder udskriver vi 7-tabellen</p>
+
+<pre><code class="php">
+&lt;?php
+for($x=1;$x&lt;11;$x++) {
+	echo 7*$x." - ";
+	}
+?>
+</code>
+</pre>
+
+<p class="browser"></p>
+<pre class="browser">7 - 14 - 21 - 28 - 35 - 42 - 49 - 56 - 63 - 70 -</pre>
+
+<h2>Udskriv lige tal</h2>
+
+<p>Her udskriver vi de lige tal op til 20</p>
+
+<pre><code class="php">
+&lt;?php
+for($x=2;$x&lt;21;$x+=2) {
+	echo $x." - ";
+	}
+?>
+</code>
+</pre>
+
+<p class="browser"></p>
+<pre class="browser">2 - 4 - 6 - 8 - 10 - 12 - 14 - 16 - 18 - 20 -</pre>
+
+<h2>Trekanttal</h2>
+
+<p>Herunder udskriver vi de første 12 trekanttal ud fra formlen: </p>
+
+<div class="latex">$$ T_n = 1+2+3 ... +n= \frac {n \cdot (n-1)}{2} $$</div>
+
+<pre><code class="php">
+&lt;?php
+for($x=1;$x&lt;12;$x++) {
+	$t = ($x*($x+1))/2;
+	echo $t." - ";
+	}
+?>
+</code>
+</pre>
+
+<p class="browser"></p>
+<pre class="browser">1 - 3 - 6 - 10 - 15 - 21 - 28 - 36 - 45 - 55 - 66 -</pre>
+
+<h1>while</h1>
+
+<p>Anvendes når en kode skal køres <b>når</b> en betingelse er opfyldt</p>
+
+<p><b>Anvendelse</b>: while( betingelse ) { kode };</p>
+
+
+
+<h1>do ... while</h1>
+
+<p>Anvendes når en kode skal køres <b>indtil</b> en betingelse er opfyldt</p>
+
+<p><b>Anvendelse</b>: <span class="inl_cmd">do { kode } while ( betingelse )</span></p>
+
+
+
+
+
+
+
+	
+</div><!-- end: col-md-9 -->
+
+<footer>
+
+	<p><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons licens" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>Indholdet på Vidas.dk er licenseret under <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> og er skrevet af Thomas Jensen. (<a href="../hvem_er_jeg.html" target="_blank">Læs mere</a>)</p>
+
+</footer>
+	
+	
+</div><!-- end: row-fluid -->
+
+</div> <!-- end: container-fluid -->
+
+
+<!-- SCRIPT SECTION -->
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script type="text/javascript" src="../js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="../js/jquery.tocify.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+
+<!-- PRETTYFY-->
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+
+
+<!-- HIGHLIGHT -->
+	<script src="../js/highlight.pack.js" type="text/javascript"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+
+<!-- MATHJAX -->
+<script type="text/javascript" 
+	src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  displayAlign: "left",
+  displayIndent: "0em"
+});
+</script>
+
+
+<!-- TOCIFY -->
+<script>
+	$(function() {var toc = $("#toc").tocify({ selectors: "h1, h2, h3, h4" }).data("toc-tocify"); });
+</script>
+<!-- GOOGLE ANALYTICS -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-89933285-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</body>
+</html>
