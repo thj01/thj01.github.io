@@ -96,8 +96,10 @@
 
 <pre><code class="php">
 &lt;?php
+$tabel = 7;
+
 for($x=1;$x&lt;11;$x++) {
-	echo 7*$x." - ";
+	echo $tabel*$x." - ";
 	}
 ?>
 </code>
@@ -112,7 +114,9 @@ for($x=1;$x&lt;11;$x++) {
 
 <pre><code class="php">
 &lt;?php
-for($x=2;$x&lt;21;$x+=2) {
+$op_til = 20
+
+for($x=2;$x&lt;=$op_til;$x+=2) {
 	echo $x." - ";
 	}
 ?>
@@ -130,7 +134,9 @@ for($x=2;$x&lt;21;$x+=2) {
 
 <pre><code class="php">
 &lt;?php
-for($x=1;$x&lt;12;$x++) {
+$antal = 12;
+
+for($x=1;$x&lt;=$antal;$x++) {
 	$t = ($x*($x+1))/2;
 	echo $t." - ";
 	}
@@ -139,7 +145,7 @@ for($x=1;$x&lt;12;$x++) {
 </pre>
 
 <p class="browser"></p>
-<pre class="browser">1 - 3 - 6 - 10 - 15 - 21 - 28 - 36 - 45 - 55 - 66 -</pre>
+<pre class="browser">1 - 3 - 6 - 10 - 15 - 21 - 28 - 36 - 45 - 55 - 66 - 78 -</pre>
 
 <h1>while</h1>
 
@@ -147,6 +153,20 @@ for($x=1;$x&lt;12;$x++) {
 
 <p><b>Anvendelse</b>: while( betingelse ) { kode };</p>
 
+<h2>Udskriv 7 tabel under 100</h2>
+
+<pre><code class="php">
+&lt;?php
+$tal = 1;
+$tabel = 7;
+
+while ($tal &lt;= 10) {
+	echo $tal*$tabel." - ";
+	$tal++;
+	}
+?>
+</code>
+</pre>
 
 
 <h1>do ... while</h1>
