@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Vidas.dk</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono|Ubuntu|Ubuntu+Condensed' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/jquery-ui.min.css">
+  <link rel="stylesheet" href="../css/jquery.tocify.css">
+  <link rel="stylesheet" href="../css/style_new.css" />
+<!-- Scripts in bottom to speed up pageload-->
+ 
+
+</head>
+<body>
+	
+	
+<div class="container-fluid">
+
+<div class="row-fluid">
+	
+<div class="col-sm-3">
+	
+	<div id="toc">
+	
+		<div id="toc_headline"></div>
+	
+	</div>
+
+</div><!-- Start slut 1. kolonne - TOC -->
+	
+<div class="col-sm-9">
+	
+	<figure id="">
+	
+		<img class="p25" src="images/PHP-logo.svg" alt="" title="" />
+	
+		<figcaption></figcaption>
+	
+	</figure>
+	
+	<div class="title">Arrays</div>
+	
+<h1>Arrays</h1>
+
+<p>Arrays er variabler, der kan indeholde flere værdier på en gang. Et array er opbygget efter følgende model:</p>
+
+<pre><code class="php">
+$navne = array("Anne", "Bent", "Cecilie","Dennis");
+</code>
+</pre>
+
+<p>Det kan også skrives på følgende måde, hvor vi angiver hver værdi's placering:</p>
+
+<pre><code class="php">
+$navne[0] = "Anne":
+$navne[1] = "Bent";
+$navne[2] = "Cecilie";
+$navne[3] = "Dennis";
+</code>
+</pre>
+
+<p>Læg mærke til:</p>
+
+<ul class="none">
+	<li>I et array adskilles de enkelte værdier med et komma</li>
+	<li>Hver værdi er angivet af array'ets navn og dets placering.</li>
+	<li>PHP tæller: 0, 1, 2 ...</li>
+</ul>
+
+<h1>Udskrivning af array</h1>
+
+<pre><code class="php">
+&lt;?php
+$navne = array("Anne", "Bent", "Cecilie","Dennis");
+
+echo "$navne[0] &lt;br/>";
+echo "$navne[1] &lt;br/>";
+echo "$navne[2] &lt;br/>";
+echo "$navne[3] &lt;br/>";
+?>
+</code>
+</pre>
+	
+<p class="browser"></p>
+<pre class="browser">Anne 
+Bent 
+Cecilie 
+Dennis </code></pre>
+
+<p>Læg mærke til:</p>
+
+<ul class="none">
+	<li>I et array adskilles de enkelte værdier med et komma</li>
+	<li>PHP tæller: 0, 1, 2 ...</li>
+</ul>
+
+<h2>foreach</h2>
+
+<p>En hurtig måde at udskrive et array på er er ved at anvende <span class="inl_cmd">foreach()</span>:</p>
+
+<pre><code class="php">
+&lt;?php
+$navne = array("Anne", "Bent", "Cecilie","Dennis");
+
+foreach( $navne as $value) {
+	echo "$value &lt;br/>";
+	}
+?>
+</code>
+</pre>
+
+<p class="browser"></p>
+<pre class="browser">Anne 
+Bent 
+Cecilie 
+Dennis </code></pre>
+
+<p>For at udskrive med <span class="inl_cmd">foreach</span> skal array'et gives et nyt variabelnavn (<span class="inl_cmd">$navne &rarr; $value</span>)- hvorefter det kan udskrives af <span class="inl_cmd">foreach</span>.</p>
+
+<h1>Associative arrays</h1>
+
+<p>Man kan også lave arrays, hvor man selv navngiver "positionen" (nøglen) for hver enkelt værdi.</p>
+
+<pre><code class="php">
+$kodeord = array("Anne"=>"123", "Bent"=>"234", "Cecilie"=>"345","Dennis"=>"456");
+</code>
+</pre>
+
+<p>Her er de enkelte værdier ikke angivet af deres position, men af den værdi man associerer (forbinder) til den enkelte værdi.</p>
+
+
+<p>Se nedestående eksempel, hvor array'et gives nogle nye variabler: <span class="inl_cmd">$kodeord &rarr; $v => $kode</span>.</p>
+
+<pre><code class="php">
+&lt;?php
+$kodeord = array("Anne"=>"123", "Bent"=>"234", "Cecilie"=>"345","Dennis"=>"456");
+
+foreach( $kodeord as $v => $kode) {
+	echo "Brugernavn: $v (Kodeord: $kode) &lt;br/>";
+	}
+?>
+</code>
+</pre>
+
+<p>Her kan vi igen udskrive de enkelte felter: </p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+</div><!-- end: col-md-9 -->
+
+<footer>
+
+	<p><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons licens" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>Indholdet på Vidas.dk er licenseret under <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> og er skrevet af Thomas Jensen. (<a href="../hvem_er_jeg.html" target="_blank">Læs mere</a>)</p>
+
+</footer>
+	
+	
+</div><!-- end: row-fluid -->
+
+</div> <!-- end: container-fluid -->
+
+
+<!-- SCRIPT SECTION -->
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script type="text/javascript" src="../js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="../js/jquery.tocify.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+
+<!-- PRETTYFY-->
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+
+
+<!-- HIGHLIGHT -->
+	<script src="../js/highlight.pack.js" type="text/javascript"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+
+<!-- MATHJAX -->
+<script type="text/javascript" 
+	src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  displayAlign: "left",
+  displayIndent: "0em"
+});
+</script>
+
+
+<!-- TOCIFY -->
+<script>
+	$(function() {var toc = $("#toc").tocify({ selectors: "h1, h2, h3, h4" }).data("toc-tocify"); });
+</script>
+<!-- GOOGLE ANALYTICS -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-89933285-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</body>
+</html>

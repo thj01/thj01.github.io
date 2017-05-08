@@ -96,10 +96,8 @@
 
 <pre><code class="php">
 &lt;?php
-$tabel = 7;
-
-for($x=1;$x&lt;11;$x++) {
-	echo $tabel*$x." - ";
+for($x=1;$x&lt;=$10;$x++) {
+	echo 7*$x." - ";
 	}
 ?>
 </code>
@@ -114,9 +112,7 @@ for($x=1;$x&lt;11;$x++) {
 
 <pre><code class="php">
 &lt;?php
-$op_til = 20
-
-for($x=2;$x&lt;=$op_til;$x+=2) {
+for($x=2;$x&lt;=$20;$x+=2) {
 	echo $x." - ";
 	}
 ?>
@@ -134,9 +130,7 @@ for($x=2;$x&lt;=$op_til;$x+=2) {
 
 <pre><code class="php">
 &lt;?php
-$antal = 12;
-
-for($x=1;$x&lt;=$antal;$x++) {
+for($x=1;$x&lt;=$12;$x++) {
 	$t = ($x*($x+1))/2;
 	echo $t." - ";
 	}
@@ -153,15 +147,16 @@ for($x=1;$x&lt;=$antal;$x++) {
 
 <p><b>Anvendelse</b>: while( betingelse ) { kode };</p>
 
-<h2>Udskriv 7 tabel under 100</h2>
+<h2>Udskriv 7 tabel op til 70</h2>
+
+<p>Herunder er den samme kode som ovenfor, blot skrevet med <span class="inl_cmd">while</span>. Læg mærke til at vi her skal definere variablen (<span class="inl_cmd">$tal</span>) før før vi kan sætte gang i løkken, og at vi skal sætte variablen til at vokse med en hver gang (<span class="inl_cmd">$tal++</span>).</p>
 
 <pre><code class="php">
 &lt;?php
 $tal = 1;
-$tabel = 7;
 
 while ($tal &lt;= 10) {
-	echo $tal*$tabel." - ";
+	echo 7*$tal." - ";
 	$tal++;
 	}
 ?>
@@ -169,17 +164,32 @@ while ($tal &lt;= 10) {
 </pre>
 
 
+<p><b>GENERELT : </b>Anvend <span class="inl_cmd">for</span>-løkken fremfor <span class="inl_cmd">while</span>-løkken, da den er langt mere effektiv og kræver  mindre kodelinier.</p>
+
 <h1>do ... while</h1>
 
-<p>Anvendes når en kode skal køres <b>indtil</b> en betingelse er opfyldt</p>
+<p>Anvendes når en kode skal køres mindst en gang eller <b>indtil</b> en betingelse er opfyldt</p>
 
 <p><b>Anvendelse</b>: <span class="inl_cmd">do { kode } while ( betingelse )</span></p>
 
+<p>Se følgende eksempel, hvor vi laver en <span class="inl_cmd">do ... while</span>-løkke, hvor vi sætter antallet til 8, men at den kun skal køres til og med 5</p>
 
+<pre><code class="php">
+&lt;?php 
+$antal = 8; 
 
+do {
+    echo "Variablen er: $antal. &lt;br>";
+    $antal++;
+} while ($antal &lt;= 5);
+?>
+</code>
+</pre>
 
+<p class="browser"></p>
+<pre class="browser">Variablen er: 8. </code></pre>
 
-
+<p>I dette tilfælde virker det underligt, fordi det ikke giver nogen mening at vi får at vide at variablen er 8 - når den kun må være 5 og derunder. Men det kan være at der er en anden kode vi vil sikre os kører mindst en gang - uanset betingelsen.</p>
 
 	
 </div><!-- end: col-md-9 -->
