@@ -44,6 +44,9 @@
 	
 	<div class="title">Arrays</div>
 	
+<p>I denne guide vil vi kigge arrays. Arrays er en variabel, der kan indeholde flere værdier - altså en måde at gruppere værdier på.</p>
+
+	
 <h1>Arrays</h1>
 
 <p>Arrays er variabler, der kan indeholde flere værdier på en gang. Et array er opbygget efter følgende model:</p>
@@ -130,10 +133,22 @@ $kodeord = array("Anne"=>"123", "Bent"=>"234", "Cecilie"=>"345","Dennis"=>"456")
 </code>
 </pre>
 
-<p>Her er de enkelte værdier ikke angivet af deres position, men af den værdi man associerer (forbinder) til den enkelte værdi.</p>
+<p>Her er de enkelte værdier ikke angivet af deres position, men af den værdi man associerer (forbinder) til den enkelte værdi. For at få <span class="inl_cmd">Bents</span> kodeord skal man altså skrive:</p>
+
+<pre><code class="php">
+&lt;?php
+$kodeord = array("Anne"=>"123", "Bent"=>"234", "Cecilie"=>"345","Dennis"=>"456");
+
+echo $kodeord[Bent];
+?>
+</code>
+</pre>
+
+<p class="browser"></p>
+<pre class="browser">234</code></pre>
 
 
-<p>Se nedestående eksempel, hvor array'et gives nogle nye variabler: <span class="inl_cmd">$kodeord &rarr; $v => $kode</span>.</p>
+<p>Vi kan også udskrive vores array ved hjælp af <span class="inl_cmd">foreach</span>. Se nedestående eksempel, hvor array'et gives nogle nye variabler: <span class="inl_cmd">$kodeord &rarr; $v => $kode</span>.</p>
 
 <pre><code class="php">
 &lt;?php
@@ -148,8 +163,34 @@ foreach( $kodeord as $v => $kode) {
 
 <p>Her kan vi igen udskrive de enkelte felter: </p>
 
+<h2>Arrays med flere dimensioner</h2>
+
+<p>Man kan også lave arrays med flere dimensioner, altså hvor man pakker arrays ind i arrays. Herunder laver vi et array med de ovenstående personer, som indeholder: Navn, kodeord og alder:</p>
+
+<pre><code class="php">
+&lt;?php
+$navne = array( 
+	
+	array("Anne", "123",19),
+	array("Bent","234",32),
+	array("Cecilie","345",29),
+	array("Dennis","456",42)
+	
+	);
+
+echo $navne[1][0]."&lt;/br>";
+echo $navne[1][1]."&lt;/br>";
+echo $navne[1][2]."&lt;/br>";
+
+?>
+</code>
+</pre>
 
 
+
+
+
+<h1>Sessions</h1>
 
 
 
