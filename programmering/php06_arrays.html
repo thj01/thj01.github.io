@@ -76,6 +76,23 @@ $navne[3] = "Dennis";
 
 <h1>Udskrivning af array</h1>
 
+<p>Hvis vi blot ønsker at se hele vores array anvender vi kommandoen: <span class="inl_cmd">print_r(array_values( ** array **))</span></p>
+
+<pre><code class="php">
+&lt;?php
+$navne = array("Anne", "Bent", "Cecilie","Dennis");
+
+print_r($navne);
+?>
+</code>
+</pre>
+
+<p class="browser"></p>
+<pre class="browser">Array ( [0] => Anne [1] => Bent [2] => Cecilie [3] => Dennis )</pre>
+
+<p>Hvis vi vil ramme de enkelte værdier så anvender vi en anden metode. Her angiver vi hvilken position i arrayet vi vil have skrevet ud.</p>
+
+
 <pre><code class="php">
 &lt;?php
 $navne = array("Anne", "Bent", "Cecilie","Dennis");
@@ -124,7 +141,9 @@ Dennis </code></pre>
 
 <p>For at udskrive med <span class="inl_cmd">foreach</span> skal array'et gives et nyt variabelnavn (<span class="inl_cmd">$navne &rarr; $value</span>)- hvorefter det kan udskrives af <span class="inl_cmd">foreach</span>.</p>
 
-<h1>Associative arrays</h1>
+<h1>Arrays med flere dimensioner</h1>
+
+<h2>Associative arrays</h2>
 
 <p>Man kan også lave arrays, hvor man selv navngiver "positionen" (nøglen) for hver enkelt værdi.</p>
 
@@ -132,6 +151,20 @@ Dennis </code></pre>
 $kodeord = array("Anne"=>"123", "Bent"=>"234", "Cecilie"=>"345","Dennis"=>"456");
 </code>
 </pre>
+
+<p>En hurtig udskrift giver</p>
+
+<pre><code class="php">
+&lt;?php
+$kodeord = array("Anne"=>"123", "Bent"=>"234", "Cecilie"=>"345","Dennis"=>"456");
+
+print_r($kodeord);
+?>
+</code>
+</pre>
+
+<p class="browser"></p>
+<pre class="browser">Array ( [Anne] => 123 [Bent] => 234 [Cecilie] => 345 [Dennis] => 456 )</pre>
 
 <p>Her er de enkelte værdier ikke angivet af deres position, men af den værdi man associerer (forbinder) til den enkelte værdi. For at få <span class="inl_cmd">Bents</span> kodeord skal man altså skrive:</p>
 
@@ -161,6 +194,12 @@ foreach( $kodeord as $v => $kode) {
 </code>
 </pre>
 
+<p class="browser"></p>
+<pre class="browser">Brugernavn: Anne (Kodeord: 123) 
+Brugernavn: Bent (Kodeord: 234) 
+Brugernavn: Cecilie (Kodeord: 345) 
+Brugernavn: Dennis (Kodeord: 456) </pre>
+
 <p>Her kan vi igen udskrive de enkelte felter: </p>
 
 <h2>Arrays med flere dimensioner</h2>
@@ -186,21 +225,57 @@ echo $navne[1][2]."&lt;/br>";
 </code>
 </pre>
 
+<p>Man kan sagtens lave arrays i flere niveauer, men man skal passe på med at man ikke mister overblikket.</p>
+
+<h2>Hvad skal jeg bruge</h2>
+
+<p>Det som er afgørende for hvilken type array man skal anvende afhænger af det som det skal løse.</p>
+
+<p>Det associative tilgang gør, at man kan lagre flere værdier i et array, men give det menneskelæselige navne. Man lagrer varibleer i et array og anvender dem løbende i koden.</p>
+
+<p>Det "almindelige" multidimensionelle array giver en mere logisk tilgang, da man kan tilgå det rigtige sted ved hjælp af nummeriske værdier i sine brackets. Her skal man altså ikke bekymre sig om at navngive hver enkelt position, da de bliver indekseret automatisk.</p>
 
 
 
+<h1>Manipulation med arrays</h1>
 
-<h1>Sessions</h1>
+<h2>Ændring af element</h2>
+
+<pre><code class="php">
+&lt;?php
+$navne = array("Anne", "Bent", "Cecilie","Dennis");
+$kodeord = array("Anne"=>"123", "Bent"=>"234", "Cecilie"=>"345","Dennis"=>"456");
+
+$navne[3]="Dorthe";   <span class="red">&larr; ændrer nyt element</span>
+$kodeord[3]=" "Dorthe" => "567" ";   <span class="red">&larr; ændrer nyt element</span>
+
+print_r($navne);
+print_r($kodeord);
+?>
+</code>
+</pre>
+
+<p class="browser"></p>
+<pre class="browser">Array ( [0] => Anne [1] => Bent [2] => Cecilie [3] => Dorthe )</pre>
+
+<h2>Indsæt element i array</h2>
+
+<pre><code class="php">
+&lt;?php
+$navne = array("Anne", "Bent", "Cecilie","Dennis");
+
+$navne[]="Else";   <span class="red">&larr; Indsætter nyt element</span>
+
+print_r($navne);
+?>
+</code>
+</pre>
+
+<p class="browser"></p>
+<pre class="browser">Array ( [0] => Anne [1] => Bent [2] => Cecilie [3] => Dennis [4] => Else )</pre>
 
 
-
-
-
-
-
-
-
-
+<h2>Fjern element i array</h2>
 
 
 
