@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Vidas.dk</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono|Ubuntu|Ubuntu+Condensed' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/jquery-ui.min.css">
+  <link rel="stylesheet" href="../css/jquery.tocify.css">
+  <link rel="stylesheet" href="../css/style_new.css" />
+<!-- Scripts in bottom to speed up pageload-->
+ 
+
+</head>
+<body>
+	
+	
+<div class="container-fluid">
+
+<div class="row-fluid">
+	
+<div class="col-sm-3">
+	
+	<div id="toc">
+	
+		<div id="toc_headline"></div>
+	
+	</div>
+
+</div><!-- Start slut 1. kolonne - TOC -->
+	
+<div class="col-sm-9">
+	
+	<figure id="">
+	
+		<img class="p25" src="images/PHP-logo.svg" alt="" title="" />
+	
+		<figcaption></figcaption>
+	
+	</figure>
+	
+	<div class="title">Introduktion til PHP</div>
+	
+<h1>Hvad er PHP</h1>
+
+<p><abbr title="PHP: Hypertext Preprocessor">PHP</abbr> er et akronym for "PHP: Hypertext Preprocessor". Formålet med PHP er, at lave dynamisk indhold på hjemmesider, som både kan komme fra brugerinput og databaser. Vi skal seneer lære hvordan vi integrerer PHP-kode på hjemmesider.</p>
+
+<p>I denne guide vil du lære at: </p>
+
+<ul class="none">
+	<li>Afprøve og teste programmer ved hjælp af den indbyggede shell</li>
+	<li>Lave mindre programmer ved hjælp af Geany</li>
+	<li>Integrere PHP-funktionalitet i hjemmesider</li>
+</ul>
+
+
+
+<h2>PHP shell</h2>
+
+<p>PHP's <span class="inl_cmd">shell</span> startes op ved at at starte PHP op med <span class="inl_cmd">-a</span></p>
+
+<p>På Windows</p>
+
+<code class="cmd">c:\xampp\php\php -a</code>
+
+<p>På Mac</p>
+
+<code class="cmd">/Applications/XAMPP/bin/php/php -a</code>
+
+
+
+<p>Når man starter PHP shell op får man følgende resultat:</p>
+
+<pre class="ubuntu_terminal">Interactive shell
+
+php >       <span class="red">&larr; Her indtastes koden</span></pre>
+
+<p>Kommandoer indtastet efter <span class="inl_cmd">php ></span></p>
+
+<h1>Mit første program</h1>
+
+<p>Lad os lave et simpelt program der udskriver tekstrengen "Hej" og tallet 4. Det gøres ved at anvende kommandoen <span class="inl_cmd">echo</span></p>
+
+<pre class="ubuntu_terminal">php > echo "Hej";       <span class="red">&larr; kommando</span>
+Hej                     <span class="red">&larr; output</span>
+php > echo 4;           <span class="red">&larr; kommando</span>
+4                       <span class="red">&larr; output</span>
+php >     </pre>
+
+<p>Læg mærke til at der er forskel på hvordan tekststrengen "hej" og værdien 4 bliver indtastet. Reglen er, at alt hvad PHP skal opfatte som en værdi (dvs. tal) skal skrives uden anførselstegn. Tekst skal altid omsluttes af anførselstegn.</p>
+
+<p>Det andet du skal lægge mærke til er, at alle kommandoer skal afsluttes med <span class="inl_cmd">;</span>. På den måde ved PHP at en enkelte kommando er færdig. Det kan vi senere udnytte til at skabe bedre overblik over mere komplekse kommandoer.</p>
+
+<p>Du skal altså huske:</p>
+
+<ul class="none">
+	<li>Tekstrenge skal være omgivet af udråbstegn </li>
+	<li>Værdier skal ikke være omgivet af tekstrenge, og decimaltal skal adskilles af punktum (<span class="inl_cmd">.</span>) f.eks: 3.14</li>
+</ul>
+
+<h2>Escape characters</h2>
+
+<p>Når man arbejder i shell kan man nogle gange have brug for at skabe mere visuelt overblik. Her kan man anvende følgende escape characters:</p>
+
+<ul class="none">
+	<li>\n - ny linie</li>
+	<li>\t - tabulator</li>
+</ul>
+
+<pre class="ubuntu_terminal">php > echo "\nhej\n";
+
+hej
+
+php > echo "\n\thej";
+
+        hej</pre>
+
+<h1>Kommentarer</h1>
+
+<p>Når man arbejder med større programmer anvender man kommantarer til at forklare kodestumper. Her er vores ovenstående program med nogle forskellige kommentarer i</p>
+
+<pre>
+
+	<code class="">// Et lille program
+
+echo "Hej"; // en kommentar til denne linie
+
+/*
+Dette er en længere kommentar,
+som kan fylde over flere linier
+*/</code>
+
+</pre>
+
+<p>Som du kan se kan vi indsætte kommentarer:</p>
+
+<ul class="none">
+	<li>Ved at skrive <span class="inl_cmd">//</span> foran</li>
+	<li>Ved at begynde med <span class="inl_cmd">/*</span> og afslutte med <span class="inl_cmd">*/</span></li>
+</ul>
+
+
+	
+	
+</div><!-- end: col-md-9 -->
+
+<footer>
+
+	<p><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons licens" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>Indholdet på Vidas.dk er licenseret under <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> og er skrevet af Thomas Jensen. (<a href="../hvem_er_jeg.html" target="_blank">Læs mere</a>)</p>
+
+</footer>
+	
+	
+</div><!-- end: row-fluid -->
+
+</div> <!-- end: container-fluid -->
+
+
+<!-- SCRIPT SECTION -->
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script type="text/javascript" src="../js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="../js/jquery.tocify.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+
+<!-- PRETTYFY-->
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+
+
+<!-- HIGHLIGHT -->
+	<script src="../js/highlight.pack.js" type="text/javascript"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+
+<!-- MATHJAX -->
+<script type="text/javascript" 
+	src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  displayAlign: "left",
+  displayIndent: "0em"
+});
+</script>
+
+
+<!-- TOCIFY -->
+<script>
+	$(function() {var toc = $("#toc").tocify({ selectors: "h1, h2, h3, h4" }).data("toc-tocify"); });
+</script>
+<!-- GOOGLE ANALYTICS -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-89933285-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</body>
+</html>
