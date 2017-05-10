@@ -37,6 +37,28 @@
 	<img class="p25" src="images/PHP-logo.svg" alt="" title="" />
 	
 	<div class="title">Valg og funktioner</div>
+	
+<h1>Input</h1>
+
+<p>Til de næste par øvelser har vi brug for at kunne lave et input til programmet, så vi kan lade brugeren træffe nogle valg. Det gøres ved at anvende funktionen: <span class="inl_cmd">fgets(STDIN)</span>.</p>
+
+<pre><code class="php">
+&lt;?php
+echo "Skriv noget: ";
+
+$input = fgets(STDIN);
+
+echo "\nDu skrev: $input";
+?>
+</code>
+</pre>
+
+<pre class="ubuntu_terminal">Skriv noget: Hej PHP
+
+Du skrev: Hej PHP
+</pre>
+
+<p>Det gode ved PHP er, at vi ikke skal bekymre os om hvad vi laver som input. PHP holder selv styr på det.</p>
 
 <h1>Valg</h1>
 
@@ -57,22 +79,27 @@
 <pre><code class="php">
 &lt;?php
 
-$input = $_GET["input"];
+echo "Skriv 1 for dreng og 2 for pige: ";
+
+$input = fgets(STDIN);
 
 switch ($input) {
-	case "1":
-		echo "Du er en dreng";
+	case 1:
+		echo "\nDu er en dreng";
 		break;
-	case "2":
-		echo "Du er en pige";
+	case 2:
+		echo "\nDu er en pige";
 		break;
 	default:
-		echo "Du har vist skrevet forkert";
-
+		echo "\nDu har vist skrevet forkert";
 	}
-
 ?>
 </code>
+</pre>
+
+<pre class="ubuntu_terminal">Skriv 1 for dreng og 2 for pige: 2
+
+Du er en pige
 </pre>
 
 <p>Inde i switchen (kontakten) har vi oprettet 3 cases. En hvor man er en dreng, en hvor man er en pige og en hvor man har skrevet forkert.</p>
@@ -113,22 +140,27 @@ switch (** det som undersøges **) {
 
 <pre><code class="php">
 &lt;?php
+echo "Skriv 1 for dreng og 2 for pige: ";
 
-$input = $_GET["input"];
-		
+$input = fgets(STDIN);
+
 if ($input == 1) {
-	echo "Det er en dreng";
+	echo "\nDet er en dreng";
 	} 
 	elseif ($input == 2) {
-		echo "Det er en pige";
+		echo "\nDet er en pige";
 		}
 
 	else {
-		echo "du har vist skrevet forkert";
+		echo "\nDu har vist skrevet forkert";
 		}
-
 ?>
 </code>
+</pre>
+
+<pre class="ubuntu_terminal">Skriv 1 for dreng og 2 for pige: 1
+
+Det er en dreng
 </pre>
 
 <p>Egentlig er tankegangen den samme her, men læg mærke til at vi ikke skal <span class="inl_cmd">breake</span> funktionen. Det gør den af sig selv.</p>
@@ -167,7 +199,7 @@ if (betingelse_1) {
 
 <h2>Cases eller if/else</h2>
 
-<p>Det afgørende handler om overblik og effektivitet. Generelt vil jeg anbefale at man anvender if/else bla. fordi der er mindre skrive arbejde i den, men især fordi den mere logisk tvinger os til at opdele det vi arbejder med.</p>
+<p>Det afgørende handler om overblik og effektivitet. Generelt vil jeg anbefale at man anvender if/else bla. fordi der er mindre skrivearbejde i den, men især fordi den mere logisk tvinger os til at opdele det vi arbejder med (overblik).</p>
 
 
 

@@ -49,7 +49,7 @@
 
 <p>Ofte har man brug for at et program skal gøre det samme igen og igen. Det kan f.eks. være at skulle udføre den samme beregning, på et stigende tal. Det kan f.eks. være at udskrive kvadrattallene (1,4,9,16,25 ...). På engelsk kaldes dette et <span class="inl_cmd">loop</span>.</p>
 
-<p>Python arbejder med 4 forskellige loops:</p>
+<p>Python arbejder med 3 forskellige loops:</p>
 
 <ul class="none fat_li">
 	<li>for</li>
@@ -76,7 +76,11 @@
 	
 </ul>
 
-<p>Derudover findes det et loop mere, som vil blive gennemgået i kapitlet om <span class="inl_cmd">array</span></p>
+<h2>Increments</h2>
+
+<p>Nar man arbejder med løkker skal man have en tæller, som sørger for løkken kører et vist antal gange. Dette kalder man <span class="inl_cmd">increment</span> (vækst) på engelsk, og derfor giver man som standard denne vækstfaktor betegnelsen <span class="inl_cmd">i</span>.</p>
+
+<p>Ved at overholde denne standard er det også lettere at læse kode, fordi man ved at <span class="inl_cmd">$i</span> er den variabel der holder styr på antallet.</p>
 
 <h2>break</h2>
 
@@ -96,15 +100,18 @@
 
 <pre><code class="php">
 &lt;?php
-for($x=1;$x&lt;=$10;$x++) {
-	echo 7*$x." - ";
+$tabel = 5;
+
+for($i=1;$i&lt;=10;$i++) {
+	echo $tabel*$i." ";
 	}
 ?>
 </code>
 </pre>
 
-<p class="browser"></p>
-<pre class="browser">7 - 14 - 21 - 28 - 35 - 42 - 49 - 56 - 63 - 70 -</pre>
+<pre class="ubuntu_terminal">Skriv tabel: 5
+5 10 15 20 25 30 35 40 45 50
+</pre>
 
 <h2>Udskriv lige tal</h2>
 
@@ -112,15 +119,19 @@ for($x=1;$x&lt;=$10;$x++) {
 
 <pre><code class="php">
 &lt;?php
-for($x=2;$x&lt;=$20;$x+=2) {
-	echo $x." - ";
+
+$antal = 7;
+
+for($i=2;$i&lt;=$antal*2;$i+=2) {
+	echo $i." ";
 	}
 ?>
 </code>
 </pre>
 
-<p class="browser"></p>
-<pre class="browser">2 - 4 - 6 - 8 - 10 - 12 - 14 - 16 - 18 - 20 -</pre>
+<pre class="ubuntu_terminal">Antal lige tal: 7
+2 4 6 8 10 12 14
+</pre>
 
 <h2>Trekanttal</h2>
 
@@ -130,16 +141,18 @@ for($x=2;$x&lt;=$20;$x+=2) {
 
 <pre><code class="php">
 &lt;?php
-for($x=1;$x&lt;=$12;$x++) {
-	$t = ($x*($x+1))/2;
-	echo $t." - ";
+$antal = 12;
+
+for($i=1;$i&lt;=$antal;$i++) {
+	$t = ($i*($i+1))/2;
+	echo $t." ";
 	}
 ?>
 </code>
 </pre>
 
-<p class="browser"></p>
-<pre class="browser">1 - 3 - 6 - 10 - 15 - 21 - 28 - 36 - 45 - 55 - 66 - 78 -</pre>
+<pre class="ubuntu_terminal">1 3 6 10 15 21 28 36 45 55 66 78
+</pre>
 
 <h1>while</h1>
 
@@ -153,14 +166,18 @@ for($x=1;$x&lt;=$12;$x++) {
 
 <pre><code class="php">
 &lt;?php
-$tal = 1;
+$tabel = 7;
+$i = 1;
 
-while ($tal &lt;= 10) {
-	echo 7*$tal." - ";
-	$tal++;
+while ($i &lt;= 10) {
+	echo $tabel*$i." ";
+	$i++;
 	}
 ?>
 </code>
+</pre>
+
+<pre class="ubuntu_terminal">7 14 21 28 35 42 49 56 63 70
 </pre>
 
 
@@ -179,15 +196,15 @@ while ($tal &lt;= 10) {
 $antal = 8; 
 
 do {
-    echo "Variablen er: $antal. &lt;br>";
+    echo "Variablen er: $antal";
     $antal++;
 } while ($antal &lt;= 5);
 ?>
 </code>
 </pre>
 
-<p class="browser"></p>
-<pre class="browser">Variablen er: 8. </code></pre>
+<pre class="ubuntu_terminal">Variablen er: 8
+</pre>
 
 <p>I dette tilfælde virker det underligt, fordi det ikke giver nogen mening at vi får at vide at variablen er 8 - når den kun må være 5 og derunder. Men det kan være at der er en anden kode vi vil sikre os kører mindst en gang - uanset betingelsen.</p>
 
