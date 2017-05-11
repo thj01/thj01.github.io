@@ -42,7 +42,7 @@
 
 <p>Fra nu af skal vi anvende geany til at skrive kode i. For at afvikle koden skal vi anvende Geanys funktionalitet. Det gør du på følgende måde:</p>
 
-<p>Start Geany og gå til menuen <span class="inl_cmd">Build</span>&rarr;<span class="inl_cmd"></span>.</p>
+<p>Start Geany og gå til menuen <span class="inl_cmd">Build</span>&rarr;<span class="inl_cmd">Set Build Commands</span>.</p>
 
 	<figure id="">
 	
@@ -65,6 +65,8 @@
 <p><b>Sti på windows: </b>c:\xampp\php\php "%f"</p>
 
 <p><b>Sti på Mac: </b>/Applications/XAMPP/bin/php/php "%f"</p>
+
+<p><b>Sti på Ubuntu: </b> Ingen ændringer</p>
 
 <p>Herefter vil du kunne taste <kbd>F5</kbd>, og så vil koden blive udført i et terminalvindue ved siden af.</p>
 
@@ -90,7 +92,9 @@ echo "\nDu skrev: $input";
 Du skrev: Hej PHP
 </pre>
 
-<p>Det gode ved PHP er, at vi ikke skal bekymre os om hvad vi laver som input. PHP holder selv styr på det.</p>
+<p>Det gode ved PHP er, at vi ikke skal bekymre os om det er værdier eller tekst vi laver som input. Det holder PHP holder selv styr på for os.</p>
+
+<p><b>Læg mærke til... </b>at jeg anvender <span class="inl_cmd">\n</span> til at få output til at springe en linie ekstra. Det er for at gøre output mere læsbart.</p>
 
 <h1>Valg</h1>
 
@@ -229,15 +233,104 @@ if (betingelse_1) {
 
 <p>Det eneste man skal huske på er, at det skal give mening. For man risikerer at lave koden så kompleks at man ikke kan overskue den mere. Gør ikke koden mere kompleks end andre også kan sætte sig ind i den.</p>
 
-<h2>Cases eller if/else</h2>
+<h2>Switch eller if/else</h2>
 
 <p>Det afgørende handler om overblik og effektivitet. Generelt vil jeg anbefale at man anvender if/else bla. fordi der er mindre skrivearbejde i den, men især fordi den mere logisk tvinger os til at opdele det vi arbejder med (overblik).</p>
 
+<h1>TRUE/FALSE</h1>
+
+<pre><code class="php">
+&lt;?php
+$a = 8;
+$b = 5;
+
+if ($a>$b){
+	$test = true;	
+	}
+	else {
+	$test = false;	
+		}
+
+if ($test === true) {
+	echo"Testen er sand";
+	}
+if ($test ==
+= false){
+	echo"Testen er falsk";		
+	}
+?>
+</code>
+</pre>
 
 
 <h1>Funktioner</h1>
+
+<p>Undtil videre har vi arbejdet med PHP's indbygge funktioner. Nogle gange kan det være smart at kunne lave sine egne funktioner. Det kan både være fordi man skal bruge den samme kodestump flere gange, men det kan også være for overblikkets skyld.</p>
+
+<p>Herunder er der et eksempel på en simpel funktion der udskriver en kasse med tekst.</p>
+
+<pre><code class="php">
+&lt;?php
+function velkommen() {
+	echo "╔═══════════════════╗\n";
+	echo "║                   ║\n";
+	echo "║     Velkommen     ║\n";
+	echo "║                   ║\n";
+	echo "╚═══════════════════╝";
+}
+
+velkommen();
+?>
+</code>
+</pre>
+
+<pre class="ubuntu_terminal">╔═══════════════════╗
+║                   ║
+║     Velkommen     ║
+║                   ║
+╚═══════════════════╝
+</pre>
+
+<p>Vi kan altså kalde den samme funktion igen og igen, ved hælp af <span class="inl_cmd">**funktionsnavn**</span>.</p>
+
+<h2>Funktioner med parametre</h2>
+
+<p>Ofte har vi brug for at kunne definere nogle variabler i vores funktioner.</p>
+
+<pre><code class="php">
+&lt;?php
+function turn_on($a,$b) {
+	
+	if ($a>$b){
+		RETURN TRUE;
+		}
+	}
+
+$room_temp = 22;
+$target_temp = 19;
+
+ if (turn_on($room_temp,$target_temp) === TRUE) {
+	echo "Tænd blæseren";
+	} 
+	else {
+		echo "Forbliv slukket";
+	}
+?>
+</code>
+</pre>
+
+<pre class="ubuntu_terminal">Tænd blæseren
+</pre>
+
+<h2>Afgrænsning af variabler</h2>
+
+<p><a href="http://stackoverflow.com/questions/4361553/what-is-the-difference-between-public-private-and-protected" target="_blank">http://stackoverflow.com/questions/4361553/what-is-the-difference-between-public-private-and-protected</a></p>
 	
 </div><!-- end: col-md-9 -->
+
+
+
+
 
 <footer>
 
