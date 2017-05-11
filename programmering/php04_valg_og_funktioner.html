@@ -237,32 +237,6 @@ if (betingelse_1) {
 
 <p>Det afgørende handler om overblik og effektivitet. Generelt vil jeg anbefale at man anvender if/else bla. fordi der er mindre skrivearbejde i den, men især fordi den mere logisk tvinger os til at opdele det vi arbejder med (overblik).</p>
 
-<h1>TRUE/FALSE</h1>
-
-<pre><code class="php">
-&lt;?php
-$a = 8;
-$b = 5;
-
-if ($a>$b){
-	$test = true;	
-	}
-	else {
-	$test = false;	
-		}
-
-if ($test === true) {
-	echo"Testen er sand";
-	}
-if ($test ==
-= false){
-	echo"Testen er falsk";		
-	}
-?>
-</code>
-</pre>
-
-
 <h1>Funktioner</h1>
 
 <p>Undtil videre har vi arbejdet med PHP's indbygge funktioner. Nogle gange kan det være smart at kunne lave sine egne funktioner. Det kan både være fordi man skal bruge den samme kodestump flere gange, men det kan også være for overblikkets skyld.</p>
@@ -291,25 +265,24 @@ velkommen();
 ╚═══════════════════╝
 </pre>
 
-<p>Vi kan altså kalde den samme funktion igen og igen, ved hælp af <span class="inl_cmd">**funktionsnavn**</span>.</p>
+<p>Vi kan altså kalde den samme funktion igen og igen, ved hælp af at skrive funktionens navn, her: <span class="inl_cmd">velkommen()</span>.</p>
 
 <h2>Funktioner med parametre</h2>
 
-<p>Ofte har vi brug for at kunne definere nogle variabler i vores funktioner.</p>
+<p>Ofte har vi brug for at kunne definere nogle variabler i vores funktioner. Herunder har jeg lavet en kode, der undersøger om variabel <span class="inl_cmd">$a</span> er større end <span class="inl_cmd">$b</span>.</p>
+
+<p>Derudover har jeg valgt at introducere <span class="inl_cmd">return</span>. Hvis <span class="inl_cmd">$a</span> er større end <span class="inl_cmd">$b</span>, så vil funktionen resultere med værdien <span class="inl_cmd">true</span>.</p>
 
 <pre><code class="php">
 &lt;?php
 function turn_on($a,$b) {
 	
 	if ($a>$b){
-		RETURN TRUE;
+		return true;
 		}
 	}
 
-$room_temp = 22;
-$target_temp = 19;
-
- if (turn_on($room_temp,$target_temp) === TRUE) {
+if (turn_on(20,15)) {
 	echo "Tænd blæseren";
 	} 
 	else {
@@ -322,10 +295,108 @@ $target_temp = 19;
 <pre class="ubuntu_terminal">Tænd blæseren
 </pre>
 
-<h2>Afgrænsning af variabler</h2>
+<p>Læg mærke til, at i if sætningen <span class="inl_cmd"> if (turn_on(20,15))</span> ikke skal være lig noget. If "oversætter" funktionen og får værdien <span class="inl_cmd">true</span> - altså sand. Mere behøver if/else løkken ikke at vide.</p>
 
-<p><a href="http://stackoverflow.com/questions/4361553/what-is-the-difference-between-public-private-and-protected" target="_blank">http://stackoverflow.com/questions/4361553/what-is-the-difference-between-public-private-and-protected</a></p>
+<p>Vi kunne også have sat den til at returnere et tal eller et tekststreng.</p>
+
+<pre><code class="php">
+&lt;?php
+function turn_on($a,$b) {
 	
+	if ($a>$b){
+		return 1;
+		}
+	}
+
+if (turn_on(21,19) == 1) {
+	echo "Tænd blæseren";
+	} 
+	else {
+		echo "Forbliv slukket";
+	}
+?>
+</code>
+</pre>
+
+<p>Herunder er funktionen <span class="inl_cmd">andengrad()</span> lavet:</p>
+
+<pre><code class="php">
+&lt;?php
+function andengrad($a,$b,$c) {
+	
+$D = pow($b,2)-4*$a*$c;
+echo "\n\nDiskreminanten er: $D\n";
+
+	if ($D>0){
+		$x1 = (-$b+sqrt($D))/(2*$a);
+		$x2 = (-$b-sqrt($D))/(2*$a);
+		
+		if ($x1&lt;$x2){echo "Nulpunkterne er: $x1 og $x2";}
+			else {echo "Nulpunkterne er: $x2 og $x1";}
+		}
+	elseif ($D == 0){
+		$x0 = -$b/2*$a;
+		echo "Nulpunktet er: $x0";
+		}
+	else {
+		echo "Der er ingen nulpunkter";
+		}	
+}
+
+andengrad(1,-5,6);
+andengrad(1,2,1);
+andengrad(2,3,3);
+?>
+</code>
+</pre>
+
+<pre class="ubuntu_terminal">
+Diskreminanten er: 1
+Nulpunkterne er: 2 og 3
+
+Diskreminanten er: 0
+Nulpunktet er: -1
+
+Diskreminanten er: -15
+Der er ingen nulpunkter
+</pre>
+
+<h2>Globale variabler</h2>
+
+<p>Nogle gange har man brug for at kunne anvende en variabel der er udregnet i en funktion. Se eksemplet herunder:</p>
+
+<pre><code class="php">
+&lt;?php
+function test() {
+	$var = 5;
+	}
+test();
+echo $var;
+?>
+</code>
+</pre>
+
+<pre class="ubuntu_terminal">PHP Notice:  Undefined variable: var in /var/www/html/output.php on line 6
+</pre>
+
+<p>SOm du kan se kan vi ikke umiddelbart anvende den variabel der er i funktionen. Det er fordi variabler kun er defineret inde i funktionen. For at kunne anvende den uden for funktionen skal den være global. Se eksemplet:</p>
+
+<pre><code class="php">
+&lt;?php
+function test() {
+	global $var;
+	$var = 5;
+	}
+test();
+echo $var;
+?>
+</code>
+</pre>
+
+<pre class="ubuntu_terminal">5
+</pre>
+
+
 </div><!-- end: col-md-9 -->
 
 
