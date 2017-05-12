@@ -136,24 +136,44 @@
 
 <p>Først slicer mailnavnet ud:</p>
 
-<pre class="ubuntu_terminal">php > $mail = "hansboedker@dkmail.dk";
-php > echo substr($mail,0,11);
-hansboedker
+<pre><code class="php">
+&lt;?php
+$mail = "hansboedker@dkmail.dk";
+echo substr($mail,0,11);
+?>
+</code>
+</pre>
+
+<pre class="ubuntu_terminal">hansboedker
 </pre>
 	
 <p>Her slicer vi landekoden ud på to forskellige måder. Læg mærke til, at hvis man kører helt til enden kan man nøjes med hvorfra man slicer. Man vælger også selv om man vil beskrive ved hjælp af de positive eller negative værdier:</p>
 
-<pre class="ubuntu_terminal">php > echo substr($mail,19);
-dk
-php > echo substr($mail,-2);
+<pre><code class="php">
+&lt;?php
+$mail = "hansboedker@dkmail.dk";
+echo substr($mail,19)."\n";
+echo substr($mail,-2);
+?>
+</code>
+</pre>
+
+<pre class="ubuntu_terminal">dk
 dk
 </pre>
 
 <p>Her slicer vi domænenavnet (<span class="inl_cmd">dkmail</span>) ud på forskellige måder:</p>
 
-<pre class="ubuntu_terminal">php > echo substr($mail,12,6);
-dkmail
-php > echo substr($mail,-9,6);
+<pre><code class="php">
+&lt;?php
+$mail = "hansboedker@dkmail.dk";
+echo substr($mail,12,6)."\n";
+echo substr($mail,-9,6);
+?>
+</code>
+</pre>
+
+<pre class="ubuntu_terminal">dkmail
 dkmail
 </pre>
 
@@ -161,21 +181,33 @@ dkmail
 
 <p>For at udskrive en streng baglæns anvendes <span class="inl_cmd">strrev()</span></p>
 
-<pre class="ubuntu_terminal">php > echo strrev("omvendt");
-tdnevmo
-php > echo strrev("snakkebaglæns");
+<pre><code class="php">
+&lt;?php
+echo strrev("omvendt");
+echo strrev("snakkebaglæns");
+?>
+</code>
+</pre>
+
+<pre class="ubuntu_terminal">tdnevmo
 sn��lgabekkans
 </pre>
 
 <p>Læg mærke til at <span class="inl_cmd">strrev()</span> ikke kan arbejde med de danske tegn æ, ø og å.</p>
 
-<h1>Streng længde</h1>
+<h1>Strenglængde</h1>
 
 <p><span class="inl_cmd">strlen()</span>finder længden på en streng.</p>
 
-<pre class="ubuntu_terminal">php > echo strlen("hansboedker@dkmail.dk");
-21
-php > echo strlen("Thomas");
+<pre><code class="php">
+&lt;?php
+echo strlen("hansboedker@dkmail.dk")."\n";
+echo strlen("Thomas");
+?>
+</code>
+</pre>
+
+<pre class="ubuntu_terminal">21
 6
 </pre>
 
@@ -183,13 +215,51 @@ php > echo strlen("Thomas");
 
 <p>For at tælle antallet en et bogstav eller en kombination forekommer anvendes <span class="inl_cmd">substr_count()</span></p>
 
-<pre class="ubuntu_terminal">php > echo substr_count("hansboedker@dkmail.dk","dk");
-3
-php > echo substr_count("hansboedker@dkmail.dk","@");
+<pre><code class="php">
+&lt;?php
+echo substr_count("hansboedker@dkmail.dk","dk");
+echo substr_count("hansboedker@dkmail.dk","@");
+?>
+</code>
+</pre>
+
+<pre class="ubuntu_terminal">3
 1
 </pre>
 
-<p>strpos()</p>
+<h1>Hvor er ...</h1>
+
+<p>For at finde ud af hvor en tekststreng er anvender man <span class="inl_cmd">substr_count()</span>.</p>
+
+<p>Herunder vil vi gerne adskille </p>
+
+<pre><code class="php">
+&lt;?php
+$navn = "Thomas Jensen";
+echo strpos($navn," ");
+?>
+</code>
+</pre>
+
+<pre class="ubuntu_terminal">6
+</pre>
+
+<p>Med den information kan vi adskille for- og efternavn fra hinanden. For kender vi positionen på mellemrummet ved vi også hvor fornavn slutter og efternavn begynder:</p>
+
+<pre><code class="php">
+&lt;?php
+$navn = "Thomas Jensen Hansen";
+$mellemrum = strpos($navn," ");
+
+echo "Fornavn: ".substr($navn,0,$mellemrum)."\n";
+echo "Efternavn: ".substr($navn,$mellemrum)."\n";
+?>
+</code>
+</pre>
+
+
+
+<h1>Shuffle</h1>
 
 <p>str_shuffle()</p>
 

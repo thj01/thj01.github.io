@@ -66,6 +66,8 @@
 
 <p>LaTeX/Mathematics (wikibooks): <a href="https://en.wikibooks.org/wiki/LaTeX/Mathematics" target="_blank">https://en.wikibooks.org/wiki/LaTeX/Mathematics</a></p>
 
+<p>The no so short Introduction to <span class="math">\( L_aT^eX \)</span>: <a href="https://tobi.oetiker.ch/lshort/lshort.pdf" target="_blank">https://tobi.oetiker.ch/lshort/lshort.pdf</a></p>
+
 
 <h3><span class="math">\( L_aT^eX \)</span> til billedfiler</h3>
 
@@ -78,11 +80,7 @@
 <p>CODECOGS: <a href="https://www.codecogs.com/latex/eqneditor.php" target="_blank">https://www.codecogs.com/latex/eqneditor.php</a></p>
 
 
-<h3><span class="math">\( L_aT^eX \)</span> i HTML</h3>
 
-<p>For at vise formler på vidas.dk anvender jeg <span class="inl_cmd">Mathjax</span>, så jeg kan taste koderne direkte ind i html koden.</p>
-
-<p>Latex i HTML: <a href="https://www.mathjax.org/" target="_blank">https://www.mathjax.org/</a></p>
 
 <h3><span class="math">\( L_aT^eX \)</span> i Google docs</h3>
 
@@ -811,6 +809,59 @@
 
 </figure>
 
+<h1>MathJax</h1>
+
+<p>For at vise formler på vidas.dk anvender jeg <span class="inl_cmd">Mathjax</span>, så jeg kan taste koderne direkte ind i html koden.</p>
+
+<p>Latex i HTML: <a href="https://www.mathjax.org/" target="_blank">https://www.mathjax.org/</a></p>
+
+<p>For at få koden integreret skal følgende tilføjes til <span class="inl_cmd">script</span>-sektionen.</p>
+
+<pre>
+	<code class="html">
+&lt;!-- MATHJAX -->
+&lt;script type="text/javascript" 
+	src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+&lt;/script>
+
+&lt;script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  displayAlign: "left",
+  displayIndent: "0em"
+});
+&lt;/script>
+	</code>
+</pre>
+
+<p>Det øverste script er det som giver adgang til <span class="math">\( L_aT^eX \)</span>, og den nederste tilføjelse sørger for at matematikken er venstrecentreret, og at den kan formateres med CSS.</p>
+
+<p>Når dette er gjort kan man indsætte <span class="math">\( L_aT^eX \)</span> på to måder:</p>
+
+<h2>Inline element - i tekst</h2>
+
+
+
+<pre>
+	<code class="html">
+&lt;span>\( L_aT^eX \)&lt;/span>
+	</code>
+</pre>
+
+<p><b>Resultat: </b><span class="math">\( L_aT^eX \)</span></p>
+
+<h2>Blok-element - selvstændig &lt;div></h2>
+
+<pre>
+	<code class="html">
+&lt;div>$$ L_aT^eX $$&lt;/div>
+	</code>
+</pre>
+
+<p><b>Resultat: </b>... med mine CSS indstillinger</p>
+
+<div class="latex">$$ L_aT^eX  $$</div>
+
+<p>Vær opmærksom på at nogle matematiske tegn er forskellige alt efter om man bruger dem i inline- eller blok- elementer. Min erfaring er, at man får det bedste resultat i blok-elementer.</p>
 	
 </div><!-- end: col-md-9 -->
 
