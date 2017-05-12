@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Vidas.dk</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono|Ubuntu|Ubuntu+Condensed' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/jquery-ui.min.css">
+  <link rel="stylesheet" href="../css/jquery.tocify.css">
+  <link rel="stylesheet" href="../css/style_new.css" />
+<!-- Scripts in bottom to speed up pageload-->
+ 
+
+</head>
+<body>
+	
+	
+<div class="container-fluid">
+
+<div class="row-fluid">
+	
+<div class="col-sm-3">
+	
+	<div id="toc">
+	
+		<div id="toc_headline"></div>
+	
+	</div>
+
+</div><!-- Start slut 1. kolonne - TOC -->
+	
+<div class="col-sm-9">
+	
+	<figure id="">
+	
+		<img class="p25" src="images/PHP-logo.svg" alt="" title="" />
+	
+		<figcaption></figcaption>
+	
+	</figure>
+	
+	<div class="title">Tal, operatorer og matematiske funktioner</div>
+	
+<p>PHP arbejder med to forskellige taltyper. Integers (heltal) og float (decimaltal). Det gode ved det er at PHP selv finder ud af det. </p>
+
+<h1>Taltyper</h1>
+
+<p>Se nedestående eksempel,hvor vi anvender funktionen <span class="inl_cmd">var_dump()</span> til at finde ud af hvilken type input er.:</p>
+
+<pre class="ubuntu_terminal">
+php > var_dump(7);
+int(7)
+php > var_dump(3.14);
+float(3.14)
+php > var_dump("hej");
+string(3) "hej"
+</pre>
+
+
+
+
+<p><span class="inl_cmd">var_dump()</span> fortæller altså at:</p>
+
+<ul class="none">
+	<li>7 er et heltal (Integer)</li>
+	<li>3.14 er et decimaltal (float)</li>
+	<li>"Hej verden" er en tekststreng (string)</li>
+</ul>
+
+<h1>Konvertering af tekst/tal</h1>
+
+<p>Når man sender et input til PHP kommer det altid som en tekststreng. Derfor skal man kunne konvertere mellem integers, float og string (heltal, decimaltal og tekststrenge). Det gør man ved at anvende:</p>
+
+<ul class="none">
+	<li>intval() - konverterer til interger (heltal)</li>
+	<li>floatval() - konverterer til float (decimaltal)</li>
+	<li>strval() - konvertere til string (tekststreng)</li>
+</ul>
+
+<p></p>
+
+<pre class="ubuntu_terminal">
+php > $a = "7";
+php > $b = "3.14";
+php > echo var_dump($a,$b);     <span class="red">&larr; vis datatypen på variablerne a og b</span>
+string(1) "7"
+string(4) "3.14"
+php > $a = intval($a);
+php > $b = floatval($b);
+php > echo var_dump($a,$b);      <span class="red">&larr; vis de nye datatypen på variablerne a og b</span>
+int(7)
+float(3.14)
+php > $a = strval($a);
+php > $b = strval($b);
+php > echo var_dump($a,$b);      <span class="red">&larr; vis de nye datatypen på variablerne a og b</span>
+string(1) "7"
+string(4) "3.14"
+</pre>
+
+
+<h1>Regningsregler</h1>
+
+<p>Før vi går i gang med at programmere skal du lige have et overblik over måden man laver betingelser på. Ofte vil programmer fungere efter en skabelone der siger: Hvis noget sker – så gør følgende. Her under er et overblik over de logiske operatorer (regningsarter), som du skal anvende når du programmerer</p>
+
+<pre class="ubuntu_terminal">
+php > echo 8+2;
+10
+php > echo 8-2;
+6
+php > echo 8 + 2;
+10
+php > echo 8 - 2;
+6
+php > echo 8 * 2;
+16
+php > echo 8 / 2;
+4
+php > echo ( 8 * 2 ) - 4;
+12
+php > echo 8 * ( 2 - 4 );
+-16
+</pre>
+
+<p>Som du kan se overholder PHP regningsreglerne. </p>
+
+<p>Af andre vigtige regningsarter kan nævnes</p>
+
+<ul class="none">
+	<li><span class="math">\( \pi \)</span> skrives som <span class="inl_cmd">pi()</span></li>
+	<li><span class="math">\( a^b \)</span> skrives som <span class="inl_cmd">pow(a,b)</span> eller <span class="inl_cmd">a**b</span></li>
+	<li><span class="math">\( \sqrt{x} \)</span> skrives som <span class="inl_cmd">sqrt(x)</span>. Man kan også skrive skrive <span class="inl_cmd">a**1/b</span> eller <span class="inl_cmd">pow(a,1/b)</span>.</li>
+</ul>
+
+<p>se eksemplerne her:</p>
+
+<pre class="ubuntu_terminal">
+php > echo pi();
+3.1415926535898
+php > echo pow(3,3);
+27
+php > echo sqrt(64);
+8
+php > echo abs(-10);
+10
+</pre>
+
+<h1>Logiske operatorer</h1>
+
+<p>Logiske operatorer anvendes til at undersøge tal og teksstrenge. Det kan f.eks. være hvis vi skal finde ud af om en person er over 18. Det vil vi f.eks. kunne beskrive på følgende måde:</p>
+
+<div class="latex">$$ alder \geq 18 $$</div>
+
+<p>eller</p>
+
+<div class="latex">$$ alder > 17 $$</div>
+
+<p>Herinder er nogle tabeller med vigtige logiske operatorer</p>
+
+<h2>Det samme som ...</h2>
+
+<p>Disse operatorer anvender vi når noget er det samme som ... eller ikke er. Læg mærke til at der anvendes to <span class="inl_cmd">==</span> til "lig med". Det skyldes at et enkelt <span class="inl_cmd">=</span> kun anvendes når vi laver variabler. Et sidste vigtigt tegn er <span class="inl_cmd">!</span>. Når det sættes foran en logisk operator, så får operatoren den modsatte betydning.</p>
+
+<p>Forskelle på om vi anvender to eller tre <span class="inl_cmd">=</span> handler om vi sammenligner tal eller tekststrenge.</p>
+
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Operator</th>
+			<th>Beskrivelse</th>
+			<th>Eksempel</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>==</td>
+			<td>Lig med</td>
+			<td>5 == 8 → falsk</td>
+		</tr>
+		<tr>
+			<td>!==</td>
+			<td>Ikke lig med</td>
+			<td>5 !== 8 → sand</td>
+		</tr>
+		<tr>
+			<td>===</td>
+			<td>Identisk med</td>
+			<td>5 === "5" → falsk</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Læg mærke til at jeg bruger <span class="inl_cmd">var_dump()</span> til at bestemme om udsagnet er sandt eller falsk. </p>
+
+<pre class="ubuntu_terminal">
+php > var_dump(5==8);
+bool(false)
+php > var_dump(5!==8);
+bool(true)
+php > var_dump(5==="5");
+bool(false)
+</pre>
+
+<h2>I forhold til ...</h2>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Operator</th>
+			<th>Beskrivelse</th>
+			<th>Eksempel</th>
+		</tr>
+	</thead>
+	<tbody>
+
+		<tr>
+			<td>&gt;</td>
+			<td>større end</td>
+			<td>5 &gt; 8 → falsk</td>
+		</tr>
+		<tr>
+			<td>&lt;</td>
+			<td>mindre end</td>
+			<td>5 &lt; 8 → sand</td>
+		</tr>
+		<tr>
+			<td>&gt;=</td>
+			<td>Større end eller lig med</td>
+			<td>5 &gt;= 8 → falsk</td>
+		</tr>
+		<tr>
+			<td>&lt;=</td>
+			<td>Mindre end eller lig med</td>
+			<td>5 &lt;= 8 → sand</td>
+		</tr>
+	</tbody>
+</table>
+
+<pre class="ubuntu_terminal">
+php > var_dump(5>8);
+bool(false)
+php > var_dump(5&lt;8);
+bool(true)
+php > var_dump(5>=8);
+bool(false)
+php > var_dump(5>=8);
+bool(false)
+</pre>
+
+<h2>Er det sandt ...</h2>
+
+<p>Nogle gange har vi brug for at der er flere ting der skal være opfyldt. Andre gange skal det kun være et kriterie blandt mange. Her anvender man nedestående  </p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Operator</th>
+			<th>Beskrivelse</th>
+			<th>Eksempel</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>x and y</td>
+			<td rowspan="2">Både x og y skal være sand</td>
+			<td rowspan="2">x=6 ; y=3<br /><br />(x &lt; 10 and y &gt; 1) →  sand</td>
+		</tr>
+		<tr>
+			<td>x && y</td>
+
+		</tr>
+				<tr>
+			<td>x or y</td>
+			<td rowspan="2">Kun en behøver at være sand</td>
+			<td rowspan="2">x=6 ; y=3<br /><br/>(x == 6 or y == 1) → sand</td>
+		</tr>
+		<tr>
+			<td>x || y</td>
+		</tr>
+		<tr>
+			<td>x xor y</td>
+			<td>Kun en må være sand</td>
+			<td>x=6 ; y=3<br /><br/>(x == 6 xor y == 1) → sand</td>
+		</tr>
+		<tr>
+			<td>!x</td>
+			<td>Udsagnet x er ikke sandt</td>
+			<td>x=6 ; y=3 <br/><br/>!(x==y) → sand</td>
+		</tr>
+		
+	</tbody>
+</table>
+
+<pre class="ubuntu_terminal">
+php > $x = 6;
+php > $y = 3;
+php > var_dump($x&lt;10 and $y>1);
+bool(true)
+php > var_dump($x&lt;10 && $y>1);
+bool(true)
+php > var_dump($x==6 or $y==1);
+bool(true)
+php > var_dump($x==6 || $y==1);
+bool(true)
+php > var_dump($x==6 xor $y==1);
+bool(true)
+php > var_dump($x==6 xor $y==3);
+bool(false)
+php > var_dump(!($x==$y));
+bool(true)
+</pre>
+
+<h1>En til eller fra</h1>
+
+<p>Når man programmerer har man ofte brug for at lade et tal vokse eller falde mens programmet kører. Dette kalder man for <span class="inl_cmd">increments</span>. Det kan f.eks. være, hvis programmet tæller antallet af loginforsøg. Se nedestående eksempler</p>
+
+<p>Ofte skal man kun lægge en til eller trække en fra, her anvender man <span class="inl_cmd">++</span> eller <span class="inl_cmd">--</span></p>
+
+<pre class="ubuntu_terminal">
+php > $a = 0;
+php > $a++;
+php > echo $a;
+1
+php > $a--;
+php > echo $a;
+0
+</pre>
+
+<p>Skal variablerne vokse eller aftage med andre faktorer gør man som herunder.</p>
+
+<pre class="ubuntu_terminal">
+php > $a = 1;
+php > echo $a;
+1
+php > echo $a += 1;
+2
+php > echo $a += 1;
+3
+</pre>
+
+<p></p>
+
+<p>Det samme kan man gøre med -, * og / (minus, gange og dividere). Se eksempel</p>
+
+<pre class="ubuntu_terminal">
+php > $antal = 4;          <span class="red">&larr; sætter a til 4</span>
+php > echo $antal +=3;     <span class="red">&larr; a + 4 = 7</span>
+7
+php > echo $antal *=4;     <span class="red">&larr; 7 * 4 = 28</span>
+28
+php > echo $antal /=7;     <span class="red">&larr; 28 / 7 = 4</span>
+4
+php > echo $antal -=4;     <span class="red">&larr; sætter 4 - 4 = 4</span>
+0
+</pre>
+
+
+
+<h1>Absolutte tal</h1>
+
+<p>Når man programmere har man ofte brug for at kende forskellen mellem 2 tal. Problemet er, at man ikke altid kan være sikker på om forskellen er en positiv eller en negativ værdi. F.eks. kan forskellen mellem 2 temperaturer f.eks. 17&#176; og 21&#176; være både 4 og -4. Ved at bruge <span class="inl_cmd">abs()</span> kan vi sikre os at en forskel altid bliver leveret som en positiv værdi.</p>
+
+<pre class="ubuntu_terminal">
+echo abs(-4);
+4
+</pre>
+
+<h1>Afrunding</h1>
+
+<p>Der er tre måder at runde et tal af på med PHP</p>
+
+<ul class="none">
+	<li><span class="inl_cmd">round()</span> afrunder tallet som normalt</li>
+	<li><span class="inl_cmd">ceil()</span> runder op til det nærmeste hele tal</li>
+	<li><span class="inl_cmd">floor()</span> runder ned til det nærmeste hele tal</li>
+	
+</ul>
+
+<pre class="ubuntu_terminal">
+php > echo round(2.25);
+2
+php > echo round(2.75);
+3
+php > echo ceil(2.25);
+3
+php > echo ceil(2.75);
+3
+php > echo floor(2.25);
+2
+php > echo floor(2.75);
+2
+</pre>
+
+<h1>Tilfældige tal</h1>
+
+<p>Til at lave tilfældige tal anvender man <span class="inl_cmd">mt_rand()</span>. Herunder er der lavet et simpelt program der kaster med en 6 sidet terning.</p>
+
+<pre class="ubuntu_terminal">
+php > echo mt_rand(1,6);
+6
+php > echo mt_rand(1,6);
+3
+php > echo mt_rand(1,6);
+1
+php > echo mt_rand(1,6);
+3
+</pre>
+
+
+<h1>Logaritmer</h1>
+
+<p>PHP har 2 logaritme funktioner. Den naturlige logaritme og 10-tals logaritmen:</p>
+
+<ul class="none">
+	<li>log() - svarer til <span class="math">\( ln(x) \)</span></li>
+	<li>log10() - svarer til  <span class="math">\( log(x) \)</span></li>
+</ul>
+
+<p>Derudover gælder det at:</p>
+
+<ul class="none">
+	<li>exp() - svarer til <span class="math">\( e^x \)</span></li>
+</ul>
+
+<pre class="ubuntu_terminal">
+php > $e = exp(1);          <span class="red">sætter $e = e</span> 
+php > echo log($e);			
+1
+php > echo log10(1000);		
+3
+</pre>
+
+<p>For at anvende den inverse funktion skal man anvende:</p>
+
+<div class="latex">$$ log_a(x) = y \Leftrightarrow a^y = x $$</div>
+
+
+
+<h1>Trigonometriske funktioner</h1>
+
+<p>De trigonometriske funktioner er: <span class="inl_cmd">cos(), sin() og tan()</span>. Deres inverse funktioner er: <span class="inl_cmd">acos(), asin() og atan()</span>. Vær opmærksom på at PHP anvender radianer til trigonometriske beregninger.</p>
+
+<pre class="ubuntu_terminal">
+php > $a = pi();     <span class="red">sætter variablen $a = &pi;</span>
+php > echo cos($a);
+-1
+php > echo sin($a/2);
+1
+php > echo tan($a/4);
+1
+php > echo acos(-1);
+3.1415926535898      <span class="red">= &pi;</span>
+php > echo asin(1);
+1.5707963267949      <span class="red">= &pi;/2</span>
+php > echo atan(1);
+0.78539816339745     <span class="red">= &pi;/4</span>
+</pre>
+
+
+
+<p>For at omskrive mellem grader og radianer anvendes:</p>
+
+<ul class="none">
+	<li><span class="inl_cmd">deg2rad()</span> - omskriver fra grader til radianer</li>
+	<li><span class="inl_cmd">rad2deg()</span> - omskriver fra radianer til grader</li>
+</ul>
+
+<p></p>
+
+<pre class="ubuntu_terminal">
+php > echo deg2rad(45);
+0.78539816339745
+php > echo rad2deg(pi());
+180
+</pre>
+
+
+<h1>Talsystemer</h1>
+
+<p>For at omskrive fra fra et talsystem til et andet andvendes <span class="inl_cmd">base_convert()</span>.</p>
+
+<p>Ofte har man behov for at omskrive mellem binære (2-talssystem), decimal (10-talssystem) og hexadecimal (16-talssystem). Det gøres med:</p>
+
+<ul class="none">
+	<li><span class="inl_cmd">bindec()</span> - omskriver fra binær til decimal</li>
+	<li><span class="inl_cmd">decbin()</span> - omskriver fra decimal til binær</li>
+	<li><span class="inl_cmd">hexdec()</span> - omskriver fra hexadecimal til decimal</li>
+	<li><span class="inl_cmd">dechex()</span> - omskriver fra decimal til hexadecimal</li>
+</ul>
+
+<p></p>
+
+<pre class="ubuntu_terminal">
+php > echo bindec("1001");
+9
+php > echo decbin(9);
+1001
+php > echo hexdec("FF2D");
+65325
+php > echo dechex(65325);
+ff2d
+</pre>
+
+<p>Læg mærke til at det binære og hexadecimale tal skal skrives i anførselstegn - altså som tekststrenge.</p>
+	
+	
+</div><!-- end: col-md-9 -->
+
+<footer>
+
+	<p><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons licens" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>Indholdet på Vidas.dk er licenseret under <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> og er skrevet af Thomas Jensen. (<a href="../hvem_er_jeg.html" target="_blank">Læs mere</a>)</p>
+
+</footer>
+	
+	
+</div><!-- end: row-fluid -->
+
+</div> <!-- end: container-fluid -->
+
+
+<!-- SCRIPT SECTION -->
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script type="text/javascript" src="../js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="../js/jquery.tocify.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+
+<!-- PRETTYFY-->
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+
+
+<!-- HIGHLIGHT -->
+	<script src="../js/highlight.pack.js" type="text/javascript"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+
+<!-- MATHJAX -->
+<script type="text/javascript" 
+	src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  displayAlign: "left",
+  displayIndent: "0em"
+});
+</script>
+
+<!-- TOCIFY -->
+<script>
+	$(function() {var toc = $("#toc").tocify({ selectors: "h1, h2, h3, h4" }).data("toc-tocify"); });
+</script>
+<!-- GOOGLE ANALYTICS -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-89933285-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</body>
+</html>

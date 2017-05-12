@@ -1,0 +1,12 @@
+<meta charset="UTF-8" lang="da"/>
+<?php
+
+for ($i=1;$i<=20;$i++) {
+	
+$trekanttal = ($i*($i+1))/2;
+
+echo $trekanttal." - ";
+
+}
+
+?>
