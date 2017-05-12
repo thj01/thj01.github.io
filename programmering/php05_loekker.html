@@ -49,7 +49,7 @@
 
 <p>Ofte har man brug for at et program skal gøre det samme igen og igen. Det kan f.eks. være at skulle udføre den samme beregning, på et stigende tal. Det kan f.eks. være at udskrive kvadrattallene (1,4,9,16,25 ...). På engelsk kaldes dette et <span class="inl_cmd">loop</span>.</p>
 
-<p>Python arbejder med 3 forskellige loops:</p>
+<p>Python arbejder med 4 forskellige løkker. Ud af disse bliver en af dem kun anvendt i arrays, så den vil ført blive gennemgået der. </p>
 
 <ul class="none fat_li">
 	<li>for</li>
@@ -82,9 +82,6 @@
 
 <p>Ved at overholde denne standard er det også lettere at læse kode, fordi man ved at <span class="inl_cmd">$i</span> er den variabel der holder styr på antallet.</p>
 
-<h2>break</h2>
-
-<p><span class="inl_cmd">break</span> er et kontroludsagn man kan indsætte i en løkke, hvis den skal afbrydes. Det kan f.eks. være hvis en speciel betingelse er opfyldt. Hvis man indsætter <span class="inl_cmd">break</span> i orden af sin kode, så afsluttes hele koden. </p>
 
 <h1>for</h1>
 
@@ -181,8 +178,6 @@ while ($i &lt;= 10) {
 </pre>
 
 
-<p><b>GENERELT : </b>Anvend <span class="inl_cmd">for</span>-løkken fremfor <span class="inl_cmd">while</span>-løkken, da den er langt mere effektiv og kræver  mindre kodelinier.</p>
-
 <h1>do ... while</h1>
 
 <p>Anvendes når en kode skal køres mindst en gang eller <b>indtil</b> en betingelse er opfyldt</p>
@@ -193,18 +188,20 @@ while ($i &lt;= 10) {
 
 <pre><code class="php">
 &lt;?php 
-$antal = 8; 
+$tabel = 7;
+$i = 1; 
 
 do {
-    echo "Variablen er: $antal";
-    $antal++;
-} while ($antal &lt;= 5);
+	echo $tabel*$i." ";
+	$i++;
+} while ($i &lt;= 10);
 ?>
 </code>
 </pre>
 
-<pre class="ubuntu_terminal">Variablen er: 8
+<pre class="ubuntu_terminal">7 14 21 28 35 42 49 56 63 70
 </pre>
+
 
 <p>I dette tilfælde virker det underligt, fordi det ikke giver nogen mening at vi får at vide at variablen er 8 - når den kun må være 5 og derunder. Men det kan være at der er en anden kode vi vil sikre os kører mindst en gang - uanset betingelsen.</p>
 

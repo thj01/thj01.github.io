@@ -237,88 +237,131 @@ if (betingelse_1) {
 
 <p>Det afgørende handler om overblik og effektivitet. Generelt vil jeg anbefale at man anvender if/else bla. fordi der er mindre skrivearbejde i den, men især fordi den mere logisk tvinger os til at opdele det vi arbejder med (overblik).</p>
 
+<h1>Kontrol statements</h1>
+
+<p>Når man arbejder med valg, funktioner og løkker, har man stor fordel af at kunne afbryde dem når opgaven er løst.</p>
+
+<p>Det kan f.eks. være at at afbryde den helt eller/og at give videre hvad resultatet var. Til dette formål anvender vi <span class="inl_cmd">break</span> og <span class="inl_cmd">return</span>:</p>
+
+<ul class="fat_li none">
+	<li>break</li>
+	
+		<p><span class="inl_cmd">break</span> er et kontroludsagn man kan indsætte i en løkke, hvis den skal afbrydes. Det kan f.eks. være hvis en speciel betingelse er opfyldt. Hvis man indsætter <span class="inl_cmd">break</span> i orden af sin kode, så afsluttes hele koden. </p>
+	
+	<li>return ** værdi **</li>
+	
+		<p><span class="inl_cmd">return</span> fungerer grundlæggende som <span class="inl_cmd">break</span>. Forskellen er, at return svarer med noget. Det kan være:</p>
+
+		<ul class="disc">
+			<li>true/false - også kaldet <span class="inl_cmd">boolean</span></li>
+			<li>En værdi</li>
+			<li>en tekststreng</li>
+		</ul>
+</ul>
+
+<p>Forestil dig at du undersøger temperaturen i en fryser. Her er hvad programmet skal gøre for forskellige værdier det får af en måler:</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Tilstand</th>
+			<th>Handling</th>
+			<th>Svar</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Temperatur konstant</td>
+			<td>Gør intet</td>
+			<td>return 0</td>
+		</tr>
+		<tr>
+			<td>Temperatur falder</td>
+			<td>Mindre køling</td>
+			<td>return 1</td>
+		</tr>
+		<tr>
+			<td>Temperatur konstant</td>
+			<td>Mere køling</td>
+			<td>return 2</td>
+		</tr>
+			<tr>
+			<td>Ingen temperatur målinger</td>
+			<td>Send alarm</td>
+			<td>return 3</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Herefter vil vi kunne kalde <span class="inl_cmd">return</span>-værdien ved hjælp af enten en switch eller en <span class="inl_cmd">if/elseif/else</span> struktur og programmere de handlinger der hører til hver værdi. Der kommer nogle eksempler herunder.</p>
+
+
+
 <h1>Funktioner</h1>
 
 <p>Undtil videre har vi arbejdet med PHP's indbygge funktioner. Nogle gange kan det være smart at kunne lave sine egne funktioner. Det kan både være fordi man skal bruge den samme kodestump flere gange, men det kan også være for overblikkets skyld.</p>
 
-<p>Herunder er der et eksempel på en simpel funktion der udskriver en kasse med tekst.</p>
+<p>Herunder er der et eksempel på en simpel funktion der udskriver et tilfældigt tal 10 gange, men kun hvis tallet er 4 eller derover:</p>
 
 <pre><code class="php">
 &lt;?php
-function velkommen() {
-	echo "╔═══════════════════╗\n";
-	echo "║                   ║\n";
-	echo "║     Velkommen     ║\n";
-	echo "║                   ║\n";
-	echo "╚═══════════════════╝";
+function tilf_tal(){
+	$tal = mt_rand(1,10);
+	
+	if($tal >= 4){
+		return $tal;
+	}
 }
 
-velkommen();
+for($i=1;$i&lt;=10;$i++) {
+	echo tilf_tal()." - ";
+}
 ?>
 </code>
 </pre>
 
-<pre class="ubuntu_terminal">╔═══════════════════╗
-║                   ║
-║     Velkommen     ║
-║                   ║
-╚═══════════════════╝
+<pre class="ubuntu_terminal"> -  - 4 - 4 -  - 6 -  - 10 -  - 7 -
 </pre>
 
-<p>Vi kan altså kalde den samme funktion igen og igen, ved hælp af at skrive funktionens navn, her: <span class="inl_cmd">velkommen()</span>.</p>
+<p>Funktioner gør altså at man kan lave nye funktioner, som man så kan kalde i sin kode. Det er især smart hvis den skal anvendes flere gange, så har man kun et sted i koden der skal rettes hvis funktionen skal ændres.</p>
+
+
 
 <h2>Funktioner med parametre</h2>
 
-<p>Ofte har vi brug for at kunne definere nogle variabler i vores funktioner. Herunder har jeg lavet en kode, der undersøger om variabel <span class="inl_cmd">$a</span> er større end <span class="inl_cmd">$b</span>.</p>
+<p>Som det er nu, så skal vi have alle parametre i koden. Det kan vi ændre på følgende måde, hvor vi sætter:</p>
 
-<p>Derudover har jeg valgt at introducere <span class="inl_cmd">return</span>. Hvis <span class="inl_cmd">$a</span> er større end <span class="inl_cmd">$b</span>, så vil funktionen resultere med værdien <span class="inl_cmd">true</span>.</p>
+<ul class="none">
+	<li>$a - mindsteværdi</li>
+	<li>$b - størsteværdi</li>
+	<li>$c - beskriver mindsteværdien på tallet der skal afleveres</li>
+</ul>
+
+<p></p>
 
 <pre><code class="php">
 &lt;?php
-function turn_on($a,$b) {
+function tilf_tal($a,$b,$c){
+	$tal = mt_rand($a,$b);
 	
-	if ($a>$b){
-		return true;
-		}
+	if($tal > $c){
+		return $tal;
 	}
+}
 
-if (turn_on(20,15)) {
-	echo "Tænd blæseren";
-	} 
-	else {
-		echo "Forbliv slukket";
-	}
+$antal=20;
+
+for($i=1;$i&lt;=$antal;$i++) {
+	echo tilf_tal(1,10,4)." - ";
+}
 ?>
 </code>
 </pre>
 
-<pre class="ubuntu_terminal">Tænd blæseren
+<pre class="ubuntu_terminal"> - 5 - 6 -  -  -  -  - 5 - 6 -  - 10 - 8 - 10 - 10 - 6 - 7 -  - 9 - 5 -  -
 </pre>
 
-<p>Læg mærke til, at i if sætningen <span class="inl_cmd"> if (turn_on(20,15))</span> ikke skal være lig noget. If "oversætter" funktionen og får værdien <span class="inl_cmd">true</span> - altså sand. Mere behøver if/else løkken ikke at vide.</p>
-
-<p>Vi kunne også have sat den til at returnere et tal eller et tekststreng.</p>
-
-<pre><code class="php">
-&lt;?php
-function turn_on($a,$b) {
-	
-	if ($a>$b){
-		return 1;
-		}
-	}
-
-if (turn_on(21,19) == 1) {
-	echo "Tænd blæseren";
-	} 
-	else {
-		echo "Forbliv slukket";
-	}
-?>
-</code>
-</pre>
-
-<p>Herunder er funktionen <span class="inl_cmd">andengrad()</span> lavet:</p>
+<p>Herunder er funktionen <span class="inl_cmd">andengrad()</span> lavet. Læg mærke til indrykningerne, som er lavet for at gøre koden er mere overskuelig.</p>
 
 <pre><code class="php">
 &lt;?php
@@ -363,7 +406,7 @@ Der er ingen nulpunkter
 
 <h2>Globale variabler</h2>
 
-<p>Nogle gange har man brug for at kunne anvende en variabel der er udregnet i en funktion. Se eksemplet herunder:</p>
+<p>Nogle gange har man brug for at kunne anvende en variabel der er udregnet i en funktion. Det kan give nogle problemer, da variabler er defineret indenfor deres sammenhæng (<span class="inl_cmd">scope</span>). - f.eks. en funktion. Se eksemplet herunder:</p>
 
 <pre><code class="php">
 &lt;?php
