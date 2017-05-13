@@ -177,23 +177,7 @@ echo substr($mail,-9,6);
 dkmail
 </pre>
 
-<h1>Bakke snavvendt</h1>
 
-<p>For at udskrive en streng baglæns anvendes <span class="inl_cmd">strrev()</span></p>
-
-<pre><code class="php">
-&lt;?php
-echo strrev("omvendt");
-echo strrev("snakkebaglæns");
-?>
-</code>
-</pre>
-
-<pre class="ubuntu_terminal">tdnevmo
-sn��lgabekkans
-</pre>
-
-<p>Læg mærke til at <span class="inl_cmd">strrev()</span> ikke kan arbejde med de danske tegn æ, ø og å.</p>
 
 <h1>Strenglængde</h1>
 
@@ -229,7 +213,7 @@ echo substr_count("hansboedker@dkmail.dk","@");
 
 <h1>Hvor er ...</h1>
 
-<p>For at finde ud af hvor en tekststreng er anvender man <span class="inl_cmd">substr_count()</span>.</p>
+<p>For at finde ud af hvor en tekststreng er anvender man <span class="inl_cmd">strpos()</span>.</p>
 
 <p>Herunder vil vi gerne adskille </p>
 
@@ -248,20 +232,200 @@ echo strpos($navn," ");
 
 <pre><code class="php">
 &lt;?php
-$navn = "Thomas Jensen Hansen";
+$navn = "Thomas Jensen";
 $mellemrum = strpos($navn," ");
 
-echo "Fornavn: ".substr($navn,0,$mellemrum)."\n";
-echo "Efternavn: ".substr($navn,$mellemrum)."\n";
+echo "Mellemrummet er på position: $mellemrum\n";
+
+echo "Fornavn:\t".substr($navn,0,$mellemrum)."\n";
+echo "Efternavn:\t".substr($navn,$mellemrum+1);
 ?>
 </code>
 </pre>
 
+<pre class="ubuntu_terminal">Mellemrummet er på position: 6
+Fornavn:	Thomas
+Efternavn:	Jensen
+</pre>
+
+<h2>Find flere</h2>
+
+<p>Hvad så med mellemnavne, f.eks. Thomas Georg Jensen? Her skal vi udnytte at <span class="inl_cmd">strpos()</span> har en ekstra parameter - hvor man kan sige hvorfra den skal finde mellemrummet.</p>
+
+<p>Vi ved fra før at første mellemrum er ved den 6 position og af nedestående skema kan vi se at det næste mellemrum kommer på position 12</p>
+
+<table class="centreret">
+	<thead>
+		<tr>
+			<th>T</th>
+			<th>h</th>
+			<th>o</th>
+			<th>m</th>
+			<th>a</th>
+			<th>s</th>
+			<th> </th>
+			<th>G</th>
+			<th>e</th>
+			<th>o</th>
+			<th>r</th>	
+			<th>g</th>
+			<th> </th>
+			<th>J</th>
+			<th>e</th>
+			<th>n</th>
+			<th>s</th>
+			<th>e</th>
+			<th>n</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>0</td>
+			<td>1</td>
+			<td>2</td>
+			<td>3</td>
+			<td>4</td>
+			<td>5</td>
+			<td>6</td>
+			<td>7</td>
+			<td>8</td>
+			<td>9</td>
+			<td>10</td>
+			<td>11</td>
+			<td>12</td>
+			<td>13</td>
+			<td>14</td>
+			<td>15</td>
+			<td>16</td>
+			<td>17</td>
+			<td>18</td>
+		</tr>
+		<tr>
+			<td>-19</td>
+			<td>-18</td>
+			<td>-17</td>
+			<td>-16</td>
+			<td>-15</td>
+			<td>-14</td>
+			<td>-13</td>
+			<td>-12</td>
+			<td>-11</td>
+			<td>-10</td>
+			<td>-9</td>
+			<td>-8</td>
+			<td>-7</td>
+			<td>-6</td>
+			<td>-5</td>
+			<td>-4</td>
+			<td>-3</td>
+			<td>-2</td>
+			<td>-1</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Herunder er lavet en kode til at finde antallet af mellemrum i en tekststreng, og lægge dem ind i et array. Ved at gøre det kan vi bagefter kalde vores array til at udskrive og/eller gemme de enkelte ord hver for sig.</p>
+
+<pre><code class="php">
+&lt;?php
+// Laver en variabel til det navn der skal testes
+$navn = "Thomas Georg Jensen";
+
+// Opretter et array til mellemrumspositioner
+$mellemrum = array();
+
+// Tæller antallet af mellemrum
+$antal_mellemrum = substr_count($navn," ");
+
+// Påretter en variabel, så vi kan tælle fra 0'te position
+$position = 0;
+
+// Opretter løkke, så vi kan finde alle de mellemrum der er
+for($i=0;$i&lt;$antal_mellemrum;$i++){
+	// Finder positionen af mellemrummet efter positionsværdien
+	$mellemrum_pos = strpos($navn," ",$position);
+	// Indsætter mellemrummets position i vores array
+	$mellemrum []=  $mellemrum_pos;
+	// Lægger en til positionen, så vi kan finde næste position
+	$position = $mellemrum_pos+1;
+	
+	}
+
+// Udskriver antallet af mellemrum
+echo "Antal Mellemrum: $antal_mellemrum\n";
+
+//Udskriver vores array
+print_r($mellemrum);
+?>
+</code>
+</pre>
+
+<pre class="ubuntu_terminal">Antal Mellemrum: 2
+Array
+(
+    [0] => 6
+    [1] => 12
+)
+</pre>
+
+<p>Med dette program som grundstamme kan vi reelt set analysere en tekst, da vi kan lægget hvert ord ind i et array</p>.
+
+<h1>Tekstfiler</h1>
+
+<p>Før vi går igang med denne opgave skal du oprette filen <span class="inl_cmd">mintekst</span> (uden filendelse) på din webserver</span>, med følgende indhold:</p>
+
+<pre class="black">
+alle børnene
+kiggede ned i blenderen
+undtagen bob
+Han kiggede op 
+</pre>
+
+<pre><code class="php">
+&lt;?php
+$fil = fopen("mintekst", "r");
+
+echo fread($fil,filesize("mintekst"));
+
+fclose($fil);
+?>
+</code>
+</pre>
+
+<pre class="ubuntu_terminal">alle børnene
+kiggede ned i blenderen
+undtagen bob
+Han kiggede op 
+</pre>
 
 
-<h1>Shuffle</h1>
+<h1>Sjove funktioner</h1>
+
+<h2>Bakke snagvendt</h2>
+
+<p>For at udskrive en streng baglæns anvendes <span class="inl_cmd">strrev()</span></p>
+
+<pre><code class="php">
+&lt;?php
+echo strrev("omvendt");
+echo strrev("baglæns");
+?>
+</code>
+</pre>
+
+<pre class="ubuntu_terminal">tdnevmo
+sn��lgab
+</pre>
+
+<p>Læg mærke til at <span class="inl_cmd">strrev()</span> ikke kan arbejde med de danske tegn æ, ø og å.</p>
+
+<h2>Shuffle</h2>
 
 <p>str_shuffle()</p>
+
+
+
+
 
 
 <p></p>
