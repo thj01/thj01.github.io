@@ -130,6 +130,7 @@ php > echo 8 * ( 2 - 4 );
 
 <ul class="none">
 	<li><span class="math">\( \pi \)</span> skrives som <span class="inl_cmd">pi()</span></li>
+	<li><span class="math">\( e \)</span> skrives som <span class="inl_cmd">exp(1)</span> (den naturlige logaritme)</li>
 	<li><span class="math">\( a^b \)</span> skrives som <span class="inl_cmd">pow(a,b)</span> eller <span class="inl_cmd">a**b</span></li>
 	<li><span class="math">\( \sqrt{x} \)</span> skrives som <span class="inl_cmd">sqrt(x)</span>. Man kan også skrive skrive <span class="inl_cmd">a**1/b</span> eller <span class="inl_cmd">pow(a,1/b)</span>.</li>
 </ul>
@@ -139,12 +140,28 @@ php > echo 8 * ( 2 - 4 );
 <pre class="ubuntu_terminal">
 php > echo pi();
 3.1415926535898
+php > echo exp(1);
+2.718281828459
 php > echo pow(3,3);
 27
 php > echo sqrt(64);
 8
 php > echo abs(-10);
 10
+</pre>
+
+<p>En sidste vigtig regningsregel er modulo, som skrives med <span class="inl_cmd">%</span>. Denne regningsregel angiver restproduktet af et divisionsstykke. F.eks. er <span class="inl_cmd">2</span> restprduktet af <span class="math">\( \frac{ 10 }{ 8 } \)</span>. Det skriver vi som <span class="inl_cmd">10%2</span></p>
+
+<pre class="ubuntu_terminal">php > echo 10%8;
+2
+</pre>
+
+<p>På den måde kan vi f.eks. finde ud af hvor mange kasser a 8 stk der kommer ud af 198 enheder ... og hvor mange der er til rest.</p>
+
+<pre class="ubuntu_terminal">php > echo floor(198/8);
+24     <span class="red">&larr; hele antal kasser</span>
+php > echo 198%8;
+6     <span class="red">&larr; antal enheder til rest</span>
 </pre>
 
 <h1>Logiske operatorer</h1>
@@ -393,6 +410,7 @@ php > echo floor(2.25);
 php > echo floor(2.75);
 2
 </pre>
+
 
 <h1>Tilfældige tal</h1>
 
