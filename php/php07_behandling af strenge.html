@@ -370,6 +370,7 @@ Array
 
 <p>Med dette program som grundstamme kan vi reelt set analysere en tekst, da vi kan lægget hvert ord ind i et array</p>.
 
+<!--
 <h1>Tekstfiler</h1>
 
 <p>Før vi går igang med denne opgave skal du oprette filen <span class="inl_cmd">mintekst</span> (uden filendelse) på din webserver</span>, med følgende indhold:</p>
@@ -397,6 +398,7 @@ kiggede ned i blenderen
 undtagen bob
 Han kiggede op 
 </pre>
+-->
 
 
 <h1>Sjove funktioner</h1>
@@ -421,11 +423,21 @@ sn��lgab
 
 <h2>Shuffle</h2>
 
-<p>str_shuffle()</p>
+<p><span class="inl_cmd">str_shuffle()</span> sætter alle bogstaverne i en vilkårlig rækkefølge.</p>
 
+<pre><code class="php">
+&lt;?php
+echo str_shuffle("omvendt");
+echo str_shuffle("baglæns");
+?>
+</code>
+</pre>
 
+<pre class="ubuntu_terminal">eotmndv
+lnsa�gb�
+</pre>
 
-
+<p>Ligesom <span class="inl_cmd">strrev()</span> har <span class="inl_cmd">str_shuffle</span> svært ved at anvende æøå. Her sker der dog det mystiske engang imellem, at det faktisk virker.</p>
 
 
 <p></p>
