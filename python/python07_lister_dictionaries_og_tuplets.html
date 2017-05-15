@@ -77,22 +77,16 @@
 <pre>
 	<code class="python">
 # Liste med navne
-
 navne = ["Anne", "Bent", "Cecilie", "Dennis"] 
 
 #udskriver hele listen
-
 print (navne)
 
 # Udskriver det x'te element af listen. Husk at computere tæller fra 0 
-
-print(navne[0])
-
-print(navne[1])
-
-print(navne[2])
-
-print(navne[3])
+print (navne[0])
+print (navne[1])
+print (navne[2])
+print (navne[3])
 	</code>
 </pre>
 
@@ -114,19 +108,15 @@ Press return to continue
 <pre>
 	<code class="python">
 # Liste med navne
-
 navne = ["Anne", "Bent", "Cecilie", "Dennis"] 
 
 #udskriver hele listen
-
 print (navne)
 
 # Udskriver det x'te element af listen. Husk at computere tæller fra 0 
-
 antal_navne = len(navne)
 
 for i in range(antal_navne):
-
 	print(navne[i])
 	</code>
 </pre>
@@ -138,19 +128,15 @@ for i in range(antal_navne):
 <pre>
 	<code class="python">
 # Liste med navne
-
 navne = ["Anne", "Bent", "Cecilie", "Dennis"]
 
 #udskriver hele listen
-
 print (navne)
 
 # Ændring af det 4 element i listen
-
 navne[3] = "Dorthe"
 
 print ("Den nye liste", end=" ")
-
 print (navne)
 	</code>
 </pre>
@@ -171,17 +157,13 @@ Press return to continue
 <pre>
 	<code class="python">
 # Liste med navne
-
 navne = ["Anne", "Bent", "Cecilie", "Dorthe"]
 
 #udskriver hele listen
-
 print (navne)
 
 # Tilføj ekstra element
-
-navne.append("Egon")
-
+navne.append ("Egon")
 print (navne)
 	</code>
 </pre>
@@ -207,15 +189,12 @@ Press return to continue
 <pre>
 	<code class="python">
 # Liste med navne
-
 navne = ["Anne", "Bent", "Cecilie", "Dorthe", "Egon"]
 
 #udskriver hele listen
-
 print (navne)
 
 # Fjerne det sidste element
-
 del navne[-1]
 
 print (navne)
@@ -239,15 +218,12 @@ Press return to continue
 <pre>
 	<code class="python">
 # Liste med navne
-
 navne = ["Anne", "Bent", "Cecilie", "Dorthe", "Egon"]
 
 #udskriver hele listen
-
 print (navne)
 
 # Fjern "Cecilie"
-
 del navne[2]
 
 print (navne)
@@ -271,11 +247,9 @@ Press return to continue
 <pre>
 	<code class="python">
 # Liste med navne
-
 navne = ["Anne", "Bent", "Cecilie", "Dorthe", "Egon"]
 
 find_navn = "Dorthe"
-
 listnumber = navne.index(find_navn)
 
 print ("\"{0}\" er nummer {1} i listen".format(find_navn,listnumber))
@@ -300,13 +274,10 @@ Press return to continue
 <pre>
 	<code class="python">
 # Liste med navne
-
 navne = ["Anne", "Bent", "Cecilie", "Dorthe", "Egon"]
 
 navn_der_testes =  "Dorthe"
-
 findes_navn = navn_der_testes in navne
-
 print ("{0} er på listen: {1}".format(navn_der_testes,findes_navn))
 	</code>
 </pre>
@@ -327,13 +298,10 @@ Press return to continue
 <pre>
 	<code class="python">
 # Liste med navne
-
 navne = ["Anne", "Bent", "Cecilie", "Dorthe", "Egon"]
 
 navn_der_testes =  "Dorthe"
-
 findes_navn = navn_der_testes not in navne
-
 print ("{0} er IKKE i listen: {1}".format(navn_der_testes,findes_navn))
 	</code>
 </pre>
@@ -373,14 +341,12 @@ Press return to continue
 <pre>
 	<code class="python">
 #dictionary med bruger ID
-
 bruger_id = {"Anne": 1, "Bent": 2, "Cecilie": 3, "Dennis": 4}
 
 #udskriv listen
-
 print ("\nUdskrivning af hele listen\n")
 
-print(bruger_id)
+print (bruger_id)
 	</code>
 </pre>
 
@@ -402,13 +368,10 @@ Press return to continue
 <pre>
 	<code class="python">
 #udskrift af en enkelt brugers ID
-
 bruger_id = {"Anne": 1, "Bent": 2, "Cecilie": 3, "Dennis": 4}
 
-print(bruger_id)		
-		
+print (bruger_id)		
 udskriv_anna = bruger_id["Anne"]
-
 print ("\nAnnas brugerID: {0}".format(udskriv_anna))
 	</code>
 </pre>
@@ -429,16 +392,12 @@ Press return to continues
 <pre>
 	<code class="python">
 #tilføje en bruger med ID
-
 bruger_id = {"Anne": 1, "Bent": 2, "Cecilie": 3, "Dennis": 4}
 
-print(bruger_id)
-
+print (bruger_id)
 print ("\nDer tilføjes brugern Egon med ID = 5")
-
-bruger_id["Egon"]=5
-
-print(bruger_id)
+bruger_id ["Egon"]=5
+print (bruger_id)
 	</code>
 </pre>
 
@@ -461,16 +420,12 @@ Press return to continue
 <pre>
 	<code class="python">
 #Ændre en brugers ID
-
 bruger_id = {"Anne": 1, "Bent": 2, "Cecilie": 3, "Dennis": 4, "Egon":5}		
 
-print(bruger_id)
-		
-print("\nEgons ID ændres til 6")
-
+print (bruger_id)
+print ("\nEgons ID ændres til 6")
 bruger_id["Egon"]=6
-
-print(bruger_id)
+print (bruger_id)
 	</code>
 </pre>
 
@@ -491,16 +446,12 @@ Press return to continue
 <pre>
 	<code class="python">
 #fjerne brugeren Egon
-
 bruger_id = {"Anne": 1, "Bent": 2, "Cecilie": 3, "Dennis": 4, "Egon":5}
 
 print(bruger_id)
-
 print ("\nFjerner brugeren Egon")
-
 del bruger_id["Egon"]
-
-print(bruger_id)
+print (bruger_id)
 	</code>
 </pre>
 
@@ -521,14 +472,11 @@ Press return to continue
 <pre>
 	<code class="python">
 #Undersøger om en bruger findes
-
 bruger_id = {"Anne": 1, "Bent": 2, "Cecilie": 3, "Dennis": 4}
 
-print(bruger_id)
-
+print (bruger_id)
 is_egon = "Egon" in bruger_id
-
-print("\nUndersøger om brugeren Egon Findes: {0}".format(is_egon)) 
+print ("\nUndersøger om brugeren Egon Findes: {0}".format(is_egon)) 
 	</code>
 </pre>
 
@@ -548,14 +496,11 @@ Press return to continue
 <pre>
 	<code class="python">
 #undersøg om brugeren Susanne IKKE findes
-
 bruger_id = {"Anne": 1, "Bent": 2, "Cecilie": 3, "Dennis": 4}
 
-print(bruger_id)
-
+print (bruger_id)
 is_egon = "Susanne" not in bruger_id
-
-print("\nUndersøger om brugeren Susanne IKKE i denne dictionary: {0}".format(is_egon)) 
+print ("\nUndersøger om brugeren Susanne IKKE i denne dictionary: {0}".format(is_egon)) 
 	</code>
 </pre>
 
@@ -618,7 +563,6 @@ Press return to continue
 import math
 
 print (math.sqrt(27))
-
 print (math.log10(100))
 	</code>
 </pre>
@@ -626,7 +570,6 @@ print (math.log10(100))
 <pre class="ubuntu_terminal">
 5.19615242271
 2.0
-
 
 ------------------
 (program exited with code: 0)
@@ -640,7 +583,6 @@ Press return to continue
 from math import sqrt, log10
 
 print (sqrt(27))
-
 print (log10(100))
 	</code>
 </pre>
@@ -751,11 +693,8 @@ Press return to continue
 <pre>
 	<code class="python">
 print ("100 i binært talsystem er\t"), int("100",2)
-
 print ("100 i 8-talssystemet (octet) er\t"), int("100",8)
-
 print ("100 i 10-talssystemet er\t"), int("100",10)
-
 print ("100 i 16-talssystemet (hex) er\t"), int("100",16)
 	</code>
 </pre>
@@ -778,13 +717,9 @@ Press return to continue
 <pre>
 	<code class="python">
 print ("100 er:")
-
 print ("----------------------------------------------")
-
 print ("{0} \ti det binære talsystem".format( bin(100)))
-
 print ("{0} \t\ti 8-talssystemet".format(oct(100)))
-
 print ("{0} \t\ti det hexadecimale talsystem".format(hex(100)))
 	</code>
 </pre>
@@ -807,13 +742,9 @@ Press return to continue
 <pre>
 	<code class="python">
 print ("100 er:")
-
 print ("----------------------------------------------")
-
 print ("{0} \ti det binære talsystem".format( bin(100)[2:]))
-
 print ("{0} \t\ti 8-talssystemet".format(oct(100)[2:]))
-
 print ("{0} \t\ti det hexadecimale talsystem".format(hex(100)[2:]))
 	</code>
 </pre>

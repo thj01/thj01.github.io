@@ -229,12 +229,9 @@
 mail = input("Indtast mail: ")
 
 if mail[-3:].count(".dk") == 1:
-	
-	print("\n\tDet er en dk mail")
-
+	print ("\n\tDet er en dk mail")
 else:
-	
-	print("\n\tDet er ikke en dk mail")
+	print ("\n\tDet er ikke en dk mail")
 	</code>
 </pre>
 
@@ -275,12 +272,9 @@ if mail[-3:] == ".dk":
 mail = "yahoo.dk"
 
 pos_dot = mail[-4:].find(".")
-
-print("Det sidste dot er i position {0}.".format(pos_dot))
-
+print ("Det sidste dot er i position {0}.".format(pos_dot))
 lande_kode = mail[pos_dot+1:]
-
-print(lande_kode)
+print (lande_kode)
 	</code>
 </pre>
 
@@ -301,12 +295,10 @@ Press return to continue
 mail = "yahoo.dk"
 
 pos_dot = mail[-4:].find(".")
-
-print("Det sidste dot er i position {0}.".format(pos_dot))
-
+print ("Det sidste dot er i position {0}.".format(pos_dot))
 lande_kode = mail[-4:][pos_dot+1:] # Dobbelt op på slice
 
-print(lande_kode)
+print (lande_kode)
 	</code>
 </pre>
 
@@ -338,16 +330,10 @@ print(lande_kode)
 
 <h3>Opgave - Bakke snagvendt</h3>
 
-<p>Lav et program hvor brugerens input bliver udskrevet baglæns</p>
+<p>Lav et program hvor brugerens input bliver udskrevet baglæns. Her: <span class="inl_cmd">Ubrugeligt... men sjovt</span></p>
 
 <pre class="ubuntu_terminal">
-Skriv en tekst der skal "Bakkes snavendt"
-
-Skriv tekst: Ubrugeligt... men sjovt
-
-
 	tvojs nem ...tgilegurbU
-
 
 ------------------
 (program exited with code: 0)

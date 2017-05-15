@@ -89,11 +89,8 @@ if *** betingelse *** :
 valg = int(input("Tast 1 for dreng og 2 for pige: "))
 
 if valg == 1: 
-	
     print ("\nDu valgte dreng")
-	
 else:
-	
     print ("\nDu valgte pige")
 	</code>
 </pre>
@@ -105,15 +102,10 @@ else:
 valg = int(input("Tast 1 for dreng og 2 for pige: "))
 
 if valg == 1: 
-
     print ("\nDu valgte dreng")
-
 elif valg == 2:
-
     print ("\nDu valgte pige")
-
 else:
-
     print ("Du skal vælge enten 1 eller 2")
 	</code>
 </pre>
@@ -163,15 +155,11 @@ else:
 tekst = "Der findes mange programmeringssprog, og de kan stort set det samme. Men de gør den på en forskellig måde. C er et meget præcist, men også meget omstændigt sprog, hvorimod Python er noget lettere at gå til."
 
 prg_python = "Python" in tekst
-
 prg_c = "C" in tekst
-
 prg_java = "Java" in tekst
 
 print ("Findes Python i sætningen: {0}".format(prg_python))
-
 print ("Findes C i sætningen: {0}".format(prg_c))
-
 print ("Findes Java i sætningen: {0}".format(prg_java))
 	</code>
 </pre>
@@ -231,14 +219,12 @@ Press return to continue
 import datetime
 
 today = datetime.datetime.today().weekday()
-
-print(today)
+print (today)
 	</code>
 </pre>
 
 <pre class="ubuntu_terminal">
 3
-
 
 ------------------
 (program exited with code: 0)
@@ -291,7 +277,6 @@ Herunder udskrives funktionen
 ║                   ║
 ╚═══════════════════╝
 
-
 ------------------
 (program exited with code: 0)
 Press return to continue
@@ -307,28 +292,22 @@ Press return to continue
 <pre>
 	<code class="python">
 def turn_on (a,b):
-	
-    if a > b:
-	
+
+    if a > b:	
         return True
 	
 room_temp = 19 # rummets temperatur
-
 turn_on_temp = 18 # Tændningstemperaturen
 
 if turn_on(room_temp,turn_on_temp) is True:
-	
     print ("tænd")
-	
 else:
-		
     print ("Sluk")
 	</code>
 </pre>
 
 <pre class="ubuntu_terminal">
 tænd
-
 
 ------------------
 (program exited with code: 0)
@@ -344,13 +323,13 @@ Press return to continue
 <pre>
 	<code class="python">
 def skriv_tal():
-	
+
 	valgt_tal=int(input("Skriv et tal: "))
 	dobbelt_a=valgt_tal*2
 	
 skriv_tal()
 
-print("Det fordoblede tal er: {0}".format(dobbelt_a))
+print ("Det fordoblede tal er: {0}".format(dobbelt_a))
 	</code>
 </pre>
 
@@ -376,21 +355,17 @@ Press return to continue
 def skriv_tal():
 	
 	valgt_tal=int(input("Skriv et tal: "))
-	
 	global dobbelt_a
-	
 	dobbelt_a=valgt_tal*2
 	
 skriv_tal()
-
-print("Det fordoblede tal er: {0}".format(dobbelt_a))
+print ("Det fordoblede tal er: {0}".format(dobbelt_a))
 	</code>
 </pre>
 
 <pre class="ubuntu_terminal">
 Skriv et tal: 5
 Det fordoblede tal er: 10
-
 
 ------------------
 (program exited with code: 0)
@@ -406,22 +381,17 @@ Press return to continue
 def chk(a):
 	
     if check == 1:
-
         print (a)
 
 check = 1
-
 mail = "hansboedker@dkmail.dk"
-
 mail_len = len(mail)
-
 chk(mail_len)
 	</code>
 </pre>
 
 <pre class="ubuntu_terminal">
 21
-
 
 ------------------
 (program exited with code: 0)
@@ -448,7 +418,6 @@ Press return to continue
 Undersøger om 2 er en faktor i 10
 	
 2 er en faktor i 10
-
 
 ------------------
 (program exited with code: 0)
@@ -482,12 +451,10 @@ Press return to continue
 from random import random, randrange
 
 tilfældigtal = random()
-
 terningkast = randrange(1,6)
 
-print("Et tilfældigt tal: {0}".format(tilfældigtal))
-
-print("\nEt terningkast: {0}".format(terningkast))
+print ("Et tilfældigt tal: {0}".format(tilfældigtal))
+print ("\nEt terningkast: {0}".format(terningkast))
 	</code>
 </pre>
 
@@ -510,7 +477,6 @@ Press return to continue
 import random
 
 tilfældigtal = random.random()
-
 terningkast = random.randrange(1,6)
 	</code>
 </pre>
@@ -568,7 +534,6 @@ Computer: 4727
 
 -----------------------------------------
 Thomas vandt
-
 
 (program exited with code: 0)
 Press return to continue

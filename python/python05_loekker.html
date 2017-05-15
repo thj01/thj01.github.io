@@ -225,10 +225,8 @@ for i in range(startværdi, slutværdi, vækst pr. omgang)
 <pre>
 <code class="python">
 for i in range(1,12):
-	
-    trekanttal = ((i*(i+1))/2, end = " - ")
-	
-    print (trekanttal)
+	trekanttal = ((i*(i+1))/2, end = " - ")
+	print (trekanttal)
 	</code>
 </pre>
 
@@ -246,10 +244,8 @@ Press return to continue
 <pre>
 <code class="python">
 for i in range(1,12):
-	
-    trekanttal = int((i*(i+1))/2)
-
-    print (trekanttal, end=" - ")
+	trekanttal = int((i*(i+1))/2)
+	print (trekanttal, end=" - ")
 	</code>
 </pre>
 
@@ -270,7 +266,6 @@ Press return to continue
 navn = "Thomas"
 
 for char in navn:
-	
     print(char)
 	</code>
 </pre>
@@ -282,7 +277,6 @@ o
 m
 a
 s
-
 
 ------------------
 (program exited with code: 0)
@@ -335,13 +329,9 @@ ip = "192.168.2.100"
 tegn = -1 # Værdien sættes til -1, for at første værdi antager 0
 
 for char in ip:
-	
     tegn +=1
-
     dot = "." in char
-
     if dot == True:
-		
         print ("Here is a dot {0}".format(tegn))
 	</code>
 </pre>
@@ -350,7 +340,6 @@ for char in ip:
 Here is a dot 3
 Here is a dot 7
 Here is a dot 9
-
 
 ------------------
 (program exited with code: 0)
@@ -449,7 +438,6 @@ Fibonacci taller er: 2584 og φ er: 0.6180339631667066
 Fibonacci taller er: 4181 og φ er: 0.6180339985218034
 Fibonacci taller er: 6765 og φ er: 0.618033985017358
 
-
 ------------------
 (program exited with code: 0)
 Press return to continue
@@ -466,9 +454,7 @@ Press return to continue
 a = 0
 
 while a &lt; 10:
-
     a +=1
-
     print (a)
 
 print ("\nNu har vi udskrevet de 10 første tal")
@@ -508,7 +494,6 @@ print("Gæt på et tal mellem 1 og 9\n")
 a = 0
 
 while a != 8:
-
     a = int(input("Gæt hvilket tal jeg er: "))
 
 print ("\nN I C E")
@@ -707,14 +692,12 @@ Press return to continue
 limit = 3
 
 while True:
-	
     antalBrugere = int(input("Indtast antal brugere (1-4): "))
     
     if antalBrugere >=1 and antalBrugere &lt;=4:
         print("\nDer er {0} brugere)".format(antalBrugere))
         break #Hop ud af while løkken
     else:
-	
         #Tæller en ned på den øvre grænse når brugeren vælger forkert
         limit -=1 
 	
