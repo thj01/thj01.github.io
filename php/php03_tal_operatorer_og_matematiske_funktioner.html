@@ -44,61 +44,9 @@
 	
 	<div class="title">Tal, operatorer og matematiske funktioner</div>
 	
-<p>PHP arbejder med to forskellige taltyper. Integers (heltal) og float (decimaltal). Det gode ved det er at PHP selv finder ud af det. </p>
-
-<h1>Taltyper</h1>
-
-<p>Se nedestående eksempel,hvor vi anvender funktionen <span class="inl_cmd">var_dump()</span> til at finde ud af hvilken type input er.:</p>
-
-<pre class="ubuntu_terminal">
-php > var_dump(7);
-int(7)
-php > var_dump(3.14);
-float(3.14)
-php > var_dump("hej");
-string(3) "hej"
-</pre>
 
 
 
-
-<p><span class="inl_cmd">var_dump()</span> fortæller altså at:</p>
-
-<ul class="none">
-	<li>7 er et heltal (Integer)</li>
-	<li>3.14 er et decimaltal (float)</li>
-	<li>"Hej verden" er en tekststreng (string)</li>
-</ul>
-
-<h1>Konvertering af tekst/tal</h1>
-
-<p>Når man sender et input til PHP kommer det altid som en tekststreng. Derfor skal man kunne konvertere mellem integers, float og string (heltal, decimaltal og tekststrenge). Det gør man ved at anvende:</p>
-
-<ul class="none">
-	<li>intval() - konverterer til interger (heltal)</li>
-	<li>floatval() - konverterer til float (decimaltal)</li>
-	<li>strval() - konvertere til string (tekststreng)</li>
-</ul>
-
-<p></p>
-
-<pre class="ubuntu_terminal">
-php > $a = "7";
-php > $b = "3.14";
-php > echo var_dump($a,$b);     <span class="red">&larr; vis datatypen på variablerne a og b</span>
-string(1) "7"
-string(4) "3.14"
-php > $a = intval($a);
-php > $b = floatval($b);
-php > echo var_dump($a,$b);      <span class="red">&larr; vis de nye datatypen på variablerne a og b</span>
-int(7)
-float(3.14)
-php > $a = strval($a);
-php > $b = strval($b);
-php > echo var_dump($a,$b);      <span class="red">&larr; vis de nye datatypen på variablerne a og b</span>
-string(1) "7"
-string(4) "3.14"
-</pre>
 
 
 <h1>Regningsregler</h1>
@@ -135,8 +83,6 @@ php > echo 8 * ( 2 - 4 );
 	<li><span class="math">\( \sqrt{x} \)</span> skrives som <span class="inl_cmd">sqrt(x)</span>. Man kan også skrive skrive <span class="inl_cmd">a**1/b</span> eller <span class="inl_cmd">pow(a,1/b)</span>.</li>
 </ul>
 
-<p>se eksemplerne her:</p>
-
 <pre class="ubuntu_terminal">
 php > echo pi();
 3.1415926535898
@@ -150,6 +96,8 @@ php > echo abs(-10);
 10
 </pre>
 
+<h2>Modulo</h2>
+
 <p>En sidste vigtig regningsregel er modulo, som skrives med <span class="inl_cmd">%</span>. Denne regningsregel angiver restproduktet af et divisionsstykke. F.eks. er <span class="inl_cmd">2</span> restprduktet af <span class="math">\( \frac{ 10 }{ 8 } \)</span>. Det skriver vi som <span class="inl_cmd">10%2</span></p>
 
 <pre class="ubuntu_terminal">php > echo 10%8;
@@ -162,6 +110,15 @@ php > echo abs(-10);
 24     <span class="red">&larr; hele antal kasser</span>
 php > echo 198%8;
 6     <span class="red">&larr; antal enheder til rest</span>
+</pre>
+
+<h2>Absolutte tal</h2>
+
+<p>Når man programmere har man ofte brug for at kende forskellen mellem 2 tal. Problemet er, at man ikke altid kan være sikker på om forskellen er en positiv eller en negativ værdi. F.eks. kan forskellen mellem 2 temperaturer f.eks. 17&#176; og 21&#176; være både 4 og -4. Ved at bruge <span class="inl_cmd">abs()</span> kan vi sikre os at en forskel altid bliver leveret som en positiv værdi.</p>
+
+<pre class="ubuntu_terminal">
+echo abs(-4);
+4
 </pre>
 
 <h1>Logiske operatorer</h1>
@@ -376,14 +333,7 @@ php > echo $antal -=4;     <span class="red">&larr; sætter 4 - 4 = 4</span>
 
 
 
-<h1>Absolutte tal</h1>
 
-<p>Når man programmere har man ofte brug for at kende forskellen mellem 2 tal. Problemet er, at man ikke altid kan være sikker på om forskellen er en positiv eller en negativ værdi. F.eks. kan forskellen mellem 2 temperaturer f.eks. 17&#176; og 21&#176; være både 4 og -4. Ved at bruge <span class="inl_cmd">abs()</span> kan vi sikre os at en forskel altid bliver leveret som en positiv værdi.</p>
-
-<pre class="ubuntu_terminal">
-echo abs(-4);
-4
-</pre>
 
 <h1>Afrunding</h1>
 
@@ -427,6 +377,58 @@ php > echo mt_rand(1,6);
 3
 </pre>
 
+<h1>Taltyper</h1>
+
+<p>PHP arbejder med to forskellige taltyper. Integers (heltal) og float (decimaltal). Det gode ved det er at PHP selv finder ud af det. </p>
+
+<p>Se nedestående eksempel,hvor vi anvender funktionen <span class="inl_cmd">var_dump()</span> til at finde ud af hvilken type input er.:</p>
+
+<pre class="ubuntu_terminal">
+php > var_dump(7);
+int(7)
+php > var_dump(3.14);
+float(3.14)
+php > var_dump("hej");
+string(3) "hej"
+</pre>
+
+<p><span class="inl_cmd">var_dump()</span> fortæller altså at:</p>
+
+<ul class="none">
+	<li>7 er et heltal (Integer)</li>
+	<li>3.14 er et decimaltal (float)</li>
+	<li>"Hej verden" er en tekststreng (string)</li>
+</ul>
+
+<h1>Konvertering af tekst/tal</h1>
+
+<p>Når man sender et input til PHP kommer det altid som en tekststreng. Derfor skal man kunne konvertere mellem integers, float og string (heltal, decimaltal og tekststrenge). Det gør man ved at anvende:</p>
+
+<ul class="none">
+	<li>intval() - konverterer til interger (heltal)</li>
+	<li>floatval() - konverterer til float (decimaltal)</li>
+	<li>strval() - konvertere til string (tekststreng)</li>
+</ul>
+
+<p></p>
+
+<pre class="ubuntu_terminal">
+php > $a = "7";
+php > $b = "3.14";
+php > echo var_dump($a,$b);     <span class="red">&larr; vis datatypen på variablerne a og b</span>
+string(1) "7"
+string(4) "3.14"
+php > $a = intval($a);
+php > $b = floatval($b);
+php > echo var_dump($a,$b);      <span class="red">&larr; vis de nye datatypen på variablerne a og b</span>
+int(7)
+float(3.14)
+php > $a = strval($a);
+php > $b = strval($b);
+php > echo var_dump($a,$b);      <span class="red">&larr; vis de nye datatypen på variablerne a og b</span>
+string(1) "7"
+string(4) "3.14"
+</pre>
 
 <h1>Logaritmer</h1>
 

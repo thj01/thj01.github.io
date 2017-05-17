@@ -97,18 +97,24 @@
 
 <pre><code class="php">
 &lt;?php
-$tabel = 5;
-
 for($i=1;$i&lt;=10;$i++) {
-	echo $tabel*$i." ";
+	echo 7*$i." ";
 	}
 ?>
 </code>
 </pre>
 
-<pre class="ubuntu_terminal">Skriv tabel: 5
-5 10 15 20 25 30 35 40 45 50
+<pre class="ubuntu_terminal">7 14 21 28 35 42 49 56 63 70
 </pre>
+
+<p><span class="inl_cmd">for</span>-løkken starter ved:</p>
+
+<ol class="">
+	<li>1 - (<span class="inl_cmd">$i=1</span>),</li>
+	<li>fortsætter til 10 - (<span class="inl_cmd">$i&lt;=10</span>),</li>
+	<li>i trin af 1 - (<span class="inl_cmd">$i++</span>).</li>
+</ol>
+
 
 <h2>Udskriv lige tal</h2>
 
@@ -116,31 +122,25 @@ for($i=1;$i&lt;=10;$i++) {
 
 <pre><code class="php">
 &lt;?php
-
-$antal = 7;
-
-for($i=2;$i&lt;=$antal*2;$i+=2) {
+for($i=2;$i&lt;=20;$i+=2) {
 	echo $i." ";
 	}
 ?>
 </code>
 </pre>
 
-<pre class="ubuntu_terminal">Antal lige tal: 7
-2 4 6 8 10 12 14
+<pre class="ubuntu_terminal">2 4 6 8 10 12 14 16 18 20
 </pre>
 
 <h2>Trekanttal</h2>
 
 <p>Herunder udskriver vi de første 12 trekanttal ud fra formlen: </p>
 
-<div class="latex">$$ T_n = 1+2+3 ... +n= \frac {n \cdot (n-1)}{2} $$</div>
+<div class="latex">$$ T_n = 1+2+3 ... +n= \frac {n \cdot (n+1)}{2} $$</div>
 
 <pre><code class="php">
 &lt;?php
-$antal = 12;
-
-for($i=1;$i&lt;=$antal;$i++) {
+for($i=1;$i&lt;=12;$i++) {
 	$t = ($i*($i+1))/2;
 	echo $t." ";
 	}
@@ -163,11 +163,10 @@ for($i=1;$i&lt;=$antal;$i++) {
 
 <pre><code class="php">
 &lt;?php
-$tabel = 7;
 $i = 1;
 
 while ($i &lt;= 10) {
-	echo $tabel*$i." ";
+	echo 7*$i." ";
 	$i++;
 	}
 ?>
@@ -176,6 +175,9 @@ while ($i &lt;= 10) {
 
 <pre class="ubuntu_terminal">7 14 21 28 35 42 49 56 63 70
 </pre>
+
+<p>Læg mærke til at <span class="inl_cmd">while</span>-løkken gør det samme som <span class="inl_cmd">for</span>-løkken. Den store forskel er, at man skal angive tælleren FØR funktionen. Funktionen ser lidt simplere ud, men kræver altså noget forarbejde.</p>
+
 
 
 <h1>do ... while</h1>
@@ -188,11 +190,10 @@ while ($i &lt;= 10) {
 
 <pre><code class="php">
 &lt;?php 
-$tabel = 7;
 $i = 1; 
 
 do {
-	echo $tabel*$i." ";
+	echo 7*$i." ";
 	$i++;
 } while ($i &lt;= 10);
 ?>

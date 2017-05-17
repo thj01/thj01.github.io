@@ -62,9 +62,13 @@
 	
 	</figure>
 	
-<p><b>Sti på windows: </b>c:\xampp\php\php "%f"</p>
+<p><b>Sti på windows: </b></p>
 
-<p><b>Sti på Mac: </b>/Applications/XAMPP/bin/php/php "%f"</p>
+<code class="cmd">c:\xampp\php\php "%f"</code>
+
+<p><b>Sti på Mac: </b>/</p>
+
+<code class="cmd">Applications/XAMPP/bin/php/php "%f"</code>
 
 <p><b>Sti på Ubuntu: </b> Ingen ændringer</p>
 
@@ -101,8 +105,8 @@ Du skrev: Hej PHP
 <p>Når vi skal have PHP til at reagere på forskellige tilfælde (conditions), kan vi anvende 3 forskellige tilgange:</p>
 
 <ul class="none">
-	<li>Case-struktur</li>
-	<li>if/else-struktir</li>
+	<li>Switch-struktur</li>
+	<li>if/else-struktur</li>
 </ul>
 
 <p>Herunder vil jeg vise hvordan de anvendes i en simpel situation, hvor en brugers svar skal bruges. Konkret skal brugeren svare på om han er en mand eller kvinde.  Der skal svaret <span class="inl_cmd">1</span> for mand og <span class="inl_cmd">2</span> for kvinde.</p>
@@ -131,7 +135,7 @@ switch ($input) {
 	}
 ?>
 </code>
-</pre>
+</pre> 
 
 <pre class="ubuntu_terminal">Skriv 1 for dreng og 2 for pige: 2
 
@@ -235,7 +239,7 @@ if (betingelse_1) {
 
 <h2>Switch eller if/else</h2>
 
-<p>Det afgørende handler om overblik og effektivitet. Generelt vil jeg anbefale at man anvender if/else bla. fordi der er mindre skrivearbejde i den, men især fordi den mere logisk tvinger os til at opdele det vi arbejder med (overblik).</p>
+<p>Det afgørende handler om overblik og effektivitet. Generelt vil jeg anbefale at man anvender if/else fordi der er mindre skrivearbejde i den, men især fordi den mere logisk tvinger os til at opdele det vi arbejder med (overblik).</p>
 
 <h1>Kontrol statements</h1>
 
@@ -299,7 +303,7 @@ if (betingelse_1) {
 
 <h1>Funktioner</h1>
 
-<p>Undtil videre har vi arbejdet med PHP's indbygge funktioner. Nogle gange kan det være smart at kunne lave sine egne funktioner. Det kan både være fordi man skal bruge den samme kodestump flere gange, men det kan også være for overblikkets skyld.</p>
+<p>Indtil videre har vi arbejdet med PHP's indbygge funktioner. Nogle gange kan det være smart at kunne lave sine egne funktioner. Det kan både være fordi man skal bruge den samme kodestump flere gange, men det kan også være for overblikkets skyld.</p>
 
 <p>Herunder er der et eksempel på en simpel funktion der udskriver et tilfældigt tal 10 gange, men kun hvis tallet er 4 eller derover:</p>
 
@@ -394,13 +398,13 @@ andengrad(2,3,3);
 </pre>
 
 <pre class="ubuntu_terminal">
-Diskreminanten er: 1
+Diskriminanten er: 1
 Nulpunkterne er: 2 og 3
 
-Diskreminanten er: 0
+Diskriminanten er: 0
 Nulpunktet er: -1
 
-Diskreminanten er: -15
+Diskriminanten er: -15
 Der er ingen nulpunkter
 </pre>
 
