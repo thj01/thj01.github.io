@@ -373,7 +373,64 @@
 
 <p></p>
 
-<h3>Amortisationstabel</h3>
+
+
+<h2>EFFEKTIV.RENTE()</h2>
+
+<p>Giver den effektive rente pr. år</p>
+
+<p>Funktion i Libreoffice Calc: EFFEKTIV.RENTE_ADD()</p>
+<p>Funktion i Sheets: .</p>
+
+<p><span class="bold">Anvendelse: </span>EFFEKTIV.RENTE(nominel_rente;nperår)</p>
+
+<p><span class="bold">Den effektive rente pr. år:</span> <span class="inl_cmd">EFFEKTIV.RENTE(0,056;12)</span> = 5,746%</p>
+
+<p>Læg mærke til at jeg amortisationstabellen har indsat den effektive rente.</p>
+
+<p></p>
+
+<span class="afsnit">Gode henvisninger</span>
+
+<p><a href="https://youtu.be/am37BuhqQ54" target="_blank">https://youtu.be/am37BuhqQ54</a></p>
+
+<h2>FV()</h2>
+
+<p>Giver Fremtidsværdien af en investering baseret på faste ydelser og fast rente</p>
+
+<p>Funktion i Sheets: FV().</p>
+
+<p><span class="bold">Anvendelse: </span><span class="inl_cmd">FV(rente;Nper;Ydelse;NV)</span></p>
+
+<p>Husk ydelsen skal angives negativ, da det er noget man udbetaler til lånet.</p>
+
+<p><span class="bold">Lån</span>: <span class="inl_cmd">FV(0,002/12;3*12;-1500;0)</span> = kr. 54.157.80</p>
+
+<h2>NPER()</h2>
+
+<p>Giver antallet af ydelser for et lån eller en investering:</p>
+
+<p>Funktion i Sheets: NPER().</p>
+
+<p><span class="bold">Anvendelse: </span><span class="inl_cmd">NPER(rente;Ydelse;NV;FV;Type)</span></p>
+
+<p>Herunder er udregningen på et lån på kr. 20.000, 2% pa. og en ydelse på kr. 1.500,-. Husk ydelsen skal angives negativ, da det er noget man udbetaler til lånet/opsparingen.</p>
+
+<p><span class="bold">Lån</span>: <span class="inl_cmd">NPER(0,002/12;-1500;20000;0)</span> = 13,35 ydelser</p>
+
+<h2>NV()</h2> <span class="red">IKKE FÆRDIG</span>
+
+<p>Angiver nyværdien af et lån eller en opsparing</p>
+
+<p>Funktion i Sheets: NV().</p>
+
+<p><span class="bold">Anvendelse: </span><span class="inl_cmd">NV(rente;Nper;ydelse;Fv;Type)</span></p>
+
+<p>Hvad skal der stå på kontoen hvis man vil have kr. 50.000 efter 3 år med en månedlig ydelse på kr. 1500,- på en konto med 2% pa.</p>
+
+<p><span class="bold">Lån</span>: <span class="inl_cmd">NPER(0,002/12;-1500;20000;0)</span> = 13,35 ydelser</p>
+
+<h2>Amortisationstabel</h2>
 
 <p>Amortisationstabeller beskriver hvordan et lån udvikler sig/afskrives. Selve ordet amortisation stammer fra det franske <span class="inl_cmd">amortir</span>, som betyder "dræbe" ("bring to death").</p>
 
@@ -456,7 +513,7 @@
 
 </figure>
 
-<h3>Serielån</h3>
+<h2>Serielån</h2>
 
 <p>Et Serielån er et lån hvor man hver månede afbetaler samme beløb på lånet, og hvor renten falder over tid. Lad os tage eksemplet med billånet ovenfor.</p>
 
@@ -539,61 +596,6 @@
 	<figcaption></figcaption>
 
 </figure>
-
-<h2>EFFEKTIV.RENTE()</h2>
-
-<p>Giver den effektive rente pr. år</p>
-
-<p>Funktion i Libreoffice Calc: EFFEKTIV.RENTE_ADD()</p>
-<p>Funktion i Sheets: .</p>
-
-<p><span class="bold">Anvendelse: </span>EFFEKTIV.RENTE(nominel_rente;nperår)</p>
-
-<p><span class="bold">Den effektive rente pr. år:</span> <span class="inl_cmd">EFFEKTIV.RENTE(0,056;12)</span> = 5,746%</p>
-
-<p>Læg mærke til at jeg amortisationstabellen har indsat den effektive rente.</p>
-
-<p></p>
-
-<span class="afsnit">Gode henvisninger</span>
-
-<p><a href="https://youtu.be/am37BuhqQ54" target="_blank">https://youtu.be/am37BuhqQ54</a></p>
-
-<h2>FV()</h2>
-
-<p>Giver Fremtidsværdien af en investering baseret på faste ydelser og fast rente</p>
-
-<p>Funktion i Sheets: FV().</p>
-
-<p><span class="bold">Anvendelse: </span><span class="inl_cmd">FV(rente;Nper;Ydelse;NV)</span></p>
-
-<p>Husk ydelsen skal angives negativ, da det er noget man udbetaler til lånet.</p>
-
-<p><span class="bold">Lån</span>: <span class="inl_cmd">FV(0,002/12;3*12;-1500;0)</span> = kr. 54.157.80</p>
-
-<h2>NPER()</h2>
-
-<p>Giver antallet af ydelser for et lån eller en investering:</p>
-
-<p>Funktion i Sheets: NPER().</p>
-
-<p><span class="bold">Anvendelse: </span><span class="inl_cmd">NPER(rente;Ydelse;NV;FV;Type)</span></p>
-
-<p>Herunder er udregningen på et lån på kr. 20.000, 2% pa. og en ydelse på kr. 1.500,-. Husk ydelsen skal angives negativ, da det er noget man udbetaler til lånet/opsparingen.</p>
-
-<p><span class="bold">Lån</span>: <span class="inl_cmd">NPER(0,002/12;-1500;20000;0)</span> = 13,35 ydelser</p>
-
-<h2>NV()</h2> <span class="red">IKKE FÆRDIG</span>
-
-<p>Angiver nyværdien af et lån eller en opsparing</p>
-
-<p>Funktion i Sheets: NV().</p>
-
-<p><span class="bold">Anvendelse: </span><span class="inl_cmd">NV(rente;Nper;ydelse;Fv;Type)</span></p>
-
-<p>Hvad skal der stå på kontoen hvis man vil have kr. 50.000 efter 3 år med en månedlig ydelse på kr. 1500,- på en konto med 2% pa.</p>
-
-<p><span class="bold">Lån</span>: <span class="inl_cmd">NPER(0,002/12;-1500;20000;0)</span> = 13,35 ydelser</p>
 
 
 <h1>Matematiske funktioner</h1>
