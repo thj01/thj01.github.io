@@ -9,12 +9,12 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="141.99168mm"
-   height="47.280758mm"
-   viewBox="0 0 503.12014 167.53024"
+   width="141.98341mm"
+   height="56.943012mm"
+   viewBox="0 0 503.09084 201.76657"
    id="svg4244"
    version="1.1"
-   inkscape:version="0.91 r13725"
+   inkscape:version="0.92.1 unknown"
    sodipodi:docname="network_TCPIP_network_topology.svg">
   <defs
      id="defs4246" />
@@ -26,8 +26,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.979899"
-     inkscape:cx="287.35717"
-     inkscape:cy="99.139855"
+     inkscape:cx="288.48942"
+     inkscape:cy="11.806867"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -42,9 +42,9 @@
      fit-margin-right="0"
      fit-margin-bottom="0"
      inkscape:window-width="1920"
-     inkscape:window-height="1017"
-     inkscape:window-x="-8"
-     inkscape:window-y="-8"
+     inkscape:window-height="1136"
+     inkscape:window-x="0"
+     inkscape:window-y="27"
      inkscape:window-maximized="1">
     <inkscape:grid
        type="xygrid"
@@ -52,45 +52,55 @@
        originx="11.560058"
        originy="-259.06677" />
     <sodipodi:guide
-       position="301.56005,0.93322706"
+       position="301.56005,0.93322386"
        orientation="0,1"
-       id="guide4820" />
+       id="guide4820"
+       inkscape:locked="false" />
     <sodipodi:guide
        position="121.56006,-119.06678"
        orientation="1,0"
-       id="guide4865" />
+       id="guide4865"
+       inkscape:locked="false" />
     <sodipodi:guide
        position="251.56006,-179.06678"
        orientation="1,0"
-       id="guide4867" />
+       id="guide4867"
+       inkscape:locked="false" />
     <sodipodi:guide
-       position="321.56005,-4.0667727"
+       position="321.56005,-4.0667759"
        orientation="1,0"
-       id="guide4869" />
+       id="guide4869"
+       inkscape:locked="false" />
     <sodipodi:guide
-       position="421.56005,-49.066781"
+       position="421.56005,-49.066784"
        orientation="1,0"
-       id="guide4946" />
+       id="guide4946"
+       inkscape:locked="false" />
     <sodipodi:guide
-       position="216.56006,-44.066782"
+       position="216.56006,-44.066785"
        orientation="1,0"
-       id="guide4952" />
+       id="guide4952"
+       inkscape:locked="false" />
     <sodipodi:guide
-       position="286.56005,-94.06678"
+       position="286.56005,-94.066783"
        orientation="1,0"
-       id="guide4954" />
+       id="guide4954"
+       inkscape:locked="false" />
     <sodipodi:guide
-       position="46.560058,20.933226"
+       position="46.560057,20.933223"
        orientation="1,0"
-       id="guide4989" />
+       id="guide4989"
+       inkscape:locked="false" />
     <sodipodi:guide
-       position="456.56005,10.933226"
+       position="456.56005,10.933223"
        orientation="1,0"
-       id="guide4991" />
+       id="guide4991"
+       inkscape:locked="false" />
     <sodipodi:guide
-       position="166.56006,95.933225"
+       position="166.56006,95.933222"
        orientation="0,1"
-       id="guide4993" />
+       id="guide4993"
+       inkscape:locked="false" />
   </sodipodi:namedview>
   <metadata
      id="metadata4249">
@@ -108,7 +118,7 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(11.560059,-625.7652)">
+     transform="translate(11.560059,-591.52887)">
     <g
        transform="matrix(3.5433071,0,0,3.5433073,-0.433071,254.21257)"
        id="g4213">
@@ -129,12 +139,12 @@
       <path
          inkscape:connector-curvature="0"
          id="path5100-1"
-         d="M 9,142.99999 9,145"
+         d="M 9,142.99999 V 145"
          style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
       <path
          inkscape:connector-curvature="0"
          id="path5102-9"
-         d="m 10.999998,142.99999 0,2.00001"
+         d="M 10.999998,142.99999 V 145"
          style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
       <rect
          y="133"
@@ -146,14 +156,13 @@
     </g>
     <path
        style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="m 294.14484,698.45922 -108.28968,0 c -18.04828,-9.02414 -18.04828,-25.2676 0,-36.09655 -3.60966,-18.0483 10.82897,-27.07244 28.87725,-21.65795 18.98187,-19.9842 33.30545,-18.50702 50.53518,0 18.04828,-5.41449 30.68208,3.60965 28.87725,21.65795 18.04828,10.82895 18.04828,27.07241 0,36.09655 z"
+       d="M 294.14484,698.45922 H 185.85516 c -18.04828,-9.02414 -18.04828,-25.2676 0,-36.09655 -3.60966,-18.0483 10.82897,-27.07244 28.87725,-21.65795 18.98187,-19.9842 33.30545,-18.50702 50.53518,0 18.04828,-5.41449 30.68208,3.60965 28.87725,21.65795 18.04828,10.82895 18.04828,27.07241 0,36.09655 z"
        id="path5484"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="ccccccc" />
     <text
-       sodipodi:linespacing="125%"
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:15px;line-height:125%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
        x="208.938"
        y="677.71985"
        id="text5414-1-9"><tspan
@@ -164,15 +173,15 @@
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:15px;line-height:125%;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458332">Internet</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:15px;line-height:125%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        x="116.78589"
        y="787.64294"
-       id="text4871"
-       sodipodi:linespacing="125%"><tspan
+       id="text4871"><tspan
          sodipodi:role="line"
          id="tspan4873"
          x="116.78589"
-         y="787.64294">Router</tspan></text>
+         y="787.64294"
+         style="font-size:15px;line-height:1.25">Router</tspan></text>
     <rect
        style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
        id="rect4875"
@@ -182,15 +191,15 @@
        y="772.36218" />
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:15px;line-height:125%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        x="316.78589"
        y="787.64301"
-       id="text4871-2"
-       sodipodi:linespacing="125%"><tspan
+       id="text4871-2"><tspan
          sodipodi:role="line"
          id="tspan4873-7"
          x="316.78589"
-         y="787.64301">Router</tspan></text>
+         y="787.64301"
+         style="font-size:15px;line-height:1.25">Router</tspan></text>
     <rect
        style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
        id="rect4875-6"
@@ -218,12 +227,12 @@
       <path
          inkscape:connector-curvature="0"
          id="path5100-1-3"
-         d="M 9,142.99999 9,145"
+         d="M 9,142.99999 V 145"
          style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
       <path
          inkscape:connector-curvature="0"
          id="path5102-9-3"
-         d="m 10.999998,142.99999 0,2.00001"
+         d="M 10.999998,142.99999 V 145"
          style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
       <rect
          y="133"
@@ -235,47 +244,91 @@
     </g>
     <path
        style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 410,782.3622 -40,0"
+       d="M 410,782.3622 H 370"
        id="path4948"
        inkscape:connector-curvature="0" />
     <path
        style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 70,782.3622 40,0"
+       d="m 70,782.3622 h 40"
        id="path4950"
        inkscape:connector-curvature="0" />
     <path
        style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 170,782.3622 35,0 0,-83.92671"
+       d="m 170,782.3622 h 35 v -83.92671"
        id="path4956"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="ccc" />
     <path
        style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 310,782.3622 -35,0 0,-84.11612"
+       d="M 310,782.3622 H 275 V 698.24608"
        id="path4958"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="ccc" />
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:15px;line-height:125%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        x="-12.658691"
        y="702.64294"
-       id="text4871-9"
-       sodipodi:linespacing="125%"><tspan
+       id="text4871-9"><tspan
          sodipodi:role="line"
          id="tspan4873-6"
          x="-12.658691"
-         y="702.64294">Lokal netværk</tspan></text>
+         y="702.64294"
+         style="font-size:15px;line-height:1.25">Lokal netværk</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:15px;line-height:125%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:0%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        x="397.34131"
        y="702.64294"
-       id="text4871-9-8"
-       sodipodi:linespacing="125%"><tspan
+       id="text4871-9-8"><tspan
          sodipodi:role="line"
          id="tspan4873-6-8"
          x="397.34131"
-         y="702.64294">Lokal netværk</tspan></text>
+         y="702.64294"
+         style="font-size:15px;line-height:1.25">Lokal netværk</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:24.99999809px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.93749994"
+       x="14.882812"
+       y="669.88849"
+       id="text4524"><tspan
+         sodipodi:role="line"
+         id="tspan4522"
+         x="14.882812"
+         y="669.88849"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.93749994">LAN</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:24.99999809px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.93749994"
+       x="109.99999"
+       y="666.14172"
+       id="text4528"><tspan
+         sodipodi:role="line"
+         id="tspan4526"
+         x="109.99999"
+         y="688.26086"
+         style="stroke-width:0.93749994"></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:24.99999809px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.93749994"
+       x="424.88281"
+       y="669.88849"
+       id="text4524-1"><tspan
+         sodipodi:role="line"
+         id="tspan4522-0"
+         x="424.88281"
+         y="669.88849"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.93749994">LAN</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:24.99999809px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.93749994"
+       x="216.99707"
+       y="606.10895"
+       id="text4524-1-3"><tspan
+         sodipodi:role="line"
+         id="tspan4522-0-0"
+         x="216.99707"
+         y="606.10895"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.93749994">WAN</tspan></text>
   </g>
 </svg>
