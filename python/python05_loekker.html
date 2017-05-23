@@ -102,7 +102,7 @@
 <p>De ovenstående forklaringer er ment som et indblik i hvad det er løkker og kontroludsagn gør. Herunder vil løkkerne blive gennemgået udførligt.</p>
 
 
-<h1><span class="inl_cmd">for</span> løkken</h1>
+<h1>for løkken</h1>
 
 <p></p>
 
@@ -326,13 +326,13 @@ Press return to continue
 	<code class="python">
 ip = "192.168.2.100"
 
-tegn = -1 # Værdien sættes til -1, for at første værdi antager 0
+tegn = 0 #Tæller det tegn koden arbejder med
 
 for char in ip:
-    tegn +=1
     dot = "." in char
     if dot == True:
         print ("Here is a dot {0}".format(tegn))
+    tegn +=1
 	</code>
 </pre>
 
@@ -726,7 +726,77 @@ while True:
 	<li>Udregne antal % rigtige, med en decimal</li>
 </ul>
 
+<h1>Stopur</h1>
 
+<p>Man kan lave en tidsforsinkelse ved hjælp af <span class="inl_cmd">time()</span></p>
+
+
+
+
+<h2>Nedtælling</h2>
+
+<pre>
+	<code class="python">
+import time
+
+tælFra = 10
+
+while tælFra >=0:
+	
+	if tælFra == 0:
+		print("Affyr!")
+		break
+	
+	print (tælFra)
+	tælFra -=1
+	time.sleep(1)
+	</code>
+</pre>
+
+<pre class="ubuntu_terminal">10
+9
+8
+7
+6
+5
+4
+3
+2
+1
+Affyr!
+
+------------------
+(program exited with code: 0)
+Press return to continue
+</pre>
+
+<p>Koden kan forbedres, så <span class="inl_cmd">print()</span> ikke rykker en ny linie hver gang, ved hjælp af <span class="inl_cmd">\r</span> (carrage return). </p>
+
+<pre>
+	<code class="python">
+import time
+
+tælFra = 10
+
+while tælFra >=0:
+	
+	if tælFra == 0:
+		print("Affyr!")
+		break
+	
+	print (tælFra, end="  \r")
+	tælFra -=1
+	time.sleep(1)
+	</code>
+</pre>
+
+<p>Læg mærke til at jeg indsætter to tomme tegn før jeg fører curseren tilbage.</p>
+
+<ul class="none">
+	<li>Ved første gennemkørsel printes <span class="inl_cmd">10</span> + <span class="inl_cmd">to mellemrum</span> + <span class="inl_cmd">\r</span>.</li>
+	<li>Ved anden gennemkørsel printes <span class="inl_cmd">9</span> + <span class="inl_cmd">to mellemrum</span> + <span class="inl_cmd">\r</span>. Det sørger for at <span class="inl_cmd">0</span>'et i <span class="inl_cmd">10</span> slettes.</li>
+	<li>osv....</li>
+</ul>
 	
 </div><!-- end: col-md-9 -->
 
