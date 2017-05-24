@@ -349,13 +349,40 @@ print (test)
 Press return to continue
 </pre>
 
-<p>Man kan også lave en liste fuld af terningkast</p>
+<p>Man kan også lave en liste fuld af andre tegn</p>
 
 <pre>
 	<code class="python">
+import string
 
+test = list(string.ascii_lowercase)
+
+print (test)
 	</code>
 </pre>
+
+<pre class="ubuntu_terminal">
+['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+
+------------------
+(program exited with code: 0)
+Press any key to continue . . .
+</pre>
+
+<p>Af andre muligheder er der</p>
+
+<ul class="none">
+	<li>ascii_letters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'</li>
+	<li>ascii_lowercase = 'abcdefghijklmnopqrstuvwxyz'</li>
+	<li>ascii_uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'</li>
+	<li>digits = '0123456789'</li>
+	<li>hexdigits = '0123456789abcdefABCDEF'</li>
+	<li>octdigits = '01234567'</li>
+	<li>printable = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTU...</li>
+	<li>punctuation = '!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~'</li>
+	<li>whitespace = ' \t\n\r\x0b\x0c'</li>
+</ul>
+
 
 
 <h1>Dictionaries</h1>
@@ -577,216 +604,6 @@ Press return to continue
 <h3>Analyser IP-adresse 3</h3>
 
 <p>Kombiner opgave 1 og 2, så du kan indtaste IP-adressen med CIDR (10.0.2.10/24) og lav en analyse af adressen.</p>
-
-<h1>Matematiske funktioner</h1>
-
-<p>For at anvende Phytons matematiske funktioner skal man inkludere programbiblioteket math. Det kan gøres på to måder - enten ved at inkludere alle matematikfunktionerne eller ved kun at importere enkelte derfra. På den måde kan man sparepå hukommelsen.</p>
-
-<p>Herunder er de to metoder vist med henholdsvis kvadratrod og 10-tals logaritmen. Først den generelle. Læg mærke til at der skal angives fra hvilket programbibliotek den matematiske funktion skal tages fra.</p>
-
-<pre>
-	<code class="python">
-import math
-
-print (math.sqrt(27))
-print (math.log10(100))
-	</code>
-</pre>
-
-<pre class="ubuntu_terminal">
-5.19615242271
-2.0
-
-------------------
-(program exited with code: 0)
-Press return to continue
-</pre>
-
-<p>For kun at importere de nødvendige elementer fra programbiblioteket anvendes <span class="inl_cmd">from *bibliotek* import *funktioner*</span>. De enkelte funktioner adskilles med et <span class="inl_cmd">,</span>. Det er heller ikke nødvendigt at definere fra hvilket bibliotek  elementerne kommer fra.</p>
-
-<pre>
-	<code class="python">
-from math import sqrt, log10
-
-print (sqrt(27))
-print (log10(100))
-	</code>
-</pre>
-
-<pre class="ubuntu_terminal">
-5.19615242271
-2.0
-
-
-------------------
-(program exited with code: 0)
-Press return to continue
-</pre>
-
-<p>Af vigtige matematiske funktioner kan nævnes</p>
-
-<h2>Konstanter</h2>
-
-<p></p>
-
-<table class="">
-	<thead>
-		<tr>
-			<th>Konstant</th>
-			<th>Beskrivelse</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>math.pi</td>
-			<td>&pi; = 3.141592...</td>
-		</tr>
-		<tr>
-			<td>math.e</td>
-			<td>e = 2.718281...</td>
-		</tr>
-	</tbody>
-</table>
-
-
-<h2>Logaritmer</h2>
-
-<p></p>
-
-<table class="">
-	<thead>
-		<tr>
-			<th>Funktion</th>
-			<th>Inverse funktion</th>
-			<th>Beskrivelse</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>math.exp</td>
-			<td>math.log(x)</td>
-			<td>Den naturlige logaritmen</td>
-		</tr>
-		<tr>
-			<td>math.pow(10,x)</td>
-			<td>math.log10(x)</td>
-			<td>Titals logaritmen</td>
-		</tr>
-	</tbody>
-</table>
-
-<h2>Trigonometriske funktioner</h2>
-
-<table class="">
-	<thead>
-		<tr>
-			<th>Funktion</th>
-			<th>Inverse funktion</th>
-			<th>Beskrivelse</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>math.cos(x)</td>
-			<td>math.acos(x)</td>
-			<td>Cosinus</td>
-		</tr>		
-		<tr>
-			<td>math.sin(x)</td>
-			<td>math.asin(x)</td>
-			<td>Sinus</td>
-		</tr>	
-		<tr>
-			<td>math.tan(x)</td>
-			<td>math.atan(x)</td>
-			<td>Tangens</td>
-		</tr>
-		<tr>
-			<td colspan="2">math.degrees()</td>
-			<td>Konverterer fra rad til grader</td>
-		</tr>	
-		<tr>
-			<td colspan="2">math.radians()</td>
-			<td>Konverterer fra grader til rad</td>
-		</tr>
-	</tbody>
-</table>
-
-<h2>Talsystemer</h2>
-
-<p>For at konvertere tal med anden base til 10 talssystemet anvendes <span class="inl_cmd">int()</span>. Det fungerer ved at man i parantesen skriver tallet man vil konvertere og basen der skal konverteres fra.</p>
-
-<pre>
-	<code class="python">
-print ("100 i binært talsystem er\t"), int("100",2)
-print ("100 i 8-talssystemet (octet) er\t"), int("100",8)
-print ("100 i 10-talssystemet er\t"), int("100",10)
-print ("100 i 16-talssystemet (hex) er\t"), int("100",16)
-	</code>
-</pre>
-
-<pre class="ubuntu_terminal">
-100 i binært talsystem er	4
-100 i 8-talssystemet (octet) er	64
-100 i 10-talssystemet er	100
-100 i 16-talssystemet (hex) er	256
-
-
-------------------
-(program exited with code: 0)
-Press return to continue
-
-</pre>
-
-<p>Der er indbygget konvertere fra ti-talssystemet til binær, octet og hexadecimalt talsystem. Det gøres ved at anvende <span class="inl_cmd">bin(), oct() og hex()</span> .</p>
-
-<pre>
-	<code class="python">
-print ("100 er:")
-print ("----------------------------------------------")
-print ("{0} \ti det binære talsystem".format( bin(100)))
-print ("{0} \t\ti 8-talssystemet".format(oct(100)))
-print ("{0} \t\ti det hexadecimale talsystem".format(hex(100)))
-	</code>
-</pre>
-
-<pre class="ubuntu_terminal">
-100 er:
-----------------------------------------------
-0b1100100 	i det binære talsystem
-0144 		i 8-talssystemet
-0x64 		i det hexadecimale talsystem
-
-
-------------------
-(program exited with code: 0)
-Press return to continue
-</pre>
-
-<p>Hvis du vil fjerne de tal der står foran værdien (f.eks. 0b i det binære) kan du "slice" ved at sætte <span class="inl_cmd">[:2]</span></p>
-
-<pre>
-	<code class="python">
-print ("100 er:")
-print ("----------------------------------------------")
-print ("{0} \ti det binære talsystem".format( bin(100)[2:]))
-print ("{0} \t\ti 8-talssystemet".format(oct(100)[2:]))
-print ("{0} \t\ti det hexadecimale talsystem".format(hex(100)[2:]))
-	</code>
-</pre>
-
-<pre class="ubuntu_terminal">
-100 er:
-----------------------------------------------
-1100100 	i det binære talsystem
-144 		i 8-talssystemet
-64 		i det hexadecimale talsystem
-
-
-------------------
-(program exited with code: 0)
-Press return to continue
-</pre>
 
 
 	
