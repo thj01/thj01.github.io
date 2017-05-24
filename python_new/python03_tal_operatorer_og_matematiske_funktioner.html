@@ -44,40 +44,167 @@
 
 <div class="title">Tal, operatorer og matematiske funktioner</div>
 	
-<h1>Tal og operatorer</h1>
-
 <p>Indtil videre har der været en naturlig progression i materialet, men herefter begynder tingene at blive mere komplekse. Derfor kommer der her et afsnit omkring anvendelse af logiske operatiorer, som anvendes til at sammenligne og adskille værdier.</p>
 
-<h2>Integers og float</h2>
+<h1>Integers og float</h1>
 
-<p>Angående tal skal man ikke definere om man arbejder med heltal (også kaldet intergers) eller kommatal (floating point). De defineres sammen med variablen. Det er et af områder hvor Python virkeligt adskiller sig fra andre programmeringssprog, og det betyder at den som laver programmet ikke skal forholde sig til hvordan et tal skal anvendes. Python gør det automatisk for dig.</p>
+<p>I python arbejder man med 2 taltyper:</p>
+
+<ul class="none">
+	<li><span class="inl_cmd">integers</span> - heltal</li>
+	
+		<p>F.eks: 1 ; 56 ; -78</p>
+		
+	<li><span class="inl_cmd">float</span> - decimaltal</li>
+	
+		<p>F.eks: 3.14 ; 19.3 ; -34.9</p>
+		
+</ul>
+
+<p>Python finder selv ud af hvilke taltype det er, når vi taster tallet ind. Vi kan teste tallet med funktionen <span class="inl_cmd">is_integer()</span></p>
 
 <p>
 Læg mærke til at man bruger punktum (<span class="inl_cmd">.</span>) og ikke komma <span class="inl_cmd">,</span> til at angive overgangen mellem hel- og decimaltal.</p>
 
+
 <pre>
 	<code class="python">
-# Sætter henholdsvis hel og kommatal
-
-heltal = 3
-
-kommatal = 3.14
-
-print ("5*3 er {0} og 2 * pi (3,14) er {1}.".format(heltal*5, kommatal*2))
+>>> a = 3.14
+>>> b = 3
+>>> a.is_integer()
+False
+>>> b.is_integer()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+AttributeError: 'int' object has no attribute 'is_integer'
 	</code>
 </pre>
 
-<pre class="ubuntu_terminal">
-5*3 er 15 og 2 * pi (3,14) er 6.28.
+<p>Læg mærke til at funktionen giver en fejl, når vi tester <span class="inl_cmd">b = 3</span>. Det skyldes at funktionen kun kan teste <span class="inl_cmd">float</span>-værdier</p>
 
+<p>Vi kan omskrive mellem taltyperne ved hjælp af:</p>
 
-------------------
-(program exited with code: 0)
-Press return to continue
+<ul class="none">
+	<li><span class="inl_cmd">float()</span> - omskriver til float</li>
+	<li><span class="inl_cmd">int()</span> - omskriver til integer</li>
+</ul>
 
+<pre>
+	<code class="python">
+>>> b = float(b)
+>>> b.is_integer()
+True
+	</code>
 </pre>
 
-<h2>Computeren kan <s>ikke</s> tælle</h2>
+<p>Der gælder følgende:</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Fra int &#8594; float</td>
+			<td>Der tilføjels decimaler</td>
+		</tr>
+		<tr>
+			<td>Fra float &#8594; int</td>
+			<td>Der rundes ned til nærmeste heltal. Det gælder både for positive og negative tal.</td>
+		</tr>
+	</tbody>
+</table>
+
+<pre>
+	<code class="python">
+>>> a = 7
+>>> a = float(a)
+>>> a
+7.0
+>>> a = int(a)
+>>> a
+7
+	</code>
+</pre>
+
+
+
+
+<p>Python kan selv holde styr på taltyperne, så man kan anvende både <span class="inl_cmd">int</span> og <span class="inl_cmd">float</span> i regnestykker. Blander man dem sammen så vil Python svare tilbage med en <span class="inl_cmd">float</span>-værdi.</p>
+
+<pre>
+	<code class="python">
+>>> a = 3.14
+>>> b = 2
+>>> a*b
+6.28
+>>> c = a * b
+>>> c.is_integer()
+False
+	</code>
+</pre>
+
+<p>Selvom regnestykket giver et resulat vi genkender som et heltal, så vil Python huske tallet med decimaler - altså som en float-værdi.</p>
+
+<pre>
+	<code class="python">
+>>> a = 1.5
+>>> b = 2
+>>> c = a*b
+>>> c
+3.0
+>>> c.is_integer()
+True
+	</code>
+</pre>
+
+<p>Python siger altså at <span class="inl_cmd">c = 3.0</span> - et float til. Når vi tester om det er et heltal, så varer Python <span class="inl_cmd">True</span>. Vi kan altså omskrive tallet til en integer</p>
+
+<pre>
+	<code class="python">
+>>> c = int(c)
+>>> c
+3
+	</code>
+</pre>
+
+<p>Forskellen mellem de to tal-typer er mængden af hukommelse de anvender. En integer bruger langt mindre plads end float ... og er derfor langt hurtugere at arbejde med. Så vi omskriver hvis det giver mening - simpelthen for at gøre programmet hurtigere og mindre ressourcekrævende.</p>
+
+<h1>Afrunding</h1>
+
+<p>Ovenfor har vi se set hvordan man ændrer et <span class="inl_cmd">float</span> til en <span class="inl_cmd">Interger</span>. Men ofte har man brug for at kunne vise et resultat afrundet korrekt og med et bestemt antal decimaler. Det gøres med <span class="inl_cmd">round()</span>. Man angiver antallet af decimaler på følgende måde:</p>
+
+<code class="cmd">round(tal,*Antal decimaler*)</code>
+
+<pre>
+	<code class="python">
+>>> a = 2/3
+>>> a
+0.6666666666666666
+>>> round(a,2)
+0.67
+	</code>
+</pre>
+
+<p>Nogle gange har vi brug for at finde et antal hele enheder selvom vi får et decimaltal som resultat. Det kan f.eks. være hvis vi skal antallet kg hvedemel vi skal købe, hvis vi skal anvende 4,7 kg. Her skal vi runde tallet op. I andre tilfælde skal vi runde ned. Det kan f.eks. være hvis vi finder ud af at der kan være 4,6 passagerer i en bil ... så skal vi have resultet til at give 4 ... altså runde ned.</p>
+
+<p>For at kunne runde op og ned skal vi have importeret en række matematiske funktioner. Det gør vi med kommandoen <span class="inl_cmd">import math</span>. Herved får vi adgang til <span class="inl_cmd">ceil()</span> (runde op) og <span class="inl_cmd">floor()</span> (runde ned).</p>
+
+<pre>
+	<code class="python">
+>>> import math
+>>> a = 4.7
+>>> math.ceil(a)
+5
+>>> math.floor(a)
+4
+	</code>
+</pre>
+
+<h1>Computeren kan <s>ikke</s> tælle</h1>
 
 <p>En af de ting man støder på når man arbejder med programmering er, at computere tæller anderledes end vi gør. Når vi tæller starter vi fra en, og titalssystemet er anvendeligt for os fordi det passer med antallet af fingre på på hånden. Når vi har brugt alle fingrene så tæller vi antallet af fulde hænder. 22 kan altså forståes som 2 fulde hænder og 2 fingre. I 10-talssystemet skifter vi altså position (veksler til den næste enhed) når vi kommer til den 10. værdi.</p>
 
@@ -344,7 +471,7 @@ Press return to continue
 </table>
 
 
-<h2>Regningsregler</h2>
+<h1>Regningsregler</h1>
 
 <p>Python de almindelige regningsregler. Jeg har valgt at vise det i Python-fortolkeren for at gøre det tydligere</p>
 
@@ -382,7 +509,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 	</code>
 </pre>
 
-<h2>En til eller fra</h2>
+<h1>En til eller fra</h1>
 
 <p>Ofte har man brug for at lade et tal vokse med en fast størrelse fra gang til gang. Den mest umiddelbare løsning er denne:</p>
 
@@ -442,83 +569,12 @@ Type "help", "copyright", "credits" or "license" for more information.
 	</code>
 </pre>
 
-<h2>Integer og float</h2>
-
-<p>Python ser tal som hel- eller decimaltal. I programmerings sprog kaldes heltallet for en interger (latin: hel, komplet) og decimaltallet float (Eng: Flydende)</p>
-
-<p>I det ovenstående divisionseksempel svarede Python med et decimaltal (float). Det skyldes at Python er designet til at være så simpelt at gå til som muligt, da langt de fleste divisionsstykker resluterer i decimaltal. Derfor skal vi fortælle Python at tallet skal tolkes som et heltal (interger).</p>
-
-<p>Herunder vises et eksempel hvor:</p>
-
-<ol class="">
-	<li>heltallet 7 bliver omdannet til <span class="inl_cmd">float</span></li>
-	<li>decimaltallet b (positivt) bliver omdannet til <span class="inl_cmd">int</span></li>
-	<li>decimaltallet c (negativt) bliver omdannet til <span class="inl_cmd">int</span>.</li>
-</ol>
-
-<pre>
-	<code class="python">
->>> a
-7
->>> float(a)
-7.0
->>> b=3.14
->>> int(b)
-3
->>> c=-3.15
->>> int(c)
--3
-	</code>
-</pre>
-
-<p>Som du kan se herovenfor sker der følgende:</p>
-
-<table class="">
-	<thead>
-		<tr>
-			<th></th>
-			<th></th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>Fra int &#8594; float</td>
-			<td>Der tilføjels decimaler</td>
-		</tr>
-		<tr>
-			<td>Fra float &#8594; int</td>
-			<td>Der rundes ned til nærmeste heltal. Det gælder både for positive og negative tal.</td>
-		</tr>
-	</tbody>
-</table>
-
-<p>Hvis du ønsker at finde ud af om et tal er en interger eller float, kan du teste det ved hjælp af <span class="inl_cmd">is_interger()</span> som vist herunder:</p>
-
-<pre>
-	<code class="python">
->>> a=3.14
->>> a.is_integer()
-False
-	</code>
-</pre>
-
-<span class="afsnit">Afrunding af tal</span>
-
-<p>Ovenfor har vi se set hvordan man ændrer et <span class="inl_cmd">float</span> til en <span class="inl_cmd">Interger</span>. Men ofte har man brug for at kunne vise et resultat afrundet korrekt og med et bestemt antal decimaler. Det gøres med <span class="inl_cmd">round()</span>. Man angiver antallet af decimaler på følgende måde:</p>
-
-<code class="cmd">round(tal,*Antal decimaler*)</code>
-
-<pre>
-	<code class="python">
->>> 2/3
-0.6666666666666666
->>> round(2/3,2)
-0.67
-	</code>
-</pre>
 
 
-<h2>Brøker</h2>
+
+
+
+<h1>Brøker</h1>
 
 <p>For at arbejde med brøker skal man "tvinge" python til ikke at regne brøken ud. Det kan være nødvendig for ikke at få afrundingsfejl. For at kunne anvende brøker skal vi importere modulet fractions. Herunder er givet et eksempel ved hjælp at et GRUK af Piet Hein, hvor der er vist forskellen mellem at anvende <span class="inl_cmd">fractions()</span> og <span class="inl_cmd">float</span>. Jeg har valgt at lave dette eksempel ved hjælp af koden, da man ellers mister overblikket. Læg mærke til at jeg importere funktionen <span class="inl_cmd">Fraction(3,4)</span>.</p>
 
@@ -573,7 +629,7 @@ Press return to continue
 
 <p>Som det kan ses bliver 2/3 omskrevet til 0,666... hvilket kun er en tilnærmet værdi. Grunden til at det går godt er fordi Python anvender nok decimaler til at afrundingen bliver korrekt.</p>
 
-<h2>Faktorer</h2>
+<h1>Faktorer</h1>
 
 <p>Når man opløser et tal i faktorer finder man ud af hvilke tal der går et bestemt tal. F.eks. er 28 = 2 &#8226; 2 &#8226; 7. Python har ikke en indbygget funktion hertil men den laver vi selv. Hvis <span class="inl_cmd">modulus</span> (se ovenfor) er 0, så er tallet en faktor ellers ikke.</p>
 
@@ -602,7 +658,7 @@ Press return to continue
 </pre>
 
 
-<h2>Absolutte tal</h2>
+<h1>Absolutte tal</h1>
 
 <p>Funktionen <span class="inl_cmd">abs()</span> returnere altid en værdi som værende positiv. Det giver mening hvis man f.eks. ønsker at finde forskellen mellem to tal uden at skulle forholde sig til rækkefølgen de kommer i. Som i eksemplet herunder hvor første udregning med <span class="inl_cmd">abs()</span> kun fortæller forskellen, men den anden fortæller om det er en stigning eller et fald.</p>
 
@@ -626,7 +682,7 @@ temperatur-stigning/fald: -2
 Press return to continue
 </pre>
 
-<h2>Operatorer</h2>
+<h1>Operatorer</h1>
 
 <p>Operatorer beskriver forholdet mellem to værdier</p>
 
@@ -704,7 +760,7 @@ if valg ==  "j" and valg == "J" : #Gælder for både lille <span class="bold">og
 
 <p>Sprogligt giver det mening, men problemet er, at brugeren aldrig vil kunne taste både j og J på samme tid. Så derfor vil Python afvise at betingelserne er opfyldt. Det er ikke Python der laver fejl, men mere et udtryk for at det danske sprog er finurligt og ulogisk. F.eks. så kan vi også finde på at spørge: "er det ikke sjovt" .. når vi faktisk mener "er det sjovt". Det er ikke kun udlændinge der synes vores sprog er ulogisk. Computere kan heller ikke forstå os ;).</p>
 
-<h2>Afgrænsede områder</h2>
+<h1>Afgrænsede områder</h1>
 
 <p>Nogle gange har man brug for at kunne afgrænse områder. Forestil dig at vi skal udvælge brugere der er fra 15 år til og med 22. Det matematiske udsagn ville være <span class="inl_cmd">15 &le; x &le; 22</span> da både 15 og 21 er med i talmængden. I Python skal vi splitte det op i to udsagn hvor vi skal beskrive den ned grænse og den øvre grænse ud fra x: <span class="inl_cmd">x &ge; 15 <span class="blue">and</span> x &le; 22</span>.</p>
 

@@ -44,8 +44,6 @@
 
 <div class="title">Strenge, variabler og input</div>
 
-<h1>Strenge, variabler og input</h1>
-
 <p>Denne guide handler om det mest basale i alle programmeringssprog, nemlig hvad data er og hvordan man behandler dem.</p>
 
 		
@@ -113,70 +111,7 @@ Python er svært
 	</code>
 </pre>
 
-<h2>Escape sequences</h2>
 
-<p>Escape sequences er betegnelsen for den metode man anvender for at indsætte tegn som normalt anvendes af Python f.eks: <span class="inl_cmd">', ", \</span> samt linie- og tabulatorskift. Herunder er en liste med de vigtiste tegn. Hvis man har behov for at sætte tegn ind i en streng, som python normalt vil tolke som en del af programmeringssproget</p>
-
-
-<table class="">
-	<tbody>
-		<tr>
-			<td>\\</td>
-			<td>Backslash <span class="inl_cmd">\</span></td>
-		</tr>
-		<tr>
-			<td>\'</td>
-			<td>Fritstående apostrof <span class="inl_cmd">'</span></td>
-		</tr>
-		<tr>
-			<td>\"</td>
-			<td>Fritstående anførselstegn <span class="inl_cmd">"</span></td>
-		</tr>
-	</tbody>
-</table>
-
-<p>Se nedenstående eksempel</p>
-
-<pre>
-	<code class="python">
->>> print ("Her kommer et ord med anførselsteng - \"æble\" ")
-Her kommer et ord med anførselsteng - "æble" 
-	</code>
-</pre>
-
-<p>Man kan også anvende escape sequences til at Hvis man har behov for at rykke teksten i teskstrengen.</p>
-
-<table class="">
-	<tbody>
-		<tr>
-			<td>\n</td>
-			<td>Linefeed</td>
-		</tr>
-		<tr>
-			<td>\t</td>
-			<td>Horisontal TAB</td>
-		</tr>
-
-	</tbody>
-</table>
-
-<p>Her er givet nogle eksempler:</p>
-
-<pre>
-	<code class="python">
->>> print ("Dette er en sætning \nmed linefeed")
-Dette er en sætning 
-med linefeed
->>> print ("Dette er en sætning \tmed horisontal TAB")
-Dette er en sætning 	med horisontal TAB
-	</code>
-</pre>
-
-
-
-
-
-<p>Læg mærke til, at når vi anvender <span class="inl_cmd">\r</span>, så starter Python med at skrive fra liniens start, samtidig med at det som står der i forvejen slettes.</p>
 
 <h1>Variabler</h1>
 
@@ -232,21 +167,16 @@ TypeError: Can't convert 'int' object to str implicitly
 <p>Python kan ikke udføre sammenføjningen, fordi den læser <span class="inl_cmd">hej</span> som en tekststreng og <span class="inl_cmd">2</span> som et tal (int). Python kan ikke slå dem sammen til et resulatet. Vær derfor opmærksom på om du arbejder med talværdier eller tekst.</p>
 
 
-<h2>Variabler i tekststrenge</h2>
+<h1>Variabler i tekststrenge</h1>
 
 <p>Når man skal indsætte variabler i tekststrenge anvender man pladsholdere som angives med <span class="inl_cmd">{*tal*}</span>. Se nedestående eksempel.</p>
 
 <pre>
 	<code class="python">
-# Her behøver jeg ikke at indsætte et linieskift efter hej.
-# Jeg skriver laver det bare mellem pladsholderne.
-
 tekst1 = "Thomas"
 print ("Hej. Mit navn er {0}".format(tekst1))
 	</code>
 </pre>
-
-
 
 <pre class="ubuntu_terminal">
 Hej. Mit navn er Thomas
@@ -263,22 +193,17 @@ Press return to continue
 	<code class="python">
 navn = "Thomas"
 prg_sprog = "Python"	
-print ("Mit navn er {0}. \nJeg er ved at lære {1}. \n\n\tDet er \"nemt\".".format(navn, prg_sprog))
+print ("Mit navn er {0}. Jeg er ved at lære {1}.".format(navn, prg_sprog))
 	</code>
 </pre>
 
-
-
-<pre class="ubuntu_terminal">
-Mit navn er Thomas. 
-Jeg er ved at lære Python. 
-
-    Det er "nemt".
+<pre class="ubuntu_terminal">Mit navn er Thomas. Jeg er ved at lære Python.
 
 ------------------
 (program exited with code: 0)
 Press return to continue
 </pre>
+
 
 <h2>Opgave - teksstrenge og variabler</h2>
 
@@ -289,21 +214,137 @@ Press return to continue
 <span class="red">telefonnummer</span> og det er en <span class="red">telefonmærke</span>.</code>
 </pre></p>
 
-<h2>Opgave - teksstrenge og indrykninger</h2>
+<h1>Escape sequences</h1>
 
-<p>Lav følgende Output - på en <span class="inl_cmd">print</span>-linie ved hjælp af <span class="inl_cmd">\n</span> (ny linie) og <span class="inl_cmd">\t</span> (tabulator). Ordene "indholdsfortegnelse, "kapitel" og "afsnit" skal indsættes ved hjælp af variabler.</p>
+<p>Escape sequences er betegnelsen for den metode man anvender for at indsætte tegn som normalt anvendes af Python f.eks: <span class="inl_cmd">', ", \</span> samt linie- og tabulatorskift. Herunder er en liste med de vigtiste tegn. Hvis man har behov for at sætte tegn ind i en streng, som python normalt vil tolke som en del af programmeringssproget</p>
 
-<pre class="ubuntu_terminal">
-Indholdsfortegnelse
-    Kapitel 1
-        Afsnit 1
-        Afsnit 2
-    Kapitel 2
+
+<table class="">
+	<tbody>
+		<tr>
+			<td>\\</td>
+			<td>Backslash <span class="inl_cmd">\</span></td>
+		</tr>
+		<tr>
+			<td>\'</td>
+			<td>Fritstående apostrof <span class="inl_cmd">'</span></td>
+		</tr>
+		<tr>
+			<td>\"</td>
+			<td>Fritstående anførselstegn <span class="inl_cmd">"</span></td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Se nedenstående eksempel</p>
+
+<pre>
+	<code class="python">
+print ("Her kommer et ord med anførselsteng - \"æble\" ")
+	</code>
+</pre>
+
+<pre class="ubuntu_terminal">Her kommer et ord med anførselsteng - "æble"
+
+------------------
+(program exited with code: 0)
+Press return to continue 
+</pre>
+
+<p>Man kan også anvende escape sequences til at Hvis man har behov for at rykke teksten i teskstrengen.</p>
+
+<table class="">
+	<tbody>
+		<tr>
+			<td>\n</td>
+			<td>Linieskift (linefeed)</td>
+		</tr>
+		<tr>
+			<td>\t</td>
+			<td>Horisontal TAB</td>
+		</tr>
+		<tr>
+			<td>\r</td>
+			<td>Gå til start af linie (carriage return)</td>
+		</tr>
+
+	</tbody>
+</table>
+
+<p>Her er givet nogle eksempler:</p>
+
+<pre>
+	<code class="python">
+print ("Dette er en sætning \nmed linefeed\n")
+print ("Dette er en sætning \tmed horisontal TAB\n")
+print ("Dette er en sætning \rmed carriage return")
+	</code>
+</pre>
+
+<pre class="ubuntu_terminal">Dette er en sætning 
+med linefeed
+
+Dette er en sætning 	med horisontal TAB
+
+med carriage return 
 
 ------------------
 (program exited with code: 0)
 Press return to continue
 </pre>
+
+<p>Læg mærke til, at når vi anvender <span class="inl_cmd">\r</span>, så starter Python med at skrive fra liniens start, samtidig med at det som står der i forvejen slettes.</p>
+
+<h1>Kommentarer</h1>
+
+<p>For at gøre koden lettere at læse indsætter man kommentarer i den. Det kan gøres på to måder. Se eksemplet herunder:</p>
+
+
+<pre>
+	<code class="python">
+"""
+Dette program viser noget om kommentarer i kode
+"""		
+		
+# Dette er en kommentar
+print ("Hej") # Dette er også en kommentar
+	</code>
+</pre>
+
+<pre class="ubuntu_terminal">
+Hej
+
+------------------
+(program exited with code: 0)
+Press return to continue
+</pre>
+
+<ul class="none">
+	<li>Kommentarer med <span class="inl_cmd">#</span></li>
+	
+		<p>Denne type kommentarer kan man indsætte overalt. Python "læser" ikke det der står efter <span class="inl_cmd">#</span>. Derfor kan det indsættes både fra starten af en ny line eller efter kode.</p>
+	
+	<li>Kommentarer med <span class="inl_cmd">""" ...  """</span></li>
+	
+		<p>Har man brug for at skrive en kommentar der er længere end en linie kan man anvende <span class="inl_cmd">"""</span>.</p>
+</ul>
+
+<p>Generelt bør du anvende den type kommentarer der virker bedst og mest tydelig:</p>
+
+<pre>
+	<code class="python">
+##
+## Kodestump lavet af: Thomas Jensen
+## Lavet til undervisningsmateriale
+##
+
+"""
+Kodestump lavet af: Thomas Jensen
+Lavet til undervisningsmateriale
+"""
+	</code>
+</pre>
+
 
 
 <h1>Input</h1>
@@ -315,7 +356,6 @@ Press return to continue
 
 <pre>
 	<code class="python">
-# Variablen navn sættes ved hjælp af brugerens input
 navn = input("Hvad er dit navn: ")
 print ("Du indtastede {0}".format(navn))
 	</code>
