@@ -44,8 +44,6 @@
 	
 <div class="title">Lister, dictionaries og tuplets</div>
 	
-<h1>Lister, dicitionaries og tuples</h1>
-
 <p>I starten lærte du om variabler. Overordnet set kan lister, dictionaries og tuples ses som en måde at opbevare mange variabler på i et velordnet skema. I dette materiale gennemgås 3 af metoderne:</p>
 
 <table class="">
@@ -71,6 +69,7 @@
 	</tbody>
 </table>
 
+<h1>Lister</h1>
 
 <p>Ofte kan det være en fordel at kunne hente tal ud fra tabeller, f.eks. en liste med brugere, brugernavne og adgangskoder. Læg mærke til at navnene sætter i anførselstegn for at Python tolker det som tekststrenge og ikke værdier.</p>
 
@@ -121,7 +120,7 @@ for i in range(antal_navne):
 	</code>
 </pre>
 
-<h2>Ændring af listeelement</h2>
+<h2>Ændre element</h2>
 
 <p>Hvis man ønsker at ændre et element i en liste angiver man blot en ny variabel</p>
 
@@ -152,7 +151,7 @@ Den nye liste
 Press return to continue
 </pre>
 
-<h2>Tilføje element til listen</h2>
+<h2>Tilføje element</h2>
 
 <pre>
 	<code class="python">
@@ -178,7 +177,7 @@ print (navne)
 Press return to continue
 </pre>
 
-<h2>Fjerne element fra listen</h2>
+<h2>Fjerne element</h2>
 
 <p>Man har ofte brug for at kunne fjerne elementer i en liste på to måder. Enten et specifikt element, eller det sidst tilføjede. For at fjerne elementer anvender man <span class="inl_cmd">del</span>.</p>
 
@@ -240,7 +239,7 @@ print (navne)
 Press return to continue
 </pre>
 
-<h2>Find elements placering i en liste</h2>
+<h2>Find elements placering</h2>
 
 <p>Herunder vil vi finde elementet "Cecilie" i listen ved hjælp af <span class="inl_cmd">index()</span>.</p>
 
@@ -267,7 +266,7 @@ print ("\"{0}\" er nummer {1} i listen".format(find_navn,listnumber))
 Press return to continue
 </pre>
 
-<h2>Findes eller findes et element ikke i listen</h2>
+<h2>Findes element</h2>
 
 <p>Ovenfor søgte vi placeringen af et liste-element. Her vil vi blot afklare om et element findes eller ej. Ved at anvende den følgende fremgangsmåde bliver svaret enten <span class="inl_cmd">True</span> eller <span class="inl_cmd">False</span>. Læg mærke til at startbogstavet er stort.</p>
 
@@ -331,6 +330,33 @@ Press return to continue
 </ul>
 
 <p>Det er reelt en lille database du programmerer her ;)</p>
+
+<h1>Fyld liste</h1>
+
+<p>Man kan fylde lister ved hjælp af funktioner. Se nedestående eksempel</p>
+
+<pre>
+	<code class="python">
+test = list(range(20))
+print (test)
+	</code>
+</pre>
+
+<pre class="ubuntu_terminal">[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+
+------------------
+(program exited with code: 0)
+Press return to continue
+</pre>
+
+<p>Man kan også lave en liste fuld af terningkast</p>
+
+<pre>
+	<code class="python">
+
+	</code>
+</pre>
+
 
 <h1>Dictionaries</h1>
 
