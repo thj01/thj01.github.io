@@ -126,30 +126,42 @@
 
 <h1>Python fortolker</h1>
 
-<p>Der er indbygget en fortolker i python. Den kan man få frem ved at køre kommandoen <span class="inl_cmd">python3</span> fra en terminal.</p>
+<p>Der er indbygget en fortolker i python. Den kan man få frem ved at køre følgende kommandoerkommandoen <span class="inl_cmd">python3</span> fra en terminal.</p>
 
-<pre class="ubuntu_terminal">
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ python3
-Python 3.5.1+ (default, Mar 30 2016, 22:46:26)   <span class="red">&lt;--- Her starter fortolkeren!</span>
+<p><b>Windows</b></p>
+
+<code class="cmd">Idle</code>
+
+<p><b>Ubuntu</b></p>
+
+<code class="cmd">python3</code>
+
+<pre>
+	<code class="python">
+Python 3.5.1+ (default, Mar 30 2016, 22:46:26)
 [GCC 5.3.1 20160330] on linux
 Type "help", "copyright", "credits" or "license" for more information.
 >>> 
+	</code>
 </pre>
 
 <p>Efter <span class="inl_cmd">>>></span> står der en cursor og blinker. Prøv at indtaste <span class="inl_cmd">ord("d")</span> og se hvad Python "svarer".</p>
 
-<pre class="black">
+<pre>
+	<code class="python">
 Python 3.5.1+ (default, Mar 30 2016, 22:46:26) 
 [GCC 5.3.1 20160330] on linux
 Type "help", "copyright", "credits" or "license" for more information.
 >>> ord("d")  <span class="red">&lt;--- Indtastningen</span>
 100   <span class="red">&lt;--- Pythons svar</span>
 >>>
+	</code>
 </pre>
 
 <p>Python svarer tilbage med 100, fordi tegnet d er tegn nr 100. Det kan vi tjekke igen ved at indtaste <span class="inl_cmd">chr(100)</span>:</p>
 
-<pre class="black">
+<pre>
+	<code class="python">
 Python 3.5.1+ (default, Mar 30 2016, 22:46:26) 
 [GCC 5.3.1 20160330] on linux
 Type "help", "copyright", "credits" or "license" for more information.
@@ -158,6 +170,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 >>> chr(100)   <span class="red">&lt;--- Ny indtastningen</span>
 'd'   <span class="red">&lt;--- Pythons svar</span>
 >>> 
+	</code>
 </pre>
 
 <p>For at komme ud af kommendofortolkeren kører du kommandoen <span class="inl_cmd">exit()</span></p>

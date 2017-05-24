@@ -53,27 +53,36 @@
 
 <p>Lad os lave et simpelt program der udskriver tekstrengen: "Hej". Indtast nedestående i IDLE ... Pythons kommandofortolker</p>
 
-<pre class="ubuntu_terminal">>>> print ("hej")
+<pre>
+	<code class="python">
+>>> print ("hej")
 hej
+	</code>
 </pre>
 
 <p>Programmet er opbygget af funktionen <span class="inl_cmd">print()</span>, som laver et output af det som står i parantesen. I dette tilfælde af tektstrengen <span class="inl_cmd">Hej</span>. Som du kan se i programmet omgiver vi teksstrengen <span class="inl_cmd">Hej</span> med udråbtegn <span class="inl_cmd">"   "</span>. Det er nødvendigt fordi Python skal vide om vi indsætter en værdi eller en tekststreng. Vi fortæller altså python om det er en værdi ved enten at sætte udråbstegn omkring eller at udelade dem.</p>
 
-<pre class="ubuntu_terminal">>>> print ("Hej")
+<pre>
+	<code class="python">
+>>> print ("Hej")
 Hej
 >>> print (4)
 4
-</pre>
- 
+	</code>
+</pre> 
+
 <h2>Fejlmeddelelser</h2>
 
 <p>Hvis vi laver fejl i koden svarer Python tilbage med en fejlmeddelelse. Herunder er det fordi vi forsøger at printe hej ... men glemmer at fortælle Python, at det er en tekststreng.  Altså <span class="inl_cmd">NameError: name 'hej' is not defined</span>.</p>
 
-<pre class="ubuntu_terminal">>>> print(hej)
+<pre>
+	<code class="python">
+>>> print(hej)
 <span class="red">Traceback (most recent call last):
   File "&lt;pyshell#0>", line 1, in &lt;module>
     print(hej)
 NameError: name 'hej' is not defined</span>
+	</code>
 </pre>
 
 <h2>Lange tekststykker</h2>
@@ -81,7 +90,9 @@ NameError: name 'hej' is not defined</span>
 <p>Hvis man skal skrive længere tekststykker der indeholder linie skift og tabulatorindrykninger kan man anvende en anden metode - triple anførselstegn. Ved at omgive sin teksstreng med <span class="inl_cmd">""" *tekststreng* """</span> så bevares linieskift, indrykninger, mellemrum og tabulatorer.</p>
 
 
-<pre class="ubuntu_terminal">>>> print ("""
+<pre>
+	<code class="python">
+>>> print ("""
 Roser er røde
 
     Violer er blå
@@ -99,6 +110,7 @@ Roser er røde
 Python er svært
 
         .... NOT!
+	</code>
 </pre>
 
 <h2>Escape sequences</h2>
@@ -125,10 +137,12 @@ Python er svært
 
 <p>Se nedenstående eksempel</p>
 
-<pre class="ubuntu_terminal">>>> print ("Her kommer et ord med anførselsteng - \"æble\" ")
+<pre>
+	<code class="python">
+>>> print ("Her kommer et ord med anførselsteng - \"æble\" ")
 Her kommer et ord med anførselsteng - "æble" 
+	</code>
 </pre>
-
 
 <p>Man kan også anvende escape sequences til at Hvis man har behov for at rykke teksten i teskstrengen.</p>
 
@@ -170,47 +184,35 @@ Dette er en sætning 	med horisontal TAB
 
 <pre>
 	<code class="python">
-var1 = 1
-var2 = 2
-
-print(var1 + var2)
+>>> a = 1
+>>> b = 2
+>>> print (a+b)
+3	
 	</code>
-</pre>
-
-<pre class="ubuntu_terminal">
-3
-
-------------------
-(program exited with code: 0)
-Press return to continue
 </pre>
 
 <p>Det som sker her er, at vi sætter udtrykket (variablen) <span class="inl_cmd">var1</span> til at have værdien 1 og <span class="inl_cmd">var2</span> til værdien 2. Det kan vi se når vi beder Python om at udskrive summen af <span class="inl_cmd">var1</span>  og <span class="inl_cmd">var2</span> - resultatet er 3. Man kan sige at en variable er en stedfortræder for en værdi eller en tekststreng.</p>
 
-<p>Lad os lave et eksempel med nogle tekststrenge (læg mærke til mellemrummet før "verden":</p>
+<p>Lad os lave et eksempel med nogle tekststrenge (læg mærke til mellemrummet før "verden"):</p>
 
 <pre>
 	<code class="python">
-var1 = "hej"
-var2 = " verden"
-
-print(var1 + var2)
+>>> a = "hej"
+>>> b = " verden"
+>>> print (a+b)
+hej verden
 	</code>
 </pre>
 
-<pre class="ubuntu_terminal">
-hej verden
-
-------------------
-(program exited with code: 0)
-Press return to continue
-</pre>
 
 <p>Man skal være opmærksom på at Python bruger <span class="inl_cmd">+</span> til at lægge værdier sammen. Havde vi ikke indsat et mellemrum før <span class="inl_cmd">verden</span>, ville udskriften have været <span class="inl_cmd">hejverden</span>. Man kunne også have udskrevet teksten ved at lægge et mellemrum til imellem variablerne:</p>
 
 <pre>
 	<code class="python">
-print(var1 + " " + var2)
+>>> a = "hej"
+>>> b = "verden"
+>>> print (a + " " + b)
+hej verden
 	</code>
 </pre>
 
@@ -218,22 +220,13 @@ print(var1 + " " + var2)
 
 <pre>
 	<code class="python">
-var1 = "hej"
-var2 = 2 
-
-print(var1 + var2)
-	</code>
-</pre>
-
-<pre class="ubuntu_terminal">
+a = "hej"
+>>> b = 2
+>>> print (a+b)
 Traceback (most recent call last):
-  File "test.py", line 4, in <module>
-    print(var1 + var2)
+  File "&lt;stdin>", line 1, in &lt;module>
 TypeError: Can't convert 'int' object to str implicitly
-
-------------------
-(program exited with code: 1)
-Press return to continue
+	</code>
 </pre>
 
 <p>Python kan ikke udføre sammenføjningen, fordi den læser <span class="inl_cmd">hej</span> som en tekststreng og <span class="inl_cmd">2</span> som et tal (int). Python kan ikke slå dem sammen til et resulatet. Vær derfor opmærksom på om du arbejder med talværdier eller tekst.</p>
