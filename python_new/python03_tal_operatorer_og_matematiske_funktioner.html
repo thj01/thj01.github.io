@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Vidas.dk</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono|Ubuntu|Ubuntu+Condensed' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/jquery-ui.min.css">
+  <link rel="stylesheet" href="../css/jquery.tocify.css">
+  <link rel="stylesheet" href="../css/style_new.css" />
+<!-- Scripts in bottom to speed up pageload-->
+ 
+
+</head>
+<body>
+	
+	
+<div class="container-fluid">
+
+<div class="row-fluid">
+	
+<div class="col-sm-3">
+	
+	<div id="toc">
+	
+		<div id="toc_headline"></div>
+	
+	</div>
+
+</div><!-- Start slut 1. kolonne - TOC -->
+	
+<div class="col-sm-9">
+
+<figure id="">
+
+	<img class="" src="images/python-logo-inkscape.svg" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>	
+
+<div class="title">Tal, operatorer og matematiske funktioner</div>
+	
+<h1>Tal og operatorer</h1>
+
+<p>Indtil videre har der været en naturlig progression i materialet, men herefter begynder tingene at blive mere komplekse. Derfor kommer der her et afsnit omkring anvendelse af logiske operatiorer, som anvendes til at sammenligne og adskille værdier.</p>
+
+<h2>Integers og float</h2>
+
+<p>Angående tal skal man ikke definere om man arbejder med heltal (også kaldet intergers) eller kommatal (floating point). De defineres sammen med variablen. Det er et af områder hvor Python virkeligt adskiller sig fra andre programmeringssprog, og det betyder at den som laver programmet ikke skal forholde sig til hvordan et tal skal anvendes. Python gør det automatisk for dig.</p>
+
+<p>
+Læg mærke til at man bruger punktum (<span class="inl_cmd">.</span>) og ikke komma <span class="inl_cmd">,</span> til at angive overgangen mellem hel- og decimaltal.</p>
+
+<pre>
+	<code class="python">
+# Sætter henholdsvis hel og kommatal
+
+heltal = 3
+
+kommatal = 3.14
+
+print ("5*3 er {0} og 2 * pi (3,14) er {1}.".format(heltal*5, kommatal*2))
+	</code>
+</pre>
+
+<pre class="ubuntu_terminal">
+5*3 er 15 og 2 * pi (3,14) er 6.28.
+
+
+------------------
+(program exited with code: 0)
+Press return to continue
+
+</pre>
+
+<h2>Computeren kan <s>ikke</s> tælle</h2>
+
+<p>En af de ting man støder på når man arbejder med programmering er, at computere tæller anderledes end vi gør. Når vi tæller starter vi fra en, og titalssystemet er anvendeligt for os fordi det passer med antallet af fingre på på hånden. Når vi har brugt alle fingrene så tæller vi antallet af fulde hænder. 22 kan altså forståes som 2 fulde hænder og 2 fingre. I 10-talssystemet skifter vi altså position (veksler til den næste enhed) når vi kommer til den 10. værdi.</p>
+
+<p>Det som vi bare ikke lægger mærke til i det ovenstående er, at vi allerede er bevidste om at vi har to hænder. De er i vores hukommelse. Når vi sætter en computer til at huske et tal tilføjer vi en ny hukommelsesblok der består af et antal transistorer som enten kan være slukket eller tændte. I starten er alle transistorerne i hukommelsesblokken sat til 0. Det svarer lidt til når vi skal flytte og anvender flyttekasser. Det første vi gør er at samle kassen hvilket giver os en tom kasse. Herefter tæller vi genstandende vi kommer i en efter en. Det er den talmængde vi kalder &#8469; = {1, 2, 3, 4 ...} og den giver mening for os. Pointen er at vi skal huske at computere anvender &#8469;<sub>0</sub> = {0, 1, 2, 3 ...}.</p>
+
+<p>For at vise dette kigger vi på en byte (der består af 8 bit) der tæller:</p>
+
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Computerens</th>
+			<th colspan="8">bits</th>
+			<th>I 10-tals systemet</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1. værdi</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+		</tr>
+		<tr>
+			<td>2. værdi</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>1</td>
+			<td>1</td>
+		</tr>
+		<tr>
+			<td>3. værdi</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>1</td>
+			<td>0</td>
+			<td>2</td>
+		</tr>
+		<tr>
+			<td>4. værdi</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>1</td>
+			<td>1</td>
+			<td>3</td>
+		</tr>
+		<tr>
+			<td>5. værdi</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>1</td>
+			<td>0</td>
+			<td>0</td>
+			<td>4</td>
+		</tr>
+		<tr>
+			<td>6. værdi</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>1</td>
+			<td>0</td>
+			<td>1</td>
+			<td>5</td>
+		</tr>
+		<tr>
+			<td>7. værdi</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>1</td>
+			<td>1</td>
+			<td>0</td>
+			<td>6</td>
+		</tr>
+		<tr>
+			<td>8. værdi</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>1</td>
+			<td>1</td>
+			<td>1</td>
+			<td>7</td>
+		</tr>
+		<tr>
+			<td>9. værdi</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>1</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>8</td>
+		</tr>
+		<tr>
+			<td>10. værdi</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>1</td>
+			<td>0</td>
+			<td>0</td>
+			<td>1</td>
+			<td>9</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>2⁷</td>
+			<td>2⁶</td>
+			<td>2⁵</td>
+			<td>2⁴</td>
+			<td>2³</td>
+			<td>2²</td>
+			<td>2¹</td>
+			<td>2⁰</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>Værdi</td>
+			<td>128</td>
+			<td>64</td>
+			<td>32</td>
+			<td>16</td>
+			<td>8</td>
+			<td>4</td>
+			<td>2</td>
+			<td>1</td>
+			<td></td>
+		</tr>		
+	</tbody>
+</table>
+
+<p>Af det ovenstående kan vi omregne fra binær til decimal ved at lægge de enkelte værdier sammen:</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Binær</th>
+			<th colspan="8">Udregning</th>
+			<th>Decimal</th>
+		</tr>
+	</thead>
+	<tbody>
+
+		<tr>
+			<td></td>
+			<td>2⁷</td>
+			<td>2⁶</td>
+			<td>2⁵</td>
+			<td>2⁴</td>
+			<td>2³</td>
+			<td>2²</td>
+			<td>2¹</td>
+			<td>2⁰</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>11111111</td>
+			<td>128</td>
+			<td>64</td>
+			<td>32</td>
+			<td>16</td>
+			<td>8</td>
+			<td>4</td>
+			<td>2</td>
+			<td>1</td>
+			<td>255</td>
+		</tr>	
+		<tr>
+			<td>10101101</td>
+			<td>128</td>
+			<td></td>
+			<td>32</td>
+			<td></td>
+			<td>8</td>
+			<td>4</td>
+			<td></td>
+			<td>1</td>
+			<td>173</td>
+		</tr>
+		<tr>
+			<td>10000001</td>
+			<td>128</td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td>1</td>
+			<td>129</td>
+		</tr>
+		<tr>
+			<td>00101101</td>
+			<td></td>
+			<td></td>
+			<td>32</td>
+			<td></td>
+			<td>8</td>
+			<td>4</td>
+			<td></td>
+			<td>1</td>
+			<td>45</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Man bliver nød til at holde tungen lige i munden, fordi vi skal holde styr på vores in- og output. Tæller vi f.eks. antallet af tegn (char) i en streng angives det i &#8469; (f.eks. Thomas = 6 tegn), men skal vi hente et tegn ud skal vi tænke &#8469;<sub>0</sub> (o er det 2 tegn i sætningen).</p>
+
+<table class="centreret">
+
+	<tbody>
+		<tr>
+			<td>Placering</td>
+			<td>0</td>
+			<td>1</td>
+			<td>2</td>
+			<td>3</td>
+			<td>4</td>
+			<td>5</td>
+		</tr>
+		<tr>
+			<td>Tegn</td>
+			<td>T</td>
+			<td>h</td>
+			<td>o</td>
+			<td>m</td>
+			<td>a</td>
+			<td>s</td>
+		</tr>
+	</tbody>
+</table>
+
+
+<h2>Regningsregler</h2>
+
+<p>Python de almindelige regningsregler. Jeg har valgt at vise det i Python-fortolkeren for at gøre det tydligere</p>
+
+<pre>
+	<code class="python">
+Python 3.5.1+ (default, Mar 30 2016, 22:46:26) 
+[GCC 5.3.1 20160330] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> 8+2
+10
+>>> 8*2
+16
+>>> 8/2
+4.0
+>>> 2**4
+16
+>>> pow(2,4)
+16
+>>> 2**-4
+0.0625
+>>> pow(2,-4)
+0.0625
+>>> (8*2)-4
+12
+>>> 8*(2-4)
+-16
+	</code>
+</pre>
+
+<p>En sidste regnemetode er <span class="inl_cmd">modulus</span>. Den anvendes til at finde restproduktet, som herunder hvor restproduktet af 9/5 = 4.</p>
+<pre>
+	<code class="python">
+>>> 9%5
+4
+	</code>
+</pre>
+
+<h2>En til eller fra</h2>
+
+<p>Ofte har man brug for at lade et tal vokse med en fast størrelse fra gang til gang. Den mest umiddelbare løsning er denne:</p>
+
+<pre>
+	<code class="python">
+>>> a=0
+>>> a
+0
+>>> a+1
+1
+	</code>
+</pre>
+
+<p>Da man gør det så ofte har man en speciel "shorthand" til at løse dette problem med:</p>
+
+<pre>
+	<code class="python">
+>>> a=0
+>>> a +=1
+>>> a
+1
+>>> a +=1
+>>> a
+2
+	</code>
+</pre>
+
+<p>På samme måde som ovenfor kan man også lægge til, gange og dividere</p>
+
+<pre>
+	<code class="python">
+>>> a=1
+>>> a+=5
+>>> a
+6
+>>> a -=7
+>>> a
+-1
+>>> a *=7
+>>> a
+-7
+>>> a /=7
+>>> a
+-1.0
+	</code>
+</pre>
+
+<p>Man kan gøre det samme hvis man har lavet variabler. I eksemplet herunder lægger vi variablen <span class="inl_cmd">alder</span> til a.</p>
+
+<pre>
+	<code class="python">
+>>> a=1
+>>> alder=15
+>>> a+=alder
+>>> a
+16
+	</code>
+</pre>
+
+<h2>Integer og float</h2>
+
+<p>Python ser tal som hel- eller decimaltal. I programmerings sprog kaldes heltallet for en interger (latin: hel, komplet) og decimaltallet float (Eng: Flydende)</p>
+
+<p>I det ovenstående divisionseksempel svarede Python med et decimaltal (float). Det skyldes at Python er designet til at være så simpelt at gå til som muligt, da langt de fleste divisionsstykker resluterer i decimaltal. Derfor skal vi fortælle Python at tallet skal tolkes som et heltal (interger).</p>
+
+<p>Herunder vises et eksempel hvor:</p>
+
+<ol class="">
+	<li>heltallet 7 bliver omdannet til <span class="inl_cmd">float</span></li>
+	<li>decimaltallet b (positivt) bliver omdannet til <span class="inl_cmd">int</span></li>
+	<li>decimaltallet c (negativt) bliver omdannet til <span class="inl_cmd">int</span>.</li>
+</ol>
+
+<pre>
+	<code class="python">
+>>> a
+7
+>>> float(a)
+7.0
+>>> b=3.14
+>>> int(b)
+3
+>>> c=-3.15
+>>> int(c)
+-3
+	</code>
+</pre>
+
+<p>Som du kan se herovenfor sker der følgende:</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Fra int &#8594; float</td>
+			<td>Der tilføjels decimaler</td>
+		</tr>
+		<tr>
+			<td>Fra float &#8594; int</td>
+			<td>Der rundes ned til nærmeste heltal. Det gælder både for positive og negative tal.</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Hvis du ønsker at finde ud af om et tal er en interger eller float, kan du teste det ved hjælp af <span class="inl_cmd">is_interger()</span> som vist herunder:</p>
+
+<pre>
+	<code class="python">
+>>> a=3.14
+>>> a.is_integer()
+False
+	</code>
+</pre>
+
+<span class="afsnit">Afrunding af tal</span>
+
+<p>Ovenfor har vi se set hvordan man ændrer et <span class="inl_cmd">float</span> til en <span class="inl_cmd">Interger</span>. Men ofte har man brug for at kunne vise et resultat afrundet korrekt og med et bestemt antal decimaler. Det gøres med <span class="inl_cmd">round()</span>. Man angiver antallet af decimaler på følgende måde:</p>
+
+<code class="cmd">round(tal,*Antal decimaler*)</code>
+
+<pre>
+	<code class="python">
+>>> 2/3
+0.6666666666666666
+>>> round(2/3,2)
+0.67
+	</code>
+</pre>
+
+
+<h2>Brøker</h2>
+
+<p>For at arbejde med brøker skal man "tvinge" python til ikke at regne brøken ud. Det kan være nødvendig for ikke at få afrundingsfejl. For at kunne anvende brøker skal vi importere modulet fractions. Herunder er givet et eksempel ved hjælp at et GRUK af Piet Hein, hvor der er vist forskellen mellem at anvende <span class="inl_cmd">fractions()</span> og <span class="inl_cmd">float</span>. Jeg har valgt at lave dette eksempel ved hjælp af koden, da man ellers mister overblikket. Læg mærke til at jeg importere funktionen <span class="inl_cmd">Fraction(3,4)</span>.</p>
+
+<pre>
+	<code class="python">
+from fractions import Fraction
+
+brøk1 = Fraction(3,4) # brøken 3/4;
+brøk2 = Fraction(2,3) #brøken 2/3; 
+brøk3 = brøk1 * brøk2
+
+float1 = 3/4
+float2 = 2/3
+float3 = float1 * float2
+
+print ("""
+	En halv er
+	tænk nu hvor aparte
+	to tredjedele
+	af tre kvarte
+			(Piet Hein)	
+			
+""")
+
+print ("Udregnet ved hjælp af Fractions:\n\n\t {0} * {1} = {2}".format(brøk1,brøk2,brøk3))
+print ("\nUdregnet ved hjælp af float:\n\n\t {0} * {1} = {2}".format(float1, float2,float3))
+	</code>
+</pre>
+
+<pre class="ubuntu_terminal">
+
+	En halv er
+	tænk nu hvor aparte
+	to tredjedele
+	af tre kvarte
+			(Piet Hein)	
+			
+
+Udregnet ved hjælp af Fractions:
+
+	 3/4 * 2/3 = 1/2
+
+Udregnet ved hjælp af float:
+
+	 0.75 * 0.6666666666666666 = 0.5
+
+------------------
+(program exited with code: 0)
+Press return to continue
+
+</pre>
+
+<p>Som det kan ses bliver 2/3 omskrevet til 0,666... hvilket kun er en tilnærmet værdi. Grunden til at det går godt er fordi Python anvender nok decimaler til at afrundingen bliver korrekt.</p>
+
+<h2>Faktorer</h2>
+
+<p>Når man opløser et tal i faktorer finder man ud af hvilke tal der går et bestemt tal. F.eks. er 28 = 2 &#8226; 2 &#8226; 7. Python har ikke en indbygget funktion hertil men den laver vi selv. Hvis <span class="inl_cmd">modulus</span> (se ovenfor) er 0, så er tallet en faktor ellers ikke.</p>
+
+<pre>
+	<code class="python">
+tal = int(input("Tal der skal undersøges?: "))
+
+faktor = int(input("Skriv den faktor du vil undersøge tallet med: "))
+
+if tal%faktor == 0:
+    print("{0} er en faktor i {1}".format(faktor,tal))
+else:
+    print("{0} er ikke en faktor i {1}".format(faktor,tal))
+	</code>
+</pre>
+
+<pre class="ubuntu_terminal">
+Tal der skal undersøges?: 20
+Skriv den faktor du vil undersøge tallet med: 7
+7 er ikke en faktor i 20
+
+------------------
+(program exited with code: 0)
+Press return to continue
+
+</pre>
+
+
+<h2>Absolutte tal</h2>
+
+<p>Funktionen <span class="inl_cmd">abs()</span> returnere altid en værdi som værende positiv. Det giver mening hvis man f.eks. ønsker at finde forskellen mellem to tal uden at skulle forholde sig til rækkefølgen de kommer i. Som i eksemplet herunder hvor første udregning med <span class="inl_cmd">abs()</span> kun fortæller forskellen, men den anden fortæller om det er en stigning eller et fald.</p>
+
+<pre>
+	<code class="python">
+temperatur1 = 18 # temperatur kl. 12.00
+temperatur2 = 20 # temperatur kl. 15.00
+forskel = temperatur1 - temperatur2
+
+print ("Forskel i temperatur: {0}".format(abs(forskel)))
+print ("temperatur-stigning/fald: {0}".format(forskel))
+	</code>
+</pre>
+
+<pre class="ubuntu_terminal">
+Forskel i temperatur: 2
+temperatur-stigning/fald: -2
+
+------------------
+(program exited with code: 0)
+Press return to continue
+</pre>
+
+<h2>Operatorer</h2>
+
+<p>Operatorer beskriver forholdet mellem to værdier</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Operator</th>
+			<th>Beskrivelse</th>
+			<th>Eksempel</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>&gt;</td>
+			<td>større end</td>
+			<td>5 &gt; 8 → falsk</td>
+		</tr>
+		<tr>
+			<td>&lt;</td>
+			<td>mindre end</td>
+			<td>5 &lt; 8 → sand</td>
+		</tr>
+		<tr>
+			<td>&gt;=</td>
+			<td>Større end eller lig med</td>
+			<td>5 &gt;= 8 → falsk</td>
+		</tr>
+		<tr>
+			<td>&lt;=</td>
+			<td>Mindre end eller lig med</td>
+			<td>5 &lt;= 8 → sand</td>
+		</tr>
+		<tr>
+			<td>==</td>
+			<td>Lig med</td>
+			<td>5 == 8 → falsk</td>
+		</tr>
+		<tr>
+			<td>!=</td>
+			<td>Ikke lig med</td>
+			<td>5 != 8 → sand</td>
+		</tr>
+		<tr>
+			<td>is</td>
+			<td>Identisk med</td>
+			<td>5 is "5" → falsk</td>
+		</tr>
+		<tr>
+			<td>is not</td>
+			<td>Ikke identisk med</td>
+			<td>5 is not "5" → sand</td>
+		</tr>
+		<tr>
+			<td>x and y</td>
+			<td >Både x og y skal være sand</td>
+			<td >x=6 ; y=3<br /><br />(x &lt; 10 and y &gt; 1) →  sand</td>
+		</tr>
+		<tr>
+			<td>x or y</td>
+			<td>Kun en behøver at være sand</td>
+			<td>x=6 ; y=3<br /><br/>(x == 6 or y == 1) → sand</td>
+		</tr>
+	</tbody>
+</table>
+
+<span class="afsnit">VIGTIGT</span>
+
+<p>De to sidste (<span class="inl_cmd">and</span> og  <span class="inl_cmd">or</span>) skal vi som danskere være meget forsigtige med, fordi de er logiske og ikke sproglige. Et eksempel kan være hvor betingelsen er, at man både kan svare med <span class="inl_cmd">j</span> og <span class="inl_cmd">J</span> - altså både det lille <span class="bold">OG</span> det store bogstav. Umiddelbart ville nedestående linie give mening:</p>
+	
+<pre>
+	<code class="python">
+if valg ==  "j" and valg == "J" : #Gælder for både lille <span class="bold">og</span> store J
+	</code>
+</pre>
+
+<p>Sprogligt giver det mening, men problemet er, at brugeren aldrig vil kunne taste både j og J på samme tid. Så derfor vil Python afvise at betingelserne er opfyldt. Det er ikke Python der laver fejl, men mere et udtryk for at det danske sprog er finurligt og ulogisk. F.eks. så kan vi også finde på at spørge: "er det ikke sjovt" .. når vi faktisk mener "er det sjovt". Det er ikke kun udlændinge der synes vores sprog er ulogisk. Computere kan heller ikke forstå os ;).</p>
+
+<h2>Afgrænsede områder</h2>
+
+<p>Nogle gange har man brug for at kunne afgrænse områder. Forestil dig at vi skal udvælge brugere der er fra 15 år til og med 22. Det matematiske udsagn ville være <span class="inl_cmd">15 &le; x &le; 22</span> da både 15 og 21 er med i talmængden. I Python skal vi splitte det op i to udsagn hvor vi skal beskrive den ned grænse og den øvre grænse ud fra x: <span class="inl_cmd">x &ge; 15 <span class="blue">and</span> x &le; 22</span>.</p>
+
+<p>Her skal man igen være bevidst om hvilken talmængde man arbejder med. Skal man f.eks. gennemløbe alle bogstaverne i et navn så skal man tænke i talmængden &#8469;<sub>0</sub>.</p>
+
+<table class="centreret">
+
+	<tbody>
+		<tr>
+			<td>Placering</td>
+			<td>0</td>
+			<td>1</td>
+			<td>2</td>
+			<td>3</td>
+			<td>4</td>
+			<td>5</td>
+		</tr>
+		<tr>
+			<td>Tegn</td>
+			<td>T</td>
+			<td>h</td>
+			<td>o</td>
+			<td>m</td>
+			<td>a</td>
+			<td>s</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Hvis man spørger Python om længden på navnet, så vil vi få 6, men programmet skal gennemløbe værdierne 0-5. Umiddelbart ville vi tænke <span class="inl_cmd">1 &le; x &le; 6</span>, men det vil reelt være <span class="inl_cmd">0 &le; x &le; 5</span>. Men som vi vil lære i afsnittet om løkker, så er det tænkt ind i syntaksen.</p>
+
+<h1>Matematiske funktioner</h1>
+
+<p>For at anvende Phytons matematiske funktioner skal man importere programbiblioteket <span class="inl_cmd">math</span>. Det kan gøres på to måder - enten ved at inkludere alle matematikfunktionerne eller ved kun at importere enkelte derfra. I praksis får det først betydning når man kompilerer programmet (laver det til en kørbar fil). Hvis man kun importere enkelte dele fra et modul er det kun dem der bliver kompileret ind i ens kode.</p>
+
+<p>Herunder er de to metoder vist med henholdsvis kvadratrod og 10-tals logaritmen. Først den generelle. Læg mærke til at der skal angives fra hvilket programbibliotek den matematiske funktion skal tages fra.</p>
+
+<pre>
+	<code class="python">
+>>> import math
+>>> math.sqrt(27)
+5.196152422706632
+>>> math.log10(100)
+2.0
+	</code>
+</pre>
+
+
+<p>For kun at importere de nødvendige elementer fra programbiblioteket anvendes <span class="inl_cmd">from *bibliotek* import *funktioner*</span>. De enkelte funktioner adskilles med et <span class="inl_cmd">,</span>. Det er heller ikke nødvendigt at definere fra hvilket bibliotek elementerne kommer fra.</p>
+
+<pre>
+	<code class="python">
+>>> from math import sqrt, log10
+>>> sqrt(27)
+5.196152422706632
+>>> log10(100)
+2.0
+	</code>
+</pre>
+
+<p>Af vigtige matematiske funktioner kan nævnes</p>
+
+<h2>Konstanter</h2>
+
+<p></p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Konstant</th>
+			<th>Funktion</th>
+			<th>Værdi</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><span class="math">\( \pi \)</span></td>
+			<td>math.pi</td>
+			<td>3.141592...</td>
+		</tr>
+		<tr>
+			<td><span class="math">\( e \)</span></td>
+			<td>math.e</td>
+			<td>2.718281...</td>
+		</tr>
+	</tbody>
+</table>
+
+
+<h2>Logaritmer</h2>
+
+<p></p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Matematisk udtryk</th>
+			<th>Funktion</th>
+			<th>Inverse funktion</th>
+			<th>Beskrivelse</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><span class="math">\( y^x \)</span></td>
+			<td>pow(y,x)</td>
+			<td>math.log(x,y)</td>
+			<td>Logaritmen (grundtal y)</td>
+		</tr>
+		<tr>
+			<td><span class="math">\( 10^x = y \)</span></td>
+			<td>pow(10,x)</td>
+			<td>math.log10(x)</td>
+			<td>Logaritmen (grundtal 10)</td>
+		</tr>
+		<tr>
+			<td><span class="math">\( e^x \)</span></td>
+			<td>math.exp(x)</td>
+			<td>math.log(y)</td>
+			<td>Den naturlige logaritmen (grundtal e)</td>
+		</tr>
+	</tbody>
+</table>
+
+<h2>Trigonometriske funktioner</h2>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Matematisk udtryk</th>
+			<th>Funktion</th>
+			<th>Inverse funktion</th>
+			<th>Beskrivelse</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><span class="math">\( cos(x) \)</span></td>
+			<td>math.cos(x)</td>
+			<td>math.acos(x)</td>
+			<td>Cosinus</td>
+		</tr>		
+		<tr>
+			<td><span class="math">\( sin(x) \)</span></td>
+			<td>math.sin(x)</td>
+			<td>math.asin(x)</td>
+			<td>Sinus</td>
+		</tr>	
+		<tr>
+			<td><span class="math">\( tan(x) \)</span></td>
+			<td>math.tan(x)</td>
+			<td>math.atan(x)</td>
+			<td>Tangens</td>
+		</tr>
+	</tbody>
+</table>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Omskrivning</th>
+			<th>Funktioner</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>fra grader &#8594; radianer</td>
+			<td>math.degrees()</td>
+		</tr>
+		<tr>
+			<td>fra radianer &#8594; grader</td>
+			<td>math.radians()</td>
+		</tr>
+	</tbody>
+</table>
+
+<h1>Financielle funktioner</h1>
+
+<p>Hent og installer numpy (<a href="https://sourceforge.net/projects/numpy/files/" target="_blank">https://sourceforge.net/projects/numpy/files/</a>).</p>
+
+
+<h1>Talsystemer</h1>
+
+<p>Vi er vant til at anvende 10-talssystemet, men i programmerings- og computersammenhænge kan det være praktisk at anvende andre talsystemer især det binære (2-talssystem) og det hexadecimale (16-talssystem). Man siger at talsystemerne har et grundtal, som bestemmer hvornår der skiftes position.</p>
+
+<p>En vigtig detalje når man snakker om talsystemer er, at der ikke er forskel på værdierne. Det er måden værdierne bliver præsenteret på. Det binære tal 1011 har samme værdi som 11 i 10-talssystemet.</p>
+
+<p>Et eksempel på hvordan man kan anvende andre talsystemer er f.eks. den måde et Linux-filsystem angiver filers rettigheder. Rettighederne er sat med tal fra 0-7, og det gør man ud fra følgende skema:</p>
+
+<table class="centreret">
+	<thead>
+		<tr>
+			<th rowspan="2">Talværdi</th>
+			<th>r</th>
+			<th>w</th>
+			<th>x</th>
+			<th rowspan="2" >Samlet</th>
+			<th rowspan="2">Rettigheder</th>
+		</tr>
+		<tr>
+			<th><span class="math">\( 2^2 = 4 \)</span></th>
+			<th><span class="math">\( 2^1 = 2 \)</span></th>
+			<th><span class="math">\( 2^0 = 1 \)</span></th>
+
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>7</td>
+			<td>1</td>
+			<td>1</td>
+			<td>1</td>
+			<td>rwx</td>
+			<td>Alle (læse, skrive og udføre)</td>
+		</tr>
+		<tr>
+			<td>6</td>
+			<td>1</td>
+			<td>1</td>
+			<td>0</td>
+			<td>-wx</td>
+			<td>Læse og skrive</td>
+		</tr>
+		<tr>
+			<td>5</td>
+			<td>1</td>
+			<td>0</td>
+			<td>1</td>
+			<td>r-x</td>
+			<td>Læse og udføre</td>
+		</tr>
+		<tr>
+			<td>4</td>
+			<td>1</td>
+			<td>0</td>
+			<td>0</td>
+			<td>r--</td>
+			<td>Læse</td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>0</td>
+			<td>1</td>
+			<td>1</td>
+			<td>-wx</td>
+			<td>Skrive og udføre</td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>0</td>
+			<td>1</td>
+			<td>0</td>
+			<td>-w-</td>
+			<td>Skrive</td>
+		</tr>
+		<tr>
+			<td>1</td>
+			<td>0</td>
+			<td>0</td>
+			<td>1</td>
+			<td>--x</td>
+			<td>udføre</td>
+		</tr>
+		<tr>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>---</td>
+			<td>Ingen</td>
+		</tr>		
+	</tbody>
+</table>
+
+<p>Et femtal beskriver f.eks. at man kan læse og køre filen som et program. Men man kan ikke skrive i den. 5 tallet giver altså ingen mening i sig selv, men oversat til binært <span class="inl_cmd">101</span> kan vi altså se hvad brugeren må og ikke må. I stedet for at skulle analysere 8 forskellige udfald (0-7) i vores program, kan vi altså nøjes med at undersøge 3 mulige udfald.</p>
+
+
+
+<h2>Base10 til baseX</h2>
+
+<p>Der er indbygget konvertere fra ti-talssystemet til binær, octet og hexadecimalt talsystem. Det gøres ved at anvende <span class="inl_cmd">bin()</span>, <span class="inl_cmd">oct()</span> og <span class="inl_cmd">hex()</span>.</p>
+
+<pre>
+	<code class="python">
+>>> bin(100)
+'0b1100100'
+>>> oct(100)
+'0o144'
+>>> hex(100)
+'0x64'
+	</code>
+</pre>
+
+<p>Læg mærke til at talene kommer tilbage som teksstrenge og med et præfix: </p>
+
+<ul class="disc">
+	<li>0b = binær</li>
+	<li>0o = octet</li>
+	<li>0x = hexadecimal</li>
+</ul>
+
+<p>Python bruger præfixet til at bestemme hvilket positionssystem tallet er i. Er der ikke noget præfix er det base 10.</p>
+
+<h2>BaseX til base10 talssystem</h2>
+
+<p>For at konvertere tal med anden base til 10 talssystemet anvendes <span class="inl_cmd">int()</span>. Det fungerer ved at man i parantesen skriver tallet man vil konvertere og basen der skal konverteres fra. Læg mærke til at tallet skal skrives ind som en tekststreng!</p>
+
+<pre>
+	<code class="python">
+>>> int("100",2)
+4
+>>> int("100",8)
+64
+>>> int("100",10)
+100
+>>> int("100",16)
+256
+	</code>
+</pre>
+
+<h2>Beregninger med andre talsystemer</h2>
+
+<p>Hvis man har brug for at regne direkte med tal fra andre talsystemer skal man blot anvende talsystemets præfix. For at gøre det mere overskueligt er der lavet en tabel så du kan "beregne" de binære tals værdi</p>
+
+<table class="">
+	<tbody>
+		<tr>
+			<td>Position</td>
+			<td>8</td>
+			<td>7</td>
+			<td>6</td>
+			<td>5</td>
+			<td>4</td>
+			<td>3</td>
+			<td>2</td>
+			<td>1</td>
+		</tr>
+		<tr>
+			<td>Potens</td>
+			<td><span class="math">\( 2^7 \)</span></td>
+			<td><span class="math">\( 2^6 \)</span></td>
+			<td><span class="math">\( 2^5 \)</span></td>
+			<td><span class="math">\( 2^4 \)</span></td>
+			<td><span class="math">\( 2^3 \)</span></td>
+			<td><span class="math">\( 2^2 \)</span></td>
+			<td><span class="math">\( 2^1 \)</span></td>
+			<td><span class="math">\( 2^0 \)</span></td>
+		</tr>
+		<tr>
+			<td>Værdi (Pos)</td>
+			<td>128</td>
+			<td>64</td>
+			<td>32</td>
+			<td>16</td>
+			<td>8</td>
+			<td>4</td>
+			<td>2</td>
+			<td>1</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Herunder udregnes <span class="math">\( 5 \cdot 5 \)</span>:</p>
+
+<pre>
+	<code class="python">
+>>> 0b101 * 0b101
+25
+	</code>
+</pre>
+
+<p>Som du kan se bliver tallet afleveret i base 10. Ønsker du at få resultatet med et binært output kan du vælge enten at konvertere eller beregne direkte. Vær opmærksom at resultatet afleveres som en tekststreng.</p>
+
+<pre>
+	<code class="python">
+>>> bin(25)
+'0b11001'
+>>> bin(0b101 * 0b101)
+'0b11001'
+	</code>
+</pre>
+
+
+	
+</div><!-- end: col-md-9 -->
+
+<footer>
+
+	<p><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons licens" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>Indholdet på Vidas.dk er licenseret under <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> og er skrevet af Thomas Jensen. (<a href="../hvem_er_jeg.html" target="_blank">Læs mere</a>)</p>
+
+</footer>
+	
+	
+</div><!-- end: row-fluid -->
+
+</div> <!-- end: container-fluid -->
+
+
+<!-- SCRIPT SECTION -->
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script type="text/javascript" src="../js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="../js/jquery.tocify.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+
+<!-- PRETTYFY-->
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+
+
+<!-- HIGHLIGHT -->
+	<script src="../js/highlight.pack.js" type="text/javascript"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+
+<!-- MATHJAX -->
+<script type="text/javascript" 
+	src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  displayAlign: "left",
+  displayIndent: "0em"
+});
+</script>
+
+
+<!-- TOCIFY -->
+<script>
+	$(function() {var toc = $("#toc").tocify({ selectors: "h1, h2, h3, h4" }).data("toc-tocify"); });
+</script>
+<!-- GOOGLE ANALYTICS -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-89933285-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</body>
+</html>
