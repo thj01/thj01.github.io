@@ -214,9 +214,11 @@ drwxr-xr-x 3 root root  4096 maj 27 01:05 ..
 <code class="more_cmd">sudo chmod 705 -R /var/www/html</code>
 
 <pre class="ubuntu_terminal">
-<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ ls -l /var/www/html/
-totalt 16
--rwx---r-x 1 tj tj 11321 jul  3 20:01 <span class="green1">index.html</span>
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ ls -al /var/www/html
+totalt 20
+drwx---r-x 2 tj   tj    4096 maj 27 01:45 .
+drwxr-xr-x 3 root root  4096 maj 27 01:05 ..
+-rwx---r-x 1 tj   tj   11321 maj 27 01:05 <span class="green1">index.html</span>
 </pre>
 
 <p>Læg mærke til at man bliver nød til at bruge den fulde sti til mappen for at se indholdet. Hvis man viser en liste ved at bruge det symbolske link sker der følgende:</p>
@@ -237,7 +239,6 @@ lrwxrwxrwx 1 tj tj 14 maj 27 01:50 <span class="turk">/home/tj/html</span> -> <s
 &lt;html xmlns="http://www.w3.org/1999/xhtml">
   &lt;!--
     Modified from the Debian original for Ubuntu
-
 </pre>
 
 
@@ -248,13 +249,13 @@ lrwxrwxrwx 1 tj tj 14 maj 27 01:50 <span class="turk">/home/tj/html</span> -> <s
 <p>Alle brugere bliver oprettet ud fra en skabelon som ligger i <span class="inl_cmd">/etc/skel</span>.</p>
 
 <pre class="ubuntu_terminal">
-tj@tjmainsrv:/etc/skel$ ls -al
-total 20
-drwxr-xr-x  2 root root 4096 dec  4 08:08 .
-drwxr-xr-x 98 root root 4096 dec 16 11:30 ..
--rw-r--r--  1 root root  220 apr  9  2014 .bash_logout
--rw-r--r--  1 root root 3637 apr  9  2014 .bashrc
--rw-r--r--  1 root root  675 apr  9  2014 .profile
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ ls -al /etc/skel
+totalt 28
+drwxr-xr-x   2 root root  4096 maj 27 00:58 .
+drwxr-xr-x 139 root root 12288 maj 27 10:56 ..
+-rw-r--r--   1 root root   220 sep  1  2015 .bash_logout
+-rw-r--r--   1 root root  3771 sep  1  2015 .bashrc
+-rw-r--r--   1 root root   655 jun 24  2016 .profile
 </pre>
 
 <p>I denne mappe skal vi have oprettet en privat www-mappe, som vi kalder <span class="inl_cmd">public_html</span>. I denne mappe læger vi mapperne: <span class="inl_cmd">images</span> til billeder, <span class="inl_cmd">css</span> til CSS filer og <span class="inl_cmd">js</span> til Javascript filer.</p>
@@ -287,7 +288,7 @@ drwxr-xr-x 98 root root 4096 dec 16 11:30 ..
 ├── [-rw-r--r-- root    ]  .bashrc
 └── [-rw-r--r-- root    ]  .profile
 
-4 directories, 5 files
+4 directories, 4 files
 </pre>
 
 <p>På webservere er det normen at man giver filerne 705 rettigheder. På den måde har ejeren af mappen læse, skrive og udføre på alle filer, men alle kan læse og udføre når de åbner filen i en browser.</p>
@@ -330,11 +331,11 @@ drwxr-xr-x 98 root root 4096 dec 16 11:30 ..
 
 <code class="more_cmd">sudo service apache2 reload</code>
 
-<p>Test ved at oprette brugeren <span class="inl_cmd">testweb</span> og naviger til <span class="inl_cmd">192.168.0.10/~testweb</span> i en browser og tilgå brugerens mappe over FTP. Vær opmærksom på at det kun er brugere, der er oprettet efter ændringen der får oprettet disse mapper.</p>
+<p>Test ved at oprette brugeren <span class="inl_cmd">testweb</span> og naviger til <span class="inl_cmd">127.0.0.1/~testweb</span> i en browser og tilgå brugerens mappe over FTP. Vær opmærksom på at det kun er brugere, der er oprettet efter ændringen der får oprettet disse mapper.</p>
 
 <code class="cmd">sudo adduser testweb</code>
 
-<p>Åbn browseren og sæt adressen til <span class="inl_cmd">192.168.0.10\~testweb</span> for at test den personlige hjemmeside.</p>
+<p>Åbn browseren og sæt adressen til <span class="inl_cmd">127.0.0.1\~testweb</span> for at test den personlige hjemmeside.</p>
 
 <figure id="">
 
@@ -349,6 +350,16 @@ drwxr-xr-x 98 root root 4096 dec 16 11:30 ..
 <code class="cmd">cp -R /etc/skel/public_html /home/tj</code>
 
 <code class="more_cmd">chown -R tj:tj /home/tj/public_html/</code>
+
+<p>Tjek at det virker:</p>
+
+<figure id="">
+
+	<img class="p90" src="images/webserver_kontroller_apache_lokal_bruger01.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
 
 <h1>mariaDB og PHPMyAdmin</h1>
 
@@ -458,7 +469,7 @@ Thanks for using MariaDB!
 </ol>
 <p></p>
 
-<p>Vælg <span class="inl_cmd">Apache2</span> og vælg <span class="terminal_valg">O.k.</span></p>
+<p>Vælg <span class="inl_cmd">Apache2</span> med piletasterne og gå ned til  <span class="terminal_valg">O.k.</span> ved at trykke på <kbd>Tab</kbd>. Gennemfør dine valg ved hjælp af <kbd>Enter</kbd>.</p>
 
 <figure id="">
 
@@ -478,7 +489,7 @@ Thanks for using MariaDB!
 
 </figure>
 
-<p>Indtast password 2 gange (her vælger jeg <span class="inl_cmd">123qwe</span>) til PHPMyAdmins root-konto: </p>
+<p>Indtast password 2 gange  til PHPMyAdmins root-konto. I denne testopstilling vælger jeg vælger jeg <span class="inl_cmd">123qwe</span>. </p>
 
 <figure id="">
 
@@ -513,9 +524,9 @@ MariaDB [(none)]>
 
 <p>Herefter køres følgende kommandoer i <span class="inl_cmd">mysql</span>. Husk at afslutte kommandoerne med <span class="inl_cmd">;</span>:</p>
 
-<code class="cmd">use mysql;</code>
-<code class="more_cmd">update user set plugin='' where User='root';</code>
-<code class="more_cmd">flush privileges;</code>
+<code class="cmd">USE mysql;</code>
+<code class="more_cmd">UPDATE user SET plugin='' WHERE user='root';</code>
+<code class="more_cmd">FLUSH PRIVILEGES;</code>
 <code class="more_cmd">exit</code>
 
 

@@ -22,14 +22,13 @@ white-space: pre-wrap;
 code.cmd {
 
 font-family: ubuntu mono, mono-type;
-display:inline-block;
+display:block;
 font-size: 1.05em;
 font-weight: 100;
-padding: .5em 1em;
-margin: 8px 10px 20px 0px;
+padding: 0.5em 1em;
+margin: .8em 1em .8em 1em;
 color: #404040;
 background-color: #D8D8D8 ;
-width: 880px;
 border-left-style: ridge;
 border-left-width: .5em;
 white-space: pre-wrap;
@@ -39,14 +38,13 @@ white-space: pre-wrap;
 code.more_cmd {
 
 font-family: ubuntu mono, mono-type;
-display:inline-block;
+display:block;
 font-size: 1.05em;
 font-weight: 100;
-padding: .5em 1em;
-margin: -3px 10px 20px 0px;
+padding: 0.5em 1em;
+margin: -.1em 1em .8em 1em;
 color: #404040;
 background-color: #D8D8D8 ;
-width: 880px;
 border-left-style: ridge;
 border-left-width: .5em;
 white-space: pre-wrap;
