@@ -568,7 +568,7 @@ MariaDB [(none)]> exit
 <span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$
 </pre>
 
-<p>Vi logger også på <span class="inl_cmd">PHPMyAdmin</span> fra en browser med adressen: <span class="inl_cmd">10.0.2.10/phpmyadmin</span></p>
+<p>Vi logger også på <span class="inl_cmd">PHPMyAdmin</span> fra en browser med adressen: <span class="inl_cmd">127.0.0.1/phpmyadmin</span>.</p>
 
 <figure id="">
 
@@ -597,45 +597,46 @@ MariaDB [(none)]> exit
 
 <code class="cmd">sudo apt -y install php7.0-curl php7.0-bz2 php7.0-zip php7.0-intl php-imagick</code>
 
-<p>Herefter er vi klar til at hente Nextcloud fra serveren. Tjek efter den nyeste version på adressen: <a href="https://download.nextcloud.com/server/releases" target="_blank">https://download.nextcloud.com/server/releases</a>. Vi skal have fat i <span class="inl_cmd">tar.bz2</span> filen.Da guiden er skrevet er det version 9.0.52 kommer kommandoen til at se ud som herunder. Ændr. versionsnummeret der står med rødt, så det passer til din version. Først navigerer vil til vores hjemmemappe, så vi ved hvor filen bliver gemt.</p>
+<p>Herefter er vi klar til at hente Nextcloud fra serveren fra adressen <a href="https://download.nextcloud.com/server/releases" target="_blank">https://download.nextcloud.com/server/releases</a>. Den nyeste version hedder <span class="inl_cmd">latest.tar.bz2</span>. Vi henter filen med nedestående kommando som også gemmer mappen i vores hjemmemappe.</p>
 
-<code class="cmd">wget https://download.nextcloud.com/server/releases/nextcloud-<span class="red">9.0.52</span>.tar.bz2</code>
+<code class="cmd">wget -P ~ https://download.nextcloud.com/server/releases/latest.tar.bz2</code>
 
 <pre class="ubuntu_terminal">
-<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ wget https://download.nextcloud.com/server/releases/nextcloud-9.0.52.tar.bz2
---2016-07-05 17:34:23--  https://download.nextcloud.com/server/releases/nextcloud-9.0.52.tar.bz2
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ wget -P ~ https://download.nextcloud.com/server/releases/latest.tar.bz2
+--2017-05-27 15:28:01--  https://download.nextcloud.com/server/releases/latest.tar.bz2
 Løser download.nextcloud.com (download.nextcloud.com)... 88.198.160.133
 Tilslutter download.nextcloud.com (download.nextcloud.com)|88.198.160.133|:443... forbundet.
 HTTP forespørgsel sendt, afventer svar... 200 OK
-Længde: 28523179 (27M) [application/x-bzip2]
-Gemmer til: 'nextcloud-9.0.52.tar.bz2'
+Længde: 41743343 (40M) [application/x-bzip2]
+Gemmer til: '/home/tj/latest.tar.bz2'
 
-nextcloud-9.0.52.ta 100%[==================>]  27,20M  3,41MB/s    in 8,0s    
+latest.tar.bz2      100%[===================>]  39,81M  14,2MB/s    in 2,8s    
 
-2016-07-05 17:34:32 (3,41 MB/s) - 'nextcloud-9.0.52.tar.bz2' gemt [28523179/28523179]
+2017-05-27 15:28:04 (14,2 MB/s) - '/home/tj/latest.tar.bz2' gemt [41743343/41743343]
 </pre>
 
-<p>Udpak filen</p>
+<p>Vi udpakker filerne, som kommer til at ligge i mappen <span class="inl_cmd">~/nextcloud</span>. Det er standard på Unix systemer, at man pakker sine filer i mapper.</p>
 
-<code class="cmd">tar -xjf nextcloud-9.0.52.tar.bz2</code>
+<code class="cmd">tar -xjf latest.tar.bz2</code>
 
-<p>Som du kan se herunder er filerne pakket ud i mappen <span class="inl_cmd">nextcloud</span>.</p>
+<p>Kopier <span class="inl_cmd">~/nextcloud</span> til <span class="inl_cmd">/var/www</span></p>
+
+<code class="cmd">sudo cp -r ~/nextcloud /var/www/</code>
+
+<p>Tjek at mappen er flyttet:</p>
+
+<code class="cmd">ls -al /var/www/nextcloud</code>
 
 <pre class="ubuntu_terminal">
-<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ tar -xjf nextcloud-9.0.52.tar.bz2
-<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ ls -l
-totalt 27864
-lrwxrwxrwx  1 tj tj       14 jul  5 10:28 <span class="turk">html</span> -> <span class="blue1">/var/www/html/</span>
-drwxr-xr-x 14 tj tj     4096 jul  5 11:10 <span class="blue1">nextcloud</span>
--rw-rw-r--  1 tj tj 28523179 jul  5 11:12 <span class="red">nextcloud-9.0.52.tar.bz2</span>
-drwx---r-x  5 tj tj     4096 jul  5 10:39 <span class="blue1">public_html</span>
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ ls -al /var/www
+totalt 16
+drwxr-xr-x  4 root root 4096 maj 27 15:35 .
+drwxr-xr-x 15 root root 4096 maj 27 01:05 ..
+drwx---r-x  2 tj   tj   4096 maj 27 01:45 <span class="blue1">html</span>
+drwxr-xr-x 14 root root 4096 maj 27 15:35 <span class="blue1">nextcloud</span>
 </pre>
 
-<p>Flyt mappen <span class="inl_cmd">nextcloud</span> til <span class="inl_cmd">/var/www</span></p>
-
-<code class="cmd">sudo cp -r nextcloud /var/www/</code>
-
-<p>Opret mappe til data i <span class="inl_cmd">/srv/nextcloudData</span></p>
+<p>Opret mappe til data i <span class="inl_cmd">/srv/nextcloudData</span>. Data bør ligge i mappen <span class="inl_cmd">/srv</span>, for at følge standarden. Og så ved man også hvor ens data er!</p>
 
 <code class="cmd">sudo mkdir /srv/nextcloudData</code>
 
@@ -688,7 +689,7 @@ Alias /nextcloud "/var/www/nextcloud/"
 
 <code class="cmd">sudo service apache2 reload</code>
 
-<p>Kontroller at nextcloud kører ved at gå til adressen <span class="inl_cmd">https://192.168.0.10/nextcloud</span>:</p>
+<p>Kontroller at nextcloud kører ved at gå til adressen <span class="inl_cmd">https://127.0.0.1/nextcloud</span>:</p>
 
 <figure id="">
 
@@ -702,7 +703,7 @@ Alias /nextcloud "/var/www/nextcloud/"
 
 <h2>Opret database</h2>
 
-<p>Før vi går i gang med at konfigurere Nextcloud skal vi have oprettet en database og en administrator til databasen. Det vi skal gøre er følgende:</p>
+<p>Før vi går i gang med at konfigurere Nextcloud skal vi have oprettet en database og en administrator til databasen. Det gør vi ved hjælp af kommandolinien:</p>
 
 <ol class="">
 	<li>Log på databaseserveren</li>
@@ -713,7 +714,7 @@ Alias /nextcloud "/var/www/nextcloud/"
 	
 	<code class="cmd">CREATE DATABASE nextcloudDB;</code>
 	
-	<li>Opret brugeren <span class="inl_cmd">nextcloud</span> og med password: <span class="inl_cmd">123qwe</span>.</li>
+	<li>Opret brugeren <span class="inl_cmd">nextcloud</span> og med password: <span class="inl_cmd">123qwe</span>, da den er oprettet til test.</li>
 	
 	<code class="cmd">CREATE USER nextcloud@localhost IDENTIFIED BY '123qwe';</code>
 	
@@ -731,7 +732,7 @@ Alias /nextcloud "/var/www/nextcloud/"
 
 </ol>
 
-<p>Det kommer til at se ud som følger. Kommandoer er markeret med rødt:</p>
+<p>Det kommer til at se ud som følger. Input er markeret med rødt:</p>
 
 <pre class="ubuntu_terminal">
 <span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ <span class="red">mysql -u root -p</span>
@@ -762,9 +763,9 @@ MariaDB [(none)]> <span class="red">exit</span>
 
 <h2>Konfigurer Nextcloud</h2>
 
-<p>Åbn Nextcloud i browseren på adressen: <span class="inl_cmd">https://192.168.0.10/nextcloud</span>. Første gang Nextcloud startes på skal admin kontoen konfigureres. Herunder er konfigurationssiden "klippet" over:</p>
+<p>Åbn Nextcloud i browseren på adressen: <span class="inl_cmd">https://127.0.0.1/nextcloud</span>. Første gang Nextcloud startes på skal admin kontoen konfigureres. Herunder er konfigurationssiden "klippet" over:</p>
 
-<span class="afsnit">Administrator konto</span>
+<h3>Administrator konto</h3>
 
 <p>Dette er kontoen som skal anvendes til at administrere Nextcloud med. Det kan f.eks. være at oprette brugere, sætte deres rettigheder og installere apps.</p>
 
@@ -795,7 +796,7 @@ MariaDB [(none)]> <span class="red">exit</span>
 	</tbody>
 </table>
 
-<span class="afsnit">Placering af data</span>
+<h3>Placering af data</h3>
 
 <p>Her placeres de data som brugerne lægger op. På den måde er data ikke tilgængelige for selve webserveren, men kræver adgang til databasen.</p>
 
@@ -857,13 +858,13 @@ MariaDB [(none)]> <span class="red">exit</span>
 	</tbody>
 </table>
 
-<span class="afsnit">Afslut installationen</span>
+<h3>Afslut installationen</h3>
 
-<p>Klik på <span class="inl_cmd">Finish setup</span>, for at afslutte konfigurationen af Nextcloud. Efter lidt til start Nextcloud op.</p>
+<p>Klik på <span class="inl_cmd">Afslut opsætning</span>, for at afslutte konfigurationen af Nextcloud. Efter lidt til start Nextcloud op.</p>
 
 <figure id="">
 
-	<img class="p90" src="images/webserver_nexcloud_setup05.png" alt="" title="" />
+	<img class="p90" src="images/webserver_nexcloud_setup04.png" alt="" title="" />
 
 	<figcaption></figcaption>
 
@@ -871,7 +872,32 @@ MariaDB [(none)]> <span class="red">exit</span>
 
 <h2>Optimering af Nextcloud</h2>
 
-<span class="afsnit">Konfigurer datacache</span>
+<h3>Konfigurer opcache</h3>
+
+<p>Indsæt følgende linier (markeret med rødt) i bunden af <span class="inl_cmd">nano /etc/php/7.0/apache2/php.ini
+</span></p>
+
+<code class="cmd">sudo nano /etc/php/7.0/apache2/php.ini</code>
+
+<pre class="black">
+; Local Variables:
+; tab-width: 4
+; End:
+
+<span class="red">opcache.enable=1
+opcache.enable_cli=1
+opcache.interned_strings_buffer=8
+opcache.max_accelerated_files=10000
+opcache.memory_consumption=128
+opcache.save_comments=1
+opcache.revalidate_freq=1</span>
+</pre>
+
+<p>Genstart Apache</p>
+
+<code class="cmd">sudo service apache2 reload</code>
+
+<h3>Konfigurer datacache</h3>
 
 <p>For at optimere data i nextcloud skal programmet PACu installeres:</p>
 
@@ -884,25 +910,25 @@ MariaDB [(none)]> <span class="red">exit</span>
 <pre class="black">
 <span class="green1">&lt;?php</span>
 $CONFIG = array (
-  'instanceid' => 'ocopuk8v1cp5',
-  'passwordsalt' => 'VvzYXbnqZRiv8fSS5NDE+zMgy6h8Uk',
-  'secret' => 'MoI6HPw1OjXv6+v5KKUgRVcnzaUQ8/4SQAwl0EfKH7ZqUOcb',
+  'instanceid' => 'ocjqh4o6v92k',
+  'passwordsalt' => 'QXlXhIo9QUmnXMW4yUUhIG5OgvkbQB',
+  'secret' => 'W7QTN0u+VfL3HeWsd092T09RIXmS39HMfZUyv/pAfGjioVR/',
   'trusted_domains' => 
   array (
-    0 => '192.168.0.10',
+    0 => '127.0.0.1',
   ),
   'datadirectory' => '/srv/nextcloudData',
-  'overwrite.cli.url' => 'http:<span class="blue1">//192.168.0.10/nextcloud',</span>
+  'overwrite.cli.url' => 'https:<span class="blue1">//127.0.0.1/nextcloud</span>',
   'dbtype' => 'mysql',
-  'version' => '9.0.52.0',
+  'version' => '12.0.0.29',
   'dbname' => 'nextcloudDB',
   'dbhost' => 'localhost',
+  'dbport' => '',
   'dbtableprefix' => 'oc_',
   'dbuser' => 'nextcloud',
   'dbpassword' => '123qwe',
-  'logtimezone' => 'UTC',
   'installed' => true,
-<span class="red">  'memcache.local' => '\OC\Memcache\APCu',</span>
+  'memcache.local' => '\OC\Memcache\APCu', <span class="red">&larr;Indsæt her</span>
 );
 <span class="green1">?></span>
 </pre>
@@ -914,13 +940,22 @@ $CONFIG = array (
 <pre class="black">
 ....
 
-; Local Variables:
-; tab-width: 4
-; End:
+opcache.enable=1
+opcache.enable_cli=1
+opcache.interned_strings_buffer=8
+opcache.max_accelerated_files=10000
+opcache.memory_consumption=128
+opcache.save_comments=1
+opcache.revalidate_freq=1
+
 <span class="red">apc.enable_cli = 1</span>
 </pre>
 
-<span class="afsnit">Konfigurering af max filstørrelse</span>
+<p>Genstart Apache</p>
+
+<code class="cmd">sudo service apache2 reload</code>
+
+<h3>Konfigurering af max filstørrelse</h3>
 
 <p>Som standard er Nextcloud sat til at filer ikke må være større end 513 MB. Det kan være upraktisk hvis man f.eks. ønsker at bruge nextclouod til backup eller ISO-filer. For at ændre dette skal vi have ændret i den skjulte fil <span class="inl_cmd">.htaccess</span>, der ligger i Nextclouds webmappe <span class="inl_cmd">/var/www/nextcloud</span>.</p>
 
@@ -1036,7 +1071,7 @@ fi
 <pre class="ubuntu_terminal">
 <span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ sudo su
 Adgangskode: 
-root@mainsrv:/home/tj#
+root@tj-VirtualBox:/home/tj#
 </pre>
 
 <p>Læg mærke til at linien skifter fra <span class="inl_cmd"><span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$</span> til <span class="inl_cmd">root@mainsrv:/home/tj#</span>. Kør scriptet i root-shell med kommandoen:</p>
@@ -1044,21 +1079,31 @@ root@mainsrv:/home/tj#
 <code class="cmd">./nextcloud_rettigheder.sh </code>
 
 <pre class="ubuntu_terminal">
-root@mainsrv:/home/tj# ./nextcloud_rettigheder.sh 
+root@tj-VirtualBox:/home/tj# ./nextcloud_rettigheder.sh 
 Creating possible missing Directories
 chmod Files and Directories
 chown Directories
 chmod/chown .htaccess
-root@mainsrv:/home/tj#
+root@tj-VirtualBox:/home/tj# 
 </pre>
 
 <p>Efter scriptet er kørt er alle filer og mapper konfigureret på den bedst mulige måde. Afslut <span class="inl_cmd">root</span>-shell med kommandoen <span class="inl_cmd">exit</span>.</p>
 
 <pre class="ubuntu_terminal">
-root@mainsrv:/home/tj# exit
+root@tj-VirtualBox:/home/tj# exit
 exit
 <span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ 
 </pre>
+
+<p>Hvis du ikke har logget af nextcloud, skal du gøre det nu, for at alle ændringer slår igennem. Log ind ved hjælp af din nextadmin bruger og dennes password og tjek at alt virker.</p>
+
+<figure id="">
+
+	<img class="p30" src="images/webserver_nexcloud_setup05.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
 
 <h1>Wordpress</h1>
 
@@ -1066,27 +1111,15 @@ exit
 
 <p>Hent den nyeste version af wordpress</p>
 
-<code class="cmd">wget https://wordpress.org/latest.tar.gz</code>
+<code class="cmd">wget -P ~ https://wordpress.org/latest.tar.gz</code>
 
 <p>Udpak filen</p>
 
-<code class="cmd">tar -xzf latest.tar.gz</code>
-
-<pre class="ubuntu_terminal">
-<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ tar -xzf latest.tar.gz
-<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ ls -l
-totalt 27864
-lrwxrwxrwx  1 tj tj       14 jul  5 10:28 <span class="turk">html</span> -> <span class="blue1">/var/www/html/</span>
--rw-rw-r--  1 tj tj  7773389 jun 21 18:18 <span class="red">latest.tar.gz</span>
-drwxr-xr-x 14 tj tj     4096 jul  5 11:10 <span class="blue1">nextcloud</span>
--rw-rw-r--  1 tj tj 28523179 jul  5 11:12 <span class="red">nextcloud-9.0.52.tar.bz2</span>
-drwx---r-x  5 tj tj     4096 jul  5 10:39 <span class="blue1">public_html</span>
-drwxr-xr-x  5 tj tj     4096 jul  5 10:39 <span class="blue1">wordpress</span>
-</pre>
+<code class="cmd">tar -xzf ~/latest.tar.gz</code>
 
 <p>Kopier Wordpress over i webserverens mappe</p>
 
-<code class="cmd">sudo cp -r wordpress/* /var/www/html</code>
+<code class="cmd">sudo cp -r ~/wordpress/* /var/www/html</code>
 
 <p>Opret en mappe til uploads:</p>
 
@@ -1169,7 +1202,7 @@ MariaDB [(none)]> exit
 
 <code class="cmd">sudo nano /etc/php/7.0/apache2/php.ini</code>
 
-<p>Find nedestående linier og ændr størrelsen til <span class="inl_cmd">64MB</span> og <span class="inl_cmd">300</span>.</p>
+<p>Find nedestående linier og ændr størrelsen til <span class="inl_cmd">64MB</span> og <span class="inl_cmd">300</span>. Brug <kbd>Ctrl</kbd>+<kbd>w</kbd> til at finde linierne.</p>
 
 <pre class="black">
 upload_max_filesize <span class="red">64M</span>
@@ -1181,11 +1214,13 @@ max_execution_time <span class="red">300</span>
 max_input_time <span class="red">300</span>
 </pre>
 
+<p>Genstart Apache</p>
+
+<code class="cmd">sudo service apache2 reload</code>
+
 <h2>Konfigurer Wordpress</h2>
 
-<p>Da vi har sat wordpress til at være roden på vores webserver, skal vi blot indtaste IP-adressen i browseren: <span class="inl_cmd">https://192.168.0.10/</span></p>
-
-<p>Åbn Nextcloud i browseren på adressen: https://192.168.0.10/. Første gang Wordpress startes bliver man ført igennem konfigurationen. Herunder er vist og forklaret:</p>
+<p>Da vi har sat wordpress til at være roden på vores webserver, skal vi blot indtaste IP-adressen i browseren: <span class="inl_cmd">https://127.0.0.1/</span>. Første gang Wordpress startes bliver man ført igennem konfigurationen. Herunder er vist og forklaret:</p>
 
 <span class="afsnit">Vælg sprog</span>
 
@@ -1341,15 +1376,7 @@ max_input_time <span class="red">300</span>
 
 <span class="afsnit">Første kig på din side</span>
 
-<p>I øverste venstre hjørne klikker du på "Min Wordpress", hvorefter du får adgang til din hjemmeside som den ser ud for dem som besøger den.</p>
-
-<figure id="">
-
-	<img class="p70" src="images/webserver_wordpress_setup09.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
+<p>I øverste venstre hjørne klikker du på "Min side", hvorefter du får adgang til din hjemmeside som den ser ud for dem som besøger den.</p>
 
 <figure id="">
 
@@ -1406,7 +1433,7 @@ chown ${rootuser}:${htgroup} ${wpPath}/.htaccess
 <pre class="ubuntu_terminal">
 <span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ sudo su
 Adgangskode: 
-root@mainsrv:/home/tj#
+root@tj-VirtualBox:/home/tj#
 </pre>
 
 <p>Læg mærke til at linien skifter fra <span class="inl_cmd"><span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$</span> til <span class="inl_cmd">root@mainsrv:/home/tj#</span>. Kør scriptet i root-shell med kommandoen:</p>
@@ -1424,7 +1451,7 @@ root@mainsrv:/home/tj#
 <p>Efter scriptet er kørt er alle filer og mapper konfigureret på den bedst mulige måde. Afslut <span class="inl_cmd">root</span>-shell med kommandoen <span class="inl_cmd">exit</span>.</p>
 
 <pre class="ubuntu_terminal">
-root@mainsrv:/home/tj# exit
+root@tj-VirtualBox:/home/tj# exit
 exit
 <span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ 
 </pre>
