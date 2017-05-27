@@ -91,7 +91,7 @@
 
 <code class="cmd">sudo apt -y install apache2</code>
 
-<p>Kontroller at den virker ved at åbne en browser og indtast webserverens IP-adresse, som i dette tilfælde er <span class="inl_cmd">192.168.0.10</span>:</p>
+<p>Kontroller at den virker ved at åbne en browser og indtast webserverens IP-adresse. Her vælger vi <span class="inl_cmd">127.0.0.1</span>, da det er maskinens lokale webserver.</p>
 
 <figure id="">
 
@@ -113,9 +113,9 @@
 
 <code class="more_cmd">sudo a2ensite default-ssl.conf </code>
 
-<code class="more_cmd">sudo systemctl restart apache2</code>
+<code class="more_cmd">sudo service apache2 reload</code>
 
-<p>Herefter vil du kunne anvende HTTPS. Skriv adressen <span class="inl_cmd">https://192.168.0.10</span>. Vær opmærksom på, at det giver en fejl når man anvender serveren, da siden ikke har noget certifikat.</p>
+<p>Herefter vil du kunne anvende HTTPS. Skriv adressen <span class="inl_cmd">https://127.0.0.1</span>. Vær opmærksom på, at det giver en fejl når man anvender serveren, da siden ikke har noget certifikat.</p>
 
 <figure id="">
 
@@ -125,7 +125,7 @@
 
 </figure>
 
-<p>Vælg <span class="inl_cmd">Avanceret</span> og <span class="inl_cmd">Fortsæt til 192.168.0.10 (usikkert)</span></p>
+<p>Vælg <span class="inl_cmd">Avanceret</span> og <span class="inl_cmd">Fortsæt til 127.0.0.1 (usikkert)</span></p>
 
 <figure id="">
 
@@ -156,13 +156,13 @@
 
 <p>Efter installationen skal Apache genstartes, så ændringer kan slå igennem:</p>
 
-<code class="cmd">sudo systemctl restart apache2</code>
+<code class="cmd">sudo service apache2 reload</code>
 
 <p>For at kontrollere at PHP er installeret korrekt skal vi: opretter vi filen <span class="inl_cmd">/var/www/html/info.php</span> med lidt kode</p>
 
 <code class="cmd">echo "&lt;?php phpinfo(); ?&gt;" | sudo tee /var/www/html/info.php</code>
 
-<p>Tjek siden i browseren på adressen <span class="inl_cmd">10.0.2.10/info.php</span>:</p>
+<p>Tjek siden i browseren på adressen <span class="inl_cmd">127.0.0.1/info.php</span>:</p>
 
 <figure id="">
 
@@ -187,43 +187,43 @@
 
 <p>Opret det symbolske link:</p>
 
-<code class="cmd">ln -s /var/www/html/ ~</code>
+<code class="cmd">ln -s /var/www/html/ ~/html</code>
 
 <p>Tjek om linket er oprettet og det virker:</p>
 
-<pre class="ubuntu_terminal">
-thoj@mainsrv:~$ ls -l
-totalt 0
-lrwxrwxrwx 1 thoj thoj 14 jul  3 21:11 <span class="turk">html</span> -> <span class="blue1">/var/www/html/</span>
--rw-rw-r-- 1 thoj thoj  0 jul  3 00:31 testfile
-thoj@mainsrv:~$ cd ~/html <span class="red">&lt;--- naviger ind i html mappen</span>
-thoj@mainsrv:~/html$ ls -l
-totalt 16
--rw-r--r-- 1 root root 11321 jul  3 20:01 index.html
--rw-r--r-- 1 root root    20 jul  3 20:20 info.php
+<pre class="ubuntu_terminal"><span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ ls -al ~ | grep html
+lrwxrwxrwx  1 tj   tj     14 maj 27 01:50 <span class="red">html</span> -> /var/www/<span class="red">html</span>/
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ cd html
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~<span class="blue1">/html</span></span>$ ls -l
+totalt 20
+drwxr-xr-x 2 root root  4096 maj 27 01:45 .
+drwxr-xr-x 3 root root  4096 maj 27 01:05 ..
+-rw-r--r-- 1 root root 11321 maj 27 01:05 index.html
 </pre>
+
+
 
 <h2>Gør dig selv til ejer</h2>
 
 <p>Ved at gøre dig selv til ejer af www-serverens filer kan du redigere direkte i filerne uden at bekymre dig om rettighederne.</p>
 
-<p>Ændr ejerskab og rettigheder for filerne i mappen <span class="inl_cmd">/var/www/html</span> til dig selv - i dette tilfælde <span class="inl_cmd">thoj</span></p>
+<p>Ændr ejerskab og rettigheder for filerne i mappen <span class="inl_cmd">/var/www/html</span> til dig selv - i dette tilfælde <span class="inl_cmd">tj</span></p>
 
-<code class="cmd">sudo chown -R thoj:thoj /var/www/html</code>
+<code class="cmd">sudo chown -R tj:tj /var/www/html</code>
 
-<code class="cmd">sudo chmod 705 -R /var/www/html</code>
+<code class="more_cmd">sudo chmod 705 -R /var/www/html</code>
 
 <pre class="ubuntu_terminal">
-thoj@mainsrv:~$ ls -l /var/www/html/
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ ls -l /var/www/html/
 totalt 16
--rwx---r-x 1 thoj thoj 11321 jul  3 20:01 <span class="green1">index.html</span>
+-rwx---r-x 1 tj tj 11321 jul  3 20:01 <span class="green1">index.html</span>
 </pre>
 
 <p>Læg mærke til at man bliver nød til at bruge den fulde sti til mappen for at se indholdet. Hvis man viser en liste ved at bruge det symbolske link sker der følgende:</p>
 
 <pre class="ubuntu_terminal">
-thoj@mainsrv:~$ ls -l ~/html
-lrwxrwxrwx 1 thoj thoj 14 jul  4 18:45 <span class="turk">/home/thoj/html</span> -> <span class="blue1">/var/www/html/</span>
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ ls -l ~/html
+lrwxrwxrwx 1 tj tj 14 maj 27 01:50 <span class="turk">/home/tj/html</span> -> <span class="blue1">/var/www/html/</span>
 </pre>
 
 <p>Grunden til at vi ikke ser indholdet af den mappe det symbolske link henviser til skyldes, at linket egentlig er en fil. Derfor kan man ikke liste indholdet af mappen. Man kan godt godt "ramme" en fil igennem det symbolske link f.eks:</p>
@@ -231,11 +231,13 @@ lrwxrwxrwx 1 thoj thoj 14 jul  4 18:45 <span class="turk">/home/thoj/html</span>
 <code class="cmd">cat ~/html/index.html | head -5</code>
 
 <pre class="ubuntu_terminal">
-thoj@mainsrv:~$ cat ~/html/index.html | head -5
-&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;
-&lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ cat ~/html/index.html | head -5
+
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+&lt;html xmlns="http://www.w3.org/1999/xhtml">
   &lt;!--
     Modified from the Debian original for Ubuntu
+
 </pre>
 
 
@@ -246,7 +248,7 @@ thoj@mainsrv:~$ cat ~/html/index.html | head -5
 <p>Alle brugere bliver oprettet ud fra en skabelon som ligger i <span class="inl_cmd">/etc/skel</span>.</p>
 
 <pre class="ubuntu_terminal">
-thoj@tjmainsrv:/etc/skel$ ls -al
+tj@tjmainsrv:/etc/skel$ ls -al
 total 20
 drwxr-xr-x  2 root root 4096 dec  4 08:08 .
 drwxr-xr-x 98 root root 4096 dec 16 11:30 ..
@@ -274,7 +276,7 @@ drwxr-xr-x 98 root root 4096 dec 16 11:30 ..
 <code class="more_cmd">tree /etc/skel -pua --dirsfirst</code>
 
 <pre class="ubuntu_terminal">
-thoj@mainsrv:~$ tree /etc/skel -pua --dirsfirst
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ tree /etc/skel -pua --dirsfirst
 <span class="blue1">/etc/skel</span>
 ├── [drwx---r-x root    ]  <span class="blue1">public_html</span>
 │   ├── [drwx---r-x root    ]  <span class="blue1">css</span>
@@ -326,7 +328,7 @@ thoj@mainsrv:~$ tree /etc/skel -pua --dirsfirst
 
 <code class="cmd">sudo a2enmod userdir</code>
 
-<code class="more_cmd">sudo systemctl restart apache2</code>
+<code class="more_cmd">sudo service apache2 reload</code>
 
 <p>Test ved at oprette brugeren <span class="inl_cmd">testweb</span> og naviger til <span class="inl_cmd">192.168.0.10/~testweb</span> i en browser og tilgå brugerens mappe over FTP. Vær opmærksom på at det kun er brugere, der er oprettet efter ændringen der får oprettet disse mapper.</p>
 
@@ -342,11 +344,11 @@ thoj@mainsrv:~$ tree /etc/skel -pua --dirsfirst
 
 </figure>
 
-<p>Vær opmærksom på at det kun er brugere, der er oprettet efter ændringen der får oprettet disse mapper. Ønsker du at give de oprindelige brugere deres egen web-mappe skal de kopieres ind og der skal ændres ejerskab.Her gøres det for min bruger <span class="inl_cmd">thoj</span>.</p>
+<p>Vær opmærksom på at det kun er brugere, der er oprettet efter ændringen der får oprettet disse mapper. Ønsker du at give de oprindelige brugere deres egen web-mappe skal de kopieres ind og der skal ændres ejerskab.Her gøres det for min bruger <span class="inl_cmd">tj</span>.</p>
 
-<code class="cmd">cp -R /etc/skel/public_html /home/thoj</code>
+<code class="cmd">cp -R /etc/skel/public_html /home/tj</code>
 
-<code class="more_cmd">chown -R thoj:thoj /home/thoj/public_html/</code>
+<code class="more_cmd">chown -R tj:tj /home/tj/public_html/</code>
 
 <h1>mariaDB og PHPMyAdmin</h1>
 
@@ -374,7 +376,7 @@ thoj@mainsrv:~$ tree /etc/skel -pua --dirsfirst
 <p>I dette script bliver <span class="inl_cmd">mariaDB</span>  sat op, så den er klar til brug. Da det er en ny installation har databasen endnu ikke noget password, så det skal vi oprette. Ellers er de svar du skal anvende angivet med en taste.</p>
 
 <pre class="ubuntu_terminal">
-thoj@mainsrv:~$ sudo mysql_secure_installation
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ sudo mysql_secure_installation
 
 NOTE: RUNNING ALL PARTS OF THIS SCRIPT IS RECOMMENDED FOR ALL MariaDB
       SERVERS IN PRODUCTION USE!  PLEASE READ EACH STEP CAREFULLY!
@@ -436,7 +438,7 @@ All done!  If you've completed all of the above steps, your MariaDB
 installation should now be secure.
 
 Thanks for using MariaDB!
-thoj@mainsrv:~$
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$
 </pre>
 
 <p>Der er to brugere der nu har adgang til databasen. Det er systemets root og databasens rod. Som det er lige nu er det kun systemets rod der har lov til at logge på databasen. Det skal ændres, sådan at andre brugere også kan logge på databasen. Start <span class="inl_cmd">mysql</span> som systemets rod</p>
@@ -488,7 +490,7 @@ thoj@mainsrv:~$
 
 <p>Genstart Apache 2</p>
 
-<code class="cmd">sudo systemctl restart apache2</code>
+<code class="cmd">sudo service apache2 reload</code>
 
 <h2>Konfiguration af mariaDB</h2>
 
@@ -497,7 +499,7 @@ thoj@mainsrv:~$
 <code class="cmd">sudo mysql</code>
 
 <pre class="ubuntu_terminal">
-thoj@mainsrv:~$ sudo mysql
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ sudo mysql
 <span class="bold">Welcome to the MariaDB monitor.  Commands end with ; or \g.
 Your MariaDB connection id is 65
 Server version: 10.0.25-MariaDB-0ubuntu0.16.04.1 Ubuntu 16.04
@@ -532,7 +534,7 @@ MariaDB [mysql]> <span class="red">flush privileges;</span>
 
 MariaDB [mysql]> <span class="red">exit</span>
 <span class="bold">Bye</span>
-thoj@mainsrv:~$                <span class="red">&lt;--- Tilbage på kommandolinien</span>
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$                <span class="red">&lt;--- Tilbage på kommandolinien</span>
 </pre>
 
 <p>Prøv herefter at logge på <span class="inl_cmd">mysql's</span> root, med din egen bruger (altså uden sudo):</p>
@@ -540,7 +542,7 @@ thoj@mainsrv:~$                <span class="red">&lt;--- Tilbage på kommandolin
 <code class="cmd">mysql -u root -p</code>
 
 <pre class="ubuntu_terminal">
-thoj@mainsrv:~$ mysql -u root -p
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ mysql -u root -p
 Enter password: 
 <span class="bold">Welcome to the MariaDB monitor.  Commands end with ; or \g.
 Your MariaDB connection id is 53
@@ -552,7 +554,7 @@ Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.</
 
 MariaDB [(none)]> exit
 <span class="bold">Bye</span>
-thoj@mainsrv:~$
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$
 </pre>
 
 <p>Vi logger også på <span class="inl_cmd">PHPMyAdmin</span> fra en browser med adressen: <span class="inl_cmd">10.0.2.10/phpmyadmin</span></p>
@@ -589,7 +591,7 @@ thoj@mainsrv:~$
 <code class="cmd">wget https://download.nextcloud.com/server/releases/nextcloud-<span class="red">9.0.52</span>.tar.bz2</code>
 
 <pre class="ubuntu_terminal">
-thoj@mainsrv:~$ wget https://download.nextcloud.com/server/releases/nextcloud-9.0.52.tar.bz2
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ wget https://download.nextcloud.com/server/releases/nextcloud-9.0.52.tar.bz2
 --2016-07-05 17:34:23--  https://download.nextcloud.com/server/releases/nextcloud-9.0.52.tar.bz2
 Løser download.nextcloud.com (download.nextcloud.com)... 88.198.160.133
 Tilslutter download.nextcloud.com (download.nextcloud.com)|88.198.160.133|:443... forbundet.
@@ -609,13 +611,13 @@ nextcloud-9.0.52.ta 100%[==================>]  27,20M  3,41MB/s    in 8,0s
 <p>Som du kan se herunder er filerne pakket ud i mappen <span class="inl_cmd">nextcloud</span>.</p>
 
 <pre class="ubuntu_terminal">
-thoj@mainsrv:~$ tar -xjf nextcloud-9.0.52.tar.bz2
-thoj@mainsrv:~$ ls -l
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ tar -xjf nextcloud-9.0.52.tar.bz2
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ ls -l
 totalt 27864
-lrwxrwxrwx  1 thoj thoj       14 jul  5 10:28 <span class="turk">html</span> -> <span class="blue1">/var/www/html/</span>
-drwxr-xr-x 14 thoj thoj     4096 jul  5 11:10 <span class="blue1">nextcloud</span>
--rw-rw-r--  1 thoj thoj 28523179 jul  5 11:12 <span class="red">nextcloud-9.0.52.tar.bz2</span>
-drwx---r-x  5 thoj thoj     4096 jul  5 10:39 <span class="blue1">public_html</span>
+lrwxrwxrwx  1 tj tj       14 jul  5 10:28 <span class="turk">html</span> -> <span class="blue1">/var/www/html/</span>
+drwxr-xr-x 14 tj tj     4096 jul  5 11:10 <span class="blue1">nextcloud</span>
+-rw-rw-r--  1 tj tj 28523179 jul  5 11:12 <span class="red">nextcloud-9.0.52.tar.bz2</span>
+drwx---r-x  5 tj tj     4096 jul  5 10:39 <span class="blue1">public_html</span>
 </pre>
 
 <p>Flyt mappen <span class="inl_cmd">nextcloud</span> til <span class="inl_cmd">/var/www</span></p>
@@ -673,7 +675,7 @@ Alias /nextcloud "/var/www/nextcloud/"
 
 <p>Genstart Apache2, så ændringer kan blive aktiveret.</p>
 
-<code class="cmd">sudo systemctl restart apache2</code>
+<code class="cmd">sudo service apache2 reload</code>
 
 <p>Kontroller at nextcloud kører ved at gå til adressen <span class="inl_cmd">https://192.168.0.10/nextcloud</span>:</p>
 
@@ -721,7 +723,7 @@ Alias /nextcloud "/var/www/nextcloud/"
 <p>Det kommer til at se ud som følger. Kommandoer er markeret med rødt:</p>
 
 <pre class="ubuntu_terminal">
-thoj@mainsrv:~$ <span class="red">mysql -u root -p</span>
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ <span class="red">mysql -u root -p</span>
 Enter password: 
 <span class="bold">Welcome to the MariaDB monitor.  Commands end with ; or \g.
 Your MariaDB connection id is 7
@@ -947,7 +949,7 @@ $CONFIG = array (
 
 <p>Genstart Apache 2 for at ændringerne slår igennem.</p>
 
-<code class="cmd">sudo systemctl restart apache2</code>
+<code class="cmd">sudo service apache2 reload</code>
 
 <h2>Sæt sikkerheden</h2>
 
@@ -1021,30 +1023,30 @@ fi
 <p>Scriptet er lavet så det skal køres i en <span class="inl_cmd">root</span>-shell. Det gør vi ved at køre kommandoen <span class="inl_cmd">sudo su</span>.</p>
 
 <pre class="ubuntu_terminal">
-thoj@mainsrv:~$ sudo su
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ sudo su
 Adgangskode: 
-root@mainsrv:/home/thoj#
+root@mainsrv:/home/tj#
 </pre>
 
-<p>Læg mærke til at linien skifter fra <span class="inl_cmd">thoj@mainsrv:~$</span> til <span class="inl_cmd">root@mainsrv:/home/thoj#</span>. Kør scriptet i root-shell med kommandoen:</p>
+<p>Læg mærke til at linien skifter fra <span class="inl_cmd"><span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$</span> til <span class="inl_cmd">root@mainsrv:/home/tj#</span>. Kør scriptet i root-shell med kommandoen:</p>
 
 <code class="cmd">./nextcloud_rettigheder.sh </code>
 
 <pre class="ubuntu_terminal">
-root@mainsrv:/home/thoj# ./nextcloud_rettigheder.sh 
+root@mainsrv:/home/tj# ./nextcloud_rettigheder.sh 
 Creating possible missing Directories
 chmod Files and Directories
 chown Directories
 chmod/chown .htaccess
-root@mainsrv:/home/thoj#
+root@mainsrv:/home/tj#
 </pre>
 
 <p>Efter scriptet er kørt er alle filer og mapper konfigureret på den bedst mulige måde. Afslut <span class="inl_cmd">root</span>-shell med kommandoen <span class="inl_cmd">exit</span>.</p>
 
 <pre class="ubuntu_terminal">
-root@mainsrv:/home/thoj# exit
+root@mainsrv:/home/tj# exit
 exit
-thoj@mainsrv:~$ 
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ 
 </pre>
 
 <h1>Wordpress</h1>
@@ -1060,15 +1062,15 @@ thoj@mainsrv:~$
 <code class="cmd">tar -xzf latest.tar.gz</code>
 
 <pre class="ubuntu_terminal">
-thoj@mainsrv:~$ tar -xzf latest.tar.gz
-thoj@mainsrv:~$ ls -l
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ tar -xzf latest.tar.gz
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ ls -l
 totalt 27864
-lrwxrwxrwx  1 thoj thoj       14 jul  5 10:28 <span class="turk">html</span> -> <span class="blue1">/var/www/html/</span>
--rw-rw-r--  1 thoj thoj  7773389 jun 21 18:18 <span class="red">latest.tar.gz</span>
-drwxr-xr-x 14 thoj thoj     4096 jul  5 11:10 <span class="blue1">nextcloud</span>
--rw-rw-r--  1 thoj thoj 28523179 jul  5 11:12 <span class="red">nextcloud-9.0.52.tar.bz2</span>
-drwx---r-x  5 thoj thoj     4096 jul  5 10:39 <span class="blue1">public_html</span>
-drwxr-xr-x  5 thoj thoj     4096 jul  5 10:39 <span class="blue1">wordpress</span>
+lrwxrwxrwx  1 tj tj       14 jul  5 10:28 <span class="turk">html</span> -> <span class="blue1">/var/www/html/</span>
+-rw-rw-r--  1 tj tj  7773389 jun 21 18:18 <span class="red">latest.tar.gz</span>
+drwxr-xr-x 14 tj tj     4096 jul  5 11:10 <span class="blue1">nextcloud</span>
+-rw-rw-r--  1 tj tj 28523179 jul  5 11:12 <span class="red">nextcloud-9.0.52.tar.bz2</span>
+drwx---r-x  5 tj tj     4096 jul  5 10:39 <span class="blue1">public_html</span>
+drwxr-xr-x  5 tj tj     4096 jul  5 10:39 <span class="blue1">wordpress</span>
 </pre>
 
 <p>Kopier Wordpress over i webserverens mappe</p>
@@ -1123,7 +1125,7 @@ drwxr-xr-x  5 thoj thoj     4096 jul  5 10:39 <span class="blue1">wordpress</spa
 
 
 <pre class="ubuntu_terminal">
-thoj@mainsrv:~$ mysql -u root -p
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ mysql -u root -p
 Enter password: 
 <span class="bold">Welcome to the MariaDB monitor.  Commands end with ; or \g.
 Your MariaDB connection id is 7
@@ -1147,7 +1149,7 @@ MariaDB [(none)]> FLUSH PRIVILEGES;
 
 MariaDB [(none)]> exit
 <span class="bold">Bye</span>
-thoj@mainsrv:~$ 
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ 
 </pre>
 
 <h2>Sæt upload indstillinger</h2>
@@ -1391,29 +1393,29 @@ chown ${rootuser}:${htgroup} ${wpPath}/.htaccess
 <p>Scriptet er lavet så det skal køres i en <span class="inl_cmd">root</span>-shell. Det gør vi ved at køre kommandoen <span class="inl_cmd">sudo su</span>.</p>
 
 <pre class="ubuntu_terminal">
-thoj@mainsrv:~$ sudo su
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ sudo su
 Adgangskode: 
-root@mainsrv:/home/thoj#
+root@mainsrv:/home/tj#
 </pre>
 
-<p>Læg mærke til at linien skifter fra <span class="inl_cmd">thoj@mainsrv:~$</span> til <span class="inl_cmd">root@mainsrv:/home/thoj#</span>. Kør scriptet i root-shell med kommandoen:</p>
+<p>Læg mærke til at linien skifter fra <span class="inl_cmd"><span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$</span> til <span class="inl_cmd">root@mainsrv:/home/tj#</span>. Kør scriptet i root-shell med kommandoen:</p>
 
 <code class="cmd">./nextcloud_rettigheder.sh </code>
 
 <pre class="ubuntu_terminal">
-root@mainsrv:/home/thoj# ./wordpress_rettigheder.sh 
+root@mainsrv:/home/tj# ./wordpress_rettigheder.sh 
 chmod Files and Directories
 chown Directories
 chmod/chown .htaccess
-root@mainsrv:/home/thoj# 
+root@mainsrv:/home/tj# 
 </pre>
 
 <p>Efter scriptet er kørt er alle filer og mapper konfigureret på den bedst mulige måde. Afslut <span class="inl_cmd">root</span>-shell med kommandoen <span class="inl_cmd">exit</span>.</p>
 
 <pre class="ubuntu_terminal">
-root@mainsrv:/home/thoj# exit
+root@mainsrv:/home/tj# exit
 exit
-thoj@mainsrv:~$ 
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ 
 </pre>
 
 <!--
