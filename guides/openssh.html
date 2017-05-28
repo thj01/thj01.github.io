@@ -39,9 +39,19 @@
 
 <h1>Hvad er SSH</h1>
 
-<p>SSH (<span class="bold">S</span>ecure <span class="bold">SH</span>ell) er en protokol der giver krypteret adgang til andre maskiner over netværk. Ved hjælp af SSH kan man fjernadministrere maskiner på nettet, og overføre kommandoer og data.</p>
+<p>SSH (<span class="bold">S</span>ecure <span class="bold">SH</span>ell) er en protokol der giver krypteret og sikker adgang til andre maskiner over netværk. Det som OpenSSH tilbyder er:</p>
 
 <p>I denne guide vil der bliver gennemgået følgende:</p>
+
+<ul class="disc">
+	<li>OpenSSH er opensource. Koden ligger tilgængelig - for alle</li>
+	<li>Krypteret kommunikationen allerede før brugernavn og kodeord er anvendt.</li>
+	<li>Stærke godkendelsesprocedurer (Strong authentication) der bl.a. forhindrer IP- og DNS-spoofing - ved at det både er bruger og netværksenhed der anvendes til autentifikation..</li>
+</ul>
+
+<h2>Indhold</h2>
+
+<p>I dette materiale vil følgende blive gennemgået.</p>
 
 <ol class="">
 	<li>Noget om sikkerhed</li>
@@ -51,99 +61,170 @@
 	<li>Kommandoer ved hjælp af SSH</li>
 </ol>
 
-<p>Konkret vil vi anvende OpenSSH, da dette er standard på Ubuntu.</p>
-
-<p>SSH er når alt kommer til alt fjernadgang til en computer ved hjælp af et netværk. Som standard gælder følgende:</p>
-
-<ul class="disc">
-	<li>OpenSSH er opensource. Koden ligger tilgængelig - for alle</li>
-	<li>Krypteret kommunikationen allerede før brugernavn og kodeord er anvendt.</li>
-	<li>Stærke godkendelsesprocedurer (Strong authentication) der bl.a. forhindrer IP- og DNS-spoofing</li>
-</ul>
-
-<p>Derudover kan OpenSSH konfigureres med langt stærkere sikkerhedsfeatures, bl.a. hvor godkendelsen er baseret på de fysiske maskiner.</p>
-
 <h2>Denne guide</h2>
 
-<p>Guiden tager udgangspunkt i en selvstændig server der er sat op på dit netværk. Netværket har følgende parametre:</p>
+<p>Guiden tager udgangspunkt i to Linux computere på samme private netværk.</p>
 
 <table class="">
 	<thead>
 		<tr>
 			<th></th>
-			<th></th>
+			<th>Computer 1</th>
+			<th>Computer 2</th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr>
-			<td>Netværk</td>
-			<td>10.0.2.0</td>
+			<td>IP</td>
+			<td>192.168.0.52</td>
+			<td>192.168.0.61</td>
 		</tr>
 		<tr>
-			<td>Netmaske</td>
-			<td>255.255.255.0 (CIDR /24)</td>
+			<td>Rolle</td>
+			<td>SSH-server*</td>
+			<td>SSH-klient</td>
 		</tr>
 		<tr>
-			<td>Gateway</td>
-			<td>10.0.2.1</td>
+			<td>CIDR (netmaske)</td>
+			<td>/24 (225.225.225.0)</td>
+			<td>/24 (225.225.225.0)</td>
 		</tr>
 		<tr>
-			<td>DNS</td>
-			<td>8.8.8.8 8.8.4.4 (Googles DNS)</td>
-		</tr>
-		<tr>
-			<td>DHCP-scope</td>
-			<td>10.0.2.100 - 10.0.2.200</td>
-		</tr>
-		<tr>
-			<td>Server IP</td>
-			<td>10.0.2.10</td>
-		</tr>
-		<tr>
-			<td>FQDN</td>
-			<td>mainsrv.home.local</td>
+			<td>Computernavn</td>
+			<td>tj-Virtualbox</td>
+			<td>tj-desktop</td>
 		</tr>
 	</tbody>
 </table>
 
-<h1>Installation og konfiguration af OpenSSH</h1>
+<p>* SSH-server betyder at andre skal kunne tilgå denne maskine ved hjælp af SSH.</p>
+
+<p>Du kan finde dine computeres IP-adresser med kommandoen <span class="inl_cmd">IP</span></p>
+
+<code class="cmd">ip address</code>
+
+<p>IP-adressen er markeret med rødt</p>
+
+<pre class="ubuntu_terminal"><span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ ip address
+1: lo: &lt;LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+2: enp0s3: &lt;BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+    link/ether 08:00:27:4c:dc:34 brd ff:ff:ff:ff:ff:ff
+    inet <span class="red">192.168.0.52/24</span> brd 192.168.0.255 scope global dynamic enp0s3
+       valid_lft 3479sec preferred_lft 3479sec
+    inet6 fe80::e1f9:b5a9:f659:fb46/64 scope link 
+       valid_lft forever preferred_lft forever
+</pre>
+
+<h2>SSH-klienter</h2>
+
+<ul class="fat_li none">
+	<li>Linux</li>
+	
+		<p>På Linux-systemer er SSH-klienten en del af terminalen. Arbejder man i en GUI skal man altså blot bruge tastekombinationen <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>t</kbd></p>
+	
+	<li>Windows</li>
+	
+		<p>På windows er der to muligheder:</p>
+		
+		<ul class="none">
+			<li>PuTTy - <a href="http://www.putty.org/" target="_blank">http://www.putty.org/</a></li>
+			
+			<li>Windows subsystem for Linux - <a href="https://msdn.microsoft.com/da-dk/commandline/wsl/install_guide" target="_blank">https://msdn.microsoft.com/da-dk/commandline/wsl/install_guide</a></li>
+			
+		</ul>
+
+	<li>Mac</li>
+</ul>
+
+<p>Anvender du windows kan jeg på varmeste anbefale dig at installere <span class="inl_cmd">Windows subsystem for Linux</span></p>
+
+
+
+<h1>Installation</h1>
 
 <p>Normalt vil man sørge for at OpenSSH-serveren er installeret fra start, men det skal tilvælges. Har du ikke gjort det kan du installere det med følgende kommando:</p>
 
 <code class="cmd">sudo apt-get install openssh-server -y</code>
 
-<p>SSH skal ikke installeres på Linux-klienter da SSH er indbygget som standard. Herunder vil de forskellige måde at tilgå en SSH server blive gennemgået. Der vil blive vist hvad der skal gøres på både vært og klient.</p>
+<p>Vi tester om det virker ved at SSH fra <span class="inl_cmd">tj-desktop</span> til <span class="inl_cmd">tj-Virtualbox (192.168.0.52)</span>, med kommandoen:</p>
+
+<code class="cmd">ssh tj@192.168.0.52</code>
+
+<p>Kommandoen fortæller at vi skal SSH til brugeren <span class="inl_cmd">tj</span> på (<span class="inl_cmd">@</span>) 192.168.0.52 (maskinens IP-adresse).</p>
+
+<p>Vi tester:</p>
+
+<pre class="ubuntu_terminal"><span class="green1">tj@tj-desktop</span>:<span class="blue1">~</span>$ ssh tj@192.168.0.52
+The authenticity of host '192.168.0.52 (192.168.0.52)' can't be established.
+ECDSA key fingerprint is SHA256:OCDOHsbLATzhobmq/BcaFHLHQDvATBweP4Rneo4CNAw.
+Are you sure you want to continue connecting (yes/no)? 
+</pre>
+
+<p>Første gang vi skal skabe forbindelse spørger SSH om vi er sikre. Du skal skrive <span class="inl_cmd">yes</span>, hvorefter du bliver spurgt om password til brugeren <span class="inl_cmd">tj</span> på  SSH-serveren.</p>
+
+<pre class="ubuntu_terminal"><span class="green1">tj@tj-desktop</span>:<span class="blue1">~</span>$ ssh tj@192.168.0.52
+The authenticity of host '192.168.0.52 (192.168.0.52)' can't be established.
+ECDSA key fingerprint is SHA256:OCDOHsbLATzhobmq/BcaFHLHQDvATBweP4Rneo4CNAw.
+Are you sure you want to continue connecting (yes/no)? 
+Warning: Permanently added '192.168.0.52' (ECDSA) to the list of known hosts.
+tj@192.168.0.52's password: 
+Welcome to Ubuntu 16.04.2 LTS (GNU/Linux 4.8.0-36-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+0 pakker kan opdateres.
+0 opdateringer er sikkerhedsopdateringer.
+
+
+The programs included with the Ubuntu system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
+applicable law.
+
+<span class="green1">tj@tj-Virtualbox</span>:<span class="blue1">~</span>$
+</pre>
+
+<p>Læg mærke til at du starter med at være på <span class="inl_cmd">tj-desktop</span>, men nu er på <span class="inl_cmd">tj-Virtualbox</span></p>
+
+<p>Du logger af med kommandoen <span class="inl_cmd">exit</span></p>
+
+<pre class="ubuntu_terminal"><span class="green1">tj@tj-Virtualbox</span>:<span class="blue1">~</span>$ exit
+log ud
+Connection to 192.168.0.52 closed.
+<span class="green1">tj@tj-desktop</span>:<span class="blue1">~</span>$
+</pre>
+
+
+<h1>Basale ændringer</h1>
+
+<p>Her vil vi vise hvordan vi kan lave de mest basale sikkerheds ændringer. Du bør som minimum ændre dem med røde stjerner.</p>
 
 <ol class="">
-	<li>Ændring af portnummer (fra 22 -> 222)</li>
-	<li>Fjern muligheden for root-login</li>
+	<li>Fjern muligheden for root-login<span class="red">*</span></li>
+	<li>Ændring af portnummer (fra 22 -> 222)<span class="red">*</span></li>
 	<li>Specifier tilladte brugere</li>
 	<li>Velkomst hilsen</li>
-	<li>Hold liv i forbindelsen</li>
+	<li>Hold liv i forbindelsen<span class="red">*</span></li>
 </ol>
 
-<p>Alle ændringer herunder skal laves i filen <span class="inl_cmd">/etc/ssh/sshd_config</span>. Åbne filen med nano:</p>
+<p>Alle ændringer herunder skal laves i filen <span class="inl_cmd">/etc/ssh/sshd_config</span> på SSH-serveren (<span class="inl_cmd">192.168.0.52</span>).</p>
+
+<p>Åbn filen med nano:</p>
 
 <code class="cmd">sudo nano /etc/ssh/sshd_config</code>
 
-<span class="afsnit">Ændring af portnummer</span>
+<h2>Fjern root-login</h2>
 
-<p>Som standard er OpenSSH sat til port 22. I mange guides ændres det til 222, hvilket reelt må anses for en lige så dårlig ide. Der er i alt 16 bit numre (2¹⁶ = 65536) så du kan teoretisk vælge et tal mellem 1 og 65536. Visse numre er dog afsat til konkrete protokoller (se liste <a href="https://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers" target="_blank">her</a>).</p>
-
-<p>Ændr <span class="inl_cmd"># What ports, IPs and protocols we listen for</span> </p>
-
-<pre class="black">
-# What ports, IPs and protocols we listen for
-Port 22 <span class="red">&#8592; Ændr dette tal til 222</span>
-</pre>
-
-<p>Genstart ssh og test ved at logge ind igen med det nye portnummer.</p>
-
-<code class="cmd">sudo service ssh restart</code>
-
-<span class="afsnit">Fjern muligheden for root-login</span>
-
-<p>Root bør ikke have adgang til at logge på over SSH, da det giver evt. hackere direkte adgang til systemet. Anvend altid en almindelig konto, som har <span class="inl_cmd">sudo</span> rettigheder.</p>
+<p>Root bør ikke have adgang til at logge på over SSH, da det giver evt. hackere direkte adgang til systemet. Skal en bruger kunne udføre administrationsarbejde på skal det være rettigheder der er givet lokalt på fjernmaskinen.</p>
 
 <p>Ændr:</p>
 
@@ -157,9 +238,60 @@ PermitRootLogin prohibit-password
 PermitRootLogin no
 </pre>
 
-<p></p>
+<p>Genindlæs konfigurationsfilerne, så dine ændringer slår igennem.</p>
 
-<span class="afsnit">Specifier tilladte brugere</span>
+<code class="cmd">sudo service ssh reload</code>
+
+<h2>Ændring af portnummer</h2>
+
+<p>Ved at ændre portnummeret gør man det sværere for hackere at bryde ind. Derfor ændrer vi port-nummeret.</p>
+
+<p>Som standard er OpenSSH sat til port 22. I mange guides ændres det til 222, hvilket reelt må anses for en lige så dårlig ide. Der er i alt 16 bit numre (2¹⁶ = 65536) så du kan teoretisk vælge et tal mellem 1 og 65536. Visse numre er dog afsat til konkrete protokoller (se liste <a href="https://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers" target="_blank">her</a>).</p>
+
+<p>Ændr <span class="inl_cmd"># What ports, IPs and protocols we listen for</span> </p>
+
+<pre class="black">
+# What ports, IPs and protocols we listen for
+Port 22 <span class="red">&#8592; Ændr dette tal til 222</span>
+</pre>
+
+<p>Genstart ssh og test ved at logge ind igen med det nye portnummer.</p>
+
+<code class="cmd">sudo service ssh reload</code>
+
+<h3>Test</h3>
+
+<p>Hvis vi nu prøver at logge ind som før sker der følgende:</p>
+
+<pre class="ubuntu_terminal">
+<span class="green1">tj@tj-desktop</span>:<span class="blue1">~</span>$ ssh tj@192.168.0.52
+ssh: connect to host 192.168.0.52 port 22: Connection refused
+<span class="green1">tj@tj-desktop</span>:<span class="blue1">~</span>$
+</pre>
+
+<p>Det skyldes at vi har ændret portnummeret, så det ikke mere er standardporten 22. Vi skal ændre vores kommando, så vi med <span class="inl_cmd">-p</span> angiver portnummeret:</p>
+
+<code class="cmd">ssh -p 222 tj@192.168.0.52</code>
+
+<pre class="ubuntu_terminal">
+<span class="green1">tj@tj-desktop</span>:<span class="blue1">~</span>$ ssh -p 222 tj@192.168.0.52
+tj@192.168.0.52's password: 
+Welcome to Ubuntu 16.04.2 LTS (GNU/Linux 4.8.0-36-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+0 pakker kan opdateres.
+0 opdateringer er sikkerhedsopdateringer.
+
+Last login: Sun May 28 12:31:22 2017 from 192.168.0.61
+
+<span class="green1">tj@tj-Virtualbox</span>:<span class="blue1">~</span>$
+</pre>
+
+
+<h2>Tilladte brugere</h2>
 
 <p>En anden effektiv måde at begrænse brugerne på systemer er, at indføre en positiv- eller negativliste over brugere. Tilføj linierne <span class="inl_cmd">AllowUsers</span> eller <span class="inl_cmd">DenyUsers</span> i bunden af filen. Hvilen man anvender må være en overvejelse over de brugere man har. Er der få der skal have adgang vil <span class="inl_cmd">AllowUsers</span> være simplest at administrere. Er der få der ikke skal have vil det være lettest at anvende <span class="inl_cmd">DenyUsers</span>.</p>
 
@@ -177,44 +309,52 @@ Denyusers wipe asti
 
 <p>Du kan senere prøve at sætte dig selv på positiv og negativlisterne og teste det.</p>
 
-<span class="afsnit">Velkomst hilsen</span>
+<p>Genindlæs konfigurationsfilerne, så dine ændringer slår igennem.</p>
 
-<p>Hvis du vil have at brugeren får nogle informationer ved login, kan det gøres gennem filen <span class="inl_cmd">/etc/issue.net</span>. Fjern hash foran linien<span class="inl_cmd">#Banner /etc/issue.net</span>.</p>
+<code class="cmd">sudo service ssh reload</code>
 
+<h2>Velkomst hilsen</h2>
 
+<p>Hvis du vil have at brugeren får nogle informationer ved login, kan det gøres gennem filen <span class="inl_cmd">/etc/issue.net</span>. For at gøre det skal du fjerne hash foran linien <span class="inl_cmd">#Banner /etc/issue.net</span> i konfigurationsfilen <span class="inl_cmd">/etc/ssh/sshd_config</span>.</p>
 
-<p>Nogle guides foreslår at man laver en advarsel om at misbrug vil blive meldt til myndighederne, ligesom når man skal se en film. Jeg tvivler på at det virker, så jeg anvender blot: Behave!. Vær opmærksom på at tegntabellen er begrænset. Så ingen æ, ø og å</p>
+<p>Vær opmærksom på at tegntabellen er begrænset (ASCII), så ingen æ, ø og å</p>
+
+<p>Genindlæse konfigurationsfilerne, så dine ændringer slår igennem.</p>
+
+<code class="cmd">sudo service ssh reload</code>
+
+<blockquote>
+	<p>Nogle guides foreslår at man laver en advarsel om at misbrug vil blive meldt til myndighederne, ligesom når man skal se en film. Jeg tvivler på at det virker, så jeg anvender blot: Behave!. </p>
+</blockquote>
 
 <p>Rediger <span class="inl_cmd">/etc/issue.net</span>. Skriv f.eks:</p>
 
 <pre class="black">
 
-*******************************************************
-***                                                 ***
-***    Welcome to mainsrv 10.0.2.10/24 - Behave!    ***
-***                                                 ***
-*******************************************************
+**************************************************
+***                                            ***
+***    Welcome to 192.168.0.51/24 - Behave!    ***
+***                                            ***
+**************************************************
 
 </pre>
 
-<p>Så vil enhver der logger ind ved hjælp af SSH på serveren se følgende:</p>
+<p>Du skal ikke genindlæse konfigurationsfilerne her, da denne fil bliver hentet direkte af SSH. Nu vil enhver der logger ind ved hjælp af SSH på serveren se følgende:</p>
 
-<pre class="ubuntu_terminal">
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ ssh thoj@10.0.2.10 -p 222
+<pre class="ubuntu_terminal"><span class="green1">tj@tj-desktop</span>:<span class="blue1">~</span>$ ssh -p 222 tj@192.168.0.52
 
-*******************************************************
-***                                                 ***
-***    Welcome to mainsrv 10.0.2.10/24 - Behave!    ***
-***                                                 ***
-*******************************************************
+**************************************************
+***                                            ***
+***    Welcome to 192.168.0.51/24 - Behave!    ***
+***                                            ***
+**************************************************
 
-thoj@10.0.2.10's password:
+tj@192.168.0.52's password:
 </pre>
 
 <p>Hvis du ønsker at lave noget acscii art kan du anvender <span class="inl_cmd">banner</span>, <span class="inl_cmd">figlet</span> eller <span class="inl_cmd">toilet</span> til at lave dine værker. Alle tre programmer skal installeres særskilt. Læs mere her: <a href="http://askubuntu.com/questions/282715/how-can-i-make-ascii-banners-from-the-command-line" target="_blank">http://askubuntu.com/questions/282715/how-can-i-make-ascii-banners-from-the-command-line</a>.</p>
 
-<pre class="ubuntu_terminal">
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ banner Behave!
+<pre class="ubuntu_terminal"><span class="green1">tj@tj-desktop</span>:<span class="blue1">~</span>$ banner Behave!
 ######                                            ###
 #     #  ######  #    #    ##    #    #  ######   ###
 #     #  #       #    #   #  #   #    #  #        ###
@@ -225,7 +365,7 @@ thoj@10.0.2.10's password:
 
 </pre>
 
-<span class="afsnit">Hold liv i forbindelsen</span>
+<h2>Hold liv i forbindelsen</h2>
 
 <p>SSH serveren forventer at der er aktivitet på forbindelsen, og hvis den udebliver afsluttes forbindelsen. Da det er noget klienten skal udføre skal der ændres/tilføjes i <span class="inl_cmd">/etc/ssh/ssh_config</span>. Tilføj følgende i afslutningen af filen</p>
 
@@ -233,54 +373,7 @@ thoj@10.0.2.10's password:
 
 <p>På den måde vil din forbindelse blive fornyet hver 20 sekund</p>
 
-<h1>SSH adgang ved hjælp af password</h1>
-
-<p>Det er denne  måde SSH er konfigureret som standard, hvilket er praktisk i konfigurationsfasen. Man får adgang til en SSH server ved at anvende kommandoen:</p>
-
-<code class="cmd">ssh *brugernavn*@*IP/FQDN* -p *portnummer*</code>
-
-<p>Hvis man ikke har ændret portnummeret så vil ssh automatisk søge på port 22. Konkret vil koden her være:</p>
-
-<code class="cmd">ssh thoj@10.0.2.10 -p 222</code>
-
-<pre class="ubuntu_terminal">
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ ssh thoj@10.0.2.10 -p 222
-The authenticity of host '[10.0.2.10]:222 ([10.0.2.10]:222)' can't be established.
-ECDSA key fingerprint is SHA256:HRpyhhq5ZB4BxYX37Hu75vLUOZxYbZfsRjtNUuBF2RA.
-Are you sure you want to continue connecting (yes/no)? yes
-Warning: Permanently added '[10.0.2.10]:222' (ECDSA) to the list of known hosts.
-Ubuntu 16.04 LTS
-thoj@10.0.2.10's password: 
-</pre>
-
-<p>Første gang man lokker på vil klienten have verificeret host'en. Dette er en ekstra sikkerhedsforanstaltning der sikrer at man har fat i den rigtige maskine og ikke en password-logger der er blevet sat på netværket. Den bliver lagt ind i filen <span class="inl_cmd">~/.ssh/known_hosts</span> som en krypteret henvisning.</p>
-
-<pre class="ubuntu_terminal">
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ ls -al ~/.ssh
-totalt 16
-drwx------  2 thoj thoj 4096 okt  4 11:44 .
-drwxr-xr-x 19 thoj thoj 4096 okt  4 11:44 ..
--rw-r--r--  1 thoj thoj  222 okt  4 11:44 known_hosts
-</pre>
-
-<p>Efter du har angivet dit password er du logget på serveren som om du sad ved den selv.</p>
-
-<pre class="ubuntu_terminal">
-Welcome to Ubuntu 16.04 LTS (GNU/Linux 4.4.0-21-generic x86_64)
-
- * Documentation:  https://help.ubuntu.com/
-
-0 pakker kan opdateres.
-0 opdateringer er sikkerhedsopdateringer.
-
-
-Last login: Fri May 27 10:14:29 2016
-<span class="green1">thoj@mainsrv</span>:<span class="blue1">~</span>
-</pre>
-
-<p>Vær opmærksom på at man ikke behøver at angive brugernavn, hvis ens brugernavn er det samme både på maskinen du logger ind fra og serveren.</p>
-
-<h1>SSH adgang ved hjælp af nøglefiler</h1>
+<h1>Nøglefiler</h1>
 
 <p>For at øge sikkerheden kan godkendelse af forbindelser sættes til også at være baseret på en krypteret nøglefil. Dette giver flere fordele. Det betyder bl.a. at man ikke skal angive sit password når man logger ind, da automatikken sørger for at godkende en. Dette skal gøres i to trin:</p>
 
@@ -441,7 +534,7 @@ Last login: Fri May 27 11:02:51 2016 from 10.0.2.50
 
 <p>Fremover logger du ind uden password.</p>
 
-<h1>Kopiering af filer med SSH</h1>
+<h1>Filkopiering</h1>
 
 <p>Til at kopiere anvender vi <span class="inl_cmd">scp</span> - <span class="bold">S</span>ecure <span class="bold">C</span>o<span class="bold">P</span>y. Programmet fungerer på følgende måde:</p>
 
@@ -466,7 +559,7 @@ testfil                                       100%    0     0.0KB/s   00:00
 <span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ 
 </pre>
 
-<h1>Kommandoer ved hjælp af SSH</h1>
+<h1>Kommandoer</h1>
 
 <p>Man kan sende kommandoer (tekststrenge) med SSH ved at tilføje dem i anførselstegn f.eks.</p>
 
@@ -557,7 +650,7 @@ Connection to 10.0.2.10 closed.
 
 <p>Generelt bør man ikke udføre superbruger kommandoer på denne måde. Der bør man oprette en ren SSH forbindelse til serveren. Men det kan være meget anvendeligt i scripts.</p>
 
-<h1>Montering af drev over SSH</h1>
+<h1>Drevmontering</h1>
 
 <h2>Installer SSHFS</h2>
 
