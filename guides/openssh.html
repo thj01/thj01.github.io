@@ -354,7 +354,7 @@ tj@192.168.0.52's password:
 
 <p>Hvis du ønsker at lave noget acscii art kan du anvender <span class="inl_cmd">banner</span>, <span class="inl_cmd">figlet</span> eller <span class="inl_cmd">toilet</span> til at lave dine værker. Alle tre programmer skal installeres særskilt. Læs mere her: <a href="http://askubuntu.com/questions/282715/how-can-i-make-ascii-banners-from-the-command-line" target="_blank">http://askubuntu.com/questions/282715/how-can-i-make-ascii-banners-from-the-command-line</a>.</p>
 
-<pre class="ubuntu_terminal"><span class="green1">tj@tj-desktop</span>:<span class="blue1">~</span>$ banner Behave!
+<pre class="ubuntu_terminal"><span class="green1">tj@tj-Virtualbox</span>:<span class="blue1">~</span>$ banner Behave!
 ######                                            ###
 #     #  ######  #    #    ##    #    #  ######   ###
 #     #  #       #    #   #  #   #    #  #        ###
@@ -367,7 +367,7 @@ tj@192.168.0.52's password:
 
 <h2>Hold liv i forbindelsen</h2>
 
-<p>SSH serveren forventer at der er aktivitet på forbindelsen, og hvis den udebliver afsluttes forbindelsen. Da det er noget klienten skal udføre skal der ændres/tilføjes i <span class="inl_cmd">/etc/ssh/ssh_config</span>. Tilføj følgende i afslutningen af filen</p>
+<p>SSH serveren forventer at der er aktivitet på forbindelsen, og hvis den udebliver afsluttes forbindelsen. Da det er noget klienten skal udføre skal der ændres/tilføjes i <span class="inl_cmd">/etc/ssh/ssh_config</span>. Tilføj følgende i afslutningen af filen, så "vækkes" forbindelsen hvert 20' sekund.</p>
 
 <code class="cmd">ServerAliveInterval 20</code>
 
@@ -375,13 +375,17 @@ tj@192.168.0.52's password:
 
 <h1>Nøglefiler</h1>
 
-<p>For at øge sikkerheden kan godkendelse af forbindelser sættes til også at være baseret på en krypteret nøglefil. Dette giver flere fordele. Det betyder bl.a. at man ikke skal angive sit password når man logger ind, da automatikken sørger for at godkende en. Dette skal gøres i to trin:</p>
+<p>Nøglefiler hæver sikkerhedsniveauet på SSH adgang betragteligt. I stedet for at verificere brugeren ud fra et indtastet password, så bliver "genkender" SSH-serveren brugeren ud fra om to filer passer sammen.</p>
+
+<p>Disse filer er som standard 2048-bit, hvilket svarer til 2048 0'er og 1-taller, men kan også sættes til 2096-bit, hvis man er lidt ekstra paranoid. Hvorom alt er - de er langt mere sikre end "menneske"-kodeord.</p>
+
+<p>Hele processen foregår i 4 trin:</p>
 
 <ol class="">
-	<li>Konfigurer SSH så man kan logge ind med nøglefilerne</li>
-	<li>Opret en offentlig og en privat nøgle på din klient</li>
-	<li>Tilføj din nøgle til din konto på SSH-værten</li>
-	<li>Fjern muligheden for at logge på ved hjælp af passwords</li>
+	<li>Konfigurer SSH så man kan logge ind med nøglefilerne (SSH-server)</li>
+	<li>Opret en offentlig og en privat nøgle på din klient (SSH-klient)</li>
+	<li>Tilføj din nøgle til din konto på SSH-værten (SSH-klient)</li>
+	<li>Fjern muligheden for at logge på ved hjælp af passwords (SSH-server)</li>
 </ol>
 
 <p>Sikkerheden opnås det ovenstående ved, at brugeren bliver "trusted". Så længe SSH-brugeren har sine credentials har han adgang til serveren. Vi vil her oprette nøgler til en bruger, kopiere dem over på serveren og herefter fjerne muligheden for at logge på serveren ved hjælp af passwords.</p>
@@ -396,13 +400,25 @@ tj@192.168.0.52's password:
 AuthorizedKeysFile     %h/.ssh/authorized_keys
 </pre>
 
-<p>Genstart SSH</p>
+<p>Genindlæse konfigurationsfilerne, så dine ændringer slår igennem.</p>
 
-<code class="cmd">sudo service ssh restart</code>
+<code class="cmd">sudo service ssh reload</code>
 
 <h2>Opret nøgler på klienten</h2>
 
-<p>Alle SSH nøgler skal lægges i mappen <span class="inl_cmd">~/.ssh</span>.</p> 
+<p>Alle SSH nøgler skal lægges i mappen <span class="inl_cmd">~/.ssh</span>. Så først tjekker vi om mappen findes.</p> 
+
+<code class="cmd">ls -al ~ | grep ssh</code>
+
+<pre class="ubuntu_terminal"><span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ ls -al ~ | grep ssh
+drwx------  2 tj   tj    4096 apr 12 14:51 .<span class="red">ssh</span>
+</pre>
+
+<p>Hvis mappen ikke findes oprettes den på følgende måde:</p>
+
+<code class="cmd">mkdir ~/.ssh</code>
+
+<code class="more_cmd">chmod 700 ~/.ssh</code>
 
 <p>Opret nøglen med kommandoen:</p>
 
@@ -410,62 +426,60 @@ AuthorizedKeysFile     %h/.ssh/authorized_keys
 
 <p>Vær opmærksom på at du ikke kan se din indtastning ved "passfrase". Standard krypteringen er sat til 2048 bit, men du kan sætte den til 4096 bit ved at sætte <span class="inl_cmd">-b 4096</span> bagerst i kommandoen.</p>
 
-<p>Du får også muligheden for at indtaste en <span class="inl_cmd">passphrase</span>. Dette kodeord gælder kun lokalt og bliver aldrig sendt over nettet. Det er designet til at beskytte din nøgle på din computer. Så hvis du mister din computer har du tid og mulighed for at lave de nødvendige ændringer på serveren, så nøglefilen bliver ugyldig.</p>
+<p>Du får også muligheden for at indtaste et kodeord <span class="inl_cmd">passphrase</span>. Dette kodeord gælder kun lokalt og bliver aldrig sendt over nettet. Det er designet til at beskytte din nøgle på din computer. Så hvis du mister din computer har du tid og mulighed for at lave de nødvendige ændringer på serveren, så nøglefilen bliver ugyldig.</p>
 
-<pre class="ubuntu_terminal">
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ ssh-keygen -t rsa
+<pre class="ubuntu_terminal"><span class="green1">tj@tj-desktop</span>:<span class="blue1">~</span>$ ssh-keygen -t rsa
 Generating public/private rsa key pair.
-Enter file in which to save the key (/home/thoj/.ssh/id_rsa): 
-Enter passphrase (empty for no passphrase): 
-Enter same passphrase again: 
-Your identification has been saved in /home/thoj/.ssh/id_rsa.
-Your public key has been saved in /home/thoj/.ssh/id_rsa.pub.
+Enter file in which to save the key (/home/tj/.ssh/id_rsa):   <span class="red">&larr; Tast <span class="knap">Enter</span></span>
+Enter passphrase (empty for no passphrase): <span class="red">&larr; indtast kodeord</span>
+Enter same passphrase again: <span class="red">&larr; indtast kodeord igen</span>
+Your identification has been saved in /home/tj/.ssh/id_rsa.
+Your public key has been saved in /home/tj/.ssh/id_rsa.pub.
 The key fingerprint is:
-fb:5d:24:d0:ca:b8:ea:0d:d3:d9:67:8d:c6:99:5f:2f thoj@thoj-VirtualBox
+SHA256:FQwQYpdm71A87M01/8eumQ382UXEU96l7XJR1aAeMJc tj@tj-desktop
 The key's randomart image is:
-+--[ RSA 2048]----+
-|                 |
-|           .     |
-|          . .    |
-|         o o     |
-|        S o . .  |
-|       . = . B   |
-|      o = . O o .|
-|       = . = oE..|
-|     .o . . . ...|
-+-----------------+
-thoj@thoj-VirtualBox:~$ 
++---[RSA 2048]----+
+|    o +*.o+ ....B|
+|   . o+ = .=E. =*|
+|     o + +..oo.o*|
+|      . o.o. ..oo|
+|       oS   . .o+|
+|        .    . ++|
+|              o.o|
+|               *=|
+|              +o+|
++----[SHA256]-----+
+<span class="green1">tj@tj-desktop</span>:<span class="blue1">~</span>$
 </pre>
 
 <p>Tjek at filerne er blevet oprettet</p>
 
-<pre class="ubuntu_terminal">
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ ls -al ~/.ssh
-totalt 16
-drwx------  2 thoj thoj 4096 okt  4 10:46 .
-drwxr-xr-x 18 thoj thoj 4096 okt  4 10:45 ..
--rw-------  1 thoj thoj 1679 okt  4 10:46 id_rsa
--rw-r--r--  1 thoj thoj  402 okt  4 10:46 id_rsa.pub
+<pre class="ubuntu_terminal"><span class="green1">tj@tj-desktop</span>:<span class="blue1">~</span>$ ls -al ~/.ssh
+totalt 20
+drwx------  2 tj tj 4096 maj 29 00:29 .
+drwxr-xr-x 45 tj tj 4096 maj 29 00:18 ..
+-rw-------  1 tj tj 1766 maj 29 00:29 id_rsa
+-rw-r--r--  1 tj tj  395 maj 29 00:29 id_rsa.pub
+-rw-r--r--  1 tj tj  444 maj 28 12:03 known_hosts
 </pre>
 
 <h2>Registrer din nøglefil på serveren</h2>
 
 <p>Registrer den offentlige nøgle på din bruger på serveren:</p>
 
-<code class="cmd">ssh-copy-id thoj@10.0.2.10 -p 222</code>
+<code class="cmd">ssh-copy-id tj@192.168.0.52 -p 222</code>
 
-<pre class="ubuntu_terminal">
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ ssh-copy-id thoj@10.0.2.10 -p 222
+<pre class="ubuntu_terminal"><span class="green1">tj@tj-desktop</span>:<span class="blue1">~</span>$ ssh-copy-id tj@192.168.0.52 -p 222
 /usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
 /usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install the new keys
 
-***************************************************
-***                                             ***
-***  Welcome to mainsrv 10.0.2.10/24 - Behave!  ***
-***                                             ***
-***************************************************
+**************************************************
+***                                            ***
+***    Welcome to 192.168.0.51/24 - Behave!    ***
+***                                            ***
+**************************************************
 
-thoj@10.0.2.10's password: 
+tj@192.168.0.52's password: 
 </pre>
 
 <p>Efter du har indtastet dit password får du følgende output.</p>
@@ -473,18 +487,18 @@ thoj@10.0.2.10's password:
 <pre class="ubuntu_terminal">
 Number of key(s) added: 1
 
-Now try logging into the machine, with:   "ssh -p '222' 'thoj@10.0.2.10'"
+Now try logging into the machine, with:   "ssh -p '222' 'tj@192.168.0.52'"
 and check to make sure that only the key(s) you wanted were added.
 
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ 
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$
 </pre>
 
-<p>Læg mærke til at du ikke er logget ind på serveren, men stadig er på din lokale maskine. Log ind på serveren igen</p>
+<p>Læg mærke til at du ikke er logget ind på serveren, men stadig er på din lokale maskine. Vi har kun overført vores offentlige nøgle. Vi logger ind igen:</p>
 
-<code class="cmd">ssh thoj@10.0.2.10 -p 222</code>
+<code class="cmd">ssh tj@192.168.0.52 -p 222</code>
 
 <pre class="ubuntu_terminal">
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ ssh thoj@10.0.2.10 -p 222
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ ssh thoj@10.0.2.10 -p 222
 
 ***************************************************
 ***                                             ***
@@ -500,39 +514,61 @@ and check to make sure that only the key(s) you wanted were added.
 
 <figure id="">
 
-	<img src="images/openssh_key_ring.png" alt="" title="" />
+	<img class="p40" src="images/openssh_key_ring.png" alt="" title="" />
 
 	<figcaption></figcaption>
 
 </figure>
 
-<p>Denne nøglering fungerer ved at den holder orden på de passwords/nøgler du anvender på nettet. Den bliver tilgængelig når du logger på din brugerkonto.</p>
-
-<p>Når du efterfølgende anvender SSH til denne server vil du ikke blive spurgt om dit password, men på en GUI kan du blive afkrævet din kode til "nøgleringsprogrammet".</p>
+<p>Ved at aktivere <span class="inl_cmd">"Lås automatisk denne nøgle ..."</span> gemmer din computer kodeordet til din SSH nøgle. Når du efterfølgende anvender SSH til denne server vil du ikke blive spurgt om dit password, men på en GUI kan du blive afkrævet din kode til "nøgleringsprogrammet".</p>
 
 <pre class="ubuntu_terminal">
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ ssh thoj@10.0.2.10 -p 222
+<span class="green1">tj@tj-desktop</span>:<span class="blue1">~</span>$ ssh tj@192.168.0.52 -p 222
 
-*******************************************************
-***                                                 ***
-***    Welcome to mainsrv 10.0.2.10/24 - Behave!    ***
-***                                                 ***
-*******************************************************
+**************************************************
+***                                            ***
+***    Welcome to 192.168.0.51/24 - Behave!    ***
+***                                            ***
+**************************************************
 
-Welcome to Ubuntu 16.04 LTS (GNU/Linux 4.4.0-22-generic x86_64)
+Welcome to Ubuntu 16.04.2 LTS (GNU/Linux 4.8.0-36-generic x86_64)
 
- * Documentation:  https://help.ubuntu.com/
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
 
 0 pakker kan opdateres.
 0 opdateringer er sikkerhedsopdateringer.
 
+Last login: Sun May 28 12:38:43 2017 from 192.168.0.61
 
-Last login: Fri May 27 11:02:51 2016 from 10.0.2.50
-<span class="green1">thoj@mainsrv</span>:<span class="blue1">~</span>$ 
-
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ 
 </pre>
 
 <p>Fremover logger du ind uden password.</p>
+
+<h2>Fjern password adgang</h2>
+
+<p>Når SSH-serveren har fået tilføjet alle de offentlige nøgler den skal bruge, kan vi låse den. Det gør vi ved at redigere i filen <span class="inl_cmd">/etc/ssh/sshd_config</span></p>
+
+<code class="cmd">sudo nano /etc/ssh/sshd_config</code>
+
+<p>Ændr:</p>
+
+<pre class="black">
+# Change to no to disable tunnelled clear text passwords
+#PasswordAuthentication yes
+</pre>
+
+<p>til ...</p>
+
+<pre class="black"># Change to no to disable tunnelled clear text passwords
+PasswordAuthentication no 
+</pre>
+
+<p>Genindlæse konfigurationsfilerne, så dine ændringer slår igennem.</p>
+
+<code class="cmd">sudo service ssh reload</code>
 
 <h1>Filkopiering</h1>
 
