@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Vidas.dk</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono|Ubuntu|Ubuntu+Condensed' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/jquery-ui.min.css">
+  <link rel="stylesheet" href="../css/jquery.tocify.css">
+  <link rel="stylesheet" href="../css/style_new.css" />
+<!-- Scripts in bottom to speed up pageload-->
+ 
+
+</head>
+<body>
+	
+	
+<div class="container-fluid">
+
+<div class="row-fluid">
+	
+<div class="col-sm-3">
+	
+	<div id="toc">
+	
+		<div id="toc_headline"></div>
+	
+	</div>
+
+</div><!-- Start slut 1. kolonne - TOC -->
+	
+<div class="col-sm-9">
+	
+<div class="title">Installation af <br/>Ubuntu Gnome 16.04 LTS</div>
+
+<h1>Guidens formål</h1>
+
+<p>Guidens formål er at installere Ubuntu Gnome 16.04 LTS på en ny computer - herefter blot omtalt som Ubuntu. I denne guide bliver der vist på en Virtuel maskine, sat op ved hjælp af i VirtualBox med 4 GB RAM og 100 GB harddisk. Denne installation og konfiguration kan bruges som udgangspunkt for resten af guiden.</p>
+
+<p>Installationsprocessen giver på mange områder sig selv, og der vil kun komme uddybende forklaringer hvor det er nødvendigt.</p>
+
+<h1 id="back_from_windows_prepare">Dualboot</h1>
+
+<p>Det er muligt at installere Ubuntu selvom du i forvejen har windows på din PC. Det gøres ved hjælp af det som kaldes <span class="inl_cmd">dualboot</span>.</p>
+
+<blockquote>
+	<p>
+		Husk altid at have backup af dine vigtige filer, når du arbejder med opsætningen af harddiske.
+	</p>
+</blockquote>
+
+<p>Før du går igang med installationen skal du have forberedt noget plads på din harddisk. Herunder er det gennemgået ved hjælp af en liste, men vil du gerne have en billedguide på nedestående proces så kan du find den her: <a href="install_16.04.LTS.windows_dualboot.html" target="_blank">install_16.04.LTS.windows_dualboot.html</a>.</p>
+
+<ol class="">
+	<li>Vælg start og kør kommandoen: <span class="inl_cmd">compmgmt.msc</span></li>
+	<li>Gå til: Computeradministration → Lager → Diskhåndtering</li>
+	<li>Højreklik på den harddisk du vil formindske og vælg "Formindsk Diskenhed"</li>
+	<li>Skriv hvor meget du vil formindske den og vælg "Formindsk". Vælg mindst 20 GB, så du har plads til at installere og afprøve programmer</li>
+	<li>Tjekke harddisken for fejl. Højreklik på den formindskede partition og vælg: Egenskaber → Fanen: Funktioner → "Undersøg nu..." og tryk "start".</li>
+	<li>Genstart Windows, og tjek at det booter uden fejl</li>
+	
+</ol>
+
+<h1>Hent Ubuntu Gnome</h1>
+	
+<p>Ubuntu Gnome hentes fra: <a href="https://wiki.ubuntu.com/UbuntuGNOME/GetUbuntuGNOME#Download_Disk_Image" target="_blank">https://wiki.ubuntu.com/UbuntuGNOME/GetUbuntuGNOME#Download_Disk_Image</a>. Vælg <span class="inl_cmd"><b>16.04.x</b> Long-term Support</span> - 64-bit Direct Download.</p>
+
+<figure id="">
+
+	<img class="p90" src="images/download_ubuntu_gnome_1604.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+	
+	
+<h1>Installation af Ubuntu</h1>
+
+<p>Når du booter op installations DVD/USB'en kommer Ubuntu's "Velkommen" vindue frem. Her er der to ting du skal tage stilling til sproget og om du vil prøve at køre Ubuntu direkte fra opstartsmediet eller om du vil gå direkte igang med installationen. Vælger du at <span class="knap">Prøv Ubuntu</span>, starter computeren op i RAM og fungerer som en almindelig installation, dog uden at der installeres noget. </p>
+
+<p>Her vælger vi dog <span class="knap">Installér Ubuntu</span> for at sætte installationsprocessen i gang.</p>
+
+
+<figure id="">
+
+	<img class="p90" src="images/install_ubuntu1604_01.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Før installationen går videre tjekker Ubuntu om harddisken er stor nok, om opladeren er sluttet til (ved bærbare computeren) og om der er forbindelse til Internettet.</p>
+
+<p>De to første giver sig selv, men det er vigtigt at der er forbindelse til Internettet. Linux er et netvæksoperativsystem, og skal bl.a. anvende nettet til at hente drivere, codecs (f.eks. MP3), sprogfiler og opdateringer. Sæt flueben ved begge muligheder og vælg <span class="knap">Fortsæt</span>.</p>
+
+<figure id="">
+
+	<img class="p90" src="images/install_ubuntu1604_02.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h2 id="fortryd_avanceret_HD_opsaetning">Opsætning af harddisk</h2>
+
+<p>Det næste der skal gøres er at forberede harddisken. I denne guide bliver der gennemgået en simpel opsætning af harddisken, hvor vi lader Ubuntu formatere disken med et system- og et swapdrev. Vær opmærksom på at nedestående metode sletter al indhold på din harddisk.</p>
+
+<p>Ønsker du en lave en installation med flere partitioner skal du følge guiden her: <a href="install_16.04.LTS_advanced_HD.html" target="_blank">install_16.04.LTS_advanced_HD.html</a>.</p>
+
+<h3>... ved nyinstallation</h3>
+
+<p>For at lave en simpel installation skal du markere punktet "Slet disk og installer Ubuntu" og vælge <span class="knap">Installér nu</span></p>
+
+<figure id="">
+
+	<img class="p90" src="images/install_ubuntu1604_03_simple.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Ubuntu vil nu spørge om du ønsker at lave ændringer på harddisken. Vælg <span class="knap">Fortsæt</span></p>
+
+
+
+<figure id="">
+
+	<img class="p90" src="images/install_ubuntu1604_11_simple.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h3>... ved dualboot</h3>
+
+<p>For at lave en simpel installation skal du markere punktet "Installer Ubuntu sammen med Windows 10" og vælge <span class="knap">Installér nu</span></p>
+
+<figure id="">
+
+	<img class="p90" src="images/install_ubuntu1604_03_simple_dual.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Ubuntu vil nu spørge om du ønsker at lave ændringer på harddisken. Vælg <span class="knap">Fortsæt</span></p>
+
+
+
+<figure id="">
+
+	<img class="p90" src="images/install_ubuntu1604_11_simple_dual.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+
+<h2 id="fra_avanceret_HD_opsaetning">Lokation og tastetur</h2>
+
+<p>De næste to indstillinger giver sig selv og Ubuntu sætter selv de rigtige indstillinger. Tryk <span class="knap">Fortsæt</span> 2 gange.</p>
+
+<figure id="">
+
+	<img class="p90" src="images/install_ubuntu1604_12.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+
+
+<figure id="">
+
+	<img class="p90" src="images/install_ubuntu1604_13.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h2>Brugeroprettelse</h2>
+
+<p>Den første bruger der bliver oprettet er ret vigtig, da det er denne bruger der har mulighed for at udføre systemarbejde på computeren. Vær opmærksom på, at Ubuntu skelner mellem store og små bogstaver. Det betyder at der er forskel på brugernavnene <span class="inl_cmd">thoj</span> og <span class="inl_cmd">Thoj</span>. Det er normen at bruge små bogstaver til brugernavne, da man ellers risikerer problemer når man skal arbejde med andre operativsystemer (f.eks Windows)</p>
+
+<p>Indtast dit fulde navn og sæt dit brugernavn til dine initialer. Sæt en adgangskode. Er det i en virtuel maskine der skal testes på kan du anvende: <span class="inl_cmd">123qwe</span>, da det er let at huske og taste ind.</p>
+
+<figure id="">
+
+	<img class="p90" src="images/install_ubuntu1604_14.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Herefter installerer Ubuntu sig færdig. Ubuntu henter opdateringer og lande/sprog konfigurationer på nettet.</p>
+
+
+<figure id="">
+
+	<img class="p70" src="images/install_ubuntu1604_15.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Når Ubuntu er installeret så vælg <span class="knap">Genstart nu</span>. </p>
+
+<figure id="">
+
+	<img class="p70" src="images/install_ubuntu1604_16.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Når installationen er færdig skal du fjerne installationsmediet og genstarte Ubuntu.</p>
+
+<h2>Første start</h2>
+
+<p>Efter første genstart er Ubuntu klar efter du har logget ind.</p>
+
+<figure id="">
+
+	<img class="p70" src="images/install_ubuntu1604_17.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<figure id="">
+
+	<img class="p70" src="images/install_ubuntu1604_18.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h2>Ved installation på Virtualbox</h2>
+
+<p>For at få det optimale ud af en Virtualbox installation bør man installere gæstetilføjelserne, som sætter det virtualiserede system optimalt op. For at installere Gæstetilføjelserne skal du gå op i menuen og vælge: <span class="inl_cmd">Enheder</span> &#8594; <span class="inl_cmd">Indsæt Gæstetilføjelser CD-aftryk</span>.</p>
+
+<figure id="">
+
+	<img class="p60" src="images/install_ubuntu1604_19a.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p> Herefter monteres gæstetilføjelserne som en CD-ROM på systemet som automatisk starter op.</p>
+
+<p>Vælg: <span class="knap">Kør</span></p>
+
+<figure id="">
+
+	<img class="p55" src="images/install_ubuntu1604_19.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Indtast din kode og vælg <span class="knap">Godkend</span>. Herefter kører installationen i en terminal.</p>
+
+<figure id="">
+
+	<img class="p55" src="images/install_ubuntu1604_20.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<figure id="">
+
+	<img class="p80" src="images/install_ubuntu1604_21.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>For at afslutte installationen skal du taste <kbd>Enter</kbd>, for at få lukke terminalen. Herefter skal du genstarte Ubuntu, for at få ændringerne til at slå igennem.</p>
+
+<figure id="">
+
+	<img class="p40" src="images/install_ubuntu1604_22.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h1>Opdatering af Ubuntu</h1>
+
+<p>Før vi går videre med at konfigurere Ubuntu skal vi opdatere. Der er 3 ting vi skal have gjort:</p>
+
+<ol class="">
+	<li>Ændre repositories fra danske til internationale og tilføjer partner repository</li>
+	<li>Opdatere repositories</li>
+	<li>Opgradere Ubuntu</li>
+</ol>
+
+<p>Ubuntu søger som standard i danske repositories efter filer, men de er efter min erfaring langsommere end de internationale. Derfor er det min anbefaling at det ændres. Åbn terminalen (kommandoprompten) med tastekombinationen <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>t</kbd> og kører 2 kommandoer for at fjerne alle <span class="inl_cmd">dk</span> henvisninger:</p>
+
+<pre class="ubuntu_terminal">
+To run a command as administrator (user "root"), use "sudo <command>".
+See "man sudo_root" for details.
+
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$
+</pre>
+
+<blockquote>
+	<p>
+		Læg mærke til at langt de fleste kommandoer herunder starter med <span class="inl_cmd">sudo</span>. Det skyldes at vi arbejder med systemfiler, som kræver at man er superbruger (<span class="inl_cmd">sudo</span> - <span class="bold">SU</span>peruser <span class="bold">DO</span>.
+	</p>
+</blockquote>
+
+<p>Først tager vi en kopi af den fil vi arbejder med, så vi altid kan gå tilbage til den oprindelige tilstand.</p>
+
+<code class="cmd">sudo cp /etc/apt/sources.list /etc/apt/sources.list.backup</code>
+
+<p>Herefter anvender vi kommandoen <span class="inl_cmd">sed</span> til at fjerne alle <span class="inl_cmd">dk</span> referencerne i <span class="inl_cmd">/etc/apt/sources.list</span>. Kommandoen bytter teksstrengen <span class="inl_cmd">dk.archive</span> ud med <span class="inl_cmd">archive</span>.</p>
+
+<code class="cmd">sudo sed -i s/dk.archive/archive/ /etc/apt/sources.list</code>
+
+<p>For at tilføje partner repositoriet skal du redigere i filen <span class="inl_cmd">/etc/apt/sources.list</span> og fjerne et hash-tag</p>
+
+<code class="cmd">sudo nano /etc/apt/sources.list</code>
+
+<pre class="black">
+<span class="blue1">## Uncomment the following two lines to add software from Canonical's
+## 'partner' repository.
+## This software is not part of Ubuntu, but is offered by Canonical and the
+## respective vendors as a service to Ubuntu users.
+# deb http://archive.canonical.com/ubuntu xenial partner <span class="red">&lt;-- Denne linie skal ændres</span>
+# deb-src http://archive.canonical.com/ubuntu xenial partner</span>
+</pre>
+
+<p>Fjern <span class="inl_cmd">#</span> og mellemrummet foran deb linien så der står:</p>
+
+<pre class="black">
+<span class="blue1">## Uncomment the following two lines to add software from Canonical's
+## 'partner' repository.
+## This software is not part of Ubuntu, but is offered by Canonical and the
+## respective vendors as a service to Ubuntu users.
+<span class="brown">deb</span> <span class="green1">http://archive.canonical.com/ubuntu</span> <span class="red">xenial</span> <span class="violet">partner</span>
+# deb-src http://archive.canonical.com/ubuntu xenial partner</span>
+</pre>
+
+<p></p>
+
+<p>For at gemme ændringer skal du gøre følgende, tast <kbd>Ctrl</kbd>+<kbd>x</kbd>. Nederst på skærmen kommer følgende frem</p>
+
+<pre class="black">
+<span class="white_bg">Gem ændret buffer (AT SVARE "Nej" VIL ØDELÆGGE ÆNDRINGER)?                                          </span>                    
+<span class="white_bg"> J</span> Ja
+<span class="white_bg"> N</span> Nej          <span class="white_bg">^C</span> Annullér
+</pre>
+
+<p>Tast <kbd>j</kbd></p>
+
+<pre class="black">
+<span class="white_bg">Filnavn at skrive: /etc/apt/sources.list                                                            </span>                                       
+<span class="white_bg">^G</span> Få hjælp     <span class="white_bg">M-D</span> DOS-format  <span class="white_bg">M-A</span> Tilføj ved e<span class="white_bg">M-b</span> SikrKopiér f
+<span class="white_bg">^C</span> Annullér     <span class="white_bg">M-M</span> Mac-format  <span class="white_bg">M-P</span> Tilføj ved s<span class="white_bg">^T</span> Til filer
+</pre>
+
+<p>Tast <kbd>Enter</kbd>, og du er tilbage i selve terminalen.</p>
+
+<span class="afsnit">Opdater repository filerne</span>
+
+<code class="cmd">sudo apt update</code>
+
+<p>Opgrader</p>
+
+<code class="cmd">sudo apt dist-upgrade -y</code>
+
+<p>Herunder er terminal-output for min opdatering. Som du kan se får du en beskrivelse af hvilke papper der opggraderes, hvor mange, hvor meget der skal hentes og hvor meget det kommer til at fylde når opgraderingerne er færdige </p>
+
+<pre class="ubuntu_terminal">
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ sudo apt dist-upgrade -y
+Indlæser pakkelisterne... Færdig
+Opbygger afhængighedstræ        
+Læser tilstandsoplysninger... Færdig
+Beregner opgraderingen... Færdig
+Følgende pakker vil blive opgraderet:
+  bind9-host dnsutils language-selector-common language-selector-gnome
+  libbind9-140 libdns-export162 libdns162 libisc-export160 libisc160
+  libisccc140 libisccfg140 libllvm3.8 liblwres141 libtasn1-6
+  python3-distupgrade ubuntu-drivers-common ubuntu-release-upgrader-core
+  ubuntu-release-upgrader-gtk
+18 opgraderes, 0 nyinstalleres, 0 afinstalleres og 0 opgraderes ikke.
+12,9 MB skal hentes fra arkiverne.
+Efter denne handling, vil 2.048 B yderligere diskplads være brugt.
+Henter:1 http://archive.ubuntu.com/ubuntu xenial-updates/main amd64 language-selector-gnome all 0.165.1 [18,7 kB]
+.....
+</pre>
+
+<span class="afsnit">Fjern overflødige pakker</span>
+
+<code class="cmd">sudo apt autoremove -y</code>
+
+<p>Når man arbejder med den nyeste ubuntu lige efter udgivelsen vil der sjældent være pakker der er overflødige, men der vil ske opgradering af programmer løbende som vil efterlade filer på harddisken som er overflødige.</p>
+
+<pre class="ubuntu_terminal">
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ sudo apt autoremove
+Indlæser pakkelisterne... Færdig
+Opbygger afhængighedstræ        
+Læser tilstandsoplysninger... Færdig
+0 opgraderes, 0 nyinstalleres, 0 afinstalleres og 0 opgraderes ikke.
+</pre>
+
+<h2>PPA - Personal Package Archive</h2>
+
+<p>Denne guide tager udgangspunkt i at du anvender Ubuntu's LTS version. Det giver den fordel at installationen er sikret opgraderinger  i en periode på 5 år. Det har så til gengæld den konsekvens, at de programmer der bliver installeret og vedligeholdt af Canonical heller ikke bliver opdateret.</p>
+
+<p>Det er her hvor PPA'erne kommer ind. Ligesom vi ovenfor konfigurerede de repositories Ubuntu skal hente opdateringer fra, så kan vi tilføje nogle private repositories, som også bliver undersøgt når man kører <span class="inl_cmd">apt update</span>. Et eksempel kan være kontorpakken <span class="inl_cmd">Libreoffice</span>. For at man hele tiden får den nyeste stabile version af Libreoffice skal man tilføje PPA'en <span class="inl_cmd">ppa:libreoffice/ppa</span>. Herefter vil <span class="inl_cmd">apt update</span> ikke blot kigge i de medfølgende repositories for at finde opdateringer, men også i <span class="inl_cmd">ppa:libreoffice/ppa</span>.</p>
+
+<p>En PPA tilføjes på følgende måde:</p>
+
+<code class="cmd">sudo add-apt-repository -y ppa:libreoffice/ppa</code>
+
+<p>Herefter vil der blive oprettet en fil i mappen <span class="inl_cmd">/etc/apt/sources.list.d</span> (i dette tilfælde <span class="inl_cmd">libreoffice-ubuntu-ppa-xenial.list</span>, som herefter vil blive tjekket når ens repositories bliver opdateret med kommandoen:</p>
+
+<code class="cmd">sudo apt update</code>
+
+<p>I kapitlet om konfiguration af Ubuntu, har jeg valgt at anvende PPA'er i nogle tilfælde, for at du som bruger får adgang til de nyeste muligheder i programmerne.</p>
+
+<h1>Konfiguration af Ubuntu</h1>
+
+<p>I dette afsnit vil vi installere en lang række drivers, codecs og programmer. Det er de programmer jeg installere som standard og som jeg anvender i mit workflow.</p>
+
+<h2>Plugins, java, drivers og codecs</h2>
+
+<p>Når du installere nedestående skal du være opmærksom på at du to gange skal godkende nogle licenser. Det gælder nogle Microsoft fonte, som er "nice to have" og en driver/codec der gør at du kan afspille film.</p>
+
+<code class="cmd">sudo apt install -y icedtea-8-plugin ubuntu-restricted-extras libdvd-pkg</code>
+
+<p>For at godkende licenser og tilføjelser til systemet skal du du anvende <kbd>Tab</kbd> for at vælge knapperne. Både ved <span class="inl_cmd">ttf-mscorefonts-installer</span> og <span class="inl_cmd">libdvd-pkg</span> skal du først vælge <span class="terminal_valg">Ok</span> og derefter <span class="terminal_valg">Ja</span>. Se screenshots herunder:</p>
+
+<figure id="">
+
+	<img src="images/install_ubuntu1604_godk_01.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<figure id="">
+
+	<img src="images/install_ubuntu1604_godk_02.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<figure id="">
+
+	<img src="images/install_ubuntu1604_godk_03.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<figure id="">
+
+	<img src="images/install_ubuntu1604_godk_04.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h2>Kontorprogrammer</h2>
+
+<ul class="disc">
+	<li>Libreoffice - Kontorprogram</li>
+	<li>Geany - Teksteditor</li>
+</ul>
+
+<span class="afsnit">Installer PPA'er</span>
+
+<ol class="">
+	<li>PPA til Libreoffice</li>
+	<code class="cmd">sudo add-apt-repository -y ppa:libreoffice/ppa</code>
+	<li>PPA til geany</li>
+	<code class="cmd">sudo add-apt-repository -y ppa:geany-dev/ppa</code>
+	<li>Opdater repositories</li>
+	<code class="cmd">sudo apt update</code>
+</ol>
+
+<p>Da libreoffice er installeret som standard skal programmet ikke installeres, men selve Ubuntu skal opdateres</p>
+
+<code class="cmd">sudo apt upgrade</code>
+
+<p>Geany installeres med kommandoen:</p>
+
+<code class="more_cmd">sudo apt install -y geany</code>
+
+<h2>Media</h2>
+
+<ul class="disc">
+	<li>Skype - Samtale klient</li>
+	<li>VLC - Media Afspiller</li>
+	<li>Audacity - Lydredigering</li>
+</ul>
+
+<span class="afsnit">Installer programmerne</span>
+
+<code class="cmd">sudo apt install -y skype vlc audacity</code>
+
+<h2>Grafik</h2>
+
+<ul class="disc">
+	<li>Darktable - RAW photo editor</li>
+	<li>Gimp - Billedredigeringsprogram med div. plugins</li>
+	<li>Phatch - Photo Batch program</li>
+	<li>Inkscape - Vektorbaseret redigeringsprogram (svg)</li>
+	<li>exfat drev - Automatisk mount af exfat drev - f.eks. memory kort fra kamera</li>
+</ul>
+
+<span class="afsnit">Installer PPA'er</span>
+
+<ol class="">
+	<li>PPA til Darktable</li>
+	<code class="cmd">sudo add-apt-repository -y ppa:pmjdebruijn/darktable-release</code>
+	<li>PPA til GIMP'en</li>
+	<code class="cmd">sudo add-apt-repository -y ppa:otto-kesselgulasch/gimp</code>
+	<li>PPA til Inkscape</li>
+	<code class="cmd">sudo add-apt-repository -y ppa:inkscape.dev/stable</code>
+	<li>Opdater repositories</li>
+	<code class="cmd">sudo apt update</code>
+</ol>
+
+<span class="afsnit">Installer programmerne</span>
+
+<code class="cmd">sudo apt install -y darktable gimp gimp-lensfun gimp-plugin-registry gimp-texturize phatch inkscape exfat-fuse exfat-utils </code>
+
+
+<h2>Utilities</h2>
+
+<ul class="disc">
+	<li>gparted - harddisk opsætning</li>
+	<li>p7Zip-full - pakkeprogram</li>
+	<li>Indicator-cpufreq - Indicator til CPU-indstillinger</li>
+	<li>Touchpad-indicator - anvendes til at slukke touchpad på en bærbar</li>
+	<li>Classicmenu-indicator - Menu til alle installerede programmer</li>
+	<li>alacarte - Redigering af hovedmeny</li>
+	<li>Unitu-tweak-tool - Indstilling af Ubuntu's GUI</li>
+	<li>gdebi - Program til installation af deb filer</li>
+	<li>Caffeine - Program til at sætte screensaver på pause</li>
+	<li>Dropbox</li>
+	<li>Psensor - Program til værktøjslinien der giver informationer om CPU, HD, RAM ... </li>
+</ul>
+
+<span class="afsnit">Installer PPA'er</span>
+
+<ol class="">
+	<li>PPA til Touchpad-Indicator</li>
+	<code class="cmd">sudo add-apt-repository -y ppa:atareao/atareao</code>
+	<li>PPA til Classic-menuindicator</li>
+	<code class="cmd">sudo apt-add-repository -y ppa:diesch/testing</code>
+	<li>Opdater repositories</li>
+	<code class="cmd">sudo apt update</code>
+</ol>
+
+<span class="afsnit">Installer programmerne</span>
+
+<code class="cmd">sudo apt install -y gparted p7zip-full indicator-cpufreq alacarte unity-tweak-tool gdebi caffeine  nautilus-dropbox classicmenu-indicator touchpad-indicator psensor</code>
+
+<p><span class="bold">NB:</span> Installerer du på Virtualbox skal du ikke tage <span class="inl_cmd">indicator-cpufreq</span> med, da programmet ikke virker med en virtuel CPU.</p>
+
+<span class="afsnit">Classic Menu indicator</span>
+
+<p><span class="inl_cmd">classicmenu-indicator</span> er et program der ligger i den øverste linie og som laver liste over de installerede programmer. </p>
+
+<figure id="">
+
+	<img class="p70" src="images/install_ubuntu1604_classic_menu_indicator.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+
+<h2>Kommando linie</h2>
+
+<ul class="disc">
+	<li>tree - Viser en filer og mapper i en træstruktur</li>
+	<li>nmap - Anvendes til at analysere netværk</li>
+	<li>tasksel - Anvendes til at installere programpakker f.eks. web-server</li>
+	<li>inxi - Anvendes til at se hardware på computeren</li>
+	<li>htop - Anvendes til at se forbruget af ressourcer på computeren</li>
+</ul>
+
+
+<code class="cmd">sudo apt install -y tree nmap tasksel inxi htop</code>
+
+
+
+
+<h2>Browsere</h2>
+
+<span class="afsnit">Google Chrome</span>
+
+<code class="cmd">wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - </code>
+<code class="more_cmd">sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'</code>
+<code class="more_cmd">sudo apt update</code>
+<code class="more_cmd">sudo apt install -y google-chrome-stable</code>
+
+<h2>Virtualisering</h2>
+
+<span class="afsnit">VirtualBox</span>
+
+<p>VirtualBox - Virtualiseringsprogram</p>
+
+<code class="cmd">wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -</code>
+<code class="more_cmd">sudo sh -c 'echo "deb http://download.virtualbox.org/virtualbox/debian $(lsb_release -cs) contrib" >> /etc/apt/sources.list.d/virtualbox.list' </code>
+<code class="more_cmd">sudo apt update</code>
+<code class="more_cmd">sudo apt install -y dkms virtualbox-5.1</code>
+
+<h2>Netværk</h2>
+
+<p>Man har ofte brug for at dele filer mellem forskellige PC'er og der findes mange løsninger til dette. En af de simpleste er <span class="inl_cmd">Nitroshare</span> (<a href="https://nitroshare.net/" target="_blank">https://nitroshare.net/</a>), som kører på Linux, Windows og Mac. Dette program skal blot installeres og så vil det automatisk finde alle andre maskiner der kører programmet.</p>
+
+<figure id="">
+
+	<img class="p30" src="images/install_ubuntu1604_nitroshare.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<code class="cmd">sudo add-apt-repository -y ppa:george-edison55/nitroshare </code>
+<code class="more_cmd">sudo apt update</code>
+<code class="more_cmd">sudo apt install -y nitroshare</code>
+
+
+<h2>NVIDIA grafikkort</h2>
+
+<p>Installer følgende for at få de nyeste driver fra NVIDIA. Tilføj repositoriet <span class="inl_cmd">ppa:graphics-drivers/ppa</span> og opdater dine repositories</p>
+
+<code class="cmd">sudo add-apt-repository ppa:graphics-drivers/ppa -y</code>
+
+<code class="more_cmd">sudo apt update</code>
+
+<p>Ubuntu har en smart metode til at opdatere sine hardwaredrivere:</p>
+
+<code class="cmd">sudo ubuntu-drivers autoinstall</code>
+
+<p>Det er nødvendigt at reboot maskinen efter installation af grafikdrivere. Det skyldes at der er sket større ændringer i kernen.</p>
+
+<code class="cmd">sudo reboot</code>
+
+<p>Efter genstart går du ind i: <span class="inl_cmd">Systemindstillinger</span> -> <span class="inl_cmd">Software og opdateringer</span> og vælger fanen: <span class="inl_cmd">Yderligere drivere</span>. Herefter vælger du den driver du ønsker at anvende. Billedet herunder er taget fra en DELL M4800, der har et Nvidia Quadro 2100 graffikkort:</p>
+
+<figure id="">
+
+	<img src="images/install_ubuntu1604_grafikdriver.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Det er svært at råde dig til hvilken driver du skal vælge, da der især på bærbare er mange hardware konfigurationer, som skal overvejes. Det bedste råd jeg kan give dig er at vælge den nyeste proporitære driver, da den understøtter både <span class="inl_cmd">OpenCL</span> og <span class="inl_cmd">CUDA</span>. <span class="inl_cmd">Nouveau</span> driveren kan kun anbefales til dem der ønsker kode med mindst mulige proporitære dele. Den kan ikke anbefales til 3D-spil.</p>
+
+<p>Efter du har valgt din driver vælger du: <span class="knap">Anvend ændringer</span> og Ubuntu installerer driveren for dig.</p>
+
+<p>Har du NVIDIA og Intel grafik i din computer bør du installere programmet <span class="inl_cmd">Prime Indicator</span>. Det laver et ikon i menulinien, hvor du hurtigt kan skifte mellem de to graffikkort.</p>
+
+<code class="cmd">sudo add-apt-repository -y ppa:nilarimogard/webupd8</code>
+<code class="more_cmd">sudo apt update</code>
+<code class="more_cmd">sudo apt install -y prime-indicator</code>
+
+<h2>Afsluttende arbejde</h2>
+
+<p>Til allersidst gør vi følgende:</p>
+
+<ol class="">
+	<li>Fjerner overflødige programmer</li>
+	<li>Genstarter for at se om alt virker</li>
+	<li>Fjerner overflødige kerner når computeren har genstartet uden problemer</li>
+</ol>
+
+<p>Fjern overflødige programmer og genstart</p>
+
+<code class="cmd">sudo apt autoremove -y</code>
+
+<code class="more_cmd">sudo reboot</code>
+
+<p>Efter Computeren er genstartet og du er sikker på at alt virker kan du køre nedestående kommandolinie. Den fjerne alle overflødige kerner, som svarer til ca 2-300 Mb plads der bliver frigjort for hver kerne der fjernes.</p>
+
+<code class="cmd">sudo apt purge $(dpkg -l linux-{image,headers}-"[0-9]*" | awk '/ii/{print $2}' | grep -ve $(uname -r | sed -r 's/-[a-z]+//') | sed ':a;N;$!ba;s/\n/ /g')
+</code>
+
+
+
+	
+</div><!-- end: col-md-9 -->
+
+<footer>
+
+	<p><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons licens" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>Indholdet på Vidas.dk er  er licenseret under <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> og er skrevet af Thomas Jensen. (<a href="../hvem_er_jeg.html" target="_blank">Læs mere</a>)</p>
+
+</footer>
+	
+	
+</div><!-- end: row-fluid -->
+
+</div> <!-- end: container-fluid -->
+
+
+<!-- SCRIPT SECTION -->
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script type="text/javascript" src="../js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="../js/jquery.tocify.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+
+<!-- PRETTYFY-->
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+
+
+<!-- HIGHLIGHT -->
+	<script src="../js/highlight.pack.js" type="text/javascript"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+
+<!-- MATHJAX -->
+<script type="text/javascript" 
+	src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  displayAlign: "left",
+  displayIndent: "0em"
+});
+</script>
+
+
+<!-- TOCIFY -->
+<script>
+	$(function() {var toc = $("#toc").tocify({ selectors: "h1, h2, h3, h4" }).data("toc-tocify"); });
+</script>
+<!-- GOOGLE ANALYTICS -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-89933285-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</body>
+</html>
