@@ -771,47 +771,70 @@ Listing... Færdig
 
 </figure>
 
-<h2>NVIDIA grafikkort</h2>
+<h1>Graffikkort</h1>
 
-<p>Installer følgende for at få de nyeste driver fra NVIDIA. Tilføj repositoriet <span class="inl_cmd">ppa:graphics-drivers/ppa</span> og opdater dine repositories</p>
+<p>Da jeg har kun erfaring med NVIDIA graffikkort, er det kun dem der bliver gennemgået her.</p>
 
-<code class="cmd">sudo add-apt-repository ppa:graphics-drivers/ppa -y</code>
 
-<code class="more_cmd">sudo apt update</code>
 
-<p>Ubuntu har en smart metode til at opdatere sine hardwaredrivere:</p>
+<blockquote>
+	<span class="afsnit">Generelt om grafikkort</span>
+	<p>Graffikkort drivere er meget anvanceret, og der er meget der kan gå galt under installation og opdatering - og det uanset om vi taler om Windows, Mac eller Linux. Derfor er det også et af de steder hvor der kan komme mest bøvl - især hvis kernen er blevet opdateret.</p>
+</blockquote>
 
-<code class="cmd">sudo ubuntu-drivers autoinstall</code>
+<h2>Forberedelse</h2>
 
-<p>Det er nødvendigt at reboot maskinen efter installation af grafikdrivere. Det skyldes at der er sket større ændringer i kernen.</p>
+<p>På Linux er den letteste og mest effektive måde at installere og opdatere programmer og drivere ved hjælp af kommandolinien. Fremgangsmåden er:</p>
 
-<code class="cmd">sudo reboot</code>
+<ul class="none">
+	
+	<li>Installer PPA til drivere</li>
+		<code class="cmd">sudo add-apt-repository ppa:graphics-drivers/ppa -y</code>
+		
+	<li>Opdater repositories</li>
+		<code class="more_cmd">sudo apt update</code>
+	
+	<li>Opdater nuværende hardwaredrivere</li>
+		<code class="cmd">sudo ubuntu-drivers autoinstall</code>
+		
+	<li>Genstart maskinen</li>
+		<code class="cmd">sudo reboot</code>
+	
+</ul>
 
-<p>Efter genstart går du ind i: <span class="inl_cmd">Systemindstillinger</span> -> <span class="inl_cmd">Software og opdateringer</span> og vælger fanen: <span class="inl_cmd">Yderligere drivere</span>. Herefter vælger du den driver du ønsker at anvende. Billedet herunder er taget fra en DELL M4800, der har et Nvidia Quadro 2100 graffikkort:</p>
+<p>Grunden til at vi genstarter maskinen er, at hardwaredrivers arbejder tæt sammen med kernen. Og der er det vigtigt at fungerer rigtigt. Det sikrer man ved at genstarte computeren.</p>
 
-<figure id="">
+<h2>Find hardware</h2>
 
-	<img src="images/install_ubuntu1604_grafikdriver.png" alt="" title="" />
+<p>For at finde vores graffikhardware anvender vi <span class="inl_cmd">inxi</span> med <span class="inl_cmd">-G</span>, som vi installerede før.</p>
 
-	<figcaption></figcaption>
+<pre class="ubuntu_terminal"><span class="green1">tj@tj-desktop</span>:<span class="blue1">~</span>$ inxi -G
+Graphics:  Card: NVIDIA GM206 [GeForce GTX 960]
+           Display Server: X.Org 1.18.4 drivers: nvidia (unloaded: fbdev,vesa,nouveau)
+           Resolution: 1920x1080@60.00hz, 1920x1200@59.95hz
+           GLX Renderer: GeForce GTX 960/PCIe/SSE2
+           GLX Version: 4.5.0 NVIDIA 381.22
+</pre>
 
-</figure>
+<p>Her kan vi altså læse at vi har et NVIDIA GeForce GTC 960.</p>
 
-<p>Det er svært at råde dig til hvilken driver du skal vælge, da der især på bærbare er mange hardware konfigurationer, som skal overvejes. Det bedste råd jeg kan give dig er at vælge den nyeste proporitære driver, da den understøtter både <span class="inl_cmd">OpenCL</span> og <span class="inl_cmd">CUDA</span>. <span class="inl_cmd">Nouveau</span> driveren kan kun anbefales til dem der ønsker kode med mindst mulige proporitære dele. Den kan ikke anbefales til 3D-spil.</p>
+<h2>Find driver</h2>
 
-<p>Efter du har valgt din driver vælger du: <span class="knap">Anvend ændringer</span> og Ubuntu installerer driveren for dig.</p>
+<p>Der er to måder hvorpå du kan se hvilken driver der er installeret. Du kan undersøge hvilke pakker du har installeret og "fange" (<span class="inl_cmd">grep</span>) alle dem med nvidia:</p>
 
-<p>Har du NVIDIA og Intel grafik i din computer bør du installere programmet <span class="inl_cmd">Prime Indicator</span>. Det laver et ikon i menulinien, hvor du hurtigt kan skifte mellem de to graffikkort.</p>
+<code class="cmd">apt list --installed | grep nvidia</code>
 
-<code class="cmd">sudo add-apt-repository -y ppa:nilarimogard/webupd8</code>
-<code class="more_cmd">sudo apt update</code>
-<code class="more_cmd">sudo apt install -y prime-indicator</code>
+<pre class="ubuntu_terminal"><span class="green1">tj@tj-desktop</span>:<span class="blue1">~</span>$ apt list --installed | grep nvidia
 
-<h3>FOrskelligt nvidia</h3>
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
 
-<p>Find driverversion</p>
+<span class="red">nvidia</span>-381/xenial,now 381.22-0ubuntu0~gpu16.04.2 amd64 [Installeret]
+<span class="red">nvidia</span>-opencl-icd-381/xenial,now 381.22-0ubuntu0~gpu16.04.2 amd64 [Installeret,automatisk]
+<span class="red">nvidia</span>-prime/xenial,now 0.8.2 amd64 [Installeret,automatisk]
+<span class="red">nvidia</span>-settings/xenial,now 381.22-0ubuntu0~gpu16.04.1 amd64 [Installeret,automatisk]
+</pre>
 
-<code class="cmd">nvidia-smi</code>
+<p>Eller du kan anvende <span class="inl_cmd">nvidia-smi</span></p>
 
 <pre class="ubuntu_terminal"><span class="green1">tj@tj-desktop</span>:<span class="blue1">~</span>$ nvidia-smi
 Mon May 29 21:35:02 2017       
@@ -836,28 +859,134 @@ Mon May 29 21:35:02 2017
 +-----------------------------------------------------------------------------+
 </pre>
 
-<p>Skift driver</p>
+<p>Giver ingen af de to et resultat, så skyldes det at du ikke har nvidia-drivere kørende.</p>
+
+<h2>Installer drivere</h2>
+
+<p>Ovenfor tilføjede vi en PPA med nvidiadrivere, og nu kan vi undersøge hvilke drivere vi kan anvende. Det gør vi ved hjælp af <span class="inl_cmd">apt-cache search</span></p>
+
+<pre class="ubuntu_terminal"><span class="green1">tj@tj-desktop</span>:<span class="blue1">~</span>$ apt-cache search nvidia-3 | grep driver
+nvidia-304-dev - NVIDIA binary Xorg <span class="red">driver</span> development files
+nvidia-340-dev - NVIDIA binary Xorg <span class="red">driver</span> development files
+nvidia-304 - NVIDIA legacy binary <span class="red">driver</span> - version 304.135
+nvidia-340 - NVIDIA binary <span class="red">driver</span> - version 340.102
+nvidia-375-dev - NVIDIA binary Xorg <span class="red">driver</span> development files
+nvidia-370-dev - NVIDIA binary Xorg <span class="red">driver</span> development files
+nvidia-370 - NVIDIA binary <span class="red">driver</span> - version 370.28
+nvidia-375 - NVIDIA binary <span class="red">driver</span> - version 375.66
+nvidia-378-dev - NVIDIA binary Xorg <span class="red">driver</span> development files
+nvidia-378 - NVIDIA binary <span class="red">driver</span> - version 378.13
+nvidia-381-dev - NVIDIA binary Xorg <span class="red">driver</span> development files
+nvidia-381 - NVIDIA binary <span class="red">driver</span> - version 381.22
+</pre>
+
+<p>Her kan vi altså se at vi har drivere fra version 304 &rarr; 381. Og du kan se ovenfor at jeg har version 381 installeret. Har du et nyere grafikkort bør du installere den nyeste driver. Men nogle gange får man bedre ydelse ved at anvende en ældre, da det ikke er alle programmer der kan udnytte de nye features som driverne har.</p>
+
+<p>Du installerer en ny driver som du normalt vil installere et program:</p>
+
+<ul class="none">
+	<li>Opdater repositories</li>
+		<code class="cmd">sudo apt update</code>
+	
+	<li>Opdater systemet</li>
+		<code class="more_cmd">sudo apt upgrade -y</code>
+		
+	<li>Installer driveren</li>
+		<code class="more_cmd">sudo apt install nvidia-381 -y</code>
+	
+	<li>DONE</li>	
+	
+</ul>
+
+<h2>Geninstaller driver</h2>
+
+<p>Hvis du kommer ud for at din computer begynder at alve fejlmeddelelser efter en opdatering af kerne eller graffikkort, så kan du ofte fjerne problemet ved at geninstallere graffikdriveren. Det skyldes nogle tekniske ting, og er et problem der opleves på alle platforme (Windows, Mac og Linux).</p>
+
+<p>Processen er, at man logger på systemet bagom GUI'en, fjerner driveren og installerer den igen. Det gøres ved hjælp af det der kaldes TTY (<span class="inl_cmd">TeleTYpewriter</span>). På et Linux-system kører der reelt 7 sessions. 6 TTY og 1 GUI. Dem kan man få adgang til ved at bruge tastekombinationerne</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>TTY</th>
+			<th>Type</th>
+			<th>Genvejstast</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1</td>
+			<td>tekst</td>
+			<td><kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>1</kbd></td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>tekst</td>
+			<td><kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>2</kbd></td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>tekst</td>
+			<td><kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>3</kbd></td>
+		</tr>
+		<tr>
+			<td>4</td>
+			<td>tekst</td>
+			<td><kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>4</kbd></td>
+		</tr>
+		<tr>
+			<td>5</td>
+			<td>tekst</td>
+			<td><kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>5</kbd></td>
+		</tr>
+		<tr>
+			<td>6</td>
+			<td>tekst</td>
+			<td><kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>6</kbd></td>
+		</tr>
+		<tr>
+			<td>7</td>
+			<td>GUI</td>
+			<td><kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>1</kbd></td>
+		</tr>
+	</tbody>
+</table>
+
+<p></p>
 
 <ol class="">
+	<li>Opdater PC'en</li>
+		<code class="cmd">sudo apt update && sudo apt upgrade -y</code>
+	
 	<li>Log på TTY</li>
-	<li>kør</li>
 	
-		<code class="cmd">sudo apt-get purge nvidia-*</code>
+		<p>F.eks TTY2: <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>2</kbd></p>
 	
-	<li>Kør</li>
+	<li>Fjern nvidiadrivere</li>
 	
-		<code class="cmd">sudo apt-get update</code>
-		
-	<li>Kør</li>
+		<code class="cmd">sudo apt purge nvidia-*</code>
 	
-		<code class="cmd">sudo apt-get install nvidia-375</code>
+	<li>Installer den ønskede driver</li>
+	
+		<code class="cmd">sudo apt-get install nvidia-381</code>
 		
 	<li>Genstart</li>
 	
-		<code class="cmd">sudo shutdown -h 0</code>
-	
+		<code class="cmd">sudo reboot</code>
 	
 </ol>
+
+<p>Som et lille bonusinfo. Mens jeg har siddet og skrevet dette har mit system været plaget af fejlmeddelelser når jeg startede systemet op. Efter at have kørt ovenstående igennem og geninstalleret driveren er fejlmeddelelserne væk. Hardwaredrivere er langt mere komplekse og griber dybere ind i et operativsystem end "normale" programmer, så det er noget vi må lære at leve med og omgå ... uanset om vi anvender Windows, Mac eller Linux.</p>
+
+
+<h2>Dual Graffikkort</h2>
+
+<p>Har du NVIDIA og Intel grafik i din computer bør du installere programmet <span class="inl_cmd">Prime Indicator</span>. Det laver et ikon i menulinien, hvor du hurtigt kan skifte mellem de to graffikkort.</p>
+
+<code class="cmd">sudo add-apt-repository -y ppa:nilarimogard/webupd8</code>
+<code class="more_cmd">sudo apt update</code>
+<code class="more_cmd">sudo apt install -y prime-indicator</code>
+
+
 
 <h2>Afsluttende arbejde</h2>
 
