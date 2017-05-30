@@ -68,11 +68,28 @@
 
 <p>TCP/IP protokollen er i dag standarden på netværk. Det er den der driver Internettet og holder styr på de mange computere der er på internettet.</p>
 
+<h2>Et overblik</h2>
+
+<p>For at beskrive en enhed og dets netværk skal vi have følgende parametre.</p>
+
+<ul class="none">
+	<li>IP-adresse: Enhedens unikke ID</li>
+	<li>Netmaske: De IP-adresser der er i netværket</li>
+	<li>Netværksadresse: den først tilgængelige IP-adresse i netværket</li>
+	<li>Broadcastadresse: den sidst tilgængelige IP-adresse i netværket</li>
+	<li>Gateway: IP-adressen på den enhed der giver adgang til andre netværk</li>
+</ul>
+
+
 <h2>IP-adresser</h2>
 
 <p>Alle computer på netværket har en unik IP-adresse, sådan at man kan sende data mellem dem. Her i denne guide vil vi tage udgangspunkt i IPv4 (herefter blot omtalt som IP), som er den mest udbredte, og den version din Ubuntu computer anvender (IPv6 vil blive gennemgået længere nede).</p>
 
-<p>IP adresser består af 4 oktetter af binære tal der tilsammen danner en unik adresse. Normal vil man ikke anvende binære tal, men 10-talsystemet til at skrive værdierne. Det betyder at hver oktet kan have værdierne 0 - 255, da man tæller fra 0 når man arbejder med computere. For at finde din computers IP-adresse bruger du nedestående kommando. Ip-adressen er markeret med rødt:</p>
+<p>IP adresser består af 4 oktetter af binære tal der tilsammen danner en unik adresse. Normal vil man ikke anvende binære tal, men 10-talsystemet til at skrive værdierne. Det betyder at hver oktet kan have værdierne 0 - 255 (svarende til de binære værdier 00000000 og 11111111), da man tæller fra 0 når man arbejder med computere.</p>
+
+<p>IP-adressen <span class="inl_cmd">192.168.0.65</span> svarer altså til <span class="inl_cmd">11000000.10101000.00000000.01000001</span></p>
+
+<p>For at finde din computers IP-adresse bruger du nedestående kommando. Ip-adressen er markeret med rødt:</p>
 
 <code class="cmd">ip addr</code>
 
@@ -91,7 +108,7 @@
        valid_lft forever preferred_lft forever
 </pre>
 
-<p>Den ovenstående IP adresse (<span class="inl_cmd">192.168.0.65</span>) ville på binær være: <span class="inl_cmd">11000000.10101000.00000000.01000001</span></p>
+<p>Den ovenstående IP adresse (<span class="inl_cmd">192.168.0.65</span>) ville på binær være: <span class="inl_cmd">11000000.10101000.00000000.01000001</span>. </p>
 
 <p>Ved hjælp af den linie får jeg alle de informationer der skal til for at jeg kender min maskines adresse og det netværk den befinder sig på. De informationer der kan læses ud af denne linie er:</p>
 
@@ -106,7 +123,7 @@
 
 <h2>Netmaske</h2>
 
-<p>Netmasken beskriver størrelsen på netværket. Prøv at se nedestående skema, hvor <span class="bold"><span class="red">N</span></span> står for de bits netværket er tildelt og <span class="bold"><span class="blue">K</span></span> for de bits der tilhører klienterne.</p>
+<p>Netmasken beskriver netværket ved at angive de bits netværket kan anvende. Prøv at se nedestående skema, hvor <span class="bold"><span class="red">N</span></span> står for de bits netværket kan bruge og <span class="bold"><span class="blue">L</span></span> for de bits der er utilgængelige (låste).</p>
 
 <table id="">
 	<thead>
@@ -121,38 +138,48 @@
 		<tr>
 			<td>/8</td>
 			<td>255.0.0.0</td>
-			<td><span class="red">NNNNNNNN</span> . <span class="blue">KKKKKKKK</span> . <span class="blue">KKKKKKKK</span> . <span class="blue">KKKKKKKK</span></td>
+			<td><span class="blue">LLLLLLLL</span> . <span class="red">NNNNNNNN</span> . <span class="red">NNNNNNNN</span> . <span class="red">NNNNNNNN</span></td>
 			<td><span class="math">\( 2^{24} = 16.777.216 \)</span></td>
 			<td><span class="math">\( 16.777.214 \)</span></td>
 		</tr>
 		<tr>
 			<td>/16</td>
 			<td>255.255.0.0</td>
-			<td><span class="red">NNNNNNNN</span> . <span class="red">NNNNNNNN</span> . <span class="blue">KKKKKKKK</span> . <span class="blue">KKKKKKKK</span></td>
+			<td><span class="blue">LLLLLLLL</span>  . <span class="blue">LLLLLLLL</span>  . <span class="red">NNNNNNNN</span>. <span class="red">NNNNNNNN</span></td>
 			<td><span class="math">\( 2^{16} = 65.536 \)</span></td>
 			<td><span class="math">\( 65.534 \)</span></td>
 		</tr>
 		<tr>
 			<td>/24</td>
 			<td>255.255.255.0</td>
-			<td><span class="red">NNNNNNNN</span> . <span class="red">NNNNNNNN</span> . <span class="red">NNNNNNNN</span> . <span class="blue">KKKKKKKK</span></td>
+			<td><span class="blue">LLLLLLLL</span>  . <span class="blue">LLLLLLLL</span>  . <span class="blue">LLLLLLLL</span>  . <span class="red">NNNNNNNN</span></td>
 			<td><span class="math">\( 2^8 = 256 \)</span></td>
 			<td><span class="math">\( 254 \)</span></td>
 		</tr>
 	</tbody>
 </table>
 
-<p>Forskellen mellem de 3 forskellige netmasker er, antallet af mulige <span class="inl_cmd">klienter</span> på netværket. Man anvender netmasken til at subnette ( segmenterer / opdele ) netværket, for at mindske datamængden, og for at kunne styre adgang og rettigheder til og fra maskinerne.</p>
+<p>Man kan angive det på to måder. Enten ved hjælp af CIDR, som tæller antallet af låste bits og derved også angiver hvor mange tilgængelige der er ved hjælp af formlen <span class="math">\( 32 - CIDR \)</span>. Lad os kigge på det netværk som oftest anvendes i private hjem, nemlig dem som starter med <span class="inl_cmd">192.168.0</span> og har en værdi på 0-255 derefter f.eks. <span class="inl_cmd">192.168.0.65</span></p>
 
-<p>Der vil senere komme et afsnit om subnetting.</p>
+<p>Hvis vi bruge farvesystemet ovenfor fille det se ud som følger: <span class="inl_cmd"><span class="blue">192</span> . <span class="blue">168</span> . <span class="blue">0</span>  . <span class="red">65</span></span>, hvilket svarer til <span class="inl_cmd">/24</span> da de første 24 bit er låst. Den mindste adresse i dette netværk er altså: <span class="inl_cmd"><span class="blue">192</span> . <span class="blue">168</span> . <span class="blue">0</span>  . <span class="red">0</span></span>, og den største: <span class="inl_cmd"><span class="blue">192</span> . <span class="blue">168</span> . <span class="blue">0</span>  . <span class="red">255</span></span>. Der er altså 255 IP-adresser på dette netværk.</p>
 
-<h2>Netværks-adresse</h2>
+<p>Ved hjælp af CIDR metoden kan vi altså beskrive en enheds unikke adresse, men også omfanget af det netværk enheden er på, f.eks:</p>
 
-<p>Man anvender den først tilgængelige adresse i netværket som netværkets navn. I det ovenstående tilfælde vil det altså være den første af de tilgængelige adresser. Og da computere tæller fra 0 bliver det 192.168.0.0</p>
+<p><span class="inl_cmd">10.23.45.2/8</span> = <span class="inl_cmd"><span class="blue">10</span> . <span class="red">23</span> . <span class="red">45</span>  . <span class="red">2</span></span> ( Mindst: <span class="inl_cmd"><span class="blue">10</span> . <span class="red">0</span> . <span class="red">0</span>  . <span class="red">0</span></span>  - Størst: <span class="inl_cmd"><span class="blue">10</span> . <span class="red">255</span> . <span class="red">255</span>  . <span class="red">255</span></span>)</p>
 
-<h2>Broadcast-adresse</h2>
+<p>Man kan også segmentere (indele) netværk mere avanceret, men det går ud over dette materiale.</p>
 
-<p>Den sidste adresse i et netværk anvendes til <span class="inl_cmd">broadcast</span>. Det er en adresse alle computerne i netværket lytter til, og som kan anvendes til at sende globale beskeder igennem. </p>
+
+
+<h2>Netværks- og broadcastadresse</h2>
+
+<p>Man anvender den først tilgængelige adresse i netværket som netværkets navn. I det ovenstående tilfælde vil det altså være den første af de tilgængelige adresser. Og da computere tæller fra 0 bliver det <span class="inl_cmd"><span class="blue">192</span> . <span class="blue">168</span> . <span class="blue">0</span>  . <span class="red">0</span></span> i vores hjemmenetværk. Denne adresse beskriver netværket (netværksnavnet), og må ikke anvendes af nogle enheder.</p>
+
+<p>Den sidste adresse i et netværk anvendes til <span class="inl_cmd">broadcast</span>. Det er en adresse alle computerne i netværket lytter til, og som kan anvendes til at sende globale beskeder igennem. I vores hjemmenetværk vil det altså være: <span class="inl_cmd"><span class="blue">192</span> . <span class="blue">168</span> . <span class="blue">0</span>  . <span class="red">255</span></span>. Denne adresse  må ikke anvendes af nogle enheder</p>
+
+
+
+
 
 <h1>Netværkets hardware</h1>
 
