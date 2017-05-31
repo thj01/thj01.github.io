@@ -124,7 +124,7 @@
 <p>Navngivningen af drevene på et Windows7+ system kan være anderledes end det er angivet ovenfor. Navngivningen af C drevet vil altid være systempartitionen, men denne kan f.eks. være den 3. partition på 1. disk. Derfor bør man altid tjekke harddiskkonfigurationen med <span class="inl_cmd">lsblk</span> eller <span class="inl_cmd">fdisk -l</span>. Se eksemplet herunder:</p>
 
 <pre class="ubuntu_terminal">
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ lsblk
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ lsblk
 NAME   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
 sda      8:0    0  100G  0 disk 
 ├─sda1   8:1    0 46,6G  0 part /
@@ -175,11 +175,11 @@ sr0     11:0    1 1024M  0 rom
 
 <h2>Optioner</h2>
 
-<p>Optionerne er dem som sætter egenskaberne for delingen. De startes med et <span class="inl_cmd">-o</span> fulgt af optionerne adskilt af kommaer (,). Herunder er et eksempel på et netværks drev der bliver monteret, hvor <span class="inl_cmd">/mnt/backup</span> bliver monteret som "read-only" og brugeren <span class="inl_cmd">thoj</span> til at verificere. Som det ses herunder kræver Ubuntu at få brugerens password.</p>
+<p>Optionerne er dem som sætter egenskaberne for delingen. De startes med et <span class="inl_cmd">-o</span> fulgt af optionerne adskilt af kommaer (,). Herunder er et eksempel på et netværks drev der bliver monteret, hvor <span class="inl_cmd">/mnt/backup</span> bliver monteret som "read-only" og brugeren <span class="inl_cmd">tj</span> til at verificere. Som det ses herunder kræver Ubuntu at få brugerens password.</p>
 
 <pre class="ubuntu_terminal">
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ sudo mount //10.0.2.10/alle /mnt/backup -o ro, user=thoj, uid=1003
-Password for thoj@//10.0.2.10/alle:
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ sudo mount //10.0.2.10/alle /mnt/backup -o ro, user=tj, uid=1003
+Password for tj@//10.0.2.10/alle:
 </pre>
 
 <span class="afsnit"><span class="inl_cmd">ro</span> og <span class="inl_cmd">rw</span></span>
@@ -330,19 +330,19 @@ Password for thoj@//10.0.2.10/alle:
 <p>Du kan teste det ganske simpelt med følgende kommandoer (vist i terminalen). Start terminalen op med <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>T</kbd>. <span class="inl_cmd">umask</span>-værdien resetter sig selv efter at den kørende session er lukket ned.</p>
 
 <pre class="ubuntu_terminal">
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ touch testfile
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ mkdir testdir
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ ls -al | grep test
-drwxrwxr-x  2 thoj thoj 4096 maj  4 12:55 <span class="red">test</span>dir
--rw-rw-r--  1 thoj thoj    0 maj  4 12:55 <span class="red">test</span>file
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ umask 077
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ touch testfile1
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ mkdir testdir1
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ ls -al | grep test
-drwxrwxr-x  2 thoj thoj 4096 maj  4 12:55 <span class="red">test</span>dir
-drwx------  2 thoj thoj 4096 maj  4 12:59 <span class="red">test</span>dir1
--rw-rw-r--  1 thoj thoj    0 maj  4 12:55 <span class="red">test</span>file
--rw-------  1 thoj thoj    0 maj  4 12:59 <span class="red">test</span>file1
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ touch testfile
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ mkdir testdir
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ ls -al | grep test
+drwxrwxr-x  2 tj tj 4096 maj  4 12:55 <span class="red">test</span>dir
+-rw-rw-r--  1 tj tj    0 maj  4 12:55 <span class="red">test</span>file
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ umask 077
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ touch testfile1
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ mkdir testdir1
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ ls -al | grep test
+drwxrwxr-x  2 tj tj 4096 maj  4 12:55 <span class="red">test</span>dir
+drwx------  2 tj tj 4096 maj  4 12:59 <span class="red">test</span>dir1
+-rw-rw-r--  1 tj tj    0 maj  4 12:55 <span class="red">test</span>file
+-rw-------  1 tj tj    0 maj  4 12:59 <span class="red">test</span>file1
 </pre>
 
 <p>Her ovenfor kan du se, at de nyoprettede filer ikke har fået rettigheder til gruppe og alle.</p>
@@ -449,14 +449,14 @@ drwx------  2 thoj thoj 4096 maj  4 12:59 <span class="red">test</span>dir1
 		</tr>
 		<tr>
 			<td>Bruger</td>
-			<td>thoj</td>
+			<td>tj</td>
 		</tr>
 	</tbody>
 </table>
 
 <h3>Montering af NFS shares (Linux)</h3>
 
-<code class="cmd">mount 10.0.2.10:/srv/backup /mnt/backup -o user=thoj</code>
+<code class="cmd">mount 10.0.2.10:/srv/backup /mnt/backup -o user=tj</code>
 
 <p>Før du får adgang til NFS-delingen bliver du bedt om at give dit password.</p>
 
@@ -477,15 +477,15 @@ Password for root@//10.0.2.10/alle:
 
 <p>Hvis drevet er delt med rettigheder skal du medsende dine credentials f.eks:</p>
 
-<code class="cmd">mount -t cifs //10.0.2.10/admin /mnt/backup -o user=thoj,pass=123qwe</code>
+<code class="cmd">mount -t cifs //10.0.2.10/admin /mnt/backup -o user=tj,pass=123qwe</code>
 
 <p>Hvis du ikke ønsker at medsende dit password i klartekst, kan du vælge at udelade kodeordet. Mount vil spørge om kodeordet.</p>
 
-<code class="cmd">mount -t cifs //10.0.2.10/admin /mnt/backup -o user=thoj</code>
+<code class="cmd">mount -t cifs //10.0.2.10/admin /mnt/backup -o user=tj</code>
 
 <pre class="ubuntu_terminal">
-<span class="green">root@sysresccd</span> <span class="blue1">/root</span>  % mount -t cifs //10.0.2.10/alle /mnt/backup_alle  -o user=thoj
-Password for thoj@//10.0.2.10/alle:
+<span class="green">root@sysresccd</span> <span class="blue1">/root</span>  % mount -t cifs //10.0.2.10/alle /mnt/backup_alle  -o user=tj
+Password for tj@//10.0.2.10/alle:
 </pre>
 
 <p>Denne metode er på ingen måde sikker, da den ikke er krypteret, og at man sender sine kodeord i klartekst. Men for at forsimple ting kan man blot sørge for at oprette en bruger med begrænsede rettigheder til at udføre disse ting med.</p>
@@ -540,7 +540,7 @@ Password for thoj@//10.0.2.10/alle:
 
 <p>Montering af Windows share "backup" på server 192.168.2.15 som <span class="inl_cmd">/media/windowsbackup</span></p>
 
-<code class="cmd">mount -t cifs //192.168.2.15/backup /mnt/windows -o user=thoj,pass=123qwe</code>
+<code class="cmd">mount -t cifs //192.168.2.15/backup /mnt/windows -o user=tj,pass=123qwe</code>
 
 <p>Læg mærke til at password og navn skal angives i klartekst, hvilket er uhensigtsmæssigt. Det kan gøres ved at anvende en "credentialsfile": <a href="https://help.ubuntu.com/community/MountWindowsSharesPermanently#Credentials_File" target="_blank">https://help.ubuntu.com/community/MountWindowsSharesPermanently#Credentials_File</a>.</p>
 
@@ -554,7 +554,7 @@ Password for thoj@//10.0.2.10/alle:
 
 <h1>Konfigurering af harddiske på Linux</h1>
 
-<p>For at montere filsystemer permanent på et linux system skal man anvende <span class="inl_cmd">/etc/fstab</span>. Herunder er vist et eksempel som er installeret med følgende konfiguration: </p>
+<p>For at montere filsystemer permanent på et linux system skal man anvende <span class="inl_cmd">/etc/fstab</span>. Herunder er vist et eksempel hvor Ubuntu selv har sat harddisken op under installationen, og hvor vi efterfølgende har installeret en ny harddisk.</p>
 
 <table class="">
 	<thead>
@@ -563,7 +563,7 @@ Password for thoj@//10.0.2.10/alle:
 			<th>Betegnelse</th>
 			<th>Størrelse</th>
 			<th>type</th>
-			<th>Opstartsflad</th>
+			<th>Opstartsflag</th>
 			<th>Anvendelse</th>
 		</tr>
 	</thead>
@@ -571,7 +571,7 @@ Password for thoj@//10.0.2.10/alle:
 		<tr>
 			<td>/dev/sda1</td>
 			<td>/</td>
-			<td>50000Mb (50Gb)</td>
+			<td>92 Gb</td>
 			<td>Primær</td>
 			<td>Ja</td>
 			<td>System</td>
@@ -579,48 +579,41 @@ Password for thoj@//10.0.2.10/alle:
 		<tr>
 			<td>/dev/sda2</td>
 			<td>Ingen</td>
-			<td>4096MB (4GB)</td>
-			<td>Primær</td>
+			<td>8 GB</td>
+			<td>Logisk</td>
 			<td>-</td>
 			<td>Swap</td>
 		</tr>
 		<tr>
-			<td>/dev/sda3</td>
-			<td>/data</td>
-			<td>31000MB (31GB)</td>
-			<td>Primær</td>
+			<td>/dev/sdb</td>
+			<td>Ingen</td>
+			<td>100 GB</td>
 			<td>-</td>
-			<td>Data og backup</td>
+			<td>-</td>
+			<td>-</td>
 		</tr>
-		<tr>
-			<td>Ledig plads</td>
-			<td> - </td>
-			<td>20,9 GB</td>
-			<td> - </td>
-			<td> - </td>			
-			<td>Linux?</td>
-		</tr>
+
 	</tbody>
 </table>
 
-<pre class="black">
+<p>Når vi kigger i <span class="inl_cmd">/etc/fstab</span> får vi følgende informationer:</p>
+
+<pre class="ubuntu_terminal"><span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ cat /etc/fstab
 # /etc/fstab: static file system information.
 #
 # Use 'blkid' to print the universally unique identifier for a
 # device; this may be used with UUID= as a more robust way to name devices
 # that works even if disks are added and removed. See fstab(5).
 #
-# &lt;file system&gt; &lt;mount point&gt;   &lt;type&gt;  &lt;options&gt;       &lt;dump&gt;  &lt;pass&gt;
+# &lt;file system> &lt;mount point>   &lt;type>  &lt;options>       &lt;dump>  &lt;pass>
 # / was on /dev/sda1 during installation
-UUID=c177c89a-3ad8-4588-a172-3bdd86ccc6df /               ext4    errors=remount-ro 0       1
-# /data was on /dev/sda3 during installation
-UUID=377113e6-5f83-4153-ac47-8d6dbc98a5cb /data           ext4    defaults        0       2
-# swap was on /dev/sda2 during installation
-UUID=c4e6f606-e61c-4936-9b6e-73de38ed0b7b none            swap    sw              0       0
-
+UUID=34bb7b7d-54b7-43c0-bba7-0bf0565c563d /               ext4    errors=remount-ro 0       1
+# swap was on /dev/sda5 during installation
+UUID=9b832ca1-217e-4308-bdf3-225b789946c9 none            swap    sw              0       0
 </pre>
 
-<p>Hver linie i filen angiver ved hjælp af forskellige parametre hvordan Linux skal anvende dem. Der er 5 parametre der skal sættes.</p>
+
+<p>Hver linie i filen angiver ved hjælp af forskellige parametre hvordan Linux skal anvende dem. Der er 5 parametre der skal sættes, som er adskilt af et mellemrum.</p>
 
 
 
@@ -631,17 +624,12 @@ UUID=c4e6f606-e61c-4936-9b6e-73de38ed0b7b none            swap    sw            
 <p>UUID'en er "praktisk" unikt, forstået på den måde at UUID'en bliver dannet i det system det anvendes og at sandsynligheden for at en anden enhed i systemet får samme UUID er ekstrem lille. Du kan finde harddiskenes UUID på dit system ved at anvende kommandoen <span class="inl_cmd">sudo blkid</span>. På ovenstående system giver det:</p>
 
 <pre class="ubuntu_terminal">
-thoj@tjmainsrv:~$ sudo blkid
-[sudo] password for thoj: 
-/dev/sda1: UUID="87cd86f4-194e-47c4-b818-4933534cac7f" TYPE="ext2" 
-/dev/sda5: UUID="dX0KXS-UURF-U4b5-GuX7-Gs1X-6UTg-Fdc0JL" TYPE="LVM2_member" 
-/dev/mapper/vg01-system: UUID="040d0d5d-fa6d-4020-a295-a76581c365ae" TYPE="ext4" 
-/dev/mapper/vg01-home: UUID="6bf7a995-f118-4ddd-8f19-090355f98b61" TYPE="ext4" 
-/dev/mapper/vg01-web: UUID="c73aa339-a8f1-4f2f-84eb-2163e976e856" TYPE="ext4" 
-/dev/mapper/vg01-data: UUID="bc496005-e62f-49c3-967d-7dc0629c78b1" TYPE="ext4" 
-/dev/mapper/vg01-swap: UUID="9753858d-9567-4ff6-9afa-0dfdf49b8248" TYPE="swap" 
-thoj@tjmainsrv:~$ 
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ sudo blkid
+/dev/sda1: UUID="34bb7b7d-54b7-43c0-bba7-0bf0565c563d" TYPE="ext4" PARTUUID="f5fc72dc-01"
+/dev/sda5: UUID="9b832ca1-217e-4308-bdf3-225b789946c9" TYPE="swap" PARTUUID="f5fc72dc-05"
 </pre>
+
+<p>Læg mærke til at systemet endnu ikke kender til <span class="inl_cmd">/dev/sdb</span>.</p>
 
 <span class="afsnit"><span class="inl_cmd">&lt;mount point&gt;</span> - Partitionens monteringspunkt</span>
 
@@ -682,23 +670,22 @@ thoj@tjmainsrv:~$
 <p>Først skabes et overblik med <span class="inl_cmd">lsblk</span>. Herunder er outputtet fra ovenstående konfiguration isat en ny 100GB SATA disk</p>
 
 <pre class="ubuntu_terminal">
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ lsblk
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ lsblk
 NAME   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
-sda      8:0    0  100G  0 disk 
-├─sda1   8:1    0 46,6G  0 part /
-├─sda2   8:2    0  3,8G  0 part [SWAP]
-└─sda3   8:3    0 28,9G  0 part /data
 sdb      8:16   0  100G  0 disk 
-sr0     11:0    1 1024M  0 rom 
+sda      8:0    0  100G  0 disk 
+├─sda2   8:2    0    1K  0 part 
+├─sda5   8:5    0    8G  0 part [SWAP]
+└─sda1   8:1    0   92G  0 part /
 </pre>
 
 <p>Kør fdisk</p>
 
-<code class="cmd">fdisk /dev/sdb</code>
+<code class="cmd">sudo fdisk /dev/sdb</code>
 
 <pre class="ubuntu_terminal">
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ sudo fdisk /dev/sdb
-[sudo] adgangskode for thoj: 
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ sudo fdisk /dev/sdb
+[sudo] adgangskode for tj: 
 
 <span class="green">Welcome to fdisk (util-linux 2.27.1).</span>
 Changes will remain in memory only, until you decide to write them.
@@ -762,7 +749,7 @@ Units: sectors of 1 * 512 = 512 bytes
 Sector size (logical/physical): 512 bytes / 512 bytes
 I/O size (minimum/optimal): 512 bytes / 512 bytes
 Disklabel type: dos
-Disk identifier: 0xc0b6b3c8
+Disk identifier: 0x014dbe7d
 </pre>
 
 <p>Lær mærke til linien der er med fed skrift. Herefter skal der gøres er følgende:</p>
@@ -777,42 +764,42 @@ Disk identifier: 0xc0b6b3c8
 	</thead>
 	<tbody>
 		<tr>
-			<th>1</th>
+			<td>1</td>
 			<td><kbd>m</kbd></td>
 			<td>* Vis alle kommandoerne</td>
 		</tr>
 		<tr>
-			<th>2</th>
+			<td>2</td>
 			<td><kbd>n</kbd></td>
 			<td>Opret ny partition</td>
 		</tr>
 		<tr>
-			<th>3</th>
+			<td>3</td>
 			<td><kbd>p</kbd></td>
 			<td>Den skal være primær</td>
 		</tr>
 		<tr>
-			<th>4</th>
+			<td>4</td>
 			<td><kbd>Enter</kbd></td>
 			<td>Du skal vælger første partition – [Enter gør det som standard]</td>
 		</tr>
 		<tr>
-			<th>5</th>
+			<td>5</td>
 			<td><kbd>Enter</kbd></td>
 			<td>Du skal vælge første sektor – [Enter gør det som standard]</td>
 		</tr>
 		<tr>
-			<th>6</th>
+			<td>6</td>
 			<td><kbd>Enter</kbd></td>
 			<td>Du skal vælge sidste sektor – [Enter gør det som standard]</td>
 		</tr>
 		<tr>
-			<th>7</th>
+			<td>7</td>
 			<td><kbd>p</kbd></td>
 			<td>* Tjek partionstabellen</td>
 		</tr>
 		<tr>
-			<th>8</th>
+			<td>8</td>
 			<td><kbd>w</kbd></td>
 			<td>Skriv ændringerne til disken</td>
 		</tr>
@@ -837,7 +824,7 @@ Units: sectors of 1 * 512 = 512 bytes
 Sector size (logical/physical): 512 bytes / 512 bytes
 I/O size (minimum/optimal): 512 bytes / 512 bytes
 Disklabel type: dos
-Disk identifier: 0xc0b6b3c8
+Disk identifier: 0x014dbe7d
 
 <span class="bold">Enhed      Opstart Start      Slut  Sektorer  Size Id Type</span>
 /dev/sdb1           2048 209715199 209713152  100G 83 Linux
@@ -849,6 +836,22 @@ Syncing disks.
 </pre>
 
 <p>Som vi kan se herover bliver harddisken som standard sat til Id/Type 83/Linux, og harddisken er sat korrekt op.</p>
+
+<p>Lad os tjekke om disken er sat korrekt op - altså om det er en Linux partition der er på.</p>
+
+<code class="cmd">sudo fdisk -l /dev/sdb</code>
+
+<pre class="ubuntu_terminal"><span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ sudo fdisk -l /dev/sdb
+Disk /dev/sdb: 100 GiB, 107374182400 bytes, 209715200 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0x014dbe7d
+
+Enhed      Opstart Start      Slut  Sektorer  Size Id Type
+/dev/sdb1           2048 209715199 209713152  100G 83 Linux
+</pre>
 
 <h2>Ændring af ID/Type</h2>
 
@@ -902,32 +905,32 @@ Syncing disks.
 	</thead>
 	<tbody>
 		<tr>
-			<th>1</th>
+			<td>1</td>
 			<td><kbd>p</kbd></td>
 			<td>Tjek partionstabellen</td>
 		</tr>
 		<tr>
-			<th>2</th>
+			<td>2</td>
 			<td><kbd>l</kbd></td>
 			<td>Få et overblik over tilgængelige filsystemer</td>
 		</tr>
 		<tr>
-			<th>3</th>
+			<td>3</td>
 			<td><kbd>t</kbd></td>
 			<td>Aktivier prompten til at vælge ID</td>
 		</tr>
 		<tr>
-			<th>4</th>
+			<td>4</td>
 			<td><kbd>7</kbd></td>
 			<td>Vælg NTFS</td>
 		</tr>
 		<tr>
-			<th>5</th>
+			<td>5</td>
 			<td><kbd>p</kbd></td>
 			<td>Tjek partionstabellen</td>
 		</tr>
 		<tr>
-			<th>6</th>
+			<td>6</td>
 			<td><kbd>w</kbd></td>
 			<td>Skriv ændringerne til disken</td>
 		</tr>
@@ -1002,7 +1005,7 @@ Syncing disks.
 <p>Efter partitioneringen af disken fås følgende output af <span class="inl_cmd">fdisk -l</span></p>
 
 <pre class="ubuntu_terminal">
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ sudo fdisk -l /dev/sdb
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ sudo fdisk -l /dev/sdb
 <span class="bold">Disk /dev/sdb: 100 GiB, 107374182400 bytes, 209715200 sectors</span>
 Units: sectors of 1 * 512 = 512 bytes
 Sector size (logical/physical): 512 bytes / 512 bytes
@@ -1059,10 +1062,10 @@ Disk identifier: 0xc0b6b3c8
 <code class="cmd">sudo mkfs.ext4 /dev/sdb1</code>
 
 <pre class="ubuntu_terminal">
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ sudo mkfs.ext4 /dev/sdb1
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ sudo mkfs.ext4 /dev/sdb1
 mke2fs 1.42.13 (17-May-2015)
 Opretter filsystem med 26214144 4k blokke og 6553600 iknuder
-Filsystem UUID: 432a02a0-2e49-4b52-b19c-e68db62baf51
+Filsystem UUID: c0a52ac1-0d8c-4db9-9ee6-e436f9c3d198
 Superblock backups stored on blocks: 
 	32768, 98304, 163840, 229376, 294912, 819200, 884736, 1605632, 2654208, 
 	4096000, 7962624, 11239424, 20480000, 23887872
@@ -1077,23 +1080,26 @@ Skriver superblokke og filsystemets registreringsinformation: færdig
 
 <h2>Fast montering af disken</h2>
 
-<p>I første kapitel gennemgik vi hvordan man mounter partitioner. Herunder vil vi gøre sådan at harddisken automatisk bliver monteret når computeren starter op. Vi vil montere mappen i <span class="inl_cmd">/srv/newdisk</span>, da <span class="inl_cmd">/srv</span> er standardmappen for datadiske. Først vil vi tjekke harddisken og dens opsætning og herefter oprette mappen:</p>
+<p>I første kapitel gennemgik vi hvordan man mounter partitioner. Herunder vil vi gøre sådan at harddisken automatisk bliver monteret når computeren starter op. Vi vil montere mappen i <span class="inl_cmd">/data</span>.</p>
+
+<p>Først vil vi tjekke harddisken og dens opsætning og herefter oprette mappen:</p>
 
 <code class="cmd">sudo fdisk -l /dev/sdb</code>
-<code class="more_cmd">sudo mkdir -p /srv/newdisk</code>
+<code class="more_cmd">sudo mkdir /data</code>
 
 <pre class="ubuntu_terminal">
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ sudo fdisk -l /dev/sdb
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ sudo fdisk -l /dev/sdb
 <span class="bold">Disk /dev/sdb: 100 GiB, 107374182400 bytes, 209715200 sectors</span>
 Units: sectors of 1 * 512 = 512 bytes
 Sector size (logical/physical): 512 bytes / 512 bytes
 I/O size (minimum/optimal): 512 bytes / 512 bytes
 Disklabel type: dos
-Disk identifier: 0xc0b6b3c8
+Disk identifier: 0x014dbe7d
 
 <span class="bold">Enhed      Opstart Start      Slut  Sektorer  Size Id Type</span>
 /dev/sdb1           2048 209715199 209713152  100G 83 Linux
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ sudo mkdir -p /srv/newdisk
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ sudo mkdir /data
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$
 </pre>
 
 <p>For at kunne montere disken ved hjælp af <span class="inl_cmd">/etc/fstab</span>, så den også er monteret herefter skal vi finde diskens UUID og indsætte denne linie 8 <span class="inl_cmd">/etc/fstab</span>.</p>
@@ -1101,8 +1107,8 @@ Disk identifier: 0xc0b6b3c8
 <code class="cmd">sudo blkid | grep /dev/sdb1</code>
 
 <pre class="ubuntu_terminal">
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ sudo blkid | grep /dev/sdb1
-<span class="red">/dev/sdb1</span>: UUID="a9325cdc-bd8b-4795-b514-59f1f7453235" TYPE="ext4" PARTUUID="c0b6b3c8-01"
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ sudo blkid | grep /dev/sdb1
+<span class="red">/dev/sdb1</span>: UUID="c0a52ac1-0d8c-4db9-9ee6-e436f9c3d198" TYPE="ext4" PARTUUID="014dbe7d-01"
 </pre>
 
 <p>Følgende linier indsættes i <span class="inl_cmd">/etc/fstab</span> (husk at fjerne " om UUID'en):</p>
@@ -1110,66 +1116,64 @@ Disk identifier: 0xc0b6b3c8
 <code class="cmd">sudo nano /etc/fstab</code>
 
 <pre class="black">
-#/srv/newdisk er indsat i filsystemet af thoj 17082015
-UUID=a9325cdc-bd8b-4795-b514-59f1f7453235  /srv/newdisk   ext4	defaults       0   2
+#/data er indsat i filsystemet af tj 31052017
+UUID=c0a52ac1-0d8c-4db9-9ee6-e436f9c3d198  /data   ext4	defaults       0   2
 </pre>
 
-<p>Herefter vil harddisken være monteret i <span class="inl_cmd">/srv/newdisk</span> efter opstart. For at mountere disken med det samme anvendes <span class="inl_cmd">mount</span> kommandoen med et <span class="inl_cmd">-a</span> bagefter. Den får Ubuntu til at genindlæse <span class="inl_cmd">/etc/fstab</span> og sørge for at alle partitioner der er nævnt deri bliver monteret. Herunder er det vist ved hjælp af <span class="inl_cmd">lsblk</span>.</p>
+<p>Herefter vil <span class="inl_cmd">/data</span> være tilgængelig hver gang maskinen startes. For at få adgang til disken med det samme skal vi "genmounte" vores filsystemer . Det gøres med kommandoen:</p>
+
+<code class="cmd">sudo mount -a</code>
+
+<p>Lad os kontrollere med <span class="inl_cmd">lsblk</span></p>
 
 <pre class="ubuntu_terminal">
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ lsblk
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ lsblk
 NAME   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+sdb      8:16   0  100G  0 disk <span class="red">&larr; vores nye disk - ikke monteret</span>
 sda      8:0    0  100G  0 disk 
-├─sda1   8:1    0 46,6G  0 part /
-├─sda2   8:2    0  3,8G  0 part [SWAP]
-└─sda3   8:3    0 28,9G  0 part /data
-sdb      8:16   0  100G  0 disk 
-└─sdb1   8:17   0  100G  0 part <span class="red">&lt;-- Læg mærke til denne linie </span>
-sr0     11:0    1 1024M  0 rom  
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ sudo mount -a <span class="red">Alle drev monteres</span>
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ lsblk
+├─sda2   8:2    0    1K  0 part 
+├─sda5   8:5    0    8G  0 part [SWAP]
+└─sda1   8:1    0   92G  0 part /
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ sudo mount -a
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$  lsblk
 NAME   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
-sda      8:0    0  100G  0 disk 
-├─sda1   8:1    0 46,6G  0 part /
-├─sda2   8:2    0  3,8G  0 part [SWAP]
-└─sda3   8:3    0 28,9G  0 part /data
 sdb      8:16   0  100G  0 disk 
-└─sdb1   8:17   0  100G  0 part /srv/newdisk <span class="red">&lt;-- Læg mærke til denne linie </span>
-sr0     11:0    1 1024M  0 rom  
+└─sdb1   8:17   0  100G  0 part /data <span class="red">&larr; vores nye disk - monteret</span>
+sda      8:0    0  100G  0 disk 
+├─sda2   8:2    0    1K  0 part 
+├─sda5   8:5    0    8G  0 part [SWAP]
+└─sda1   8:1    0   92G  0 part /
 </pre>
 
 <h2>Kontrol af harddiske</h2>
 
 <p>Ubuntu kører normalt med <span class="inl_cmd">ext4</span>-filsystem, og det kan man kontrollere med <span class="inl_cmd">e2fsck</span>. Kommandoen skal køres mens partitionen ikke er monteret. Det betyder at hvis man vil kontrollere rod-drevet, så skal computeren genstartes med en live linuxdistribution som f.eks. SystemrescueCD (<a href="https://www.system-rescue-cd.org/Download" target="_blank">https://www.system-rescue-cd.org/Download</a>). Fordelen ved at anvende den fremfor Ubuntu selv er, at SystemrescueCD ikke mounter nogle drev.</p>
 
-<p>Herunder har jeg afmonteret <span class="inl_cmd">/data</span> (<span class="inl_cmd">/dev/sda3)</span> på min testmaskine og lavet et filcheck på den:</p>
+<p>Herunder har jeg afmonteret <span class="inl_cmd">/dev/sdb1</span>  og laver et filcheck på den:</p>
 
 <pre class="ubuntu_terminal">
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ sudo umount /dev/sda3
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ sudo e2fsck /dev/sda3
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ sudo umount /dev/sdb1
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ sudo e2fsck /dev/sdb1
 e2fsck 1.42.13 (17-May-2015)
-/dev/sda3: ren, 11/1892352 filer, 162783/7568384 blokke
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ sudo mount -a
+/dev/sdb1: ren, 11/6553600 filer, 459349/26214144 blokke
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ sudo mount /dev/sdb1
 </pre>
-
-<p>Den sidste kommando undersøger <span class="inl_cmd">/etc/fstab</span> og genmonterer de partitioner der ikke er monteret.</p>
 
 <h3>Hvor meget plads er der?</h3>
 
 <p>For at finde ud af hvor meget plads der er tilgængelig på systemet anvendes kommandoen <code class="cmd">df -h</code></p>
 
 <pre class="ubuntu_terminal">
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ df -h
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ df -h
 Filsystem      Størr Brugt  Tilb Brug% Monteret på
-udev            2,0G     0  2,0G    0% /dev
-tmpfs           396M  6,1M  390M    2% /run
-/dev/sda1        46G  3,9G   40G    9% /
-tmpfs           2,0G  216K  2,0G    1% /dev/shm
+udev            3,9G     0  3,9G    0% /dev
+tmpfs           799M  9,3M  790M    2% /run
+/dev/sda1        91G  5,3G   81G    7% /
+tmpfs           3,9G  384K  3,9G    1% /dev/shm
 tmpfs           5,0M  4,0K  5,0M    1% /run/lock
-tmpfs           2,0G     0  2,0G    0% /sys/fs/cgroup
-/dev/sda3        29G   44M   27G    1% /data
-tmpfs           396M   52K  396M    1% /run/user/1000
-/dev/sdb1        99G   60M   94G    1% /srv/newdisk
+tmpfs           3,9G     0  3,9G    0% /sys/fs/cgroup
+tmpfs           799M   16K  799M    1% /run/user/121
+tmpfs           799M   16K  799M    1% /run/user/1000
 </pre>
 
 <p>Hvis man har lavet ændringer på en harddisk med <span class="inl_cmd">fdisk</span>, så kan man risikere, at kernen ikke kan arbejde med de nye informationer. Det kan løses enten ved at genstarte maskinen, eller at anvende programmet <span class="inl_cmd">partprobe</span>.</p>

@@ -36,10 +36,16 @@
 	
 	
 <div class="title">Backup med Linux</div>
+
+<div class="title"><span class="red">DENNE GUIDE ER VED AT BLIVE OPDATERET.</span></div>
+
 	
 <h1>Backup guiden</h1>
 
-<p>I denne guide vil du lære at tage backup af din computers drev, ved hjælp af SystemrescueCD, som er en Linux distribution der er designet til netop denne opgave.</p>
+<p>I denne guide vil du lære at tage backup ved hjælp af SystemrescueCD. SystemrescueCD er en system disk designet til at man kan udføre systemarbejde, backup og systemredning ved hjælp af blot en disk.</p>
+
+<p>I denne guide vil der blive vist hvordan man tager backup på en Ubuntu og en Windows10 maskine, samt hvordan man tager backup over netværk. Begge maskiner er til guidens formål lavet i Virtualbox med følgende opsætning</p>
+
 
 <p>I denne guide anvendes 2 forskellige computerkonfigurationer. En standard Windows7 computer med 2 harddiske samt den PC, som bliver installeret i <a href="install_16.04.LTS.html" target="_blank">Installation af Ubuntu 16.04 LTS</a> hvor man også har kørt guiden <a href="harddiske.html" target="_blank">Administration og montering af harddiske, USB- og netværksdrev</a></p>
 
@@ -56,7 +62,7 @@
 	</thead>
 	<tbody>
 		<tr>
-			<td rowspan="4">Ubuntu</td>
+			<td rowspan="3">Ubuntu</td>
 			<td rowspan="3">1</td>
 			<td>/dev/sda1</td>
 			<td>/</td>
@@ -76,25 +82,18 @@
 			<td>28,9 GB</td>
 		</tr>
 		<tr>
-			<td>2</td>
-			<td>/dev/sdb1</td>
-			<td>ext4</td>
-			<td>/srv/newdisk</td>
-			<td>100 MB</td>
-		</tr>
-		<tr>
 			<td rowspan="3">Windows</td>
 			<td rowspan="2">1</td>
 			<td>Disk 0 - partition 1</td>
 			<td>NTFS</td>
 			<td>bootdrev (ikke synligt)</td>
-			<td>100 MB</td>
+			<td>500 MB</td>
 		</tr>
 		<tr>
 			<td>Disk 0 - partition 2</td>
 			<td>NTFS</td>
 			<td>C:</td>
-			<td>99,9 GB</td>
+			<td>99,5 GB</td>
 		</tr>
 		<tr>
 			<td>2</td>
