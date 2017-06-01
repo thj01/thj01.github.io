@@ -1102,16 +1102,30 @@ Disk identifier: 0x014dbe7d
 <span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$
 </pre>
 
-<p>For at kunne montere disken ved hjælp af <span class="inl_cmd">/etc/fstab</span>, så den også er monteret herefter skal vi finde diskens UUID og indsætte denne linie 8 <span class="inl_cmd">/etc/fstab</span>.</p>
+<p>For at kunne montere disken ved hjælp af <span class="inl_cmd">/etc/fstab</span>, så den også er monteret herefter skal vi finde diskens UUID og indsætte denne linie 8 <span class="inl_cmd">/etc/fstab</span>. UUID er markeret med rødt.</p>
 
-<code class="cmd">sudo blkid | grep /dev/sdb1</code>
+<code class="cmd">lsblk -f</code>
 
 <pre class="ubuntu_terminal">
-<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ sudo blkid | grep /dev/sdb1
-<span class="red">/dev/sdb1</span>: UUID="c0a52ac1-0d8c-4db9-9ee6-e436f9c3d198" TYPE="ext4" PARTUUID="014dbe7d-01"
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ lsblk -f
+NAME   FSTYPE LABEL UUID                                 MOUNTPOINT
+sdb                                                      
+└─sdb1 ext4         <span class="red">c0a52ac1-0d8c-4db9-9ee6-e436f9c3d198</span> /data
+sr0                                                      
+sda                                                      
+├─sda2                                                   
+├─sda5 swap         9b832ca1-217e-4308-bdf3-225b789946c9 [SWAP]
+└─sda1 ext4         34bb7b7d-54b7-43c0-bba7-0bf0565c563d /
 </pre>
 
-<p>Følgende linier indsættes i <span class="inl_cmd">/etc/fstab</span> (husk at fjerne " om UUID'en):</p>
+<span class="afsnit">Hvorfor UUID</span>
+
+<p>UUID er en unik streng, der er dannet til hver partition på computeren. Det virker umiddelbart som ekstra bøvl, men er lavet som en ekstra sikkerhed. Linux er designet til at fungere i netværk, og når man ikke har fysisk adgang til maskinen, så skal man have andre metoder til at verifere at harddisken er den rigtige.</p>
+
+<p>I Linux tankegangen kommer sikkerhed før let at sætte op.</p>
+
+
+<p>Følgende linier indsættes i <span class="inl_cmd">/etc/fstab</span> :</p>
 
 <code class="cmd">sudo nano /etc/fstab</code>
 
@@ -1161,20 +1175,40 @@ e2fsck 1.42.13 (17-May-2015)
 
 <h3>Hvor meget plads er der?</h3>
 
-<p>For at finde ud af hvor meget plads der er tilgængelig på systemet anvendes kommandoen <code class="cmd">df -h</code></p>
+<p>For at finde ud af hvor meget plads der er tilgængelig på systemet anvendes kommandoen <code class="cmd">df -h -t ext4</code></p>
 
 <pre class="ubuntu_terminal">
-<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ df -h
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ df -hT -t ext4
 Filsystem      Størr Brugt  Tilb Brug% Monteret på
-udev            3,9G     0  3,9G    0% /dev
-tmpfs           799M  9,3M  790M    2% /run
 /dev/sda1        91G  5,3G   81G    7% /
-tmpfs           3,9G  384K  3,9G    1% /dev/shm
-tmpfs           5,0M  4,0K  5,0M    1% /run/lock
-tmpfs           3,9G     0  3,9G    0% /sys/fs/cgroup
-tmpfs           799M   16K  799M    1% /run/user/121
-tmpfs           799M   16K  799M    1% /run/user/1000
+/dev/sdb1        99G   60M   94G    1% /data
 </pre>
+
+<p>Kommandoen virker meget kryptisk, men den er et udtryk for UNIX tankegangen. <span class="inl_cmd">df</span> viser hvordan harddiskpladsen bliver anvendt. Med denne kommando filtrerer man output ved at vise det <span class="inl_cmd">Human readable (-h)</span> og ved at begrænse det til <span class="inl_cmd">ext4 (-t ext4)</span> filsystemer. Se forskellen mellem kommandoerne herunder:</p>
+
+<pre class="ubuntu_terminal">
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ df
+Filsystem      1K-blokke   Brugt  Tilbage Brug% Monteret på
+udev             4066068       0  4066068    0% /dev
+tmpfs             817492    9516   807976    2% /run
+/dev/sda1       94824040 5504644 84479576    7% /
+tmpfs            4087444     384  4087060    1% /dev/shm
+tmpfs               5120       4     5116    1% /run/lock
+tmpfs            4087444       0  4087444    0% /sys/fs/cgroup
+/dev/sdb1      103080224   61044 97759968    1% /data
+tmpfs             817492      16   817476    1% /run/user/121
+tmpfs             817492      20   817472    1% /run/user/1000
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ df -t ext4
+Filsystem      1K-blokke   Brugt  Tilbage Brug% Monteret på
+/dev/sda1       94824040 5504644 84479576    7% /
+/dev/sdb1      103080224   61044 97759968    1% /data
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ df -h -t ext4
+Filsystem      Størr Brugt  Tilb Brug% Monteret på
+/dev/sda1        91G  5,3G   81G    7% /
+/dev/sdb1        99G   60M   94G    1% /data
+</pre>
+
+<h3>Tvinge ændringer igennem</h3>
 
 <p>Hvis man har lavet ændringer på en harddisk med <span class="inl_cmd">fdisk</span>, så kan man risikere, at kernen ikke kan arbejde med de nye informationer. Det kan løses enten ved at genstarte maskinen, eller at anvende programmet <span class="inl_cmd">partprobe</span>.</p>
 

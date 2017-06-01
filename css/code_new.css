@@ -148,7 +148,7 @@ pre.black {
 font-family:ubuntu+mono, courier  ;
 color: white;
 display: inline-block, table;
-font-size: 1.15em;
+font-size: 1em;
 font-weight: 100;
 line-height:20px;
 color: white;
@@ -222,27 +222,15 @@ margin-bottom: 20px;
 }
 
 
-blockquote.center {
-
-text-align: center;
-
-}
 
 blockquote {
 font-family: ubuntu, arial;
 background-color: #f7f7f7  ;
 padding: 1.4em 1.4em;
 margin: 1.4em;
-font-size: 1.2em;
 line-height: 1.5em;
 border-radius: 24px;
-}
-
-blockquote {
-
-font-size: 1.2em;
-padding-bottom: 1em;
-margin: 1em
+font-size: 1.1em;
 }
 
 blockquote.alert{
