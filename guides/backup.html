@@ -111,7 +111,7 @@
 
 <h1>SystemrescueCD</h1>
 
-<p>SystemrescueCD er et værktøj der er baseret på Linux, og som giver adgang til at kunne udføre low level administration af computere, herunder adgang til FSArchiver. SystemrescueCD er et komplet styresystem der downloades i en ISO fil der kan brændes ud på en CDROM eller USB Disk. Det bliver ofte opdateret, så sørg for at have den nyeste version. Her anvendes version 4.7.2</p>
+<p>SystemrescueCD er et værktøj der er baseret på Linux, og som giver adgang til at kunne udføre low level administration af computere, herunder adgang til FSArchiver. SystemrescueCD er et komplet styresystem der downloades i en ISO fil der kan brændes ud på en CDROM eller USB Disk. Det bliver ofte opdateret, så sørg for at have den nyeste version. Her anvendes version 5.0.1.</p>
 
 <p>Fordelen ved at anvende SystemrescueCD er:</p>
 
@@ -193,7 +193,7 @@ passwd: password changed.
 <pre class="black">
 <span class="green">root@sysresccd</span> <span class="blue">/root</span> % ifconfig
 enp0s3: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
-        inet 192.168.0.63  netmask 255.255.255.0  broadcast 192.168.0.255 <span class="red">&lt;-- netværksopl.</span>
+        inet 192.168.0.79  netmask 255.255.255.0  broadcast 192.168.0.255 <span class="red">&lt;-- netværksopl.</span>
         inet6 fe80::a00:27ff:fe74:1ffb  prefixlen 64  scopeid 0x20<link>
         ether 08:00:27:74:1f:fb  txqueuelen 1000  (Ethernet)
         RX packets 290  bytes 39943 (39.0 KiB)
@@ -213,9 +213,9 @@ lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
 
 <p>Læg både mærke til navnet på netværkskortet (her: enp0s3) og IP-adressen.</p>
 
-<p>Hvis man ønsker at ændre netværksopsætningen kan <span class="inl_cmd">ifconfig</span> også anvendes f.eks:</p>
+<p>Hvis man ønsker at ændre netværksopsætningen anvender man også <span class="inl_cmd">ifconfig</span>:</p>
 
-<code class="cmd">ifconfig enp0s3 192.168.0.15 netmask 255.255.255.0</code>
+<code class="cmd">ifconfig enp0s3 192.168.0.15/24</code>
 
 <pre class="black">
 <span class="green">root@sysresccd</span> <span class="blue">/root</span> % ifconfig
@@ -234,11 +234,11 @@ enp0s3: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
 <code class="cmd">ssh root@192.168.0.63</code>
 
 <pre class="ubuntu_terminal">
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ ssh root@192.168.0.63
-The authenticity of host '192.168.0.63 (192.168.0.63)' can't be established.
-ED25519 key fingerprint is 36:23:66:4e:92:bc:fa:57:c3:f5:71:86:79:de:b8:ad.
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ ssh root@192.168.0.15
+The authenticity of host '192.168.0.15 (192.168.0.15)' can't be established.
+ED25519 key fingerprint is SHA256:Bgfi0aXlya0tOiD4zLmBDzUBhRKXxz7KF/wjkdIVDGE.
 Are you sure you want to continue connecting (yes/no)? yes
-Warning: Permanently added '192.168.0.63' (ED25519) to the list of known hosts.
+Warning: Permanently added '192.168.0.15' (ED25519) to the list of known hosts.
 Password: 
 <span class="green">root@sysresccd</span> <span class="blue">/root</span> % 
 </pre>
@@ -247,78 +247,65 @@ Password:
 
 <p>For at få et overblik over computerens drev og partitioner anvendes:</p>
 
-<code class="cmd">lsblk -o name,fstype,size,type,mountpoint</code>
+<code class="cmd">lsblk -o name,fstype,size</code>
 
 <p>Ubuntu PC</p>
 
 <pre class="black">
-<span class="green">root@sysresccd</span> <span class="blue1">/root</span> % lsblk -o name,fstype,size,type,mountpoint
-NAME   FSTYPE     SIZE TYPE MOUNTPOINT
-sda               100G disk 
-├─sda1 ext4      46.6G part 
-├─sda2 swap       3.8G part 
-└─sda3 ext4      28.9G part 
-sdb               100G disk 
-└─sdb1 ext4       100G part 
-sr0    iso9660  459.9M rom  
-loop0  squashfs 338.5M loop /livemnt/squashfs
+<span class="green">root@sysresccd</span> <span class="blue1">/root</span> % lsblk -o name,fstype,size 
+NAME   FSTYPE     SIZE
+sdb               100G
+└─sdb1 ext4       100G
+sr0    iso9660  463.2M
+loop0  squashfs 390.8M
+sda               100G
+├─sda2              1K
+├─sda5 swap         8G
+└─sda1 ext4        92G
 </pre>
 
 <p>Windows PC</p>
 
 <pre class="black">
-<span class="green">root@sysresccd</span> <span class="blue1">/root</span> % lsblk -o name,fstype,size,type,mountpoint
-NAME   FSTYPE     SIZE TYPE MOUNTPOINT
-sda               100G disk 
-├─sda1 ntfs       100M part 
-└─sda2 ntfs      99.9G part 
-sdb               100G disk 
-└─sdb1 ntfs       100G part 
-sr0    iso9660  459.9M rom  
-loop0  squashfs 338.5M loop /livemnt/squashfs
+<span class="green">root@sysresccd</span> <span class="blue1">/root</span> % lsblk -o name,fstype,size
+NAME   FSTYPE     SIZE
+sdb               100G
+└─sdb1 ntfs       100G
+sr0    iso9660  463.2M
+loop0  squashfs 390.8M
+sda               100G
+├─sda2 ntfs      99.5G
+└─sda1 ntfs       500M
 </pre>
 
-<h1>Forberedelse af Backup</h1>
+<h1>Forberedelse af backup - Ubuntu</h1>
 
 <p>Man kan med fordel rense sin maskine for overflødige filer. Det kan spare tid/plads især på Windows (op til flere GB). Der er skrevet <span class="inl_cmd">(opt)</span> ud for nogle af punkterne. Det betyder at der er nogle ting jeg ville gøre/fjerne. Især på windows bør det overvejes om man ønsker at opdatere først, fjerne gendannelsespunkterne ...</p>
 
 
-<h2>På Ubuntu</h2>
-
 <ul class="disc">
-	<li>Før computeren bootes med SystemrescueCD
-		<ul class="disc">
 			<li>Tøm "Hentede filer"</li>
 			<li>Opdater Ubuntu</li>
-		</ul>
-	
-	</li>
-	<li>Efter computeren er bootet med SystemrescueCD
-		<ul class="disc">
 			<li>Fjern unødenvendige systemfiler</li>
 			<li>Fjern ældre kerner (opt)</li>
-		</ul>	
-	</li>
-
 </ul>
 
 <p>Disse trin udføres før maskinen bootes op med SystemrescueCD</p>
 
-<span class="afsnit">Tøm Hentede filer og opdater Ubuntu (før)</span>
+<h2>Tøm Hentede filer og opdater Ubuntu (før)</h2>
+	<code class="cmd">rm ~/Hentede\ filer/*</code>
+	<code class="more_cmd">sudo apt-get update && sudo apt-get dist-upgrade -y</code>
 
-<code class="cmd">rm ~/Hentede\ filer/*</code>
+<h2>Fjern unødenvendige systemfiler</h2>
+	<code class="cmd">sudo apt-get autoremove -y</code>
+	<code class="cmd">sudo apt-get clean -y</code>
 
-<code class="more_cmd">sudo apt-get update && sudo apt-get dist-upgrade -y</code>
+<h2>Fjern ældre kerner</h2>
+	<code class="cmd">sudo apt-get purge $(dpkg -l linux-{image,headers}-"[0-9]*" | awk '/ii/{print $2}' | grep -ve $(uname -r | sed -r 's/-[a-z]+//') | sed ':a;N;$!ba;s/\n/ /g')</code>
 
-<span class="afsnit">Fjern unødenvendige systemfiler</span>
 
-<code class="cmd">sudo apt-get autoremove -y</code>
 
-<span class="afsnit">Fjern ældre kerner</span>
-
-<code class="cmd">sudo apt-get purge $(dpkg -l linux-{image,headers}-"[0-9]*" | awk '/ii/{print $2}' | grep -ve $(uname -r | sed -r 's/-[a-z]+//') | sed ':a;N;$!ba;s/\n/ /g')</code>
-
-<h2>På Windows</h2>
+<h1>Forberedelse af backup - Windows</h1>
 
 <p>På Windows er procedyren normal at man skal anvende GUI til at rense computeren. Det kan dog være en ret omfattende og tidskrævende proces. Derfor har jeg anvendt følgende metode, som kun tager en brøkdel af den tid det normalt tager</p>
 
@@ -326,7 +313,9 @@ loop0  squashfs 338.5M loop /livemnt/squashfs
 	<li>Før computeren bootes med SystemrescueCD
 		<ul class="disc">
 			<li>Tøm "Hentede filer"</li>
-			<li>Opdater Windows (opt)</li>
+			<li>Opdater Windows</li>
+			<li>Genstart og tjek at alle programmer virker efter opdateringen</li>
+			<li>Fjern gendannelsespunkter (restore points)</li>
 		</ul>
 	</li>
 	<li>Efter computeren er bootet med SystemrescueCD
@@ -339,97 +328,76 @@ loop0  squashfs 338.5M loop /livemnt/squashfs
 	</li>
 </ul>
 
-<p>Både swap- og hibernate filerne gendannes automatisk når windows startes igen, og de fylder ofte det samme som ens RAM-lager.</p>
+<h3>Tøm hentede filer og opdater Windows (før)</h3>
+
+<ul class="disc">
+	<li>Tøm "Hentede filer"</li>
+	<li>Opdater Windows</li>
+	<li>Genstart og tjek at alle programmer virker efter opdateringen</li>
+</ul>
+
+<h3>Fjern gendannelsespunker (opt)</h3>
+
+<p><b><span class="red">VIGTIGT: </span></b>Hvis du gør dette bliver dine gendannelsespunkter slettet. </p>
+
+<p>Åben Win+X menuen - <kbd>Win</kbd>+<kbd>x</kbd> og vælg <span class="inl_cmd">Kommandoprompt (administrator)</span>.</p>
+
+<figure id="">
+
+	<img class="p70" src="images/backup_winadm_prompt01.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Få først en oversigt med:</p>
+
+<code class="cmd">vssadmin list shadows</code>
+
+<p>Slet alle gendannelsespunkter med:</p>
+
+<code class="cmd">vssadmin delete shadows /all</code>
+
+<p><b>Læs mere: </b><a href="https://www.tenforums.com/tutorials/33593-delete-system-restore-points-windows-10-a.html" target="_blank">https://www.tenforums.com/tutorials/33593-delete-system-restore-points-windows-10-a.html</a></p>
+
+<p>Boot herefter Windowssystemet med SystemrescueCD.</p>
 
 
-<span class="afsnit">Tøm hentede filer og opdater Windows (før)</span>
+<h2>Med systemrescueCD</h2>
 
-<p>Tøm hentede filer ved at navigere ind i mappen med stifinder og opdater windows (opt)</p>
-
-<span class="afsnit">Monter systemdrevet</span>
-
-<p>Systemdrevet vil som standard være den anden partitioner på 1. disk. Vi monterer det i mappen <span class="inl_cmd">/mnt/windows</span>, som er oprettet som standard når SystemrescueCD starter op.</p>
+<h3>Monter systemdrevet</h3>
 
 <code class="cmd">ntfs-3g /dev/sda2 /mnt/windows</code>
 
-<span class="afsnit">Fjern swap- og hibernate filerne</span>
-
-<p>Vi vælger ikke at navigere ind i mapperne først, men angiver den fulde sti</p>
+<h3>Fjern swap- og hibernate filerne</h3>
 
 <code class="cmd">rm /mnt/windows/pagefile.sys</code>
 <code class="more_cmd">rm /mnt/windows/hiberfil.sys</code>
 
-<span class="afsnit">Fjern opdateringsfilerne</span>
+<p>Både swap- og hibernate filerne gendannes automatisk når windows startes igen, og de fylder ofte det samme som ens RAM-lager.</p>
+
+<h3>Fjern opdateringsfilerne</h3>
 
 <p>Opdateringsfilerne bliver ikke anvendt til noget efter de har været brugt til at opdatere med. Det kan dreje sig om flere GB.</p>
 
 <code class="cmd">rm -rf /mnt/windows/Windows/SoftwareDistribution/Download/*</code>
 
-<span class="afsnit">Fjern gendannelsespunker (opt)</span>
+<h1>Generelt om bakcup</h1>
 
-<p>Gendannelsespunkterne ligger i mappen <span class="inl_cmd">System Volume Information</span>. Jeg har altid valgt at slå denne funktion fra i Windows, da den ikke bare fylder meget på harddisken, men også gør at opdatering og installation af programmer tager ekstra tid. Anvender du denne funktion skal du ikke gennemføre følgende trin. Jeg har ikke oplevet at metoden har haft anden indvirkning på mine windowsinstallationer, end at de fylder mindre.</p>
+<p>Når vi endeligt skal til at lave backups af vores system er det ligegyldigt om det er et Linux eller et Windows system. Vi laver en bakcup af den harddiskpartition de ligger på, og derfor er det, det samme vi skal gøre på begge systemer.</p>
 
-<p>Hvis man kører <span class="inl_cmd">tree</span> kan man få nedestående output:</p>
+<ul class="disc">
+	<li>Mount drevet der skal tages backup af</li>
+	<li>Mount drevet hvor backup'en skal ligge</li>
+</ul>
 
-<pre class="black">
-<span class="green">root@sysresccd</span> <span class="blue1">/mnt/windows/System Volume Information</span> % tree --du
-<span class="blue1">.</span>
-├── [  576864256]  <span class="green1">{19ea1b42-1e26-11e5-84a9-0800277de8f7}{3808876b-c176-4e48-b7ae-04046e6cc752}</span>
-├── [  973078528]  <span class="green1">{1b51bb94-56c0-11e5-8b13-0800277de8f7}{3808876b-c176-4e48-b7ae-04046e6cc752}</span>
-├── [   54116352]  <span class="green1">{3317bf97-46fe-11e5-85d6-0800277de8f7}{3808876b-c176-4e48-b7ae-04046e6cc752}</span>
-├── [ 1638547456]  <span class="green1">{3317bf9b-46fe-11e5-85d6-0800277de8f7}{3808876b-c176-4e48-b7ae-04046e6cc752}</span>
-├── [      65536]  <span class="green1">{3808876b-c176-4e48-b7ae-04046e6cc752}</span>
-├── [  373424128]  <span class="green1">{43f51078-463e-11e5-a271-0800277de8f7}{3808876b-c176-4e48-b7ae-04046e6cc752}</span>
-├── [  585588736]  <span class="green1">{43f51108-463e-11e5-a271-0800277de8f7}{3808876b-c176-4e48-b7ae-04046e6cc752}</span>
-├── [  395657216]  <span class="green1">{9441f5f1-46fe-11e5-8943-0800277de8f7}{3808876b-c176-4e48-b7ae-04046e6cc752}</span>
-├── [  443006976]  <span class="green1">{d544f905-4c87-11e5-97e0-0800277de8f7}{3808876b-c176-4e48-b7ae-04046e6cc752}</span>
-├── [          0]  MountPointManagerRemoteDatabase
-├── [     645880]  <span class="blue1">SSP</span>
-│   ├── [      18248]  <span class="blue1">OnlineMetadataCache</span>
-│   │   ├── [       1744]  <span class="green1">{0867bb41-ba7a-4348-b8d2-d796ebeaff28}_OnDiskSnapshotProp</span>
-│   │   ├── [       1744]  <span class="green1">{0a219915-ebb9-4cf9-bbf2-fea541922d31}_OnDiskSnapshotProp</span>
-│   │   ├── [       1744]  <span class="green1">{10be7f13-29fc-4bc9-b420-ed5475a78a63}_OnDiskSnapshotProp</span>
-│   │   ├── [       1744]  <span class="green1">{33508c1e-b23e-417f-bad9-0bbf64034c34}_OnDiskSnapshotProp</span>
-│   │   ├── [       1848]  <span class="green1">{414dbcdf-d814-494c-a67b-c88c9d806f2b}_OnDiskSnapshotProp</span>
-│   │   ├── [       1744]  <span class="green1">{5730bf6e-7604-46d4-a03f-59df9b504ec2}_OnDiskSnapshotProp</span>
-│   │   ├── [       1744]  <span class="green1">{d32c3ad4-fe75-4da0-8af6-f170da1628d8}_OnDiskSnapshotProp</span>
-│   │   └── [       1840]  <span class="green1">{d7f36789-4847-4871-a876-9a8ac2a78e47}_OnDiskSnapshotProp</span>
-│   ├── [          0]  <span class="blue1">SppCbsHiveStore</span>
-│   └── [     623536]  <span class="blue1">SppGroupCache</span>
-│       ├── [      56656]  <span class="green1">{0867BB41-BA7A-4348-B8D2-D796EBEAFF28}_DriverPackageInfo</span>
-│       ├── [      30656]  <span class="green1">{0867BB41-BA7A-4348-B8D2-D796EBEAFF28}_WindowsUpdateInfo</span>
-│       ├── [      56656]  <span class="green1">{10BE7F13-29FC-4BC9-B420-ED5475A78A63}_DriverPackageInfo</span>
-│       ├── [      29624]  <span class="green1">{10BE7F13-29FC-4BC9-B420-ED5475A78A63}_WindowsUpdateInfo</span>
-│       ├── [      56656]  <span class="green1">{33508C1E-B23E-417F-BAD9-0BBF64034C34}_DriverPackageInfo</span>
-│       ├── [      30656]  <span class="green1">{33508C1E-B23E-417F-BAD9-0BBF64034C34}_WindowsUpdateInfo</span>
-│       ├── [      56656]  <span class="green1">{414DBCDF-D814-494C-A67B-C88C9D806F2B}_DriverPackageInfo</span>
-│       ├── [      32624]  <span class="green1">{414DBCDF-D814-494C-A67B-C88C9D806F2B}_WindowsUpdateInfo</span>
-│       ├── [      56656]  <span class="green1">{557AF84D-C3BA-4DD7-9EDC-F386D0BCEB79}_DriverPackageInfo</span>
-│       ├── [      29624]  <span class="green1">{557AF84D-C3BA-4DD7-9EDC-F386D0BCEB79}_WindowsUpdateInfo</span>
-│       ├── [      56872]  <span class="green1">{D32C3AD4-FE75-4DA0-8AF6-F170DA1628D8}_DriverPackageInfo</span>
-│       ├── [      32624]  <span class="green1">{D32C3AD4-FE75-4DA0-8AF6-F170DA1628D8}_WindowsUpdateInfo</span>
-│       ├── [      56760]  <span class="green1">{D7F36789-4847-4871-A876-9A8AC2A78E47}_DriverPackageInfo</span>
-│       └── [      32624]  <span class="green1">{D7F36789-4847-4871-A876-9A8AC2A78E47}_WindowsUpdateInfo</span>
-├── [     524288]  <span class="green1">Syscache.hve</span>
-├── [     128000]  <span class="green1">Syscache.hve.LOG1</span>
-├── [          0]  <span class="green1">Syscache.hve.LOG2</span>
-├── [      20480]  <span class="green1">tracking.log</span>
-└── [          0]  <span class="blue1">WindowsImageBackup</span>
-    └── [          0]  <span class="blue1">SPPMetadataCache</span>
+<p>For Linux partitioner:</p>
 
-  5041676024 bytes used in 6 directories, 36 files
-<span class="green">root@sysresccd</span> <span class="blue1">/mnt/windows/System Volume Information</span> % tree --du
-</pre>
+<code class="cmd">mount **drev** **monteringspunkt** </code>
 
-<p>Alle filer her der starter med <span class="inl_cmd">{</span> er backupfiler. Fjern dem med følgende kommandoer:</p>
+<p>For Windows partitioner</p>
 
-<code class="cmd">rm -rf /mnt/windows/System\ Volume\ Information/{*</code>
-	
-<code class="more_cmd">rm -rf /mnt/windows/System\ Volume\ Information\SPP/OnlineMetadataCache/{*</code>
-	
-<code class="more_cmd">rm -rf /mnt/windows/System\ Volume\ Information\SPP/SppGroupCache/{*</code>
-
-<p>En nyinstalleret og fuldt ud opdateret windows7 installation kan hurtigt tabe sig 10-20 GB af ovenstående.</p>
+<code class="cmd">ntfs-3g **drev** **monteringspunkt**</code>
 
 <h1>FSArchiever</h1>
 
