@@ -144,16 +144,72 @@
 	</tbody>
 </table>
 
+<h1>Mappestruktur</h1>
 
-<h1>Filnavne</h1>
+<p>Herunder er mappestrukturen for <span class="inl_cmd">/home</span> vist.</p>
+
+<pre class="black">
+/
+└── home
+	└── tj
+		├── Billeder
+		├── bin
+		├── Dokumenter
+		├── Hentet
+		├── Musik
+		├── Offentligt
+		├── public_html
+		│   ├── css
+		│   ├── images
+		│   └── js
+		├── Skabeloner
+		├── Skrivebord
+		├── Videoklip
+</pre>
+
+<p>Stien til mappen <span class="inl_cmd">Hentet</span> er: <span class="inl_cmd">/home/tj/Hentet</span>.</p>
+
+<ol start="0" class="">
+	<li>niveau - / (roden)</li>
+	<li>niveau - home</li>
+	<li>niveau - tj</li>
+	<li>niveau - Hentet</li>
+</ol>
+
+<h1>Filer</h1>
 
 <p>Linux anvender modsat windows både de store og små bogstaver i alfabetet. Derfor vil der under Linux være forskel på filerne <span class="inl_cmd">data</span> og <span class="inl_cmd">Data</span> og brugerne <span class="inl_cmd">tj</span> og <span class="inl_cmd">Tj</span>.</p>
-	
-<p>Man kan heller ikke se på filens "efternavn" om det er et program. I windows kan programmer genkendes ved deres efternavn f.eks. <span class="inl_cmd">.exe</span> eller <span class="inl_cmd">.msi</span>. I Linux gøres en fil eksekverbar, ved at man ændre i den rettigheder. Derfor kan man ikke umiddelbart se om en fil kan køres eller ej. Det er også normen at man uploader og sender programmer uden at have sat eksekverrettigheder. På den måde sikrer man sig at man ikke ved et uheld kommer til at køre en fil.</p>
 
-<p>Efternavne på filer anvendes i Linux, men det er for at programmer kan genkende filerne. Det gælder f.eks: <span class="inl_cmd">*.pdf</span>, <span class="inl_cmd">*.odt</span>, <span class="inl_cmd">*.jpg</span> og <span class="inl_cmd">*.png</span>. Man anvender altså filnavnene for at programmer kan kende filerne, men også for at brugeren kan se det. F.eks. sætter man ofte <span class="inl_cmd">.sh</span> på shell-script filer, for at man som bruger kan genkende filer der kan køres som programmer.</p>
+<p>I Linux er der 3 grundlæggende rettigheder vi kan give filer og mapper: read, write og execute (læse, skrive og udføre).</p>
 
-<h1>Navigation i filsystemet</h1>
+<table class="">
+	<thead>
+		<tr>
+			<th>Rettighed</th>
+			<th>Forklaring</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>r - <b>R</b>ead (læse)</td>
+			<td>Man kan se indholdet af filen.</td>
+		</tr>
+		<tr>
+			<td>w - <b>W</b>rite (skrive)</td>
+			<td>Man kan ændre på indholdet i filen. Hvis der ikke er læse-rettigheder kan man ikke se indholdet, men man kan stadig ændre i den. Det kan f.eks. være logfiler som der skal skrives i, men som kun <span class="inl_cmd">root</span> skal læse i</td>
+		</tr>
+		<tr>
+			<td>x - e<b>X</b>ecute (udførelse)</td>
+			<td>Filen kan tolkes som et program og derfor køres af operativsystemet.</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Det er ved hjælp af disse rettigheder at filens egenskaber er styret. I windows kan programmer genkendes ved deres efternavn f.eks. <span class="inl_cmd">.exe</span> eller <span class="inl_cmd">.msi</span>. I Linux bliver en tekstfil til et program, ved at man tilføjer execute rettighedet. </p>
+
+<p>Man anvender også efternavne på filer i Linux, for at de bliver læsbare for brugeren. Det gælder f.eks for tekstfiler som: <span class="inl_cmd">*.pdf</span> og <span class="inl_cmd">*.odt</span>, grafikformater som <span class="inl_cmd">*.jpg</span> og <span class="inl_cmd">*.png</span> og til at kende forskellige filtyper fra hinanden f.eks: <span class="inl_cmd">.sh</span> til shellscript og <span class="inl_cmd">.py</span> til Python-filer.</p>
+
+<h1>Navigation</h1>
 
 <p>For at navigere rundt i og orientere sig i filsystemet anvender man følgende kommandoer:</p>
 
@@ -166,7 +222,7 @@
 
 <p>Herunder angives eksempler med kommandoerne:</p>
 
-<h1><span class="inl_cmd">cd</span> – change directory</h1>
+<h1><span class="inl_cmd">cd</span></h1>
 
 <table class="cmd_table">
 	<thead>
@@ -195,7 +251,7 @@
 	</tbody>
 </table>
 
-<h1><span class="inl_cmd">ls</span> - list</h1>
+<h1><span class="inl_cmd">ls</span></h1>
 
 <table class="cmd_table">
 	<thead>
@@ -207,7 +263,11 @@
 	<tbody>
 		<tr>
 			<td>ls</td>
-			<td>Viser filer og mapper</td>
+			<td>Viser fil- og mappenavne</td>
+		</tr>
+		<tr>
+			<td>ls -l</td>
+			<td>udvidet visning (rettigheder,ejerskab, størrelse, dato)</td>
 		</tr>
 		<tr>
 			<td>ls -al</td>
@@ -232,7 +292,7 @@
 	</tbody>
 </table>
 
-<h1><span class="inl_cmd">pwd</span> – print working director</h1>
+<h1><span class="inl_cmd">pwd</span></h1>
 
 <table class="cmd_table">
 	<thead>
@@ -289,15 +349,15 @@
 			<td>Viser filerne i træ struktur i den lokale mappe</td>
 		</tr>
 		<tr>
-			<td>Tree /usr</td>
+			<td>tree /usr</td>
 			<td>Viser træstrukturen i mappen <span class="inl_cmd">/usr</span></td>
 		</tr>
 		<tr>
-			<td>Tree /usr -d</td>
+			<td>tree /usr -d</td>
 			<td>Viser kun mapper i <span class="inl_cmd">/usr</span></td>
 		</tr>
 		<tr>
-			<td>Tree /usr -d -L 1</td>
+			<td>tree /usr -d -L 1</td>
 			<td>Viser mapperne i <span class="inl_cmd">/usr</span> i et niveauer</td>
 		</tr>
 		<tr>
@@ -321,7 +381,7 @@
 
 <h1>Størrelse af filer</h1>
 
-<h1><span class="inl_cmd">du</span> - Disk usage</h1>
+<h2><span class="inl_cmd">du</span> - Disk usage</h2>
 
 <p>For at se hvor meget filerne i en folder fylder anvendes <span class="inl_cmd">du</span>.</p>
 
@@ -334,7 +394,7 @@
 2,6M	/home/thoj
 </pre>
 
-<h1><span class="inl_cmd">df</span></h1>
+<h2><span class="inl_cmd">df</span></h2>
 
 <p>For at se den brugte plads på en partition anvendes kommandoen <span class="inl_cmd">df</span></p>
 
@@ -359,6 +419,14 @@
 			<td>Viser brugt plads på <span class="inl_cmd">/</span></td>
 		</tr>
 		<tr>
+			<td>df -h -t ext4 </td>
+			<td>Viser informationer om partitioner der er formateret med ext4</td>
+		</tr>
+		<tr>
+			<td>df -h -x tmpfs </td>
+			<td>Viser informationer om partitioner der <span class="inl_cmd">IKKE</span> er formateret med tmpfs</td>
+		</tr>
+		<tr>
 			<td>df -hT /</td>
 			<td>Viser også hvilket filsystem der anvendes</td>
 		</tr>
@@ -368,9 +436,10 @@
 <p>Læg mærke til at <span class="inl_cmd">df</span> viser pladsforbrug på den valgte partition, hvis du vælger en mappe derpå.</p>
 
 <pre class="ubuntu_terminal">
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ df -h ~
-Filsystem                                              Størr Brugt  Tilb Brug% Monteret på
-/dev/disk/by-uuid/c2c76ea3-8bee-4930-be2c-20d11a7358c1   46G  4,4G   40G   10% /
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ df -h -t ext4
+Filsystem      Størr Brugt  Tilb Brug% Monteret på
+/dev/sda1        91G  5,3G   81G    7% /
+/dev/sdb1        99G   60M   94G    1% /data
 </pre>
 
 

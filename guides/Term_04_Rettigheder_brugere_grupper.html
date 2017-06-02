@@ -36,8 +36,6 @@
 	
 <div class="title">Kommandoer <br/>Rettigheder</div>
 
-<p>I Linux er der 3 grundlæggende 3 rettigheder vi kan sætte på filer og mapper: read, write og execute (læse, skrive og udføre).</p>
-
 <table class="">
 	<thead>
 		<tr>
@@ -47,15 +45,15 @@
 	</thead>
 	<tbody>
 		<tr>
-			<td>Read (læse)</td>
-			<td>man kan tilgå filen (se og åbne den) og dermed læse hvad der står i den.</td>
+			<td>r - <b>R</b>ead (læse)</td>
+			<td>Man kan tse indholdet af filen.</td>
 		</tr>
 		<tr>
-			<td>Write (skrive)</td>
-			<td>Man kan skrive i filen. Hvis der ikke er sat read rettigheder, kan man hverken åbne filen eller se indholdet</td>
+			<td>w - <b>W</b>rite (skrive)</td>
+			<td>Man kan ændre på indholdet i filen. Hvis der ikke er læse-rettigheder kan man ikke se indholdet, men man kan stadig ændre i den. Det kan f.eks. være logfiler som der skal skrives i, men som kun <span class="inl_cmd">root</span> skal læse i</td>
 		</tr>
 		<tr>
-			<td>Execute (udførelse)</td>
+			<td>x - e<b>X</b>ecute (udførelse)</td>
 			<td>Filen kan tolkes som et program og derfor køres af operativsystemet.</td>
 		</tr>
 	</tbody>
