@@ -64,7 +64,7 @@
 <code class="cmd">ls -al /etc/passwd</code>
 
 <pre class="ubuntu_terminal">
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ ls -al /etc/passwd
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ ls -al /etc/passwd
 -rw-r--r-- 1 root root 2013 mar 16 20:05 /etc/passwd
 </pre>
 
@@ -78,7 +78,7 @@
 		</tr>
 		<tr>
 			<td>1</td>
-			<td>Antal af henvisninger til filen</td>
+			<td>Antal hardlinks * (se note nedenfor)</td>
 		</tr>
 		<tr>
 			<td>root root</td>
@@ -99,9 +99,11 @@
 	</tbody>
 </table>
 
-<p>Læg mærke til, at der både findes en bruger og en gruppe der hedder <span class="inl_cmd">root</span>. Det gælder for alle brugere på Linux.</p>
+<p>* I Linux kan man have <span class="inl_cmd">hard</span> og <span class="inl_cmd">symbolic</span> links. Forskellen er, at hvis man sletter et hardlink, så forsinder filen. Hvis man sletter et softlink, så er det kun henvisningen til filen man sletter. Filen er altså uskadt</p>
 
-<p>Rettighederne aflæses som følger</p>
+<p>Læg mærke til, at der både findes en bruger og en gruppe der hedder <span class="inl_cmd">root</span>. Alle brugere har som standard både tildelt en gruppe med deres egen navn. Det betyder at alle brugere har mulighed for at tilføje brugere til deres grupper så de selv kan tildele rettigheder til filer og mapper.</p>
+
+<h1>Aflæsning af rettigheder</h1>
 
 <table class="centreret">
 	<thead>
@@ -144,25 +146,22 @@
 <p>Vi kan altså sige om denne fil at brugeren er <span class="inl_cmd">root</span>, som må læse og skrive i filen. Alle andre (gruppe og alle). De er nødvendigt for alle at kunne læse denne fil, da det er den der administrere adgangen til systemet. Kigger vi ind i filen kan vise hvad den har at sige om vores bruger, her <span class="inl_cmd">tj</span>. Da alle har ret til at læse i filen kan jeg kommandoen den som mig selv.</p>
 
 <pre class="ubuntu_terminal">
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">/home</span>$ cat /etc/passwd | grep thoj
-<span class="red">thoj</span>:x:1000:1000:Thomas Jensen,,,:/home/<span class="red">thoj</span>:/bin/bash
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">/home</span>$ cat /etc/passwd | grep tj
+<span class="red">tj</span>:x:1000:1000:Thomas Jensen,,,:/home/<span class="red">tj</span>:/bin/bash
 </pre>
 
 <p>Den linie fortæller os om vores bruger, hvilket bruger- og gruppe id man har, ens hjemmemappe og hvilken kommandofortolker vi har adgang til. Det lille x i starten henviser til vores kodeord, som er lagret i filen <span class="inl_cmd">/etc/shadow</span>.</p>
 
-<p>Et andet eksempel er den partition der blev oprettet under installationen (<span class="inl_cmd">/data</span>). vi kan se rettighedern ved at køre : <span class="inl_cmd">ls -al / | grep data</span></p>
+<p>Et andet eksempel er vores hjemmemappe, i dette tilfælde <span class="inl_cmd">/home/tj</span>. Vi kan se rettighedern ved at køre : <span class="inl_cmd">ls -al /home</span>.</p>
 
 <pre class="ubuntu_terminal">
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ ls -al / | grep data
-drwxr-xr-x   3 root root  4096 mar 15 18:13 <span class="red">data</span>
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ ls -al /home
+totalt 12
+drwxr-xr-x  3 root root 4096 maj 30 13:33 .
+drwxr-xr-x 24 root root 4096 maj 30 13:51 ..
+drwxr-xr-x 16 tj   tj   4096 jun  2 09:47 tj
+</span>
 </pre>
-
-<p>Det første der skal gøres er, at root skal overdrage sine rettigheder til dig, og det vil i mit tilfælde sige at der skal gøres følgende to kommandoer</p>
-
-<code class="cmd">sudo chown -R thoj:thoj /data</code>
-<code class="more_cmd">sudo chmod -R 700 /data</code>
-
-<p>Kommandoerne vil blive gennemgået herunder.</p>
 
 <h1>Superbrugeren</h1>
 
@@ -179,15 +178,13 @@ drwxr-xr-x   3 root root  4096 mar 15 18:13 <span class="red">data</span>
 	
 </blockquote>
 
-<p>Grundloven har gode retningslinier til superbrugeren. Du må alt der ikke krænker brugeren, dvs. hjælpe brugeren med at løse sin opgave. Det gælder også selvom brugeren er dit barn, din partner eller kollega.</p>
+<p>Grundloven har gode retningslinier til superbrugeren. Du må alt der ikke krænker brugeren, dvs. hjælpe brugeren med at løse sin opgave. Det gælder også selvom brugeren er dit barn, din partner eller kollega. Brugerens personlige filer og mapper er vedkommendes ejendom, og hvis man som administrator <span class="inl_cmd">krænker</span> dem ved at læse dem - så er det et grundlovsbrud! </p>
 
 <p>Den eneste undtagelse er, når brugeren har fået at vide at det ikke er brugerens private ejendom, f.eks. hvor en virksomhed eller skole stiller ressourcen til rådighed for dig.</p>
 
-<h1>Ændring af ejerskab og rettigheder</h1>
+<h1><span class="inl_cmd">chown</span></h1>
 
-<h1><span class="inl_cmd">chown</span> – change owner</h1>
-
-<p>Chown er den hurtige løsning hvis du ønsker at ændre ejeren og gruppen af en fil eller en mappe.</p>
+<p><span class="inl_cmd">chown</span> (<span class="inl_cmd">change owner</span>) bruges til, at ændre ejer og gruppe på en fil eller en mappe.</p>
 
 <table class="cmd_table">
 	<thead>
@@ -198,19 +195,28 @@ drwxr-xr-x   3 root root  4096 mar 15 18:13 <span class="red">data</span>
 	</thead>
 	<tbody>
 		<tr>
-			<td>chown thoj ~/testfil</td>
-			<td>Ændrer ejerskabet af <span class="inl_cmd">~/testfil</span> til brugeren thoj</td>
+			<td>chown tj ~/testfil</td>
+			<td>Ændrer ejerskabet af <span class="inl_cmd">~/testfil</span> til brugeren tj</td>
 		</tr>
 		<tr>
-			<td>chown thoj:testgruppe ~/testfil</td>
-			<td>Ændrer ejerskabet af <span class="inl_cmd">~/testfil</span> til brugeren thoj og gruppen testgruppe</td>
+			<td>chown tj:testgruppe ~/testfil</td>
+			<td>Ændrer ejerskabet af <span class="inl_cmd">~/testfil</span> til brugeren tj og gruppen testgruppe</td>
 		</tr>
 		<tr>
-			<td>chown -R thoj /data</td>
-			<td>Ændre ejerskabet af alle filer og undermapper i /data til thoj</td>
+			<td>chown -R tj /data</td>
+			<td>Ændre ejerskabet af alle filer og undermapper i /data til tj</td>
 		</tr>
 	</tbody>
 </table>
+
+<pre class="ubuntu_terminal">
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ sudo touch testfil
+[sudo] adgangskode for tj: 
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ ls -al testfil
+-rw-r--r-- 1 root root 0 jun  2 10:41 testfil
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ sudo chown tj:tj testfil
+-rw-r--r-- 1 tj tj 0 jun  2 10:41 testfil
+</pre>
 
 <p>man-page: <span class="inl_cmd">chown</span>
 <a href="http://manpages.ubuntu.com/manpages/trusty/man1/chown.1.html" target="_blank">
@@ -231,11 +237,7 @@ http://manpages.ubuntu.com/manpages/trusty/man1/chown.1.html</a></p>
 
 <p>Skal det gælde alle undermapper indsættes -R (recursiv)</p>
 
-<p>Rettighederne kan sættes enten ved hjælp af tal eller bogstaver. Det er min anbefaling at du lærer at anvende tal til det!</p>
-
-<h1><span class="inl_cmd">chmod</span> - med tal (anbefalet metode)</h1>
-
-<p>Rettigheder kan også sættes for den enkelte kategori med en tal værdi der præsenterer summen af de binære tal.</p>
+<p>Rettighederne kan sættes ved hjælp af tal, for den enkelte kategori så rettigheden præsenteres ved summen af de binære tal.</p>
 
 <table class="centreret">
 
@@ -418,7 +420,7 @@ http://manpages.ubuntu.com/manpages/trusty/man1/chmod.1.html</a></p>
 <code class="cmd">sudo adduser testuser</code>
 
 <pre class="ubuntu_terminal">
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ sudo adduser testuser
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ sudo adduser testuser
 [sudo] password for tj: <span class="red">&lt;-- Indtast dit kodeord</span>
 Tilføjer bruger »testuser«...
 Tilføjer ny gruppe »testuser« (1001)...
@@ -443,7 +445,7 @@ Er informationerne korrekte? [J/n] <span class="red">[Retur]</span>
 <code class="cmd">cat /etc/passwd | grep testuser</code>
 
 <pre class="ubuntu_terminal">
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ cat /etc/passwd | grep testuser
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ cat /etc/passwd | grep testuser
 <span class="red">testuser</span>:x:1001:1001:,,,:/home/<span class="red">testuser</span>:/bin/bash
 </pre>
 
@@ -471,15 +473,15 @@ http://manpages.ubuntu.com/manpages/trusty/en/man8/deluser.8.html</a></p>
 <code class="more_cmd">sudo passwd testuser2</code>
 
 <pre class="ubuntu_terminal">
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ sudo useradd -d /home/testuser2 -m testuser2 -u 2010 -s /bin/bash
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ sudo passwd testuser2
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ sudo useradd -d /home/testuser2 -m testuser2 -u 2010 -s /bin/bash
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ sudo passwd testuser2
 Indtast ny UNIX-adgangskode: <span class="red">&lt;-- indtast password f.eks. 123qwe</span>
 Genindtast ny UNIX-adgangskode: <span class="red">... og igen</span>
 passwd: adgangskoden blev opdateret
 </pre>
 
 <pre class="ubuntu_terminal">
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ cat /etc/passwd | grep testuser
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ cat /etc/passwd | grep testuser
 <span class="red">testuser</span>:x:1001:1001:,,,:/home/<span class="red">testuser</span>:/bin/bash
 <span class="red">testuser</span>2:x:2010:2010::/home/<span class="red">testuser</span>2:/bin/bash
 </pre>
@@ -527,9 +529,9 @@ http://manpages.ubuntu.com/manpages/trusty/man8/useradd.8.html</a></p>
 <code class="cmd">id *brugernavn*</code>
 
 <pre class="ubuntu_terminal">
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ id thoj
-uid=1000(thoj) gid=1000(thoj) grupper=1000(thoj),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),108(lpadmin),124(sambashare)
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ id hugo
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ id tj
+uid=1000(tj) gid=1000(tj) grupper=1000(tj),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),108(lpadmin),124(sambashare)
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ id hugo
 id: hugo: ingen sådan bruger
 </pre>
 
@@ -571,7 +573,7 @@ http://manpages.ubuntu.com/manpages/trusty/en/man8/usermod.8.html</a></p>
 <p>Herunder er et eksemel på resultatet</p>
 
 <pre class="ubuntu_terminal">
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ sudo chage -l testuser2
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ sudo chage -l testuser2
 Sidste ændring af adgangskode					: mar 16, 2016
 Adgangskode udløber					: aldrig
 Adgangskode inaktiv					: aldrig
@@ -588,7 +590,7 @@ Antal dages forvarsel om adgangskodens udløb	: 7
 <p>Herunder er et eksempel på resultatet af denne kommando, kørt på brugeren "chagetest"</p>
 
 <pre class="ubuntu_terminal">
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ sudo chage testuser2
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ sudo chage testuser2
 Ændrer forældelsesoplysninger for testuser2
 Angiv ny værdi eller tryk RETUR for standardværdien
 
@@ -605,15 +607,15 @@ Angiv ny værdi eller tryk RETUR for standardværdien
 <code class="cmd">sudo chage -d 0 testuser2</code>
 
 <pre class="ubuntu_terminal">
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ sudo chage -d 0 testuser2
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ su testuser2
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ sudo chage -d 0 testuser2
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ su testuser2
 Adgangskode: 
 Du skal omgående ændre din adgangskode (gennemtvunget af roden)
 Ændrer adgangskode for testuser2.
 (nuværende) UNIX-adgangskode: 
 Indtast ny UNIX-adgangskode: 
 Genindtast ny UNIX-adgangskode: 
-<span class="green1">testuser2@thoj-VirtualBox</span>:<span class="blue1">/home/thoj</span>$
+<span class="green1">testuser2@tj-VirtualBox</span>:<span class="blue1">/home/tj</span>$
 </pre>
 
 <p>man-page <span class="inl_cmd">chage</span>: 
@@ -677,9 +679,9 @@ http://manpages.ubuntu.com/manpages/trusty/en/man1/chage.1.html</a></p>
 <p>Som udgangspunkt består <span class="inl_cmd">sudo</span>-gruppen kun af en bruger, nemlig den bruger der installerede computere. Denne bruger vil altid kunne udføre administrationsarbejede på computeren ved at sætte <span class="inl_cmd">sudo</span> foran kommandoerne. Se eksemplet herunder med <span class="inl_cmd">ls -al</span> hvor jeg forsøger at se indholdet af <span class="inl_cmd">root's</span> mappe (hvor kun <span class="inl_cmd">root</span> har rettigheder):</p>
 
 <pre class="ubuntu_terminal">
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ ls -al /root
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ ls -al /root
 ls: kan ikke åbne katalog '/root': Adgang nægtet
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ sudo ls -al /root
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ sudo ls -al /root
 totalt 24
 drwx------  4 root root 4096 maj  2 14:43 .
 drwxr-xr-x 25 root root 4096 maj  2 14:35 ..
@@ -696,9 +698,9 @@ drwx------  3 root root 4096 maj  2 14:43 .gnupg
 <code class="cmd">sudo -i</code>
 
 <pre class="ubuntu_terminal">
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ sudo -i
-[sudo] adgangskode for thoj: 
-root@thoj-VirtualBox:~#
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ sudo -i
+[sudo] adgangskode for tj: 
+root@tj-VirtualBox:~#
 </pre>
 
 
@@ -715,8 +717,8 @@ root@thoj-VirtualBox:~#
 <code class="cmd">cat /etc/group | grep sudo</code>
 
 <pre class="ubuntu_terminal">
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ cat /etc/group | grep sudo
-<span class="red">sudo</span>:x:27:thoj
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ cat /etc/group | grep sudo
+<span class="red">sudo</span>:x:27:tj
 </pre>
 
 
