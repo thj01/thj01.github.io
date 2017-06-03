@@ -289,6 +289,17 @@ sys	0m0.000s
 
 <p>Alle Linux har en superbruger (<span class="inl_cmd">root</span>), som har rettigheder til at gøre alt på maskinen. Denne bruger anvender man til at lave systemarbejde med f.eks. at konfigurere programmer og installere programmer. På Ubuntu er <span class="inl_cmd">root</span>-kontoen ikke aktiveret, men man kan "opgradere" sin bruger til at have administratorrettigheder ved hjælp af kommandoen <span class="inl_cmd">sudo</span> (<span class="bold">su</span>peruser <span class="bold">do</span>). <span class="inl_cmd">sudo</span> kommandoen undersøger om man er medlem af sudo-gruppen og giver igennem denne gruppe adgang til at man kan udføre administrationsarbejde.</p>
 
+<p>Superbrugren har følgende rettigheder/opogaver</p>
+
+<ul class="disc">
+	<li>Opdatering af systemet</li>
+	<li>Ændring af rettigheder på filer, mapper og drev</li>
+	<li>Ændring af systemets konfigurationsfiler</li>
+	<li>Ændring af netværksindstillinger</li>
+	<li>Tilføjelse og ændring af brugere</li>
+</ul>
+
+
 <p>Se eksemplet herunder hvor jeg vil have informationer om den første harddisk (<span class="inl_cmd">/dev/sda</span>) ved hjælp af fdisk kommandoen <span class="inl_cmd">fdisk -d /dev/sda</span>:</p>
 
 
