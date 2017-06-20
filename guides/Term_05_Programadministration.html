@@ -276,24 +276,87 @@ Beregner opgraderingen ... Færdig
 0 opgraderes, 0 nyinstalleres, 0 afinstalleres og 3 opgraderes ikke.
 </pre>
 
-<p>Det skyldes, at de nye versioner der skal installeres kræver nyere filer end dem der er installeret. Dem skal du opdatere og det gøres ved at sætte <span class="inl_cmd">apt</span> til at lave en <span class="inl_cmd">dist-upgrade</span></p>
+<p>Det skyldes, at installationen kræver nyere filer end dem der er tilgængelige i den konkrete version. For at få adgang til dem skal vi lave en <span class="inl_cmd">dist-upgrade</span>.</p>
 
 <code class="cmd">sudo apt dist-upgrade</code>
 
-<h2>Fjerne PPA filer</h2>
+<p>Herefter kører installationen igennem.</p>
 
-<p>Hvis man ønsker at fjerne en PPA er den bedste metode at installere programmet <span class="inl_cmd">ppa-purge</span>. Det kan gøres manuelt, men for at sikre sig at Ubuntu kun anvender de normalt tilgængelige kræver det at man afinstallerer og geninstallere programmerne.</p>
+<h2>Fjerne PPA'er</h2>
 
-<p>Installer <span class="inl_cmd">ppa-purge</span></p>
+<p>PPA'er er nemme at fjerne manuelt. fremgangsmåden er:</p>
 
-<code class="cmd">sudo apt install ppa-purge -y</code>
+<ol class="">
+	<li>Afinstaller programmet</li>
+	<li>Fjern PPA</li>
+	<li>Opdater <span class="inl_cmd">apt</span></li>
+</ol>
 
-<p>Herefter kan en PPA-fil fjernes med kommandoen:</p>
+<p>Herunder fjerner jeg program og PPA til <span class="inl_cmd">skype for linux</span>.</p>
 
-<code class="cmd">sudo ppa-purge *PPA-navn*</code>
+<p>Fjern programmet</p>
 
+<code class="cmd">sudo apt purge skypeforlinux</code>
 
+<pre class="ubuntu_terminal">
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ sudo apt purge skypeforlinux 
+Indlæser pakkelisterne... Færdig
+Opbygger afhængighedstræ        
+Læser tilstandsoplysninger... Færdig
+Følgende pakker vil blive AFINSTALLERET:
+  skypeforlinux*
+0 opgraderes, 0 nyinstalleres, 1 afinstalleres og 0 opgraderes ikke.
+Efter denne handling, vil 167 MB diskplads blive frigjort.
+Vil du fortsætte? [J/n] j
+(Læser database ... 200478 filer og kataloger installeret i øjeblikket.)
+Afinstallerer skypeforlinux (5.3.0.1) ...
+Behandler udløsere for desktop-file-utils (0.22-1ubuntu5.1) ...
+Behandler udløsere for gnome-menus (3.13.3-6ubuntu3.1) ...
+Behandler udløsere for mime-support (3.59ubuntu1) ...
+Behandler udløsere for hicolor-icon-theme (0.15-0ubuntu1) ...
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ 
+</pre>
 
+<p>Dan et overblik over de installerede PPA'er.</p>
+
+<code class="cmd">ls /etc/apt/sources.list.d</code>
+
+<pre class="ubuntu_terminal">
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ ls /etc/apt/sources.list.d
+danielrichter2007-ubuntu-grub-customizer-xenial.list
+diesch-ubuntu-testing-xenial.list
+diesch-ubuntu-testing-xenial.list.save
+geany-dev-ubuntu-ppa-xenial.list
+geany-dev-ubuntu-ppa-xenial.list.save
+george-edison55-ubuntu-nitroshare-xenial.list
+george-edison55-ubuntu-nitroshare-xenial.list.save
+google-chrome.list
+google-chrome.list.save
+graphics-drivers-ubuntu-ppa-xenial.list
+graphics-drivers-ubuntu-ppa-xenial.list.save
+inkscape_dev-ubuntu-stable-xenial.list
+inkscape_dev-ubuntu-stable-xenial.list.save
+libreoffice-ubuntu-ppa-xenial.list
+libreoffice-ubuntu-ppa-xenial.list.save
+otto-kesselgulasch-ubuntu-gimp-xenial.list
+otto-kesselgulasch-ubuntu-gimp-xenial.list.save
+pmjdebruijn-ubuntu-darktable-release-xenial.list
+pmjdebruijn-ubuntu-darktable-release-xenial.list.save
+skype-stable.list
+skype-stable.list.save
+virtualbox.list
+virtualbox.list.save
+wine-ubuntu-wine-builds-xenial.list
+wine-ubuntu-wine-builds-xenial.list.save
+</pre>
+
+<p>Fjern herefter de konkrete PPA'er ved hjælp af <span class="inl_cmd">rm</span>. Læg mærke til at jeg sætter <span class="inl_cmd">*</span> efter kommandoen for både at få <span class="inl_cmd">.list</span> og <span class="inl_cmd">.list.save</span>.</p>
+
+<code class="cmd">sudo rm /etc/apt/sources.list.d/skype-stable.*</code>
+
+<p>Opdater <span class="inl_cmd">apt</span></p>
+
+<code class="cmd">sudo apt update</code>
 	
 </div><!-- end: col-md-9 -->
 
