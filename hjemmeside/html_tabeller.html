@@ -44,9 +44,12 @@
 
 <div class="title">Tabeller</div>
 
-<p></p>
+<p>Tabeller vil blive gennemgået ud fra en praktisk anvendelse. Det betyder at du skal klikke på linket under koden for at se resulatet af den.</p>
 
-<pre><code class="html">&lt;table class="">
+<p>Vi vil i første omgang anvende nedestående kode og så CSS'e den løbende.</p>
+
+<pre><code class="html">
+&lt;table class="">
 	&lt;thead>
 		&lt;tr>
 			&lt;th>Tabelhovede  1&lt;/th>
@@ -54,8 +57,10 @@
 		&lt;/tr>
 	&lt;/thead>
 	&lt;tfoot>
+		&lt;tr>
 			&lt;td>Tabelfod1&lt;/td>
 			&lt;td>Tabelfod2&lt;/td>
+		&lt;/tr>
 	&lt;/tfoot>
 	&lt;tbody>
 		&lt;tr>
@@ -66,35 +71,54 @@
 			&lt;td>Indhold A2&lt;/td>
 			&lt;td>Indhold B2&lt;/td>
 		&lt;/tr>
+		&lt;tr>
+			&lt;td>Indhold A3&lt;/td>
+			&lt;td>Indhold B3&lt;/td>
+		&lt;/tr>
 	&lt;/tbody>
 &lt;/table></code>
 </pre>
 
-<table class="">
-	<thead>
-		<tr>
-			<th>Tabelhovede 1</th>
-			<th>Tabelhovede  2</th>
-		</tr>
-	</thead>
-	<tfoot>
-			<td>Tabelfod1</td>
-			<td>Tabelfod2</td>
-	</tfoot>
-	<tbody>
-		<tr>
-			<td>Indhold A1</td>
-			<td>Indhold B1</td>
-		</tr>
-		<tr>
-			<td>Indhold A2</td>
-			<td>Indhold B2</td>
-		</tr>
-	</tbody>
-</table>
+<p>Eksempel uden CSS:</p>
+
+<p><a href="files/html_table_01.html" target="_blank">html_table_01.html</a></p>
+
+<p>Eksempel med rammer og kant: </p>
+
+<p>For at få rammer på skal vi anvende følgende</p>
+
+<pre>
+	<code class="CSS">
+table, th, td {
+    border: 1px solid black;
+}
+
+table {
+    border-collapse: collapse;
+}
+	</code>
+</pre>
+
+<p>Det koden fortæller er at:</p>
+
+<ul class="none">
+	<li>Der skal være en ramme omkring hele tabellen (<span class="inl_cmd">table</span>)</li>
+	<li>Der skal være en ramme om alle <span class="inl_cmd">th</span>-elementer</li>
+	<li>Der skal være en ramme om alle <span class="inl_cmd">td</span>-elementer</li>
+</ul>
+
+<p>Derudover fortæller <span class="inl_cmd">border-collapse</span>, at det skal være en enkelt ramme. Oprindeligt er rammerne på en hjemmeside med dobbelte streger.</p>
+
+<p><a href="files/html_table_01.html" target="_blank">html_table_01.html</a></p>
+
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>
+<p></p>	
 
 
-	
 </div><!-- end: col-md-9 -->
 
 <footer>
