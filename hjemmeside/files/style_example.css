@@ -1,0 +1,29 @@
+	
+/* Universel fontstørrelse (standard) */
+* {
+font-size: 16px;
+}
+
+/* Overordnet formatering der gælder alle overskrifttyper */	
+h1, h2, h3 {	
+font-family: arial;
+font-weight: 900;
+}
+
+/* Formatering der gælder de enkelte overskrifttyper */
+h1 {
+font-size: 2.2em;
+}
+
+h2 {
+font-size: 1.8em;
+}
+
+h3 {
+font-size: 1.3em;
+}
+
+/* Formatering der gælder <p> */
+p { 
+font-family: verdana;   
+}	

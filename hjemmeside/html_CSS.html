@@ -64,7 +64,7 @@
 &lt;head>
 	&lt;meta charset="UTF-8" lang="da"/>
 	
-	&lt;link rel="stylesheet" href="style.css" /> &lt;!-- Link til CSS-->
+	&lt;link rel="stylesheet" href="style_example.css" /> &lt;!-- Link til CSS-->
 	
 	&lt;title>HTML skabelon med CSS&lt;/title>
 	
@@ -120,9 +120,9 @@ font-family: verdana;
 
 <p>Du kan hente både <abbr title="">HTML</abbr>- og <abbr title="">CSS</abbr> koden til ovenstående ved at højreklikke på nedenstående henvisninger og vælge: <span class="inl_cmd">Gem link som</span>:</p>
 
-<p><abbr title="">HTML</abbr>-kode: <a href="skabelon/html_skabelon_med_CSS.html" target="_blank">html_skabelon_med_CSS.html</a></p>
+<p><abbr title="">HTML</abbr>-kode: <a href="files/html_eksempel_med_CSS.html" target="_blank">html_skabelon_med_CSS.html</a></p>
 
-<p><abbr title="">CSS</abbr>-kode: <a href="skabelon/style.css" target="_blank">style.css</a></p>
+<p><abbr title="">CSS</abbr>-kode: <a href="files/style_example.css" target="_blank">style_example.css</a></p>
 
 <p>Læs mere om CSS: <a href="http://www.w3schools.com/css/css_syntax.asp" target="_blank">http://www.w3schools.com/css/css_syntax.asp</a></p>
 
@@ -136,7 +136,16 @@ font-family: verdana;
 
 <p><span class="inl_cmd">id</span> og <span class="inl_cmd">class</span> anvendes til at identificere enkelte elementer.</p>
 
-<p>Herinder har jeg ændret lidt i skabelonen og indsat <span class="inl_cmd"> id="red" </span> i den første <span class="inl_cmd">&lt;p></span> tag og <span class="inl_cmd"> class="blue"></span> ved de sidste to. Forskellen mellem <span class="inl_cmd">id</span> og <span class="inl_cmd">class</span> er, at <span class="inl_cmd">id</span> beskriver et konkret element og anvendes en og kun engang, hvormod <span class="inl_cmd">class</span> kan ramme mange elementer.</p>
+<ul class="disc">
+	<li><span class="inl_cmd">id</span> anvendes når det er i et og kun et tilfælde det skal anvendes</li>
+	<li><span class="inl_cmd">class</span> anvendes når det er et design der skal anvendes mere end en gang</li>
+</ul>
+
+<p>Der er rent teknisk intet til hinder for at man kan anvende det samme <span class="inl_cmd">id</span>-tag mere end en gang, men det hjælper designeren af koden til at holde styr på hvad man laver.</p>
+
+
+
+<p>Herinder har jeg ændret lidt i skabelonen og indsat <span class="inl_cmd"> id="red" </span> i den første <span class="inl_cmd">&lt;p></span> tag og <span class="inl_cmd"> class="blue"></span> ved de sidste to. <span class="inl_cmd">id</span> rammer en gang i koden og <span class="inl_cmd">class</span> to gange.</p>
 
 <pre>
 	<code class="html">&lt;h1>Overskrift&lt;/h1>
@@ -155,7 +164,9 @@ font-family: verdana;
 <p>Derudover indsættes følgende linier i <span class="inl_cmd">css</span>-filen:</p>
 
 <pre>
-	<code class="css">p#red {
+	<code class="css">/* farvekoder tilføjet 01 */
+		
+p#red {
 color: red;
 }
 
@@ -176,65 +187,72 @@ color: blue;
 
 <p>Du kan se indholdet af filerne her:</p>
 
-<p>HTML-kode: <a href="skabelon/html_skabelon_med_id_og_class.html" target="_blank">html_skabelon_med_id_og_class.html</a></p>
+<p>HTML-kode: <a href="files/html_eksempel_med_id_og_class.html" target="_blank">html_eksempel_med_id_og_class.html</a></p>
 
-<p>CSS-kode: <a href="skabelon/style01.css" target="_blank">style01.css</a></p>
+<p>CSS-kode: <a href="files/style_example_02.css" target="_blank">style_example_02.css</a></p>
 
 
 <h2><span class="inl_cmd">&lt;div></span> og <span class="inl_cmd">&lt;span></span></h2>
 
-<p>Hvis man ønsker at gruppere elementer anvender man enten blok-elementet <span class="inl_cmd">&lt;div></span> eller inline-elementet <span class="inl_cmd">&lt;span></span>. De har samme funktion, nemlig at gruppere elementer eller at tilføre tekstelementer nogle egenskaber, men de anvendes forskelligt.</p>
+<p>Hvis man ønsker at gruppere elementer anvender man enten blok-elementet <span class="inl_cmd">&lt;div></span> eller inline-elementet <span class="inl_cmd">&lt;span></span>.</p>
 
 <ul class="none">
-	<li><b>&lt;div></b>: anvendes som et blok-element. Bruges til at gruppere andre blok-elementer</li>
-	<li><b>&lt;span></b>: anvendes som et inline-element. Bruges til afgrænse tekst</li>
+	<li><b>&lt;div></b>: anvendes som et blok-element. Bruges til at danne sit eget eller gruppere blok-elementer</li>
+	<li><b>&lt;span></b>: anvendes som et inline-element. Bruges til at markere elementer inde i et blok-element</li>
 </ul>
 
-<ul class="disc">
-	<li>Man skal nogle gange anvende et lidt andet design på et design, en eller flere gange ( <span class="inl_cmd">id</span> og <span class="inl_cmd">class</span>) </li>
-	<li>Man skal ramme en gruppe af elementer ( <span class="inl_cmd">&lt;div></span> )</li>
-	<li>Man skal nogle gange formatere noget inde i et tag ( <span class="inl_cmd">&lt;span></span> )</li>
-</ul>
+<p><span class="inl_cmd">&lt;div></span> og <span class="inl_cmd">&lt;span></span> anvendes når HTML5's standard-elementer ikke er tilstrækkelige. Det kan f.eks. være at vi ønsker at lave en helt speciel formatering af nogle afsnit</p>
 
-<p><span class="inl_cmd">&lt;div></span> og <span class="inl_cmd">&lt;span></span> anvendes når HTML5's standard-elementer ikke er anvendelige. I ovenstående eksempel kunne vi f.eks. have pakket <span class="inl_cmd">&lt;h2></span> og <span class="inl_cmd">&lt;h3></span> inde i en <span class="inl_cmd">&lt;div></span> vi gav tilhørsforhold til klassen <span class="inl_cmd">blue</span>, og fjerne klasserne fra <span class="inl_cmd">&lt;p></span>.</p>
+<p>I koden herinder har jeg valgt at farve en del af teksten i det første p-element grønt. Det skal gøres ved hjælp af <span class="inl_cmd">span</span>, da det skal gøres inde i et blok-element. Derudover har jeg valgt give baggrunden en grå farve fra og med <span class="inl_cmd">&lt;h2></span> overskriften og fremefter </p>
 
 <pre>
 	<code class="html">&lt;h1>Overskrift&lt;/h1>
 	
-&lt;p id="red">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur condimentum ac nisi a sagittis. Pellentesque fringilla quis turpis vitae congue. Integer vel eleifend ex. Quisque ultricies tempor sem a facilisis.&lt;/p>
+&lt;p id="red">Lorem ipsum dolor sit amet, consectetur adipiscing elit. &lt;span id="green">Curabitur condimentum ac nisi a sagittis&lt;/span>. Pellentesque fringilla quis turpis vitae congue. Integer vel eleifend ex. Quisque ultricies tempor sem a facilisis.&lt;/p>
 
-&lt;div class="blue">
+&lt;div class="grey_background">
 	
-&lt;h2>Under-overskrift&lt;/h2>
+	&lt;h2>Under-overskrift&lt;/h2>
 	
-&lt;p>Duis eu quam a augue commodo lobortis. Nulla quis justo ac nulla venenatis finibus. Nam non vestibulum lectus. Nunc nec sapien scelerisque, egestas felis at, suscipit elit.&lt;/p>
+	&lt;p class="blue">Duis eu quam a augue commodo lobortis. Nulla quis justo ac nulla venenatis finibus. Nam non vestibulum lectus. Nunc nec sapien scelerisque, egestas felis at, suscipit elit.&lt;/p>
+	
+&lt;/div>
 	
 &lt;h3>Under-under-overskrift&lt;/h3>
 	
-&lt;p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur condimentum ac nisi a sagittis. Pellentesque fringilla quis turpis vitae congue. Integer vel eleifend ex. .&lt;/p>
-
-&lt;div>
+&lt;p class="blue">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur condimentum ac nisi a sagittis. Pellentesque fringilla quis turpis vitae congue. Integer vel eleifend ex. .&lt;/p>
 </code>
 
 </pre>
 
-<p>For at ramme <span class="inl_cmd">&lt;p></span>-elementerne ændrer vi nu i CSS koden:</p>
+<p>For at ramme vores to nye <span class="inl_cmd">span</span>- og <span class="inl_cmd">div</span>-elementerne tilføjer vi følgende i bunden af filen:</p>
 
 <pre>
-	<code class="CSS">p#red {
-color: red;
+	<code class="CSS">/* farvekoder tilføjet 02 */
+
+#green {
+color: green;
 }
 
-.blue p {
-color: blue;
-}</code>
+.grey_background {
+
+background-color: grey;
+
+}
+</code>
 </pre>
 
-<p>Det vi skriver er, at CSS koden skal virke når den rammer en <span class="inl_cmd">class="blue"</span>, hvor der følger et <span class="inl_cmd">p></span> - SÅ skal den farve tekst blå.</p>
+<p>Du kan se resultatet af ovenstående kode her.</p>
 
 <p>HTML-kode: <a href="skabelon/html_skabelon_med_id_og_class2.html" target="_blank">html_skabelon_med_id_og_class.html</a></p>
 
 <p>CSS-kode: <a href="skabelon/style02.css" target="_blank">style02.css</a></p>
+
+<h2>Rækkefølge</h2>
+
+<p>Vær opmærksom på at CSS-koden bliver læst fortløbende. Det betyder, at hvis man man skriver en kode der rammer det samme element to gange, så er det, den sidste kode der vil blive anvendt.</p>
+
+<p>Det er en af de ting der kan drille når man laver CSS, så forsøg at være så metodisk og struktureret du kan være når du skriver din kode.</p>
 
 <h1>Boks-modellen</h1>
 
@@ -248,27 +266,30 @@ color: blue;
 
 </figure>
 
-<p>For at betegnelserne giver mening vil jeg gennemgå dem i en blandet rækkefølge:</p>
+<p>Beskrivelsen af de enkelte elementer i boks-modellen.</p>
 
 <ol class="fat_li">
 	<li>Indhold</li>
 
 		<p>Indholdet er selve elementet og størrelsen af elementet styres ved at målrette CSS. For tekst er det f.eks. størrelsen og afstand mellem tegne.</p>
 
-	<li>Border</li>
-	
-		<p>Border (rammen) bruges hvis man ønsker at indramme sit element. Det kan f.eks. være en indramning af et billede eller rundt om en tekst.</p>
-		
 	<li>Padding</li>
 	
-		<p>Padding er afstanden mellem elementet og rammen - altså hvor meget luft der skal være ud til rammen</p>
+		<p>Padding er afstanden mellem elementet og rammen - altså hvor meget luft der skal være ud fra indholds-elementet til rammen (border).</p>
+
+	<li>Border</li>
 	
+		<p>Border (rammen) bruges hvis man ønsker at indramme sit element. Det kan f.eks. være en streg, der skal gå rundt om et billede eller en tekst.</p>
+
 	<li>Margin</li>
 	
 		<p>Margin angiver hvor langt der skal være fra elementets ramme til et andet elements ramme (border).</p>
 </ol>
 
-<p>Du kan anvende w3schools testfunktion til at eksperimentere med boksmodellen: <a href="http://www.w3schools.com/css/tryit.asp?filename=trycss_boxmodel" target="_blank">http://www.w3schools.com/css/tryit.asp?filename=trycss_boxmodel</a>.</p>
+<p>Herunder vil jeg gennemgå boksn-modellens elementer i en blandet rækkefølge, da det giver bedst mening.</p>
+
+<p>Du kan med fordel anvende w3schools testfunktion til at eksperimentere med boksmodellen: <a href="http://www.w3schools.com/css/tryit.asp?filename=trycss_boxmodel" target="_blank">http://www.w3schools.com/css/tryit.asp?filename=trycss_boxmodel</a>.</p>
+
 
 <h2>CSS-kode: <span class="inl_cmd">padding</span> og <span class="inl_cmd">margin</span></h2>
 
@@ -391,11 +412,11 @@ padding: top bund Højre/venstre </code>
 <table class="centreret fixed">
 	<tbody>
 		<tr>
-			<td style="background-color:rgb(0,0,0)"><br/><span class="white">#000000<br/>(0,0,0)</span><br/><br/></td>
-			<td style="background-color:rgb(63,63,63)"><span class="white">#3F3F3F<br/>(63,63,63,)</span><br/></td>
-			<td style="background-color:rgb(127,127,127)"><span class="white">#7F7F7F<br/>(127,127,127)</span><br/></td>
-			<td style="background-color:rgb(191,191,191)"><span class="">#BFBFBF<br/>(191,191,191)</span><br/></td>
-			<td style="background-color:rgb(255,255,255)"><span class="">#FFFFFF<br/>(255,255,255)</span><br/></td>
+			<td style="background-color:rgb(0,0,0)"><br/><span class="white">#000000<br/>rgb(0,0,0)</span><br/><br/></td>
+			<td style="background-color:rgb(63,63,63)"><span class="white">#3F3F3F<br/>rgb(63,63,63,)</span><br/></td>
+			<td style="background-color:rgb(127,127,127)"><span class="white">#7F7F7F<br/>rgb(127,127,127)</span><br/></td>
+			<td style="background-color:rgb(191,191,191)"><span class="">#BFBFBF<br/>rgb(191,191,191)</span><br/></td>
+			<td style="background-color:rgb(255,255,255)"><span class="">#FFFFFF<br/>rgb(255,255,255)</span><br/></td>
 		</tr>
 	</tbody>
 </table>
@@ -407,12 +428,12 @@ padding: top bund Højre/venstre </code>
 <table class="centreret fixed">
 	<tbody>
 		<tr>
-			<td style="background-color:rgb(250,230,210)"><br/>#FAE6D2<br/><span class="">(250,230,210)</span><br/><br/></td>
-			<td style="background-color:rgb(250,220,190)">#FADCBE<br/><span class="">(250,220,190)</span><br/></td>
-			<td style="background-color:rgb(250,200,150)">#FAC896<br/><span class="">(250,200,150)</span><br/></td>
-			<td style="background-color:rgb(200,160,120)"><span class="white">#C8A078<br/>(200,160,120)</span><br/></td>
-			<td style="background-color:rgb(200,130,60)"><span class="white">#C8823C<br/>(200,130,60)</span><br/></td>
-			<td style="background-color:rgb(160,130,100)"><span class="white">#A08264<br/>(160,130,100)</span><br/></td>
+			<td style="background-color:rgb(250,230,210)"><br/>#FAE6D2<br/><span class="">rgb(250,230,210)</span><br/><br/></td>
+			<td style="background-color:rgb(250,220,190)">#FADCBE<br/><span class="">rgb(250,220,190)</span><br/></td>
+			<td style="background-color:rgb(250,200,150)">#FAC896<br/><span class="">rgb(250,200,150)</span><br/></td>
+			<td style="background-color:rgb(200,160,120)"><span class="white">#C8A078<br/>rgb(200,160,120)</span><br/></td>
+			<td style="background-color:rgb(200,130,60)"><span class="white">#C8823C<br/>rgb(200,130,60)</span><br/></td>
+			<td style="background-color:rgb(160,130,100)"><span class="white">#A08264<br/>rgb(160,130,100)</span><br/></td>
 		</tr>
 	</tbody>
 </table>
@@ -466,6 +487,8 @@ padding: top bund Højre/venstre </code>
 <h2>Farver</h2>
 
 <p><b>Grundlæggende: </b><a href="http://www.w3schools.com/css/css_colors.asp" target="_blank">http://www.w3schools.com/css/css_colors.asp</a></p>
+
+<p><b>Fra min guide (teknisk): </b><a href="../foto/foto_farver.html" target="_blank">http://www.vidas.dk/foto/foto_farver.html</a></p>
 
 <h2>Selectors</h2>
 
