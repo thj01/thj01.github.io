@@ -1,0 +1,186 @@
+# Geany's snippets configuration file
+#
+# Snippet til undervisning i HTML5 VEstfyns gymnasium
+
+
+[Python]
+for=for i in xrange(%cursor%):\n\t
+if=if %cursor%:\n\t
+elif=elif %cursor%:\n\t
+else=else:\n\t
+while=while %cursor%:\n\t
+try=try:\n\t%cursor%\nexcept Exception, ex:\n\t
+with=with %cursor%:\n\t
+def=def %cursor% (%cursor%):\n\t""" Function doc """\n\t
+class=class %cursor%:\n\t""" Class doc """\n\t\n\tdef __init__ (self):\n\t\t""" Class initialiser """\n\t\tpass
+
+[HTML]
+#HTML5 addons
+#by Thomas Jensen <thj001@gmail.com>
+#Some of Tomasz Karbownicki's <tomasz@karbownicki.com> snippets has ben HTML5'ified
+#
+#If you use his snippets you have to outcomment (#) the lines vith: html and utf
+#
+
+#top
+
+class=class="%cursor%"
+id=id="%cursor%"
+
+
+sup=<sup>%cursor%</sup>
+sub=<sub>%cursor%</sub>
+
+doc=<!DOCTYPE html>\n\n<head>\n\t\n\t<meta charset="UTF-8" lang="da"/>\n\n\t<title>%cursor%</title>\n\n\t<script>\n\n\n\t</script>\n\n</head>\n\n<html>\n\n\t<body>\n\n\n\t</body>\n\n</html>
+
+doctype=<!DOCTYPE html>
+
+html=<html>\n\t%cursor%\n</html>
+head=<head>\n\t%cursor%\n</head>
+utf=<meta charset="UTF-8" />
+script=<script>\n\t%cursor%\n</script>
+style=<style>\n\t%cursor%\n</style>
+stylesheet=<link\nrel="stylesheet"\ntype="text/css"\nhref="%cursor%"/>
+title=<title>%cursor%</title>
+header=<header>\n\t%cursor%\n</header>
+
+
+article=<article>\n\t%cursor%\n</article>
+nav=<nav>\n\t%cursor%\n</nav>
+aside=<aside>\n\t%cursor%\n</aside>
+footer=<footer>\n\t%cursor%\n</footer>
+q=<q cite="%cursor%"></q>
+blockq=<blockquote cite="%cursor%"></blockquote>
+fig=<figure id="">\n\n\t<img class="p90" src="images/%cursor%" alt="%cursor%" title="%cursor%" />\n\n\t<figcaption>%cursor%</figcaption>\n\n</figure>
+abbr=<abbr title="">%cursor%</abbr>
+dfn=<dfn>%cursor%</dfn>
+adress=<address>%cursor%</address>
+b=<b>%cursor%</b>
+pb=<p><b>%cursor%</b></p>
+i=<i>%cursor%</i>
+
+divt = <div class="title">%cursor%</div>
+
+
+section=<section>%cursor%</section>
+
+audio=<audio controls="controls">\n\n\t<source src="%cursor%" type="audio/ogg"/>\n\t<source src="" type="audio/mp3" />\n\tYour browser does not support the audio tag.\n\n</audio>
+
+video=<video width="" height="" controls="controls">\n\n\t<source src="%cursor%" type="video/mp4" />\n\t<source src="" type="video/ogg" />\n\tYour browser does not support the video tag.\n\n</video>
+
+
+#codes
+
+code=<code class="cmd">%cursor%</code>
+mcode=<code class="more_cmd">%cursor%</code>
+bl=<blockquote>\n\n\t%cursor%\n\n</blockquote>
+bla=<blockquote class="alert">\n\n\t%cursor%\n\n</blockquote>
+
+
+js=<script type="text/javascript">\n\t%cursor%\n</script>
+js2=<script src="%cursor%" type="text/javascript"></script>
+css=<style type="text/css">\n\t%cursor%\n</style>
+css2=<link href="%cursor%" rel="stylesheet" type="text/css" />
+rss=<link rel="alternate" type="application/rss+xml" title="%cursor%" href="%cursor%" />
+body=<body>\n\t%cursor%\n</body>
+
+# table
+table=<table class="%cursor%">\n\t<thead>\n\t\t<tr>\n\t\t\t<th></th>\n\t\t\t<th>%cursor%</th>\n\t\t</tr>\n\t</thead>\n\t<tbody>\n\t\t<tr>\n\t\t\t<td>%cursor%</td>\n\t\t\t<td>%cursor%</td>\n\t\t</tr>\n\t</tbody>\n</table>
+td=<td>%cursor%</td>\
+tr=<tr>\n\t<td>%cursor%</td>\n\t<td>%cursor%</td>\n</tr>
+th=<th>%cursor%</th>
+caption=<caption>%cursor%</caption>
+
+
+# list
+ul=<ul class="disc">\n\t<li>%cursor%</li>\n\t<li>%cursor%</li>\n</ul>
+uln=<ul class="none">\n\t<li>%cursor%</li>\n\t<li>%cursor%</li>\n</ul>
+ol=<ol class="%cursor%">\n\t<li>%cursor%</li>\n</ol>
+li=<li>%cursor%</li>
+dl=<dl class="%cursor%">\n\t<dt>%cursor%</dt>\n\t<dd>%cursor%</dd>\n</dl>
+dt=<dt>%cursor%</dt>
+dd=<dd>%cursor%</dd>
+# inline
+a=<a href="%cursor%" target="_blank">%cursor%</a>
+span=<span class="%cursor%">%cursor%</span>
+em=<em>%cursor%</em>
+
+big=<big>%cursor%</big>
+cite=<cite>%cursor%</cite>
+strong=<strong>%cursor%</strong>
+img=<img class="" src="images/%cursor%" alt="%cursor%" title="%cursor%" />
+thumb=<a href="%cursor%"><img src="%cursor%" alt="%cursor%" title="%cursor%" /></a>
+
+# block
+div=<div class="%cursor%">%cursor%</div>
+h1=<h1>%cursor%</h1>
+h2=<h2>%cursor%</h2>
+h3=<h3>%cursor%</h3>
+h4=<h4>%cursor%</h4>
+h5=<h5>%cursor%</h5>
+h6=<h6>%cursor%</h6>
+p=<p>%cursor%</p>
+pre=<pre>\n%cursor%\n</pre>
+code=<code class="cmd">%cursor%</code>
+prec=<pre><code>%cursor%</code></pre>
+quote=<blockquote>\n\t<p>\n\t\t%cursor%\n\t</p>\n</blockquote>
+# other
+cmt=<!--\n\t%cursor%\n-->
+cmt2=<!-- %cursor% -->
+br=<br/>
+hr=<hr/>
+1s=&nbsp;
+3s=&nbsp;&nbsp;&nbsp;
+7s=&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+spec=\s\sabcd
+
+
+
+
+[CSS]
+# by Tomasz Karbownicki <tomasz@karbownicki.com>
+bc=background-color: %cursor%;
+bct=background-color: transparent;
+ba=background: %cursor% url('%cursor%') %cursor%;
+ma=margin: %cursor%;
+pa=padding: %cursor%;
+bo=border: %cursor%;
+bs=border-style: %cursor%;
+bw=border-width: %cursor%;
+bc=border-color: %cursor%;
+co=color: %cursor%;
+he=height: %cursor%;
+wi=width: %cursor%;
+di=display: %cursor%;
+fs=font-size: %cursor%;
+ff=font-family: %cursor%;
+fw=font-weight: %cursor%;
+ta=text-align: %cursor%;
+fl=float: %cursor%;
+im=!important
+po=position: %cursor%;
+ov=overflow: %cursor%;
+ra=-moz-border-radius: %cursor%px; -webkit-border-radius: %cursor%px; border-radius: %cursor%px;
+sh=border-shadow: %cursor%px %cursor%px #%cursor% %cursor%px;
+cmt=/* ######### %cursor% ######### */
+
+#CSS addons by Thomas Jensen <thj001@gmail.com>
+
+ml=margin-left: %cursor%;
+mr=margin-right: %cursor%;
+mt=margin-top: %cursor%;
+mb=margin-bottom: %cursor%;
+
+pl=padding-left: %cursor%;
+pr=padding-right: %cursor%;
+pt=padding-top: %cursor%;
+pb=padding-bottom: %cursor%;
+
+bl=border-left: %cursor%;
+br=border-right: %cursor%;
+bt=border-top: %cursor%;
+bb=border-bottom: %cursor%;
+
+#Latex  addons by Thomas Jensen <thj001@gmail.com>
+
