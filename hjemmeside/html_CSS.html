@@ -254,6 +254,44 @@ background-color: grey;
 
 <p>Det er en af de ting der kan drille når man laver CSS, så forsøg at være så metodisk og struktureret du kan være når du skriver din kode.</p>
 
+<h2>Overtag designet</h2>
+
+<p>Alle browsere har deres egen måde at vise de forskellige elementer på. Hvis man gerne vil have den fulde kontrol, så skal man indsætte følgende i sit CSS script:</p>
+
+<pre>
+	<code class="CSS">/* Nulstil alle parametre*/
+
+html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,abbr,address,cite,code,del,dfn,em,img,ins,kbd,q,samp,small,strong,var,b,i,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,figcaption,figure,footer,header,hgroup,menu,nav,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}
+body{line-height:1}
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}
+nav ul{list-style:none}
+blockquote,q{quotes:none}
+blockquote:before,blockquote:after,q:before,q:after{content:none}
+a{margin:0;padding:0;font-size:100%;vertical-align:baseline;background:transparent}
+ins{background-color:#ff9;color:#000;text-decoration:none}
+mark{background-color:#ff9;color:#000;font-style:italic;font-weight:bold}
+del{text-decoration:line-through}
+abbr[title],dfn[title]{border-bottom:1px dotted;cursor:help}
+table{border-collapse:collapse;border-spacing:0}
+hr{display:block;height:1px;border:0;border-top:1px solid #ccc;margin:1em 0;padding:0}
+input,select{vertical-align:middle}
+</code>
+</pre>
+
+<p>Du kan også vælge at downloade det ovenstående i en CSS-fil, gemme den i din CSS-mappe og så henvise til den i <span class="inl_cmd">style.css</span>. På den måde </p>
+
+<p>For at henvise til filen skal du tilføje følgende øverst i din style.css</p>
+
+<pre>
+	<code class="CSS">@import url("reset.css");
+</code>
+</pre>
+
+<p>Download: <a href="files/reset.css" target="_blank" download>reset.css</a></p>
+
+
+
+
 <h1>Boks-modellen</h1>
 
 <p>Når man skal placere et element på en side, så vil browseren som udgangspunkt placere den venstrestillet og med de afstande til siden andre elementer den har som standard. Begreberne man anvender er <span class="inl_cmd">padding</span>, <span class="inl_cmd">border</span> og <span class="inl_cmd">margin</span>, og placere sig som på illustrationen herinder</p>
