@@ -34,15 +34,31 @@
 	
 <div class="col-sm-9">
 	
+	<figure id="">
+	
+		<img class="p40" src="images/LaTeX_logo.svg" alt="" title="" />
+	
+		<figcaption></figcaption>
+	
+	</figure>
+	
 <div class="title">Matematisk notation</div>
 
+<h1>latex</h1>
 
+<p>Latex er et opmærkningssprog til tekstformatering. Latex er designet til at man strukturerer siden gennem koder, men selve formateringen lader men LATEX -motoren om.</p>
 
-<h1>MS Word</h1>
+<p>I denne sammenhæng vil vi bruge det til at formatere matematiske udtryk og sætninger, så det bliver gengivet matematisk korrekt.</p>
+
+<p>Henvisning: <a href="https://da.wikipedia.org/wiki/LaTeX" target="_blank">https://da.wikipedia.org/wiki/LaTeX</a></p>
+
+<h1>Editors</h1>
+
+<h2>MS Word</h2>
 
 <p>MS Words indbyggede matematik editor er ikke særlig god. Vi skal installere WordMat, som er en opensource udvidelse til MS Word.</p>
 
-<h2>Installer WordMat</h2>
+<b>Installer WordMat</b>
 
 <p>Hent WordMat: <a href="http://eduap.com/da/download-wordmat/" target="_blank">http://eduap.com/da/download-wordmat/</a></p>
 
@@ -138,20 +154,84 @@
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/v6iVw2LVecA" frameborder="0" allowfullscreen></iframe>
 
-<h2>Guides</h2>
+<h2>Libreoffice</h2>
 
-<p>Guide til MSO 2007: <a href="http://www.chem.mtu.edu/~tbco/cm416/EquationEditor_main.pdf" target="_blank">http://www.chem.mtu.edu/~tbco/cm416/EquationEditor_main.pdf</a></p>
+<ol class="">
+	<li>Download den nyeste udgave af <a href="https://sourceforge.net/projects/texmaths/files/" target="_blank">TexMaths</a>. Filen hedder <span class="inl_cmd">TexMaths-X.XX.oxt</span>.</li>
+	<li>Hent og installer <a href="https://miktex.org/download" target="_blank">MiKTeX</a>. Behold standardindstillingerne.</li>
+<!--
+	<li>Hent og installer <a href="http://dvisvgm.bplaced.net/Downloads" target="_blank">dvssvgm</a> i 64 bits udgave. Udpak filerne i mappen <span class="inl_cmd">C:\</span></li>
+-->
+	<li>Dobbeltklik på filen <span class="inl_cmd">TexMaths-X.XX.oxt</span>.</li>
+	
+	<p></p>
+	
+		<figure id="">
+		
+			<img class="p50" src="images/libreoffice_texmaths_01.png" alt="" title="" />
+		
+			<figcaption></figcaption>
+		
+		</figure>
 
-<p>Guide til MSO 2007/2010: <a href="http://www.iun.edu/~mathiho/useful/Equation%20Editor%20Shortcut%20Commands.pdf" target="_blank">http://www.iun.edu/~mathiho/useful/Equation%20Editor%20Shortcut%20Commands.pdf</a></p>
+	<li>Tjek at den er installeret korrekt og vælg <span class="knap">Luk</span></li>
+	
+	<p></p>
+	
+	<figure id="">
+	
+		<img class="p50" src="images/libreoffice_texmaths_02.png" alt="" title="" />
+	
+		<figcaption></figcaption>
+	
+	</figure>
+	
+	
+	<li>Genstart Libreoffice</li>
+	
+</ol>
 
-<h1>Latex</h1>
+<h3>Konfigurer TexMaths</h3>
 
-<p>LaTeX/Mathematics (wikibooks): <a href="https://en.wikibooks.org/wiki/LaTeX/Mathematics" target="_blank">https://en.wikibooks.org/wiki/LaTeX/Mathematics</a></p>
+<p>Når Libreoffice er genstartet har du fire nye ikoner i starten af din værktøsjlinie:</p>
 
-<p>The no so short Introduction to <span class="math">\( L_aT^eX \)</span>: <a href="https://tobi.oetiker.ch/lshort/lshort.pdf" target="_blank">https://tobi.oetiker.ch/lshort/lshort.pdf</a></p>
+<figure id="">
+
+	<img class="p50" src="images/libreoffice_texmaths_03.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
 
 
-<h2><span class="math">\( L_aT^eX \)</span> til billedfiler</h2>
+<p>Før vi kan anvende <span class="inl_cmd">TexMaths</span> skal det konfiguereres. Det gøres ved at klikke på konfigurationsikonet: <img class="" src="images/libreoffice_texmaths_konfiguration_ikon.png" alt="" title="" /></p>
+
+<p>Konfigurationsvinduet starter med fanen "Paths". Indsæt stien: <span class="inl_cmd">C:\Program Files\MiKTeX 2.9\miktex\bin\x64</span> i første og sidste felt (<span class="inl_cmd">Latex.exe</span> og <span class="inl_cmd">dvisvgm.exe</span>)</p>
+
+<figure id="">
+
+	<img class="p40" src="images/libreoffice_texmaths_04.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>For at kunne komme let til vores formeleditor vælger vi fanen <span class="inl_cmd">Formel genvej</span> og opretter genvejstasterner <kbd>Ctrl</kbd>+<kbd>k</kbd> til unummererede linier og <kbd>Ctrl</kbd>+<kbd>n</kbd> til de nummererede. På den måde kan vi hurtigt skrive vores formler ind.</p>
+
+<figure id="">
+
+	<img class="p40" src="images/libreoffice_texmaths_05.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+
+
+
+
+
+<h2>Online</h2>
 
 <p>Det optimale er at have sine formler i <span class="inl_cmd">svg</span> format, da det kan skaleres frit. Af uransagelige årsager understøtter Windows ikke <span class="inl_cmd">svg</span>, så der er man tvunget til at anvende png. For at ens formler ikke skal blive pixeleret skal de gemmes i en høj opløsning (300+) </p>
 
@@ -164,17 +244,99 @@
 
 
 
-<h2><span class="math">\( L_aT^eX \)</span> i Google docs</h2>
+<h2>Google docs</h2>
 
 <p>g(math) (plugin): <a href="http://www.gmath.guru/" target="_blank">http://www.gmath.guru/</a></p>
 
 
+<h2>MathJax</h2>
 
-<h1>Libreoffice</h1>
+<p>For at vise formler på vidas.dk anvender jeg <span class="inl_cmd">Mathjax</span>, så jeg kan taste koderne direkte ind i html koden.</p>
+
+<p>Latex i HTML: <a href="https://www.mathjax.org/" target="_blank">https://www.mathjax.org/</a></p>
+
+<p>For at få koden integreret skal følgende tilføjes til <span class="inl_cmd">script</span>-sektionen.</p>
+
+<pre>
+	<code class="html">
+&lt;!-- MATHJAX -->
+&lt;script type="text/javascript" 
+	src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+&lt;/script>
+
+&lt;script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  displayAlign: "left",
+  displayIndent: "0em"
+});
+&lt;/script>
+	</code>
+</pre>
+
+<p>Det øverste script er det som giver adgang til <span class="math">\( L_aT^eX \)</span>, og den nederste tilføjelse sørger for at matematikken er venstrecentreret, og at den kan formateres med CSS.</p>
+
+<p>Når dette er gjort kan man indsætte <span class="math">\( L_aT^eX \)</span> på to måder:</p>
+
+<h3>Inline element - i tekst</h3>
+
+
+
+<pre>
+	<code class="html">
+&lt;span>\( L_aT^eX \)&lt;/span>
+	</code>
+</pre>
+
+<p><b>Resultat: </b><span class="math">\( L_aT^eX \)</span></p>
+
+<h3>Blok-element - selvstændig &lt;div></h3>
+
+<pre>
+	<code class="html">
+&lt;div>$$ L_aT^eX $$&lt;/div>
+	</code>
+</pre>
+
+<p><b>Resultat: </b>... med mine CSS indstillinger</p>
+
+<div class="latex">$$ L_aT^eX  $$</div>
+
+<p>Vær opmærksom på at nogle matematiske tegn er forskellige alt efter om man bruger dem i inline- eller blok- elementer. Min erfaring er, at man får det bedste resultat i blok-elementer.</p>
+
+
+
+
+
+<h1>Dokumentation</h1>
+
+<h2>Latex</h2>
+
+<p>LaTeX/Mathematics (wikibooks): <a href="https://en.wikibooks.org/wiki/LaTeX/Mathematics" target="_blank">https://en.wikibooks.org/wiki/LaTeX/Mathematics</a></p>
+
+<p>The no so short Introduction to <span class="math">\( L_aT^eX \)</span>: <a href="https://tobi.oetiker.ch/lshort/lshort.pdf" target="_blank">https://tobi.oetiker.ch/lshort/lshort.pdf</a></p>
+
+<h2>Word</h2>
+
+<p>Guide til MSO 2007: <a href="http://www.chem.mtu.edu/~tbco/cm416/EquationEditor_main.pdf" target="_blank">http://www.chem.mtu.edu/~tbco/cm416/EquationEditor_main.pdf</a></p>
+
+<p>Guide til MSO 2007/2010: <a href="http://www.iun.edu/~mathiho/useful/Equation%20Editor%20Shortcut%20Commands.pdf" target="_blank">http://www.iun.edu/~mathiho/useful/Equation%20Editor%20Shortcut%20Commands.pdf</a></p>
+
+<h2>Libreoffice</h2>
 
 <p>Guide til Libreoffice: <a href="https://wiki.documentfoundation.org/images/3/37/MG40-MathGuide.pdf" target="_blank">https://wiki.documentfoundation.org/images/3/37/MG40-MathGuide.pdf</a></p>
 
-<h1>HTML</h1>
+
+
+
+
+
+
+
+
+
+
+
+<h2>HTML</h2>
 
 <p>Oversigt over HTML:</p>
 
@@ -189,11 +351,42 @@
 
 
 
+
 <h1>Matematiske tegn</h1>
 
 <p>Følgende tegn kan anvendes direkte</p>
 
 <p><span class="math">\(  + ~~~~ - ~~~~ = ~~~~ ! ~~~~ / ~~~~ ( ~~~~ ) ~~~~ [ ~~~~ ] ~~~~ < ~~~~ > ~~~~ | ~~~~ ' ~~~~ : \)</span></p>
+
+
+
+<h2>Tegn på Mac</h2>
+
+<p>For at få adgang til de forskellige parantestyper på mac skal du anvende følgende skema</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>tegn</th>
+			<th>mac-genvej</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>{ }</td>
+			<td><kbd>Shift</kbd>+<kbd>Alt</kbd>+<kbd>8</kbd>/<kbd>9</kbd></td>
+		</tr>
+		<tr>
+			<td>[ ]</td>
+			<td><kbd>Alt</kbd>+<kbd>8</kbd>/<kbd>9</kbd></td>
+		</tr>
+	</tbody>
+</table>
+
+
+
+<h2>Generelle tegn</h2>
+
 
 <table class="">
 	<thead>
@@ -375,7 +568,7 @@
 	</tbody>
 </table>
 
-<h1>Brøk, rod og potens</h1>
+<h2>Brøk, rod og potens</h2>
 
 <p></p>
 
@@ -435,7 +628,7 @@
 	</tbody>
 </table>
 
-<h1>Parenteser og klammer</h1>
+<h2>Parenteser og klammer</h2>
 
 <p></p>
 
@@ -529,7 +722,7 @@
 
 
 
-<h1>Symboler</h1>
+<h2>Symboler</h2>
 
 <p></p>
 
@@ -614,7 +807,6 @@
 
 <div class="latex">$$ \sum_{x=0}^{10} (x) $$</div>
 
-<h1>Bogstaver og talmængder</h1>
 
 <h2>Græske bogstaver</h2>
 
@@ -768,7 +960,7 @@
 
 
 
-<h1>Formatering</h1>
+<h2>Formatering</h2>
 
 <p></p>
 
@@ -836,133 +1028,9 @@
 </table>
 
 
-<h1>Latex i Libreoffice</h1>
-
-<h2>Hent og installer programmer</h2>
-
-<ol class="">
-	<li>Download den nyeste udgave af <a href="https://sourceforge.net/projects/texmaths/files/" target="_blank">TexMaths</a>. Filen hedder <span class="inl_cmd">TexMaths-X.XX.oxt</span>.</li>
-	<li>Hent og installer <a href="https://miktex.org/download" target="_blank">MiKTeX</a>. Behold standardindstillingerne.</li>
-<!--
-	<li>Hent og installer <a href="http://dvisvgm.bplaced.net/Downloads" target="_blank">dvssvgm</a> i 64 bits udgave. Udpak filerne i mappen <span class="inl_cmd">C:\</span></li>
--->
-	<li>Dobbeltklik på filen <span class="inl_cmd">TexMaths-X.XX.oxt</span>.</li>
-	
-	<p></p>
-	
-		<figure id="">
-		
-			<img class="p50" src="images/libreoffice_texmaths_01.png" alt="" title="" />
-		
-			<figcaption></figcaption>
-		
-		</figure>
-
-	<li>Tjek at den er installeret korrekt og vælg <span class="knap">Luk</span></li>
-	
-	<p></p>
-	
-	<figure id="">
-	
-		<img class="p50" src="images/libreoffice_texmaths_02.png" alt="" title="" />
-	
-		<figcaption></figcaption>
-	
-	</figure>
-	
-	
-	<li>Genstart Libreoffice</li>
-	
-</ol>
-
-<h2>Konfigurer TexMaths</h2>
-
-<p>Når Libreoffice er genstartet har du fire nye ikoner i starten af din værktøsjlinie:</p>
-
-<figure id="">
-
-	<img class="p50" src="images/libreoffice_texmaths_03.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-
-
-<p>Før vi kan anvende <span class="inl_cmd">TexMaths</span> skal det konfiguereres. Det gøres ved at klikke på konfigurationsikonet: <img class="" src="images/libreoffice_texmaths_konfiguration_ikon.png" alt="" title="" /></p>
-
-<p>Konfigurationsvinduet starter med fanen "Paths". Indsæt stien: <span class="inl_cmd">C:\Program Files\MiKTeX 2.9\miktex\bin\x64</span> i første og sidste felt (<span class="inl_cmd">Latex.exe</span> og <span class="inl_cmd">dvisvgm.exe</span>)</p>
-
-<figure id="">
-
-	<img class="p40" src="images/libreoffice_texmaths_04.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-
-<p>For at kunne komme let til vores formeleditor vælger vi fanen <span class="inl_cmd">Formel genvej</span> og opretter genvejstasterner <kbd>Ctrl</kbd>+<kbd>k</kbd> til unummererede linier og <kbd>Ctrl</kbd>+<kbd>n</kbd> til de nummererede. På den måde kan vi hurtigt skrive vores formler ind.</p>
-
-<figure id="">
-
-	<img class="p40" src="images/libreoffice_texmaths_05.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-
-<h1>MathJax</h1>
-
-<p>For at vise formler på vidas.dk anvender jeg <span class="inl_cmd">Mathjax</span>, så jeg kan taste koderne direkte ind i html koden.</p>
-
-<p>Latex i HTML: <a href="https://www.mathjax.org/" target="_blank">https://www.mathjax.org/</a></p>
-
-<p>For at få koden integreret skal følgende tilføjes til <span class="inl_cmd">script</span>-sektionen.</p>
-
-<pre>
-	<code class="html">
-&lt;!-- MATHJAX -->
-&lt;script type="text/javascript" 
-	src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
-&lt;/script>
-
-&lt;script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-  displayAlign: "left",
-  displayIndent: "0em"
-});
-&lt;/script>
-	</code>
-</pre>
-
-<p>Det øverste script er det som giver adgang til <span class="math">\( L_aT^eX \)</span>, og den nederste tilføjelse sørger for at matematikken er venstrecentreret, og at den kan formateres med CSS.</p>
-
-<p>Når dette er gjort kan man indsætte <span class="math">\( L_aT^eX \)</span> på to måder:</p>
-
-<h2>Inline element - i tekst</h2>
 
 
 
-<pre>
-	<code class="html">
-&lt;span>\( L_aT^eX \)&lt;/span>
-	</code>
-</pre>
-
-<p><b>Resultat: </b><span class="math">\( L_aT^eX \)</span></p>
-
-<h2>Blok-element - selvstændig &lt;div></h2>
-
-<pre>
-	<code class="html">
-&lt;div>$$ L_aT^eX $$&lt;/div>
-	</code>
-</pre>
-
-<p><b>Resultat: </b>... med mine CSS indstillinger</p>
-
-<div class="latex">$$ L_aT^eX  $$</div>
-
-<p>Vær opmærksom på at nogle matematiske tegn er forskellige alt efter om man bruger dem i inline- eller blok- elementer. Min erfaring er, at man får det bedste resultat i blok-elementer.</p>
 
 <h1>Opgaver</h1>
 
@@ -988,28 +1056,7 @@ MathJax.Hub.Config({
 
 <div class="latex">$$ F_n = \frac{ 1 }{ \sqrt{5} } \left( \left( \frac{ 1+\sqrt{5} }{ 2 }  \right)^n  \left( \frac{ 1-\sqrt{5} }{ 2 }^n                  \right)                 \right) $$</div>
 
-<h1>Tegn på Mac</h1>
 
-<p>For at få adgang til de forskellige parantestyper på mac skal du anvende følgende skema</p>
-
-<table class="">
-	<thead>
-		<tr>
-			<th>tegn</th>
-			<th>mac-genvej</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>{ }</td>
-			<td><kbd>Shift</kbd>+<kbd>Alt</kbd>+<kbd>8</kbd>/<kbd>9</kbd></td>
-		</tr>
-		<tr>
-			<td>[ ]</td>
-			<td><kbd>Alt</kbd>+<kbd>8</kbd>/<kbd>9</kbd></td>
-		</tr>
-	</tbody>
-</table>
 
 
 
