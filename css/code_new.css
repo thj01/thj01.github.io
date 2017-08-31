@@ -151,7 +151,6 @@ display: inline-block, table;
 font-size: 1em;
 font-weight: 100;
 line-height:20px;
-color: white;
 padding: 10px 8px;
 background-color: #300a24 ;
 width: 90%;
@@ -172,7 +171,6 @@ display:inline-block, table;
 font-size: 1em;
 font-weight: 100;
 line-height:20px;
-color: white;
 padding: 10px 5px 12px 5px;
 background-color: #300a24 ;
 width: 90%;
@@ -490,5 +488,12 @@ details summary {
 font-size: 1.2em;
 padding: 10px 5px;
 
+
+}
+
+p#html_intro_kode_resulat{
+
+background-color: #EEEEEE;
+padding: 1em;
 
 }

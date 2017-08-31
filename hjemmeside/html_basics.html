@@ -60,8 +60,6 @@
 
 <p>En anden stor fordel ved elementerne er, at de kan gøre skriveprocessen mere struktureret. Når man skriver vil man hele tiden være bevidst om hvad man er i gang med. Det man skal lære er, at se og forstå <abbr title="Hyper Text Markup Language">HTML</abbr>-koden.</p>
 
-<h2>Elementer</h2>
-
 <p>Man anvender elementer ved at pakke ord/ordene ind i dem. Man anvender elementets betegnelse både før og efter det man vil have markeret, hvor man sætter en <span class="inl_cmd">/</span> foran det afsluttende elementnavn . Se eksemplet herunder</p>
 
 <pre>
@@ -84,7 +82,7 @@
 
 <span class="afsnit">Resultat af koden</span>
 
-<p><abbr title="Central Intelligense Agency">CIA</abbr> er en forkortelse for <b>C</b>entral <b>I</b>ntelligense <b>A</b>gency, som er en del af <abbr title="United States of America">USA</abbr>'s efterretningstjeneste.</p>
+<p id="html_intro_kode_resulat"><abbr title="Central Intelligense Agency">CIA</abbr> er en forkortelse for <b>C</b>entral <b>I</b>ntelligense <b>A</b>gency, som er en del af <abbr title="United States of America">USA</abbr>'s efterretningstjeneste.</p>
 
 <p>Læg mærke til at der kommer en stiplet linie under de forkortelser der er pakket ind i <span class="inl_cmd">&lt;abbr></span>. Det er din browser som markere forkortelser på den måde. Holder du musen hen over feltet forvandler den sig til et spørgsmålstegn og der kommer en sort boks der viser hvad der står i <span class="inl_cmd">title=""</span> feltet.</p>
 
@@ -92,7 +90,7 @@
 
 <p>Du kan se en komplet liste over elementer her: <a href="http://www.w3schools.com/tags/" target="_blank">http://www.w3schools.com/tags/</a>.</p>
 
-<h1>Forskellige typer elementer</h1>
+<h1>Elementtyper</h1>
 
 <p>Når man taler om elementer er der fire egenskaber man kan sætte på dem:</p>
 
@@ -135,7 +133,7 @@
 
 <p>Inline elementer laver ikke linieskift.</p>
 
-<h1>Opbygning af et HTML-dokument</h1>
+<h1>Opbygning</h1>
 
 <p>Illustrationen herunder viser hvordan en webside er bygget op efter HTML5 specifikationen. Siden starter med at sige at det er en HTML5 side (<span class="inl_cmd">&lt;!DOCTYPE></span>). Denne linie sørger for at browseren vil læse dokumentet som et HTML5 dokument. Når dokumenttypen er erklæret, kommer indholdet, som er pakket ind i <span class="inl_cmd">elementer</span>.</p>
 
@@ -153,6 +151,9 @@
 
 <p>Her er de elementer som et HTML5 dokument skal indeholde, for at opfylde kravene til et HTML5 dokument..</p>
 
+<h2>&lt;!DOCTYPE html></h2>
+
+<p><span class="inl_cmd">&lt;!DOCTYPE html></span> er den tag, der fortæller at det er HTML5 dokument. Det gør browseren og søge maskiner opmærksom på hvordan siden er struktureret og dermed også hvordan der kan søges i den. Den angiver også versionen for hjemmesideprogrammøren. </p>
 
 <h2>&lt;html></h2>
 
@@ -172,7 +173,53 @@
 
 <h1>En simpel skabelon</h1>
 
-<p>For at komme hurtigt igang har jeg har indlagt en grundskabelon med følgende indhold:</p>
+<p>For at komme hurtigt igang har jeg lavet en zip-fil som kan pakkes ud på skrivebordet.</p>
+
+<p><b>Download skabelon: </b><a href="files/html_skabelon.zip" target="_blank">html_skabelon.zip</a></p>
+
+<p>Zip-filen indeholder mappem <span class="inl_cmd">html</span>, der har følgende struktur:</p>
+
+<figure id="">
+
+	<img class="p90" src="images/html_struktur_vandret.svg" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>I selve roden (<span class="inl_cmd">html</span>) ligger filen <span class="inl_cmd">index.html</span>. Dette er navnestandarden for hovedsiden. Vær opmærksom på at det skal være med små bogstaver.</p>
+
+<p>I rodmappen ligger også mapperne:</p>
+
+<ul class="none fat_li">
+
+	<li>css</li>
+	
+		<p>Indeholder alle <abbr title="Cascading Style Sheets ">CSS</abbr> (<b>C</b>ascading <b>S</b>tyle <b>S</b>heets). Det er i disse filer at sidens udseende og design skal sættes op.</p>
+		
+		<p>Her er filen <span class="inl_cmd">style.css</span> allerede oprettet, så man kan indsætte CSS kode deri.</p>
+	
+	<li>files</li>
+	
+		<p>Indeholder alle filer der kan downloades fra hjemmesiden, f.eks. <span class="inl_cmd">PDF-</span> eller <span class="inl_cmd">zip-</span>filer.</p>
+		
+	<li>images</li>
+	
+		<p>Indeholder alle de billed og grafikfiler der anvendes på hjemmesiden</p>
+		
+	<li>js</li>
+	
+		<p><abbr title="Java Script">js</abbr> (<b>J</b>ava <b>S</b>cript) mappen indeholder de lokale Java Script filer der anvendes på siden.</p>
+
+</ul>
+
+
+
+<h2>index.html</h2>
+
+<p>Skabelonens <span class="inl_cmd">index.html</span> er vist herunder. De vigtigste ting (sprog, stylesheet og titel) er konfigureret i <span class="inl_cmd">&lt;head></span> og selve hjemmesiden har en overskrift og en brødtekst.</p>
+
+
 
 <pre>
 	<code class="html">&lt;!DOCTYPE html>
@@ -181,11 +228,17 @@
 
 &lt;head>
 
-	&lt;meta charset="UTF-8" lang="da"/>
+	&lt;!-- Sprog konfiguration -->
+	&lt;meta charset="UTF-8" lang="da"/> 
+	
+	&lt;!-- Link til CSS-fil -->
+	&lt;link rel="stylesheet" href="css/style.css" /> 
 
-	&lt;title>En skabelon&lt;/title>
+	&lt;!-- Titel i browser tab'en -->
+	&lt;title>HTML5 skabelon&lt;/title> 
 
-	&lt;script>
+	&lt;!-- Til scripts -->
+	&lt;script> 
 
 	&lt;/script>
 
