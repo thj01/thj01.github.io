@@ -135,7 +135,15 @@ hr=<hr/>
 
 spec=\s\sabcd
 
-
+#bootstrap addons by Thomas Jensen
+ 
+bscon=<div class="container">\n\n\t%cursor%\n\n</div>
+bsrow=<div class="row">\n\n\t%cursor%\n\n</div>
+bscr=<!-- Container-->\n\n<div class="container">\n\n\t<div class="row">\n\n\t\t%cursor%\n\n\t</div>\n\n</div>
+bs1=<div class="col-sm-12">\n\n\t%cursor%\n\n</div>
+bs2=<div class="col-sm-6">\n\n\t%cursor%\n\n</div>\n\n<div class="col-sm-6">\n\n\t%cursor%\n\n</div>
+bs3=<div class="col-sm-4">\n\n\t%cursor%\n\n</div>\n\n<div class="col-sm-4">\n\n\t%cursor%\n\n</div>\n\n<div class="col-sm-4">\n\n\t%cursor%\n\n</div>
+bs4=<div class="col-sm-3">\n\n\t%cursor%\n\n</div>\n\n<div class="col-sm-3">\n\n\t%cursor%\n\n</div>\n\n<div class="col-sm-3">\n\n\t%cursor%\n\n</div>\n\n<div class="col-sm-3">\n\n\t%cursor%\n\n</div>
 
 
 [CSS]
