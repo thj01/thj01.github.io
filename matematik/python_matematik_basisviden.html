@@ -46,15 +46,33 @@
 
 <div class="title">Basisviden</div>
 
+<h1>Installation</h1>
+
+<p>For at installere Python 3, skal vi først hente den fra nettet. Download nyeste version af Python her: <a href="https://www.python.org/downloads/" target="_blank">https://www.python.org/downloads/</a>. Hjemmesiden opdager selv om du sidder på en Windows eller en MAC-computer. Du skal vælge versionen der starter med 3 (3.X.X).</p>
+
+
+
+<figure id="">
+
+	<img class="p70" src="images/python3_HP_download.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p><span class="red"><b>VIGTIGT: </b></span>Under installationen skal du sætte flueben i <span class="inl_cmd">Add Python 3.5 to PATH</span>.</p>
+
+<figure id="">
+
+	<img class="80" src="images/programmering_Windowsinstall_python01.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
 <h1>Basisviden</h1>
 
-<p>I dette materiale vil vi anvende <span class="inl_cmd">Python shell</span>, som er en kommandolinie som fungerer ved hjælp af Python. Den tilgås ved at skrive nedestående kommandoer.</p>
-
-<span class="afsnit">Python shell på Ubuntu</span>
-
-<code class="cmd">python3</code>
-
-<p>Grunden til at kommendoen er lidt anderledes på Ubuntu er, at Python 2 er installeret som standard, og at det er Python3 der skal startes.</p>
+<p>I dette materiale vil vi anvende <span class="inl_cmd">IDLE</span>, som er en indbygget kommandoliniefortolker. Den tilgås ved at skrive nedestående kommandoer.</p>
 
 <span class="afsnit">Python shell  på Windows og Mac</span>
 
@@ -63,41 +81,39 @@
 <p>Herefter starte <span class="inl_cmd">Python shell</span> op, og der kan indtastes kommandoer efter <span class="inl_cmd">>>></span>:</p>
 
 <pre class="ubuntu_terminal">
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ python3
 Python 3.5.2 (default, Sep 10 2016, 08:21:44) 
 [GCC 5.4.0 20160609] on linux
 Type "help", "copyright", "credits" or "license" for more information.
 >>>
 </pre>
 
-<h2>Variabler</h2>
-
-<p>En variable er en betegnelse man sætter lig med en værdi eller en tekstreng der kan blive ændret. Herunder sættes <span class="inl_cmd">a</span> først til <span class="inl_cmd">4</span> og ændres herefter til <span class="inl_cmd">Python er let at lære</span></p>
-
-<pre class="ubuntu_terminal">
->>> a=4
->>> a
-4
->>> a="Python er let at lære"
->>> a
-'Python er let at lære'
-</pre>
-
-<p>Man kan kalde det sidst output fra en funktion ved at bruge <span class="inl_cmd">_</span> (underscore).</p>
-
-<pre class="ubuntu_terminal">
->>> a=3
->>> b=4
->>> a*b
-12
->>> _*2
-24
-</pre>
-
-
-<h2>Tekstrenge og værdier</h2>
+<h1>Tekstrenge og værdier</h1>
 
 <p>I Python anvender to typer input: tal og teksstrenge. Talværdier skrives direkte ind, men tekstrenge skal have anførselstegn som start og slut (se ovenfor)</p>
+
+<p>Som udgangspunkt fortolker Python alt som tal. Her indtaster vi tallet 4: </p>
+
+<pre class="ubuntu_terminal">>>> 4
+4</pre>
+
+<p>Python svarer tilbage med 4</p>
+
+<p>Lad os se hvad der sker når vi indtaster tekst (en tekststreng):</p>
+
+<pre class="ubuntu_terminal">>>> abc
+<span class="red">Traceback (most recent call last):
+  File "&lt;pyshell#5>", line 1, in &lt;module>
+    abc
+NameError: name 'abc' is not defined</span></pre>
+
+<p>Her svarer Python tilbage med en fejlmeddelelse, nemlig : <span class="red">NameError: name 'abc' is not defined</span>. Python siger at <span class="inl_cmd">abc</span> ikke er defineret - hvilket på Pythons'k betyder at <span class="inl_cmd">abc</span> ikke kan genkendes som et tal - hvilket det jo heller ikke er.</p>
+
+<p>For at gøre Python opmærksom på, at <span class="inl_cmd">abc</span> ikke er et tal, men en tekststreng, så sætter vi det i anførselstegn, så Python ved, at det er en teksstreng.:</p>
+
+<pre class="ubuntu_terminal">>>> "abc"
+'abc'</pre>
+
+<h2>Taltyper</h2>
 
 <p>I dette materiale kommer vi til at arbejde med 3 taltyper:</p>
 
@@ -149,7 +165,44 @@ Type "help", "copyright", "credits" or "license" for more information.
 
 <p>Senere vil det blive vist hvordan man anvender de forskellige talmængder til beregninger.</p>
 
-<h2>print()</h2>
+<h1>Variabler</h1>
+
+<p>En variable er en betegnelse man sætter lig med en værdi eller en tekstreng der kan blive ændret. Herunder sættes <span class="inl_cmd">a</span> først til <span class="inl_cmd">4</span> og ændres herefter til <span class="inl_cmd">Python er let at lære</span></p>
+
+<pre class="ubuntu_terminal">
+>>> a=4
+>>> a
+4
+>>> a="Python er let at lære"
+>>> a
+'Python er let at lære'
+</pre>
+
+<p>Man kan kalde det sidst output fra en funktion ved at bruge <span class="inl_cmd">_</span> (underscore).</p>
+
+<pre class="ubuntu_terminal">
+>>> a=3
+>>> b=4
+>>> a*b
+12
+>>> _*2
+24
+</pre>
+
+<p>Man kan også gange med en tekstreng, hvis man gerne vil have at den skal gentages et antal gange, men man kan ikke tage et tal og lægge til, trække fra eller dividere med det.</p>
+
+<pre class="ubuntu_terminal">>>> a=4
+>>> b="abc"
+>>> a*b
+'abcabcabcabc'
+>>> a/b
+<span class="red">Traceback (most recent call last):
+  File "&lt;pyshell#10>", line 1, in &lt;module>
+    a/b
+TypeError: unsupported operand type(s) for /: 'int' and 'str'</span></pre>
+
+
+<h1>print()</h1>
 
 <p>Hvis man vil lave matematikprogrammer får man brug for at kunne udskrive resulater. Det gøres med funktion <span class="inl_cmd">print()</span>:</p>
 
@@ -165,7 +218,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 Dette er en sætning
 </pre>
 
-<h2>Pladsholdere</h2>
+<h1>Pladsholdere</h1>
 
 <p>Man kan indsætte variabler i en teksstreng ved hjælp af pladsholdere. Se herunder:</p>
 
