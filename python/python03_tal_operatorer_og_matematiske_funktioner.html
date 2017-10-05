@@ -383,65 +383,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 	</code>
 </pre>
 
-<h2>En til eller fra</h2>
 
-<p>Ofte har man brug for at lade et tal vokse med en fast størrelse fra gang til gang. Den mest umiddelbare løsning er denne:</p>
-
-<pre>
-	<code class="python">
->>> a=0
->>> a
-0
->>> a+1
-1
-	</code>
-</pre>
-
-<p>Da man gør det så ofte har man en speciel "shorthand" til at løse dette problem med:</p>
-
-<pre>
-	<code class="python">
->>> a=0
->>> a +=1
->>> a
-1
->>> a +=1
->>> a
-2
-	</code>
-</pre>
-
-<p>På samme måde som ovenfor kan man også lægge til, gange og dividere</p>
-
-<pre>
-	<code class="python">
->>> a=1
->>> a+=5
->>> a
-6
->>> a -=7
->>> a
--1
->>> a *=7
->>> a
--7
->>> a /=7
->>> a
--1.0
-	</code>
-</pre>
-
-<p>Man kan gøre det samme hvis man har lavet variabler. I eksemplet herunder lægger vi variablen <span class="inl_cmd">alder</span> til a.</p>
-
-<pre>
-	<code class="python">
->>> a=1
->>> alder=15
->>> a+=alder
->>> a
-16
-	</code>
-</pre>
 
 <h2>Integer og float</h2>
 
@@ -737,6 +679,67 @@ if valg ==  "j" and valg == "J" : #Gælder for både lille <span class="bold">og
 
 <p>Hvis man spørger Python om længden på navnet, så vil vi få 6, men programmet skal gennemløbe værdierne 0-5. Umiddelbart ville vi tænke <span class="inl_cmd">1 &le; x &le; 6</span>, men det vil reelt være <span class="inl_cmd">0 &le; x &le; 5</span>. Men som vi vil lære i afsnittet om løkker, så er det tænkt ind i syntaksen.</p>
 
+<h1>En til eller fra</h1>
+
+
+
+<p>Ofte har man brug for at lade et tal vokse med en fast størrelse fra gang til gang. Den mest umiddelbare løsning er denne:</p>
+
+<pre>
+	<code class="python">
+>>> a=0
+>>> a
+0
+>>> a+1
+1
+	</code>
+</pre>
+
+<p>Da man gør det så ofte har man en speciel "shorthand" til at løse dette problem med:</p>
+
+<pre>
+	<code class="python">
+>>> a=0
+>>> a +=1
+>>> a
+1
+>>> a +=1
+>>> a
+2
+	</code>
+</pre>
+
+<p>På samme måde som ovenfor kan man også lægge til, gange og dividere</p>
+
+<pre>
+	<code class="python">
+>>> a=1
+>>> a+=5
+>>> a
+6
+>>> a -=7
+>>> a
+-1
+>>> a *=7
+>>> a
+-7
+>>> a /=7
+>>> a
+-1.0
+	</code>
+</pre>
+
+<p>Man kan gøre det samme hvis man har lavet variabler. I eksemplet herunder lægger vi variablen <span class="inl_cmd">alder</span> til a.</p>
+
+<pre>
+	<code class="python">
+>>> a=1
+>>> alder=15
+>>> a+=alder
+>>> a
+16
+	</code>
+</pre>
 <h1>Matematiske funktioner</h1>
 
 <p>For at anvende Phytons matematiske funktioner skal man importere programbiblioteket <span class="inl_cmd">math</span>. Det kan gøres på to måder - enten ved at inkludere alle matematikfunktionerne eller ved kun at importere enkelte derfra. I praksis får det først betydning når man kompilerer programmet (laver det til en kørbar fil). Hvis man kun importere enkelte dele fra et modul er det kun dem der bliver kompileret ind i ens kode.</p>
@@ -881,6 +884,11 @@ if valg ==  "j" and valg == "J" : #Gælder for både lille <span class="bold">og
 		</tr>
 	</tbody>
 </table>
+
+<h2>Læs om</h2>
+
+<p><a href="https://docs.python.org/2/library/math.html" target="_blank">https://docs.python.org/2/library/math.html</a></p>
+
 
 <h1>Financielle funktioner</h1>
 
