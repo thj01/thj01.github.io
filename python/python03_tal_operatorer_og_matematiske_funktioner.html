@@ -47,23 +47,20 @@
 	
 <h1>Tal og operatorer</h1>
 
-<p>Indtil videre har der været en naturlig progression i materialet, men herefter begynder tingene at blive mere komplekse. Derfor kommer der her et afsnit omkring anvendelse af logiske operatiorer, som anvendes til at sammenligne og adskille værdier.</p>
+<p>I dette afsnit vil du lære om hvordan Python arbejder med tal og værdier.</p>
 
 <h2>Integers og float</h2>
 
-<p>Angående tal skal man ikke definere om man arbejder med heltal (også kaldet intergers) eller kommatal (floating point). De defineres sammen med variablen. Det er et af områder hvor Python virkeligt adskiller sig fra andre programmeringssprog, og det betyder at den som laver programmet ikke skal forholde sig til hvordan et tal skal anvendes. Python gør det automatisk for dig.</p>
+<p>Når man arbejder med tal i Python skal man ikke definere om man arbejder med hel- eller decimaltal (intergers eller floating point). Det holder Python selv styr på ved at undersøge det tal ud arbejder med.</p>
 
-<p>
-Læg mærke til at man bruger punktum (<span class="inl_cmd">.</span>) og ikke komma <span class="inl_cmd">,</span> til at angive overgangen mellem hel- og decimaltal.</p>
+
+<p><b>VIGTIGT: </b> Læg mærke til at man bruger punktum (<span class="inl_cmd">.</span>) og ikke komma <span class="inl_cmd">,</span> til at angive overgangen mellem hel- og decimaltal.</p>
 
 <pre>
 	<code class="python">
 # Sætter henholdsvis hel og kommatal
-
 heltal = 3
-
 kommatal = 3.14
-
 print ("5*3 er {0} og 2 * pi (3,14) er {1}.".format(heltal*5, kommatal*2))
 	</code>
 </pre>
@@ -80,12 +77,16 @@ Press return to continue
 
 <h2>Computeren kan <s>ikke</s> tælle</h2>
 
-<p>En af de ting man støder på når man arbejder med programmering er, at computere tæller anderledes end vi gør. Når vi tæller starter vi fra en, og titalssystemet er anvendeligt for os fordi det passer med antallet af fingre på på hånden. Når vi har brugt alle fingrene så tæller vi antallet af fulde hænder. 22 kan altså forståes som 2 fulde hænder og 2 fingre. I 10-talssystemet skifter vi altså position (veksler til den næste enhed) når vi kommer til den 10. værdi.</p>
+<p>En af de ting man støder på når man arbejder med programmering er, at computere tæller anderledes end vi gør. Når vi tæller starter vi fra en, og titalssystemet er anvendeligt for os fordi det passer med antallet af fingre på på hånden. Når vi har brugt alle fingrene så tæller vi antallet af fulde hænder. 22 kan altså forståes som 2 fulde hænder og 2 fingre. I 10-talssystemet skifter vi altså position (veksler til den næste enhed) når vi kommer til den 10. værdi. </p>
 
-<p>Det som vi bare ikke lægger mærke til i det ovenstående er, at vi allerede er bevidste om at vi har to hænder. De er i vores hukommelse. Når vi sætter en computer til at huske et tal tilføjer vi en ny hukommelsesblok der består af et antal transistorer som enten kan være slukket eller tændte. I starten er alle transistorerne i hukommelsesblokken sat til 0. Det svarer lidt til når vi skal flytte og anvender flyttekasser. Det første vi gør er at samle kassen hvilket giver os en tom kasse. Herefter tæller vi genstandende vi kommer i en efter en. Det er den talmængde vi kalder &#8469; = {1, 2, 3, 4 ...} og den giver mening for os. Pointen er at vi skal huske at computere anvender &#8469;<sub>0</sub> = {0, 1, 2, 3 ...}.</p>
+<p>Eller udtrykt ved hjælp af matematik: vi tæller ved hjælp af &#8469; = {1, 2, 3 ...}.</p>
+
+<p>Computere arbejder med binære tal - dvs. den tæller ved hjælp af 0 og 1, og den første værdi er 0. Det er fordi den arbejder digitalt ved hjælp af nogle transistorer der enten kan være tændt eller slukkede. Konkret bliver der afsat et vist antal transistorer til at huske tallet, og der vil den første værdi være den hvor alle transistorer er slukkede - dvs. den har værdien 0</p>
+
+<p>Eller udtrykt ved hjælp af matematik: vi tæller ved hjælp af &#8469;<sub>0</sub> = {0, 1, 2, 3 ...}.</p>
+
 
 <p>For at vise dette kigger vi på en byte (der består af 8 bit) der tæller:</p>
-
 
 <table class="">
 	<thead>
