@@ -250,13 +250,13 @@ Press return to continue
 </pre>
 
 
-<p>Man kan også anvende escape sequences til at Hvis man har behov for at rykke teksten i teskstrengen.</p>
+<p>Man kan også anvende escape sequences, hvis man vil rykke teksten i teskstrengen.</p>
 
 <table class="">
 	<tbody>
 		<tr>
 			<td>\n</td>
-			<td>Linefeed</td>
+			<td>Linefeed (ny linie)</td>
 		</tr>
 		<tr>
 			<td>\t</td>
@@ -284,6 +284,20 @@ Dette er en sætning 	 med horisontal TAB
 (program exited with code: 0)
 Press return to continue
 </pre>
+
+<span class="afsnit">Carriage return</span>
+
+<p>Hvis man vil skrive oven i det der lige er printet skal man anvende <span class="inl_cmd">/r</span>. Det kan f.eks. være hvis man vil lave et ur der tæller ned, og man ikke ønsker det gamle tal skal blive stående.</p>
+
+<table class="">
+	<tbody>
+		<tr>
+			<td>/r</td>
+			<td>Carriage return</td>
+		</tr>
+	</tbody>
+</table>
+
 
 <h1>Variabler</h1>
 
@@ -357,7 +371,7 @@ TypeError: Can't convert 'int' object to str implicitly
 Press return to continue
 </pre>
 
-<p>Python kan ikke udføre sammenføjningen, fordi den læser <span class="inl_cmd">hej</span> som en tekststreng og <span class="inl_cmd">2</span> som et tal (int). Python kan ikke slå dem sammen til et resulatet. Vær derfor opmærksom på om du arbejder med talværdier eller tekst.</p>
+<p>Python kan ikke udføre sammenføjningen, fordi den læser <span class="inl_cmd">hej</span> som en tekststreng og <span class="inl_cmd">2</span> som et tal (int). Vær derfor opmærksom på om du arbejder med talværdier eller tekst.</p>
 
 
 <h2>Variabler i tekststrenge</h2>
@@ -383,6 +397,8 @@ Hej. Mit navn er Thomas
 (program exited with code: 0)
 Press return to continue
 </pre>
+
+<p>Læg mærke til at Python tæller fra værdien <span class="inl_cmd">0</span> og ikke <span class="inl_cmd">1</span>.</p>
 
 
 <p>På den måde kan man indsætte variabler løbende mens man skriver sin tekst. Det eneste man skal være opmærksom på er rækkefølgen de optræder i, så koden indsætter den rigtige variabel. Herunder er et eksempel med 2 pladsholdere i samme sætningen</p>
@@ -493,7 +509,7 @@ ValueError: invalid literal for int() with base 10: '5.5'
 Press return to continue
 </pre>
 
-<p>Fejlmeddelelsen er, at det tal vi taster ind ikke tilhører <span class="inl_cmd">base 10</span> hvilket er en anden betegnelse for 10-talssystemet. Laver vi nu koden om til at kunne modtage decimaltal sker der følgende (husk <span class="inl_cmd">.</span> i stedet for <span class="inl_cmd">,</span>):</p>
+<p>Fejlmeddelelsen er, at det tal vi taster ind ikke tilhører <span class="inl_cmd">base 10</span> hvilket er en anden betegnelse for 10-talssystemet. Laver vi nu koden om til at kunne modtage decimaltal sker der følgende (husk <span class="inl_cmd">punktum (.)</span> i stedet for <span class="inl_cmd">komma(,)</span>):</p>
 
 <pre>
 	<code class="python">
