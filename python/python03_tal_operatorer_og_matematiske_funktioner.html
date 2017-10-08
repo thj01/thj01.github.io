@@ -49,31 +49,31 @@
 
 <p>I dette afsnit vil du lære om hvordan Python arbejder med tal og værdier.</p>
 
-<h2>Integers og float</h2>
+<blockquote>
+	<p>I dette afsnit vil vi anvende Idle da vi skal øve os i regnefunktionerne.</p>
+</blockquote>
+
+<h2>Hel- og decimaltal</h2>
 
 <p>Når man arbejder med tal i Python skal man ikke definere om man arbejder med hel- eller decimaltal (intergers eller floating point). Det holder Python selv styr på ved at undersøge det tal ud arbejder med.</p>
 
 
-<p><b>VIGTIGT: </b> Læg mærke til at man bruger punktum (<span class="inl_cmd">.</span>) og ikke komma <span class="inl_cmd">,</span> til at angive overgangen mellem hel- og decimaltal.</p>
+<p><b>VIGTIGT: </b> Læg mærke til at man bruger punktum (<span class="inl_cmd">.</span>) og ikke komma (<span class="inl_cmd">,</span>) til at angive overgangen mellem hel- og decimaltal.</p>
+
+
 
 <pre>
 	<code class="python">
-# Sætter henholdsvis hel og kommatal
-heltal = 3
-kommatal = 3.14
-print ("5*3 er {0} og 2 * pi (3,14) er {1}.".format(heltal*5, kommatal*2))
+>>> a=3
+>>> b=3.14
+>>> a*2
+6
+>>> b*2
+6.28
 	</code>
 </pre>
 
-<pre class="ubuntu_terminal">
-5*3 er 15 og 2 * pi (3,14) er 6.28.
-
-
-------------------
-(program exited with code: 0)
-Press return to continue
-
-</pre>
+<p>Umiddelbart virker et ikke som en stor ting, men mange andre programmeringssprog, er skal man starte med at definere hvilken type en variabel er.</p>
 
 <h2>Computeren kan <s>ikke</s> tælle</h2>
 
@@ -345,108 +345,220 @@ Press return to continue
 	</tbody>
 </table>
 
+<h1>Regneregler</h1>
+
+<p>Regningsarterne fungerer ved at anvende tegnene: <span class="inl_cmd">+</span>, <span class="inl_cmd">-</span>, <span class="inl_cmd">*</span> og <span class="inl_cmd">/</span>. Se herunder:</p>
+
+<pre class="ubuntu_terminal">
+>>> 6+3
+9
+>>> 6-3
+3
+>>> 6*3
+18
+>>> 6/3
+2.0
+</pre>
+
+<p>Læg mærke til at der bliver anvendt <span class="inl_cmd">int</span> i alle eksemplerne, og at resultatet bliver leveret på samme måde ved <span class="inl_cmd">+</span>, <span class="inl_cmd">-</span> og <span class="inl_cmd">*</span>. Men ved division bliver resulatet ændret til <span class="inl_cmd">float</span>. Se nedestående eksempel</p>
+
+<pre class="ubuntu_terminal">
+>>> 2/3
+0.6666666666666666
+</pre>
 
 <h2>Regneregler</h2>
 
-<p>Python de almindelige regneregler. Jeg har valgt at vise det i Python-fortolkeren for at gøre det tydligere</p>
+<p>Python anvender korrekte regningsregler, hvilket vil sige at <span class="inl_cmd">+</span> og <span class="inl_cmd">-</span> adskiller ledene, og at de skal sættes paranteser for at omgå dette. Se eksemplerne herunder:</p>
 
-<pre>
-	<code class="python">
-Python 3.5.1+ (default, Mar 30 2016, 22:46:26) 
-[GCC 5.3.1 20160330] on linux
-Type "help", "copyright", "credits" or "license" for more information.
->>> 8+2
-10
->>> 8*2
-16
->>> 8/2
-4.0
->>> 2**4
-16
->>> pow(2,4)
-16
->>> 2**-4
-0.0625
->>> pow(2,-4)
-0.0625
->>> (8*2)-4
-12
->>> 8*(2-4)
--16
-	</code>
+<pre class="ubuntu_terminal">
+>>> 3+2*6
+15
+>>> (3+2)*6
+30
+>>> 3+6/2
+6.0
+>>> (3+6)/2
+4.5
 </pre>
 
-<p>En sidste regnemetode er <span class="inl_cmd">modulus</span>. Den anvendes til at finde restproduktet, som herunder hvor restproduktet af 9/5 = 4.</p>
-<pre>
-	<code class="python">
->>> 9%5
-4
-	</code>
-</pre>
+<h3>Opgaver</h3>
 
-
-
-<h2>Integer og float</h2>
-
-<p>Python ser tal som hel- eller decimaltal. I programmerings sprog kaldes heltallet for en interger (latin: hel, komplet) og decimaltallet float (Eng: Flydende)</p>
-
-<p>I det ovenstående divisionseksempel svarede Python med et decimaltal (float). Det skyldes at Python er designet til at være så simpelt at gå til som muligt, da langt de fleste divisionsstykker resluterer i decimaltal. Derfor skal vi fortælle Python at tallet skal tolkes som et heltal (interger).</p>
-
-<p>Herunder vises et eksempel hvor:</p>
-
-<ol class="">
-	<li>heltallet 7 bliver omdannet til <span class="inl_cmd">float</span></li>
-	<li>decimaltallet b (positivt) bliver omdannet til <span class="inl_cmd">int</span></li>
-	<li>decimaltallet c (negativt) bliver omdannet til <span class="inl_cmd">int</span>.</li>
-</ol>
-
-<pre>
-	<code class="python">
->>> a
-7
->>> float(a)
-7.0
->>> b=3.14
->>> int(b)
-3
->>> c=-3.15
->>> int(c)
--3
-	</code>
-</pre>
-
-<p>Som du kan se herovenfor sker der følgende:</p>
+<p>I de nedestående opgaver skal du lave regnestykker ved hjælp af tallene, regningsarterne <span class="inl_cmd">+</span>, <span class="inl_cmd">-</span>, <span class="inl_cmd">*</span> og <span class="inl_cmd">/</span> og paranteser:</p>
 
 <table class="">
 	<thead>
 		<tr>
-			<th></th>
-			<th></th>
+			<th>Tal</th>
+			<th>Resultater</th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr>
-			<td>Fra int &#8594; float</td>
-			<td>Der tilføjels decimaler</td>
+			<td>6, 3, 4</td>
+			<td>-6, 6, 12, 18, 36</td>
 		</tr>
 		<tr>
-			<td>Fra float &#8594; int</td>
-			<td>Der rundes ned til nærmeste heltal. Det gælder både for positive og negative tal.</td>
+			<td>4, 4, 8</td>
+			<td>-16, -7, 0, 1, 2, 6, 28</td>
 		</tr>
 	</tbody>
 </table>
 
-<p>Hvis du ønsker at finde ud af om et tal er en interger eller float, kan du teste det ved hjælp af <span class="inl_cmd">is_interger()</span> som vist herunder:</p>
+<h2>Potens og rødder</h2>
 
-<pre>
-	<code class="python">
->>> a=3.14
->>> a.is_integer()
-False
-	</code>
+<p>For at finde potens tal og rødder anvendes funktionen <span class="inl_cmd">pow(a,b)</span>, hvor <span class="inl_cmd">a</span> er grundtallet og <span class="inl_cmd">b</span> er potensen. Se nedestående eksempler:</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Matematisk udtryk</th>
+			<th>Python funktion</th>
+			<th>Alternativ</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><span class="math">\( a^b \)</span></td>
+			<td><span class="inl_cmd">pow(a,b)</span></td>
+			<td><span class="inl_cmd">a**b</span></td>
+		</tr>
+		<tr>
+			<td><span class="math">\( \sqrt[b]{a} \)</span></td>
+			<td><span class="inl_cmd">pow(a,1/b)</span></td>
+			<td><span class="inl_cmd">a**(1/b)</span></td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Det anbefales at man anvender funktionen <span class="inl_cmd">pow()</span> fremfor <span class="inl_cmd">**</span>. Det gør koden mere læselig.</p>
+
+<p>Eksempler med 2<sup>4</sup> og kvadratroden af 4:</p>
+
+<pre class="ubuntu_terminal">
+>>> pow(2,4) 
+16
+>>> pow(4,1/2)
+2.0
 </pre>
 
-<span class="afsnit">Afrunding af tal</span>
+<p>Man kan have funktioner inde i funktioner, f.eks:</p>
+
+<div class="latex">$$ \sqrt[5]{7^2} = (7^2)^{\frac{1}{5}} = pow(~pow(7,2)~,~1/5~)$$</div>
+
+
+<pre class="ubuntu_terminal">
+>>> pow(pow(7,2),1/5)
+2.17790642448278
+</pre>
+
+
+<h3>Opgave</h3>
+
+<p> Beregn følgende tal:</p>
+
+<div class="latex">$$ a)~2^8, \\b)~{5^3}^2,\\c)~ \sqrt 27, \\d)~ \sqrt[17] {256}, \\e)~ \sqrt[3]{4}^{17}, \\f)~ 2^{\sqrt17} $$</div>
+
+<details>
+
+	<summary>Facit</summary>
+
+	<div class="latex">$$ a)~2^8 = 256\\
+	b)~{5^3}^2 =1953125 \\
+	c)~\sqrt 27 = 5.1961... \\
+	d)~\sqrt[17] {256}=1.3856... \\
+	e)~\sqrt[3]{4}^{17}=2580.3183... \\
+	f)~2^{\sqrt17} = 17.4252... $$</div>
+</details>
+
+<h2>Konstanter</h2>
+
+<p>I matematik er der konstanter som man ikke kommer uden om herunder konstanten <span class="math">&pi;</span> og <span class="math">e</span></p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Konstant</th>
+			<th>Funktion</th>
+			<th>Værdi</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><span class="math">\( \pi \)</span></td>
+			<td>math.pi</td>
+			<td>3.141592...</td>
+		</tr>
+		<tr>
+			<td><span class="math">\( e \)</span></td>
+			<td>math.e</td>
+			<td>2.718281...</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>De kan kaldes ved at importere dem fra pakken <span class="inl_cmd">math</span></p>
+
+<pre class="ubuntu_terminal">
+>>> import math
+>>> math.pi
+3.141592653589793
+>>> math.e
+2.718281828459045
+</pre>
+
+<h2>Modulus og floor division</h2>
+
+<p>To funktioner som ikke giver mening normalt i matematik er modulus og "floor division".</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Funktion</th>
+			<th>Tegn</th>
+			<th>Beskrivelse</th>
+			<th>Eksempel</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><span class="inl_cmd">modulus</span></td>
+			<td><span class="inl_cmd">%</span></td>
+			<td>Returnere resten efter division</td>
+			<td>9%5 = 4 </td>
+		</tr>
+		<tr>
+			<td><span class="inl_cmd">floor division</span></td>
+			<td><span class="inl_cmd">//</span></td>
+			<td>Returnerer heltallet efter division</td>
+			<td>9//5 = 1</td>
+		</tr>
+	</tbody>
+</table>
+
+<p></p>
+
+<pre class="ubuntu_terminal">
+>>> 9%5
+4
+>>> 9//5
+1
+</pre>
+
+<p>Man kan ved hjælp af <span class="inl_cmd">modulus</span> og <span class="inl_cmd">floor division</span> omskrive en uægte brøk til en blandet brøk efter følgende model:</p>
+
+<div class="latex">$$ \frac{a}{b} = (a//b)~ \frac{a\%b}{b} $$</div>
+
+<span class="afsnit">Anvendelse</span>
+
+<p><span class="inl_cmd">modulus</span> og <span class="inl_cmd">floor division</span> virker i første omgang lidt underlige, men har en masse praktiske anvendelser. F.eks: </p>
+
+<ul class="disc">
+	<li>Hvis noget skal ske hver tredie gang: <span class="inl_cmd">x%3 = 0</span></li>
+	<li>Antal fyldte ølkasser: <span class="inl_cmd">*antal flasker* // 30</span></li>
+</ul>
+
+<h2>Afrunding af tal</h2>
 
 <p>Ovenfor har vi se set hvordan man ændrer et <span class="inl_cmd">float</span> til en <span class="inl_cmd">Interger</span>. Men ofte har man brug for at kunne vise et resultat afrundet korrekt og med et bestemt antal decimaler. Det gøres med <span class="inl_cmd">round()</span>. Man angiver antallet af decimaler på følgende måde:</p>
 
@@ -461,8 +573,211 @@ False
 	</code>
 </pre>
 
+<h2>Absolutte tal</h2>
 
-<h2>Brøker</h2>
+<p>Hvis man vil arbejde med absolutte tal (også kaldet den numeriske værdi) anvender man funktionen <span class="inl_cmd">abs()</span>. Det gør at resultatet bliver repræsenteret med sin positive værdi. Se eksemplerne:</p>
+
+<pre class="ubuntu_terminal">
+>>> abs(-2)
+2
+</pre>
+
+<p>Funktionen giver mening hvis man f.eks. ønsker at finde forskellen mellem to tal uden at skulle forholde sig til rækkefølgen de kommer i. Som i eksemplet herunder hvor første udregning med <span class="inl_cmd">abs()</span> kun fortæller forskellen, men den anden fortæller om det er en stigning eller et fald. Prøv at se programmet herunder</p>
+
+<pre>
+	<code class="python">
+temperatur1 = 18 # temperatur kl. 12.00
+temperatur2 = 20 # temperatur kl. 15.00
+forskel = temperatur1 - temperatur2
+
+print ("Forskel i temperatur: {0}".format(abs(forskel)))
+print ("temperatur-stigning/fald: {0}".format(forskel))
+	</code>
+</pre>
+
+<pre class="ubuntu_terminal">
+Forskel i temperatur: 2
+temperatur-stigning/fald: -2
+
+------------------
+(program exited with code: 0)
+Press return to continue
+</pre>
+
+<h2>Logartimer</h2>
+
+<blockquote>
+	<p>
+		For at anvende logaritmer skal pakken <span class="inl_cmd">math</span> importeres. Det gøres med kommandoen:
+	</p>
+	
+	<p><span class="inl_cmd">import math</span></p>
+</blockquote>
+
+<p>For at anvende logaritmer skal pakken <span class="inl_cmd">math</span> importeres</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Matematisk udtryk</th>
+			<th>Funktion</th>
+			<th>Inverse funktion</th>
+			<th>Beskrivelse</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><span class="math">\( y^x \)</span></td>
+			<td>pow(y,x)</td>
+			<td>math.log(x,y)</td>
+			<td>Logaritmen (grundtal y)</td>
+		</tr>
+		<tr>
+			<td><span class="math">\( 10^x=y \)</span></td>
+			<td>pow(10,x)</td>
+			<td>math.log10(x)</td>
+			<td>Logaritmen (grundtal 10)</td>
+		</tr>
+		<tr>
+			<td><span class="math">\( e^x = y \)</span></td>
+			<td>math.exp(x)</td>
+			<td>math.log(y)</td>
+			<td>Den naturlige logaritmen - <i>ln</i>() (grundtal e)</td>
+		</tr>
+	</tbody>
+</table>
+
+<p></p>
+
+<pre class="ubuntu_terminal">
+>>> import math <span class="red">&larr; math importeres</span>
+>>> math.log10(100)
+2.0
+>>> math.log10(pow(10,2))
+2.0
+>>> math.log(pow(math.e,2))
+2.0
+</pre>
+
+<p>Man kan også impotere en funktion generelt ved at skrive: <span class="inl_cmd">from math import log10</span>. Det har den fordel at man kun impoterer funktioner der er nødvendige, og at man kun skal skrive selve funktionen og ikke den pakke det er impoteret fra.</p>
+
+<pre class="ubuntu_terminal">
+>>> from math import log10
+>>> log10(100)
+2.0
+</pre>
+
+<h1>Taltyper</h1>
+
+<p>I Python anvendes grundlæggende 3 taltyper</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Betegnelse</th>
+			<th>Talmængde</th>
+			<th>Beskrivelse</th>
+			<th>Eksempel</th>
+			<th>Læg mærke til</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><span class="inl_cmd">int</span></td>
+			<td><span class="math">\( \mathbb{Z} \)</span></td>
+			<td>Heltal (kaldes integer på engelsk)</td>
+			<td>1 ; 17 ; 2499</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td><span class="inl_cmd">float</span></td>
+			<td><span class="math">\( \mathbb{R} \)</span></td>
+			<td>Decimaltal</td>
+			<td>0.5 ; 3,141592 ; 0.6666</td>
+			<td>... at der anvendes punktum og ikke komma</td>
+		</tr>
+
+<!--
+		<tr>
+			<td><span class="inl_cmd">Decimal</span></td>
+			<td><img src="images/mat_not_mathbbR.svg" alt="" title="" /></td>
+			<td>Decimaltal</td>
+			<td>0.5 ; 3,141592 ; 0.6666</td>
+			<td>... at der anvendes punktum og ikke komma</td>
+		</tr>
+-->
+
+		<tr>
+			<td><span class="inl_cmd">Fraction</span></td>
+			<td><span class="math">\( \mathbb{Q} \)</span></td>
+			<td>Brøker</td>
+			<td>1/2 ; 22/7 ; 2/3</td>
+			<td>Resultatet kommer ud i formen: Fraction(tæller,nævner)</td>
+		</tr>
+	</tbody>
+</table>
+
+<h2>Integer (Heltal)</h2>
+
+<p><span class="inl_cmd">int</span> er heltal og anvendes ofte i programmering til at tælle og holde styr på antallet af gange noget skal ske. Det er samtidig den taltype der fylder mindst i hukommelsen og computeren kan beregne hurtigt.</p>
+
+
+<h2>Float (Decimaltal)</h2>
+
+<!--<p><span class="bold">Anvendelse: </span>Videnskabelige beregninger</p>-->
+
+<p><span class="inl_cmd">float</span> er simple decimaltal og kan anvendes til langt de fleste beregninger. Men taller er ikke præcist se nedestående eksempel: </p>
+
+<pre class="ubuntu_terminal">
+>>> 3*0.1-0.3
+5.551115123125783e-17
+</pre>
+
+<p>Resultatet burde give <span class="inl_cmd">0</span> men giver en rest. Det er ikke fordi computeren ikke kan regne, men skyldes at <span class="inl_cmd">float</span> er binært defineret, hvilket giver disse afvigelser - i dette tilfælde efter den 17 decimal. Men anvender man få decimaler er float rigeligt. <!--I forhold til <span class="inl_cmd">Decimal</span> fylder det mindre i hukommelsen og er lettere at beregne for computeren.--></p>
+
+<!--
+
+<h2>Decimal</h2>
+
+<p><span class="afsnit">Anvendelse: </span> Financielle beregninger</p>
+
+<p><span class="inl_cmd">Decimal</span> er eksakte tal og kan sættes til en nøjagtighed på 28 cifre og decimaler i alt. Det er en funktion der skal kaldes. Herunder er regnestykket <span class="inl_cmd">1.30+1.20</span> udregnet både med <span class="inl_cmd">float</span> og <span class="inl_cmd">Decimal</span>:</p>
+
+<pre class="ubuntu_terminal">
+>>> from decimal import *
+>>> 1.30+1.20
+2.5
+>>> Decimal(1.30)+Decimal(1.20)
+Decimal('2.500000000000000000000000000')
+</pre>
+
+<p>Man kan også sætte antallet af decimaler der skal svares med på følgende måde</p>
+
+<pre class="ubuntu_terminal">
+>>> getcontext().prec=5
+>>> Decimal(1.30)+Decimal(1.20)
+Decimal('2.5000')
+</pre>
+
+<p>Læs mere: <a href="https://docs.python.org/3.5/library/decimal.html" target="_blank">https://docs.python.org/3.5/library/decimal.html</a></p>
+
+-->
+
+<h2>Find taltype</h2>
+
+<p>Hvis du ønsker at finde ud af om et tal er en interger eller float, kan du teste det ved hjælp af <span class="inl_cmd">is_interger()</span> som vist herunder:</p>
+
+<pre>
+	<code class="python">
+>>> a=3.14
+>>> a.is_integer()
+False
+	</code>
+</pre>
+
+
+
+<h2>Fraction (Brøker)</h2>
 
 <p>For at arbejde med brøker skal man "tvinge" python til ikke at regne brøken ud. Det kan være nødvendig for ikke at få afrundingsfejl. For at kunne anvende brøker skal vi importere modulet fractions. Herunder er givet et eksempel ved hjælp at et GRUK af Piet Hein, hvor der er vist forskellen mellem at anvende <span class="inl_cmd">fractions()</span> og <span class="inl_cmd">float</span>. Jeg har valgt at lave dette eksempel ved hjælp af koden, da man ellers mister overblikket. Læg mærke til at jeg importere funktionen <span class="inl_cmd">Fraction(3,4)</span>.</p>
 
@@ -517,60 +832,121 @@ Press return to continue
 
 <p>Som det kan ses bliver 2/3 omskrevet til 0,666... hvilket kun er en tilnærmet værdi. Grunden til at det går godt er fordi Python anvender nok decimaler til at afrundingen bliver korrekt.</p>
 
-<h2>Faktorer</h2>
+<h2>Konvertering af taltyper</h2>
 
-<p>Når man opløser et tal i faktorer finder man ud af hvilke tal der går et bestemt tal. F.eks. er 28 = 2 &#8226; 2 &#8226; 7. Python har ikke en indbygget funktion hertil men den laver vi selv. Hvis <span class="inl_cmd">modulus</span> (se ovenfor) er 0, så er tallet en faktor ellers ikke.</p>
-
-<pre>
-	<code class="python">
-tal = int(input("Tal der skal undersøges?: "))
-
-faktor = int(input("Skriv den faktor du vil undersøge tallet med: "))
-
-if tal%faktor == 0:
-    print("{0} er en faktor i {1}".format(faktor,tal))
-else:
-    print("{0} er ikke en faktor i {1}".format(faktor,tal))
-	</code>
-</pre>
+<p>Hvis man vil undersøge hvilken taltype en variabel er anvender man funktionen <span class="inl_cmd">type()</span>. Lad os prøve det ved at anvende variablerne fra eksemplet ovenfor:</p>
 
 <pre class="ubuntu_terminal">
-Tal der skal undersøges?: 20
-Skriv den faktor du vil undersøge tallet med: 7
-7 er ikke en faktor i 20
-
-------------------
-(program exited with code: 0)
-Press return to continue
-
+>>> a=7
+>>> b=3/4
+>>> c=3.14
+>>> type(a)
+&lt;class 'int'&gt;
+>>> type(b)
+&lt;class 'float'&gt;
+>>> type(c)
+&lt;class 'float'&gt;
 </pre>
 
-
-<h2>Absolutte tal</h2>
-
-<p>Funktionen <span class="inl_cmd">abs()</span> returnere altid en værdi som værende positiv. Det giver mening hvis man f.eks. ønsker at finde forskellen mellem to tal uden at skulle forholde sig til rækkefølgen de kommer i. Som i eksemplet herunder hvor første udregning med <span class="inl_cmd">abs()</span> kun fortæller forskellen, men den anden fortæller om det er en stigning eller et fald.</p>
-
-<pre>
-	<code class="python">
-temperatur1 = 18 # temperatur kl. 12.00
-temperatur2 = 20 # temperatur kl. 15.00
-forskel = temperatur1 - temperatur2
-
-print ("Forskel i temperatur: {0}".format(abs(forskel)))
-print ("temperatur-stigning/fald: {0}".format(forskel))
-	</code>
-</pre>
+<p>Herunder angiver vi variablen <span class="inl_cmd">d</span>, som er det samme som c - blot i taltypen <span class="inl_cmd">Fraction</span>. Vi lægger også mærke til at variablen d nu er funktionsværdien af <span class="inl_cmd">Fraction(2,3)</span></p>
 
 <pre class="ubuntu_terminal">
-Forskel i temperatur: 2
-temperatur-stigning/fald: -2
-
-------------------
-(program exited with code: 0)
-Press return to continue
+>>> d=Fraction(2,3)
+>>> type(d)
+&lt;class 'fractions.Fraction'>
+>>> d
+Fraction(2, 3)
 </pre>
 
-<h2>Operatorer</h2>
+<p>Python er designet til hele tiden at vælge den bedst mulige taltype, hvilket betyder at tal der fremkommer ved hjælp af division automatisk bliver konverteret til <span class="inl_cmd">float</span>. Det vi skal kigge på her er hvordan vi konverterer mellem taltyper og finder ud af hvilken taltype det er.</p>
+
+<p>For at omskrive et tall fra en type eller en tekststreng til et tal anvendes funktionerne: <span class="inl_cmd">int()</span>, <span class="inl_cmd">float()</span>, <span class="inl_cmd">Decimal()</span> og <span class="inl_cmd">Fraction()</span>.</p>
+
+<ul class="none">
+	<li><span class="inl_cmd">int()</span> - omskrivning til heltal</li>
+	<li><span class="inl_cmd">float()</span> - omskrivning til float</li>
+<!--<li><span class="inl_cmd">Decimal()</span> - omskrivning til Decimal</li> -->
+	<li><span class="inl_cmd">Fraction()</span> - omskrivning til brøk</li>
+</ul>
+
+<h3>...til int (ℕ - Integers) </h3>
+
+<p>Man skal være opmærksom på at man ved en omskrivning kan miste decimaler. Hvis man omskriver en brøk eller et decimaltal til en <span class="inl_cmd">int</span>, så mister man alle decimalerne. Se eksemplerne herunder:</p>
+
+<pre class="ubuntu_terminal">
+>>> a=3.14
+>>> b=9/10
+>>> c=11/10
+>>> int(a)
+3
+>>> int(b)
+0
+>>> int(c)
+1
+</pre>
+
+<h3>... til float (ℝ - Relle tal)</h3>
+
+<p>Når der omskrives til <span class="inl_cmd">float</span> sættes der minimum en decimal på.</p>
+
+<pre class="ubuntu_terminal">
+>>> a=1
+>>> b=3.14
+>>> c=2/3
+>>> float(a)
+1.0
+>>> float(b)
+3.14
+>>> float(c)
+0.6666666666666666
+</pre>
+
+<!--
+
+<span class="afsnit">Omskrivning til Decimal</span>
+
+<p></p>
+
+<pre class="ubuntu_terminal">
+>>> from decimal import *
+>>> Decimal(a)
+Decimal('1')
+>>> Decimal(b)
+Decimal('3.140000000000000124344978758017532527446746826171875')
+>>> Decimal(c)
+Decimal('0.66666666666666662965923251249478198587894439697265625')
+</pre>
+
+-->
+
+<h3>...til Fraction (ℚ - Rationelle tal)</h3>
+
+<p>For at arbejde med <span class="inl_cmd">Fraction</span> skal funktionen først importeres:</p>
+
+<pre class="ubuntu_terminal">
+>>> from fractions import Fraction
+>>> a=1
+>>> b=3.14
+>>> c=2/3
+>>> Fraction(a)
+Fraction(1, 1)
+>>> Fraction(b)
+Fraction(7070651414971679, 2251799813685248)
+>>> Fraction(c)
+Fraction(6004799503160661, 9007199254740992)
+</pre>
+
+<p>Læg mærke til at omskrivningen fra <span class="inl_cmd">2/3</span> bliver til <span class="inl_cmd">6004799503160661/9007199254740992</span>. Det skyldes at variablen c ikke bliver gemt som en brøk (<span class="inl_cmd">Fraction</span>), men som et <span class="inl_cmd">float</span>. Derved kommer der en unøjagtighed ind i decimalerne som bliver nedarvet.</p>
+
+<p>Det man kan lære af det er, at man skal arbejde med de rigtige taltyper hele tiden, da man ellers risikerer unøjagtige resultater.</p>
+
+<h3>Opgave</h3>
+
+<p>Beregn ved hjælp af python hvad forskellen er mellem <span class="inl_cmd">c</span> og <span class="inl_cmd">Fraction(c)</span> fra eksemplet ovenfor.</p>
+
+
+
+<h1>Operatorer</h1>
 
 <p>Operatorer beskriver forholdet mellem to værdier</p>
 
@@ -741,6 +1117,8 @@ if valg ==  "j" and valg == "J" : #Gælder for både lille <span class="bold">og
 16
 	</code>
 </pre>
+
+<!--
 <h1>Matematiske funktioner</h1>
 
 <p>For at anvende Phytons matematiske funktioner skal man importere programbiblioteket <span class="inl_cmd">math</span>. Det kan gøres på to måder - enten ved at inkludere alle matematikfunktionerne eller ved kun at importere enkelte derfra. I praksis får det først betydning når man kompilerer programmet (laver det til en kørbar fil). Hvis man kun importere enkelte dele fra et modul er det kun dem der bliver kompileret ind i ens kode.</p>
@@ -895,6 +1273,7 @@ if valg ==  "j" and valg == "J" : #Gælder for både lille <span class="bold">og
 
 <p>Hent og installer numpy (<a href="https://sourceforge.net/projects/numpy/files/" target="_blank">https://sourceforge.net/projects/numpy/files/</a>).</p>
 
+-->
 
 <h1>Talsystemer</h1>
 
