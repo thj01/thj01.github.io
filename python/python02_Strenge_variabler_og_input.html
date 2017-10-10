@@ -442,7 +442,7 @@ Jeg er ved at lære Python.
 Press return to continue
 </pre>
 
-<h2>Opgave - teksstrenge og variabler</h2>
+<h2>Opgave - variabler</h2>
 
 <p>Lav nedestående tekststykke ved hjælp af Python hvor de ord der er røde skal indsættes ved hjælp af variabler.</p>
 
@@ -451,7 +451,7 @@ Press return to continue
 <span class="red">telefonnummer</span> og det er en <span class="red">telefonmærke</span>.</code>
 </pre></p>
 
-<h2>Opgave - teksstrenge og indrykninger</h2>
+<h2>Opgave - formatering</h2>
 
 <p>Lav følgende Output - på en <span class="inl_cmd">print</span>-linie ved hjælp af <span class="inl_cmd">\n</span> (ny linie) og <span class="inl_cmd">\t</span> (tabulator). Ordene "indholdsfortegnelse, "kapitel" og "afsnit" skal indsættes ved hjælp af variabler.</p>
 
@@ -475,6 +475,8 @@ Press return to continue
 
 <h2>Indtastning af tekst</h2>
 
+<p>I det nedestående eksempel er en simpel kode, der gør at brugeren kan indtaste sit svar</p>
+
 <pre>
 	<code class="python">
 # Variablen navn sættes ved hjælp af brugerens input
@@ -483,14 +485,37 @@ print ("Du indtastede {0}".format(navn))
 	</code>
 </pre>
 
+<p>Resultatet er: </p>
+
 <pre class="ubuntu_terminal">
-Hvad er dit navn: Thomas
-Du indtastede Thomas
+Hvad er dit navn: 
 
 ------------------
 (program exited with code: 0)
 Press return to continue
 </pre>
+
+<p>Den første linie i koden skriver tekstrengen i <span class="inl_cmd">input</span> funktionen, og venter på at brugeren indtaster sit svar.</p>
+
+<pre class="ubuntu_terminal">
+Hvad er dit navn: Thomas <span class="red">&larr; Input</span>
+
+------------------
+(program exited with code: 0)
+Press return to continue
+</pre>
+
+<p>Herefter svarer Python tilbage med <span class="inl_cmd">print</span>-sætningen</p>
+
+<pre class="ubuntu_terminal">
+Hvad er dit navn: Thomas
+Du indtastede Thomas <span class="red">&larr; Output</span>
+
+------------------
+(program exited with code: 0)
+Press return to continue
+</pre>
+
 
 <h2>Indtastning af tal</h2>
 
