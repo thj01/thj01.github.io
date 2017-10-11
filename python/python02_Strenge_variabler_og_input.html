@@ -68,7 +68,7 @@ Hej
 Press return to continue
 </pre>
 
-<p>Programmet er opbygget af funktionen <span class="inl_cmd">print()</span>, som laver et output af det som står i parantesen. I dette tilfælde af tektstrengen <span class="inl_cmd">Hej</span>. Som du kan se i programmet omgiver vi teksstrengen <span class="inl_cmd">Hej</span> med udråbtegn <span class="inl_cmd">"   "</span>. Det er nødvendigt fordi Python skal vide om vi indsætter en værdi eller en tekststreng. Vi fortæller altså python om det er en værdi ved enten at sætte udråbstegn omkring eller at udelade dem.</p>
+<p>Programmet er opbygget af funktionen <span class="inl_cmd">print()</span>, som laver et output af det som står i parantesen. I dette tilfælde af tektstrengen <span class="inl_cmd">Hej</span>. Som du kan se i programmet omgiver vi teksstrengen <span class="inl_cmd">Hej</span> med udråbtegn <span class="inl_cmd">"   "</span>. Det er nødvendigt, fordi Python skal vide om vi indsætter en værdi eller en tekststreng. Vi fortæller altså Python om det er en værdi ved enten at sætte udråbstegn omkring eller at udelade dem.</p>
 
 <pre>
 	<code class="python">
@@ -114,7 +114,7 @@ Press return to continue
 
 <h2>Fejlmeddelelser</h2>
 
-<p>Lad os se på koden herover, hvor vi udskriver en tekststreng og et tal men hvor vi udelader de afsluttende parantes i første linie.</p>
+<p>Lad os se på koden herover, hvor vi udskriver en tekststreng og et tal men hvor vi udelader de afsluttende parantes i første linje.</p>
 
 <pre>
 	<code class="python">
@@ -134,7 +134,7 @@ SyntaxError: invalid syntax
 Press return to continue
 </pre>
 
-<p>Python gør os opmærksom på at der er en <span class="inl_cmd">syntaksfejl</span> og den peger på linie 2. Grunden til at Python peger på linie 2 er, at den ikke får afsluttet parantesen i linie 1, og derfor forventer at der sker noget mere i linie 2 der er forbundet med linie 1. Men her starter en ny funktion. Dette er en syntaksfejl ... en fejl hvor koden ikke har den rigtige "grammatik".</p>
+<p>Python gør os opmærksom på at der er en <span class="inl_cmd">syntaksfejl</span> og den peger på linje 2. Grunden til at Python peger på linje 2 er, at den ikke får afsluttet parantesen i linje 1, og derfor forventer at der sker noget mere i linje 2 der er forbundet med linje 1. Men her starter en ny funktion. Dette er en syntaksfejl ... en fejl hvor koden ikke har den rigtige "grammatik".</p>
 
 <p>Andre fejl kan f.eks. være, at man ikke angiver den rigtige type. Se nedestående eksempel, hvor <span class="inl_cmd">Hej</span> ikke er omsluttet af anførselstegn (<span class="inl_cmd">"</span>):</p>
 
@@ -161,7 +161,7 @@ Press return to continue
 
 <h2>Lange tekststykker</h2>
 
-<p>Hvis man skal skrive længere tekststykker der indeholder linie skift og tabulatorindrykninger kan man anvende en anden metode - triple anførselstegn. Ved at omgive sin teksstreng med <span class="inl_cmd">""" *tekststreng* """</span> så bevares linieskift, indrykninger, mellemrum og tabulatorer.</p>
+<p>Hvis man skal skrive længere tekststykker der indeholder linje skift og tabulatorindrykninger kan man anvende en anden metode - triple anførselstegn. Ved at omgive sin tekststreng med <span class="inl_cmd">""" *tekststreng* """</span> så bevares linjeskift, indrykninger, mellemrum og tabulatorer.</p>
 
 <pre>
 	<code class="python">
@@ -191,9 +191,9 @@ Press return to continue
 
 </pre>
 
-<h2>Uden linieskift</h2>
+<h2>Uden linjeskift</h2>
 
-<p>Hvis man ikke gør noget, så vil <span class="inl_cmd">print()</span> lave et linieskift hver gang. Det kan undgås ved at indsætte <span class="inl_cmd">end=" "</span>.</p>
+<p>Hvis man ikke gør noget, så vil <span class="inl_cmd">print()</span> lave et linjeskift hver gang. Det kan undgås ved at indsætte <span class="inl_cmd">end=" "</span>.</p>
 
 <pre>
 	<code class="python">
@@ -213,7 +213,7 @@ Press return to continue
 
 <h2>Escape sequences</h2>
 
-<p>Escape sequences er betegnelsen for den metode man anvender for at indsætte tegn som normalt anvendes af Python f.eks: <span class="inl_cmd">', ", \</span> samt linie- og tabulatorskift. Herunder er en liste med de vigtiste tegn. Hvis man har behov for at sætte tegn ind i en streng, som python normalt vil tolke som en del af programmeringssproget</p>
+<p>Escape sequences er betegnelsen for den metode man anvender for at indsætte tegn som normalt anvendes af Python f.eks: <span class="inl_cmd">', ", \</span> samt linje- og tabulatorskift. Herunder er en liste med de vigtiste tegn. Hvis man har behov for at sætte tegn ind i en streng, som python normalt vil tolke som en del af programmeringssproget</p>
 
 
 <table class="">
@@ -256,7 +256,7 @@ Press return to continue
 	<tbody>
 		<tr>
 			<td>\n</td>
-			<td>Linefeed (ny linie)</td>
+			<td>Linefeed (ny linje)</td>
 		</tr>
 		<tr>
 			<td>\t</td>
@@ -338,7 +338,13 @@ Press return to continue
 
 <p>Det som sker her er, at vi sætter udtrykket (variablen) <span class="inl_cmd">var1</span> til at have værdien 1 og <span class="inl_cmd">var2</span> til værdien 2. Det kan vi se når vi beder Python om at udskrive summen af <span class="inl_cmd">var1</span>  og <span class="inl_cmd">var2</span> - resultatet er 3. Man kan sige at en variable er en stedfortræder for en værdi eller en tekststreng.</p>
 
+<blockquote>
 <p><b>VIGTIGT: </b> Variabelnavne skal starter med bogstaver. Dvs. man ikke kan anvende variabelnavne som: 1, 1pind osv.</p>
+<p>Brug beskrivende navne til dine variabler, så bliver koden lettere at læse. F.eks: <span class="inl_cmd">fnavn</span> til fornavn og <span class="inl_cmd">antal_gæt</span> til antallet af gæt</p>
+
+</blockquote>
+
+
 
 <p>Lad os lave et eksempel med nogle tekststrenge (læg mærke til mellemrummet før <span class="inl_cmd">verden</span> i <span class="inl_cmd">var2</span>):</p>
 
@@ -398,7 +404,7 @@ Press return to continue
 
 <pre>
 	<code class="python">
-# Her behøver jeg ikke at indsætte et linieskift efter hej.
+# Her behøver jeg ikke at indsætte et linjeskift efter hej.
 # Jeg skriver laver det bare mellem pladsholderne.
 
 tekst1 = "Thomas"
@@ -453,7 +459,7 @@ Press return to continue
 
 <h2>Opgave - formatering</h2>
 
-<p>Lav følgende Output - på en <span class="inl_cmd">print</span>-linie ved hjælp af <span class="inl_cmd">\n</span> (ny linie) og <span class="inl_cmd">\t</span> (tabulator). Ordene "indholdsfortegnelse, "kapitel" og "afsnit" skal indsættes ved hjælp af variabler.</p>
+<p>Lav følgende Output - på en <span class="inl_cmd">print</span>-linje ved hjælp af <span class="inl_cmd">\n</span> (ny linje) og <span class="inl_cmd">\t</span> (tabulator). Ordene "indholdsfortegnelse, "kapitel" og "afsnit" skal indsættes ved hjælp af variabler.</p>
 
 <pre class="ubuntu_terminal">
 Indholdsfortegnelse
@@ -495,7 +501,7 @@ Hvad er dit navn:
 Press return to continue
 </pre>
 
-<p>Den første linie i koden skriver tekstrengen i <span class="inl_cmd">input</span> funktionen, og venter på at brugeren indtaster sit svar.</p>
+<p>Den første linje i koden skriver tekstrengen i <span class="inl_cmd">input</span> funktionen, og venter på at brugeren indtaster sit svar.</p>
 
 <pre class="ubuntu_terminal">
 Hvad er dit navn: Thomas <span class="red">&larr; Input</span>
@@ -519,7 +525,7 @@ Press return to continue
 
 <h2>Indtastning af tal</h2>
 
-<p>Hvis du skal indtaste en værdi, f.eks. alder, skal du gøre python opmærksom på om det er et heltal (int) eller et decimaltal (float).  Lad os først prøve at indtaste et heltal. For at få Python til at indlæse vores indtastning som et tal skal vi ændre indtastningen fra en streng til et tal. Det gør vi ved at ændre tekststrengen til et tal ved at sætte linien in i <span class="inl_cmd">int()</span> funktionen. </p>
+<p>Hvis du skal indtaste en værdi, f.eks. alder, skal du gøre python opmærksom på om det er et heltal (int) eller et decimaltal (float).  Lad os først prøve at indtaste et heltal. For at få Python til at indlæse vores indtastning som et tal skal vi ændre indtastningen fra en streng til et tal. Det gør vi ved at ændre tekststrengen til et tal ved at sætte linjen in i <span class="inl_cmd">int()</span> funktionen. </p>
 
 <pre>
 	<code class="python">
