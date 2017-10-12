@@ -775,6 +775,21 @@ False
 	</code>
 </pre>
 
+<p>Læg mærke til at funktionen ikke fungerer hvis du intaster en <span class="inl_cmd">integer</span>. Det er fordi funktionen kun skal anvendes hvis man vil undersøge <span class="inl_cmd">float</span>-værdier.</p>
+
+<pre>
+	<code class="python">
+>>> a=17
+>>> b=17.0
+>>> a.is_integer()
+<span class="red">Traceback (most recent call last):
+  File "&lt;pyshell#22>", line 1, in &lt;module>
+    a.is_integer()
+AttributeError: 'int' object has no attribute 'is_integer'</span>
+>>> b.is_integer()
+True
+	</code>
+</pre>
 
 
 <h2>Fraction (Brøker)</h2>

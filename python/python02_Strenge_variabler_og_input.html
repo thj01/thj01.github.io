@@ -448,6 +448,45 @@ Jeg er ved at lære Python.
 Press return to continue
 </pre>
 
+<h2>Variabler og formatering</h2>
+
+<p>Hvis man gerne vil formatere sin tekst kan man også anvende tre anførselstegn (<span class="inl_cmd">"""</span>). Læg mærke til, at jeg flytter linjen <span class="inl_cmd">.format( ....</span> til linien efter tekststykket.</p>
+
+<pre>
+	<code class="python">
+navn1="Anders"
+navn2="Bo"
+navn3="carl"
+
+print("""
+
+Først kom {0}.
+	
+	Så kom {1}.
+	
+		{2} havde glemt det!.
+"""
+.format(navn1,navn2,navn3))
+	</code>
+</pre>
+
+<pre class="ubuntu_terminal">
+
+Først kom Anders.
+
+        Så kom Bo.
+
+                carl havde glemt det!.
+
+------------------
+(program exited with code: 0)
+
+Press any key to continue . . .
+</pre>
+
+
+
+
 <h2>Opgave - variabler</h2>
 
 <p>Lav nedestående tekststykke ved hjælp af Python hvor de ord der er røde skal indsættes ved hjælp af variabler.</p>
