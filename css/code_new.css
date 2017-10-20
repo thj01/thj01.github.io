@@ -453,68 +453,6 @@ content: ">";
 }
 
 
-details {
-font-family: Ubuntu, sans-serif;
-font-size: .9em;
-border-left: 1.5px solid #b6b6b6;
-border-top: 1.5px solid #b6b6b6;
-border-right: 1.5px solid #b6b6b6;
-border-bottom: 1.5px solid #949494;
-margin: 0px 5px 0px 5px;
-color: #333333;
-padding: 2px 6px 2px 6px;
-border-radius: 15px;
-
-background-image: -ms-linear-gradient(top, #f3f3f3 0%, #cccccc 100%);
-
-background-image: -moz-linear-gradient(top, #f3f3f3 0%, #cccccc 100%);
-
-background-image: -o-linear-gradient(top, #f3f3f3 0%, #cccccc 100%);
-
-background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #f3f3f3), color-stop(100, #cccccc));
-
-background-image: -webkit-linear-gradient(top, #f3f3f3 0%, #cccccc 100%);
-
-background-image: linear-gradient(to bottom, #f3f3f3 0%, #cccccc 100%);
-
--webkit-box-shadow: 4px 4px 10px 1px rgba(0,0,0,0.4) ;
-box-shadow: 4px 4px 6px 1px rgba(0,0,0,0.4) ;
-}
-
-details:hover {
-font-family: Ubuntu, sans-serif;
-font-size: .9em;
-border-left: 1.5px solid #b6b6b6;
-border-top: 1.5px solid #b6b6b6;
-border-right: 1.5px solid #b6b6b6;
-border-bottom: 1.5px solid #949494;
-margin: 0px 5px 0px 5px;
-color: #333333;
-padding: 2px 6px 2px 6px;
-border-radius: 15px;
-
-background-image: -ms-linear-gradient(top, #f2f2f2 0%, #bfbfbf 100%);
-
-background-image: -moz-linear-gradient(top, #f2f2f2 0%, #bfbfbf 100%);
-
-background-image: -o-linear-gradient(top, #f2f2f2 0%, #bfbfbf 100%);
-
-background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #f2f2f2), color-stop(100, #bfbfbf));
-
-background-image: -webkit-linear-gradient(top, #f2f2f2 0%, #bfbfbf 100%);
-
-background-image: linear-gradient(to bottom, #f2f2f2 0%, #bfbfbf 100%);
-
--webkit-box-shadow: 4px 4px 10px 1px rgba(0,0,0,0.4) ;
-box-shadow: 3px 3px 5px 1px rgba(0,0,0,0.4) ;
-}
-
-
-details summary {
-font-size: 1.2em;
-padding: 10px 5px;
-
-}
 
 p#html_intro_kode_resulat{
 

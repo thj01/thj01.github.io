@@ -102,6 +102,421 @@
 
 <p>De ovenstående forklaringer er ment som et indblik i hvad det er løkker og kontroludsagn gør. Herunder vil løkkerne blive gennemgået udførligt.</p>
 
+<h1>Sådan tæller computere</h1>
+
+<p>En af de ting man støder på når man arbejder med programmering er, at computere tæller anderledes end vi gør. Når vi tæller starter vi fra en, og titalssystemet er anvendeligt for os fordi det passer med antallet af fingre på hånden. Når vi har brugt alle fingrene så tæller vi antallet af fulde hænder. 22 kan altså forståes som 2 fulde hænder og 2 fingre. I 10-talssystemet skifter vi altså position (veksler til den næste enhed) når vi kommer til den 10. værdi. </p>
+
+<p>Eller udtrykt ved hjælp af matematik: vi tæller ved hjælp af &#8469; = {1, 2, 3 ...}.</p>
+
+<p>Computere arbejder med binære tal - dvs. den tæller ved hjælp af 0 og 1, og den første værdi er 0. Det er fordi den arbejder digitalt ved hjælp af nogle transistorer der enten kan være tændt eller slukkede. Konkret bliver der afsat et vist antal transistorer til at huske tallet, og der vil den første værdi være den hvor alle transistorer er slukkede - dvs. den har værdien 0</p>
+
+<p>Eller udtrykt ved hjælp af matematik: vi tæller ved hjælp af &#8469;<sub>0</sub> = {0, 1, 2, 3 ...}.</p>
+
+
+<p>For at vise dette kigger vi på en byte (der består af 8 bit) der tæller:</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Computerens</th>
+			<th colspan="8">bits</th>
+			<th>I 10-tals systemet</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1. værdi</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+		</tr>
+		<tr>
+			<td>2. værdi</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>1</td>
+			<td>1</td>
+		</tr>
+		<tr>
+			<td>3. værdi</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>1</td>
+			<td>0</td>
+			<td>2</td>
+		</tr>
+		<tr>
+			<td>4. værdi</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>1</td>
+			<td>1</td>
+			<td>3</td>
+		</tr>
+		<tr>
+			<td>5. værdi</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>1</td>
+			<td>0</td>
+			<td>0</td>
+			<td>4</td>
+		</tr>
+		<tr>
+			<td>6. værdi</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>1</td>
+			<td>0</td>
+			<td>1</td>
+			<td>5</td>
+		</tr>
+		<tr>
+			<td>7. værdi</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>1</td>
+			<td>1</td>
+			<td>0</td>
+			<td>6</td>
+		</tr>
+		<tr>
+			<td>8. værdi</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>1</td>
+			<td>1</td>
+			<td>1</td>
+			<td>7</td>
+		</tr>
+		<tr>
+			<td>9. værdi</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>1</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>8</td>
+		</tr>
+		<tr>
+			<td>10. værdi</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>1</td>
+			<td>0</td>
+			<td>0</td>
+			<td>1</td>
+			<td>9</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>2⁷</td>
+			<td>2⁶</td>
+			<td>2⁵</td>
+			<td>2⁴</td>
+			<td>2³</td>
+			<td>2²</td>
+			<td>2¹</td>
+			<td>2⁰</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>Værdi</td>
+			<td>128</td>
+			<td>64</td>
+			<td>32</td>
+			<td>16</td>
+			<td>8</td>
+			<td>4</td>
+			<td>2</td>
+			<td>1</td>
+			<td></td>
+		</tr>		
+	</tbody>
+</table>
+
+<p>Af det ovenstående kan vi omregne fra binær til decimal ved at lægge de enkelte værdier sammen:</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Binær</th>
+			<th colspan="8">Udregning</th>
+			<th>Decimal</th>
+		</tr>
+	</thead>
+	<tbody>
+
+		<tr>
+			<td></td>
+			<td>2⁷</td>
+			<td>2⁶</td>
+			<td>2⁵</td>
+			<td>2⁴</td>
+			<td>2³</td>
+			<td>2²</td>
+			<td>2¹</td>
+			<td>2⁰</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>11111111</td>
+			<td>128</td>
+			<td>64</td>
+			<td>32</td>
+			<td>16</td>
+			<td>8</td>
+			<td>4</td>
+			<td>2</td>
+			<td>1</td>
+			<td>255</td>
+		</tr>	
+		<tr>
+			<td>10101101</td>
+			<td>128</td>
+			<td></td>
+			<td>32</td>
+			<td></td>
+			<td>8</td>
+			<td>4</td>
+			<td></td>
+			<td>1</td>
+			<td>173</td>
+		</tr>
+		<tr>
+			<td>10000001</td>
+			<td>128</td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td>1</td>
+			<td>129</td>
+		</tr>
+		<tr>
+			<td>00101101</td>
+			<td></td>
+			<td></td>
+			<td>32</td>
+			<td></td>
+			<td>8</td>
+			<td>4</td>
+			<td></td>
+			<td>1</td>
+			<td>45</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Man bliver nød til at holde tungen lige i munden, fordi vi skal holde styr på vores in- og output. Tæller vi f.eks. antallet af tegn (char) i en streng angives det i &#8469; (f.eks. Thomas = 6 tegn), men skal vi hente et tegn ud skal vi tænke &#8469;<sub>0</sub> (o er det 2 tegn i sætningen).</p>
+
+<table class="centreret">
+
+	<tbody>
+		<tr>
+			<td>Placering</td>
+			<td>0</td>
+			<td>1</td>
+			<td>2</td>
+			<td>3</td>
+			<td>4</td>
+			<td>5</td>
+		</tr>
+		<tr>
+			<td>Tegn</td>
+			<td>T</td>
+			<td>h</td>
+			<td>o</td>
+			<td>m</td>
+			<td>a</td>
+			<td>s</td>
+		</tr>
+	</tbody>
+</table>
+
+<h2>Regneregler</h2>
+
+<p>Regningsarterne fungerer ved at anvende tegnene: <span class="inl_cmd">+</span>, <span class="inl_cmd">-</span>, <span class="inl_cmd">*</span> og <span class="inl_cmd">/</span>. Se herunder:</p>
+
+<pre class="ubuntu_terminal">
+>>> 6+3
+9
+>>> 6-3
+3
+>>> 6*3
+18
+>>> 6/3
+2.0
+</pre>
+
+<p>Læg mærke til at der bliver anvendt <span class="inl_cmd">int</span> i alle eksemplerne, og at resultatet bliver leveret på samme måde ved <span class="inl_cmd">+</span>, <span class="inl_cmd">-</span> og <span class="inl_cmd">*</span>. Men ved division bliver resulatet ændret til <span class="inl_cmd">float</span>. Se nedestående eksempel</p>
+
+<pre class="ubuntu_terminal">
+>>> 2/3
+0.6666666666666666
+</pre>
+
+<p>Python anvender korrekte regneregler, hvilket vil sige at <span class="inl_cmd">+</span> og <span class="inl_cmd">-</span> adskiller ledene, og at de skal sættes paranteser for at omgå dette. Se eksemplerne herunder:</p>
+
+<pre class="ubuntu_terminal">
+>>> 3+2*6
+15
+>>> (3+2)*6
+30
+>>> 3+6/2
+6.0
+>>> (3+6)/2
+4.5
+</pre>
+
+<h2>Modulus og floor division</h2>
+
+<p>To funktioner som ikke giver mening normalt i matematik er modulus og "floor division".</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Funktion</th>
+			<th>Tegn</th>
+			<th>Beskrivelse</th>
+			<th>Eksempel</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><span class="inl_cmd">modulus</span></td>
+			<td><span class="inl_cmd">%</span></td>
+			<td>Returnere resten efter division</td>
+			<td>9%5 = 4 </td>
+		</tr>
+		<tr>
+			<td><span class="inl_cmd">floor division</span></td>
+			<td><span class="inl_cmd">//</span></td>
+			<td>Returnerer heltallet efter division</td>
+			<td>9//5 = 1</td>
+		</tr>
+	</tbody>
+</table>
+
+<p></p>
+
+<pre class="ubuntu_terminal">
+>>> 9%5
+4
+>>> 9//5
+1
+</pre>
+
+<p>Man kan ved hjælp af <span class="inl_cmd">modulus</span> og <span class="inl_cmd">floor division</span> omskrive en uægte brøk til en blandet brøk efter følgende model:</p>
+
+<div class="latex">$$ \frac{a}{b} = (a//b)~ \frac{a\%b}{b} $$</div>
+
+<span class="afsnit">Anvendelse</span>
+
+<p><span class="inl_cmd">modulus</span> og <span class="inl_cmd">floor division</span> virker i første omgang lidt underlige, men har en masse praktiske anvendelser. F.eks: </p>
+
+<ul class="disc">
+	<li>Hvis noget skal ske hver tredie gang: <span class="inl_cmd">x%3 = 0</span></li>
+	<li>Antal fyldte ølkasser: <span class="inl_cmd">*antal flasker* // 30</span></li>
+</ul>
+
+<h2>En til eller fra</h2>
+
+<p>Ofte har man brug for at lade et tal vokse med en fast størrelse fra gang til gang. Den mest umiddelbare løsning er denne:</p>
+
+<pre>
+	<code class="python">
+>>> a=0
+>>> a
+0
+>>> a+1
+1
+	</code>
+</pre>
+
+<p>Da man gør det så ofte har man en speciel "shorthand" til at løse dette problem med:</p>
+
+<pre>
+	<code class="python">
+>>> a=0
+>>> a +=1
+>>> a
+1
+>>> a +=1
+>>> a
+2
+	</code>
+</pre>
+
+<p>På samme måde som ovenfor kan man også lægge til, gange og dividere</p>
+
+<pre>
+	<code class="python">
+>>> a=1
+>>> a+=5
+>>> a
+6
+>>> a -=7
+>>> a
+-1
+>>> a *=7
+>>> a
+-7
+>>> a /=7
+>>> a
+-1.0
+	</code>
+</pre>
+
+<p>Man kan gøre det samme hvis man har lavet variabler. I eksemplet herunder lægger vi variablen <span class="inl_cmd">alder</span> til a.</p>
+
+<pre>
+	<code class="python">
+>>> a=1
+>>> alder=15
+>>> a+=alder
+>>> a
+16
+	</code>
+</pre>
 
 <h1>for løkken</h1>
 
