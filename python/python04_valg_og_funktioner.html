@@ -179,6 +179,8 @@ Press return to continue
 
 <h2>Opgaver</h2>
 
+<p>I disse opgaver skal du bruge if-/elif-/elsestrukturer, sammen med operatorer. Der er et overblik over operatorerne herunder.</p>
+
 <details>
 
 	<summary>Overblik over operatorer</summary>
@@ -249,20 +251,19 @@ Press return to continue
 
 </details>
 
-<h3>Myndig?</h3>
+<h3>Er du myndig?</h3>
 
 <p>Lav en kode der undersøger om man er myndig eller ej (18+)</p>
 
 <h3>Pendlerkort</h3>
 
-<p>Lav en kode der undersøger om personen hos DSB er berettiget til et ungdomskort (under 18), et pensionistkort (over 65) eller skal købe en almindelig billet.</p>
+<p>Lav en kode der undersøger om personen hos DSB er berettiget til et ungdomskort (under 20), et pensionistkort (over 65) eller skal købe en almindelig billet.</p>
 
 <ul class="disc">
-	<li>Under 19 → ungdomskort</li>
+	<li>Under 20 → ungdomskort</li>
 	<li>20-64 → almindeligt</li>
 	<li>65-110 → Pensionistkort</li>
 	<li>110+ → Spøgelser betaler ikke billetter</li>
-	<li>Ellers → Nope .... :(</li>
 </ul>
 
 <h3>Opgave - X in Y</h3>
@@ -284,77 +285,98 @@ Press return to continue
 
 <p><span class="bold">HINT:</span> For at få det til lykkes skal du importere modulet <span class="inl_cmd">strftime</span> fra pakken <span class="inl_cmd">time</span>. Ved hjælp af den kan man finde:</p>
 
+<details>
+
+	<summary>Overblik over <span class="inl_cmd">strftime()</span></summary>
+
 <table class="">
 	<thead>
 		<tr>
-			<th>parameter</th>
-			<th>Resultat</th>
+			<th colspan="2">Dato</th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr>
+			<td>%u</td>
+			<td>dag i ugen (mandag=1, søndag=7)</td>
+		</tr>
+		<tr>
+			<td>%V</td>
+			<td>Ugenr: 00-53 (ISO 8601)</td>
+		</tr>
+		<tr>
 			<td>%d</td>
 			<td>Hvilken dag i måneden</td>
-		</tr>
-		<tr>
-			<td>%D</td>
-			<td>Dato (Måned/dag/år)</td>
-		</tr>
-		<tr>
-			<td>%h</td>
-			<td>Forkortet månedsnavn</td>
-		</tr>
-		<tr>
-			<td>%H</td>
-			<td>Time (0-24)</td>
 		</tr>
 		<tr>
 			<td>%m</td>
 			<td>Månede</td>
 		</tr>
 		<tr>
+			<td>%y</td>
+			<td>Årstal - 2 cifre (17)</td>
+		</tr>
+		<tr>
+			<td>%Y</td>
+			<td>Årstal - 4 cifre (2017)</td>
+		</tr>
+		<tr>
+			<td>%D</td>
+			<td>Dato (Måned/dag/år)</td>
+		</tr>
+	</tbody>
+</table>
+
+<table class="">
+	<thead>
+		<tr>
+			<th colspan="2">Tid</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>%H</td>
+			<td>Timetal (0-24)</td>
+		</tr>
+		<tr>
 			<td>%M</td>
 			<td>Minuttal</td>
 		</tr>
 		<tr>
-			<td>%R</td>
-			<td>Tid i 24 timers notering</td>
+			<td>%S</td>
+			<td>Sekundtal</td>
 		</tr>
 		<tr>
-			<td>%S</td>
-			<td>sekundtal</td>
+			<td>%R</td>
+			<td>Klokken (timer:minutter)</td>
 		</tr>
 		<tr>
 			<td>%T</td>
 			<td>klokken (timer:minutter:sekunder)</td>
-		</tr>
-		<tr>
-			<td>%u</td>
-			<td>dag i ugen (mandag = 1 )</td>
-		</tr>
-		<tr>
-			<td>%W</td>
-			<td>Ugedag som tal</td>
 		</tr>
 	</tbody>
 </table>
 
 <p>Se fuldliste her: <a href="https://www.tutorialspoint.com/python/time_strptime.htm" target="_blank">https://www.tutorialspoint.com/python/time_strptime.htm</a></p>
 
+</details>
 
-<p>Eksempel på <span class="inl_cmd">datetime</span> kørt på en torsdag:</p>
+
+
+<p>Eksempel på <span class="inl_cmd">strftime()</span> kørt på en mandag:</p>
 
 <pre>
 	<code class="python">
-import datetime
+from time import strftime
 
-today = datetime.datetime.today().weekday()
-print (today)
+ugedag = strftime("%u")
+
+print(ugedag)
 	</code>
 </pre>
 
 <pre class="ubuntu_terminal">
-3
+1
 
 ------------------
 (program exited with code: 0)
@@ -363,9 +385,10 @@ Press return to continue
 
 <p>Ændr. koden så den fortæller hvor mange dage der er til fredag.</p>
 
-<p>Kan du ændre koden så den også siger hvornår du har fri? For at gøre det skal du importere </p>
 
+<h3>Hvornår har du fri</h3>
 
+<p>Lav en kode der fortæller hvor mange timer og minutter der er til du har fri, for hver dag i ugen.</p>
 
 
 <h1>Funktioner</h1>
@@ -504,6 +527,7 @@ Det fordoblede tal er: 10
 Press return to continue
 </pre>
 
+<!--
 <h2>Check kode</h2>
 
 <p>Et trick man kan anvende når man programmerer og ønsker at følge udviklingen af ens variabler er, at lave en <span class="inl_cmd">chk()</span> funktion. Det betyder at når vi sætter variablen <span class="inl_cmd">check</span> = 1, så vil de udføre funktionen ellers ikke. På den måde kan man under kodningen følge med hvad der sker.</p>
@@ -539,8 +563,132 @@ Press return to continue
 (program exited with code: 0)
 Press return to continue
 </pre>
+-->
 
 <h2>Opgaver</h2>
+
+<p>Til disse opgaver skal du anvende matematik.</p>
+
+<details>
+
+	<summary>Overblik over matematik</summary>
+
+	<span class="afsnit">Regneregler</span>
+
+	<p>Regningsarterne fungerer ved at anvende tegnene: <span class="inl_cmd">+</span>, <span class="inl_cmd">-</span>, <span class="inl_cmd">*</span> og <span class="inl_cmd">/</span>. Se herunder:</p>
+
+	<pre class="ubuntu_terminal">
+	>>> 6+3
+	9
+	>>> 6-3
+	3
+	>>> 6*3
+	18
+	>>> 6/3
+	2.0	</pre>
+
+	<p>Læg mærke til at der bliver anvendt <span class="inl_cmd">int</span> i alle eksemplerne, og at resultatet bliver leveret på samme måde ved <span class="inl_cmd">+</span>, <span class="inl_cmd">-</span> og <span class="inl_cmd">*</span>. Men ved division bliver resulatet ændret til <span class="inl_cmd">float</span>. Se nedestående eksempel</p>
+
+	<pre class="ubuntu_terminal">
+	>>> 2/3
+	0.6666666666666666	</pre>
+
+	<p>Python anvender korrekte regneregler, hvilket vil sige at <span class="inl_cmd">+</span> og <span class="inl_cmd">-</span> adskiller ledene, og at de skal sættes paranteser for at omgå dette. Se eksemplerne herunder:</p>
+
+	<pre class="ubuntu_terminal">
+	>>> 3+2*6
+	15
+	>>> (3+2)*6
+	30
+	>>> 3+6/2
+	6.0
+	>>> (3+6)/2
+	4.5	</pre>
+	
+	<span class="afsnit">Kvadratrødder og potenser</span>
+	
+	<p>For at finde potens tal og rødder anvendes funktionen <span class="inl_cmd">pow(a,b)</span>, hvor <span class="inl_cmd">a</span> er grundtallet og <span class="inl_cmd">b</span> er potensen. Se nedestående eksempler:</p>
+
+	<table class="">
+		<thead>
+			<tr>
+				<th>Matematisk udtryk</th>
+				<th>Python funktion</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td><span class="math">\( a^b \)</span></td>
+				<td><span class="inl_cmd">pow(a,b)</span></td>
+			</tr>
+			<tr>
+				<td><span class="math">\( \sqrt[b]{a} = a^{\frac{ 1 }{ b }} \)</span></td>
+				<td><span class="inl_cmd">pow(a,1/b)</span></td>
+			</tr>
+		</tbody>
+	</table>
+
+	<p>Det anbefales at man anvender funktionen <span class="inl_cmd">pow()</span> fremfor <span class="inl_cmd">**</span>. Det gør koden mere læselig.</p>
+
+	<p>Eksempler med <span class="math">\( 2^4 \)</span> og <span class="math">\( \sqrt{4} \)</span>:</p>
+
+	<pre class="ubuntu_terminal">
+	>>> pow(2,4) 
+	16
+	>>> pow(4,1/2)
+	2.0	</pre>
+
+	<span class="afsnit">Modulus og floor division</span>
+
+	<p>For at finde restværdien og heltallet af en division anvender man henholdsvis <span class="inl_cmd">% (modulus)</span> og <span class="inl_cmd">// (floordivision)</span>.</p>
+
+	<table class="">
+		<thead>
+			<tr>
+				<th>Funktion</th>
+				<th>Tegn</th>
+				<th>Beskrivelse</th>
+				<th>Eksempel</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td><span class="inl_cmd">modulus</span></td>
+				<td><span class="inl_cmd">%</span></td>
+				<td>Returnere resten efter division</td>
+				<td>9%5 = 4 </td>
+			</tr>
+			<tr>
+				<td><span class="inl_cmd">floor division</span></td>
+				<td><span class="inl_cmd">//</span></td>
+				<td>Returnerer heltallet efter division</td>
+				<td>9//5 = 1</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<p></p>
+
+	<pre class="ubuntu_terminal">
+	>>> 9%5
+	4
+	>>> 9//5
+	1	</pre>
+
+	<p>Man kan ved hjælp af <span class="inl_cmd">modulus</span> og <span class="inl_cmd">floor division</span> omskrive en uægte brøk til en blandet brøk efter følgende model:</p>
+
+	<div class="latex">$$ \frac{a}{b} = (a//b)~ \frac{a\%b}{b} $$</div>
+
+	<span class="afsnit">Anvendelse</span>
+
+	<p><span class="inl_cmd">modulus</span> og <span class="inl_cmd">floor division</span> virker i første omgang lidt underlige, men har en masse praktiske anvendelser. F.eks: </p>
+
+	<ul class="disc">
+		<li>Hvis noget skal ske hver tredie gang: <span class="inl_cmd">x%3 = 0</span></li>
+		<li>Antal fyldte ølkasser: <span class="inl_cmd">*antal flasker* // 30</span></li>
+	</ul>
+
+</details>
 
 <h3>Er det en faktor</h3>
 
@@ -556,26 +704,80 @@ Undersøger om 2 er en faktor i 10
 Press return to continue
 </pre>
 
-<h3>find normalform</h3>
+<h3>Find normalform</h3>
 
 <p>Lav funktionen <span class="inl_cmd">2punkt(a,b,c,d)</span>, der udskriver den linie der kører igennem de to punkter <span class="math">\( P = (a,b) \)</span> og <span class="math">\( Q = (c,d) \)</span>.</p>
+
+<p>Altså hvor </p>
+
+<div class="latex">$$ a=\frac{ y_2-y_1 }{ x_2-x_1 } $$</div>
+
+og
+
+<div class="latex">$$ b=y_1-ax_1 $$</div>
+
 
 
 <h3>Skæring med X aksen</h3>
 
 <p>Lav funktionen <span class="inl_cmd">linie(a,b)</span>, der udregner skæringspunktet med x-aksen ud fra ligningen <span class="math">\( f(x) = ax+b \)</span>, og hvor den skærer y-aksen.</p>
 
+<p>Altså hvor:</p>
+
+<div class="latex">$$ x = \frac{ -b }{ a } $$</div>
+
+<details>
+
+	<summary>Udledning af formel</summary>
+
+	<div class="latex">$$ ax+b = 0 
+
+\\ \Updownarrow \\
+
+ax = -b 
+
+\\ \Updownarrow \\
+
+x = \frac{ -b }{ a }
+
+$$</div>
+
+</details>
+
 <h3>Skæring mellem to linier</h3>
 
 <p>Lav funktionen <span class="inl_cmd">skaering(a,b,c,d)</span>, der udregner skæringspunktet med x-aksen ud fra ligningen <span class="math">\( f(x) = ax+b \)</span>, og  <span class="math">\( g(x) = cx+d \)</span>.</p>
 
+<p>Altså hvor:</p>
 
+<div class="latex">$$ x= \frac{ d-b }{ a-c } $$</div>
+
+<details>
+
+	<summary>Udledning af formel</summary>
+
+	<div class="latex">$$ ax+b=cx+d
+
+\\ \Updownarrow \\
+
+ax-cx = d - b
+
+\\ \Updownarrow \\
+
+x(a-c)=d-b
+
+\\ \Updownarrow \\
+
+x= \frac{ d-b }{ a-c }
+
+
+ $$</div>
+
+</details>
 
 <h3>Andengradsligning</h3>
 
-<p>Lav funktionen <span class="inl_cmd">2grad(a,b,c)</span> der udregner parablens skæring(er) med x-aksen ud fra normalformen på en andegradsligning: <span class="math">\( ax^2 + bx + c \)</span>. Anvend formlen:</p>
-
-<div class="latex">$$ x = \frac{-b \pm \sqrt D}{2a}~, ~~ hvor~~D = b^2-4ac $$</div>
+<p>Lav funktionen <span class="inl_cmd">2grad(a,b,c)</span> der udregner parablens skæring(er) med x-aksen ud fra normalformen på en andegradsligning: <span class="math">\( ax^2 + bx + c \)</span>. Anvend formlerne herfra: <a href="../matematik/andengradsfunktion.html" target="_blank">../matematik/andengradsfunktion.html</a></p>
 
 <p>Output skal fortælle:</p>
 

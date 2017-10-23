@@ -412,26 +412,23 @@
 		<tr>
 			<th>Matematisk udtryk</th>
 			<th>Python funktion</th>
-			<th>Alternativ</th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr>
 			<td><span class="math">\( a^b \)</span></td>
 			<td><span class="inl_cmd">pow(a,b)</span></td>
-			<td><span class="inl_cmd">a**b</span></td>
 		</tr>
 		<tr>
-			<td><span class="math">\( \sqrt[b]{a} \)</span></td>
+			<td><span class="math">\( \sqrt[b]{a} = a^{\frac{ 1 }{ b }} \)</span></td>
 			<td><span class="inl_cmd">pow(a,1/b)</span></td>
-			<td><span class="inl_cmd">a**(1/b)</span></td>
 		</tr>
 	</tbody>
 </table>
 
 <p>Det anbefales at man anvender funktionen <span class="inl_cmd">pow()</span> fremfor <span class="inl_cmd">**</span>. Det gør koden mere læselig.</p>
 
-<p>Eksempler med 2<sup>4</sup> og kvadratroden af 4:</p>
+<p>Eksempler med <span class="math">\( 2^4 \)</span> og <span class="math">\( \sqrt{4} \)</span>:</p>
 
 <pre class="ubuntu_terminal">
 >>> pow(2,4) 
@@ -507,7 +504,7 @@
 
 <h2>Modulus og floor division</h2>
 
-<p>To funktioner som ikke giver mening normalt i matematik er modulus og "floor division".</p>
+<p>For at finde potens tal og rødder anvendes funktionen <span class="inl_cmd">pow(a,b)</span>, hvor <span class="inl_cmd">a</span> er grundtallet og <span class="inl_cmd">b</span> er potensen. Se nedestående eksempler:</p>
 
 <table class="">
 	<thead>

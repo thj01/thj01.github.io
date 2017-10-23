@@ -372,93 +372,9 @@
 	</tbody>
 </table>
 
-<h2>Regneregler</h2>
 
-<p>Regningsarterne fungerer ved at anvende tegnene: <span class="inl_cmd">+</span>, <span class="inl_cmd">-</span>, <span class="inl_cmd">*</span> og <span class="inl_cmd">/</span>. Se herunder:</p>
 
-<pre class="ubuntu_terminal">
->>> 6+3
-9
->>> 6-3
-3
->>> 6*3
-18
->>> 6/3
-2.0
-</pre>
-
-<p>Læg mærke til at der bliver anvendt <span class="inl_cmd">int</span> i alle eksemplerne, og at resultatet bliver leveret på samme måde ved <span class="inl_cmd">+</span>, <span class="inl_cmd">-</span> og <span class="inl_cmd">*</span>. Men ved division bliver resulatet ændret til <span class="inl_cmd">float</span>. Se nedestående eksempel</p>
-
-<pre class="ubuntu_terminal">
->>> 2/3
-0.6666666666666666
-</pre>
-
-<p>Python anvender korrekte regneregler, hvilket vil sige at <span class="inl_cmd">+</span> og <span class="inl_cmd">-</span> adskiller ledene, og at de skal sættes paranteser for at omgå dette. Se eksemplerne herunder:</p>
-
-<pre class="ubuntu_terminal">
->>> 3+2*6
-15
->>> (3+2)*6
-30
->>> 3+6/2
-6.0
->>> (3+6)/2
-4.5
-</pre>
-
-<h2>Modulus og floor division</h2>
-
-<p>To funktioner som ikke giver mening normalt i matematik er modulus og "floor division".</p>
-
-<table class="">
-	<thead>
-		<tr>
-			<th>Funktion</th>
-			<th>Tegn</th>
-			<th>Beskrivelse</th>
-			<th>Eksempel</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td><span class="inl_cmd">modulus</span></td>
-			<td><span class="inl_cmd">%</span></td>
-			<td>Returnere resten efter division</td>
-			<td>9%5 = 4 </td>
-		</tr>
-		<tr>
-			<td><span class="inl_cmd">floor division</span></td>
-			<td><span class="inl_cmd">//</span></td>
-			<td>Returnerer heltallet efter division</td>
-			<td>9//5 = 1</td>
-		</tr>
-	</tbody>
-</table>
-
-<p></p>
-
-<pre class="ubuntu_terminal">
->>> 9%5
-4
->>> 9//5
-1
-</pre>
-
-<p>Man kan ved hjælp af <span class="inl_cmd">modulus</span> og <span class="inl_cmd">floor division</span> omskrive en uægte brøk til en blandet brøk efter følgende model:</p>
-
-<div class="latex">$$ \frac{a}{b} = (a//b)~ \frac{a\%b}{b} $$</div>
-
-<span class="afsnit">Anvendelse</span>
-
-<p><span class="inl_cmd">modulus</span> og <span class="inl_cmd">floor division</span> virker i første omgang lidt underlige, men har en masse praktiske anvendelser. F.eks: </p>
-
-<ul class="disc">
-	<li>Hvis noget skal ske hver tredie gang: <span class="inl_cmd">x%3 = 0</span></li>
-	<li>Antal fyldte ølkasser: <span class="inl_cmd">*antal flasker* // 30</span></li>
-</ul>
-
-<h2>En til eller fra</h2>
+<h1>En til eller fra</h1>
 
 <p>Ofte har man brug for at lade et tal vokse med en fast størrelse fra gang til gang. Den mest umiddelbare løsning er denne:</p>
 
