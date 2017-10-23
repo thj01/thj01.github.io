@@ -282,7 +282,65 @@ Press return to continue
 </ul>
 
 
-<p><span class="bold">HINT:</span> For at få det til lykkes skal du importere modulet <span class="inl_cmd">datetime</span> og anvende <span class="inl_cmd">datetime.datetime.today().weekday()</span> til at returnere en talværdi for dagen. Mandag er 0 og søndag er 6. </p>
+<p><span class="bold">HINT:</span> For at få det til lykkes skal du importere modulet <span class="inl_cmd">strftime</span> fra pakken <span class="inl_cmd">time</span>. Ved hjælp af den kan man finde:</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>parameter</th>
+			<th>Resultat</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>%d</td>
+			<td>Hvilken dag i måneden</td>
+		</tr>
+		<tr>
+			<td>%D</td>
+			<td>Dato (Måned/dag/år)</td>
+		</tr>
+		<tr>
+			<td>%h</td>
+			<td>Forkortet månedsnavn</td>
+		</tr>
+		<tr>
+			<td>%H</td>
+			<td>Time (0-24)</td>
+		</tr>
+		<tr>
+			<td>%m</td>
+			<td>Månede</td>
+		</tr>
+		<tr>
+			<td>%M</td>
+			<td>Minuttal</td>
+		</tr>
+		<tr>
+			<td>%R</td>
+			<td>Tid i 24 timers notering</td>
+		</tr>
+		<tr>
+			<td>%S</td>
+			<td>sekundtal</td>
+		</tr>
+		<tr>
+			<td>%T</td>
+			<td>klokken (timer:minutter:sekunder)</td>
+		</tr>
+		<tr>
+			<td>%u</td>
+			<td>dag i ugen (mandag = 1 )</td>
+		</tr>
+		<tr>
+			<td>%W</td>
+			<td>Ugedag som tal</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Se fuldliste her: <a href="https://www.tutorialspoint.com/python/time_strptime.htm" target="_blank">https://www.tutorialspoint.com/python/time_strptime.htm</a></p>
+
 
 <p>Eksempel på <span class="inl_cmd">datetime</span> kørt på en torsdag:</p>
 
