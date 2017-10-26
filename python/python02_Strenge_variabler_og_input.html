@@ -162,8 +162,9 @@ Press return to continue
 	<p><span class="afsnit">Husk at</span>
 		
 		<ol class="">
+			<li>... bruge bogstaver - så er du aldrig i tvivl.</li>
+			<li>... afslutte hvad du begynder. Sørg for at anførselstegn, paranteser osv. bliver afsluttet</li>
 			<li>... angive typerne korrekt - værdi eller streng</li>
-			<li>... afslutte hvad du begynder. Sørg for at anførselstegn, paranteser osv bliver afsluttet</li>
 			<li>... hvis fejlen ikke er i den linie Python henviser til, er det fordi den forrige linie ikke er korrekt (tjek paranteser og anførselstegn)</li>
 			
 		</ol>
@@ -356,11 +357,7 @@ Press return to continue
 
 <p>Det som sker her er, at vi sætter udtrykket (variablen) <span class="inl_cmd">var1</span> til at have værdien 1 og <span class="inl_cmd">var2</span> til værdien 2. Det kan vi se når vi beder Python om at udskrive summen af <span class="inl_cmd">var1</span>  og <span class="inl_cmd">var2</span> - resultatet er 3. Man kan sige at en variable er en stedfortræder for en værdi eller en tekststreng.</p>
 
-<blockquote>
-<p><b>VIGTIGT: </b> Variabelnavne skal starter med bogstaver. Dvs. man ikke kan anvende variabelnavne som: 1, 1pind osv.</p>
-<p>Brug beskrivende navne til dine variabler, så bliver koden lettere at læse. F.eks: <span class="inl_cmd">fnavn</span> til fornavn og <span class="inl_cmd">antal_gæt</span> til antallet af gæt</p>
 
-</blockquote>
 
 
 
@@ -434,7 +431,32 @@ hejhej
 Press return to continue
 </pre>
 
-<p>Man kan altså godt udskrive <span class="inl_cmd">hej</span> 2 gange, men man kan ikke lave regnestykket <span class="math">\( 2+hej \)</span>.</p>
+<p>Man kan altså godt udskrive <span class="inl_cmd">hej</span> 2n gange, men man kan ikke lave regnestykket <span class="math">\( 2+hej \)</span>.</p>
+
+<h2>Navngivning af variabler</h2>
+
+<p>Hovedreglen om variabler er, at de ikke må starte med et tal. De må altså ikke hedde <span class="inl_cmd">1</span>, <span class="inl_cmd">1pind</span> osv.2</p>
+
+<p>Brug beskrivende navne til dine variabler, så bliver koden lettere at læse. F.eks: <span class="inl_cmd">fnavn</span> til fornavn og <span class="inl_cmd">antal_gæt</span> til antallet af gæt</p>
+
+<p>Man bruger enten <span class="inl_cmd">underscore</span> eller <span class="inl_cmd">camelCasing</span>, hvor første bogstav (pånær første ord) i ordet er med stort,ved længere variabler. Se nedestående eksempel:</p>
+
+<pre>
+	<code class="python">
+#variabler med underscore
+antal_bogstaver
+udregning_af_diskreminant
+antal_afdrag
+
+#variabler med camelcasing
+antalBogstaver
+udregningAfDiskreminant
+antalAfdrag
+	</code>
+</pre>
+
+<p>Jeg anbefaler at du bruger <span class="inl_cmd">underscore</span> fremfor <span class="inl_cmd">camelCasing</span>, da det er nemmest at læse og dermed overskue.</p>
+
 
 <h2>Variabler i tekststrenge</h2>
 
@@ -521,6 +543,9 @@ Først kom Anders.
 
 Press any key to continue . . .
 </pre>
+
+
+
 
 
 
