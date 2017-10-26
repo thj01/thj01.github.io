@@ -15,38 +15,7 @@
 
 <!-- Scripts in bottom to speed up pageload-->
  
-        <style>
-            /* Switch numbering on by adding class "countheads" to h1 */
-            /* Prevent numbering for a single heading via class "nocount" */
-        
-            body {
-                counter-reset: h2counter;
-            }
-            h1 {
-                counter-reset: h2counter;
-            }
-    
-            .countheads ~ h2:before {
-                content: counter(h2counter) ".\0000a0\0000a0";
-                counter-increment: h2counter;
-            }
-            h2.nocount:before {
-                content: none;
-                counter-increment: none;
-            }
-            h2 {
-                counter-reset: h3counter;
-            }
-    
-            .countheads ~ h3:before {
-                content: counter(h2counter) "." counter(h3counter) ".\0000a0\0000a0";
-                counter-increment: h3counter;
-            }
-            h3.nocount:before {
-                content: none;
-                counter-increment: none;
-            }
-        </style> 
+
 
 </head>
 <body>
@@ -76,7 +45,9 @@
 
 </figure>
 
-<h1>Lær Python</h1>
+<div class="title">Lær Python</div>
+
+<h1>Indhold</h1>
 	
 <ol class="">
 	<li><a href="python01_intro.html" target="_blank">Introduktion af python og installation</a></li>
