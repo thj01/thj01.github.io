@@ -45,8 +45,6 @@
 
 <div class="title">Strenge, variabler og input</div>
 
-<h1>Strenge, variabler og input</h1>
-
 <p>Denne guide handler om det mest basale i alle programmeringssprog, nemlig hvad data er og hvordan man behandler dem.</p>
 
 		
@@ -158,6 +156,25 @@ Press return to continue
 
 <p>Her får vi en <span class="inl_cmd">navnefejl</span>. Python forventer en talværdi, da der ikke er nogen anførselstegn ... og <span class="inl_cmd">Hej</span> er ikke et tal.</p>
 
+<blockquote>
+	<p><span class="afsnit">Husk at</span>
+		
+		<ol class="">
+			<li>... bruge bogstaver - så er du aldrig i tvivl.</li>
+			<li>... afslutte hvad du begynder. Sørg for at anførselstegn, paranteser osv. bliver afsluttet</li>
+			<li>... angive typerne korrekt - værdi eller streng</li>
+			<li>... hvis fejlen ikke er i den linie Python henviser til, er det fordi den forrige linie ikke er korrekt (tjek paranteser og anførselstegn)</li>
+			
+		</ol>
+		
+		
+		
+	</p>
+</blockquote>
+
+
+
+<h1>Tekststrenge</h1>
 
 <h2>Lange tekststykker</h2>
 
@@ -237,7 +254,7 @@ Press return to continue
 
 <pre>
 	<code class="python">
-print ("Her kommer et ord med anførselsteng - \"æble\" ")
+print ("Her kommer et ord med anførselstegn - \"æble\" ")
 	</code>
 </pre>
 
@@ -338,11 +355,7 @@ Press return to continue
 
 <p>Det som sker her er, at vi sætter udtrykket (variablen) <span class="inl_cmd">var1</span> til at have værdien 1 og <span class="inl_cmd">var2</span> til værdien 2. Det kan vi se når vi beder Python om at udskrive summen af <span class="inl_cmd">var1</span>  og <span class="inl_cmd">var2</span> - resultatet er 3. Man kan sige at en variable er en stedfortræder for en værdi eller en tekststreng.</p>
 
-<blockquote>
-<p><b>VIGTIGT: </b> Variabelnavne skal starter med bogstaver. Dvs. man ikke kan anvende variabelnavne som: 1, 1pind osv.</p>
-<p>Brug beskrivende navne til dine variabler, så bliver koden lettere at læse. F.eks: <span class="inl_cmd">fnavn</span> til fornavn og <span class="inl_cmd">antal_gæt</span> til antallet af gæt</p>
 
-</blockquote>
 
 
 
@@ -396,6 +409,51 @@ Press return to continue
 </pre>
 
 <p>Python kan ikke udføre sammenføjningen, fordi den læser <span class="inl_cmd">hej</span> som en tekststreng og <span class="inl_cmd">2</span> som et tal (int). Vær derfor opmærksom på om du arbejder med talværdier eller tekst.</p>
+
+<p>Prøv at ændre <span class="inl_cmd">+</span> til <span class="inl_cmd">*</span>(gange):</p>
+
+<pre>
+	<code class="python">
+var1 = "hej"
+var2 = 2 
+
+print(var1 * var2)
+	</code>
+</pre>
+
+<pre class="ubuntu_terminal">
+hejhej
+
+------------------
+(program exited with code: 0)
+Press return to continue
+</pre>
+
+<p>Man kan altså godt udskrive <span class="inl_cmd">hej</span> 2n gange, men man kan ikke lave regnestykket <span class="math">\( 2+hej \)</span>.</p>
+
+<h2>Navngivning af variabler</h2>
+
+<p>Hovedreglen om variabler er, at de ikke må starte med et tal. De må altså ikke hedde <span class="inl_cmd">1</span>, <span class="inl_cmd">1pind</span> osv.2</p>
+
+<p>Brug beskrivende navne til dine variabler, så bliver koden lettere at læse. F.eks: <span class="inl_cmd">fnavn</span> til fornavn og <span class="inl_cmd">antal_gæt</span> til antallet af gæt</p>
+
+<p>Man bruger enten <span class="inl_cmd">underscore</span> eller <span class="inl_cmd">camelCasing</span>, hvor første bogstav (pånær første ord) i ordet er med stort,ved længere variabler. Se nedestående eksempel:</p>
+
+<pre>
+	<code class="python">
+#variabler med underscore
+antal_bogstaver
+udregning_af_diskreminant
+antal_afdrag
+
+#variabler med camelCasing
+antalBogstaver
+udregningAfDiskreminant
+antalAfdrag
+	</code>
+</pre>
+
+<p>Jeg anbefaler at du bruger <span class="inl_cmd">underscore</span> fremfor <span class="inl_cmd">camelCasing</span>, da det er nemmest at læse og dermed overskue.</p>
 
 
 <h2>Variabler i tekststrenge</h2>
@@ -487,7 +545,12 @@ Press any key to continue . . .
 
 
 
-<h2>Opgave - variabler</h2>
+
+
+
+<h2>Opgaver</h2>
+
+<h3>Opgave - .format</h3>
 
 <p>Lav nedestående tekststykke ved hjælp af Python hvor de ord der er røde skal indsættes ved hjælp af variabler.</p>
 
@@ -496,7 +559,7 @@ Press any key to continue . . .
 <span class="red">telefonnummer</span> og det er en <span class="red">telefonmærke</span>.</code>
 </pre></p>
 
-<h2>Opgave - formatering</h2>
+<h3>Opgave - escape characters</h3>
 
 <p>Lav følgende Output - på en <span class="inl_cmd">print</span>-linje ved hjælp af <span class="inl_cmd">\n</span> (ny linje) og <span class="inl_cmd">\t</span> (tabulator). Ordene "indholdsfortegnelse, "kapitel" og "afsnit" skal indsættes ved hjælp af variabler.</p>
 
@@ -656,18 +719,16 @@ Press return to continue
 
 <h2>Opgaver</h2>
 
-<h3>Udvid og formater koden</h3>
+<h3>Udvid opgaven</h3>
 
-<p>Udvid koden i opgaven ovenfor, sådan at teksten indeholder nedestående informationer, som brugeren selv indtaster. Formater teksten så den ser pæn ud.</p>
+<p>Ændr koden fra før, så brugeren selv indtaster informationerne. Formater teksten så den bliver pæn.</p>
 
-<ul class="disc">
-	<li>email</li>
-	<li>Telefonnummer</li>
-	<li>vejnavn</li>
-	<li>Vej nummer</li>
-	<li>By</li>
-	<li>Postnummer</li>
-</ul>
+<pre>
+	<code class="php">Mit navn er <span class="red">navn</span>. Jeg bor i <span class="red">by</span> og er <span class="red">alder</span> år gammel. Mit telefonnummer er: 
+<span class="red">telefonnummer</span> og det er en <span class="red">telefonmærke</span>.</code>
+</pre></p>
+
+
 
 
 	
