@@ -47,7 +47,11 @@
 	
 <h1>If, elif - else</h1>
 
-<p>Ofte har man brug for at ens program skal gøre forskellige ting ved forskellige betingelser. Dette gøres med if-elif-else strukturer. Forestil dig der skal laves et valg mellem om man er en dreng eller pige. Herunder er der lavet et eksempel hvor indtastningen <span class="inl_cmd">1</span> giver en dreng og <span class="inl_cmd">2</span> giver en pige:</p>
+<p>Ofte har man brug for at ens program skal gøre forskellige ting ved forskellige betingelser. Dette gøres med if-elif-else strukturer. </p>
+
+<h2>if</h2>
+
+<p>Forestil dig der skal laves et valg mellem om man er en dreng eller pige. Herunder er der lavet et eksempel hvor indtastningen <span class="inl_cmd">1</span> giver en dreng og <span class="inl_cmd">2</span> giver en pige:</p>
 
 <p>Læg mærke til at der er lighedstegn efter hinanden (<span class="inl_cmd">==</span>). Det bliver vi nød til at gøre fordi python ellers tror at vi opretter en ny variabel</p>
 
@@ -83,7 +87,9 @@ if *** betingelse *** :
 
 <p>Betingelsen i eksemplet herover er, at variablen valg skal være 1. Læg mærke til, at hele sætningen afsluttes med et kolon - <span class="inl_cmd">:</span>, og det som skal udføres under det valg er tabuleret ind. På den måde ved Python hvad der skal udføres hvis man har valgt <span class="inl_cmd">1</span> eller <span class="inl_cmd">2</span>.</p>
 
-<p>Vi kunne også lave dette eksempel på følgende måde:</p>
+<h2>if-else</h2>
+
+<p>Ofte arbejder man med binære problemstillinger, altså hvor det er enten-eller. Her anvender man <span class="inl_cmd">if-else</span> strukturer. Man spørger om den ene betingelse er opfyldt (<span class="inl_cmd">if</span>), og så må resten nødvendigvis tilhøre den anden mulighed (<span class="inl_cmd">else</span>). </p>
 
 <pre>
 	<code class="python">
@@ -96,7 +102,11 @@ else:
 	</code>
 </pre>
 
-<p>Denne kode fungerer ved at den evalurer om valget var 1 eller ej. Problemet er bare, at hvis nu brugeren taster 3, så vil programmet også svare at man valgte pige. Men det var jo en fejltastning. Vi har altså brug for at kunne smide en ekstra mulighed ind. Det kan vi gøre ved hjælp af at tilføje <span class="inl_cmd">elif</span> imellem <span class="inl_cmd">if</span> og <span class="inl_cmd">else</span>.</p>
+<p>Denne kode fungerer ved at den evalurer om valget var 1 eller ej. Fordelen er, at du kan nøjes med at sortere efter den betingelse der er lettest at beskrive - alle de muligheder der er tilbage "falder" automatisk ind under <span class="inl_cmd">else</span>.</p>
+
+<h2>if-elif-else</h2>
+
+<p>Problemet er bare, at hvis nu brugeren taster 3, så vil programmet også svare at man valgte pige. Men det var jo en fejltastning. Vi har altså brug for at kunne smide en ekstra mulighed ind. Det kan vi gøre ved hjælp af at tilføje <span class="inl_cmd">elif</span> imellem <span class="inl_cmd">if</span> og <span class="inl_cmd">else</span>.</p>
 
 <pre>
 	<code class="python">
@@ -120,7 +130,7 @@ else:
 	<li>Hvis det hverken er 1 eller 2, så"svarer Python med "Du skal vælge enten 1 eller 2" (<span class="inl_cmd">else</span>).</li>
 </ol>
 
-<p>Koden er stadig ret mangelfuld, da den jo ikke gentager spørgsmålet hvis brugeren svarer forkert. Det er noget vi vil kigge på i afsnittet om løkker. Læg  mærke til, at der skal anvendes en fast struktur. <span class="inl_cmd">elif</span> anvendes kun hvis der er mere end 2 betingelser der skal undersøges. Der skal altid afsluttes med <span class="inl_cmd">else</span>. Generelt kan disse betingelser skrives op på følgende formel</p>
+<p>Læg  mærke til, at der skal anvendes en fast struktur. <span class="inl_cmd">elif</span> anvendes kun hvis der er mere end 2 betingelser der skal undersøges. Generelt kan disse betingelser skrives op på følgende formel</p>
 
 <pre>
 	<code class="python">
@@ -138,44 +148,17 @@ else:
 	</code>
 </pre>
 
-<p>Man kan indsætte alle de <span class="inl_cmd">elif</span> man vil, men man skal huske at der skal afsluttes med <span class="inl_cmd">else</span>.</p>
+<p>Man kan indsætte alle de <span class="inl_cmd">elif</span> man vil, men man skal huske at der bør afsluttes med <span class="inl_cmd">else</span>.</p>
 
-<h2>X in Y</h2>
+<p>Grunden til at man bør afslutte med <span class="inl_cmd">else</span> er, at man derved sikrer sig at man har dækket alle mulighederne. En god måde er at man skriver alle de betingelser ned der skal tjekkes for, og så sørger man for at den sidste mulighed er <span class="inl_cmd">else</span>. F.eks hvis man vil spørge om ens funktion på gymnasiet hvor 1-3 angiver klassetrin, d - EUD og x - EUX:</p>
 
-<p>Ofte har man brug for at finde ud af om en tekststreng findes i en sætning, f.eks. om et navn er nævnt i en sætning. Det kan man gøre ved at bruge <span class="inl_cmd">in</span>. Det får programmet til at svarer tilbage med enten <span class="inl_cmd">True</span> eller <span class="inl_cmd">False</span>. Dette enten/eller svar kaldes på progammeringssprog for "boolean". Lad os afprøve det herunder.</p>
-
-<blockquote>
-	<p>"Der findes mange programmeringssprog, og de kan stort set det samme. Men de gør den på en forskellig måde. C er et meget præcist, men også meget omstændigt sprog, hvorimod Python er noget lettere at gå til."</p>
-</blockquote>
-
-
-<p>Lad os undersøge denne sætning for følgende tekst: <span class="inl_cmd">Python</span>, <span class="inl_cmd">C</span> og <span class="inl_cmd">Java</span>.</p>
-
-<pre>
-	<code class="python">
-tekst = "Der findes mange programmeringssprog, og de kan stort set det samme. Men de gør den på en forskellig måde. C er et meget præcist, men også meget omstændigt sprog, hvorimod Python er noget lettere at gå til."
-
-prg_python = "Python" in tekst
-prg_c = "C" in tekst
-prg_java = "Java" in tekst
-
-print ("Findes Python i sætningen: {0}".format(prg_python))
-print ("Findes C i sætningen: {0}".format(prg_c))
-print ("Findes Java i sætningen: {0}".format(prg_java))
-	</code>
-</pre>
-
-<pre class="ubuntu_terminal">
-Findes Python i sætningen: True
-Findes C i sætningen: True
-Findes Java i sætningen: False
-
-
-------------------
-(program exited with code: 0)
-Press return to continue
-
-</pre>
+<ul class="none">
+	<li>1. årgang - <span class="inl_cmd">if</span></li>
+	<li>2. årgang - <span class="inl_cmd">elif</span></li>
+	<li>3. årgang - <span class="inl_cmd">elif</span></li>
+	<li>EUD - <span class="inl_cmd">elif</span></li>
+	<li>EUX - <span class="inl_cmd">else</span></li>
+</ul>
 
 <h2>Opgaver</h2>
 
@@ -265,12 +248,6 @@ Press return to continue
 	<li>65-110 → Pensionistkort</li>
 	<li>110+ → Spøgelser betaler ikke billetter</li>
 </ul>
-
-<h3>Opgave - X in Y</h3>
-
-<p>Ændr opgaven så du ved hjælp af et input kan få svar på om et ord findes i tekstrengen</p>
-
-<p>Indsæt et større tekst fra nettet og lav søgninger på ord i den tekst.</p>
 
 <h3>Er det fredag?</h3>
 
@@ -389,6 +366,56 @@ Press return to continue
 <h3>Hvornår har du fri</h3>
 
 <p>Lav en kode der fortæller hvor mange timer og minutter der er til du har fri, for hver dag i ugen.</p>
+
+<h1>X in Y</h1>
+
+<p>Ofte har man brug for at finde ud af om en tekststreng findes i en sætning, f.eks. om et navn er nævnt i en sætning. Det kan man gøre ved at bruge <span class="inl_cmd">in</span>. Det får programmet til at svarer tilbage med enten <span class="inl_cmd">True</span> eller <span class="inl_cmd">False</span>. Dette enten/eller svar kaldes på progammeringssprog for "boolean". Lad os afprøve det herunder.</p>
+
+<blockquote>
+	<p>"Der findes mange programmeringssprog, og de kan stort set det samme. Men de gør den på en forskellig måde. C er et meget præcist, men også meget omstændigt sprog, hvorimod Python er noget lettere at gå til."</p>
+</blockquote>
+
+
+<p>Lad os undersøge denne sætning for følgende tekst: <span class="inl_cmd">Python</span>, <span class="inl_cmd">C</span> og <span class="inl_cmd">Java</span>.</p>
+
+<pre>
+	<code class="python">
+tekst = "Der findes mange programmeringssprog, og de kan stort set det samme. Men de gør den på en forskellig måde. C er et meget præcist, men også meget omstændigt sprog, hvorimod Python er noget lettere at gå til."
+
+prg_python = "Python" in tekst
+prg_c = "C" in tekst
+prg_java = "Java" in tekst
+
+print ("Findes Python i sætningen: {0}".format(prg_python))
+print ("Findes C i sætningen: {0}".format(prg_c))
+print ("Findes Java i sætningen: {0}".format(prg_java))
+	</code>
+</pre>
+
+<pre class="ubuntu_terminal">
+Findes Python i sætningen: True
+Findes C i sætningen: True
+Findes Java i sætningen: False
+
+
+------------------
+(program exited with code: 0)
+Press return to continue
+
+</pre>
+
+<h2>Opgaver</h2>
+
+<h3>Opgave - X in Y</h3>
+
+<p>Ændr opgaven så du ved hjælp af et input kan få svar på om et ord findes i tekstrengen</p>
+
+<p>Indsæt et større tekst fra nettet og lav søgninger på ord i denne tekst ved hjælp af et brugerinput.</p>
+
+
+
+
+
 
 
 <h1>Egne funktioner</h1>
