@@ -63,9 +63,14 @@
 
 
 /*
-Counter in 
-*/
 
+* nummerering i jquery.tocify
+* 
+* Er indsat i numbering.css
+* 
+* 	 
+	 
+	 
 
 .tocify-header li :nth-child(1):before {
     counter-increment: section;
@@ -102,6 +107,7 @@ counter-reset:subsubsubsection;
    }
 
 
+*/
 
 
 
