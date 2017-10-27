@@ -190,7 +190,7 @@
 
 <p>Her udskriver den kun hver andet tegn i strengen.</p>
 
-<h2><span class="inl_cmd">len()</span> - samlet antal tegn i en streng</h2>
+<h1><span class="inl_cmd">len()</span> - antal tegn</h1>
 
 <p><span class="inl_cmd">len()</span> tæller det samlede antal tegn der er i en streng - også mellemrum</p>
 
@@ -202,7 +202,7 @@
 	</code>
 </pre>
 
-<h2><span class="inl_cmd">count()</span> - Antallet af specifikke tegn/strenge i en teskstreng</h2>
+<h1><span class="inl_cmd">count()</span> - antal forekomster</h1>
 
 <p>Hvis man vil undersøge hvor mange gange noget forekommer i en tekstreng anvender man <span class="inl_cmd">count()</span>. Kommandoen fungerer på følgende måde:</p>
 
@@ -256,7 +256,7 @@ if mail[-3:] == ".dk":
 
 <p>... men så havde vi ikke brugt <span class="inl_cmd">count()</span> ;).</p>
 
-<h2><span class="inl_cmd">find()</span> - Find tekstelementer i tekststrenge</h2>
+<h1><span class="inl_cmd">find()</span> - find forekomster</h1>
 
 <p>For at finde tekstelementer i tekststrenge anvender vi funktionen <span class="inl_cmd">find()</span>. Den anvendes på følgende måde:</p>
 
@@ -270,42 +270,45 @@ if mail[-3:] == ".dk":
 
 <pre>
 	<code class="python">
-mail = "yahoo.dk"
+mail = input("Indtast mail der skal tjekkes: ")
+mail_landekode = mail[-4:]
+pos_dot = mail_landekode.find(".")
 
-pos_dot = mail[-4:].find(".")
 print ("Det sidste dot er i position {0}.".format(pos_dot))
-lande_kode = mail[pos_dot+1:]
-print (lande_kode)
+print ("\n\tlandekoden er: {0}".format(mail_landekode[pos_dot+1:]))
 	</code>
 </pre>
 
 <pre class="ubuntu_terminal">
-Det sidste dot er i position 1.
-hoo.dk
+Indtast mail der skal tjekkes: fakeuser.fakemail.com <span class="red">&larr; Brugerinput</span>
 
+Det sidste dot er i position 0.
+
+        landekoden er: com
 
 ------------------
 (program exited with code: 0)
-Press return to continue
+
+Press any key to continue . . .
 </pre>
 
-<p>Som vi kan se går det galt. Problemet er, at programmet finder ud af, at dot står på på position 1 imellem de 4 sidste tegn i mailen. Men vi beder programmet om at udskrive <span class="bold">hele</span> mailen fra positionen. Vi bliver nød til at fortælle Python at den skal finde positionen blandt de fire sidste elementer. Vi skal <span class="inl_cmd">slice slicen</span>:</p>
+<h1>Slice en slice</h1>
+
+<p>Man kan også slice en slice, altså udskille tegn fra en slicet tekst. Se nedestående eksempel fra Idle, hvor mailadressen først bliver slicet af to omgange:</p>
 
 <pre>
 	<code class="python">
-mail = "yahoo.dk"
-
-pos_dot = mail[-4:].find(".")
-print ("Det sidste dot er i position {0}.".format(pos_dot))
-lande_kode = mail[-4:][pos_dot+1:] # Dobbelt op på slice
-
-print (lande_kode)
+>>> "fakeuser@fakemail.dk"[8:]
+'@fakemail.dk'
+>>> "fakeuser@fakemail.dk"[8:][-2:]
+'dk'
 	</code>
 </pre>
 
-<h2>Opgaver</h2>
 
-<h3>Opgave - tjek mail</h3>
+<h1>Opgaver</h1>
+
+<h2>Opgave - tjek mail</h2>
 
 <p>Lav en kode hvor du tjekker en indtastet mail ud fra følgende parametre: </p>
 
@@ -318,7 +321,7 @@ print (lande_kode)
 
 <p>Udskriften skal enten sige om det er en rigtig mail eller angive hvad der er fejlen og bede om en ny indtastning.</p>
 
-<h3>Opgave - tjek mail 2</h3>
+<h2>Opgave - tjek mail 2</h2>
 
 <p>Ændr koden så den også svarer med alle de data du undersøger for:</p>
 
@@ -329,12 +332,12 @@ print (lande_kode)
 	<li>Hvilken landekode mailen har</li>
 </ol>
 
-<h3>Opgave - Bakke snagvendt</h3>
+<h2>Opgave - Bakke snagvendt</h2>
 
-<p>Lav et program hvor brugerens input bliver udskrevet baglæns. Her: <span class="inl_cmd">Ubrugeligt... men sjovt</span></p>
+<p>Lav et program hvor brugerens input bliver udskrevet baglæns. Her: <span class="inl_cmd">Ubrugeligt... men sjov</span></p>
 
 <pre class="ubuntu_terminal">
-	tvojs nem ...tgilegurbU
+	vojs nem ...tgilegurbU
 
 ------------------
 (program exited with code: 0)
