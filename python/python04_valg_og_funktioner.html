@@ -598,10 +598,8 @@ Press return to continue
 
 <details>
 
-	<summary>Overblik over matematik</summary>
-
-	<span class="afsnit">Regneregler</span>
-
+	<summary>Generelle regneregler</summary>
+	
 	<p>Regningsarterne fungerer ved at anvende tegnene: <span class="inl_cmd">+</span>, <span class="inl_cmd">-</span>, <span class="inl_cmd">*</span> og <span class="inl_cmd">/</span>. Se herunder:</p>
 
 	<pre class="ubuntu_terminal">
@@ -632,40 +630,19 @@ Press return to continue
 	>>> (3+6)/2
 	4.5	</pre>
 	
-	<span class="afsnit">Kvadratrødder og potenser</span>
-	
-	<p>For at finde potens tal og rødder anvendes funktionen <span class="inl_cmd">pow(a,b)</span>, hvor <span class="inl_cmd">a</span> er grundtallet og <span class="inl_cmd">b</span> er potensen. Se nedestående eksempler:</p>
+	<p>Læg mærke til at tallene bliver til <span class="inl_cmd">float</span>, når man dividerer.</p>
 
-	<table class="">
-		<thead>
-			<tr>
-				<th>Matematisk udtryk</th>
-				<th>Python funktion</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td><span class="math">\( a^b \)</span></td>
-				<td><span class="inl_cmd">pow(a,b)</span></td>
-			</tr>
-			<tr>
-				<td><span class="math">\( \sqrt[b]{a} = a^{\frac{ 1 }{ b }} \)</span></td>
-				<td><span class="inl_cmd">pow(a,1/b)</span></td>
-			</tr>
-		</tbody>
-	</table>
 
-	<p>Det anbefales at man anvender funktionen <span class="inl_cmd">pow()</span> fremfor <span class="inl_cmd">**</span>. Det gør koden mere læselig.</p>
 
-	<p>Eksempler med <span class="math">\( 2^4 \)</span> og <span class="math">\( \sqrt{4} \)</span>:</p>
+</details>
 
-	<pre class="ubuntu_terminal">
-	>>> pow(2,4) 
-	16
-	>>> pow(4,1/2)
-	2.0	</pre>
+<h3>Er det en faktor</h3>
 
-	<span class="afsnit">Modulus og floor division</span>
+<p>Til denne opgave skal du anvende modulus og floordivision</p>
+
+<details>
+
+	<summary>Brug af modulus og floor division</summary>
 
 	<p>For at finde restværdien og heltallet af en division anvender man henholdsvis <span class="inl_cmd">% (modulus)</span> og <span class="inl_cmd">// (floordivision)</span>.</p>
 
@@ -694,8 +671,7 @@ Press return to continue
 		</tbody>
 	</table>
 
-	<p></p>
-
+<!--
 	<pre class="ubuntu_terminal">
 	>>> 9%5
 	4
@@ -705,6 +681,7 @@ Press return to continue
 	<p>Man kan ved hjælp af <span class="inl_cmd">modulus</span> og <span class="inl_cmd">floor division</span> omskrive en uægte brøk til en blandet brøk efter følgende model:</p>
 
 	<div class="latex">$$ \frac{a}{b} = (a//b)~ \frac{a\%b}{b} $$</div>
+-->
 
 	<span class="afsnit">Anvendelse</span>
 
@@ -716,8 +693,6 @@ Press return to continue
 	</ul>
 
 </details>
-
-<h3>Er det en faktor</h3>
 
 <p>Lav funktionen <span class="inl_cmd">Factor(a,b)</span> der undersøger om a er en faktor i b. Lav et output der ligner nedestående:</p>
 
@@ -803,6 +778,46 @@ x= \frac{ d-b }{ a-c }
 </details>
 
 <h3>Andengradsligning</h3>
+
+<p>Til denne opgave skal du anvender kvadrarødder og potenser</p>
+
+<details>
+
+	<summary>Brug af kvadratrødder og potenser</summary>
+
+	<p>For at finde potens tal og rødder anvendes funktionen <span class="inl_cmd">pow(a,b)</span>, hvor <span class="inl_cmd">a</span> er grundtallet og <span class="inl_cmd">b</span> er potensen. Se nedestående eksempler:</p>
+
+	<table class="">
+		<thead>
+			<tr>
+				<th>Matematisk udtryk</th>
+				<th>Python funktion</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td><span class="math">\( a^b \)</span></td>
+				<td><span class="inl_cmd">pow(a,b)</span></td>
+			</tr>
+			<tr>
+				<td><span class="math">\( \sqrt[b]{a} = a^{\frac{ 1 }{ b }} \)</span></td>
+				<td><span class="inl_cmd">pow(a,1/b)</span></td>
+			</tr>
+		</tbody>
+	</table>
+
+	<p>Det anbefales at man anvender funktionen <span class="inl_cmd">pow()</span> fremfor <span class="inl_cmd">**</span>. Det gør koden mere læselig.</p>
+
+	<p>Eksempler med <span class="math">\( 2^4 \)</span> og <span class="math">\( \sqrt{4} \)</span>:</p>
+
+	<pre class="ubuntu_terminal">
+	>>> pow(2,4) 
+	16
+	>>> pow(4,1/2)
+	2.0	</pre>
+
+
+</details>
 
 <p>Lav funktionen <span class="inl_cmd">2grad(a,b,c)</span> der udregner parablens skæring(er) med x-aksen ud fra normalformen på en andegradsligning: <span class="math">\( ax^2 + bx + c \)</span>. Anvend formlerne herfra: <a href="../matematik/andengradsfunktion.html" target="_blank">../matematik/andengradsfunktion.html</a></p>
 
