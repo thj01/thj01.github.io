@@ -595,9 +595,7 @@ Press return to continue
 
 <pre>
 	<code class="python">
-navn = "Thomas"
-
-for char in navn:
+for char in "Thomas":
     print(char)
 	</code>
 </pre>
@@ -923,28 +921,48 @@ Press return to continue
 
 <h2>continue</h2>
 
-<p>Herunder vil vi lave koden til matematiklegen BUM. Programmet skal udskrive tallene fra 1-15, men den må ikke udskrive tal fra 3-tabellen. Det betyder at vi skal undersøge tallene ved hjælp af  <span class="inl_cmd">modulus</span> (se ovenfor):</p>
+<p><span class="inl_cmd">continue</span> anvendes når vi ikke ønsker at bryde løkken, men at vi gerne vil have at den fortsætter. Se eksemplet herunder</p>
 
 <pre>
 	<code class="python">
-for i in range(1,16):
-    if i%3 == 0:
-        print("BUM", end="  ")
-        continue
-    else:
-        print(i, end="  ")
+for char in 'Thomas':
+   if char == 'm':
+      continue
+   print ('Bogstavet er:', char)
 	</code>
 </pre>
 
 <pre class="ubuntu_terminal">
-1  2  BUM  4  5  BUM  7  8  BUM  10  11  BUM  13  14  BUM  
+Bogstavet er: T
+Bogstavet er: h
+Bogstavet er: o
+Bogstavet er: a
+Bogstavet er: s
 
 ------------------
 (program exited with code: 0)
 Press return to continue
 </pre>
 
-<p>Det koden undersøger om modulus af i er = 0. Hvis den er så udskriver den <span class="inl_cmd">XXX</span> og får koden til at køre videre med næste i værdi. Det er netop forskellen mellem break og continue. <span class="inl_cmd">break</span> afbrød løkken, men <span class="inl_cmd">continue</span> lader den fortsætte.</p>
+<p>Løkken udskriver bogstaverne i tekststrengen <span class="inl_cmd">Thomas</span>, men der er en speciel betingelse ved bogstavet <span class="inl_cmd">m</span>. Vi vil ikke have at bogstavet skal printes, så vi indsætter <span class="inl_cmd">continue</span>, for ikke at bryde løkken, men at fortsætte ved næste bogstav.</p>
+
+<h3>Opgave</h3>
+
+<p>Lav et program der erstatter <span class="inl_cmd">g</span> med <span class="inl_cmd">n</span> i det nedestående tekst.</p>
+
+<code class="cmd">Igennem mange generationer har børn og unge hygget sig med gynger.</code>
+
+<p>Altså så outputtet bliver (på en linje):</p>
+
+<pre class="ubuntu_terminal">
+Inennem manne nenerationer har børn on unne hynnet sin med nynner.
+
+------------------
+(program exited with code: 0)
+Press return to continue
+</pre>
+
+
 
 <h2>pass</h2>
 
@@ -978,39 +996,23 @@ Næste tal er mit lykketal
 Press return to continue
 </pre>
 
-<p><span class="inl_cmd">pass</span> kan også anvendes til at køre opmærksom på en kodestump der mangler </p>
+<p><span class="inl_cmd">pass</span> er brugbar fordi den ikke ændrer på hvordan løkken køres. Man kan f.eks. lave tomme funktioner ... altså funktioner der ikke er konstrueret endnu. Så kan funktionen indsættes når den er lavet.</p>
 
 <pre>
 	<code class="python">
-for i in range(1,11):
-    if i%5==0:
-        print("Kode for tal i 5 tabellen mangler")
-        pass
-    print(i)
+def tomfunktion():
+	pass
+	
+tomfunktion()
 	</code>
 </pre>
 
 <pre class="ubuntu_terminal">
-1
-2
-3
-4
-Kode for tal i 5 tabellen mangler
-5
-6
-7
-8
-9
-Kode for tal i 5 tabellen mangler
-10
-
-
+			<span class="red">&larr; intet output</span>
 ------------------
 (program exited with code: 0)
 Press return to continue
 </pre>
-
-<p><span class="inl_cmd">pass</span> er brugbar fordi den ikke ændrer på hvordan løkken køres.</p>
 
 <h1>Tællere i løkker</h1>
 
