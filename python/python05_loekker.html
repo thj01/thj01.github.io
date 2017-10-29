@@ -1060,16 +1060,11 @@ while True:
 
 <h1>Stopur</h1>
 
-<p>Man kan lave en tidsforsinkelse ved hjælp af <span class="inl_cmd">time()</span></p>
-
-
-
-
-<h2>Nedtælling</h2>
+<p>Man kan lave en tidsforsinkelse ved hjælp af funktionen <span class="inl_cmd">sleep</span> der er i pakken <span class="inl_cmd">time()</span></p>
 
 <pre>
 	<code class="python">
-import time
+from time import sleep
 
 tælFra = 10
 
@@ -1081,7 +1076,7 @@ while tælFra >=0:
 	
 	print (tælFra)
 	tælFra -=1
-	time.sleep(1)
+	sleep(1)
 	</code>
 </pre>
 
@@ -1102,8 +1097,11 @@ Affyr!
 Press return to continue
 </pre>
 
-<p>Koden kan forbedres, så <span class="inl_cmd">print()</span> ikke rykker en ny linie hver gang, ved hjælp af <span class="inl_cmd">\r</span> (carrage return). </p>
+<h2>Opgave</h2>
 
+<p>Ændr koden, så der tælles ned på samme position. For at opnå det skal du anvendde <span class="inl_cmd">\r</span> (carrage return). </p>
+
+<!--
 <pre>
 	<code class="python">
 import time
@@ -1129,6 +1127,7 @@ while tælFra >=0:
 	<li>Ved anden gennemkørsel printes <span class="inl_cmd">9</span> + <span class="inl_cmd">to mellemrum</span> + <span class="inl_cmd">\r</span>. Det sørger for at <span class="inl_cmd">0</span>'et i <span class="inl_cmd">10</span> slettes.</li>
 	<li>osv....</li>
 </ul>
+-->
 	
 </div><!-- end: col-md-9 -->
 
