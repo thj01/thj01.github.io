@@ -422,54 +422,67 @@ Press return to continue
 
 <p>Ofte har man behov for at noget skal udføres gentagne gange. Det kan f.eks. være at udskrive et logo, eller en <span class="inl_cmd">if-else</span> struktur der skal køres ofte. Her anvender man funktioner, så man kan skrive koden en gang, men "kalde" på den lige så ofte man vil.</p>
 
-<p>Lad os prøve at lave et simpelt eksempel, hvor vi anvender en funktion til at indsætte noget f.eks:</p>
-
-<pre >
-╔═══════════════════╗
-║                   ║
-║     Velkommen     ║
-║                   ║
-╚═══════════════════╝
-</pre>
-
-<p>Øverst skriver vi <span class="inl_cmd">def Velkommen()</span>. Det betyder at vi nu definerer en funktion der hedder <span class="inl_cmd">velkommen</span>. Det som står i funktionen bliver først kørt når programmet kalder funktionen, og det gøres ved at skrive <span class="inl_cmd">Velkommen()</span>. Se her eksemplet:</p>
-
-<p>Rammerne omkring velkommen er taget fra ASCII tabellen, som du kan se her: <a href="http://www.theasciicode.com.ar/" target="_blank">http://www.theasciicode.com.ar/</a>.</p>
-
-
+<p>Lad os prøve at lave et simpelt eksempel med funktionen <span class="inl_cmd">produkt()</span>, som udregner produktet af parametrene <span class="inl_cmd">a,b</span>.</p>
 
 <pre>
 	<code class="python">
-def Velkommen():
-
-    print("╔═══════════════════╗")
-    print("║                   ║")
-    print("║     Velkommen     ║")
-    print("║                   ║")
-    print("╚═══════════════════╝")	
+def produkt(a,b):
 	
+	produkt = a*b
+	
+	print("\nProduktet er {0}".format(produkt))
+	
+	
+produkt(2,3) # skal give svaret 6
 
-print("Herunder udskrives funktionen\n")
-Velkommen()
+produkt(3,4) # skal give svaret 12
+	</code>
+</pre>
+
+<pre class="ubuntu_terminal">Produktet er 6
+
+Produktet er 12
+
+------------------
+(program exited with code: 0)
+
+Press any key to continue . . .
+</pre>
+
+<p>Det som du skal være opmærksom på er:</p>
+
+<ul class="none">
+	<li>Den første linie skal starte med <span class="inl_cmd">def</span> og afsluttes med <span class="inl_cmd">:</span></li>
+	<li>Selve funktionen skal afsluttes med parantes indeholdende parametre (<span class="inl_cmd">her produkt(a,b)</span>)</li>
+	<li>Det som hører under funktione skal være rykket ind under den</li>
+	<li>Funktionen anvendes ved at skrive funktionsnavnet og angive de parametre den skal anvende.</li>
+</ul>
+
+<h2>Tomme funktioner</h2>
+
+<p>Man kan også lave tomme funktioner. Forestil dig at du gang på gang i din kode skal have det samme output, f.eks. dine grundinformatiner</p>
+
+<pre>
+	<code class="python">
+def tekst():
+	
+	print("Denne software er lavet af : \n\tThomas Jensen \n\tfakeuser@fakemail.dk")
+	
+tekst()
 	</code>
 </pre>
 
 <pre class="ubuntu_terminal">
-Herunder udskrives funktionen
+Denne software er lavet af :
 
-╔═══════════════════╗
-║                   ║
-║     Velkommen     ║
-║                   ║
-╚═══════════════════╝
+        Thomas Jensen
+        fakeuser@fakemail.dk
 
 ------------------
 (program exited with code: 0)
-Press return to continue
 
+Press any key to continue . . .
 </pre>
-
-<p>Som du kan se springer programmet selve funktionen over, og udfører den først når programmet rammer <span class="inl_cmd">Velkommen()</span>. Definitioner skal derfor placeres øverst i programmet, da programmet ellers ikke vil ane, at det skal gøre når det rammer <span class="inl_cmd">Velkommen()</span>.</p>
 
 <h2>Funktioner med parametre</h2>
 
@@ -483,12 +496,16 @@ def turn_on (a,b):
         return True
 	
 room_temp = 19 # rummets temperatur
+
 turn_on_temp = 18 # Tændningstemperaturen
 
 if turn_on(room_temp,turn_on_temp) is True:
-    print ("tænd")
+
+    print ("tænd") #kommandoen der tænder for blæseren
+    
 else:
-    print ("Sluk")
+
+    print ("Sluk") #kommandoen der slukker for blæseren
 	</code>
 </pre>
 
