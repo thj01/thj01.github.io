@@ -619,6 +619,30 @@ Press return to continue
 	</p>
 </blockquote>
 
+<p>Man kan også printe en tekst ord for ord. Det gøres ved at anvende funktionen <span class="inl_cmd">split()</span>:</p>
+
+<pre>
+	<code class="python">
+tekst = "Dette er en kort tekst"
+
+for word in tekst.split():
+	print(word)
+	</code>
+</pre>
+
+<pre class="ubuntu_terminal">
+Dette
+er
+en
+kort
+tekst
+
+------------------
+(program exited with code: 0)
+
+Press any key to continue . . .
+</pre>
+
 <p>Dette kan anvendes praktisk, hvis man ønsker at finde bestemte tegn i en tekststreng, f.eks. dots (<span class="inl_cmd">.</span>) i en IP-adresse. Herunder vil vi finde placeringen af dots i IP-adressen: 192.168.2.100. Se nedestående tabel, hvor IP-adressen sættes ind i et positionsskema:</p>
 
 <table class="">
@@ -685,29 +709,7 @@ Press return to continue
 
 <p>Vi skal senere lære hvordan vi kan arbejde med tekstrenge, sådan at vi f.eks. kan analysere værdierne der står mellem de forskellige dot's.</p>
 
-<p>Man kan også printe en tekst ord for ord. Det gøres ved at anvende funktionen <span class="inl_cmd">split()</span>:</p>
 
-<pre>
-	<code class="python">
-tekst = "Dette er en kort tekst"
-
-for word in tekst.split():
-	print(word)
-	</code>
-</pre>
-
-<pre class="ubuntu_terminal">
-Dette
-er
-en
-kort
-tekst
-
-------------------
-(program exited with code: 0)
-
-Press any key to continue . . .
-</pre>
 
 
 
