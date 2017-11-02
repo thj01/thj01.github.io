@@ -551,43 +551,35 @@ Press return to continue
 
 <p>Prøv at fjerne linien <span class="inl_cmd">global dobbelt_a</span> og undersøg fejlmeddelelsen.</p>
 
-<!--
-<h2>Check kode</h2>
+<h2>Return i funktioner</h2>
 
-<p>Et trick man kan anvende når man programmerer og ønsker at følge udviklingen af ens variabler er, at lave en <span class="inl_cmd">chk()</span> funktion. Det betyder at når vi sætter variablen <span class="inl_cmd">check</span> = 1, så vil de udføre funktionen ellers ikke. På den måde kan man under kodningen følge med hvad der sker.</p>
+<p>Det smarte ved funktioner er at man kan få dem til at svare med en værdi eller tekstreng. Det gøres ved at bruge <span class="inl_cmd">return</span>. Se eksemplet herunder:</p>
 
 <pre>
 	<code class="python">
-def chk(a):
+def _2tabel(a):
+	# spørger om a er i to tabellen
 	
-    if check == 1:
-        print (a)
-
-check = 1
-mail = "hansboedker@dkmail.dk"
-mail_len = len(mail)
-chk(mail_len)
+	if a%2==0:
+		return True
+	else:
+		return False
+	
+	
+print(_2tabel(17)) 
 	</code>
 </pre>
 
 <pre class="ubuntu_terminal">
-21
+False
 
 ------------------
 (program exited with code: 0)
-Press return to continue
+
+Press any key to continue . . .
 </pre>
 
-<p>Ændres værdien <span class="inl_cmd">check</span> til <span class="inl_cmd">0</span>, vil outputtet være tomt</p>
 
-<pre class="ubuntu_terminal">
-
-
-------------------
-(program exited with code: 0)
-Press return to continue
-</pre>
--->
 
 <h2>Opgaver</h2>
 
@@ -707,7 +699,7 @@ Press return to continue
 
 <h3>Find normalform</h3>
 
-<p>Lav funktionen <span class="inl_cmd">2punkt(a,b,c,d)</span>, der udskriver den linie der kører igennem de to punkter <span class="math">\( P = (a,b) \)</span> og <span class="math">\( Q = (c,d) \)</span>.</p>
+<p>Lav funktionen <span class="inl_cmd">punkter(a,b,c,d)</span>, der udskriver den linie der kører igennem de to punkter <span class="math">\( P = (a,b) \)</span> og <span class="math">\( Q = (c,d) \)</span>.</p>
 
 <p>Altså hvor </p>
 
