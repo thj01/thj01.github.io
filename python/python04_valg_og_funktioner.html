@@ -433,9 +433,9 @@ def produkt(a,b):
 	print("\nProduktet er {0}".format(produkt))
 	
 	
-produkt(2,3) # skal give svaret 6
+produkt(2,3) # skal give svaret "Produktet er 6"
 
-produkt(3,4) # skal give svaret 12
+produkt(3,4) # skal give svaret "Produktet er 12"
 	</code>
 </pre>
 
@@ -451,7 +451,7 @@ Press any key to continue . . .
 
 <p>Det som du skal være opmærksom på er:</p>
 
-<ul class="none">
+<ul class="">
 	<li>Den første linie skal starte med <span class="inl_cmd">def</span> og afsluttes med <span class="inl_cmd">:</span></li>
 	<li>Selve funktionen skal afsluttes med parantes indeholdende parametre (<span class="inl_cmd">her produkt(a,b)</span>)</li>
 	<li>Det som hører under funktione skal være rykket ind under den</li>
@@ -495,17 +495,19 @@ def turn_on (a,b):
     if a > b:	
         return True
 	
-room_temp = 19 # rummets temperatur
+rum_temp = 19 # rummets temperatur
 
-turn_on_temp = 18 # Tændningstemperaturen
+tænd_temp = 18 # Tændningstemperaturen
 
-if turn_on(room_temp,turn_on_temp) is True:
+if turn_on(rum_temp,tænd_temp) is True:
 
+    #Udfør kommandoer hvis den skal tændes
     print ("tænd") #kommandoen der tænder for blæseren
     
 else:
-
-    print ("Sluk") #kommandoen der slukker for blæseren
+	
+    #Udfør kommandoer hvis den skal slukkes
+	print ("Sluk") #kommandoen der slukker for blæseren
 	</code>
 </pre>
 
@@ -521,44 +523,16 @@ Press return to continue
 
 <h2>Variabler i funktioner</h2>
 
-<p>Lad os forestille os at vi vil lave en funktion der ganger et indtastet tal med 2. I selve funktionen laver vi den nye variabel, som efterfølgende skal skrives ud:</p>
+<p>Når laver variabler i funktioner, så gælder de kun indenfor selve funktionen. Det er smart fordi det sikrer at man kan kopierer definitioner ind i sit dokument uden at bekymre sig om det vil "vælte" resten af ens kode pga. ens variabelnavne.</p>
 
-<pre>
-	<code class="python">
-def skriv_tal():
-
-	valgt_tal=int(input("Skriv et tal: "))
-	dobbelt_a=valgt_tal*2
-	
-skriv_tal()
-
-print ("Det fordoblede tal er: {0}".format(dobbelt_a))
-	</code>
-</pre>
-
-<pre class="ubuntu_terminal">
-Skriv et tal: 5
-Traceback (most recent call last):
-  File "test.py", line 10, in <module>
-    print(dobbelt_a)
-NameError: name 'dobbelt_a' is not defined
-
-
-------------------
-(program exited with code: 1)
-Press return to continue
-</pre>
-
-<p>Fejlkoden fortæller os at den ikke kan finde variablen <span class="inl_cmd">dobbelt_a</span>. Det skyldes at variablen er sat inde i funktionen <span class="inl_cmd">skriv_tal()</span> og derfor kun kan anvendes der.</p>
-
-<p>For at omgå dette må vi gøre sådan at variablen bliver tilgængelig i hele programmet. Det opnås ved at oprette variablen globalt før værdien sættes ved at skrive: <span class="inl_cmd">global dobbelt_a</span></p>
+<p><b>HVIS</b> man skal anvende en funktion inde fra en variabel skal den gøres global. Det gøres på følgende måde:</p>
 
 <pre>
 	<code class="python">
 def skriv_tal():
 	
 	valgt_tal=int(input("Skriv et tal: "))
-	global dobbelt_a
+	global dobbelt_a		#Her gøres variablen dobbelt_a global
 	dobbelt_a=valgt_tal*2
 	
 skriv_tal()
@@ -574,6 +548,8 @@ Det fordoblede tal er: 10
 (program exited with code: 0)
 Press return to continue
 </pre>
+
+<p>Prøv at fjerne linien <span class="inl_cmd">global dobbelt_a</span> og undersøg fejlmeddelelsen.</p>
 
 <!--
 <h2>Check kode</h2>
