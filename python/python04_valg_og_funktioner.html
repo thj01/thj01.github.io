@@ -617,7 +617,8 @@ Press any key to continue . . .
 	>>> 3+6/2
 	6.0
 	>>> (3+6)/2
-	4.5	</pre>
+	4.5	
+	</pre>
 	
 	<p>Læg mærke til at tallene bliver til <span class="inl_cmd">float</span>, når man dividerer.</p>
 
@@ -711,18 +712,73 @@ og
 
 <div class="latex">$$ b=y_1-ax_1 $$</div>
 
-<p>Funktionen <span class="inl_cmd">punkter(2,6,5,10)</span> skal altså give udskriften:</p>
+<p>Test din kode med funktionerne:</p>
 
-<pre class="ubuntu_terminal">
-y = 2x+2
-</pre>
+<ul class="none">
+	<li><span class="inl_cmd">punkter(2,6,5,12)</span> <span class="red">&rarr; y = 2.0x+2.0</span></li>
+	<li><span class="inl_cmd">punkter(2,2,-1,-4)</span> <span class="red">&rarr; y = 2.0x-2.0</span></li>
+</ul>
 
+<p>Ændr koden så heltal ikke udskrives som decimaltal, men som <span class="inl_cmd">integers</span>. Du skal bruge funktionen <span class="inl_cmd">is_integer()</span></p>
 
+<details>
 
+	<summary>Brug af <span class="inl_cmd">is_integer()</span></summary>
+
+	<p><span class="inl_cmd">is_integer()</span> undersøger om et tal af typen float, hvis det er returnerer funktionen et <span class="inl_cmd">True</span>.</p>
+	
+	
+	<pre>
+		<code class="python">
+>>> a = 3.14
+>>> a.is_integer()
+False
+>>> a = 2.0
+>>> a.is_integer()
+True</code>
+	</pre>
+	
+	<p>Det betyder at man kan undersøge om et tal skal laves om til en <span class="inl_cmd">integer</span>:</p>
+	
+	<pre>
+		<code class="python">
+a = 3.14
+b = 2.0
+
+if a.is_integer():
+	a = int(a)	
+
+if b.is_integer():
+	b = int(b)
+
+print(a)
+
+print(b)
+		</code>
+	</pre>
+	
+<pre class="ubuntu_terminal">3.14
+2
+
+------------------
+(program exited with code: 0)
+Press return to continue
+
+</pre>	
+	
+
+</details>
+
+<p>Test din kode med funktionerne:</p>
+
+<ul class="none">
+	<li><span class="inl_cmd">punkter(2,6,5,12)</span> <span class="red">&rarr; y = 2x+2</span></li>
+	<li><span class="inl_cmd">punkter(2,2,-1,-4)</span> <span class="red">&rarr; y = 2x-2</span></li>
+</ul>
 
 <h3>Skæring med X aksen</h3>
 
-<p>Lav funktionen <span class="inl_cmd">linie(a,b)</span>, der udregner skæringspunktet med x-aksen ud fra ligningen <span class="math">\( f(x) = ax+b \)</span>, og hvor den skærer y-aksen.</p>
+<p>Lav funktionen <span class="inl_cmd">skæring_x(a,b)</span>, der udregner skæringspunktet med x-aksen ud fra ligningen <span class="math">\( f(x) = ax+b \)</span>, og hvor den skærer y-aksen.</p>
 
 <p>Altså hvor:</p>
 
@@ -746,7 +802,21 @@ $$</div>
 
 </details>
 
-<h3>Skæring mellem to linier</h3>
+<p>Test din kode med linjerne:</p>
+
+<ul class="none">
+	<li>2x+2 <span class="red">&rarr;</span> skæring_x(2,2) <span class="red">&rarr;</span> -1.0</li>
+	<li>2x-2 <span class="red">&rarr;</span> skæring_x(2,-2) <span class="red">&rarr;</span> 1.0</li>
+</ul>
+
+<p>Ændr koden så heltal ikke udskrives som decimaltal, men som <span class="inl_cmd">integers</span>. Du skal bruge funktionen <span class="inl_cmd">is_integer()</span></p>
+
+<ul class="none">
+	<li>2x+2 <span class="red">&rarr;</span> skæring_x(2,2) <span class="red">&rarr;</span> -1</li>
+	<li>2x-2 <span class="red">&rarr;</span> skæring_x(2,-2) <span class="red">&rarr;</span> 1</li>
+</ul>
+
+<h3>Skæring mellem to linier:</h3>
 
 <p>Lav funktionen <span class="inl_cmd">skaering(a,b,c,d)</span>, der udregner skæringspunktet med x-aksen ud fra ligningen <span class="math">\( f(x) = ax+b \)</span>, og  <span class="math">\( g(x) = cx+d \)</span>.</p>
 
@@ -776,6 +846,33 @@ x= \frac{ d-b }{ a-c }
  $$</div>
 
 </details>
+
+<p>Test din kode med linierne:</p>
+
+<ul class="none">
+	<li><span class="math">\( y = 2x-3 \)</span> og <span class="math">\( y = -\frac{ 1 }{ 3 }x+4 \)</span> <span class="red">&rarr;</span> skæring(2,-3,-1/3,4) <span class="red">&rarr;</span> P = (3.0,3.0)</li>
+	<li><span class="math">\( y = \frac{ 1 }{ 2 }x-3 \)</span> og <span class="math">\( y = -1\frac{ 1 }{ 2 }x+3 \)</span> <span class="red">&rarr;</span> skæring(1/2,-3,-1.5,3) <span class="red">&rarr;</span> P = (3.0,-1.5)</li>
+</ul>
+
+<pre class="ubuntu_terminal">Linjerne skærer hinanden i punktet: P = (3.0,3.0)
+
+Linjerne skærer hinanden i punktet: P = (3.0,-1.5)
+
+------------------
+(program exited with code: 0)
+Press return to continue
+</pre>
+
+<p>Ændr koden så heltal ikke udskrives som decimaltal, men som <span class="inl_cmd">integers</span>. Du skal bruge funktionen <span class="inl_cmd">is_integer()</span></p>
+
+<pre class="ubuntu_terminal">Linjerne skærer hinanden i punktet: P = (3,3)
+
+Linjerne skærer hinanden i punktet: P = (3,-1.5)
+
+------------------
+(program exited with code: 0)
+Press return to continue
+</pre>
 
 <h3>Andengradsligning</h3>
 
@@ -819,15 +916,55 @@ x= \frac{ d-b }{ a-c }
 
 </details>
 
-<p>Lav funktionen <span class="inl_cmd">2grad(a,b,c)</span> der udregner parablens skæring(er) med x-aksen ud fra normalformen på en andegradsligning: <span class="math">\( ax^2 + bx + c \)</span>. Anvend formlerne herfra: <a href="../matematik/andengradsfunktion.html" target="_blank">../matematik/andengradsfunktion.html</a></p>
+<p>Lav funktionen <span class="inl_cmd">andengrad(a,b,c)</span> der udregner parablens skæring(er) med x-aksen ud fra normalformen på en andegradsligning: <span class="math">\( ax^2 + bx + c \)</span>. Anvend formlerne herfra: <a href="../matematik/andengradsfunktion.html" target="_blank">../matematik/andengradsfunktion.html</a></p>
 
 <p>Output skal fortælle:</p>
 
 <ul class="none">
+	<li>... om parablens ben vender op eller ned</li>
 	<li>... hvor mange skæringer der er med x-aksen</li>
 	<li>... hvor den skærer y og x-aksen</li>
-	<li>... om parablens ben vender op eller ned</li>
+	<li>... hvad toppunktet er</li>
+	<li>... der må kun stå et fortegn for hvert led (altså ikke <span class="inl_cmd">+-</span></li>
+
 </ul>
+
+<p>Test din kode med funktionerne:</p>
+
+<ul class="none">
+	<li><span class="math">\( f(x) = x^2 + 4x +4 \)</span> <span class="red">&rarr;</span> andengrad(1,4,4)</li>
+	<li><span class="math">\( f(x) = -x^2 - x + 6 \)</span> <span class="red">&rarr;</span> andengrad(-1,-1,6)</li></li>
+</ul>
+
+<p>Du skal lave om til <span class="inl_cmd">integers</span>, hvis det er muligt og programmet skal have følgende udskrift:</p>
+
+<pre class="ubuntu_terminal">Her undersøges funktionen: f(x) = 1x^2 + 4x + 4
+
+	Andegradsliningen har en løsning og skærer x-aksen i punktet -2
+
+	Parablens ben vender opad
+
+	Parablen skærer y-aksen i punktet 4
+
+	Toppunktet er: Tp = ( -2 , 0 )
+
+
+Her undersøges funktionen: f(x) = -1x^2 - 1x + 6
+
+	Andegradsligningen har 2 løsninger og skærer x-aksen i punkterne -3 og 2
+
+	Parablems ben vender nedad
+
+	Parablen skærer y-aksen i punktet 6
+
+	Toppunktet er: Tp = ( -0.5 , 6.25 )
+		
+
+------------------
+(program exited with code: 0)
+Press return to continue
+</pre>
+
 
 <h1>Random</h1>
 
