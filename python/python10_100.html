@@ -37,54 +37,108 @@
 	
 	<div class="title">100</div>
 	
-<h1>Lav dit eget spil</h1>	
-
 <p>Her skal du programmere spillet 100 i forskellige udgaver.</p>
 
 <p>Spillet hundrede går ud på at man slår med en terning, og det gælder om at få ialt 100 point. Man må slå lige så mange gange man vil hver runde, men hvis man slår en 6'er mister man alle sine point i den tur og terningen går videre til den næste. </p>
 
 <p>Herunder er spillet beskrivet i forskellige sværhedsgrader, sådan at du kan starter med sværhedsgrad 1 og udvide det til sværhedsgrad 2 osv.</p>
 
-<h1>100 Sværhedsgrad 1</h1>
+<h1>Sværhedsgrad 1</h1>
 
 <p>Lav først spillet så det kan spille en runde. Du skal altså kunne slå med terningen indtil du slår en 6'er.</p>
 
-<p>Lav en udskrift efter hvert tal der fortæller antallet af slag og det samlede point. Slår du i en 6'er skal programmet fortælle at du har tabt</p>
+<p>Lav en udskrift efter hvert tal der fortæller antallet af slag og det samlede point. Slår du i en 6'er skal programmet fortælle at du har tabt.</p>
 
-<pre class="ubuntu_terminal">Du slog en 2'er, og du har nu 2 point. 
-	
-	Du har slået 1 slag
-	
-Du slog en 4'er, og du har nu 6 point. 
-	
-	Du har slået 2 slag
+<p>Lav output så det kommer til at ligne nedestående:</p>
 
-Du slog desværre en 6'er og har mistet alle dine point
-Du slog ialt 3 gange.
+<pre class="ubuntu_terminal">Du slog en 4'er og du har nu 4 point.
+
+Du slog en 1'er og du har nu 5 point.
+
+Du slog en 2'er og du har nu 7 point.
+
+Du slog en 4'er og du har nu 11 point.
+
+
+        Du slog en 6'er. Du fik ialt 11 point på 4 slag
 
 ------------------
 (program exited with code: 0)
-Press return to continue
+
+Press any key to continue . . .
 </pre>
 
 
 
-<h1>100 sværhedsgrad 2</h1>
+<h1>Sværhedsgrad 2</h1>
 
 <p>Ændr koden, så programmet spørger om spillerens navn og om han ønsker at slå.</p>
 
+<h2>Hvis brugeren ikke vil slå:</h2>
+
+<pre class="ubuntu_terminal">
+Indtast dit navn: Thomas <span class="red">&larr; Brugerinput</span>
+
+Velkommen til Thomas. Vil du gerne starte spillet? (j/n): n <span class="red">&larr; Brugerinput</span>
+ 
+        OK. Hyg dig <span class="red">&larr; Programmets svar</span>
+
+------------------
+(program exited with code: 0)
+
+Press any key to continue . . .
+</pre>
+
+<h2>Hvis der kommer en 6'er</h2>
+
+<pre class="ubuntu_terminal">
+Indtast dit navn: Thomas <span class="red">&larr; Brugerinput</span>
+
+Velkommen til Thomas. Vil du gerne starte spillet? (j/n): j <span class="red">&larr; Brugerinput</span>
+
+Du slog en 1'er og du har nu 1 point.
+Vil du prøve at slå igen? (j/n): j <span class="red">&larr; Brugerinput</span>
 
 
-<h1>100 sværhedsgrad 2</h1>
+        Du slog en 6'er. Du fik ialt 1 point på 1 slag <span class="red">&larr; Reaktion på en 6'er</span>
 
-<p>Lav spillet sådan at det bliver 2 personer der spiller mod hinanden, og at de hver især skal indtaste deres navn</p>
+------------------
+(program exited with code: 0)
 
-<p>Efter hver runde skal spillet fortælle hvor mange runder man har spillet og hvor mange point hver spiller har og mangler for at vinde</p>
+Press any key to continue . . .
+</pre>
 
-<p>Du skal lave koden så der først er erklæret en vinder når begge spillere har haft lige mange runder.</p>
+<h2>Hvis brugeren selv stopper</h2>
+
+<pre class="ubuntu_terminal">
+Indtast dit navn: Thomas <span class="red">&larr; Brugerinput</span>
+
+Velkommen til Thomas. Vil du gerne starte spillet? (j/n): j <span class="red">&larr; Brugerinput</span>
+
+Du slog en 1'er og du har nu 1 point.
+Vil du prøve at slå igen? (j/n): j <span class="red">&larr; Brugerinput</span>
+
+Du slog en 1'er og du har nu 2 point.
+Vil du prøve at slå igen? (j/n): n <span class="red">&larr; Brugerinput</span>
+
+Tak for spillet Thomas <span class="red">&larr; Reaktion på n</span>
+Du fik ialt 2 point på 2 slag.
+
+------------------
+(program exited with code: 0)
+
+Press any key to continue . . .
+</pre>
 
 
-<h1>100 sværhedsgrad 3</h1>
+<h1>Sværhedsgrad 3</h1>
+
+<p>Ændr spillet så du skal spille mod dig selv op til 100. Når du får 100 point skal programmet ønske dig tillykke og fortælle hvor mange runder du har spillet, samt hvor mange slag du har haft i alt.</p>
+
+
+
+
+<h1>Sværhedsgrad 3</h1>
 
 <p>Lav spillet sådan at du kan vælge mellem 1 og 4 spillere, og at programmet kun anerkender 1-4 brugere.</p>
 
