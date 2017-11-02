@@ -532,7 +532,7 @@ Press return to continue
 def skriv_tal():
 	
 	valgt_tal=int(input("Skriv et tal: "))
-	global dobbelt_a		#Her gøres variablen dobbelt_a global
+	global dobbelt_a #Her gøres variablen dobbelt_a global
 	dobbelt_a=valgt_tal*2
 	
 skriv_tal()
@@ -813,7 +813,7 @@ x= \frac{ d-b }{ a-c }
 	>>> pow(2,4) 
 	16
 	>>> pow(4,1/2)
-	2.0	</pre>
+	2.0</pre>
 
 
 </details>
@@ -873,9 +873,9 @@ terningkast = random.randrange(1,6)
 
 <h2>Opgaver</h2>
 
-<h3>Opgave - Terningspil 1</h3>
+<h3>Terningspil 1</h3>
 
-<p>Lav et program hvor man skal spille terning mod computeren.</p>
+<p>Lav et program hvor man skal spille terning mod computeren, og hvor den største værdi vinder.</p>
 
 <ul class="disc">
 	<li>Terningen bliver kastet 1 gang</li>
@@ -883,14 +883,27 @@ terningkast = random.randrange(1,6)
 	<li>Output skal være om computer eller bruger er vinder eller at der er uafgjort</li>
 </ul>
 
-<h3>Opgave - Terningspil 2</h3>
+<pre class="ubuntu_terminal">
+Hvad er dit navn: Thomas
+
+Thomas: 6
+computer: 4
+
+Thomas vandt
+
+------------------
+(program exited with code: 0)
+Press return to continue
+</pre>
+
+<h3>Terningspil 2</h3>
 
 <p>Ændre koden så: </p>
 
 <ul class="disc">
-	<li>brugeren skal vælge mellem en D4, D6, D10 og D20 terning</li>
-	<li>brugeren vælger antallet af slag</li>
-	<li>programmet udnævner en vinder og laver en udskrift af hvor mange gange henholdsvis bruger og computer har vundet og antallet af uafgjorte runder.</li>
+	<li>Brugeren skal vælge mellem en D4, D6, D10 og D20 terning (antallet af sider)</li>
+	<li>Brugeren vælger antallet af slag</li>
+	<li>Programmet udnævner en vinder og laver en udskrift af hvor mange gange bruger og computer har vundet og antallet af uafgjorte runder.</li>
 </ul>
 
 <p>Herunder er et eksempel på en udskrift.</p>
@@ -918,9 +931,9 @@ Lige: 543
 Thomas: 4730
 Computer: 4727
 
------------------------------------------
 Thomas vandt
 
+------------------
 (program exited with code: 0)
 Press return to continue
 </pre>
