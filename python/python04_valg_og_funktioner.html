@@ -1021,8 +1021,9 @@ Press return to continue
 	<code class="python">
 from random import random, randrange
 
-tilfældigtal = random()
-terningkast = randrange(1,6)
+tilfældigtal = random() # giver et tilfældig tal i området [0;1]
+
+terningkast = randrange(1,7) # Giver et tilfældigt heltal i området [1;7[ - altså 1,2,3,4,5,6
 
 print ("Et tilfældigt tal: {0}".format(tilfældigtal))
 print ("\nEt terningkast: {0}".format(terningkast))
@@ -1039,22 +1040,28 @@ Et terningkast: 5
 Press return to continue
 </pre>
 
-<p>I dette eksempel importeres enkelt elementerne fra modulet. Det gør at vi kan kalde modulets funktioner direkte i vores kode. Dvs. for at kunne lave et random tal skal vi blot angive <span class="inl_cmd">random()</span>.</p>
+<details>
 
-<p>Hvis vi blot importerer modulet skal vi hver gang vi anvender noget fra modulet angive både modulets navn og funktion (<span class="inl_cmd">random.random()</span>).</p>
+	<summary>Import af moduler og funktioner</summary>
 
-<pre>
-	<code class="python">
-import random
+	<p>I dette eksempel importeres enkelt elementerne fra modulet. Det gør at vi kan kalde modulets funktioner direkte i vores kode. Dvs. for at kunne lave et random tal skal vi blot angive <span class="inl_cmd">random()</span>.</p>
 
-tilfældigtal = random.random()
-terningkast = random.randrange(1,6)
-	</code>
-</pre>
+	<p>Hvis vi blot importerer modulet skal vi hver gang vi anvender noget fra modulet angive både modulets navn og funktion (<span class="inl_cmd">random.random()</span>).</p>
 
-<p>Begge metoder har deres fordele. Fordelen ved at importere de enkelte moduler hver for sig er, at man i koden kan kalde den konkrete funktion uden at skulle skrive modulets navn først, samt at alle anvendte funktioner står i toppen af dokumentet. Fordelen ved at kalde hele funktionen er, at man i koden kan se når funktioner kaldes fra moduler. Du skal vælge ud fra hvad der giver dig det bedste overblik.</p>
+	<pre>
+		<code class="python">
+	import random
 
-<p>Hvis du senere skal kompilere koden er der en anden overvejelse du skal gøre dig. Hvis du vælger kun at importere elementer fra et modul, så er det kun dem du tager med i det endelige program. Det kan få betydning for programmets størrelse og hastighed.</p>
+	tilfældigtal = random.random()
+	terningkast = random.randrange(1,6)
+		</code>
+	</pre>
+
+	<p>Begge metoder har deres fordele. Fordelen ved at importere de enkelte moduler hver for sig er, at man i koden kan kalde den konkrete funktion uden at skulle skrive modulets navn først, samt at alle anvendte funktioner står i toppen af dokumentet. Fordelen ved at kalde hele funktionen er, at man i koden kan se når funktioner kaldes fra moduler. Du skal vælge ud fra hvad der giver dig det bedste overblik.</p>
+
+	<p>Hvis du senere skal kompilere koden er der en anden overvejelse du skal gøre dig. Hvis du vælger kun at importere elementer fra et modul, så er det kun dem du tager med i det endelige program. Det kan få betydning for programmets størrelse og hastighed.</p>
+
+</details>
 
 <div id="terningspil1"></div>
 
