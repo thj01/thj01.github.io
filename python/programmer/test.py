@@ -1,14 +1,15 @@
-def skæring(a,b):
+def faktor(a,b):
 	
-	x = -b/a
+	if a%b == 0:
+		
+		print("{0} er en faktor i {1}".format(b,a))
 	
-	<ul class="none">
-	<li>2x+2 <span class="red">&rArr;</span> skæring(2,2) <span class="red">&rArr;</span> -1.0</li>
-	<li>2x-2 <span class="red">&rArr;</span> skæring(2,-2) <span class="red">&rArr;</span> 1.0</li>
-</ul>
+	else:
 	
-	print("Linjen skærer x-aksen i værdien {0}".format(x))
+		print("{0} er IKKE en faktor i {1}".format(b,a))
 	
-skæring(2,2)
+faktor(3097,37) # False
 
-skæring(2,-2)
+faktor(2048,8) # True
+
+faktor(10,5) # True
