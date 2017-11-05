@@ -97,6 +97,11 @@
 			<td><span class="inl_cmd">pass</span></td>
 			<td><span class="inl_cmd">pass</span> er hvad man kalder en <span class="inl_cmd">null operation</span>. Med den kommando kan man indsætte ekstra kode for enkelttilfælde uden at resten af koden ændres</td>
 		</tr>
+		<tr>
+			<td><span class="inl_cmd">raise SystemExit</span></td>
+			<td>Egentlig er <span class="inl_cmd">raise SystemExit</span> ikke et kontroludsagn, men en kommando der stopper pythonprogrammet. Når det alligevel nævnes her er det fordi kommandoen kan være smart at bruge, hvis man vil tvinge et program til at stoppe/slukke øjeblikkeligt.
+			</td>
+		</tr>
 	</tbody>
 </table>
 
@@ -577,6 +582,7 @@ Press return to continue
 <code class="python">
 for i in range(1,12):
 	trekanttal = int((i*(i+1))/2)
+
 	print (trekanttal, end=" - ")
 	</code>
 </pre>
@@ -747,6 +753,14 @@ I en 20-kant er vinkelsummen ...
 	<li>For at kunne få outputtet til at skifte linie skal du anvende HTML koden &lt;br&gt;.</li>
 </ul>
 
+<h3>Ord i tekst 2</h3>
+
+<p>Ændr koden i opgaven Ord i tekst 1 (<a href="python04_valg_og_funktioner.html#ordtekst1" target="_blank">henvisning</a>) fra forrige kapitel så det også tæller antallet af gange ordet optræder:</p>
+
+
+
+
+
 <h3>Terningspil 2</h3>
 
 <p>Ændre koden fra opgaven terningspil 1 (<a href="python04_valg_og_funktioner.html#terningspil1" target="_blank">henvisning</a>)fra forrige kapitel på følgende måde:</p>
@@ -815,7 +829,7 @@ Press return to continue
 	<li>Lav to variabler a, b og sæt dem til henholdsvis 0 og 1</li>
 	<li>lav en forløkke der kører op til 20 gange baseret på i</li>
 	<li>lad i vokse med en hver gang koden køres</li>
-	<li>Udskriv a, hvis den er stærre end 0</li>
+	<li>Udskriv a, hvis den er større end 0</li>
 	<li>Gem den gamle værdi for a i en ny variabel (f.eks: old_a)</li>
 	<li>Sæt a = b</li>
 	<li>Sæt b = b + den gamle værdi for a</li>
@@ -920,8 +934,8 @@ print ("\nN I C E")
 <h3>Udvid koden</h3>
 
 <ul class="disc">
-	<li>tallet der skal gættes laves af funktionen <span class="inl_cmd">randrange()</span></li>
-	<li>det efter 4 forsøg i input teksten skriver: Kan man virkeligt gætte forkert så mange gange?</li>
+	<li>Yallet der skal gættes laves af funktionen <span class="inl_cmd">randrange()</span></li>
+	<li>Det efter 4 forsøg i input teksten skriver: Kan man virkeligt gætte forkert så mange gange?</li>
 	<li>At koden af afbrydes med beskeden <span class="inl_cmd">Du er vist useriøs</span>, hvis man ikke skriver et tal mellem 1 og 9.</li>
 	<li>At det skriver "Godt gættet :)!" når du rammer rigtigt</li>
 </ul>

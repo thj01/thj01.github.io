@@ -1,14 +1,4 @@
-def skæring(a,b):
+for i in range(1,12):
+	trekanttal = int((i*(i+1))/2)
 	
-	x = -b/a
-	
-	<ul class="none">
-	<li>2x+2 <span class="red">&rArr;</span> skæring(2,2) <span class="red">&rArr;</span> -1.0</li>
-	<li>2x-2 <span class="red">&rArr;</span> skæring(2,-2) <span class="red">&rArr;</span> 1.0</li>
-</ul>
-	
-	print("Linjen skærer x-aksen i værdien {0}".format(x))
-	
-skæring(2,2)
-
-skæring(2,-2)
+	print (trekanttal, end=" - ")
