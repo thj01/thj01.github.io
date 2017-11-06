@@ -698,28 +698,48 @@ Undersøger om 2 er en faktor i 10
 Press return to continue
 </pre>
 
+<h3>Skæring med X aksen</h3>
 
+<p>Lav funktionen <span class="inl_cmd">skæring_x(a,b)</span>, der udregner skæringspunktet med x-aksen ud fra ligningen <span class="math">\( f(x) = ax+b \)</span>, og hvor den skærer y-aksen.</p>
 
-<h3>Find normalform</h3>
+<p>Altså hvor:</p>
 
-<p>Lav funktionen <span class="inl_cmd">punkter(a,b,c,d)</span>, der udskriver den linie der kører igennem de to punkter <span class="math">\( P = (a,b) \)</span> og <span class="math">\( Q = (c,d) \)</span>.</p>
+<div class="latex">$$ x = \frac{ -b }{ a } $$</div>
 
-<p>Funktionen skal udskrive linien på formen: <span class="math">\( y = ax + b \)</span></p>
+<details>
 
-<p>Altså hvor </p>
+	<summary>Udledning af formel</summary>
 
-<div class="latex">$$ a=\frac{ y_2-y_1 }{ x_2-x_1 } $$</div>
+	<div class="latex">$$ ax+b = 0 
 
-og
+\\ \Updownarrow \\
 
-<div class="latex">$$ b=y_1-ax_1 $$</div>
+ax = -b 
 
-<p>Test din kode med funktionerne:</p>
+\\ \Updownarrow \\
+
+x = \frac{ -b }{ a }
+
+$$</div>
+
+</details>
+
+<p>Test din kode med linjerne:</p>
 
 <ul class="none">
-	<li><span class="inl_cmd">punkter(2,6,5,12)</span> <span class="red">&rarr; y = 2.0x+2.0</span></li>
-	<li><span class="inl_cmd">punkter(2,2,-1,-4)</span> <span class="red">&rarr; y = 2.0x-2.0</span></li>
+	<li>2x+2 <span class="red">&rarr;</span> skæring_x(2,2) <span class="red">&rarr;</span> -1.0</li>
+	<li>2x-2 <span class="red">&rarr;</span> skæring_x(2,-2) <span class="red">&rarr;</span> 1.0</li>
 </ul>
+
+<pre class="ubuntu_terminal">
+Linjen skærer x-aksen i værdien -1.0
+Linjen skærer x-aksen i værdien 1.0
+
+------------------
+(program exited with code: 0)
+
+Press any key to continue . . .
+</pre>
 
 <p>Ændr koden så heltal ikke udskrives som decimaltal, men som <span class="inl_cmd">integers</span>. Du skal bruge funktionen <span class="inl_cmd">is_integer()</span></p>
 
@@ -759,64 +779,91 @@ print(b)
 		</code>
 	</pre>
 	
-<pre class="ubuntu_terminal">3.14
+<pre class="ubuntu_terminal">
+3.14
 2
 
 ------------------
 (program exited with code: 0)
 Press return to continue
-
 </pre>	
 	
 
 </details>
 
-<p>Test din kode med funktionerne:</p>
-
-<ul class="none">
-	<li><span class="inl_cmd">punkter(2,6,5,12)</span> <span class="red">&rarr; y = 2x+2</span></li>
-	<li><span class="inl_cmd">punkter(2,2,-1,-4)</span> <span class="red">&rarr; y = 2x-2</span></li>
-</ul>
-
-<h3>Skæring med X aksen</h3>
-
-<p>Lav funktionen <span class="inl_cmd">skæring_x(a,b)</span>, der udregner skæringspunktet med x-aksen ud fra ligningen <span class="math">\( f(x) = ax+b \)</span>, og hvor den skærer y-aksen.</p>
-
-<p>Altså hvor:</p>
-
-<div class="latex">$$ x = \frac{ -b }{ a } $$</div>
-
-<details>
-
-	<summary>Udledning af formel</summary>
-
-	<div class="latex">$$ ax+b = 0 
-
-\\ \Updownarrow \\
-
-ax = -b 
-
-\\ \Updownarrow \\
-
-x = \frac{ -b }{ a }
-
-$$</div>
-
-</details>
-
-<p>Test din kode med linjerne:</p>
-
-<ul class="none">
-	<li>2x+2 <span class="red">&rarr;</span> skæring_x(2,2) <span class="red">&rarr;</span> -1.0</li>
-	<li>2x-2 <span class="red">&rarr;</span> skæring_x(2,-2) <span class="red">&rarr;</span> 1.0</li>
-</ul>
-
-<p>Ændr koden så heltal ikke udskrives som decimaltal, men som <span class="inl_cmd">integers</span>. Du skal bruge funktionen <span class="inl_cmd">is_integer()</span></p>
-
 <ul class="none">
 	<li>2x+2 <span class="red">&rarr;</span> skæring_x(2,2) <span class="red">&rarr;</span> -1</li>
 	<li>2x-2 <span class="red">&rarr;</span> skæring_x(2,-2) <span class="red">&rarr;</span> 1</li>
 </ul>
+
+<pre class="ubuntu_terminal">
+Linjen skærer x-aksen i værdien -1
+Linjen skærer x-aksen i værdien 1
+
+------------------
+(program exited with code: 0)
+
+Press any key to continue . . .
+</pre>
+
+<h3>Find normalform</h3>
+
+<p>Lav funktionen <span class="inl_cmd">punkter(a,b,c,d)</span>, der udskriver den linie der kører igennem de to punkter <span class="math">\( P = (a,b) \)</span> og <span class="math">\( Q = (c,d) \)</span>.</p>
+
+<p>Funktionen skal udskrive linien på formen: <span class="math">\( y = ax + b \)</span></p>
+
+<p>Altså hvor </p>
+
+<div class="latex">$$ a=\frac{ y_2-y_1 }{ x_2-x_1 } $$</div>
+
+og
+
+<div class="latex">$$ b=y_1-ax_1 $$</div>
+
+<p>Test din kode med funktionerne:</p>
+
+<ul class="none">
+	<li>P = (2,6) og Q = (5,12) <span class="red">&rarr;</span> <span class="inl_cmd">punkter(2,6,5,12)</span> <span class="red">&rarr;</span>  y = 2.0x+2.0</li>
+	<li>P = (2,2) og Q = (-1,-4) <span class="red">&rarr;</span> <span class="inl_cmd">punkter(2,2,-1,-4)</span> <span class="red">&rarr; </span> y = 2.0x-2.0</li>
+</ul>
+
+<pre class="ubuntu_terminal">
+Punkterne P=(2,6) og Q=(5,12) gennemskæres af linjen: y = 2.0x+2.0
+
+
+Punkterne P=(2,2) og Q=(-1,-4) gennemskæres af linjen: y = 2.0x-2.0
+
+------------------
+(program exited with code: 0)
+
+Press any key to continue . . .
+</pre>
+
+<p>Ændr koden så heltal ikke udskrives som decimaltal, men som <span class="inl_cmd">integers</span>. Du skal bruge funktionen <span class="inl_cmd">is_integer()</span></p>
+
+
+
+<p>Test din kode med funktionerne:</p>
+
+<ul class="none">
+	<li>P = (2,6) og Q = (5,12) <span class="red">&rarr;</span> <span class="inl_cmd">punkter(2,6,5,12)</span> <span class="red">&rarr;</span>  y = 2x+2</li>
+	<li>P = (2,2) og Q = (-1,-4) <span class="red">&rarr;</span> <span class="inl_cmd">punkter(2,2,-1,-4)</span> <span class="red">&rarr; </span> y = 2x-2</li>
+</ul>
+
+<pre class="ubuntu_terminal">
+Punkterne P=(2,6) og Q=(5,12) gennemskæres af linjen: y = 2x+2
+
+
+Punkterne P=(2,2) og Q=(-1,-4) gennemskæres af linjen: y = 2x-2
+
+------------------
+(program exited with code: 0)
+
+Press any key to continue . . .
+</pre>
+
+
+
 
 <h3>Skæring mellem to linier:</h3>
 
@@ -976,8 +1023,9 @@ Press return to continue
 	<code class="python">
 from random import random, randrange
 
-tilfældigtal = random()
-terningkast = randrange(1,6)
+tilfældigtal = random() # giver et tilfældig tal i området [0;1]
+
+terningkast = randrange(1,7) # Giver et tilfældigt heltal i området [1;7[ - altså 1,2,3,4,5,6
 
 print ("Et tilfældigt tal: {0}".format(tilfældigtal))
 print ("\nEt terningkast: {0}".format(terningkast))
@@ -994,22 +1042,36 @@ Et terningkast: 5
 Press return to continue
 </pre>
 
-<p>I dette eksempel importeres enkelt elementerne fra modulet. Det gør at vi kan kalde modulets funktioner direkte i vores kode. Dvs. for at kunne lave et random tal skal vi blot angive <span class="inl_cmd">random()</span>.</p>
+<details>
 
-<p>Hvis vi blot importerer modulet skal vi hver gang vi anvender noget fra modulet angive både modulets navn og funktion (<span class="inl_cmd">random.random()</span>).</p>
+	<summary>Import af moduler og funktioner</summary>
 
-<pre>
-	<code class="python">
-import random
+	<p>I dette eksempel importeres enkelt elementerne fra modulet. Det gør at vi kan kalde modulets funktioner direkte i vores kode. Dvs. for at kunne lave et random tal skal vi blot angive <span class="inl_cmd">random()</span>.</p>
 
-tilfældigtal = random.random()
-terningkast = random.randrange(1,6)
-	</code>
-</pre>
+	<p>Hvis vi blot importerer modulet skal vi hver gang vi anvender noget fra modulet angive både modulets navn og funktion (<span class="inl_cmd">random.random()</span>).</p>
 
-<p>Begge metoder har deres fordele. Fordelen ved at importere de enkelte moduler hver for sig er, at man i koden kan kalde den konkrete funktion uden at skulle skrive modulets navn først, samt at alle anvendte funktioner står i toppen af dokumentet. Fordelen ved at kalde hele funktionen er, at man i koden kan se når funktioner kaldes fra moduler. Du skal vælge ud fra hvad der giver dig det bedste overblik.</p>
+	<pre>
+		<code class="python">
+	import random
 
-<p>Hvis du senere skal kompilere koden er der en anden overvejelse du skal gøre dig. Hvis du vælger kun at importere elementer fra et modul, så er det kun dem du tager med i det endelige program. Det kan få betydning for programmets størrelse og hastighed.</p>
+	tilfældigtal = random.random()
+	terningkast = random.randrange(1,7)
+		</code>
+	</pre>
+
+	<p>Begge metoder har deres fordele. Fordelen ved at importere de enkelte moduler hver for sig er, at man i koden kan kalde den konkrete funktion uden at skulle skrive modulets navn først, samt at alle anvendte funktioner står i toppen af dokumentet. Fordelen ved at kalde hele funktionen er, at man i koden kan se når funktioner kaldes fra moduler. Du skal vælge ud fra hvad der giver dig det bedste overblik.</p>
+
+	<p>Hvis du senere skal kompilere koden er der en anden overvejelse du skal gøre dig. Hvis du vælger kun at importere elementer fra et modul, så er det kun dem du tager med i det endelige program. Det kan få betydning for programmets størrelse og hastighed.</p>
+
+</details>
+
+<blockquote>
+	
+	<p>Hvis du får fejlen : <span class="inl_cmd">cannot import name 'random'</span>, skyldes det, at du har en anden fil på computeren der hedder <span class="inl_cmd">random.py</span>:</p>
+	
+	<p>Har du kaldt filen <span class="inl_cmd">python.py</span>, skal du omdøbe den og fjerne den gamle fil fra computeren.</p>
+	
+</blockquote>
 
 <div id="terningspil1"></div>
 

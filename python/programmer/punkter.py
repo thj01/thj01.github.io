@@ -14,11 +14,12 @@ def punkter(a,b,c,d):
 
 	if skæring >= 0:
 		
-		print("y={0}x+{1}".format(hældning, skæring))
+		print("\n\nPunkterne P=({0},{1}) og Q=({2},{3}) gennemskæres af linjen: y = {4}x+{5}".format(a,b,c,d,hældning, skæring))
 	
 	else:
 		
-		print("y={0}x{1}".format(hældning, skæring))
+		print("\n\nPunkterne P=({0},{1}) og Q=({2},{3}) gennemskæres af linjen: y = {4}x{5}".format(a,b,c,d,hældning, skæring))
+		
 
 
 		
