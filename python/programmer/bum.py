@@ -1,10 +1,13 @@
-tal = 20
-tabel = 3
+def bum(a,b):
 
-for i in range(1,tal+1):
+	for i in range(1,a):
 
-	if (i)%tabel==0:
-		print("BUM", end=" ")
-		
-	else:
-		print(i, end=" ")
+		if (i)%b==0:
+			print("BUM\n\n")
+			
+		else:
+			print(i, end=" ")
+
+
+
+bum(2000,37)
