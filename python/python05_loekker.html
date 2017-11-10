@@ -742,22 +742,37 @@ Press return to continue
 
 <p>Lav en løkke der beregner den enkelte vinkel og  den samlede vinkel i en ligesidet polygon med op til 20 sider. Outputtet skal være som nedenfor:</p>
 
-<pre>
-	<code class="html">
-I en 3-kant er vinkelsummen 180&deg; og den enkelte vinkel er 60&deg;
-I en 4-kant er vinkelsummen 360&deg; og den enkelte vinkel er 90&deg;
-...
-I en 20-kant er vinkelsummen ...
-	</code>
+<pre class="ubuntu_terminal">
+I en 3-kant er vinkelsummen 180° og den enkelte vinkel er 60.0°
+I en 4-kant er vinkelsummen 360° og den enkelte vinkel er 90.0°
+I en 5-kant er vinkelsummen 540° og den enkelte vinkel er 108.0°
+I en 6-kant er vinkelsummen 720° og den enkelte vinkel er 120.0°
+I en 7-kant er vinkelsummen 900° og den enkelte vinkel er 128.57142857142858°
+I en 8-kant er vinkelsummen 1080° og den enkelte vinkel er 135.0°
+I en 9-kant er vinkelsummen 1260° og den enkelte vinkel er 140.0°
+I en 10-kant er vinkelsummen 1440° og den enkelte vinkel er 144.0°
+I en 11-kant er vinkelsummen 1620° og den enkelte vinkel er 147.27272727272728°
+I en 12-kant er vinkelsummen 1800° og den enkelte vinkel er 150.0°
+I en 13-kant er vinkelsummen 1980° og den enkelte vinkel er 152.30769230769232°
+I en 14-kant er vinkelsummen 2160° og den enkelte vinkel er 154.28571428571428°
+I en 15-kant er vinkelsummen 2340° og den enkelte vinkel er 156.0°
+I en 16-kant er vinkelsummen 2520° og den enkelte vinkel er 157.5°
+I en 17-kant er vinkelsummen 2700° og den enkelte vinkel er 158.8235294117647°
+I en 18-kant er vinkelsummen 2880° og den enkelte vinkel er 160.0°
+I en 19-kant er vinkelsummen 3060° og den enkelte vinkel er 161.05263157894737°
+
+------------------
+(program exited with code: 0)
+
+Press any key to continue . . .
 </pre>
 
-<p><span class="bold">Hint:</span></p>
+<p>Formlen er:</p>
 
-<ul class="disc">
-	<li>Formlen for en polygons vinkelsum er hvor vinkelsum = 180&deg; &middot; (n-2), og hvor n = antal kanter.</li>
-	<li>Prøvekør løkken ved at udskrive i.</li>
-	<li>For at kunne få outputtet til at skifte linie skal du anvende HTML koden &lt;br&gt;.</li>
-</ul>
+<div class="latex">$$ Vinkelsum = 180 \cdot (n-2) $$</div>
+
+<p></p>
+
 
 <h3>Mini Google</h3>
 
@@ -993,7 +1008,27 @@ print ("\nN I C E")
 
 <h1>Variabler i løkker</h1>
 
+<p>Ofte har man brug for at lave variabler i løkker. Det kan f.eks. være hvis man vil oprette brugere i løkker. Til dette formål anvender man <span class="inl_cmd">dictionaries</span>. En dictionary er en lille tabel med to kolonner hvor første kolonne er opslaget og den anden er værdien</p>
 
+<p>Herunder viser jeg hvordan man opretter en dictionary.</p>
+
+<pre>
+	<code class="python">
+variabel={}
+
+print(variabel)
+
+for i in range(4):
+	
+	variabel ["var{0}".format(i)] = i
+	
+print(variabel)
+	</code>
+</pre>
+
+<pre class="ubuntu_terminal">
+
+</pre>
 
 <h1>Betingede løkker</h1>
 
