@@ -778,6 +778,152 @@ Press any key to continue . . .
 
 <p>Ændr koden i opgaven Ord i tekst 1 (<a href="python04_valg_og_funktioner.html#ordtekst1" target="_blank">henvisning</a>) fra forrige kapitel så det også tæller antallet af gange ordet optræder:</p>
 
+
+
+<h3>Fibonacchi tal</h3>
+
+<p>Fibonaccitallene er en talrække, som har følgende egenskab. Hvis man dividerer et tal i rækken med det forgående tal, så vil dette tal tilnærme sig værdien &phi; (1.6180339...) som også bliver kaldt det gyldne snit. </p>
+
+<p>Fibonaccitalrækken er: 1, 1, 2, 3, 5, 8, 13, 21 ... </p>
+
+<p>Man kan udregne &phi; ud fra følgende formel baseret på fibonaccitallene hvor man tager et fibonaccital og dividerer det med det efterfølgende.</p>
+
+<div class="latex">$$ \phi = \frac{n-1}{n} ~~for~ \to \infty$$</div>
+
+<p>Opgaven er at lave en kode der tager talrækken: 0, 1, 2, 3, 4, 5 .... og laver den om til fibonaccital. på følgende måde:</p>
+
+<ul class="none">
+	<li>0 + 1 = 1</li>
+	<li>1 + 2 = 3</li>
+	<li>2 + 3 = 5</li>
+	<li>3 + 5 = 8</li>
+	<li>5 + 8 = 13</li>	
+</ul>
+
+<p>Koden skal udregne de første 20 fibonaggital: Her er en forklaring på koden:</p>
+
+<ol class="">
+	<li>Lav to variabler a, b og sæt dem til henholdsvis 0 og 1</li>
+	<li>lav en forløkke der kører op til 20 gange baseret på i</li>
+	<li>lad i vokse med en hver gang koden køres</li>
+	<li>Udskriv a, hvis den er større end 0</li>
+	<li>Gem den gamle værdi for a i en ny variabel (f.eks: old_a)</li>
+	<li>Sæt a = b</li>
+	<li>Sæt b = b + den gamle værdi for a</li>
+</ol>
+
+<p>Koden skal give nedestående output</p>
+
+<pre class="ubuntu_terminal">
+1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987 1597 2584 4181 6765 
+
+------------------
+(program exited with code: 0)
+Press return to continue
+</pre>
+
+<p>Kan du ændre i koden så den også regner &phi; ud og giver nedestǻende output?</p>
+
+<pre class="ubuntu_terminal">
+Fibonacci taller er: 1 og φ er: 1.0
+Fibonacci taller er: 1 og φ er: 0.5
+Fibonacci taller er: 2 og φ er: 0.6666666666666666
+Fibonacci taller er: 3 og φ er: 0.6
+Fibonacci taller er: 5 og φ er: 0.625
+Fibonacci taller er: 8 og φ er: 0.6153846153846154
+Fibonacci taller er: 13 og φ er: 0.6190476190476191
+Fibonacci taller er: 21 og φ er: 0.6176470588235294
+Fibonacci taller er: 34 og φ er: 0.6181818181818182
+Fibonacci taller er: 55 og φ er: 0.6179775280898876
+Fibonacci taller er: 89 og φ er: 0.6180555555555556
+Fibonacci taller er: 144 og φ er: 0.6180257510729614
+Fibonacci taller er: 233 og φ er: 0.6180371352785146
+Fibonacci taller er: 377 og φ er: 0.6180327868852459
+Fibonacci taller er: 610 og φ er: 0.6180344478216818
+Fibonacci taller er: 987 og φ er: 0.6180338134001252
+Fibonacci taller er: 1597 og φ er: 0.6180340557275542
+Fibonacci taller er: 2584 og φ er: 0.6180339631667066
+Fibonacci taller er: 4181 og φ er: 0.6180339985218034
+Fibonacci taller er: 6765 og φ er: 0.618033985017358
+
+------------------
+(program exited with code: 0)
+Press return to continue
+</pre>
+
+<p>Lav funktionen <span class="inl_cmd">fibo(n)</span> hvor <span class="inl_cmd">n</span> er antallet af fibonaccital.</p>
+
+
+<h1>Variabler i løkker</h1>
+
+<p>Ofte har man brug for at lave variabler i løkker. Det kan f.eks. være hvis man vil oprette brugere i løkker. Til dette formål anvender man <span class="inl_cmd">dictionaries</span>. En dictionary er en lille tabel med to kolonner hvor første kolonne er opslaget og den anden er værdien.</p>
+
+<p>Forestil dig at vi vil oprette en brugerliste og knytte et brugernummer til dem:</p>
+
+<ul class="none">
+	<li>Anna &rarr; 1</li>
+	<li>Bent &rarr; 2</li>
+</ul>
+
+<p>Herunder viser jeg hvordan man opretter og udskriver dette dictionary.</p>
+
+<pre>
+	<code class="python">
+>>> brugere={"Anne": 1, "Bent": 2}
+>>> brugere
+{'Bent': 2, 'Anne': 1}
+	</code>
+</pre>
+
+<p>Vi har altså nu bundet navnet <span class="inl_cmd">Anne</span> til tallet <span class="inl_cmd">1</span> og navnet <span class="inl_cmd">Bent</span> til tallet <span class="inl_cmd">2</span>.</p>
+
+<p>Fordenel ved dette er, at vi kan ændre værdierne, for hver af indgangene i vores dictionary. Her lægger jeg en til brugeren <span class="inl_cmd">Bent</span>:</p>
+
+<pre class="ubuntu_terminal">
+>>> brugere["Bent"] +=1
+>>> brugere
+{'Bent': 3, 'Anne': 1}
+</pre>
+
+
+
+
+<pre>
+	<code class="python">
+variabel={}
+
+
+for i in range(4):
+	
+	variabel ["var{0}".format(i)] = i
+
+print("Her er hele tabellen\n")
+
+print(variabel)
+
+print("\nHer udprintes var1\n")
+
+print(variabel["var1"])
+	</code>
+</pre>
+
+<pre class="ubuntu_terminal">
+Her er hele tabellen
+
+{'var0': 0, 'var3': 3, 'var2': 2, 'var1': 1}
+
+Her udprintes var1
+
+1
+
+------------------
+(program exited with code: 0)
+
+Press any key to continue . . .
+</pre>
+
+<h2>Opgaver</h2>
+
 <h3>Terningspil 2</h3>
 
 <p>Lav et program der slår med en D6 terning (6 sider) det antal gange brugeren ønsker det, og lav en optælling af hvert terningslag</p>
@@ -866,79 +1012,6 @@ Press return to continue
 
 <p>Er der forskel på om du bruger en <span class="inl_cmd">D4</span> eller en <span class="inl_cmd">D20</span>?</p>
 
-<h3>Fibonacchi tal</h3>
-
-<p>Fibonaccitallene er en talrække, som har følgende egenskab. Hvis man dividerer et tal i rækken med det forgående tal, så vil dette tal tilnærme sig værdien &phi; (1.6180339...) som også bliver kaldt det gyldne snit. </p>
-
-<p>Fibonaccitalrækken er: 1, 1, 2, 3, 5, 8, 13, 21 ... </p>
-
-<p>Man kan udregne &phi; ud fra følgende formel baseret på fibonaccitallene hvor man tager et fibonaccital og dividerer det med det efterfølgende.</p>
-
-<div class="latex">$$ \phi = \frac{n-1}{n} ~~for~ \to \infty$$</div>
-
-<p>Opgaven er at lave en kode der tager talrækken: 0, 1, 2, 3, 4, 5 .... og laver den om til fibonaccital. på følgende måde:</p>
-
-<ul class="none">
-	<li>0 + 1 = 1</li>
-	<li>1 + 2 = 3</li>
-	<li>2 + 3 = 5</li>
-	<li>3 + 5 = 8</li>
-	<li>5 + 8 = 13</li>	
-</ul>
-
-<p>Koden skal udregne de første 20 fibonaggital: Her er en forklaring på koden:</p>
-
-<ol class="">
-	<li>Lav to variabler a, b og sæt dem til henholdsvis 0 og 1</li>
-	<li>lav en forløkke der kører op til 20 gange baseret på i</li>
-	<li>lad i vokse med en hver gang koden køres</li>
-	<li>Udskriv a, hvis den er større end 0</li>
-	<li>Gem den gamle værdi for a i en ny variabel (f.eks: old_a)</li>
-	<li>Sæt a = b</li>
-	<li>Sæt b = b + den gamle værdi for a</li>
-</ol>
-
-<p>Koden skal give nedestående output</p>
-
-<pre class="ubuntu_terminal">
-1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987 1597 2584 4181 6765 
-
-------------------
-(program exited with code: 0)
-Press return to continue
-</pre>
-
-<p>Kan du ændre i koden så den også regner &phi; ud og giver nedestǻende output?</p>
-
-<pre class="ubuntu_terminal">
-Fibonacci taller er: 1 og φ er: 1.0
-Fibonacci taller er: 1 og φ er: 0.5
-Fibonacci taller er: 2 og φ er: 0.6666666666666666
-Fibonacci taller er: 3 og φ er: 0.6
-Fibonacci taller er: 5 og φ er: 0.625
-Fibonacci taller er: 8 og φ er: 0.6153846153846154
-Fibonacci taller er: 13 og φ er: 0.6190476190476191
-Fibonacci taller er: 21 og φ er: 0.6176470588235294
-Fibonacci taller er: 34 og φ er: 0.6181818181818182
-Fibonacci taller er: 55 og φ er: 0.6179775280898876
-Fibonacci taller er: 89 og φ er: 0.6180555555555556
-Fibonacci taller er: 144 og φ er: 0.6180257510729614
-Fibonacci taller er: 233 og φ er: 0.6180371352785146
-Fibonacci taller er: 377 og φ er: 0.6180327868852459
-Fibonacci taller er: 610 og φ er: 0.6180344478216818
-Fibonacci taller er: 987 og φ er: 0.6180338134001252
-Fibonacci taller er: 1597 og φ er: 0.6180340557275542
-Fibonacci taller er: 2584 og φ er: 0.6180339631667066
-Fibonacci taller er: 4181 og φ er: 0.6180339985218034
-Fibonacci taller er: 6765 og φ er: 0.618033985017358
-
-------------------
-(program exited with code: 0)
-Press return to continue
-</pre>
-
-<p>Lav funktionen <span class="inl_cmd">fibo(n)</span> hvor <span class="inl_cmd">n</span> er antallet af fibonaccital.</p>
-
 <h1>While</h1>
 
 <p>While betingelser angiver noget der skal ske så længe en betingelse er opfyldt. Herunder laver vi en kode, der udskriver tallet a så længe det er under 10</p>
@@ -1006,29 +1079,8 @@ print ("\nN I C E")
 
 <p><span class="bold">HINT:</span> for at kunne få en kode til at afbryde anvender man kommandoen <span class="inl_cmd">exit()</span>. Når koden læser denne linie afsluttes kørslen.</p>
 
-<h1>Variabler i løkker</h1>
 
-<p>Ofte har man brug for at lave variabler i løkker. Det kan f.eks. være hvis man vil oprette brugere i løkker. Til dette formål anvender man <span class="inl_cmd">dictionaries</span>. En dictionary er en lille tabel med to kolonner hvor første kolonne er opslaget og den anden er værdien</p>
 
-<p>Herunder viser jeg hvordan man opretter en dictionary.</p>
-
-<pre>
-	<code class="python">
-variabel={}
-
-print(variabel)
-
-for i in range(4):
-	
-	variabel ["var{0}".format(i)] = i
-	
-print(variabel)
-	</code>
-</pre>
-
-<pre class="ubuntu_terminal">
-
-</pre>
 
 <h1>Betingede løkker</h1>
 

@@ -1,18 +1,3 @@
-def bum(a,b):
-	
-	# a er tallene der skal undersøges
-	# b tabellen der skal undersøges
-	
-	for i in range(a):
-		
-		i +=1
-		
-		if i%b == 0:
-			
-			print("BUM")
+brugere={"Anne": 1, "Bent": 2}
 
-		else:
-			
-			print(i)
-
-bum(16,3)
+print(brugere)
