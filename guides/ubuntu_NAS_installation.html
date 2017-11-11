@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <title>NAS Installation</title>
+  <link rel="icon" href="../images/favicon.png">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono|Ubuntu|Ubuntu+Condensed' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/jquery-ui.min.css">
+  <link rel="stylesheet" href="../css/jquery.tocify.css">
+  <link rel="stylesheet" href="../css/style_new.css" />
+<!-- Scripts in bottom to speed up pageload-->
+ 
+
+</head>
+<body>
+	
+	
+<div class="container-fluid">
+
+<div class="row-fluid">
+	
+<div class="col-xs-3">
+	
+	<div id="toc">
+	
+		<div id="toc_headline"></div>
+	
+	</div>
+
+</div><!-- Start slut 1. kolonne - TOC -->
+	
+<div class="col-xs-9">
+	
+<div class="title">Ubuntu NAS <br/> Installation</div>
+
+<p>I Denne guide vil du blive guidet igennem hvordan du laver en NAS server. Guiden er lavet på Virtualbox, og guiden er testet på en fysisk maskine, med følgende konfiguration:</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th colspan="2">Hardware</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>CPU</td>
+			<td>Intel Dualcore</td>
+		</tr>
+		<tr>
+			<td>RAM</td>
+			<td>4 GB</td>
+		</tr>
+		<tr>
+			<td rowspan="2">Harddiske</td>
+			<td>1 stk 1 TB harddisk til systemdrev
+		</td>
+		<tr>
+			<td>2 stk 4 TB harddiske til backup</td>
+		</tr>
+		<tr>
+			<td>DVD</td>
+			<td>Standard R/W</td>
+		</tr>
+
+	</tbody>
+</table>
+
+<p>Til Guiden har jeg anvendt <a href="http://releases.ubuntu.com/16.04/ubuntu-16.04.3-server-amd64.iso" download >Ubuntuserver 16.04.3</a></p>
+
+<h1>Brænding af USB</h1>
+
+<p>Til at brænde <span class="inl_cmd">ISO-filen</span> over på en USB vi jeg anbefale at du anvender følgende programmer:</p>
+
+<p><b>Til Windows: </b> Rufus (<a href="https://rufus.akeo.ie/" target="_blank">https://rufus.akeo.ie/</a>)</p>
+
+<p><b>Til Mac: </b> UNetbootin (<a href="http://unetbootin.github.io/" target="_blank">http://unetbootin.github.io/</a>)</p>
+
+<p><b>Til Ubuntu: </b> Brug det medfølgende program "Startup Disk Creator"</p>
+
+<blockquote>
+	<p>
+		I Guiden vil der blive anvendt en blanding af skærmbilleder og beskrivelser til at vejlede dig. Det er gjort fordi guiden ellers kan blive uoverskuelig med alle de skærmbilleder.
+	</p>
+</blockquote>
+
+<p>Når USB-nøglen er brændt skal du sørge for at din NAS-maskine booter fra USB.</p>
+
+<h1>Start installation</h1>
+
+<details>
+
+	<summary>Anvendelse af installationsprogrammet</summary>
+
+	<p>Installationsprogrammet anvendes ved hjælp af piletaster til at navigere med.</p>
+	
+	<p>Hvis du ikke ændrer i forvalgene kan du nøjes med at trykke på <kbd>Enter</kbd></p>
+	
+	<p>Har du ændret på forvalgene og har trykket dig ned på nogle af "knapperne" i bunden kan du også bruge <kbd>Mellemrum</kbd> til at vælge med.</p>
+	
+	
+
+</details>
+
+
+<p>Vælg installationssprog</p>
+
+<figure id="">
+
+	<img class="p90" src="images/VirtualBox_Ubuntu NAS_01.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Vælg installationsmetode. Her vælger vi <span class="inl_cmd">Install Ubuntu Server with the HWE kernel</span>. En HWE kernel har bl.a. den fordel at den har en rullende opdatering af Linuxkernen.</p>
+
+<figure id="">
+
+	<img class="p90" src="images/VirtualBox_Ubuntu NAS_02.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>En advarsel om at oversættelsen af installationsprogrammet ikke er komplet vælg <span class="terminal_valg">Ja</span> </p>
+
+<figure id="">
+
+	<img class="p90" src="images/VirtualBox_Ubuntu NAS_03.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h1>Sprog og lokation</h1>
+
+<p>Ved de næste 4 vinduer skal du vælge sprog. Hvis du vil have alt på dansk trykker du bare <kbd>Enter</kbd> ved de fire næste vinduer. Ønsker du andre muligheder vælger du dem.</p>
+
+<details>
+
+	<summary>Skærmbilleder hvis du gerne vil se dem</summary>
+
+		<figure id="">
+
+			<img class="p90" src="images/VirtualBox_Ubuntu NAS_04.png" alt="" title="" />
+
+			<figcaption></figcaption>
+
+		</figure>
+		<figure id="">
+
+			<img class="p90" src="images/VirtualBox_Ubuntu NAS_05.png" alt="" title="" />
+
+			<figcaption></figcaption>
+
+		</figure>
+		<figure id="">
+
+			<img class="p90" src="images/VirtualBox_Ubuntu NAS_06.png" alt="" title="" />
+
+			<figcaption></figcaption>
+
+		</figure>
+		<figure id="">
+
+			<img class="p90" src="images/VirtualBox_Ubuntu NAS_07.png" alt="" title="" />
+
+			<figcaption></figcaption>
+
+		</figure>
+
+</details>
+
+<h1>Netværk</h1>
+
+<p>I denne guide lader vi Ubuntu selv konfigurere netværket ved hjælp af Routeren. Det får du muligheder for at ændre til sidst i denne guide.</p>
+
+
+<figure id="">
+
+	<img class="p90" src="images/VirtualBox_Ubuntu NAS_08.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h1>Bruger</h1>
+
+<p>Under opsætningen af din bruger skal du tage stilling til følgende:</p>
+
+<ul class="none fat_li">
+	<li>Dit fulde navn</li>
+	
+		<p>... som skrives korrekt med store og små bogstaver</p>
+	
+	<li>Dit brugernavn</li>
+	
+		<p>... som skrives med små bogstaver (standard) f.eks. <span class="inl_cmd">tj</span></p>
+	
+	<li>Et password</li>
+	
+		<p>... sørg for at lave et godt et, som du kan huske, da det skal bruges når du skal ændre på konfigurationen eller installere programmer</p>
+	
+	<li>Bekræfte dit password</li>
+	
+	
+	<li>Hvis du har anvendt et "svagt" password skal du sige god for det</li>
+	
+		<p>... sig ikke at du ikke blev advaret ;)</p>
+	
+	
+	<li>Sige om du vil have dit hjemme katalog krypteret</li>
+	
+		<p>... ekstra privathed/sikkerhed, hvis der er andre brugere på computeren med administratorrettigheder</p>
+	
+	
+	<li>Bekræfte din tidszone</li>
+</ul>
+
+<details>
+
+	<summary>Skærmbilleder af brugeropsætning</summary>
+
+		<figure id="">
+
+			<img class="p90" src="images/VirtualBox_Ubuntu NAS_09.png" alt="" title="" />
+
+			<figcaption></figcaption>
+
+		</figure>
+		<figure id="">
+
+			<img class="p90" src="images/VirtualBox_Ubuntu NAS_10.png" alt="" title="" />
+
+			<figcaption></figcaption>
+
+		</figure>
+		<figure id="">
+
+			<img class="p90" src="images/VirtualBox_Ubuntu NAS_11.png" alt="" title="" />
+
+			<figcaption></figcaption>
+
+		</figure>
+		<figure id="">
+
+			<img class="p90" src="images/VirtualBox_Ubuntu NAS_12.png" alt="" title="" />
+
+			<figcaption></figcaption>
+
+		</figure>
+		<figure id="">
+
+			<img class="p90" src="images/VirtualBox_Ubuntu NAS_13.png" alt="" title="" />
+
+			<figcaption></figcaption>
+
+		</figure>
+		<figure id="">
+
+			<img class="p90" src="images/VirtualBox_Ubuntu NAS_14.png" alt="" title="" />
+
+			<figcaption></figcaption>
+
+		</figure>
+		<figure id="">
+
+			<img class="p90" src="images/VirtualBox_Ubuntu NAS_15.png" alt="" title="" />
+
+			<figcaption></figcaption>
+
+		</figure>
+
+</details>
+
+<h1>Harddiske</h1>
+
+<figure id="">
+
+	<img class="p90" src="images/VirtualBox_Ubuntu NAS_16.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+<figure id="">
+
+	<img class="p90" src="images/VirtualBox_Ubuntu NAS_17.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h2>Partitionstabel</h2>
+
+<figure id="">
+
+	<img class="p90" src="images/VirtualBox_Ubuntu NAS_18.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h2>Systemdrev</h2>
+
+<figure id="">
+
+	<img class="p90" src="images/VirtualBox_Ubuntu NAS_19.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+<figure id="">
+
+	<img class="p90" src="images/VirtualBox_Ubuntu NAS_20.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+<figure id="">
+
+	<img class="p90" src="images/VirtualBox_Ubuntu NAS_21.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+<figure id="">
+
+	<img class="p90" src="images/VirtualBox_Ubuntu NAS_22.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+<figure id="">
+
+	<img class="p90" src="images/VirtualBox_Ubuntu NAS_23.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+<figure id="">
+
+	<img class="p90" src="images/VirtualBox_Ubuntu NAS_24.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+<figure id="">
+
+	<img class="p90" src="images/VirtualBox_Ubuntu NAS_25.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+<figure id="">
+
+	<img class="p90" src="images/VirtualBox_Ubuntu NAS_26.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+<figure id="">
+
+	<img class="p90" src="images/VirtualBox_Ubuntu NAS_27.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+<figure id="">
+
+	<img class="p90" src="images/VirtualBox_Ubuntu NAS_28.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+<figure id="">
+
+	<img class="p90" src="images/VirtualBox_Ubuntu NAS_29.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+<figure id="">
+
+	<img class="p90" src="images/VirtualBox_Ubuntu NAS_30.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+<figure id="">
+
+	<img class="p90" src="images/VirtualBox_Ubuntu NAS_31.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+<figure id="">
+
+	<img class="p90" src="images/VirtualBox_Ubuntu NAS_32.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h2>RAID 1 opsætning</h2>
+
+<details>
+
+	<summary>Oprette partitionstabel</summary>
+
+
+		<figure id="">
+
+			<img class="p90" src="images/VirtualBox_Ubuntu NAS_34.png" alt="" title="" />
+
+			<figcaption></figcaption>
+
+		</figure>
+		<figure id="">
+
+			<img class="p90" src="images/VirtualBox_Ubuntu NAS_35.png" alt="" title="" />
+
+			<figcaption></figcaption>
+
+		</figure>
+		<figure id="">
+
+			<img class="p90" src="images/VirtualBox_Ubuntu NAS_36.png" alt="" title="" />
+
+			<figcaption></figcaption>
+
+		</figure>
+		<figure id="">
+
+			<img class="p90" src="images/VirtualBox_Ubuntu NAS_37.png" alt="" title="" />
+
+			<figcaption></figcaption>
+
+		</figure>
+</details>
+
+
+
+<figure id="">
+
+	<img class="p90" src="images/VirtualBox_Ubuntu NAS_38.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+<figure id="">
+
+	<img class="p90" src="images/VirtualBox_Ubuntu NAS_39.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+<figure id="">
+
+	<img class="p90" src="images/VirtualBox_Ubuntu NAS_40.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+<figure id="">
+
+	<img class="p90" src="images/VirtualBox_Ubuntu NAS_41.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+<figure id="">
+
+	<img class="p90" src="images/VirtualBox_Ubuntu NAS_42.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+<figure id="">
+
+	<img class="p90" src="images/VirtualBox_Ubuntu NAS_43.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+<figure id="">
+
+	<img class="p90" src="images/VirtualBox_Ubuntu NAS_44.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+<figure id="">
+
+	<img class="p90" src="images/VirtualBox_Ubuntu NAS_45.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+<figure id="">
+
+	<img class="p90" src="images/VirtualBox_Ubuntu NAS_46.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h2>Partitioner RAID</h2>
+
+<figure id="">
+
+	<img class="p90" src="images/VirtualBox_Ubuntu NAS_47.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+<figure id="">
+
+	<img class="p90" src="images/VirtualBox_Ubuntu NAS_48.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+<figure id="">
+
+	<img class="p90" src="images/VirtualBox_Ubuntu NAS_49.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+<figure id="">
+
+	<img class="p90" src="images/VirtualBox_Ubuntu NAS_50.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+<figure id="">
+
+	<img class="p90" src="images/VirtualBox_Ubuntu NAS_51.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+<figure id="">
+
+	<img class="p90" src="images/VirtualBox_Ubuntu NAS_52.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h2>Skriv ændringer</h2>
+
+<figure id="">
+
+	<img class="p90" src="images/VirtualBox_Ubuntu NAS_53.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+<figure id="">
+
+	<img class="p90" src="images/VirtualBox_Ubuntu NAS_54.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h1>Afslut installationen</h1>
+
+<figure id="">
+
+	<img class="p90" src="images/VirtualBox_Ubuntu NAS_55.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+<figure id="">
+
+	<img class="p90" src="images/VirtualBox_Ubuntu NAS_56.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+<figure id="">
+
+	<img class="p90" src="images/VirtualBox_Ubuntu NAS_57.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+<figure id="">
+
+	<img class="p90" src="images/VirtualBox_Ubuntu NAS_58.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+<figure id="">
+
+	<img class="p90" src="images/VirtualBox_Ubuntu NAS_59.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+<figure id="">
+
+	<img class="p90" src="images/VirtualBox_Ubuntu NAS_60.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h1>Første start</h1>
+
+<figure id="">
+
+	<img class="p90" src="images/VirtualBox_Ubuntu NAS_61.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+<figure id="">
+
+	<img class="p90" src="images/VirtualBox_Ubuntu NAS_62.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h2>Opdatering</h2>
+
+<p>Som det første bør du opdatere din NAS. det gøres ved kommandoerne:</p>
+
+<code class="cmd">sudo apt update</code>
+
+<code class="more_cmd">sudo apt upgrade</code>
+
+<p>Den første kommando finder ud af om der er opdateringer til de installerede programmer, og den anden opdaterer dem. Ved den første kommando skal du indtaste dit password (læg mærke til at cursoren ikke bevæger sig), men den anden gang skal du ikke. Det skyldes at Ubuntu husker dit password i nogle få minutter. Derfor bør du også altid logge af når du er færdig med kommandoen <span class="inl_cmd">exit</span>.</p>
+
+
+<h1>Opsætning af netværk</h1>
+
+<p>Under installation valgte vi at lade installationen konfigurere netværket. Dette skal vi have ændret, så det er os selv der styrer dette, og så vi kan få adgang til vores NAS over vores netværk.</p>
+
+<p></p>
+
+
+<h2>Adgang til NAS</h2>
+
+<p>For at få adgang til NAS'en skal vi bruge dens IP-adresse. Det gøres ved at køre følgende kommando på din NAS:</p>
+
+<code class="cmd">hostname -I</code>
+
+<pre class="black">
+tj@NAS:~$ hostname -I
+192.168.43.178 <span class="red">&larr; computerens IP-adresse</span>
+</pre>
+
+<p>Når du har IP-adressen kan du få adgang til din server ved hjælp af SSH, som er et program der giver krypteret kommandolinie adgang til din NAS. En af fordelene herved er, at du kan kopiere kommandoer herfra hjemmesiden og køre kommandoerne uden at skulle indtaste dem.</p>
+
+<blockquote>
+		<p>Bruger du windows 10 vil jeg anbefale at du installerer "Bash for Windows". Du kan bruge denne guide fra Microsoft: <a href="https://msdn.microsoft.com/en-us/commandline/wsl/install-win10" target="_blank">https://msdn.microsoft.com/en-us/commandline/wsl/install-win10</a></p>
+		
+		<p>På den måde har du direkte adgang til SSH ved hjælp af "Bash for Windows".</p>
+
+</blockquote>
+
+<p>Åbn en kommandoprompt og skriv:</p>
+
+<code class="cmd">ssh *brugernavn*@*IP-adresse*</code>
+
+<p>I mit tilfælde vil det være:</p>
+
+<code class="cmd">ssh tj@192.168.43.179</code>
+
+<p>Første gang vil vil du blive spurgt om du vil tilføje computerens informationer og det skal du gøre.</p>
+
+<figure id="">
+
+	<img class="p90" src="images/VirtualBox_Ubuntu NAS_63.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Herefter vil du blive spurgt om dit password. Læg mærke til at curseren ikke bevæger sig når du taster ind. Herefter har du adgang til din NAS som du sad fysisk ved den.</p>
+
+<figure id="">
+
+	<img class="p90" src="images/VirtualBox_Ubuntu NAS_64.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<blockquote>
+	
+	<p>Du kan sagtens nøjes med det du lige har gjort, men ønsker du at have fuld kontrol over din server skal du køre videre med <span class="inl_cmd">Avanceret opsætning herunder</span>.</p>
+	
+</blockquote>
+
+
+
+<h2>Avanceret opsætning</h2>
+
+<p>Det er min anbefaling at du <span class="inl_cmd">segmenterer</span> dit netværk, sådan at din router har nogle IP-adresser der kan fastlåses til specifikke enheder. Du skal logge på din router og finde den menu der styrer det der hedder <span class="inl_cmd">DHCP</span>. </p>
+
+<p>Herunder finder du en indstilling for start og slut IP-adressen. Sørg for at ændre den, så du har nogle ledige adresser. Det vigtige er, at du ikke ændrer på de 3 første tal (her 192.168.43), da det er netværkets adresse.</p>
+
+<p>I mit tilfælde vil jeg gerne frigive adresserne fra 2-49 og derved bliver det:</p>
+
+<ul class="none">
+	<li>start IP-adresse: 192.168.43.50</li>
+	<li>slut IP-adresse: 192.168.43.254 (<span class="red">må ikke være mere end 254</span>)</li>
+</ul>
+
+<p>Nu kan jeg bruge de frigivne adresser (2-49) til faste IP-adresser</p>
+
+
+<blockquote>
+	<p>
+		Du vil nok synes at nogle af de navne og tal vi skal til at skrive er underlige, men der er en teknisk mening bag galskaben. f.eks. engiver navnet enp0s3 hvad det er for et stykke hardware og hvor i computeren det er placeret fysisk.
+	</p>
+	
+	<p>Det er vigtigt at du skriver det som din computer svarer til dig.</p>
+</blockquote>
+
+
+<h3>Netkortets informationer</h3>
+
+<p>Først skal vi finde ud af hvad vores netværkskort hedder. Kør:</p>
+
+<code class="cmd">ip -4 addr show</code>
+
+<pre class="black">
+tj@NAS:~$ ip -4 addr show
+1: lo: &lt;LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+2: <span class="red">enp0s3</span>: &lt;BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+    link/ether 08:00:27:45:fd:aa brd ff:ff:ff:ff:ff:ff
+    inet <span class="red">192.168.43.178/24 brd 192.168.43.255</span> scope global enp0s3
+       valid_lft forever preferred_lft forever
+</pre>
+
+<p>Denne kommando giver os de informationer vi har brug for, nemlig at (markeret med rødt):</p>
+
+<ul class="none">
+	<li>Netkortet hedder: enp0s3</li>
+	<li>Serveren har adressen: 192.168.43.178</li>
+	<li>Netmasken er: /24 (255.255.255.0)</li>
+	<li>Broadcast adressen er: 192.168.43.178</li>
+</ul>
+
+
+<p>Netværket opsættes i konfigurationsfilen <span class="inl_cmd">/etc/network/interfaces</span>:</p>
+
+<code class="cmd">sudo nano /etc/network/interfaces</code>
+
+<p>Det giver os følgende output i <span class="inl_cmd">nano</span>, som er en simpel måde at arbejde med filer på i Ubuntu. (Jeg har markeret det som er interessant for os rødt):</p>
+
+<pre class="black">
+# This file describes the network interfaces available on your system
+# and how to activate them. For more information, see interfaces(5).
+
+source /etc/network/interfaces.d/*
+
+# The loopback network interface 
+auto lo
+iface lo inet loopback
+
+<span class="red"># The primary network interface 
+auto enp0s3
+iface enp0s3 inet dhcp</span>
+</pre>
+
+<p>Det som står ved <span class="inl_cmd">enp0s3</span> er, at netkortet får sin adresse fra DHCP-serveren. Det skal vi have ændret, så min NAS i mit tilfælde får adressen 192.168.43.10 :</p>
+
+<p><b>HUSK: </b> at det skal være de 3 første tal fra din IP-adresse der skal anvendes og at <span class="inl_cmd">dhcp</span> skal ændres til <span class="inl_cmd">static</span>.</p>
+
+<pre class="black">
+# This file describes the network interfaces available on your system
+# and how to activate them. For more information, see interfaces(5).
+
+source /etc/network/interfaces.d/*
+
+# The loopback network interface 
+auto lo
+iface lo inet loopback
+
+#The primary network interface 
+auto enp0s3
+iface enp0s3 inet static <span class="red">&larr; Ændr herfra</span>
+  
+  network 192.168.43.0
+  address 192.168.43.10
+  gateway 192.168.43.1
+  netmask 255.255.255.0
+  broadcast 192.168.43.255
+</pre>
+
+<p>Du gemmer ved følgende tastetryk:</p>
+
+<ol class="">
+	<li><kbd>Ctrl</kbd>+<kbd>X</kbd></li>
+	<li>Herefter spørger programmet om det må gemme "ændret buffer". Du svarer med <kbd>j</kbd></li>
+	<li>Spørger om det er det rigtige filnavn - og det er det, så vi trykker <kbd>Enter</kbd></li>
+</ol>
+
+<p>Herefter er ændringer gemt. Nu skal de aktiveres. For at sikre os at ændringe slår helt igennem vælger vi at genstarte vores NAS</p>
+
+<code class="cmd">sudo reboot</code>
+
+<p>Har du gjort det over SSH, mister du forbindelsen til serveren. Skriv kommandoen:</p>
+
+<code class="cmd">exit</code>
+
+<p>... og brug SSH igen, med den nye IP-adresse. I mit tilfælde:</p>
+
+<code class="cmd">ssh tj@192.168.43.10</code>
+
+<p>Logger du på korrekt har du succesfuldt ændrer IP-adressen på din NAS</p>
+
+<p>Kan du ikke logge på skal du logge ind på NAS'en fysisk og tjekke om du har skrevet alt rigtigt med kommandoen:</p>
+
+<code class="cmd">sudo nano /etc/network/interfaces</code>
+
+	
+</div><!-- end: col-md-9 -->
+
+<footer>
+
+	<p><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons licens" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>Indholdet på Vidas.dk er  er licenseret under <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> og er skrevet af Thomas Jensen. (<a href="../hvem_er_jeg.html" target="_blank">Læs mere</a>)</p>
+
+</footer>
+	
+	
+</div><!-- end: row-fluid -->
+
+</div> <!-- end: container-fluid -->
+
+
+<!-- SCRIPT SECTION -->
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script type="text/javascript" src="../js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="../js/jquery.tocify.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+
+<!-- PRETTYFY-->
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+
+
+<!-- HIGHLIGHT -->
+	<script src="../js/highlight.pack.js" type="text/javascript"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+
+<!-- MATHJAX -->
+<script type="text/javascript" 
+	src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  displayAlign: "left",
+  displayIndent: "0em"
+});
+</script>
+
+
+<!-- TOCIFY -->
+<script>
+	$(function() {var toc = $("#toc").tocify({ selectors: "h1, h2, h3, h4" }).data("toc-tocify"); });
+</script>
+<!-- GOOGLE ANALYTICS -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-89933285-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</body>
+</html>
