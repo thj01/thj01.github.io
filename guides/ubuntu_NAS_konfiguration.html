@@ -37,10 +37,354 @@
 	
 <div class="title">Ubuntu Nas <br/>Konfiguration</div>
 
+<p>Nu hvor vi har installeret grundstammen i vores NAS, og konfigureret netværket, så skal vi til at sætte tjenester og programmer op.</p>
+
+<p>Jeg vil anbefale at du anvender <span class="inl_cmd">ssh</span> til dette, da det vil give dig mulighed for at kopiere kommandoer og konfigurationsfiler fra denne hjemmeside.</p>
+
+<h1>sudo</h1>
+
+<p>Du lagde sikkert mærke til, at der nogle gange stod <span class="inl_cmd">sudo</span> foran nogle af kommandoerne. Det er en af de rigtig smarte ting ved Linux.</p>
+
+<p><span class="inl_cmd">sudo</span> betyder <b>SU</b>peruser <b>DO</b>, og er en smart måde som man anvender til at give nogle bruger administratorrettigheder. Det gør man ved at sætte dem i <span class="inl_cmd">sudo</span>-gruppen. Den bruger du oprettede under installationen er automatisk tilføjet til denne gruppe, og derfor kan du lave systemarbejde.</p>
+
+<p>Lad os prøve at et eksempel, hvor vi genstarter netværkstjenesten. Kør kommandoen: <span class="inl_cmd">service networking restart</span> - altså uden <span class="inl_cmd">sudo</span>.</p>
+
+<pre class="black">
+tj@NAS:~$ service networking restart
+<span class="red">==== AUTHENTICATING FOR org.freedesktop.systemd1.manage-units ===</span>
+Authentication is required to restart 'networking.service'.
+Authenticating as: Thomas Jensen,,, (tj)
+Password: 
+</pre>
+
+<p>Her brokker programmet sig, fordi du ikke har rettighederne til at køre det. Men som en service får du muligheden for at indtaste dit password, så netværket kan genstartes.</p>
+
+<p>Havde du gjort det "rigtigt" med <span class="inl_cmd">sudo</span> ville du have fået følgende output:</p>
+
+<pre class="black">
+tj@NAS:~$ sudo service networking restart 
+[sudo] adgangskode for tj: 
+</pre>
+
+<p>Altså ingen brok, men bare en bekræftelse på at du tilhører <span class="inl_cmd">sudo</span>-gruppen.</p>
+
+<blockquote>
+	<p>
+		Læg mærke til, at hvis du kører flere <span class="inl_cmd">sudo</span> kommandoer efter hinanden, så skal du ikke indtaste dit password. Det skyldes, at Ubuntu husker det et kort stykke tid.
+	</p>
+	
+	<p>Af samme årsag bør man også logge af en computer før man forlader den, for at andre ikke kan misbruge dine rettigheder. Det gøres med kommandoen: <span class="inl_cmd">exit</span>, eller ved at lukke terminalvinduet.</p>
+</blockquote>
+
+
+<h1>Opdatering</h1>
+
+<p>Ubuntu opdateres ved hjælp af det som kaldes <span class="inl_cmd">repositories</span>. et repositorie har hele tiden den nyeste version af programmet der passer til den version af Ubuntu man kører med. Så for at opdatere skal man altså sammenligne de programmer man har installeret med dem som ligger i repository.</p>
+
+<p>Det smarte ved dette system er, at man kan tilføje og fjerne repositories efter behov - og derved få fat i de programmer man ønsker.</p>
+
+<h2>Ændre lokalitet</h2>
+
+<p>Som udgangspunkt henter den installation vi har lavet sine opdateringer fra lokale servere i DK. Det er min erfaring at de nogle gange er langsommere end de generelle. Det er en ting der kun skal laves en gang.</p>
+
+<p>Vi ændrer det ved at køre følgende kommandoer:</p>
+
+<ul class="none fat_li">
+	
+	<li>Laver en backup af konfigurationsfilen hvis noget skulle gå galt. Bør man gøre som en helt naturlig del af ens arbejdsproces</li>
+	
+		<code class="cmd">sudo cp /etc/apt/sources.list /etc/apt/sources.list.backup</code>
+		
+	<li>Erstat alle forekomster af <span class="inl_cmd">dk.archive</span> med <span class="inl_cmd">archive</span></li>
+	
+		<code class="cmd">sudo sed -i s/dk.archive/archive/ /etc/apt/sources.list</code>
+		<p></p>
+	
+</ul>
+
+<details>
+
+	<summary>Hvis det går galt</summary>
+
+	<p>Vi lavede en backup med linien:</p>
+	
+	<code class="cmd">sudo cp /etc/apt/sources.list /etc/apt/sources.list.backup</code>
+	
+	<p>Det vi gjorde var faktisk at kopiere <span class="inl_cmd">/etc/apt/sources.list</span> til en ny fil der hedder <span class="inl_cmd">/etc/apt/sources.list.backup</span></p>
+	
+	<p>For at omgøre dette gør vi det omvendte</p>
+
+	<code class="cmd">sudo cp /etc/apt/sources.list.backup /etc/apt/sources.list</code>
+
+	<p>Husk: Rigtige mænd tager ikke backup ... de græder bare ;)</p>
+	
+	
+</details>
+
+<h2>Opdater</h2>
+
+<p>Opdateringen består af to processer:</p>
+
+<ul class="none fat_li">
+	<li>Opdatering af repositories</li>
+	
+		<code class="cmd">sudo apt update</code>
+
+	
+	<li>Opdatering af programmer</li>
+	
+		<code class="more_cmd">sudo apt upgrade</code>
+
+	<li>Vil du gøre det i en linie</li>
+
+		<code class="cmd">sudo apt update && sudo apt upgrade</code>
+
+</ul>
+
+<p>Læg mærke til at du får en liste over alle de filder skal opgraderes, hvor meget der skal hentes, og hvad det betyder for diskpladsen. Herunder kan du se resultatet på min nyinstallation:</p>
+
+<pre class="black">
+tj@NAS:~$ sudo apt upgrade
+Indlæser pakkelisterne... Færdig
+Opbygger afhængighedstræ        
+Læser tilstandsoplysninger... Færdig
+Beregner opgraderingen... Færdig
+Følgende NYE pakker vil blive installeret:
+  linux-headers-4.10.0-38 linux-headers-4.10.0-38-generic
+  linux-image-4.10.0-38-generic linux-image-extra-4.10.0-38-generic
+Følgende pakker vil blive opgraderet:
+  apparmor bind9-host ca-certificates cryptsetup cryptsetup-bin curl
+  distro-info-data dnsmasq-base dnsutils gcc-5-base git git-man
+  grub-legacy-ec2 initramfs-tools initramfs-tools-bin initramfs-tools-core
+  iproute2 libapparmor-perl libapparmor1 libbind9-140 libcryptsetup4
+  libcurl3-gnutls libdns-export162 libdns162 libgnutls-openssl27 libgnutls30
+  libicu55 libidn11 libisc-export160 libisc160 libisccc140 libisccfg140
+  liblwres141 libmspack0 libpam-systemd libplymouth4 libpython3.5
+  libpython3.5-minimal libpython3.5-stdlib libssl1.0.0 libstdc++6 libsystemd0
+  libudev1 libxml2 linux-firmware linux-generic-hwe-16.04
+  linux-headers-generic-hwe-16.04 linux-image-generic-hwe-16.04 logrotate lshw
+  lxd lxd-client mdadm openssl plymouth plymouth-theme-ubuntu-text
+  python3-distupgrade python3-update-manager python3.5 python3.5-minimal
+  resolvconf snapd systemd systemd-sysv tcpdump tzdata
+  ubuntu-release-upgrader-core udev unattended-upgrades update-manager-core
+  update-notifier-common vlan wget xfsprogs
+74 opgraderes, 4 nyinstalleres, 0 afinstalleres og 0 opgraderes ikke.
+156 MB skal hentes fra arkiverne.
+Efter denne handling, vil 366 MB yderligere diskplads være brugt.
+Vil du fortsætte? [J/n] 
+</pre>
+
+<p>Når du klikker <kbd>j</kbd> bliver alle programmer opdateret.</p>
 
 <h1>SSH</h1>
 
+<p>Så længe serveren kun bliver brugt lokalt kan man egentlig nøjes med den grundopsætning som den kommer med.</p>
+
+<p>Jeg vil dog anbefale at man laver to ændringer, som begge skal laves i filen <span class="inl_cmd">/etc/ssh/sshd_config</span>:</p>
+
+<p>Lav en backup og åbn filen med kommandoen:</p>
+
+<code class="cmd">sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.backup </code>
+
+<code class="cmd">sudo nano /etc/ssh/sshd_config </code>
+
+<span class="afsnit">Fjern root adgang</span>
+
+<p>På denne måde sikrer man sig at brugeren kun har de rettigheder, som der er givet på NAS-serveren</p>
+
+<p>Ændr linien:</p>
+
+<pre class="black">
+PermitRootLogin prohibit-password
+</pre>
+
+<p>til:</p>
+
+<pre class="black">
+PermitRootLogin no
+</pre>
+
+<span class="afsnit">Ændr tilladte brugere</span>
+
+<p>Her kan du administrere hvem der har adgang til at bruge ssh</p>
+
+<p>Gå ned i bunden af filen og tilføj linien (hvor du erstatter <span class="inl_cmd">tj</span> med dit brugernavn):</p>
+
+<pre class="black">
+Allowusers tj
+</pre>
+
+<span class="afsnit">Aktiver ændringer</span>
+
+<p>For at aktivere vores ændringer skal vi genstarte tjenesten:</p>
+
+<code class="cmd">sudo service ssh reload</code>
+
+<p>For at teste at det virker opretter vi brugeren <span class="inl_cmd">test</span>. Kør kommandoen:</p>
+
+<code class="cmd">sudo adduser test</code>
+
+<p>her er output med forklaringer</p>
+
+<pre class="black">
+tj@NAS:~$ sudo adduser test <span class="red">&larr; selve kommandoen</span>
+[sudo] adgangskode for tj: <span class="red">&larr; Indtast password</span>
+Tilføjer bruger »test«...
+Tilføjer ny gruppe »test« (1001)...
+Tilføjer ny bruger »test« (1001) med gruppe »test«...
+Opretter hjemmemappe »/home/test«...
+Kopierer filer fra »/etc/skel«...
+Indtast ny UNIX-adgangskode: <span class="red">&larr; Indtast brugerens password</span>
+Genindtast ny UNIX-adgangskode: <span class="red">&larr; Genindtast brugerens password</span>
+passwd: password updated successfully
+Changing the user information for test
+Enter the new value, or press ENTER for the default
+	Full Name []: <span class="red">&larr; Tryk <kbd>Enter</kbd></span>
+	Room Number []:  <span class="red">&larr; Tryk <kbd>Enter</kbd></span>
+	Work Phone []:  <span class="red">&larr; Tryk <kbd>Enter</kbd></span>
+	Home Phone []:  <span class="red">&larr; Tryk <kbd>Enter</kbd></span>
+	Other []:  <span class="red">&larr; Tryk <kbd>Enter</kbd></span>
+Er informationerne korrekte? [J/n]  <span class="red">&larr; Tryk <kbd>Enter</kbd></span>
+tj@NAS:~$
+</pre>
+
+<p>Log af din NAS med kommandoen:</p>
+
+<code class="cmd">exit</code>
+
+<p>Log på med den nye bruger (husk at ændre til din IP-adresse):</p>
+
+<code class="cmd">ssh test@192.168.43.10</code>
+
+<pre class="black">
+tj@tj-desktop:~$ ssh test@192.168.43.10
+test@192.168.43.10's password: 
+Permission denied, please try again.
+test@192.168.43.10's password: 
+Connection to 192.168.43.10 closed by remote host.
+Connection to 192.168.43.10 closed.
+tj@tj-desktop:~$ 
+</pre>
+
+<p>Hvis du vil overbevise dig selv så prøv at give test tilladelse:</p>
+
 <h1>Webmin</h1>
+
+<p>Webmin er et web-interface der kan bruges til at administrere din NAS server. For at installere skal vi først have installereret <abbr title="Linux Apache MySQL PHP">LAMP</abbr>, som er en komplet webserverløsning til Linux.</p>
+
+<h2>Installer LAMP</h2>
+
+<code class="cmd">sudo tasksel install lamp-server</code>
+
+<p>I løbet af installationen skal du angive et password til MySQL databasens root-bruger. Det skal du gøre to gange (anden gang for at bekræfte)</p>
+
+<figure id="">
+
+	<img class="p20" src="images/High-contrast-camera-photo.svg" alt="" title="" />
+
+	<figcaption>VirtualBox_Ubuntu NAS_65.png</figcaption>
+
+</figure>
+
+<p>Når installationen er færdig skal den lige testes. Det gør vi ved at åbne en browser på en anden computer og indtaste adressen på NAS-serveren, her: 192.168.43.10</p>
+
+<figure id="">
+
+	<img class="p90" src="images/VirtualBox_Ubuntu NAS_66.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Det du ser er en testside der viser at LAMP-serveren er blevet installeret korrekt.</p>
+
+<h2>Installer WebMin</h2>
+
+<p>Webmin bliver af forskellige årsager ikke tilbudt ved hjælp af de normale repositories. Derfor skal vi lave lidt indledende arbejde selv (brug samme metode som ovenfor)</p>
+
+<p>Vi skal:</p>
+
+<ol class="">
+	<li>Tilføje Webmins eget repository</li>
+	<li>Installere en GPG-nøgle, sådan at vi sikerer os at opdateringerne kommer fra den rigtige kilde</li>
+	<li>Opdatere vores repositories</li>
+	<li>Installere <span class="inl_cmd">apt-transport-https</span> og <span class="inl_cmd">webmin</span>.</li>
+</ol>
+
+<p>Udfør:</p>
+
+<ul class="fat_li none">
+	<li>Tilføj følgende linie i bunden af <span class="inl_cmd">/etc/apt/sources.list</span></li>
+	
+		<code class="cmd"># Webmin repository <br/> deb https://download.webmin.com/download/repository sarge contrib</code>
+	
+	<li>Tilføj GPG-nøgle</li>
+	
+		<code class="cmd">wget http://www.webmin.com/jcameron-key.asc</code>
+		
+		<code class="more_cmd">sudo apt-key add jcameron-key.asc</code>
+	
+	<li>Opdatere repositories</li>
+	
+		<code class="cmd">sudo apt update</code>
+	
+	<li>Installere Webmin</li>
+	
+		<code class="cmd">sudo apt-get install apt-transport-https webmin</code>
+	
+</ul>
+
+<h3>Første start af Webmin</h3>
+
+<p>Læg mærke til følgende i output fra installtionen:</p>
+
+<pre class="black">
+Webmin install complete. You can now login to https://NAS:10000/
+as root with your root password, or as any user who can use sudo
+to run commands as root.
+</pre>
+
+<p>Indtast <span class="inl_cmd">https://nas:10000</span> i browseren</p>
+
+<figure id="">
+
+	<img class="p90" src="images/VirtualBox_Ubuntu NAS_67.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Grunden til at vi bliver advareret er, at browseren ikke kan finde noget certifikat - hvilket vi heller ikke har lavet. Klik på <span class="inl_cmd">AVANCERET</span></p>
+
+<figure id="">
+
+	<img class="p90" src="images/VirtualBox_Ubuntu NAS_68.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Vælg: <span class="inl_cmd">Fortsæt til nas (usikkert)</span>. </p>
+
+<figure id="">
+
+	<img class="p60" src="images/VirtualBox_Ubuntu NAS_69.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Log ind med din almindelige bruger, da han er en del af <span class="inl_cmd">sudo</span>-gruppen:</p>
+
+<figure id="">
+
+	<img class="p90" src="images/VirtualBox_Ubuntu NAS_70.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Nu er webmin installeret. Vi vil anvende webmin til at administrere vores server herfra:</p>
 
 <h1>SAMBA</h1>
 
