@@ -1058,12 +1058,16 @@ Press return to continue
 	<code class="python">
 print("Gæt på et tal mellem 1 og 9\n")
 
-a = 0
+starter = 1
 
-while a != 8:
-    a = int(input("Gæt hvilket tal jeg er: "))
+gæt = 0
 
-print ("\nN I C E")
+while starter == 1 :
+	gæt = int(input("Gæt hvilket tal jeg er: "))
+
+	if gæt == 8:
+		print ("\nN I C E")
+		exit()
 	</code>
 </pre>
 
