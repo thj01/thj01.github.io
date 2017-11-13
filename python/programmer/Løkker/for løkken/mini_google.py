@@ -10,6 +10,7 @@ Et andet vigtigt mål for Pythons udviklere er at sproget skal være sjovt at br
 
 valg = input("Hvilket ord vil du søge på?: ")
 
+
 antal = 0
 
 for word in tekst.split():
@@ -20,3 +21,5 @@ for word in tekst.split():
 		
 	
 print("Ordet {0} står i teksten {1} gang(e)".format(valg, antal))
+
+
