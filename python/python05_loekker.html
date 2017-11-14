@@ -875,7 +875,7 @@ brugerliste={}
 
 for i in range(3):
 	
-	brugernavn = input("\nHvad skal du bruger hedde?: ")
+	brugernavn = input("\nHvad er brugerens navn?: ")
 	password = int(input("\n\tIndtast password (kun tal): "))
 	
 	brugerliste["{0}".format(brugernavn)] = password
@@ -888,15 +888,15 @@ print("\n\nHer er din brugerliste: {0}".format(brugerliste))
 
 <pre class="ubuntu_terminal">
 	
-Hvad skal du bruger hedde?: Thomas
+Hvad er brugerens navn?: Thomas
 
         Indtast password (kun tal): 123
 
-Hvad skal du bruger hedde?: Kurt
+Hvad er brugerens navn?: Kurt
 
         Indtast password (kun tal): 234
 
-Hvad skal du bruger hedde?: Niels
+Hvad er brugerens navn?: Niels
 
         Indtast password (kun tal): 345
 
@@ -909,6 +909,33 @@ Her er din brugerliste: {'Thomas': 123, 'Niels': 345, 'Kurt': 234}
 
 Press any key to continue . . .
 </pre>
+
+<p>Man kan også skrive et dictionary mere overskueligt:</p>
+
+<pre>
+	<code class="python">
+release = {
+
+		"Hans" : 1,
+		"Grethe" : 2,
+		"Heks" : 3
+
+	}
+	
+print (release)
+	</code>
+</pre>
+
+<pre class="ubuntu_terminal">
+{'Heks': 3, 'Grethe': 2, 'Hans': 1}
+
+------------------
+(program exited with code: 0)
+
+Press any key to continue . . .
+</pre>
+
+
 
 <h2>Opgaver</h2>
 
