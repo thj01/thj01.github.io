@@ -440,9 +440,11 @@
 
 <h1>for løkken</h1>
 
-<p></p>
+<p>Nogle gange skal man have sit program til at udgøre den samme operation flere gange. Til at udføre dette anvendes man løkker.</p>
 
-<p>Nogle gange skal man have sit program til at udgøre den samme operation flere gange. til at udføre dette anvendes man løkker.</p>
+<h2>Fortløbende</h2>
+
+<p>Her udskriver vi tal i rækkefølge.</p>
 
 <pre>
 	<code class="python">
@@ -493,6 +495,8 @@
 <p>Læg mærke til at <span class="inl_cmd">13</span> ikke udskrives, som vi umiddelbart ville forvente. I <span class="inl_cmd">range()</span> er den første værdi inkluderet men ikke den sidste. Det giver den fordel at den udskriver præcis <span class="inl_cmd">13-8=5</span> værdier.</p>
 
 
+<h2>Udkskriv vandret</h2>
+
 <p>Det kan være uhensigtsmæssigt at få talrækker som den ovenstående udskrevet med et linieskift hver gang. Ændr koden til ved at tilføje <span class="inl_cmd">end=" "</span>:</p>
 
 <pre>
@@ -528,6 +532,28 @@
 for i in range(startværdi, slutværdi, vækst pr. omgang)
 	</code>
 </pre>
+
+<h2>Udskriv baglæns</h2>
+
+<p>Dette kan vi også bruge til at tælle baglæs med:</p>
+
+<pre>
+	<code class="python">
+>>> for i in range(10,-1,-1):
+	print(i)
+
+5
+4
+3
+2
+1
+0
+	</code>
+</pre>
+
+<p>Læg mærke til at startværdien skal være større end slutværdien.</p>
+
+<h2>Brug af tælleren</h2>
 
 <p>Nogle gange skal den samme programlinie køres flere gange. Det kan f.eks. være hvis man gerne vil finde de 12 første trekanttal – altså talrække 1, 3, 6, 10, 15, 21... . Man kan udregne tallene med formlen herunder:</p>
 
@@ -1034,7 +1060,6 @@ while a &lt; 10:
     a +=1
     print (a)
 
-print ("\nNu har vi udskrevet de 10 første tal")
 	</code>
 </pre>
 
@@ -1050,15 +1075,84 @@ print ("\nNu har vi udskrevet de 10 første tal")
 9
 10
 
-Nu har vi udskrevet de 10 første tal
-
-
 ------------------
 (program exited with code: 0)
 Press return to continue
 </pre>
 
 <p>Det som koden gør er, at mens (<span class="inl_cmd">while</span>) betingelsen er opfyldt kører den det som er rykket ind under koden. I dette tilfælde kører koden indtil a ikke længere er mindre en 10.</p>
+
+<h2>While True</h2>
+
+<p>Hvis man gerne vil have at en løkke skal køre uanset hvad, så kan man sætte den til at køre ved at bruge: <span class="inl_cmd">while True</span>. Se eksemplet herunder hvir koden kører indtil brugeren skriver: <span class="inl_cmd">Hej</span>:</p>
+
+<pre>
+	<code class="python">
+while True:
+
+	valg = input("Skriv 'Hej': ")
+	
+	if valg == "Hej":
+	
+		print("Tak!")
+		
+		break
+	</code>
+</pre>
+
+<pre class="ubuntu_terminal">
+Skriv 'Hej': tak
+Skriv 'Hej': nej
+Skriv 'Hej': STOP NU
+Skriv 'Hej': hej
+Skriv 'Hej': SKAL DET VÆRE MED STORT FORBOGSTAV
+Skriv 'Hej': Hej
+Tak!
+
+------------------
+(program exited with code: 0)
+
+Press any key to continue . . .
+</pre>
+
+<p>Husk en computer er meget tålmodig</p>
+
+
+<h2>Tællere i løkker</h2>
+
+<p>Hvis vi kikker på den første betingede <span class="inl_cmd">while</span>-løkke vi lavede ovenfor, så vil den køre indtil brugeren taster rigtigt. Herunder vil vi kigge på en metode til at begrænse antallet af forsøg.</p>
+
+<p>Vi indsætter simpelthen en øvre grænse for hvor mange gange koden må løbe og laver et <span class="inl_cmd">break</span> når grænsen er nået. Jeg har valgt at kommentere direkte i koden.</p>
+
+<pre>
+	<code class="python">
+# Den øvre grænse
+limit = 3
+
+while True:
+    antalBrugere = int(input("Indtast antal brugere (1-4): "))
+    
+    if antalBrugere >=1 and antalBrugere &lt;=4:
+        print("\nDer er {0} brugere)".format(antalBrugere))
+        break #Hop ud af while løkken
+    else:
+        #Tæller en ned på den øvre grænse når brugeren vælger forkert
+        limit -=1 
+	
+        #Det løkken gør så længe der er forsøg tilbage
+        if limit > 0: 
+            print("\n\tDer skal være mellem 1 og 4 brugere.")
+            print("\n\tDu har nu {0} forsøg tilbage\n".format(limit))
+
+        # Det løkken gør når grænsen er nået
+        else: 
+            print("\nDu har ikke flere forsøg tilbage - bye bye")
+            break #Hop ud af while løkken
+	</code>
+</pre>
+
+
+
 
 <h2>Opgaver</h2>
 
@@ -1091,7 +1185,74 @@ while starter == 1 :
 
 <p><span class="bold">HINT:</span> for at kunne få en kode til at afbryde anvender man kommandoen <span class="inl_cmd">exit()</span>. Når koden læser denne linie afsluttes kørslen.</p>
 
+<h3>Dril</h3>
 
+<p>Lav en kode der gentager hvad du siger - indtil du siger <span class="inl_cmd">klorofyl</span></p>
+
+<pre class="ubuntu_terminal">
+Skriv noget: Hej
+
+Hej: Hvad sker der
+
+Hvad sker der: STOP DET DER
+
+STOP DET DER: klorofyl
+
+        Du sagde det magiske ord.
+
+------------------
+(program exited with code: 0)
+
+Press any key to continue . . .
+</pre>
+
+<h3>Stopur</h3>
+
+
+<p>Man kan lave en tidsforsinkelse ved hjælp af funktionen <span class="inl_cmd">sleep</span> der er i pakken <span class="inl_cmd">time()</span></p>
+
+<pre>
+	<code class="python">
+from time import sleep
+
+while True:
+
+	for i in range(5,-1,-1):
+		
+		if i ==0:
+			print("Fyr")
+			exit()
+		
+		print(i)
+		sleep(1)
+	</code>
+</pre>
+
+<pre class="ubuntu_terminal">
+5
+4
+3
+2
+1
+Affyr!
+
+------------------
+(program exited with code: 0)
+Press return to continue
+</pre>
+
+<p>Ændr koden, så der tælles ned på samme position. For at opnå det skal du anvende escape character'en <span class="inl_cmd">\r</span> (carrage return). </p>
+
+
+<h3>Tabeltræner</h3>
+
+<p>Lav et program der stiller 5 tilfældige regnestykker fra den lille tabel (1-9). Programmet skal tælle:</p>
+
+<ul class="disc">
+	<li>Antal rigtige</li>
+	<li>Antal forsøg tilbage</li>
+	<li>Udregne antal % rigtige, med en decimal</li>
+</ul>
 
 
 <h1>Betingede løkker</h1>
@@ -1202,21 +1363,7 @@ Press return to continue
 
 <p>Løkken udskriver bogstaverne i tekststrengen <span class="inl_cmd">Thomas</span>, men der er en speciel betingelse ved bogstavet <span class="inl_cmd">m</span>. Vi vil ikke have at bogstavet skal printes, så vi indsætter <span class="inl_cmd">continue</span>, for ikke at bryde løkken, men at fortsætte ved næste bogstav.</p>
 
-<h3>Opgave</h3>
 
-<p>Lav et program der erstatter <span class="inl_cmd">g</span> med <span class="inl_cmd">n</span> i det nedestående tekst.</p>
-
-<code class="cmd">Igennem mange generationer har børn og unge hygget sig med gynger.</code>
-
-<p>Altså så outputtet bliver (på en linje):</p>
-
-<pre class="ubuntu_terminal">
-Inennem manne nenerationer har børn on unne hynnet sin med nynner.
-
-------------------
-(program exited with code: 0)
-Press return to continue
-</pre>
 
 
 
@@ -1300,86 +1447,18 @@ print("Du slog en 6'er") # denne linie kommer med
 </pre>
 
 
-
-<h1>Tællere i løkker</h1>
-
-<p>Hvis vi kikker på den første betingede <span class="inl_cmd">while</span>-løkke vi lavede ovenfor, så vil den køre indtil brugeren taster rigtigt. Herunder vil vi kigge på en metode til at begrænse antallet af forsøg.</p>
-
-<p>Vi indsætter simpelthen en øvre grænse for hvor mange gange koden må løbe og laver et <span class="inl_cmd">break</span> når grænsen er nået. Jeg har valgt at kommentere direkte i koden.</p>
-
-<pre>
-	<code class="python">
-# Den øvre grænse
-limit = 3
-
-while True:
-    antalBrugere = int(input("Indtast antal brugere (1-4): "))
-    
-    if antalBrugere >=1 and antalBrugere &lt;=4:
-        print("\nDer er {0} brugere)".format(antalBrugere))
-        break #Hop ud af while løkken
-    else:
-        #Tæller en ned på den øvre grænse når brugeren vælger forkert
-        limit -=1 
-	
-        #Det løkken gør så længe der er forsøg tilbage
-        if limit > 0: 
-            print("\n\tDer skal være mellem 1 og 4 brugere.")
-            print("\n\tDu har nu {0} forsøg tilbage\n".format(limit))
-
-        # Det løkken gør når grænsen er nået
-        else: 
-            print("\nDu har ikke flere forsøg tilbage - bye bye")
-            break #Hop ud af while løkken
-	</code>
-</pre>
-
-
 <h2>Opgaver</h2>
 
-<h3>Tabeltræner</h3>
+<h3>Erstat bogstaver</h3>
 
-<p>Lav et program der stiller 5 tilfældige regnestykker fra den lille tabel (1-9). Programmet skal tælle:</p>
+<p>Lav et program der erstatter <span class="inl_cmd">g</span> med <span class="inl_cmd">n</span> i det nedestående tekst.</p>
 
-<ul class="disc">
-	<li>Antal rigtige</li>
-	<li>Antal forsøg tilbage</li>
-	<li>Udregne antal % rigtige, med en decimal</li>
-</ul>
+<code class="cmd">Igennem mange generationer har børn og unge hygget sig med gynger.</code>
 
-<h1>Stopur</h1>
+<p>Altså så outputtet bliver (på en linje):</p>
 
-<p>Man kan lave en tidsforsinkelse ved hjælp af funktionen <span class="inl_cmd">sleep</span> der er i pakken <span class="inl_cmd">time()</span></p>
-
-<pre>
-	<code class="python">
-from time import sleep
-
-tæller = 10
-
-while tæller >=0:
-	
-	if tæller == 0:
-		print("Affyr!")
-		break
-	
-	print (tæller)
-	tæller -=1
-	sleep(1)
-	</code>
-</pre>
-
-<pre class="ubuntu_terminal">10
-9
-8
-7
-6
-5
-4
-3
-2
-1
-Affyr!
+<pre class="ubuntu_terminal">
+Inennem manne nenerationer har børn on unne hynnet sin med nynner.
 
 ------------------
 (program exited with code: 0)
@@ -1388,9 +1467,6 @@ Press return to continue
 
 
 
-<h2>Opgave</h2>
-
-<p>Ændr koden, så der tælles ned på samme position. For at opnå det skal du anvende escape character'en <span class="inl_cmd">\r</span> (carrage return). </p>
 
 <!--
 <pre>
