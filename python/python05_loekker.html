@@ -101,11 +101,6 @@
 			<td>exit()</td>
 			<td><span class="inl_cmd">exit()</span> er den kommando der får programmet til at afslutte. Det er den korrekte måde at gøre det på og svarer til at lukke en computeren rigtigt ned.</td>
 		</tr>
-		<tr>
-			<td><span class="inl_cmd">raise SystemExit</span></td>
-			<td>Egentlig er <span class="inl_cmd">raise SystemExit</span> ikke et kontroludsagn, men en kommando der stopper pythonprogrammet ligesom en computer stopper når man hiver strømstikket.. Når det alligevel nævnes her er det fordi kommandoen kan være smart at bruge, hvis man vil tvinge et program til at stoppe/slukke øjeblikkeligt.
-			</td>
-		</tr>
 	</tbody>
 </table>
 
@@ -1129,11 +1124,6 @@ while starter == 1 :
 			<td>exit()</td>
 			<td><span class="inl_cmd">exit()</span> er den kommando der får programmet til at afslutte. Det er den korrekte måde at gøre det på og svarer til at lukke en computeren rigtigt ned.</td>
 		</tr>
-		<tr>
-			<td><span class="inl_cmd">raise SystemExit</span></td>
-			<td>Egentlig er <span class="inl_cmd">raise SystemExit</span> ikke et kontroludsagn, men en kommando der stopper pythonprogrammet ligesom en computer stopper når man hiver strømstikket.. Når det alligevel nævnes her er det fordi kommandoen kan være smart at bruge, hvis man vil tvinge et program til at stoppe/slukke øjeblikkeligt.
-			</td>
-		</tr>
 	</tbody>
 </table>
 
@@ -1280,14 +1270,15 @@ tomfunktion()
 Press return to continue
 </pre>
 
-<h2>raise SystemExit</h2>
+<h2>exit()</h2>
 
 <p>Denne kommendo bruges når du vil afsluttet programmet helt.</p>
 
 <p>Forestil dig en situation hvor du inde midt i din kode skal give din bruger et valg om at genstarte eller afslutte et program. Se f.eks. nedestående eksempel, hvor vi kaster med en almindelig terning.</p>
 
 <pre>
-	<code class="python">from random import randrange
+	<code class="python">
+from random import randrange
 
 kast = randrange(1,7)
 
@@ -1302,40 +1293,11 @@ while kast !=6:
 		continue #starter programmet en gang til
 	else:
 		print("\nTak for spillet")
-		raise SystemExit #afslutter programmet helt
+		exit() #afslutter programmet
 
 print("Du slog en 6'er") # denne linie kommer med
 	</code>
 </pre>
-
-<p>Hvis koden køres med <span class="inl_cmd">raise SystemExit</span> kommer resultatet til at se ud som følger:</p>
-
-<pre class="ubuntu_terminal">Du slog en 5'er
-
-Har du lyst til at spille igen (j/n)?: n
-
-Tak for spillet
-
-------------------
-(program exited with code: 0)
-Press return to continue
-</pre>
-
-<p>Hvis du indsætter <span class="inl_cmd">break</span> kommer den til at se ud som herunder:</p>
-
-<pre class="ubuntu_terminal">Du slog en 5'er
-
-Har du lyst til at spille igen (j/n)?: n
-
-Tak for spillet
-Du slog en 6'er <span class="red">&larr; bliver udskrevet fordi det kun er løkkerne der bliver brudt.</span>
-
-------------------
-(program exited with code: 0)
-Press return to continue
-</pre>
-
-<p>Årsagen er, at <span class="inl_cmd">break</span> kun afslutter den struktur den selv er en del af (her <span class="inl_cmd">while</span> og <span class="inl_cmd">if/else</span>. Så derfor vil koden udskrive tekststrengen <span class="inl_cmd">"Du slog en 6'er"</span> lligegyldigt hvad.</p>
 
 
 
