@@ -98,8 +98,12 @@
 			<td><span class="inl_cmd">pass</span> er hvad man kalder en <span class="inl_cmd">null operation</span>. Med den kommando kan man indsætte ekstra kode for enkelttilfælde uden at resten af koden ændres</td>
 		</tr>
 		<tr>
+			<td>exit()</td>
+			<td><span class="inl_cmd">exit()</span> er den kommando der får programmet til at afslutte. Det er den korrekte måde at gøre det på og svarer til at lukke en computeren rigtigt ned.</td>
+		</tr>
+		<tr>
 			<td><span class="inl_cmd">raise SystemExit</span></td>
-			<td>Egentlig er <span class="inl_cmd">raise SystemExit</span> ikke et kontroludsagn, men en kommando der stopper pythonprogrammet. Når det alligevel nævnes her er det fordi kommandoen kan være smart at bruge, hvis man vil tvinge et program til at stoppe/slukke øjeblikkeligt.
+			<td>Egentlig er <span class="inl_cmd">raise SystemExit</span> ikke et kontroludsagn, men en kommando der stopper pythonprogrammet ligesom en computer stopper når man hiver strømstikket.. Når det alligevel nævnes her er det fordi kommandoen kan være smart at bruge, hvis man vil tvinge et program til at stoppe/slukke øjeblikkeligt.
 			</td>
 		</tr>
 	</tbody>
@@ -448,7 +452,7 @@
 <pre>
 	<code class="python">
 >>> for i in range(5):
-	print(i)
+		print(i)
 
 	
 0
@@ -464,7 +468,7 @@
 <pre>
 	<code class="python">
 >>> for i in range(5):
-	print(i+1)
+		print(i+1)
 
 	
 1
@@ -480,7 +484,7 @@
 <pre>
 	<code class="python">
 >>> for i in range(8,13):
-	print(i)
+		print(i)
 
 	
 8
@@ -499,7 +503,7 @@
 <pre>
 	<code class="python">
 >>> for i in range(0,10):
-	print(i, end=" ")
+		print(i, end=" ")
 
 	
 0 1 2 3 4 5 6 7 8 9 
@@ -514,7 +518,7 @@
 <pre>
 	<code class="python">
 >>> for i in range(0,10,2):
-	print(i, end=" ")
+		print(i, end=" ")
 
 	
 0 2 4 6 8 	
@@ -539,8 +543,8 @@ for i in range(startværdi, slutværdi, vækst pr. omgang)
 <pre>
 <code class="python">
 >>> for i in range(1,12):
-	trekanttal = (i*(i+1))/2
-	print(trekanttal, end=" - ")
+		trekanttal = (i*(i+1))/2
+		print(trekanttal, end=" - ")
 
 	
 1.0 - 3.0 - 6.0 - 10.0 - 15.0 - 21.0 - 28.0 - 36.0 - 45.0 - 55.0 - 66.0 -
@@ -555,9 +559,9 @@ for i in range(startværdi, slutværdi, vækst pr. omgang)
 <pre>
 <code class="python">
 >>> for i in range(1,12):
-	trekanttal = (i*(i+1))/2
-	trekanttal = int(trekanttal)
-	print(trekanttal, end=" - ")
+		trekanttal = (i*(i+1))/2
+		trekanttal = int(trekanttal)
+		print(trekanttal, end=" - ")
 
 	
 1 - 3 - 6 - 10 - 15 - 21 - 28 - 36 - 45 - 55 - 66 -
@@ -572,7 +576,7 @@ for i in range(startværdi, slutværdi, vækst pr. omgang)
 <pre>
 	<code class="python">
 >>> for char in "Thomas":
-	print(char)
+		print(char)
 
 	
 T
@@ -600,7 +604,7 @@ s
 	<code class="python">
 >>> tekst = "Hej med dig"
 >>> for word in tekst.split():
-	print(word)
+		print(word)
 
 	
 Hej
@@ -1095,8 +1099,13 @@ while starter == 1 :
 			<td>Gør intet, men lader løkken fortsætte i samme session</td>
 		</tr>
 		<tr>
-			<td>raise SystemExit</td>
-			<td>Lukker programmet helt ned</td>
+			<td>exit()</td>
+			<td><span class="inl_cmd">exit()</span> er den kommando der får programmet til at afslutte. Det er den korrekte måde at gøre det på og svarer til at lukke en computeren rigtigt ned.</td>
+		</tr>
+		<tr>
+			<td><span class="inl_cmd">raise SystemExit</span></td>
+			<td>Egentlig er <span class="inl_cmd">raise SystemExit</span> ikke et kontroludsagn, men en kommando der stopper pythonprogrammet ligesom en computer stopper når man hiver strømstikket.. Når det alligevel nævnes her er det fordi kommandoen kan være smart at bruge, hvis man vil tvinge et program til at stoppe/slukke øjeblikkeligt.
+			</td>
 		</tr>
 	</tbody>
 </table>
