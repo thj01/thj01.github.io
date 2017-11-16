@@ -268,11 +268,9 @@ tj@tj-desktop:~$
 
 <p>Hvis du vil overbevise dig selv så prøv at give test tilladelse:</p>
 
-<h1>Webmin</h1>
+<h1>Webserver</h1>
 
-<p>Webmin er et web-interface der kan bruges til at administrere din NAS server. For at installere skal vi først have installereret <abbr title="Linux Apache MySQL PHP">LAMP</abbr>, som er en komplet webserverløsning til Linux.</p>
-
-<h2>Installer LAMP</h2>
+<p>For at kunne tilgå vores server fra en browser skal vi først have installereret <abbr title="Linux Apache MySQL PHP">LAMP</abbr>, som er en komplet webserverløsning til Linux.</p>
 
 <code class="cmd">sudo tasksel install lamp-server</code>
 
@@ -280,9 +278,9 @@ tj@tj-desktop:~$
 
 <figure id="">
 
-	<img class="p20" src="images/High-contrast-camera-photo.svg" alt="" title="" />
+	<img class="p90" src="images/VirtualBox_Ubuntu NAS_65.png" alt="" title="" />
 
-	<figcaption>VirtualBox_Ubuntu NAS_65.png</figcaption>
+	<figcaption></figcaption>
 
 </figure>
 
@@ -298,7 +296,7 @@ tj@tj-desktop:~$
 
 <p>Det du ser er en testside der viser at LAMP-serveren er blevet installeret korrekt.</p>
 
-<h2>Installer WebMin</h2>
+<h1>Installer WebMin</h1>
 
 <p>Webmin bliver af forskellige årsager ikke tilbudt ved hjælp af de normale repositories. Derfor skal vi lave lidt indledende arbejde selv (brug samme metode som ovenfor)</p>
 
@@ -316,7 +314,7 @@ tj@tj-desktop:~$
 <ul class="fat_li none">
 	<li>Tilføj følgende linie i bunden af <span class="inl_cmd">/etc/apt/sources.list</span></li>
 	
-		<code class="cmd"># Webmin repository <br/> deb https://download.webmin.com/download/repository sarge contrib</code>
+		<code class="cmd"># Webmin repository <br/>deb https://download.webmin.com/download/repository sarge contrib</code>
 	
 	<li>Tilføj GPG-nøgle</li>
 	
@@ -364,7 +362,7 @@ to run commands as root.
 
 </figure>
 
-<p>Vælg: <span class="inl_cmd">Fortsæt til nas (usikkert)</span>. </p>
+<p>Vælg: <span class="inl_cmd">Fortsæt til 192.168.0.10 (usikkert)</span>. </p>
 
 <figure id="">
 
