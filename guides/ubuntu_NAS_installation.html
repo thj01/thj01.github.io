@@ -700,7 +700,7 @@ tj@NAS:~$ hostname -I
 
 <p>Det er min anbefaling at du <span class="inl_cmd">segmenterer</span> dit netværk, sådan at din router har nogle IP-adresser der kan fastlåses til specifikke enheder. Du skal logge på din router og finde den menu der styrer det der hedder <span class="inl_cmd">DHCP</span>. </p>
 
-<p>Herunder finder du en indstilling for start og slut IP-adressen. Sørg for at ændre den, så du har nogle ledige adresser. Det vigtige er, at du ikke ændrer på de 3 første tal (her 192.168.43), da det er netværkets adresse.</p>
+<p>Herunder finder du en indstilling for start og slut IP-adressen. Sørg for at ændre den, så du har nogle ledige adresser. Det vigtige er, at du ikke ændrer på de 3 første tal (her 192.168.0), da det er netværkets adresse.</p>
 
 <p>I mit tilfælde vil jeg gerne frigive adresserne fra 2-49 og derved bliver det:</p>
 
@@ -770,7 +770,7 @@ auto enp0s3
 iface enp0s3 inet dhcp</span>
 </pre>
 
-<p>Det som står ved <span class="inl_cmd">enp0s3</span> er, at netkortet får sin adresse fra DHCP-serveren. Det skal vi have ændret, så min NAS i mit tilfælde får adressen 192.168.43.10 :</p>
+<p>Det som står ved <span class="inl_cmd">enp0s3</span> er, at netkortet får sin adresse fra DHCP-serveren. Det skal vi have ændret, så min NAS i mit tilfælde får adressen 192.168.0.10 :</p>
 
 <p><b>HUSK: </b> at det skal være de 3 første tal fra din IP-adresse der skal anvendes og at <span class="inl_cmd">dhcp</span> skal ændres til <span class="inl_cmd">static</span>.</p>
 
