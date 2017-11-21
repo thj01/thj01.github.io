@@ -165,7 +165,20 @@
 	</code>
 </pre>
 
-<h1>bakke snagvendt</h1>
+<h2>Slice en slice</h2>
+
+<p>Man kan også slice en slice, altså udskille tegn fra en slicet tekst. Se nedestående eksempel fra Idle, hvor mailadressen først bliver slicet af to omgange:</p>
+
+<pre>
+	<code class="python">
+>>> "fakeuser@fakemail.dk"[8:]
+'@fakemail.dk'
+>>> "fakeuser@fakemail.dk"[8:][-2:]
+'dk'
+	</code>
+</pre>
+
+<h2>Bakke snagvendt</h2>
 
 <p>Som en lille sjov ting kan man også udskrive en tekststreng omvendt ved hjælp af slicing.</p>
 
@@ -201,87 +214,34 @@
 
 <h1><span class="inl_cmd">count()</span> - antal forekomster</h1>
 
-<p>Hvis man vil undersøge hvor mange gange noget forekommer i en tekstreng anvender man <span class="inl_cmd">count()</span>. Kommandoen fungerer på følgende måde:</p>
+<p>Hvis man vil undersøge hvor mange gange noget forekommer i en tekstreng anvender man <span class="inl_cmd">count()</span>. Hvis vi f.eks. vil finde antal <span class="inl_cmd">@</span> i vores mail vil det altså blive:</p>
 
 <pre>
 	<code class="python">
-*streng der skal undersøges*.count(*det som skal tælles*)
+>>> mail.count("@")
+1
 	</code>
 </pre>
 
-<p>Hvis vi f.eks. vil finde antal <span class="inl_cmd">dk</span> i vores mail vil det altså blive:</p>
+<p><span class="inl_cmd">@</span> står altså en gang i mailen <span class="inl_cmd">hansboedker<span class="red">@</span>dkmail.dk</span> en gang.</p>
 
-<pre>
-	<code class="python">
->>> mail.count("dk")
-3
-	</code>
-</pre>
-
-<p>Strengen <span class="inl_cmd">dk</span> står altså i mailen 3 gange (hansboe<span class="red">dk</span>er@<span class="red">dk</span>mail.<span class="red">dk</span>).</p>
-
-<p>Lad os anvende dette til noget praktisk. Vi laver et program der tjekker om en mail er fra et dk domæne. For at sikre os skal der stå <span class="inl_cmd">.dk</span> til sidst:</p>
+<p>Se programmet herunder hvor det bliver anvendt i praksis.</p>
 
 <pre>
 	<code class="python">
 mail = input("Indtast mail: ")
 
-if mail[-3:].count(".dk") == 1:
-	print ("\n\tDet er en dk mail")
+if mail.count("@") == 1:
+	print ("\n\tDer er @ i mailen.")
 else:
-	print ("\n\tDet er ikke en dk mail")
+	print ("\n\tDer mangler @ i mailen.")
 	</code>
 </pre>
 
 <pre class="ubuntu_terminal">
-Indtast mail: tj@udenlandskmail.com
+Indtast mail: fakeuser@fakemail.dk
 
-	Det er ikke en dk mail
-
-------------------
-(program exited with code: 0)
-Press return to continue
-</pre>
-
-<p>Vi kunne også have undersøgt følgende:</p>
-
-<pre>
-	<code class="python">
-if mail[-3:] == ".dk":
-	</code>
-</pre>
-
-<p>... men så havde vi ikke brugt <span class="inl_cmd">count()</span> ;).</p>
-
-<h1><span class="inl_cmd">find()</span> - find forekomster</h1>
-
-<p>For at finde tekstelementer i tekststrenge anvender vi funktionen <span class="inl_cmd">find()</span>. Den anvendes på følgende måde:</p>
-
-<pre>
-	<code class="python">
-*streng der skal undersøges*.find(*det som skal findes*)
-	</code>
-</pre>
-
-<p>Lad os lave et program der finder ud af hvad landekode en internetadresse har f.eks. <span class="inl_cmd">yahoo.dk</span>. Vi ved at landekoder er på enten 2 eller 3 bogstaver, så derfor skal vi finde ud af om det er et mellem de 4 sidste tegn. Koden er kommenteret.</p>
-
-<pre>
-	<code class="python">
-mail = input("Indtast mail der skal tjekkes: ")
-mail_landekode = mail[-4:]
-pos_dot = mail_landekode.find(".")
-
-print ("Det sidste dot er i position {0}.".format(pos_dot))
-print ("\n\tlandekoden er: {0}".format(mail_landekode[pos_dot+1:]))
-	</code>
-</pre>
-
-<pre class="ubuntu_terminal">
-Indtast mail der skal tjekkes: fakeuser.fakemail.com <span class="red">&larr; Brugerinput</span>
-
-Det sidste dot er i position 0.
-
-        landekoden er: com
+        Der er @ i mailen.
 
 ------------------
 (program exited with code: 0)
@@ -289,23 +249,48 @@ Det sidste dot er i position 0.
 Press any key to continue . . .
 </pre>
 
-<h1>Slice en slice</h1>
+<h1><span class="inl_cmd">find()</span> - find forekomster</h1>
 
-<p>Man kan også slice en slice, altså udskille tegn fra en slicet tekst. Se nedestående eksempel fra Idle, hvor mailadressen først bliver slicet af to omgange:</p>
+<p>For at finde tekstelementer i tekststrenge anvender vi funktionen <span class="inl_cmd">find()</span>. Den anvendes på følgende måde:</p>
 
 <pre>
 	<code class="python">
->>> "fakeuser@fakemail.dk"[8:]
-'@fakemail.dk'
->>> "fakeuser@fakemail.dk"[8:][-2:]
-'dk'
+>>> mail.find("@")
+11
 	</code>
 </pre>
+
+<p>Lad os lave et program der finder ud af hvad brugernavnet er - altså det som står foran <span class="inl_cmd">@</span></p>
+
+<pre>
+	<code class="python">
+mail = input("Indtast mail der skal tjekkes brugernavn: ")
+
+mail_a = mail.find("@")
+
+username = mail[:mail_a]
+
+print("Brugernavnet er: {0}".format(username))
+	</code>
+</pre>
+
+<pre class="ubuntu_terminal">
+Indtast mail der skal tjekkes brugernavn: fakeuser@fakemail.com
+
+        Brugernavnet er: fakeuser
+
+------------------
+(program exited with code: 0)
+
+Press any key to continue . . .
+</pre>
+
+
 
 
 <h1>Opgaver</h1>
 
-<h2>Opgave - tjek mail</h2>
+<h2>Mail 1</h2>
 
 <p>Lav en kode hvor du tjekker en indtastet mail ud fra følgende parametre: </p>
 
@@ -316,18 +301,69 @@ Press any key to continue . . .
 	<li>At @ ikke står mellem de 4 sidste tegn</li>
 </ol>
 
-<p>Udskriften skal enten sige om det er en rigtig mail eller angive hvad der er fejlen og bede om en ny indtastning.</p>
+<p>Udskriften skal enten angive om mailen er korrekt eller angive fejlene. Hvis der er fejl skal den bede om en ny indtastning.</p>
 
-<h2>Opgave - tjek mail 2</h2>
+<pre class="ubuntu_terminal">
+Indtast din mail: t_d.g <span class="red">&larr; Brugerinput</span>
+
+        Mailen har for få tegn (mindre end 7)
+        Mailen mangler @
+        Det er ikke en .dk mail
+
+Indtast din mail: fakeuser@fakemail.dk <span class="red">&larr; Brugerinput</span>
+
+	Mailen er konstrueret korrekt
+
+------------------
+(program exited with code: 0)
+
+Press any key to continue . . .
+</pre>
+
+<h2>Mail 2</h2>
+
+<p>En mail består af 3 dele. Brugernavn, domæne og landekode. Her er de angivet med farver. <span class="green1">fakeuser</span>@<span class="blue1">fakemail</span>.<span class="red">dk</span></p>
 
 <p>Ændr koden så den også svarer med alle de data du undersøger for:</p>
 
 <ol class="">
 	<li>Hvor mange tegn mailen indeholder</li>
-	<li>antal tegn for brugernavn, domæne og landekode</li>
-	<li>Antallet af @</li>
-	<li>Hvilken landekode mailen har</li>
+	<li>Antal tegn for brugernavn, domæne og landekode</li>
+	<li>Hvad er <span class="green1">brugernavnet</span>, <span class="blue1">domænet</span> og <span class="red">landekoden</span> er, samt deres længde.</li>
+	
 </ol>
+
+<pre class="ubuntu_terminal">
+Indtast din mail: t_g.k
+
+        Mailen har for få tegn (mindre end 7)
+        Mailen mangler @
+        Det er ikke en .dk mail
+
+Indtast din mail: fakeuser@fakemail.dk
+
+
+Mailen er konstrueret korrekt
+
+
+        Mailen er: fakeuser@fakemail.dk
+
+        Mailen har i alt 20 tegn
+
+        Brugernavnet er: fakeuser
+
+        Domænenavnet er: famemail
+
+        Det er en .dk mail
+
+
+
+
+------------------
+(program exited with code: 0)
+
+Press any key to continue . . .
+</pre>
 
 <h2>IP-adresse</h2>
 
@@ -344,7 +380,7 @@ Press any key to continue . . .
 <p>Du skal altså lave et program der under søger om IP-adressen befinder sig indenfor de intervaller der ovenfor er angivet med rødt.</p>
 
 
-<h2>Opgave - Bakke snagvendt</h2>
+<h2>Bakke snagvendt</h2>
 
 <p>Lav et program hvor brugerens input bliver udskrevet baglæns. Her: <span class="inl_cmd">Ubrugeligt... men sjov</span></p>
 

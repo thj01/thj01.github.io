@@ -1,6 +1,8 @@
 while True:	
 	
-	mail = input("Indtast din mail: ")
+	mail = input("\nIndtast din mail: ")
+
+	print()
 
 	mail_len = len(mail)
 
@@ -12,33 +14,35 @@ while True:
 		
 	if mail_len<7:
 		
-		print("Mailen har for få tegn (mindre end 7)")
+		print("\tMailen har for få tegn (mindre end 7)")
 		
 		fejl +=1
 		
 	if count_a < 1:
 		
-		print("Mailen mangler @")
+		print("\tMailen mangler @")
 		
 		fejl +=1
 		
 	if count_a > 1:
 		
-		print("Mailen har for mange @")
+		print("\tMailen har for mange @")
 		
 		fejl +=1
 
 	if count_a_last > 1:
 		
-		print("@ må ikke stå blandt de sidste 4 tegn.")
+		print("\t@ må ikke stå blandt de sidste 4 tegn.")
 		
 		fejl +=1
 		
 	if mail[-3:] !=".dk":
 		
-		print("Det er ikke en .dk mail")
+		print("\tDet er ikke en .dk mail")
 		fejl +=1
 				
 	if fejl == 0:
 		
-		print("mailen er konstrueret korrekt ")
+		print("\n\tMailen er konstrueret korrekt ")
+		
+		break
