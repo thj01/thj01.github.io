@@ -10,18 +10,17 @@ spillernavn = "Thomas"
 
 #valg=input("\nVelkommen til {0}. Vil du gerne starte spillet? (j/n): ".format(spillernavn))
 
-valg= "j"
 
 ### Her starter selve spillet
 
-if valg is "j":
+
+
+while True:
 
 	slag = randrange(1,7)
 
 	while slag != 6:
 		
-
-			
 		antal_slag +=1
 		
 		antal_point += slag
@@ -38,11 +37,8 @@ if valg is "j":
 			
 			print("\nTak for spillet {2}\nDu fik ialt {0} point på {1} slag.".format(antal_point,antal_slag,spillernavn))
 			
-			raise SystemExit
-				
+			exit(0)				
 				
 	print("\n\n\tDu slog en 6'er. Du fik ialt {0} point på {1} slag".format(antal_point, antal_slag))
 
-else:
-	
-	print("\n\tOK. Hyg dig")
+

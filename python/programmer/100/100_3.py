@@ -1,41 +1,70 @@
 from random import randrange
 
-antal_runder = 0
-
-point_i_alt = 0
-
-#spillernavn = input("Indtast dit navn: ")
-
-spillernavn = "Thomas"
-
-#valg=input("\nVelkommen til {0}. Vil du gerne starte spillet? (j/n): ".format(spillernavn))
-
-valg= "j"
+start = 0
 
 ### Her starter selve spillet
 
-while valg is "j":
+tabel = {"spiller":" ","antal_slag":0, "point":0, "runde":1}
 
+#tabel["spiller"] = input("Indtast dit navn: ")
+
+tabel["spiller"] = "Thomas"
+
+#valg=input("\nVelkommen til {0}. Vil du gerne starte spillet? (j/n): ".format(tabel["spiller"]))
+
+print("\n\n\t ***** Runde {0} *****".format(tabel["runde"]))
+
+while True:
+	
 	slag = randrange(1,7)
 	
-	antal_runder +=1
+	tabel["antal_slag"] +=1
 	
-	point_runde = 0
-
+	runde_point = 0
+	
 	while slag != 6:
 		
-		print(slag)
+		if slag != 6 and tabel["point"] + runde_point + slag > 15:
+			
+			print("\n\n\t Du har vundet spillet på {0} runde(r), og med {1} slag.".format(tabel["runde"], tabel["antal_slag"]))
+			
+			exit(0)
 		
-		slag = randrange(1,7)
+		runde_point += slag
 		
-		point_runde += slag
+		print("""
 		
-		print(point_runde)
+Du slog en {0}'er og du har nu {1} point.
 		
-		
-	valg = input("Du slog en 6'er. Vil du prøve igen?: ")
+Hvis du stopper nu har du samlet {2} point.
 
+(runde: {3}, antal slag: {4}) 
+		
+		
+		""".format(slag, runde_point, runde_point+tabel["point"], tabel["runde"], tabel["runde"], tabel["antal_slag"]))
+		
+		valg = input("Vil du fortsætte runden? (j/n): ")
+		
+		if valg == "j":
+			
+			slag = randrange(1,7)
+			
+		elif valg == "a":
+			
+			print("Du har valgt at afslutte spillet.")
+			
+			exit(0)
+			
+		else:
+			
+			tabel["point"] += runde_point
+			
+			tabel["runde"] +=1
+			
+			print("\n\n\t ***** Du er nu i runde {0} *****".format(tabel["runde"]))
+			
+			break
 
-else:
+	runde_point = 0
 	
-	print("\n\tOK. Hyg dig")
+	print("\n\n\t******************************************************************\n\tDu slog en 6'er, så du har mistet alle dine point i denne runde!\n\n\t******************************************************************\n")
