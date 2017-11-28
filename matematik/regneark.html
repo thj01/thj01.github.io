@@ -708,6 +708,10 @@
 	</thead>
 	<tbody>
 		<tr>
+			<td>tæl(Område)</td>
+			<td>Antal observationer</td>
+		</tr>
+		<tr>
 			<td>middel(Område)</td>
 			<td>Gennemsnit</td>
 		</tr>
@@ -728,10 +732,38 @@
 			<td>Medianen</td>
 		</tr>
 		<tr>
-			<td>kvartil(Område;*kvartil*)</td>
-			<td></td>
+			<td>kvartil(Område;1/2/3)</td>
+			<td>Første, anden og tredje kvartil</td>
 		</tr>
-		
+	</tbody>
+</table>
+
+<h2>Varians og standardafvigelse</h2>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Statistisk funktion</th>
+			<th>Beskrivelse</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>varians.s(Område)</td>
+			<td>variansen for en stikprøve</td>
+		</tr>
+		<tr>
+			<td>varians.p(Område)</td>
+			<td>variansen for en population</td>
+		</tr>
+		<tr>
+			<td>stdafv.s(område)</td>
+			<td>Standardafvigelsen/spredningen for en stikprøve</td>
+		</tr>
+		<tr>
+			<td>stdafv.p(område)</td>
+			<td>Standardafvigelsen/spredningen for en population</td>
+		</tr>
 	</tbody>
 </table>
 
@@ -751,7 +783,7 @@
 		<tr>
 			<td>SLUMP()</td>
 			<td>RAND()</td>
-			<td></td>
+			<td>Laver et tilfældigt tal i intervallet [0;1]</td>
 		</tr>
 		<tr>
 			<td>SLUMPMELLEM(start;slut)</td>
@@ -763,13 +795,6 @@
 	</tbody>
 </table>
 
-<p></p>
-
-<code class="cmd">=heltal(slump()*6+1)</code>
-
-<p>eller</p>
-
-<code class="cmd">slumpmellem(1;6)</code>
 
 <h1>Talsystemer</h1>
 
