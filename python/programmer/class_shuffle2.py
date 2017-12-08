@@ -124,5 +124,10 @@ for i in range(0,antal_elever):
 	if i%gruppe_str == 0:
 		gruppe_nr +=1
 		print("\n\nGruppe {0}".format(gruppe_nr), end = ": ")
-
-	print("{0}".format(klasse[i]), end= ", ")
+		
+	if i%gruppe_str == gruppe_str-1:
+		print("{0}".format(klasse[i]), end= " ")
+	else:
+		print("{0}".format(klasse[i]), end= ", ")
+	
+input("")
