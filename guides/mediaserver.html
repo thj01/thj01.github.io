@@ -37,14 +37,28 @@
 	
 <div class="title">Mediaserver</div>
 
-
+<p>Ubuntu kan fint laves om til en mediaserver, så alle enheder på netværket har adgang til den. Her vil vi bruge den meget simple tjeneste <span class="inl_cmd">minidlna</span>.</p>
 	
+<p>I denne guide er det sat op med brugeren <span class="inl_cmd">tj</span>, som du derfor skal erstatte med din egen bruger</p>
+
 
 <h1>Installation</h1>
+
+<p>Installer <span class="inl_cmd">minidlna</span> med kommandoen:</p>
 
 <code class="cmd">sudo apt-get install minidlna</code>
 
 <h1>Forberedelse</h1>
+
+<p>Før vi går igang med at konfigurere serveren skal vi have følgende op plads:</p>
+
+<ul class="none">
+	<li>Oprettelse af mapper</li>
+	<li>Ændring af brugere og grupper</li>
+	<li>Ændring af rettigheder</li>
+	<li>Tilføje din bruger til gruppen <span class="inl_cmd">minidlna</span></li>
+	<li>Kopiere dine filer til de nye mapper</li>
+</ul>
 
 <h2>Opret mapper</h2>
 
@@ -69,13 +83,43 @@
 
 <h2>Kopier dine data</h2>
 
-<p>Herefter kan du kopiere din musik, videoer og billeder til de nye mapper</p>
+<p>Herefter kan du flytte din musik, videoer og billeder til de nye mapper</p>
+
+<p>Hvis du sidder med en grafisk brugerflade kan du bare trække filerne over. Ønsker du at gøre det med kommandolinie anvender du:</p>
+
+<blockquote>
+	<p>
+		Hvis du gerne vil beholde en kopi på din egen brugerprofil, så skal du skrive <span class="inl_cmd">cp</span> i stedet for <span class="inl_cmd">mv</span>.
+	</p>
+</blockquote>
+
+<ul class="fat_li none">
+	
+	<li>Kopiere Musik</li>
+	
+		<code class="cmd">mv ~/Musik /media/MediaServer/Musik</code>
+	
+	<li>Kopiere Video</li>
+	
+		<code class="cmd">mv ~/Videoklip /media/MediaServer/Video</code>
+	
+	<li>Kopiere Billeder</li>
+	
+		<code class="cmd">mv ~/Billeder /media/MediaServer/Billeder</code>
+		
+</ul>
+
+
 
 <h1>Konfiguration</h1>
 
+<p><span class="inl_cmd">minidlna</span> konfigureres igennem en filen <span class="inl_cmd">/etc/minidlna.conf</span>. Åbn den med kommandoen</p>
+
 <code class="cmd">sudo nano /etc/minidlna.conf </code>
 
-<p>Indsæt følgende i bunden af filen:</p>
+<h2>Tilføj linjer</h2>
+
+<p>Stort set alt er udkommenteret, så vi kan nøjes med at indsætte nedestående i slutningen af filen.</p>
 
 <pre class="black">
 friendly_name=MediaServer
@@ -85,22 +129,18 @@ media_dir=P,/media/MediaServer/Billeder
 inotify=yes
 </pre>
 
-<p>Genstart minidlna</p>
+<h2>Genstart minidlna</h2>
+
+<p>For at den nye konfiguration slår igennem, skal filen genindlæses. Du bør også genopfriske databasen, og det gøres med den anden kommando.</p>
 
 <code class="cmd">sudo service minidlna restart</code>
 
-<p>Opdater databasen</p>
+<code class="more_cmd">sudo service minidlna force-reload</code>
 
-<code class="cmd">sudo service minidlna force-reload</code>
+<p>Herefter er dine filer tilgængelige for alle apperater der anvender DLNA :)</p>
 
-<p>Enjoy</p>
+<p><b>Enjoy!!</b></p>
 
-
-<h1>Tjek Mediaserveren</h1>
-
-<p>Du kan kontrollere om din mediaserver er oppe ved at åbne en browser og indtaste følgende:</p>
-
-<code class="cmd">localhost:8200</code>
 
 	
 </div><!-- end: col-md-9 -->
