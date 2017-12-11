@@ -395,7 +395,7 @@
 
 <p><span class="inl_cmd">Spredningen</span> fortæller noget om fordelingen af værdier i forhold til gennemsnittet og er kvadratroden af variansen. Generelt kan spredningen altså skrives som <span class="math">\( \sqrt{Var(x)} \)</span>.</p>
 
-<p>For populationer: <span class="math">\( \sigma = \sqrt{sigma^2} \)</span></p>
+<p>For populationer: <span class="math">\( \sigma = \sqrt{\sigma^2} \)</span></p>
 
 <p>For stikprøver: <span class="math">\( s = \sqrt{s^2} \)</span></p>
 
@@ -669,7 +669,7 @@ s^2 =  9,556
 		<tr>
 			<td><span class="math">\( x_3 \)</span></td>
 			<td><span class="math">\( ]180;190] \)</span></td>
-			<td><span class="math">\( 4 \)</span></td>
+			<td><span class="math">\( 3 \)</span></td>
 			<td><span class="math">\( 0,2 \)</span></td>
 			<td><span class="math">\( 185 \)</span></td>
 		</tr>
@@ -698,7 +698,7 @@ s^2 =  9,556
 
 <p>Dvs</p>
 
-<div class="latex">$$ n = \sum_{i=1}^{k} h_i \Rightarrow n = \sum_{i=1}^{5} h_i = 3+9+4+4+1 = 20$$</div>
+<div class="latex">$$ n = \sum_{i=1}^{k} h_i \Rightarrow n = \sum_{i=1}^{5} h_i = 3+9+3+4+1 = 20$$</div>
 
 <h2>Interval Midtpunkt</h2>
 
@@ -723,11 +723,11 @@ s^2 =  9,556
 
 <p>Middeltal beregnet med <span class="inl_cmd">frekvens</span>:</p>
 
-<div class="latex">$$ \overline x = \sum_{i=1}^{5} m_i \cdot f_i = 165 \cdot 0,15 + 175 \cdot 0,45 + 185 \cdot 0,2 +195 \cdot 0,2 + 205 \cdot 0,05 = 189,75 $$</div>
+<div class="latex">$$ \overline x = \sum_{i=1}^{5} m_i \cdot f_i = 165 \cdot 0,15 + 175 \cdot 0,45 + 185 \cdot 0,15 +195 \cdot 0,2 + 205 \cdot 0,05 = 180,50 $$</div>
 
 <p>Middeltal beregnet med <span class="inl_cmd">hyppighed</span>:</p>
 
-<div class="latex">$$ \overline x = \frac{1}{20} \cdot \sum_{i=1}^{5} m_i \cdot h_i = \frac{1}{20} \cdot \left(165 \cdot 3 + 175 \cdot 9 + 185 \cdot 4 +195 \cdot 4 + 205 \cdot 1 \right) = 189,75$$</div>
+<div class="latex">$$ \overline x = \frac{1}{20} \cdot \sum_{i=1}^{5} m_i \cdot h_i = \frac{1}{20} \cdot \left(165 \cdot 3 + 175 \cdot 9 + 185 \cdot 3 +195 \cdot 4 + 205 \cdot 1 \right) = 180,50$$</div>
 
 
 
@@ -756,19 +756,19 @@ s^2 =  9,556
 
 <p>Anvendt på tabellen, som er en <span class="inl_cmd">stikprøve</span>:</p>
 
-<div class="latex">$$ s^2 = \frac{1}{20-1} \cdot \left( (165-189,75)^2 \cdot 3 + (175-189,75)^2 \cdot 9 + (185-189,75)^2 \cdot 4 + \\(195-189,75)^2 \cdot 4 + (205-189,75)^2 \cdot 1 \right)
+<div class="latex">$$ s^2 = \frac{1}{20-1} \cdot \left( (165-189,75)^2 \cdot 3 + (175-189,75)^2 \cdot 9 + (185-189,75)^2 \cdot 3 + \\(195-189,75)^2 \cdot 4 + (205-189,75)^2 \cdot 1 \right)
 
 \\ \Updownarrow \\
 
-s^2 = \frac{1}{19} \cdot \left( (-24,75)^2 \cdot 3 + (-14,75)^2 \cdot 9 + (-4,75)^2 \cdot 4 + (5,25)^2 \cdot 4 + (15,25)^2 \cdot 1 \right)
+s^2 = \frac{1}{19} \cdot \left( (-24,75)^2 \cdot 3 + (-14,75)^2 \cdot 9 + (-4,75)^2 \cdot 3 + (5,25)^2 \cdot 4 + (15,25)^2 \cdot 1 \right)
 
 \\ \Updownarrow \\
 
-s^2 = \frac{1}{19} \cdot \left( 612,56 \cdot 3 + 217,56 \cdot 9 + 22,56 \cdot 4 + 27,56 \cdot 4 + 232,56 \cdot 1 \right)
+s^2 = \frac{1}{19} \cdot \left( 612,56 \cdot 3 + 217,56 \cdot 9 + 22,56 \cdot 3 + 27,56 \cdot 4 + 232,56 \cdot 1 \right)
 
 \\ \Updownarrow \\
 
-s^2 = 222,57
+s^2 = 216,64
 
  $$</div>
  
@@ -787,7 +787,7 @@ s^2 = 222,57
 
 <p>Spredningen er altså:</p>
 
-<div class="latex">$$ s = \sqrt {222,57} = 14,92  $$</div>
+<div class="latex">$$ s = \sqrt {216,64} = 14,72  $$</div>
 
 <h1>Likert skalaen</h1>
 
