@@ -52,7 +52,6 @@ b3 = [
 	"Christofer",
 	"Ditte",
 	"Frederik",
-	"Harismi",
 	"Kiva",
 	"Lea",
 	"Mathias",
@@ -75,6 +74,7 @@ b4 = [
 	"Alexander",
 	"Andreas",
 	"Cecilie",
+	"Harismi",
 	"Johanne",
 	"Katrine",
 	"Lasse",
@@ -104,6 +104,7 @@ while True:
 		klasse = b4
 		break
 	elif valg == "a":
+		print("Programmet afsluttes nu.")
 		exit(0)
 	else:
 		valg = input("Du skrev en klasse jeg ikke kender til\n\nHvilket lokale er du i?: ")
@@ -115,6 +116,9 @@ print("\n\tDer er i alt {0} elever i {1}".format(antal_elever, valg))
 gruppe_str = int(input("\nHvor store skal grupperne være?: "))	
 	
 
+shuffle(klasse)
+shuffle(klasse)
+shuffle(klasse)
 shuffle(klasse)
 
 gruppe_nr = 0

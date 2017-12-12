@@ -302,7 +302,7 @@
 	</tbody>
 </table>
 
-<p>Hvis vi ville opsummere tallene ville vi altså lave regnestykket: <span class="math">\( x_1+x_2+x_3+...+x_{k-1}+{x_k}  \)</span></p>
+<p>Hvis vi ville opsummere tallene ville vi altså lave regnestykket: <span class="math">\( x_1+x_2+x_3+...+x_{k-2}+x_{k-1}+{x_k}  \)</span></p>
 
 <p>Det kan ændres til nedestående, da vi skal opsummere <span class="math">\( x_i \)</span>-værdierne fra <span class="math">\( x_1 \rightarrow x_k \)</span>:</p>
 
@@ -788,6 +788,124 @@ s^2 = 216,64
 <p>Spredningen er altså:</p>
 
 <div class="latex">$$ s = \sqrt {216,64} = 14,72  $$</div>
+
+<h1>Regneark</h1>
+
+<p>Herunder er de forskellige funktioner fra regneark angivet.</p>
+
+<blockquote>
+	<p>
+		Når der henvises til <span class="inl_cmd">Område</span>, så er det datasættet der skal indsættes.
+	</p>
+</blockquote>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Statistisk funktion</th>
+			<th>Beskrivelse</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>tæl(Område)</td>
+			<td>Antal observationer (værdier)</td>
+		</tr>
+		<tr>
+			<td>tælv(Område)</td>
+			<td>Antal observationer (ikke tomme felter)</td>
+		</tr>
+		<tr>
+			<td>tæl.hvis(Område;Betingelse)</td>
+			<td>Antal observationer i området der opfylder betingelsen. Hvis betingelsen er et tegn skal det omgives med anførselstegn (f.eks: <span class="inl_cmd">"</span>) .</td>
+		</tr>
+		<tr>
+			<td>middel(Område)</td>
+			<td>Gennemsnit</td>
+		</tr>
+		<tr>
+			<td>min(Område)</td>
+			<td>Mindste værdi</td>
+		</tr>
+		<tr>
+			<td>maks(Område)</td>
+			<td>Største værdi</td>
+		</tr>
+		<tr>
+			<td>hyppigst(Område)</td>
+			<td>hyppigste værdi</td>
+		</tr>
+		<tr>
+			<td>median(Område)</td>
+			<td>Medianen</td>
+		</tr>
+		<tr>
+			<td>kvartil(Område;1/2/3)</td>
+			<td>Første, anden og tredje kvartil</td>
+		</tr>
+	</tbody>
+</table>
+
+<blockquote>
+	<p><b>Angående kvartilsæt</b></p>
+	<p>Når regneark finder 1. og 3. kvartil anvender de en anden metode, end den man "normalt" anvender. Det er en vægtet kvartil, så derfor kan det godt være et tal der ikke optræder i selve tabellen.</p>
+</blockquote>
+<h2>Varians og standardafvigelse</h2>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Statistisk funktion</th>
+			<th>Beskrivelse</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>varians.s(Område)</td>
+			<td>variansen for en stikprøve</td>
+		</tr>
+		<tr>
+			<td>varians.p(Område)</td>
+			<td>variansen for en population</td>
+		</tr>
+		<tr>
+			<td>stdafv.s(område)</td>
+			<td>Standardafvigelsen/spredningen for en stikprøve</td>
+		</tr>
+		<tr>
+			<td>stdafv.p(område)</td>
+			<td>Standardafvigelsen/spredningen for en population</td>
+		</tr>
+	</tbody>
+</table>
+
+
+
+<h2>Tilfædige tal</h2>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Excel/Calc</th>
+			<th>Sheets*</th>
+			<th>Beskrivelse</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>SLUMP()</td>
+			<td>RAND()</td>
+			<td>Laver et tilfældigt tal i intervallet [0;1]</td>
+		</tr>
+		<tr>
+			<td>SLUMPMELLEM(start;slut)</td>
+			<td>RANDBETWEEN(start;slut)</td>
+			<td>Returnerer den positive værdi af et tal</td>
+		</tr>
+
+		
+	</tbody>
+</table>
 
 <h1>Likert skalaen</h1>
 
