@@ -35,6 +35,14 @@
 	
 <div class="col-xs-9">
 	
+	<figure id="">
+	
+		<img class="p20" src="http://joplin.cozic.net/images/Icon512.png" alt="" title="" />
+	
+		<figcaption></figcaption>
+	
+	</figure>
+	
 	<div class="title">Joplin</div>
 	
 <p>Joplin er et opensource program, hvor man kan oprette notesbøger med noter og to-do lister. Fordelen ved at anvende Joplin fremfor andre er, at det virker på alle platforme, og at formatet er åbent og simpelt. Dvs. man kan senere konvertere det til andre formater.</p>
@@ -71,10 +79,21 @@
 <pre>
 	<code class="markdown">
 # Overskrift 1
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
 ## Overskrift 2
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
 ### Overskrift 3
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
 	</code>
 </pre>
+
+<figure id="">
+
+	<img class="p80" src="images/joplin01_overskrifter.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
 
 <h2>Formatering af tekst</h2>
 
@@ -85,15 +104,32 @@ __Fed tekst__
 	</code>
 </pre>
 
-<p>Tværgående linier</p>
+<figure id="">
+
+	<img class="p80" src="images/joplin02_formatering_tekst.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+
+<h2>Tværgående linier</h2>
 
 <pre>
 	<code class="markdown">
-En tekststrenge
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
 ***
-En ny tekststreng
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
 	</code>
 </pre>
+
+<figure id="">
+
+	<img class="p80" src="images/joplin03_tvaergaaende_linier.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
 
 
 <h2>Lister</h2>
@@ -108,25 +144,15 @@ En ny tekststreng
 	</code>
 </pre>
 
-<p>Hvis man vil have den til at anvende tal eller bogstaver skriver man det i stedet.</p>
+<figure id="">
 
-<pre>
-	<code class="Markdown">
-1 element 1
-2 element 2
-3 element 3
-	</code>
-</pre>
+	<img class="p80" src="images/joplin04_lister.png" alt="" title="" />
 
-<pre>
-	<code class="Markdown">
-A element 1
-B element 2
-C element 3
-	</code>
-</pre>
+	<figcaption></figcaption>
 
-<p>Da joblin er et simpelt notesværktøj arbejder det ikke med indlejrede lister.</p>
+</figure>
+
+<p>Hvis man vil have den til at anvende tal eller bogstaver skriver man det i stedet de ovenstående tegn. Da joblin er et simpelt notesværktøj arbejder det ikke med indlejrede lister, som markup,language ellers gør.</p>
 
 <h2>Tabeller</h2>
 
@@ -140,17 +166,35 @@ Indhold 1 | Indhold 2 | indhold 3
 	</code>
 </pre>
 
-<p>Den anden linie fortæller hvordan tabellen skal formateres. De tre streger fortæller at der skal være en ramme omkring de enkelte felter i tabellen. Ved at indsætte kolon for og efter stregerne kan man bestemme om kolonne teksten skal være venstre, centralt eller højrestillet.</p>
+<figure id="">
 
-<p>Udelader man kolon, så vil teksten automatisk blive venstrestillet.</p>
+	<img class="p80" src="images/joplin05_tabel_1.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Den anden linie fortæller hvordan tabellen skal formateres. De tre streger fortæller at der skal være en ramme omkring de enkelte felter i tabellen. Ved at indsætte kolon for og efter stregerne kan man bestemme om kolonne teksten skal være venstre, centralt eller højrestillet.</p>
 
 <pre>
 	<code class="markdown">
 Tabeloverskrift 1 | Tabeloverskrift 2 | Tabeloverskrift 3 
----|---|---
-Indhold 1 | Indhold 2 | indhold 3
+---|:---:|---:
+venstrestillet | Centreret | Højrestillet
 	</code>
 </pre>
+
+<figure id="">
+
+	<img class="p80" src="images/joplin06_tabel_2.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Udelader man kolon, så vil teksten automatisk blive venstrestillet.</p>
+
+
 
 <h2>Links</h2>
 
@@ -164,14 +208,30 @@ google.com
 	</code>
 </pre>
 
+<figure id="">
+
+	<img class="p80" src="images/joblin07_Links_1.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
 <p>Vil man lave den inline kan det gøres som her. Læg mærke til, at det skal være den fulde sti. </p>
 
 <pre>
 	<code class="markdown">
-[som inline](https://www.google.com)
-[som inline med titel](https://www.google.com "Googles hjemmeside")
+Her er et link du kan klikke på til [Google](https://www.google.com)
+Her er et link du kan klikke på til [Google](https://www.google.com "Googles hjemmeside"), og som får en titel når du holder musen over linket.
 	</code>
 </pre>
+
+<figure id="">
+
+	<img class="p80" src="images/joblin08_Links_2.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
 
 <p>Denne metode bør anvendes hvis man vil senere vil kunne konvertere sit dokument til andre formater.</p>
 
@@ -189,6 +249,14 @@ Det kan også bare være [den rene reference]
 	</code>
 </pre>
 
+<figure id="">
+
+	<img class="p80" src="images/joblin09_Links_3.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
 <h2>Billeder</h2>
 
 <p>Hvis man ønkser at indsætte et billede kan det gøres enten inline eller med refenrence:</p>
@@ -202,6 +270,14 @@ Det kan også bare være [den rene reference]
 [logo]: https://upload.wikimedia.org/wikipedia/commons/a/af/Tux.png
 	</code>
 </pre>
+
+<figure id="">
+
+	<img class="p80" src="images/joblin10_billeder.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
 
 <p>Hvis man vil have at der skal være en tekst over billedet når man holder musen over skal man tilføje dette i anførselstegn.</p>
 
@@ -234,7 +310,13 @@ Dette er et citat med et citat i
 	</code>
 </pre>
 
+<figure id="">
 
+	<img class="p80" src="images/joblin11_citater.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
 
 <h1>Henvisninger</h1>
 
