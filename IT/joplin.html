@@ -50,93 +50,219 @@
 
 <p>Joplin kan synkronisere med lokale netværksdrev og personlige Microsoft Onedrive konti, og der arbejdes på at få den til at synkronisere med Dropbox.</p>
 
+<p>Du vil kunne finde dine joplin notater i rodmappen af dit onedrive under <span class="inl_cmd">aps/joplin</span>.</p>
+
 <h1>Markdown format</h1>
 
-<p>Man kan vælge enten at skrive helt almindelige noter, men der kan også laves avanceret layout ved hjælp af <span class="inl_cmd">markdown format</span> (<a href="https://daringfireball.net/projects/markdown/basics" target="_blank">https://daringfireball.net/projects/markdown/basics</a>).</p>
+<p>Man kan vælge enten at skrive sine noter ved hjælp af ganske almindelig tekst, men der kan også lave avanceret layout ved hjælp af <span class="inl_cmd">markdown format</span> (<a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet" target="_blank">https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet</a>).</p>
 
-<table class="_">
-	<thead>
-		<tr>
-			<th>Overskrifter</th>
-			<th>Markdown</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>Overskrift 1 (h1)</td>
-			<td>#</td>
-		</tr>
-		<tr>
-			<td>Overskrift 2 (h2)</td>
-			<td>##</td>
-		</tr>
-		<tr>
-			<td>overskrift 3 (h3)</td>
-			<td>###</td>
-		</tr>
-		<tr>
-			<td>kursiv</td>
-			<td>*tekst* eller _tekst_</td>
-		</tr>
-		<tr>
-			<td>Fed</td>
-			<td>**tekst** eller **tekst**</td>
-		</tr>
-	</tbody>
-</table>
+<p>Fordelen ved at anvende Markdown er, at formateringskoden er langt lettere at beherske end f.eks. HTML, som kræver tags både før og efter. På mange måder er markdown langt mere intuitiv at arbejde med.</p>
 
-<p>Kode eksempel</p>
+<blockquote>
+	<p>
+		Joplins anvendelse af markdown er ikke helt så omfattense som sproget egentlig godtager. Derfor har jeg i det nedestående valgt at gennemgå den del der fungere med Joplin.
+	</p>
 	
+	<p>Hvis du senere ønsker at arbejde med tekst til f.eks. hjemmesider eller opgaver, så kan du med fordel anvende markdown, da det giver store muligheder for at formatere sin tekst og f.eks. at indsætte en TOC (<b>T</b>able <b>O</b>ff <b>C</b>ontent).</p>
+</blockquote>
+
+<h2>Overskrifter</h2>
+
 <pre>
-	<code class="Markdown">
+	<code class="markdown">
 # Overskrift 1
-
-Dette er en almindelig tekst med **fed**
-
-## overskrift 2
-
-Her er det *kursiv*
-
-### overskrift 3
+## Overskrift 2
+### Overskrift 3
 	</code>
 </pre>
+
+<h2>Formatering af tekst</h2>
+
+<pre>
+	<code class="markdown">
+_Kursiv tekst_
+__Fed tekst__
+	</code>
+</pre>
+
+<p>Tværgående linier</p>
+
+<pre>
+	<code class="markdown">
+En tekststrenge
+***
+En ny tekststreng
+	</code>
+</pre>
+
 
 <h2>Lister</h2>
 
-<p>Lister kan laves med tegnene +, - eller *. Uanset hvilket tegn du anvender vil der komme en liste med punkter.</p>
+<p>Lister laves enten med -, + eller *. I alle tilfældene får man en liste med bullits</p>
 
 <pre>
 	<code class="Markdown">
-Dette er en liste
-
-* Første element
-* Andet element
-* Tredie element
+- element 1
+- element 2
+- element 3
 	</code>
 </pre>
 
-<p>Det kan også laves med tal</p>
+<p>Hvis man vil have den til at anvende tal eller bogstaver skriver man det i stedet.</p>
 
 <pre>
 	<code class="Markdown">
-Dette er en liste
-
-1 Første element
-2 Andet element
-3 Tredie element
+1 element 1
+2 element 2
+3 element 3
 	</code>
 </pre>
+
+<pre>
+	<code class="Markdown">
+A element 1
+B element 2
+C element 3
+	</code>
+</pre>
+
+<p>Da joblin er et simpelt notesværktøj arbejder det ikke med indlejrede lister.</p>
+
+<h2>Tabeller</h2>
+
+<p>Tabeller laves ved at "tegne" dem. De skal ikke tegnes korrekt for markup formaterer det korrekt</p>
+
+<pre>
+	<code class="Markdown">
+Tabeloverskrift 1 | Tabeloverskrift 2 | Tabeloverskrift 3 
+---|---|---
+Indhold 1 | Indhold 2 | indhold 3
+	</code>
+</pre>
+
+<p>Den anden linie fortæller hvordan tabellen skal formateres. De tre streger fortæller at der skal være en ramme omkring de enkelte felter i tabellen. Ved at indsætte kolon for og efter stregerne kan man bestemme om kolonne teksten skal være venstre, centralt eller højrestillet.</p>
+
+<p>Udelader man kolon, så vil teksten automatisk blive venstrestillet.</p>
+
+<pre>
+	<code class="markdown">
+Tabeloverskrift 1 | Tabeloverskrift 2 | Tabeloverskrift 3 
+---|---|---
+Indhold 1 | Indhold 2 | indhold 3
+	</code>
+</pre>
+
+<h2>Links</h2>
+
+<p>Links kan indtastes direkte på følgende måder:</p>
+
+<pre>
+	<code class="markdown">
+https://www.google.com
+www.google.com
+google.com
+	</code>
+</pre>
+
+<p>Vil man lave den inline kan det gøres som her. Læg mærke til, at det skal være den fulde sti. </p>
+
+<pre>
+	<code class="markdown">
+[som inline](https://www.google.com)
+[som inline med titel](https://www.google.com "Googles hjemmeside")
+	</code>
+</pre>
+
+<p>Denne metode bør anvendes hvis man vil senere vil kunne konvertere sit dokument til andre formater.</p>
+
+<p>Det kan også gøres med referencer</p>
+
+<pre>
+	<code class="markdown">
+Hjemmeside [vidas][reference_a]
+[Det blå gymnasium][1]
+Det kan også bare være [den rene reference]
+
+[reference_a]: http://www.vidas.dk
+[1]: http://www.vestfyns.dk
+[den rene reference]: https://www.google.com
+	</code>
+</pre>
+
+<h2>Billeder</h2>
+
+<p>Hvis man ønkser at indsætte et billede kan det gøres enten inline eller med refenrence:</p>
+
+<pre>
+	<code class="markdown">
+![alt text](https://upload.wikimedia.org/wikipedia/commons/a/af/Tux.png)
+
+![alt text][logo]
+
+[logo]: https://upload.wikimedia.org/wikipedia/commons/a/af/Tux.png
+	</code>
+</pre>
+
+<p>Hvis man vil have at der skal være en tekst over billedet når man holder musen over skal man tilføje dette i anførselstegn.</p>
+
+<pre>
+	<code class="markdown">
+![alt text](https://upload.wikimedia.org/wikipedia/commons/a/af/Tux.png "Tux - Linux logo" )
+
+![alt text][logo]
+
+[logo]: https://upload.wikimedia.org/wikipedia/commons/a/af/Tux.png "Tux - Linux logo"
+	</code>
+</pre>
+
+<h2>Citater</h2>
+
+<p>I joplin er citater ikke formateret tydeligt, men bliver blot rykket ind. Det kan dog være en fordel hvis man senere vil konvertere til HTML eller PDF.</p>
+
+
+<pre>
+	<code class="markdown">
+Dette er et citat (tekst der er rykket ind)
+
+> __Murphy's Law__: Anything that can possibly go wrong, does.
+
+Dette er et citat med et citat i
+
+> __Murphy's Law__: Anything that can possibly go wrong, does.
+
+>> __O'Tools corollary__: Myrpy was an optimist
+	</code>
+</pre>
+
+
 
 <h1>Henvisninger</h1>
 
-<p>Henvisninger laves på følgende måde:</p>
+<h2>Guides til markdown</h2>
 
-<pre>
-	<code class="Markdown">
-Adressen på [Google er](https://google.com)
-	</code>
-</pre>
+<p>Markdown cheatsheat: <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet" target="_blank">https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet</a></p>
 
+<p>Commonmark.org: <a href="http://commonmark.org/help/" target="_blank">http://commonmark.org/help/</a></p>
+
+<h2>Konvertering af markdown</h2>
+
+<p>Markdown kan ved hjælp af forskellige redskaber konverteres til andre formater. Det betyder at du hurtigt vil kunne lave din tekst og derefter videredistribuere det i forskellige formater.</p>
+
+<h3>Dillinger</h3>
+
+<p><a href="https://dillinger.io/" target="_blank">https://dillinger.io/</a></p>
+
+<h3>Stack editor</h3>
+
+<p><a href="https://stackedit.io/editor" target="_blank">https://stackedit.io/editor</a></p>
+
+<h3>Haroopad</h3>
+
+<p>Haroopad er en off-line editor, som du kan anvende til skrive dine dokumenter i, samt at eksportere til både HTML og PDF</p>
+
+<p>Den er licenseret under GPL</p>
+
+<p><a href="http://pad.haroopress.com/user.html" target="_blank">http://pad.haroopress.com/user.html</a></p>
 	
 </div><!-- end: col-md-9 -->
 
