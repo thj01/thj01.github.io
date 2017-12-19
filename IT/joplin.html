@@ -58,7 +58,164 @@
 
 <p>Joplin kan synkronisere med lokale netværksdrev og personlige Microsoft Onedrive konti, og der arbejdes på at få den til at synkronisere med Dropbox.</p>
 
-<p>Du vil kunne finde dine joplin notater i rodmappen af dit onedrive under <span class="inl_cmd">aps/joplin</span>.</p>
+<p>Du vil kunne finde dine joplin notater i rodmappen af dit onedrive under <span class="inl_cmd">../aps/joplin</span>.</p>
+
+<figure id="">
+
+	<img class="p90" src="images/joplin00_filmappe.png" alt="_" title="_" />
+
+	<figcaption>_</figcaption>
+
+</figure>
+
+<h2>Filformatet</h2>
+
+<p>Selve filerne er rene tekstfiler, og indeholder ud over selve teksten også forskellige data om filen. Læg mærke til at filernes navne er dannet af et hexadecimalt filnavn med 32 decimaler, hvilket giver muligheden for <span class="math">\( 32^{16} = 1,2 \cdot 10^{21}\)</span> forskellige filer. Højst sansynligt bliver disse filnavne dannet tilfældigt, sådan at det er programmet der administrerer sammenhængen.</p>
+
+<details>
+
+	<summary>Se filerne</summary>
+
+<span class="afsnit">Format for notebook</span>
+
+<pre>
+ny bog
+
+id: b1fe710a008640dca8e2cfeb49aa06e4
+created_time: 2017-12-19T07:39:30.580Z
+updated_time: 2017-12-19T07:39:30.580Z
+user_created_time: 2017-12-19T07:39:30.580Z
+user_updated_time: 2017-12-19T07:39:30.580Z
+type_: 2
+</pre>
+
+<span class="afsnit">Format for note og todo-liste</span>
+
+<pre>
+
+note1
+
+# Min første note
+Dette er min første note
+ Første kolonne | anden kolonne | tredie kolonne
+ --- | :---: | ---:
+ tekst 1 | tekst 2 | tekst 3
+
+
+vidas.dk
+
+
+id: 92321be84e4c4835bb8eada28379b856
+parent_id: b1fe710a008640dca8e2cfeb49aa06e4
+created_time: 2017-12-19T07:39:42.168Z
+updated_time: 2017-12-19T07:46:51.515Z
+is_conflict: 0
+latitude: 55.71230000
+longitude: 12.05640000
+altitude: 0.0000
+author: 
+source_url: 
+is_todo: 0
+todo_due: 0
+todo_completed: 0
+source: joplin-desktop
+source_application: net.cozic.joplin-desktop
+application_data: 
+order: 0
+user_created_time: 2017-12-19T07:39:42.168Z
+user_updated_time: 2017-12-19T07:46:51.515Z
+type_: 1
+</pre>
+
+</details>
+
+<p>Da Joplin bruger åbne formater, kan vi kigge ind i filerne for at se hvad de gemmer. Herunder er de parametre som Joplin gemmer om den enkelte note.</p>
+
+<table class="_">
+	<thead>
+		<tr>
+			<th>Parameter</th>
+			<th>Forklaring</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>id</td>
+			<td>Filens ID (navn)</td>
+		</tr>
+		<tr>
+			<td>parent id</td>
+			<td>Hvilken <span class="inl_cmd">notebook</span> den tilhører (gælder kun for noter og todo)</td>
+		</tr>
+		<tr>
+			<td>created time</td>
+			<td>Tidstempen for oprettelse af filen</td>
+		</tr>
+		<tr>
+			<td>updated time</td>
+			<td>Tidsstempel for opdatering af filen</td>
+		</tr>
+		<tr>
+			<td>is_conflikt</td>
+			<td>Hvis programmet opdager at en anden enhed har ændret i filen (kan kontrolleres ved hjælp af tidstemplerne)</td>
+		</tr>
+		<tr>
+			<td>latitude/longitude/altitude</td>
+			<td>GPS koordinater for filens dannelse. Denne funktion kan slås til eller fra. Funktionen virker ikke optimalt da min er dannet et sted i <a href="https://www.google.dk/maps/place/55%C2%B042'44.3%22N+12%C2%B003'23.0%22E/@55.692082,11.9334517,11.5z/data=!4m5!3m4!1s0x0:0x0!8m2!3d55.7123!4d12.0564" target="_blank">Roskilde fjord</a>. </td>
+		</tr>
+		<tr>
+			<td>author</td>
+			<td>Filens opretter</td>
+		</tr>
+		<tr>
+			<td>source_url</td>
+			<td>?</td>
+		</tr>
+		<tr>
+			<td>is_todo</td>
+			<td>Er det en todo-fil, så den kan markeres som udført</td>
+		</tr>
+		<tr>
+			<td>todo_due</td>
+			<td>Tidsstempel der angiver hvornår todo-listen skal være udført</td>
+		</tr>
+		<tr>
+			<td>todo_complete</td>
+			<td>Er todo-listen udført</td>
+		</tr>
+		<tr>
+			<td>source</td>
+			<td>Hvor er filen dannet (enhed)</td>
+		</tr>
+		<tr>
+			<td>source_applikation</td>
+			<td>Hvilket software er anvendt</td>
+		</tr>
+		<tr>
+			<td>application_data</td>
+			<td>?</td>
+		</tr>
+		<tr>
+			<td>order</td>
+			<td>?</td>
+		</tr>
+		<tr>
+			<td>user_created_time</td>
+			<td>Tidsstempel for brugerens oprettelse</td>
+		</tr>
+		<tr>
+			<td>user_updated_time</td>
+			<td>Tidsstempel for brugerens opdatering</td>
+		</tr>
+		<tr>
+			<td>type_</td>
+			<td>Filtype. 1 for note og todo-liste og 2 for notebook</td>
+		</tr>
+		
+		
+	</tbody>
+</table>
+
 
 <h1>Markdown format</h1>
 
