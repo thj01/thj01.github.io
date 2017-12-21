@@ -228,14 +228,43 @@ type_: 1
 <p>Fordelen ved at anvende Markdown er, at formateringskoden er langt lettere at beherske end f.eks. HTML, som kræver tags både før og efter. På mange måder er markdown langt mere intuitiv at arbejde med.</p>
 
 <blockquote>
-	<p>
-		Joplins anvendelse af markdown er ikke helt så omfattense som sproget egentlig godtager. Derfor har jeg i det nedestående valgt at gennemgå den del der fungere med Joplin.
-	</p>
+	<p>	Joplins anvendelse af markdown er ikke helt så omfattense som sproget egentlig godtager. Derfor har jeg i det nedestående valgt at gennemgå den del der fungere med Joplin.</p>
 	
 	<p>Hvis du senere ønsker at arbejde med tekst til f.eks. hjemmesider eller opgaver, så kan du med fordel anvende markdown, da det giver store muligheder for at formatere sin tekst og f.eks. at indsætte en TOC (<b>T</b>able <b>O</b>ff <b>C</b>ontent).</p>
 </blockquote>
 
-<h2>Overskrifter</h2>
+<h2>Tekst</h2>
+
+<h3>Escape'd tegn</h3>
+
+<p>Skal man anvende tegn i sin tekst, der også anvendes i markup language, skal man "escape" dem. Det gøres ved at indsætte \ (backslash) foran. Det gælder følgende tegn:</p>
+
+<table class="_">
+
+	<tbody>
+		<tr>
+			<td>\ backslash</td>
+			<td>` backtic</td>
+			<td>* asterisk</td>
+			<td>_ underscore</td>
+
+		</tr>
+		<tr>
+			<td>{} curly brackets</td>
+			<td>[] brackets</td>
+			<td>() Paranteser</td>
+			<td># hash</td>
+		</tr>
+		<tr>
+			<td>+ plus</td>
+			<td>- minus</td>
+			<td>. punktum</td>
+			<td>! udråbstegn</td>
+		</tr>
+	</tbody>
+</table>
+
+<h3>Overskrifter</h3>
 
 <pre>
 	<code class="markdown">
@@ -256,12 +285,13 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 </figure>
 
-<h2>Formatering af tekst</h2>
+<h3>Formatering af tekst</h3>
 
 <pre>
 	<code class="markdown">
 _Kursiv tekst_
 __Fed tekst__
+~~Overstreget tekst~~
 	</code>
 </pre>
 
@@ -273,42 +303,34 @@ __Fed tekst__
 
 </figure>
 
-<h2>Escape'd tegn</h2>
+<h3>Citater</h3>
 
-<p>Skal man anvende tegn i sin tekst, der også anvendes i markup language, skal man "escape" dem. Det gøres ved at indsætte \ (backslash) foran. Det gælder følgende tegn:</p>
-
-<table class="_">
-
-	<tbody>
-		<tr>
-			<td>\ backslash</td>
-			<td>() Paranteser</td>
-		</tr>
-		<tr>
-			<td>` backtic</td>
-			<td># hash</td>
-		</tr>
-		<tr>
-			<td>* asterisk</td>
-			<td>+ plus</td>
-		</tr>
-		<tr>
-			<td>_ underscore</td>
-			<td>- minus</td>
-		</tr>
-		<tr>
-			<td>{} curly brackets</td>
-			<td>. punktum</td>
-		</tr>
-		<tr>
-			<td>[] brackets</td>
-			<td>! udråbstegn</td>
-		</tr>
-	</tbody>
-</table>
+<p>I joplin er citater ikke formateret tydeligt, men bliver blot rykket ind. Det kan dog være en fordel hvis man senere vil konvertere til HTML eller PDF.</p>
 
 
-<h2>Tværgående linier</h2>
+<pre>
+	<code class="markdown">
+Dette er et citat (tekst der er rykket ind)
+
+> __Murphy's Law__: Anything that can possibly go wrong, does.
+
+Dette er et citat med et citat i
+
+> __Murphy's Law__: Anything that can possibly go wrong, does.
+
+>> __O'Tools corollary__: Myrpy was an optimist
+	</code>
+</pre>
+
+<figure id="">
+
+	<img class="p90" src="images/joblin11_citater.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h3>Tværgående linier</h3>
 
 <pre>
 	<code class="markdown">
@@ -349,59 +371,28 @@ Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliqu
 
 <p>Hvis man vil have den til at anvende tal eller bogstaver skriver man det i stedet de ovenstående tegn. Da joblin er et simpelt notesværktøj arbejder det ikke med indlejrede lister, som markup,language ellers gør.</p>
 
-<h2>Afkrydsnings lister</h2>
+<h3>Afkrydsnings lister</h3>
 
 <p>Man kan også oprette lister, hvor man kan markere om de er udført eller ej.</p>
 
 <pre>
 	<code class="Markdown">
-- [ ] Opgave 1
+- [X] Opgave 1
 - [ ] Opgave 2
 - [ ] Opgave 3
+- [ ] Opgave 4
 	</code>
 </pre>
 
-<h2>Tabeller</h2>
-
-<p>Tabeller laves ved at "tegne" dem. De skal ikke tegnes korrekt for markup formaterer det korrekt</p>
-
-<pre>
-	<code class="Markdown">
-Tabeloverskrift 1 | Tabeloverskrift 2 | Tabeloverskrift 3 
----|---|---
-Indhold 1 | Indhold 2 | indhold 3
-	</code>
-</pre>
+<p>Ved at sætte <span class="inl_cmd">x</span> i <span class="inl_cmd">[ ]</span> bliver feltet markeret på forhånd. Feltet er interaktivt ved at man klikker på det.</p>
 
 <figure id="">
 
-	<img class="p90" src="images/joplin05_tabel_1.png" alt="" title="" />
+	<img class="p90" src="images/joplin04a_Afkrydsningslister.png" alt="" title="" />
 
 	<figcaption></figcaption>
 
 </figure>
-
-<p>Den anden linie fortæller hvordan tabellen skal formateres. De tre streger fortæller at der skal være en ramme omkring de enkelte felter i tabellen. Ved at indsætte kolon for og efter stregerne kan man bestemme om kolonne teksten skal være venstre, centralt eller højrestillet.</p>
-
-<pre>
-	<code class="markdown">
-Tabeloverskrift 1 | Tabeloverskrift 2 | Tabeloverskrift 3 
----|:---:|---:
-venstrestillet | Centreret | Højrestillet
-	</code>
-</pre>
-
-<figure id="">
-
-	<img class="p90" src="images/joplin06_tabel_2.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-
-<p>Udelader man kolon, så vil teksten automatisk blive venstrestillet.</p>
-
-
 
 <h2>Links</h2>
 
@@ -464,6 +455,47 @@ Det kan også bare være [den rene reference]
 
 </figure>
 
+<h2>Tabeller</h2>
+
+<p>Tabeller laves ved at "tegne" dem. De skal ikke tegnes korrekt for markup formaterer det korrekt</p>
+
+<pre>
+	<code class="Markdown">
+Tabeloverskrift 1 | Tabeloverskrift 2 | Tabeloverskrift 3 
+---|---|---
+Indhold 1 | Indhold 2 | indhold 3
+	</code>
+</pre>
+
+<figure id="">
+
+	<img class="p90" src="images/joplin05_tabel_1.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Den anden linie fortæller hvordan tabellen skal formateres. De tre streger fortæller at der skal være en ramme omkring de enkelte felter i tabellen. Ved at indsætte kolon for og efter stregerne kan man bestemme om kolonne teksten skal være venstre, centralt eller højrestillet.</p>
+
+<pre>
+	<code class="markdown">
+Tabeloverskrift 1 | Tabeloverskrift 2 | Tabeloverskrift 3 
+---|:---:|---:
+venstrestillet | Centreret | Højrestillet
+	</code>
+</pre>
+
+<figure id="">
+
+	<img class="p90" src="images/joplin06_tabel_2.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Udelader man kolon, så vil teksten automatisk blive venstrestillet.</p>
+
+
 <h2>Billeder</h2>
 
 <p>Hvis man ønkser at indsætte et billede kan det gøres enten inline eller med refenrence:</p>
@@ -489,6 +521,7 @@ Det kan også bare være [den rene reference]
 ![alt text][logo]
 
 [logo]: https://upload.wikimedia.org/wikipedia/commons/a/af/Tux.png
+
 	</code>
 </pre>
 
@@ -504,32 +537,7 @@ Det kan også bare være [den rene reference]
 	</code>
 </pre>
 
-<h2>Citater</h2>
 
-<p>I joplin er citater ikke formateret tydeligt, men bliver blot rykket ind. Det kan dog være en fordel hvis man senere vil konvertere til HTML eller PDF.</p>
-
-
-<pre>
-	<code class="markdown">
-Dette er et citat (tekst der er rykket ind)
-
-> __Murphy's Law__: Anything that can possibly go wrong, does.
-
-Dette er et citat med et citat i
-
-> __Murphy's Law__: Anything that can possibly go wrong, does.
-
->> __O'Tools corollary__: Myrpy was an optimist
-	</code>
-</pre>
-
-<figure id="">
-
-	<img class="p90" src="images/joblin11_citater.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
 
 
 <h1>Cheat sheets</h1>
@@ -544,58 +552,53 @@ Dette er et citat med et citat i
 
 <p>Markdown kan ved hjælp af forskellige redskaber konverteres til andre formater. Det betyder at du hurtigt vil kunne lave din tekst og derefter videredistribuere det i forskellige formater.</p>
 
-<h2>Dillinger</h2>
-
-<p>Dillinger har den fordel, at den kan eksportere til PDF. Desværre kan den ikke arbejde med <span class="math">\( L_at^ex \)</span> kode, hvilket gør den besværlig at anvende til matematik.</p>
-
-<p><a href="https://dillinger.io/" target="_blank">https://dillinger.io/</a></p>
-
-<h2>Stack editor</h2>
-
-<p>Stack editor har 2 Væsentlige fordele. Den kan arbejde med <span class="math">\( L_at^ex \)</span>, og den eksportere en meget ren HTML kode. Ulempen er, at man ikke kan eksportere til PDF. Denne feature kan dog tilkøbes for 5$ om året.</p>
-
-<p><a href="https://stackedit.io/editor" target="_blank">https://stackedit.io/editor</a></p>
-
-<h1>HTML-prettyfyers</h1>
-
-<p>For at gøre eksporteret HTML kode læseligt kan man køre det igennem en <span class="inl_cmd">prettyfier</span>.</p>
-
-<h2>HTML-formatter</h2>
-
-<p>HTML-formatter: <a href="http://htmlformatter.com/" target="_blank">http://htmlformatter.com/</a></p>
-
-<p>Laver en pæn HTML-kode med mellemrum mellem elementerne, men kan ikke indstilles.</p>
-
-<h2>Dirty Markup</h2>
-
-<p>Dirty markup: <a href="https://www.10bestdesign.com/dirtymarkup/" target="_blank">https://www.10bestdesign.com/dirtymarkup/</a></p>
-
-<p>Den indstilling du skal være opmærksom på er <span class="inl_cmd">Output</span>. Her kan du vælge mellem to:</p>
-
 <ul class="none fat_li">
-	<li>Full page</li>
 	
-		<p>Formaterer og omdanner HTML-koden til et HTML5 dokument, med korrekt opsætning (deklaration, head og body)</p>
-		
-	<li>Code fragment</li>
+	<li>Dillinger</li>
 	
-		<p>Omdanner kun selve den kode du indsætter.</p>
+		<p>Dillinger har den fordel, at den kan eksportere til PDF. Desværre kan den ikke arbejde med <span class="math">\( L_at^ex \)</span> kode, hvilket gør den besværlig at anvende til matematik.</p>
+
+		<p><a href="https://dillinger.io/" target="_blank">https://dillinger.io/</a></p>
+	
+	<li>Stack editor</li>
+	
+		<p>Stack editor har 2 Væsentlige fordele. Den kan arbejde med <span class="math">\( L_at^ex \)</span>, og den eksportere en meget ren HTML kode. Ulempen er, at man ikke kan eksportere til PDF. Denne feature kan dog tilkøbes for 5$ om året.</p>
+
+		<p><a href="https://stackedit.io/editor" target="_blank">https://stackedit.io/editor</a></p>
+	
+	<li>Haroopad</li>
+
+		<p>Haroopad er en off-line editor, som du kan anvende til skrive dine dokumenter i, samt at eksportere til både HTML og PDF</p>
+
+		<p><a href="http://pad.haroopress.com/user.html" target="_blank">http://pad.haroopress.com/user.html</a></p>
+	
 </ul>
 
 
 
 
 
-<h2>Haroopad</h2>
 
-<p>Haroopad er en off-line editor, som du kan anvende til skrive dine dokumenter i, samt at eksportere til både HTML og PDF</p>
+<h2>HTML-prettyfyers</h2>
 
-<p>Den er licenseret under GPL</p>
-
-<p><a href="http://pad.haroopress.com/user.html" target="_blank">http://pad.haroopress.com/user.html</a></p>
+<p>For at gøre eksporteret HTML kode læseligt kan man køre det igennem en <span class="inl_cmd">prettyfier</span>.</p>
 
 
+<ul class="none fat_li">
+	
+	<li>HTML-formatter</li>
+	
+		<p>HTML-formatter: <a href="http://htmlformatter.com/" target="_blank">http://htmlformatter.com/</a></p>
 
+		<p>Laver en pæn HTML-kode med mellemrum mellem elementerne, men kan ikke indstilles.</p>
+	
+	<li>Dirty Markup</li>
+	
+	<p>Dirty markup: <a href="https://www.10bestdesign.com/dirtymarkup/" target="_blank">https://www.10bestdesign.com/dirtymarkup/</a></p>
+
+	<p>Den indstilling du skal være opmærksom på er <span class="inl_cmd">Output</span>. Her kan du vælge mellem <span class="inl_cmd">Full page</span>, som konvertere din kode til HTML5 (dekleration, head, body) og <span class="inl_cmd">Code fragment</span>, som kun laver den konkrete kode.</p> 
+	
+</ul>
 
 	
 </div><!-- end: col-md-9 -->
