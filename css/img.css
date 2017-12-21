@@ -57,6 +57,12 @@ content: "Screenshot: ";
 
 }*/
 
+img.frame {
+border: 1px #bbbbbb solid;
+border-radius: 5px;
+
+}
+
 
 figure img.p20 {width: 20%;}
 figure img.p25 {width: 25%;}
