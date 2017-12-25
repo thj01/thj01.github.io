@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+    <head>
+        <title>$DOCUMENT_TITLE</title>
+        <meta charset='utf-8'/>
+        <link rel="stylesheet" type="text/css" href="$ASSETS_PATH/styles.css">
+        <script src="$ASSETS_PATH/toc.js" type="text/javascript"></script>
+        <script>
+            window.onload = function() {
+                if (document.querySelector("script[type=\"math/tex; mode=display\"]") !== null) {
+                    var mathjax = document.createElement("script");
+                    mathjax.src = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML";
+                    document.head.appendChild(mathjax);
+                }
+                if (document.getElementsByTagName("code").length !== 0) {
+                    var highlight = document.createElement("script");
+                    var highlightcss = document.createElement("link");
+                    highlight.src = "http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.2.0/highlight.min.js";
+                    highlightcss.rel = "stylesheet";
+                    highlightcss.href = "http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.2.0/styles/default.min.css";
+                    highlight.onload = function() {hljs.initHighlighting();};
+                    document.head.appendChild(highlight);
+                    document.head.appendChild(highlightcss);
+                }
+            }
+            
+            
+        </script>
+    </head>
+    <body onload="generateTOC(document.getElementById('toc'));">
+		
+		<div id="toc">
+			
+			<div id="toc_head">Indholdsfortegnelse</div>
+		
+		
+		</div>
+		
+		<hr/>
+
+		$DOCUMENT_CONTENT
+
+    </body>
+</html>
