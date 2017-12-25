@@ -346,6 +346,18 @@ Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliqu
 
 </figure>
 
+<h3>Fodnoter</h3>
+
+<p>Fodnoter indsættes som referencer i teksten. Abricotine sørger for at henvisningerne fungerer korrekt.</p>
+	
+<pre>
+	<code class="markdown">
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.[^1]
+
+[^1]: Her er fodnoten 
+
+	</code>
+</pre>
 
 <h2>Lister</h2>
 
@@ -602,8 +614,44 @@ venstrestillet | Centreret | Højrestillet
 
 <p>Abricotine er en ekstrem konfigurerbar markup editor, som giver brugeren mulighed for at skrive dokumenter, der kan eksporteres direkte til browseren, og derfra printes til f.eks. PDF. Abricotine hentes fra: <a href="https://github.com/brrd/Abricotine/releases" target="_blank">https://github.com/brrd/Abricotine/releases</a>. Abricotine bruger <span class="inl_cmd">hunspell</span> til stavekontrol, og har man f.eks. installeret <span class="inl_cmd">Libreoffice</span>, er ihvertfald den danske allerede installeret.</p>
 
-<p>Programmet konfigureres igennem tekstfiler, og den som er interessant i denne sammenhæng er den som formaterer udseendet på webview. Man får adgang til konfigurationsfilerne ved at vælge menuen: <span class="inl_cmd">Edit &rarr; Open Config Directory</span>. Her skal vi gå videre ind i <span class="inl_cmd">..\templates\default\assets\styles.css</span>.</p>
 
+
+<p>Programmet konfigureres igennem tekstfiler, og den som er interessant i denne sammenhæng er den som formaterer udseendet på webview. Man får adgang til konfigurationsfilerne ved at vælge menuen: <span class="inl_cmd">Edit &rarr; Open Config Directory</span>.</p>
+
+<p>Her vil vi ændre ito filer og tilføje 1: </p>
+
+<table class="_">
+	<thead>
+		<tr>
+			<th>Fil</th>
+			<th>Fulde sti</th>
+			<th>Beskrivelse</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>template.html</td>
+			<td>../templates/default/template.html</td>
+			<td>Indeholder den HTML5 skabelon, som markup-scriptet omdannes efter. Herindsætter du ekstra kode, hvis du ønsker det</td>
+		</tr>
+		<tr>
+			<td>styles.css</td>
+			<td>../templates/default/assets/styles.css</td>
+			<td>CSS-koden til HTML5 dokumentet. I dette dokument laver du de tilrettelser til designet du ønsker.</td>
+		</tr>
+		<tr>
+			<td>toc.js</td>
+			<td>../templates/default/assets/styles.css</td>
+			<td>En javascriptkode vi tilføjer, for at få en indholdsfortegnelse. Dette javascript er hentet fra <a href="http://www.whitsoftdev.com/articles/toc.html" target="_blank">http://www.whitsoftdev.com/articles/toc.html</a>, og jeg har lavet enkelte rettelser i det, for at give en pænere udskrift.</td>
+		</tr>
+	</tbody>
+</table>
+
+
+
+<h2>Ekstra features</h2>
+
+	
 	
 </div><!-- end: col-md-9 -->
 

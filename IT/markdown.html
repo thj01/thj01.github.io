@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="da">
 <head>
-  <title>Joplin</title>
+  <title>Markdown</title>
   <link rel="icon" href="../images/favicon.png">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -45,20 +45,432 @@
 	
 	<div class="title">Markdown</div>
 	
-<p>Markdown er et formateringssprog der er skabt af </p>
+
+
+
+
+<h1>Markdown format</h1>
+
+<p>Man kan vælge enten at skrive sine noter ved hjælp af ganske almindelig tekst, men der kan også lave avanceret layout ved hjælp af <span class="inl_cmd">markdown format</span> (<a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet" target="_blank">https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet</a>).</p>
+
+<p>Fordelen ved at anvende Markdown er, at formateringskoden er langt lettere at beherske end f.eks. HTML, som kræver tags både før og efter. På mange måder er markdown langt mere intuitiv at arbejde med.</p>
+
+<h2>Tekst</h2>
+
+<h3>Escape'd tegn</h3>
+
+<p>Skal man anvende tegn i sin tekst, der også anvendes i markup language, skal man "escape" dem. Det gøres ved at indsætte \ (backslash) foran. Det gælder følgende tegn:</p>
+
+<table class="_">
+
+	<tbody>
+		<tr>
+			<td>\ backslash</td>
+			<td>` backtic</td>
+			<td>* asterisk</td>
+			<td>_ underscore</td>
+
+		</tr>
+		<tr>
+			<td>{} curly brackets</td>
+			<td>[] brackets</td>
+			<td>() Paranteser</td>
+			<td># hash</td>
+		</tr>
+		<tr>
+			<td>+ plus</td>
+			<td>- minus</td>
+			<td>. punktum</td>
+			<td>! udråbstegn</td>
+		</tr>
+	</tbody>
+</table>
+
+<h3>Overskrifter</h3>
+
+<pre>
+	<code class="markdown">
+# Overskrift 1
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+## Overskrift 2
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+### Overskrift 3
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+	</code>
+</pre>
+
+<figure id="">
+
+	<img class="p90 frame" src="images/joplin01_overskrifter.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<blockquote>
+	
+	<p>Vær opmærksom på, at <span class="inl_cmd">h1</span> bliver anvendt som dokumentets titel. Derfor skal ens overskrifter starte fra <span class="inl_cmd">h2</span> osv. </p>
+
+</blockquote>
+
+<h3>Formatering af tekst</h3>
+
+<pre>
+	<code class="markdown">
+_Kursiv tekst_
+__Fed tekst__
+~~Overstreget tekst~~
+	</code>
+</pre>
+
+<figure id="">
+
+	<img class="p90 frame"src="images/joplin02_formatering_tekst.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h3>Citater</h3>
+
+<p>I joplin er citater ikke formateret tydeligt, men bliver blot rykket ind. Det kan dog være en fordel hvis man senere vil konvertere til HTML eller PDF.</p>
+
+
+<pre>
+	<code class="markdown">
+Dette er et citat (tekst der er rykket ind)
+
+> __Murphy's Law__: Anything that can possibly go wrong, does.
+
+Dette er et citat med et citat i
+
+> __Murphy's Law__: Anything that can possibly go wrong, does.
+
+>> __O'Tools corollary__: Myrpy was an optimist
+	</code>
+</pre>
+
+<figure id="">
+
+	<img class="p90 frame"src="images/joblin11_citater.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h3>Tværgående linier</h3>
+
+<pre>
+	<code class="markdown">
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+***
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+	</code>
+</pre>
+
+<figure id="">
+
+	<img class="p90 frame"src="images/joplin03_tvaergaaende_linier.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h3>Fodnoter</h3>
+
+<p>Fodnoter indsættes som referencer i teksten. Abricotine sørger for at henvisningerne fungerer korrekt.</p>
+	
+<pre>
+	<code class="markdown">
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.[^1]
+
+[^1]: Her er fodnoten 
+
+	</code>
+</pre>
+
+<h2>Lister</h2>
+
+<p>Lister laves enten med -, + eller *. I alle tilfældene får man en liste med bullits</p>
+
+<pre>
+	<code class="Markdown">
+- element 1
+- element 2
+- element 3
+	</code>
+</pre>
+
+<figure id="">
+
+	<img class="p90 frame"src="images/joplin04_lister.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Hvis man vil have den til at anvende tal eller bogstaver skriver man det i stedet de ovenstående tegn. Da joblin er et simpelt notesværktøj arbejder det ikke med indlejrede lister, som markup,language ellers gør.</p>
+
+<h3>Afkrydsnings lister</h3>
+
+<p>Man kan også oprette lister, hvor man kan markere om de er udført eller ej.</p>
+
+<pre>
+	<code class="Markdown">
+- [X] Opgave 1
+- [ ] Opgave 2
+- [ ] Opgave 3
+- [ ] Opgave 4
+	</code>
+</pre>
+
+<p>Ved at sætte <span class="inl_cmd">x</span> i <span class="inl_cmd">[ ]</span> bliver feltet markeret på forhånd. Feltet er interaktivt ved at man klikker på det.</p>
+
+<figure id="">
+
+	<img class="p90 frame"src="images/joplin04a_Afkrydsningslister.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h3>Indlejrede lister</h3>
+
+<p>Man indlejrer en liste ved at sætte en tabulatorer foran de liste element man vil have ind under de andre.</p>
+
+<h2>Links</h2>
+
+<p>Links kan indtastes direkte på følgende måder:</p>
+
+<pre>
+	<code class="markdown">
+https://www.google.com
+www.google.com
+google.com
+	</code>
+</pre>
+
+<figure id="">
+
+	<img class="p90 frame"src="images/joblin07_Links_1.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Vil man lave den inline kan det gøres som her. Læg mærke til, at det skal være den fulde sti. </p>
+
+<pre>
+	<code class="markdown">
+Her er et link du kan klikke på til [Google](https://www.google.com)
+Her er et link du kan klikke på til [Google](https://www.google.com "Googles hjemmeside"), og som får en titel når du holder musen over linket.
+	</code>
+</pre>
+
+<figure id="">
+
+	<img class="p90 frame"src="images/joblin08_Links_2.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Denne metode bør anvendes hvis man vil senere vil kunne konvertere sit dokument til andre formater.</p>
+
+<p>Det kan også gøres med referencer</p>
+
+<pre>
+	<code class="markdown">
+Hjemmeside [vidas][reference_a]
+[Det blå gymnasium][1]
+Det kan også bare være [den rene reference]
+
+[reference_a]: http://www.vidas.dk
+[1]: http://www.vestfyns.dk
+[den rene reference]: https://www.google.com
+	</code>
+</pre>
+
+<figure id="">
+
+	<img class="p90 frame"src="images/joblin09_Links_3.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h2>Tabeller</h2>
+
+<p>Tabeller laves ved at "tegne" dem. De skal ikke tegnes korrekt for markup formaterer det korrekt</p>
+
+<pre>
+	<code class="Markdown">
+Tabeloverskrift 1 | Tabeloverskrift 2 | Tabeloverskrift 3 
+---|---|---
+Indhold 1 | Indhold 2 | indhold 3
+	</code>
+</pre>
+
+<figure id="">
+
+	<img class="p90 frame"src="images/joplin05_tabel_1.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Den anden linie fortæller hvordan tabellen skal formateres. De tre streger fortæller at der skal være en ramme omkring de enkelte felter i tabellen. Ved at indsætte kolon for og efter stregerne kan man bestemme om kolonne teksten skal være venstre, centralt eller højrestillet.</p>
+
+<pre>
+	<code class="markdown">
+Tabeloverskrift 1 | Tabeloverskrift 2 | Tabeloverskrift 3 
+---|:---:|---:
+venstrestillet | Centreret | Højrestillet
+	</code>
+</pre>
+
+<figure id="">
+
+	<img class="p90 frame"src="images/joplin06_tabel_2.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Udelader man kolon, så vil teksten automatisk blive venstrestillet.</p>
+
+
+<h2>Billeder</h2>
+
+<p>Hvis man ønkser at indsætte et billede kan det gøres enten inline eller med refenrence:</p>
+
+<pre>
+	<code class="markdown">
+![alt text](https://upload.wikimedia.org/wikipedia/commons/a/af/Tux.png)
+	</code>
+</pre>
+
+<figure id="">
+
+	<img class="p90 frame"src="images/joblin10_billeder.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>På samme måde som ovenfor kan man henvise til billedet ved hjælp af en reference.</p>
+
+<pre>
+	<code class="markdown">
+![alt text][logo]
+
+[logo]: https://upload.wikimedia.org/wikipedia/commons/a/af/Tux.png
+
+	</code>
+</pre>
+
+<p>Hvis man vil have at der skal være en tekst over billedet når man holder musen over skal man tilføje dette i anførselstegn efter .</p>
+
+<pre>
+	<code class="markdown">
+![alt text](https://upload.wikimedia.org/wikipedia/commons/a/af/Tux.png "Tux - Linux logo" )
+
+![alt text][logo]
+
+[logo]: https://upload.wikimedia.org/wikipedia/commons/a/af/Tux.png "Tux - Linux logo"
+	</code>
+</pre>
+
+<h2>Matematik</h2>
+
+<p>Rigtig mange markup language programmer giver adgang til at skrive <span class="math">\( L_aT^eX \)</span> direkte ind i koden. Det gøres ved at skrive Latex koden imellem 2 <span class="inl_cmd">$$</span> (dollartegn). F.eks: </p>
+
+<pre>
+	<code class="markdown">
+$$ x = \frac{-b \pm \sqrt D}{2a} $$		
+		
+$$ s^2 = \frac{1}{n-1} \cdot \sum_{i=1}^k (m_i- \overline x)^2 \cdot h_i $$
+	</code>
+</pre>
+
+
+
+
+
+
+<h2>Cheat sheets</h2>
+
+<p>Markdown cheatsheat: <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet" target="_blank">https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet</a></p>
+
+<p>Commonmark.org: <a href="http://commonmark.org/help/" target="_blank">http://commonmark.org/help/</a></p>
+
+<p>Guide: <a href="https://zapier.com/blog/markdown-html-export/" target="_blank">https://zapier.com/blog/markdown-html-export/</a></p>
+
+
+
+<h1>Abricotine</h1>
+
+<p><a href="http://abricotine.brrd.fr" target="_blank">http://abricotine.brrd.fr</a></p>
+
+<p>Abricotine er en ekstrem konfigurerbar markup editor, som giver brugeren mulighed for at skrive dokumenter, der kan eksporteres direkte til browseren, og derfra printes til f.eks. PDF. Abricotine hentes fra: <a href="https://github.com/brrd/Abricotine/releases" target="_blank">https://github.com/brrd/Abricotine/releases</a>. Abricotine bruger <span class="inl_cmd">hunspell</span> til stavekontrol, og har man f.eks. installeret <span class="inl_cmd">Libreoffice</span>, er ihvertfald den danske allerede installeret.</p>
+
+
+
+<p>Programmet konfigureres igennem tekstfiler, og den som er interessant i denne sammenhæng er den som formaterer udseendet på webview. Man får adgang til konfigurationsfilerne ved at vælge menuen: <span class="inl_cmd">Edit &rarr; Open Config Directory</span>.</p>
+
+<p>Man kan altså ved hjælp af disse konfigurationsfiler lave en hel standardiseret opsætning af dokumenter, hvor man i skriveprocessen ene og alene er fokuseret på indholdet.</p>
+
+<p>Her vil vi ændre i 2 filer og tilføje en</p>
+
+<table class="_">
+	<thead>
+		<tr>
+			<th>Fil</th>
+			<th>Fulde sti</th>
+			<th>Handling</th>
+			<th>Beskrivelse</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>template.html</td>
+			<td>../templates/default/template.html</td>
+			<td>Ændres</td>
+			<td>Indeholder den HTML5 skabelon, som markup-scriptet omdannes efter. Herindsætter du ekstra kode, hvis du ønsker det</td>
+		</tr>
+		<tr>
+			<td>styles.css</td>
+			<td>../templates/default/assets/styles.css</td>
+			<td>Ændres</td>
+			<td>CSS-koden til HTML5 dokumentet. I dette dokument laver du de tilrettelser til designet du ønsker.</td>
+		</tr>
+		<tr>
+			<td>toc.js</td>
+			<td>../templates/default/assets/styles.css</td>
+			<td>Tilføjes</td>
+			<td>En javascriptkode vi tilføjer, for at få en indholdsfortegnelse. Dette javascript er hentet fra <a href="http://www.whitsoftdev.com/articles/toc.html" target="_blank">http://www.whitsoftdev.com/articles/toc.html</a>, og jeg har lavet enkelte rettelser i det, for at give en pænere udskrift.</td>
+		</tr>
+	</tbody>
+</table>
+
+<h1>Joplin</h1>
+
+<p>Joplin er et open source note program, der kan synkronisere noter mellem Android, iOS, Linux, Mac og Windows enheder. Det kan enten arbejde ud fra et delt drev, eller ud fra en privat Microsoft OneDrive konto.</p>
+
+<p>Har man brug for et notat-program, der kan spænde over alle ens enheder, og man ikke ønsker at være bundet til en udbyder, er Joplin et godt sted at starte.</p>
 
 
 <p><a href="http://joplin.cozic.net/" target="_blank">http://joplin.cozic.net/</a></p>
 
 <p>Joplin kan endda anvendes fra kommandolinien - <a href="http://joplin.cozic.net/terminal/" target="_blank">http://joplin.cozic.net/terminal/</a></p>	
 
-<h1>Synkronisering</h1>
+<h2>Synkronisering</h2>
 
 <p>Joplin kan synkronisere med lokale netværksdrev og personlige Microsoft Onedrive konti, og der arbejdes på at få den til at synkronisere med Dropbox.</p>
 
 <p>Hvis du ikke har en personlig Onedrivekonto, har du mulighed for enten at oprette en ny en, eller registrere en din mail. Det gør du på siden <a href="https://signup.live.com/" target="_blank">https://signup.live.com/</a>.</p>
 
-<h2>Placering</h2>
+<h3>Placering</h3>
 
 <p>Du vil kunne finde dine joplin notater i rodmappen af dit onedrive under <span class="inl_cmd">../aps/joplin</span>.</p>
 
@@ -70,7 +482,7 @@
 
 </figure>
 
-<h2>Filformatet</h2>
+<h3>Filformatet</h3>
 
 <p>Selve filerne er rene tekstfiler, og indeholder ud over selve teksten også forskellige data om filen. Læg mærke til at filernes navne er dannet af et hexadecimalt filnavn med 32 decimaler, hvilket giver muligheden for <span class="math">\( 32^{16} = 1,2 \cdot 10^{21}\)</span> forskellige filer. Højst sansynligt bliver disse filnavne dannet tilfældigt, sådan at det er programmet der administrerer sammenhængen.</p>
 
@@ -218,339 +630,17 @@ type_: 1
 	</tbody>
 </table>
 
-
-<h1>Markdown format</h1>
-
-<p>Man kan vælge enten at skrive sine noter ved hjælp af ganske almindelig tekst, men der kan også lave avanceret layout ved hjælp af <span class="inl_cmd">markdown format</span> (<a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet" target="_blank">https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet</a>).</p>
-
-<p>Fordelen ved at anvende Markdown er, at formateringskoden er langt lettere at beherske end f.eks. HTML, som kræver tags både før og efter. På mange måder er markdown langt mere intuitiv at arbejde med.</p>
-
-<blockquote>
-	<p>	Joplins anvendelse af markdown er ikke helt så omfattense som sproget egentlig godtager. Derfor har jeg i det nedestående valgt at gennemgå den del der fungere med Joplin.</p>
+<!--
+<h1>Haroopad</h1>
 	
-	<p>Hvis du senere ønsker at arbejde med tekst til f.eks. hjemmesider eller opgaver, så kan du med fordel anvende markdown, da det giver store muligheder for at formatere sin tekst og f.eks. at indsætte en TOC (<b>T</b>able <b>O</b>ff <b>C</b>ontent).</p>
-</blockquote>
+<p>Haroopad er en off-line editor, som du kan anvende til skrive dine dokumenter i, samt at eksportere til både HTML og PDF</p>
 
-<h2>Tekst</h2>
+<p><a href="http://pad.haroopress.com/user.html" target="_blank">http://pad.haroopress.com/user.html</a></p>	
+-->
 
-<h3>Escape'd tegn</h3>
-
-<p>Skal man anvende tegn i sin tekst, der også anvendes i markup language, skal man "escape" dem. Det gøres ved at indsætte \ (backslash) foran. Det gælder følgende tegn:</p>
-
-<table class="_">
-
-	<tbody>
-		<tr>
-			<td>\ backslash</td>
-			<td>` backtic</td>
-			<td>* asterisk</td>
-			<td>_ underscore</td>
-
-		</tr>
-		<tr>
-			<td>{} curly brackets</td>
-			<td>[] brackets</td>
-			<td>() Paranteser</td>
-			<td># hash</td>
-		</tr>
-		<tr>
-			<td>+ plus</td>
-			<td>- minus</td>
-			<td>. punktum</td>
-			<td>! udråbstegn</td>
-		</tr>
-	</tbody>
-</table>
-
-<h3>Overskrifter</h3>
-
-<pre>
-	<code class="markdown">
-# Overskrift 1
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-## Overskrift 2
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-### Overskrift 3
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-	</code>
-</pre>
-
-<figure id="">
-
-	<img class="p90 frame" src="images/joplin01_overskrifter.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-
-<h3>Formatering af tekst</h3>
-
-<pre>
-	<code class="markdown">
-_Kursiv tekst_
-__Fed tekst__
-~~Overstreget tekst~~
-	</code>
-</pre>
-
-<figure id="">
-
-	<img class="p90 frame"src="images/joplin02_formatering_tekst.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-
-<h3>Citater</h3>
-
-<p>I joplin er citater ikke formateret tydeligt, men bliver blot rykket ind. Det kan dog være en fordel hvis man senere vil konvertere til HTML eller PDF.</p>
-
-
-<pre>
-	<code class="markdown">
-Dette er et citat (tekst der er rykket ind)
-
-> __Murphy's Law__: Anything that can possibly go wrong, does.
-
-Dette er et citat med et citat i
-
-> __Murphy's Law__: Anything that can possibly go wrong, does.
-
->> __O'Tools corollary__: Myrpy was an optimist
-	</code>
-</pre>
-
-<figure id="">
-
-	<img class="p90 frame"src="images/joblin11_citater.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-
-<h3>Tværgående linier</h3>
-
-<pre>
-	<code class="markdown">
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-***
-Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-	</code>
-</pre>
-
-<figure id="">
-
-	<img class="p90 frame"src="images/joplin03_tvaergaaende_linier.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-
-
-<h2>Lister</h2>
-
-<p>Lister laves enten med -, + eller *. I alle tilfældene får man en liste med bullits</p>
-
-<pre>
-	<code class="Markdown">
-- element 1
-- element 2
-- element 3
-	</code>
-</pre>
-
-<figure id="">
-
-	<img class="p90 frame"src="images/joplin04_lister.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-
-<p>Hvis man vil have den til at anvende tal eller bogstaver skriver man det i stedet de ovenstående tegn. Da joblin er et simpelt notesværktøj arbejder det ikke med indlejrede lister, som markup,language ellers gør.</p>
-
-<h3>Afkrydsnings lister</h3>
-
-<p>Man kan også oprette lister, hvor man kan markere om de er udført eller ej.</p>
-
-<pre>
-	<code class="Markdown">
-- [X] Opgave 1
-- [ ] Opgave 2
-- [ ] Opgave 3
-- [ ] Opgave 4
-	</code>
-</pre>
-
-<p>Ved at sætte <span class="inl_cmd">x</span> i <span class="inl_cmd">[ ]</span> bliver feltet markeret på forhånd. Feltet er interaktivt ved at man klikker på det.</p>
-
-<figure id="">
-
-	<img class="p90 frame"src="images/joplin04a_Afkrydsningslister.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-
-<h2>Links</h2>
-
-<p>Links kan indtastes direkte på følgende måder:</p>
-
-<pre>
-	<code class="markdown">
-https://www.google.com
-www.google.com
-google.com
-	</code>
-</pre>
-
-<figure id="">
-
-	<img class="p90 frame"src="images/joblin07_Links_1.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-
-<p>Vil man lave den inline kan det gøres som her. Læg mærke til, at det skal være den fulde sti. </p>
-
-<pre>
-	<code class="markdown">
-Her er et link du kan klikke på til [Google](https://www.google.com)
-Her er et link du kan klikke på til [Google](https://www.google.com "Googles hjemmeside"), og som får en titel når du holder musen over linket.
-	</code>
-</pre>
-
-<figure id="">
-
-	<img class="p90 frame"src="images/joblin08_Links_2.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-
-<p>Denne metode bør anvendes hvis man vil senere vil kunne konvertere sit dokument til andre formater.</p>
-
-<p>Det kan også gøres med referencer</p>
-
-<pre>
-	<code class="markdown">
-Hjemmeside [vidas][reference_a]
-[Det blå gymnasium][1]
-Det kan også bare være [den rene reference]
-
-[reference_a]: http://www.vidas.dk
-[1]: http://www.vestfyns.dk
-[den rene reference]: https://www.google.com
-	</code>
-</pre>
-
-<figure id="">
-
-	<img class="p90 frame"src="images/joblin09_Links_3.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-
-<h2>Tabeller</h2>
-
-<p>Tabeller laves ved at "tegne" dem. De skal ikke tegnes korrekt for markup formaterer det korrekt</p>
-
-<pre>
-	<code class="Markdown">
-Tabeloverskrift 1 | Tabeloverskrift 2 | Tabeloverskrift 3 
----|---|---
-Indhold 1 | Indhold 2 | indhold 3
-	</code>
-</pre>
-
-<figure id="">
-
-	<img class="p90 frame"src="images/joplin05_tabel_1.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-
-<p>Den anden linie fortæller hvordan tabellen skal formateres. De tre streger fortæller at der skal være en ramme omkring de enkelte felter i tabellen. Ved at indsætte kolon for og efter stregerne kan man bestemme om kolonne teksten skal være venstre, centralt eller højrestillet.</p>
-
-<pre>
-	<code class="markdown">
-Tabeloverskrift 1 | Tabeloverskrift 2 | Tabeloverskrift 3 
----|:---:|---:
-venstrestillet | Centreret | Højrestillet
-	</code>
-</pre>
-
-<figure id="">
-
-	<img class="p90 frame"src="images/joplin06_tabel_2.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-
-<p>Udelader man kolon, så vil teksten automatisk blive venstrestillet.</p>
-
-
-<h2>Billeder</h2>
-
-<p>Hvis man ønkser at indsætte et billede kan det gøres enten inline eller med refenrence:</p>
-
-<pre>
-	<code class="markdown">
-![alt text](https://upload.wikimedia.org/wikipedia/commons/a/af/Tux.png)
-	</code>
-</pre>
-
-<figure id="">
-
-	<img class="p90 frame"src="images/joblin10_billeder.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-
-<p>På samme måde som ovenfor kan man henvise til billedet ved hjælp af en reference.</p>
-
-<pre>
-	<code class="markdown">
-![alt text][logo]
-
-[logo]: https://upload.wikimedia.org/wikipedia/commons/a/af/Tux.png
-
-	</code>
-</pre>
-
-<p>Hvis man vil have at der skal være en tekst over billedet når man holder musen over skal man tilføje dette i anførselstegn efter .</p>
-
-<pre>
-	<code class="markdown">
-![alt text](https://upload.wikimedia.org/wikipedia/commons/a/af/Tux.png "Tux - Linux logo" )
-
-![alt text][logo]
-
-[logo]: https://upload.wikimedia.org/wikipedia/commons/a/af/Tux.png "Tux - Linux logo"
-	</code>
-</pre>
-
-
-
-
-<h1>Cheat sheets</h1>
-
-<p>Markdown cheatsheat: <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet" target="_blank">https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet</a></p>
-
-<p>Commonmark.org: <a href="http://commonmark.org/help/" target="_blank">http://commonmark.org/help/</a></p>
-
-<p>Guide: <a href="https://zapier.com/blog/markdown-html-export/" target="_blank">https://zapier.com/blog/markdown-html-export/</a></p>
-
-<h1>Markdown editors</h1>
+<h1>Online editors</h1>
 
 <p>Markdown kan ved hjælp af forskellige redskaber konverteres til andre formater. Det betyder at du hurtigt vil kunne lave din tekst og derefter videredistribuere det i forskellige formater.</p>
-
-<h2>Online</h2>
 
 <ul class="none fat_li">
 	
@@ -565,26 +655,10 @@ venstrestillet | Centreret | Højrestillet
 		<p>Stack editor har 2 Væsentlige fordele. Den kan arbejde med <span class="math">\( L_at^ex \)</span>, og den eksportere en meget ren HTML kode. Ulempen er, at man ikke kan eksportere til PDF. Denne feature kan dog tilkøbes for 5$ om året.</p>
 
 		<p><a href="https://stackedit.io/editor" target="_blank">https://stackedit.io/editor</a></p>
+		
+
 	
 </ul>
-
-<h2>Offline</h2>
-
-<ul class="none fat_li">
-	<li>Abricotine (Linux/Windows/Mac)</li>
-	
-		<p>Abricotine er en meget simpel Markdown editor, som findes</p>
-	
-	
-	<p><a href="http://abricotine.brrd.fr/" target="_blank">http://abricotine.brrd.fr/</a></p>
-	
-	<li>Haroopad (Linux/Windows/Mac)</li>
-
-		<p>Haroopad er en off-line editor, som du kan anvende til skrive dine dokumenter i, samt at eksportere til både HTML og PDF</p>
-
-		<p><a href="http://pad.haroopress.com/user.html" target="_blank">http://pad.haroopress.com/user.html</a></p>
-</ul>
-
 
 <h2>HTML-prettyfyers</h2>
 
