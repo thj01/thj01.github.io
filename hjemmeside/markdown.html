@@ -51,9 +51,11 @@
 
 <h1>Markdown format</h1>
 
-<p>Man kan vælge enten at skrive sine noter ved hjælp af ganske almindelig tekst, men der kan også lave avanceret layout ved hjælp af <span class="inl_cmd">markdown format</span> (<a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet" target="_blank">https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet</a>).</p>
+<p>Markdown er et formateringssprog, der er langt lettere at beherske end f.eks. HTML, som kræver tags både før og efter. På mange måder er markdown langt mere intuitiv og effektivt at arbejde med i den daglige produktion af tekst.</p>
 
-<p>Fordelen ved at anvende Markdown er, at formateringskoden er langt lettere at beherske end f.eks. HTML, som kræver tags både før og efter. På mange måder er markdown langt mere intuitiv at arbejde med.</p>
+<p>Fordelen ved Markdown sproget er, at det kan oversættes direkte til f.eks. HTML, og derfor kan man ved hjælp af CSS og JavaScript skabe nogle effektive skabeloner.</p>
+
+<p>I gennemgangen af koden har jeg anvendt output fra <a href="#abricotine_afsnit" target="_blank">Abricotine</a>, med de de ændringer der foreslås i dette dokument. Du kan med fordel gå ned og installere <a href="#abricotine_afsnit" target="_blank">Abricotine</a> og prøve de enkelte formateringskoder af.</p>
 
 <h2>Tekst</h2>
 
@@ -108,10 +110,11 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 </figure>
 
 <blockquote>
+	<p>Vær opmærksom på, at hvis man skriver dokumenter, så er <span class="inl_cmd">h1</span> overskriften det samme som titlen på ens dokument.</p>
 	
-	<p>Vær opmærksom på, at <span class="inl_cmd">h1</span> bliver anvendt som dokumentets titel. Derfor skal ens overskrifter starte fra <span class="inl_cmd">h2</span> osv. </p>
-
+	<p>Det er den "overskrift" dokumentet er lavet under.</p>
 </blockquote>
+
 
 <h3>Formatering af tekst</h3>
 
@@ -385,6 +388,8 @@ venstrestillet | Centreret | Højrestillet
 
 <p>Rigtig mange markup language programmer giver adgang til at skrive <span class="math">\( L_aT^eX \)</span> direkte ind i koden. Det gøres ved at skrive Latex koden imellem 2 <span class="inl_cmd">$$</span> (dollartegn). F.eks: </p>
 
+<div class="latex">$$  $$</div>
+
 <pre>
 	<code class="markdown">
 $$ x = \frac{-b \pm \sqrt D}{2a} $$		
@@ -408,7 +413,7 @@ $$ s^2 = \frac{1}{n-1} \cdot \sum_{i=1}^k (m_i- \overline x)^2 \cdot h_i $$
 
 
 
-<h1>Abricotine</h1>
+<h1 id="abricotine_afsnit">Abricotine</h1>
 
 <p><a href="http://abricotine.brrd.fr" target="_blank">http://abricotine.brrd.fr</a></p>
 
@@ -429,6 +434,7 @@ $$ s^2 = \frac{1}{n-1} \cdot \sum_{i=1}^k (m_i- \overline x)^2 \cdot h_i $$
 			<th>Fulde sti</th>
 			<th>Handling</th>
 			<th>Beskrivelse</th>
+			<th>Download</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -437,21 +443,126 @@ $$ s^2 = \frac{1}{n-1} \cdot \sum_{i=1}^k (m_i- \overline x)^2 \cdot h_i $$
 			<td>../templates/default/template.html</td>
 			<td>Ændres</td>
 			<td>Indeholder den HTML5 skabelon, som markup-scriptet omdannes efter. Herindsætter du ekstra kode, hvis du ønsker det</td>
+			<td><a href="files/abricotine/template.html" download>template.html</a></td>
 		</tr>
 		<tr>
 			<td>styles.css</td>
 			<td>../templates/default/assets/styles.css</td>
 			<td>Ændres</td>
 			<td>CSS-koden til HTML5 dokumentet. I dette dokument laver du de tilrettelser til designet du ønsker.</td>
+			<td><a href="files/abricotine/styles.css" download>styles.css</a></td>
 		</tr>
 		<tr>
 			<td>toc.js</td>
-			<td>../templates/default/assets/styles.css</td>
+			<td>../templates/default/assets/toc.js</td>
 			<td>Tilføjes</td>
 			<td>En javascriptkode vi tilføjer, for at få en indholdsfortegnelse. Dette javascript er hentet fra <a href="http://www.whitsoftdev.com/articles/toc.html" target="_blank">http://www.whitsoftdev.com/articles/toc.html</a>, og jeg har lavet enkelte rettelser i det, for at give en pænere udskrift.</td>
+			<td><a href="files/abricotine/toc.js" download>toc.js</a></td>
 		</tr>
 	</tbody>
 </table>
+
+<h2>Præferencer</h2>
+
+<p>Præferencerne i Abricote bliver sat i filen <span class="inl_cmd">config.json</span>, som ligger i roden når du åbner <span class="inl_cmd">Edit &rarr; Open Config Directory</span>. Enten skal de enkelte parametre sættes med <span class="inl_cmd">true/false</span>, stier eller betegnelser.</p>
+
+<p>De interessante parametre er:</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Parameter</th>
+			<th>Forklaring</th>
+			<th>Værdi</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>showBlocks</td>
+			<td>Viser en markering for hvilke elementer der hører sammen</td>
+			<td>true/false</td>
+		</tr>
+		<tr>
+			<td>showHiddenCharacters</td>
+			<td>Om de skjulte tegn skal vises - altså om # skal vises i overskrifter og _ ved kursiv</td>
+			<td>true/false</td>
+		</tr>
+		<tr>
+			<td>showTocPane</td>
+			<td>Om feltet med inholdsfortegnelse skal vises</td>
+			<td>true/false</td>
+		</tr>
+		<tr>
+			<td>autoCloseBrackets</td>
+			<td>Om paranteser osv. skal auto-afsluttes når du starter dem</td>
+			<td>true/false</td>
+		</tr>
+		<tr>
+			<td colspan="3">Spellchecker - Stavekontrol</td>
+		</tr>
+		<tr>
+			<td>Active</td>
+			<td>Om stavekontrollen er aktiv hele tiden</td>
+			<td>true/false</td>
+		</tr>
+		<tr>
+			<td>language</td>
+			<td>Det sprog stavekontrollen har</td>
+			<td>Landekode (da_DK for danmark)</td>
+		</tr>
+		<tr>
+			<td>src</td>
+			<td>Stien til dine ordbøger</td>
+			<td>Filsti</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Installerede ordbøger:</p>
+
+<ul class="none">
+	<li><b>Ubuntu: </b> <span class="inl_cmd">/usr/share/hunspell</span></li>
+	<li></li>
+</ul>
+
+
+
+<details>
+
+	<summary>Indhold template.html</summary>
+
+<pre>
+	<code class="html">
+
+	</code>
+</pre>
+
+</details>
+
+<details>
+
+	<summary>Indhold styles.css</summary>
+
+<pre>
+	<code class="CSS">
+
+	</code>
+</pre>
+
+</details>
+
+<details>
+
+	<summary>Indhold toc.js</summary>
+
+<pre>
+	<code class="js">
+
+	</code>
+</pre>
+
+</details>
+
 
 <h1>Joplin</h1>
 
