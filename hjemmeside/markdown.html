@@ -35,13 +35,199 @@
 	
 <div class="col-xs-9">
 	
-	<div class="title">Markdown</div>
-	
-<h1>Markdown format</h1>
+<figure id="">
 
+	<img class="p20" src="images/markdown-mark.svg" alt="_" title="_" />
+
+	<figcaption>_</figcaption>
+
+</figure>
+
+
+
+	<div class="title">Markdown -  [M↓]</div>
+	
 <p>Markdown er et formateringssprog, der er langt lettere at beherske end f.eks. HTML, som kræver tags både før og efter. På mange måder er markdown langt mere intuitiv og effektivt at arbejde med i den daglige produktion af tekst.</p>
 
 <p>Fordelen ved Markdown sproget er, at det kan oversættes direkte til f.eks. HTML, og derfor kan man ved hjælp af CSS og JavaScript skabe nogle effektive skabeloner.</p>
+
+<p>I denne gennemgang vil jeg tage udgangspunt i markdown editoren <a href="http://abricotine.brrd.fr" target="_blank">Abricotine</a>, som er opensource og kan hentes til Linux, Mac og Windows. Jeg har også tilpasset en række af konfigurationsfilerne, for at lave et output der:</p>
+
+<ul class="none">
+	<li>... svarer til output på vidas.dk</li>
+	<li>... lever op til de krav der stilles til dokumentationer og mindre opgaver i gymnasiet, med understøttelse for Latex og visning af programmeringskode.</li>
+	<li>Der kan gemmes som PDF ved at printe fra HTML-output</li>
+</ul>
+
+<p>En lille sjov ting er, at markdown logoet også kan skrives ved hjælp af almindelige tegn -  [M↓]. På den måde er logoet holdt i markdown sprogets ånd.</p>
+
+
+<h1 id="abricotine_afsnit">Abricotine</h1>
+
+<figure id="">
+
+	<img class="p10" src="http://abricotine.brrd.fr/img/abricotine.png" alt="_" title="_" />
+
+	<figcaption>_</figcaption>
+
+</figure>
+
+<p>Abricotine (<a href="http://abricotine.brrd.fr" target="_blank">http://abricotine.brrd.fr</a>) er en ekstrem konfigurerbar markup editor, som giver brugeren mulighed for at skrive dokumenter, der kan eksporteres direkte til browseren, og derfra printes til f.eks. PDF. Abricotine hentes fra: <a href="https://github.com/brrd/Abricotine/releases" target="_blank">https://github.com/brrd/Abricotine/releases</a>. Abricotine bruger <span class="inl_cmd">hunspell</span> til stavekontrol, og har man f.eks. installeret <span class="inl_cmd">Libreoffice</span>, er ihvertfald den danske allerede installeret.</p>
+
+
+
+<p>Programmet konfigureres igennem tekstfiler, og den som er interessant i denne sammenhæng er den som formaterer udseendet på webview. Man får adgang til konfigurationsfilerne ved at vælge menuen: <span class="inl_cmd">Edit &rarr; Open Config Directory</span>.</p>
+
+<p>Man kan altså ved hjælp af disse konfigurationsfiler lave en hel standardiseret opsætning af dokumenter, hvor man i skriveprocessen ene og alene er fokuseret på indholdet.</p>
+
+<p>Her vil vi ændre i 2 filer og tilføje en</p>
+
+<table class="_">
+	<thead>
+		<tr>
+			<th>Fil</th>
+			<th>Fulde sti</th>
+			<th>Handling</th>
+			<th>Beskrivelse</th>
+			<th>Download</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>template.html</td>
+			<td>../templates/default/template.html</td>
+			<td>Ændres</td>
+			<td>Indeholder den HTML5 skabelon, som markup-scriptet omdannes efter. Herindsætter du ekstra kode, hvis du ønsker det</td>
+			<td><a href="files/abricotine/template.html" download>template.html</a></td>
+		</tr>
+		<tr>
+			<td>styles.css</td>
+			<td>../templates/default/assets/styles.css</td>
+			<td>Ændres</td>
+			<td>CSS-koden til HTML5 dokumentet. I dette dokument laver du de tilrettelser til designet du ønsker.</td>
+			<td><a href="files/abricotine/styles.css" download>styles.css</a></td>
+		</tr>
+		<tr>
+			<td>toc.js</td>
+			<td>../templates/default/assets/toc.js</td>
+			<td>Tilføjes</td>
+			<td>En javascriptkode vi tilføjer, for at få en indholdsfortegnelse. Dette javascript er hentet fra <a href="http://www.whitsoftdev.com/articles/toc.html" target="_blank">http://www.whitsoftdev.com/articles/toc.html</a>, og jeg har lavet enkelte rettelser i det, for at give en pænere udskrift.</td>
+			<td><a href="files/abricotine/toc.js" download>toc.js</a></td>
+		</tr>
+	</tbody>
+</table>
+
+<h2>Præferencer</h2>
+
+<p>Præferencerne i Abricote bliver sat i filen <span class="inl_cmd">config.json</span>, som ligger i roden når du åbner <span class="inl_cmd">Edit &rarr; Open Config Directory</span>. Enten skal de enkelte parametre sættes med <span class="inl_cmd">true/false</span>, stier eller betegnelser.</p>
+
+<p>De interessante parametre er:</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Parameter</th>
+			<th>Forklaring</th>
+			<th>Værdi</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>showBlocks</td>
+			<td>Viser en markering for hvilke elementer der hører sammen</td>
+			<td>true/false</td>
+		</tr>
+		<tr>
+			<td>showHiddenCharacters</td>
+			<td>Om de skjulte tegn skal vises - altså om # skal vises i overskrifter og _ ved kursiv</td>
+			<td>true/false</td>
+		</tr>
+		<tr>
+			<td>showTocPane</td>
+			<td>Om feltet med inholdsfortegnelse skal vises</td>
+			<td>true/false</td>
+		</tr>
+		<tr>
+			<td>autoCloseBrackets</td>
+			<td>Om paranteser osv. skal auto-afsluttes når du starter dem</td>
+			<td>true/false</td>
+		</tr>
+		<tr>
+			<td colspan="3">Spellchecker - Stavekontrol</td>
+		</tr>
+		<tr>
+			<td>Active</td>
+			<td>Om stavekontrollen er aktiv hele tiden</td>
+			<td>true/false</td>
+		</tr>
+		<tr>
+			<td>language</td>
+			<td>Det sprog stavekontrollen har</td>
+			<td>Landekode (da_DK for danmark)</td>
+		</tr>
+		<tr>
+			<td>src</td>
+			<td>Stien til dine ordbøger</td>
+			<td>Filsti</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Installerede ordbøger:</p>
+
+<ul class="none">
+	<li><b>Ubuntu: </b> <span class="inl_cmd">/usr/share/hunspell</span></li>
+	<li></li>
+</ul>
+
+
+
+<details>
+
+	<summary>Indhold template.html</summary>
+
+<pre>
+	<code class="html">
+
+	</code>
+</pre>
+
+</details>
+
+<details>
+
+	<summary>Indhold styles.css</summary>
+
+<pre>
+	<code class="CSS">
+
+	</code>
+</pre>
+
+</details>
+
+<details>
+
+	<summary>Indhold toc.js</summary>
+
+<pre>
+	<code class="js">
+
+	</code>
+</pre>
+
+</details>
+
+<h2>Filer til fejlsøgning</h2>
+
+<p><a href="files/abricotine/template.html" download>template.html</a></p>
+
+<p><a href="files/abricotine/abricotine.md" download>abricotine.md</a></p>
+
+
+
+	
+<h1>Markdown format</h1>
 
 <p>I gennemgangen af koden har jeg anvendt output fra <a href="#abricotine_afsnit" target="_blank">Abricotine</a>, med de de ændringer der foreslås i dette dokument. Du kan med fordel gå ned og installere <a href="#abricotine_afsnit" target="_blank">Abricotine</a> og prøve de enkelte formateringskoder af.</p>
 
@@ -260,7 +446,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 <p>Man indlejrer en liste ved at sætte en tabulatorer foran de liste element man vil have ind under de andre.</p>
 
-<h2>Links</h2>
+<h2>Henvisninger</h2>
 
 <p>Links kan indtastes direkte på følgende måder:</p>
 
@@ -320,6 +506,24 @@ Det kan også bare være [den rene reference]
 	<figcaption></figcaption>
 
 </figure>
+
+<h3>Anker</h3>
+
+<p>Hvis man vil lave henvisninger (links) indenfor ens dokument anvender man ankre.</p>
+
+<pre>
+	<code class="markdown">
+&lt;a id="top">&lt;/a>
+#Dokument titel
+
+... en masse markdown
+
+[Gå til toppen](#top)
+	</code>
+</pre>
+
+<p>Læg mærke til at du skal lave selve ankeret i "rigtig" HTML-formatering</p>
+
 
 <h2>Tabeller</h2>
 
@@ -429,163 +633,6 @@ $$ s^2 = \frac{1}{n-1} \cdot \sum_{i=1}^k (m_i- \overline x)^2 \cdot h_i $$
 
 <p>Guide: <a href="https://zapier.com/blog/markdown-html-export/" target="_blank">https://zapier.com/blog/markdown-html-export/</a></p>
 
-
-
-<h1 id="abricotine_afsnit">Abricotine</h1>
-
-<p><a href="http://abricotine.brrd.fr" target="_blank">http://abricotine.brrd.fr</a></p>
-
-<p>Abricotine er en ekstrem konfigurerbar markup editor, som giver brugeren mulighed for at skrive dokumenter, der kan eksporteres direkte til browseren, og derfra printes til f.eks. PDF. Abricotine hentes fra: <a href="https://github.com/brrd/Abricotine/releases" target="_blank">https://github.com/brrd/Abricotine/releases</a>. Abricotine bruger <span class="inl_cmd">hunspell</span> til stavekontrol, og har man f.eks. installeret <span class="inl_cmd">Libreoffice</span>, er ihvertfald den danske allerede installeret.</p>
-
-
-
-<p>Programmet konfigureres igennem tekstfiler, og den som er interessant i denne sammenhæng er den som formaterer udseendet på webview. Man får adgang til konfigurationsfilerne ved at vælge menuen: <span class="inl_cmd">Edit &rarr; Open Config Directory</span>.</p>
-
-<p>Man kan altså ved hjælp af disse konfigurationsfiler lave en hel standardiseret opsætning af dokumenter, hvor man i skriveprocessen ene og alene er fokuseret på indholdet.</p>
-
-<p>Her vil vi ændre i 2 filer og tilføje en</p>
-
-<table class="_">
-	<thead>
-		<tr>
-			<th>Fil</th>
-			<th>Fulde sti</th>
-			<th>Handling</th>
-			<th>Beskrivelse</th>
-			<th>Download</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>template.html</td>
-			<td>../templates/default/template.html</td>
-			<td>Ændres</td>
-			<td>Indeholder den HTML5 skabelon, som markup-scriptet omdannes efter. Herindsætter du ekstra kode, hvis du ønsker det</td>
-			<td><a href="files/abricotine/template.html" download>template.html</a></td>
-		</tr>
-		<tr>
-			<td>styles.css</td>
-			<td>../templates/default/assets/styles.css</td>
-			<td>Ændres</td>
-			<td>CSS-koden til HTML5 dokumentet. I dette dokument laver du de tilrettelser til designet du ønsker.</td>
-			<td><a href="files/abricotine/styles.css" download>styles.css</a></td>
-		</tr>
-		<tr>
-			<td>toc.js</td>
-			<td>../templates/default/assets/toc.js</td>
-			<td>Tilføjes</td>
-			<td>En javascriptkode vi tilføjer, for at få en indholdsfortegnelse. Dette javascript er hentet fra <a href="http://www.whitsoftdev.com/articles/toc.html" target="_blank">http://www.whitsoftdev.com/articles/toc.html</a>, og jeg har lavet enkelte rettelser i det, for at give en pænere udskrift.</td>
-			<td><a href="files/abricotine/toc.js" download>toc.js</a></td>
-		</tr>
-	</tbody>
-</table>
-
-<h2>Præferencer</h2>
-
-<p>Præferencerne i Abricote bliver sat i filen <span class="inl_cmd">config.json</span>, som ligger i roden når du åbner <span class="inl_cmd">Edit &rarr; Open Config Directory</span>. Enten skal de enkelte parametre sættes med <span class="inl_cmd">true/false</span>, stier eller betegnelser.</p>
-
-<p>De interessante parametre er:</p>
-
-<table class="">
-	<thead>
-		<tr>
-			<th>Parameter</th>
-			<th>Forklaring</th>
-			<th>Værdi</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>showBlocks</td>
-			<td>Viser en markering for hvilke elementer der hører sammen</td>
-			<td>true/false</td>
-		</tr>
-		<tr>
-			<td>showHiddenCharacters</td>
-			<td>Om de skjulte tegn skal vises - altså om # skal vises i overskrifter og _ ved kursiv</td>
-			<td>true/false</td>
-		</tr>
-		<tr>
-			<td>showTocPane</td>
-			<td>Om feltet med inholdsfortegnelse skal vises</td>
-			<td>true/false</td>
-		</tr>
-		<tr>
-			<td>autoCloseBrackets</td>
-			<td>Om paranteser osv. skal auto-afsluttes når du starter dem</td>
-			<td>true/false</td>
-		</tr>
-		<tr>
-			<td colspan="3">Spellchecker - Stavekontrol</td>
-		</tr>
-		<tr>
-			<td>Active</td>
-			<td>Om stavekontrollen er aktiv hele tiden</td>
-			<td>true/false</td>
-		</tr>
-		<tr>
-			<td>language</td>
-			<td>Det sprog stavekontrollen har</td>
-			<td>Landekode (da_DK for danmark)</td>
-		</tr>
-		<tr>
-			<td>src</td>
-			<td>Stien til dine ordbøger</td>
-			<td>Filsti</td>
-		</tr>
-	</tbody>
-</table>
-
-<p>Installerede ordbøger:</p>
-
-<ul class="none">
-	<li><b>Ubuntu: </b> <span class="inl_cmd">/usr/share/hunspell</span></li>
-	<li></li>
-</ul>
-
-
-
-<details>
-
-	<summary>Indhold template.html</summary>
-
-<pre>
-	<code class="html">
-
-	</code>
-</pre>
-
-</details>
-
-<details>
-
-	<summary>Indhold styles.css</summary>
-
-<pre>
-	<code class="CSS">
-
-	</code>
-</pre>
-
-</details>
-
-<details>
-
-	<summary>Indhold toc.js</summary>
-
-<pre>
-	<code class="js">
-
-	</code>
-</pre>
-
-</details>
-
-<h2>Filer til fejlsøgning</h2>
-
-<p><a href="files/abricotine/template.html" download>template.html</a></p>
-
-<p><a href="files/abricotine/abricotine.md" download>abricotine.md</a></p>
 
 
 
