@@ -149,6 +149,37 @@ Dette er et citat med et citat i
 
 </figure>
 
+<h3>Kode</h3>
+
+<p>Når man taler om kode er det enten indlejret eller blokke af kode.</p>
+
+<ul class="fat_li none">
+	<li>Indlejret kode</li>
+	
+		<p>Indlejrede koder sættes der enkelte <span class="inl_cmd">back-tics (`)</span> omkring hvis det skal vises som kode</p>
+	
+	<li>Blokke af kode</li>
+	
+		<p>Her sætter man tre <span class="inl_cmd">back-tics (`) </span> omkring koden. De indledende <span class="inl_cmd">back-tics</span> efterfølges af det programmeringssprog man anvender</p>
+	
+</ul>
+
+<pre>
+	<code class="markdown">
+For at udskrive noget i Python indsættes det i  `print()` funktionen
+
+For at udskrive en blok af kode sætter man det imellem 3 back-tics og angiver programmeringsssproget bagefter
+
+``` python
+for i in range(1,7):
+	print(i)
+```
+	</code>
+</pre>
+
+
+
+
 <h3>Tværgående linier</h3>
 
 <pre>
@@ -380,16 +411,15 @@ venstrestillet | Centreret | Højrestillet
 
 <pre>
 	<code class="markdown">
-$$ x = \frac{-b \pm \sqrt D}{2a} $$		
+Løsningen for en andengradsligning: $$ x = \frac{-b \pm \sqrt D}{2a} $$		
 		
+Herunder er formlen for varians ved en stikprøve
+
 $$ s^2 = \frac{1}{n-1} \cdot \sum_{i=1}^k (m_i- \overline x)^2 \cdot h_i $$
 	</code>
 </pre>
 
-
-
-
-
+<p>Man skal være opmærksom på, at nogle markdown editors kun forventer et enkelt <span class="inl_cmd">$</span>-tegn hvis det skal være inline.</p>
 
 <h2>Cheat sheets</h2>
 

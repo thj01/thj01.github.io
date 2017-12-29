@@ -1,9 +1,65 @@
 # Geany's snippets configuration file
 #
-# Snippet til undervisning i HTML5 VEstfyns gymnasium
+# use \n or %newline% for a new line (it will be replaced by the used EOL char(s) - LF, CR/LF, CR).
+# use \t or %ws% for an indentation step, it will be replaced according to the current document's indent mode.
+# use \s to force whitespace at beginning or end of a value ('key= value' won't work, use 'key=\svalue').
+# use %key% for all keys defined in the [Special] section.
+# use %cursor% to define where the cursor should be placed after completion. You can define multiple
+#     %cursor% wildcards and use the "Move cursor in snippet" to jump to the next defined cursor
+#     position in the completed snippet.
+# You can define a section for each supported filetype to overwrite default settings, the section
+# name must match exactly the internal filetype name, run 'geany --ft-names' for a full list.
+#
+# Additionally, you can use most of the template wildcards like {developer} or {date} in the snippets.
+# See the documentation for details.
 
+# filetype names:
+# ASM, C, C++, C#, CAML, D, Fortran, FreeBasic, Haskell, Haxe, Java, Pascal, VHDL, Ferite, Javascript,
+# Lua, Make, O-Matrix, Perl, PHP, Python, Ruby, Sh, Tcl, CSS, Docbook, HTML, XML, Conf, Diff, LaTeX,
+# reStructuredText, SQL, None
+
+# Default is used for all filetypes and keys can be overwritten by [filetype] sections
+[Default]
+if=if (%cursor%)%block_cursor%
+else=else%block_cursor%
+for=for (i = 0; i < %cursor%; i++)%block_cursor%
+while=while (%cursor%)%block_cursor%
+do=do\n{\n\t%cursor%\n} while(%cursor%)\n%cursor%
+switch=switch (%cursor%)%brace_open%case %cursor%:\n\t\t%cursor%\n\t\tbreak;\n\tdefault:\n\t\t%cursor%\n%brace_close%%cursor%
+try=try%block%\ncatch (%cursor%)%block_cursor%
+
+# special keys to be used in other snippets, cannot be used "standalone"
+# can be used by %key%, e.g. %brace_open%
+# nesting of special keys is not supported (e.g. brace_open=\n{\n%brace_close% won't work)
+# key "wordchars" is very special, it defines the word delimiting characters when looking for
+# a word to auto complete, leave commented to use the default wordchars
+[Special]
+brace_open=\n{\n\t
+brace_close=}\n
+block=\n{\n\t%cursor%\n}
+block_cursor=\n{\n\t%cursor%\n}\n%cursor%
+backslash=\
+#wordchars=_abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789
+
+[C++]
+for=for (int i = 0; i < %cursor%; i++)%brace_open%\n%brace_close%
+
+[Java]
+for=for (int i = 0; i < %cursor%; i++)%brace_open%\n%brace_close%
+
+[PHP]
+for=for ($i = 0; $i < %cursor%; $i++)%brace_open%\n%brace_close%
+php1=<?php %cursor% ?>
+php=<?php \n\n\t %cursor% \n\n?>
+if=if (%cursor%) { \n\n\t  \n\n\t  }
+else=else { \n\n\t %cursor% \n\n\t  }
+ifelse=if (%cursor%) { \n\n\t  \n\n\t  } \n\t else { \n\n\t  \n\n\t  }
+elseif=elseif { \n\n\t %cursor% \n\n\t  }
+echo=echo "%cursor%";
+isset=if(isset($_SESSION["%cursor%"])) { \n\n\t  \n\n\t  }
 
 [Python]
+print=print("%cursor%")
 for=for i in xrange(%cursor%):\n\t
 if=if %cursor%:\n\t
 elif=elif %cursor%:\n\t
@@ -14,10 +70,12 @@ with=with %cursor%:\n\t
 def=def %cursor% (%cursor%):\n\t""" Function doc """\n\t
 class=class %cursor%:\n\t""" Class doc """\n\t\n\tdef __init__ (self):\n\t\t""" Class initialiser """\n\t\tpass
 
+format=.format({%cursor%})
+
 [HTML]
 #HTML5 addons
 #by Thomas Jensen <thj001@gmail.com>
-#Some of Tomasz Karbownicki's <tomasz@karbownicki.com> snippets has ben HTML5'ified
+#Some of Tomasz Karbownicki's <tomasz@karbownicki.com> snippits has ben HTML5'ified
 #
 #If you use his snippets you have to outcomment (#) the lines vith: html and utf
 #
@@ -42,9 +100,10 @@ script=<script>\n\t%cursor%\n</script>
 style=<style>\n\t%cursor%\n</style>
 stylesheet=<link\nrel="stylesheet"\ntype="text/css"\nhref="%cursor%"/>
 title=<title>%cursor%</title>
+meta=<meta id="%cursor%" />
 header=<header>\n\t%cursor%\n</header>
-
-
+hgroup=<hgroup>\n\t%cursor%\n</hgroup>
+details=<details>\n\n\t<summary>%cursor%</summary>\n\n\t<p></p>\n\n</details>
 article=<article>\n\t%cursor%\n</article>
 nav=<nav>\n\t%cursor%\n</nav>
 aside=<aside>\n\t%cursor%\n</aside>
@@ -61,13 +120,34 @@ i=<i>%cursor%</i>
 
 divt = <div class="title">%cursor%</div>
 
+iframe=<iframe src="%cursor%"></iframe>
 
 section=<section>%cursor%</section>
+address=<address>%cursor%</address>
 
 audio=<audio controls="controls">\n\n\t<source src="%cursor%" type="audio/ogg"/>\n\t<source src="" type="audio/mp3" />\n\tYour browser does not support the audio tag.\n\n</audio>
 
 video=<video width="" height="" controls="controls">\n\n\t<source src="%cursor%" type="video/mp4" />\n\t<source src="" type="video/ogg" />\n\tYour browser does not support the video tag.\n\n</video>
 
+#SEO Schema.org
+#by Thomas Jensen <thj001@gmail.com>
+is=itemscope itemtype="%cursor%"
+it=itemtype="%cursor%"
+ip=itemprop="%cursor%"
+ir=itemref="%cursor%"
+
+#pre codes
+prephp=<pre><code class="php">\n%cursor%\n</code>\n</pre>
+prepy=<pre>\n\t<code class="python">\n%cursor%\n\t</code>\n</pre>
+prema=<pre>\n\t<code class="markdown">\n%cursor%\n\t</code>\n</pre>
+presq=<pre>\n\t<code class="sql">\n%cursor%\n\t</code>\n</pre>
+preht=<pre>\n\t<code class="html">\n%cursor%\n\t</code>\n</pre>
+preu=<pre class="ubuntu_terminal">%cursor%\n</pre>
+preb=<pre class="black">\n%cursor%\n</pre>
+
+kbd=<kbd>%cursor%</kbd>
+kbd2=<kbd>%cursor%</kbd>+<kbd>%cursor%</kbd>
+kbd3=<kbd>%cursor%</kbd>+<kbd>%cursor%</kbd>+<kbd>%cursor%</kbd>
 
 #codes
 
@@ -75,6 +155,47 @@ code=<code class="cmd">%cursor%</code>
 mcode=<code class="more_cmd">%cursor%</code>
 bl=<blockquote>\n\n\t%cursor%\n\n</blockquote>
 bla=<blockquote class="alert">\n\n\t%cursor%\n\n</blockquote>
+
+spanc=<span class="inl_cmd">%cursor%</span>
+spani=<span class="italic">%cursor%</span>
+spans=<span class="small">%cursor%</span>
+spana=<span class="afsnit">%cursor%</span>
+spanu=<span class="underline">%cursor%</span>
+spanr=<span class="right">%cursor%</span>
+spank=<span class="knap">%cursor%</span>
+spanm=<span class="math">%cursor%</span>
+spant=<span class="terminal_valg">%cursor%</span>
+spant2=<span class="terminal_valg2">%cursor%</span>
+spanb=<span>%b%</span>
+
+browser=<p class="browser"></p>\n<pre class="browser">%cursor%</code></pre>
+
+#Latex  addons by Thomas Jensen <thj001@gmail.com>
+spanl=<span class="math">\( %cursor% \)</span>
+divl=<div class="latex">$$ %cursor% $$</div>
+frac=\frac{ %cursor% }{ %cursor% }
+sq=\\sqrt{%cursor%}
+
+
+#colors
+spangreen=<span class="green">%cursor%</span>
+spangreen1=<span class="green1">%cursor%</span>
+spanred=<span class="red">%cursor%</span>
+spanblue=<span class="blue">%cursor%</span>
+spanblue1=<span class="blue1">%cursor%</span>
+spanviolet=<span class="violet">%cursor%</span>
+spanpurple=<span class="purple">%cursor%</span>
+spanbrown=<span class="brown">%cursor%</span>
+spanyellow=<span class="yellow">%cursor%</span>
+spancyan=<span class="cyan">%cursor%</span>
+spanturk=<span class="turk">%cursor%</span>
+spangrey=<span class="grey">%cursor%</span>
+spanwhite=<span class="white">%cursor%</span>
+spanwhitebg=<span class="white_bg">%cursor%</span>
+spangreen1_bg=<span class="green1_bg">%cursor%</span>
+
+# by Tomasz Karbownicki <tomasz@karbownicki.com>
+# top
 
 
 js=<script type="text/javascript">\n\t%cursor%\n</script>
@@ -91,7 +212,18 @@ tr=<tr>\n\t<td>%cursor%</td>\n\t<td>%cursor%</td>\n</tr>
 th=<th>%cursor%</th>
 caption=<caption>%cursor%</caption>
 
-
+# form
+form=<form action="%cursor%" method="post">\n\n\t<input type="submit" value="%cursor%" />\n</form>
+formp=<form action="%cursor%" method="post">\n\n\t<p>{{ form.as_p }}</p>\n<p><input type="submit" value="%cursor%" /></p>\n</form>
+label=<label for="%cursor%"></label>
+input=<input type="text" name="%cursor%" value="%cursor%" id="%cursor%" />
+pass=<input type="password" name="%cursor%" id="%cursor%" />
+textarea=<textarea name="%cursor%" cols="50" rows="10" id="%cursor%" ></textarea>
+select=<select name="%cursor%" id="%cursor%">\n\t<option value="%cursor%"></option>\n</select>
+radio=<input type="radio" name="%cursor%" value="%cursor%" />
+checkbox=<input type="checkbox" name="%cursor%" value="%cursor%" />
+button=<button type="%cursor%">%cursor%</button>
+fieldset=<fieldset>\n\t<legend>%cursor%</legend>\n</fieldset>
 # list
 ul=<ul class="disc">\n\t<li>%cursor%</li>\n\t<li>%cursor%</li>\n</ul>
 uln=<ul class="none">\n\t<li>%cursor%</li>\n\t<li>%cursor%</li>\n</ul>
@@ -104,7 +236,7 @@ dd=<dd>%cursor%</dd>
 a=<a href="%cursor%" target="_blank">%cursor%</a>
 span=<span class="%cursor%">%cursor%</span>
 em=<em>%cursor%</em>
-
+small=<small>%cursor%</small>
 big=<big>%cursor%</big>
 cite=<cite>%cursor%</cite>
 strong=<strong>%cursor%</strong>
@@ -135,8 +267,7 @@ hr=<hr/>
 
 spec=\s\sabcd
 
-#bootstrap addons by Thomas Jensen
- 
+#bootstrap addons by Thomas Jensen 
 bscon=<div class="container">\n\n\t%cursor%\n\n</div>
 bsrow=<div class="row">\n\n\t%cursor%\n\n</div>
 bscr=<!-- Container-->\n\n<div class="container">\n\n\t<div class="row">\n\n\t\t%cursor%\n\n\t</div>\n\n</div>
@@ -145,6 +276,7 @@ bs2=<div class="col-sm-6">\n\n\t%cursor%\n\n</div>\n\n<div class="col-sm-6">\n\n
 bs3=<div class="col-sm-4">\n\n\t%cursor%\n\n</div>\n\n<div class="col-sm-4">\n\n\t%cursor%\n\n</div>\n\n<div class="col-sm-4">\n\n\t%cursor%\n\n</div>
 bs4=<div class="col-sm-3">\n\n\t%cursor%\n\n</div>\n\n<div class="col-sm-3">\n\n\t%cursor%\n\n</div>\n\n<div class="col-sm-3">\n\n\t%cursor%\n\n</div>\n\n<div class="col-sm-3">\n\n\t%cursor%\n\n</div>
 
+bscr=<!-- Container-->\n\n<div class="container">\n\n\t<div class="row">\n\n\t\t%cursor%\n\n\t</div>\n\n</div>
 
 [CSS]
 # by Tomasz Karbownicki <tomasz@karbownicki.com>
@@ -190,5 +322,6 @@ br=border-right: %cursor%;
 bt=border-top: %cursor%;
 bb=border-bottom: %cursor%;
 
-#Latex  addons by Thomas Jensen <thj001@gmail.com>
+
+
 

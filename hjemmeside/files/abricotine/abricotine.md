@@ -14,7 +14,7 @@ Løsninger: $$ x = \frac{-b \pm \sqrt D}{2a}$$
 $$ x = \frac{-b \pm \sqrt D}{2a}$$
 
 ##Kode
-``` python
+```
 for i in range(1,7):
 	print(i)
     ```
