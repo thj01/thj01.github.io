@@ -276,7 +276,6 @@ bs2=<div class="col-sm-6">\n\n\t%cursor%\n\n</div>\n\n<div class="col-sm-6">\n\n
 bs3=<div class="col-sm-4">\n\n\t%cursor%\n\n</div>\n\n<div class="col-sm-4">\n\n\t%cursor%\n\n</div>\n\n<div class="col-sm-4">\n\n\t%cursor%\n\n</div>
 bs4=<div class="col-sm-3">\n\n\t%cursor%\n\n</div>\n\n<div class="col-sm-3">\n\n\t%cursor%\n\n</div>\n\n<div class="col-sm-3">\n\n\t%cursor%\n\n</div>\n\n<div class="col-sm-3">\n\n\t%cursor%\n\n</div>
 
-bscr=<!-- Container-->\n\n<div class="container">\n\n\t<div class="row">\n\n\t\t%cursor%\n\n\t</div>\n\n</div>
 
 [CSS]
 # by Tomasz Karbownicki <tomasz@karbownicki.com>
@@ -288,7 +287,7 @@ pa=padding: %cursor%;
 bo=border: %cursor%;
 bs=border-style: %cursor%;
 bw=border-width: %cursor%;
-bc=border-color: %cursor%;
+boc=border-color: %cursor%;
 co=color: %cursor%;
 he=height: %cursor%;
 wi=width: %cursor%;
