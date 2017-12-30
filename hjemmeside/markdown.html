@@ -181,7 +181,6 @@
 
 <pre>
 	<code class="html">
-
 	</code>
 </pre>
 
@@ -202,6 +201,26 @@
 <h2>Dansk oversættelse</h2>
 
 <p>Abricotine er så godt et program, at jeg har sat mig ned og lavet en dansk oversættelsesfil. Filen er her: <a href="files/abricotine/da.json" Download>da.json</a></p>
+
+<p>Indtil filen bliver gjort til en del af programmet skal følgende gøres:</p>
+
+<ol>
+	<li>Åbn Konfigurationsmappen: <span class="inl_cmd">Edit &rarr; Open Config Directory</span></li>
+	<li>Ændre indholdet af filen <span class="inl_cmd">config.json</span>, ved at indsætte linien: <span class="inl_cmd">"lang":"da"</span> i afsnittet <span class="inl_cmd">windows</span>:</li>
+	
+	<pre>
+		<code class="json">
+"window": {
+	"showMenuBar": true,
+    "lang": "da" 			<span class="red"><b>&larr; indsæt linien her</b></span>
+  }		</code>
+	</pre>
+	<li>Kopier filen <span class="inl_cmd">da.json</span> ind i mappen <span class="inl_cmd">lang</span>, så den står sammen med de andre sprogfiler (de/en/fr/it)</li>
+	<li>Genstart Abricotine</li>
+	
+</ol>
+
+<p></p>
 
 
 
