@@ -78,125 +78,60 @@
 
 <p>Programmet konfigureres igennem tekstfiler, og den som er interessant i denne sammenhæng er den som formaterer udseendet på webview. Man får adgang til konfigurationsfilerne ved at vælge menuen: <span class="inl_cmd">Edit &rarr; Open Config Directory</span>.</p>
 
+<p>Opsætningen af Abricotine udføres i 4 trin:</p>
+
+<ol class="_">
+	<li>Opret ny template</li>
+	<li>Installer dansk oversættelse</li>
+	<li>Installer ordbøger</li>
+	<li>Ændr konfigurationsfilen <span class="inl_cmd">config.json</span></li>
+</ol>
+
+
+<h2>Templates</h2>
+
 <p>Man kan altså ved hjælp af disse konfigurationsfiler lave en hel standardiseret opsætning af dokumenter, hvor man i skriveprocessen ene og alene er fokuseret på indholdet.</p>
 
-<p>Her vil vi ændre i 2 filer og tilføje en</p>
+<p>Her vil vi tilføje mappen <span class="inl_cmd">thj01</span> til <span class="inl_cmd">../templates</span>, som indeholder følgende filer</p>
 
 <table class="_">
 	<thead>
 		<tr>
 			<th>Fil</th>
-			<th>Fulde sti</th>
-			<th>Handling</th>
+			<th>Sti</th>
 			<th>Beskrivelse</th>
 			<th>Download</th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr>
+			<td>template.json</td>
+			<td>../templates/thj01/template.json</td>
+			<td>Fil det beskriver forfatter og andre detaljer om den konkrete template</td>
+			<td><a href="files/template.html" download>template.json</a></td>
+		</tr>
+		<tr>
 			<td>template.html</td>
-			<td>../templates/default/template.html</td>
-			<td>Ændres</td>
+			<td>../templates/thj01/template.html</td>
 			<td>Indeholder den HTML5 skabelon, som markup-scriptet omdannes efter. Herindsætter du ekstra kode, hvis du ønsker det</td>
-			<td><a href="files/abricotine/template.html" download>template.html</a></td>
+			<td><a href="files/template.html" download>template.html</a></td>
 		</tr>
 		<tr>
-			<td>styles.css</td>
-			<td>../templates/default/assets/styles.css</td>
-			<td>Ændres</td>
+			<td>assets/styles.css</td>
+			<td>../templates/thj01/assets/styles.css</td>
 			<td>CSS-koden til HTML5 dokumentet. I dette dokument laver du de tilrettelser til designet du ønsker.</td>
-			<td><a href="files/abricotine/styles.css" download>styles.css</a></td>
+			<td><a href="files/styles.css" download>styles.css</a></td>
 		</tr>
 		<tr>
-			<td>toc.js</td>
-			<td>../templates/default/assets/toc.js</td>
-			<td>Tilføjes</td>
+			<td>assets/toc.js</td>
+			<td>../templates/thj01/assets/toc.js</td>
 			<td>En javascriptkode vi tilføjer, for at få en indholdsfortegnelse. Dette javascript er hentet fra <a href="http://www.whitsoftdev.com/articles/toc.html" target="_blank">http://www.whitsoftdev.com/articles/toc.html</a>, og jeg har lavet enkelte rettelser i det, for at give en pænere udskrift.</td>
-			<td><a href="files/abricotine/toc.js" download>toc.js</a></td>
+			<td><a href="files/toc.js" download>toc.js</a></td>
 		</tr>
 	</tbody>
 </table>
 
-<h2>Præferencer</h2>
-
-<p>Præferencerne i Abricote bliver sat i filen <span class="inl_cmd">config.json</span>, som ligger i roden når du åbner <span class="inl_cmd">Edit &rarr; Open Config Directory</span>. Enten skal de enkelte parametre sættes med <span class="inl_cmd">true/false</span>, stier eller betegnelser.</p>
-
-<p>De interessante parametre er:</p>
-
-<table class="">
-	<thead>
-		<tr>
-			<th>Parameter</th>
-			<th>Forklaring</th>
-			<th>Værdi</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>showBlocks</td>
-			<td>Viser en markering for hvilke elementer der hører sammen</td>
-			<td>true/false</td>
-		</tr>
-		<tr>
-			<td>showHiddenCharacters</td>
-			<td>Om de skjulte tegn skal vises - altså om # skal vises i overskrifter og _ ved kursiv</td>
-			<td>true/false</td>
-		</tr>
-		<tr>
-			<td>showTocPane</td>
-			<td>Om feltet med inholdsfortegnelse skal vises</td>
-			<td>true/false</td>
-		</tr>
-		<tr>
-			<td>autoCloseBrackets</td>
-			<td>Om paranteser osv. skal auto-afsluttes når du starter dem</td>
-			<td>true/false</td>
-		</tr>
-		<tr>
-			<td colspan="3">Spellchecker - Stavekontrol</td>
-		</tr>
-		<tr>
-			<td>Active</td>
-			<td>Om stavekontrollen er aktiv hele tiden</td>
-			<td>true/false</td>
-		</tr>
-		<tr>
-			<td>language</td>
-			<td>Det sprog stavekontrollen har</td>
-			<td>Landekode (da_DK for danmark)</td>
-		</tr>
-		<tr>
-			<td>src</td>
-			<td>Stien til dine ordbøger</td>
-			<td>Filsti</td>
-		</tr>
-	</tbody>
-</table>
-
-
-
-<details>
-
-	<summary>Indhold template.html</summary>
-
-<pre>
-	<code class="html">
-	</code>
-</pre>
-
-</details>
-
-<details>
-
-	<summary>Indhold styles.css</summary>
-
-<pre>
-	<code class="CSS">
-
-	</code>
-</pre>
-
-</details>
+<p>Filerne kan også hentes sammen her i en zippet fil, der skal pakkes ud i mappen <span class="inl_cmd">../templates</span>: <a href="filer/thj01_template.zip" download>thj01_template.zip</a></p>
 
 <h2>Dansk oversættelse</h2>
 
@@ -220,32 +155,91 @@
 	
 </ol>
 
-<p></p>
-
-
-
 <h2>Ordbøger</h2>
 
-<p>Der er lidt forskel på hvordan du får adgang til ordbøgerne alt efter hvor de er installeret. </p>
+<p>Abricotine anvender hunspell ordbøger. Følg denne guide til at <a href="geany.html#hunspell" target="_blank">installere ordbøgerne</a>.</p>
 
-<h3>Ubuntu</h3>
+<p>Opret mappen <span class="inl_cmd">../dict/da_DK</span>, og koppier filerne <span class="inl_cmd">da_DK.aff</span> og <span class="inl_cmd">da_DK.dic</span> ind i den.</p>
 
-<b>Ubuntu: </b> <span class="inl_cmd">/usr/share/hunspell</span>
+<blockquote>
+	<p>
+		Ordbogsfunktionen er ikke fuldt ud implementeret, da den kun registrerer om ordet er korrekt stavet eller ej. Man kan ikke få forslag til rettelse af stavefejl.
+	</p>
+</blockquote>
+
+<p>Måske har du allerede installeret ordbøgerne, hvis du anvender Libreoffice. DU kan se for dit styresystem herunder. For alle styresystemer gælder det at du skal kopiere filerne <span class="inl_cmd">da_DK.aff</span> og <span class="inl_cmd">da_DK.dic</span> til mappen <span class="inl_cmd">../dict/da_DK</span> </p>
 
 <h3>Mac</h3>
 
+<p>Har du Libreoffice installeret installerer kan du finde dine ordbøger i mappen: <span class="inl_cmd">/Applications/LibreOffice.app/Contents/Resources/extensions/dict-</span>. </p>
+
+
+
 <h3>Windows</h3>
 
+<p>Har du Libreofice installeret på din PC kan du finde de installerede ordbøger i mappen: <span class="inl_cmd">c:\Programmer\Libreoffice5\share\extensions </span>.</p>
 
-<h2>Filer til fejlsøgning</h2>
+<h3>Ubuntu</h3>
 
-
-
-<p><a href="files/abricotine/abricotine.md" download>abricotine.md</a></p>
-
+<p>Anvender du Ubuntu har du allerede installeret hunspell, da LIbreoffice følger med som standard. Ordbøgerne ligger i mappen <span class="inl_cmd">/usr/share/hunspell</span>, hvor du kan kopiere filerne fra.</p>
 
 
-	
+<h2>Præferencer</h2>
+
+<p>Præferencerne i Abricote bliver sat i filen <span class="inl_cmd">config.json</span>, som ligger i roden når du åbner <span class="inl_cmd">Edit &rarr; Open Config Directory</span>. Enten skal de enkelte parametre sættes med <span class="inl_cmd">true/false</span>, stier eller betegnelser.</p>
+
+<p>Herunder er filen vist, med beskrivelser efter <span class="inl_cmd"><span class="red"><b>&larr;</b></span></span>. Teksten i rammen herunder må ikke kopieres ind i filen da <span class="inl_cmd">json</span>-formatet ikke understøtter kommentarer!</p>
+
+<pre>
+	<code class="json">
+{
+  "autopreview": {		<span class="red">&larr; Om markupteksten skal erstattes med objektet</span>
+    "image": true,					
+    "todolist": true,				
+    "iframe": true,					
+    "anchor": true,					
+    "math": true					
+  },
+  "autopreview-domains": [
+    "dailymotion.com",
+    "deezer.com",
+    "dribbble.com",
+    "facebook.com",
+    "github.com",
+    "google.com",
+    "instagram.com",
+    "pinterest.com",
+    "soundcloud.com",
+    "spotify.com",
+    "twitter.com",
+    "vimeo.com",
+    "youtube.com"
+  ],
+  "autopreview-security": true,		
+  "editor": {
+    "font-size": "16px"
+  },
+  "highlight-modes": "",
+  "preview-template": "thj01",		<span class="red">&larr; Ændr til "thj01"</span>
+  "startup-commands": {
+    "showBlocks": true,				<span class="red">&larr; Ændr til <span class="blue">true </span></span>
+    "showHiddenCharacters": true,
+    "showTocPane": true,			<span class="red">&larr; Ændr til <span class="blue">true </span></span>
+    "autoCloseBrackets": true
+  },
+  "spellchecker": {
+    "active": true,
+    "language": "da-DK"				<span class="red">&larr; Ændr til <span class="blue">da-DK</span> </span>
+  },
+  "theme": "default",
+  "window": {
+    "showMenuBar": true,
+    "lang": "da"					<span class="red">&larr; Tilføj denne linie for at aktivere den danske oversættelse</span>
+  }
+}
+	</code>
+</pre>
+
 <h1>Markdown format</h1>
 
 <p>I gennemgangen af koden har jeg anvendt output fra <a href="#abricotine_afsnit" target="_blank">Abricotine</a>, med de de ændringer der foreslås i dette dokument. Du kan med fordel gå ned og installere <a href="#abricotine_afsnit" target="_blank">Abricotine</a> og prøve de enkelte formateringskoder af.</p>
