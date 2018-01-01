@@ -252,7 +252,64 @@
 	</code>
 </pre>
 
+<h1>Opbygning af dokument</h1>
 
+<p>For at kunne få den fulde kontrol over dokumentet har jeg valgt ikke at inkludere indholdsfortegnelsen i selve skabelonen, da den kun er nødvendig i dokumentationer, større opgaver og lignende.</p>
+
+<p>Herunder er vist opbygningen af en dokumentation med en indholdsfortegnelse. Det kræver at du har lavet overstående ændringer.</p>
+
+<pre>
+	<code class="markdown">
+#En Dokumentation
+
+![alt text](https://upload.wikimedia.org/wikipedia/commons/a/af/Tux.png)
+
+Skrevet af Thomas Jensen
+
+Mail: Thomas@fakemail.dk
+
+&lt;div id="toc">&lt;/div>
+
+&lt;div class="pb">&lt;/div>
+
+##Kapitel 1
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+
+###Afsnit 1
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+
+##Kapitel 2
+
+Herunder er formlen for varians ved en stikprøve
+
+$$ s^2 = \frac{1}{n-1} \cdot \sum_{i=1}^k (m_i- \overline x)^2 \cdot h_i $$
+
+
+##Konklusion
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+
+	</code>
+</pre>
+
+<p>Læg mærke til følgende ting:</p>
+
+<ul class="none">
+	<li>Der skal kun være en overskrift 1 (<span class="inl_cmd">#</span>), da denne er titlen på dokumentet</li>
+	<li>HTML kode <span class="inl_cmd">&lt;div id="toc">&lt;/div></span> indsættes direkte hvor filen skal have sin indholdsfortegnelse</li>
+	<li>HTML kode <span class="inl_cmd">&lt;div class="pb">&lt;/div></span> indsættes hvor der skal være sideskifte (pb = pagebreak) i udskriften.</li>
+</ul>
+
+
+<blockquote>
+	<p>
+		Læg mærke til at du kan skrive HTML kode direkte ind i Markup sproget. På den måde kan du tilføje funktinalitet, som ellers ikke er en del af sproget.
+	</p>
+</blockquote>
+
+
+<p>Hvis du indsætter den i abricotine, og trykker <kbd>F6</kbd>, så vil du få en webside, hvor det hele står fortløbende. Se eksemplet her: <a href="files/template_udskrift.html" target="_blank">template_udskrift.html</a> </p>
+
+<p>Vælger du at udskrive filen ( <kbd>Ctrl</kbd>+<kbd>P</kbd> ) vil du få følgende udskrift: <a href="files/template_udskrift.pdf" target="_blank">template_udskrift.pdf</a>. Sidehovede og sidefod skal tilføjes i browserens printerindstillingen.</p>
 
 	
 </div><!-- end: col-md-9 -->
