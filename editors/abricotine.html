@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <title>Markdown</title>
+  <link rel="icon" href="../images/favicon.png">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono|Ubuntu|Ubuntu+Condensed' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/jquery-ui.min.css">
+  <link rel="stylesheet" href="../css/jquery.tocify.css">
+  <link rel="stylesheet" href="../css/style_new.css" />
+<!-- Scripts in bottom to speed up pageload-->
+ 
+
+</head>
+<body>
+	
+	
+<div class="container-fluid">
+
+<div class="row-fluid">
+	
+<div class="col-xs-3">
+	
+	<div id="toc">
+	
+		<div id="toc_headline"></div>
+	
+	</div>
+
+</div><!-- Start slut 1. kolonne - TOC -->
+	
+<div class="col-xs-9">
+	
+
+<figure id="">
+
+	<img class="p20" src="http://abricotine.brrd.fr/img/abricotine.png" alt="_" title="_" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+
+	<div class="title">Abricotine</div>
+	
+
+
+
+<p>Abricotine (<a href="http://abricotine.brrd.fr" target="_blank">http://abricotine.brrd.fr</a>) er en ekstrem konfigurerbar markup editor, som giver brugeren mulighed for at skrive dokumenter, der kan eksporteres direkte til browseren, og derfra printes til f.eks. PDF. Abricotine hentes fra: <a href="https://github.com/brrd/Abricotine/releases" target="_blank">https://github.com/brrd/Abricotine/releases</a>. Abricotine bruger <span class="inl_cmd">hunspell</span> til stavekontrol, og har man f.eks. installeret <span class="inl_cmd">Libreoffice</span>, er ihvertfald den danske allerede installeret.</p>
+
+
+
+<p>Programmet konfigureres igennem tekstfiler, og den som er interessant i denne sammenhæng er den som formaterer udseendet på webview. Man får adgang til konfigurationsfilerne ved at vælge menuen: <span class="inl_cmd">Edit &rarr; Open Config Directory</span>.</p>
+
+<p>Opsætningen af Abricotine udføres i 4 trin:</p>
+
+<ol class="_">
+	<li>Opret ny template</li>
+	<li>Installer dansk oversættelse</li>
+	<li>Installer ordbøger</li>
+	<li>Ændr konfigurationsfilen <span class="inl_cmd">config.json</span></li>
+</ol>
+
+
+<h1>Templates</h1>
+
+<p>Man kan altså ved hjælp af disse konfigurationsfiler lave en hel standardiseret opsætning af dokumenter, hvor man i skriveprocessen ene og alene er fokuseret på indholdet.</p>
+
+<p>Her vil vi tilføje mappen <span class="inl_cmd">thj01</span> til <span class="inl_cmd">../templates</span>, som indeholder følgende filer</p>
+
+<table class="_">
+	<thead>
+		<tr>
+			<th>Fil</th>
+			<th>Sti</th>
+			<th>Beskrivelse</th>
+			<th>Download</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>template.json</td>
+			<td>../templates/thj01/template.json</td>
+			<td>Fil det beskriver forfatter og andre detaljer om den konkrete template</td>
+			<td><a href="files/template.json" download>template.json</a></td>
+		</tr>
+		<tr>
+			<td>template.html</td>
+			<td>../templates/thj01/template.html</td>
+			<td>Indeholder den HTML5 skabelon, som markup-scriptet omdannes efter. Herindsætter du ekstra kode, hvis du ønsker det</td>
+			<td><a href="files/template.html" download>template.html</a></td>
+		</tr>
+		<tr>
+			<td>assets/styles.css</td>
+			<td>../templates/thj01/assets/styles.css</td>
+			<td>CSS-koden til HTML5 dokumentet. I dette dokument laver du de tilrettelser til designet du ønsker.</td>
+			<td><a href="files/styles.css" download>styles.css</a></td>
+		</tr>
+		<tr>
+			<td>assets/toc.js</td>
+			<td>../templates/thj01/assets/toc.js</td>
+			<td>En javascriptkode vi tilføjer, for at få en indholdsfortegnelse. Dette javascript er hentet fra <a href="http://www.whitsoftdev.com/articles/toc.html" target="_blank">http://www.whitsoftdev.com/articles/toc.html</a>, og jeg har lavet enkelte rettelser i det, for at give en pænere udskrift.</td>
+			<td><a href="files/toc.js" download>toc.js</a></td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Filerne kan også hentes sammen her i en zippet fil, der skal pakkes ud i mappen <span class="inl_cmd">../templates</span>: <a href="filer/thj01_template.zip" download>thj01_template.zip</a></p>
+
+<h1>Dansk oversættelse</h1>
+
+<p>Abricotine er så godt et program, at jeg har sat mig ned og lavet en dansk oversættelsesfil. Filen er her: <a href="files/da.json" Download>da.json</a></p>
+
+<p>Indtil filen bliver gjort til en del af programmet skal følgende gøres:</p>
+
+<ol>
+	<li>Åbn Konfigurationsmappen: <span class="inl_cmd">Edit &rarr; Open Config Directory</span></li>
+	<li>Ændre indholdet af filen <span class="inl_cmd">config.json</span>, ved at indsætte linien: <span class="inl_cmd">"lang":"da"</span> i afsnittet <span class="inl_cmd">windows</span>:</li>
+	
+	<pre>
+		<code class="json">
+"window": {
+	"showMenuBar": true,	<span class="red"><b>&larr; indsæt komma (,) efter true</b></span>
+    "lang": "da" 			<span class="red"><b>&larr; indsæt linien her</b></span>
+  }		</code>
+	</pre>
+	<li>Kopier filen <span class="inl_cmd">da.json</span> ind i mappen <span class="inl_cmd">lang</span>, så den står sammen med de andre sprogfiler (de/en/fr/it)</li>
+	<li>Genstart Abricotine</li>
+	
+</ol>
+
+<h1>Ordbøger</h1>
+
+<p>Abricotine anvender hunspell ordbøger. Hvis du allerede har installeret Hunspell ordbøger, eller f.eks. har Libreoffice installeret så følg vejledningen nedenfor.</p>
+
+
+
+<p>Følg denne guide til at <a href="geany.html#hunspell" target="_blank">installere ordbøgerne</a>.</p>
+
+<p>Opret mappen <span class="inl_cmd">../dict/da_DK</span>, og koppier filerne <span class="inl_cmd">da_DK.aff</span> og <span class="inl_cmd">da_DK.dic</span> ind i den.</p>
+
+<blockquote>
+	<p>
+		Ordbogsfunktionen er ikke fuldt ud implementeret, da den kun registrerer om ordet er korrekt stavet eller ej. Man kan ikke få forslag til rettelse af stavefejl.
+	</p>
+</blockquote>
+
+<details>
+
+	<summary>Hvis Hunspell er installeret</summary>
+
+	<p>Hvis du har installeret ordbøgerne kan du henvise til dem i <span class="inl_cmd">config.json</span> ved at angive stien dertil ved hjælp af <span class="inl_cmd">"src"</span>. Herunder er stien angivet til mappen på Ubuntu.</p>
+	
+	<pre>
+		<code class="json">"spellchecker": {
+    "active": true,
+    "language": "da-DK",
+    "src": "/usr/share/hunspell"
+  },</code>
+	</pre>
+
+	<table class="_">
+		<thead>
+			<tr>
+				<th>System</th>
+				<th>Sti</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>Mac</td>
+				<td>/Applications/LibreOffice.app/Contents/Resources/extensions/dict-</td>
+			</tr>
+			<tr>
+				<td>Windows</td>
+				<td>c:\Programmer\Libreoffice5\share\extensions</td>
+			</tr>
+			<tr>
+				<td>Ubuntu</td>
+				<td>/usr/share/hunspell</td>
+			</tr>
+		</tbody>
+	</table>
+	
+	<p>Det er et af stederne hvor man kan se filosofi- og designforskellen mellem Linux og proporitære systemer som MacOS og Windows.</p>
+	
+	<p>Linux installerer Hunspell i en mappe hvor alle programmerne if. standarden kan hente de ordbøger der er installeret på systemet. På den måde får alle programmer glæde af de samme filer. På MacOS og Windows ligger ordbøgerne pakket inde i de enkelte programmer, hvilket betyder at man mister muligheden for at anvende samme filer alle steder. Man mister altså de tilføjelser man laver i de enkelte programmer.</p>
+
+</details>
+
+
+
+
+
+<h1>Præferencer</h1>
+
+<p>Præferencerne i Abricote bliver sat i filen <span class="inl_cmd">config.json</span>, som ligger i roden når du åbner <span class="inl_cmd">Edit &rarr; Open Config Directory</span>. Enten skal de enkelte parametre sættes med <span class="inl_cmd">true/false</span>, stier eller betegnelser.</p>
+
+<p>Herunder er filen vist, med beskrivelser efter <span class="inl_cmd"><span class="red"><b>&larr;</b></span></span>. Teksten i rammen herunder må ikke kopieres ind i filen da <span class="inl_cmd">json</span>-formatet ikke understøtter kommentarer!</p>
+
+<pre>
+	<code class="json">
+{
+  "autopreview": {		<span class="red">&larr; Om markupteksten skal erstattes med objektet</span>
+    "image": true,					
+    "todolist": true,				
+    "iframe": true,					
+    "anchor": true,					
+    "math": true					
+  },
+  "autopreview-domains": [
+    "dailymotion.com",
+    "deezer.com",
+    "dribbble.com",
+    "facebook.com",
+    "github.com",
+    "google.com",
+    "instagram.com",
+    "pinterest.com",
+    "soundcloud.com",
+    "spotify.com",
+    "twitter.com",
+    "vimeo.com",
+    "youtube.com"
+  ],
+  "autopreview-security": true,		
+  "editor": {
+    "font-size": "16px"
+  },
+  "highlight-modes": "",
+  "preview-template": "thj01",		<span class="red">&larr; Ændr til "thj01"</span>
+  "startup-commands": {
+    "showBlocks": true,				<span class="red">&larr; Ændr til <span class="blue">true </span></span>
+    "showHiddenCharacters": true,
+    "showTocPane": true,			<span class="red">&larr; Ændr til <span class="blue">true </span></span>
+    "autoCloseBrackets": true
+  },
+  "spellchecker": {
+    "active": true,
+    "language": "da-DK"				<span class="red">&larr; Ændr til <span class="blue">da-DK</span> </span>
+  },
+  "theme": "default",
+  "window": {
+    "showMenuBar": true,
+    "lang": "da"					<span class="red">&larr; Tilføj denne linie for at aktivere den danske oversættelse</span>
+  }
+}
+	</code>
+</pre>
+
+
+
+	
+</div><!-- end: col-md-9 -->
+
+
+
+<footer>
+
+	<p><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons licens" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>Indholdet på Vidas.dk er licenseret under <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> og er skrevet af Thomas Jensen. (<a href="../hvem_er_jeg.html" target="_blank">Læs mere</a>)</p>
+
+</footer>
+	
+	
+</div><!-- end: row-fluid -->
+
+</div> <!-- end: container-fluid -->
+
+
+<!-- SCRIPT SECTION -->
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script type="text/javascript" src="../js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="../js/jquery.tocify.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+
+<!-- PRETTYFY-->
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+
+
+<!-- HIGHLIGHT -->
+	<script src="../js/highlight.pack.js" type="text/javascript"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+
+<!-- MATHJAX -->
+<script type="text/javascript" async 		src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+		MathJax.Hub.Config({ jax: ["input/TeX","output/HTML-CSS"], displayAlign: "left"	});
+</script>
+<!-- TOCIFY -->
+<script>
+	$(function() {var toc = $("#toc").tocify({ selectors: "h1, h2, h3, h4" }).data("toc-tocify"); });
+</script>
+<!-- GOOGLE ANALYTICS -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-89933285-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</body>
+</html>
