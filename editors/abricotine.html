@@ -109,7 +109,9 @@
 	</tbody>
 </table>
 
+<!--
 <p>Filerne kan også hentes sammen her i en zippet fil, der skal pakkes ud i mappen <span class="inl_cmd">../templates</span>: <a href="filer/thj01_template.zip" download>thj01_template.zip</a></p>
+-->
 
 <h1>Dansk oversættelse</h1>
 
@@ -137,11 +139,14 @@
 
 <p>Abricotine anvender hunspell ordbøger. Hvis du allerede har installeret Hunspell ordbøger, eller f.eks. har Libreoffice installeret så følg vejledningen nedenfor.</p>
 
+<p>Følg denne guide til at hente de ordbøger du har brug for: <a href="geany.html#hunspell" target="_blank">Ordbogs guide</a>.</p>
 
+<p>Når du har hentet ordbøgerne skal du:</p>
 
-<p>Følg denne guide til at <a href="geany.html#hunspell" target="_blank">installere ordbøgerne</a>.</p>
-
-<p>Opret mappen <span class="inl_cmd">../dict/da_DK</span>, og koppier filerne <span class="inl_cmd">da_DK.aff</span> og <span class="inl_cmd">da_DK.dic</span> ind i den.</p>
+<ol class="_">
+	<li>Oprette mappen <span class="inl_cmd">../dict/da_DK</span></li>
+	<li>Kopier filerne <span class="inl_cmd">da_DK.aff</span> og <span class="inl_cmd">da_DK.dic</span> ind i den.</li>
+</ol>
 
 <blockquote>
 	<p>
@@ -149,6 +154,7 @@
 	</p>
 </blockquote>
 
+<!--
 <details>
 
 	<summary>Hvis Hunspell er installeret</summary>
@@ -191,6 +197,7 @@
 	<p>Linux installerer Hunspell i en mappe hvor alle programmerne if. standarden kan hente de ordbøger der er installeret på systemet. På den måde får alle programmer glæde af de samme filer. På MacOS og Windows ligger ordbøgerne pakket inde i de enkelte programmer, hvilket betyder at man mister muligheden for at anvende samme filer alle steder. Man mister altså de tilføjelser man laver i de enkelte programmer.</p>
 
 </details>
+-->
 
 
 
@@ -232,16 +239,16 @@
     "font-size": "16px"
   },
   "highlight-modes": "",
-  "preview-template": "thj01",		<span class="red">&larr; Ændr til "thj01"</span>
+  "preview-template": "thj01",		<span class="red">&larr; Ændr til "thj01" (anvender min skabelon)</span>
   "startup-commands": {
-    "showBlocks": true,				<span class="red">&larr; Ændr til <span class="blue">true </span></span>
+    "showBlocks": true,				<span class="red">&larr; Ændr til <span class="blue">true </span> (Samler elementerne)</span>
     "showHiddenCharacters": true,
-    "showTocPane": true,			<span class="red">&larr; Ændr til <span class="blue">true </span></span>
+    "showTocPane": true,			<span class="red">&larr; Ændr til <span class="blue">true </span> (Viser indholdsfortegnelsen)</span>
     "autoCloseBrackets": true
   },
   "spellchecker": {
     "active": true,
-    "language": "da-DK"				<span class="red">&larr; Ændr til <span class="blue">da-DK</span> </span>
+    "language": "da_DK",			<span class="red">&larr; Ændr til <span class="blue">da_DK</span> </span>
   },
   "theme": "default",
   "window": {
@@ -259,7 +266,7 @@
 <p>Herunder er vist opbygningen af en dokumentation med en indholdsfortegnelse. Det kræver at du har lavet overstående ændringer.</p>
 
 <pre>
-	<code class="markdown">
+<code class="markdown">
 #En Dokumentation
 
 ![alt text](https://upload.wikimedia.org/wikipedia/commons/a/af/Tux.png)
@@ -278,20 +285,25 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 ###Afsnit 1
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 
-##Kapitel 2
+##Matematik
 
 Herunder er formlen for varians ved en stikprøve
 
 $$ s^2 = \frac{1}{n-1} \cdot \sum_{i=1}^k (m_i- \overline x)^2 \cdot h_i $$
 
+##Kode
 
-##Konklusion
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+Herunder vises en løkke i Python.
 
-	</code>
+```Python
+for i in range(1,7):
+	print(i)
+```</code>
 </pre>
 
-<p>Læg mærke til følgende ting:</p>
+<p>Tekstfilen kan downloades her: <a href="files/abricotine.md" download>abricotine.md</a></p>
+
+<p>Du skal være opmærksom på følgende ting:</p>
 
 <ul class="none">
 	<li>Der skal kun være en overskrift 1 (<span class="inl_cmd">#</span>), da denne er titlen på dokumentet</li>
@@ -309,7 +321,19 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 <p>Hvis du indsætter den i abricotine, og trykker <kbd>F6</kbd>, så vil du få en webside, hvor det hele står fortløbende. Se eksemplet her: <a href="files/template_udskrift.html" target="_blank">template_udskrift.html</a> </p>
 
-<p>Vælger du at udskrive filen ( <kbd>Ctrl</kbd>+<kbd>P</kbd> ) vil du få følgende udskrift: <a href="files/template_udskrift.pdf" target="_blank">template_udskrift.pdf</a>. Sidehovede og sidefod skal tilføjes i browserens printerindstillingen.</p>
+<p>Vælger du at udskrive filen ( <kbd>Ctrl</kbd>+<kbd>P</kbd> ) vil du få følgende udskrift: <a href="files/template_udskrift.pdf" target="_blank">template_udskrift.pdf</a>. Sidehovede og sidefod skal tilføjes i browserens printerindstillingen under punktet <span class="inl_cmd">+ Flere indstillinger</span> (Chrome).</p>
+
+<h1>Lav dit eget design</h1>
+
+<p>Ønsker du at lave dit eget design, kan du gøre det ved at oprette endnu en mappe i <span class="inl_cmd">../app/templates</span> og ændre i HTML og CSS filen som du vil det. Det er kun dine egne evner der sætter dagsordenen.</p>
+
+<h2>Bootstrap</h2>
+
+<p>Oprette mappen <span class="inl_cmd">../templates/bootstrap</span>, og kopiere denne template ind i mappen: <a href="files/bootstrap_template/template.html" download >../bootstrap_template/template.html</a>. Alt CSS og Javascript bliver hentet på nettet.</p>
+
+<p>Du skal også oprette mappen <span class="inl_cmd">assets</span> inde i din nye template selvom den er tom. Ellers vil Abricotine ikke vise dig outputtet</p>
+
+<p>Hvis du bruger teksten ovenfor, så vil du lægge mærke til at de to </p>
 
 	
 </div><!-- end: col-md-9 -->
