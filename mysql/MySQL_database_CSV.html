@@ -110,6 +110,18 @@ bs6,Frederikke,Frederiksen,23344561,ff@fakemail.dk</pre>
 
 <p>Du kan hente denne lille csv fil her: <a href="files/bestyrelse_csv.csv" download>bestyrelse_csv.csv</a>.</p>
 
+<blockquote>
+
+<p>Man skal være opmærksom på at CSV ikke er en fast standard, og at man ikke kan være sikker på at det er kommaer der adskiller de enkelte felter.</p>
+
+<p>Microsoft anvender f.eks. semikolon (<span class="inl_cmd">;</span>) som seperator, og det betyder at man skal gøre programmet opmærksom på at det ikke er komma der separerer. Der kommer et eksempel på dette lidt senere
+</p>
+
+</blockquote>
+
+<h1>Importer CSV-fil</h1>
+
+
 <p>Man kan importere <span class="inl_cmd">csv</span>-filer ved at vælge sin database og vælge menuen <span class="inl_cmd">Importer</span>. Vælg databasen <span class="inl_cmd">mentorer</span> og herefter menuen <span class="inl_cmd">Importer</span>.</p>
 
 <p>Klik på knappen <span class="knap">Vælg fil</span> og find filen <span class="inl_cmd">bestyrelse_csv.csv</span></p>
@@ -215,8 +227,8 @@ bs6,Frederikke,Frederiksen,23344561,ff@fakemail.dk</pre>
 
 <ol class="">
 	<li>... at vi må rette og ændre i tabellen manuelt for at fjerne dubletter af postnumre.</li>
-	<li>... at vi må oprette en "<span class="inl_cmd">mange-til-mange</span>" relation</li>
-	<li>... at vi må fravælge at denne tabel har en primærnøgle</li>
+	<li>... at vi må oprette en "<span class="inl_cmd">mange-til-mange</span>" relation.</li>
+	<li>... at vi vælger at leve med, at denne tabel ikke har en primærnøgle.</li>
 </ol>
 
 <p>I dette tilfælde vælger vi den 3. mulighed, og det kan vi gøre fordi det ikke er en tabel vi vedligeholder og skal rette i, men at den kommer fra Postnord.</p>

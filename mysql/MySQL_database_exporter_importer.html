@@ -38,17 +38,17 @@
 <div class="title">MySQL - eksporter og importer database</div>
 
 
-<h1>Eksporter og importer</h1>
-
 <blockquote class="center">
 	<p>
 		Rigtige mænd tager ikke backup ... de græder bare
 	</p>
 </blockquote>
 
-<p>Når man arbejder med data i alle sammenhænge bør man have backup af sine vigtige filer. phpMyAdmin gør det nemt at tage backup af ens database. I database sammenhæng eksporterer man.</p>
+<p>Når man arbejder med data i alle sammenhænge bør man have backup af sine vigtige filer. phpMyAdmin gør det nemt at tage backup af ens database.</p>
 
-<h2>Eksporter databasen</h2>
+<p>Normalt når du anvender programmer, så <span class="inl_cmd">gemmer</span> du en fil, men i database sammenhæng <span class="inl_cmd">eksporterer</span> man.</p>
+
+<h1>Eksporter database</h1>
 
 <p>For at eksportere en database vælger man menuen <span class="inl_cmd">Eksporter</span>:</p>
 
@@ -198,13 +198,11 @@ ALTER TABLE `mentorer`
 	</code>
 </pre>
 
-<span class="afsnit"></span>
-
 <p><span class="bold">Hent filen:</span> <a href="files/mentor_db_v1.sql" target="_blank">mentor_db_v1.sql</a></p>
 
 </details>
 
-<h2>Importer</h2>
+<h1>Importer database</h1>
 
 <p>Vi kan prøve at importere databasen under et andet navn. Det første vi gør er at oprette en ny database til indholdet. Husk at sætte tegnsæt(<span class="inl_cmd">utf8-danish_ci</span>). Herefter vælger vi fanen <span class="inl_cmd">Importer</span></p>
 
@@ -244,7 +242,7 @@ ALTER TABLE `mentorer`
 
 </figure>
 
-<h2>Ryd op i dine backups</h2>
+<h1>Ryd op i dine backups</h1>
 
 <p>Når man har haft computer i et stykke tid begynder man at have en masse backups. Nogle gange er det en god ide at kigge dem igennem og få slettet det som ikke er relevant mere. Det kan f.eks. være forskelige versioner af ens opgaver eller filer der er lavet backup af flere gange. Det kan f.eks være dokumenter og billeder.</p>
 
@@ -261,191 +259,6 @@ ALTER TABLE `mentorer`
 <p>Taget fra: <a href="https://xkcd.com/1360/" target="_blank">https://xkcd.com/1360/</a></p>
 
 
-<h1>CSV</h1>
-
-<p>Skal man indtaste meget data kan det betale sig at anvende <abbr title="Comma-Separated Values">csv</abbr> filer. Det er filer hvor man ved hjælp af simple tekstfiler kan indtaste store mængder data. Se eksemplet f.eks. tabellen herunder:</p>
-
-<table class="">
-	<thead>
-		<tr>
-			<th>Initialer</th>
-			<th>f_Navn</th>
-			<th>e_navn</th>
-			<th>Mobil</th>
-			<th>Mail</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>bs1</td>
-			<td>Anders</td>
-			<td>Andersen</td>
-			<td>23344556</td>
-			<td>aa@fakemail.dk</td>
-		</tr>
-		<tr>
-			<td>bs2</td>
-			<td>Bente</td>
-			<td>bentsen</td>
-			<td>23344556</td>
-			<td>bb@fakemail.dk</td>
-		</tr>
-		<tr>
-			<td>bs3</td>
-			<td>Carl</td>
-			<td>Carlsen</td>
-			<td>23344558</td>
-			<td>cc@fakemail.dk</td>
-		</tr>
-		<tr>
-			<td>bs4</td>
-			<td>Dorte</td>
-			<td>Dotsen</td>
-			<td>23344559</td>
-			<td>dd@fakemail.dk</td>
-		</tr>
-		<tr>
-			<td>bs5</td>
-			<td>Egon</td>
-			<td>Egonsen</td>
-			<td>23344560</td>
-			<td>ee@fakemail.dk</td>
-		</tr>
-		<tr>
-			<td>bs6</td>
-			<td>Frederikke</td>
-			<td>Frederiksen</td>
-			<td>23344561</td>
-			<td>ff@fakemail.dk</td>
-		</tr>
-	</tbody>
-</table>
-
-<p>Det kan man skrive ind i en tekstfil, ved at lade rækkerne være adskilt af linieskift og kolonnerne af kommaer (<span class="inl_cmd">,</span>). Læg mærke til at den første række indeholder kolonne navnene.</p>
-
-
-<pre class="black">initialer,f_navn,e_navn,Mobil,Mail 
-bs1,Anders,Andersen,23344556,aa@fakemail.dk 
-bs2,Bente,bentsen,23344557,bb@fakemail.dk
-bs3,Carl,Carlsen,23344558,cc@fakemail.dk
-bs4,Dorte,Dotsen,23344559,dd@fakemail.dk
-bs5,Egon,Egonsen,23344560,ee@fakemail.dk
-bs6,Frederikke,Frederiksen,23344561,ff@fakemail.dk</pre>
-
-<p>Du kan hente denne lille csv fil her: <a href="files/bestyrelse_csv.csv" download>bestyrelse_csv.csv</a>.</p>
-
-<p>Man kan importere <span class="inl_cmd">csv</span>-filer ved at vælge sin database og vælge menuen <span class="inl_cmd">Importer</span>. Vælg databasen <span class="inl_cmd">mentorer</span> og herefter menuen <span class="inl_cmd">Importer</span>.</p>
-
-<p>Klik på knappen <span class="knap">Vælg fil</span> og find filen <span class="inl_cmd">bestyrelse_csv.csv</span></p>
-
-<figure id="">
-
-	<img class="p90" src="images/mysel_import_csv01.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-
-<p>Når den er valgt skal du sætte formatet til <span class="inl_cmd">CSV</span> og sætte flueben i "<span class="inl_cmd">Den første linie af filen indeholder tabellens kolonnenavne</span>"</p>
-
-<figure id="">
-
-	<img class="p90" src="images/mysel_import_csv02.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-
-<p>Herefter kan du trykke <span class="knap">Udfør</span></p>
-
-<p>Når databasen er lagt ind kan du se den nye tabel ved at klikke på menuen <span class="inl_cmd">Struktur</span>:</p>
-
-<figure id="">
-
-	<img class="p90" src="images/mysel_import_csv03.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-
-<p>Vi skal lige have ændret navnet på tabellen, og det gør vi ved at klikke på tabellen <span class="inl_cmd">Table 4</span> og vælge menuen <span class="inl_cmd">Operationer</span> (du skal måske kigge under menuen <span class="inl_cmd">Mere</span>). Her ændrer vi navnet til <span class="inl_cmd">bestyrelse</span>.  </p>
-
-<figure id="">
-
-	<img class="p90" src="images/mysel_import_csv04.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-
-<p>Klik på <span class="knap">Udfør</span>, og se resulatet ved at vælge hele databasen igen og se resultatet:</p>
-
-<figure id="">
-
-	<img class="p90" src="images/mysel_import_csv05.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-
-<p>Som det sidste ændrer posten <span class="inl_cmd">initialer</span> til at være primærnøgle for tabellen.</p>
-
-<figure id="">
-
-	<img class="p90" src="images/mysel_import_csv06.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-
-<p>Læg mærke til at længderne af datatyperne er sat efter <span class="inl_cmd">csv</span>-filen. Det kan være nødvendigt at justere på datatyperne og/eller længderne af dem, hvis der senere skal ændres i listen.</p>
-
-<h2>Importer postnumre</h2>
-
-<p>Her vil vi importere de danske postnumre. Oprindeligt kommer tabellen fra <a href="http://www.postnord.dk/da/Privat/Kundeservice/postnummerkort/Sider/postnummerkort.aspx" target="_blank">Postnord's hjemmeside</a>, men til denne opgave har jeg omdannet den til <span class="inl_cmd">csv</span>-format.</p>
-
-<p>Hent filen <a href="files/postnummerfil.csv" download>postnummerfil.csv</a> og importer den i en database.</p>
-
-<blockquote>
-	<p>
-		Ofte får man leveret datafiler i excel-format. Det kræver at man i Excel gemmer filen i <span class="inl_cmd">csv</span>-format. Du skal være opmærksom på at Microsoft ikke gemmer filen korrekt, men med semikolonner (<span class="inl_cmd">;</span>) i stedet for kommaer (<span class="inl_cmd">,</span>).				
-	</p>
-	<p>
-		Så anvender du <span class="inl_cmd">csv</span>filer fra Excel skal feltet "<span class="inl_cmd">Kolonner adskilt med:</span>" ændres fra <span class="inl_cmd">,</span> til <span class="inl_cmd">;</span>
-	</p>
-</blockquote>
-
-<p>Når du importeret tabellen skal du vælge menuen <span class="inl_cmd">Vis</span>:</p>
-
-<figure id="">
-
-	<img class="p90" src="images/mysql_import_postnummer_csv_03.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-
-<p>Læg mærke til at phpMyAdmin kommer med en advarsel: "Current selection does not contain a unique column". Tabellen har altså ikke en PRIMÆR nøgle, og det betyder, at vi ikke kan rette, kopiere og slette i tabellen. Det skal vi have ændret. Gå ind i menuen <span class="inl_cmd">Struktur</span> og sæt <span class="inl_cmd">Postnr.</span> til at være PRIMÆR nøgle. Læg mærke til at det udløser en fejl.</p>
-
-<figure id="">
-
-	<img class="p30" src="images/mysql_import_postnummer_csv_04.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-
-<p>Årsagen hertil er, at bl.a. postnummeret 1055 forekommer mere end en gang, hvilket betyder at feltet ikke kan være en primærnøgle. Det betyder enten:</p>
-
-<ol class="">
-	<li>... at vi må rette og ændre i tabellen manuelt for at fjerne dubletter af postnumre.</li>
-	<li>... at vi må oprette en "<span class="inl_cmd">mange-til-mange</span>" relation</li>
-	<li>... at vi må fravælge at denne tabel har en primærnøgle</li>
-</ol>
-
-<p>I dette tilfælde vælger vi den 3. mulighed, og det kan vi gøre fordi det ikke er en tabel vi vedligeholder og skal rette i, men at den kommer fra Postnord.</p>
-
-<p>Som det sidste ændrer vi tabellens navn til "<span class="inl_cmd">postnr</span>" ved at gå ind i menuen <span class="inl_cmd">Operationer</span> og blokken <span class="inl_cmd">Tabel-indstillinger</span>.</p>
 	
 	
 </div><!-- end: col-md-9 -->
