@@ -159,6 +159,43 @@
 
 <p>Herunder bliver følgende funktioner gennemgået:</p>
 
+<table class="_">
+	<thead>
+		<tr>
+			<th>Excel/Calc</th>
+			<th>Sheets</th>
+			<th>Beskrivelse</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>HVIS()</td>
+			<td></td>
+			<td>Undersøger om en betingelse er opfyldt, og sætter en værdi for disse</td>
+		</tr>
+		<tr>
+			<td>HVISER()</td>
+			<td></td>
+			<td>Undersøger mange forskellige ting, og sætter en værdi for hvert punkt der er opfyldt</td>
+		</tr>
+		<tr>
+			<td>Eller()</td>
+			<td></td>
+			<td>Undersøger en række betingelser. Blot en betingelse skal være opfyldt for at den svarer med <b>SANd</b>.</td>
+		</tr>
+		<tr>
+			<td>OG()</td>
+			<td>AND()</td>
+			<td>Undersøger en række betingelser. Alle betingelser skal være opfyldt for at den svarer med <b>SANd</b>.</td>
+		</tr>
+		<tr>
+			<td>ER.TAL()</td>
+			<td>ISNUMBER</td>
+			<td>Undersøger om indholdet er et tal eller en tekststreng.</td>
+		</tr>
+	</tbody>
+</table>
+
 <ol class="">
 	<li>HVIS()</li>
 	<li>HVISER()</li>
@@ -172,56 +209,92 @@
 
 <h2>HVIS()</h2>
 
-<p><span class="bold">Anvendelse (excel/Calc): </span><span class="inl_cmd">hvis(Betingelse;Værdi_for_sand;værdi_for_falsk)</span></p>
+<p><b>Anvendelse (excel/Calc):</b></p>
 
-<p><span class="bold">Anvendelse (Sheets): </span><span class="inl_cmd">if(Betingelse;Værdi_for_sand;værdi_for_falsk)</span></p>
+<code class="cmd">HVIS(Betingelse;Værdi_for_sand;værdi_for_falsk)</code>
+
+<p><b>Anvendelse (Sheets): </b></p>
+
+<code class="cmd">IF(Betingelse;Værdi_for_sand;værdi_for_falsk)</code>
 
 <p>Bruges til at undersøge om en betingelse er opfyldt. Man vælger selv om det skal skrives ved hjælp af et tal eller en streng</p>
 
-<p><span class="bold">Eksempel: </span><span class="inl_cmd">hvis(A1>3;”kvote opnået”;”kvote ikke opnået”)</span></p>
+<p><b>Eksempel: </b></p>
 
-<p><span class="bold">Eksempel: </span><span class="inl_cmd">hvis(A1=”kvinde”;1;0)</span></p>
+<code class="cmd">HVIS(A1>3;”kvote opnået”;”kvote ikke opnået”)</code>
+
+<p><b>Eksempel: </b></p>
+
+<code class="cmd">HVIS(A1=”kvinde”;1;0)</code>
 
 
 
 <h2>HVISER()</h2>
 
-<p><span class="bold">Anvendelse (excel/Calc): </span><span class="inl_cmd">hviser(betingelse1;værdi for sand;betingelse2;værdi for sand;….)</span></p>
+<p><b>Anvendelse (excel/Calc): </b></p>
 
-<p><span class="bold"><span class="red">BEMÆRK</span></span>: Funktionen virker ikke på Mac og Sheets</p>
+<code class="cmd">HVISER(betingelse1;værdi for sand;betingelse2;værdi for sand;….)</code>
+
+<blockquote>
+	<p>
+		Funktionen virker ikke på Mac og Sheets
+	</p>
+</blockquote>
 
 <p>Bruges bruges til at undersøge flere betingelser på en gang.</p>
 
-<p><span class="bold">Eksempel: </span><span class="inl_cmd">hviser(A1=”lille”;0;A1=”mellem”;1;A1=”stor”;2)</span></p>
+<p><b>Eksempel: </b></p>
 
-<p><span class="bold">Eksempel: </span><span class="inl_cmd">hviser(A1=0;barn;A1=1;voksen;A1=2;Pensionist)</span></p>
+<code class="cmd">HVISER(A1=”lille”;0;A1=”mellem”;1;A1=”stor”;2)</code>
+
+<p><b>Eksempel: </b></p>
+
+<code class="cmd">HVISER(A1=0;barn;A1=1;voksen;A1=2;Pensionist)</code>
 
 <h2>ELLER()</h2>
 
-<p><span class="bold">Anvendelse: </span><span class="inl_cmd">eller(betingelse1;betingelse2;...)</span></p>
+<p><b>Anvendelse: </b></p>
 
-<p>Undersøger om en række betingelser er sande. Hvis blot en af dem er sande vil svarer funktionen tilbage med <span class="bold">SAND</span> ellers <span class="bold">FALSK</span>.</p>
+<code class="cmd">ELLER(betingelse1;betingelse2;...)</code>
 
-<p><span class="bold">Eksempel: </span><span class="inl_cmd">eller(A1=”lille”;A2=3;A3=”barn”)</span></p>
+<p>Undersøger om en række betingelser er sande. Hvis blot en af dem er sande vil svarer funktionen tilbage med <b>SAND</b> ellers <b>FALSK</b>.</p>
+
+<p><b>Eksempel: </b></p>
+
+<code class="cmd">ELLER(A1=”lille”;A2=3;A3=”barn”)</code>
 
 <h2>OG()</h2>
 
-<p><span class="bold">Anvendelse: </span><span class="inl_cmd">og(betingelse1;betingelse2;...)</span></p>
+<p><b>Anvendelse: </b></p>
+
+<code class="cmd">og(betingelse1;betingelse2;...)</code>
 
 <p>Undersøger om alle givne betingelser er sande. Hvis de alle er sande vil svarer funktionen tilbage med <span class="bold">SAND</span> ellers <span class="bold">FALSK</span>. </p>
 
-<p><span class="bold">Eksempel: </span><span class="inl_cmd">og(A1=”lille”;A2=3;A3=”barn”)</span></p>
+<p><b>Eksempel: </b></p>
+
+<code class="cmd">OG(A1=”lille”;A2=3;A3=”barn”)</code>
+
 
 <h2>ER.TAL()</h2>
 
 <p>Denne funktion anvendes til at finde ud af om en værdi/streng findes i et felt ved hjælp af <span class="inl_cmd">FIND()</span>, og svarer tilbage med <span class="inl_cmd">SAND/FALSK</span>.</p>
 
-<p><b>Anvendelse (excel/Calc): </b><span class="inl_cmd">er.tal(find(tekststreng/værdi;felt))</span></p>
+<p><b>Anvendelse (excel/Calc): </b></p>
 
-<p><b>Eksempel: </b><span class="inl_cmd">er.tal(find("hans";A1))</span> </p>
+<code class="cmd">ER.TAL(find(tekststreng/værdi;felt))</code>
+
+<p><b>Eksempel: </b></p>
+
+<code class="cmd">ER.TAL(find("hans";A1))</code>
 
 <p>Funktionen kan med fordel anvendes sammen med <span class="inl_cmd">HVIS(), HVISER(), ELLER()</span> eller <span class="inl_cmd">OG()</span>.</p>
 
+<h2>Logiske funktioner </h2>
+
+<p>Her kan du finde Microsofts gennemgang af logiske funktioner.</p>
+
+<p><a href="https://support.office.com/da-dk/article/Logiske-funktioner-reference-e093c192-278b-43f6-8c3a-b6ce299931f5" target="_blank">Logiske funktioner i Excel</a></p>
 
 <h1>Financielle funktioner</h1>
 
