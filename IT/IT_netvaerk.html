@@ -530,11 +530,36 @@ C:\Users\ThomasJensen>
 
 <ul class="none">
 	<li>Der er sendt og modtaget 16 pakker - dvs. ingen tab</li>
-	<li>Den korteste tid var 6 ms</li>
-	<li>Den længste var 16</li>
+	<li>Den korteste tid var 6 ms og den længste var 16 ms</li>
+	<li>Vi har adgang til Internettet</li>
 </ul>
 
-<p>Vi kan altså konkludere at vi har adgang til internettet.</p>
+<p><span class="inl_cmd">ping</span> kan konfigureres så man bl.a. kan ændre pakkesstørrelsen og andre ting f.eks sættes pakkestørrelsen her til 1024 bytes. PÅ den måde kan man diagnosticere netværket.</p>
+
+<code class="cmd">ping dr.dk -t -l 1024</code>
+
+<pre class="black">
+C:\Users\ThomasJensen>ping dr.dk -t -l 1024
+
+Pinging dr.dk [159.20.6.38] with 1024 bytes of data:
+Reply from 159.20.6.38: bytes=1024 time=12ms TTL=248
+Reply from 159.20.6.38: bytes=1024 time=14ms TTL=248
+Reply from 159.20.6.38: bytes=1024 time=14ms TTL=248
+Reply from 159.20.6.38: bytes=1024 time=13ms TTL=248
+Reply from 159.20.6.38: bytes=1024 time=14ms TTL=248
+Reply from 159.20.6.38: bytes=1024 time=14ms TTL=248
+Reply from 159.20.6.38: bytes=1024 time=15ms TTL=248
+Reply from 159.20.6.38: bytes=1024 time=12ms TTL=248
+Reply from 159.20.6.38: bytes=1024 time=16ms TTL=248
+
+Ping statistics for 159.20.6.38:
+    Packets: Sent = 9, Received = 9, Lost = 0 (0% loss),
+Approximate round trip times in milli-seconds:
+    Minimum = 12ms, Maximum = 16ms, Average = 13ms
+Control-C
+^C
+C:\Users\ThomasJensen>
+</pre>
 
 <h2>Data-flow</h2>
 
