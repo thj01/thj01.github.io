@@ -429,6 +429,8 @@
 	
 </ul>
 
+
+
 <h2>IP-adresser</h2>
 
 <p>IP-adresser består af 4 tal, mellem 0 og 255 adskilt af punktummer. Det kan f.eks. være  <span class="inl_cmd">152.115.53.68</span> (også adressen på folketingets web-server <a href="http://152.115.53.68" target="_blank">www.ft.dk</a>). Danmarks Radio (<a href="http:\\159.20.6.38" target="_blank">www.dr.dk</a>) har således IP-adressen: <span class="inl_cmd">159.20.6.38</span>.</p>
@@ -438,6 +440,79 @@
 
 
 <p>I dag arbejder man med to versioner af TCP/IP: IPv4 og IPv6. IPv4 er den "gamle" protokol, som har det problem, at man er løbet tør for unikke IP-adresser, da den "kun" har <span class="math">\( 2^{32} = 4,3 \cdot 10^9 \)</span> (milliarder) selvstændige adresser. IPv6 har til sammenligning <span class="math">\( 2^{128} = 3,4 \cdot 10^{38} \)</span> mulige kombinationer.</p>
+
+<h2>Porte</h2>
+
+<p>For at kunne målrettet IP-adresser til specifikke tjenester kan man sætte en ekstra parameter på, som kaldes en port. F.eks. kører al web-trafik på port 80 (http - ikkekrypteret) og port 443 (https - krypteret). Herunder er en liste med nogle af mest anvendte porte</p>
+
+<table class="_">
+	<thead>
+		<tr>
+			<th>Port</th>
+			<th>Tjeneste</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>20/21</td>
+			<td>FTP (<b>F</b>ile <b>T</b>ransport <b>P</b>rotocol)- henholdsvis data og kontrol (kommandoer)</td>
+		</tr>
+		<tr>
+			<td>22</td>
+			<td>SSH (<b>S</b>ecure <b>SH</b>ell) Krypterede kommandoer over nettet</td>
+		</tr>
+		<tr>
+			<td>23</td>
+			<td>Telnet - ukrypteret kommandoer over nettet</td>
+		</tr>
+		<tr>
+			<td>25</td>
+			<td>SMTP (<b>S</b>imple <b>M</b>ail <b>T</b>ransfer <b>P</b>rotocol) - router mail mellem servere</td>
+		</tr>
+		<tr>
+			<td>80</td>
+			<td>HTTP (<b>H</b>yper<b>T</b>ext <b>T</b>ransfer <b>P</b>rotocol) - Ikke krypteret webindhold</td>
+		</tr>
+		<tr>
+			<td>123</td>
+			<td>NTP (<b>N</b>etwork <b>T</b>ime <b>P</b>rotocol) - bruges til sunkronisering af tid.</td>
+		</tr>
+		<tr>
+			<td>443</td>
+			<td>HTTPS (<b>H</b>yper<b>T</b>ext <b>T</b>ransfer <b>P</b>rotocol over TLS/SSL) - Krypteret webindhold</td>
+		</tr>
+		<tr>
+			<td>631</td>
+			<td>IPP (<b>I</b>nternet <b>P</b>rinting <b>P</b>rotocol) og CUPS (<b>C</b>ommon <b>U</b>nix <b>P</b>rinting <b>P</b>rotocol) - Printer data</td>
+		</tr>
+		<tr>
+			<td>666</td>
+			<td>DOOM - første online FPS (<b>F</b>irst <b>P</b>erson <b>S</b>hooter)</td>
+		</tr>
+		<tr>
+			<td>989/990</td>
+			<td>FTPS - FTP over TLS/SSL - Krypteret FTPS.</td>
+		</tr>
+		<tr>
+			<td>1194</td>
+			<td>OpenVPN</td>
+		</tr>
+		<tr>
+			<td>3128</td>
+			<td>SQUID - Web proxy</td>
+		</tr>
+		<tr>
+			<td>3306</td>
+			<td>MySQL</td>
+		</tr>
+		<tr>
+			<td>6000-<br/>6063</td>
+			<td>X11 protocol mellem X-klient og X-server (fjernskrivebord)</td>
+		</tr>
+	</tbody>
+</table>
+
+
 
 <h2>Din IP-adresse</h2>
 
