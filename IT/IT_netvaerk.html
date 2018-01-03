@@ -77,24 +77,24 @@
 	</thead>
 	<tbody>
 		<tr>
-			<td><span class="bold">LAN</span></td>
-			<td><span class="bold">L</span>ocal <span class="bold">A</span>rea <span class="bold">N</span>etwork</td>
+			<td>LAN</td>
+			<td><b>L</b>ocal <b>A</b>rea <b>N</b>etwork</td>
 		</tr>
 		<tr>
-			<td><span class="bold">WAN</span></td>
-			<td><span class="bold">W</span>ide <span class="bold">A</span>rea <span class="bold">N</span>etwork</td>
+			<td>WAN</td>
+			<td><b>W</b>ide <b>A</b>rea <b>N</b>etwork</td>
 		</tr>
 		<tr>
-			<td><span class="bold">WLAN</span></td>
-			<td><span class="bold">W</span>ireless <span class="bold">L</span>ocal <span class="bold">A</span>rea <span class="bold">N</span>etwork</td>
+			<td>WLAN</td>
+			<td><b>W</b>ireless <b>A</b>rea <b>N</b>etwork <span class="bold">N</span>etwork</td>
 		</tr>
 		<tr>
-			<td><span class="bold">SAN</span></td>
-			<td><span class="bold">S</span>torage <span class="bold">L</span>ocal <span class="bold">A</span>rea <span class="bold">N</span>etwork</td>
+			<td>SAN</td>
+			<td><b>S</b>torage <b>A</b>rea <b>N</b>etwork</td>
 		</tr>
 		<tr>
-			<td><span class="bold">VPN</span></td>
-			<td><span class="bold">V</span>irtual <span class="bold">P</span>rivate <span class="bold">N</span>etwork</td>
+			<td>VPN</td>
+			<td><b>V</b>irtual <b>P</b>rivate <b>N</b>etwork</td>
 		</tr>
 	</tbody>
 </table>
@@ -415,7 +415,7 @@
 <p>Til almindeligt hjemmebrug er <span class="inl_cmd">Cat5e</span> rigeligt og praktisk. Problemet med at gå op i cat6 og derover er, at de bliver for stive og har svært ved at "knække" rundt om hjørner. Men arbejder man et sted hvor data-strømmen er kritisk og at den skal sikres mest muligt, så skal man op i SSTP kabler.</p>
 
 	
-<h1>TCP/IP</h1>
+<h1>TCP/IP protokollen</h1>
 
 <p>Den netværksprotokol vi i dag anvender i vores netværk er oprindeligt skabt af det amerikanske forsvarsministerium. Ideen var, at netværket skulle være i stand til at fungere selv hvis dele af netværket blev ødelagt. Det blev så til TCP/IP netværket. TCP står for <span class="inl_cmd"><b>T</b>ransmission <b>C</b>ontrol <b>P</b>rotocol</span> og er den del der sikrer at det er de korrekte data der afsendes og modtages. IP står for <span class="inl_cmd"><b>I</b>nternet <b>P</b>rotocol</span>, og er den del der sørger for at data kommer det rigtige sted hen.</p>
 
@@ -429,6 +429,115 @@
 	
 </ul>
 
+<h2>IP-adresser</h2>
+
+<p>IP-adresser består af 4 tal, mellem 0 og 255 adskilt af punktummer. Det kan f.eks. være  <span class="inl_cmd">152.115.53.68</span> (også adressen på folketingets web-server <a href="http://152.115.53.68" target="_blank">www.ft.dk</a>). Danmarks Radio (<a href="http:\\159.20.6.38" target="_blank">www.dr.dk</a>) har således IP-adressen: <span class="inl_cmd">159.20.6.38</span>.</p>
+
+
+<p>Grunden til de "mystiske" tal er, at de kommer fra binære værdier, som er computerens sprog. Helt konkret består en IP-adresse af 4 binære oktetter - altså 4 binære tal med 8 cifre i hver. Således er <span class="inl_cmd">152.115.53.68</span> det samme som <span class="inl_cmd">10011000.01110011.00110101.01000100</span>. På den måde er den mindst værdi altså <span class="inl_cmd">0</span> (<span class="inl_cmd">00000000</span>)og den største 255 (<span class="inl_cmd">11111111</span>). Grunden til at vi angiver IP-adresser ved hjælp af 4 decimalværdier er simpelthen fordi de er <span class="inl_cmd">menneskelæselige</span>.</p>
+
+
+<p>I dag arbejder man med to versioner af TCP/IP: IPv4 og IPv6. IPv4 er den "gamle" protokol, som har det problem, at man er løbet tør for unikke IP-adresser, da den "kun" har <span class="math">\( 2^{32} = 4,3 \cdot 10^9 \)</span> (milliarder) selvstændige adresser. IPv6 har til sammenligning <span class="math">\( 2^{128} = 3,4 \cdot 10^{38} \)</span> mulige kombinationer.</p>
+
+<h2>Din IP-adresse</h2>
+
+<p>For at se hvordan din computer er på netværket anvender man programmet ipconfig (ifconfig hvis det er Linux/Mac), som køres fra kommandolinien.</p>
+
+<table class="_">
+	<thead>
+		<tr>
+			<th>Kommando Mac</th>
+			<th>Kommando Windows</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>ifconfig</td>
+			<td>ipconfig</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>I det output der kommer skal du  lede efter <span class="inl_cmd">wireless</span>. Herunder er resultatet på Windows og min PC.</p>
+
+<pre class="black">
+Wireless LAN adapter Wi-Fi:
+
+  Connection-specific DNS Suffix  . : vestfyns.dk
+  Link-local IPv6 Address . . . . . : fe80::30d6:9545:17b0:c51a%8
+  IPv4 Address. . . . . . . . . . . : 172.25.255.238
+  Subnet Mask . . . . . . . . . . . : 255.255.0.0
+  Default Gateway . . . . . . . . . : 172.25.0.1
+</pre>
+
+<p>Infrormationerne fortæller at min computer har adressen: <span class="inl_cmd">172.25.255.238</span> og at routerens (defailt gateway) IP-adresse er 172.25.0.1</p>
+
+<h2>ping</h2>
+
+<p>Ved hjælp af ovenstående kommando ved vi nu at computerens netværkskort er konfigureret. Men vi ved reelt ikke om den er på nettet. For at finde ud af det anvender vi <span class="inl_cmd">ping</span></p>
+
+<table class="_">
+	<thead>
+		<tr>
+			<th>Kommando Mac</th>
+			<th>Kommando Windows</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>ping dr.dk</td>
+			<td>ping dr.dk -t</td>
+		</tr>
+		<tr>
+			<td colspan="2">Begge kommandoer afsluttes med <kbd>Ctrl</kbd>+<kbd>c</kbd></td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Herunder ser du output fra en kørsel på min PC.</p>
+
+<pre class="black">
+C:\Users\ThomasJensen>ping dr.dk -t
+
+Pinging dr.dk [159.20.6.38] with 32 bytes of data:
+Reply from 159.20.6.38: bytes=32 time=6ms TTL=251
+Reply from 159.20.6.38: bytes=32 time=6ms TTL=251
+Reply from 159.20.6.38: bytes=32 time=6ms TTL=251
+Reply from 159.20.6.38: bytes=32 time=6ms TTL=251
+Reply from 159.20.6.38: bytes=32 time=6ms TTL=251
+Reply from 159.20.6.38: bytes=32 time=6ms TTL=251
+Reply from 159.20.6.38: bytes=32 time=6ms TTL=251
+Reply from 159.20.6.38: bytes=32 time=6ms TTL=251
+Reply from 159.20.6.38: bytes=32 time=6ms TTL=251
+Reply from 159.20.6.38: bytes=32 time=6ms TTL=251
+Reply from 159.20.6.38: bytes=32 time=16ms TTL=251
+Reply from 159.20.6.38: bytes=32 time=6ms TTL=251
+Reply from 159.20.6.38: bytes=32 time=6ms TTL=251
+Reply from 159.20.6.38: bytes=32 time=6ms TTL=251
+Reply from 159.20.6.38: bytes=32 time=6ms TTL=251
+Reply from 159.20.6.38: bytes=32 time=6ms TTL=251
+
+Ping statistics for 159.20.6.38:
+    Packets: Sent = 16, Received = 16, Lost = 0 (0% loss),
+Approximate round trip times in milli-seconds:
+    Minimum = 6ms, Maximum = 16ms, Average = 6ms
+Control-C
+^C
+C:\Users\ThomasJensen>
+</pre>
+
+<p>Vi kan se at:</p>
+
+<ul class="none">
+	<li>Der er sendt og modtaget 16 pakker - dvs. ingen tab</li>
+	<li>Den korteste tid var 6 ms</li>
+	<li>Den længste var 16</li>
+</ul>
+
+<p>Vi kan altså konkludere at vi har adgang til internettet.</p>
+
+<h2>Data-flow</h2>
+
 <p>I al sin enkelhed angiver TCP/IP protokollen hvordan to enheder på et netværk kan kommunnikere, også selvom det ikke er samme protokol. Det kan illustreres på følgende måde:</p>
 
 <figure id="">
@@ -441,18 +550,274 @@
 
 <p>Wikipedia om TCP/IP: <a href="https://en.wikipedia.org/wiki/Internet_protocol_suite" target="_blank">https://en.wikipedia.org/wiki/Internet_protocol_suite</a></p>
 
-<h2>IP-adresser</h2>
+<details>
 
-<p>IP-adresser består af 4 tal, mellem 0 og 255 adskilt af punktummer. Det kan f.eks. være  <span class="inl_cmd">152.115.53.68</span> (også adressen på folketingets web-server <a href="http://152.115.53.68" target="_blank">www.ft.dk</a>). Danmarks Radio (<a href="http:\\159.20.6.38" target="_blank">www.dr.dk</a>) har således IP-adressen: <span class="inl_cmd">159.20.6.38</span>.</p>
+	<summary>En mere uddybende illustration</summary>
+
+	<span class="afsnit">Dataflow</span>
+
+	<p>Herunder er der et diagram der viser hvordan data kommer fra en computer til en anden. Afsendercomputeren sender data igennem <span class="inl_cmd">TCP/IP</span>-protokollen. I det pakkerne kommer ud på lokalnettet finder de ud af modtageren findes på et andet netværk.</p>
+
+	<figure id="">
+
+		<img class="p80" src="images/network_TCPIP_Dataflow.svg" alt="" title="" />
+
+		<figcaption></figcaption>
+
+	</figure>
+
+	<p>For at få adgang til det andet netværk bliver pakkerne ledt igennem routeren ud på internettet, hvor der er DNS-servere der ved hvor den router der giver adgang til modtagercomputerens netværk er. Her bliver pakkerne sendt hen, for at modtager-routeren kan sende pakkerne videre til modtageren. Her bliver data fra <span class="inl_cmd">TCP/IP</span> pakkerne gendannet.</p>
+
+</details>
+
+<h2>Private netværk</h2>
+
+<p>Som en del af <span class="inl_cmd">IPv4</span> specifikationen er der lavet nogle netværksadresser der er forbeholdt private netværk. Det specielle ved private netværk er, at IP-adresserne i netværket ikke kan routes. Det betyder, at en IP-adresse der tilhører et privat netværk ikke kan tilgås fra <span class="inl_cmd">WAN</span> siden af et netværk. De private netværk er:</p>
+
+<table id="">
+	<thead>
+		<tr>
+			<th>Version</th>
+			<th>Netværk</th>
+			<th>Netværks <br/>bit</th>
+			<th>Antal IP-adresser</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>IPv4</td>
+			<td>10.0.0.0/8</td>
+			<td>24</td>
+			<td><span class="math">\( 2^{24}  = 16,777,216 \)</span></td>
+		</tr>
+		<tr>
+			<td>IPv4</td>
+			<td>172.16.0.0/12</td>
+			<td>20</td>
+			<td><span class="math">\( 2^{20} = 1,048,576 \)</span></td>
+		</tr>
+		<tr>
+			<td>IPv4</td>
+			<td>192.168.0.0/16</td>
+			<td>16</td>
+			<td><span class="math">\( 2^{16} = 65,536 \)</span></td>
+		</tr>
+		<tr>
+			<td>IPv6</td>
+			<td>FC00::/7</td>
+			<td>121</td>
+			<td><span class="math">\( 2^{121} = 2,658 \cdot 10^{36} \)</span></td>
+		</tr>
+	</tbody>
+</table>
+
+<p>IP-adresserne i et privat netværk er usynlige fra <span class="inl_cmd">WAN</span>-siden, og kræver at derer en router med <span class="inl_cmd">NAT</span> ( <span class="bold">N</span>etwork <span class="bold">A</span>ddress <span class="bold">T</span>ranslation ). <span class="inl_cmd">NAT</span> funktionen gør, at routeren har en tabel, hvor den holder styr på hvilke IP-adresser på <span class="inl_cmd">LAN</span> siden der har kontakt med hvilke IP-adresser på <span class="inl_cmd">WAN</span> siden.</p>
+
+<p>Du kan læse mere om IPv4 her: <a href="http://en.wikipedia.org/wiki/IPv4" target="_blank">http://en.wikipedia.org/wiki/IPv4</a></p>
+
+<details>
+
+	<summary>Låste IP-adresser</summary>
+
+<p>I både IPv4 og IPv6 er der nogle adresser der er låst til nogle helt specifikke formål anvendelse. Kig i skemaet herunder</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>IPv4</th>
+			<th>IPv6</th>
+			<th>Beskrivelse</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><span class="inl_cmd">127.0.0.1/8</span></td>
+			<td><span class="inl_cmd">::1/128</span></td>
+			<td>Denne adresse kaldes <span class="inl_cmd">Loopback</span>. Det fungerer som et virtuel netværkskort, som den lokale computer kan anvende til interne <span class="inl_cmd">TCP/IP</span> funktioner </td>
+		</tr>
+		<tr>
+			<td><span class="inl_cmd">169.254.0.0/16</span></td>
+			<td><span class="inl_cmd">FE80::/10</span></td>
+			<td>Denne adresse kaldes <span class="inl_cmd">Lokal Link</span>. Hvis netværkskortet ikke får en IP-adresse fra netværket eller ikke er konfigureret korrekt vil <span class="inl_cmd">IPv4</span> sørge for at give netkortet en vilkårlig adresse i dette netværk</td>
+		</tr>
+		<tr>
+			<td><span class="inl_cmd">10.0.0.0/8</span><br/>
+			<span class="inl_cmd">172.16.0.0/12</span><br/>
+			<span class="inl_cmd">192.168.0.0/16</span></td>
+			<td><span class="inl_cmd">FC00::/7</span></td>
+			<td>Private netværk (se ovenfor)</td>
+		</tr>
+		<tr>
+			<td>n/a</td>
+			<td><span class="inl_cmd">::FFFF:0:0/96</span></td>
+			<td>Denne <span class="inl_cmd">IPv6</span>-adresse indeholder en <span class="inl_cmd">IPv4</span>-adresse. På denne måde sikrer man sig at netværk der stadig kører med <span class="inl_cmd">IPv4</span> er tilgængelige når <span class="inl_cmd">IPv6</span> slår helt igennem</td>
+		</tr>
+		<tr>
+			<td><span class="inl_cmd">192.0.2.0/24</span><br/>
+			<span class="inl_cmd">198.51.100.0/24</span><br/>
+			<span class="inl_cmd">203.0.113.0/24</span></td>
+			<td><span class="inl_cmd">2001:0DB8::/32</span></td>
+			<td>Disse IP-adresser anbefales til dokumentation.</td>
+		</tr>
+	</tbody>
+</table>
+
+</details>
 
 
-<p>Grunden til de "mystiske" tal er, at de kommer fra binære værdier, som er computerens sprog. Helt konkret består en IP-adresse af 4 binære oktetter - altså 4 binære tal med 8 cifre i hver. Således er <span class="inl_cmd">152.115.53.68</span> det samme som <span class="inl_cmd">10011000.01110011.00110101.01000100</span>. På den måde er den mindst værdi altså <span class="inl_cmd">0</span> (<span class="inl_cmd">00000000</span>)og den største 255 (<span class="inl_cmd">11111111</span>). Grunden til at vi angiver IP-adresser ved hjælp af 4 decimalværdier er simpelthen fordi de er <span class="inl_cmd">menneskelæselige</span>.</p>
+<h1>DNS</h1>
+
+<p>DNS står for <span class="inl_cmd"><b>D</b>omain <b>N</b>ame</span> <b>S</b>ystem, og er en tjeneste som TCP/IP netværk bruger til at slå adresser op i. Ofte vil man kalde det en DNS-server, da der også findes servere der kun laver dette.</p>
+
+<p>Når en router ikke ved hvor den skal sende en pakke hen, spørger den en DNS-server. Hvis DNS serveren kender adressen får routeren adressen, så den kan sende pakken rigtigt afsted. Kender DNS-serveren ikke modtageren spørger den andre DNS-servere. På den måde kan en DNS hele tiden blive klogere på nettets opbygning.</p>
+
+<p>Ofte vil man i netværk anvende nogle af de store firmaers DNS-servere, f.eks. Google, som hedder <span class="inl_cmd">8.8.8.8</span> og <span class="inl_cmd">8.8.4.4</span>.</p>
+
+<h2>DNS opslag</h2>
+
+<p>Alle enheder på Internettet har som sagt en unik IP adresse. For at skabe forbindelse til en af disse forbindelser skal datapakkerne kende ruten. Her vil jeg gennemgå hvordan din router finder frem til websiden www.dr.dk.</p>
+
+<p>Systemet er bygget op af niveauer af DNS servere:</p>
+
+<ul class="none fat_li">
+	<li>Root DNS Server</li>
+	
+		<p>Root DNS Servere holder styr på de forskelle "top level" domæner også kaldet TLD. Det kan f.eks. være:</p>
+		
+		<ul class="none">
+			<li>.dk</li>
+			<li>.com</li>
+			<li>.org</li>
+		</ul>
+		
+		<p>Du kan finde en liste over alle top level domæner her: <a href="https://www.iana.org/domains/root/db" target="_blank">https://www.iana.org/domains/root/db</a>.</p>
+	
+	<li>Top Level DNS server (TLD)</li>
+	
+		<p>TLD holder styr på de forskellige Second Level domæner (SLD). Det kan f.eks. være:</p>
+		
+		<ul class="none">
+			<li>vidas.dk</li>
+			<li>google.com</li>
+			<li>wikipedia.org</li>
+		</ul>
+	
+	<li>Second Level DNS Server (SLD)</li>
+	
+		<p>SLD holder styr på sub domænerne. Det kan f.eks. være:</p>
+		
+		<ul class="none">
+			<li>www.vidas.dk</li>
+			<li>www.google.com</li>
+			<li>www.wikipedia.org</li>
+		</ul>
+</ul>
+
+<p>Så første gang du efterspørger www.dr.dk.</p>
+
+<ul class="none">
+	<li>Root Level DNS viser hen til <span class="inl_cmd">.dk</span>'s TLD </li>
+	<li>TLD viser hen til <span class="inl_cmd">dr.dk</span>'s SLD</li>
+	<li>SLD viser hen til <span class="inl_cmd">www.dr.dk</span> serveren</li>
+</ul>
+
+<p></p>
+
+<p>Herunder er DNS systemet vist grafisk</p>
+
+<p></p>
+
+<figure id="">
+
+	<img class="p70" src="images/network_DNS_resolution.svg" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Når vi f.eks. tager en adresse som <span class="inl_cmd">www.dr.dk/nyheder</span>, så angiver det som kommer før skråstregen (<span class="inl_cmd">/</span>) den del som DNS systemet tager sig af. <span class="inl_cmd">nyheder</span> er noget som bliver admistreret lokal af Danmarks Radio.</p>
+
+<p>Så nettet læser reelt ovenstående adresse som: <span class="inl_cmd">.dk.dr.www</span>, og webserveren giver adgang til mappen <span class="inl_cmd">nyheder</span>.</p>
+
+<p>Fordelen ved dette system er, at hvis man har en lokal DNS, så kan den efterhånden huske hvor de forskellige domæner er henne. På den måde behøver man ikke at gå helt ned til Root Level DNS hver gang.</p>
+
+<h2>Administration af domæner</h2>
+
+<p>Top level domænener bliver bliver organiseret af en non-profit organistation der hedder <a href="https://www.icann.org/" target="_blank">ICANN</a> (<b>I</b>nternet <b>C</b>orporation for <b>A</b>ssigned <b>N</b>ames and <b>N</b>umbers).</p>
+
+<p>De danske domæner bliver administreret af <a href="https://www.dk-hostmaster.dk/" target="_blank">.dk hostmaster</a>. Her kan man tjekke om et domænenavn er ledigt eller informationer om ejeren af domænet.</p>
 
 
-<p>I dag arbejder man med to versioner af TCP/IP: IPv4 og IPv6. IPv4 er den "gamle" protokol, som har det problem, at man er løbet tør for unikke IP-adresser, da den "kun" har <span class="math">\( 2^{32} = 4,3 \cdot 10^9 \)</span> (milliarder) selvstændige adresser. IPv6 har til sammenligning <span class="math">\( 2^{128} = 3,4 \cdot 10^{38} \)</span> mulige kombinationer.</p>
 
 
-<h2>TCP/IP protokollen</h2>
+
+<p>Mere om topologier: <a href="https://en.wikipedia.org/wiki/Network_topology" target="_blank">https://en.wikipedia.org/wiki/Network_topology</a></p>
+
+<h1>TCP/IP uddybet</h1>
+
+
+<p>Netværk er en kompliceret størrelse, og selvom <span class="inl_cmd">TCP/IP</span>-modellen er den der anvendes på Internettet, så er der en anden model, som bliver anvendt meget. Bl.a. af Cisco, som er storleverandør af netværksudstyr. De anvender OSI modellen ( <b>O</b>pen <b>S</b>ystems <b>I</b>nterconnection ) som arbejder med 7 lag.</p>
+
+<p>Nedestående skema er en modificeret udgave af: <a href="http://en.wikipedia.org/wiki/OSI_model" target="_blank">http://en.wikipedia.org/wiki/OSI_model</a></p>	
+
+<table class="">
+	<thead>
+
+		<tr>
+			<th>Lag</th>
+			<th colspan="2">OSI <br/>Open Systems Interconnection</th>
+			<th>TCP/IP <br/>RFC 1122 Internet STD3</th>
+			<th>RFC871 <br/>Arpanet ref model</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td rowspan="4">Værts lag</td>
+			<td>7</td>
+			<td>Application</td>
+			<td rowspan="3"><br/><br/>Applikation</td>
+			<td rowspan="3">Applikation/Proces</td>
+		</tr>
+		<tr>
+			<td>6</td>
+			<td>Presentation</td>
+
+		</tr>
+		<tr>
+			<td>5</td>
+			<td>Session</td>
+
+		</tr>
+		<tr>
+			<td>4</td>
+			<td>Transport</td>
+			<td>Transport</td>
+			<td rowspan="2">Host-to-Host</td>
+		</tr>
+		<tr>
+			<td rowspan="3">Medie lag</td>
+			<td>3</td>
+			<td>Network</td>
+			<td>Internet</td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>Data Link</td>
+			<td>Link</td>
+			<td rowspan="2">Network Interface</td>
+		
+		</tr>
+		<tr>
+			<td>1</td>
+			<td>Physical</td>
+			<td>-- n/a --</td>
+		</tr>
+	</tbody>
+</table>
+
+<p><a href="http://en.wikipedia.org/wiki/Internet_protocol_suite#cite_note-21" target="_blank">http://en.wikipedia.org/wiki/Internet_protocol_suite#cite_note-21</a></p>
+
+<h2>Lagene</h2>
 
 <p>TCP/IP protokollen er opbygget af 4 lag, som beskriver hvordan netværket skal fungere:</p>
 
@@ -545,184 +910,6 @@
 
 <p>Du kan læse mere om IPv4 her: <a href="http://en.wikipedia.org/wiki/IPv4" target="_blank">http://en.wikipedia.org/wiki/IPv4</a></p>
 
-
-
-<!--
-<h2>Låste IP-addresser</h2>
-
-<p>I både IPv4 og IPv6 er der nogle adresser der er låst til nogle helt specifikke formål anvendelse. Kig i skemaet herunder</p>
-
-<table class="">
-	<thead>
-		<tr>
-			<th>IPv4</th>
-			<th>IPv6</th>
-			<th>Beskrivelse</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td><span class="inl_cmd">127.0.0.1/8</span></td>
-			<td><span class="inl_cmd">::1/128</span></td>
-			<td>Denne adresse kaldes <span class="inl_cmd">Loopback</span>. Det fungerer som et virtuel netværkskort, som den lokale computer kan anvende til interne <span class="inl_cmd">TCP/IP</span> funktioner </td>
-		</tr>
-		<tr>
-			<td><span class="inl_cmd">169.254.0.0/16</span></td>
-			<td><span class="inl_cmd">FE80::/10</span></td>
-			<td>Denne adresse kaldes <span class="inl_cmd">Lokal Link</span>. Hvis netværkskortet ikke får en IP-adresse fra netværket eller ikke er konfigureret korrekt vil <span class="inl_cmd">IPv4</span> sørge for at give netkortet en vilkårlig adresse i dette netværk</td>
-		</tr>
-		<tr>
-			<td><span class="inl_cmd">10.0.0.0/8</span><br/>
-			<span class="inl_cmd">172.16.0.0/12</span><br/>
-			<span class="inl_cmd">192.168.0.0/16</span></td>
-			<td><span class="inl_cmd">FC00::/7</span></td>
-			<td>Private netværk (se ovenfor)</td>
-		</tr>
-		<tr>
-			<td>n/a</td>
-			<td><span class="inl_cmd">::FFFF:0:0/96</span></td>
-			<td>Denne <span class="inl_cmd">IPv6</span>-adresse indeholder en <span class="inl_cmd">IPv4</span>-adresse. På denne måde kan man indlejre <span class="inl_cmd">IPv4</span> netværk i  <span class="inl_cmd">IPv6</span> netværk.</td>
-		</tr>
-		<tr>
-			<td><span class="inl_cmd">192.0.2.0/24</span><br/>
-			<span class="inl_cmd">198.51.100.0/24</span><br/>
-			<span class="inl_cmd">203.0.113.0/24</span></td>
-			<td><span class="inl_cmd">2001:0DB8::/32</span></td>
-			<td>Disse IP-adresser anbefales til dokumentation.</td>
-		</tr>
-	</tbody>
-</table>
-
-<h2>Netmaske</h2>
-
-<p>Netmasken beskriver størrelsen på netværket. Prøv at se nedestående skema, hvor <span class="bold"><span class="red">N</span></span> står for de bits netværket er tildelt og <span class="bold"><span class="blue">K</span></span> for de bits der tilhører klienterne.</p>
-
-<table id="">
-	<thead>
-		<tr>
-			<th colspan="2">Netmaske</th>
-			<th>Oversigt</th>
-			<th>Antal <br/>adresser</th>
-			<th>Mulige <br/>hosts</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>/8</td>
-			<td>255.0.0.0</td>
-			<td><span class="red">NNNNNNNN</span> . <span class="blue">KKKKKKKK</span> . <span class="blue">KKKKKKKK</span> . <span class="blue">KKKKKKKK</span></td>
-			<td><span class="math">\( 2^{24} = 16.777.216 \)</span></td>
-			<td><span class="math">\( 16.777.214 \)</span></td>
-		</tr>
-		<tr>
-			<td>/16</td>
-			<td>255.255.0.0</td>
-			<td><span class="red">NNNNNNNN</span> . <span class="red">NNNNNNNN</span> . <span class="blue">KKKKKKKK</span> . <span class="blue">KKKKKKKK</span></td>
-			<td><span class="math">\( 2^{16} = 65.536 \)</span></td>
-			<td><span class="math">\( 65.534 \)</span></td>
-		</tr>
-		<tr>
-			<td>/24</td>
-			<td>255.255.255.0</td>
-			<td><span class="red">NNNNNNNN</span> . <span class="red">NNNNNNNN</span> . <span class="red">NNNNNNNN</span> . <span class="blue">KKKKKKKK</span></td>
-			<td><span class="math">\( 2^8 = 256 \)</span></td>
-			<td><span class="math">\( 254 \)</span></td>
-		</tr>
-	</tbody>
-</table>
-
-<p>Forskellen mellem de 3 forskellige netmasker er, antallet af mulige <span class="inl_cmd">klienter</span> på netværket. Man anvender netmasken til at subnette ( segmenterer / opdele ) netværket, for at mindske datamængden, og for at kunne styre adgang og rettigheder til og fra maskinerne.</p>	
-
--->
-
-
-<h1>DNS</h1>
-
-<p>DNS står for <span class="inl_cmd"><b>D</b>omain <b>N</b>ame</span> <b>S</b>ystem, og er en tjeneste som TCP/IP netværk bruger til at slå adresser op i. Ofte vil man kalde det en DNS-server, da der også findes servere der kun laver dette.</p>
-
-<p>Når en router ikke ved hvor den skal sende en pakke hen, spørger den en DNS-server. Hvis DNS serveren kender adressen får routeren adressen, så den kan sende pakken rigtigt afsted. Kender DNS-serveren ikke modtageren spørger den andre DNS-servere. På den måde kan en DNS hele tiden blive klogere på nettets opbygning.</p>
-
-<p>Ofte vil man i netværk anvende nogle af de store firmaers DNS-servere, f.eks. Google, som hedder <span class="inl_cmd">8.8.8.8</span> og <span class="inl_cmd">8.8.4.4</span>.</p>
-
-<h2>DNS opslag</h2>
-
-<p>Alle enheder på Internettet har som sagt en unik IP adresse. For at skabe forbindelse til en af disse forbindelser skal datapakkerne kende ruten. Her vil jeg gennemgå hvordan din router finder frem til websiden www.dr.dk.</p>
-
-<p>Systemet er bygget op af niveauer af DNS servere:</p>
-
-<ul class="none fat_li">
-	<li>Root DNS Server</li>
-	
-		<p>Root DNS Servere holder styr på de forskelle "top level" domæner også kaldet TLD. Det kan f.eks. være:</p>
-		
-		<ul class="none">
-			<li>.dk</li>
-			<li>.com</li>
-			<li>.org</li>
-		</ul>
-		
-		<p>Du kan finde en liste over alle top level domæner her: <a href="https://www.iana.org/domains/root/db" target="_blank">https://www.iana.org/domains/root/db</a>.</p>
-	
-	<li>Top Level DNS server (TLD)</li>
-	
-		<p>TLD holder styr på de forskellige Second Level domæner (SLD). Det kan f.eks. være:</p>
-		
-		<ul class="none">
-			<li>vidas.dk</li>
-			<li>google.com</li>
-			<li>wikipedia.org</li>
-		</ul>
-	
-	<li>Second Level DNS Server (SLD)</li>
-	
-		<p>SLD holder styr på sub domænerne. Det kan f.eks. være:</p>
-		
-		<ul class="none">
-			<li>www.vidas.dk</li>
-			<li>www.google.com</li>
-			<li>www.wikipedia.org</li>
-		</ul>
-</ul>
-
-<p>Så første gang du efterspørger www.dr.dk.</p>
-
-<ul class="none">
-	<li>Root Level DNS viser hen til <span class="inl_cmd">.dk</span>'s TLD </li>
-	<li>TLD viser hen til <span class="inl_cmd">dr.dk</span>'s SLD</li>
-	<li>SLD viser hen til <span class="inl_cmd">www.dr.dk</span> serveren</li>
-</ul>
-
-<p></p>
-
-<p>Herunder er DNS systemet vist grafisk</p>
-
-<p></p>
-
-<figure id="">
-
-	<img class="p70" src="images/network_DNS_resolution.svg" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-
-<p>Når vi f.eks. tager en adresse som <span class="inl_cmd">www.dr.dk/nyheder</span>, så angiver det som kommer før skråstregen (<span class="inl_cmd">/</span>) den del som DNS systemet tager sig af. <span class="inl_cmd">nyheder</span> er noget som bliver admistreret lokal af Danmarks Radio.</p>
-
-<p>Så nettet læser reelt ovenstående adresse som: <span class="inl_cmd">.dk.dr.www</span>, og webserveren giver adgang til mappen <span class="inl_cmd">nyheder</span>.</p>
-
-<p>Fordelen ved dette system er, at hvis man har en lokal DNS, så kan den efterhånden huske hvor de forskellige domæner er henne. På den måde behøver man ikke at gå helt ned til Root Level DNS hver gang.</p>
-
-<h2>Administration af domæner</h2>
-
-<p>Top level domænener bliver bliver organiseret af en non-profit organistation der hedder <a href="https://www.icann.org/" target="_blank">ICANN</a> (<b>I</b>nternet <b>C</b>orporation for <b>A</b>ssigned <b>N</b>ames and <b>N</b>umbers).</p>
-
-<p>De danske domæner bliver administreret af <a href="https://www.dk-hostmaster.dk/" target="_blank">.dk hostmaster</a>. Her kan man tjekke om et domænenavn er ledigt eller informationer om ejeren af domænet.</p>
-
-
-
-
-
-<p>Mere om topologier: <a href="https://en.wikipedia.org/wiki/Network_topology" target="_blank">https://en.wikipedia.org/wiki/Network_topology</a></p>
 
 
 
