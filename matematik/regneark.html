@@ -111,6 +111,27 @@
 
 <p>* Hvis man indtaster de danske funktioner i Google Sheets, så bliver de omdannet til de engelske funktioner.</p>
 
+<h1>Fejlmeddelelser</h1>
+
+<p>Når man arbejder med regneark sker der at man laver fejl i sine indtastninger og beregninger. Excel og andre regneark anvender primært to fejlmeddelelser til at vise hvad type fejl det er.</p>
+
+<ul class="fat_li none">
+	<li>#VÆRDI!</li>
+	
+		<p>Denne fejl betyder at formlen fejler. Det kan f.eks. være hvis du forsøger at lægget et tal og en tekst sammen</p>
+		
+		<p>Eks:</p>
+		
+		<p>1 + F = #VÆRDI!</p>
+	
+	<li>#NAME?</li>
+	
+		<p>Denne fejl betyder at der er fejl i funktionen du anvender.</p>
+	
+		<p>Eks:</p>
+	
+</ul>
+
 <h1>Logiske funktioner</h1>
 
 <p>Logiske funktioner anvendes til at undersøge felter ud fra nogle betingelser. Hertil anvender man relationer</p>
@@ -202,15 +223,16 @@
 
 
 
+
 <h2>HVIS()</h2>
 
 <p><b>Anvendelse (excel/Calc):</b></p>
 
-<code class="cmd">HVIS(Betingelse;Værdi_for_sand;værdi_for_falsk)</code>
+<code class="cmd">HVIS( *betingelse* ; *Værdi_for_sand* ; *værdi_for_falsk* )</code>
 
 <p><b>Anvendelse (Sheets): </b></p>
 
-<code class="cmd">IF(Betingelse;Værdi_for_sand;værdi_for_falsk)</code>
+<code class="cmd">IF( *betingelse* ; *Værdi_for_sand* ; *værdi_for_falsk* ) </code>
 
 <p>Bruges til at undersøge om en betingelse er opfyldt. Man vælger selv om det skal skrives ved hjælp af et tal eller en streng</p>
 
@@ -228,7 +250,7 @@
 
 <p><b>Anvendelse (excel/Calc): </b></p>
 
-<code class="cmd">HVISER(betingelse1;værdi for sand;betingelse2;værdi for sand;….)</code>
+<code class="cmd">HVISER( *betingelse1* ; *værdi for sand* ; *betingelse2* ; *værdi for sand* ;….)</code>
 
 <blockquote>
 	<p>
@@ -250,7 +272,7 @@
 
 <p><b>Anvendelse: </b></p>
 
-<code class="cmd">ELLER(betingelse1;betingelse2;...)</code>
+<code class="cmd">ELLER( *betingelse1* ; *betingelse2* ;...)</code>
 
 <p>Undersøger om en række betingelser er sande. Hvis blot en af dem er sande vil svarer funktionen tilbage med <b>SAND</b> ellers <b>FALSK</b>.</p>
 
@@ -262,7 +284,7 @@
 
 <p><b>Anvendelse: </b></p>
 
-<code class="cmd">og(betingelse1;betingelse2;...)</code>
+<code class="cmd">og( *betingelse1* ; *betingelse2* ;...)</code>
 
 <p>Undersøger om alle givne betingelser er sande. Hvis de alle er sande vil svarer funktionen tilbage med <span class="bold">SAND</span> ellers <span class="bold">FALSK</span>. </p>
 
@@ -270,14 +292,58 @@
 
 <code class="cmd">OG(A1=”lille”;A2=3;A3=”barn”)</code>
 
+<h2>Find tekststreng</h2>
 
-<h2>ER.TAL()</h2>
+<p>For at finde en tekststreng skal man bruge funktionerne <span class="inl_cmd">ER.TAL()</span> og <span class="inl_cmd">FIND()</span>.</p>
+
+<h3>FIND()</h3>
+
+<p>Denne funktion finder ud af hvor en tekststreng står i et felt. Forestil dig at vi har navnet <span class="inl_cmd">Allan Hansen</span> i feltet <span class="inl_cmd">A1</span>:</p>
+
+<table class="_">
+	<thead>
+		<tr>
+			<th>Funktion</th>
+			<th></th>
+			<th>Position</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>FIND("A";A1)</td>
+			<td><b>A</b>llan</td>
+			<td>1</td>
+		</tr>
+		<tr>
+			<td>FIND("a";A1)</td>
+			<td>All<b>a</b>n</td>
+			<td>4</td>
+		</tr>
+		<tr>
+			<td>FIND("s";A1)</td>
+			<td>Allan Han<b>s</b>en</td>
+			<td>10</td>
+		</tr>
+		<tr>
+			<td>FIND("ø";A1)</td>
+			<td>Allan Hansen</td>
+			<td>#VÆRDI!</td>
+		</tr>
+	</tbody>
+</table>
+
+
+
+<h3>ER.TAL()</h3>
+
+<p>Funktionen undersøger om der står et tal i </p>
+
 
 <p>Denne funktion anvendes til at finde ud af om en værdi/streng findes i et felt ved hjælp af <span class="inl_cmd">FIND()</span>, og svarer tilbage med <span class="inl_cmd">SAND/FALSK</span>.</p>
 
 <p><b>Anvendelse (excel/Calc): </b></p>
 
-<code class="cmd">ER.TAL(find(tekststreng/værdi;felt))</code>
+<code class="cmd">ER.TAL( FIND( *tekststreng/værdi* ; *felt* ) )</code>
 
 <p><b>Eksempel: </b></p>
 
