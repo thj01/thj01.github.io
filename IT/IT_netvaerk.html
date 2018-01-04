@@ -81,12 +81,16 @@
 			<td><b>L</b>ocal <b>A</b>rea <b>N</b>etwork</td>
 		</tr>
 		<tr>
-			<td>WAN</td>
-			<td><b>W</b>ide <b>A</b>rea <b>N</b>etwork</td>
+			<td>VLAN</td>
+			<td><b>V</b>irtual <b>A</b>rea <b>N</b>etwork <span class="bold">N</span>etwork</td>
 		</tr>
 		<tr>
 			<td>WLAN</td>
 			<td><b>W</b>ireless <b>A</b>rea <b>N</b>etwork <span class="bold">N</span>etwork</td>
+		</tr>
+		<tr>
+			<td>WAN</td>
+			<td><b>W</b>ide <b>A</b>rea <b>N</b>etwork</td>
 		</tr>
 		<tr>
 			<td>SAN</td>
@@ -115,11 +119,56 @@
 
 <p>Læg mærke til at der sidder en router mellem WAN og LAN, men også at der sidder en switch før routeren. Det smarte ved TCP/IP er netop, at den beskytter den interne trafik, og at</p>
 
+<h2>VLAN, WLAN... og LAN</h2>
+
+<p>Som vi så ovenfor er LAN egentlig blot en overordnet betegnelse for et netværk der er adskilt fra et større netværk. Der findes så tre forskellige LAN typer:</p>
+
+<p>LAN er den overordnede betegnelse for hele netværket, og det er underforstået at:</p>
+
+<ul class="none">
+	<li>Der er direkte adgang til Internettet fra dette netværk</li>
+	<li>Det er kablet</li>
+</ul>
+
+<p>LAN kan være <span class="inl_cmd">segmenteret</span> (inddelt) i flere underliggene netværk der er adskilt af <span class="inl_cmd">routere</span>. Disse segmenterede netværk kaldes for VLAN og WLAN.</p>
+
+<p>Det giver den fordel at man kan lave små afgrænsede netværk der er afgrænset af funktioner, afdelinger, tjenester osv. F.eks. kan det være en fordel at have printerne stående i sit eget VLAN, da de har det med at "snakke" meget på netværket. F.eks. fortælle at de er tilgængelige, om de har toner osv.</p>
+
+<p>Man kan også lukke lokaler og afdelinger inde i sådanne netværk, og det kan både give en ekstra grad af sikkerhed, men også gøre det nemmere at administrere store netværk. For systemadministratoren får man altså et overblik (se nedenstående eksempel)</p>
+
+<table class="_">
+	<thead>
+		<tr>
+			<th>LAN</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>VLAN1/WLAN1</td>
+			<td>Lærere</td>
+		</tr>
+		<tr>
+			<td>VLAN2/WLAN2</td>
+			<td>Lokale B1-b4</td>
+		</tr>
+		<tr>
+			<td>VLAN3/WLAN3</td>
+			<td>Lokal B5-B8</td>
+		</tr>
+		<tr>
+			<td>VLAN4/WLAN4</td>
+			<td>Administration</td>
+		</tr>
+	</tbody>
+</table>
 
 
-<h2>WLAN og SAN</h2>
+<h2>SAN</h2>
 
-<p>Disse to er egentlig bare afarter af <span class="inl_cmd">LAN</span>, hvor <span class="inl_cmd">WLAN</span> beskriver trådløse netværk og <span class="inl_cmd">SAN</span> beskriver netværk der indeholder harddisk-arrays, som er servere der kun er beregnet til at opbevare data.</p>
+<p><span class="inl_cmd">SAN</span> beskriver netværk der indeholder harddisk-arrays, som er servere der kun er beregnet til at opbevare data. Ved at segmentere og lave et SAN netværk, kan man begrænse hvem der har adgang til det. Man kan f.eks. sørge for at det kun er enkelte maskiner på netværket (servere) der har adgang til SAN, og sætte resten af maskinerne på til at have adgang til serveren.</p>
+
+<p>Det gør det både nemmere at administrere adgangen og sikkerheden til netværket.</p>
 
 <h2>VPN</h2>
 
@@ -222,9 +271,9 @@
 	<li><b>Lag</b>: Internet</li>
 </ul>
 
-<p>Routeren sørger for at adskille og forbinde netværk, og den har to porte hvor en er konfigureret til LAN og den anden til WAN. Routeren ved med andre ord hvilke IP-adresser der tilhører LAN, og hvilke der ikke gør. Hvis Routeren ikke har en IP-adresse i tabellen sender den data videre ud til WAN.</p>
+<p>Routeren sørger for at adskille og skabe forbindelse mellem netværk, og den har to porte hvor en er konfigureret til LAN og den anden til WAN. Routeren ved med andre ord hvilke IP-adresser der tilhører LAN, og hvilke der ikke gør. Hvis Routeren ikke har en IP-adresse i tabellen sender den data videre ud til WAN.</p>
 
-<p>Der findes også IP-adresser der ikke kan routes hvilket vil sige IP-adresser som routeren ikke kan sende mellem sine porte. Disse kaldes <span class="inl_cmd">private netværk</span>. Ved at indsætte mange routere i sit netværk kan man altså lave mange private netværk ... i sit private netværk. Der kan altså indbygges ret høj sikkerhed bare ved hjælp af netværkets hardware</p>
+<p>I TCP/IP protokollen er der defineret nogle IP-adresser der ikke kan routes. Det betyder i praksis, at der er  IP-adresser som routeren ikke kan/vil sende mellem sine porte. Disse kaldes <span class="inl_cmd">private netværk</span>. Ved at indsætte mange routere i sit netværk kan man altså lave mange private netværk ... i sit private netværk. Der kan altså indbygges ret høj sikkerhed bare ved hjælp af netværkets hardware</p>
 
 <p>I denne tabel er de private netværks IP-adresser angivet, og <span class="inl_cmd">x</span> der kan indsættes tallene fra 0-255 på dets plads.</p>
 
@@ -265,6 +314,55 @@
 	</tbody>
 </table>
 
+
+<details>
+
+	<summary>Låste IP-adresser</summary>
+
+<p>I både IPv4 og IPv6 er der nogle adresser der er låst til nogle helt specifikke formål anvendelse. Kig i skemaet herunder</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>IPv4</th>
+			<th>IPv6</th>
+			<th>Beskrivelse</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><span class="inl_cmd">127.0.0.1/8</span></td>
+			<td><span class="inl_cmd">::1/128</span></td>
+			<td>Denne adresse kaldes <span class="inl_cmd">Loopback</span>. Det fungerer som et virtuel netværkskort, som den lokale computer kan anvende til interne <span class="inl_cmd">TCP/IP</span> funktioner </td>
+		</tr>
+		<tr>
+			<td><span class="inl_cmd">169.254.0.0/16</span></td>
+			<td><span class="inl_cmd">FE80::/10</span></td>
+			<td>Denne adresse kaldes <span class="inl_cmd">Lokal Link</span>. Hvis netværkskortet ikke får en IP-adresse fra netværket eller ikke er konfigureret korrekt vil <span class="inl_cmd">IPv4</span> sørge for at give netkortet en vilkårlig adresse i dette netværk</td>
+		</tr>
+		<tr>
+			<td><span class="inl_cmd">10.0.0.0/8</span><br/>
+			<span class="inl_cmd">172.16.0.0/12</span><br/>
+			<span class="inl_cmd">192.168.0.0/16</span></td>
+			<td><span class="inl_cmd">FC00::/7</span></td>
+			<td>Private netværk (se ovenfor)</td>
+		</tr>
+		<tr>
+			<td>n/a</td>
+			<td><span class="inl_cmd">::FFFF:0:0/96</span></td>
+			<td>Denne <span class="inl_cmd">IPv6</span>-adresse indeholder en <span class="inl_cmd">IPv4</span>-adresse. På denne måde sikrer man sig at netværk der stadig kører med <span class="inl_cmd">IPv4</span> er tilgængelige når <span class="inl_cmd">IPv6</span> slår helt igennem</td>
+		</tr>
+		<tr>
+			<td><span class="inl_cmd">192.0.2.0/24</span><br/>
+			<span class="inl_cmd">198.51.100.0/24</span><br/>
+			<span class="inl_cmd">203.0.113.0/24</span></td>
+			<td><span class="inl_cmd">2001:0DB8::/32</span></td>
+			<td>Disse IP-adresser anbefales til dokumentation.</td>
+		</tr>
+	</tbody>
+</table>
+
+</details>
 
 <h2>Firewall</h2>
 
@@ -669,101 +767,6 @@ C:\Users\ThomasJensen>
 	<p>For at få adgang til det andet netværk bliver pakkerne ledt igennem routeren ud på internettet, hvor der er DNS-servere der ved hvor den router der giver adgang til modtagercomputerens netværk er. Her bliver pakkerne sendt hen, for at modtager-routeren kan sende pakkerne videre til modtageren. Her bliver data fra <span class="inl_cmd">TCP/IP</span> pakkerne gendannet.</p>
 
 </details>
-
-<h2>Private netværk</h2>
-
-<p>Som en del af <span class="inl_cmd">IPv4</span> specifikationen er der lavet nogle netværksadresser der er forbeholdt private netværk. Det specielle ved private netværk er, at IP-adresserne i netværket ikke kan routes. Det betyder, at en IP-adresse der tilhører et privat netværk ikke kan tilgås fra <span class="inl_cmd">WAN</span> siden af et netværk. De private netværk er:</p>
-
-<table id="">
-	<thead>
-		<tr>
-			<th>Version</th>
-			<th>Netværk</th>
-			<th>Netværks <br/>bit</th>
-			<th>Antal IP-adresser</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>IPv4</td>
-			<td>10.0.0.0/8</td>
-			<td>24</td>
-			<td><span class="math">\( 2^{24}  = 16,777,216 \)</span></td>
-		</tr>
-		<tr>
-			<td>IPv4</td>
-			<td>172.16.0.0/12</td>
-			<td>20</td>
-			<td><span class="math">\( 2^{20} = 1,048,576 \)</span></td>
-		</tr>
-		<tr>
-			<td>IPv4</td>
-			<td>192.168.0.0/16</td>
-			<td>16</td>
-			<td><span class="math">\( 2^{16} = 65,536 \)</span></td>
-		</tr>
-		<tr>
-			<td>IPv6</td>
-			<td>FC00::/7</td>
-			<td>121</td>
-			<td><span class="math">\( 2^{121} = 2,658 \cdot 10^{36} \)</span></td>
-		</tr>
-	</tbody>
-</table>
-
-<p>IP-adresserne i et privat netværk er usynlige fra <span class="inl_cmd">WAN</span>-siden, og kræver at derer en router med <span class="inl_cmd">NAT</span> ( <span class="bold">N</span>etwork <span class="bold">A</span>ddress <span class="bold">T</span>ranslation ). <span class="inl_cmd">NAT</span> funktionen gør, at routeren har en tabel, hvor den holder styr på hvilke IP-adresser på <span class="inl_cmd">LAN</span> siden der har kontakt med hvilke IP-adresser på <span class="inl_cmd">WAN</span> siden.</p>
-
-<p>Du kan læse mere om IPv4 her: <a href="http://en.wikipedia.org/wiki/IPv4" target="_blank">http://en.wikipedia.org/wiki/IPv4</a></p>
-
-<details>
-
-	<summary>Låste IP-adresser</summary>
-
-<p>I både IPv4 og IPv6 er der nogle adresser der er låst til nogle helt specifikke formål anvendelse. Kig i skemaet herunder</p>
-
-<table class="">
-	<thead>
-		<tr>
-			<th>IPv4</th>
-			<th>IPv6</th>
-			<th>Beskrivelse</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td><span class="inl_cmd">127.0.0.1/8</span></td>
-			<td><span class="inl_cmd">::1/128</span></td>
-			<td>Denne adresse kaldes <span class="inl_cmd">Loopback</span>. Det fungerer som et virtuel netværkskort, som den lokale computer kan anvende til interne <span class="inl_cmd">TCP/IP</span> funktioner </td>
-		</tr>
-		<tr>
-			<td><span class="inl_cmd">169.254.0.0/16</span></td>
-			<td><span class="inl_cmd">FE80::/10</span></td>
-			<td>Denne adresse kaldes <span class="inl_cmd">Lokal Link</span>. Hvis netværkskortet ikke får en IP-adresse fra netværket eller ikke er konfigureret korrekt vil <span class="inl_cmd">IPv4</span> sørge for at give netkortet en vilkårlig adresse i dette netværk</td>
-		</tr>
-		<tr>
-			<td><span class="inl_cmd">10.0.0.0/8</span><br/>
-			<span class="inl_cmd">172.16.0.0/12</span><br/>
-			<span class="inl_cmd">192.168.0.0/16</span></td>
-			<td><span class="inl_cmd">FC00::/7</span></td>
-			<td>Private netværk (se ovenfor)</td>
-		</tr>
-		<tr>
-			<td>n/a</td>
-			<td><span class="inl_cmd">::FFFF:0:0/96</span></td>
-			<td>Denne <span class="inl_cmd">IPv6</span>-adresse indeholder en <span class="inl_cmd">IPv4</span>-adresse. På denne måde sikrer man sig at netværk der stadig kører med <span class="inl_cmd">IPv4</span> er tilgængelige når <span class="inl_cmd">IPv6</span> slår helt igennem</td>
-		</tr>
-		<tr>
-			<td><span class="inl_cmd">192.0.2.0/24</span><br/>
-			<span class="inl_cmd">198.51.100.0/24</span><br/>
-			<span class="inl_cmd">203.0.113.0/24</span></td>
-			<td><span class="inl_cmd">2001:0DB8::/32</span></td>
-			<td>Disse IP-adresser anbefales til dokumentation.</td>
-		</tr>
-	</tbody>
-</table>
-
-</details>
-
 
 <h1>DNS</h1>
 
