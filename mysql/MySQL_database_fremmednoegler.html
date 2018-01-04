@@ -45,7 +45,7 @@
 
 <p>Forestil dig en tabel med lærere, hvoraf nogle er mentorer og der er oprettet en selvstændig tabel der omhandler mentorer. For at undgå redundans vil man igennem normaliseringsprocessen sørge for at data kun står et sted, og derfor vil mentortabellen være afhængig af data i lærertabellen. Fremmednøglen forhindrer at man kan slettet en lærer i lærertabellen, hvis den bliver anvendt i mentortabellen. I denne guide vil vi oprette en fremmednøgle mellem de to tabeller <span class="inl_cmd">klasser_og_mentorer</span> og <span class="inl_cmd">lærere</span>. Herefter skal du selv oprette forbindelse mellem <span class="inl_cmd">klasse_og_elever</span> og <span class="inl_cmd">lærere</span>.</p>
 
-<p>For at man kan oprette relationer mellem tabeller kræver det at databeserne er af typen <span class="inl_cmd">InnoDB</span> (som er standard for MySQL), og at felterne der skal anvendes er indekseret. At et felt er indekseret betyder at MySQL kender til feltet og derfor kan danne relationer mellem kendte felter.</p>
+<p>For at man kan oprette relationer mellem tabeller kræver det at databaserne er af typen <span class="inl_cmd">InnoDB</span> (som er standard for MySQL), og at felterne der skal anvendes er indekseret. At et felt er indekseret betyder at MySQL kender til feltet og derfor kan danne relationer mellem kendte felter.</p>
 
 <p>Arbejdsprocessen er at man skal sørge for at alle felter der skal forbindes er indekseret. Dernæst skal man åbne designer vinduet og <span class="inl_cmd">forbinde</span> felterne med hinanden. Til sidst bør man </p>
 
@@ -73,7 +73,7 @@
 
 <p>Som du kan se er det kun feltet <span class="inl_cmd">Klasse</span> der er indekseret som <span class="inl_cmd">PRIMARY</span>.</p>
 
-<p>For at få feltet <span class="inl_cmd">Mentor</span> til at være indekseret, går du ud mod højre på linien og klikker på <span class="inl_cmd">Indeks</span>. I dette tilfælde er vinduet forstørret, så feltet står i menuen <span class="inl_cmd">Mere</span>.</p>
+<p>For at få feltet <span class="inl_cmd">Mentor</span> til at være indekseret, går du ud mod højre på linjen og klikker på <span class="inl_cmd">Indeks</span>. I dette tilfælde er vinduet forstørret, så feltet står i menuen <span class="inl_cmd">Mere</span>.</p>
 
 <figure id="">
 
@@ -128,7 +128,7 @@
 
 </figure>
 
-<p>Ved at holde musen henover ikonlinien til venstre kan du finde menuen <span class="inl_cmd">Opret relation</span>. Klik på den:</p>
+<p>Ved at holde musen hen over ikonlinjen til venstre kan du finde menuen <span class="inl_cmd">Opret relation</span>. Klik på den:</p>
 
 <figure id="">
 
@@ -148,7 +148,7 @@
 
 </figure>
 
-<p>Herefter skifter curserens beskrivelsesfelt til <span class="inl_cmd">Vælg Fremmednøgle</span>. Klik på feltet <span class="inl_cmd">klasse</span> i tabellen <span class="inl_cmd">klasse_og_mentorer</span>.</p>
+<p>Herefter skifter cursorens beskrivelsesfelt til <span class="inl_cmd">Vælg Fremmednøgle</span>. Klik på feltet <span class="inl_cmd">klasse</span> i tabellen <span class="inl_cmd">klasse_og_mentorer</span>.</p>
 
 
 <figure id="">
@@ -159,7 +159,7 @@
 
 </figure>
 
-<p>Når du har gjort det kommer der en blå boks frem. Her skal du vælge <span class="inl_cmd">RESTRICT</span> i begge felter. Det betyder at vi låser feltet med den referede nøgle, så det ikke kan slettes hvis der er forkomster af denne i fremmedtabellen.</p>
+<p>Når du har gjort det kommer der en blå boks frem. Her skal du vælge <span class="inl_cmd">RESTRICT</span> i begge felter. Det betyder at vi låser feltet med den refererede nøgle, så det ikke kan slettes hvis der er forekomster af denne i fremmedtabellen.</p>
 
 <figure id="">
 
@@ -198,7 +198,7 @@
 
 <h2>Test relationerne</h2>
 
-<p>For at teste om det virker går vi ind i tabellen <span class="inl_cmd">klasser_og_elever</span>, og forsøger på at slette en af mentorerne. Klik på menuen <span class="inl_cmd">Struktur</span> og vælg tabellen <span class="inl_cmd">klasser_og_elever</span>. Hefter vælger du <span class="inl_cmd">slet</span> i en af dine poster.</p>
+<p>For at teste om det virker går vi ind i tabellen <span class="inl_cmd">klasser_og_elever</span>, og forsøger på at slette en af mentorerne. Klik på menuen <span class="inl_cmd">Struktur</span> og vælg tabellen <span class="inl_cmd">klasser_og_elever</span>. Her efter vælger du <span class="inl_cmd">slet</span> i en af dine poster.</p>
 
 <figure id="">
 

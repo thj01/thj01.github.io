@@ -102,13 +102,13 @@
 	</tbody>
 </table>
 
-<p>For at præcisere dine tal kan man "låse" antallet af cifre ved at angive det i en parantes. F.eks. vil <span class="inl_cmd">SMALLINT(4)</span> gøre, at feltet maksimalt kan indeholde 4 cifre. Det eneste du skal være opmærksom på er, at man ikke kan overskride antallet af cifre i den type man anvender f.eks: <span class="inl_cmd">TINYINT(4)</span>, da typens maksimale værdi er <span class="inl_cmd">255</span>.</p>
+<p>For at præcisere dine tal kan man "låse" antallet af cifre ved at angive det i en parentes. F.eks. vil <span class="inl_cmd">SMALLINT(4)</span> gøre, at feltet maksimalt kan indeholde 4 cifre. Det eneste du skal være opmærksom på er, at man ikke kan overskride antallet af cifre i den type man anvender f.eks: <span class="inl_cmd">TINYINT(4)</span>, da typens maksimale værdi er <span class="inl_cmd">255</span>.</p>
 
 <p>Læs mere om heltal: <a href="http://dev.mysql.com/doc/refman/5.7/en/integer-types.html" target="_blank">http://dev.mysql.com/doc/refman/5.7/en/integer-types.html</a></p>
 
 <h2>Decimaltal</h2>
 
-<p>Der findes to metoder til at anvende decimaltal. Den ene er binær og den anden er baseret på 10 talssystemet. Grunden til at man anvender to forskellige er, den hastighed systemet kan anvende tallene med og belastningen af CPU'en. Computeren er hurtigere til at regne med binære tal end tal fra 10 talssystemet. Se nedestående skema:</p>
+<p>Der findes to metoder til at anvende decimaltal. Den ene er binær og den anden er baseret på 10 talsystemet. Grunden til at man anvender to forskellige er, den hastighed systemet kan anvende tallene med og belastningen af CPU'en. Computeren er hurtigere til at regne med binære tal end tal fra 10 talsystemet. Se nedenstående skema:</p>
 
 <table class="">
 	<thead>
@@ -143,7 +143,7 @@
 			<td>-</td>
 			<td>10</td>
 			<td>65 cifre, maks. 30 decimaler</td>
-			<td>Financiel</td>
+			<td>Finansiel</td>
 			<td>Eksakt</td>
 		</tr>
 	</tbody>
@@ -182,12 +182,12 @@
 
 <h2>Varchar</h2>
 
-<p><span class="inl_cmd">VARCHAR(*antal_tegn*)</span> gemmer op til det antal tegn (0-65635) der bliver sat i parantesen. Se skemaet herunder:</p>
+<p><span class="inl_cmd">VARCHAR(*antal_tegn*)</span> gemmer op til det antal tegn (0-65635) der bliver sat i parentesen. Se skemaet herunder:</p>
 
 <table class="">
 	<thead>
 		<tr>
-			<th>Teksttreng</th>
+			<th>Tekststreng</th>
 			<th>VARCHAR(5)</th>
 			<th>Beskrivelse</th>
 		</tr>
@@ -217,12 +217,12 @@
 
 <h2>Char</h2>
 
-<p><span class="inl_cmd">CHAR(*antal_tegn*)</span> gemmer det antal tegn (0-255) der bliver sat i parantesen. Se skemaet herunder:</p>
+<p><span class="inl_cmd">CHAR(*antal_tegn*)</span> gemmer det antal tegn (0-255) der bliver sat i parentesen. Se skemaet herunder:</p>
 
 <table class="">
 	<thead>
 		<tr>
-			<th>Teksttreng</th>
+			<th>Tekststreng</th>
 			<th>CHAR(5)</th>
 			<th>Beskrivelse</th>
 		</tr>
@@ -314,7 +314,7 @@
 	</tbody>
 </table>
 
-<p><span class="inl_cmd">DATETIME</span> og <span class="inl_cmd">TIMESTAMP</span> kan sættes til at opdatere automatisk når en post bliver bliver oprettet eller ændret. Begge datatyper kan også tilføjes en værdi for dele af sekundet til en præcission på mikrosekunder (6 decimaler). Det gøres ved at indsætte præcissionen i en parantes efter datatypen f.eks: <span class="inl_cmd">DATETIME(3)</span>, hvilket angiver tusindedele af et sekund.</p>
+<p><span class="inl_cmd">DATETIME</span> og <span class="inl_cmd">TIMESTAMP</span> kan sættes til at opdatere automatisk når en post bliver bliver oprettet eller ændret. Begge datatyper kan også tilføjes en værdi for dele af sekundet til en præcision på mikrosekunder (6 decimaler). Det gøres ved at indsætte præcisionen i en parentes efter datatypen f.eks: <span class="inl_cmd">DATETIME(3)</span>, hvilket angiver tusindedele af et sekund.</p>
 
 <p>Læs mere: <a href="http://dev.mysql.com/doc/refman/5.7/en/datetime.html" target="_blank">http://dev.mysql.com/doc/refman/5.7/en/datetime.html</a></p>
 

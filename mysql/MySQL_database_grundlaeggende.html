@@ -162,7 +162,7 @@
 		
 <p>Det betyder også, at man kan bruge nogle rækker som kontrolinstanser. F.eks. vil et forkert postnummer kunne udløse en advarsel, fordi det ikke eksisterer. Eller man vil kunne sikre sig mod at der bliver slettet data som andre tabeller er afhængige af.</p>
 		
-<p>Man kan ikke blot forbinde tabeller i den enkelte database med hinanden, men også forbinde forskellige databer med hinanden, sådan at man kan udnytte data fra flere kilder.</p>
+<p>Man kan ikke blot forbinde tabeller i den enkelte database med hinanden, men også forbinde forskellige databaser med hinanden, sådan at man kan udnytte data fra flere kilder.</p>
 
 <p>Herunder er et eksempel som det ser ud med phpMyAdmins designervindue:</p>
 
@@ -178,7 +178,7 @@
 
 <p><span class="inl_cmd">Redundans</span> er et fint ord for data der er tilstede mere end en gang.</p>
 
-<p>I det ovenstående tilfælde nævner jeg en tabel med bynavn og postnummer. Hvis man ikke havde den tabel ville alle tabeller med adresser skulle indeholde både bynavn og postnummer. Et af disse felter ville altså være redundant. Det vil betyde at man skal bruge mere tid på at indtaste data, databasen fylder mere og databasen skal sortere i flere data for at finde sine resulater. Altsammen noget der ikke er effektivt og koster både tid og penge.</p>
+<p>I det ovenstående tilfælde nævner jeg en tabel med bynavn og postnummer. Hvis man ikke havde den tabel ville alle tabeller med adresser skulle indeholde både bynavn og postnummer. Et af disse felter ville altså være redundant. Det vil betyde at man skal bruge mere tid på at indtaste data, databasen fylder mere og databasen skal sortere i flere data for at finde sine resultater. Alt sammen noget der ikke er effektivt og koster både tid og penge.</p>
 
 <p>En god database er designet så man undgår redundans, og den proces hedder <span class="inl_cmd">normalisering</span> (<a href="http://www.vidas.dk/IT/MySQL_database_normalisering.html" target="_blank">http://www.vidas.dk/IT/MySQL_database_normalisering.html</a>). Det er et område der hører til på IT B.</p>
 
@@ -186,7 +186,7 @@
 
 <h2>Database</h2>
 
-<p>En database er en struktureret samling af data, som er sat op i tabeller, med rækker og kolonner. Ved hjælp af kommandoer kan man manpulere med, søge i og sortere data.</p>
+<p>En database er en struktureret samling af data, som er sat op i tabeller, med rækker og kolonner. Ved hjælp af kommandoer kan man manipulere med, søge i og sortere data.</p>
 
 <p>En relationel database indeholder flere tabeller, som kan sammenkædes og kombineres.</p>
 
@@ -237,7 +237,7 @@
 
 <h2>Fremmednøgler</h2>
 
-<p>Fremmenøgler er felter som har forbindelse til primærfelter, og hvor der er sat en binding op imellem dem. I praksis gøres det ved at indeksere et felt, så det gøres tilgængeligt for databasen.</p>
+<p>Fremmednøgler er felter som har forbindelse til primærfelter, og hvor der er sat en binding op imellem dem. I praksis gøres det ved at indeksere et felt, så det gøres tilgængeligt for databasen.</p>
 
 <p>Fremmednøgler er afhængige af deres primærnøgler. Dette kan bruges til at opdatere felter, sådan at hvis primær nøglen ændres, så vil fremmednøglen også blive ændre. Det kan også anvendes til at sikre, at man ikke sletter en primærnøgle der er i anvendelse et andet sted i databasen.</p>
 
