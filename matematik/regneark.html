@@ -129,6 +129,8 @@
 		<p>Denne fejl betyder at der er fejl i funktionen du anvender.</p>
 	
 		<p>Eks:</p>
+		
+		<p>TÆLHVIS(*betingelse*)</p>
 	
 </ul>
 
@@ -332,14 +334,20 @@
 	</tbody>
 </table>
 
-
-
 <h3>ER.TAL()</h3>
 
-<p>Funktionen undersøger om der står et tal i </p>
+<p>Funktionen undersøger om feltet har en værdi. Forestil dig vi undersøger værdien <span class="inl_cmd">32</span> i feltet <span class="inl_cmd">A1</span></p>
 
+<p>Eks:</p>
 
-<p>Denne funktion anvendes til at finde ud af om en værdi/streng findes i et felt ved hjælp af <span class="inl_cmd">FIND()</span>, og svarer tilbage med <span class="inl_cmd">SAND/FALSK</span>.</p>
+<code class="cmd">ER.TAL(32) &rarr; SAND</code>
+
+<code class="cmd">ER.TAL("Thomas") &rarr; FALSK</code>
+
+<h3>Kombiner</h3>
+
+<p>Ved at anvende <span class="inl_cmd">FIND()</span> inde i <span class="inl_cmd">ER.TAL()</span> kan vi altså finde ud af om en tekststreng findes. Hvis <span class="inl_cmd">FIND()</span> returnerer et tal, så findes tekststrengen, og <span class="inl_cmd">ER.TAL()</span> returnerer <span class="inl_cmd">SAND</span></p>
+
 
 <p><b>Anvendelse (excel/Calc): </b></p>
 
@@ -349,7 +357,7 @@
 
 <code class="cmd">ER.TAL(find("hans";A1))</code>
 
-<p>Funktionen kan med fordel anvendes sammen med <span class="inl_cmd">HVIS(), HVISER(), ELLER()</span> eller <span class="inl_cmd">OG()</span>.</p>
+<p>Funktionen kan indlejres i <span class="inl_cmd">HVIS(), HVISER(), ELLER()</span> og <span class="inl_cmd">OG()</span>. På den måde kan man både finde ud af om noget står i teksten, og få Excel til at returnere en værdi.</p>
 
 <h2>Flere funktioner </h2>
 
