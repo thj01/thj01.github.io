@@ -62,16 +62,9 @@
 
 <h2>Opret mapper</h2>
 
-<code class="cmd">sudo mkdir -p /media/MediaServer/Musik /media/MediaServer/Video /media/MediaServer/Billeder</code>
+<code class="cmd">sudo mkdir -p /srv/mediaServer/musik /srv/mediaserver/video /srv/mediaserver/billeder</code>
 
-<h2>Ændr bruger og gruppe</h2>
-
-<code class="cmd">sudo chown -R minidlna:minidlna /media/MediaServer</code>
-
-<h2>Ændr rettigheder</h2>
-
-
-<code class="cmd">sudo chmod -R775 /media/MediaServer</code>
+<h2>Bruger konfiguration</h2>
 
 <p>Tilføj din bruger til gruppen minidlna</p>
 
@@ -81,7 +74,52 @@
 
 <code class="cmd">exec su -l $USER</code>
 
-<h2>Kopier dine data</h2>
+<h1>Konfiguration</h1>
+
+<p><span class="inl_cmd">minidlna</span> konfigureres igennem en filen <span class="inl_cmd">/etc/minidlna.conf</span>. Åbn den med kommandoen</p>
+
+<code class="cmd">sudo nano /etc/minidlna.conf </code>
+
+<h2>/etc/minidlna</h2>
+
+<p>Stort set alt er udkommenteret, så vi kan nøjes med at indsætte nedestående i slutningen af filen.</p>
+
+<pre>
+	<code class="">
+_friendly_name=Mediaserver
+
+media_dir=A,/srv/mediaserver/musik
+media_dir=P,/srv/mediaserver/billeder
+media_dir=V,/srv/mediaserver/video
+
+inotify=yes
+	</code>
+</pre>
+
+
+<h2>/etc/default/minidlna</h2>
+
+<p>Fjern hashtags (<span class="inl_cmd">#</span>) ved <span class="inl_cmd">USER</span> og <span class="inl_cmd">GROUP</span>.</p>
+
+<<pre>
+	<code class="">
+# User and group the daemon should run as
+USER="minidlna"
+GROUP="minidlna"
+	</code>
+</pre>
+
+<h2>Genstart minidlna</h2>
+
+<p>For at den nye konfiguration slår igennem, skal filen genindlæses. Du bør også genopfriske databasen, og det gøres med den anden kommando.</p>
+
+<code class="cmd">sudo service minidlna restart</code>
+
+<code class="more_cmd">sudo service minidlna force-reload</code>
+
+<p>Herefter er dine filer tilgængelige for alle apperater der anvender DLNA :)</p>
+
+<h1>Flyt dine filer</h1>
 
 <p>Herefter kan du flytte din musik, videoer og billeder til de nye mapper</p>
 
@@ -97,47 +135,34 @@
 	
 	<li>Kopiere Musik</li>
 	
-		<code class="cmd">mv ~/Musik /media/MediaServer/Musik</code>
+		<code class="cmd">mv ~/Musik /srv/mediaserver/musik</code>
 	
 	<li>Kopiere Video</li>
 	
-		<code class="cmd">mv ~/Videoklip /media/MediaServer/Video</code>
+		<code class="cmd">mv ~/Videoklip /srv/mediaserver/video</code>
 	
 	<li>Kopiere Billeder</li>
 	
-		<code class="cmd">mv ~/Billeder /media/MediaServer/Billeder</code>
+		<code class="cmd">mv ~/Billeder /srv/mediaserver/billeder</code>
 		
 </ul>
 
+<h1>Ændr rettigheder</h1>
+
+<p>Det sidste vi skal gøre er at ændre ejerskab og rettigheder på den nye mappe med </p>
+
+<h2>Ændr bruger og gruppe</h2>
+
+<code class="cmd">sudo chown -R minidlna:minidlna /srv/mediaserver</code>
+
+<h2>Ændr rettigheder</h2>
 
 
-<h1>Konfiguration</h1>
+<code class="cmd">sudo chmod -R 775 /srv/mediaserver</code>
 
-<p><span class="inl_cmd">minidlna</span> konfigureres igennem en filen <span class="inl_cmd">/etc/minidlna.conf</span>. Åbn den med kommandoen</p>
 
-<code class="cmd">sudo nano /etc/minidlna.conf </code>
 
-<h2>Tilføj linjer</h2>
 
-<p>Stort set alt er udkommenteret, så vi kan nøjes med at indsætte nedestående i slutningen af filen.</p>
-
-<pre class="black">
-friendly_name=MediaServer
-media_dir=A,/media/MediaServer/Musik
-media_dir=V,/media/MediaServer/Video
-media_dir=P,/media/MediaServer/Billeder
-inotify=yes
-</pre>
-
-<h2>Genstart minidlna</h2>
-
-<p>For at den nye konfiguration slår igennem, skal filen genindlæses. Du bør også genopfriske databasen, og det gøres med den anden kommando.</p>
-
-<code class="cmd">sudo service minidlna restart</code>
-
-<code class="more_cmd">sudo service minidlna force-reload</code>
-
-<p>Herefter er dine filer tilgængelige for alle apperater der anvender DLNA :)</p>
 
 <p><b>Enjoy!!</b></p>
 
