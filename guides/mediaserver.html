@@ -86,15 +86,22 @@
 
 <pre>
 	<code class="">
-_friendly_name=Mediaserver
-
+#Serverdetaljer	
+	
+friendly_name=Mediaserver
 media_dir=A,/srv/mediaserver/musik
 media_dir=P,/srv/mediaserver/billeder
 media_dir=V,/srv/mediaserver/video
 
+#Skanner for nye filer
 inotify=yes
+
+#Sætter standard portnummer
+port=9500
 	</code>
 </pre>
+
+<p>Grunden til at porten skal ændres er fordi <span class="inl_cmd">minidlna</span> ikke sætter portnummeret til standardern som er <span class="inl_cmd">9500</span>.</p>
 
 
 <h2>/etc/default/minidlna</h2>
@@ -109,15 +116,7 @@ USER="root"
 	</code>
 </pre>
 
-<h2>Genstart minidlna</h2>
 
-<p>For at den nye konfiguration slår igennem, skal filen genindlæses. Du bør også genopfriske databasen, og det gøres med den anden kommando.</p>
-
-<code class="cmd">sudo service minidlna restart</code>
-
-<code class="more_cmd">sudo service minidlna force-reload</code>
-
-<p>Herefter er dine filer tilgængelige for alle apperater der anvender DLNA :)</p>
 
 <h1>Flyt dine filer</h1>
 
@@ -160,7 +159,33 @@ USER="root"
 
 <code class="cmd">sudo chmod -R 775 /srv/mediaserver</code>
 
+<h1>Genstart minidlna</h1>
 
+<p>For at den nye konfiguration slår igennem, skal filen genindlæses. Du bør også genopfriske databasen, og det gøres med den anden kommando.</p>
+
+<code class="cmd">sudo service minidlna restart</code>
+
+<code class="more_cmd">sudo service minidlna force-reload</code>
+
+<p>Herefter er dine filer tilgængelige for alle apperater der anvender DLNA :)</p>
+
+<h1>Kontroller setup</h1>
+
+<p>Tjek om tjenesten er oppe ved at skrive følgende adresse i din browser: </p>
+
+<code class="cmd">*IP_NUMMER:9500</code>
+
+<p>F.eks:</p>
+
+<span class="inl_cmd">192.168.0.10:9500</span>
+
+<h1>Efter genstart</h1>
+
+<p>Desværre er der en mindre mangel i denne guide endnu, og det er at <span class="inl_cmd">minidlna</span> skal genstartes manuelt efter en genstart. </p>
+
+<code class="cmd">sudo service minidlna restart</code>
+
+<code class="more_cmd">sudo service minidlna force-reload</code>
 
 
 
@@ -226,3 +251,4 @@ MathJax.Hub.Config({
 
 </body>
 </html>
+
