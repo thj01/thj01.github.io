@@ -44,42 +44,39 @@
 
 <pre>
 	<code class="SQL">
-SELECT * FROM Klasse_og_elever WHERE Klasse='1a' OR Klasse='1b';
+SELECT * FROM klasse_og_elever WHERE Klasse='1a' OR Klasse='1b';
 	</code>
 </pre>
 
-<p>Koden betyder:</p>
+<table class="_">
+	<thead>
+		<tr>
+			<th colspan="2">Koden betyder</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><span class="blue">SELECT</span> *</td>
+			<td>Vælg alt</td>
+		</tr>
+		<tr>
+			<td><span class="blue">FROM</span> klasse_og_elever</td>
+			<td>... i tabellen <span class="inl_cmd">klasse_og_elever</span></td>
+		</tr>
+		<tr>
+			<td><span class="inl_cmd">WHERE</span> Klasse=<span class="orange">'1a'</span> <span class="blue">OR</span> Klasse=<span class="orange">'1b'</span></td>
+			<td>Hvor feltet <span class="inl_cmd">klasse</span> er <span class="inl_cmd">1a</span> eller <span class="inl_cmd">1b</span></td>
+		</tr>
+		<tr>
+			<td>;</td>
+			<td>Forspørgsel slut</td>
+		</tr>
+	</tbody>
+</table>
 
-<pre>
-	<code class="SQL">
-SELECT * 
-	</code>
-</pre>
 
-<p>Vælg alt ...</p>
 
-<pre>
-	<code class="SQL">
-FROM Klasse_og_elever
-	</code>
-</pre>
 
-<p>... fra tabellen <span class="inl_cmd">Klasse_og_elever</span></p>
-
-		
-<pre>
-	<code class="SQL">
-WHERE Klasse='1a' OR Klasse='1b'
-	</code>
-</pre>
-
-<p>... hvor der står <span class="inl_cmd">1a</span> eller <span class="inl_cmd">1b</span></p>		
-		
-<pre>
-	<code class="SQL">
-;
-	</code>
-</pre>
 
 	<p>Alle forespørgsler skal afsluttes med et semikolon (<span class="inl_cmd">;</span>) Det virker umiddelbart som unødvendigt, men det er praktisk senere når forespørgslerne bliver lange. Der vil man kunne lave linjeskift mellem de enkelte dele af forespørgslen og først når <span class="inl_cmd">;</span> kommer vil det blive udført.!</p>
 		
@@ -159,7 +156,7 @@ SELECT Mentor,Mail FROM mentorer;
 
 <h2>Kald med wildcard</h2>
 
-<p>Nogle gange har man behov for at finde data, der har nogle fælles tegn. Det løser vi ved at anvende <span class="inl_cmd">"wildcards"</span>. Normal vil man i computerverdenen angive et wildcard med <span class="inl_cmd">*</span>, men i programmeringsverdenen har man oprindeligt anvendt procenttegnet (<span class="inl_cmd">%</span>) i tekststrenge.</p>
+<p>Nogle gange har man behov for at finde data, der har nogle fælles tegn. Det løser vi ved at anvende <span class="inl_cmd">"wildcards"</span>. Normal vil man i computerverdenen angive et wildcard med <span class="inl_cmd">*</span>, men i programmeringsverdenen har man oprindeligt anvendt <span class="inl_cmd">%</span>.</p>
 
 <p>Vi vælger igen alle data, i tabellen og søger denne gang med <span class="inl_cmd">LIKE</span> i stedet for <span class="inl_cmd">=</span>.</p>
 
