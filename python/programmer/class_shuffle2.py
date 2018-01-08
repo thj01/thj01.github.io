@@ -55,7 +55,6 @@ b3 = [
 	"Kiva",
 	"Lea",
 	"Mathias",
-	"Mie",
 	"Naja",
 	"Nanna",
 	"Nicklas R",
