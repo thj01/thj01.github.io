@@ -132,21 +132,52 @@
 <p>Når man arbejder med regneark sker der at man laver fejl i sine indtastninger og beregninger. Excel og andre regneark anvender primært to fejlmeddelelser til at vise hvad type fejl det er.</p>
 
 <ul class="fat_li none">
+	
+	<li>#DIV/0!</li>
+
+		<p>Formlen forsøger at dividere med 0.</p>
+		
+	<li>#I/T</li>
+	
+		<p>Det som formlen skulle vise i det konkrete felt er <span class="inl_cmd">Ikke Tilgængelig</span> ( #I/T )</p>
+		
+	<li>#NA!</li>
+	
+		<p>Værdien er ikke tilgængelige</p>
+
+	<li>#NAME?</li>
+	
+		<p>Der er fejl i funktionen du anvender.</p>
+	
+		<p>Eks:</p>
+		
+		<p>TÆLHVIS() = #NAME? (Skulle hedde TÆL.HVIS)</p>
+
+	<li>#NULL!</li>
+	
+		<p>Formlen har ingen løsninger</p>
+		
+	<li>#NUM!</li>
+		
+		<p>Tallet i formlen er ugyldig</p>
+		
+		<p>Eks:</p>
+		
+			<p>=SQRT(-2) = #NUM!</p>
+			
+	<li>#REF</li>
+	
+		<p>En eller flere af referencerne i formlen kan ikke findes.</p>
+	
 	<li>#VÆRDI!</li>
 	
-		<p>Denne fejl betyder at formlen fejler. Det kan f.eks. være hvis du forsøger at lægget et tal og en tekst sammen</p>
+		<p>Funktionen kan ikke udføres fordi felterne er inkompatible. Det kan f.eks. være hvis du forsøger at lægget et tal og en tekst sammen</p>
 		
 		<p>Eks:</p>
 		
 		<p>1 + F = #VÆRDI!</p>
 	
-	<li>#NAME?</li>
-	
-		<p>Denne fejl betyder at der er fejl i funktionen du anvender.</p>
-	
-		<p>Eks:</p>
-		
-		<p>TÆLHVIS() (Skulle hedde TÆL.HVIS)</p>
+
 		
 </ul>
 
