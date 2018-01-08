@@ -491,25 +491,6 @@ C:\Users\ThomasJensen>
 
 <p>Wikipedia om TCP/IP: <a href="https://en.wikipedia.org/wiki/Internet_protocol_suite" target="_blank">https://en.wikipedia.org/wiki/Internet_protocol_suite</a></p>
 
-<details>
-
-	<summary>En mere uddybende illustration</summary>
-
-	<span class="afsnit">Dataflow</span>
-
-	<p>Herunder er der et diagram der viser hvordan data kommer fra en computer til en anden. Afsendercomputeren sender data igennem <span class="inl_cmd">TCP/IP</span>-protokollen. I det pakkerne kommer ud på lokalnettet finder de ud af modtageren findes på et andet netværk.</p>
-
-	<figure id="">
-
-		<img class="p80" src="images/network_TCPIP_Dataflow.svg" alt="" title="" />
-
-		<figcaption></figcaption>
-
-	</figure>
-
-	<p>For at få adgang til det andet netværk bliver pakkerne ledt igennem routeren ud på internettet, hvor der er DNS-servere der ved hvor den router der giver adgang til modtagercomputerens netværk er. Her bliver pakkerne sendt hen, for at modtager-routeren kan sende pakkerne videre til modtageren. Her bliver data fra <span class="inl_cmd">TCP/IP</span> pakkerne gendannet.</p>
-
-</details>
 
 
 <h1>Netværkets hardware</h1>
@@ -528,8 +509,8 @@ C:\Users\ThomasJensen>
 <p></p>
 
 <ul class="none">
-	<li><b>Anvendes til: </b>At skabe forbindelse mellem og adskille netværk</li>
-	<li><b>Ved noget om: </b> IP-adresser</li>
+	<li><b>Anvendes til: </b>Adgangspunkt til et netværk (gateway)</li>
+	<li><b>Ved noget om: </b>IP-adresser</li>
 	<li><b>Lag</b>: Internet</li>
 </ul>
 
@@ -876,10 +857,9 @@ C:\Users\ThomasJensen>
 	<thead>
 
 		<tr>
-			<th>Lag</th>
-			<th colspan="2">OSI <br/>Open Systems Interconnection</th>
+			<th colspan="2">Lag</th>
+			<th>OSI <br/>Open Systems Interconnection</th>
 			<th>TCP/IP <br/>RFC 1122 Internet STD3</th>
-			<th>RFC871 <br/>Arpanet ref model</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -887,8 +867,7 @@ C:\Users\ThomasJensen>
 			<td rowspan="4">Værts lag</td>
 			<td>7</td>
 			<td>Application</td>
-			<td rowspan="3"><br/><br/>Applikation</td>
-			<td rowspan="3">Applikation/Proces</td>
+			<td rowspan="3">Applikation</td>
 		</tr>
 		<tr>
 			<td>6</td>
@@ -904,7 +883,6 @@ C:\Users\ThomasJensen>
 			<td>4</td>
 			<td>Transport</td>
 			<td>Transport</td>
-			<td rowspan="2">Host-to-Host</td>
 		</tr>
 		<tr>
 			<td rowspan="3">Medie lag</td>
@@ -916,8 +894,6 @@ C:\Users\ThomasJensen>
 			<td>2</td>
 			<td>Data Link</td>
 			<td>Link</td>
-			<td rowspan="2">Network Interface</td>
-		
 		</tr>
 		<tr>
 			<td>1</td>
@@ -928,6 +904,24 @@ C:\Users\ThomasJensen>
 </table>
 
 <p><a href="http://en.wikipedia.org/wiki/Internet_protocol_suite#cite_note-21" target="_blank">http://en.wikipedia.org/wiki/Internet_protocol_suite#cite_note-21</a></p>
+
+<p>Det man skal tænke på er, at det reelt kun er medielagene 1, 2 og 3 (dvs. Internet og Link lagene), vi tænker på, når vi taler om netværket. De andre lag handler om hvordan operativsystemet gør pakkerne klar til at blive sendt/modtaget.</p>
+
+<p>Herunder kan du se en illustration på hvordan det foregår. </p>
+
+
+
+<figure id="">
+
+	<img class="p70" src="images/network_TCPIP_Dataflow.svg" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>For at få adgang til det andet netværk bliver pakkerne ledt igennem routeren ud på internettet, hvor der er DNS-servere der ved hvor den router der giver adgang til modtagercomputerens netværk er. Her bliver pakkerne sendt hen, for at modtager-routeren kan sende pakkerne videre til modtageren. Her bliver data fra <span class="inl_cmd">TCP/IP</span> pakkerne gendannet.</p>
+
+
 
 <h2>Lagene</h2>
 

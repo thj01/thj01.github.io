@@ -204,7 +204,7 @@
 		<tr>
 			<td>=</td>
 			<td>=</td>
-			<td>Lig med</td>
+			<td>Det samme som</td>
 		</tr>
 		<tr>
 			<td>&ne;</td>
@@ -458,6 +458,157 @@
 
 </figure>
 
+<h1>Strenge</h1>
+
+<p>Man kan skære i tekster ved hjælp af:</p>
+
+<table class="_">
+	<thead>
+		<tr>
+			<th>Excel/Calc</th>
+			<th>Sheets</th>
+			<th>Beskrivelse</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>VENSTRE()</td>
+			<td>LEFT()</td>
+			<td>Returnerer antal tegn fra henstre.</td>
+		</tr>
+		<tr>
+			<td>HØJRE()</td>
+			<td>RIGHT()</td>
+			<td>Returnerer antal tegn fra højre.</td>
+		</tr>
+		<tr>
+			<td>MIDT()</td>
+			<td>MID()</td>
+			<td>Returnerer antal tegn fra en position.</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>I eksemplerne herunder er alle funktionerne vist med <span class="inl_cmd">A1 = fr 5/1 2. modul</span>, hvor positionen kan ses i nedenstående tabel.</p>
+
+<table class="centreret">
+	<thead>
+		<tr>
+			<th>Retning</th>
+			<th>f</th>
+			<th>r</th>
+			<th></th>
+			<th>5</th>
+			<th>/</th>
+			<th>1</th>
+			<th></th>
+			<th>2</th>
+			<th>.</th>
+			<th></th>
+			<th>m</th>
+			<th>o</th>
+			<th>d</th>
+			<th>u</th>
+			<th>l</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Venstre til højre</td>
+			<td>1</td>
+			<td>2</td>
+			<td>3</td>
+			<td>4</td>
+			<td>5</td>
+			<td>6</td>
+			<td>7</td>
+			<td>8</td>
+			<td>9</td>
+			<td>10</td>
+			<td>11</td>
+			<td>12</td>
+			<td>13</td>
+			<td>14</td>
+			<td>15</td>
+		</tr>
+		<tr>
+			<td>Højre mod Venstre</td>
+			<td>15</td>
+			<td>14</td>
+			<td>13</td>
+			<td>12</td>
+			<td>11</td>
+			<td>10</td>
+			<td>9</td>
+			<td>8</td>
+			<td>7</td>
+			<td>6</td>
+			<td>5</td>
+			<td>4</td>
+			<td>3</td>
+			<td>2</td>
+			<td>1</td>
+		</tr>
+	</tbody>
+</table>
+
+
+<h2>VENSTRE()</h2>
+
+<p><b>Anvendelse (excel/Calc)</b></p>
+
+<code class="cmd">VENSTRE( *tekststreng* ; *antal_tegn*)</code>
+
+<p><b>Anvendelse (Sheets)</b></p>
+
+<code class="cmd">LEFT( *tekststreng* ; *antal_tegn*)</code>
+
+<p>Bruges til at vise et antal tegn fra venstre mod højre</p>
+
+<p><b>Eksempel</b></p>
+
+<code class="cmd">VENSTRE(A1;2) &rarr; fr</code>
+
+
+<h2>HØJRE()</h2>
+
+<p><b>Anvendelse (excel/Calc)</b></p>
+
+<code class="cmd">HØJRE( *tekststreng* ; *antal_tegn*)</code>
+
+<p><b>Anvendelse (Sheets)</b></p>
+
+<code class="cmd">RIGHT( *tekststreng* ; *antal_tegn*)</code>
+
+<p>Bruges til at vise et antal tegn fra højre mod venstre.</p>
+
+<p><b>Eksempel</b></p>
+
+<code class="cmd">HØJRE(A1;5) &rarr; modul</code>
+
+<h2>MIDT()</h2>
+
+<p><b>Anvendelse (excel/Calc)</b></p>
+
+<code class="cmd">MIDT( *tekststreng* ; *antal_tegn*)</code>
+
+<p><b>Anvendelse (Sheets)</b></p>
+
+<code class="cmd">MID( *tekststreng* ; *antal_tegn*)</code>
+
+<p>Bruges til at vise et antal tegn fra venstre mod højre</p>
+
+<p><b>Eksempel</b></p>
+
+<code class="cmd">MIDT(A1;4;3) &rarr; 5/1</code>
+
+<p>Du kan læse mere om disse funktioner</p>
+
+<p><a href="_" target="_blank">_</a></p>
+
+<p><a href="https://support.office.com/da-dk/article/Opdel-tekst-i-forskellige-kolonner-med-guiden-Konverter-tekst-til-kolonner-30b14928-5550-41f5-97ca-7a3e9c363ed7?ui=da-DK&rs=da-DK&ad=DK" target="_blank">https://support.office.com/da-dk/article/Opdel-tekst-i-forskellige-kolonner-med-guiden-Konverter-tekst-til-kolonner-30b14928-5550-41f5-97ca-7a3e9c363ed7?ui=da-DK&rs=da-DK&ad=DK</a></p>
+
+
 <h1>Financielle funktioner</h1>
 
 <p>Herunder er en tabel med betegnelser der anvendes ved regnearksfunktioner.</p>
@@ -467,8 +618,8 @@
 <table class="">
 	<thead>
 		<tr>
-			<th></th>
-			<th></th>
+			<th>Betegnelse</th>
+			<th>Forklaring</th>
 		</tr>
 	</thead>
 	<tbody>
