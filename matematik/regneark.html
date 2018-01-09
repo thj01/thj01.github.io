@@ -933,15 +933,22 @@
 
 <h2>MIDT()</h2>
 
+<p>Bruges til at vise et antal tegn fra venstre mod højre</p>
+
+
 <p><b>Anvendelse (excel/Calc)</b></p>
 
-<code class="cmd">MIDT( *tekststreng* ; *antal_tegn*)</code>
+<code class="cmd">MIDT( *tekststreng* ; *start_position* ; *antal_tegn*)</code>
 
 <p><b>Anvendelse (Sheets)</b></p>
 
-<code class="cmd">MID( *tekststreng* ; *antal_tegn*)</code>
+<code class="cmd">MID( *tekststreng* ; *start_position* ;  *antal_tegn*)</code>
 
-<p>Bruges til at vise et antal tegn fra venstre mod højre</p>
+<blockquote>
+	<p>
+		Udelades <span class="inl_cmd"> *antal_tegn* </span> udskriver funktionen resten af tegnene i strengen
+	</p>
+</blockquote>
 
 <p><b>Eksempel (B-kolonne) - dag</b></p>
 
