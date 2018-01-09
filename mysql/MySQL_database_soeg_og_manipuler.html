@@ -37,6 +37,10 @@
 	
 <div class="title">MySQL - Søg og manipuler</div>
 
+<blockquote>
+	<p>Det er vigtigt at du anvender <span class="inl_cmd">Chrome</span> eller <span class="inl_cmd">Firefox</span> til disse opgaver, da PHPMyAdmin følger webstandarderne. Hvis du anvender Safari, Internet Explorer eller Edge, risikerer du at få fejl.</p>
+</blockquote>
+
 <h1>Introduktion</h1>
 
 
@@ -606,7 +610,6 @@ SHOW DATABASES|SCHEMAS;
 | test               |
 +--------------------+
 7 rows in set (0.00 sec)
-MariaDB [(none)]>
 </pre>
 
 <p>Når der står <span class="inl_cmd">DATABASES|SCHEMAS</span> betyder det at man kan vælge enten at skrive <span class="inl_cmd">DATABASES</span> eller <span class="inl_cmd">SCHEMAS</span></p>
@@ -641,8 +644,6 @@ SHOW tables;
 | lærere              |
 +---------------------+
 3 rows in set (0.00 sec)
-
-MariaDB [mentor]>
 </pre>
 
 <h2>Vis struktur</h2>
@@ -665,9 +666,32 @@ MariaDB [mentor]> DESCRIBE klasse_og_elever; <span class="red">&#8592; Input</sp
 | Startår      | year(4)    | NO   |     | NULL    |       |
 +--------------+------------+------+-----+---------+-------+
 5 rows in set (0.01 sec)
-
-MariaDB [mentor]>
 </pre>	
+
+<h2>Vis indhold</h2>
+
+<pre>
+	<code class="sql">
+SELECT * from klasse_og_elever;
+	</code>
+</pre>
+
+<pre class="black">
+MariaDB [importer_db]> SELECT * from klasse_og_elever;
++--------+--------------+-------+--------+---------+
+| Klasse | Antal Elever | Piger | Drenge | Startår |
++--------+--------------+-------+--------+---------+
+| 1a     |           17 |     9 |      8 |    2016 |
+| 1b     |           16 |     8 |      8 |    2016 |
+| 1x     |           28 |    13 |     15 |    2016 |
+| 2a     |           22 |    10 |     12 |    2015 |
+| 2b     |           24 |    13 |     11 |    2015 |
+| 2x     |           31 |    17 |     14 |    2015 |
+| 3a     |           21 |     8 |     13 |    2015 |
+| 3b     |           22 |     9 |     13 |    2015 |
++--------+--------------+-------+--------+---------+
+8 rows in set (0.00 sec)
+</pre>
 
 <h2>Forlad MYSQL</h2>
 
