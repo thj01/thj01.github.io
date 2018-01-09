@@ -153,4 +153,33 @@ margin-left: -14px;
 
 }
 
+table.regneark thead tr th {
+
+text-align: center;
+
+}
+
+
+table.regneark tbody tr td:first-child {
+
+background-color: #585858 ;
+color: #E8E8E8  ;
+width: 10%;
+text-align: center;
+
+}
+
+table.regneark tbody tr td:first-child {
+
+background-color: #585858 ;
+color: #E8E8E8  ;
+width: 10%;
+text-align: center;
+
+}
+
+table.regneark tbody tr td:nth-child(2) {width: 22.5%;}
+table.regneark tbody tr td:nth-child(3) {width: 22.5%;}
+table.regneark tbody tr td:nth-child(4) {width: 22.5%;}
+table.regneark tbody tr td:nth-child(5) {width: 22.5%;}
 

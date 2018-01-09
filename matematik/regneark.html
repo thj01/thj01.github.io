@@ -292,13 +292,59 @@
 
 <p>Bruges til at undersøge om en betingelse er opfyldt. Man vælger selv om det skal skrives ved hjælp af et tal eller en streng</p>
 
-<p><b>Eksempel: </b></p>
+<p><b>Eksempel (B-kolonnen): </b></p>
 
-<code class="cmd">HVIS(A1>3;”kvote opnået”;”kvote ikke opnået”)</code>
+<code class="cmd">HVIS(A1 &lt; 25;”Under 25”;”Over 25”)</code>
 
-<p><b>Eksempel: </b></p>
+<p><b>Eksempel (C-kolonnen): </b></p>
 
-<code class="cmd">HVIS(A1=”kvinde”;1;0)</code>
+<code class="cmd">HVIS(A1=20;SAND;FALSK)</code>
+
+<table class="regneark">
+	<thead>
+		<tr>
+			<th></th>
+			<th>A</th>
+			<th>B</th>
+			<th>C</th>
+			<th>D</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1</td>
+			<td>10</td>
+			<td>Under 25</td>
+			<td>FALSK</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>20</td>
+			<td>Under 25</td>
+			<td>SAND</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>30</td>
+			<td>Over 25</td>
+			<td>FALSK</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>4</td>
+			<td>40</td>
+			<td>Over 25</td>
+			<td>FALSK</td>
+			<td></td>
+
+		</tr>
+	</tbody>
+</table>
+
+
+
 
 <blockquote>
 	<p>Man kan også lave en "shorthand" til en HVIS(), ved blot at skrive et semikolon (<span class="inl_cmd">;</span>) efter betingelsen.</p>
@@ -324,13 +370,52 @@
 
 <p>Bruges til at undersøge flere betingelser på en gang.</p>
 
-<p><b>Eksempel: </b></p>
+<p><b>Eksempel (B-kolonne): </b></p>
 
-<code class="cmd">HVISER(A1=”lille”;0;A1=”mellem”;1;A1=”stor”;2)</code>
+<code class="cmd">=HVISER(A1="lille";0;A1="mellem";1;A1="stor";2)</code>
 
-<p><b>Eksempel: </b></p>
+<table class="regneark">
+	<thead>
+		<tr>
+			<th></th>
+			<th>A</th>
+			<th>B</th>
+			<th>C</th>
+			<th>D</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1</td>
+			<td>lille</td>
+			<td>0</td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>mellem</td>
+			<td>2</td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>mellem</td>
+			<td>2</td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>4</td>
+			<td>stor</td>
+			<td>3</td>
+			<td></td>
+			<td></td>
+		</tr>
+	</tbody>
+</table>
 
-<code class="cmd">HVISER(A1=0;barn;A1=1;voksen;A1=2;Pensionist)</code>
 
 <h2>ELLER()</h2>
 
@@ -340,9 +425,51 @@
 
 <p>Undersøger om en række betingelser er sande. Hvis blot en af dem er sande vil svarer funktionen tilbage med <b>SAND</b> ellers <b>FALSK</b>.</p>
 
-<p><b>Eksempel: </b></p>
+<p><b>Eksempel (B-kolonne): </b></p>
 
-<code class="cmd">ELLER(A1=”lille”;A2=3;A3=”barn”)</code>
+<code class="cmd">ELLER(A1="lille";A1="stor")</code>
+
+<table class="regneark">
+	<thead>
+		<tr>
+			<th></th>
+			<th>A</th>
+			<th>B</th>
+			<th>C</th>
+			<th>D</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1</td>
+			<td>lille</td>
+			<td>SAND</td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>mellem</td>
+			<td>FALSK</td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>mellem</td>
+			<td>FALSK</td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>4</td>
+			<td>SAND</td>
+			<td>3</td>
+			<td></td>
+			<td></td>
+		</tr>
+	</tbody>
+</table>
 
 <h2>OG()</h2>
 
@@ -352,9 +479,51 @@
 
 <p>Undersøger om alle givne betingelser er sande. Hvis de alle er sande vil svarer funktionen tilbage med <span class="bold">SAND</span> ellers <span class="bold">FALSK</span>. </p>
 
-<p><b>Eksempel: </b></p>
+<p><b>Eksempel (C-kolonne) </b></p>
 
-<code class="cmd">OG(A1=”lille”;A2=3;A3=”barn”)</code>
+<code class="cmd">OG(A1="lille";A2="blå")</code>
+
+<table class="regneark">
+	<thead>
+		<tr>
+			<th></th>
+			<th>A</th>
+			<th>B</th>
+			<th>C</th>
+			<th>D</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1</td>
+			<td>lille</td>
+			<td>grøn</td>
+			<td>FALSK</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>lille</td>
+			<td>gul</td>
+			<td>FALSK</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>lille</td>
+			<td>blå</td>
+			<td>SAND</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>4</td>
+			<td>lille</td>
+			<td>orange</td>
+			<td>FALSK</td>
+			<td></td>
+		</tr>
+	</tbody>
+</table>
 
 <h2>Find tekststreng</h2>
 
@@ -398,13 +567,53 @@
 
 <h3>ER.TAL()</h3>
 
-<p>Funktionen undersøger om feltet har en værdi. Forestil dig vi undersøger værdien <span class="inl_cmd">32</span> i feltet <span class="inl_cmd">A1</span></p>
+<p>Funktionen undersøger om feltet har en værdi.</p>
 
-<p>Eks:</p>
+<p><b>Eksempel (B-kolonne):</b></p>
 
-<code class="cmd">ER.TAL(32) &rarr; SAND</code>
+<code class="cmd">ER.TAL(A1)</code>
 
-<code class="cmd">ER.TAL("Thomas") &rarr; FALSK</code>
+<table class="regneark">
+	<thead>
+		<tr>
+			<th></th>
+			<th>A</th>
+			<th>B</th>
+			<th>C</th>
+			<th>D</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1</td>
+			<td>Hans</td>
+			<td>FALSK</td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>35</td>
+			<td>SAND</td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>Gurli</td>
+			<td>FALSK</td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>4</td>
+			<td>3,14159265359</td>
+			<td>SAND</td>
+			<td></td>
+			<td></td>
+		</tr>
+	</tbody>
+</table>
 
 <h3>Kombiner</h3>
 
@@ -415,9 +624,51 @@
 
 <code class="cmd">ER.TAL( FIND( *tekststreng/værdi* ; *felt* ) )</code>
 
-<p><b>Eksempel: </b></p>
+<p><b>Eksempel (B-kolonne): </b></p>
 
-<code class="cmd">ER.TAL(find("hans";A1))</code>
+<code class="cmd">ER.TAL(find("e";A1))</code>
+
+<table class="regneark">
+	<thead>
+		<tr>
+			<th></th>
+			<th>A</th>
+			<th>B</th>
+			<th>C</th>
+			<th>D</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1</td>
+			<td>Hans</td>
+			<td>FALSK</td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>Grethe</td>
+			<td>SAND</td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>BØRGE</td>
+			<td>SAND</td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>4</td>
+			<td>GURLI</td>
+			<td>FALSK</td>
+			<td></td>
+			<td></td>
+		</tr>
+	</tbody>
+</table>
 
 <p>Funktionen kan indlejres i <span class="inl_cmd">HVIS(), HVISER(), ELLER()</span> og <span class="inl_cmd">OG()</span>. På den måde kan man både finde ud af om noget står i teksten, og få Excel til at returnere en værdi.</p>
 
@@ -575,7 +826,50 @@
 
 <p><b>Eksempel</b></p>
 
-<code class="cmd">VENSTRE(A1;2) &rarr; fr</code>
+<code class="cmd">VENSTRE(A1;2)</code>
+
+
+<table class="regneark">
+	<thead>
+		<tr>
+			<th></th>
+			<th>A</th>
+			<th>B</th>
+			<th>C</th>
+			<th>D</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1</td>
+			<td>Hans</td>
+			<td>Ha</td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>Grethe</td>
+			<td>Gr</td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>Børge</td>
+			<td>Bø</td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>4</td>
+			<td>Gurli</td>
+			<td>GU</td>
+			<td></td>
+			<td></td>
+		</tr>
+	</tbody>
+</table>
 
 
 <h2>HØJRE()</h2>
@@ -592,7 +886,50 @@
 
 <p><b>Eksempel</b></p>
 
-<code class="cmd">HØJRE(A1;5) &rarr; modul</code>
+<code class="cmd">HØJRE(A1;2)</code>
+
+
+<table class="regneark">
+	<thead>
+		<tr>
+			<th></th>
+			<th>A</th>
+			<th>B</th>
+			<th>C</th>
+			<th>D</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1</td>
+			<td>Hans</td>
+			<td>ns</td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>Grethe</td>
+			<td>he</td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>Børge</td>
+			<td>ge</td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>4</td>
+			<td>Gurli</td>
+			<td>li</td>
+			<td></td>
+			<td></td>
+		</tr>
+	</tbody>
+</table>
 
 <h2>MIDT()</h2>
 
@@ -606,13 +943,53 @@
 
 <p>Bruges til at vise et antal tegn fra venstre mod højre</p>
 
-<p><b>Eksempel</b></p>
+<p><b>Eksempel (B-kolonne)</b></p>
 
-<code class="cmd">MIDT(A1;4;3) &rarr; 5/1</code>
+<code class="cmd">=MIDT(A1;5;4)</code>
+
+<table class="regneark">
+	<thead>
+		<tr>
+			<th></th>
+			<th>A</th>
+			<th>B</th>
+			<th>C</th>
+			<th>D</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1</td>
+			<td>ons 03012018</td>
+			<td>0301</td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>fre 05012018</td>
+			<td>0501</td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>man 08012018</td>
+			<td>0801</td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>4</td>
+			<td>tir 09012018</td>
+			<td>0901</td>
+			<td></td>
+			<td></td>
+		</tr>
+	</tbody>
+</table>
 
 <p>Du kan læse mere om disse funktioner</p>
-
-<p><a href="_" target="_blank">_</a></p>
 
 <p><a href="https://support.office.com/da-dk/article/Opdel-tekst-i-forskellige-kolonner-med-guiden-Konverter-tekst-til-kolonner-30b14928-5550-41f5-97ca-7a3e9c363ed7?ui=da-DK&rs=da-DK&ad=DK" target="_blank">https://support.office.com/da-dk/article/Opdel-tekst-i-forskellige-kolonner-med-guiden-Konverter-tekst-til-kolonner-30b14928-5550-41f5-97ca-7a3e9c363ed7?ui=da-DK&rs=da-DK&ad=DK</a></p>
 
