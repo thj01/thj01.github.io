@@ -430,9 +430,52 @@
 
 <div class="latex">$$ s^2 = \frac{1}{n-1} \cdot \sum_{i=1}^k (x_i- \overline x)^2 \cdot h_i$$</div>
 
-<p>Årsagen hertil er, at man under beregningen af middelværdien (<span class="math">\( \overline x \)</span>) allerede har anvendt alle værdierne i datamaterialet. Man kan sige at hvis man ikke kompenserer for dette, så er <span class="inl_cmd">variansen</span> påvirket (biased) pga. dette. Sagt på en anden måde: Hvis man ved at gennemsnittet af <span class="math">\( 3 \)</span> tal er <span class="math">\( 6 \)</span>, og to af tallene er <span class="math">\( 5 \)</span> og <span class="math">\( 6 \)</span>, så skal det sidste tal være <span class="math">\( 7 \)</span>. Der er altså reelt kun <span class="math">\( n-1 \)</span> grader af frihed.</p>
+<p>Årsagen til <span class="math">\( \frac{1}{n-1} \)</span> er, at man under beregningen af middelværdien (<span class="math">\( \overline x \)</span>) allerede har anvendt alle værdierne i datamaterialet. Man kan sige at hvis man ikke kompenserer for dette, så er <span class="inl_cmd">variansen</span> påvirket (biased) pga. dette. Sagt på en anden måde: Hvis man ved at gennemsnittet af <span class="math">\( 3 \)</span> tal er <span class="math">\( 6 \)</span>, og to af tallene er <span class="math">\( 5 \)</span> og <span class="math">\( 6 \)</span>, så skal det sidste tal være <span class="math">\( 7 \)</span>. Der er altså reelt kun <span class="math">\( n-1 \)</span> grader af frihed.</p>
 
 <p><b>Læs mere:</b> <a href="http://duramecho.com/Misc/WhyMinusOneInSd.html" target="_blank">http://duramecho.com/Misc/WhyMinusOneInSd.html</a></p>
+
+<details>
+
+	<summary>Forklaring på formlen</summary>
+	
+<p></p>
+
+<ul class="none">
+	<li><span class="math">\( x_i- \overline x \)</span></li>
+	
+	<p>Beskriver differencen mellem den enkelte observartion og gennemsnittet</p>
+
+	<li><span class="math">\( (x_i- \overline x)^2 \)</span></li>
+ 
+	<p>For at gøre differencen positiv og sikre sig at store differencer også påvirker resultatet mere</p>
+
+	<li><span class="math">\( h_i \)</span></li>
+	
+	<p>For at finde finde ud af hvor ofte differencen forekommer</p>
+	
+	<li><span class="math">\( \sum_{i=1}^k \)</span></li>
+	
+	<p>Gøres for hver enkelt observation</p>
+
+	<li><span class="math">\( \frac{1}{n-1} \)</span></li>
+	
+	<p>Det samlede tal for differencen spredes ud over alle observationerne. <span class="math">\( \frac{ 1 }{ n-1 } \)</span> fordi det er en stikprøve.</p>
+	
+	<li><span class="math">\( s^2 \)</span></li>
+	
+	<p>Når vi har kvadreret på den ene side skal vi også gøre det på den anden.</p>
+</ul>	
+
+
+
+<div class="latex">$$  $$</div>
+
+
+
+<div class="latex">$$  $$</div>
+
+
+</details>
 
 <h2>Spredning/standardafvigelse</h2>
 
