@@ -440,6 +440,12 @@ DROP TABLE nyDB.nyTabel;
 
 <p>I dette afsnit vises hvordan man arbejdet med nøgler og indeks generelt.</p>
 
+<blockquote>
+	<p>
+		Vær opmærksom på at tabel- og postnavnet er erstattet af <span class="inl_cmd">** TABEL **</span> og  <span class="inl_cmd">** POST **</span>.  
+	</p>
+</blockquote>
+
 <h2>Primær nøgle</h2>
 
 <p>Primærnøglen er en post, som som har unik felter, og som samtidig fungerer som MySQL's kontakt til tabellen</p>
@@ -448,8 +454,8 @@ DROP TABLE nyDB.nyTabel;
 
 <pre>
 	<code class="sql">
-ALTER TABLE ** tabel **
-ADD PRIMARY KEY (** Post **);
+ALTER TABLE ** TABEL **
+ADD PRIMARY KEY (** POST **);
 	</code>
 </pre>
 
@@ -470,8 +476,8 @@ DROP PRIMARY KEY;
 
 <pre>
 	<code class="sql">
-ALTER TABLE ** tabel **
-ADD INDEX (** Post **);
+ALTER TABLE ** TABEL **
+ADD INDEX (** POST **);
 	</code>
 </pre>
 
@@ -479,8 +485,8 @@ ADD INDEX (** Post **);
 
 <pre>
 	<code class="sql">
-ALTER TABLE ** tabel **
-DROP INDEX ** post **;
+ALTER TABLE ** TABEL **
+DROP INDEX ** POST **;
 	</code>
 </pre>
 
@@ -490,8 +496,8 @@ DROP INDEX ** post **;
 
 <pre>
 	<code class="sql">
-ALTER TABLE ** tabel **
-ADD UNIQUE (** Post **);
+ALTER TABLE ** TABEL **
+ADD UNIQUE (** POST **);
 	</code>
 </pre>
 
