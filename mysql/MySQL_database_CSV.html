@@ -247,7 +247,7 @@ bs6,Frederikke,Frederiksen,23344561,ff@fakemail.dk</pre>
 
 <h2>Ting der skal ændres.</h2>
 
-<p>For at kunne hente disse databaser ind skal vi have ændret noget i konfigurationen af XAMPP i henholdsvis PHP og MySQL konfigurationen</p>	
+<p>For at kunne hente disse databaser ind skal vi have ændret noget i konfigurationen af XAMPP i henholdsvis PHP og MySQL konfigurationen, så vi kan uploade databaser der er større end 2 MB.</p>	
 	
 <span class="afsnit">... på Windows</span>
 
@@ -268,6 +268,11 @@ memory_limit = 1000M
 <pre class="black">
 max_allowed_packet = 100M
 </pre>
+
+<span class="afsnit">... på Mac</span>
+
+<code class="cmd">sudo nano /private/etc/php.ini.default</code>
+
 
 
 	
