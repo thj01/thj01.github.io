@@ -398,6 +398,59 @@
 	</tbody>
 </table>
 
+<details>
+
+	<summary>Anvendelse i regneark	</summary>
+
+	<table class="">
+	<thead>
+		<tr>
+			<th>Statistisk funktion</th>
+			<th>Beskrivelse</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>tæl(Område)</td>
+			<td>Antal observationer</td>
+		</tr>
+		<tr>
+			<td>tælv(Område)</td>
+			<td>Antal observationer (ikke tomme felter)</td>
+		</tr>
+		<tr>
+			<td>tæl.hvis(Område;Betingelse)</td>
+			<td>Antal observationer i området der opfylder betingelsen. Hvis betingelsen er et tegn skal det omgives med anførselstegn (f.eks: <span class="inl_cmd">"</span>) .</td>
+		</tr>
+		<tr>
+			<td>middel(Område)</td>
+			<td>Gennemsnit</td>
+		</tr>
+		<tr>
+			<td>min(Område)</td>
+			<td>Mindste værdi</td>
+		</tr>
+		<tr>
+			<td>maks(Område)</td>
+			<td>Største værdi</td>
+		</tr>
+		<tr>
+			<td>hyppigst(Område)</td>
+			<td>hyppigste værdi (Typetal)</td>
+		</tr>
+		<tr>
+			<td>median(Område)</td>
+			<td>Medianen</td>
+		</tr>
+		<tr>
+			<td>kvartil(Område;1/2/3)</td>
+			<td>Første, anden og tredje kvartil</td>
+		</tr>
+	</tbody>
+</table>
+
+</details>
+
 <h2>Kvartilsæt</h2>
 
 <p>For at danne sig et overblik over ens observationer ser man på hvad værdien er ved henholdsvis 25%, 50% og 75%. Kigger vi på tabellen med biler ovenfor kan vi se at:</p>
@@ -440,40 +493,64 @@
 	
 <p></p>
 
-<ul class="none">
-	<li><span class="math">\( x_i- \overline x \)</span></li>
-	
-	<p>Beskriver differencen mellem den enkelte observartion og gennemsnittet</p>
+	<ul class="none">
+		<li><span class="math">\( x_i- \overline x \)</span></li>
+		
+		<p>Beskriver differencen mellem den enkelte observartion og gennemsnittet</p>
 
-	<li><span class="math">\( (x_i- \overline x)^2 \)</span></li>
- 
-	<p>For at gøre differencen positiv og sikre sig at store differencer også påvirker resultatet mere</p>
+		<li><span class="math">\( (x_i- \overline x)^2 \)</span></li>
+	 
+		<p>For at gøre differencen positiv og sikre sig at store differencer også påvirker resultatet mere</p>
 
-	<li><span class="math">\( h_i \)</span></li>
-	
-	<p>For at finde finde ud af hvor ofte differencen forekommer</p>
-	
-	<li><span class="math">\( \sum_{i=1}^k \)</span></li>
-	
-	<p>Gøres for hver enkelt observation</p>
+		<li><span class="math">\( h_i \)</span></li>
+		
+		<p>For at finde finde ud af hvor ofte differencen forekommer</p>
+		
+		<li><span class="math">\( \sum_{i=1}^k \)</span></li>
+		
+		<p>Gøres for hver enkelt observation</p>
 
-	<li><span class="math">\( \frac{1}{n-1} \)</span></li>
-	
-	<p>Det samlede tal for differencen spredes ud over alle observationerne. <span class="math">\( \frac{ 1 }{ n-1 } \)</span> fordi det er en stikprøve.</p>
-	
-	<li><span class="math">\( s^2 \)</span></li>
-	
-	<p>Når vi har kvadreret på den ene side skal vi også gøre det på den anden.</p>
-</ul>	
+		<li><span class="math">\( \frac{1}{n-1} \)</span></li>
+		
+		<p>Det samlede tal for differencen spredes ud over alle observationerne. <span class="math">\( \frac{ 1 }{ n-1 } \)</span> fordi det er en stikprøve.</p>
+		
+		<li><span class="math">\( s^2 \)</span></li>
+		
+		<p>Når vi har kvadreret på den ene side skal vi også gøre det på den anden.</p>
+	</ul>	
 
+</details>
 
+<details>
 
-<div class="latex">$$  $$</div>
+	<summary>Regnearksformler</summary>
 
-
-
-<div class="latex">$$  $$</div>
-
+	<table class="">
+		<thead>
+			<tr>
+				<th>Statistisk funktion</th>
+				<th>Beskrivelse</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>varians.s(Område)</td>
+				<td>variansen for en stikprøve</td>
+			</tr>
+			<tr>
+				<td>varians.p(Område)</td>
+				<td>variansen for en population</td>
+			</tr>
+			<tr>
+				<td>stdafv.s(område)</td>
+				<td>Standardafvigelsen/spredningen for en stikprøve</td>
+			</tr>
+			<tr>
+				<td>stdafv.p(område)</td>
+				<td>Standardafvigelsen/spredningen for en population</td>
+			</tr>
+		</tbody>
+	</table>
 
 </details>
 
