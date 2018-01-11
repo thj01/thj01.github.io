@@ -83,7 +83,7 @@ CREATE TABLE `lærere` (
   `Lærer` varchar(3) COLLATE utf8_danish_ci NOT NULL,
   `Navn` varchar(50) COLLATE utf8_danish_ci NOT NULL,
   `Lokale` varchar(4) COLLATE utf8_danish_ci NOT NULL,
-  `Mobil` int(8) NOT NULL,
+  `Mobil` varchar(8) NOT NULL,
   `Mail` varchar(50) COLLATE utf8_danish_ci NOT NULL,
   `fag1` varchar(10) COLLATE utf8_danish_ci NOT NULL,
   `fag2` varchar(10) COLLATE utf8_danish_ci NOT NULL
