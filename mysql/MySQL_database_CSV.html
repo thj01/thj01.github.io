@@ -245,10 +245,8 @@ bs6,Frederikke,Frederiksen,23344561,ff@fakemail.dk</pre>
 
 <p>Her finder man f.eks. en musikdatabase: <a href="https://think.cs.vt.edu/corgis/csv/music/music.html" target="_blank">https://think.cs.vt.edu/corgis/csv/music/music.html</a></p>
 
-<h2>Ting der skal ændres.</h2>
+<p>Disse databaser kan være ret store, og det betyder at der skal ændres på standardindstillingerne i XAMPP. Helt konkret skal vi have ændret på størrelsen af de filer, som PHPMyAdmin vil acceptere. For at undgå at komme i problemer med størrelsen sætter vi den til 100MB. </p>
 
-<p>For at kunne hente disse databaser ind skal vi have ændret noget i konfigurationen af XAMPP i henholdsvis PHP og MySQL konfigurationen, så vi kan uploade databaser der er større end 2 MB.</p>	
-	
 <span class="afsnit">... på Windows</span>
 
 <p>Start Geany og åbn filen <span class="inl_cmd">php.ini</span> i mappen <span class="inl_cmd">C:\xampp\php</span>, og indsæt følgende i bunden.</p>
@@ -269,12 +267,47 @@ memory_limit = 1000M
 max_allowed_packet = 100M
 </pre>
 
+<p>Herefter genstartes <span class="inl_cmd">Apache</span> og <span class="inl_cmd">MySQL</span> i XAMPP, og PHPMyAdmin genindlæses hvis det ikke har været lukket ned.</p>
+
 <span class="afsnit">... på Mac</span>
+
+<p>For at redigere i konfigurationsfilerne skal du åbne terminalen og indtaste følgende kommando.</p>
 
 <code class="cmd">sudo nano /private/etc/php.ini.default</code>
 
+<p>Indtast dit kodeord, og <span class="inl_cmd">nano</span> starter.</p>
 
+<p>Tast <kbd>Ctrl</kbd>+<kbd>W</kbd>+<kbd>V</kbd> så cursoren går til slutningen af dokumentet.</p>
 
+<p>Kopier nedestående og indsæt det</p>
+
+<pre class="black">
+post_max_size = 100M 
+upload_max_filesize = 100M 
+max_execution_time = 5000 
+max_input_time = 5000 
+memory_limit = 1000M 
+</pre>
+
+<p>Gem filen ved at trykke:</p>
+
+<ul class="none">
+	<li><kbd>Ctrl</kbd>+<kbd>X</kbd></li>
+	<li><kbd>Y</kbd></li>
+	<li><kbd>Enter</kbd></li>
+</ul>
+
+<p>Herefter ændres der i filen <span class="inl_cmd">my.cnf</span></p>
+
+<code class="cmd">sudo nano /Applications/XAMPP/xamppfiles/etc/my.cnf</code>
+
+<p>Ændr feltet <span class="inl_cmd">max_allowed_packet</span>, så det får værdien 100:</p>
+
+<code class="cmd">max_allowed_packet = 100</code>
+
+<p>Gem filen som ovenfor</p>
+
+<p>Herefter genstartes <span class="inl_cmd">Apache</span> og <span class="inl_cmd">MySQL</span> i XAMPP, og PHPMyAdmin genindlæses hvis det ikke har været lukket ned.</p>
 	
 </div><!-- end: col-md-9 -->
 
