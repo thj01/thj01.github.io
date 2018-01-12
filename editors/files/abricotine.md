@@ -30,3 +30,8 @@ Herunder vises en løkke i Python.
 for i in range(1,7):
 	print(i)
 ```
+
+```Python
+for i in range(1,9):
+	print(i)
+```
