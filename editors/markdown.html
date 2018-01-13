@@ -128,13 +128,6 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 
 
-<figure id="">
-
-	<img class="p90 frame" src="images/joplin01_overskrifter.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
 
 <blockquote>
 	<p>Vær opmærksom på, at hvis man skriver dokumenter, så er <span class="inl_cmd">h1</span> overskriften det samme som titlen på ens dokument.</p>
@@ -153,18 +146,17 @@ __Fed tekst__
 	</code>
 </pre>
 
-<figure id="">
+<div class="eksempel">
 
-	<img class="p90 frame"src="images/joplin02_formatering_tekst.png" alt="" title="" />
+	<p><i>Kursiv tekst</i></p>
+	
+	<p><b>Fed tekst</b></p>
+	
+	<p><del>Overstreget tekst	</del></p>
 
-	<figcaption></figcaption>
-
-</figure>
+</div>
 
 <h2>Citater</h2>
-
-<p>I joplin er citater ikke formateret tydeligt, men bliver blot rykket ind. Det kan dog være en fordel hvis man senere vil konvertere til HTML eller PDF.</p>
-
 
 <pre>
 	<code class="markdown">
@@ -172,21 +164,21 @@ Dette er et citat (tekst der er rykket ind)
 
 > __Murphy's Law__: Anything that can possibly go wrong, does.
 
-Dette er et citat med et citat i
-
-> __Murphy's Law__: Anything that can possibly go wrong, does.
-
->> __O'Tools corollary__: Myrpy was an optimist
 	</code>
 </pre>
 
-<figure id="">
+<div class="eksempel">
+	
+	<p>Dette er et citat (tekst der er rykket ind)</p>
 
-	<img class="p90 frame"src="images/joblin11_citater.png" alt="" title="" />
+	<blockquote>
+		<p>
+			<b>Murphy's Law</b>: Anything that can possibly go wrong, does.
+		</p>
+	</blockquote>
 
-	<figcaption></figcaption>
+</div>
 
-</figure>
 
 <h2>Kode</h2>
 
@@ -216,7 +208,19 @@ for i in range(1,7):
 	</code>
 </pre>
 
+<div class="eksempel">
 
+	<p>For at udskrive noget i Python indsættes det i <span class="inl_cmd">print()</span> funktionen</p>
+	
+	<p>For at udskrive en blok af kode sætter man det imellem 3 back-tics og angiver programmeringsssproget bagefter</p>
+
+	<pre>
+		<code class="python">
+for i in range(1,7):
+	print(i)</code>
+	</pre>
+
+</div>
 
 
 <h2>Tværgående linier</h2>
@@ -229,13 +233,15 @@ Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliqu
 	</code>
 </pre>
 
-<figure id="">
+<div class="eksempel">
 
-	<img class="p90 frame"src="images/joplin03_tvaergaaende_linier.png" alt="" title="" />
+	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 
-	<figcaption></figcaption>
+	<hr/>
+	
+	<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+</div>
 
-</figure>
 
 <h2>Fodnoter</h2>
 
@@ -245,10 +251,30 @@ Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliqu
 	<code class="markdown">
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.[^1]
 
-[^1]: Her er fodnoten 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.[^2]
 
+***
+
+[^1]: Her er fodnote 1
+[^2]: Her er fodnote 2
 	</code>
 </pre>
+
+<div class="eksempel">
+
+	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<sup><a href="#fn_1" id="reffn_1">1</a></sup></p>
+		
+	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<sup><a href="#fn_2" id="reffn_2">2</a></sup></p>
+
+	<hr>
+	
+	<div id="fn_1">
+	<sup>1</sup>. Her er fodnote 1<a href="#reffn_1" title="Jump back to footnote [1] in the text."> &#8617;</a>
+	</div>
+	<div id="fn_2">
+	<sup>2</sup>. Her er fodnote 2<a href="#reffn_2" title="Jump back to footnote [2] in the text."> &#8617;</a>
+	</div>
+</div>
 
 <h1>Lister</h1>
 
@@ -262,13 +288,16 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 	</code>
 </pre>
 
-<figure id="">
+<div class="eksempel">
 
-	<img class="p90 frame"src="images/joplin04_lister.png" alt="" title="" />
+	<ul class="disc">
+		<li>element 1</li>
+		<li>element 2</li>
+		<li>element 3</li>
+	</ul>
 
-	<figcaption></figcaption>
+</div>
 
-</figure>
 
 <p>Hvis man vil have den til at anvende tal eller bogstaver skriver man det i stedet de ovenstående tegn. Da joblin er et simpelt notesværktøj arbejder det ikke med indlejrede lister, som markup,language ellers gør.</p>
 
@@ -287,17 +316,63 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 <p>Ved at sætte <span class="inl_cmd">x</span> i <span class="inl_cmd">[ ]</span> bliver feltet markeret på forhånd. Feltet er interaktivt ved at man klikker på det.</p>
 
-<figure id="">
+<div class="eksempel">
 
-	<img class="p90 frame"src="images/joplin04a_Afkrydsningslister.png" alt="" title="" />
+			<ul>
+				
+				<li class='task-list-item task-list-item-checked'><input class='task-list-item-checkbox' type='checkbox' disabled='disabled' checked='checked'> Opgave 1</li>
+				<li class='task-list-item'><input class='task-list-item-checkbox' type='checkbox' disabled='disabled' > Opgave 2</li>
+				<li class='task-list-item'><input class='task-list-item-checkbox' type='checkbox' disabled='disabled' > Opgave 3</li>
+				<li class='task-list-item'><input class='task-list-item-checkbox' type='checkbox' disabled='disabled' > Opgave 4</li>
+			
+			</ul>
 
-	<figcaption></figcaption>
+</div>
 
-</figure>
+
+
 
 <h2>Indlejrede lister</h2>
 
-<p>Man indlejrer en liste ved at sætte en tabulatorer foran de liste element man vil have ind under de andre.</p>
+<p>Man indlejrer og blande lister ved at sætte en tabulatorer foran de liste element man vil have ind under de andre.</p>
+
+<pre>
+	<code class="markdown">
+- element 1
+- element 2
+    - Underelement 1
+    - Underelement 2
+- element 3
+    - [] undervalg 1
+    - [x] valgt undervalg 2
+	</code>
+</pre>
+
+<div class="eksempel">
+
+	<ul>
+
+		<li>element 1</li>
+		<li>element 2
+		
+			<ul>
+				<li>Underelement 1</li>
+				<li>Underelement 2</li>
+			</ul>
+		
+		</li>
+		
+		<li>element 3
+		
+			<ul>
+				<li class='task-list-item'><input class='task-list-item-checkbox' type='checkbox' disabled='disabled' > undervalg 1</li>
+				<li class='task-list-item task-list-item-checked'><input class='task-list-item-checkbox' type='checkbox' disabled='disabled' checked='checked'> valgt undervalg 2</li>
+			</ul>
+			
+		</li>
+	</ul>
+
+</div>
 
 <h1>Henvisninger</h1>
 
@@ -306,35 +381,42 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 <pre>
 	<code class="markdown">
 https://www.google.com
+
 www.google.com
+
 google.com
 	</code>
 </pre>
 
-<figure id="">
+<div class="eksempel">
 
-	<img class="p90 frame"src="images/joblin07_Links_1.png" alt="" title="" />
+	<p>	<a href="https://www.google.com" target="_blank">https://www.google.com</a></p>
+	
+	<p><a href="www.google.com" target="_blank">www.google.com</a></p>
+	
+	<p><a href="google.com" target="_blank">google.com</a></p>
 
-	<figcaption></figcaption>
-
-</figure>
+</div>
 
 <p>Vil man lave den inline kan det gøres som her. Læg mærke til, at det skal være den fulde sti. </p>
 
 <pre>
 	<code class="markdown">
 Her er et link du kan klikke på til [Google](https://www.google.com)
+
 Her er et link du kan klikke på til [Google](https://www.google.com "Googles hjemmeside"), og som får en titel når du holder musen over linket.
 	</code>
 </pre>
 
-<figure id="">
+<div class="eksempel">
 
-	<img class="p90 frame"src="images/joblin08_Links_2.png" alt="" title="" />
+	<p>Her er et link du kan klikke på til <a href="https://www.google.com">Google</a></p>
+			
+	<p>Her er et link du kan klikke på til <a href="https://www.google.com" title="Googles hjemmeside">Google</a>, og som får en titel når du holder musen over linket.</p>
 
-	<figcaption></figcaption>
 
-</figure>
+</div>
+
 
 <p>Denne metode bør anvendes hvis man vil senere vil kunne konvertere sit dokument til andre formater.</p>
 
@@ -343,7 +425,9 @@ Her er et link du kan klikke på til [Google](https://www.google.com "Googles hj
 <pre>
 	<code class="markdown">
 Hjemmeside [vidas][reference_a]
+
 [Det blå gymnasium][1]
+
 Det kan også bare være [den rene reference]
 
 [reference_a]: http://www.vidas.dk
@@ -352,30 +436,49 @@ Det kan også bare være [den rene reference]
 	</code>
 </pre>
 
-<figure id="">
+<div class="eksempel">
 
-	<img class="p90 frame"src="images/joblin09_Links_3.png" alt="" title="" />
+	<p>Hjemmeside <a href="http://www.vidas.dk">vidas</a></p>
 
-	<figcaption></figcaption>
+	<p><a href="http://www.vestfyns.dk">Det blå gymnasium</a></p>
 
-</figure>
+	<p>Det kan også bare være <a href="https://www.google.com">den rene reference</a></p>
+
+</div>
+
 
 <h2>Anker</h2>
 
-<p>Hvis man vil lave henvisninger (links) indenfor ens dokument anvender man ankre.</p>
+<p>Ankre er henvisninger der fungerer inden for det enkelte HTML-dokument. Læg mærke til at du skal lave selve ankeret med "rigtig" HTML-kode. Hvis du vil lave  </p>
+
+<p>Hvis man vil lave ankre henvisninger (links) indenfor ens dokument anvender man ankre.</p>
 
 <pre>
 	<code class="markdown">
-&lt;a id="top">&lt;/a>
-#Dokument titel
+&lt;a id="top">Top&lt;/a>
 
-... en masse markdown
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
 [Gå til toppen](#top)
 	</code>
 </pre>
 
-<p>Læg mærke til at du skal lave selve ankeret i "rigtig" HTML-formatering</p>
+<div class="eksempel">
+
+	<p><a id="top">Top</a></p>
+
+	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+	<p><a href="#top">Gå til toppen</a></p>
+
+
+</div>
+
+
 
 
 <h1>Tabeller</h1>
@@ -386,17 +489,37 @@ Det kan også bare være [den rene reference]
 	<code class="Markdown">
 Tabeloverskrift 1 | Tabeloverskrift 2 | Tabeloverskrift 3 
 ---|---|---
-Indhold 1 | Indhold 2 | indhold 3
+Felt 1,1 | Felt 1,2 | Felt 1,3 
+Felt 2,1 | Felt 2,2 | Felt 2,3 
 	</code>
 </pre>
 
-<figure id="">
+<div class="eksempel">
 
-	<img class="p90 frame"src="images/joplin05_tabel_1.png" alt="" title="" />
+	<table>
+		<thead>
+			<tr>
+				<th>Tabeloverskrift 1</th>
+				<th>Tabeloverskrift 2</th>
+				<th>Tabeloverskrift 3 </th>
+			</tr>
+		</thead>
+	<tbody>
+		<tr>
+			<td>Felt 1,1</td>
+			<td>Felt 1,2</td>
+			<td>Felt 1,3 </td>
+		</tr>
+		<tr>
+			<td>Felt 2,1</td>
+			<td>Felt 2,2</td>
+			<td>Felt 2,3 </td>
+		</tr>
+	</tbody>
+</table>
 
-	<figcaption></figcaption>
+</div>
 
-</figure>
 
 <p>Den anden linie fortæller hvordan tabellen skal formateres. De tre streger fortæller at der skal være en ramme omkring de enkelte felter i tabellen. Ved at indsætte kolon for og efter stregerne kan man bestemme om kolonne teksten skal være venstre, centralt eller højrestillet.</p>
 
@@ -404,17 +527,37 @@ Indhold 1 | Indhold 2 | indhold 3
 	<code class="markdown">
 Tabeloverskrift 1 | Tabeloverskrift 2 | Tabeloverskrift 3 
 ---|:---:|---:
-venstrestillet | Centreret | Højrestillet
+Felt 1,1 | Felt 1,2 | Felt 1,3 
+Felt 2,1 | Felt 2,2 | Felt 2,3 
 	</code>
 </pre>
 
-<figure id="">
+<div class="eksempel">
 
-	<img class="p90 frame"src="images/joplin06_tabel_2.png" alt="" title="" />
+<table>
+	<thead>
+		<tr>
+			<th>Tabeloverskrift 1</th>
+			<th style="text-align:center">Tabeloverskrift 2</th>
+			<th style="text-align:right">Tabeloverskrift 3 </th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Felt 1,1</td>
+			<td style="text-align:center">Felt 1,2</td>
+			<td style="text-align:right">Felt 1,3 </td>
+		</tr>
+		<tr>
+			<td>Felt 2,1</td>
+			<td style="text-align:center">Felt 2,2</td>
+			<td style="text-align:right">Felt 2,3 </td>
+		</tr>
+	</tbody>
+</table>
 
-	<figcaption></figcaption>
+</div>
 
-</figure>
 
 <p>Udelader man kolon, så vil teksten automatisk blive venstrestillet.</p>
 
@@ -425,17 +568,20 @@ venstrestillet | Centreret | Højrestillet
 
 <pre>
 	<code class="markdown">
+Billede af Tux		
+		
 ![alt text](https://upload.wikimedia.org/wikipedia/commons/a/af/Tux.png)
 	</code>
 </pre>
 
-<figure id="">
+<div class="eksempel">
+	
+		<p>Billede af Tux</p>
 
-	<img class="p90 frame"src="images/joblin10_billeder.png" alt="" title="" />
+		<p><img src="https://upload.wikimedia.org/wikipedia/commons/a/af/Tux.png" alt="alt text"></p>
 
-	<figcaption></figcaption>
+</div>
 
-</figure>
 
 <p>På samme måde som ovenfor kan man henvise til billedet ved hjælp af en reference.</p>
 
@@ -462,9 +608,7 @@ venstrestillet | Centreret | Højrestillet
 
 <h1>Matematik</h1>
 
-<p>Rigtig mange markup language programmer giver adgang til at skrive <span class="math">\( L_aT^eX \)</span> direkte ind i koden. Det gøres ved at skrive Latex koden imellem 2 <span class="inl_cmd">$$</span> (dollartegn). F.eks: </p>
-
-<div class="latex">$$  $$</div>
+<p>Rigtig mange markup language programmer giver adgang til at skrive <span class="math">\( L_aT^eX \)</span> direkte ind i koden. Det gøres ved at skrive Latex koden imellem 2 <span class="inl_cmd">$$</span> (dollartegn).</p>
 
 <pre>
 	<code class="markdown">
@@ -476,7 +620,15 @@ $$ s^2 = \frac{1}{n-1} \cdot \sum_{i=1}^k (m_i- \overline x)^2 \cdot h_i $$
 	</code>
 </pre>
 
-<p>Man skal være opmærksom på, at nogle markdown editors kun forventer et enkelt <span class="inl_cmd">$</span>-tegn hvis det skal være inline.</p>
+<div class="eksempel">
+
+			<p>Løsningen for en andengradsligning: <script type="math/tex">x = \frac{-b \pm \sqrt D}{2a}</script>        </p>
+<p>Herunder er formlen for varians ved en stikprøve</p>
+<script type="math/tex; mode=display">s^2 = \frac{1}{n-1} \cdot \sum_{i=1}^k (m_i- \overline x)^2 \cdot h_i</script>
+
+</div>
+
+<p>Du kan finde et overblik over de mest anvendte Latex koder her: <a href="../matematik/mat_notation.html#matematiske-tegn" target="_blank">mat_notation.html</a></p>
 
 <h1>Cheat sheets</h1>
 
