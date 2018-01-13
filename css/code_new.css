@@ -455,11 +455,54 @@ content: ">";
 
 }
 
-
-
 p#html_intro_kode_resulat{
 
 background-color: #EEEEEE;
 padding: 1em;
 
 }
+
+div.eksempel {
+
+border: 2px solid grey;
+border-radius: 15px;
+padding: 60px 20px	20px 60px;
+margin: 40px;
+
+
+
+}
+
+div.eksempel::before {
+
+content: "Eksempel";
+margin-top: -72px;
+margin-left: -40px;
+margin-bottom: 10px;
+padding-left: 6px ;
+font-size: 1.2em;
+width: 90px;
+background-color: white;
+display: block;
+font-weight: 700;
+
+}
+
+div.eksempel .headline1 {
+	font-family: Ubuntu, sans-serif;
+	font-weight: 700;
+	font-size: 2.3em;
+}
+
+div.eksempel .headline2 {
+	font-family: Ubuntu, sans-serif;
+	font-weight: 700;
+	font-size: 1.6em;
+}
+
+div.eksempel .headline3 {
+	font-family: Ubuntu, sans-serif;
+	font-weight: 700;
+	font-size: 1.3em;
+}
+
