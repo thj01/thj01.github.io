@@ -22,16 +22,13 @@ Herunder er formlen for varians ved en stikprøve
 
 $$ s^2 = \frac{1}{n-1} \cdot \sum_{i=1}^k (m_i- \overline x)^2 \cdot h_i $$
 
+$$ \overbrace {a \cdot b \cdot c \cdot d \cdot e}^\text{Factors}   $$
+
 ##Kode
 
 Herunder vises en løkke i Python.
 
-```Python
+```python
 for i in range(1,7):
-	print(i)
-```
-
-```Python
-for i in range(1,9):
 	print(i)
 ```
