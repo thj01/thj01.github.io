@@ -318,6 +318,8 @@ MathJax.Hub.Config({
 
 <p>The no so short Introduction to <span class="math">\( L_aT^eX \)</span>: <a href="https://tobi.oetiker.ch/lshort/lshort.pdf" target="_blank">https://tobi.oetiker.ch/lshort/lshort.pdf</a></p>
 
+<p>Cheatsheat: <a href="https://math.meta.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference/19678" target="_blank">https://math.meta.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference/19678</a></p>
+
 <h2>Word</h2>
 
 <p>Guide til MSO 2007: <a href="http://www.chem.mtu.edu/~tbco/cm416/EquationEditor_main.pdf" target="_blank">http://www.chem.mtu.edu/~tbco/cm416/EquationEditor_main.pdf</a></p>
@@ -632,6 +634,12 @@ MathJax.Hub.Config({
 	</tbody>
 </table>
 
+<p><b>Note: </b>Hvis man skriver brøker i Latex, som kun indeholder tæller og nævner på et ciffer behøver man ikke lave curlybrackets. Dvs:</p>
+
+<p><span class="math">\( \text{\frac ab} \)</span> = <span class="math">\( \frac ab \)</span></p>
+
+<p><span class="math">\( \text{\frac 37} \)</span> = <span class="math">\( \frac 37 \)</span></p>
+
 <h2>Parenteser og klammer</h2>
 
 <p></p>
@@ -675,14 +683,20 @@ MathJax.Hub.Config({
 			<td>| a |</td>
 			<td>| a |</td>
 		</tr>
+		<tr>
+			<td><span class="math">\( \langle a \rangle  \)</span></td>
+			<td>| a |</td>
+			<td>lline  a rline</td>
+			<td>| a |</td>
+			<td>\langle a \rangle</td>
+		</tr>
+		
 	</tbody>
 </table>
 
 
 
 <h2>Skalerbare parenteser og klammer</h2>
-
-<p></p>
 
 <table class="">
 	<thead>
@@ -753,13 +767,7 @@ MathJax.Hub.Config({
 			<td>\underline x</td>
 			<td>na</td>
 		</tr>
-		<tr>
-			<td><span class="math">\( \require{cancel} \cancel {5} \)</span></td>
-			<td></td>
-			<td></td>
-			<td>\require{cancel} \cancel {5}</td>
-			<td>na</td>
-		</tr>
+
 		<tr>
 			<td><span class="math">\( \overbrace {a + b} \)</span></td>
 			<td></td>
@@ -772,6 +780,13 @@ MathJax.Hub.Config({
 			<td></td>
 			<td></td>
 			<td>\underbrace {a + b}</td>
+			<td>na</td>
+		</tr>
+		<tr>
+			<td><span class="math">\( \require{cancel} \cancel {5} \)</span></td>
+			<td></td>
+			<td></td>
+			<td>\require{cancel} \cancel {5}</td>
 			<td>na</td>
 		</tr>
 	</tbody>
@@ -791,9 +806,8 @@ MathJax.Hub.Config({
 
 <div class="latex">$$ \underbrace {a \cdot b \cdot c \cdot d \cdot e}_\text{Et gangestykke} $$</div>
 
-<h2>Symboler</h2>
+<h2>Logiske tegn</h2>
 
-<p></p>
 
 <table class="">
 	<thead>
@@ -876,10 +890,62 @@ MathJax.Hub.Config({
 
 <div class="latex">$$ \sum_{x=0}^{10} (x) $$</div>
 
+<h2>Symboler</h2>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Matematik</th>
+			<th>MS Office</th>
+			<th>Libreoffice</th>
+			<th>L<sub>a</sub>T<sup>e</sup>X</th>
+			<th>HTML</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><span class="math">\( \star \)</span></td>
+			<td>\star</td>
+			<td>%star</td>
+			<td>\star</td>
+			<td>&amp;star;</td>
+			
+		</tr>
+		<tr>
+			<td><span class="math">\( \ast \)</span></td>
+			<td>\ast</td>
+			<td>%ast</td>
+			<td>\ast</td>
+			<td>&amp;ast;</td>
+		</tr>
+		<tr>
+			<td><span class="math">\( \oplus \)</span></td>
+			<td>\oplus</td>
+			<td>%oplus</td>
+			<td>\oplus</td>
+			<td>&amp;oplus;</td>
+		</tr>
+		<tr>
+			<td><span class="math">\( \circ \)</span></td>
+			<td>\circ</td>
+			<td>%circ</td>
+			<td>\circ</td>
+			<td>&amp;circ;</td>
+		</tr>
+		<tr>
+			<td><span class="math">\( \bullet \)</span></td>
+			<td>\bullet</td>
+			<td>%bullet</td>
+			<td>\bullet</td>
+			<td>&amp;bull;</td>
+		</tr>
+
+	</tbody>
+</table>
+
 
 <h2>Græske bogstaver</h2>
 
-<p></p>
 
 <table class="">
 	<thead>
