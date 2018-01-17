@@ -108,6 +108,18 @@
 
 <h1>Opret relationer</h1>
 
+<p>En relation er sammenhængen mellem poster i to tabeller. I vores database er det f.eks. være klassen (f.eks. 1a) der optræder som Unik nøgle eller indeks i en tabel</p>
+
+<p>Herunder vil vi oprette forbindelse mellem klasse-posterne i tabellerne <span class="inl_cmd">klasse_og_elever</span> og <span class="inl_cmd">klasse_og_mentorer</span>. Vi skal altså lave en forbindelse mellem:</p>
+
+<p><span class="inl_cmd">klasse_og_elever.klasse</span></p>
+
+<p>og</p>
+
+<p><span class="inl_cmd">klasse_og_mentorer.klasse</span></p>
+
+<h2>Vælg Designer</h2>
+
 <p>For at oprette relationer mellem tabellerne skal vi først vælge hele databasen og herefter menuen <span class="inl_cmd">Designer</span></p>
 
 <figure id="">
@@ -128,6 +140,8 @@
 
 </figure>
 
+<h2>Opret relationerne</h2>
+
 <p>Ved at holde musen hen over ikonlinjen til venstre kan du finde menuen <span class="inl_cmd">Opret relation</span>. Klik på den:</p>
 
 <figure id="">
@@ -138,6 +152,16 @@
 
 </figure>
 
+<p>Når du har klikket på feltet <span class="inl_cmd">Opret relation</span>, vil der komme en grøn tekstramme ved markøren hvor der står: <span class="inl_cmd">Vælg refereret nøgle</span>.</p>
+
+<p>Klik på <span class="inl_cmd">klasse_og_elever.klasse</span>.</p>
+
+<p>Herefter ændrer teksten i det grønne felt sig til <span class="inl_cmd">Vælg fremmednøgle</span></p>
+
+<p>Klik på feltet <span class="inl_cmd">klasse_og_mentorer.klasse</span>.</p>
+
+
+<!--
 <p>Når du har klikket på ikonet kommer der et grønt beskrivelsesfelt med cursoren, hvor der står <span class="inl_cmd">Vælg refereret nøgle</span>. Klik på feltet <span class="inl_cmd">Klasse</span> i tabellen <span class="inl_cmd">Klasser_og_elever</span>.</p>
 
 <figure id="">
@@ -158,12 +182,13 @@
 	<figcaption></figcaption>
 
 </figure>
+-->
 
 <p>Når du har gjort det kommer der en blå boks frem. Her skal du vælge <span class="inl_cmd">RESTRICT</span> i begge felter. Det betyder at vi låser feltet med den refererede nøgle, så det ikke kan slettes hvis der er forekomster af denne i fremmedtabellen.</p>
 
 <figure id="">
 
-	<img class="p30" src="images/mysql_fremmednoegle_11.png" alt="" title="" />
+	<img class="p25" src="images/mysql_fremmednoegle_11.png" alt="" title="" />
 
 	<figcaption></figcaption>
 
