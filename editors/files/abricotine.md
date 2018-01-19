@@ -70,7 +70,6 @@ $$ s^2 = \frac{1}{n-1} \cdot \sum_{i=1}^k (m_i- \overline x)^2 \cdot h_i $$
 
 Og noget matematik der er indsat i en tekst $$ \frac 39 = \frac 13 $$
 
-
 ##Kode
 
 Herunder vises en løkke i Python.
