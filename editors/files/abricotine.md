@@ -1,4 +1,4 @@
-#En Dokumentation
+#En gennemgang
 
 
 
@@ -56,6 +56,13 @@ https://www.google.com
 Kolonne 1 | Kolonne 2 | Kolonne 3
 ---|---|---
 Felt 1,1 | Felt 1,2 | felt 1,3
+
+###Formateret tabel
+
+Kolonne 1 | Kolonne 2 | Kolonne 3
+---|:---:|---:
+Felt 1,1 | Felt 1,2 | felt 1,3
+
 
 ##Billede
 
