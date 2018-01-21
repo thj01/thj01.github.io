@@ -38,12 +38,15 @@
 <div class="title">Bootstrap - opbygning</div>
 
 
-
-
-
 <h1>Overblik</h1>
 
 <p>En bootstrap side er opbygget ligesom et almindeligt HTML5 dokument, men hvor selve body inddeles i sektioner. Sektionerne (kaldet containers) er opbygget som herinder.</p>
+
+<blockquote>
+	
+	<p>Når man anvender bootstrap har man den fordel at det er tænkt som et <span class="inl_cmd">mobile first</span> system. Dvs. at det er opbygget til at kunne anvendes på forskellige enheder. Dvs. at det automatisk vil tilpasse sig den enhed du ser produktet på. </p>
+	
+</blockquote>
 
 <figure id="">
 
@@ -63,13 +66,17 @@
 		
 				&lt;div class="col-xs-xx">
 			
-						<b>*** INDHOLD ***	</b>
+						<b>***************</b>
+						<b>*** INDHOLD ***</b>
+						<b>***************</b>
 
 				&lt;/div> <span class="red">&lt;!-- Slut på col --></span>
 		
 				&lt;div class="col-xs-xx">
 			
-						<b>*** INDHOLD ***	</b>
+						<b>***************</b>
+						<b>*** INDHOLD ***</b>
+						<b>***************</b>
 
 				&lt;/div> <span class="red">&lt;!-- Slut på col --></span>
 	
@@ -79,9 +86,7 @@
 	</code>
 </pre>
 
-<h1>Mobile first</h1>
 
-<p>Bootstrap er designet som et responsive system. Dvs. at det automatisk vil tilpasse sig den enhed du ser produktet på. </p>
 
 <h1>Containers</h1>
 
@@ -99,7 +104,15 @@
 
 <h2>Container typer</h2>
 
-<p>Der findes to typer containers.</p>
+<p>Der findes to klasser af containere.</p>
+
+<ul class="none fat_li">
+	<li>container</li>
+	
+		<p>Containeren har en fast b</p>
+	
+	<li>container-fluid</li>
+</ul>
 
 
 <span class="afsnit">container</span>
@@ -125,22 +138,22 @@
 	<tbody>
 		<tr>
 			<td>Telefoner</td>
-			<td> mindre end 768</td>
+			<td>mindre end 768</td>
 			<td>Fylder hele enheden (auto)</td>
 		</tr>
 		<tr>
 			<td>Tablets</td>
-			<td> større end 768</td>
+			<td>større end 768</td>
 			<td>760 pixels</td>
 		</tr>
 		<tr>
 			<td>Små skærme</td>
-			<td> større end 992</td>
+			<td>større end 992</td>
 			<td>970 pixels</td>
 		</tr>
 		<tr>
 			<td>Store skærme</td>
-			<td> større end 1200</td>
+			<td>større end 1200</td>
 			<td>1170</td>
 		</tr>
 	</tbody>
@@ -158,9 +171,7 @@
 
 <h1>Rækker og kolonner</h1>
 
-<p>En af de mange smarte features i Bootstrap er GRID-systemet.</p>
-
-<p>På den måde kan man lave sit design ved at beskrive hvor mange kolonner i GRID-systemet indholdes skal fylde.</p>
+<p>En af de mange smarte features i Bootstrap er GRID-systemet.På den måde kan man lave sit design ved at beskrive hvor mange kolonner i GRID-systemet indholdes skal fylde.</p>
 
 <table class="bootstrap_grid_table centreret">
     <tr>
@@ -213,14 +224,18 @@
 </details>
 -->
 
+<p>Testside med <span class="inl_cmd">class="container"</span>: <a href="files/test_container.html" target="_blank">test_container.html</a></p>
 
-
-
-<h1>Kolonner</h1>
+<p>Testside med <span class="inl_cmd">class="container-fluid"</span>: <a href="files/test_container_fluid.html" target="_blank">test_container_fluid.html</a></p>
 
 <h1>Jumbotron</h1>
 
 <p>En Jumbotron er en speciel klasse</p>
+
+
+
+
+<h1>Eksempler</h1>
 
 	
 </div><!-- end: col-md-9 -->
