@@ -8,33 +8,20 @@
 
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-<script>
-$("#display").html("<b>Width</b> : " + 
-       $(window).width() + ",<b>Height : </b>" +
-       $(window).height());
-$(window).resize(function() {
-        $("#display\").html("<b>Width</b> : " +
-        $(window).width() + ",<b>Height : </b>" +
-        $(window).height());
-});
-    </script>
-
-
-
+	
 
 	<title>container</title>
+	
 	</head>
 	<body>
 
-	
 <div class="container">
 	
-	<h1>class="container" </h1>
+	<h1>class="container"</h1>
 	
-	<div id="display"></div>
-	
-	<h3>Uden betegnelse ( &lt; 576 pixels )</h3>
+	<p><b>Bredde: </b><input type="input" id="output_width" value="" name="width" /></p>
+
+	<h3>Uden betegnelse</h3>
 
 	<div class="row">
 
@@ -58,7 +45,7 @@ $(window).resize(function() {
 
 	</div>
 
-	<h3>Med sm ( &geq; 576 pixels)</h3>
+	<h3>Med sm</h3>
 
 	<div class="row">
 
@@ -82,7 +69,7 @@ $(window).resize(function() {
 
 	</div>
 
-	<h3>Med md ( &geq; 786 pixels )</h3>
+	<h3>Med md</h3>
 
 	<div class="row">
 
@@ -106,7 +93,7 @@ $(window).resize(function() {
 
 	</div>
 
-	<h3>Med lg ( &geq; 992 pixels)</h3>
+	<h3>Med lg</h3>
 	
 	<div class="row">
 
@@ -130,7 +117,7 @@ $(window).resize(function() {
 
 	</div>
 
-	<h3>Med xl ( &geq; 1200 pixels)</h3>
+	<h3>Med xl</h3>
 	
 	<div class="row">
 
@@ -156,12 +143,23 @@ $(window).resize(function() {
 
 </div>
 
-
+	
 
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+	<script>
+		$(document).ready(function ()
+		{
+		 $(window).resize(function()
+		 {
+		  var show_width = $(window).width();
+		  document.getElementById("output_width").value=show_width.toString();
+		 });
+		});
+	</script>
 	</body>
 </html>
