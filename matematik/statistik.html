@@ -736,31 +736,7 @@
 
 <h2>Varians</h2>
 
-<p><b>Variansen</b> beskriver hvor meget værdierne i gennemsnit afviger fra middelværdien. Når man angiver <span class="inl_cmd">variansen</span> skal man først forholde sig til om det er for en <span class="inl_cmd">population</span> eller en <span class="inl_cmd">stikprøve</span>. Er det fra en population kaldes <span class="inl_cmd">variansen</span> for <span class="math">\( \sigma^2 \)</span> og er det fra en <span class="inl_cmd">stikprøve</span> kaldes den for <span class="math">\( s^2 \)</span>.</p>
-
-<p>Matematisk set beskriver man forskellen mellem to tal ved at trække værdierne fra hinanden. Derefter kvadrerer man for at værdien ikke bliver negativ:</p>
-
-<div class="latex">$$ (x_i- \overline x)^2 $$</div>
-
-<p>For at finde <span class="inl_cmd">variansen</span> i et datasæt skal man finde ud af:</p>
-
-<ol class="">
-	<li>... hvor meget den afviger for hvert observationssæt (<span class="inl_cmd">opsummering</span>) - <span class="math">\( \sum \)</span>.</li>
-	<li>... hvor stor påvirkning det enkelte led har (<span class="inl_cmd">frekvens</span> - <span class="math">\( f_i \)</span>).</li>
-	<li>... om middeltallet kommer udefra (<span class="inl_cmd">population</span>) eller fra datasættet (<span class="inl_cmd">stikprøve.</span>).</li>
-</ol>
-
-<p>For en population er formlen:</p>
-
-<p>1) </p>
-
-<div class="latex">$$ \sigma^2 = \sum_{i=1}^k (x_i- \overline x)^2 \cdot f_i$$</div>
-
-<p>2) ( da: <span class="math">\( f_i = \frac{1}{n} \cdot h_i \)</span> )</p>
-
-<div class="latex">$$ \sigma^2 = \frac{1}{n} \cdot \sum_{i=1}^k (x_i- \overline x)^2 \cdot h_i$$</div>
-
-<p>For en stikprøve </p>
+<p>For en stikprøve er formlen:</p>
 
 <div class="latex">$$ s^2 = \frac{1}{n-1} \cdot \sum_{i=1}^k (x_i- \overline x)^2 \cdot h_i$$</div>
 
@@ -799,7 +775,7 @@ s^2 =  9,556
 
 <p>Spredningen er altså:</p>
 
-<div class="latex">$$ s = \sqrt {s^2} = 3,091 $$</div>
+<div class="latex">$$ s = \sqrt {s^2} = \sqrt {9,556} = 3,091 $$</div>
 
 <h1>Beregninger - kontinuert data</h1>
 
