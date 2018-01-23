@@ -353,7 +353,7 @@
 
 <h1>Statistiske deskriptorer</h1>
 
-<p></p>
+<h2>Aflæste deskriptorer</h2>
 
 <table class="">
 	<thead>
@@ -451,6 +451,20 @@
 
 </details>
 
+<h2>Antal</h2>
+
+<p>Antallet af observationer i et datasæt beregnes medformlen:</p>
+
+<div class="latex">$$ n =  \sum_{i=1}^{k} h_i $$</div>
+
+<h2>Middelværdi (gennemsnit)</h2>
+
+<div class="latex">$$ \overline x = \sum_{i=1}^{k} x_i \cdot f_i $$</div>
+
+eller ( da <span class="math">\( f_i = \frac{1}{n} \cdot h_i \)</span> ) :
+
+<div class="latex">$$ \overline x = \frac{1}{n} \cdot \sum_{i=1}^{k} x_i \cdot h_i $$</div>
+
 <h2>Kvartilsæt</h2>
 
 <p>For at danne sig et overblik over ens observationer ser man på hvad værdien er ved henholdsvis 25%, 50% og 75%. Kigger vi på tabellen med biler ovenfor kan vi se at:</p>
@@ -474,6 +488,13 @@
 <p>Variansen kan altså beskrive hvordan observationerne er fordel. Er tallet lavt ligger observationerne tæt. Er tallet højt ligger det spredt.</p>
 
 <p> Man skal dog være bevidst om at <span class="inl_cmd">variansen</span> skal beregnes på forskellige måder afhængigt af om ens datamateriale er skabt af en population eller en stikprøve. Ved en population angiver man variansen med <span class="math">\( \sigma^2 \)</span> og ved en stikprøve som <span class="math">\( s^2 \)</span>.</p>
+
+<blockquote>
+	<p>
+		I praksis anvender man altid stikprøveformlen. Det skyldes at man sjældent har et komplet datasæt.
+	</p>
+</blockquote>
+
 
 <h3>Populationsformlen</h3>
 
