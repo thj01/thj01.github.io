@@ -1,5 +1,12 @@
 
-*[class^='col'] {background-color:#eeeeee}
+*[class^='col']:nth-child(1) {background-color:#eeeeee}
+
+*[class^='col']:nth-child(2) {background-color:#bbbbbb	}
+
+*[class^='col']:nth-child(3) {background-color:#555555; color: #eeeeee	}
+
+
+
 
 table {width: 90%; font-size: .8em;table-layout: fixed;font-size: 1.3em;}
 
@@ -7,7 +14,7 @@ td:nth-child(1) {  font-weight: 700;width:65px}
 
 td:nth-child(2) {width:105px}
 
-td:nth-child(2)::before {content: "Max bredde:"; font-weight: 700;  margin-right: 6px}
+td:nth-child(2)::before {content: "width:"; font-weight: 700;  margin-right: 6px}
 
 td:nth-child(3)::before {content: "Max bredde:"; margin-right: 6px; font-weight: 700; }
 

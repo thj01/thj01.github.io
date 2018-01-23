@@ -81,13 +81,56 @@
 
 <h1>Mobile first</h1>
 
-<p>Bootstrap er designet som et responsive system. Dvs. at det automatisk vil tilpasse sig den enhed du ser produktet på. </p>
+<p>Bootstrap er designet til at være mobile first og at være responsive. Dvs. at det automatisk vil tilpasse sig den enhed du ser produktet på. </p>
+
+<p>I tabellen herinder kan du se de maksimale bredder som Bootstrap er designet til.</p>
+		
+<table class="_">
+	<thead>
+		<tr>
+			<th>Enhed</th>
+			<th>Skærmstørrelse</th>
+			<th>Maksimal bredde</th>
+			<th>Klasse</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Telefoner</td>
+			<td> mindre end 768</td>
+			<td>Fylder hele enheden (auto)</td>
+			<td>col-sm-</td>
+		</tr>
+		<tr>
+			<td>Tablets</td>
+			<td> større end 768</td>
+			<td>760 pixels</td>
+			<td>col-md-</td>
+		</tr>
+		<tr>
+			<td>Små skærme</td>
+			<td> større end 992</td>
+			<td>970 pixels</td>
+			<td>col-lg-</td>
+		</tr>
+		<tr>
+			<td>Store skærme</td>
+			<td> større end 1200</td>
+			<td>1170</td>
+			<td>col-xl-</td>
+		</tr>
+	</tbody>
+</table>
+
+
+
+
 
 <h1>Containers</h1>
 
 <p>Containerer er det mest basale layoutelement i bootstrap. Containere er bootstrapsidens byggeklodser.</p>
 
-<p>Man kan forestille sig at en bootstrap en række stablede containere. På den måde kan man både opdele sin side semantisk (indholdsmæssigt), eller også efter den enkelte containers design</p>
+<p>Man kan forestille sig at en bootstrap en række stablede containere. På den måde kan man både opdele sin side semantisk (indholdsmæssigt), eller efter design</p>
 
 <figure id="">
 
@@ -99,10 +142,15 @@
 
 <h2>Container typer</h2>
 
-<p>Der findes to typer containers.</p>
+<p>Der findes to klasser af containere.</p>
+
+<ul class="">
+	<li>container</li>
+	<li>container-fluid</li>
+</ul>
 
 
-<span class="afsnit">container</span>
+<h3>class="container"</h3>
 
 <pre>
 	<code class="html">
@@ -112,41 +160,8 @@
 	</code>
 </pre>
 
-<p>Standard containeren, der har en maksimal størrelse. Bootstrap tilpasser sidens bredde til følgende størrelser:</p>
-		
-<table class="_">
-	<thead>
-		<tr>
-			<th>Enhed</th>
-			<th>Skærmstørrelse</th>
-			<th>Maksimal bredde</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>Telefoner</td>
-			<td> mindre end 768</td>
-			<td>Fylder hele enheden (auto)</td>
-		</tr>
-		<tr>
-			<td>Tablets</td>
-			<td> større end 768</td>
-			<td>760 pixels</td>
-		</tr>
-		<tr>
-			<td>Små skærme</td>
-			<td> større end 992</td>
-			<td>970 pixels</td>
-		</tr>
-		<tr>
-			<td>Store skærme</td>
-			<td> større end 1200</td>
-			<td>1170</td>
-		</tr>
-	</tbody>
-</table>
 
-<span class="afsnit">container-fluid</span>
+<h3>class="container-fluid"</h3>
 
 <pre>
 	<code class="html">
@@ -156,11 +171,15 @@
 	</code>
 </pre>
 
+<p>Forskellen mellem de to klasser er, at <span class="inl_cmd">container</span> maksimalt fylder 1200 pixels, hvor <span class="inl_cmd">container-fluid</span> fylder hele skærmen.</p>
+
+<p><a href="www.vidas.dk" target="_blank">Vidas.dk</a> er sat på med <span class="inl_cmd">container-fluid</span>, så siden kan bruge hele skærmen.</p>
+
+
 <h1>Rækker og kolonner</h1>
 
-<p>En af de mange smarte features i Bootstrap er GRID-systemet.</p>
+<p>For at kunne styre designet i bootstrap kan man anvende et <span class="inl_cmd">GRID</span>-system. På den måde kan man inddele en sin continer ved at angive hvor mange kolonner hver sekstion skal dække. Se nedestående tabel:  </p>
 
-<p>På den måde kan man lave sit design ved at beskrive hvor mange kolonner i GRID-systemet indholdes skal fylde.</p>
 
 <table class="bootstrap_grid_table centreret">
     <tr>
@@ -195,33 +214,128 @@
     </tr>
 </table>
 
+<p><a href="www.vidas.dk" target="_blank">vidas.dk</a> er inddelt med 3-6, hvor menuen er i de tre første kolonner.</p>
+
+
+<table class="bootstrap_grid_table centreret">
+    <tr>
+        <td>span 1</td>
+        <td>span 1</td>
+        <td>span 1</td>
+        <td>span 1</td>
+        <td>span 1</td>
+        <td>span 1</td>
+        <td>span 1</td>
+        <td>span 1</td>
+        <td>span 1</td>
+        <td>span 1</td>
+        <td>span 1</td>
+        <td>span 1</td>
+    </tr>
+    <tr>
+        <td colspan="3">Menu</td>
+        <td colspan="9">Indhold</td>
+    </tr>
+</table>
+<p>Man får adgang til GRID systemet ved at indsætte nedenstående kode. Her sat på til en 3-9 konfiguration:</p>
+
+<pre>
+	<code class="html">
+&lt;div class="row">
+
+		&lt;div class="col-xs-3">
+	
+				<b>*** Indholdsfortegnelse ***</b>
+
+		&lt;/div> <span class="red">&lt;!-- Slut på col --></span>
+
+		&lt;div class="col-xs-9">
+	
+				<b>*** Brødtekst ***	</b>
+
+		&lt;/div> <span class="red">&lt;!-- Slut på col --></span>
+
+&lt;/div> <span class="red">&lt;!-- Slut på row--></span>
+	</code>
+</pre>
+
+<h2>Kolonne klasser</h2>
+
+<p>Det responsive design (tilpassende design) fungerer ved at det fjerner containerns kolonneinddeling ved et "breaking point". Du kan prøve at se effekten i de to nedestående dokumenter.</p>
+
+<p>Testdokument med <span class="inl_cmd">class="container"</span>: <a href="files/test_container.html" target="_blank">test_container.html</a> (maksimal bredde = 1200px)</p>
+
+<p>Testdokument med <span class="inl_cmd">class="container-fluid"</span>: <a href="files/test_container_fluid.html" target="_blank">test_container_fluid.html</a> (fylder hele browserens bredde)
+
+<p>Læg mærke til hvordan de enkelte containere går fra et kolonne design ved deres "breaking point" til at de kommer til at de står under hinanden.</p>
+
+<table class="_">
+	<thead>
+		<tr>
+			<th>Enhed</th>
+			<th>Breaking point</th>
+			<th>Maksimal bredde</th>
+			<th>Klasse</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Alle skærme</td>
+			<td>mindre end 576</td>
+			<td></td>
+			<td>col-</td>
+		</tr>
+		<tr>
+			<td>Telefoner</td>
+			<td>mindre end 768</td>
+			<td>Fylder hele enheden (auto)</td>
+			<td>col-sm-</td>
+		</tr>
+		<tr>
+			<td>Tablets</td>
+			<td>større end 768</td>
+			<td>760 pixels</td>
+			<td>col-md-</td>
+		</tr>
+		<tr>
+			<td>Små skærme</td>
+			<td>større end 992</td>
+			<td>970 pixels</td>
+			<td>col-lg-</td>
+		</tr>
+		<tr>
+			<td>Store skærme</td>
+			<td>større end 1200</td>
+			<td>1170</td>
+			<td>col-xl-</td>
+		</tr>
+
+	</tbody>
+</table>
+
+
+
+
+<h2>Mockup</h2>
+
 <p>Hvis du vil designe din side på papir først, så kan du downloade et Bootstrap Grid her: <a href="files/Bootstrap_grid_print.pdf" target="_blank" download>A4 side med Bootstrap Grid</a>.</p>
 
-<!--
-<details>
+<h1>Ekstra design</h1>
 
-	<summary>Se eksempel</summary>
+<p>På w3cschools side om Bootstrap kan du læse om hvordan du kan indsætte andre designelementer som: </p>
 
-	<figure id="">
+<ul class="disc">
+	<li>Knapper</li>
+	<li>Inputfelter</li>
+	<li>Dropdowns</li>
+	<li>Modal (popup vinduer)</li>
+	<li>Kolaps</li>
+	<li>...</li>
+</ul>
 
-	<img class="p100 raw_HTML_output" src="images/Bootstrap_grid_print.svg" alt="" title="" />
+<p>Læs mere her: <a href="https://www.w3schools.com/bootstrap/bootstrap_wells.asp" target="_blank">https://www.w3schools.com/bootstrap/bootstrap_wells.asp</a></p>
 
-	<figcaption></figcaption>
-
-</figure>
-
-</details>
--->
-
-
-
-
-<h1>Kolonner</h1>
-
-<h1>Jumbotron</h1>
-
-<p>En Jumbotron er en speciel klasse</p>
-
+<p>Der kan også findes plugins på nettet hvis man vil udvide funktionaliteten</p>
 	
 </div><!-- end: col-md-9 -->
 
