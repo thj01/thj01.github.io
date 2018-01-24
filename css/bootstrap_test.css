@@ -1,9 +1,9 @@
 
-*[class^='col']:nth-child(1) {background-color:#eeeeee}
+*[class^='col']:nth-child(1) {background-color:#eeeeee; font-weight: 700;}
 
-*[class^='col']:nth-child(2) {background-color:#bbbbbb	}
+*[class^='col']:nth-child(2) {background-color:#bbbbbb;font-weight: 700;	}
 
-*[class^='col']:nth-child(3) {background-color:#555555; color: #eeeeee	}
+*[class^='col']:nth-child(3) {background-color:#555555; color: #eeeeee; font-weight: 500	}
 
 
 
