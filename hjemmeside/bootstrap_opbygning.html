@@ -241,21 +241,25 @@
 
 <pre>
 	<code class="html">
-&lt;div class="row">
+&lt;div class="container">
 
-		&lt;div class="col-xs-3">
+	&lt;div class="row">
+
+			&lt;div class="col-xs-3">
+		
+					<b>*** Indholdsfortegnelse ***</b>
+
+			&lt;/div> <span class="red">&lt;!-- Slut på col --></span>
+
+			&lt;div class="col-xs-9">
+		
+					<b>*** Brødtekst ***	</b>
+
+			&lt;/div> <span class="red">&lt;!-- Slut på col --></span>
+
+	&lt;/div> <span class="red">&lt;!-- Slut på row--></span>
 	
-				<b>*** Indholdsfortegnelse ***</b>
-
-		&lt;/div> <span class="red">&lt;!-- Slut på col --></span>
-
-		&lt;div class="col-xs-9">
-	
-				<b>*** Brødtekst ***	</b>
-
-		&lt;/div> <span class="red">&lt;!-- Slut på col --></span>
-
-&lt;/div> <span class="red">&lt;!-- Slut på row--></span>
+&lt;/div> <span class="red">&lt;!-- Slut på container--></span>
 	</code>
 </pre>
 
@@ -494,6 +498,14 @@ $(document).ready(function(){
     $('[data-toggle="popover"]').popover();   
 });
 </script>
+
+<h1>Skabelon</h1>
+
+<p>Her kan du hente en standardskabelon der indeholder en jumbotron.</p>
+
+<p><a href="files/bootstrap_skabelon.zip" target="_blank">bootstrap_skabelon.zip</a></p>
+
+
 	
 </div><!-- end: col-md-9 -->
 
