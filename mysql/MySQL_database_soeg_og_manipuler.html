@@ -559,9 +559,7 @@ DESCRIBE klasse_og_elever 'Startår';
 
 <p>For at starte MySQL op fra kommandolinien skal vi først ind i <span class="inl_cmd">xampp</span>'s mappe og finde den mappe MySQL er installeret i.</p>
 
-<h2>Tilgå MySQL-mappen</h2>
-
-<span class="afsnit">...på Windows</span>
+<h2>Login Windows</h2>
 
 <p>Åbn terminalen ved at søge på <span class="inl_cmd">cmd</span> og vælge <span class="inl_cmd">Kommandoprompt</span></p>
 
@@ -569,9 +567,11 @@ DESCRIBE klasse_og_elever 'Startår';
 
 <code class="cmd">cd c:\xampp\mysql\bin</code>
 
-<p>Har du ikke angivet noget password trykker du blot <kbd>Enter</kbd>, når du bliver bedt om et password</p>
+<p>Kør kommandoen ...</p>
 
-<span class="afsnit">... på Mac</span>
+<code class="cmd">mysql -h localhost -u root -p</code>
+
+<h2>Login Mac</h2>
 
 <p>Åbn terminalen ved at søge på <span class="inl_cmd">Terminal</span> i <span class="inl_cmd">Launchpad</span></p>
 
@@ -579,17 +579,15 @@ DESCRIBE klasse_og_elever 'Startår';
 
 <code class="cmd">cd /Applications/XAMPP/xamppfiles/bin</code>
 
-<h2>Login</h2>
-
-<span class="afsnit">... på windows</span>
-
-<code class="cmd">mysql -h localhost -u root -p</code>
-
-<span class="afsnit">... på mac</span>
+<p>Kør kommandoen</p>
 
 <code class="cmd">./mysql -h localhost -u root -p</code>
 
-<p>Har du ikke angivet noget password trykker du blot <kbd>Enter</kbd>, når du bliver bedt om et password. Herunder ser du terminaloutput fra Windows</p>
+<blockquote>
+	<p>Har du ikke angivet noget password trykker du blot <kbd>Enter</kbd>, når du bliver bedt om et password. </p>
+</blockquote>
+
+<p>Herunder ser du terminaloutput fra Windows</p>
 
 
 <pre class="black">c:\xampp\mysql\bin>mysql -h localhost -u root -p <span class="red">&#8592; Windows' kommandolinie</span>

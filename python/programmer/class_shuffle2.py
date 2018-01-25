@@ -18,7 +18,7 @@ b2 = [
 	"Andreas R",
 	"Anya",
 	"Caroline",
-	"Frederik",
+	"Frederik B",
 	"Jacob",
 	"Jeppe",
 	"Jesper",
@@ -85,6 +85,8 @@ b4 = [
 	"Rasmus",
 	"Signe"
 	]
+	
+hhx1 = b2 + b3 + b4
 
 
 valg = input("Hvilket lokale er du i?: ")
@@ -101,6 +103,9 @@ while True:
 		break
 	elif valg == "b4":
 		klasse = b4
+		break
+	elif valg == "hhx1":
+		klasse = hhx1
 		break
 	elif valg == "a":
 		print("Programmet afsluttes nu.")
