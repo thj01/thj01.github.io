@@ -14,29 +14,19 @@ margin: 2cm 2cm;
 
 }
 
-header {
+/*   Display   */
+
+
+header, footer, #toc {
 
 display: none;
 
 }
 
-#toc {
-
-display: none;
-
+.col-sx-9 {
+margin-left:  300px;
 }
 
-#toc {
-
-display: none;
-
-}
-
-footer {
-
-display: none;
-
-}
 
 
  
