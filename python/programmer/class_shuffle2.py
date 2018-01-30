@@ -18,7 +18,7 @@ b2 = [
 	"Andreas R",
 	"Anya",
 	"Caroline",
-	"Frederik B",
+	"Frederik P",
 	"Jacob",
 	"Jeppe",
 	"Jesper",
@@ -30,7 +30,7 @@ b2 = [
 	"Maria",
 	"Mikkel",
 	"Natasja",
-	"Nikolaj",
+	"Nikolaj P",
 	"Oliver",
 	"Pelle",
 	"Philip",
@@ -43,18 +43,18 @@ b2 = [
 	]	
 
 b3 = [
-	"Alexander",
-	"Andreas",
+	"Alexander P",
+	"Andreas L",
 	"Anna",
 	"Ann-Sofie",
 	"Cathrine",
-	"Cecilie",
+	"Cecilie M",
 	"Christofer",
 	"Ditte",
-	"Frederik",
+	"Frederik J",
 	"Kiva",
 	"Lea",
-	"Mathias",
+	"Mathias M",
 	"Naja",
 	"Nanna",
 	"Nicklas R",
@@ -62,7 +62,7 @@ b3 = [
 	"Niels",
 	"Nikoline",
 	"Olivia",
-	"Signe",
+	"Signe J",
 	"Stine",
 	"Thea",
 	"Tilde",
@@ -70,26 +70,26 @@ b3 = [
 	]
 	
 b4 = [
-	"Alexander",
-	"Andreas",
-	"Cecilie",
+	"Alexander F",
+	"Andreas J",
+	"Cecilie D",
 	"Harismi",
 	"Johanne",
 	"Katrine",
 	"Lasse",
 	"Martin",
-	"Mathias",
+	"Mathias R",
 	"Negin",
 	"Niels",
-	"Nikolaj",
+	"Nikolaj H",
 	"Rasmus",
-	"Signe"
+	"Signe E"
 	]
 	
 hhx1 = b2 + b3 + b4
 
 
-valg = input("Hvilket lokale er du i?: ")
+valg = input("Hvilket lokale er du i (B1-4, hhx1) ?: ")
 
 while True:
 	if valg == "b1":
