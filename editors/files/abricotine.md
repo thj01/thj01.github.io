@@ -9,16 +9,20 @@ Mail: Thomas@fakemail.dk
 <div class="pb"></div>
 
 ##Overskrift
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.[^1]
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum tincidunt erat at velit molestie gravida. Vivamus vitae odio vel arcu porta sodales. Curabitur a nisi et sapien rutrum vulputate. Etiam varius lorem a eros bibendum consectetur. Nam ac maximus est. Integer ante risus, dictum et eros eget, mattis sodales odio. [^1]
+
+[^1]: Fodnote 1
 
 ###Underoverskrift
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+Phasellus sit amet suscipit enim. Nulla maximus turpis eget sem mattis suscipit. Nunc volutpat porttitor erat ac blandit. Phasellus viverra arcu dui, id rhoncus purus vestibulum in. Integer varius, massa eu congue venenatis, arcu felis lobortis metus, vel ultrices ipsum nibh vel ante. Proin viverra urna eu ligula venenatis, at convallis est congue. In et turpis rutrum, varius arcu eget, interdum lacus.
 
 ##Formatering
 
-Kursiv tekst
+_Kursiv tekst_
 
 __Fed tekst__
+
+___Fed kursiv tekst___
 
 ~~Overstreget tekst~~
 
@@ -32,14 +36,17 @@ Dette er et citat
 
 - listeelement 1
 - Listeelement 2
-- Listeelement 3
+    - Underliste element a
+    - Underliste element b
+    - Underliste element c
+
 
 ###Afkrydsningslister
 
 - [] listeelement 1
-- [] listeelement 2
-- [x] listeelement 3
-- [x] listeelement 4
+* [ ] listeelement 2
+* [x] listeelement 3
+* [x] listeelement 4
 
 
 
@@ -50,6 +57,7 @@ https://www.google.com
 
 [Google](https://www.google.com)
 
+https://ubuntudanmark.dk/forum/index.php
 
 ## Tabel
 
@@ -90,6 +98,6 @@ for i in range(1,7):
 
 ***
 
-[^1]: Fodnote 1
+
 
 
