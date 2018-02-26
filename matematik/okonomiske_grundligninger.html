@@ -58,31 +58,52 @@
 
 <div class="latex">$$ O(x) = R(x) - C(x) $$</div>
 
-<div class="latex">$$ Overskud = Indtægt \cdot Udgift $$</div>
+<div class="latex">$$ Overskud = Indtægt - Udgift $$</div>
 
 <h1>Prisfunktionen</h1>
 
-<p>Prisfunktionen <span class="math">\( p(x) \)</span> kan være angivet ved forskellige sammenhænge, f.eks liniære funktioner <span class="math">\( f(x) = ax + b \)</span> eller ekspontialfunktioner - <span class="math">\( f(x) = b \cdot a^x \)</span> </p>
+<p>Prisfunktionen er det matematiske udtryk der opstår når man vil lave ækonomiske beregninger.</p>
 
-<p><b>Prisfunktion</b></p>
+<p>Ved vi f.eks. at prisen på en liter mælk er <span class="math">\( a \)</span>, så vil vi kunne beregne den samlede pris ved at sige: <span class="math">\( a\cdot x \)</span>. Der gælder altså følgende:</p>
 
-<ul class="none">
-	<li>Konstant: <span class="math">\( ax \)</span></li>
-	<li>Lineær: <span class="math">\( (ax+b) \cdot x = ax^2 + bx \)</span></li>
-	<li>Eksponential: <span class="math">\( (b \cdot a^x) \cdot x = b \cdot a^x \cdot x = b \cdot log(a) \cdot x^2 \)</span></li>
-	<li>Potens: <span class="math">\( (b \cdot x^a) \cdot x = b \cdot x^{(a+1)} \)</span></li>
-</ul>
+<table class="_">
+	<thead>
+		<tr>
+			<th colspan="2">Udgangspunkt</th>
+			<th>matematisk udtryk</th>
+			<th>Endeligt udtryk</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>konstant</td>
+			<td><span class="math">\( a \)</span></td>
+			<td><span class="math">\( a \cdot x = ax \)</span></td>
+			<td>Linje</td>
+		</tr>
+		<tr>
+			<td>Linje</td>
+			<td><span class="math">\( ax+b \)</span></td>
+			<td><span class="math">\( (ax+b)\cdot x = ax^2+bx \)</span></td>
+			<td>Andengradsfunktion</td>
+		</tr>
+		<tr>
+			<td>Exponential</td>
+			<td><span class="math">\( b\cdot a^x \)</span></td>
+			<td><span class="math">\( (b \cdot a^x) \cdot x = b \cdot a^x \cdot x = b \cdot log(a) \cdot x^2 \)</span></td>
+			<td>Andengradsfunktion</td>
+		</tr>
+		<tr>
+			<td>Potens</td>
+			<td><span class="math">\( b \cdot x^a \)</span></td>
+			<td><span class="math">\( (b \cdot x^a) \cdot x = b \cdot x^{(a+1)} \)</span></td>
+			<td>Potensfunktion</td>
+		</tr>
+	</tbody>
+</table>
 
-<h2>Konstant prisfunktion</h2>
+<p>Denne viden kan anvendes til analyser af materiale hvor man kender til udviklingen i pris per enhed. VEd at indtaste sit materiale og udføre en regressionsanalyse kan man få en formel der beskriver prisudviklingen. Denne kan så bruges til at lave estimater og træffe beslutninger ud fra.</p>
 
-<p>Ved den konstante prisfunktion bliver prus</p>
-
-
-<h2>Linær prisfunktion</h2>	
-	
-<h2>Eksponentiel prisfunktion</h2>
-
-<h2>Potens prisfunktion</h2>
 
 </div><!-- end: col-md-9 -->
 
