@@ -1,6 +1,7 @@
 #toc {
 margin-top: 1em;
 margin-left: -20px;
+border-color: navy;
 }
 
 #toc_headline:before {
@@ -16,7 +17,9 @@ padding-top: .7em;
 padding-bottom: .7em;
 padding-left: .7em ;
 color: white;
-background-color: #337ab7;
 background-color: navy;
+}
 
+#toc a{
+color: navy;
 }
