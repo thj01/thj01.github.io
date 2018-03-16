@@ -27,6 +27,8 @@ def andengrad(a,b,c):
 	
 	D = pow(b,2)-4*a*c
 	
+	print("\n\tDiskriminanten er: {0}\n".format(D))
+	
 	Tp_x = -b/(2*a)
 	
 	Tp_y = -D/(4*a)
@@ -87,3 +89,4 @@ def andengrad(a,b,c):
 
 andengrad(1,4,4)
 andengrad(-1,-1,6)
+andengrad(1,3,1)
