@@ -41,6 +41,10 @@
 
 <p>Du kan finde en digital udgave af den her: <a href="http://thomasokken.com/free42/" target="_blank">Digital udgave af HP42S</a></p>
 
+<p>Manual: <a href="http://thomasokken.com/free42/42s.pdf" target="_blank">http://thomasokken.com/free42/42s.pdf</a></p>
+
+<p>Hp15c : <a href="http://hp15c.com/" target="_blank">http://hp15c.com/</a></p>
+
 <p>Den kan donloades på androind og IPhone, hvor den har navnet <span class="inl_cmd">free42</span></p>
 
 <figure id="">
@@ -149,7 +153,7 @@
 	
 		<p><kbd>3</kbd> <kbd>ENTER</kbd> <kbd>4</kbd> <kbd>-</kbd></p>
 	
-	<li>Divider dem med hinanden</li>
+	<li>Divider parenteserne med hinanden</li>
 	
 		<p><kbd>&divide;</kbd></p>
 </ol>
@@ -160,7 +164,7 @@
 
 <p>Altså 12 tryk, mod 9 på HP-lommeregneren.</p>
 
-<h1>Brug keyboard</h1>
+<h1>Brug numerisk keyboard</h1>
 
 <table class="">
 	<thead>
@@ -185,17 +189,24 @@
 			<td><span class="orange"><span class="math">\( y^x \)</span></span></td>
 			<td><kbd>Shift</kbd> <kbd>F1</kbd></td>
 		</tr>
-		<tr>
-			<td><span class="math">\( \pi \)</span></td>
-			<td><kbd>Shift</kbd><kbd>D</kbd></td>
-			<td></td>
-			<td></td>
-		</tr>
+
 		<tr>
 			<td><span class="math">\( \sqrt x \)</span></td>
 			<td><kbd>F3</kbd></td>
 			<td><span class="orange"><span class="math">\( x^2 \)</span></span></td>
 			<td><kbd>Shift</kbd> <kbd>F3</kbd></td>
+		</tr>
+		<tr>
+			<td><span class="math">\( LOG \)</span></td>
+			<td><kbd>F4</kbd></td>
+			<td><span class="orange"><span class="math">\( 10^x \)</span></span></td>
+			<td><kbd>Shift</kbd> <kbd>F4</kbd></td>
+		</tr>		
+		<tr>
+			<td><span class="math">\( LN \)</span></td>
+			<td><kbd>F5</kbd></td>
+			<td><span class="orange"><span class="math">\( e^x \)</span></span></td>
+			<td><kbd>Shift</kbd> <kbd>F5</kbd></td>
 		</tr>
 		<tr>
 			<td><span class="math">\( COS \)</span></td>
@@ -215,36 +226,35 @@
 			<td><span class="math">\( ATAN \)</span></td>
 			<td><kbd>Shift</kbd> <kbd>T</kbd></td>
 		</tr>
+
 		<tr>
-			<td><span class="math">\( LOG \)</span></td>
-			<td><kbd>F4</kbd></td>
-			<td><span class="orange"><span class="math">\( 10^x \)</span></span></td>
-			<td><kbd>Shift</kbd> <kbd>F4</kbd></td>
-		</tr>		
+			<td><span class="math">\( \pi \)</span></td>
+			<td colspan="3"><kbd>Shift</kbd><kbd>D</kbd></td>
+		</tr>
 		<tr>
-			<td><span class="math">\( LN \)</span></td>
-			<td><kbd>F5</kbd></td>
-			<td><span class="orange"><span class="math">\( e^x \)</span></span></td>
-			<td><kbd>Shift</kbd> <kbd>F5</kbd></td>
+			<td>Ændre fortegn</td>
+			<td colspan="3"><kbd>n</kbd</td>
+		</tr>
+		<tr>
+			<td>Alle decimaler</td>
+			<td colspan="3"><kbd>Shift</kbd> <kbd>.</kbd></td>
+		</tr>
+		<tr>
+			<td>Videnskabelig notation</td>
+			<td colspan="3"><kbd>E</kbd></td>
 		</tr>			
 	</tbody>
 </table>
 
+<!--
 <p>Derudover kan man:</p>
 
 <ul class="none fat_li">
-	<li>Få vist alle decimaler:</li>
-	
-		<p><kbd>Shift</kbd> <kbd>.</kbd></p>
-
 	<li>Ændret på output:</li>
 	
 		<p><kbd>Shift</kbd> <kbd>E</kbd></p>
 		
-	<li>Ændre fortegn</li>
-	
-		<p><kbd>n</kbd></p>
-			
+
 	<li>Ændre mellem vinkelenheder</li>
 	
 		<p><kbd>Shift</kbd> <kbd>n</kbd></p>
@@ -253,6 +263,9 @@
 	
 		<p><kbd>Shift</kbd> <kbd>4</kbd></p>
 </ul>
+-->
+
+<p>Et overblik over alle taster: <a href="https://github.com/ahlstromcj/free42-resources/blob/master/skins/keymap" target="_blank">https://github.com/ahlstromcj/free42-resources/blob/master/skins/keymap</a></p>
 
 <h1>Eksempler</h1>
 
@@ -282,11 +295,19 @@
 
 <p>Eksempel 4</p>
 
-<div class="latex">$$ 4^2 - 4 \cdot -2 \cdot 6 $$</div>
+<div class="latex">$$ 4^2 - 4 \cdot 2 \cdot 6 $$</div>
 
 	<p><kbd>2</kbd> <kbd><span class="orange">&#9646;</span></kbd> <kbd><span class="orange"><span class="math">\( x^2 \)</span></span></kbd> <kbd>4</kbd> <kbd>ENTER</kbd> <kbd>2</kbd> <kbd><span class="math">\( \pm \)</span></kbd> <kbd><span class="math">\( \cdot \)</span></kbd> <kbd>6</kbd> <kbd><span class="math">\( \cdot \)</span></kbd> <kbd>-</kbd></p>
 	
 	<code class="cmd">64</code>
+<p>Eksempel 5</p>
+
+<div class="latex">$$ \frac{ 3,3 \cdot 10^{19} }{ 19 }  $$</div>
+
+<p><kbd>3</kbd> <kbd>,</kbd> <kbd>3</kbd> <kbd>E</kbd> <kbd>1</kbd> <kbd>9</kbd> <kbd>ENTER</kbd> <kbd>1</kbd> <kbd>9</kbd> <kbd>&divide;</kbd></p>
+
+<code class="cmd">1,7368E18</code>
+
 
 
 <!-- end: col-md-9 -->
