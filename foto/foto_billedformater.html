@@ -69,19 +69,412 @@
 	
 	<li>Ikke destruktiv redigering</li>
 	
-	<p>Så længe man redigerer i RAW formatet, så sker der ingen ændringer af de oprindelige data. Det hele styres ved hjælp af en konfigurationsfil, som får programmet til at sætte filtre på det oprindelige billede.</p>
+	<p>Så længe man redigerer i RAW formatet, så sker der ingen ændringer af de oprindelige data. Det hele styres ved hjælp af en konfigurationsfil, som får programmet til at manipulere med pixels i oprindelige billede.</p>
 	
-	
-	<li>Stor farvedybde</li>
+	<p>Det er altså i langt højere grad muligt at ramme mere præcist med de ønskede ændringer</p>
 </ul>
 
-<h2>Rå data</h2>
+<h2>Noget om bit</h2>
 
-<h2>Ikke destruktiv redigering</h2>
+<p>For at forstå hvad en bit er, kan de hjælp at tænke på en pære, som kan være i to tilstande: tændt og slukket. Det kan man også beskrive som om lampen er i tilstand 1 (tændt) eller 0 (slukket). Når vi anvender 1 og 0 anvender vi det som vi kalder det binære talsystem</p>
+
+<p>Sætter vi en ekstra lampe frem kan vi altså få 4 forskellige tilstande</p>
+
+<table class="centreret fixed">
+	<thead>
+		<tr>
+			<th colspan="2">Lampe</th>
+			<th colspan="2">binær</th>
+			<th>Værdi </th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Slukket</td>
+			<td>Slukket</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+		</tr>
+		<tr>
+			<td>Slukket</td>
+			<td>Tændt</td>
+			<td>0</td>
+			<td>1</td>
+			<td>1</td>
+		</tr>
+		<tr>
+			<td>Tændt</td>
+			<td>Slukket</td>
+			<td>1</td>
+			<td>0</td>
+			<td>2</td>
+		</tr>
+		<tr>
+			<td>Tændt</td>
+			<td>Tændt</td>
+			<td>1</td>
+			<td>1</td>
+			<td>3</td>
+		</tr>		
+	</tbody>
+</table>
+
+<p>Vi kan altså beskrive alle hele tal vi kender ud fra det binære talsystem, der ikke skifter position ved en potens af 10 som vi er vant til ... </p>
+
+<table class="_">
+	<thead>
+		<tr>
+			<th>1</th>
+			<th>2</th>
+			<th>3</th>
+			<th>4</th>
+			<th>5</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><span class="math">\( 1 \cdot 10^4 \)</span></td>
+			<td><span class="math">\( 2 \cdot 10^3 \)</span></td>
+			<td><span class="math">\( 3 \cdot 10^2 \)</span></td>
+			<td><span class="math">\( 4 \cdot 10^1 \)</span></td>
+			<td><span class="math">\( 5 \cdot 10^0 \)</span></td>
+		</tr>
+		<tr>
+			<td>10.000</td>
+			<td>2.000</td>
+			<td>300</td>
+			<td>40</td>
+			<td>5</td>
+		</tr>
+		<tr>
+			<td>I alt</td>
+			<td colspan="4">10.000 + 2.000 + 300 + 40 + 5 = <span class="red">12345</span></td>
+		</tr>
+	</tbody>
+</table>
+
+<p>... men for hver potens af 2. Herunder er vist hvad der vil svare til 8 bit (8 positioner)</p>
+
+<table class="_">
+	<thead>
+		<tr>
+			<th>1</th>
+			<th>1</th>
+			<th>1</th>
+			<th>1</th>
+			<th>1</th>
+			<th>1</th>
+			<th>1</th>
+			<th>1</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><span class="math">\( 2^{7} \)</span></td>
+			<td><span class="math">\( 2^{6} \)</span></td>
+			<td><span class="math">\( 2^{5} \)</span></td>
+			<td><span class="math">\( 2^{4} \)</span></td>
+			<td><span class="math">\( 2^{3} \)</span></td>
+			<td><span class="math">\( 2^{2} \)</span></td>
+			<td><span class="math">\( 2^{1} \)</span></td>
+			<td><span class="math">\( 2^{0} \)</span></td>
+		</tr>
+		<tr>
+			<td>128</td>
+			<td>64</td>
+			<td>32</td>
+			<td>16</td>
+			<td>8</td>
+			<td>4</td>
+			<td>2</td>
+			<td>1</td>
+		</tr>
+		<tr>
+			<td>I alt</td>
+			<td colspan="7">128 + 64 + 32 + 16 + 8 + 4 + 2 + 1 = <span class="red">256</span> = <span class="math">\( 2^8 \)</span></td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Således vil tallet 11000101 er altså:</p>
+
+<div class="latex">$$  10^7 + 10^6 + 10^3 + 10^0 = 128 + 64 + 4 + 1 = 197  $$</div>
+
+<p>Vi kan også se at vi kan udregne hvor mange værdier vi har adgang til ved at sætte eksponenten til antallet af bit</p>
+
+
+
+<h2>Noget om digitale farver</h2>
+
+<p>For at få en generel forståelse for farver kan du læse her: <a href="http://www.vidas.dk/foto/foto_farver.html" target="_blank">Digitale farver</a></p>
+
+<p>Kort fortalt gælder det at digitale farver bliver bygget op ved hjælp af farverne rød, grøn og blå (RGB). Herunder er hver af RGB farverne vist fra værdien 00000000 til 11111111 - altså det der svarer til 8 bit/farvekanal.</p>
+
+<p>Rød ( 00000000 - 11111111 )</p>
+
+<div id="grad_red"></div>
+
+<p>Grøn ( 00000000 - 11111111 )</p>
+
+<div id="grad_green"></div>
+
+<p>Blå ( 00000000 - 11111111 )</p>
+
+<div id="grad_blue"></div>
+
+<div id="spectrum"></div>
+
+<p>Selvom jeg valgte at vise dem i en større bit-dybde (f.eks. 10 bit), så ville de stadig se ud på samme måde, for farverne kan aldrig være mere en slukket (svarende til: 0000000000) eller helt tændt (svarende til : 1111111111).</p>
+
+<p>Vi kan ikke engang se, at der er 256 forskellige nuancer, simpelthen fordi den enkelte nuance er så smal som den er.</p>
 
 <h2>Farvedybde</h2>
 
+<blockquote>
+	<p>
+		Grunden til at jeg ikke har placeret farvedybde under fordele er, at det også er et problem, hvis man ikke indtænker dette.
+	</p>
+</blockquote>
+	
+<p>Langt de fleste kameraer gemmer i dag billeder med 14 bit/farvekanal hvilket vil sige at hver pixel i billedet har en farvedybde på 42 bit. Sat op overskueligt</p>
+	
+<p>Nuancer per farvekanal = <span class="math">\( 16.384 ~~(2^{14}) \)</span></p>
+	
+<p>Nuancer per pixel = <span class="math">\( 4.3980~~mia ~~(2^{42}) \)</span></p>
 
+<p>Problemet med dette store antal nuancer er, at hvis antallet af mulige nuancer overstiger det antal vi kan se/producere, er at vi reelt arbejder i blinde. Konkret viser problemet sig i følgende tilfælde:</p>
+
+<ul class="none fat_li">
+	<li>Når ens grafikkort ikke kan vise alle bits</li>
+	
+		<p>Langt de fleste kort kan kun vise enten 8 eller 10 bit. Derfor arbejder man reelt ikke med de farver som RAW-filen indeholder, men dem som ens udstyr kan vise.</p>
+	
+	<li>Når ens output (skærm, print, fil) ikke kan vise alle tilgængelige bit</li>
+	
+		<p>Hvis det endelige billedformat ikke kan gemme/vise alle de nuancer man har arbejdet med, så risikerer man at få det som hedder banning. Det kan ofte ses tydeligt på store flader hvor nuanceforskellen ikke er stor</p>
+</ul>
+
+<p>For at illustrere problemet har jeg herunder lavet et tænkt eksempel på hvad problematikken er. Forestil dig at du sidder og redigere en flade, hvori der er en farveovergang. Herunder er vist de mulige nuancer ved henholdsvis 14- og 12 bit</p>
+
+<p>Mulige farver ved 14 bit (i alt 64 nuancer)</p>
+
+<table class="no_lines fixed">
+	<tbody>
+		<tr>
+			<td style="background-color: rgb(63, 163, 255)"></td>
+			<td style="background-color: rgb(62, 162, 255)"></td>
+			<td style="background-color: rgb(61, 161, 255)"></td>
+			<td style="background-color: rgb(60, 160, 255)"></td>		
+			<td style="background-color: rgb(59, 159, 255)"></td>		
+			<td style="background-color: rgb(58, 158, 255)"></td>
+			<td style="background-color: rgb(57, 157, 255)"></td>
+			<td style="background-color: rgb(56, 156, 255)"></td>
+			<td style="background-color: rgb(55, 155, 255)"></td>		
+			<td style="background-color: rgb(54, 154, 255)"></td>		
+			<td style="background-color: rgb(53, 153, 255)"></td>
+			<td style="background-color: rgb(52, 152, 255)"></td>
+			<td style="background-color: rgb(51, 151, 255)"></td>
+			<td style="background-color: rgb(50, 150, 255)"></td>
+			<td style="background-color: rgb(49, 149, 255)"></td>
+			<td style="background-color: rgb(48, 148, 255)"></td>
+			<td style="background-color: rgb(47, 147, 255)"></td>
+			<td style="background-color: rgb(46, 146, 255)"></td>
+			<td style="background-color: rgb(45, 145, 255)"></td>
+			<td style="background-color: rgb(44, 144, 255)"></td>
+			<td style="background-color: rgb(43, 143, 255)"></td>
+			<td style="background-color: rgb(42, 142, 255)"></td>
+			<td style="background-color: rgb(41, 141, 255)"></td>
+			<td style="background-color: rgb(40, 140, 255)"></td>		
+			<td style="background-color: rgb(39, 139, 255)"></td>		
+			<td style="background-color: rgb(38, 138, 255)"></td>
+			<td style="background-color: rgb(37, 137, 255)"></td>
+			<td style="background-color: rgb(36, 136, 255)"></td>
+			<td style="background-color: rgb(35, 135, 255)"></td>
+			<td style="background-color: rgb(34, 134, 255)"></td>
+			<td style="background-color: rgb(33, 133, 255)"></td>
+			<td style="background-color: rgb(32, 132, 255)"></td>
+			<td style="background-color: rgb(31, 131, 255)"></td>
+			<td style="background-color: rgb(30, 130, 255)"></td>
+			<td style="background-color: rgb(29, 129, 255)"></td>
+			<td style="background-color: rgb(28, 128, 255)"></td>
+			<td style="background-color: rgb(27, 127, 255)"></td>
+			<td style="background-color: rgb(26, 126, 255)"></td>		
+			<td style="background-color: rgb(25, 125, 255)"></td>		
+			<td style="background-color: rgb(24, 124, 255)"></td>
+			<td style="background-color: rgb(23, 123, 255)"></td>
+			<td style="background-color: rgb(22, 122, 255)"></td>
+			<td style="background-color: rgb(21, 121, 255)"></td>
+			<td style="background-color: rgb(20, 120, 255)"></td>
+			<td style="background-color: rgb(19, 119, 255)"></td>
+			<td style="background-color: rgb(18, 118, 255)"></td>
+			<td style="background-color: rgb(17, 117, 255)"></td>
+			<td style="background-color: rgb(16, 116, 255)"></td>
+			<td style="background-color: rgb(15, 115, 255)"></td>
+			<td style="background-color: rgb(14, 114, 255)"></td>
+			<td style="background-color: rgb(13, 113, 255)"></td>
+			<td style="background-color: rgb(12, 112, 255)"></td>
+			<td style="background-color: rgb(11, 111, 255)"></td>		
+			<td style="background-color: rgb(10, 110, 255)"></td>		
+			<td style="background-color: rgb(9, 109, 255)"></td>
+			<td style="background-color: rgb(8, 108, 255)"></td>
+			<td style="background-color: rgb(7, 107, 255)"></td>
+			<td style="background-color: rgb(6, 106, 255)"></td>
+			<td style="background-color: rgb(5, 105, 255)"></td>
+			<td style="background-color: rgb(4, 104, 255)"></td>
+			<td style="background-color: rgb(3, 103, 255)"></td>
+			<td style="background-color: rgb(2, 102, 255)"></td>
+			<td style="background-color: rgb(1, 101, 255)"></td>
+			<td style="background-color: rgb(0, 100, 255)"></td>
+		</tr>
+	</tbody>
+</table>
+
+
+<p>Mulige farver ved 12-bit (i alt 16 nuancer)</p>
+
+<table class="no_lines fixed">
+	<tbody>
+		<tr>
+			<td style="background-color: rgb(62, 162, 255)"></td>		
+			<td style="background-color: rgb(58, 158, 255)"></td>
+			<td style="background-color: rgb(54, 154, 255)"></td>
+			<td style="background-color: rgb(50, 150, 255)"></td>
+			<td style="background-color: rgb(46, 146, 255)"></td>
+			<td style="background-color: rgb(42, 142, 255)"></td>		
+			<td style="background-color: rgb(38, 138, 255)"></td>
+			<td style="background-color: rgb(34, 134, 255)"></td>
+			<td style="background-color: rgb(30, 130, 255)"></td>
+			<td style="background-color: rgb(26, 126, 255)"></td>
+			<td style="background-color: rgb(22, 122, 255)"></td>
+			<td style="background-color: rgb(18, 118, 255)"></td>
+			<td style="background-color: rgb(14, 114, 255)"></td>
+			<td style="background-color: rgb(10, 110, 255)"></td>
+			<td style="background-color: rgb(6, 106, 255)"></td>
+			<td style="background-color: rgb(2, 102, 255)"></td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Mulige farver ved 10 bit (i alt 4 nuancer)</p>
+
+<table class="no_lines fixed">
+	<tbody>
+		<tr>
+			<td style="background-color: rgb(56, 156, 255)"></td>
+			<td style="background-color: rgb(40, 140, 255)"></td>
+			<td style="background-color: rgb(24, 124, 255)"></td>
+			<td style="background-color: rgb(8, 108, 255)"></td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Mulige farver ved 8 bit (i alt 1 nuance)</p>
+
+<table class="no_lines fixed">
+	<tbody>
+		<tr>
+			<td style="background-color: rgb(31, 131, 255)"></td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Ser vi på hvad forskellen er mellem 14 og 8 bit bit får vi altså følgende forenkling. Læg mærke til at den </p>
+
+<table class="no_lines fixed">
+	<tbody>
+		<tr>
+			<td colspan="64">14 bit (64 nuancer)</td>
+		</tr>
+		<tr>
+			<td style="background-color: rgb(63, 163, 255)"></td>
+			<td style="background-color: rgb(62, 162, 255)"></td>
+			<td style="background-color: rgb(61, 161, 255)"></td>
+			<td style="background-color: rgb(60, 160, 255)"></td>		
+			<td style="background-color: rgb(59, 159, 255)"></td>		
+			<td style="background-color: rgb(58, 158, 255)"></td>
+			<td style="background-color: rgb(57, 157, 255)"></td>
+			<td style="background-color: rgb(56, 156, 255)"></td>
+			<td style="background-color: rgb(55, 155, 255)"></td>		
+			<td style="background-color: rgb(54, 154, 255)"></td>		
+			<td style="background-color: rgb(53, 153, 255)"></td>
+			<td style="background-color: rgb(52, 152, 255)"></td>
+			<td style="background-color: rgb(51, 151, 255)"></td>
+			<td style="background-color: rgb(50, 150, 255)"></td>
+			<td style="background-color: rgb(49, 149, 255)"></td>
+			<td style="background-color: rgb(48, 148, 255)"></td>
+			<td style="background-color: rgb(47, 147, 255)"></td>
+			<td style="background-color: rgb(46, 146, 255)"></td>
+			<td style="background-color: rgb(45, 145, 255)"></td>
+			<td style="background-color: rgb(44, 144, 255)"></td>
+			<td style="background-color: rgb(43, 143, 255)"></td>
+			<td style="background-color: rgb(42, 142, 255)"></td>
+			<td style="background-color: rgb(41, 141, 255)"></td>
+			<td style="background-color: rgb(40, 140, 255)"></td>		
+			<td style="background-color: rgb(39, 139, 255)"></td>		
+			<td style="background-color: rgb(38, 138, 255)"></td>
+			<td style="background-color: rgb(37, 137, 255)"></td>
+			<td style="background-color: rgb(36, 136, 255)"></td>
+			<td style="background-color: rgb(35, 135, 255)"></td>
+			<td style="background-color: rgb(34, 134, 255)"></td>
+			<td style="background-color: rgb(33, 133, 255)"></td>
+			<td style="background-color: rgb(32, 132, 255)"></td>
+			<td style="background-color: rgb(31, 131, 255)"></td>
+			<td style="background-color: rgb(30, 130, 255)"></td>
+			<td style="background-color: rgb(29, 129, 255)"></td>
+			<td style="background-color: rgb(28, 128, 255)"></td>
+			<td style="background-color: rgb(27, 127, 255)"></td>
+			<td style="background-color: rgb(26, 126, 255)"></td>		
+			<td style="background-color: rgb(25, 125, 255)"></td>		
+			<td style="background-color: rgb(24, 124, 255)"></td>
+			<td style="background-color: rgb(23, 123, 255)"></td>
+			<td style="background-color: rgb(22, 122, 255)"></td>
+			<td style="background-color: rgb(21, 121, 255)"></td>
+			<td style="background-color: rgb(20, 120, 255)"></td>
+			<td style="background-color: rgb(19, 119, 255)"></td>
+			<td style="background-color: rgb(18, 118, 255)"></td>
+			<td style="background-color: rgb(17, 117, 255)"></td>
+			<td style="background-color: rgb(16, 116, 255)"></td>
+			<td style="background-color: rgb(15, 115, 255)"></td>
+			<td style="background-color: rgb(14, 114, 255)"></td>
+			<td style="background-color: rgb(13, 113, 255)"></td>
+			<td style="background-color: rgb(12, 112, 255)"></td>
+			<td style="background-color: rgb(11, 111, 255)"></td>		
+			<td style="background-color: rgb(10, 110, 255)"></td>		
+			<td style="background-color: rgb(9, 109, 255)"></td>
+			<td style="background-color: rgb(8, 108, 255)"></td>
+			<td style="background-color: rgb(7, 107, 255)"></td>
+			<td style="background-color: rgb(6, 106, 255)"></td>
+			<td style="background-color: rgb(5, 105, 255)"></td>
+			<td style="background-color: rgb(4, 104, 255)"></td>
+			<td style="background-color: rgb(3, 103, 255)"></td>
+			<td style="background-color: rgb(2, 102, 255)"></td>
+			<td style="background-color: rgb(1, 101, 255)"></td>
+			<td style="background-color: rgb(0, 100, 255)"></td>
+		</tr>
+
+		<tr>
+			<td style="background-color: rgb(31, 131, 255)" colspan="64"></td>
+		</tr>
+		<tr>
+			<td colspan="64">8 bit. Og ja ... det er 1 nuance (mellemværdien) uanset hvad det ligner</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>HVis man er uheldig risikerer man altså at noget der så ud som fine bløde farveovergange ved 14 bit kommer til at ligne det vi ser herunder (overdrevet):</p>
+
+<table class="no_lines fixed">
+	<tbody>
+		<tr>
+			<td style="background-color: rgb(63, 163, 255)"></td>
+			<td style="background-color: rgb(31, 131, 255)"></td>
+			<td style="background-color: rgb(0, 100, 255)"></td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Derfor er det vigtigt at redigere sit billede i forhold til det ønskede output, hvis man vil have fuld kontrol med billedet.</p>
 
 
 <h1>Standard formater</h1>
