@@ -209,7 +209,7 @@
 
 <p>For at få en generel forståelse for farver kan du læse her: <a href="http://www.vidas.dk/foto/foto_farver.html" target="_blank">Digitale farver</a></p>
 
-<p>Kort fortalt gælder det at digitale farver bliver bygget op ved hjælp af farverne rød, grøn og blå (RGB). Herunder er hver af RGB farverne vist fra værdien 00000000 til 11111111 - altså det der svarer til 8 bit/farvekanal.</p>
+<p>Kort fortalt gælder det at digitale farver bliver bygget op ved hjælp af farverne rød, grøn og blå (RGB). Herunder er hver af RGB farverne vist fra værdien 00000000 til 11111111 - altså det der svarer til 8 bit/farvekanal (<span class="math">\( 2^8 = 256 \)</span> nuancer).</p>
 
 <p>Rød ( 00000000 - 11111111 )</p>
 
@@ -260,12 +260,12 @@
 
 <p>For at illustrere problemet har jeg herunder lavet et tænkt eksempel på hvad problematikken er. Forestil dig at du sidder og redigere en flade, hvori der er en farveovergang. Herunder er vist de ekstra mulige nuancer der er ved henholdsvis 14, 12, 10 og 8 bit, hvor 8 bit er det endelige resultat, f.eks. ved eksport til JPG.</p>
  
-<span class="afsnit">Mulige nuancer ved 14 bit</span>
+<span class="afsnit">Mulige nuancer ved 14 bit (<span class="math">\( 2^{14} = 16.384 nuancer \)</span>)</span>
 
-<table class="no_lines fixed">
+<table class="no_lines fixed extra_height">
 	<tbody>
 		<tr>
-			<td style="background-color: rgb(63, 163, 255)"></td>
+			<td style="background-color: rgb(63, 163, 255); height: 40px"></td>
 			<td style="background-color: rgb(62, 162, 255)"></td>
 			<td style="background-color: rgb(61, 161, 255)"></td>
 			<td style="background-color: rgb(60, 160, 255)"></td>		
@@ -333,15 +333,15 @@
 	</tbody>
 </table>
 
-<p>I denne farveovergang er der 64 farvefelter med hver sin nuance. Vores øjne kan ikke skille dem ad (mine kan ihvertfald ikke).</p>
+<p>I denne farveovergang er der 64 farvefelter med hver sin nuance. Vores øjne kan ikke skille dem ad, med mindre vi sidder ved en rigtig god skærm.</p>
 
 
-<span class="afsnit">Mulige nuancer ved 12-bit</span>
+<span class="afsnit">Mulige nuancer ved 12-bit (<span class="math">\( 2^{12} =  4096\)</span> nuancer)</span>
 
 <table class="no_lines fixed">
 	<tbody>
 		<tr>
-			<td style="background-color: rgb(62, 162, 255)"></td>		
+			<td style="background-color: rgb(62, 162, 255); height: 40px"></td>		
 			<td style="background-color: rgb(58, 158, 255)"></td>
 			<td style="background-color: rgb(54, 154, 255)"></td>
 			<td style="background-color: rgb(50, 150, 255)"></td>
@@ -363,14 +363,14 @@
 
 <p>Her er der kun 16 forskellige nuancer. Kigger vi godt efter kan vi godt se nogle lodrette linier igennem farveovergangen. Det skyldes både at felterne er større, men også at der er lidt mere forskel mellem de enkelte felter.</p>
 
-<span class="afsnit">Mulige nuancer ved 10 bit</span>
+<span class="afsnit">Mulige nuancer ved 10 bit (<span class="math">\( 2^{10} = 1024  \)</span> nuancer)</span>
 
 
 
 <table class="no_lines fixed">
 	<tbody>
 		<tr>
-			<td style="background-color: rgb(56, 156, 255)"></td>
+			<td style="background-color: rgb(56, 156, 255); height: 40px"></td>
 			<td style="background-color: rgb(40, 140, 255)"></td>
 			<td style="background-color: rgb(24, 124, 255)"></td>
 			<td style="background-color: rgb(8, 108, 255)"></td>
@@ -381,12 +381,12 @@
 <p>Her er der tydelig adskillelse mellem de fire nuancer der er plads til ved 10 bit</p>
 
 
-<span class="afsnit">Muligt slut-nuance ved 8 bit</span>
+<span class="afsnit">Muligt slut-nuance ved 8 bit (<span class="math">\( 2^8 = 256 \)</span>) nuancer</span>
 
 <table class="no_lines fixed">
 	<tbody>
 		<tr>
-			<td style="background-color: rgb(31, 131, 255)"></td>
+			<td style="background-color: rgb(31, 131, 255); height: 40px"></td>
 		</tr>
 	</tbody>
 </table>
@@ -399,7 +399,7 @@
 			<td colspan="64">14 bit (64 nuancer)</td>
 		</tr>
 		<tr>
-			<td style="background-color: rgb(63, 163, 255)"></td>
+			<td style="background-color: rgb(63, 163, 255); height: 40px"></td>
 			<td style="background-color: rgb(62, 162, 255)"></td>
 			<td style="background-color: rgb(61, 161, 255)"></td>
 			<td style="background-color: rgb(60, 160, 255)"></td>		
@@ -466,7 +466,7 @@
 		</tr>
 
 		<tr>
-			<td style="background-color: rgb(31, 131, 255)" colspan="64"></td>
+			<td style="background-color: rgb(31, 131, 255); height: 40px" colspan="64"></td>
 		</tr>
 		<tr>
 			<td colspan="64">8 bit. Og ja ... det er 1 nuance (mellemværdien) uanset hvad det ligner</td>
@@ -474,25 +474,115 @@
 	</tbody>
 </table>
 
-<p>HVis man er uheldig risikerer man altså at noget der så ud som fine bløde farveovergange ved 14 bit kommer til at ligne det vi ser herunder (overdrevet):</p>
+<p>Hvis man er uheldig risikerer man altså at noget der så ud som fine bløde farveovergange ved 14 bit kommer til at ligne det vi ser herunder (overdrevet):</p>
 
 <table class="no_lines fixed">
 	<tbody>
 		<tr>
-			<td style="background-color: rgb(63, 163, 255)"></td>
+			<td style="background-color: rgb(63, 163, 255); height: 40px"></td>
 			<td style="background-color: rgb(31, 131, 255)"></td>
 			<td style="background-color: rgb(0, 100, 255)"></td>
 		</tr>
 	</tbody>
 </table>
 
-<p>Det man kan lære af det her er, at RAW er godt til at optage billeder i, fordi man får en så nøjagtig repræsentation af ens motiv, som det er muligt.</p>
+<p>Vi kan altså konkludere at:</p>
 
-<p>Det man bare skal huske på er, at hvis RAW-filen er på 14 bit og ens skærm arbejder i 10 bit, så har man allerede her mistet en stor del af RAW filens mulige nuancer. </p>
+<ul class="">
+	<li>... RAW er godt til at optage billeder i, fordi man får en så nøjagtig repræsentation af ens motiv, som det er muligt.</li>
+	<li>... hvis RAW-filen er på 14 bit og ens skærm arbejder i 10 bit, så har man her "mistet" en stor del af RAW filens mulige nuancer (<span class="math">\( 2^{14} - 2^{10} = 2^4 = 16  \)</span> nuancer per farvekanal).</li>
+	<li>... problemet er større hvis ens skærm arbejder i 8 bit (<span class="math">\( 2^{14}-2^{8}=2^6 = 64  \)</span> nuancer per farvekanal) </li>
+	<li>... hvis man eksporterer et billede der er bearbejdet i 10 bit (<span class="math">\( 2^{10}=1024 \)</span>) til et 8 bits format (f.eks. JPG/PNG), så mister man <span class="math">\( \frac{ 3 }{ 4 } \)</span> af de nuancer man kan se på sin computer..</li>
+</ul>
 
-<p>Og når man eksportere til JPG, så mister man 2 bits mere, hvilket svarer til at gå fra 1024 nuancer/farvekanal til 256 nuancer/farvekanal. </p>
+<p>Der er ingen tvivl om at RAW er det bedste formaet at tage sine billeder i, men man bør stadig færdig redigere sine billeder i det format de skal bruges, da man risikerer at detaljer forsvinder når man ændrer på farvedybden i billedet.</p>
 
-<h1>Standard formater</h1>
+<h1>Standardformater</h1>
+
+<p>Standardformater er i denne sammenhæng billedformater der kan anvendes til deling og visning i programmer på forskellige operativsystemer og platforme.</p>
+
+<h2>Vigtige begreber</h2>
+
+<h3>Komprimering</h3>
+
+<p>For at gøre billedfiler mindre kan man komprimere/pakke dem til at fylde mindre, som man f.eks. gør med zip-filer. Det foregår ved at komprimeringsprogrammet finder data, det kan beskrive kortere end det originale.</p>
+
+<p>Kig på nedestående flag, som består af 7 rektangler. </p>
+
+<table class="no_lines centreret">
+	<tbody>
+		<tr>
+			<td style="background-color: rgb(255,0,0); height:240px; width:240px;"><span class="math">\( 240 \cdot 240 \)</span></td>
+			<td style="background-color: rgb(255,255,255); height:240px; width:80px;"><span class="math">\( 80 \cdot 240 \)</span></td>
+			<td style="background-color: rgb(255,0,0); height:240px; width:420px"><span class="math">\( 420 \cdot 240 \)</span></td>			
+		</tr>
+		<tr>
+			<td colspan="740px"style="height:80px"><span class="math">\( (240+80+420) \cdot 80 \)</span></td>
+		</tr>
+		<tr>
+			<td style="background-color: rgb(255,0,0); height:240px; width:240px;"><span class="math">\( 240 \cdot 240 \)</span></td>
+			<td style="background-color: rgb(255,255,255); height:240px; width:80px;"><span class="math">\( 80 \cdot 240 \)</span></td>
+			<td style="background-color: rgb(255,0,0); height:240px; width:420px"><span class="math">\( 420 \cdot 240 \)</span></td>			
+		</tr>
+	</tbody>
+</table>
+
+<p>Her kan man se at flaget består af:</p>
+
+<ul class="">
+	<li>Et samlet areal på <span class="math">\( 740 \cdot 560 \)</span></li>
+	<li>Det består af 4 felter, som er parvis ens ... på en hvis baggrund.</li>
+	<li>De røde felter er henholdsvis: <span class="math">\( 240 \cdot 240 \)</span> og <span class="math">\( 240 \cdot 420 \)</span></li>
+</ul>
+
+<p>Man kan altså ved hjælp arealernes størrelse, position og farve sammensætte billedet. Det vil fylde langt mindre end at beskrive hver enkelt pixel hver for sig.</p>
+
+<details>
+
+	<summary>Dannebro i HTML kode</summary>
+
+	<p>Herunder kan du se koden til dannebrogsflaget i HTML. Det fylder væsentlig mindre, end hvis man skulle beskrive billedet pixel for pixel.</p>
+	
+	<pre>
+		<code class="html">&lt;table class="no_lines centreret">
+	&lt;tbody>
+		&lt;tr>
+			&lt;td style="background-color: rgb(255,0,0); height:240px; width:240px;">&lt;span class="math">\( 240 \cdot 240 \)&lt;/span>&lt;/td>
+			&lt;td style="background-color: rgb(255,255,255); height:240px; width:80px;">&lt;span class="math">\( 80 \cdot 240 \)&lt;/span>&lt;/td>
+			&lt;td style="background-color: rgb(255,0,0); height:240px; width:420px">&lt;span class="math">\( 420 \cdot 240 \)&lt;/span>&lt;/td>			
+		&lt;/tr>
+		&lt;tr>
+			&lt;td colspan="740px"style="height:80px">&lt;span class="math">\( (240+80+420) \cdot 80 \)&lt;/span>&lt;/td>
+		&lt;/tr>
+		&lt;tr>
+			&lt;td style="background-color: rgb(255,0,0); height:240px; width:240px;">&lt;span class="math">\( 240 \cdot 240 \)&lt;/span>&lt;/td>
+			&lt;td style="background-color: rgb(255,255,255); height:240px; width:80px;">&lt;span class="math">\( 80 \cdot 240 \)&lt;/span>&lt;/td>
+			&lt;td style="background-color: rgb(255,0,0); height:240px; width:420px">&lt;span class="math">\( 420 \cdot 240 \)&lt;/span>&lt;/td>			
+		&lt;/tr>
+	&lt;/tbody>
+&lt;/table>
+		</code>
+	</pre>
+
+</details>
+
+<h3>Lossy compression</h3>
+
+<p>Lossy compression (også kaldet irreversibel komprimering) anvendes til forskellige media (billede, video og lyd), hvor det ikke er nødvendigt med en 100% nøjagtig gengivelse af det oprindelige men blot en tilnærmelse. Ved billeder handler det om at man samler områder med samme farve eller farveovergange.</p>
+
+
+
+
+<p>Lossy compression er en betegnelse der beskriver</p>
+
+
+<p>Her vil jeg gennemgå de mest almindelige formater:</p>
+
+<ul class="disc">
+	<li>JPEG</li>
+	<li>PNG</li>
+	<li>TIFF</li>
+</ul>
 
 
 <h2>JPEG</h2>
