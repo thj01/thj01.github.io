@@ -69,9 +69,9 @@
 	
 	<li>Ikke destruktiv redigering</li>
 	
-	<p>Så længe man redigerer i RAW formatet, så sker der ingen ændringer af de oprindelige data. Det hele styres ved hjælp af en konfigurationsfil, som får programmet til at manipulere med pixels i oprindelige billede.</p>
+	<p>Så længe man redigerer i RAW formatet, så sker der ingen ændringer af de oprindelige data. Det hele styres ved hjælp af en konfigurationsfil, som får programmet til at manipulere med pixels i RAW filen.</p>
 	
-	<p>Det er altså i langt højere grad muligt at ramme mere præcist med de ønskede ændringer</p>
+	<p>Det er altså i langt højere grad muligt at ramme mere præcist med de ønskede ændringer, og skabe det bedst mulige udgangspunkt for at eksportere sit billede til et standardformat.</p>
 </ul>
 
 <h2>Noget om bit</h2>
@@ -197,7 +197,7 @@
 	</tbody>
 </table>
 
-<p>Således vil tallet 11000101 er altså:</p>
+<p>Således vil tallet 11000101 altså give følgende i 10-talssystemet:</p>
 
 <div class="latex">$$  10^7 + 10^6 + 10^3 + 10^0 = 128 + 64 + 4 + 1 = 197  $$</div>
 
@@ -243,6 +243,9 @@
 	
 <p>Nuancer per pixel = <span class="math">\( 4.3980~~mia ~~(2^{42}) \)</span></p>
 
+<p>Ved 8-bit (f.eks. i jpg billeder) er der maksimalt <span class="math">\( 256 ~~(2^8) \)</span> nuancer per farvekanal.</p>
+
+
 <p>Problemet med dette store antal nuancer er, at hvis antallet af mulige nuancer overstiger det antal vi kan se/producere, er at vi reelt arbejder i blinde. Konkret viser problemet sig i følgende tilfælde:</p>
 
 <ul class="none fat_li">
@@ -255,9 +258,9 @@
 		<p>Hvis det endelige billedformat ikke kan gemme/vise alle de nuancer man har arbejdet med, så risikerer man at få det som hedder banning. Det kan ofte ses tydeligt på store flader hvor nuanceforskellen ikke er stor</p>
 </ul>
 
-<p>For at illustrere problemet har jeg herunder lavet et tænkt eksempel på hvad problematikken er. Forestil dig at du sidder og redigere en flade, hvori der er en farveovergang. Herunder er vist de mulige nuancer ved henholdsvis 14- og 12 bit</p>
-
-<p>Mulige farver ved 14 bit (i alt 64 nuancer)</p>
+<p>For at illustrere problemet har jeg herunder lavet et tænkt eksempel på hvad problematikken er. Forestil dig at du sidder og redigere en flade, hvori der er en farveovergang. Herunder er vist de ekstra mulige nuancer der er ved henholdsvis 14, 12, 10 og 8 bit, hvor 8 bit er det endelige resultat, f.eks. ved eksport til JPG.</p>
+ 
+<span class="afsnit">Mulige nuancer ved 14 bit</span>
 
 <table class="no_lines fixed">
 	<tbody>
@@ -330,8 +333,10 @@
 	</tbody>
 </table>
 
+<p>I denne farveovergang er der 64 farvefelter med hver sin nuance. Vores øjne kan ikke skille dem ad (mine kan ihvertfald ikke).</p>
 
-<p>Mulige farver ved 12-bit (i alt 16 nuancer)</p>
+
+<span class="afsnit">Mulige nuancer ved 12-bit</span>
 
 <table class="no_lines fixed">
 	<tbody>
@@ -356,7 +361,11 @@
 	</tbody>
 </table>
 
-<p>Mulige farver ved 10 bit (i alt 4 nuancer)</p>
+<p>Her er der kun 16 forskellige nuancer. Kigger vi godt efter kan vi godt se nogle lodrette linier igennem farveovergangen. Det skyldes både at felterne er større, men også at der er lidt mere forskel mellem de enkelte felter.</p>
+
+<span class="afsnit">Mulige nuancer ved 10 bit</span>
+
+
 
 <table class="no_lines fixed">
 	<tbody>
@@ -369,7 +378,10 @@
 	</tbody>
 </table>
 
-<p>Mulige farver ved 8 bit (i alt 1 nuance)</p>
+<p>Her er der tydelig adskillelse mellem de fire nuancer der er plads til ved 10 bit</p>
+
+
+<span class="afsnit">Muligt slut-nuance ved 8 bit</span>
 
 <table class="no_lines fixed">
 	<tbody>
@@ -474,8 +486,11 @@
 	</tbody>
 </table>
 
-<p>Derfor er det vigtigt at redigere sit billede i forhold til det ønskede output, hvis man vil have fuld kontrol med billedet.</p>
+<p>Det man kan lære af det her er, at RAW er godt til at optage billeder i, fordi man får en så nøjagtig repræsentation af ens motiv, som det er muligt.</p>
 
+<p>Det man bare skal huske på er, at hvis RAW-filen er på 14 bit og ens skærm arbejder i 10 bit, så har man allerede her mistet en stor del af RAW filens mulige nuancer. </p>
+
+<p>Og når man eksportere til JPG, så mister man 2 bits mere, hvilket svarer til at gå fra 1024 nuancer/farvekanal til 256 nuancer/farvekanal. </p>
 
 <h1>Standard formater</h1>
 
