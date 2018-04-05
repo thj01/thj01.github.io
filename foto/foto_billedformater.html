@@ -501,6 +501,16 @@
 
 <p>Standardformater er i denne sammenhæng billedformater der kan anvendes til deling og visning i programmer på forskellige operativsystemer og platforme.</p>
 
+<p>Her vil jeg gennemgå de mest almindelige formater:</p>
+
+<ul class="disc">
+	<li>JPEG</li>
+	<li>PNG</li>
+	<li>TIFF</li>
+</ul>
+
+<p>Før formaterne bliver gennemgået vil der først være en kort introduktion til nogle væsentlige begreber.</p>
+
 <h2>Vigtige begreber</h2>
 
 <h3>Komprimering</h3>
@@ -509,7 +519,7 @@
 
 <p>Kig på nedestående flag, som består af 7 rektangler. </p>
 
-<table class="no_lines centreret">
+<table class="no_lines centreret" style="width: 740px; height: 560px">
 	<tbody>
 		<tr>
 			<td style="background-color: rgb(255,0,0); height:240px; width:240px;"><span class="math">\( 240 \cdot 240 \)</span></td>
@@ -535,7 +545,7 @@
 	<li>De røde felter er henholdsvis: <span class="math">\( 240 \cdot 240 \)</span> og <span class="math">\( 240 \cdot 420 \)</span></li>
 </ul>
 
-<p>Man kan altså ved hjælp arealernes størrelse, position og farve sammensætte billedet. Det vil fylde langt mindre end at beskrive hver enkelt pixel hver for sig.</p>
+<p>Man kan altså ved hjælp fladernes størrelse, position og farve sammensætte billedet. Det vil fylde langt mindre end at beskrive hver enkelt pixel hver for sig. Og når man pakker filen ud igen indeholder den de samme data som før.</p>
 
 <h3>Lossy compression</h3>
 
@@ -545,24 +555,31 @@
 
 <img class="p90" src="images/JPG-Compression-Sample.png" alt="" title="">
 
-<p>Kigger man på dette billede kan man for alvor begynde at fornemme kvalitetstab ved <span class="inl_cmd">40 Quality</span>. Fordelen ved JPG komprimeringen er, at man allerede ved <span class="inl_cmd">80 Quality</span> har formindsket billede til omkring <span class="math">\( \frac{ 1 }{ 5 } \)</span> af den oprindelige størrelse.</p>
+<p>Kigger man på dette billede kan man for alvor begynde at fornemme kvalitetstab ved <span class="inl_cmd">40 Quality</span>. Fordelen ved JPG komprimeringen er, at man allerede ved <span class="inl_cmd">80 Quality</span> har formindsket billede til omkring 20% af den oprindelige størrelse.</p>
 
-<p>Kigger vi nærmere på billedet kan vi allerede se komprimeringsfejl ved <span class="inl_cmd">Quality 80</span></p>
-
-
-<p>Lossy compression er en betegnelse der beskriver</p>
+<p>Kigger vi nærmere på billedet kan vi allerede se komprimeringsfejl ved t'et i Quality ved <span class="inl_cmd">Quality 80</span> billedet.</p>
 
 
-<p>Her vil jeg gennemgå de mest almindelige formater:</p>
-
-<ul class="disc">
-	<li>JPEG</li>
-	<li>PNG</li>
-	<li>TIFF</li>
-</ul>
-
+<p>En lossy compression er altså kendetegnet ved at man ikke kan komme tilbage til udgangspunktet</p>
 
 <h2>JPEG</h2>
+
+<table class="_">
+	<thead>
+		<tr>
+			<th>Komprimering</th>
+			<th>bit dybde</th>
+			<th>_</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>_</td>
+			<td>_</td>
+		</tr>
+	</tbody>
+</table>
+
 
 
 <h2>PNG</h2>
