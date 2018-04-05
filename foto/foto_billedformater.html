@@ -537,40 +537,17 @@
 
 <p>Man kan altså ved hjælp arealernes størrelse, position og farve sammensætte billedet. Det vil fylde langt mindre end at beskrive hver enkelt pixel hver for sig.</p>
 
-<details>
-
-	<summary>Dannebro i HTML kode</summary>
-
-	<p>Herunder kan du se koden til dannebrogsflaget i HTML. Det fylder væsentlig mindre, end hvis man skulle beskrive billedet pixel for pixel.</p>
-	
-	<pre>
-		<code class="html">&lt;table class="no_lines centreret">
-	&lt;tbody>
-		&lt;tr>
-			&lt;td style="background-color: rgb(255,0,0); height:240px; width:240px;">&lt;span class="math">\( 240 \cdot 240 \)&lt;/span>&lt;/td>
-			&lt;td style="background-color: rgb(255,255,255); height:240px; width:80px;">&lt;span class="math">\( 80 \cdot 240 \)&lt;/span>&lt;/td>
-			&lt;td style="background-color: rgb(255,0,0); height:240px; width:420px">&lt;span class="math">\( 420 \cdot 240 \)&lt;/span>&lt;/td>			
-		&lt;/tr>
-		&lt;tr>
-			&lt;td colspan="740px"style="height:80px">&lt;span class="math">\( (240+80+420) \cdot 80 \)&lt;/span>&lt;/td>
-		&lt;/tr>
-		&lt;tr>
-			&lt;td style="background-color: rgb(255,0,0); height:240px; width:240px;">&lt;span class="math">\( 240 \cdot 240 \)&lt;/span>&lt;/td>
-			&lt;td style="background-color: rgb(255,255,255); height:240px; width:80px;">&lt;span class="math">\( 80 \cdot 240 \)&lt;/span>&lt;/td>
-			&lt;td style="background-color: rgb(255,0,0); height:240px; width:420px">&lt;span class="math">\( 420 \cdot 240 \)&lt;/span>&lt;/td>			
-		&lt;/tr>
-	&lt;/tbody>
-&lt;/table>
-		</code>
-	</pre>
-
-</details>
-
 <h3>Lossy compression</h3>
 
-<p>Lossy compression (også kaldet irreversibel komprimering) anvendes til forskellige media (billede, video og lyd), hvor det ikke er nødvendigt med en 100% nøjagtig gengivelse af det oprindelige men blot en tilnærmelse. Ved billeder handler det om at man samler områder med samme farve eller farveovergange.</p>
+<p>Lossy compression (også kaldet irreversibel komprimering) anvendes til forskellige media (billede, video og lyd), hvor det ikke er nødvendigt med en 100% nøjagtig gengivelse af det oprindelige men blot en tilnærmelse. Ved billeder handler det f.eks. om områder med samme farve eller farveovergange.</p>
 
+<p>Herunder kan du se et billede der er blevet udsat for forskellige komprimeringsgrader i et JPG billede.</p>
 
+<img class="p90" src="images/JPG-Compression-Sample.png" alt="" title="">
+
+<p>Kigger man på dette billede kan man for alvor begynde at fornemme kvalitetstab ved <span class="inl_cmd">40 Quality</span>. Fordelen ved JPG komprimeringen er, at man allerede ved <span class="inl_cmd">80 Quality</span> har formindsket billede til omkring <span class="math">\( \frac{ 1 }{ 5 } \)</span> af den oprindelige størrelse.</p>
+
+<p>Kigger vi nærmere på billedet kan vi allerede se komprimeringsfejl ved <span class="inl_cmd">Quality 80</span></p>
 
 
 <p>Lossy compression er en betegnelse der beskriver</p>
