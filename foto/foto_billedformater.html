@@ -513,6 +513,12 @@
 
 <h2>Vigtige begreber</h2>
 
+<h3>Alpha kanal</h3>
+
+<p>En ekstra "farvekanal" der beskriver hvor gennemsigtige de enkelte pixels skal være. Denne egenskab gør, at man kan lave usynlig baggrund i billeder, og derved lade baggrunden "lyse" igennem.</p>
+
+<p>Selvom</p>
+
 <h3>Komprimering</h3>
 
 <p>For at gøre billedfiler mindre kan man komprimere/pakke dem til at fylde mindre, som man f.eks. gør med zip-filer. Det foregår ved at komprimeringsprogrammet finder data, det kan beskrive kortere end det originale.</p>
@@ -568,10 +574,11 @@
 	<thead>
 		<tr>
 			<th>Komprimering</th>
-			<th>bit dybde</th>
+			<th>Nuancer pr kanal</th>
 			<th>Transparency</th>
 			<th>Farvestyring</th>
 			<th>Metatags</th>
+			<th>Egnet til...</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -581,6 +588,7 @@
 			<td>Nej</td>
 			<td>YCbCr, ICC</span></td>
 			<td>Kan indeholde et tekstfelt</td>
+			<td>Web - print</td>
 		</tr>
 	</tbody>
 </table>
@@ -593,10 +601,11 @@
 	<thead>
 		<tr>
 			<th>Komprimering</th>
-			<th>bit dybde</th>
+			<th>Nuancer pr kanal</th>
 			<th>Transparency</th>
 			<th>Farvestyring</th>
 			<th>Metatags</th>
+			<th>Egnet til...</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -604,8 +613,9 @@
 			<td>Ja - loseless</td>
 			<td>8 og 16 bit</td>
 			<td>ja</td>
-			<td><span class="math">\( RGB/RGBA\)</span></td>
+			<td>RGB/RGBA, ICC</td>
 			<td>Standard og tilpassede</td>
+			<td>Web og print</td>
 		</tr>
 	</tbody>
 </table>
@@ -616,19 +626,21 @@
 	<thead>
 		<tr>
 			<th>Komprimering</th>
-			<th>bit dybde</th>
+			<th>Nuancer pr kanal</th>
 			<th>Transparency</th>
 			<th>Farvestyring</th>
 			<th>Metatags</th>
+			<th>Egnet til...</th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr>
 			<td>Ja - loseless</td>
 			<td>8 og 16 bit</td>
-			<td>Nej</td>
-			<td><span class="math">\( RGB, CMYK, YCbCr, CIE l*a*b \)</span></td>
+			<td>Ja</td>
+			<td>RGB, ICC, CMYK, YCbCr, CIE l*a*b</td>
 			<td>Standard og tilpassede</td>
+			<td>Print/prof tryk</td>
 		</tr>
 	</tbody>
 </table>
