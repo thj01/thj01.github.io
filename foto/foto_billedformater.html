@@ -517,7 +517,7 @@
 
 <p>En ekstra "farvekanal" der beskriver hvor gennemsigtige de enkelte pixels skal være. Denne egenskab gør, at man kan lave usynlig baggrund i billeder, og derved lade baggrunden "lyse" igennem.</p>
 
-<p>Selvom</p>
+<p>TIFF tilbyder også transparency, men anvender ikke en alpha kanal hertil.</p>
 
 <h3>Komprimering</h3>
 
@@ -525,30 +525,14 @@
 
 <p>Kig på nedestående flag, som består af 7 rektangler. </p>
 
-<table class="no_lines centreret" style="width: 740px; height: 560px">
-	<tbody>
-		<tr>
-			<td style="background-color: rgb(255,0,0); height:240px; width:240px;"><span class="math">\( 240 \cdot 240 \)</span></td>
-			<td style="background-color: rgb(255,255,255); height:240px; width:80px;"><span class="math">\( 80 \cdot 240 \)</span></td>
-			<td style="background-color: rgb(255,0,0); height:240px; width:420px"><span class="math">\( 420 \cdot 240 \)</span></td>			
-		</tr>
-		<tr>
-			<td colspan="740px"style="height:80px"><span class="math">\( (240+80+420) \cdot 80 \)</span></td>
-		</tr>
-		<tr>
-			<td style="background-color: rgb(255,0,0); height:240px; width:240px;"><span class="math">\( 240 \cdot 240 \)</span></td>
-			<td style="background-color: rgb(255,255,255); height:240px; width:80px;"><span class="math">\( 80 \cdot 240 \)</span></td>
-			<td style="background-color: rgb(255,0,0); height:240px; width:420px"><span class="math">\( 420 \cdot 240 \)</span></td>			
-		</tr>
-	</tbody>
-</table>
+<img class="p30" src="images/danish_flag.svg" alt="_" title="_" />
 
 <p>Her kan man se at flaget består af:</p>
 
 <ul class="">
-	<li>Et samlet areal på <span class="math">\( 740 \cdot 560 \)</span></li>
+	<li>Et samlet areal med størrelseforholdet <span class="math">\( 37 \cdot 28 \)</span></li>
 	<li>Det består af 4 felter, som er parvis ens ... på en hvis baggrund.</li>
-	<li>De røde felter er henholdsvis: <span class="math">\( 240 \cdot 240 \)</span> og <span class="math">\( 240 \cdot 420 \)</span></li>
+	<li>De røde felters størrelsesforhold er henholdsvis: <span class="math">\( 12 \cdot 12 \)</span> og <span class="math">\( 21 \cdot 12 \)</span></li>
 </ul>
 
 <p>Man kan altså ved hjælp fladernes størrelse, position og farve sammensætte billedet. Det vil fylde langt mindre end at beskrive hver enkelt pixel hver for sig. Og når man pakker filen ud igen indeholder den de samme data som før.</p>
@@ -557,20 +541,14 @@
 
 <p>Lossy compression (også kaldet irreversibel komprimering) anvendes til forskellige media (billede, video og lyd), hvor det ikke er nødvendigt med en 100% nøjagtig gengivelse af det oprindelige men blot en tilnærmelse. Ved billeder handler det f.eks. om områder med samme farve eller farveovergange.</p>
 
-<p>Herunder kan du se et billede der er blevet udsat for forskellige komprimeringsgrader i et JPG billede.</p>
-
-<img class="p90" src="images/JPG-Compression-Sample.png" alt="" title="">
-
-<p>Kigger man på dette billede kan man for alvor begynde at fornemme kvalitetstab ved <span class="inl_cmd">40 Quality</span>. Fordelen ved JPG komprimeringen er, at man allerede ved <span class="inl_cmd">80 Quality</span> har formindsket billede til omkring 20% af den oprindelige størrelse.</p>
-
-<p>Kigger vi nærmere på billedet kan vi allerede se komprimeringsfejl ved t'et i Quality ved <span class="inl_cmd">Quality 80</span> billedet.</p>
+<p>Lad os se på et eksempel, hvor</p>
 
 
 <p>En lossy compression er altså kendetegnet ved at man ikke kan komme tilbage til udgangspunktet</p>
 
 <h2>JPEG</h2>
 
-<table class="_">
+<table class="centreret fixed">
 	<thead>
 		<tr>
 			<th>Komprimering</th>
@@ -597,7 +575,7 @@
 
 <h2>PNG</h2>
 
-<table class="_">
+<table class="centreret fixed">
 	<thead>
 		<tr>
 			<th>Komprimering</th>
@@ -622,7 +600,7 @@
 
 <h2>TIFF</h2>
 
-<table class="_">
+<table class="centreret fixed">
 	<thead>
 		<tr>
 			<th>Komprimering</th>
