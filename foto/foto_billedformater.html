@@ -497,33 +497,24 @@
 
 <p>Der er ingen tvivl om at RAW er det bedste formaet at tage sine billeder i, men man bør stadig færdig redigere sine billeder i det format de skal bruges, da man risikerer at detaljer forsvinder når man ændrer på farvedybden i billedet.</p>
 
-<h1>Standardformater</h1>
 
-<p>Standardformater er i denne sammenhæng billedformater der kan anvendes til deling og visning i programmer på forskellige operativsystemer og platforme.</p>
+<h1>Vigtige begreber</h1>
 
-<p>Her vil jeg gennemgå de mest almindelige formater:</p>
+<h2>Størrelse</h2>
 
-<ul class="disc">
-	<li>JPEG</li>
-	<li>PNG</li>
-	<li>TIFF</li>
-</ul>
+<p>Et billede opgøres i antallet af pixels det kan optage. Et Canon 6D har f.eks. opløsningen 20.2 MPixels (5472x3648).</p>
 
-<p>Før formaterne bliver gennemgået vil der først være en kort introduktion til nogle væsentlige begreber.</p>
-
-<h2>Vigtige begreber</h2>
-
-<h3>Transparency</h3>
+<h2>Transparency</h2>
 
 <p>Transparency fortæller om et billede kan have usynlig baggrund. </p>
 
-<h3>Komprimering</h3>
+<h2>Komprimering</h2>
 
 <p>For at gøre billedfiler mindre kan man komprimere/pakke dem til at fylde mindre, som man f.eks. gør med zip-filer. Det foregår ved at komprimeringsprogrammet finder data, det kan beskrive kortere end i den originale fil.</p>
 
 <p>Man kan indstille graden af komprimering, men det kan sjældent betale sig at ændre på programmets standardindstillinger.</p>
 
-<h3>Lossy compression</h3>
+<h2>Lossy compression</h2>
 
 <p>Lossy compression (også kaldet irreversibel komprimering) anvendes til forskellige media (billede, video og lyd), hvor det ikke er nødvendigt med en 100% nøjagtig gengivelse af det oprindelige men blot en tilnærmelse. Ved billeder handler det f.eks. om områder med samme farve eller farveovergange.</p>
 
@@ -532,6 +523,125 @@
 
 <p>En lossy compression er altså kendetegnet ved at man ikke kan komme tilbage til udgangspunktet</p>
 
+<h1>Opløsning</h1>
+
+<p>For at angive billedet opløsning anvender man egentlig 4 forskellige betegnelser:</p>
+
+<table class="_">
+	<thead>
+		<tr>
+			<th>Betegnelse</th>
+			<th>Forklaring</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Opløsning</td>
+			<td>Angives enten som et tal eller som længde &middot; højde. For et Canon 6D vil det være henholdsvis 20.2 MPixels eller 5472 &middot; 3648 pixels</td>
+		</tr>
+		<tr>
+			<td>PPI</td>
+			<td><b>P</b>ixels <b>P</b>er <b>Inch</b> - Handler om hvor tæt pixels sidder på skærme - og dermed egentlig skarpheden af en skærm. </td>
+		</tr>
+		<tr>
+			<td>DPI</td>
+			<td><b>D</b>ots <b>P</b>er <b>I</b>nch. Anvendes kun til print. DPI tallet angiver hvor mange "pletter" der vil blive sat per tomme når den printes. </td>
+		</tr>
+	</tbody>
+</table>
+
+<p>For at finde den rigtige PPI/DPI skal man vide noget om hvor langt væk fra billedfladen man skal være for at opfatte et billede skarpt. </p>
+
+<p>Formlen til at beregne (tilnærmet) den nødvendige DPI er (x = antal meter):</p>
+
+<div class="latex">$$ PPI_{m} = \frac{ 2 }{ x \cdot 0,0115} $$</div>
+	
+<p>I tabelform</p>	
+
+<table class="centreret">
+	<thead>
+		<tr>
+			<th rowspan="2">Afstand</th>
+			<th rowspan="2">Opløsning (PPI)</th>
+			<th colspan="3">Pixels ved ...</th>
+		
+		</tr>
+		<tr>
+			<th>A4</th>
+			<th>A3</th>
+			<th>4&middot;2 meter </th>			
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>0,5</td>
+			<td>348</td>
+			<td>4070 &middot; 2878</td>
+			<td>5755 &middot; 4070</td>
+			<td>41102 &middot; 27402</td>
+		</tr>
+		<tr>
+			<td>1</td>
+			<td>174</td>
+			<td>2035 &middot; 1439</td>
+			<td>2878 &middot; 2035</td>
+			<td>20552 &middot; 13701</td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>87</td>
+			<td>1018 &middot; 720</td>
+			<td>1439 &middot; 1018</td>
+			<td>10276 &middot; 6851</td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>58</td>
+			<td>679 &middot; 480</td>
+			<td>960 &middot; 679</td>
+			<td>6851 &middot; 4567</td>
+		</tr>
+		<tr>
+			<td>4</td>
+			<td>44</td>
+			<td>515 &middot; 364</td>
+			<td>728 &middot; 515</td>
+			<td>5197 &middot; 3465</td>
+		</tr>
+		<tr>
+			<td>5</td>
+			<td>35</td>
+			<td>410 &middot; 290</td>
+			<td>579 &middot; 410</td>
+			<td>4134 &middot; 2756</td>
+		</tr>
+		<tr>
+			<td>10</td>
+			<td>18</td>
+			<td>211 &middot; 149</td>
+			<td>298 &middot; 211</td>
+			<td>2126 &middot; 1418</td>
+		</tr>
+		<tr>
+			<td>20</td>
+			<td>9</td>
+			<td>106 &middot; 75</td>
+			<td>149 &middot; 106</td>
+			<td>1063 &middot; 709</td>
+		</tr>
+		<tr>
+			<td>50</td>
+			<td>4</td>
+			<td>47 &middot; 34</td>
+			<td>67 &middot; 47</td>
+			<td>473 &middot; 315</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Hent regneark: <a href="files/DPI_regneark.xls" download>DPI_regneark.xls</a></p>
+
+<h1>Standardformater</h1>
 
 <h2>JPG, PNG og TIFF</h2>
 
@@ -645,8 +755,19 @@
 	</tbody>
 </table>
 
-_</p>
 
+
+<p>Standardformater er i denne sammenhæng billedformater der kan anvendes til deling og visning i programmer på forskellige operativsystemer og platforme.</p>
+
+<p>Her vil jeg gennemgå de mest almindelige formater:</p>
+
+<ul class="disc">
+	<li>JPEG</li>
+	<li>PNG</li>
+	<li>TIFF</li>
+</ul>
+
+<p>Før formaterne bliver gennemgået vil der først være en kort introduktion til nogle væsentlige begreber.</p>
 
 
 
