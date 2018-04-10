@@ -541,7 +541,7 @@
 		</tr>
 		<tr>
 			<td>PPI</td>
-			<td><b>P</b>ixels <b>P</b>er <b>Inch</b> - Handler om hvor tæt pixels sidder på skærme - og dermed egentlig skarpheden af en skærm. </td>
+			<td><b>P</b>ixels <b>P</b>er <b>Inch</b> - Handler om hvor tæt pixels sidder - og dermed egentlig skarpheden af en skærm. </td>
 		</tr>
 		<tr>
 			<td>DPI</td>
@@ -550,7 +550,164 @@
 	</tbody>
 </table>
 
-<p>For at finde den rigtige PPI/DPI skal man vide noget om hvor langt væk fra billedfladen man skal være for at opfatte et billede skarpt. </p>
+<h2>Print</h2>
+
+<p>En tommelfingerregel for print er, at billedet minimum skal have en DPI på 150. Ved denne opløsning af billedet registrerer vi det som værende "godt nok".</p>
+
+
+
+
+<p>Det betyder:</p>
+
+<table class="centreret">
+	<thead>
+		<tr>
+			<th colspan="2">Format</th>
+			<th colspan="2">Pixels ved 150 DPI</th>
+			<th colspan="2">Pixels ved 300 DPI</th>
+		</tr>
+		<tr>
+			<th>h&middot;b (cm)</th>
+			<th>Forhold</th>
+			<th>h&middot;b</th>
+			<th>Mpixels</th>
+			<th>h&middot;b</th>
+			<th>MPixels</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>10 &middot; 13</td>
+			<td>1,3</td>
+			<td>597 &middot; 768</td>
+			<td>0,5</td>
+			<td>1182 &middot; 1536</td>
+			<td>1,9</td>
+		</tr>
+		<tr>
+			<td>13 &middot; 18</td>
+			<td>1,4</td>
+			<td>768 &middot; 1063</td>
+			<td>0,9</td>
+			<td>1536 &middot; 2126</td>
+			<td>3,3</td>
+		</tr>
+		<tr>
+			<td>15 &middot; 21</td>
+			<td>1,4</td>
+			<td>886 &middot; 1241</td>
+			<td>1,1</td>
+			<td>1772 &middot; 2481</td>
+			<td>4,4</td>
+		</tr>
+		<tr>
+			<td>18 &middot; 24</td>
+			<td>1,3</td>
+			<td>1063 &middot; 1418</td>
+			<td>1,6</td>
+			<td>2126 &middot; 2835</td>
+			<td>6,1</td>
+		</tr>
+		<tr>
+			<td>20 &middot; 30</td>
+			<td>1,5</td>
+			<td>1182 &middot; 1772</td>
+			<td>2,1</td>
+			<td>2363 &middot; 3544</td>
+			<td>8,4</td>
+		</tr>
+		<tr>
+			<td>30 &middot; 45</td>
+			<td>1,5</td>
+			<td>1772 &middot; 2658</td>
+			<td>4,8</td>
+			<td>3544 &middot; 5315</td>
+			<td>18,9</td>
+		</tr>
+		<tr>
+			<td>40 &middot; 60</td>
+			<td>1,5</td>
+			<td>2363 &middot; 3544</td>
+			<td>8,4</td>
+			<td>4725 &middot; 7087</td>
+			<td>33,5</td>
+		</tr>
+	</tbody>
+</table>
+
+<h2>Printer papir</h2>
+
+<table class="centreret">
+	<thead>
+		<tr>
+			<th colspan="3">Format</th>
+			<th colspan="2">Pixels ved 150 DPI</th>
+			<th colspan="2">Pixels ved 300 DPI</th>
+		</tr>
+		<tr>
+			<th>Type</th>
+			<th>h&middot;b (cm)</th>
+			<th>Forhold</th>
+			<th>h&middot;b</th>
+			<th>Mpixels</th>
+			<th>h&middot;b</th>
+			<th>MPixels</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>A5</td>
+			<td>14,8 &middot; 21</td>
+			<td>1,4</td>
+			<td>875 &middot; 1241</td>
+			<td>1,1</td>
+			<td>1749 &middot; 2481</td>
+			<td>4,4</td>
+		</tr>
+		<tr>
+			<td>A4</td>
+			<td>21 &middot; 29,7</td>
+			<td>1,4</td>
+			<td>1241 &middot; 1754</td>
+			<td>2,2</td>
+			<td>2481 &middot; 3508</td>
+			<td>8,8</td>
+		</tr>
+		<tr>
+			<td>A3</td>
+			<td>29,7 &middot; 42</td>
+			<td>1,4</td>
+			<td>1754 &middot; 2481</td>
+			<td>4,4</td>
+			<td>3508 &middot; 4961</td>
+			<td>17,5</td>
+		</tr>
+		<tr>
+			<td>A2</td>
+			<td>42 &middot; 59,4</td>
+			<td>1,4</td>
+			<td>2481 &middot; 3508</td>
+			<td>8,8</td>
+			<td>4961 &middot; 7016</td>
+			<td>34,9</td>
+		</tr>
+		<tr>
+			<td>A1</td>
+			<td>59,4 &middot; 84,1</td>
+			<td>1,4</td>
+			<td>3508 &middot; 4967</td>
+			<td>17,5</td>
+			<td>7016 &middot; 9934</td>
+			<td>69,7</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Hent regneark: <a href="files/DPI_regneark.xls" download>DPI_regneark.xls</a></p>
+
+<h2>Beregning af PPI</h2>
+
+<p>For at finde den rigtige PPI/DPI skal man vide noget om hvor langt væk fra billedfladen man skal være for at opfatte et billede skarpt og ikke som om det består af pixels. </p>
 
 <p>Formlen til at beregne (tilnærmet) den nødvendige DPI er (x = antal meter):</p>
 
@@ -561,8 +718,8 @@
 <table class="centreret">
 	<thead>
 		<tr>
-			<th rowspan="2">Afstand</th>
-			<th rowspan="2">Opløsning (PPI)</th>
+			<th rowspan="2">Afstand <br/>(meter)</th>
+			<th rowspan="2">Opløsning<br/>(PPI)</th>
 			<th colspan="3">Pixels ved ...</th>
 		
 		</tr>
@@ -639,11 +796,20 @@
 	</tbody>
 </table>
 
-<p>Hent regneark: <a href="files/DPI_regneark.xls" download>DPI_regneark.xls</a></p>
+<p>Hent regneark: <a href="files/PPI_regneark.xls" download>PPI_regneark.xls</a></p>
 
 <h1>Standardformater</h1>
 
-<h2>JPG, PNG og TIFF</h2>
+<p>Standardformater er i denne sammenhæng billedformater der kan anvendes til deling og visning i programmer på forskellige operativsystemer og platforme.</p>
+
+<p>Her vil jeg gennemgå de mest almindelige formater:</p>
+
+<ul class="disc">
+	<li>JPEG</li>
+	<li>PNG</li>
+	<li>TIFF</li>
+</ul>
+
 
 <table class="centreret fixed">
 	<thead>
@@ -694,7 +860,17 @@
 	</tbody>
 </table>
 
-<p>Herunder er et eksempel på det samme billede gemt i forskellige formater. Billedet er gemt fra en RAW fil i størrelsesforholdet 2291 x 1619</p>
+<p>Herunder er et eksempel på det samme billede gemt i forskellige formater. </p>
+
+<figure id="">
+
+	<img class="p60" src="images/chopper_2291x1619.jpg" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Billedet er gemt fra en RAW fil i størrelsesforholdet 2291 x 1619.</p>
 
 <table class="centreret fixed">
 	<thead>
@@ -714,9 +890,15 @@
 		</tr>
 		<tr>
 			<td>Størrelse</td>
-			<td>1,7 MB (indeks 100)</td>
+			<td>1,7 MB</td>
 			<td>5,8 MB</td>
 			<td>6,3 MB</td>
+		</tr>
+		<tr>
+			<td>Indeks</td>
+			<td>100</td>
+			<td>341</td>
+			<td>371</td>
 		</tr>
 		<tr>
 			<td>Fil</td>
@@ -727,18 +909,9 @@
 	</tbody>
 </table>
 
-<figure id="">
 
-	<img class="p60" src="images/chopper_2291x1619.jpg" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
 
 <p>Hvis du henter billederne ned på din computer, så vil du opdage at der stort set ingen forskel er på dem. Det eneste sted du kan se en mindre forskel er ved at kigge på den røde flade under cockpitvinduet. Der vil du kunne se, at jpg billedet virker mere sløret. Men der skal zoomes kraftigt ind. Herunder har jeg uploaded to udsnit så du selv kan se det.</p>
-
-<p>Grunden til at billederne er gemt i PNG format er, at det sikrer at hver pixel er gemt seperat, med alle farveinformationer.</p>
-
 
 <table class="centreret fixed">
 	<thead>
@@ -755,21 +928,7 @@
 	</tbody>
 </table>
 
-
-
-<p>Standardformater er i denne sammenhæng billedformater der kan anvendes til deling og visning i programmer på forskellige operativsystemer og platforme.</p>
-
-<p>Her vil jeg gennemgå de mest almindelige formater:</p>
-
-<ul class="disc">
-	<li>JPEG</li>
-	<li>PNG</li>
-	<li>TIFF</li>
-</ul>
-
-<p>Før formaterne bliver gennemgået vil der først være en kort introduktion til nogle væsentlige begreber.</p>
-
-
+<p>Grunden til at billederne er gemt i PNG format er, at det sikrer at hver pixel er gemt separat, med alle farveinformationer.</p>
 
 
 
