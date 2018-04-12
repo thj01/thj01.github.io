@@ -77,11 +77,11 @@ def andengrad(a,b,c):
 
 		if x_1 > x_2:
 			
-			print("\tAndegradsligningen har 2 løsninger og skærer x-aksen i punkterne {0} og {1}".format(x_2,x_1))
+			print("\tAndegradsligningen har 2 løsninger og skærer x-aksen i punkterne {0} og {1}".format(round(x_2,4),round(x_1,4)))
 
 		else:
 			
-			print("\tAndegradsligningen har 2 løsninger og skærer x-aksen i punkterne {0} og {1}".format(x_1,x_2))
+			print("\tAndegradsligningen har 2 løsninger og skærer x-aksen i punkterne {0} og {1}".format(round(x_1,4),round(x_2,4)))
 		
 		if a>0:
 			print("\n\tParablens ben vender opad")
@@ -91,7 +91,7 @@ def andengrad(a,b,c):
 			
 	print("\n\tParablen skærer y-aksen i punktet {0}".format(c))
 	
-	print("\n\tToppunktet er: Tp = ( {0} , {1} )\n".format(Tp_x,Tp_y))
+	print("\n\tToppunktet er: Tp = ( {0} , {1} )\n".format(round(Tp_x,4),round(Tp_y,4)))
 	
 	#plotfunktionen
 	
@@ -109,6 +109,6 @@ def andengrad(a,b,c):
 	
 	
 
-andengrad(1,2,-4)
+andengrad(3.09,3.89,-2.78)
 
 
