@@ -1,3 +1,9 @@
+##importeret for at kunne plotte funktionen.
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+
 def andengrad(a,b,c):
 	
 
@@ -86,7 +92,23 @@ def andengrad(a,b,c):
 	print("\n\tParablen skærer y-aksen i punktet {0}".format(c))
 	
 	print("\n\tToppunktet er: Tp = ( {0} , {1} )\n".format(Tp_x,Tp_y))
+	
+	#plotfunktionen
+	
+	xval = np.arange(-15,15, 0.01)
+	
+	plt.plot(xval,a*xval**2+b*xval+c, label='f(x)')
+	
+	plt.grid(True)
+	
+	plt.xlabel('Definitionsmængde')
+	plt.ylabel('Værdimængde')
+	plt.title('Andegradsligning')
+	
+	plt.show()
+	
+	
 
-andengrad(1,4,4)
-andengrad(-1,-1,6)
-andengrad(1,3,1)
+andengrad(1,2,-4)
+
+

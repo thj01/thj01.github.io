@@ -48,6 +48,22 @@ https://jsxgraph.uni-bayreuth.de/wp/download/index.html
 	
 <span class="afsnit">Andegradsligning</span>
 
+<form id='nameForm'>
+<div class='form-uname'>
+    <lable id='nameLable' for='nameField'>a = </lable>
+    <input id='ligning' type='text' ></input>
+</div>
+
+<p></p>
+<div class='form-sub'>
+    <button id='subButton' type='button'>Indsend</button>
+</div>
+</form>
+
+<script>
+	_
+</script>
+
 <div class="latex" id="second_degree_latex"></div>
 
 <p>Diskriminanten er: <span id="D"></span></p>
@@ -61,41 +77,7 @@ https://jsxgraph.uni-bayreuth.de/wp/download/index.html
 
 
 <script>
-	var a = Math.floor(Math.random() * 10 + 1);
-	var b = Math.floor(Math.random() * 10 + 1);
-	var c = Math.floor(Math.random() * 10 + 1);
-	
-	if (Math.floor(Math.random() * 2 ) == 0) {
-		
-		a = a*-1;
-		
-		}
-		
-	if (Math.floor(Math.random() * 2 ) == 0) {
-		
-		
-		b_print = b*-1;
 
-		b = b*-1;
-
-		
-		} else {
-
-			b_print = "+ "+ b +" ";
-			
-			}
-		
-	if (Math.floor(Math.random() * 2 ) == 0) {
-		
-		c_print = c*-1;
-
-		c = c*-1;
-		
-		} else {
-			
-			c_print = "+ "+ c +"";
-			
-		}
 	
 	var in_latex = " $$ "+ a +"x^2 "+ b_print +"x "+ c_print +" $$ ";
 	
