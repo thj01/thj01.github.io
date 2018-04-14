@@ -213,6 +213,12 @@ plt.show()
 
 <div class="latex">$$ d)~~~\frac{ 1 }{ x } ~for~~x=[-1;1] $$</div>
 
+<blockquote>
+	<p><b>TIP: </b>Da man ikke kan dividere med 0, skal du skille funktionen af i to intervaller [-&infin;;0] og [o;-&infin;].</p>
+
+
+</blockquote>
+
 <details>
 
 	<summary>Løsning d)</summary>
@@ -224,6 +230,116 @@ plt.show()
 	</figure>
 
 </details>
+
+<h1>Indstillinger</h1>
+
+<h2>Guides</h2>
+
+<p><a href="https://matplotlib.org/users/pyplot_tutorial.html" target="_blank">https://matplotlib.org/users/pyplot_tutorial.html</a></p>
+
+<h2>Størrelse</h2>
+
+<pre>
+	<code class="python">
+plt.axis([-15, 15, -20, 20])
+	</code>
+</pre>
+
+<h2>Farve</h2>
+
+<p>Farven sættes ved at tilføje parametren <span class="inl_cmd">color="*farvenavn"</span>. De tilgængelige farver er RGB + CMYK altså:</p>
+
+<table class="fixed centreret">
+	<thead>
+		<tr>
+			<th colspan="8">Grundfarver</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>r - rød</td>
+			<td style="background-color:red"></td>
+			<td>g - grøn</td>
+			<td style="background-color:green"></td>
+			<td>b - blå</td>
+			<td style="background-color:blue"></td>
+			<td>c - cyan</td>
+			<td style="background-color:cyan"></td>
+		</tr>
+		<tr>
+			<td>m - magenta</td>
+			<td style="background-color:magenta"></td>
+			<td>y - gul</td>
+			<td style="background-color:yellow"></td>
+			<td>k - key (sort)</td>
+			<td style="background-color:black"></td>
+			<td>w - hvid</td>
+			<td style="background-color:white"></td>
+		</tr>
+	</tbody>
+</table>
+
+
+
+<p>Alle farver kan dog anvendes. Se her: <a href="https://matplotlib.org/users/colors.html" target="_blank">https://matplotlib.org/users/colors.html</a></p>
+
+<h3>Øvelse</h3>
+
+<p>Indtegn følgende tre funktioner i x = [-3;3]:</p>
+
+<div class="latex">$$ 100x^2-400 ~~ (rød)$$</div>
+
+<div class="latex">$$ 2 \cdot 0.2^x ~~(grøn) $$</div>
+
+<div class="latex">$$ 100x+25 ~~(blå) $$</div>
+
+<details>
+
+	<summary>Løsning</summary>
+
+	<figure id="">
+	
+		<img class="p50" src="images/plot_ovelse_blandet_farver.png" alt="_" title="_" />
+	
+		<figcaption>_</figcaption>
+	
+	</figure>
+
+</details>
+
+
+<h2>Vandret/lodret linie</h2>
+
+<pre>
+	<code class="python">
+# Horisontal linie
+plt.axhline(y=0, color="k")
+
+# Vandret linie
+plt.axvline(x=0)
+	</code>
+</pre>
+
+<h3>Øvelse</h3>
+
+<p>Lav en graf med et kartesisk koordinatsystem.</p>
+
+<details>
+
+	<summary>Løsning</summary>
+
+	<figure id="">
+	
+		<img class="p50" src="images/plot_ovelse_koordinatsystem.png" alt="_" title="_" />
+	
+		<figcaption>_</figcaption>
+	
+	</figure>
+
+</details>
+
+
+
 	
 </div><!-- end: col-md-9 -->
 
