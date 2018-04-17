@@ -113,11 +113,11 @@ def andengrad(a,b,c):
 
 def indtast():
 	global funktion
-	#funktion = input("Indtast andegradsligning på formen ax^2+bx+c ")
-	funktion = "x^2"
+	funktion = input("Indtast andegradsligning på formen ax^2+bx+c ")
+	#funktion = "x^2"
 	funktion = funktion.replace(" ","")  #fjern alle mellemrum i indtastningen		
 	funktion = funktion.replace(",",".")  #fjern alle mellemrum i indtastningen		
-	print(funktion)
+
 
 
 def test(funktion):
