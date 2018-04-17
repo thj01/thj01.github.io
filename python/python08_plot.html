@@ -83,11 +83,12 @@ plt.plot(x, 2*x-7)
 
 plt.grid(True)
 
-plt.title('f(x) = 2x-7')
+plt.title('$f(x) = 2x-7$')
 plt.xlabel('x-akse (Definitionsmængde)')
 plt.ylabel('y-akse (Værdimængde)')
 
 plt.show()
+
 	</code>
 </pre>
 
@@ -114,19 +115,15 @@ import matplotlib.pyplot as plt
 <pre>
 	<code class="python">
 x = np.arange(-10,10,0.01)
-	</code>
-</pre>
-
-<p>Definitionsmængden og opløsning på plottet sættes. Her går det fra <span class="math">\( x = [ -10 ; 10 ] \)</span>, og der vil blive beregnet en værdi hver gang x-aksen stiger med <span class="math">\( 0,01 \)</span>.</p>
-
-<p>x-værdien får her tildelt variablen x</p>
-
-
-<pre>
-	<code class="python">
 plt.plot(x, 2*x-7)
 	</code>
 </pre>
+
+<p>I den første linie sættes definitionsmængden og opløsning (med hvor stor afstand værdierne skal beregnes). Her går det fra <span class="math">\( x = [ -10 ; 10 ] \)</span>, og der vil blive beregnet en værdi hver gang x-aksen stiger med <span class="math">\( 0,01 \)</span>.</p>
+
+<p>Den anden linie laver selve plottet. Parantesen angiver først hvilken værdi på x-alsen den skal anvende og dernæst værdien på y-aksen (i dette tilfælde linien <span class="math">\( y = 2x-7 \)</span></p>.
+
+
 
 <p>Der beregnes punkter - her bliver hver x-værdi koblet på funktionsværdien.</p>
 
@@ -141,7 +138,7 @@ plt.grid(True)
 
 <pre>
 	<code class="python">
-plt.title('f(x) = 2x-7')
+plt.title('$f(x) = 2x-7$')
 plt.xlabel('x-akse (Definitionsmængde)')
 plt.ylabel('y-akse (Værdimængde)')
 	</code>
@@ -149,7 +146,18 @@ plt.ylabel('y-akse (Værdimængde)')
 
 <p>Sætter tekststrengen for henholdsvis plottets titel, x-akse og y-akse.</p>
 
+<p>Læg mærke til <span class="inl_cmd">$</span> der omkranser formlen i <span class="inl_cmd">plt.title</span>. Det får Python til at udskrive det med <span class="math">\( LaTeX \)</span> formatering.</p>
 
+<blockquote>
+	<p>
+		<b>HUSK: </b> Når du skal sætte tegnet <span class="inl_cmd">\</span> skal du huske at "escape" det. <span class="inl_cmd">\cdot</span> bliver altså til <span class="inl_cmd">\\cdot</span>.
+	</p>
+	
+</blockquote>
+
+<p><b>Læs mere om latex i pyplot: </b><a href="https://matplotlib.org/users/usetex.html" target="_blank">https://matplotlib.org/users/usetex.html</a></p>
+
+<p></p>
 <pre>
 	<code class="python">
 plt.show()
@@ -247,9 +255,9 @@ plt.axis([-15, 15, -20, 20])
 
 <h2>Farve</h2>
 
-<p>Farven sættes ved at tilføje parametren <span class="inl_cmd">color="*farvenavn"</span>. De tilgængelige farver er RGB + CMYK altså:</p>
+<p>Farven sættes ved at tilføje parametren <span class="inl_cmd">color="*farvenavn"</span> eller blot <span class="inl_cmd">c=*Farvenavn*</span>. De tilgængelige farver er RGB + CMYK altså:</p>
 
-<table class="fixed centreret">
+<table class="fixed ">
 	<thead>
 		<tr>
 			<th colspan="8">Grundfarver</th>
@@ -338,6 +346,40 @@ plt.axvline(x=0)
 
 </details>
 
+<h1>Søjle diagramm</h1>
+
+<pre>
+	<code class="python">
+import numpy as np
+import matplotlib.pyplot as plt
+
+kategorier = ["gruppe a", "gruppe b", "gruppe c", "gruppe d"]
+værdier = [5, 24, 17, 12]
+
+plt.bar(kategorier, værdier, width=0.8)
+plt.title('Søjle diagram')
+plt.show()
+	</code>
+</pre>
+
+<p>Læg mærke til at her bliver værdierne indsat ved hjælp af lister både for x og y's vedkommende.</p>
+
+
+<h1>Prik diagram</h1>
+
+<pre>
+	<code class="python">
+import numpy as np
+import matplotlib.pyplot as plt
+
+kategorier = ["grubbe a", "grubbe b", "grubbe c", "gruppe d"]
+værdier = [5, 20, 17, 12]
+
+plt.plot(kategorier, værdier, "ro", markersize=5)
+plt.title('Prik diagram')
+plt.show()
+	</code>
+</pre>
 
 
 	

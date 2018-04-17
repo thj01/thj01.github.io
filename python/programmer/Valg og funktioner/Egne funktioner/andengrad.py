@@ -98,7 +98,7 @@ def andengrad(a,b,c):
 	xval = np.arange(-15,15, 0.01)
 	
 	plt.plot(xval,a*xval**2+b*xval+c, label='f(x)')
-	
+	plt.plot(Tp_x, Tp_y, "ro", markersize=5)
 	plt.grid(True)
 	
 	plt.xlabel('Definitionsmængde')

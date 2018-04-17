@@ -87,21 +87,22 @@ def andengrad(a,b,c):
 	print("\n\tToppunktet er: Tp = ( {0} , {1} )\n".format(round(Tp_x,4),round(Tp_y,4)))
 	
 	if a>0:
-		print("\tVm = [{0},inf]".format(Tp_y))
+		print("\tVm = [{0},infinity]".format(Tp_y))
 	else:
-		print("\tVm = [inf,{0}]".format(Tp_y))
+		print("\tVm = [-infinity,{0}]".format(Tp_y))
 	
 	#plotfunktionen
 	
 	xval = np.arange(Tp_x-15,Tp_x+15, 0.01)
 	
 	plt.plot(xval,a*xval**2+b*xval+c, label='f(x)')
+	plt.plot(Tp_x,Tp_y, "ro")
 	plt.grid(True)
 	plt.axvline(x=0, color="k")
 	plt.axhline(y=0, color="k")
 	plt.xlabel('Definitionsmængde')
 	plt.ylabel('Værdimængde')
-	plt.title('f(x) = {0}x^2{1}x{2}\n'.format(a,b_s,c_s))
+	plt.title('$f(x) = {0}x^2{1}x{2}$\n'.format(a,b_s,c_s))
 	
 	plt.show()
 
