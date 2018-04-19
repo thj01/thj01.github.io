@@ -7,9 +7,9 @@ from matplotlib.widgets import TextBox
 def andengrad(a,b,c):
 	
 	if a < 0:
-		a_print = "{0}x".format(a)
-	elif b > 0:
-		a_print = "+{0}x".format(a)
+		a_print = "-{0}".format(a)
+	elif a > 0:
+		a_print = "{0}".format(a)
 	else:
 		a_print = ""
 	
@@ -86,7 +86,18 @@ def andengrad(a,b,c):
 		else:
 			print("\n\tParablems ben vender nedad")
 			
-	print("\n\tParablen skærer y-aksen i punktet {0}".format(c))
+	if c!= 0:
+		if c.is_integer():
+			c_skaering = int(c)
+		else:
+			c_skaering = c		
+	else:
+		c_skaering = "0"
+			
+		
+		
+			
+	print("\n\tParablen skærer y-aksen i punktet (0,{0})".format(c_skaering))
 	
 	print("\n\tToppunktet er: Tp = ( {0} , {1} )\n".format(round(Tp_x,4),round(Tp_y,4)))
 	
@@ -97,12 +108,13 @@ def andengrad(a,b,c):
 	
 	#plotfunktionen
 	
-	xval = np.arange(Tp_x-15,Tp_x+15, 0.01)
+	xval = np.arange(Tp_x-1,Tp_x+1, 0.01)
 	plt.plot(xval,a*xval**2+b*xval+c)
 	plt.grid(True)
 	plt.axvline(x=0, color="k")
 	plt.axhline(y=0, color="k")
-	
+	plt.plot(Tp_x, Tp_y, "ro", markersize=5)
+	plt.plot(0, c, "rx", markersize=15)
 	plt.xlabel('Definitionsmængde')
 	plt.ylabel('Værdimængde')
 	plt.title('$f(x) = {0}x^2{1}{2}$\n'.format(a_print,b_print,c_print))
@@ -113,8 +125,8 @@ def andengrad(a,b,c):
 
 def indtast():
 	global funktion
-	funktion = input("Indtast andegradsligning på formen ax^2+bx+c ")
-	#funktion = "x^2"
+	#funktion = input("Indtast andegradsligning på formen ax^2+bx+c: ")
+	funktion = "20000x^2-4000"
 	funktion = funktion.replace(" ","")  #fjern alle mellemrum i indtastningen		
 	funktion = funktion.replace(",",".")  #fjern alle mellemrum i indtastningen		
 
