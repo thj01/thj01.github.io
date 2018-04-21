@@ -149,7 +149,7 @@ def andengrad(a,b,c):
 	# ~ plt.axhline(y=0, color="k")
 	# ~ plt.axvline(x=0, color="k")
 	
-	if tp_x < dm_min and tp_x > dm_max:
+	if tp_x > dm_min and tp_x < dm_max:
 		plt.plot(tp_x, tp_y, "ro", markersize=5)
 	
 	if dm_min < 0 and dm_max>0:

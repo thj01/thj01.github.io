@@ -351,7 +351,7 @@ plt.axvline(x=0)
 
 </details>
 
-<h1>Punkter</h1>
+<h1>Punkter/tegn</h1>
 
 <p>Hvis man gerne vil markere punkter kan man gøre det på følgende måde. Herunder er der indsat 3 rækker af 5 forskellige punkter</p>
 
@@ -394,6 +394,65 @@ plt.show()
 <p>Du kan finde en liste med forskellige muligheder her: <a href="https://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.plot" target="_blank">https://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.plot</a></p>
 
 <h1>Forskellige linietyper</h1>
+
+<p>Hvis farver ikke er nok kan man også vælge at anvende linier der dannes af tegn. De simpleste at anvende er <span class="red">- - - - - -</span> (streg streg streg ...) og <span class="red">- &middot; - &middot; - &middot;</span> (streg punktum streg punktum ...) da pyplot selv kan placere dem i korrekt afstand. </p>
+
+<p>Farven sættes ligesom ovenfor ved punkter/tegn.</p>
+
+<pre>
+	<code class="python">
+import numpy as np
+import matplotlib.pyplot as plt
+
+plt.axis([-10,10,-10,10])
+x = np.arange(-10,10,0.01)
+
+plt.plot(x, x,"r--")
+plt.plot(x, -x,"g-.")
+plt.plot(x,-pow(x,2)+4,"b--")
+
+plt.grid(True)
+plt.title('Linier med tegn 1')
+
+plt.show()
+	</code>
+</pre>
+
+<figure id="">
+
+	<img class="p50" src="images/plot_funktioner_tegn_01.png" alt="_" title="_" />
+
+
+</figure>
+
+<p>Man kan også bruge alle tegnene ovenfra, men her skal man selv korrigere afstanden mellem punkterne (markeret med <span class="right">rødt</span>)</p>
+
+<pre>
+	<code class="python">
+import numpy as np
+import matplotlib.pyplot as plt
+
+plt.axis([-10,10,-10,10])
+x = np.arange(-10,10,.5) ## Her sættes afstanden mellem hver enkelt tegn
+
+plt.plot(x, x,"rh")
+plt.plot(x, -x,"g+")
+plt.plot(x,pow(x,2)-5,"bd")
+
+plt.grid(True)
+plt.title('Linier med tegn 2')
+
+plt.show()
+	</code>
+</pre>
+
+<figure id="">
+
+	<img class="p50" src="images/plot_funktioner_tegn_02.png" alt="_" title="_" />
+
+
+</figure>
+
 
 
 <h1>Søjle diagramm</h1>
