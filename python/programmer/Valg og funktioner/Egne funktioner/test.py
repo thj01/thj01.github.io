@@ -1,15 +1,10 @@
-import numpy as np
-import matplotlib.pyplot as plt
+a = 2
+b = 4
 
-plt.axis([-10,10,-10,10])
-x = np.arange(-10,10,0.01)
+try:
+	int(a)
+	int(b)
+except:
+	print("der er mindst et tal der ikke er en int.")
 
-plt.plot(x, x,"r--")
-plt.plot(x, -x,"g-.")
-plt.plot(x,-pow(x,2)+4,"b--")
-
-plt.grid(True)
-plt.title('Linier med tegn 1')
-
-plt.show()
-	
+print("Alle tal er heltal")

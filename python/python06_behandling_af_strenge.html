@@ -275,8 +275,51 @@ Indtast mail der skal tjekkes brugernavn: fakeuser@fakemail.com
         Brugernavnet er: fakeuser
 </pre>
 
+<h1>replace() - erstat forekomster.</h1>
 
+<p>Ofte har man brug for at erstattet eller bytte noget i en tekststreng. </p>
 
+<pre>
+	<code class="python">
+>>> sætning = "Kurt kommer for sent i skole"
+>>> sætning
+'Kurt kommer for sent i skole'
+>>> sætning.replace("Kurt","Karen")
+'Karen kommer for sent i skole'
+>>> sætning.replace("i skole","på arbejde")
+'Kurt kommer for sent på arbejde'
+>>> sætning
+'Kurt kommer for sent i skole'
+	</code>
+</pre>
+
+<p>Læg mærke at <span class="inl_cmd">replace()</span> ikke ændrer på variablen, men blot output. For at beholde ændringen skal man lave den som en ny variabel.</p>
+
+<pre>
+	<code class="python">
+>>> ny_sætning = sætning.replace("i skole","på arbejde")
+>>> ny_sætning
+'Kurt kommer for sent på arbejde'
+	</code>
+</pre>
+
+<p>Forestil dig et program hvor der skal indtastes decimaltal. Her vil brugeren måske komme til at lave et , (komma) i stedet for et . (punktum).</p>
+
+<pre>
+	<code class="python">
+def indtast(a):
+	a = a.replace(",",".")
+	print(a)
+
+indtast("3,456")
+indtast("3.456")
+	</code>
+</pre>
+
+<pre class="black">
+3.456
+3.456
+</pre>
 
 <h1>Opgaver</h1>
 

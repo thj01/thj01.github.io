@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="da">
 <head>
-  <title>Python</title>
+  <title>Vidas.dk</title>
   <link rel="icon" href="../images/favicon.png">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,10 +12,8 @@
   <link rel="stylesheet" href="../css/jquery-ui.min.css">
   <link rel="stylesheet" href="../css/jquery.tocify.css">
   <link rel="stylesheet" href="../css/style_new.css" />
-
 <!-- Scripts in bottom to speed up pageload-->
  
-
 
 </head>
 <body>
@@ -36,7 +34,7 @@
 </div><!-- Start slut 1. kolonne - TOC -->
 	
 <div class="col-xs-9">
-	
+
 <figure id="">
 
 	<img class="" src="images/python-logo-inkscape.svg" alt="" title="" />
@@ -44,65 +42,42 @@
 	<figcaption></figcaption>
 
 </figure>
-
-<div class="title">Lær Python</div>
-
-<h1>Indhold</h1>
 	
-<ol class="">
-	<li><a href="python01_intro.html" target="_blank">Introduktion af python og installation</a></li>
-	<li><a href="python02_Strenge_variabler_og_input.html" target="_blank">Strenge, variabler og input</a></li>
-	<li><a href="python03_tal_operatorer_og_matematiske_funktioner.html" target="_blank">Tal, Operatorere og matematik</a></li>
-	<li><a href="python04_valg_og_funktioner.html" target="_blank">Valg (if-else), funktioner og random()</a></li>
-	<li><a href="python05_loekker.html" target="_blank">Løkker</a></li>
-	<li><a href="python06_behandling_af_strenge.html" target="_blank">Behandling af strenge</a></li>
-	<li><a href="python07_lister_dictionaries_og_tuplets.html" target="_blank">Lister, dictionaries og tuplets</a></li>
-	<li><a href="python08_plot.html" target="_blank">Plot med Python</a></li>
-	<li><a href="python09_error_handling.html" target="_blank">Error handling</a></li>
-</ol>
+	<div class="title">Error handling</div>
 
-<h1>Henvisninger</h1>
+<p>Murphy's lov siger:</p>
 
-<ol class="">
-	<li><a href="https://docs.python.org/3/" target="_blank">Python 3 docs</a></li>
-	<li><a href="https://www.tutorialspoint.com/python3/" target="_blank">Python3 på Tutorialspoint</a></li>
-</ol>
+<blockquote>
+	<p>
+		Hvis noget kan gå galt, så vil det gå galt
+	</p>
+</blockquote>
+
+<p>Det betyder at man som programmør skal prøve at foregribe alle de fejl som fejlinput kan medføre. Det kan f.eks. være et decimaltal (<span class="inl_cmd">float</span>) der indtastes i et heltalsfelt (<span class="inl_cmd">Int</span>), eller bogstaver i et talfelt.</p>
+
+
+<h1>Try - except</h1>
 	
+<p>Med denne metode får man Python til at teste noget og reagere hvis der kommer en fejl. Forestil dig at du vil teste om nogle variabler er <span class="inl_cmd">Int</span>.</p>
 
-<!--
+<pre>
+	<code class="python">
+a = 2
+b = 4
 
-<h1>Introduktion og installation</h1>
+try:
+	int(a)
+	int(b)
+except:
+	print("der er mindst et tal der ikke er en int.")
 
-<p><a href="python01_intro.html" target="_blank">Introduktion af python og installation</a></p>
+print("Alle tal er heltal")
+	</code>
+</pre>
 
-<h1>Strenge, variabler og input</h1>
 
-<p><a href="python02_Strenge_variabler_og_input.html" target="_blank">Strenge, variabler og input</a></p>
 
-<h1>Tal, operatorer og matematik</h1>
 
-<p><a href="python03_tal_operatorer_og_matematiske_funktioner.html" target="_blank">Tal, Operatorere og matematik</a></p>
-
-<h1>Valg, funktioner og random()</h1>
-
-<p><a href="python04_valg_og_funktioner.html" target="_blank">Valg (if-else), funktioner og random()</a></p>
-
-<h1>Løkker</h1>
-
-<p><a href="python05_loekker.html" target="_blank">Løkker</a></p>
-
-<h1>Behandling af strenge</h1>
-
-<p><a href="python06_behandling_af_strenge.html" target="_blank">Behandling af strenge</a></p>
-
-<h1>Lister, dictionaries og tuplets</h1>
-
-<p><a href="python07_lister_dictionaries_og_tuplets.html" target="_blank">Lister, dictionaries og tuplets</a></p>
-
-<p></p>	
--->
-
-	
 </div><!-- end: col-md-9 -->
 
 <footer>
