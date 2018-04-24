@@ -1,10 +1,44 @@
-a = 2
-b = 4
+import random
 
-try:
-	int(a)
-	int(b)
-except:
-	print("der er mindst et tal der ikke er en int.")
+enkelt_ord = "aften"
 
-print("Alle tal er heltal")
+midter_bogstaver = enkelt_ord[1:-1]
+
+print(midter_bogstaver)
+
+liste = []
+
+	
+for char in midter_bogstaver:	
+	
+	liste.append (char)
+
+n = 0
+	
+for i in liste:
+	
+	n +=1
+	
+	liste_rest = liste[1:]
+
+	
+	if n < len(liste):
+	
+
+		liste_rest_shuffle = random.shuffle(liste_rest)
+		
+		print(liste_rest[0])
+		
+		del liste_rest[0]
+		
+		
+	else:
+		
+		print(liste_rest[0])
+		
+	liste = liste_rest.append(liste[:1])
+
+
+
+print(liste_rest)
+
