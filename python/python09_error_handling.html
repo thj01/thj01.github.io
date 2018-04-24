@@ -55,6 +55,29 @@
 
 <p>Det betyder at man som programmør skal prøve at foregribe alle de fejl som fejlinput kan medføre. Det kan f.eks. være et decimaltal (<span class="inl_cmd">float</span>) der indtastes i et heltalsfelt (<span class="inl_cmd">Int</span>), eller bogstaver i et talfelt.</p>
 
+<p>Se f.eks. nedenstående eksempel</p>
+
+<pre>
+	<code class="python">
+a,b,c = 2,3,"d"
+
+print(int(a))
+print(int(b))
+print(int(c))
+	</code>
+</pre>
+
+<pre class="black">
+2
+3
+Traceback (most recent call last):
+  File "test.py", line 5, in <module>
+    print(int(c))
+ValueError: invalid literal for int() with base 10: 'd'
+</pre>
+
+<p>Python stopper kørseln af programmet fordi <span class="inl_cmd">d</span> ikke er et tal men en tekstreng, der ikke kan konverteres til et tal.</p>
+
 
 <h1>Try - except</h1>
 	
@@ -62,11 +85,11 @@
 
 <pre>
 	<code class="python">
-a = 2
-b = 4
+a,b,c = 2,3,4
 
 try:
 	int(a)
+	int(b)
 	int(b)
 except:
 	print("der er mindst et tal der ikke er en int.")
@@ -75,8 +98,28 @@ print("Alle tal er heltal")
 	</code>
 </pre>
 
+<pre class="black">
+Alle tal er heltal
+</pre>
 
+<pre>
+	<code class="python">
+a,b,c = 2,3,"d"
 
+try:
+	int(a)
+	int(b)
+	int(c)
+	print("Alle tal er heltal")
+	
+except:
+	print("der er mindst et tal, der ikke er et heltal.")
+	</code>
+</pre>
+
+<pre class="black">
+der er mindst et tal der ikke er et heltal.
+</pre>
 
 </div><!-- end: col-md-9 -->
 

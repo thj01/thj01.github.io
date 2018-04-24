@@ -35,14 +35,16 @@ def andengrad(a,b,c):
 	else:
 		c_print = ""
 
-	print(a_print)
-	print(b_print)
-	print(c_print)
-
+	print("a_print er: {0}".format(a_print))
+	print("b_print er: {0}".format(b_print))
+	print("c_print er: {0}".format(c_print))
+	
 
 	print("\nHer undersøges funktionen: f(x) = {0}x^2{1}{2}\n".format(a_print,b_print,c_print))
 	
 	D = pow(b,2)-4*a*c
+	
+	c_skaering = c
 	
 	print("\n\tDiskriminanten er: {0}\n".format(round(D,4)))
 	
@@ -167,7 +169,7 @@ def andengrad(a,b,c):
 def indtast():
 	global funktion
 	#funktion = input("Indtast andegradsligning på formen ax^2+bx+c: ")
-	funktion = "x^2-x+10"
+	funktion = "-0.025x^2+0.4625x-1.575"
 	funktion = funktion.replace(" ","")  #fjern alle mellemrum i indtastningen		
 	funktion = funktion.replace(",",".")  #fjern alle mellemrum i indtastningen
 
@@ -206,6 +208,7 @@ elif a == "+":
 elif a == "":
 	a = 1
 else:
+	a = float(a)
 	if a.is_integer():
 		a = int(a)
 	else:
