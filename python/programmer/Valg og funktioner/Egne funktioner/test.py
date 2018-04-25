@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import tkinter as tk
 
 class Application(tk.Frame):
@@ -22,3 +23,49 @@ class Application(tk.Frame):
 root = tk.Tk()
 app = Application(master=root)
 app.mainloop()
+=======
+import random
+
+enkelt_ord = "aften"
+
+midter_bogstaver = enkelt_ord[1:-1]
+
+print(midter_bogstaver)
+
+liste = []
+
+	
+for char in midter_bogstaver:	
+	
+	liste.append (char)
+
+n = 0
+	
+for i in liste:
+	
+	n +=1
+	
+	liste_rest = liste[1:]
+
+	
+	if n < len(liste):
+	
+
+		liste_rest_shuffle = random.shuffle(liste_rest)
+		
+		print(liste_rest[0])
+		
+		del liste_rest[0]
+		
+		
+	else:
+		
+		print(liste_rest[0])
+		
+	liste = liste_rest.append(liste[:1])
+
+
+
+print(liste_rest)
+
+>>>>>>> 15ead93df63af4b6e1a3123078976cb672c0c259
