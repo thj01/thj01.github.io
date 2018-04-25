@@ -170,6 +170,7 @@ def indtast():
 	global funktion
 	#funktion = input("Indtast andegradsligning på formen ax^2+bx+c: ")
 	funktion = "-0.025x^2+0.4625x-1.695"
+	#funktion = "-0.025x^2+0.4625x-1.5750"
 	funktion = funktion.replace(" ","")  #fjern alle mellemrum i indtastningen		
 	funktion = funktion.replace(",",".")  #fjern alle mellemrum i indtastningen
 

@@ -1,20 +1,45 @@
-tekst = "Ordene i denne lange sætning kan man godt læse, selvom de midterste bogstaver er byttet om."
 
-antal_ord = 0
+import random
 
-for word in tekst.split():
+enkelt_ord = "aften"
+
+midter_bogstaver = enkelt_ord[1:-1]
+
+print(midter_bogstaver)
+
+liste = []
+
 	
-	antal_ord +=1
+for char in midter_bogstaver:	
+	
+	liste.append (char)
+
+n = 0
+	
+for i in liste:
+	
+	n +=1
+	
+	liste_rest = liste[1:]
+
+	
+	if n < len(liste):
+	
+
+		liste_rest_shuffle = random.shuffle(liste_rest)
 		
-for i in range(antal_ord):
-	
-	if i == antal_ord-1 :
-
-		print(tekst)
+		print(liste_rest[0])
+		
+		del liste_rest[0]
+		
 		
 	else:
 		
-		print(tekst[:tekst.find(" ")])
-	
-	tekst = tekst[tekst.find(" ")+1:]
-	
+		print(liste_rest[0])
+		
+	liste = liste_rest.append(liste)
+
+
+
+print(liste_rest)
+
