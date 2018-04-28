@@ -1,40 +1,69 @@
+import statistics as st
+import numpy as np
+import matplotlib.pyplot as plt
+
+
 x = [156,159,161,164,165,167, 168,171,173,173,174,176,177,177,179,179,180,181,183,183,185,187,192,194,198,201]
 
+print("Observationssæt: \n----------------\n{0}".format(x))
 
+#antal
+print("\nAntal observationer: {0}".format(len(x)))
 
+#gennemsnit
+print("\nGennemsnit = {0}".format(st.mean(x)))
+#median
+print("\nMedian: {0}{1}".format(st.median(x),2))
 
+#min og max værdi
+print("\nMindste værdi: {0}".format(min(x)))
 
+print("\nmaksimale værdi: {0}".format(max(x)))
 
+startværdi = 150
 
+spring = 10
 
-# ~ print(x)
-# ~ print(hx)
+x_ny = []
 
+for i in range(len(x)):
+	
+	if x[i]< startværdi+spring and x[i]>=startværdi:
+	
+		x_ny.append(startværdi+1/2*spring)
+	
+	else:
+	
+		startværdi += spring
+	
+		x_ny.append(startværdi+1/2*spring)
+	
+print(x_ny)
 
-# ~ fx=[]
+	
+try:
+	st.mode(x_ny)
+	print("Typeintervallet er: [{0} - {1}[".format(st.mode(x_ny)-spring/2,st.mode(x_ny)+spring/2))
+	
+except:
+	print("der er ikke noget typetal (flere værdier med samme antal")
 
-# ~ n = 0
+#Varians
+print("Varians: {0}".format(round(st.variance(x_ny),4)))
 
-# ~ # Udregn n
-# ~ for i in range(0,len(x)):
-		# ~ n = n + hx[i]
-# ~ print("n = {0}".format(n))
+#Spredning
+print("Varians: {0}".format(st.stdev(x_ny)))
 
-# ~ # udregn fx
-# ~ for i in range(0,len(x)):
-	# ~ fx.append(hx[i]/n)
-# ~ #print(fx)
+		
+# Finder unikke værdier
+x_unik = np.unique(x_ny)
+# Finder antal for hver unik værdi
+x_unik_antal = []
+for i in x_unik:
+	x_unik_antal.append(x_ny.count(i))
+	
+#plotfunktionen
 
-# ~ # udregn x_mid
-# ~ x_mid=0
-# ~ for i in range(0,len(x)):
-	# ~ x_mid = x_mid + x[i]*fx[i]
-# ~ print("Middelværdien er: {0}".format(x_mid))
-
-# ~ var = 0
-# ~ for i in range(0,len(x)):
-	# ~ var = var + (1/(n-1)) * pow((x[i]-x_mid),2) * hx[i]
-
-# ~ print("Variansen er: {0}".format(round(var,4)))
-
-# ~ print("Spredningen er: {0}".format(round(pow(var,(1/2)),4)))
+plt.bar(x_unik,x_unik_antal, width=0.8)
+plt.title("Kontinuert data")
+plt.show()
