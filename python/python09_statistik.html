@@ -57,6 +57,12 @@ import numpy as np
 	</code>
 </pre>
 
+<pre>
+	<code class="python">
+
+	</code>
+</pre>
+
 <h1>Deskriptorer</h1>
 
 <table class="_">
@@ -111,20 +117,9 @@ except:
 
 <h1>Kvartilsæt</h1>
 
-<table class="_">
-	<thead>
-		<tr>
-			<th>Deskriptor</th>
-			<th>funktion</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>_</td>
-			<td>_</td>
-		</tr>
-	</tbody>
-</table>
+<p>For at finde kvartilsæt anvendes funktionen <span class="inl_cmd">np.percentile</span></p>
+
+
 
 
 
@@ -149,18 +144,19 @@ except:
 	</tbody>
 </table>
 
+<h1>Et program</h1>
 
 <pre>
 	<code class="python">
-#Nødvendige pakker til statistik
 import statistics as st
 import numpy as np
 import matplotlib.pyplot as plt
 
-# Hjemmeside: https://docs.python.org/3/library/statistics.html
+# https://docs.python.org/3/library/statistics.html
 
-#datasættet (liste)
 x = [2,2,4,4,4,7,7,10,10,12]
+
+print("Datasæt: {0}\n".format(x))
 
 #antal
 print("Antal observationer: {0}".format(len(x)))
@@ -175,7 +171,7 @@ print("Mindste værdi: {0}".format(min(x)))
 
 print("maksimale værdi: {0}".format(max(x)))
 
-#typetal
+
 try:
 	st.mode(x)
 	print("Typetal: {0}".format(st.mode(x)))
@@ -197,15 +193,20 @@ for i in x_unik:
 	x_unik_antal.append(x.count(i))
 	
 #plotfunktionen
+
 plt.bar(x_unik,x_unik_antal, width=0.8)
 plt.title("Kontinuert data")
 plt.show()
-
-
 	</code>
 </pre>
 
+<figure id="">
 
+	<img class="p70" src="images/python_diskret_data_output.png" alt="_" title="_" />
+
+	<figcaption>_</figcaption>
+
+</figure>
 
 </div><!-- end: col-md-9 -->
 <footer>

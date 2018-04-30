@@ -6,6 +6,8 @@ import matplotlib.pyplot as plt
 
 x = [2,2,4,4,4,7,7,10,10,12]
 
+print("Datasæt: {0}\n".format(x))
+
 #antal
 print("Antal observationer: {0}".format(len(x)))
 
