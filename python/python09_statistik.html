@@ -44,6 +44,112 @@
 	
 	<div class="title">Statistik med Python</div>
 
+<p>Fordelen ved at anvende Python til matematik fremfor regneark er, at vi hele tiden kan se koden. I regnearket forsvinder koden, så snart man forlader feltet.</p>
+
+<h1>Nødvendige moduler</h1>
+
+<p>for at kunne anvende statistik funktionerne skal vi importere to moduler: statistics og numpy.</p>
+
+<pre>
+	<code class="python">
+import statistics as st
+import numpy as np
+	</code>
+</pre>
+
+<h1>Deskriptorer</h1>
+
+<table class="_">
+	<thead>
+		<tr>
+			<th>Deskriptor</th>
+			<th>funktion</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>antal observationer (n)</td>
+			<td><span class="inl_cmd">len()</span></td>
+		</tr>
+		<tr>
+			<td>Mindste værdi</td>
+			<td><span class="inl_cmd">min()</span></td>
+		</tr>
+		<tr>
+			<td>Maksimal værdi</td>
+			<td><span class="inl_cmd">max()</span></td>
+		</tr>
+		<tr>
+			<td>Gennemsnit</td>
+			<td><span class="inl_cmd">st.mean()</span></td>
+		</tr>
+		<tr>
+			<td>Median</td>
+			<td><span class="inl_cmd">st.median()</span></td>
+		</tr>
+		<tr>
+			<td>typtetal (se nedenfor)</td>
+			<td><span class="inl_cmd">st.mode()</span></td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Typetallet kræver lidt mere programmering, da vi kan risikere at der er flere værdier med samme antal. Derfor skal vi anvende en <span class="inl_cmd">Try</span> sætning.</p>
+
+<pre>
+	<code class="python">
+try:
+	st.mode(x)
+	print("Typetal: {0}".format(st.mode(x)))
+	
+except:
+	print("Der er ikke noget typetal (flere værdier med samme antal")
+	</code>
+</pre>
+
+<p>Koden gør, at den forsøger at køre det der står under <span class="inl_cmd">try</span>. Hvis den støder ind i en fejl, så vil den gøre det der står under <span class="inl_cmd">except</span>.</p>
+
+<h1>Kvartilsæt</h1>
+
+<table class="_">
+	<thead>
+		<tr>
+			<th>Deskriptor</th>
+			<th>funktion</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>_</td>
+			<td>_</td>
+		</tr>
+	</tbody>
+</table>
+
+
+
+<h1>Varians og spredning</h1>
+
+<table class="_">
+	<thead>
+		<tr>
+			<th>Deskriptor</th>
+			<th>funktion</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Varians (stikprøve)</td>
+			<td><span class="inl_cmd">st.variance()</span></td>
+		</tr>
+		<tr>
+			<td>Spredning (stikprøve)</td>
+			<td><span class="inl_cmd">st.stdev()</span></td>
+		</tr>
+	</tbody>
+</table>
+
+
 <pre>
 	<code class="python">
 #Nødvendige pakker til statistik
@@ -75,7 +181,7 @@ try:
 	print("Typetal: {0}".format(st.mode(x)))
 	
 except:
-	print("der er ikke noget typetal (flere værdier med samme antal")
+	print("Der er ikke noget typetal (flere værdier med samme antal")
 
 #Varians
 print("Varians: {0}".format(round(st.variance(x),2)))

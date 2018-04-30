@@ -25,7 +25,7 @@ try:
 	print("Typetal: {0}".format(st.mode(x)))
 	
 except:
-	print("der er ikke noget typetal (flere værdier med samme antal")
+	print("Der er ikke noget typetal (flere værdier med samme antal")
 
 #Varians
 print("Varians: {0}".format(round(st.variance(x),2)))
