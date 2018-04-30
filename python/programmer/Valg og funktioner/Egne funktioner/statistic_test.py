@@ -1,30 +1,12 @@
 import statistics as st
-import numpy as np
-import matplotlib.pyplot as plt
 
-# https://docs.python.org/3/library/statistics.html
+y = [2, 2, 4, 4, 4, 7, 7, 7, 10, 12]
 
-x = [1,1,1,2,3,2,1,3,1,3,2,2,3,1,3,1,3,2,1,2,3]
+print("Datasæt: {0}\n".format(y))
 
-print(len(x))
-
-print(st.mode(x))
-
-#print(np.percentile(x,70))
-
-x_unik = np.unique(x)
-
-print(x_unik)
-
-x_unik_antal = []
-
-for i in x_unik:
+try:
+	st.mode(y)
+	print("typetaller er: {0}".format(st.mode(y)))
 	
-	x_unik_antal.append(x.count(i))
-	
-print(x_unik_antal)
-	
-	
-	
-	
-	
+except:
+	print("Der er ikke noget typtetal.")

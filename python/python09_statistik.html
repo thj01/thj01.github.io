@@ -57,12 +57,6 @@ import numpy as np
 	</code>
 </pre>
 
-<pre>
-	<code class="python">
-
-	</code>
-</pre>
-
 <h1>Deskriptorer</h1>
 
 <table class="_">
@@ -115,6 +109,83 @@ except:
 
 <p>Koden gør, at den forsøger at køre det der står under <span class="inl_cmd">try</span>. Hvis den støder ind i en fejl, så vil den gøre det der står under <span class="inl_cmd">except</span>.</p>
 
+
+<h2>Eksempel</h2>
+
+<p>Her anvender jeg en liste over karakterer i en klasse med 10 elever, som jeg kalder x.</p>
+
+<pre>
+	<code class="python">
+>>> import statistics as st
+>>> import numpy as np
+>>> x = [2,2,4,4,4,7,7,10,10,12]
+>>> len(x)
+10
+>>> min(x)
+2
+>>> max(x)
+12
+>>> st.mean(x)
+6.2
+>>> st.median(x)
+5.5
+>>> st.mode(x)
+4
+	</code>
+</pre>
+
+<h2>Eksempel intet typetal</h2>
+
+<p>Herunder er lavet et eksempel med datasættet y, hvor både 4 og 7 har lige mange observationer.</p>
+
+<pre>
+	<code class="python">
+import statistics as st
+
+y = [2, 2, 4, 4, 4, 7, 7, 7, 10, 12]
+
+print("Datasæt: {0}\n".format(y))
+
+st.mode(y)
+	</code>
+</pre>
+
+<pre class="black">
+Datasæt: [2, 2, 4, 4, 4, 7, 7, 7, 10, 12]
+
+Traceback (most recent call last):
+  File "statistic_test.py", line 7, in <module>
+    st.mode(y)
+  File "C:\Users\ThomasJensen\AppData\Local\Programs\Python\Python36\lib\statistics.py", line 507, in mode
+    'no unique mode; found %d equally common values' % len(table)
+statistics.StatisticsError: no unique mode; found 2 equally common values
+</pre>
+
+<p>Koden ændres så den anvender <span class="inl_cmd">try</span>.</p>
+
+<pre>
+	<code class="python">
+import statistics as st
+
+y = [2, 2, 4, 4, 4, 7, 7, 7, 10, 12]
+
+print("Datasæt: {0}\n".format(y))
+
+try:
+	st.mode(y)
+	print("typetaller er: {0}".format(st.mode(y)))
+	
+except:
+	print("Der er ikke noget typtetal.")
+	</code>
+</pre>
+
+<pre class="black">
+Datasæt: [2, 2, 4, 4, 4, 7, 7, 7, 10, 12]
+
+Der er ikke noget typtetal.
+</pre>
+
 <h1>Kvartilsæt</h1>
 
 <p>For at finde kvartilsæt anvendes funktionen <span class="inl_cmd">np.percentile</span></p>
@@ -153,61 +224,18 @@ except:
 	</tbody>
 </table>
 
-<h1>Et program</h1>
-
 <pre>
 	<code class="python">
-import statistics as st
-import numpy as np
-import matplotlib.pyplot as plt
-
-# https://docs.python.org/3/library/statistics.html
-
-x = [2,2,4,4,4,7,7,10,10,12]
-
-print("Datasæt: {0}\n".format(x))
-
-#antal
-print("Antal observationer: {0}".format(len(x)))
-
-#gennemsnit
-print("Gennemsnit = {0}".format(st.mean(x)))
-#median
-print("Median: {0}".format(st.median(x)))
-
-#min og max værdi
-print("Mindste værdi: {0}".format(min(x)))
-
-print("maksimale værdi: {0}".format(max(x)))
-
-
-try:
-	st.mode(x)
-	print("Typetal: {0}".format(st.mode(x)))
-	
-except:
-	print("Der er ikke noget typetal (flere værdier med samme antal")
-
-#Varians
-print("Varians: {0}".format(round(st.variance(x),2)))
-
-#Spredning
-print("Spredning: {0}".format(round(st.stdev(x),2)))
-
-# Finder unikke værdier
-x_unik = np.unique(x)
-# Finder antal for hver unik værdi
-x_unik_antal = []
-for i in x_unik:
-	x_unik_antal.append(x.count(i))
-	
-#plotfunktionen
-
-plt.bar(x_unik,x_unik_antal, width=0.8)
-plt.title("Kontinuert data")
-plt.show()
+>>> st.variance(x)
+12.622222222222222
+>>> st.stdev(x)
+3.552776691859794
 	</code>
 </pre>
+
+<h1>Program eksempler</h1>
+
+<h2>Diskret data</h2>
 
 <figure id="">
 
@@ -216,6 +244,142 @@ plt.show()
 	<figcaption>_</figcaption>
 
 </figure>
+
+<details>
+
+	<summary>Kode til diskret data</summary>
+
+	<pre>
+		<code class="python">
+	import statistics as st
+	import numpy as np
+	import matplotlib.pyplot as plt
+
+	# https://docs.python.org/3/library/statistics.html
+
+	x = [2,2,4,4,4,7,7,10,10,12]
+
+	print("Datasæt: {0}".format(x))
+
+	#antal
+	print("\nAntal observationer: {0}".format(len(x)))
+
+	#gennemsnit
+	print("\nGennemsnit = {0}".format(st.mean(x)))
+	#median
+	print("\nMedian: {0}".format(st.median(x)))
+
+	#min og max værdi
+	print("\nMindste værdi: {0}".format(min(x)))
+
+	print("\nMaksimale værdi: {0}".format(max(x)))
+
+
+	try:
+		st.mode(x)
+		print("\nTypetal: {0}".format(st.mode(x)))
+		
+	except:
+		print("\nDer er ikke noget typetal (flere værdier med samme antal")
+
+	#Varians
+	print("\nVarians: {0}".format(round(st.variance(x),2)))
+
+	#Spredning
+	print("\nSpredning: {0}".format(round(st.stdev(x),2)))
+
+	# Finder unikke værdier
+	x_unik = np.unique(x)
+	# Finder antal for hver unik værdi
+	x_unik_antal = []
+	for i in x_unik:
+		x_unik_antal.append(x.count(i))
+		
+	#plotfunktionen
+
+	plt.bar(x_unik,x_unik_antal, width=0.8)
+	plt.title("Kontinuert data")
+	plt.show()
+		</code>
+	</pre>
+</details>
+
+
+
+<h2>Kontinuert data</h2>
+
+<figure id="">
+
+	<img class="p70" src="images/python_kontinuert_data_output.png" alt="_" title="_" />
+
+	<figcaption>_</figcaption>
+
+</figure>
+
+<details>
+
+	<summary>Kode til kontinuert data</summary>
+
+	<pre>
+		<code class="python">
+	import statistics as st
+	import numpy as np
+	import matplotlib.pyplot as plt
+
+	x = [156,159,161,164,165,167, 168,171,173,173,174,176,177,177,179,179,180,181,183,183,185,187,192,194,198,201]
+
+	print("Observationssæt: \n----------------\n{0}".format(x))
+
+	#antal
+	print("\nAntal observationer: {0}".format(len(x)))
+	#gennemsnit
+	print("\nGennemsnit = {0}".format(round(st.mean(x),2)))
+	#median
+	print("\nMedian: {0}{1}".format(st.median(x),2))
+	#min og max værdi
+	print("\nMindste værdi: {0}".format(min(x)))
+	print("\nmaksimale værdi: {0}".format(max(x)))
+
+	startværdi = 150
+	spring = 10
+	x_ny = []
+
+	#ændrer datasættet til middelværdier ud fra startværdi og spring
+	for i in range(len(x)):
+		if x[i]&lt; startværdi+spring and x[i]>=startværdi:
+			x_ny.append(startværdi+1/2*spring)
+		else:
+			startværdi += spring
+			x_ny.append(startværdi+1/2*spring)
+		
+	#print(x_ny)
+		
+	try:
+		st.mode(x_ny)
+		print("\nTypeintervallet er: [{0} - {1}[".format(st.mode(x_ny)-spring/2,st.mode(x_ny)+spring/2))
+	except:
+		print("\nDer er ikke noget typetal (flere værdier med samme antal")
+
+	#Varians
+	print("\nVarians: {0}".format(round(st.variance(x_ny),2)))
+	#Spredning
+	print("\nVarians: {0}".format(round(st.stdev(x_ny),2)))
+			
+	# Finder unikke værdier
+	x_unik = np.unique(x_ny)
+	# Finder antal for hver unik værdi
+	x_unik_antal = []
+	for i in x_unik:
+		x_unik_antal.append(x_ny.count(i))
+		
+	#plotfunktionen
+	plt.bar(x_unik,x_unik_antal, width=0.8)
+	plt.title("Kontinuert data")
+	plt.show()
+		</code>
+	</pre>
+</details>
+
 
 </div><!-- end: col-md-9 -->
 <footer>

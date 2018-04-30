@@ -6,34 +6,34 @@ import matplotlib.pyplot as plt
 
 x = [2,2,4,4,4,7,7,10,10,12]
 
-print("Datasæt: {0}\n".format(x))
+print("Datasæt: {0}".format(x))
 
 #antal
-print("Antal observationer: {0}".format(len(x)))
+print("\nAntal observationer: {0}".format(len(x)))
 
 #gennemsnit
-print("Gennemsnit = {0}".format(st.mean(x)))
+print("\nGennemsnit = {0}".format(st.mean(x)))
 #median
-print("Median: {0}".format(st.median(x)))
+print("\nMedian: {0}".format(st.median(x)))
 
 #min og max værdi
-print("Mindste værdi: {0}".format(min(x)))
+print("\nMindste værdi: {0}".format(min(x)))
 
-print("maksimale værdi: {0}".format(max(x)))
+print("\nMaksimale værdi: {0}".format(max(x)))
 
 
 try:
 	st.mode(x)
-	print("Typetal: {0}".format(st.mode(x)))
+	print("\nTypetal: {0}".format(st.mode(x)))
 	
 except:
-	print("Der er ikke noget typetal (flere værdier med samme antal")
+	print("\nDer er ikke noget typetal (flere værdier med samme antal")
 
 #Varians
-print("Varians: {0}".format(round(st.variance(x),2)))
+print("\nVarians: {0}".format(round(st.variance(x),2)))
 
 #Spredning
-print("Spredning: {0}".format(round(st.stdev(x),2)))
+print("\nSpredning: {0}".format(round(st.stdev(x),2)))
 
 # Finder unikke værdier
 x_unik = np.unique(x)
