@@ -12,7 +12,7 @@ print("Antal observationer: {0}".format(len(x)))
 #gennemsnit
 print("Gennemsnit = {0}".format(st.mean(x)))
 #median
-print("Median: {0}{1}".format(st.median(x),2))
+print("Median: {0}".format(st.median(x)))
 
 #min og max værdi
 print("Mindste værdi: {0}".format(min(x)))
@@ -31,7 +31,7 @@ except:
 print("Varians: {0}".format(round(st.variance(x),2)))
 
 #Spredning
-print("Varians: {0}".format(round(st.stdev(x),2)))
+print("Spredning: {0}".format(round(st.stdev(x),2)))
 
 # Finder unikke værdier
 x_unik = np.unique(x)
@@ -46,6 +46,4 @@ plt.bar(x_unik,x_unik_antal, width=0.8)
 plt.title("Kontinuert data")
 plt.show()
 
-plt.pie(x_unik,x_unik_antal,)
-plt.title("Kontinuert data")
-plt.show()
+

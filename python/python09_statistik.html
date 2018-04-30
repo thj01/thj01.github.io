@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="da">
 <head>
-  <title>Python</title>
+  <title>Python: plot</title>
   <link rel="icon" href="../images/favicon.png">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,10 +12,8 @@
   <link rel="stylesheet" href="../css/jquery-ui.min.css">
   <link rel="stylesheet" href="../css/jquery.tocify.css">
   <link rel="stylesheet" href="../css/style_new.css" />
-
 <!-- Scripts in bottom to speed up pageload-->
  
-
 
 </head>
 <body>
@@ -36,76 +34,74 @@
 </div><!-- Start slut 1. kolonne - TOC -->
 	
 <div class="col-xs-9">
+	<figure id="">
+
+		<img class="" src="images/python-logo-inkscape.svg" alt="" title="" />
+
+		<figcaption></figcaption>
+
+	</figure>	
 	
-<figure id="">
+	<div class="title">Statistik med Python</div>
 
-	<img class="" src="images/python-logo-inkscape.svg" alt="" title="" />
+<pre>
+	<code class="python">
+#Nødvendige pakker til statistik
+import statistics as st
+import numpy as np
+import matplotlib.pyplot as plt
 
-	<figcaption></figcaption>
+# Hjemmeside: https://docs.python.org/3/library/statistics.html
 
-</figure>
+#datasættet (liste)
+x = [2,2,4,4,4,7,7,10,10,12]
 
-<div class="title">Lær Python</div>
+#antal
+print("Antal observationer: {0}".format(len(x)))
 
-<h1>Indhold</h1>
+#gennemsnit
+print("Gennemsnit = {0}".format(st.mean(x)))
+#median
+print("Median: {0}".format(st.median(x)))
+
+#min og max værdi
+print("Mindste værdi: {0}".format(min(x)))
+
+print("maksimale værdi: {0}".format(max(x)))
+
+#typetal
+try:
+	st.mode(x)
+	print("Typetal: {0}".format(st.mode(x)))
 	
-<ol class="">
-	<li><a href="python01_intro.html" target="_blank">Introduktion af python og installation</a></li>
-	<li><a href="python02_Strenge_variabler_og_input.html" target="_blank">Strenge, variabler og input</a></li>
-	<li><a href="python03_tal_operatorer_og_matematiske_funktioner.html" target="_blank">Tal, Operatorere og matematik</a></li>
-	<li><a href="python04_valg_og_funktioner.html" target="_blank">Valg (if-else), funktioner og random()</a></li>
-	<li><a href="python05_loekker.html" target="_blank">Løkker</a></li>
-	<li><a href="python06_behandling_af_strenge.html" target="_blank">Behandling af strenge</a></li>
-	<li><a href="python07_lister_dictionaries_og_tuplets.html" target="_blank">Lister, dictionaries og tuplets</a></li>
-	<li><a href="python08_plot.html" target="_blank">Plot med Python</a></li>
-	<li><a href="python09_statistik.html" target="_blank">Statistik Python</a></li>
-	<li><a href="python10_error_handling.html" target="_blank">Error handling</a></li>
-</ol>
+except:
+	print("der er ikke noget typetal (flere værdier med samme antal")
 
-<h1>Henvisninger</h1>
+#Varians
+print("Varians: {0}".format(round(st.variance(x),2)))
 
-<ol class="">
-	<li><a href="https://docs.python.org/3/" target="_blank">Python 3 docs</a></li>
-	<li><a href="https://www.tutorialspoint.com/python3/" target="_blank">Python3 på Tutorialspoint</a></li>
-</ol>
+#Spredning
+print("Spredning: {0}".format(round(st.stdev(x),2)))
+
+# Finder unikke værdier
+x_unik = np.unique(x)
+# Finder antal for hver unik værdi
+x_unik_antal = []
+for i in x_unik:
+	x_unik_antal.append(x.count(i))
 	
+#plotfunktionen
+plt.bar(x_unik,x_unik_antal, width=0.8)
+plt.title("Kontinuert data")
+plt.show()
 
-<!--
 
-<h1>Introduktion og installation</h1>
+	</code>
+</pre>
 
-<p><a href="python01_intro.html" target="_blank">Introduktion af python og installation</a></p>
 
-<h1>Strenge, variabler og input</h1>
 
-<p><a href="python02_Strenge_variabler_og_input.html" target="_blank">Strenge, variabler og input</a></p>
-
-<h1>Tal, operatorer og matematik</h1>
-
-<p><a href="python03_tal_operatorer_og_matematiske_funktioner.html" target="_blank">Tal, Operatorere og matematik</a></p>
-
-<h1>Valg, funktioner og random()</h1>
-
-<p><a href="python04_valg_og_funktioner.html" target="_blank">Valg (if-else), funktioner og random()</a></p>
-
-<h1>Løkker</h1>
-
-<p><a href="python05_loekker.html" target="_blank">Løkker</a></p>
-
-<h1>Behandling af strenge</h1>
-
-<p><a href="python06_behandling_af_strenge.html" target="_blank">Behandling af strenge</a></p>
-
-<h1>Lister, dictionaries og tuplets</h1>
-
-<p><a href="python07_lister_dictionaries_og_tuplets.html" target="_blank">Lister, dictionaries og tuplets</a></p>
-
-<p></p>	
--->
-
-	
 </div><!-- end: col-md-9 -->
-
 <footer>
 
 	<p onclick="parentNode.remove()"><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons licens" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>Indholdet på Vidas.dk er licenseret under <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> og er skrevet af Thomas Jensen. (<a href="../hvem_er_jeg.html" target="_blank">Læs mere</a>)</p>
