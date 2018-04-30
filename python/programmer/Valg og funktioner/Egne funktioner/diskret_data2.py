@@ -1,4 +1,6 @@
 import statistics as st
+import numpy as np
+import matplotlib.pyplot as plt
 
 # https://docs.python.org/3/library/statistics.html
 
@@ -26,7 +28,24 @@ except:
 	print("der er ikke noget typetal (flere værdier med samme antal")
 
 #Varians
-print("Varians: {0}".format(st.variance(x)))
+print("Varians: {0}".format(round(st.variance(x),2)))
 
 #Spredning
-print("Varians: {0}".format(st.stdev(x)))
+print("Varians: {0}".format(round(st.stdev(x),2)))
+
+# Finder unikke værdier
+x_unik = np.unique(x)
+# Finder antal for hver unik værdi
+x_unik_antal = []
+for i in x_unik:
+	x_unik_antal.append(x.count(i))
+	
+#plotfunktionen
+
+plt.bar(x_unik,x_unik_antal, width=0.8)
+plt.title("Kontinuert data")
+plt.show()
+
+plt.pie(x_unik,x_unik_antal,)
+plt.title("Kontinuert data")
+plt.show()
