@@ -39,7 +39,7 @@ except:
 #Varians
 print("\nVarians: {0}".format(round(st.variance(x_ny),2)))
 #Spredning
-print("\nVarians: {0}".format(round(st.stdev(x_ny),2)))
+print("\nSpredning: {0}".format(round(st.stdev(x_ny),2)))
 		
 # Finder unikke værdier
 x_unik = np.unique(x_ny)
