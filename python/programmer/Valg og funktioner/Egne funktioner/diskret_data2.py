@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 
 x = [2,2,4,4,4,7,7,10,10,12]
 
-print("Datasæt: {0}".format(x))
+print("Observationssæt: \n----------------\n{0}".format(x))
 
 #antal
 print("\nAntal observationer: {0}".format(len(x)))
@@ -47,5 +47,4 @@ for i in x_unik:
 plt.bar(x_unik,x_unik_antal, width=0.8)
 plt.title("Kontinuert data")
 plt.show()
-
 

@@ -49,6 +49,6 @@ for i in x_unik:
 	x_unik_antal.append(x_ny.count(i))
 	
 #plotfunktionen
-plt.bar(x_unik,x_unik_antal, width=0.8)
+plt.bar(x_unik,x_unik_antal, width=5)
 plt.title("Kontinuert data")
 plt.show()
