@@ -201,8 +201,6 @@ Der er ikke noget typtetal.
 	</code>
 </pre>
 
-
-
 <h1>Varians og spredning</h1>
 
 <table class="_">
@@ -231,6 +229,41 @@ Der er ikke noget typtetal.
 >>> st.stdev(x)
 3.552776691859794
 	</code>
+</pre>
+
+<h1>Percentiler</h1>
+
+<pre>
+	<code class="python">
+import statistics as st
+import numpy as np
+
+x = [2, 2, 4, 4, 4, 7, 7, 10, 10, 12]
+
+print("Datasæt: {0}\n".format(x))
+
+print("Percentilsæt")
+
+for i in range(10,101,10):
+
+	print("Værden for den {0}. percentil er: {1}".format(i, round(np.percentile(x,i),1)))
+	</code>
+</pre>
+
+<pre class="black">
+Datasæt: [2, 2, 4, 4, 4, 7, 7, 10, 10, 12]
+
+Percentilsæt
+Værden for den 10. percentil er: 2.0
+Værden for den 20. percentil er: 3.6
+Værden for den 30. percentil er: 4.0
+Værden for den 40. percentil er: 4.0
+Værden for den 50. percentil er: 5.5
+Værden for den 60. percentil er: 7.0
+Værden for den 70. percentil er: 7.9
+Værden for den 80. percentil er: 10.0
+Værden for den 90. percentil er: 10.2
+Værden for den 100. percentil er: 12.0
 </pre>
 
 <h1>Program eksempler</h1>
@@ -310,7 +343,7 @@ Der er ikke noget typtetal.
 
 <figure id="">
 
-	<img class="p70" src="images/python_kontinuert_data_output.png" alt="_" title="_" />
+	<img class="p90" src="images/python_kontinuert_data_output.png" alt="_" title="_" />
 
 	<figcaption>_</figcaption>
 
