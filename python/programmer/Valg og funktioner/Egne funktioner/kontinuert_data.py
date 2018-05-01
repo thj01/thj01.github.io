@@ -47,8 +47,10 @@ x_unik = np.unique(x_ny)
 x_unik_antal = []
 for i in x_unik:
 	x_unik_antal.append(x_ny.count(i))
-	
+
+
 #plotfunktionen
+plt.xticks(x_unik, x_unik) 
 plt.bar(x_unik,x_unik_antal, width=5)
 plt.title("Kontinuert data")
 plt.show()
