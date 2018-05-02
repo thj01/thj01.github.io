@@ -37,11 +37,12 @@ print("\nSpredning: {0}".format(round(st.stdev(x),2)))
 
 # Finder unikke værdier
 x_unik = np.unique(x)
+
 # Finder antal for hver unik værdi
 x_unik_antal = []
 for i in x_unik:
 	x_unik_antal.append(x.count(i))
-	
+
 #plotfunktionen
 plt.xticks(x_unik, x_unik)
 plt.bar(x_unik,x_unik_antal, width=0.8)
