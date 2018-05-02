@@ -17,7 +17,7 @@ print("\nMindste værdi: {0}".format(min(x)))
 print("\nmaksimale værdi: {0}".format(max(x)))
 
 startværdi = 150
-spring = 10
+spring = 5
 x_ny = []
 
 #ændrer datasættet til middelværdier ud fra startværdi og spring
@@ -51,6 +51,6 @@ for i in x_unik:
 
 #plotfunktionen
 plt.xticks(x_unik, x_unik) 
-plt.bar(x_unik,x_unik_antal, width=5)
+plt.bar(x_unik,x_unik_antal, width=2)
 plt.title("Kontinuert data")
 plt.show()
