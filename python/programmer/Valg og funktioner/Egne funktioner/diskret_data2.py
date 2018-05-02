@@ -1,6 +1,7 @@
 import statistics as st
 import numpy as np
 import matplotlib.pyplot as plt
+import matplotlib.axis as ax
 
 # https://docs.python.org/3/library/statistics.html
 
@@ -44,7 +45,7 @@ for i in x_unik:
 	x_unik_antal.append(x.count(i))
 
 #plotfunktionen
-plt.xticks(x_unik, x_unik)
+#plt.xticks(x_unik, x_unik)
 plt.bar(x_unik,x_unik_antal, width=0.8)
 plt.title("Kontinuert data")
 plt.show()
