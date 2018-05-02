@@ -415,12 +415,63 @@ Press return to continue
 <p>Indsæt et større tekst fra nettet og lav søgninger på ord i denne tekst ved hjælp af et brugerinput.</p>
 
 
+<h1>Try</h1>
+
+<p>Med denne metode får man Python til at teste noget og reagere hvis der kommer en fejl. Forestil dig at du vil teste om a er et heltal (int).</p>
+
+<pre>
+	<code class="python">
+a = "k"
+
+int(k)
+	</code>
+</pre>
+
+<p>Python vil svare tilbage med følgende fejlmeddelelse, fordi programmet ikke kan konvertere bogstavet a til et heltal.</p>
+
+<pre class="black">
+Traceback (most recent call last):
+  File "statistic_test.py", line 1, in &lt;module>
+    int("k")
+ValueError: invalid literal for int() with base 10: 'k'
+</pre>
+
+<p>For at undgå den slags fejl, der får programmet til at bryde sammen, anvender man <span class="inl_cmd">try</span>. Se herunder:</p>
+
+<pre>
+	<code class="python">
+a = "k"
+
+try:
+	int(a)
+	print("Variablen a er et heltal")
+except:
+	print("Variablen a er ikke et heltal")
+	</code>
+</pre>
+
+<pre class="black">
+Variablen a er ikke et heltal
+</pre>
+
+<p>Denne gang går vi ind og undersøger om a er et helttal ved at sætte det ind under <span class="inl_cmd">try:</span>. Hvis koden på et eller andet tidspunkt fejler under try:, så vil programmet hoppe til <span class="inl_cmd">except:</span> delen og udføre denne, i stedet for at bryde sammen.</p>
+
+<p>Herunder kan du se resultatet når a = 2:</p>
+
+<pre class="black">
+Variablen a er et heltal
+</pre>
+
+<p>Som programmør skal man prøve at forudse den slags problemer, for man skal huske på Murphy's lov:</p>
+
+<blockquote>
+	<p>
+		Hvis noget kan gå galt, så vil det gå galt
+	</p>
+</blockquote>
 
 
-
-
-
-<h1>Egne funktioner</h1>
+<h1>Funktioner</h1>
 
 <p>Ofte har man behov for at noget skal udføres gentagne gange. Det kan f.eks. være at udskrive et logo, eller en <span class="inl_cmd">if-else</span> struktur der skal køres ofte. Her anvender man funktioner, så man kan skrive koden en gang, men "kalde" på den lige så ofte man vil.</p>
 
