@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <title>Python: Statistik</title>
+  <link rel="icon" href="../images/favicon.png">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono|Ubuntu|Ubuntu+Condensed' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/jquery-ui.min.css">
+  <link rel="stylesheet" href="../css/jquery.tocify.css">
+  <link rel="stylesheet" href="../css/style_new.css" />
+<!-- Scripts in bottom to speed up pageload-->
+ 
+
+</head>
+<body>
+	
+	
+<div class="container-fluid">
+
+<div class="row-fluid">
+	
+<div class="col-xs-3">
+	
+	<div id="toc">
+	
+		<div id="toc_headline"></div>
+	
+	</div>
+
+</div><!-- Start slut 1. kolonne - TOC -->
+	
+<div class="col-xs-9">
+	<figure id="">
+
+		<img class="" src="images/python-logo-inkscape.svg" alt="" title="" />
+
+		<figcaption></figcaption>
+
+	</figure>	
+	
+	<div class="title">Statistik med Python</div>
+
+<p>Fordelen ved at anvende Python til matematik fremfor regneark er, at vi hele tiden kan se koden. I regnearket forsvinder koden, så snart man forlader feltet.</p>
+
+<h1>Nødvendige moduler</h1>
+
+<p>for at kunne anvende statistik funktionerne skal vi importere to moduler: statistics og numpy.</p>
+
+<pre>
+	<code class="python">
+import statistics as st
+import numpy as np
+	</code>
+</pre>
+
+<h1>Deskriptorer</h1>
+
+<table class="_">
+	<thead>
+		<tr>
+			<th>Deskriptor</th>
+			<th>funktion</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>antal observationer (n)</td>
+			<td><span class="inl_cmd">len()</span></td>
+		</tr>
+		<tr>
+			<td>Mindste værdi</td>
+			<td><span class="inl_cmd">min()</span></td>
+		</tr>
+		<tr>
+			<td>Maksimal værdi</td>
+			<td><span class="inl_cmd">max()</span></td>
+		</tr>
+		<tr>
+			<td>Gennemsnit</td>
+			<td><span class="inl_cmd">st.mean()</span></td>
+		</tr>
+		<tr>
+			<td>Median</td>
+			<td><span class="inl_cmd">st.median()</span></td>
+		</tr>
+		<tr>
+			<td>typtetal (se nedenfor)</td>
+			<td><span class="inl_cmd">st.mode()</span></td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Typetallet kræver lidt mere programmering, da vi kan risikere at der er flere værdier med samme antal. Derfor skal vi anvende en <span class="inl_cmd">Try</span> sætning.</p>
+
+<pre>
+	<code class="python">
+try:
+	st.mode(x)
+	print("Typetal: {0}".format(st.mode(x)))
+	
+except:
+	print("Der er ikke noget typetal (flere værdier med samme antal")
+	</code>
+</pre>
+
+<p>Koden gør, at den forsøger at køre det der står under <span class="inl_cmd">try</span>. Hvis den støder ind i en fejl, så vil den gøre det der står under <span class="inl_cmd">except</span>.</p>
+
+
+<h2>Eksempel</h2>
+
+<p>Her anvender jeg en liste over karakterer i en klasse med 10 elever, som jeg kalder x.</p>
+
+<pre>
+	<code class="python">
+>>> import statistics as st
+>>> import numpy as np
+>>> x = [2,2,4,4,4,7,7,10,10,12]
+>>> len(x)
+10
+>>> min(x)
+2
+>>> max(x)
+12
+>>> st.mean(x)
+6.2
+>>> st.median(x)
+5.5
+>>> st.mode(x)
+4
+	</code>
+</pre>
+
+<h2>Eksempel intet typetal</h2>
+
+<p>Herunder er lavet et eksempel med datasættet y, hvor både 4 og 7 har lige mange observationer.</p>
+
+<pre>
+	<code class="python">
+import statistics as st
+
+y = [2, 2, 4, 4, 4, 7, 7, 7, 10, 12]
+
+print("Datasæt: {0}\n".format(y))
+
+st.mode(y)
+	</code>
+</pre>
+
+<pre class="black">
+Datasæt: [2, 2, 4, 4, 4, 7, 7, 7, 10, 12]
+
+Traceback (most recent call last):
+  File "statistic_test.py", line 7, in <module>
+    st.mode(y)
+  File "C:\Users\ThomasJensen\AppData\Local\Programs\Python\Python36\lib\statistics.py", line 507, in mode
+    'no unique mode; found %d equally common values' % len(table)
+statistics.StatisticsError: no unique mode; found 2 equally common values
+</pre>
+
+<p>Koden ændres så den anvender <span class="inl_cmd">try</span>.</p>
+
+<pre>
+	<code class="python">
+import statistics as st
+
+y = [2, 2, 4, 4, 4, 7, 7, 7, 10, 12]
+
+print("Datasæt: {0}\n".format(y))
+
+try:
+	st.mode(y)
+	print("typetaller er: {0}".format(st.mode(y)))
+	
+except:
+	print("Der er ikke noget typtetal.")
+	</code>
+</pre>
+
+<pre class="black">
+Datasæt: [2, 2, 4, 4, 4, 7, 7, 7, 10, 12]
+
+Der er ikke noget typtetal.
+</pre>
+
+<h1>Kvartilsæt</h1>
+
+<p>For at finde kvartilsæt anvendes funktionen <span class="inl_cmd">np.percentile</span></p>
+
+<pre>
+	<code class="python">
+>>> np.percentile(x,25)
+4.0
+>>> np.percentile(x,50)
+5.5
+>>> np.percentile(x,75)
+9.25
+	</code>
+</pre>
+
+<h1>Varians og spredning</h1>
+
+<table class="_">
+	<thead>
+		<tr>
+			<th>Deskriptor</th>
+			<th>funktion</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Varians (stikprøve)</td>
+			<td><span class="inl_cmd">st.variance()</span></td>
+		</tr>
+		<tr>
+			<td>Spredning (stikprøve)</td>
+			<td><span class="inl_cmd">st.stdev()</span></td>
+		</tr>
+	</tbody>
+</table>
+
+<pre>
+	<code class="python">
+>>> st.variance(x)
+12.622222222222222
+>>> st.stdev(x)
+3.552776691859794
+	</code>
+</pre>
+
+<h1>Percentiler</h1>
+
+<pre>
+	<code class="python">
+import statistics as st
+import numpy as np
+
+x = [2, 2, 4, 4, 4, 7, 7, 10, 10, 12]
+
+print("Observationssæt: \n----------------\n{0}".format(x))
+
+print("Percentilsæt:")
+
+for i in range(10,101,10):
+
+	print("Værden for den {0}. percentil er: {1}".format(i, round(np.percentile(x,i),1)))
+	</code>
+</pre>
+
+<pre class="black">
+Observationssæt
+---------------
+[2, 2, 4, 4, 4, 7, 7, 10, 10, 12]
+
+Percentilsæt:
+Værden for den 10. percentil er: 2.0
+Værden for den 20. percentil er: 3.6
+Værden for den 30. percentil er: 4.0
+Værden for den 40. percentil er: 4.0
+Værden for den 50. percentil er: 5.5
+Værden for den 60. percentil er: 7.0
+Værden for den 70. percentil er: 7.9
+Værden for den 80. percentil er: 10.0
+Værden for den 90. percentil er: 10.2
+Værden for den 100. percentil er: 12.0
+</pre>
+
+<h1>Program eksempler</h1>
+
+<h2>Diskret data</h2>
+
+<figure id="">
+
+	<img class="p90" src="images/python_diskret_data_output.png" alt="_" title="_" />
+
+	<figcaption>_</figcaption>
+
+</figure>
+
+<details>
+
+	<summary>Kode til diskret data</summary>
+
+	<pre>
+		<code class="python">
+import statistics as st
+import numpy as np
+import matplotlib.pyplot as plt
+
+# https://docs.python.org/3/library/statistics.html
+
+x = [2,2,4,4,4,7,7,10,10,12]
+
+print("Observationssæt: \n----------------\n{0}".format(x))
+
+#antal
+print("\nAntal observationer: {0}".format(len(x)))
+
+#gennemsnit
+print("\nGennemsnit = {0}".format(st.mean(x)))
+#median
+print("\nMedian: {0}".format(st.median(x)))
+
+#min og max værdi
+print("\nMindste værdi: {0}".format(min(x)))
+
+print("\nMaksimale værdi: {0}".format(max(x)))
+
+
+try:
+	st.mode(x)
+	print("\nTypetal: {0}".format(st.mode(x)))
+	
+except:
+	print("\nDer er ikke noget typetal (flere værdier med samme antal")
+
+#Varians
+print("\nVarians: {0}".format(round(st.variance(x),2)))
+
+#Spredning
+print("\nSpredning: {0}".format(round(st.stdev(x),2)))
+
+# Finder unikke værdier
+x_unik = np.unique(x)
+# Finder antal for hver unik værdi
+x_unik_antal = []
+for i in x_unik:
+	x_unik_antal.append(x.count(i))
+	
+#plotfunktionen
+plt.xticks(x_unik, x_unik) 
+plt.bar(x_unik,x_unik_antal, width=0.8)
+plt.title("Kontinuert data")
+plt.show()
+		</code>
+	</pre>
+</details>
+
+
+
+<h2>Kontinuert data</h2>
+
+<figure id="">
+
+	<img class="p90" src="images/python_kontinuert_data_output.png" alt="_" title="_" />
+
+	<figcaption>_</figcaption>
+
+</figure>
+
+<details>
+
+	<summary>Kode til kontinuert data</summary>
+
+	<pre>
+		<code class="python">
+import statistics as st
+import numpy as np
+import matplotlib.pyplot as plt
+
+x = [156,159,161,164,165,167, 168,171,173,173,174,176,177,177,179,179,180,181,183,183,185,187,192,194,198,201]
+
+print("Observationssæt: \n----------------\n{0}".format(x))
+
+#antal
+print("\nAntal observationer: {0}".format(len(x)))
+#gennemsnit
+print("\nGennemsnit = {0}".format(round(st.mean(x),2)))
+#median
+print("\nMedian: {0}{1}".format(st.median(x),2))
+#min og max værdi
+print("\nMindste værdi: {0}".format(min(x)))
+print("\nmaksimale værdi: {0}".format(max(x)))
+
+startværdi = 150
+spring = 10
+x_ny = []
+
+#ændrer datasættet til middelværdier ud fra startværdi og spring
+for i in range(len(x)):
+	if x[i]&lt; startværdi+spring and x[i]>=startværdi:
+		x_ny.append(startværdi+1/2*spring)
+	else:
+		startværdi += spring
+		x_ny.append(startværdi+1/2*spring)
+	
+#print(x_ny)
+	
+try:
+	st.mode(x_ny)
+	print("\nTypeintervallet er: [{0} - {1}[".format(st.mode(x_ny)-spring/2,st.mode(x_ny)+spring/2))
+except:
+	print("\nDer er ikke noget typetal (flere værdier med samme antal")
+
+#Varians
+print("\nVarians: {0}".format(round(st.variance(x_ny),2)))
+#Spredning
+print("\nSpredning: {0}".format(round(st.stdev(x_ny),2)))
+		
+# Finder unikke værdier
+x_unik = np.unique(x_ny)
+# Finder antal for hver unik værdi
+x_unik_antal = []
+for i in x_unik:
+	x_unik_antal.append(x_ny.count(i))
+	
+#plotfunktionen
+plt.xticks(x_unik, x_unik) 
+plt.bar(x_unik,x_unik_antal, width=0.8)
+plt.title("Kontinuert data")
+plt.show()
+		</code>
+	</pre>
+</details>
+
+
+</div><!-- end: col-md-9 -->
+<footer>
+
+	<p onclick="parentNode.remove()"><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons licens" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>Indholdet på Vidas.dk er licenseret under <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> og er skrevet af Thomas Jensen. (<a href="../hvem_er_jeg.html" target="_blank">Læs mere</a>)</p>
+
+</footer>
+	
+	
+</div><!-- end: row-fluid -->
+
+</div> <!-- end: container-fluid -->
+
+
+<!-- SCRIPT SECTION -->
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script type="text/javascript" src="../js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="../js/jquery.tocify.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+
+<!-- PRETTYFY-->
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+
+
+<!-- HIGHLIGHT -->
+	<script src="../js/highlight.pack.js" type="text/javascript"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+
+<!-- MATHJAX -->
+<script type="text/javascript" 
+	src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  displayAlign: "left",
+  displayIndent: "0em"
+});
+</script>
+
+
+<!-- TOCIFY -->
+<script>
+	$(function() {var toc = $("#toc").tocify({ selectors: "h1, h2, h3, h4" }).data("toc-tocify"); });
+</script>
+<!-- GOOGLE ANALYTICS -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-89933285-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</body>
+</html>

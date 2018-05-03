@@ -1,0 +1,1554 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <title>Python: Løkker</title>
+  <link rel="icon" href="../images/favicon.png">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono|Ubuntu|Ubuntu+Condensed' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/jquery-ui.min.css">
+  <link rel="stylesheet" href="../css/jquery.tocify.css">
+  <link rel="stylesheet" href="../css/style_new.css" />
+<!-- Scripts in bottom to speed up pageload-->
+ 
+
+</head>
+<body>
+	
+	
+<div class="container-fluid">
+
+<div class="row-fluid">
+	
+<div class="col-xs-3">
+	
+	<div id="toc">
+	
+		<div id="toc_headline"></div>
+	
+	</div>
+
+</div><!-- Start slut 1. kolonne - TOC -->
+	
+<div class="col-xs-9">
+	
+<figure id="">
+
+	<img class="" src="images/python-logo-inkscape.svg" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<div class="title">Løkker</div>
+	
+	
+<h1>Løkker - et overblik</h1>
+
+<p>Ofte har man brug for at et program skal gøre det samme igen og igen. Det kan f.eks. være at skulle udføre den samme beregning, på et stigende tal. Det kan f.eks. være at udskrive kvadrattallene (1,4,9,16,25 ...). På engelsk kaldes dette et <span class="inl_cmd">loop</span>.</p>
+
+<p>Python arbejder med 2 forskellige loops:</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th style="width:140px">Løkke type</th>
+			<th>Beskrivelse</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><span class="inl_cmd">for</span></td>
+			<td>... anvendes når man kender det nøjagtige antal gennemløb. Hvis man f.eks. ved at en funktion skal gennemløbes 10 gange vil man anvende <span class="inl_cmd">for</span>-løkken.<br/>
+			Herunder er den generelle anvendelsen af løkken vist.<br/><br/><span class="inl_cmd">for *tæller* in range(*startværdi*, *slutværdi*,*spring*):</span>
+			</td>
+		</tr>
+
+		<tr>
+			<td><span class="inl_cmd">while</span></td>
+			<td>... anvendes når man ikke på forhånd kender antallet af gennemløb. Funktionen gennemløbes indtil en betingelse er opfyldt.<br/>
+			Herunder er den generelle anvendelsen af løkken vist.<br/><br/><span class="inl_cmd">while *betingelse*:</span></td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Derudover gælder der også nogle <span class="inl_cmd">control statements</span> (kontroludsagn), som kan ændre udførslen af løkker.</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th style="width:140px">Kontroludsagn</th>
+			<th>Beskrivelse</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><span class="inl_cmd">break</span></td>
+			<td>Bryder løkken og lader programmet fortsætte lige efter løkken</td>
+		</tr>
+		<tr>
+			<td><span class="inl_cmd">continue</span></td>
+			<td>Bryder behandlingen af koden, hopper videre til næste værdi og kører løkken derfra</td>
+		</tr>
+		<tr>
+			<td><span class="inl_cmd">pass</span></td>
+			<td><span class="inl_cmd">pass</span> er hvad man kalder en <span class="inl_cmd">null operation</span>. Med den kommando kan man indsætte ekstra kode for enkelttilfælde uden at resten af koden ændres</td>
+		</tr>
+		<tr>
+			<td>exit()</td>
+			<td><span class="inl_cmd">exit()</span> er den kommando der får programmet til at afslutte. Det er den korrekte måde at gøre det på og svarer til at lukke en computeren rigtigt ned.</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>De ovenstående forklaringer er ment som et indblik i hvad det er løkker og kontroludsagn gør. Herunder vil løkkerne blive gennemgået udførligt.</p>
+
+<h1>Sådan tæller computere</h1>
+
+<p>En af de ting man støder på når man arbejder med programmering er, at computere tæller anderledes end vi gør. Når vi tæller starter vi fra en, og titalssystemet er anvendeligt for os fordi det passer med antallet af fingre på hånden. Når vi har brugt alle fingrene så tæller vi antallet af fulde hænder. 22 kan altså forståes som 2 fulde hænder og 2 fingre. I 10-talssystemet skifter vi altså position (veksler til den næste enhed) når vi kommer til den 10. værdi. </p>
+
+<p>Eller udtrykt ved hjælp af matematik: vi tæller ved hjælp af &#8469; = {1, 2, 3 ...}.</p>
+
+<p>Computere arbejder med binære tal - dvs. den tæller ved hjælp af 0 og 1, og den første værdi er 0. Det er fordi den arbejder digitalt ved hjælp af nogle transistorer der enten kan være tændt eller slukkede. Konkret bliver der afsat et vist antal transistorer til at huske tallet, og der vil den første værdi være den hvor alle transistorer er slukkede - dvs. den har værdien 0</p>
+
+<p>Eller udtrykt ved hjælp af matematik: vi tæller ved hjælp af &#8469;<sub>0</sub> = {0, 1, 2, 3 ...}.</p>
+
+
+<p>For at vise dette kigger vi på en byte (der består af 8 bit) der tæller:</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Computerens</th>
+			<th colspan="8">bits</th>
+			<th>I 10-tals systemet</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1. værdi</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+		</tr>
+		<tr>
+			<td>2. værdi</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>1</td>
+			<td>1</td>
+		</tr>
+		<tr>
+			<td>3. værdi</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>1</td>
+			<td>0</td>
+			<td>2</td>
+		</tr>
+		<tr>
+			<td>4. værdi</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>1</td>
+			<td>1</td>
+			<td>3</td>
+		</tr>
+		<tr>
+			<td>5. værdi</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>1</td>
+			<td>0</td>
+			<td>0</td>
+			<td>4</td>
+		</tr>
+		<tr>
+			<td>6. værdi</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>1</td>
+			<td>0</td>
+			<td>1</td>
+			<td>5</td>
+		</tr>
+		<tr>
+			<td>7. værdi</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>1</td>
+			<td>1</td>
+			<td>0</td>
+			<td>6</td>
+		</tr>
+		<tr>
+			<td>8. værdi</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>1</td>
+			<td>1</td>
+			<td>1</td>
+			<td>7</td>
+		</tr>
+		<tr>
+			<td>9. værdi</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>1</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>8</td>
+		</tr>
+		<tr>
+			<td>10. værdi</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>1</td>
+			<td>0</td>
+			<td>0</td>
+			<td>1</td>
+			<td>9</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>2⁷</td>
+			<td>2⁶</td>
+			<td>2⁵</td>
+			<td>2⁴</td>
+			<td>2³</td>
+			<td>2²</td>
+			<td>2¹</td>
+			<td>2⁰</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>Værdi</td>
+			<td>128</td>
+			<td>64</td>
+			<td>32</td>
+			<td>16</td>
+			<td>8</td>
+			<td>4</td>
+			<td>2</td>
+			<td>1</td>
+			<td></td>
+		</tr>		
+	</tbody>
+</table>
+
+<p>Af det ovenstående kan vi omregne fra binær til decimal ved at lægge de enkelte værdier sammen:</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Binær</th>
+			<th colspan="8">Udregning</th>
+			<th>Decimal</th>
+		</tr>
+	</thead>
+	<tbody>
+
+		<tr>
+			<td></td>
+			<td>2⁷</td>
+			<td>2⁶</td>
+			<td>2⁵</td>
+			<td>2⁴</td>
+			<td>2³</td>
+			<td>2²</td>
+			<td>2¹</td>
+			<td>2⁰</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>11111111</td>
+			<td>128</td>
+			<td>64</td>
+			<td>32</td>
+			<td>16</td>
+			<td>8</td>
+			<td>4</td>
+			<td>2</td>
+			<td>1</td>
+			<td>255</td>
+		</tr>	
+		<tr>
+			<td>10101101</td>
+			<td>128</td>
+			<td></td>
+			<td>32</td>
+			<td></td>
+			<td>8</td>
+			<td>4</td>
+			<td></td>
+			<td>1</td>
+			<td>173</td>
+		</tr>
+		<tr>
+			<td>10000001</td>
+			<td>128</td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td>1</td>
+			<td>129</td>
+		</tr>
+		<tr>
+			<td>00101101</td>
+			<td></td>
+			<td></td>
+			<td>32</td>
+			<td></td>
+			<td>8</td>
+			<td>4</td>
+			<td></td>
+			<td>1</td>
+			<td>45</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Man bliver nød til at holde tungen lige i munden, fordi vi skal holde styr på vores in- og output. Tæller vi f.eks. antallet af tegn (char) i en streng angives det i &#8469; (f.eks. Thomas = 6 tegn), men skal vi hente et tegn ud skal vi tænke &#8469;<sub>0</sub> (o er det 2 tegn i sætningen).</p>
+
+<table class="centreret">
+
+	<tbody>
+		<tr>
+			<td>Placering</td>
+			<td>0</td>
+			<td>1</td>
+			<td>2</td>
+			<td>3</td>
+			<td>4</td>
+			<td>5</td>
+		</tr>
+		<tr>
+			<td>Tegn</td>
+			<td>T</td>
+			<td>h</td>
+			<td>o</td>
+			<td>m</td>
+			<td>a</td>
+			<td>s</td>
+		</tr>
+	</tbody>
+</table>
+
+
+
+<h1>En til eller fra</h1>
+
+<p>Ofte har man brug for at lade et tal vokse med en fast størrelse fra gang til gang. Den mest umiddelbare løsning er denne:</p>
+
+<pre>
+	<code class="python">
+>>> a=0
+>>> a
+0
+>>> a+1
+1
+	</code>
+</pre>
+
+<p>Da man gør det så ofte har man en speciel "shorthand" til at løse dette problem med:</p>
+
+<pre>
+	<code class="python">
+>>> a=0
+>>> a +=1
+>>> a
+1
+>>> a +=1
+>>> a
+2
+	</code>
+</pre>
+
+<p>På samme måde som ovenfor kan man også lægge til, gange og dividere</p>
+
+<pre>
+	<code class="python">
+>>> a=1
+>>> a+=5
+>>> a
+6
+>>> a -=7
+>>> a
+-1
+>>> a *=7
+>>> a
+-7
+>>> a /=7
+>>> a
+-1.0
+	</code>
+</pre>
+
+<p>Man kan gøre det samme hvis man har lavet variabler. I eksemplet herunder lægger vi variablen <span class="inl_cmd">alder</span> til a.</p>
+
+<pre>
+	<code class="python">
+>>> a=1
+>>> alder=15
+>>> a+=alder
+>>> a
+16
+	</code>
+</pre>
+
+<h1>for løkken</h1>
+
+<p>Nogle gange skal man have sit program til at udgøre den samme operation flere gange. Til at udføre dette anvendes man løkker.</p>
+
+<h2>Fortløbende</h2>
+
+<p>Her udskriver vi tal i rækkefølge.</p>
+
+<pre>
+	<code class="python">
+>>> for i in range(5):
+		print(i)
+
+	
+0
+1
+2
+3
+4
+	</code>
+</pre>
+
+<p>Læg mærke til at Python starter med at tælle fra <span class="inl_cmd">0</span>. Man skal vænne sig til at computere tæller fra <span class="inl_cmd">0</span> og ikke en. Hvis vi skal have computeren til at skrive tallen "menneskeligt" skal vi lægge 1 til hver gang:</p>
+
+<pre>
+	<code class="python">
+>>> for i in range(5):
+		print(i+1)
+
+	
+1
+2
+3
+4
+5
+	</code>
+</pre>
+
+<p>Vi kan også vælge en delmængde f.eks. tallene fra 8-13.</p>
+
+<pre>
+	<code class="python">
+>>> for i in range(8,13):
+		print(i)
+
+	
+8
+9
+10
+11
+12
+	</code>
+</pre>
+
+<p>Læg mærke til at <span class="inl_cmd">13</span> ikke udskrives, som vi umiddelbart ville forvente. I <span class="inl_cmd">range()</span> er den første værdi inkluderet men ikke den sidste. Det giver den fordel at den udskriver præcis <span class="inl_cmd">13-8=5</span> værdier.</p>
+
+
+<h2>Udkskriv vandret</h2>
+
+<p>Det kan være uhensigtsmæssigt at få talrækker som den ovenstående udskrevet med et linieskift hver gang. Ændr koden til ved at tilføje <span class="inl_cmd">end=" "</span>:</p>
+
+<pre>
+	<code class="python">
+>>> for i in range(0,10):
+		print(i, end=" ")
+
+	
+0 1 2 3 4 5 6 7 8 9 
+	</code>
+</pre>
+
+
+<p>Dette får python til at udskrive uden at lave et linieskift hver gang.</p>
+
+<p>Ved hjælp af <span class="inl_cmd">range</span> kommandoen kan vi også få den til at udskrive hvert x'te tal f.eks. hver andet (lige tal):</p>
+
+<pre>
+	<code class="python">
+>>> for i in range(0,10,2):
+		print(i, end=" ")
+
+	
+0 2 4 6 8 	
+	</code>
+</pre>
+
+
+<p>En for løkke fungerer altså ved at man sætter alle betingelserne i den efterfølgende parentes. Den fortæller altså startværdien, slutværdien (ikke medtaget) og væksten pr. omgang).</p>
+
+<pre>
+	<code class="python">
+for i in range(startværdi, slutværdi, vækst pr. omgang)
+	</code>
+</pre>
+
+<h2>Udskriv baglæns</h2>
+
+<p>Dette kan vi også bruge til at tælle baglæs med:</p>
+
+<pre>
+	<code class="python">
+>>> for i in range(10,-1,-1):
+	print(i)
+
+5
+4
+3
+2
+1
+0
+	</code>
+</pre>
+
+<p>Læg mærke til at startværdien skal være større end slutværdien.</p>
+
+<h2>Brug af tælleren</h2>
+
+<p>Nogle gange skal den samme programlinie køres flere gange. Det kan f.eks. være hvis man gerne vil finde de 12 første trekanttal – altså talrække 1, 3, 6, 10, 15, 21... . Man kan udregne tallene med formlen herunder:</p>
+
+<div class="latex">$$ T_n = 1+2+3 ... +n= \frac {n \cdot (n+1)}{2} $$</div>
+
+<p>Ved at lave en løkke der sørger for at n stiger med en hver gang kan vi altså udregne det næste trekanttal. Her anvender vi en for løkke</p>
+
+<pre>
+<code class="python">
+>>> for i in range(1,12):
+		trekanttal = (i*(i+1))/2
+		print(trekanttal, end=" - ")
+
+	
+1.0 - 3.0 - 6.0 - 10.0 - 15.0 - 21.0 - 28.0 - 36.0 - 45.0 - 55.0 - 66.0 -
+	</code>
+</pre>
+
+
+
+<p>Python sætter en decimal på, fordi den ser resulater fra divisionsstykker som <span class="inl_cmd">float</span>. Det fjernes ved at tvinge Python til at se resultatet som et heltal (interger)</p>
+
+
+<pre>
+<code class="python">
+>>> for i in range(1,12):
+		trekanttal = (i*(i+1))/2
+		trekanttal = int(trekanttal)
+		print(trekanttal, end=" - ")
+
+	
+1 - 3 - 6 - 10 - 15 - 21 - 28 - 36 - 45 - 55 - 66 -
+	</code>
+</pre>
+
+
+<h2>For char in ...</h2>
+
+<p>Ofte har man brug for at kunne gennemføre en funktion på hver eneste tegn i en tekststreng. Herunder er vist et simpelt eksempel hvor man ved hjælp af en for-løkke printer hver bogstav i navnet.</p>
+
+<pre>
+	<code class="python">
+>>> for char in "Thomas":
+		print(char)
+
+	
+T
+h
+o
+m
+a
+s
+	</code>
+</pre>
+
+
+
+<blockquote>
+	<p>
+		Læg mærke til at ordet <span class="inl_cmd">char</span> blot skal ses som en variabel. Man kan lige så godt anvende et andet variabelnavn f.eks. bogstav (for bogstav in...)
+	</p>
+</blockquote>
+
+<h2>Word word in...</h2>
+
+<p>Man kan også printe en tekst ord for ord. Det gøres ved at anvende funktionen <span class="inl_cmd">split()</span>:</p>
+
+<pre>
+	<code class="python">
+>>> tekst = "Hej med dig"
+>>> for word in tekst.split():
+		print(word)
+
+	
+Hej
+med
+dig
+	</code>
+</pre>
+
+
+<!--
+<h2>for * in ...</h2>
+
+<p>Dette kan anvendes praktisk, hvis man ønsker at finde bestemte tegn i en tekststreng, f.eks. dots (<span class="inl_cmd">.</span>) i en IP-adresse. Herunder vil vi finde placeringen af dots i IP-adressen: 192.168.2.100. Se nedestående tabel, hvor IP-adressen sættes ind i et positionsskema:</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>1</th>
+			<th>9</th>
+			<th>2</th>
+			<th>.</th>
+			<th>1</th>
+			<th>6</th>
+			<th>8</th>
+			<th>.</th>
+			<th>2</th>
+			<th>.</th>
+			<th>1</th>
+			<th>0</th>
+			<th>0</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>0</td>
+			<td>1</td>
+			<td>2</td>
+			<td>3</td>
+			<td>4</td>
+			<td>5</td>
+			<td>6</td>
+			<td>7</td>
+			<td>8</td>
+			<td>9</td>
+			<td>10</td>
+			<td>11</td>
+			<td>12</td>
+		</tr>
+	</tbody>
+</table>
+
+<pre>
+	<code class="python">
+ip = "192.168.2.100"
+
+tegn = 0 #Tæller det tegn koden arbejder med
+
+for char in ip:
+    dot = "." in char
+    if dot == True:
+        print ("Here is a dot {0}".format(tegn))
+    tegn +=1
+	</code>
+</pre>
+
+<pre class="ubuntu_terminal">
+Here is a dot 3
+Here is a dot 7
+Here is a dot 9
+
+------------------
+(program exited with code: 0)
+Press return to continue
+</pre>
+
+
+<p>Vi skal senere lære hvordan vi kan arbejde med tekstrenge, sådan at vi f.eks. kan analysere værdierne der står mellem de forskellige dot's.</p>
+
+-->
+
+
+
+
+<h2>Opgaver</h2>
+
+<h3>BUM</h3>
+
+<p>Lav funktionen <span class="inl_cmd">bum(a,b)</span> hvor <span class="inl_cmd">a</span> er det tal der tælles til og <span class="inl_cmd">b</span> er den tabel der arbejdes med:</p>
+
+<pre class="ubuntu_terminal">1  2  BUM  4  5  BUM  7  8  BUM  10  11  BUM  13  14  BUM  
+
+------------------
+(program exited with code: 0)
+Press return to continue
+</pre>
+
+<h3>Vinkelsum i polygon</h3>
+
+<p>Lav en løkke der beregner den enkelte vinkel og  den samlede vinkel i en ligesidet polygon med op til 20 sider. Outputtet skal være som nedenfor:</p>
+
+<pre class="ubuntu_terminal">
+I en 3-kant er vinkelsummen 180° og den enkelte vinkel er 60.0°
+I en 4-kant er vinkelsummen 360° og den enkelte vinkel er 90.0°
+I en 5-kant er vinkelsummen 540° og den enkelte vinkel er 108.0°
+
+...
+
+I en 18-kant er vinkelsummen 2880° og den enkelte vinkel er 160.0°
+I en 19-kant er vinkelsummen 3060° og den enkelte vinkel er 161.05263157894737°
+
+------------------
+(program exited with code: 0)
+
+Press any key to continue . . .
+</pre>
+
+<p>Formlen er:</p>
+
+<div class="latex">$$ Vinkelsum = 180 \cdot (i-2) $$</div>
+
+<p></p>
+
+<p>Ændr koden, så den ikke udskriver decimaler på heltal ved hjælp af funktionen <span class="inl_cmd">is_integer()</span>, og sådan at der kun er to decimaler på værdierne for den enkelte vinkel ved hjælp af <span class="inl_cmd">round()</span> (se nedefor)</p>
+
+<pre>
+	<code class="python">
+>>> pi = 3.14159265
+>>> round(pi,3)
+3.142
+	</code>
+</pre>
+
+
+
+<h3>Mini Google</h3>
+
+<p>Ændr koden i opgaven Ord i tekst 1 (<a href="python04_valg_og_funktioner.html#ordtekst1" target="_blank">henvisning</a>) fra forrige kapitel så det også tæller antallet af gange ordet optræder:</p>
+
+
+
+<h3>Fibonacchi tal</h3>
+
+<p>Fibonaccitallene er en talrække, som har følgende egenskab. Hvis man dividerer et tal i rækken med det forgående tal, så vil dette tal tilnærme sig værdien &phi; (1.6180339...) som også bliver kaldt det gyldne snit. </p>
+
+<p>Fibonaccitalrækken er: 1, 1, 2, 3, 5, 8, 13, 21 ... </p>
+
+<p>Man kan udregne &phi; ud fra følgende formel baseret på fibonaccitallene hvor man tager et fibonaccital og dividerer det med det efterfølgende.</p>
+
+<div class="latex">$$ \phi = \frac{n-1}{n} ~~for~ \to \infty$$</div>
+
+<p>Opgaven er at lave en kode der tager talrækken: 0, 1, 2, 3, 4, 5 .... og laver den om til fibonaccital. på følgende måde:</p>
+
+<ul class="none">
+	<li>0 + 1 = 1</li>
+	<li>1 + 2 = 3</li>
+	<li>2 + 3 = 5</li>
+	<li>3 + 5 = 8</li>
+	<li>5 + 8 = 13</li>	
+</ul>
+
+<p>Koden skal udregne de første 20 fibonaggital: Her er en forklaring på koden:</p>
+
+<ol class="">
+	<li>Lav to variabler a, b og sæt dem til henholdsvis 0 og 1</li>
+	<li>lav en forløkke der kører op til 20 gange baseret på i</li>
+	<li>lad i vokse med en hver gang koden køres</li>
+	<li>Udskriv a, hvis den er større end 0</li>
+	<li>Gem den gamle værdi for a i en ny variabel (f.eks: old_a)</li>
+	<li>Sæt a = b</li>
+	<li>Sæt b = b + den gamle værdi for a</li>
+</ol>
+
+<p>Koden skal give nedestående output</p>
+
+<pre class="ubuntu_terminal">
+1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987 1597 2584 4181 6765 
+
+------------------
+(program exited with code: 0)
+Press return to continue
+</pre>
+
+<p>Kan du ændre i koden så den også regner &phi; ud og giver nedestǻende output?</p>
+
+<pre class="ubuntu_terminal">
+Fibonacci taller er: 1 og φ er: 1.0
+Fibonacci taller er: 1 og φ er: 0.5
+Fibonacci taller er: 2 og φ er: 0.6666666666666666
+Fibonacci taller er: 3 og φ er: 0.6
+Fibonacci taller er: 5 og φ er: 0.625
+Fibonacci taller er: 8 og φ er: 0.6153846153846154
+Fibonacci taller er: 13 og φ er: 0.6190476190476191
+Fibonacci taller er: 21 og φ er: 0.6176470588235294
+Fibonacci taller er: 34 og φ er: 0.6181818181818182
+Fibonacci taller er: 55 og φ er: 0.6179775280898876
+Fibonacci taller er: 89 og φ er: 0.6180555555555556
+Fibonacci taller er: 144 og φ er: 0.6180257510729614
+Fibonacci taller er: 233 og φ er: 0.6180371352785146
+Fibonacci taller er: 377 og φ er: 0.6180327868852459
+Fibonacci taller er: 610 og φ er: 0.6180344478216818
+Fibonacci taller er: 987 og φ er: 0.6180338134001252
+Fibonacci taller er: 1597 og φ er: 0.6180340557275542
+Fibonacci taller er: 2584 og φ er: 0.6180339631667066
+Fibonacci taller er: 4181 og φ er: 0.6180339985218034
+Fibonacci taller er: 6765 og φ er: 0.618033985017358
+
+------------------
+(program exited with code: 0)
+Press return to continue
+</pre>
+
+<p>Lav funktionen <span class="inl_cmd">fibo(n)</span> hvor <span class="inl_cmd">n</span> er antallet af fibonaccital.</p>
+
+
+<h1>Variabler i løkker</h1>
+
+<p>Ofte har man brug for at lave variabler i løkker. Det kan f.eks. være hvis man vil oprette brugere i løkker. Til dette formål anvender man <span class="inl_cmd">dictionaries</span>. En dictionary er en lille tabel med to kolonner hvor første kolonne er opslaget og den anden er værdien.</p>
+
+<p>Forestil dig at vi vil oprette en brugerliste og knytte et brugernummer til dem:</p>
+
+<ul class="none">
+	<li>Anne &rarr; 1</li>
+	<li>Bent &rarr; 2</li>
+</ul>
+
+<p>Herunder viser jeg hvordan man opretter og udskriver dette dictionary.</p>
+
+<pre>
+	<code class="python">
+>>> brugere={"Anne": 1, "Bent": 2}
+>>> brugere
+{'Bent': 2, 'Anne': 1}
+	</code>
+</pre>
+
+<p>Vi har altså nu bundet navnet <span class="inl_cmd">Anne</span> til tallet <span class="inl_cmd">1</span> og navnet <span class="inl_cmd">Bent</span> til tallet <span class="inl_cmd">2</span>.</p>
+
+<p>Hvis jeg gerne vil udskrive en af værdierne gør jeg følgende:</p>
+
+<pre>
+	<code class="python">
+>>> brugere["Anne"]
+1
+>>> brugere["Bent"]
+2
+	</code>
+</pre>
+
+<p>Fordelen ved at anvende dictionaries er altså, at vi kan binde et opslag til en værdi/tekststreng. Det er altså reelt en <span class="inl_cmd">multivariabel</span>, som kan indeholder flere variabler. I ovenstående tilfælde indeholder den altså <span class="inl_cmd">"Anne" = 1</span> og <span class="inl_cmd">"Bent" = 2</span>.</p>
+
+<p>Det betyder også at vi kan ændre på variablerne løbende. Se herinder hvor jeg lægger <span class="inl_cmd">1</span> til <span class="inl_cmd">"Bent"</span></p>
+
+<pre>
+	<code class="python">
+>>> brugere["Bent"] +=1
+>>> brugere
+{'Bent': 3, 'Anne': 1}
+	</code>
+</pre>
+
+<h2>Konstruere dictionaries</h2>
+
+<p>Herunder er vist et eksempel hvor jeg jeg opretter en dictionary</p>
+
+<pre>
+	<code class="python">
+brugerliste={}
+
+for i in range(3):
+	
+	brugernavn = input("\nHvad er brugerens navn?: ")
+	password = int(input("\n\tIndtast password (kun tal): "))
+	
+	brugerliste["{0}".format(brugernavn)] = password
+	
+print("\n\nHer er din brugerliste: {0}".format(brugerliste))
+	</code>
+</pre>
+
+
+
+<pre class="ubuntu_terminal">
+	
+Hvad er brugerens navn?: Thomas
+
+        Indtast password (kun tal): 123
+
+Hvad er brugerens navn?: Kurt
+
+        Indtast password (kun tal): 234
+
+Hvad er brugerens navn?: Niels
+
+        Indtast password (kun tal): 345
+
+
+Her er din brugerliste: {'Thomas': 123, 'Niels': 345, 'Kurt': 234}
+
+
+------------------
+(program exited with code: 0)
+
+Press any key to continue . . .
+</pre>
+
+<p>Man kan også skrive et dictionary mere overskueligt:</p>
+
+<pre>
+	<code class="python">
+personer = {
+
+		"Hans" : 1,
+		"Grethe" : 2,
+		"Heks" : 3
+
+	}
+	
+print (personer)
+	</code>
+</pre>
+
+<pre class="ubuntu_terminal">
+{'Heks': 3, 'Grethe': 2, 'Hans': 1}
+
+------------------
+(program exited with code: 0)
+
+Press any key to continue . . .
+</pre>
+
+
+
+<h2>Opgaver</h2>
+
+<h3>Terningspil 2</h3>
+
+<p>Lav et program der slår med en D6 terning (6 sider) det antal gange brugeren ønsker det, og lav en optælling af hvert terningslag</p>
+
+<pre class="ubuntu_terminal">
+Hvor mange slag?: 100000
+
+Du slog:
+
+	16678 enere
+	16685 toere
+	16552 treere
+	16758 firere
+	16707 femmere
+	16620 seksere
+
+
+------------------
+(program exited with code: 0)
+Press return to continue
+
+</pre>
+
+
+
+<h3>Terningspil 3</h3>
+
+<p>Ændre koden fra opgaven terningspil 1 (<a href="python04_valg_og_funktioner.html#terningspil1" target="_blank">henvisning</a>)fra forrige kapitel på følgende måde:</p>
+
+<ul class="disc">
+	<li>Brugeren skal vælge mellem en D4, D6, D10 og D20 terning (antallet af sider)</li>
+	<li>Brugeren vælger antallet af slag</li>
+	<li>Programmet udnævner en vinder og laver en udskrift af hvor mange gange bruger og computer har vundet og antallet af uafgjorte runder.</li>
+</ul>
+
+<p>Herunder er et eksempel på en udskrift.</p>
+
+<pre class="ubuntu_terminal">
+Hvad er dit navn: Thomas  <span class="red">&larr; Input</span>
+
+Du kan vælge at slå med 4 forskellige terninger, og du kan vælge mellem:
+
+	1) D4	(4 sider)
+	2) D6	(6 sider)
+	3) D10	(10 sider)
+	4) D20	(20 sider)
+
+
+Hvilken terning vil du spille med?: 3  <span class="red">&larr; Input</span>
+
+	Du valgte en D10.
+
+
+Hvor mange slag vil du lave?: 1000  <span class="red">&larr; Input</span>
+
+	Du valgte 1000 slag.
+
+
+*********************************************
+
+Computeren vandt 438 gange
+
+Thomas vandt 464 gange
+
+Der blev spillet uafgjort 98 gange
+
+*********************************************
+
+Thomas vandt.
+
+
+------------------
+(program exited with code: 0)
+Press return to continue
+
+</pre>
+
+<p>Hvor lang tid tager det at spiller:</p>
+
+<ul class="none">
+	<li>10.000 slag</li>
+	<li>100.000 slag</li>
+	<li>1.000.000</li>
+	<li>10.000.000</li>
+</ul>
+
+<p>Er der forskel på om du bruger en <span class="inl_cmd">D4</span> eller en <span class="inl_cmd">D20</span>?</p>
+
+<h1>While</h1>
+
+<p>While betingelser angiver noget der skal ske så længe en betingelse er opfyldt. Herunder laver vi en kode, der udskriver tallet a så længe det er under 10</p>
+
+<pre>
+	<code class="python">
+a = 0
+
+while a &lt; 10:
+    a +=1
+    print (a)
+
+	</code>
+</pre>
+
+<pre class="ubuntu_terminal">
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+
+------------------
+(program exited with code: 0)
+Press return to continue
+</pre>
+
+<p>Det som koden gør er, at mens (<span class="inl_cmd">while</span>) betingelsen er opfyldt kører den det som er rykket ind under koden. I dette tilfælde kører koden indtil a ikke længere er mindre en 10.</p>
+
+<h2>While True</h2>
+
+<p>Hvis man gerne vil have at en løkke skal køre uanset hvad, så kan man sætte den til at køre ved at bruge: <span class="inl_cmd">while True</span>. Se eksemplet herunder hvir koden kører indtil brugeren skriver: <span class="inl_cmd">Hej</span>:</p>
+
+<pre>
+	<code class="python">
+while True:
+
+	valg = input("Skriv 'Hej': ")
+	
+	if valg == "Hej":
+	
+		print("Tak!")
+		
+		break
+	</code>
+</pre>
+
+<pre class="ubuntu_terminal">
+Skriv 'Hej': tak
+Skriv 'Hej': nej
+Skriv 'Hej': STOP NU
+Skriv 'Hej': hej
+Skriv 'Hej': SKAL DET VÆRE MED STORT FORBOGSTAV
+Skriv 'Hej': Hej
+Tak!
+
+------------------
+(program exited with code: 0)
+
+Press any key to continue . . .
+</pre>
+
+<p>Husk en computer er meget tålmodig</p>
+
+
+<h2>Tællere i løkker</h2>
+
+<p>Hvis vi kikker på den første betingede <span class="inl_cmd">while</span>-løkke vi lavede ovenfor, så vil den køre indtil brugeren taster rigtigt. Herunder vil vi kigge på en metode til at begrænse antallet af forsøg.</p>
+
+<p>Vi indsætter simpelthen en øvre grænse for hvor mange gange koden må løbe og laver et <span class="inl_cmd">break</span> når grænsen er nået. Jeg har valgt at kommentere direkte i koden.</p>
+
+<pre>
+	<code class="python">
+# Den øvre grænse
+limit = 3
+
+while True:
+    antalBrugere = int(input("Indtast antal brugere (1-4): "))
+    
+    if antalBrugere >=1 and antalBrugere &lt;=4:
+        print("\nDer er {0} brugere)".format(antalBrugere))
+        break #Hop ud af while løkken
+    else:
+        #Tæller en ned på den øvre grænse når brugeren vælger forkert
+        limit -=1 
+	
+        #Det løkken gør så længe der er forsøg tilbage
+        if limit > 0: 
+            print("\n\tDer skal være mellem 1 og 4 brugere.")
+            print("\n\tDu har nu {0} forsøg tilbage\n".format(limit))
+
+        # Det løkken gør når grænsen er nået
+        else: 
+            print("\nDu har ikke flere forsøg tilbage - bye bye")
+            break #Hop ud af while løkken
+	</code>
+</pre>
+
+
+
+
+<h2>Opgaver</h2>
+
+<h3>Gæt et tal 1</h3>
+
+<pre>
+	<code class="python">
+print("Gæt på et tal mellem 1 og 9\n")
+
+while True:
+	gæt = int(input("Gæt hvilket tal jeg er: "))
+
+	if gæt == 8:
+		print ("\nN I C E")
+		exit()
+	</code>
+</pre>
+
+<h3>Gæt et tal 2</h3>
+
+<ul class="disc">
+	<li>Tallet der skal gættes laves af funktionen <span class="inl_cmd">randrange()</span></li>
+	<li>Det efter 4 forsøg i input teksten skriver: Kan man virkeligt gætte forkert så mange gange?</li>
+	<li>At koden af afbrydes med beskeden <span class="inl_cmd">Du er vist useriøs</span>, hvis man ikke skriver et tal mellem 1 og 9.</li>
+	<li>At det skriver "Godt gættet :)!" når du rammer rigtigt</li>
+</ul>
+
+
+<p><span class="bold">HINT:</span> for at kunne få en kode til at afbryde anvender man kommandoen <span class="inl_cmd">exit()</span>. Når koden læser denne linie afsluttes kørslen.</p>
+
+<h3>Dril</h3>
+
+<p>Lav en kode der gentager hvad du siger - indtil du siger <span class="inl_cmd">klorofyl</span></p>
+
+<pre class="ubuntu_terminal">
+Skriv noget: Hej
+
+Hej: Hvad sker der
+
+Hvad sker der: STOP DET DER
+
+STOP DET DER: klorofyl
+
+        Du sagde det magiske ord.
+
+------------------
+(program exited with code: 0)
+
+Press any key to continue . . .
+</pre>
+
+<h3>Stopur</h3>
+
+
+<p>Man kan lave en tidsforsinkelse ved hjælp af funktionen <span class="inl_cmd">sleep</span> der er i pakken <span class="inl_cmd">time()</span></p>
+
+<pre>
+	<code class="python">
+from time import sleep
+
+while True:
+
+	for i in range(5,-1,-1):
+		
+		if i ==0:
+			print("Fyr")
+			exit()
+		
+		print(i)
+		sleep(1)
+	</code>
+</pre>
+
+<pre class="ubuntu_terminal">
+5
+4
+3
+2
+1
+Affyr!
+
+------------------
+(program exited with code: 0)
+Press return to continue
+</pre>
+
+<p>Ændr koden, så der tælles ned på samme position. For at opnå det skal du anvende escape character'en <span class="inl_cmd">\r</span> (carrage return). </p>
+
+
+<h3>Tabeltræner</h3>
+
+<p>Lav et program der stiller 5 tilfældige regnestykker fra den lille tabel (1-9). Programmet skal tælle:</p>
+
+<ul class="disc">
+	<li>Antal rigtige</li>
+	<li>Antal forsøg tilbage</li>
+	<li>Udregne antal % rigtige, med en decimal</li>
+</ul>
+
+
+<h1>Betingede løkker</h1>
+
+<p>I de ovenstående kapitler har løkkerne været simple, fordi vi har været helt klar over hvad de skulle. Det hænder dog, at man vil sætte nogle betingelser for løkkerne. Det kan f.eks. være en kode der skal løbe indtil brugeren har valgt rigtigt.</p>
+
+<p>Vi kan betinge løkkerne ved hjælp af følgende metoder:</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Metode</th>
+			<th>Beskrivelse</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>break</td>
+			<td>Bryder den ingangværende løkke</td>
+		</tr>
+		<tr>
+			<td>continue</td>
+			<td>Afbryder den konkrete session i løkken og fortsætter med næste gennemkørsel af løkken</td>
+		</tr>
+		<tr>
+			<td>pass</td>
+			<td>Gør intet, men lader løkken fortsætte i samme session</td>
+		</tr>
+		<tr>
+			<td>exit()</td>
+			<td><span class="inl_cmd">exit()</span> er den kommando der får programmet til at afslutte. Det er den korrekte måde at gøre det på og svarer til at lukke en computeren rigtigt ned.</td>
+		</tr>
+	</tbody>
+</table>
+
+<h2>break</h2>
+
+<p>Forestil dig at vi laver et spørgsmål om et antal brugere, men at vi kun vil acceptere 4. Den lette løsning er, at lave en kode der forventer at brugere svarer rigtigt.</p>
+
+<pre>
+	<code class="python">
+antalBrugere = int(input("Indtast antal brugere (1-4): "))
+	</code>
+</pre>
+
+<p>Problemet med denne kode er, at den vil videresende input ligegyldigt om det 17 eller -5 brugere. For at sikre os at brugeren indtaster korrekt kan vi gøre følgende:</p>
+
+<pre>
+	<code class="python">
+while True:
+	
+    antalBrugere = int(input("Indtast antal brugere (1-4): "))
+
+    if antalBrugere >=1 and antalBrugere &lt;=4:
+	    print("\nDer er {0} brugere)".format(antalBrugere))
+	    break #Hop ud af while løkken
+    else:
+        print("\n\tDer skal være mellem 1 og 4 brugere. Prøv igen...")			
+	</code>
+</pre>
+
+<pre class="ubuntu_terminal">
+Indtast antal brugere (1-4): 6
+
+    Der skal være mellem 1 og 4 brugere. Prøv igen...
+
+Indtast antal brugere (1-4): 5
+
+    Der skal være mellem 1 og 4 brugere. Prøv igen...
+
+Indtast antal brugere (1-4): 4
+
+Der er 4 brugere)
+
+------------------
+(program exited with code: 0)
+Press return to continue
+</pre>
+
+<p><span class="inl_cmd">while</span>-løkken kører så længe den ikke modtager et <span class="inl_cmd">False</span>. D.v.s. den kan køre uendeligt. Det eneste som får løkken til at stoppe er fordi der er indsat en <span class="inl_cmd">break</span> kommando hvis n er lig med variablen <span class="inl_cmd">goal</span>. <span class="inl_cmd">break</span> kommandoen bryder <span class="inl_cmd">while</span>-løkken og lader programmet køre videre.</p>
+
+<p>Ulempen ved den kode vi har lavet er, at den vil blive ved med at køre indtil der kommer et input som opfylder betingelsen. Vi vil senere kigge på at indsætte en tæller i koden, sådan at den kun kan køre et bestemt antal gange.</p>
+
+<h2>continue</h2>
+
+<p><span class="inl_cmd">continue</span> anvendes når vi gerne vil have at løkket "hopper" videre, uden at udføre det der står efter <span class="inl_cmd">continue</span>. Se eksemplet herunder</p>
+
+<pre>
+	<code class="python">
+for char in 'Thomas':
+   if char == 'm':
+      continue
+   print ('Bogstavet er:', char)
+	</code>
+</pre>
+
+<pre class="ubuntu_terminal">
+Bogstavet er: T
+Bogstavet er: h
+Bogstavet er: o
+Bogstavet er: a
+Bogstavet er: s
+
+------------------
+(program exited with code: 0)
+Press return to continue
+</pre>
+
+<p>Løkken udskriver bogstaverne i tekststrengen <span class="inl_cmd">Thomas</span>, men der er en speciel betingelse ved bogstavet <span class="inl_cmd">m</span>. Vi vil ikke have at bogstavet skal printes, så vi indsætter <span class="inl_cmd">continue</span>, for ikke at bryde løkken, men at fortsætte ved næste bogstav.</p>
+
+
+
+
+
+<h2>pass</h2>
+
+<p><span class="inl_cmd">pass</span> er umiddelbart en underlig kommando, fordi den gør reelt ingen forskel. Men den er rigtig brugbar. Forestil dig en kode, hvor du vil udskrive tallene fra 1-10, men lige vill gøre opmærksom på at 7 er dit lykketal:</p>
+
+<pre>
+	<code class="python">
+for i in range(1,11):
+    if i == 7:
+        print("Næste tal er mit lykketal")
+        pass
+    print(i)
+	</code>
+</pre>
+
+<pre class="ubuntu_terminal">
+1
+2
+3
+4
+5
+6
+Næste tal er mit lykketal
+7
+8
+9
+10
+
+------------------
+(program exited with code: 0)
+Press return to continue
+</pre>
+
+<p><span class="inl_cmd">pass</span> er brugbar fordi den ikke ændrer på hvordan løkken køres. Man kan f.eks. lave tomme funktioner ... altså funktioner der ikke er konstrueret endnu. Så kan funktionen indsættes når den er lavet.</p>
+
+<pre>
+	<code class="python">
+def tomfunktion():
+	pass
+	
+tomfunktion()
+	</code>
+</pre>
+
+<pre class="ubuntu_terminal">
+			<span class="red">&larr; intet output</span>
+------------------
+(program exited with code: 0)
+Press return to continue
+</pre>
+
+<h2>exit()</h2>
+
+<p>Denne kommendo bruges når du vil afsluttet programmet helt.</p>
+
+<p>Forestil dig en situation hvor du inde midt i din kode skal give din bruger et valg om at genstarte eller afslutte et program. Se f.eks. nedestående eksempel, hvor vi kaster med en almindelig terning.</p>
+
+<pre>
+	<code class="python">
+from random import randrange
+
+kast = randrange(1,7)
+
+while kast !=6:
+	
+	print("Du slog en {0}'er".format(kast))
+
+	igen = input("\nHar du lyst til at spille igen (j/n)?: ")
+
+	if igen == "j":
+		kast = randrange(1,7)
+		continue #starter programmet en gang til
+	else:
+		print("\nTak for spillet")
+		exit() #afslutter programmet
+
+print("Du slog en 6'er") # denne linie kommer med
+	</code>
+</pre>
+
+
+<h2>Opgaver</h2>
+
+<h3>Erstat bogstaver</h3>
+
+<p>Lav et program der erstatter <span class="inl_cmd">g</span> med <span class="inl_cmd">n</span> i det nedestående tekst.</p>
+
+<code class="cmd">Igennem mange generationer har børn og unge hygget sig med gynger.</code>
+
+<p>Altså så outputtet bliver (på en linje):</p>
+
+<pre class="ubuntu_terminal">
+Inennem manne nenerationer har børn on unne hynnet sin med nynner.
+
+------------------
+(program exited with code: 0)
+Press return to continue
+</pre>
+
+
+
+
+<!--
+<pre>
+	<code class="python">
+import time
+
+tælFra = 10
+
+while tælFra >=0:
+	
+	if tælFra == 0:
+		print("Affyr!")
+		break
+	
+	print (tælFra, end="  \r")
+	tælFra -=1
+	time.sleep(1)
+	</code>
+</pre>
+
+<p>Læg mærke til at jeg indsætter to tomme tegn før jeg fører curseren tilbage.</p>
+
+<ul class="none">
+	<li>Ved første gennemkørsel printes <span class="inl_cmd">10</span> + <span class="inl_cmd">to mellemrum</span> + <span class="inl_cmd">\r</span>.</li>
+	<li>Ved anden gennemkørsel printes <span class="inl_cmd">9</span> + <span class="inl_cmd">to mellemrum</span> + <span class="inl_cmd">\r</span>. Det sørger for at <span class="inl_cmd">0</span>'et i <span class="inl_cmd">10</span> slettes.</li>
+	<li>osv....</li>
+</ul>
+-->
+	
+</div><!-- end: col-md-9 -->
+
+<footer>
+
+	<p onclick="parentNode.remove()"><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons licens" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>Indholdet på Vidas.dk er licenseret under <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> og er skrevet af Thomas Jensen. (<a href="../hvem_er_jeg.html" target="_blank">Læs mere</a>)</p>
+
+</footer>
+	
+	
+</div><!-- end: row-fluid -->
+
+</div> <!-- end: container-fluid -->
+
+
+<!-- SCRIPT SECTION -->
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script type="text/javascript" src="../js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="../js/jquery.tocify.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+
+<!-- PRETTYFY-->
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+
+
+<!-- HIGHLIGHT -->
+	<script src="../js/highlight.pack.js" type="text/javascript"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+
+<!-- MATHJAX -->
+<script type="text/javascript" 
+	src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  displayAlign: "left",
+  displayIndent: "0em"
+});
+</script>
+
+
+<!-- TOCIFY -->
+<script>
+	$(function() {var toc = $("#toc").tocify({ selectors: "h1, h2, h3, h4" }).data("toc-tocify"); });
+</script>
+<!-- GOOGLE ANALYTICS -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-89933285-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</body>
+</html>
