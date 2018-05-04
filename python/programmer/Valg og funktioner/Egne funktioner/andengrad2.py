@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 def andengrad(a,b,c):
 
 	if a < 0:
-		a_print = "-{0}".format(a)
+		a_print = "{0}".format(a)
 	elif a > 0:
 		a_print = "{0}".format(a)	
 		
