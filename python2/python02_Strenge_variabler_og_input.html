@@ -54,40 +54,27 @@
 
 <pre>
 	<code class="python">
-print ("Hej")
+>>>print ("Hej")
+Hej
 	</code>
 </pre>
 
-<pre class="ubuntu_terminal">
-Hej
-
-------------------
-(program exited with code: 0)
-Press return to continue
-</pre>
 
 <p>Programmet er opbygget af funktionen <span class="inl_cmd">print()</span>, som laver et output af det som står i parantesen. I dette tilfælde af tektstrengen <span class="inl_cmd">Hej</span>. Som du kan se i programmet omgiver vi teksstrengen <span class="inl_cmd">Hej</span> med udråbtegn <span class="inl_cmd">"   "</span>. Det er nødvendigt, fordi Python skal vide om vi indsætter en værdi eller en tekststreng. Vi fortæller altså Python om det er en værdi ved enten at sætte udråbstegn omkring eller at udelade dem.</p>
 
 <pre>
 	<code class="python">
-print ("Hej")
-print (4)
+>>>print ("Hej")
+Hej
+>>>print (4)
+4
 	</code>
 </pre>
 
-<pre class="ubuntu_terminal">
-Hej
-4
 
-------------------
-(program exited with code: 0)
-Press return to continue
-</pre>
- 
 <h2>Kommentarer</h2>
 
-<p>For at gøre koden lettere at læse indsætter man kommentarer i den. Det kan gøres på to måder. Se eksemplet herunder:</p>
-
+<p>For at gøre koden lettere at læse indsætter man kommentarer i den. Det kan gøres på to måder. Åbn en ny fil (<kbd>Ctrl</kbd>+<kbd>n</kbd>) og indtast følgende :</p>
 
 <pre>
 	<code class="python">
@@ -100,17 +87,19 @@ print ("Hej") # Dette er også en kommentar
 	</code>
 </pre>
 
-<pre class="ubuntu_terminal">
+<div class="idle">=========== RESTART: ===========
 Hej
-
-------------------
-(program exited with code: 0)
-Press return to continue
-</pre>
+</div>
 
 <p>Der er to typer af kommentarer her. Den store kommentar i starten der er omgivet af tre anførselstegn (<span class="inl_cmd">""" *kommentar* """</span>) og de to mindre der er lavet ved at sætte et hashtag (<span class="inl_cmd">#</span>) foran. Den tekst der kommer imellem <span class="inl_cmd">"""</span> eller efter <span class="inl_cmd">#</span> bliver sprunget over når kompileren læser og udfører koden.</p>
 
 <h2>Fejlmeddelelser</h2>
+
+<blockquote>
+	<p>
+		Dette afsnit er relevant hvis du har valgt at anvende Geany til at skrive kode. IDLE vil ikke køre en kommando før den er indtastet korrekt.
+	</p>
+</blockquote>
 
 <p>Lad os se på koden herover, hvor vi udskriver en tekststreng og et tal men hvor vi udelader de afsluttende parantes i første linje.</p>
 
@@ -164,11 +153,7 @@ Press return to continue
 			<li>... afslutte hvad du begynder. Sørg for at anførselstegn, paranteser osv. bliver afsluttet</li>
 			<li>... angive typerne korrekt - værdi eller streng</li>
 			<li>... hvis fejlen ikke er i den linie Python henviser til, er det fordi den forrige linie ikke er korrekt (tjek paranteser og anførselstegn)</li>
-			
 		</ol>
-		
-		
-		
 	</p>
 </blockquote>
 
@@ -182,7 +167,7 @@ Press return to continue
 
 <pre>
 	<code class="python">
-print ("""
+>>> print ("""
 Roser er røde
 
     Violer er blå
@@ -190,6 +175,14 @@ Roser er røde
 Python er svært
 
         .... NOT!""")
+
+Roser er røde		<span class="red">&larr; Her starter output</span>
+
+    Violer er blå
+
+Python er svært
+
+        .... NOT!
 	</code>
 </pre>
 

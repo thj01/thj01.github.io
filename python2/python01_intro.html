@@ -101,6 +101,12 @@
 
 <h2>Konfigurerer Geany</h2>
 
+<blockquote>
+	<p>
+		Dette afsnit er kun nødvendigt hvis du vælger at anvende Geany som IDE
+	</p>
+</blockquote>
+
 <p>Hvis du anvender Ubuntu og Mac skal du lave en mindre ændring når du starter geany op, for at du anvender Python 3. Opret et dokument der hedder <span class="inl_cmd">test.py</span>. Klik herefter på: <span class="bold">Build</span>  &#8594; <span class="bold">Set Build Commands</span> og sæt et 3'tal efter <span class="inl_cmd">python</span> i de to linier: Compile og Execute (se nedenfor).</p>
 
 <figure id="">
@@ -171,6 +177,10 @@
 
 <p>Fordelen ved at anvende IDLE er, at man kan bruge den som en meget effektiv lommeregner, lave mindre programmer og at man kan teste forskellige programmeringsfunktioner.</p>
 
+<p>Ved at klikke på en linie og trykke <kbd>ENTER</kbd> vil denne blive kopieret til den aktive linie.</p>
+
+<p>Man kan gå tilbage i sine kommandoer med <kbd>Alt</kbd>+<kbd>P</kbd> og frem med <kbd>Alt</kbd>+<kbd>N</kbd></p>
+
 <h2>IDLE som IDE</h2>
 
 <p>IDLE kan også bruges som IDE (Integrated Development Environment), hvilket vil sige at man egentlig ikke behøver andre programmer. Og til det brug vi skal anvende det til er IDLE faktisk rigeligt.</p>
@@ -206,46 +216,6 @@
 	<figcaption></figcaption>
 
 </figure>
-
-
-
-<p>Ved at klikke på en linie og trykke <kbd>ENTER</kbd> vil denne blive kopieret til den nuværende linie</p>
-
-<p>Man kan gå tilbage i sine kommandoer med <kbd>Alt</kbd>+<kbd>P</kbd> og frem med <kbd>Alt</kbd>+<kbd>N</kbd></p>
-
-<p>IDLE har også en del keyboard genveje</p>
-
-
-
-
-<h1>Ekstre biblioteker</h1>
-
-<p>Nogle gange har man brug for at hente ekstre funktionalitet ind i Python, som ikke kommer med som standard. Disse biblioteker installeres lidt forskelligt alt efter system. Herunder er det vist ved hjælp af biblioteket <span class="inl_cmd">sympy</span></p>
-
-<h2>Sympy - Ubuntu</h2>
-
-<p>I Ubuntu er der to muligheder. Enten at installere pakken <span class="inl_cmd">python3-sympy</span> eller at anvende <span class="inl_cmd">pip3</span>.</p>
-
-<p>Forskellen mellem de to metoder er, at <span class="inl_cmd">pip3</span> kun installere selve pakken grundpakken, men at <span class="inl_cmd">python3-pip</span> installere alle afhængigheder der kan tænkes. <span class="inl_cmd">python3-pip</span> fylder hos mig omkring 2 Gb. Af denne årsag anbefaler jeg <span class="inl_cmd">pip3</span></p>
-
-<code class="cmd">sudo apt install python3-pip</code>
-
-<code class="more_cmd">sudo pip install sympy</code>
-
-<h2>Sympy - Windows</h2>
-
-<p><span class="inl_cmd">pip3</span> er installeret som standard og her køres kommandoen:</p>
-
-<code class="cmd">pip3 sympy</code>
-
-<h2>Sympy - Mac</h2>
-
-<p><span class="inl_cmd">pip3</span> er installeret som standard og her køres kommandoen:</p>
-
-<code class="cmd">sudo pip3 sympy</code>
-
-
-
 
 <h1>Ressourcer på nettet</h1>
 
