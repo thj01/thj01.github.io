@@ -314,7 +314,7 @@ tj@tj-desktop:~$
 <ul class="fat_li none">
 	<li>Tilføj følgende linie i bunden af <span class="inl_cmd">/etc/apt/sources.list</span></li>
 	
-		<code class="cmd"># Webmin repository <br/>deb https://download.webmin.com/download/repository sarge contrib</code>
+		<code class="cmd">echo 'deb https://download.webmin.com/download/repository sarge contrib' | sudo tee -a /etc/apt/sources.list</code>
 	
 	<li>Tilføj GPG-nøgle</li>
 	
@@ -385,6 +385,246 @@ to run commands as root.
 <p>Nu er webmin installeret. Vi vil anvende webmin til at administrere vores server herfra:</p>
 
 <h1>SAMBA</h1>
+
+<p>Samba installeres med følgende kommando:</p>
+
+<code class="cmd">sudo apt install samba -y</code>
+
+<blockquote>
+
+	<p>Hvis du i løbet af guiden kommer til at lave fejl og har brug for at lave en helt ny installation skal du anvende følgende kommando. På den måde får du igen de oprindelige konfigurationsfiler.</p>
+
+	<code class="cmd">sudo apt purge samba samba-common</code>
+
+</blockquote>
+
+<h2>Sambabrugere</h2>
+
+<p>Sambabrugere administreres seperat fra brugerne på systemet, så de skal tilføjes, hvis man ønsker at ens delinger skal have beskyttet brugeradgang.</p>
+
+<p>Her tilføjer vi brugeren tj (erstat med din bruger)</p>
+
+<code class="cmd">smbpasswd -a tj</code>
+
+<pre class="black">tj@home:/srv$ sudo smbpasswd -a tj
+New SMB password:  			<span class="red">&larr; indtast samba-kodeord</span>
+Retype new SMB password:	<span class="red">&larr; gentag samba-kodeord</span>
+Added user tj.
+</pre>
+
+<p>Vi vælger allerede nu at tilføje denne bruger til en gruppe, så vi kan bruge det senere hvis vi vil give flere brugere adgang til samme ressource.</p>
+
+<p>Tilføj gruppen smbgroup</p>
+
+<code class="cmd">sudo addgroup smbgrp</code>
+
+<p>Tilføj brugeren til gruppen</p>
+
+<code class="cmd">sudo adduser tj smbgrp</code>
+
+
+<h2>Delinger</h2>
+
+<p>Her vil vi oprette to typer delinger. Delinger der er åben for alle og delinger der er brugerbegrænsede.</p>
+
+<table class="_">
+	<thead>
+		<tr>
+			<th>Mappe</th>
+			<th>Deling</th>
+			<th>Rettigheder</th>
+			<th>Beskrivelse</th>
+			<th>Gruppe</th>
+			<th>Placering</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Fælles</td>
+			<td>Åben</td>
+			<td>Læse/skrive</td>
+			<td>Til musik, billeder og film</td>
+			<td>Alle</td>
+			<td><span class="inl_cmd">/srv/media</span></td>
+		</tr>
+		<tr>
+			<td>Media</td>
+			<td>Åben</td>
+			<td>Læse</td>
+			<td>Til musik, billeder og film</td>
+			<td>Alle</td>
+			<td><span class="inl_cmd">/srv/media</span></td>
+		</tr>
+		<tr>
+			<td>Personlig mappe</td>
+			<td>Brugerbegrænset</td>
+			<td>Læse/skrive</td>
+			<td>Til brugerens private filer</td>
+			<td>Enkeltbrugere</td>
+			<td><span class="inl_cmd">/srv/tj</span></td>
+		</tr>
+		<tr>
+			<td>System</td>
+			<td>Gruppebegrænset</td>
+			<td>Læse/skrive</td>
+			<td>systembackup osv</td>
+			<td>Gruppe af brugere (smbgrp)</td>
+			<td><span class="inl_cmd">/srv/system</span></td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Læg mærke til at jeg har givet min egen bruger (<span class="inl_cmd">tj</span>) sin egen mappe. Den skal erstattes med dit brugernavn.</p>
+
+<h3>Opret mapper</h3>
+
+<code class="cmd">sudo mkdir -p /srv/media /srv/backup /srv/tj</code>
+
+<h3>Sæt rettigheder</h3>
+
+<p>Sæt rettigheder på fælles</p>
+
+<code class="cmd">sudo chown -R nobody:nogroup /srv/fælles</code>
+
+<code class="more_cmd">sudo chmod -R 775 /srv/fælles</code>
+
+
+<p>Sæt rettigheder på media</p>
+
+<code class="cmd">sudo chown -R root:nogroup /srv/media</code>
+
+<code class="more_cmd">sudo chmod -R 755 /srv/media</code>
+
+<p>Sæt rettigheder på tj</p>
+
+<code class="cmd">sudo chown -R tj:tj /srv/tj</code>
+
+<code class="more_cmd">sudo chmod -R 755 /srv/tj</code>
+
+<p>Sæt rettigheder på system</p>
+
+
+
+<code class="cmd">sudo chown -R root:smbgrp /srv/system</code>
+
+<code class="more_cmd">sudo chmod -R 755 /srv/system</code>
+
+<p>Vi kontrollerer at alt er sat korrekt op</p>
+
+<pre class="black">tj@home:/srv$ ls -al /srv
+total 36
+drwxr-xr-x  6 root   root     4096 May  5 14:36 .
+drwxr-xr-x 23 root   root     4096 May  5 13:11 ..
+drwxr-xr-x  2 nobody nogroup  4096 May  5 15:15 fælles
+drwx------  2 root   root    16384 May  5 11:22 lost+found
+drwxr-xr-x  2 nobody nogroup  4096 May  5 14:21 media
+drwxr-xr-x  2 root   smbgrp   4096 May  5 14:36 system
+drwxr-xr-x  2 tj     tj       4096 May  5 14:21 tj
+</pre>
+
+<h2>smb.conf</h2>
+
+<details>
+
+	<summary>Backup af smb.conf</summary>
+
+	<p>For at sikre os tager vi lige en backup af <span class="inl_cmd">smb.conf</span></p>
+	
+	<code class="cmd">sudo cp /etc/samba/smb.conf /etc/samba/smb.conf.backup</code>
+	
+	<p>Hvis vi senere laver fejl kan vi komme tilbage til udgangspunktet med kommandoen:</p>
+	
+	<code class="cmd">sudo cp /etc/samba/smb.conf.backup /etc/samba/smb.conf</code>
+
+</details>
+
+<h3>Generel konfiguration</h3>
+
+<p>Indsæt følgende i bunden af filen for at lave den overordnede kjonfiguration:</p>
+
+<code class="cmd">[global]
+workgroup = WORKGROUP	
+server string = Samba Server %v
+netbios name = ubuntu
+security = user
+map to guest = bad user
+dns proxy = no</code>
+
+<h3>Konfigurer delinger</h3>
+
+<p>Jeg har i denne guide valgt 4 grundlæggende delingsformer, som er praktiske at kende til på en NAS. Brugere kan oprettes ved hjælp af deres home mappe i systemet, men det vil kræve ekstra administration.</p>
+
+<p>De er sat op på følgende måde:</p>
+
+<table class="_">
+	<thead>
+		<tr>
+			<th>Fælles (Alle)</th>
+			<th>Media (Alle)</th>
+			<th>System (Gruppe)</th>
+			<th>tj (bruger)</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Alle har skrive/læse adgang</td>
+			<td>Alle har læse adgang</td>
+			<td>Gruppe har skrive/læse adgang</td>
+			<td>Bruger har skrive/læse adgang</td>
+		</tr>
+	</tbody>
+</table>
+
+
+<span class="afsnit">Konfigurer Fælles</span>
+
+<p>Denne mappe skal være tilgængelig for alle på nettet uden kodeord.</p>
+
+<code class="cmd">[fælles]
+path = /srv/fælles
+browsable =yes
+writable = yes
+guest ok = yes
+read only = no
+public = yes
+force user = nobody</code>
+
+<span class="afsnit">Konfigurer Media</span>
+
+<code class="cmd">[media]
+path = /srv/media
+browsable =yes
+writable = yes
+guest ok = yes
+read only = no
+public = yes
+force user = nobody
+</code>
+
+<span class="afsnit">Konfigurer System</span>
+
+<code class="cmd">[system]
+path = /srv/system
+browsable =yes
+writable = yes
+guest ok = no
+read only = no
+</code>
+
+<span class="afsnit">Konfigurer bruger</span>
+
+<code class="cmd">[tj]
+path = /srv/tj
+browsable =yes
+writable = yes
+guest ok = no
+read only = no</code>
+
+<h3>Genstart Samba</h3>
+
+<code class="cmd">sudo service smbd restart</code>
+
+
 
 <h1>FTP</h1>
 
