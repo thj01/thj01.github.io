@@ -332,7 +332,7 @@ tj@tj-desktop:~$
 	
 </ul>
 
-<h3>Første start af Webmin</h3>
+<h2>Første start af Webmin</h2>
 
 <p>Læg mærke til følgende i output fra installtionen:</p>
 
@@ -390,14 +390,15 @@ to run commands as root.
 
 <code class="cmd">sudo apt install samba -y</code>
 
-<blockquote>
+<details>
+
+	<summary>Hvis du laver fejl</summary>
 
 	<p>Hvis du i løbet af guiden kommer til at lave fejl og har brug for at lave en helt ny installation skal du anvende følgende kommando. På den måde får du igen de oprindelige konfigurationsfiler.</p>
 
 	<code class="cmd">sudo apt purge samba samba-common</code>
 
-</blockquote>
-
+</details>
 <h2>Sambabrugere</h2>
 
 <p>Sambabrugere administreres seperat fra brugerne på systemet, så de skal tilføjes, hvis man ønsker at ens delinger skal have beskyttet brugeradgang.</p>
@@ -445,7 +446,7 @@ Added user tj.
 			<td>Læse/skrive</td>
 			<td>Til musik, billeder og film</td>
 			<td>Alle</td>
-			<td><span class="inl_cmd">/srv/media</span></td>
+			<td><span class="inl_cmd">/srv/fælles</span></td>
 		</tr>
 		<tr>
 			<td>Media</td>
@@ -456,20 +457,20 @@ Added user tj.
 			<td><span class="inl_cmd">/srv/media</span></td>
 		</tr>
 		<tr>
-			<td>Personlig mappe</td>
-			<td>Brugerbegrænset</td>
-			<td>Læse/skrive</td>
-			<td>Til brugerens private filer</td>
-			<td>Enkeltbrugere</td>
-			<td><span class="inl_cmd">/srv/tj</span></td>
-		</tr>
-		<tr>
 			<td>System</td>
 			<td>Gruppebegrænset</td>
 			<td>Læse/skrive</td>
 			<td>systembackup osv</td>
 			<td>Gruppe af brugere (smbgrp)</td>
 			<td><span class="inl_cmd">/srv/system</span></td>
+		</tr>
+		<tr>
+			<td>Personlig mappe</td>
+			<td>Brugerbegrænset</td>
+			<td>Læse/skrive</td>
+			<td>Til brugerens private filer</td>
+			<td>Enkeltbrugere</td>
+			<td><span class="inl_cmd">/srv/tj</span></td>
 		</tr>
 	</tbody>
 </table>
@@ -495,19 +496,20 @@ Added user tj.
 
 <code class="more_cmd">sudo chmod -R 755 /srv/media</code>
 
+<p>Sæt rettigheder på system</p>
+
+<code class="cmd">sudo chown -R root:smbgrp /srv/system</code>
+
+<code class="more_cmd">sudo chmod -R 775 /srv/system</code>
+
+
+
 <p>Sæt rettigheder på tj</p>
 
 <code class="cmd">sudo chown -R tj:tj /srv/tj</code>
 
 <code class="more_cmd">sudo chmod -R 755 /srv/tj</code>
 
-<p>Sæt rettigheder på system</p>
-
-
-
-<code class="cmd">sudo chown -R root:smbgrp /srv/system</code>
-
-<code class="more_cmd">sudo chmod -R 755 /srv/system</code>
 
 <p>Vi kontrollerer at alt er sat korrekt op</p>
 
@@ -543,9 +545,9 @@ drwxr-xr-x  2 tj     tj       4096 May  5 14:21 tj
 <p>Indsæt følgende i bunden af filen for at lave den overordnede kjonfiguration:</p>
 
 <code class="cmd">[global]
-workgroup = WORKGROUP	
+workgroup = NAS	
 server string = Samba Server %v
-netbios name = ubuntu
+netbios name = NAS
 security = user
 map to guest = bad user
 dns proxy = no</code>
@@ -622,16 +624,18 @@ read only = no</code>
 
 <h3>Genstart Samba</h3>
 
-<code class="cmd">sudo service smbd restart</code>
+<code class="cmd">sudo systemctl restart smbd nmbd</code>
 
-
-
+<!--
 <h1>FTP</h1>
 
 <h1>Owncloud</h1>
+-->
 
-<h1>Webserver</h1>
-	
+
+
+
+
 </div><!-- end: col-md-9 -->
 
 <footer>
