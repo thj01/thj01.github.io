@@ -390,16 +390,112 @@ to run commands as root.
 
 <code class="cmd">sudo apt install samba -y</code>
 
+<h2>Backup</h2>
+
+<p>Er du ikke vant til at arbejde med konfigurationsfiler, så bør du lave en backup af konfigurationsfilen (<span class="inl_cmd">smb.conf</span>). Det gør du med følgende kommando.</p>
+
+	
+<code class="cmd">sudo cp /etc/samba/smb.conf /etc/samba/smb.conf.backup</code>
+	
+<p>Hvis vi senere laver fejl kan vi komme tilbage til udgangspunktet med kommandoen:</p>
+	
+<code class="cmd">sudo cp /etc/samba/smb.conf.backup /etc/samba/smb.conf</code>
+
+
 <details>
 
-	<summary>Hvis du laver fejl</summary>
+	<summary>Hvis du mister overblikket</summary>
 
-	<p>Hvis du i løbet af guiden kommer til at lave fejl og har brug for at lave en helt ny installation skal du anvende følgende kommando. På den måde får du igen de oprindelige konfigurationsfiler.</p>
+	<p>Hvis du i løbet af guiden kommer til at lave fejl og har brug for at lave en helt ny installation skal du anvende følgende kommando.</p>
 
 	<code class="cmd">sudo apt purge samba samba-common</code>
 
+	<p>På den måde får du igen de oprindelige konfigurationsfiler. når du geninstallerer.</p>
+
 </details>
+
+<h2>Generel konfiguration</h2>
+
+<p>Indsæt følgende i bunden af filen for at lave den overordnede kjonfiguration:</p>
+
+<code class="cmd">[global]
+workgroup = NAS	
+server string = Samba Server %v
+netbios name = NAS
+security = user
+map to guest = bad user
+dns proxy = no</code>
+
+<p>Workgroup navnet er det navn som din NAS-server bliver genkendt med i resten af systemet.</p>
+
+<p>Genstart SAMBA</p>
+
+<code class="cmd">sudo systemctl restart smbd nmbd</code>
+
 <h2>Sambabrugere</h2>
+
+<p>SAMBA er en tjeneste der kører på Linux og brugere på systemet skal tilføjes til SAMBA, for at de kan anvende tjenestenen. I dette afsnit skal vi lære at:</p>
+
+<ul class="_">
+	<li>Tilføje brugere til NAS-serveren</li>
+	<li>Tilføje grupper til NAS-serveren</li>
+	<li>Tilføje brugere til SAMBA</li>
+</ul>
+
+<h3>Tilføj brugere (NAS)</h3>
+
+<p>Brugere tilføjes med følgende kommando:</p>
+
+<code class="cmd">sudo adduser *brugernavn*</code>
+
+<p>Her er et eksempel med forklaringer til:</p>
+
+<pre class="black">tj@nas:~$ sudo adduser test
+[sudo] password for tj: <span class="red">&larr; indtast dit root password og tast <kbd>Enter</kbd></span>
+Adding user `test' ...
+Adding new group `test' (1006) ...
+Adding new user `test' (1001) with group `test' ...
+Creating home directory `/home/test' ...
+Copying files from `/etc/skel' ...
+Enter new UNIX password: <span class="red">&larr; indtast ny brugers password og tast <kbd>Enter</kbd></span> 
+Retype new UNIX password: <span class="red">&larr; gentag ny brugers password og tast <kbd>Enter</kbd></span>  
+passwd: password updated successfully
+Changing the user information for test
+Enter the new value, or press ENTER for the default
+	Full Name []: <span class="red">&larr; Tast <kbd>Enter</kbd></span> 
+	Room Number []: <span class="red">&larr; Tast <kbd>Enter</kbd></span> 
+	Work Phone []: <span class="red">&larr; Tast <kbd>Enter</kbd></span> 
+	Home Phone []: <span class="red">&larr; Tast <kbd>Enter</kbd></span> 
+	Other []: <span class="red">&larr; Tast <kbd>Enter</kbd></span> 
+Is the information correct? [Y/n] y <span class="red">&larr; Tast <kbd>y</kbd></span> 
+</pre>
+
+<h3>Tilføj grupper (NAS)</h3>
+
+<p>Hvis man vil have at flere brugere skal have samme rettigheder til forskellige ressourcer på NAS-serveren sætter man dem sammen i grupper.</p>
+
+<p>Grupper oprettes med følgende kommando:</p>
+
+<code class="cmd">sudo addgroup *gruppenavn*</code>
+
+<p>Brugere tilføjes med kommandown:</p>
+
+<code class="cmd">sudo adduser *brugernavn* *gruppenavn*</code>
+
+<p>Herunder oprettes gruppen <span class="inl_cmd">smbgrp</span> og vil tilføjer vores oprindelige bruger til den (her  tj).</p>
+
+<code class="cmd">sudo adduser tj</code>
+
+<code class="more_cmd">sudo adduser tj smbgrp</code>
+
+<p>Vi kan controllere om brugeren tj er i gruppen ved hjælp af følgende kommando:</p>
+
+<pre class="black">tj@nas:~$ cat /etc/group | grep smbgrp
+<span class="red">smbgrp</span>:x:1005:tj <span class="red">&larr; Gruppens brugere står til sidst</span>
+</pre>
+
+
+<h3>Tilføj brugere (SAMBA)</h3>
 
 <p>Sambabrugere administreres seperat fra brugerne på systemet, så de skal tilføjes, hvis man ønsker at ens delinger skal have beskyttet brugeradgang.</p>
 
@@ -413,69 +509,94 @@ Retype new SMB password:	<span class="red">&larr; gentag samba-kodeord</span>
 Added user tj.
 </pre>
 
-<p>Vi vælger allerede nu at tilføje denne bruger til en gruppe, så vi kan bruge det senere hvis vi vil give flere brugere adgang til samme ressource.</p>
+<p>Hvis du senere har brug for at ændre brugerens password bruges samme kommando.</p>
 
-<p>Tilføj gruppen smbgroup</p>
+<span class="afsnit">Intet password</span>
 
-<code class="cmd">sudo addgroup smbgrp</code>
+<p>Hvis brugeren ikke skal have noget password bruger du kommandoen:</p>
 
-<p>Tilføj brugeren til gruppen</p>
+<code class="cmd">smbpasswd -n test</code>
 
-<code class="cmd">sudo adduser tj smbgrp</code>
+<h2>Dele home på NAS-serveren</h2>
+
+<p>På NAS-serveren har alle brugere en home mappe, og den kan deles ved hjælp af SAMBA ved at indsætte følgende i bunden af <span class="inl_cmd">smb.conf</span></p>
+
+<code class="cmd">[homes]
+comment = Bruger mapper   
+browseable = yes
+read only = no
+create mask = 0700
+directory mask = 0700
+valid users = %S
+</code>
+
+
+
+
+<p>Genstart SAMBA</p>
+
+<code class="cmd">sudo systemctl restart smbd nmbd</code>
 
 
 <h2>Delinger</h2>
 
 <p>Her vil vi oprette to typer delinger. Delinger der er åben for alle og delinger der er brugerbegrænsede.</p>
 
-<table class="_">
+<table class="centreret">
 	<thead>
 		<tr>
 			<th>Mappe</th>
-			<th>Deling</th>
-			<th>Rettigheder</th>
-			<th>Beskrivelse</th>
+			<th>Ejer</th>
 			<th>Gruppe</th>
+			<th>Alle</th>
+			<th>Beskrivelse</th>
 			<th>Placering</th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr>
 			<td>Fælles</td>
-			<td>Åben</td>
 			<td>Læse/skrive</td>
-			<td>Til musik, billeder og film</td>
-			<td>Alle</td>
+			<td>Læse/skrive</td>
+			<td>Læse/skrive</td>
+			<td>Til forefaldende filer</td>
 			<td><span class="inl_cmd">/srv/fælles</span></td>
 		</tr>
 		<tr>
 			<td>Media</td>
-			<td>Åben</td>
+			<td>Læse/skrive</td>
+			<td>Læse</td>
 			<td>Læse</td>
 			<td>Til musik, billeder og film</td>
-			<td>Alle</td>
 			<td><span class="inl_cmd">/srv/media</span></td>
 		</tr>
 		<tr>
 			<td>System</td>
-			<td>Gruppebegrænset</td>
 			<td>Læse/skrive</td>
-			<td>systembackup osv</td>
-			<td>Gruppe af brugere (smbgrp)</td>
+			<td>Læse/skrive</td>
+			<td>-</td>
+			<td>Systembackup osv</td>
 			<td><span class="inl_cmd">/srv/system</span></td>
 		</tr>
 		<tr>
-			<td>Personlig mappe</td>
-			<td>Brugerbegrænset</td>
+			<td>Privat</td>
 			<td>Læse/skrive</td>
-			<td>Til brugerens private filer</td>
-			<td>Enkeltbrugere</td>
-			<td><span class="inl_cmd">/srv/tj</span></td>
+			<td>-</td>
+			<td>-</td>
+			<td>Private filer</td>
+			<td><span class="inl_cmd">/srv/privat</span></td>
 		</tr>
 	</tbody>
 </table>
 
 <p>Læg mærke til at jeg har givet min egen bruger (<span class="inl_cmd">tj</span>) sin egen mappe. Den skal erstattes med dit brugernavn.</p>
+
+<blockquote>
+	
+	<p>Her er der vist nogle forskellige setups, men i praksis vil 
+		
+	</p>
+</blockquote>
 
 <h3>Opret mapper</h3>
 
@@ -508,7 +629,7 @@ Added user tj.
 
 <code class="cmd">sudo chown -R tj:tj /srv/tj</code>
 
-<code class="more_cmd">sudo chmod -R 755 /srv/tj</code>
+<code class="more_cmd">sudo chmod -R 700 /srv/tj</code>
 
 
 <p>Vi kontrollerer at alt er sat korrekt op</p>
@@ -524,33 +645,9 @@ drwxr-xr-x  2 root   smbgrp   4096 May  5 14:36 system
 drwxr-xr-x  2 tj     tj       4096 May  5 14:21 tj
 </pre>
 
-<h2>smb.conf</h2>
 
-<details>
 
-	<summary>Backup af smb.conf</summary>
 
-	<p>For at sikre os tager vi lige en backup af <span class="inl_cmd">smb.conf</span></p>
-	
-	<code class="cmd">sudo cp /etc/samba/smb.conf /etc/samba/smb.conf.backup</code>
-	
-	<p>Hvis vi senere laver fejl kan vi komme tilbage til udgangspunktet med kommandoen:</p>
-	
-	<code class="cmd">sudo cp /etc/samba/smb.conf.backup /etc/samba/smb.conf</code>
-
-</details>
-
-<h3>Generel konfiguration</h3>
-
-<p>Indsæt følgende i bunden af filen for at lave den overordnede kjonfiguration:</p>
-
-<code class="cmd">[global]
-workgroup = NAS	
-server string = Samba Server %v
-netbios name = NAS
-security = user
-map to guest = bad user
-dns proxy = no</code>
 
 <h3>Konfigurer delinger</h3>
 
@@ -564,7 +661,7 @@ dns proxy = no</code>
 			<th>Fælles (Alle)</th>
 			<th>Media (Alle)</th>
 			<th>System (Gruppe)</th>
-			<th>tj (bruger)</th>
+			<th>Privat</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -615,8 +712,8 @@ read only = no
 
 <span class="afsnit">Konfigurer bruger</span>
 
-<code class="cmd">[tj]
-path = /srv/tj
+<code class="cmd">[privat]
+path = /srv/privat
 browsable =yes
 writable = yes
 guest ok = no
@@ -625,6 +722,11 @@ read only = no</code>
 <h3>Genstart Samba</h3>
 
 <code class="cmd">sudo systemctl restart smbd nmbd</code>
+
+<h1>Flere brugere</h1>
+
+<p>Hvis man ønsker flere brugere der skal anvende NAS'en</p>
+
 
 <!--
 <h1>FTP</h1>
