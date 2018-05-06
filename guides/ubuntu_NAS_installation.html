@@ -73,7 +73,7 @@
 	</tbody>
 </table>
 
-<p>Til Guiden har jeg anvendt <a href="http://releases.ubuntu.com/16.04/ubuntu-16.04.3-server-amd64.iso" download >Ubuntuserver 16.04.3</a></p>
+<p>Til Guiden har jeg anvendt <a href="http://releases.ubuntu.com/18.04/ubuntu-18.04-live-server-amd64.iso" download >Ubuntuserver 18.04 live</a></p>
 
 <h1>Brænding af USB</h1>
 
@@ -95,46 +95,24 @@
 
 <h1>Start installation</h1>
 
-<details>
+<p>Installationen af Ubuntu-server foregår ved hjælp af tasteturet.</p>
 
-	<summary>Anvendelse af installationsprogrammet</summary>
+<p>Man skifter mellem menupunkterne ved hjælp af <kbd>Tab</kbd> (næste) eller <kbd>Shift</kbd>+<kbd>Tab</kbd> (tilbage). Nogle gange kan man anvende piletasterne.</p>
 
-	<p>Installationsprogrammet anvendes ved hjælp af piletaster til at navigere med.</p>
-	
-	<p>Hvis du ikke ændrer i forvalgene kan du nøjes med at trykke på <kbd>Enter</kbd></p>
-	
-	<p>Har du ændret på forvalgene og har trykket dig ned på nogle af "knapperne" i bunden kan du også bruge <kbd>Mellemrum</kbd> til at vælge med.</p>
-	
-	
+<p>Når man står på den mulighed man vil aktivere, trykker man enten på <kbd>Mellemrum</kbd> eller <kbd>Enter</kbd>.</p>
 
-</details>
+<p>Vil man fortryde trykker man på <kbd>Esc</kbd>.</p>
+
+<p>Menuer med <span class="inl_cmd">(+)</span> åbner undermenuer.</p>
 
 
-<p>Vælg installationssprog</p>
+
+
+<h2>Installationssprog</h2>
 
 <figure id="">
 
-	<img class="p90" src="images/VirtualBox_Ubuntu NAS_01.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-
-<p>Vælg installationsmetode. Her vælger vi <span class="inl_cmd">Install Ubuntu Server with the HWE kernel</span>. En HWE kernel har bl.a. den fordel at den har en rullende opdatering af Linuxkernen.</p>
-
-<figure id="">
-
-	<img class="p90" src="images/VirtualBox_Ubuntu NAS_02.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-
-<p>En advarsel om at oversættelsen af installationsprogrammet ikke er komplet vælg <span class="terminal_valg">Ja</span> </p>
-
-<figure id="">
-
-	<img class="p90" src="images/VirtualBox_Ubuntu NAS_03.png" alt="" title="" />
+	<img class="p90" src="images/VB_ubuntu1804_nas_01.png" alt="_" title="_" />
 
 	<figcaption></figcaption>
 
@@ -142,433 +120,145 @@
 
 <h1>Sprog og lokation</h1>
 
-<p>Ved de næste 4 vinduer skal du vælge sprog. Hvis du vil have alt på dansk trykker du bare <kbd>Enter</kbd> ved de fire næste vinduer. Ønsker du andre muligheder vælger du dem.</p>
+<p>Her skal du vælge keyboard layout</p>
 
-<details>
+<figure id="">
 
-	<summary>Skærmbilleder hvis du gerne vil se dem</summary>
+	<img class="p90" src="images/VB_ubuntu1804_nas_02.png" alt="_" title="_" />
 
-		<figure id="">
+	<figcaption></figcaption>
 
-			<img class="p90" src="images/VirtualBox_Ubuntu NAS_04.png" alt="" title="" />
+</figure>
 
-			<figcaption></figcaption>
+<p>Vælg layout, og anvend "Danish".</p>
 
-		</figure>
-		<figure id="">
+<figure id="">
 
-			<img class="p90" src="images/VirtualBox_Ubuntu NAS_05.png" alt="" title="" />
+	<img class="p90" src="images/VB_ubuntu1804_nas_03.png" alt="_" title="_" />
 
-			<figcaption></figcaption>
+	<figcaption></figcaption>
 
-		</figure>
-		<figure id="">
+</figure>
 
-			<img class="p90" src="images/VirtualBox_Ubuntu NAS_06.png" alt="" title="" />
+<p>Kontroller at der står "Danish" to gange og vælg <button type="_">Done</button></p>
 
-			<figcaption></figcaption>
+<figure id="">
 
-		</figure>
-		<figure id="">
+	<img class="p90" src="images/VB_ubuntu1804_nas_04.png" alt="_" title="_" />
 
-			<img class="p90" src="images/VirtualBox_Ubuntu NAS_07.png" alt="" title="" />
+	<figcaption></figcaption>
 
-			<figcaption></figcaption>
+</figure>
 
-		</figure>
+<p>Fortsæt installationen ved at vælge : Install Ubuntu</p>
 
-</details>
+<figure id="">
+
+	<img class="p90" src="images/VB_ubuntu1804_nas_05.png" alt="_" title="_" />
+
+	<figcaption></figcaption>
+
+</figure>
 
 <h1>Netværk</h1>
 
-<p>I denne guide lader vi Ubuntu selv konfigurere netværket ved hjælp af Routeren. Det får du muligheder for at ændre til sidst i denne guide.</p>
-
+<p>Netværksguiden er ret omfattende, men fremgangsmåde er som ovenfor. Vælg dit netværkskort - her <span class="inl_cmd">enp0s3</span> og tryk <kbd>Enter</kbd></p>
 
 <figure id="">
 
-	<img class="p90" src="images/VirtualBox_Ubuntu NAS_08.png" alt="" title="" />
+	<img class="p90" src="images/VB_ubuntu1804_nas_06.png" alt="_" title="_" />
 
 	<figcaption></figcaption>
 
 </figure>
 
-<h1>Bruger</h1>
+<p>Marker "Use a static IPv4 configuration" og tryk <kbd>Enter</kbd></p>
 
-<p>Under opsætningen af din bruger skal du tage stilling til følgende:</p>
 
-<ul class="none fat_li">
-	<li>Dit fulde navn</li>
-	
-		<p>... som skrives korrekt med store og små bogstaver</p>
-	
-	<li>Dit brugernavn</li>
-	
-		<p>... som skrives med små bogstaver (standard) f.eks. <span class="inl_cmd">tj</span></p>
-	
-	<li>Et password</li>
-	
-		<p>... sørg for at lave et godt et, som du kan huske, da det skal bruges når du skal ændre på konfigurationen eller installere programmer</p>
-	
-	<li>Bekræfte dit password</li>
-	
-	
-	<li>Hvis du har anvendt et "svagt" password skal du sige god for det</li>
-	
-		<p>... sig ikke at du ikke blev advaret ;)</p>
-	
-	
-	<li>Sige om du vil have dit hjemme katalog krypteret</li>
-	
-		<p>... ekstra privathed/sikkerhed, hvis der er andre brugere på computeren med administratorrettigheder</p>
-	
-	
-	<li>Bekræfte din tidszone</li>
+<figure id="">
+
+	<img class="p90" src="images/VB_ubuntu1804_nas_07.png" alt="_" title="_" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Her skal du indtaste dine netværksoplysninger.</p>
+
+<figure id="">
+
+	<img class="p90" src="images/VB_ubuntu1804_nas_08.png" alt="_" title="_" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>I mit tilfælde er det:</p>
+
+<ul class="none">
+	<li><b>Subnet: </b>192.168.0.0/24 (netværks adressen)</li>
+	<li><b>Address: </b>192.168.0.20 (computerens adresse)</li>
+	<li><b>Gateway: </b>192.168.0.1 (routerens adresse)</li>
+	<li><b>Nameservers: </b>8.8.8.8 , 8.8.4.4 (googles DNS'er)</li>
 </ul>
 
-<details>
-
-	<summary>Skærmbilleder af brugeropsætning</summary>
-
-		<figure id="">
-
-			<img class="p90" src="images/VirtualBox_Ubuntu NAS_09.png" alt="" title="" />
-
-			<figcaption></figcaption>
-
-		</figure>
-		<figure id="">
-
-			<img class="p90" src="images/VirtualBox_Ubuntu NAS_10.png" alt="" title="" />
-
-			<figcaption></figcaption>
-
-		</figure>
-		<figure id="">
-
-			<img class="p90" src="images/VirtualBox_Ubuntu NAS_11.png" alt="" title="" />
-
-			<figcaption></figcaption>
-
-		</figure>
-		<figure id="">
-
-			<img class="p90" src="images/VirtualBox_Ubuntu NAS_12.png" alt="" title="" />
-
-			<figcaption></figcaption>
-
-		</figure>
-		<figure id="">
-
-			<img class="p90" src="images/VirtualBox_Ubuntu NAS_13.png" alt="" title="" />
-
-			<figcaption></figcaption>
-
-		</figure>
-		<figure id="">
-
-			<img class="p90" src="images/VirtualBox_Ubuntu NAS_14.png" alt="" title="" />
-
-			<figcaption></figcaption>
-
-		</figure>
-		<figure id="">
-
-			<img class="p90" src="images/VirtualBox_Ubuntu NAS_15.png" alt="" title="" />
-
-			<figcaption></figcaption>
-
-		</figure>
-
-</details>
-
-<h1>Harddiske</h1>
+<p>Gå videre ved at vælge <button type="_">Save</button>. Kontroller at Ubuntu angiver den rigtige adresse og vælg <button type="_">Done</button>.</p>
 
 <figure id="">
 
-	<img class="p90" src="images/VirtualBox_Ubuntu NAS_16.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-<figure id="">
-
-	<img class="p90" src="images/VirtualBox_Ubuntu NAS_17.png" alt="" title="" />
+	<img class="p90" src="images/VB_ubuntu1804_nas_09.png" alt="_" title="_" />
 
 	<figcaption></figcaption>
 
 </figure>
 
-<h2>Partitionstabel</h2>
+<p>Kontroller endnu engang og vælg <button type="_">Done</button>. VI anvender ikke en proxy, så her trykker vi blot <kbd>Enter</kbd> for at komme videre.</p>
 
 <figure id="">
 
-	<img class="p90" src="images/VirtualBox_Ubuntu NAS_18.png" alt="" title="" />
+	<img class="p90" src="images/VB_ubuntu1804_nas_10.png" alt="_" title="_" />
 
 	<figcaption></figcaption>
 
 </figure>
 
-<h2>Systemdrev</h2>
+<h1>Opsætning af harddisk</h1>
+
+<p>I dette setup laver vi et simpelt harddisk setup. Vælg <button type="_">Use An Entire Disk</button>.</p>
 
 <figure id="">
 
-	<img class="p90" src="images/VirtualBox_Ubuntu NAS_19.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-<figure id="">
-
-	<img class="p90" src="images/VirtualBox_Ubuntu NAS_20.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-<figure id="">
-
-	<img class="p90" src="images/VirtualBox_Ubuntu NAS_21.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-<figure id="">
-
-	<img class="p90" src="images/VirtualBox_Ubuntu NAS_22.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-<figure id="">
-
-	<img class="p90" src="images/VirtualBox_Ubuntu NAS_23.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-<figure id="">
-
-	<img class="p90" src="images/VirtualBox_Ubuntu NAS_24.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-<figure id="">
-
-	<img class="p90" src="images/VirtualBox_Ubuntu NAS_25.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-<figure id="">
-
-	<img class="p90" src="images/VirtualBox_Ubuntu NAS_26.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-<figure id="">
-
-	<img class="p90" src="images/VirtualBox_Ubuntu NAS_27.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-<figure id="">
-
-	<img class="p90" src="images/VirtualBox_Ubuntu NAS_28.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-<figure id="">
-
-	<img class="p90" src="images/VirtualBox_Ubuntu NAS_29.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-<figure id="">
-
-	<img class="p90" src="images/VirtualBox_Ubuntu NAS_30.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-<figure id="">
-
-	<img class="p90" src="images/VirtualBox_Ubuntu NAS_31.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-<figure id="">
-
-	<img class="p90" src="images/VirtualBox_Ubuntu NAS_32.png" alt="" title="" />
+	<img class="p90" src="images/VB_ubuntu1804_nas_11.png" alt="_" title="_" />
 
 	<figcaption></figcaption>
 
 </figure>
 
-<h2>RAID 1 opsætning</h2>
-
-<details>
-
-	<summary>Oprette partitionstabel</summary>
-
-
-		<figure id="">
-
-			<img class="p90" src="images/VirtualBox_Ubuntu NAS_34.png" alt="" title="" />
-
-			<figcaption></figcaption>
-
-		</figure>
-		<figure id="">
-
-			<img class="p90" src="images/VirtualBox_Ubuntu NAS_35.png" alt="" title="" />
-
-			<figcaption></figcaption>
-
-		</figure>
-		<figure id="">
-
-			<img class="p90" src="images/VirtualBox_Ubuntu NAS_36.png" alt="" title="" />
-
-			<figcaption></figcaption>
-
-		</figure>
-		<figure id="">
-
-			<img class="p90" src="images/VirtualBox_Ubuntu NAS_37.png" alt="" title="" />
-
-			<figcaption></figcaption>
-
-		</figure>
-</details>
-
-
+<p>Vælg den første harddisk (systemdisken)</p>
 
 <figure id="">
 
-	<img class="p90" src="images/VirtualBox_Ubuntu NAS_38.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-<figure id="">
-
-	<img class="p90" src="images/VirtualBox_Ubuntu NAS_39.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-<figure id="">
-
-	<img class="p90" src="images/VirtualBox_Ubuntu NAS_40.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-<figure id="">
-
-	<img class="p90" src="images/VirtualBox_Ubuntu NAS_41.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-<figure id="">
-
-	<img class="p90" src="images/VirtualBox_Ubuntu NAS_42.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-<figure id="">
-
-	<img class="p90" src="images/VirtualBox_Ubuntu NAS_43.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-<figure id="">
-
-	<img class="p90" src="images/VirtualBox_Ubuntu NAS_44.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-<figure id="">
-
-	<img class="p90" src="images/VirtualBox_Ubuntu NAS_45.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-<figure id="">
-
-	<img class="p90" src="images/VirtualBox_Ubuntu NAS_46.png" alt="" title="" />
+	<img class="p90" src="images/VB_ubuntu1804_nas_12.png" alt="_" title="_" />
 
 	<figcaption></figcaption>
 
 </figure>
 
-<h2>Partitioner RAID</h2>
+<p>Vi følger standardindsstillingerne så vi vælger <button type="_">Done</button>:</p>
 
 <figure id="">
 
-	<img class="p90" src="images/VirtualBox_Ubuntu NAS_47.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-<figure id="">
-
-	<img class="p90" src="images/VirtualBox_Ubuntu NAS_48.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-<figure id="">
-
-	<img class="p90" src="images/VirtualBox_Ubuntu NAS_49.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-<figure id="">
-
-	<img class="p90" src="images/VirtualBox_Ubuntu NAS_50.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-<figure id="">
-
-	<img class="p90" src="images/VirtualBox_Ubuntu NAS_51.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-<figure id="">
-
-	<img class="p90" src="images/VirtualBox_Ubuntu NAS_52.png" alt="" title="" />
+	<img class="p90" src="images/VB_ubuntu1804_nas_13.png" alt="_" title="_" />
 
 	<figcaption></figcaption>
 
 </figure>
 
-<h2>Skriv ændringer</h2>
+<p>Når vu trykker <button type="_">Done</button>, kommer der en advarsel om at alt bliver slettet hvis vi fortsætter. Og da vi er ved at installere systemet er det som det skal være. Vælg <button type="_">Continue</button>.</p>
 
 <figure id="">
 
-	<img class="p90" src="images/VirtualBox_Ubuntu NAS_53.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-<figure id="">
-
-	<img class="p90" src="images/VirtualBox_Ubuntu NAS_54.png" alt="" title="" />
+	<img class="p90" src="images/VB_ubuntu1804_nas_14.png" alt="_" title="_" />
 
 	<figcaption></figcaption>
 
@@ -576,256 +266,75 @@
 
 <h1>Afslut installationen</h1>
 
+<p>Indtast informationer om dig selv</p>
+
 <figure id="">
 
-	<img class="p90" src="images/VirtualBox_Ubuntu NAS_55.png" alt="" title="" />
+	<img class="p90" src="images/VB_ubuntu1804_nas_15.png" alt="_" title="_" />
 
 	<figcaption></figcaption>
 
 </figure>
+
+<p>Vigtigt:</p>
+
+<ul class="none">
+	<li>Serverens navn skal være: nas</li>
+	<li>Vælg et brugerord der består af dine initialer med små bogstaver</li>
+	<li>Din bruger er den du skal bruge til at administrere systemet med, så kodeordet skal være godt.</li>
+	<li>Det eneste felt der ikke skal stå noget i er <span class="inl_cmd">"Import SSH identity"</span></li>
+</ul>
+
+<p>Vælg <button type="_">Done</button>, hvorefter installationen går igang.</p>
+
 <figure id="">
 
-	<img class="p90" src="images/VirtualBox_Ubuntu NAS_56.png" alt="" title="" />
+	<img class="p90" src="images/VB_ubuntu1804_nas_16.png" alt="_" title="_" />
 
 	<figcaption></figcaption>
 
 </figure>
+
+<p>Når installationen er færdig står der <span class="inl_cmd">Finished Install!</span> øverst og du kan vælge <button type="_">Reboot Now</button></p>
+
 <figure id="">
 
-	<img class="p90" src="images/VirtualBox_Ubuntu NAS_57.png" alt="" title="" />
+	<img class="p90" src="images/VB_ubuntu1804_nas_17.png" alt="_" title="_" />
 
 	<figcaption></figcaption>
 
 </figure>
-<figure id="">
 
-	<img class="p90" src="images/VirtualBox_Ubuntu NAS_58.png" alt="" title="" />
+<p>Maskinen lukker nu ned og beder dig om at fjerne boot-mediet.</p>
 
-	<figcaption></figcaption>
+<p>Done</p>
 
-</figure>
-<figure id="">
 
-	<img class="p90" src="images/VirtualBox_Ubuntu NAS_59.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-<figure id="">
-
-	<img class="p90" src="images/VirtualBox_Ubuntu NAS_60.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
 
 <h1>Første start</h1>
 
+<p>Når ubuntu starter op skal du logge ind. Indtast dit brugernavn samt password. Læg mærke til at du ikke kan se dine tegn når du taster password ind.</p>
+
 <figure id="">
 
-	<img class="p90" src="images/VirtualBox_Ubuntu NAS_61.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-<figure id="">
-
-	<img class="p90" src="images/VirtualBox_Ubuntu NAS_62.png" alt="" title="" />
+	<img class="p90" src="images/VB_ubuntu1804_nas_18.png" alt="_" title="_" />
 
 	<figcaption></figcaption>
 
 </figure>
 
-<p>Selvom der står der er nogle opdateringer venter vi med at gøre det til vi har konfigureret vores netværk.</p>
-
-
-<h1>Opsætning af netværk</h1>
-
-<p>Under installation valgte vi at lade installationen konfigurere netværket. Dette skal vi have ændret, så det er os selv der styrer dette, og så vi kan få adgang til vores NAS over vores netværk.</p>
-
-
-<h2>Adgang til NAS</h2>
-
-<p>For at få adgang til NAS'en skal vi bruge dens IP-adresse. Det gøres ved at køre følgende kommando på din NAS:</p>
-
-<code class="cmd">hostname -I</code>
-
-<pre class="black">
-tj@NAS:~$ hostname -I
-192.168.0.178 <span class="red">&larr; computerens IP-adresse</span>
-</pre>
-
-<p>Når du har IP-adressen kan du få adgang til din server ved hjælp af SSH, som er et program der giver krypteret kommandolinie adgang til din NAS. En af fordelene herved er, at du kan kopiere kommandoer herfra hjemmesiden og køre kommandoerne uden at skulle indtaste dem.</p>
-
-<blockquote>
-		<p>Bruger du windows 10 vil jeg anbefale at du installerer "Bash for Windows". Du kan bruge denne guide fra Microsoft: <a href="https://msdn.microsoft.com/en-us/commandline/wsl/install-win10" target="_blank">https://msdn.microsoft.com/en-us/commandline/wsl/install-win10</a></p>
-		
-		<p>På den måde har du direkte adgang til SSH ved hjælp af "Bash for Windows".</p>
-
-</blockquote>
-
-<p>Åbn en kommandoprompt og skriv:</p>
-
-<code class="cmd">ssh *brugernavn*@*IP-adresse*</code>
-
-<p>I mit tilfælde vil det være:</p>
-
-<code class="cmd">ssh tj@192.168.0.179</code>
-
-<p>Første gang vil vil du blive spurgt om du vil tilføje computerens informationer og det skal du gøre.</p>
+<p>På første side kan man se informationer om systemet, samt om det trænger til en opdatering. Her kan vi se at systemet er fuldt ud opdateret.</p>
 
 <figure id="">
 
-	<img class="p90" src="images/VirtualBox_Ubuntu NAS_63.png" alt="" title="" />
+	<img class="p90" src="images/VB_ubuntu1804_nas_19.png" alt="_" title="_" />
 
 	<figcaption></figcaption>
 
 </figure>
 
-<p>Herefter vil du blive spurgt om dit password. Læg mærke til at curseren ikke bevæger sig når du taster ind. Herefter har du adgang til din NAS som du sad fysisk ved den.</p>
+<p>Tillykke - du har installeret Ubuntu server 18.04.</p>
 
-<figure id="">
-
-	<img class="p90" src="images/VirtualBox_Ubuntu NAS_64.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-
-<blockquote>
-	
-	<p>Du kan sagtens nøjes med det du lige har gjort, men ønsker du at have fuld kontrol over din server skal du køre videre med <span class="inl_cmd">Avanceret opsætning herunder</span>.</p>
-	
-</blockquote>
-
-
-
-<h2>Avanceret opsætning</h2>
-
-<p>Det er min anbefaling at du <span class="inl_cmd">segmenterer</span> dit netværk, sådan at din router har nogle IP-adresser der kan fastlåses til specifikke enheder. Du skal logge på din router og finde den menu der styrer det der hedder <span class="inl_cmd">DHCP</span>. </p>
-
-<p>Herunder finder du en indstilling for start og slut IP-adressen. Sørg for at ændre den, så du har nogle ledige adresser. Det vigtige er, at du ikke ændrer på de 3 første tal (her 192.168.0), da det er netværkets adresse.</p>
-
-<p>I mit tilfælde vil jeg gerne frigive adresserne fra 2-49 og derved bliver det:</p>
-
-<ul class="none">
-	<li>start IP-adresse: 192.168.0.50</li>
-	<li>slut IP-adresse: 192.168.0.254 (<span class="red">må ikke være mere end 254</span>)</li>
-</ul>
-
-<p>Nu kan jeg bruge de frigivne adresser (2-49) til faste IP-adresser</p>
-
-
-<blockquote>
-	<p>
-		Du vil nok synes at nogle af de navne og tal vi skal til at skrive er underlige, men der er en teknisk mening bag galskaben. f.eks. engiver navnet enp0s3 hvad det er for et stykke hardware og hvor i computeren det er placeret fysisk.
-	</p>
-	
-	<p>Det er vigtigt at du skriver det som din computer svarer til dig.</p>
-</blockquote>
-
-
-<h3>Netkortets informationer</h3>
-
-<p>Først skal vi finde ud af hvad vores netværkskort hedder. Kør:</p>
-
-<code class="cmd">ip -4 addr show</code>
-
-<pre class="black">
-tj@NAS:~$ ip -4 addr show
-1: lo: &lt;LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
-    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
-    inet 127.0.0.1/8 scope host lo
-       valid_lft forever preferred_lft forever
-2: <span class="red">enp0s3</span>: &lt;BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
-    link/ether 08:00:27:45:fd:aa brd ff:ff:ff:ff:ff:ff
-    inet <span class="red">192.168.0.178/24 brd 192.168.0.255</span> scope global enp0s3
-       valid_lft forever preferred_lft forever
-</pre>
-
-<p>Denne kommando giver os de informationer vi har brug for, nemlig at (markeret med rødt):</p>
-
-<ul class="none">
-	<li>Netkortet hedder: enp0s3</li>
-	<li>Serveren har adressen: 192.168.0.178</li>
-	<li>Netmasken er: /24 (255.255.255.0)</li>
-	<li>Broadcast adressen er: 192.168.0.178</li>
-</ul>
-
-
-<p>Netværket opsættes i konfigurationsfilen <span class="inl_cmd">/etc/network/interfaces</span>:</p>
-
-<code class="cmd">sudo nano /etc/network/interfaces</code>
-
-<p>Det giver os følgende output i <span class="inl_cmd">nano</span>, som er en simpel måde at arbejde med filer på i Ubuntu. (Jeg har markeret det som er interessant for os rødt):</p>
-
-<pre class="black">
-# This file describes the network interfaces available on your system
-# and how to activate them. For more information, see interfaces(5).
-
-source /etc/network/interfaces.d/*
-
-# The loopback network interface 
-auto lo
-iface lo inet loopback
-
-<span class="red"># The primary network interface 
-auto enp0s3
-iface enp0s3 inet dhcp</span>
-</pre>
-
-<p>Det som står ved <span class="inl_cmd">enp0s3</span> er, at netkortet får sin adresse fra DHCP-serveren. Det skal vi have ændret, så min NAS i mit tilfælde får adressen 192.168.0.10 :</p>
-
-<p><b>HUSK: </b> at det skal være de 3 første tal fra din IP-adresse der skal anvendes og at <span class="inl_cmd">dhcp</span> skal ændres til <span class="inl_cmd">static</span>.</p>
-
-<pre class="black">
-# This file describes the network interfaces available on your system
-# and how to activate them. For more information, see interfaces(5).
-
-source /etc/network/interfaces.d/*
-
-# The loopback network interface 
-auto lo
-iface lo inet loopback
-
-#The primary network interface 
-auto enp0s3
-iface enp0s3 inet static <span class="red">&larr; Ændr herfra</span>
-  
-  network 192.168.0.0
-  address 192.168.0.10
-  gateway 192.168.0.1
-  netmask 255.255.255.0
-  broadcast 192.168.0.255
-  
-  dns-nameservers 8.8.8.8 8.8.4.4
-</pre>
-
-<p>Du gemmer ved følgende tastetryk:</p>
-
-<ol class="">
-	<li><kbd>Ctrl</kbd>+<kbd>X</kbd></li>
-	<li>Herefter spørger programmet om det må gemme "ændret buffer". Du svarer med <kbd>j</kbd></li>
-	<li>Spørger om det er det rigtige filnavn - og det er det, så vi trykker <kbd>Enter</kbd></li>
-</ol>
-
-<p>Herefter er ændringer gemt. Nu skal de aktiveres. For at sikre os at ændringe slår helt igennem vælger vi at genstarte vores NAS</p>
-
-<code class="cmd">sudo reboot</code>
-
-<p>Har du gjort det over SSH, mister du forbindelsen til serveren. Skriv kommandoen:</p>
-
-<code class="cmd">exit</code>
-
-<p>... og brug SSH igen, med den nye IP-adresse. I mit tilfælde:</p>
-
-<code class="cmd">ssh tj@192.168.43.10</code>
-
-<p>Logger du på korrekt har du succesfuldt ændrer IP-adressen på din NAS</p>
-
-<p>Kan du ikke logge på skal du logge ind på NAS'en fysisk og tjekke om du har skrevet alt rigtigt med kommandoen:</p>
-
-<code class="cmd">sudo nano /etc/network/interfaces</code>
 
 	
 </div><!-- end: col-md-9 -->
