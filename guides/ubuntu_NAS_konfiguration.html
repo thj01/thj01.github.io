@@ -188,7 +188,7 @@ Vil du fortsætte? [J/n]
 
 <code class="cmd">sudo nano /etc/ssh/sshd_config </code>
 
-<span class="afsnit">Fjern root adgang</span>
+<h2>Fjern root adgang</h2>
 
 <p>På denne måde sikrer man sig at brugeren kun har de rettigheder, som der er givet på NAS-serveren</p>
 
@@ -204,7 +204,7 @@ PermitRootLogin prohibit-password
 PermitRootLogin no
 </pre>
 
-<span class="afsnit">Ændr tilladte brugere</span>
+<h2>Ændr tilladte brugere</h2>
 
 <p>Her kan du administrere hvem der har adgang til at bruge ssh</p>
 
@@ -214,59 +214,12 @@ PermitRootLogin no
 Allowusers tj
 </pre>
 
-<span class="afsnit">Aktiver ændringer</span>
+<h2>Aktiver ændringer</h2>
 
 <p>For at aktivere vores ændringer skal vi genstarte tjenesten:</p>
 
 <code class="cmd">sudo service ssh reload</code>
 
-<p>For at teste at det virker opretter vi brugeren <span class="inl_cmd">test</span>. Kør kommandoen:</p>
-
-<code class="cmd">sudo adduser test</code>
-
-<p>her er output med forklaringer</p>
-
-<pre class="black">
-tj@NAS:~$ sudo adduser test <span class="red">&larr; selve kommandoen</span>
-[sudo] adgangskode for tj: <span class="red">&larr; Indtast password</span>
-Tilføjer bruger »test«...
-Tilføjer ny gruppe »test« (1001)...
-Tilføjer ny bruger »test« (1001) med gruppe »test«...
-Opretter hjemmemappe »/home/test«...
-Kopierer filer fra »/etc/skel«...
-Indtast ny UNIX-adgangskode: <span class="red">&larr; Indtast brugerens password</span>
-Genindtast ny UNIX-adgangskode: <span class="red">&larr; Genindtast brugerens password</span>
-passwd: password updated successfully
-Changing the user information for test
-Enter the new value, or press ENTER for the default
-	Full Name []: <span class="red">&larr; Tryk <kbd>Enter</kbd></span>
-	Room Number []:  <span class="red">&larr; Tryk <kbd>Enter</kbd></span>
-	Work Phone []:  <span class="red">&larr; Tryk <kbd>Enter</kbd></span>
-	Home Phone []:  <span class="red">&larr; Tryk <kbd>Enter</kbd></span>
-	Other []:  <span class="red">&larr; Tryk <kbd>Enter</kbd></span>
-Er informationerne korrekte? [J/n]  <span class="red">&larr; Tryk <kbd>Enter</kbd></span>
-tj@NAS:~$
-</pre>
-
-<p>Log af din NAS med kommandoen:</p>
-
-<code class="cmd">exit</code>
-
-<p>Log på med den nye bruger (husk at ændre til din IP-adresse):</p>
-
-<code class="cmd">ssh test@192.168.0.10</code>
-
-<pre class="black">
-tj@tj-desktop:~$ ssh test@192.168.0.10
-test@192.168.0.10's password: 
-Permission denied, please try again.
-test@192.168.0.10's password: 
-Connection to 192.168.0.10 closed by remote host.
-Connection to 192.168.0.10 closed.
-tj@tj-desktop:~$ 
-</pre>
-
-<p>Hvis du vil overbevise dig selv så prøv at give test tilladelse:</p>
 
 <h1>Webserver</h1>
 
@@ -280,17 +233,7 @@ tj@tj-desktop:~$
 
 <code class="cmd">sudo tasksel install lamp-server</code>
 
-<p>I løbet af installationen skal du angive et password til MySQL databasens root-bruger. Det skal du gøre to gange (anden gang for at bekræfte)</p>
-
-<figure id="">
-
-	<img class="p90" src="images/VirtualBox_Ubuntu NAS_65.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-
-<p>Når installationen er færdig skal den lige testes. Det gør vi ved at åbne en browser på en anden computer og indtaste adressen på NAS-serveren, her: 192.168.0.10</p>
+<p>Tjek at webserveren kører ved at indtaste serverens IP-adresse i en browser:</p>
 
 <figure id="">
 
@@ -300,7 +243,149 @@ tj@tj-desktop:~$
 
 </figure>
 
-<p>Det du ser er en testside der viser at LAMP-serveren er blevet installeret korrekt.</p>
+
+
+<h2>Konfigurer MySQL</h2>
+
+
+
+<p>Som standard er MySQL serveren installeret uden at være sikret. For at sikre MySQL skal vi køre følgende script:</p>
+
+<code class="cmd">sudo mysql_secure_installation</code>
+
+<p>Herunder er der en gennemgang af scriptet</p>
+
+<h3>Sæt root password</h3>
+
+<p>Som standard installeres MySQL uden sikkerhed. Det skal vi have ændret på. Der skal gøres 2 ting</p>
+
+<ul class="none fat_li">
+	<li>Password kontrol</li>
+	
+		<p>For at sikre at brugerne vælger gode passwords kan man oprette en funktion der kontrollerer dette.</p>
+		
+		<p>Her er den sat til niveau 0, som reelt kun sikrer at det er over 8 tegn langt. Skal den i produktion (anvendes i tilgængelige miljøer) bør man vælge niveau 2</p>
+	
+	<li>Sætte password</li>
+	
+		<p>Indtast og genindtast det valgte root-password-</p>
+</ul>
+
+
+<pre class="black">tj@nas:~$ sudo mysql_secure_installation
+
+Securing the MySQL server deployment.
+
+Connecting to MySQL using a blank password.
+
+VALIDATE PASSWORD PLUGIN can be used to test passwords
+and improve security. It checks the strength of password
+and allows the users to set only those passwords which are
+secure enough. Would you like to setup VALIDATE PASSWORD plugin?
+
+Press y|Y for Yes, any other key for No: <kbd>y</kbd>
+
+There are three levels of password validation policy:
+
+LOW    Length >= 8
+MEDIUM Length >= 8, numeric, mixed case, and special characters
+STRONG Length >= 8, numeric, mixed case, special characters and dictionary file
+
+Please enter 0 = LOW, 1 = MEDIUM and 2 = STRONG: <kbd>0</kbd>
+Please set the password for root here.
+
+New password: <span class="red">&larr; Indtast root-password</span><kbd>Enter</kbd>
+
+Re-enter new password: <span class="red">&larr; Genindtast root-password</span><kbd>Enter</kbd>
+
+Estimated strength of the password: 50 
+Do you wish to continue with the password provided?(Press y|Y for Yes, any other key for No) : <kbd>y</kbd>
+</pre>
+
+<h3>Fjern anonyme brugere</h3>
+
+<p>MySQL har som standard installeret nogle anonyme brugere. De er gode til test, men vi vælger at fjerne dem.</p>
+
+<pre class="black">By default, a MySQL installation has an anonymous user,
+allowing anyone to log into MySQL without having to have
+a user account created for them. This is intended only for
+testing, and to make the installation go a bit smoother.
+You should remove them before moving into a production
+environment.
+
+Remove anonymous users? (Press y|Y for Yes, any other key for No) : <kbd>y</kbd>
+Success.
+</pre>
+
+<h3>Root fjernadgang</h3>
+
+<p>Man bør også fjerne muligheden for at root-brugeren kan tilgå databasen fra andre maskiner en den, som den er installeret på. Skal MySQL administreres over netværk bør det være over en SSH forbindelse</p>
+
+<pre class="black">Normally, root should only be allowed to connect from
+'localhost'. This ensures that someone cannot guess at
+the root password from the network.
+
+Disallow root login remotely? (Press y|Y for Yes, any other key for No) : <kbd>y</kbd>
+Success.
+</pre>
+
+<h3>Fjern test-database</h3>
+
+<p>MySQL kommer med en testdatabase installeret. Den er ikke nødvendig, så vi fjerner den</p>
+
+<pre class="black">By default, MySQL comes with a database named 'test' that
+anyone can access. This is also intended only for testing,
+and should be removed before moving into a production
+environment.
+
+
+Remove test database and access to it? (Press y|Y for Yes, any other key for No) : <kbd>y</kbd>
+ - Dropping test database...
+Success.
+
+ - Removing privileges on test database...
+Success.
+</pre>
+
+<h3>Genindlæs database</h3>
+
+<p>For at få ændringerne til at slå igennem genindlæser vi databasen.</p>
+
+<pre class="black">Reloading the privilege tables will ensure that all changes
+made so far will take effect immediately.
+
+Reload privilege tables now? (Press y|Y for Yes, any other key for No) : <kbd>y</kbd>
+Success.
+
+All done!
+</pre>
+
+<h3>Test database</h3>
+
+<p>For at teste at databasen er konfigureret korrekt logger vi ind på den:</p>
+
+<pre class="black">tj@nas:~$ sudo mysql -u root -p
+[sudo] password for tj: <span class="red">&larr; Indtast system password</span>
+Enter password: <span class="red">&larr; Indtast mysql root-password</span>
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 4
+Server version: 5.7.22-0ubuntu18.04.1 (Ubuntu)
+
+Copyright (c) 2000, 2018, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> quit <span class="red">&larr; Indtast "quit", for at afslutte MySQL</span>
+Bye
+tj@nas:~$
+</pre>
+
+
+
 
 <h1>Installer WebMin</h1>
 
@@ -349,6 +434,11 @@ to run commands as root.
 </pre>
 
 <p>Indtast <span class="inl_cmd">https://nas:10000</span> i browseren</p>
+
+<pre class="black">
+_
+</pre>
+
 
 <figure id="">
 
