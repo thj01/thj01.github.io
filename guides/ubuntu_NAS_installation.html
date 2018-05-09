@@ -59,11 +59,15 @@
 			<td>4 GB</td>
 		</tr>
 		<tr>
-			<td rowspan="2">Harddiske</td>
+			<td rowspan="3">Harddiske</td>
 			<td>1 stk 1 TB harddisk til systemdrev
 		</td>
 		<tr>
-			<td>2 stk 4 TB harddiske til backup</td>
+			<td>2 stk 4 TB harddiske til backup (fysisk maskine)</td>
+		</tr>
+		<tr>
+			<td>2 stk 2 TB harddiske til backup (VirtualBox)</td>
+
 		</tr>
 		<tr>
 			<td>DVD</td>
@@ -75,7 +79,7 @@
 
 <p>Til Guiden har jeg anvendt <a href="http://releases.ubuntu.com/18.04/ubuntu-18.04-live-server-amd64.iso" download >Ubuntuserver 18.04 live</a></p>
 
-<h1>Brænding af USB</h1>
+<h1>Brænding af ISO-fil</h1>
 
 <p>Til at brænde <span class="inl_cmd">ISO-filen</span> over på en USB vi jeg anbefale at du anvender følgende programmer:</p>
 
@@ -224,6 +228,10 @@
 
 <h1>Opsætning af harddisk</h1>
 
+<blockquote>
+	<p>Vi opretter først vores RAID drev efter installationen, da det er en del nemmere end at gøre det her.</p>
+</blockquote>
+
 <p>I dette setup laver vi et simpelt harddisk setup. Vælg <button type="_">Use An Entire Disk</button>.</p>
 
 <figure id="">
@@ -334,6 +342,106 @@
 </figure>
 
 <p>Tillykke - du har installeret Ubuntu server 18.04.</p>
+
+<h1>sudo</h1>
+
+<p><span class="inl_cmd">sudo</span> betyder <b>SU</b>peruser <b>DO</b>, og er en smart måde som man anvender til at give nogle bruger administratorrettigheder. Det gør man ved at sætte dem i <span class="inl_cmd">sudo</span>-gruppen. Den bruger du oprettede under installationen er automatisk tilføjet til denne gruppe, og derfor kan du lave systemarbejde.</p>
+
+<p>Lad os prøve at et eksempel, hvor vi genstarter netværkstjenesten. Kør kommandoen: <span class="inl_cmd">service networking restart</span> - altså uden <span class="inl_cmd">sudo</span>.</p>
+
+<pre class="black">
+tj@NAS:~$ service networking restart
+<span class="red">==== AUTHENTICATING FOR org.freedesktop.systemd1.manage-units ===</span>
+Authentication is required to restart 'networking.service'.
+Authenticating as: Thomas Jensen,,, (tj)
+Password: 
+</pre>
+
+<p>Her brokker programmet sig, fordi du ikke har rettighederne til at køre det. Men som en service får du muligheden for at indtaste dit password, så netværket kan genstartes.</p>
+
+<p>Havde du gjort det "rigtigt" med <span class="inl_cmd">sudo</span> ville du have fået følgende output:</p>
+
+<pre class="black">
+tj@NAS:~$ sudo service networking restart 
+[sudo] adgangskode for tj: 
+</pre>
+
+<p>Altså ingen brok, men bare en bekræftelse på at du tilhører <span class="inl_cmd">sudo</span>-gruppen.</p>
+
+<blockquote>
+	<p>
+		Læg mærke til, at hvis du kører flere <span class="inl_cmd">sudo</span> kommandoer efter hinanden, så skal du ikke indtaste dit password. Det skyldes, at Ubuntu husker det et kort stykke tid.
+	</p>
+	
+	<p>Af samme årsag bør man også logge af en computer før man forlader den, for at andre ikke kan misbruge dine rettigheder. Det gøres med kommandoen: <span class="inl_cmd">exit</span>, eller ved at lukke terminalvinduet.</p>
+</blockquote>
+
+
+<h1>Opdatering</h1>
+
+<p>Ubuntu opdateres ved hjælp af det som kaldes <span class="inl_cmd">repositories</span>. et repositorie har hele tiden den nyeste version af programmet der passer til den version af Ubuntu man kører med. Så for at opdatere skal man altså sammenligne de programmer man har installeret med dem som ligger i repository.</p>
+
+<p>Det smarte ved dette system er, at man kan tilføje og fjerne repositories efter behov - og derved få fat i de programmer man ønsker.</p>
+
+<h2>Ændre lokalitet</h2>
+
+<p>Som udgangspunkt henter den installation vi har lavet sine opdateringer fra lokale servere i DK. Det er min erfaring at de nogle gange er langsommere end de generelle.</p>
+
+<p>Vi ændrer det ved at køre følgende kommandoer:</p>
+
+<ul class="none">
+	
+	<li>Laver en backup af konfigurationsfilen hvis noget skulle gå galt. Bør man gøre som en helt naturlig del af ens arbejdsproces</li>
+	
+		<code class="cmd">sudo cp /etc/apt/sources.list /etc/apt/sources.list.backup</code>
+		
+	<li>Erstat alle forekomster af <span class="inl_cmd">dk.archive</span> med <span class="inl_cmd">archive</span></li>
+	
+		<code class="cmd">sudo sed -i s/dk.archive/archive/ /etc/apt/sources.list</code>
+		<p></p>
+	
+</ul>
+
+<details>
+
+	<summary>Hvis det går galt</summary>
+
+	<p>Vi lavede en backup med linien:</p>
+	
+	<code class="cmd">sudo cp /etc/apt/sources.list /etc/apt/sources.list.backup</code>
+	
+	<p>Det vi gjorde var faktisk at kopiere <span class="inl_cmd">/etc/apt/sources.list</span> til en ny fil der hedder <span class="inl_cmd">/etc/apt/sources.list.backup</span></p>
+	
+	<p>For at omgøre dette gør vi det omvendte</p>
+
+	<code class="cmd">sudo cp /etc/apt/sources.list.backup /etc/apt/sources.list</code>
+
+	<p>Husk: Rigtige mænd tager ikke backup ... de græder bare ;)</p>
+	
+	
+</details>
+
+<h2>Opdatering</h2>
+
+<p>Opdateringen består af to processer:</p>
+
+<ul class="none fat_li">
+	<li>Opdatering af repositories</li>
+	
+		<code class="cmd">sudo apt update</code>
+
+	
+	<li>Opdatering af programmer</li>
+	
+		<code class="more_cmd">sudo apt upgrade -y</code>
+
+	<li>Vil du gøre det i en linie</li>
+
+		<code class="cmd">sudo apt update && sudo apt upgrade -y</code>
+
+</ul>
+
+<p>Det lille <span class="inl_cmd">-y</span> til sidst gør, at <span class="inl_cmd">apt</span> ikke spørger om du vil godkende opdateringerne. Hvis du vil se hvad der bliver opdateret skriver du ikke <span class="inl_cmd">-y</span>. Det betyder, at du skal godkende opdateringerne manuelt.</p>
 
 <h1>Opsætning af RAID1</h1>
 	
