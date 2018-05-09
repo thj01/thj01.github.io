@@ -111,19 +111,20 @@ Allowusers tj
 
 
 
-<h2>Konfigurer MySQL</h2>
+<h1>Konfigurer MySQL</h1>
 
 
+<p>Som standard er MySQL serveren sikret ved hjælp af en funktion der hedder <span class="inl_cmd">Unix_socket</span>. Den betyder at brugere der er oprettet på serveren, og som har en database ved sammen navn/password kan logge ind uden at angive password. Denne Feature beholder vi fordi det sikrer, at kun lokale brugere har adgang til databasen på vores NAS.</p>
 
-<p>Som standard er MySQL serveren installeret uden at være sikret. For at sikre MySQL skal vi køre følgende script:</p>
+<p>For yderligere at højne sikkerheden kører vi nedenstående script</p>
 
 <code class="cmd">sudo mysql_secure_installation</code>
 
 <p>Herunder er der en gennemgang af scriptet</p>
 
-<h3>Sæt root password</h3>
+<h2>Sæt root password</h2>
 
-<p>Som standard installeres MySQL uden sikkerhed. Det skal vi have ændret på. Der skal gøres 2 ting</p>
+<p>Hvis man ønsker at databasen skal være styret af passwords, kan man her sætte minimumskravene til passwords og lave et MySQL root password. Uanset hvad du sætter dette password til, vil det blive forbigået af <span class="inl_cmd">Unix_socket</span>. </p>
 
 <ul class="none fat_li">
 	<li>Password kontrol</li>
@@ -168,7 +169,7 @@ Estimated strength of the password: 50
 Do you wish to continue with the password provided?(Press y|Y for Yes, any other key for No) : <kbd>y</kbd>
 </pre>
 
-<h3>Fjern anonyme brugere</h3>
+<h2>Fjern anonyme brugere</h2>
 
 <p>MySQL har som standard installeret nogle anonyme brugere. De er gode til test, men vi vælger at fjerne dem.</p>
 
@@ -183,7 +184,7 @@ Remove anonymous users? (Press y|Y for Yes, any other key for No) : <kbd>y</kbd>
 Success.
 </pre>
 
-<h3>Root fjernadgang</h3>
+<h2>Root fjernadgang</h2>
 
 <p>Man bør også fjerne muligheden for at root-brugeren kan tilgå databasen fra andre maskiner en den, som den er installeret på. Skal MySQL administreres over netværk bør det være over en SSH forbindelse</p>
 
@@ -195,7 +196,7 @@ Disallow root login remotely? (Press y|Y for Yes, any other key for No) : <kbd>y
 Success.
 </pre>
 
-<h3>Fjern test-database</h3>
+<h2>Fjern test-database</h2>
 
 <p>MySQL kommer med en testdatabase installeret. Den er ikke nødvendig, så vi fjerner den</p>
 
@@ -213,7 +214,7 @@ Success.
 Success.
 </pre>
 
-<h3>Genindlæs database</h3>
+<h2>Genindlæs database</h2>
 
 <p>For at få ændringerne til at slå igennem genindlæser vi databasen.</p>
 
@@ -226,7 +227,7 @@ Success.
 All done!
 </pre>
 
-<h3>Test database</h3>
+<h2>Test database</h2>
 
 <p>For at teste at databasen er konfigureret korrekt logger vi ind på den:</p>
 
