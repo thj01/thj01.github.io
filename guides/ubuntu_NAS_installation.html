@@ -476,9 +476,9 @@ sr0     11:0    1 1024M  0 rom
 
 <p>Det smarte ved at anvende parted er, at man kan konfiguere harddiske direkte fra kommandolinien, hvilket gør arbejdet en del nemmere. Du kan læse mere om <span class="inl_cmd">parted</span> her: <a href="https://www.sleeandtopher.com/how-to-partition-a-gpt-hard-drive-in-ubuntu/" target="_blank">https://www.sleeandtopher.com/how-to-partition-a-gpt-hard-drive-in-ubuntu/</a></p>
 
-<code class="cmd">sudo parted /dev/sdb mklabel gpt mkpart primary 0TB 2TB</code>
+<code class="cmd">sudo parted -s /dev/sdb mklabel gpt mkpart primary ext4 0TB 2TB</code>
 
-<code class="more_cmd">sudo parted /dev/sdc mklabel gpt mkpart primary 0TB 2TB</code>4
+<code class="more_cmd">sudo -s parted /dev/sdc mklabel gpt mkpart primary ext4 0TB 2TB</code>
 
 <pre class="black">tj@nas:~$ sudo parted /dev/sdb mklabel gpt mkpart primary 0TB 2TB
 Information: You may need to update /etc/fstab.
@@ -593,6 +593,18 @@ tj@nas:~$ echo '/dev/md0 /srv ext4 defaults, nofail, discard 0 0' | sudo tee -a 
 fstab
 /dev/md0 /srv ext4 defaults, nofail, discard 0 0
 </pre>
+
+<p>Kontroller at linien er indsat:</p>
+
+<code class="cmd">cat /etc/fstab</code>
+
+<pre class="black">tj@nas:~$ cat /etc/fstab
+UUID=04d1db9e-539f-11e8-8d84-7085c24ac239 / ext4 defaults 0 0
+UUID=5F0E-7E69 /boot/efi vfat defaults 0 0
+/swap.img	none	swap	sw	0	0
+/dev/md0 /srv ext4 defaults,nofail,discard 0 0
+</pre>
+
 
 <p>Herefter skal computeren genstartes for at sikre os at det hele virker som det skal.</p>
 
