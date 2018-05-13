@@ -58,13 +58,7 @@
 
 <p>På denne måde sikrer man sig at brugeren kun har de rettigheder, som der er givet på NAS-serveren</p>
 
-<p>Ændr linien:</p>
-
-<pre class="black">
-PermitRootLogin prohibit-password
-</pre>
-
-<p>til:</p>
+<p>Indsæt følgende i bunden_</p>
 
 <pre class="black">
 PermitRootLogin no
@@ -368,13 +362,18 @@ to run commands as root.
 
 	<code class="cmd">sudo apt purge samba samba-common</code>
 
-	<p>På den måde får du igen de oprindelige konfigurationsfiler. når du geninstallerer.</p>
+	<p>Herefter skal du geninstallere SAMBA og starte forfra på guiden.</p>
+	
+	<code class="cmd">sudo apt install samba -y</code>
+
 
 </details>
 
 <h2>Generel konfiguration</h2>
 
-<p>Indsæt følgende i bunden af filen for at lave den overordnede kjonfiguration:</p>
+<p>Indsæt følgende i bunden af filen <span class="inl_cmd">/etc/samba/smb.conf</span> for at lave den overordnede kjonfiguration:</p>
+
+<code class="cmd">sudo nano /etc/samba/smb.conf</code>
 
 <code class="cmd">[global]
 workgroup = NAS	
@@ -440,16 +439,16 @@ Is the information correct? [Y/n] y <span class="red">&larr; Tast <kbd>y</kbd></
 
 <code class="cmd">sudo adduser *brugernavn* *gruppenavn*</code>
 
-<p>Herunder oprettes gruppen <span class="inl_cmd">smbgrp</span> og vil tilføjer vores oprindelige bruger til den (her  tj).</p>
+<p>Herunder oprettes gruppen <span class="inl_cmd">systemadmin</span> og vil tilføjer vores oprindelige bruger til den (her  tj).</p>
 
-<code class="cmd">sudo adduser tj</code>
+<code class="cmd">sudo addgroup systemadmin</code>
 
-<code class="more_cmd">sudo adduser tj smbgrp</code>
+<code class="more_cmd">sudo adduser tj systemadmin</code>
 
 <p>Vi kan controllere om brugeren tj er i gruppen ved hjælp af følgende kommando:</p>
 
 <pre class="black">tj@nas:~$ cat /etc/group | grep smbgrp
-<span class="red">smbgrp</span>:x:1005:tj <span class="red">&larr; Gruppens brugere står til sidst</span>
+<span class="red">systemadmin</span>:x:1005:tj <span class="red">&larr; Gruppens brugere står til sidst</span>
 </pre>
 
 
@@ -459,7 +458,7 @@ Is the information correct? [Y/n] y <span class="red">&larr; Tast <kbd>y</kbd></
 
 <p>Her tilføjer vi brugeren tj (erstat med din bruger)</p>
 
-<code class="cmd">smbpasswd -a tj</code>
+<code class="cmd">sudo smbpasswd -a tj</code>
 
 <pre class="black">tj@home:/srv$ sudo smbpasswd -a tj
 New SMB password:  			<span class="red">&larr; indtast samba-kodeord</span>
@@ -473,11 +472,20 @@ Added user tj.
 
 <p>Hvis brugeren ikke skal have noget password bruger du kommandoen:</p>
 
-<code class="cmd">smbpasswd -n test</code>
+<code class="cmd">sudo smbpasswd -n *brugernavn*</code>
 
+<!--
 <h2>Dele home på NAS-serveren</h2>
 
+<blockquote class="alert">
+	<p>
+		Jeg vil ikke anbefale denne metode til en NAS, da det kun er <span class="inl_cmd">/srv</span> der ligger på RAID-harddiskene. 
+	</p>
+</blockquote>
+
 <p>På NAS-serveren har alle brugere en home mappe, og den kan deles ved hjælp af SAMBA ved at indsætte følgende i bunden af <span class="inl_cmd">smb.conf</span></p>
+
+<code class="cmd">sudo nano /etc/samba/smb.conf</code>
 
 <code class="cmd">[homes]
 comment = Bruger mapper   
@@ -495,6 +503,7 @@ valid users = %S
 
 <code class="cmd">sudo systemctl restart smbd nmbd</code>
 
+-->
 
 <h2>Delinger</h2>
 
@@ -521,14 +530,6 @@ valid users = %S
 			<td><span class="inl_cmd">/srv/fælles</span></td>
 		</tr>
 		<tr>
-			<td>Media</td>
-			<td>Læse/skrive</td>
-			<td>Læse</td>
-			<td>Læse</td>
-			<td>Til musik, billeder og film</td>
-			<td><span class="inl_cmd">/srv/media</span></td>
-		</tr>
-		<tr>
 			<td>System</td>
 			<td>Læse/skrive</td>
 			<td>Læse/skrive</td>
@@ -537,12 +538,12 @@ valid users = %S
 			<td><span class="inl_cmd">/srv/system</span></td>
 		</tr>
 		<tr>
-			<td>Privat</td>
+			<td>tj</td>
 			<td>Læse/skrive</td>
 			<td>-</td>
 			<td>-</td>
 			<td>Private filer</td>
-			<td><span class="inl_cmd">/srv/privat</span></td>
+			<td><span class="inl_cmd">/srv/tj</span></td>
 		</tr>
 	</tbody>
 </table>
@@ -558,7 +559,7 @@ valid users = %S
 
 <h3>Opret mapper</h3>
 
-<code class="cmd">sudo mkdir -p /srv/media /srv/backup /srv/tj</code>
+<code class="cmd">sudo mkdir -p /srv/fælles /srv/system /srv/tj</code>
 
 <h3>Sæt rettigheder</h3>
 
@@ -569,15 +570,9 @@ valid users = %S
 <code class="more_cmd">sudo chmod -R 775 /srv/fælles</code>
 
 
-<p>Sæt rettigheder på media</p>
-
-<code class="cmd">sudo chown -R root:nogroup /srv/media</code>
-
-<code class="more_cmd">sudo chmod -R 755 /srv/media</code>
-
 <p>Sæt rettigheder på system</p>
 
-<code class="cmd">sudo chown -R root:smbgrp /srv/system</code>
+<code class="cmd">sudo chown -R root:systemadmin /srv/system</code>
 
 <code class="more_cmd">sudo chmod -R 775 /srv/system</code>
 
@@ -593,14 +588,12 @@ valid users = %S
 <p>Vi kontrollerer at alt er sat korrekt op</p>
 
 <pre class="black">tj@home:/srv$ ls -al /srv
-total 36
-drwxr-xr-x  6 root   root     4096 May  5 14:36 .
-drwxr-xr-x 23 root   root     4096 May  5 13:11 ..
-drwxr-xr-x  2 nobody nogroup  4096 May  5 15:15 fælles
-drwx------  2 root   root    16384 May  5 11:22 lost+found
-drwxr-xr-x  2 nobody nogroup  4096 May  5 14:21 media
-drwxr-xr-x  2 root   smbgrp   4096 May  5 14:36 system
-drwxr-xr-x  2 tj     tj       4096 May  5 14:21 tj
+total 24
+drwxr-xr-x  6 root   root        4096 May 13 19:30 <span class="blue1"><b>.</b></span>
+drwxr-xr-x 23 root   root        4096 May 12 08:07 <span class="blue1"><b>..</b></span>
+drwxrwxr-x  3 nobody nogroup     4096 May 13 20:00 <span class="blue1"><b>fælles</b></span>
+drwxrwxr-x  2 root   systemadmin 4096 May 13 19:30 <span class="blue1"><b>system</b></span>
+drwx------  2 tj     tj          4096 May 13 19:30 <span class="blue1"><b>tj</b></span>
 </pre>
 
 
@@ -617,15 +610,13 @@ drwxr-xr-x  2 tj     tj       4096 May  5 14:21 tj
 	<thead>
 		<tr>
 			<th>Fælles (Alle)</th>
-			<th>Media (Alle)</th>
 			<th>System (Gruppe)</th>
-			<th>Privat</th>
+			<th>tj</th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr>
 			<td>Alle har skrive/læse adgang</td>
-			<td>Alle har læse adgang</td>
 			<td>Gruppe har skrive/læse adgang</td>
 			<td>Bruger har skrive/læse adgang</td>
 		</tr>
@@ -646,18 +637,6 @@ read only = no
 public = yes
 force user = nobody</code>
 
-<span class="afsnit">Konfigurer Media</span>
-
-<code class="cmd">[media]
-path = /srv/media
-browsable =yes
-writable = yes
-guest ok = yes
-read only = no
-public = yes
-force user = nobody
-</code>
-
 <span class="afsnit">Konfigurer System</span>
 
 <code class="cmd">[system]
@@ -668,7 +647,7 @@ guest ok = no
 read only = no
 </code>
 
-<span class="afsnit">Konfigurer bruger</span>
+<span class="afsnit">Konfigurer tj</span>
 
 <code class="cmd">[privat]
 path = /srv/privat

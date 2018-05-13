@@ -402,6 +402,50 @@ tj@NAS:~$ sudo service networking restart
 	
 </ul>
 
+<p>For at tilføje partner repositoriet skal du redigere i filen <span class="inl_cmd">/etc/apt/sources.list</span> og fjerne et hash-tag</p>
+
+<code class="cmd">sudo nano /etc/apt/sources.list</code>
+
+<pre class="black">
+<span class="blue1">## Uncomment the following two lines to add software from Canonical's
+## 'partner' repository.
+## This software is not part of Ubuntu, but is offered by Canonical and the
+## respective vendors as a service to Ubuntu users.
+# deb http://archive.canonical.com/ubuntu bionic partner <span class="red">&lt;-- Denne linie skal ændres</span>
+# deb-src http://archive.canonical.com/ubuntu bionic partner</span>
+</pre>
+
+<p>Fjern <span class="inl_cmd">#</span> og mellemrummet foran deb linien så der står:</p>
+
+<pre class="black">
+<span class="blue1">## Uncomment the following two lines to add software from Canonical's
+## 'partner' repository.
+## This software is not part of Ubuntu, but is offered by Canonical and the
+## respective vendors as a service to Ubuntu users.
+<span class="brown">deb</span> <span class="green1">http://archive.canonical.com/ubuntu</span> <span class="red">bionic</span> <span class="violet">partner</span>
+# deb-src http://archive.canonical.com/ubuntu bionic partner</span>
+</pre>
+
+<p></p>
+
+<p>For at gemme ændringer skal du gøre følgende, tast <kbd>Ctrl</kbd>+<kbd>x</kbd>. Nederst på skærmen kommer følgende frem</p>
+
+<pre class="black">
+<span class="white_bg">Gem ændret buffer (AT SVARE "Nej" VIL ØDELÆGGE ÆNDRINGER)?                                          </span>                    
+<span class="white_bg"> J</span> Ja
+<span class="white_bg"> N</span> Nej          <span class="white_bg">^C</span> Annullér
+</pre>
+
+<p>Tast <kbd>j</kbd></p>
+
+<pre class="black">
+<span class="white_bg">Filnavn at skrive: /etc/apt/sources.list                                                            </span>                                       
+<span class="white_bg">^G</span> Få hjælp     <span class="white_bg">M-D</span> DOS-format  <span class="white_bg">M-A</span> Tilføj ved e<span class="white_bg">M-b</span> SikrKopiér f
+<span class="white_bg">^C</span> Annullér     <span class="white_bg">M-M</span> Mac-format  <span class="white_bg">M-P</span> Tilføj ved s<span class="white_bg">^T</span> Til filer
+</pre>
+
+<p>Tast <kbd>Enter</kbd>, og du er tilbage i selve terminalen.</p>
+
 <details>
 
 	<summary>Hvis det går galt</summary>
@@ -418,7 +462,6 @@ tj@NAS:~$ sudo service networking restart
 
 	<p>Husk: Rigtige mænd tager ikke backup ... de græder bare ;)</p>
 	
-	
 </details>
 
 <h2>Opdatering</h2>
@@ -426,20 +469,23 @@ tj@NAS:~$ sudo service networking restart
 <p>Opdateringen består af to processer:</p>
 
 <ul class="none fat_li">
+
 	<li>Opdatering af repositories</li>
 	
 		<code class="cmd">sudo apt update</code>
-
 	
 	<li>Opdatering af programmer</li>
 	
 		<code class="more_cmd">sudo apt upgrade -y</code>
 
-	<li>Vil du gøre det i en linie</li>
-
-		<code class="cmd">sudo apt update && sudo apt upgrade -y</code>
-
 </ul>
+
+<blockquote>
+	<p>Det kan også gøres på en linie:</p>
+	
+	<code class="cmd">sudo apt update && sudo apt upgrade -y</code>
+</blockquote>
+
 
 <p>Det lille <span class="inl_cmd">-y</span> til sidst gør, at <span class="inl_cmd">apt</span> ikke spørger om du vil godkende opdateringerne. Hvis du vil se hvad der bliver opdateret skriver du ikke <span class="inl_cmd">-y</span>. Det betyder, at du skal godkende opdateringerne manuelt.</p>
 

@@ -62,7 +62,7 @@
 
 <h2>Opret mapper</h2>
 
-<code class="cmd">sudo mkdir -p /srv/mediaServer/musik /srv/mediaserver/video /srv/mediaserver/billeder</code>
+<code class="cmd">sudo mkdir -p /srv/billeder /srv/musik /srv/video </code>
 
 <h2>Bruger konfiguration</h2>
 
@@ -76,39 +76,39 @@
 
 <h1>Konfiguration</h1>
 
-<p><span class="inl_cmd">minidlna</span> konfigureres igennem en filen <span class="inl_cmd">/etc/minidlna.conf</span>. Åbn den med kommandoen</p>
+<p><span class="inl_cmd">minidlna</span> konfigureres igennem en filerne <span class="inl_cmd">/etc/minidlna.conf</span> og <span class="inl_cmd">/etc/default/minidlna</span>.</p>
+
+<p>Indsæt nedestående nederst i filen <span class="inl_cmd">/etc/minidlna.conf</span>.</p>
 
 <code class="cmd">sudo nano /etc/minidlna.conf </code>
-
-<h2>/etc/minidlna</h2>
-
-<p>Stort set alt er udkommenteret, så vi kan nøjes med at indsætte nedestående i slutningen af filen.</p>
 
 <pre>
 	<code class="">
 #Serverdetaljer	
 	
 friendly_name=Mediaserver
-media_dir=A,/srv/mediaserver/musik
-media_dir=P,/srv/mediaserver/billeder
-media_dir=V,/srv/mediaserver/video
+media_dir=P,/srv/billeder
+media_dir=A,/srv/musik
+media_dir=V,/srv/video
 
 #Skanner for nye filer
-inotify=yes
-
+inotify=yes<!--
 #Sætter standard portnummer
-port=9500
-	</code>
+#port=9500
+-->
+
+</code>
 </pre>
 
+<!--
 <p>Grunden til at porten skal ændres er fordi <span class="inl_cmd">minidlna</span> ikke sætter portnummeret til standardern som er <span class="inl_cmd">9500</span>.</p>
+-->
 
+<p>Indsæt nedestående nederst i filen <span class="inl_cmd">/etc/default/minidlna</span>.</p>
 
-<h2>/etc/default/minidlna</h2>
+<code class="cmd">sudo nano /etc/default/minidlna</code>
 
-<p>Fjern hashtags (<span class="inl_cmd">#</span>) ved <span class="inl_cmd">USER</span> og <span class="inl_cmd">GROUP</span>.</p>
-
-<<pre>
+<pre>
 	<code class="">
 # User and group the daemon should run as
 USER="root"
@@ -116,7 +116,11 @@ GROUP="minidlna"
 	</code>
 </pre>
 
+<p>Genstart minidlna</p>
 
+<code class="cmd">sudo service minidlna restart</code>
+
+<code class="more_cmd">sudo service minidlna force-reload</code>
 
 <h1>Flyt dine filer</h1>
 
@@ -126,7 +130,7 @@ GROUP="minidlna"
 
 <blockquote>
 	<p>
-		Hvis du gerne vil beholde en kopi på din egen brugerprofil, så skal du skrive <span class="inl_cmd">cp</span> i stedet for <span class="inl_cmd">mv</span>.
+		Hvis du gerne vil flytte filerne uden at beholde en kopi på din egen brugerprofil, så skal du skrive <span class="inl_cmd">mv</span> i stedet for <span class="inl_cmd">cp</span>.
 	</p>
 </blockquote>
 
@@ -134,15 +138,15 @@ GROUP="minidlna"
 	
 	<li>Kopiere Musik</li>
 	
-		<code class="cmd">mv ~/Musik /srv/mediaserver/musik</code>
+		<code class="cmd">cp ~/Musik /srv/musik</code>
 	
 	<li>Kopiere Video</li>
 	
-		<code class="cmd">mv ~/Videoklip /srv/mediaserver/video</code>
+		<code class="cmd">cp ~/Videoklip /srv/video</code>
 	
 	<li>Kopiere Billeder</li>
 	
-		<code class="cmd">mv ~/Billeder /srv/mediaserver/billeder</code>
+		<code class="cmd">cp ~/Billeder /srv/billeder</code>
 		
 </ul>
 
@@ -152,12 +156,12 @@ GROUP="minidlna"
 
 <h2>Ændr bruger og gruppe</h2>
 
-<code class="cmd">sudo chown -R minidlna:minidlna /srv/mediaserver</code>
+<code class="cmd">sudo chown -R minidlna:minidlna /srv/billeder /srv/musik /srv/video/</code>
 
 <h2>Ændr rettigheder</h2>
 
 
-<code class="cmd">sudo chmod -R 775 /srv/mediaserver</code>
+<code class="cmd">sudo chmod -R 775 /srv/billeder /srv/musik /srv/video/</code>
 
 <h1>Genstart minidlna</h1>
 
@@ -187,9 +191,10 @@ GROUP="minidlna"
 
 <code class="more_cmd">sudo service minidlna force-reload</code>
 
-
-
 <p><b>Enjoy!!</b></p>
+
+
+
 
 
 	
