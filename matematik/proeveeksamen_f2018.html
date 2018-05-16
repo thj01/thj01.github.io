@@ -113,6 +113,25 @@ https://jsxgraph.uni-bayreuth.de/wp/download/index.html
 
 <h1>Eksponentielle funktioner I</h1>
 
+<p>Følgende to eksponentialfunktioner er givet</p>
+
+<div class="latex">$$ f(x) = 4 \cdot 0.75^x $$</div>
+
+<div class="latex">$$ g(x)= 2 \cdot 1,1^x $$</div>
+
+<p>Lav en funktionsanalyse af de to funktioner</p>
+
+  <div id="jxgbox2" class="jxgbox" style="width:500px; height:500px;"></div>
+  <div id="debug" style="display:none;"></div>
+   <script type="text/javascript">
+		
+		var board = JXG.JSXGraph.initBoard('jxgbox2', {boundingbox:[-10,10,10,-10], axis:true, showCopyright:false});
+
+		board.create('functiongraph', [function(x) {return 2*1.1**x}]);
+		board.create('functiongraph', [function(x) {return 4*0.75**x}],{strokeColor:"green", name:"hej"});
+
+  </script>
+
 <h1>Eksponentielle funktioner II</h1>
 
 <h1>Eksponentielle funktioner III</h1>
