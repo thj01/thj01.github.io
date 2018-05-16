@@ -1,9 +1,9 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-a = -0.65
-x1 = 9
-x2 = 51
+a = 2
+x1 = -1
+x2 = 5
 
 b = -a*(x1+x2)
 c = a*x1*x2

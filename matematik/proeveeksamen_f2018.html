@@ -58,11 +58,11 @@ https://jsxgraph.uni-bayreuth.de/wp/download/index.html
 <p>Lav en funktionsanalyse af de to funktioner</p>
 
 
-  <div id="jxgbox" class="jxgbox" style="width:500px; height:500px;"></div>
+  <div id="jxgbox00" class="jxgbox" style="width:500px; height:500px;"></div>
   <div id="debug" style="display:none;"></div>
    <script type="text/javascript">
 		
-		var board = JXG.JSXGraph.initBoard('jxgbox', {boundingbox:[-10,10,10,-10], axis:true, showCopyright:false});
+		var board = JXG.JSXGraph.initBoard('jxgbox00', {boundingbox:[-10,10,10,-10], axis:true, showCopyright:false});
 
 		board.create('functiongraph', [function(x) {return 1/3*x-1}]);
 		board.create('functiongraph', [function(x) {return -1/2*x+4}],{strokeColor:"green"});
@@ -81,11 +81,11 @@ https://jsxgraph.uni-bayreuth.de/wp/download/index.html
 <p>Beregn skæringspunktet mellem <span class="math">\( f(x) \)</span> og <span class="math">\( g(x) \)</span></p>
 
 
-  <div id="jxgbox1" class="jxgbox" style="width:500px; height:500px;"></div>
+  <div id="jxgbox01" class="jxgbox" style="width:500px; height:500px;"></div>
   <div id="debug" style="display:none;"></div>
    <script type="text/javascript">
 		
-		var board = JXG.JSXGraph.initBoard('jxgbox1', {boundingbox:[-10,10,10,-10], axis:true, showCopyright:false});
+		var board = JXG.JSXGraph.initBoard('jxgbox01', {boundingbox:[-10,10,10,-10], axis:true, showCopyright:false});
 
 		board.create('functiongraph', [function(x) {return 1/2*x+1}]);
 		board.create('functiongraph', [function(x) {return -2/3*x+3+1/3}],{strokeColor:"green"});
@@ -121,11 +121,11 @@ https://jsxgraph.uni-bayreuth.de/wp/download/index.html
 
 <p>Lav en funktionsanalyse af de to funktioner</p>
 
-  <div id="jxgbox2" class="jxgbox" style="width:500px; height:500px;"></div>
+  <div id="jxgbox02" class="jxgbox" style="width:500px; height:500px;"></div>
   <div id="debug" style="display:none;"></div>
    <script type="text/javascript">
 		
-		var board = JXG.JSXGraph.initBoard('jxgbox2', {boundingbox:[-10,10,10,-10], axis:true, showCopyright:false});
+		var board = JXG.JSXGraph.initBoard('jxgbox02', {boundingbox:[-10,10,10,-10], axis:true, showCopyright:false});
 
 		board.create('functiongraph', [function(x) {return 2*1.1**x}]);
 		board.create('functiongraph', [function(x) {return 4*0.75**x}],{strokeColor:"green", name:"hej"});
@@ -134,15 +134,75 @@ https://jsxgraph.uni-bayreuth.de/wp/download/index.html
 
 <h1>Eksponentielle funktioner II</h1>
 
+<p>I et koordinatsystem har du punkterne:</p>
+
+<div class="latex">$$ P = (-4,1), ~~Q = (4,3), ~~R = (-1,4),~~ S = (8,1) $$</div>
+
+<p>Find forskriften for den eksponentielle funktion (<span class="math">\( f(x) \)</span>) der gennemskærer punkterne P og Q og den eksponentielle funktion <span class="math">\( g(x) \)</span>der gennemskærer R og S</p>
+
+<p>Beregn skæringspunktet mellem <span class="math">\( f(x) \)</span> og <span class="math">\( g(x) \)</span></p>
+
+  <div id="jxgbox03" class="jxgbox" style="width:500px; height:500px;"></div>
+  <div id="debug" style="display:none;"></div>
+   <script type="text/javascript">
+		
+		var board = JXG.JSXGraph.initBoard('jxgbox03', {boundingbox:[-10,10,10,-10], axis:true, showCopyright:false});
+
+		board.create('functiongraph', [function(x) {return  1.732 * 1.1472**x}]);
+		board.create('functiongraph', [function(x) {return 3.4288 * 0.8572**x}],{strokeColor:"green"});
+
+
+		board.create('point',[-4,1],{size:2,name:'P'});
+		board.create('point',[4,3],{size:2,name:'Q'});
+		board.create('point',[-1,4],{size:2,name:'R'});
+		board.create('point',[8,1],{size:2,name:'S'});
+
+  </script>
+
 <h1>Eksponentielle funktioner III</h1>
+
+<p>Vis hvordan du ved hjælp af punkterne <span class="math">\( P=(x_1,y_1) \)</span> og <span class="math">\( Q = (x_2,y_2) \)</span> kan udlede formlen til at beregne henholdsvis a og b i eksponentialfunktionens normalform <span class="math">\( y = b \cdot a^x \)</span></p>
+
+<figure id="">
+
+	<img class="p60" src="images/funktioner_exponentialfunktion_arbejdstegning.svg" alt="_" title="_" />
+
+	<figcaption></figcaption>
+
+</figure>
 
 
 <h1>Andengrads funktioner I</h1>
 
+<p>Bevis formlen for andengradsfunktionen</p>
+
+<div class="latex">$$ x= \frac{-b \pm \sqrt D}{2a}, ~~ hvor~ D = b^2-4ac $$</div>
+
+
+
 <h1>Andengrads funktioner II</h1>
+
+<p>Bevis toppunktsformlen for andengradsfunktionen</p>
+
+
+<div class="latex">$$ TP = \left( \frac{-b}{2a} , \frac{-D}{4a} \right) $$</div>
 
 <h1>Andengrads funktioner III</h1>
 
+<p>Lav en funktionsanalyse af andengradsfunktionen: <span class="math">\( 
+f(x) = x^2-4x-5 \)</span></p>
+
+
+  <div id="jxgbox04" class="jxgbox" style="width:500px; height:500px;"></div>
+  <div id="debug" style="display:none;"></div>
+   <script type="text/javascript">
+		
+		var board = JXG.JSXGraph.initBoard('jxgbox04', {boundingbox:[-10,10,10,-10], axis:true, showCopyright:false});
+
+		board.create('functiongraph', [function(x) {return x**2-4*x-5}]);
+
+  </script>
+  
 <h1>Finansregning I</h1>
 
 <h1>Finansregning II</h1>
