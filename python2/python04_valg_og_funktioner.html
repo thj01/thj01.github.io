@@ -423,7 +423,7 @@ Press return to continue
 	<code class="python">
 a = "k"
 
-int(k)
+int(a)
 	</code>
 </pre>
 
@@ -461,6 +461,21 @@ Variablen a er ikke et heltal
 <pre class="black">
 Variablen a er et heltal
 </pre>
+
+<h2>Raise Exception</h2>
+
+<p>Nogle gange har man brug for at koden skal lave fejl, for at udløse <span class="inl_cmd">except</span>. Det gøres ved at anvende koden: <span class="inl_cmd">raise Exception</span></p>
+
+<pre>
+	<code class="python">
+try:
+	raise Exception
+except:
+	print("Der er fejl i koden")
+	</code>
+</pre>
+
+<h2>Murphy's lov</h2>
 
 <p>Som programmør skal man prøve at forudse den slags problemer, for man skal huske på Murphy's lov:</p>
 
