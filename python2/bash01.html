@@ -41,9 +41,23 @@
 
 <a href="https://www.tldp.org/LDP/abs/html/comparison-ops.html" target="_blank">https://www.tldp.org/LDP/abs/html/comparison-ops.html</a>
 
+<pre>
+	<code class="bash">
+~% FILE="example.tar.gz"
+~% echo "${FILE%%.*}"
+example
+~% echo "${FILE%.*}"
+example.tar
+~% echo "${FILE#*.}"
+tar.gz
+~% echo "${FILE##*.}"
+gz
+	</code>
+</pre>
+	
+<a href="https://stackoverflow.com/questions/965053/extract-filename-and-extension-in-bash" target="_blank">https://stackoverflow.com/questions/965053/extract-filename-and-extension-in-bash</a>
 
-	
-	
+
 </div><!-- end: col-md-9 -->
 
 <footer>
