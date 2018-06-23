@@ -59,13 +59,13 @@
 	
 		<p> - </p>
 	
-	<li>Det rette objektiv (brændvidde/blændetal) udvælges</li>
+	<li>Det rette objektiv (brændvidde/blænde) udvælges</li>
 	
-		<p>Skal det være et <span class="inl_cmd">prime</span>- eller et <span class="inl_cmd">zoomobjektiv</span> og hvor meget skal baggrunden være komprimeret</p>
+		<p>Skal det være et <span class="inl_cmd">prime</span>- eller et <span class="inl_cmd">zoomobjektiv</span>, hvor meget skal baggrunden være komprimeret og hvor meget <span class="inl_cmd">bokeh (暈け)</span> - det japanske ord for sløret, skal der være?</p>
 	
 	<li>Blændet indstilles så vi de vigtige ting i fokus</li>
 	
-		<p>Problemet med et højt blændetal er, at man kun har et lille område hvor billedet er skarpt nok. Det er så surt at komme hjem med en masse billeder der skal skrottes, fordi billederne ikke er skarpe nok hvor de skal være det.</p>
+		<p>Problemet med et lavt F-stop er, at man kun har et lille område hvor billedet er skarpt nok. Det er så surt at komme hjem med en masse billeder der skal skrottes, fordi billederne ikke er skarpe nok hvor de skal være det.</p>
 	
 	<li>Lukkertiden indstilles så vi kan fastholde vores motiv</li>
 	
@@ -134,7 +134,7 @@
 
 <p><b>Brændvidden</b> fortæller hvordan ens motiv bliver afbilledet på censoren. Vil man have meget af omgivelserne med vælger man en lav brændvidde. Hvis man vil have sit motiv i fokus vælger man en høj brændvidde</p>
 
-<p><b>Blændet</b> justerer hvad der skal være i fokus. Hvis man har et lavt blændetal, så er det kun et meget smalt område der vil stå skarpt. Resten vil blive sløret i større eller mindre grad. Jo mere man vil have skarpt jo højere blændetal skal man vælge.</p>
+<p><b>Blændet</b> justerer hvad der skal være i fokus. Hvis man har en lav f-stopværdi, så er det kun et meget smalt område der vil stå skarpt. Resten vil blive sløret i større eller mindre grad. Jo mere man vil have skarpt jo højere f-stop skal man vælge.</p>
 
 <p>Allerede her støder vi på den første udfordring. Vi har brug for lys for at kunne tage billedet, men jo højere detaljegrad og skarphed vi ønsker - jo mindre lys har vi tilgængelig.</p>
 
@@ -197,13 +197,13 @@
 	<li><b>Blænde</b>: Hvor meget lys objektivet lader komme igennem</li>
 </ul>
 
-<h3>Hvidbalance</h3>
+<h2>Hvidbalance</h2>
 
 <ul class="none">
 	<li>Sikrer at farverne bliver gengivet korrekt</li>
 </ul>
 
-<h3>Lukkertid</h3>
+<h2>Lukkertid</h2>
 
 <ul class="none">
 	<li>Lang lukkertid: mindre rystelser i kamera eller motivets bevægelse slører billedet, </li>
@@ -212,17 +212,17 @@
 
 <p>Lukketider bliver angivet som sekunder, så en lukketid på f.eks. 2 svarer til 2 sekunder og 1/4 til 0,25 sekund.</p>
 
-<h3>ISO</h3>
+<h2>ISO</h2>
 
 <ul class="none">
 	<li>Højere <span class="inl_cmd">ISO</span> værdier får billedet til at fremstå mere grynet og med uønskede farver (støj).</li>
 </ul>
 
-<h3>Blænde</h3>
+<h2>Blænde</h2>
 
 <ul class="none">
-	<li>Lavere blændetal: Man får mindre dybdesskarphed (<span class="inl_cmd">DOF</span> - behandles nedenfor) men mere lys. </li>
-	<li>Højere blædental: Man får mindre lys at arbejde med men større dybdeskarphed</li>
+	<li>Lave f-stopværdi: Man får mindre dybdesskarphed (<span class="inl_cmd">DOF</span> - behandles nedenfor) men mere lys. </li>
+	<li>Høj f-stopværdi: Man får mindre lys at arbejde med men større dybdeskarphed.</li>
 </ul>
 
 
@@ -502,7 +502,7 @@
 		<tr>
 			<td>Sigma</td>
 			<td><span class="inl_cmd">OS</span></td>
-			<td><b>O</b>ptocal <b>S</b>tabilizer</td>
+			<td><b>O</b>ptical <b>S</b>tabilizer</td>
 		</tr>
 		<tr>
 			<td>Tamron</td>
@@ -706,168 +706,222 @@ x = \frac{1}{\sqrt 2} $$</div>
 
 <p>Generelt gælder følgende:</p>
 
-<div class="latex">$$ blænde = \frac{1}{{\sqrt 2}^{faktor}} ~~~~~~~~~~~~~~~~~~ ~~~~~~~~~  f{-}stop = \sqrt 2^{faktor} $$</div>
+<div class="latex">$$ blænde = \frac{1}{{\sqrt 2}^{faktor}} ~~~~~~~~~~~~~~~~~~ ~~~~~~~~~  \text{f-stop} = \sqrt 2^{faktor} $$</div>
 
-<p>Man har valgt at beskrive dette forhold ved hjælp af <span class="inl_cmd">f-stop</span>, som er nævneren i brøken. Dvs. at <span class="inl_cmd">f-stop</span>-værdien det halve af det fuldt åbne blænde er <span class="math">\( \sqrt 2^1 = 1,414 \)</span>. Sagt på en anden måde: et objektiv, hvis maksimale <span class="inl_cmd">f-stop</span> værdi er <span class="inl_cmd">f/1.4</span> lader altså kun halvdelen af lyset pasere. </p>
+<p>Man har valgt at beskrive dette forhold ved hjælp af <span class="inl_cmd">f-stop</span>, som er nævneren i brøken. Dvs. at <span class="inl_cmd">f-stop</span>-værdien det halve af det fuldt åbne blænde er <span class="math">\( \sqrt 2^1 = 1,414 \)</span>. Sagt på en anden måde: et objektiv, hvis maksimale <span class="inl_cmd">f-stop</span> værdi er <span class="inl_cmd">f/1.4</span> lader altså kun 50% (halvdelen) af lyset passere. </p>
 
-
-<p>Da De fleste kameraer i dag kører med et formindskelsesstop på <span class="math">\( \frac{1}{3} \)</span>, får vi altså værdierne:</p>
+<p>Et simplificeret skema er altså:</p>
 
 <table class="">
-	<thead>
-		<tr>
-			<th>Formindskelses faktor</th>
-			<th>f-stop</th>
-			<th>størrelse i forhold til fuld åbning</th>
-		</tr>
-	</thead>
 	<tbody>
-		<tr class="lightgreybc">
-			<td><span class="math">\( 0 \)</span></td>
-			<td><span class="math">\( 1,0 \)</span></td>
-			<td><span class="math">\( 1 \)</span></td>
-		</tr>
 		<tr>
-			<td><span class="math">\( \frac{1}{3} \)</span></td>
-			<td><span class="math">\( 1,1 \)</span></td>
-			<td><span class="math">\( 0,89 \)</span></td>
-
-		</tr>
-		<tr>
-			<td><span class="math">\( \frac{2}{3} \)</span></td>
-			<td><span class="math">\( 1,2^* \)</span></td>
-			<td><span class="math">\( 0.79 \)</span></td>
-
-		</tr>
-		<tr class="lightgreybc">
-			<td><span class="math">\( 1 \)</span></td>
-			<td><span class="math">\( 1,4 \)</span></td>
-			<td><span class="math">\( 0,71 \)</span></td>
-		</tr>
-		<tr>
-			<td><span class="math">\(1\frac{1}{3} \)</span></td>
-			<td><span class="math">\( 1,6 \)</span></td>
-			<td><span class="math">\( 0,63 \)</span></td>
-		</tr>
-		<tr>
-			<td><span class="math">\( 1\frac{2}{3} \)</span></td>
-			<td><span class="math">\( 1,8 \)</span></td>
-			<td><span class="math">\( 0,56 \)</span></td>
-		</tr>
-		<tr class="lightgreybc">
-			<td><span class="math">\(2 \)</span></td>
-			<td><span class="math">\( 2,0 \)</span></td>
-			<td><span class="math">\( 0,5 \)</span></td>
-		</tr>
-		<tr>
-			<td><span class="math">\(2\frac{1}{3} \)</span></td>
-			<td><span class="math">\( 2,2 \)</span></td>
-			<td><span class="math">\( 0,45 \)</span></td>
-		</tr>
-		<tr>
-			<td><span class="math">\( 2\frac{2}{3} \)</span></td>
-			<td><span class="math">\( 2,5 \)</span></td>
-			<td><span class="math">\( 0,4 \)</span></td>
-		</tr>
-		<tr class="lightgreybc">
-			<td><span class="math">\( 3\)</span></td>
-			<td><span class="math">\( 2,8 \)</span></td>
-			<td><span class="math">\( 0,35 \)</span></td>
-		</tr>
-		<tr>
-			<td><span class="math">\(3\frac{1}{3} \)</span></td>
-			<td><span class="math">\( 3,2 \)</span></td>
-			<td><span class="math">\( 0,31 \)</span></td>
-		</tr>
-		<tr>
-			<td><span class="math">\( 3\frac{2}{3} \)</span></td>
-			<td><span class="math">\( 3,5^* \)</span></td>
-			<td><span class="math">\( 0,28 \)</span></td>
-		</tr>
-		<tr class="lightgreybc">
-			<td><span class="math">\(4\)</span></td>
-			<td><span class="math">\( 4,0 \)</span></td>
-			<td><span class="math">\( 0,25 \)</span></td>
-		</tr>
-		<tr>
-			<td><span class="math">\(4 \frac{1}{3} \)</span></td>
-			<td><span class="math">\( 4,5 \)</span></td>
-			<td><span class="math">\( 0,22 \)</span></td>
-		</tr>
-		<tr>
-			<td><span class="math">\( 4\frac{2}{3} \)</span></td>
-			<td><span class="math">\( 5,0 \)</span></td>
-			<td><span class="math">\( 0,2 \)</span></td>
-		</tr>
-		<tr class="lightgreybc">
-			<td><span class="math">\(5\)</span></td>
-			<td><span class="math">\( 5,6^* \)</span></td>
-			<td><span class="math">\( 0,18 \)</span></td>
-		</tr>
-		<tr>
-			<td><span class="math">\(5\frac{1}{3} \)</span></td>
-			<td><span class="math">\( 6,4 \)</span></td>
-			<td><span class="math">\( 0,16 \)</span></td>
-		</tr>
-		<tr>
-			<td><span class="math">\( 5\frac{2}{3} \)</span></td>
-			<td><span class="math">\( 7,1 \)</span></td>
-			<td><span class="math">\( 0,14 \)</span></td>
-		</tr>
-		<tr class="lightgreybc">
-			<td><span class="math">\(6 \)</span></td>
+			<td>F-stop</td>
+			<td><span class="math">\( 1.0 \)</span></td>
+			<td><span class="math">\( 1.4 \)</span></td>
+			<td><span class="math">\( 2.0 \)</span></td>
+			<td><span class="math">\( 2.8 \)</span></td>
+			<td><span class="math">\( 4.0 \)</span></td>
+			<td><span class="math">\( 5.6 \)</span></td>
 			<td><span class="math">\( 8 \)</span></td>
-			<td><span class="math">\( 0,13 \)</span></td>
-		</tr>
-		<tr>
-			<td><span class="math">\(6\frac{1}{3} \)</span></td>
-			<td><span class="math">\( 9 \)</span></td>
-			<td><span class="math">\( 0,11 \)</span></td>
-		</tr>
-		<tr>
-			<td><span class="math">\( 6\frac{2}{3} \)</span></td>
-			<td><span class="math">\( 10 \)</span></td>
-			<td><span class="math">\( 0,1 \)</span></td>
-		</tr>
-		<tr class="lightgreybc">
-			<td><span class="math">\(7 \)</span></td>
 			<td><span class="math">\( 11 \)</span></td>
-			<td><span class="math">\( 0,09 \)</span></td>
-		</tr>
-		<tr>
-			<td><span class="math">\(7\frac{1}{3} \)</span></td>
-			<td><span class="math">\( 13 \)</span></td>
-			<td><span class="math">\( 0,08 \)</span></td>
-		</tr>
-		<tr>
-			<td><span class="math">\( 7\frac{2}{3} \)</span></td>
-			<td><span class="math">\( 14 \)</span></td>
-			<td><span class="math">\( 0,07 \)</span></td>
-		</tr>
-		<tr class="lightgreybc">
-			<td><span class="math">\(8 \)</span></td>
 			<td><span class="math">\( 16 \)</span></td>
-			<td><span class="math">\( 0,06 \)</span></td>
-		</tr>
-		<tr>
-			<td><span class="math">\(8\frac{1}{3} \)</span></td>
-			<td><span class="math">\( 18 \)</span></td>
-			<td><span class="math">\( 0,06 \)</span></td>
-		</tr>
-		<tr>
-			<td><span class="math">\( 8\frac{2}{3} \)</span></td>
-			<td><span class="math">\( 20 \)</span></td>
-			<td><span class="math">\( 0,05 \)</span></td>
-		</tr>
-		<tr class="lightgreybc">
-			<td><span class="math">\(9 \)</span></td>
 			<td><span class="math">\( 22 \)</span></td>
-			<td><span class="math">\( 0,04 \)</span></td>
 		</tr>
+		<tr>
+			<td>Brøkdel</td>
+			<td><span class="math">\( \frac{ 1 }{ 1 } \)</span></td>
+			<td><span class="math">\( \frac{ 1 }{ \sqrt {2} } \)</span></td>
+			<td><span class="math">\( \frac{ 1 }{ 2 } \)</span></td>
+			<td><span class="math">\( \frac{ 1 }{  2 \cdot \sqrt {2} } \)</span></td>
+			<td><span class="math">\( \frac{ 1 }{ 4 } \)</span></td>
+			<td><span class="math">\( \frac{ 1 }{   4 \cdot \sqrt{2} } \)</span></td>
+			<td><span class="math">\( \frac{ 1 }{ 8 } \)</span></td>
+			<td><span class="math">\( \frac{ 1 }{ 8 \cdot \sqrt{2} } \)</span></td>
+			<td><span class="math">\( \frac{ 1 }{ 16 } \)</span></td>
+			<td><span class="math">\( \frac{ 1 }{ 16 \cdot \sqrt{2} } \)</span></td>
+		</tr>
+		<tr>
+			<td>Procent</td>
+			<td><span class="math">\( 100\% \)</span></td>
+			<td><span class="math">\( 71\% \)</span></td>
+			<td><span class="math">\( 50\% \)</span></td>
+			<td><span class="math">\( 35\% \)</span></td>
+			<td><span class="math">\( 25\% \)</span></td>
+			<td><span class="math">\( 18\% \)</span></td>
+			<td><span class="math">\( 13\% \)</span></td>
+			<td><span class="math">\( 9\% \)</span></td>
+			<td><span class="math">\( 6\% \)</span></td>
+			<td><span class="math">\( 4\% \)</span></td>
+		</tr>		
 	</tbody>
 </table>
 
-<p>Dem der er markeret med <span class="math">\( ^* \)</span> passer ikke helt med udregningerne, da de rammer en decimal forbi. Der må være en historisk årsag til at disse tal vises forkert. En anden årsag kan være at man ikke anvender brøken til at beregne værdierne, men at man anvender <span class="math">0,3</span> og <span class="math">0,7</span> i stedet for <span class="math">\( \frac{1}{3} \)</span> og <span class="math">\( \frac{2}{3} \)</span>. Uanset hvad skal man se det som <span class="math">\( \frac{1}{3} \)</span> spring (stops). Læs f.eks: <a href="https://en.wikipedia.org/wiki/F-number" target="_blank">https://en.wikipedia.org/wiki/F-number</a>.</p>
+
+<p>Da De fleste kameraer i dag kører med et formindskelsesstop på <span class="math">\( \frac{1}{3} \)</span>, har vi store muligheder for at finjustere på lysmængden. Herunder er der et skema der viser det med denne inddeling:</p>
+
+<details>
+
+	<summary>Et mere udførligt skema</summary>
+
+		<table class="">
+			<thead>
+				<tr>
+					<th>Formindskelses faktor</th>
+					<th>f-stop</th>
+					<th>størrelse i forhold til fuld åbning</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class="lightgreybc">
+					<td><span class="math">\( 0 \)</span></td>
+					<td><span class="math">\( 1,0 \)</span></td>
+					<td><span class="math">\( 1 \)</span></td>
+				</tr>
+				<tr>
+					<td><span class="math">\( \frac{1}{3} \)</span></td>
+					<td><span class="math">\( 1,1 \)</span></td>
+					<td><span class="math">\( 0,89 \)</span></td>
+
+				</tr>
+				<tr>
+					<td><span class="math">\( \frac{2}{3} \)</span></td>
+					<td><span class="math">\( 1,2^* \)</span></td>
+					<td><span class="math">\( 0.79 \)</span></td>
+
+				</tr>
+				<tr class="lightgreybc">
+					<td><span class="math">\( 1 \)</span></td>
+					<td><span class="math">\( 1,4 \)</span></td>
+					<td><span class="math">\( 0,71 \)</span></td>
+				</tr>
+				<tr>
+					<td><span class="math">\(1\frac{1}{3} \)</span></td>
+					<td><span class="math">\( 1,6 \)</span></td>
+					<td><span class="math">\( 0,63 \)</span></td>
+				</tr>
+				<tr>
+					<td><span class="math">\( 1\frac{2}{3} \)</span></td>
+					<td><span class="math">\( 1,8 \)</span></td>
+					<td><span class="math">\( 0,56 \)</span></td>
+				</tr>
+				<tr class="lightgreybc">
+					<td><span class="math">\(2 \)</span></td>
+					<td><span class="math">\( 2,0 \)</span></td>
+					<td><span class="math">\( 0,5 \)</span></td>
+				</tr>
+				<tr>
+					<td><span class="math">\(2\frac{1}{3} \)</span></td>
+					<td><span class="math">\( 2,2 \)</span></td>
+					<td><span class="math">\( 0,45 \)</span></td>
+				</tr>
+				<tr>
+					<td><span class="math">\( 2\frac{2}{3} \)</span></td>
+					<td><span class="math">\( 2,5 \)</span></td>
+					<td><span class="math">\( 0,4 \)</span></td>
+				</tr>
+				<tr class="lightgreybc">
+					<td><span class="math">\( 3\)</span></td>
+					<td><span class="math">\( 2,8 \)</span></td>
+					<td><span class="math">\( 0,35 \)</span></td>
+				</tr>
+				<tr>
+					<td><span class="math">\(3\frac{1}{3} \)</span></td>
+					<td><span class="math">\( 3,2 \)</span></td>
+					<td><span class="math">\( 0,31 \)</span></td>
+				</tr>
+				<tr>
+					<td><span class="math">\( 3\frac{2}{3} \)</span></td>
+					<td><span class="math">\( 3,5^* \)</span></td>
+					<td><span class="math">\( 0,28 \)</span></td>
+				</tr>
+				<tr class="lightgreybc">
+					<td><span class="math">\(4\)</span></td>
+					<td><span class="math">\( 4,0 \)</span></td>
+					<td><span class="math">\( 0,25 \)</span></td>
+				</tr>
+				<tr>
+					<td><span class="math">\(4 \frac{1}{3} \)</span></td>
+					<td><span class="math">\( 4,5 \)</span></td>
+					<td><span class="math">\( 0,22 \)</span></td>
+				</tr>
+				<tr>
+					<td><span class="math">\( 4\frac{2}{3} \)</span></td>
+					<td><span class="math">\( 5,0 \)</span></td>
+					<td><span class="math">\( 0,2 \)</span></td>
+				</tr>
+				<tr class="lightgreybc">
+					<td><span class="math">\(5\)</span></td>
+					<td><span class="math">\( 5,6^* \)</span></td>
+					<td><span class="math">\( 0,18 \)</span></td>
+				</tr>
+				<tr>
+					<td><span class="math">\(5\frac{1}{3} \)</span></td>
+					<td><span class="math">\( 6,4 \)</span></td>
+					<td><span class="math">\( 0,16 \)</span></td>
+				</tr>
+				<tr>
+					<td><span class="math">\( 5\frac{2}{3} \)</span></td>
+					<td><span class="math">\( 7,1 \)</span></td>
+					<td><span class="math">\( 0,14 \)</span></td>
+				</tr>
+				<tr class="lightgreybc">
+					<td><span class="math">\(6 \)</span></td>
+					<td><span class="math">\( 8 \)</span></td>
+					<td><span class="math">\( 0,13 \)</span></td>
+				</tr>
+				<tr>
+					<td><span class="math">\(6\frac{1}{3} \)</span></td>
+					<td><span class="math">\( 9 \)</span></td>
+					<td><span class="math">\( 0,11 \)</span></td>
+				</tr>
+				<tr>
+					<td><span class="math">\( 6\frac{2}{3} \)</span></td>
+					<td><span class="math">\( 10 \)</span></td>
+					<td><span class="math">\( 0,1 \)</span></td>
+				</tr>
+				<tr class="lightgreybc">
+					<td><span class="math">\(7 \)</span></td>
+					<td><span class="math">\( 11 \)</span></td>
+					<td><span class="math">\( 0,09 \)</span></td>
+				</tr>
+				<tr>
+					<td><span class="math">\(7\frac{1}{3} \)</span></td>
+					<td><span class="math">\( 13 \)</span></td>
+					<td><span class="math">\( 0,08 \)</span></td>
+				</tr>
+				<tr>
+					<td><span class="math">\( 7\frac{2}{3} \)</span></td>
+					<td><span class="math">\( 14 \)</span></td>
+					<td><span class="math">\( 0,07 \)</span></td>
+				</tr>
+				<tr class="lightgreybc">
+					<td><span class="math">\(8 \)</span></td>
+					<td><span class="math">\( 16 \)</span></td>
+					<td><span class="math">\( 0,06 \)</span></td>
+				</tr>
+				<tr>
+					<td><span class="math">\(8\frac{1}{3} \)</span></td>
+					<td><span class="math">\( 18 \)</span></td>
+					<td><span class="math">\( 0,06 \)</span></td>
+				</tr>
+				<tr>
+					<td><span class="math">\( 8\frac{2}{3} \)</span></td>
+					<td><span class="math">\( 20 \)</span></td>
+					<td><span class="math">\( 0,05 \)</span></td>
+				</tr>
+				<tr class="lightgreybc">
+					<td><span class="math">\(9 \)</span></td>
+					<td><span class="math">\( 22 \)</span></td>
+					<td><span class="math">\( 0,04 \)</span></td>
+				</tr>
+			</tbody>
+		</table>
+
+		<p>Dem der er markeret med <span class="math">\( ^* \)</span> passer ikke helt med udregningerne, da de rammer en decimal forbi. Der må være en historisk årsag til at disse tal vises forkert. En anden årsag kan være at man ikke anvender brøken til at beregne værdierne, men at man anvender <span class="math">0,3</span> og <span class="math">0,7</span> i stedet for <span class="math">\( \frac{1}{3} \)</span> og <span class="math">\( \frac{2}{3} \)</span>. Uanset hvad skal man se det som <span class="math">\( \frac{1}{3} \)</span> spring (stops). Læs f.eks: <a href="https://en.wikipedia.org/wiki/F-number" target="_blank">https://en.wikipedia.org/wiki/F-number</a>.</p>
+
+
+</details>
+
 
 <p>Du kan se et regneark med tallene her: <a href="https://docs.google.com/spreadsheets/d/1IfwU4dL4zcto-_TDdbE1txQwO2CDju0cnmIqFYBjmJ8/edit?usp=sharing" target="_blank">https://docs.google.com/spreadsheets/d/1IfwU4dL4zcto-_TDdbE1txQwO2CDju0cnmIqFYBjmJ8/edit?usp=sharing</a></p>
 
