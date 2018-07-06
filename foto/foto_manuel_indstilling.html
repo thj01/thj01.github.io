@@ -115,13 +115,32 @@
 
 <h2>Hvad er lys</h2>
 
-<p>Lys og lysets brydning blev først for alvor beskrevet af <span class="inl_cmd">Isaac Newton</span> (1643-1727). Det var blandt andet ham der beviste at hvidt lys indeholder alle farver og beskrev hvordan optik virker (<a href="http://www.gutenberg.org/files/33504/33504-h/33504-h.htm" target="_blank">Netwton: Optics - a Treatise of the Reflections, Refractions, Inflections, and Colours of Light (1704)</a>).</p>
-
-<p>De farver vi ser med øjnene kalder vi for analogt lys. Det indeholder uendeligt mange farver og nuancer. De farver vi kan se med vores øje er beskrevet i <a href="https://en.wikipedia.org/wiki/CIE_1931_color_space" target="_blank">CIE 1931 color space</a> modellen.</p>
+<p>Det som vi normalt omtaler som lys er egentlig tilbagekastet elektromagnetisk stråling, der har en bølgelænge mellem 380 nanometer (violet) og op til 750 nanometer (rød). </p>
 
 <figure id="">
 
-	<img class="" src="images/farver_CIE-1931_diagram_in_LAB_space.svg" alt="" title="" />
+	<img class="p90" src="images/farver_Linear_visible_spectrum.svg" alt="_" title="_" />
+
+	<figcaption>_</figcaption>
+
+</figure>
+
+
+<p>Så det vi ser som en rød trøje er reelt bare et udtryk for at det kun er det røde lys der bliver kastet tilbage den. Det er derfor at farver kan ændre sig, alt efter lyskilden f.eks: neonrør, dagslys og hvilken tid det er på dagen.</p>
+	
+<details>
+
+	<summary>Lys og lysets brydning (Sir Isaac Newton)</summary>
+
+	<p>	Lys og lysets brydning blev først for alvor beskrevet af <span class="inl_cmd">Isaac Newton</span> (1643-1727). Det var blandt andet ham der beviste at hvidt lys indeholder alle farver og beskrev hvordan optik virker (<a href="http://www.gutenberg.org/files/33504/33504-h/33504-h.htm" target="_blank">Netwton: Optics - a Treatise of the Reflections, Refractions, Inflections, and Colours of Light (1704)</a>).</p>
+
+</details>
+
+<p>I 1931 undersøgte man hvilke farver vi kan se og det farverum kalder man for  <a href="https://en.wikipedia.org/wiki/CIE_1931_color_space" target="_blank">CIE 1931 color space</a>. Der skal dog tages det forbehold, at de farver du kan se herunder er de farver som din skærm kan vise - og det svarer i langt de fleste tilfælde til det opmarkerede område sRGB. Så af de synlige farver der findes, kan en standard  skærm (eller printer) kun vise omkring 30% af. </p>
+
+<figure id="">
+
+	<img class="" src="images/farver_CIE-1931_diagram_in_LAB_space_srgb.svg" alt="" title="" />
 
 	<figcaption><a href="https://commons.wikimedia.org/wiki/File:CIE-1931_diagram_in_LAB_space.svg#/media/File:CIE-1931_diagram_in_LAB_space.svg">CIE-1931 diagram in LAB space</a>" by <a href="//en.wikipedia.org/wiki/User:Paulschou" class="extiw" title="en:User:Paulschou">Paulschou</a> at <a class="external text" href="http://en.wikipedia.org">en.wikipedia</a>. Licensed under <a href="http://creativecommons.org/licenses/by-sa/3.0" title="Creative Commons Attribution-Share Alike 3.0">CC BY-SA 3.0</a> via <a href="https://commons.wikimedia.org/wiki/">Commons</a>.</figcaption>
 
@@ -129,9 +148,7 @@
 
 <p>Det vi opfatter som farver er det som der bliver kastet tilbage fra det vi kigger på. En rød trøje er rød, fordi den reflekterer den røde farve. Alle andre farver er absorberet. Det er derfor vi kan ændre farverne på ting ved at anvende forskelligt lys. F.eks. vil ting fremstå rødlige når vores lyskilde er et stearinlys eller et bål.</p>
 
-<p>Så længe vi er i den analoge del af kameraet, er alle farver og nuancer i spil, men for at vi kan behandle den digitalt skal farverne <a href="http://denstoredanske.dk/It,_teknik_og_naturvidenskab/Fysik/Klassisk_mekanik_og_kvantefysik/kvantiseret" target="_blank">kvantiseres</a>, og det gøres ved at beskrive farverne som en blanding mellem <b>R</b>ød, <b>G</b>ul og <b>G</b>røn. </p>
-
-<p>For at kunne arbejde med farverne digitalt bliver det kvantiseret. I et moderne kamera bliver farverne behandlet i 12 eller 14 bit (4096 eller 16384 farver pr kanal). For at sætte det i perspektiv har et jpg billede 256 farver pr kanal. </p>
+<p>Så længe vi er i den analoge del af kameraet, er alle farver og nuancer i spil, men for at vi kan behandle den digitalt skal farverne <a href="http://denstoredanske.dk/It,_teknik_og_naturvidenskab/Fysik/Klassisk_mekanik_og_kvantefysik/kvantiseret" target="_blank">kvantiseres</a>, og det gøres ved at beskrive farverne som en blanding mellem <b>R</b>ød, <b>G</b>ul og <b>G</b>røn. I et moderne kamera bliver farverne behandlet i 12 eller 14 bit (4096 eller 16384 farver pr kanal). For at sætte det i perspektiv har et jpg billede 256 farver pr kanal. </p>
 
 <p>Vælger du at tage dine billeder i RAW-format bliver billederne gemt med alle 12/14 bit.</p>
 
@@ -157,15 +174,19 @@
 
 <p><b>Blændet</b> justerer hvad der skal være i fokus. Hvis man har en lav f-stopværdi, så er det kun et meget smalt område der vil stå skarpt. Resten vil blive sløret i større eller mindre grad. Jo mere man vil have skarpt jo højere f-stop skal man vælge.</p>
 
-<p>Allerede her støder vi på den første udfordring. Vi har brug for lys for at kunne tage billedet, men jo højere detaljegrad og skarphed vi ønsker - jo mindre lys har vi tilgængelig.</p>
+<p>Vær opmærksom på, at jo dybdeskarphed vil vil have,jo mindre lys lukker objektivet ind..</p>
 
 <h3>Lukkeren</h3>
 
-<p>Lukkeren bestemmer hvor længe censoren skal udsættes for lys. For at et billede kan være skarpt skal der tages forbehold for både rystelserne i din hånd og motivets bevægelse. Forestil dig f.eks. at du vil tage et billede af et træ ude i haven. Træet står stille, men du skal også forholde dig til at du ryster på hånden.</p>
+<p>Lukkeren bestemmer hvor længe vi lukker lys ind (lysmængde). For at et billede kan være skarpt skal der tages forbehold for kameraets rystelserne og motivets bevægelse. Det nytter ikke at motivet står stille hvis din hånd ryster - og modsat.</p>
+
+<p>Der findes i dag teknologi (vibrationskontrol), der mekanisk udligner de rystelser kameraet bliver udsat for når vi tager håndholdte billeder. Det er "must have", fordi vi så kan udnytte en det til at åbne mere for lyset.</p>
 
 <h3>Censoren (input)</h3>
 
-<p>Censoren består af nogle små enheder der der måler intensiteten af lyset efter det er blevet filtreret i <span class="inl_cmd">RGB</span>-farverne.  </p>
+<p>Censoren er en chip, som består af en masse receptorer der måler lysindfaldet, og som sørger for at filtrere lyset i RGB-farver. Jo bedre censoren er teknisk set, jo bedre vil den kunne omsætte lys til brugbar data.</p>
+
+<p>En af udfordringerne ved disse receptorer er, at isolere dem fra hinanden, da man risikerer at de påvirker hinanden elektromagnetisk. Det er bl.a. derfor at fullframe censorer kan gøres mere følsom (arbejde ved mindre lysmængder), simpelthen fordi de er placeret i større afstand fra hinanden end ved en crop-censor.</p>
 
 
 <h2>Den digitale del</h2>
