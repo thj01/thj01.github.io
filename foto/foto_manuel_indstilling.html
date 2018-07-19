@@ -146,11 +146,40 @@
 
 </figure>
 
-<p>Det vi opfatter som farver er det som der bliver kastet tilbage fra det vi kigger på. En rød trøje er rød, fordi den reflekterer den røde farve. Alle andre farver er absorberet. Det er derfor vi kan ændre farverne på ting ved at anvende forskelligt lys. F.eks. vil ting fremstå rødlige når vores lyskilde er et stearinlys eller et bål.</p>
+<p>Det vi opfatter som farver, er lystes reflektion (genskin) fra det vi kigger på. En rød trøje er rød, fordi den reflekterer den røde farve. De andre farver bliver absorberet (slugt) af materialet.</p>
 
-<p>Så længe vi er i den analoge del af kameraet, er alle farver og nuancer i spil, men for at vi kan behandle den digitalt skal farverne <a href="http://denstoredanske.dk/It,_teknik_og_naturvidenskab/Fysik/Klassisk_mekanik_og_kvantefysik/kvantiseret" target="_blank">kvantiseres</a>, og det gøres ved at beskrive farverne som en blanding mellem <b>R</b>ød, <b>G</b>ul og <b>G</b>røn. I et moderne kamera bliver farverne behandlet i 12 eller 14 bit (4096 eller 16384 farver pr kanal). For at sætte det i perspektiv har et jpg billede 256 farver pr kanal. </p>
+<figure id="">
 
-<p>Vælger du at tage dine billeder i RAW-format bliver billederne gemt med alle 12/14 bit.</p>
+	<img class="p90" src="images/reflektion_af_farver.svg" alt="_" title="_" />
+	
+	<figcaption></figcaption>
+
+
+</figure>
+
+<p>Det er denne egenskab ved lys, der gør at der er to ting vi skal være opmærksomme på:</p>
+
+<ol class="fat_li">
+	<li>Vi bliver nød til at sætte hvidbalancen så kameraet ved hvordan farverne skal tolkes.</li>
+	
+	<p>Kameraer er som standard indstillet til at gætte sig til lysforholdene. I undedørs og naturligt lys går det som regel godt, men kameraet kan have svært ved at gætte det indendørs, hvis vægene har kraftige farver, hvis det er neonlys osv.</p>
+	
+	<p>Det er vigtigt at hvidbalancen indstilles ved hjælp af en grå farve, da dette sikrer at alle farver reflekteres ens. Læs mere nedenfor.</p>
+	
+	<li>Vi kan tone vores motiv.</li>
+	
+	<p>Ved at sætte farvet lys på vores motiv, kan vi ændre farvetonen.</p>
+	
+	<p>Et bål/stearinlys udsender mere rødt lys end blåt, så derfor vil billeder taget i dette lys komme til at virke varmere.</p>
+	
+	
+</ol>
+
+
+
+<p>Så længe vi er i den analoge del af kameraet, er alle motivets farver og nuancer i spil, men for at vi kan behandle den digitalt skal farverne <a href="http://denstoredanske.dk/It,_teknik_og_naturvidenskab/Fysik/Klassisk_mekanik_og_kvantefysik/kvantiseret" target="_blank">kvantiseres</a>, og det gøres ved at beskrive farverne som en blanding mellem <b>R</b>ød, <b>G</b>ul og <b>G</b>røn. I et moderne kamera bliver farverne behandlet i 12 eller 14 bit (4096 eller 16384 farver pr kanal). BIlleder der er gemt med alle de "rå" informationer kaldes for RAW-billeder.</p>
+
+<p>For at sætte det i perspektiv har et jpg billede (det mest anvendte billedformat på nettet) 256 farver pr kanal. Og den farvegengivelse er rigeligt til, at vi kan få en fornemmelse for de farver der er med på billedet.</p>
 
 
 
@@ -186,6 +215,8 @@
 
 <p>Censoren er en chip, som består af en masse receptorer der måler lysindfaldet, og som sørger for at filtrere lyset i RGB-farver. Jo bedre censoren er teknisk set, jo bedre vil den kunne omsætte lys til brugbar data.</p>
 
+<p>Det betyder også at man kan skrue op og ned for deres evne til at "læse" lyset. Elektronikken kan altså tilpasse sig til de lysforhold du fotograferer i. </p>
+
 <p>En af udfordringerne ved disse receptorer er, at isolere dem fra hinanden, da man risikerer at de påvirker hinanden elektromagnetisk. Det er bl.a. derfor at fullframe censorer kan gøres mere følsom (arbejde ved mindre lysmængder), simpelthen fordi de er placeret i større afstand fra hinanden end ved en crop-censor.</p>
 
 
@@ -207,22 +238,62 @@
 
 <ul class="disc">
 	<li>Censorens kvalitet og størrelse</li>
-	<li>Censorens pixel-tæthed</li>
-	<li>Elektronikken der konverterer fra analog til digital signal</li>
-	<li>Måden elektronikken passer sammen/overholder specifikationer</li>
+	<li>Censorens pixel-tæthed (afstand mellem censorer)</li>
+	<li>Elektronikken (kvaliteten heraf) der konverterer fra analog til digital signal</li>
 </ul>
 
-<p>Umiddelbart skulle man tro at en pixels der ligger tætte på hinanden er den bedste løsning, fordi det giver flere detaljer. Det giver også flere detaljer, men det betyder også at der begynder at komme elektronisk støj mellem de enkelte pixels. Det betyder faktisk at man kan få problemer ved lav lysstyrke, fordi den elektriske støj kan "overdøve" det analoge lys.</p>
+<p>Umiddelbart skulle man tro at en pixels der ligger tætte på hinanden giver den bedste opløsning, fordi det giver flere detaljer. Men jo tættere disse pixels ligger på hinanden det betyder også at der kan komme elektromagnetisk støj mellem dem.</p>
 
-<p>Det er en af årsagerne til at et kamera med Full Frame censor kan give bedre billeder end et kamera med mindre censor og samme antal pixels. </p>
+<p>En censor fungerer ved, at den omsætter lyset til signaler. Jo mindre lys der er tilgængelig, jo mere skal signalet forstærkes for at det kan aflæses - og jo mere elektromagnetisk støj vil der komme. Se eksemplet herunder, hvor begge billeder er taget med en lukketid på 1/160, brændvidde på F8.0 og ISO 12800 :</p>
 
-<p>Alle de ovenstående elementer har indflydelse på det som <span class="inl_cmd">CPU</span>'en har at arbejde med. </p>
+<table class="centreret">
+	<thead>
+		<tr>
+			<th>Canon g16 (crop-censor)</th>
+			<th>Canon 6D (full frame censor)</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><abbr title="Afstand mellem pixels på censoren">Pixel Pitch</abbr> = &asymp; 1,9 &mu;m (<a href="https://www.imaging-resource.com/PRODS/canon-g16/canon-g16DAT.HTM" target="_blank">Henvisning</a>)</td>
+			<td><abbr title="Afstand mellem pixels på censoren">Pixel Pitch</abbr> = &asymp; 6,54 &mu;m (<a href="https://www.imaging-resource.com/PRODS/canon-6d/canon-6dDAT.HTM" target="_blank">Henvisning</a>)</td>
+		</tr>		
+		<tr>
+			<td>
+			
+				<figure id="">
+				
+					<img class="p60" src="images/pixelsize_iso12800_crop_censor.JPG" alt="_" title="_" />
+				
+				</figure>
+			
+			
+			</td>
+			<td colspan="">
+			
+				<figure id="">
+				
+					<img class="p60" src="images/pixelsize_iso12800_FF_censor.JPG" alt="_" title="_" />
+				
+		
+				</figure>
+			
+			</td>
+		</tr>
+
+
+	</tbody>
+</table>
+
+<p>Man får ikke bedre billeder en hardwaren og fysikkens love tillader</p>
 
 <h2>CPU</h2>
 
-<p>For al digital databehandling der er der en gylden regel. Jo mere effektiv en CPU er jo mere kan den levere. <span class="inl_cmd">CPU</span>'en er også et af de steder hvor der er forskel på almindelige og high-end kameraer.</p>
+<p>CPU'en sørger for at aflæse, behandle og skrive de data som censoren modtager. Jo nyere den er jo mere effektivt og hurtigt vil den kunne behandle input.</p>
 
-<p>Det som afgør hvordan data fra <span class="inl_cmd">censoren</span> tolkes er de programmer som CPU'en anvender. De data som CPU'en skriver til den/de endelig(e) filer er ikke de rå data, som ramte <span class="inl_cmd">censoren</span>, men kameraets tolkning af disse data.</p>
+<p>Ved hjælp af algoritmer kan CPU'en forbedre billedkvaliteten, korrigere for objektivtype osv. hvilket kan være vigtigt hvis man tager billeder i jpg format.</p>
+
+<p>Det som afgør hvordan data fra <span class="inl_cmd">censoren</span> tolkes er de algoritmer (programmer) som CPU'en anvender. De data som CPU'en skriver til den/de endelig(e) filer er ikke de rå data, som ramte <span class="inl_cmd">censoren</span>, men kameraets tolkning af disse data.</p>
 
 <p>De fleste kameraer kan både gemme jpg (8-bit og komprimeret med tab) og et <span class="inl_cmd">RAW</span> format, som kan være både 12 og 14 bit. Man kan sige at CPU'en fremkalder billedet og gør det tilgængelig for videre bearbejde. Fordelen ved at anvende RAW formatet er, at man har en meget nøjagtige gengivelse af hvad censoren leverede videre, og at man kan arbejde med billedet <span class="inl_cmd">non-destruktivt</span> - altså uden at ændre på selve filen.</p>
 
