@@ -83,11 +83,11 @@
 	
 		<p>Jo længere ned lukkertiden kan sættes jo mere lys har vi at arbejde med - men hvis motivet er i bevægelse risikerer vi at det bliver sløret. Hvis der står s efter tallet er det i sekunder, hvis ikke er det <span class="math">\( \frac{ 1 }{ sek. } \)</span></p>
 	
-	<li>ISO indstilles, så censoren kan eksponere billedet korrekt</li>
+	<li>ISO indstilles, så sensoren kan eksponere billedet korrekt</li>
 	
-		<p><b>Effekt/enhed:</b> Censorens lysfølsomhed / ISO</p>
+		<p><b>Effekt/enhed:</b> Sensorens lysfølsomhed / ISO</p>
 		
-		<p>ISO beskriver hvor lysfølsom censoren er, og langt de fleste kameraer har ISO 100 som mindste værdi. Det betyder at ISO 200 er 2x så lysfølsom som ISO 100Ulempen ved høje ISO værdier er, at en stigende digital støj, som viser sig ved at billedet bliver kornet. Jo dyrere kamera - jo højere ISO kan man anvende uden støj.</p>
+		<p>ISO beskriver hvor lysfølsom sensoren er, og langt de fleste kameraer har ISO 100 som mindste værdi. Det betyder at ISO 200 er 2x så lysfølsom som ISO 100Ulempen ved høje ISO værdier er, at en stigende digital støj, som viser sig ved at billedet bliver kornet. Jo dyrere kamera - jo højere ISO kan man anvende uden støj.</p>
 		
 	<li>Belysning</li>
 	
@@ -199,7 +199,7 @@
 
 <p>Objektivet har to parametre: <span class="inl_cmd">Brændvidde</span> og <span class="inl_cmd">blænde</span>. </p>
 
-<p><b>Brændvidden</b> fortæller hvordan ens motiv bliver afbilledet på censoren. Vil man have meget af omgivelserne med vælger man en lav brændvidde. Hvis man vil have sit motiv i fokus vælger man en høj brændvidde</p>
+<p><b>Brændvidden</b> fortæller hvordan ens motiv bliver afbilledet på sensoren. Vil man have meget af omgivelserne med vælger man en lav brændvidde. Hvis man vil have sit motiv i fokus vælger man en høj brændvidde</p>
 
 <p><b>Blændet</b> justerer hvad der skal være i fokus. Hvis man har en lav f-stopværdi, så er det kun et meget smalt område der vil stå skarpt. Resten vil blive sløret i større eller mindre grad. Jo mere man vil have skarpt jo højere f-stop skal man vælge.</p>
 
@@ -211,18 +211,28 @@
 
 <p>Der findes i dag teknologi (vibrationskontrol), der mekanisk udligner de rystelser kameraet bliver udsat for når vi tager håndholdte billeder. Det er "must have", fordi vi så kan udnytte en det til at åbne mere for lyset.</p>
 
-<h3>Censoren (input)</h3>
+<h3>Sensoren (input)</h3>
 
-<p>Censoren er en chip, som består af en masse receptorer der måler lysindfaldet, og som sørger for at filtrere lyset i RGB-farver. Jo bedre censoren er teknisk set, jo bedre vil den kunne omsætte lys til brugbar data.</p>
+<p>Sensoren er en chip, som består af en masse receptorer der måler lysindfaldet, og som sørger for at filtrere lyset i RGB-farver. Jo bedre sensoren er teknisk set, jo bedre vil den kunne omsætte lys til brugbar data. Herunder er der en illustration der viser princippet i hvordan sensoren læser de forskellige farver (bølgelængder).</p>
 
-<p>Det betyder også at man kan skrue op og ned for deres evne til at "læse" lyset. Elektronikken kan altså tilpasse sig til de lysforhold du fotograferer i. </p>
+<figure id="">
 
-<p>En af udfordringerne ved disse receptorer er, at isolere dem fra hinanden, da man risikerer at de påvirker hinanden elektromagnetisk. Det er bl.a. derfor at fullframe censorer kan gøres mere følsom (arbejde ved mindre lysmængder), simpelthen fordi de er placeret i større afstand fra hinanden end ved en crop-censor.</p>
+	<img class="p60" src="images/Bayer_pattern_on_sensor_profile.svg" alt="_" title="_" />
+
+	<figcaption><a href="https://commons.wikimedia.org/wiki/File:Bayer_pattern_on_sensor_profile.svg" target="_blank">https://commons.wikimedia.org/wiki/File:Bayer_pattern_on_sensor_profile.svg</a> (Min oversættelse)</figcaption>
+
+</figure>
+
+<p>Man kan skrue op sensorens evne til at "læse" lyset ved hjælp af ISO værdien. Jo højere ISO'en er, jo følsommere er sensoren.</p>
+
+<h4>Elektronisk støj</h4>
+
+<p>En af udfordringerne ved disse receptorer er, at isolere dem fra hinanden, da man risikerer at de påvirker hinanden elektromagnetisk. Det er bl.a. derfor at fullframe sensorer kan gøres mere følsom (arbejde ved mindre lysmængder), simpelthen fordi de er placeret i større afstand fra hinanden end ved en crop-sensor.</p>
 
 
 <h2>Den digitale del</h2>
 
-<p>I den digitale del af kameraet arbejdes der videre med censorens output.</p>
+<p>I den digitale del af kameraet arbejdes der videre med sensorens output.</p>
 
 <figure id="">
 
@@ -232,38 +242,43 @@
 
 </figure>
 
-<h2>Censoren (output)</h2>
+<h3>Sensoren (output)</h3>
 
-<p>Det som censoren modtager er analogt, og det skal omsættes til digitale signaler. Det er bl.a. i denne proces, at forskellen mellem kameraer viser sig. Det der har betydning er:</p>
+<p>Det som sensoren modtager er analogt, og det skal omsættes til digitale signaler. Det er bl.a. i denne proces, at forskellen mellem kameraer viser sig. Det der har betydning er:</p>
 
 <ul class="disc">
-	<li>Censorens kvalitet og størrelse</li>
-	<li>Censorens pixel-tæthed (afstand mellem censorer)</li>
+	<li>Sensorens kvalitet og størrelse</li>
+	<li>Sensorens pixel-tæthed (afstand mellem sensorer)</li>
 	<li>Elektronikken (kvaliteten heraf) der konverterer fra analog til digital signal</li>
 </ul>
 
 <p>Umiddelbart skulle man tro at en pixels der ligger tætte på hinanden giver den bedste opløsning, fordi det giver flere detaljer. Men jo tættere disse pixels ligger på hinanden det betyder også at der kan komme elektromagnetisk støj mellem dem.</p>
 
-<p>En censor fungerer ved, at den omsætter lyset til signaler. Jo mindre lys der er tilgængelig, jo mere skal signalet forstærkes for at det kan aflæses - og jo mere elektromagnetisk støj vil der komme. Se eksemplet herunder, hvor begge billeder er taget med en lukketid på 1/160, brændvidde på F8.0 og ISO 12800 :</p>
+<p>En sensor fungerer ved, at den omsætter lyset til signaler. Jo mindre lys der er tilgængelig, jo mere skal signalet forstærkes for at det kan aflæses og jo mere elektromagnetisk støj vil der komme. Se eksemplet herunder, hvor begge billeder er taget med en lukketid på 1/160, brændvidde på F8.0 og ISO 12800 :</p>
+
+
 
 <table class="centreret">
 	<thead>
 		<tr>
-			<th>Canon g16 (crop-censor)</th>
-			<th>Canon 6D (full frame censor)</th>
+			<th>Canon g16 (crop-sensor)</th>
+			<th>Canon 6D (full frame sensor)</th>
+		</tr>
+		<tr>
+			<td colspan="2">Lukkertid: 1/160 &nbsp;&nbsp;&nbsp; Blænde: F 8,0 &nbsp;&nbsp;&nbsp; ISO: 12800</td>
 		</tr>
 	</thead>
 	<tbody>
 		<tr>
-			<td><abbr title="Afstand mellem pixels på censoren">Pixel Pitch</abbr> = &asymp; 1,9 &mu;m (<a href="https://www.imaging-resource.com/PRODS/canon-g16/canon-g16DAT.HTM" target="_blank">Henvisning</a>)</td>
-			<td><abbr title="Afstand mellem pixels på censoren">Pixel Pitch</abbr> = &asymp; 6,54 &mu;m (<a href="https://www.imaging-resource.com/PRODS/canon-6d/canon-6dDAT.HTM" target="_blank">Henvisning</a>)</td>
+			<td><abbr title="Afstand mellem pixels på sensoren">Pixel Pitch</abbr> = &asymp; 1,9 &mu;m (<a href="https://www.imaging-resource.com/PRODS/canon-g16/canon-g16DAT.HTM" target="_blank">Henvisning</a>)</td>
+			<td><abbr title="Afstand mellem pixels på sensoren">Pixel Pitch</abbr> = &asymp; 6,54 &mu;m (<a href="https://www.imaging-resource.com/PRODS/canon-6d/canon-6dDAT.HTM" target="_blank">Henvisning</a>)</td>
 		</tr>		
 		<tr>
 			<td>
 			
 				<figure id="">
 				
-					<img class="p60" src="images/pixelsize_iso12800_crop_censor.JPG" alt="_" title="_" />
+					<img class="p60" src="images/pixelsize_iso12800_crop_sensor.JPG" alt="_" title="_" />
 				
 				</figure>
 			
@@ -273,7 +288,7 @@
 			
 				<figure id="">
 				
-					<img class="p60" src="images/pixelsize_iso12800_FF_censor.JPG" alt="_" title="_" />
+					<img class="p60" src="images/pixelsize_iso12800_FF_sensor.JPG" alt="_" title="_" />
 				
 		
 				</figure>
@@ -287,15 +302,15 @@
 
 <p>Man får ikke bedre billeder en hardwaren og fysikkens love tillader</p>
 
-<h2>CPU</h2>
+<h3>CPU</h3>
 
-<p>CPU'en sørger for at aflæse, behandle og skrive de data som censoren modtager. Jo nyere den er jo mere effektivt og hurtigt vil den kunne behandle input.</p>
+<p>CPU'en sørger for at aflæse, behandle og skrive de data som sensoren modtager. Jo nyere den er jo mere effektivt og hurtigt vil den kunne behandle input.</p>
 
 <p>Ved hjælp af algoritmer kan CPU'en forbedre billedkvaliteten, korrigere for objektivtype osv. hvilket kan være vigtigt hvis man tager billeder i jpg format.</p>
 
-<p>Det som afgør hvordan data fra <span class="inl_cmd">censoren</span> tolkes er de algoritmer (programmer) som CPU'en anvender. De data som CPU'en skriver til den/de endelig(e) filer er ikke de rå data, som ramte <span class="inl_cmd">censoren</span>, men kameraets tolkning af disse data.</p>
+<p>Det som afgør hvordan data fra <span class="inl_cmd">sensoren</span> tolkes er de algoritmer (programmer) som CPU'en anvender. De data som CPU'en skriver til den/de endelig(e) filer er ikke de rå data, som ramte <span class="inl_cmd">sensoren</span>, men kameraets tolkning af disse data.</p>
 
-<p>De fleste kameraer kan både gemme jpg (8-bit og komprimeret med tab) og et <span class="inl_cmd">RAW</span> format, som kan være både 12 og 14 bit. Man kan sige at CPU'en fremkalder billedet og gør det tilgængelig for videre bearbejde. Fordelen ved at anvende RAW formatet er, at man har en meget nøjagtige gengivelse af hvad censoren leverede videre, og at man kan arbejde med billedet <span class="inl_cmd">non-destruktivt</span> - altså uden at ændre på selve filen.</p>
+<p>De fleste kameraer kan både gemme jpg (8-bit og komprimeret med tab) og et <span class="inl_cmd">RAW</span> format, som kan være både 12 og 14 bit. Man kan sige at CPU'en fremkalder billedet og gør det tilgængelig for videre bearbejde. Fordelen ved at anvende RAW formatet er, at man har en meget nøjagtige gengivelse af hvad sensoren leverede videre, og at man kan arbejde med billedet <span class="inl_cmd">non-destruktivt</span> - altså uden at ændre på selve filen.</p>
 
 
 
@@ -305,8 +320,8 @@
 
 <ul class="none">
 	<li><b>Hvidbalance</b>: Sikrer den korrekte tolkning af farver</li>
-	<li><b>Lukkertid</b>: Hvor lang tid censoren bliver belyst</li>
-	<li><b>ISO</b>: Hvor lysfølseom censoren er</li>
+	<li><b>Lukkertid</b>: Hvor lang tid sensoren bliver belyst</li>
+	<li><b>ISO</b>: Hvor lysfølseom sensoren er</li>
 	<li><b>Blænde</b>: Hvor meget lys objektivet lader komme igennem og dybdeskarphed</li>
 </ul>
 
@@ -318,7 +333,7 @@
 
 <h2>Lukkertid</h2>
 
-<p>Lukkertiden bestemmer i hvor lang en periode censoren bliver belyst.</p>
+<p>Lukkertiden bestemmer i hvor lang en periode sensoren bliver belyst.</p>
 
 <ul class="none fat_li">
 	<li>Lang lukkertid: Mere lys, på bekostning af at mindre rystelser i kameraet og/eller motivets bevægelse kan sløre billedet.</li>
@@ -329,9 +344,9 @@
 
 <h2>ISO</h2>
 
-<p>ISO bestemmer hvor lysfølsom censoren er.</p>
+<p>ISO bestemmer hvor lysfølsom sensoren er.</p>
 
-<p>Hvis man er et sted hvor der kun er svag belysning, kan man sætte ISO op, så censoren kan aflæse det lys der er. Det sker på bekostning af, at der kan komme støj på de billeder man tager.</p>
+<p>Hvis man er et sted hvor der kun er svag belysning, kan man sætte ISO op, så sensoren kan aflæse det lys der er. Det sker på bekostning af, at der kan komme støj på de billeder man tager.</p>
 
 <h2>Blænde</h2>
 
@@ -434,6 +449,16 @@
 </table>
 
 <h1>Hvidbalance</h1>
+
+<p>Et billede er i al sin enkelthed det lys der bliver fanget på sensoren. Sensoren sørger så for at måle mængden af lys i de 3 farveområder (RGB - <b>R</b>ød <b>G</b>røn <b>B</b>lå).  </p>
+
+<figure id="">
+
+	<img class="p60" src="images/Bayer_pattern_on_sensor_profile.svg" alt="_" title="_" />
+
+	<figcaption><a href="https://commons.wikimedia.org/wiki/File:Bayer_pattern_on_sensor_profile.svg" target="_blank">https://commons.wikimedia.org/wiki/File:Bayer_pattern_on_sensor_profile.svg</a> (Min oversættelse)</figcaption>
+
+</figure>
 
 <p><span class="inl_cmd">Hvidbalancen</span> bliver ofte udeladt i når man taler om selv at sætte indstillingerne, men den er vigtig at sætte, for at ens billeder kan tolke farver korrekt. Ideelt set bør den justeres hver gang lysforholdele ændrer sig eller man skifter omgivelser. F.eks. kan det at gå fra et rum med hvide til røde vægge ændre på lyset.</p>
 
@@ -546,7 +571,7 @@
 
 <h1>Lukkertid</h1>
 
-<p>Lukkertiden beskriver den tid som censoren bliver belyst, og den angives i sekunder. Sammenhængen mellem lysindfaldet og lukkertiden er, at hvis lukkertiden halveres, f.eks. fra <span class="math">\( \frac{1}{50}~sekund \)</span> til <span class="math">\( \frac{1}{100}~sekund \)</span>, så halveres lysindfaldet. Fra gammel tid kaldte man dette for et <span class="inl_cmd">stop</span>. Altså den tid der gik fra fotografen fjernede låget fra objektivet til han satte det på igen. F.eks. vil springet fra <span class="math">\( \frac{1}{50}~sekund \)</span> til <span class="math">\( \frac{1}{100}~sekund \)</span> beskrive et <span class="inl_cmd">stop</span>.</p>
+<p>Lukkertiden beskriver den tid som sensoren bliver belyst, og den angives i sekunder. Sammenhængen mellem lysindfaldet og lukkertiden er, at hvis lukkertiden halveres, f.eks. fra <span class="math">\( \frac{1}{50}~sekund \)</span> til <span class="math">\( \frac{1}{100}~sekund \)</span>, så halveres lysindfaldet. Fra gammel tid kaldte man dette for et <span class="inl_cmd">stop</span>. Altså den tid der gik fra fotografen fjernede låget fra objektivet til han satte det på igen. F.eks. vil springet fra <span class="math">\( \frac{1}{50}~sekund \)</span> til <span class="math">\( \frac{1}{100}~sekund \)</span> beskrive et <span class="inl_cmd">stop</span>.</p>
 
 <p>Om man skal anvende lukkertiden til at skabe en bedre eksponering afhænger af ens motiv. Er et et motiv der står stille eller kun bevæger sig lidt, så vil en nedsat lukkertid betyden mindre eller slet ingen ting. Er det f.eks. en bil der kører, så vil en nedsat lukkertid enten medføre en sløret bil eller en sløret baggrund alt efter hvad der fokuseres på. For at holde bilen skarp skal man altså bevæge kameraet  samme hastighed som bilen. </p>
 
@@ -749,17 +774,17 @@
 
 <p><span class="inl_cmd">ISO</span> er en betegnelse, som har fået sit navn efter nogle standarder fra <b>I</b>nternational <b>O</b>rganization for <b>Standardization</b> (<abbr title="international Organization for Standardization">ISO</abbr>), den har ikke en betydning i sig selv.</p>
 
-<p><span class="inl_cmd">ISO</span> indstiller helt basalt censorens lysfølsomhed og skalen på de fleste digitalkameraer springer også i trin af <span class="math">\( \frac{1}{3} \)</span>. Det medfører at ISO 200 er dobbelt så lysfølsomt som ISO 100.</p>
+<p><span class="inl_cmd">ISO</span> indstiller helt basalt sensorens lysfølsomhed og skalen på de fleste digitalkameraer springer også i trin af <span class="math">\( \frac{1}{3} \)</span>. Det medfører at ISO 200 er dobbelt så lysfølsomt som ISO 100.</p>
 
-<p>Udfordringen ved at anvende <span class="inl_cmd">ISO</span> er, at jo højere indstillinge bliver, jo mere vil censoren kunne "overfortolke". Ved lave ISO indstillinger vil censoren afvise meget små udslag, men jo højere man bevæger sig op, jo mere risikerer man at kameraet ser farver der aldrig har været der.</p>
+<p>Udfordringen ved at anvende <span class="inl_cmd">ISO</span> er, at jo højere indstillinge bliver, jo mere vil sensoren kunne "overfortolke". Ved lave ISO indstillinger vil sensoren afvise meget små udslag, men jo højere man bevæger sig op, jo mere risikerer man at kameraet ser farver der aldrig har været der.</p>
 
-<p>Det er på dette punkt at man virkeligt kan finde forskel mellem dyre og billige kameraer, og forskellen ligger i selve censoren der fanger lyset. Udover selve censorens kvalitet, skal man også være opmærksom på censorens pixeltæthed, da det kan have en negativ indvirkning.</p>
+<p>Det er på dette punkt at man virkeligt kan finde forskel mellem dyre og billige kameraer, og forskellen ligger i selve sensoren der fanger lyset. Udover selve sensorens kvalitet, skal man også være opmærksom på sensorens pixeltæthed, da det kan have en negativ indvirkning.</p>
 
 <p>Generelt kan siges:</p>
 
 <ul class="disc">
 	<li>Fullframe kan arbejde med højere <span class="inl_cmd">ISO</span>-indstillinger</li>
-	<li>På pixeltættet censorerer risikerer man at de enkelte celler på censorchippen interagerer med hinanden, og kommer der "fejllys". Dette er et mekanisk og uundgåeligt problem.</li>
+	<li>På pixeltættet sensorerer risikerer man at de enkelte celler på sensorchippen interagerer med hinanden, og kommer der "fejllys". Dette er et mekanisk og uundgåeligt problem.</li>
 	<li>Man skal ikke være bange for at skrue ISO op. Bare ved at gå fra 100 - 400 har man 3x mere lys, og det kan de fleste kameraer.</li>
 </ul>
 

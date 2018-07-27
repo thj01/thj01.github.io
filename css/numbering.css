@@ -20,9 +20,12 @@ h2 {
 }
 
 h3 {
-	counter-reset: sububsubsection;
+	counter-reset: subsubsubsection;
 }
 
+h4 {
+	counter-reset: subsubsubsubsection;
+}
 
 h1::before {
     counter-increment: section;
@@ -39,7 +42,7 @@ h3::before {
 }
 
 h4::before {
-    counter-increment: subsubsection;
+    counter-increment: subsubsubsection;
     content: counter(section) "." counter(subsection) "." counter(subsubsection)  "." counter(subsubsubsection) " ";
 }
 
