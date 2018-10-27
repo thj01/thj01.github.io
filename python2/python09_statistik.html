@@ -51,10 +51,8 @@
 <p>for at kunne anvende statistik funktionerne skal vi importere to moduler: statistics og numpy.</p>
 
 <pre>
-	<code class="python">
-import statistics as st
-import numpy as np
-	</code>
+	<code class="python">import statistics as st
+import numpy as np	</code>
 </pre>
 
 <h1>Deskriptorer</h1>
@@ -97,14 +95,12 @@ import numpy as np
 <p>Typetallet kræver lidt mere programmering, da vi kan risikere at der er flere værdier med samme antal. Derfor skal vi anvende en <span class="inl_cmd">Try</span> sætning.</p>
 
 <pre>
-	<code class="python">
-try:
+	<code class="python">try:
 	st.mode(x)
 	print("Typetal: {0}".format(st.mode(x)))
 	
 except:
-	print("Der er ikke noget typetal (flere værdier med samme antal")
-	</code>
+	print("Der er ikke noget typetal (flere værdier med samme antal")	</code>
 </pre>
 
 <p>Koden gør, at den forsøger at køre det der står under <span class="inl_cmd">try</span>. Hvis den støder ind i en fejl, så vil den gøre det der står under <span class="inl_cmd">except</span>.</p>
@@ -115,8 +111,7 @@ except:
 <p>Her anvender jeg en liste over karakterer i en klasse med 10 elever, som jeg kalder x.</p>
 
 <pre>
-	<code class="python">
->>> import statistics as st
+	<code class="python">>>> import statistics as st
 >>> import numpy as np
 >>> x = [2,2,4,4,4,7,7,10,10,12]
 >>> len(x)
@@ -130,8 +125,7 @@ except:
 >>> st.median(x)
 5.5
 >>> st.mode(x)
-4
-	</code>
+4	</code>
 </pre>
 
 <h2>Eksempel intet typetal</h2>
@@ -139,33 +133,30 @@ except:
 <p>Herunder er lavet et eksempel med datasættet y, hvor både 4 og 7 har lige mange observationer.</p>
 
 <pre>
-	<code class="python">
-import statistics as st
+	<code class="python">import statistics as st
 
 y = [2, 2, 4, 4, 4, 7, 7, 7, 10, 12]
 
 print("Datasæt: {0}\n".format(y))
 
-st.mode(y)
-	</code>
+st.mode(y)	</code>
 </pre>
 
-<pre class="black">
-Datasæt: [2, 2, 4, 4, 4, 7, 7, 7, 10, 12]
+<p><b>Output</b></p>
 
-Traceback (most recent call last):
-  File "statistic_test.py", line 7, in <module>
+<pre>
+<span class="red">Traceback (most recent call last):
+  File "/home/tj/test.py", line 7, in &lt;module>
     st.mode(y)
-  File "C:\Users\ThomasJensen\AppData\Local\Programs\Python\Python36\lib\statistics.py", line 507, in mode
+  File "/usr/lib/python3.6/statistics.py", line 507, in mode
     'no unique mode; found %d equally common values' % len(table)
-statistics.StatisticsError: no unique mode; found 2 equally common values
+statistics.StatisticsError: no unique mode; found 2 equally common values</span>
 </pre>
 
 <p>Koden ændres så den anvender <span class="inl_cmd">try</span>.</p>
 
 <pre>
-	<code class="python">
-import statistics as st
+	<code class="python">import statistics as st
 
 y = [2, 2, 4, 4, 4, 7, 7, 7, 10, 12]
 
@@ -176,14 +167,16 @@ try:
 	print("typetaller er: {0}".format(st.mode(y)))
 	
 except:
-	print("Der er ikke noget typtetal.")
-	</code>
+	print("Der er ikke noget typtetal.")	</code>
 </pre>
 
-<pre class="black">
+<p><b>Output</b></p>
+
+<pre>
+	<code class="python">========================= RESTART: /home/tj/test.py =========================
 Datasæt: [2, 2, 4, 4, 4, 7, 7, 7, 10, 12]
 
-Der er ikke noget typtetal.
+Der er ikke noget typtetal.</code>
 </pre>
 
 <h1>Kvartilsæt</h1>
@@ -191,14 +184,12 @@ Der er ikke noget typtetal.
 <p>For at finde kvartilsæt anvendes funktionen <span class="inl_cmd">np.percentile</span></p>
 
 <pre>
-	<code class="python">
->>> np.percentile(x,25)
+	<code class="python">>>> np.percentile(x,25)
 4.0
 >>> np.percentile(x,50)
 5.5
 >>> np.percentile(x,75)
-9.25
-	</code>
+9.25	</code>
 </pre>
 
 <h1>Varians og spredning</h1>
@@ -223,19 +214,16 @@ Der er ikke noget typtetal.
 </table>
 
 <pre>
-	<code class="python">
->>> st.variance(x)
+	<code class="python">>>> st.variance(x)
 12.622222222222222
 >>> st.stdev(x)
-3.552776691859794
-	</code>
+3.552776691859794	</code>
 </pre>
 
 <h1>Percentiler</h1>
 
 <pre>
-	<code class="python">
-import statistics as st
+	<code class="python">import statistics as st
 import numpy as np
 
 x = [2, 2, 4, 4, 4, 7, 7, 10, 10, 12]
@@ -246,15 +234,16 @@ print("Percentilsæt:")
 
 for i in range(10,101,10):
 
-	print("Værden for den {0}. percentil er: {1}".format(i, round(np.percentile(x,i),1)))
-	</code>
+	print("Værden for den {0}. percentil er: {1}".format(i, round(np.percentile(x,i),1)))	</code>
 </pre>
 
-<pre class="black">
-Observationssæt
----------------
-[2, 2, 4, 4, 4, 7, 7, 10, 10, 12]
+<p><b>Output</b></p>
 
+<pre>
+	<code class="python">========================= RESTART: /home/tj/test.py =========================
+Observationssæt: 
+----------------
+[2, 2, 4, 4, 4, 7, 7, 10, 10, 12]
 Percentilsæt:
 Værden for den 10. percentil er: 2.0
 Værden for den 20. percentil er: 3.6
@@ -265,7 +254,7 @@ Værden for den 60. percentil er: 7.0
 Værden for den 70. percentil er: 7.9
 Værden for den 80. percentil er: 10.0
 Værden for den 90. percentil er: 10.2
-Værden for den 100. percentil er: 12.0
+Værden for den 100. percentil er: 12.0</code>
 </pre>
 
 <h1>Program eksempler</h1>
@@ -285,8 +274,7 @@ Værden for den 100. percentil er: 12.0
 	<summary>Kode til diskret data</summary>
 
 	<pre>
-		<code class="python">
-import statistics as st
+		<code class="python">import statistics as st
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -334,8 +322,7 @@ for i in x_unik:
 plt.xticks(x_unik, x_unik) 
 plt.bar(x_unik,x_unik_antal, width=0.8)
 plt.title("Kontinuert data")
-plt.show()
-		</code>
+plt.show()		</code>
 	</pre>
 </details>
 
@@ -356,8 +343,7 @@ plt.show()
 	<summary>Kode til kontinuert data</summary>
 
 	<pre>
-		<code class="python">
-import statistics as st
+		<code class="python">import statistics as st
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -411,8 +397,7 @@ for i in x_unik:
 plt.xticks(x_unik, x_unik) 
 plt.bar(x_unik,x_unik_antal, width=0.8)
 plt.title("Kontinuert data")
-plt.show()
-		</code>
+plt.show()		</code>
 	</pre>
 </details>
 

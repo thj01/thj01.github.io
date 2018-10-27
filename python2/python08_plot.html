@@ -53,17 +53,34 @@
 	<li>Matplotlib</li>
 </ul>
 
-<h2>Opgradering af pip</h2>
+<p>Det gøres ved hjælp af programmet <span class="inl_cmd">pip</span>, som blev installeret sammen med  Python.</p>
 
-<p>Ekstra pakker installeres med <span class="inl_cmd">pip</span>, og det første vi gør er at opgradere pip</p>
+<p>Det første vi gør er at opgradere pip</p>
 
 <span class="afsnit">På Windows</span>
 
 <code class="cmd">python -m pip install --user --upgrade pip</code>
 
-<span class="afsnit">På Mac</span>
+<span class="afsnit">På Mac/Ubuntu</span>
 
 <code class="cmd">python3 -m pip install --user --upgrade pip</code>
+
+<details>
+
+	<summary>Output</summary>
+
+<pre class="ubuntu_terminal">tj@tj-desktop:~$ python3 -m pip install --user --upgrade pip
+Collecting pip
+  Downloading https://files.pythonhosted.org/packages/c2/d7/90f34cb0d83a6c5631cf71dfe64cc1054598c843a92b400e55675cc2ac37/pip-18.1-py2.py3-none-any.whl (1.3MB)
+    100% |████████████████████████████████| 1.3MB 1.1MB/s 
+Installing collected packages: pip
+Successfully installed pip-18.1
+tj@tj-desktop:~$
+</pre>
+
+</details>
+
+
 
 <h2>Installation af pakker</h2>
 
@@ -74,19 +91,49 @@
 
 <code class="cmd">python -m pip install --user numpy  matplotlib</code>
 
-<span class="afsnit">På Mac</span>
+<span class="afsnit">På Mac/Ubuntu</span>
 
 <code class="cmd">python3 -m pip install --user numpy  matplotlib</code>
+
+<p><b>Output</b></p>
+
+<details>
+
+	<summary>Output</summary>
+
+<pre class="ubuntu_terminal">tj@tj-desktop:~$ python3 -m pip install --user numpy  matplotlib
+Collecting numpy
+  Downloading https://files.pythonhosted.org/packages/16/21/2e88568c134cc3c8d22af290865e2abbd86efa58a1358ffcb19b6c74f9a3/numpy-1.15.3-cp36-cp36m-manylinux1_x86_64.whl (13.9MB)
+    100% |████████████████████████████████| 13.9MB 1.4MB/s 
+Collecting matplotlib
+  Downloading https://files.pythonhosted.org/packages/1e/f8/4aba1144dad8c67db060049d1a8bc740ad9fa35288d21b82bb85de69ff15/matplotlib-3.0.1-cp36-cp36m-manylinux1_x86_64.whl (12.9MB)
+    100% |████████████████████████████████| 12.9MB 1.4MB/s 
+Collecting pyparsing!=2.0.4,!=2.1.2,!=2.1.6,>=2.0.1 (from matplotlib)
+  Downloading https://files.pythonhosted.org/packages/2b/4a/f06b45ab9690d4c37641ec776f7ad691974f4cf6943a73267475b05cbfca/pyparsing-2.2.2-py2.py3-none-any.whl (57kB)
+    100% |████████████████████████████████| 61kB 3.7MB/s 
+Collecting kiwisolver>=1.0.1 (from matplotlib)
+  Downloading https://files.pythonhosted.org/packages/69/a7/88719d132b18300b4369fbffa741841cfd36d1e637e1990f27929945b538/kiwisolver-1.0.1-cp36-cp36m-manylinux1_x86_64.whl (949kB)
+    100% |████████████████████████████████| 952kB 3.4MB/s 
+Collecting python-dateutil>=2.1 (from matplotlib)
+  Downloading https://files.pythonhosted.org/packages/2f/e9/b02e8a1a8c53a55a4f37df1e8e111539d0a3e76828bcd252947a5200b797/python_dateutil-2.7.4-py2.py3-none-any.whl (211kB)
+    100% |████████████████████████████████| 215kB 5.3MB/s 
+Collecting cycler>=0.10 (from matplotlib)
+  Downloading https://files.pythonhosted.org/packages/f7/d2/e07d3ebb2bd7af696440ce7e754c59dd546ffe1bbe732c8ab68b9c834e61/cycler-0.10.0-py2.py3-none-any.whl
+Requirement already satisfied: setuptools in /usr/lib/python3/dist-packages (from kiwisolver>=1.0.1->matplotlib) (39.0.1)
+Requirement already satisfied: six>=1.5 in /usr/lib/python3/dist-packages (from python-dateutil>=2.1->matplotlib) (1.11.0)
+Installing collected packages: numpy, pyparsing, kiwisolver, python-dateutil, cycler, matplotlib
+Successfully installed cycler-0.10.0 kiwisolver-1.0.1 matplotlib-3.0.1 numpy-1.15.3 pyparsing-2.2.2 python-dateutil-2.7.4
+</pre>
+
+</details>
 
 <h2>Anvendelse af pakker</h2>
 
 <p>Herefter kan pakkerne blive tilgået ved at importere det i starten af programmet. Når vi arbejder med plotning af funktioner skal vi importere begge</p>
 
 <pre>
-	<code class="python">
-import numpy as np
-import matplotlib.pyplot as plt
-	</code>
+	<code class="python">import numpy as np
+import matplotlib.pyplot as plt	</code>
 </pre>
 
 <p>Læg mærke til at jeg fra start giver dem de to alias'er <span class="inl_cmd">np</span> og <span class="inl_cmd">plt</span>. De alias'er er valgt fordi det er dem der ofte bruges i diverse guides på nettet.</p>
@@ -97,8 +144,7 @@ import matplotlib.pyplot as plt
 
 
 <pre>
-	<code class="python">
-import numpy as np
+	<code class="python">import numpy as np
 import matplotlib.pyplot as plt
 
 x = np.arange(-10,10,0.01)
@@ -110,8 +156,7 @@ plt.title('$f(x) = 2x-7$')
 plt.xlabel('x-akse (Definitionsmængde)')
 plt.ylabel('y-akse (Værdimængde)')
 
-plt.show()
-	</code>
+plt.show()	</code>
 </pre>
 
 <figure id="">
@@ -125,45 +170,34 @@ plt.show()
 <h2>Gennemgang af koden</h2>
 
 <pre>
-	<code class="python">
-import numpy as np
-import matplotlib.pyplot as plt
-	</code>
+	<code class="python">import numpy as np
+import matplotlib.pyplot as plt	</code>
 </pre>
 
 <p>Nødvendige pakker (dependencies)hentes</p>
 
 
 <pre>
-	<code class="python">
-x = np.arange(-10,10,0.01)
-plt.plot(x, 2*x-7)
-	</code>
+	<code class="python">x = np.arange(-10,10,0.01)
+plt.plot(x, 2*x-7)	</code>
 </pre>
 
 <p>I den første linie sættes definitionsmængden og opløsning (med hvor stor afstand værdierne skal beregnes). Her går det fra <span class="math">\( x = [ -10 ; 10 ] \)</span>, og der vil blive beregnet en værdi hver gang x-aksen stiger med <span class="math">\( 0,01 \)</span>.</p>
 
 <p>Den anden linie laver selve plottet. Parantesen angiver først hvilken værdi på x-alsen den skal anvende og dernæst værdien på y-aksen (i dette tilfælde linien <span class="math">\( y = 2x-7 \)</span></p>.
 
-
-
 <p>Der beregnes punkter - her bliver hver x-værdi koblet på funktionsværdien.</p>
 
-
 <pre>
-	<code class="python">
-plt.grid(True)
-	</code>
+	<code class="python">plt.grid(True)	</code>
 </pre>
 
 <p>Plottet tegnes med et grid (tern).</p>
 
 <pre>
-	<code class="python">
-plt.title('$f(x) = 2x-7$')
+	<code class="python">plt.title('$f(x) = 2x-7$')
 plt.xlabel('x-akse (Definitionsmængde)')
-plt.ylabel('y-akse (Værdimængde)')
-	</code>
+plt.ylabel('y-akse (Værdimængde)')	</code>
 </pre>
 
 <p>Sætter tekststrengen for henholdsvis plottets titel, x-akse og y-akse.</p>
@@ -181,9 +215,7 @@ plt.ylabel('y-akse (Værdimængde)')
 
 <p></p>
 <pre>
-	<code class="python">
-plt.show()
-	</code>
+	<code class="python">plt.show()	</code>
 </pre>
 
 <p>Funktionen der tegner plottet i et eksternt vindue.</p>
@@ -270,9 +302,7 @@ plt.show()
 <h2>Størrelse</h2>
 
 <pre>
-	<code class="python">
-plt.axis([-15, 15, -20, 20])
-	</code>
+	<code class="python">plt.axis([-15, 15, -20, 20])	</code>
 </pre>
 
 <h2>Farve</h2>
@@ -340,13 +370,11 @@ plt.axis([-15, 15, -20, 20])
 <h2>Vandret/lodret linie</h2>
 
 <pre>
-	<code class="python">
-# Horisontal linie
+	<code class="python"># Horisontal linie
 plt.axhline(y=0, color="k")
 
 # Lodret linie
-plt.axvline(x=0)
-	</code>
+plt.axvline(x=0)	</code>
 </pre>
 
 <h3>Øvelse</h3>
@@ -367,13 +395,18 @@ plt.axvline(x=0)
 
 </details>
 
+<blockquote>
+	<p>
+		Det kan ikke anbefales at lave et "kors" på udskrifter fra Python, da det eneste det bruges til er aflæsning. Det kan vi fint med Pythons standard udskrift.
+	</p>
+</blockquote>
+
 <h1>Punkter/tegn</h1>
 
 <p>Hvis man gerne vil markere punkter kan man gøre det på følgende måde. Herunder er der indsat 3 rækker af 5 forskellige punkter</p>
 
 <pre>
-	<code class="python">
-import numpy as np
+	<code class="python">import numpy as np
 import matplotlib.pyplot as plt
 
 plt.axis([-10,10,-10,10])
@@ -397,8 +430,7 @@ plt.plot(4,-4,"h", markersize = 15)
 plt.plot(8,-4,"H", markersize = 15)
 
 plt.title('Punkter')
-plt.show()
-	</code>
+plt.show()	</code>
 </pre>
 
 <figure id="">
@@ -416,8 +448,7 @@ plt.show()
 <p>Farven sættes ligesom ovenfor ved punkter/tegn.</p>
 
 <pre>
-	<code class="python">
-import numpy as np
+	<code class="python">import numpy as np
 import matplotlib.pyplot as plt
 
 plt.axis([-10,10,-10,10])
@@ -430,8 +461,7 @@ plt.plot(x,-pow(x,2)+4,"b--")
 plt.grid(True)
 plt.title('Linier med tegn 1')
 
-plt.show()
-	</code>
+plt.show()	</code>
 </pre>
 
 <figure id="">
@@ -444,8 +474,7 @@ plt.show()
 <p>Man kan også bruge alle tegnene ovenfra, men her skal man selv korrigere afstanden mellem punkterne (markeret med <span class="right">rødt</span>)</p>
 
 <pre>
-	<code class="python">
-import numpy as np
+	<code class="python">import numpy as np
 import matplotlib.pyplot as plt
 
 plt.axis([-10,10,-10,10])
@@ -458,8 +487,7 @@ plt.plot(x,pow(x,2)-5,"bd")
 plt.grid(True)
 plt.title('Linier med tegn 2')
 
-plt.show()
-	</code>
+plt.show()	</code>
 </pre>
 
 <figure id="">
@@ -474,8 +502,7 @@ plt.show()
 <h1>Søjle diagramm</h1>
 
 <pre>
-	<code class="python">
-import numpy as np
+	<code class="python">import numpy as np
 import matplotlib.pyplot as plt
 
 kategorier = ["gruppe a", "gruppe b", "gruppe c", "gruppe d"]
@@ -483,8 +510,7 @@ værdier = [5, 24, 17, 12]
 
 plt.bar(kategorier, værdier, width=0.8)
 plt.title('Søjle diagram')
-plt.show()
-	</code>
+plt.show()	</code>
 </pre>
 
 <figure id="">
@@ -501,8 +527,7 @@ plt.show()
 <h1>Prik diagram</h1>
 
 <pre>
-	<code class="python">
-import numpy as np
+	<code class="python">import numpy as np
 import matplotlib.pyplot as plt
 
 kategorier = ["gruppe a", "gruppe b", "gruppe c", "gruppe d"]
@@ -510,8 +535,7 @@ værdier = [5, 20, 17, 12]
 
 plt.plot(kategorier, værdier, "ro", markersize=5)
 plt.title('Prik diagram')
-plt.show()
-	</code>
+plt.show()	</code>
 </pre>
 
 <figure id="">
