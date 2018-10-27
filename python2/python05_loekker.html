@@ -447,27 +447,32 @@
 <p>Her udskriver vi tal i rækkefølge.</p>
 
 <pre>
-	<code class="python">
->>> for i in range(5):
-		print(i)
+	<code class="python">for i in range(5):
+	print(i)	</code>
+</pre>
 
-	
+<p><b>Output</b></p>
+
+<pre>
+	<code class="python">========================= RESTART: /home/tj/test.py =========================
 0
 1
 2
 3
-4
-	</code>
+4	</code>
 </pre>
 
 <p>Læg mærke til at Python starter med at tælle fra <span class="inl_cmd">0</span>. Man skal vænne sig til at computere tæller fra <span class="inl_cmd">0</span> og ikke en. Hvis vi skal have computeren til at skrive tallen "menneskeligt" skal vi lægge 1 til hver gang:</p>
 
 <pre>
-	<code class="python">
->>> for i in range(5):
-		print(i+1)
+	<code class="python">for i in range(5):
+	print(i+1)	</code>
+</pre>
 
-	
+<p><b>Output</b></p>
+
+<pre>
+	<code class="python">========================= RESTART: /home/tj/test.py =========================
 1
 2
 3
@@ -479,58 +484,60 @@
 <p>Vi kan også vælge en delmængde f.eks. tallene fra 8-13.</p>
 
 <pre>
-	<code class="python">
->>> for i in range(8,13):
-		print(i)
+	<code class="python">for i in range(8,13):
+	print(i)	</code>
+</pre>
 
-	
+<p><b>Output</b></p>
+
+<pre>
+	<code class="python">========================= RESTART: /home/tj/test.py =========================
 8
 9
 10
 11
-12
-	</code>
+12	</code>
 </pre>
 
 <p>Læg mærke til at <span class="inl_cmd">13</span> ikke udskrives, som vi umiddelbart ville forvente. I <span class="inl_cmd">range()</span> er den første værdi inkluderet men ikke den sidste. Det giver den fordel at den udskriver præcis <span class="inl_cmd">13-8=5</span> værdier.</p>
-
 
 <h2>Udskriv vandret</h2>
 
 <p>Det kan være uhensigtsmæssigt at få talrækker som den ovenstående udskrevet med et linieskift hver gang. Ændr koden til ved at tilføje <span class="inl_cmd">end=" "</span>:</p>
 
 <pre>
-	<code class="python">
->>> for i in range(0,10):
-		print(i, end=" ")
+	<code class="python">for i in range(0,10):
+    print(i, end=" ")	</code>
+</pre>
 
-	
+<p><b>Output</b></p>
+
+<pre>
+	<code class="python">========================= RESTART: /home/tj/test.py =========================
 0 1 2 3 4 5 6 7 8 9 
 	</code>
 </pre>
 
+<h2>Udskriv hver 2. tal</h2>
 
-<p>Dette får python til at udskrive uden at lave et linieskift hver gang.</p>
-
-<p>Ved hjælp af <span class="inl_cmd">range</span> kommandoen kan vi også få den til at udskrive hvert x'te tal f.eks. hver andet (lige tal):</p>
+<p>Ved hjælp af <span class="inl_cmd">range</span> kommandoen kan vi også få den til at udskrive hvert x'te tal f.eks. hver andet (lige tal), ved at indsætte 2 som ekstra parameter:</p>
 
 <pre>
-	<code class="python">
->>> for i in range(0,10,2):
-		print(i, end=" ")
-
-	
-0 2 4 6 8 	
-	</code>
+	<code class="python">for i in range(0,10,2): 
+    print(i, end=" ")</code>
 </pre>
 
+<p><b>Output</b></p>
+
+<pre>
+	<code class="python">========================= RESTART: /home/tj/test.py =========================
+0 2 4 6 8 </code>
+</pre>
 
 <p>En for løkke fungerer altså ved at man sætter alle betingelserne i den efterfølgende parentes. Den fortæller altså startværdien, slutværdien (ikke medtaget) og væksten pr. omgang).</p>
 
 <pre>
-	<code class="python">
-for i in range(startværdi, slutværdi, vækst pr. omgang)
-	</code>
+	<code class="python">for i in range(startværdi, slutværdi, vækst pr. omgang)	</code>
 </pre>
 
 <h2>Udskriv baglæns</h2>
@@ -538,77 +545,39 @@ for i in range(startværdi, slutværdi, vækst pr. omgang)
 <p>Dette kan vi også bruge til at tælle baglæs med:</p>
 
 <pre>
-	<code class="python">
->>> for i in range(5,-1,-1):
-	print(i)
+	<code class="python">for i in range(5,-1,-1):
+	print(i, end=" ")</code>
+</pre>
 
-5
-4
-3
-2
-1
-0
-	</code>
+<p><b>Output</b></p>
+
+<pre>
+	<code class="python">========================= RESTART: /home/tj/test.py =========================
+5 4 3 2 1 0</code>
 </pre>
 
 <p>Læg mærke til at startværdien skal være større end slutværdien.</p>
-
-<h2>Brug af tælleren</h2>
-
-<p>Nogle gange skal den samme programlinie køres flere gange. Det kan f.eks. være hvis man gerne vil finde de 12 første trekanttal – altså talrække 1, 3, 6, 10, 15, 21... . Man kan udregne tallene med formlen herunder:</p>
-
-<div class="latex">$$ T_n = 1+2+3 ... +n= \frac {n \cdot (n+1)}{2} $$</div>
-
-<p>Ved at lave en løkke der sørger for at n stiger med en hver gang kan vi altså udregne det næste trekanttal. Her anvender vi en for løkke</p>
-
-<pre>
-<code class="python">
->>> for i in range(1,12):
-		trekanttal = (i*(i+1))/2
-		print(trekanttal, end=" - ")
-
-	
-1.0 - 3.0 - 6.0 - 10.0 - 15.0 - 21.0 - 28.0 - 36.0 - 45.0 - 55.0 - 66.0 -
-	</code>
-</pre>
-
-
-
-<p>Python sætter en decimal på, fordi den ser resulater fra divisionsstykker som <span class="inl_cmd">float</span>. Det fjernes ved at tvinge Python til at se resultatet som et heltal (interger)</p>
-
-
-<pre>
-<code class="python">
->>> for i in range(1,12):
-		trekanttal = (i*(i+1))/2
-		trekanttal = int(trekanttal)
-		print(trekanttal, end=" - ")
-
-	
-1 - 3 - 6 - 10 - 15 - 21 - 28 - 36 - 45 - 55 - 66 -
-	</code>
-</pre>
-
 
 <h2>For char in ...</h2>
 
 <p>Ofte har man brug for at kunne gennemføre en funktion på hver eneste tegn i en tekststreng. Herunder er vist et simpelt eksempel hvor man ved hjælp af en for-løkke printer hver bogstav i navnet.</p>
 
 <pre>
-	<code class="python">
->>> for char in "Thomas":
-		print(char)
+	<code class="python">for char in "Thomas":
+	print(char)</code>
+</pre>
 
-	
+<p><b>Output</b></p>
+
+<pre>
+	<code class="python">========================= RESTART: /home/tj/test.py =========================
 T
 h
 o
 m
 a
-s
-	</code>
+s	</code>
 </pre>
-
 
 
 <blockquote>
@@ -622,140 +591,139 @@ s
 <p>Man kan også printe en tekst ord for ord. Det gøres ved at anvende funktionen <span class="inl_cmd">split()</span>:</p>
 
 <pre>
-	<code class="python">
->>> tekst = "Hej med dig"
->>> for word in tekst.split():
-		print(word)
-
-	
-Hej
-med
-dig
-	</code>
+	<code class="python">tekst = "Hej med dig"
+for word in tekst.split():
+	print(word)</code>
 </pre>
 
-
-<!--
-<h2>for * in ...</h2>
-
-<p>Dette kan anvendes praktisk, hvis man ønsker at finde bestemte tegn i en tekststreng, f.eks. dots (<span class="inl_cmd">.</span>) i en IP-adresse. Herunder vil vi finde placeringen af dots i IP-adressen: 192.168.2.100. Se nedestående tabel, hvor IP-adressen sættes ind i et positionsskema:</p>
-
-<table class="">
-	<thead>
-		<tr>
-			<th>1</th>
-			<th>9</th>
-			<th>2</th>
-			<th>.</th>
-			<th>1</th>
-			<th>6</th>
-			<th>8</th>
-			<th>.</th>
-			<th>2</th>
-			<th>.</th>
-			<th>1</th>
-			<th>0</th>
-			<th>0</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>0</td>
-			<td>1</td>
-			<td>2</td>
-			<td>3</td>
-			<td>4</td>
-			<td>5</td>
-			<td>6</td>
-			<td>7</td>
-			<td>8</td>
-			<td>9</td>
-			<td>10</td>
-			<td>11</td>
-			<td>12</td>
-		</tr>
-	</tbody>
-</table>
+<p><b>Output</b></p>
 
 <pre>
-	<code class="python">
-ip = "192.168.2.100"
-
-tegn = 0 #Tæller det tegn koden arbejder med
-
-for char in ip:
-    dot = "." in char
-    if dot == True:
-        print ("Here is a dot {0}".format(tegn))
-    tegn +=1
-	</code>
-</pre>
-
-<pre class="ubuntu_terminal">
-Here is a dot 3
-Here is a dot 7
-Here is a dot 9
-
-------------------
-(program exited with code: 0)
-Press return to continue
+	<code class="python">========================= RESTART: /home/tj/test.py =========================
+Hej
+med
+dig	</code>
 </pre>
 
 
-<p>Vi skal senere lære hvordan vi kan arbejde med tekstrenge, sådan at vi f.eks. kan analysere værdierne der står mellem de forskellige dot's.</p>
 
--->
+<h2>Brug af tælleren</h2>
+
+<p>Nogle gange skal den samme programlinie køres flere gange. Det kan f.eks. være hvis man gerne vil finde de 12 første trekanttal – altså talrække 1, 3, 6, 10, 15, 21... . Man kan udregne tallene med formlen herunder:</p>
+
+<div class="latex">$$ T_n = 1+2+3 ... +n= \frac {n \cdot (n+1)}{2} $$</div>
+
+<p>Ved at lave en løkke der sørger for at n stiger med en hver gang kan vi altså udregne det næste trekanttal. Her anvender vi en for løkke</p>
+
+<pre>
+	<code class="python">for i in range(1,12):
+	trekanttal = (i*(i+1))/2
+	print(trekanttal, end=" - ")</code>
+</pre>
+
+<p><b>Output</b></p>
+
+<pre>
+	<code class="python">========================= RESTART: /home/tj/test.py =========================
+1.0 - 3.0 - 6.0 - 10.0 - 15.0 - 21.0 - 28.0 - 36.0 - 45.0 - 55.0 - 66.0 - </code>
+</pre>
 
 
+<p>Python sætter en decimal på, fordi den ser resulater fra divisionsstykker som <span class="inl_cmd">float</span>. Det fjernes ved at tvinge Python til at se resultatet som et heltal (interger)</p>
 
+<pre>
+	<code class="python">for i in range(1,12):
+	trekanttal = (i*(i+1))/2
+	trekanttal = int(trekanttal)
+	print(trekanttal, end=" - ")</code>
+</pre>
+
+<p><b>Output</b></p>
+
+<pre>
+	<code class="python">========================= RESTART: /home/tj/test.py =========================
+1 - 3 - 6 - 10 - 15 - 21 - 28 - 36 - 45 - 55 - 66 - </code>
+</pre>
 
 <h2>Opgaver</h2>
+
+<h3>Lav et program der udskriver 7 tabellen</h3>
+
+<p><b>Output</b></p>
+
+<pre>
+	<code class="python">========================= RESTART: /home/tj/test.py =========================
+Udskriver 7 tabellen
+
+7 14 21 28 35 42 49 56 63 70 </code>
+</pre>
+
+<h3>Udskriv tabellerne fra 1 - 10</h3>
+
+<p>Lav et program der udskriver alle tabellerne mellem 1 og 10</p>
+
+<p><b>Output</b></p>
+
+<pre>
+	<code class="python">========================= RESTART: /home/tj/test.py =========================
+
+*** Udskriver 1 tabellen ***
+1 2 3 4 5 6 7 8 9 10 
+
+*** Udskriver 2 tabellen ***
+2 4 6 8 10 12 14 16 18 20 
+
+*** Udskriver 3 tabellen ***
+3 6 9 12 15 18 21 24 27 30 
+
+... </code>
+</pre>
+
 
 <h3>BUM</h3>
 
 <p>Lav funktionen <span class="inl_cmd">bum(a,b)</span> hvor <span class="inl_cmd">a</span> er det tal der tælles til og <span class="inl_cmd">b</span> er den tabel der arbejdes med:</p>
 
-<pre class="ubuntu_terminal">1  2  BUM  4  5  BUM  7  8  BUM  10  11  BUM  13  14  BUM  
+<p><b>Output</b></p>
 
-------------------
-(program exited with code: 0)
-Press return to continue
+<pre>
+	<code class="python">========================= RESTART: /home/tj/test.py =========================
+1  2  BUM  4  5  BUM  7  8  BUM  10  11  BUM  13  14  BUM  </code>
 </pre>
+
 
 <h3>Vinkelsum i polygon</h3>
 
 <p>Lav en løkke der beregner den enkelte vinkel og  den samlede vinkel i en ligesidet polygon med op til 20 sider. Outputtet skal være som nedenfor:</p>
 
-<pre class="ubuntu_terminal">
-I en 3-kant er vinkelsummen 180° og den enkelte vinkel er 60.0°
-I en 4-kant er vinkelsummen 360° og den enkelte vinkel er 90.0°
-I en 5-kant er vinkelsummen 540° og den enkelte vinkel er 108.0°
-
-...
-
-I en 18-kant er vinkelsummen 2880° og den enkelte vinkel er 160.0°
-I en 19-kant er vinkelsummen 3060° og den enkelte vinkel er 161.05263157894737°
-
-------------------
-(program exited with code: 0)
-
-Press any key to continue . . .
-</pre>
-
 <p>Formlen er:</p>
 
 <div class="latex">$$ Vinkelsum = 180 \cdot (i-2) $$</div>
 
-<p></p>
+<p><b>Output</b></p>
+
+<pre>
+	<code class="python">========================= RESTART: /home/tj/test.py =========================
+I en 3-kant er vinkelsummen 180° og den enkelte vinkel er 60.0°
+I en 4-kant er vinkelsummen 360° og den enkelte vinkel er 90.0°
+I en 5-kant er vinkelsummen 540° og den enkelte vinkel er 108°
+I en 6-kant er vinkelsummen 720° og den enkelte vinkel er 120°
+I en 7-kant er vinkelsummen 900° og den enkelte vinkel er 128.57°
+
+...
+
+I en 18-kant er vinkelsummen 2880° og den enkelte vinkel er 160.0°
+I en 19-kant er vinkelsummen 3060° og den enkelte vinkel er 161.05263157894737°	</code>
+</pre>
+
+
 
 <p>Ændr koden, så den ikke udskriver decimaler på heltal ved hjælp af funktionen <span class="inl_cmd">is_integer()</span>, og sådan at der kun er to decimaler på værdierne for den enkelte vinkel ved hjælp af <span class="inl_cmd">round()</span> (se nedefor)</p>
 
 <pre>
-	<code class="python">
->>> pi = 3.14159265
->>> round(pi,3)
-3.142
-	</code>
+	<code class="python">>>> pi = 3.14159265
+>>> round(pi,2)
+3.142	</code>
 </pre>
 
 
@@ -798,46 +766,36 @@ Press any key to continue . . .
 	<li>Sæt b = b + den gamle værdi for a</li>
 </ol>
 
-<p>Koden skal give nedestående output</p>
+<p>Lav funktionen <span class="inl_cmd">fibo(n)</span> hvor <span class="inl_cmd">n</span> er antallet af fibonaccital. Koden skal give nedestående output</p>
 
-<pre class="ubuntu_terminal">
-1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987 1597 2584 4181 6765 
+<p><b>Output</b></p>
 
-------------------
-(program exited with code: 0)
-Press return to continue
+<pre>
+	<code class="python">========================= RESTART: /home/tj/test.py =========================
+1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987 1597 2584 4181 6765  </code>
 </pre>
 
 <p>Kan du ændre i koden så den også regner &phi; ud og giver nedestǻende output?</p>
 
-<pre class="ubuntu_terminal">
+<p><b>Output</b></p>
+
+<pre>
+	<code class="python">========================= RESTART: /home/tj/test.py =========================
 Fibonacci taller er: 1 og φ er: 1.0
 Fibonacci taller er: 1 og φ er: 0.5
 Fibonacci taller er: 2 og φ er: 0.6666666666666666
 Fibonacci taller er: 3 og φ er: 0.6
 Fibonacci taller er: 5 og φ er: 0.625
 Fibonacci taller er: 8 og φ er: 0.6153846153846154
-Fibonacci taller er: 13 og φ er: 0.6190476190476191
-Fibonacci taller er: 21 og φ er: 0.6176470588235294
-Fibonacci taller er: 34 og φ er: 0.6181818181818182
-Fibonacci taller er: 55 og φ er: 0.6179775280898876
-Fibonacci taller er: 89 og φ er: 0.6180555555555556
-Fibonacci taller er: 144 og φ er: 0.6180257510729614
-Fibonacci taller er: 233 og φ er: 0.6180371352785146
-Fibonacci taller er: 377 og φ er: 0.6180327868852459
-Fibonacci taller er: 610 og φ er: 0.6180344478216818
-Fibonacci taller er: 987 og φ er: 0.6180338134001252
-Fibonacci taller er: 1597 og φ er: 0.6180340557275542
-Fibonacci taller er: 2584 og φ er: 0.6180339631667066
+
+...
+
 Fibonacci taller er: 4181 og φ er: 0.6180339985218034
 Fibonacci taller er: 6765 og φ er: 0.618033985017358
-
-------------------
-(program exited with code: 0)
-Press return to continue
+</code>
 </pre>
 
-<p>Lav funktionen <span class="inl_cmd">fibo(n)</span> hvor <span class="inl_cmd">n</span> er antallet af fibonaccital.</p>
+
 
 
 <h1>Variabler i løkker</h1>
@@ -854,11 +812,9 @@ Press return to continue
 <p>Herunder viser jeg hvordan man opretter og udskriver dette dictionary.</p>
 
 <pre>
-	<code class="python">
->>> brugere={"Anne": 1, "Bent": 2}
+	<code class="python">>>> brugere={"Anne": 1, "Bent": 2}
 >>> brugere
-{'Bent': 2, 'Anne': 1}
-	</code>
+{'Bent': 2, 'Anne': 1}	</code>
 </pre>
 
 <p>Vi har altså nu bundet navnet <span class="inl_cmd">Anne</span> til tallet <span class="inl_cmd">1</span> og navnet <span class="inl_cmd">Bent</span> til tallet <span class="inl_cmd">2</span>.</p>
@@ -866,12 +822,10 @@ Press return to continue
 <p>Hvis jeg gerne vil udskrive en af værdierne gør jeg følgende:</p>
 
 <pre>
-	<code class="python">
->>> brugere["Anne"]
+	<code class="python">>>> brugere["Anne"]
 1
 >>> brugere["Bent"]
-2
-	</code>
+2	</code>
 </pre>
 
 <p>Fordelen ved at anvende dictionaries er altså, at vi kan binde et opslag til en værdi/tekststreng. Det er altså reelt en <span class="inl_cmd">multivariabel</span>, som kan indeholder flere variabler. I ovenstående tilfælde indeholder den altså <span class="inl_cmd">"Anne" = 1</span> og <span class="inl_cmd">"Bent" = 2</span>.</p>
@@ -879,11 +833,9 @@ Press return to continue
 <p>Det betyder også at vi kan ændre på variablerne løbende. Se herinder hvor jeg lægger <span class="inl_cmd">1</span> til <span class="inl_cmd">"Bent"</span></p>
 
 <pre>
-	<code class="python">
->>> brugere["Bent"] +=1
+	<code class="python">>>> brugere["Bent"] +=1
 >>> brugere
-{'Bent': 3, 'Anne': 1}
-	</code>
+{'Bent': 3, 'Anne': 1}	</code>
 </pre>
 
 <h2>Konstruere dictionaries</h2>
@@ -891,8 +843,7 @@ Press return to continue
 <p>Herunder er vist et eksempel hvor jeg jeg opretter en dictionary</p>
 
 <pre>
-	<code class="python">
-brugerliste={}
+	<code class="python">brugerliste={}
 
 for i in range(3):
 	
@@ -901,34 +852,28 @@ for i in range(3):
 	
 	brugerliste["{0}".format(brugernavn)] = password
 	
-print("\n\nHer er din brugerliste: {0}".format(brugerliste))
-	</code>
+print("\n\nHer er din brugerliste: {0}".format(brugerliste))	</code>
 </pre>
 
+<p><b>Output</b></p>
 
+<pre>
+	<code class="python">========================= RESTART: /home/tj/test.py =========================
 
-<pre class="ubuntu_terminal">
-	
 Hvad er brugerens navn?: Thomas
 
-        Indtast password (kun tal): 123
+	Indtast password (kun tal): 123
 
 Hvad er brugerens navn?: Kurt
 
-        Indtast password (kun tal): 234
+	Indtast password (kun tal): 234
 
 Hvad er brugerens navn?: Niels
 
-        Indtast password (kun tal): 345
+	Indtast password (kun tal): 345
 
 
-Her er din brugerliste: {'Thomas': 123, 'Niels': 345, 'Kurt': 234}
-
-
-------------------
-(program exited with code: 0)
-
-Press any key to continue . . .
+Her er din brugerliste: {'Thomas': 123, 'Kurt': 234, 'Niels': 345}</code>
 </pre>
 
 <p>Man kan også skrive et dictionary mere overskueligt:</p>
@@ -947,15 +892,12 @@ print (personer)
 	</code>
 </pre>
 
-<pre class="ubuntu_terminal">
-{'Heks': 3, 'Grethe': 2, 'Hans': 1}
+<p><b>Output</b></p>
 
-------------------
-(program exited with code: 0)
-
-Press any key to continue . . .
+<pre>
+	<code class="python">========================= RESTART: /home/tj/test.py =========================
+{'Heks': 3, 'Grethe': 2, 'Hans': 1}</code>
 </pre>
-
 
 
 <h2>Opgaver</h2>
@@ -964,7 +906,10 @@ Press any key to continue . . .
 
 <p>Lav et program der slår med en D6 terning (6 sider) det antal gange brugeren ønsker det, og lav en optælling af hvert terningslag</p>
 
-<pre class="ubuntu_terminal">
+<p><b>Output</b></p>
+
+<pre>
+	<code class="python">========================= RESTART: /home/tj/test.py =========================
 Hvor mange slag?: 100000
 
 Du slog:
@@ -974,16 +919,8 @@ Du slog:
 	16552 treere
 	16758 firere
 	16707 femmere
-	16620 seksere
-
-
-------------------
-(program exited with code: 0)
-Press return to continue
-
+	16620 seksere</code>
 </pre>
-
-
 
 <h3>Terningspil 3</h3>
 
@@ -997,7 +934,8 @@ Press return to continue
 
 <p>Herunder er et eksempel på en udskrift.</p>
 
-<pre class="ubuntu_terminal">
+<pre>
+	<code class="python">========================= RESTART: /home/tj/test.py =========================
 Hvad er dit navn: Thomas  <span class="red">&larr; Input</span>
 
 Du kan vælge at slå med 4 forskellige terninger, og du kan vælge mellem:
@@ -1024,18 +962,9 @@ Computeren vandt 438 gange
 
 Thomas vandt 464 gange
 
-Der blev spillet uafgjort 98 gange
-
-*********************************************
-
-Thomas vandt.
-
-
-------------------
-(program exited with code: 0)
-Press return to continue
-
+Der blev spillet uafgjort 98 gange</code>
 </pre>
+
 
 <p>Hvor lang tid tager det at spiller:</p>
 
@@ -1053,17 +982,17 @@ Press return to continue
 <p>While betingelser angiver noget der skal ske så længe en betingelse er opfyldt. Herunder laver vi en kode, der udskriver tallet a så længe det er under 10</p>
 
 <pre>
-	<code class="python">
-a = 0
+	<code class="python">a = 0
 
 while a &lt; 10:
     a +=1
-    print (a)
-
-	</code>
+    print (a)	</code>
 </pre>
 
-<pre class="ubuntu_terminal">
+<p><b>Output</b></p>
+
+<pre>
+	<code class="python">========================= RESTART: /home/tj/test.py =========================
 1
 2
 3
@@ -1073,11 +1002,7 @@ while a &lt; 10:
 7
 8
 9
-10
-
-------------------
-(program exited with code: 0)
-Press return to continue
+10</code>
 </pre>
 
 <p>Det som koden gør er, at mens (<span class="inl_cmd">while</span>) betingelsen er opfyldt kører den det som er rykket ind under koden. I dette tilfælde kører koden indtil a ikke længere er mindre en 10.</p>
@@ -1087,8 +1012,7 @@ Press return to continue
 <p>Hvis man gerne vil have at en løkke skal køre uanset hvad, så kan man sætte den til at køre ved at bruge: <span class="inl_cmd">while True</span>. Se eksemplet herunder hvir koden kører indtil brugeren skriver: <span class="inl_cmd">Hej</span>:</p>
 
 <pre>
-	<code class="python">
-while True:
+	<code class="python">while True:
 
 	valg = input("Skriv 'Hej': ")
 	
@@ -1096,161 +1020,27 @@ while True:
 	
 		print("Tak!")
 		
-		break
-	</code>
+		break	</code>
 </pre>
 
-<pre class="ubuntu_terminal">
-Skriv 'Hej': tak
+<p><b>Output</b></p>
+
+<pre>
+	<code class="python">========================= RESTART: /home/tj/test.py =========================
+Skriv 'Hej': ok
 Skriv 'Hej': nej
-Skriv 'Hej': STOP NU
+Skriv 'Hej': Stop nu
 Skriv 'Hej': hej
-Skriv 'Hej': SKAL DET VÆRE MED STORT FORBOGSTAV
+Skriv 'Hej': SKAL DET VÆRE MED STORE BOGSTAVER
 Skriv 'Hej': Hej
-Tak!
-
-------------------
-(program exited with code: 0)
-
-Press any key to continue . . .
+Tak!</code>
 </pre>
 
 <p>Husk en computer er meget tålmodig</p>
 
 
-<h2>Tællere i løkker</h2>
-
-<p>Hvis vi kikker på den første betingede <span class="inl_cmd">while</span>-løkke vi lavede ovenfor, så vil den køre indtil brugeren taster rigtigt. Herunder vil vi kigge på en metode til at begrænse antallet af forsøg.</p>
-
-<p>Vi indsætter simpelthen en øvre grænse for hvor mange gange koden må løbe og laver et <span class="inl_cmd">break</span> når grænsen er nået. Jeg har valgt at kommentere direkte i koden.</p>
-
-<pre>
-	<code class="python">
-# Den øvre grænse
-limit = 3
-
-while True:
-    antalBrugere = int(input("Indtast antal brugere (1-4): "))
-    
-    if antalBrugere >=1 and antalBrugere &lt;=4:
-        print("\nDer er {0} brugere)".format(antalBrugere))
-        break #Hop ud af while løkken
-    else:
-        #Tæller en ned på den øvre grænse når brugeren vælger forkert
-        limit -=1 
-	
-        #Det løkken gør så længe der er forsøg tilbage
-        if limit > 0: 
-            print("\n\tDer skal være mellem 1 og 4 brugere.")
-            print("\n\tDu har nu {0} forsøg tilbage\n".format(limit))
-
-        # Det løkken gør når grænsen er nået
-        else: 
-            print("\nDu har ikke flere forsøg tilbage - bye bye")
-            break #Hop ud af while løkken
-	</code>
-</pre>
 
 
-
-
-<h2>Opgaver</h2>
-
-<h3>Gæt et tal 1</h3>
-
-<pre>
-	<code class="python">
-print("Gæt på et tal mellem 1 og 9\n")
-
-while True:
-	gæt = int(input("Gæt hvilket tal jeg er: "))
-
-	if gæt == 8:
-		print ("\nN I C E")
-		exit()
-	</code>
-</pre>
-
-<h3>Gæt et tal 2</h3>
-
-<ul class="disc">
-	<li>Tallet der skal gættes laves af funktionen <span class="inl_cmd">randrange()</span></li>
-	<li>Det efter 4 forsøg i input teksten skriver: Kan man virkeligt gætte forkert så mange gange?</li>
-	<li>At koden af afbrydes med beskeden <span class="inl_cmd">Du er vist useriøs</span>, hvis man ikke skriver et tal mellem 1 og 9.</li>
-	<li>At det skriver "Godt gættet :)!" når du rammer rigtigt</li>
-</ul>
-
-
-<p><span class="bold">HINT:</span> for at kunne få en kode til at afbryde anvender man kommandoen <span class="inl_cmd">exit()</span>. Når koden læser denne linie afsluttes kørslen.</p>
-
-<h3>Dril</h3>
-
-<p>Lav en kode der gentager hvad du siger - indtil du siger <span class="inl_cmd">klorofyl</span></p>
-
-<pre class="ubuntu_terminal">
-Skriv noget: Hej
-
-Hej: Hvad sker der
-
-Hvad sker der: STOP DET DER
-
-STOP DET DER: klorofyl
-
-        Du sagde det magiske ord.
-
-------------------
-(program exited with code: 0)
-
-Press any key to continue . . .
-</pre>
-
-<h3>Stopur</h3>
-
-
-<p>Man kan lave en tidsforsinkelse ved hjælp af funktionen <span class="inl_cmd">sleep</span> der er i pakken <span class="inl_cmd">time()</span></p>
-
-<pre>
-	<code class="python">
-from time import sleep
-
-while True:
-
-	for i in range(5,-1,-1):
-		
-		if i ==0:
-			print("Fyr")
-			exit()
-		
-		print(i)
-		sleep(1)
-	</code>
-</pre>
-
-<pre class="ubuntu_terminal">
-5
-4
-3
-2
-1
-Affyr!
-
-------------------
-(program exited with code: 0)
-Press return to continue
-</pre>
-
-<p>Ændr koden, så der tælles ned på samme position. For at opnå det skal du anvende escape character'en <span class="inl_cmd">\r</span> (carrage return). </p>
-
-
-<h3>Tabeltræner</h3>
-
-<p>Lav et program der stiller 5 tilfældige regnestykker fra den lille tabel (1-9). Programmet skal tælle:</p>
-
-<ul class="disc">
-	<li>Antal rigtige</li>
-	<li>Antal forsøg tilbage</li>
-	<li>Udregne antal % rigtige, med en decimal</li>
-</ul>
 
 
 <h1>Betingede løkker</h1>
@@ -1299,8 +1089,7 @@ antalBrugere = int(input("Indtast antal brugere (1-4): "))
 <p>Problemet med denne kode er, at den vil videresende input ligegyldigt om det 17 eller -5 brugere. For at sikre os at brugeren indtaster korrekt kan vi gøre følgende:</p>
 
 <pre>
-	<code class="python">
-while True:
+	<code class="python">while True:
 	
     antalBrugere = int(input("Indtast antal brugere (1-4): "))
 
@@ -1308,11 +1097,13 @@ while True:
 	    print("\nDer er {0} brugere)".format(antalBrugere))
 	    break #Hop ud af while løkken
     else:
-        print("\n\tDer skal være mellem 1 og 4 brugere. Prøv igen...")			
-	</code>
+        print("\n\tDer skal være mellem 1 og 4 brugere. Prøv igen...")				</code>
 </pre>
 
-<pre class="ubuntu_terminal">
+<p><b>Output</b></p>
+
+<pre>
+	<code class="python">========================= RESTART: /home/tj/test.py =========================
 Indtast antal brugere (1-4): 6
 
     Der skal være mellem 1 og 4 brugere. Prøv igen...
@@ -1323,40 +1114,89 @@ Indtast antal brugere (1-4): 5
 
 Indtast antal brugere (1-4): 4
 
-Der er 4 brugere)
-
-------------------
-(program exited with code: 0)
-Press return to continue
+Der er 4 brugere)</code>
 </pre>
-
 <p><span class="inl_cmd">while</span>-løkken kører så længe den ikke modtager et <span class="inl_cmd">False</span>. D.v.s. den kan køre uendeligt. Det eneste som får løkken til at stoppe er fordi der er indsat en <span class="inl_cmd">break</span> kommando hvis n er lig med variablen <span class="inl_cmd">goal</span>. <span class="inl_cmd">break</span> kommandoen bryder <span class="inl_cmd">while</span>-løkken og lader programmet køre videre.</p>
 
-<p>Ulempen ved den kode vi har lavet er, at den vil blive ved med at køre indtil der kommer et input som opfylder betingelsen. Vi vil senere kigge på at indsætte en tæller i koden, sådan at den kun kan køre et bestemt antal gange.</p>
+<blockquote>
+	<p>
+		Ulempen ved den kode vi har lavet er, at den vil blive ved med at køre indtil der kommer et input som opfylder betingelsen. Det lam foces ved at omdsætte en tæller i koden, som vi gjorde ovenfor.
+	</p>
+</blockquote>
+
+
+<h3>Tællere i løkker</h3>
+
+<p>Hvis vi kikker på den første betingede <span class="inl_cmd">while</span>-løkke vi lavede ovenfor, så vil den køre indtil brugeren taster rigtigt. Herunder vil vi kigge på en metode til at begrænse antallet af forsøg.</p>
+
+<p>Vi indsætter simpelthen en øvre grænse for hvor mange gange koden må løbe og laver et <span class="inl_cmd">break</span> når grænsen er nået. Jeg har valgt at kommentere direkte i koden.</p>
+
+<pre>
+	<code class="python"># Den øvre grænse
+limit = 3
+
+while True:
+    antalBrugere = int(input("Indtast antal brugere (1-4): "))
+    
+    if antalBrugere >=1 and antalBrugere &lt;=4:
+        print("\nDer er {0} brugere)".format(antalBrugere))
+        break #Hop ud af while løkken
+    else:
+        #Tæller en ned på den øvre grænse når brugeren vælger forkert
+        limit -=1 
+	
+        #Det løkken gør så længe der er forsøg tilbage
+        if limit > 0: 
+            print("\n\tDer skal være mellem 1 og 4 brugere.")
+            print("\n\tDu har nu {0} forsøg tilbage\n".format(limit))
+
+        # Det løkken gør når grænsen er nået
+        else: 
+            print("\nDu har ikke flere forsøg tilbage - bye bye")
+            break #Hop ud af while løkken	</code>
+</pre>
+
+<p><b>Output</b></p>
+
+<pre>
+	<code class="python">========================= RESTART: /home/tj/test.py =========================
+Indtast antal brugere (1-4): 6
+
+	Der skal være mellem 1 og 4 brugere.
+
+	Du har nu 2 forsøg tilbage
+
+Indtast antal brugere (1-4): 7
+
+	Der skal være mellem 1 og 4 brugere.
+
+	Du har nu 1 forsøg tilbage
+
+Indtast antal brugere (1-4): 9
+
+Du har ikke flere forsøg tilbage - bye bye</code>
+</pre>
 
 <h2>continue</h2>
 
 <p><span class="inl_cmd">continue</span> anvendes når vi gerne vil have at løkket "hopper" videre, uden at udføre det der står efter <span class="inl_cmd">continue</span>. Se eksemplet herunder</p>
 
 <pre>
-	<code class="python">
-for char in 'Thomas':
+	<code class="python">for char in 'Thomas':
    if char == 'm':
       continue
-   print ('Bogstavet er:', char)
-	</code>
+   print ('Bogstavet er:', char)	</code>
 </pre>
 
-<pre class="ubuntu_terminal">
+<p><b>Output</b></p>
+
+<pre>
+	<code class="python">========================= RESTART: /home/tj/test.py =========================
 Bogstavet er: T
 Bogstavet er: h
 Bogstavet er: o
 Bogstavet er: a
-Bogstavet er: s
-
-------------------
-(program exited with code: 0)
-Press return to continue
+Bogstavet er: s</code>
 </pre>
 
 <p>Løkken udskriver bogstaverne i tekststrengen <span class="inl_cmd">Thomas</span>, men der er en speciel betingelse ved bogstavet <span class="inl_cmd">m</span>. Vi vil ikke have at bogstavet skal printes, så vi indsætter <span class="inl_cmd">continue</span>, for ikke at bryde løkken, men at fortsætte ved næste bogstav.</p>
@@ -1367,19 +1207,20 @@ Press return to continue
 
 <h2>pass</h2>
 
-<p><span class="inl_cmd">pass</span> er umiddelbart en underlig kommando, fordi den gør reelt ingen forskel. Men den er rigtig brugbar. Forestil dig en kode, hvor du vil udskrive tallene fra 1-10, men lige vill gøre opmærksom på at 7 er dit lykketal:</p>
+<p><span class="inl_cmd">pass</span> er umiddelbart en underlig kommando, fordi den reelt bare sørger for at koden ikke bliver afbrudt. Men den er rigtig brugbar. Forestil dig en kode, hvor du vil udskrive tallene fra 1-10, men lige vill gøre opmærksom på at 7 er dit lykketal:</p>
 
 <pre>
-	<code class="python">
-for i in range(1,11):
+	<code class="python">for i in range(1,11):
     if i == 7:
         print("Næste tal er mit lykketal")
         pass
-    print(i)
-	</code>
+    print(i)	</code>
 </pre>
 
-<pre class="ubuntu_terminal">
+<p><b>Output</b></p>
+
+<pre>
+	<code class="python">========================= RESTART: /home/tj/test.py =========================
 1
 2
 3
@@ -1390,29 +1231,23 @@ Næste tal er mit lykketal
 7
 8
 9
-10
-
-------------------
-(program exited with code: 0)
-Press return to continue
+10</code>
 </pre>
 
 <p><span class="inl_cmd">pass</span> er brugbar fordi den ikke ændrer på hvordan løkken køres. Man kan f.eks. lave tomme funktioner ... altså funktioner der ikke er konstrueret endnu. Så kan funktionen indsættes når den er lavet.</p>
 
 <pre>
-	<code class="python">
-def tomfunktion():
+	<code class="python">def tomfunktion():
 	pass
 	
-tomfunktion()
-	</code>
+tomfunktion()	</code>
 </pre>
 
-<pre class="ubuntu_terminal">
-			<span class="red">&larr; intet output</span>
-------------------
-(program exited with code: 0)
-Press return to continue
+<p><b>Output</b></p>
+
+<pre>
+	<code class="python">========================= RESTART: /home/tj/test.py =========================
+		<span class="red"><b>&larr; intet output</b></span></code>
 </pre>
 
 <h2>exit()</h2>
@@ -1421,9 +1256,10 @@ Press return to continue
 
 <p>Forestil dig en situation hvor du inde midt i din kode skal give din bruger et valg om at genstarte eller afslutte et program. Se f.eks. nedestående eksempel, hvor vi kaster med en almindelig terning.</p>
 
+<p>Programmet fortsætter når du svarer med "j" og afsluttes hvis du svarer "n"</p>
+
 <pre>
-	<code class="python">
-from random import randrange
+	<code class="python">from random import randrange
 
 kast = randrange(1,7)
 
@@ -1440,59 +1276,129 @@ while kast !=6:
 		print("\nTak for spillet")
 		exit() #afslutter programmet
 
-print("Du slog en 6'er") # denne linie kommer med
-	</code>
+print("Du slog en 6'er") # denne linie kommer med	</code>
 </pre>
 
 
 <h2>Opgaver</h2>
 
+
+<p>Her er koden til at program hvor du skal gætte tallet 8</p>
+
+<pre>
+	<code class="python">print("Gæt på et tal mellem 1 og 9\n")
+
+while True:
+	gæt = int(input("Gæt hvilket tal jeg er: "))
+
+	if gæt == 8:
+		print ("\nN I C E")
+		exit()	</code>
+</pre>
+
+<h3>Gæt et tal </h3>
+
+<p>Ændr koden ovenfor så:</p>
+
+<ul class="disc">
+	<li>Tallet der skal gættes laves af funktionen <span class="inl_cmd">randrange()</span></li>
+	<li>Det efter 4 forsøg i input teksten skriver: Kan man virkeligt gætte forkert så mange gange?</li>
+	<li>At koden af afbrydes med beskeden <span class="inl_cmd">Du er vist useriøs</span>, hvis man ikke skriver et tal mellem 1 og 9.</li>
+	<li>At det skriver "Godt gættet :)!" når du rammer rigtigt</li>
+</ul>
+
+
+<p><span class="bold">HINT:</span> for at kunne få en kode til at afbryde anvender man kommandoen <span class="inl_cmd">exit()</span>. Når koden læser denne linie afsluttes kørslen.</p>
+
+<h3>Gæt et tal 2</h3>
+
+<p>Ændr koden ovenfor, så den siger "Du er vist useriøs" 2 gange før den afsluttes</p>
+
+
+<h3>Dril</h3>
+
+<p>Lav en kode der gentager hvad du siger - indtil du siger <span class="inl_cmd">klorofyl</span></p>
+
+<p><b>Output</b></p>
+
+<pre>
+	<code class="python">========================= RESTART: /home/tj/test.py =========================
+Skriv noget: Hej
+
+Hej: Hvad sker der
+
+Hvad sker der: STOP DET DER
+
+STOP DET DER: klorofyl
+
+        Du sagde det magiske ord.</code>
+</pre>
+
+<h3>Affyring</h3>
+
+
+<p>Man kan lave en tidsforsinkelse ved hjælp af funktionen <span class="inl_cmd">sleep</span> der er i pakken <span class="inl_cmd">time()</span></p>
+
+<pre>
+	<code class="python">from time import sleep
+
+while True:
+
+	for i in range(5,-1,-1):
+		
+		if i ==0:
+			print("Fyr")
+			exit()
+		
+		print(i)
+		sleep(1)	</code>
+</pre>
+
+<p><b>Output</b></p>
+
+<pre>
+	<code class="python">========================= RESTART: /home/tj/test.py =========================
+
+5
+4
+3
+2
+1
+Affyr!</code>
+</pre>
+
+<p>Ændr koden, så der tælles ned på samme position. For at opnå det skal du anvende escape character'en <span class="inl_cmd">\r</span> (carrage return). </p>
+
+
+<h3>Tabeltræner</h3>
+
+<p>Lav et program der stiller 5 tilfældige regnestykker fra den lille tabel (1-9). Programmet skal tælle:</p>
+
+<ul class="disc">
+	<li>Antal rigtige</li>
+	<li>Antal forsøg tilbage</li>
+	<li>Udregne antal % rigtige, med en decimal</li>
+</ul>
+
+
 <h3>Erstat bogstaver</h3>
 
 <p>Lav et program der erstatter <span class="inl_cmd">g</span> med <span class="inl_cmd">n</span> i det nedestående tekst.</p>
 
-<code class="cmd">Igennem mange generationer har børn og unge hygget sig med gynger.</code>
+<pre>
+	<code class="python">Igennem mange generationer har børn og unge hygget sig med gynger.</code>
+</pre>
 
 <p>Altså så outputtet bliver (på en linje):</p>
 
-<pre class="ubuntu_terminal">
-Inennem manne nenerationer har børn on unne hynnet sin med nynner.
+<p><b>Output</b></p>
 
-------------------
-(program exited with code: 0)
-Press return to continue
-</pre>
-
-
-
-
-<!--
 <pre>
-	<code class="python">
-import time
-
-tælFra = 10
-
-while tælFra >=0:
-	
-	if tælFra == 0:
-		print("Affyr!")
-		break
-	
-	print (tælFra, end="  \r")
-	tælFra -=1
-	time.sleep(1)
-	</code>
+	<code class="python">========================= RESTART: /home/tj/test.py =========================
+Inennem manne nenerationer har børn on unne hynnet sin med nynner.</code>
 </pre>
 
-<p>Læg mærke til at jeg indsætter to tomme tegn før jeg fører curseren tilbage.</p>
 
-<ul class="none">
-	<li>Ved første gennemkørsel printes <span class="inl_cmd">10</span> + <span class="inl_cmd">to mellemrum</span> + <span class="inl_cmd">\r</span>.</li>
-	<li>Ved anden gennemkørsel printes <span class="inl_cmd">9</span> + <span class="inl_cmd">to mellemrum</span> + <span class="inl_cmd">\r</span>. Det sørger for at <span class="inl_cmd">0</span>'et i <span class="inl_cmd">10</span> slettes.</li>
-	<li>osv....</li>
-</ul>
--->
 	
 </div><!-- end: col-md-9 -->
 

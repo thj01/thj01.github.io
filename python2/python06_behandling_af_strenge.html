@@ -134,35 +134,29 @@
 <p>Først <span class="inl_cmd">slicer</span> vi navnet ud (i konsollen):</p>
 
 <pre>
-	<code class="python">
->>> mail = "hansboedker@dkmail.dk"
+	<code class="python">>>> mail = "hansboedker@dkmail.dk"
 >>> mail[:11]
-'hansboedker'
-	</code>
+'hansboedker'	</code>
 </pre>
 
 <p>Her udskriver vi tegnene fra 0 &#8594; 11. Læg mærke til at 11 ikke er med. Nu <span class="inl_cmd">slicer</span> vi landekoden ud på to måder:</p>
 
 <pre>
-	<code class="python">
->>> mail[19:]
+	<code class="python">>>> mail[19:]
 'dk'
 >>> mail[-2:]
-'dk'
-	</code>
+'dk'	</code>
 </pre>
 
 <p>Vi vælger altså selv om vi vil anvende de enkelte tegns positive eller negative placering. Se disse eksempler hvor domænenavnet bliver <span class="inl_cmd">slicet</span> ud:</p>
 
 <pre>
-	<code class="python">
->>> mail[12:18]
+	<code class="python">>>> mail[12:18]
 'dkmail'
 >>> mail[-9:-3]
 'dkmail'
 >>> mail[-9:18]
-'dkmail'
-	</code>
+'dkmail'	</code>
 </pre>
 
 <h2>Slice en slice</h2>
@@ -170,12 +164,10 @@
 <p>Man kan også slice en slice, altså udskille tegn fra en slicet tekst. Se nedestående eksempel fra Idle, hvor mailadressen først bliver slicet af to omgange:</p>
 
 <pre>
-	<code class="python">
->>> "fakeuser@fakemail.dk"[8:]
-'@fakemail.dk'
->>> "fakeuser@fakemail.dk"[8:][-2:]
-'dk'
-	</code>
+	<code class="python">>>> mail[12:]
+'dkmail.dk'
+>>> mail[12:][-2:]
+'dk'</code>
 </pre>
 
 <h2>Bakke snagvendt</h2>
@@ -183,19 +175,15 @@
 <p>Som en lille sjov ting kan man også udskrive en tekststreng omvendt ved hjælp af slicing.</p>
 
 <pre>
-	<code class="python">
->>> mail[::-1]
-'kd.liamkd@rekdeobsnah'
-	</code>
+	<code class="python">>>> mail[::-1]
+'kd.liamkd@rekdeobsnah'	</code>
 </pre>
 
 <p>Det som koden siger er, at den skal slice strengen fra start til slut ... og så udskrive den bagfra. Den er meget logisk, for det som den ekstra parameter gør er at bestemme med hvilket spring sætningen skal udskrives. Prøv f.eks. følgende:</p>
 
 <pre>
-	<code class="python">
->>> mail[::2]
-'hnbekrdmi.k'
-	</code>
+	<code class="python">>>> mail[::2]
+'hnbekrdmi.k'	</code>
 </pre>
 
 <p>Her udskriver den kun hver andet tegn i strengen.</p>
@@ -206,10 +194,8 @@
 
 <p>Eksempel: Hvor mange tegn er der i min.email@dkmail.dk</p>
 
-<pre><code class="python">
->>> len(mail)
-21
-	</code>
+<pre><code class="python">>>> len(mail)
+21	</code>
 </pre>
 
 <h1><span class="inl_cmd">count()</span> - antal forekomster</h1>
@@ -217,10 +203,8 @@
 <p>Hvis man vil undersøge hvor mange gange noget forekommer i en tekstreng anvender man <span class="inl_cmd">count()</span>. Hvis vi f.eks. vil finde antal <span class="inl_cmd">@</span> i vores mail vil det altså blive:</p>
 
 <pre>
-	<code class="python">
->>> mail.count("@")
-1
-	</code>
+	<code class="python">>>> mail.count("@")
+1	</code>
 </pre>
 
 <p><span class="inl_cmd">@</span> står altså en gang i mailen <span class="inl_cmd">hansboedker<span class="red">@</span>dkmail.dk</span> en gang.</p>
@@ -228,20 +212,21 @@
 <p>Se programmet herunder hvor det bliver anvendt i praksis.</p>
 
 <pre>
-	<code class="python">
-mail = input("Indtast mail: ")
+	<code class="python">mail = input("Indtast mail: ")
 
 if mail.count("@") == 1:
 	print ("\n\tDer er @ i mailen.")
 else:
-	print ("\n\tDer mangler @ i mailen.")
-	</code>
+	print ("\n\tDer mangler @ i mailen.")	</code>
 </pre>
 
-<pre class="ubuntu_terminal">
+<p><b>Output</b></p>
+
+<pre>
+	<code class="python">========================= RESTART: /home/tj/test.py =========================
 Indtast mail: fakeuser@fakemail.dk
 
-        Der er @ i mailen.
+	Der er @ i mailen.</code>
 </pre>
 
 <h1><span class="inl_cmd">find()</span> - find forekomster</h1>
@@ -249,30 +234,28 @@ Indtast mail: fakeuser@fakemail.dk
 <p>For at finde tekstelementer i tekststrenge anvender vi funktionen <span class="inl_cmd">find()</span>. Den anvendes på følgende måde:</p>
 
 <pre>
-	<code class="python">
->>> mail.find("@")
-11
-	</code>
+	<code class="python">>>> mail.find("@")
+11	</code>
 </pre>
 
 <p>Lad os lave et program der finder ud af hvad brugernavnet er - altså det som står foran <span class="inl_cmd">@</span></p>
 
 <pre>
-	<code class="python">
-mail = input("Indtast mail der skal tjekkes brugernavn: ")
+	<code class="python">mail = input("Indtast mail der skal tjekkes brugernavn: ")
 
 mail_a = mail.find("@")
 
 username = mail[:mail_a]
 
-print("Brugernavnet er: {0}".format(username))
-	</code>
+print("Brugernavnet er: {0}".format(username))	</code>
 </pre>
 
-<pre class="ubuntu_terminal">
-Indtast mail der skal tjekkes brugernavn: fakeuser@fakemail.com
+<p><b>Output</b></p>
 
-        Brugernavnet er: fakeuser
+<pre>
+	<code class="python">========================= RESTART: /home/tj/test.py =========================
+Indtast mail der skal tjekkes brugernavn: fakeuser@fakemail.dk
+Brugernavnet er: fakeuser</code>
 </pre>
 
 <h1>replace() - erstat forekomster.</h1>
@@ -280,8 +263,7 @@ Indtast mail der skal tjekkes brugernavn: fakeuser@fakemail.com
 <p>Ofte har man brug for at erstattet eller bytte noget i en tekststreng. </p>
 
 <pre>
-	<code class="python">
->>> sætning = "Kurt kommer for sent i skole"
+	<code class="python">>>> sætning = "Kurt kommer for sent i skole"
 >>> sætning
 'Kurt kommer for sent i skole'
 >>> sætning.replace("Kurt","Karen")
@@ -289,36 +271,34 @@ Indtast mail der skal tjekkes brugernavn: fakeuser@fakemail.com
 >>> sætning.replace("i skole","på arbejde")
 'Kurt kommer for sent på arbejde'
 >>> sætning
-'Kurt kommer for sent i skole'
-	</code>
+'Kurt kommer for sent i skole'	</code>
 </pre>
 
 <p>Læg mærke at <span class="inl_cmd">replace()</span> ikke ændrer på variablen, men blot output. For at beholde ændringen skal man lave den som en ny variabel.</p>
 
 <pre>
-	<code class="python">
->>> ny_sætning = sætning.replace("i skole","på arbejde")
+	<code class="python">>>> ny_sætning = sætning.replace("i skole","på arbejde")
 >>> ny_sætning
-'Kurt kommer for sent på arbejde'
-	</code>
+'Kurt kommer for sent på arbejde'	</code>
 </pre>
 
 <p>Forestil dig et program hvor der skal indtastes decimaltal. Her vil brugeren måske komme til at lave et , (komma) i stedet for et . (punktum).</p>
 
 <pre>
-	<code class="python">
-def indtast(a):
+	<code class="python">def indtast(a):
 	a = a.replace(",",".")
 	print(a)
 
 indtast("3,456")
-indtast("3.456")
-	</code>
+indtast("3.456")	</code>
 </pre>
 
-<pre class="black">
+<p><b>Output</b></p>
+
+<pre>
+	<code class="python">========================= RESTART: /home/tj/test.py =========================
 3.456
-3.456
+3.456</code>
 </pre>
 
 <h1>Opgaver</h1>
@@ -336,7 +316,10 @@ indtast("3.456")
 
 <p>Udskriften skal enten angive om mailen er korrekt eller angive fejlene. Hvis der er fejl skal den bede om en ny indtastning.</p>
 
-<pre class="ubuntu_terminal">
+<p><b>Output</b></p>
+
+<pre>
+	<code class="python">========================= RESTART: /home/tj/test.py =========================
 Indtast din mail: t_d.g <span class="red">&larr; Brugerinput</span>
 
         Mailen har for få tegn (mindre end 7)
@@ -345,7 +328,7 @@ Indtast din mail: t_d.g <span class="red">&larr; Brugerinput</span>
 
 Indtast din mail: fakeuser@fakemail.dk <span class="red">&larr; Brugerinput</span>
 
-	Mailen er konstrueret korrekt
+	Mailen er konstrueret korrekt</code>
 </pre>
 
 <h2>Mail 2</h2>
@@ -361,7 +344,10 @@ Indtast din mail: fakeuser@fakemail.dk <span class="red">&larr; Brugerinput</spa
 	
 </ol>
 
-<pre class="ubuntu_terminal">
+<p><b>Output</b></p>
+
+<pre>
+	<code class="python">========================= RESTART: /home/tj/test.py =========================
 Indtast din mail: t_g.k
 
         Mailen har for få tegn (mindre end 7)
@@ -380,7 +366,7 @@ Mailen er konstrueret korrekt
 
         Domænenavnet er: fakemail
 
-        Det er en .dk mail
+        Det er en .dk mail</code>
 </pre>
 
 <h2>IP-adresse</h2>
@@ -402,12 +388,10 @@ Mailen er konstrueret korrekt
 
 <p>Lav et program hvor brugerens input bliver udskrevet baglæns. Her: <span class="inl_cmd">Ubrugeligt... men sjov</span></p>
 
-<pre class="ubuntu_terminal">
-	vojs nem ...tgilegurbU
+<p><b>Output</b></p>
 
-------------------
-(program exited with code: 0)
-Press return to continue
+<pre>
+	<code class="python">vojs nem ...tgilegurbU</code>
 </pre>
 
 

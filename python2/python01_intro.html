@@ -47,20 +47,25 @@
 
 <h1>Introduktion til Python 3</h1>
 
-<p>Python er et højniveau programmeringssprog som lægger vægt på at koden er let læselig og kræver så få linier som muligt. Med andre ord er det et programmeringssprog der hurtigt at komme igang med. Men ligesom alle andre programmeringssprog kræver det viden og erfaring at lave større kodearbejde.</p>
+<p>Python er et højniveau programmeringssprog som lægger vægt på at koden er let læselig og kræver så få linier som muligt. Ligesom alle andre programmeringssprog kræver det viden og erfaring at lave større kodearbejde.</p>
 
-<p>Dette materiale er skabt sådan, at du metodisk bliver ført ind i hvordan Python virker ved hjælp af eksempler og forklaringer. For at lære mest muligt bør du indtaste kodeeksemplerne fremfor at kopiere dem, da det vil hjælpe dig til at lære mere effektiv. Materialet er lavet og testet på Ubuntu 16.04 sammen med Python 3.5.</p>
+<p>Dette materiale er skabt sådan, at du metodisk bliver ført ind i hvordan Python virker ved hjælp af eksempler og forklaringer. For at lære mest muligt bør du indtaste kodeeksemplerne fremfor at kopiere dem, da det vil hjælpe dig til at lære mere effektiv.</p>
 
+<p>Materialet er lavet og testet på Ubuntu 18.04 og Python 3.6.6.</p>
 
-<a href="https://en.wikipedia.org/wiki/Python_(programming_language)" target="_blank">https://en.wikipedia.org/wiki/Python_(programming_language)</a>
+<p><b>Læs om Python: </b><a href="https://en.wikipedia.org/wiki/Python_(programming_language)" target="_blank">https://en.wikipedia.org/wiki/Python_(programming_language)</a>
+</p>
 		
 <h1>Installation</h1>
 
-<p>I dette kapitel vil vi gøre computeren klar til at arbejde med Python. I dette materiale anvendes Geany som teksteditor</p>
+<p>I dette kapitel vil vi gøre computeren klar til at arbejde med Python.</p>
 
-<h2>Python 3</h2>
+<h2>Windows/Mac</h2>
 
-<h3>Windows/Mac</h3>
+<p>For at få den nyeste version skal du gå ind på følgende side: <a href="https://www.python.org/downloads/" target="_blank">https://www.python.org/downloads/</a>.</p>
+
+<p>Det nyeste versionsnummer kan du se i den gule box øverst.</p>
+
 
 <p>Programmeringssprog er kendetegnet ved at de er under konstant udvikling. Her vælger vi at anvende den nyeste version af Python3. Den finder du ved at gå ind på følgende side: <a href="https://www.python.org/downloads/" target="_blank">https://www.python.org/downloads/</a></p>
 
@@ -72,9 +77,9 @@
 
 </figure>
 
-<p>I dette tilfælde vil det være version 3.6.5</p>
+<p>I dette tilfælde vil det være version 3.6.5, som du så klikker på i tabellen nedenfor. Herefter bliver den hentet så du kan installere Python.</p>
 
-<p>Når vi kommer ind på den følgende side skal vi ned i bunden for at finde sektionen <span class="inl_cmd">Files</span>. Her skal du vælge 64 bits versionen.</p>
+<p>Vælg herefter den fil der passer til dit system.</p>
 
 <ul class="none">
 	<li><b>På Windows</b>: Windows x86-64 executable installer</li>
@@ -89,7 +94,7 @@
 
 </figure>
 
-<p>Når du kører installationsfilen skal du som Windowsbruger være opmærksom på, og det er det vindue, hvor du bliver spurt om du vil tilføje Python til stien (<span class="inl_cmd">Add Python3 to PATH</span>). Det er <b>VIGTIGT</b> at du sætter fluenben her.</p>
+<p><b>VIGTIGT</b>: Tilføje Python til stien (<span class="inl_cmd">Add Python3 to PATH</span>) ved at sætte et fluenben.</p>
 
 <figure>
 	
@@ -99,61 +104,79 @@
 
 </figure>
 
-<h2>Konfigurerer Geany</h2>
+<h2>På Ubuntu</h2>
 
-<blockquote>
-	<p>
-		Dette afsnit er kun nødvendigt hvis du vælger at anvende Geany som IDE
-	</p>
-</blockquote>
+<p>Ubuntu har Python3 installeret som standard. Du skal blot installere Idle.</p>
 
-<p>Hvis du anvender Ubuntu og Mac skal du lave en mindre ændring når du starter geany op, for at du anvender Python 3. Opret et dokument der hedder <span class="inl_cmd">test.py</span>. Klik herefter på: <span class="bold">Build</span>  &#8594; <span class="bold">Set Build Commands</span> og sæt et 3'tal efter <span class="inl_cmd">python</span> i de to linier: Compile og Execute (se nedenfor).</p>
+<p>Kør kommandoen:</p>
 
-<figure id="">
+<code class="cmd">sudo apt install idle3</code>	
 
-	<img src="images/programmering_setbuild_geany.png" alt="" title="" />
+<h1>Vigtige begreber</h1>
 
-	<figcaption></figcaption>
+<h2>Seperatorer og tegn</h2>
 
-</figure>
+<p>Oprindeligt er programmeringssprog blevet udviklet af sprogfolk. Dvs. at vi anvender tegn i programmering, som vi ville skrive dem.</p>
 
-<p>Nu vil Geany anvende Python3 hvergang du anvender <kbd>F5</kbd> eller trykker på knappen <span class="inl_cmd">Udfør</span></p>
-
-<h1>Noget grundlæggende</h1>
-
-<p>Før vi går igang med at programmere skal vi have en vigtig ting afklaret.</p>
-
-<p>Computere og dermed også programmeringssprog er "dumme".</p>
-
-<p>Hvis jeg i en samtale sagde: "Terninger har 6 sider", så vil modtageren vide at <span class="inl_cmd">terninger</span> og <span class="inl_cmd">sider</span> er beskrivelser af "noget", og at <span class="inl_cmd">6</span> er et tal. Det ved Python ikke med med mindre man fortæller den det. Faktisk vil computeren opfatte ovenstående sætning som 22 tegn. Derfor er det programmørens opgave at beskrive overfor Python hvad der er tegn og hvad der er tal.</p>
-
+<ul class="none">
+	<li><span class="red">Komma ( , )</span>: Anvendes til at adskille sætningsled</li>
+	
+		<p>Når vi anvender komma ( , ) anvender vi kommaer til at adskille de forskellige led i en sætning. På samme måde bliver , anvendt til at adskille forskellige elementer når vi programmere.</p>
+	
+	<li><span class="red">Punktum ( . )</span>: Anvendes til at kæde ting sammen.</li>
+	
+		<p>Når vi anvender punktum ( . ) anvender vi det til at kæde ting sammen. Se på f.eks.. Her kæder vi f og eks sammen, så det bliver til et begreb. Vi bruger det også til at kæde sætninger sammen til afsnit. </p>
+		
+	<li><span class="red">Paranteser</span>: Anvendes til at pakke forskellige elementer inde, så de bliver tolket i en sammenhæng </li>
+	
+		<p>Paranteser anvendes f.eks. til forklaringer. Star Wars (episk rumeventyr) er ...</p>
+	
+	<li><span class="red">Kolon ( : )</span>: anvendes til at fortælle om en sammenhæng</li>
+	
+		<p>Det kan f.eks. være i lister. Herover bliver det f.eks: <span class="inl_cmd">Kolon: anvendes til....</span></p>
+	
+	
+</ul>
 
 <h2>Vigtige begreber</h2>
 
-<p>Herunder er et skema med nogle vigtige begreber:</p>
+<p>Python læser sine inputs som enten værdier eller tegn. Forskellen mellem dem er at <span class="inl_cmd">værdier</span> kan man regne med men det kan man ikke med <span class="inl_cmd">tegn</span>. Tegn angives i Python ved at lade dem omslutte af enten udrågstegn eller apostroffer.</p>
 
-<span class="afsnit">Char og strings - (karakterer og strenge)</span>
+<h3>Værdier</h3>
 
-<p><span class="inl_cmd">Char</span> dækker over det enkelte tegn og <span class="inl_cmd">strings</span> over en samling af <span class="inl_cmd">char's</span>. I Ovenstående sætning vil tallet 6 blive opfattet som en <span class="inl_cmd">char</span> og man vil altså ikke kunne regne med det.</p>
+<ul class="none fat_li">
+	
+	<li>Integers (heltal)</li>
+	
+		<p>F.eks: 1, 4, 19</p>
+	
+	<li>float (decimaltal)</li>
+	
+		<p>F.eks: 3.14, 2.5 ...</p>
+		
+		<p>Læg mærke til at . anvendes til at binde heltals og decimalt delen sammen (adskille dem). Det er en typisk fejl man laver når man starter med at programmere.</p>
 
-<span class="afsnit">Integer</span>
+</ul>
 
-<p>En <span class="inl_cmd">integer</span> er et heltal. For at få Python til at forstå tegnet <span class="inl_cmd">6</span> til at være et heltal, skal det altså konverteres først. Her skal man også huske på at <span class="inl_cmd">A</span> også kan tolkes som et heltal nemlig den 11. værdi i det hexadecimale talsystem. Pointen er, at programmøren skal fortælle det python hvad der er tal og hvad der er tegn.</p>
+<h3>Tegn</h3>
 
-<span class="afsnit">Float</span>
+<p>En vigtig ting at forstå ved tekst er det også kan være tal. Man angiver det ved at sætte det i anførselstegn eller i apostroffer, f.eks:</p>
 
-<p>Decimaltal kaldes for <span class="inl_cmd">float</span>. En af fordelene ved at anvende Python er, at det selv konverterer mellem hel- og decimal tal. Hvis man f.eks. lægger 2 og 1,5 sammen vil det give 3,5 i Python, hvor det i andre programmeringssprog (f.eks. C/C++ og C#) vil få programmet til at melde fejl.</p>
+<ul class="none">
+	<li>"a"</li>
+	<li>"en tekst"</li>
+	<li>'7'</li>
+</ul>
 
-<span class="afsnit">Funktioner</span>
+<p>Resultatet er at Python læser alle disse inputs som tegn. Dvs. at man ikke kan beregne  "2" + 2 da det er en tekst + en værdi</p>
 
-<p>Funktioner angives med en parantes til sidst f.eks. <span class="inl_cmd">print()</span>. Det som den funktion gør er at udskrive det som står i parantesen. Hvis du vil se en liste over de indbyggede funktioner i Python kan du gå hertil: <a href="https://docs.python.org/3.5/library/functions.html" target="_blank">https://docs.python.org/3.5/library/functions.html</a></p>
+<p>Når der kun er et enkelt tegn kaldes det en <span class="inl_cmd">char</span>. Når der er flere kaldes det for en <span class="inl_cmd">tekststreng</span> eller en <span class="inl_cmd">string</span> (engelsk)</p>
 
 
-<p>Du vil løbende lære nye udtryk, men de ovenstående er vigtige for at komme godt igang.</p>
 
 <h1>IDLE</h1>
 
-<p>IDLE er en indbygget Pythonfortolker (Pythonshell), der hurtigt giver dig adgang til at bruge programmeringssproget. Find IDLE og start programmet op</p>
+<p>IDLE er en indbygget Pythonfortolker (Pythonshell), der hurtigt giver dig adgang til at bruge programmeringssproget. Her kan taste enkelte kommandoer ind og se output med det samme</p>
 
 <figure id="">
 
@@ -165,7 +188,12 @@
 
 <p>Når Pythonfortolkeren starter op informerer den dig om versionsnr. og operativsystem (Her Windows)</p>
 
-<p>De tre <span class="inl_cmd">>>></span> er ikke en del af koden, men viser at her kan man indtaste en kommando. Herunder har jeg indtastet regnestykket <span class="math">\( 3 \cdot 6 \)</span> og <span class="math">\( 2^{10} \)</span>. Læg mærke til at IDLE udregner resulatet med det samme.</p>
+<p>Vær opmærksom på, at de tre pile (<span class="inl_cmd">>>></span>) ikke er en del af koden, men viser hvor koden starter. Herunder har jeg indtastet regnestykket</p>
+
+<ul class="none">
+	<li><span class="inl_cmd">3*6</span> - som svarer til <span class="math">\( 3 \cdot 6 \)</span></li>
+	<li><span class="inl_cmd">pow(2,10)</span> - som svarer til <span class="math">\( 2^{10} \)</span></li>
+</ul>
 
 <figure id="">
 
@@ -175,17 +203,28 @@
 
 </figure>
 
-<p>Fordelen ved at anvende IDLE er, at man kan bruge den som en meget effektiv lommeregner, lave mindre programmer og at man kan teste forskellige programmeringsfunktioner.</p>
+<p>I dette materiale vil vi starten anvende denne python shell til at lære de mest basale kommandoer. Når du har lært hvordan regnefunktionerne anvendes har du her en meget effektiv lommeregner, så du kan taste dine beregninger ind direkte</p>
 
-<p>Ved at klikke på en linie og trykke <kbd>ENTER</kbd> vil denne blive kopieret til den aktive linie.</p>
+<h2>Smarte tricks med Idle</h2>
 
-<p>Man kan gå tilbage i sine kommandoer med <kbd>Alt</kbd>+<kbd>P</kbd> og frem med <kbd>Alt</kbd>+<kbd>N</kbd></p>
+<ul class="none fat_li">
+	<li>Kopier kodestykke</li>
+	
+		<p>Flyt curseren til den linie du vil kopiere (med piletasterne) og tryk <kbd>ENTER</kbd></p>
+	
+	<li>Brug historikken</li>
+	
+		<p>Ved at bruge tastekombinationerne <kbd>Alt</kbd>+<kbd>p</kbd> og <kbd>Alt</kbd>+<kbd>n</kbd>, kan man bevæge sig henholdsvis fremad og tilbage i de kommandoer man har lavet.</p>
+</ul>
 
-<h2>IDLE som IDE</h2>
 
-<p>IDLE kan også bruges som IDE (Integrated Development Environment), hvilket vil sige at man egentlig ikke behøver andre programmer. Og til det brug vi skal anvende det til er IDLE faktisk rigeligt.</p>
+<h1>IDLE som IDE</h1>
 
-<p>Man starter et programmeringsvindue op ved at trykke <kbd>Ctrl</kbd>+<kbd>n</kbd>. Her har jeg indtastet et simpelt program, der printer teksttrengen: <span class="inl_cmd">Nu skal vi igang med Python</span>.</p>
+<p>Et IDE (Integrated Development Environment) er et udviklingsmiljø, hvor man har et bedre overblik over sin kode.</p>
+
+<p>Man starter det op ved at bruge tastekombinationen <kbd>Ctrl</kbd>+<kbd>n</kbd>. Her kan man så indtaste sin kode linie for linie og udføre den. </p>
+
+<p>Her har jeg indtastet et simpelt program, der printer teksttrengen: <span class="inl_cmd">Nu skal vi igang med Python</span>.</p>
 
 <figure id="">
 
@@ -195,7 +234,9 @@
 
 </figure>
 
-<p>For at køre programmet taster du <kbd>F5</kbd>. Første gang du gør det skal programmet gemmes på harddisken.</p>
+<p>For at køre programmet taster du <kbd>F5</kbd>.</p>
+
+<p>Er det første gang du kører det skal du først gemme det på harddisken.</p>
 
 <figure id="">
 
@@ -205,9 +246,25 @@
 
 </figure>
 
-<p>Klik på <button type="_">OK</button> og gem filen et sted hvor du kan finde programmet igen.</p>
+<p>Klik på <kbd>OK</kbd> og navngiv din fil før du gemmer den.</p>
 
-<p>Så snart du har gemt programmet kører det i IDLE. Læg mærke til at IDLE bliver genstartet, så du mister alt du har lavet før.</p>
+<blockquote>
+	
+	<p><span class="red"><b>VIGTIGT:</b></span></p>
+	
+	<p>		
+		Sørg for en god måde at gemme og navngive dine filer på. Lav en ny mappe hvor du gemmer dine programmer i f.eks: <span class="inl_cmd">PythonProgrammer</span>. Lav undermapper hvis du mange projekter. 
+	</p>
+	
+	<p>
+		Navngiv så du på filnavnet kan se, hvad programmerne gør f.eks: <span class="inl_cmd">pythonprogram_introduktion_øvelse_001.py</span>.
+	</p>
+	
+	<p>En god nmåde at angive navne sparer dig for meget arbejde senere.</p>
+</blockquote>
+
+<p>Så snart du har gemt programmet bliver det udført i IDLE's pythonshell. Læg mærke til at IDLE bliver genstartet, for at sikre der ikke kører noget gammel kode
+.</p>
 
 <figure id="">
 

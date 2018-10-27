@@ -49,9 +49,6 @@
 
 <p>I dette afsnit vil du lære om hvordan Python arbejder med tal og værdier.</p>
 
-<blockquote>
-	<p>I dette afsnit vil vi anvende Idle da vi skal øve os i regnefunktionerne.</p>
-</blockquote>
 
 <h2>Hel- og decimaltal</h2>
 
@@ -73,20 +70,164 @@
 	</code>
 </pre>
 
-<p>Umiddelbart virker et ikke som en stor ting, men mange andre programmeringssprog, er skal man starte med at definere hvilken type en variabel er.</p>
+<p>Så længe Python kan undgå at konvertere til float (decimaltal), så bliver det ved med at være integers (heltal). Det gælder for regnearterne: +, - og *. </p>
+
+<p>Ved division ( / )  bliver der altid konverteret til float (decimaltal). </p>
+
+
+
 
 <h2>Computeren kan <s>ikke</s> tælle</h2>
 
-<p>En af de ting man støder på når man arbejder med programmering er, at computere tæller anderledes end vi gør. Når vi tæller starter vi fra en, og titalssystemet er anvendeligt for os fordi det passer med antallet af fingre på hånden. Når vi har brugt alle fingrene så tæller vi antallet af fulde hænder. 22 kan altså forståes som 2 fulde hænder og 2 fingre. I 10-talssystemet skifter vi altså position (veksler til den næste enhed) når vi kommer til den 10. værdi. </p>
+<p>En af de første ting man skal forholde sig til når man programmerer er, at de tæller anderledes end os. Helt konkret starter computeren med tallet 0, hvor vi mennesker anvender tallet 1.</p>
 
-<p>Eller udtrykt ved hjælp af matematik: vi tæller ved hjælp af &#8469; = {1, 2, 3 ...}.</p>
+<p>Det er det vi i matematikken kalder talmængerne <span class="math">\( \mathbb{N} \)</span> og <span class="math">\( \mathbb{N}_0 \)</span></p>
 
-<p>Computere arbejder med binære tal - dvs. den tæller ved hjælp af 0 og 1, og den første værdi er 0. Det er fordi den arbejder digitalt ved hjælp af nogle transistorer der enten kan være tændt eller slukkede. Konkret bliver der afsat et vist antal transistorer til at huske tallet, og der vil den første værdi være den hvor alle transistorer er slukkede - dvs. den har værdien 0</p>
+<p>Sat op matematisk:</p>
 
-<p>Eller udtrykt ved hjælp af matematik: vi tæller ved hjælp af &#8469;<sub>0</sub> = {0, 1, 2, 3 ...}.</p>
+<p>Vi mennesker tæller: <span class="math">\( \mathbb{N} = \{1, 2, 3, ...\} \)</span></p>
+
+<p>Computeren tæller: <span class="math">\( \mathbb{N}_0 = \{0, 1, 2, 3, ...\} \)</span></p>
 
 
-<p>For at vise dette kigger vi på en byte (der består af 8 bit) der tæller:</p>
+<details>
+
+	<summary>En logisk forklaring</summary>
+
+<p>Forskellen ligger i at vi tæller de fingre vi kan se, og computere tæller antallet at tændte bits.Når Python skal tælle skal den oprette en tællemekanisme. </p>
+
+<p>Den mindst mulige er en bit, som kan være enten slukket eller tændt og de bliver ofte grupperet i 8 bit, som vi kalder en byte. Men lad os kigge på dem</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Computerens</th>
+			<th colspan="3">bits</th>
+			<th>I 10-tals systemet</th>
+		</tr>
+		<tr>
+			<th></th>
+			<th>2²</th>
+			<th>2¹</th>
+			<th>2⁰</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1. værdi</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+		</tr>
+		<tr>
+			<td>2. værdi</td>
+			<td>0</td>
+			<td>0</td>
+			<td>1</td>
+			<td>1</td>
+		</tr>
+		<tr>
+			<td>3. værdi</td>
+			<td>0</td>
+			<td>1</td>
+			<td>0</td>
+			<td>2</td>
+		</tr>
+		<tr>
+			<td>4. værdi</td>
+			<td>0</td>
+			<td>1</td>
+			<td>1</td>
+			<td>3</td>
+		</tr>
+		<tr>
+			<td>5. værdi</td>
+			<td>1</td>
+			<td>0</td>
+			<td>0</td>
+			<td>4</td>
+		</tr>
+		<tr>
+			<td>6. værdi</td>
+			<td>1</td>
+			<td>0</td>
+			<td>1</td>
+			<td>5</td>
+		</tr>
+		<tr>
+			<td>7. værdi</td>
+			<td>1</td>
+			<td>1</td>
+			<td>0</td>
+			<td>6</td>
+		</tr>
+		<tr>
+			<td>8. værdi</td>
+			<td>1</td>
+			<td>1</td>
+			<td>1</td>
+			<td>7</td>
+		</tr>
+
+		<tr>
+			<td>Værdi</td>
+			<td>4</td>
+			<td>2</td>
+			<td>1</td>
+			<td></td>
+		</tr>		
+	</tbody>
+</table>
+
+<p>Disse binære tal er naturlige for en computer, da den reelt kun kan måle om noget er slukket eller tændt - og det angiver den som henholdsvis 0 og 1. Den har altså kun 2 fingre.</p>
+
+<p>Den samme måde at tælle på gælder også for positioner. Se f.eks. dette skema over mit navn:</p>
+
+<table class="centreret">
+
+	<tbody>
+		<tr>
+			<td>Placering (forfra)</td>
+			<td>0</td>
+			<td>1</td>
+			<td>2</td>
+			<td>3</td>
+			<td>4</td>
+			<td>5</td>
+		</tr>
+		<tr>
+			<td>Tegn</td>
+			<td>T</td>
+			<td>h</td>
+			<td>o</td>
+			<td>m</td>
+			<td>a</td>
+			<td>s</td>
+		</tr>
+		<tr>
+			<td>Placering (bagfra)</td>
+			<td>-6</td>
+			<td>-5</td>
+			<td>-4</td>
+			<td>-3</td>
+			<td>-2</td>
+			<td>-1</td>
+		</tr>
+	</tbody>
+</table>
+
+
+<p>Denne viden kan vi senere anvende til at lave nogle smarte tricks med når vi programmerer, men indtil nu er det bare vigtigt at huske på at computeren tæller: 0, 1, 2, 3 ...</p>
+
+<p>Dog tæller computeren stadig almindeligt hvis den skal finde antallet af tegn, f.eks. i en sætningen eller et tal. Så der er stadig 6 tegn i <span class="inl_cmd">Thomas</span>.</p>
+
+
+	
+
+<!--
+<p>Prøv at se nedestående skema, hvor du skal forestille dig at 0 er lig med et tomt bit og 1 er lig med et tændt bit.</p>
 
 <table class="">
 	<thead>
@@ -244,6 +385,10 @@
 	</tbody>
 </table>
 
+
+<p>Når Python skal tælle skal den oprette en tællemekanimse. Og den mindst mulige er en bit</p>
+
+
 <p>Af det ovenstående kan vi omregne fra binær til decimal ved at lægge de enkelte værdier sammen:</p>
 
 <table class="">
@@ -318,66 +463,43 @@
 		</tr>
 	</tbody>
 </table>
+-->
 
-<p>Man bliver nød til at holde tungen lige i munden, fordi vi skal holde styr på vores in- og output. Tæller vi f.eks. antallet af tegn (char) i en streng angives det i &#8469; (f.eks. Thomas = 6 tegn), men skal vi hente et tegn ud skal vi tænke &#8469;<sub>0</sub> (o er det 2 tegn i sætningen).</p>
 
-<table class="centreret">
 
-	<tbody>
-		<tr>
-			<td>Placering</td>
-			<td>0</td>
-			<td>1</td>
-			<td>2</td>
-			<td>3</td>
-			<td>4</td>
-			<td>5</td>
-		</tr>
-		<tr>
-			<td>Tegn</td>
-			<td>T</td>
-			<td>h</td>
-			<td>o</td>
-			<td>m</td>
-			<td>a</td>
-			<td>s</td>
-		</tr>
-	</tbody>
-</table>
+</details>
 
 <h1>Regneregler</h1>
 
 <p>Regningsarterne fungerer ved at anvende tegnene: <span class="inl_cmd">+</span>, <span class="inl_cmd">-</span>, <span class="inl_cmd">*</span> og <span class="inl_cmd">/</span>. Se herunder:</p>
 
-<pre class="ubuntu_terminal">
->>> 6+3
+<pre>
+	<code class="python">>>> 6+3
 9
 >>> 6-3
 3
 >>> 6*3
 18
 >>> 6/3
-2.0
+2.0</code>
 </pre>
-
 <p>Læg mærke til at der bliver anvendt <span class="inl_cmd">int</span> i alle eksemplerne, og at resultatet bliver leveret på samme måde ved <span class="inl_cmd">+</span>, <span class="inl_cmd">-</span> og <span class="inl_cmd">*</span>. Men ved division bliver resulatet ændret til <span class="inl_cmd">float</span>. Se nedestående eksempel</p>
 
-<pre class="ubuntu_terminal">
->>> 2/3
-0.6666666666666666
+<pre>
+	<code class="python">>>> 2/3
+0.6666666666666666	</code>
 </pre>
-
 <p>Python anvender korrekte regneregler, hvilket vil sige at <span class="inl_cmd">+</span> og <span class="inl_cmd">-</span> adskiller ledene, og at de skal sættes paranteser for at omgå dette. Se eksemplerne herunder:</p>
 
-<pre class="ubuntu_terminal">
->>> 3+2*6
+<pre>
+	<code class="python">>>> 3+2*6
 15
 >>> (3+2)*6
 30
 >>> 3+6/2
 6.0
 >>> (3+6)/2
-4.5
+4.5	</code>
 </pre>
 
 <span class="afsnit">Øvelse</span>
@@ -402,6 +524,67 @@
 		</tr>
 	</tbody>
 </table>
+
+<details>
+
+	<summary>Facit</summary>
+
+	<p>Nahhh ... Det er hovedregning, så du skal bare bruge lidt mere tid ;) </p>
+
+
+</details>
+
+<h2>Modulus og floor division</h2>
+
+<p>For at finde potens tal og rødder anvendes funktionen <span class="inl_cmd">pow(a,b)</span>, hvor <span class="inl_cmd">a</span> er grundtallet og <span class="inl_cmd">b</span> er potensen. Se nedestående eksempler:</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Funktion</th>
+			<th>Tegn</th>
+			<th>Beskrivelse</th>
+			<th>Eksempel</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><span class="inl_cmd">modulus</span></td>
+			<td><span class="inl_cmd">%</span></td>
+			<td>Returnere resten efter division</td>
+			<td>9%5 = 4 </td>
+		</tr>
+		<tr>
+			<td><span class="inl_cmd">floor division</span></td>
+			<td><span class="inl_cmd">//</span></td>
+			<td>Returnerer heltallet efter division</td>
+			<td>9//5 = 1</td>
+		</tr>
+	</tbody>
+</table>
+
+<p></p>
+
+<pre>
+	<code class="python">>>> 9%5
+4
+>>> 9//5
+1	</code>
+</pre>
+<p>Man kan ved hjælp af <span class="inl_cmd">modulus</span> og <span class="inl_cmd">floor division</span> omskrive en uægte brøk til en blandet brøk efter følgende model:</p>
+
+<div class="latex">$$ \frac{a}{b} = (a//b)~ \frac{a\%b}{b} $$</div>
+
+<span class="afsnit">Anvendelse</span>
+
+<p><span class="inl_cmd">modulus</span> og <span class="inl_cmd">floor division</span> virker i første omgang lidt underlige, men har en masse praktiske anvendelser. F.eks: </p>
+
+<ul class="disc">
+	<li>Hvis noget skal ske hver tredie gang: <span class="inl_cmd">x%3 = 0</span></li>
+	<li>Antal fyldte ølkasser: <span class="inl_cmd">*antal flasker* // 30</span></li>
+</ul>
+
+
 
 <h2>Potens og rødder</h2>
 
@@ -430,23 +613,21 @@
 
 <p>Eksempler med <span class="math">\( 2^4 \)</span> og <span class="math">\( \sqrt{4} \)</span>:</p>
 
-<pre class="ubuntu_terminal">
->>> pow(2,4) 
+<pre>
+	<code class="python">>>> pow(2,4) 
 16
 >>> pow(4,1/2)
-2.0
+2.0	</code>
 </pre>
-
 <p>Man kan have funktioner inde i funktioner, f.eks:</p>
 
 <div class="latex">$$ \sqrt[5]{7^2} = (7^2)^{\frac{1}{5}} = pow(~pow(7,2)~,~1/5~)$$</div>
 
 
-<pre class="ubuntu_terminal">
->>> pow(pow(7,2),1/5)
-2.17790642448278
+<pre>
+	<code class="python">>>> pow(pow(7,2),1/5)
+2.17790642448278	</code>
 </pre>
-
 
 <h3>Opgave</h3>
 
@@ -456,7 +637,9 @@
 
 <details>
 
-	<summary>Facit</summary>
+	<summary>Facit </summary>
+	
+	<p>Bliv ved indtid du får samme resulater ;)</p>
 
 	<div class="latex">$$ a)~2^8 = 256\\
 	b)~{5^3}^2 =1953125 \\
@@ -494,89 +677,71 @@
 
 <p>De kan kaldes ved at importere dem fra pakken <span class="inl_cmd">math</span></p>
 
-<pre class="ubuntu_terminal">
->>> import math
+<pre>
+	<code class="python">>>> import math <span class="red"><b>&larr; math importeres</b></span>
 >>> math.pi
 3.141592653589793
 >>> math.e
-2.718281828459045
+2.718281828459045	</code>
 </pre>
 
-<h2>Modulus og floor division</h2>
 
-<p>For at finde potens tal og rødder anvendes funktionen <span class="inl_cmd">pow(a,b)</span>, hvor <span class="inl_cmd">a</span> er grundtallet og <span class="inl_cmd">b</span> er potensen. Se nedestående eksempler:</p>
-
-<table class="">
-	<thead>
-		<tr>
-			<th>Funktion</th>
-			<th>Tegn</th>
-			<th>Beskrivelse</th>
-			<th>Eksempel</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td><span class="inl_cmd">modulus</span></td>
-			<td><span class="inl_cmd">%</span></td>
-			<td>Returnere resten efter division</td>
-			<td>9%5 = 4 </td>
-		</tr>
-		<tr>
-			<td><span class="inl_cmd">floor division</span></td>
-			<td><span class="inl_cmd">//</span></td>
-			<td>Returnerer heltallet efter division</td>
-			<td>9//5 = 1</td>
-		</tr>
-	</tbody>
-</table>
-
-<p></p>
-
-<pre class="ubuntu_terminal">
->>> 9%5
-4
->>> 9//5
-1
-</pre>
-
-<p>Man kan ved hjælp af <span class="inl_cmd">modulus</span> og <span class="inl_cmd">floor division</span> omskrive en uægte brøk til en blandet brøk efter følgende model:</p>
-
-<div class="latex">$$ \frac{a}{b} = (a//b)~ \frac{a\%b}{b} $$</div>
-
-<span class="afsnit">Anvendelse</span>
-
-<p><span class="inl_cmd">modulus</span> og <span class="inl_cmd">floor division</span> virker i første omgang lidt underlige, men har en masse praktiske anvendelser. F.eks: </p>
-
-<ul class="disc">
-	<li>Hvis noget skal ske hver tredie gang: <span class="inl_cmd">x%3 = 0</span></li>
-	<li>Antal fyldte ølkasser: <span class="inl_cmd">*antal flasker* // 30</span></li>
-</ul>
 
 <h2>Afrunding af tal</h2>
 
 <p>Ovenfor har vi se set hvordan man ændrer et <span class="inl_cmd">float</span> til en <span class="inl_cmd">Interger</span>. Men ofte har man brug for at kunne vise et resultat afrundet korrekt og med et bestemt antal decimaler. Det gøres med <span class="inl_cmd">round()</span>. Man angiver antallet af decimaler på følgende måde:</p>
 
-<code class="cmd">round(tal,*Antal decimaler*)</code>
-
 <pre>
-	<code class="python">
->>> 2/3
+	<code class="python">>>> 2/3
 0.6666666666666666
 >>> round(2/3,2)
-0.67
-	</code>
+0.67	</code>
 </pre>
+
+<h3>Afrunding til hele tal</h3>
+
+<p>Nogle gange kan man have behov for at runde op eller end til nærmeste hele tal. Hvis man f.eks. skal beregne antallet af passagerer i en bil er det uheldigt hvis man får 5,3 - dette skal rundes ned til 5. Hvorimod 3,7 liter benzin kræver en 4 liters dunk.</p>
+
+<p>For at anvende dem skal pakken <span class="inl_cmd">math</span> importeres.</p>
+
+<table class="_">
+	<thead>
+		<tr>
+			<th>Afrunding</th>
+			<th>Funktion</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Ned til nærmeste heltal</td>
+			<td>math.floor()</td>
+		</tr>
+		<tr>
+			<td>Op til nærmeste heltal</td>
+			<td>math.ceil()</td>
+		</tr>
+	</tbody>
+</table>
+
+<pre>
+	<code class="python">>>> import math
+>>> math.ceil(3.2)
+4
+>>> math.floor(3.2)
+3	</code>
+</pre>
+
 
 <h2>Absolutte tal</h2>
 
 <p>Hvis man vil arbejde med absolutte tal (også kaldet den numeriske værdi) anvender man funktionen <span class="inl_cmd">abs()</span>. Det gør at resultatet bliver repræsenteret med sin positive værdi. Se eksemplerne:</p>
 
-<pre class="ubuntu_terminal">
->>> abs(-2)
-2
+<pre>
+	<code class="python">>>> abs(-2)
+2	</code>
 </pre>
 
+<!--
 <p>Funktionen giver mening hvis man f.eks. ønsker at finde forskellen mellem to tal uden at skulle forholde sig til rækkefølgen de kommer i. Som i eksemplet herunder hvor første udregning med <span class="inl_cmd">abs()</span> kun fortæller forskellen, men den anden fortæller om det er en stigning eller et fald. Prøv at se programmet herunder</p>
 
 <pre>
@@ -598,16 +763,9 @@ temperatur-stigning/fald: -2
 (program exited with code: 0)
 Press return to continue
 </pre>
+-->
 
 <h2>Logaritmer</h2>
-
-<blockquote>
-	<p>
-		For at anvende logaritmer skal pakken <span class="inl_cmd">math</span> importeres. Det gøres med kommandoen:
-	</p>
-	
-	<p><span class="inl_cmd">import math</span></p>
-</blockquote>
 
 <p>For at anvende logaritmer skal pakken <span class="inl_cmd">math</span> importeres</p>
 
@@ -642,25 +800,18 @@ Press return to continue
 	</tbody>
 </table>
 
-<p></p>
 
-<pre class="ubuntu_terminal">
->>> import math <span class="red">&larr; math importeres</span>
+
+<pre>
+	<code class="python">>>> import math <span class="red"><b>&larr; math importeres</b></span>
 >>> math.log10(100)
 2.0
 >>> math.log10(pow(10,2))
 2.0
 >>> math.log(pow(math.e,2))
-2.0
+2.0	</code>
 </pre>
 
-<p>Man kan også impotere en funktion generelt ved at skrive: <span class="inl_cmd">from math import log10</span>. Det har den fordel at man kun impoterer funktioner der er nødvendige, og at man kun skal skrive selve funktionen og ikke den pakke det er impoteret fra.</p>
-
-<pre class="ubuntu_terminal">
->>> from math import log10
->>> log10(100)
-2.0
-</pre>
 
 <h1>Taltyper</h1>
 
@@ -712,27 +863,58 @@ Press return to continue
 	</tbody>
 </table>
 
+<h2>Bestem taltype</h2>
+
+<p>Man bestemmer tallets type ved hjælp af kommandoen <span class="inl_cmd">type()</span></p>
+
+<pre>
+	<code class="python">>>> a = 3
+>>> b = 3.14
+>>> c = 3/4
+>>> type(b)
+&lt;class 'int'> 
+>>> type(b)
+&lt;class 'float'>
+>>> type(c)
+&lt;class 'float'>	</code>
+</pre>
+
 <h2>Integer (Heltal)</h2>
 
 <p><span class="inl_cmd">int</span> er heltal og anvendes ofte i programmering til at tælle og holde styr på antallet af gange noget skal ske. Det er samtidig den taltype der fylder mindst i hukommelsen og computeren kan beregne hurtigt.</p>
 
+<h2>Decimaltal</h2>
 
-<h2>Float (Decimaltal)</h2>
 
-<!--<p><span class="bold">Anvendelse: </span>Videnskabelige beregninger</p>-->
+<h3>Float (Binære decimaltal)</h3>
 
-<p><span class="inl_cmd">float</span> er simple decimaltal og kan anvendes til langt de fleste beregninger. Men taller er ikke præcist se nedestående eksempel: </p>
+<p><span class="inl_cmd">floating point (float)</span> er decimaltal, eller måske mere præcist en tilnærmet værdi baseret på den underliggende binære værdi. Se eksemplet herunder.</p>
 
-<pre class="ubuntu_terminal">
->>> 3*0.1-0.3
-5.551115123125783e-17
+<pre>
+	<code class="python">>>> 3*0.1
+0.30000000000000004	</code>
 </pre>
 
-<p>Resultatet burde give <span class="inl_cmd">0</span> men giver en rest. Det er ikke fordi computeren ikke kan regne, men skyldes at <span class="inl_cmd">float</span> er binært defineret, hvilket giver disse afvigelser - i dette tilfælde efter den 17 decimal. Men anvender man få decimaler er float rigeligt. <!--I forhold til <span class="inl_cmd">Decimal</span> fylder det mindre i hukommelsen og er lettere at beregne for computeren.--></p>
+<p>Vi ville forvente at <span class="math">\( 3 \cdot 0,1 = 0,3 \)</span>, men vi kan se at der er en fejl på den 17. decimal</p>
+
+<p>Denne fejl er ubetydelig når vi taler om naturvidenskabelige beregninger (matematik, fysik osv.), men kan få indflydelse på financielle beregninger.</p>
+
+<details>
+
+	<summary>Om financielle beregninger.</summary>
+
+	<p>Hvis man skal lave korrekte financielle beregninger med Python skal man anvende decimaltal.</p>
+	
+	<p>Det gøres lettest ved at anvende en af de mange financielle udvidelser der findes.</p>
+	
+	<p><a href="https://financetrain.com/best-python-librariespackages-finance-financial-data-scientists/" target="_blank">https://financetrain.com/best-python-librariespackages-finance-financial-data-scientists/</a></p>
+
+</details>
+
 
 <!--
 
-<h2>Decimal</h2>
+<h2>Decimal (ægte decimaltal)</h2>
 
 <p><span class="afsnit">Anvendelse: </span> Financielle beregninger</p>
 
@@ -758,202 +940,109 @@ Decimal('2.5000')
 
 -->
 
-<h2>Find taltype</h2>
+<h2>Er det et heltal</h2>
 
-<p>Hvis du ønsker at finde ud af om et tal er en integer eller float, kan du teste det ved hjælp af <span class="inl_cmd">is_integer()</span> som vist herunder:</p>
+<p>Hvis man har brug for at undersøge et decimaltal for om det er et heltal, så kan man anvende funktionen <span class="inl_cmd">is_integer()</span>. Funktionen svarer enten tilbage med <span class="inl_cmd">True</span> eller <span class="inl_cmd">False</span>.</p>
+
+<blockquote>
+	<p>
+		<b>VIGTIGT: </b>Funktionen må kun bruges på tal med decimaler, ellers får man en fejlmeddelelse
+	</p>
+</blockquote>
 
 <pre>
-	<code class="python">
->>> a=3.14
+	<code class="python">>>> a = 17.0
+>>> b = 2.5
 >>> a.is_integer()
-False
-	</code>
+True
+>>> b.is_integer()
+False	</code>
 </pre>
 
-<p>Læg mærke til at funktionen ikke fungerer hvis du intaster en <span class="inl_cmd">integer</span>. Det er fordi funktionen kun skal anvendes hvis man vil undersøge <span class="inl_cmd">float</span>-værdier.</p>
+<p>Hvis man er usikker på om et tal er en integer (heltal) så skal man først konvertere det til float. Det gøres på følgende måde: </p>
 
 <pre>
-	<code class="python">
->>> a=17
->>> b=17.0
->>> a.is_integer()
-<span class="red">Traceback (most recent call last):
-  File "&lt;pyshell#22>", line 1, in &lt;module>
-    a.is_integer()
-AttributeError: 'int' object has no attribute 'is_integer'</span>
->>> b.is_integer()
-True
-	</code>
+	<code class="python">>>> a = 3
+>>> float(a).is_integer()
+True	</code>
 </pre>
 
 
 <h2>Fraction (Brøker)</h2>
 
-<p>For at arbejde med brøker skal man "tvinge" python til ikke at regne brøken ud. Det kan være nødvendig for ikke at få afrundingsfejl. For at kunne anvende brøker skal vi importere modulet fractions. Herunder er givet et eksempel ved hjælp at et GRUK af Piet Hein, hvor der er vist forskellen mellem at anvende <span class="inl_cmd">fractions()</span> og <span class="inl_cmd">float</span>. Jeg har valgt at lave dette eksempel ved hjælp af koden, da man ellers mister overblikket. Læg mærke til at jeg importere funktionen <span class="inl_cmd">Fraction(3,4)</span>.</p>
+<p>For at regne med brøker skal man importere en funktion <span class="inl_cmd">Fraction</span> fra pakken <span class="inl_cmd">fractions</span>.</p>
+
+<p>Lad os prøve at beregne et <a href="https://da.wikipedia.org/wiki/Gruk" target="_blank">GRUK</a> af Piet Hein.</p>
+
+<p>En halv er <br/>
+&nbsp;&nbsp;&nbsp;&nbsp; tænk nu hvor aparte <br/>
+to tredjedele <br/>	
+&nbsp;&nbsp;&nbsp;&nbsp;	af tre kvarte</p>
+
+<p>Altså <span class="math">\( \frac{ 1 }{ 2 } = \frac{ 2 }{ 3 } \cdot \frac{ 3 }{ 4 } \)</span></p>
+
+<p>Selve brøken skrives som: <span class="inl_cmd">Fraction( *tæller* , *nævner* )</span>.</p>
 
 <pre>
-	<code class="python">
-from fractions import Fraction
-
-brøk1 = Fraction(3,4) # brøken 3/4;
-brøk2 = Fraction(2,3) #brøken 2/3; 
-brøk3 = brøk1 * brøk2
-
-float1 = 3/4
-float2 = 2/3
-float3 = float1 * float2
-
-print ("""
-	En halv er
-	tænk nu hvor aparte
-	to tredjedele
-	af tre kvarte
-			(Piet Hein)	
-			
-""")
-
-print ("Udregnet ved hjælp af Fractions:\n\n\t {0} * {1} = {2}".format(brøk1,brøk2,brøk3))
-print ("\nUdregnet ved hjælp af float:\n\n\t {0} * {1} = {2}".format(float1, float2,float3))
-	</code>
+	<code class="python">>>> from fractions import Fraction
+>>> brøk1 = Fraction(3,4) # brøken 3/4
+>>> brøk2 = Fraction(2,3) #brøken 2/3
+>>> det_halve = brøk1 * brøk2
+>>> brøk1 * brøk2
+Fraction(1, 2)	</code>
 </pre>
 
-<pre class="ubuntu_terminal">
+<p>Ligesom vi bestemte de andre taltyper kan vi også gøre det her:</p>
 
-	En halv er
-	tænk nu hvor aparte
-	to tredjedele
-	af tre kvarte
-			(Piet Hein)	
-			
-
-Udregnet ved hjælp af Fractions:
-
-	 3/4 * 2/3 = 1/2
-
-Udregnet ved hjælp af float:
-
-	 0.75 * 0.6666666666666666 = 0.5
-
-------------------
-(program exited with code: 0)
-Press return to continue
-
+<pre>
+	<code class="python">>>> type(brøk1)
+&lt;class 'fractions.Fraction'>	</code>
 </pre>
 
-<p>Som det kan ses bliver 2/3 omskrevet til 0,666... hvilket kun er en tilnærmet værdi. Grunden til at det går godt er fordi Python anvender nok decimaler til at afrundingen bliver korrekt.</p>
 
 <h2>Konvertering af taltyper</h2>
 
-<p>Hvis man vil undersøge hvilken taltype en variabel er anvender man funktionen <span class="inl_cmd">type()</span>. Lad os prøve det ved at anvende variablerne fra eksemplet ovenfor:</p>
-
-<pre class="ubuntu_terminal">
->>> a=7
->>> b=3/4
->>> c=3.14
->>> type(a)
-&lt;class 'int'&gt;
->>> type(b)
-&lt;class 'float'&gt;
->>> type(c)
-&lt;class 'float'&gt;
-</pre>
-
-<p>Herunder angiver vi variablen <span class="inl_cmd">d</span>, som er det samme som c - blot i taltypen <span class="inl_cmd">Fraction</span>. Vi lægger også mærke til at variablen d nu er funktionsværdien af <span class="inl_cmd">Fraction(2,3)</span></p>
-
-<pre class="ubuntu_terminal">
->>> d=Fraction(2,3)
->>> type(d)
-&lt;class 'fractions.Fraction'>
->>> d
-Fraction(2, 3)
-</pre>
-
-<p>Python er designet til hele tiden at vælge den bedst mulige taltype, hvilket betyder at tal der fremkommer ved hjælp af division automatisk bliver konverteret til <span class="inl_cmd">float</span>. Det vi skal kigge på her er hvordan vi konverterer mellem taltyper og finder ud af hvilken taltype det er.</p>
-
-<p>For at omskrive et tal fra en type eller en tekststreng til et tal anvendes funktionerne: <span class="inl_cmd">int()</span>, <span class="inl_cmd">float()</span>, <span class="inl_cmd">Decimal()</span> og <span class="inl_cmd">Fraction()</span>.</p>
+<p>Nogle gange kan man have behov for at konvertere tal til andre typer. </p>
 
 <ul class="none">
-	<li><span class="inl_cmd">int()</span> - omskrivning til heltal</li>
-	<li><span class="inl_cmd">float()</span> - omskrivning til float</li>
-<!--<li><span class="inl_cmd">Decimal()</span> - omskrivning til Decimal</li> -->
-	<li><span class="inl_cmd">Fraction()</span> - omskrivning til brøk</li>
+	<li>Konverter til Integer - <span class="inl_cmd">int()</span></li>
+	<li>Konverter til float - <span class="inl_cmd">float()</span></li>
+	<li>Konverter til Fraction - <span class="inl_cmd">Fraction()</span> (skal importeres)</li>
 </ul>
 
-<h3>...til int (ℕ - Integers) </h3>
+<p>Her er nogle eksempler</p>
 
-<p>Man skal være opmærksom på at man ved en omskrivning kan miste decimaler. Hvis man omskriver en brøk eller et decimaltal til en <span class="inl_cmd">int</span>, så mister man alle decimalerne. Se eksemplerne herunder:</p>
+<h3>Til Integer</h3>
 
-<pre class="ubuntu_terminal">
->>> a=3.14
->>> b=9/10
->>> c=11/10
->>> int(a)
+<pre>
+	<code class="python">>>> import math
+>>> a = 3
+>>> b = math.pi <span class="red"><b>&larr; Tallet &pi;</b></span>
+>>> c = 22/7
+>>>	int(b)
 3
->>> int(b)
-0
 >>> int(c)
-1
+3</code>
 </pre>
 
-<h3>... til float (ℝ - Relle tal)</h3>
+<p><b>Læg mærke til...</b> at decimaltal mister deres decimaler. float tal bør kun konverteres hvis man er sikker på de er heltal (se <span class="inl_cmd">is_integer()</span> ovenfor )</p>
 
-<p>Når der omskrives til <span class="inl_cmd">float</span> sættes der minimum en decimal på.</p>
+<h3>Til float</h3>
 
-<pre class="ubuntu_terminal">
->>> a=1
->>> b=3.14
->>> c=2/3
->>> float(a)
-1.0
+<pre>
+	<code class="python">>>> import math
+>>> a = 3
+>>> b = math.pi <span class="red"><b>&larr; Tallet &pi;</b></span>
+>>> c = 22/7
+>>>	float(a)
+3.0
 >>> float(b)
-3.14
+3.141592653589793
 >>> float(c)
-0.6666666666666666
+3.142857142857143</code>
 </pre>
 
-<!--
-
-<span class="afsnit">Omskrivning til Decimal</span>
-
-<p></p>
-
-<pre class="ubuntu_terminal">
->>> from decimal import *
->>> Decimal(a)
-Decimal('1')
->>> Decimal(b)
-Decimal('3.140000000000000124344978758017532527446746826171875')
->>> Decimal(c)
-Decimal('0.66666666666666662965923251249478198587894439697265625')
-</pre>
-
--->
-
-<h3>...til Fraction (ℚ - Rationelle tal)</h3>
-
-<p>For at arbejde med <span class="inl_cmd">Fraction</span> skal funktionen først importeres:</p>
-
-<pre class="ubuntu_terminal">
->>> from fractions import Fraction
->>> a=1
->>> b=3.14
->>> c=2/3
->>> Fraction(a)
-Fraction(1, 1)
->>> Fraction(b)
-Fraction(7070651414971679, 2251799813685248)
->>> Fraction(c)
-Fraction(6004799503160661, 9007199254740992)
-</pre>
-
-<p>Læg mærke til at omskrivningen fra <span class="inl_cmd">2/3</span> bliver til <span class="inl_cmd">6004799503160661/9007199254740992</span>. Det skyldes at variablen c ikke bliver gemt som en brøk (<span class="inl_cmd">Fraction</span>), men som et <span class="inl_cmd">float</span>. Derved kommer der en unøjagtighed ind i decimalerne som bliver nedarvet.</p>
-
-<p>Det man kan lære af det er, at man skal arbejde med de rigtige taltyper hele tiden, da man ellers risikerer unøjagtige resultater.</p>
-
-<h3>Opgave</h3>
-
-<p>Beregn ved hjælp af python hvad forskellen er mellem <span class="inl_cmd">c</span> og <span class="inl_cmd">Fraction(c)</span> fra eksemplet ovenfor.</p>
-
+<p><b>Læg mærke til...</b> at heltallet får koblet en decimal på.</p>
 
 
 <h1>Operatorer</h1>
@@ -1022,49 +1111,19 @@ Fraction(6004799503160661, 9007199254740992)
 	</tbody>
 </table>
 
-<span class="afsnit">VIGTIGT</span>
+<h2>Afgrænsede områder</h2>
 
-<p>De to sidste (<span class="inl_cmd">and</span> og  <span class="inl_cmd">or</span>) skal vi som danskere være meget forsigtige med, fordi de er logiske og ikke sproglige. Et eksempel kan være hvor betingelsen er, at man både kan svare med <span class="inl_cmd">j</span> og <span class="inl_cmd">J</span> - altså både det lille <span class="bold">OG</span> det store bogstav. Umiddelbart ville nedestående linie give mening:</p>
-	
+<p>Man kan beskrive et afgrænset talområde matematisk ved hjælp af sammensatte uligheder f.eks: <span class="math">\( 15 \leq x \leq 24_ \)</span>.</p>
+
+<div class="latex">$$ 15 \leq x \leg 24 $$</div>
+
+<p>Skal man gøre det i Python skal man sammensætte det på følgende måde:</p>
+
 <pre>
-	<code class="python">
-if valg ==  "j" and valg == "J" : #Gælder for både lille <span class="bold">og</span> store J
+	<code class="python">>>> x >= 15 and x &lt;= 24
 	</code>
 </pre>
 
-<p>Sprogligt giver det mening, men problemet er, at brugeren aldrig vil kunne taste både j og J på samme tid. Så derfor vil Python afvise at betingelserne er opfyldt. Det er ikke Python der laver fejl, men mere et udtryk for at det danske sprog er finurligt og ulogisk. F.eks. så kan vi også finde på at spørge: "er det ikke sjovt" .. når vi faktisk mener "er det sjovt". Det er ikke kun udlændinge der synes vores sprog er ulogisk. Computere kan heller ikke forstå os ;).</p>
-
-<h2>Afgrænsede områder</h2>
-
-<p>Nogle gange har man brug for at kunne afgrænse områder. Forestil dig at vi skal udvælge brugere der er fra 15 år til og med 22. Det matematiske udsagn ville være <span class="inl_cmd">15 &le; x &le; 22</span> da både 15 og 21 er med i talmængden. I Python skal vi splitte det op i to udsagn hvor vi skal beskrive den ned grænse og den øvre grænse ud fra x: <span class="inl_cmd">x &ge; 15 <span class="blue">and</span> x &le; 22</span>.</p>
-
-<p>Her skal man igen være bevidst om hvilken talmængde man arbejder med. Skal man f.eks. gennemløbe alle bogstaverne i et navn så skal man tænke i talmængden &#8469;<sub>0</sub>.</p>
-
-<table class="centreret">
-
-	<tbody>
-		<tr>
-			<td>Placering</td>
-			<td>0</td>
-			<td>1</td>
-			<td>2</td>
-			<td>3</td>
-			<td>4</td>
-			<td>5</td>
-		</tr>
-		<tr>
-			<td>Tegn</td>
-			<td>T</td>
-			<td>h</td>
-			<td>o</td>
-			<td>m</td>
-			<td>a</td>
-			<td>s</td>
-		</tr>
-	</tbody>
-</table>
-
-<p>Hvis man spørger Python om længden på navnet, så vil vi få 6, men programmet skal gennemløbe værdierne 0-5. Umiddelbart ville vi tænke <span class="inl_cmd">1 &le; x &le; 6</span>, men det vil reelt være <span class="inl_cmd">0 &le; x &le; 5</span>. Men som vi vil lære i afsnittet om løkker, så er det tænkt ind i syntaksen.</p>
 
 <h1>En til eller fra</h1>
 
@@ -1072,10 +1131,11 @@ if valg ==  "j" and valg == "J" : #Gælder for både lille <span class="bold">og
 
 <pre>
 	<code class="python">
->>> a=0
+>>> a = 0
 >>> a
 0
->>> a+1
+>>> a = a + 1
+>>> a
 1
 	</code>
 </pre>
@@ -1083,205 +1143,45 @@ if valg ==  "j" and valg == "J" : #Gælder for både lille <span class="bold">og
 <p>Da man gør det så ofte har man en speciel "shorthand" til at løse dette problem med:</p>
 
 <pre>
-	<code class="python">
->>> a=0
->>> a +=1
+	<code class="python">>>> a = 0
+>>> a += 1
 >>> a
-1
->>> a +=1
->>> a
-2
-	</code>
+1 	</code>
 </pre>
 
-<p>På samme måde som ovenfor kan man også lægge til, gange og dividere</p>
+<p>Der er to grunde til at vælge <span class="inl_cmd">+=</span> løsningen:</p>
+
+<ul class="none">
+	<li>Det er let at læse at variablen stiger med 1 </li>
+	<li>Den fylder et tegn mindre</li>
+</ul>
+
+
+<p>På samme måde som ovenfor kan man også trække fra, gange og dividere</p>
 
 <pre>
-	<code class="python">
->>> a=1
->>> a+=5
->>> a
-6
->>> a -=7
+	<code class="python">>>> a = 6
+>>> a -= 7
 >>> a
 -1
->>> a *=7
+>>> a *= 7
 >>> a
 -7
->>> a /=7
+>>> a /= 7
 >>> a
--1.0
-	</code>
+-1.0	</code>
 </pre>
 
 <p>Man kan gøre det samme hvis man har lavet variabler. I eksemplet herunder lægger vi variablen <span class="inl_cmd">alder</span> til a.</p>
 
 <pre>
-	<code class="python">
->>> a=1
->>> alder=15
->>> a+=alder
+	<code class="python">>>> a = 1
+>>> alder = 15
+>>> a += alder
 >>> a
-16
-	</code>
+16 </code>
 </pre>
 
-<!--
-<h1>Matematiske funktioner</h1>
-
-<p>For at anvende Phytons matematiske funktioner skal man importere programbiblioteket <span class="inl_cmd">math</span>. Det kan gøres på to måder - enten ved at inkludere alle matematikfunktionerne eller ved kun at importere enkelte derfra. I praksis får det først betydning når man kompilerer programmet (laver det til en kørbar fil). Hvis man kun importere enkelte dele fra et modul er det kun dem der bliver kompileret ind i ens kode.</p>
-
-<p>Herunder er de to metoder vist med henholdsvis kvadratrod og 10-tals logaritmen. Først den generelle. Læg mærke til at der skal angives fra hvilket programbibliotek den matematiske funktion skal tages fra.</p>
-
-<pre>
-	<code class="python">
->>> import math
->>> math.sqrt(27)
-5.196152422706632
->>> math.log10(100)
-2.0
-	</code>
-</pre>
-
-
-<p>For kun at importere de nødvendige elementer fra programbiblioteket anvendes <span class="inl_cmd">from *bibliotek* import *funktioner*</span>. De enkelte funktioner adskilles med et <span class="inl_cmd">,</span>. Det er heller ikke nødvendigt at definere fra hvilket bibliotek elementerne kommer fra.</p>
-
-<pre>
-	<code class="python">
->>> from math import sqrt, log10
->>> sqrt(27)
-5.196152422706632
->>> log10(100)
-2.0
-	</code>
-</pre>
-
-<p>Af vigtige matematiske funktioner kan nævnes</p>
-
-<h2>Konstanter</h2>
-
-<p></p>
-
-<table class="">
-	<thead>
-		<tr>
-			<th>Konstant</th>
-			<th>Funktion</th>
-			<th>Værdi</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td><span class="math">\( \pi \)</span></td>
-			<td>math.pi</td>
-			<td>3.141592...</td>
-		</tr>
-		<tr>
-			<td><span class="math">\( e \)</span></td>
-			<td>math.e</td>
-			<td>2.718281...</td>
-		</tr>
-	</tbody>
-</table>
-
-
-<h2>Logaritmer</h2>
-
-<p></p>
-
-<table class="">
-	<thead>
-		<tr>
-			<th>Matematisk udtryk</th>
-			<th>Funktion</th>
-			<th>Inverse funktion</th>
-			<th>Beskrivelse</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td><span class="math">\( y^x \)</span></td>
-			<td>pow(y,x)</td>
-			<td>math.log(x,y)</td>
-			<td>Logaritmen (grundtal y)</td>
-		</tr>
-		<tr>
-			<td><span class="math">\( 10^x = y \)</span></td>
-			<td>pow(10,x)</td>
-			<td>math.log10(x)</td>
-			<td>Logaritmen (grundtal 10)</td>
-		</tr>
-		<tr>
-			<td><span class="math">\( e^x \)</span></td>
-			<td>math.exp(x)</td>
-			<td>math.log(y)</td>
-			<td>Den naturlige logaritmen (grundtal e)</td>
-		</tr>
-	</tbody>
-</table>
-
-<h2>Trigonometriske funktioner</h2>
-
-<table class="">
-	<thead>
-		<tr>
-			<th>Matematisk udtryk</th>
-			<th>Funktion</th>
-			<th>Inverse funktion</th>
-			<th>Beskrivelse</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td><span class="math">\( cos(x) \)</span></td>
-			<td>math.cos(x)</td>
-			<td>math.acos(x)</td>
-			<td>Cosinus</td>
-		</tr>		
-		<tr>
-			<td><span class="math">\( sin(x) \)</span></td>
-			<td>math.sin(x)</td>
-			<td>math.asin(x)</td>
-			<td>Sinus</td>
-		</tr>	
-		<tr>
-			<td><span class="math">\( tan(x) \)</span></td>
-			<td>math.tan(x)</td>
-			<td>math.atan(x)</td>
-			<td>Tangens</td>
-		</tr>
-	</tbody>
-</table>
-
-<table class="">
-	<thead>
-		<tr>
-			<th>Omskrivning</th>
-			<th>Funktioner</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>fra grader &#8594; radianer</td>
-			<td>math.degrees()</td>
-		</tr>
-		<tr>
-			<td>fra radianer &#8594; grader</td>
-			<td>math.radians()</td>
-		</tr>
-	</tbody>
-</table>
-
-<h2>Læs om</h2>
-
-<p><a href="https://docs.python.org/2/library/math.html" target="_blank">https://docs.python.org/2/library/math.html</a></p>
-
-
-<h1>Financielle funktioner</h1>
-
-<p>Hent og installer numpy (<a href="https://sourceforge.net/projects/numpy/files/" target="_blank">https://sourceforge.net/projects/numpy/files/</a>).</p>
-
--->
 
 <h1>Talsystemer</h1>
 
@@ -1385,14 +1285,12 @@ if valg ==  "j" and valg == "J" : #Gælder for både lille <span class="bold">og
 <p>Der er indbygget konvertere fra ti-talssystemet til binær, octet og hexadecimalt talsystem. Det gøres ved at anvende <span class="inl_cmd">bin()</span>, <span class="inl_cmd">oct()</span> og <span class="inl_cmd">hex()</span>.</p>
 
 <pre>
-	<code class="python">
->>> bin(100)
+	<code class="python">>>> bin(100)
 '0b1100100'
 >>> oct(100)
 '0o144'
 >>> hex(100)
-'0x64'
-	</code>
+'0x64'	</code>
 </pre>
 
 <p>Læg mærke til at talene kommer tilbage som teksstrenge og med et præfix: </p>
@@ -1410,16 +1308,14 @@ if valg ==  "j" and valg == "J" : #Gælder for både lille <span class="bold">og
 <p>For at konvertere tal med anden base til 10 talssystemet anvendes <span class="inl_cmd">int()</span>. Det fungerer ved at man i parantesen skriver tallet man vil konvertere og basen der skal konverteres fra. Læg mærke til at tallet skal skrives ind som en tekststreng!</p>
 
 <pre>
-	<code class="python">
->>> int("100",2)
+	<code class="python">>>> int("100",2)
 4
 >>> int("100",8)
 64
 >>> int("100",10)
 100
 >>> int("100",16)
-256
-	</code>
+256	</code>
 </pre>
 
 <h2>Beregninger med andre talsystemer</h2>
@@ -1467,21 +1363,17 @@ if valg ==  "j" and valg == "J" : #Gælder for både lille <span class="bold">og
 <p>Herunder udregnes <span class="math">\( 5 \cdot 5 \)</span>:</p>
 
 <pre>
-	<code class="python">
->>> 0b101 * 0b101
-25
-	</code>
+	<code class="python">>>> 0b101 * 0b101
+25	</code>
 </pre>
 
 <p>Som du kan se bliver tallet afleveret i base 10. Ønsker du at få resultatet med et binært output kan du vælge enten at konvertere eller beregne direkte. Vær opmærksom at resultatet afleveres som en tekststreng.</p>
 
 <pre>
-	<code class="python">
->>> bin(25)
+	<code class="python">>>> bin(25)
 '0b11001'
 >>> bin(0b101 * 0b101)
-'0b11001'
-	</code>
+'0b11001'	</code>
 </pre>
 
 

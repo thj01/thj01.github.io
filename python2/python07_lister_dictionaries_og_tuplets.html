@@ -75,8 +75,7 @@
 <p>Ofte kan det være en fordel at kunne hente tal ud fra tabeller, f.eks. en liste med brugere, brugernavne og adgangskoder. Læg mærke til at navnene sætter i anførselstegn for at Python tolker det som tekststrenge og ikke værdier.</p>
 
 <pre>
-	<code class="python">
-# Liste med navne
+	<code class="python"># Liste med navne
 navne = ["Anne", "Bent", "Cecilie", "Dennis"] 
 
 #udskriver hele listen
@@ -86,28 +85,24 @@ print (navne)
 print (navne[0])
 print (navne[1])
 print (navne[2])
-print (navne[3])
-	</code>
+print (navne[3])	</code>
 </pre>
 
-<pre class="ubuntu_terminal">
+<p><b>Output</b></p>
+
+<pre>
+	<code class="python">========================= RESTART: /home/tj/test.py =========================
 ['Anne', 'Bent', 'Cecilie', 'Dennis']
 Anne
 Bent
 Cecilie
-Dennis
-
-
-------------------
-(program exited with code: 0)
-Press return to continue
+Dennis</code>
 </pre>
 
 <p>Koden kan også laves, hvor listens elementer printes ud ved hjælp af en løkke. Læg mærke til at antallet af elementer i listen findes ved at anvende <span class="inl_cmd">len()</span>.</p>
 
 <pre>
-	<code class="python">
-# Liste med navne
+	<code class="python"># Liste med navne
 navne = ["Anne", "Bent", "Cecilie", "Dennis"] 
 
 #udskriver hele listen
@@ -117,8 +112,7 @@ print (navne)
 antal_navne = len(navne)
 
 for i in range(antal_navne):
-	print(navne[i])
-	</code>
+	print(navne[i])	</code>
 </pre>
 
 <h2>Ændre element</h2>
@@ -126,8 +120,7 @@ for i in range(antal_navne):
 <p>Hvis man ønsker at ændre et element i en liste angiver man blot en ny variabel</p>
 
 <pre>
-	<code class="python">
-# Liste med navne
+	<code class="python"># Liste med navne
 navne = ["Anne", "Bent", "Cecilie", "Dennis"]
 
 #udskriver hele listen
@@ -137,26 +130,21 @@ print (navne)
 navne[3] = "Dorthe"
 
 print ("Den nye liste", end=" ")
-print (navne)
-	</code>
+print (navne)	</code>
 </pre>
 
-<pre class="ubuntu_terminal">
+<p><b>Output</b></p>
+
+<pre>
+	<code class="python">========================= RESTART: /home/tj/test.py =========================
 ['Anne', 'Bent', 'Cecilie', 'Dennis']
-Den nye liste
-['Anne', 'Bent', 'Cecilie', 'Dorthe']
-
-
-------------------
-(program exited with code: 0)
-Press return to continue
+Den nye liste ['Anne', 'Bent', 'Cecilie', 'Dorthe']</code>
 </pre>
 
 <h2>Tilføje element</h2>
 
 <pre>
-	<code class="python">
-# Liste med navne
+	<code class="python"># Liste med navne
 navne = ["Anne", "Bent", "Cecilie", "Dorthe"]
 
 #udskriver hele listen
@@ -164,18 +152,15 @@ print (navne)
 
 # Tilføj ekstra element
 navne.append ("Egon")
-print (navne)
-	</code>
+print (navne)	</code>
 </pre>
 
-<pre class="ubuntu_terminal">
+<p><b>Output</b></p>
+
+<pre>
+	<code class="python">========================= RESTART: /home/tj/test.py =========================
 ['Anne', 'Bent', 'Cecilie', 'Dorthe']
-['Anne', 'Bent', 'Cecilie', 'Dorthe', 'Egon']
-
-
-------------------
-(program exited with code: 0)
-Press return to continue
+['Anne', 'Bent', 'Cecilie', 'Dorthe', 'Egon']</code>
 </pre>
 
 <h2>Fjerne element</h2>
@@ -187,8 +172,7 @@ Press return to continue
 <p>Ved at angive indeksnummeret som negativt tæller python fra slutningen af listen. Så for at fjerne det sidste element anvendes <span class="inl_cmd">-1</span>.</p>
 
 <pre>
-	<code class="python">
-# Liste med navne
+	<code class="python"># Liste med navne
 navne = ["Anne", "Bent", "Cecilie", "Dorthe", "Egon"]
 
 #udskriver hele listen
@@ -197,18 +181,15 @@ print (navne)
 # Fjerne det sidste element
 del navne[-1]
 
-print (navne)
-	</code>
+print (navne)	</code>
 </pre>
 
-<pre class="ubuntu_terminal">
+<p><b>Output</b></p>
+
+<pre>
+	<code class="python">========================= RESTART: /home/tj/test.py =========================
 ['Anne', 'Bent', 'Cecilie', 'Dorthe', 'Egon']
-['Anne', 'Bent', 'Cecilie', 'Dorthe']
-
-
-------------------
-(program exited with code: 0)
-Press return to continue
+['Anne', 'Bent', 'Cecilie', 'Dorthe']</code>
 </pre>
 
 <h3>Fjerne specifikt element</h3>
@@ -216,8 +197,7 @@ Press return to continue
 <p>I dette tilfælde vil vi fjerne Cecilie som er det 3. element</p>
 
 <pre>
-	<code class="python">
-# Liste med navne
+	<code class="python"># Liste med navne
 navne = ["Anne", "Bent", "Cecilie", "Dorthe", "Egon"]
 
 #udskriver hele listen
@@ -226,18 +206,15 @@ print (navne)
 # Fjern "Cecilie"
 del navne[2]
 
-print (navne)
-	</code>
+print (navne)	</code>
 </pre>
 
-<pre class="ubuntu_terminal">
+<p><b>Output</b></p>
+
+<pre>
+	<code class="python">========================= RESTART: /home/tj/test.py =========================
 ['Anne', 'Bent', 'Cecilie', 'Dorthe', 'Egon']
-['Anne', 'Bent', 'Dorthe', 'Egon']
-
-
-------------------
-(program exited with code: 0)
-Press return to continue
+['Anne', 'Bent', 'Dorthe', 'Egon']</code>
 </pre>
 
 <h2>Find elements placering</h2>
@@ -245,26 +222,22 @@ Press return to continue
 <p>Herunder vil vi finde elementet "Cecilie" i listen ved hjælp af <span class="inl_cmd">index()</span>.</p>
 
 <pre>
-	<code class="python">
-# Liste med navne
+	<code class="python"># Liste med navne
 navne = ["Anne", "Bent", "Cecilie", "Dorthe", "Egon"]
 
 find_navn = "Dorthe"
 listnumber = navne.index(find_navn)
 
-print ("\"{0}\" er nummer {1} i listen".format(find_navn,listnumber))
-	</code>
+print ("\"{0}\" er nummer {1} i listen".format(find_navn,listnumber))	</code>
 </pre>
 
 <p>Output fortæller os at "Dorthe" er det 3. element</p>
 
-<pre class="ubuntu_terminal">
-"Dorthe" er nummer 3 i listen
+<p><b>Output</b></p>
 
-
-------------------
-(program exited with code: 0)
-Press return to continue
+<pre>
+	<code class="python">========================= RESTART: /home/tj/test.py =========================
+"Dorthe" er nummer 3 i listen</code>
 </pre>
 
 <h2>Findes element</h2>
@@ -272,23 +245,19 @@ Press return to continue
 <p>Ovenfor søgte vi placeringen af et liste-element. Her vil vi blot afklare om et element findes eller ej. Ved at anvende den følgende fremgangsmåde bliver svaret enten <span class="inl_cmd">True</span> eller <span class="inl_cmd">False</span>. Læg mærke til at startbogstavet er stort.</p>
 
 <pre>
-	<code class="python">
-# Liste med navne
+	<code class="python"># Liste med navne
 navne = ["Anne", "Bent", "Cecilie", "Dorthe", "Egon"]
 
 navn_der_testes =  "Dorthe"
 findes_navn = navn_der_testes in navne
-print ("{0} er på listen: {1}".format(navn_der_testes,findes_navn))
-	</code>
+print ("{0} er på listen: {1}".format(navn_der_testes,findes_navn))	</code>
 </pre>
 
-<pre class="ubuntu_terminal">
-Dorthe er i listen: True
+<p><b>Output</b></p>
 
-
-------------------
-(program exited with code: 0)
-Press return to continue
+<pre>
+	<code class="python">========================= RESTART: /home/tj/test.py =========================
+Dorthe er på listen: True</code>
 </pre>
 
 <p>Man kan også spørge negerende (negativt/modsat). Man skal altid passe på med at spørge negerende, da svarende kan blive ret kryptiske. Se f.eks. eksemplet herunder. Her spørger vi om Dorte IKKE er i listen og svaret vi får er <span class="inl_cmd">False</span>. Det er fordi at det er et falsk udsagn at Dorte ikke er på listen.</p>
@@ -296,24 +265,19 @@ Press return to continue
 <p>Det gælder om at holde tungen lige i munden når man spørger negerende, fordi vi er som danskere vant til at bruge negerende sætninger forkert f.eks: "Har vi det ikke godt". "ikke godt" er dårligt &rArr; har vi det dårligt hvilket vi egentlig skal svare nej til hvis vi har det godt ... men vi danskere svarer fuldstændig ulogisk ja til den sætningen ...</p>
 
 <pre>
-	<code class="python">
-# Liste med navne
+	<code class="python"># Liste med navne
 navne = ["Anne", "Bent", "Cecilie", "Dorthe", "Egon"]
 
 navn_der_testes =  "Dorthe"
 findes_navn = navn_der_testes not in navne
-print ("{0} er IKKE i listen: {1}".format(navn_der_testes,findes_navn))
-	</code>
+print ("{0} er IKKE i listen: {1}".format(navn_der_testes,findes_navn))	</code>
 </pre>
 
-<pre class="ubuntu_terminal">
-Dorthe er IKKE i listen: False
+<p><b>Output</b></p>
 
-
-------------------
-(program exited with code: 0)
-Press return to continue
-
+<pre>
+	<code class="python">========================= RESTART: /home/tj/test.py =========================
+Dorthe er IKKE i listen: False</code>
 </pre>
 
 <h2>Opgaver</h2>
@@ -337,36 +301,31 @@ Press return to continue
 <p>Man kan fylde lister ved hjælp af funktioner. Se nedestående eksempel</p>
 
 <pre>
-	<code class="python">
-test = list(range(20))
-print (test)
-	</code>
+	<code class="python">test = list(range(20))
+print (test)	</code>
 </pre>
 
-<pre class="ubuntu_terminal">[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+<p><b>Output</b></p>
 
-------------------
-(program exited with code: 0)
-Press return to continue
+<pre>
+	<code class="python">========================= RESTART: /home/tj/test.py =========================
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]</code>
 </pre>
 
 <p>Man kan også lave en liste fuld af andre tegn</p>
 
 <pre>
-	<code class="python">
-import string
+	<code class="python">import string
 
 test = list(string.ascii_lowercase)
-print (test)
-	</code>
+print (test)	</code>
 </pre>
 
-<pre class="ubuntu_terminal">
-['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+<p><b>Output</b></p>
 
-------------------
-(program exited with code: 0)
-Press any key to continue . . .
+<pre>
+	<code class="python">========================= RESTART: /home/tj/test.py =========================
+['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']</code>
 </pre>
 
 <p>Af andre muligheder er der</p>
@@ -392,26 +351,23 @@ Press any key to continue . . .
 <p>Dictionaries opfører sig langt hen ad vejen som almindeligelister, så jeg har valgt blot at vise nogle eksempler. De er dog vigtige at have med, da det er denne måde vi senere vil kunne bygge variabler med denne metode når der bliver kørt løkker (se senere).</p>
 
 <pre>
-	<code class="python">
-#dictionary med bruger ID
+	<code class="python">#dictionary med bruger ID
 bruger_id = {"Anne": 1, "Bent": 2, "Cecilie": 3, "Dennis": 4}
 
 #udskriv listen
 print ("\nUdskrivning af hele listen\n")
 
-print (bruger_id)
-	</code>
+print (bruger_id)	</code>
 </pre>
 
-<pre class="ubuntu_terminal">
+<p><b>Output</b></p>
+
+<pre>
+	<code class="python">========================= RESTART: /home/tj/test.py =========================
+
 Udskrivning af hele listen
 
-{'Dennis': 4, 'Anne': 1, 'Cecilie': 3, 'Bent': 2}
-
-
-------------------
-(program exited with code: 0)
-Press return to continue
+{'Anne': 1, 'Bent': 2, 'Cecilie': 3, 'Dennis': 4}</code>
 </pre>
 
 <h2>Udskriver et element</h2>
@@ -419,51 +375,43 @@ Press return to continue
 <p></p>
 
 <pre>
-	<code class="python">
-#udskrift af en enkelt brugers ID
+	<code class="python">#udskrift af en enkelt brugers ID
 bruger_id = {"Anne": 1, "Bent": 2, "Cecilie": 3, "Dennis": 4}
 
 print (bruger_id)		
 udskriv_anna = bruger_id["Anne"]
-print ("\nAnnas brugerID: {0}".format(udskriv_anna))
-	</code>
+print ("\nAnnas brugerID: {0}".format(udskriv_anna))	</code>
 </pre>
 
-<pre class="ubuntu_terminal">
-{'Bent': 2, 'Anne': 1, 'Dennis': 4, 'Cecilie': 3}
+<p><b>Output</b></p>
 
-Annas brugerID: 1
+<pre>
+	<code class="python">========================= RESTART: /home/tj/test.py =========================
+{'Anne': 1, 'Bent': 2, 'Cecilie': 3, 'Dennis': 4}
 
-
-------------------
-(program exited with code: 0)
-Press return to continues
+Annas brugerID: 1</code>
 </pre>
 
 <h2>Tilføj element</h2>
 
 <pre>
-	<code class="python">
-#tilføje en bruger med ID
+	<code class="python">#tilføje en bruger med ID
 bruger_id = {"Anne": 1, "Bent": 2, "Cecilie": 3, "Dennis": 4}
 
 print (bruger_id)
 print ("\nDer tilføjes brugern Egon med ID = 5")
 bruger_id ["Egon"]=5
-print (bruger_id)
-	</code>
+print (bruger_id)	</code>
 </pre>
 
-<pre class="ubuntu_terminal">
-{'Bent': 2, 'Anne': 1, 'Dennis': 4, 'Cecilie': 3}
+<p><b>Output</b></p>
+
+<pre>
+	<code class="python">========================= RESTART: /home/tj/test.py =========================
+{'Anne': 1, 'Bent': 2, 'Cecilie': 3, 'Dennis': 4}
 
 Der tilføjes brugern Egon med ID = 5
-{'Bent': 2, 'Egon': 5, 'Anne': 1, 'Dennis': 4, 'Cecilie': 3}
-
-
-------------------
-(program exited with code: 0)
-Press return to continue
+{'Anne': 1, 'Bent': 2, 'Cecilie': 3, 'Dennis': 4, 'Egon': 5}</code>
 </pre>
 
 <h2>Ændre elements værdi</h2>
@@ -471,101 +419,85 @@ Press return to continue
 <p></p>
 
 <pre>
-	<code class="python">
-#Ændre en brugers ID
+	<code class="python">#Ændre en brugers ID
 bruger_id = {"Anne": 1, "Bent": 2, "Cecilie": 3, "Dennis": 4, "Egon":5}		
 
 print (bruger_id)
 print ("\nEgons ID ændres til 6")
 bruger_id["Egon"]=6
-print (bruger_id)
-	</code>
+print (bruger_id)	</code>
 </pre>
 
-<pre class="ubuntu_terminal">
-{'Anne': 1, 'Dennis': 4, 'Egon': 5, 'Cecilie': 3, 'Bent': 2}
+<p><b>Output</b></p>
+
+<pre>
+	<code class="python">========================= RESTART: /home/tj/test.py =========================
+{'Anne': 1, 'Bent': 2, 'Cecilie': 3, 'Dennis': 4, 'Egon': 5}
 
 Egons ID ændres til 6
-{'Anne': 1, 'Dennis': 4, 'Egon': 6, 'Cecilie': 3, 'Bent': 2}
-
-
-------------------
-(program exited with code: 0)
-Press return to continue
+{'Anne': 1, 'Bent': 2, 'Cecilie': 3, 'Dennis': 4, 'Egon': 6}</code>
 </pre>
 
 <h2>Fjerne et element</h2>
 
 <pre>
-	<code class="python">
-#fjerne brugeren Egon
+	<code class="python">#fjerne brugeren Egon
 bruger_id = {"Anne": 1, "Bent": 2, "Cecilie": 3, "Dennis": 4, "Egon":5}
 
 print(bruger_id)
 print ("\nFjerner brugeren Egon")
 del bruger_id["Egon"]
-print (bruger_id)
-	</code>
+print (bruger_id)	</code>
 </pre>
 
-<pre class="ubuntu_terminal">
-{'Anne': 1, 'Bent': 2, 'Egon': 5, 'Dennis': 4, 'Cecilie': 3}
+<p><b>Output</b></p>
+
+<pre>
+	<code class="python">========================= RESTART: /home/tj/test.py =========================
+{'Anne': 1, 'Bent': 2, 'Cecilie': 3, 'Dennis': 4, 'Egon': 5}
 
 Fjerner brugeren Egon
-{'Anne': 1, 'Bent': 2, 'Dennis': 4, 'Cecilie': 3}
-
-
-------------------
-(program exited with code: 0)
-Press return to continue
+{'Anne': 1, 'Bent': 2, 'Cecilie': 3, 'Dennis': 4}</code>
 </pre>
 
 <h2>Undersøg om et element findes</h2>
 
 <pre>
-	<code class="python">
-#Undersøger om en bruger findes
+	<code class="python">#Undersøger om en bruger findes
 bruger_id = {"Anne": 1, "Bent": 2, "Cecilie": 3, "Dennis": 4}
 
 print (bruger_id)
 is_egon = "Egon" in bruger_id
-print ("\nUndersøger om brugeren Egon Findes: {0}".format(is_egon)) 
-	</code>
+print ("\nUndersøger om brugeren Egon Findes: {0}".format(is_egon)) 	</code>
 </pre>
 
-<pre class="ubuntu_terminal">
-{'Cecilie': 3, 'Dennis': 4, 'Bent': 2, 'Anne': 1}
+<p><b>Output</b></p>
 
-Undersøger om brugeren Egon Findes: False
+<pre>
+	<code class="python">========================= RESTART: /home/tj/test.py =========================
+{'Anne': 1, 'Bent': 2, 'Cecilie': 3, 'Dennis': 4}
 
-
-------------------
-(program exited with code: 0)
-Press return to continue
+Undersøger om brugeren Egon Findes: False</code>
 </pre>
 
 <h2>Undersøg om et element <span class="bold">IKKE</span> findes</h2>
 
 <pre>
-	<code class="python">
-#undersøg om brugeren Susanne IKKE findes
+	<code class="python">#undersøg om brugeren Susanne IKKE findes
 bruger_id = {"Anne": 1, "Bent": 2, "Cecilie": 3, "Dennis": 4}
 
 print (bruger_id)
 is_egon = "Susanne" not in bruger_id
-print ("\nUndersøger om brugeren Susanne IKKE i denne dictionary: {0}".format(is_egon)) 
-	</code>
+print ("\nUndersøger om brugeren Susanne IKKE i denne dictionary: {0}".format(is_egon)) 	</code>
 </pre>
 
-<pre class="ubuntu_terminal">
-{'Cecilie': 3, 'Dennis': 4, 'Bent': 2, 'Anne': 1}
+<p><b>Output</b></p>
 
-Undersøger om brugeren Susanne IKKE i denne dictionary: True
+<pre>
+	<code class="python">========================= RESTART: /home/tj/test.py =========================
+{'Anne': 1, 'Bent': 2, 'Cecilie': 3, 'Dennis': 4}
 
-
-------------------
-(program exited with code: 0)
-Press return to continue
+Undersøger om brugeren Susanne IKKE i denne dictionary: True</code>
 </pre>
 
 <h2>Opgaver</h2>

@@ -53,25 +53,22 @@
 <p>Lad os lave et simpelt program der udskriver tekstrengen: "Hej". Indtast nedestående og tryk på <kbd>F5</kbd></p>
 
 <pre>
-	<code class="python">
->>>print ("Hej")
-Hej
-	</code>
+	<code class="python">>>>print ("Hej")
+Hej</code>
 </pre>
 
 
 <p>Programmet er opbygget af funktionen <span class="inl_cmd">print()</span>, som laver et output af det som står i parantesen. I dette tilfælde af tektstrengen <span class="inl_cmd">Hej</span>. Som du kan se i programmet omgiver vi teksstrengen <span class="inl_cmd">Hej</span> med udråbtegn <span class="inl_cmd">"   "</span>. Det er nødvendigt, fordi Python skal vide om vi indsætter en værdi eller en tekststreng. Vi fortæller altså Python om det er en værdi ved enten at sætte udråbstegn omkring eller at udelade dem.</p>
 
 <pre>
-	<code class="python">
->>>print ("Hej")
+	<code class="python">>>>print ("Hej")
 Hej
 >>>print (4)
-4
-	</code>
+4</code>
 </pre>
 
 
+<!--
 <h2>Kommentarer</h2>
 
 <p>For at gøre koden lettere at læse indsætter man kommentarer i den. Det kan gøres på to måder. Åbn en ny fil (<kbd>Ctrl</kbd>+<kbd>n</kbd>) og indtast følgende :</p>
@@ -144,82 +141,32 @@ Press return to continue
 </pre>
 
 <p>Her får vi en <span class="inl_cmd">navnefejl</span>. Python forventer en talværdi, da der ikke er nogen anførselstegn ... og <span class="inl_cmd">Hej</span> er ikke et tal.</p>
+-->
 
-<blockquote>
-	<p><span class="afsnit">Husk at</span>
-		
-		<ol class="">
-			<li>... bruge bogstaver - så er du aldrig i tvivl.</li>
-			<li>... afslutte hvad du begynder. Sørg for at anførselstegn, paranteser osv. bliver afsluttet</li>
-			<li>... angive typerne korrekt - værdi eller streng</li>
-			<li>... hvis fejlen ikke er i den linie Python henviser til, er det fordi den forrige linie ikke er korrekt (tjek paranteser og anførselstegn)</li>
-		</ol>
-	</p>
-</blockquote>
+<h1>Undgå fejl</h1>
 
+<p>Når du anvender Pythonshell kan du ikke starte koden, hvis der er fejl i den. Så vil cursoren bare rykke en linie ned når du trykker <kbd>ENTER</kbd>.</p>
 
+<p>Hvis det sker skal du tjekke om du har afsluttet dine tegn. Det gælder for: </p>
+
+<ul class="none">
+	<li>Anførselstegn og apostroffer - " ' </li>
+	<li>paranteser og brackets - () []</li>
+	<li>Indrykninger (kommer senere)</li>
+</ul>
+
+<p>Når du senere i dette materiale har kode der ikke fungerer, så er det punkterne i denne liste du skal tjekke dine kode for.</p>
 
 <h1>Tekststrenge</h1>
 
-<h2>Lange tekststykker</h2>
-
-<p>Hvis man skal skrive længere tekststykker der indeholder linje skift og tabulatorindrykninger kan man anvende en anden metode - triple anførselstegn. Ved at omgive sin tekststreng med <span class="inl_cmd">""" *tekststreng* """</span> så bevares linjeskift, indrykninger, mellemrum og tabulatorer.</p>
+<p>Tekststrenge skal skrives imellem 2 anførselstegn eller apostroffer</p>
 
 <pre>
-	<code class="python">
->>> print ("""
-Roser er røde
-
-    Violer er blå
-
-Python er svært
-
-        .... NOT!""")
-
-Roser er røde		<span class="red">&larr; Her starter output</span>
-
-    Violer er blå
-
-Python er svært
-
-        .... NOT!
-	</code>
+	<code class="python">>>> print ("med anførselstegn")
+med anførselstegn
+>>> print ('med apostroffer')
+med apostroffer</code>
 </pre>
-
-<pre class="ubuntu_terminal">
-Roser er røde
-
-    Violer er blå
-
-Python er svært
-
-        .... NOT!
-
-------------------
-(program exited with code: 0)
-Press return to continue
-
-</pre>
-
-<h2>Uden linjeskift</h2>
-
-<p>Hvis man ikke gør noget, så vil <span class="inl_cmd">print()</span> lave et linjeskift hver gang. Det kan undgås ved at indsætte <span class="inl_cmd">end=" "</span>.</p>
-
-<pre>
-	<code class="python">
-print ("Python er", end=" ")
-print ("ikke svært at lære.")
-	</code>
-</pre>
-
-<pre class="ubuntu_terminal">
-Python er ikke svært at lære.
-
-------------------
-(program exited with code: 0)
-Press return to continue
-</pre>
-
 
 <h2>Escape sequences</h2>
 
@@ -246,19 +193,9 @@ Press return to continue
 <p>Se nedenstående eksempel</p>
 
 <pre>
-	<code class="python">
-print ("Her kommer et ord med anførselstegn - \"æble\" ")
-	</code>
+	<code class="python">>>> print ("Her kommer et ord med anførselstegn - \"æble\" ")
+Her kommer et ord med anførselstegn - "æble" </code>
 </pre>
-
-<pre class="ubuntu_terminal">
-Her kommer et ord med anførselsteng - "æble" 
-
-------------------
-(program exited with code: 0)
-Press return to continue
-</pre>
-
 
 <p>Man kan også anvende escape sequences, hvis man vil rykke teksten i teskstrengen.</p>
 
@@ -266,11 +203,11 @@ Press return to continue
 	<tbody>
 		<tr>
 			<td>\n</td>
-			<td>Linefeed (ny linje)</td>
+			<td>Linieskift (linefeed)</td>
 		</tr>
 		<tr>
 			<td>\t</td>
-			<td>Horisontal TAB</td>
+			<td>tabulator (horisontal afstand)</td>
 		</tr>
 	</tbody>
 </table>
@@ -278,26 +215,18 @@ Press return to continue
 <p>Her er givet nogle eksempler:</p>
 
 <pre>
-	<code class="python">
-print ("Dette er en sætning \nmed linefeed\n")
-print ("Dette er en sætning \tmed horisontal TAB")
-	</code>
-</pre>
-
-<pre class="ubuntu_terminal">
+	<code class="python">>>> print ("Dette er en sætning \nmed linieskift (linefeed)")
 Dette er en sætning 
-med linefeed
-
-Dette er en sætning 	 med horisontal TAB
-
-------------------
-(program exited with code: 0)
-Press return to continue
+med linieskift (linefeed)
+>>> print ("Dette er en sætning \tmed horisontal TAB")
+Dette er en sætning 	med horisontal TAB</code>
 </pre>
 
-<span class="afsnit">Carriage return</span>
+<h3>Carriage return</h3>
 
 <p>Hvis man vil skrive oven i det der lige er printet skal man anvende <span class="inl_cmd">\r</span>. Det kan f.eks. være hvis man vil lave et ur der tæller ned, og man ikke ønsker det gamle tal skal blive stående.</p>
+
+<p>Desværre virker denne feature ikke i IDLE, men du skal bruge denne <span class="inl_cmd">escape sequence</span> i en senere opgave.</p>
 
 <table class="">
 	<tbody>
@@ -308,18 +237,59 @@ Press return to continue
 	</tbody>
 </table>
 
+
+<h2>Anden afslutning</h2>
+
+<p>Som standard indsætter Python et linieskift (<span class="inl_cmd">\r</span>) efter en print sætning. Dette kan ændres ved at indsætte <span class="inl_cmd">end="*det som der skal gøres*"</span> som en paramter.</p>
+
+<p>Det kan være smart hvis man vil have noget til at udskrive sig efter hinanden, f.eks. en talrække. Her ser du noget kode, som du først vil lære senere, men det går i al sin enkelthed ud på at udføre den samme kommandolinie flere gange. </p>
+
 <pre>
-	<code class="python">
-print ("Dette er en sætning \rmed carraige return")
-	</code>
+	<code class="python">>>> for i in range(5):
+    print(i) <span class="red"><b>&larr; Normal afslutning betyder linieskift</b></span>
+
+    
+0
+1
+2
+3
+4
+>>> for i in range(5):
+    print(i, end=" ") <span class="red"><b>&larr; afsluttes med et mellemrum</b></span>
+
+    
+0 1 2 3 4 
+>>> for i in range(5):
+    print(i, end=" : ") <span class="red"><b>&larr; afsluttes af et kolon omgivet af mellemrum</b></span>
+
+    
+0 : 1 : 2 : 3 : 4 :    </code>
 </pre>
 
-<pre class="ubuntu_terminal">med carraige return
 
-------------------
-(program exited with code: 0)
 
-Press any key to continue . . .
+
+<h2>Lange tekststykker</h2>
+
+<p>Hvis man skal skrive længere tekststykker der indeholder linje skift og tabulatorindrykninger kan man anvende en anden metode - triple anførselstegn. Ved at omgive sin tekststreng med <span class="inl_cmd">""" *tekststreng* """</span> så bevares linjeskift, indrykninger, mellemrum og tabulatorer.</p>
+
+<pre>
+	<code class="python">>>> print ("""
+Roser er røde
+
+    Violer er blå
+
+Python er svært
+
+        .... Indtil man får det lært""")
+
+Roser er røde
+
+    Violer er blå
+
+Python er svært
+
+        .... Indtil man får det lært</code>
 </pre>
 
 
@@ -330,398 +300,292 @@ Press any key to continue . . .
 <p>Før vi gennemgår hvad variabler er skal du lige læse nedenstående eksempel:</p>
 
 <pre>
-	<code class="python">
-var1 = 1
-var2 = 2
-
-print(var1 + var2)
-	</code>
-</pre>
-
-<pre class="ubuntu_terminal">
-3
-
-------------------
-(program exited with code: 0)
-Press return to continue
+	<code class="python">>>> var1 = 1
+>>> var2 = 2
+>>> var1 + var2
+3</code>
 </pre>
 
 <p>Det som sker her er, at vi sætter udtrykket (variablen) <span class="inl_cmd">var1</span> til at have værdien 1 og <span class="inl_cmd">var2</span> til værdien 2. Det kan vi se når vi beder Python om at udskrive summen af <span class="inl_cmd">var1</span>  og <span class="inl_cmd">var2</span> - resultatet er 3. Man kan sige at en variable er en stedfortræder for en værdi eller en tekststreng.</p>
 
+<blockquote>
+	<p>
+		<b>LÆG MÆRKE TIL ... </b>at jeg ikke skriver print foran den sidste kodelinie. Det er ikke nødvendigt når man anvender Idle, da den automatisk laver et print output af koden.		
+	</p>
+	
+	<p>Dette vil blive brugt fremover når der arbejdes i Idle med kode der kuyn fylder en linie.</p>
+</blockquote>
 
 
-
-
-<p>Lad os lave et eksempel med nogle tekststrenge (læg mærke til mellemrummet før <span class="inl_cmd">verden</span> i <span class="inl_cmd">var2</span>):</p>
+<h2>Tekst i variabler</h2>
 
 <pre>
-	<code class="python">
-var1 = "hej"
-var2 = " verden"
-
-print(var1 + var2)
-	</code>
+	<code class="python">>>> var1 = "hej"
+>>> var2 = "verden"
+>>> var1 + var2
+hejverden</code>
 </pre>
 
-<pre class="ubuntu_terminal">
+<p>Som du kan se, så bliver de to variabler udskrevet lige efter hinanden uden mellemrum. Det skal altså indsættes i koden (<span class="inl_cmd">" verden"</span>) eller tilføje det som en tekststump:</p>
+
+<pre>
+	<code class="python">>>> var1 + " " + var2 <span class="red"><b>&larr; Her indsættes et mellemrum</b></span>
 hej verden
-
-------------------
-(program exited with code: 0)
-Press return to continue
+>>> var1 + " store " + var2 <span class="red"><b>&larr; Her indsættes store med mellemrum omkring</b></span>
+hej store verden</code>
 </pre>
-
-<p>Man skal være opmærksom på at Python bruger <span class="inl_cmd">+</span> til at lægge værdier sammen. Havde vi ikke indsat et mellemrum før <span class="inl_cmd">verden</span>, ville udskriften have været <span class="inl_cmd">hejverden</span>. Man kunne også have udskrevet teksten ved at lægge et mellemrum til imellem variablerne:</p>
-
-<pre>
-	<code class="python">
-print(var1 + " " + var2)
-	</code>
-</pre>
-
-<p>Man skal være opmærksom på hvad man lægger sammen. Se nedenstående eksempel hvor jeg forsøger at lægge en teksstreng sammen med et tal:</p>
-
-<pre>
-	<code class="python">
-var1 = "hej"
-var2 = 2 
-
-print(var1 + var2)
-	</code>
-</pre>
-
-<pre class="ubuntu_terminal">
-Traceback (most recent call last):
-  File "test.py", line 4, in <module>
-    print(var1 + var2)
-TypeError: Can't convert 'int' object to str implicitly
-
-------------------
-(program exited with code: 1)
-Press return to continue
-</pre>
-
-<p>Python kan ikke udføre sammenføjningen, fordi den læser <span class="inl_cmd">hej</span> som en tekststreng og <span class="inl_cmd">2</span> som et tal (int). Vær derfor opmærksom på om du arbejder med talværdier eller tekst.</p>
-
-<p>Prøv at ændre <span class="inl_cmd">+</span> til <span class="inl_cmd">*</span>(gange):</p>
-
-<pre>
-	<code class="python">
-var1 = "hej"
-var2 = 2 
-
-print(var1 * var2)
-	</code>
-</pre>
-
-<pre class="ubuntu_terminal">
-hejhej
-
-------------------
-(program exited with code: 0)
-Press return to continue
-</pre>
-
-<p>Man kan altså godt udskrive <span class="inl_cmd">hej</span> 2n gange, men man kan ikke lave regnestykket <span class="math">\( 2+hej \)</span>.</p>
 
 <h2>Navngivning af variabler</h2>
 
-<p>Hovedreglen om variabler er, at de ikke må starte med et tal. De må altså ikke hedde <span class="inl_cmd">1</span>, <span class="inl_cmd">1pind</span> osv.2</p>
+<p>Nar man navngiver variabler gælder der følgende regler</p>
+
+<ul class=" fat_li">
+	
+	<li>Skal starte med et bogstav eller _ (underscore)</li>
+	
+		<p>Eksempler: antal, Position2, _bil</p>
+		
+	<li>Kan kun indeholde alfanumeriske tegn og underscore (A-å, 0-9, _)</li>
+	
+		<p>Man må bruge alle bogstaver, tal og underscore til at lave variabelnavne med.</p>
+		
+		<p>Hvis man programmerer noget der skal være tilgængeligt ud over danmarks grænser bør man afholde sig fra at bruge æ, ø og å. Men programmerer man til sig selv, så er det ligegyldigt.</p>
+	
+	<li>Der er forskel på store og små bogstaver (case sensitive)</li>
+	
+		<p>abc, Abc, aBC er alle sammen forskellige variabelnavne</p>
+	
+</ul>
 
 <p>Brug beskrivende navne til dine variabler, så bliver koden lettere at læse. F.eks: <span class="inl_cmd">fnavn</span> til fornavn og <span class="inl_cmd">antal_gæt</span> til antallet af gæt</p>
 
-<p>Man bruger enten <span class="inl_cmd">underscore</span> eller <span class="inl_cmd">camelCasing</span>, hvor første bogstav (pånær første ord) i ordet er med stort,ved længere variabler. Se nedestående eksempel:</p>
+
+
+
+<p>Skal man anvende mere beskrivende variabel navne med flere ord, kan man bruger enten <span class="inl_cmd">underscore</span> eller <span class="inl_cmd">camelCasing</span>. Se nedestående eksempel:</p>
 
 <pre>
-	<code class="python">
-#variabler med underscore
+	<code class="python">#variabler med underscore
 antal_bogstaver
-udregning_af_diskreminant
+udregning_af_diskriminant
 antal_afdrag
 
 #variabler med camelCasing
 antalBogstaver
-udregningAfDiskreminant
-antalAfdrag
-	</code>
+udregningAfDiskriminant
+antalAfdrag</code>
 </pre>
 
-<p>Jeg anbefaler at du bruger <span class="inl_cmd">underscore</span> fremfor <span class="inl_cmd">camelCasing</span>, da det er nemmest at læse og dermed overskue.</p>
+<p>Jeg kan bedst lide at bruge underscore, da jeg synes det er lettest at læse.</p>
 
 
-<h2>Variabler i tekststrenge</h2>
+<h2>Ændring af variabler</h2>
 
-<p>Når man skal indsætte variabler i tekststrenge anvender man pladsholdere som angives med <span class="inl_cmd">{*tal*}</span>. Se nedestående eksempel.</p>
+<p>Hvis man vil ændre værdien af en variabel gør sætter skriver man den bare en gang til med den nye værdi:</p>
 
 <pre>
-	<code class="python">
-# Her behøver jeg ikke at indsætte et linjeskift efter hej.
-# Jeg skriver laver det bare mellem pladsholderne.
-
-tekst1 = "Thomas"
-print ("Hej. Mit navn er {0}".format(tekst1))
-	</code>
+	<code class="python">>>> var1 = 1
+>>> var1 <span class="red"><b>&larr; viser variablen <span class="inl_cmd"><span class="red"><b>var1</b></span></span></b></span>
+1
+>>> var1 = 2 <span class="red"><b>&larr; ændrer <span class="inl_cmd"><span class="red"><b>var1</b></span></span></b></span>
+>>> var1
+2</code>
 </pre>
 
 
+<h2>Fejlkoder</h2>
 
-<pre class="ubuntu_terminal">
-Hej. Mit navn er Thomas
-
-------------------
-(program exited with code: 0)
-Press return to continue
-</pre>
-
-<p>Læg mærke til at Python tæller fra værdien <span class="inl_cmd">0</span> og ikke <span class="inl_cmd">1</span>.</p>
-
-
-<p>På den måde kan man indsætte variabler løbende mens man skriver sin tekst. Det eneste man skal være opmærksom på er rækkefølgen de optræder i, så koden indsætter den rigtige variabel. Herunder er et eksempel med 2 pladsholdere i samme sætningen</p>
+<p>Man skal være opmærksom på at python forstår + som et logisk plus som lægger to elementer sammen. Det betyder at man ikke skal blande værdier og tekststrenge sammen.</p>
 
 <pre>
-	<code class="python">
-navn = "Thomas"
-prg_sprog = "Python"	
-print ("Mit navn er {0}. \nJeg er ved at lære {1}. \n\n\tDet er \"nemt\".".format(navn, prg_sprog))
-	</code>
+	<code class="python">>>> var1 = "Hej"
+>>> var2 = 2
+>>> var1 + var2</code>
 </pre>
 
-
-
-<pre class="ubuntu_terminal">
-Mit navn er Thomas. 
-Jeg er ved at lære Python. 
-
-    Det er "nemt".
-
-------------------
-(program exited with code: 0)
-Press return to continue
-</pre>
-
-<h2>Variabler og formatering</h2>
-
-<p>Hvis man gerne vil formatere sin tekst kan man også anvende tre anførselstegn (<span class="inl_cmd">"""</span>). Læg mærke til, at jeg flytter linjen <span class="inl_cmd">.format( ....</span> til linien efter tekststykket.</p>
+<p>Her vil Python brokke sig på følgende måde</p>
 
 <pre>
-	<code class="python">
-navn1="Anders"
-navn2="Bo"
-navn3="carl"
-
-print("""
-
-Først kom {0}.
-	
-	Så kom {1}.
-	
-		{2} havde glemt det!.
-"""
-.format(navn1,navn2,navn3))
-	</code>
+<span class="red"><b>Traceback (most recent call last):
+  File "&lt;pyshell#21>", line 1, in &lt;module>
+    print (var1 + var2)
+TypeError: must be str, not int</b></span>
 </pre>
 
-<pre class="ubuntu_terminal">
+<p>Den sidste linie fortæller hvad fejlen er:</p>
 
-Først kom Anders.
+<p><span class="inl_cmd"><span class="red">TypeError: must be str, not int</span></span></p>
 
-        Så kom Bo.
+<p>Oversat: Typefejl: Skal være en streng, ikke et tal (integer)</p>
 
-                carl havde glemt det!.
+<p>Python fortæller os at det er en type fejl - man kan ikke sige 2 + hej - det giver ingen mening. Grunden til at Python gør det til en <span class="inl_cmd">streng</span> fejl er, at den første variabel er en streng. Havde det været modsat, så ville fejlmeddelelsen have været </p>
 
-------------------
-(program exited with code: 0)
+<p><span class="inl_cmd"><span class="red">TypeError: unsupported operand type(s) for +: 'int' and 'str'
+</span></span></p>
 
-Press any key to continue . . .
-</pre>
+<h2>Gentagelser</h2>
 
+<p>Som vi så ovenfor kan man ikke lægge tekst og tal sammen. Men man kan godt gentage tekst ved hjælp af gange (<span class="inl_cmd"> * </span>).</p>
 
-
-
-
-
-
-<h2>Opgaver</h2>
-
-<h3>Opgave - .format</h3>
-
-<p>Lav nedestående tekststykke ved hjælp af Python hvor de ord der er røde skal indsættes ved hjælp af variabler.</p>
+<p>Forestil dig at du gerne vil have 35 stjerner efter hinanden. Det kan vi gøre ved at sige til Python at den skal printe tegnet 35 gange</p>
 
 <pre>
-	<code class="php">Mit navn er <span class="red">navn</span>. Jeg bor i <span class="red">by</span> og er <span class="red">alder</span> år gammel. Mit telefonnummer er: 
-<span class="red">telefonnummer</span> og det er en <span class="red">telefonmærke</span>.</code>
-</pre></p>
-
-<h3>Opgave - escape characters</h3>
-
-<p>Lav følgende Output - på en <span class="inl_cmd">print</span>-linje ved hjælp af <span class="inl_cmd">\n</span> (ny linje) og <span class="inl_cmd">\t</span> (tabulator). Ordene "indholdsfortegnelse, "kapitel" og "afsnit" skal indsættes ved hjælp af variabler.</p>
-
-<pre class="ubuntu_terminal">
-Indholdsfortegnelse
-    Kapitel 1
-        Afsnit 1
-        Afsnit 2
-    Kapitel 2
-
-------------------
-(program exited with code: 0)
-Press return to continue
+	<code class="python">>>> 35 * "*"
+'***********************************'</code>
 </pre>
+
+<p>Skal man printe den samme ting igen og igen er dette metoden at gøre det på. Det fylder mindre, og man skal ikke tælle antal tegn for at forstå koden.</p>
 
 
 <h1>Input</h1>
 
-<p>Det vi har lært ovenfor er at indsætte variabler i selve koden. Det som vi skal se på her er, at give mulighed for at brugeren kan indtaste informationer.</p>
-
+<p>Ofte har vi brug for at anvende input (f.eks. indtastning) fra brugeren. Det gøres ved hjælp af kommandoen <span class="inl_cmd">input()</span>:</p>
 
 <h2>Indtastning af tekst</h2>
 
-<p>I det nedestående eksempel er en simpel kode, der gør at brugeren kan indtaste sit svar</p>
+<p>Her lavet vi en variabel der hedder <span class="inl_cmd">fornavn</span>, og den skaber vi ved hjælp af brugerens input:</p>
 
 <pre>
-	<code class="python">
-# Variablen navn sættes ved hjælp af brugerens input
-navn = input("Hvad er dit navn: ")
-print ("Du indtastede {0}".format(navn))
-	</code>
+	<code class="python">>>> fornavn = input("Hvad er dit fornavn: ")</code>
 </pre>
 
-<p>Resultatet er: </p>
+<p>Når du trykker <kbd>Enter</kbd>, kommer der en line frem med en blinkende cursor.</p>
 
-<pre class="ubuntu_terminal">
-Hvad er dit navn: 
-
-------------------
-(program exited with code: 0)
-Press return to continue
-</pre>
-
-<p>Den første linje i koden skriver tekstrengen i <span class="inl_cmd">input</span> funktionen, og venter på at brugeren indtaster sit svar.</p>
-
-<pre class="ubuntu_terminal">
-Hvad er dit navn: Thomas <span class="red">&larr; Input</span>
-
-------------------
-(program exited with code: 0)
-Press return to continue
-</pre>
-
-<p>Herefter svarer Python tilbage med <span class="inl_cmd">print</span>-sætningen</p>
-
-<pre class="ubuntu_terminal">
-Hvad er dit navn: Thomas
-Du indtastede Thomas <span class="red">&larr; Output</span>
-
-------------------
-(program exited with code: 0)
-Press return to continue
-</pre>
-
-
-<h2>Indtastning af tal</h2>
-
-<p>Hvis du skal indtaste en værdi, f.eks. alder, skal du gøre python opmærksom på om det er et heltal (int) eller et decimaltal (float).  Lad os først prøve at indtaste et heltal. For at få Python til at indlæse vores indtastning som et tal skal vi ændre indtastningen fra en streng til et tal. Det gør vi ved at ændre tekststrengen til et tal ved at sætte linjen in i <span class="inl_cmd">int()</span> funktionen. </p>
+<p>Indtast dit navn og tryk <kbd>Enter</kbd></p>
 
 <pre>
-	<code class="python">
-talInt = int(input("Indtast et heltal: "))
-print ("Det dobbelte af heltallet er: {0}".format(talInt*2))
-	</code>
+	<code class="python">>>> fornavn = input("Hvad er dit fornavn: ")
+Hvad er dit fornavn: <b>Thomas</b> <span class="red"><b>&larr; Mit input</b></span></code>
 </pre>
 
-<pre class="ubuntu_terminal">
-Indtast et heltal: 5
-Det dobbelte af heltallet er: 10
+<p>Herefter kan vi få navnet frem ved at bruge variablen <span class="inl_cmd">navn</span></p>
 
-------------------
-(program exited with code: 0)
-Press return to continue
-
-</pre>
-
-<p>Vi kan se det går galt hvis vi her vælger at indtaste et decimaltal (Her <span class="inl_cmd">5.5</span>). Vær opmærksom på, at decimaltal indtastes med <span class="inl_cmd">.</span> (punktum) og ikke <span class="inl_cmd">,</span> (komma).</p>
-
-<pre class="ubuntu_terminal">
-Indtast et heltal: 5.5
-Traceback (most recent call last):
-  File "test.py", line 1, in <module>
-    talInt = int(input("Indtast et heltal: "))
-ValueError: invalid literal for int() with base 10: '5.5'
-
-------------------
-(program exited with code: 1)
-Press return to continue
-</pre>
-
-<p>Fejlmeddelelsen er, at det tal vi taster ind ikke tilhører <span class="inl_cmd">base 10</span> hvilket er en anden betegnelse for 10-talssystemet. Laver vi nu koden om til at kunne modtage decimaltal sker der følgende (husk <span class="inl_cmd">punktum (.)</span> i stedet for <span class="inl_cmd">komma(,)</span>):</p>
 
 <pre>
-	<code class="python">
-talFloat = float(input("Indtast et decimaltal: "))
-print ("Det dobbelte af decimaltallet er: {0}".format(talFloat*2))
-	</code>
+	<code class="python">>>> fornavn
+'Thomas' <span class="red"><b>&larr; Apostrofferne - viser det er tekst </b></span></code>
 </pre>
 
-<pre class="ubuntu_terminal">
-Indtast et decimaltal: 3.14
-Det dobbelte af decimaltallet er: 6.28
+<p>Det vi har lært ovenfor er at indsætte variabler i selve koden. Det som vi skal se på her er, at give mulighed for at brugeren kan indtaste informationer.</p>
 
-------------------
-(program exited with code: 0)
-Press return to continue
-</pre>
+<h2>Indtastning af heltal</h2>
 
-<p>Lad os se hvad der sker når vi indtaster et heltal:</p>
-
-<pre class="ubuntu_terminal">
-Indtast et heltal: 5
-Det dobbelte af decimaltallet er: 10.0
-
-------------------
-(program exited with code: 0)
-Press return to continue
-</pre>
-
-<p>Her kommer der ikke en fejl fordi Python kan læse tallet som et decimaltal. Og du kan se på resultatet (<span class="inl_cmd">10.0</span>) at det er et decimaltal.</p>
-
-<p>Herunder er vist et eksempel hvor der både anvendes en streng og et tal som input:</p>
+<p>Som standard er Python sat op til at inputs er tekst. Hvis det skal være et tal (f.eks. alder) skal det konverteres. Det gøres ved hjælp af <span class="inl_cmd">int()</span>:</p>
 
 <pre>
-	<code class="python">
-# Variablen tal sættes ved hjælp af brugerens input
-navn = input("Hvad hedder du: ")
-alder = int(input("Indtast din alder: "))
-
-print ("Du hedder {0} og er {1} år gammel".format(navn, alder))
-print ("Om 5 år er du {0} år gammel".format(5+alder))
-	</code>
+	<code class="python">>>> alder = int(input("Hvor gammel er du?: "))
+		      
+Hvor gammel er du?: <b>48</b> <span class="red"><b>&larr; Mit input</b></span></code>
 </pre>
 
-<pre class="ubuntu_terminal">
-Hvad hedder du: Thomas
-Indtast din alder: 45
-Du hedder Thomas og er 45 år gammel
-Om 5 år er du 50 år gammel
+<p>Vi tjekker variablen <span class="inl_cmd">alder</span>:</p>
 
-------------------
-(program exited with code: 0)
-Press return to continue
+<pre>
+	<code class="python">>>> alder
+		      
+48 <span class="red"><b>&larr; Uden apostroffer - viser det er en værdi </b></span></code>
 </pre>
 
-<p>Havde vi ikke angivet alder som en <span class="inl_cmd">int</span>, kunne vi ikke lægge 5 til.</p>
+<p><b>Læg mærke til... </b>at der ikke er nogle anførselsteng omkring tallet. Det er altså en værdi nu</p>
 
-<h2>Opgaver</h2>
+<h2>Indtastning af decimaltal</h2>
 
-<h3>Udvid opgaven</h3>
+<p>Decimaltal fungerer på næsten samme måde. Her skal dog anvende en anden funktion, nemlig <span class="inl_cmd">float()</span>. </p>
 
-<p>Ændr koden fra før, så brugeren selv indtaster informationerne. Formater teksten så den bliver pæn.</p>
+<p><b>VIGTIGT: </b>Når vi skriver decimaltal skal man bruge <span class="inl_cmd">punktum</span> og ikke <span class="inl_cmd">komma</span>. Komma anvendes til at adskille i python. Dvs:</p>
 
-<p>Selve teksten skal deles ind i to printsætninger, hvor den ene skal indeholde 3 variabler og den anden skal indeholde 2.</p>
+<ul class="none">
+	<li>3.14</li>
+	<li>2.5</li>
+	<li>osv.</li>
+</ul>
 
+<p>Lad os indtaste prisen på en liter mælk:</p>
+
+<pre>
+	<code class="python">>>> mælk = float(input("Hvad koster 1 liter mælk: "))
+
+Hvad koster 1 liter mælk: 7.95</code>
+</pre>
+
+<p>Vi tjekker variablen <span class="inl_cmd">mælk</span>:</p>
+
+<pre>
+	<code class="python">>>> mælk
+		      
+7.95</code>
+</pre>
+
+
+<h1>Variabler i tekststrenge</h1>
+
+<p>Lad os bruge det vi lige har lært og indskyde en variabel i en tekststreng. Forestil dig et program der skal byde brugeren velkommen med sætningen:</p>
+
+<pre>
+Hej <i><b>*navn*</b></i>. 
+</pre>
+
+<p>Vi skal altså lave et input, og så skal vi printe dette input ud, sammen med resten af sætningen. Det gør vi ved hjælp af <span class="inl_cmd">pladsholdere</span> på følgende måde:</p>
+
+<pre>
+	<code class="python">>>>navn = "Thomas"
+>>>"Hej {0}".format(navn)
+'Hej Thomas'</code>
+</pre>
+
+<p>Pladsholderen er to curly-brackets, hvor man angiver den position variablen har i <span class="inl_cmd">.format()</span>. Se f.eks. nedestående kode:</p>
+
+<pre>
+	<code class="python">>>>navn = "Thomas"
+>>>alder = 48
+>>>"Hej {0}. Du er {1} år gammel".format(navn, alder)
+'Hej Thomas. Du er 48 år gammel'</code>
+</pre>
+
+<blockquote>
+	<p>
+		<b>Læg mærke til...: </b> at Python tæller 0, 1, 2, 3 ,4
+	</p>
+	
+	<p>Dvs. <span class="inl_cmd">.format(*position 0*, *position 1*, *position 2*, ...)</span></p>
+</blockquote>
+
+<p>Ved hjælp af escape characters kan vi nu formatere vores tekst med linieskift og tabulatorer. Ændre output linien til en "rigtig" print sætning:</p>
+
+<pre>
+	<code class="python">>>> print ("Hej {0}.\n\t Du er {1} år gammel".format(navn, alder))
+Hej Thomas.
+	 Du er 48 år gammel</code>
+</pre>
+
+<p>Vi kunne også have brugt tripple anførselstegn til at formatere med på følgende måde:</p>
+
+<pre>
+	<code class="python">>>> print ("""
+	Hej {0}.
+	
+	Du er {1} år gammel
+	
+	""".format(navn, alder))
+
+	Hej Thomas.
+	
+	Du er 48 år gammel</code>
+</pre>
+
+<p>Det vigtige er at <span class="inl_cmd">.format()</span> kommer efter printsætningen, og at pladsholdere referere til den rigtige position i <span class="inl_cmd">.format()</span></p>
+
+
+<h1>Opgaver</h1>
+
+<h2>Pladsholdere 1</h2>
+
+<p>Lav en kode ved hjælp af variabler, der giver følgende output</p>
 <pre>
 	<code class="php">Mit navn er <span class="red">navn</span>. Jeg bor i <span class="red">by</span> og er <span class="red">alder</span> år gammel. Mit telefonnummer er: 
 <span class="red">telefonnummer</span> og det er en <span class="red">telefonmærke</span>.</code>
 </pre></p>
+
 
 
 

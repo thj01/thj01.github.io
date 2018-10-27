@@ -44,6 +44,72 @@
 </figure>
 	
 <div class="title">Valg og funktioner</div>
+
+<h1>Filer i IDLE</h1>
+
+<p>Herfra skal vi til at lave "rigtige" programmer, der indeholder flere kommandolinier, og så skal vi arbejde med IDLE's <abbr title="Integrated development enviroment - ">IDE</abbr>.</p>
+
+<p>Vi starter det ved at bruge tastekombinationen <kbd>Ctrl</kbd>+<kbd>n</kbd> eller bruge menuen <span class="inl_cmd">File &rarr; New File </span>. Herefter åbner der sig et nyt vindue.</p>
+
+<figure id="">
+
+	<img class="p70" src="images/idle_file_01.png" alt="_" title="_" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Så indtaster man sin kode uden de 3 >>> f.eks:</p>
+
+<figure id="">
+
+	<img class="p70" src="images/idle_file_02.png" alt="_" title="_" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h2>Kør programmet</h2>
+
+<p>For at køre programmet trykker du på <kbd>F5</kbd>.</p>
+
+<p>Første gang du kører det skal du gemme programmet i en fil.</p>
+
+<figure id="">
+
+	<img class="p25" src="images/idle_file_03.png" alt="_" title="_" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Når du klikker på <button type="_">OK</button>, åbner der sig en filmenu, så du kan gemme din fil.</p>
+
+<p>Jeg anbefaler:</p>
+
+<ul class="">
+	<li>At du opretter en mappe til alle dine pythonprogrammer</li>
+	<li>At du opretter undermapper med kapitel navne</li>
+	<li>At du giver programmerne endelsen <span class="inl_cmd">.py</span></li>
+	<li>At du navngiver programmerne så man kan læse hvad det gør. F.eks. <span class="inl_cmd">kap4_if_elif_else_01.py</span></li>
+	<li>Du må ikke navngive programmet som funktioner programmet. F.eks. <span class="inl_cmd">print.py</span></li>
+	<li>Hvis du ved at du skal lave flere programmer med samme indhold, så nummerer filerne, med to cifre. F.eks: <span class="inl_cmd">01</span>)</li>
+	<li>Arbejder du med et større program hvor du gerne vil gemme udviklingen, så kan du navngive dem med dato bagerst i formatet år_månede_dag_v*version* f.eks. <span class="inl_cmd">mit_program_<span class="red">2018_09_04_v01</span>.py</span></li>
+</ul>
+
+
+
+<h2>Programmet kører</h2>
+
+<figure id="">
+
+	<img class="p70" src="images/idle_file_04.png" alt="_" title="_" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+
 	
 <h1>If, elif - else</h1>
 
@@ -67,22 +133,22 @@ if valg == 2:
 
 <p>Herunder vælges <span class="inl_cmd">2</span></p>
 
-<pre class="ubuntu_terminal">
-Tast 1 for dreng og 2 for pige: 2     
+<p><b>Output</b></p>
+
+<pre>
+	<code class="python">========================= RESTART: /home/tj/test.py =========================
+Tast 1 for dreng og 2 for pige: 2
 
 Du valgte pige
-
-------------------
-(program exited with code: 0)
-Press return to continue
+>>> 	</code>
 </pre>
+
+<h3>Hvad sker der</h3>
 
 <p>Når vi spørger med <span class="inl_cmd">if</span> er syntaksen</p>
 
 <pre>
-	<code class="python">
-if *** betingelse *** :
-	</code>
+	<code class="python">if *** betingelse *** :	</code>
 </pre>
 
 <p>Betingelsen i eksemplet herover er, at variablen valg skal være 1. Læg mærke til, at hele sætningen afsluttes med et kolon - <span class="inl_cmd">:</span>, og det som skal udføres under det valg er tabuleret ind. På den måde ved Python hvad der skal udføres hvis man har valgt <span class="inl_cmd">1</span> eller <span class="inl_cmd">2</span>.</p>
@@ -92,14 +158,12 @@ if *** betingelse *** :
 <p>Ofte arbejder man med binære problemstillinger, altså hvor det er enten-eller. Her anvender man <span class="inl_cmd">if-else</span> strukturer. Man spørger om den ene betingelse er opfyldt (<span class="inl_cmd">if</span>), og så må resten nødvendigvis tilhøre den anden mulighed (<span class="inl_cmd">else</span>). </p>
 
 <pre>
-	<code class="python">
-valg = int(input("Tast 1 for dreng og 2 for pige: "))
+	<code class="python">valg = int(input("Tast 1 for dreng og 2 for pige: "))
 
 if valg == 1: 
     print ("\nDu valgte dreng")
 else:
-    print ("\nDu valgte pige")
-	</code>
+    print ("\nDu valgte pige")	</code>
 </pre>
 
 <p>Denne kode fungerer ved at den evalurer om valget var 1 eller ej. Fordelen er, at du kan nøjes med at sortere efter den betingelse der er lettest at beskrive - alle de muligheder der er tilbage "falder" automatisk ind under <span class="inl_cmd">else</span>.</p>
@@ -109,16 +173,14 @@ else:
 <p>Problemet er bare, at hvis nu brugeren taster 3, så vil programmet også svare at man valgte pige. Men det var jo en fejltastning. Vi har altså brug for at kunne smide en ekstra mulighed ind. Det kan vi gøre ved hjælp af at tilføje <span class="inl_cmd">elif</span> imellem <span class="inl_cmd">if</span> og <span class="inl_cmd">else</span>.</p>
 
 <pre>
-	<code class="python">
-valg = int(input("Tast 1 for dreng og 2 for pige: "))
+	<code class="python">valg = int(input("Tast 1 for dreng og 2 for pige: "))
 
 if valg == 1: 
     print ("\nDu valgte dreng")
 elif valg == 2:
     print ("\nDu valgte pige")
 else:
-    print ("Du skal vælge enten 1 eller 2")
-	</code>
+    print ("Du skal vælge enten 1 eller 2")	</code>
 </pre>
 
 <p>Det som koden gør nu er:</p>
@@ -133,32 +195,16 @@ else:
 <p>Læg  mærke til, at der skal anvendes en fast struktur. <span class="inl_cmd">elif</span> anvendes kun hvis der er mere end 2 betingelser der skal undersøges. Generelt kan disse betingelser skrives op på følgende formel</p>
 
 <pre>
-	<code class="python">
-if *Betingelse*:
-
+	<code class="python">if *Betingelse*:
     *Gør noget*
-
 elif *Ny betingelse*:
-
     *Gør noget andet*
-
 else: 
-
-    *Gør noget tredie
-	</code>
+    *Gør noget tredie	</code>
 </pre>
 
 <p>Man kan indsætte alle de <span class="inl_cmd">elif</span> man vil, men man skal huske at der bør afsluttes med <span class="inl_cmd">else</span>.</p>
 
-<p>Grunden til at man bør afslutte med <span class="inl_cmd">else</span> er, at man derved sikrer sig at man har dækket alle mulighederne. En god måde er at man skriver alle de betingelser ned der skal tjekkes for, og så sørger man for at den sidste mulighed er <span class="inl_cmd">else</span>. F.eks hvis man vil spørge om ens funktion på gymnasiet hvor 1-3 angiver klassetrin, d - EUD og x - EUX:</p>
-
-<ul class="none">
-	<li>1. årgang - <span class="inl_cmd">if</span></li>
-	<li>2. årgang - <span class="inl_cmd">elif</span></li>
-	<li>3. årgang - <span class="inl_cmd">elif</span></li>
-	<li>EUD - <span class="inl_cmd">elif</span></li>
-	<li>EUX - <span class="inl_cmd">else</span></li>
-</ul>
 
 <h2>Opgaver</h2>
 
@@ -265,6 +311,8 @@ else:
 <details>
 
 	<summary>Overblik over <span class="inl_cmd">strftime()</span></summary>
+	
+
 
 <table class="">
 	<thead>
@@ -334,31 +382,18 @@ else:
 	</tbody>
 </table>
 
+<p>Eksempel på <span class="inl_cmd">strftime()</span> kørt på en onsdag:</p>
+
+<pre>
+	<code class="python">>>> from time import strftime
+>>> strftime("%u")
+'3'</code>
+</pre>
+
+
 <p>Se fuldliste her: <a href="https://www.tutorialspoint.com/python/time_strptime.htm" target="_blank">https://www.tutorialspoint.com/python/time_strptime.htm</a></p>
 
 </details>
-
-
-
-<p>Eksempel på <span class="inl_cmd">strftime()</span> kørt på en mandag:</p>
-
-<pre>
-	<code class="python">
-from time import strftime
-
-ugedag = strftime("%u")
-
-print(ugedag)
-	</code>
-</pre>
-
-<pre class="ubuntu_terminal">
-1
-
-------------------
-(program exited with code: 0)
-Press return to continue
-</pre>
 
 <p>Ændr. koden så den fortæller hvor mange dage der er til fredag.</p>
 
@@ -379,8 +414,7 @@ Press return to continue
 <p>Lad os undersøge denne sætning for følgende tekst: <span class="inl_cmd">Python</span>, <span class="inl_cmd">C</span> og <span class="inl_cmd">Java</span>.</p>
 
 <pre>
-	<code class="python">
-tekst = "Der findes mange programmeringssprog, og de kan stort set det samme. Men de gør den på en forskellig måde. C er et meget præcist, men også meget omstændigt sprog, hvorimod Python er noget lettere at gå til."
+	<code class="python">tekst = "Der findes mange programmeringssprog, og de kan stort set det samme. Men de gør den på en forskellig måde. C er et meget præcist, men også meget omstændigt sprog, hvorimod Python er noget lettere at gå til."
 
 prg_python = "Python" in tekst
 prg_c = "C" in tekst
@@ -388,20 +422,17 @@ prg_java = "Java" in tekst
 
 print ("Findes Python i sætningen: {0}".format(prg_python))
 print ("Findes C i sætningen: {0}".format(prg_c))
-print ("Findes Java i sætningen: {0}".format(prg_java))
-	</code>
+print ("Findes Java i sætningen: {0}".format(prg_java))	</code>
 </pre>
 
-<pre class="ubuntu_terminal">
+<p><b>Output</b></p>
+
+<pre>
+	<code class="python">========================= RESTART: /home/tj/test.py =========================
 Findes Python i sætningen: True
 Findes C i sætningen: True
 Findes Java i sætningen: False
-
-
-------------------
-(program exited with code: 0)
-Press return to continue
-
+>>> 	</code>
 </pre>
 
 <h2>Opgaver</h2>
@@ -420,59 +451,69 @@ Press return to continue
 <p>Med denne metode får man Python til at teste noget og reagere hvis der kommer en fejl. Forestil dig at du vil teste om a er et heltal (int).</p>
 
 <pre>
-	<code class="python">
-a = "k"
-
-int(a)
-	</code>
+	<code class="python">>>> a = "k"
+int(a) 	</code>
 </pre>
 
 <p>Python vil svare tilbage med følgende fejlmeddelelse, fordi programmet ikke kan konvertere bogstavet a til et heltal.</p>
 
-<pre class="black">
-Traceback (most recent call last):
-  File "test4.py", line 3, in <module>
+<p><b>Output</b></p>
+
+<pre><span class="red">Traceback (most recent call last):
+  File "test4.py", line 3, in &lt;module>
     int(a)
-ValueError: invalid literal for int() with base 10: 'k'
+ValueError: invalid literal for int() with base 10: 'k'</span>
 </pre>
+
 
 <p>For at undgå den slags fejl, der får programmet til at bryde sammen, anvender man <span class="inl_cmd">try</span>. Se herunder:</p>
 
 <pre>
-	<code class="python">
-a = "k"
+	<code class="python">a = "k"
 
 try:
 	int(a)
 	print("Variablen a er et heltal")
 except:
-	print("Variablen a er ikke et heltal")
-	</code>
+	print("Variablen a er ikke et heltal")	</code>
 </pre>
 
-<pre class="black">
+<p><b>Output</b></p>
+
+<pre>
+	<code class="python">========================= RESTART: /home/tj/test.py =========================
 Variablen a er ikke et heltal
+>>> 	</code>
 </pre>
 
 <p>Denne gang går vi ind og undersøger om a er et helttal ved at sætte det ind under <span class="inl_cmd">try:</span>. Hvis koden på et eller andet tidspunkt fejler under try:, så vil programmet hoppe til <span class="inl_cmd">except:</span> delen og udføre denne, i stedet for at bryde sammen.</p>
 
 <p>Herunder kan du se resultatet når a = 2:</p>
 
-<pre class="black">
+<p><b>Output</b></p>
+
+<pre>
+	<code class="python">========================= RESTART: /home/tj/test.py =========================
 Variablen a er et heltal
+>>> 	</code>
 </pre>
 
 <h2>Raise Exception</h2>
 
-<p>Nogle gange har man brug for at koden skal lave fejl, for at udløse <span class="inl_cmd">except</span>. Det gøres ved at anvende koden: <span class="inl_cmd">raise Exception</span></p>
+<p>Nogle gange har man brug for at koden skal lave fejl, når man tester den. Det gøres ved at anvende koden: <span class="inl_cmd">raise Exception</span></p>
 
 <pre>
-	<code class="python">
-try:
+	<code class="python">try:
 	raise Exception
 except:
-	print("Der er fejl i koden")
-	</code>
+	print("Der er fejl i koden")	</code>
+</pre>
+
+<p><b>Output</b></p>
+
+<pre>
+	<code class="python">========================= RESTART: /home/tj/test.py =========================
+Der er fejl i koden	</code>
 </pre>
 
 <h2>Murphy's lov</h2>
@@ -493,28 +534,23 @@ except:
 <p>Lad os prøve at lave et simpelt eksempel med funktionen <span class="inl_cmd">produkt()</span>, som udregner produktet af parametrene <span class="inl_cmd">a,b</span>.</p>
 
 <pre>
-	<code class="python">
-def produkt(a,b):
-	
+	<code class="python">def produkt(a,b):
 	produkt = a*b
-	
 	print("\nProduktet er {0}".format(produkt))
 	
-	
 produkt(2,3) # skal give svaret "Produktet er 6"
-
 produkt(3,4) # skal give svaret "Produktet er 12"
 	</code>
 </pre>
 
-<pre class="ubuntu_terminal">Produktet er 6
+<p><b>Output</b></p>
 
-Produktet er 12
+<pre>
+	<code class="python output">========================= RESTART: /home/tj/test.py =========================
 
-------------------
-(program exited with code: 0)
+Produktet er 6
 
-Press any key to continue . . .
+Produktet er 12	</code>
 </pre>
 
 <p>Det som du skal være opmærksom på er:</p>
@@ -528,28 +564,23 @@ Press any key to continue . . .
 
 <h2>Tomme funktioner</h2>
 
-<p>Man kan også lave tomme funktioner. Forestil dig at du gang på gang i din kode skal have det samme output, f.eks. dine grundinformatiner</p>
+<p>Man kan også lave tomme funktioner, som ikke er styret af en eller flere parametre. Forestil dig at du gang på gang i din kode skal have det samme output, f.eks. dine grundinformatiner</p>
 
 <pre>
-	<code class="python">
-def tekst():
+	<code class="python">def tekst():
 	
 	print("Denne software er lavet af : \n\tThomas Jensen \n\tfakeuser@fakemail.dk")
 	
-tekst()
-	</code>
+tekst()	</code>
 </pre>
 
-<pre class="ubuntu_terminal">
-Denne software er lavet af :
+<p><b>Output</b></p>
 
-        Thomas Jensen
-        fakeuser@fakemail.dk
-
-------------------
-(program exited with code: 0)
-
-Press any key to continue . . .
+<pre>
+	<code class="python">========================= RESTART: /home/tj/test.py =========================
+Denne software er lavet af : 
+	Thomas Jensen 
+	fakeuser@fakemail.dk	</code>
 </pre>
 
 <h2>Funktioner med parametre</h2>
@@ -557,97 +588,88 @@ Press any key to continue . . .
 <p>Forestil dig en situation hvor vi skal have en blæser til at tænde når temperaturen overstiger et vist gradtal. I eksemplet herunder angiver vi selv temperaturen, men temperaturen kunne lige så godt have kommet fra en aflæsning af et digitalt termometer. Vi sætter <span class="inl_cmd">a</span> til at være rummets temperatur og <span class="inl_cmd">b</span> til at være den temperatur der skal til for at tænde blæseren.</p>
 
 <pre>
-	<code class="python">
-def turn_on (a,b):
-
+	<code class="python">def turn_on (a,b):
     if a > b:	
         return True
 	
 rum_temp = 19 # rummets temperatur
-
 tænd_temp = 18 # Tændningstemperaturen
 
 if turn_on(rum_temp,tænd_temp) is True:
-
     #Udfør kommandoer hvis den skal tændes
     print ("tænd") #kommandoen der tænder for blæseren
-    
 else:
-	
     #Udfør kommandoer hvis den skal slukkes
-	print ("Sluk") #kommandoen der slukker for blæseren
-	</code>
+	print ("Sluk") #kommandoen der slukker for blæseren	</code>
 </pre>
 
-<pre class="ubuntu_terminal">
-tænd
+<p><b>Output</b></p>
 
-------------------
-(program exited with code: 0)
-Press return to continue
+<pre>
+	<code class="python">========================= RESTART: /home/tj/test.py =========================
+tænd	</code>
 </pre>
 
 <p>Ved at angive to konstanter i funktionen kan vi "kalde" parametre fra koden ind i funktionen. På den måde kan vi lave funktioner der er meget fleksible.</p>
 
 <h2>Variabler i funktioner</h2>
 
-<p>Når laver variabler i funktioner, så gælder de kun indenfor selve funktionen. Det er smart fordi det sikrer at man kan kopierer definitioner ind i sit dokument uden at bekymre sig om det vil "vælte" resten af ens kode pga. ens variabelnavne.</p>
+<p>Variabler der er lavet i funktioner, gælder kun i selve funktionen.</p> 
 
-<p><b>HVIS</b> man skal anvende en funktion inde fra en variabel skal den gøres global. Det gøres på følgende måde:</p>
+<p>Det er smart fordi manså kan kopierer definitioner ind i sit dokument uden at bekymre sig om de indeholder variabel navne der allerede er i anvendelse</p>
+
+<p>Hvis man skal bruge en variabel der bliver dannet i en funktion skal den gøres global. Det gøres på følgende måde:</p>
 
 <pre>
-	<code class="python">
-def skriv_tal():
+	<code class="python">def skriv_tal():
 	
 	valgt_tal=int(input("Skriv et tal: "))
 	global dobbelt_a #Her gøres variablen dobbelt_a global
 	dobbelt_a=valgt_tal*2
 	
 skriv_tal()
-print ("Det fordoblede tal er: {0}".format(dobbelt_a))
-	</code>
+print ("Det fordoblede tal er: {0}".format(dobbelt_a))	</code>
 </pre>
 
-<pre class="ubuntu_terminal">
+<p><b>Output</b></p>
+
+<pre>
+	<code class="python">========================= RESTART: /home/tj/test.py =========================
 Skriv et tal: 5
-Det fordoblede tal er: 10
-
-------------------
-(program exited with code: 0)
-Press return to continue
+Det fordoblede tal er: 10	</code>
 </pre>
+
 
 <p>Prøv at fjerne linien <span class="inl_cmd">global dobbelt_a</span> og undersøg fejlmeddelelsen.</p>
 
 <h2>Return i funktioner</h2>
 
-<p>Det smarte ved funktioner er at man kan få dem til at svare med en værdi eller tekstreng. Det gøres ved at bruge <span class="inl_cmd">return</span>. Se eksemplet herunder:</p>
+<p><span class="inl_cmd">Return</span> er en funktion der leverer et output. HVis det er et binært output - dvs. det kun har to muligheder så anvender man <span class="inl_cmd">True / False</span>. Det gør det tydeligt at koden kun har to udfald. </p>
+
+<p>Har man brug for mere end to return værdier, kan man selv angive dem med enten en talværdi eller en tekstreng </p>
+
+
+
+<p>Det smarte ved funktioner er at man kan få dem til at svare med <span class="inl_cmd">True / False</span>, en værdi eller tekstreng. Det gøres ved at bruge <span class="inl_cmd">return</span>.</p>
+
+<p>Se eksemplet herunder:</p>
 
 <pre>
-	<code class="python">
-def _2tabel(a):
-	# spørger om a er i to tabellen
-	
-	if a%2==0:
+	<code class="python">def test_tabel(a,b): # a er tallet der undersøges, be er tabellen.
+	if a%b==0: 	# spørger om a er i b tabellen
 		return True
 	else:
 		return False
 	
-	
-print(_2tabel(17)) 
-	</code>
+print(test_tabel(17,2)) #Printer resultat af funktionen</code>
 </pre>
 
-<pre class="ubuntu_terminal">
-False
+<p><b>Output</b></p>
 
-------------------
-(program exited with code: 0)
-
-Press any key to continue . . .
+<pre>
+	<code class="python">========================= RESTART: /home/tj/test.py =========================
+False	</code>
 </pre>
-
-
 
 <h2>Opgaver</h2>
 
@@ -659,34 +681,36 @@ Press any key to continue . . .
 	
 	<p>Regningsarterne fungerer ved at anvende tegnene: <span class="inl_cmd">+</span>, <span class="inl_cmd">-</span>, <span class="inl_cmd">*</span> og <span class="inl_cmd">/</span>. Se herunder:</p>
 
-	<pre class="ubuntu_terminal">
-	>>> 6+3
-	9
-	>>> 6-3
-	3
-	>>> 6*3
-	18
-	>>> 6/3
-	2.0	</pre>
+<pre>
+	<code class="python">>>> 6+3
+9
+>>> 6-3
+3
+>>> 6*3
+18
+>>> 6/3
+2.0	</code>
+</pre>
 
 	<p>Læg mærke til at der bliver anvendt <span class="inl_cmd">int</span> i alle eksemplerne, og at resultatet bliver leveret på samme måde ved <span class="inl_cmd">+</span>, <span class="inl_cmd">-</span> og <span class="inl_cmd">*</span>. Men ved division bliver resulatet ændret til <span class="inl_cmd">float</span>. Se nedestående eksempel</p>
 
-	<pre class="ubuntu_terminal">
-	>>> 2/3
-	0.6666666666666666	</pre>
+<pre>
+	<code class="python">>>> 2/3
+0.6666666666666666	</code>
+</pre>
 
 	<p>Python anvender korrekte regneregler, hvilket vil sige at <span class="inl_cmd">+</span> og <span class="inl_cmd">-</span> adskiller ledene, og at de skal sættes paranteser for at omgå dette. Se eksemplerne herunder:</p>
 
-	<pre class="ubuntu_terminal">
-	>>> 3+2*6
-	15
-	>>> (3+2)*6
-	30
-	>>> 3+6/2
-	6.0
-	>>> (3+6)/2
-	4.5	
-	</pre>
+<pre>
+	<code class="python">>>> 3+2*6
+15
+>>> (3+2)*6
+30
+>>> 3+6/2
+6.0
+>>> (3+6)/2
+4.5		</code>
+</pre>
 	
 	<p>Læg mærke til at tallene bliver til <span class="inl_cmd">float</span>, når man dividerer.</p>
 
@@ -761,19 +785,16 @@ Press any key to continue . . .
 
 <p>Lav et output der ligner nedestående:</p>
 
+<p><b>Output</b></p>
 
-<pre class="ubuntu_terminal">
+<pre>
+	<code class="python">========================= RESTART: /home/tj/test.py =========================
 Undersøger om 2 er en faktor i 10.
 2 er en faktor i 10.
 
 Undersøger om 37 er en faktor i 3097.
-37 er ikke en faktor i 3097.
-
-------------------
-(program exited with code: 0)
-Press return to continue
+37 er ikke en faktor i 3097.	</code>
 </pre>
-
 <h3>Skæring med X aksen</h3>
 
 <p>Lav funktionen <span class="inl_cmd">skæring_x(a,b)</span>, der udregner skæringspunktet med x-aksen ud fra ligningen <span class="math">\( f(x) = ax+b \)</span>, og hvor den skærer y-aksen.</p>
@@ -807,16 +828,13 @@ $$</div>
 	<li>2x-2 <span class="red">&rarr;</span> skæring_x(2,-2) <span class="red">&rarr;</span> 1.0</li>
 </ul>
 
-<pre class="ubuntu_terminal">
+<p><b>Output</b></p>
+
+<pre>
+	<code class="python">========================= RESTART: /home/tj/test.py =========================
 Linjen skærer x-aksen i værdien -1.0
-Linjen skærer x-aksen i værdien 1.0
-
-------------------
-(program exited with code: 0)
-
-Press any key to continue . . .
+Linjen skærer x-aksen i værdien 1.0	</code>
 </pre>
-
 <p>Ændr koden så heltal ikke udskrives som decimaltal, men som <span class="inl_cmd">integers</span>. Du skal bruge funktionen <span class="inl_cmd">is_integer()</span></p>
 
 <details>
@@ -827,8 +845,7 @@ Press any key to continue . . .
 	
 	
 	<pre>
-		<code class="python">
->>> a = 3.14
+		<code class="python">>>> a = 3.14
 >>> a.is_integer()
 False
 >>> a = 2.0
@@ -839,31 +856,25 @@ True</code>
 	<p>Det betyder at man kan undersøge om et tal skal laves om til en <span class="inl_cmd">integer</span>:</p>
 	
 	<pre>
-		<code class="python">
-a = 3.14
+		<code class="python">a = 3.14
 b = 2.0
 
 if a.is_integer():
 	a = int(a)	
-
 if b.is_integer():
 	b = int(b)
 
 print(a)
-
-print(b)
-		</code>
+print(b)		</code>
 	</pre>
 	
-<pre class="ubuntu_terminal">
-3.14
-2
+<p><b>Output</b></p>	
 
-------------------
-(program exited with code: 0)
-Press return to continue
-</pre>	
-	
+<pre>
+	<code class="python">========================= RESTART: /home/tj/test.py =========================
+3.14
+2	</code>
+</pre>
 
 </details>
 
@@ -872,14 +883,12 @@ Press return to continue
 	<li>2x-2 <span class="red">&rarr;</span> skæring_x(2,-2) <span class="red">&rarr;</span> 1</li>
 </ul>
 
-<pre class="ubuntu_terminal">
+<p><b>Output</b></p>
+
+<pre>
+	<code class="python">========================= RESTART: /home/tj/test.py =========================
 Linjen skærer x-aksen i værdien -1
-Linjen skærer x-aksen i værdien 1
-
-------------------
-(program exited with code: 0)
-
-Press any key to continue . . .
+Linjen skærer x-aksen i værdien 1	</code>
 </pre>
 
 <h3>Find normalform</h3>
@@ -902,17 +911,13 @@ og
 	<li>P = (2,6) og Q = (5,12) <span class="red">&rarr;</span> <span class="inl_cmd">punkter(2,6,5,12)</span> <span class="red">&rarr;</span>  y = 2.0x+2.0</li>
 	<li>P = (2,2) og Q = (-1,-4) <span class="red">&rarr;</span> <span class="inl_cmd">punkter(2,2,-1,-4)</span> <span class="red">&rarr; </span> y = 2.0x-2.0</li>
 </ul>
+<p><b>Output</b></p>
 
-<pre class="ubuntu_terminal">
+<pre>
+	<code class="python">========================= RESTART: /home/tj/test.py =========================
 Punkterne P=(2,6) og Q=(5,12) gennemskæres af linjen: y = 2.0x+2.0
 
-
-Punkterne P=(2,2) og Q=(-1,-4) gennemskæres af linjen: y = 2.0x-2.0
-
-------------------
-(program exited with code: 0)
-
-Press any key to continue . . .
+Punkterne P=(2,2) og Q=(-1,-4) gennemskæres af linjen: y = 2.0x-2.0	</code>
 </pre>
 
 <p>Ændr koden så heltal ikke udskrives som decimaltal, men som <span class="inl_cmd">integers</span>. Du skal bruge funktionen <span class="inl_cmd">is_integer()</span></p>
@@ -926,19 +931,15 @@ Press any key to continue . . .
 	<li>P = (2,2) og Q = (-1,-4) <span class="red">&rarr;</span> <span class="inl_cmd">punkter(2,2,-1,-4)</span> <span class="red">&rarr; </span> y = 2x-2</li>
 </ul>
 
-<pre class="ubuntu_terminal">
+<p><b>Output</b></p>
+
+<pre>
+	<code class="python">========================= RESTART: /home/tj/test.py =========================
 Punkterne P=(2,6) og Q=(5,12) gennemskæres af linjen: y = 2x+2
 
 
-Punkterne P=(2,2) og Q=(-1,-4) gennemskæres af linjen: y = 2x-2
-
-------------------
-(program exited with code: 0)
-
-Press any key to continue . . .
+Punkterne P=(2,2) og Q=(-1,-4) gennemskæres af linjen: y = 2x-2	</code>
 </pre>
-
-
 
 
 <h3>Skæring mellem to linier:</h3>
@@ -979,24 +980,21 @@ x= \frac{ d-b }{ a-c }
 	<li><span class="math">\( y = \frac{ 1 }{ 2 }x-3 \)</span> og <span class="math">\( y = -1\frac{ 1 }{ 2 }x+3 \)</span> <span class="red">&rarr;</span> skæring(1/2,-3,-1.5,3) <span class="red">&rarr;</span> P = (3.0,-1.5)</li>
 </ul>
 
-<pre class="ubuntu_terminal">Linjerne skærer hinanden i punktet: P = (3.0,3.0)
+<pre>
+	<code class="python">========================= RESTART: /home/tj/test.py =========================
+Linjerne skærer hinanden i punktet: P = (3.0,3.0)
 
-Linjerne skærer hinanden i punktet: P = (3.0,-1.5)
-
-------------------
-(program exited with code: 0)
-Press return to continue
+Linjerne skærer hinanden i punktet: P = (3.0,-1.5)	</code>
 </pre>
+
 
 <p>Ændr koden så heltal ikke udskrives som decimaltal, men som <span class="inl_cmd">integers</span>. Du skal bruge funktionen <span class="inl_cmd">is_integer()</span></p>
 
-<pre class="ubuntu_terminal">Linjerne skærer hinanden i punktet: P = (3,3)
+<pre>
+	<code class="python">========================= RESTART: /home/tj/test.py =========================
+Linjerne skærer hinanden i punktet: P = (3,3)
 
-Linjerne skærer hinanden i punktet: P = (3,-1.5)
-
-------------------
-(program exited with code: 0)
-Press return to continue
+Linjerne skærer hinanden i punktet: P = (3,-1.5)	</code>
 </pre>
 
 <h3>Andengradsligning</h3>
@@ -1063,7 +1061,9 @@ Press return to continue
 
 <p>Du skal lave om til <span class="inl_cmd">integers</span>, hvis det er muligt og programmet skal have følgende udskrift:</p>
 
-<pre class="ubuntu_terminal">Her undersøges funktionen: f(x) = 1x^2 + 4x + 4
+<pre>
+	<code class="python">========================= RESTART: /home/tj/test.py =========================
+Her undersøges funktionen: f(x) = 1x^2 + 4x + 4
 
 	Andegradsliningen har en løsning og skærer x-aksen i punktet -2
 
@@ -1082,12 +1082,7 @@ Her undersøges funktionen: f(x) = -1x^2 - 1x + 6
 
 	Parablen skærer y-aksen i punktet 6
 
-	Toppunktet er: Tp = ( -0.5 , 6.25 )
-		
-
-------------------
-(program exited with code: 0)
-Press return to continue
+	Toppunktet er: Tp = ( -0.5 , 6.25 )	</code>
 </pre>
 
 
@@ -1106,16 +1101,6 @@ terningkast = randrange(1,7) # Giver et tilfældigt heltal i området [1;7[ - al
 print ("Et tilfældigt tal: {0}".format(tilfældigtal))
 print ("\nEt terningkast: {0}".format(terningkast))
 	</code>
-</pre>
-
-<pre class="ubuntu_terminal">
-Et tilfældigt tal: 0.5522756126989775
-
-Et terningkast: 5
-
-------------------
-(program exited with code: 0)
-Press return to continue
 </pre>
 
 <details>
@@ -1163,20 +1148,21 @@ Press return to continue
 	<li>Output skal være om computer eller bruger er vinder eller at der er uafgjort</li>
 </ul>
 
-<pre class="ubuntu_terminal">
+<p><b>Output</b></p>
+
+
+<p><b>Output</b></p>
+
+
+<pre>
+	<code class="python">========================= RESTART: /home/tj/test.py =========================
 Hvad er dit navn: Thomas
 
 Thomas: 4
 Computer: 4
 
-Det blev uafgjort
-
-------------------
-(program exited with code: 0)
-Press return to continue
-
+Det blev uafgjort	</code>
 </pre>
-
 
 
 <h3>Ordsprog</h3>
