@@ -37,12 +37,12 @@
 <div class="col-xs-9">
 	
 	<div class="title">Gimp guide</div>
-	
-<h1>Introduktion</h1>	
+
+<h1>Installation</h1>	
 	
 <p>Hvis du ikke har GIMP'en installeret skal du hente den her: <a href="https://www.gimp.org/downloads/" target="_blank">https://www.gimp.org/downloads/</a>. Følg installationsvejledningen.</p>
 
-<h2>Overblik over GIMP'en'</h2>
+<h1>Overblik over GIMP'en'</h1>
 
 <p>Gimpens brugerflade består af 4 områder:</p>
 
@@ -73,18 +73,71 @@
 
 </figure>
 
-<p>Konkret har jeg ændre følgende:</p>
+<p>En vigtig ændring er antallet af fortrydelsesniveauer - dem kan man aldrig få nok af ;)</p>
 
-<ul class="none">
+<ul class="none fat_li">
+	<li>Systemressourcer &rarr; Minimal antal fortrydelsesniveauer &rarr; 20 </li>
+</ul>
+
+<p>Har du godt bestykket computer kan du indstille GIMP'ens måde at anvende din hukommelse og CPU under samme punkt.</p>
+
+<details>
+
+	<summary>Mine ændringer</summary>
+
+	<p>Tommelfingerreglen er, at jo mere RAM du har tilgængelig - jo mere bør du afsætte.</p>
+	
+	<p>Mit system er:</p>
+	
+	<ul class="none">
+		<li>OS: Ubuntu 18.04</li>
+		<li>CPU: Intel Core i7-6700K</li>
+		<li>RAM:  32 Gb</li>
+		<li>HD: 245 GB SSD</li>
+		<li>GPU: Geforce GTX 960</li>
+		<li>Konfigureret til først at bruge swap ved 90% udnyttelse</li>
+	</ul>
+	
+	<p>Jeg anvender følgende indstillinger, hvoraf mange er overkill.</p>
+	
+	<ul class="none">
+		<li>Minimal antal fortrydelsesniveauer: 40 </li>
+		<li>Maksimal fortrydelseshukommelse: 8 Gigabyte</li>
+		<li>Hukommelsesbuffer ("tile cache"): 24 Gigabyte</li>
+		<li>Maksimal størrelse af nyt billede: 128 Megabyte</li>
+		<li>Antal tråde som bruges: 8</li>
+		<li>Anvend OpenCL: valgt</li>
+	</ul>
+	
+	<p>Jeg har endnu ikke formået at få GIMP'en til skrive til swap</p>
+
+</details>
+
+
+<p>Ændring til et lysere design design:</p>
+
+<ul class="none fat_li">
 	<li>Grænseflade &rarr; Tema &rarr; Light</li>
 	<li>Grænseflade &rarr; Ikontema &rarr; Color</li>
 </ul>
 
-<p>Hvis du senere skal følge guides på nettet, kan du ændre sproget til engelsk ved at klikke på <span class="inl_cmd">Grænseflade</span></p>
+<p>Andre vigtige punkter</p>
 
-<p>Har du ICC profiler til dine enheder skal de konfigureres i menuen: <span class="inl_cmd">Farvestyring</span></p>
+<ul class="none fat_li">
+	<li>Grænseflade &rarr; Sprog</li>
+	
+		<p>Hvis du skal følge guides på nettet kan det være en stor fordel at ændre sproget til engelsk</p>
+	
+	<li>Farvestyring &rarr;</li>
+	
+		<p>Hvis du har brug for at anvende specielle farveprofiler</p>
+	
+	<li>Inputenheder</li>
+	
+		<p>Hvis du anvender tegneplader eller andre avancerede inputenheder.</p>
+		
+</ul>
 
-<p>Har du en tegneplade skal den konfigureres i menuen: <span class="inl_cmd">Inputenheder</span>.</p>
 
 <h1>Generel anvendelse</h1>
 
@@ -180,30 +233,44 @@
 
 <h2>Usynlig baggrund</h2>
 
-<p>Hvis du vil arbejde med usynlig baggrund skal billedet have en <span class="inl_cmd">alfa-kanal</span>. JPG understøtter ikke usynlige beggrunde, så det kræver at du arbejder med (gemmer i) PNG eller et andet lignende format.</p>
+<p>Når man gemmer billeder og illustrationer i PNG format, kan de have en usynlig baggrund. Det giver især fordele når man skal lave grafik og illustrationer till web. Denne usynlige kanal kaldes <span class="inl_cmd">alfa-kanalen</span>.</p>
 
 <p>Du kan se om billedet har en alfa-kanal ved at højreklikke på billedet og vælge: <span class="inl_cmd">lag</span>&#8594;<span class="inl_cmd">Gennemsigtighed</span>.</p>
 
-
-
 <figure id="">
 
-	<img class="p60" src="images/gimp2_tjeak_alfakanal.png" alt="" title="" />
+	<img class="p70" src="images/gimp2_tjeak_alfakanal.png" alt="" title="" />
 
 	<figcaption></figcaption>
 
 </figure>
 
-<p>I dette tilfælde har billedet en alfakanal.</p>
+<p>Da vi kun kan fjerne alfa-kanalen har billedet altså en alfa-kanal</p>
+
+<h2>Billedinfo</h2>
+
+<p>For at se informationer om billedet skal du bruge genvejen <kbd>Alt</kbd>+<kbd>Enter</kbd> eller bruge menuen <span class="inl_cmd">Billede &rarr; Billedegenskaber</span>.</p>
+
+<figure id="">
+
+	<img class="p90" src="images/gimp2_billedegenskaber.png" alt="_" title="_" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Her kan du tekniske ting om billedet. Læg mærke til at selvom billedet kun fylder 26 Mb på harddisken, så fylder det 190 Mb i hukommelsen. Altså næsten 8 gange så meget.</p>
+
+
 
 <h1>Arbejdsgang</h1>
 
 <p>Hvis du kun skal anvende GIMP'en til at redigere billeder kan du ved 3 simple trin forbedre dit billede ret meget. de tre trin er:</p>
 
 <ol class="">
-	<li>Beskær billedet (crop)</li>
 	<li>Juster billedet niveauer (niveau)</li>
 	<li>Fjern uønskede elementer (klon/reparation)</li>
+	<li>Beskær billedet (crop)</li>
 </ol>
 
 <p>Arbejder du i med RAW-billeder, så vil punkt 1 og 2 være ordnet i RAW editoren</p>
