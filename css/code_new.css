@@ -501,6 +501,30 @@ border-radius: 8px;
 
 }
 
+div.fakta {
+
+border: 2px solid #444444;
+border-radius: 15px;
+padding: 90px 20px	30px 60px;
+margin: 60px;
+
+}
+
+div.fakta::before {
+
+content: "Fakta Boks";
+margin: -107px -0px 10px -40px;
+padding: 3px 0px 3px 14px;
+font-size: 1.2em;
+width: 120px;
+background-color: white;
+display: block;
+font-weight: 700;
+border: 2px solid #444444;
+border-radius: 8px;
+
+}
+
 div.idle {
 
 border: 2px solid #444444;

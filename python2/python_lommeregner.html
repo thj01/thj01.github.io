@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <title>Python lommeregner</title>
+  <link rel="icon" href="../images/favicon.png">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono|Ubuntu|Ubuntu+Condensed' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/jquery-ui.min.css">
+  <link rel="stylesheet" href="../css/jquery.tocify.css">
+  <link rel="stylesheet" href="../css/style_new.css" />
+<!-- Scripts in bottom to speed up pageload-->
+ 
+
+</head>
+<body>
+	
+	
+<div class="container-fluid">
+
+<div class="row-fluid">
+	
+<div class="col-xs-3">
+	
+	<div id="toc">
+	
+		<div id="toc_headline"></div>
+	
+	</div>
+
+</div><!-- Start slut 1. kolonne - TOC -->
+	
+<div class="col-xs-9">
+	
+<div class="title">Python som lommeregner</div>
+
+<h1>De 4 regningsarter</h1>
+
+<p>For at bruge de fire almindelige regningsarter anvender vi tegnene: +, -, * og /</p>
+
+<table class="_">
+	<thead>
+		<tr>
+			<th>Tegn</th>
+			<th>Betydning</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>+</td>
+			<td>Lægge til (addere) - Kaldes også for addition</td>
+		</tr>
+		<tr>
+			<td>-</td>
+			<td>Trække fra (substrahere) - Kaldes substraktion</td>
+		</tr>
+		<tr>
+			<td>*</td>
+			<td>Gange (multiplicere) - Kaldes multiplikation</td>
+		</tr>
+		<tr>
+			<td>/</td>
+			<td>Dividere - Kaldes division</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Eksempler</p>
+
+<pre>
+	<code class="python">>>> 5+4
+9
+>>> 6-2
+4
+>>> 5*2
+10
+>>> 6/3
+2.0</code>
+</pre>
+
+<p>Læg mærke til at Python svarer tilbage med et decimaltal når man dividerer, og at der anvendes punktum til at adskille heltallet fra decimalen. Står der kun et 0 efter punktummet betyder det at tallet er et heltal</p>
+
+<h1>Smarte tricks</h1>
+
+<h2>Variabler</h2>
+
+<p>En af de smarte ting man kan gøre er at bruge variabler. Forestil dig, at du skal udregne arealet af et rektangel, hvor formlen er <span class="math">\( højde \cdot bredde \)</span>.</p>
+
+<p>Her kan du vælge at indtaste <span class="math">\( højde \)</span> og <span class="math">\( bredde \)</span> som variabler på følgende måde og udregne arealet:</p>
+
+<pre>
+	<code class="python">>>> højde = 3
+>>> bredde = 5
+>>> højde * bredde
+15</code>
+</pre>
+
+<p>Det kan være rigtigt smart, hvis man skal udregne en masse regnestykker hvor noget bliver ved med at være ens. Hvis vi nu skal udregne en hvor højden er den sammen, men bredden er 7. Så skal vi kun ændre variablen for bredden. Det gør vi ved at indtaste en ny bredde (ændre variablen)</p>
+
+<pre>
+	<code class="python">>>> bredde = 7
+>>> højde * bredde
+21</code>
+</pre>
+
+<h2>Genbrug resultat</h2>
+
+<p>Nogle gange skal vi bruge resultatet fra forrige regnestykket (output), og der findes der også en smart måde. Hvis man indsætte tegnet <span class="inl_cmd">_</span>, så indsætter Python resultatet fra sidste regnestykke samme sted. Du indtaster <span class="inl_cmd">_</span> ved at trykke på <kbd>Shift</kbd> + <kbd>-</kbd>.</p>
+
+<p>Lad os lægge 2 til resultatet ovenfor:</p>
+
+<pre>
+	<code class="python">>>>_ + 2
+23</code>
+</pre>
+
+<h1>pi</h1>
+
+<p>En variabel vi anvender ofte er pi (<img width="12" src="https://upload.wikimedia.org/wikipedia/commons/2/2e/Pi-symbol.svg" alt="_" title="_" />). Den variabel får vi adgang til igennem funktionen <span class="inl_cmd">math</span>, som først skal importeres.</p>
+
+<p>Det gør vi på følgende måde:</p>
+
+<pre>
+	<code class="python">>>> from math import pi</code>
+</pre>
+
+<p>Herefter kan vi vise hvad <img width="12" src="https://upload.wikimedia.org/wikipedia/commons/2/2e/Pi-symbol.svg" alt="_" title="_" /> er og regne med det:</p>
+
+<pre>
+	<code class="python">>>> from math import pi
+>>> pi
+3.141592653589793
+>>> 3*pi
+9.42477796076938
+</code>
+</pre>
+
+<h1>Brøker</h1>
+
+<p>Der er to forskellige måder vi kan regne med brøker.</p>
+
+<ol class="_">
+	<li>Udregning til værdi i decimaltal</li>
+	<li>Udregning til værdi med brøker (eksakt)</li>
+</ol>
+
+<h2>Resultat i decimaltal</h2>
+
+<p>Dette er den letteste måde. Her regner vi bare brøkerne somom de var divisionsstykker. Lad os kigge på nogle eksempler:</p>
+
+<ol type="a">
+	<li><span class="math">\( \frac 3 4 \)</span></li>
+	<li><span class="math">\( \frac 3 4 + 4 \)</span></li>
+	<li><span class="math">\( \frac 3 4 + \frac 4 5 \)</span></li>
+	<li><span class="math">\( \frac 2 3 \cdot \frac 3 4 \)</span></li>
+	<li><span class="math">\( 2\frac 1 2 + \frac 3 4 \)</span></li>
+</ol>
+
+
+
+<pre>
+	<code class="python">>>>3/4
+0.75	
+>>> 3/4 + 4
+4.75
+>>> 3/4 + 4/5
+1.55
+>>> 2/3*3/4
+0.5
+>>> (2+1/2)+3/4
+3.25</code>
+</pre>
+
+<p><span class="red">VIGTIGT!: </span>Læg mærke til, at jeg sætter den blandede brøk i en parantes, før jeg regner videre med den</p>
+
+<h2>Resultat i brøk</h2>
+
+<p>Python kan også regne med brøker, men det kræver at vi importere funktionen. Man importere brøkfunktionen ved at skrive:</p>
+
+<pre>
+	<code class="python">>>> from fractions import Fraction</code>
+</pre>
+
+<p>Funktionen hedder <span class="inl_cmd">Fractions(a,b))</span>, hvor a er tælleren og b er nævneren.</p>
+
+<p>Brøken <span class="math">\( \frac 3 7 \)</span> bliver altså til: <span class="inl_cmd">Fractions(3,7)</span></p>
+
+<p>Her er vist hvordan vi udregner regnestykkerne ovenfor:</p>
+
+<pre>
+	<code class="python">>>> from fractions import Fraction
+>>> Fraction(3,4)
+Fraction(3, 4)
+>>> Fraction(3,4) + 4
+Fraction(19, 4)
+>>> Fraction(3,4)+Fraction(4,5)
+Fraction(31, 20)
+>>> Fraction(2,3)*Fraction(3,4)
+Fraction(1, 2)
+>>> (2+Fraction(1,2))+Fraction(3,4)
+Fraction(13, 4)</code>
+</pre>
+
+<p>Læg mærke til at jeg stadig skal samle den blandende brøk i en parantes.</p>
+
+<h2>uægte brøk til blandet brøk</h2>
+
+<p>For at finde heltalsdelen og restdelen i et divisionsstykke anvendes funktionerne <span class="inl_cmd">floor division</span> og <span class="inl_cmd">modulus</span>:</p>
+
+<table class="_">
+	<thead>
+		<tr>
+			<th>Funktion</th>
+			<th>tegn</th>
+			<th>Beskrivelse</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>floor division</td>
+			<td>//</td>
+			<td>Finder heltallet efter division </td>
+		</tr>
+		<tr>
+			<td>modulus</td>
+			<td>%</td>
+			<td>Finder restproduktet</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Lad os kigge på sidste resultat ovenfor: <span class="inl_cmd">Fraction(13/4)</span>, hvilket er brøken <span class="math">\( \frac {13} {4} \)</span>. Herunder udregner jeg først heltallet, og derefter restproduktet.</p>
+
+<pre>
+	<code class="python">>>> 13//4
+3
+>>> 13%4
+1</code>
+</pre>
+
+<p>Det kan omskrives til <span class="math">\( 3 \frac 1 4 \)</span>, hvor 3 er heltallet og 1 er restproduktet (tælleren). Nævneren er den oprindelige nævner.</p>
+
+<h2>Tilnærmet brøk</h2>
+
+<p>Forestil dig, at du gerne vil have et tal omskrivet til en brøk. Det kan f.eks. være <span class="math">\( 0.125 \)</span>. </p>
+
+<p>Den hurtige ville være bare at omskrive det til tusindedele, altså: <span class="math">\( \frac{ 125 }{ 1000 } \)</span></p>
+
+<p>Men hvad hvis den brøk kan forkortes til noget smartere? Det kan vi undersøge med Python.</p>
+
+<pre>
+	<code class="python">>>>from fractions import Fraction
+>>> Fraction(0.125)
+Fraction(1, 8)</code>
+</pre>
+
+<p><span class="math">\( 0.125 \)</span> kan altså omskrives til <span class="math">\( \frac{ 1 }{ 8 } \)</span></p>
+
+<p>Hvilke af disse decimaltal kan omskrives til en "pæn" brøk:</p>
+
+<ol type="a">
+	<li>0.4357</li>
+	<li>0.46875</li>
+	<li>0.345</li>
+	<li>0.06640624</li>
+	<li>0.06640625</li>
+</ol>
+
+
+
+
+<h1>potens og rødder</h1>
+
+	
+</div><!-- end: col-md-9 -->
+
+<footer>
+
+	<p onclick="parentNode.remove()"><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons licens" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>Indholdet på Vidas.dk er licenseret under <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> og er skrevet af Thomas Jensen. (<a href="../hvem_er_jeg.html" target="_blank">Læs mere</a>)</p>
+
+</footer>
+	
+	
+</div><!-- end: row-fluid -->
+
+</div> <!-- end: container-fluid -->
+
+
+<!-- SCRIPT SECTION -->
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script type="text/javascript" src="../js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="../js/jquery.tocify.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+
+<!-- PRETTYFY-->
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+
+
+<!-- HIGHLIGHT -->
+	<script src="../js/highlight.pack.js" type="text/javascript"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+
+<!-- MATHJAX -->
+<script type="text/javascript" 
+	src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  displayAlign: "left",
+  displayIndent: "0em"
+});
+</script>
+
+
+<!-- TOCIFY -->
+<script>
+	$(function() {var toc = $("#toc").tocify({ selectors: "h1, h2, h3, h4" }).data("toc-tocify"); });
+</script>
+<!-- GOOGLE ANALYTICS -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-89933285-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</body>
+</html>
