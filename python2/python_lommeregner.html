@@ -491,24 +491,132 @@ Fraction(1, 8)</code>
 			<td><span class="math">\( sin() \)</span></td>
 			<td><span class="math">\( math.sin() \)</span></td>
 			<td><span class="math">\( sin()^{-1} \)</span></td>
-			<td><span class="math">\( asin() \)</span></td>
+			<td><span class="math">\( math.asin() \)</span></td>
 		</tr>
 		<tr>
 			<td><span class="math">\( cos() \)</span></td>
 			<td><span class="math">\( math.cos() \)</span></td>
 			<td><span class="math">\( cos()^{-1} \)</span></td>
-			<td><span class="math">\( acos() \)</span></td>
+			<td><span class="math">\( math.acos() \)</span></td>
 		</tr>
 		<tr>
 			<td><span class="math">\( tan() \)</span></td>
 			<td><span class="math">\( math.tan() \)</span></td>
 			<td><span class="math">\( tan()^{-1} \)</span></td>
-			<td><span class="math">\( atan() \)</span></td>
+			<td><span class="math">\( math.atan() \)</span></td>
 		</tr>
 	</tbody>
 </table>
 
-	
+<h2>I praksis</h2>
+
+<p>I en retvinklet trekant gælder følgende:</p>
+
+<figure id="">
+
+	<img class="p50" src="images/python_lommeregner_retvinklet_trekant.svg" alt="_" title="_" />
+
+</figure>
+
+<p>Vi prøver at beregne vinkel a en 3-4-5 trekant (<a href="https://da.wikipedia.org/wiki/Pythagor%C3%A6iske_tal" target="_blank">phytagoræsik triple</a>), altså hvor: </p>
+
+<ul class="none">
+	<li>a = 3</li>
+	<li>b = 4</li>
+	<li>c = 5</li>
+</ul>
+
+<p>Ved hjælp af sinus</p>
+
+<pre>
+	<code class="python">>>> import math
+>>> math.asin(3/5) <span class="red"><b>&larr; beregnet ved hjælp af asin</b></span>
+0.6435011087932844 <span class="blue1"><b>&larr; resultat i radianer</b></span>
+>>> math.degrees(_)<span class="green"><b>&larr; omdanner radianer til grader ( _ henter forrige output)</b></span>
+36.86989764584402 <span class="blue"><b>&larr; resultat i radianer</b></span></code>
+</pre>
+
+<p>Ved hjælp af cosinus</p>
+
+<pre>
+	<code class="python">>>> math.acos(4/5)
+0.6435011087932843
+>>> math.degrees(_)
+36.86989764584401</code>
+</pre>
+
+<p>Ved hjælp af tangens</p>
+
+<pre>
+	<code class="python">>>> math.atan(3/4)
+0.6435011087932844
+>>> math.degrees(_)
+36.86989764584402</code>
+</pre>
+
+<p>Vinkel A er altså 36,9&deg;</p>
+
+<h2>En pædagogisk vinkel</h2>
+
+<p>En af de ting der er svært for nogle elever er at forstå hvordan man anvender formlerne, men ved hjælp af Python kan man læse metodikken, mens man udregner: </p>
+
+<ol class="">
+	<li>find konstanterne a,b,c</li>
+	<li>Find ud af hvad sinus-, cosinus- eller tangensværdien er</li>
+	<li>find længden af vinkelbuen ved hjælp af den inverse funktion (asin, acos, atan)</li>
+</ol>
+
+
+<pre>
+	<code class="python">>>> import math
+>>> a = 3
+>>> b = 4
+>>> c = 5
+>>> sin_A = a/c
+>>> vinkel_rad = math.asin(sin_A)
+>>> vinkel_grad = math.degrees(vinkel_rad)
+>>> vinkel_grad
+36.86989764584402
+>>> round(_,2)
+36.87</code>
+</pre>
+
+<table class="_">
+	<thead>
+		<tr>
+			<th>Hvad der programmeres</th>
+			<th>Forklaring</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>>>> a = 3 <br/> >>> b = 4 <br/> >>> c = 5</td> 
+			<td>Variabler sættes</td>
+		</tr>
+		<tr>
+			<td>>>> sin_A = a/c</td>
+			<td>Beregn værdien af sin(A)</td>
+		</tr>
+		<tr>
+			<td>>>> vinkel_rad = math.asin(sin_A)</td>
+			<td>Find længden af vinkelbuen i radianer</td>
+		</tr>
+		<tr>
+			<td>>>> vinkel_grad = math.degrees(vinkel_rad)</td>
+			<td>Konverter radianer til grader</td>
+		</tr>
+		<tr>
+			<td>>>> vinkel_grad <br/>36.86989764584402</td>
+			<td>Udskriv vinklen</td>
+		</tr>
+		<tr>
+			<td>>>> round(_,2)<br/>36.87</td>
+			<td>Forkort den til 2 decimaler</td>
+		</tr>
+	</tbody>
+</table>
+
+
 </div><!-- end: col-md-9 -->
 
 <footer>
