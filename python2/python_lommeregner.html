@@ -37,36 +37,17 @@
 	
 <div class="title">Python som lommeregner</div>
 
+<h1>Til underviseren</h1>
+
+<p>Denne del af kurset er ikke bygget op med øvelser, men er rettet mod underviseren. Dette skyldes at det er ret omstændigt at skulle lave et undervisningsmateriale, der giver eleven indblik i matematikkens regler.</p>
+
+<p>Dette afsnit om Python som lommeregner er altså designet til at give dig som underviser et indblik i syntaksen.</p>
+
+<p>Som inspiration kan nævnes, at personligt anvender Python til beregninger og funktionsplot, da det det altid er ved hånden</p>
+
 <h1>De 4 regningsarter</h1>
 
 <p>For at bruge de fire almindelige regningsarter anvender vi tegnene: +, -, * og /</p>
-
-<table class="_">
-	<thead>
-		<tr>
-			<th>Tegn</th>
-			<th>Betydning</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>+</td>
-			<td>Lægge til (addere) - Kaldes også for addition</td>
-		</tr>
-		<tr>
-			<td>-</td>
-			<td>Trække fra (substrahere) - Kaldes substraktion</td>
-		</tr>
-		<tr>
-			<td>*</td>
-			<td>Gange (multiplicere) - Kaldes multiplikation</td>
-		</tr>
-		<tr>
-			<td>/</td>
-			<td>Dividere - Kaldes division</td>
-		</tr>
-	</tbody>
-</table>
 
 <p>Eksempler</p>
 
@@ -83,9 +64,76 @@
 
 <p>Læg mærke til at Python svarer tilbage med et decimaltal når man dividerer, og at der anvendes punktum til at adskille heltallet fra decimalen. Står der kun et 0 efter punktummet betyder det at tallet er et heltal</p>
 
-<h1>Smarte tricks</h1>
+<h1>Grundlæggende viden</h1>
 
-<h2>Variabler</h2>
+<h2>I/O - input/output</h2>
+
+<p>Pythons kommandolinie består af input og output. Når kommandofortolkeren starter op angiver man sit input ved de 3 "større end" tegn (<span class="inl_cmd">>>></span>). Python viser output (resultatet) i linien under. </p>
+
+<pre>
+	<code class="python">>>> 7 <span class="red">&larr; input</span>
+7 <span class="blue">&larr; output</span></code>
+</pre>
+
+<h2>Decimaler</h2>
+
+<p>I Python anvender man <span class="inl_cmd">.</span> (punktum) som seperator mellem heltallet og decimalen. Det skyldes at <span class="inl_cmd">,</span> fungerer som seperator mellem udtryk. Dvs. <span class="inl_cmd">3.14</span>, <span class="inl_cmd">2.75</span> osv. </p>
+
+<p>Er decimalværdien <span class="inl_cmd">.0</span> betyder det, at det er et heltal.</p>
+
+<div class="fakta">
+	<p>Python anvender enten heltal (intergers) eller float (decimaltal).</p>
+	
+	<p>Så længe vi anvender +, - og *, så vil output være i heltal, når vi anvender heltal som input.</p>
+	
+	<p>Ved division vil Python altid konvertere tallene til float, hvilker er årsagen til det lidt kryptiske <span class="inl_cmd">.0</span> når resultatet er et heltal.</p>
+</div>
+
+<h2>Genbrug resultat</h2>
+
+<p>Vi kan indsætte det forrige output (resultat) ved hjælp af <span class="inl_cmd">_</span> (underscore ). Underscore kommer ved at anvende tastekombinationen <kbd>Shift</kbd> + <kbd>-</kbd>.</p>
+
+<pre>
+	<code class="python">>>> 7
+7
+>>> _+2
+9</code>
+</pre>
+
+<h2>Paranteser</h2>
+
+<p>Paranteser anvendes efter matematikkens regler:</p>
+
+<div class="latex">$$ \frac{ 1 }{ 2*8 } $$</div>
+
+<pre>
+	<code class="python">>>> 1/(2*8)
+0.0625</code>
+</pre>
+
+<h2>Negative værdier</h2>
+
+<p>Negative værdier angives ved at sætte <span class="inl_cmd">-</span> foran værdien. Det skal ikke i parantes selvom det er første værdi i regnestykket (som ved Texas lommeregneren)</p>
+
+<pre>
+	<code class="python">>>> -2*7
+-14
+>>> 7/-4
+-1.75</code>
+</pre>
+
+<h2>Absolutte tal</h2>
+
+<p>Hvis man vil sikre sig et positivt resultat anvendes <span class="inl_cmd">abs()</span></p>
+
+<pre>
+	<code class="python">>>> abs(-7)
+7</code>
+</pre>
+
+
+
+<h1>Variabler</h1>
 
 <p>En af de smarte ting man kan gøre er at bruge variabler. Forestil dig, at du skal udregne arealet af et rektangel, hvor formlen er <span class="math">\( højde \cdot bredde \)</span>.</p>
 
@@ -98,7 +146,7 @@
 15</code>
 </pre>
 
-<p>Det kan være rigtigt smart, hvis man skal udregne en masse regnestykker hvor noget bliver ved med at være ens. Hvis vi nu skal udregne en hvor højden er den sammen, men bredden er 7. Så skal vi kun ændre variablen for bredden. Det gør vi ved at indtaste en ny bredde (ændre variablen)</p>
+<p>Det kan være rigtigt smart, hvis man skal udregne en masse regnestykker hvor noget bliver ved med at være ens. Hvis vi senere skal udregne et rektangel, hvor højden er den sammen, men bredden er 7, skal vi kun ændre variablen for bredden. Det gør vi ved at indtaste en ny bredde (ændre variablen)</p>
 
 <pre>
 	<code class="python">>>> bredde = 7
@@ -106,16 +154,24 @@
 21</code>
 </pre>
 
-<h2>Genbrug resultat</h2>
-
-<p>Nogle gange skal vi bruge resultatet fra forrige regnestykket (output), og der findes der også en smart måde. Hvis man indsætte tegnet <span class="inl_cmd">_</span>, så indsætter Python resultatet fra sidste regnestykke samme sted. Du indtaster <span class="inl_cmd">_</span> ved at trykke på <kbd>Shift</kbd> + <kbd>-</kbd>.</p>
-
-<p>Lad os lægge 2 til resultatet ovenfor:</p>
+<p>Kan man ikke huske variablen, så finder man værdien ved at skrive den, f.eks:</p>
 
 <pre>
-	<code class="python">>>>_ + 2
-23</code>
+	<code class="python">>>> højde
+3
+>>> bredde
+7</code>
 </pre>
+
+<p>Variabler kan være beregnet både ved hjælp af værdier og ved hjælp af variabler, f.eks:</p>
+
+<pre>
+	<code class="python">>>> areal = bredde*højde
+>>> areal
+21</code>
+</pre>
+
+
 
 <h1>pi</h1>
 
@@ -241,7 +297,7 @@ Fraction(13, 4)</code>
 1</code>
 </pre>
 
-<p>Det kan omskrives til <span class="math">\( 3 \frac 1 4 \)</span>, hvor 3 er heltallet og 1 er restproduktet (tælleren). Nævneren er den oprindelige nævner.</p>
+<p><span class="math">\( \frac{ 13 }{ 4 } \)</span> kan altså omskrives til <span class="math">\( 3 \frac 1 4 \)</span>, hvor 3 er heltallet og 1 er restproduktet (tælleren). Nævneren er den oprindelige nævner.</p>
 
 <h2>Tilnærmet brøk</h2>
 
@@ -259,20 +315,198 @@ Fraction(1, 8)</code>
 
 <p><span class="math">\( 0.125 \)</span> kan altså omskrives til <span class="math">\( \frac{ 1 }{ 8 } \)</span></p>
 
-<p>Hvilke af disse decimaltal kan omskrives til en "pæn" brøk:</p>
+<h1>Potens og rødder</h1>
 
-<ol type="a">
-	<li>0.4357</li>
-	<li>0.46875</li>
-	<li>0.345</li>
-	<li>0.06640624</li>
-	<li>0.06640625</li>
-</ol>
+<h2>Potenser</h2>
+
+<p>Potenser kan regnes ud på 2 måder. For potenstallet <span class="math">\( a^b \)</span> kan man altså sige: </p>
+
+<ul class="none">
+	<li><span class="math">\( pow(a,b) \)</span> <span class="red">Min anbefaling</span></li>
+	<li><span class="math">\( a**b \)</span></li>
+</ul>
+
+<pre>
+	<code class="python">>>> pow(8,2)
+64
+>>> 8**2
+64</code>
+</pre>
+
+<h2>Rødder</h2>
+
+<p>For at regne med rødder skal man bruge følgende omskrivning:</p>
+
+<div class="latex">$$ \sqrt[b]{a} = a^{\frac{ 1 }{ b }}$$</div>
+
+<p>Dvs. at <span class="math">\( \sqrt[3]{27} \)</span> bliver til:</p>
+
+<pre>
+	<code class="python">>>> pow(27,1/3)
+3.0
+>>> 27**(1/3)
+3.0</code>
+</pre>
+
+<p>Læg mærke til, at <span class="math">\( \frac{ 1 }{ 3 } \)</span> skal være i parantes, hvis man anvender <span class="inl_cmd">**</span> metoden. Ellers vil Python fortolke regnestykket som <span class="math">\( \frac{ 27^1 }{ 3 } = 9\)</span></p>
+
+<pre>
+	<code class="python">>>> 27**1/3
+9.0</code>
+</pre>
+
+<p>Den sikre metode er <span class="inl_cmd">pow(a,b))</span></p>
+
+<h1>Afrunding</h1>
+
+<p>Man afrunder tal ved hjælp af funktionen <span class="inl_cmd">round(a,b)</span>, hvor a er tallet og b er antallet af decimaler. det gøres på følgende måde:</p>
+
+<pre>
+	<code class="python">>>> from math import pi
+>>> pi
+3.141592653589793
+>>> round(pi,2)
+3.14
+>>> round(pi,4)
+3.1416</code>
+</pre>
+
+<h2>afrunding til nærmeste hele tal</h2>
+
+<p>Man kan også runde op og ned til nærmeste hele tal. Ligesom pi ligger disse i <span class="inl_cmd">math</span>-modulet. Det gøres ved hjælp af:</p>
+
+<ul class="disc">
+	<li>ceil() - op til nærmeste hele tal</li>
+	<li>floor() - ned til nærmeste hele tal</li>
+</ul>
+
+<p>Herunder laver jeg afrundinger af pi.</p>
+	
+<pre>
+	<code class="python">>>> from math import pi, ceil, floor
+>>> pi
+3.141592653589793
+>>> ceil(pi)
+4
+>>> floor(pi)
+3</code>
+</pre>	
+
+<p>Læg mærke til at jeg kan importere flere funktioner fra samme pakke ved at adskille dem med <span class="inl_cmd">,</span> (komma))</p>
+
+<h1>Trigonometri</h1>
+
+<p>Her støder vi på noget, som i folkeskolesammenhæng er lidt bøvlet. Det skyldes at Python regner med radianer og ikke grader. Så for at kunne anvende Pythons geometrifunktioner skal vi først konvertere grader til radianer.</p>
+
+<p>Python bliver brugt til avanceret matematik, og der anvender man radianer hvor cirklens omkredes er lig med <span class="math">\( 2 \pi \)</span> og ikke 360&deg;.</p>
+
+<p>Her vil vi også gøre det lidt anderledes, og så importere hele <span class="inl_cmd">math</span> modulet, og så kalde funktionerne.</p>
+
+<details>
+
+	<summary>Hvorfor ikke importere direkte</summary>
+
+	<p>Ovenfor har vi importeret pi, ceil, floor direkte fra math.</p>
+	
+	<p>Vi kunne også sagtens gøre det samme her, det bliver bare hurtigt uoverskueligt, da der er en del funktioner (8 i alt) der skal importeres til trigonometri, nemlig:</p>
+	
+	<ul class="disc">
+		<li>cos() og acos() </li>
+		<li>sin() og asin()</li>
+		<li>tan() og atan()</li>
+		<li>degrees() - fra radianer til grader</li>
+		<li>radians() - fra grader til radianer</li>
+	</ul>
+
+	<p>Det ville give en sætning der lød:</p>	
+
+	<pre>
+		<code class="python">from math import cos, acos, sin, asin, tan, atan, degrees, radians</code>
+	</pre>
+
+</details>
+
+<p>Når vi har importeret math er funktionerne</p>
 
 
 
 
-<h1>potens og rødder</h1>
+
+
+
+<h2>Importer math</h2>
+
+<pre>
+	<code class="python">import math</code>
+</pre>
+
+<h2>Grad til radian</h2>
+
+<table class="centreret">
+	<thead>
+		<tr>
+			<th>Grad til radian</th>
+			<th>Radian til grad</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><span class="math">\( math.radians() \)</span></td>
+			<td><span class="math">\( math.degrees() \)</span></td>
+		</tr>
+	</tbody>
+</table>
+
+<p><b>Eksempel:</b> konverter 90&deg; og 45&deg;</p>
+
+<pre>
+	<code class="python">>>> math.radians(90)
+1.5707963267948966
+>>> math.radians(45)
+0.7853981633974483</code>
+</pre>
+
+<p><b>Eksempel:</b> konverter 0.45 rad og 0.789 rad til grader</p>
+
+<pre>
+	<code class="python">>>> math.degrees(0.45)
+25.783100780887047
+>>> math.degrees(0.789)
+45.206370035821955</code>
+</pre>
+
+<h2>trigonometriske funktioner</h2>
+
+<table class="centreret">
+	<thead>
+		<tr>
+			<th>funktion</th>
+			<th>Python</th>
+			<th>funktion</th>
+			<th>Python</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><span class="math">\( sin() \)</span></td>
+			<td><span class="math">\( math.sin() \)</span></td>
+			<td><span class="math">\( sin()^{-1} \)</span></td>
+			<td><span class="math">\( asin() \)</span></td>
+		</tr>
+		<tr>
+			<td><span class="math">\( cos() \)</span></td>
+			<td><span class="math">\( math.cos() \)</span></td>
+			<td><span class="math">\( cos()^{-1} \)</span></td>
+			<td><span class="math">\( acos() \)</span></td>
+		</tr>
+		<tr>
+			<td><span class="math">\( tan() \)</span></td>
+			<td><span class="math">\( math.tan() \)</span></td>
+			<td><span class="math">\( tan()^{-1} \)</span></td>
+			<td><span class="math">\( atan() \)</span></td>
+		</tr>
+	</tbody>
+</table>
 
 	
 </div><!-- end: col-md-9 -->
