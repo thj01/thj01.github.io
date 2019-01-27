@@ -8,9 +8,10 @@ left(90)
 forward(160)
 left(90)
 forward(80)
+left(90)
 
 #taget
-left(180)
+left(90)
 forward(80)
 goto(80,160)
 goto(160,80)
