@@ -2,7 +2,8 @@ from turtle import *
 from random import randrange
 
 speed(100)
-antal = 0
+antal_streger = 0
+antal_max_afstand = 0
 max_afstand = 300
 max_antal_streger = 1000
 
@@ -28,11 +29,11 @@ while True:
     
     rt(vinkel)
     fd(længde)
-    if abs(pos()) < 1:
-        break
+    antal_streger +=1
     if abs(pos()) > max_afstand:
         penup()
         goto(0,0)
         pendown()
-        antal +=1
-        print(antal)
+        antal_max_afstand +=1
+        print(antal_streger)
+        antal_streger = 0
