@@ -119,7 +119,7 @@ circle(100)</code></pre>
 
 <figure id="">
 
-	<img class="p20" src="images/turtle_cirkle_01_simpel.png" alt="_" title="_" />
+	<img class="p20" src="images/turtle_cirkel_01_simpel.png" alt="_" title="_" />
 
 	<figcaption></figcaption>
 
@@ -129,19 +129,26 @@ circle(100)</code></pre>
 
 <figure id="">
 
-	<img class="p20" src="images/turtle_cirkle_02_simpel_forklaret.png" alt="_" title="_" />
+	<img class="p20" src="images/turtle_cirkel_02_simpel_forklaret.png" alt="_" title="_" />
 
 	<figcaption></figcaption>
 
 </figure>
 
-<p>Tallet i parantesen angiver afstanden til cirklens centrum vinkelret på retning markøren har.</p>
+<p>Tallet i parantesen angiver afstanden til cirkelns centrum vinkelret på retning markøren har.</p>
 
 <h2>Dele af cirkelbuen</h2>
 
 <p>Man kan tegne en mindre del af cirkelbuen ved at sætte et komma, og tilføje antallet af grader.</p>
 
-<table class="_">
+<table class="">
+	<thead>
+		<tr>
+			<th>90&deg;</th>
+			<th>180&deg;</th>
+			<th>270&deg;</th>
+		</tr>
+	</thead>	
 	<tbody>
 		<tr>
 			<td><pre><code class="python">from turtle import *
@@ -155,9 +162,9 @@ circle(100,180)</code></pre></td>
 circle(100,270)</code></pre></td>
 		</tr>
 		<tr>
-			<td><img class="" src="images/turtle_cirkle_03_cirkelbue_90.png" alt="_" title="_" /></td>
-			<td><img class="" src="images/turtle_cirkle_04_cirkelbue_180.png" alt="_" title="_" /></td>
-			<td><img class="" src="images/turtle_cirkle_05_cirkelbue_270.png" alt="_" title="_" /></td>
+			<td><img class="" src="images/turtle_cirkel_03_cirkelbue_90.png" alt="_" title="_" /></td>
+			<td><img class="" src="images/turtle_cirkel_04_cirkelbue_180.png" alt="_" title="_" /></td>
+			<td><img class="" src="images/turtle_cirkel_05_cirkelbue_270.png" alt="_" title="_" /></td>
 
 		</tr>
 	</tbody>
@@ -175,13 +182,157 @@ forward(100)</code></pre>
 
 <figure id="">
 
-	<img class="p30" src="images/turtle_cirkle_05_cirkel_eksempel.png" alt="_" title="_" />
+	<img class="p30" src="images/turtle_cirkel_06_cirkel_eksempel.png" alt="_" title="_" />
 
 	<figcaption></figcaption>
 
 </figure>
 
+<blockquote>
+	<p>Dette kan være et god redskab til at træne afstands og vinkelforståelse.</p>
+	
+	<p>Man kan anvende det til at træne </p>
+	
+	<ul class="disc">
+		<li>koordinatsystem</li>
+		<li>Afstandforståelse</li>
+		<li>Vinkler</li>
+		<li>målestoksforhold</li>
+	</ul>
+</blockquote>
 
+<h2>Polygoner</h2>
+
+<p>Cirkelfunktionen kan også bruges til at tegne polygoner</p>
+
+<pre><code class="python">from turtle import *
+
+circle(100,360,3)</code></pre>
+
+<figure id="">
+
+	<img class="p20" src="images/turtle_cirkel_07_cirkel_3-kant.png" alt="_" title="_" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<table class="_">
+	<thead>
+		<tr>
+			<th>Firkant</th>
+			<th>Femkant</th>
+			<th>Sekskant</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><pre><code class="python">from turtle import *
+
+circle(100,360,4)</code></pre></td>
+			<td><pre><code class="python">from turtle import *
+
+circle(100,360,5)</code></pre></td>
+			<td><pre><code class="python">from turtle import *
+
+circle(100,360,6)</code></pre></td>
+
+		</tr>
+		<tr>
+			<td><img class="" src="images/turtle_cirkel_08_cirkel_4-kant.png" alt="_" title="_" /></td>
+			<td><img class="" src="images/turtle_cirkel_09_cirkel_5-kant.png" alt="_" title="_" /></td>
+			<td><img class="" src="images/turtle_cirkel_10_cirkel_6-kant.png" alt="_" title="_" /></td>
+		</tr>
+	</tbody>
+</table>
+
+
+<h1>Gentagelser</h1>
+
+<p>I starten lavede vi et kvadrat. Det kan gøre smartere, end vi gjorde det.</p>
+
+<p>Lad os kigge på koden en gang til:</p>
+
+<pre>
+	<code class="python">from turtle import *
+
+<span class="green">forward(100)   
+left(90)</span>
+forward(100)
+left(90)
+forward(100)
+left(90)
+forward(100)
+left(90)</code>
+</pre>
+
+<p>Læg mærke til at at vi gentager de to linier med <span class="inl_cmd">forward</span> og <span class="inl_cmd">left</span> 4 gange efter hinanden.</p>
+
+<p>Det kan vi skrive på følgende måde:</p>
+
+<pre><code class="python">from turtle import *
+
+for i in range(4):
+    forward(100)
+    left(90)</code></pre>
+
+<p>Kodestumpen <span class="inl_cmd">for i in range(4)</span> gør, at alt der står under den bliver gentaget 4 gange.</p>
+
+<blockquote class="alert">
+	<p>Læg mærke til at <span class="inl_cmd">for i in range(4) bliver afsluttet af et kolon, og at de kommandoer der skal gentages er rykket ind under linien.</span></p>
+	<p>Her er det gjort med <kbd>Tab</kbd>, men det kan også fin gøres med mellemrum</p>
+</blockquote>
+
+<p>Det kan vi udnytte til at lave drejninger med. Se nedenstående kode:</p>
+
+<pre><code class="python">from turtle import *
+
+for i in range(8):
+
+    for i in range(4):
+        forward(100)
+        left(90)
+
+    right(45) #fordi 360/8=45</code></pre>
+
+<figure id="">
+
+	<img class="p20" src="images/turtle_gentagelse_drejning_8_firkanter.png" alt="_" title="_" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Det koden siger er:</p>
+
+<p>Gentag følgende 8 gange.</p>
+
+	<ul class="disc">
+		<li>Tegn en firkant</li>
+		<li>drej cursoren 45&deg;</li>
+	</ul>
+
+<p>Vi kan endda få Python til at regne for os. Lad os lave en kode der drejer firkanten 17 gange før den når "tilbage".</p>
+
+<pre><code class="python">from turtle import *
+
+for i in range(17):
+
+    for i in range(4):
+        forward(100)
+        left(90)
+
+    right(360/17) </code></pre>
+    
+    <figure id="">
+	
+		<img class="p20" src="images/turtle_gentagelse_drejning_17_firkanter.png" alt="" title="" />
+	
+		<figcaption></figcaption>
+	
+	</figure>
+    
+<p>Som du kan se i den sidste linie, så får vi Python til selv at beregne hvor mange grader den skal dreje firkanten for at komme "hele vejen rundt" ved at skrive <span class="inl_cmd">right(360/17)</span>.</p>
 
 <h1>Opgaver</h1>
 
@@ -200,15 +351,11 @@ forward(100)</code></pre>
 	
 		<img class="p40" src="images/turtle_opgave1_a_b.png" alt="_" title="_" />
 	
-		<figcaption>_</figcaption>
+		<figcaption></figcaption>
 	
 	</figure>
 
 </details>
-
-
-
-
 
 
 <h1>Henvisninger</h1>
