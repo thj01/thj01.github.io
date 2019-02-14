@@ -40,7 +40,7 @@
 <h1>Et simpel turtle program</h1>
 
 <pre>
-	<code class="python">import turtle as *
+	<code class="python">from turtle import *
 
 forward(100)
 left(90)
@@ -65,7 +65,7 @@ left(90)</code>
 <p>Det koden siger er:</p>
 
 <ol class="_">
-	<li>importer turtleprogrammet, og kald det t</li>
+	<li>Importer turtleprogrammet</li>
 	<li>Bevæg cursoren 100 frem</li>
 	<li>Drej cursoren 90&deg; til venstre</li>
 	<li>Bevæg cursoren 100 frem</li>
@@ -81,61 +81,107 @@ left(90)</code>
 	<thead>
 		<tr>
 			<th>Kommando</th>
+			<th>Alternativer</th>
 			<th>Resultat</th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr>
 			<td>forward()</td>
+			<td>fd()</td>
 			<td>Fremad - længden angives i parantesen</td>
 		</tr>
 		<tr>
 			<td>backward()</td>
+			<td>bd()</td>
 			<td>Tilbage - længden angives i parantesen</td>
 		</tr>
 		<tr>
 			<td>left()</td>
+			<td>lt()</td>
 			<td>Til venstre - vinklen angives i parantesen</td>
 		</tr>
 		<tr>
 			<td>right( *værdi*)</td>
+			<td>rt()</td>
 			<td>Til højre - vinklen angives i parantesen</td>
 		</tr>
 	</tbody>
 </table>
 
-<h1>Kommandoer</h1>
+<h1>Cirkelbuer</h1>
+
+<p>Lad os tegne en simpel cirkel</p>
+
+<pre><code class="python">from turtle import *
+
+circle(100)</code></pre>
+
+<figure id="">
+
+	<img class="p20" src="images/turtle_cirkle_01_simpel.png" alt="_" title="_" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Herunder kan du se hvad der sker.</p>
+
+<figure id="">
+
+	<img class="p20" src="images/turtle_cirkle_02_simpel_forklaret.png" alt="_" title="_" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Tallet i parantesen angiver afstanden til cirklens centrum vinkelret på retning markøren har.</p>
+
+<h2>Dele af cirkelbuen</h2>
+
+<p>Man kan tegne en mindre del af cirkelbuen ved at sætte et komma, og tilføje antallet af grader.</p>
 
 <table class="_">
-	<thead>
-		<tr>
-			<th>Kommando</th>
-			<th>Resultat</th>
-		</tr>
-	</thead>
 	<tbody>
 		<tr>
-			<td>forward()</td>
-			<td>Fremad - længden angives i parantesen</td>
+			<td><pre><code class="python">from turtle import *
+
+circle(100,90)</code></pre></td>
+			<td><pre><code class="python">from turtle import *
+
+circle(100,180)</code></pre></td>
+			<td><pre><code class="python">from turtle import *
+
+circle(100,270)</code></pre></td>
 		</tr>
 		<tr>
-			<td>backward()</td>
-			<td>Tilbage - længden angives i parantesen</td>
-		</tr>
-		<tr>
-			<td>left()</td>
-			<td>Til venstre - vinklen angives i parantesen</td>
-		</tr>
-		<tr>
-			<td>right()</td>
-			<td>Til højre - vinklen angives i parantesen</td>
-		</tr>
-		<tr>
-			<td>circle()</td>
-			<td>Tegner en cirkel</td>
+			<td><img class="" src="images/turtle_cirkle_03_cirkelbue_90.png" alt="_" title="_" /></td>
+			<td><img class="" src="images/turtle_cirkle_04_cirkelbue_180.png" alt="_" title="_" /></td>
+			<td><img class="" src="images/turtle_cirkle_05_cirkelbue_270.png" alt="_" title="_" /></td>
+
 		</tr>
 	</tbody>
 </table>
+
+<p>Herunder er eksempel hvor jeg tegner en linie, med en cirkelbue på midten:</p>
+
+<pre><code class="python">from turtle import *
+
+forward(100)
+right(90)
+circle(50,180)
+right(90)
+forward(100)</code></pre>
+
+<figure id="">
+
+	<img class="p30" src="images/turtle_cirkle_05_cirkel_eksempel.png" alt="_" title="_" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+
 
 <h1>Opgaver</h1>
 
