@@ -433,34 +433,142 @@ forward(100)</code></pre>
 
 <h1>Farver</h1>
 
-<p>Man kan anvende alle "TK-farver". Det gør man ved at angive farvenavnet mellem to anførselstegn.</p>
+<p>Herunder vil det blive vist hvordan man farvelægger sine værker. Mange farver kan man få ved at angive deres navn mellem to situationstegn</p>
 
-<p>Herunder anvender jeg farverne: "red", "blue" og "green".</p>
+<table class="centreret" style="font-weight:700">
+	<tbody>
+		<tr>
+			<td style="background-color:rgb(255,255,255)">"white"</td>
+			<td style="background-color:rgb(168,168,168)">"grey66"</td>
+			<td style="background-color:rgb(84,84,84);color:rgb(240,240,240)">"grey33"</td>
+			<td style="background-color:rgb(0,0,0);color:rgb(240,240,240)">"black"</td>
+		</tr>
+		<tr>
+			<td style="background-color:rgb(255,0,0);color:rgb(240,240,240)">"red1"</td>
+			<td style="background-color:rgb(238,0,0);color:rgb(240,240,240)">"red2"</td>
+			<td style="background-color:rgb(205,0,0);color:rgb(240,240,240)">"red3"</td>
+			<td style="background-color:rgb(139,0,0);color:rgb(240,240,240)">"red4"</td>		
+		</tr>
+		<tr>
+			<td style="background-color:rgb(255,165,0)">"orange1"</td>
+			<td style="background-color:rgb(238,154,0)">"orange2"</td>
+			<td style="background-color:rgb(205,133,0);color:rgb(240,240,240)">"orange3"</td>
+			<td style="background-color:rgb(139,90,0);color:rgb(240,240,240)">"orange4"</td>		
+		</tr>
+		<tr>
+			<td style="background-color:rgb(255,255,0)">"yellow1"</td>
+			<td style="background-color:rgb(238,238,0)">"yellow2"</td>
+			<td style="background-color:rgb(205,205,0)">"yellow3"</td>
+			<td style="background-color:rgb(139,139,0);color:rgb(240,240,240)">"yellow4"</td>		
+		</tr>
+		<tr>
+			<td style="background-color:rgb(0,255,0)">"green1"</td>
+			<td style="background-color:rgb(0,238,0)">"green2"</td>
+			<td style="background-color:rgb(0,205,0)">"green3"</td>
+			<td style="background-color:rgb(0,139,0);color:rgb(240,240,240)">"green4"</td>		
+		</tr>
+		<tr>
+			<td style="background-color:rgb(0,0,255);color:rgb(240,240,240)">"blue1"</td>
+			<td style="background-color:rgb(0,0,238);color:rgb(240,240,240)">"blue2"</td>
+			<td style="background-color:rgb(0,0,205);color:rgb(240,240,240)">"blue3"</td>
+			<td style="background-color:rgb(0,0,139);color:rgb(240,240,240)	">"blue4"</td>		
+		</tr>
+	</tbody>
+</table>
+
+<p>Du kan få et overblik over farvenavne her: <a href="https://www.tcl.tk/man/tcl/TkCmd/colors.htm" target="_blank">https://www.tcl.tk/man/tcl/TkCmd/colors.htm</a></p>
+
+
+<h2>Farve på streg</h2>
+
+<p>For at farvelægge stregen anvender man pencolor(*farvenavn*):</p>
 
 <pre><code class="python">from turtle import *
 
 pensize(5)
-color("red")
-forward(200)
-color("blue")
-forward(200)
-color("green")
-forward(200)</code></pre>
+pencolor("red1") <span class="red">&larr; farve på stregen</span>
+circle(100)</code></pre>
 
 
 <figure id="">
 
-	<img class="p50" src="images/turtle_farver_01.png" alt="" title="" />
+	<img class="p20" src="images/turtle_farver_01.png" alt="" title="" />
 
 	<figcaption></figcaption>
 
 </figure>
 
-<p>Du kan få et overblik over farvenavne her: <a href="https://www.tcl.tk/man/tcl/TkCmd/colors.htm" target="_blank">https://www.tcl.tk/man/tcl/TkCmd/colors.htm</a></p>
 
-<details>
+<h2>Farve på figuren</h2>
 
-	<summary>Flere farver</summary>
+<p>For at farvelægge ens konstruktioner, skal man gøre to ting:</p>
+
+<ol class="_">
+	<li>Angive farven - fillcolor()</li>
+	<li>Fortælle hvor fyldningen starter - begin_fill()</li>
+	<li>--- og hvor den slutter - end_fill()</li>
+</ol>
+
+<pre><code class="python">from turtle import *
+
+pensize(5)
+fillcolor("red1") <span class="red">&larr; farve på indholdet</span>
+begin_fill() <span class="red">&larr; Start med at fylde ud</span>
+circle(100)
+end_fill() <span class="red">&larr; Slut med at fylde ud</span></code></pre>
+
+<figure id="">
+
+	<img class="p20" src="images/turtle_farver_02_fill.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h2>color()</h2>
+
+<p>Hvis man både skal bruge en streg- og en fyldfarve, kan man anvende funktionen color(). I parantesen angiver man streg- og fyldfarven adskilt af et komma: color(*stregfarve*,*fyldfarve*)</p>
+
+<pre><code class="python">from turtle import *
+
+pensize(5)
+color("red1", "green1")
+begin_fill()
+circle(100)
+end_fill()</code></pre>
+
+<figure id="">
+
+	<img class="p20" src="images/turtle_farver_02a_color.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Hvis man kun skriver en farve i color, f.eks. color("red1"), så bliver både stregen og fyldes samme farve.</p>
+
+<pre><code class="python">from turtle import *
+
+pensize(5)
+color("blue1")
+begin_fill()
+circle(100)
+end_fill()</code></pre>
+
+
+
+
+<figure id="">
+
+	<img class="p20" src="images/turtle_farver_02b_color_one.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+
+
+<h2>Flere farver</h2>
 
 	<p>Man er ikke begrænset af de farver som defineret er i TK farvesættet. Man kan også vælge at angive den hexadecimale kode for en farve. f.eks:</p>
 	
@@ -476,13 +584,7 @@ forward(200)
 color("#00BFFF")
 forward(200)</code></pre>
 	
-	<figure id="">
-	
-		<img class="p40" src="images/turtle_farver_02_hexa.png" alt="" title="" />
-	
-		<figcaption></figcaption>
-	
-	</figure>
+
 
 	<p>Du kan finde flere farver her: <a href="https://www.google.com/search?q=colorpicker&oq=colorpicker" target="_blank">https://www.google.com/search?q=colorpicker&oq=colorpicker</a></p>
 	
@@ -495,10 +597,9 @@ forward(200)</code></pre>
 		<figcaption></figcaption>
 	
 	</figure>
-	
-	
 
-</details>
+
+
 
 
 
