@@ -334,6 +334,31 @@ for i in range(17):
     
 <p>Som du kan se i den sidste linie, så får vi Python til selv at beregne hvor mange grader den skal dreje firkanten for at komme "hele vejen rundt" ved at skrive <span class="inl_cmd">right(360/17)</span>.</p>
 
+<h1>goto()</h1>
+
+<p>En sidste funktion vi skal have dækket er <span class="inl_cmd">goto()</span>. Med denne kommando kan vi lade "turtlen" springe til et koordinatsæt, uden at bekymre os om hverken afstand eller vinkel.</p>
+
+<p>Se eksempelt herinder hvor jeg tegner et hus</p>
+
+<pre><code class="python">from turtle import *
+forward(200)
+left(90)
+forward(100)
+goto(100,150)
+goto(0,100)
+left(180)
+forward(100)</code></pre>
+
+<figure id="">
+
+	<img class="p25" src="images/turtle_goto01_eksempel.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+
+
 <h1>Opgaver</h1>
 
 <h2>Opgave 1</h2>
