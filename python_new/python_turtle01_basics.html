@@ -40,7 +40,8 @@
 <h1>Et simpel turtle program</h1>
 
 <pre>
-	<code class="python">from turtle import *
+	<code class="python">
+from turtle import * 
 
 forward(100)
 left(90)
@@ -81,30 +82,30 @@ left(90)</code>
 	<thead>
 		<tr>
 			<th>Kommando</th>
-			<th>Alternativer</th>
 			<th>Resultat</th>
+			<th>Alternativer</th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr>
 			<td>forward()</td>
-			<td>fd()</td>
 			<td>Fremad - længden angives i parantesen</td>
+			<td>fd()</td>
 		</tr>
 		<tr>
 			<td>backward()</td>
-			<td>bd()</td>
 			<td>Tilbage - længden angives i parantesen</td>
+			<td>bd() | back()</td>
 		</tr>
 		<tr>
 			<td>left()</td>
-			<td>lt()</td>
 			<td>Til venstre - vinklen angives i parantesen</td>
+			<td>lt()</td>
 		</tr>
 		<tr>
 			<td>right( *værdi*)</td>
-			<td>rt()</td>
 			<td>Til højre - vinklen angives i parantesen</td>
+			<td>rt()</td>
 		</tr>
 	</tbody>
 </table>
@@ -344,8 +345,8 @@ for i in range(17):
 forward(200)
 left(90)
 forward(100)
-goto(100,150)
-goto(0,100)
+goto(100,150) <span class="red">&larr; Her starter taget</span>
+goto(0,100) <span class="red">&larr; Her slutter taget</span>
 left(180)
 forward(100)</code></pre>
 
@@ -364,6 +365,142 @@ forward(100)</code></pre>
 	<figcaption></figcaption>
 
 </figure>
+
+<h1>Kontrol med stregen</h1>
+
+<table class="_">
+	<thead>
+		<tr>
+			<th>Kommando</th>
+			<th>Resultat</th>
+			<th>Alternativ</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>pensize()</td>
+			<td>Stregens tykkelse</td>
+			<td>width()</td>
+		</tr>
+		<tr>
+			<td>penup()</td>
+			<td>Løfter pennen (ingen streg)</td>
+			<td>pu() | up()</td>
+		</tr>
+		<tr>
+			<td>pendown()</td>
+			<td>Sætter penne ned (laver streg)</td>
+			<td>pd() | down()</td>
+		</tr>
+		<tr>
+			<td>speed()</td>
+			<td>Cursorens hastighed. 3 er normal hastighed, 11+ er meget hurtigt</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>undo()</td>
+			<td>Fjern sidste kommando</td>
+			<td></td>
+		</tr>
+		
+	</tbody>
+</table>
+
+<p>Her er et eksempel:</p>
+
+<pre><code class="python">from turtle import *
+
+forward(100)
+pensize(10)
+forward(100)
+pensize(2)
+forward(100)
+penup()
+forward(100)
+pendown()
+forward(100)</code></pre>
+
+<p>Resultat</p>
+
+<figure id="">
+
+	<img class="p50" src="images/turtle_pen_control01.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+
+<h1>Farver</h1>
+
+<p>Man kan anvende alle "TK-farver". Det gør man ved at angive farvenavnet mellem to anførselstegn.</p>
+
+<p>Herunder anvender jeg farverne: "red", "blue" og "green".</p>
+
+<pre><code class="python">from turtle import *
+
+pensize(5)
+color("red")
+forward(200)
+color("blue")
+forward(200)
+color("green")
+forward(200)</code></pre>
+
+
+<figure id="">
+
+	<img class="p50" src="images/turtle_farver_01.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Du kan få et overblik over farvenavne her: <a href="https://www.tcl.tk/man/tcl/TkCmd/colors.htm" target="_blank">https://www.tcl.tk/man/tcl/TkCmd/colors.htm</a></p>
+
+<details>
+
+	<summary>Flere farver</summary>
+
+	<p>Man er ikke begrænset af de farver som defineret er i TK farvesættet. Man kan også vælge at angive den hexadecimale kode for en farve. f.eks:</p>
+	
+	<p>Man angiver koden ved at et # og en seks-cifret kode derefter f.eks: </p>
+
+	
+	<pre><code class="python">from turtle import *
+pensize(20)
+color("#FF8C00")
+forward(200)
+color("#808000")
+forward(200)
+color("#00BFFF")
+forward(200)</code></pre>
+	
+	<figure id="">
+	
+		<img class="p40" src="images/turtle_farver_02_hexa.png" alt="" title="" />
+	
+		<figcaption></figcaption>
+	
+	</figure>
+
+	<p>Du kan finde flere farver her: <a href="https://www.google.com/search?q=colorpicker&oq=colorpicker" target="_blank">https://www.google.com/search?q=colorpicker&oq=colorpicker</a></p>
+	
+	<p>Farven aflæses til venstre og du finder din farve ved at flytte rundt på cirklen og skyderen neden under. </p>
+	
+	<figure id="">
+	
+		<img class="p70" src="images/turtle_farver_03_find_flere_farver_google.png" alt="" title="" />
+	
+		<figcaption></figcaption>
+	
+	</figure>
+	
+	
+
+</details>
+
+
 
 <h1>Opgaver</h1>
 
