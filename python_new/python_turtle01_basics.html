@@ -39,8 +39,7 @@
 	
 <h1>Et simpel turtle program</h1>
 
-<pre>
-	<code class="python">
+<pre><code class="python">#Et simpel turtle program
 from turtle import * 
 
 forward(100)
@@ -66,7 +65,8 @@ left(90)</code>
 <p>Det koden siger er:</p>
 
 <ol class="_">
-	<li>Importer turtleprogrammet</li>
+	<li>Alt efter # bliver ignoreret - på den måde kan man indsætte kommentarer, notater og beskrivelser i koden</li>
+	<li>Importer turtlekommandoerne</li>
 	<li>Bevæg cursoren 100 frem</li>
 	<li>Drej cursoren 90&deg; til venstre</li>
 	<li>Bevæg cursoren 100 frem</li>
@@ -114,7 +114,8 @@ left(90)</code>
 
 <p>Lad os tegne en simpel cirkel</p>
 
-<pre><code class="python">from turtle import *
+<pre><code class="python">#cirkelbue
+from turtle import *
 
 circle(100)</code></pre>
 
@@ -136,7 +137,7 @@ circle(100)</code></pre>
 
 </figure>
 
-<p>Tallet i parantesen angiver afstanden til cirkelns centrum vinkelret på retning markøren har.</p>
+<p>Tallet i parantesen angiver afstanden til cirkelens centrum vinkelret på retning markøren har.</p>
 
 <h2>Dele af cirkelbuen</h2>
 
@@ -152,13 +153,16 @@ circle(100)</code></pre>
 	</thead>	
 	<tbody>
 		<tr>
-			<td><pre><code class="python">from turtle import *
+			<td><pre><code class="python">#cirkelbue 90&deg;
+from turtle import *
 
 circle(100,90)</code></pre></td>
-			<td><pre><code class="python">from turtle import *
+			<td><pre><code class="python">#cirkelbue 180&deg;
+from turtle import *
 
 circle(100,180)</code></pre></td>
-			<td><pre><code class="python">from turtle import *
+			<td><pre><code class="python">#cirkelbue 270&deg;
+from turtle import *
 
 circle(100,270)</code></pre></td>
 		</tr>
@@ -173,7 +177,8 @@ circle(100,270)</code></pre></td>
 
 <p>Herunder er eksempel hvor jeg tegner en linie, med en cirkelbue på midten:</p>
 
-<pre><code class="python">from turtle import *
+<pre><code class="python">#eksempel med cirkelbue
+from turtle import *
 
 forward(100)
 right(90)
@@ -202,11 +207,12 @@ forward(100)</code></pre>
 	</ul>
 </blockquote>
 
-<h2>Polygoner</h2>
+<h2>Polygoner med cirkelfunktionen</h2>
 
 <p>Cirkelfunktionen kan også bruges til at tegne polygoner</p>
 
-<pre><code class="python">from turtle import *
+<pre><code class="python">#tegne trekant med cirkelfunktionen
+from turtle import *
 
 circle(100,360,3)</code></pre>
 
@@ -228,13 +234,16 @@ circle(100,360,3)</code></pre>
 	</thead>
 	<tbody>
 		<tr>
-			<td><pre><code class="python">from turtle import *
+			<td><pre><code class="python">#firkant med cirkelfunktionen
+from turtle import *
 
 circle(100,360,4)</code></pre></td>
-			<td><pre><code class="python">from turtle import *
+			<td><pre><code class="python">#femkant med cirkelfunktionen
+from turtle import *
 
 circle(100,360,5)</code></pre></td>
-			<td><pre><code class="python">from turtle import *
+			<td><pre><code class="python">#sekskant med cirkelfunktionen
+from turtle import *
 
 circle(100,360,6)</code></pre></td>
 
@@ -248,14 +257,15 @@ circle(100,360,6)</code></pre></td>
 </table>
 
 
-<h1>Gentagelser</h1>
+<h1>Gentagelser (løkker)</h1>
 
 <p>I starten lavede vi et kvadrat. Det kan gøre smartere, end vi gjorde det.</p>
 
 <p>Lad os kigge på koden en gang til:</p>
 
 <pre>
-	<code class="python">from turtle import *
+	<code class="python">#kode før gentagelse (for i in ...)
+from turtle import *
 
 <span class="green">forward(100)   
 left(90)</span>
@@ -271,7 +281,8 @@ left(90)</code>
 
 <p>Det kan vi skrive på følgende måde:</p>
 
-<pre><code class="python">from turtle import *
+<pre><code class="python">#kode med gentagelse
+from turtle import *
 
 for i in range(4):
     forward(100)
@@ -286,7 +297,8 @@ for i in range(4):
 
 <p>Det kan vi udnytte til at lave drejninger med. Se nedenstående kode:</p>
 
-<pre><code class="python">from turtle import *
+<pre><code class="python">#kode hvor figur drejes
+from turtle import *
 
 for i in range(8):
 
@@ -294,7 +306,7 @@ for i in range(8):
         forward(100)
         left(90)
 
-    right(45) #fordi 360/8=45</code></pre>
+    right(45) #<b>da 360/8=45</b></code></pre>
 
 <figure id="">
 
@@ -315,7 +327,8 @@ for i in range(8):
 
 <p>Vi kan endda få Python til at regne for os. Lad os lave en kode der drejer firkanten 17 gange før den når "tilbage".</p>
 
-<pre><code class="python">from turtle import *
+<pre><code class="python">#drejning af firkant 17 gange
+from turtle import *
 
 for i in range(17):
 
@@ -341,12 +354,13 @@ for i in range(17):
 
 <p>Se eksempelt herinder hvor jeg tegner et hus</p>
 
-<pre><code class="python">from turtle import *
+<pre><code class="python"># kode med goto funktion
+from turtle import *
 forward(200)
 left(90)
 forward(100)
-goto(100,150) <span class="red">&larr; Her starter taget</span>
-goto(0,100) <span class="red">&larr; Her slutter taget</span>
+goto(100,150) #Her starter taget
+goto(0,100) #Her slutter taget
 left(180)
 forward(100)</code></pre>
 
@@ -366,7 +380,7 @@ forward(100)</code></pre>
 
 </figure>
 
-<h1>Kontrol med stregen</h1>
+<h1>Penkontrol</h1>
 
 <table class="_">
 	<thead>
@@ -408,16 +422,17 @@ forward(100)</code></pre>
 
 <p>Her er et eksempel:</p>
 
-<pre><code class="python">from turtle import *
+<pre><code class="python">#kode med eksempler på penkontrol
+from turtle import *
 
 forward(100)
-pensize(10)
+pensize(10) #sæt størrelse til 10
 forward(100)
-pensize(2)
+pensize(2) #sæt størrelse til 2
 forward(100)
-penup()
+penup() #løft pennen
 forward(100)
-pendown()
+pendown() #sæt pennen ned igen
 forward(100)</code></pre>
 
 <p>Resultat</p>
@@ -483,10 +498,11 @@ forward(100)</code></pre>
 
 <p>For at farvelægge stregen anvender man pencolor(*farvenavn*):</p>
 
-<pre><code class="python">from turtle import *
+<pre><code class="python">#ændre stregfarven
+from turtle import *
 
 pensize(5)
-pencolor("red1") <span class="red">&larr; farve på stregen</span>
+pencolor("red1") #ændr farven til red1
 circle(100)</code></pre>
 
 
@@ -509,13 +525,14 @@ circle(100)</code></pre>
 	<li>--- og hvor den slutter - end_fill()</li>
 </ol>
 
-<pre><code class="python">from turtle import *
+<pre><code class="python"># udfyld figur
+from turtle import *
 
 pensize(5)
-fillcolor("red1") <span class="red">&larr; farve på indholdet</span>
-begin_fill() <span class="red">&larr; Start med at fylde ud</span>
+fillcolor("red1") #farve på indholdet
+begin_fill() #Start med at fylde ud
 circle(100)
-end_fill() <span class="red">&larr; Slut med at fylde ud</span></code></pre>
+end_fill() #Slut med at fylde ud</code></pre>
 
 <figure id="">
 
@@ -529,7 +546,8 @@ end_fill() <span class="red">&larr; Slut med at fylde ud</span></code></pre>
 
 <p>Hvis man både skal bruge en streg- og en fyldfarve, kan man anvende funktionen color(). I parantesen angiver man streg- og fyldfarven adskilt af et komma: color(*stregfarve*,*fyldfarve*)</p>
 
-<pre><code class="python">from turtle import *
+<pre><code class="python">#anvendelse af color funktionen
+from turtle import *
 
 pensize(5)
 color("red1", "green1")
@@ -547,7 +565,8 @@ end_fill()</code></pre>
 
 <p>Hvis man kun skriver en farve i color, f.eks. color("red1"), så bliver både stregen og fyldes samme farve.</p>
 
-<pre><code class="python">from turtle import *
+<pre><code class="python">#anvendelse af color funktionen til at sætte fælles farve for streg og indhold
+from turtle import *
 
 pensize(5)
 color("blue1")
@@ -575,7 +594,9 @@ end_fill()</code></pre>
 	<p>Man angiver koden ved at et # og en seks-cifret kode derefter f.eks: </p>
 
 	
-	<pre><code class="python">from turtle import *
+	<pre><code class="python">#eksempel på selvvalgte farver
+from turtle import *
+
 pensize(20)
 color("#FF8C00")
 forward(200)
@@ -598,9 +619,148 @@ forward(200)</code></pre>
 	
 	</figure>
 
+<h1>Variabler</h1>
+
+<p>Variabler bruges til at gemme værdier i. I denne sammnhæng vil vi bruge det til at gøre koden mere læselig. Se nedenstående eksempel:</p>
+
+<pre><code class="python">#brug af variabler i kode 01
+from turtle import *
+
+længde = 200
+vinkel = 90
+
+for i in range(4):
+    forward(længde)
+    left(vinkel)</code></pre>
+
+<figure id="">
+
+	<img class="p15" src="images/turtle_variabler01_kvadrat.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Det er en metode vi kan bruge til to ting:</p>
+
+<ol class="_">
+	<li>Gøre koden mere læsbar</li>
+	<li>Ved at have værdien stående et sted kan den genanvendes flere andere steder.</li>
+</ol>
+
+<p>Herunder har jeg lavet et program, der ud fra længde og n kanter tegner en polygon</p>
 
 
 
+<pre><code class="python">#brug af variabler i kode 02 	
+#tegn en n-kant (polygon)
+from turtle import *
+
+længde = 100
+antal_kanter = 7
+
+for i in range(antal_kanter): #koden skal køre antal_kanter gange
+    forward(længde)
+    left(360/antal_kanter) #drej med 360&deg; divideret med antal_kanter</code></pre>
+
+<blockquote class="alert">
+	
+	<p><b>Regler for for variabler</b></p>
+	
+	<ul class="disc">
+		<li>Variabelnavne skal starte med bogstaver eller _ (underscore):</li>
+		
+			<p>Eksempler: længde, bredde, _første</p>
+		
+		<li>Variabel navne må ikke være funktioner i Python eller din kode: </li>
+		
+			<p>Eksempler: import, from, for, in, range ...</p>
+			
+		<li>Variabelnavne er case-sensitive (store/små bogstaver)</li>
+		
+			<p>Antal og antal er to forskellige variabler</p>
+		
+	</ul>
+	
+	<p><b>Gode råd</b></p>
+	
+	<ul class="disc">
+		<li>Brug beskrivende variabelnavne og adskild med _ (underscore) hvis der er flere ord</li>
+		
+			<p>Eksempler: antal_forsøg, start_værdi</p>
+		
+		<li>Brug kun små bogstaver til variabelnavne</li>
+		
+		<li>Brug aldrig æ, ø og å hvis koden skal anvendes internationalt.</li>
+		
+	</ul>
+	
+</blockquote>
+
+<h1>Funktioner</h1>
+
+<p>HVis man ved man skal tegne den samme figur flere gange kan man lave figuren som funktion. Forestil dig at vi skal tegne mange firkanter, men de er lidt forskellig størrelse.</p>
+
+<pre><code class="python"># Eksempel på funktion
+from turtle import *
+
+def firkant(længde,bredde): #laver funktionen firkant
+    
+    for i in range(2):
+        forward(længde)
+        left(90)
+        forward(bredde)
+        left(90)
+
+pensize(5)        
+firkant(300,150) # den anden firkant 300 * 150
+pencolor("red1")
+firkant(200,100) # den anden firkant 200 * 100
+pencolor("orange1")
+firkant(100,50) # den første firkant 100 * 50</code></pre>
+
+<figure id="">
+
+	<img class="p30" src="images/turtle_funktioner_01.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>På mange måder minder dette om det vi gjorde ovenfor i variabler. Vi kan omskrive programmet der tegner polygoner på følgende måde:</p>
+
+<pre><code class="python">#Omskrivning af polygonkode fra variabel afsnittet
+from turtle import *
+
+def polygon(længde, antal_kanter):
+
+    for i in range(antal_kanter): #koden skal køre antal_kanter gange
+        forward(længde)
+        left(360/antal_kanter) #drej med 360° divideret med antal_kanter
+
+pensize(5)
+pencolor("red1")
+polygon(100,7) #første polygon
+forward(200)
+pencolor("green1")
+polygon(70,5) #anden polygon
+forward(170)
+pencolor("blue1")
+polygon(60,9) #tredie polygon</code></pre>
+
+<figure id="">
+
+	<img class="p40" src="images/turtle_funktioner_02.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+
+<h1>Valg (if/else)</h1>
+
+
+<h1>Indtil (while)</h1>
 
 
 <h1>Opgaver</h1>
