@@ -256,196 +256,6 @@ circle(100,360,6)</code></pre></td>
 	</tbody>
 </table>
 
-
-<h1>Gentagelser (løkker)</h1>
-
-<p>I starten lavede vi et kvadrat. Det kan gøre smartere, end vi gjorde det.</p>
-
-<p>Lad os kigge på koden en gang til:</p>
-
-<pre>
-	<code class="python">#kode før gentagelse (for i in ...)
-from turtle import *
-
-<span class="green">forward(100)   
-left(90)</span>
-forward(100)
-left(90)
-forward(100)
-left(90)
-forward(100)
-left(90)</code>
-</pre>
-
-<p>Læg mærke til at at vi gentager de to linier med <span class="inl_cmd">forward</span> og <span class="inl_cmd">left</span> 4 gange efter hinanden.</p>
-
-<p>Det kan vi skrive på følgende måde:</p>
-
-<pre><code class="python">#kode med gentagelse
-from turtle import *
-
-for i in range(4):
-    forward(100)
-    left(90)</code></pre>
-
-<p>Kodestumpen <span class="inl_cmd">for i in range(4)</span> gør, at alt der står under den bliver gentaget 4 gange.</p>
-
-<blockquote class="alert">
-	<p>Læg mærke til at <span class="inl_cmd">for i in range(4) bliver afsluttet af et kolon, og at de kommandoer der skal gentages er rykket ind under linien.</span></p>
-	<p>Her er det gjort med <kbd>Tab</kbd>, men det kan også fin gøres med mellemrum</p>
-</blockquote>
-
-<p>Det kan vi udnytte til at lave drejninger med. Se nedenstående kode:</p>
-
-<pre><code class="python">#kode hvor figur drejes
-from turtle import *
-
-for i in range(8):
-
-    for i in range(4):
-        forward(100)
-        left(90)
-
-    right(45) #<b>da 360/8=45</b></code></pre>
-
-<figure id="">
-
-	<img class="p20" src="images/turtle_gentagelse_drejning_8_firkanter.png" alt="_" title="_" />
-
-	<figcaption></figcaption>
-
-</figure>
-
-<p>Det koden siger er:</p>
-
-<p>Gentag følgende 8 gange.</p>
-
-	<ul class="disc">
-		<li>Tegn en firkant</li>
-		<li>drej cursoren 45&deg;</li>
-	</ul>
-
-<p>Vi kan endda få Python til at regne for os. Lad os lave en kode der drejer firkanten 17 gange før den når "tilbage".</p>
-
-<pre><code class="python">#drejning af firkant 17 gange
-from turtle import *
-
-for i in range(17):
-
-    for i in range(4):
-        forward(100)
-        left(90)
-
-    right(360/17) </code></pre>
-    
-    <figure id="">
-	
-		<img class="p20" src="images/turtle_gentagelse_drejning_17_firkanter.png" alt="" title="" />
-	
-		<figcaption></figcaption>
-	
-	</figure>
-    
-<p>Som du kan se i den sidste linie, så får vi Python til selv at beregne hvor mange grader den skal dreje firkanten for at komme "hele vejen rundt" ved at skrive <span class="inl_cmd">right(360/17)</span>.</p>
-
-<h1>goto()</h1>
-
-<p>En sidste funktion vi skal have dækket er <span class="inl_cmd">goto()</span>. Med denne kommando kan vi lade "turtlen" springe til et koordinatsæt, uden at bekymre os om hverken afstand eller vinkel.</p>
-
-<p>Se eksempelt herinder hvor jeg tegner et hus</p>
-
-<pre><code class="python"># kode med goto funktion
-from turtle import *
-forward(200)
-left(90)
-forward(100)
-goto(100,150) #Her starter taget
-goto(0,100) #Her slutter taget
-left(180)
-forward(100)</code></pre>
-
-<figure id="">
-
-	<img class="p25" src="images/turtle_goto01_eksempel.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-
-<figure id="">
-
-	<img class="p70" src="images/Turtle_grid_A4.svg" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-
-<h1>Penkontrol</h1>
-
-<table class="_">
-	<thead>
-		<tr>
-			<th>Kommando</th>
-			<th>Resultat</th>
-			<th>Alternativ</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>pensize()</td>
-			<td>Stregens tykkelse</td>
-			<td>width()</td>
-		</tr>
-		<tr>
-			<td>penup()</td>
-			<td>Løfter pennen (ingen streg)</td>
-			<td>pu() | up()</td>
-		</tr>
-		<tr>
-			<td>pendown()</td>
-			<td>Sætter penne ned (laver streg)</td>
-			<td>pd() | down()</td>
-		</tr>
-		<tr>
-			<td>speed()</td>
-			<td>Cursorens hastighed. 3 er normal hastighed, 11+ er meget hurtigt</td>
-			<td></td>
-		</tr>
-		<tr>
-			<td>undo()</td>
-			<td>Fjern sidste kommando</td>
-			<td></td>
-		</tr>
-		
-	</tbody>
-</table>
-
-<p>Her er et eksempel:</p>
-
-<pre><code class="python">#kode med eksempler på penkontrol
-from turtle import *
-
-forward(100)
-pensize(10) #sæt størrelse til 10
-forward(100)
-pensize(2) #sæt størrelse til 2
-forward(100)
-penup() #løft pennen
-forward(100)
-pendown() #sæt pennen ned igen
-forward(100)</code></pre>
-
-<p>Resultat</p>
-
-<figure id="">
-
-	<img class="p50" src="images/turtle_pen_control01.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-
-
 <h1>Farver</h1>
 
 <p>Herunder vil det blive vist hvordan man farvelægger sine værker. Mange farver kan man få ved at angive deres navn mellem to situationstegn</p>
@@ -618,6 +428,243 @@ forward(200)</code></pre>
 		<figcaption></figcaption>
 	
 	</figure>
+
+<h1>Penkontrol</h1>
+
+<table class="_">
+	<thead>
+		<tr>
+			<th>Kommando</th>
+			<th>Resultat</th>
+			<th>Alternativ</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>pensize()</td>
+			<td>Stregens tykkelse</td>
+			<td>width()</td>
+		</tr>
+		<tr>
+			<td>penup()</td>
+			<td>Løfter pennen (ingen streg)</td>
+			<td>pu() | up()</td>
+		</tr>
+		<tr>
+			<td>pendown()</td>
+			<td>Sætter penne ned (laver streg)</td>
+			<td>pd() | down()</td>
+		</tr>
+		<tr>
+			<td>speed()</td>
+			<td>Cursorens hastighed. 3 er normal hastighed, 11+ er meget hurtigt</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>undo()</td>
+			<td>Fjern sidste kommando</td>
+			<td></td>
+		</tr>
+		
+	</tbody>
+</table>
+
+<p>Her er et eksempel:</p>
+
+<pre><code class="python">#kode med eksempler på penkontrol
+from turtle import *
+
+forward(100)
+pensize(10) #sæt størrelse til 10
+forward(100)
+pensize(2) #sæt størrelse til 2
+forward(100)
+penup() #løft pennen
+forward(100)
+pendown() #sæt pennen ned igen
+forward(100)</code></pre>
+
+<p>Resultat</p>
+
+<figure id="">
+
+	<img class="p50" src="images/turtle_pen_control01.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h1>Flytte pennen</h1>
+
+<p>En sidste funktion vi skal have dækket er <span class="inl_cmd">goto()</span>. Med denne kommando kan vi lade "turtlen" springe til et koordinatsæt, uden at bekymre os om hverken afstand eller vinkel.</p>
+
+<p>Se eksempelt herinder hvor jeg tegner et hus</p>
+
+<pre><code class="python"># kode med goto funktion
+from turtle import *
+forward(200)
+left(90)
+forward(100)
+goto(100,150) #Her starter taget
+goto(0,100) #Her slutter taget
+left(180)
+forward(100)</code></pre>
+
+<figure id="">
+
+	<img class="p25" src="images/turtle_goto01_eksempel.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<figure id="">
+
+	<img class="p70" src="images/Turtle_grid_A4.svg" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+
+
+
+
+
+<h1>Gentagelser (løkker)</h1>
+
+<p>I starten lavede vi et kvadrat. Det kan gøre smartere, end vi gjorde det.</p>
+
+<p>Lad os kigge på koden en gang til:</p>
+
+<pre>
+	<code class="python">#kode før gentagelse (for i in ...)
+from turtle import *
+
+<span class="green">forward(100)   
+left(90)</span>
+forward(100)
+left(90)
+forward(100)
+left(90)
+forward(100)
+left(90)</code>
+</pre>
+
+<p>Læg mærke til at at vi gentager de to linier med <span class="inl_cmd">forward</span> og <span class="inl_cmd">left</span> 4 gange efter hinanden.</p>
+
+<p>Det kan vi skrive på følgende måde:</p>
+
+<pre><code class="python">#kode med gentagelse
+from turtle import *
+
+for i in range(4):
+    forward(100)
+    left(90)</code></pre>
+    
+<p>Resultat</p>
+    
+<figure id="">
+
+	<img class="p20" src="images/turtle_firkant.png" alt="_" title="_" />
+
+	<figcaption>_</figcaption>
+
+</figure>
+
+<p>Kodestumpen <span class="inl_cmd">for i in range(4)</span> gør, at alt der står under den bliver gentaget 4 gange.</p>
+
+<blockquote class="alert">
+	<p>Læg mærke til at <span class="inl_cmd">for i in range(4) bliver afsluttet af et kolon, og at de kommandoer der skal gentages er rykket ind under linien.</span></p>
+	<p>Her er det gjort med <kbd>Tab</kbd>, men det kan også fin gøres med mellemrum</p>
+</blockquote>
+
+<p>Forestil dig vi gerne vil tegne to firkanter oven i hinanden, men hvor den ene er drejet 45&deg;.</p>
+
+<p>Det kan vi gøre på følgende måde:</p>
+
+<ul class="disc">
+	<li>Tegn firkant</li>
+	<li>Drej 45&deg; og gør stregen rød</li>
+	<li>Tegn firkant</li>
+</ul>
+
+<p>Koden vil komme til at se sådan ud:</p>
+
+<pre><code class="python">#kode hvor figur drejes
+from turtle import *
+
+for i in range(2): #Fordi den skal tegnes to gange
+
+    for i in range(4): #tegn firkant
+        forward(100)
+        left(90)
+
+    right(45) #drej firkanten 45 grader
+    pencolor("red1") #lav stregen rød</code></pre>
+
+<p>Resultat</p>
+
+<figure id="">
+
+	<img class="p10" src="images/turtle_gentagelse_drejning_2_firkanter.png" alt="_" title="_" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Herunder er det den samme kode, men her er drejningen gentaget 8 gange:</p>
+
+<pre><code class="python">#kode hvor figur drejes
+from turtle import *
+
+for i in range(8):
+
+    for i in range(4):
+        forward(100)
+        left(90)
+
+    right(45) #<b>da 360/8=45</b></code></pre>
+
+<figure id="">
+
+	<img class="p20" src="images/turtle_gentagelse_drejning_8_firkanter.png" alt="_" title="_" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Det koden siger er:</p>
+
+<p>Gentag følgende 8 gange.</p>
+
+	<ul class="disc">
+		<li>Tegn en firkant</li>
+		<li>drej cursoren 45&deg;</li>
+	</ul>
+
+<p>Vi kan endda få Python til at regne for os. Lad os lave en kode der drejer firkanten 17 gange før den når "tilbage".</p>
+
+<pre><code class="python">#drejning af firkant 17 gange
+from turtle import *
+
+for i in range(17):
+
+    for i in range(4):
+        forward(100)
+        left(90)
+
+    right(360/17) </code></pre>
+    
+    <figure id="">
+	
+		<img class="p20" src="images/turtle_gentagelse_drejning_17_firkanter.png" alt="" title="" />
+	
+		<figcaption></figcaption>
+	
+	</figure>
+    
+<p>Som du kan se i den sidste linie, så får vi Python til selv at beregne hvor mange grader den skal dreje firkanten for at komme "hele vejen rundt" ved at skrive <span class="inl_cmd">right(360/17)</span>.</p>
 
 <h1>Variabler</h1>
 
