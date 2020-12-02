@@ -39,9 +39,9 @@
 	
 <div class="col-xs-9">
 	
-<div class="title">Kommandoer <br/>Arbejde med filer</div>
+<h1>Kommandoer: Arbejde med filer</h1>
 
-<h1>Indhold</h1>
+<h2>Indhold</h2>
 
 <ul class="fat_li none">
 	<li>Grundlæggende</li>
@@ -98,9 +98,9 @@
 
 
 
-<h1>Grundlæggende</h1>
+<h2>Grundlæggende</h2>
 
-<h2><span class="inl_cmd">nano</span></h2>
+<h3><span class="inl_cmd">nano</span></h3>
 
 <p>På en Linuxserver bliver alle tjenester og hardware initialiseret og konfigureret igennem tekstfiler. Derfor skal du kende nano, et effektiv terminal tekstredigeringsprogram. Programmet har også farvekodning, hvis det genkender formatet. nano startes med kommandoen: </p>
 
@@ -183,7 +183,7 @@
 
 <p>Får du en fejlmelding om at du ikke kan gemme skyldes det oftest, at man redigerer i en fil man ikke har rettigheder til. Oftes skyldes det at man glemmer at anvende <span class="inl_cmd">sudo</span> når man redigerer i systemfiler.</p>
 
-<h2><span class="inl_cmd">touch</span> </h2>
+<h3><span class="inl_cmd">touch</span> </h3>
 
 <p><span class="inl_cmd">touch</span> er en kommando der anvendes til at forny en fils tidstempel. På den måde kan se hvornår en fil sidst er kørt eller opdateret. Ofte bruger man også kommandoen til at oprette filer med, som vi gør herunder.</p>
 
@@ -215,7 +215,7 @@
 -rw-rw-r--  1 tj   tj      0 mar 15 20:14 <span class="red">testfil</span>4
 </pre>
 
-<h2><span class="inl_cmd">mkdir</span></h2>
+<h3><span class="inl_cmd">mkdir</span></h3>
 
 <p>Til at oprette mapper bruges kommandoen mkdir (make directory). <span class="inl_cmd">~</span> henviser til brugerens hjemmemappe.</p>
 
@@ -268,7 +268,7 @@ tj tj  tree -L 3 ~/testmappe5
 </pre>
 
 
-<h2><span class="inl_cmd">cp</span></h2>
+<h3><span class="inl_cmd">cp</span></h3>
 
 <p>For at holde fast i overvejelserne ovenfor er kopiering af filer den første kommando vi skal lære.</p>
 
@@ -309,7 +309,7 @@ tj tj  tree -L 3 ~/testmappe5
 
 <code class="cmd">cp ~/testfil.backup ~/testfil </code>
 
-<h2><span class="inl_cmd">rm</span></h2>
+<h3><span class="inl_cmd">rm</span></h3>
 
 <p>Til at slette filer og mapper anvendes kommandoen <span class="inl_cmd">rm</span> (remove). Det er god vane, at anvende den fulde sti til det man sletter, for at undgå at slette noget forkert.</p>
 
@@ -331,7 +331,7 @@ rm: det er farligt at operere rekursivt på '/'
 rm: brug --no-preserve-root for at tilsidesætte denne sikring
 </pre>
 
-<h2><span class="inl_cmd">find</span></h2>
+<h3><span class="inl_cmd">find</span></h3>
 
 <p>For at søge efter filer og mapper anvendes kommandoerne <span class="inl_cmd">find</span> og <span class="inl_cmd">locate</span>. Hvis du ønsker at lave en søgning i hele filstrukturen bør du søge ved hjælp af sudo eller som root. Læg også mærke til at søgningen skelner mellem små og store bogstaver. En søgning på mappen apt giver flere resultater - APT giver ingen.</p>
 
@@ -373,7 +373,7 @@ rm: brug --no-preserve-root for at tilsidesætte denne sikring
 <p><span class="bold">VIGTIGT:</span> Som med alle andre slette kommandoer skal du være varsom, da du risikerer at slette mere end du ønsker. F.eks. vil et <span class="inl_cmd">/</span> i stedet for et <span class="inl_cmd">.</span> betyde at du sletter alle JPG billeder på harddisken, i stedet for dem der ligger i dine undermapper. Derfør bør du altid have styr på hvor i filstrukturen du er. Er du i tvivl så anvend <span class="inl_cmd">pwd</span>, så får du den fulde sti som output.</p>
 
 
-<h2><span class="inl_cmd">wget</span></h2>
+<h3><span class="inl_cmd">wget</span></h3>
 
 <p>For at hente filer på nettet anvendes programmet <span class="inl_cmd">wget</span>. For at hente filer på nettet skal du kende deres adresse. Herunder hentes Linux distributionen TinyCorePlus til computeren.</p>
 
@@ -414,10 +414,10 @@ rm: brug --no-preserve-root for at tilsidesætte denne sikring
 	<a href="http://manpages.ubuntu.com/manpages/trusty/man1/wget.1.html" target="_blank">
 	http://manpages.ubuntu.com/manpages/trusty/man1/wget.1.html</a></p>
 
-<h1>Indhold af filer</h1>
+<h2>Indhold af filer</h2>
 
 
-<h2><span class="inl_cmd">cat</span></h2>
+<h3><span class="inl_cmd">cat</span></h3>
 
 <p><span class="inl_cmd">cat</span> laver et output af filen, men stopper ikke når skærmen er fyldt. Derfor er programmet ikke altid velegnet til at vise indholdet af filer. F.eks:</p>
 
@@ -441,7 +441,7 @@ ff02::2 ip6-allrouters
 	<a href="http://manpages.ubuntu.com/manpages/trusty/man1/cat.1.html" target="_blank">
 	http://manpages.ubuntu.com/manpages/trusty/man1/cat.1.html</a></p>
 
-<h2><span class="inl_cmd">more</span></h2>
+<h3><span class="inl_cmd">more</span></h3>
 
 <p>Ved hjælp af more kan man få indholdet af en fil skrevet ud på skærmen. Når skærmen er fyldt kan man se hvor stor en procentdel af filen man har fået vist. Man går en linie frem ad gangen ved at trykke på <kbd>Enter</kbd> og en side længere ned med <kbd>Mellemrum</kbd>.</p>
 
@@ -464,7 +464,7 @@ ff02::2 ip6-allrouters
 	<a href="http://manpages.ubuntu.com/manpages/trusty/man1/more.1.html" target="_blank">
 	http://manpages.ubuntu.com/manpages/trusty/man1/more.1.html</a></p>
 
-<h2><span class="inl_cmd">tail / head</span></h2>
+<h3><span class="inl_cmd">tail / head</span></h3>
 
 <p>Kommandoen er god til at se om noget er blevet korrekt tilføjet til en fil.</p>
 
@@ -500,7 +500,7 @@ ff02::2 ip6-allrouters
 	http://manpages.ubuntu.com/manpages/trusty/man1/head.1.html</a></p>
 	
 
-<h2><span class="inl_cmd">grep</span></h2>
+<h3><span class="inl_cmd">grep</span></h3>
 
 <p><span class="inl_cmd">grep</span> -  anvendes til at finde tekststrenge i en fil.</p>
 
@@ -515,9 +515,9 @@ ff02::2 ip6-allrouters
 	<a href="http://manpages.ubuntu.com/manpages/trusty/man1/grep.1.html" target="_blank">
 	http://manpages.ubuntu.com/manpages/trusty/man1/grep.1.html</a></p>
 	
-<h1>Redirect</h1>
+<h2>Redirect</h2>
 
-<h2>Pipes</h2>
+<h3>Pipes</h3>
 
 <p>Pipes er en måde at overføre output fra en kommando til en anden. Hvis man f.eks. vil finde ud af hvor mange gange bogstavkombinationen "lib" forekommer i filnavne på roden, vil kommandoen <span class="inl_cmd">ls - /</span> blot liste alt indholdet op.</p>
 
@@ -592,7 +592,7 @@ drwxr-xr-x   2 root root  4096 apr 22 14:14 <span class="red">lib</span>64
 
 
 
-<h2>redirect</h2>
+<h3>redirect</h3>
 
 <p>Nogen gange har man brug for at omdirigere indhold. Det kan f.eks. være at indsætte et output i en fil. Til at omdirigere anvender man <span class="inl_cmd">&gt;</span> og <span class="inl_cmd">&gt;&gt;</span>. En pil erstatter alt indhold og 2 pile tilføjer til slutningen af filen. </p>
 
@@ -724,10 +724,10 @@ uid=1000(tj) gid=1000(tj) grupper=1000(tj),4(adm),24(cdrom),27(sudo),30(dip),46(
 <p>Læs mere: <a href="http://askubuntu.com/questions/350208/what-does-2-dev-null-mean" target="_blank">
 http://askubuntu.com/questions/350208/what-does-2-dev-null-mean</a></p>
 
-<h1>Erstat indhold</h1>
+<h2>Erstat indhold</h2>
 
 
-<h2><span class="inl_cmd">echo</span></h2>
+<h3><span class="inl_cmd">echo</span></h3>
 
 <p><span class="inl_cmd">echo</span> er en simpel kommando som blot gentager sit input f.eks:</p>
 
@@ -740,7 +740,7 @@ En længere tekstreng
 <p>Umiddelbart virker det lidt tosset at man har sådan en kommando, men senere skal vi se hvordan den kan bruges til at indsætte tekststrenge i andre kommandoer.</p>
 
 
-<h2><span class="inl_cmd">tee</span></h2>
+<h3><span class="inl_cmd">tee</span></h3>
 
 <p>Kommandoen virker lidt som <span class="inl_cmd">>></span>, men arbejder med output af en forudgående kommandoe f.eks:</p>
 
@@ -800,7 +800,7 @@ hejsa root
 
 <p>Læg mærke til at der først skal <span class="inl_cmd">sudo</span> på efter pipen. Det skyldes at det først er under skrivningen af filen vi skal anvende root's rettigheder.</p>
 
-<h2><span class="inl_cmd">sed</span></h2>
+<h3><span class="inl_cmd">sed</span></h3>
 
 <p><span class="inl_cmd">sed</span> anvendes til at filtrere og transformere tekst i filer. Her vil vi kun se hvordan vi kan erstatte tekst ved hjælp af <span class="inl_cmd">sed</span>. Generelt fungerer kommandoen på følgende måde hvis man vil erstatte <span class="inl_cmd">a</span> med <span class="inl_cmd">b</span>:</p>
 
@@ -838,17 +838,17 @@ Mit navn er Thomas
 <p><span class="inl_cmd">sed</span> er velegnet til at bruge i scripts.</p>
 
 
-<h1>Lukke computer</h1>
+<h2>Lukke computer</h2>
 
 	
-<h2><span class="inl_cmd">reboot</span></h2>	
+<h3><span class="inl_cmd">reboot</span></h3>	
 	
 <p>Denne kommando genstarter computeren. Den skal køres med root-rettigheder.</p>	
 
 <code class="cmd">sudo reboot</code>
 	
 
-<h2><span class="inl_cmd">shutdown</span></h2>
+<h3><span class="inl_cmd">shutdown</span></h3>
 
 <p>En server lukkes ned med kommandoen:</p>
 
@@ -887,9 +887,9 @@ http://manpages.ubuntu.com/manpages/trusty/en/man8/shutdown.8.html</a></p>
 <a href="http://manpages.ubuntu.com/manpages/trusty/man8/reboot.8.html" target="_blank">
 http://manpages.ubuntu.com/manpages/trusty/man8/reboot.8.html</a></p>
 
-<h1>Pakke programmer</h1>
+<h2>Pakke programmer</h2>
 
-<h2><span class="inl_cmd">tar</span></h2>
+<h3><span class="inl_cmd">tar</span></h3>
 
 <p>Når man skal downloade Linuxprogrammer vil man ofte downloade dem som <span class="inl_cmd">tar</span>-filer. <span class="inl_cmd">tar</span> står for <span class="inl_cmd">T</span>ape <span class="inl_cmd">Archive</span> og er i sin oprindelige form blot en måde at lægger sekventielt efter hinanden, så de kan læses fra et bånd. Selvom man ikke anvender bånd til at lagre filer mere, er komprimerede <span class="inl_cmd">tar</span>-pakker standard for at pakke programmer på Linux. <span class="inl_cmd">tar</span>-filer bliver også kaldt <span class="inl_cmd">tarballs</span>.</p>
 
@@ -905,7 +905,7 @@ http://manpages.ubuntu.com/manpages/trusty/man8/reboot.8.html</a></p>
 
 <p>Man kan kende komprimeringsalgoritmen på endelse efter tar f.eks. <span class="inl_cmd">tar.gz</span>. Herunder er de mest anvendte algoritmer gennemgået efter graden de komprimerer, samt eksempler hvor mappen <span class="inl_cmd">gif</span> bliver pakket og udpakket igen.</p>
 
-<h3>Se indhold</h3>
+<h4>Se indhold</h4>
 
 <p>For at se indholdet af tar filer anvendes optionerne <span class="inl_cmd">-tvf</span></p>
 
@@ -932,7 +932,7 @@ drwxr-xr-x tj/tj         0 2016-07-10 12:26 gif/the bird/
 
 </pre>
 
-<h3>Udpak enkeltfiler</h3>
+<h4>Udpak enkeltfiler</h4>
 
 <p>For pakke en enkelt fil ud sætter man blot filnavnet til sidst. Læg mærke til at man skal bruge den fulde sti.</p>
 
@@ -1008,7 +1008,7 @@ gif/the bird/thebird04.gif
 
 <p>Læs mere: <a href="http://www.tecmint.com/18-tar-command-examples-in-linux/" target="_blank">http://www.tecmint.com/18-tar-command-examples-in-linux/</a></p>
 
-<h2>gzip</h2>
+<h3>gzip</h3>
 
 <p><span class="inl_cmd">gzip</span> er en simpel og effektiv komprimeringsalgoritme. Den har den bedste hastigheds/filstørelses ratio. Kan genkendes på at <span class="inl_cmd">gz</span> eller <span class="inl_cmd">gzip</span> indgår i den pakkede fils navn.</p>
 
@@ -1050,7 +1050,7 @@ gif/mordor.gif
 gif/lachifre.gif
 </pre>
 
-<h2>bzip2</h2>
+<h3>bzip2</h3>
 
 <p><span class="inl_cmd">bzip2</span> er komprimerer hårdere end <span class="inl_cmd">gzip</span> - men også langsommere. Algoritmen kræver også mere CPU og RAM end gzip. Kan genkendes på at <span class="inl_cmd">bz2</span> eller <span class="inl_cmd">bzip2</span> indgår i den pakkede fils navn.</p>
 
@@ -1092,7 +1092,7 @@ gif/mordor.gif
 gif/lachifre.gif
 </pre>
 
-<h2>lzma</h2>
+<h3>lzma</h3>
 
 <p><span class="inl_cmd">lzma</span> komprimerer hårdest af disse 3, men er også meget langsommere. Til gengæld dekomprimerer det rigtigt hurtigt. Fordelen ved at anvende <span class="inl_cmd">lzma</span> er, at man har en meget hård komprimering, og en rimelig hurtig udpakningstid. Formatet er især velegnet til backup af store mængder data. Kan genkendes på at <span class="inl_cmd">lz</span> eller <span class="inl_cmd">lzma</span> indgår i filnavnet.</p>
 

@@ -39,9 +39,7 @@
 	
 <div class="col-xs-9">
 	
-<div class="title">Virtualisering med VirtualBox</div>
-
-<h1>Hvad er virtualisering</h1>
+<h1>Virtualisering med VirtualBox</h1>
 
 <p>Virtualisering er grundlæggende at lave en computer i computeren, hvor den virtuelle maskine får tildelt nogle af den fysiske computers ressourcer, som f.eks. RAM, netkort, Harddisk, tastetur og skærm. Nyere computere har masser af RAM og harddiskplads, og flere kerner i CPU'en, og især på serverområdet kan dette udnyttes. På en fysisk maskine kan der således kører flere virtuelle servere, og hvor man relativt simpelt kan tilføje eller fjerne ressourcer.</p>
 
@@ -62,7 +60,7 @@
 
 <p>Konkret vil du blive ført igennem at oprette en virtuel maskine, installere Ubuntu 14.04 på den.</p>
 
-<h1>Installation af VirtualBox</h1>
+<h2>Installation af VirtualBox</h2>
 
 <p>Virtualbox hentes på hjemmesiden: <a href="https://www.virtualbox.org/wiki/" target="_blank">https://www.virtualbox.org/wiki/</a>. Her er der installationsvejledninger til både Linux, OS X og Windows</p>
 
@@ -70,7 +68,7 @@
 
 <p>Når man arbejder med virtualisering skal man være opmærksom på at man kan komme ud for fejl der ikke findes i et fysisk netværk. F.eks. kan andre programmer man har installeret på computeren ændre i værtsmaskinens netværkskonfiguration. Dette gælder specielt for windows computere.. Det kan betyde at Virtualbox' netværket kan ophøre med at fungere. Derfor kan det være nødvendigt at geninstallere Virtualbox en gang imellem, for at få de nødvendige netværksindstillinger gendannet. Dette skyldes ikke Virtualbox, men at windows tillader nogle programmer at ændre i dens netværkskonfiguration.</p>
 
-<h2>Installation på Ubuntu</h2>
+<h3>Installation på Ubuntu</h3>
 
 <p>Virtualbox installeres efter metoden angivet på hjemmesiden: <a href="https://www.virtualbox.org/wiki/Linux_Downloads" target="_blank">https://www.virtualbox.org/wiki/Linux_Downloads</a></p>
 
@@ -99,7 +97,7 @@
 	<code class="cmd">sudo adduser *din_bruger* vboxusers</code>
 	
 
-<h2>Første opstart</h2>
+<h3>Første opstart</h3>
 
 <p>Ved første opstart er vinduet tomt og have følgende udseende.</p>
 
@@ -111,7 +109,7 @@
 
 </figure>
 
-<h2>Installation af extension-pack</h2>
+<h3>Installation af extension-pack</h3>
 
 <p>For at kunne anvende USB2/3 og avanceret 3D understøttelse skal du installere VirtualBox' "extension pack". Den skal hentes på selve hjemmesiden: <a href="https://www.virtualbox.org/wiki/Downloads" target="_blank">https://www.virtualbox.org/wiki/Downloads</a>.</p>
 
@@ -136,7 +134,7 @@
 
 </figure>
 
-<h1>Overblik over VirtualBox</h1>
+<h2>Overblik over VirtualBox</h2>
 
 <p>Virtualiseringssoftware er specialiseret og komplekst. Der er mange begreber, metoder og arbejdsgange der skal læres og arbejdes med. Det som softwaren gør, er at den emulerer (efterligner) en fysisk PC hvor man har stor frihed til at konfigurere den virtuelle hardware, og at ændre på den løbende.</p>
 
@@ -158,12 +156,12 @@
 </ol>
 
 
-<h1>Oprettelse af Virtuel maskine</h1>
+<h2>Oprettelse af Virtuel maskine</h2>
 
 <p>Herunder vil vi oprette en virtuel maskine til Ubuntu 14.04.4 x64, som du kan hente her: <a href="http://releases.ubuntu.com/14.04/ubuntu-14.04.4-desktop-amd64.iso" target="_blank">http://releases.ubuntu.com/14.04/ubuntu-14.04.4-desktop-amd64.iso</a>. Med en god Internetforbindelse skulle den gerne være hentet når du skal anvende den.</p>
 
 
-<h2>Guidet mode</h2>
+<h3>Guidet mode</h3>
 
 <p>For at oprette en ny virtuel maskine skal den først konfigureres. Det gøres igennem en guide, som startes ved at klikke på "Ny" i øverste venstre hjørne. Når du vælger "Ny" kommer der et vindue frem, hvor du skal vælge "Expert mode". På den måde skal man kun igennem 2 vinduer for at have konfigureret sin virtuelle maskine.</p>
 
@@ -239,7 +237,7 @@
 
 <p>Efter du har trykket "Opret" har vi en funktionel virtuel maskine, som nu kan konfigueres specifikt til vores behov.</p>
 
-<h1>Konfiguration af NAT-netværk (valgfri)</h1>
+<h2>Konfiguration af NAT-netværk (valgfri)</h2>
 
 <blockquote class="alert">
 
@@ -339,11 +337,11 @@
 
 
 
-<h1>Konfiguration af den virtuelle maskine</h1>
+<h2>Konfiguration af den virtuelle maskine</h2>
 
 <p></p>
 
-<h2>Generelt</h2>
+<h3>Generelt</h3>
 
 <p>Under generelt er der 4 faner.</p>
 
@@ -403,7 +401,7 @@
 
 </figure>
 
-<h2>System</h2>
+<h3>System</h3>
 
 <p>System har tre faner:</p>
 
@@ -452,7 +450,7 @@
 
 </figure>
 
-<h2>Skærm</h2>
+<h3>Skærm</h3>
 
 <p>Skærm har tre faner</p>
 
@@ -494,7 +492,7 @@
 
 </figure>
 
-<h2>Lagerenheder</h2>
+<h3>Lagerenheder</h3>
 
 <p></p>
 
@@ -522,7 +520,7 @@
 
 </figure>
 
-<h2>Lydkort</h2>
+<h3>Lydkort</h3>
 
 <p></p>
 
@@ -534,7 +532,7 @@
 
 </figure>
 
-<h2>Netværk</h2>
+<h3>Netværk</h3>
 
 <p>Her skal du vælge netværkskonfiguration. I tabellen herunder er der en matricie over hvordan de 4 mest almindelige netværk anvendes:</p>
 
@@ -600,7 +598,7 @@
 
 <p>Vil du lave et mere kompliceret setup, hvor du vil eksperimetere med klienter og servere bør du vælge <span class="inl_cmd">NAT-netværk</span>.</p>
 
-<h2>Serielle porte og USB</h2>
+<h3>Serielle porte og USB</h3>
 
 <p>Hvis du har installeret Virtualbox extension pack kan du her tilføje f.eks. dit webcam eller en USB-disk til den virtuelle maskine.</p>
 
@@ -612,7 +610,7 @@
 
 </figure>
 
-<h2>Delte mapper</h2>
+<h3>Delte mapper</h3>
 
 <p>Hvis du ønsker at den virtuelle maskine skal kunne dele mapper med værten. Det kan f.eks. være relevant, hvis man installerer et ekstra styresystem på maskinen og vil have adgang til f.eks. ens dokumenter og billeder.</p>
 
@@ -624,7 +622,7 @@
 
 </figure>
 
-<h2>User Interface</h2>
+<h3>User Interface</h3>
 
 <p></p>
 
@@ -636,7 +634,7 @@
 
 </figure>
 
-<h1>Øjebliksbilleder</h1>
+<h2>Øjebliksbilleder</h2>
 
 <p>En af de helt store fordele ved at anvende virtualisering er, at man kan kan klone og tage øjebliksbilleder af sin virtuelle maskine. Ved at tage et øjebliksbillede kan man gå tilbage til dette punkt igen. F.eks. har jeg en fast praksis med at tage et øjebliksbillede af nye installationer efter jeg har opdateret dem. På den måde har jeg altid en frisk maskine at kunne starte forfra med, hvis der er noget jeg ønsker at arbejde med.</p>
 
@@ -644,7 +642,7 @@
 
 <p>Herunder vil det blive vist hvordan man opretter og anvender øjebliksbilleder. Her anvendes kameraikonerne øverst til højre i </p>
 
-<h2>Oprettelse af øjebliksbillede</h2>
+<h3>Oprettelse af øjebliksbillede</h3>
 
 <p>Herunder ser du en virtuel maskine hvor der allerede er lavet et øjebliksbillede da den var nyinstalleret. Vælg "Aktuelle tilstand" og klik på det blå kamera øverst i data vinduet.</p>
 
@@ -679,7 +677,7 @@
 <p>Læg mærke til at den "aktuelle tilstand" bygger på "Installation 1".</p>
 
 
-<h2>Gendannelse af øjebliksbillede</h2>
+<h3>Gendannelse af øjebliksbillede</h3>
 
 <p>Når du markere et øjebliksbillede, bliver menuen oven over dem aktiv, og du får 4 ikoner til rådighed:</p>
 
@@ -738,7 +736,7 @@
 
 </figure>
 
-<h2>Sletning af øjebliksbillede</h2>
+<h3>Sletning af øjebliksbillede</h3>
 
 <p>Hvis man ved der er øjebliksbilleder, som man ikke skal anvende mere, kan de med fordel slettes, for at spare harddisk plads.</p>
 
@@ -762,7 +760,7 @@
 
 </figure>
 
-<h1>Kloning</h1>
+<h2>Kloning</h2>
 
 <p>Nogle gange kan man have behov for at arbejde på en nøjagtig kopi (klon) af sin virtuelle maskine, f.eks. hvis man gerne vil have adgang til et større antal ens maskiner. VirtualBox har anvender fåret <a href="https://da.wikipedia.org/wiki/F%C3%A5ret_Dolly" target="_blank">Dolly</a> som ikon til dette.</p>
 
@@ -799,17 +797,17 @@
 <p>Alle netværkskort er født med en unik MAC-adresse. Det er disse adresser netværket anvender til at holde styr computerne. Derfor bør du altid reinitialsere netværkskortet, hvis den klonede maskine skal anvendes sammen med den oprindelige maskine. Skal den erstatte den oprindelige maskine skal netværkskortet ikke reinitialiseres.</p>
 
 
-<h1>Kørsel af VirtualBox</h1>
+<h2>Kørsel af VirtualBox</h2>
 
 <p>I dette kapitel gennemgås, den praktiske anvendelse brug af virtuelle maskiner</p>
 
-<h2>Gæstetilføjelser</h2>
+<h3>Gæstetilføjelser</h3>
 
 <p>Når den virtuelle klient er installeret skal man installere gæstetilføjelserne. De gør, at operativ systemet kører bedst muligt.</p>
 
 <p>Gæstetilføjelsen bliver installeret ved at vælge menuen: <span class="inl_cmd">Enheder</span> -> <span class="inl_cmd">Indsæt Gæstetilføjelser CD-aftryk...</span> og følg instruktionerne på skærmen.</p>
 
-<h2>Genvejstaster</h2>
+<h3>Genvejstaster</h3>
 
 <table id="">
 	<thead>
@@ -891,9 +889,9 @@
 	</tbody>
 </table>
 
-<h1>Virtuelle netværk</h1>
+<h2>Virtuelle netværk</h2>
 
-<h2>Netværks begreber</h2>
+<h3>Netværks begreber</h3>
 
 <p>Herunder bliver nogle af grunbegreberne om netværk gennemgået:</p>
 
@@ -1003,7 +1001,7 @@
 
 </figure>
 
-<h2>NAT og NAT netværk</h2>
+<h3>NAT og NAT netværk</h3>
 
 <p>NAT (<span class="inl_cmd">N</span>etwork <span class="bold">A</span>dress <span class="bold">T</span>ranslation) er en netværkstjeneste der fungere som "bro" og omstilling mellem to netværk f.eks. LAN og WAN. Den letteste måde at beskrive det på er den Internet opkobling vi bruger privat. Når vi installerer en router fra vores udbyder har vi et "hul" ud til internettet, som har en specifik IP-adresse. For at routeren kan holde styr på det har det en tabel kørende som registrere hvilke computere der sender og modtager noget. Så når en computer på LAN siden beder om at se siden <a href="https://www.virtualbox.org/" target="_blank">https://www.virtualbox.org/</a>, så "overtager" routeren forspørgslen. For Virtualbox.org ser det ud somom det er din router der beder om adressen, men når routeren modtager svar fra Virtualbox.org, så laver videresender routeren svaret til din lokale maskine. Man siger at netværket er NAT'et.</p>
 
@@ -1028,7 +1026,7 @@
 
 <p>Desværre er der en fejl i VirtualBox, så man ikke kan anvende DHCP i NAT-netværket. Det skyldes at computerne på netværket ikke får en DNS-adresse. Det betyder at computerne godt nok er på netværket, men at de ikke kan få kontakt med Internettet. Af den årsag er det bedst at slå DHCP helt fra og selv sætte alle indsstillingerne.</p>
 
-<h2>Netværksbro</h2>
+<h3>Netværksbro</h3>
 
 <p>Netværksbroen sætter den virtuelle maskine direkte på den virtuelle værts fysiske netværk. Den vil altså blive opfattet som en fysisk maskine på LAN af netværkets andre maskiner. Dette kan f.eks. anvendes hvis man ønsker at køre en selvstændig webserver.</p>
 
@@ -1050,7 +1048,7 @@
 
 </figure>
 
-<h2>Internt netværk</h2>
+<h3>Internt netværk</h3>
 
 <p>Det interne netværk er helt afskåret fra den fysiske maskines netværk. Dette kan anvendes til test af ting, man ikke ønsker skal være tilgængeligt andre steder.</p>
 
@@ -1062,7 +1060,7 @@
 
 </figure>	
 	
-<h2>Værtsbegrænset netværkskort</h2>
+<h3>Værtsbegrænset netværkskort</h3>
 
 <p>Det værtsbegrænsede netværkskort er en speciel funktion der gør det muligt at have installeret netværkstjenester, som kun programmer på værtcomputeren skal have adgang til. Det kan f.eks. være et program der skal have adgang til en database, men det er kun den lokale PC der må have denne adgang. Ved at lave netværkskortet virtuelt, kan man altså ikke tilgå netværket uden at sidde ved den fysiske maskine.</p>
 

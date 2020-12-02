@@ -41,15 +41,15 @@
 	
 	
 
-<div class="title">Ubuntu server - Simpel opsætning</div>
+<h1>Ubuntu server - Simpel opsætning</h1>
 	
-<h1>Denne guide</h1>
+<h2>Denne guide</h2>
 
 <p>I denne guide lærer du at sætte en basal "headless" Ubuntu-server op med en enkelt harddisk. Headless i denne sammenhæng betyder, at du kan fjerne tastetur og mus efter installationen og tilgå serveren over netværk ved hjælp af SSH</p>
 
 <p>Jeg har valgt ikke at kommentere hvert eneste skærmbillede, da langt de fleste af dem giver sig selv. Der er kommentarer hvor det er nødvendigt, eller hvor du som bruger skal foretage dig et aktivt valg.</p>
 
-<h2>Hardware</h2>
+<h3>Hardware</h3>
 
 <p>I denne guide har jeg oprettet en virtuel maskine i VirtualBox, med nedestående parametre:</p>
 
@@ -88,7 +88,7 @@
 	</tbody>
 </table>
 
-<h2>Netværket</h2>
+<h3>Netværket</h3>
 
 <p>Serveren er sat i et netværk med følgende parametre:</p>
 
@@ -163,7 +163,7 @@
 	</tbody>
 </table>
 
-<h2>Harddisk opsætning</h2>
+<h3>Harddisk opsætning</h3>
 
 <p>Der vil i denne guide være to muligheder for opsætning af harddiske. De er beskrevet her:</p>
 
@@ -244,7 +244,7 @@
 	</tbody>
 </table>
 
-<h2>Anvend tasteturet</h2>
+<h3>Anvend tasteturet</h3>
 
 <p>Under installationen af Ubuntu serveren skal du anvende tasteturet. I starten er det lidt underligt at navigere ved hjælp af tasteturet, men det hurtigt og effektivt. Navigationen fungerer efter følgende skema:</p>
 
@@ -287,7 +287,7 @@
 
 
 
-<h2>Ved fejlvalg</h2>
+<h3>Ved fejlvalg</h3>
 
 <p>Hvis du laver en fejl kan du altid gå tilbage i installtionsmetoden ved at vælge <span class="terminal_valg">Gå tilbage</span> og derefter vælge punktet hvor det gik galt. Har du lavet indtastninger husker installationen på det, så du kan nøjes med at ændre de ting der er fejl i.</p>
 
@@ -300,7 +300,7 @@
 </figure>
 
 	
-<h1>Begynd installationen</h1>
+<h2>Begynd installationen</h2>
 
 <p>Før selve installationen starter skal du vælge sprog. Herunder kommer der skærmdumps fra installationen</p>
 
@@ -384,7 +384,7 @@
 
 
 
-<h1>Netværk</h1>
+<h2>Netværk</h2>
 
 <p>Netværksopsætningen kan være lidt tricky. Det skyldes at serveren automatisk vil forsøge at finde en DHCP-server så den automatisk får en IP-adresse. Denne funktion vil normalt ligge i den router du har stående. Vi vil have at den får en fast IP, nemlig <span class="inl_cmd">10.0.2.10</span>.</p>
 
@@ -408,7 +408,7 @@
 
 </figure>
 
-<h2>Manuel opsætning af netværk</h2>
+<h3>Manuel opsætning af netværk</h3>
 
 <p>I vinduet "Sæt netværket op" skal du vælge <span class="terminal_valg2">Sæt netværket op manuelt</span>.</p>
 
@@ -495,7 +495,7 @@
 
 </figure>
 
-<h1>Brugeropsætning</h1>
+<h2>Brugeropsætning</h2>
 
 <p>Den første bruger man opretter på et Ubuntu-system er automatisk <span class="inl_cmd">sudo</span> bruger. Derfor er det vigtigt at du husker brugernavn og password. Er det kun til test du opretter serveren vil jeg anbefale at du anvender dine initialer og <span class="inl_cmd">123qwe</span> som adgangskode. Læg mærke til at Ubuntu advarer dig om at det er svagt password, hvis det ikke indeholder nok tegn eller en god blandning af bogstaver, tal, tegn og symboler.</p>
 
@@ -565,7 +565,7 @@
 
 </figure>
 
-<h1>Opsætning af harddisk</h1>
+<h2>Opsætning af harddisk</h2>
 
 <p>Herunder får du mulighed for at vælge to forskellige harddiskkonfigurationer.</p>
 
@@ -592,7 +592,7 @@
 	</tbody>
 </table>
 
-<h2>Simpel opsætning</h2>
+<h3>Simpel opsætning</h3>
 
 <p></p>
 
@@ -627,7 +627,7 @@
 
 </figure>
 
-<h2>Avanceret opsætning</h2>
+<h3>Avanceret opsætning</h3>
 
 <p>For at gøre denne guide overskuelig har jeg valgt at lægge den avancerede opsætning i et andet dokument. Heri vil du blive guidet igennem at sætte Ubuntu serveren op med LVM med følgende konfiguration:</p>
 
@@ -692,7 +692,7 @@
 
 <p>Find guiden her: <a href="server_avanceret_HD_install_16.06.LTS.html" target="_blank">server_avanceret_HD_install_16.06.LTS.html</a></p>
 
-<h1>HTTP-Proxy og opdateringer</h1>
+<h2>HTTP-Proxy og opdateringer</h2>
 
 <p>Hvis du har en HTTP-proxy der skal sættes op ... så har du ikke brug for denne guide. Vælg <span class="inl_cmd">fortsæt</span> uden at skrive noget på linien:</p>
 
@@ -715,7 +715,7 @@
 
 </figure>
 
-<h1>Installer OpenSSH server</h1>
+<h2>Installer OpenSSH server</h2>
 
 <p></p>
 
@@ -738,11 +738,11 @@
 
 </figure>
 
-<h1>Bootloaderen <span class="inl_cmd">GRUB</span></h1>
+<h2>Bootloaderen <span class="inl_cmd">GRUB</span></h2>
 
 <p><span class="inl_cmd">GRUB</span> (the <span class="bold">GR</span>and <span class="bold">U</span>nified <span class="bold">B</span>ootloader) sørger for at Ubuntu kan boote. Alt efter om du har valgt <span class="inl_cmd">simpel</span> eller <span class="inl_cmd">avanceret</span> harddiskopsætning, så vil du få et af nedestående vinduer</p>
 
-<h2>Simpel harddisk opsætning</h2>
+<h3>Simpel harddisk opsætning</h3>
 
 <p>Vælg at installere GRUB på opstartssporet - tryk <span class="terminal_valg">Ja</span>.</p>
 
@@ -754,7 +754,7 @@
 
 </figure>
 
-<h2>Avanceret harddisk opsætning</h2>
+<h3>Avanceret harddisk opsætning</h3>
 
 <p>Her kan du vælge hvor du vil have GRUB installeret. Vælg den første harddisk <span class="terminal_valg2">/dev/sda ...</span> og tryk <kbd>Enter</kbd></p>
 
@@ -776,7 +776,7 @@
 
 </figure>
 
-<h1>Første start</h1>
+<h2>Første start</h2>
 
 <p>Det første opstartsbillede er GRUB'en</p>
 
@@ -808,7 +808,7 @@
 
 </figure>
 
-<h2>Opdatering af serveren</h2>
+<h3>Opdatering af serveren</h3>
 
 <p>For at opdatere er der 3 ting vi skal have gjort:</p>
 
@@ -945,7 +945,7 @@ Vil du fortsætte? [J/n]
 
 <p>Som du kan se bliver der fjernet i alt 295 MB, når du klikker <kbd>j</kbd>. Opdaterer du din server jævnlig (som du bør gøre), så vil der efterhånden kunne ligge gigabytes af forældede kerner. Så du bør rense din computer for kerner med jævne mellemrum.</p>
 
-<h1>Administration af server</h1>
+<h2>Administration af server</h2>
 
 <p>Det er min anbefaling at du anvender SSH til at arbejde på serveren. På den måde kan den administreres fra en hvilken som helst PC der har en SSH klient installeret.</p>
 

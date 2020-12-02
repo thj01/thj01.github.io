@@ -39,11 +39,11 @@
 	
 <div class="col-xs-9">
 	
-<div class="title">Kommandoer <br/>Harddiske og partitioner</div>
+<h1>Kommandoer: Harddiske og partitioner</h1>
 
-<h1>Grundbegreber</h1>
+<h2>Grundbegreber</h2>
 
-<h2>Harddiske</h2>
+<h3>Harddiske</h3>
 
 <p>I daglig tale er harddisken den lille metalkasse der indeholder en til flere skiver, hvorpå der kan gemmes data. I computerteknologisk sammenhæng kan det dog også være andet. En harddisk er en enhed der holder på data også selvom der ikke er strøm og derudover skal den indeholde en partitionstabel. Det betyder at følgende enheder vil blive opfattet som harddiske af Linux:</p>
 
@@ -91,7 +91,7 @@
 
 <p>Linux kan starte fra alle partitioner, da selve bootprocessen styres af en bootmanager. Derfor kan Linux startes op både fra CD/DVD skriver og USB-drev.</p>
 
-<h2>Betegnelser</h2>
+<h3>Betegnelser</h3>
 
 <p>Linuxsystemet administrerer sine diske ved hjælp af den fysiske placering på bundkortet. En computer med 2 harddiske og 1 DVD-drev kan give følgende:</p>
 
@@ -128,7 +128,7 @@
 
 <p>En CD/DVD/BD-læser bliver tilgængelig igennem filen <span class="inl_cmd">/dev/sr0</span>.</p>
 
-<h2>Partitioner</h2>
+<h3>Partitioner</h3>
 
 <p>Selve den fysiske harddisk skal gøres tilgængelig for et filsystem. Det gøres ved hjælp af partitioner (inddelinger), som formateres med et filsystem. Her findes der to typer: <span class="inl_cmd">primære</span>- og <span class="inl_cmd">logiske</span> partitioner. De logiske partitioner ligger på en <span class="inl_cmd">udvidet primær partition</span>.</p>
 
@@ -174,11 +174,11 @@
 	</tbody>
 </table>
 
-<h2>Filsystemer</h2>
+<h3>Filsystemer</h3>
 
 <p>På Ubuntu anvendes filsystemet <span class="inl_cmd">EXT4</span> som standard.</p>
 
-<h3>EXT4</h3>
+<h4>EXT4</h4>
 
 <ul class="none">
 	<li>Max. størrelse: 1 EiB</li>
@@ -190,7 +190,7 @@
 
 <p>Læs mere: <a href="https://en.wikipedia.org/wiki/Ext4" target="_blank">https://en.wikipedia.org/wiki/Ext4</a></p>
 
-<h3>XFS</h3>
+<h4>XFS</h4>
 
 <p>Dette filsystem er blevet standard på <abbr title="Red Hat Enterprice Linux">RHEL</abbr> (<b>R</b>ed <b>H</b>at <b>E</b>nterprice <b>L</b>inux) og  <a href="https://en.wikipedia.org/wiki/NASA_Advanced_Supercomputing_Division" target="_blank">NASA Advanced Supercomputing Division</a></p>
 
@@ -204,7 +204,7 @@
 
 <p><b>Læs mere: </b><a href="https://en.wikipedia.org/wiki/xfs" target="_blank">https://en.wikipedia.org/wiki/xfs</a></p>
 
-<h3>BTRFS</h3>
+<h4>BTRFS</h4>
 
 <p>BTRFS er et såkald <abbr title="copy-on-write">COW</abbr>- system (<b>C</b>opy-<b>O</b>n-<b>W</b>rite). I praksis betyder det, at det har indbygget en "snapshot" mulighed, så man kan vende tilbage til en tidligere tilstand. Det har også mange andre system tekniske avancerede muligheder.</p>
 
@@ -289,7 +289,7 @@
 </table>
 
 
-<h1>Overblik</h1>
+<h2>Overblik</h2>
 
 <p>Vi kan se hvordan et systems harddiske er sat op ved hjælp af <span class="inl_cmd">lsblk</span>. Her er det en Ubuntu standard installation med automatisk harddiskopsætning.</p>
 
@@ -321,7 +321,7 @@ sda    disk         100G  0 disk
 
 <p>Hvis vi kigger på harddisk <span class="inl_cmd">sda</span>, kan vi se at den er delt ind i 3 partitioner, der hver har sit monteringspunkt, hvorimod <span class="inl_cmd">sdb</span> hverken er partitioneret eller monteret.</p>
 
-<h1>Find dine harddiske</h1>
+<h2>Find dine harddiske</h2>
 
 <p>Fremgangsmåden til at konfigurere en harddisk er, at den skal:</p>
 
@@ -377,7 +377,7 @@ UUID=34bb7b7d-54b7-43c0-bba7-0bf0565c563d /               ext4    errors=remount
 UUID=9b832ca1-217e-4308-bdf3-225b789946c9 none            swap    sw              0       0
 </pre>
 
-<h1>Partitionering af harddisken</h1>
+<h2>Partitionering af harddisken</h2>
 
 <p>Harddiske partitioneres af programmet <span class="inl_cmd">fdisk</span>, så længe de er under 2 TB. Er det over 2 TB anvendes programmet gdisk, som ikke bliver gennemgået her. Start partitioneringsprogrammet op med med:</p>
 
@@ -511,7 +511,7 @@ Diskidentifikation: 0xa6162a16
 /dev/sdb1            2048   209715199   104856576   83  Linux
 </pre>
 
-<h1>Formater harddisken</h1>
+<h2>Formater harddisken</h2>
 
 <p>Harddisken skal fomateres til <span class="inl_cmd">ext4</span>. Det gøres med kommandoen:</p>
 
@@ -558,7 +558,7 @@ sdb    disk          100G  0 disk
 sr0    rom          1024M  0 rom
 </pre>
 
-<h1>Fast montering i filsystemet</h1>
+<h2>Fast montering i filsystemet</h2>
 
 <p>Arbejdsgangen når man monterer en disk er følgende:</p>
 
@@ -634,7 +634,7 @@ sr0     11:0    1  1024M  0 rom
 
 <p><a href="https://help.ubuntu.com/community/InstallingANewHardDrive" target="_blank">https://help.ubuntu.com/community/InstallingANewHardDrive</a></p>
 
-<h1>Midlertidig montering</h1>
+<h2>Midlertidig montering</h2>
 
 <p>Som vi har gennemgået ovenfor, så er der to mapper i filstrukturen til at montere ikke faste drev i. Det er henholdsvis <span class="inl_cmd">/mnt</span> og <span class="inl_cmd">/media</span>. Vi vil i denne sammenhæng vælge <span class="inl_cmd">/media</span> da det handler om en harddisk.</p>
 
@@ -696,7 +696,7 @@ drwx------   3 tj tj 4096 mar 16 15:00 <span class="red">backup</span>
 
 <code class="cmd">umount /dev/sdb1</code>
 
-<h1>USB-boot disk</h1>
+<h2>USB-boot disk</h2>
 
 <p>Ofte har man brug for at lave en nøjagtig kopi af en partition, f.eks. når man skal brænde en ISO fil over på en USB disk. Dette gøres med programmet <span class="inl_cmd">dd</span>. Der findes også GUI programmer til det, men min erfaring er, at de nogle gange roder med partitionstabellen, så USB disken reelt bliver ubrugelig. <span class="inl_cmd">dd</span> virker altid!</p> 
 

@@ -39,10 +39,10 @@
 	
 <div class="col-xs-9">
 	
-<div class="title">Fildeling med Linux</div>
+<h1>Fildeling med Linux</h1>
 	
 
-<h1>Introduktion</h1>
+<h2>Introduktion</h2>
 
 <p>En filserver er en computer der giver netværkets computere mulighed for at gemme eller hente filer. Det kan den gøre ved give alle adgang eller styre det ved hjælp af rettigheder. Det kan både være på bruger og/eller maskinniveau.</p>
 
@@ -77,7 +77,7 @@
 	</tbody>
 </table>
 
-<h2>Protokoller</h2>
+<h3>Protokoller</h3>
 
 <p>I denne guide vil det blive gennemgået hvordan man deler filer på et Linux system ved hjælp af NFS og SAMBA/CIFS.</p>
 
@@ -91,14 +91,14 @@
 
 <p>For at få SMB til at virke skal man administrere brugere og rettigheder igennem SAMBA, så det giver et ekstra lag af administration.</p>
 
-<h2>Hvad skal du vælge?</h2>
+<h3>Hvad skal du vælge?</h3>
 
 <p>Først skal du forholde dig til, om du skal anvende fildelingen i et blandet computermiljø. Hvis netværksdrevene skal tilgås fra både Linux og Windowsmaskiner er der kun et svar, og det er SMB. Det er kun meget få versioner af Windows der understøtter NFS, hvilket må skyldes at Microsoft bevidst har fravalgt det.</p>
 
 <p>Anvender du kun Linux er min anbefaling at du anvender NFS.</p>
 
 
-<h2>Praktisk</h2>
+<h3>Praktisk</h3>
 
 <p>For at gøre dette praktisk opretter vi tre forskellige typer af shares (fildelinger) der er afgrænset af henholdsvis brugeren, gruppen og alle.</p>
 
@@ -185,7 +185,7 @@
 	</tbody>
 </table>
 
-<h2>Noget om UID og GID</h2>
+<h3>Noget om UID og GID</h3>
 
 <p>UID og GID er henholdsvis <span class="bold">U</span>ser og <span class="bold">G</span>roup <span class="bold">ID</span>entification. Det er nogle unikke talværdier der tilhører hver enkelt tjeneste, bruger og gruppe på en Linux computer. Den første bruger du har oprettet på din computer har f.eks. UID/GID 1000 på en Ubuntu computer.</p>
 
@@ -193,7 +193,7 @@
 
 <p>Jeg har i denne guide sat brugerne til at starte fra <span class="inl_cmd">2000</span> og grupperne fra <span class="inl_cmd">3000</span>, men du kan vælge helt din egen måde at gøre det på.</p>
 
-<h1>Forberedelse af server</h1>
+<h2>Forberedelse af server</h2>
 
 <p>Det der skal gøres er følgende:</p>
 
@@ -214,7 +214,7 @@ thoj@mainsrv:~$ sudo su
 root@mainsrv:/home/thoj#
 </pre>
 
-<h2>Opret brugere</h2>
+<h3>Opret brugere</h3>
 
 <p>Herunder opretter vi brugerne på systemet. Ved at anvende <span class="inl_cmd">useradd</span> kan vi konfigurere brugeren med det samme. Bl.a. opretter vi ikke nogen hjemmemappe til brugerne, da de ikke har brug for den, og de får heller ikke adgang til selve system, da de ikke kan åbne en shell.</p>
 	
@@ -244,7 +244,7 @@ Genindtast ny UNIX-adgangskode: <span class="red">&lt;-- Indtast password (f.eks
 passwd: password updated successfully
 </pre>
 
-<h2>Opret grupper</h2>
+<h3>Opret grupper</h3>
 
 <p>Opret grupperne <span class="inl_cmd">parents</span> og <span class="inl_cmd">familie</span>. Læg mærke til at disse grupper også får et unikt <span class="inl_cmd">UID</span>.</p>
 
@@ -286,7 +286,7 @@ parents:x:3000:hans,grethe <span class="red">&lt;-- medlemmer af gruppen parents
 familie:x:3001:hans,grethe,klaus <span class="red">&lt;-- medlemmer af gruppen familie</span>
 </pre>
 
-<h2>Opret mapper</h2>
+<h3>Opret mapper</h3>
 
 <p>Opret mapper til de delte filer</p>
 
@@ -323,7 +323,7 @@ root@mainsrv:/srv/filer/grupper# tree /srv/filer
 8 directories, 0 files
 </pre>
 
-<h2>Sæt rettigheder</h2>
+<h3>Sæt rettigheder</h3>
 
 <p>Efter vi har oprettet mapperne skal der sættes rettigheder på dem, så det kun er ejerne af mapperne der har adgang.</p>
 
@@ -412,7 +412,7 @@ root@mainsrv:/srv/filer# tree -puga --dirsfirst /srv/filer/
 8 directories, 0 files
 </pre>
 
-<h1>Forberedelse af klient</h1>
+<h2>Forberedelse af klient</h2>
 
 <p>Det der skal gøres er følgende:</p>
 
@@ -433,7 +433,7 @@ root@mainsrv:/home/thoj#
 </pre>
 
 
-<h2>Opret brugere</h2>
+<h3>Opret brugere</h3>
 
 <p>Her vælger vi at oprette alle brugerne så vi kan afprøve vores NFS-server.</p>
 
@@ -460,7 +460,7 @@ grethe:x:2001:2001::/home/grethe:/bin/bash
 klaus:x:2002:2002::/home/klaus:/bin/bash
 </pre>
 
-<h2>Opret grupper</h2>
+<h3>Opret grupper</h3>
 
 <code class="cmd">groupadd -g 3000 parents</code>
 <code class="more_cmd">groupadd -g 3001 familie</code>
@@ -487,7 +487,7 @@ familie:x:3001:hans,grethe,klaus
 
 <p>Læg mærke til, at hvis brugerne ikke er oprettet i de lokale grupper, så har de ikke adgang til gruppedelingerne på NFS serveren. Derfor er det vigtigt at brugerne er oprettet både som brugere, men også i deres respektive grupper på den enkelte maskine.</p>
 
-<h2>Opret mapper</h2>
+<h3>Opret mapper</h3>
 
 <p>Her vælger vi at lægge alle delte filer i mappen <span class="inl_cmd">/mnt/netværk</span></p>
 
@@ -501,9 +501,9 @@ exit
 <span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$
 </pre>
 
-<h1>NFS</h1>
+<h2>NFS</h2>
 
-<h2>Installation NFS: server</h2>
+<h3>Installation NFS: server</h3>
 
 <span class="afsnit">Opsætning af NFS server</span>
 
@@ -575,11 +575,11 @@ Export list for mainsrv:
 /srv/filer/brugere/hans    192.168.0.0/24
 </pre>
 
-<h2>Installation NFS: klient</h2>
+<h3>Installation NFS: klient</h3>
 
 <code class="cmd">apt install nfs-common -y</code>
 
-<h2>Montering af NFS drev</h2>
+<h3>Montering af NFS drev</h3>
 
 <p>Før vi går igang med dette kapitel skal du logge ind med en af de nye brugere der har adgang til NFS serveren. Her vælger jeg <span class="inl_cmd">hans</span>.</p>
 
@@ -650,7 +650,7 @@ ls: kan ikke åbne katalog '/mnt/netværk/brugere/grethe/': Adgang nægtet
 
 </figure>
 
-<h2>Afmontering af NFS drev</h2>
+<h3>Afmontering af NFS drev</h3>
 
 <p>Man kan afmontere NFS drev på to måder. Enten ved at afmontere det man har monteret eller ved at afmontere den mappe man har monteret det i. Dvs. begge nedestående metoder kan anvendes</p>
 
@@ -687,7 +687,7 @@ ls: kan ikke åbne katalog '/mnt/netværk/brugere/grethe/': Adgang nægtet
 
 
 
-<h2>Monter enkelte drev</h2>
+<h3>Monter enkelte drev</h3>
 
 <p>Man kan også nøjes med at montere enkelte drev. Herunder monterer jeg alle de shares som <span class="inl_cmd">hans</span> har adgang til. Det gør jeg i hans egen hjemmemappe <span class="inl_cmd">~/NFS</span> efter følgende tabel. Det bølgede tegn <span class="inl_cmd">~</span> (tilde) er en notationsmåde for ens hjemmemappe.</p>
 
@@ -743,7 +743,7 @@ ls: kan ikke åbne katalog '/mnt/netværk/brugere/grethe/': Adgang nægtet
 
 </figure>
 
-<h2>Montering ved opstart</h2>
+<h3>Montering ved opstart</h3>
 
 <p>Hvis man ønsker at ens drev skal være tilgængelige fra opstart af kan man montere sine NFS drev underopstarten af computeren ved at anvende filen <span class="inl_cmd">/etc/fstab</span>. Herunder er <span class="inl_cmd">/etc/fstab</span> vist ud fra en standardinstalltion med et systemdrev og et swap-drev.</p>
 
@@ -803,12 +803,12 @@ UUID=c31153ca-5efe-4880-b4cd-bfbd56e1bc3f none            swap    sw            
 
 </figure>
 
-<h1>SMB</h1>
+<h2>SMB</h2>
 
 <p>Al konfiguration af SAMBA foregår i filen <span class="inl_cmd">/etc/samba/smb.conf</span>. Det er en stor fil, med mange opsætningsmuligheder. En ting man skal være opmærksoom på så snart man begynder at arbejde med Windowsnetværk er, at Windows ikke kan kende forskel på store og små bogstaver når vi snakker netværk. Der vil altså ikke være forskel på et share der hedder <span class="inl_cmd">MITshare</span> og <span class="inl_cmd">miTShAre</span>. Derudover anvender Windowsnetværk en meget begrænset tegntabel. Man kan altså heller ikke anvende <span class="inl_cmd">æ</span>, <span class="inl_cmd">ø</span> eller <span class="inl_cmd">å</span>. Det er vigtigt at man er opmærksom på dette. En god måde at skabe læsbarhed er ved at anvende en kombination af store og små bogstaver samt underscore f.eks. <span class="inl_cmd">MitShare</span> eller <span class="inl_cmd">mit_share</span>.</p>
 
 
-<h2>Opsætning af SMB</h2>
+<h3>Opsætning af SMB</h3>
 
 <span class="afsnit">Opsætning SMB server</span>
 
@@ -828,7 +828,7 @@ UUID=c31153ca-5efe-4880-b4cd-bfbd56e1bc3f none            swap    sw            
 
 <code class="cmd">sudo apt install smbclient cifs-utils -y</code>
 
-<h2>Konfiguration SAMBA</h2>
+<h3>Konfiguration SAMBA</h3>
 
 <ol class="">
 	<li>Konfigurer <span class="inl_cmd">/etc/samba/smb.conf</span></li>
@@ -856,7 +856,7 @@ UUID=c31153ca-5efe-4880-b4cd-bfbd56e1bc3f none            swap    sw            
 
 </pre>
 
-<h2>Opret brugerne</h2>
+<h3>Opret brugerne</h3>
 
 <p>Til forskel fra NFS skal brugerne oprettes i SAMBA. Brugerne behøver ikke have det samme password i SAMBA, som de har på selve computeren, men det kan gøre det noget nemmere at administrere for alle.</p>
 
@@ -884,7 +884,7 @@ Added user klaus.
 root@mainsrv:/home/thoj#
 </pre>
 
-<h2>Opret shares</h2>
+<h3>Opret shares</h3>
 
 <p>For at få adgang til filer ved hjælp af SAMBA skal man have defineret nogle shares. Det skal gøres for hver enkelt mappe vi har delt. Shares indsættes nederst i <span class="inl_cmd">/etc/samba/smb.conf</span>. Et share er opbygget efter følgende skabelon:</p>
 
@@ -965,7 +965,7 @@ root@mainsrv:/home/thoj#
 
 <code class="cmd">sudo systemctl restart smbd nmbd</code>
 
-<h2>Montering af SMB GUI</h2>
+<h3>Montering af SMB GUI</h3>
 
 <p>En af de ting man skal vænne sig til når man arbejder med SAMBA er, at det ikke er en integreret del af systemet. Derfor er monteringsprocessen også mere omstændig. Herunder vil vi få adgang til SAMBA shares ved hjælp af Ubuntu's grafiske brugerflade.</p>
 
@@ -1013,7 +1013,7 @@ root@mainsrv:/home/thoj#
 
 <p>Vælger du senere en mappe der kræver dine loginoplysninger vil de blive "genbrugt" så du ikke skal indtaste dem hver gang.</p>
 
-<h2>Montering fra kommandolinien</h2>
+<h3>Montering fra kommandolinien</h3>
 
 <p>Hvis du lagde mærke til det har vi sat alle vores shares til at være <span class="inl_cmd">browsable</span>. Det er nødvendigt hvis vi vil kunne tilgå dem ved hjælp af GUI. Vi kunne også have valgt at montere drevene direkte ved hjælp af en kommando. Herunder vil vi tilgå et sambashare direkte ved hjælp af en <span class="inl_cmd">cifs</span> kommando. Vi vil oprette mappen <span class="inl_cmd">samba</span> i hjemmemappen og deri montere vores private drev:</p>
 
@@ -1033,7 +1033,7 @@ root@mainsrv:/home/thoj#
 
 <p>Det er vigtigt at huske at angive den bruger som vil bruge dette SAMBA-share. Hvis man ikke gør det vil SAMBA sætter brugeren til <span class="inl_cmd">root</span> - og den kender SAMBA ikke.</p>
 
-<h2>Montering ved opstart</h2>
+<h3>Montering ved opstart</h3>
 
 <p>For at montere et drev under opstart skal vi igennem en mere omstændig proces end ved NFS. Det skyldes at vores eget system ikke kender de passwords der hører til. Det kan absolut kun anbefales at gøre på en computer der kun anvendes af en selv.</p>
 

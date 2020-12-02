@@ -39,15 +39,15 @@
 	
 <div class="col-xs-9">
 	
-<div class="title">Kommandoer <br/>Netværks værktøjer</div>
+<h1>Kommandoer: Netværksværktøjer</h1>
 	
 <p>Der findes en lang række værktøjer til netværk, og i denne guide vil du blive introduceret for nogle af de vigtiste.</p>
 
-<h1>Virker netværket</h1>
+<h2>Virker netværket</h2>
 
 <p>I dette afsnit vil vi se på de mest grundlæggende færdigheder man har brug for, nemlig at kontrollere om der er forbindelse til netværket og hvordan computerens netværk er konfigureret. Det gøres med værktøjerne <span class="inl_cmd">ping</span> og <span class="inl_cmd">ip</span> fra programpakken <span class="inl_cmd">iproute2</span>.</p>
 
-<h1><span class="inl_cmd">ping</span> - Tjek netværket</h1>
+<h2><span class="inl_cmd">ping</span> - Tjek netværket</h2>
 
 <p>Kommandoen <span class="inl_cmd">ping</span> bruges til at undersøge om der er forbindelse mellem din og en anden computer, og hvor lang svartiden er. Kommandoen kører lige til der trykkes <kbd>Ctrl</kbd>+<kbd>c</kbd>.</p>
 
@@ -99,7 +99,7 @@ rtt min/avg/max/mdev = 12.842/33.051/111.476/39.215 ms
 <a href="http://manpages.ubuntu.com/manpages/trusty/en/man8/ping.8.html" target="_blank">
 http://manpages.ubuntu.com/manpages/trusty/en/man8/ping.8.html</a></p>
 
-<h1><span class="inl_cmd">ip</span> - dine netkort</h1>
+<h2><span class="inl_cmd">ip</span> - dine netkort</h2>
 
 <p><span class="inl_cmd">ip addr</span> anvendes til at vise netværkskonfigurationen, men kan også anvendes til at konfigurere netværkskort. Herunder er kommandoen blevet kørt på en bærbar med en aktivt wifi forbindelse og et inaktivt fysisk netkort.</p>
 
@@ -164,7 +164,7 @@ http://manpages.ubuntu.com/manpages/trusty/en/man8/ping.8.html</a></p>
 	<li><a href="https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/Networking_Guide/sec-Understanding_the_Predictable_Network_Interface_Device_Names.html" target="_blank">Henvisning 2</a></li>
 </ol>
 
-<h1>Det fysiske netværk</h1>
+<h2>Det fysiske netværk</h2>
 
 <p>Vi kan også anvende ip til at give os informationer om de fysiske kort (<span class="inl_cmd">link</span>) i maskinen.</p>
 
@@ -178,7 +178,7 @@ http://manpages.ubuntu.com/manpages/trusty/en/man8/ping.8.html</a></p>
     link/ether 08:00:27:63:8e:71 brd ff:ff:ff:ff:ff:ff
 </pre>
 
-<h1>MAC-adresser</h1>
+<h2>MAC-adresser</h2>
 
 <p>Læg mærke til linien <span class="inl_cmd">link/ether 08:00:27:63:8e:71</span> . Det kaldes en MAC adresse. Denne adresse er netværkskortets fysiske adresse og er unik. Mac-adressen bruges til at indentificere netværkskortet på nettet og denne information bliver altid medsendt. MAC-adressen fortæller hvem der har produceret kortet og hvilket kort det er (<span class="red">P</span> = Producenten / <span class="blue">S</span> = serienummer):</p>
 
@@ -190,11 +190,11 @@ http://manpages.ubuntu.com/manpages/trusty/en/man8/ping.8.html</a></p>
 
 <p>Du kan tjekke din producent her: <a href="https://macvendors.com/" target="_blank">https://macvendors.com/</a></p>
 
-<h1>Netværks kommandoer</h1>
+<h2>Netværks kommandoer</h2>
 
 <p>Herunder gennemgås det hvordan du kan anvende <span class="inl_cmd">ip</span> til at ændre i netværkskonfigurationen</p>
 
-<h1>Forny IP-adresse</h1>
+<h2>Forny IP-adresse</h2>
 
 <p>For at forny netværksindstillingerne skal du først nulstille dem og derefter indhente en ny IP adresse.
 </p>
@@ -214,7 +214,7 @@ http://manpages.ubuntu.com/manpages/trusty/en/man8/ping.8.html</a></p>
 <code class="cmd">sudo service network-manager restart</code>
 
 
-<h1>Stop og start netværk</h1>
+<h2>Stop og start netværk</h2>
 
 <p>Man kan stoppe og starte netværkskort ved hjælp af <span class="inl_cmd">ip</span> kommandoen. For at stoppe netværket anvender man følgende kommando:</p>
 
@@ -246,13 +246,13 @@ rtt min/avg/max/mdev = 11.952/12.590/13.239/0.513 ms
 
 
 
-<h1>GUI til <span class="inl_cmd">ip</span></h1>
+<h2>GUI til <span class="inl_cmd">ip</span></h2>
 
 <p></p>
 
 <code class="cmd">nmtui</code>
 
-<h1>Find din DNS-server</h1>
+<h2>Find din DNS-server</h2>
 
 <p>DNS serveren sørger for at man kan anvende navne på nettet i stedeet for IP-adresser. For at finde den DNS computeren er tilstluttet anvendes følgende kommando: </p>
 
@@ -289,7 +289,7 @@ ns02.tdchosting.dk	internet address = 92.43.121.6</span>
 <a href="http://manpages.ubuntu.com/manpages/trusty/en/man1/nslookup.1.html" target="_blank">http://manpages.ubuntu.com/manpages/trusty/en/man1/nslookup.1.html</a></p>
 
 
-<h1><span class="inl_cmd">mtr</span></h1>
+<h2><span class="inl_cmd">mtr</span></h2>
 
 <p><span class="inl_cmd">mtr</span> er et program der kombinerer traceroute og ping, dvs. at det både viser hoppene mellem din computer og målcomputeren samtidig med at den viser tidsintervallerne. Installer det med følgende kommando:</p>
 
@@ -334,7 +334,7 @@ HOST: tj-HP-ProBook-450-G3 Loss%   Snt   Last   Avg  Best  Wrst StDev
 <a href="http://manpages.ubuntu.com/manpages/trusty/en/man8/mtr.8.html" target="_blank">
 http://manpages.ubuntu.com/manpages/trusty/en/man8/mtr.8.html</a></p>
 
-<h1><span class="inl_cmd">nmap</span> skanning af netværk</h1>
+<h2><span class="inl_cmd">nmap</span> skanning af netværk</h2>
 
 <p><span class="inl_cmd">nmap</span> installeres med følgende kommandoen.</p>
 

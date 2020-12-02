@@ -40,13 +40,13 @@
 <div class="col-xs-9">
 	
 
-<div class="title">Netværk</div>
+<h1>Netværk</h1>
 
-<h1>Introduktion</h1>
+<h2>Introduktion</h2>
 
 <p>Denne guide sigter mod at give dig et indblik i hvordan et netværk er bygget op og et overblik over netværksbegreber. Der vil være en del teori og fagbegreber, som er nødvendige for at forstå, konfigurere og fejlfinde på et netværk.</p>
 
-<h2>Lidt historie</h2>
+<h3>Lidt historie</h3>
 
 <p>John Cage, der var ledende forsker hos SUN, er kendt for følgende to citater, som her </p>
 
@@ -73,7 +73,7 @@
 
 
 
-<h1>OSI (Open Systems Interconnection) modellen</h1>
+<h2>OSI (Open Systems Interconnection) modellen</h2>
 
 <p>Nedestående skema er en modificeret udgave af: <a href="http://en.wikipedia.org/wiki/OSI_model" target="_blank">http://en.wikipedia.org/wiki/OSI_model</a></p>	
 
@@ -131,7 +131,7 @@
 
 <p>En god huskeregel til OSI modellen er : <span class="bold">A</span>ll <span class="bold">P</span>eople <span class="bold">S</span>eem <span class="bold">T</span>o <span class="bold">N</span>eed <span class="bold">D</span>ata <span class="bold">P</span>rocessing</p>
 
-<h2>De enkelte lag uddybet</h2>
+<h3>De enkelte lag uddybet</h3>
 
 <p>OSI-modellen er skabt for at give et overblik over de elementer der indgår i computernetværk. Den skal ikke forstås sådan at man kan oversætte de enkelte lag til et specifikt stykke hard- eller software. Modellen hjælper til at forstå hvordan netværket fungerer og er et redskab til at analysere fejl.</p>
 
@@ -197,7 +197,7 @@
 
 <p>OSI modellen er også lavet i nogle mere letspiselige opstillinger f.eks. denne af Dick Lewis, hvor han forklarer modellen ved hjælp af James Bond: <a href="http://www.lewistech.com/rlewis/Resources/james.aspx" target="_blank">http://www.lewistech.com/rlewis/Resources/james.aspx</a></p>
 
-<h1>Andre modeller</h1>
+<h2>Andre modeller</h2>
 
 
 <p>Der igennem tiden blevet udviklet andre modeller, og herunder har jeg sidestillet de to ovenfor gennemgåede modeller med dem. Alle modellerne sigter mod det samme mål: sikker datatransmission. Bagved dem ligger der arbejdspapirer der går ind i de tekniske detaljer hvis man ønsker at udvikle nyt programmel efter dem.</p>
@@ -256,7 +256,7 @@
 
 
 
-<h1>Det binære, decimale og hexadecimale talsystem</h1>
+<h2>Det binære, decimale og hexadecimale talsystem</h2>
 
 <p>Før vi går igang med at kigge på TCP/IP modellen, IPv4 og IPv6 er det vigtigt at have forståelse for det binære, deciamle og hexadeciamle talsystem. Mennesker er ananolog og læser titalsystemer og derfor anvender vi titalssystemet til at repræsentere IP-adresser. Computere arbejder digitalt og binært</p>
 
@@ -343,7 +343,7 @@
 	</tbody>
 </table>
 
-<h2>Eksempel med decimalt tal</h2>
+<h3>Eksempel med decimalt tal</h3>
 
 <table class="">
 	<tbody>
@@ -421,7 +421,7 @@
 
 
 
-<h2>Eksempel med binært tal</h2>
+<h3>Eksempel med binært tal</h3>
 
 <p>Ud fra cifrets position kan man finde det binære tals værdi med nedestående nøgle.</p>
 
@@ -508,7 +508,7 @@
 </table>
 
 
-<h2>Eksempel med hexadecimalt tal</h2>
+<h3>Eksempel med hexadecimalt tal</h3>
 
 <p>Ud fra cifrets position kan man finde det binære tals værdi med nedestående nøgle. Da hexadecimale tal ofte anvendes skrives de ved hjælp af prefixet "0x*hex-tal" - f.eks: 0xB92D.</p>
 
@@ -578,7 +578,7 @@
 </table>
 
 
-<h1>TCP/IP modellen</h1>
+<h2>TCP/IP modellen</h2>
 
 <p>OSI-modellen der blev gennemgået ovenfor er en bredt anvendt model, hvor man har forsøgt at medtage så mange elementer som muligt. TCP/IP modellen er en praktisk implementeret tilgang til netværk som giver bedre muligheder for at beskrive hvad det er der sker.</p>
 
@@ -726,7 +726,7 @@
 
 <p>Herunder er en fremstilling af en TCP/IP pakkes opbygning.</p>
 
-<h1>Netværkets hardware</h1>
+<h2>Netværkets hardware</h2>
 
 <p>I et fysisk netværk indgår der noget hardware, som udfører forskellige opgaver. Herunder kommer vi ind på:</p>
 
@@ -740,27 +740,27 @@
 </ul>
 
 
-<h2>Repeater</h2>
+<h3>Repeater</h3>
 
 <p>Repeatere er regenerer/genopbygger/sync'er signaler på netværk, hvor afstanden er stor. Dette skyldes at der er modstand i ledninger og at de kan blive udsat for elektromagnetisk støj. Repeatere arbejder på Lag 1. Støj og modstand i netværket kan også modvirkes ved at anvende bedre kabler.</p>
 
-<h2>Switch</h2>
+<h3>Switch</h3>
 
 <p>En switch forbinder netværksegmenter ved at kigge på MAC adresserne i de modtagne frames. Ved hjælp af MAC-adresser sendes de til den rette destination. Switche  er uafhængige af protokoller, da de arbejder på Link laget (OSI Lag2: Data-Link).</p>
 
-<h2>Router</h2>
+<h3>Router</h3>
 
 <p>En router er en multiportsenhed, der dirigerer data mellem forskellige enheder på et netværk ved hjælp af f.eks. IP. Dette kan være både hosts, servere og andet netværksudstyr. Routere arbejder på Internet laget (OSI lag 3: Network). </p>
 
-<h2>Layer 3 Switch</h2>
+<h3>Layer 3 Switch</h3>
 
 <p>En Layer 3 switch fungerer ligesom ovenfor, men kan derudover arbejde med IP-adresser. En Layer 3 switch kræver konfiguration.</p>
 
-<h2>Gateway</h2>
+<h3>Gateway</h3>
 
 <p>En gateway fungerer som bindeled mellem 2 forskellige netværk f.eks. LAN (<span class="bold">L</span>ocal <span class="bold">A</span>rea <span class="bold">N</span>etwork) og WAN (<span class="bold">W</span>ide <span class="bold">A</span>rea <span class="bold">N</span>etwork). Dette kan både være en enhed der fungerer på de øverste niveaur af OSI modellen f.eks. som et bindeled mellem et TCP/IP baseret netværk og et andet der er baseret på IPX (Novel netværk), eller som ovenfor hvor det er routeren der forbinder det lokale netværk med Internettet.</p>
 
-<h2>Kabler</h2>
+<h3>Kabler</h3>
 
 <p>Herunder er en oversigt over de forskellige kabel-kategorier.</p>
 
@@ -823,7 +823,7 @@
 </div>
 
 
-<h1>IP - Internet Protokoller</h1>
+<h2>IP - Internet Protokoller</h2>
 
 <p>Der findes 2 IP protokoller: En version 4 (IPv4) og en version 6 (IPv6). Udfordringen med IPv4 er, at vi er ved at løbe tør for adresser. Dette skyldes bl.a. designet af IPv4 hvilket gør at under 20% af alle tilgængelige adresser er i funktion. Dette skyldes bl.a. protokollens oprindelige mangel på at kunne underinddele netværk. Det man skal huske på i denne sammenhæng er, at man i Internettets barndom ikke havde forstillet sig den eksplosive udvikling der er sket.</p>
 
@@ -831,7 +831,7 @@
 
 <p>En af udfordringerne ved at forstå netværksadresser og opsætning er, at der er forskel på den måde computere og mennesker opfatter og forstår tal. Computere arbejder i elektriske signaler og alting skal være defineret for den for at forstå dem. Derfor er IP-adresser som 192.168.1.17 (IPv4) og 2001:DB8:AC10:FE01::20 (IPv6) IP notationer som er menneskelæsbare. Tegnene . og : som bruges i IP-adresserne er ikke-eksisterende for computeren og er kun sat som et visuelt hjælpemiddel. Computeren arbejder med disse adresser binært dvs med 32 bit (32 cifre) for IPv4 og 128 bit (128 cifre)for IPv6.</p>
 
-<h2>IPv4</h2>
+<h3>IPv4</h3>
 
 <p>IPv4 adressen er en 32 bit adresse, dvs. at den består af 32 binære cifre f.eks: <span class="inl_cmd">11000000101010000000000100010001</span>. For læsbarhedens plejer man at indskyde et punktum eller et mellemrum imellem hver oktet dvs. hver 8 ciffer: <span class="inl_cmd">11000000.10101000.00000001.00010001</span>. Denne adresse vil være præsenteret som 192.168.1.17 i decimal notation. Herunder kan du se IP-adresse præsenteret binær, decimal og hexadecimal.</p>
 
@@ -900,7 +900,7 @@
 
 
 
-<h3>Offentlige og private netværk samt NAT</h3>
+<h4>Offentlige og private netværk samt NAT</h4>
 
 <p>Et offentligt netværk består af maskiner som er tilgængelig for alle f.eks. Internettet. Her kan man tilgå alle maskinerne med ingen eller få begrænsninger. Man har fra starten defineret nogle netværksadresser til at være private, og disse netværk anvendes i lukkede netværk</p>
 
@@ -946,7 +946,7 @@
 
 <p>Du kan læse mere om IPv4 her: <a href="http://en.wikipedia.org/wiki/IPv4" target="_blank">http://en.wikipedia.org/wiki/IPv4</a></p>
 
-<h2>IPv6</h2>
+<h3>IPv6</h3>
 
 <p>IPv6 protokollener lavet som en reaktion på, at man er ved at løbe tør for IPv4 adresserne og består af en 128 bits adresse mod IPv4' 32 bit. En IPv6 adresse vil således bestå af 128 binære cifre. For at en IPv6 adresse bliver læsbar, skrives den med 8 felter med et 4 cifrede hexcadecimale tal adskilt af kolon (:).</p>
 
@@ -1016,7 +1016,7 @@
 
 </figure>
 
-<h2>Faste IP-adresser</h2>
+<h3>Faste IP-adresser</h3>
 
 <p>I både IPv4 og IPv6 er der nogle enkelte adresser der er låst til helt specifik anvendelse. Nedenfor er der et skema</p>
 
@@ -1064,7 +1064,7 @@
 <p>Skråstregen efter IP-adressen er CIDR adressen. Den vil blive gennemgået senere</p>
 
 
-<h1>Subnetting</h1>
+<h2>Subnetting</h2>
 
 <p>Efterhånden som der kom flere og flere computere på de enkelte netværk blev det nødvendigt at kunne opdele/segmentere netværk. Problemet er, at jo flere computere der er på netværket jo mere trafik kommer der. Derfor er det fornuftigt at inddele netværket i mindre enheder adskilt af routere.</p>
 
@@ -1076,7 +1076,7 @@
 
 <p>IP-adresser er altså opbygget af 4 oktetter, hver bestående af 1 byte (8 bit) hvilket betyder at tallet består af 4 &middot; 8 binære tal.</p>
 
-<h2>Classfull adressing</h2>
+<h3>Classfull adressing</h3>
 
 <p>Før vi går igang med at snakke om subnetting kigger vi på den oprindelige (pre 1985) og simple måde at dele nettet.</p>
 
@@ -1117,7 +1117,7 @@
 
 <p>Man fik altså tildelt et adresserum der passede til det antal af computere man havde. Denne måde anvendte man i mange år, men i 1985 indførte man subnetting for at kunne anvende nettets ressourcer bedre. Ved hjælp af subnetting kan man underinddele nettet og adskille de forskellige subnets ved hjælp af routere. Routere der ligger på lag 3 i OSI-modellen kan adskille intern og ekstern netværkstrafik fra hinanden.</p>
 	
-<h2>Klasse netværk</h2>
+<h3>Klasse netværk</h3>
 
 <p>Det er de binære tal der angiver hvilken klasse netværket har. Det er værdierne i den første oktet der angiver klassen:</p>	
 
@@ -1181,7 +1181,7 @@
 
 <p>Udover at definere de ovenstående klassenetværk, definerede man også hvad der var netværkbits (dem som definerer netværket) og hvilke bits der kan bruges af værter på nettet. På denne måde kunne man uddele store netværk til dem der havde behov for det og mindre til resten. Problemet er stadig, at der i et klasse A netværk potentielt kan være over 16 millioner computere, hvilket ikke skaber overblik. Dette problem blev løst med at indføre subnetting og dermed muligheden for at designe netværk i passende størrelser.</p>
 
-<h2>Netmasken</h2>
+<h3>Netmasken</h3>
 
 <p>Et netværk er defineret af 3 parametre: netværkets adresse, broadcastadressen og netmasken. En computer i hjemmenetværk vil ofte være konfigureret i et privat klasse C netværk da 254 mulige værter er rigeligt i et almindeligt hjem. Det kunne f.eks. være konfigureret som her:</p>
 
@@ -1253,7 +1253,7 @@
 
 <p>Den eneste adresse i ovenstående som er fundamentalt anderledes er netmasken. Den er også anderledes end de andre, da den bruges til at afgrænse netværket med. Den betyder noget i retningen af: I de tre første oktetter er alle adresser fastlåste, men den sidste oktet er ikke er låst - hvilket giver 256 tilgængelige adresser.</p>
 
-<h2>Subnetting</h2>
+<h3>Subnetting</h3>
 
 <p>Lad os kigge på et eksempel.</p>
 
@@ -1361,7 +1361,7 @@
 
 <p>Antal værter pr subnet: 2<sup>14</sup>-2 = 16.382 værter i hvert subnet.</p>
 
-<h2>Mere om subnetting</h2>
+<h3>Mere om subnetting</h3>
 
 <p>Herunder vil vi lave en nøgle til at bestemme antallet af subnets.</p>
 
@@ -1512,7 +1512,7 @@
 
 <div class="pagebreak">
 
-<h2>CIDR adresse - Classless Inter-Domain Routing</h2>
+<h3>CIDR adresse - Classless Inter-Domain Routing</h3>
 
 <p>Disse netværk kan også angives ved hjælp af en CIDR adresse. Denne adresse angiver ved hjælp af en streng alle fire netværksbeskrivelser: IP, netmask, netværk og broadcast. Det CIDR -notationen gør er, at den angiver antallet af bits der er låst - altså netmasken. Således vil IP-adressen 192.168.1.34/24 angive at de første 24 bits i netmasken er låst - altså en 255.255.255.0. Netværks- og broadcast adressen er automatisk sat til at være henholdsvis den første 192.168.1.0 og 192.168.1.255.</p>
 
@@ -1624,7 +1624,7 @@
 
 </div><!-- Pagebreak end -->
 
-<h2>Et praktisk eksempel</h2>
+<h3>Et praktisk eksempel</h3>
 
 <p>Lad os kigge på et eksempel: 10.129.56.0/26 (svarer til en netmaske på 255.255.255.192. I binært hedder netværket: 00001010.10000001.00111000.00000000, hvoraf de første 26 bit tilhører netværket og de sidste 6 tilhører værterne. De røde er netværkets bits og de grønne er værterne</p>
 
@@ -1680,7 +1680,7 @@
 
 <p>I ovenstående skema kan du se logikken bag subnet. I hver af de binære adresser kan de 6 sidste bit antage alle værdier kun separeret ved hjælp af de 2 første bit. Ovenstående opdeling kan altså inddele et klasse</p>
 
-<h2>Supernetting</h2>
+<h3>Supernetting</h3>
 
 <p>Supernetting er at udvide netværket ud over et "normalt" netværk. Det kan f.eks. være med netmasken 255.255.254.0 (CIDR /23). Hvis man f.eks. får adressen 10.129.56.83/23 til sin server, vil følgende altså være gældende:</p>
 
@@ -1723,7 +1723,7 @@
 	</tbody>
 </table>
 
-<h1>Beregninger i netværk</h1>
+<h2>Beregninger i netværk</h2>
 
 <p>Til at lave beregninger til et IP netværk findes der smarte programmer. F.eks. <a href="http://www.iptools.dk/ip-calc/" target="_blank">http://www.iptools.dk/ip-calc/</a></p>
 
@@ -1748,7 +1748,7 @@
 </figure>
 
 
-<h1>Henvisninger</h1>
+<h2>Henvisninger</h2>
 
 <p>Osi modellen (eng): <a href="http://en.wikipedia.org/wiki/OSI_model" target="_blank">http://en.wikipedia.org/wiki/OSI_model</a></p>
 
@@ -1774,7 +1774,7 @@
 
 <iframe width="420" height="315" src="https://www.youtube.com/embed/GSX1GlaznKM" frameborder="0" allowfullscreen></iframe>
 
-<h2>Litteraturliste</h2>
+<h3>Litteraturliste</h3>
 
 <p>Stein-Olsen & Stalheim s. 9 (1998): Netværk, Geir Steen-Olsen & Arnie Stalheim, IDG Bøger A/S, 1. udg. 1.oplag, ISBN: 87-7843-121-2 <br/>
 <a href="http://www.libris.dk/produkt/Introduktion_til_netvaerk_3_udgave.htm" target="_blank">http://www.libris.dk/produkt/Introduktion_til_netvaerk_3_udgave.htm</a></p>

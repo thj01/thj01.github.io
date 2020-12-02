@@ -40,13 +40,13 @@
 <div class="col-xs-9">
 	
 
-<div class="title">Netværk</div>
+<h1>Netværk</h1>
 
-<h1>Introduktion</h1>
+<h2>Introduktion</h2>
 
 <p>Denne guide sigter mod at give dig et indblik i hvordan et netværk er bygget op og et overblik over netværksbegreber. Der vil være en del teori og fagbegreber, som er nødvendige for at forstå, konfigurere og fejlfinde på et netværk.</p>
 
-<h2>Lidt historie</h2>
+<h3>Lidt historie</h3>
 
 <p>John Cage, der var ledende forsker hos SUN, er kendt for følgende to citater, som her </p>
 
@@ -69,11 +69,11 @@
 
 <p>Internettet som vi kender det i dag startede som projekt under det amerikanske forsvar i starten af 1960'erne </p>
 
-<h1>Netværk</h1>
+<h2>Netværk</h2>
 
 <p>TCP/IP protokollen er i dag standarden på netværk. Det er den der driver Internettet og holder styr på de mange computere der er på internettet.</p>
 
-<h2>Et overblik</h2>
+<h3>Et overblik</h3>
 
 <p>For at beskrive en enhed og dets netværk skal vi have følgende parametre.</p>
 
@@ -86,7 +86,7 @@
 </ul>
 
 
-<h2>IP-adresser</h2>
+<h3>IP-adresser</h3>
 
 <p>Alle computer på netværket har en unik IP-adresse, sådan at man kan sende data mellem dem. Her i denne guide vil vi tage udgangspunkt i IPv4 (herefter blot omtalt som IP), som er den mest udbredte, og den version din Ubuntu computer anvender (IPv6 vil blive gennemgået længere nede).</p>
 
@@ -126,7 +126,7 @@
 
 <p>Da vi har gennemgået hvad selve IP-adressen er så lad os kigge på de andre:</p>
 
-<h2>Netmaske</h2>
+<h3>Netmaske</h3>
 
 <p>Netmasken beskriver netværket ved at angive de bits netværket kan anvende. Prøv at se nedestående skema, hvor <span class="bold"><span class="red">N</span></span> står for de bits netværket kan bruge og <span class="bold"><span class="blue">L</span></span> for de bits der er utilgængelige (låste).</p>
 
@@ -176,13 +176,13 @@
 
 
 
-<h2>Netværks- og broadcastadresse</h2>
+<h3>Netværks- og broadcastadresse</h3>
 
 <p>Man anvender den først tilgængelige adresse i netværket som netværkets navn. I det ovenstående tilfælde vil det altså være den første af de tilgængelige adresser. Og da computere tæller fra 0 bliver det <span class="inl_cmd"><span class="blue">192</span> . <span class="blue">168</span> . <span class="blue">0</span>  . <span class="red">0</span></span> i vores hjemmenetværk. Denne adresse beskriver netværket (netværksnavnet), og må ikke anvendes af nogle enheder.</p>
 
 <p>Den sidste adresse i et netværk anvendes til <span class="inl_cmd">broadcast</span>. Det er en adresse alle computerne i netværket lytter til, og som kan anvendes til at sende globale beskeder igennem. I vores hjemmenetværk vil det altså være: <span class="inl_cmd"><span class="blue">192</span> . <span class="blue">168</span> . <span class="blue">0</span>  . <span class="red">255</span></span>. Denne adresse  må ikke anvendes af nogle enheder</p>
 
-<h2>Porte</h2>
+<h3>Porte</h3>
 
 <p>For at holde styr på de data der sendes kan man målrette dem forskellige tjenester.</p>
 
@@ -204,11 +204,11 @@
 
 <p><a href="https://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers" target="_blank">https://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers</a></p>
 
-<h1>Netværkets hardware</h1>
+<h2>Netværkets hardware</h2>
 
 <p>I et fysisk netværk indgår der noget hardware, som udfører forskellige opgaver. Herunder kommer vi ind på de to vigtigste enheder på et simpelt netværk: <span class="inl_cmd">Routere</span> og <span class="inl_cmd">switche</span>.</p>
 
-<h2>Switch'en</h2>
+<h3>Switch'en</h3>
 
 <p></p>
 
@@ -225,7 +225,7 @@
 
 <p>Når vi anvender det trådløse netværk anvender vi reelt nogle virtuelle porte. De er langt mindre effektive end de kablede, da der ikke er selvstændige sendere og modtagere til hver enhed. Der arbejdes konstant på at forbedre hastigheden og effektiviteten af trådløse de trådløse switche</p>
 
-<h2>Routeren</h2>
+<h3>Routeren</h3>
 
 <p></p>
 
@@ -236,7 +236,7 @@
 
 <p>Router skaber forbindelse mellem netværk. Den enhed vi har monteret i vores hjem, skaber forbindelse mellem internettet og det netværk vi har i hjemmet. Routere er afhængig af protokoller og arbejder på <span class="inl_cmd">Internet</span>-laget.</p>
 
-<h2>En hjemme-"router"</h2>
+<h3>En hjemme-"router"</h3>
 
 <p>En hjemmerouter er reelt en router og en switch der er pakket ind i den samme kasse. Se nedestående diagram</p>
 
@@ -248,7 +248,7 @@
 
 </figure>
 
-<h2>Kabler</h2>
+<h3>Kabler</h3>
 
 <p>til almindelige netværk anvendes der ethernet, og det stik man anvender kaldes RJ45. Et ethernet kabel har 8 ledere, som parvist er snoet om hinanden, hvilket er årsagen til at man også kalder kablerne for <span class="bold">T</span>wisteds <span class="bold">P</span>air (<span class="inl_cmd">TP</span>). Det gør man for at forhindre elektromagnetisk støj. Efterhånden er den metode ikke effektiv nok, så man er begyndt yderligere at skærme kablerne for elektromagnetisk støj (se længere nede).</p>
 
@@ -330,7 +330,7 @@
 
 <p>Til almindeligt hjemmebrug er <span class="inl_cmd">Cat5e</span> rigeligt og praktisk. Problemet med at gå op i cat6 og derover er, at de bliver for stive og har svært ved at "knække" rundt om hjørner. Men arbejder man et sted hvor data-strømmen er kritisk og at den skal sikres mest muligt, så skal man op i SSTP kabler.</p>
 
-<h1>Netværkstyper</h1>
+<h2>Netværkstyper</h2>
 
 <p>For at adskille og beskrive de forskellige typer af netværk anvender man følgende betegnelser:</p>
 
@@ -393,7 +393,7 @@
 
 <p>Når man installerer programmer fra nettet der lover at forbedre ens ydelse, eller som giver adgang til specielle typer af programmer, så bør man undersøge om det gøres gennem VPN.</p>
 
-<h1>Netværkstopologier</h1>
+<h2>Netværkstopologier</h2>
 
 <p>Ordet netværkstopologi henviser til den måde netværket er opbygget. Her vil to af dem blive gennemgået: Stjerne- og ringtopologi.</p>
 
@@ -434,11 +434,11 @@
 
 <p>Mere om topologier: <a href="https://en.wikipedia.org/wiki/Network_topology" target="_blank">https://en.wikipedia.org/wiki/Network_topology</a></p>
 
-<h1>TCP/IP</h1>
+<h2>TCP/IP</h2>
 
 <p>Den netværksprotokol vi i dag anvender i vores netværk er oprindeligt skabt af det amerikanske forsvarsministerium. Ideen var, at netværket skulle være i stand til at fungere selv hvis dele af netværket blev ødelagt. Det blev så til TCP/IP netværket. TCP står for <span class="inl_cmd"><b>T</b>ransmission <b>C</b>ontrol <b>P</b>rotocol</span> og er den del der sikrer at det er de korrekte data der afsendes og modtages. IP står for <span class="inl_cmd"><b>I</b>nternet <b>P</b>rotocol</span>, og er den del der sørger for at data kommer det rigtige sted hen.</p>
 
-<h2>Protokoller</h2>
+<h3>Protokoller</h3>
 
 <p>Netværk er en kompliceret størrelse, og selvom <span class="inl_cmd">TCP/IP</span>-modellen er den der anvendes på Internettet, så er der en anden model, som bliver anvendt meget. Bl.a. af Cisco, som er storleverandør af netværksudstyr. De anvender OSI modellen ( <span class="bold">O</span>pen <span class="bold">S</span>ystems <span class="bold">I</span>nterconnection ) som arbejder med 7 lag.</p>
 
@@ -503,13 +503,13 @@
 
 
 
-<h2>IP-adresser</h2>
+<h3>IP-adresser</h3>
 
 <p>En IP-adresse er en unik talkombination der entydigt indentificerer en enhed på et netværk. I dag arbejder man med to versioner af TCP/IP: IPv4 og IPv6. IPv4 er den "gamle" protokol, som i dag har det problem at man er ved at løbe tør for unikke IP-adresser, da den "kun" har <span class="math">\( 2^{32} = 4,3 \)</span> mia selvstændige adresser. IPv6 har til sammenligning <span class="math">\( 2^{128} = 3,4 \cdot 10^{38} \)</span> mulige kombinationer.</p>
 
 <p>Danmarks Radio (<a href="http:\\159.20.6.38" target="_blank">www.dr.dk</a>) har således IP-adressen: <span class="inl_cmd">159.20.6.38</span>.</p>
 
-<h2>TCP/IP pakker</h2>
+<h3>TCP/IP pakker</h3>
 
 <p>En TCP/IP pakke af fire lag:</p>
 
@@ -580,7 +580,7 @@
 
 <p>Det virker ret forvirrende at forstå, men vi ved alle hvor effektivt dette system er, da Internettet kører problemfrit.</p>
 
-<h2>Private netværk</h2>
+<h3>Private netværk</h3>
 
 <p>Som en del af <span class="inl_cmd">IPv4</span> specifikationen er der lavet nogle netværksadresser der er forbeholdt private netværk. Det specielle ved private netværk er, at IP-adresserne i netværket ikke kan routes. Det betyder, at en IP-adresse der tilhører et privat netværk ikke kan tilgås fra <span class="inl_cmd">WAN</span> siden af et netværk. De private netværk er:</p>
 

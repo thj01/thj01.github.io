@@ -39,10 +39,8 @@
 	
 <div class="col-xs-9">
 	
-<div class="title">Ubuntu server - Avanceret harddisk opsætning med LVM</div>
+<h1>Ubuntu server - Avanceret harddisk opsætning med LVM</h1>
 	
-<h1>Avanceret opsætning af harddiske</h1>
-
 <p>I dette afsnit vil vi sætte 2 harddiske op ved hjælp af LVM (<span class="bold">L</span>ogical <span class="bold">V</span>olume <span class="bold">M</span>anagement).</p>
 
 <p>Ideen med LVM er, at man laver nogle virtuelle partitioner, der spænder over en eller flere fysiske harddiske. Det betyder, at man ikke er bundet af størrelsen af de fysiske harddiske og at man løbende kan ændre størrelsen på sine virtuelle partitioner. Man kan f.eks. sætte en ny harddisk i sit system og så udvide sine eksisterende partitioner. Man behøver altså ikke få et nyt monteringspunkt. Man kan også flytte sine virtuelle partitioner fra en fysisk disk, så den kan fjernes/udskiftes. Man kan også tage backup af partitioner mens systemet kører</p>
@@ -128,7 +126,7 @@
 
 </figure>
 
-<h1>Klargøring af harddiske</h1>
+<h2>Klargøring af harddiske</h2>
 
 <p>Hvis du installerer i VirtualBox som jeg gør, eller har helt nye harddiske i, skal der først oprettes partitionstabeller på harddiskene. Ubunt vil selv gøre opmærksom på det, hvis den ikke er oprettet. Vælg den første disk og tryk <kbd>Enter</kbd>.</p>
 
@@ -162,7 +160,7 @@
 
 <p>Gør det samme ved den anden harddisk.</p>
 
-<h1>Opsæt LVM</h1>
+<h2>Opsæt LVM</h2>
 
 <p>Vælg <span class="terminal_valg2">Opsætning af den logiske diskenhedshåndtering (LVM)</span> </p>
 
@@ -184,7 +182,7 @@
 
 </figure>
 
-<h1>Opret en VG - Volume Group</h1>
+<h2>Opret en VG - Volume Group</h2>
 
 <p>Her skal vi oprette vores VG, som kaldes en diskenhedsgruppe på dansk. Jeg har valgt at bibeholde de engelske betegnelser i denne guide, da det er betegnelserne man skal anvende når man kigger i dokumentation og anvender kommandoer senere. Vælg: <span class="terminal_valg2">Opret diskenhedsgruppe</span></p>
 
@@ -226,7 +224,7 @@
 
 </figure>
 
-<h1>Opret LG'er - Logical Volumes</h1>
+<h2>Opret LG'er - Logical Volumes</h2>
 
 <p>Her skal vi oprette de 5 logiske enheder (partitioner), som skal udgøre opdelingen af vores system: system, serverdata, data, web og swap.</p>
 
@@ -360,7 +358,7 @@
 
 </figure>
 
-<h1>Afslut opsætningen af harddiskene</h1>
+<h2>Afslut opsætningen af harddiskene</h2>
 
 <p>Efter at du har sat LVM op, kommer du tilbage til hovedmenuen. Som du kan se er dine LG'er tilføjet til oversigten. Læg mærke til at de er tilføjet i alfabetisk orden alt efter din navngivning. Dem skal vi nu ind og vælge enkeltvis, for at vi kan konfigurere de sidste detaljer. Vælg det første arkiv som er <span class="inl_cmd">data</span>.</p>
 

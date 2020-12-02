@@ -39,7 +39,7 @@
 	
 <div class="col-xs-9">
 	
-<div class="title">Kommandoer <br/>Filsystemet</div>
+<h1>Kommandoer: Filsystemet</h1>
 	
 <p>Herunder får du præsenteret en række kommandoer, som giver dig mulighed for at administrere systemet, manipulere med filer, få informationer om hardware og netværk.</p>
 
@@ -47,11 +47,11 @@
 
 <p>En af de ting der også er nyt for mange der bruger Linux er de rettigheder filerne har. Alle filer og mapper får sat læse/skrive/køre rettigheder for henholdsvis ejeren, gruppen og alle andre. <span class="inl_cmd">root</span>-brugeren (bliver også kaldt supueruser)  er dog undtaget for denne regel. <span class="inl_cmd">root</span> kan alt på en Linux computer, så derfor skal kommandoer der har med selve operativsystemet og konfigurationsfiler køres med rootbrugerens rettigheder. Man skifter til roorbrugerens rettigheder ved at køre kommandoen <span class="inl_cmd">sudo</span>. Skal man køre mange kommandoer kan man køre kommandoen <span class="inl_cmd">sudo su</span>, og ændres brugeren til <span class="inl_cmd">root</span>. I disse dokumenter har jeg valgt at vise kommandoerne uden sudo foran.</p>
 
-<h1>Alt er filer</h1>
+<h2>Alt er filer</h2>
 
 <p>I Linux er alt filer. En mappe er egentlig bare en fil, der henviser til en samling af filer, og hardware er præsenteret ved hjælp af en fil. F.eks. har den første partition på den første SATA disk i systemet filadressen <span class="inl_cmd">/dev/sda1</span>, den næste <span class="inl_cmd">/dev/sda2</span> osv. Selve harddisken hedder i filsystemet <span class="inl_cmd">/dev/sda</span>.</p>
 
-<h1>Filsystemets opbygning</h1>
+<h2>Filsystemets opbygning</h2>
 
 <p>I Linuxsystemer er alt filer og filsystemet tager udgangspunkt i roden (/) hvorfå alle mapper er monteret. Mapperne i roden af filsystemet følger <a href="https://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard" target="_blank">FHS</a> (<span class="bold">F</span>ilesystem <span class="bold">H</span>ierarchy <span class="bold">S</span>tandarden) som bliver vedligeholdt af <a href="https://en.wikipedia.org/wiki/Linux_Foundation" target="_blank">Linux Foundattion</a>. Herunder er de mapper der ligger i roden i Ubuntu, med en kort forklaring om hvad de indeholder. De mapper der er markeret med fed er dem som man ofte vil støde i systemarbejde på Ubuntu.
 </p>
@@ -149,7 +149,7 @@
 	</tbody>
 </table>
 
-<h1>Mappestruktur</h1>
+<h2>Mappestruktur</h2>
 
 <p>Herunder er mappestrukturen for <span class="inl_cmd">/home</span> vist.</p>
 
@@ -181,7 +181,7 @@
 	<li>niveau - Hentet</li>
 </ol>
 
-<h1>Filer</h1>
+<h2>Filer</h2>
 
 <p>Linux anvender modsat windows både de store og små bogstaver i alfabetet. Derfor vil der under Linux være forskel på filerne <span class="inl_cmd">data</span> og <span class="inl_cmd">Data</span> og brugerne <span class="inl_cmd">tj</span> og <span class="inl_cmd">Tj</span>.</p>
 
@@ -214,7 +214,7 @@
 
 <p>Man anvender også efternavne på filer i Linux, for at de bliver læsbare for brugeren. Det gælder f.eks for tekstfiler som: <span class="inl_cmd">*.pdf</span> og <span class="inl_cmd">*.odt</span>, grafikformater som <span class="inl_cmd">*.jpg</span> og <span class="inl_cmd">*.png</span> og til at kende forskellige filtyper fra hinanden f.eks: <span class="inl_cmd">.sh</span> til shellscript og <span class="inl_cmd">.py</span> til Python-filer.</p>
 
-<h1>Navigation</h1>
+<h2>Navigation</h2>
 
 <p>For at navigere rundt i og orientere sig i filsystemet anvender man følgende kommandoer:</p>
 
@@ -227,7 +227,7 @@
 
 <p>Herunder angives eksempler med kommandoerne:</p>
 
-<h1><span class="inl_cmd">cd</span></h1>
+<h2><span class="inl_cmd">cd</span></h2>
 
 <table class="cmd_table">
 	<thead>
@@ -256,7 +256,7 @@
 	</tbody>
 </table>
 
-<h1><span class="inl_cmd">ls</span></h1>
+<h2><span class="inl_cmd">ls</span></h2>
 
 <table class="cmd_table">
 	<thead>
@@ -297,7 +297,7 @@
 	</tbody>
 </table>
 
-<h1><span class="inl_cmd">pwd</span></h1>
+<h2><span class="inl_cmd">pwd</span></h2>
 
 <table class="cmd_table">
 	<thead>
@@ -314,7 +314,7 @@
 	</tbody>
 </table>
 
-<h1><span class="inl_cmd">tree</span></h1>
+<h2><span class="inl_cmd">tree</span></h2>
 
 <p><span class="inl_cmd">tree</span> viser indholdet af en mappe i en træstruktur. Det følger ikke med som standard og skal derfor installeres først</p>
 
@@ -384,9 +384,9 @@
 	</tbody>
 </table>
 
-<h1>Størrelse af filer</h1>
+<h2>Størrelse af filer</h2>
 
-<h2><span class="inl_cmd">du</span> - Disk usage</h2>
+<h3><span class="inl_cmd">du</span> - Disk usage</h3>
 
 <p>For at se hvor meget filerne i en folder fylder anvendes <span class="inl_cmd">du</span>.</p>
 
@@ -399,7 +399,7 @@
 2,6M	/home/thoj
 </pre>
 
-<h2><span class="inl_cmd">df</span></h2>
+<h3><span class="inl_cmd">df</span></h3>
 
 <p>For at se den brugte plads på en partition anvendes kommandoen <span class="inl_cmd">df</span></p>
 

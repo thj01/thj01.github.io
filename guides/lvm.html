@@ -202,7 +202,7 @@ root@tjmainsrv:/home/thoj#
 <p><span class="inl_cmd">lsblk</span> skanner harddiske på en anden måde og får derfor placeret LVM's logiske volumes som logiske drev. Dette program giver et hurtigt og præcist overblik over ens fysiske partitioner, monteringspunkter og størrelsen af dem</p>
 
 
-<h1>Administration af Physical Volumes (PV)</h1>
+<h2>Administration af Physical Volumes (PV)</h2>
 
 <p>På dette niveau administreres de fysiske partitioner i LVM. Her tilføjer, fjerner og flytter man fysiske partitioner ind i og ud af LVM. Ved at tilføje partitioner til LVM giver det administratoren mulighed for at anvende disse diske til at opbygge Volume Groups (VG).</p>
 
@@ -211,9 +211,9 @@ root@tjmainsrv:/home/thoj#
 	<li>Flytte data mellem fysiske partitioner</li>
 </ul>
 
-<h2>Kommandoer til Physical Volumes</h2>
+<h3>Kommandoer til Physical Volumes</h3>
 
-<h3><span class="inl_cmd">pvcreate</span> - Tilføjer fysiske partitioner til LVM</h3>
+<h4><span class="inl_cmd">pvcreate</span> - Tilføjer fysiske partitioner til LVM</h4>
 
 <p>Tilføjer fysiske partitioner til LVM.</p>
 
@@ -224,7 +224,7 @@ root@tjmainsrv:/home/thoj#
 <code class="cmd">pvcreate /dev/sdb1 /dev/sdb2 /dev/sdb3</code>
 
 
-<h3><span class="inl_cmd">pvremove</span> - Fjerne fysiske partitioner fra LVM</h3>
+<h4><span class="inl_cmd">pvremove</span> - Fjerne fysiske partitioner fra LVM</h4>
 
 <p>Fjerner fysiske partitioner fra LVM.</p>
 
@@ -235,7 +235,7 @@ root@tjmainsrv:/home/thoj#
 <code class="cmd">pvremove /dev/sda3</code>
 
 
-<h3><span class="inl_cmd">pvmove</span> - Flytte data mellem fysiske partitioner i LVM</h3>
+<h4><span class="inl_cmd">pvmove</span> - Flytte data mellem fysiske partitioner i LVM</h4>
 
 <p>Flytter data fra en fysisk partition administreret af LVM til en anden. Denne kommando anvendes hvis der skal skiftes diske ud på systemet. På denne måde kan man flytte data fra en disk der skal udskiftes.</p>
 
@@ -245,9 +245,9 @@ root@tjmainsrv:/home/thoj#
 
 <code class="cmd">pvmove /dev/sdb2 /dev/sdb4</code>
 
-<h2>Overblik over Physical Volumes</h2>
+<h3>Overblik over Physical Volumes</h3>
 
-<h3><span class="inl_cmd">pvscan</span> - komprimeret overblik over fysiske partitioner</h3>
+<h4><span class="inl_cmd">pvscan</span> - komprimeret overblik over fysiske partitioner</h4>
 
 <p>Kommandoen giver et komprimeret overblik over de fysiske partitioner som LVM administrerer</p>
 
@@ -259,7 +259,7 @@ root@tjmainsrv:/home/thoj# pvscan
   Total: 1 [99,53 GiB] / in use: 1 [99,53 GiB] / in no VG: 0 [0   ]
 </pre> 
 
-<h3><span class="inl_cmd">pvs</span> - Information om Physical Volumes</h3>
+<h4><span class="inl_cmd">pvs</span> - Information om Physical Volumes</h4>
 
 <code class="cmd">pvs</code>
 
@@ -269,7 +269,7 @@ root@tjmainsrv:/home/thoj# pvs
   /dev/sda5  vg01 lvm2 a--  99,53g 9,94g
 </pre> 
 
-<h3><span class="inl_cmd">pvdisplay</span> - Detaljeret overblik over fysiske partitioner</h3>
+<h4><span class="inl_cmd">pvdisplay</span> - Detaljeret overblik over fysiske partitioner</h4>
 
 <p>Kommandoen giver et detaljeret overblik over de fysiske partitioner som LVM administrerer</p>
 
@@ -290,7 +290,7 @@ root@tjmainsrv:/home/thoj# pvdisplay
 </pre> 
 
 
-<h1>Administration af Volume Groups (VG)</h1>
+<h2>Administration af Volume Groups (VG)</h2>
 
 <p>På dette niveau administreres grupperne af diske der er koblet sammen i en VG. </p>
 
@@ -300,9 +300,9 @@ root@tjmainsrv:/home/thoj# pvdisplay
 	<li>Navngive og ændre navne på VG</li>
 </ul>
 
-<h2>Kommandoer til Volume Groups</h2>
+<h3>Kommandoer til Volume Groups</h3>
 
-<h3><span class="inl_cmd">vgcreate</span> - Opret Volume group</h3>
+<h4><span class="inl_cmd">vgcreate</span> - Opret Volume group</h4>
 
 <p>Opretter Volume Groups</p>
 
@@ -312,7 +312,7 @@ root@tjmainsrv:/home/thoj# pvdisplay
 
 <code class="cmd">vgcreate vg01 /dev/sdb1 /dev/sdb2 /dev/sdb3</code>
 
-<h3><span class="inl_cmd">vgremove - Fjern en Volume Group</span></h3>
+<h4><span class="inl_cmd">vgremove - Fjern en Volume Group</span></h4>
 
 <p>Fjerner en VG</p>
 
@@ -322,7 +322,7 @@ root@tjmainsrv:/home/thoj# pvdisplay
 
 <code class="cmd">vgremove vg02</code>
 
-<h3><span class="inl_cmd">vgreduce</span> - Fjerne partitioner fra en Volume group</h3>
+<h4><span class="inl_cmd">vgreduce</span> - Fjerne partitioner fra en Volume group</h4>
 
 <p>Fjerner partitioner fra en Volume Group</p>
 
@@ -332,7 +332,7 @@ root@tjmainsrv:/home/thoj# pvdisplay
 
 <code class="cmd">vgreduce vg01 /dev/sdb2</code>
 
-<h3><span class="inl_cmd">vgrename</span> - Ændr navnet på en Volume Group</h3>
+<h4><span class="inl_cmd">vgrename</span> - Ændr navnet på en Volume Group</h4>
 
 <p>Ændrer navnet på en Volume Group</p>
 
@@ -342,9 +342,9 @@ root@tjmainsrv:/home/thoj# pvdisplay
 
 <code class="cmd">vgrename vg02 nytvg</code>
 
-<h2>Overblik over Volume Groups</h2>
+<h3>Overblik over Volume Groups</h3>
 
-<h3><span class="inl_cmd">vgscan</span> - Viser oprettede Volume Groups</h3>
+<h4><span class="inl_cmd">vgscan</span> - Viser oprettede Volume Groups</h4>
 
 <code class="cmd">vgscan</code>
 
@@ -357,7 +357,7 @@ thoj@tjmainsrv:~$ sudo vgscan
   Found volume group "vg01" using metadata type lvm2
 </pre>
 
-<h3><span class="inl_cmd">vgs</span> - Information og Volume Groups</h3>
+<h4><span class="inl_cmd">vgs</span> - Information og Volume Groups</h4>
 
 <p><span class="inl_cmd">vgs</span></p>
 
@@ -368,7 +368,7 @@ root@tjmainsrv:/home/thoj# vgs
 </pre> 
 
 
-<h3><span class="inl_cmd">vgdisplay</span> - Udspecificerer data om Volume Groups</h3>
+<h4><span class="inl_cmd">vgdisplay</span> - Udspecificerer data om Volume Groups</h4>
 
 <p>Viser udspecificerede data om Volume Groups</p>
 
@@ -402,7 +402,7 @@ thoj@tjmainsrv:~$ sudo vgdisplay
 </pre> 
 
 
-<h1>Administration af Logical Volumes (LV)</h1>
+<h2>Administration af Logical Volumes (LV)</h2>
 
 <p>I de to ovenstående afsnit om Physical Volumes og Volume Groups administrere man hvordan de fysiske diske skal tilgås af LVM. I dette afsnit arbejdes der med placering af data.</p>
 
@@ -412,11 +412,11 @@ thoj@tjmainsrv:~$ sudo vgdisplay
 	<li>Ændre størrelse på LVM's partitioner</li>
 </ul>
 
-<h2>Kommandoer til Logical Volumes</h2>
+<h3>Kommandoer til Logical Volumes</h3>
 
 <p>Læg mærke til at LVM partitioner har følgende adresse: <span class="inl_cmd">/dev/*Volume Group*/*Logical volume*</span>.</p>
 
-<h3><span class="inl_cmd">lvcreate</span> - Opretter Logical Volumes</h3>
+<h4><span class="inl_cmd">lvcreate</span> - Opretter Logical Volumes</h4>
 
 <p>Opretter Logical Volumes og sætter størrelsen</p>
 
@@ -470,7 +470,7 @@ thoj@tjmainsrv:~$ sudo vgdisplay
 	</tbody>
 </table>
 
-<h3><span class="inl_cmd">lvremove</span> - nedlægger Logisk Volumes</h3>
+<h4><span class="inl_cmd">lvremove</span> - nedlægger Logisk Volumes</h4>
 
 <code class="cmd">lvremove *partition*</code>
 
@@ -478,7 +478,7 @@ thoj@tjmainsrv:~$ sudo vgdisplay
 
 <code class="cmd">lvremove /dev/vg01/billeder</code>
 
-<h3><span class="inl_cmd">lvrename</span> - Ændre navnet på en Logical Volume</h3>
+<h4><span class="inl_cmd">lvrename</span> - Ændre navnet på en Logical Volume</h4>
 
 <code class="cmd">lvrename *vgnavn* *gammelt_navn* *nyt_navn</code>
 
@@ -486,11 +486,11 @@ thoj@tjmainsrv:~$ sudo vgdisplay
 
 <code class="cmd">lvrename vg02 billeder fotos</code>
 
-<h2>Ændring af størrelse på Logical Volumes</h2>
+<h3>Ændring af størrelse på Logical Volumes</h3>
 
 <p></p>
 
-<h3><span class="inl_cmd">lvextend</span> - udvide størrelsen på en Logical Volume</h3>
+<h4><span class="inl_cmd">lvextend</span> - udvide størrelsen på en Logical Volume</h4>
 
 <code class="cmd">lvextend -L *størrelse* *partition*</code>
 
@@ -498,7 +498,7 @@ thoj@tjmainsrv:~$ sudo vgdisplay
 
 <code class="cmd">lvextend -L +2G /dev/vg01/web</code>
 
-<h3><span class="inl_cmd">lvreduce</span> - formindske størrelsen på en Logical Volume</h3>
+<h4><span class="inl_cmd">lvreduce</span> - formindske størrelsen på en Logical Volume</h4>
 
 <code class="cmd">lvreduce -L *størrelse* *partition*</code>
 
@@ -509,7 +509,7 @@ thoj@tjmainsrv:~$ sudo vgdisplay
 
 
 
-<h2>Overblik over Logical Volumes</h2>
+<h3>Overblik over Logical Volumes</h3>
 
 
 <code class="cmd">lvscan</code>
@@ -573,7 +573,7 @@ root@tjmainsrv:/home/thoj# lvdisplay
 
 
 
-<h1>Læsestof til LVM</h1>
+<h2>Læsestof til LVM</h2>
 
 <p></p>
 

@@ -39,12 +39,10 @@
 <div class="col-xs-9">
 	
 	
-<div class="title">Backup med Linux</div>
-
-<div class="title"><span class="red">DENNE GUIDE ER VED AT BLIVE OPDATERET.</span></div>
+<h1>Backup med Linux</h1>
 
 	
-<h1>Backup guiden</h1>
+<h2>Backup guiden</h2>
 
 <p>I denne guide vil du lære at tage backup ved hjælp af SystemrescueCD. SystemrescueCD er en system disk designet til at man kan udføre systemarbejde, backup og systemredning ved hjælp af blot en disk.</p>
 
@@ -115,7 +113,7 @@
 <p>Jeg regner med at man som udgangspunkt har sat sig ind i hvordan man tilgår computerens partitioner og har en grundlæggende forståelse for kommandolinien. Hvis du gerne vil have det genopfriskes kan du gå til guiden: <a href="harddiske.html" target="_blank">Administration og montering af harddiske, USB- og netværksdrev</a>.</p>
 
 
-<h1>SystemrescueCD</h1>
+<h2>SystemrescueCD</h2>
 
 <p>SystemrescueCD er et værktøj der er baseret på Linux, og som giver adgang til at kunne udføre low level administration af computere, herunder adgang til FSArchiver. SystemrescueCD er et komplet styresystem der downloades i en ISO fil der kan brændes ud på en CDROM eller USB Disk. Det bliver ofte opdateret, så sørg for at have den nyeste version. Her anvendes version 5.0.1.</p>
 
@@ -167,7 +165,7 @@
 
 </figure>
 
-<h2>Opsætning af SystemrescueCD</h2>
+<h3>Opsætning af SystemrescueCD</h3>
 
 <p>Hvis man ønsker at anvende Systemrescue på netværk er der nogle enkelte trin man skal have gjort:</p>
 
@@ -249,7 +247,7 @@ Password:
 <span class="green">root@sysresccd</span> <span class="blue">/root</span> % 
 </pre>
 
-<h2>Overblik over computerens drev</h2>
+<h3>Overblik over computerens drev</h3>
 
 <p>For at få et overblik over computerens drev og partitioner anvendes:</p>
 
@@ -284,7 +282,7 @@ sda               100G
 └─sda1 ntfs       500M
 </pre>
 
-<h1>Forberedelse af backup - Ubuntu</h1>
+<h2>Forberedelse af backup - Ubuntu</h2>
 
 <p>Man kan med fordel rense sin maskine for overflødige filer. Det kan spare tid/plads især på Windows (op til flere GB). Der er skrevet <span class="inl_cmd">(opt)</span> ud for nogle af punkterne. Det betyder at der er nogle ting jeg ville gøre/fjerne. Især på windows bør det overvejes om man ønsker at opdatere først, fjerne gendannelsespunkterne ...</p>
 
@@ -298,20 +296,20 @@ sda               100G
 
 <p>Disse trin udføres før maskinen bootes op med SystemrescueCD</p>
 
-<h2>Tøm Hentede filer og opdater Ubuntu (før)</h2>
+<h3>Tøm Hentede filer og opdater Ubuntu (før)</h3>
 	<code class="cmd">rm ~/Hentede\ filer/*</code>
 	<code class="more_cmd">sudo apt-get update && sudo apt-get dist-upgrade -y</code>
 
-<h2>Fjern unødenvendige systemfiler</h2>
+<h3>Fjern unødenvendige systemfiler</h3>
 	<code class="cmd">sudo apt-get autoremove -y</code>
 	<code class="cmd">sudo apt-get clean -y</code>
 
-<h2>Fjern ældre kerner</h2>
+<h3>Fjern ældre kerner</h3>
 	<code class="cmd">sudo apt-get purge $(dpkg -l linux-{image,headers}-"[0-9]*" | awk '/ii/{print $2}' | grep -ve $(uname -r | sed -r 's/-[a-z]+//') | sed ':a;N;$!ba;s/\n/ /g')</code>
 
 
 
-<h1>Forberedelse af backup - Windows</h1>
+<h2>Forberedelse af backup - Windows</h2>
 
 <p>På Windows er procedyren normal at man skal anvende GUI til at rense computeren. Det kan dog være en ret omfattende og tidskrævende proces. Derfor har jeg anvendt følgende metode, som kun tager en brøkdel af den tid det normalt tager</p>
 
@@ -334,7 +332,7 @@ sda               100G
 	</li>
 </ul>
 
-<h3>Tøm hentede filer og opdater Windows (før)</h3>
+<h4>Tøm hentede filer og opdater Windows (før)</h4>
 
 <ul class="disc">
 	<li>Tøm "Hentede filer"</li>
@@ -342,7 +340,7 @@ sda               100G
 	<li>Genstart og tjek at alle programmer virker efter opdateringen</li>
 </ul>
 
-<h3>Fjern gendannelsespunker (opt)</h3>
+<h4>Fjern gendannelsespunker (opt)</h4>
 
 <p><b><span class="red">VIGTIGT: </span></b>Hvis du gør dette bliver dine gendannelsespunkter slettet. </p>
 
@@ -369,26 +367,26 @@ sda               100G
 <p>Boot herefter Windowssystemet med SystemrescueCD.</p>
 
 
-<h2>Med systemrescueCD</h2>
+<h3>Med systemrescueCD</h3>
 
-<h3>Monter systemdrevet</h3>
+<h4>Monter systemdrevet</h4>
 
 <code class="cmd">ntfs-3g /dev/sda2 /mnt/windows</code>
 
-<h3>Fjern swap- og hibernate filerne</h3>
+<h4>Fjern swap- og hibernate filerne</h4>
 
 <code class="cmd">rm /mnt/windows/pagefile.sys</code>
 <code class="more_cmd">rm /mnt/windows/hiberfil.sys</code>
 
 <p>Både swap- og hibernate filerne gendannes automatisk når windows startes igen, og de fylder ofte det samme som ens RAM-lager.</p>
 
-<h3>Fjern opdateringsfilerne</h3>
+<h4>Fjern opdateringsfilerne</h4>
 
 <p>Opdateringsfilerne bliver ikke anvendt til noget efter de har været brugt til at opdatere med. Det kan dreje sig om flere GB.</p>
 
 <code class="cmd">rm -rf /mnt/windows/Windows/SoftwareDistribution/Download/*</code>
 
-<h1>Generelt om backup</h1>
+<h2>Generelt om backup</h2>
 
 <p>Når vi endeligt skal til at lave backups af vores system er det ligegyldigt om det er et Linux eller et Windows system. Vi laver en bakcup af den harddiskpartition de ligger på, og derfor er det, det samme vi skal gøre på begge systemer.</p>
 
@@ -407,7 +405,7 @@ sda               100G
 
 <p>Læs mere om montering af drev: <a href="http://www.vidas.dk/guides/harddiske.html" target="_blank">http://www.vidas.dk/guides/harddiske.html</a></p>
 
-<h1>FSArchiever</h1>
+<h2>FSArchiever</h2>
 
 <p><span class="inl_cmd">fsarchiver</span> (<span class="bold">F</span>ile<span class="bold">S</span>ystem <span class="bold">A</span>rchiever) er grundlæggende et program der gemmer indholdet af et filsystem til et pakket arkiv. Herunder er nogle af dets features:</p>
 
@@ -482,13 +480,13 @@ sda               100G
 
 <p>Quickstart: <a href="http://www.fsarchiver.org/QuickStart" target="_blank">http://www.fsarchiver.org/QuickStart</a></p>
 
-<h2>Et overblik</h2>
+<h3>Et overblik</h3>
 
 <p>Kommandoerne er bygget op over samme algoritme der følger programnavnet:</p>
 
 <code class="cmd">fsarchiver <span class="red">[Kommando]</span> <span class="blue">[Optioner]</span> <span class="green">[Image-fil]</span> <span class="cyan">[partition(er)]</span></code>
 
-<h3><span class="red">[Kommando]</span></h3>
+<h4><span class="red">[Kommando]</span></h4>
 
 <p>Der findes 3 typer kommandoer.</p>
 
@@ -643,7 +641,7 @@ Space used in filesystem: 	33.54 GB (36018147328 bytes)
 [sdb1            ] [ext4       ] [&lt;unknown&gt;       ] [   100.00 GB] [  8] [ 17] [/dev/sdb1                           ] [a9325cdc-bd8b-4795-b514-59f1f7453235  ] 
 </pre>
 
-<h3><span class="blue">[Optioner]</span></h3>
+<h4><span class="blue">[Optioner]</span></h4>
 
 <p>... konfigurerer FSArchiver ned i detaljer. Herunder er nogle af mulighederne listet:</p>
 
@@ -712,11 +710,11 @@ Space used in filesystem: 	33.54 GB (36018147328 bytes)
 
 <p>Henvisning: <a href="http://www.fsarchiver.org/Compression" target="_blank">http://www.fsarchiver.org/Compression</a></p>
 
-<h3><span class="green">[Image-fil]</span></h3>
+<h4><span class="green">[Image-fil]</span></h4>
 
 <p>... angiver filnavnet på arkivet</p>
 
-<h3><span class="cyan">[partition(er)]</span></h3>
+<h4><span class="cyan">[partition(er)]</span></h4>
 
 <p>... angiver hvilke partitioner der skal pakkes.</p>
 
@@ -727,7 +725,7 @@ Space used in filesystem: 	33.54 GB (36018147328 bytes)
 
 <code class="cmd">fsarchiver restfs -v ~/backupfil.fsa  id=1,dest=/dev/sda2,mkfs=ntfs</code>
 
-<h2>Eksempler</h2>
+<h3>Eksempler</h3>
 
 <code class="cmd">fsarchiver savefs -v -z 3 -j 4 -L 'backup Ubuntu 010116' /mnt/backup/ubuntu010116.fsa /dev/sda1</code>
 
@@ -870,7 +868,7 @@ Distributed under the GPL v2 license (GNU General Public License v2).
 </pre>
 
 
-<h1>Partimage</h1>
+<h2>Partimage</h2>
 
 <p><span class="inl_cmd">partimage</span> er et ældre backup program, der er udviklet af samme som har udviklet <span class="inl_cmd">fsarchiver</span>. Der er nogle væsentlige forskelle mellem <span class="inl_cmd">partimage</span> og <span class="inl_cmd">fsarchiver</span>:</p>
 
@@ -945,7 +943,7 @@ Distributed under the GPL v2 license (GNU General Public License v2).
 	</tbody>
 </table>
 
-<h2>Et overblik</h2>
+<h3>Et overblik</h3>
 
 <p>Kommandoerne er bygget op over samme algoritme der følger programnavnet:</p>
 
@@ -1116,7 +1114,7 @@ Options:
 ===============================================================================
 </pre>
 
-<h2>Eksempler</h2>
+<h3>Eksempler</h3>
 
 <code class="cmd">partimage -f3 -d -b -V20480 save /dev/sda2 /mnt/backup/win7_system</code>
 
@@ -1208,7 +1206,7 @@ Options:
 
 <p>Som ovenfor - dog uden <span class="inl_cmd">-S</span> (simulate).</p>	
 
-<h2>Partimage som GUI</h2>
+<h3>Partimage som GUI</h3>
 
 <p><span class="inl_cmd">partimage</span> kan også anvendes ved hjælp af en GUI, hvor man har et fuldt overblik over mulighederne i programmet. I eksemplet herunder bliver der taget backup af <span class="inl_cmd">/dev/sda2</span> til filen <span class="inl_cmd">/mn/backup/win7_system</span>. GUI processen er dog langt mere omstændig end kommandolinien, men kan være mere overskuelig.</p>
 
@@ -1285,7 +1283,7 @@ Options:
 
 </figure>
 
-<h1><span class="inl_cmd">dd</span></h1>
+<h2><span class="inl_cmd">dd</span></h2>
 
 <p>Det kan også lade sig gøre at tage backup og klone diske uden "smarte" programmer. Til det formål anvendes <span class="inl_cmd">dd</span>.</p>
 
@@ -1339,7 +1337,7 @@ Options:
 
 <p>angåenden <span class="inl_cmd">bs=64k</span>. Som standard er <span class="inl_cmd">dd</span> sat til at læse 512 b (½ kb). Det skyldes at programmet er designet til at være bagudkompatibel. Hvis harddisken er uden fejl kan vi roligt sætte størrelsen til 64 kb eller 128 kb. Det kan mere end fordoble hastigheden på kopieringen.</p>
 
-<h2>Eksempler</h2>
+<h3>Eksempler</h3>
 
 
 <p>Lav en iso-fil af en CD-ROM der ligger i <span class="inl_cmd">/dev/sr0</span>:</p>

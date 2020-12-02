@@ -39,16 +39,16 @@
 	
 <div class="col-xs-9">
 	
-<div class="title">Installation af <br/>Ubuntu Gnome 16.04 LTS</div>
+<h1>Installation af Ubuntu Gnome 16.04 LTS</h1>
 
-<h1>Guidens formål</h1>
+<h2>Guidens formål</h2>
 
 <p>Guidens formål er at installere Ubuntu Gnome 16.04 LTS på en ny computer - herefter blot omtalt som Ubuntu. I denne guide bliver der vist på en Virtuel maskine, sat op ved hjælp af i VirtualBox med 4 GB RAM og 100 GB harddisk. Denne installation og konfiguration kan bruges som udgangspunkt for resten af guiden.</p>
 
 <p>Installationsprocessen giver på mange områder sig selv, og der vil kun komme uddybende forklaringer hvor det er nødvendigt.</p>
 
 
-<h1 id="back_from_windows_prepare">Dualboot</h1>
+<h1 id="back_from_windows_prepare">Dualboot</h2>
 
 <p>Det er muligt at installere Ubuntu selvom du i forvejen har windows på din PC. Det gøres ved hjælp af det som kaldes <span class="inl_cmd">dualboot</span>.</p>
 
@@ -70,7 +70,7 @@
 	
 </ol>
 
-<h1>Hent Ubuntu Gnome</h1>
+<h2>Hent Ubuntu Gnome</h2>
 	
 <p>Ubuntu Gnome hentes fra: <a href="https://wiki.ubuntu.com/UbuntuGNOME/GetUbuntuGNOME#Download_Disk_Image" target="_blank">https://wiki.ubuntu.com/UbuntuGNOME/GetUbuntuGNOME#Download_Disk_Image</a>. Vælg <span class="inl_cmd"><b>16.04.x</b> Long-term Support</span> - 64-bit Direct Download.</p>
 
@@ -83,7 +83,7 @@
 </figure>
 	
 	
-<h1>Installation af Ubuntu</h1>
+<h2>Installation af Ubuntu</h2>
 
 <p>Når du booter op installations DVD/USB'en kommer Ubuntu's "Velkommen" vindue frem. Her er der to ting du skal tage stilling til sproget og om du vil prøve at køre Ubuntu direkte fra opstartsmediet eller om du vil gå direkte igang med installationen. Vælger du at <span class="knap">Prøv Ubuntu</span>, starter computeren op i RAM og fungerer som en almindelig installation, dog uden at der installeres noget. </p>
 
@@ -110,13 +110,13 @@
 
 </figure>
 
-<h2 id="fortryd_avanceret_HD_opsaetning">Opsætning af harddisk</h2>
+<h2 id="fortryd_avanceret_HD_opsaetning">Opsætning af harddisk</h3>
 
 <p>Det næste der skal gøres er at forberede harddisken. I denne guide bliver der gennemgået en simpel opsætning af harddisken, hvor vi lader Ubuntu formatere disken med et system- og et swapdrev. Vær opmærksom på at nedestående metode sletter al indhold på din harddisk.</p>
 
 <p>Ønsker du en lave en installation med flere partitioner skal du følge guiden her: <a href="install_16.04.LTS_advanced_HD.html" target="_blank">install_16.04.LTS_advanced_HD.html</a>.</p>
 
-<h3>... ved nyinstallation</h3>
+<h4>... ved nyinstallation</h4>
 
 <p>For at lave en simpel installation skal du markere punktet "Slet disk og installer Ubuntu" og vælge <span class="knap">Installér nu</span></p>
 
@@ -140,7 +140,7 @@
 
 </figure>
 
-<h3>... ved dualboot</h3>
+<h4>... ved dualboot</h4>
 
 <p>For at lave en simpel installation skal du markere punktet "Installer Ubuntu sammen med Windows 10" og vælge <span class="knap">Installér nu</span></p>
 
@@ -165,7 +165,7 @@
 </figure>
 
 
-<h2 id="fra_avanceret_HD_opsaetning">Lokation og tastetur</h2>
+<h2 id="fra_avanceret_HD_opsaetning">Lokation og tastetur</h3>
 
 <p>De næste to indstillinger giver sig selv og Ubuntu sætter selv de rigtige indstillinger. Tryk <span class="knap">Fortsæt</span> 2 gange.</p>
 
@@ -187,7 +187,7 @@
 
 </figure>
 
-<h2>Brugeroprettelse</h2>
+<h3>Brugeroprettelse</h3>
 
 <p>Den første bruger der bliver oprettet er ret vigtig, da det er denne bruger der har mulighed for at udføre systemarbejde på computeren. Vær opmærksom på, at Ubuntu skelner mellem store og små bogstaver. Det betyder at der er forskel på brugernavnene <span class="inl_cmd">thoj</span> og <span class="inl_cmd">Thoj</span>. Det er normen at bruge små bogstaver til brugernavne, da man ellers risikerer problemer når man skal arbejde med andre operativsystemer (f.eks Windows)</p>
 
@@ -224,7 +224,7 @@
 
 <p>Når installationen er færdig skal du fjerne installationsmediet og genstarte Ubuntu.</p>
 
-<h1>Første start</h1>
+<h2>Første start</h2>
 
 <p>Når Ubuntu starter op kommer du til loginskærmen.</p>
 
@@ -287,7 +287,7 @@
 
 <p>Gnome 3 kan utrolig mange ting, men man bliver hurtig glad for, at man kan tilgå alle funktionerne ved at trykke på <span class="inl_cmd">windows-tasten</span></p>
 
-<h2>Ved installation på Virtualbox</h2>
+<h3>Ved installation på Virtualbox</h3>
 
 <p>For at få det optimale ud af en Virtualbox installation bør man installere gæstetilføjelserne, som sætter det virtualiserede system optimalt op. For at installere Gæstetilføjelserne skal du gå op i menuen og vælge: <span class="inl_cmd">Enheder</span> &#8594; <span class="inl_cmd">Indsæt Gæstetilføjelser CD-aftryk</span>.</p>
 
@@ -347,7 +347,7 @@
 
 </figure>
 
-<h1>Opdatering af Ubuntu</h1>
+<h2>Opdatering af Ubuntu</h2>
 
 <p>Før vi går videre med at konfigurere Ubuntu skal vi opdatere. Der er 3 ting vi skal have gjort:</p>
 
@@ -433,7 +433,7 @@ See "man sudo_root" for details.
 <p>Herefter køres opgraderingen igennem. Alle programmer som er installerer gennem <span class="inl_cmd">apt</span> eller ved hjælp af en PPA (mere herom senere) vil automatisk blive opdateret. Vær opmærksom på at den første opdatering kan være omfattende. Og alt efter Internethastigheden og CPU, så vil det tage et stykke tid.</p>
 
 
-<h2>Fjern overflødige pakker</h2>
+<h3>Fjern overflødige pakker</h3>
 
 <p>Efterhånden som der installeres flere opdateringer, så risikerer man, at der er programmer der ikke bliver anvendt mere. Dem kan vi fjerne med nedestående kommando:</p>
 
@@ -447,7 +447,7 @@ Læser tilstandsoplysninger... Færdig
 0 opgraderes, 0 nyinstalleres, 0 afinstalleres og 0 opgraderes ikke.
 </pre>
 
-<h2>PPA - Personal Package Archive</h2>
+<h3>PPA - Personal Package Archive</h3>
 
 <p>Denne guide tager udgangspunkt i at du anvender Ubuntu's LTS version, som sikrer at der kommer sikkerhedsopdateringer i 5 år.Det har så til gengæld den konsekvens, at nogle af de programmer der bliver installeret efter et stykke tid kan være en ældre version.</p>
 
@@ -505,11 +505,11 @@ Listing... Færdig
 <code class="cmd">sudo apt upgrade -y</code>
 
 
-<h1>Konfiguration af Ubuntu</h1>
+<h2>Konfiguration af Ubuntu</h2>
 
 <p>I dette afsnit vil vi installere en lang række drivers, codecs og programmer. Det er de programmer jeg installere som standard og som jeg anvender i mit workflow.</p>
 
-<h2>Plugins, java, drivers og codecs</h2>
+<h3>Plugins, java, drivers og codecs</h3>
 
 <p>Når du installere nedestående skal du være opmærksom på at du to gange skal godkende nogle licenser. Det gælder nogle Microsoft fonte, som er "nice to have" og en driver/codec der gør at du kan afspille film.</p>
 
@@ -553,7 +553,7 @@ Listing... Færdig
 
 </figure>
 
-<h2>Kontorprogrammer</h2>
+<h3>Kontorprogrammer</h3>
 
 <ul class="disc">
 	<li>Geany - Teksteditor</li>
@@ -572,7 +572,7 @@ Listing... Færdig
 
 <code class="more_cmd">sudo apt install -y geany geany-plugins</code>
 
-<h2>Media</h2>
+<h3>Media</h3>
 
 <ul class="disc">
 	<li>VLC - Media Afspiller</li>
@@ -583,7 +583,7 @@ Listing... Færdig
 
 <code class="cmd">sudo apt install -y vlc audacity</code>
 
-<h2>Grafik</h2>
+<h3>Grafik</h3>
 
 <ul class="disc">
 	<li>Gimp - Billedredigeringsprogram med div. plugins</li>
@@ -606,7 +606,7 @@ Listing... Færdig
 <code class="cmd">sudo apt install -y gimp gimp-lensfun gimp-plugin-registry gimp-texturize inkscape</code>
 
 
-<h2>Utilities</h2>
+<h3>Utilities</h3>
 
 <ul class="disc">
 	<li>gparted - harddisk opsætning</li>
@@ -701,7 +701,7 @@ Listing... Færdig
 
 </figure>
 
-<h2>Kommando linie</h2>
+<h3>Kommando linie</h3>
 
 <ul class="disc">
 	<li>tree - Viser en filer og mapper i en træstruktur</li>
@@ -716,7 +716,7 @@ Listing... Færdig
 
 <code class="cmd">sudo apt install -y tree nmap tasksel inxi htop tasksel syslinux-utils</code>
 
-<h2>Browsere</h2>
+<h3>Browsere</h3>
 
 <span class="afsnit">Google Chrome</span>
 
@@ -725,7 +725,7 @@ Listing... Færdig
 <code class="more_cmd">sudo apt update</code>
 <code class="more_cmd">sudo apt install -y google-chrome-stable</code>
 
-<h2>VirtualBox</h2>
+<h3>VirtualBox</h3>
 
 <p><span class="red">Må ikke installeres på en virtuel maskine</span></p>
 
@@ -736,7 +736,7 @@ Listing... Færdig
 <code class="more_cmd">sudo apt update</code>
 <code class="more_cmd">sudo apt install -y dkms virtualbox-5.1</code>
 
-<h2>Netværk</h2>
+<h3>Netværk</h3>
 
 <p>Man har ofte brug for at dele filer mellem forskellige PC'er og der findes mange løsninger til dette. En af de simpleste er <span class="inl_cmd">Nitroshare</span> (<a href="https://nitroshare.net/" target="_blank">https://nitroshare.net/</a>), som kører på Linux, Windows og Mac. Dette program skal blot installeres og så vil det automatisk finde alle andre maskiner der kører programmet.</p>
 
@@ -777,7 +777,7 @@ Listing... Færdig
 
 </figure>
 
-<h1>Graffikkort</h1>
+<h2>Graffikkort</h2>
 
 <p>Da jeg har kun erfaring med NVIDIA graffikkort, er det kun dem der bliver gennemgået her.</p>
 
@@ -788,7 +788,7 @@ Listing... Færdig
 	<p>Graffikkort drivere er meget anvanceret, og der er meget der kan gå galt under installation og opdatering - og det uanset om vi taler om Windows, Mac eller Linux. Derfor er det også et af de steder hvor der kan komme mest bøvl - især hvis kernen er blevet opdateret.</p>
 </blockquote>
 
-<h2>Forberedelse</h2>
+<h3>Forberedelse</h3>
 
 <p>På Linux er den letteste og mest effektive måde at installere og opdatere programmer og drivere ved hjælp af kommandolinien. Fremgangsmåden er:</p>
 
@@ -810,7 +810,7 @@ Listing... Færdig
 
 <p>Grunden til at vi genstarter maskinen er, at hardwaredrivers arbejder tæt sammen med kernen. Og der er det vigtigt at fungerer rigtigt. Det sikrer man ved at genstarte computeren.</p>
 
-<h2>Find hardware</h2>
+<h3>Find hardware</h3>
 
 <p>For at finde vores graffikhardware anvender vi <span class="inl_cmd">inxi</span> med <span class="inl_cmd">-G</span>, som vi installerede før.</p>
 
@@ -824,7 +824,7 @@ Graphics:  Card: NVIDIA GM206 [GeForce GTX 960]
 
 <p>Her kan vi altså læse at vi har et NVIDIA GeForce GTC 960.</p>
 
-<h2>Find driver</h2>
+<h3>Find driver</h3>
 
 <p>Der er to måder hvorpå du kan se hvilken driver der er installeret. Du kan undersøge hvilke pakker du har installeret og "fange" (<span class="inl_cmd">grep</span>) alle dem med nvidia:</p>
 
@@ -867,7 +867,7 @@ Mon May 29 21:35:02 2017
 
 <p>Giver ingen af de to et resultat, så skyldes det at du ikke har nvidia-drivere kørende.</p>
 
-<h2>Installer drivere</h2>
+<h3>Installer drivere</h3>
 
 <p>Ovenfor tilføjede vi en PPA med nvidiadrivere, og nu kan vi undersøge hvilke drivere vi kan anvende. Det gør vi ved hjælp af <span class="inl_cmd">apt-cache search</span></p>
 
@@ -904,7 +904,7 @@ nvidia-381 - NVIDIA binary <span class="red">driver</span> - version 381.22
 	
 </ul>
 
-<h1>Indstil driver</h1>
+<h2>Indstil driver</h2>
 
 <p>For at indstille NVIDIA kortet skal du anvende NVIDIA's eget program. Søg efter <span class="inl_cmd">nvidia x server settings</span>. Læg mærke til at det allerede kommer frem efter jeg har har indtastet <span class="inl_cmd">nvi</span>.</p>
 
@@ -927,7 +927,7 @@ nvidia-381 - NVIDIA binary <span class="red">driver</span> - version 381.22
 
 </figure>
 
-<h2>Geninstaller driver</h2>
+<h3>Geninstaller driver</h3>
 
 <p>Hvis du kommer ud for at din computer begynder at alve fejlmeddelelser efter en opdatering af kerne eller graffikkort, så kan du ofte fjerne problemet ved at geninstallere graffikdriveren. Det skyldes nogle tekniske ting, og er et problem der opleves på alle platforme (Windows, Mac og Linux).</p>
 
@@ -1007,7 +1007,7 @@ nvidia-381 - NVIDIA binary <span class="red">driver</span> - version 381.22
 <p>Som et lille bonusinfo. Mens jeg har siddet og skrevet dette har mit system været plaget af fejlmeddelelser når jeg startede systemet op. Efter at have kørt ovenstående igennem og geninstalleret driveren er fejlmeddelelserne væk. Hardwaredrivere er langt mere komplekse og griber dybere ind i et operativsystem end "normale" programmer, så det er noget vi må lære at leve med og omgå ... uanset om vi anvender Windows, Mac eller Linux.</p>
 
 
-<h2>Dual Graffikkort</h2>
+<h3>Dual Graffikkort</h3>
 
 <p>Har du NVIDIA og Intel grafik i din computer bør du installere programmet <span class="inl_cmd">Prime Indicator</span>. Det laver et ikon i menulinien, hvor du hurtigt kan skifte mellem de to graffikkort.</p>
 
@@ -1017,7 +1017,7 @@ nvidia-381 - NVIDIA binary <span class="red">driver</span> - version 381.22
 
 
 
-<h1>Afsluttende arbejde</h1>
+<h2>Afsluttende arbejde</h2>
 
 <p>Til allersidst gør vi følgende:</p>
 

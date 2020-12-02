@@ -40,13 +40,13 @@
 <div class="col-xs-9">
 	
 
-<div class="title">FTP-server med Linux</div>
+<h1>FTP-server med Linux</h1>
 
 <p>FTP er en funktion der giver brugere adgang til filer på serveren. Herunder opsætter vi en FTP server, hvor serverens brugere får adgang til deres hjemmemapper og intet andet. På denne måde kan de hver især tilgå deres filer og hjemmeside. I denne guide anvendes <span class="inl_cmd">vsftpd</span>. En af fordelene er, at man ved hjælp af FTP og en LAMP server kan give brugere på et system adgang til en personlig hjemmeside. Det vil blive gennemgået i webserver guiden.</p>
 
 <p>Vær opmærksom på at FTP er en ældre protokol, hvis hovedformål var at give let adgang til filer. I denne guide gennemgås en installation af en let tilgængelig FTP-server, hvor der er adgang for oprettede brugere på serveren, men også en anonym adgang, der kan anvendes af alle. FTP kan konfigureres så overførsler bliver krypteret, men det det vil ikke blive gennemgået i denne guide. Til sidst i guiden vil der være et kapitel med forslag til hvordan installationen kan sikres lidt mere og brugerne.</p>
 
-<h1>Installer <span class="inl_cmd">vsftpd</span></h1>
+<h2>Installer <span class="inl_cmd">vsftpd</span></h2>
 
 <p>Installer <span class="inl_cmd">vsftp</span> med følgende kommando:</p>
 
@@ -59,7 +59,7 @@
 	<li>der bliver en offentlig mappe alle kan tilgå og downloade fra (anonymous FTP)</li>
 </ol>
 
-<h1>Sæt brugerrettigheder</h1>
+<h2>Sæt brugerrettigheder</h2>
 
 <p>For at aktivere brugerne på systemet skal der aktiveres to linier i <span class="inl_cmd">/etc/vsftpd.conf</span> ved at fjerne <span class="inl_cmd">#</span> og der skal tilføjes en linie. Åbn filen med <span class="inl_cmd">nano</span>:</p>
 
@@ -82,7 +82,7 @@ allow_writeable_chroot=YES <span class="red">&lt;--- Hele denne linie tilføjes<
 
 <code class="cmd">sudo systemctl restart vsftpd</code>
 
-<h1>Opret Anononym FTP</h1>
+<h2>Opret Anononym FTP</h2>
 
 <p>For at lave en offentlig FTP server, hvor folk kan downloade fra ændres følgende linie:</p>
 
@@ -111,7 +111,7 @@ drwxr-xr-x  2 root ftp   4096 jul  2 23:48 ftp
 drwx------  2 root root 16384 jul  2 11:30 lost+found
 </pre>
 
-<h1>FTP med Filezilla</h1>
+<h2>FTP med Filezilla</h2>
 
 <p>Installer Filezilla på klienten.</p>
 
@@ -157,7 +157,7 @@ thoj@mainsrv:~$ ls /srv/ftp/ -al | grep testfile
 
 <p>Læg mærke til at FTP-brugeren er låst til sin hjemmemappe. Havde vi ikke chrooted brugeren, ville brugeren have haft adgang til hele filstrukturen.</p>
 
-<h1>FTP med kommandolinien</h1>
+<h2>FTP med kommandolinien</h2>
 
 <p>Man kan også logge på ftp serveren ved hjælp af kommandolinien. Her kører man blot kommandoen:</p>
 
@@ -256,7 +256,7 @@ debug		macdef		proxy		send
 
 <p>Læs mere: <a href="http://www.cyberciti.biz/faq/linux-unix-ftp-commands/" target="_blank">http://www.cyberciti.biz/faq/linux-unix-ftp-commands/</a></p>
 
-<h1>FTP med browseren</h1>
+<h2>FTP med browseren</h2>
 
 <p>Ved at anvende browseren får man læseadgang til FTP drevet. I stedet for at starte linien med <span class="inl_cmd">http</span> anvender man <span class="inl_cmd">ftp</span>, f.eks: <span class="inl_cmd">ftp:192.168.0.10</span>.</p>
 
@@ -288,7 +288,7 @@ debug		macdef		proxy		send
 
 </figure>
 
-<h1>Mere sikkerhed</h1>
+<h2>Mere sikkerhed</h2>
 
 <p>Som det er lige nu udbydes FTP-tjenesten til alle brugerne på computeren. Udfordringen er, at et potentielt giver adgang til alle brugernes mapper på computeren ved hjælp af FTP. For at omgå dette kan man lave en liste med tilladte brugere. På den måde kan man oprette en specifik bruger, som man kan anvende til FTP - uden at andre brugere er tilgænglige.</p>
 
@@ -345,7 +345,7 @@ ftp> exit
 
 <p>Herefter kan brugere der har adgang til FTP-serveren tilføjes løbende.</p>
 
-<h1>Læs mere</h1>
+<h2>Læs mere</h2>
 
 <p><a href="https://security.appspot.com/vsftpd.html" target="_blank">https://security.appspot.com/vsftpd.html</a></p>
 

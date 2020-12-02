@@ -40,11 +40,11 @@
 <div class="col-xs-9">
 	
 
-<div class="title">Harddiske på Linux</div>
+<h1>Harddiske på Linux</h1>
 
 
 
-<h1>Lagerenheder på Linux systemer</h1>
+<h2>Lagerenheder på Linux systemer</h2>
 
 <p>I Linux er lagerenheder integreret i filsystemet på to forskellige niveauer: den fysiske disk/partition og monteringspunktet. Skemaet herunder beskriver hvordan de fysiske enheder er præsenteret i filsystemet.</p>
 
@@ -140,7 +140,7 @@ sr0     11:0    1 1024M  0 rom
 
 <p>Det er disse enheder der "monteres" i filsystemet. Der skal være en <span class="inl_cmd">/</span>, men ellers kan man navngive ens monteringspunkter som man vil, f.eks: <span class="inl_cmd">/minedata</span>, <span class="inl_cmd">Backup</span>. Man kan med fordel montere en fysisk partition som f.eks. <span class="inl_cmd">/home</span>. På den måde kan man installere et nyt styresystem, og montere brugerens data og indstillinger direkte på det nye system. I ovenstående tilfælde kunne man f.eks. have <span class="inl_cmd">/dev/sda1</span> monteret som <span class="inl_cmd">/</span>.</p>
 
-<h1>Montering af filsystemer</h1>
+<h2>Montering af filsystemer</h2>
 
 <p>Linux er et netværksoperativsystem og derfor er Linux ligeglad med om det er et fysisk drev eller et netværksressource der skal monteres. Drev kan monteres ved opstart gennem filen <span class="inl_cmd">/etc/fstab</span>, men kan også anvendes til løbende montere drev efter efter behov og afmontere dem med <span class="inl_cmd">umount</span>.</p>
 
@@ -178,7 +178,7 @@ sr0     11:0    1 1024M  0 rom
 </table>
 
 
-<h2>Optioner</h2>
+<h3>Optioner</h3>
 
 <p>Optionerne er dem som sætter egenskaberne for delingen. De startes med et <span class="inl_cmd">-o</span> fulgt af optionerne adskilt af kommaer (,). Herunder er et eksempel på et netværks drev der bliver monteret, hvor <span class="inl_cmd">/mnt/backup</span> bliver monteret som "read-only" og brugeren <span class="inl_cmd">tj</span> til at verificere. Som det ses herunder kræver Ubuntu at få brugerens password.</p>
 
@@ -222,7 +222,7 @@ Password for tj@//10.0.2.10/alle:
 	</tbody>
 </table>
 
-<h2><span class="inl_cmd">umask</span></h2>
+<h3><span class="inl_cmd">umask</span></h3>
 
 <p>Som standard bliver filer oprettet med læse/skrive rettigheder til alle (<span class="inl_cmd">666</span>) og mappper med læse/skrive/udføre rettigheder (<span class="inl_cmd">777</span>). Hvis man vil ændre det gøres det med <span class="inl_cmd">umask</span>.</p>
 
@@ -394,7 +394,7 @@ drwx------  2 tj tj 4096 maj  4 12:59 <span class="red">test</span>dir1
 <p>Læs mere: <a href="http://www.cyberciti.biz/tips/understanding-linux-unix-umask-value-usage.html" target="_blank">http://www.cyberciti.biz/tips/understanding-linux-unix-umask-value-usage.html</a></p>
 
 
-<h2>Montering af lokale partitioner</h2>
+<h3>Montering af lokale partitioner</h3>
 
 <p></p>
 
@@ -432,7 +432,7 @@ drwx------  2 tj tj 4096 maj  4 12:59 <span class="red">test</span>dir1
 
 <code class="cmd">mount -t vfat /dev/sdb1 /mnt/USB01</code>
 
-<h2>Montering af netværksdrev</h2>
+<h3>Montering af netværksdrev</h3>
 
 <p><span class="inl_cmd">mount</span> anvendes også til montering af netværksdrev. En væsentlig forskel er, at man ofte har brug for at kunne logge på med sit brugernavn og adgangskode.</p>
 
@@ -459,13 +459,13 @@ drwx------  2 tj tj 4096 maj  4 12:59 <span class="red">test</span>dir1
 	</tbody>
 </table>
 
-<h3>Montering af NFS shares (Linux)</h3>
+<h4>Montering af NFS shares (Linux)</h4>
 
 <code class="cmd">mount 10.0.2.10:/srv/backup /mnt/backup -o user=tj</code>
 
 <p>Før du får adgang til NFS-delingen bliver du bedt om at give dit password.</p>
 
-<h3>Montering af SMB shares (Windows shares)</h3>
+<h4>Montering af SMB shares (Windows shares)</h4>
 
 <p>For at montere SMB/NTFS shares anvendes <span class="inl_cmd">cifs</span> -  <span class="bold">C</span>ommon <span class="bold">I</span>nternet <span class="bold">F</span>ile <span class="bold">S</span>ystem</p>
 
@@ -551,13 +551,13 @@ Password for tj@//10.0.2.10/alle:
 
 
 
-<h2>Afmontering af filsystemer</h2>
+<h3>Afmontering af filsystemer</h3>
 
 <p>Filsystemer afmonteres med <span class="inl_cmd">umount</span>. Eks:</p>
 
 <code class="cmd">umount /dev/sdb1</code>
 
-<h1>Konfigurering af harddiske på Linux</h1>
+<h2>Konfigurering af harddiske på Linux</h2>
 
 <p>For at montere filsystemer permanent på et linux system skal man anvende <span class="inl_cmd">/etc/fstab</span>. Herunder er vist et eksempel hvor Ubuntu selv har sat harddisken op under installationen, og hvor vi efterfølgende har installeret en ny harddisk.</p>
 
@@ -660,7 +660,7 @@ UUID=9b832ca1-217e-4308-bdf3-225b789946c9 none            swap    sw            
 
 <p>I dette setup er der i alt 6 partitioner, hvoraf de 5 er styres af LVM (<span class="bold">L</span>ogical <span class="bold">V</span>olume <span class="bold">M</span>anagement). I Ubuntu får alle fysiske harddiske en UUID (<span class="bold">U</span>niversally <span class="bold">U</span>nique <span class="bold">ID</span>entifiers).</p>
 
-<h2>Tilføje ny harddisk </h2>
+<h3>Tilføje ny harddisk </h3>
 
 <p>Denne guide er rettet mod LVM, men det kan være godt at vide hvordan man tilføjer nye harddiske til Linux. Anvender man LVM er det kun trin 1 der skal udføres, da resten skal gøres i LVM. Dette vil blive gennemgået senere.</p>
 
@@ -670,7 +670,7 @@ UUID=9b832ca1-217e-4308-bdf3-225b789946c9 none            swap    sw            
 	<li>Konfiguration af <span class="inl_cmd">/etc/fstab</span></li>
 </ol>
 
-<h3>Konfiguration af harddisken med <span class="inl_cmd">fdisk</span></h3>
+<h4>Konfiguration af harddisken med <span class="inl_cmd">fdisk</span></h4>
 
 <p>Først skabes et overblik med <span class="inl_cmd">lsblk</span>. Herunder er outputtet fra ovenstående konfiguration isat en ny 100GB SATA disk</p>
 
@@ -858,7 +858,7 @@ Enhed      Opstart Start      Slut  Sektorer  Size Id Type
 /dev/sdb1           2048 209715199 209713152  100G 83 Linux
 </pre>
 
-<h2>Ændring af ID/Type</h2>
+<h3>Ændring af ID/Type</h3>
 
 <p>Her overfor er harddisken sat op til et Linux-filsystem. Ønsker du at sætte den op til et andet filsystem (f.eks. NTFS) kan du gøre det ved at køre <span class="inl_cmd">fdisk</span> igen - eller gøre det efter trin 7 før du skriver til disken.</p>
 
@@ -1025,7 +1025,7 @@ Disk identifier: 0xc0b6b3c8
 
 <p><span class="red">NOTE: </span>For at fortsætte guiden skal du ændre harddisken tilbage til et Linux Filsystem (83). Kontroller med <span class="inl_cmd">fdisk -l /dev/sdb</span>.</p>
 
-<h2>Formatering af disken</h2>
+<h3>Formatering af disken</h3>
 
 <p>Linux har mange forskellige filsystemer, hvor <span class="inl_cmd">ext2</span> og <span class="inl_cmd">ext4</span> er det mest almindelige. Herunder er det vist hvordan man formaterer de forskellige filsystemer:</p>
 
@@ -1083,7 +1083,7 @@ Skriver superblokke og filsystemets registreringsinformation: færdig
 </pre>
 
 
-<h2>Fast montering af disken</h2>
+<h3>Fast montering af disken</h3>
 
 <p>I første kapitel gennemgik vi hvordan man mounter partitioner. Herunder vil vi gøre sådan at harddisken automatisk bliver monteret når computeren starter op. Vi vil montere mappen i <span class="inl_cmd">/data</span>.</p>
 
@@ -1164,7 +1164,7 @@ sda      8:0    0  100G  0 disk
 └─sda1   8:1    0   92G  0 part /
 </pre>
 
-<h2>Kontrol af harddiske</h2>
+<h3>Kontrol af harddiske</h3>
 
 <p>Ubuntu kører normalt med <span class="inl_cmd">ext4</span>-filsystem, og det kan man kontrollere med <span class="inl_cmd">e2fsck</span>. Kommandoen skal køres mens partitionen ikke er monteret. Det betyder at hvis man vil kontrollere rod-drevet, så skal computeren genstartes med en live linuxdistribution som f.eks. SystemrescueCD (<a href="https://www.system-rescue-cd.org/Download" target="_blank">https://www.system-rescue-cd.org/Download</a>). Fordelen ved at anvende den fremfor Ubuntu selv er, at SystemrescueCD ikke mounter nogle drev.</p>
 
@@ -1178,7 +1178,7 @@ e2fsck 1.42.13 (17-May-2015)
 <span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ sudo mount /dev/sdb1
 </pre>
 
-<h3>Hvor meget plads er der?</h3>
+<h4>Hvor meget plads er der?</h4>
 
 <p>For at finde ud af hvor meget plads der er tilgængelig på systemet anvendes kommandoen <code class="cmd">df -h -t ext4</code></p>
 
@@ -1213,7 +1213,7 @@ Filsystem      Størr Brugt  Tilb Brug% Monteret på
 /dev/sdb1        99G   60M   94G    1% /data
 </pre>
 
-<h3>Tvinge ændringer igennem</h3>
+<h4>Tvinge ændringer igennem</h4>
 
 <p>Hvis man har lavet ændringer på en harddisk med <span class="inl_cmd">fdisk</span>, så kan man risikere, at kernen ikke kan arbejde med de nye informationer. Det kan løses enten ved at genstarte maskinen, eller at anvende programmet <span class="inl_cmd">partprobe</span>.</p>
 

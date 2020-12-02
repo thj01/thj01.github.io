@@ -39,10 +39,10 @@
 	
 <div class="col-xs-9">
 	
-<div class="title">OpenSSH</div>
+<h1>OpenSSH</h1>
 
 
-<h1>Hvad er SSH</h1>
+<h2>Hvad er SSH</h2>
 
 <p>SSH (<span class="bold">S</span>ecure <span class="bold">SH</span>ell) er en protokol der giver krypteret og sikker adgang til andre maskiner over netværk. Det som OpenSSH tilbyder er:</p>
 
@@ -54,7 +54,7 @@
 	<li>Stærke godkendelsesprocedurer (Strong authentication) der bl.a. forhindrer IP- og DNS-spoofing - ved at det både er bruger og netværksenhed der anvendes til autentifikation..</li>
 </ul>
 
-<h2>Indhold</h2>
+<h3>Indhold</h3>
 
 <p>I dette materiale vil følgende blive gennemgået.</p>
 
@@ -66,7 +66,7 @@
 	<li>Kommandoer ved hjælp af SSH</li>
 </ol>
 
-<h2>Denne guide</h2>
+<h3>Denne guide</h3>
 
 <p>Guiden tager udgangspunkt i to Linux computere på samme private netværk.</p>
 
@@ -125,7 +125,7 @@
        valid_lft forever preferred_lft forever
 </pre>
 
-<h2>SSH-klienter</h2>
+<h3>SSH-klienter</h3>
 
 <ul class="fat_li none">
 	<li>Linux</li>
@@ -150,7 +150,7 @@
 
 
 
-<h1>Installation</h1>
+<h2>Installation</h2>
 
 <p>Normalt vil man sørge for at OpenSSH-serveren er installeret fra start, men det skal tilvælges. Har du ikke gjort det kan du installere det med følgende kommando:</p>
 
@@ -209,7 +209,7 @@ Connection to 192.168.0.52 closed.
 </pre>
 
 
-<h1>Basale ændringer</h1>
+<h2>Basale ændringer</h2>
 
 <p>Her vil vi vise hvordan vi kan lave de mest basale sikkerheds ændringer. Du bør som minimum ændre dem med røde stjerner.</p>
 
@@ -227,7 +227,7 @@ Connection to 192.168.0.52 closed.
 
 <code class="cmd">sudo nano /etc/ssh/sshd_config</code>
 
-<h2>Fjern root-login</h2>
+<h3>Fjern root-login</h3>
 
 <p>Root bør ikke have adgang til at logge på over SSH, da det giver evt. hackere direkte adgang til systemet. Skal en bruger kunne udføre administrationsarbejde på skal det være rettigheder der er givet lokalt på fjernmaskinen.</p>
 
@@ -247,7 +247,7 @@ PermitRootLogin no
 
 <code class="cmd">sudo service ssh reload</code>
 
-<h2>Ændring af portnummer</h2>
+<h3>Ændring af portnummer</h3>
 
 <p>Ved at ændre portnummeret gør man det sværere for hackere at bryde ind. Derfor ændrer vi port-nummeret.</p>
 
@@ -264,7 +264,7 @@ Port 22 <span class="red">&#8592; Ændr dette tal til 222</span>
 
 <code class="cmd">sudo service ssh reload</code>
 
-<h3>Test</h3>
+<h4>Test</h4>
 
 <p>Hvis vi nu prøver at logge ind som før sker der følgende:</p>
 
@@ -296,7 +296,7 @@ Last login: Sun May 28 12:31:22 2017 from 192.168.0.61
 </pre>
 
 
-<h2>Tilladte brugere</h2>
+<h3>Tilladte brugere</h3>
 
 <p>En anden effektiv måde at begrænse brugerne på systemer er, at indføre en positiv- eller negativliste over brugere. Tilføj linierne <span class="inl_cmd">AllowUsers</span> eller <span class="inl_cmd">DenyUsers</span> i bunden af filen. Hvilen man anvender må være en overvejelse over de brugere man har. Er der få der skal have adgang vil <span class="inl_cmd">AllowUsers</span> være simplest at administrere. Er der få der ikke skal have vil det være lettest at anvende <span class="inl_cmd">DenyUsers</span>.</p>
 
@@ -318,7 +318,7 @@ Denyusers wipe asti
 
 <code class="cmd">sudo service ssh reload</code>
 
-<h2>Velkomst hilsen</h2>
+<h3>Velkomst hilsen</h3>
 
 <p>Hvis du vil have at brugeren får nogle informationer ved login, kan det gøres gennem filen <span class="inl_cmd">/etc/issue.net</span>. For at gøre det skal du fjerne hash foran linien <span class="inl_cmd">#Banner /etc/issue.net</span> i konfigurationsfilen <span class="inl_cmd">/etc/ssh/sshd_config</span>.</p>
 
@@ -370,7 +370,7 @@ tj@192.168.0.52's password:
 
 </pre>
 
-<h2>Hold liv i forbindelsen</h2>
+<h3>Hold liv i forbindelsen</h3>
 
 <p>SSH serveren forventer at der er aktivitet på forbindelsen, og hvis den udebliver afsluttes forbindelsen. Da det er noget klienten skal udføre skal der ændres/tilføjes i <span class="inl_cmd">/etc/ssh/ssh_config</span>. Tilføj følgende i afslutningen af filen, så "vækkes" forbindelsen hvert 20' sekund.</p>
 
@@ -378,7 +378,7 @@ tj@192.168.0.52's password:
 
 <p>På den måde vil din forbindelse blive fornyet hver 20 sekund</p>
 
-<h1>Nøglefiler</h1>
+<h2>Nøglefiler</h2>
 
 <p>Nøglefiler hæver sikkerhedsniveauet på SSH adgang betragteligt. I stedet for at verificere brugeren ud fra et indtastet password, så bliver "genkender" SSH-serveren brugeren ud fra om to filer passer sammen.</p>
 
@@ -395,7 +395,7 @@ tj@192.168.0.52's password:
 
 <p>Sikkerheden opnås det ovenstående ved, at brugeren bliver "trusted". Så længe SSH-brugeren har sine credentials har han adgang til serveren. Vi vil her oprette nøgler til en bruger, kopiere dem over på serveren og herefter fjerne muligheden for at logge på serveren ved hjælp af passwords.</p>
 
-<h2>Konfigurer SSH-serveren</h2>
+<h3>Konfigurer SSH-serveren</h3>
 
 <p>Rediger <span class="inl_cmd">/etc/ssh/sshd_config</span> på SSH-serveren.</p>
 
@@ -409,7 +409,7 @@ AuthorizedKeysFile     %h/.ssh/authorized_keys
 
 <code class="cmd">sudo service ssh reload</code>
 
-<h2>Opret nøgler på klienten</h2>
+<h3>Opret nøgler på klienten</h3>
 
 <p>Alle SSH nøgler skal lægges i mappen <span class="inl_cmd">~/.ssh</span>. Så først tjekker vi om mappen findes.</p> 
 
@@ -468,7 +468,7 @@ drwxr-xr-x 45 tj tj 4096 maj 29 00:18 ..
 -rw-r--r--  1 tj tj  444 maj 28 12:03 known_hosts
 </pre>
 
-<h2>Registrer din nøglefil på serveren</h2>
+<h3>Registrer din nøglefil på serveren</h3>
 
 <p>Registrer den offentlige nøgle på din bruger på serveren:</p>
 
@@ -552,7 +552,7 @@ Last login: Sun May 28 12:38:43 2017 from 192.168.0.61
 
 <p>Fremover logger du ind ved hjælp af dine nøglefiler.</p>
 
-<h2>Fjern password adgang</h2>
+<h3>Fjern password adgang</h3>
 
 <p>Når SSH-serveren har fået tilføjet alle de offentlige nøgler den skal bruge, kan vi låse den. Det gør vi ved at redigere i filen <span class="inl_cmd">/etc/ssh/sshd_config</span></p>
 
@@ -575,7 +575,7 @@ PasswordAuthentication no
 
 <code class="cmd">sudo service ssh reload</code>
 
-<h1>Filkopiering</h1>
+<h2>Filkopiering</h2>
 
 <p>Til at kopiere anvender vi <span class="inl_cmd">scp</span> - <span class="bold">S</span>ecure <span class="bold">C</span>o<span class="bold">P</span>y. Programmet fungerer på følgende måde:</p>
 
@@ -600,7 +600,7 @@ testfil                                       100%    0     0.0KB/s   00:00
 <span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ 
 </pre>
 
-<h1>Kommandoer</h1>
+<h2>Kommandoer</h2>
 
 <p>Man kan sende kommandoer (tekststrenge) med SSH ved at tilføje dem i anførselstegn f.eks.</p>
 
@@ -638,7 +638,7 @@ testfil                                       100%    0     0.0KB/s   00:00
 <span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$
 </pre>
 
-<h2>Superbruger kommandoer</h2>
+<h3>Superbruger kommandoer</h3>
 
 <p>Her overfor har vi kun arbejdet med brugerens egne kommandoer, men man kan have brug for at sende <span class="inl_cmd">sudo</span> kommandoer afsted. Lad os prøve at oprette brugeren <span class="inl_cmd">test1</span> på serveren: </p>
 
@@ -691,9 +691,9 @@ Connection to 10.0.2.10 closed.
 
 <p>Generelt bør man ikke udføre superbruger kommandoer på denne måde. Der bør man oprette en ren SSH forbindelse til serveren. Men det kan være meget anvendeligt i scripts.</p>
 
-<h1>Drevmontering</h1>
+<h2>Drevmontering</h2>
 
-<h2>Installer SSHFS</h2>
+<h3>Installer SSHFS</h3>
 
 <p>Installer med kommandoen:</p>
 
@@ -703,7 +703,7 @@ Connection to 10.0.2.10 closed.
 
 <p>Vi vil oprette en mappe på SSH-serveren med navnet <span class="inl_cmd">ssh_drive</span>. Denne mappe biver så monteret lokalt i vores homedirectory i en mappe ved samme navn</p>
 
-<h2>Oprette mapper</h2>
+<h3>Oprette mapper</h3>
 
 <p>Opret lokal mappe</p>
 
@@ -727,7 +727,7 @@ Connection to 10.0.2.10 closed.
 drwxrwxr-x 2 thoj thoj 4096 maj 29 08:53 ssh_drive
 </pre>
 
-<h2>Monter drevet ved hjælp af SSHFS</h2>
+<h3>Monter drevet ved hjælp af SSHFS</h3>
 
 <p>Brug nedestående kommando</p>
 
@@ -751,7 +751,7 @@ thoj@10.0.2.10:/home/thoj/<span class="red">ssh_drive</span>  19092180    45136 
 
 
 
-<h1>Læs mere</h1>
+<h2>Læs mere</h2>
 
 <p>SSH/OpenSSH/Configuring
 <a href="https://help.ubuntu.com/community/SSH/OpenSSH/Configuring" target="_blank">

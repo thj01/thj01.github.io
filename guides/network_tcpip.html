@@ -40,9 +40,9 @@
 <div class="col-xs-9">
 	
 
-<div class="title">TCP/IP</div>
+<h1>TCP/IP</h1>
 
-<h1>TCP/IP modellen</h1>
+<h2>TCP/IP modellen</h2>
 
 <p>Herunder vil jeg kort gennemgå TCP/IP modellen. Det er vigtigt for at forstå den måde et TCP/IP netværk fungerer, så man senere kan fejlsøge og fejlrette. </p>
 
@@ -50,7 +50,7 @@
 
 <p>Grundlæggende sørger TCP/IP for, at data der skal sendes frem og tilbage over netværk kommer frem til det rigtige sted og at der ikke er fejl i de data der modtages:</p>
 
-<h2>Modellens opbygning</h2>
+<h3>Modellens opbygning</h3>
 
 <p><span class="inl_cmd">TCP/IP</span> modellen er opdelt i 4 lag, hvor data bliver klargjort til at blive sendt ud på et netværk. </p>
 
@@ -71,7 +71,7 @@
 
 </figure>
 
-<h3>Applikation</h3>
+<h4>Applikation</h4>
 
 <p>Sørger for at data inddeles i mindre pakker når de skal sendes og samler dem igen når de modtages.</p>
 
@@ -84,7 +84,7 @@
 </figure>
 
 
-<h3>Transport</h3>
+<h4>Transport</h4>
 
 <p>På transportlaget får datapakkerne en <span class="inl_cmd">TCP</span>- eller <span class="inl_cmd">UDP</span>header. I modellen anvendes <span class="inl_cmd">TCP</span>, men det kunne lige så godt være <span class="inl_cmd">UDP</span>.</p>
 
@@ -104,7 +104,7 @@
 
 <p><span class="inl_cmd">UDP</span> står for <span class="bold">U</span>ser <span class="bold">D</span>ontrol<span class="bold"> P</span>rotocol. Protokollen er fungere lidt anderledes en <span class="inl_cmd">TCP</span>, da den er designet til at levere en konstant datastrøm, f.eks. til Internetbaserede filmtjenester. Når man anvender <span class="inl_cmd">UDP</span> risikerer man at tabe datapakker, hvilket ikke betyder så meget når vi taler om lyd og video, når det kun er få datapakker der tabes. Selve kontrollen af <span class="inl_cmd">UDP pakker foregår på applikations</span>-laget (lag 4), sådan at pakkerne blot bliver afvist af systemet hvis de er fejlbehæftede. På den måde sikres de korrekte data, uden at datastrømmen afbrydes.</p>
 
-<h3>Internet</h3>
+<h4>Internet</h4>
 
 <p>På Internet laget får hver datapakke en <span class="inl_cmd">IP</span>-adresse. <span class="inl_cmd">IP</span> står for <span class="bold">I</span>nternet <span class="bold">P</span>rotocol. Indtil videre har <span class="inl_cmd">TCP/IP</span> protokollen kun handlet om at sikre og organisere data, men her sættes der en adresse på, så det er den rigtige computer der modtager pakken. Det kan f.eks. være IP-adressen: <span class="inl_cmd">192.168.0.65</span>.</p>
 
@@ -117,7 +117,7 @@
 </figure>
 
 
-<h3>Link</h3>
+<h4>Link</h4>
 
 <p>De ovenstående link sørger for at <span class="inl_cmd">TCP/IP</span> protokollen kan sørge for data på et netværk hvor computere anvender protokollen. Med link-laget kan man gøre datapakkerne protokoluafhængige, sådan at pakkerne kan behandles af hardware. Det gøres ved hjælp af <span class="inl_cmd">MAC</span>-adresser. <span class="inl_cmd">MAC</span> står for <span class="bold">M</span>edia <span class="bold">A</span>ccess <span class="bold">C</span>ontrol.</p>
 
@@ -133,7 +133,7 @@
 
 
 
-<h2>Dataflow</h2>
+<h3>Dataflow</h3>
 
 <p>Herunder er der et diagram der viser hvordan data kommer fra en computer til en anden. Afsendercomputeren sender data igennem <span class="inl_cmd">TCP/IP</span>-protokollen. I det pakkerne kommer ud på lokalnettet finder de ud af modtageren findes på et andet netværk.</p>
 
@@ -147,7 +147,7 @@
 
 <p>For at få adgang til det andet netværk bliver pakkerne ledt igennem routeren ud på internettet, hvor der er DNS-servere der ved hvor den router der giver adgang til modtagercomputerens netværk er. Her bliver pakkerne sendt hen, for at modtager-routeren kan sende pakkerne videre til modtageren. Her bliver data fra <span class="inl_cmd">TCP/IP</span> pakkerne gendannet.</p>
 
-<h2>Adskillelse mellem lagene</h2>
+<h3>Adskillelse mellem lagene</h3>
 
 <p>Internettet består af en masse mindre netværk, som er forbundet ved hjælp af routere. Hver gang vi passerer en laver vi et hop, som faktisk er det begreb man anvender for at tælle antallet af routere man har passeret. Når du sidder ved computeren og skal have kontakt med f.eks. dr.dk, så går du igennem 7 routere. Prøv at se nedestående kommando.</p>
 
@@ -169,7 +169,7 @@ traceroute to dr.dk (159.20.6.38), 30 hops max, 60 byte packets
 
 
 
-<h1>Andre modeller</h1>
+<h2>Andre modeller</h2>
 
 <p>Netværk er en kompliceret størrelse, og selvom <span class="inl_cmd">TCP/IP</span>-modellen er den der anvendes på Internettet, så er der en anden model, som bliver anvendt meget. Bl.a. af Cisco, som er storleverandør af netværksudstyr. De anvender OSI modellen ( <span class="bold">O</span>pen <span class="bold">S</span>ystems <span class="bold">I</span>nterconnection ) som arbejder med 7 lag.</p>
 
@@ -239,7 +239,7 @@ traceroute to dr.dk (159.20.6.38), 30 hops max, 60 byte packets
 	<li>der er tilføjet det fysiske lag (kabler, hardware osv.)</li>
 </ul>
 
-<h2>En oversigt over modeller</h2>
+<h3>En oversigt over modeller</h3>
 
 <p>Der igennem tiden blevet udviklet andre modeller, og herunder har jeg sidestillet de to ovenfor gennemgåede modeller med dem. Alle modellerne sigter mod det samme mål: sikker datatransmission. Bagved dem ligger der arbejdspapirer der går ind i de tekniske detaljer hvis man ønsker at udvikle nyt programmel efter dem.</p>
 
@@ -294,13 +294,13 @@ traceroute to dr.dk (159.20.6.38), 30 hops max, 60 byte packets
 <p><a href="http://en.wikipedia.org/wiki/Internet_protocol_suite#cite_note-21" target="_blank">http://en.wikipedia.org/wiki/Internet_protocol_suite#cite_note-21</a></p>
 
 
-<h1>IP - Internet Protokoller</h1>
+<h2>IP - Internet Protokoller</h2>
 
 <p>Der findes 2 IP protokoller: <span class="inl_cmd">IPv4</span> og <span class="inl_cmd">IPv6</span>. <span class="inl_cmd">IPv4</span> er den oprindelige og var designet til at have <span class="math">\( 2^32 = 4294967296 \)</span> unikke adresser. Designet har været effektivt, men den digitale udvikling har gjort at der skal bruges flere adresser.<\p>
 
 <p>For at imødekomme dette behov har man udviklet <span class="inl_cmd">IPv6</span> som på mange områder minder om <span class="inl_cmd">IPv4</span>, men er blevet tilpasset og designet til den digitale fremtid vi er på vej ind i. F.eks. er der nu <span class="math">\( 2^128 = 3,402 \cdot 10^{38} \)</span> adresser. <span class="inl_cmd">IPv6</span> er så smart designet, at de gamle <span class="inl_cmd">IPv4</span> adresser kan køre videre upåvirket på <span class="inl_cmd">IPv6</span> netværk. Vevd hjælp af <span class="inl_cmd">IPv6</span> kan man nu sætte alle de ting man vil på internettet.</p>
 
-<h2>IP-adresser</h2>
+<h3>IP-adresser</h3>
 
 <p>Som du kunne læse ovenfor er antallet af mulige adresser enorm både i <span class="inl_cmd">IPv4</span> og <span class="inl_cmd">Ipv6</span>. For lettere at kunne arbejde med disse adresser bliver de omskrevet. <span class="inl_cmd">IPv4</span> bliver omskrevet til 10-tals systemet og <span class="inl_cmd">Ipv6</span> til det hexadecimale system. Herunder er der et eksempel på hver af adresserne:</p>
 
@@ -358,7 +358,7 @@ traceroute to dr.dk (159.20.6.38), 30 hops max, 60 byte packets
 
 
 
-<h2>IPv6</h2>
+<h3>IPv6</h3>
 
 <p>IPv6 protokollener lavet som en reaktion på, at man er ved at løbe tør for IPv4 adresserne og består af en 128 bits adresse mod IPv4' 32 bit. En IPv6 adresse vil således bestå af 128 binære cifre. For at en IPv6 adresse bliver læsbar, skrives den med 8 felter med et 4 cifrede hexcadecimale tal adskilt af kolon (:).</p>
 
@@ -428,7 +428,7 @@ traceroute to dr.dk (159.20.6.38), 30 hops max, 60 byte packets
 
 </figure>
 
-<h2>Faste IP-adresser</h2>
+<h3>Faste IP-adresser</h3>
 
 <p>I både IPv4 og IPv6 er der nogle enkelte adresser der er låst til helt specifik anvendelse. Nedenfor er der et skema</p>
 
@@ -475,7 +475,7 @@ traceroute to dr.dk (159.20.6.38), 30 hops max, 60 byte packets
 
 <p>Skråstregen efter IP-adressen er CIDR adressen. Den vil blive gennemgået senere</p>
 
-<h1>Det binære, decimale og hexadecimale talsystem</h1>
+<h2>Det binære, decimale og hexadecimale talsystem</h2>
 
 <p>Før vi går igang med at kigge på TCP/IP modellen, IPv4 og IPv6 er det vigtigt at have forståelse for det binære, deciamle og hexadeciamle talsystem. Mennesker er ananolog og læser titalsystemer og derfor anvender vi titalssystemet til at repræsentere IP-adresser. Computere arbejder digitalt og binært</p>
 
@@ -562,7 +562,7 @@ traceroute to dr.dk (159.20.6.38), 30 hops max, 60 byte packets
 	</tbody>
 </table>
 
-<h2>Eksempel med decimalt tal</h2>
+<h3>Eksempel med decimalt tal</h3>
 
 <table class="">
 	<tbody>
@@ -640,7 +640,7 @@ traceroute to dr.dk (159.20.6.38), 30 hops max, 60 byte packets
 
 
 
-<h2>Eksempel med binært tal</h2>
+<h3>Eksempel med binært tal</h3>
 
 <p>Ud fra cifrets position kan man finde det binære tals værdi med nedestående nøgle.</p>
 
@@ -727,7 +727,7 @@ traceroute to dr.dk (159.20.6.38), 30 hops max, 60 byte packets
 </table>
 
 
-<h2>Eksempel med hexadecimalt tal</h2>
+<h3>Eksempel med hexadecimalt tal</h3>
 
 <p>Ud fra cifrets position kan man finde det binære tals værdi med nedestående nøgle. Da hexadecimale tal ofte anvendes skrives de ved hjælp af prefixet "0x*hex-tal" - f.eks: 0xB92D.</p>
 
@@ -800,7 +800,7 @@ traceroute to dr.dk (159.20.6.38), 30 hops max, 60 byte packets
 
 
 
-<h1>Subnetting</h1>
+<h2>Subnetting</h2>
 
 <p>Efterhånden som der kom flere og flere computere på de enkelte netværk blev det nødvendigt at kunne opdele/segmentere netværk. Problemet er, at jo flere computere der er på netværket jo mere trafik kommer der. Derfor er det fornuftigt at inddele netværket i mindre enheder adskilt af routere.</p>
 
@@ -812,7 +812,7 @@ traceroute to dr.dk (159.20.6.38), 30 hops max, 60 byte packets
 
 <p>IP-adresser er altså opbygget af 4 oktetter, hver bestående af 1 byte (8 bit) hvilket betyder at tallet består af 4 &middot; 8 binære tal.</p>
 
-<h2>Classfull adressing</h2>
+<h3>Classfull adressing</h3>
 
 <p>Før vi går igang med at snakke om subnetting kigger vi på den oprindelige (pre 1985) og simple måde at dele nettet.</p>
 
@@ -853,7 +853,7 @@ traceroute to dr.dk (159.20.6.38), 30 hops max, 60 byte packets
 
 <p>Man fik altså tildelt et adresserum der passede til det antal af computere man havde. Denne måde anvendte man i mange år, men i 1985 indførte man subnetting for at kunne anvende nettets ressourcer bedre. Ved hjælp af subnetting kan man underinddele nettet og adskille de forskellige subnets ved hjælp af routere. Routere der ligger på lag 3 i OSI-modellen kan adskille intern og ekstern netværkstrafik fra hinanden.</p>
 	
-<h2>Klasse netværk</h2>
+<h3>Klasse netværk</h3>
 
 <p>Det er de binære tal der angiver hvilken klasse netværket har. Det er værdierne i den første oktet der angiver klassen:</p>	
 
@@ -917,7 +917,7 @@ traceroute to dr.dk (159.20.6.38), 30 hops max, 60 byte packets
 
 <p>Udover at definere de ovenstående klassenetværk, definerede man også hvad der var netværkbits (dem som definerer netværket) og hvilke bits der kan bruges af værter på nettet. På denne måde kunne man uddele store netværk til dem der havde behov for det og mindre til resten. Problemet er stadig, at der i et klasse A netværk potentielt kan være over 16 millioner computere, hvilket ikke skaber overblik. Dette problem blev løst med at indføre subnetting og dermed muligheden for at designe netværk i passende størrelser.</p>
 
-<h2>Netmasken</h2>
+<h3>Netmasken</h3>
 
 <p>Et netværk er defineret af 3 parametre: netværkets adresse, broadcastadressen og netmasken. En computer i hjemmenetværk vil ofte være konfigureret i et privat klasse C netværk da 254 mulige værter er rigeligt i et almindeligt hjem. Det kunne f.eks. være konfigureret som her:</p>
 
@@ -989,7 +989,7 @@ traceroute to dr.dk (159.20.6.38), 30 hops max, 60 byte packets
 
 <p>Den eneste adresse i ovenstående som er fundamentalt anderledes er netmasken. Den er også anderledes end de andre, da den bruges til at afgrænse netværket med. Den betyder noget i retningen af: I de tre første oktetter er alle adresser fastlåste, men den sidste oktet er ikke er låst - hvilket giver 256 tilgængelige adresser.</p>
 
-<h2>Subnetting</h2>
+<h3>Subnetting</h3>
 
 <p>Lad os kigge på et eksempel.</p>
 
@@ -1097,7 +1097,7 @@ traceroute to dr.dk (159.20.6.38), 30 hops max, 60 byte packets
 
 <p>Antal værter pr subnet: 2<sup>14</sup>-2 = 16.382 værter i hvert subnet.</p>
 
-<h2>Mere om subnetting</h2>
+<h3>Mere om subnetting</h3>
 
 <p>Herunder vil vi lave en nøgle til at bestemme antallet af subnets.</p>
 
@@ -1248,7 +1248,7 @@ traceroute to dr.dk (159.20.6.38), 30 hops max, 60 byte packets
 
 <div class="pagebreak">
 
-<h2>CIDR adresse - Classless Inter-Domain Routing</h2>
+<h3>CIDR adresse - Classless Inter-Domain Routing</h3>
 
 <p>Disse netværk kan også angives ved hjælp af en CIDR adresse. Denne adresse angiver ved hjælp af en streng alle fire netværksbeskrivelser: IP, netmask, netværk og broadcast. Det CIDR -notationen gør er, at den angiver antallet af bits der er låst - altså netmasken. Således vil IP-adressen 192.168.1.34/24 angive at de første 24 bits i netmasken er låst - altså en 255.255.255.0. Netværks- og broadcast adressen er automatisk sat til at være henholdsvis den første 192.168.1.0 og 192.168.1.255.</p>
 
@@ -1360,7 +1360,7 @@ traceroute to dr.dk (159.20.6.38), 30 hops max, 60 byte packets
 
 </div><!-- Pagebreak end -->
 
-<h2>Et praktisk eksempel</h2>
+<h3>Et praktisk eksempel</h3>
 
 <p>Lad os kigge på et eksempel: 10.129.56.0/26 (svarer til en netmaske på 255.255.255.192. I binært hedder netværket: 00001010.10000001.00111000.00000000, hvoraf de første 26 bit tilhører netværket og de sidste 6 tilhører værterne. De røde er netværkets bits og de grønne er værterne</p>
 
@@ -1416,7 +1416,7 @@ traceroute to dr.dk (159.20.6.38), 30 hops max, 60 byte packets
 
 <p>I ovenstående skema kan du se logikken bag subnet. I hver af de binære adresser kan de 6 sidste bit antage alle værdier kun separeret ved hjælp af de 2 første bit. Ovenstående opdeling kan altså inddele et klasse</p>
 
-<h2>Supernetting</h2>
+<h3>Supernetting</h3>
 
 <p>Supernetting er at udvide netværket ud over et "normalt" netværk. Det kan f.eks. være med netmasken 255.255.254.0 (CIDR /23). Hvis man f.eks. får adressen 10.129.56.83/23 til sin server, vil følgende altså være gældende:</p>
 
@@ -1459,7 +1459,7 @@ traceroute to dr.dk (159.20.6.38), 30 hops max, 60 byte packets
 	</tbody>
 </table>
 
-<h1>Beregninger i netværk</h1>
+<h2>Beregninger i netværk</h2>
 
 <p>Til at lave beregninger til et IP netværk findes der smarte programmer. F.eks. <a href="http://www.iptools.dk/ip-calc/" target="_blank">http://www.iptools.dk/ip-calc/</a></p>
 
@@ -1484,7 +1484,7 @@ traceroute to dr.dk (159.20.6.38), 30 hops max, 60 byte packets
 </figure>
 
 
-<h1>Henvisninger</h1>
+<h2>Henvisninger</h2>
 
 <p>Osi modellen (eng): <a href="http://en.wikipedia.org/wiki/OSI_model" target="_blank">http://en.wikipedia.org/wiki/OSI_model</a></p>
 
@@ -1510,7 +1510,7 @@ traceroute to dr.dk (159.20.6.38), 30 hops max, 60 byte packets
 
 <iframe width="420" height="315" src="https://www.youtube.com/embed/GSX1GlaznKM" frameborder="0" allowfullscreen></iframe>
 
-<h2>Litteraturliste</h2>
+<h3>Litteraturliste</h3>
 
 <p>Stein-Olsen & Stalheim s. 9 (1998): Netværk, Geir Steen-Olsen & Arnie Stalheim, IDG Bøger A/S, 1. udg. 1.oplag, ISBN: 87-7843-121-2 <br/>
 <a href="http://www.libris.dk/produkt/Introduktion_til_netvaerk_3_udgave.htm" target="_blank">http://www.libris.dk/produkt/Introduktion_til_netvaerk_3_udgave.htm</a></p>

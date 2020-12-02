@@ -39,11 +39,11 @@
 	
 <div class="col-xs-9">
 	
-<div class="title">Kommandoer <br/>Terminalen - Linux' kraftværk</div>
+<h1>Kommandoer: Terminalen - Linux' kraftværk</h1>
 	
 <p>Dette kapitel giver en grundlæggende gennemgang af filsystemet, superbrugeren og terminalen (kommandolinien) og kommandostrukturen i Linux.</p>
 
-<h1>Anvendt installation</h1>
+<h2>Anvendt installation</h2>
 
 <p>For at eksemplificere guiden, er der blevet oprettet en virtuel installation med VirtualBox med følgende Indstillinger:</p>
 
@@ -108,17 +108,17 @@
 </table>
 
 
-<h1>Hvad er en terminal</h1>
+<h2>Hvad er en terminal</h2>
 
 <p>Terminalen er en tekstbaseret tilgang til Linux. Normalt ser vi en <abbr title="Graphical User Interface">GUI</abbr> (<b>G</b>raphical <b>U</b>ser <b>I</b>nterface) som styresystemet, men det er reelt blot en skal hvor vi kan arbejde med programmer grafisk. På et UNIX-system som Linux, der er GUI reelt set en brugerflade der kører på Linux, hvor systemer som  Mac og Windows ikke har den adskillese. Her er GUI'en reelt set styresystemet og kommandolinien noget der er bygget ovenpå.</p>
 
 <p>Terminalen kan gøre systemarbejde hurtigere og mere effektivt, fordi man ved scripts og præcise kommandoer kan udføre noget som kræver mange klik i en GUI.</p>
 
-<h1>Tilgå terminalen</h1>
+<h2>Tilgå terminalen</h2>
 
 <p>Terminalen kan tilgås på 2 måder. Igennem <abbr title="TeleTYpewriter">TTY</abbr> (<b>T</b>ele<b>TY</b>pewriter) eller en session.</p>
 
-<h2>TTY</h2>
+<h3>TTY</h3>
 
 <p>Når Ubuntu er startet op kører der 7 terminalsessions, som man kan logge ind på. Som standard starer man op i den 7 terminal som kører Ubuntu GUI.</p>
 
@@ -152,7 +152,7 @@
 	</tbody>
 </table>
 
-<h2>Terminalsession</h2>
+<h3>Terminalsession</h3>
 
 <p>Terminalsessions er forskellige fra <abbr title="TeleTYpewriter">TTY</abbr>, da de kører ovenpå GUI'en. En session giver altså adgang til kommandolinien uden at man forlader sin GUI.</p>
 
@@ -171,7 +171,7 @@
 
 <p>jo længere tid man bruger Linux - jo mere vil man anvende terminalen. Simpelthen fordi det er smartere og langt mere effektivt end at klikke sig frem. </p>
 
-<h1>Overblik</h1>
+<h2>Overblik</h2>
 
 <p>Når man er logget ind får aman følgende information fra kommandolinien</p>
 
@@ -290,7 +290,7 @@ user	0m0.004s
 sys	0m0.000s
 </pre>
 
-<h1>Superbrugeren</h1>
+<h2>Superbrugeren</h2>
 
 <p>Alle Linux har en superbruger (<span class="inl_cmd">root</span>), som har rettigheder til at gøre alt på maskinen. Denne bruger anvender man til at lave systemarbejde med f.eks. at konfigurere programmer og installere programmer. På Ubuntu er <span class="inl_cmd">root</span>-kontoen ikke aktiveret, men man kan "opgradere" sin bruger til at have administratorrettigheder ved hjælp af kommandoen <span class="inl_cmd">sudo</span> (<span class="bold">su</span>peruser <span class="bold">do</span>). <span class="inl_cmd">sudo</span> kommandoen undersøger om man er medlem af sudo-gruppen og giver igennem denne gruppe adgang til at man kan udføre administrationsarbejde.</p>
 
@@ -347,12 +347,12 @@ Disk identifier: 0xf5fc72dc
 	</tbody>
 </table>
 
-<h2>Noget om sikkerhed</h2>
+<h3>Noget om sikkerhed</h3>
 
 <p>Når man anvender <span class="inl_cmd">sudo</span>, så vil computeren huske kodeordet i et kort stykke tid. Derfor bør man altid afslutte en terminal når man er færdig med sit arbejde. Det gør man ved at køre kommandoen <span class="inl_cmd">exit</span> eller bruge tastekombinationen <kbd>Alt</kbd>+<kbd>F4</kbd>.</p>
 
 
-<h1>root-shell</h1>
+<h2>root-shell</h2>
 
 <p>Hvis der skal udføres meget administrationsarbejde vælger man ofte at bruge kommandoen <span class="inl_cmd">sudo su</span>. Denne kommando ændrer ens bruger til <span class="inl_cmd">root</span>, og man får adgang til <span class="inl_cmd">root</span>-shell:</p>
 
@@ -388,7 +388,7 @@ root@tj-VirtualBox:/home/tj#
 
 
 
-<h2>Noget om sikkerhed</h2>
+<h3>Noget om sikkerhed</h3>
 
 <p>Man skal altid lukke en terminal-session ned når man er færdig med sit arbejde. Det gøres ligesom ovenfor ved hjælp af kommandoen: <span class="inl_cmd">exit</span></p>
 
@@ -411,7 +411,7 @@ exit
 <p>Det skyldes at <span class="inl_cmd">root-shell</span> kører ovenpå en terminal-shell. Klikker vi på <span class="knap">Luk terminal</span>, så afsluttes vores terminal-session</p>
 
 
-<h1>man pages</h1>
+<h2>man pages</h2>
 
 <p>Til alle terminalens kommandoer er der skrevet en manual, og den kan man tilgå ved med kommandoen <span class="inl_cmd">man [kommando]</span> . Her kan man læse hvordan 
 kommandoen bruges (Synopsis) og de optioner man kan tilføje (Descriptions). Herunder er de første linier af kommandoen <span class="inl_cmd">man ls</span></p>

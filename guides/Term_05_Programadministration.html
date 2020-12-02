@@ -39,9 +39,9 @@
 	
 <div class="col-xs-9">
 	
-<div class="title">Kommandoer <br/>Programadministration</div>
+<h1>Kommandoer: Programadministration</h1>
 	
-<h1><span class="inl_cmd">apt</span></h1>
+<h2><span class="inl_cmd">apt</span></h2>
 
 <p>Ubuntu anvender Debians pakkesystem <span class="inl_cmd">dpkg</span> (Debian package management system), som bliver administreret af programmet <span class="inl_cmd">apt</span> (Advances Packaging tool). Gevinsten ved at bruge kommandolinien er et stærkt og fleksibelt værktøj til at administrere ens programmer.</p>
 
@@ -102,7 +102,7 @@
 <a href="http://manpages.ubuntu.com/manpages/xenial/en/man8/apt.8.html" target="_blank">
 http://manpages.ubuntu.com/manpages/xenial/en/man8/apt.8.html</a></p>
 
-<h1>Når <span class="inl_cmd">apt</span> fejler</h1>
+<h2>Når <span class="inl_cmd">apt</span> fejler</h2>
 
 <p>Det hænder at <span class="inl_cmd">apt</span> fejler. Når dette sker kan det være nødvendigt at få <span class="inl_cmd">apt</span> til at reconfigurere sig selv. Det gøres med kommandoen:</p>
 
@@ -112,7 +112,7 @@ http://manpages.ubuntu.com/manpages/xenial/en/man8/apt.8.html</a></p>
 
 <code class="cmd">sudo apt install -f</code>
 
-<h1>Administration af tjenester på serveren</h1>
+<h2>Administration af tjenester på serveren</h2>
 
 <p>Generelt administreres tjenester på på Ubuntu med service kommandoen. Den fungerer efter nedestående skabelon:</p>
 
@@ -149,7 +149,7 @@ http://manpages.ubuntu.com/manpages/xenial/en/man8/apt.8.html</a></p>
 <a href="http://manpages.ubuntu.com/manpages/trusty/en/man8/service.8.html" target="_blank">
 http://manpages.ubuntu.com/manpages/trusty/en/man8/service.8.html</a></p>
 
-<h1>Fjerne overflødige kerner</h1>
+<h2>Fjerne overflødige kerner</h2>
 
 <p>Ubuntu beholder de gamle kerner der ligger på systemet, så de kan anvendes til at boote med. Dette er en sikkerhedsfeature, da man risikerer at nye kerner indeholder fejl, eller mangler funktionalitet som dine programmer anvender. De fylder dog en del.</p>
 
@@ -176,7 +176,7 @@ Efter denne handling, vil 559 MB diskplads blive frigjort.
 Vil du fortsætte? [J/n]
 </pre>
 
-<h1>Repositories</h1>
+<h2>Repositories</h2>
 
 <blockquote>
 	<p>
@@ -190,7 +190,7 @@ Vil du fortsætte? [J/n]
 
 <p>Herunder vil du lære at aktivere, tilføje og fjerne repositories ved hjælp af at redigere i konfigurationsfilen <span class="inl_cmd">/etc/apt/sources.list</span> og ved at anvende kommandolinien.</p>
 
-<h2>VIGTIGT</h2>
+<h3>VIGTIGT</h3>
 
 <p>Når man har tilføjet repositories skal man først "aktivere" dem. Det gøres ved at køre</p>
 
@@ -202,7 +202,7 @@ Vil du fortsætte? [J/n]
 
 <code class="cmd">apt dist-upgrade -y</code>
 
-<h2>Ved hjælp af <span class="inl_cmd">sources.list</span></h2>
+<h3>Ved hjælp af <span class="inl_cmd">sources.list</span></h3>
 
 <p>Et repository bliver konfigureret ved hjælp af en "dev" linie:</p>
 
@@ -237,7 +237,7 @@ Vil du fortsætte? [J/n]
 <span class="blue1"># deb-src http://archive.canonical.com/ubuntu xenial partner</span>
 </pre>
 
-<h2>Ved hjælp af PPA</h2>
+<h3>Ved hjælp af PPA</h3>
 
 <p>Der findes en række repositories som er generelle for Ubuntu og Debian distributioner, og som bliver vedligeholdt til at tjene specifikke distributioner. Det hænder dog at man gerne vil have andre versioner af programmerne end disse repositories tilbyder. Dette bliver løst ved hjælp af PPA'er (<span class="bold">P</span>ersonal <span class="bold">P</span>ackage <span class="bold">A</span>archives).</p>
 
@@ -287,7 +287,7 @@ Beregner opgraderingen ... Færdig
 
 <p>Herefter kører installationen igennem.</p>
 
-<h2>Fjerne PPA'er</h2>
+<h3>Fjerne PPA'er</h3>
 
 <p>PPA'er er nemme at fjerne manuelt. fremgangsmåden er:</p>
 

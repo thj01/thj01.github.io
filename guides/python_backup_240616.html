@@ -38,7 +38,7 @@
 	
 <div class="col-xs-9">
 	
-	<div class="title">Introduktion til Python 3</div>
+<h1>Introduktion til Python 3</h1>
 	
 <figure id="">
 
@@ -48,11 +48,11 @@
 
 </figure>
 		
-<h1>Installation</h1>
+<h2>Installation</h2>
 
 <p>I dette kapitel vil vi gøre computeren klar til at arbejde med Python. I dette materiale anvendes Geany som teksteditor</p>
 
-<h2>På Ubuntu</h2>
+<h3>På Ubuntu</h3>
 
 <p>På Ubuntu 16.04 LTS er både Python 2 og 3 installeret fra start. Derfor skal vi kun have installeret Geany. Har du installeret Ubuntu 16.04 efter Ubuntuguiden, så er Geany allerede installeret. Hvis ikke anvender du nedestående kommando.</p>
 
@@ -74,7 +74,7 @@
 
 <p>Herefter vil python afvikle og kompilere kode med udgangspunkt i Python3.</p>
 
-<h2>Installer på Windows</h2>
+<h3>Installer på Windows</h3>
 
 <p>Vi skal installere både Python og Geany på Windows. Det gøres på følgende måde:</p>
 
@@ -100,7 +100,7 @@
 
 <p>Igennem hele installationen vælges standardindstillingerne.</p>
 
-<h1>Noget grundlæggende</h1>
+<h2>Noget grundlæggende</h2>
 
 <p>Før vi går igang med at programmere skal vi have en vigtig ting afklaret.</p>
 
@@ -109,7 +109,7 @@
 <p>Hvis jeg i en samtale sagde: "Terninger har 6 sider", så vil modtageren vide at <span class="inl_cmd">terninger</span> og <span class="inl_cmd">sider</span> er beskrivelser af "noget", og at <span class="inl_cmd">6</span> er et tal. Det ved Python ikke med med mindre man fortæller den det. Faktisk vil computeren opfatte ovenstående sætning som 22 tegn. Derfor er det programmørens opgave at beskrive overfor Python hvad der er tegn og hvad der er tal.</p>
 
 
-<h2>Vigtige begreber</h2>
+<h3>Vigtige begreber</h3>
 
 <p>Herunder er et skema med nogle vigtige begreber:</p>
 
@@ -132,7 +132,7 @@
 
 <p>Du vil løbende lære nye udtryk, men de ovenstående er vigtige for at komme godt igang.</p>
 
-<h2>Python fortolker</h2>
+<h3>Python fortolker</h3>
 
 <p>Der er indbygget en fortolker i python. Den kan man få frem ved at køre kommandoen <span class="inl_cmd">python3</span> fra en terminal.</p>
 
@@ -170,7 +170,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 
 <p>I dette materiale vil vi anvende Geany til at skrive programmerne i og udføre dem derfra. Men hvis ønsker at teste nogle ting, kan du åbne en Python fortolker, og teste tingene der.</p>
 
-<h1>Strenge</h1>
+<h2>Strenge</h2>
 
 <p>Det første program vi skal lave er meget simpelt. Det består af en kort tekst vi vil have skrevet ud i terminalen. Tekst man vil have skrevet ud på skærmen kaldes en <span class="inl_cmd">streng</span>, og skal placeres mellem to <span class="inl_cmd">"   "</span> eller <span class="inl_cmd">'   '</span>.</p>
 
@@ -218,7 +218,7 @@ SyntaxError: unexpected EOF while parsing
 Press return to continue
 </pre>
 
-<h2>Lange tekststykker</h2>
+<h3>Lange tekststykker</h3>
 
 <p>Hvis man skal skrive længere tekststykker der indeholder linie skift og tabulatorindrykninger kan man anvende en anden metode - triple anførselstegn. Ved at omgive sin teksstreng med <span class="inl_cmd">""" *tekststreng* """</span> så bevares linieskift, indrykninger, mellemrum og tabulatorer.</p>
 
@@ -250,7 +250,7 @@ Python er svært
 Press return to continue
 </pre>
 
-<h2>Escape sequences</h2>
+<h3>Escape sequences</h3>
 
 <p>Escape sequences er betegnelsen for den metode man anvender for at indsætte tegn som normalt anvendes af Python f.eks: <span class="inl_cmd">', ", \</span> samt linie- og tabulatorskift. Herunder er en liste med de vigtiste tegn. Hvis man har behov for at sætte tegn ind i en streng, som python normalt vil tolke som en del af programmeringssproget</p>
 
@@ -360,7 +360,7 @@ Dette er en sætning
 Press return to continue
 </pre>
 
-<h1>Variabler</h1>
+<h2>Variabler</h2>
 
 <p>Før vi gennemgår hvad variabler er skal du lige læse nedenstående eksempel:</p>
 
@@ -430,7 +430,7 @@ Press return to continue
 <p>Python kan ikke udføre sammenføjningen, fordi den læser <span class="inl_cmd">hej</span> som en tekststreng og <span class="inl_cmd">2</span> som et tal (int). Lektien man kan lære er, at man skal være præcis når man angiver sine variabler.</p>
 
 
-<h2>Variabler i tekststrenge</h2>
+<h3>Variabler i tekststrenge</h3>
 
 <p>Når man skal indsætte variabler i tekststrenge anvender man pladsholdere som angives med <span class="inl_cmd">{*tal*}</span>. Se nedestående eksempel.</p>
 
@@ -483,7 +483,7 @@ Jeg er ved at lære Python.
 Press return to continue
 </pre>
 
-<h2>Opgave - teksstrenge og variabler</h2>
+<h3>Opgave - teksstrenge og variabler</h3>
 
 <p>Lav nedestående tekststykke ved hjælp af Python hvor de ord der er røde skal indsættes ved hjælp afvariabler.</p>
 
@@ -492,7 +492,7 @@ Press return to continue
 <span class="red">telefonnummer</span> og det er en <span class="red">telefonmærke</span>.</code>
 </pre></p>
 
-<h2>Opgave - teksstrenge og indrykninger</h2>
+<h3>Opgave - teksstrenge og indrykninger</h3>
 
 <p>Lav følgende Output - på en <span class="inl_cmd">print</span>-linie ved hjælp af <span class="inl_cmd">\n</span> (ny linie) og <span class="inl_cmd">\t</span> (tabulator). Ordene "indholdsfortegnelse, "kapitel" og "afsnit" skal indsættes ved hjælp af variabler.</p>
 
@@ -509,12 +509,12 @@ Press return to continue
 </pre>
 
 
-<h1>Input</h1>
+<h2>Input</h2>
 
 <p>Det vi hjar lært ovenfor er at indsætte variabler i selve koden. Det som vi skal se på her er, at give mulighed for at brugeren kan indtaste informationer.</p>
 
 
-<h2>Indtastning af tekst</h2>
+<h3>Indtastning af tekst</h3>
 
 <pre>
 	<code class="python">
@@ -536,7 +536,7 @@ Du indtastede Thomas
 Press return to continue
 </pre>
 
-<h2>Indtastning af tal</h2>
+<h3>Indtastning af tal</h3>
 
 <p>Hvis du skal indtaste en værdi, f.eks. alder, skal du gøre python opmærksom på at det er et tal (interger). Det gøres ved at indsætte input funktionen i en <span class="inl_cmd">int()</span>.</p>
 
@@ -590,9 +590,9 @@ Press return to continue
 
 <p>Havde vi ikke angivet alder som en <span class="inl_cmd">int</span>, kunne vi ikke lægge 5 til.</p>
 
-<h2>Opgaver</h2>
+<h3>Opgaver</h3>
 
-<h3>Udvid og formater koden</h3>
+<h4>Udvid og formater koden</h4>
 
 <p>Udvid koden fra opgave 2.5.1 sådan at teksten indeholder nedestående informationer, som brugeren selv indtaster. Formater teksten så den ser pæn ud.</p>
 
@@ -610,11 +610,11 @@ Press return to continue
 	
 </ul>
 
-<h1>Tal og operatorer</h1>
+<h2>Tal og operatorer</h2>
 
 <p>Indtil videre har der været en naturlig progression i materialet, men herefter begynder tingene at blive mere komplekse. Derfor kommer der her et afsnit omkring anvendelse af logiske operatiorer, som anvendes til at sammenligne og adskille værdier.</p>
 
-<h2>Integers og float</h2>
+<h3>Integers og float</h3>
 
 <p>Angående tal skal man ikke definere om man arbejder med heltal (også kaldet intergers) eller kommatal (floating point). De defineres sammen med variablen. Det er et af områder hvor Python virkeligt adskiller sig fra andre programmeringssprog, og det betyder at den som laver programmet ikke skal forholde sig til hvordan et tal skal anvendes. Python gør det automatisk for dig.</p>
 
@@ -643,7 +643,7 @@ Press return to continue
 
 </pre>
 
-<h2>Computeren kan <s>ikke</s> tælle</h2>
+<h3>Computeren kan <s>ikke</s> tælle</h3>
 
 <p>En af de ting man støder på når man arbejder med programmering er, at computere tæller anderledes end vi gør. Når vi tæller starter vi fra en, og titalssystemet er anvendeligt for os fordi det passer med antallet af fingre på på hånden. Når vi har brugt alle fingrene så tæller vi antallet af fulde hænder. 22 kan altså forståes som 2 fulde hænder og 2 fingre. I 10-talssystemet skifter vi altså position (veksler til den næste enhed) når vi kommer til den 10. værdi.</p>
 
@@ -884,7 +884,7 @@ Press return to continue
 
 <p>Det er vigtigt at man holder styr på hvilke tal og værdier der bliver brugt fra gang til gang. Nogle gange er det den menneskelige tællemmåde  &#8469; = {1, 2, 3, 4 ...} f.eks. når man tæller antallet af elementer i en tekstreng. Andre gange er det computerens &#8469;<sub>0</sub> = {0, 1, 2, 3 ...} f.eks. når man angiver tegnets position.</p>
 
-<h2>Regningsregler</h2>
+<h3>Regningsregler</h3>
 
 <pre>
 	<code class="python">
@@ -939,7 +939,7 @@ Press return to continue
 
 </pre>
 
-<h2>En til eller fra</h2>
+<h3>En til eller fra</h3>
 
 <p>Ofte har man brug for at lade et tal vokse med en fast størrelse fra gang til gang. Den mest umiddelbare løsning er denne:</p>
 
@@ -1030,7 +1030,7 @@ a /=7 er -1.0
 
 
 
-<h2>Integer og float</h2>
+<h3>Integer og float</h3>
 
 <p>Python ser tal som hel- eller decimaltal. I programmerings sprog kaldes heltallet for en interger (latin: hel, komplet) og decimaltallet float (Eng: Flydende)</p>
 
@@ -1113,7 +1113,7 @@ print ("%s er en integer: {0}".format(a, test1))
 Press return to continue
 </pre>
 
-<h2>Brøker</h2>
+<h3>Brøker</h3>
 
 <p>For at arbejde med brøker skal man "tvinge" python til ikke at regne brøken ud. Det kan være nødvendig for ikke at få afrundingsfejl. For at kunne anvende brøker skal vi importere modulet fractions. Herunder er givet et eksempel ved hjælp at et GRUK af Piet Hein, hvor der er vist forskellen mellem at anvende <span class="inl_cmd">fractions()</span> og <span class="inl_cmd">float</span>.</p>
 
@@ -1169,7 +1169,7 @@ Press return to continue
 
 <p>Som det kan ses bliver 2/3 omskrevet til 0,666... hvilket kun er en tilnærmet værdi.</p>
 
-<h2>Faktorer</h2>
+<h3>Faktorer</h3>
 
 <p>Når man opløser et tal i faktorer finder man ud af hvilke tal der går et bestemt tal. F.eks. er 28 = 2 &#8226; 2 &#8226; 7. Python har ikke en indbygget funktion hertil men den laver vi selv. Hvis <span class="inl_cmd">modulus</span> (se ovenfor) er 0, så er tallet en faktor ellers ikke.</p>
 
@@ -1198,7 +1198,7 @@ Press return to continue
 </pre>
 
 
-<h2>Absolutte tal</h2>
+<h3>Absolutte tal</h3>
 
 <p>Funktionen <span class="inl_cmd">abs()</span> returnere altid en værdi som værende positiv. Det giver mening hvis man f.eks. ønsker at finde forskellen mellem to tal uden at skulle forholde sig til rækkefølgen de kommer i. Som i eksemplet herunder hvor første udregning med <span class="inl_cmd">abs()</span> kun fortæller forskellen, men den anden fortæller om det er en stigning eller et fald.</p>
 
@@ -1226,7 +1226,7 @@ temperatur-stigning/fald: -2
 Press return to continue
 </pre>
 
-<h2>Operatorer</h2>
+<h3>Operatorer</h3>
 
 <p>Operatorer beskriver forholdet mellem to værdier</p>
 
@@ -1309,11 +1309,11 @@ if valg ==  "j" and valg == "J" : #Gælder for både lille <span class="bold">og
 
 <p>Sprogligt giver det mening, men problemet er, at brugeren aldrig vil kunne taste både j og J på samme tid. Så derfor vil Python afvise begge indtastninger. Det er ikke Python der laver fejl, men mere et udtryk for at det danske sprog er finurligt og ulogisk. F.eks. så kan vi også finde på at spørge: "er det ikke sjovt" .. når vi faktisk mener "er det sjovt". Det er ikke kun udlændninge der synes vores sprog er ulogisk.</p>
 
-<h2>Afgrænsede områder</h2>
+<h3>Afgrænsede områder</h3>
 
 <p>Nogle gange har man brug for at kunne afgrænse områder. Forestil dig at vi skal udvælge brugere der er fra 15 år til og med 22. Det matematiske udsagn ville være <span class="inl_cmd">15 &le; x &le; 22</span>. I Python skal vi splitte det op i to udsagn hvor vi skal beskrive den ned grænse og den øvre grænse ud fra x: <span class="inl_cmd">x &gt;= 15 <span class="blue">and</span> x &gt;= 22</span>.</p>
 
-<h1>Matematiske funktioner</h1>
+<h2>Matematiske funktioner</h2>
 
 <p>For at anvende Phytons matematiske funktioner skal man inkludere programbiblioteket math. Det kan gøres på to måder - enten ved at inkludere alle matematikfunktionerne eller ved kun at importere enkelte derfra. På den måde kan man sparepå hukommelsen.</p>
 
@@ -1363,7 +1363,7 @@ Press return to continue
 
 <p>Af vigtige matematiske funktioner kan nævnes</p>
 
-<h2>Konstanter</h2>
+<h3>Konstanter</h3>
 
 <p></p>
 
@@ -1387,7 +1387,7 @@ Press return to continue
 </table>
 
 
-<h2>Logaritmer</h2>
+<h3>Logaritmer</h3>
 
 <p></p>
 
@@ -1413,7 +1413,7 @@ Press return to continue
 	</tbody>
 </table>
 
-<h2>Trigonometriske funktioner</h2>
+<h3>Trigonometriske funktioner</h3>
 
 <table class="">
 	<thead>
@@ -1450,7 +1450,7 @@ Press return to continue
 	</tbody>
 </table>
 
-<h2>Talsystemer</h2>
+<h3>Talsystemer</h3>
 
 <p>For at konvertere tal med anden base til 10 talssystemet anvendes <span class="inl_cmd">int()</span>. Det fungerer ved at man i parantesen skriver tallet man vil konvertere og basen der skal konverteres fra.</p>
 
@@ -1538,7 +1538,7 @@ Press return to continue
 </pre>
 
 
-<h1>If, elif - else</h1>
+<h2>If, elif - else</h2>
 
 <p>Ofte har man brug for at ens program skal gøre forskellige ting ved forskellige betingelser. Dette gøres med if-elif-else strukturer. Forestil dig der skal laves et vælg mellem om man er en dreng eller pige. Herunder er der lavet et simpelt eksempel:</p>
 
@@ -1648,7 +1648,7 @@ else:
 
 <p>Man kan indsætte alle de <span class="inl_cmd">elif</span> man vil, men man skal huske at der skal afsluttes med <span class="inl_cmd">else</span>.</p>
 
-<h2>X in Y</h2>
+<h3>X in Y</h3>
 
 <p>Ofte har man brug for at finde ud af om en tekststreng findes i en sætning, f.eks. om et navn er nævnt i en sætning. Ved at bruge <span class="inl_cmd">in</span> laver man denne forspørgsel, og programmet svarer tilbage med enten <span class="inl_cmd">True</span> eller <span class="inl_cmd">False</span>. Dette enten/eller svar kaldes på progammeringssprog for "boolean". Lad os afprøve det herunder.</p>
 
@@ -1689,13 +1689,13 @@ Press return to continue
 
 </pre>
 
-<h2>Opgaver</h2>
+<h3>Opgaver</h3>
 
-	<h3>Myndig?</h3>
+	<h4>Myndig?</h4>
 
 <p>Lav en kode der undersøger om man er myndig eller ej (18+)</p>
 
-<h3>Pendlerkort</h3>
+<h4>Pendlerkort</h4>
 
 <p>Lav en kode der undersøger om personen hos DSB er berettiget til et ungdomskort (under 18), et pensionistkort (over 65) eller skal købe en almindelig billet.</p>
 
@@ -1706,13 +1706,13 @@ Press return to continue
 	<li>Ellers → Nope .... :(</li>
 </ul>
 
-<h3>Opgave - X in Y</h3>
+<h4>Opgave - X in Y</h4>
 
 <p>Ændr opgaven så du ved hjælp af et input kan få svar på om et ord findes i tekstrengen - og hvor mange gange de optræder.</p>
 
 <p>Indsæt et større tekst fra nettet og lav søgninger på ord i den tekst.</p>
 
-<h3>Er det fredag?</h3>
+<h4>Er det fredag?</h4>
 
 <p>På hjemmesiden <a href="http://www.erdetfredag.dk/" target="_blank"> http://www.erdetfredag.dk/</a> får du at vide om det er fredag. Lav en 	lignende kode, hvor svarene er:</p>
 
@@ -1751,7 +1751,7 @@ Press return to continue
 
 
 
-<h1>Funktioner</h1>
+<h2>Funktioner</h2>
 
 <p>Ofte har man behov for at noget skal udføres gentagne gange. Det kan f.eks. være at udskrive et logo, eller en <span class="inl_cmd">if-else</span> struktur der skal køres ofte. Her anvender man funktioner, så man kan skrive koden en gang, men "kalde" på den lige så ofte man vil.</p>
 
@@ -1905,7 +1905,7 @@ Press return to continue
 
 -->
 
-<h2>Funktioner med parametre</h2>
+<h3>Funktioner med parametre</h3>
 
 <p>Forestil dig en situation hvor vi skal have en blæser til at tænde når temperaturen overstiger et vist gradtal&deg;. I eksemplet herunder angiver vi selv temperaturen, men temperaturen kunne lige så godt have kommet fra en aflæsning af et digitalt termometer.</p>
 
@@ -1942,7 +1942,7 @@ Press return to continue
 
 <p>Ved at angive to konstanter i funktionen kan vi "kalde" parametre fra koden ind i funktionen. På denne måde skal funktionen ikke laves om, hvis betingelserne senere ændres.</p>
 
-<h2>Check kode</h2>
+<h3>Check kode</h3>
 
 <p>Et trick man kan anvende når man programmerer og ønsker at følge udviklingen af ens variabler er, at lave en <span class="inl_cmd">chk()</span> funktion. på den måde kan man let tjekke sine variabler, og fjerne dem alle ved at sætte <span class="inl_cmd">check</span> til noget andet end 1.</p>
 
@@ -1983,7 +1983,7 @@ Press return to continue
 Press return to continue
 </pre>
 
-<h2>Opgave - Er det en faktor</h2>
+<h3>Opgave - Er det en faktor</h3>
 
 <p>Lav funktionen <span class="inl_cmd">Factor(a,b)</span> der undersøger om a er en faktor i b. Lav et output der ligner nedestående:</p>
 
@@ -1998,7 +1998,7 @@ Undersøger om 2 er en faktor i 10
 Press return to continue
 </pre>
 
-<h1>Løkker - et overblik</h1>
+<h2>Løkker - et overblik</h2>
 
 <p>Ofte har man brug for at et program skal gøre det samme igen og igen. Det kan f.eks. være at skulle udføre den samme beregning, på et stigende tal. Det kan f.eks. være at udskrive kvadrattallene (1,4,9,16,25 ...). På engelsk kaldes dette et <span class="inl_cmd">loop</span>.</p>
 
@@ -2051,7 +2051,7 @@ Press return to continue
 <p>De ovenstående forklaringer ment som et indblik i hvad det er løkker og kontroludsagn gør. Herunder vil løkkerne blive gennemgået udførligt.</p>
 
 
-<h1><span class="inl_cmd">for</span> løkken</h1>
+<h2><span class="inl_cmd">for</span> løkken</h2>
 
 <p></p>
 
@@ -2213,7 +2213,7 @@ Press return to continue
 
 <p>Start- og slutværdien er også den første og den sidste værdi $i gennemløber. Variablen behøver ikke at hedde $i, men kunne lige så godt have været $a.</p>
 
-<h2>For char in ...</h2>
+<h3>For char in ...</h3>
 
 <p>Ofte har man brug for at kunne gennemføre en funktion på hver eneste tegn i en tekststreng. Herunder er vist et simpelt eksempel hvor man ved hjælp af en for-løkke printer hver bogstav i navnet.</p>
 
@@ -2312,9 +2312,9 @@ Press return to continue
 
 <p>Vi skal senere lære hvordan vi kan arbejde med tekstrenge, sådan at vi f.eks. kan analysere de tal der står mellem de forskellige dot's.</p>
 
-<h2>Opgaver</h2>
+<h3>Opgaver</h3>
 
-<h3>Opgave - Vinkelsum i polygon</h3>
+<h4>Opgave - Vinkelsum i polygon</h4>
 
 <p>Lav en løkke der beregner den enkelte vinkel og  den samlede vinkel i en ligesidet polygon med op til 20 sider. Outputtet skal være som nedenfor:</p>
 
@@ -2335,7 +2335,7 @@ I en 20-kant er vinkelsummen ...
 	<li>For at kunne få outputtet til at skifte linie skal du anvende HTML koden &lt;br&gt;.</li>
 </ul>
 
-<h3>Opgave - Fibonacchi tal</h3>
+<h4>Opgave - Fibonacchi tal</h4>
 
 <p>Fibonaccitallene er en talrække, som har følgende egenskab. Hvis man dividerer et tal i rækken med det forgående tal, så vil dette tal tilnærme sig værdien &phi; (1.6180339...) som også bliver kaldt det gyldne snit. </p>
 
@@ -2415,7 +2415,7 @@ Press return to continue
 
 <p>Lav funktionen <span class="inl_cmd">fibo(n)</span> hvor <span class="inl_cmd">n</span> er antallet af fibonaccital.</p>
 
-<h1>While</h1>
+<h2>While</h2>
 
 <p>While betingelser angiver noget der skal ske så længe en betingelse er opfyldt. Herunder laver vi en kode, der udskriver tallet a så længe det er under 10</p>
 
@@ -2455,9 +2455,9 @@ Press return to continue
 
 <p>Det som koden gør er, at mens (<span class="inl_cmd">while</span>) betingelsen er opfyldt kører den det som er rykket ind under koden. I dette tilfælde kører koden indtil a ikke længere er mindre en 10.</p>
 
-<h2>Opgaver</h2>
+<h3>Opgaver</h3>
 
-<h3>Beskriv hvad hvad koden gør?</h3>
+<h4>Beskriv hvad hvad koden gør?</h4>
 
 <pre>
 	<code class="python">
@@ -2471,7 +2471,7 @@ print ("\nN I C E")
 	</code>
 </pre>
 
-<h3>Udvid koden</h3>
+<h4>Udvid koden</h4>
 
 <ul class="disc">
 	<li>det efter 5 forsøg i input teksten skriver: Kan man virkeligt gætte forkert så mange gange?</li>
@@ -2493,7 +2493,7 @@ print ("\nN I C E")
 
 <p><span class="bold">HINT:</span> for at kunne få en kode til at afbryde anvender man kommandoen <span class="inl_cmd">exit()</span>. Når koden læser denne linie afsluttes kørslen. Den skal indsættes under pkt. 2.3</p>
 
-<h1>Betingede løkker</h1>
+<h2>Betingede løkker</h2>
 
 <p>I de ovenstående kapitler har løkkerne været simple, fordi vi har været helt klar over hvad de skulle. Det hænder dog, at man vil sætte nogle betingelser for løkkerne. Det kan f.eks. være en kode der skal løbe indtil brugeren har valgt rigtigt.</p>
 
@@ -2507,7 +2507,7 @@ antalBrugere = int(input("Indtast antal brugere (1-4(: "))
 
 <p>Den kode kører rigtig fint lige indtil en svarer noget andet end vi forventer. Det problem kan vi eliminere ved at gøre følgende:</p>
 
-<h2>break</h2>
+<h3>break</h3>
 
 <p></p>
 
@@ -2539,7 +2539,7 @@ Press return to continue
 
 <p><span class="inl_cmd">while</span>-løkken kører så længe den ikke modtager et <span class="inl_cmd">False</span>. D.v.s. den kan køre uendeligt. Det eneste som får løkken til at stoppe er fordi der er indsat en <span class="inl_cmd">break</span> kommando hvis n er lig med variablen <span class="inl_cmd">goal</span>. <span class="inl_cmd">break</span> kommandoen bryder <span class="inl_cmd">while</span>-løkken og lader programmet køre videre.</p>
 
-<h2>continue</h2>
+<h3>continue</h3>
 
 <p>Herunder vil vi sætte koden til at udskrive tallene fra 1-15, men den må ikke udskrive tal fra 3-tabellen. Det betyder at vi skal undersøge tallene ved hjælp af  <span class="inl_cmd">modulus</span> (se ovenfor):</p>
 
@@ -2564,7 +2564,7 @@ Press return to continue
 
 <p>Det koden undersøger om modulus af i er = 0. Hvis den er så udskriver den <span class="inl_cmd">XXX</span> og får koden til at køre videre med næste i værdi. Det er netop forskellen mellem break og continue. <span class="inl_cmd">break</span> afbrød løkken, men <span class="inl_cmd">continue</span> lader den fortsætte.</p>
 
-<h2>pass</h2>
+<h3>pass</h3>
 
 <p><span class="inl_cmd">pass</span> er umiddelbart en underlig kommando, fordi den gør reelt ingen forskel. Men den er rigtig brugbar. Forestil dig en kode, hvor du vil udskrive tallene fra 1-10, men lige vill gøre opmærksom på at 7 er dit lykketal:</p>
 
@@ -2630,10 +2630,10 @@ Press return to continue
 
 <p><span class="inl_cmd">pass</span> er netop brugbar fordi den ikke gør noget ;).</p>
 
-<h1>Behandling af strenge</h1>
+<h2>Behandling af strenge</h2>
 
 
-<h2>Slicing</h2>
+<h3>Slicing</h3>
 
 <p>Ved hjælp af slicing kan man opdele tekststrenge i mindre stykker. For at "slice" tekststykket anvender vi følgende syntaks</p>
 
@@ -2761,7 +2761,7 @@ Press return to continue
 </pre>
 
 
-<h2><span class="inl_cmd">len()</span> - samlet antal tegn i en streng</h2>
+<h3><span class="inl_cmd">len()</span> - samlet antal tegn i en streng</h3>
 
 <p><span class="inl_cmd">len()</span> tæller det samlede antal tegn der er i en streng - også mellemrum</p>
 
@@ -2791,7 +2791,7 @@ Emailen "hansboedker@dkmail.dk" har 21 tegn
 Press return to continue
 </pre>
 
-<h2><span class="inl_cmd">str.count()</span> - Antallet af specifikke tegn/strenge i en teskstreng</h2>
+<h3><span class="inl_cmd">str.count()</span> - Antallet af specifikke tegn/strenge i en teskstreng</h3>
 
 <p>Ofte har man brug for at kunne udskille specielle tekstelementer i en teskstreng. F.eks. hvis man skal undersøge om en mail er dansk. Det kræver at den har et <span class="inl_cmd">.dk</span> i slutningen. Det kunne f.eks. være at undersøge om mailen i eksemplet ovenfor (hans.boedker@dkmail.dk).</p>
 
@@ -2857,7 +2857,7 @@ print ("\"{0}\" er de sidste 3 tegn emailadressen \"{1}\"".format(substring, str
 Press return to continue
 </pre>
 
-<h2><span class="inl_cmd">find()</span> - Find tekstelementer i tekststrenge</h2>
+<h3><span class="inl_cmd">find()</span> - Find tekstelementer i tekststrenge</h3>
 
 <p>For at finde tekstelementer i tekststrenge anvender vi funktionen <span class="inl_cmd">find()</span>.</p>
 
@@ -2911,7 +2911,7 @@ Press return to continue
 
 </pre>
 
-<h3>Opgave - tjek mail</h3>
+<h4>Opgave - tjek mail</h4>
 
 <p>Lav en kode hvor du tjekker en email ud fra følgende parametre: </p>
 
@@ -2924,7 +2924,7 @@ Press return to continue
 
 <p>Udskriften skal enten sige om det er en rigtig mail eller angive hvad der er fejlen og bede om en ny indtastning.</p>
 
-<h3>Opgave - tjek mail 2</h3>
+<h4>Opgave - tjek mail 2</h4>
 
 <p>Ændr koden så den også svarer med alle de data du undersøger for:</p>
 
@@ -2937,7 +2937,7 @@ Press return to continue
 
 
 
-<h1>Lister</h1>
+<h2>Lister</h2>
 
 <p>Ofte kan det være en fordel at kunne hente tal ud fra tabeller, f.eks. en liste med brugere, brugernavne og adgangskoder. Læg mærke til at navnene sætter i anførselstegn for at Python tolker det som tekststrenge og ikke værdier.</p>
 
@@ -2976,7 +2976,7 @@ Dennis
 Press return to continue
 </pre>
 
-<h2>Ændring af listeelement</h2>
+<h3>Ændring af listeelement</h3>
 
 <p>Hvis man ønsker at ændre et element i en liste angiver man blot en ny variabel</p>
 
@@ -3011,7 +3011,7 @@ Den nye liste
 Press return to continue
 </pre>
 
-<h2>Tilføje element til listen</h2>
+<h3>Tilføje element til listen</h3>
 
 <pre>
 	<code class="python">
@@ -3041,11 +3041,11 @@ print (names)
 Press return to continue
 </pre>
 
-<h2>Fjerne element fra listen</h2>
+<h3>Fjerne element fra listen</h3>
 
 <p>Man har ofte brug for at kunne fjerne elementer i en liste på to måder. Enten et specifikt element, eller det sidst tilføjede. For at fjerne elementer anvender man <span class="inl_cmd">del</span>.</p>
 
-<h3>Fjern sidste element</h3>
+<h4>Fjern sidste element</h4>
 
 <p>Ved at angive indeksnummeret som negativt tæller python fra slutningen af listen. Så for at fjerne det sidste element anvendes <span class="inl_cmd">-1</span>.</p>
 
@@ -3077,7 +3077,7 @@ print (names)
 Press return to continue
 </pre>
 
-<h3>Fjerne specifikt element</h3>
+<h4>Fjerne specifikt element</h4>
 
 <p>I dette tilfælde vil vi fjerne Cecilie som er det 3. element</p>
 
@@ -3109,7 +3109,7 @@ print (names)
 Press return to continue
 </pre>
 
-<h2>Find elements placering i en liste</h2>
+<h3>Find elements placering i en liste</h3>
 
 <p>Herunder vil vi finde elementet "Cecilie" i listen ved hjælp af <span class="inl_cmd">index()</span>.</p>
 
@@ -3138,7 +3138,7 @@ print ("\"{0}\" er nummer {1} i listen".format(name_to_find,listnumber))
 Press return to continue
 </pre>
 
-<h2>Findes eller findes et element ikke i listen</h2>
+<h3>Findes eller findes et element ikke i listen</h3>
 
 <p>Ovenfor søgte vi placeringen af et liste-element. Her vil vi blot afklare om et element findes eller ej. Ved at anvende den følgende fremgangsmåde bliver svaret enten <span class="inl_cmd">True</span> eller <span class="inl_cmd">False</span>. Læg mærke til at startbogstavet er stort.</p>
 
@@ -3193,9 +3193,9 @@ Press return to continue
 
 </pre>
 
-<h2>Opgaver</h2>
+<h3>Opgaver</h3>
 
-<h3>Opgave - lister</h3>
+<h4>Opgave - lister</h4>
 
 <p>Lav et program hvor brugeren ved hjælp af et input kan:</p>
 
@@ -3208,7 +3208,7 @@ Press return to continue
 
 <p>Til denne opgave får du brug for at anvende kapitlet "if, elif - else" herunder.</p>
 
-<h1>Dictionaries</h1>
+<h2>Dictionaries</h2>
 
 <p>Dictionaries er en udvidet liste. Heri kan man koble to elementer til hinanden, f.eks. et brugernavn med et ID. Herunder oprettes en dictionary og vises:</p>
 
@@ -3239,7 +3239,7 @@ Udskrivning af hele listen
 Press return to continue
 </pre>
 
-<h2>Udskriver et element</h2>
+<h3>Udskriver et element</h3>
 
 <p></p>
 
@@ -3268,7 +3268,7 @@ Annas brugerID: 1
 Press return to continues
 </pre>
 
-<h2>Tilføj element</h2>
+<h3>Tilføj element</h3>
 
 <pre>
 	<code class="python">
@@ -3298,7 +3298,7 @@ Der tilføjes brugern Egon med ID = 5
 Press return to continue
 </pre>
 
-<h2>Ændre elements værdi</h2>
+<h3>Ændre elements værdi</h3>
 
 <p></p>
 
@@ -3330,7 +3330,7 @@ Egons ID ændres til 6
 Press return to continue
 </pre>
 
-<h2>Fjerne et element</h2>
+<h3>Fjerne et element</h3>
 
 <pre>
 	<code class="python">
@@ -3360,7 +3360,7 @@ Fjerner brugeren Egon
 Press return to continue
 </pre>
 
-<h2>Undersøg om et element findes</h2>
+<h3>Undersøg om et element findes</h3>
 
 <pre>
 	<code class="python">
@@ -3387,7 +3387,7 @@ Undersøger om brugeren Egon Findes: False
 Press return to continue
 </pre>
 
-<h2>Undersøg om et element <span class="bold">IKKE</span> findes</h2>
+<h3>Undersøg om et element <span class="bold">IKKE</span> findes</h3>
 
 <pre>
 	<code class="python">
@@ -3414,9 +3414,9 @@ Undersøger om brugeren Susanne IKKE i denne dictionary: True
 Press return to continue
 </pre>
 
-<h2>Opgaver</h2>
+<h3>Opgaver</h3>
 
-<h3>Lav et login ved hjælp af en dicionary</h3>
+<h4>Lav et login ved hjælp af en dicionary</h4>
 
 <p>Opret en dicionary med dig selv som bruger og opret en adgangskode. Lav en <span class="inl_cmd">if/else</span> struktur hvor du:</p>
 
@@ -3427,11 +3427,11 @@ Press return to continue
 	<li>Hvis ikke: Du har ikke adgang</li>
 </ol>
 
-<h3>Lav en valutaomregner</h3>
+<h4>Lav en valutaomregner</h4>
 
 <p>Lav en valutaomregnder ved hjælp af en dictionary funktionen <span class="inl_cmd">valuta(a,b)</span>, hvor <span class="inl_cmd">a</span> er valutaen og <span class="inl_cmd">b</span> er beløbet.</p>
 
-<h3>Analyser IP adresse 1</h3>
+<h4>Analyser IP adresse 1</h4>
 
 <p>Lav en løkke så der dannes en dictionary med følgende indhold: okt1 = 192, okt2 = 168, okt3 = 3, okt4 = 100</p>
 
@@ -3442,18 +3442,18 @@ Press return to continue
 	<li>Er computerens lokale IP-adresse</li>
 </ul>
 
-<h3>Analyser IP-adresse 2</h3>
+<h4>Analyser IP-adresse 2</h4>
 
 <p>Lav et program der analyserer netmasken (f.eks. 255.255.255.0), og udskriver den både som binær og decimal adresse</p>
 
 
-<h3>Analyser IP-adresse 3</h3>
+<h4>Analyser IP-adresse 3</h4>
 
 <p>Kombiner opgave 1 og 2, så du kan indtaste IP-adressen med CIDR (10.0.2.10/24) og lav en analyse af adressen.</p>
 
 
 
-<h1>Random</h1>
+<h2>Random</h2>
 
 <p>Ofte har man brug for at computeren skal kunne levere et tilfældigt tal. Det kan feks. være hvis computeren skal udvælge et element i en liste eller skal simulere terningkast. For at kunne anvende Random skal det først importeres, hvorefter vi får adgang til dets funktioner. Den væsentligste forskel ligger i hvordan det bliver præsenteret i koden. Lad os se på det første eksempel:</p>
 
@@ -3494,9 +3494,9 @@ print(random.randrange(1,6))
 
 <p>Begge metoder har deres fordele. Fordelen ved at importere de enkelte moduler hver for sig er, at man i koden kan kalde den konkrete funktion uden at skulle skrive modulets navn først, samt at alle anvendte funktioner står i toppen af dokumentet. Fordelen ved at kalde hele funktionen er, at man i koden kan se når funktioner kaldes fra moduler. Det vigtigste er at du som programmør har overblikket over din kode og det er herudfra du skal vælge.</p>
 
-<h2>Opgaver</h2>
+<h3>Opgaver</h3>
 
-<h3>Opgave - Terningspil 1</h3>
+<h4>Opgave - Terningspil 1</h4>
 
 <p>Lav et program hvor man skal spille terning mod computeren.</p>
 
@@ -3506,7 +3506,7 @@ print(random.randrange(1,6))
 	<li>Output skal være om computer eller bruger er vinder</li>
 </ul>
 
-<h3>Opgave - Terningspil 2</h3>
+<h4>Opgave - Terningspil 2</h4>
 
 <p>Ændre koden: </p>
 
@@ -3549,16 +3549,16 @@ Thomas vandt
 Press return to continue
 </pre>
 
-<h3>Opgave - Ordsprog</h3>
+<h4>Opgave - Ordsprog</h4>
 
 <p>Lav ved hjælp af en dictionary et program, som udskriver et tilfældigt ordsprog når det startes.</p>
 
 
 
 
-<h1>Plotning</h1>
+<h2>Plotning</h2>
 
-<h2>Simpel plotning</h2>
+<h3>Simpel plotning</h3>
 
 <p>Simpel plotning er når man har to lister man vil sætte i relation til hinanden.</p>
 
@@ -3654,7 +3654,7 @@ show(graf)          # viser plotningen
 	</code>
 </pre>
 
-<h2>Avanceret plotning</h2>
+<h3>Avanceret plotning</h3>
 
 <p>Herunder er lavet et plot der indeholder flere designelementer</p>
 
@@ -3740,7 +3740,7 @@ show()	# viser plotningen
 
 </figure>
 
-<h2>Farver i grafer</h2>
+<h3>Farver i grafer</h3>
 
 <p>Der er mulighed for at anvende 8 foruddefinerede farver, gråtioner, samt hexadecimale farver</p>
 
@@ -3796,7 +3796,7 @@ show()	# viser plotningen
 	</tbody>
 </table>
 
-<h1>Ligningsløsning med Python</h1>
+<h2>Ligningsløsning med Python</h2>
 
 <p></p>
 
@@ -3814,7 +3814,7 @@ show()	# viser plotningen
 <p><a href="http://docs.sympy.org/dev/modules/solvers/solvers.html" target="_blank">http://docs.sympy.org/dev/modules/solvers/solvers.html</a></p>
 
 
-<h1>Ressourcer på nettet</h1>
+<h2>Ressourcer på nettet</h2>
 
 <p><a href="https://www.raspberrypi.org/documentation/usage/python/" target="_blank">https://www.raspberrypi.org/documentation/usage/python/</a></p>
 

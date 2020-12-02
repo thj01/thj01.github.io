@@ -39,9 +39,7 @@
 	
 <div class="col-xs-9">
 	
-<div class="title">Webserver med Linux</div>
-
-<h1>Indledning</h1>
+<h1>Webserver med Linux</h1>
 
 <p>I denne guide vil du lære hvordan man opretter en LAMP webserver. LAMP står for <span class="bold">L</span>inux, <span class="bold">A</span>pache, <span class="bold">M</span>ySQL og <span class="bold">P</span>hp. I denne guide vil vi anvende mariaDB som SQL server i stedet for MySQL.</p>
 
@@ -90,7 +88,7 @@
 
 <p>Ønsker du ikke at anvende database baserede hjemmesideframeworks som f.eks. Nextcloud, Wordpress, Joomla osv, kan du udelade afsnittet med mariaDB og PHP</p>
 
-<h1>Apache 2</h1>
+<h2>Apache 2</h2>
 
 <p>Apache installeres med følgende kommando</p>
 
@@ -108,7 +106,7 @@
 
 <p>Selve webserverens filer ligger i mappen <span class="inl_cmd">/var/www/html</span>:</p>
 
-<h2>Aktiver SSL (https)</h2>
+<h3>Aktiver SSL (https)</h3>
 
 <p>Som standard anvender Apache HTTP. Her vil vi installere SSL, så vi kan anvende HTTPS, så siden kan godkendes med et certifikat. Vær opmærksom på at det ikke betyder at en side er sikker. Det eneste et certifikat betyder er, at der er nogen der har udstedt et certifikat til siden. Når browseren rammer en side der kræver certifikat, beder den om en bekræftigelse fra de udbydere som browseren stoler på. Hvis browseren ikke kan få bekræftiget det certifikat der ligger advarer den brugeren.</p>
 
@@ -153,7 +151,7 @@
 <p>Siden er stadig krypteret, men for at undgå denne fejl skal man anskaffe og konfigurere et certifikat. Det kan man gøre gratis fra f.eks: <a href="https://letsencrypt.org/" target="_blank">https://letsencrypt.org/</a>.</p>
 
 
-<h1>PHP 7</h1>
+<h2>PHP 7</h2>
 
 <p></p>
 
@@ -182,11 +180,11 @@
 <code class="cmd">sudo rm /var/www/html/info.php</code>
 
 
-<h1>Nogle tricks</h1>
+<h2>Nogle tricks</h2>
 
 <p>Her er nogle af de praktiske tricks jeg anvender på min webserver</p>
 
-<h2>Symbolsk link</h2>
+<h3>Symbolsk link</h3>
 
 <p>Her vil vi oprette en genvej (symbolsk link) til <span class="inl_cmd">/var/www/html</span>. Det gør vi ved at "binde" en mappe i vores hjemme-mappe til webserverens mappe. Link-mappen får samme navn som den mappe den linker til.</p>
 
@@ -208,7 +206,7 @@ drwxr-xr-x 3 root root  4096 maj 27 01:05 ..
 
 
 
-<h2>Gør dig selv til ejer</h2>
+<h3>Gør dig selv til ejer</h3>
 
 <p>Ved at gøre dig selv til ejer af www-serverens filer kan du redigere direkte i filerne uden at bekymre dig om rettighederne.</p>
 
@@ -247,7 +245,7 @@ lrwxrwxrwx 1 tj tj 14 maj 27 01:50 <span class="turk">/home/tj/html</span> -> <s
 </pre>
 
 
-<h2>Personlige hjemmesider</h2>
+<h3>Personlige hjemmesider</h3>
 
 <p>Hvis man har flere brugere på webserveren kan man give hver af dem deres egen hjemmeside på webserveren. Den kan så tilgås fra adressen: <span class="inl_cmd">*serveradresse*/~*brugernavn*</span></p>
 
@@ -366,7 +364,7 @@ drwxr-xr-x 139 root root 12288 maj 27 10:56 ..
 
 </figure>
 
-<h1>mariaDB og PHPMyAdmin</h1>
+<h2>mariaDB og PHPMyAdmin</h2>
 
 <p>Opsætningen af mariaDB og PHPMyAdmin skal gøres over 3 trin:</p>
 
@@ -379,7 +377,7 @@ drwxr-xr-x 139 root root 12288 maj 27 10:56 ..
 <p>Grunden til at opsætningen skal køres over 3 stadier skyldes, at vi ønsker at give adgang til databasen fra andre end systemets <span class="inl_cmd">root</span>bruger. For at undgå problemer med rettighederne skal mariaDB og PHPMyAdmin sættes op før vi roder med rettighederne for tilgangen til databasen.</p>
 
 
-<h2>mariaDB</h2>
+<h3>mariaDB</h3>
 
 <p></p>
 
@@ -459,7 +457,7 @@ Thanks for using MariaDB!
 
 <p>Der er to brugere der nu har adgang til databasen. Det er systemets root og databasens rod. Som det er lige nu er det kun systemets rod der har lov til at logge på databasen. Det skal ændres, sådan at andre brugere også kan logge på databasen. Start <span class="inl_cmd">mysql</span> som systemets rod</p>
 
-<h2>PHPMyAdmin</h2>
+<h3>PHPMyAdmin</h3>
 
 <p>For at administrere MySQL databaser anvender man ofte PHPMyAdmin</p>
 
@@ -508,7 +506,7 @@ Thanks for using MariaDB!
 
 <code class="cmd">sudo service apache2 reload</code>
 
-<h2>Konfiguration af mariaDB</h2>
+<h3>Konfiguration af mariaDB</h3>
 
 <p>Som det er lige nu kan databasen kun tilgås ved hjælp af root-shell. Det ændrer vi, så alle brugere med mariaDB's root password kan få adgang til databasen.</p>
 
@@ -594,7 +592,7 @@ MariaDB [(none)]> exit
 </figure>
 
 
-<h1>Nextcloud</h1>
+<h2>Nextcloud</h2>
 
 <p>Denne guide er lavet med udgangspunkt i installationsguiden fra nextclouds egen hjemmeside: <a href="https://docs.nextcloud.org/server/9/admin_manual/installation/source_installation.html" target="_blank">https://docs.nextcloud.org/server/9/admin_manual/installation/source_installation.html</a></p>
 
@@ -659,7 +657,7 @@ drwxr-xr-x 14 root root 4096 maj 27 15:35 <span class="blue1">nextcloud</span>
 
 <code class="cmd">sudo chmod -R 700 /srv/nextcloudData</code>
 
-<h2>Konfigurer Apache</h2>
+<h3>Konfigurer Apache</h3>
 
 <p>For at kunne udbyde nextcloud skal der oprettes en konfigurationsfil i Apache. Opret følgende fil <span class="inl_cmd">/etc/apache2/sites-available/nextcloud.conf</span> med nedestående indhold:</p>
 
@@ -706,7 +704,7 @@ Alias /nextcloud "/var/www/nextcloud/"
 
 <p>Det vi har her er konfigurationsskærmen til Nextcloud. Som vi udfylder senere:</p>
 
-<h2>Opret database</h2>
+<h3>Opret database</h3>
 
 <p>Før vi går i gang med at konfigurere Nextcloud skal vi have oprettet en database og en administrator til databasen. Det gør vi ved hjælp af kommandolinien:</p>
 
@@ -766,11 +764,11 @@ MariaDB [(none)]> <span class="red">exit</span>
 <span class="bold">Bye</span>
 </pre>
 
-<h2>Konfigurer Nextcloud</h2>
+<h3>Konfigurer Nextcloud</h3>
 
 <p>Åbn Nextcloud i browseren på adressen: <span class="inl_cmd">https://127.0.0.1/nextcloud</span>. Første gang Nextcloud startes på skal admin kontoen konfigureres. Herunder er konfigurationssiden "klippet" over:</p>
 
-<h3>Administrator konto</h3>
+<h4>Administrator konto</h4>
 
 <p>Dette er kontoen som skal anvendes til at administrere Nextcloud med. Det kan f.eks. være at oprette brugere, sætte deres rettigheder og installere apps.</p>
 
@@ -801,7 +799,7 @@ MariaDB [(none)]> <span class="red">exit</span>
 	</tbody>
 </table>
 
-<h3>Placering af data</h3>
+<h4>Placering af data</h4>
 
 <p>Her placeres de data som brugerne lægger op. På den måde er data ikke tilgængelige for selve webserveren, men kræver adgang til databasen.</p>
 
@@ -863,7 +861,7 @@ MariaDB [(none)]> <span class="red">exit</span>
 	</tbody>
 </table>
 
-<h3>Afslut installationen</h3>
+<h4>Afslut installationen</h4>
 
 <p>Klik på <span class="inl_cmd">Afslut opsætning</span>, for at afslutte konfigurationen af Nextcloud. Efter lidt til start Nextcloud op.</p>
 
@@ -875,9 +873,9 @@ MariaDB [(none)]> <span class="red">exit</span>
 
 </figure>
 
-<h2>Optimering af Nextcloud</h2>
+<h3>Optimering af Nextcloud</h3>
 
-<h3>Konfigurer opcache</h3>
+<h4>Konfigurer opcache</h4>
 
 <p>Indsæt følgende linier (markeret med rødt) i bunden af <span class="inl_cmd">nano /etc/php/7.0/apache2/php.ini
 </span></p>
@@ -902,7 +900,7 @@ opcache.revalidate_freq=1</span>
 
 <code class="cmd">sudo service apache2 reload</code>
 
-<h3>Konfigurer datacache</h3>
+<h4>Konfigurer datacache</h4>
 
 <p>For at optimere data i nextcloud skal programmet PACu installeres:</p>
 
@@ -960,7 +958,7 @@ opcache.revalidate_freq=1
 
 <code class="cmd">sudo service apache2 reload</code>
 
-<h3>Konfigurering af max filstørrelse</h3>
+<h4>Konfigurering af max filstørrelse</h4>
 
 <p>Som standard er Nextcloud sat til at filer ikke må være større end 513 MB. Det kan være upraktisk hvis man f.eks. ønsker at bruge nextclouod til backup eller ISO-filer. For at ændre dette skal vi have ændret i den skjulte fil <span class="inl_cmd">.htaccess</span>, der ligger i Nextclouds webmappe <span class="inl_cmd">/var/www/nextcloud</span>.</p>
 
@@ -1002,7 +1000,7 @@ opcache.revalidate_freq=1
 
 <code class="cmd">sudo service apache2 reload</code>
 
-<h2>Sæt sikkerheden</h2>
+<h3>Sæt sikkerheden</h3>
 
 <p>Som det er nu er sikkerheden på nextcloudfilerne sat rimeligt. Men for at de bliver så sikre som muligt skal der gøres en del arbejde. Hertil anvendes der et script, som er vist herunder:</p>
 
@@ -1110,7 +1108,7 @@ exit
 
 </figure>
 
-<h1>Wordpress</h1>
+<h2>Wordpress</h2>
 
 <p>Wordpress er en meget populær CMS (<span class="bold">C</span>ontent <span class="bold">M</span>anagement <span class="bold">S</span>ystem, som gør det nemt at oprette en hjemmeside. Her vil vi installere Wordpress, så den overtager ens hjemmeside.</p>
 
@@ -1143,7 +1141,7 @@ exit
 <code class="more_cmd">sudo chmod -R 755 /var/www/html</code>
 
 
-<h2>Opret database</h2>
+<h3>Opret database</h3>
 
 <ol class="">
 	<li>Log på databaseserveren</li>
@@ -1201,7 +1199,7 @@ MariaDB [(none)]> exit
 <span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ 
 </pre>
 
-<h2>Sæt upload indstillinger</h2>
+<h3>Sæt upload indstillinger</h3>
 
 <p>Som standard er Wordpress sat til at uploade filer der maksimalt er 2 MB store. Dette er uhensigtsmæssigt, hvis man vil lægge video og lignene på på sin side. Derfor vil vi ændre det til 64 MB. Ændr følgende 4 linier i filen <span class="inl_cmd">/etc/php/7.0/apache2/php.ini</span>. Åbn <span class="inl_cmd">php.ini</span> med kommandoen:</p>
 
@@ -1223,7 +1221,7 @@ max_input_time <span class="red">300</span>
 
 <code class="cmd">sudo service apache2 reload</code>
 
-<h2>Konfigurer Wordpress</h2>
+<h3>Konfigurer Wordpress</h3>
 
 <p>Da vi har sat wordpress til at være roden på vores webserver, skal vi blot indtaste IP-adressen i browseren: <span class="inl_cmd">https://127.0.0.1/</span>. Første gang Wordpress startes bliver man ført igennem konfigurationen. Herunder er vist og forklaret:</p>
 
@@ -1391,7 +1389,7 @@ max_input_time <span class="red">300</span>
 
 </figure>
 
-<h2>Sæt sikkerheden</h2>
+<h3>Sæt sikkerheden</h3>
 
 <p>Problemet med sikkerhed er, at en ting er hvad der er sikkert, og en anden ting er hvad der er let. Hvis man ønsker at det skal være let at opdatere og vedligeholde Wordpress, så bliver man nød til at åbne for rettigheder. Herunder er angivet anvisninger til en fornuftig opsætning. Og her vil vi anvende scriptet herunder:</p>
 
@@ -1463,7 +1461,7 @@ exit
 
 <!--
 
-<h1>Webmin</h1>
+<h2>Webmin</h2>
 
 <p>Webmin er et webinterface til at tilgå serveren med. Den indeholder mange konfigurationsmuligheder. Tilføj 2 repositories til <span class="inl_cmd">/etc/apt/sources.list</span></p>
 

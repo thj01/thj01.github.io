@@ -39,20 +39,20 @@
 	
 <div class="col-xs-9">
 	
-<div class="title">Mediaserver</div>
+<h1>Mediaserver</h1>
 
 <p>Ubuntu kan fint laves om til en mediaserver, så alle enheder på netværket har adgang til den. Her vil vi bruge den meget simple tjeneste <span class="inl_cmd">minidlna</span>.</p>
 	
 <p>I denne guide er det sat op med brugeren <span class="inl_cmd">tj</span>, som du derfor skal erstatte med din egen bruger</p>
 
 
-<h1>Installation</h1>
+<h2>Installation</h2>
 
 <p>Installer <span class="inl_cmd">minidlna</span> med kommandoen:</p>
 
 <code class="cmd">sudo apt-get install minidlna</code>
 
-<h1>Forberedelse</h1>
+<h2>Forberedelse</h2>
 
 <p>Før vi går igang med at konfigurere serveren skal vi have følgende op plads:</p>
 
@@ -64,11 +64,11 @@
 	<li>Kopiere dine filer til de nye mapper</li>
 </ol>
 
-<h2>Opret mapper</h2>
+<h3>Opret mapper</h3>
 
 <code class="cmd">sudo mkdir -p /srv/billeder /srv/musik /srv/video </code>
 
-<h2>Bruger konfiguration</h2>
+<h3>Bruger konfiguration</h3>
 
 <p>Tilføj din bruger til gruppen minidlna</p>
 
@@ -78,7 +78,7 @@
 
 <code class="cmd">exec su -l $USER</code>
 
-<h1>Konfiguration</h1>
+<h2>Konfiguration</h2>
 
 <p><span class="inl_cmd">minidlna</span> konfigureres igennem en filerne <span class="inl_cmd">/etc/minidlna.conf</span> og <span class="inl_cmd">/etc/default/minidlna</span>.</p>
 
@@ -126,7 +126,7 @@ GROUP="minidlna"
 
 <code class="more_cmd">sudo service minidlna force-reload</code>
 
-<h1>Flyt dine filer</h1>
+<h2>Flyt dine filer</h2>
 
 <p>Herefter kan du flytte din musik, videoer og billeder til de nye mapper</p>
 
@@ -154,20 +154,20 @@ GROUP="minidlna"
 		
 </ul>
 
-<h1>Ændr rettigheder</h1>
+<h2>Ændr rettigheder</h2>
 
 <p>Det sidste vi skal gøre er at ændre ejerskab og rettigheder på den nye mappe med </p>
 
-<h2>Ændr bruger og gruppe</h2>
+<h3>Ændr bruger og gruppe</h3>
 
 <code class="cmd">sudo chown -R minidlna:minidlna /srv/billeder /srv/musik /srv/video/</code>
 
-<h2>Ændr rettigheder</h2>
+<h3>Ændr rettigheder</h3>
 
 
 <code class="cmd">sudo chmod -R 775 /srv/billeder /srv/musik /srv/video/</code>
 
-<h1>Genstart minidlna</h1>
+<h2>Genstart minidlna</h2>
 
 <p>For at den nye konfiguration slår igennem, skal filen genindlæses. Du bør også genopfriske databasen, og det gøres med den anden kommando.</p>
 
@@ -177,7 +177,7 @@ GROUP="minidlna"
 
 <p>Herefter er dine filer tilgængelige for alle apperater der anvender DLNA :)</p>
 
-<h1>Kontroller setup</h1>
+<h2>Kontroller setup</h2>
 
 <p>Tjek om tjenesten er oppe ved at skrive følgende adresse i din browser: </p>
 
@@ -187,7 +187,7 @@ GROUP="minidlna"
 
 <span class="inl_cmd">192.168.0.10:9500</span>
 
-<h1>Efter genstart</h1>
+<h2>Efter genstart</h2>
 
 <p>Desværre er der en mindre mangel i denne guide endnu, og det er at <span class="inl_cmd">minidlna</span> skal genstartes manuelt efter en genstart. </p>
 

@@ -39,7 +39,7 @@
 	
 <div class="col-xs-9">
 	
-<div class="title">Ubuntu NAS <br/> Installation</div>
+<h1>Ubuntu NAS Installation</h1>
 
 
 
@@ -83,7 +83,7 @@
 
 <p>Til Guiden har jeg anvendt <a href="http://releases.ubuntu.com/18.04/ubuntu-18.04-live-server-amd64.iso" download >Ubuntuserver 18.04 live</a></p>
 
-<h1>Brænding af ISO-fil</h1>
+<h2>Brænding af ISO-fil</h2>
 
 <p>Til at brænde <span class="inl_cmd">ISO-filen</span> over på en USB vi jeg anbefale at du anvender følgende programmer:</p>
 
@@ -101,7 +101,7 @@
 
 <p>Når USB-nøglen er brændt skal du sørge for at din NAS-maskine booter fra USB.</p>
 
-<h1>Start installation</h1>
+<h2>Start installation</h2>
 
 <p>Installationen af Ubuntu-server foregår ved hjælp af tasteturet.</p>
 
@@ -116,7 +116,7 @@
 
 
 
-<h2>Installationssprog</h2>
+<h3>Installationssprog</h3>
 
 <figure id="">
 
@@ -126,7 +126,7 @@
 
 </figure>
 
-<h1>Sprog og lokation</h1>
+<h2>Sprog og lokation</h2>
 
 <p>Her skal du vælge keyboard layout</p>
 
@@ -168,7 +168,7 @@
 
 </figure>
 
-<h1>Netværk</h1>
+<h2>Netværk</h2>
 
 <p>Netværksguiden er ret omfattende, men fremgangsmåde er som ovenfor. Vælg dit netværkskort - her <span class="inl_cmd">enp0s3</span> og tryk <kbd>Enter</kbd></p>
 
@@ -230,7 +230,7 @@
 
 </figure>
 
-<h1>Opsætning af harddisk</h1>
+<h2>Opsætning af harddisk</h2>
 
 <blockquote>
 	<p>Vi opretter først vores RAID drev efter installationen, da det er en del nemmere end at gøre det her.</p>
@@ -276,7 +276,7 @@
 
 </figure>
 
-<h1>Afslut installationen</h1>
+<h2>Afslut installationen</h2>
 
 <p>Indtast informationer om dig selv</p>
 
@@ -323,7 +323,7 @@
 
 
 
-<h1>Første start</h1>
+<h2>Første start</h2>
 
 <p>Når ubuntu starter op skal du logge ind. Indtast dit brugernavn samt password. Læg mærke til at du ikke kan se dine tegn når du taster password ind.</p>
 
@@ -347,7 +347,7 @@
 
 <p>Tillykke - du har installeret Ubuntu server 18.04.</p>
 
-<h1>sudo</h1>
+<h2>sudo</h2>
 
 <p><span class="inl_cmd">sudo</span> betyder <b>SU</b>peruser <b>DO</b>, og er en smart måde som man anvender til at give nogle bruger administratorrettigheder. Det gør man ved at sætte dem i <span class="inl_cmd">sudo</span>-gruppen. Den bruger du oprettede under installationen er automatisk tilføjet til denne gruppe, og derfor kan du lave systemarbejde.</p>
 
@@ -381,13 +381,13 @@ tj@NAS:~$ sudo service networking restart
 </blockquote>
 
 
-<h1>Opdatering</h1>
+<h2>Opdatering</h2>
 
 <p>Ubuntu opdateres ved hjælp af det som kaldes <span class="inl_cmd">repositories</span>. et repositorie har hele tiden den nyeste version af programmet der passer til den version af Ubuntu man kører med. Så for at opdatere skal man altså sammenligne de programmer man har installeret med dem som ligger i repository.</p>
 
 <p>Det smarte ved dette system er, at man kan tilføje og fjerne repositories efter behov - og derved få fat i de programmer man ønsker.</p>
 
-<h2>Ændre lokalitet</h2>
+<h3>Ændre lokalitet</h3>
 
 <p>Som udgangspunkt henter den installation vi har lavet sine opdateringer fra lokale servere i DK. Det er min erfaring at de nogle gange er langsommere end de generelle.</p>
 
@@ -468,7 +468,7 @@ tj@NAS:~$ sudo service networking restart
 	
 </details>
 
-<h2>Opdatering</h2>
+<h3>Opdatering</h3>
 
 <p>Opdateringen består af to processer:</p>
 
@@ -493,7 +493,7 @@ tj@NAS:~$ sudo service networking restart
 
 <p>Det lille <span class="inl_cmd">-y</span> til sidst gør, at <span class="inl_cmd">apt</span> ikke spørger om du vil godkende opdateringerne. Hvis du vil se hvad der bliver opdateret skriver du ikke <span class="inl_cmd">-y</span>. Det betyder, at du skal godkende opdateringerne manuelt.</p>
 
-<h1>Opsætning af RAID1</h1>
+<h2>Opsætning af RAID1</h2>
 	
 <p>Under installationen "gemte" vi de to ekstra harddiske. Det skyldes at det er nemmere at sætte dem op bagefter. Denne guide her inspireret fra: <a href="https://www.digitalocean.com/community/tutorials/how-to-create-raid-arrays-with-mdadm-on-ubuntu-16-04" target="_blank">https://www.digitalocean.com/community/tutorials/how-to-create-raid-arrays-with-mdadm-on-ubuntu-16-04</a></p>
 
@@ -505,7 +505,7 @@ tj@NAS:~$ sudo service networking restart
 	<li>Formatering og montering af Raid i filstrukturen</li>
 </ul>
 
-<h2>Konfigurerering af harddiske</h2>
+<h3>Konfigurerering af harddiske</h3>
 
 <p>Først skal vi have et overblik</p>
 
@@ -551,7 +551,7 @@ sdc      8:32   0    2T  0 disk
 sr0     11:0    1 1024M  0 rom
 </pre>
 
-<h2>Opsætning af RAID1</h2>
+<h3>Opsætning af RAID1</h3>
 
 <p>Til NAS-serveren har jeg valgt at køre med RAID1, hvilket betyder at de to harddiske er spejlet. HVis der sker skade på det ene drev, så ligger der en kopi på det andet drev. Det beskytter data mod harddiskfejl, men ikke hvis der sker fysisk skade på hele computeren. RAID1 er en sikring ... men ikke backup.</p>
 
@@ -588,7 +588,7 @@ Personalities : [linear] [multipath] [raid0] [raid1] [raid6] [raid5] [raid4] [ra
 unused devices: &lt;none>
 </pre>
 
-<h2>Formatering og montering</h2>
+<h3>Formatering og montering</h3>
 
 <p>Vi formaterer vores RAID</p>
 

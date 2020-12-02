@@ -38,11 +38,11 @@
 	
 <div class="col-xs-9">
 	
-<div class="title">Flash din android enhed</div>
+<h1>Flash din android enhed</h1>
 
 <p>I denne guide får du vist hvordan man kan flashe en android-enhed ved hjælp af <span class="inl_cmd">adb</span>. Konkret anvendes en Nexus 7 (2012) til formålet og den opdateres til Android 5.01.</p>
 
-<h1>Klargør enheden</h1>
+<h2>Klargør enheden</h2>
 
 <p>For at kunne flashe sin Android-enhed skal man først have adgang til udvikler tilstand. Den fås ved at vælge: <span class="inl_cmd">Indstillinger</span>&rarr;<span class="inl_cmd">Om tabletcomputeren</span> i System afsnittet. Tryk på <span class="inl_cmd">Versionsnummer</span> 7 gange. </p>
 
@@ -50,17 +50,17 @@
 
 <p>Under menuen <span class="inl_cmd">Fejlfinding</span>, skal du aktivere <span class="inl_cmd">USB-fejlretning</span>. Når Android-enhden ønsker en bekræftelse svares <span class="knap">OK</span>. Skal du arbejde mere med <span class="inl_cmd">adb</span>, skal du sætte flueben i <span class="inl_cmd">Tillad altid fra denne computer</span>.</p>
 
-<h1>Download image</h1>
+<h2>Download image</h2>
 	
 <p>Download dit flash-image her: <a href="https://developers.google.com/android/images" target="_blank">https://developers.google.com/android/images</a>, og pak det ud i dit homedir. Hos mig hedder versionen <span class="inl_cmd">nakasi-lmy47v</span>.</p>
 
 <p>Åbn terminalen og naviger ind i mappen.</p>
 
-<h1>Installer adb og fastboot</h1>
+<h2>Installer adb og fastboot</h2>
 
 <code class="cmd">sudo apt install android-tools-adb android-tools-fastboot -y</code>
 
-<h1>Connect til enhed</h1>
+<h2>Connect til enhed</h2>
 
 <p>Connect til din android enhed</p>
 
@@ -74,7 +74,7 @@ List of devices attached
 <p>Hvis du ikke gav generelt tilladelse ovefor vil enheden spørger om du tillader det ... tryk <span class="knap">OK</span></p>
 
 
-<h1>Genstart din enhed</h1>
+<h2>Genstart din enhed</h2>
 
 <p>For at få adgang til din enhed skal du nu have adgang til bootloaderen. Det gøres ved nedestående kommando. </p>
 
@@ -82,7 +82,7 @@ List of devices attached
 
 <p>Din Android-enhed starter nu op ned bootloaderen og er klar til kommandoer.</p>
 
-<h1>Flash din enhed</h1>
+<h2>Flash din enhed</h2>
 
 <p>Kør scriptet <span class="inl_cmd">flash-all.sh</span></p>
 
