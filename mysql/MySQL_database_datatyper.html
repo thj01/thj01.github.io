@@ -25,19 +25,23 @@
 	
 <div class="col-xs-3">
 	
-	<div id="toc">
-	
-		<div id="toc_headline"></div>
-	
-	</div>
+	<nav>
+		
+		<div id="toc">
+		
+			<div id="toc_headline"></div>
+		
+		</div>
+		
+	</nav>
 
 </div><!-- Start slut 1. kolonne - TOC -->
 	
 <div class="col-xs-9">
 	
-<div class="title">MySQL - datatyper</div>
+<h1>MySQL - datatyper</h1>
 
-<h1>Datatyper</h1>
+<h2>Datatyper</h2>
 
 <p>Herunder kan du se de mest anvendte datatyper. 
 
@@ -45,9 +49,9 @@
 
 <p>Læs mere: <a href="http://www.w3schools.com/sql/sql_datatypes.asp" target="_blank">http://www.w3schools.com/sql/sql_datatypes.asp</a></p>
 
-<h1>Værdier</h1> 
+<h2>Værdier</h2> 
  
-<h2>Integers - heltal</h2>
+<h3>Integers - heltal</h3>
 
 <p></p>
 
@@ -106,7 +110,7 @@
 
 <p>Læs mere om heltal: <a href="http://dev.mysql.com/doc/refman/5.7/en/integer-types.html" target="_blank">http://dev.mysql.com/doc/refman/5.7/en/integer-types.html</a></p>
 
-<h2>Decimaltal</h2>
+<h3>Decimaltal</h3>
 
 <p>Der findes to metoder til at anvende decimaltal. Den ene er binær og den anden er baseret på 10 talsystemet. Grunden til at man anvender to forskellige er, den hastighed systemet kan anvende tallene med og belastningen af CPU'en. Computeren er hurtigere til at regne med binære tal end tal fra 10 talsystemet. Se nedenstående skema:</p>
 
@@ -177,10 +181,10 @@
 <p>Om <span class="inl_cmd">DECIMAL</span>: <a href="http://dev.mysql.com/doc/refman/5.7/en/fixed-point-types.html" target="_blank">http://dev.mysql.com/doc/refman/5.7/en/fixed-point-types.html</a></p>
 </details>
 
-<h1>Tekststrenge</h1>
+<h2>Tekststrenge</h2>
 
 
-<h2>Varchar</h2>
+<h3>Varchar</h3>
 
 <p><span class="inl_cmd">VARCHAR(*antal_tegn*)</span> gemmer op til det antal tegn (0-65635) der bliver sat i parentesen. Se skemaet herunder:</p>
 
@@ -215,7 +219,7 @@
 
 <p>Læs mere: <a href="http://dev.mysql.com/doc/refman/5.7/en/char.html" target="_blank">http://dev.mysql.com/doc/refman/5.7/en/char.html</a></p>
 
-<h2>Char</h2>
+<h3>Char</h3>
 
 <p><span class="inl_cmd">CHAR(*antal_tegn*)</span> gemmer det antal tegn (0-255) der bliver sat i parentesen. Se skemaet herunder:</p>
 
@@ -254,13 +258,13 @@
 
 <p>Hvis man er i tvivl bør man altid anvende VARCHAR(). Kan man holde alle sine data til CHAR() kan det i nogle tilfælde give en hastighedsfordel, men det kræver igen store databaser før det er en reel effekt.</p>
 
-<h1>Enum</h1>
+<h2>Enum</h2>
 
 <p>Med <span class="inl_cmd">ENUM()</span> kan man angive nogle foruddefinerede værdier som feltet kan indeholde. Det kan f.eks. være tøjstørrelser: <span class="inl_cmd">ENUM('X-SMALL','SMALL','MEDIUM','LARGE','X-LARGE','XX-LARGE')</span>. Fordelen ved at anvende <span class="inl_cmd">ENUM()</span> til at lagre værdier er, at de fylder langt mindre end <span class="inl_cmd">VARCHAR</span>, da værdierne bliver gemt i feltet som et tal der henviser til den konkrete tekststreng. 0 &#8594; X_SMALL, 1 &#8594; SMALL, 2 &#8594; MEDIUM osv. </p>
 
 <p>Læs mere: <a href="http://dev.mysql.com/doc/refman/5.7/en/enum.html" target="_blank">http://dev.mysql.com/doc/refman/5.7/en/enum.html</a></p>
 
-<h1>Tid</h1>
+<h2>Tid</h2>
 
 <table class="">
 	<thead>

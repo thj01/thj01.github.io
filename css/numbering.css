@@ -11,6 +11,11 @@ div.title {
 	counter-reset: section;
 }
 
+div.col-xs-9 {
+	counter-reset: section;
+}
+
+
 h1 {
     counter-reset: subsection;
 }

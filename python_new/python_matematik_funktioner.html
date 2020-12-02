@@ -25,17 +25,20 @@
 	
 <div class="col-xs-3">
 	
-	<div id="toc">
-	
-		<div id="toc_headline"></div>
-	
-	</div>
-
+	<nav>
+		
+		<div id="toc">
+		
+			<div id="toc_headline"></div>
+		
+		</div>
+		
+	</nav>
 </div><!-- Start slut 1. kolonne - TOC -->
 	
 <div class="col-xs-9">
 	
-<div class="title">Matematik med</div>
+<div class="title">Matematik med Python</div>
 
 <figure id="">
 
@@ -45,11 +48,11 @@
 
 </figure>
 
-<div class="title">Funktioner</div>
-
 <h1>Funktioner</h1>
 
-<p>Når man skal den samme programsekvens flere gange, kan definere en funktion. Det kan f.eks. være en funktion der skal udskrive den lille tabel for et tal. Lad os kalde den <span class="inl_cmd">tabel()</span>.</p>
+<h2>Funktioner</h2>
+
+<p>Når man skal den samme programsekvens flere gange, kan definere en funktion. Det kan f.eks. være en funktion der skal udskrive den lille tabel for et tal. Lad os kalde den <code>tabel()</code>.</p>
 
 <p>Du kan se programmet herunder</p>
 
@@ -65,21 +68,21 @@ def tabel(a):
 <p>Vi tager det linie for linie:</p>
 
 <ol class="">
-	<li><span class="inl_cmd">def tabel(a):</span></li>
+	<li><code>def tabel(a):</code></li>
 	
-	<p><span class="inl_cmd">def</span> er måde vi fortælle Python, at nu kommer der en funktion, og at vi kalder den <span class="inl_cmd">tabel()</span>. <span class="afsnit">a</span> er den variabel vi skal anvende i funktionen.
+	<p><em>def</em> er måde vi fortælle Python, at nu kommer der en funktion, og at vi kalder den <code>tabel()</code>. <em>a</em> er den variabel vi skal anvende i funktionen.
 	
-	<li><span class="inl_cmd">&nbsp;&nbsp;&nbsp;&nbsp;for i in range(1,11):</span></li>
+	<li><code>&nbsp;&nbsp;&nbsp;&nbsp;for i in range(1,11):</code></li>
 	
 	<p>Linien rykkes ind under funktionen. Der køres en løkke hvor i går fra 1 til 10, og som udskriver tabellen.</p>
 	
-	<li><span class="inl_cmd">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("{0} gange {1} er {2}".format(i,a,a*i))</span></li>
+	<li><code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("{0} gange {1} er {2}".format(i,a,a*i))</code></li>
 	
 	<p>Linien udskriver en linie i tabellen.</p>
 	
-	<li><span class="inl_cmd">tabel(4)</span></li>
+	<li><code>tabel(4)</code></li>
 
-	<p>Funktionen sættes igang med tallet 4 som <span class="inl_cmd">a</span>.</p>
+	<p>Funktionen sættes igang med tallet 4 som <em>a</em>.</p>
 	
 </ol>
 
@@ -99,13 +102,13 @@ def tabel(a):
 10 gange 4 er 40
 </pre>
 
-<h1>Geany</h1>
+<h2>Geany</h2>
 
 <p>Det kan anbefales at du overveje anvende Geany til disse opgaver.</p>
 
 <p>Har du installeret Python korrekt og husket sætte "flueben i Add Python 3.5 to PATH", så kan du køre python programmer direkte ved at trykke på <kbd>F5</kbd>.</p>
 
-<p>For at Geany kan genkende pythonprogrammer skal de gemmes på computeren med endelsen <span class="inl_cmd">py</span>, f.eks: <span class="inl_cmd">test.py</span>.</p>
+<p>For at Geany kan genkende pythonprogrammer skal de gemmes på computeren med endelsen <em>py</em>, f.eks: <em>test.py</em>.</p>
 
 <figure id="">
 
@@ -134,38 +137,38 @@ def tabel(a):
 Press any key to continue . . .
 </pre>
 
-<h1>Opgaver</h1>
+<h2>Opgaver</h2>
 
-<h2>Trekantal</h2>
+<h3>Trekantal</h3>
 
-<p>Lav funktionen <span class="inl_cmd">trekantal(a)</span> der udregner de <span class="inl_cmd">a</span> første trekantal. Tallene skal udskrives som <span class="inl_cmd">int</span>.</p>
+<p>Lav funktionen <code>trekantal(a)</code> der udregner de <em>a</em> første trekantal. Tallene skal udskrives som <em>int</em>.</p>
 
 <div class="latex">$$ T_n = 1+2+3+ ...+n=\frac{n \cdot (n-1)}{2} $$</div>
 
 
-<h2>BUM</h2>
+<h3>BUM</h3>
 
-<p>Lav funktionen <span class="inl_cmd">bum(a)</span>, hvor computeren siger <span class="inl_cmd">BUM</span> når den rammer et tal i tabellen <span class="inl_cmd">a</span>. Funktionen skal køre igennem igennem hele den lille tabel - altså op til <span class="inl_cmd">a*10</span>.</p>
+<p>Lav funktionen <code>bum(a)</code>, hvor computeren siger <em>BUM</em> når den rammer et tal i tabellen <em>a</em>. Funktionen skal køre igennem igennem hele den lille tabel - altså op til <em>a*10</em>.</p>
 
-<h2>Matematiske funktioner</h2>
+<h3>Matematiske funktioner</h3>
 
 <p>Du skal lave nogle funktioner, som udregner forskriften ved hjælp af punkterne <span class="math">\( P=(x_1,y_1) \)</span> og <span class="math">\( Q=(x_2,y_2) \)</span></p>
 
 <p>Funktionerne skal hedde:</p>
 
 <ol class="">
-	<li><span class="inl_cmd">linie(x1,y1,x2,y2)</span></li>
-	<li><span class="inl_cmd">potens(x1,y1,x2,y2)</span></li>
-	<li><span class="inl_cmd">eksponential(x1,y1,x2,y2)</span></li>
+	<li><em>linie(x1,y1,x2,y2)</em></li>
+	<li><em>potens(x1,y1,x2,y2)</em></li>
+	<li><em>eksponential(x1,y1,x2,y2)</em></li>
 </ol>
 
 <p>Ved eksponentialfunktion skal du funktionen også udskrive <span class="math">\( T_2 \)</span> og <span class="math">\( T_{\frac{1}{2}} \)</span>.</p>
 
 <p>Du kan funde noget om funktionerne her: <a href="funktioner.html" target="_blank">funktioner.html</a></p>
 
-<h2>Fibonaggi tal</h2>
+<h3>Fibonaggi tal</h3>
 
-<p>Lav funktionen <span class="inl_cmd">fibonaggi(a)</span>, som udskriver alle fibonaggital der er mindre end <span class="inl_cmd">a</span>. Fibonaccitallene er en talrække, som har følgende egenskab. Hvis man dividerer et tal i rækken med det forgående tal, så vil dette tal tilnærme sig værdien &phi; (1.6180339...) som også bliver kaldt det gyldne snit. </p>
+<p>Lav funktionen <code>fibonaggi(a)</code>, som udskriver alle fibonaggital der er mindre end <em>a</em>. Fibonaccitallene er en talrække, som har følgende egenskab. Hvis man dividerer et tal i rækken med det forgående tal, så vil dette tal tilnærme sig værdien &phi; (1.6180339...) som også bliver kaldt det gyldne snit. </p>
 
 <p>Fibonaccitalrækken er: 1, 1, 2, 3, 5, 8, 13, 21 ... </p>
 
@@ -205,7 +208,7 @@ Press any key to continue . . .
 Press return to continue
 </pre>
 
-<h2>Andengradsligningen</h2>
+<h3>Andengradsligningen</h3>
 
 <p>Andengradsligningen har normalformen:</p>
 
@@ -221,7 +224,7 @@ Press return to continue
 
 <p>Du kan funde noget om andengradsfunktionen her: <a href="funktioner.html" target="_blank">funktioner.html</a></p>
 
-<p>Lav funktionen <span class="inl_cmd">2grad(a,b,c)</span>, så den svarer på:</p>
+<p>Lav funktionen <em>2grad(a,b,c)</em>, så den svarer på:</p>
 
 <ol class="">
 	<li>Antal løsninger (skæringer med x-aksen)</li>

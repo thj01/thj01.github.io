@@ -25,15 +25,21 @@
 	
 <div class="col-xs-3">
 	
-	<div id="toc">
-	
-		<div id="toc_headline"></div>
-	
-	</div>
+	<nav>
+		
+		<div id="toc">
+		
+			<div id="toc_headline"></div>
+		
+		</div>
+		
+	</nav>
 
 </div><!-- Start slut 1. kolonne - TOC -->
 	
 <div class="col-xs-9">
+	
+<div class="title">Matematik med Python</div>		
 
 <figure id="">
 
@@ -43,7 +49,7 @@
 
 </figure>
 	
-<div class="title">Lister, dictionaries og tuplets</div>
+<h1>Lister, dictionaries og tuplets</h1>
 	
 <p>I starten lærte du om variabler. Overordnet set kan lister, dictionaries og tuples ses som en måde at opbevare mange variabler på i et velordnet skema. I dette materiale gennemgås 3 af metoderne:</p>
 
@@ -70,7 +76,7 @@
 	</tbody>
 </table>
 
-<h1>Lister</h1>
+<h2>Lister</h2>
 
 <p>Ofte kan det være en fordel at kunne hente tal ud fra tabeller, f.eks. en liste med brugere, brugernavne og adgangskoder. Læg mærke til at navnene sætter i anførselstegn for at Python tolker det som tekststrenge og ikke værdier.</p>
 
@@ -115,7 +121,7 @@ for i in range(antal_navne):
 	print(navne[i])	</code>
 </pre>
 
-<h2>Ændre element</h2>
+<h3>Ændre element</h3>
 
 <p>Hvis man ønsker at ændre et element i en liste angiver man blot en ny variabel</p>
 
@@ -141,7 +147,7 @@ print (navne)	</code>
 Den nye liste ['Anne', 'Bent', 'Cecilie', 'Dorthe']</code>
 </pre>
 
-<h2>Tilføje element</h2>
+<h3>Tilføje element</h3>
 
 <pre>
 	<code class="python"># Liste med navne
@@ -163,11 +169,11 @@ print (navne)	</code>
 ['Anne', 'Bent', 'Cecilie', 'Dorthe', 'Egon']</code>
 </pre>
 
-<h2>Fjerne element</h2>
+<h3>Fjerne element</h3>
 
 <p>Man har ofte brug for at kunne fjerne elementer i en liste på to måder. Enten et specifikt element, eller det sidst tilføjede. For at fjerne elementer anvender man <span class="inl_cmd">del</span>.</p>
 
-<h3>Fjern sidste element</h3>
+<h4>Fjern sidste element</h4>
 
 <p>Ved at angive indeksnummeret som negativt tæller python fra slutningen af listen. Så for at fjerne det sidste element anvendes <span class="inl_cmd">-1</span>.</p>
 
@@ -192,7 +198,7 @@ print (navne)	</code>
 ['Anne', 'Bent', 'Cecilie', 'Dorthe']</code>
 </pre>
 
-<h3>Fjerne specifikt element</h3>
+<h4>Fjerne specifikt element</h4>
 
 <p>I dette tilfælde vil vi fjerne Cecilie som er det 3. element</p>
 
@@ -217,7 +223,7 @@ print (navne)	</code>
 ['Anne', 'Bent', 'Dorthe', 'Egon']</code>
 </pre>
 
-<h2>Find elements placering</h2>
+<h3>Find elements placering</h3>
 
 <p>Herunder vil vi finde elementet "Cecilie" i listen ved hjælp af <span class="inl_cmd">index()</span>.</p>
 
@@ -240,7 +246,7 @@ print ("\"{0}\" er nummer {1} i listen".format(find_navn,listnumber))	</code>
 "Dorthe" er nummer 3 i listen</code>
 </pre>
 
-<h2>Findes element</h2>
+<h3>Findes element</h3>
 
 <p>Ovenfor søgte vi placeringen af et liste-element. Her vil vi blot afklare om et element findes eller ej. Ved at anvende den følgende fremgangsmåde bliver svaret enten <span class="inl_cmd">True</span> eller <span class="inl_cmd">False</span>. Læg mærke til at startbogstavet er stort.</p>
 
@@ -280,9 +286,9 @@ print ("{0} er IKKE i listen: {1}".format(navn_der_testes,findes_navn))	</code>
 Dorthe er IKKE i listen: False</code>
 </pre>
 
-<h2>Opgaver</h2>
+<h3>Opgaver</h3>
 
-<h3>Opgave - lister</h3>
+<h4>Opgave - lister</h4>
 
 <p>Lav et program hvor brugeren ved hjælp af et input kan:</p>
 
@@ -296,7 +302,7 @@ Dorthe er IKKE i listen: False</code>
 
 <p>Det er reelt en lille database du programmerer her ;)</p>
 
-<h1>Fyld liste</h1>
+<h2>Fyld liste</h2>
 
 <p>Man kan fylde lister ved hjælp af funktioner. Se nedestående eksempel</p>
 
@@ -344,7 +350,7 @@ print (test)	</code>
 
 
 
-<h1>Dictionaries</h1>
+<h2>Dictionaries</h2>
 
 <p>Dictionaries er en udvidet liste. Heri kan man koble to elementer til hinanden, f.eks. et brugernavn med et ID. Herunder oprettes en dictionary og vises:</p>
 
@@ -370,7 +376,7 @@ Udskrivning af hele listen
 {'Anne': 1, 'Bent': 2, 'Cecilie': 3, 'Dennis': 4}</code>
 </pre>
 
-<h2>Udskriver et element</h2>
+<h3>Udskriver et element</h3>
 
 <p></p>
 
@@ -392,7 +398,7 @@ print ("\nAnnas brugerID: {0}".format(udskriv_anna))	</code>
 Annas brugerID: 1</code>
 </pre>
 
-<h2>Tilføj element</h2>
+<h3>Tilføj element</h3>
 
 <pre>
 	<code class="python">#tilføje en bruger med ID
@@ -414,7 +420,7 @@ Der tilføjes brugern Egon med ID = 5
 {'Anne': 1, 'Bent': 2, 'Cecilie': 3, 'Dennis': 4, 'Egon': 5}</code>
 </pre>
 
-<h2>Ændre elements værdi</h2>
+<h3>Ændre elements værdi</h3>
 
 <p></p>
 
@@ -438,7 +444,7 @@ Egons ID ændres til 6
 {'Anne': 1, 'Bent': 2, 'Cecilie': 3, 'Dennis': 4, 'Egon': 6}</code>
 </pre>
 
-<h2>Fjerne et element</h2>
+<h3>Fjerne et element</h3>
 
 <pre>
 	<code class="python">#fjerne brugeren Egon
@@ -460,7 +466,7 @@ Fjerner brugeren Egon
 {'Anne': 1, 'Bent': 2, 'Cecilie': 3, 'Dennis': 4}</code>
 </pre>
 
-<h2>Undersøg om et element findes</h2>
+<h3>Undersøg om et element findes</h3>
 
 <pre>
 	<code class="python">#Undersøger om en bruger findes
@@ -480,7 +486,7 @@ print ("\nUndersøger om brugeren Egon Findes: {0}".format(is_egon)) 	</code>
 Undersøger om brugeren Egon Findes: False</code>
 </pre>
 
-<h2>Undersøg om et element <span class="bold">IKKE</span> findes</h2>
+<h3>Undersøg om et element <span class="bold">IKKE</span> findes</h3>
 
 <pre>
 	<code class="python">#undersøg om brugeren Susanne IKKE findes
@@ -500,9 +506,9 @@ print ("\nUndersøger om brugeren Susanne IKKE i denne dictionary: {0}".format(i
 Undersøger om brugeren Susanne IKKE i denne dictionary: True</code>
 </pre>
 
-<h2>Opgaver</h2>
+<h3>Opgaver</h3>
 
-<h3>Lav et login ved hjælp af en dicionary</h3>
+<h4>Lav et login ved hjælp af en dicionary</h4>
 
 <p>Opret en dicionary med dig selv som bruger og opret en adgangskode. Lav en <span class="inl_cmd">if/else</span> struktur hvor du:</p>
 
@@ -513,11 +519,11 @@ Undersøger om brugeren Susanne IKKE i denne dictionary: True</code>
 	<li>Hvis ikke: Du har ikke adgang</li>
 </ol>
 
-<h3>Lav en valutaomregner</h3>
+<h4>Lav en valutaomregner</h4>
 
 <p>Lav en valutaomregnder ved hjælp af en dictionary funktionen <span class="inl_cmd">valuta(a,b)</span>, hvor <span class="inl_cmd">a</span> er valutaen og <span class="inl_cmd">b</span> er beløbet.</p>
 
-<h3>Analyser IP adresse 1</h3>
+<h4>Analyser IP adresse 1</h4>
 
 <p>Lav en løkke så der dannes en dictionary med følgende indhold: okt1 = 192, okt2 = 168, okt3 = 3, okt4 = 100</p>
 
@@ -528,12 +534,12 @@ Undersøger om brugeren Susanne IKKE i denne dictionary: True</code>
 	<li>Er computerens lokale IP-adresse</li>
 </ul>
 
-<h3>Analyser IP-adresse 2</h3>
+<h4>Analyser IP-adresse 2</h4>
 
 <p>Lav et program der analyserer netmasken (f.eks. 255.255.255.0), og udskriver den både som binær og decimal adresse</p>
 
 
-<h3>Analyser IP-adresse 3</h3>
+<h4>Analyser IP-adresse 3</h4>
 
 <p>Kombiner opgave 1 og 2, så du kan indtaste IP-adressen med CIDR (10.0.2.10/24) og lav en analyse af adressen.</p>
 

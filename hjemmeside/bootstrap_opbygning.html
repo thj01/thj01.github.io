@@ -25,23 +25,21 @@
 	
 <div class="col-xs-3">
 	
-	<div id="toc">
-	
-		<div id="toc_headline"></div>
-	
-	</div>
+	<nav>
+		
+		<div id="toc">
+		
+			<div id="toc_headline"></div>
+		
+		</div>
+		
+	</nav>
 
 </div><!-- Start slut 1. kolonne - TOC -->
 	
 <div class="col-xs-9">
 	
-<div class="title">Bootstrap - opbygning</div>
-
-
-
-
-
-<h1>Overblik</h1>
+<h1>Bootstrap - opbygning</h1>
 
 <p>En bootstrap side er opbygget ligesom et almindeligt HTML5 dokument, men hvor selve body inddeles i sektioner. Sektionerne (kaldet containers) er opbygget som herinder.</p>
 
@@ -79,7 +77,7 @@
 	</code>
 </pre>
 
-<h1>Mobile first</h1>
+<h2>Mobile first</h2>
 
 <p>Bootstrap er designet til at være mobile first og at være responsive. Dvs. at det automatisk vil tilpasse sig den enhed du ser produktet på. </p>
 
@@ -126,7 +124,7 @@
 
 
 
-<h1>Containers</h1>
+<h2>Containers</h2>
 
 <p>Containerer er det mest basale layoutelement i bootstrap. Containere er bootstrapsidens byggeklodser.</p>
 
@@ -140,7 +138,7 @@
 
 </figure>
 
-<h2>Container typer</h2>
+<h3>Container typer</h3>
 
 <p>Der findes to klasser af containere.</p>
 
@@ -150,7 +148,7 @@
 </ul>
 
 
-<h3>class="container"</h3>
+<h4>class="container"</h4>
 
 <pre>
 	<code class="html">
@@ -161,7 +159,7 @@
 </pre>
 
 
-<h3>class="container-fluid"</h3>
+<h4>class="container-fluid"</h4>
 
 <pre>
 	<code class="html">
@@ -176,7 +174,7 @@
 <p><a href="www.vidas.dk" target="_blank">Vidas.dk</a> er sat på med <span class="inl_cmd">container-fluid</span>, så siden kan bruge hele skærmen.</p>
 
 
-<h1>Rækker og kolonner</h1>
+<h2>Rækker og kolonner</h2>
 
 <p>For at kunne styre designet i bootstrap kan man anvende et <span class="inl_cmd">GRID</span>-system. På den måde kan man inddele en sin continer ved at angive hvor mange kolonner hver sekstion skal dække. Se nedestående tabel:  </p>
 
@@ -263,7 +261,7 @@
 	</code>
 </pre>
 
-<h2>Kolonne klasser</h2>
+<h3>Kolonne klasser</h3>
 
 <p>Det responsive design (tilpassende design) fungerer ved at det fjerner containerns kolonneinddeling ved et "breaking point". Du kan prøve at se effekten i de to nedestående dokumenter.</p>
 
@@ -320,11 +318,11 @@
 
 
 
-<h2>Mockup</h2>
+<h3>Mockup</h3>
 
 <p>Hvis du vil designe din side på papir først, så kan du downloade et Bootstrap Grid her: <a href="files/Bootstrap_grid_print.pdf" target="_blank" download>A4 side med Bootstrap Grid</a>.</p>
 
-<h1>Ekstra design</h1>
+<h2>Ekstra design</h2>
 
 <p>På w3cschools side om Bootstrap kan du læse om hvordan du kan indsætte andre designelementer som: </p>
 
@@ -341,7 +339,7 @@
 
 
 <div class="container">
-  <h2>Button Styles</h2>
+  <h3>Button Styles</h3>
   <button type="button" class="btn">Basic</button>
   <button type="button" class="btn btn-default">Default</button>
   <button type="button" class="btn btn-primary">Primary</button>
@@ -353,14 +351,14 @@
 </div>
 
 <div class="container">
-  <h2>Well Size</h2>
+  <h3>Well Size</h3>
   <div class="well well-sm">Small Well</div>
   <div class="well">Normal Well</div>
   <div class="well well-lg">Large Well</div>
 </div>
 
 <div class="container">
-  <h2>Alerts</h2>
+  <h3>Alerts</h3>
   <div class="alert alert-success">
     <strong>Success!</strong> This alert box could indicate a successful or positive action.
   </div>
@@ -378,7 +376,7 @@
 
 
 <div class="container">
-  <h2>Glyphicon Examples</h2>
+  <h3>Glyphicon Examples</h3>
   <p>Envelope icon: <span class="glyphicon glyphicon-envelope"></span></p>    
   <p>Envelope icon as a link:
     <a href="#"><span class="glyphicon glyphicon-envelope"></span></a>
@@ -404,7 +402,7 @@
 
 <div class="container">
 	<div class="dropdown">
-		<h2>Dropdown</h2>
+		<h3>Dropdown</h3>
 
 	  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
 	  <span class="caret"></span></button>
@@ -417,7 +415,7 @@
 </div>
 
 <div class="container">
-  <h2>Vertical (basic) form</h2>
+  <h3>Vertical (basic) form</h3>
   <form action="/action_page.php">
     <div class="form-group">
       <label for="email">Email:</label>
@@ -435,7 +433,7 @@
 </div>
 
 <div class="container">
-  <h2>Form control: input</h2>
+  <h3>Form control: input</h3>
   <p>The form below contains two input elements; one of type text and one of type password:</p>
   <form>
     <div class="form-group">
@@ -450,7 +448,7 @@
 </div>
 
 <div class="container">
-  <h2>Modal Example</h2>
+  <h3>Modal Example</h3>
   <!-- Trigger the modal with a button -->
   <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
 
@@ -478,7 +476,7 @@
 </div>
 
 <div class="container">
-  <h2>Tooltip Example</h2>
+  <h3>Tooltip Example</h3>
   <a href="#" data-toggle="tooltip" title="Hooray!">Hover over me</a>
 </div>
 
@@ -489,7 +487,7 @@ $(document).ready(function(){
 </script>
 
 <div class="container">
-  <h2>Popover Example</h2>
+  <h3>Popover Example</h3>
   <a href="#" data-toggle="popover" title="Popover Header" data-content="Some content inside the popover">Toggle popover</a>
 </div>
 
@@ -499,7 +497,7 @@ $(document).ready(function(){
 });
 </script>
 
-<h1>Skabelon</h1>
+<h2>Skabelon</h2>
 
 <p>Her kan du hente en standardskabelon der indeholder en jumbotron.</p>
 

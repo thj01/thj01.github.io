@@ -25,21 +25,25 @@
 	
 <div class="col-xs-3">
 	
-	<div id="toc">
-	
-		<div id="toc_headline"></div>
-	
-	</div>
+	<nav>
+		
+		<div id="toc">
+		
+			<div id="toc_headline"></div>
+		
+		</div>
+		
+	</nav>
 
 </div><!-- Start slut 1. kolonne - TOC -->
 	
 <div class="col-xs-9">
 	
-<div class="title">Regneark</div>
+<h1>Regneark</h1>
 
 <p>I dette dokument er der en oversigt over anvendelige funktioner for matematik C EUX Merkantil og HHX. Regnearksfunktionerne vil blive gennemgået for Microsoft Excel, Libreoffice Calc og Google Sheets.</p>
 
-<h1>Almindelige funktioner</h1>
+<h2>Almindelige funktioner</h2>
 
 <table class="">
 	<thead>
@@ -96,7 +100,7 @@
 
 <p>* Hvis man indtaster de danske funktioner i Google Sheets, så bliver de omdannet til de engelske funktioner.</p>
 
-<h1>Tællere</h1>
+<h2>Tællere</h2>
 
 <table class="">
 	<thead>
@@ -127,7 +131,7 @@
 </table>
 
 
-<h1>Fejlmeddelelser</h1>
+<h2>Fejlmeddelelser</h2>
 
 <p>Når man arbejder med regneark sker der at man laver fejl i sine indtastninger og beregninger. Excel og andre regneark anvender primært to fejlmeddelelser til at vise hvad type fejl det er.</p>
 
@@ -188,7 +192,7 @@
 </blockquote>
 
 
-<h1>Logiske funktioner</h1>
+<h2>Logiske funktioner</h2>
 
 <p>Logiske funktioner anvendes til at undersøge felter ud fra nogle betingelser. Hertil anvender man relationer</p>
 
@@ -280,7 +284,7 @@
 
 
 
-<h2>HVIS()</h2>
+<h3>HVIS()</h3>
 
 <p>Bruges til at undersøge om en betingelse er opfyldt. Man vælger selv om det skal skrives ved hjælp af et tal eller en streng</p>
 
@@ -358,7 +362,7 @@
 	
 </blockquote>
 
-<h2>HVISER()</h2>
+<h3>HVISER()</h3>
 
 <p>Bruges til at undersøge flere betingelser på en gang.</p>
 
@@ -421,7 +425,7 @@
 </table>
 
 
-<h2>ELLER()</h2>
+<h3>ELLER()</h3>
 
 <p>Undersøger om en række betingelser er sande. Hvis blot en af dem er sande vil svarer funktionen tilbage med <b>SAND</b> ellers <b>FALSK</b>.</p>
 
@@ -477,7 +481,7 @@
 	</tbody>
 </table>
 
-<h2>OG()</h2>
+<h3>OG()</h3>
 
 <p>Undersøger om alle givne betingelser er sande. Hvis de alle er sande vil svarer funktionen tilbage med <span class="bold">SAND</span> ellers <span class="bold">FALSK</span>. </p>
 
@@ -533,11 +537,11 @@
 	</tbody>
 </table>
 
-<h2>Find tekststreng</h2>
+<h3>Find tekststreng</h3>
 
 <p>For at finde en tekststreng skal man bruge funktionerne <span class="inl_cmd">ER.TAL()</span> og <span class="inl_cmd">FIND()</span>.</p>
 
-<h3>FIND()</h3>
+<h4>FIND()</h4>
 
 <p>Denne funktion finder ud af hvor en tekststreng står i et felt. Forestil dig at vi har navnet <span class="inl_cmd">Allan Hansen</span> i feltet <span class="inl_cmd">A1</span>:</p>
 
@@ -573,7 +577,7 @@
 	</tbody>
 </table>
 
-<h3>ER.TAL()</h3>
+<h4>ER.TAL()</h4>
 
 <p>Funktionen undersøger om feltet har en værdi.</p>
 
@@ -623,7 +627,7 @@
 	</tbody>
 </table>
 
-<h3>Kombiner</h3>
+<h4>Kombiner</h4>
 
 <p>Ved at anvende <span class="inl_cmd">FIND()</span> inde i <span class="inl_cmd">ER.TAL()</span> kan vi altså finde ud af om en tekststreng findes. Hvis <span class="inl_cmd">FIND()</span> returnerer et tal, så findes tekststrengen, og <span class="inl_cmd">ER.TAL()</span> returnerer <span class="inl_cmd">SAND</span></p>
 
@@ -680,13 +684,13 @@
 
 <p>Funktionen kan indlejres i <span class="inl_cmd">HVIS(), HVISER(), ELLER()</span> og <span class="inl_cmd">OG()</span>. På den måde kan man både finde ud af om noget står i teksten, og få Excel til at returnere en værdi.</p>
 
-<h2>Flere funktioner </h2>
+<h3>Flere funktioner </h3>
 
 <p>Her kan du finde Microsofts gennemgang af logiske funktioner.</p>
 
 <p><a href="https://support.office.com/da-dk/article/Logiske-funktioner-reference-e093c192-278b-43f6-8c3a-b6ce299931f5" target="_blank">Logiske funktioner i Excel</a></p>
 
-<h2>Betinget formatering</h2>
+<h3>Betinget formatering</h3>
 
 <p>For at skabe bedre overblik over ens data, kan man lave formatering af felterne med udgangspunkt i nogle betingelser. Funktionen tilgås ved at gå til:</p>
 
@@ -725,7 +729,7 @@
 
 </figure>
 
-<h1>Strenge</h1>
+<h2>Strenge</h2>
 
 <p>Man kan skære i tekster ved hjælp af:</p>
 
@@ -820,7 +824,7 @@
 </table>
 
 
-<h2>VENSTRE()</h2>
+<h3>VENSTRE()</h3>
 
 <p>Bruges til at vise et antal tegn fra venstre mod højre</p>
 
@@ -882,7 +886,7 @@
 </table>
 
 
-<h2>HØJRE()</h2>
+<h3>HØJRE()</h3>
 
 <p>Bruges til at vise et antal tegn fra højre mod venstre.</p>
 
@@ -943,7 +947,7 @@
 	</tbody>
 </table>
 
-<h2>MIDT()</h2>
+<h3>MIDT()</h3>
 
 <p>Bruges til at vise et antal tegn fra venstre mod højre</p>
 
@@ -1020,7 +1024,7 @@
 
 <p><a href="https://support.office.com/da-dk/article/Opdel-tekst-i-forskellige-kolonner-med-guiden-Konverter-tekst-til-kolonner-30b14928-5550-41f5-97ca-7a3e9c363ed7?ui=da-DK&rs=da-DK&ad=DK" target="_blank">https://support.office.com/da-dk/article/Opdel-tekst-i-forskellige-kolonner-med-guiden-Konverter-tekst-til-kolonner-30b14928-5550-41f5-97ca-7a3e9c363ed7?ui=da-DK&rs=da-DK&ad=DK</a></p>
 
-<h1 id="Financielle_funktioner">Finansielle funktioner</h1>
+<h1 id="Financielle_funktioner">Finansielle funktioner</h2>
 
 <p>Herunder er en tabel med betegnelser der anvendes ved regnearksfunktioner.</p>
 
@@ -1092,7 +1096,7 @@
 	</tbody>
 </table>
 
-<h2>YDELSE</h2>
+<h3>YDELSE</h3>
 
 <p>Funktionen <span class="inl_cmd">YDELSE</span> bliver brugt til beregne lån og opsparinger. Herunder vil følgende blive gennemgået:</p>
 
@@ -1127,7 +1131,7 @@
 
 <p></p>
 
-<h3>YDELSE()</h3>
+<h4>YDELSE()</h4>
 
 <p>Giver det beløb man skal betale hver periode. Her skal man ikke angive perioden, da ydelsen er den samme i alle perioder.</p>
 
@@ -1148,7 +1152,7 @@
 
 <p></p>
 
-<h3>R.YDELSE()</h3>
+<h4>R.YDELSE()</h4>
 
 <p><span class="bold">Anvendelse: </span>R.YDELSE(Rente;Periode;Nper;Nv;Fv;Type)</p>
   
@@ -1163,7 +1167,7 @@
 
 <p></p>
 
-<h3>H.YDELSE()</h3>
+<h4>H.YDELSE()</h4>
 
 <p>Giver Afdraget i den konkrete periode</p>
 
@@ -1182,9 +1186,9 @@
 
 <p></p>
 
-<h2>RENTE</h2>
+<h3>RENTE</h3>
 
-<h3>RENTE()</h3>
+<h4>RENTE()</h4>
 
 <p>Giver renten på et lån ud fra løbetid.</p>
 
@@ -1200,7 +1204,7 @@
 <p>Dvs. den årlige rente er på 12 &middot; 0,3162 = 3,794% pa</p>
 
 
-<h3>EFFEKTIV.RENTE()</h3>
+<h4>EFFEKTIV.RENTE()</h4>
 
 <p>Giver den effektive rente pr. år</p>
 
@@ -1219,7 +1223,7 @@
 
 <p><a href="https://youtu.be/am37BuhqQ54" target="_blank">https://youtu.be/am37BuhqQ54</a></p>
 
-<h2>FV()</h2>
+<h3>FV()</h3>
 
 <p>Giver Fremtidsværdien af en investering baseret på faste ydelser og fast rente</p>
 
@@ -1231,7 +1235,7 @@
 
 <p><span class="bold">Lån</span>: <span class="inl_cmd">FV(0,002/12;3*12;-1500;0)</span> = kr. 54.157.80</p>
 
-<h2>NV()</h2>
+<h3>NV()</h3>
 
 <p>Giver nutidsværdien på et lån baseret på fast ydelse og fast rente</p>
 
@@ -1246,7 +1250,7 @@
 <p><span class="bold">Lån</span>: <span class="inl_cmd">NV(0,0031;24;-650)</span> = kr. 15.011,41</p>
 
 
-<h2>NPER()</h2>
+<h3>NPER()</h3>
 
 <p>Giver antallet af ydelser for et lån eller en investering:</p>
 
@@ -1259,7 +1263,7 @@
 <p><span class="bold">Lån</span>: <span class="inl_cmd">NPER(0,002/12;-1500;20000;0)</span> = 13,35 ydelser</p>
 
 <!--
-<h2>NV()</h2> <span class="red">IKKE FÆRDIG</span>
+<h3>NV()</h3> <span class="red">IKKE FÆRDIG</span>
 
 <p>Angiver nyværdien af et lån eller en opsparing</p>
 
@@ -1272,7 +1276,7 @@
 <p><span class="bold">Lån</span>: <span class="inl_cmd">NPER(0,002/12;-1500;20000;0)</span> = 13,35 ydelser</p>
 -->
 
-<h2>Amortisationstabel</h2>
+<h3>Amortisationstabel</h3>
 
 <p>Amortisationstabeller beskriver hvordan et lån udvikler sig/afskrives. Selve ordet amortisation stammer fra det franske <span class="inl_cmd">amortir</span>, som betyder "dræbe" ("bring to death").</p>
 
@@ -1355,7 +1359,7 @@
 
 </figure>
 
-<h2>Serielån</h2>
+<h3>Serielån</h3>
 
 <p>Et Serielån er et lån hvor man hver månede afbetaler samme beløb på lånet, og hvor renten falder over tid. Lad os tage eksemplet med billånet ovenfor.</p>
 
@@ -1440,9 +1444,9 @@
 </figure>
 
 
-<h1>Matematiske funktioner</h1>
+<h2>Matematiske funktioner</h2>
 
-<h2>Almindelige funktioner</h2>
+<h3>Almindelige funktioner</h3>
 
 <p></p>
 
@@ -1489,7 +1493,7 @@
 </table>
 
 <!--
-<h2>Trigonometri</h2>
+<h3>Trigonometri</h3>
 
 <p><span class="red">*** Under udarbejdelse ***</span></p>
 
@@ -1538,7 +1542,7 @@
 </table>
 -->
 
-<h1>Statistik</h1>
+<h2>Statistik</h2>
 
 <table class="">
 	<thead>
@@ -1587,7 +1591,7 @@
 	</tbody>
 </table>
 
-<h2>Varians og standardafvigelse</h2>
+<h3>Varians og standardafvigelse</h3>
 
 <table class="">
 	<thead>
@@ -1618,7 +1622,7 @@
 
 
 
-<h2>Tilfædige tal</h2>
+<h3>Tilfædige tal</h3>
 
 <table class="">
 	<thead>
@@ -1645,7 +1649,7 @@
 </table>
 
 
-<h1>Talsystemer</h1>
+<h2>Talsystemer</h2>
 
 <table class="">
 	<thead>

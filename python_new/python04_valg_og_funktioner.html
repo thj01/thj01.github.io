@@ -25,15 +25,21 @@
 	
 <div class="col-xs-3">
 	
-	<div id="toc">
-	
-		<div id="toc_headline"></div>
-	
-	</div>
+	<nav>
+		
+		<div id="toc">
+		
+			<div id="toc_headline"></div>
+		
+		</div>
+		
+	</nav>
 
 </div><!-- Start slut 1. kolonne - TOC -->
 	
 <div class="col-xs-9">
+
+<div class="title">Matematik med Python</div>	
 
 <figure id="">
 
@@ -43,9 +49,9 @@
 
 </figure>
 	
-<div class="title">Valg og funktioner</div>
+<h1>Valg og funktioner</h1>
 
-<h1>Filer i IDLE</h1>
+<h2>Filer i IDLE</h2>
 
 <p>Herfra skal vi til at lave "rigtige" programmer, der indeholder flere kommandolinier, og så skal vi arbejde med IDLE's <abbr title="Integrated development enviroment - ">IDE</abbr>.</p>
 
@@ -69,7 +75,7 @@
 
 </figure>
 
-<h2>Kør programmet</h2>
+<h3>Kør programmet</h3>
 
 <p>For at køre programmet trykker du på <kbd>F5</kbd>.</p>
 
@@ -99,7 +105,7 @@
 
 
 
-<h2>Programmet kører</h2>
+<h3>Programmet kører</h3>
 
 <figure id="">
 
@@ -111,11 +117,11 @@
 
 
 	
-<h1>If, elif - else</h1>
+<h2>If, elif - else</h2>
 
 <p>Ofte har man brug for at ens program skal gøre forskellige ting ved forskellige betingelser. Dette gøres med if-elif-else strukturer. </p>
 
-<h2>if</h2>
+<h3>if</h3>
 
 <p>Forestil dig der skal laves et valg mellem om man er en dreng eller pige. Herunder er der lavet et eksempel hvor indtastningen <span class="inl_cmd">1</span> giver en dreng og <span class="inl_cmd">2</span> giver en pige:</p>
 
@@ -143,7 +149,7 @@ Du valgte pige
 >>> 	</code>
 </pre>
 
-<h3>Hvad sker der</h3>
+<h4>Hvad sker der</h4>
 
 <p>Når vi spørger med <span class="inl_cmd">if</span> er syntaksen</p>
 
@@ -153,7 +159,7 @@ Du valgte pige
 
 <p>Betingelsen i eksemplet herover er, at variablen valg skal være 1. Læg mærke til, at hele sætningen afsluttes med et kolon - <span class="inl_cmd">:</span>, og det som skal udføres under det valg er tabuleret ind. På den måde ved Python hvad der skal udføres hvis man har valgt <span class="inl_cmd">1</span> eller <span class="inl_cmd">2</span>.</p>
 
-<h2>if-else</h2>
+<h3>if-else</h3>
 
 <p>Ofte arbejder man med binære problemstillinger, altså hvor det er enten-eller. Her anvender man <span class="inl_cmd">if-else</span> strukturer. Man spørger om den ene betingelse er opfyldt (<span class="inl_cmd">if</span>), og så må resten nødvendigvis tilhøre den anden mulighed (<span class="inl_cmd">else</span>). </p>
 
@@ -168,7 +174,7 @@ else:
 
 <p>Denne kode fungerer ved at den evalurer om valget var 1 eller ej. Fordelen er, at du kan nøjes med at sortere efter den betingelse der er lettest at beskrive - alle de muligheder der er tilbage "falder" automatisk ind under <span class="inl_cmd">else</span>.</p>
 
-<h2>if-elif-else</h2>
+<h3>if-elif-else</h3>
 
 <p>Problemet er bare, at hvis nu brugeren taster 3, så vil programmet også svare at man valgte pige. Men det var jo en fejltastning. Vi har altså brug for at kunne smide en ekstra mulighed ind. Det kan vi gøre ved hjælp af at tilføje <span class="inl_cmd">elif</span> imellem <span class="inl_cmd">if</span> og <span class="inl_cmd">else</span>.</p>
 
@@ -206,7 +212,7 @@ else:
 <p>Man kan indsætte alle de <span class="inl_cmd">elif</span> man vil, men man skal huske at der bør afsluttes med <span class="inl_cmd">else</span>.</p>
 
 
-<h2>Opgaver</h2>
+<h3>Opgaver</h3>
 
 <p>I disse opgaver skal du bruge if-/elif-/elsestrukturer, sammen med operatorer. Der er et overblik over operatorerne herunder.</p>
 
@@ -280,11 +286,11 @@ else:
 
 </details>
 
-<h3>Er du myndig?</h3>
+<h4>Er du myndig?</h4>
 
 <p>Lav en kode der undersøger om man er myndig eller ej (18+)</p>
 
-<h3>Pendlerkort</h3>
+<h4>Pendlerkort</h4>
 
 <p>Lav en kode der undersøger om personen hos DSB er berettiget til et ungdomskort (under 20), et pensionistkort (over 65) eller skal købe en almindelig billet.</p>
 
@@ -295,7 +301,7 @@ else:
 	<li>110+ → Spøgelser betaler ikke billetter</li>
 </ul>
 
-<h3>Er det fredag?</h3>
+<h4>Er det fredag?</h4>
 
 <p>På hjemmesiden <a href="http://www.erdetfredag.dk/" target="_blank"> http://www.erdetfredag.dk/</a> får du at vide om det er fredag. Lav en 	lignende kode, hvor svarene er:</p>
 
@@ -398,11 +404,11 @@ else:
 <p>Ændr. koden så den fortæller hvor mange dage der er til fredag.</p>
 
 
-<h3>Hvornår har du fri</h3>
+<h4>Hvornår har du fri</h4>
 
 <p>Lav en kode der fortæller hvor mange timer og minutter der er til du har fri, for hver dag i ugen.</p>
 
-<h1>X in Y</h1>
+<h2>X in Y</h2>
 
 <p>Ofte har man brug for at finde ud af om en tekststreng findes i en sætning, f.eks. om et navn er nævnt i en sætning. Det kan man gøre ved at bruge <span class="inl_cmd">in</span>. Det får programmet til at svarer tilbage med enten <span class="inl_cmd">True</span> eller <span class="inl_cmd">False</span>. Dette enten/eller svar kaldes på progammeringssprog for "boolean". Lad os afprøve det herunder.</p>
 
@@ -435,18 +441,18 @@ Findes Java i sætningen: False
 >>> 	</code>
 </pre>
 
-<h2>Opgaver</h2>
+<h3>Opgaver</h3>
 
 <div id="ordtekst1"></div>
 
-<h3>Ord i tekst 1</h3>
+<h4>Ord i tekst 1</h4>
 
 <p>Ændr opgaven så du ved hjælp af et input kan få svar på om et ord findes i tekstrengen</p>
 
 <p>Indsæt et større tekst fra nettet og lav søgninger på ord i denne tekst ved hjælp af et brugerinput.</p>
 
 
-<h1>Try</h1>
+<h2>Try</h2>
 
 <p>Med denne metode får man Python til at teste noget og reagere hvis der kommer en fejl. Forestil dig at du vil teste om a er et heltal (int).</p>
 
@@ -498,7 +504,7 @@ Variablen a er et heltal
 >>> 	</code>
 </pre>
 
-<h2>Raise Exception</h2>
+<h3>Raise Exception</h3>
 
 <p>Nogle gange har man brug for at koden skal lave fejl, når man tester den. Det gøres ved at anvende koden: <span class="inl_cmd">raise Exception</span></p>
 
@@ -516,7 +522,7 @@ except:
 Der er fejl i koden	</code>
 </pre>
 
-<h2>Murphy's lov</h2>
+<h3>Murphy's lov</h3>
 
 <p>Som programmør skal man prøve at forudse den slags problemer, for man skal huske på Murphy's lov:</p>
 
@@ -527,7 +533,7 @@ Der er fejl i koden	</code>
 </blockquote>
 
 
-<h1>Funktioner</h1>
+<h2>Funktioner</h2>
 
 <p>Ofte har man behov for at noget skal udføres gentagne gange. Det kan f.eks. være at udskrive et logo, eller en <span class="inl_cmd">if-else</span> struktur der skal køres ofte. Her anvender man funktioner, så man kan skrive koden en gang, men "kalde" på den lige så ofte man vil.</p>
 
@@ -562,7 +568,7 @@ Produktet er 12	</code>
 	<li>Funktionen anvendes ved at skrive funktionsnavnet og angive de parametre den skal anvende.</li>
 </ul>
 
-<h2>Tomme funktioner</h2>
+<h3>Tomme funktioner</h3>
 
 <p>Man kan også lave tomme funktioner, som ikke er styret af en eller flere parametre. Forestil dig at du gang på gang i din kode skal have det samme output, f.eks. dine grundinformatiner</p>
 
@@ -583,7 +589,7 @@ Denne software er lavet af :
 	fakeuser@fakemail.dk	</code>
 </pre>
 
-<h2>Funktioner med parametre</h2>
+<h3>Funktioner med parametre</h3>
 
 <p>Forestil dig en situation hvor vi skal have en blæser til at tænde når temperaturen overstiger et vist gradtal. I eksemplet herunder angiver vi selv temperaturen, men temperaturen kunne lige så godt have kommet fra en aflæsning af et digitalt termometer. Vi sætter <span class="inl_cmd">a</span> til at være rummets temperatur og <span class="inl_cmd">b</span> til at være den temperatur der skal til for at tænde blæseren.</p>
 
@@ -612,7 +618,7 @@ tænd	</code>
 
 <p>Ved at angive to konstanter i funktionen kan vi "kalde" parametre fra koden ind i funktionen. På den måde kan vi lave funktioner der er meget fleksible.</p>
 
-<h2>Variabler i funktioner</h2>
+<h3>Variabler i funktioner</h3>
 
 <p>Variabler der er lavet i funktioner, gælder kun i selve funktionen.</p> 
 
@@ -642,7 +648,7 @@ Det fordoblede tal er: 10	</code>
 
 <p>Prøv at fjerne linien <span class="inl_cmd">global dobbelt_a</span> og undersøg fejlmeddelelsen.</p>
 
-<h2>Return i funktioner</h2>
+<h3>Return i funktioner</h3>
 
 <p><span class="inl_cmd">Return</span> er en funktion der leverer et output. HVis det er et binært output - dvs. det kun har to muligheder så anvender man <span class="inl_cmd">True / False</span>. Det gør det tydeligt at koden kun har to udfald. </p>
 
@@ -671,7 +677,7 @@ print(test_tabel(17,2)) #Printer resultat af funktionen</code>
 False	</code>
 </pre>
 
-<h2>Opgaver</h2>
+<h3>Opgaver</h3>
 
 <p>Til disse opgaver skal du anvende matematik.</p>
 
@@ -718,7 +724,7 @@ False	</code>
 
 </details>
 
-<h3>Er det en faktor</h3>
+<h4>Er det en faktor</h4>
 
 <p>Til denne opgave skal du anvende modulus og floordivision</p>
 
@@ -795,7 +801,7 @@ Undersøger om 2 er en faktor i 10.
 Undersøger om 37 er en faktor i 3097.
 37 er ikke en faktor i 3097.	</code>
 </pre>
-<h3>Skæring med X aksen</h3>
+<h4>Skæring med X aksen</h4>
 
 <p>Lav funktionen <span class="inl_cmd">skæring_x(a,b)</span>, der udregner skæringspunktet med x-aksen ud fra ligningen <span class="math">\( f(x) = ax+b \)</span>, og hvor den skærer y-aksen.</p>
 
@@ -891,7 +897,7 @@ Linjen skærer x-aksen i værdien -1
 Linjen skærer x-aksen i værdien 1	</code>
 </pre>
 
-<h3>Find normalform</h3>
+<h4>Find normalform</h4>
 
 <p>Lav funktionen <span class="inl_cmd">normalform(a,b,c,d)</span>, der udskriver den linie der kører igennem de to punkter <span class="math">\( P = (a,b) \)</span> og <span class="math">\( Q = (c,d) \)</span>.</p>
 
@@ -942,7 +948,7 @@ Punkterne P=(2,2) og Q=(-1,-4) gennemskæres af linjen: y = 2x-2	</code>
 </pre>
 
 
-<h3>Skæring mellem to linier:</h3>
+<h4>Skæring mellem to linier:</h4>
 
 <p>Lav funktionen <span class="inl_cmd">skaering(a,b,c,d)</span>, der udregner skæringspunktet med x-aksen ud fra ligningen <span class="math">\( f(x) = ax+b \)</span>, og  <span class="math">\( g(x) = cx+d \)</span>.</p>
 
@@ -997,7 +1003,7 @@ Linjerne skærer hinanden i punktet: P = (3,3)
 Linjerne skærer hinanden i punktet: P = (3,-1.5)	</code>
 </pre>
 
-<h3>Andengradsligning</h3>
+<h4>Andengradsligning</h4>
 
 <p>Til denne opgave skal du anvender kvadrarødder og potenser</p>
 
@@ -1086,7 +1092,7 @@ Her undersøges funktionen: f(x) = -1x^2 - 1x + 6
 </pre>
 
 
-<h1>Random</h1>
+<h2>Random</h2>
 
 <p>Ofte har man brug for at computeren skal kunne levere et tilfældigt tal. Det kan feks. være hvis computeren skal udvælge et element i en liste eller skal simulere terningkast. For at kunne anvende Random skal det først importeres, hvorefter vi får adgang til dets funktioner. Den væsentligste forskel ligger i hvordan det bliver præsenteret i koden. Lad os se på det første eksempel:</p>
 
@@ -1136,9 +1142,9 @@ print ("\nEt terningkast: {0}".format(terningkast))
 
 <div id="terningspil1"></div>
 
-<h2>Opgaver</h2>
+<h3>Opgaver</h3>
 
-<h3>Terningspil 1</h3>
+<h4>Terningspil 1</h4>
 
 <p>Lav et program hvor man skal spille terning mod computeren, og hvor den største værdi vinder.</p>
 
@@ -1165,7 +1171,7 @@ Det blev uafgjort	</code>
 </pre>
 
 
-<h3>Ordsprog</h3>
+<h4>Ordsprog</h4>
 
 <p>Lav et program der ved hjælp af <span class="inl_cmd">random()</span> udskriver et ud af mindst 4 forskellige ordsprog.</p>
 

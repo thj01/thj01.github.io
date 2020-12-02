@@ -25,15 +25,20 @@
 	
 <div class="col-xs-3">
 	
-	<div id="toc">
-	
-		<div id="toc_headline"></div>
-	
-	</div>
-
+	<nav>
+		
+		<div id="toc">
+		
+			<div id="toc_headline"></div>
+		
+		</div>
+		
+	</nav>
 </div><!-- Start slut 1. kolonne - TOC -->
 	
 <div class="col-xs-9">
+	
+<div class="title">Matematik med Python</div>		
 	
 <figure id="">
 
@@ -43,9 +48,9 @@
 
 </figure>
 
-<div class="title">Behandling af strenge</div>
+<h1>Behandling af strenge</h1>
 	
-<h1>Slicing</h1>
+<h2>Slicing</h2>
 
 <p>Ved hjælp af slicing kan man opdele tekststrenge i mindre stykker. For at "slice" tekststykket anvender vi følgende syntaks</p>
 
@@ -159,7 +164,7 @@
 'dkmail'	</code>
 </pre>
 
-<h2>Slice en slice</h2>
+<h3>Slice en slice</h3>
 
 <p>Man kan også slice en slice, altså udskille tegn fra en slicet tekst. Se nedestående eksempel fra Idle, hvor mailadressen først bliver slicet af to omgange:</p>
 
@@ -170,7 +175,7 @@
 'dk'</code>
 </pre>
 
-<h2>Bakke snagvendt</h2>
+<h3>Bakke snagvendt</h3>
 
 <p>Som en lille sjov ting kan man også udskrive en tekststreng omvendt ved hjælp af slicing.</p>
 
@@ -188,7 +193,7 @@
 
 <p>Her udskriver den kun hver andet tegn i strengen.</p>
 
-<h1><span class="inl_cmd">len()</span> - antal tegn</h1>
+<h2><span class="inl_cmd">len()</span> - antal tegn</h2>
 
 <p><span class="inl_cmd">len()</span> tæller det samlede antal tegn der er i en streng - også mellemrum</p>
 
@@ -198,7 +203,7 @@
 21	</code>
 </pre>
 
-<h1><span class="inl_cmd">count()</span> - antal forekomster</h1>
+<h2><span class="inl_cmd">count()</span> - antal forekomster</h2>
 
 <p>Hvis man vil undersøge hvor mange gange noget forekommer i en tekstreng anvender man <span class="inl_cmd">count()</span>. Hvis vi f.eks. vil finde antal <span class="inl_cmd">@</span> i vores mail vil det altså blive:</p>
 
@@ -229,7 +234,7 @@ Indtast mail: fakeuser@fakemail.dk
 	Der er @ i mailen.</code>
 </pre>
 
-<h1><span class="inl_cmd">find()</span> - find forekomster</h1>
+<h2><span class="inl_cmd">find()</span> - find forekomster</h2>
 
 <p>For at finde tekstelementer i tekststrenge anvender vi funktionen <span class="inl_cmd">find()</span>. Den anvendes på følgende måde:</p>
 
@@ -258,7 +263,7 @@ Indtast mail der skal tjekkes brugernavn: fakeuser@fakemail.dk
 Brugernavnet er: fakeuser</code>
 </pre>
 
-<h1>replace() - erstat forekomster.</h1>
+<h2>replace() - erstat forekomster.</h2>
 
 <p>Ofte har man brug for at erstattet eller bytte noget i en tekststreng. </p>
 
@@ -301,9 +306,9 @@ indtast("3.456")	</code>
 3.456</code>
 </pre>
 
-<h1>Opgaver</h1>
+<h2>Opgaver</h2>
 
-<h2>Mail 1</h2>
+<h3>Mail 1</h3>
 
 <p>Lav en kode hvor du tjekker en indtastet mail ud fra følgende parametre: </p>
 
@@ -331,7 +336,7 @@ Indtast din mail: fakeuser@fakemail.dk <span class="red">&larr; Brugerinput</spa
 	Mailen er konstrueret korrekt</code>
 </pre>
 
-<h2>Mail 2</h2>
+<h3>Mail 2</h3>
 
 <p>En mail består af 3 dele. Brugernavn, domæne og landekode. Her er de angivet med farver. <span class="green1">fakeuser</span>@<span class="blue1">fakemail</span>.<span class="red">dk</span></p>
 
@@ -369,7 +374,7 @@ Mailen er konstrueret korrekt
         Det er en .dk mail</code>
 </pre>
 
-<h2>IP-adresse</h2>
+<h3>IP-adresse</h3>
 
 <p>Lav et program der tjekker IP-Adresse. En IP-adresse består af 4 tal mellem 0 og 255 adskilt af 3 punktummer, f.eks: 192.168.0.13.</p>
 
@@ -384,7 +389,7 @@ Mailen er konstrueret korrekt
 <p>Du skal altså lave et program der under søger om IP-adressen befinder sig indenfor de intervaller der ovenfor er angivet med rødt.</p>
 
 
-<h2>Bakke snagvendt</h2>
+<h3>Bakke snagvendt</h3>
 
 <p>Lav et program hvor brugerens input bliver udskrevet baglæns. Her: <span class="inl_cmd">Ubrugeligt... men sjov</span></p>
 

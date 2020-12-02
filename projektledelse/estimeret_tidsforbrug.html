@@ -25,55 +25,35 @@
 	
 <div class="col-xs-3">
 	
-	<div id="toc">
-	
-		<div id="toc_headline"></div>
-	
-	</div>
+	<nav>
+		
+		<div id="toc">
+		
+			<div id="toc_headline"></div>
+		
+		</div>
+		
+	</nav>
 
 </div><!-- Start slut 1. kolonne - TOC -->
 	
 <div class="col-xs-9">
 	
-<div class="title">Estimeret tidsforbrug</div>
+<h1>Estimeret tidsforbrug</h1>
 
-<h1>Indtastning</h1>
+<p>Indtast dine vurderinger (i timer), og klik herefter på knappen "Beregn":</p>
 
-<p>Indtast dine vurderinger, og klik herefter på knappen "Beregn":</p>
-
-<table class="no_lines">
-<!--
-	<thead>
-		<tr>
-			<th></th>
-			<th>_</th>
-		</tr>
-	</thead>
--->
-	<tbody >
-		<tr>
-			<td style="width: 200px">Optimistisk tidsforbrug:</td>
-			<td><input placeholder="Vo" id="optimistisk" autofocus></td>
-		</tr>
-		<tr>
-			<td>Sandsynligt tidsforbrug:</td>
-			<td><input placeholder="Vs" id="sandsynligt"></td>
-		</tr>
-		<tr>
-			<td>Pessimistisk tidsforbrug:</td>
-			<td><input placeholder="Vp" id="pessimistisk"></td>
-		</tr>
-		<tr>
-			<td>Effektiv arbejdstid pr dag:</td>
-			<td><input placeholder="Ea" id="effektiv_arbejdstid"></td>
-		</tr>
-		<tr>
-			<td></td>
-			<td><button onclick="beregn(), showDiv()">Beregn</button></td>
-		</tr>
-	</tbody>
-</table>
-
+<fieldset>
+	<legend>Tidsforbrug: </legend>
+	<label>Optimistisk tidsforbrug:</label>
+	<input placeholder="Vo" id="optimistisk" autofocus><br/><br/>
+	<label>Sandsynligt tidsforbrug:</label>
+	<input placeholder="Vs" id="sandsynligt"><br/><br/>
+	<label>Pessimistisk tidsforbrug:</label>
+	<input placeholder="Ea" id="effektiv_arbejdstid"><br/><br/>		
+	<button onclick="beregn(), showDiv()">Beregn</button>
+	
+</fieldset>
 
 
 <div id="showoff" style="display:none">

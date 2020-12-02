@@ -25,19 +25,23 @@
 	
 <div class="col-xs-3">
 	
-	<div id="toc">
-	
-		<div id="toc_headline"></div>
-	
-	</div>
+	<nav>
+		
+		<div id="toc">
+		
+			<div id="toc_headline"></div>
+		
+		</div>
+		
+	</nav>
 
 </div><!-- Start slut 1. kolonne - TOC -->
 	
 <div class="col-xs-9">
 	
-<div class="title">Finansregning</div>
+<h1>Finansregning</h1>
 
-<h1>Renter</h1>
+<h2>Renter</h2>
 
 <p>Der findes 5 forskellige typer renter:</p>
 
@@ -112,7 +116,7 @@
 
 
 
-<h1>Rentes rente.</h1>
+<h2>Rentes rente.</h2>
 
 <p>Formlen for renters rente er givet ved:</p>
 
@@ -128,7 +132,7 @@
 
 </ul>
 
-<h2>Induktionsbevis</h2>
+<h3>Induktionsbevis</h3>
 
 <p>For at bevise formlen anvender vi et induktionsbevis. For et induktionsbevis er gældende skal man vise at et udsagn <span class="math">\( P(n) \)</span> er sandt for <span class="math">\( n \in \mathbb{N}  \)</span>. Det gør man ved at gennemløbe 3 punkter</p>
 
@@ -140,7 +144,7 @@
 
 <p>Har vi vist <span class="inl_cmd">a, b</span> og <span class="inl_cmd">c</span> må det gælde at <span class="math">\( P(1), P(2), P(3), ... \)</span>er sand. </p>
 
-<h2>Bevis: Rentes rente formlen</h2>
+<h3>Bevis: Rentes rente formlen</h3>
 
 <p>Formlen vi gerne vil bevise er:</p>
 
@@ -190,7 +194,7 @@
 
 <div class="latex">\( K_n = K_0 \cdot (1+r)^n \)</div>
 
-<h2>Find K<sub>0</sub></h2>
+<h3>Find K<sub>0</sub></h3>
 
 <p>Formlen for <span class="math">\( K_0 \)</span> er:</p>
 
@@ -199,7 +203,7 @@
 <p>2)</p>
 <div class="latex">$$ K_0 = K_n \cdot (1+r)^{-n} $$</div>
 
-<h3>Bevis 1)</h3>
+<h4>Bevis 1)</h4>
 
 <div class="latex">$$ K_0 \cdot (1+r)^n = K_n \\ \Updownarrow\\
 
@@ -207,7 +211,7 @@ K_0 = \frac{K_n}{(1+r)^n}
 
 $$</div>
 
-<h3>Bevis 2)</h3>
+<h4>Bevis 2)</h4>
 
 <p>For at vise den anden formel skal udtrykket omskrives:</p>
 
@@ -228,7 +232,7 @@ $$</div>
 
 
 
-<h2>Find renten</h2>
+<h3>Find renten</h3>
 
 <p>Formlen til at finde renten er:</p>
 
@@ -252,7 +256,7 @@ $$</div>
 <div class="latex">$$  $$</div>
 
 
-<h2>Find terminer</h2>
+<h3>Find terminer</h3>
 
 <p>Formlen til at finde antal terminer er:</p>
 
@@ -270,7 +274,7 @@ n= \frac{ ln \left( \frac{K_n}{K_0} \right)  } { ln(1+r)  }
 
 $$</div>
 
-<h2>Effektiv rente</h2>
+<h3>Effektiv rente</h3>
 
 <p>Den effektive rente beskriver den reelt betalte rente over et år</p>
 
@@ -280,7 +284,7 @@ $$</div>
 
 <div class="latex">$$ i = (1+0,005)^{12} - 1 = 0,0617 = 6,17\% $$</div>
 
-<h2>Gennemsnitlig rente</h2>
+<h3>Gennemsnitlig rente</h3>
 
 <p>Hvis der er forskellige renter i løbetiden kan den gennemsnitlige rente udregnes med ved at anvende renten for den enkelte periode med følgende formel:</p>
 
@@ -292,7 +296,7 @@ $$</div>
 
 
 
-<h1>Annuitetsregning</h1>
+<h2>Annuitetsregning</h2>
 
 
 
@@ -305,13 +309,13 @@ $$</div>
 
 <p><span class="math">\( A_n \)</span> beskriver det beløb der står på en konto efter en ydelse er blevet indbetalt i <span class="math">\( n \)</span> terminer og <span class="math">\( A_0 \)</span> beskriver det tidspunkt hvor et lån går i nul.</p>
 
-<h2>Fremtidsværdien</h2>
+<h3>Fremtidsværdien</h3>
 
 <p>Formlen for <span class="math">\( A_n \)</span> er:</p>
 
 <div class="latex">$$ A_n = y \cdot \frac{(1+r)^n - 1}{r} $$</div>
 
-<h3>Udledning af formlen</h3>
+<h4>Udledning af formlen</h4>
 
 <p>For at få et overblik over formlen laver vi følgende skema:</p>
 
@@ -434,13 +438,13 @@ $$</div>
 
 <p>Hermed er beviset gennemført.</p>
 
-<h2>Nutidsværdien</h2>
+<h3>Nutidsværdien</h3>
 
 <p>Formlen for <span class="math">\( A_0 \)</span> er:</p>
 
 <div class="latex">$$ A_0 = y \cdot \frac{1-(1+r)^{-n}}{r} $$</div>
 
-<h3>Udledning af formlen</h3>
+<h4>Udledning af formlen</h4>
 
 <p>For at få et overblik over formlen kigger vi igen på skemaet for at få et overblik.:</p>
 
@@ -506,7 +510,7 @@ $$</div>
 
 <p>Hermed er beviset gennemført.</p>
 
-<h2>Ydelsen </h2>
+<h3>Ydelsen </h3>
 
 <p>Formlen til at finde ydelsen er:</p>
 
@@ -518,7 +522,7 @@ $$</div>
 
 <div class="latex">$$ y = A_0 \cdot \frac{ r }{ 1-(1+r)^{-n}}   $$</div>
 
-<h3>Udledning af formlen ved An</h3>
+<h4>Udledning af formlen ved An</h4>
 
 <div class="latex">$$ 
 
@@ -536,7 +540,7 @@ y = A_n \cdot \frac{ r }{ (1+r)^n - 1 }
 
 
 
-<h3>Udledning af formlen ved Ao</h3>
+<h4>Udledning af formlen ved Ao</h4>
 
 <div class="latex">$$ 
 
@@ -556,7 +560,7 @@ y = A_0 \cdot  \frac{ r }{ 1 - (1+r)^{-n} }
 
 
 
-<h2>Antal terminer</h2>
+<h3>Antal terminer</h3>
 
 <p>Formlen til at finde antal terminer er:</p>
 
@@ -569,7 +573,7 @@ y = A_0 \cdot  \frac{ r }{ 1 - (1+r)^{-n} }
 <div class="latex">$$ n = - \frac {  ln \left(  1 - \frac{ A_0 \cdot r  } {  y }   \right) } { ln(1+r)  } $$</div>
 
 
-<h3>Udledning af formlen ved An</h3>
+<h4>Udledning af formlen ved An</h4>
 
 <div class="latex">$$ 
 
@@ -601,7 +605,7 @@ n = \frac{  ln \left(  \frac{ A_n \cdot r}{ y } + 1 \right)    }{ ln(1+r) }
 
 
 
-<h3>Udledning af formlen ved Ao</h3>
+<h4>Udledning af formlen ved Ao</h4>
 
 <div class="latex">$$ 
 
@@ -638,20 +642,20 @@ n = - \frac{ ln \left( 1 - \frac{ A_0 \cdot r }{ y } \right) }{ ln(1+r) }
  
  <p>Hermed er beviset gennemført.</p>
 
-<h1>Amortisationstabel</h1>
+<h2>Amortisationstabel</h2>
 
 <p>En amortisationstabel viser hvordan et lån afvikler sig over tid. Dette gøres ved hjælp af regne ark.</p>
 
 <p>Du kan finde materialet om amortisationstabeller her: <a href="regneark.html#Financielle_funktioner" target="_blank">regneark.html#Financielle_funktioner</a></p>
 
-<h1>Opsparingstabel</h1>
+<h2>Opsparingstabel</h2>
 
 <p>Ligesom man kan kan lave tabeller over afvikling af lån, kan man også lave tabeller over udviklingen af en opsparing.</p>
 
 <p>Her kan du hente et regneark, der viser udviklingen af et lån: <a href="files/udvikling_af_opsparing.xls" download>udvikling_af_opsparing.xls</a></p>
 
 
-<h1>Økonomiske grundligninger</h1>
+<h2>Økonomiske grundligninger</h2>
 
 <p>I de økonomiske enheder taler vi om overskud og fortjeneste og her bruger man følgende betegnelser:</p>
 
@@ -680,7 +684,7 @@ n = - \frac{ ln \left( 1 - \frac{ A_0 \cdot r }{ y } \right) }{ ln(1+r) }
 
 <div class="latex">$$ R(x) > C(x) $$</div>
 
-<h2>Prisfunktionen</h2>
+<h3>Prisfunktionen</h3>
 
 <p>Når man kender prisen på et produkt <span class="math">\( p(x) \)</span>, så kan man beregne prisen for <span class="math">\( x \)</span> antal enheder. Dette gælder både som produktions og som salgspris. Denne enhedspris kan være beskrevet ved hjælp af forskellige funktionstyper, som vi har gennemgået tidligere.</p>
 
@@ -696,19 +700,19 @@ n = - \frac{ ln \left( 1 - \frac{ A_0 \cdot r }{ y } \right) }{ ln(1+r) }
 
 
 
-<h3>Konstant pris</h3>
+<h4>Konstant pris</h4>
 
 <p>Ved den konstante pris koster et produkt det samme uanset mængden man køber. Det kan angives ved følgende formel:</p>
 
 <div class="latex">$$ a \cdot x =  ax $$</div>
 
-<h3>Linær pris-funktion</h3>	
+<h4>Linær pris-funktion</h4>	
 
 <p>Ved den lineære funktion er prisen givet ved at man har en startværdi der er forskellig fra 0, og hvor produktet enten kan blive billigere ellere dyrere for hver enhed man køber ved at falde med en konstant værdi. Det vil henholdsvis give en positiv eller en negativ hældningskoefficient</p>
 
 <div class="latex">$$  (ax+b) \cdot x = ax^2 + bx  $$</div>
 
-<h3>Eksponentiel prisfunktion</h3>
+<h4>Eksponentiel prisfunktion</h4>
 
 <p>Ved den eksponentielle funktion er priseng givet ved at man har en startværdi der er forskellig fra 0 og hvor der er en fremskrivningsfaktor, der er forskellig fra 1. Prisen vil altså udvikle sig enten med en ned- eller opadgående tendens</p>
 
@@ -716,7 +720,7 @@ n = - \frac{ ln \left( 1 - \frac{ A_0 \cdot r }{ y } \right) }{ ln(1+r) }
 
 
 
-<h3>Potentiel prisfunktion</h3>
+<h4>Potentiel prisfunktion</h4>
 
 <p>Ved den potentielle funktion vil prisen vokse ved hjælp af en exponent. Her vil prisen enten til- eller aftage mere og mere for hver enhed der sælges. </p>
 
@@ -727,7 +731,7 @@ n = - \frac{ ln \left( 1 - \frac{ A_0 \cdot r }{ y } \right) }{ ln(1+r) }
 
 
 
-<h1>Model</h1>
+<h2>Model</h2>
 
 <p>For at få et overblik over hvilke formler man skal anvende kan du udfylde denne model. Du skal anvende den formel der tilhører den betegnelse du ikke har nogen værdi på.</p>
 

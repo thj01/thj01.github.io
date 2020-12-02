@@ -25,19 +25,23 @@
 	
 <div class="col-xs-3">
 	
-	<div id="toc">
-	
-		<div id="toc_headline"></div>
-	
-	</div>
+	<nav>
+		
+		<div id="toc">
+		
+			<div id="toc_headline"></div>
+		
+		</div>
+		
+	</nav>
 
 </div><!-- Start slut 1. kolonne - TOC -->
 	
 <div class="col-xs-9">
 	
-<div class="title">MySQL - Fremmednøgler</div>
+<h1>MySQL - Fremmednøgler</h1>
 
-<h1>Fremmednøgler</h1>
+<h2>Fremmednøgler</h2>
 
 <p>MySQL er en relations database, og man skaber relationerne mellem tabellerne ved hjælp af nøgler. Relationerne skabes ved at man forbinder to felter med hinanden, og kaldes et <span class="inl_cmd">foreign key relationship</span>. For at kunne danne disse relationer kræver det at posterne er indekserede, at de har fået en <span class="inl_cmd">key</span>. Vi har sørget for at alle tabellerne er indekseret med en  <span class="inl_cmd">Primary Key</span>, så de felter er indekserede og klar til brug.</p>
 
@@ -49,7 +53,7 @@
 
 <p>Arbejdsprocessen er at man skal sørge for at alle felter der skal forbindes er indekseret. Dernæst skal man åbne designer vinduet og <span class="inl_cmd">forbinde</span> felterne med hinanden. Til sidst bør man </p>
 
-<h1>Indekser et felt</h1>
+<h2>Indekser et felt</h2>
 
 <p>Åbn tabellen <span class="inl_cmd">klasser_og_mentorer</span> og vælg <span class="inl_cmd">Struktur</span>-fanen.</p>
 
@@ -106,7 +110,7 @@
 
 
 
-<h1>Opret relationer</h1>
+<h2>Opret relationer</h2>
 
 <p>En relation er sammenhængen mellem poster i to tabeller. I vores database er det f.eks. være klassen (f.eks. 1a) der optræder som Unik nøgle eller indeks i en tabel</p>
 
@@ -118,7 +122,7 @@
 
 <p><span class="inl_cmd">klasse_og_mentorer.klasse</span></p>
 
-<h2>Vælg Designer</h2>
+<h3>Vælg Designer</h3>
 
 <p>For at oprette relationer mellem tabellerne skal vi først vælge hele databasen og herefter menuen <span class="inl_cmd">Designer</span></p>
 
@@ -140,7 +144,7 @@
 
 </figure>
 
-<h2>Opret relationerne</h2>
+<h3>Opret relationerne</h3>
 
 <p>Ved at holde musen hen over ikonlinjen til venstre kan du finde menuen <span class="inl_cmd">Opret relation</span>. Klik på den:</p>
 
@@ -204,7 +208,7 @@
 
 </figure>
 
-<h2>Kontroller relationerne</h2>
+<h3>Kontroller relationerne</h3>
 
 <p>For at kontrollere om relationerne er sat skal du kontrollere tabellen med fremmednøglerne. I vores tilfælde er det tabellen <span class="inl_cmd">klasser_og_mentorer</span>. Gå ind i tabellen, vælg menuen <span class="inl_cmd">Struktur</span> og klik på knappen <span class="inl_cmd">Visning af relation</span></p>
 
@@ -221,7 +225,7 @@
 
 
 
-<h2>Test relationerne</h2>
+<h3>Test relationerne</h3>
 
 <p>For at teste om det virker går vi ind i tabellen <span class="inl_cmd">klasser_og_elever</span>, og forsøger på at slette en af klasserne. Klik på menuen <span class="inl_cmd">Struktur</span> og vælg tabellen <span class="inl_cmd">klasser_og_elever</span>. Her efter vælger du <span class="inl_cmd">slet</span> i en af dine poster.</p>
 
@@ -243,7 +247,7 @@
 
 </figure>
 
-<h2>Opret sidste relation</h2>
+<h3>Opret sidste relation</h3>
 
 <p>Opret selv relationer med felterne <span class="inl_cmd">Mentor</span> i tabellerne <span class="inl_cmd">mentorer</span> og <span class="inl_cmd">klasser_og_mentorer</span>. Husk at vælge hele databasen. Designervinduet vil skal se ud som herunder. Test om det virker som det skal ved at forsøge på at slette en af mentorerne i <span class="inl_cmd">mentorer</span>-tabellen. Nogle gange kan man være ude for at relationerne ikke er synlige i designervinduet. Hvis en relation bliver oprettet, men der ikke er nogen forbindelse mellem tabellerne kan du tjekke det ved at følge fremgangsmåden ovenfor.</p>
 
@@ -256,9 +260,9 @@
 </figure>
 
 
-<h1>SQL kommandoer</h1>
+<h2>SQL kommandoer</h2>
 <p></p>
-<h2>Opret indeks kommando</h2>
+<h3>Opret indeks kommando</h3>
 
 <p></p>
 
@@ -268,7 +272,7 @@ ALTER TABLE klasser_og_mentorer
 ADD INDEX(Mentor);
 	</code>
 </pre>
-<h2>Vis indeks</h2>
+<h3>Vis indeks</h3>
 
 <pre>
 	<code class="sql">

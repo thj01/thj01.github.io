@@ -25,17 +25,21 @@
 	
 <div class="col-xs-3">
 	
-	<div id="toc">
-	
-		<div id="toc_headline"></div>
-	
-	</div>
+	<nav>
+		
+		<div id="toc">
+		
+			<div id="toc_headline"></div>
+		
+		</div>
+		
+	</nav>
 
 </div><!-- Start slut 1. kolonne - TOC -->
 	
 <div class="col-xs-9">
 	
-<div class="title">Matematik med</div>
+<div class="title">Matematik med Python</div>
 
 <figure id="">
 
@@ -45,20 +49,20 @@
 
 </figure>
 
-<div class="title">Betingelser</div>
-
 <h1>Betingelser</h1>
 
-<p>Betingelser anvendes til at kunne køre kode når forskellige betingelser er opfyldt. Der er ingen grænse for hvor mange betingelser man kan sætte op. Herunder vil der blive gennemgået hvordan <span class="inl_cmd">if/elif/else</span> anvnedes.</p>
+<h2>Betingelser</h2>
 
-<h2>IDE</h2>
+<p>Betingelser anvendes til at kunne køre kode når forskellige betingelser er opfyldt. Der er ingen grænse for hvor mange betingelser man kan sætte op. Herunder vil der blive gennemgået hvordan <em>if/elif/else</em> anvnedes.</p>
+
+<h3>IDE</h3>
 
 <p>Det kan anbefales at du overveje et IDE (<span class="bold">I</span>ntegrated <span class="bold">D</span>evelopment <span class="bold">E</span>nviroment). Du kan finde henvisninger til nogle her: <a href="python_matematik_ide.html" target="_blank">python_matematik_ide.html</a></p>
 
 
 
 
-<h2>if</h2>
+<h3>if</h3>
 
 <p>Betingelser bruges når man vil have koden til at udføre noget i specielle tilfælde. Det kan f.eks. være at man vil undersøge om et tal er lige. Altså om tallet <span class="math">x%2 = 0</span>.</p>
 
@@ -74,7 +78,7 @@
 10 er lige
 </pre>
 
-<h2>if/else</h2>
+<h3>if/else</h3>
 
 <p>Herunder udvider vi koden, så der udskrives om tallet er lige eller ulige</p>
 
@@ -99,9 +103,9 @@
 
 </pre>
 
-<h2>if/elif/else</h2>
+<h3>if/elif/else</h3>
 
-<p>I dette eksempel udskriver koden om tallet <span class="inl_cmd">i</span> er positivt, 0 eller negativt</p>
+<p>I dette eksempel udskriver koden om tallet <em>i</em> er positivt, 0 eller negativt</p>
 
 <pre class="ubuntu_terminal">
 >>>for i in range(-5,6):
@@ -129,9 +133,9 @@
 
 
 
-<h1>Control statements</h1>
+<h2>Control statements</h2>
 
-<p>Derudover gælder der også nogle <span class="inl_cmd">control statements</span> (kontroludsagn), som kan stoppe og ændre udførslen af løkker.</p>
+<p>Derudover gælder der også nogle <em>control statements</em> (kontroludsagn), som kan stoppe og ændre udførslen af løkker.</p>
 
 <table class="">
 	<thead>
@@ -142,23 +146,23 @@
 	</thead>
 	<tbody>
 		<tr>
-			<td><span class="inl_cmd">break</span></td>
+			<td><code>break</code></td>
 			<td>Bryder den ingangværende løkke</td>
 		</tr>
 		<tr>
-			<td><span class="inl_cmd">continue</span></td>
+			<td><code>continue</code></td>
 			<td>Bryder behandlingen af koden, hopper videre til næste værdi og kører løkken derfra</td>
 		</tr>
 		<tr>
-			<td><span class="inl_cmd">pass</span></td>
-			<td><span class="inl_cmd">pass</span> er hvad man kalder en <span class="inl_cmd">null operation</span>. Med den kommando kan man indsætte ekstra kode for enkelttilfælde uden at resten af koden ændres</td>
+			<td><code>pass</code></td>
+			<td><code>pass</code> er hvad man kalder en <em>null operation</em>. Med den kommando kan man indsætte ekstra kode for enkelttilfælde uden at resten af koden ændres</td>
 		</tr>
 	</tbody>
 </table>
 
 <p>I det ovenstående eksempel kørte koden indtil den ramte en værdi. Men vi kan også køre koden indtil den rammer en sand eller falsk tilstand. Hvis vi f.eks. vil have en kode kører indtil noget er opfyldt</p>
 
-<p>I eksemplet herunder er der en kode der finder de lige tal i en talmængde (her op til 11). Læg mærke til at jeg anvender en <span class="inl_cmd">for</span>-løkke til at gennemløbe tallene og indlejrer <span class="inl_cmd">while</span>-løkken deri. Koden er forklaret med rødt:</p>
+<p>I eksemplet herunder er der en kode der finder de lige tal i en talmængde (her op til 11). Læg mærke til at jeg anvender en <em>for</em>-løkke til at gennemløbe tallene og indlejrer <em>while</em>-løkken deri. Koden er forklaret med rødt:</p>
 
 <pre class="ubuntu_terminal">
 >>> for i in range(1,11): <span class="red">--&gt; sørger for at tallene fra 1-10 bliver anvendt</span>
@@ -195,11 +199,11 @@ KeyboardInterrupt</span>
 
 
 
-<h2>Opgave1</h2>
+<h3>Opgave1</h3>
 
 <span class="afsnit">Opgave 1</span>
 
-<p>Lav funktionen <span class="inl_cmd">lilletabel()</span> der udskriver de 10 første tal i den tabel der angives i parantesen.</p>
+<p>Lav funktionen <code>lilletabel()</code> der udskriver de 10 første tal i den tabel der angives i parantesen.</p>
 
 <pre class="ubuntu_terminal">
 >>> lilletabel(5)

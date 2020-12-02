@@ -25,23 +25,27 @@
 	
 <div class="col-xs-3">
 	
-	<div id="toc">
-	
-		<div id="toc_headline"></div>
-	
-	</div>
+	<nav>
+		
+		<div id="toc">
+		
+			<div id="toc_headline"></div>
+		
+		</div>
+		
+	</nav>
 
 </div><!-- Start slut 1. kolonne - TOC -->
 	
 <div class="col-xs-9">
 	
-<div class="title">MySQL - Søg og manipuler</div>
+<h1>MySQL - Søg og manipuler</h1>
 
 <blockquote>
 	<p>Det er vigtigt at du anvender <span class="inl_cmd">Chrome</span> eller <span class="inl_cmd">Firefox</span> til disse opgaver, da PHPMyAdmin følger webstandarderne. Hvis du anvender Safari, Internet Explorer eller Edge, risikerer du at få fejl.</p>
 </blockquote>
 
-<h1>Introduktion</h1>
+<h2>Introduktion</h2>
 
 
 <p>Når databasen er oprettet kan man søge i databasen ved hjælp af et SQL (<span class="bold">S</span>tructured <span class="bold">Q</span>uery <span class="bold">L</span>anguage). I første omgang kan det virke uoverskueligt, men når man først forstår strukturen kan man lave meget præcise søgninger i sin(e) database(r). Se eksemplet herunder:</p>
@@ -103,10 +107,10 @@ WHERE Klasse='1a' OR Klasse='1b'
 
 <p>Læs mere: <a href="http://www.w3schools.com/sql/default.asp" target="_blank">http://www.w3schools.com/sql/default.asp</a></p>
 
-<h1>Søgning i databasen</h1>
+<h2>Søgning i databasen</h2>
 
 
-<h2>Kald hele tabellen</h2>
+<h3>Kald hele tabellen</h3>
 
 <p>For at kalde fra hele tabellen skal vi først fortælle at vi vil kigge på alt indholdet og hvilken tabel det drejer sig om.</p>
 
@@ -125,7 +129,7 @@ SELECT * FROM mentorer;
 </figure>
 
 
-<h2>Kald en post</h2>
+<h3>Kald en post</h3>
 
 <p>For at se en hel post, skal vi igen vælge alt indholdet, og tabellen vi vil undersøge. Herefter fortæller vi hvilken data vi vil finde. Husk at angive tekststrenge med anførselstegn (<span class="inl_cmd">"*tekststreng*"</span>) eller citationstegn (<span class="inl_cmd">'*tekststreng*'</span>).</p>
 
@@ -143,7 +147,7 @@ SELECT * FROM mentorer WHERE Navn='Thomas Jensen';
 
 </figure>
 
-<h2>Kald bestemte felter</h2>
+<h3>Kald bestemte felter</h3>
 
 <p>Hvis vi kun vil have fra enkelte felter i hver post, fortæller vi hvilke felter vi vil se, og hvilken tabel det kommer fra.</p>
 
@@ -161,7 +165,7 @@ SELECT Mentor,Mail FROM mentorer;
 
 </figure>
 
-<h2>Kald med wildcard</h2>
+<h3>Kald med wildcard</h3>
 
 <p>Nogle gange har man behov for at finde data, der har nogle fælles tegn. Det løser vi ved at anvende <span class="inl_cmd">"wildcards"</span>. Normal vil man i computerverdenen angive et wildcard med <span class="inl_cmd">*</span>, men i programmeringsverdenen har man oprindeligt anvendt <span class="inl_cmd">%</span>.</p>
 
@@ -181,7 +185,7 @@ SELECT * FROM mentorer WHERE Navn LIKE 'Thomas%';
 
 </figure>
 
-<h2>Kald fra flere tabeller</h2>
+<h3>Kald fra flere tabeller</h3>
 
 <p>For at kalde fra flere tabeller skal vi i <span class="inl_cmd">FROM</span> angive de tabeller vi vil søge i. Herefter skal vi angive i hvilke felter det vi søger står i. Det gøres ved at bygge stien op til feltet. Herunder vil vi anvende feltet <span class="inl_cmd">Mentor</span> fra begge tabeller. For at ramme det rigtige felt skriver vi først hvilken tabel det handler om, efterfulgt af et punktum og feltets navn. <span class="inl_cmd">Klasser_og_mentorer.Mentor</span> fortæller altså at det er feltet <span class="inl_cmd">Mentor</span> i tabellen <span class="inl_cmd">Klasser_og_mentorer</span>.</p>
 
@@ -220,9 +224,9 @@ WHERE klasser_og_mentorer.mentor='tj' AND mentorer.mentor="tj"
 
 </figure>
 
-<h1>Manipulation med data</h1>
+<h2>Manipulation med data</h2>
 
-<h2>Indsæt ny post</h2>
+<h3>Indsæt ny post</h3>
 
 <pre>
 	<code class="sql">
@@ -240,7 +244,7 @@ VALUES ('dd', 'Dennis Dinesen', '20', '23344520', 'dd@fakemail.dk')
 
 </figure>
 
-<h2>Ændr felt værdi</h2>
+<h3>Ændr felt værdi</h3>
 
 <p></p>
 
@@ -259,7 +263,7 @@ WHERE mentorer.Mentor = 'dd'
 
 </figure>
 
-<h2>Ændr kolonnenavn</h2>
+<h3>Ændr kolonnenavn</h3>
 
 <p></p>
 
@@ -277,7 +281,7 @@ RENAME table mentorer to lærere;
 
 </figure>
 
-<h2>Tilføj kolonner</h2>
+<h3>Tilføj kolonner</h3>
 
 <p></p>
 
@@ -309,7 +313,7 @@ ADD fag2 VARCHAR(10) NOT NULL AFTER fag1;
 
 </figure>
 
-<h2>Ændr feltnavn</h2>
+<h3>Ændr feltnavn</h3>
 
 <p>Da vi nu skal have alle lærere ind i listen skal vi have omdøbt feltnavnet <span class="inl_cmd">Mentorer</span> til <span class="inl_cmd">Lærere</span>.</p>
 
@@ -328,7 +332,7 @@ CHANGE Mentor Lærer varchar(3);
 
 </figure>
 
-<h2>Ændre felt datatype</h2>
+<h3>Ændre felt datatype</h3>
 
 <p>Her ændrer vi feltettypen <span class="inl_cmd">Navn</span> fra <span class="inl_cmd">varchar(50)</span> til <span class="inl_cmd">varchar(60)</span>. </p>
 
@@ -347,18 +351,18 @@ MODIFY Navn varchar(60) NOT NULL;
 
 </figure>
 
-<h2>Ændr database navn</h2>
+<h3>Ændr database navn</h3>
 
 <p>Man kan ikke umiddelbart ændre navnet på en database. For at gøre det skal man reelt oprette en ny database, med det nye navn og derefter kopiere tabellerne fra den oprindelige database ind i den.</p>
 
 <p>Backup af den ændrede database: <a href="files/mentor_db_v2.sql" target="_blank">mentor_db_v2.sql</a></p>
 
 
-<h1>Oprette ...</h1>
+<h2>Oprette ...</h2>
 
 <p></p>
 
-<h2>Opret database</h2>
+<h3>Opret database</h3>
 
 <p></p>
 
@@ -376,7 +380,7 @@ CREATE DATABASE nyDB;
 
 </figure>
 
-<h2>Slet database (drop)</h2>
+<h3>Slet database (drop)</h3>
 
 <p></p>
 
@@ -394,7 +398,7 @@ DROP DATABASE nyDB;
 
 </figure>
 
-<h2>Opret tabel</h2>
+<h3>Opret tabel</h3>
 
 <p></p>
 
@@ -418,7 +422,7 @@ felt4 INT(8) NOT NULL
 
 </figure>
 
-<h2>Slet tabel (drop)</h2>
+<h3>Slet tabel (drop)</h3>
 
 <p></p>
 
@@ -436,7 +440,7 @@ DROP TABLE nyDB.nyTabel;
 
 </figure>
 
-<h1>Nøgler og indeks</h1>
+<h2>Nøgler og indeks</h2>
 
 <p>I dette afsnit vises hvordan man arbejdet med nøgler og indeks generelt.</p>
 
@@ -446,11 +450,11 @@ DROP TABLE nyDB.nyTabel;
 	</p>
 </blockquote>
 
-<h2>Primær nøgle</h2>
+<h3>Primær nøgle</h3>
 
 <p>Primærnøglen er en post, som som har unik felter, og som samtidig fungerer som MySQL's kontakt til tabellen</p>
 
-<h3>Opret primærnøgle</h3>
+<h4>Opret primærnøgle</h4>
 
 <pre>
 	<code class="sql">
@@ -459,7 +463,7 @@ ADD PRIMARY KEY (** POST **);
 	</code>
 </pre>
 
-<h3>Fjern primærnøgle</h3>
+<h4>Fjern primærnøgle</h4>
 
 <pre>
 	<code class="sql">
@@ -468,12 +472,12 @@ DROP PRIMARY KEY;
 	</code>
 </pre>
 
-<h2>Indeks</h2>
+<h3>Indeks</h3>
 
 <p>For at MySQL skal kunne anvende de forskellige poster i en tabel, skal den kunne skabe kontakt. Det gøres ved at indeksere de poster som skal være tilgængelige.</p>
 
 
-<h3>Vis indeks</h3>
+<h4>Vis indeks</h4>
 
 <pre>
 	<code class="sql">
@@ -481,7 +485,7 @@ SHOW INDEX FROM klasser_og_mentorer;
 	</code>
 </pre>
 
-<h3>Opret indeks</h3>
+<h4>Opret indeks</h4>
 
 <pre>
 	<code class="sql">
@@ -490,7 +494,7 @@ ADD INDEX (** POST **);
 	</code>
 </pre>
 
-<h3>Fjern indeks</h3>
+<h4>Fjern indeks</h4>
 
 <pre>
 	<code class="sql">
@@ -499,7 +503,7 @@ DROP INDEX ** POST **;
 	</code>
 </pre>
 
-<h3>Unikke indeks-nøgler</h3>
+<h4>Unikke indeks-nøgler</h4>
 
 <p>Man kan oprette unikke index, hvis man vil sikre sig at alle felter i en post er unikke. F.eks. hvis man har et kundeID som primærnøgle, men også vil sikre sig at CPR-nummeret er unikt</p>
 
@@ -513,11 +517,11 @@ ADD UNIQUE (** POST **);
 <p>Unikke nøgle fjernes som et almindeligt indeks (se ovenfor)</p>
 
 
-<h1>Information</h1>
+<h2>Information</h2>
 
 <p></p>
 
-<h2>Informationer om tabel</h2>
+<h3>Informationer om tabel</h3>
 
 <p></p>
 
@@ -536,7 +540,7 @@ DESCRIBE klasse_og_elever;
 </figure>
 
 
-<h2>Informationer om række</h2>
+<h3>Informationer om række</h3>
 
 <p></p>
 
@@ -555,11 +559,11 @@ DESCRIBE klasse_og_elever 'Startår';
 </figure>
 
 
-<h1>Terminalen</h1>
+<h2>Terminalen</h2>
 
 <p>For at starte MySQL op fra kommandolinien skal vi først ind i <span class="inl_cmd">xampp</span>'s mappe og finde den mappe MySQL er installeret i.</p>
 
-<h2>Login Windows</h2>
+<h3>Login Windows</h3>
 
 <p>Åbn terminalen ved at søge på <span class="inl_cmd">cmd</span> og vælge <span class="inl_cmd">Kommandoprompt</span></p>
 
@@ -571,7 +575,7 @@ DESCRIBE klasse_og_elever 'Startår';
 
 <code class="cmd">mysql -h localhost -u root -p</code>
 
-<h2>Login Mac</h2>
+<h3>Login Mac</h3>
 
 <p>Åbn terminalen ved at søge på <span class="inl_cmd">Terminal</span> i <span class="inl_cmd">Launchpad</span></p>
 
@@ -604,7 +608,7 @@ MariaDB [(none)]> <span class="red">&#8592; MySQL's kommandolinie</span>
 </pre>
 
 
-<h2>Vis databaser</h2>
+<h3>Vis databaser</h3>
 
 <pre>
 	<code class="sql">
@@ -627,7 +631,7 @@ SHOW DATABASES;
 7 rows in set (0.00 sec)
 </pre>
 
-<h2>Vælg database</h2>
+<h3>Vælg database</h3>
 
 <pre>
 	<code class="sql">
@@ -640,7 +644,7 @@ Database changed <span class="red">&#8592; Output</span>
 MariaDB [mentor]>
 </pre>
 
-<h2>Vis tabeller</h2>
+<h3>Vis tabeller</h3>
 
 <pre>
 	<code class="sql">
@@ -659,7 +663,7 @@ SHOW tables;
 3 rows in set (0.00 sec)
 </pre>
 
-<h2>Vis struktur</h2>
+<h3>Vis struktur</h3>
 
 <pre>
 	<code class="sql">
@@ -681,7 +685,7 @@ MariaDB [mentor]> DESCRIBE klasse_og_elever; <span class="red">&#8592; Input</sp
 5 rows in set (0.01 sec)
 </pre>	
 
-<h2>Vis indhold</h2>
+<h3>Vis indhold</h3>
 
 <pre>
 	<code class="sql">
@@ -706,7 +710,7 @@ MariaDB [importer_db]> SELECT * from klasse_og_elever;
 8 rows in set (0.00 sec)
 </pre>
 
-<h2>Forlad MYSQL</h2>
+<h3>Forlad MYSQL</h3>
 
 <pre>
 	<code class="sql">

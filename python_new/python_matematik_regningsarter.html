@@ -25,17 +25,21 @@
 	
 <div class="col-xs-3">
 	
-	<div id="toc">
-	
-		<div id="toc_headline"></div>
-	
-	</div>
+	<nav>
+		
+		<div id="toc">
+		
+			<div id="toc_headline"></div>
+		
+		</div>
+		
+	</nav>
 
 </div><!-- Start slut 1. kolonne - TOC -->
 	
 <div class="col-xs-9">
 	
-<div class="title">Matematik med</div>	
+<div class="title">Matematik med Python</div>	
 
 <figure id="">
 
@@ -45,11 +49,11 @@
 
 </figure>
 
-<div class="title">Regnearter</div>
+
 
 <h1>Regneregler</h1>
 
-<p>Regningsarterne fungerer ved at anvende tegnene: <span class="inl_cmd">+</span>, <span class="inl_cmd">-</span>, <span class="inl_cmd">*</span> og <span class="inl_cmd">/</span>. Se herunder:</p>
+<p>Regningsarterne fungerer ved at anvende tegnene: <em>+</em>, <em>-</em>, <em>*</em> og <em>/</em>. Se herunder:</p>
 
 <pre class="ubuntu_terminal">
 >>> 6+3
@@ -62,16 +66,16 @@
 2.0
 </pre>
 
-<p>Læg mærke til at der bliver anvendt <span class="inl_cmd">int</span> i alle eksemplerne, og at resultatet bliver leveret på samme måde ved <span class="inl_cmd">+</span>, <span class="inl_cmd">-</span> og <span class="inl_cmd">*</span>. Men ved division bliver resulatet ændret til <span class="inl_cmd">float</span>. Se nedestående eksempel</p>
+<p>Læg mærke til at der bliver anvendt <em>int</em> i alle eksemplerne, og at resultatet bliver leveret på samme måde ved <em>+</em>, <em>-</em> og <em>*</em>. Men ved division bliver resulatet ændret til <em>float</em>. Se nedestående eksempel</p>
 
 <pre class="ubuntu_terminal">
 >>> 2/3
 0.6666666666666666
 </pre>
 
-<h2>Regneregler</h2>
+<h2>Regningsregler</h2>
 
-<p>Python anvender korrekte regningsregler, hvilket vil sige at <span class="inl_cmd">+</span> og <span class="inl_cmd">-</span> adskiller ledene, og at de skal sættes paranteser for at omgå dette. Se eksemplerne herunder:</p>
+<p>Python anvender korrekte regningsregler, hvilket vil sige at <em>+</em> og <em>-</em> adskiller ledene, og at de skal sættes paranteser for at omgå dette. Se eksemplerne herunder:</p>
 
 <pre class="ubuntu_terminal">
 >>> 3+2*6
@@ -86,7 +90,7 @@
 
 <h3>opgaver</h3>
 
-<p>I de nedestående opgaver skal du lave regnestykker ved hjælp af tallene, regningsarterne <span class="inl_cmd">+</span>, <span class="inl_cmd">-</span>, <span class="inl_cmd">*</span> og <span class="inl_cmd">/</span> og paranteser:</p>
+<p>I de nedestående opgaver skal du lave regnestykker ved hjælp af tallene, regningsarterne <em>+</em>, <em>-</em>, <em>*</em> og <em>/</em> og paranteser:</p>
 
 <table class="">
 	<thead>
@@ -107,9 +111,9 @@
 	</tbody>
 </table>
 
-<h2>Potens og rødder</h2>
+<h3>Potens og rødder</h3>
 
-<p>For at finde potens tal og rødder anvendes funktionen <span class="inl_cmd">pow(a,b)</span>, hvor <span class="inl_cmd">a</span> er grundtallet og <span class="inl_cmd">b</span> er potensen. Se nedestående eksempler:</p>
+<p>For at finde potens tal og rødder anvendes funktionen <code>pow(a,b)</code>, hvor <em>a</em> er grundtallet og <em>b</em> er potensen. Se nedestående eksempler:</p>
 
 <table class="">
 	<thead>
@@ -122,18 +126,18 @@
 	<tbody>
 		<tr>
 			<td><span class="math">\( a^b \)</span></td>
-			<td><span class="inl_cmd">pow(a,b)</span></td>
-			<td><span class="inl_cmd">a**b</span></td>
+			<td><code>pow(a,b)</code></td>
+			<td><code>a**b</code></td>
 		</tr>
 		<tr>
 			<td><span class="math">\( \sqrt[b]{a} \)</span></td>
-			<td><span class="inl_cmd">pow(a,1/b)</span></td>
-			<td><span class="inl_cmd">a**(1/b)</span></td>
+			<td><code>pow(a,1/b)</code></td>
+			<td><code>a**(1/b)</code></td>
 		</tr>
 	</tbody>
 </table>
 
-<p>Det anbefales at man anvender funktionen <span class="inl_cmd">pow()</span> fremfor <span class="inl_cmd">**</span>. Det gør koden mere læselig.</p>
+<p>Det anbefales at man anvender funktionen <code>pow()</code> fremfor <code>**</code>. Det gør koden mere læselig.</p>
 
 <p>Eksempler med 2<sup>4</sup> og kvadratroden af 4:</p>
 
@@ -155,15 +159,15 @@
 </pre>
 
 
-<h3>Opgave</h3>
+<h4>Opgave</h4>
 
 <p> Beregn følgende tal:</p>
 
 <div class="latex">$$ 2^8, ~{19^3}^7,~ \sqrt 9, ~ \sqrt[17] {256}, ~ \sqrt[3]{4}^{17}, ~ 2^{\sqrt17} $$</div>
 
-<h2>Logartimer</h2>
+<h3>Logartimer</h3>
 
-<p>For at anvende logaritmer skal pakken <span class="inl_cmd">math</span> importeres</p>
+<p>For at anvende logaritmer skal pakken <code>math</code> importeres</p>
 
 <table class="">
 	<thead>
@@ -208,7 +212,7 @@
 2.0
 </pre>
 
-<h2>Konstanter</h2>
+<h3>Konstanter</h3>
 
 <p>I matematik er der konstanter som man ikke kommer uden om herunder konstanten <span class="math">&pi;</span> og <span class="math">e</span></p>
 
@@ -234,7 +238,7 @@
 	</tbody>
 </table>
 
-<p>De kan kaldes ved at importere dem fra pakken <span class="inl_cmd">math</span></p>
+<p>De kan kaldes ved at importere dem fra pakken <code>math</code></p>
 
 <pre class="ubuntu_terminal">
 >>> import math
@@ -244,7 +248,7 @@
 2.718281828459045
 </pre>
 
-<h2>Modulus og floor division</h2>
+<h3>Modulus og floor division</h3>
 
 <p>To funktioner som ikke giver mening normalt i matematik er modulus og "floor division".</p>
 
@@ -259,14 +263,14 @@
 	</thead>
 	<tbody>
 		<tr>
-			<td><span class="inl_cmd">modulus</span></td>
-			<td><span class="inl_cmd">%</span></td>
+			<td><em>modulus</em></td>
+			<td><code>%</code></td>
 			<td>Returnere resten efter division</td>
 			<td>9%5 = 4 </td>
 		</tr>
 		<tr>
-			<td><span class="inl_cmd">floor division</span></td>
-			<td><span class="inl_cmd">//</span></td>
+			<td><em>floor division</em></td>
+			<td><code>//</code></td>
 			<td>Returnerer heltallet efter division</td>
 			<td>9//5 = 1</td>
 		</tr>
@@ -282,29 +286,29 @@
 1
 </pre>
 
-<p>Man kan ved hjælp af <span class="inl_cmd">modulus</span> og <span class="inl_cmd">floor division</span> omskrive en uægte brøk til en blandet brøk efter følgende model:</p>
+<p>Man kan ved hjælp af <em>modulus</em> og <em>floor division</em> omskrive en uægte brøk til en blandet brøk efter følgende model:</p>
 
 <div class="latex">$$ \frac{a}{b} = (a//b)~ \frac{a\%b}{b} $$</div>
 
 <span class="afsnit">Anvendelse</span>
 
-<p><span class="inl_cmd">modulus</span> og <span class="inl_cmd">floor division</span> virker i første omgang lidt underlige, men har en masse praktiske anvendelser. F.eks: </p>
+<p><em>modulus</em> og <em>floor division</em> virker i første omgang lidt underlige, men har en masse praktiske anvendelser. F.eks: </p>
 
 <ul class="disc">
-	<li>Hvis noget skal ske hver tredie gang: <span class="inl_cmd">x%3 = 0</span></li>
-	<li>Antal fyldte ølkasser: <span class="inl_cmd">*antal flasker* // 30</span></li>
+	<li>Hvis noget skal ske hver tredie gang: <code>x%3 = 0</code></li>
+	<li>Antal fyldte ølkasser: <code>*antal flasker* // 30</code></li>
 </ul>
 
-<h2>Absolutte tal</h2>
+<h3>Absolutte tal</h3>
 
-<p>Hvis man vil arbejde med absolutte tal anvender man funktionen <span class="inl_cmd">abs()</span>. Det gør at resultatet bliver repræsenteret med sin positive værdi. Se eksemplerne:</p>
+<p>Hvis man vil arbejde med absolutte tal anvender man funktionen <code>abs()</code>. Det gør at resultatet bliver repræsenteret med sin positive værdi. Se eksemplerne:</p>
 
 <pre class="ubuntu_terminal">
 >>> abs(-2)
 2
 </pre>
 
-<h1>Taltyper</h1>
+<h2>Taltyper</h2>
 
 <p>I Python anvendes grundlæggende 3 taltyper</p>
 
@@ -320,14 +324,14 @@
 	</thead>
 	<tbody>
 		<tr>
-			<td><span class="inl_cmd">int</span></td>
+			<td><em>int</em></td>
 			<td><span class="math">\( \mathbb{Z} \)</span></td>
 			<td>Heltal (kaldes integer på engelsk)</td>
 			<td>1 ; 17 ; 2499</td>
 			<td></td>
 		</tr>
 		<tr>
-			<td><span class="inl_cmd">float</span></td>
+			<td><em>float</em></td>
 			<td><span class="math">\( \mathbb{R} \)</span></td>
 			<td>Decimaltal</td>
 			<td>0.5 ; 3,141592 ; 0.6666</td>
@@ -336,7 +340,7 @@
 
 <!--
 		<tr>
-			<td><span class="inl_cmd">Decimal</span></td>
+			<td><em>Decimal</em></td>
 			<td><img src="images/mat_not_mathbbR.svg" alt="" title="" /></td>
 			<td>Decimaltal</td>
 			<td>0.5 ; 3,141592 ; 0.6666</td>
@@ -345,7 +349,7 @@
 -->
 
 		<tr>
-			<td><span class="inl_cmd">Fraction</span></td>
+			<td><em>Fraction</em></td>
 			<td><span class="math">\( \mathbb{Q} \)</span></td>
 			<td>Brøker</td>
 			<td>1/2 ; 22/7 ; 2/3</td>
@@ -354,31 +358,31 @@
 	</tbody>
 </table>
 
-<h2>int</h2>
+<h3>int</h3>
 
-<p><span class="inl_cmd">int</span> er heltal og anvendes ofte i programmering til at tælle og holde styr på antallet af gange noget skal ske. Det er samtidig den taltype der fylder mindst i hukommelsen og computeren kan beregne hurtigt.</p>
+<p><em>int</em> er heltal og anvendes ofte i programmering til at tælle og holde styr på antallet af gange noget skal ske. Det er samtidig den taltype der fylder mindst i hukommelsen og computeren kan beregne hurtigt.</p>
 
 
-<h2>float</h2>
+<h3>float</h3>
 
 <!--<p><span class="bold">Anvendelse: </span>Videnskabelige beregninger</p>-->
 
-<p><span class="inl_cmd">float</span> er simple decimaltal og kan anvendes til langt de fleste beregninger. Men taller er ikke præcist se nedestående eksempel: </p>
+<p><em>float</em> er simple decimaltal og kan anvendes til langt de fleste beregninger. Men taller er ikke præcist se nedestående eksempel: </p>
 
 <pre class="ubuntu_terminal">
 >>> 3*0.1-0.3
 5.551115123125783e-17
 </pre>
 
-<p>Resultatet burde give <span class="inl_cmd">0</span> men giver en rest. Det er ikke fordi computeren ikke kan regne, men skyldes at <span class="inl_cmd">float</span> er binært defineret, hvilket giver disse afvigelser - i dette tilfælde efter den 17 decimal. Men anvender man få decimaler er float rigeligt. <!--I forhold til <span class="inl_cmd">Decimal</span> fylder det mindre i hukommelsen og er lettere at beregne for computeren.--></p>
+<p>Resultatet burde give <em>0</em> men giver en rest. Det er ikke fordi computeren ikke kan regne, men skyldes at <em>float</em> er binært defineret, hvilket giver disse afvigelser - i dette tilfælde efter den 17 decimal. Men anvender man få decimaler er float rigeligt. <!--I forhold til <em>decimal</em> fylder det mindre i hukommelsen og er lettere at beregne for computeren.--></p>
 
 <!--
 
-<h2>Decimal</h2>
+<h3>Decimal</h3>
 
 <p><span class="afsnit">Anvendelse: </span> Financielle beregninger</p>
 
-<p><span class="inl_cmd">Decimal</span> er eksakte tal og kan sættes til en nøjagtighed på 28 cifre og decimaler i alt. Det er en funktion der skal kaldes. Herunder er regnestykket <span class="inl_cmd">1.30+1.20</span> udregnet både med <span class="inl_cmd">float</span> og <span class="inl_cmd">Decimal</span>:</p>
+<p><em>decimal</em> er eksakte tal og kan sættes til en nøjagtighed på 28 cifre og decimaler i alt. Det er en funktion der skal kaldes. Herunder er regnestykket <code>1.30+1.20</code> udregnet både med <em>float</em> og <em>decimal</em>:</p>
 
 <pre class="ubuntu_terminal">
 >>> from decimal import *
@@ -400,9 +404,9 @@ Decimal('2.5000')
 
 -->
 
-<h2>Fraction</h2>
+<h3>Fraction</h3>
 
-<p>For at arbejde med brøker skal funktionen kaldes og brøker skrives ved at anvende formen: <span class="inl_cmd">Fraction(a,b)</span> hvor a er tælleren og b er nævneren. Herunder vises udregningen bag Piet Heins digt både som <span class="inl_cmd">Fraction</span> og som <span class="inl_cmd">float</span>.</p>
+<p>For at arbejde med brøker skal funktionen kaldes og brøker skrives ved at anvende formen: <code>Fraction(a,b)</code> hvor a er tælleren og b er nævneren. Herunder vises udregningen bag Piet Heins digt både som <em>Fraction</em> og som <em>float</em>.</p>
 
 <blockquote class="center">
 	<p>
@@ -411,7 +415,7 @@ Decimal('2.5000')
 	</p>
 </blockquote>
 
-<p>Først skal <span class="inl_cmd">Fraction</span>importeres:</p>
+<p>Først skal <em>fraction</em>importeres:</p>
 
 <pre class="ubuntu_terminal">
 >>> from fractions import Fraction
@@ -425,9 +429,9 @@ Fraction(1, 2)
 0.5
 </pre>
 
-<h1>Konvertering af taltyper</h1>
+<h2>Konvertering af taltyper</h2>
 
-<p>Hvis man vil undersøge hvilken taltype en variabel er anvender man funktionen <span class="inl_cmd">type()</span>. Lad os prøve det ved at anvende variablerne fra eksemplet ovenfor:</p>
+<p>Hvis man vil undersøge hvilken taltype en variabel er anvender man funktionen <code>type()</code>. Lad os prøve det ved at anvende variablerne fra eksemplet ovenfor:</p>
 
 <pre class="ubuntu_terminal">
 >>> a=7
@@ -441,7 +445,7 @@ Fraction(1, 2)
 &lt;class 'float'&gt;
 </pre>
 
-<p>Herunder angiver vi variablen <span class="inl_cmd">d</span>, som er det samme som c - blot i taltypen <span class="inl_cmd">Fraction</span>. Vi lægger også mærke til at variablen d nu er funktionsværdien af <span class="inl_cmd">Fraction(2,3)</span></p>
+<p>Herunder angiver vi variablen <em>d</em>, som er det samme som c - blot i taltypen <em>fraction</em>. Vi lægger også mærke til at variablen d nu er funktionsværdien af <code>Fraction(2,3)</code></p>
 
 <pre class="ubuntu_terminal">
 >>> d=Fraction(2,3)
@@ -451,20 +455,20 @@ Fraction(1, 2)
 Fraction(2, 3)
 </pre>
 
-<p>Python er designet til hele tiden at vælge den bedst mulige taltype, hvilket betyder at tal der fremkommer ved hjælp af division automatisk bliver konverteret til <span class="inl_cmd">float</span>. Det vi skal kigge på her er hvordan vi konverterer mellem taltyper og finder ud af hvilken taltype det er.</p>
+<p>Python er designet til hele tiden at vælge den bedst mulige taltype, hvilket betyder at tal der fremkommer ved hjælp af division automatisk bliver konverteret til <em>float</em>. Det vi skal kigge på her er hvordan vi konverterer mellem taltyper og finder ud af hvilken taltype det er.</p>
 
-<p>For at omskrive et tall fra en type eller en tekststreng til et tal anvendes funktionerne: <span class="inl_cmd">int()</span>, <span class="inl_cmd">float()</span>, <span class="inl_cmd">Decimal()</span> og <span class="inl_cmd">Fraction()</span>.</p>
+<p>For at omskrive et tall fra en type eller en tekststreng til et tal anvendes funktionerne: <code>int()</code>, <code>float()</code> <!--, <code>Decimal()</code> -->og<code>Fraction()</code>.</p>
 
 <ul class="none">
-	<li><span class="inl_cmd">int()</span> - omskrivning til heltal</li>
-	<li><span class="inl_cmd">float()</span> - omskrivning til float</li>
-<!--<li><span class="inl_cmd">Decimal()</span> - omskrivning til Decimal</li> -->
-	<li><span class="inl_cmd">Fraction()</span> - omskrivning til brøk</li>
+	<li><code>int()</code> - omskrivning til heltal</li>
+	<li><code>float()</code> - omskrivning til float</li>
+<!--<li><code>Decimal()</code> - omskrivning til Decimal</li> -->
+	<li><code>Fraction()</code> - omskrivning til brøk</li>
 </ul>
 
-<h2>...til int (ℕ - Integers) </h2>
+<h3>...til int (ℕ - Integers) </h3>
 
-<p>Man skal være opmærksom på at man ved en omskrivning kan miste decimaler. Hvis man omskriver en brøk eller et decimaltal til en <span class="inl_cmd">int</span>, så mister man alle decimalerne. Se eksemplerne herunder:</p>
+<p>Man skal være opmærksom på at man ved en omskrivning kan miste decimaler. Hvis man omskriver en brøk eller et decimaltal til en <em>int</em>, så mister man alle decimalerne. Se eksemplerne herunder:</p>
 
 <pre class="ubuntu_terminal">
 >>> a=3.14
@@ -478,9 +482,9 @@ Fraction(2, 3)
 1
 </pre>
 
-<h2>... til float (ℝ - Relle tal)</h2>
+<h3>... til float (ℝ - Relle tal)</h3>
 
-<p>Når der omskrives til <span class="inl_cmd">float</span> sættes der minimum en decimal på.</p>
+<p>Når der omskrives til <em>float</em> sættes der minimum en decimal på.</p>
 
 <pre class="ubuntu_terminal">
 >>> a=1
@@ -512,9 +516,9 @@ Decimal('0.66666666666666662965923251249478198587894439697265625')
 
 -->
 
-<h2>...til Fraction (ℚ - Rationelle tal)</h2>
+<h3>...til Fraction (ℚ - Rationelle tal)</h3>
 
-<p>For at arbejde med <span class="inl_cmd">Fraction</span> skal funktionen først importeres:</p>
+<p>For at arbejde med <em>Fraction</em> skal funktionen først importeres:</p>
 
 <pre class="ubuntu_terminal">
 >>> from fractions import Fraction
@@ -529,13 +533,13 @@ Fraction(7070651414971679, 2251799813685248)
 Fraction(6004799503160661, 9007199254740992)
 </pre>
 
-<p>Læg mærke til at omskrivningen fra <span class="inl_cmd">2/3</span> bliver til <span class="inl_cmd">6004799503160661/9007199254740992</span>. Det skyldes at variablen c ikke bliver gemt som en brøk (<span class="inl_cmd">Fraction</span>), men som et <span class="inl_cmd">float</span>. Derved kommer der en unøjagtighed ind i decimalerne som bliver nedarvet.</p>
+<p>Læg mærke til at omskrivningen fra <em>2/3</em> bliver til <em>6004799503160661/9007199254740992</em>. Det skyldes at variablen c ikke bliver gemt som en brøk (<em>Fraction</em>), men som et <em>float</em>. Derved kommer der en unøjagtighed ind i decimalerne som bliver nedarvet.</p>
 
 <p>Det man kan lære af det er, at man skal arbejde med de rigtige taltyper hele tiden, da man ellers risikerer unøjagtige resultater.</p>
 
-<h2>Opgave</h2>
+<h3>Opgave</h3>
 
-<p>Beregn ved hjælp af python hvad forskellen er mellem <span class="inl_cmd">c</span> og <span class="inl_cmd">Fraction(c)</span> fra eksemplet ovenfor.</p>
+<p>Beregn ved hjælp af python hvad forskellen er mellem <em>c</em> og <code>Fraction(c)</code> fra eksemplet ovenfor.</p>
 
 
 
@@ -543,15 +547,15 @@ Fraction(6004799503160661, 9007199254740992)
 <!--
 
 
-<h2>input()</h2>
+<h3>input()</h3>
 
-<p>For at få brugerinput anvendes funktionen <span class="inl_cmd">input()</span>. Funktionen udskriver tekststrengen inde i parantensen, og venter på brugerens input. Som standard læses input som en tekststreng. Hvis input er en talværdi konverteres den til den taltype man ønsker ved at pakke input funktionen ind i funktionen for taltypen f.eks:</p>
+<p>For at få brugerinput anvendes funktionen <code>input()</code>. Funktionen udskriver tekststrengen inde i parantensen, og venter på brugerens input. Som standard læses input som en tekststreng. Hvis input er en talværdi konverteres den til den taltype man ønsker ved at pakke input funktionen ind i funktionen for taltypen f.eks:</p>
 
-<code class="cmd">int(input(*tekststreng*))  <span class="red">&lt;-- Husk to paranteser til sidst</span></code>
+<code>int(input(*tekststreng*))  <span class="red">&lt;-- Husk to paranteser til sidst</span></code>
 
 <p>Grunden til at jeg fremhæver det med de to paranteser til slut er, at det er en meget typisk fejl, at man glemmer at afslutte alle paranteserne.</p>
 
-<h2>Et eksempel</h2>
+<h3>Et eksempel</h3>
 
 <p>I dette eksempel er brugerens input farvet blå for at tydeliggøre det som sker.</p>
 
@@ -567,17 +571,17 @@ Det dobbelte af 6 er 12
 <p>Hvad er det vi gør:</p>
 
 <ol class="">
-	<li><code class="cmd">navn=input("Skriv dit navn: ")</code></li>
+	<li><code>navn=input("Skriv dit navn: ")</code></li>
 	
-	<p>Vi opretter variablen <span class="inl_cmd">navn</span> og indhenter navnet (en tekststreng) ved hjælp af <span class="inl_cmd">input()</span></p>
+	<p>Vi opretter variablen <em>navn</em> og indhenter navnet (en tekststreng) ved hjælp af <code>input()</code></p>
 
-	<li><code class="cmd">tal=int(input("Skriv et tal: "))</code></li>
+	<li><code>tal=int(input("Skriv et tal: "))</code></li>
 	
-	<p>Vi opretter variablen tal og indhenter tallet (en tekststreng) ved hjælp af <span class="inl_cmd">input()</span>. Men vi konverterer tekststrengen til et tal med det samme ved at pakke hele funktionen ind i <span class="inl_cmd">int()</span></p>
+	<p>Vi opretter variablen tal og indhenter tallet (en tekststreng) ved hjælp af <code>input()</code>. Men vi konverterer tekststrengen til et tal med det samme ved at pakke hele funktionen ind i <code>int()</code></p>
 
-	<li><code class="cmd">print("Det dobbelte af {0} er {1}".format(tal,tal*2)) </code></li>
+	<li><code>print("Det dobbelte af {0} er {1}".format(tal,tal*2)) </code></li>
 	
-	<p>Vi printer resultatet ved hjælp af <span class="inl_cmd">print()</span>, og indsætter variablerne ved hjælp af pladsholdere</p>
+	<p>Vi printer resultatet ved hjælp af <code>print()</code>, og indsætter variablerne ved hjælp af pladsholdere</p>
 </ol>
 
 
@@ -598,11 +602,11 @@ Indtast nævner: 4
 <p>Læg mærke til 2 ting:</p>
 
 <ul class="disc">
-	<li>Divisionsstykket konvertere de to <span class="inl_cmd">int</span> tal til <span class="inl_cmd">float</span></li>
-	<li>Man kan kalde det sidste output ved at anvende <span class="inl_cmd">_</span> (underscore)</li>
+	<li>Divisionsstykket konvertere de to <em>int</em> tal til <em>float</em></li>
+	<li>Man kan kalde det sidste output ved at anvende <em>_</em> (underscore)</li>
 </ul>
 
-<h2>Opgave</h2>
+<h3>Opgave</h3>
 
 <p>Lav et program hvor du sætter variablerne med input. Du skal finde ud af:</p>
 
@@ -618,7 +622,7 @@ Indtast nævner: 4
 Jeg hedder *fornavn*, og er *alder* år gammel. Mit mobilnr er: *mobilnr*
 </pre>
 
-<p>Overvej om <span class="inl_cmd">alder</span> og <span class="inl_cmd">mobilnr</span> skal være tekststrenge eller værdier</span>. Begrund dine valg.</p>
+<p>Overvej om <em>alder</em> og <em>mobilnr</em> skal være tekststrenge eller værdier</span>. Begrund dine valg.</p>
 
 
 

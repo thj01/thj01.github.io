@@ -25,21 +25,25 @@
 	
 <div class="col-xs-3">
 	
-	<div id="toc">
-	
-		<div id="toc_headline"></div>
-	
-	</div>
+	<nav>
+		
+		<div id="toc">
+		
+			<div id="toc_headline"></div>
+		
+		</div>
+		
+	</nav>
 
 </div><!-- Start slut 1. kolonne - TOC -->
 	
 <div class="col-xs-9">
 	
-<div class="title">MySQL - Intro</div>
+<h1>MySQL - Intro</h1>
 
-<h1>Hvad skal du lære</h1>
+<h2>Hvad skal du lære</h2>
 
-<h2>Niveau C</h2>
+<h3>Niveau C</h3>
 
 <p>I denne introduktion skal du lære noget om databaser og om hvordan man opretter, ændrer i og anvender dem. Du vil arbejde med at:</p>
 
@@ -52,39 +56,39 @@
 	<li>Ændre på data</li>
 </ul>
 
-<h3>Installere MySQL/phpMyAdmin</h3>
+<h4>Installere MySQL/phpMyAdmin</h4>
 
 <p>Vi vil anvende MySQL database ved hjælp af webinterfacet phpMyAdmin. MySQL er en meget anvendt database på internettet og er den database der ligger bag mange webapplikationer.</p>
 
 <p>Vi vil anvende XAMPP til at installere en webserver med alle relevante programmer</p>
 
-<h3>Vide noget om datatyper</h3>
+<h4>Vide noget om datatyper</h4>
 
 <p>Når man arbejder med data anvender man forskellige typer af data. Det kan være værdier (tal man skal kunne regne med), tekststrenge (tekst eller tal der skal arbejdes med) eller datoer (tidsværdier)</p>
 
-<h3>Designe en database</h3>
+<h4>Designe en database</h4>
 
 <p>Du vil lære at designe databaser ved hjælp af ER-diagrammer. Diagrammerne støtter en når man skal oprette databasen og giver et overblik over hvor det kan være fornuftig at sætte forbindelser mellem data.</p>
 
-<h3>Oprette en database</h3>
+<h4>Oprette en database</h4>
 
 <p>Du vil lære at anvende phpMyAdmin til at oprette, indsætte og redigere i databaser. PhpMyAdmin er et meget anvendt brugerinterface til netværksbaserede databaser.</p>
 
-<h3>Oprette forbindelser mellem tabeller</h3>
+<h4>Oprette forbindelser mellem tabeller</h4>
 
 <p>Du vil lære at oprette forbindelser mellem tabeller i en database, for at sikre dig mod datatab og for at kunne undgå redundans (gentagelser).</p>
 
-<h3>Ændre på data</h3>
+<h4>Ændre på data</h4>
 
 <p>Du vil lære at ændre på data i tabeller</p>
 
 
 
-<h1>Databaser</h1>
+<h2>Databaser</h2>
 
 <p>Databaser er grundlæggende en samling af struktueret data. Disse databaser deler vi op i det vi kalder <span class="inl_cmd">flade databaser</span> og relationsdatabaser.</p>
 
-<h2>Flade databaser</h2>
+<h3>Flade databaser</h3>
 
 <p>Al data er i én tabel. Det er en fordel hvis det kun er få data vi snakker om. Det kan f.eks. være en almindelig tabel i et tekstbehandlingsprogram eller et regneark. F.eks. en telefonliste, eller tabel hvor man kan se sammenhængen mellem postnummer og by. Disse tabeller kan stå helt for sig selv.</p>
 	
@@ -154,7 +158,7 @@
 	</tbody>
 </table>
 
-<h2>Relationsdatabaser</h2>
+<h3>Relationsdatabaser</h3>
 
 <p>Data er fordelt i flere tabeller, hvor man har lavet relationer (forbindelser) mellem dem</p>
 		
@@ -174,7 +178,7 @@
 
 </figure>
 
-<h3>Redundans</h3>
+<h4>Redundans</h4>
 
 <p><span class="inl_cmd">Redundans</span> er et fint ord for data der er tilstede mere end en gang.</p>
 
@@ -182,31 +186,31 @@
 
 <p>En god database er designet så man undgår redundans, og den proces hedder <span class="inl_cmd">normalisering</span> (<a href="http://www.vidas.dk/IT/MySQL_database_normalisering.html" target="_blank">http://www.vidas.dk/IT/MySQL_database_normalisering.html</a>). Det er et område der hører til på IT B.</p>
 
-<h1>Grundbegreber</h1>
+<h2>Grundbegreber</h2>
 
-<h2>Database</h2>
+<h3>Database</h3>
 
 <p>En database er en struktureret samling af data, som er sat op i tabeller, med rækker og kolonner. Ved hjælp af kommandoer kan man manipulere med, søge i og sortere data.</p>
 
 <p>En relationel database indeholder flere tabeller, som kan sammenkædes og kombineres.</p>
 
-<h2>Tabel</h2>
+<h3>Tabel</h3>
 
 <p>En tabel er en samling af data der er struktureret indefor et afgrænset område f.eks: medarbejdere og deres kontaktoplysninger</p>
 
-<h2>Post - række</h2>
+<h3>Post - række</h3>
 
 <p>En post er de enkelte data rækker f.eks. den enkelte medarbejder og dennes kontaktoplysninger</p>
 
-<h2>Felt</h2>
+<h3>Felt</h3>
 
 <p>Et felt er de enkelte data i en post f.eks. medarbejderens mail</p>
 
-<h2>Datatype</h2>
+<h3>Datatype</h3>
 
 <p>For at gemme og strukturere data skal der for hvert felt angives hvilken type data det indeholder. Det kan f.eks. være et tal, tekst eller tidsformat.</p>
 
-<h1>Nøgler og indeks</h1>
+<h2>Nøgler og indeks</h2>
 
 <p>For at felter i tabellerne kan indgå relationer mellem hinanden skal de være synlige for databasen. Det gøres ved at indeksere felterne. Det svarer til at der er et katalog, der angiver hvor de enkelte felter er. Alle felter kan indekseres, men man bør kun indeksere de felter der skal anvendes til at lave relationer med.</p>
 
@@ -219,23 +223,23 @@
 </ul>
 
 
-<h2>Primær nøgle</h2>
+<h3>Primær nøgle</h3>
 
 <p>Alle tabeller skal indehold en post der kun har unikt indhold, altså indhold der kun forekommer en gang. Det er denne post MySQL bruger til at administrere tabellen.</p>
 
 <p>Det kan være en fordel at lade dette felt være noget som identificere den enkelte post, og det kan f.eks. være et brugernavn, kunde ID, telefonnummer, mail osv.</p>
 
-<h2>Indekserede felter</h2>
+<h3>Indekserede felter</h3>
 
 <p>Når en tabel er oprettet kender databasen kun til den post der er primærnøgle. Vil man skabe relationer mellem andre poster i tabellerne, skal de indekseres.  </p>
 
-<h2>Unikke-felter</h2>
+<h3>Unikke-felter</h3>
 
 <p>Unikke felter er som indeks, men kræver at hver post er unik. Ved at indeksere et felt med værdien unik, kan to poster ikke have samme værdi. På den måde kan man sikre sig, at to poster ikke har samme telefonnummer, mailadresse, firmanavn osv. Databasen vil sørge for at posten er unik.</p>
 
 
 
-<h2>Fremmednøgler</h2>
+<h3>Fremmednøgler</h3>
 
 <p>Fremmednøgler er felter som har forbindelse til primærfelter, og hvor der er sat en binding op imellem dem. I praksis gøres det ved at indeksere et felt, så det gøres tilgængeligt for databasen.</p>
 

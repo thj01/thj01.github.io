@@ -25,26 +25,33 @@
 	
 <div class="col-xs-3">
 	
-	<div id="toc">
-	
-		<div id="toc_headline"></div>
-	
-	</div>
+	<nav>
+		
+		<div id="toc">
+		
+			<div id="toc_headline"></div>
+		
+		</div>
+		
+	</nav>
 
 </div><!-- Start slut 1. kolonne - TOC -->
 	
 <div class="col-xs-9">
-	<figure id="">
-
-		<img class="" src="images/python-logo-inkscape.svg" alt="" title="" />
-
-		<figcaption></figcaption>
-
-	</figure>	
 	
-	<div class="title">Plot af funktion med Python</div>
+<div class="title">Matematik med Python</div>		
+	
+<figure id="">
 
-<h1>Installation</h1>
+	<img class="" src="images/python-logo-inkscape.svg" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>	
+
+<h1>Plot af funktion med Python</h1>
+
+<h2>Installation</h2>
 
 <p>For at kunne plotte funktioner og grafer, skal vi have tilføjet nogle ekstra pakker til Python</p>
 
@@ -82,7 +89,7 @@ tj@tj-desktop:~$
 
 
 
-<h2>Installation af pakker</h2>
+<h3>Installation af pakker</h3>
 
 
 <p>Selve pakkerne installeres med nedestående kommandoer i en terminal:</p>
@@ -127,7 +134,7 @@ Successfully installed cycler-0.10.0 kiwisolver-1.0.1 matplotlib-3.0.1 numpy-1.1
 
 </details>
 
-<h2>Anvendelse af pakker</h2>
+<h3>Anvendelse af pakker</h3>
 
 <p>Herefter kan pakkerne blive tilgået ved at importere det i starten af programmet. Når vi arbejder med plotning af funktioner skal vi importere begge</p>
 
@@ -138,7 +145,7 @@ import matplotlib.pyplot as plt	</code>
 
 <p>Læg mærke til at jeg fra start giver dem de to alias'er <span class="inl_cmd">np</span> og <span class="inl_cmd">plt</span>. De alias'er er valgt fordi det er dem der ofte bruges i diverse guides på nettet.</p>
 
-<h1>Mit første plot</h1>
+<h2>Mit første plot</h2>
 
 <p>Herunder plotter vi funktionen <span class="math">\( 2x-7 \)</span>. Efter koden bliver koden gennemgået mere konkret.</p>
 
@@ -167,7 +174,7 @@ plt.show()	</code>
 
 </figure>
 
-<h2>Gennemgang af koden</h2>
+<h3>Gennemgang af koden</h3>
 
 <pre>
 	<code class="python">import numpy as np
@@ -221,7 +228,7 @@ plt.ylabel('y-akse (Værdimængde)')	</code>
 <p>Funktionen der tegner plottet i et eksternt vindue.</p>
 
 
-<h2>Øvelser</h2>
+<h3>Øvelser</h3>
 
 <p>Tegn følgende funktioner</p>
 
@@ -293,19 +300,19 @@ plt.ylabel('y-akse (Værdimængde)')	</code>
 
 </details>
 
-<h1>Indstillinger</h1>
+<h2>Indstillinger</h2>
 
-<h2>Guides</h2>
+<h3>Guides</h3>
 
 <p><a href="https://matplotlib.org/users/pyplot_tutorial.html" target="_blank">https://matplotlib.org/users/pyplot_tutorial.html</a></p>
 
-<h2>Størrelse</h2>
+<h3>Størrelse</h3>
 
 <pre>
 	<code class="python">plt.axis([-15, 15, -20, 20])	</code>
 </pre>
 
-<h2>Farve</h2>
+<h3>Farve</h3>
 
 <p>Farven sættes ved at tilføje parametren <span class="inl_cmd">color="*farvenavn"</span> eller blot <span class="inl_cmd">c=*Farvenavn*</span>. De tilgængelige farver er RGB + CMYK altså:</p>
 
@@ -343,7 +350,7 @@ plt.ylabel('y-akse (Værdimængde)')	</code>
 
 <p>Alle farver kan dog anvendes. Se her: <a href="https://matplotlib.org/users/colors.html" target="_blank">https://matplotlib.org/users/colors.html</a></p>
 
-<h3>Øvelse</h3>
+<h4>Øvelse</h4>
 
 <p>Indtegn følgende tre funktioner i x = [-3;3]:</p>
 
@@ -367,7 +374,7 @@ plt.ylabel('y-akse (Værdimængde)')	</code>
 
 </details>
 
-<h2>Vandret/lodret linie</h2>
+<h3>Vandret/lodret linie</h3>
 
 <pre>
 	<code class="python"># Horisontal linie
@@ -377,7 +384,7 @@ plt.axhline(y=0, color="k")
 plt.axvline(x=0)	</code>
 </pre>
 
-<h3>Øvelse</h3>
+<h4>Øvelse</h4>
 
 <p>Lav en graf med et kartesisk koordinatsystem.</p>
 
@@ -401,7 +408,7 @@ plt.axvline(x=0)	</code>
 	</p>
 </blockquote>
 
-<h1>Punkter/tegn</h1>
+<h2>Punkter/tegn</h2>
 
 <p>Hvis man gerne vil markere punkter kan man gøre det på følgende måde. Herunder er der indsat 3 rækker af 5 forskellige punkter</p>
 
@@ -441,7 +448,7 @@ plt.show()	</code>
 
 <p>Du kan finde en liste med forskellige muligheder her: <a href="https://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.plot" target="_blank">https://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.plot</a></p>
 
-<h1>Forskellige linietyper</h1>
+<h2>Forskellige linietyper</h2>
 
 <p>Hvis farver ikke er nok kan man også vælge at anvende linier der dannes af tegn. De simpleste at anvende er <span class="red">- - - - - -</span> (streg streg streg ...) og <span class="red">- &middot; - &middot; - &middot;</span> (streg punktum streg punktum ...) da pyplot selv kan placere dem i korrekt afstand. </p>
 
@@ -499,7 +506,7 @@ plt.show()	</code>
 
 
 
-<h1>Søjle diagramm</h1>
+<h2>Søjle diagramm</h2>
 
 <pre>
 	<code class="python">import numpy as np
@@ -524,7 +531,7 @@ plt.show()	</code>
 <p>Læg mærke til at her bliver værdierne indsat ved hjælp af lister både for x og y's vedkommende.</p>
 
 
-<h1>Prik diagram</h1>
+<h2>Prik diagram</h2>
 
 <pre>
 	<code class="python">import numpy as np
@@ -546,11 +553,11 @@ plt.show()	</code>
 
 </figure>
 
-<h1>Cirkeldiagrammer</h1>
+<h2>Cirkeldiagrammer</h2>
 
 <p><a href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.pie.html" target="_blank">https://matplotlib.org/api/_as_gen/matplotlib.pyplot.pie.html</a></p>
 
-<h1>Tekst ved plots</h1>
+<h2>Tekst ved plots</h2>
 
 <p><a href="https://stackoverflow.com/questions/42435446/how-to-put-text-outside-python-plots" target="_blank">https://stackoverflow.com/questions/42435446/how-to-put-text-outside-python-plots</a></p>
 
@@ -559,7 +566,7 @@ plt.show()	</code>
 <p><a href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.subplot.html" target="_blank">https://matplotlib.org/api/_as_gen/matplotlib.pyplot.subplot.html</a></p>
 
 
-<h1>Supplots</h1>
+<h2>Supplots</h2>
 
 <p><a href="https://matplotlib.org/tutorials/intermediate/gridspec.html" target="_blank">https://matplotlib.org/tutorials/intermediate/gridspec.html</a></p>
 

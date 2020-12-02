@@ -25,15 +25,21 @@
 	
 <div class="col-xs-3">
 	
-	<div id="toc">
-	
-		<div id="toc_headline"></div>
-	
-	</div>
+	<nav>
+		
+		<div id="toc">
+		
+			<div id="toc_headline"></div>
+		
+		</div>
+		
+	</nav>
 
 </div><!-- Start slut 1. kolonne - TOC -->
 	
 <div class="col-xs-9">
+	
+<div class="title">Matematik med Python</div>		
 	
 <figure id="">
 
@@ -43,10 +49,10 @@
 
 </figure>
 
-<div class="title">Løkker</div>
+<h1>Løkker</h1>
 	
 	
-<h1>Løkker - et overblik</h1>
+<h2>Løkker - et overblik</h2>
 
 <p>Ofte har man brug for at et program skal gøre det samme igen og igen. Det kan f.eks. være at skulle udføre den samme beregning, på et stigende tal. Det kan f.eks. være at udskrive kvadrattallene (1,4,9,16,25 ...). På engelsk kaldes dette et <span class="inl_cmd">loop</span>.</p>
 
@@ -106,7 +112,7 @@
 
 <p>De ovenstående forklaringer er ment som et indblik i hvad det er løkker og kontroludsagn gør. Herunder vil løkkerne blive gennemgået udførligt.</p>
 
-<h1>Sådan tæller computere</h1>
+<h2>Sådan tæller computere</h2>
 
 <p>En af de ting man støder på når man arbejder med programmering er, at computere tæller anderledes end vi gør. Når vi tæller starter vi fra en, og titalssystemet er anvendeligt for os fordi det passer med antallet af fingre på hånden. Når vi har brugt alle fingrene så tæller vi antallet af fulde hænder. 22 kan altså forståes som 2 fulde hænder og 2 fingre. I 10-talssystemet skifter vi altså position (veksler til den næste enhed) når vi kommer til den 10. værdi. </p>
 
@@ -378,7 +384,7 @@
 
 
 
-<h1>En til eller fra</h1>
+<h2>En til eller fra</h2>
 
 <p>Ofte har man brug for at lade et tal vokse med en fast størrelse fra gang til gang. Den mest umiddelbare løsning er denne:</p>
 
@@ -438,11 +444,11 @@
 	</code>
 </pre>
 
-<h1>for løkken</h1>
+<h2>for løkken</h2>
 
 <p>Nogle gange skal man have sit program til at udgøre den samme operation flere gange. Til at udføre dette anvendes man løkker.</p>
 
-<h2>Fortløbende</h2>
+<h3>Fortløbende</h3>
 
 <p>Her udskriver vi tal i rækkefølge.</p>
 
@@ -501,7 +507,7 @@
 
 <p>Læg mærke til at <span class="inl_cmd">13</span> ikke udskrives, som vi umiddelbart ville forvente. I <span class="inl_cmd">range()</span> er den første værdi inkluderet men ikke den sidste. Det giver den fordel at den udskriver præcis <span class="inl_cmd">13-8=5</span> værdier.</p>
 
-<h2>Udskriv vandret</h2>
+<h3>Udskriv vandret</h3>
 
 <p>Det kan være uhensigtsmæssigt at få talrækker som den ovenstående udskrevet med et linieskift hver gang. Ændr koden til ved at tilføje <span class="inl_cmd">end=" "</span>:</p>
 
@@ -518,7 +524,7 @@
 	</code>
 </pre>
 
-<h2>Udskriv hver 2. tal</h2>
+<h3>Udskriv hver 2. tal</h3>
 
 <p>Ved hjælp af <span class="inl_cmd">range</span> kommandoen kan vi også få den til at udskrive hvert x'te tal f.eks. hver andet (lige tal), ved at indsætte 2 som ekstra parameter:</p>
 
@@ -540,7 +546,7 @@
 	<code class="python">for i in range(startværdi, slutværdi, vækst pr. omgang)	</code>
 </pre>
 
-<h2>Udskriv baglæns</h2>
+<h3>Udskriv baglæns</h3>
 
 <p>Dette kan vi også bruge til at tælle baglæs med:</p>
 
@@ -558,7 +564,7 @@
 
 <p>Læg mærke til at startværdien skal være større end slutværdien.</p>
 
-<h2>For char in ...</h2>
+<h3>For char in ...</h3>
 
 <p>Ofte har man brug for at kunne gennemføre en funktion på hver eneste tegn i en tekststreng. Herunder er vist et simpelt eksempel hvor man ved hjælp af en for-løkke printer hver bogstav i navnet.</p>
 
@@ -586,7 +592,7 @@ s	</code>
 	</p>
 </blockquote>
 
-<h2>Word word in...</h2>
+<h3>Word word in...</h3>
 
 <p>Man kan også printe en tekst ord for ord. Det gøres ved at anvende funktionen <span class="inl_cmd">split()</span>:</p>
 
@@ -607,7 +613,7 @@ dig	</code>
 
 
 
-<h2>Brug af tælleren</h2>
+<h3>Brug af tælleren</h3>
 
 <p>Nogle gange skal den samme programlinie køres flere gange. Det kan f.eks. være hvis man gerne vil finde de 12 første trekanttal – altså talrække 1, 3, 6, 10, 15, 21... . Man kan udregne tallene med formlen herunder:</p>
 
@@ -645,9 +651,9 @@ dig	</code>
 1 - 3 - 6 - 10 - 15 - 21 - 28 - 36 - 45 - 55 - 66 - </code>
 </pre>
 
-<h2>Opgaver</h2>
+<h3>Opgaver</h3>
 
-<h3>Lav et program der udskriver 7 tabellen</h3>
+<h4>Lav et program der udskriver 7 tabellen</h4>
 
 <p><b>Output</b></p>
 
@@ -658,7 +664,7 @@ Udskriver 7 tabellen
 7 14 21 28 35 42 49 56 63 70 </code>
 </pre>
 
-<h3>Udskriv tabellerne fra 1 - 10</h3>
+<h4>Udskriv tabellerne fra 1 - 10</h4>
 
 <p>Lav et program der udskriver alle tabellerne mellem 1 og 10</p>
 
@@ -680,7 +686,7 @@ Udskriver 7 tabellen
 </pre>
 
 
-<h3>BUM</h3>
+<h4>BUM</h4>
 
 <p>Lav funktionen <span class="inl_cmd">bum(a,b)</span> hvor <span class="inl_cmd">a</span> er det tal der tælles til og <span class="inl_cmd">b</span> er den tabel der arbejdes med:</p>
 
@@ -692,7 +698,7 @@ Udskriver 7 tabellen
 </pre>
 
 
-<h3>Vinkelsum i polygon</h3>
+<h4>Vinkelsum i polygon</h4>
 
 <p>Lav en løkke der beregner den enkelte vinkel og  den samlede vinkel i en ligesidet polygon med op til 20 sider. Outputtet skal være som nedenfor:</p>
 
@@ -728,13 +734,13 @@ I en 19-kant er vinkelsummen 3060° og den enkelte vinkel er 161.05263157894737�
 
 
 
-<h3>Mini Google</h3>
+<h4>Mini Google</h4>
 
 <p>Ændr koden i opgaven Ord i tekst 1 (<a href="python04_valg_og_funktioner.html#ordtekst1" target="_blank">henvisning</a>) fra forrige kapitel så det også tæller antallet af gange ordet optræder:</p>
 
 
 
-<h3>Fibonacchi tal</h3>
+<h4>Fibonacchi tal</h4>
 
 <p>Fibonaccitallene er en talrække, som har følgende egenskab. Hvis man dividerer et tal i rækken med det forgående tal, så vil dette tal tilnærme sig værdien &phi; (1.6180339...) som også bliver kaldt det gyldne snit. </p>
 
@@ -798,7 +804,7 @@ Fibonacci taller er: 6765 og φ er: 0.618033985017358
 
 
 
-<h1>Variabler i løkker</h1>
+<h2>Variabler i løkker</h2>
 
 <p>Ofte har man brug for at lave variabler i løkker. Det kan f.eks. være hvis man vil oprette brugere i løkker. Til dette formål anvender man <span class="inl_cmd">dictionaries</span>. En dictionary er en lille tabel med to kolonner hvor første kolonne er opslaget og den anden er værdien.</p>
 
@@ -838,7 +844,7 @@ Fibonacci taller er: 6765 og φ er: 0.618033985017358
 {'Bent': 3, 'Anne': 1}	</code>
 </pre>
 
-<h2>Konstruere dictionaries</h2>
+<h3>Konstruere dictionaries</h3>
 
 <p>Herunder er vist et eksempel hvor jeg jeg opretter en dictionary</p>
 
@@ -900,9 +906,9 @@ print (personer)
 </pre>
 
 
-<h2>Opgaver</h2>
+<h3>Opgaver</h3>
 
-<h3>Terningspil 2</h3>
+<h4>Terningspil 2</h4>
 
 <p>Lav et program der slår med en D6 terning (6 sider) det antal gange brugeren ønsker det, og lav en optælling af hvert terningslag</p>
 
@@ -922,7 +928,7 @@ Du slog:
 	16620 seksere</code>
 </pre>
 
-<h3>Terningspil 3</h3>
+<h4>Terningspil 3</h4>
 
 <p>Ændre koden fra opgaven terningspil 1 (<a href="python04_valg_og_funktioner.html#terningspil1" target="_blank">henvisning</a>)fra forrige kapitel på følgende måde:</p>
 
@@ -977,7 +983,7 @@ Der blev spillet uafgjort 98 gange</code>
 
 <p>Er der forskel på om du bruger en <span class="inl_cmd">D4</span> eller en <span class="inl_cmd">D20</span>?</p>
 
-<h1>While</h1>
+<h2>While</h2>
 
 <p>While betingelser angiver noget der skal ske så længe en betingelse er opfyldt. Herunder laver vi en kode, der udskriver tallet a så længe det er under 10</p>
 
@@ -1007,7 +1013,7 @@ while a &lt; 10:
 
 <p>Det som koden gør er, at mens (<span class="inl_cmd">while</span>) betingelsen er opfyldt kører den det som er rykket ind under koden. I dette tilfælde kører koden indtil a ikke længere er mindre en 10.</p>
 
-<h2>While True</h2>
+<h3>While True</h3>
 
 <p>Hvis man gerne vil have at en løkke skal køre uanset hvad, så kan man sætte den til at køre ved at bruge: <span class="inl_cmd">while True</span>. Se eksemplet herunder hvir koden kører indtil brugeren skriver: <span class="inl_cmd">Hej</span>:</p>
 
@@ -1043,7 +1049,7 @@ Tak!</code>
 
 
 
-<h1>Betingede løkker</h1>
+<h2>Betingede løkker</h2>
 
 <p>I de ovenstående kapitler har løkkerne været simple, fordi vi har været helt klar over hvad de skulle. Det hænder dog, at man vil sætte nogle betingelser for løkkerne. Det kan f.eks. være en kode der skal løbe indtil brugeren har valgt rigtigt.</p>
 
@@ -1076,7 +1082,7 @@ Tak!</code>
 	</tbody>
 </table>
 
-<h2>break</h2>
+<h3>break</h3>
 
 <p>Forestil dig at vi laver et spørgsmål om et antal brugere, men at vi kun vil acceptere 4. Den lette løsning er, at lave en kode der forventer at brugere svarer rigtigt.</p>
 
@@ -1125,7 +1131,7 @@ Der er 4 brugere)</code>
 </blockquote>
 
 
-<h3>Tællere i løkker</h3>
+<h4>Tællere i løkker</h4>
 
 <p>Hvis vi kikker på den første betingede <span class="inl_cmd">while</span>-løkke vi lavede ovenfor, så vil den køre indtil brugeren taster rigtigt. Herunder vil vi kigge på en metode til at begrænse antallet af forsøg.</p>
 
@@ -1177,7 +1183,7 @@ Indtast antal brugere (1-4): 9
 Du har ikke flere forsøg tilbage - bye bye</code>
 </pre>
 
-<h2>continue</h2>
+<h3>continue</h3>
 
 <p><span class="inl_cmd">continue</span> anvendes når vi gerne vil have at løkket "hopper" videre, uden at udføre det der står efter <span class="inl_cmd">continue</span>. Se eksemplet herunder</p>
 
@@ -1205,7 +1211,7 @@ Bogstavet er: s</code>
 
 
 
-<h2>pass</h2>
+<h3>pass</h3>
 
 <p><span class="inl_cmd">pass</span> er umiddelbart en underlig kommando, fordi den reelt bare sørger for at koden ikke bliver afbrudt. Men den er rigtig brugbar. Forestil dig en kode, hvor du vil udskrive tallene fra 1-10, men lige vill gøre opmærksom på at 7 er dit lykketal:</p>
 
@@ -1250,7 +1256,7 @@ tomfunktion()	</code>
 		<span class="red"><b>&larr; intet output</b></span></code>
 </pre>
 
-<h2>exit()</h2>
+<h3>exit()</h3>
 
 <p>Denne kommendo bruges når du vil afsluttet programmet helt.</p>
 
@@ -1280,7 +1286,7 @@ print("Du slog en 6'er") # denne linie kommer med	</code>
 </pre>
 
 
-<h2>Opgaver</h2>
+<h3>Opgaver</h3>
 
 
 <p>Her er koden til at program hvor du skal gætte tallet 8</p>
@@ -1296,7 +1302,7 @@ while True:
 		exit()	</code>
 </pre>
 
-<h3>Gæt et tal </h3>
+<h4>Gæt et tal </h4>
 
 <p>Ændr koden ovenfor så:</p>
 
@@ -1310,12 +1316,12 @@ while True:
 
 <p><span class="bold">HINT:</span> for at kunne få en kode til at afbryde anvender man kommandoen <span class="inl_cmd">exit()</span>. Når koden læser denne linie afsluttes kørslen.</p>
 
-<h3>Gæt et tal 2</h3>
+<h4>Gæt et tal 2</h4>
 
 <p>Ændr koden ovenfor, så den siger "Du er vist useriøs" 2 gange før den afsluttes</p>
 
 
-<h3>Dril</h3>
+<h4>Dril</h4>
 
 <p>Lav en kode der gentager hvad du siger - indtil du siger <span class="inl_cmd">klorofyl</span></p>
 
@@ -1334,7 +1340,7 @@ STOP DET DER: klorofyl
         Du sagde det magiske ord.</code>
 </pre>
 
-<h3>Affyring</h3>
+<h4>Affyring</h4>
 
 
 <p>Man kan lave en tidsforsinkelse ved hjælp af funktionen <span class="inl_cmd">sleep</span> der er i pakken <span class="inl_cmd">time()</span></p>
@@ -1370,7 +1376,7 @@ Affyr!</code>
 <p>Ændr koden, så der tælles ned på samme position. For at opnå det skal du anvende escape character'en <span class="inl_cmd">\r</span> (carrage return). </p>
 
 
-<h3>Tabeltræner</h3>
+<h4>Tabeltræner</h4>
 
 <p>Lav et program der stiller 5 tilfældige regnestykker fra den lille tabel (1-9). Programmet skal tælle:</p>
 
@@ -1381,7 +1387,7 @@ Affyr!</code>
 </ul>
 
 
-<h3>Erstat bogstaver</h3>
+<h4>Erstat bogstaver</h4>
 
 <p>Lav et program der erstatter <span class="inl_cmd">g</span> med <span class="inl_cmd">n</span> i det nedestående tekst.</p>
 

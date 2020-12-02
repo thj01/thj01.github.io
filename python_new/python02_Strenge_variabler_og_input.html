@@ -25,15 +25,21 @@
 	
 <div class="col-xs-3">
 	
-	<div id="toc">
-	
-		<div id="toc_headline"></div>
-	
-	</div>
+	<nav>
+		
+		<div id="toc">
+		
+			<div id="toc_headline"></div>
+		
+		</div>
+		
+	</nav>
 
 </div><!-- Start slut 1. kolonne - TOC -->
 	
 <div class="col-xs-9">
+	
+<div class="title">Matematik med Python</div>	
 	
 <figure id="">
 
@@ -43,12 +49,12 @@
 
 </figure>	
 
-<div class="title">Strenge, variabler og input</div>
+<h1>Strenge, variabler og input</h1>
 
 <p>Denne guide handler om det mest basale i alle programmeringssprog, nemlig hvad data er og hvordan man behandler dem.</p>
 
 		
-<h1>Et simpelt program</h1>
+<h2>Et simpelt program</h2>
 
 <p>Lad os lave et simpelt program der udskriver tekstrengen: "Hej". Indtast nedestående og tryk på <kbd>F5</kbd></p>
 
@@ -69,7 +75,7 @@ Hej
 
 
 <!--
-<h2>Kommentarer</h2>
+<h3>Kommentarer</h3>
 
 <p>For at gøre koden lettere at læse indsætter man kommentarer i den. Det kan gøres på to måder. Åbn en ny fil (<kbd>Ctrl</kbd>+<kbd>n</kbd>) og indtast følgende :</p>
 
@@ -90,7 +96,7 @@ Hej
 
 <p>Der er to typer af kommentarer her. Den store kommentar i starten der er omgivet af tre anførselstegn (<span class="inl_cmd">""" *kommentar* """</span>) og de to mindre der er lavet ved at sætte et hashtag (<span class="inl_cmd">#</span>) foran. Den tekst der kommer imellem <span class="inl_cmd">"""</span> eller efter <span class="inl_cmd">#</span> bliver sprunget over når kompileren læser og udfører koden.</p>
 
-<h2>Fejlmeddelelser</h2>
+<h3>Fejlmeddelelser</h3>
 
 <blockquote>
 	<p>
@@ -143,7 +149,7 @@ Press return to continue
 <p>Her får vi en <span class="inl_cmd">navnefejl</span>. Python forventer en talværdi, da der ikke er nogen anførselstegn ... og <span class="inl_cmd">Hej</span> er ikke et tal.</p>
 -->
 
-<h1>Undgå fejl</h1>
+<h2>Undgå fejl</h2>
 
 <p>Når du anvender Pythonshell kan du ikke starte koden, hvis der er fejl i den. Så vil cursoren bare rykke en linie ned når du trykker <kbd>ENTER</kbd>.</p>
 
@@ -157,7 +163,7 @@ Press return to continue
 
 <p>Når du senere i dette materiale har kode der ikke fungerer, så er det punkterne i denne liste du skal tjekke dine kode for.</p>
 
-<h1>Tekststrenge</h1>
+<h2>Tekststrenge</h2>
 
 <p>Tekststrenge skal skrives imellem 2 anførselstegn eller apostroffer</p>
 
@@ -168,7 +174,7 @@ med anførselstegn
 med apostroffer</code>
 </pre>
 
-<h2>Escape sequences</h2>
+<h3>Escape sequences</h3>
 
 <p>Escape sequences er betegnelsen for den metode man anvender for at indsætte tegn som normalt anvendes af Python f.eks: <span class="inl_cmd">', ", \</span> samt linje- og tabulatorskift. Herunder er en liste med de vigtiste tegn. Hvis man har behov for at sætte tegn ind i en streng, som python normalt vil tolke som en del af programmeringssproget</p>
 
@@ -222,7 +228,7 @@ med linieskift (linefeed)
 Dette er en sætning 	med horisontal TAB</code>
 </pre>
 
-<h3>Carriage return</h3>
+<h4>Carriage return</h4>
 
 <p>Hvis man vil skrive oven i det der lige er printet skal man anvende <span class="inl_cmd">\r</span>. Det kan f.eks. være hvis man vil lave et ur der tæller ned, og man ikke ønsker det gamle tal skal blive stående.</p>
 
@@ -238,7 +244,7 @@ Dette er en sætning 	med horisontal TAB</code>
 </table>
 
 
-<h2>Anden afslutning</h2>
+<h3>Anden afslutning</h3>
 
 <p>Som standard indsætter Python et linieskift (<span class="inl_cmd">\r</span>) efter en print sætning. Dette kan ændres ved at indsætte <span class="inl_cmd">end="*det som der skal gøres*"</span> som en paramter.</p>
 
@@ -269,7 +275,7 @@ Dette er en sætning 	med horisontal TAB</code>
 
 
 
-<h2>Lange tekststykker</h2>
+<h3>Lange tekststykker</h3>
 
 <p>Hvis man skal skrive længere tekststykker der indeholder linje skift og tabulatorindrykninger kan man anvende en anden metode - triple anførselstegn. Ved at omgive sin tekststreng med <span class="inl_cmd">""" *tekststreng* """</span> så bevares linjeskift, indrykninger, mellemrum og tabulatorer.</p>
 
@@ -293,7 +299,7 @@ Python er svært
 </pre>
 
 
-<h1>Variabler</h1>
+<h2>Variabler</h2>
 
 <p>Variabler er små tekstrenge vi kan sætte til at have enten en værdi, en char eller en tekststreng. Fordelen ved at anvende variabler er, at vi hurtigt kan ændre koden til at køre efter nogle andre betingelser, f.eks. antal gang, sprog osv.</p>
 
@@ -317,7 +323,7 @@ Python er svært
 </blockquote>
 
 
-<h2>Tekst i variabler</h2>
+<h3>Tekst i variabler</h3>
 
 <pre>
 	<code class="python">>>> var1 = "hej"
@@ -335,7 +341,7 @@ hej verden
 hej store verden</code>
 </pre>
 
-<h2>Navngivning af variabler</h2>
+<h3>Navngivning af variabler</h3>
 
 <p>Nar man navngiver variabler gælder der følgende regler</p>
 
@@ -379,7 +385,7 @@ antalAfdrag</code>
 <p>Jeg kan bedst lide at bruge underscore, da jeg synes det er lettest at læse.</p>
 
 
-<h2>Ændring af variabler</h2>
+<h3>Ændring af variabler</h3>
 
 <p>Hvis man vil ændre værdien af en variabel gør sætter skriver man den bare en gang til med den nye værdi:</p>
 
@@ -393,7 +399,7 @@ antalAfdrag</code>
 </pre>
 
 
-<h2>Fejlkoder</h2>
+<h3>Fejlkoder</h3>
 
 <p>Man skal være opmærksom på at python forstår + som et logisk plus som lægger to elementer sammen. Det betyder at man ikke skal blande værdier og tekststrenge sammen.</p>
 
@@ -423,7 +429,7 @@ TypeError: must be str, not int</b></span>
 <p><span class="inl_cmd"><span class="red">TypeError: unsupported operand type(s) for +: 'int' and 'str'
 </span></span></p>
 
-<h2>Gentagelser</h2>
+<h3>Gentagelser</h3>
 
 <p>Som vi så ovenfor kan man ikke lægge tekst og tal sammen. Men man kan godt gentage tekst ved hjælp af gange (<span class="inl_cmd"> * </span>).</p>
 
@@ -437,11 +443,11 @@ TypeError: must be str, not int</b></span>
 <p>Skal man printe den samme ting igen og igen er dette metoden at gøre det på. Det fylder mindre, og man skal ikke tælle antal tegn for at forstå koden.</p>
 
 
-<h1>Input</h1>
+<h2>Input</h2>
 
 <p>Ofte har vi brug for at anvende input (f.eks. indtastning) fra brugeren. Det gøres ved hjælp af kommandoen <span class="inl_cmd">input()</span>:</p>
 
-<h2>Indtastning af tekst</h2>
+<h3>Indtastning af tekst</h3>
 
 <p>Her lavet vi en variabel der hedder <span class="inl_cmd">fornavn</span>, og den skaber vi ved hjælp af brugerens input:</p>
 
@@ -468,7 +474,7 @@ Hvad er dit fornavn: <b>Thomas</b> <span class="red"><b>&larr; Mit input</b></sp
 
 <p>Det vi har lært ovenfor er at indsætte variabler i selve koden. Det som vi skal se på her er, at give mulighed for at brugeren kan indtaste informationer.</p>
 
-<h2>Indtastning af heltal</h2>
+<h3>Indtastning af heltal</h3>
 
 <p>Som standard er Python sat op til at inputs er tekst. Hvis det skal være et tal (f.eks. alder) skal det konverteres. Det gøres ved hjælp af <span class="inl_cmd">int()</span>:</p>
 
@@ -488,7 +494,7 @@ Hvor gammel er du?: <b>48</b> <span class="red"><b>&larr; Mit input</b></span></
 
 <p><b>Læg mærke til... </b>at der ikke er nogle anførselsteng omkring tallet. Det er altså en værdi nu</p>
 
-<h2>Indtastning af decimaltal</h2>
+<h3>Indtastning af decimaltal</h3>
 
 <p>Decimaltal fungerer på næsten samme måde. Her skal dog anvende en anden funktion, nemlig <span class="inl_cmd">float()</span>. </p>
 
@@ -517,7 +523,7 @@ Hvad koster 1 liter mælk: 7.95</code>
 </pre>
 
 
-<h1>Variabler i tekststrenge</h1>
+<h2>Variabler i tekststrenge</h2>
 
 <p>Lad os bruge det vi lige har lært og indskyde en variabel i en tekststreng. Forestil dig et program der skal byde brugeren velkommen med sætningen:</p>
 
@@ -576,9 +582,9 @@ Hej Thomas.
 <p>Det vigtige er at <span class="inl_cmd">.format()</span> kommer efter printsætningen, og at pladsholdere referere til den rigtige position i <span class="inl_cmd">.format()</span></p>
 
 
-<h1>Opgaver</h1>
+<h2>Opgaver</h2>
 
-<h2>Pladsholdere 1</h2>
+<h3>Pladsholdere 1</h3>
 
 <p>Lav en kode ved hjælp af variabler, der giver følgende output</p>
 <pre>

@@ -25,15 +25,21 @@
 	
 <div class="col-xs-3">
 	
-	<div id="toc">
-	
-		<div id="toc_headline"></div>
-	
-	</div>
+	<nav>
+		
+		<div id="toc">
+		
+			<div id="toc_headline"></div>
+		
+		</div>
+		
+	</nav>
 
 </div><!-- Start slut 1. kolonne - TOC -->
 	
 <div class="col-xs-9">
+	
+<div class="title">Matematik med Python</div>	
 
 <figure id="">
 
@@ -43,14 +49,14 @@
 
 </figure>	
 
-<div class="title">Tal, operatorer og matematiske funktioner</div>
+<h1>Tal, operatorer og matematiske funktioner</h1>
 	
-<h1>Tal og operatorer</h1>
+<h2>Tal og operatorer</h2>
 
 <p>I dette afsnit vil du lære om hvordan Python arbejder med tal og værdier.</p>
 
 
-<h2>Hel- og decimaltal</h2>
+<h3>Hel- og decimaltal</h3>
 
 <p>Når man arbejder med tal i Python skal man ikke definere om man arbejder med hel- eller decimaltal (intergers eller floating point). Det holder Python selv styr på ved at undersøge det tal ud arbejder med.</p>
 
@@ -77,7 +83,7 @@
 
 
 
-<h2>Computeren kan <s>ikke</s> tælle</h2>
+<h3>Computeren kan <s>ikke</s> tælle</h3>
 
 <p>En af de første ting man skal forholde sig til når man programmerer er, at de tæller anderledes end os. Helt konkret starter computeren med tallet 0, hvor vi mennesker anvender tallet 1.</p>
 
@@ -469,7 +475,7 @@
 
 </details>
 
-<h1>Regneregler</h1>
+<h2>Regneregler</h2>
 
 <p>Regningsarterne fungerer ved at anvende tegnene: <span class="inl_cmd">+</span>, <span class="inl_cmd">-</span>, <span class="inl_cmd">*</span> og <span class="inl_cmd">/</span>. Se herunder:</p>
 
@@ -534,7 +540,7 @@
 
 </details>
 
-<h2>Modulus og floor division</h2>
+<h3>Modulus og floor division</h3>
 
 <p>For at finde potens tal og rødder anvendes funktionen <span class="inl_cmd">pow(a,b)</span>, hvor <span class="inl_cmd">a</span> er grundtallet og <span class="inl_cmd">b</span> er potensen. Se nedestående eksempler:</p>
 
@@ -586,7 +592,7 @@
 
 
 
-<h2>Potens og rødder</h2>
+<h3>Potens og rødder</h3>
 
 <p>For at finde potens tal og rødder anvendes funktionen <span class="inl_cmd">pow(a,b)</span>, hvor <span class="inl_cmd">a</span> er grundtallet og <span class="inl_cmd">b</span> er potensen. Se nedestående eksempler:</p>
 
@@ -629,7 +635,7 @@
 2.17790642448278	</code>
 </pre>
 
-<h3>Opgave</h3>
+<h4>Opgave</h4>
 
 <p> Beregn følgende tal:</p>
 
@@ -649,7 +655,7 @@
 	f)~2^{\sqrt17} = 17.4252... $$</div>
 </details>
 
-<h2>Konstanter</h2>
+<h3>Konstanter</h3>
 
 <p>I matematik er der konstanter som man ikke kommer uden om herunder konstanten <span class="math">&pi;</span> og <span class="math">e</span></p>
 
@@ -687,7 +693,7 @@
 
 
 
-<h2>Afrunding af tal</h2>
+<h3>Afrunding af tal</h3>
 
 <p>Ovenfor har vi se set hvordan man ændrer et <span class="inl_cmd">float</span> til en <span class="inl_cmd">Interger</span>. Men ofte har man brug for at kunne vise et resultat afrundet korrekt og med et bestemt antal decimaler. Det gøres med <span class="inl_cmd">round()</span>. Man angiver antallet af decimaler på følgende måde:</p>
 
@@ -698,7 +704,7 @@
 0.67	</code>
 </pre>
 
-<h3>Afrunding til hele tal</h3>
+<h4>Afrunding til hele tal</h4>
 
 <p>Nogle gange kan man have behov for at runde op eller end til nærmeste hele tal. Hvis man f.eks. skal beregne antallet af passagerer i en bil er det uheldigt hvis man får 5,3 - dette skal rundes ned til 5. Hvorimod 3,7 liter benzin kræver en 4 liters dunk.</p>
 
@@ -732,7 +738,7 @@
 </pre>
 
 
-<h2>Absolutte tal</h2>
+<h3>Absolutte tal</h3>
 
 <p>Hvis man vil arbejde med absolutte tal (også kaldet den numeriske værdi) anvender man funktionen <span class="inl_cmd">abs()</span>. Det gør at resultatet bliver repræsenteret med sin positive værdi. Se eksemplerne:</p>
 
@@ -765,7 +771,7 @@ Press return to continue
 </pre>
 -->
 
-<h2>Logaritmer</h2>
+<h3>Logaritmer</h3>
 
 <p>For at anvende logaritmer skal pakken <span class="inl_cmd">math</span> importeres</p>
 
@@ -813,7 +819,7 @@ Press return to continue
 </pre>
 
 
-<h1>Taltyper</h1>
+<h2>Taltyper</h2>
 
 <p>I Python anvendes grundlæggende 3 taltyper</p>
 
@@ -863,7 +869,7 @@ Press return to continue
 	</tbody>
 </table>
 
-<h2>Bestem taltype</h2>
+<h3>Bestem taltype</h3>
 
 <p>Man bestemmer tallets type ved hjælp af kommandoen <span class="inl_cmd">type()</span></p>
 
@@ -879,14 +885,14 @@ Press return to continue
 &lt;class 'float'>	</code>
 </pre>
 
-<h2>Integer (Heltal)</h2>
+<h3>Integer (Heltal)</h3>
 
 <p><span class="inl_cmd">int</span> er heltal og anvendes ofte i programmering til at tælle og holde styr på antallet af gange noget skal ske. Det er samtidig den taltype der fylder mindst i hukommelsen og computeren kan beregne hurtigt.</p>
 
-<h2>Decimaltal</h2>
+<h3>Decimaltal</h3>
 
 
-<h3>Float (Binære decimaltal)</h3>
+<h4>Float (Binære decimaltal)</h4>
 
 <p><span class="inl_cmd">floating point (float)</span> er decimaltal, eller måske mere præcist en tilnærmet værdi baseret på den underliggende binære værdi. Se eksemplet herunder.</p>
 
@@ -914,7 +920,7 @@ Press return to continue
 
 <!--
 
-<h2>Decimal (ægte decimaltal)</h2>
+<h3>Decimal (ægte decimaltal)</h3>
 
 <p><span class="afsnit">Anvendelse: </span> Financielle beregninger</p>
 
@@ -940,7 +946,7 @@ Decimal('2.5000')
 
 -->
 
-<h2>Er det et heltal</h2>
+<h3>Er det et heltal</h3>
 
 <p>Hvis man har brug for at undersøge et decimaltal for om det er et heltal, så kan man anvende funktionen <span class="inl_cmd">is_integer()</span>. Funktionen svarer enten tilbage med <span class="inl_cmd">True</span> eller <span class="inl_cmd">False</span>.</p>
 
@@ -968,7 +974,7 @@ True	</code>
 </pre>
 
 
-<h2>Fraction (Brøker)</h2>
+<h3>Fraction (Brøker)</h3>
 
 <p>For at regne med brøker skal man importere en funktion <span class="inl_cmd">Fraction</span> fra pakken <span class="inl_cmd">fractions</span>.</p>
 
@@ -1000,7 +1006,7 @@ Fraction(1, 2)	</code>
 </pre>
 
 
-<h2>Konvertering af taltyper</h2>
+<h3>Konvertering af taltyper</h3>
 
 <p>Nogle gange kan man have behov for at konvertere tal til andre typer. </p>
 
@@ -1012,7 +1018,7 @@ Fraction(1, 2)	</code>
 
 <p>Her er nogle eksempler</p>
 
-<h3>Til Integer</h3>
+<h4>Til Integer</h4>
 
 <pre>
 	<code class="python">>>> import math
@@ -1027,7 +1033,7 @@ Fraction(1, 2)	</code>
 
 <p><b>Læg mærke til...</b> at decimaltal mister deres decimaler. float tal bør kun konverteres hvis man er sikker på de er heltal (se <span class="inl_cmd">is_integer()</span> ovenfor )</p>
 
-<h3>Til float</h3>
+<h4>Til float</h4>
 
 <pre>
 	<code class="python">>>> import math
@@ -1045,7 +1051,7 @@ Fraction(1, 2)	</code>
 <p><b>Læg mærke til...</b> at heltallet får koblet en decimal på.</p>
 
 
-<h1>Operatorer</h1>
+<h2>Operatorer</h2>
 
 <p>Operatorer beskriver forholdet mellem to værdier</p>
 
@@ -1111,7 +1117,7 @@ Fraction(1, 2)	</code>
 	</tbody>
 </table>
 
-<h2>Afgrænsede områder</h2>
+<h3>Afgrænsede områder</h3>
 
 <p>Man kan beskrive et afgrænset talområde matematisk ved hjælp af sammensatte uligheder f.eks: <span class="math">\( 15 \leq x \leq 24_ \)</span>.</p>
 
@@ -1125,7 +1131,7 @@ Fraction(1, 2)	</code>
 </pre>
 
 
-<h1>En til eller fra</h1>
+<h2>En til eller fra</h2>
 
 <p>Ofte har man brug for at lade et tal vokse med en fast størrelse fra gang til gang. Den mest umiddelbare løsning er denne:</p>
 
@@ -1183,7 +1189,7 @@ Fraction(1, 2)	</code>
 </pre>
 
 
-<h1>Talsystemer</h1>
+<h2>Talsystemer</h2>
 
 <p>Vi er vant til at anvende 10-talssystemet, men i programmerings- og computersammenhænge kan det være praktisk at anvende andre talsystemer især det binære (2-talssystem) og det hexadecimale (16-talssystem). Man siger at talsystemerne har et grundtal, som bestemmer hvornår der skiftes position.</p>
 
@@ -1280,7 +1286,7 @@ Fraction(1, 2)	</code>
 
 
 
-<h2>Base10 til baseX</h2>
+<h3>Base10 til baseX</h3>
 
 <p>Der er indbygget konvertere fra ti-talssystemet til binær, octet og hexadecimalt talsystem. Det gøres ved at anvende <span class="inl_cmd">bin()</span>, <span class="inl_cmd">oct()</span> og <span class="inl_cmd">hex()</span>.</p>
 
@@ -1303,7 +1309,7 @@ Fraction(1, 2)	</code>
 
 <p>Python bruger præfixet til at bestemme hvilket positionssystem tallet er i. Er der ikke noget præfix er det base 10.</p>
 
-<h2>BaseX til base10 talssystem</h2>
+<h3>BaseX til base10 talssystem</h3>
 
 <p>For at konvertere tal med anden base til 10 talssystemet anvendes <span class="inl_cmd">int()</span>. Det fungerer ved at man i parantesen skriver tallet man vil konvertere og basen der skal konverteres fra. Læg mærke til at tallet skal skrives ind som en tekststreng!</p>
 
@@ -1318,7 +1324,7 @@ Fraction(1, 2)	</code>
 256	</code>
 </pre>
 
-<h2>Beregninger med andre talsystemer</h2>
+<h3>Beregninger med andre talsystemer</h3>
 
 <p>Hvis man har brug for at regne direkte med tal fra andre talsystemer skal man blot anvende talsystemets præfix. For at gøre det mere overskueligt er der lavet en tabel så du kan "beregne" de binære tals værdi</p>
 

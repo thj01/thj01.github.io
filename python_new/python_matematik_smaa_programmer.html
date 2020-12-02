@@ -25,19 +25,33 @@
 	
 <div class="col-xs-3">
 	
-	<div id="toc">
-	
-		<div id="toc_headline"></div>
-	
-	</div>
+	<nav>
+		
+		<div id="toc">
+		
+			<div id="toc_headline"></div>
+		
+		</div>
+		
+	</nav>
 
 </div><!-- Start slut 1. kolonne - TOC -->
 	
 <div class="col-xs-9">
 	
+<div class="title">Matematik med Python</div>	
+
+<figure id="">
+
+	<img class="" src="images/python-logo-inkscape.svg" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>	
+	
 <h1>Print og input</h1>
 
-<p>Hvis man vil lave matematikprogrammer får man brug for at kunne lave brugerinputs og udskrive resulater. Det gøres henholdsvise med funktionerne <span class="inl_cmd">print()</span> og <span class="inl_cmd">input()</span>. Det man skal være opmærksom på er, at alle input bliver tolket som tekststrenge. Den skal altså konverteres med det samme. Det gøres ved at pakke funktionerne ind i hinanden:</p>
+<p>Hvis man vil lave matematikprogrammer får man brug for at kunne lave brugerinputs og udskrive resulater. Det gøres henholdsvise med funktionerne <code>print()</code> og <code>input()</code>. Det man skal være opmærksom på er, at alle input bliver tolket som tekststrenge. Den skal altså konverteres med det samme. Det gøres ved at pakke funktionerne ind i hinanden:</p>
 
 <h2>print()</h2>
 
@@ -63,13 +77,13 @@ Dette er en sætning
 Variablens navn er Thomas
 </pre>
 
-<p>Pladsholderne angives ved hjælp af <span class="inl_cmd">{0}</span>, <span class="inl_cmd">{1}</span>,<span class="inl_cmd">{2}</span>  ... og indsættes ved hjælp af at sætte <span class="inl_cmd">.format()</span> på tekststrengen. I parantesen angives variablerne i rækkefølge adskilt af <span class="inl_cmd">,</span>.</p>
+<p>Pladsholderne angives ved hjælp af <code>{0}</code>, <code>{1}</code>,<code>{2}</code>  ... og indsættes ved hjælp af at sætte <code>.format()</code> på tekststrengen. I parantesen angives variablerne i rækkefølge adskilt af <em>,</em>.</p>
 
 
 
 <h2>input()</h2>
 
-<p>For at få brugerinput anvendes funktionen <span class="inl_cmd">input()</span>. Funktionen udskriver tekststrengen inde i parantensen, og venter på brugerens input. Som standard læses input som en tekststreng. Hvis input er en talværdi konverteres den til den taltype man ønsker ved at pakke input funktionen ind i funktionen for taltypen f.eks:</p>
+<p>For at få brugerinput anvendes funktionen <code>input()</code>. Funktionen udskriver tekststrengen inde i parantensen, og venter på brugerens input. Som standard læses input som en tekststreng. Hvis input er en talværdi konverteres den til den taltype man ønsker ved at pakke input funktionen ind i funktionen for taltypen f.eks:</p>
 
 <code class="cmd">int(input(*tekststreng*))  <span class="red">&lt;-- Husk to paranteser til sidst</span></code>
 
@@ -93,15 +107,15 @@ Det dobbelte af 6 er 12
 <ol class="">
 	<li><code class="cmd">navn=input("Skriv dit navn: ")</code></li>
 	
-	<p>Vi opretter variablen <span class="inl_cmd">navn</span> og indhenter navnet (en tekststreng) ved hjælp af <span class="inl_cmd">input()</span></p>
+	<p>Vi opretter variablen <em>navn</em> og indhenter navnet (en tekststreng) ved hjælp af <code>input()</code></p>
 
 	<li><code class="cmd">tal=int(input("Skriv et tal: "))</code></li>
 	
-	<p>Vi opretter variablen tal og indhenter tallet (en tekststreng) ved hjælp af <span class="inl_cmd">input()</span>. Men vi konverterer tekststrengen til et tal med det samme ved at pakke hele funktionen ind i <span class="inl_cmd">int()</span></p>
+	<p>Vi opretter variablen tal og indhenter tallet (en tekststreng) ved hjælp af <code>input()</code>. Men vi konverterer tekststrengen til et tal med det samme ved at pakke hele funktionen ind i <code>int()</code></p>
 
 	<li><code class="cmd">print("Det dobbelte af {0} er {1}".format(tal,tal*2)) </code></li>
 	
-	<p>Vi printer resultatet ved hjælp af <span class="inl_cmd">print()</span>, og indsætter variablerne ved hjælp af pladsholdere</p>
+	<p>Vi printer resultatet ved hjælp af <code>print()</code>, og indsætter variablerne ved hjælp af pladsholdere</p>
 </ol>
 
 
@@ -122,8 +136,8 @@ Indtast nævner: 4
 <p>Læg mærke til 2 ting:</p>
 
 <ul class="disc">
-	<li>Divisionsstykket konvertere de to <span class="inl_cmd">int</span> tal til <span class="inl_cmd">float</span></li>
-	<li>Man kan kalde det sidste output ved at anvende <span class="inl_cmd">_</span> (underscore)</li>
+	<li>Divisionsstykket konvertere de to <em>int</em> tal til <em>float</em></li>
+	<li>Man kan kalde det sidste output ved at anvende <em>_</em> (underscore)</li>
 </ul>
 
 <h2>Opgave</h2>
@@ -142,7 +156,7 @@ Indtast nævner: 4
 Jeg hedder *fornavn*, og er *alder* år gammel. Mit mobilnr er: *mobilnr*
 </pre>
 
-<p>Overvej om <span class="inl_cmd">alder</span> og <span class="inl_cmd">mobilnr</span> skal være tekststrenge eller værdier</span>. Begrund dine valg.</p>
+<p>Overvej om <em>alder</em> og <em>mobilnr</em> skal være tekststrenge eller værdier</span>. Begrund dine valg.</p>
 
 
 

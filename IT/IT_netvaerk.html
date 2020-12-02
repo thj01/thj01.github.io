@@ -25,23 +25,27 @@
 	
 <div class="col-xs-3">
 	
-	<div id="toc">
-	
-		<div id="toc_headline"></div>
-	
-	</div>
+	<nav>
+		
+		<div id="toc">
+		
+			<div id="toc_headline"></div>
+		
+		</div>
+		
+	</nav>
 
 </div><!-- Start slut 1. kolonne - TOC -->
 	
 <div class="col-xs-9">
 	
-	<div class="title">Netværk</div>
+<h1>Netværk</h1>
 	
-<h1>Introduktion</h1>
+<h2>Introduktion</h2>
 
 <p>Denne guide sigter mod at give dig et indblik i hvordan et netværk er bygget op og et overblik over netværksbegreber. Der vil være en del teori og fagbegreber, som er nødvendige for at forstå hvordan netværk mellem computere er opbygget.</p>
 
-<h2>Lidt historie</h2>
+<h3>Lidt historie</h3>
 
 <p>John Cage, der var ledende forsker hos SUN, er kendt for følgende to citater:</p>
 
@@ -64,7 +68,7 @@
 
 <p>Internettet som vi kender det i dag startede som projekt under det amerikanske forsvar i starten af 1960'erne </p>
 
-<h1>Netværkstyper</h1>
+<h2>Netværkstyper</h2>
 
 <p>For at adskille og beskrive de forskellige typer af netværk anvender man følgende betegnelser:</p>
 
@@ -103,7 +107,7 @@
 	</tbody>
 </table>
 
-<h2>LAN og WAN</h2>
+<h3>LAN og WAN</h3>
 
 <p>Dette er de to grundlæggende netværkstyper. Forskellen mellem dem er, at <span class="inl_cmd">LAN</span> er afgrænset og <span class="inl_cmd">WAN</span> ikke er det. Det kan f.eks. være et firmanetværk (LAN) og Internettet (WAN).</p>
 
@@ -119,7 +123,7 @@
 
 <p>Læg mærke til at der sidder en router mellem WAN og LAN, men også at der sidder en switch før routeren. Det smarte ved TCP/IP er netop, at den beskytter den interne trafik, og at</p>
 
-<h2>VLAN, WLAN... og LAN</h2>
+<h3>VLAN, WLAN... og LAN</h3>
 
 <p>Som vi så ovenfor er LAN egentlig blot en overordnet betegnelse for et netværk der er adskilt fra et større netværk. Der findes så tre forskellige LAN typer:</p>
 
@@ -164,13 +168,13 @@
 </table>
 
 
-<h2>SAN</h2>
+<h3>SAN</h3>
 
 <p><span class="inl_cmd">SAN</span> beskriver netværk der indeholder harddisk-arrays, som er servere der kun er beregnet til at opbevare data. Ved at segmentere og lave et SAN netværk, kan man begrænse hvem der har adgang til det. Man kan f.eks. sørge for at det kun er enkelte maskiner på netværket (servere) der har adgang til SAN, og sætte resten af maskinerne på til at have adgang til serveren.</p>
 
 <p>Det gør det både nemmere at administrere adgangen og sikkerheden til netværket.</p>
 
-<h2>VPN</h2>
+<h3>VPN</h3>
 
 <p>VPN er en netværksforbindelse der skabes mellem to computeren uafhængig af netværket omkring dem. Denne form for netværk bliver også omtalt som en "tunnel". Det har den fordel at resten af netværket ikke kan se trafikken. Hvis man ønsker at sikre datastrømmen yderligere kan man kryptere den. Det kan f.eks. være en fordel hvis man som rejsenden sælger skal kunne tilgå sine filer sikkert på serveren i virksomheden.</p>
 
@@ -179,11 +183,11 @@
 <p>Når man installerer programmer fra nettet der lover at forbedre ens ydelse, eller som giver adgang til specielle typer af programmer, så bør man undersøge om det gøres gennem VPN.</p>	
 
 
-<h1>Netværkstopologier</h1>
+<h2>Netværkstopologier</h2>
 
 <p>Ordet netværkstopologi henviser til den måde netværket er opbygget. Her vil to af dem blive gennemgået: Stjerne- og ringtopologi.</p>
 
-<h2>Stjernetopologi</h2>
+<h3>Stjernetopologi</h3>
 
 <p>Stjerne-topologien er den mest anvendte netværksopbygning. Det er den type netværk man får når forbinder sine computere med både trådede og trådløse switche.</p>
 
@@ -235,7 +239,7 @@
 
 <p>Som du kan se af netværket ovenfor så kan det miste et knudepunkt uden at netværket er brudt. Kan det miste 2? 3? Kunsten er at designe sit netværk så det har mest mulig redeundans for mindst ressourcer.</p>
 
-<h2>Ring-topologi</h2>
+<h3>Ring-topologi</h3>
 
 <p>Fordelen ved at sætte maskinerne i en ring er, at datapakkerne bliver sendt i en retning. Det giver et stærkere signal og dermed kan hastigheden øges. Denne type netværk anvendes i "backbones" hvilket vil sige i centrale dele af store netværk, hvor hastigheden mellem de enkelte enheder er vigtig. </p>
 
@@ -250,7 +254,7 @@
 
 </figure>
 
-<h1>TCP/IP protokollen</h1>
+<h2>TCP/IP protokollen</h2>
 
 <p>Den netværksprotokol vi i dag anvender i vores netværk er oprindeligt skabt af det amerikanske forsvarsministerium. Ideen var, at netværket skulle være i stand til at fungere selv hvis dele af netværket blev ødelagt. Det blev så til TCP/IP netværket. TCP står for <span class="inl_cmd"><b>T</b>ransmission <b>C</b>ontrol <b>P</b>rotocol</span> og er den del der sikrer at det er de korrekte data der afsendes og modtages. IP står for <span class="inl_cmd"><b>I</b>nternet <b>P</b>rotocol</span>, og er den del der sørger for at data kommer det rigtige sted hen.</p>
 
@@ -266,7 +270,7 @@
 
 
 
-<h2>IP-adresser</h2>
+<h3>IP-adresser</h3>
 
 <p>IP-adresser består af 4 tal, mellem 0 og 255 adskilt af punktummer. Det kan f.eks. være  <span class="inl_cmd">152.115.53.68</span> (også adressen på folketingets web-server <a href="http://152.115.53.68" target="_blank">www.ft.dk</a>). Danmarks Radio (<a href="http:\\159.20.6.38" target="_blank">www.dr.dk</a>) har således IP-adressen: <span class="inl_cmd">159.20.6.38</span>.</p>
 
@@ -276,7 +280,7 @@
 
 <p>I dag arbejder man med to versioner af TCP/IP: IPv4 og IPv6. IPv4 er den "gamle" protokol, som har det problem, at man er løbet tør for unikke IP-adresser, da den "kun" har <span class="math">\( 2^{32} = 4,3 \cdot 10^9 \)</span> (milliarder) selvstændige adresser. IPv6 har til sammenligning <span class="math">\( 2^{128} = 3,4 \cdot 10^{38} \)</span> mulige kombinationer.</p>
 
-<h2>Porte</h2>
+<h3>Porte</h3>
 
 <p>For at kunne målrettet IP-adresser til specifikke tjenester kan man sætte en ekstra parameter på, som kaldes en port. F.eks. kører al web-trafik på port 80 (http - ikkekrypteret) og port 443 (https - krypteret). Herunder er en liste med nogle af mest anvendte porte</p>
 
@@ -349,7 +353,7 @@
 
 
 
-<h2>Din IP-adresse</h2>
+<h3>Din IP-adresse</h3>
 
 <p>For at se hvordan din computer er på netværket anvender man programmet ipconfig (ifconfig hvis det er Linux/Mac), som køres fra kommandolinien.</p>
 
@@ -382,7 +386,7 @@ Wireless LAN adapter Wi-Fi:
 
 <p>Infrormationerne fortæller at min computer har adressen: <span class="inl_cmd">172.25.255.238</span> og at routerens (defailt gateway) IP-adresse er 172.25.0.1</p>
 
-<h2>ping</h2>
+<h3>ping</h3>
 
 <p>Ved hjælp af ovenstående kommando ved vi nu at computerens netværkskort er konfigureret. Men vi ved reelt ikke om den er på nettet. For at finde ud af det anvender vi <span class="inl_cmd">ping</span></p>
 
@@ -477,7 +481,7 @@ Control-C
 C:\Users\ThomasJensen>
 </pre>
 
-<h2>Data-flow</h2>
+<h3>Data-flow</h3>
 
 <p>I al sin enkelhed angiver TCP/IP protokollen hvordan to enheder på et netværk kan kommunnikere, også selvom det ikke er samme protokol. Det kan illustreres på følgende måde:</p>
 
@@ -493,7 +497,7 @@ C:\Users\ThomasJensen>
 
 
 
-<h1>Netværkets hardware</h1>
+<h2>Netværkets hardware</h2>
 
 <p>For at få netværket til at fungere anvender vi forskellige netværksudstyr. De vi vil kigge på her er:</p>
 
@@ -504,7 +508,7 @@ C:\Users\ThomasJensen>
 	<li>Kabler</li>
 </ul>
 
-<h2>Routeren</h2>
+<h3>Routeren</h3>
 
 <p></p>
 
@@ -607,13 +611,13 @@ C:\Users\ThomasJensen>
 
 </details>
 
-<h2>Firewall</h2>
+<h3>Firewall</h3>
 
 <p>En firewall er noget software som kan aktiveres i en router. Det en firewall gør er, at filtrere datatrafikken. Det kan den f.eks. gøre ved at tillade adgang (ALLOW), afvise (REJECT - sender signal tilbage), smide (DROP - sender ikke signal tilbage). Ved hjælp af firewalls kan man styre hvilke IP-adresser og tjenester der skal ahve adgang til ens netværk.</p>
 
 <p>Firewalls kan også sættes op på enheder i netværket, så netværkstrafikken kan blive yderligere filtreret lokalt.</p>
 
-<h2>Switch'en</h2>
+<h3>Switch'en</h3>
 
 <figure id="">
 
@@ -636,11 +640,11 @@ C:\Users\ThomasJensen>
 <p>Fordelen er at datapakken kan forblive på link-laget.</p>
 
 
-<h3>Trådløse switche</h3>
+<h4>Trådløse switche</h4>
 
 <p>Når vi er på det trådløse netværk, så fungerer det trådløse accespoint (den enhed som giver adgang til det trådløse net)	som en switch med virtuelle porte - en for hvor enhed der er tilsluttet. Det trådløse net er langt mindre effektivt end et kablet net, men vores erfaring viser, at det i langt de fleste tilfælde er er effektivt nok.</p>
 
-<h2>En hjemme-"router"</h2>
+<h3>En hjemme-"router"</h3>
 
 <p>En hjemmerouter er reelt en router og en switch der er pakket ind i den samme kasse. Dvs. at der reelt er to netværksenheder i samme kasse. Det er en pakkeløsning til private, som er designet til få brugere. Se nedestående diagram</p>
 
@@ -654,7 +658,7 @@ C:\Users\ThomasJensen>
 
 
 
-<h2>Et forklaret eksempel</h2>
+<h3>Et forklaret eksempel</h3>
 
 <p>Herunder kan du se et eksempel på et mindre firmanetværk, som består af 6 klienter og en server i LAN</p>
 
@@ -674,7 +678,7 @@ C:\Users\ThomasJensen>
 	<li>Routeren fungerer altså både som bindeled og beskyttelse for LAN</li>
 </ul>
 
-<h2>Kabler</h2>
+<h3>Kabler</h3>
 
 <p>til almindelige netværk anvendes der ethernet, og det stik man anvender kaldes RJ45. Et ethernet kabel har 8 ledere, som parvist er snoet om hinanden, hvilket er årsagen til at man også kalder kablerne for <span class="bold">T</span>wisteds <span class="bold">P</span>air (<span class="inl_cmd">TP</span>). Det gør man for at forhindre elektromagnetisk støj. Efterhånden er den metode ikke effektiv nok, så man er begyndt yderligere at skærme kablerne for elektromagnetisk støj (se længere nede).</p>
 
@@ -747,7 +751,7 @@ C:\Users\ThomasJensen>
 </div>
 
 
-<h3>Skærmede kabler</h3>
+<h4>Skærmede kabler</h4>
 
 <p>Når man sender data igennem kabler så kan de blive udsat for elektromagnetisk støj. Det kan betyde at data-signalet bliver ødelagt. Det kan f.eks. være tilfældet hvis der ligger mange netværkskabler samlet. For at omgå dette problem skærmer man kablerne for den elektromagnetiske støj.</p>
 
@@ -758,7 +762,7 @@ C:\Users\ThomasJensen>
 	
 
 
-<h1>DNS</h1>
+<h2>DNS</h2>
 
 <p>DNS står for <span class="inl_cmd"><b>D</b>omain <b>N</b>ame</span> <b>S</b>ystem, og er en tjeneste som TCP/IP netværk bruger til at slå adresser op i. Ofte vil man kalde det en DNS-server, da der også findes servere der kun laver dette.</p>
 
@@ -766,7 +770,7 @@ C:\Users\ThomasJensen>
 
 <p>Ofte vil man i netværk anvende nogle af de store firmaers DNS-servere, f.eks. Google, som hedder <span class="inl_cmd">8.8.8.8</span> og <span class="inl_cmd">8.8.4.4</span>.</p>
 
-<h2>DNS opslag</h2>
+<h3>DNS opslag</h3>
 
 <p>Alle enheder på Internettet har som sagt en unik IP adresse. For at skabe forbindelse til en af disse forbindelser skal datapakkerne kende ruten. Her vil jeg gennemgå hvordan din router finder frem til websiden www.dr.dk.</p>
 
@@ -834,7 +838,7 @@ C:\Users\ThomasJensen>
 
 <p>Fordelen ved dette system er, at hvis man har en lokal DNS, så kan den efterhånden huske hvor de forskellige domæner er henne. På den måde behøver man ikke at gå helt ned til Root Level DNS hver gang.</p>
 
-<h2>Administration af domæner</h2>
+<h3>Administration af domæner</h3>
 
 <p>Top level domænener bliver bliver organiseret af en non-profit organistation der hedder <a href="https://www.icann.org/" target="_blank">ICANN</a> (<b>I</b>nternet <b>C</b>orporation for <b>A</b>ssigned <b>N</b>ames and <b>N</b>umbers).</p>
 
@@ -846,7 +850,7 @@ C:\Users\ThomasJensen>
 
 <p>Mere om topologier: <a href="https://en.wikipedia.org/wiki/Network_topology" target="_blank">https://en.wikipedia.org/wiki/Network_topology</a></p>
 
-<h1>TCP/IP uddybet</h1>
+<h2>TCP/IP uddybet</h2>
 
 
 <p>Netværk er en kompliceret størrelse, og selvom <span class="inl_cmd">TCP/IP</span>-modellen er den der anvendes på Internettet, så er der en anden model, som bliver anvendt meget. Bl.a. af Cisco, som er storleverandør af netværksudstyr. De anvender OSI modellen ( <b>O</b>pen <b>S</b>ystems <b>I</b>nterconnection ) som arbejder med 7 lag.</p>
@@ -923,7 +927,7 @@ C:\Users\ThomasJensen>
 
 
 
-<h2>Lagene</h2>
+<h3>Lagene</h3>
 
 <p>TCP/IP protokollen er opbygget af 4 lag, som beskriver hvordan netværket skal fungere:</p>
 
@@ -936,7 +940,7 @@ C:\Users\ThomasJensen>
 
 <p>Herunder er forklaret hvad TCP/IP protokollen laver, når den skal sende data ud på nettet:</p>
 
-<h3>Applikations-laget</h3>
+<h4>Applikations-laget</h4>
 
 	<p>På applikationslaget sørger protokollen for at pakke data ned i små pakker, så de kan håndteres af protokollen</p>
 	
@@ -948,7 +952,7 @@ C:\Users\ThomasJensen>
 
 	</figure>
 	
-<h3>Transport-laget</h3>
+<h4>Transport-laget</h4>
 
 	<p>På transport laget sørger netværksprotokollen for at data kan tjekkes for fejl og mangler (verificeres). Det gøres ved at hæfte en TCP-header på datapakken. Hvis data er blevet ødelagt under transporten vil TCP opdage det og sørge for at pakken bliver gensendt.</p>
 	
@@ -960,7 +964,7 @@ C:\Users\ThomasJensen>
 	
 	</figure>
 
-<h3>Internet-laget</h3>
+<h4>Internet-laget</h4>
 
 	<p>På Internetlaget bliver der koblet en modtageradresse på. </p>
 
@@ -972,7 +976,7 @@ C:\Users\ThomasJensen>
 	
 	</figure>
 
-<h3>Link-laget</h3>
+<h4>Link-laget</h4>
 
 	<p>På dette led sætter protokollen modtagerens MAC-adresse på TCP/IP pakken.</p>
 

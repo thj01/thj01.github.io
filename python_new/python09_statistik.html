@@ -25,28 +25,35 @@
 	
 <div class="col-xs-3">
 	
-	<div id="toc">
-	
-		<div id="toc_headline"></div>
-	
-	</div>
+	<nav>
+		
+		<div id="toc">
+		
+			<div id="toc_headline"></div>
+		
+		</div>
+		
+	</nav>
 
 </div><!-- Start slut 1. kolonne - TOC -->
 	
 <div class="col-xs-9">
-	<figure id="">
-
-		<img class="" src="images/python-logo-inkscape.svg" alt="" title="" />
-
-		<figcaption></figcaption>
-
-	</figure>	
 	
-	<div class="title">Statistik med Python</div>
+<div class="title">Matematik med Python</div>	
+
+<figure id="">
+
+	<img class="" src="images/python-logo-inkscape.svg" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>	
+
+<h1>Statistik med Python</h1>
 
 <p>Fordelen ved at anvende Python til matematik fremfor regneark er, at vi hele tiden kan se koden. I regnearket forsvinder koden, så snart man forlader feltet.</p>
 
-<h1>Nødvendige moduler</h1>
+<h2>Nødvendige moduler</h2>
 
 <p>for at kunne anvende statistik funktionerne skal vi importere to moduler: statistics og numpy.</p>
 
@@ -55,7 +62,7 @@
 import numpy as np	</code>
 </pre>
 
-<h1>Deskriptorer</h1>
+<h2>Deskriptorer</h2>
 
 <table class="_">
 	<thead>
@@ -106,7 +113,7 @@ except:
 <p>Koden gør, at den forsøger at køre det der står under <span class="inl_cmd">try</span>. Hvis den støder ind i en fejl, så vil den gøre det der står under <span class="inl_cmd">except</span>.</p>
 
 
-<h2>Eksempel</h2>
+<h3>Eksempel</h3>
 
 <p>Her anvender jeg en liste over karakterer i en klasse med 10 elever, som jeg kalder x.</p>
 
@@ -128,7 +135,7 @@ except:
 4	</code>
 </pre>
 
-<h2>Eksempel intet typetal</h2>
+<h3>Eksempel intet typetal</h3>
 
 <p>Herunder er lavet et eksempel med datasættet y, hvor både 4 og 7 har lige mange observationer.</p>
 
@@ -179,7 +186,7 @@ Datasæt: [2, 2, 4, 4, 4, 7, 7, 7, 10, 12]
 Der er ikke noget typtetal.</code>
 </pre>
 
-<h1>Kvartilsæt</h1>
+<h2>Kvartilsæt</h2>
 
 <p>For at finde kvartilsæt anvendes funktionen <span class="inl_cmd">np.percentile</span></p>
 
@@ -192,7 +199,7 @@ Der er ikke noget typtetal.</code>
 9.25	</code>
 </pre>
 
-<h1>Varians og spredning</h1>
+<h2>Varians og spredning</h2>
 
 <table class="_">
 	<thead>
@@ -220,7 +227,7 @@ Der er ikke noget typtetal.</code>
 3.552776691859794	</code>
 </pre>
 
-<h1>Percentiler</h1>
+<h2>Percentiler</h2>
 
 <pre>
 	<code class="python">import statistics as st
@@ -257,9 +264,9 @@ Værden for den 90. percentil er: 10.2
 Værden for den 100. percentil er: 12.0</code>
 </pre>
 
-<h1>Program eksempler</h1>
+<h2>Program eksempler</h2>
 
-<h2>Diskret data</h2>
+<h3>Diskret data</h3>
 
 <figure id="">
 
@@ -328,7 +335,7 @@ plt.show()		</code>
 
 
 
-<h2>Kontinuert data</h2>
+<h3>Kontinuert data</h3>
 
 <figure id="">
 

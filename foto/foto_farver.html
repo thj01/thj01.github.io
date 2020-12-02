@@ -25,17 +25,21 @@
 	
 <div class="col-xs-3">
 	
-	<div id="toc">
-	
-		<div id="toc_headline"></div>
-	
-	</div>
+	<nav>
+		
+		<div id="toc">
+		
+			<div id="toc_headline"></div>
+		
+		</div>
+		
+	</nav>
 
 </div><!-- Start slut 1. kolonne - TOC -->
 	
 <div class="col-xs-9">
 	
-<div class="title">Digitale farver</div>
+<h1>Digitale farver</h1>
 
 <p>Denne guide har fokus på at forklare hvordan digitale farver dannes og genereres digitalt. Jeg har gjort mit bedste for at forklare de tekniske begreber og modeller på en måde, så det skulle være til at forstå. Det betyder samtidig at tingene ikke bliver forklaret superskarpt og nøjagtigt, men det er et valg jeg har truffet for at alle kan være med. Der vil i flere tilfælde være henvisninger til andre hjemmesider, som jeg selv har anvendt i min proces med at forstå hvordan digital fotografering hænger sammen.</p>
 
@@ -56,7 +60,7 @@
 </ol>
 
 
-<h1>Farver</h1>
+<h2>Farver</h2>
 
 <p>Farver er noget vi alle har erfaring med, men også noget som vi har svært ved at definere. Er en farve f.eks. grønblå, blågrøn eller tyrkis? ... og hvad farve har en postkasse egentlig? Problemet er, at en genstands farve ikke defineres af materialet, men at det lys det udsender. Derfor vil postkasserød være forskellig på en solskinsdag og en dag hvor det er overskyet.</p>
 
@@ -89,7 +93,7 @@
 <p>Det som vi anvender modellen til i denne sammenhæng er at vise hvilke farver øjet kan se og skelne. Vi vil senere placere de farverum vi arbejder i. Det farverum vi kan anvendes kaldes for gamut.</p>
 
 
-<h1>Dannelse af farve</h1>
+<h2>Dannelse af farve</h2>
 
 <!--
 <p>Når vi taler om digitale farver taler vi om <span class="inl_cmd">additive</span> farver - altså farver der bliver lagt sammen.</p>
@@ -106,7 +110,7 @@
 -->
 
 
-<h2>Grundfarver</h2>
+<h3>Grundfarver</h3>
 
 <table class="centreret fixed">
 	<tbody>
@@ -136,7 +140,7 @@
 
 <p>Sort og hvid er også ret specielle, da "ægte" sort er defineret ved at der intet lys kastes tilbage. Hvid er defineret ved, at alle farver kastes tilbage. Det viser sig at der skal anvendes to forskellige tilgange til farveblanding. En til skærm og en til print. På en skærm bliver de enkelte punkter indstillet ved hjælp af lys (energi) og man kan lysne en farve ved blot at skrue op for lystyrken. Ved en udskrift på papir skal farvens transperans lysne billedet, ved at papirets farve slår igennem. Disse to principper beskrives som additiv og substraktiv farvedannelse</p>
 
-<h2>Det rigtige farvehjul</h2>
+<h3>Det rigtige farvehjul</h3>
 
 <p>I den ovenstående model mode har man sat grundfarverne overfor hinanden, og den model giver fin mening, når vi taler om en teoretisk forståelse. Problemet er bare, at det ikke svarer til den måde vi ser farverne på. Altså den måde fysiske farver (pigmenter) præsenterer sig.</p>
 
@@ -168,7 +172,7 @@
 <p></p>
 
 
-<h2>Additive farver</h2>
+<h3>Additive farver</h3>
 
 <p>Den additive farveblanding er den vi kender fra skærme. Her bliver farverne dannet ved at skærmen laver det korrekte mix mellem RGB farver. Se herunder. Lad os prøve at beskrive hvad der skaber den gule farve.</p>
 
@@ -194,7 +198,7 @@
 
 </figure>
 
-<h2>Substraktive farver</h2>
+<h3>Substraktive farver</h3>
 
 <p>Substraktive farver fungerer modsat additive farver. Her "blokerer" man for for de uønskede farver. Hvor de additive farver vil danne farver på et sort grundlag kræver substraktive farver et hvidt underlag. De farver man anvender her kaldes for CMY (<span class="bold">C</span>yan, <span class="bold">M</span>agenta og <span class="bold">Y</span>llow).</p>
 
@@ -226,7 +230,7 @@
 
 </figure>
 
-<h2>Digitale farver</h2>
+<h3>Digitale farver</h3>
 
 <p>Digitale farverdannelse anvender den substraktive farvemodel, dvs. <span class="inl_cmd">RGB</span> (<span class="bold">R</span>ed <span class="bold">G</span>reen <span class="bold">B</span>lue) farver. Hver af disse farver kan beskrives 256 niveauer og det gøres med <span class="inl_cmd">hexadecimale</span>tal, hvor hver position har værdien op til 16 (hexa).For at beskrive tallen anvendes værdierne 1, 2 ... 9, A, B, C, D, E, F.</p>
 
@@ -276,7 +280,7 @@
 
 <p><a href="http://www.colorsontheweb.com/colorwizard.asp" target="_blank">http://www.colorsontheweb.com/colorwizard.asp</a></p>
 
-<h2>Farveoutput</h2>
+<h3>Farveoutput</h3>
 
 <p>Har du forskellige enheder hos dig, f.eks. andre computere, bærbare, tablets og telefoner kan du prøve at kigge på hvordan farverne, farveovergangene og gråtonerne bliver vist. Herunder kan du se et eksempel fra min DELL 100% sRGB skærm (øverst) og en god standard Asus skærm (nederst). Billedet er taget med en Nexus 5 telefon, hvor skærmene er under samme lysforhold. De farvenuance bølger du kan se ved output fra Dell skærmen skyldes <a href="https://en.wikipedia.org/wiki/Moir%C3%A9_pattern" target="_blank">moire</a> effekten pga. Dellskærmens høje DPI-opløsning</p>
 
@@ -296,7 +300,7 @@
 
 <p>Hvis vi kun vælger at forholde os til farverne på de to skærme er det tydeligt at se at der er forskel på dem. De "ens" farver repræsenterer nøjagtigt de samme værdier, da de begge er beregnet af computeren ud fra hjemmesiden og vist på skærmen. Men det er tydeligt at se at farverne er mere klare og "levende" ved Dell skærmen. På samme måde risikerer man, at et billede der er perfekt hos en selv, kan være trist og kedeligt på en anden skærm. </p>
 
-<h2>Problemet med digitale farver</h2>
+<h3>Problemet med digitale farver</h3>
 
 <p>Problemet med digitale farver ligger ikke i billedfilens informationer eller den teknologi. Problemet ligger i de output-enheder vi anvender som f.eks. kan være, skærm, projektor eller print. </p>
 
@@ -304,7 +308,7 @@
 
 
 
-<h1>Farverum (gamut)</h1>
+<h2>Farverum (gamut)</h2>
 
 <p>Ovenfor nævnte jeg CIE-1931 diagrammet som viser de farver som det menneskelige øje kan opfange.</p>
 
@@ -356,7 +360,7 @@
 
 <p>Her vi vi ikke gå i dybden med teorien, men for at forklare trekanterne, så fremkommer de ved, at hjørnerne beskriver de reneste RGB (<b>R</b>ød <b>G</b>røn <b>B</b>lå). Det er også her at man kan se forklaringen på hvorfor man siger at <span class="inl_cmd">aRGB</span> og <span class="inl_cmd">ProPhoto</span> har større farverum end <span class="inl_cmd">sRGB</span>, selvom alle farverummene har samme antal farvenuancer nemlig 16777216 (256³).</p>
 
-<h2>Større farverum, samme antal farver</h2>
+<h3>Større farverum, samme antal farver</h3>
 
 <p>Som vi lærte ovenfor bliver farverne dannet ud fra en kombination af <span class="inl_cmd">RGB</span>, og hver af disse farver kan antage 256 forskellige værdier. For at forstå betydningen af dette vil vi her kigge på den grønne farve. Herunder forsøger CSS at vise alle nuancerne hvor kun den grønne farve er i spil. </p>
 
@@ -377,7 +381,7 @@
 
 <p>Problemet er, at det "rigtige" farverum ikke findes, for de har alle forskellige egenskaber, styrker og svagheder.  </p>
 
-<h2>Flere bits</h2>
+<h3>Flere bits</h3>
 
 <p>For at løse dette problem anvender man billeder der har en højere farveopløsning end 8 bit. Det er f.eks. ikke unormalt at kamera i mellemprisniveau kameraer kan optage RAW-filer i 12, 14 og 16 bit. mod de "normale" 8 bit. Det betyder at der bliver endnu flere niveauer at inddele farverne i farverummet: </p>
 
@@ -428,7 +432,7 @@
 <p>Ved at hæve billedet fra 8 til f.eks. 14 bit er der altså går man fra at arbejde med 256 farvenuancer til 16.538 nuancer, og så er farveopløsningen så god, at det menneskelige øje oplever der som glidende overgang. Prisen for de ekstra bits er, at filerne billedfilerne fylder mere, at programmerne skal være mere avancerede og at det kræver flere kræfter af computeren. Gevinsten er den forøgede mængde af nuancer.</p>
 
 <!--
-<h2>sRGB</h2>
+<h3>sRGB</h3>
 
 <figure class="skub_th">
 
@@ -446,7 +450,7 @@
 <p><b>Læs mere:</b> <a href="https://en.wikipedia.org/wiki/SRGB" target="_blank">https://en.wikipedia.org/wiki/SRGB</a></p>
 -->
 
-<h2>sRGB</h2>
+<h3>sRGB</h3>
 
 <div class="row">
 
@@ -475,7 +479,7 @@
 
 </div> <!-- End row -->
 
-<h2>DCI-P3</h2>
+<h3>DCI-P3</h3>
 
 <div class="row">
 
@@ -507,7 +511,7 @@
 
 
 
-<h2>aRGB </h2>
+<h3>aRGB </h3>
 
 <div class="row">
 
@@ -536,7 +540,7 @@
 
 </div> <!-- End row -->
 
-<h2>Prophoto RGB</h2>
+<h3>Prophoto RGB</h3>
 
 <div class="row">
 
@@ -565,7 +569,7 @@
 
 </div> <!-- End row -->
 
-<h2>CMYK</h2>
+<h3>CMYK</h3>
 
 <div class="row">
 
@@ -595,7 +599,7 @@ derivative work: <a href="//commons.wikimedia.org/wiki/User:Marluxia.Kyoshu" tit
 
 </div> <!-- End row -->
 
-<h1>Det bedste farverum</h1>
+<h2>Det bedste farverum</h2>
 
 <p>Efter at have sat dig ind i farverum kan det måske være lidt mærkeligt at lave et afsnit der hedder "Det bedste farverum". Men jeg synes det er vigtigt, fordi man bliver som fotograf/grafiker gøre sig den overvejelse. Farverummet kan bare ikke stå for sig selv, men outputs skal tænkes ind.</p>
 
@@ -660,7 +664,7 @@ derivative work: <a href="//commons.wikimedia.org/wiki/User:Marluxia.Kyoshu" tit
 	</tbody>
 </table>
 
-<h2>Anbefaling</h2>
+<h3>Anbefaling</h3>
 
 <p>Min anbefaling er betingen af tiden og den teknologi det skal anvendes på, og ud fra den betragtning at modtageren skal se det, du som afsender har ønsket. </p>
 
@@ -681,7 +685,7 @@ derivative work: <a href="//commons.wikimedia.org/wiki/User:Marluxia.Kyoshu" tit
 
 
 
-<h1>Gode henvisninger</h1>
+<h2>Gode henvisninger</h2>
 
 <p><a href="http://www.huevaluechroma.com/041.php" target="_blank">http://www.huevaluechroma.com/041.php</a></p>
 
