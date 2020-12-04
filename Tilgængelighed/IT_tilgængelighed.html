@@ -67,7 +67,88 @@
 	<li>Du vil ikke kunne se hvad der er links</li>
 </ul>
 
-<p>Dette er blot</p>
+<p>Hvis computeren skal kunne læse noget op for dig skal den vide, hvad det er teksten er. Koden inde bag ved skal fortælle om man læser en overskrift eller almindelige tekst. Den blinde skal også have mulighed for at hoppe over en tabel eller liste hvis indholdet er irrelevant. Informationen skal være præsenteret på en måde, så man som blind kan overskue den.</p>
+
+<p>Tilgængelighed handler ikke kun om blinde brugere. Tilgængelighed handler om at gøre information let tilgængelige for alle. Det skal være overskueligt og man skal kunne finde det man vil læse.</p>
+
+<h2>Hvordan virker tilgængelighed</h2>
+
+<p>Det handler om de opmærkninger der ligger inde under teksten. Indholdet bliver pakket ind i nogle <em>tags</em> som fortæller brugeren hvad indholdet er. Herunder kommer nogle eksempler:</p>
+
+<table class="_">
+	<thead>
+		<tr>
+			<th scope="col">Tag</th>
+			<th scope="col">Beskrivelse</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>h1</td>
+			<td>overskrift niveau 1</td>
+		</tr>
+		<tr>
+			<td>h2, h3, h4, h5</td>
+			<td>overskrift niveau 2, 3, 4, 5</td>
+		</tr>
+		<tr>
+			<td>p</td>
+			<td>paragraf/afsnit</td>
+		</tr>
+		<tr>
+			<td>a</td>
+			<td>link</td>
+		</tr>
+		<tr>
+			<td>ul / ol</td>
+			<td>lister (punktliste/ordensliste)</td>
+		</tr>
+		<tr>
+			<td>table</td>
+			<td>tabel</td>
+		</tr>
+		<tr>
+			<td>img</td>
+			<td>billede</td>
+		</tr>
+		<tr>
+			<td>nav</td>
+			<td>navigationsmenu</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Du kan få det fulde overblik, ved at gå til siden: <a href="https://www.w3schools.com/tags/default.asp" target="_blank">HTML Element Reference</a>.</p>
+
+<p>Der findes f.eks. tags for <button type="_">Knapper</button> og <kbd>Taster</kbd>. Når man bruger disse tags kan computeren læse siden korrekt for den blinde ... og vi kan som seende se de samme ting.</p>
+
+<h2>Hvordan sikrer man tilgængelighed</h2>
+
+<p>Man sikrer tilgængelighed ved at have fokus på to ting:</p>
+
+<ol class="">
+	<li>Ved at lave godt indhold (tekst, billeder, lister og billeder)</li>
+	<li>Ved at formatere det korrekt.</li>
+</ol>
+
+<h2>Det gode indhold</h2>
+
+<p>Det gode indhold kan beskrives med 5 punkter:</p>
+
+<ul class="disc">
+	<li>Skriv det vigtigste først</li>
+	<li>Brug beskrivende overskrifter</li>
+	<li>Brug korte sætninger og afsnit</li>
+	<li>Brug lister og tabeller hvis det giver mening</li>
+	<li>Brug billeder og illustrationer med omtanke</li>
+</ul>
+
+<h3>Skriv det vigtigste først</h3>
+
+<p>Folk læser ikke hjemmesider. De skimmer hjemmesider. De leder efter noget der kan fastholde deres interese. Og de kigger især i toppen af teksten.</p>
+
+
+<p>F-formet læsemønster: <a href="https://www.nngroup.com/articles/f-shaped-pattern-reading-web-content/" target="_blank">https://www.nngroup.com/articles/f-shaped-pattern-reading-web-content/</a></p>
 
 
 	
@@ -139,55 +220,60 @@
 <p>De kommandoer du skal have ind er:</p>
 
 <ul class="disc">
-			<li>Visning
-				<ul class="disc">
-					<li>Weblayout</li>
-					<li>Udskriftslayout</li>
-				</ul>
-			</li>
-			<li>Filer
-				<ul class="disc">
-					<li>Åbn</li>
-					<li>Gem</li>
-					<li>Gem som</li>
-					<li>Klip</li>
-					<li>Kopier</li>
-				</ul>
-			</li>
-			<li>Typografier
-				<ul class="disc">
-					<li>Teksttypografier</li>
-					<li>Kursiv</li>
-				</ul>
-			</li>
-			<li>Lister
-				<ul class="disc">
-					<li>Punktopstilling</li>
-					<li>Opstilling med tal eller bogstaver</li>
-					<li>Liste med flere niveauer</li>
-				</ul>
-			</li>
-			<li>Tabel
-				<ul class="disc">
-					<li>Tilføj tabel</li>
-				</ul>
-			</li>
-			<li>Links
-				<ul class="disc">
-					<li>Indsæt link</li>
-				</ul>
-			</li>
-			<li>Billeder
-				<ul class="disc">
-					<li>Indsæt billede</li>
-				</ul>
-			</li>
+	<li>Visning
+		<ul class="disc">
+			<li>Weblayout</li>
+			<li>Udskriftslayout</li>
+		</ul>
+	</li>
+	<li>Filer
+		<ul class="disc">
+			<li>Åbn</li>
+			<li>Gem</li>
+			<li>Gem som</li>
+			<li>Klip</li>
+			<li>Kopier</li>
+		</ul>
+	</li>
+	<li>Typografier
+		<ul class="disc">
+			<li>Teksttypografier</li>
+			<li>Kursiv</li>
+		</ul>
+	</li>
+	<li>Lister
+		<ul class="disc">
+			<li>Punktopstilling</li>
+			<li>Opstilling med tal eller bogstaver</li>
+			<li>Liste med flere niveauer</li>
+		</ul>
+	</li>
+	<li>Tabel
+		<ul class="disc">
+			<li>Tilføj tabel</li>
+		</ul>
+	</li>
+	<li>Links
+		<ul class="disc">
+			<li>Indsæt link</li>
+		</ul>
+	</li>
+	<li>Billeder
+		<ul class="disc">
+			<li>Indsæt billede</li>
+		</ul>
+	</li>
 </ul>
 
 
 
 
 
+<h2>Læs mere</h2>
+
+<p>Web accessibiliti Tutorials</p>
+
+<p><a href="https://www.w3.org/WAI/tutorials/" target="_blank">https://www.w3.org/WAI/tutorials/</a></p>
 
 	
 </div><!-- end: col-md-9 -->
