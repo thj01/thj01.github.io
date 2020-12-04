@@ -50,9 +50,9 @@
 <table class="">
 	<thead>
 		<tr>
-			<th>Betegnelse</th>
-			<th>Forklaring</th>
-			<th>Montering</th>
+			<th scope="col">Betegnelse</th>
+			<th scope="col">Forklaring</th>
+			<th scope="col">Montering</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -98,20 +98,20 @@
 <table class="">
 	<thead>
 		<tr>
-			<th>Fysiske placering</th>
-			<th>Enhed</th>
-			<th>Filplacering</th>
+			<th scope="col">Fysiske placering</th>
+			<th scope="col">Enhed</th>
+			<th scope="col">Filplacering</th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr>
 			<td>SATA 1</td>
-			<td>Harddisk 100GB</td>
+			<td>Harddisk 512GB</td>
 			<td><span class="inl_cmd">/dev/sda</span></td>
 		</tr>
 		<tr>
 			<td>SATA 2</td>
-			<td>Harddisk 100GB</td>
+			<td>Harddisk 4 TB</td>
 			<td><span class="inl_cmd">/dev/sdb</span></td>
 		</tr>
 		<tr>
@@ -132,47 +132,18 @@
 
 <p>Selve den fysiske harddisk skal gøres tilgængelig for et filsystem. Det gøres ved hjælp af partitioner (inddelinger), som formateres med et filsystem. Her findes der to typer: <span class="inl_cmd">primære</span>- og <span class="inl_cmd">logiske</span> partitioner. De logiske partitioner ligger på en <span class="inl_cmd">udvidet primær partition</span>.</p>
 
-<p>Af historiske grunde kan der maksimalt være 4 primære partitioner på en harddisk. Der er dog mulighed for at oprette op til 15 partitioner på hver harddisk med Ubuntu. Opretter man logiske diske, kan der dog være maksimalt 3 primære partitioner.</p>
+<p>Der kan være 4 primære partitioner på en harddisk. Du kan lave flere ved hjælp af <em>logiske partitioner</em>. Se listen herunder</p>
 
-<table class="">
-	<thead>
-		<tr>
-			<th>partition</th>
-			<th>type</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>sda1</td>
-			<td align="center" rowspan="4">Primær</td>
-		</tr>
-		<tr>
-			<td>sda2</td>
-		</tr>
-		<tr>
-			<td>sda3</td>
-		</tr>
-		<tr>
-			<td>sda4</td>
-		</tr>
-		<tr>
-			<td>sda5</td>
-			<td align="center" rowspan="5">Primær</td>
-		</tr>
-		<tr>
-			<td>sda6</td>
-		</tr>
-		<tr>
-			<td>...</td>
-		</tr>
-		<tr>
-			<td>sda14</td>
-		</tr>
-		<tr>
-			<td>sda15</td>
-		</tr>
-	</tbody>
-</table>
+<ol class="">
+	<li><em>dev/sda1</em> - den 1. primære partition</li>
+	<li><em>dev/sda2</em> - den 2. primære partition</li>
+	<li><em>dev/sda3</em> - den 3. primære partition</li>
+	<li><em>dev/sda4</em> - den 4. primære partition eller styrenhed for de logiske drev</li>
+	<li><em>dev/sda5</em> - den 1. logiske partition</li>
+	<li><em>dev/sda6</em> - den 2. logiske partition</li>
+	<li><em>dev/sda7</em> - den 3. logiske partition</li>
+	<li>...</li>
+</ol>
 
 <h3>Filsystemer</h3>
 

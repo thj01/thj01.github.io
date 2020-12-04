@@ -44,14 +44,14 @@
 <table class="">
 	<thead>
 		<tr>
-			<th>Rettighed</th>
-			<th>Forklaring</th>
+			<th scope="col">Rettighed</th>
+			<th scope="col">Forklaring</th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr>
 			<td>r - <b>R</b>ead (læse)</td>
-			<td>Man kan tse indholdet af filen.</td>
+			<td>Man kan se indholdet af filen.</td>
 		</tr>
 		<tr>
 			<td>w - <b>W</b>rite (skrive)</td>
@@ -110,45 +110,20 @@
 
 <h2>Aflæsning af rettigheder</h2>
 
-<table class="centreret">
-	<thead>
-		<tr>
-			<th>Filtype</th>
-			<th colspan="3">Bruger</th>
-			<th colspan="3">Gruppe</th>
-			<th colspan="3">Alle</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>type</td>
-			<td>read</td>
-			<td>write</td>
-			<td>execute</td>
-			<td>read</td>
-			<td>write</td>
-			<td>execute</td>
-			<td>read</td>
-			<td>write</td>
-			<td>execute</td>			
-		</tr>
-		<tr>
-			<td>-</td>
-			<td>r</td>
-			<td>w</td>
-			<td>-</td>
-			<td>r</td>
-			<td>-</td>
-			<td>-</td>
-			<td>r</td>
-			<td>-</td>
-			<td>-</td>			
-		</tr>
+<p>Rettighederne ovenfor var: <em>- r w - r - - r - -</em>. Der re altså 10 felter vi skal forholde os til.</p>
 
-	</tbody>
-</table>
+<p>Det første felt viser filtypen. En streg betyder at det er en standardfil</p>
 
-<p>Vi kan altså sige om denne fil at brugeren er <span class="inl_cmd">root</span>, som må læse og skrive i filen. Alle andre (gruppe og alle). De er nødvendigt for alle at kunne læse denne fil, da det er den der administrere adgangen til systemet. Kigger vi ind i filen kan vise hvad den har at sige om vores bruger, her <span class="inl_cmd">tj</span>. Da alle har ret til at læse i filen kan jeg kommandoen den som mig selv.</p>
+<p>De sidste tegn viser rettighederne i grupper af 3 for brugeren (2-4), gruppen (5-7) og alle (8-10). </p>
+
+<ul class="disc">
+	<li>Brugeren har rettigheden: <em>r w -</em> (læse, skrive)</li>
+	<li>Gruppen har rettigheden <em>r - -</em> (læse)</li>
+	<li>Alle har rettigheden <em>r - -</em> (læse)</li>
+</ul>
+
+
+<p>Vi kan altså sige om denne fil at brugeren er <span class="inl_cmd">root</span>, som må læse og skrive i filen. Alle andre (gruppe og alle). De er nødvendigt for alle at kunne læse denne fil, da det er den der administrere adgangen til systemet. Kigger vi ind i filen kan vise hvad den har at sige om vores bruger, her <span class="inl_cmd">tj</span>. Da alle har ret til at læse i filen kan jeg som almindelig bruger se den - men kun brugeren root ændre i den.</p>
 
 <pre class="ubuntu_terminal">
 <span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">/home</span>$ cat /etc/passwd | grep tj
@@ -253,136 +228,140 @@ http://manpages.ubuntu.com/manpages/trusty/man1/chown.1.html</a></p>
 -rwx---r-x  1 tj   tj       0 jun  3 17:02 <span class="red">testfil</span>
 </pre>
 
-<p>Som vi så ovenfor er de 10 første tegn et udtryk for filens rettigheder, og skal forstås efter nedestående skema (filtyper vil blive forklaret længere nede).</p>
+<p>Tallet <em>705</em> skal læses som <em>syv nul fem</em>, hvor det første tal sætter rettigheden for brugeren, det andet tal for gruppen og det sidste for alle. De enkelte tal kommer fra det binære talsystem. Se tabellen herunder.</p>
 
 <table class="centreret">
 	<thead>
 		<tr>
-			<th>Filtype</th>
-			<th colspan="3">Bruger</th>
-			<th colspan="3">Gruppe</th>
-			<th colspan="3">Alle</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr><td>-</td>
-			<td>r</td>
-			<td>w</td>
-			<td>x</td>
-			<td>r</td>
-			<td>w</td>
-			<td>x</td>
-			<td>r</td>
-			<td>w</td>
-			<td>x</td>			
-		</tr>
-		<tr>
-			<td></td>
-			<td>read</td>
-			<td>write</td>
-			<td>execute</td>
-			<td>read</td>
-			<td>write</td>
-			<td>execute</td>
-			<td>read</td>
-			<td>write</td>
-			<td>execute</td>			
-		</tr>
-	</tbody>
-</table>
-
-<p>Rettighederne kan sættes for hver kategori ved hjælp af talmellem <span class="inl_cmd">0</span> og <span class="inl_cmd">7</span> efter nedestående skema.</p>
-
-<table class="centreret">
-	<thead>
-		<tr>
-			<th>Talværdi</th>
-			<th>r <br/> 2² = 4</th>
-			<th>w <br/> 2¹ = 2</th>
-			<th>x <br/> 2⁰ = 1</th>
-			<th>Samlet</th>
-			<th>Rettigheder</th>
+			<th scope="col">Talværdi</th>
+			<th scope="col">bogstaver</th>
+			<th scope="col">Rettigheder</th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr>
-			<td>7</td>
-			<td>1</td>
-			<td>1</td>
-			<td>1</td>
-			<td>rwx</td>
-			<td>Alle (læse, skrive og udføre)</td>
-		</tr>
+			<td>0</td>
+			<td>---</td>
+			<td>Ingen</td>
+		</tr>	
 		<tr>
-			<td>6</td>
-			<td>1</td>
-			<td>1</td>
-			<td>0</td>
-			<td>-wx</td>
-			<td>Læse og skrive</td>
-		</tr>
-		<tr>
-			<td>5</td>
-			<td>1</td>
-			<td>0</td>
-			<td>1</td>
-			<td>r-x</td>
-			<td>Læse og udføre</td>
-		</tr>
-		<tr>
-			<td>4</td>
-			<td>1</td>
-			<td>0</td>
-			<td>0</td>
-			<td>r--</td>
-			<td>Læse</td>
-		</tr>
-		<tr>
-			<td>3</td>
-			<td>0</td>
-			<td>1</td>
-			<td>1</td>
-			<td>-wx</td>
-			<td>Skrive og udføre</td>
-		</tr>
-		<tr>
-			<td>2</td>
-			<td>0</td>
-			<td>1</td>
-			<td>0</td>
-			<td>-w-</td>
-			<td>Skrive</td>
-		</tr>
-		<tr>
-			<td>1</td>
-			<td>0</td>
-			<td>0</td>
 			<td>1</td>
 			<td>--x</td>
 			<td>udføre</td>
 		</tr>
 		<tr>
-			<td>0</td>
-			<td>0</td>
-			<td>0</td>
-			<td>0</td>
-			<td>---</td>
-			<td>Ingen</td>
-		</tr>		
+			<td>2</td>
+			<td>-w-</td>
+			<td>Skrive</td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>-wx</td>
+			<td>Skrive og udføre</td>
+		</tr>
+		<tr>
+			<td>4</td>
+			<td>r--</td>
+			<td>Læse</td>
+		</tr>
+		<tr>
+			<td>5</td>
+			<td>r-x</td>
+			<td>Læse og udføre</td>
+		</tr>
+		<tr>
+			<td>6</td>
+			<td>-wx</td>
+			<td>Læse og skrive</td>
+		</tr>
+		<tr>
+			<td>7</td>
+			<td>rwx</td>
+			<td>Alle (læse, skrive og udføre)</td>
+		</tr>
 	</tbody>
 </table>
 
+<details>
+
+	<summary>Se beregninger</summary>
+
+<table class="centreret">
+	<thead>
+		<tr>
+			<th scope="col">Talværdi</th>
+			<th scope="col">bogstaver</th>
+			<th scope="col">Beregning</th>
+			<th scope="col">Rettigheder</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>0</td>
+			<td>---</td>
+			<td><span class="math">\( 0 \cdot 2^2 + 0 \cdot 2^1 + 0 \cdot 2^0\)</span></td>
+			<td>Ingen</td>
+		</tr>	
+		<tr>
+			<td>1</td>
+			<td>--x</td>
+			<td><span class="math">\( 0 \cdot 2^2 + 0 \cdot 2^1 + 1 \cdot 2^0\)</span></td>
+			<td>udføre</td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>-w-</td>
+			<td><span class="math">\( 0 \cdot 2^2 + 1 \cdot 2^1 + 0 \cdot 2^0\)</span></td>			
+			<td>Skrive</td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>-wx</td>
+			<td><span class="math">\( 0 \cdot 2^2 + 1 \cdot 2^1 + 1 \cdot 2^0\)</span></td>			
+			<td>Skrive og udføre</td>
+		</tr>
+		<tr>
+			<td>4</td>
+			<td>r--</td>
+			<td><span class="math">\( 1 \cdot 2^2 + 0 \cdot 2^1 + 0 \cdot 2^0\)</span></td>			
+			<td>Læse</td>
+		</tr>
+		<tr>
+			<td>5</td>
+			<td>r-x</td>
+			<td><span class="math">\( 1 \cdot 2^2 + 0 \cdot 2^1 + 1 \cdot 2^0\)</span></td>			
+			<td>Læse og udføre</td>
+		</tr>
+		<tr>
+			<td>6</td>
+			<td>-wx</td>
+			<td><span class="math">\( 1 \cdot 2^2 + 1 \cdot 2^1 + 0 \cdot 2^0\)</span></td>			
+			<td>Læse og skrive</td>
+		</tr>
+		<tr>
+			<td>7</td>
+			<td>rwx</td>
+			<td><span class="math">\( 1 \cdot 2^2 + 1 \cdot 2^1 + 1 \cdot 2^0\)</span></td>			
+			<td>Alle (læse, skrive og udføre)</td>
+		</tr>
+
+	
+	</tbody>
+</table>
+	
+
+</details>
 
 <p>Eksempler</p>
 
 <table class="">
 	<thead>
 		<tr>
-			<th>Kommando</th>
-			<th>Rettigheder</th>
-			<th>Bruger</th>
-			<th>Gruppe</th>
-			<th>Alle</th>
+			<th scope="col">Kommando</th>
+			<th scope="col">Rettigheder</th>
+			<th scope="col">Bruger</th>
+			<th scope="col">Gruppe</th>
+			<th scope="col">Alle</th>
 
 		</tr>
 	</thead>

@@ -43,73 +43,6 @@
 	
 <p>Dette kapitel giver en grundlæggende gennemgang af filsystemet, superbrugeren og terminalen (kommandolinien) og kommandostrukturen i Linux.</p>
 
-<h2>Anvendt installation</h2>
-
-<p>For at eksemplificere guiden, er der blevet oprettet en virtuel installation med VirtualBox med følgende Indstillinger:</p>
-
-<table class="">
-	<thead>
-		<tr>
-			<th></th>
-			<th></th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>RAM</td>
-			<td>8 Gb</td>
-		</tr>
-		<tr>
-			<td>Grafik hukommelse</td>
-			<td>128 MB og 3D-acceleration </td>
-		</tr>
-		<tr>
-			<td>Harddiske</td>
-			<td>2 x 100GB (SATA)</td>
-		</tr>
-		<tr>
-			<td>Netværk</td>
-			<td>NAT</td>
-		</tr>
-	</tbody>
-</table>
-
-<p>Harddiskpartitionering</p>
-
-<table class="">
-	<thead>
-		<tr>
-			<th>Harddisk</th>
-			<th>Drev</th>
-			<th>Betegnelse</th>
-			<th>Størrelse</th>
-			<th>Anvendelse</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td rowspan="2">Harddisk 1 (100 GB)</td>
-			<td>/dev/sda1</td>
-			<td>/</td>
-			<td>50000Mb (92 Gb)</td>
-			<td>System</td>
-		</tr>
-		<tr>
-			<td>/dev/sda2</td>
-			<td>Ingen</td>
-			<td>4096MB (8 GB)</td>
-			<td>Swap</td>
-		</tr>
-		<tr>
-			<td>Harddisk 2 (100GB)</td>
-			<td colspan="4">Ikke konfigureret under installation</td>
-		</tr>
-	</tbody>
-</table>
-
-
-<h2>Hvad er en terminal</h2>
-
 <p>Terminalen er en tekstbaseret tilgang til Linux. Normalt ser vi en <abbr title="Graphical User Interface">GUI</abbr> (<b>G</b>raphical <b>U</b>ser <b>I</b>nterface) som styresystemet, men det er reelt blot en skal hvor vi kan arbejde med programmer grafisk. På et UNIX-system som Linux, der er GUI reelt set en brugerflade der kører på Linux, hvor systemer som  Mac og Windows ikke har den adskillese. Her er GUI'en reelt set styresystemet og kommandolinien noget der er bygget ovenpå.</p>
 
 <p>Terminalen kan gøre systemarbejde hurtigere og mere effektivt, fordi man ved scripts og præcise kommandoer kan udføre noget som kræver mange klik i en GUI.</p>
@@ -129,9 +62,9 @@
 <table id="">
 	<thead>
 		<tr>
-			<th>Terminaltype</th>
-			<th>Rigtige genvej</th>
-			<th>VirtualBox' genvej</th>
+			<th scope="col">Terminaltype</th>
+			<th scope="col">Rigtige genvej</th>
+			<th scope="col">VirtualBox' genvej</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -173,44 +106,24 @@
 
 <h2>Overblik</h2>
 
-<p>Når man er logget ind får aman følgende information fra kommandolinien</p>
+<p>Når man er logget ind får man følgende information fra kommandolinien</p>
 
 <ol class="">
 	<li>Hvem man er,</li>
-	<li>hvilken computer man sidder ved,</li>
-	<li>hvor man står i filsystemet og </li>
+	<li>Computerens navn,</li>
+	<li>hvor man er i filsystemet og </li>
 	<li>Hvilken type bruger man er</li>
 </ol>
 
-<code class="cmd">tj@tj-VirtualBox:~$ </code>
+<p>Linien <em>tj@tj-VirtualBox:~$</em> fortæller altså:</p>
 
-<table class="">
-	<thead>
-		<tr>
-			<th></th>
-			<th></th>
-			<th></th>
-			<th></th>
-			<th></th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>tj</td>
-			<td>@</td>
-			<td>tj-Virtualbox</td>
-			<td>~</td>
-			<td>$</td>
-		</tr>
-		<tr>
-			<td>brugernavn</td>
-			<td>på</td>
-			<td>PC-navn</td>
-			<td>Brugerens hjem</td>
-			<td>Almindelig bruger</td>
-		</tr>
-	</tbody>
-</table>
+<ol class="">
+	<li>Brugereb er <em>tj</em></li>
+	<li>Computerens navn er <em>tj-virtualBox</em></li>
+	<li>Man er i ens personlige mappe. Angives med <em>~</em></li>
+	<li>Man er en almindelig bruger. Angives med <em>$</em></li>
+	
+</ol>
 
 <p>$ bliver erstattet af # hvis man er superbruger (root):</p>
 
@@ -234,9 +147,9 @@ root@tj-VirtualBox:/home/tj#
 <table class="commands">
 	<thead>
 		<tr>
-			<th>Kommando</th>
-			<th>Option</th>
-			<th>Mål</th>
+			<th scope="col">Kommando</th>
+			<th scope="col">Option</th>
+			<th scope="col">Mål</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -331,8 +244,8 @@ Disk identifier: 0xf5fc72dc
 <table class="cmd_table">
 	<thead>
 		<tr>
-			<th></th>
-			<th></th>
+			<th scope="col"></th>
+			<th scope="col"></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -359,8 +272,8 @@ Disk identifier: 0xf5fc72dc
 <table class="cmd_table">
 	<thead>
 		<tr>
-			<th></th>
-			<th></th>
+			<th scope="col"></th>
+			<th scope="col"></th>
 		</tr>
 	</thead>
 	<tbody>
