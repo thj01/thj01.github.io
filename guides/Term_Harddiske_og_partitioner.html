@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="da">
 <head>
-  <title>Term 6</title>
+  <title>Harddiske</title>
   <link rel="icon" href="../images/favicon.png">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -39,55 +39,22 @@
 	
 <div class="col-xs-9">
 	
-<h1>Kommandoer: Harddiske og partitioner</h1>
+<h1>Terminalen: Harddiske og partitioner</h1>
 
 <h2>Grundbegreber</h2>
 
 <h3>Harddiske</h3>
 
-<p>I daglig tale er harddisken den lille metalkasse der indeholder en til flere skiver, hvorpå der kan gemmes data. I computerteknologisk sammenhæng kan det dog også være andet. En harddisk er en enhed der holder på data også selvom der ikke er strøm og derudover skal den indeholde en partitionstabel. Det betyder at følgende enheder vil blive opfattet som harddiske af Linux:</p>
+<p>Følgende enheder vil blive opfattet som harddiske af Linux:</p>
 
-<table class="">
-	<thead>
-		<tr>
-			<th scope="col">Betegnelse</th>
-			<th scope="col">Forklaring</th>
-			<th scope="col">Montering</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>HDD</td>
-			<td><span class="bold">H</span>ard <span class="bold">D</span>isk <span class="bold">D</span>rive</td>
-			<td>Internt</td>
-		</tr>
-		<tr>
-			<td>SSD</td>
-			<td><span class="bold">S</span>olid <span class="bold">S</span>tate <span class="bold">D</span>rive</td>
-			<td>Intern</td>
-		</tr>
-		<tr>
-			<td>HHD</td>
-			<td><span class="bold">H</span>ybrid <span class="bold">H</span>ard <span class="bold">D</span>rive</td>
-			<td>Intern</td>
-		</tr>
-		<tr>
-			<td>mSATA</td>
-			<td><span class="bold">m</span>ini <span class="bold">S</span>erial <span class="bold">AT</span> <span class="bold">A</span>ttachment</td>
-			<td>Intern</td>
-		</tr>
-		<tr>
-			<td>eSATA</td>
-			<td><span class="bold">e</span>xternal <span class="bold">S</span>erial <span class="bold">AT</span> <span class="bold">A</span>ttachment</td>
-			<td>Ekstern</td>
-		</tr>
-		<tr>
-			<td>USB</td>
-			<td><span class="bold">U</span>niversal <span class="bold">S</span>erial <span class="bold">B</span>us</td>
-			<td>Ekstern</td>
-		</tr>
-	</tbody>
-</table>
+<ul class="disc">
+	<li><strong>HDD</strong> - Hard Disk Drive (intern)</li>
+	<li><strong>SSD</strong> - Solid State Drive (intern)</li>
+	<li><strong>HHD</strong> - Hybrind Hard Drive (intern)</li>
+	<li><strong>mSATA</strong> - mini Serial AT Attachment (intern)</li>
+	<li><strong>eSATA</strong> - external Serial AT Attachment (ekstern)</li>
+	<li><strong>USB</strong> - Universal Serial Bus (Ekstern)</li>
+</ul>
 
 <p>Linux kan starte fra alle partitioner, da selve bootprocessen styres af en bootmanager. Derfor kan Linux startes op både fra CD/DVD skriver og USB-drev.</p>
 
@@ -122,15 +89,15 @@
 	</tbody>
 </table>
 
-<p>Betegnelsen <span class="inl_cmd">sd</span> står altså for, at det er en harddisk. Bogstaverne bagefter står for hvilken harddisk det er. Ubuntu opretter selv det antal filer/harddiske der er nødvendige, så det passer med antallet af harddiske.</p>
+<p>Betegnelsen <em>sd</em> står altså for, at det er en harddisk. Bogstaverne bagefter står for hvilken harddisk det er. Ubuntu opretter selv det antal filer/harddiske der er nødvendige, så det passer med antallet af harddiske.</p>
 
-<p>Når Linux starter op registrerer det alle fysisk tilsluttede enheder og giver dem en plads i filsystemet f.eks: <span class="inl_cmd">/dev/sda</span>. Ubuntu indlæser altså indholdet fra den første harddisk i filen <span class="inl_cmd">/dev/sda</span>. </p>
+<p>Når Linux starter op registrerer det alle fysisk tilsluttede enheder og giver dem en plads i filsystemet f.eks: <em>/dev/sda</em>. Ubuntu indlæser altså indholdet fra den første harddisk i filen <em>/dev/sda</em>. </p>
 
-<p>En CD/DVD/BD-læser bliver tilgængelig igennem filen <span class="inl_cmd">/dev/sr0</span>.</p>
+<p>En CD/DVD/BD-læser bliver tilgængelig igennem filen <em>/dev/sr0</em>.</p>
 
 <h3>Partitioner</h3>
 
-<p>Selve den fysiske harddisk skal gøres tilgængelig for et filsystem. Det gøres ved hjælp af partitioner (inddelinger), som formateres med et filsystem. Her findes der to typer: <span class="inl_cmd">primære</span>- og <span class="inl_cmd">logiske</span> partitioner. De logiske partitioner ligger på en <span class="inl_cmd">udvidet primær partition</span>.</p>
+<p>Selve den fysiske harddisk skal gøres tilgængelig for et filsystem. Det gøres ved hjælp af partitioner (inddelinger), som formateres med et filsystem. Her findes der to typer: <em>primære</em>- og <em>logiske</em> partitioner. De logiske partitioner ligger på en <em>udvidet primær partition</em>.</p>
 
 <p>Der kan være 4 primære partitioner på en harddisk. Du kan lave flere ved hjælp af <em>logiske partitioner</em>. Se listen herunder</p>
 
@@ -191,79 +158,37 @@
 
 <p><b>Læs mere: </b><a href="https://en.wikipedia.org/wiki/Btrfs" target="_blank">https://en.wikipedia.org/wiki/Btrfs</a></p>
 
-<p>Du kan se størrelserne herinder. Alle tre filsystemer understøtter</p>
+<h3>Størrelser</h3>
 
-<table>
-	<thead>
-		<tr >
-			<th colspan="2">Decimal</th>
-			<th colspan="2">Binær</th>
-		</tr>
-		<tr>
-			<td>Værdi</td>
-			<td>Betegnelse</td>
-			<td>Værdi</td>
-			<td>Betegnelse</td>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td><span class="math">\( 1000 \)</span></td>
-			<td>kB kilobyte</td>
-			<td><span class="math">\( 1024 \)</span></td>
-			<td>kB kibibyte</td>
-		</tr>
-		<tr>
-			<td><span class="math">\( 1000^2 \)</span></td>
-			<td>MB megabyte</td>
-			<td><span class="math">\( 1024^2 \)</span></td>
-			<td>Mib mebibyte</td>
-		</tr>
-		<tr>
-			<td><span class="math">\( 1000^3 \)</span></td>
-			<td>GB gigabyte</td>
-			<td><span class="math">\( 1024^3 \)</span></td>
-			<td>GiB gibibyte</td>
-		</tr>
-		<tr>
-			<td><span class="math">\( 1000^4 \)</span></td>
-			<td>TB terrabyte</td>
-			<td><span class="math">\( 1024^4 \)</span></td>
-			<td>TiB tebibyte</td>
-		</tr>
-		<tr>
-			<td><span class="math">\( 1000^5 \)</span></td>
-			<td>PB petabyte</td>
-			<td><span class="math">\( 1024^5 \)</span></td>
-			<td>PiB pebibyte</td>
-		</tr>
-		<tr>
-			<td><span class="math">\( 1000^6 \)</span></td>
-			<td>EB exabyte</td>
-			<td><span class="math">\( 1024^6 \)</span></td>
-			<td>EiB exbibyte</td>
-		</tr>
-		<tr>
-			<td><span class="math">\( 1000^7 \)</span></td>
-			<td>ZB zettabyte</td>
-			<td><span class="math">\( 1024^7 \)</span></td>
-			<td>TiB zebibyte</td>
-		</tr>
-		<tr>
-			<td><span class="math">\( 1000^8 \)</span></td>
-			<td>YB yottabyte</td>
-			<td><span class="math">\( 1024^8 \)</span></td>
-			<td>YiB Yobibyte</td>
-		</tr>
+<p><strong>Decimal</strong></p>
 
-	</tbody>
-</table>
+<ul class="disc">
+	<li>kilobyte (kB) - <span class="math">\( 1000  \)</span> byte</li>
+	<li>megabyte (MB) - <span class="math">\( 1000^2 \)</span> byte</li>
+	<li>gigabyte (GB) - <span class="math">\( 1000^3 \)</span> byte</li>
+	<li>terabyte (TB) - <span class="math">\( 1000^4 \)</span> byte</li>
+	<li>Petabyte (PB) - <span class="math">\( 1000^5 \)</span> byte</li>
+	<li>Exabyte (EB) - <span class="math">\( 1000^6 \)</span> byte</li>
+	<li>Zettabyte (ZB) - <span class="math">\( 1000^7 \)</span> byte</li>
+	<li>yottabyte (YB) - <span class="math">\( 1000^8 \)</span> byte</li>
+</ul>
 
+<p><strong>Binær - IEC definition</strong></p>
 
-<h2>Overblik</h2>
+<ul class="disc">
+	<li>kibibyte (kiB) - <span class="math">\( 1024  \)</span> byte</li>
+	<li>mebibyte (MiB) - <span class="math">\( 1024^2 \)</span> byte</li>
+	<li>gibibyte (GiB) - <span class="math">\( 1024^3 \)</span> byte</li>
+	<li>tebibyte (TiB) - <span class="math">\( 1024^4 \)</span> byte</li>
+	<li>Pebibyte (PiB) - <span class="math">\( 1024^5 \)</span> byte</li>
+	<li>Exbibyte (EiB) - <span class="math">\( 1024^6 \)</span> byte</li>
+	<li>Zebibyte (ZiB) - <span class="math">\( 1024^7 \)</span> byte</li>
+	<li>yobibyte (YiB) - <span class="math">\( 1024^8 \)</span> byte</li>
+</ul>
 
-<p>Vi kan se hvordan et systems harddiske er sat op ved hjælp af <span class="inl_cmd">lsblk</span>. Her er det en Ubuntu standard installation med automatisk harddiskopsætning.</p>
+<h2>lsblk</h2>
 
+<p><code class="bash">lsblk</code> bruges til at få overblik over systemets harddiske</p>
 
 <pre class="ubuntu_terminal">
 <span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ lsblk
@@ -275,7 +200,7 @@ sda      8:0    0  100G  0 disk
 └─sda1   8:1    0   92G  0 part /
 </pre>
 
-<p><span class="inl_cmd">lsblk</span> kan give langt flere informationer ved at angive nogle options. Kommandoen skal køres som superuser, da nogle af informationerne kræver <span class="inl_cmd">root</span>-rettigheder </p>
+<p><code class="bash">lsblk</code> kan give langt flere informationer ved at angive nogle options. Kommandoen skal køres som root, da nogle af informationerne kræver root-rettigheder </p>
 
 <code class="cmd">sudo lsblk -o name,type,fstype,size,ro,type,mountpoint</code>
 
@@ -290,7 +215,7 @@ sda    disk         100G  0 disk
 └─sda1 part ext4     92G  0 part /
 </pre>
 
-<p>Hvis vi kigger på harddisk <span class="inl_cmd">sda</span>, kan vi se at den er delt ind i 3 partitioner, der hver har sit monteringspunkt, hvorimod <span class="inl_cmd">sdb</span> hverken er partitioneret eller monteret.</p>
+<p>Vi kan se at <em>sda</em> er delt ind i 3 partitioner og hvad de er sat op som.</p>
 
 <h2>Find dine harddiske</h2>
 
@@ -303,11 +228,11 @@ sda    disk         100G  0 disk
 	<li>Monteres</li>
 </ol>
 
-<p><span class="inl_cmd">lsblk</span> viser hvad operativsystemet kan se. Hvis vi ønsker at kigge på selve harddisken skal vi anvende programmet <span class="inl_cmd">fdisk</span>. Dette program konfigurerer selve harddisken og hvordan den er inddelt. Af samme årsag skal <span class="inl_cmd">fdisk</span> altid køres som <span class="inl_cmd">root</span>. Vi kan heller ikke se med hvilket filsystem drevet er formateret, kun hvilken type det er forberedt til.</p>
+<p><code class="bash">lsblk</code> viser hvad operativsystemet kan se. Hvis vi ønsker at kigge på selve harddisken skal vi anvende programmet <em>fdisk</em>. Dette program konfigurerer selve harddisken og hvordan den er inddelt. Af samme årsag skal <em>fdisk</em> altid køres som <em>root</em>. Vi kan heller ikke se med hvilket filsystem drevet er formateret, kun hvilken type det er forberedt til.</p>
 
 <code class="cmd">sudo fdisk -l</code>
 
-<p>Jeg har i nedestående kode markeret hvor informationerne om henholdsvis <span class="inl_cmd">sda</span> og <span class="inl_cmd">sdb</span> starter. Læg mærke til at <span class="inl_cmd">fdisk</span> ikke har registreret DVD-drevet, da det ikke er et fast drev.</p>
+<p>Jeg har i nedestående kode markeret hvor informationerne om henholdsvis <em>sda</em> og <em>sdb</em> starter. Læg mærke til at <em>fdisk</em> ikke har registreret DVD-drevet, da det ikke er et fast drev.</p>
 
 <pre class="ubuntu_terminal">
 <span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ sudo fdisk -l
@@ -332,7 +257,7 @@ Disk identifier: 0xf5fc72dc
 /dev/sda5          192942080 209713151  16771072   8G 82 Linux swap / Solaris
 </pre>
 
-<p><span class="inl_cmd">sda</span> blliver gjort tilgængelig for Linux ved hjælp af filen <span class="inl_cmd">/etc/fstab</span>. Vi kan kigge på filen ved hjælp af <span class="inl_cmd">nano</span>. Gem kun ændringer hvis du er helt sikker på hvad du gør, da Linux måske ikke kan montere harddiskene ved genstart.</p>
+<p><em>sda</em> blliver gjort tilgængelig for Linux ved hjælp af filen <em>/etc/fstab</em>. Vi kan kigge på filen ved hjælp af <em>nano</em>. Gem kun ændringer hvis du er helt sikker på hvad du gør, da Linux måske ikke kan montere harddiskene ved genstart.</p>
 
 <pre class="black">
 # /etc/fstab: static file system information.
@@ -350,9 +275,11 @@ UUID=9b832ca1-217e-4308-bdf3-225b789946c9 none            swap    sw            
 
 <h2>Partitionering af harddisken</h2>
 
-<p>Harddiske partitioneres af programmet <span class="inl_cmd">fdisk</span>, så længe de er under 2 TB. Er det over 2 TB anvendes programmet gdisk, som ikke bliver gennemgået her. Start partitioneringsprogrammet op med med:</p>
+<p>Harddiske partitioneres af programmet <em>fdisk</em>, så længe de er under 2 TB. Er det over 2 TB anvendes programmet gdisk, som ikke bliver gennemgået her. Start partitioneringsprogrammet op med med:</p>
 
-<p><span class="bold">VIGTIGT</span>: Hvis du på noget tidspunkt bliver i tvivl om at du har gjort noget forkert, så kan du hoppe ud af programmet ved at bruge <kbd>q</kbd> eller <kbd>Ctrl</kbd>+<kbd>c</kbd>! Programmet skriver først til disken når du vælger det.</p>
+<div class="alert">
+	<p>Hvis du på noget tidspunkt bliver i tvivl om at du har gjort noget forkert, så kan du hoppe ud af programmet ved at bruge <kbd>q</kbd> eller <kbd>Ctrl</kbd>+<kbd>c</kbd>! Programmet skriver først til disken når du vælger det.</p>
+</div>
 
 <code class="cmd">sudo fdisk /dev/sdb</code>
 
@@ -369,7 +296,7 @@ Advarsel: Ugyldigt flag 0x0000 for partitionstabel 4 vil blive rettet med »w« 
 Kommando (m for hjælp): 
 </pre>
 
-<p>Det første <span class="inl_cmd">fdisk</span> gør, er at gøre opmærksom på at disken ikke har nogen partitionstabel. Det er det første der skal oprettes. Tast <kbd>m</kbd> og så <kbd>Enter</kbd>:</p>
+<p>Det første <em>fdisk</em> gør, er at gøre opmærksom på at disken ikke har nogen partitionstabel. Det er det første der skal oprettes. Tast <kbd>m</kbd> og så <kbd>Enter</kbd>:</p>
 
 <pre class="black">
 Kommando (m for hjælp): <kbd>m</kbd>+<kbd>Enter</kbd>
@@ -453,7 +380,7 @@ Diskidentifikation: 0xa6162a16
 Kommando (m for hjælp): 
 </pre>
 
-<p>Vær opmærksom på <span class="inl_cmd">Id</span> og <span class="inl_cmd">System</span>. Det angiver hvilke typer af filsystemer partitionen kan formateres til. Her er det korrekt at det skal være <span class="inl_cmd">83</span> og <span class="inl_cmd">Linux</span>.</p>
+<p>Vær opmærksom på <em>Id</em> og <em>System</em>. Det angiver hvilke typer af filsystemer partitionen kan formateres til. Her er det korrekt at det skal være <em>83</em> og <em>Linux</em>.</p>
 
 <p>Skriv ændringerne til disken. Tast <kbd>w</kbd></p>
 
@@ -466,7 +393,7 @@ Synkroniserer diske.
 <span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ 
 </pre>
 
-<p>Før vi går videre tjekker vi om disken er partitioneret korrekt med: <span class="inl_cmd">fdisk -l /dev/sdb</span></p>
+<p>Før vi går videre tjekker vi om disken er partitioneret korrekt med: <code class="bash">fdisk -l /dev/sdb</code></p>
 
 <pre class="ubuntu_terminal">
 <span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ sudo fdisk -l /dev/sdb
@@ -484,7 +411,7 @@ Diskidentifikation: 0xa6162a16
 
 <h2>Formater harddisken</h2>
 
-<p>Harddisken skal fomateres til <span class="inl_cmd">ext4</span>. Det gøres med kommandoen:</p>
+<p>Harddisken skal fomateres til <em>ext4</em>. Det gøres med kommandoen:</p>
 
 <code class="cmd">sudo mkfs -t ext4 /dev/sdb1</code>
 
@@ -515,7 +442,7 @@ Writing superblocks and filesystem accounting information: done
 <span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$
 </pre>
 
-<p>Vi tjekker om harddisken er formateret korrekt med <span class="inl_cmd">lsblk</span> (min markering).</p>
+<p>Vi tjekker om harddisken er formateret korrekt med <code class="bash">lsblk</code> (min markering).</p>
 
 <pre class="ubuntu_terminal">
 <span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ sudo lsblk -o name,type,fstype,size,ro,type,mountpoint
@@ -540,7 +467,7 @@ sr0    rom          1024M  0 rom
 	<li>Konfigureres (Rettigheder)</li>
 </ol>
 
-<p>Her vil vi montere drevet i mappen <span class="inl_cmd">/backup</span>. Opret mappen:</p>
+<p>Her vil vi montere drevet i mappen <em>/backup</em>. Opret mappen:</p>
 
 <code class="cmd">sudo mkdir /backup</code>
 
@@ -553,7 +480,7 @@ sr0    rom          1024M  0 rom
 /dev/sdb1: UUID="6731e565-b3d7-4d81-86c7-74b6e3e1d591" TYPE="ext4" 
 </pre>
 
-<p>Det lange UUID nummer (6731e565-b3d7-4d81-86c7-74b6e3e1d591) er et tilfældigt nummer som Ubuntu har skabt og består af en 128bits kode. Det er en sikkerhedsfaktor der gør, at man ikke bare kan skifte en disk ud, uden at Ubuntu opdager det. Du skal selvfølgelig anvende den UUID dit system angiver. Åben filen <span class="inl_cmd">/etc/fstab</span> med nano og indsæt det med rødt (med din UUID):</p>
+<p>Det lange UUID nummer (6731e565-b3d7-4d81-86c7-74b6e3e1d591) er et tilfældigt nummer som Ubuntu har skabt og består af en 128bits kode. Det er en sikkerhedsfaktor der gør, at man ikke bare kan skifte en disk ud, uden at Ubuntu opdager det. Du skal selvfølgelig anvende den UUID dit system angiver. Åben filen <em>/etc/fstab</em> med nano og indsæt det med rødt (med din UUID):</p>
 
 <code class="cmd">sudo nano /etc/fstab</code>
 
@@ -564,7 +491,7 @@ sr0    rom          1024M  0 rom
 # device; this may be used with UUID= as a more robust way to name devices
 # that works even if disks are added and removed. See fstab(5).
 #
-# <file system> <mount point>   <type>  <options>       <dump>  <pass>
+# &lt;file system> &lt;mount point>   &lt;type>  &lt;options>       &lt;dump>  &lt;pass>
 # / was on /dev/sda1 during installation
 UUID=c2c76ea3-8bee-4930-be2c-20d11a7358c1 /               ext4    errors=remount-ro 0       1
 # /data was on /dev/sda3 during installation
@@ -576,11 +503,11 @@ UUID=1c538622-36c6-4fcb-a127-636a82ad84e3 none            swap    sw            
 UUID=6731e565-b3d7-4d81-86c7-74b6e3e1d591 /backup ext4 defaults 0 2</span>
 </pre>
 
-<p>Når computeren starter bliver alle diske der er konfigureret i <span class="inl_cmd">/etc/fstab</span> monteret. For at få adgang til drevet med det samme køres kommandoen:</p>
+<p>Når computeren starter bliver alle diske der er konfigureret i <em>/etc/fstab</em> monteret. For at få adgang til drevet med det samme køres kommandoen:</p>
 
 <code class="cmd">sudo mount -a</code>
 
-<p>Tjek at drevet er monteret med <span class="inl_cmd">lsblk</span>.</p>
+<p>Tjek at drevet er monteret med <code class="bash">lsblk</code>.</p>
 
 <pre class="ubuntu_terminal">
 <span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ lsblk
@@ -607,7 +534,7 @@ sr0     11:0    1  1024M  0 rom
 
 <h2>Midlertidig montering</h2>
 
-<p>Som vi har gennemgået ovenfor, så er der to mapper i filstrukturen til at montere ikke faste drev i. Det er henholdsvis <span class="inl_cmd">/mnt</span> og <span class="inl_cmd">/media</span>. Vi vil i denne sammenhæng vælge <span class="inl_cmd">/media</span> da det handler om en harddisk.</p>
+<p>Som vi har gennemgået ovenfor, så er der to mapper i filstrukturen til at montere ikke faste drev i. Det er henholdsvis <em>/mnt</em> og <em>/media</em>. Vi vil i denne sammenhæng vælge <em>/media</em> da det handler om en harddisk.</p>
 
 <p>Vi vil herunder gennemgå en midlertidig montering, som hvis det havde været et eSATA/USB-drev, og en fast montering i filstrukturen.</p>
 
@@ -621,7 +548,7 @@ sr0     11:0    1  1024M  0 rom
 	<li>Konfigureres (Rettigheder)</li>
 </ol>
 
-<p>Opret mappe til at montere drevet i. Her vælger vi <span class="inl_cmd">/media/backup</span>.</p>
+<p>Opret mappe til at montere drevet i. Her vælger vi <em>/media/backup</em>.</p>
 
 <code class="cmd">sudo mkdir /media/backup</code>
 
@@ -629,7 +556,7 @@ sr0     11:0    1  1024M  0 rom
 
 <code class="cmd">sudo mount /dev/sdb1 /media/backup</code>
 
-<p>Kontroller at harddisken er monteret med <span class="inl_cmd">lsblk</span>.</p>
+<p>Kontroller at harddisken er monteret med <code class="bash">lsblk</code>.</p>
 
 <pre class="ubuntu_terminal">
 <span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ lsblk
@@ -663,48 +590,58 @@ drwxr-xr-x   3 root root 4096 mar 16 15:00 <span class="red">backup</span>
 drwx------   3 tj tj 4096 mar 16 15:00 <span class="red">backup</span>
 </pre>
 
-<p>Afmonter herefter drevet igen, for at vi kan montere det fast ved hjælp af <span class="inl_cmd">/etc/fstab</span>.</p>
+<p>Afmonter herefter drevet igen, for at vi kan montere det fast ved hjælp af <em>/etc/fstab</em>.</p>
 
 <code class="cmd">umount /dev/sdb1</code>
 
 <h2>USB-boot disk</h2>
 
-<p>Ofte har man brug for at lave en nøjagtig kopi af en partition, f.eks. når man skal brænde en ISO fil over på en USB disk. Dette gøres med programmet <span class="inl_cmd">dd</span>. Der findes også GUI programmer til det, men min erfaring er, at de nogle gange roder med partitionstabellen, så USB disken reelt bliver ubrugelig. <span class="inl_cmd">dd</span> virker altid!</p> 
+<p>Ofte har man brug for at lave en nøjagtig kopi af en partition, f.eks. når man skal brænde en ISO fil over på en USB disk. Dette gøres med programmet <code class="bash">dd</code>. Der findes også GUI programmer til det, men min erfaring er, at de nogle gange roder med partitionstabellen, så USB disken reelt bliver ubrugelig. <code class="bash">dd</code> virker altid!</p> 
 
 <code class="cmd">dd if=*input fil* of=*destinations fil* *Optioner*</code>
 <code class="more_cmd">sync</code>
 
-<p><span class="bold">VIGTIGT</span>: Det er vigtigt at køre sync efter man har kopieret data, da man risikerer at ikke al data er skrevet. Det skyldes at mange filskrivningsoperationerer cached, så operativsystemet kan vente med at skrive til det har tid.</p>
+<div class="alert">
+
+	<p>	Det er vigtigt at køre sync efter man har kopieret data, da man risikerer at ikke al data er skrevet. Det skyldes at mange filskrivningsoperationerer cached, så operativsystemet kan vente med at skrive til det har tid.</p>
+
+</div>
 
 <p>Herunder er vist hele proceduren med at oprette en USB bootdisk fra en ISO. Vær opmærksom på at USB disken først have sin partitionstabel renset, hvis den har været anvendt til at brænde ISO filer før. Dette skyldes at den skrivbare del er "begrænset" til ISO-filens størrelse.</p>
 
 <ol class="">
-	<li>Kør <span class="inl_cmd">isohybrid</span> på isofilen</li>
+	<li>Kør <code class="bash">isohybrid</code> på isofilen: <br/><br/>
 	
-		<code class="cmd">isohybrid *isofil*</code>
+	<code class="cmd">isohybrid *isofil*</code><br/>
+	
+	</li>
+	
+	<li>Sæt USB-nøglen i, og vent til systemet har initialiseret den (ca. 5 sekunder)<br/><br/></li>
+	
+	<li>Afmonter USB nøglen: <code class="bash">umount *sti_til_USB*</code><br/><br/>
+	
+	<code class="cmd">sudo dd if=*sti_til_filen* of=*sti_til_USB*</code><br/><br/>
+	
+	</li>
 		
-	<li>Sæt USB-nøglen i, og vent til systemet har initialiseret den (ca. 5 sekunder)</li>
+	<li>Fjern eksisterende partitioner med <em>fdisk</em> og opret en ny. Lad den nye partition fylde hele USB-disken.<br/><br/></li>
 	
-	<li>Afmonter USB nøglen</li>
+	<li>kør <code class="bash">dd</code><br/><br/>
 	
-		<code class="cmd">umount *sti_til_USB*</code>
+		<code class="cmd">sudo dd if=*sti_til_filen* of=*sti_til_USB*</code> <br/><br/>
 		
-	<li>Fjern eksisterende partitioner med <span class="inl_cmd">fdisk</span> og opret en ny. Lad den nye partition fylde hele USB-disken.</li>
-	
-	<li>kør dd </li>
-	
-		<code class="cmd">sudo dd if=*sti_til_filen* of=*sti_til_USB*</code>
+		</li>
 		
-	<li>Vent til Terminalen </li>
+	<li>Vent til Terminalen <br/><br/></li>
 		
-	<li>&nbsp;&nbsp;&nbsp;<span class="red">VIGTIGT</span> &nbsp;&nbsp;&nbsp;Kør <span class="inl_cmd">sync</span>, for at sikr dig at alle data er skrevet til USB disken </li>
+	<li><strong>VIGTIGT: </strong>Kør <code class="bash">sync</code>, for at sikr dig at alle data er skrevet til USB disken </li>
 </ol>
 
-<p>På systemet vi her går ud fra er der i forvejen to harddiske, hvilket betyder at en USB-disk vil blive registreret som den efterfølgende, altså <span class="inl_cmd">/dev/sdc</span>.</p>
+<p>På systemet vi her går ud fra er der i forvejen to harddiske, hvilket betyder at en USB-disk vil blive registreret som den efterfølgende, altså <em>/dev/sdc</em>.</p>
 
-<p>I eksemplet herunder oprettes en USB-bootdisk med systemrescueCD. En distribution jeg varmt kan anbefale til systemarbejde. ISO filen er blevet hentet på nettet (<a href="https://www.system-rescue-cd.org/Download" target="_blank">https://www.system-rescue-cd.org/Download</a>) og placeret her <span class="inl_cmd">/data/systemrescuecd-x86-4.7.1.iso</span>.</p>
+<p>I eksemplet herunder oprettes en USB-bootdisk med systemrescueCD. En distribution jeg varmt kan anbefale til systemarbejde. ISO filen er blevet hentet på nettet (<a href="https://www.system-rescue-cd.org/Download" target="_blank">https://www.system-rescue-cd.org/Download</a>) og placeret her <em>/data/systemrescuecd-x86-4.7.1.iso</em>.</p>
 
-<p>Find ISO-filens placering og navn.</p>
+<p>Find ISO-filens placering og navn med: <code class="bash">ls -al /data | grep *.iso</code>.</p>
 
 <pre class="ubuntu_terminal">
 <span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ ls -al /data | grep *.iso
@@ -724,7 +661,7 @@ drwx------   3 tj tj 4096 mar 16 15:00 <span class="red">backup</span>
 └─<span class="red">sdc</span>1   8:17   1   3,8G  0 part
 </pre>
 
-<p>Kopier ISO filen over på USB-nøglen (Det tager et par minutter alt efter størrelsen på isofilen) og kør <span class="inl_cmd">sync</span></p>
+<p>Kopier ISO filen over på USB-nøglen (Det tager et par minutter alt efter størrelsen på isofilen) og kør <em>sync</em></p>
 
 <pre class="ubuntu_terminal">
 <span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ sudo dd if=/data/systemrescuecd-x86-4.7.1.iso of=/dev/sdb
@@ -743,7 +680,7 @@ drwx------   3 tj tj 4096 mar 16 15:00 <span class="red">backup</span>
 
 <p>Læs også: <a href="https://wiki.archlinux.org/index.php/disk_cloning" target="_blank">https://wiki.archlinux.org/index.php/disk_cloning</a></p>
 
-<p>man-page <span class="inl_cmd">dd</span>: 
+<p>man-page dd: 
 	<a href="http://manpages.ubuntu.com/manpages/trusty/man1/dd.1.html" target="_blank">
 	http://manpages.ubuntu.com/manpages/trusty/man1/dd.1.html</a></p>
 

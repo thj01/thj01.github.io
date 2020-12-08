@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="da">
 <head>
-  <title>Term 1</title>
+  <title>Terminalen</title>
   <link rel="icon" href="../images/favicon.png">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -39,7 +39,7 @@
 	
 <div class="col-xs-9">
 	
-<h1>Kommandoer: Terminalen - Linux' kraftværk</h1>
+<h1>Terminalen - Linux' kraftværk</h1>
 	
 <p>Dette kapitel giver en grundlæggende gennemgang af filsystemet, superbrugeren og terminalen (kommandolinien) og kommandostrukturen i Linux.</p>
 
@@ -53,37 +53,29 @@
 
 <h3>TTY</h3>
 
-<p>Når Ubuntu er startet op kører der 7 terminalsessions, som man kan logge ind på. Som standard starer man op i den 7 terminal som kører Ubuntu GUI.</p>
+<p>Når Ubuntu er startet op kører der 7 terminalsessions, som man kan logge ind på. Som standard starer man op i session 7 som er den grafiske brugerflade (GUI).</p>
 
-<p>Der kan altså mere end en bruger logget på systemet ad gangen. Men kun en af dem har adgang til en GUI. Man kan logge af en TTY, men lukker man for den, så lukker hele computeren. Fordelen ved dette er, at selvom en TTY låser pga et dårligt program, så kan man fixe problemet i en af de andre ... eller ultimativt genstarte maskinen.</p>
+<p>På den måde kan du logge på din maskine selvom f.eks. GUI'en går ned. Det kan f.eks. være hvis man tester en ny grafikdriver, og den låser systemet.</p>
 
-<p>Disser terminaler kan tilgåes ved hjælp af tastekombinationen <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>F1</kbd> → <kbd>F7</kbd>, hvor F'taller angiver den konkrete terminal.Så længe du befinder dig i VirtualBox skal du anvende dennes interne tastekombination angivet i nedestående skema skema.</p>
+<p>Du skifter TTY ved hjælp af tastekombinationen: <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>F1</kbd> til <kbd>F7</kbd>.</p>
 
-<table id="">
-	<thead>
-		<tr>
-			<th scope="col">Terminaltype</th>
-			<th scope="col">Rigtige genvej</th>
-			<th scope="col">VirtualBox' genvej</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>Tekst</td>
-			<td>
-				<kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>F1</kbd> &rarr;<kbd>F6</kbd>
-			</td>
-			<td>
-				<kbd>højreCtrl</kbd>+<kbd>F1</kbd> &rarr;<kbd>F6</kbd>
-			</td>
-		</tr>
-		<tr>
-			<td>GUI</td>
-			<td><kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>F7</kbd></td>
-			<td><kbd>højreCtrl</kbd>+<kbd>F7</kbd></td>
-		</tr>
-	</tbody>
-</table>
+<p>Oversigt over TTY'er</p>
+
+<ul class="disc">
+	<li>TTY1 - Login til ekstra brugeres GUI'er</li>
+	<li>TTY2 - Den primære grafiske GUI</li>
+	<li>TTY3 - Den 1. terminal session</li>
+	<li>TTY4 - Den 2. terminal session</li>
+	<li>TTY5 - Den 3. terminal session</li>
+	<li>TTY6 - Den 4. terminal session</li>
+	<li>TTY7 - Den 2. GUI bruger</li>
+	<li>TTY8 - Den 3. GUI bruger</li>
+</ul>
+
+<p>Jeg har ikke testet med mere end 2 ekstra brugere, og har ikke kunne finde dokumentation for dette. </p>
+
+<p>Kører du med VirtualBox skal du anvende højre <kbd>Ctrl</kbd>.</p>
+
 
 <h3>Terminalsession</h3>
 
@@ -125,14 +117,12 @@
 	
 </ol>
 
-<p>$ bliver erstattet af # hvis man er superbruger (root):</p>
+<p><em>$</em> bliver erstattet af <em>#</em> hvis man er superbruger (root):</p>
 
 <pre class="ubuntu_terminal">
 <span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ sudo su
 [sudo] password for tj: 
 root@tj-VirtualBox:/home/tj# 
-
-
 
 </pre>
 
@@ -144,27 +134,7 @@ root@tj-VirtualBox:/home/tj#
 
 <code class="cmd">ping -c 4 www.dr.dk</code>
 
-<table class="commands">
-	<thead>
-		<tr>
-			<th scope="col">Kommando</th>
-			<th scope="col">Option</th>
-			<th scope="col">Mål</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>ping</td>
-			<td>-c 4</td>
-			<td>www.dr.dk</td>
-		</tr>
-		<tr>
-			<td>programmet</td>
-			<td>Optionen (i dette tilfælde 4 gange)</td>
-			<td>Målet kommandoen skal arbejde med</td>
-		</tr>
-	</tbody>
-</table>
+<p><code class="bash">ping</code> er kommandoen, <code class="bash">-c 4</code> er optionen, og <code class="bash">www.dr.dk</code> er målet.</p>
 
 
 <pre class="ubuntu_terminal">
@@ -205,7 +175,7 @@ sys	0m0.000s
 
 <h2>Superbrugeren</h2>
 
-<p>Alle Linux har en superbruger (<span class="inl_cmd">root</span>), som har rettigheder til at gøre alt på maskinen. Denne bruger anvender man til at lave systemarbejde med f.eks. at konfigurere programmer og installere programmer. På Ubuntu er <span class="inl_cmd">root</span>-kontoen ikke aktiveret, men man kan "opgradere" sin bruger til at have administratorrettigheder ved hjælp af kommandoen <span class="inl_cmd">sudo</span> (<span class="bold">su</span>peruser <span class="bold">do</span>). <span class="inl_cmd">sudo</span> kommandoen undersøger om man er medlem af sudo-gruppen og giver igennem denne gruppe adgang til at man kan udføre administrationsarbejde.</p>
+<p>Alle Linux har en superbruger (<em>root</em>), som har rettigheder til at gøre alt på maskinen. Denne bruger anvender man til at lave systemarbejde med f.eks. at konfigurere programmer og installere programmer. På Ubuntu er <em>root</em>-kontoen ikke aktiveret, men man kan "opgradere" sin bruger til at have administratorrettigheder ved hjælp af kommandoen <code class="bash">sudo</code>. <code class="bash">sudo</code> kommandoen undersøger om man er medlem af sudo-gruppen og giver igennem denne gruppe adgang til at man kan udføre administrationsarbejde.</p>
 
 <p>Superbrugren har følgende rettigheder/opogaver</p>
 
@@ -218,7 +188,7 @@ sys	0m0.000s
 </ul>
 
 
-<p>Se eksemplet herunder hvor jeg vil have informationer om den første harddisk (<span class="inl_cmd">/dev/sda</span>) ved hjælp af fdisk kommandoen <span class="inl_cmd">fdisk -d /dev/sda</span>:</p>
+<p>Se eksemplet herunder hvor jeg vil have informationer om den første harddisk (<code class="bash">/dev/sda</code>) ved hjælp af fdisk kommandoen <code class="bash">fdisk -d /dev/sda</code>:</p>
 
 
 <pre class="ubuntu_terminal">
@@ -239,50 +209,16 @@ Disk identifier: 0xf5fc72dc
 /dev/sda5          192942080 209713151  16771072   8G 82 Linux swap / Solaris
 </pre>
 
-<p>Under første kørsel bliver det gjort med brugeren tj's rettigheder. Det medfører at <span class="inl_cmd">fdisk</span> ikke har ret til at kigge på harddiskens data. I det andet tilfælde "løfter" jeg rettighedsniveauet til <span class="inl_cmd">root</span>-niveau, som så giver mig de informationer jeg ønsker.</p>
-
-<table class="cmd_table">
-	<thead>
-		<tr>
-			<th scope="col"></th>
-			<th scope="col"></th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>sudo</td>
-			<td>Udfør kommandoen som superbruger</td>
-		</tr>
-		<tr>
-			<td>gksudo</td>
-			<td>Starter GUI programmer op med superbrugerrettigheder. Det kommandoen reelt set gør er, at den ikke viser et terminalvindue. Bør ikke bruges</td>
-		</tr>
-	</tbody>
-</table>
+<p>Under første kørsel bliver det gjort med brugeren tj's rettigheder. Det medfører at <code class="bash">fdisk</code> ikke har ret til at kigge på harddiskens data. I det andet tilfælde "løfter" jeg rettighedsniveauet til root-niveau, som så giver mig de informationer jeg ønsker.</p>
 
 <h3>Noget om sikkerhed</h3>
 
-<p>Når man anvender <span class="inl_cmd">sudo</span>, så vil computeren huske kodeordet i et kort stykke tid. Derfor bør man altid afslutte en terminal når man er færdig med sit arbejde. Det gør man ved at køre kommandoen <span class="inl_cmd">exit</span> eller bruge tastekombinationen <kbd>Alt</kbd>+<kbd>F4</kbd>.</p>
+<p>Når man anvender <code class="bash">sudo</code> så vil computeren huske kodeordet i et kort stykke tid. Derfor bør man altid afslutte en terminal når man er færdig med sit arbejde. Det gør man ved at køre kommandoen <code class="bash">exit</code> eller bruge tastekombinationen <kbd>Alt</kbd>+<kbd>F4</kbd>.</p>
 
 
 <h2>root-shell</h2>
 
-<p>Hvis der skal udføres meget administrationsarbejde vælger man ofte at bruge kommandoen <span class="inl_cmd">sudo su</span>. Denne kommando ændrer ens bruger til <span class="inl_cmd">root</span>, og man får adgang til <span class="inl_cmd">root</span>-shell:</p>
-
-<table class="cmd_table">
-	<thead>
-		<tr>
-			<th scope="col"></th>
-			<th scope="col"></th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>sudo su</td>
-			<td>Ændrer en til root bruger, så man ikke behøver at skrive sudo</td>
-		</tr>
-	</tbody>
-</table>
+<p>Hvis der skal udføres meget administrationsarbejde vælger man ofte at bruge kommandoen <code class="bash">sudo su</code>. Denne kommando ændrer ens bruger til root, og man får adgang til root-shell:</p>
 
 <p>Se eksemplet herunder.</p>
 
@@ -292,7 +228,7 @@ Disk identifier: 0xf5fc72dc
 root@tj-VirtualBox:/home/tj# 
 </pre>
 
-<p>Hvis man skal lave systemarbejde kan det nogle gange være optimalt at anvende <span class="inl_cmd">root</span>-shell. Der er to ting man skal være opmærksom på.</p>
+<p>Hvis man skal lave systemarbejde kan det nogle gange være optimalt at anvende root-shell. Der er to ting man skal være opmærksom på.</p>
 
 <ol class="">
 	<li>alt man opretter vil blive oprettet med root som ejer og gruppe.</li>
@@ -303,7 +239,7 @@ root@tj-VirtualBox:/home/tj#
 
 <h3>Noget om sikkerhed</h3>
 
-<p>Man skal altid lukke en terminal-session ned når man er færdig med sit arbejde. Det gøres ligesom ovenfor ved hjælp af kommandoen: <span class="inl_cmd">exit</span></p>
+<p>Man skal altid lukke en terminal-session ned når man er færdig med sit arbejde. Det gøres ligesom ovenfor ved hjælp af kommandoen: <code class="bash">exit</code>.</p>
 
 <pre class="ubuntu_terminal">
 root@tj-VirtualBox:/home/tj# exit
@@ -315,19 +251,19 @@ exit
 
 <figure id="">
 
-	<img class="p60" src="images/terminal_01_AltF4_error.png" alt="" title="" />
+	<img class="p60" src="images/terminal_01_AltF4_error.png" alt="Fejlmeddelse, når man forsøger at lukke terminalvinduet, når der kører en session" title="Fejlmeddelse, når man forsøger at lukke terminalvinduet, når der kører en session" />
 
 	<figcaption></figcaption>
 
 </figure>
 
-<p>Det skyldes at <span class="inl_cmd">root-shell</span> kører ovenpå en terminal-shell. Klikker vi på <span class="knap">Luk terminal</span>, så afsluttes vores terminal-session</p>
+<p>Det skyldes at root-shell kører ovenpå en terminal-shell. Klikker vi på <button>Luk terminal</button>, så afsluttes vores terminal-session</p>
 
 
 <h2>man pages</h2>
 
-<p>Til alle terminalens kommandoer er der skrevet en manual, og den kan man tilgå ved med kommandoen <span class="inl_cmd">man [kommando]</span> . Her kan man læse hvordan 
-kommandoen bruges (Synopsis) og de optioner man kan tilføje (Descriptions). Herunder er de første linier af kommandoen <span class="inl_cmd">man ls</span></p>
+<p>Til alle terminalens kommandoer er der skrevet en manual, og den kan man tilgå ved med kommandoen <code class="bash">man [kommando]</code> . Her kan man læse hvordan 
+kommandoen bruges (Synopsis) og de optioner man kan tilføje (Descriptions). Herunder er de første linier af kommandoen <code class="bash">man ls</code>.</p>
 
 <pre class="ubuntu_terminal">
 LS(1)                            User Commands                          LS(1)
@@ -355,12 +291,12 @@ LS(1)                            User Commands                          LS(1)
 
 <p>Man scroller med piletasterne og afslutter med [q].</p>
 
-<p>De kan også findes på Internettet. F.eks. kan man finde ls' online udgave ved at søge med ordene: <span class="inl_cmd">ubuntu man ls</span>.  Herefter vælger man sin version af Ubuntu, og får den 
+<p>De kan også findes på Internettet. F.eks. kan man finde ls' online udgave ved at søge med ordene: <em>ubuntu man ls</em>.  Herefter vælger man sin version af Ubuntu, og får den 
 relevante mannualside.</p>
 
 <figure id="">
 
-	<img class="p90"src="images/kommandoer_man_pages_01.png" alt="" title="" />
+	<img class="p90"src="images/kommandoer_man_pages_01.png" alt="Hjemmesiden for Ubuntu manuals" title="Hjemmesiden for Ubuntu manuals" />
 
 	<figcaption></figcaption>
 

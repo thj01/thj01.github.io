@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="da">
 <head>
-  <title>term 3</title>
+  <title>Filer og mapper</title>
   <link rel="icon" href="../images/favicon.png">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -39,7 +39,7 @@
 	
 <div class="col-xs-9">
 	
-<h1>Kommandoer: Arbejde med filer</h1>
+<h1>Terminalen: Arbejde med filer</h1>
 
 <h2>Indhold</h2>
 
@@ -47,51 +47,51 @@
 	<li>Grundlæggende</li>
 	
 		<ul class="disc">
-			<li><span class="inl_cmd">nano</span> - rediger i filer</li>
-			<li><span class="inl_cmd">touch</span> – opret fil eller forny tidsstempel </li>
-			<li><span class="inl_cmd">mkdir</span> – opret mappe </li>
-			<li><span class="inl_cmd">cp</span> – kopier og flyt </li>
-			<li><span class="inl_cmd">rm</span> – slet ... </li>
-			<li><span class="inl_cmd">find</span> – find ... </li>
-			<li><span class="inl_cmd">wget</span> – hent fil fra netværk </li>
+			<li><em>nano</em> - rediger i filer</li>
+			<li><em>touch</em> – opret fil eller forny tidsstempel </li>
+			<li><em>mkdir</em> – opret mappe </li>
+			<li><em>cp</em> – kopier og flyt </li>
+			<li><em>rm</em> – slet ... </li>
+			<li><em>find</em> – find ... </li>
+			<li><em>wget</em> – hent fil fra netværk </li>
 		</ul>
 	
 	
 	<li>Indhold af filer</li>
 	
 		<ul class="disc">
-			<li><span class="inl_cmd">cat</span> - catenade</li>
-			<li><span class="inl_cmd">more</span> - vis indholdet af filer</li>
-			<li><span class="inl_cmd">tail / head</span> - vis slutningen / starten af filer</li>
-			<li><span class="inl_cmd">grep</span> - Pibes og filtre </li>
+			<li><em>cat</em> - catenade</li>
+			<li><em>more</em> - vis indholdet af filer</li>
+			<li><em>tail / head</em> - vis slutningen / starten af filer</li>
+			<li><em>grep</em> - Pibes og filtre </li>
 		</ul>
 		
 	<li>Redirect</li>	
 	
 		<ul class="disc">
-			<li><span class="inl_cmd">pipes</span> – lav output til nyt input... </li>
-			<li><span class="inl_cmd">redirect</span> – send output til ... </li>
+			<li><em>pipes</em> – lav output til nyt input... </li>
+			<li><em>redirect</em> – send output til ... </li>
 		</ul>
 		
 	<li>Erstat indhold</li>
 	
 		<ul class="disc">
-			<li><span class="inl_cmd">echo</span> – indsæt tekst i filer </li>
-			<li><span class="inl_cmd">tee</span> – indsæt i filer </li>
-			<li><span class="inl_cmd">sed</span> – erstat indhold i filer </li>
+			<li><em>echo</em> – indsæt tekst i filer </li>
+			<li><em>tee</em> – indsæt i filer </li>
+			<li><em>sed</em> – erstat indhold i filer </li>
 		</ul>
 		
 	<li>Lukke computer</li>
 	
 		<ul class="disc">
-			<li><span class="inl_cmd">reboot</span> – genstart maskine </li>
-			<li><span class="inl_cmd">shutdown</span> – luk og genstart maskine </li>
+			<li><em>reboot</em> – genstart maskine </li>
+			<li><em>shutdown</em> – luk og genstart maskine </li>
 		</ul>
 		
 	<li>Pakkeprogrammer</li>
 	
 	<ul class="disc">
-		<li><span class="inl_cmd">Pakkeprogammer</span> – hent fil fra netværk </li>
+		<li><em>Pakkeprogammer</em> – hent fil fra netværk </li>
 	</ul>
 		
 </ul>
@@ -100,11 +100,13 @@
 
 <h2>Grundlæggende</h2>
 
-<h3><span class="inl_cmd">nano</span></h3>
+<h3>nano</h3>
 
-<p>På en Linuxserver bliver alle tjenester og hardware initialiseret og konfigureret igennem tekstfiler. Derfor skal du kende nano, et effektiv terminal tekstredigeringsprogram. Programmet har også farvekodning, hvis det genkender formatet. nano startes med kommandoen: </p>
+<p>På en Linuxserver bliver alle tjenester og hardware initialiseret og konfigureret igennem tekstfiler. Derfor skal du kende nano, et effektiv terminal tekstredigeringsprogram. Programmet har også opmærkning med farver, hvis det genkender formatet. <em>nano</em> startes med kommandoen: </p>
 
 <code class="cmd">nano *filnavn*</code>
+
+<p>Du navigerer i filen ved hjælp af piletasterne, og du kan bruge <kbd>Ctrl</kbd> og kd</p>
 
 <p>Herefter bliver ændres terminalen til nedestående, hvor menuen ligger i bunden af skærmen.</p>
 
@@ -119,54 +121,30 @@
 
 
 
-
-
-<span class="white_bg">^G</span> Get Help      <span class="white_bg">^O</span> WriteOut      <span class="white_bg">^R</span> Read File     <span class="white_bg">^Y</span> Prev Page     <span class="white_bg">^K</span> Cut Text      <span class="white_bg">^C</span> Cur Pos
-<span class="white_bg">^X</span> Exit          <span class="white_bg">^J</span> Justify       <span class="white_bg">^W</span> Where Is      <span class="white_bg">^V</span> Next Page     <span class="white_bg">^U</span> UnCut Text    <span class="white_bg">^T</span> To Spell
+<span class="white_bg">^G</span> Få hjælp   <span class="white_bg">^O</span> Gem       <span class="white_bg">^W</span> Hvor er    <span class="white_bg">^K</span> Klip ud       <span class="white_bg">^J</span> Ombryd      <span class="white_bg">^C</span> Position
+<span class="white_bg">^X</span> Afslut     <span class="white_bg">^R</span> Læs fil   <span class="white_bg">^\</span> Erstat     <span class="white_bg">^U</span> Indsæt tekst  <span class="white_bg">^T</span> Stavetjek   <span class="white_bg">^_</span> Til linje
 </pre>
 
-<p>Du navigerer rundt i nano med piletaster og tabulatorknappen. Programmets funktioner tilgår du med en kombination af [Ctrl] og et bogstav. Det bliver af nano angivet som f.eks. ^X</p>
+<p>Du navigerer rundt i nano med piletaster ligesom i alle andre tekstbehandlingsprogrammer.</p>
 
-<p>Kommandoerne er selvforklarende, men herunder er de meste basale funktioner</p>
+<p>Herunder er de meste basale funktioner</p>
 
-<table class="cmd_table">
-	<thead>
-		<tr>
-			<th scope="col"></th>
-			<th scope="col"></th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td><kbd>Ctrl</kbd>+<kbd>w</kbd></td>
-			<td>Find</td>
-		</tr>
-		<tr>
-			<td><kbd>Ctrl</kbd>+<kbd>y</kbd></td>
-			<td>En side op</td>
-		</tr>
-		<tr>
-			<td><kbd>Ctrl</kbd>+<kbd>v</kbd></td>
-			<td>En side ned</td>
-		</tr>
-		<tr>
-			<td><kbd>Ctrl</kbd>+<kbd>w</kbd>+<kbd>v</kbd></td>
-			<td>Til filens sidste linie</td>
-		</tr>
-		<tr>
-			<td><kbd>Ctrl</kbd>+<kbd>k</kbd></td>
-			<td>Klip</td>
-		</tr>
-		<tr>
-			<td><kbd>Ctrl</kbd>+<kbd>u</kbd></td>
-			<td>Indsæt</td>
-		</tr>
-		<tr>
-			<td><kbd>Ctrl</kbd>+<kbd>x</kbd></td>
-			<td>Afslut nano</td>
-		</tr>
-	</tbody>
-</table>
+<p><em>^</em> står for <kbd>Ctrl</kbd> og <em>m-</em> for <kbd>Alt</kbd></p>
+
+<ul class="disc">
+	<li><code>^w</code> - find</li>
+	<li><code>^y</code> - en side op</li>
+	<li><code>^v</code> - En side ned</li>
+	<li><code>^wv</code> - Til filens sidste linie</li>
+	<li><code>^k</code> - Klip</li>
+	<li><code>^u</code> - Indsæt</li>
+	<li><code>^x</code> - Afslut nano</li>
+	<li><code>m-u</code> - Fortryd</li>
+	<li><code>m-e</code> - Annuller fortryd</li>
+	<li><code>m-a</code> - Marker tekst</li>
+	<li><code>m-6</code> - kopier tekst</li>
+</ul>
+
 
 <p>Når du har redigeret din tekst færdig afslutter du med <kbd>Ctrl</kbd>+<kbd>x</kbd>, hvorefter nano i bunden svarer:</p>
 
@@ -183,7 +161,7 @@
 
 <p>Får du en fejlmelding om at du ikke kan gemme skyldes det oftest, at man redigerer i en fil man ikke har rettigheder til. Oftes skyldes det at man glemmer at anvende <span class="inl_cmd">sudo</span> når man redigerer i systemfiler.</p>
 
-<h3><span class="inl_cmd">touch</span> </h3>
+<h3>touch</h3>
 
 <p><span class="inl_cmd">touch</span> er en kommando der anvendes til at forny en fils tidstempel. På den måde kan se hvornår en fil sidst er kørt eller opdateret. Ofte bruger man også kommandoen til at oprette filer med, som vi gør herunder.</p>
 
@@ -195,7 +173,7 @@
 
 <code class="cmd">touch ~/testfil2 ~/testfil3 ~/testfil4</code>
 
-<p>Lad os få et overblik over de oprettede filer med kommandoen: <span class="inl_cmd">ls -al | grep testfil</span></p>
+<p>Lad os få et overblik over de oprettede filer med kommandoen: <code class="bash">ls -al | grep testfil</code></p>
 
 <pre class="ubuntu_terminal">
 <span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ ls -al | grep testfil
@@ -205,17 +183,17 @@
 -rw-rw-r--  1 tj   tj      0 mar 15 20:08 <span class="red">testfil</span>4
 </pre>
 
-<p>Med den kommando filtrerer vi output fra <span class="inl_cmd">ls</span> med tekststrengen "testfil". Som du kan se er den første testfil 2 minutter bag de andre. Lad os opdatere dem alle til samme tidsstempel med <span class="inl_cmd">touch testfil*</span>.</p>
+<p>Med den kommando filtrerer vi output fra <span class="inl_cmd">ls</span> med tekststrengen "testfil". Som du kan se er den første testfil 2 minutter bag de andre. Lad os opdatere dem alle til samme tidsstempel med kommandoen <code class="bash">touch testfil*</code>.</p>
 
 <pre class="ubuntu_terminal">
-<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ ls -al | grep testfil
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ touch testfil*
 -rw-rw-r--  1 tj   tj      0 mar 15 20:14 <span class="red">testfil</span>
 -rw-rw-r--  1 tj   tj      0 mar 15 20:14 <span class="red">testfil</span>2
 -rw-rw-r--  1 tj   tj      0 mar 15 20:14 <span class="red">testfil</span>3
 -rw-rw-r--  1 tj   tj      0 mar 15 20:14 <span class="red">testfil</span>4
 </pre>
 
-<h3><span class="inl_cmd">mkdir</span></h3>
+<h3>mkdir</h3>
 
 <p>Til at oprette mapper bruges kommandoen mkdir (make directory). <span class="inl_cmd">~</span> henviser til brugerens hjemmemappe.</p>
 
@@ -227,7 +205,7 @@
 
 <code class="cmd">mkdir testmappe2 testmappe3 testmappe4</code>
 
-<p>Vi ser mapperne med kommandoen: <span class="inl_cmd">ls -al | grep testmappe</span>.</p>
+<p>Vi ser mapperne med kommandoen: <code class="bash">ls -al | grep testmappe</code>.</p>
 
 <pre class="ubuntu_terminal">
 <span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ ls -al | grep testmappe
@@ -237,7 +215,7 @@ drwxrwxr-x  2 tj tj 4096 mar 15 20:18 <span class="red">testmappe</span>3
 drwxrwxr-x  2 tj tj 4096 mar 15 20:19 <span class="red">testmappe</span>4
 </pre>
 
-<p>Har man brug for at oprette mapper under hinanden  indsætter man et <span class="inl_cmd">-p</span> i kommanoen. Herunder vil vi oprette mappestien <span class="inl_cmd">testmappe5/undermappe/underundermappe</span>.</p>
+<p>Har man brug for at oprette mapper under hinanden  indsætter man et <code class="bash">-p</code> i kommanoen. Herunder vil vi oprette mappestien <em>testmappe5/undermappe/underundermappe</em>.</p>
 
 <code class="cmd">mkdir -p  ~/testmappe5/undermappe/underundermappe</code>
 
@@ -268,38 +246,14 @@ tj tj  tree -L 3 ~/testmappe5
 </pre>
 
 
-<h3><span class="inl_cmd">cp</span></h3>
+<h3>cp</h3>
 
-<p>For at holde fast i overvejelserne ovenfor er kopiering af filer den første kommando vi skal lære.</p>
+<p><code class="bash">cp</code> bruges til at kopiere filer</p>
 
-<table class="cmd_table">
-	<thead>
-		<tr>
-			<th scope="col"></th>
-			<th scope="col"></th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>cp fil1 fil2</td>
-			<td>Laver en kopi af fil1 i fil2</td>
-		</tr>
-		<tr>
-			<td>cp -R ~/dir1 ~/dir2</td>
-			<td>Laver en kopi af dir1 i dir2</td>
-		</tr>
-		<tr>
-			<td>mv fil1 fil2</td>
-			<td>Ændrer fil1 til at hedde fil2</td>
-		</tr>
-		<tr>
-			<td>mv ~/dir1 ~/dir2</td>
-			<td>Flytter indholdet af dir1 til dir2 (dir1 forsvinder)</td>
-		</tr>
-	</tbody>
-</table>
-
-<p>Læg mærke til at man flytter filer og mapper for at ændre deres navne.</p>
+<ul class="disc">
+	<li><code class="bash">cp fil1 fil2</code> - Laver en kopi af fil1 til fil2</li>
+	<li><code class="bash">cp -R ~/dir1 ~/dir2</code> - laver en kopi af dir1 til dir2</li>
+</ul>
 
 <p>Hvis du ønsker at være sikker på at kunne vende tilbage til din gamle konfiguration kan du altså blot lave en kopi af den fil du redigerer i og navngive kopien med et sigende efternavn f.eks.</p>
 
@@ -309,21 +263,32 @@ tj tj  tree -L 3 ~/testmappe5
 
 <code class="cmd">cp ~/testfil.backup ~/testfil </code>
 
-<h3><span class="inl_cmd">rm</span></h3>
+<h3>mv</h3>
 
-<p>Til at slette filer og mapper anvendes kommandoen <span class="inl_cmd">rm</span> (remove). Det er god vane, at anvende den fulde sti til det man sletter, for at undgå at slette noget forkert.</p>
+<p><code class="bash">mv</code> bruges til at flytte filer eller ændre filens/mappens navn.</p>
 
-<p>Eksempel: Slet filen <span class="inl_cmd">testfil2</span> i din hjemmemappe der er oprettet ovenfor</p>
+<ul class="disc">
+	<li><code class="bash">mv fil1 fil2</code> - Flytter fil1 til at hedde fil2</li>
+	<li><code class="bash">mv ~/dir1 ~/dir2</code> - flytter indholdet af dir1 til dir 2</li>
+</ul>
+
+
+
+<h3>rm</h3>
+
+<p>Til at slette filer og mapper anvendes kommandoen <code class="bash">rm</code> (remove). Det er god vane, at anvende den fulde sti til det man sletter, for at undgå at slette noget forkert.</p>
+
+<p>Eksempel: Slet filen <em>testfil2</em> i din hjemmemappe der er oprettet ovenfor</p>
 
 <code class="cmd">rm ~/testfil</code>
 
-<p>For at slette en mappe skal man tilføje <span class="inl_cmd">-R</span> til kommandoen (-R betyder recursive)</p>
+<p>For at slette en mappe skal man tilføje <code class="bash">-R</code> til kommandoen (-R betyder recursive)</p>
 
-<p>Eksempel: slet <span class="inl_cmd">testmap1</span> og alle dens filer/undermapper der blev oprettet ovenfor</p>
+<p>Eksempel: slet <em>testmap1</em> og alle dens filer/undermapper der blev oprettet ovenfor</p>
 
 <code class="cmd">rm -R ~/testmap1</code>
 
-<p>Teoretisk set kan den kommando slette hele ens harddisk, hvis man får / til at stå alene, da det er roden på hele systemet. Heldigvis er der indbygget en "failsafe" i kommandoen, sådan at man skal tilføje <span class="inl_cmd">--no-preserve-root</span> til kommandoen for at den vil køre. Man skal tvinge kommandoen <span class="inl_cmd">sudo rm -R</span> til at køre.</p>
+<p>Teoretisk set kan den kommando slette hele ens harddisk, hvis man får / til at stå alene, da det er roden på hele systemet. Heldigvis er der indbygget en "failsafe" i kommandoen, sådan at man skal tilføje <code class="bash">--no-preserve-root</code> til kommandoen for at den vil køre. Man skal tvinge kommandoen <code class="bash">sudo rm -R</code> til at køre.</p>
 
 <pre class="ubuntu_terminal">
 <span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ sudo rm -R /
@@ -331,95 +296,61 @@ rm: det er farligt at operere rekursivt på '/'
 rm: brug --no-preserve-root for at tilsidesætte denne sikring
 </pre>
 
-<h3><span class="inl_cmd">find</span></h3>
+<h3>find</h3>
 
-<p>For at søge efter filer og mapper anvendes kommandoerne <span class="inl_cmd">find</span> og <span class="inl_cmd">locate</span>. Hvis du ønsker at lave en søgning i hele filstrukturen bør du søge ved hjælp af sudo eller som root. Læg også mærke til at søgningen skelner mellem små og store bogstaver. En søgning på mappen apt giver flere resultater - APT giver ingen.</p>
+<p>For at søge efter filer og mapper anvendes kommandoerne <code class="bash">find</code>. Hvis du ønsker at lave en søgning i hele filstrukturen bør du søge ved hjælp af sudo eller som root. Læg også mærke til at søgningen skelner mellem små og store bogstaver. En søgning på mappen apt giver flere resultater - APT giver ingen.</p>
 
-<table class="cmd_table">
-	<thead>
-		<tr>
-			<th scope="col"></th>
-			<th scope="col"></th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>find / -type f -name fstab</td>
-			<td>Finder alle filer der hedder fstab</td>
-		</tr>
-		<tr>
-			<td>find . -type d -name apt</td>
-			<td>Finder alle mapper der hedder noget med apt i den mappe du står i.</td>
-		</tr>
-		<tr>
-			<td>find . -type f -perm /a=x</td>
-			<td>Finder alle filer der er eksekverbare i den mappe du står i</td>
-		</tr>
-		<tr>
-			<td>find . -type d -empty</td>
-			<td>Finder alle tomme mapper i den mappe du står i.</td>
-		</tr>
-	</tbody>
-</table>
+<ul class="disc">
+	<li><code class="bash">find / -type f -name fstab</code> - Finder alle filer der hedder fstab</li>
+	<li><code class="bash">find . -type d -name apt</code> - Finder alle mapper der hedder noget med apt i den mappe du står i.</li>
+	<li><code class="bash">find . -type f -perm /a=x</code> - Finder alle filer der er eksekverbare i den mappe du står i</li>
+	<li><code class="bash">find . -type d -empty</code> - Finder alle tomme mapper i den mappe du står i.</li>
+</ul>
 
-<p>man-page <span class="inl_cmd">more</span>: 
+
+<p>man-page more: 
 	<a href="http://manpages.ubuntu.com/manpages/trusty/en/man1/find.1.html" target="_blank">
 	http://manpages.ubuntu.com/manpages/trusty/en/man1/find.1.html</a></p>
 	
 <p>Kommandoen find kan også anvendes til at søge og slette filer i samme kommando. Hvis du f.eks. har en mappe med både RAW og JPG billeder kan du med denne kommando slette alle jpg billederne</p>	
 	
 	<code class="cmd">find . -type f -name "*.JPG" -exec rm -f {} \;</code>
-	
-<p><span class="bold">VIGTIGT:</span> Som med alle andre slette kommandoer skal du være varsom, da du risikerer at slette mere end du ønsker. F.eks. vil et <span class="inl_cmd">/</span> i stedet for et <span class="inl_cmd">.</span> betyde at du sletter alle JPG billeder på harddisken, i stedet for dem der ligger i dine undermapper. Derfør bør du altid have styr på hvor i filstrukturen du er. Er du i tvivl så anvend <span class="inl_cmd">pwd</span>, så får du den fulde sti som output.</p>
 
 
-<h3><span class="inl_cmd">wget</span></h3>
+<div class="alert">
 
-<p>For at hente filer på nettet anvendes programmet <span class="inl_cmd">wget</span>. For at hente filer på nettet skal du kende deres adresse. Herunder hentes Linux distributionen TinyCorePlus til computeren.</p>
+	<p>Som med alle andre slette kommandoer skal du være varsom, da du risikerer at slette mere end du ønsker. F.eks. vil et <em>/</em> i stedet for et <em>.</em> betyde at du sletter alle JPG billeder på harddisken, i stedet for dem der ligger i dine undermapper. Derfør bør du altid have styr på hvor i filstrukturen du er.</p>
+
+</div>
+
+<h3>wget</h3>
+
+<p>For at hente filer på nettet anvendes programmet <code class="bash">wget</code>. For at hente filer på nettet skal du kende deres adresse. Herunder hentes Linux distributionen TinyCorePlus til computeren.</p>
 
 <code class="cmd">wget -c http://tinycorelinux.net/6.x/x86/release/CorePlus-current.iso</code>
 
 <p><span class="inl_cmd">-c</span> gør sådan, at hvis filhentningen afbrydes, så vil den kunne fortsætte fra hvor forbindelsen blev afskåret. Vær opmærksom på, at den hentede fil bliver gemt i den samme mappe som du kørte kommandoen i.</p>
 
-<table class="cmd_table">
-	<thead>
-		<tr>
-			<th scope="col"></th>
-			<th scope="col"></th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>wget -c *filadresse*</td>
-			<td>Henter filen, med mulighed for at genstarter hentningen.</td>
-		</tr>
-		<tr>
-			<td>wget -P ~/*mappe* *filadresse*</td>
-			<td>Henter filen, men gemmer den i mappen ~/*mappe*</td>
-		</tr>
-		<tr>
-			<td>wget -o ~/*hentetfil* *filadresse*</td>
-			<td>Henter filen, men gemmer den som "hentetfil*</td>
-		</tr>
-		<tr>
-			<td>wget -b *filadresse*</td>
-			<td>Henter filen i baggrunden - frigiver kommandolinien med det samme.</td>
-		</tr>
-	</tbody>
-</table>
+<ul class="disc">
+	<li><code class="bash">wget -c *filadresse*</code> - Henter filen, med mulighed for at genstarter hentningen.</li>
+	<li><code class="bash">wget -P ~/*mappe* *filadresse*</code>- Henter filen, men gemmer den i mappen ~/*mappe*</li>
+	<li><code class="bash">wget -o ~/*hentetfil* *filadresse*</code> - Henter filen, men gemmer den som "hentetfil*</li>
+	<li><code class="bash">wget -b *filadresse*</code> - Henter filen i baggrunden - frigiver kommandolinien med det samme.</li>
+</ul>
 
-<p>Optionerne kan stackes. På den måde vil <span class="inl_cmd">wget -cob minfil *filadresse*</span> hente i baggrunden, gemme den som minfil og sikre at download kan genoptages ved afbrydelse.</p>
 
-<p>man-page <span class="inl_cmd">wget</span>: 
+<p>Optionerne kan stackes. På den måde vil <code class="bash">wget -cob minfil *filadresse*</code> hente i baggrunden, gemme den som minfil og sikre at download kan genoptages ved afbrydelse.</p>
+
+<p>man-page wget: 
 	<a href="http://manpages.ubuntu.com/manpages/trusty/man1/wget.1.html" target="_blank">
 	http://manpages.ubuntu.com/manpages/trusty/man1/wget.1.html</a></p>
 
 <h2>Indhold af filer</h2>
 
 
-<h3><span class="inl_cmd">cat</span></h3>
+<h3>cat</h3>
 
-<p><span class="inl_cmd">cat</span> laver et output af filen, men stopper ikke når skærmen er fyldt. Derfor er programmet ikke altid velegnet til at vise indholdet af filer. F.eks:</p>
+<p><code class="bash">cat</code> laver et output af filen, men stopper ikke når skærmen er fyldt. Derfor er programmet ikke altid velegnet til at vise indholdet af filer. F.eks:</p>
 
 <code class="cmd">cat /etc/hosts</code>
 
@@ -437,72 +368,45 @@ ff02::2 ip6-allrouters
 <span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$
 </pre>
 
-<p>man-page <span class="inl_cmd">cat</span>: 
+<p>man-page cat: 
 	<a href="http://manpages.ubuntu.com/manpages/trusty/man1/cat.1.html" target="_blank">
 	http://manpages.ubuntu.com/manpages/trusty/man1/cat.1.html</a></p>
 
-<h3><span class="inl_cmd">more</span></h3>
+<h3>more</h3>
 
-<p>Ved hjælp af more kan man få indholdet af en fil skrevet ud på skærmen. Når skærmen er fyldt kan man se hvor stor en procentdel af filen man har fået vist. Man går en linie frem ad gangen ved at trykke på <kbd>Enter</kbd> og en side længere ned med <kbd>Mellemrum</kbd>.</p>
+<p>Ved hjælp af <code class="bash">more</code> kan man få indholdet af en fil skrevet ud på skærmen. Når skærmen er fyldt kan man se hvor stor en procentdel af filen man har fået vist. Man går en linie frem ad gangen ved at trykke på <kbd>Enter</kbd> og en side længere ned med <kbd>Mellemrum</kbd>.</p>
 
-<table class="cmd_table">
-	<thead>
-		<tr>
-			<th scope="col"></th>
-			<th scope="col"></th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>more /etc/passwd</td>
-			<td>Vis indhold af filen <span class="inl_cmd">/etc/passwd</span></td>
-		</tr>
-	</tbody>
-</table>
+<ul class="disc">
+	<li><code class="bash">more /etc/passwd</code> - Vis indhold af filen <em>/etc/passwd</em></li>
+</ul>
 
-<p>man-page <span class="inl_cmd">more</span>: 
+
+<p>man-page more: 
 	<a href="http://manpages.ubuntu.com/manpages/trusty/man1/more.1.html" target="_blank">
 	http://manpages.ubuntu.com/manpages/trusty/man1/more.1.html</a></p>
 
-<h3><span class="inl_cmd">tail / head</span></h3>
+<h3>tail / head</h3>
 
 <p>Kommandoen er god til at se om noget er blevet korrekt tilføjet til en fil.</p>
 
-<table class="cmd_table">
-	<thead>
-		<tr>
-			<th scope="col"></th>
-			<th scope="col"></th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>tail /etc/passwd</td>
-			<td>Vis de sidste 10 linier af <span class="inl_cmd">/etc/passwd</span></td>
-		</tr>
-		<tr>
-			<td>tail -5 /etc/passwd</td>
-			<td>Vis de sidste 5 linier af <span class="inl_cmd">/etc/passwd</span></td>
-		</tr>
-		<tr>
-			<td>head -5 /etc/passwd</td>
-			<td>Vis de første 5linier af <span class="inl_cmd">/etc/passwd</span></td>
-		</tr>
-	</tbody>
-</table>
+<ul class="disc">
+	<li><code class="bash">tail /etc/passwd</code> - Vis de sidste 10 linier af <em>/etc/passwd</em></li>
+	<li><code class="bash">tail -5 /etc/passwd</code> - Vis de sidste 5 linier af <em>/etc/passwd</em></li>
+	<li><code class="bash">head -5 /etc/passwd</code> - Vis de første 5linier af <em>/etc/passwd</em></li>
+</ul>
 
-<p>man-page <span class="inl_cmd">tail</span>: 
+<p>man-page tail: 
 	<a href="http://manpages.ubuntu.com/manpages/trusty/en/man1/tail.1.html" target="_blank">
 	http://manpages.ubuntu.com/manpages/trusty/en/man1/tail.1.html</a></p>
 
-<p>man-page <span class="inl_cmd">head</span>: 
+<p>man-page head: 
 	<a href="http://manpages.ubuntu.com/manpages/trusty/man1/head.1.html" target="_blank">
 	http://manpages.ubuntu.com/manpages/trusty/man1/head.1.html</a></p>
 	
 
-<h3><span class="inl_cmd">grep</span></h3>
+<h3>grep</h3>
 
-<p><span class="inl_cmd">grep</span> -  anvendes til at finde tekststrenge i en fil.</p>
+<p><code class="bash">grep</code> -  anvendes til at finde tekststrenge i en fil.</p>
 
 <code class="cmd">grep backup /etc/passwd</code>
 
@@ -511,7 +415,7 @@ ff02::2 ip6-allrouters
 <span class="red">backup</span>:x:34:34:<span class="red">backup</span>:/var/<span class="red">backups</span>:/usr/sbin/nologin
 </pre>
 
-<p>man-page <span class="inl_cmd">grep</span>: 
+<p>man-page grep: 
 	<a href="http://manpages.ubuntu.com/manpages/trusty/man1/grep.1.html" target="_blank">
 	http://manpages.ubuntu.com/manpages/trusty/man1/grep.1.html</a></p>
 	
@@ -519,7 +423,7 @@ ff02::2 ip6-allrouters
 
 <h3>Pipes</h3>
 
-<p>Pipes er en måde at overføre output fra en kommando til en anden. Hvis man f.eks. vil finde ud af hvor mange gange bogstavkombinationen "lib" forekommer i filnavne på roden, vil kommandoen <span class="inl_cmd">ls - /</span> blot liste alt indholdet op.</p>
+<p>Pipes er en måde at overføre output fra en kommando til en anden. Hvis man f.eks. vil finde ud af hvor mange gange bogstavkombinationen "lib" forekommer i filnavne på roden, vil kommandoen <code class="bash">ls - /</code> blot liste alt indholdet op.</p>
 
 <pre class="ubuntu_terminal">
 <span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$  ls -l /
@@ -551,7 +455,7 @@ drwxr-xr-x  15 root root  4096 maj 27 01:05 var
 lrwxrwxrwx   1 root root    29 apr 22 13:53 vmlinuz.old -> boot/vmlinuz-4.8.0-36-generic
 </pre>
 
-<p>Ved at anvende pibes (Den lodrette streg | ), kan vi "filtrere" output ved hjælp af <span class="inl_cmd">grep</span>.	</p>
+<p>Ved at anvende pibes (Den lodrette streg | ), kan vi "filtrere" output ved hjælp af <code class="bash">grep</code>.</p>
 
 <pre class="ubuntu_terminal">
 <span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ ls -l / | grep lib
@@ -560,93 +464,36 @@ drwxr-xr-x   2 root root  4096 apr 22 14:14 <span class="red">lib</span>64
 
 </pre>
 
-<p>Pipen leder outputtet fra <span class="inl_cmd">ls /</span> ind i <span class="inl_cmd">grep</span>-kommandoen, som giver vores output.</p>
+<p>Pipen leder outputtet fra <code class="bash">ls /</code> ind i grep-kommandoen, som giver vores output.</p>
 
-<p>Herunder er nogle flere eksempler med anvendelse af <span class="inl_cmd">grep</span>.</p>
+<p>Herunder er nogle flere eksempler med anvendelse af grep.</p>
 
-
-<table class="cmd_table">
-	<thead>
-		<tr>
-			<th scope="col"></th>
-			<th scope="col"></th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>tail -10 /etc/passwd | grep var</td>
-			<td>Find linier med forekomsten af tekststrengen "var" i de sidste 10 linier 
-			af <span class="inl_cmd">/etc/passwd</span></td>
-		</tr>
-		<tr>
-			<td>lspci | grep Ethernet</td>
-			<td>Find informationer om dit netkort. Læg mærke til at søgningen er case-sensitiv 
-			(det store E i "Ethernet").</td>
-		</tr>
-	</tbody>
-</table>
-	
-
-
-
-
-
+<ul class="disc">
+	<li><code class="bash">tail -10 /etc/passwd | grep var</code> - Find linier med forekomsten af tekststrengen "var" i de sidste 10 linier af <em>/etc/passwd</em></li>
+	<li><code class="bash">lspci | grep Ethernet</code> - Find informationer om dit netkort. Læg mærke til at søgningen er case-sensitiv (det store E i "Ethernet").</li>
+</ul>
 
 <h3>redirect</h3>
 
-<p>Nogen gange har man brug for at omdirigere indhold. Det kan f.eks. være at indsætte et output i en fil. Til at omdirigere anvender man <span class="inl_cmd">&gt;</span> og <span class="inl_cmd">&gt;&gt;</span>. En pil erstatter alt indhold og 2 pile tilføjer til slutningen af filen. </p>
+<p>Nogen gange har man brug for at omdirigere indhold. Det kan f.eks. være at indsætte et output i en fil. Til at omdirigere anvender man <code class="bash">&gt;</code> og <code class="bash">&gt;&gt;</code>. En pil erstatter alt indhold og 2 pile tilføjer til slutningen af filen. </p>
 
-<table class="cmd_table">
-	<thead>
-		<tr>
-			<th scope="col"></th>
-			<th scope="col"></th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>cat fil1 > fil2</td>
-			<td>Erstat indholdet af fil2 med indholdet af fil1</td>
-		</tr>
-		<tr>
-			<td>cat fil1 >> fil2</td>
-			<td>Tilføj indholdet af fil1 til slutningen af fil2</td>
-		</tr>
-		<tr>
-			<td>cat -n fil >> fil_med_numre</td>
-			<td>sæt linienumre i file</td>
-		</tr>
-	</tbody>
-</table>
+<ul class="disc">
+	<li><code class="bash">cat fil1 > fil2</code> - Erstat indholdet af fil2 med indholdet af fil1</li>
+	<li><code class="bash">cat fil1 >> fil2</code> - Tilføj indholdet af fil1 til slutningen af fil2</li>
+	<li><code class="bash">cat -n fil >> fil_med_numre</code> - sæt linienumre i file</li>
+</ul>
 
-<p>Omdirigering anvendes også til at omdirigere fejlmeddelelser. Her anvender man <span class="inl_cmd">1</span>, <span class="inl_cmd">2</span> og <span class="inl_cmd">&</span> til at angive typen af output man vil omdirigere. Se følgende skema</p>
+<p>Omdirigering anvendes også til at omdirigere fejlmeddelelser. Her anvender man <em>1</em>, <em>2</em> og <em>&</em> til at angive typen af output man vil omdirigere. Se følgende skema</p>
 
-<table class="cmd_table">
-	<thead>
-		<tr>
-			<th scope="col"></th>
-			<th scope="col"></th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>1 &gt; fil</td>
-			<td>Sætter "godkendte" output ind i fil</td>
-		</tr>
-		<tr>
-			<td>2 &gt; fil</td>
-			<td>Sætter fejl-output ind i fil</td>
-		</tr>
-		<tr>
-			<td>& &gt; fil</td>
-			<td>sætter både rigtig og fejl-output ind i fil</td>
-		</tr>
-	</tbody>
-</table>
+<ul class="disc">
+	<li><code class="bash">1 &gt; fil</code> - Sætter "godkendte" output ind i fil</li>
+	<li><code class="bash">2 &gt; fil</code> - Sætter fejl-output ind i fil</li>
+	<li><code class="bash">& &gt; fil</code> - sætter både rigtig og fejl-output ind i fil</li>
+</ul>
 
-<p>Herunder er vist nogle eksempler med eksempler med kommandoen <span class="inl_cmd">id</span>:</p>
+<p>Herunder er vist nogle eksempler med eksempler med kommandoen <code class="bash">id</code>:</p>
 
-<p>Her bliver output fra kommandoen ledt direkte ind i filen <span class="inl_cmd">~/test</span>, hvilket vi viser ved at køre <span class="inl_cmd">cat ~/test</span>.</p>
+<p>Her bliver output fra kommandoen ledt direkte ind i filen <em>~/test</em>, hvilket vi viser ved at køre <code class="bash">cat ~/test</code>.</p>
 
 <pre class="ubuntu_terminal">
 <span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ id tj 1> ~/test
@@ -654,7 +501,7 @@ drwxr-xr-x   2 root root  4096 apr 22 14:14 <span class="red">lib</span>64
 uid=1000(tj) gid=1000(tj) grupper=1000(tj),4(adm),24(cdrom),27(sudo),30(dip), 46(plugdev),108(lpadmin),124(sambashare)
 </pre>
 
-<p>Her leder vi fejloutput ind i filen <span class="inl_cmd">~/test</span>. Derfor bliver output fra kommandoen vist, men der er intet i filen <span class="inl_cmd">~/test</span>, fordi der ikke er noget fejloutput</p>
+<p>Her leder vi fejloutput ind i filen <em>~/test</em>. Derfor bliver output fra kommandoen vist, men der er intet i filen <em>~/test</em>, fordi der ikke er noget fejloutput</p>
 
 <pre class="ubuntu_terminal">
 <span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ id tj 2> ~/test
@@ -663,7 +510,7 @@ uid=1000(tj) gid=1000(tj) grupper=1000(tj),4(adm),24(cdrom),27(sudo),30(dip), 46
 </pre>
 
 
-<p>Her leder vi et fejloutput ind i filen <span class="inl_cmd">~/test</span>. Læg mærke til at det ikke bliver betragtet som en fejl at <span class="inl_cmd">id</span> ikke ikke finder en bruger. Herunder prøver vi at anvende en kommando systemet ikke kender. I stedet for at vise fejlen i terminalen skubber den fejl-output ind i filen <span class="inl_cmd">~/test</span></p>
+<p>Her leder vi et fejloutput ind i filen <em>~/test</em>. Læg mærke til at det ikke bliver betragtet som en fejl at <em>~/test</em> ikke ikke finder en bruger. Herunder prøver vi at anvende en kommando systemet ikke kender. I stedet for at vise fejlen i terminalen skubber den fejl-output ind i filen <em>~/test</em></p>
 
 
 <pre class="ubuntu_terminal">
@@ -672,7 +519,7 @@ id: 'hugo': ingen sådan bruger
 <span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ cat ~/test
 </pre>
 
-<p>Man kan også sende output til <span class="inl_cmd">/dev/null</span>, som bedst kan beskrives som sort hul. På den måde kan man fjerne meddelelser fra et program. Det kan være praktisk hvis man anvender kommandoer i scripts eller man ønsker at køre programmer usynligt i baggrunden.</p>
+<p>Man kan også sende output til <em>/dev/null</em>, som bedst kan beskrives som sort hul. På den måde kan man fjerne meddelelser fra et program. Det kan være praktisk hvis man anvender kommandoer i scripts eller man ønsker at køre programmer usynligt i baggrunden.</p>
 
 
 <pre class="ubuntu_terminal">
@@ -690,7 +537,7 @@ ifd: kommando ikke fundet
 <span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ 
 </pre>
 
-<p>Vil man kvæle alle putput fra en kommando anvender man <span class="inl_cmd">&>/dev/null</span>. Anvender man <span class="inl_cmd">&</span> som argument i et scripts, så kan man se at intentionen er at kvæle alle output.</p>
+<p>Vil man kvæle alle putput fra en kommando anvender man <em>/dev/null</em>. Anvender man <code class="bash">&</code> som argument i et scripts, så kan man se at intentionen er at kvæle alle output.</p>
 
 <pre class="ubuntu_terminal">
 <span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ id tj 
@@ -700,26 +547,12 @@ uid=1000(tj) gid=1000(tj) grupper=1000(tj),4(adm),24(cdrom),27(sudo),30(dip),46(
 </pre>
 
 
-<p>En sidste praktisk måde at anvende omdirigering er til at indsætte tekststrenge ved hjælp af <span class="inl_cmd">echo</span>. På denne måde kan man indsætte tekstrenge i filer:</p>
+<p>En sidste praktisk måde at anvende omdirigering er til at indsætte tekststrenge ved hjælp af <code class="bash">echo</code>. På denne måde kan man indsætte tekstrenge i filer:</p>
 
-<table class="cmd_table">
-	<thead>
-		<tr>
-			<th scope="col"></th>
-			<th scope="col"></th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>echo "tekststreng" > *fil_navn*</td>
-			<td>Sletter filens indhold og indsætter "tekststreng" som nyt indhold</td>
-		</tr>
-		<tr>
-			<td>echo "tekststreng" >> *fil_navn*</td>
-			<td>Indsæt "tekststreng" i bunden af en fil - anvendeligt til logs.</td>
-		</tr>
-	</tbody>
-</table>
+<ul class="disc">
+	<li><code class="bash">echo "tekststreng" > *fil_navn*</code> - Sletter filens indhold og indsætter "tekststreng" som nyt indhold</li>
+	<li><code class="bash">echo "tekststreng" >> *fil_navn*</code> - Indsæt "tekststreng" i bunden af en fil - anvendeligt til logs.</li>
+</ul>
 
 <p>Læs mere: <a href="http://askubuntu.com/questions/350208/what-does-2-dev-null-mean" target="_blank">
 http://askubuntu.com/questions/350208/what-does-2-dev-null-mean</a></p>
@@ -727,9 +560,9 @@ http://askubuntu.com/questions/350208/what-does-2-dev-null-mean</a></p>
 <h2>Erstat indhold</h2>
 
 
-<h3><span class="inl_cmd">echo</span></h3>
+<h3>echo</h3>
 
-<p><span class="inl_cmd">echo</span> er en simpel kommando som blot gentager sit input f.eks:</p>
+<p><code class="bash">echo</code> er en simpel kommando som blot gentager sit input f.eks:</p>
 
 <pre class="ubuntu_terminal"><span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ echo "hej"
 hej
@@ -737,22 +570,22 @@ hej
 En længere tekstreng
 </pre>
 
-<p>Umiddelbart virker det lidt tosset at man har sådan en kommando, men senere skal vi se hvordan den kan bruges til at indsætte tekststrenge i andre kommandoer.</p>
+<p>Vi skal bruge <code class="bash">echo</code> til at indsætte tekststrenge ind i andre kommandoer</p>
 
 
-<h3><span class="inl_cmd">tee</span></h3>
+<h3>tee</h3>
 
-<p>Kommandoen virker lidt som <span class="inl_cmd">>></span>, men arbejder med output af en forudgående kommandoe f.eks:</p>
+<p>Kommandoen virker lidt som <code class="bash">>></code>, men arbejder med output af en forudgående kommandoe f.eks:</p>
 
 <code class="cmd">date | tee ~/klokken</code>
 
-<p>Kommandoen vil skrive tidsangivelsen ind i filen <span class="inl_cmd">klokken</span>. Herunder er mit output fra filen ( <span class="inl_cmd">cat ~/klokken</span>):</p>
+<p>Kommandoen vil skrive tidsangivelsen ind i filen <em>klokken</em>. Herunder er mit output fra filen ved hjælp af <code class="bash">cat ~/klokken</code>:</p>
 
 <pre class="black">
 tir apr 12 08:35:42 CEST 2016
 </pre>
 
-<p>Hvis du kører kommandoen flere gange vil du opdage, at den erstatter filens indhold, så der hele tiden kun er en en linie i filen. Hvis du gerne vil have det nye output lagt ind neders i filen anvender du optionen <span class="inl_cmd">-a</span></p>
+<p>Hvis du kører kommandoen flere gange vil du opdage, at den erstatter filens indhold, så der hele tiden kun er en en linie i filen. Hvis du gerne vil have det nye output lagt ind neders i filen anvender du optionen <code class="bash">-a</code></p>
 
 <code class="cmd">date | tee -a ~/klokken</code>
 
@@ -764,7 +597,7 @@ tir apr 12 08:39:19 CEST 2016
 tir apr 12 08:39:21 CEST 2016
 </pre>
 
-<p><span class="inl_cmd">tee</span> kan også anvendes til at indsætte tekstrenge i filer. Herunder opretter vi filen <span class="inl_cmd">testtee</span> i vores hjemmemappe og indsætter tekststrengen <span class="inl_cmd">hej</span>.</p>
+<p><span class="inl_cmd">tee</span> kan også anvendes til at indsætte tekstrenge i filer. Herunder opretter vi filen <em>testtee</em> i vores hjemmemappe og indsætter tekststrengen <em>hej</em>.</p>
 
 <code class="cmd">touch ~/testtee</code>
 <code class="more_cmd">echo "hej" | tee ~/testtee</code>
@@ -777,7 +610,7 @@ hej
 hej
 </pre>
 
-<p>Vær opmærksom på at <span class="inl_cmd">tee</span> som standard erstatter indholdet af filen. Hvis vi vil indsætte en ny linie skal vi anvende omdirigering (markeret med rødt herunder):</p>
+<p>Vær opmærksom på at <code class="bash">tee</code> som standard erstatter indholdet af filen. Hvis vi vil indsætte en ny linie skal vi anvende omdirigering (markeret med rødt herunder):</p>
 
 <pre class="ubuntu_terminal">
 <span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ echo "hej (linie nummer 2)" | tee <span class="red">>></span> ~/testtee
@@ -787,7 +620,7 @@ hej
 hej (linie nummer 2)
 </pre>
 
-<p>Hvis man vil indsætte tekststrenge i filer der ikke er ejet af en selv skal man også anvende <span class="inl_cmd">tee</span>.</p>
+<p>Hvis man vil indsætte tekststrenge i filer der ikke er ejet af en selv skal man også anvende <code class="bash">tee</code>.</p>
 
 <code class="cmd">echo "hejsa root" | sudo tee /root/hej</code>
 
@@ -798,26 +631,20 @@ hejsa root
 hejsa root
 </pre>
 
-<p>Læg mærke til at der først skal <span class="inl_cmd">sudo</span> på efter pipen. Det skyldes at det først er under skrivningen af filen vi skal anvende root's rettigheder.</p>
+<p>Læg mærke til at der først skal <code class="bash">sudo</code> på efter pipen. Det skyldes at det først er under skrivningen af filen vi skal anvende root's rettigheder.</p>
 
-<h3><span class="inl_cmd">sed</span></h3>
+<h3>sed</h3>
 
-<p><span class="inl_cmd">sed</span> anvendes til at filtrere og transformere tekst i filer. Her vil vi kun se hvordan vi kan erstatte tekst ved hjælp af <span class="inl_cmd">sed</span>. Generelt fungerer kommandoen på følgende måde hvis man vil erstatte <span class="inl_cmd">a</span> med <span class="inl_cmd">b</span>:</p>
+<p><code class="bash">sed</code> anvendes til at filtrere og transformere tekst i filer. Her vil vi kun se hvordan vi kan erstatte tekst ved hjælp af <code class="bash">sed</code>. Generelt fungerer kommandoen på følgende måde hvis man vil erstatte <em>a</em> med <em>b</em>:</p>
 
 <code class="cmd">sed -i s,a,b,*filnavn*</code>
 
 <ol class="disc">
-	<li>Opret <span class="inl_cmd">sedfil</span></li>
+	<li>Opret <span class="inl_cmd">sedfil</span> <code class="bash">touch sedfil</code></li>
 	
-	<code class="cmd">touch sedfil</code>
+	<li>Skriv tekst ind i filen: <code class="bash">echo "Hej jeg hedder Kurt-Georg" > sedfil</code></li>
 	
-	<li>Skriv tekst ind i filen</li>
-	
-	<code class="cmd">echo "Hej jeg hedder Kurt-Georg" > sedfil</code>
-	
-	<li>Erstat <span class="inl_cmd">Kurt-Georg</span> med dit eget navn</li>
-	
-	<code class="cmd">sed -i s,Kurt-Georg,Thomas, sedfil</code>
+	<li>Erstat <span class="inl_cmd">Kurt-Georg</span> med dit eget navn: <code class="bash">sed -i s,Kurt-Georg,Thomas, sedfil</code></li>
 	
 </ol>
 
@@ -831,7 +658,7 @@ Mit navn er Kurt-Georg
 Mit navn er Thomas
 </pre>
 
-<p>Hvis du kommer i en situation, hvor du skal indsætte kommaer (<span class="inl_cmd">,</span>) i teksten kan du bruge <span class="inl_cmd">/</span> som separator.</p>
+<p>Hvis du kommer i en situation, hvor du skal indsætte kommaer i teksten kan du bruge <em>/</em> som escape character.</p>
 
 <code class="cmd">sed -i s/a/b/*filnavn*</code>
 
@@ -841,14 +668,14 @@ Mit navn er Thomas
 <h2>Lukke computer</h2>
 
 	
-<h3><span class="inl_cmd">reboot</span></h3>	
+<h3>reboot</h3>	
 	
 <p>Denne kommando genstarter computeren. Den skal køres med root-rettigheder.</p>	
 
-<code class="cmd">sudo reboot</code>
+<code class="bash">sudo reboot</code>
 	
 
-<h3><span class="inl_cmd">shutdown</span></h3>
+<h3>shutdown</h3>
 
 <p>En server lukkes ned med kommandoen:</p>
 
@@ -856,40 +683,22 @@ Mit navn er Thomas
 
 <p>Eksempel</p>
 
-<table class="cmd_table">
-	<thead>
-		<tr>
-			<th scope="col"></th>
-			<th scope="col"></th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>shutdown -h 0</td>
-			<td>Computeren lukkes ned nu</td>
-		</tr>
-		<tr>
-			<td>shutdown -h 10 Computeren lukkes ned om 10 minutter</td>
-			<td>Computeren lukkes ned om 10 minutter med budskabet ”Computeren lukkes ned om 10 minutter”</td>
-		</tr>
-		<tr>
-			<td>shutdown -r 0</td>
-			<td>Serveren genstartes om 0 minutter</td>
-		</tr>
-	</tbody>
-</table>
+<ul class="disc">
+	<li><code class="bash">shutdown -h 0</code> - Computeren lukkes ned nu</li>
+	<li><code class="bash">shutdown -h 10 Computeren lukkes ned om 10 minutter</code> - Computeren lukkes ned om 10 minutter med budskabet ”Computeren lukkes ned om 10 minutter”</li>
+	<li><code class="bash">shutdown -r 0</code> - Computeren genstartes om 0 minutter</li>
+</ul>
 
-<p>man-page: <span class="inl_cmd">shutdown</span>
-<a href="http://manpages.ubuntu.com/manpages/trusty/en/man8/shutdown.8.html" target="_blank">
+
+<p>man-page shutdown: <a href="http://manpages.ubuntu.com/manpages/trusty/en/man8/shutdown.8.html" target="_blank">
 http://manpages.ubuntu.com/manpages/trusty/en/man8/shutdown.8.html</a></p>
 
-<p>man-page: <span class="inl_cmd">reboot</span>
-<a href="http://manpages.ubuntu.com/manpages/trusty/man8/reboot.8.html" target="_blank">
+<p>man-page reboot: <a href="http://manpages.ubuntu.com/manpages/trusty/man8/reboot.8.html" target="_blank">
 http://manpages.ubuntu.com/manpages/trusty/man8/reboot.8.html</a></p>
 
 <h2>Pakke programmer</h2>
 
-<h3><span class="inl_cmd">tar</span></h3>
+<h3>tar</h3>
 
 <p>Når man skal downloade Linuxprogrammer vil man ofte downloade dem som <span class="inl_cmd">tar</span>-filer. <span class="inl_cmd">tar</span> står for <span class="inl_cmd">T</span>ape <span class="inl_cmd">Archive</span> og er i sin oprindelige form blot en måde at lægger sekventielt efter hinanden, så de kan læses fra et bånd. Selvom man ikke anvender bånd til at lagre filer mere, er komprimerede <span class="inl_cmd">tar</span>-pakker standard for at pakke programmer på Linux. <span class="inl_cmd">tar</span>-filer bliver også kaldt <span class="inl_cmd">tarballs</span>.</p>
 
@@ -962,48 +771,15 @@ gif/the bird/thebird04.gif
 
 <p>Generelt gælder følgende options:</p>
 
-<table class="">
-	<thead>
-		<tr>
-			<th scope="col">Option</th>
-			<th scope="col">Beskrivelse</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>c</td>
-			<td>Lav (create) et arkiv</td>
-		</tr>
-		<tr>
-			<td>x</td>
-			<td>Udpak (extract)</td>
-		</tr>
-		<tr>
-			<td>v</td>
-			<td>Vis fremgangen når der arbejdes</td>
-		</tr>
-		<tr>
-			<td>f</td>
-			<td>Arkivets filnavn</td>	
-		</tr>
-		<tr>
-			<td>t</td>
-			<td>Se indholdet af filen</td>
-		</tr>
-		<tr>
-			<td>j</td>
-			<td>Opret en <span class="inl_cmd">bzip2</span> pakket fil</td>
-		</tr>
-		<tr>
-			<td>z</td>
-			<td>Opret en <span class="inl_cmd">gzip</span> pakket fil</td>
-		</tr>
-		<tr>
-			<td>wildcards</td>
-			<td>Udvælg filer ved hjælp af <span class="inl_cmd">*</span></td>
-		</tr>
-	</tbody>
-</table>
+<ul class="disc">
+	<li><code class="bash">c</code> - lav (create) et arkiv</li>
+	<li><code class="bash">x</code> - udpak (extract)</li>
+	<li><code class="bash">v</code> - vis fremgang</li>
+	<li><code class="bash">f</code> - filarkivets navn</li>
+	<li><code class="bash">t</code> - se indholdet af filen</li>
+	<li><code class="bash">j</code> - opret en <em>bzip2</em> pakket fil</li>
+	<li><code class="bash">z</code> - opret en <em>gzip</em> pakket fil</li>
+</ul>
 
 
 <p>Læs mere: <a href="http://www.tecmint.com/18-tar-command-examples-in-linux/" target="_blank">http://www.tecmint.com/18-tar-command-examples-in-linux/</a></p>
@@ -1176,7 +952,8 @@ gif/lachifre.gif
 
 <span class="afsnit">Kort opsumeret</span>
 
-<p>Hvis man skal konkluderer noget må det være, at forskellen mellem <span class="inl_cmd">gzip</span> pg <span class="inl_cmd">bzip2</span> er minimal. Det man vinder ved at anvende <span class="inl_cmd">bzip2</span> er at de pakkede filer fylder lidt mindre. <span class="inl_cmd">lzma</span> kan anvendes med fordel når det drejer sig om backup af store mængder af data, så vil det fylde mindre end ved <span class="inl_cmd">gzip</span> og stadig have en god udpakningshastighed. En ren win-win.</p>
+<p>Brug <em>gzip</em> til dagligdags arbejde, og brug <em>lzma</em> når der tages backup af store mængder, f.eks. backups af drev eller store projekter.</p>
+
 
 	
 </div><!-- end: col-md-9 -->

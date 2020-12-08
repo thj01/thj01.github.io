@@ -223,6 +223,12 @@ background-color: #FAFAD2   ;
 
 }
 
+blockquote.alert:before {
+
+content: "Vær opmærksom på";
+}
+
+
 blockquote.center{
 
 text-align: center;

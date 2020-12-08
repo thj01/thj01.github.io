@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="da">
 <head>
-  <title>Term 2</title>
+  <title>Filsystemet</title>
   <link rel="icon" href="../images/favicon.png">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -39,7 +39,7 @@
 	
 <div class="col-xs-9">
 	
-<h1>Kommandoer: Filsystemet</h1>
+<h1>Terminalen: Filsystemet</h1>
 	
 <p>Herunder får du præsenteret en række kommandoer, som giver dig mulighed for at administrere systemet, manipulere med filer, få informationer om hardware og netværk.</p>
 
@@ -157,28 +157,23 @@
 
 <h2>Mappestruktur</h2>
 
-<p>Herunder er mappestrukturen for <span class="inl_cmd">/home</span> vist.</p>
+<p>Herunder er mappestrukturen for <span class="inl_cmd">/home</span>.</p>
 
 <pre class="black">
 /
 └── home
 	└── tj
 		├── Billeder
-		├── bin
 		├── Dokumenter
 		├── Hentet
 		├── Musik
 		├── Offentligt
-		├── public_html
-		│   ├── css
-		│   ├── images
-		│   └── js
 		├── Skabeloner
 		├── Skrivebord
 		├── Videoklip
 </pre>
 
-<p>Stien til mappen <span class="inl_cmd">Hentet</span> er: <span class="inl_cmd">/home/tj/Hentet</span>.</p>
+<p>Stien til mappen Hentet er: <em>/home/tj/Hentet</em>.</p>
 
 <ol start="0" class="">
 	<li>niveau - / (roden)</li>
@@ -189,144 +184,71 @@
 
 <h2>Filer</h2>
 
-<p>Linux anvender modsat windows både de store og små bogstaver i alfabetet. Derfor vil der under Linux være forskel på filerne <span class="inl_cmd">data</span> og <span class="inl_cmd">Data</span> og brugerne <span class="inl_cmd">tj</span> og <span class="inl_cmd">Tj</span>.</p>
+<p>Linux anvender modsat windows både de store og små bogstaver i alfabetet. Derfor vil der under Linux være forskel på filerne <em>data</em> og <em>Data</em> og brugerne <em>tj</em> og <em>Tj</em>.</p>
 
 <p>I Linux er der 3 grundlæggende rettigheder vi kan give filer og mapper: read, write og execute (læse, skrive og udføre).</p>
 
-<table class="">
-	<thead>
-		<tr>
-			<th scope="col">Rettighed</th>
-			<th scope="col">Forklaring</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>r - <b>R</b>ead (læse)</td>
-			<td>Man kan se indholdet af filen.</td>
-		</tr>
-		<tr>
-			<td>w - <b>W</b>rite (skrive)</td>
-			<td>Man kan ændre på indholdet i filen. Hvis der ikke er læse-rettigheder kan man ikke se indholdet, men man kan stadig ændre i den. Det kan f.eks. være logfiler som der skal skrives i, men som kun <span class="inl_cmd">root</span> skal læse i</td>
-		</tr>
-		<tr>
-			<td>x - e<b>X</b>ecute (udførelse)</td>
-			<td>Filen kan tolkes som et program og derfor køres af operativsystemet.</td>
-		</tr>
-	</tbody>
-</table>
+<ul class="disc">
+	<li>Læse - man kan se indholdet.</li>
+	<li>Skrive - man kan ændre indholdet</li>
+	<li>Eksekvere - kan kan køre filen som et progam</li>
+</ul>
 
-<p>Det er ved hjælp af disse rettigheder at filens egenskaber er styret. I windows kan programmer genkendes ved deres efternavn f.eks. <span class="inl_cmd">.exe</span> eller <span class="inl_cmd">.msi</span>. I Linux bliver en tekstfil til et program, ved at man tilføjer execute rettighedet. </p>
 
-<p>Man anvender også efternavne på filer i Linux, for at de bliver læsbare for brugeren. Det gælder f.eks for tekstfiler som: <span class="inl_cmd">*.pdf</span> og <span class="inl_cmd">*.odt</span>, grafikformater som <span class="inl_cmd">*.jpg</span> og <span class="inl_cmd">*.png</span> og til at kende forskellige filtyper fra hinanden f.eks: <span class="inl_cmd">.sh</span> til shellscript og <span class="inl_cmd">.py</span> til Python-filer.</p>
+<p>Det er ved hjælp af disse rettigheder at filens egenskaber er styret. I windows kan programmer genkendes ved deres efternavn f.eks. <em>.exe</em> eller <em>.msi</em>. I Linux bliver en tekstfil til et program, ved at man tilføjer execute rettighedet. </p>
+
+<p>Man anvender også efternavne på filer i Linux, for at de bliver læsbare for brugeren. Det gælder f.eks for tekstfiler som: <em>*.pdf</em> og <em>*.odt</em>, grafikformater som <em>*.jpg</em> og <em>*.png</em> og til at kende forskellige filtyper fra hinanden f.eks: <em>.sh</em> til shellscript og <em>.py</em> til Python-filer.</p>
 
 <h2>Navigation</h2>
 
 <p>For at navigere rundt i og orientere sig i filsystemet anvender man følgende kommandoer:</p>
 
 <ul class="disc">
-	<li><span class="inl_cmd">cd</span> - change directory</li>
-	<li><span class="inl_cmd">ls</span> - list</li>
-	<li><span class="inl_cmd">pwd</span> - print working directory</li>
-	<li><span class="inl_cmd">tree</span> – viser filerne i træstruktur </li>
+	<li><em>cd</em> - change directory</li>
+	<li><em>ls</em> - list</li>
+	<li><em>pwd</em> - print working directory</li>
+	<li><em>tree</em> - viser filerne i træstruktur </li>
 </ul>
 
 <p>Herunder angives eksempler med kommandoerne:</p>
 
-<h2><span class="inl_cmd">cd</span></h2>
+<h2>cd - change directory</h2>
 
-<table class="cmd_table">
-	<thead>
-		<tr>
-			<th scope="col"></th>
-			<th scope="col"></th>
-		</tr>
-	</thead>
-		<tbody>
-		<tr>
-			<td>cd /etc/apt</td>
-			<td>Skift til mappen <span class="inl_cmd">/etc/apt</span></td>
-		</tr>
-		<tr>
-			<td>cd /</td>
-			<td>Skift til roden af filstrukturen</td>
-		</tr>
-		<tr>
-			<td>cd ..</td>
-			<td>Gå et mappeniveau ned</td>
-		</tr>
-		<tr>
-			<td>cd ~</td>
-			<td>Skift til din hjemmemappe</td>
-		</tr>
-	</tbody>
-</table>
 
-<h2><span class="inl_cmd">ls</span></h2>
+<ul class="disc">
+	<li><code class="bash">cd /etc/apt</code> - Skift til mappen <em>/etc/apt</em></li>
+	<li><code class="bash">cd /</code> - Skift til roden af filstrukturen</li>
+	<li><code class="bash">cd ..</code> - Gå et mappeniveau ned</li>
+	<li><code class="bash">cd ~</code> - Skift til din hjemmemappe</li>
+</ul>
 
-<table class="cmd_table">
-	<thead>
-		<tr>
-			<th scope="col"></th>
-			<th scope="col"></th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>ls</td>
-			<td>Viser fil- og mappenavne</td>
-		</tr>
-		<tr>
-			<td>ls -l</td>
-			<td>udvidet visning (rettigheder,ejerskab, størrelse, dato)</td>
-		</tr>
-		<tr>
-			<td>ls -al</td>
-			<td>Udvidet visning med de skjulte filer/mapper</td>
-		</tr>
-		<tr>
-			<td>ls -al /etc/log</td>
-			<td>Udvidet visning af <span class="inl_cmd">/etc/log</span></td>
-		</tr>
-		<tr>
-			<td>ls -d</td>
-			<td>Vis kun filer</td>
-		</tr>
-		<tr>
-			<td>ls -d .*</td>
-			<td>Vis kun skjulte filer</td>
-		</tr>
-		<tr>
-			<td>ls -d */</td>
-			<td>Viser kun mapper</td>
-		</tr>
-	</tbody>
-</table>
 
-<h2><span class="inl_cmd">pwd</span></h2>
+<h2>ls - list</h2>
 
-<table class="cmd_table">
-	<thead>
-		<tr>
-			<th scope="col"></th>
-			<th scope="col"></th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>pwd</td>
-			<td>Viser hvor man er i filsystemet</td>
-		</tr>
-	</tbody>
-</table>
+<ul class="disc">
+	<li><code class="bash">li</code> - Viser filer og mappenavne</li>
+	<li><code class="bash">ls -l</code> - Udvidet visning (rettigheder, ejerskab, størrelse og dato)</li>
+	<li><code class="bash">ls -al</code> - Udvidet visning med skulte filer/mapper</li>
+	<li><code class="bash">ls -al /etc/log</code> - Udvidet visning af <em>/etc/log</em></li>
+	<li><code class="bash">ls -d</code> - viser kun filer</li>
+	<li><code class="bash">ls -d .*</code> - viser kun skjulte</li>
+	<li><code class="bash">ls -d */</code> - viser kun skjulte mapper</li>
+</ul>
 
-<h2><span class="inl_cmd">tree</span></h2>
 
-<p><span class="inl_cmd">tree</span> viser indholdet af en mappe i en træstruktur. Det følger ikke med som standard og skal derfor installeres først</p>
 
-<code class="cmd">sudo apt install tree -y</code>
+<h2>pwd - print working directory</h2>
 
-<p>Det kan f.eks. bruges til vise filstrukturen som herunder <span class="inl_cmd">tree /usr -d -L 1</span></p>
+<ul class="disc">
+<li><code class="bash">pwd</code> - viser hvor man er i filsystemet</li></ul>
+
+<h2>tree</h2>
+
+<p><code class="bash">tree</code> viser indholdet af en mappe i en træstruktur. Det følger ikke med som standard og skal derfor installeres.</p>
+
+<code class="bash">sudo apt install tree -y</code>
+
+<p>Det kan f.eks. bruges til vise filstrukturen, f.eks: <code class="bash">tree /usr -d -L 1</code></p>
 
 <pre class="ubuntu_terminal">
 <span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ tree /usr -d -L 1	
@@ -343,58 +265,25 @@
 9 directories
 </pre>
 
-<p>Kommandoen udvider ls ved at man kan vise det i flere niveauer. Prøv f.eks. at køre kommandoen:</p>
+<p>Kommandoen udvider ls ved at man kan vise det i flere niveauer. Prøv f.eks. at køre kommandoen: <code class="bash">tree /usr -d -L 2</code></p>
 
-<code class="cmd">tree /usr -d -L 2</code>
+<ul class="disc">
+	<li><code class="bash">tree</code> - Viser filerne i træstruktur</li>
+	<li><code class="bash">tree /usr</code> - Viser filerne i mappen <em>/usr</em></li>
+	<li><code class="bash">tree /usr -d</code> - Viser kun mapper i <em>/usr</em></li>
+	<li><code class="bash">tree /usr -d -L 1</code> - Viser kun mapper i <em>/usr</em> i et niveau</li>
+	<li><code class="bash">tree /usr -du -L 1</code> - Viser kun mapper i <em>/usr</em> i et niveau med ejerskab</li>
+	<li><code class="bash">tree /usr -du -L 1</code> - Viser kun mapper i <em>/usr</em> i et niveau med filstørrelse</li>
+	<li><code class="bash">tree /usr -dirsfirst -L 1</code> - Viser alle filer i <em>/usr</em> med mapperne først</li>
+	<li><code class="bash">tree /usr -pua -dirsfirst</code> - viser filerne med rettigheder og ejer ... og sætter mapperne først</li>
 
-<table class="cmd_table">
-	<thead>
-		<tr>
-			<th scope="col"></th>
-			<th scope="col"></th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>tree</td>
-			<td>Viser filerne i træ struktur i den lokale mappe</td>
-		</tr>
-		<tr>
-			<td>tree /usr</td>
-			<td>Viser træstrukturen i mappen <span class="inl_cmd">/usr</span></td>
-		</tr>
-		<tr>
-			<td>tree /usr -d</td>
-			<td>Viser kun mapper i <span class="inl_cmd">/usr</span></td>
-		</tr>
-		<tr>
-			<td>tree /usr -d -L 1</td>
-			<td>Viser mapperne i <span class="inl_cmd">/usr</span> i et niveauer</td>
-		</tr>
-		<tr>
-			<td>tree /usr -du -L 1</td>
-			<td>Viser mapperne i <span class="inl_cmd">/usr</span> i et niveauer med ejerskab</td>
-		</tr>
-		<tr>
-			<td>tree /usr --du -L 1</td>
-			<td>Viser mapperne i <span class="inl_cmd">/usr</span> i et niveauer med filstørrelser</td>
-		</tr>
-		<tr>
-			<td>tree /usr --dirsfirst -L 1</td>
-			<td>Viser alle filerne i <span class="inl_cmd">/usr</span> og sætter mapperne først.</td>
-		</tr>
-		<tr>
-			<td>tree /usr -pua --dirsfirst</td>
-			<td>Viser filerne med rettigheder og ejer og sætter mapperne først</td>
-		</tr>
-	</tbody>
-</table>
+</ul>
 
 <h2>Størrelse af filer</h2>
 
-<h3><span class="inl_cmd">du</span> - Disk usage</h3>
+<h3>du - Disk usage</h3>
 
-<p>For at se hvor meget filerne i en folder fylder anvendes <span class="inl_cmd">du</span>.</p>
+<p>For at se hvor meget filerne i en folder fylder anvendes <code class="bash">du</code>.</p>
 
 <code class="cmd">du -hs ~</code>
 
@@ -405,46 +294,26 @@
 2,6M	/home/thoj
 </pre>
 
-<h3><span class="inl_cmd">df</span></h3>
+<h3>df - disk free</h3>
 
-<p>For at se den brugte plads på en partition anvendes kommandoen <span class="inl_cmd">df</span></p>
+<p>For at se den brugte plads på en partition anvendes kommandoen <code class="bash">df</code></p>
 
 <code class="cmd">df -h *partition*</code>
 
 <p><span class="inl_cmd">-h</span> gør at, størrelsen vises i MB og GB i stedet for Kb.</p>
 
-<table class="cmd_table">
-	<thead>
-		<tr>
-			<th scope="col"></th>
-			<th scope="col"></th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>df -h</td>
-			<td>Viser brugt plads på alle mountede partitioner i GB</td>
-		</tr>
-		<tr>
-			<td>df -h /</td>
-			<td>Viser brugt plads på <span class="inl_cmd">/</span></td>
-		</tr>
-		<tr>
-			<td>df -h -t ext4 </td>
-			<td>Viser informationer om partitioner der er formateret med ext4</td>
-		</tr>
-		<tr>
-			<td>df -h -x tmpfs </td>
-			<td>Viser informationer om partitioner der <span class="inl_cmd">IKKE</span> er formateret med tmpfs</td>
-		</tr>
-		<tr>
-			<td>df -hT /</td>
-			<td>Viser også hvilket filsystem der anvendes</td>
-		</tr>
-	</tbody>
-</table>
+<ul class="disc">
+	<li><code class="bash">df -h</code> - Viser brugt plads på alle monterede partitioner</li>
+	<li><code class="bash">df -h /</code> - Viser brugt plads på <em>/</em></li>
+	<li><code class="bash">df -h -t ext4</code> - Viser informationer om partitioner der er formateret med ext4</li>
+	<li><code class="bash">df -h -x tmpfs</code> - Viser informationer om partitioner der <em>IKKE</em> er formateret med tmpfs</li>
+	<li><code class="bash">df -hT</code> - Viser anvendt filsystem</li>
+	
+	
+</ul>
 
-<p>Læg mærke til at <span class="inl_cmd">df</span> viser pladsforbrug på den valgte partition, hvis du vælger en mappe derpå.</p>
+
+<p>Læg mærke til at <code class="bash">df</code> viser pladsforbrug på den valgte partition, hvis du vælger en mappe derpå.</p>
 
 <pre class="ubuntu_terminal">
 <span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ df -h -t ext4

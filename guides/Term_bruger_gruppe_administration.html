@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="da">
 <head>
-  <title>Term 4</title>
+  <title>Brugeradministration</title>
   <link rel="icon" href="../images/favicon.png">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -39,13 +39,13 @@
 	
 <div class="col-xs-9">
 
-<h1>Brugeradministration</h1>
+<h1>Terminalen: Brugeradministration</h1>
 
 <p>Alle rettigheder i Linux er sat ud fra ejerskab. Tilgængeligheden af filer, mapper og enheder bliver styret af disse brugerrettigigheder </p>
 
-<h2><span class="inl_cmd">adduser / deluser</span></h2>
+<h2>adduser / deluser</h2>
 
-<p>Man opretter og sletter brugere med kommandown <span class="inl_cmd">adduser</span>. Herunder opretter jeg brugeren <span class="inl_cmd">testuser</span>.</p>
+<p>Man opretter og sletter brugere med kommandown <code class="bash">adduser</code>. Herunder opretter jeg brugeren <em>testuser</em>.</p>
 
 <code class="cmd">sudo adduser testuser</code>
 
@@ -80,31 +80,44 @@ Er informationerne korrekte? [J/n] <span class="red">[Retur]</span>
 </pre>
 
 
-<p>For at slette en bruger anvendes kommandoen <span class="inl_cmd">deluser</span></p>
+<p>For at slette en bruger anvendes kommandoen <code class="bash">deluser</code></p>
 
 <code class="cmd">sudo deluser testuser</code>
 
-<p>Anvender man ovenstående kommando bliver brugerens hjemmemappe ikke slettet. For at slette alle brugerens filer skal der tilføjes<span class="inl_cmd">--remove-home</span> - altså:</p>
+<p>Anvender man ovenstående kommando bliver brugerens hjemmemappe ikke slettet. For at slette alle brugerens filer skal der tilføjes <code class="bash">--remove-home</code> - altså:</p>
 
 <code class="cmd">sudo deluser testuser --remove-home</code>
 
-<p>man-page <span class="inl_cmd">adduser</span>: 
+<p>man-page adduser: 
 <a href="http://manpages.ubuntu.com/manpages/trusty/man8/adduser.8.html" target="_blank">
 http://manpages.ubuntu.com/manpages/trusty/man8/adduser.8.html</a></p>
 
-<p>man-page <span class="inl_cmd">deluser</span>: 
+<p>man-page deluser: 
 <a href="http://manpages.ubuntu.com/manpages/trusty/en/man8/deluser.8.html" target="_blank">
 http://manpages.ubuntu.com/manpages/trusty/en/man8/deluser.8.html</a></p>
 
-<h2><span class="inl_cmd">useradd</span></h2>
+<h2>useradd</h2>
 
-<p>Når man anvender <span class="inl_cmd">adduser</span> er det egentlig en scriptfil der arbejder med kommandoen <span class="inl_cmd">useradd</span>. <span class="inl_cmd">useradd</span> giver mulighed for at man kan sætte en bruger op i detaljer med en længere kommando. Kommanden anvendes ved at man tilføjer konfigurationen bagefter.</p>
+<p>Når man anvender <code class="bash">adduser</code> er det egentlig en scriptfil der arbejder med kommandoen <code class="bash">useradd</code>. <code class="bash">useradd</code> giver mulighed for at man kan sætte en bruger op i detaljer med en længere kommando. Kommanden anvendes ved at man tilføjer konfigurationen bagefter.</p>
 
-<p>Du kan læse om <span class="inl_cmd">useradd</span> her: <a href="https://www.tecmint.com/add-users-in-linux/" target="_blank">https://www.tecmint.com/add-users-in-linux/</a>.</p>
+<p>Du kan læse om <code class="bash">useradd</code> her: <a href="https://www.tecmint.com/add-users-in-linux/" target="_blank">https://www.tecmint.com/add-users-in-linux/</a>.</p>
 
-<h2><span class="inl_cmd">id</span></h2>
+<h2>Administration af grupper</h2>
 
-<p>Checke om en bruger findes anvendes <span class="inl_cmd">id</span>.</p>
+<ul class="disc">
+	<li><code class="bash">Addgroup testgruppe</code> - Tilføjer gruppen testgruppe</li>
+	<li><code class="bash">Delgroup testgruppe</code> - Fjerner testgruppe</li>
+	<li><code class="bash">Adduser test testgruppe</code> - Tilføjer brugeren test til gruppen testgruppe</li>
+	<li><code class="bash">Deluser test testgruppe</code> - Fjerner brugeren test fra gruppe testgruppe</li>
+</ul>
+
+<p>Manpages til add- og delgroup er de samme som add- og deluser.</p>
+
+<p>Grupperne og deres medlemmer kan ses i filen <span class="inl_cmd">/etc/group</span>.</p>
+
+<h2>id</h2>
+
+<p>Checke om en bruger findes anvendes <code class="bash">id</code>.</p>
 
 <code class="cmd">id *brugernavn*</code>
 
@@ -115,38 +128,22 @@ uid=1000(tj) gid=1000(tj) grupper=1000(tj),4(adm),24(cdrom),27(sudo),30(dip),46(
 id: hugo: ingen sådan bruger
 </pre>
 
+<h2>usermod</h2>
 
+<p><code class="bash">usermod</code> anvendes til at ændre på brugerens konto.</p>
 
-<h2><span class="inl_cmd">usermod</span></h2>
+<ul class="disc">
+	<li><code class="bash">usermod -L testuser2</code> - Lås testuser2' konto</li>
+	<li><code class="bash">usermod -U testuser2</code> - Åbn testuser2' konti</li>
+</ul>
 
-<p><span class="inl_cmd">usermod</span> anvendes til at ændre på brugerens konto.</p>
-
-<table class="cmd_table">
-	<thead>
-		<tr>
-			<th scope="col"></th>
-			<th scope="col"></th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>usermod -L testuser2</td>
-			<td>Lås testuser2' konto</td>
-		</tr>
-		<tr>
-			<td>usermod -U testuser2</td>
-			<td>Åbn testuser2' konti</td>
-		</tr>
-	</tbody>
-</table>
-
-<p>man-page <span class="inl_cmd">usermod</span>: 
+<p>man-page usermod: 
 <a href="http://manpages.ubuntu.com/manpages/trusty/en/man8/usermod.8.html" target="_blank">
 http://manpages.ubuntu.com/manpages/trusty/en/man8/usermod.8.html</a></p>
 
-<h2><span class="inl_cmd">chage</span></h2>
+<h2>chage</h2>
 
-<p><span class="inl_cmd">chage</span> anvendes til at konfigurere brugerens password og måden de skal fornys på. Hvis man ønsker at få et overblik over hvordan brugerens indstillinger kan man anvende kommandoen: </p>
+<p><code class="bash">chage</code> anvendes til at konfigurere brugerens password og måden de skal fornys på. Hvis man ønsker at få et overblik over hvordan brugerens indstillinger kan man anvende kommandoen: </p>
 
 <code class="cmd">sudo chage -l testuser2</code>
 
@@ -182,7 +179,7 @@ Angiv ny værdi eller tryk RETUR for standardværdien
 	Udløbsdato for konto (ÅÅÅÅ-MM-DD) [-1]: <span class="red">&lt;-- ny værdi eller [Enter]</span>
 </pre>
 
-<p>Hvis man ønsker at brugeren skal ændre sit passeword wed første login kan man anvende kommandoen <span class="inl_cmd">chage</span> med en option. Herunder laver vi ændringen for <span class="inl_cmd">testuser2</span></p>
+<p>Hvis man ønsker at brugeren skal ændre sit passeword wed første login kan man anvende kommandoen <code class="bash">chage</code> med en option. Herunder laver vi ændringen for <em>testuser2</em></p>
 
 <code class="cmd">sudo chage -d 0 testuser2</code>
 
@@ -198,53 +195,21 @@ Genindtast ny UNIX-adgangskode:
 <span class="green1">testuser2@tj-VirtualBox</span>:<span class="blue1">/home/tj</span>$
 </pre>
 
-<p>man-page <span class="inl_cmd">chage</span>: 
+<p>man-page chage: 
 <a href="http://manpages.ubuntu.com/manpages/trusty/en/man1/chage.1.html" target="_blank">
 http://manpages.ubuntu.com/manpages/trusty/en/man1/chage.1.html</a></p>
 
-<h2>Administration af grupper</h2>
-
-<table class="cmd_table">
-	<thead>
-		<tr>
-			<th scope="col"></th>
-			<th scope="col"></th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>Addgroup testgruppe</td>
-			<td>Tilføjer gruppen testgruppe</td>
-		</tr>
-		<tr>
-			<td>Delgroup testgruppe</td>
-			<td>Fjerner testgruppe</td>
-		</tr>
-		<tr>
-			<td>Adduser test testgruppe</td>
-			<td>Tilføjer brugeren test til gruppen testgruppe</td>
-		</tr>
-		<tr>
-			<td>Deluser test testgruppe</td>
-			<td>Fjerner brugeren test fra gruppe testgruppe</td>
-		</tr>
-	</tbody>
-</table>
-
-<p>Manpages til add- og delgroup er de samme som add- og deluser.</p>
-
-<p>Grupperne og deres medlemmer kan ses i filen <span class="inl_cmd">/etc/group</span>.</p>
 
 
-<h2><span class="inl_cmd">sudo</span>-gruppen</h2>
+<h2>sudo-gruppen</h2>
 
-<p><span class="inl_cmd">sudo</span>-gruppen er en af de vigtiste grupper på et Linux-system, da disse brugere har ret til at udføre system- og administrationsarbejde.</p>
+<p><em>sudo-gruppen</em> er en af de vigtiste grupper på et Linux-system, da disse brugere har ret til at udføre system- og administrationsarbejde.</p>
 
 <code class="cmd">sudo adduser *brugernavn* sudo </brugernavn></code>
 
 <p>Hvis man tilføjer en bruger gennem en terminal der er startet på en desktop skal man genstarte GUI'en, dvs. logge af og på igen. Det skyldes at GUI terminalen kører under samme session som GUI'en. For at genindlæse rettigheder osv. bliver man altså nød til at logge af og på igen.</p>
 
-<p>For at se hvilke brugere der tilhører <span class="inl_cmd">sudo</span> gruppen kan du køre:</p>
+<p>For at se hvilke brugere der tilhører <em>sudo-gruppen</em> kan du køre:</p>
 
 <code class="cmd">cat /etc/group | grep sudo</code>
 

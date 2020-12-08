@@ -1,0 +1,97 @@
+div.eksempel {
+
+border: 2px solid #444444;
+border-radius: 15px;
+padding: 40px 20px	20px 60px;
+margin: 60px
+}
+
+div.eksempel::before {
+
+content: "Eksempel";
+margin: -60px -0px 10px -40px;
+padding: 3px 0px 3px 14px;
+font-size: 1.2em;
+width: 110px;
+background-color: white;
+display: block;
+font-weight: 700;
+border: 2px solid #444444;
+border-radius: 8px;
+}
+
+div.alert {
+
+border: 2px solid #444444;
+border-radius: 15px;
+padding: 40px 20px	10px 60px;
+margin: 60px;
+background-color: #faf3e9;
+
+}
+
+div.alert::before {
+
+content: "Vær opmærksom på";
+margin: -60px -0px 10px -40px;
+padding: 3px 0px 3px 14px;
+font-size: 1.2em;
+width: 194px;
+background-color: #faf3e9;
+display: block;
+font-weight: 700;
+border: 2px solid #444444;
+border-radius: 8px;
+}
+
+
+div.fakta {
+
+border: 2px solid #444444;
+border-radius: 15px;
+padding: 40px 20px	30px 60px;
+margin: 60px;
+
+}
+
+div.fakta::before {
+
+content: "Fakta Boks";
+margin: -60px -0px 10px -40px;
+padding: 3px 0px 3px 14px;
+font-size: 1.2em;
+width: 120px;
+background-color: white;
+display: block;
+font-weight: 700;
+border: 2px solid #444444;
+border-radius: 8px;
+
+}
+
+div.idle {
+
+border: 2px solid #444444;
+border-radius: 15px;
+padding: 90px 20px	30px 60px;
+margin: 60px;
+background-color: #f0f0f0;
+white-space: pre;
+
+}
+
+div.idle::before {
+
+content: "IDLE output";
+margin: -107px -0px 30px -40px;
+padding: 3px 0px 3px 14px;
+font-size: 1.2em;
+width: 150px;
+background-color: white;
+color: #444444;
+display: block;
+font-weight: 700;
+border: 2px solid #444444;
+border-radius: 8px;
+
+}

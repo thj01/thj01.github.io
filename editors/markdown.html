@@ -72,47 +72,17 @@
 
 <h2>Tekst</h2>
 
-<h3>Escape'd tegn</h3>
-
-<p>Skal man anvende tegn i sin tekst, der også anvendes i markup language, skal man "escape" dem. Det gøres ved at indsætte \ (backslash) foran. Det gælder følgende tegn:</p>
-
-<table class="_">
-
-	<tbody>
-		<tr>
-			<td>\ backslash</td>
-			<td>` backtic</td>
-			<td>* asterisk</td>
-			<td>_ underscore</td>
-
-		</tr>
-		<tr>
-			<td>{} curly brackets</td>
-			<td>[] brackets</td>
-			<td>() Paranteser</td>
-			<td># hash</td>
-		</tr>
-		<tr>
-			<td>+ plus</td>
-			<td>- minus</td>
-			<td>. punktum</td>
-			<td>! udråbstegn</td>
-		</tr>
-	</tbody>
-</table>
 
 <h3>Overskrifter</h3>
 
-<pre>
-	<code class="markdown">
-# Overskrift 1
+<p>kurt</p>
+
+<pre><code class="markdown"># Overskrift 1
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
 ## Overskrift 2
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
 ### Overskrift 3
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-	</code>
-</pre>
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </code></pre>
 
 <div class="eksempel">
 
@@ -130,28 +100,21 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 </div>
 
-<div class="fakta">
-	sdff
-</div>
-
-
-<blockquote>
-	<p>Vær opmærksom på, at hvis man skriver dokumenter, så er <span class="inl_cmd">h1</span> overskriften det samme som titlen på ens dokument.</p>
+<div class="alert">
 	
-	<p>Det er den "overskrift" dokumentet er lavet under.</p>
-</blockquote>
+	<p>hvis man skriver dokumenter, så er <code class="html">h1</code> overskriften det samme som titlen på ens dokument.</p>
+	
+	<p>Det er den overskrift dokumentet er lavet under.</p>
+
+</div>
 
 
 <h3>Formatering af tekst</h3>
 
-<pre>
-	<code class="markdown">
-_Kursiv tekst_ (*Kursiv tekst*)
+<pre><code class="markdown">_Kursiv tekst_ (*Kursiv tekst*)
 __Fed tekst__ (**Fed tekst**)
 ___Fed kursig tekst___ (***Fed kursiv tekst***)
-~~Overstreget tekst~~
-	</code>
-</pre>
+~~Overstreget tekst~~</code></pre>
 
 <div class="eksempel">
 
@@ -167,14 +130,9 @@ ___Fed kursig tekst___ (***Fed kursiv tekst***)
 
 <h3>Citater</h3>
 
-<pre>
-	<code class="markdown">
-Dette er et citat
+<pre><code class="markdown">Dette er et citat
 
-> __Murphy's Law__: Anything that can possibly go wrong, does.
-
-	</code>
-</pre>
+> __Murphy's Law__: Anything that can possibly go wrong, does.</code></pre>
 
 <div class="eksempel">
 	
@@ -192,13 +150,9 @@ Dette er et citat
 
 <h3>Tværgående linier</h3>
 
-<pre>
-	<code class="markdown">
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+<pre><code class="markdown">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
 ***
-Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-	</code>
-</pre>
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </code></pre>
 
 <div class="eksempel">
 
@@ -214,18 +168,14 @@ Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliqu
 
 <p>Fodnoter indsættes som referencer i teksten. Abricotine sørger for at henvisningerne fungerer korrekt.</p>
 	
-<pre>
-	<code class="markdown">
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.[^1]
+<pre><code class="markdown">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.[^1]
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.[^2]
 
 ***
 
 [^1]: Her er fodnote 1
-[^2]: Her er fodnote 2
-	</code>
-</pre>
+[^2]: Her er fodnote 2</code></pre>
 
 <div class="eksempel">
 
@@ -247,13 +197,9 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 <p>Lister laves enten med -, + eller *. I alle tilfældene får man en liste med bullits</p>
 
-<pre>
-	<code class="Markdown">
-- element 1
+<pre><code class="Markdown">- element 1
 - element 2
-- element 3
-	</code>
-</pre>
+- element 3</code></pre>
 
 <div class="eksempel">
 
@@ -272,14 +218,10 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 <p>Man kan også oprette lister, hvor man kan markere om de er udført eller ej.</p>
 
-<pre>
-	<code class="Markdown">
-- [X] Opgave 1
+<pre><code class="Markdown">- [X] Opgave 1
 - [ ] Opgave 2
 - [ ] Opgave 3
-- [ ] Opgave 4
-	</code>
-</pre>
+- [ ] Opgave 4</code></pre>
 
 <p>Ved at sætte <span class="inl_cmd">x</span> i <span class="inl_cmd">[ ]</span> bliver feltet markeret på forhånd. Feltet er interaktivt ved at man klikker på det.</p>
 
@@ -303,17 +245,13 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 <p>Man indlejrer og blande lister ved at sætte en tabulatorer foran de liste element man vil have ind under de andre.</p>
 
-<pre>
-	<code class="markdown">
-- element 1
+<pre><code class="markdown">- element 1
 - element 2
     - Underelement 1
     - Underelement 2
 - element 3
     - [] undervalg 1
-    - [x] valgt undervalg 2
-	</code>
-</pre>
+    - [x] valgt undervalg 2</code></pre>
 
 <div class="eksempel">
 
@@ -345,15 +283,11 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 <p>Links kan indtastes direkte på følgende måder:</p>
 
-<pre>
-	<code class="markdown">
-https://www.google.com
+<pre><code class="markdown">https://www.google.com
 
 www.google.com
 
-google.com
-	</code>
-</pre>
+google.com</code></pre>
 
 <div class="eksempel">
 
@@ -367,13 +301,9 @@ google.com
 
 <p>Vil man lave den inline kan det gøres som her. Læg mærke til, at det skal være den fulde sti. </p>
 
-<pre>
-	<code class="markdown">
-Her er et link du kan klikke på til [Google](https://www.google.com)
+<pre><code class="markdown">Her er et link du kan klikke på til [Google](https://www.google.com)
 
-Her er et link du kan klikke på til [Google](https://www.google.com "Googles hjemmeside"), og som får en titel når du holder musen over linket.
-	</code>
-</pre>
+Her er et link du kan klikke på til [Google](https://www.google.com "Googles hjemmeside"), og som får en titel når du holder musen over linket.</code></pre>
 
 <div class="eksempel">
 
@@ -389,19 +319,15 @@ Her er et link du kan klikke på til [Google](https://www.google.com "Googles hj
 
 <p>Det kan også gøres med referencer</p>
 
-<pre>
-	<code class="markdown">
-Hjemmeside [vidas][reference_a]
+<pre><code class="markdown">Hjemmeside [vidas][reference_a]
 
-[Det blå gymnasium][1]
+[Danmarks Radio][1]
 
 Det kan også bare være [den rene reference]
 
 [reference_a]: http://www.vidas.dk
-[1]: http://www.vestfyns.dk
-[den rene reference]: https://www.google.com
-	</code>
-</pre>
+[1]: http://www.dr.dk
+[den rene reference]: https://www.google.com</code></pre>
 
 <div class="eksempel">
 
@@ -421,8 +347,7 @@ Det kan også bare være [den rene reference]
 <p>Hvis man vil lave ankre henvisninger (links) indenfor ens dokument anvender man ankre.</p>
 
 <pre>
-	<code class="markdown">
-&lt;a id="top">&lt;/a>
+	<code class="markdown">&lt;a id="top">&lt;/a>
 [Gå til bunden](#bund)
 
 
@@ -431,9 +356,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
 [Gå til toppen](#top)
-&lt;a id="bund">&lt;/a>
-	</code>
-</pre>
+&lt;a id="bund">&lt;/a></code></pre>
 
 <div class="eksempel">
 
@@ -455,14 +378,10 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 <p>Tabeller laves ved at "tegne" dem. De skal ikke tegnes korrekt for markup formaterer det korrekt</p>
 
-<pre>
-	<code class="Markdown">
-Tabeloverskrift 1 | Tabeloverskrift 2 | Tabeloverskrift 3 
+<pre><code class="Markdown">Tabeloverskrift 1 | Tabeloverskrift 2 | Tabeloverskrift 3 
 ---|---|---
 Felt 1,1 | Felt 1,2 | Felt 1,3 
-Felt 2,1 | Felt 2,2 | Felt 2,3 
-	</code>
-</pre>
+Felt 2,1 | Felt 2,2 | Felt 2,3 </code></pre>
 
 <div class="eksempel">
 
@@ -493,14 +412,10 @@ Felt 2,1 | Felt 2,2 | Felt 2,3
 
 <p>Den anden linie fortæller hvordan tabellen skal formateres. De tre streger fortæller at der skal være en ramme omkring de enkelte felter i tabellen. Ved at indsætte kolon for og efter stregerne kan man bestemme om kolonne teksten skal være venstre, centralt eller højrestillet.</p>
 
-<pre>
-	<code class="markdown">
-Tabeloverskrift 1 | Tabeloverskrift 2 | Tabeloverskrift 3 
+<pre><code class="markdown">Tabeloverskrift 1 | Tabeloverskrift 2 | Tabeloverskrift 3 
 ---|:---:|---:
 Felt 1,1 | Felt 1,2 | Felt 1,3 
-Felt 2,1 | Felt 2,2 | Felt 2,3 
-	</code>
-</pre>
+Felt 2,1 | Felt 2,2 | Felt 2,3 </code></pre>
 
 <div class="eksempel">
 
@@ -536,13 +451,9 @@ Felt 2,1 | Felt 2,2 | Felt 2,3
 
 <p>Hvis man ønkser at indsætte et billede kan det gøres enten inline eller med refenrence:</p>
 
-<pre>
-	<code class="markdown">
-Billede af Tux		
+<pre><code class="markdown">Billede af Tux		
 		
-![alt text](https://upload.wikimedia.org/wikipedia/commons/a/af/Tux.png)
-	</code>
-</pre>
+![alt text](https://upload.wikimedia.org/wikipedia/commons/a/af/Tux.png)</code></pre>
 
 <div class="eksempel">
 	
@@ -555,40 +466,27 @@ Billede af Tux
 
 <p>På samme måde som ovenfor kan man henvise til billedet ved hjælp af en reference.</p>
 
-<pre>
-	<code class="markdown">
-![alt text][logo]
+<pre><code class="markdown">![alt text][logo]
 
-[logo]: https://upload.wikimedia.org/wikipedia/commons/a/af/Tux.png
-
-	</code>
-</pre>
+[logo]: https://upload.wikimedia.org/wikipedia/commons/a/af/Tux.png</code></pre>
 
 <p>Hvis man vil have at der skal være en tekst over billedet når man holder musen over skal man tilføje dette i anførselstegn efter .</p>
 
-<pre>
-	<code class="markdown">
-![alt text](https://upload.wikimedia.org/wikipedia/commons/a/af/Tux.png "Tux - Linux logo" )
+<pre><code class="markdown">![alt text](https://upload.wikimedia.org/wikipedia/commons/a/af/Tux.png "Tux - Linux logo" )
 
 ![alt text][logo]
 
-[logo]: https://upload.wikimedia.org/wikipedia/commons/a/af/Tux.png "Tux - Linux logo"
-	</code>
-</pre>
+[logo]: https://upload.wikimedia.org/wikipedia/commons/a/af/Tux.png "Tux - Linux logo"</code></pre>
 
 <h2>Matematik</h2>
 
 <p>Rigtig mange markup language programmer giver adgang til at skrive <span class="math">\( L_aT^eX \)</span> direkte ind i koden. Det gøres ved at skrive Latex koden imellem 2 <span class="inl_cmd">$$</span> (dollartegn).</p>
 
-<pre>
-	<code class="markdown">
-Løsningen for en andengradsligning: $$ x = \frac{-b \pm \sqrt D}{2a} $$		
+<pre><code class="markdown">Løsningen for en andengradsligning: $$ x = \frac{-b \pm \sqrt D}{2a} $$		
 		
 Herunder er formlen for varians ved en stikprøve
 
-$$ s^2 = \frac{1}{n-1} \cdot \sum_{i=1}^k (m_i- \overline x)^2 \cdot h_i $$
-	</code>
-</pre>
+$$ s^2 = \frac{1}{n-1} \cdot \sum_{i=1}^k (m_i- \overline x)^2 \cdot h_i $$</code></pre>
 
 <div class="eksempel">
 
@@ -616,18 +514,14 @@ $$ s^2 = \frac{1}{n-1} \cdot \sum_{i=1}^k (m_i- \overline x)^2 \cdot h_i $$
 	
 </ul>
 
-<pre>
-	<code class="markdown">
-For at udskrive noget i Python indsættes det i  `print()` funktionen
+<pre><code class="markdown">For at udskrive noget i Python indsættes det i  `print()` funktionen
 
 For at udskrive en blok af kode sætter man det imellem 3 back-tics og angiver programmeringsssproget bagefter
 
 ``` python
 for i in range(1,7):
 	print(i)
-```
-	</code>
-</pre>
+```</code></pre>
 
 <div class="eksempel">
 
@@ -635,11 +529,8 @@ for i in range(1,7):
 	
 	<p>For at udskrive en blok af kode sætter man det imellem 3 back-tics og angiver programmeringsssproget bagefter</p>
 
-	<pre>
-		<code class="python">
-for i in range(1,7):
-	print(i)</code>
-	</pre>
+	<pre><code class="python">for i in range(1,7):
+	print(i)</code></pre>
 
 </div>
 

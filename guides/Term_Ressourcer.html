@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <title>Ressourcer</title>
+  <link rel="icon" href="../images/favicon.png">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono|Ubuntu|Ubuntu+Condensed' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/jquery-ui.min.css">
+  <link rel="stylesheet" href="../css/jquery.tocify.css">
+  <link rel="stylesheet" href="../css/style_new.css" />
+<!-- Scripts in bottom to speed up pageload-->
+ 
+
+</head>
+<body>
+	
+	
+<div class="container-fluid">
+
+<div class="row-fluid">
+	
+<div class="col-xs-3">
+	
+	<nav>
+		
+		<div id="toc">
+		
+			<div id="toc_headline"></div>
+		
+		</div>
+		
+	</nav>
+
+</div><!-- Start slut 1. kolonne - TOC -->
+	
+<div class="col-xs-9">
+	
+<h1>Terminalen: Ressourcer</h1>
+
+
+<p>De nedestående programmer er allesammen ret omfattende, så der er ikke en udførlig beskrivelse af hvordan man bruger dem. De er medtaget for at du kan få et indblik i den værktøjskasse der er tilgængelig når man anvender Ubuntu som server.</p>
+
+<h2>free</h2>
+
+<p><code class="bash">free</code> angiver forbruget af RAM. Her er det taget fra en computer med 32 GB RAM, der kører med en browser og Geany. Værdien som er vigtig er den der står under <em>"available"</em>.</p>
+
+<code class="cmd">free - h</code>
+
+<pre class="ubuntu_terminal">
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ free -h
+              total        used        free      shared  buff/cache   available
+Mem:           31Gi       2,3Gi        26Gi       214Mi       2,1Gi        28Gi
+Swap:         2,0Gi          0B       2,0Gi</pre>
+
+<p>Ved at indsætte <code class="bash">-h</code> bliver resultatet leveret <em>"human readable"</em> - altså i GiB-. Læg mærke til at det er den binære værdi der bliver leveret. Hvis du vil have den leveret i GB skal du tilføje <code class="bash">--si</code></p>
+
+<p><code class="bash">free</code> kan også bruges til at holde øje med ramforbruget over tid ved at tilføje <code class="bash">-s *antal sekunder*</code>. Her har jeg sat free til at overvåget RAM en gang i minutter, men jeg hendter 349 billeder ind i GIMP'en</p>
+
+<pre class="ubuntu_terminal"><span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ free -h -s 60
+              total        used        free      shared  buff/cache   available
+Mem:           31Gi       2,4Gi        26Gi       277Mi       2,2Gi        28Gi
+Swap:         2,0Gi          0B       2,0Gi
+
+              total        used        free      shared  buff/cache   available
+Mem:           31Gi        10Gi        18Gi       289Mi       2,3Gi        19Gi
+Swap:         2,0Gi          0B       2,0Gi
+
+              total        used        free      shared  buff/cache   available
+Mem:           31Gi        17Gi        11Gi       290Mi       2,4Gi        13Gi
+Swap:         2,0Gi          0B       2,0Gi</pre>
+
+<p>... og her få sekunder efter at jeg har lukket ned for GIMP'en - bare lige for at vise hvor fantastisk Linux er til at administrere hukommelse ;)</p>
+
+<pre class="ubuntu_terminal"><span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ free -h 
+              total        used        free      shared  buff/cache   available
+Mem:           31Gi       2,5Gi        26Gi       315Mi       2,5Gi        28Gi
+Swap:         2,0Gi          0B       2,0Gi</pre>
+
+
+<ul class="disc">
+	<li><code class="bash">free -h</code> - se ramforbruget</li>
+	<li><code class="bash">free -h -s 10</code> - Se ramforbrug hver 10'ende sekund</li>
+	<li><code class="bash">free -h -s 10 -c 3</code> - Se ramforbrug hver 10'ende sekund 3 gange</li>
+	<li><code class="bash">_</code> - </li>
+</ul>
+
+<p>Hvis du gerne vil se udviklingen af dit RAM forbrug kan du sætte <span class="inl_cmd">free</span> til at opdatere sig selv efter nogle sekunder <span class="inl_cmd">-sX</span>. Nedestående opdaterer sig selv 3 gange (<span class="inl_cmd">-c3</span>) med 2 sekunders mellemrum (<span class="inl_cmd">-s2</span>).</p>
+
+<code class="cmd">free -h -c3-s2</code>
+
+<pre class="ubuntu_terminal">
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ free -h -c3 -s2
+              total        used        free      shared  buff/cache   available
+Mem:           3,9G        586M        2,8G        9,6M        522M        3,2G
+Swap:          4,0G          0B        4,0G
+
+              total        used        free      shared  buff/cache   available
+Mem:           3,9G        586M        2,8G        9,6M        522M        3,2G
+Swap:          4,0G          0B        4,0G
+
+              total        used        free      shared  buff/cache   available
+Mem:           3,9G        586M        2,8G        9,6M        522M        3,2G
+Swap:          4,0G          0B        4,0G
+
+</pre>
+
+
+<p>Læs Mere: Linux ate my RAM! <a href="http://www.linuxatemyram.com/" target="_blank">http://www.linuxatemyram.com/</a></p>
+
+<p>man-page free: 
+<a href="http://manpages.ubuntu.com/manpages/trusty/man1/free.1.html" target="_blank">
+http://manpages.ubuntu.com/manpages/trusty/man1/free.1.html</a></p>
+
+
+
+<h2>top</h2>
+
+<p><code class="bash">top</code> er et program der giver informationer om processer. Programmet følger med de fleste Linux distributioner som standard. Programmet afbrydet med <kbd>Ctrl</kbd>+<kbd>c</kbd>.</p>
+
+<pre class="ubuntu_terminal">Tasks:<b> 349 </b>total,<b>   1 </b>running,<b> 348 </b>sleeping,<b>   0 </b>stopped,<b>   0 </b>zombie
+%Cpu(s):<b>  0,3 </b>us,<b>  0,2 </b>sy,<b>  0,0 </b>ni,<b> 99,5 </b>id,<b>  0,0 </b>wa,<b>  0,0 </b>hi,<b>  0,0 </b>si,<b>  0,0 </b>st
+MiB Mem :<b>  32068,0 </b>total,<b>  27865,2 </b>free,<b>   1955,2 </b>used,<b>   2247,6 </b>buff/cache
+MiB Swap:<b>   2048,0 </b>total,<b>   2048,0 </b>free,<b>      0,0 </b>used.<b>  29652,3 </b>avail Mem 
+
+<span style="background-color:#FFFFFF"><font color="#300A24">    PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND                                </font></span>
+   1561 root      20   0  192116  67740  37972 S   0,7   0,2   1:47.16 Xorg                                   
+   9726 tj        20   0  585044 162676  82448 S   0,7   0,5   0:01.09 chrome                                 
+   1037 root     -51   0       0      0      0 S   0,3   0,0   0:21.79 irq/130-nvidia                         
+   2024 tj        20   0 5222484 317612  87956 S   0,3   1,0  25:48.31 dropbox                                
+<b>   9974 tj        20   0   14976   3992   3216 R   0,3   0,0   0:00.10 top                                    </b>
+      1 root      20   0  168124  11760   8320 S   0,0   0,0   0:02.69 systemd                                
+      2 root      20   0       0      0      0 S   0,0   0,0   0:00.00 kthreadd                               
+      3 root       0 -20       0      0      0 I   0,0   0,0   0:00.00 rcu_gp                                 
+      4 root       0 -20       0      0      0 I   0,0   0,0   0:00.00 rcu_par_gp                             
+      6 root       0 -20       0      0      0 I   0,0   0,0   0:00.00 kworker/0:0H-kblockd                   
+      7 root      20   0       0      0      0 I   0,0   0,0   0:00.20 kworker/0:1-events                     
+      9 root       0 -20       0      0      0 I   0,0   0,0   0:00.00 mm_percpu_wq                           
+     10 root      20   0       0      0      0 S   0,0   0,0   0:00.05 ksoftirqd/0   </pre>
+
+<h2><span class="inl_cmd">htop</span></h2>
+
+<p><span class="inl_cmd">htop</span> er et interaktivt program til at kigge på processer og computerens ressourcer. Programmet tilbyder mange flere informationer end <span class="inl_cmd">top</span> , og er interaktivt. Man kan vælge med musen samt sortere og søge i data.</p>
+
+<p>Programmet installeres med kommandoen:</p>
+
+<code class="cmd">apt install htop -y</code>
+
+<figure id="">
+
+	<img class="" src="images/kommandoer_htop.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h2><span class="inl_cmd">uptime </span></h2>
+
+<p><span class="inl_cmd">uptime</span> giver informationer om hvor længe computeren har kørt, antallet af bruger der er logget på og systembelastningen i 1, 5 og 15 minutters intervaller
+</p>
+
+<pre class="ubuntu_terminal">
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ uptime
+ 11:23:13 up  1:17,  1 user,  load average: 0,59, 0,34, 0,60</pre>
+
+<h2>Processer</h2>
+
+<p>Når et program startes på et Linux system får processen en unik PID (Proces ID). Man kan komme ud for situationer hvor man har behov for at lukke processer ned, f.eks. hvis programmet låser eller at det opfører sig uhensigtsmæssigt. For at gøre dette anvendes programmerne  <code class="bash">ps</code> og <code class="bash">kill</code></h2>
+
+<p>Processerne anvender den de rettigheder som brugeren der oprettede dem har. Dvs. at brugeren kan dræbe processer som brugeren har startet, også dem der er oprettet med sudo.</p>
+
+<p>Eksemplerne herunder er langt fra uddybende, men giver et kort indblik i de muligheder man har som administrator på systemet.</p>
+
+<h3>ps</h3>
+
+<p><code class="bash">ps</code> anvendes til at få et overblik over de processer der kører på systemet. Her er et eksempel fra en nystartet terminal hvor vi kører kommandoen <code class="bash">ps</code>.</p>
+
+<pre class="ubuntu_terminal">
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ ps
+  PID TTY          TIME CMD
+ 2215 pts/11   00:00:00 bash
+ 2227 pts/11   00:00:00 ps
+</pre>
+
+<p>Vi kan se at der kører to processer: <em>bash (PID 2215)</em> og <em>ps (PID 2227)</em>. Vær opmærksom på at det ikke er alle de processer der kører på computeren, men kun dem som kører i den startede session. Ønsker du et overblik over alle de processer der kører på computeren skal du anvende følgende kommando: <em>ps aux</em>. Dette overblik er langt mere detaljeret.</p>
+
+<pre class="ubuntu_terminal">
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ ps aux
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root         1  0.2  0.1  33776  4260 ?        Ss   13:15   0:00 /sbin/init
+root         2  0.0  0.0      0     0 ?        S    13:15   0:00 [kthreadd]
+root         3  0.0  0.0      0     0 ?        S    13:15   0:00 [ksoftirqd/0]
+
+<em>... ( mange linier udeladt )</em>
+
+thoj      2261  0.0  0.2 233188  9952 ?        Sl   13:18   0:00 /usr/lib/x86_64
+thoj      2270  0.0  0.0  12888   772 ?        S    13:18   0:00 /bin/cat
+thoj      2298  0.0  0.4 572816 19532 ?        Sl   13:19   0:00 update-notifier
+thoj      2316  0.0  0.1 461588  7592 ?        Sl   13:20   0:00 /usr/lib/x86_64
+thoj      2325  0.0  0.0  24120  2564 pts/11   R+   13:20   0:00 ps aux</pre>
+
+<p>Har man mange processer kørende og kender navnet på den man skal stoppe kan du filtrere med <code class="bash">grep</code>, f.eks. hvis man har startet firefox og vil finde processen.</p>
+
+<code class="cmd">ps aux | grep firefox</code>
+
+<pre class="ubuntu_terminal">
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ ps aux | grep firefox
+thoj      2380  7.5  6.5 1013652 263112 ?      Sl   13:39   0:27 /usr/lib/<span class="red">firefox</span>/<span class="red">firefox</span>
+thoj      2461  0.0  0.0  17436  2092 pts/11   S+   13:46   0:00 grep --color=auto <span class="red">firefox</span>
+</pre>
+
+<p>Her er processen der skal stoppes <em>2380</em>, da den anden skyldes <em>grep</em>.</p>
+
+<h3>kill</h3>
+
+<p>Når man kender processens ID kan man anvende <code class="bash">kill</code> til at lukke programet ned. <code class="bash">kill</code> har en lang række forskellige måder at lukke programmer på og det angives ved at tilføje en option. Ønsker du at dræbe en proces anvendes <em>-9</em>. Herunder angives en måde du kan prøve det selv:</p>
+
+<p>Start en terminal og kør: <span class="inl_cmd">ps</span></p>
+
+<pre class="ubuntu_terminal">
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ ps
+  PID TTY          TIME CMD
+ 2215 pts/11   00:00:00 bash
+ 2373 pts/11   00:00:00 ps
+</pre>
+
+<p>Herefter starter vi nano op i baggrunden ved at sætte <em>&amp;</em> efter kommandoen, hvorefter vi kører <code class="bash">ps</code>.</p>
+
+<code class="cmd">nano & </code>
+<code class="more_cmd">ps</code>
+
+
+<pre class="ubuntu_terminal">
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ nano &
+[1] 2374
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ ps
+  PID TTY          TIME CMD
+ 2215 pts/11   00:00:00 bash
+ 2374 pts/11   00:00:00 nano
+ 2375 pts/11   00:00:00 ps
+
+[1]+  Stopped                 nano
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ 
+</pre>
+
+<p>For at dræbe nano anvender vi kommandoen <code class="bash">kill -9 *PID*</code> (i dette tilfælde 2374) og derefter kører vi <code class="bash">ps</code> for at se om processen er slettet:</p>
+
+<code class="cmd">kill -9 2374</code>
+<code class="more_cmd">ps</code>
+
+<pre class="ubuntu_terminal">
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ kill -9 2374
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ ps  
+  PID TTY          TIME CMD
+ 2215 pts/11   00:00:00 bash
+ 2376 pts/11   00:00:00 ps
+[1]+  Dræbt                  nano
+</pre>
+
+<p><code class="bash">kill</code> er et meget avanceret program, og indeholder mange måder at dræbe processer på. Hvis du ønsker at se alle mulighederne kan du anvende kommandoen <code class="bash">kill -l</code>.</p>
+
+<h3>pgrep og pkill</h3>
+
+<p>Kender man navnet på processen kan du anvende kommandoerne <code class="bash">pgrep</code> og <code class="bash">pkill</code>. De integrerer de to ovenstående kommandoer <code class="bash">ps</code> og <code class="bash">kill</code>.</p>
+
+<div class="alert">
+	
+	<p>Vær varsom med denne fremgangsmåde. Du risikerer at stoppe processer du ikke regner med er igang.</p>
+	
+</div>
+
+<p>Du skal dog være varsom med denne fremgangsmåde, da du risikerer at stoppe processer du ikke regner med er igang.</p>
+
+<ul class="disc">
+	<li><code class="bash">pgrep firefox</code> - finder alle "firefox"-processer</li>
+	<li><code class="bash">pkill firefox</code> - stopper alle "firefox"-processer</li>
+</ul>
+
+<p>Som det ses herover bliver firefox fanget 2 gange. En for selve programmet og en som fanger søgningen efter firefox. Det er altså proces <em>2380</em> der skal lukkes ned. Der findes en række kommandoer som automatisk integrerer søgningen: <code class="bash">pgreb</code> og <code class="bash">pkill</code>. Herunder er vist nogle eksempler med firefox:</p>
+
+<pre class="ubuntu_terminal">
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ pgrep firefox
+2380
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ pkill firefox
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ pgrep firefox
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$
+</pre>
+
+<p>Først køres <span class="inl_cmd">pgrep</span>, som finder processen. I anden omgang anvendes <span class="inl_cmd">pkill</span> til at lukke processen og <span class="inl_cmd">pgrep firefox</span> viser at processen ikke eksisterer mere</p>
+
+
+<h3>xkill - til GUI</h3>
+
+<p><code class="bash">xkill</code> er et program man anvender i et GUI. Alle programmer kan låse hvis der sker en fejl i operativsystemet. Hvis man ønsker at dræbe en proces i et GUI, åbner man en terminal og skriver xkill. Herefter vil ens cursor ændre sig til et kryds, og hvis man klikker på et vindue med dette, vil det dræbe den proces der kører det og give nedestående i terminalen.</p>
+
+<p>Processen er:</p>
+
+<ol class="">
+	<li>Åbn en terminal</li>
+	<li>Skriv <em>xkill</em></li>
+	<li>Musens markør ændrer sig til et kryds</li>
+	<li>Klik på programmet (vinduet) du vil stoppe</li>
+	<li>Dine</li>
+</ol>
+
+<pre class="ubuntu_terminal">
+<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ xkill
+Select the window whose client you wish to kill with button 1....
+xkill:  killing creator of resource 0x4e00143
+</pre>
+
+
+
+	
+</div><!-- end: col-md-9 -->
+
+<footer>
+
+	<p onclick="parentNode.remove()"><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons licens" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>Indholdet på Vidas.dk er licenseret under <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> og er skrevet af Thomas Jensen. (<a href="../hvem_er_jeg.html" target="_blank">Læs mere</a>)</p>
+
+</footer>
+	
+	
+</div><!-- end: row-fluid -->
+
+</div> <!-- end: container-fluid -->
+
+
+<!-- SCRIPT SECTION -->
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script type="text/javascript" src="../js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="../js/jquery.tocify.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+
+<!-- PRETTYFY-->
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+
+
+<!-- HIGHLIGHT -->
+	<script src="../js/highlight.pack.js" type="text/javascript"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+
+<!-- MATHJAX -->
+<script type="text/javascript" 
+	src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  displayAlign: "left",
+  displayIndent: "0em"
+});
+</script>
+
+
+<!-- TOCIFY -->
+<script>
+	$(function() {var toc = $("#toc").tocify({ selectors: "h1, h2, h3, h4" }).data("toc-tocify"); });
+</script>
+<!-- GOOGLE ANALYTICS -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-89933285-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</body>
+</html>

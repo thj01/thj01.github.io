@@ -139,15 +139,10 @@ white-space: pre-wrap;
 
 pre {
 tab-size: 4;
-
-}
-
-pre code {
+margin: 2em 0em;
 padding: 2em 2em;
-border-color: hotpink;
-
-
 }
+
 
 pre.black {
 
@@ -481,80 +476,7 @@ padding: 1em;
 
 }
 
-div.eksempel {
 
-border: 2px solid #444444;
-border-radius: 15px;
-padding: 90px 20px	30px 60px;
-margin: 60px;
-
-}
-
-div.eksempel::before {
-
-content: "Eksempel";
-margin: -107px -0px 10px -40px;
-padding: 3px 0px 3px 14px;
-font-size: 1.2em;
-width: 110px;
-background-color: white;
-display: block;
-font-weight: 700;
-border: 2px solid #444444;
-border-radius: 8px;
-
-}
-
-div.fakta {
-
-border: 2px solid #444444;
-border-radius: 15px;
-padding: 90px 20px	30px 60px;
-margin: 60px;
-
-}
-
-div.fakta::before {
-
-content: "Fakta Boks";
-margin: -107px -0px 10px -40px;
-padding: 3px 0px 3px 14px;
-font-size: 1.2em;
-width: 120px;
-background-color: white;
-display: block;
-font-weight: 700;
-border: 2px solid #444444;
-border-radius: 8px;
-
-}
-
-div.idle {
-
-border: 2px solid #444444;
-border-radius: 15px;
-padding: 90px 20px	30px 60px;
-margin: 60px;
-background-color: #f0f0f0;
-white-space: pre;
-
-}
-
-div.idle::before {
-
-content: "IDLE output";
-margin: -107px -0px 30px -40px;
-padding: 3px 0px 3px 14px;
-font-size: 1.2em;
-width: 150px;
-background-color: white;
-color: #444444;
-display: block;
-font-weight: 700;
-border: 2px solid #444444;
-border-radius: 8px;
-
-}
 
 
 
