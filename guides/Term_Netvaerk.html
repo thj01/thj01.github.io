@@ -45,17 +45,15 @@
 
 <h2>Virker netværket</h2>
 
-<p>I dette afsnit vil vi se på de mest grundlæggende færdigheder man har brug for, nemlig at kontrollere om der er forbindelse til netværket og hvordan computerens netværk er konfigureret. Det gøres med værktøjerne <code class="bash">ping</code> og <code class="bash">ip</code> fra programpakken <em>iproute2</em>.</p>
+<p>I dette afsnit vil vi se på de mest grundlæggende færdigheder man har brug for, nemlig at kontrollere om der er forbindelse til netværket og hvordan computerens netværk er konfigureret. Det gøres med værktøjerne <em>ping</em> og <em>ip</em>.</p>
 
 <h2>ping - Tjek netværket</h2>
 
-<p>Kommandoen <code class="bash">ping</code> bruges til at undersøge om der er forbindelse mellem din og en anden computer, og hvor lang svartiden er. Kommandoen kører lige til der trykkes <kbd>Ctrl</kbd>+<kbd>c</kbd>.</p>
+<p>Kommandoen <em>ping</em> bruges til at undersøge om der er forbindelse mellem din og en anden computer, og hvor lang svartiden er. Kommandoen kører lige til der trykkes <kbd>Ctrl</kbd>+<kbd>c</kbd>.</p>
 
-<code class="cmd">ping www.dr.dk</code>
+<pre><code>ping www.dr.dk</code></pre>
 
-<pre class="ubuntu_terminal">
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ ping www.dr.dk
-PING e16198.b.akamaiedge.net (104.121.238.17) 56(84) bytes of data.
+<samp>PING e16198.b.akamaiedge.net (104.121.238.17) 56(84) bytes of data.
 64 bytes from a104-121-238-17.deploy.static.akamaitechnologies.com (104.121.238.17): icmp_seq=1 ttl=52 time=7.52 ms
 64 bytes from a104-121-238-17.deploy.static.akamaitechnologies.com (104.121.238.17): icmp_seq=2 ttl=52 time=7.57 ms
 64 bytes from a104-121-238-17.deploy.static.akamaitechnologies.com (104.121.238.17): icmp_seq=3 ttl=52 time=7.65 ms
@@ -64,17 +62,20 @@ PING e16198.b.akamaiedge.net (104.121.238.17) 56(84) bytes of data.
 ^C
 --- e16198.b.akamaiedge.net ping statistics ---
 5 packets transmitted, 5 received, 0% packet loss, time 4007ms
-rtt min/avg/max/mdev = 7.519/7.575/7.654/0.044 ms</pre>
+rtt min/avg/max/mdev = 7.519/7.575/7.654/0.044 ms</samp>
 
 <p>Efter kommandoen er kørt vises en opsumering</p>
 
 <p>Andre eksempler med ping kommandoen:</p>
 
-<ul class="disc">
-			<li><code class="bash">ping -c 4 www.dr.dk</code> - kører ping i alt 4 gange</li>
-			<li><code class="bash">ping -i 2 www.dr.dk</code> - der pinges med 2 sekunders mellemrum</li>
-			<li><code class="bash">ping -s 504 www.dr.dk</code> - Der pinges med 512 (504+8) bytes i stedet for 64. Der skal angives 8 mindre end man ønsker, da 8 bytes bliver tilføjet (header data) </li>
-</ul>
+<dl class="">
+	<dt>ping -c 4 www.dr.dk</dt>
+	<dd>kører ping i alt 4 gange</dd>
+	<dt>ping -i 2 www.dr.dk</dt>
+	<dd>der pinges med 2 sekunders mellemrum</dd>
+	<dt>ping -s 504 www.dr.dk</dt>
+	<dd>Der pinges med 512 (504+8) bytes i stedet for 64. Der skal angives 8 mindre end man ønsker, da 8 bytes bliver tilføjet (header data)</dd>
+</dl>
 
 <p>man-page ping:
 <a href="http://manpages.ubuntu.com/manpages/trusty/en/man8/ping.8.html" target="_blank">
@@ -82,13 +83,11 @@ http://manpages.ubuntu.com/manpages/trusty/en/man8/ping.8.html</a></p>
 
 <h2>ip - Netværkets multitool</h2>
 
-<p><span class="inl_cmd">ip addr</span> anvendes til at vise netværkskonfigurationen, men kan også anvendes til at konfigurere netværkskort. Herunder er kommandoen blevet kørt på en bærbar med en aktivt wifi forbindelse og et inaktivt fysisk netkort.</p>
+<p><em>ip addr</em> anvendes til at vise netværkskonfigurationen, men kan også anvendes til at konfigurere netværkskort. Herunder er kommandoen blevet kørt på en bærbar med en aktivt wifi forbindelse og et inaktivt fysisk netkort.</p>
 
-<code class="cmd">ip addr</code>
+<pre><code>ip addr</code></pre>
 
-<pre class="ubuntu_terminal">
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ ip addr
-1: lo: &lt;LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+<samp>1: lo: &lt;LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
     link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
     inet 127.0.0.1/8 scope host lo
        valid_lft forever preferred_lft forever
@@ -99,16 +98,20 @@ http://manpages.ubuntu.com/manpages/trusty/en/man8/ping.8.html</a></p>
     inet 192.168.0.131/24 brd 192.168.87.255 scope global dynamic noprefixroute enp0s31f61f6
        valid_lft 1252sec preferred_lft 1252sec
     inet6 fe80::6289:e01d:5322:f763/64 scope link noprefixroute 
-       valid_lft forever preferred_lft forever
-</pre>
+       valid_lft forever preferred_lft forever</samp>
 
-<p>Det fortæller os at der er to aktive netværkskort: <em>io</em> og <em>enp0s31f61f6</em>. .</p>
 
-<ul class="none">
-	<li>IP-adresse (inet)): <em>192.168.0.131</em></li>
-	<li>CIDR/Netmaske : <em>/24</em> (svarer til: <em>255.255.255.0</em>)</li>
-	<li>Broadcast-adresse: <em>192.168.0.255</em></li>
-</ul>
+<p>Det fortæller os at der er to aktive netværkskort: <em>io</em> og <em>enp0s31f61f6</em>.</p>
+
+<dl class="">
+	<dt>IP-adresse (inet)</dt>
+	<dd>192.168.0.131</dd>
+	<dt>CIDR/Netmaske</dt>
+	<dd><em>/24</em> (svarer til: <em>255.255.255.0</em>)</dd>
+	<dt>Broadcast-adresse</dt>
+	<dd>192.168.0.255</dd>
+</dl>
+
 
 <h3>io</h3>
 
@@ -127,17 +130,14 @@ http://manpages.ubuntu.com/manpages/trusty/en/man8/ping.8.html</a></p>
 
 <p>Vi kunne også have valgt kun at se et af vores netkort ved at gøre kommandoen mere præcis og målrette den et af vores netkort.</p>
 
-<code class="cmd">ip addr show enp0s31f61f6</code>
+<pre><code>ip addr show enp0s31f61f6</code></pre>
 
-<pre class="ubuntu_terminal">
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ ip addr show enp0s31f61f6
-2: enp0s31f61f6: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc fq_codel state UP group default qlen 1000
+<samp>2: enp0s31f61f6: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc fq_codel state UP group default qlen 1000
     link/ether d0:50:99:a6:6c:1a brd ff:ff:ff:ff:ff:ff
     inet 192.168.0.131/24 brd 192.168.87.255 scope global dynamic noprefixroute enp0s31f61f6
        valid_lft 1574sec preferred_lft 1574sec
     inet6 fe80::6289:e01d:5322:f763/64 scope link noprefixroute 
-       valid_lft forever preferred_lft forever</pre>
-
+       valid_lft forever preferred_lft forever</samp>
 
 <ol class="none">
 	<li><a href="https://www.freedesktop.org/wiki/Software/systemd/PredictableNetworkInterfaceNames/" target="_blank">Henvisning 1</a></li>
@@ -148,27 +148,24 @@ http://manpages.ubuntu.com/manpages/trusty/en/man8/ping.8.html</a></p>
 
 <p>Vi kan også anvende ip til at give os informationer om de fysiske netværkskort (<em>link/ether</em>).</p>
 
-<code class="cmd">ip link</code>
+<em>ip link</em>
 
-<pre class="ubuntu_terminal">
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ ip link
-1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1000
+<samp>1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1000
     link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
 2: enp0s31f61f6: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc fq_codel state UP mode DEFAULT group default qlen 1000
-    link/ether d0:50:99:a6:6c:1a brd ff:ff:ff:ff:ff:ff
-</pre>
+    link/ether d0:50:99:a6:6c:1a brd ff:ff:ff:ff:ff:ff</samp>
 
 <h2>MAC-adresser</h2>
 
-<p>Læg mærke til linien <span class="inl_cmd">link/ether d0:50:99:a6:6c:1a</span> . Det kaldes en MAC adresse. Denne adresse er netværkskortets fysiske adresse, består af hexadecimale værdier og er unik. De første 3 værdier fortæller hvem producenten er (<em>d0:50:99</em>), og de tre sidste hvilket kort det er (<em>a6:6c:1a</em>).</p>
+<p>Læg mærke til linien <em>link/ether d0:50:99:a6:6c:1a</em> . Det kaldes en MAC adresse. Denne adresse er netværkskortets fysiske adresse, består af hexadecimale værdier og er unik. De første 3 værdier fortæller hvem producenten er (<em>d0:50:99</em>), og de tre sidste hvilket kort det er (<em>a6:6c:1a</em>).</p>
 
-<p>I dette tilfælde kan man se på tallene <span class="inl_cmd">d0:50:99</span>, der viser at netkortet er produceret af AsRock, og kortets identifikation er: <em>a6:6c:1a</em> .</p>
+<p>I dette tilfælde kan man se på tallene <em>d0:50:99</em>, der viser at netkortet er produceret af AsRock, og kortets identifikation er: <em>a6:6c:1a</em> .</p>
 
 <p>Du kan tjekke din producent her: <a href="https://macvendors.com/" target="_blank">https://macvendors.com/</a></p>
 
 <h2>Netværks kommandoer</h2>
 
-<p>Herunder gennemgås det hvordan du kan anvende <span class="inl_cmd">ip</span> til at ændre i netværkskonfigurationen</p>
+<p>Herunder gennemgås det hvordan du kan anvende <em>ip</em> til at ændre i netværkskonfigurationen</p>
 
 <h2>Forny IP-adresse</h2>
 
@@ -177,38 +174,37 @@ http://manpages.ubuntu.com/manpages/trusty/en/man8/ping.8.html</a></p>
 
 <p>Slip din IP-adresse</p>
 
-<code class="cmd">sudo dhclient -r enp0s31f61f6</code>
+<pre><code>sudo dhclient -r enp0s31f61f6</code></pre>
 
 <p>Forny din IP-adresse</p>
 
-<code class="cmd">sudo dhclient enp0s31f61f6</code>
+<pre><code>sudo dhclient enp0s31f61f6</code></pre>
 
-<span class="afsnit">I GUI</span>
+<h3>I GUI</h3>
 
-<p>Anvender du <span class="inl_cmd">network-manager</span> skal du genstarte tjenesten:</p>
+<p>Anvender du <em>network-manager</em> skal du genstarte tjenesten:</p>
 
-<code class="cmd">sudo service network-manager restart</code>
+<pre><code>sudo service network-manager restart</code></pre>
 
 
 <h2>Stop og start netværk</h2>
 
-<p>Man kan stoppe og starte netværkskort ved hjælp af <span class="inl_cmd">ip</span> kommandoen. For at stoppe netværket anvender man følgende kommando:</p>
+<p>Man kan stoppe og starte netværkskort ved hjælp af <em>ip</em> kommandoen. For at stoppe netværket anvender man følgende kommando:</p>
 
-<code class="cmd">sudo ip link set enp0s31f6 down</code>
+<pre><code>sudo ip link set enp0s31f6 down</code></pre>
 
 <p>For at starte det på igen anvendes den samme kommando, hvor man skriver <span class="inl_cmd">up</span> i steder for <span class="inl_cmd">down</span>.</p>
 
-<code class="cmd">sudo ip link set enp0s31f6 up</code>
+<pre><code>sudo ip link set enp0s31f6 up</code></pre>
 
-<p>Herunder stopper vi først netkortet og prøver at pinge <span class="inl_cmd">dr.dk</span>, hvorefter vi starter netværkskortet op igen og pinger en gang til.</p>
+<p>Herunder stopper vi først netkortet og prøver at pinge <em>www.dr.dk</em>, hvorefter vi starter netværkskortet op igen og pinger en gang til.</p>
 
-<pre class="ubuntu_terminal">
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ sudo ip link set enp0s31f6 down
+<samp><span class="terminal_green">tj@server1</span>:<span class="terminal_tilde">~</span>$ sudo ip link set enp0s31f6 down
 [sudo] adgangskode for thoj: 
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ ping www.dr.dk
+<span class="terminal_green">tj@server1</span>:<span class="terminal_tilde">~</span>$ ping www.dr.dk
 ping: unknown host dr.dk
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ sudo ip link set enp0s31f6 up
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ ping www.dr.dk
+<span class="terminal_green">tj@server1</span>:<span class="terminal_tilde">~</span>$ sudo ip link set enp0s31f6 up
+<span class="terminal_green">tj@server1</span>:<span class="terminal_tilde">~</span>$ ping www.dr.dk
 PING e16198.b.akamaiedge.net (104.121.238.17) 56(84) bytes of data.
 64 bytes from a104-121-238-17.deploy.static.akamaitechnologies.com (104.121.238.17): icmp_seq=1 ttl=52 time=7.52 ms
 64 bytes from a104-121-238-17.deploy.static.akamaitechnologies.com (104.121.238.17): icmp_seq=2 ttl=52 time=7.57 ms
@@ -218,39 +214,34 @@ PING e16198.b.akamaiedge.net (104.121.238.17) 56(84) bytes of data.
 ^C
 --- e16198.b.akamaiedge.net ping statistics ---
 5 packets transmitted, 5 received, 0% packet loss, time 4007ms
-rtt min/avg/max/mdev = 7.519/7.575/7.654/0.044 ms</pre>
-
-
+rtt min/avg/max/mdev = 7.519/7.575/7.654/0.044 ms</samp>
 
 <h2>GUI til ip</h2>
 
-<code class="cmd">nmtui</code>
+<pre><code>nmtui</code></pre>
 
 <h2>Find din DNS-server</h2>
 
 <p>DNS serveren sørger for at man kan anvende navne på nettet i stedeet for IP-adresser. For at finde den DNS computeren er tilstluttet anvendes følgende kommando: </p>
 
-<code class="cmd">nmcli dev show | grep DNS</code>
+<pre><code>nmcli dev show | grep DNS</code></pre>
 
-<pre class="ubuntu_terminal">
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ nmcli dev show | grep DNS
+<samp><span class="terminal_green">tj@server1</span>:<span class="terminal_tilde">~</span>$ nmcli dev show | grep DNS
 IP4.<span class="red">DNS</span>[1]:                             178.132.239.37
-IP4.<span class="red">DNS</span>[2]:                             95.154.58.176
-</pre>
+IP4.<span class="red">DNS</span>[2]:                             95.154.58.176</samp>
 
-<p>Nu kan vi undersøge de to DNS adresser ved hjælp af <span class="inl_cmd">nslookup</span></p>
 
-<code class="cmd">nslookup 193.162.153.164</code>
 
-<p>De interessante oplysninger er markeret med rødt.</p>
+<p>Nu kan vi undersøge de to DNS adresser ved hjælp af <em>nslookup</em></p>
 
-<pre class="ubuntu_terminal">
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ nslookup 178.132.239.37
+<pre><code>nslookup 193.162.153.164</code></pre>
+
+<samp><span class="terminal_green">tj@server1</span>:<span class="terminal_tilde">~</span>$ nslookup 178.132.239.37
 37.239.132.178.in-addr.arpa	name = dns01.sefiber.dk.
 
 Authoritative answers can be found from:
 
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ nslookup 95.154.58.176
+<span class="terminal_green">tj@server1</span>:<span class="terminal_tilde">~</span>$ nslookup 95.154.58.176
 176.58.154.95.in-addr.arpa	name = ns5.bbsyd.dk.
 176.58.154.95.in-addr.arpa	name = soe.bbsyd.dk.
 176.58.154.95.in-addr.arpa	name = ns6.bbsyd.dk.
@@ -258,9 +249,7 @@ Authoritative answers can be found from:
 176.58.154.95.in-addr.arpa	name = tar.bbsyd.dk.
 176.58.154.95.in-addr.arpa	name = anycast.bbsyd.dk.
 
-Authoritative answers can be found from:
-</pre>
-
+Authoritative answers can be found from:</samp>
 
 <p>man-page nslookup:
 <a href="http://manpages.ubuntu.com/manpages/trusty/en/man1/nslookup.1.html" target="_blank">http://manpages.ubuntu.com/manpages/trusty/en/man1/nslookup.1.html</a></p>
@@ -268,17 +257,15 @@ Authoritative answers can be found from:
 
 <h2>mtr</h2>
 
-<p><code class="bash">mtr</code> er et program der kombinerer traceroute og ping, dvs. at det både viser hoppene mellem din computer og målcomputeren samtidig med at den viser tidsintervallerne. Installer det med følgende kommando:</p>
+<p><em>mtr</em> er et program der kombinerer traceroute og ping, dvs. at det både viser hoppene mellem din computer og målcomputeren samtidig med at den viser tidsintervallerne. Installer det med følgende kommando:</p>
 
 <p>Kommandoen er:</p>
 
-<code class="cmd">mtr -rw www.dr.dk</code>
+<pre><code>mtr -rw www.dr.dk</code></pre>
 
-<p>Ved at indsætte <em>-rw</em> i kommandoen venter <code class="bash">mtr</code> med at lave et output til det har kørt 10 omgange. </p>
+<p>Ved at indsætte <em>-rw</em> i kommandoen venter <em>mtr</em> med at lave et output til det har kørt 10 omgange. </p>
 
-<pre class="ubuntu_terminal">
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ mtr -rw www.dr.dk
-Start: 2020-12-07T13:05:21+0100
+<samp>Start: 2020-12-07T13:05:21+0100
 HOST: tj-desktop                                           Loss%   Snt   Last   Avg  Best  Wrst StDev
   1.|-- _gateway                                              0.0%    10    0.6   0.7   0.6   0.8   0.0
   2.|-- 100.73.128.3                                          0.0%    10    1.5   1.7   1.5   2.6   0.3
@@ -291,15 +278,16 @@ HOST: tj-desktop                                           Loss%   Snt   Last   
   9.|-- be183.ejby-cor03.link.stofa.net                       0.0%    10    8.4   8.5   8.4   8.6   0.1
  10.|-- be102.hrsk-br01.link.stofa.net                        0.0%    10    7.9   8.1   7.8   8.3   0.2
  11.|-- netnod-ix-cph-green-9000.akamai.com                   0.0%    10  122.5  46.1   8.2 135.2  54.4
- 12.|-- a104-121-238-17.deploy.static.akamaitechnologies.com  0.0%    10    7.7   7.7   7.6   7.8   0.0</pre>
+ 12.|-- a104-121-238-17.deploy.static.akamaitechnologies.com  0.0%    10    7.7   7.7   7.6   7.8   0.0</samp>
 
-<p>Kører man kommandoen uden <span class="inl_cmd">-rw</span>, så vil kommandoen fortsætte med at køre indtil den bliver afbrudt med <kbd>Ctrl</kbd>+<kbd>c</kbd>. </p>
 
-<p>Køres kommandoen med <span class="inl_cmd">n</span> som en ekstra option, så vises IP-adresserne fremfor de DNS-opløste navne:</p>
+<p>Kører man kommandoen uden <em>-rw</em>, så vil kommandoen fortsætte med at køre indtil den bliver afbrudt med <kbd>Ctrl</kbd>+<kbd>c</kbd>. </p>
 
-<pre class="ubuntu_terminal">
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ mtr -rwn www.dr.dk
-Start: 2020-12-07T14:46:02+0100
+<p>Køres kommandoen med <em>n</em> som en ekstra option, så vises IP-adresserne fremfor de DNS-opløste navne:</p>
+
+<pre><code>mtr -rwn www.dr.dk</code></pre>
+
+<samp>Start: 2020-12-07T14:46:02+0100
 HOST: tj-desktop      Loss%   Snt   Last   Avg  Best  Wrst StDev
   1.|-- 192.168.87.1     0.0%    10    0.6   0.6   0.6   0.7   0.0
   2.|-- 100.73.128.3     0.0%    10    1.8   1.7   1.4   2.1   0.2
@@ -312,7 +300,7 @@ HOST: tj-desktop      Loss%   Snt   Last   Avg  Best  Wrst StDev
   9.|-- 89.184.128.65    0.0%    10    8.6   8.5   8.4   8.7   0.1
  10.|-- 212.10.45.196    0.0%    10    8.1   8.1   7.8   8.4   0.2
  11.|-- 212.237.193.170  0.0%    10   15.6  38.1   8.2 223.3  67.6
- 12.|-- 104.121.238.17   0.0%    10    7.6   7.6   7.6   7.7   0.0</pre>
+ 12.|-- 104.121.238.17   0.0%    10    7.6   7.6   7.6   7.7   0.0</samp>
 
 <p>man-page mtr: 
 <a href="http://manpages.ubuntu.com/manpages/trusty/en/man8/mtr.8.html" target="_blank">
@@ -320,17 +308,15 @@ http://manpages.ubuntu.com/manpages/trusty/en/man8/mtr.8.html</a></p>
 
 <h2>nmap - skanning af netværk</h2>
 
-<p><code class="bash">nmap</code> installeres med følgende kommandoen.</p>
+<p><em>nmap</em> installeres med følgende kommandoen.</p>
 
-<code class="cmd">apt install nmap -y</code>
+<pre><code>apt install nmap -y</code></pre>
 
-<p><code class="bash">nmap</code> anvendes til at scanne netværk for åbne porte f.eks:</p>
+<p><em>nmap</em> anvendes til at scanne netværk for åbne porte f.eks:</p>
 
-<code class="cmd">nmap dr.dk</code>
+<pre><code>nmap dr.dk</code></pre>
 
-<pre class="ubuntu_terminal">
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ nmap dr.dk
-Starting Nmap 7.80 ( https://nmap.org ) at 2020-12-07 14:47 CET
+<samp>Starting Nmap 7.80 ( https://nmap.org ) at 2020-12-07 14:47 CET
 Nmap scan report for dr.dk (195.137.195.42)
 Host is up (0.013s latency).
 Not shown: 997 filtered ports
@@ -339,51 +325,39 @@ PORT    STATE SERVICE
 80/tcp  open  http
 443/tcp open  https
 
-Nmap done: 1 IP address (1 host up) scanned in 5.17 seconds</pre>
+Nmap done: 1 IP address (1 host up) scanned in 5.17 seconds</samp>
+
 
 <p>Her kan vi se at <em>dr.dk</em> har 3 porte åbne: <em>21</em>, <em>80</em> og <em>443</em>. De har altså åbent for <em>FTP</em> og web (ikke krypteret og krypteret).</p>
-
-<p>En skanning på min lokale computer viser at min computer ikke har nogle åbne porte. </p>
-
-<pre class="ubuntu_terminal">
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ nnmap 192.168.87.131
-Starting Nmap 7.80 ( https://nmap.org ) at 2020-12-07 15:16 CET
-Nmap scan report for tj-desktop (192.168.87.131)
-Host is up (0.000095s latency).
-All 1000 scanned ports on tj-desktop (192.168.87.131) are closed
-
-Nmap done: 1 IP address (1 host up) scanned in 0.06 seconds</pre>
 
 <h3>Skanning af hele eller dele af subnet</h3>
 
 <p>For at skanne en del af ens subnet angiver man de adresser man ønsker der skal skannes. Det gør man ved at indtaste start og slut adressen, f.eks:</p>
 
-<span class="inl_cmd">nmap 192.168.0.10-120</span>
+<pre><code>nmap 192.168.0.10-120</code></pre>
 
 <p>Man kan også skanne et helt subnet</p>
 
-<span class="inl_cmd">nmap 192.168.0.0/24</span>
-
+<pre><code>nmap 192.168.0.0/24</code></pre>
 
 
 <h3>Finde aktive computere</h3>
 
-<code class="cmd">nmap 192.168.0.0/24 | grep "Nmap scan report"</code>
+<p>For at skanne en del af ens subnet angiver man de adresser man ønsker der skal skannes. Det gør man ved at indtaste start og slut adressen, f.eks:</p>
+
+<pre><code>nmap 192.168.0.10-120</code></pre>
 
 <p>Nmap kan også anvendes til at finde alle aktive computere på et subnet med kommandoen:</p>
 
 <code class="cmd">nmap 10.0.2.0/24 | grep "Nmap scan report"</code>
 
-<pre class="ubuntu_terminal">
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ nmap 192.168.0.0/24 | grep "Nmap scan report"
-<span class="red">Nmap scan report</span> for 192.168.0.118
+<samp><span class="red">Nmap scan report</span> for 192.168.0.118
 <span class="red">Nmap scan report</span> for 192.168.0.125
 <span class="red">Nmap scan report</span> for tj-desktop (192.168.0.131)
 <span class="red">Nmap scan report</span> for 192.168.0.134
 <span class="red">Nmap scan report</span> for 192.168.0.142
 <span class="red">Nmap scan report</span> for 192.168.0.159
-<span class="red">Nmap scan report</span> for 192.168.0.179
-</pre>
+<span class="red">Nmap scan report</span> for 192.168.0.179</samp>
 
 <p>man-page nmap:
 <a href="http://manpages.ubuntu.com/manpages/trusty/en/man1/nmap.1.html" target="_blank">

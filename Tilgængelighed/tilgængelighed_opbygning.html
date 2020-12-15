@@ -1,0 +1,1219 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <title>Tilgængelighed</title>
+  <link rel="icon" href="../images/favicon.png">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono|Ubuntu|Ubuntu+Condensed' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/jquery-ui.min.css">
+  <link rel="stylesheet" href="../css/jquery.tocify.css">
+  <link rel="stylesheet" href="../css/style_new.css" />
+<!-- Scripts in bottom to speed up pageload-->
+ 
+
+</head>
+<body>
+	
+	
+<div class="container-fluid">
+
+<div class="row-fluid">
+	
+<div class="col-xs-3">
+	
+	<nav>
+		
+		<div id="toc">
+		
+			<div id="toc_headline"></div>
+		
+		</div>
+		
+	</nav>
+
+</div><!-- Start slut 1. kolonne - TOC -->
+	
+<div class="col-xs-9">
+	
+<h1>Tilgængelighed</h1>
+
+<p>Tilgængelighed handler om at indhold skal være let at læse for alle brugere. Det er altså ikke kun til synshandikappede, men også dig og mig. Der gælder altså:</p>
+
+<ul class="disc">
+	<li>Teksten skal være til at læse</li>
+	<li>Indholdet skal være forståeligt</li>
+	<li>Handlinger skal være til at udføre</li>
+	<li>Links skal være tydelige</li>
+	<li>Lister og tabeller skal være til at overskue</li>
+	<li>Illustrationer og billeder der indeholder formidling, skal også forklares med ord.</li>
+</ul>
+
+<p>Dokumenter skal være tilgængelig for målgruppen</p>
+
+<h2>En øvelse</h2>
+
+<p>Prøv at forestille dig du var blind eller svagtseende. Hvad ville det betyde?</p>
+
+<p>Budskaber der er baseret på udseende, vil ikke kunne fortælle dig noget. Du vil ikke kunne se:</p>
+
+<ul class="disc">
+	<li>Størrelser eller udseende på tekst (overskrifter, skrifttyper, farver/størrelser)</li>
+	<li>Du vil ikke kunne se arbejdstegninger eller billeder der indeholder budskaber</li>
+	<li>Du vil ikke kunne se tabellernes design</li>
+	<li>Du vil ikke kunne se hvad der er links</li>
+</ul>
+
+<p>Hvis computeren skal kunne læse noget op for dig skal den vide, hvad det er teksten er. Koden inde bag ved skal fortælle om man læser en overskrift eller almindelige tekst. Den blinde skal også have mulighed for at hoppe over en tabel eller liste hvis indholdet er irrelevant. Informationen skal være præsenteret på en måde, så man som blind kan overskue den.</p>
+
+<p>Tilgængelighed handler ikke kun om blinde brugere. Tilgængelighed handler om at gøre information let tilgængelige for alle. Det skal være overskueligt og man skal kunne finde det man vil læse.</p>
+
+<h2>Hvordan virker tilgængelighed</h2>
+
+<p>Man gør indhold tilgængelig ved at fortælle computeren hvad indholdet er. Det gør man ved at pakke teksten ind i <em>elementer</em> (kaldet <em>tags</em> på engelsk).</p>
+
+
+<div class="eksempel">
+	
+	<p>&lt;h2>Dette er et eksempel på almindelig tekst&lt;/h2></p>
+	
+	<p>&lt;p>Dette er et eksempel på &lt;em>almindelig tekst&lt;/em>&lt;/p></p>
+	
+</div>
+
+<p>I teksten herover er første linje en overskrift i niveau 2 (<code class="html">&lt;h2></code>), og den anden linje er almindelig tekst (<code class="html">&lt;p></code>), hvor ordene "almindelig tekst" er fremhævet (<code class="html">&lt;em></code>). </p>
+
+<p><em>h2</em>, <em>p</em> og <em>em</em> er det vi kalder elementer.</p>
+
+
+<h2>Tekstens elementer og udseende</h2>
+
+<h3>Overskrifter</h3>
+
+<p>Overskrifter kan anvendes i 6 niveauer.</p>
+
+<ol class="">
+	<li><code class="html">&lt;h1></code> - Overskrift niveau 1</li>
+	<li><code class="html">&lt;h2></code> - Overskrift niveau 2</li>
+	<li><code class="html">&lt;h3></code> - Overskrift niveau 3</li>
+	<li><code class="html">&lt;h4></code> - Overskrift niveau 4</li>
+	<li><code class="html">&lt;h5></code> - Overskrift niveau 5</li>
+	<li><code class="html">&lt;h6></code> - Overskrift niveau 6</li>
+</ol>
+
+<p><code class="html">&lt;h1></code> Skal være den første overskrift og må kun være der en gang. Overskrifterne skal følge hinanden:</p>
+
+<ul class="none">
+	<li>h1 Niv1 overskrift
+		<ul class="none">
+			<li>h2 niv2 overskrift
+				<ul class="none">
+					<li>h3 niv3 overskrift</li>
+					<li>h3 niv3 overskrift</li>
+				</ul>
+			</li>
+			<li>h2 - niv2 overskrift</li>
+			<li>h2 - niv2 overskrift</li>
+		</ul>
+	</li>
+</ul>
+
+<p>Overvej at Bryd dokumenter ned, hvis der er for mange niveauer. Kommer man over 4 niveauer, så bliver teksten uoverskuelig for alle.</p>
+
+<h3>Tekst</h3>
+
+<p>Der er grundlæggende 2 typer tekst vi skal anvende: Almindelig og fremhævet tekst. Almindelig tekst er selve brødteksten, men vi kan have et behov for at fremhæve dele af teksten. Det er hvis vi vil fremhæve noget for læseren. Det gør vi med <strong>fed tekst</strong> og <em>kursiv tekst</em>.</p>
+
+<ul class="">
+	<li>Brug <strong>fed tekst</strong>, hvis der er noget man virkeligt skal lægge mærke til. Teksten bliver fremhævet både i koden, men også visuelt.</p></li>
+	<li>Brug <em>kursiv tekst</em> hvis der er ting i sætningen læseren skal have sin opmærksomhed på:</li>
+</ul>
+
+<p>Forskellen mellem <strong>fed</strong> og <em>kursiv</em> er ikke præcis. Den eneste retningslinie er, at fed er lidt stærkere end kursiv. Undgå at bruge fed, da det ødelægger læserens flow, men det kan være det rigtige at gøre. Se eksemplet herunder:</p>
+
+<div class="eksempel">
+	
+	<p><strong>Vær opmærksom på</strong></p>
+	
+	<p>Man bør kun bruge <em>fed</em> skrift hvis det er noget læseren skal gøres meget opmærksom på. Ofte kan man nøjes med at <em>fremhæve teksten med kursiv</em>.</p>
+</div>
+
+<h3>Tal</h3>
+
+<p>Tommelfingerreglen i retsstavning er, at tallene 0-10 skrives med bogstaver. Den regel bør man glemme når man skriver webtilgængelig tekst. Man bør skrive tal når det giver mening at skrive tal</p>
+
+<p>Der bør stå tal når det er lister, f.eks:</p>
+
+<ul class="disc">
+	<li>1 tsk. sukker</li>
+	<li>&frac14; tsk salt</li>
+	<li>&frac12; tsk kardemomme</li>
+	<li>3 æg</li>
+	<li>4 dl mælk</li>
+	<li>200 g mel</li>
+</ul>
+
+<p>Det er forresten nogle gode pandekager ;).</p>
+
+<p>Overvej følgende 2 sætninger</p>
+
+<p><strong>Første sætning (med ord)</strong></p>
+
+<p>Familien har to biler. I haven har de syv træer, som deres fire børn kan klatre i. I buret er der fem kaniner</p>
+
+<p><strong>Første sætning (med tal)</strong></p>
+
+<p>Familien har 2 biler. I haven har de 7 træer, som deres 4 børn kan klatre i. I buret er der 5 kaniner</p>
+
+<p>Hvis du kigger på på første sætning i dette afsnit, så kan du se hvordan jeg mener det skal skrives. Det kan godt være det er "korrekt", at skrive tallen 0-10 (nul til ti) med ord. Det vi bør bruge som overvejelse er, hvad der giver bedst forståelse for indholdet ... ikke forståelse for retsstavning.</p>
+
+<p>Det kan alle have <em>en</em> mening om ... som sagt ... brug ord og tal alt efter budskabet.</p>
+
+
+
+<h2>Oversigter - Lister og tabeller</h2>
+
+<p>Nogle gange er det lettest at beskrive noget ved hjælp af lister og tabeller. Tommelfingerreglen er:</p>
+
+<ul class="disc">
+	<li>Tabeller bruges til at vise data</li>
+	<li>lister bruges til beskrivelser og opremsninger</li>
+</ul>
+
+<p>Om noget skal stå i lister eller tabeller er en afvejning som du må lave fra gang til gang. Lad os se på nogle eksempler.</p>
+
+<p>Tabeller er for nogle gode til at få informationer fra, for andre er de uoverskuelige. Derfor bør du overveje hvad der giver mest mening. Min anbefaling er, at du bruger lister når det kan lade sig gøre. Hvis det er tydeligt kategoriseret data, så kan tabeller være mest velegnet.</p>
+
+<div class="alert">
+	
+	<p>Er det vigtigt, at tabellen kan læses på en mobil enhed, så bør du designe dem på følgende måde:</p>
+	
+	<ul class="disc">
+		<li>Lav dem med overskrifterne i øverste række</li>
+		<li>De må have maks. 3 kolonner</li>
+		<li>Split store tabeller op</li>
+		<li>Kan du bruge lister ... så brug en liste i stedet for.</li>
+		
+	</ul>
+	
+</div>
+
+<h3>Få data</h3>
+
+<p>Herunder er der vist et eksempel med antallet af elever på en skole.</p>
+
+<p><strong>Som tabel</strong></p>
+
+<table class="_">
+	<thead>
+		<tr>
+			<th scope="col">Indskoling</th>
+			<th scope="col">Mellemtrin</th>
+			<th scope="col">Udskoling</th>
+			<th scope="col">I alt</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>155</td>
+			<td>149</td>
+			<td>162</td>
+			<td>466</td>
+		</tr>
+	</tbody>
+</table>
+
+
+
+<p><strong>Som liste</strong></p>
+
+	<p>Skolen har 466 elever der er fordelt på følgende måde:</p>
+	
+	<ul class="disc">
+		<li>Indskoling: 155 elever</li>
+		<li>Mellemtrin: 149 elever</li>
+		<li>Udskoling: 162 elever</li>
+	</ul>
+	
+<p><strong>Som tekst</strong></p>
+
+<p>På skolen er der 466 elever. I indskolingen er der 155 elever, på mellemtrinnet 149 elever og i udskolingen er der 162 elever.</p>
+
+<p><strong>Vurdering</strong></p>
+
+<p>I dette tilfælde ville jeg nok have gået med listen - da den efter min vurdering er lettere at få overblik over.</p>
+
+<h3>Mange data</h3>
+
+<p>Herunder er vist et overblik over kønsfordelingen på en skole. Det er et eksempel på en tabel, der er født i et regneark.</p>
+
+<table class="_">
+	<thead>
+		<tr>
+			<th scope="col">Trin</th>
+			<th scope="col">Klasse</th>
+			<th scope="col">Drenge</th>
+			<th scope="col">Piger</th>
+			<th scope="col">I alt</th>
+			
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Indskoling</td>
+			<td>0. klasse</td>
+			<td>13</td>
+			<td>12</td>
+			<td>25</td>
+		</tr>
+		<tr>
+			<td>Indskoling</td>
+			<td>1. klasse</td>
+			<td>14</td>
+			<td>10</td>
+			<td>28</td>
+		</tr>
+		<tr>
+			<td>Indskoling</td>
+			<td>2. klasse</td>
+			<td>9</td>
+			<td>12</td>
+			<td>21</td>
+		</tr>
+		<tr>
+			<td>Indskoling</td>
+			<td>3. klasse</td>
+			<td>12</td>
+			<td>12</td>
+			<td>24</td>
+		</tr>
+		<tr>
+			<td>Mellemtrin</td>
+			<td>4. klasse</td>
+			<td>16</td>
+			<td>8</td>
+			<td>24</td>
+		</tr>
+		<tr>
+			<td>Mellemtrin</td>
+			<td>5. klasse</td>
+			<td>8</td>
+			<td>16</td>
+			<td>24</td>
+		</tr>
+		<tr>
+			<td>Mellemtrin</td>
+			<td>6. klasse</td>
+			<td>14</td>
+			<td>12</td>
+			<td>26</td>
+		</tr>
+		<tr>
+			<td>Udskoling</td>
+			<td>7. klasse</td>
+			<td>13</td>
+			<td>15</td>
+			<td>28</td>
+		</tr>
+		<tr>
+			<td>Udskoling</td>
+			<td>8. klasse</td>
+			<td>14</td>
+			<td>14</td>
+			<td>28</td>
+		</tr>
+		<tr>
+			<td>Udskoling</td>
+			<td>9. klasse</td>
+			<td>10</td>
+			<td>17</td>
+			<td>27</td>
+		</tr>
+		<tr>
+			<td>Alle elever</td>
+			<td>Alle klasser</td>
+			<td>123</td>
+			<td>128</td>
+			<td>251</td>
+		</tr>
+	</tbody>
+</table>
+
+<div class="analyse">
+	
+	<p>Dette er en stor tabel, som er svær at få overblik over - også selvom man er seende. Tabellen er rigtig, men ikke specielt tilgængelig</p>
+	
+	<p>Tabeller på denne størrelse bør man nedbryde til mindre tabeller eller/og lister og tekst.</p>	
+	
+</div>
+
+<h3>Nedbrydning af tabel</h3>
+
+<p>For at gøre bryde komplekse tabeller ned kan med fordel spørge sig selv:</p>
+
+<ul class="">
+	
+	<li>Er der grupper tabellen kan deles op i?</li>
+	<li>Er der noget der ikke er nødvendigt?</li>
+	<li>Er der noget der kan forklares med tekst?</li>
+	<li>Kan noget sættes på listeform?</li>
+	
+</ul>
+
+<p><strong>Er der grupper tabellen kan deles op i?</strong></p>
+
+<p><em>JA</em> - vi kan dele tabellen op 4 dele:</p>
+
+<ul class="disc">
+	<li>Indskoling</li>
+	<li>Mellemtrin</li>
+	<li>Udskoling</li>
+	<li>Hele skolen</li>
+</ul>
+
+<p><strong>Er der noget der ikke er nødvendigt?</strong></p>
+
+<p><em>JA</em> - Opsumeringen af elever på hvert klassetrin er med så små tal, at de kan regnes i hovedet.</p>
+
+<p><strong>Er der noget der kan forklares med tekst?</strong></p>
+
+<p><em>JA</em> - Rækken "I alt" kan kan forklares med en sætning og en kort liste.</p>
+
+<p><strong>Kan noget sættes på listeform?</strong></p>
+
+<p><em>JA</em> - Rækken "I alt" kan kan forklares med en sætning og en kort liste.</p>
+
+<p>Herunder har jeg lavet 4 forskellige nedbrydninger. Efter nedbrydningerne kigger vi på hvad der sker</p>
+
+<h4>Nedbrydning version 1 - Mindre tabeller</h4>
+
+<ul class="disc">
+	<li>Vi fjerne kolonnen "Trin" - og gør dem til overskrifter over hver ny tabel</li>
+	<li>Vi nedbryder tabellen i 4 nye tabeller med: Indskoling, mellemtrin, udskoling og alle elever</li>
+	<li>Vi fjerne kolonnen "i alt"</li>
+</ul>
+
+<p><strong>Indskoling</strong></p>
+
+<table class="_">
+	<thead>
+		<tr>
+			<th scope="col">Klasse</th>
+			<th scope="col">Drenge</th>
+			<th scope="col">Piger</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>0. klasse</td>
+			<td>13</td>
+			<td>12</td>
+		</tr>
+		<tr>
+			<td>1. klasse</td>
+			<td>14</td>
+			<td>10</td>
+		</tr>
+		<tr>
+			<td>2. klasse</td>
+			<td>9</td>
+			<td>12</td>
+		</tr>
+		<tr>
+			<td>3. klasse</td>
+			<td>12</td>
+			<td>12</td>
+		</tr>
+	</tbody>
+</table>
+
+<p><strong>Mellemtrin</strong></p>
+
+<table class="_">
+	<thead>
+		<tr>
+			<th scope="col">Klasse</th>
+			<th scope="col">Drenge</th>
+			<th scope="col">Piger</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>4. klasse</td>
+			<td>16</td>
+			<td>8</td>
+		</tr>
+		<tr>
+			<td>5. klasse</td>
+			<td>8</td>
+			<td>16</td>
+		</tr>
+		<tr>
+			<td>6. klasse</td>
+			<td>14</td>
+			<td>12</td>
+		</tr>
+	</tbody>
+</table>
+
+<p><strong>Udskoling</strong></p>
+
+
+
+<table class="_">
+	<thead>
+		<tr>
+			<th scope="col">Klasse</th>
+			<th scope="col">Drenge</th>
+			<th scope="col">Piger</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>7. klasse</td>
+			<td>13</td>
+			<td>15</td>
+		</tr>
+		<tr>
+			<td>8. klasse</td>
+			<td>14</td>
+			<td>14</td>
+		</tr>
+		<tr>
+			<td>9. klasse</td>
+			<td>10</td>
+			<td>17</td>
+		</tr>
+	</tbody>
+</table>
+
+<p><strong>Drenge og piger i alt</strong></p>
+
+<p>Skolen har i alt <em>251 elever</em>, som er fordelt på følgende måde:</p>
+
+<ul class="disc">
+	<li>Drenge: 123</li>
+	<li>Piger: 128</li>
+</ul>
+
+<details>
+
+	<summary>Se koden ved eksempel 1</summary>
+
+	<pre><code class="html">&lt;p>&lt;strong>Indskoling&lt;/strong>&lt;/p>
+
+&lt;table class="_">
+	&lt;thead>
+		&lt;tr>
+			&lt;th scope="col">Klasse&lt;/th>
+			&lt;th scope="col">Drenge&lt;/th>
+			&lt;th scope="col">Piger&lt;/th>
+		&lt;/tr>
+	&lt;/thead>
+	&lt;tbody>
+		&lt;tr>
+			&lt;td>0. klasse&lt;/td>
+			&lt;td>13&lt;/td>
+			&lt;td>12&lt;/td>
+		&lt;/tr>
+		&lt;tr>
+			&lt;td>1. klasse&lt;/td>
+			&lt;td>14&lt;/td>
+			&lt;td>10&lt;/td>
+		&lt;/tr>
+		&lt;tr>
+			&lt;td>2. klasse&lt;/td>
+			&lt;td>9&lt;/td>
+			&lt;td>12&lt;/td>
+		&lt;/tr>
+		&lt;tr>
+			&lt;td>3. klasse&lt;/td>
+			&lt;td>12&lt;/td>
+			&lt;td>12&lt;/td>
+		&lt;/tr>
+	&lt;/tbody>
+&lt;/table>
+
+&lt;p>&lt;strong>Mellemtrin&lt;/strong>&lt;/p>
+
+&lt;table class="_">
+	&lt;thead>
+		&lt;tr>
+			&lt;th scope="col">Klasse&lt;/th>
+			&lt;th scope="col">Drenge&lt;/th>
+			&lt;th scope="col">Piger&lt;/th>
+		&lt;/tr>
+	&lt;/thead>
+	&lt;tbody>
+		&lt;tr>
+			&lt;td>4. klasse&lt;/td>
+			&lt;td>16&lt;/td>
+			&lt;td>8&lt;/td>
+		&lt;/tr>
+		&lt;tr>
+			&lt;td>5. klasse&lt;/td>
+			&lt;td>8&lt;/td>
+			&lt;td>16&lt;/td>
+		&lt;/tr>
+		&lt;tr>
+			&lt;td>6. klasse&lt;/td>
+			&lt;td>14&lt;/td>
+			&lt;td>12&lt;/td>
+		&lt;/tr>
+	&lt;/tbody>
+&lt;/table>
+
+&lt;p>&lt;strong>Udskoling&lt;/strong>&lt;/p>
+
+&lt;table class="_">
+	&lt;thead>
+		&lt;tr>
+			&lt;th scope="col">Klasse&lt;/th>
+			&lt;th scope="col">Drenge&lt;/th>
+			&lt;th scope="col">Piger&lt;/th>
+		&lt;/tr>
+	&lt;/thead>
+	&lt;tbody>
+		&lt;tr>
+			&lt;td>7. klasse&lt;/td>
+			&lt;td>13&lt;/td>
+			&lt;td>15&lt;/td>
+		&lt;/tr>
+		&lt;tr>
+			&lt;td>8. klasse&lt;/td>
+			&lt;td>14&lt;/td>
+			&lt;td>14&lt;/td>
+		&lt;/tr>
+		&lt;tr>
+			&lt;td>9. klasse&lt;/td>
+			&lt;td>10&lt;/td>
+			&lt;td>17&lt;/td>
+		&lt;/tr>
+	&lt;/tbody>
+&lt;/table>
+
+&lt;p>&lt;strong>Drenge og piger i alt&lt;/strong>&lt;/p>
+
+&lt;p>Skolen har i alt &lt;em>251 elever&lt;/em>, som er fordelt på følgende måde:&lt;/p>
+
+&lt;ul class="disc">
+	&lt;li>Drenge: 123&lt;/li>
+	&lt;li>Piger: 128&lt;/li>
+&lt;/ul></code></pre>
+
+</details>
+
+<h4>Nedbrydning version 2 - til 4 lister</h4>
+
+<p>Her fjerne vi alle tabeller og laver dem om til lister</p>
+
+<p><strong>Indskoling</strong></p>
+
+<ul class="disc">
+	<li>0. klasse
+		<ul class="">
+			<li>Drenge: 12</li>
+			<li>piger: 12</li>
+		</ul>
+	</li>
+	<li>1. klasse
+		<ul class="">
+			<li>Drenge: 14</li>
+			<li>piger: 12</li>
+		</ul>
+	</li>
+	<li>2. klasse
+		<ul class="">
+			<li>Drenge: 9</li>
+			<li>piger: 12</li>
+		</ul>
+	</li>
+	<li>3. klasse
+		<ul class="">
+			<li>Drenge: 12</li>
+			<li>piger: 12</li>
+		</ul>
+	</li>
+</ul>
+
+<p><strong>Mellemtrin</strong></p>
+
+<ul class="disc">
+	<li>4. klasse
+		<ul class="">
+			<li>Drenge: 16</li>
+			<li>piger: 8</li>
+		</ul>
+	</li>
+	<li>5. klasse
+		<ul class="">
+			<li>Drenge: 8</li>
+			<li>piger: 16</li>
+		</ul>
+	</li>
+	<li>6. klasse
+		<ul class="">
+			<li>Drenge: 14</li>
+			<li>piger: 12</li>
+		</ul>
+	</li>
+</ul>
+
+<p><strong>Udskoling</strong></p>
+
+<ul class="disc">
+	<li>7. klasse
+		<ul class="">
+			<li>Drenge: 13</li>
+			<li>piger: 15</li>
+		</ul>
+	</li>
+	<li>8. klasse
+		<ul class="">
+			<li>Drenge: 14</li>
+			<li>piger: 14</li>
+		</ul>
+	</li>
+	<li>9. klasse
+		<ul class="">
+			<li>Drenge: 10</li>
+			<li>piger: 17</li>
+		</ul>
+	</li>
+</ul>
+
+<p><strong>Drenge og piger i alt</strong></p>
+
+<p>Skolen har i alt <em>251 elever</em>, som er fordelt på følgende måde:</p>
+
+<ul class="disc">
+	<li>Drenge: 123</li>
+	<li>Piger: 128</li>
+</ul>
+
+<details>
+
+	<summary>Se koden ved eksempel 2</summary>
+
+	<pre><code class="html">&lt;p>&lt;strong>Indskoling&lt;/strong>&lt;/p>
+
+&lt;ul class="disc">
+	&lt;li>0. klasse
+		&lt;ul class="">
+			&lt;li>Drenge: 12&lt;/li>
+			&lt;li>piger: 12&lt;/li>
+		&lt;/ul>
+	&lt;/li>
+	&lt;li>1. klasse
+		&lt;ul class="">
+			&lt;li>Drenge: 14&lt;/li>
+			&lt;li>piger: 12&lt;/li>
+		&lt;/ul>
+	&lt;/li>
+	&lt;li>2. klasse
+		&lt;ul class="">
+			&lt;li>Drenge: 9&lt;/li>
+			&lt;li>piger: 12&lt;/li>
+		&lt;/ul>
+	&lt;/li>
+	&lt;li>3. klasse
+		&lt;ul class="">
+			&lt;li>Drenge: 12&lt;/li>
+			&lt;li>piger: 12&lt;/li>
+		&lt;/ul>
+	&lt;/li>
+&lt;/ul>
+
+&lt;p>&lt;strong>Mellemtrin&lt;/strong>&lt;/p>
+
+&lt;ul class="disc">
+	&lt;li>4. klasse
+		&lt;ul class="">
+			&lt;li>Drenge: 16&lt;/li>
+			&lt;li>piger: 8&lt;/li>
+		&lt;/ul>
+	&lt;/li>
+	&lt;li>5. klasse
+		&lt;ul class="">
+			&lt;li>Drenge: 8&lt;/li>
+			&lt;li>piger: 16&lt;/li>
+		&lt;/ul>
+	&lt;/li>
+	&lt;li>6. klasse
+		&lt;ul class="">
+			&lt;li>Drenge: 14&lt;/li>
+			&lt;li>piger: 12&lt;/li>
+		&lt;/ul>
+	&lt;/li>
+&lt;/ul>
+
+&lt;p>&lt;strong>Udskoling&lt;/strong>&lt;/p>
+
+&lt;ul class="disc">
+	&lt;li>7. klasse
+		&lt;ul class="">
+			&lt;li>Drenge: 13&lt;/li>
+			&lt;li>piger: 15&lt;/li>
+		&lt;/ul>
+	&lt;/li>
+	&lt;li>8. klasse
+		&lt;ul class="">
+			&lt;li>Drenge: 14&lt;/li>
+			&lt;li>piger: 14&lt;/li>
+		&lt;/ul>
+	&lt;/li>
+	&lt;li>9. klasse
+		&lt;ul class="">
+			&lt;li>Drenge: 10&lt;/li>
+			&lt;li>piger: 17&lt;/li>
+		&lt;/ul>
+	&lt;/li>
+&lt;/ul>
+
+&lt;p>&lt;strong>Drenge og piger i alt&lt;/strong>&lt;/p>
+
+&lt;p>Skolen har i alt &lt;em>251 elever&lt;/em>, som er fordelt på følgende måde:&lt;/p>
+
+&lt;ul class="disc">
+	&lt;li>Drenge: 123&lt;/li>
+	&lt;li>Piger: 128&lt;/li>
+&lt;/ul></code></pre>
+
+</details>
+
+<h4>Nedbrydning version 3 - 4 lister tekst komprimeret</h4>
+
+<p>Her trækker vi de 2 underpunkter ind i en parantes efter klassetrinnet, for at gøre den enkelte liste mere læsbar.</p>
+
+<p><strong>Indskoling</strong></p>
+
+<ul class="disc">
+	<li>0. klasse (12 drenge, 12 piger)</li>
+	<li>1. klasse (14 drenge, 10 piger)</li>
+	<li>2. klasse (19 drenge, 12 piger)</li>
+	<li>3. klasse (12 drenge, 12 piger)</li>
+</ul>
+
+
+<p><strong>Mellemtrin</strong></p>
+
+<ul class="disc">
+	<li>4. klasse (16 drenge, 8 piger)</li>
+	<li>5. klasse (8 drenge, 16 piger)</li>
+	<li>6. klasse (14 drenge, 12 piger)</li>
+</ul>
+
+
+<p><strong>Udskoling</strong></p>
+
+<ul class="disc">
+	<li>7. klasse (13 drenge, 15 piger)</li>
+	<li>8. klasse (14 drenge, 14 piger)</li>
+	<li>9. klasse (10 drenge, 17 piger)</li>
+</ul>
+
+<p><strong>Drenge og piger i alt</strong></p>
+
+<ul class="disc">
+	<li>Alle klasser (123 drenge, 128 piger)</li>
+	<li>I alt: 251 elever</li>
+</ul>
+
+<details>
+
+	<summary>Se koden ved Eksempel 3</summary>
+
+	<pre><code class="html">&lt;p>&lt;strong>Indskoling&lt;/strong>&lt;/p>
+
+&lt;ul class="disc">
+	&lt;li>0. klasse (12 drenge, 12 piger)&lt;/li>
+	&lt;li>1. klasse (14 drenge, 10 piger)&lt;/li>
+	&lt;li>2. klasse (19 drenge, 12 piger)&lt;/li>
+	&lt;li>3. klasse (12 drenge, 12 piger)&lt;/li>
+&lt;/ul>
+
+
+&lt;p>&lt;strong>Mellemtrin&lt;/strong>&lt;/p>
+
+&lt;ul class="disc">
+	&lt;li>4. klasse (16 drenge, 8 piger)&lt;/li>
+	&lt;li>5. klasse (8 drenge, 16 piger)&lt;/li>
+	&lt;li>6. klasse (14 drenge, 12 piger)&lt;/li>
+&lt;/ul>
+
+
+&lt;p>&lt;strong>Udskoling&lt;/strong>&lt;/p>
+
+&lt;ul class="disc">
+	&lt;li>7. klasse (13 drenge, 15 piger)&lt;/li>
+	&lt;li>8. klasse (14 drenge, 14 piger)&lt;/li>
+	&lt;li>9. klasse (10 drenge, 17 piger)&lt;/li>
+&lt;/ul>
+
+&lt;p>&lt;strong>Drenge og piger i alt&lt;/strong>&lt;/p>
+
+&lt;ul class="disc">
+	&lt;li>Alle klasser (123 drenge, 128 piger)&lt;/li>
+	&lt;li>I alt: 251 elever&lt;/li>
+&lt;/ul></code></pre>
+
+</details>
+
+
+<h4>Nedbrydning version 4 - som en liste - opmærket og designet </h4>
+
+<p>Her laver vi det om til en samlet liste, hvor vi ved hjælp af design</p>
+
+<ul class="disc">
+	<li>Vi fjerner prikken i første niveau</li>
+	<li>Vi laver lidt ekstra luft vertikalt, så det ser ud som en overskrift</li>
+	<li>Teksten i første niveau gør vi fed (strong)</li>
+	<li>Vi laver afstand mellem punkter i 2. niveau</li>
+</ul>
+
+<ul style="list-style-type:none;margin: 2em 0em 2em -2.8em">
+	<li><strong>Indskoling</strong>
+		<ul style="list-style-type:disc;margin: 1em 0em">
+			<li>0. klasse (12 drenge, 12 piger)</li>
+			<li>1. klasse (14 drenge, 10 piger)</li>
+			<li>2. klasse (19 drenge, 12 piger)</li>
+			<li>3. klasse (12 drenge, 12 piger)</li>
+		</ul>
+	</li>
+	<li><strong>Mellemtrin</strong>
+		<ul style="list-style-type:disc;margin: 1.2em 0em">
+			<li>4. klasse (16 drenge, 8 piger)</li>
+			<li>5. klasse (8 drenge, 16 piger)</li>
+			<li>6. klasse (14 drenge, 12 piger)</li>
+		</ul>
+	</li>
+	<li><strong>Udskoling</strong>
+		<ul style="list-style-type:disc;margin: 1.2em 0em">
+			<li>7. klasse (13 drenge, 15 piger)</li>
+			<li>8. klasse (14 drenge, 14 piger)</li>
+			<li>9. klasse (10 drenge, 17 piger)</li>
+		</ul>	
+	</li>
+	<li><strong>I alt</strong>
+		<ul style="list-style-type:disc;margin: 1.2em 0em">
+			<li>Alle klasser (123 drenge, 128 piger)</li>
+			<li>251 elever i alt</li>
+		</ul>	
+	</li>
+</ul>
+
+<details>
+
+	<summary>Se koden ved eksempel 4</summary>
+
+<pre><code class="html">&lt;ul style="list-style-type:none;margin: 2em 0em 2em -2.8em">
+	&lt;li>&lt;strong>Indskoling&lt;/strong>
+		&lt;ul style="list-style-type:disc;margin: 1em 0em">
+			&lt;li>0. klasse (12 drenge, 12 piger)&lt;/li>
+			&lt;li>1. klasse (14 drenge, 10 piger)&lt;/li>
+			&lt;li>2. klasse (19 drenge, 12 piger)&lt;/li>
+			&lt;li>3. klasse (12 drenge, 12 piger)&lt;/li>
+		&lt;/ul>
+	&lt;/li>
+	&lt;li>&lt;strong>Mellemtrin&lt;/strong>
+		&lt;ul style="list-style-type:disc;margin: 1.2em 0em">
+			&lt;li>4. klasse (16 drenge, 8 piger)&lt;/li>
+			&lt;li>5. klasse (8 drenge, 16 piger)&lt;/li>
+			&lt;li>6. klasse (14 drenge, 12 piger)&lt;/li>
+		&lt;/ul>
+	&lt;/li>
+	&lt;li>&lt;strong>Udskoling&lt;/strong>
+		&lt;ul style="list-style-type:disc;margin: 1.2em 0em">
+			&lt;li>7. klasse (13 drenge, 15 piger)&lt;/li>
+			&lt;li>8. klasse (14 drenge, 14 piger)&lt;/li>
+			&lt;li>9. klasse (10 drenge, 17 piger)&lt;/li>
+		&lt;/ul>	
+	&lt;/li>
+	&lt;li>&lt;strong>I alt&lt;/strong>
+		&lt;ul style="list-style-type:disc;margin: 1.2em 0em">
+			&lt;li>Alle klasser (123 drenge, 128 piger)&lt;/li>
+			&lt;li>251 elever i alt&lt;/li>
+		&lt;/ul>	
+	&lt;/li>
+&lt;/ul>	</code></pre>
+
+
+</details>
+
+<h3>Nedbrydning - hvor langt skal man gå?</h3>
+
+<p>Herover har jeg lavet 4 forskellige fremstillinger af skemaet ovenfor. De 4 versioner viser alle de samme data, nemlig kønsfordelingen i klasser på skolen.</p>
+
+<p>Min anbefaling er, at man går efter at lister, fordi de giver det bedste overblik for alle.</p>
+
+<p>Læg mærke til version 3 og 4. Visuelt er der ingen forskel på dem, men i koden bagved er version 3 og 4 meget forskellige.</p>
+
+<ul class="disc">
+	<li><strong>Version 3</strong>: 4 seperate lister, hvor titlerne er fremhævet tekst</li>
+	<li><strong>Version 4</strong>: 1 liste, hvor teksten er fremhævet ved hjælp af design (CSS)</li>
+</ul>
+
+<p>Min vurdering af de ovenstående eksempler er, at version 4 er den mest tilgængelige, da ingen kan være i tvivl om hvordan indholdet skal forstås.</p>
+
+<p>Hvis man vil have tabeller er version 1 den bedste, men det gør efter min vurdering indholdet mindre læsbart for alle.</p>
+
+<p>En væsentlig pointe ved denne gennemgang er: For at gøre data tilgængeligt kan det være nødvendigt at lave flere udgaver, og man kan med fordel indrage dem som har forstand på at ændre udseende på indholdet, så det både bliver flot at se på og tilgængeligt på samme tid.</p>
+
+<h3>Billeder</h3>
+
+
+
+
+
+
+<p><strong>Almindelig tekst</strong></p>
+
+<p>Almindelig tekst anvendes til al brødteksten. Skriv kort, præcist og letforståeligt.</p>
+
+<p><strong>Fed tekst</strong> og <em>kursiv tekst</em></p>
+
+
+
+
+
+
+<ul class="disc">
+	<li>Almindelig tekst (p-element)</li>
+	<li><strong>Fed tekst</strong> (strong-element)</li>
+	<li>_</li>
+</ul>
+
+
+<table class="_">
+	<thead>
+		<tr>
+			<th scope="col">Tag</th>
+			<th scope="col">Beskrivelse</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>h1</td>
+			<td>overskrift niveau 1</td>
+		</tr>
+		<tr>
+			<td>h2, h3, h4, h5</td>
+			<td>overskrift niveau 2, 3, 4, 5</td>
+		</tr>
+		<tr>
+			<td>p</td>
+			<td>paragraf/afsnit</td>
+		</tr>
+		<tr>
+			<td>a</td>
+			<td>link</td>
+		</tr>
+		<tr>
+			<td>ul / ol</td>
+			<td>lister (punktliste/ordensliste)</td>
+		</tr>
+		<tr>
+			<td>table</td>
+			<td>tabel</td>
+		</tr>
+		<tr>
+			<td>img</td>
+			<td>billede</td>
+		</tr>
+		<tr>
+			<td>nav</td>
+			<td>navigationsmenu</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Du kan få det fulde overblik, ved at gå til siden: <a href="https://www.w3schools.com/tags/default.asp" target="_blank">HTML Element Reference</a>.</p>
+
+<p>Der findes f.eks. tags for <button type="_">Knapper</button> (prøv at klikke) og <kbd>Taster</kbd>. Når man bruger disse tags kan computeren læse siden korrekt for den blinde ... og vi kan som seende se de samme ting.</p>
+
+<h2>Hvordan sikrer man tilgængelighed</h2>
+
+<p>Man sikrer tilgængelighed ved at have fokus på to ting:</p>
+
+<ol class="">
+	<li>Ved at lave godt indhold (tekst, billeder, lister og billeder)</li>
+	<li>Ved at formatere det korrekt.</li>
+</ol>
+	
+<h2>Tilgængelighed i word</h2>	
+
+<p>Hvis du vil lave en simpel måde at arbejde med tilgængelighed i Word, så kan du lave dit eget panel.</p>
+
+<figure id="">
+
+	<img class="p90" src="images/tilgængelighed - tilgængelighedspanel i word.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Hvis man holder sig til disse funktioner i Word, så kan det ikke gå galt.</p>
+
+<h3>Lav din egen fane</h3>
+
+<p>For at lave din egen fane skal du højreklikke i menuen og vælge: <em>Tilpas båndet</em>.</p>
+
+<p>Så kommer der en menu frem som herunder. Her er tilgænglighedsfanen oprettet.</p>
+
+<figure id="">
+
+	<img class="p90" src="images/tilgængelighed - opsætning af tilgængelighedspanel.png" alt="Scre" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h3>Fremgangsmåde</h3>
+
+<p>Før vi går igang med at oprette en ny fane, så skal vi lige have taget backup af den gamle.</p>
+
+<p>Klik på <em>Importer/eksporter</em> og vælg <em>Eksporter alle tilpasninger</em>. Navngiv og gem filen et sted du kan finde den igen. Sørg for at den hedder <em>.exporterUI</em> til sidst.</p>
+
+<p>Når det er gjort kan vi gå igang med at oprette den nye fane - for vi kan altid rette på på det hvis noget skulle gå galt.</p>
+
+<ul class="disc">
+
+	<li>Klik på <button type="_">Ny Fane</button>, højreklik på fanen og omdøb den til "Tilgængelighed"</li>
+	<li>Klik på <button type="_">Ny Gruppe</button> 7 gange</li>
+	<li>Højreklik på grupperne og navngiv dem
+		<ul class="">
+			<li>Visning</li>
+			<li>Filer</li>
+			<li>Typografier</li>
+			<li>Lister</li>
+			<li>Tabel</li>
+			<li>Links</li>
+			<li>Billeder</li>
+		</ul>
+	</li>
+</ul>
+	
+<p>Nu er selve strukturen oprettet, og nu kan vi gå igang med at fylde kommandoer ind i dem. Start med at vælge <em>Alle kommandoer</em> i dropdownmenuen <em>Vælg kommandoer fra:</em></p>
+
+<p>Fremgangsmåden er, at man:</p>
+
+<ol class="">
+	<li>Klik på gruppen du vil lægge kommandoer i</li>
+	<li>Find dem i kolonnen til venstre</li>
+	<li>Marker dem</li>
+	<li>Klik på <button type="_">Tilføj>></button></li>
+	<li>Gentag</li>
+</ol>
+
+<p>De kommandoer du skal have ind er:</p>
+
+<ul class="disc">
+	<li>Visning
+		<ul class="disc">
+			<li>Weblayout</li>
+			<li>Udskriftslayout</li>
+		</ul>
+	</li>
+	<li>Filer
+		<ul class="disc">
+			<li>Åbn</li>
+			<li>Gem</li>
+			<li>Gem som</li>
+			<li>Klip</li>
+			<li>Kopier</li>
+		</ul>
+	</li>
+	<li>Typografier
+		<ul class="disc">
+			<li>Teksttypografier</li>
+			<li>fed</li>
+			<li>Kursiv</li>
+		</ul>
+	</li>
+	<li>Lister
+		<ul class="disc">
+			<li>Punktopstilling</li>
+			<li>Opstilling med tal eller bogstaver</li>
+			<li>Liste med flere niveauer</li>
+		</ul>
+	</li>
+	<li>Tabel
+		<ul class="disc">
+			<li>Tilføj tabel</li>
+		</ul>
+	</li>
+	<li>Links
+		<ul class="disc">
+			<li>Indsæt link</li>
+		</ul>
+	</li>
+	<li>Billeder
+		<ul class="disc">
+			<li>Indsæt billede</li>
+		</ul>
+	</li>
+</ul>
+
+
+
+
+
+<h2>Læs mere</h2>
+
+<p>Web accessibiliti Tutorials</p>
+
+<p><a href="https://www.w3.org/WAI/tutorials/" target="_blank">https://www.w3.org/WAI/tutorials/</a></p>
+
+	
+</div><!-- end: col-md-9 -->
+
+<footer>
+
+	<p onclick="parentNode.remove()"><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons licens" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>Indholdet på Vidas.dk er licenseret under <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> og er skrevet af Thomas Jensen. (<a href="../hvem_er_jeg.html" target="_blank">Læs mere</a>)</p>
+
+</footer>
+	
+	
+</div><!-- end: row-fluid -->
+
+</div> <!-- end: container-fluid -->
+
+
+<!-- SCRIPT SECTION -->
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script type="text/javascript" src="../js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="../js/jquery.tocify.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+
+<!-- PRETTYFY-->
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+
+
+<!-- HIGHLIGHT -->
+	<script src="../js/highlight.pack.js" type="text/javascript"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+
+<!-- MATHJAX -->
+<script type="text/javascript" async 		src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+		MathJax.Hub.Config({ jax: ["input/TeX","output/HTML-CSS"], displayAlign: "left"	});
+</script>
+<!-- TOCIFY -->
+<script>
+	$(function() {var toc = $("#toc").tocify({ selectors: "h1, h2, h3, h4" }).data("toc-tocify"); });
+</script>
+<!-- GOOGLE ANALYTICS -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-89933285-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</body>
+</html>

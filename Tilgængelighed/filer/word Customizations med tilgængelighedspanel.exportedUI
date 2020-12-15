@@ -1,0 +1,73 @@
+<mso:cmd app="Word" dt="0" />
+<mso:customUI
+	xmlns:x2="PDFMaker.OfficeAddin"
+	xmlns:x1="dania software.dynamictemplate for Office"
+	xmlns:mso="http://schemas.microsoft.com/office/2009/07/customui">
+	<mso:ribbon>
+		<mso:qat>
+			<mso:sharedControls>
+				<mso:control idQ="mso:AutoSaveSwitch" visible="true"/>
+				<mso:control idQ="mso:FileNewDefault" visible="false"/>
+				<mso:control idQ="mso:FileOpenUsingBackstage" visible="false"/>
+				<mso:control idQ="mso:FileSave" visible="true"/>
+				<mso:control idQ="mso:FileSendAsAttachment" visible="false"/>
+				<mso:control idQ="mso:FilePrintQuick" visible="false"/>
+				<mso:control idQ="mso:PrintPreviewAndPrint" visible="false"/>
+				<mso:control idQ="mso:SpellingAndGrammar" visible="false"/>
+				<mso:control idQ="mso:ReadAloud" visible="false"/>
+				<mso:control idQ="mso:Undo" visible="true"/>
+				<mso:control idQ="mso:RedoOrRepeat" visible="true"/>
+				<mso:control idQ="mso:TableDrawTable" visible="false"/>
+				<mso:control idQ="mso:PointerModeOptions" visible="true"/>
+				<mso:control idQ="mso:QuickStylesGallery" visible="true"/>
+			</mso:sharedControls>
+		</mso:qat>
+		<mso:tabs>
+			<mso:tab idQ="mso:TabHome"/>
+			
+			<!--
+				Her starter Tilgængeligheds panelet
+			-->
+			
+			<mso:tab id="mso_c1.164F142" label="Tilgængelighed" insertBeforeQ="mso:TabInsert">
+				<mso:group id="mso_c3.196DC30" label="Visning" autoScale="true">
+					<mso:control idQ="mso:ViewWebLayoutView" visible="true"/>
+					<mso:control idQ="mso:ViewPrintLayoutView" visible="true"/>
+				</mso:group>
+				<mso:group id="mso_c3.179F0CE" label="Filer" autoScale="true">
+					<mso:control idQ="mso:FileOpenUsingBackstage" visible="true"/>
+					<mso:control idQ="mso:FileSave" visible="true"/>
+					<mso:control idQ="mso:FileSaveAs" visible="true"/>
+					<mso:control idQ="mso:Cut" visible="true"/>
+					<mso:control idQ="mso:Copy" visible="true"/>
+				</mso:group>
+				<mso:group id="mso_c5.16BBD3F" label="Typografier" autoScale="true">
+					<mso:gallery idQ="mso:QuickStylesGallery" showInRibbon="false" visible="true"/>
+					<mso:control idQ="mso:Bold" visible="true"/>
+					<mso:control idQ="mso:Italic" visible="true"/>
+				</mso:group>
+				<mso:group id="mso_c2.164F142" label="Lister" imageMso="Bullets" autoScale="true">
+					<mso:control idQ="mso:BulletsAndNumberingBulletsDialog" visible="true"/>
+					<mso:control idQ="mso:Numbering" visible="true"/>
+					<mso:gallery idQ="mso:MultilevelListGallery" showInRibbon="false" visible="true"/>
+				</mso:group>
+				<mso:group id="mso_c1.16FAC34" label="Tabel" autoScale="true">
+					<mso:gallery idQ="mso:TableInsertGallery" showInRibbon="false" visible="true"/>
+				</mso:group>
+				<mso:group id="mso_c4.196EC6C" label="Links" autoScale="true">
+					<mso:control idQ="mso:HyperlinkInsert" visible="true"/>
+				</mso:group>
+				<mso:group id="mso_c1.19851A9" label="Billeder" autoScale="true">
+					<mso:control idQ="mso:PictureInsertFromFile" visible="true"/>
+				</mso:group>
+			</mso:tab>
+			
+				<!--
+					Her slutter tilgængelighedspanelet
+				-->
+			
+			<mso:tab idQ="x1:TDSTab"/>
+			<mso:tab idQ="x2:ACROBAT_RIBBON"/>
+		</mso:tabs>
+	</mso:ribbon>
+</mso:customUI>

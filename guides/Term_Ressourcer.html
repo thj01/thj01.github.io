@@ -48,20 +48,20 @@
 
 <p><code class="bash">free</code> angiver forbruget af RAM. Her er det taget fra en computer med 32 GB RAM, der kører med en browser og Geany. Værdien som er vigtig er den der står under <em>"available"</em>.</p>
 
-<code class="cmd">free - h</code>
+<pre><code>free - h</code></pre>
 
-<pre class="ubuntu_terminal">
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ free -h
+<samp><span class="terminal_green">tj@server1</span>:<span class="terminal_tilde">~</span>$ free -h
               total        used        free      shared  buff/cache   available
 Mem:           31Gi       2,3Gi        26Gi       214Mi       2,1Gi        28Gi
-Swap:         2,0Gi          0B       2,0Gi</pre>
+Swap:         2,0Gi          0B       2,0Gi</samp>
 
-<p>Ved at indsætte <code class="bash">-h</code> bliver resultatet leveret <em>"human readable"</em> - altså i GiB-. Læg mærke til at det er den binære værdi der bliver leveret. Hvis du vil have den leveret i GB skal du tilføje <code class="bash">--si</code></p>
+<p>Ved at indsætte <em>-h</em> bliver resultatet leveret <em>"human readable"</em> - altså i GiB-. Læg mærke til at det er den binære værdi der bliver leveret. Hvis du vil have den leveret i GB skal du tilføje <em>--si</em></p>
 
-<p><code class="bash">free</code> kan også bruges til at holde øje med ramforbruget over tid ved at tilføje <code class="bash">-s *antal sekunder*</code>. Her har jeg sat free til at overvåget RAM en gang i minutter, men jeg hendter 349 billeder ind i GIMP'en</p>
+<p><em>free</em> kan også bruges til at holde øje med ramforbruget over tid ved at tilføje <em>-s *antal sekunder*</em>. Her har jeg sat free til at overvåget RAM en gang i minutter, men jeg hendter 349 billeder ind i GIMP'en</p>
 
-<pre class="ubuntu_terminal"><span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ free -h -s 60
-              total        used        free      shared  buff/cache   available
+<pre><code>free -h -s 60</code></pre>
+
+<samp>              total        used        free      shared  buff/cache   available
 Mem:           31Gi       2,4Gi        26Gi       277Mi       2,2Gi        28Gi
 Swap:         2,0Gi          0B       2,0Gi
 
@@ -71,30 +71,35 @@ Swap:         2,0Gi          0B       2,0Gi
 
               total        used        free      shared  buff/cache   available
 Mem:           31Gi        17Gi        11Gi       290Mi       2,4Gi        13Gi
-Swap:         2,0Gi          0B       2,0Gi</pre>
+Swap:         2,0Gi          0B       2,0Gi</samp>
+
+
 
 <p>... og her få sekunder efter at jeg har lukket ned for GIMP'en - bare lige for at vise hvor fantastisk Linux er til at administrere hukommelse ;)</p>
 
-<pre class="ubuntu_terminal"><span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ free -h 
-              total        used        free      shared  buff/cache   available
+<pre><code>free -h</code></pre>
+
+<samp>              total        used        free      shared  buff/cache   available
 Mem:           31Gi       2,5Gi        26Gi       315Mi       2,5Gi        28Gi
-Swap:         2,0Gi          0B       2,0Gi</pre>
+Swap:         2,0Gi          0B       2,0Gi</samp>
+
+<p>Eksempler på options</p>
+
+<dl class="">
+	<dt>-h</dt>
+	<dd>Se ramforbruget</dd>
+	<dt>h -s 10</dt>
+	<dd>Se ramforbrug hver 10'ende sekund</dd>
+	<dt>h -s 10 -c 3</dt>
+	<dd>Se ramforbrug hver 10'ende sekund 3 gange</dd>
+</dl>
 
 
-<ul class="disc">
-	<li><code class="bash">free -h</code> - se ramforbruget</li>
-	<li><code class="bash">free -h -s 10</code> - Se ramforbrug hver 10'ende sekund</li>
-	<li><code class="bash">free -h -s 10 -c 3</code> - Se ramforbrug hver 10'ende sekund 3 gange</li>
-	<li><code class="bash">_</code> - </li>
-</ul>
+<p>Hvis du gerne vil se udviklingen af dit RAM forbrug kan du sætte <em>free</em> til at opdatere sig selv efter nogle sekunder <em>-sX</em>. Nedenstående opdaterer sig selv 3 gange (<em>-c3</em>) med 2 sekunders mellemrum (<em>-s2</em>).</p>
 
-<p>Hvis du gerne vil se udviklingen af dit RAM forbrug kan du sætte <span class="inl_cmd">free</span> til at opdatere sig selv efter nogle sekunder <span class="inl_cmd">-sX</span>. Nedestående opdaterer sig selv 3 gange (<span class="inl_cmd">-c3</span>) med 2 sekunders mellemrum (<span class="inl_cmd">-s2</span>).</p>
+<pre><code>free -h -c3-s2</code></pre>
 
-<code class="cmd">free -h -c3-s2</code>
-
-<pre class="ubuntu_terminal">
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ free -h -c3 -s2
-              total        used        free      shared  buff/cache   available
+<samp>              total        used        free      shared  buff/cache   available
 Mem:           3,9G        586M        2,8G        9,6M        522M        3,2G
 Swap:          4,0G          0B        4,0G
 
@@ -104,10 +109,7 @@ Swap:          4,0G          0B        4,0G
 
               total        used        free      shared  buff/cache   available
 Mem:           3,9G        586M        2,8G        9,6M        522M        3,2G
-Swap:          4,0G          0B        4,0G
-
-</pre>
-
+Swap:          4,0G          0B        4,0G</samp>
 
 <p>Læs Mere: Linux ate my RAM! <a href="http://www.linuxatemyram.com/" target="_blank">http://www.linuxatemyram.com/</a></p>
 
@@ -119,9 +121,9 @@ http://manpages.ubuntu.com/manpages/trusty/man1/free.1.html</a></p>
 
 <h2>top</h2>
 
-<p><code class="bash">top</code> er et program der giver informationer om processer. Programmet følger med de fleste Linux distributioner som standard. Programmet afbrydet med <kbd>Ctrl</kbd>+<kbd>c</kbd>.</p>
+<p><em>top</em> er et program der giver informationer om processer. Programmet følger med de fleste Linux distributioner som standard. Programmet afbrydet med <kbd>Ctrl</kbd>+<kbd>c</kbd>.</p>
 
-<pre class="ubuntu_terminal">Tasks:<b> 349 </b>total,<b>   1 </b>running,<b> 348 </b>sleeping,<b>   0 </b>stopped,<b>   0 </b>zombie
+<samp>Tasks:<b> 349 </b>total,<b>   1 </b>running,<b> 348 </b>sleeping,<b>   0 </b>stopped,<b>   0 </b>zombie
 %Cpu(s):<b>  0,3 </b>us,<b>  0,2 </b>sy,<b>  0,0 </b>ni,<b> 99,5 </b>id,<b>  0,0 </b>wa,<b>  0,0 </b>hi,<b>  0,0 </b>si,<b>  0,0 </b>st
 MiB Mem :<b>  32068,0 </b>total,<b>  27865,2 </b>free,<b>   1955,2 </b>used,<b>   2247,6 </b>buff/cache
 MiB Swap:<b>   2048,0 </b>total,<b>   2048,0 </b>free,<b>      0,0 </b>used.<b>  29652,3 </b>avail Mem 
@@ -139,15 +141,17 @@ MiB Swap:<b>   2048,0 </b>total,<b>   2048,0 </b>free,<b>      0,0 </b>used.<b> 
       6 root       0 -20       0      0      0 I   0,0   0,0   0:00.00 kworker/0:0H-kblockd                   
       7 root      20   0       0      0      0 I   0,0   0,0   0:00.20 kworker/0:1-events                     
       9 root       0 -20       0      0      0 I   0,0   0,0   0:00.00 mm_percpu_wq                           
-     10 root      20   0       0      0      0 S   0,0   0,0   0:00.05 ksoftirqd/0   </pre>
+     10 root      20   0       0      0      0 S   0,0   0,0   0:00.05 ksoftirqd/0   </samp>
 
-<h2><span class="inl_cmd">htop</span></h2>
 
-<p><span class="inl_cmd">htop</span> er et interaktivt program til at kigge på processer og computerens ressourcer. Programmet tilbyder mange flere informationer end <span class="inl_cmd">top</span> , og er interaktivt. Man kan vælge med musen samt sortere og søge i data.</p>
+
+<h2>htop</h2>
+
+<p><em>htop</em> er et interaktivt program til at kigge på processer og computerens ressourcer. Programmet tilbyder mange flere informationer end <em>top</em>, og er interaktivt. Man kan vælge med musen samt sortere og søge i data.</p>
 
 <p>Programmet installeres med kommandoen:</p>
 
-<code class="cmd">apt install htop -y</code>
+<pre><code>apt install htop -y</code></pre>
 
 <figure id="">
 
@@ -157,18 +161,18 @@ MiB Swap:<b>   2048,0 </b>total,<b>   2048,0 </b>free,<b>      0,0 </b>used.<b> 
 
 </figure>
 
-<h2><span class="inl_cmd">uptime </span></h2>
+<h2>uptime</h2>
 
-<p><span class="inl_cmd">uptime</span> giver informationer om hvor længe computeren har kørt, antallet af bruger der er logget på og systembelastningen i 1, 5 og 15 minutters intervaller
+<p><em>uptime</em> giver informationer om hvor længe computeren har kørt, antallet af bruger der er logget på og systembelastningen i 1, 5 og 15 minutters intervaller
 </p>
 
-<pre class="ubuntu_terminal">
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ uptime
- 11:23:13 up  1:17,  1 user,  load average: 0,59, 0,34, 0,60</pre>
+<pre><code>uptime</code></pre>
+
+<samp>11:23:13 up  1:17,  1 user,  load average: 0,59, 0,34, 0,60</samp>
 
 <h2>Processer</h2>
 
-<p>Når et program startes på et Linux system får processen en unik PID (Proces ID). Man kan komme ud for situationer hvor man har behov for at lukke processer ned, f.eks. hvis programmet låser eller at det opfører sig uhensigtsmæssigt. For at gøre dette anvendes programmerne  <code class="bash">ps</code> og <code class="bash">kill</code></h2>
+<p>Når et program startes på et Linux system får processen en unik PID (Proces ID). Man kan komme ud for situationer hvor man har behov for at lukke processer ned, f.eks. hvis programmet låser eller at det opfører sig uhensigtsmæssigt. For at gøre dette anvendes programmerne  <em>ps</em> og <em>kill</em></h2>
 
 <p>Processerne anvender den de rettigheder som brugeren der oprettede dem har. Dvs. at brugeren kan dræbe processer som brugeren har startet, også dem der er oprettet med sudo.</p>
 
@@ -176,20 +180,19 @@ MiB Swap:<b>   2048,0 </b>total,<b>   2048,0 </b>free,<b>      0,0 </b>used.<b> 
 
 <h3>ps</h3>
 
-<p><code class="bash">ps</code> anvendes til at få et overblik over de processer der kører på systemet. Her er et eksempel fra en nystartet terminal hvor vi kører kommandoen <code class="bash">ps</code>.</p>
+<p><em>ps</em> anvendes til at få et overblik over de processer der kører på systemet. Her er et eksempel fra en nystartet terminal hvor vi kører kommandoen <em>ps</em>.</p>
 
-<pre class="ubuntu_terminal">
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ ps
-  PID TTY          TIME CMD
+<pre><code>ps</code></pre>
+
+<samp>  PID TTY          TIME CMD
  2215 pts/11   00:00:00 bash
- 2227 pts/11   00:00:00 ps
-</pre>
+ 2227 pts/11   00:00:00 ps</samp>
 
 <p>Vi kan se at der kører to processer: <em>bash (PID 2215)</em> og <em>ps (PID 2227)</em>. Vær opmærksom på at det ikke er alle de processer der kører på computeren, men kun dem som kører i den startede session. Ønsker du et overblik over alle de processer der kører på computeren skal du anvende følgende kommando: <em>ps aux</em>. Dette overblik er langt mere detaljeret.</p>
 
-<pre class="ubuntu_terminal">
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ ps aux
-USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+<pre><code>ps aux</code></pre>
+
+<samp>USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
 root         1  0.2  0.1  33776  4260 ?        Ss   13:15   0:00 /sbin/init
 root         2  0.0  0.0      0     0 ?        S    13:15   0:00 [kthreadd]
 root         3  0.0  0.0      0     0 ?        S    13:15   0:00 [ksoftirqd/0]
@@ -200,17 +203,15 @@ thoj      2261  0.0  0.2 233188  9952 ?        Sl   13:18   0:00 /usr/lib/x86_64
 thoj      2270  0.0  0.0  12888   772 ?        S    13:18   0:00 /bin/cat
 thoj      2298  0.0  0.4 572816 19532 ?        Sl   13:19   0:00 update-notifier
 thoj      2316  0.0  0.1 461588  7592 ?        Sl   13:20   0:00 /usr/lib/x86_64
-thoj      2325  0.0  0.0  24120  2564 pts/11   R+   13:20   0:00 ps aux</pre>
+thoj      2325  0.0  0.0  24120  2564 pts/11   R+   13:20   0:00 ps aux</samp>
 
-<p>Har man mange processer kørende og kender navnet på den man skal stoppe kan du filtrere med <code class="bash">grep</code>, f.eks. hvis man har startet firefox og vil finde processen.</p>
 
-<code class="cmd">ps aux | grep firefox</code>
+<p>Har man mange processer kørende og kender navnet på den man skal stoppe kan du filtrere med <em>grep</em>, f.eks. hvis man har startet firefox og vil finde processen.</p>
 
-<pre class="ubuntu_terminal">
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ ps aux | grep firefox
-thoj      2380  7.5  6.5 1013652 263112 ?      Sl   13:39   0:27 /usr/lib/<span class="red">firefox</span>/<span class="red">firefox</span>
-thoj      2461  0.0  0.0  17436  2092 pts/11   S+   13:46   0:00 grep --color=auto <span class="red">firefox</span>
-</pre>
+<pre><code>ps aux | grep firefox</code></pre>
+
+<samp>thoj      2380  7.5  6.5 1013652 263112 ?      Sl   13:39   0:27 /usr/lib/<span class="red">firefox</span>/<span class="red">firefox</span>
+thoj      2461  0.0  0.0  17436  2092 pts/11   S+   13:46   0:00 grep --color=auto <span class="red">firefox</span></samp>
 
 <p>Her er processen der skal stoppes <em>2380</em>, da den anden skyldes <em>grep</em>.</p>
 
@@ -218,53 +219,47 @@ thoj      2461  0.0  0.0  17436  2092 pts/11   S+   13:46   0:00 grep --color=au
 
 <p>Når man kender processens ID kan man anvende <code class="bash">kill</code> til at lukke programet ned. <code class="bash">kill</code> har en lang række forskellige måder at lukke programmer på og det angives ved at tilføje en option. Ønsker du at dræbe en proces anvendes <em>-9</em>. Herunder angives en måde du kan prøve det selv:</p>
 
-<p>Start en terminal og kør: <span class="inl_cmd">ps</span></p>
+<p>Start en terminal og kør: 
 
-<pre class="ubuntu_terminal">
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ ps
-  PID TTY          TIME CMD
+<pre><code>ps</code></pre>
+
+<samp>  PID TTY          TIME CMD
  2215 pts/11   00:00:00 bash
- 2373 pts/11   00:00:00 ps
-</pre>
+ 2373 pts/11   00:00:00 ps</samp>
 
-<p>Herefter starter vi nano op i baggrunden ved at sætte <em>&amp;</em> efter kommandoen, hvorefter vi kører <code class="bash">ps</code>.</p>
+<p>Herefter starter vi nano op i baggrunden ved at sætte <em>&amp;</em> efter kommandoen, hvorefter vi kører <em>ps</em>.</p>
 
-<code class="cmd">nano & </code>
-<code class="more_cmd">ps</code>
+<pre><code>nano &</code></pre>
 
+<pre><code>ps</code></pre>
 
-<pre class="ubuntu_terminal">
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ nano &
+<samp><span class="terminal_green">tj@server1</span>:<span class="terminal_tilde">~</span>$ nano &
 [1] 2374
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ ps
+<span class="terminal_green">tj@server1</span>:<span class="terminal_tilde">~</span>$ ps
   PID TTY          TIME CMD
  2215 pts/11   00:00:00 bash
  2374 pts/11   00:00:00 nano
  2375 pts/11   00:00:00 ps
 
-[1]+  Stopped                 nano
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ 
-</pre>
+[1]+  Stopped                 nano</samp>
 
-<p>For at dræbe nano anvender vi kommandoen <code class="bash">kill -9 *PID*</code> (i dette tilfælde 2374) og derefter kører vi <code class="bash">ps</code> for at se om processen er slettet:</p>
+<p>For at dræbe nano anvender vi kommandoen <em>kill -9 *PID*</em> (i dette tilfælde 2374) og derefter kører vi <em>ps</em> for at se om processen er slettet:</p>
 
-<code class="cmd">kill -9 2374</code>
-<code class="more_cmd">ps</code>
+<pre><code>kill -9 2374</code></pre>
+<pre><code>ps</code></pre>
 
-<pre class="ubuntu_terminal">
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ kill -9 2374
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ ps  
+<samp><span class="terminal_green">tj@server1</span>:<span class="terminal_tilde">~</span>$ kill -9 2374
+<span class="terminal_green">tj@server1</span>:<span class="terminal_tilde">~</span>$ ps
   PID TTY          TIME CMD
  2215 pts/11   00:00:00 bash
  2376 pts/11   00:00:00 ps
-[1]+  Dræbt                  nano
-</pre>
+[1]+  Dræbt                  nano</samp>
 
-<p><code class="bash">kill</code> er et meget avanceret program, og indeholder mange måder at dræbe processer på. Hvis du ønsker at se alle mulighederne kan du anvende kommandoen <code class="bash">kill -l</code>.</p>
+<p><em>kill</em> er et meget avanceret program, og indeholder mange måder at dræbe processer på. Hvis du ønsker at se alle mulighederne kan du anvende kommandoen <em>kill -l</em>.</p>
 
 <h3>pgrep og pkill</h3>
 
-<p>Kender man navnet på processen kan du anvende kommandoerne <code class="bash">pgrep</code> og <code class="bash">pkill</code>. De integrerer de to ovenstående kommandoer <code class="bash">ps</code> og <code class="bash">kill</code>.</p>
+<p>Kender man navnet på processen kan du anvende kommandoerne <em>pgrep</em> og <em>pkill</em>. De integrerer de to ovenstående kommandoer <em>ps</em> og <em>kill</em>.</p>
 
 <div class="alert">
 	
@@ -274,27 +269,28 @@ thoj      2461  0.0  0.0  17436  2092 pts/11   S+   13:46   0:00 grep --color=au
 
 <p>Du skal dog være varsom med denne fremgangsmåde, da du risikerer at stoppe processer du ikke regner med er igang.</p>
 
-<ul class="disc">
-	<li><code class="bash">pgrep firefox</code> - finder alle "firefox"-processer</li>
-	<li><code class="bash">pkill firefox</code> - stopper alle "firefox"-processer</li>
-</ul>
+<dl class="">
+	<dt>pgrep firefox</dt>
+	<dd>finder alle "firefox"-processer</dd>
+	<dt>pkill firefox</dt>
+	<dd>stopper alle "firefox"-processer</dd>
+</dl>
 
-<p>Som det ses herover bliver firefox fanget 2 gange. En for selve programmet og en som fanger søgningen efter firefox. Det er altså proces <em>2380</em> der skal lukkes ned. Der findes en række kommandoer som automatisk integrerer søgningen: <code class="bash">pgreb</code> og <code class="bash">pkill</code>. Herunder er vist nogle eksempler med firefox:</p>
+<p>Som det ses herover bliver firefox fanget 2 gange. En for selve programmet og en som fanger søgningen efter firefox. Det er altså proces <em>2380</em> der skal lukkes ned. Der findes en række kommandoer som automatisk integrerer søgningen: <em>pgreb</em> og <em>pkill</em>. Herunder er vist nogle eksempler med firefox:</p>
 
-<pre class="ubuntu_terminal">
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ pgrep firefox
+<samp><span class="terminal_green">tj@server1</span>:<span class="terminal_tilde">~</span>$ pgrep firefox
 2380
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ pkill firefox
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ pgrep firefox
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$
-</pre>
+<span class="terminal_green">tj@server1</span>:<span class="terminal_tilde">~</span>$ pkill firefox
+<span class="terminal_green">tj@server1</span>:<span class="terminal_tilde">~</span>$ pgrep firefox
+<span class="terminal_green">tj@server1</span>:<span class="terminal_tilde">~</span>$ </samp>
 
-<p>Først køres <span class="inl_cmd">pgrep</span>, som finder processen. I anden omgang anvendes <span class="inl_cmd">pkill</span> til at lukke processen og <span class="inl_cmd">pgrep firefox</span> viser at processen ikke eksisterer mere</p>
+
+<p>Først køres <em>pgrep</em>, som finder processen. I anden omgang anvendes <em>pkill</em> til at lukke processen og <em>pgrep firefox</em> viser at processen ikke eksisterer mere</p>
 
 
 <h3>xkill - til GUI</h3>
 
-<p><code class="bash">xkill</code> er et program man anvender i et GUI. Alle programmer kan låse hvis der sker en fejl i operativsystemet. Hvis man ønsker at dræbe en proces i et GUI, åbner man en terminal og skriver xkill. Herefter vil ens cursor ændre sig til et kryds, og hvis man klikker på et vindue med dette, vil det dræbe den proces der kører det og give nedestående i terminalen.</p>
+<p><em>xkill</em> er et program man anvender i et GUI. Alle programmer kan låse hvis der sker en fejl i operativsystemet. Hvis man ønsker at dræbe en proces i et GUI, åbner man en terminal og skriver xkill. Herefter vil ens cursor ændre sig til et kryds, og hvis man klikker på et vindue med dette, vil det dræbe den proces der kører det og give nedestående i terminalen.</p>
 
 <p>Processen er:</p>
 

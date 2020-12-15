@@ -52,35 +52,47 @@
 
 <p>Ved hjælp af disse 3 parametre styres alle filer, mapper og enheder på computere. Lad os kigge på et eksempel nemlig <em>/etc/passwd</em> som er den fil der styrer brugerne på Linux .</p>
 
-<code class="cmd">ls -al /etc/passwd</code>
+<pre><code>ls -al /etc/passwd</code></pre>
 
-<pre class="ubuntu_terminal">
-<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ ls -al /etc/passwd
--rw-r--r-- 1 root root 2013 mar 16 20:05 /etc/passwd
-</pre>
+<samp>-rw-r--r-- 1 root root 2013 mar 16 20:05 /etc/passwd</samp>
+
+<!--
+<samp><span class="terminal_green">tj@server1</span>:<span class="terminal_tilde">~</span>$ ls -al /etc/passwd
+-rw-r--r-- 1 root root 2013 mar 16 20:05 /etc/passwd</samp>
+
+<samp class="terminal"><span class="terminal_green">tj@server1</span>:<span class="terminal_tilde">~</span>$ ls -al /etc/passwd
+-rw-r--r-- 1 root root 2013 mar 16 20:05 /etc/passwd</samp>
+-->
 
 <p>Den linie giver os alle de informationer om rettigheder vi har behov for</p>
 
-<ul class="disc">
-	<li><code class="bash">-rw-r--r--  </code> - Oversigt over filens retttigheder</li>
-	<li><code class="bash">1</code> - Antal hardlinks * (se note nedenfor)</li>
-	<li><code class="bash">root root</code> - Brugeren og gruppen</li>
-	<li><code class="bash">_</code> - </li>
-	<li><code class="bash">2013</code> - Filens størrelse</li>
-	<li><code class="bash">mar 16 20:05</code> - tidsstempel</li>
-	<li><code class="bash">/etc/passwd</code> - Filens navn</li>
-</ul>
+<dl class="">
+	<dt>-</dt>
+	<dd>en streg fortæller det er en fil</dd>
+	<dt>rw-r--r--</dt>
+	<dd>Oversigt over filens retttigheder</dd>
+	<dt>1</dt>
+	<dd>Antal hard links (se note nedenfor)</dd>
+	<dt>root root</dt>
+	<dd>Brugeren og gruppen</dd>
+	<dt>2013</dt>
+	<dd>Filens størrelse</dd>
+	<dt>mar 16 20:05</dt>
+	<dd>Tidsstempel</dd>
+	<dt>/etc/passwd</dt>
+	<dd>Filens navn</dd>
+</dl>
 
 
-<p>* I Linux kan man have <em>hard</em> og <em>symbolic</em> links. Forskellen er, at hvis man sletter et hardlink, så forsvinder filen. Hvis man sletter et softlink, så er det kun henvisningen til filen man sletter. Filen er altså uskadt</p>
+<p>I Linux kan man have <em>hard</em> og <em>symbolic</em> links. Forskellen er, at hvis man sletter et hardlink, så forsvinder filen. Hvis man sletter et softlink, så er det kun henvisningen til filen man sletter. Filen er altså uskadt</p>
 
 <p>Læg mærke til, at der både findes en bruger og en gruppe der hedder <em>root</em>. Alle brugere har som standard både tildelt en gruppe med deres egen navn. Det betyder at alle brugere har mulighed for at tilføje brugere til deres grupper så de selv kan tildele rettigheder til filer og mapper.</p>
 
 <h2>Aflæsning af rettigheder</h2>
 
-<p>Rettighederne ovenfor var: <em>- r w - r - - r - -</em>. Der re altså 10 felter vi skal forholde os til.</p>
+<p>Rettighederne ovenfor var: <em>- r w - r - - r - -</em>. Der er altså 10 felter vi skal forholde os til.</p>
 
-<p>Det første felt viser filtypen. En streg betyder at det er en standardfil</p>
+<p>Det første felt viser filtypen. En streg betyder at det er en standardfil. Hvis er var et <em>d</em> var det en mappe.</p>
 
 <p>De sidste tegn viser rettighederne i grupper af 3 for brugeren (2-4), gruppen (5-7) og alle (8-10). </p>
 
@@ -93,23 +105,22 @@
 
 <p>Vi kan altså sige om denne fil at brugeren er <em>root</em>, som må læse og skrive i filen. Alle andre (gruppe og alle). De er nødvendigt for alle at kunne læse denne fil, da det er den der administrere adgangen til systemet. Kigger vi ind i filen kan vise hvad den har at sige om vores bruger, her <em>tj</em>. Da alle har ret til at læse i filen kan jeg som almindelig bruger se den - men kun brugeren root ændre i den.</p>
 
-<pre class="ubuntu_terminal">
-<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">/home</span>$ cat /etc/passwd | grep tj
-<span class="red">tj</span>:x:1000:1000:Thomas Jensen,,,:/home/<span class="red">tj</span>:/bin/bash
-</pre>
+<pre><code>cat /etc/passwd | grep tj</code></pre>
+
+<samp><span class="red">tj</span>:x:1000:1000:Thomas Jensen,,,:/home/<span class="red">tj</span>:/bin/bash</samp>
+
 
 <p>Den linie fortæller os om vores bruger, hvilket bruger- og gruppe id man har, ens hjemmemappe og hvilken kommandofortolker vi har adgang til. Det lille x i starten henviser til vores kodeord, som er lagret i filen <span class="inl_cmd">/etc/shadow</span>.</p>
 
-<p>Et andet eksempel er vores hjemmemappe, i dette tilfælde <span class="inl_cmd">/home/tj</span>. Vi kan se rettighedern ved at køre : <span class="inl_cmd">ls -al /home</span>.</p>
+<p>Et andet eksempel er vores hjemmemappe, i dette tilfælde <span class="inl_cmd">/home/tj</span>. Vi kan se rettighedern ved at køre:</p>
 
-<pre class="ubuntu_terminal">
-<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ ls -al /home
-totalt 12
+<pre><code>ls -al /home</code></pre>
+
+<samp>totalt 12
 drwxr-xr-x  3 root root 4096 maj 30 13:33 .
 drwxr-xr-x 24 root root 4096 maj 30 13:51 ..
-drwxr-xr-x 16 tj   tj   4096 jun  2 09:47 tj
-</span>
-</pre>
+drwxr-xr-x 16 tj   tj   4096 jun  2 09:47 tj</samp>
+
 
 <h2>Root - superbrugeren</h2>
 
@@ -132,7 +143,7 @@ drwxr-xr-x 16 tj   tj   4096 jun  2 09:47 tj
 
 <h2>chown - change owner</h2>
 
-<p><code class="bash">chown</code> bruges til, at ændre ejer og gruppe på en fil eller en mappe.</p>
+<p><em>chown</em> bruges til, at ændre ejer og gruppe på en fil eller en mappe.</p>
 
 <p>Det er kun root der kan ændre ejerskab på filer.</p>
 
@@ -140,35 +151,32 @@ drwxr-xr-x 16 tj   tj   4096 jun  2 09:47 tj
 
 <p>Her ændres ejeren af <em>~/testfil</em> til brugeren <em>tj</em>.</p>
 
-<code class="bash">sudo chown tj ~/testfil</code>
+<pre><code>sudo chown tj ~/testfil</code></pre>
 
 <h3>Ændring af ejerskab og gruppe</h3>
 
 <p>Herunder ændres filen til at have ejeren og gruppen tj</p>
 
-<code class="bash">sudo chown tj:tj ~/testfil</code>
+<pre><code>sudo chown tj:tj ~/testfil</code></pre>
 
 <p>Man kan også anvende følgende "shorthand"</p>
 
-<code class="bash">sudo chown tj: ~/testfil</code>
+<pre><code>sudo chown tj: ~/testfil</code></pre>
 
-<p>Ved at sætte et kolon, så antager <code class="bash">chown</code>, at gruppen er den samme.</p>
+<p>Ved at sætte et kolon, så antager <em>chown</em>, at gruppen er den samme.</p>
 
 <h3>Ændring af ejerskab på mapper og undermapper</h3>
 
 <p>Skal man ændre rettigheder på alle filer i en mappe anvender man <code class="bash">-R</code> (recursive). Nedestående kommando ændrer ejerskab på alle filer i mappen <em>/data</em></p>
 
-<code class="cmd">sudo chown -R tj: /data</code>
+<pre><code>sudo chown -R tj: /data</code></pre>
 
-
-<pre class="ubuntu_terminal">
-<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ sudo touch testfil
+<samp class=""><span class="terminal_green">tj@server1</span>:<span class="terminal_tilde">~</span>$ sudo touch testfil
 [sudo] adgangskode for tj: 
-<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ ls -al testfil
+<span class="terminal_green">tj@server1</span>:<span class="terminal_tilde">~</span>$ ls -al testfil
 -rw-r--r-- 1 root root 0 jun  2 10:41 testfil
-<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ sudo chown tj:tj testfil
--rw-r--r-- 1 tj tj 0 jun  2 10:41 testfil
-</pre>
+<span class="terminal_green">tj@server1</span>:<span class="terminal_tilde">~</span>$ udo chown tj:tj testfil
+-rw-r--r-- 1 tj tj 0 jun  2 10:41 testfil</samp>
 
 <p>man-page chown: 
 <a href="http://manpages.ubuntu.com/manpages/trusty/man1/chown.1.html" target="_blank">
@@ -177,11 +185,11 @@ http://manpages.ubuntu.com/manpages/trusty/man1/chown.1.html</a></p>
 
 <h2>chmod - change mode</h2>
 
-<p><code class="bash">chmod</code> ændrer rettighederne på filen.</p>
+<p><em>chmod</em> ændrer rettighederne på filen.</p>
 
-<code class="cmd">chmod [-R][rettigheder] [fil/mappe]</code>
+<pre><code>chmod [-R][rettigheder] [fil/mappe]</code></pre>
 
-<p>Skal det gælde alle undermapper indsættes <code class="bash">-R</code> (recursiv)</p>
+<p>Skal det gælde alle undermapper indsættes <em>-R</em> (recursiv)</p>
 
 <p>Når vi sætter rettigheder anvender vi en anden skrivemåde end <em>rwx</em>. Vi anvender binære værdier som du kan se herunder.</p>
 
@@ -200,12 +208,14 @@ http://manpages.ubuntu.com/manpages/trusty/man1/chown.1.html</a></p>
 
 <p>På denne måde skal vi kun angive et tal for henholdsvis brugeren, gruppen og alle. Herunder er nogle praktiske eksempler.</p>
 
-<p><strong>700</strong>:<br/>Brugeren har alle rettigheder. Bruges f.eks. når man laver script filer og har brug for at køre dem. Ingen andre brugere kan altså se eller anvende dem.</p>
-
-<p><strong>705</strong>:<br/>Brugeren har alle rettigheder, og alle andre kan se og udføre dem. Bruges f.eks. til webserverens filer, da webserveren skal have fulde rettigheder, men alle andre skal kunne se og udføre filerne</p>
-
-<p><strong>660</strong>:<br/>Brugeren og gruppen skal kunne læse og skrive i filen, men ikke udføre den. Kan f.eks. være tekstfiler man skla kunne redigere.</p>
-
+<dl class="">
+	<dt>700</dt>
+	<dd>Brugeren har alle rettigheder. Bruges f.eks. når man laver script filer og har brug for at køre dem. Ingen andre brugere kan altså se eller anvende dem.</dd>
+	<dt>705</dt>
+	<dd>Brugeren har alle rettigheder, og alle andre kan se og udføre dem. Bruges f.eks. til webserverens filer, da webserveren skal have fulde rettigheder, men alle andre skal kunne se og udføre filerne</dd>
+	<dt>660</dt>
+	<dd>Brugeren og gruppen skal kunne læse og skrive i filen, men ikke udføre den. Kan f.eks. være tekstfiler man skla kunne redigere.</dd>
+</dl>
 
 <div class="fakta">
 	
@@ -221,23 +231,21 @@ http://manpages.ubuntu.com/manpages/trusty/man1/chown.1.html</a></p>
 
 <p>Et eksempel, hvor rettighederne sættes til at brugeren har alle rettigheder (<em>rwx</em>) og alle har ret til at læse og udføre (<span class="inl_cmd">r-w</span>) svarende til rettigheder for html-filerne på en webserver:</p>
 
-<code class="cmd">chmod 705 testfil</code>
+<pre><code>chmod 705 testfil</code></pre>
 
-<pre class="ubuntu_terminal">
-<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ ls -al | grep <span class="red">testfil</span>
--rw-rw-r--  1 tj   tj       0 jun  3 17:02 testfil
-<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ chmod 705 testfil
-<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ ls -al | grep testfil
--rwx---r-x  1 tj   tj       0 jun  3 17:02 <span class="red">testfil</span>
-</pre>
+<samp><span class="terminal_green">tj@server1</span>:<span class="terminal_tilde">~</span>$ ls -al | grep testfil
+-rw-rw-r--  1 tj   tj       0 jun  3 17:02 testfil'
+<span class="terminal_green">tj@server1</span>:<span class="terminal_tilde">~</span>$ chmod 705 testfil
+<span class="terminal_green">tj@server1</span>:<span class="terminal_tilde">~</span>$ ls -al | grep testfil
+-rwx---r-x  1 tj   tj       0 jun  3 17:02 <span class="red">testfil</span></samp>
 
 <h3>Eksempel med mapper (recursiv)</h3>
 
 <p>Dette eksempel viser hvordan man omdøber alle filer og undermapper.</p>
 
-<code class="cmd">chmod -R 705 /var/www/html</code>
+<pre><code>chmod -R 705 /var/www/html</code></pre>
 
-<p><span class="inl_cmd">705</span> kombinationen er meget anvendt på systemer hvor brugeren skal have alle rettigheder, men alle skal kunne se filerne og udføre programmerne UDEN at kunne ændre på dem. F.eks. på en webserver som har filerne i mappen <span class="inl_cmd">/var/www/html</span> og dennes undermapper</p>
+<p><em>705</em> kombinationen er meget anvendt på systemer hvor brugeren skal have alle rettigheder, men alle skal kunne se filerne og udføre programmerne UDEN at kunne ændre på dem. F.eks. på en webserver som har filerne i mappen <em>/var/www/html</em> og dennes undermapper.</p>
 
 <p>man-page chmod: 
 <a href="http://manpages.ubuntu.com/manpages/trusty/man1/chmod.1.html" target="_blank">

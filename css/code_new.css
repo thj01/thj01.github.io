@@ -7,10 +7,62 @@
  * 
 */
 
+code, output, pre, samp {
+font-family: ubuntu mono, mono-type, courier;
+}
+
+pre {
+tab-size: 4;
+margin: 0em 2em 2em 0em;
+padding: .2em .6em;
+background-color:#FFFFFF;
+border:1px solid #ccc;
+border-radius:4px
+}
+
+samp {
+display:block;
+white-space: pre;
+background: #f6f6f6;
+border: 1px solid lightgrey;
+border-radius: .5em;
+padding: 2em 1em 1.5em 2em;
+margin: 2em 2em 2em 2em;
+line-height: 1.1em
+}
+
+samp::before {
+content: "  Output  ";
+display:block;
+margin: -3.9em 0em 1em 0em;
+padding: .2em 1.2em;
+background: #f6f6f6;
+border: 1px solid lightgrey;
+border-radius: .8em;
+width: 8.5em;
+font-size: .7em;
+font-weight: 700;
+letter-spacing: .1em
+}
+
+samp.terminal{
+background-color: #300a24 ;
+color: white;
+}
+
+samp.terminal::before {
+background-color: #474640;
+color:white;
+border: 0px solid #474640;
+
+
+
+
+}
+
 
 code.term {
 
-font-family: ubuntu mono, mono-type;
 display:table;
 margin:0 auto ;
 font-size: 1.05em;
@@ -21,7 +73,6 @@ white-space: pre-wrap;
 
 code.cmd {
 
-font-family: ubuntu mono, mono-type;
 display:block;
 font-size: 1.05em;
 font-weight: 100;
@@ -37,7 +88,6 @@ white-space: pre-wrap;
 
 code.more_cmd {
 
-font-family: ubuntu mono, mono-type;
 display:block;
 font-size: 1.05em;
 font-weight: 100;
@@ -52,7 +102,6 @@ white-space: pre-wrap;
 
 ol code.cmd {
 
-font-family: ubuntu mono, mono-type;
 display:inline-block;
 font-size: 1.05em;
 font-weight: 100;
@@ -68,7 +117,6 @@ white-space: pre-wrap;
 
 ol code.more_cmd {
 
-font-family: ubuntu mono, mono-type;
 display:inline-block;
 font-size: 1.05em;
 font-weight: 100;
@@ -84,7 +132,6 @@ white-space: pre-wrap;
 
 ul code.cmd {
 
-font-family: ubuntu mono, mono-type;
 display:inline-block;
 font-size: 1.05em;
 font-weight: 100;
@@ -100,7 +147,6 @@ white-space: pre-wrap;
 
 ul code.more_cmd {
 
-font-family: ubuntu mono, mono-type;
 display:inline-block;
 font-size: 1.05em;
 font-weight: 100;
@@ -121,7 +167,6 @@ white-space: pre-wrap;
 
 code.black {
 
-font-family:ubuntu+mono, courier  ;
 color: white;
 display:inline-block ;
 margin: auto;
@@ -137,16 +182,10 @@ white-space: pre-wrap;
 
 }
 
-pre {
-tab-size: 4;
-margin: 2em 0em;
-padding: 2em 2em;
-}
 
 
 pre.black {
 
-font-family:ubuntu+mono, courier  ;
 color: white;
 display: inline-block, table;
 font-size: 1em;
@@ -166,7 +205,7 @@ margin-bottom: 16px;
 
 pre.ubuntu_terminal {
 
-font-family:ubuntu+mono, courier  ;
+font-family:ubuntu mono, courier  ;
 color: white;
 display:inline-block, table;
 font-size: 1em;
@@ -257,41 +296,7 @@ margin-bottom:;
 /* http://www.w3schools.com/html/html_colornames.asp */
 
 
-span.green {color: green;}
 
-span.green1 {color: #7ed829;}
-
-span.red {color: #ef2929;}
-
-span.blue {color: blue;}
-
-span.blue1 {color:#4697ff;}
-
-span.violet {color: Orchid;}
-
-/*
-span.purple {color: #300a24;}
-*/
-
-span.purple {color: #300a24;}
-
-span.brown {color: #c4a000  ;}
-
-span.yellow {color: yellow  ;}
-
-span.orange {color: #fd8344;}
-
-span.cyan {color: DarkCyan  ;}
-
-span.turk {color: #34e2e2  ;}
-
-span.grey {color: grey}
-
-span.white {color: white;}
-
-span.white_bg {background-color: white; color: #300a24;}
-
-span.green1_bg {background-color:#78e234 ;}
 
 
 span.small {font-size: 1em;}
@@ -345,9 +350,9 @@ border-left: 1.5px solid #b6b6b6;
 border-top: 1.5px solid #b6b6b6;
 border-right: 1.5px solid #b6b6b6;
 border-bottom: 1.5px solid #949494;
-margin: 0px 5px 0px 5px;
+margin: 0em .3em 0em .3em;
 color: #333333;
-padding: 2px 10px 2px 10px;
+padding: 0px 10px 2px 10px;
 border-radius: 6px;
 
 /* IE10+ */ 

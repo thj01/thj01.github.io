@@ -5,6 +5,11 @@
 @import url("table.css");
 
 */
+
+/***** kode til highlightJS *****/
+
+@import url("styles/xcode.css");
+
 @import url("code_new.css");
 @import url("list.css");
 @import url("img.css");
@@ -15,10 +20,19 @@
 @import url("toc.css");
 @import url("details.css");
 @import url("boxes.css");
-
-@import url("styles/docco.css");
-
 @import url("numbering.css");
+@import url("color.css");
+
+
+
+
+/*
+@import url("styles/vs.css");
+@import url("styles/stackoverflow-light.css");
+@import url("styles/googlecode.css")
+*/
+
+
 
 
 
@@ -111,7 +125,7 @@ p, li {
 font-family: Ubuntu, sans-serif;
 margin-bottom: .5em;
 line-height: 1.4em;
-font-size: 1.1em;
+font-size: 1em;
 
 }
 

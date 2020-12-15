@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="da">
 <head>
-  <title>Bash løkker</title>
+  <title>Tilgængelighed</title>
   <link rel="icon" href="../images/favicon.png">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -39,133 +39,49 @@
 	
 <div class="col-xs-9">
 	
+<h1>Tilgængelighed - Det gode indhold</h1>
+
+<p>Tilgængelighed handler om at indhold skal være let at læse for alle brugere. Det er altså ikke kun til synshandikappede, men også dig og mig. Der gælder altså:</p>
+
+<ul class="disc">
+	<li>Teksten skal være til at læse</li>
+	<li>Indholdet skal være forståeligt</li>
+	<li>Handlinger skal være til at udføre</li>
+	<li>Links skal være tydelige</li>
+	<li>Lister og tabeller skal være til at overskue</li>
+	<li>Illustrationer og billeder der indeholder formidling, skal også forklares med ord.</li>
+</ul>
+
+<p>Dokumenter skal være tilgængelig for målgruppen</p>
 
 
-<h1>Løkker</h1>
+<h2>Det gode indhold</h2>
+
+<p>Det gode indhold kan beskrives med 5 punkter:</p>
+
+<ul class="disc">
+	<li>Skriv det vigtigste først</li>
+	<li>Brug beskrivende overskrifter</li>
+	<li>Brug korte sætninger og afsnit</li>
+	<li>Brug lister og tabeller hvis det giver mening</li>
+	<li>Brug billeder og illustrationer med omtanke</li>
+</ul>
+
+<h3>Skriv det vigtigste først</h3>
+
+<p>Folk læser ikke hjemmesider. De skimmer hjemmesider. De leder efter noget der kan fastholde deres interesse. Og de kigger især i toppen af teksten.</p>
 
 
-<h2>for-løkker</h2>
-
-<p>Der er mange mådet at køre en <em>for-løkke</em>, og alt efter behov kan du bruge nedenstående.</p>
-
-<p>Alle løkkerne her under giver følgende udskrift:</p>
-
-<pre class="ubuntu_terminal">1
-2
-3
-4
-5
-</pre>
-
-<p>Når du kender antallet af gange, f.eks. 1-5</p>
-
-<pre>
-	<code class="bash">#!/bin/bash 
-for i in $(seq 1 5); do
-  echo $i
-done</code>
-</pre>
+<p>F-formet læsemønster: <a href="https://www.nngroup.com/articles/f-shaped-pattern-reading-web-content/" target="_blank">https://www.nngroup.com/articles/f-shaped-pattern-reading-web-content/</a></p>
 
 
-<p>Skal løkken køre indtil den når en variabel skriver du den ind</p>
-
-
-<pre>
-	<code class="bash">#!/bin/bash 
-end=5
-for i in $(seq 1 $end); do
-  echo $i
-done</code>
-</pre>
-
-<p>Vil du have helt styr på det kan du anvende metoden fra C.</p>
-
-<code class="cmd">for ((*startværdi*;slutværdi;vækst)</code>
-
-<pre>
-	<code class="bash">#!/bin/bash 
-for ((i=1;i&lt;=5;i++)); do
-  echo $i
-done</code>
-</pre>
-
-<p>Disse skripts kan ogsp køres på en linie:</p>
-
-<pre class="ubuntu_terminal"><span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ for i in $(seq 1 5); do echo $i; done
-1
-2
-3
-4
-5
-</pre>
-
-<h2>Gennemløb af filer</h2>
-
-
-
-<pre>
-	<code class="ba">#!/bin/bash 
-for file in *; do
-  echo $file	
-done</code>
-</pre>
-
-<h2>Test af større kode</h2>
-<pre><code class="bash">#!/bin/bash
-
-#~ file rename made by Thomas Jensen
-#~
-#~ Renames files in directory with . 
-#~
-#~ If two or more files have the same filename with different extensions, then
-#~ the consecutive number will not change
-#~
-#~ Usage: newfn.sh <new filename>
-#~
-
-
-n=0
-
-check_filename=""
-
-for file in *; do
-
-  test -f "$file" || continue #Tester om det er en fil
-
-  filename=${file%%.*}
-  old_filename=${file%%.*}
-  new_filename=$1
-
-  if [[ ${filename} == ${check_filename} ]]; then
-
-    extension=${file#*.}
-    number=$(printf %03d $n)
-    check_filename=${file%%.*}
-    
-    if [[$extension == "xmp"]]; then
-    
-		sed -i s/${filename}
-
-  else
-    extension=${file#*.}  
-    ((n++))
-    number=$(printf %03d $n)
-    check_filename=${file%%.*}
-
-  fi
-
-#  printf "\n${filename}_$(date +%Y%m%d)_${number}.$extension\n"
-
-  printf "\n${new_filename}_${number}.$extension\n"
-  mv $file ${new_filename}_${number}.$extension
-  
-
-
-done
-
-
-  printf "\n"</code></pre>
 	
+<h2>Læs mere</h2>
+
+<p>Web accessibiliti Tutorials</p>
+
+<p><a href="https://www.w3.org/WAI/tutorials/" target="_blank">https://www.w3.org/WAI/tutorials/</a></p>
+
 	
 </div><!-- end: col-md-9 -->
 
@@ -196,18 +112,9 @@ done
 	<script>hljs.initHighlightingOnLoad();</script>
 
 <!-- MATHJAX -->
-<script type="text/javascript" 
-	src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+<script type="text/javascript" async 		src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+		MathJax.Hub.Config({ jax: ["input/TeX","output/HTML-CSS"], displayAlign: "left"	});
 </script>
-
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-  displayAlign: "left",
-  displayIndent: "0em"
-});
-</script>
-
-
 <!-- TOCIFY -->
 <script>
 	$(function() {var toc = $("#toc").tocify({ selectors: "h1, h2, h3, h4" }).data("toc-tocify"); });

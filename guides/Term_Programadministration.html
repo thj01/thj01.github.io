@@ -41,111 +41,90 @@
 	
 <h1>Terminalen: Programadministration</h1>
 	
-<h2><span class="inl_cmd">apt</span></h2>
+<h2>apt</h2>
 
-<p>Ubuntu anvender Debians pakkesystem <span class="inl_cmd">dpkg</span> (Debian package management system), som bliver administreret af programmet <span class="inl_cmd">apt</span> (Advances Packaging tool). Gevinsten ved at bruge kommandolinien er et stærkt og fleksibelt værktøj til at administrere ens programmer.</p>
+<p>Ubuntu anvender Debians pakkesystem <em>dpkg</em> (Debian package management system), som bliver administreret af programmet <em>apt</em> (Advances Packaging tool). Gevinsten ved at bruge kommandolinien er et stærkt og fleksibelt værktøj til at administrere ens programmer.</p>
 
-<p><span class="inl_cmd">apt</span> har en konfigurationsfil (<span class="inl_cmd">/etc/apt/sources.list</span>), der henviser til nogle repositories (programbiblioteker) på Internettet. Når man beder <span class="inl_cmd">apt</span> om at installeret et program søger det efter filerne i disse repositories. Man kan tilføje flere repositories enten ved at tilføje dem til <span class="inl_cmd">/etc/apt/sources.list</span> eller ved at tilføje PPA'er (<span class="bold">P</span>ersonal <span class="bold">P</span>ackage <span class="bold">A</span>rchieve) som er mindre pakkearkiver oprettet af private eller programudbydere.</p>
+<p><em>apt</em> har en konfigurationsfil (<em>/etc/apt/sources.list</em>), der henviser til nogle repositories (programbiblioteker) på Internettet. Når man beder <em>apt</em> om at installeret et program søger det efter filerne i disse repositories. Man kan tilføje flere repositories enten ved at tilføje dem til <em>etc/apt/sources.list</em> eller ved at tilføje PPA'er (Personal Package Archieve) som er mindre pakkearkiver oprettet af private eller programudbydere.</p>
 
 <p>Eksempler:</p>
 
-<table class="cmd_table">
-	<thead>
-		<tr>
-			<th scope="col"></th>
-			<th scope="col"></th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>apt update</td>
-			<td>Synkroniserer din lokale apt med dine repositories.</td>
-		</tr>
-		<tr>
-			<td>apt upgrade</td>
-			<td>Opgraderer alle programmer på computeren som apt kontrollerer.</td>
-		</tr>
-		<tr>
-			<td>apt upgrade -y</td>
-			<td>Som ovenfor, men udfører kommandoen automatisk. Alle kommandoerne kan køres med -y</td>
-		</tr>
-		<tr>
-			<td>apt dist-upgrade</td>
-			<td>Opgraderer programmer samt de nødvendige programmer til den nyeste version der findes i <span class="inl_cmd">/etc/apt/sources.list</span> også selvom det ikke er din servers foretrukne version af programmet.</td>
-		</tr>
-		<tr>
-			<td>apt remove [program]</td>
-			<td>Fjerner [program]</td>
-		</tr>
-		<tr>
-			<td>apt purge [program]</td>
-			<td>Fjerner program og alle dets filer - også konfigurationsfiler</td>
-		</tr>
-		<tr>
-			<td>apt autoremove</td>
-			<td>Gennemgår apt og fjerner alle filer der ikke er i brug.</td>
-		</tr>
-		<tr>
-			<td>apt clean</td>
-			<td>Fjerner alle hentede pakker</td>
-		</tr>
-		<tr>
-			<td>dpkg --configure -a</td>
-			<td>Det sker at apt ikke kan anvendes fordi noget er låst (f.eks. hvis en proces er blevet afbrudt. Denne kommando reconfigurerer pakkesystemet.</td>
-		</tr>
-	</tbody>
-</table>
+<dl class="">
+	<dt>apt update</dt>
+	<dd>Synkroniserer din lokale apt med dine repositories.</dd>
+	<dt>apt upgrade</dt>
+	<dd>Opgraderer alle programmer på computeren som apt kontrollerer.</dd>
+	<dt>apt upgrade -y</dt>
+	<dd>Som ovenfor, men udfører kommandoen automatisk. Alle kommandoerne kan køres med -y</dd>
+	<dt>apt dist-upgrade</dt>
+	<dd>Opgraderer programmer samt de nødvendige programmer til den nyeste version der findes i <em>/etc/apt/sources.list</em> også selvom det ikke er din servers foretrukne version af programmet.</dd>
+	<dt>apt remove [program]</dt>
+	<dd>Fjerner [program]</dd>
+	<dt>apt purge [program]</dt>
+	<dd>Fjerner program og alle dets filer - også konfigurationsfiler</dd>
+	<dt>apt autoremove</dt>
+	<dd>Gennemgår apt og fjerner alle filer der ikke er i brug.</dd>
+	<dt>apt clean</dt>
+	<dd>Fjerner alle hentede pakker</dd>
+	<dt>dpkg --configure -a</dt>
+	<dd>Det sker at apt ikke kan anvendes fordi noget er låst (f.eks. hvis en proces er blevet afbrudt. Denne kommando reconfigurerer pakkesystemet.</dd>
+</dl>
+
 
 <p>Man bør opdatere sine repositories og have alle programmer på computeren opdateret før man installerer nye programmer. Det er især vigtigt at opdatere hvis man lige har tilføjet  nye repositories eller PPA'er, da de ellers ikke vil blive anvendt.</p>
 
-<p>man-page: <span class="inl_cmd">apt</span>
+<p>man-page: apt
 <a href="http://manpages.ubuntu.com/manpages/xenial/en/man8/apt.8.html" target="_blank">
 http://manpages.ubuntu.com/manpages/xenial/en/man8/apt.8.html</a></p>
 
-<h2>Når <span class="inl_cmd">apt</span> fejler</h2>
+<h2>Når apt fejler</h2>
 
-<p>Det hænder at <span class="inl_cmd">apt</span> fejler. Når dette sker kan det være nødvendigt at få <span class="inl_cmd">apt</span> til at reconfigurere sig selv. Det gøres med kommandoen:</p>
+<p>Det hænder at <em>apt</em> fejler. Når dette sker kan det være nødvendigt at få <em>apt</em> til at reconfigurere sig selv. Det gøres med kommandoen:</p>
 
-<code class="cmd">sudo dpkg --configure -a</code>
+<pre><code>sudo dpkg --configure -a</code></pre>
 
-<p>Når <span class="inl_cmd">apt</span> er geninitialiseret kan man genstarte processen med kommandoen, hvor -f står for "fix broken":</p>
+<p>Når <em>apt</em> er geninitialiseret kan man genstarte processen ved at sætte <em>-f</em> på:</p>
 
-<code class="cmd">sudo apt install -f</code>
+<pre><code>sudo apt install -f</code></pre>
 
 <h2>Administration af tjenester på serveren</h2>
 
 <p>Generelt administreres tjenester på på Ubuntu med service kommandoen. Den fungerer efter nedestående skabelon:</p>
 
-<code class="cmd">service {start|stop|reload|restart|force-reload|status} [tjeneste]</code>
+<pre><code>service {start|stop|reload|restart|force-reload|status} [tjeneste]</code></pre>
 
 <p>Det som de forskellige muligheder gør er:</p>
 
-<ul class="disc">
-	<li><span class="inl_cmd">start</span> - starter tjenesten (når den har været stoppet)</li>
-	<li><span class="inl_cmd">stop</span> - stopper tjenesten</li>
-	<li><span class="inl_cmd">reload</span> - genindlæser konfigurationsfilerne uden at tjenesten stopper</li>
-	<li><span class="inl_cmd">restart</span> - genstarter tjenesten (tjenesten stopper kortvarigt)</li>
-	<li><span class="inl_cmd">force-reload</span> - på ubuntu det samme som <span class="inl_cmd">reload</span></li>
-	<li><span class="inl_cmd">status</span> - fortæller om tjenesten er aktiv eller ej</li>
-</ul>
+<dl class="">
+	<dt>start</dt>
+	<dd>starter tjenesten (når den har været stoppet)</dd>
+	<dt>stop</dt>
+	<dd>stopper tjenesten</dd>
+	<dt>reload</dt>
+	<dd>genindlæser konfigurationsfilerne uden at tjenesten stopper</dd>
+	<dt>restart</dt>
+	<dd>genstarter tjenesten (tjenesten stopper kortvarigt)</dd>
+	<dt>force-reload</dt>
+	<dd>på ubuntu det samme som <em>reload</em></dd>
+	<dt>status</dt>
+	<dd>fortæller om tjenesten er aktiv eller ej</dd>
+</dl>
 
 
 <p>Ønsker du f.eks. at genstarte <span class="cmd_inl">bind9</span> tjenesten gøres det med kommandoen:</p>
 
-<code class="cmd">service restart bind9</code>
+<pre><code>service restart bind9</code></pre>
 
 <p>For at tjekke om en tjeneste kører</p>
 
-<code class="cmd">service status bind9</code>
+<pre><code>service status bind9</code></pre>
 
-<pre class="ubuntu_terminal">
-<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ systemctl status bind9
+<samp><span class="terminal_green">tj@server1</span>:<span class="terminal_tilde">~</span>$ systemctl status bind9
 ● bind9.service
    Loaded: not-found (Reason: No such file or directory)
-   Active: inactive (dead)
-</pre>
+   Active: inactive (dead)</samp>
 
-<p>man-page: <span class="inl_cmd">service</span>
+<p>man-page: service
 <a href="http://manpages.ubuntu.com/manpages/trusty/en/man8/service.8.html" target="_blank">
 http://manpages.ubuntu.com/manpages/trusty/en/man8/service.8.html</a></p>
 
@@ -155,10 +134,9 @@ http://manpages.ubuntu.com/manpages/trusty/en/man8/service.8.html</a></p>
 
 <p>De kan fjernes med følgende kommando (en linie):</p>
 
-<code class="cmd">sudo apt purge $(dpkg -l linux-{image,headers}-"[0-9]*" | awk '/ii/{print $2}' | grep -ve $(uname -r | sed -r 's/-[a-z]+//') | sed ':a;N;$!ba;s/\n/ /g')</code>
+<pre><code>sudo apt purge $(dpkg -l linux-{image,headers}-"[0-9]*" | awk '/ii/{print $2}' | grep -ve $(uname -r | sed -r 's/-[a-z]+//') | sed ':a;N;$!ba;s/\n/ /g')</code></pre>
 
-<pre class="ubuntu_terminal">
-<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ sudo apt purge $(dpkg -l linux-{image,headers}-"
+<samp><span class="terminal_green">tj@server1</span>:<span class="terminal_tilde">~</span>$ sudo apt purge $(dpkg -l linux-{image,headers}-"
 [0-9]*" | awk '/ii/{print $2}' | grep -ve $(uname -r | sed -r 's/-[a-z]+//') 
 | sed ':a;N;$!ba;s/\n/ /g')
 Indlæser pakkelisterne... Færdig
@@ -173,51 +151,46 @@ Følgende pakker vil blive AFINSTALLERET:
   linux-image-generic-lts-utopic*
 0 opgraderes, 0 nyinstalleres, 11 afinstalleres og 0 opgraderes ikke.
 Efter denne handling, vil 559 MB diskplads blive frigjort.
-Vil du fortsætte? [J/n]
-</pre>
+Vil du fortsætte? [J/n]</samp>
 
 <h2>Repositories</h2>
 
-<blockquote>
-	<p>
-		<span class="inl_cmd">Repository</span>: Et sted hvor noget er opbevaret eller gemt
-	</p>
-</blockquote>
 
-<p>Når <span class="inl_cmd">apt</span> administrerer programmer sker det ved at, at det henter programmet og de programmer der også skal installeres fra disse repositories. Det kan ske fra de officielle repositories som <span class="inl_cmd">main, partner, universe, restricted</span> osv. Det er også muligt at oprette sine egne repositories ved hjælp af PPA'er (<span class="bold">P</span>ersonal <span class="bold">P</span>ackage <span class="bold">A</span>rchieve) da de officielle repositories kan være ret konservative og kun tilbyde ældre versioner af nogle programmer. Man kan sørge for køre med de nyste versioner af sin software ved hjælp af PPA'er.</p>
+<p>Når <em>apt</em> administrerer programmer sker det ved at, at det henter programmet og de programmer der også skal installeres fra disse repositories. Det kan ske fra de officielle repositories som <em>main, partner, universe, restricted</em> osv. Det er også muligt at oprette sine egne repositories ved hjælp af PPA'er da de officielle repositories kan være ret konservative og kun tilbyde ældre versioner af nogle programmer. Man kan sørge for køre med de nyste versioner af sin software ved hjælp af PPA'er.</p>
 
-<p>Det kan være nødvendigt, hvis man (som jeg) anvender LTS-versionerne (<b>L</b>ong <b>T</b>erm <b>S</b>upport) af Ubuntu, så man f.eks. har den nyeste version af Libreoffice, GIMP'en og andre programmer man anvender.</p>
+<p>Det kan være nødvendigt, hvis man (som jeg) anvender LTS-versionerne (Long Term Support) af Ubuntu, så man f.eks. har den nyeste version af Libreoffice, GIMP'en og andre programmer man anvender.</p>
 
-<p>Herunder vil du lære at aktivere, tilføje og fjerne repositories ved hjælp af at redigere i konfigurationsfilen <span class="inl_cmd">/etc/apt/sources.list</span> og ved at anvende kommandolinien.</p>
+<p>Herunder vil du lære at aktivere, tilføje og fjerne repositories ved hjælp af at redigere i konfigurationsfilen <em>/etc/apt/sources.list</em> og ved at anvende kommandolinien.</p>
 
-<h3>VIGTIGT</h3>
+<div class="opmærksom">
+	
+	<p>Når man har tilføjet eller ændret i repositories skal man først "aktivere" dem. Det gøres ved at køre</p>
 
-<p>Når man har tilføjet repositories skal man først "aktivere" dem. Det gøres ved at køre</p>
+	<pre><code>sudo apt update</code></pre>
+	
+</div>
 
-<code class="cmd">sudo apt update</code>
 
-<p>Kører man med LTS-versionerne, så kan det være nødvendigt at lave en <span class="inl_cmd">dist-upgrade</span>, hvor man opdatere de centrale dele af sit system. På den måde får man fordelene ved ikke-LTS'erne uden at miste de 5 års sikkerhedsopdateringen.</p>
+<p>Kører man med LTS-versionerne, så kan det være nødvendigt at lave en <em>dist-upgrade</em>, hvor man opdatere de centrale dele af sit system. På den måde får man fordelene ved ikke-LTS'erne uden at miste de 5 års sikkerhedsopdateringen.</p>
 
 <p>Kør kommandoen:</p>
 
-<code class="cmd">apt dist-upgrade -y</code>
+<pre><code>apt dist-upgrade -y</code></pre>
 
-<h3>Ved hjælp af <span class="inl_cmd">sources.list</span></h3>
+<h3>Ved hjælp af sources.list</h3>
 
-<p>Et repository bliver konfigureret ved hjælp af en "dev" linie:</p>
+<p>Et repository bliver konfigureret ved hjælp af en "dev" linie, som ser ud som herunder:</p>
 
-<pre class="black">
-<span class="brown">deb</span> <span class="green1">http://extras.ubuntu.com/ubuntu</span> <span class="red">xenial</span> <span class="violet">main</span>
-</pre>
+<samp><span class="brown">deb</span> <span class="terminal_green">http://extras.ubuntu.com/ubuntu</span> <span class="red">xenial</span> <span class="violet">main</span></samp>
 
-<p>Linien fortæller hvor den er placeret, hvilken distribution det drejer sig om og hvad repositoriet hedder. Læg mærke til at nogle af linierne starter med <span class="brown">deb-src</span>. <span class="inl_cmd">src</span> står for source og giver adgang til programmernes kildekode. Disse linier er ikke nødvendige medmindre man er programmør og udvikler. langt de fleste kan med fordel sætte et <span class="inl_cmd">#</span> foran så linierne eller helt fjerne dem.</p>
 
-<p>Da ubuntu blev installeret blev <span class="inl_cmd">/etc/apt/sources.list</span> konfigureret med standard repositories. Det betyder bl.a. at "partner" repositoriet er deaktiveret. I dette reposiory ligger der proporitære og closed-source programmer som kan være praktiske at få adgang til. Det skal vi have ændret. Åbn <span class="inl_cmd">/etc/apt/sources.list</span> med <span class="inl_cmd">nano</span> gå ned i bunden af filen:</p>
+<p>Linien fortæller hvor den er placeret, hvilken distribution det drejer sig om og hvad repositoriet hedder. Læg mærke til at nogle af linierne starter med <em>deb-src</em>. <em>src</em> står for source og giver adgang til programmernes kildekode. Du skal kun bruge dem hvis du er programmør og udvikler.</p>
 
-<code class="cmd">nano /etc/apt/sources.list</code>
+<p>Da ubuntu blev installeret blev <em>/etc/apt/sources.list</em> konfigureret med standard repositories. Det betyder bl.a. at "partner" repositoriet er deaktiveret. I dette reposiory ligger der proporitære og closed-source programmer som kan være praktiske at få adgang til. Det skal vi have ændret. Åbn <em>/etc/apt/sources.list</em> med <em>nano</em>.</p>
 
-<pre class="black">
-<span class="blue1">## Uncomment the following two lines to add software from Canonical's
+<pre><code>nano /etc/apt/sources.list</code></pre>
+
+<samp><span class="blue1">## Uncomment the following two lines to add software from Canonical's
 ## 'partner' repository.
 ## This software is not part of Ubuntu, but is offered by Canonical and the
 ## respective vendors as a service to Ubuntu users.
@@ -227,65 +200,48 @@ Vil du fortsætte? [J/n]
 ## This software is not part of Ubuntu, but is offered by third-party
 ## developers who want to ship their latest software.</span>
 <span class="brown">deb</span> <span class="green1">http://extras.ubuntu.com/ubuntu</span> <span class="red">xenial</span> <span class="violet">main</span>
-<span class="brown">deb-src</span> <span class="green1">http://extras.ubuntu.com/ubuntu</span> <span class="red">xenial</span> <span class="violet">main</span>
-</pre>
+<span class="brown">deb-src</span> <span class="green1">http://extras.ubuntu.com/ubuntu</span> <span class="red">xenial</span> <span class="violet">main</span></samp>
 
-<p>Som du kan se herover har flere af linierne et <span class="inl_cmd">#</span> foran sig. Det betyder at de er udkommenteret, og derfor ikke bliver læst af programmet. Fjern <span class="inl_cmd">#</span> foran <span class="inl_cmd">deb</span>-linien så det ser ud som herunder:</p>
 
-<pre class="black">
-<span class="brown">deb</span> <span class="green1">http://archive.canonical.com/ubuntu</span> <span class="red">xenial</span> <span class="violet">partner</span>
-<span class="blue1"># deb-src http://archive.canonical.com/ubuntu xenial partner</span>
-</pre>
+<p>Som du kan se herover har flere af linierne et <em>#</em> foran sig. Det betyder at de er udkommenteret, og derfor ikke bliver læst af programmet. Her vil vi aktivere <em>partner</em>.</p>
+
+<p>Find linien hvor der står</p>
+
+<samp><span class="blue1"># deb http://archive.canonical.com/ubuntu xenial partner</samp>
+
+<p>Fjern <em>#</em> og gem filen.</p>
+
+<samp><span class="brown">deb</span> <span class="green1">http://archive.canonical.com/ubuntu</span> <span class="red">xenial</span> <span class="violet">partner</span>
+</samp>
+
 
 <h3>Ved hjælp af PPA</h3>
 
-<p>Der findes en række repositories som er generelle for Ubuntu og Debian distributioner, og som bliver vedligeholdt til at tjene specifikke distributioner. Det hænder dog at man gerne vil have andre versioner af programmerne end disse repositories tilbyder. Dette bliver løst ved hjælp af PPA'er (<span class="bold">P</span>ersonal <span class="bold">P</span>ackage <span class="bold">A</span>archives).</p>
+<p>Der findes en række repositories som er generelle for Ubuntu og Debian distributioner, og som bliver vedligeholdt til at tjene specifikke distributioner. Det hænder dog at man gerne vil have andre versioner af programmerne end disse repositories tilbyder. Dette bliver løst ved hjælp af PPA'er.</p>
 
 <p>Nedestående kommando tilføjer PPA linien og sikkerhedsnøgler til systemet.</p>
 
-<code class="cmd">add-apt-repository PPA:[PPA navn] -y</code>
+<pre><code>add-apt-repository PPA:[PPA navn] -y</code></pre>
 
-<p>Hvis man f.eks. ønsker at have den nyeste version af GIMP'en installeret anvender man PPA'en : <span class="inl_cmd">ppa:otto-kesselgulasch/gimp</span>. Den aktiveres med følgende kommando:</p>
+<p>Hvis man f.eks. ønsker at have den nyeste version af GIMP'en installeret anvender man PPA'en <em>ppa:otto-kesselgulasch/gimp</em>. Den aktiveres med følgende kommando:</p>
 
-<code class="cmd">add-apt-repository ppa:otto-kesselgulasch/gimp -y</code>
+<pre><code>add-apt-repository ppa:otto-kesselgulasch/gimp -y</code></pre>
 
-<p>Herefter vil commandoen oprette to nye filer i mappen <span class="inl_cmd">/etc/apt/sources.list.d</span>, så <span class="inl_cmd">apt</span> fremover kigger i dette arkiv også.</p>
+<p>Herefter vil commandoen oprette to nye filer i mappen <em>/etc/apt/sources.list.d</em>, så <em>apt</em> fremover kigger i dette arkiv også. Dem kan vi se med følgende kommando:</p>
 
-<pre class="ubuntu_terminal">
-<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ ls -a /etc/apt/sources.list.d | grep otto
-<span class="red">otto</span>-kesselgulasch-gimp-trusty.list
-<span class="red">otto</span>-kesselgulasch-gimp-trusty.list.save
-</pre>
+<pre><code>ls -a /etc/apt/sources.list.d | grep otto</code></pre>
 
-<p>Lad os kigge på indholdet af <span class="inl_cmd">.list</span>-filen:</p>
+<samp><span class="red">otto</span>-kesselgulasch-gimp-trusty.list
+<span class="red">otto</span>-kesselgulasch-gimp-trusty.list.save</samp>
 
-<pre class="black">
-<span class="brown">deb</span> <span class="green1">http://ppa.launchpad.net/otto-kesselgulasch/gimp/ubuntu</span> <span class="red">xenial</span> <span class="violet">main</span>
-</pre>
+<p>Lad os kigge på indholdet af <em>.list</em>-filen:</p>
 
+<pre><code class="bash">cat /etc/apt/sources.list.d/otto-kesselgulasch-gimp-trusty.list</code></pre>
 
-
-
-
-<p>Nogle gange giver en <span class="inl_cmd">apt upgrade</span> Besked om at nogle pakker er blevet holdt tilbage efter en PPA opdatering (se rød markering).</p>
-
-<pre class="ubuntu_terminal">
-<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ sudo apt upgrade
-Indlæser pakkelisterne... Færdig
-Opbygger afhængighedstræ        
-Læser tilstandsoplysninger... Færdig
-Beregner opgraderingen ... Færdig
-<span class="red">Følgende pakker er blevet holdt tilbage:</span>
-  linux-generic-lts-utopic linux-headers-generic-lts-utopic
-  linux-image-generic-lts-utopic
-0 opgraderes, 0 nyinstalleres, 0 afinstalleres og 3 opgraderes ikke.
-</pre>
-
-<p>Det skyldes, at installationen kræver nyere filer end dem der er tilgængelige i den konkrete version. For at få adgang til dem skal vi lave en <span class="inl_cmd">dist-upgrade</span>.</p>
-
-<code class="cmd">sudo apt dist-upgrade</code>
-
-<p>Herefter kører installationen igennem.</p>
+<samp>### THIS FILE IS AUTOMATICALLY CONFIGURED ###
+# You may comment out this entry, but any other modifications may be lost.
+deb http://ppa.launchpad.net/otto-kesselgulasch/gimp/ubuntu xenial main
+</samp>
 
 <h3>Fjerne PPA'er</h3>
 
@@ -301,11 +257,9 @@ Beregner opgraderingen ... Færdig
 
 <p>Fjern programmet</p>
 
-<code class="cmd">sudo apt purge skypeforlinux</code>
+<pre><code>sudo apt purge skypeforlinux</code></pre>
 
-<pre class="ubuntu_terminal">
-<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ sudo apt purge skypeforlinux 
-Indlæser pakkelisterne... Færdig
+<samp>Indlæser pakkelisterne... Færdig
 Opbygger afhængighedstræ        
 Læser tilstandsoplysninger... Færdig
 Følgende pakker vil blive AFINSTALLERET:
@@ -318,31 +272,18 @@ Afinstallerer skypeforlinux (5.3.0.1) ...
 Behandler udløsere for desktop-file-utils (0.22-1ubuntu5.1) ...
 Behandler udløsere for gnome-menus (3.13.3-6ubuntu3.1) ...
 Behandler udløsere for mime-support (3.59ubuntu1) ...
-Behandler udløsere for hicolor-icon-theme (0.15-0ubuntu1) ...
-<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ 
-</pre>
+Behandler udløsere for hicolor-icon-theme (0.15-0ubuntu1) ...</samp>
 
 <p>Dan et overblik over de installerede PPA'er.</p>
 
-<code class="cmd">ls /etc/apt/sources.list.d</code>
+<pre><code>ls /etc/apt/sources.list.d</code></pre>
 
-<pre class="ubuntu_terminal">
-<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ ls /etc/apt/sources.list.d
-danielrichter2007-ubuntu-grub-customizer-xenial.list
-diesch-ubuntu-testing-xenial.list
-diesch-ubuntu-testing-xenial.list.save
-geany-dev-ubuntu-ppa-xenial.list
+<samp>geany-dev-ubuntu-ppa-xenial.list
 geany-dev-ubuntu-ppa-xenial.list.save
-george-edison55-ubuntu-nitroshare-xenial.list
-george-edison55-ubuntu-nitroshare-xenial.list.save
 google-chrome.list
 google-chrome.list.save
 graphics-drivers-ubuntu-ppa-xenial.list
 graphics-drivers-ubuntu-ppa-xenial.list.save
-inkscape_dev-ubuntu-stable-xenial.list
-inkscape_dev-ubuntu-stable-xenial.list.save
-libreoffice-ubuntu-ppa-xenial.list
-libreoffice-ubuntu-ppa-xenial.list.save
 otto-kesselgulasch-ubuntu-gimp-xenial.list
 otto-kesselgulasch-ubuntu-gimp-xenial.list.save
 pmjdebruijn-ubuntu-darktable-release-xenial.list
@@ -351,17 +292,17 @@ skype-stable.list
 skype-stable.list.save
 virtualbox.list
 virtualbox.list.save
-wine-ubuntu-wine-builds-xenial.list
-wine-ubuntu-wine-builds-xenial.list.save
-</pre>
+</samp>
 
-<p>Fjern herefter de konkrete PPA'er ved hjælp af <span class="inl_cmd">rm</span>. Læg mærke til at jeg sætter <span class="inl_cmd">*</span> efter kommandoen for både at få <span class="inl_cmd">.list</span> og <span class="inl_cmd">.list.save</span>.</p>
+<p>Fjern herefter de konkrete PPA'er ved hjælp af <em>rm</em>. Læg mærke til at jeg sætter <em>*</em> efter kommandoen for både at få <em>.list</em> og <em>.list.save</em>.</p>
 
-<code class="cmd">sudo rm /etc/apt/sources.list.d/skype-stable.*</code>
+<pre><code>sudo rm /etc/apt/sources.list.d/skype-stable.*</code></pre>
 
-<p>Opdater <span class="inl_cmd">apt</span></p>
+<p>Opdater <em>apt</em></p>
 
-<code class="cmd">sudo apt update</code>
+<pre><code>sudo apt update</code></pre>
+
+<p>Så er Skype for linux væk fra din computer.</p>
 	
 </div><!-- end: col-md-9 -->
 
