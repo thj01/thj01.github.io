@@ -152,14 +152,22 @@ Rent &lt;pre> element
 
 <p>Dette er en sample</p>
 
-<samp>Status: active
 
-To                         Action      From
---                         ------      ----
-OpenSSH                    ALLOW       Anywhere                  
-OpenSSH (v6)               ALLOW       Anywhere (v6)</samp>
 
-<p>Dette er et &lt;pre class="ubuntu_terminal"> element</p>
+<p>Dette er et &lt;samp> element</p>
+
+<samp><span class="green1">tj@server1</span>:<span class="blue1">~</span>$ ping www.dr.dk
+PING e16198.b.akamaiedge.net (104.121.238.17) 56(84) bytes of data.
+64 bytes from a104-121-238-17.deploy.static.akamaitechnologies.com (104.121.238.17): icmp_seq=1 ttl=52 time=8.69 ms
+64 bytes from a104-121-238-17.deploy.static.akamaitechnologies.com (104.121.238.17): icmp_seq=2 ttl=52 time=8.48 ms
+64 bytes from a104-121-238-17.deploy.static.akamaitechnologies.com (104.121.238.17): icmp_seq=3 ttl=52 time=8.24 ms
+64 bytes from a104-121-238-17.deploy.static.akamaitechnologies.com (104.121.238.17): icmp_seq=4 ttl=52 time=8.99 ms
+^C
+--- e16198.b.akamaiedge.net ping statistics ---
+4 packets transmitted, 4 received, 0% packet loss, time 3005ms
+rtt min/avg/max/mdev = 8.236/8.599/8.988/0.276 ms</samp>
+
+<p>Dette er et &lt;samp class="terminal"> element</p>
 
 <samp class="terminal"><span class="green1">tj@server1</span>:<span class="blue1">~</span>$ ping www.dr.dk
 PING e16198.b.akamaiedge.net (104.121.238.17) 56(84) bytes of data.
@@ -171,6 +179,8 @@ PING e16198.b.akamaiedge.net (104.121.238.17) 56(84) bytes of data.
 --- e16198.b.akamaiedge.net ping statistics ---
 4 packets transmitted, 4 received, 0% packet loss, time 3005ms
 rtt min/avg/max/mdev = 8.236/8.599/8.988/0.276 ms</samp>
+
+<p>Dette er et &lt;pre class="ubuntu_terminal"> element (gammelt design)</p>
 
 <pre class="ubuntu_terminal"><span class="green1">tj@server1</span>:<span class="blue1">~</span>$ ping www.dr.dk
 PING e16198.b.akamaiedge.net (104.121.238.17) 56(84) bytes of data.

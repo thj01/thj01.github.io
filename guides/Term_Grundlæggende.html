@@ -42,586 +42,136 @@
 <h1>Terminalen: Filer og mapper</h1>
 
 <div class="alert">
-	<p>Denne side er skrevet som en manual du kan køre igennem fra start til slut. </p>
+	<p>_</p>
 </div>
 
-<p>Terminalen bruger vi til at udføre grundlæggende systemarbejde med filer. Det kan være at:</p>
+<p>Terminalen bruger vi til at udføre grundlæggende systemarbejde. Det kan være at:</p>
 
 <ul class="disc">
-	<li>Navigation</li>
-	<li>Oprette og slette</li>
-	<li>Flytte og kopiere</li>
-	<li>Hente</li>
-	<li>finde</li>
-	<li>Se og redigere rettigheder</li>
-	<li>Se og redigere indhold</li>
-	<li>pipes og redirect</li>
-	<li>Pakning af filer</li>
-	<li>genstarte og slukke</li>
+	<li>arbejde med filer og mapper
+		<ul class="disc">
+			<li>oprette og slette</li>
+			<li>flytte og kopiere</li>
+			<li>hente</li>
+		</ul>
+	</li>
+	<li>se og redigere indhold af filer</li>
+	<li>genstarte og slukke computeren</li>
+	
 </ul>
 
-<h2>Grundlæggende terminal brug</h2>
-
-<dl class="">
-	<dt>cd</dt>
-	<dd>Skift mappe</dd>
-	<dt>clear</dt>
-	<dd>Renser kommandovinduet</dd>
-	<dt>ls</dt>
-	<dd>Viser indholdet af mappen</dd>
-	<dt>tree</dt>
-	<dd>se træstruktur</dd>
-	<dt>pwd</dt>
-	<dd>Viser det bibliotek man står i</dd>
-
-</dl>
-
-<h3>cd og pwd</h3>
-
-<p>Når vi åbner en terminal står du i din personlige mappe. Den ligger i <em>/home/*BRUGERNAVN*</em>.</p>
-
-<p>Det kan vi se når vi kigger på kommandolinien</p>
-
-<samp><span class="terminal_green">tj@server1</span>:<span class="terminal_tilde">~</span>$ </samp>
-
-<p>Tegnet <em>~</em> (kaldes en tilde) viser at vi står i vores egen mappe</p>
-
-<p>Lad os se hvor vi står. Det bruger vi <em>pwd</em> til.</p>
-
-<pre><code>pwd</code></pre>
-
-<samp>/home/tj</samp>
-
-<p>Vi vil gerne flytte os til mappen med indstillinger. Den hedder <em>/etc/apt</em></p>
-
-<pre><code>cd /etc/apt</code></pre>
-
-<samp><span class="terminal_green">tj@server1</span>:<span class="terminal_tilde">/etc/apt</span>$ </samp>
-
-<p>Nu kan vi se at <em>~</em> har ændret sig til <em>/etc/apt</em></p>
-
-<p>Vi flytter os lige tilbage til vores egen mappe:</p>
-
-<pre><code>cd ~</code></pre>
-
-<samp><span class="terminal_green">tj@server1</span>:<span class="terminal_tilde">~</span>$ </samp>
-
-<h3>ls</h3>
-
-<p>Lad os se på indholdet i en mappe. Her vil vi kigge på mappen vi lige besøgte: <em>/etc/apt</em></p>
-
-<pre><code>ls /etc/apt</code></pre>
-
-<samp><span class="terminal_tilde">apt.conf.d   preferences.d</span>  sources.list.curtin.old  <span class="terminal_tilde">trusted.gpg.d
-auth.conf.d</span>   sources.list   <span class="terminal_tilde">sources.list.d</span></samp>
-
-<p>De blå filer er mapper og de hvide er almindelige filer.</p>
-
-<div class="alert">
-	<p>Læg mærke til at vi kigger på filerne i en anden mappe end den vi står i.</p>
-	
-	<p>Der er ingen grund til at navigere til den mappe man vil se eller gøre noget i.</p>
-</div>
-
-<p>Vi vil gerne have flere deltaljer om den mappe vi kigger i, så vi bruger ls med optionen <em>-ls</em></p>
-
-<pre><code>ls -al /etc/apt</code></pre>
-
-<samp>total 36
-drwxr-xr-x  7 root root 4096 Dec 14 09:02 <span class="terminal_tilde">.</span>
-drwxr-xr-x 94 root root 4096 Dec 17 09:51 <span class="terminal_tilde">..</span>
-drwxr-xr-x  2 root root 4096 Dec 14 10:00 <span class="terminal_tilde">apt.conf.d</span>
-drwxr-xr-x  2 root root 4096 Apr  9  2020 <span class="terminal_tilde">auth.conf.d</span>
-drwxr-xr-x  2 root root 4096 Apr  9  2020 <span class="terminal_tilde">preferences.d</span>
--rw-r--r--  1 root root 2777 Dec 14 09:02 sources.list
--rw-r--r--  1 root root 2743 Jul 31 16:30 sources.list.curtin.old
-drwxr-xr-x  2 root root 4096 Apr  9  2020 <span class="terminal_tilde">sources.list.d</span>
-drwxr-xr-x  2 root root 4096 Jul 31 16:28 <span class="terminal_tilde">trusted.gpg.d</span>
-</samp>
-
-<p>Dette er den udskrift du vil komme til at bruge oftest, da den giver dig information om filtype, rettigheder og ejerskab </p>
-
-<p>Læg mærke til at der som første tegn er et <em>d</em> ved dokumenter og en <em>-</em> ved filerne. Så kan alle se hvad det er ;).</p>
-
-<p>En smart ting som bliver gennemgået senere er at man kan <em>pipe</em> (en lodret streg)det og søge ud i resultaterne. Lad os sige vi kun vil have vist filer og mapper hvor ordet <em>sources</em> indgår.</p>
-
-<pre><code>ls -al /etc/apt | grep sources</code></pre>
-
-<samp>-rw-r--r--  1 root root 2777 Dec 14 09:02 <span class="red">sources</span>.list
--rw-r--r--  1 root root 2743 Jul 31 16:30 <span class="red">sources</span>.list.curtin.old
-drwxr-xr-x  2 root root 4096 Apr  9  2020 <span class="red">sources</span>.list.d
-</samp>
-
-<p>Så kan man designe sin visning til nøjagtigt det man leder efter.</p>
-
-<h3>tree</h3>
-
-<p>En anden måde at få overblik er ved hjælp af <em>tree</em>. <em>tree</em> skal først installeres. <em>tree</em> bliver gennemgået senere.</p>
-
-<pre><code>sudo apt install tree -y</code></pre>
-
-<p>Lad os kigge på <em>/etc/apt</em> med tree</p>
-
-<pre><code>tree /etc/apt</code></pre>
-
-<samp><span class="terminal_tilde">/etc/apt</span>
-├── <span class="terminal_tilde">apt.conf.d</span>
-│   ├── 01autoremove
-│   ├── 01autoremove-kernels
-│   ├── 01-vendor-ubuntu
-│   ├── 10periodic
-│   ├── 15update-stamp
-│   ├── 20archive
-│   ├── 20auto-upgrades
-│   ├── 20packagekit
-│   ├── 20snapd.conf
-│   ├── 50command-not-found
-│   ├── 50unattended-upgrades
-│   ├── 70debconf
-│   └── 99update-notifier
-├── <span class="terminal_tilde">auth.conf.d</span>
-├── <span class="terminal_tilde">preferences.d</span>
-├── sources.list
-├── sources.list.curtin.old
-├── <span class="terminal_tilde">sources.list.d</span>
-└── <span class="terminal_tilde">trusted.gpg.d</span>
-    ├── ubuntu-keyring-2012-archive.gpg
-    ├── ubuntu-keyring-2012-cdimage.gpg
-    └── ubuntu-keyring-2018-archive.gpg
-
-5 directories, 18 files</samp>
-
-<p>Her får vi en visning med træstruktur.</p>
-
-<p>Vil vi kun have mapper sætter vi <em>-d</em> på.</p>
-
-<pre><code>tree -d /etc/apt</code></pre>
-
-<samp><span class="terminal_tilde">/etc/apt</span>
-├── <span class="terminal_tilde">apt.conf.d</span>
-├── <span class="terminal_tilde">auth.conf.d</span>
-├── <span class="terminal_tilde">preferences.d</span>
-├── <span class="terminal_tilde">sources.list.d</span>
-└── <span class="terminal_tilde">trusted.gpg.d</span></samp>
-
-<details>
-
-	<summary>Avancerede visninger</summary>
-
-	<p>Visning med fulde stier:</p>
-
-<pre><code>tree -fid /etc/apt</code></pre>
-
-<samp><span class="terminal_tilde">/etc/apt</span>
-<span class="terminal_tilde">/etc/apt/apt.conf.d</span>
-<span class="terminal_tilde">/etc/apt/auth.conf.d</span>
-<span class="terminal_tilde">/etc/apt/preferences.d</span>
-<span class="terminal_tilde">/etc/apt/sources.list.d</span>
-<span class="terminal_tilde">/etc/apt/trusted.gpg.d</span></samp>
-
-<p>Visning med rettigheder, bruger og gruppe.</p>
-
-<pre><code>tree -fidpug /etc/apt</code></pre>
-
-<samp><span class="terminal_tilde">/etc/apt</span>
-[drwxr-xr-x root     root    ]  <span class="terminal_tilde">/etc/apt/apt.conf.d</span>
-[drwxr-xr-x root     root    ]  <span class="terminal_tilde">/etc/apt/auth.conf.d</span>
-[drwxr-xr-x root     root    ]  <span class="terminal_tilde">/etc/apt/preferences.d</span>
-[drwxr-xr-x root     root    ]  <span class="terminal_tilde">/etc/apt/sources.list.d</span>
-[drwxr-xr-x root     root    ]  <span class="terminal_tilde">/etc/apt/trusted.gpg.d</span></samp>
-
-
-
-</details>
-
-<p>læs mere om tree: <a href="http://manpages.ubuntu.com/manpages/focal/en/man1/tree.1.html" target="_blank">http://manpages.ubuntu.com/manpages/focal/en/man1/tree.1.html</a></p>
-
-<h3>clear</h3>
-
-<p>Bliver terminalvinduet for rodet kan man rense det med kommandoen <em>clear</em></p>
-
-<pre><code>clear</code></pre>
-
-
-<h2>Oprette og slette</h2>
-
-<dl class="">
-	<dt>mkdir</dt>
-	<dd>Opretter mapper</dd>
-	<dt>touch</dt>
-	<dd>Opretter filer og opdaterer tidsstempel på allerede eksisterende filer og mapper</dd>
-	<dt>rm</dt>
-	<dd>Sletter mapper og filer</dd>
-</dl>
-
-<h3>mkdir</h3>
-
-<p><em>Opretter mapper</em></p>
-
-<p>Til at oprette mapper bruges kommandoen <em>mkdir</em>.</p>
-
-<p>Vi starter med at oprette en øvemappe i vores egen mappe. den ligger i <em>/home/*brugernavn*</em>, men kan også tilgås med <em>~</em>.</p>
-
-<p>Her opretter vi en mappe til at lave vores øvelser i. Vi opretter den med den fulde sti, og flytter os op i mappen:</p>
-
-<pre><code>mkdir ~/øvelser</code></pre>
-
-<pre><code>cd ~/øvelser</code></pre>
-
-<samp><span class="terminal_green">tj@server1</span>:<span class="terminal_tilde">~/øvelser</span>$ </samp>
-
-<div class="alert">
-	<p>Alle eksemplerne her bliver installeret i mappen <em>~/øvelser</em>. Derfor er der ikke en fuld sti på mappenavnene.</p>
-</div>
-
-<h4>Enkelt mappe</h4>
-
-<p>Her opretter vi <em>mappe1</em>.</p>
-
-<pre><code>mkdir mappe1</code></pre>
-
-<pre><code>tree -d</code></pre>
-
-<samp><span class="terminal_tilde">.</span>
-└── <span class="terminal_tilde">mappe1</span>
-
-1 directory
-</samp>
-
-<h4>Flere mapper på en gang</h4>
-
-<p>Her opretter vi to mapper på en gang (<em>mappe2</em> og <em>mappe3</em>).</p>
-
-<pre><code>mkdir mappe2 mappe3</code></pre>
-
-<pre><code>tree -d</code></pre>
-
-<samp><span class="terminal_tilde">.</span>
-├── <span class="terminal_tilde">mappe1</span>
-├── <span class="terminal_tilde">mappe2</span>
-└── <span class="terminal_tilde">mappe3</span>
-
-3 directory
-</samp>
-
-<h4>Med undermapper</h4>
-
-<p>Her opretter vi vi en hel struktur: <em>mappe4/um1/uum1</em></p>
-
-<p>Læg mærke til at jeg tilføjer <em>-p</em>, for at kunne oprette mapper i flere niveauer</p>
-
-<pre><code>mkdir -p mappe4/um1/uum1</code></pre>
-
-<samp><span class="terminal_tilde">.</span>
-├── <span class="terminal_tilde">mappe1</span>
-├── <span class="terminal_tilde">mappe2</span>
-├── <span class="terminal_tilde">mappe3</span>
-└── <span class="terminal_tilde">mappe4</span>
-    └── <span class="terminal_tilde">um1</span>
-        └── <span class="terminal_tilde">uum1</span>
-
-7 directories
-</samp>
-
-<details>
-
-	<summary>Avanceret anvendelse</summary>
-
-<h4>Med flere undermapper</h4>
-
-<p>Her opretter vi <em>mappe5</em>, med flere undermapperne i samme niveau<em>um1</em>, <em>um2</em>,<em>um3</em>.</p>
-
-<pre><code>mkdir -p mappe5/{um1,um2,um3}</code></pre>
-
-<samp><span class="terminal_tilde">.</span>
-├── <span class="terminal_tilde">mappe1</span>
-├── <span class="terminal_tilde">mappe2</span>
-├── <span class="terminal_tilde">mappe3</span>
-├── <span class="terminal_tilde">mappe4</span>
-│    └── <span class="terminal_tilde">um1</span>
-│        └── <span class="terminal_tilde">uum1</span>
-└── <span class="terminal_tilde">mappe5</span>
-    ├── <span class="terminal_tilde">um1</span>
-    ├── <span class="terminal_tilde">um2</span>
-    └── <span class="terminal_tilde">um3</span></samp>
-
-     
-<h4>Med flere undermapper</h4>
-
-<p>Her opretter vi <em>mappe5</em>, med flere undermapperne i samme niveau<em>um1</em>, <em>um2</em>,<em>um3</em>.</p>
-
-<pre><code>mkdir -p mappe6/{um1,um2,um3}/{uum1,uum2,uum3}</code></pre>
-
-<samp><span class="terminal_tilde">.</span>
-├── <span class="terminal_tilde">mappe1</span>
-├── <span class="terminal_tilde">mappe2</span>
-├── <span class="terminal_tilde">mappe3</span>
-├── <span class="terminal_tilde">mappe4</span>
-│    └── <span class="terminal_tilde">um1</span>
-│        └── <span class="terminal_tilde">uum1</span>
-├── <span class="terminal_tilde">mappe5</span>
-│   ├── <span class="terminal_tilde">um1</span>
-│   ├── <span class="terminal_tilde">um2</span>
-│   └── <span class="terminal_tilde">um3</span>
-└── <span class="terminal_tilde">mappe6</span>
-    ├── <span class="terminal_tilde">um1</span>
-    │   ├── <span class="terminal_tilde">uum1</span>
-    │   ├── <span class="terminal_tilde">uum2</span>
-    │   └── <span class="terminal_tilde">uum3</span>
-    ├── <span class="terminal_tilde">um2</span>
-    │   ├── <span class="terminal_tilde">uum1</span>
-    │   ├── <span class="terminal_tilde">uum2</span>
-    │   └── <span class="terminal_tilde">uum3</span>
-    └── <span class="terminal_tilde">um3</span>
-        ├── <span class="terminal_tilde">uum1</span>
-        ├── <span class="terminal_tilde">uum2</span>
-        └── <span class="terminal_tilde">uum3</span></samp>
-</details>
+<h2>Arbejde med filer</h2>
 
 <h3>touch</h3>
-
-<p><em>Opretter filer og opdaterer tidsstempel på allerede eksisterende filer og mapper</em></p>
 
 <p><em>touch</em> anvendes til 2 ting: </p>
 
 <ul class="disc">
-	<li>Oprette nye filer</li>
+	<li>oprette nye filer</li>
 	<li>Forny tidsstempel på eksisterende filer</li>
 </ul>
 
 <p>Her opretter vi filen <em>testfil</em> i vores personlige mappe. <em>~</em> er en smart måde at fortælle, at vi bruger <em>/home/*brugernavn*</em></p>
 
-<pre><code>touch ~/testfil1</code></pre>
-
-<p>Vi kigger på file vi lige har oprettet</p>
-
-<pre><code>ls -al testfil1 | grep testfil</code></pre>
-
-<samp>-rw-rw-r-- 1 tj tj    0 Dec 18 14:03 <span class="red">testfil</span>1</samp>
+<pre><code>touch ~/testfil</code></pre>
 
 <p>Man kan også oprette en række af filer på en gang:</p>
 
-<pre><code>touch testfil2 testfil3</code></pre>
+<pre><code>touch ~/testfil2 ~/testfil3 ~/testfil4</code></pre>
 
-<p>Vi kigger.</p>
+<p>Lad os få et overblik over de oprettede filer med kommandoen: <code class="bash">ls -al | grep testfil</code></p>
 
-<pre><code>ls -al testfil1 | grep testfil</code></pre>
+<pre class="ubuntu_terminal">
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ ls -al | grep testfil
+-rw-rw-r--  1 tj   tj      0 mar 15 20:06 <span class="red">testfil</span>
+-rw-rw-r--  1 tj   tj      0 mar 15 20:08 <span class="red">testfil</span>2
+-rw-rw-r--  1 tj   tj      0 mar 15 20:08 <span class="red">testfil</span>3
+-rw-rw-r--  1 tj   tj      0 mar 15 20:08 <span class="red">testfil</span>4
+</pre>
 
-<samp>-rw-rw-r-- 1 tj tj    0 Dec 18 14:03 <span class="red">testfil</span>1
--rw-rw-r-- 1 tj tj    0 Dec 18 14:10 <span class="red">testfil</span>2
--rw-rw-r-- 1 tj tj    0 Dec 18 14:10 <span class="red">testfil</span>3</samp>
+<p>Med den kommando filtrerer vi output fra <span class="inl_cmd">ls</span> med tekststrengen "testfil". Som du kan se er den første testfil 2 minutter bag de andre. Lad os opdatere dem alle til samme tidsstempel med kommandoen <code class="bash">touch testfil*</code>.</p>
 
-<p>Som vi kan se har filerne forskellige tidsstempler. Vi vil gerne have at de alle bliver opdatere til nu.</p>
+<pre class="ubuntu_terminal">
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ touch testfil*
+-rw-rw-r--  1 tj   tj      0 mar 15 20:14 <span class="red">testfil</span>
+-rw-rw-r--  1 tj   tj      0 mar 15 20:14 <span class="red">testfil</span>2
+-rw-rw-r--  1 tj   tj      0 mar 15 20:14 <span class="red">testfil</span>3
+-rw-rw-r--  1 tj   tj      0 mar 15 20:14 <span class="red">testfil</span>4
+</pre>
 
-<pre><code>touch testfil*</code></pre>
+<h3>mkdir</h3>
 
-<p>Vi kigger.</p>
+<p>Til at oprette mapper bruges kommandoen mkdir (make directory). <span class="inl_cmd">~</span> henviser til brugerens hjemmemappe.</p>
 
-<pre><code>ls -al testfil1 | grep testfil</code></pre>
+<p>Eksempel:</p>
 
-<samp>-rw-rw-r-- 1 tj tj    0 Dec 18 14:16 <span class="red">testfil</span>1
--rw-rw-r-- 1 tj tj    0 Dec 18 14:16 <span class="red">testfil</span>2
--rw-rw-r-- 1 tj tj    0 Dec 18 14:16 <span class="red">testfil</span>3</samp>
+<code class="cmd">mkdir ~/testmappe</code>
 
-<h3>rm</h3>
+<p>Man kan også oprette flere mapper på en gang</p>
 
-<p><em>Sletter filer og mapper</em></p>
+<code class="cmd">mkdir testmappe2 testmappe3 testmappe4</code>
 
-<div class="alert">
-	<p>Nar man sletter filer og mapper med kommandolinien, så bliver de slettet for alvor. Dvs. man kan ikke hente dem i en skraldespand. Filerne er væk.</p>
-	
-	<p>Så kontroller at du sletter de rigtige filer.</p>
-</div>
+<p>Vi ser mapperne med kommandoen: <code class="bash">ls -al | grep testmappe</code>.</p>
 
-<p>Lad os slette <em>testfil3</em></p>
+<pre class="ubuntu_terminal">
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ ls -al | grep testmappe
+drwxrwxr-x  2 tj tj 4096 mar 15 20:18 <span class="red">testmappe</span>1
+drwxrwxr-x  2 tj tj 4096 mar 15 20:18 <span class="red">testmappe</span>2
+drwxrwxr-x  2 tj tj 4096 mar 15 20:18 <span class="red">testmappe</span>3
+drwxrwxr-x  2 tj tj 4096 mar 15 20:19 <span class="red">testmappe</span>4
+</pre>
 
-<pre><code>rm testfil3</code></pre>
+<p>Har man brug for at oprette mapper under hinanden  indsætter man et <code class="bash">-p</code> i kommanoen. Herunder vil vi oprette mappestien <em>testmappe5/undermappe/underundermappe</em>.</p>
 
-<p>Vi kigger.</p>
+<code class="cmd">mkdir -p  ~/testmappe5/undermappe/underundermappe</code>
 
-<pre><code>ls -al testfil1 | grep testfil</code></pre>
+<p>Vi anvender <span class="inl_cmd">tree</span> til at se mapperne</p>
 
-<samp>-rw-rw-r-- 1 tj tj    0 Dec 18 14:16 <span class="red">testfil</span>1
--rw-rw-r-- 1 tj tj    0 Dec 18 14:16 <span class="red">testfil</span>2</samp>
+<pre class="ubuntu_terminal">
+tj tj  tree -L 3 ~/testmappe5
+<span class="blue1">/home/tj/testmappe5</span>
+└── <span class="blue1">undermappe</span>
+    └── <span class="blue1">underundermappe</span>
 
-<p>Vi kan slette flere filer på engang ved at bruge samme fremgangsmåde som ovenfor:</p>
+2 directories, 0 files
+</pre>
 
-<pre><code>rm testfil2 testfil3</code></pre>
+<p>Man kan også oprettere flere undermapper med en kommando:</p>
 
-<p>Vi kigger.</p>
+<code class="cmd">mkdir -p ~/testmappe6/{undermappe1,undermappe2,undermappe3}</code>
 
-<pre><code>ls -al testfil1 | grep testfil</code></pre>
+<pre class="ubuntu_terminal">
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ mkdir -p ~/testmappe6/{undermappe1,undermappe2,undermappe3}
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ tree ~/testmappe6/
+<span class="blue1">/home/tj/testmappe6/</span>
+├── <span class="blue1">undermappe1</span>
+├── <span class="blue1">undermappe2</span>
+└── <span class="blue1">undermappe3</span>
 
-<samp></samp>
+3 directories, 0 files
+</pre>
 
-<p>Vi kan også slette ved hjælp af at bruge <em>*</em> (asterisk).</p>
-
-<p>Vi starter med at oprette 3 filer igen:</p>
-
-<pre><code>touch testfil1 testfil2 testfil3</code></pre>
-
-<p>Vi kigger.</p>
-
-<pre><code>ls -al testfil1 | grep testfil</code></pre>
-
-<samp>-rw-rw-r-- 1 tj tj    0 Dec 18 14:52 <span class="red">testfil</span>1
--rw-rw-r-- 1 tj tj    0 Dec 18 14:52 <span class="red">testfil</span>2
--rw-rw-r-- 1 tj tj    0 Dec 18 14:52 <span class="red">testfil</span>3</samp>
-
-<p>For at slette alle laver vi følgende kommando</p>
-
-<pre><code>rm test*</code></pre>
-
-<p>Den kommando sletter alle filer der starter med <em>test</em>. Tjek selv efter.</p>
-
-<h4>Sletning af mapper</h4>
-
-<p>For at slette mapper skal man tilføje <em>-R</em>. Når man sletter en mappe, så skal alt indholdet også slettes. Derfor skal det gøres recursivt (<em>-R</em>).</p>
-
-<p>Lad os slette <em>mappe6</em></p>
-
-<pre><code>rm -R mappe6</code></pre>
-
-<p>Lad os slette <em>mappe3</em> til <em>mappe5</em></p>
-
-<pre><code>rm -R mappe[3-6]</code></pre>
-
-<p>For at slutte af sletter vi øvelsesmappen</p>
-
-<pre><code>rm -R ~/øvelser</code></pre>
-
-<p>Nu sker der noget underligt ... vi står i en slettet mappe:</p>
-
-<samp><span class="terminal_green">tj@server1</span>:<span class="terminal_tilde">~/øvelser</span>$ rm -R ~/øvelser
-<span class="terminal_green">tj@server1</span>:<span class="terminal_tilde">~/øvelser</span>$ </samp>
-
-<p>Så vi skifter tilbage til vores hjemmemappe</p>
-
-<pre><code>cd ~</code></pre>
-
-<h4>Vær forsigtig</h4>
-
-<p>Som skrevet ovenfor, så sletter rm alt. Hvis man nu kommer at skrive:</p>
-
-<pre><code>sudo rm -R /</code></pre>
-
-<p>... så beder man faktisk <em>rm</em> om at slette hele harddisken</p>
-
-<samp><span class="terminal_green">tj@server1</span>:<span class="terminal_tilde">~</span>$ sudo rm -R / 
-[sudo] password for tj: 
-rm: it is dangerous to operate recursively on '/'
-rm: use --no-preserve-root to override this failsafe</samp>
-
-<p>Heldigvis er systemet sat på så det forhindrer det ... men det betyder ikke at du ikke kan komme til at slette andre vitale dele af systemet med <em>rm</em>.</p>
-
-<p>Brug <em>rm</em> med omtanke.</p>
-
-<h2>Flytte og kopiere</h2>
-
-<dl class="">
-	<dt>cp</dt>
-	<dd>Kopierer filer og mapper</dd>
-	<dt>mv</dt>
-	<dd>Flytter filer og mapper</dd>
-</dl>
 
 <h3>cp</h3>
 
-<p><em>Kopiere filer og mapper</em></p>
-
-<p>Først opretter vi en øvelsesmappe med en undermappe og en fil, for til sidst at navigere over til den.</p>
-
-<pre><code>mkdir -p øvelse2/mappe1</code></pre>
-
-<pre><code>touch ~/øvelse2/fil1</code></pre>
-
-<pre><code>ls -al ~/øvelse2</code></pre>
-
-<pre><code>cd øvelse2</code></pre>
-
-<p>Vi tjekker mappen</p>
-
-<pre><code>tree</code></pre>
-
-<samp><span class="terminal_tilde">.</span>
-├── fil1
-└── <span class="terminal_tilde">mappe1</span>
-
-1 directory, 1 file
-</samp>
-
-<p>Herunder laver vi følgende:</p>
+<p><code class="bash">cp</code> bruges til at kopiere filer</p>
 
 <ul class="disc">
-	<li>Vi kopierer <em>fil1</em> til <em>fil2</em></li>
-	<li>Vi laver en kopi af <em>fil1</em> i mappen <em>mappe1</em></li>
-	<li>vi laver en kopi af <em>mappe1</em> til <em>mappe2</em></li>
+	<li><code class="bash">cp fil1 fil2</code> - Laver en kopi af fil1 til fil2</li>
+	<li><code class="bash">cp -R ~/dir1 ~/dir2</code> - laver en kopi af dir1 til dir2</li>
 </ul>
 
+<p>Hvis du ønsker at være sikker på at kunne vende tilbage til din gamle konfiguration kan du altså blot lave en kopi af den fil du redigerer i og navngive kopien med et sigende efternavn f.eks.</p>
 
-<pre><code>cp fil1 fil2</code></pre>
+<code class="cmd">cp ~/testfil ~/testfil.backup </code>
 
-<pre><code>cp fil1 mappe1</code></pre>
+<p>På denne måde kan du hurtigt gå tilbage til den oprindelige opsætning ved at køre kommandoen modsat.</p>
 
-<pre><code>cp -R mappe1 mappe2</code></pre>
-
-<p>Vi ser på resultatet</p>
-
-<pre><code>tree</code></pre>
-
-<samp><span class="terminal_tilde">.</span>
-├── fil1
-├── fil2
-├── <span class="terminal_tilde">mappe1</span>
-│   └── fil1
-└── <span class="terminal_tilde">mappe2</span>
-    └── fil1
-
-2 directories, 4 files</samp>
-
-<h4>backup af systemfiler</h4>
-
-<p>Når man arbejder med systemfiler, så er det normalt, at man tager en backup af filen før man laver ændringer. På den måde kan man altid komme tilbage til en oprindelig opsætning.</p>
-
-<p>Man plejer at gøre det ved at kopiere filen og sætte <em>.backup</em> bagpå -evt. med dato.</p>
-
-<p>Så hvis vil skulle lave ændringer i fil1 ville vi først gøre følgende:</p>
-
-<pre><code>cp fil1 fil1.backup</code></pre>
-
+<code class="cmd">cp ~/testfil.backup ~/testfil </code>
 
 <h3>mv</h3>
 
-<p><em>Bruges til at flytte eller ændre navn på filer og mapper</em></p>
-
-<p>Herunder laver vi følgende</p>
-
-<ul class="disc">
-	<li>Vi flytter <em>fil2</em> til <em>fil3</em></li>
-	<li>Vi flytter <em>mappe2</em> til <em>mappe3</em></li>
-</ul>
-
-<pre><code>mv fil2 fil3</code></pre>
-
-<pre><code>mv mappe2 mappe3</code></pre>trte
-
-<p>Vi ser på resultatet</p>
-
-<pre><code>tree</code></pre>
-
-<samp><span class="terminal_tilde">.</span>
-├── fil1
-├── fil3
-├── <span class="terminal_tilde">mappe1</span>
-│   └── fil1
-└── <span class="terminal_tilde">mappe3</span>
-    └── fil1
-
-2 directories, 4 files
-</samp>
-
-
-
+<p><code class="bash">mv</code> bruges til at flytte filer eller ændre filens/mappens navn.</p>
 
 <ul class="disc">
 	<li><code class="bash">mv fil1 fil2</code> - Flytter fil1 til at hedde fil2</li>
@@ -630,139 +180,27 @@ rm: use --no-preserve-root to override this failsafe</samp>
 
 
 
-<h2>Hente</h2>
+<h3>rm</h3>
 
-<dl class="">
-	<dt>wget</dt>
-	<dd>Henter filer fra netværk (Internet)</dd>
+<p>Til at slette filer og mapper anvendes kommandoen <code class="bash">rm</code> (remove). Det er god vane, at anvende den fulde sti til det man sletter, for at undgå at slette noget forkert.</p>
 
-</dl>
+<p>Eksempel: Slet filen <em>testfil2</em> i din hjemmemappe der er oprettet ovenfor</p>
 
-<h3>wget</h3>
+<code class="cmd">rm ~/testfil</code>
 
-<h2>Finde</h2>
+<p>For at slette en mappe skal man tilføje <code class="bash">-R</code> til kommandoen (-R betyder recursive)</p>
 
-<dl class="">
-	<dt>find</dt>
-	<dd>Finder filer og mapper</dd>
-	<dt>grep</dt>
-	<dd>finde tekstrenge i filer</dd>
-</dl>
+<p>Eksempel: slet <em>testmap1</em> og alle dens filer/undermapper der blev oprettet ovenfor</p>
 
-<h3>find</h3>
+<code class="cmd">rm -R ~/testmap1</code>
 
-<h3>grep</h3>
+<p>Teoretisk set kan den kommando slette hele ens harddisk, hvis man får / til at stå alene, da det er roden på hele systemet. Heldigvis er der indbygget en "failsafe" i kommandoen, sådan at man skal tilføje <code class="bash">--no-preserve-root</code> til kommandoen for at den vil køre. Man skal tvinge kommandoen <code class="bash">sudo rm -R</code> til at køre.</p>
 
-<h2>Se og redigere rettigheder</h2>
-
-<dl class="">
-	<dt>chown</dt>
-	<dd>Ændrer ejerskab på grupper</dd>
-	<dt>chmod</dt>
-	<dd>Ændret rettigheder på filer og mapper</dd>
-</dl>
-
-<h3>chown</h3>
-
-<h3>chmod</h3>
-
-<h2>Se og redigere indhold</h2>
-
-<dl class="">
-	<dt>nano</dt>
-	<dd>Redigering af filer</dd>
-	<dt>cat</dt>
-	<dd>Output af hele filen (sammenkædning)</dd>
-	<dt>more</dt>
-	<dd>Output af filen - en side af gangen</dd>
-	<dt>head/tail</dt>
-	<dd>Output af starten eller slutningen af filen </dd>
-	<dt>sort</dt>
-	<dd>sortere filen før visning</dd>
-	<dt>Uniq</dt>
-	<dd>Viser kun unikke linier (fjerner gentagelser)</dd>
-
-</dl>
-
-<h3>nano</h3>
-<h3>cat</h3>
-<h3>more</h3>
-<h3>head/tail</h3>
-<h3>sort</h3>
-<h3>uniq</h3>
-
-
-
-<h2>Pipes og redirect</h2>
-
-<dl class="">
-	<dt>redirect</dt>
-	<dd>Overførsel af output</dd>
-	<dt>pipes</dt>
-	<dd>Overførsel af output</dd>
-	<dt>echo</dt>
-	<dd>Udskrivning af tekststreng</dd>
-	<dt>tee</dt>
-	<dd>skriv input til output</dd>
-	<dt>sed</dt>
-	<dd>Ændring af tekststrenge</dd>
-</dl>
-
-<h3>Pipes</h3>
-
-<h3>Redirect</h3>
-
-<h3>echo</h3>
-
-<h3>tee</h3>
-
-<h3>sed</h3>
-
-<h2>Pakning af filer</h2>
-
-<dl class="">
-	<dt>tar</dt>
-	<dd>tarballs - Linux pakkeformat</dd>
-	<dt>gzip</dt>
-	<dd>Komprimeringsalgoritme</dd>
-	<dt>bzip</dt>
-	<dd>Komprimeringsalgoritme</dd>
-	<dt>lzma</dt>
-	<dd>Komprimeringsalgoritme</dd>
-</dl>
-
-<h3>tar</h3>
-<h3>gzip</h3>
-<h3>bzip2</h3>
-<h3>lzma</h3>
-	
-<h2>genstarte og slukke</h2>
-
-<dl class="">
-	<dt>reboot</dt>
-	<dd>Genstart computeren</dd>
-	<dt>shutdown</dt>
-	<dd>Luk computeren</dd>
-</dl>
-
-<h3>reboot</h3>
-
-<h3>shutdown</h3>
-
-
-<h2>Arbejde med filer</h2>
-
-
-
-
-
-
-
-
-
-
-
-
+<pre class="ubuntu_terminal">
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ sudo rm -R /
+rm: det er farligt at operere rekursivt på '/'
+rm: brug --no-preserve-root for at tilsidesætte denne sikring
+</pre>
 
 <h3>find</h3>
 
@@ -777,8 +215,8 @@ rm: use --no-preserve-root to override this failsafe</samp>
 
 
 <p>man-page more: 
-	<a href="http://manpages.ubuntu.com/manpages/focal/en/man1/find.1.html" target="_blank">
-	http://manpages.ubuntu.com/manpages/focal/en/man1/find.1.html</a></p>
+	<a href="http://manpages.ubuntu.com/manpages/trusty/en/man1/find.1.html" target="_blank">
+	http://manpages.ubuntu.com/manpages/trusty/en/man1/find.1.html</a></p>
 	
 <p>Kommandoen find kan også anvendes til at søge og slette filer i samme kommando. Hvis du f.eks. har en mappe med både RAW og JPG billeder kan du med denne kommando slette alle jpg billederne</p>	
 	
@@ -810,220 +248,8 @@ rm: use --no-preserve-root to override this failsafe</samp>
 <p>Optionerne kan stackes. På den måde vil <code class="bash">wget -cob minfil *filadresse*</code> hente i baggrunden, gemme den som minfil og sikre at download kan genoptages ved afbrydelse.</p>
 
 <p>man-page wget: 
-	<a href="http://manpages.ubuntu.com/manpages/focal/man1/wget.1.html" target="_blank">
-	http://manpages.ubuntu.com/manpages/focal/man1/wget.1.html</a></p>
-	
-<h2>Se og redigere rettigheder</h2>
-
-<p>I Linux er der 3 grundlæggende rettigheder vi kan give filer og mapper: read, write og execute (læse, skrive og udføre).</p>
-
-<ul class="disc">
-	<li>Læse - man kan se indholdet.</li>
-	<li>Skrive - man kan ændre indholdet</li>
-	<li>Eksekvere - kan kan køre filen som et progam</li>
-</ul>
-
-
-<p>Ved hjælp af disse 3 parametre styres alle filer, mapper og enheder på computere. Lad os kigge på et eksempel nemlig <em>/etc/passwd</em> som er den fil der styrer brugerne på Linux .</p>
-
-<pre><code>ls -al /etc/passwd</code></pre>
-
-<samp>-rw-r--r-- 1 root root 2013 mar 16 20:05 /etc/passwd</samp>
-
-<!--
-<samp><span class="terminal_green">tj@server1</span>:<span class="terminal_tilde">~</span>$ ls -al /etc/passwd
--rw-r--r-- 1 root root 2013 mar 16 20:05 /etc/passwd</samp>
-
-<samp class="terminal"><span class="terminal_green">tj@server1</span>:<span class="terminal_tilde">~</span>$ ls -al /etc/passwd
--rw-r--r-- 1 root root 2013 mar 16 20:05 /etc/passwd</samp>
--->
-
-<p>Den linie giver os alle de informationer om rettigheder vi har behov for</p>
-
-<dl class="">
-	<dt>-</dt>
-	<dd>en streg fortæller det er en fil</dd>
-	<dt>rw-r--r--</dt>
-	<dd>Oversigt over filens retttigheder</dd>
-	<dt>1</dt>
-	<dd>Antal hard links (se note nedenfor)</dd>
-	<dt>root root</dt>
-	<dd>Brugeren og gruppen</dd>
-	<dt>2013</dt>
-	<dd>Filens størrelse</dd>
-	<dt>mar 16 20:05</dt>
-	<dd>Tidsstempel</dd>
-	<dt>/etc/passwd</dt>
-	<dd>Filens navn</dd>
-</dl>
-
-
-<p>I Linux kan man have <em>hard</em> og <em>symbolic</em> links. Forskellen er, at hvis man sletter et hardlink, så forsvinder filen. Hvis man sletter et softlink, så er det kun henvisningen til filen man sletter. Filen er altså uskadt</p>
-
-<p>Læg mærke til, at der både findes en bruger og en gruppe der hedder <em>root</em>. Alle brugere har som standard både tildelt en gruppe med deres egen navn. Det betyder at alle brugere har mulighed for at tilføje brugere til deres grupper så de selv kan tildele rettigheder til filer og mapper.</p>
-
-<h3>Aflæsning af rettigheder</h3>
-
-<p>Rettighederne ovenfor var: <em>- r w - r - - r - -</em>. Der er altså 10 felter vi skal forholde os til.</p>
-
-<p>Det første felt viser filtypen. En streg betyder at det er en standardfil. Hvis er var et <em>d</em> var det en mappe.</p>
-
-<p>De sidste tegn viser rettighederne i grupper af 3 for brugeren (2-4), gruppen (5-7) og alle (8-10). </p>
-
-<ul class="disc">
-	<li>Brugeren har rettigheden: <em>r w -</em> (læse, skrive)</li>
-	<li>Gruppen har rettigheden <em>r - -</em> (læse)</li>
-	<li>Alle har rettigheden <em>r - -</em> (læse)</li>
-</ul>
-
-
-<p>Vi kan altså sige om denne fil at brugeren er <em>root</em>, som må læse og skrive i filen. Alle andre (gruppe og alle). De er nødvendigt for alle at kunne læse denne fil, da det er den der administrere adgangen til systemet. Kigger vi ind i filen kan vise hvad den har at sige om vores bruger, her <em>tj</em>. Da alle har ret til at læse i filen kan jeg som almindelig bruger se den - men kun brugeren root ændre i den.</p>
-
-<pre><code>cat /etc/passwd | grep tj</code></pre>
-
-<samp><span class="red">tj</span>:x:1000:1000:Thomas Jensen,,,:/home/<span class="red">tj</span>:/bin/bash</samp>
-
-
-<p>Den linie fortæller os om vores bruger, hvilket bruger- og gruppe id man har, ens hjemmemappe og hvilken kommandofortolker vi har adgang til. Det lille x i starten henviser til vores kodeord, som er lagret i filen <span class="inl_cmd">/etc/shadow</span>.</p>
-
-<p>Et andet eksempel er vores hjemmemappe, i dette tilfælde <span class="inl_cmd">/home/tj</span>. Vi kan se rettighedern ved at køre:</p>
-
-<pre><code>ls -al /home</code></pre>
-
-<samp>totalt 12
-drwxr-xr-x  3 root root 4096 maj 30 13:33 .
-drwxr-xr-x 24 root root 4096 maj 30 13:51 ..
-drwxr-xr-x 16 tj   tj   4096 jun  2 09:47 tj</samp>
-
-
-<h3>Root - superbrugeren</h3>
-
-<p><em>root</em>-brugeren er ikke underlagt de rettigheder der er sat på på de enkelte filer. <em>root</em> kan og skal kunne alt. At have <em>root</em>-rettigheder på et system handler ikke kun om at man er god til Linux, men forudsætter også at man gør sig overvejelser om hvad man bruger disse rettigheder til.</p>
-
-<p>Den danske grundlov (<a href="http://grundloven.dk/" target="_blank">http://grundloven.dk/</a>) siger følgende:</p>
-
-<blockquote>
-	
-	<p><strong>§ 72</strong></p>
-
-	<p>Boligen er ukrænkelig. Husundersøgelser, beslaglæggelse og undersøgelse af breve og andre papirer samt brud på post-, telegraf- og telefonhemmeligheden må, hvor ingen lov hjemler en særegen undtaglse, alene ske efter en retskendelse. 
-	</p>
-	
-</blockquote>
-
-<p>Grundloven har gode retningslinier til superbrugeren. Du må alt der ikke krænker brugeren, dvs. hjælpe brugeren med at løse sin opgave. Det gælder også selvom brugeren er dit barn, din partner eller kollega. Brugerens personlige filer og mapper er vedkommendes ejendom, og hvis man som administrator krænker dem ved at læse dem - så er det et grundlovsbrud! </p>
-
-<p>Den eneste undtagelse er, når brugeren har fået at vide at det ikke er brugerens private ejendom, f.eks. hvor en virksomhed eller skole stiller ressourcen til rådighed for dig.</p>
-
-<h3>chown - change owner</h3>
-
-<p><em>chown</em> bruges til, at ændre ejer og gruppe på en fil eller en mappe.</p>
-
-<p>Det er kun root der kan ændre ejerskab på filer.</p>
-
-<h4>Ændring af ejerskab</h4>
-
-<p>Her ændres ejeren af <em>~/testfil</em> til brugeren <em>tj</em>.</p>
-
-<pre><code>sudo chown tj ~/testfil</code></pre>
-
-<h4>Ændring af ejerskab og gruppe</h4>
-
-<p>Herunder ændres filen til at have ejeren og gruppen tj</p>
-
-<pre><code>sudo chown tj:tj ~/testfil</code></pre>
-
-<p>Man kan også anvende følgende "shorthand"</p>
-
-<pre><code>sudo chown tj: ~/testfil</code></pre>
-
-<p>Ved at sætte et kolon, så antager <em>chown</em>, at gruppen er den samme.</p>
-
-<h4>Ændring af ejerskab på mapper og undermapper</h4>
-
-<p>Skal man ændre rettigheder på alle filer i en mappe anvender man <code class="bash">-R</code> (recursive). Nedestående kommando ændrer ejerskab på alle filer i mappen <em>/data</em></p>
-
-<pre><code>sudo chown -R tj: /data</code></pre>
-
-<samp class=""><span class="terminal_green">tj@server1</span>:<span class="terminal_tilde">~</span>$ sudo touch testfil
-[sudo] adgangskode for tj: 
-<span class="terminal_green">tj@server1</span>:<span class="terminal_tilde">~</span>$ ls -al testfil
--rw-r--r-- 1 root root 0 jun  2 10:41 testfil
-<span class="terminal_green">tj@server1</span>:<span class="terminal_tilde">~</span>$ udo chown tj:tj testfil
--rw-r--r-- 1 tj tj 0 jun  2 10:41 testfil</samp>
-
-<p>man-page chown: 
-<a href="http://manpages.ubuntu.com/manpages/focal/man1/chown.1.html" target="_blank">
-http://manpages.ubuntu.com/manpages/focal/man1/chown.1.html</a></p>
-
-
-<h3>chmod - change mode</h3>
-
-<p><em>chmod</em> ændrer rettighederne på filen.</p>
-
-<pre><code>chmod [-R][rettigheder] [fil/mappe]</code></pre>
-
-<p>Skal det gælde alle undermapper indsættes <em>-R</em> (recursiv)</p>
-
-<p>Når vi sætter rettigheder anvender vi en anden skrivemåde end <em>rwx</em>. Vi anvender binære værdier som du kan se herunder.</p>
-
-<ul class="disc">
-	<li>0 - Rettigheder: ingen (---)</li>
-	<li>1 - Rettigheder: Udføre (--x)</li>
-	<li>2 - Rettigheder: Skrive (-w-)</li>
-	<li>3 - Rettigheder: Skrive og udføre (-wx)</li>
-	<li>4 - Rettigheder: Læse (r--)</li>
-	<li>5 - Rettigheder: Læse og udføre (r-x)</li>
-	<li>6 - Rettigheder: Læse og skrive (rw-)</li>
-	<li>7 - Rettigheder: Læse, skrive og udføre (rwx)</li>
-</ul>
-
-<p>Her kan du se beregningerne for de binære værdier: <a href="term_rettigheder_beregninger.html" target="_blank">beregninger af binære værdier.</a></p>
-
-<p>På denne måde skal vi kun angive et tal for henholdsvis brugeren, gruppen og alle. Herunder er nogle praktiske eksempler.</p>
-
-<dl class="">
-	<dt>700</dt>
-	<dd>Brugeren har alle rettigheder. Bruges f.eks. når man laver script filer og har brug for at køre dem. Ingen andre brugere kan altså se eller anvende dem.</dd>
-	<dt>705</dt>
-	<dd>Brugeren har alle rettigheder, og alle andre kan se og udføre dem. Bruges f.eks. til webserverens filer, da webserveren skal have fulde rettigheder, men alle andre skal kunne se og udføre filerne</dd>
-	<dt>660</dt>
-	<dd>Brugeren og gruppen skal kunne læse og skrive i filen, men ikke udføre den. Kan f.eks. være tekstfiler man skla kunne redigere.</dd>
-</dl>
-
-<div class="fakta">
-	
-	<p>Tallet <em>705</em> skal læses som <em>syv nul fem</em>, hvor det første tal sætter rettigheden for brugeren, det andet tal for gruppen og det sidste for alle.</p>
-	
-	<p>Uanset hvordan du sætter rettigheder og ejerskab har root-brugeren altid mulighed for at ændre disse.</p>
-	
-	<p>root kan give og fjerne adgang til alle filer.</p>
-	
-</div>
-
-<h4>Eksempel med fil</h4>
-
-<p>Et eksempel, hvor rettighederne sættes til at brugeren har alle rettigheder (<em>rwx</em>) og alle har ret til at læse og udføre (<span class="inl_cmd">r-w</span>) svarende til rettigheder for html-filerne på en webserver:</p>
-
-<pre><code>chmod 705 testfil</code></pre>
-
-<samp><span class="terminal_green">tj@server1</span>:<span class="terminal_tilde">~</span>$ ls -al | grep testfil
--rw-rw-r--  1 tj   tj       0 jun  3 17:02 testfil'
-<span class="terminal_green">tj@server1</span>:<span class="terminal_tilde">~</span>$ chmod 705 testfil
-<span class="terminal_green">tj@server1</span>:<span class="terminal_tilde">~</span>$ ls -al | grep testfil
--rwx---r-x  1 tj   tj       0 jun  3 17:02 <span class="red">testfil</span></samp>
-
-<h4>Eksempel med mapper (recursiv)</h4>
-
-<p>Dette eksempel viser hvordan man omdøber alle filer og undermapper.</p>
-
-<pre><code>chmod -R 705 /var/www/html</code></pre>
-
-<p><em>705</em> kombinationen er meget anvendt på systemer hvor brugeren skal have alle rettigheder, men alle skal kunne se filerne og udføre programmerne UDEN at kunne ændre på dem. F.eks. på en webserver som har filerne i mappen <em>/var/www/html</em> og dennes undermapper.</p>
-
-<p>man-page chmod: 
-<a href="http://manpages.ubuntu.com/manpages/focal/man1/chmod.1.html" target="_blank">
-http://manpages.ubuntu.com/manpages/focal/man1/chmod.1.html</a></p>	
+	<a href="http://manpages.ubuntu.com/manpages/trusty/man1/wget.1.html" target="_blank">
+	http://manpages.ubuntu.com/manpages/trusty/man1/wget.1.html</a></p>
 
 <h2>Luk computeren</h2>
 	
@@ -1049,11 +275,11 @@ http://manpages.ubuntu.com/manpages/focal/man1/chmod.1.html</a></p>
 </ul>
 
 
-<p>man-page shutdown: <a href="http://manpages.ubuntu.com/manpages/focal/en/man8/shutdown.8.html" target="_blank">
-http://manpages.ubuntu.com/manpages/focal/en/man8/shutdown.8.html</a></p>
+<p>man-page shutdown: <a href="http://manpages.ubuntu.com/manpages/trusty/en/man8/shutdown.8.html" target="_blank">
+http://manpages.ubuntu.com/manpages/trusty/en/man8/shutdown.8.html</a></p>
 
-<p>man-page reboot: <a href="http://manpages.ubuntu.com/manpages/focal/man8/reboot.8.html" target="_blank">
-http://manpages.ubuntu.com/manpages/focal/man8/reboot.8.html</a></p>
+<p>man-page reboot: <a href="http://manpages.ubuntu.com/manpages/trusty/man8/reboot.8.html" target="_blank">
+http://manpages.ubuntu.com/manpages/trusty/man8/reboot.8.html</a></p>
 
 
 
@@ -1081,8 +307,8 @@ ff02::2 ip6-allrouters
 </pre>
 
 <p>man-page cat: 
-	<a href="http://manpages.ubuntu.com/manpages/focal/man1/cat.1.html" target="_blank">
-	http://manpages.ubuntu.com/manpages/focal/man1/cat.1.html</a></p>
+	<a href="http://manpages.ubuntu.com/manpages/trusty/man1/cat.1.html" target="_blank">
+	http://manpages.ubuntu.com/manpages/trusty/man1/cat.1.html</a></p>
 
 <h3>more</h3>
 
@@ -1094,10 +320,10 @@ ff02::2 ip6-allrouters
 
 
 <p>man-page more: 
-	<a href="http://manpages.ubuntu.com/manpages/focal/man1/more.1.html" target="_blank">
-	http://manpages.ubuntu.com/manpages/focal/man1/more.1.html</a></p>
+	<a href="http://manpages.ubuntu.com/manpages/trusty/man1/more.1.html" target="_blank">
+	http://manpages.ubuntu.com/manpages/trusty/man1/more.1.html</a></p>
 
-<h3>tail/head</h3>
+<h3>tail / head</h3>
 
 <p>Kommandoen er god til at se om noget er blevet korrekt tilføjet til en fil.</p>
 
@@ -1108,12 +334,12 @@ ff02::2 ip6-allrouters
 </ul>
 
 <p>man-page tail: 
-	<a href="http://manpages.ubuntu.com/manpages/focal/en/man1/tail.1.html" target="_blank">
-	http://manpages.ubuntu.com/manpages/focal/en/man1/tail.1.html</a></p>
+	<a href="http://manpages.ubuntu.com/manpages/trusty/en/man1/tail.1.html" target="_blank">
+	http://manpages.ubuntu.com/manpages/trusty/en/man1/tail.1.html</a></p>
 
 <p>man-page head: 
-	<a href="http://manpages.ubuntu.com/manpages/focal/man1/head.1.html" target="_blank">
-	http://manpages.ubuntu.com/manpages/focal/man1/head.1.html</a></p>
+	<a href="http://manpages.ubuntu.com/manpages/trusty/man1/head.1.html" target="_blank">
+	http://manpages.ubuntu.com/manpages/trusty/man1/head.1.html</a></p>
 	
 
 <h3>grep</h3>
@@ -1128,8 +354,8 @@ ff02::2 ip6-allrouters
 </pre>
 
 <p>man-page grep: 
-	<a href="http://manpages.ubuntu.com/manpages/focal/man1/grep.1.html" target="_blank">
-	http://manpages.ubuntu.com/manpages/focal/man1/grep.1.html</a></p>
+	<a href="http://manpages.ubuntu.com/manpages/trusty/man1/grep.1.html" target="_blank">
+	http://manpages.ubuntu.com/manpages/trusty/man1/grep.1.html</a></p>
 
 
 <h2>Redirect</h2>
@@ -1186,7 +412,7 @@ drwxr-xr-x   2 root root  4096 apr 22 14:14 <span class="red">lib</span>64
 	<li><code class="bash">lspci | grep Ethernet</code> - Find informationer om dit netkort. Læg mærke til at søgningen er case-sensitiv (det store E i "Ethernet").</li>
 </ul>
 
-<h3>Redirect</h3>
+<h3>redirect</h3>
 
 <p>Nogen gange har man brug for at omdirigere indhold. Det kan f.eks. være at indsætte et output i en fil. Til at omdirigere anvender man <code class="bash">&gt;</code> og <code class="bash">&gt;&gt;</code>. En pil erstatter alt indhold og 2 pile tilføjer til slutningen af filen. </p>
 

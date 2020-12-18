@@ -93,3 +93,33 @@ font-weight: 900;
 }
 
 
+dl dt {
+
+padding-top: 1em;
+padding-left: 1em;
+
+}
+
+dl dt::after {
+content: ":"
+
+}
+
+dl dd {
+padding-left: 3.5em
+
+}
+
+
+
+dl.accessibility dt {
+
+padding: .6em 0em;
+
+}
+
+dl.accessibility dd {
+padding-left: 2em
+
+}
+

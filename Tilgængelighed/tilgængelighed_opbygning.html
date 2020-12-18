@@ -784,86 +784,8 @@
 
 </details>
 
-<h4>Nedbrydning version 3 - 4 lister tekst komprimeret</h4>
 
-<p>Her trækker vi de 2 underpunkter ind i en parantes efter klassetrinnet, for at gøre den enkelte liste mere læsbar.</p>
-
-<p><strong>Indskoling</strong></p>
-
-<ul class="disc">
-	<li>0. klasse (12 drenge, 12 piger)</li>
-	<li>1. klasse (14 drenge, 10 piger)</li>
-	<li>2. klasse (19 drenge, 12 piger)</li>
-	<li>3. klasse (12 drenge, 12 piger)</li>
-</ul>
-
-
-<p><strong>Mellemtrin</strong></p>
-
-<ul class="disc">
-	<li>4. klasse (16 drenge, 8 piger)</li>
-	<li>5. klasse (8 drenge, 16 piger)</li>
-	<li>6. klasse (14 drenge, 12 piger)</li>
-</ul>
-
-
-<p><strong>Udskoling</strong></p>
-
-<ul class="disc">
-	<li>7. klasse (13 drenge, 15 piger)</li>
-	<li>8. klasse (14 drenge, 14 piger)</li>
-	<li>9. klasse (10 drenge, 17 piger)</li>
-</ul>
-
-<p><strong>Drenge og piger i alt</strong></p>
-
-<ul class="disc">
-	<li>Alle klasser (123 drenge, 128 piger)</li>
-	<li>I alt: 251 elever</li>
-</ul>
-
-<details>
-
-	<summary>Se koden ved Eksempel 3</summary>
-
-	<pre><code class="html">&lt;p>&lt;strong>Indskoling&lt;/strong>&lt;/p>
-
-&lt;ul class="disc">
-	&lt;li>0. klasse (12 drenge, 12 piger)&lt;/li>
-	&lt;li>1. klasse (14 drenge, 10 piger)&lt;/li>
-	&lt;li>2. klasse (19 drenge, 12 piger)&lt;/li>
-	&lt;li>3. klasse (12 drenge, 12 piger)&lt;/li>
-&lt;/ul>
-
-
-&lt;p>&lt;strong>Mellemtrin&lt;/strong>&lt;/p>
-
-&lt;ul class="disc">
-	&lt;li>4. klasse (16 drenge, 8 piger)&lt;/li>
-	&lt;li>5. klasse (8 drenge, 16 piger)&lt;/li>
-	&lt;li>6. klasse (14 drenge, 12 piger)&lt;/li>
-&lt;/ul>
-
-
-&lt;p>&lt;strong>Udskoling&lt;/strong>&lt;/p>
-
-&lt;ul class="disc">
-	&lt;li>7. klasse (13 drenge, 15 piger)&lt;/li>
-	&lt;li>8. klasse (14 drenge, 14 piger)&lt;/li>
-	&lt;li>9. klasse (10 drenge, 17 piger)&lt;/li>
-&lt;/ul>
-
-&lt;p>&lt;strong>Drenge og piger i alt&lt;/strong>&lt;/p>
-
-&lt;ul class="disc">
-	&lt;li>Alle klasser (123 drenge, 128 piger)&lt;/li>
-	&lt;li>I alt: 251 elever&lt;/li>
-&lt;/ul></code></pre>
-
-</details>
-
-
-<h4>Nedbrydning version 4 - som en liste - opmærket og designet </h4>
+<h4>Nedbrydning version 3 - som en liste - opmærket og designet </h4>
 
 <p>Her laver vi det om til en samlet liste, hvor vi ved hjælp af design</p>
 
@@ -940,6 +862,57 @@
 	&lt;/li>
 &lt;/ul>	</code></pre>
 
+</details>
+
+<h3>Nedbrydning version 4 - omskrivning til beskrivelsesliste</h3>
+
+<p>Her bruges HTMl sprogets beskrivelsesliste. Tag der anvendes: &lt;dl> (beskrivelsesliste), &lt;dt> (navn i beskrivelseslisten) og &lt;dd (selve beskrivelsen)</p>
+
+<p>Dette er den optimale måde at gøre det i HTML</p>
+
+
+
+<dl class="accessibility">
+	<dt>Indskoling</dt>
+	<dd>0. klasse (12 drenge, 12 piger)</dd>
+	<dd>1. klasse (14 drenge, 10 piger)</dd>
+	<dd>2. klasse (19 drenge, 12 piger)</dd>
+	<dd>3. klasse (12 drenge, 12 piger)</dd>
+	<dt>Mellemtrin</dt>
+	<dd>4. klasse (16 drenge, 8 piger)</dd>
+	<dd>5. klasse (8 drenge, 16 piger)</dd>
+	<dd>6. klasse (14 drenge, 12 piger)</dd>
+	<dt>Udskoling</dt>
+	<dd>7. klasse (13 drenge, 15 piger)</dd>
+	<dd>8. klasse (14 drenge, 14 piger)</dd>
+	<dd>9. klasse (10 drenge, 17 piger)</dd>
+	<dt>I alt</dt>
+	<dd>alle klasser (123 drenge, 128 piger)</dd>
+	<dd>251 elever i alt.</dd>
+</dl>
+
+<details>
+
+	<summary>Se koden eksempel 4</summary>
+
+	<pre><code class="html">&lt;dl>
+	&lt;dt>Indskoling&lt;/dt>
+	&lt;dd>0. klasse (12 drenge, 12 piger)&lt;/dd>
+	&lt;dd>1. klasse (14 drenge, 10 piger)&lt;/dd>
+	&lt;dd>2. klasse (19 drenge, 12 piger)&lt;/dd>
+	&lt;dd>3. klasse (12 drenge, 12 piger)&lt;/dd>
+	&lt;dt>Mellemtrin&lt;/dt>
+	&lt;dd>4. klasse (16 drenge, 8 piger)&lt;/dd>
+	&lt;dd>5. klasse (8 drenge, 16 piger)&lt;/dd>
+	&lt;dd>6. klasse (14 drenge, 12 piger)&lt;/dd>
+	&lt;dt>Udskoling&lt;/dt>
+	&lt;dd>7. klasse (13 drenge, 15 piger)&lt;/dd>
+	&lt;dd>8. klasse (14 drenge, 14 piger)&lt;/dd>
+	&lt;dd>9. klasse (10 drenge, 17 piger)&lt;/dd>
+	&lt;dt>I alt&lt;/dt>
+	&lt;dd>alle klasser (123 drenge, 128 piger)&lt;/dd>
+	&lt;dd>251 elever i alt.&lt;/dd>
+&lt;/dl></code></pre>
 
 </details>
 
@@ -947,7 +920,7 @@
 
 <p>Herover har jeg lavet 4 forskellige fremstillinger af skemaet ovenfor. De 4 versioner viser alle de samme data, nemlig kønsfordelingen i klasser på skolen.</p>
 
-<p>Min anbefaling er, at man går efter at lister, fordi de giver det bedste overblik for alle.</p>
+<p>Min anbefaling er, at man går efter beskrivelseslisten (version 4), fordi de giver det bedste overblik for alle.</p>
 
 <p>Læg mærke til version 3 og 4. Visuelt er der ingen forskel på dem, men i koden bagved er version 3 og 4 meget forskellige.</p>
 

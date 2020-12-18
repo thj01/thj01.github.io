@@ -105,7 +105,9 @@ h1 {font-size: 3em;padding-top: .6em;}
 
 h2{font-size: 1.6em;padding-top: .6em;}
 
-h3{font-size: 1.3em;}
+h3{font-size: 1.3em;padding-top: 0em;}
+
+h4{font-size: 1.1em; padding-top: .6em;}
 
 
 
@@ -121,7 +123,7 @@ margin-bottom: 12px;
 
 /*  font størrelser  */
 
-p, li {
+p, li, dd, dt {
 font-family: Ubuntu, sans-serif;
 margin-bottom: .5em;
 line-height: 1.4em;

@@ -43,12 +43,15 @@
 
 <h2>dmesg</h2>
 
-<p><code class="bash">dmesg</code> er en kommando det giver et output af det som kernen har indlæst, og er meget omfattende. Findes på alle computere og er især anvendeligt hvis man samtidig anvender <code class="bash">grep</code>. </p>
+<p><em>dmesg</em> er en kommando det giver et output af det som kernen har indlæst, og er meget omfattende. Findes på alle computere og er især anvendeligt hvis man samtidig anvender <em>grep</em>. </p>
 
-<ul class="disc">
-	<li><code class="bash">dmesg</code> - Giver et komplet output af det kernen har indlæst</li>
-	<li><code class="bash">dmesg | grep -i usb</code> - Find henvisninger til <em>usb</em> i dmesg udskriften. <code class="bash">-i</code> gør, at søgningen både bliver efter store og små bogstaver</li>
-</ul>
+<dl class="">
+	<dt>dmesg</dt>
+	<dd>Giver et komplet output af det kernen har indlæst</dd>
+	<dt>dmesg | grep -i usb</dt>
+	<dd>Find henvisninger til <em>usb</em> i dmesg udskriften. <code class="bash">-i</code> gør, at søgningen både bliver efter store og små bogstaver</dd>
+</dl>
+
 
 
 <p>man-page dmesg
@@ -57,12 +60,14 @@ http://manpages.ubuntu.com/manpages/trusty/en/man1/dmesg.1.html</a></p>
 
 <h2>dmidecode</h2>
 
-<p><code class="bash">sudo dmidecode</code> laver en udskrift af de beskrivelser som BIOS har om din hardware. <code class="bash">dmidecode</code> skal køres som root.</p>
+<p><em>dmidecode</em> laver en udskrift af de beskrivelser som BIOS har om din hardware. <em>dmidecode</em> skal køres som root.</p>
 
-<ul class="disc">
-	<li><code class="bash">dmidecode</code> - Laver en komplet udskrift af din hardware</li>
-	<li><code class="bash">dmidecode -t 2</code> - Informationer om bundkortet. Der findes mange andre <span class="inl_cmd">-t</span> værdier (0-42) som kan findes på man siden.</li>
-</ul>
+<dl class="">
+	<dt>dmidecode</dt>
+	<dd>Laver en komplet udskrift af din hardware</dd>
+	<dt>dmidecode -t 2</dt>
+	<dd>Informationer om bundkortet. Der findes mange andre <span class="inl_cmd">-t</span> værdier (0-42) som kan findes på man siden.</dd>
+</dl>
 
 
 <p>man-page dmidecode: 
@@ -73,17 +78,21 @@ http://manpages.ubuntu.com/manpages/trusty/man8/dmidecode.8.html</a></p>
 
 <p>Giver dig informationer om computerens hardware på en læselig måde. Skal førest installeres:</p>
 
-<code class="cmd">sudo apt install inxi</code>
+<pre><code>sudo apt install inxi</code></pre>
 
-<pre class="ubuntu_terminal">
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ inxi
-<font color="#3465A4"><b>CPU:</b></font> Quad Core Intel Core i7-6700K (-MT MCP-) <font color="#3465A4"><b>speed/min/max:</b></font> 800/800/4200 MHz <font color="#3465A4"><b>Kernel:</b></font> 5.4.0-56-generic x86_64 <font color="#3465A4"><b>Up:</b></font> 1h 00m <font color="#3465A4"><b>Mem:</b></font> 2524.4/32068.0 MiB (7.9%) <font color="#3465A4"><b>Storage:</b></font> 232.89 GiB (47.9% used) <font color="#3465A4"><b>Procs:</b></font> 344 <font color="#3465A4"><b>Shell:</b></font> bash 5.0.17 <font color="#3465A4"><b>inxi:</b></font> 3.0.38 </pre>
+<pre><code>inxi</code></pre>
 
-<ul class="disc">
-	<li><code class="bash">inxi -b</code> - Giver en komprimeret oversigt over din hardware</li>
-	<li><code class="bash">inxi -v 7</code> - Giver en oversigt over al din hardware og opsætning. Der kan anvendes værdier fra 0-7</li>
-</ul>
+<samp><font color="#3465A4"><b>CPU:</b></font> Quad Core Intel Core i7-6700K (-MT MCP-)
+<font color="#3465A4"><b>speed/min/max:</b></font> 800/800/4200 MHz <font color="#3465A4"><b>Kernel:</b></font> 5.4.0-56-generic x86_64 <font color="#3465A4"><b>Up:</b></font> 1h 00m 
+<font color="#3465A4"><b>Mem:</b></font> 2524.4/32068.0 MiB (7.9%) <font color="#3465A4"><b>Storage:</b></font> 232.89 GiB (47.9% used) <font color="#3465A4"><b>Procs:</b></font> 344 
+<font color="#3465A4"><b>Shell:</b></font> bash 5.0.17 <font color="#3465A4"><b>inxi:</b></font> 3.0.38 </samp>
 
+<dl class="">
+	<dt>inxi -b</dt>
+	<dd>Giver en komprimeret oversigt over din hardware</dd>
+	<dt>inxi -v 7</dt>
+	<dd>Giver en oversigt over al din hardware og opsætning. Der kan anvendes værdier fra 0-7</dd>
+</dl>
 
 <p>man-page inxi: 
 <a href="http://manpages.ubuntu.com/manpages/trusty/man1/inxi.1.html" target="_blank">
@@ -91,20 +100,21 @@ http://manpages.ubuntu.com/manpages/trusty/man1/inxi.1.html</a></p>
 
 <h2>uname</h2>
 
-<p><code class="bash">uname</code> giver dig mulighed for at få informationer om systemet. F.eks:</p>
+<p><em>uname</em> giver dig mulighed for at få informationer om systemet. F.eks:</p>
 
-<ul class="disc">
-	<li><code class="bash">uname -a</code> - Udskriv al information</li>
-	<li><code class="bash">uname -rsp</code> - Udskriver kernen (r), kerneversionen (s) og CPU (p)</li>
-</ul>
+<dl class="">
+	<dt>uname -a</dt>
+	<dd>Udskriv al information</dd>
+	<dt>uname -rsp</dt>
+	<dd>Udskriver kernen (r), kerneversionen (s) og CPU (p)</dd>
+</dl>
 
-
-<pre class="ubuntu_terminal">
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ uname -a
+<samp><span class="terminal_green">tj@server1</span>:<span class="terminal_tilde">~</span>$ uname -a
 Linux tj-desktop 5.4.0-56-generic #62-Ubuntu SMP Mon Nov 23 19:20:19 UTC 2020 x86_64 x86_64 x86_64 GNU/Linux
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ uname -rsp
+<span class="terminal_green">tj@server1</span>:<span class="terminal_tilde">~</span>$  uname -rsp
 Linux 5.4.0-56-generic x86_64
-</pre>
+</samp>
+
 
 <p>man-page uname:
 <a href="http://manpages.ubuntu.com/manpages/trusty/en/man1/uname.1.html" target="_blank">
@@ -115,14 +125,18 @@ http://manpages.ubuntu.com/manpages/trusty/en/man1/uname.1.html</a></p>
 
 <p>Viser detaljerede oplysninger om dit hardware.</p>
 
-<ul class="disc">
-			<li><code class="bash">lsblk</code> - Informationer om diske på systemet. (gennemgået ovenfor)</li>
-			<li><code class="bash">lshw</code> - Giver en detaljeret oversigt over  din hardware</li>
-			<li><code class="bash">lspci</code> - Giver information om systemets PCI enheder</li>
-			<li><code class="bash">lsusb</code> - Giver informationer om systemets usb enheder</li>
-			<li><code class="bash">lpinfo</code> - Giver informationer om printere og printerdrivere på systemet.</li>
-</ul>
-
+<dl class="">
+	<dt>lsblk</dt>
+	<dd>Informationer om diske på systemet.</dd>
+	<dt>lshw</dt>
+	<dd>Giver en detaljeret oversigt over  din hardware</dd>
+	<dt>lspci</dt>
+	<dd>Giver information om systemets PCI enheder</dd>
+	<dt>lsusb</dt>
+	<dd>Giver informationer om systemets usb enheder</dd>
+	<dt>lpinfo</dt>
+	<dd>Giver informationer om printere og printerdrivere på systemet.</dd>
+</dl>
 
 <p>man-page lsblk: 
 <a href="http://manpages.ubuntu.com/manpages/trusty/en/man8/lsblk.8.html" target="_blank">
@@ -143,160 +157,7 @@ http://manpages.ubuntu.com/manpages/trusty/man8/lspci.8.html</a></p>
 <a href="http://manpages.ubuntu.com/manpages/trusty/man8/lpinfo.8.html" target="_blank">
 http://manpages.ubuntu.com/manpages/trusty/man8/lpinfo.8.html</a></p>
 
-<h2>Computerens ressourcer</h2>
 
-<p>De nedestående programmer er allesammen ret omfattende, så der er ikke en udførlig beskrivelse af hvordan man bruger dem. De er medtaget for at du kan få et indblik i den værktøjskasse der er tilgængelig når man anvender Ubuntu som server.</p>
-
-<h2><span class="inl_cmd">free</span></h2>
-
-<p><span class="inl_cmd">free</span> angiver forbruget af RAM, og vil normalt blive anvendt med <span class="inl_cmd">-h</span> (human readable output), da det er mere læseligt. Se forskellen på nedestående eksempler.</p>
-
-<code class="cmd">free</code>
-
-<pre class="ubuntu_terminal">
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ free
-              total        used        free      shared  buff/cache   available
-Mem:        4046844      566780     3031556        9864      448508     3419188
-Swap:       4191228           0     4191228
-</pre>
-
-
-<code class="cmd">free -h</code>
-
-<pre class="ubuntu_terminal">
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ free -h
-              total        used        free      shared  buff/cache   available
-Mem:           3,9G        563M        2,9G        9,6M        446M        3,3G
-Swap:          4,0G          0B        4,0G
-</pre>
-
-<p>Det som dine programmer har til rådighed er det som står under <span class="inl_cmd">available</span> i dette tilfælde 3,3 GB. For at forstå tallene skal man være klar over hvordan henholdsvis Linux og vi som brugere forstår tallene:</p>
-
-<table class="">
-	<thead>
-		<tr>
-			<th scope="col">Betegnelse</th>
-			<th scope="col">Hukommelse der...</th>
-			<th scope="col">Du kalder det:</th>
-			<th scope="col">Linux kalder det:</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>used</td>
-			<td>Er brugt af programmer</td>
-			<td><span class="red">Anvendt</span></td>
-			<td><span class="red">Anvendt</span></td>
-		</tr>
-		
-		<tr>
-			<td>free</td>
-			<td>Bliver ikke brugt til noget</td>
-			<td><span class="green">Tilgængelig</span></td>
-			<td><span class="green">Tilgængelig</span></td>
-		</tr>
-		<tr>
-			<td>buff/cache</td>
-			<td>er tilgængelig og anvendt til noget</td>
-			<td><span class="green">Tilgængelig</span></td>
-			<td><span class="red">Anvendt</span></td>
-		</tr>
-		<tr>
-			<td>available</td>
-			<td>Det som er tilgængelig for dine programmer</td>
-			<td><span class="green">Tilgængelig</span></td>
-			<td><span class="green">Tilgængelig</span></td>
-		</tr>
-	</tbody>
-</table>
-
-
-<p>Hvis du gerne vil se udviklingen af dit RAM forbrug kan du sætte <span class="inl_cmd">free</span> til at opdatere sig selv efter nogle sekunder <span class="inl_cmd">-sX</span>. Nedestående opdaterer sig selv 3 gange (<span class="inl_cmd">-c3</span>) med 2 sekunders mellemrum (<span class="inl_cmd">-s2</span>).</p>
-
-<code class="cmd">free -h -c3-s2</code>
-
-<pre class="ubuntu_terminal">
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ free -h -c3 -s2
-              total        used        free      shared  buff/cache   available
-Mem:           3,9G        586M        2,8G        9,6M        522M        3,2G
-Swap:          4,0G          0B        4,0G
-
-              total        used        free      shared  buff/cache   available
-Mem:           3,9G        586M        2,8G        9,6M        522M        3,2G
-Swap:          4,0G          0B        4,0G
-
-              total        used        free      shared  buff/cache   available
-Mem:           3,9G        586M        2,8G        9,6M        522M        3,2G
-Swap:          4,0G          0B        4,0G
-
-</pre>
-
-
-<p>Læs Mere: Linux ate my RAM! <a href="http://www.linuxatemyram.com/" target="_blank">http://www.linuxatemyram.com/</a></p>
-
-<p>man-page: <span class="inl_cmd">free</span>
-<a href="http://manpages.ubuntu.com/manpages/trusty/man1/free.1.html" target="_blank">
-http://manpages.ubuntu.com/manpages/trusty/man1/free.1.html</a></p>
-
-
-
-<h2><span class="inl_cmd">top</span></h2>
-
-<p><span class="inl_cmd">top</span> er et program der giver informationer om processer. Programmet følger med de fleste Linux distributioner som standard. Programmet afbrydet med <kbd>Ctrl</kbd>+<kbd>c</kbd>.</p>
-
-<pre class="ubuntu_terminal">
-top - 11:36:32 up 2 min,  2 users,  load average: 0,23, 0,23, 0,10
-Tasks: <span class="bold">170</span> total,   <span class="bold">2</span> running, <span class="bold">168</span> sleeping,   <span class="bold">0</span> stopped,   <span class="bold">0</span> zombie
-%Cpu(s):  <span class="bold">7,0</span> us,  <span class="bold">1,7</span> sy,  <span class="bold">0,0</span> ni, <span class="bold">91,3</span> id,  <span class="bold">0,0</span> wa,  <span class="bold">0,0</span> hi,  <span class="bold">0,0</span> si,  <span class="bold">0,0</span> st
-KiB Mem:   <span class="bold">4047396</span> total,   <span class="bold">702860</span> used,  <span class="bold">3344536</span> free,    <span class="bold">28392</span> buffers
-KiB Swap:  <span class="bold">3999740</span> total,        <span class="bold">0</span> used,  <span class="bold">3999740</span> free.   <span class="bold">298104</span> cached Mem
-
-<span class="white_bg">  PID USER      PR  NI    VIRT    RES    SHR S %CPU %MEM     TIME+ COMMAND </span>     
- 1037 root      20   0  442812  64476  24616 S  3,7  1,6   0:02.53 Xorg         
- 2018 thoj      20   0 1213008  94816  58028 S  3,3  2,3   0:01.90 compiz       
- 2170 thoj      20   0  576656  31360  22824 S  1,3  0,8   0:00.62 gnome-termi+ 
-<span class="bold"> 2281 thoj      20   0   30616   3024   2532 R  0,3  0,1   0:00.11 top </span>         
-    1 root      20   0   33772   4348   2688 S  0,0  0,1   0:00.91 init         
-    2 root      20   0       0      0      0 S  0,0  0,0   0:00.00 kthreadd     
-    3 root      20   0       0      0      0 S  0,0  0,0   0:00.00 ksoftirqd/0  
-    4 root      20   0       0      0      0 S  0,0  0,0   0:00.00 kworker/0:0  
-    5 root       0 -20       0      0      0 S  0,0  0,0   0:00.00 kworker/0:0H 
-    6 root      20   0       0      0      0 S  0,0  0,0   0:00.00 kworker/u2:0 
-    7 root      20   0       0      0      0 S  0,0  0,0   0:00.03 rcu_sched    
-    8 root      20   0       0      0      0 S  0,0  0,0   0:00.00 rcu_bh       
-    9 root      20   0       0      0      0 R  0,0  0,0   0:00.03 rcuos/0      
-   10 root      20   0       0      0      0 S  0,0  0,0   0:00.00 rcuob/0      
-   11 root      rt   0       0      0      0 S  0,0  0,0   0:00.00 migration/0  
-   12 root      rt   0       0      0      0 S  0,0  0,0   0:00.00 watchdog/0   
-   13 root       0 -20       0      0      0 S  0,0  0,0   0:00.00 khelper      
-</pre>
-<p></p>
-
-<h2><span class="inl_cmd">htop</span></h2>
-
-<p><span class="inl_cmd">htop</span> er et interaktivt program til at kigge på processer og computerens ressourcer. Programmet tilbyder mange flere informationer end <span class="inl_cmd">top</span> , og er interaktivt. Man kan vælge med musen samt sortere og søge i data.</p>
-
-<p>Programmet installeres med kommandoen:</p>
-
-<code class="cmd">apt install htop -y</code>
-
-<figure id="">
-
-	<img class="" src="images/kommandoer_htop.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-
-<h2><span class="inl_cmd">uptime </span></h2>
-
-<p><span class="inl_cmd">uptime</span> giver informationer om hvor længe computeren har kørt, antallet af bruger der er logget på og systembelastningen i 1, 5 og 15 minutters intervaller
-</p>
-
-<pre class="ubuntu_terminal">
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ uptime
- 23:16:35 up 0 min,  2 users,  load average: 0,71, 0,19, 0,06
-</pre>
 
 
 	

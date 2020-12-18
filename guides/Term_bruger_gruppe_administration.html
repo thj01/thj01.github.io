@@ -45,13 +45,11 @@
 
 <h2>adduser / deluser</h2>
 
-<p>Man opretter og sletter brugere med kommandown <code class="bash">adduser</code>. Herunder opretter jeg brugeren <em>testuser</em>.</p>
+<p>Man opretter og sletter brugere med kommandown <em>adduser</em>. Herunder opretter jeg brugeren <em>testuser</em>.</p>
 
-<code class="cmd">sudo adduser testuser</code>
+<pre><code>sudo adduser testuser</code></pre>
 
-<pre class="ubuntu_terminal">
-<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ sudo adduser testuser
-[sudo] password for tj: <span class="red">&lt;-- Indtast dit kodeord</span>
+<samp>[sudo] password for tj: <span class="red">&lt;-- Indtast dit kodeord</span>
 Tilføjer bruger »testuser«...
 Tilføjer ny gruppe »testuser« (1001)...
 Tilføjer ny bruger »testuser« (1001) med gruppe »testuser«...
@@ -67,26 +65,21 @@ Angiv ny værdi eller tryk RETUR for standardværdien
 	Arbejdstelefon []: <span class="red">[Retur]</span>
 	Telefon []: <span class="red">[Retur]</span>
 	Andet []: <span class="red">[Retur]</span>
-Er informationerne korrekte? [J/n] <span class="red">[Retur]</span>
-</pre>
+Er informationerne korrekte? [J/n] <span class="red">[Retur]</span></samp>
 
 <p>Kontroller at han er blevet oprettet:</p>
 
-<code class="cmd">cat /etc/passwd | grep testuser</code>
+<pre><code>cat /etc/passwd | grep testuser</code></pre>
 
-<pre class="ubuntu_terminal">
-<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ cat /etc/passwd | grep testuser
-<span class="red">testuser</span>:x:1001:1001:,,,:/home/<span class="red">testuser</span>:/bin/bash
-</pre>
+<samp><span class="red">testuser</span>:x:1001:1001:,,,:/home/<span class="red">testuser</span>:/bin/bash</samp>
 
+<p>For at slette en bruger anvendes kommandoen <em>deluser</em></p>
 
-<p>For at slette en bruger anvendes kommandoen <code class="bash">deluser</code></p>
+<pre><code>sudo deluser testuser</code></pre>
 
-<code class="cmd">sudo deluser testuser</code>
+<p>Anvender man ovenstående kommando bliver brugerens hjemmemappe ikke slettet. For at slette alle brugerens filer skal der tilføjes <em>--remove-home</em> - altså:</p>
 
-<p>Anvender man ovenstående kommando bliver brugerens hjemmemappe ikke slettet. For at slette alle brugerens filer skal der tilføjes <code class="bash">--remove-home</code> - altså:</p>
-
-<code class="cmd">sudo deluser testuser --remove-home</code>
+<pre><code>sudo deluser testuser --remove-home</code></pre>
 
 <p>man-page adduser: 
 <a href="http://manpages.ubuntu.com/manpages/trusty/man8/adduser.8.html" target="_blank">
@@ -98,44 +91,59 @@ http://manpages.ubuntu.com/manpages/trusty/en/man8/deluser.8.html</a></p>
 
 <h2>useradd</h2>
 
-<p>Når man anvender <code class="bash">adduser</code> er det egentlig en scriptfil der arbejder med kommandoen <code class="bash">useradd</code>. <code class="bash">useradd</code> giver mulighed for at man kan sætte en bruger op i detaljer med en længere kommando. Kommanden anvendes ved at man tilføjer konfigurationen bagefter.</p>
+<p>Når man anvender <em>adduser</em> er det egentlig en scriptfil der arbejder med kommandoen <em>useradd</em>. <em>useradd</em> giver mulighed for at man kan sætte en bruger op i detaljer. Kommandoen anvendes ved at man tilføjer konfigurationen bagefter.</p>
 
-<p>Du kan læse om <code class="bash">useradd</code> her: <a href="https://www.tecmint.com/add-users-in-linux/" target="_blank">https://www.tecmint.com/add-users-in-linux/</a>.</p>
+<p>Du kan læse om <em>useradd</em> her: <a href="https://www.tecmint.com/add-users-in-linux/" target="_blank">https://www.tecmint.com/add-users-in-linux/</a>.</p>
 
 <h2>Administration af grupper</h2>
 
-<ul class="disc">
-	<li><code class="bash">Addgroup testgruppe</code> - Tilføjer gruppen testgruppe</li>
-	<li><code class="bash">Delgroup testgruppe</code> - Fjerner testgruppe</li>
-	<li><code class="bash">Adduser test testgruppe</code> - Tilføjer brugeren test til gruppen testgruppe</li>
-	<li><code class="bash">Deluser test testgruppe</code> - Fjerner brugeren test fra gruppe testgruppe</li>
-</ul>
+<p>Her er nogle eksempler på anvendelse:</p>
+
+<p>Tilføj gruppen <em>testgruppe</em></p>
+
+<pre><code>addgroup testgruppe</code></pre>
+
+<p>Slet <em>testgruppe</em></p>
+
+<pre><code>delgrout testgruppe</code></pre>
+
+<p>Tilføj brugeren <em>test</em> til gruppen <em>testgruppe</em></p>
+
+<pre><code>adduser test testgruppe</code></pre>
+
+<p>Slet brugeren <em>test</em> fra gruppen <em>testgruppe</em></p>
+
+<pre><code>deluser test testgruppe</code></pre>
+
 
 <p>Manpages til add- og delgroup er de samme som add- og deluser.</p>
 
-<p>Grupperne og deres medlemmer kan ses i filen <span class="inl_cmd">/etc/group</span>.</p>
+<p>Grupperne og deres medlemmer kan ses i filen <em>/etc/group</em>.</p>
 
 <h2>id</h2>
 
-<p>Checke om en bruger findes anvendes <code class="bash">id</code>.</p>
+<p>Checke om en bruger findes anvendes <em>id</em>.</p>
 
-<code class="cmd">id *brugernavn*</code>
+<pre><code>id *brugernavn*</code></pre>
 
-<pre class="ubuntu_terminal">
-<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ id tj
+<samp><span class="terminal_green">tj@server1</span>:<span class="terminal_tilde">~</span>$ id tj
 uid=1000(tj) gid=1000(tj) grupper=1000(tj),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),108(lpadmin),124(sambashare)
-<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ id hugo
-id: hugo: ingen sådan bruger
-</pre>
+<span class="terminal_green">tj@server1</span>:<span class="terminal_tilde">~</span>$ id hugo
+id: hugo: ingen sådan bruger</samp>
+
 
 <h2>usermod</h2>
 
-<p><code class="bash">usermod</code> anvendes til at ændre på brugerens konto.</p>
+<p><em>usermod</em> anvendes til at ændre på brugerens konto.</p>
 
-<ul class="disc">
-	<li><code class="bash">usermod -L testuser2</code> - Lås testuser2' konto</li>
-	<li><code class="bash">usermod -U testuser2</code> - Åbn testuser2' konti</li>
-</ul>
+<p>Lås brugeren <em>test</em>'s konto</p>
+
+<pre><code>usermod -L test</code></pre>
+
+<p>Åbn brugeren <em>test</em>'s konto</p>
+
+<pre><code>usermod -U test</code></pre>
+
 
 <p>man-page usermod: 
 <a href="http://manpages.ubuntu.com/manpages/trusty/en/man8/usermod.8.html" target="_blank">
@@ -143,32 +151,30 @@ http://manpages.ubuntu.com/manpages/trusty/en/man8/usermod.8.html</a></p>
 
 <h2>chage</h2>
 
-<p><code class="bash">chage</code> anvendes til at konfigurere brugerens password og måden de skal fornys på. Hvis man ønsker at få et overblik over hvordan brugerens indstillinger kan man anvende kommandoen: </p>
+<p><em>chage</em> anvendes til at konfigurere brugerens password og måden de skal fornys på. Hvis man ønsker at få et overblik over hvordan brugerens indstillinger kan man anvende kommandoen: </p>
 
-<code class="cmd">sudo chage -l testuser2</code>
+<pre><code>sudo chage -l test</code></pre>
 
 <p>Herunder er et eksemel på resultatet</p>
 
-<pre class="ubuntu_terminal">
-<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ sudo chage -l testuser2
+<samp><span class="terminal_green">tj@server1</span>:<span class="terminal_tilde">~</span>$ sudo chage -l test
 Sidste ændring af adgangskode					: mar 16, 2016
 Adgangskode udløber					: aldrig
 Adgangskode inaktiv					: aldrig
 Konto udløber						: aldrig
 Minimalt antal dage mellem ændring af adgangskoden		: 0
 Maksimalt antal dage mellem ændring af adgangskoden		: 99999
-Antal dages forvarsel om adgangskodens udløb	: 7
-</pre>
+Antal dages forvarsel om adgangskodens udløb	: 7</samp>
+
 
 <p>Hvis man ønsker at ændre den måde brugerens password er sat op kan man køre nedestående kommando. Værdierne der angives er dage</p>
 
-<code class="cmd">sudo chage testuser2</code>
+<pre><code>sudo chage test</code></pre>
 
 <p>Herunder er et eksempel på resultatet af denne kommando, kørt på brugeren "chagetest"</p>
 
-<pre class="ubuntu_terminal">
-<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ sudo chage testuser2
-Ændrer forældelsesoplysninger for testuser2
+<samp><span class="terminal_green">tj@server1</span>:<span class="terminal_tilde">~</span>$ sudo chage test
+Ændrer forældelsesoplysninger for test
 Angiv ny værdi eller tryk RETUR for standardværdien
 
 	Minimal alder for adgangskode [0]: <span class="red">&lt;-- ny værdi eller [Enter]</span>
@@ -176,24 +182,21 @@ Angiv ny værdi eller tryk RETUR for standardværdien
 	Sidste ændring af adgangskode (ÅÅÅÅ-MM-DD) [2016-03-16]: <span class="red">&lt;-- ny værdi eller [Enter]</span>
 	Advarsel om udløb af adgangskode [7]: <span class="red">&lt;-- ny værdi eller [Enter]</span>
 	Adgangskode inaktiv [-1]: <span class="red">&lt;-- ny værdi eller [Enter]</span>
-	Udløbsdato for konto (ÅÅÅÅ-MM-DD) [-1]: <span class="red">&lt;-- ny værdi eller [Enter]</span>
-</pre>
+	Udløbsdato for konto (ÅÅÅÅ-MM-DD) [-1]: <span class="red">&lt;-- ny værdi eller [Enter]</span></samp>
 
 <p>Hvis man ønsker at brugeren skal ændre sit passeword wed første login kan man anvende kommandoen <code class="bash">chage</code> med en option. Herunder laver vi ændringen for <em>testuser2</em></p>
 
-<code class="cmd">sudo chage -d 0 testuser2</code>
+<pre><code>sudo chage -d 0 test</code></pre>
 
-<pre class="ubuntu_terminal">
-<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ sudo chage -d 0 testuser2
-<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ su testuser2
+<samp><span class="terminal_green">tj@server1</span>:<span class="terminal_tilde">~</span>$ sudo chage -d 0 test
+<span class="terminal_green">tj@server1</span>:<span class="terminal_tilde">~</span>$ su test
 Adgangskode: 
 Du skal omgående ændre din adgangskode (gennemtvunget af roden)
-Ændrer adgangskode for testuser2.
+Ændrer adgangskode for test
 (nuværende) UNIX-adgangskode: 
 Indtast ny UNIX-adgangskode: 
-Genindtast ny UNIX-adgangskode: 
-<span class="green1">testuser2@tj-VirtualBox</span>:<span class="blue1">/home/tj</span>$
-</pre>
+Genindtast ny UNIX-adgangskode:
+<span class="terminal_green">test@server1</span>:<span class="terminal_tilde">/home/tj</span>$ </samp>
 
 <p>man-page chage: 
 <a href="http://manpages.ubuntu.com/manpages/trusty/en/man1/chage.1.html" target="_blank">
@@ -205,19 +208,15 @@ http://manpages.ubuntu.com/manpages/trusty/en/man1/chage.1.html</a></p>
 
 <p><em>sudo-gruppen</em> er en af de vigtiste grupper på et Linux-system, da disse brugere har ret til at udføre system- og administrationsarbejde.</p>
 
-<code class="cmd">sudo adduser *brugernavn* sudo </brugernavn></code>
+<pre><code>sudo adduser *brugernavn* sudo </code></pre>
 
 <p>Hvis man tilføjer en bruger gennem en terminal der er startet på en desktop skal man genstarte GUI'en, dvs. logge af og på igen. Det skyldes at GUI terminalen kører under samme session som GUI'en. For at genindlæse rettigheder osv. bliver man altså nød til at logge af og på igen.</p>
 
 <p>For at se hvilke brugere der tilhører <em>sudo-gruppen</em> kan du køre:</p>
 
-<code class="cmd">cat /etc/group | grep sudo</code>
+<pre><code>cat /etc/group | grep sudo</code></pre>
 
-<pre class="ubuntu_terminal">
-<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ cat /etc/group | grep sudo
-<span class="red">sudo</span>:x:27:tj
-</pre>
-
+<samp><span class="red">sudo</span>:x:27:tj</samp>
 
 
 	
