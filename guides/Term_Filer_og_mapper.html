@@ -65,14 +65,17 @@
 <dl class="">
 	<dt>cd</dt>
 	<dd>Skift mappe</dd>
+	<dt>pwd</dt>
+	<dd>Viser det bibliotek man står i</dd>	
 	<dt>clear</dt>
 	<dd>Renser kommandovinduet</dd>
 	<dt>ls</dt>
 	<dd>Viser indholdet af mappen</dd>
 	<dt>tree</dt>
 	<dd>se træstruktur</dd>
-	<dt>pwd</dt>
-	<dd>Viser det bibliotek man står i</dd>
+	<dt>Piping</dt>
+	<dd>Overførsel output til anden kommando</dd>
+
 
 </dl>
 
@@ -105,6 +108,12 @@
 <pre><code>cd ~</code></pre>
 
 <samp><span class="terminal_green">tj@server1</span>:<span class="terminal_tilde">~</span>$ </samp>
+
+<h3>clear</h3>
+
+<p>Bliver terminalvinduet for rodet kan man rense det med kommandoen <em>clear</em></p>
+
+<pre><code>clear</code></pre>
 
 <h3>ls</h3>
 
@@ -229,19 +238,54 @@ drwxr-xr-x  2 root root 4096 Apr  9  2020 <span class="red">sources</span>.list.
 [drwxr-xr-x root     root    ]  <span class="terminal_tilde">/etc/apt/preferences.d</span>
 [drwxr-xr-x root     root    ]  <span class="terminal_tilde">/etc/apt/sources.list.d</span>
 [drwxr-xr-x root     root    ]  <span class="terminal_tilde">/etc/apt/trusted.gpg.d</span></samp>
-
-
-
 </details>
 
 <p>læs mere om tree: <a href="http://manpages.ubuntu.com/manpages/focal/en/man1/tree.1.html" target="_blank">http://manpages.ubuntu.com/manpages/focal/en/man1/tree.1.html</a></p>
 
-<h3>clear</h3>
+<h3>Piping</h3>
 
-<p>Bliver terminalvinduet for rodet kan man rense det med kommandoen <em>clear</em></p>
+<p><em>Piping</em> er en metode der oftes anvendes i terminalen. Ved hjælp af piping kan vi overføre output en kommando til en anden kommando. Det skrives på følgende måde:</p>
 
-<pre><code>clear</code></pre>
+<pre><code>Kommando_1 | Kommando_2</code></pre>
 
+<p>Output fra <em>Kommando_1</em> bliver brugt som input i <em>Kommando_2</em>.</p>
+
+<p>Lad os se på eksemplet ovenfor</p>
+
+<pre><code>ls -al /etc/apt | grep sources</code></pre>
+
+<p><strong>Kommando 1 siger</strong>: vis en liste over alle filer i <em>/etc/apt</em></p>
+
+<samp>total 36
+drwxr-xr-x  7 root root 4096 Dec 14 09:02 .
+drwxr-xr-x 94 root root 4096 Dec 17 09:51 ..
+drwxr-xr-x  2 root root 4096 Dec 14 10:00 apt.conf.d
+drwxr-xr-x  2 root root 4096 Apr  9  2020 auth.conf.d
+drwxr-xr-x  2 root root 4096 Apr  9  2020 preferences.d
+-rw-r--r--  1 root root 2777 Dec 14 09:02 sources.list
+-rw-r--r--  1 root root 2743 Jul 31 16:30 sources.list.curtin.old
+drwxr-xr-x  2 root root 4096 Apr  9  2020 sources.list.d
+drwxr-xr-x  2 root root 4096 Jul 31 16:28 trusted.gpg.d</samp>
+
+<p>Dette bliver overført til kommando 2</p>
+
+<p><strong>Kommando 2 siger</strong>: vælg alle linier hvor tekststrengen <em>sources</em> står</p>
+
+<samp>-rw-r--r--  1 root root 2777 Dec 14 09:02 <span class="red">sources</span>.list
+-rw-r--r--  1 root root 2743 Jul 31 16:30 <span class="red">sources</span>.list.curtin.old
+drwxr-xr-x  2 root root 4096 Apr  9  2020 <span class="red">sources</span>.list.d</samp>
+
+<h4>Piping i flere niveauer</h4>
+
+<p>Man kan gøre det i flere niveauer.</p>
+
+<pre><code>Kommando_1 | Kommando_2 | Kommando_3 | ... | Kommando_N</code></pre>
+
+<p>Vi tager eksemplet ovenfor, hvor vi kun vil have dem hvor der står <em>.old</em> ved. Den fulde kommando vil være:</p>
+
+<pre><code>ls -al /etc/apt | grep sources | grep .old</code></pre>
+
+<samp>-rw-r--r--  1 root root 2743 Jul 31 16:30 sources.list.curtin<span class="red">.old</span></samp>
 
 <h2>Oprette og slette</h2>
 
@@ -327,7 +371,7 @@ drwxr-xr-x  2 root root 4096 Apr  9  2020 <span class="red">sources</span>.list.
 
 	<summary>Avanceret anvendelse</summary>
 
-<h4>Med flere undermapper</h4>
+<p><strong>Med flere undermapper</strong></p>
 
 <p>Her opretter vi <em>mappe5</em>, med flere undermapperne i samme niveau<em>um1</em>, <em>um2</em>,<em>um3</em>.</p>
 
@@ -346,7 +390,7 @@ drwxr-xr-x  2 root root 4096 Apr  9  2020 <span class="red">sources</span>.list.
     └── <span class="terminal_tilde">um3</span></samp>
 
      
-<h4>Med flere undermapper</h4>
+<p><strong>Med flere undermapper</strong></p>
 
 <p>Her opretter vi <em>mappe5</em>, med flere undermapperne i samme niveau<em>um1</em>, <em>um2</em>,<em>um3</em>.</p>
 
@@ -622,23 +666,59 @@ rm: use --no-preserve-root to override this failsafe</samp>
 
 
 
-
-<ul class="disc">
-	<li><code class="bash">mv fil1 fil2</code> - Flytter fil1 til at hedde fil2</li>
-	<li><code class="bash">mv ~/dir1 ~/dir2</code> - flytter indholdet af dir1 til dir 2</li>
-</ul>
-
-
-
 <h2>Hente</h2>
 
 <dl class="">
 	<dt>wget</dt>
-	<dd>Henter filer fra netværk (Internet)</dd>
+	<dd>Henter filer fra Internetet</dd>
 
 </dl>
 
 <h3>wget</h3>
+
+<p><em>Henter filer på Internettet</em></p>
+
+<p>Der ligger en fil på min hjemmeside med følgende adresse.</p>
+
+<p><em>http://www.vidas.dk/guides/files/wget_testfil</em></p>
+
+<p>Vi vil nu hente den ned i øvelsesmappen, som vi står i.</p>
+
+<pre><code>wget -c http://www.vidas.dk/guides/files/wget_testfil</code></pre>
+
+<samp>--2020-12-18 16:07:08--  http://www.vidas.dk/guides/files/wget_testfil
+Resolving www.vidas.dk (www.vidas.dk)... 185.199.110.153, 185.199.108.153, 185.199.111.153, ...
+Connecting to www.vidas.dk (www.vidas.dk)|185.199.110.153|:80... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 63 [application/octet-stream]
+Saving to: ‘wget_testfil’
+
+wget_testfil        100%[===================>]      63  --.-KB/s    in 0s      
+
+2020-12-18 16:07:08 (2.81 MB/s) - ‘wget_testfil’ saved [63/63]</samp>
+
+
+
+<p><em>-c</em> sikrer, at filhentningen kan genoptages hvis der bliver afbrudt.</p>
+
+<p><strong>Overblik</strong></p>
+
+<dl class="">
+	<dt>wget -c *filadresse*</dt>
+	<dd>Henter filen, med mulighed for at genstarter hentningen.</dd>
+	<dt>wget -P ~/*mappe* *filadresse*</dt>
+	<dd>Henter filen, men gemmer den i mappen ~/*mappe*</dd>
+	<dt>wget -o ~/*hentetfil* *filadresse*</dt>
+	<dd>Henter filen, men gemmer den som "hentetfil*</dd>
+	<dt>wget -b *filadresse*</dt>
+	<dd>Henter filen i baggrunden - frigiver kommandolinien med det samme.</dd>
+</dl>
+
+<p>Optionerne kan stackes. På den måde vil <em>wget -cob minfil *filadresse*</em> hente i baggrunden, gemme den som <em>minfil</em> og sikre at download kan genoptages ved afbrydelse.</p>
+
+<p>man-page wget: 
+	<a href="http://manpages.ubuntu.com/manpages/focal/man1/wget.1.html" target="_blank">
+	http://manpages.ubuntu.com/manpages/focal/man1/wget.1.html</a></p>
 
 <h2>Finde</h2>
 
@@ -651,7 +731,69 @@ rm: use --no-preserve-root to override this failsafe</samp>
 
 <h3>find</h3>
 
+<p><em>find</em> bruges til at finde filer</p>
+
+<p>Lad finde filer med navnet <em>fstab</em>, på computeren. Vi skal bruge <em>sudo</em>, så vi kan nå alle steder hen</p>
+
+<pre><code>sudo find / -type f -name fstab</code></pre>
+
+<samp>/usr/share/doc/util-linux/examples/fstab
+/etc/fstab
+/snap/core/10577/etc/fstab
+/snap/core/10444/etc/fstab
+/snap/core18/1932/etc/fstab
+/snap/core18/1944/etc/fstab</samp>
+
+<p><strong>Overblik</strong></p>
+
+<dl class="">
+	<dt>find / -type f -name fstab</dt>
+	<dd>Finder alle filer der hedder fstab</dd>	
+	<dt>find . -type d -name apt</dt>
+	<dd>Finder alle mapper der hedder noget med apt i den mappe du står i.</dd>
+	<dt>find . -type f -perm /a=x</dt>
+	<dd>Finder alle filer der kan køres som programmer i den mappe du står i</dd>
+	<dt>find . -type d -empty</dt>
+	<dd>Finder alle tomme mapper i den mappe du står i.</dd>
+</dl>
+
+<h4>Avanceret brug</h4>
+
+<p>Kommandoen kan også bruges til at udføre kommandoer filer der findes.</p>
+
+<p>Her er et eksempel hvor alle filer med endelsen <em>.log</em> får opdateret deres tidsstempel.</p>
+
+<pre><code>find . -type f -name "*.log" -exec touch {} \;</code></pre>
+
+
+<p>man-page more: 
+	<a href="http://manpages.ubuntu.com/manpages/focal/en/man1/find.1.html" target="_blank">
+	http://manpages.ubuntu.com/manpages/focal/en/man1/find.1.html</a></p>
+	
+
 <h3>grep</h3>
+
+<p>Anvendes til at finde tekststrenge i en fil.</p>
+
+<pre><code>grep backup /etc/passwd</code></pre>
+
+<samp><span class="red">backup</span>:x:34:34:<span class="red">backup</span>:/var/<span class="red">backup</span>s:/usr/sbin/nologin</samp>
+
+<p>Du kan også søge på mere end en tekststreng.</p>
+
+<pre><code>grep "*TEKSTSTRENG1* \| *TEKSTSTRENG2*"</code></pre>
+
+<p>Her vil jeg f.eks. finde både <em>backup</em> og <em>tj</em></p>
+
+<pre><code>grep "backup\|tj" /etc/passwd</code></pre>
+
+<div class="alert">
+	<p>Der må ikke være mellemrum mellem i <em>backup\|tj</em></p>
+</div>
+
+<p>man-page grep: 
+	<a href="http://manpages.ubuntu.com/manpages/focal/man1/grep.1.html" target="_blank">
+	http://manpages.ubuntu.com/manpages/focal/man1/grep.1.html</a></p>
 
 <h2>Se og redigere rettigheder</h2>
 
@@ -662,9 +804,114 @@ rm: use --no-preserve-root to override this failsafe</samp>
 	<dd>Ændret rettigheder på filer og mapper</dd>
 </dl>
 
-<h3>chown</h3>
+<h3>chown - change owner</h3>
 
-<h3>chmod</h3>
+<p><em>chown</em> bruges til, at ændre ejer og gruppe på en fil eller en mappe.</p>
+
+<p>Det er kun root der kan ændre ejerskab på filer.</p>
+
+<p><strong>Ændring af ejerskab</strong></p>
+
+<p>Her ændres ejeren af <em>~/testfil</em> til brugeren <em>tj</em>.</p>
+
+<pre><code>sudo chown tj ~/testfil</code></pre>
+
+<p><strong>Ændring af ejerskab og gruppe</strong></p>
+
+<p>Herunder ændres filen til at have ejeren og gruppen tj</p>
+
+<pre><code>sudo chown tj:tj ~/testfil</code></pre>
+
+<p>Man kan også anvende følgende "shorthand"</p>
+
+<pre><code>sudo chown tj: ~/testfil</code></pre>
+
+<p>Ved at sætte et kolon, så antager <em>chown</em>, at gruppen er den samme.</p>
+
+<p><strong>Ændring af ejerskab på mapper og undermapper</strong></p>
+
+<p>Skal man ændre rettigheder på alle filer i en mappe anvender man <code class="bash">-R</code> (recursive). Nedestående kommando ændrer ejerskab på alle filer i mappen <em>/data</em></p>
+
+<pre><code>sudo chown -R tj: /data</code></pre>
+
+<samp class=""><span class="terminal_green">tj@server1</span>:<span class="terminal_tilde">~</span>$ sudo touch testfil
+[sudo] adgangskode for tj: 
+<span class="terminal_green">tj@server1</span>:<span class="terminal_tilde">~</span>$ ls -al testfil
+-rw-r--r-- 1 root root 0 jun  2 10:41 testfil
+<span class="terminal_green">tj@server1</span>:<span class="terminal_tilde">~</span>$ udo chown tj:tj testfil
+-rw-r--r-- 1 tj tj 0 jun  2 10:41 testfil</samp>
+
+<p>man-page chown: 
+<a href="http://manpages.ubuntu.com/manpages/focal/man1/chown.1.html" target="_blank">
+http://manpages.ubuntu.com/manpages/focal/man1/chown.1.html</a></p>
+
+<h3>chmod - change mode</h3>
+
+<p><em>chmod</em> ændrer rettighederne på filen.</p>
+
+<pre><code>chmod [-R][rettigheder] [fil/mappe]</code></pre>
+
+<p>Skal det gælde alle undermapper indsættes <em>-R</em> (recursiv)</p>
+
+<p>Når vi sætter rettigheder anvender vi en anden skrivemåde end <em>rwx</em>. Vi anvender binære værdier som du kan se herunder.</p>
+
+<ul class="disc">
+	<li>0 - Rettigheder: ingen (---)</li>
+	<li>1 - Rettigheder: Udføre (--x)</li>
+	<li>2 - Rettigheder: Skrive (-w-)</li>
+	<li>3 - Rettigheder: Skrive og udføre (-wx)</li>
+	<li>4 - Rettigheder: Læse (r--)</li>
+	<li>5 - Rettigheder: Læse og udføre (r-x)</li>
+	<li>6 - Rettigheder: Læse og skrive (rw-)</li>
+	<li>7 - Rettigheder: Læse, skrive og udføre (rwx)</li>
+</ul>
+
+<p>Her kan du se beregningerne for de binære værdier: <a href="term_rettigheder_beregninger.html" target="_blank">beregninger af binære værdier.</a></p>
+
+<p>På denne måde skal vi kun angive et tal for henholdsvis brugeren, gruppen og alle. Herunder er nogle praktiske eksempler.</p>
+
+<dl class="">
+	<dt>700</dt>
+	<dd>Brugeren har alle rettigheder. Bruges f.eks. når man laver script filer og har brug for at køre dem. Ingen andre brugere kan altså se eller anvende dem.</dd>
+	<dt>705</dt>
+	<dd>Brugeren har alle rettigheder, og alle andre kan se og udføre dem. Bruges f.eks. til webserverens filer, da webserveren skal have fulde rettigheder, men alle andre skal kunne se og udføre filerne</dd>
+	<dt>660</dt>
+	<dd>Brugeren og gruppen skal kunne læse og skrive i filen, men ikke udføre den. Kan f.eks. være tekstfiler man skla kunne redigere.</dd>
+</dl>
+
+<div class="fakta">
+	
+	<p>Tallet <em>705</em> skal læses som <em>syv nul fem</em>, hvor det første tal sætter rettigheden for brugeren, det andet tal for gruppen og det sidste for alle.</p>
+	
+	<p>Uanset hvordan du sætter rettigheder og ejerskab har root-brugeren altid mulighed for at ændre disse.</p>
+	
+	<p>root kan give og fjerne adgang til alle filer.</p>
+	
+</div>
+
+<h4>Eksempel med fil</h4>
+
+<p>Et eksempel, hvor rettighederne sættes til at brugeren har alle rettigheder (<em>rwx</em>) og alle har ret til at læse og udføre (<span class="inl_cmd">r-w</span>) svarende til rettigheder for html-filerne på en webserver:</p>
+
+<pre><code>chmod 705 testfil</code></pre>
+
+<samp><span class="terminal_green">tj@server1</span>:<span class="terminal_tilde">~</span>$ ls -al | grep testfil
+-rw-rw-r--  1 tj   tj       0 jun  3 17:02 testfil'
+<span class="terminal_green">tj@server1</span>:<span class="terminal_tilde">~</span>$ chmod 705 testfil
+<span class="terminal_green">tj@server1</span>:<span class="terminal_tilde">~</span>$ ls -al | grep testfil
+-rwx---r-x  1 tj   tj       0 jun  3 17:02 <span class="red">testfil</span></samp>
+
+<h4>Eksempel med mapper (recursiv)</h4>
+
+<p>Dette eksempel viser hvordan man omdøber alle filer og undermapper.</p>
+
+<pre><code>chmod -R 705 /var/www/html</code></pre>
+
+<p><em>705</em> kombinationen er meget anvendt på systemer hvor brugeren skal have alle rettigheder, men alle skal kunne se filerne og udføre programmerne UDEN at kunne ændre på dem. F.eks. på en webserver som har filerne i mappen <em>/var/www/html</em> og dennes undermapper.</p>
+
+<p>man-page chmod: 
+<a href="http://manpages.ubuntu.com/manpages/focal/man1/chmod.1.html" target="_blank">
+http://manpages.ubuntu.com/manpages/focal/man1/chmod.1.html</a></p>	
 
 <h2>Se og redigere indhold</h2>
 
@@ -685,20 +932,236 @@ rm: use --no-preserve-root to override this failsafe</samp>
 </dl>
 
 <h3>nano</h3>
+
+<p>På en Linuxserver bliver alle tjenester og hardware initialiseret og konfigureret igennem tekstfiler. Derfor skal du kende nano, et effektiv terminal tekstredigeringsprogram. Programmet har også opmærkning med farver, hvis det genkender formatet. <em>nano</em> startes med kommandoen: </p>
+
+<pre><code>nano *filnavn*</code></pre>
+
+<p>Du navigerer i filen ved hjælp af piletasterne, og du kan bruge <kbd>Ctrl</kbd> og kd</p>
+
+<p>Herefter bliver ændres terminalen til nedestående, hvor menuen ligger i bunden af skærmen.</p>
+
+<samp class="terminal"><span class="white_bg">  GNU nano 2.2.6                New Buffer                                                          </span>
+
+
+
+
+
+
+
+
+
+<span class="white_bg">^G</span> Få hjælp   <span class="white_bg">^O</span> Gem       <span class="white_bg">^W</span> Hvor er    <span class="white_bg">^K</span> Klip ud       <span class="white_bg">^J</span> Ombryd      <span class="white_bg">^C</span> Position
+<span class="white_bg">^X</span> Afslut     <span class="white_bg">^R</span> Læs fil   <span class="white_bg">^\</span> Erstat     <span class="white_bg">^U</span> Indsæt tekst  <span class="white_bg">^T</span> Stavetjek   <span class="white_bg">^_</span> Til linje</samp>
+
+<p>Du navigerer rundt i nano med piletaster ligesom i alle andre tekstbehandlingsprogrammer.</p>
+
+<p>Herunder er de meste basale funktioner</p>
+
+<p><em>^</em> står for <kbd>Ctrl</kbd> og <em>m-</em> for <kbd>Alt</kbd></p>
+
+<dl class="with_keys">
+	<dt><kbd>Ctrl</kbd>+<kbd>w</kbd></dt>
+	<dd>find</dd>
+	<dt><kbd>Ctrl</kbd>+<kbd>y</kbd></dt>
+	<dd>en side op</dd>
+	<dt><kbd>Ctrl</kbd>+<kbd>v</kbd></dt>
+	<dd>En side ned</dd>
+	<dt><kbd>Ctrl</kbd>+<kbd>w</kbd>+<kbd>v</kbd></dt>
+	<dd>Til filens sidste linie</dd>
+	<dt><kbd>Ctrl</kbd>+<kbd>k</kbd></dt>
+	<dd>Klip</dd>
+	<dt><kbd>Ctrl</kbd>+<kbd>u</kbd></dt>
+	<dd>Indsæt</dd>
+	<dt><kbd>Ctrl</kbd>+<kbd>x</kbd></dt>
+	<dd>Afslut nano</dd>
+	<dt><kbd>Alt</kbd>+<kbd>u</kbd></dt>
+	<dd>Fortryd</dd>
+	<dt><kbd>Alt</kbd>+<kbd>e</kbd></dt>
+	<dd>Annuller fortryd</dd>
+	<dt><kbd>Alt</kbd>+<kbd>a</kbd></dt>
+	<dd>Marker tekst</dd>
+	<dt><kbd>Alt</kbd>+<kbd>6</kbd></dt>
+	<dd>kopier tekst</dd>
+</dl>
+
+<p>Når du har redigeret din tekst færdig afslutter du med <kbd>Ctrl</kbd>+<kbd>x</kbd>, hvorefter nano i bunden svarer:</p>
+
+<samp class="terminal">
+<span class="white_bg">Gem ændret buffer (AT SVARE "Nej" VIL ØDELÆGGE ÆNDRINGER)?                                          </span>                    
+<span class="white_bg"> J</span> Ja
+<span class="white_bg"> N</span> Nej          <span class="white_bg">^C</span> Annullér</samp>
+
+<p>Når du svarer y vil nano skrive filnavnet med den fulde sti, hvortil du taster <kbd>Enter</kbd>.</p>
+
+<p>Får du en fejlmelding om at du ikke kan gemme skyldes det oftest, at man redigerer i en fil man ikke har rettigheder til. Oftes skyldes det at man glemmer at anvende <em>sudo</em> når man redigerer i systemfiler.</p>
+
 <h3>cat</h3>
+
+<p><em>cat</em> laver et output af filen, men stopper ikke når skærmen er fyldt. Derfor er <em>cat</em> ikke velegnet til at vise indholdet af store filer.</p>
+
+<p>vi vil se indholdet af <em>/etc/hosts</em></p>
+
+<code class="cmd">cat /etc/hosts</code>
+
+<samp>127.0.0.1 localhost
+127.0.1.1 server1
+
+# The following lines are desirable for IPv6 capable hosts
+::1     ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters</samp>
+
+<p>man-page cat: 
+	<a href="http://manpages.ubuntu.com/manpages/focal/man1/cat.1.html" target="_blank">
+	http://manpages.ubuntu.com/manpages/focal/man1/cat.1.html</a></p>
+
 <h3>more</h3>
+
+<p><em>more</em>  laver en udskrift af filen, et skærmbillede ad gangen. Man fortsætter visningen ved at trykke <kbd>Enter</kbd> eller <kbd>mellemrum</kbd>.</p>
+
+<dl class="with_keys">
+	<dt><kbd>Enter</kbd></dt>
+	<dd>En linie ad gangen</dd>
+	<dt><kbd>mellemrum</kbd></dt>
+	<dd>En side ad gangen</dd>
+</dl>
+
+<p>Neders på siden står der hvor langt i filen man er angivet i procent.</p>
+
+<pre><code>more /etc/passwd</code></pre>
+
+<samp class="terminal">.... mange linier.....
+
+gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologi
+n
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+systemd-network:x:100:102:systemd Network Management,,,:/run/systemd:/usr/sbin/n
+ologin
+systemd-resolve:x:101:103:systemd Resolver,,,:/run/systemd:/usr/sbin/nologin
+systemd-timesync:x:102:104:systemd Time Synchronization,,,:/run/systemd:/usr/sbi
+<span class="white_bg">--More--(63%)</span>
+</samp>
+
+<p>man-page more: 
+	<a href="http://manpages.ubuntu.com/manpages/focal/man1/more.1.html" target="_blank">
+	http://manpages.ubuntu.com/manpages/focal/man1/more.1.html</a></p>
+	
 <h3>head/tail</h3>
-<h3>sort</h3>
-<h3>uniq</h3>
 
+<p><em>head</em> viser de første 10 linier af en fil og <em>tail</em> viser de sidste 10</p>
 
+<p>Kommandoen er god til at se om noget er blevet korrekt tilføjet til en fil.</p>
 
-<h2>Pipes og redirect</h2>
+<pre><code>tail /etc/passwd</code></pre>
+
+<samp>_apt:x:105:65534::/nonexistent:/usr/sbin/nologin
+tss:x:106:111:TPM software stack,,,:/var/lib/tpm:/bin/false
+uuidd:x:107:112::/run/uuidd:/usr/sbin/nologin
+tcpdump:x:108:113::/nonexistent:/usr/sbin/nologin
+landscape:x:109:115::/var/lib/landscape:/usr/sbin/nologin
+pollinate:x:110:1::/var/cache/pollinate:/bin/false
+sshd:x:111:65534::/run/sshd:/usr/sbin/nologin
+systemd-coredump:x:999:999:systemd Core Dumper:/:/usr/sbin/nologin
+tj:x:1000:1000:Thomas Jensen:/home/tj:/bin/bash
+lxd:x:998:100::/var/snap/lxd/common/lxd:/bin/false</samp>
+
+<p><strong>Overblik</strong></p>
 
 <dl class="">
-	<dt>redirect</dt>
-	<dd>Overførsel af output</dd>
-	<dt>pipes</dt>
+	<dt>tail /etc/passwd</dt>
+	<dd>viser de 10 sidste linier af <em>/etc/passwd</em></dd>
+	<dt>tail -5 /etc/passwd</dt>
+	<dd>viser de sidste 5 linier af <em>/etc/passwd</em></dd>
+	<dt>head -5 /etc/passwd</dt>
+	<dd>viser de første 5 linier af <em>/etc/passwd</em></dd>
+</dl>
+
+<p>man-page tail: 
+	<a href="http://manpages.ubuntu.com/manpages/focal/en/man1/tail.1.html" target="_blank">
+	http://manpages.ubuntu.com/manpages/focal/en/man1/tail.1.html</a></p>
+
+<p>man-page head: 
+	<a href="http://manpages.ubuntu.com/manpages/focal/man1/head.1.html" target="_blank">
+	http://manpages.ubuntu.com/manpages/focal/man1/head.1.html</a></p>
+
+<h3>sort</h3>
+
+<p><em>sort</em> sortere i outputtet.</p>
+
+<p>Her bruger vi <em>sort</em> til at filtrere de sidste 5 linier af <em>/etc/passwd</em></p>
+
+<pre><code>tail -5 /etc/passwd | sort</code></pre>
+
+<samp>lxd:x:998:100::/var/snap/lxd/common/lxd:/bin/false
+pollinate:x:110:1::/var/cache/pollinate:/bin/false
+sshd:x:111:65534::/run/sshd:/usr/sbin/nologin
+systemd-coredump:x:999:999:systemd Core Dumper:/:/usr/sbin/nologin
+tj:x:1000:1000:Thomas Jensen:/home/tj:/bin/bash</samp>
+
+<p>Som du kan se er <em>lxd</em> nu blevet flyttet øvers.</p>
+
+<p>Det ændrer ikke på filen, men giver os et bedre overblik.</p>
+
+<p>man-page sort: 
+	<a href="http://manpages.ubuntu.com/manpages/focal/man1/sort.1.html" target="_blank">
+	http://manpages.ubuntu.com/manpages/focal/man1/sort.1.html</a></p>
+	
+<h3>uniq</h3>
+
+<p>Nogle gang kan vi have filer der har gentagelser i sig - det kan f.eks. være logfiler. <em>uniq</em> kan hjælpe os med det når filen er sorteret (se <em>sort</em> ovenfor)</p>
+
+<p>Her har jeg en <em>fil1</em> der viser hvem der har været inde i et rum</p>
+
+<pre><code>cat fil1</code></pre>
+
+<samp>Hans
+Grethe
+Anders
+Grethe
+Anders
+Grethe</samp>
+
+<p>Jeg vil gerne se hvem der har været derinde</p>
+
+<pre><code>sort fil1 | uniq</code></pre>
+
+<samp>Anders
+Grethe
+Hans</samp>
+
+<p>Jeg vil gerne se hvor mange gange de har været derinde</p>
+
+<pre>sort fil1 | uniq -c</pre>
+
+<samp>      2 Anders
+      3 Grethe
+      1 Hans</samp>
+      
+<p>Jeg vil gerne se hvem der har været derinde mere end engang, og hvor mange gange.</p>      
+
+<pre><code>sort fil1 | uniq -cd</code></pre>
+
+<samp>      2 Anders
+      3 Grethe
+</samp>
+
+<p>Jeg vil gerne se hvem der kun har været derinde 1 gang.</p>
+
+<pre><code>sort fil1 | uniq -u</code></pre>
+
+<samp>Hans</samp>
+
+<p>man-page sort: 
+	<a href="http://manpages.ubuntu.com/manpages/focal/man1/uniq.1.html" target="_blank">
+	http://manpages.ubuntu.com/manpages/focal/man1/uniq.1.html</a></p>
+
+<h2>Redirect</h2>
+
+<dl class="">
+	<dt>Redirect</dt>
 	<dd>Overførsel af output</dd>
 	<dt>echo</dt>
 	<dd>Udskrivning af tekststreng</dd>
@@ -708,9 +1171,154 @@ rm: use --no-preserve-root to override this failsafe</samp>
 	<dd>Ændring af tekststrenge</dd>
 </dl>
 
-<h3>Pipes</h3>
+<h3>Redirect -omdirigering</h3>
 
-<h3>Redirect</h3>
+<p>I linux bruges tegnet <em>></em> (større end) til at omdirigere indhold. I denne sammenhæng skal det ses som en pil der peger til højre.</p>
+
+<p>Som standard vises output i terminalen. Men det kan være at man gerne vil have output i en fil, så man kan arbejde videre med den.</p>
+
+<p>Output kan have 2 former:</p>
+
+<dl class="">
+	<dt>stdout</dt>
+	<dd>Output fra en kommando</dd>
+	<dt>stderr</dt>
+	<dd>Fejlmeddelelse fra en kommando</dd>
+</dl>
+
+<p>Det kan bruges på følgende måder:</p>
+
+<dl class="">
+	<dt>> file</dt>
+	<dd>omdirigerer <em>stdout</em> til <em>file</em></dd>
+	<dt>1> file</dt>
+	<dd>omdirigerer <em>stdout</em> til <em>file</em></dd>
+	<dt>2> file</dt>
+	<dd>omdirigerer <em>stderr</em> til <em>file</em></dd>
+	<dt>&> file</dt>
+	<dd>omdirigerer <em>stdout</em> og <em>stderr</em> til <em>file</em></dd>
+</dl>
+
+<p>Hvis man bare vil fjerne meddelelser fra kommandoer (f.eks. i scripts) kan man i stedet for en fil vælge <em>/dev/null</em>. Det er reelt en mappe på computeren der ikke er der - et sort hul.</p>
+
+
+
+<p>Her er en kort oversigt:</p>
+
+<dl class="">
+	<dt>> file</dt>
+	<dd>Omdirigerer </dd>
+	<dt></dt>
+	<dd></dd>
+	<dt></dt>
+	<dd></dd>
+</dl>
+
+
+
+
+
+
+
+<p>Der gælder følgende:</p>
+
+<dl class="">
+	<dt>></dt>
+	<dd>Flyt til (erstatter indhold hvis der er noget i forvejen)</dd>
+	<dt>>></dt>
+	<dd>Tilføj til slutningen</dd>
+</dl>
+
+
+
+
+
+
+<p>Nogle gange har man brug for ens output bliver brugt</p>
+
+
+
+<p>Nogen gange har man brug for at omdirigere indhold. Det kan f.eks. være at indsætte et output i en fil. Til at omdirigere anvender man <code class="bash">&gt;</code> og <code class="bash">&gt;&gt;</code>. En pil erstatter alt indhold og 2 pile tilføjer til slutningen af filen. </p>
+
+<ul class="disc">
+	<li><code class="bash">cat fil1 > fil2</code> - Erstat indholdet af fil2 med indholdet af fil1</li>
+	<li><code class="bash">cat fil1 >> fil2</code> - Tilføj indholdet af fil1 til slutningen af fil2</li>
+	<li><code class="bash">cat -n fil >> fil_med_numre</code> - sæt linienumre i file</li>
+</ul>
+
+<p>Omdirigering anvendes også til at omdirigere fejlmeddelelser. Her anvender man <em>1</em>, <em>2</em> og <em>&</em> til at angive typen af output man vil omdirigere. Se følgende skema</p>
+
+<ul class="disc">
+	<li><code class="bash">1 &gt; fil</code> - Sætter "godkendte" output ind i fil</li>
+	<li><code class="bash">2 &gt; fil</code> - Sætter fejl-output ind i fil</li>
+	<li><code class="bash">& &gt; fil</code> - sætter både rigtig og fejl-output ind i fil</li>
+</ul>
+
+<p>Herunder er vist nogle eksempler med eksempler med kommandoen <code class="bash">id</code>:</p>
+
+<p>Her bliver output fra kommandoen ledt direkte ind i filen <em>~/test</em>, hvilket vi viser ved at køre <code class="bash">cat ~/test</code>.</p>
+
+<pre class="ubuntu_terminal">
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ id tj 1> ~/test
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ cat ~/test
+uid=1000(tj) gid=1000(tj) grupper=1000(tj),4(adm),24(cdrom),27(sudo),30(dip), 46(plugdev),108(lpadmin),124(sambashare)
+</pre>
+
+<p>Her leder vi fejloutput ind i filen <em>~/test</em>. Derfor bliver output fra kommandoen vist, men der er intet i filen <em>~/test</em>, fordi der ikke er noget fejloutput</p>
+
+<pre class="ubuntu_terminal">
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ id tj 2> ~/test
+uid=1000(tj) gid=1000(tj) grupper=1000(tj),4(adm),24(cdrom),27(sudo),30(dip), 46(plugdev),108(lpadmin),124(sambashare)
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ cat ~/test
+</pre>
+
+
+<p>Her leder vi et fejloutput ind i filen <em>~/test</em>. Læg mærke til at det ikke bliver betragtet som en fejl at <em>~/test</em> ikke ikke finder en bruger. Herunder prøver vi at anvende en kommando systemet ikke kender. I stedet for at vise fejlen i terminalen skubber den fejl-output ind i filen <em>~/test</em></p>
+
+
+<pre class="ubuntu_terminal">
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ id hugo 2>/dev/null
+id: 'hugo': ingen sådan bruger
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ cat ~/test
+</pre>
+
+<p>Man kan også sende output til <em>/dev/null</em>, som bedst kan beskrives som sort hul. På den måde kan man fjerne meddelelser fra et program. Det kan være praktisk hvis man anvender kommandoer i scripts eller man ønsker at køre programmer usynligt i baggrunden.</p>
+
+
+<pre class="ubuntu_terminal">
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ ifd hugo 2> ~/test
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ cat ~/test
+Ingen kommando ved navn "ifd" blev fundet. Mente du istedet:
+ Kommandoen "fid" fra pakken "id-utils" (universe)
+ Kommandoen "id" fra pakken "coreutils" (main)
+ Kommandoen "xfd" fra pakken "x11-utils" (main)
+ Kommandoen "if1" fra pakken "ctsim" (universe)
+ Kommandoen "if2" fra pakken "ctsim" (universe)
+ Kommandoen "fd" fra pakken "fdclone" (universe)
+ Kommandoen "ifp" fra pakken "ifp-line-libifp" (universe)
+ifd: kommando ikke fundet
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ 
+</pre>
+
+<p>Vil man kvæle alle putput fra en kommando anvender man <em>/dev/null</em>. Anvender man <code class="bash">&</code> som argument i et scripts, så kan man se at intentionen er at kvæle alle output.</p>
+
+<pre class="ubuntu_terminal">
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ id tj 
+uid=1000(tj) gid=1000(tj) grupper=1000(tj),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),108(lpadmin),124(sambashare)
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ id tj 1>/dev/null
+<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ id hugo 2>/dev/null
+</pre>
+
+
+<p>En sidste praktisk måde at anvende omdirigering er til at indsætte tekststrenge ved hjælp af <code class="bash">echo</code>. På denne måde kan man indsætte tekstrenge i filer:</p>
+
+<ul class="disc">
+	<li><code class="bash">echo "tekststreng" > *fil_navn*</code> - Sletter filens indhold og indsætter "tekststreng" som nyt indhold</li>
+	<li><code class="bash">echo "tekststreng" >> *fil_navn*</code> - Indsæt "tekststreng" i bunden af en fil - anvendeligt til logs.</li>
+</ul>
+
+<p>Læs mere: <a href="http://askubuntu.com/questions/350208/what-does-2-dev-null-mean" target="_blank">
+http://askubuntu.com/questions/350208/what-does-2-dev-null-mean</a></p>
 
 <h3>echo</h3>
 
@@ -764,54 +1372,9 @@ rm: use --no-preserve-root to override this failsafe</samp>
 
 
 
-<h3>find</h3>
-
-<p>For at søge efter filer og mapper anvendes kommandoerne <code class="bash">find</code>. Hvis du ønsker at lave en søgning i hele filstrukturen bør du søge ved hjælp af sudo eller som root. Læg også mærke til at søgningen skelner mellem små og store bogstaver. En søgning på mappen apt giver flere resultater - APT giver ingen.</p>
-
-<ul class="disc">
-	<li><code class="bash">find / -type f -name fstab</code> - Finder alle filer der hedder fstab</li>
-	<li><code class="bash">find . -type d -name apt</code> - Finder alle mapper der hedder noget med apt i den mappe du står i.</li>
-	<li><code class="bash">find . -type f -perm /a=x</code> - Finder alle filer der er eksekverbare i den mappe du står i</li>
-	<li><code class="bash">find . -type d -empty</code> - Finder alle tomme mapper i den mappe du står i.</li>
-</ul>
 
 
-<p>man-page more: 
-	<a href="http://manpages.ubuntu.com/manpages/focal/en/man1/find.1.html" target="_blank">
-	http://manpages.ubuntu.com/manpages/focal/en/man1/find.1.html</a></p>
-	
-<p>Kommandoen find kan også anvendes til at søge og slette filer i samme kommando. Hvis du f.eks. har en mappe med både RAW og JPG billeder kan du med denne kommando slette alle jpg billederne</p>	
-	
-	<code class="cmd">find . -type f -name "*.JPG" -exec rm -f {} \;</code>
 
-
-<div class="alert">
-
-	<p>Som med alle andre slette kommandoer skal du være varsom, da du risikerer at slette mere end du ønsker. F.eks. vil et <em>/</em> i stedet for et <em>.</em> betyde at du sletter alle JPG billeder på harddisken, i stedet for dem der ligger i dine undermapper. Derfør bør du altid have styr på hvor i filstrukturen du er.</p>
-
-</div>
-
-<h3>wget</h3>
-
-<p>For at hente filer på nettet anvendes programmet <code class="bash">wget</code>. For at hente filer på nettet skal du kende deres adresse. Herunder hentes Linux distributionen TinyCorePlus til computeren.</p>
-
-<code class="cmd">wget -c http://tinycorelinux.net/6.x/x86/release/CorePlus-current.iso</code>
-
-<p><span class="inl_cmd">-c</span> gør sådan, at hvis filhentningen afbrydes, så vil den kunne fortsætte fra hvor forbindelsen blev afskåret. Vær opmærksom på, at den hentede fil bliver gemt i den samme mappe som du kørte kommandoen i.</p>
-
-<ul class="disc">
-	<li><code class="bash">wget -c *filadresse*</code> - Henter filen, med mulighed for at genstarter hentningen.</li>
-	<li><code class="bash">wget -P ~/*mappe* *filadresse*</code>- Henter filen, men gemmer den i mappen ~/*mappe*</li>
-	<li><code class="bash">wget -o ~/*hentetfil* *filadresse*</code> - Henter filen, men gemmer den som "hentetfil*</li>
-	<li><code class="bash">wget -b *filadresse*</code> - Henter filen i baggrunden - frigiver kommandolinien med det samme.</li>
-</ul>
-
-
-<p>Optionerne kan stackes. På den måde vil <code class="bash">wget -cob minfil *filadresse*</code> hente i baggrunden, gemme den som minfil og sikre at download kan genoptages ved afbrydelse.</p>
-
-<p>man-page wget: 
-	<a href="http://manpages.ubuntu.com/manpages/focal/man1/wget.1.html" target="_blank">
-	http://manpages.ubuntu.com/manpages/focal/man1/wget.1.html</a></p>
 	
 <h2>Se og redigere rettigheder</h2>
 
@@ -915,115 +1478,10 @@ drwxr-xr-x 16 tj   tj   4096 jun  2 09:47 tj</samp>
 
 <p>Den eneste undtagelse er, når brugeren har fået at vide at det ikke er brugerens private ejendom, f.eks. hvor en virksomhed eller skole stiller ressourcen til rådighed for dig.</p>
 
-<h3>chown - change owner</h3>
-
-<p><em>chown</em> bruges til, at ændre ejer og gruppe på en fil eller en mappe.</p>
-
-<p>Det er kun root der kan ændre ejerskab på filer.</p>
-
-<h4>Ændring af ejerskab</h4>
-
-<p>Her ændres ejeren af <em>~/testfil</em> til brugeren <em>tj</em>.</p>
-
-<pre><code>sudo chown tj ~/testfil</code></pre>
-
-<h4>Ændring af ejerskab og gruppe</h4>
-
-<p>Herunder ændres filen til at have ejeren og gruppen tj</p>
-
-<pre><code>sudo chown tj:tj ~/testfil</code></pre>
-
-<p>Man kan også anvende følgende "shorthand"</p>
-
-<pre><code>sudo chown tj: ~/testfil</code></pre>
-
-<p>Ved at sætte et kolon, så antager <em>chown</em>, at gruppen er den samme.</p>
-
-<h4>Ændring af ejerskab på mapper og undermapper</h4>
-
-<p>Skal man ændre rettigheder på alle filer i en mappe anvender man <code class="bash">-R</code> (recursive). Nedestående kommando ændrer ejerskab på alle filer i mappen <em>/data</em></p>
-
-<pre><code>sudo chown -R tj: /data</code></pre>
-
-<samp class=""><span class="terminal_green">tj@server1</span>:<span class="terminal_tilde">~</span>$ sudo touch testfil
-[sudo] adgangskode for tj: 
-<span class="terminal_green">tj@server1</span>:<span class="terminal_tilde">~</span>$ ls -al testfil
--rw-r--r-- 1 root root 0 jun  2 10:41 testfil
-<span class="terminal_green">tj@server1</span>:<span class="terminal_tilde">~</span>$ udo chown tj:tj testfil
--rw-r--r-- 1 tj tj 0 jun  2 10:41 testfil</samp>
-
-<p>man-page chown: 
-<a href="http://manpages.ubuntu.com/manpages/focal/man1/chown.1.html" target="_blank">
-http://manpages.ubuntu.com/manpages/focal/man1/chown.1.html</a></p>
 
 
-<h3>chmod - change mode</h3>
 
-<p><em>chmod</em> ændrer rettighederne på filen.</p>
 
-<pre><code>chmod [-R][rettigheder] [fil/mappe]</code></pre>
-
-<p>Skal det gælde alle undermapper indsættes <em>-R</em> (recursiv)</p>
-
-<p>Når vi sætter rettigheder anvender vi en anden skrivemåde end <em>rwx</em>. Vi anvender binære værdier som du kan se herunder.</p>
-
-<ul class="disc">
-	<li>0 - Rettigheder: ingen (---)</li>
-	<li>1 - Rettigheder: Udføre (--x)</li>
-	<li>2 - Rettigheder: Skrive (-w-)</li>
-	<li>3 - Rettigheder: Skrive og udføre (-wx)</li>
-	<li>4 - Rettigheder: Læse (r--)</li>
-	<li>5 - Rettigheder: Læse og udføre (r-x)</li>
-	<li>6 - Rettigheder: Læse og skrive (rw-)</li>
-	<li>7 - Rettigheder: Læse, skrive og udføre (rwx)</li>
-</ul>
-
-<p>Her kan du se beregningerne for de binære værdier: <a href="term_rettigheder_beregninger.html" target="_blank">beregninger af binære værdier.</a></p>
-
-<p>På denne måde skal vi kun angive et tal for henholdsvis brugeren, gruppen og alle. Herunder er nogle praktiske eksempler.</p>
-
-<dl class="">
-	<dt>700</dt>
-	<dd>Brugeren har alle rettigheder. Bruges f.eks. når man laver script filer og har brug for at køre dem. Ingen andre brugere kan altså se eller anvende dem.</dd>
-	<dt>705</dt>
-	<dd>Brugeren har alle rettigheder, og alle andre kan se og udføre dem. Bruges f.eks. til webserverens filer, da webserveren skal have fulde rettigheder, men alle andre skal kunne se og udføre filerne</dd>
-	<dt>660</dt>
-	<dd>Brugeren og gruppen skal kunne læse og skrive i filen, men ikke udføre den. Kan f.eks. være tekstfiler man skla kunne redigere.</dd>
-</dl>
-
-<div class="fakta">
-	
-	<p>Tallet <em>705</em> skal læses som <em>syv nul fem</em>, hvor det første tal sætter rettigheden for brugeren, det andet tal for gruppen og det sidste for alle.</p>
-	
-	<p>Uanset hvordan du sætter rettigheder og ejerskab har root-brugeren altid mulighed for at ændre disse.</p>
-	
-	<p>root kan give og fjerne adgang til alle filer.</p>
-	
-</div>
-
-<h4>Eksempel med fil</h4>
-
-<p>Et eksempel, hvor rettighederne sættes til at brugeren har alle rettigheder (<em>rwx</em>) og alle har ret til at læse og udføre (<span class="inl_cmd">r-w</span>) svarende til rettigheder for html-filerne på en webserver:</p>
-
-<pre><code>chmod 705 testfil</code></pre>
-
-<samp><span class="terminal_green">tj@server1</span>:<span class="terminal_tilde">~</span>$ ls -al | grep testfil
--rw-rw-r--  1 tj   tj       0 jun  3 17:02 testfil'
-<span class="terminal_green">tj@server1</span>:<span class="terminal_tilde">~</span>$ chmod 705 testfil
-<span class="terminal_green">tj@server1</span>:<span class="terminal_tilde">~</span>$ ls -al | grep testfil
--rwx---r-x  1 tj   tj       0 jun  3 17:02 <span class="red">testfil</span></samp>
-
-<h4>Eksempel med mapper (recursiv)</h4>
-
-<p>Dette eksempel viser hvordan man omdøber alle filer og undermapper.</p>
-
-<pre><code>chmod -R 705 /var/www/html</code></pre>
-
-<p><em>705</em> kombinationen er meget anvendt på systemer hvor brugeren skal have alle rettigheder, men alle skal kunne se filerne og udføre programmerne UDEN at kunne ændre på dem. F.eks. på en webserver som har filerne i mappen <em>/var/www/html</em> og dennes undermapper.</p>
-
-<p>man-page chmod: 
-<a href="http://manpages.ubuntu.com/manpages/focal/man1/chmod.1.html" target="_blank">
-http://manpages.ubuntu.com/manpages/focal/man1/chmod.1.html</a></p>	
 
 <h2>Luk computeren</h2>
 	
@@ -1057,218 +1515,11 @@ http://manpages.ubuntu.com/manpages/focal/man8/reboot.8.html</a></p>
 
 
 
-<h2>Indhold af filer</h2>
-
-
-<h3>cat</h3>
-
-<p><code class="bash">cat</code> laver et output af filen, men stopper ikke når skærmen er fyldt. Derfor er programmet ikke altid velegnet til at vise indholdet af filer. F.eks:</p>
-
-<code class="cmd">cat /etc/hosts</code>
-
-<pre class="ubuntu_terminal">
-<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ cat /etc/hosts
-127.0.0.1	localhost
-127.0.1.1	tj-VirtualBox
-
-# The following lines are desirable for IPv6 capable hosts
-::1     ip6-localhost ip6-loopback
-fe00::0 ip6-localnet
-ff00::0 ip6-mcastprefix
-ff02::1 ip6-allnodes
-ff02::2 ip6-allrouters
-<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$
-</pre>
-
-<p>man-page cat: 
-	<a href="http://manpages.ubuntu.com/manpages/focal/man1/cat.1.html" target="_blank">
-	http://manpages.ubuntu.com/manpages/focal/man1/cat.1.html</a></p>
-
-<h3>more</h3>
-
-<p>Ved hjælp af <code class="bash">more</code> kan man få indholdet af en fil skrevet ud på skærmen. Når skærmen er fyldt kan man se hvor stor en procentdel af filen man har fået vist. Man går en linie frem ad gangen ved at trykke på <kbd>Enter</kbd> og en side længere ned med <kbd>Mellemrum</kbd>.</p>
-
-<ul class="disc">
-	<li><code class="bash">more /etc/passwd</code> - Vis indhold af filen <em>/etc/passwd</em></li>
-</ul>
-
-
-<p>man-page more: 
-	<a href="http://manpages.ubuntu.com/manpages/focal/man1/more.1.html" target="_blank">
-	http://manpages.ubuntu.com/manpages/focal/man1/more.1.html</a></p>
-
-<h3>tail/head</h3>
-
-<p>Kommandoen er god til at se om noget er blevet korrekt tilføjet til en fil.</p>
-
-<ul class="disc">
-	<li><code class="bash">tail /etc/passwd</code> - Vis de sidste 10 linier af <em>/etc/passwd</em></li>
-	<li><code class="bash">tail -5 /etc/passwd</code> - Vis de sidste 5 linier af <em>/etc/passwd</em></li>
-	<li><code class="bash">head -5 /etc/passwd</code> - Vis de første 5linier af <em>/etc/passwd</em></li>
-</ul>
-
-<p>man-page tail: 
-	<a href="http://manpages.ubuntu.com/manpages/focal/en/man1/tail.1.html" target="_blank">
-	http://manpages.ubuntu.com/manpages/focal/en/man1/tail.1.html</a></p>
-
-<p>man-page head: 
-	<a href="http://manpages.ubuntu.com/manpages/focal/man1/head.1.html" target="_blank">
-	http://manpages.ubuntu.com/manpages/focal/man1/head.1.html</a></p>
-	
-
-<h3>grep</h3>
-
-<p><code class="bash">grep</code> -  anvendes til at finde tekststrenge i en fil.</p>
-
-<code class="cmd">grep backup /etc/passwd</code>
-
-<pre class="ubuntu_terminal">
-<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ grep backup /etc/passwd
-<span class="red">backup</span>:x:34:34:<span class="red">backup</span>:/var/<span class="red">backups</span>:/usr/sbin/nologin
-</pre>
-
-<p>man-page grep: 
-	<a href="http://manpages.ubuntu.com/manpages/focal/man1/grep.1.html" target="_blank">
-	http://manpages.ubuntu.com/manpages/focal/man1/grep.1.html</a></p>
 
 
 <h2>Redirect</h2>
 
-<h3>Pipes</h3>
 
-<p>Pipes er en måde at overføre output fra en kommando til en anden. Hvis man f.eks. vil finde ud af hvor mange gange bogstavkombinationen "lib" forekommer i filnavne på roden, vil kommandoen <code class="bash">ls - /</code> blot liste alt indholdet op.</p>
-
-<pre class="ubuntu_terminal">
-<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$  ls -l /
-totalt 104
-drwxr-xr-x   2 root root  4096 maj 27 00:58 bin
-drwxr-xr-x   3 root root  4096 maj 27 00:59 boot
-drwxrwxr-x   2 root root  4096 apr 22 13:53 cdrom
-drwxr-xr-x   3 root root  4096 maj 31 08:50 data
-drwxr-xr-x  19 root root  4320 jun  2 04:03 dev
-drwxr-xr-x 143 root root 12288 jun  2 04:03 etc
-drwxr-xr-x   4 root root  4096 maj 27 11:07 home
-lrwxrwxrwx   1 root root    32 apr 22 13:53 initrd.img.old -> boot/initrd.img-4.8.0-36-generic
-drwxr-xr-x  21 root root  4096 apr 22 13:53 lib
-drwxr-xr-x   2 root root  4096 apr 22 14:14 lib64
-drwx------   2 root root 16384 apr 22 13:52 lost+found
-drwxr-xr-x   3 root root  4096 apr 22 14:12 media
-drwxr-xr-x   2 root root  4096 feb 15 21:17 mnt
-drwxr-xr-x   4 root root  4096 apr 22 14:37 opt
-dr-xr-xr-x 223 root root     0 jun  2 04:03 proc
-drwx------   5 root root  4096 maj 27 16:15 root
-drwxr-xr-x  28 root root   880 jun  2 04:03 run
-drwxr-xr-x   2 root root 12288 maj 27 00:58 sbin
-drwxr-xr-x   2 root root  4096 jan 14 16:06 snap
-drwxr-xr-x   3 root root  4096 maj 27 15:39 srv
-dr-xr-xr-x  13 root root     0 jun  2 04:03 sys
-drwxrwxrwt  11 root root  4096 jun  2 04:17 tmp
-drwxr-xr-x  10 root root  4096 feb 15 21:17 usr
-drwxr-xr-x  15 root root  4096 maj 27 01:05 var
-lrwxrwxrwx   1 root root    29 apr 22 13:53 vmlinuz.old -> boot/vmlinuz-4.8.0-36-generic
-</pre>
-
-<p>Ved at anvende pibes (Den lodrette streg | ), kan vi "filtrere" output ved hjælp af <code class="bash">grep</code>.</p>
-
-<pre class="ubuntu_terminal">
-<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ ls -l / | grep lib
-drwxr-xr-x  21 root root  4096 apr 22 13:53 <span class="red">lib</span>
-drwxr-xr-x   2 root root  4096 apr 22 14:14 <span class="red">lib</span>64
-
-</pre>
-
-<p>Pipen leder outputtet fra <code class="bash">ls /</code> ind i grep-kommandoen, som giver vores output.</p>
-
-<p>Herunder er nogle flere eksempler med anvendelse af grep.</p>
-
-<ul class="disc">
-	<li><code class="bash">tail -10 /etc/passwd | grep var</code> - Find linier med forekomsten af tekststrengen "var" i de sidste 10 linier af <em>/etc/passwd</em></li>
-	<li><code class="bash">lspci | grep Ethernet</code> - Find informationer om dit netkort. Læg mærke til at søgningen er case-sensitiv (det store E i "Ethernet").</li>
-</ul>
-
-<h3>Redirect</h3>
-
-<p>Nogen gange har man brug for at omdirigere indhold. Det kan f.eks. være at indsætte et output i en fil. Til at omdirigere anvender man <code class="bash">&gt;</code> og <code class="bash">&gt;&gt;</code>. En pil erstatter alt indhold og 2 pile tilføjer til slutningen af filen. </p>
-
-<ul class="disc">
-	<li><code class="bash">cat fil1 > fil2</code> - Erstat indholdet af fil2 med indholdet af fil1</li>
-	<li><code class="bash">cat fil1 >> fil2</code> - Tilføj indholdet af fil1 til slutningen af fil2</li>
-	<li><code class="bash">cat -n fil >> fil_med_numre</code> - sæt linienumre i file</li>
-</ul>
-
-<p>Omdirigering anvendes også til at omdirigere fejlmeddelelser. Her anvender man <em>1</em>, <em>2</em> og <em>&</em> til at angive typen af output man vil omdirigere. Se følgende skema</p>
-
-<ul class="disc">
-	<li><code class="bash">1 &gt; fil</code> - Sætter "godkendte" output ind i fil</li>
-	<li><code class="bash">2 &gt; fil</code> - Sætter fejl-output ind i fil</li>
-	<li><code class="bash">& &gt; fil</code> - sætter både rigtig og fejl-output ind i fil</li>
-</ul>
-
-<p>Herunder er vist nogle eksempler med eksempler med kommandoen <code class="bash">id</code>:</p>
-
-<p>Her bliver output fra kommandoen ledt direkte ind i filen <em>~/test</em>, hvilket vi viser ved at køre <code class="bash">cat ~/test</code>.</p>
-
-<pre class="ubuntu_terminal">
-<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ id tj 1> ~/test
-<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ cat ~/test
-uid=1000(tj) gid=1000(tj) grupper=1000(tj),4(adm),24(cdrom),27(sudo),30(dip), 46(plugdev),108(lpadmin),124(sambashare)
-</pre>
-
-<p>Her leder vi fejloutput ind i filen <em>~/test</em>. Derfor bliver output fra kommandoen vist, men der er intet i filen <em>~/test</em>, fordi der ikke er noget fejloutput</p>
-
-<pre class="ubuntu_terminal">
-<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ id tj 2> ~/test
-uid=1000(tj) gid=1000(tj) grupper=1000(tj),4(adm),24(cdrom),27(sudo),30(dip), 46(plugdev),108(lpadmin),124(sambashare)
-<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ cat ~/test
-</pre>
-
-
-<p>Her leder vi et fejloutput ind i filen <em>~/test</em>. Læg mærke til at det ikke bliver betragtet som en fejl at <em>~/test</em> ikke ikke finder en bruger. Herunder prøver vi at anvende en kommando systemet ikke kender. I stedet for at vise fejlen i terminalen skubber den fejl-output ind i filen <em>~/test</em></p>
-
-
-<pre class="ubuntu_terminal">
-<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ id hugo 2>/dev/null
-id: 'hugo': ingen sådan bruger
-<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ cat ~/test
-</pre>
-
-<p>Man kan også sende output til <em>/dev/null</em>, som bedst kan beskrives som sort hul. På den måde kan man fjerne meddelelser fra et program. Det kan være praktisk hvis man anvender kommandoer i scripts eller man ønsker at køre programmer usynligt i baggrunden.</p>
-
-
-<pre class="ubuntu_terminal">
-<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ ifd hugo 2> ~/test
-<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ cat ~/test
-Ingen kommando ved navn "ifd" blev fundet. Mente du istedet:
- Kommandoen "fid" fra pakken "id-utils" (universe)
- Kommandoen "id" fra pakken "coreutils" (main)
- Kommandoen "xfd" fra pakken "x11-utils" (main)
- Kommandoen "if1" fra pakken "ctsim" (universe)
- Kommandoen "if2" fra pakken "ctsim" (universe)
- Kommandoen "fd" fra pakken "fdclone" (universe)
- Kommandoen "ifp" fra pakken "ifp-line-libifp" (universe)
-ifd: kommando ikke fundet
-<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ 
-</pre>
-
-<p>Vil man kvæle alle putput fra en kommando anvender man <em>/dev/null</em>. Anvender man <code class="bash">&</code> som argument i et scripts, så kan man se at intentionen er at kvæle alle output.</p>
-
-<pre class="ubuntu_terminal">
-<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ id tj 
-uid=1000(tj) gid=1000(tj) grupper=1000(tj),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),108(lpadmin),124(sambashare)
-<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ id tj 1>/dev/null
-<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ id hugo 2>/dev/null
-</pre>
-
-
-<p>En sidste praktisk måde at anvende omdirigering er til at indsætte tekststrenge ved hjælp af <code class="bash">echo</code>. På denne måde kan man indsætte tekstrenge i filer:</p>
-
-<ul class="disc">
-	<li><code class="bash">echo "tekststreng" > *fil_navn*</code> - Sletter filens indhold og indsætter "tekststreng" som nyt indhold</li>
-	<li><code class="bash">echo "tekststreng" >> *fil_navn*</code> - Indsæt "tekststreng" i bunden af en fil - anvendeligt til logs.</li>
-</ul>
-
-<p>Læs mere: <a href="http://askubuntu.com/questions/350208/what-does-2-dev-null-mean" target="_blank">
-http://askubuntu.com/questions/350208/what-does-2-dev-null-mean</a></p>
 
 <h2>Erstat indhold</h2>
 
@@ -1379,66 +1630,7 @@ Mit navn er Thomas
 
 <h2>Redigere filer</h2>
 
-<h3>nano</h3>
 
-<p>På en Linuxserver bliver alle tjenester og hardware initialiseret og konfigureret igennem tekstfiler. Derfor skal du kende nano, et effektiv terminal tekstredigeringsprogram. Programmet har også opmærkning med farver, hvis det genkender formatet. <em>nano</em> startes med kommandoen: </p>
-
-<code class="cmd">nano *filnavn*</code>
-
-<p>Du navigerer i filen ved hjælp af piletasterne, og du kan bruge <kbd>Ctrl</kbd> og kd</p>
-
-<p>Herefter bliver ændres terminalen til nedestående, hvor menuen ligger i bunden af skærmen.</p>
-
-<pre class="ubuntu_terminal">
-<span class="white_bg">  GNU nano 2.2.6                New Buffer                                                          </span>
-
-
-
-
-
-
-
-
-
-<span class="white_bg">^G</span> Få hjælp   <span class="white_bg">^O</span> Gem       <span class="white_bg">^W</span> Hvor er    <span class="white_bg">^K</span> Klip ud       <span class="white_bg">^J</span> Ombryd      <span class="white_bg">^C</span> Position
-<span class="white_bg">^X</span> Afslut     <span class="white_bg">^R</span> Læs fil   <span class="white_bg">^\</span> Erstat     <span class="white_bg">^U</span> Indsæt tekst  <span class="white_bg">^T</span> Stavetjek   <span class="white_bg">^_</span> Til linje
-</pre>
-
-<p>Du navigerer rundt i nano med piletaster ligesom i alle andre tekstbehandlingsprogrammer.</p>
-
-<p>Herunder er de meste basale funktioner</p>
-
-<p><em>^</em> står for <kbd>Ctrl</kbd> og <em>m-</em> for <kbd>Alt</kbd></p>
-
-<ul class="disc">
-	<li><code>^w</code> - find</li>
-	<li><code>^y</code> - en side op</li>
-	<li><code>^v</code> - En side ned</li>
-	<li><code>^wv</code> - Til filens sidste linie</li>
-	<li><code>^k</code> - Klip</li>
-	<li><code>^u</code> - Indsæt</li>
-	<li><code>^x</code> - Afslut nano</li>
-	<li><code>m-u</code> - Fortryd</li>
-	<li><code>m-e</code> - Annuller fortryd</li>
-	<li><code>m-a</code> - Marker tekst</li>
-	<li><code>m-6</code> - kopier tekst</li>
-</ul>
-
-
-<p>Når du har redigeret din tekst færdig afslutter du med <kbd>Ctrl</kbd>+<kbd>x</kbd>, hvorefter nano i bunden svarer:</p>
-
-<pre class="black">
-
-    
-<span class="white_bg">Gem ændret buffer (AT SVARE "Nej" VIL ØDELÆGGE ÆNDRINGER)?                                          </span>                    
-<span class="white_bg"> J</span> Ja
-<span class="white_bg"> N</span> Nej          <span class="white_bg">^C</span> Annullér
-</pre>
-
-
-<p>Når du svarer y vil nano skrive filnavnet med den fulde sti, hvortil du taster <kbd>Enter</kbd>.</p>
-
-<p>Får du en fejlmelding om at du ikke kan gemme skyldes det oftest, at man redigerer i en fil man ikke har rettigheder til. Oftes skyldes det at man glemmer at anvende <span class="inl_cmd">sudo</span> når man redigerer i systemfiler.</p>
 
 
 <h2>Pakke programmer</h2>
@@ -1744,7 +1936,7 @@ MathJax.Hub.Config({
 
 <!-- TOCIFY -->
 <script>
-	$(function() {var toc = $("#toc").tocify({ selectors: "h1, h2, h3, h4" }).data("toc-tocify"); });
+	$(function() {var toc = $("#toc").tocify({ selectors: "h2, h3, h4" }).data("toc-tocify"); });
 </script>
 <!-- GOOGLE ANALYTICS -->
 <script>

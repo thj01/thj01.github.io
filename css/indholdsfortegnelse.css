@@ -46,9 +46,10 @@ background-color:rgba(10,10,10, .85);
 
 /* Indholdsfortegnelse */
 
-#toc_title:before {
+#toc_headline:before {
 
 content: "Indholdsfortegnelse";
+padding: 2em;
 }
 
 #toc_title {

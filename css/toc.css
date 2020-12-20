@@ -6,13 +6,13 @@ border-color: #337ab7;
 
 #toc_headline:before {
 content:"Indhold";
-content: none;
+
 
 }
 
 #toc_headline {
 font-weight: 500;
-font-size: 0em;
+font-size: 1em;
 padding-top: .7em;
 padding-bottom: .7em;
 padding-left: .7em ;
