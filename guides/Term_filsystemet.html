@@ -39,125 +39,90 @@
 	
 <div class="col-xs-9">
 	
-<h1>Terminalen: Filsystemet</h1>
-	
-<p>Herunder får du præsenteret en række kommandoer, som giver dig mulighed for at administrere systemet, manipulere med filer, få informationer om hardware og netværk.</p>
+<h1>Filsystemet</h1>
 
-<p>Til forskel fra Windows der bliver konfigureret ved hjælp af registreringsdatabases styres Linux af ”flade” filer, forstået på den måde at programmer bliver konfigureret ved hjælp af en eller flere tekstbaserede konfigurationsfiler. Har man lavet ændringer i en konfigurationsfil genstarter man tjenesten, som herefter indlæser og anvender den nye konfigurationsfil. Mange af kommandoerne er vist med eksempler, der er er praktisk anvendelige. </p>
+<p>I Linux er alt filer. Selv din harddisk bliver behandlet som om det var en fil. Sådan er det faktisk også i Windows, men det godt skjult for brugeren, og det er svært tilgængeligt.</p>
 
-<p>En af de ting der også er nyt for mange der bruger Linux er de rettigheder filerne har. Alle filer og mapper får sat læse/skrive/køre rettigheder for henholdsvis ejeren, gruppen og alle andre. <span class="inl_cmd">root</span>-brugeren (bliver også kaldt supueruser)  er dog undtaget for denne regel. <span class="inl_cmd">root</span> kan alt på en Linux computer, så derfor skal kommandoer der har med selve operativsystemet og konfigurationsfiler køres med rootbrugerens rettigheder. Man skifter til roorbrugerens rettigheder ved at køre kommandoen <span class="inl_cmd">sudo</span>. Skal man køre mange kommandoer kan man køre kommandoen <span class="inl_cmd">sudo su</span>, og ændres brugeren til <span class="inl_cmd">root</span>. I disse dokumenter har jeg valgt at vise kommandoerne uden sudo foran.</p>
+<p>Uanset om du sidder på en Ubuntu workstation eller server, så har de nøjagtig samme filstruktur. Filstrukturen følger <a href="https://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard" target="_blank">FHS</a> (Filesystem Hierarchy Standarden) som bliver vedligeholdt af <a href="https://en.wikipedia.org/wiki/Linux_Foundation" target="_blank">Linux Foundattion</a>. Alle Linuxsystemer har samme opbygning og placering af filer.</p>
+
+<samp><span class="terminal_tilde">/</span>
+├── <font color="#06989A">bin</font> -&gt; <span class="terminal_tilde">usr/bin</span>
+├── <span class="terminal_tilde">boot</span>
+├── <span class="terminal_tilde">cdrom</span>
+├── <span class="terminal_tilde">dev</span>
+├── <span class="terminal_tilde">etc</span>
+├── <span class="terminal_tilde">home</span>
+├── <font color="#06989A">lib</font> -&gt; <span class="terminal_tilde">usr/lib</span>
+├── <font color="#06989A">lib32</font> -&gt; <span class="terminal_tilde">usr/lib32</span>
+├── <font color="#06989A">lib64</font> -&gt; <span class="terminal_tilde">usr/lib64</span>
+├── <font color="#06989A">libx32</font> -&gt; <span class="terminal_tilde">usr/libx32</span>
+├── <span class="terminal_tilde">lost+found</span>
+├── <span class="terminal_tilde">media</span>
+├── <span class="terminal_tilde">mnt</span>
+├── <span class="terminal_tilde">opt</span>
+├── <span class="terminal_tilde">proc</span>
+├── <span class="terminal_tilde">root</span>
+├── <span class="terminal_tilde">run</span>
+├── <font color="#06989A">sbin</font> -&gt; <span class="terminal_tilde">usr/sbin</span>
+├── <span class="terminal_tilde">snap</span>
+├── <span class="terminal_tilde">srv</span>
+├── <span class="terminal_tilde">sys</span>
+├── <span style="background-color:#4E9A06"><span color="#2E3436">tmp</span></span>
+├── <span class="terminal_tilde">usr</span>
+└── <span class="terminal_tilde">var</span></samp>
+
+<p>Her kommer en gennemgang af de mapper, som du mest sandsynligt vil komme til at arbejde i:</p>
+
+<dl class="">
+	<dt>/bin</dt>
+	<dd>Her ligger systemkommandoerne. Laver du egne scripts og de skal være tilgængelig for alle, så skal de ligge her</dd>
+	<dt>/dev</dt>
+	<dd>Her ligger alle blok enheder (harddisk)</dd>
+	<dt>/etc</dt>
+	<dd>Konfigurationsfiler til systemet</dd>
+	<dt>/home</dt>
+	<dd>Brugernes hjemmemapper</dd>
+	<dt>/media</dt>
+	<dd>Her monteres eksterne harddiske, USBdrev og CD/DVD/BR-drev</dd>
+	<dt>/mnt</dt>
+	<dd>Her monteres netværksdrev</dd>
+	<dt>/srv</dt>
+	<dd>Her lægges (server))drev der deles med andre</dd>
+	<dt>/var</dt>
+	<dd>Variable filer der ændrer sig ofte. Det kan være logfiler, men også www filer.</dd>
+</dl>
 
 <h2>Alt er filer</h2>
+	
+<p>Til forskel fra Windows der har en registreringsdatabase, styres Linux af konfigurations filer. Så hvis der f.eks. skal ændres i opsætningen af et netværkskort, så skal man gå ind i filen og lave ændringer.</p>
 
-<p>I Linux er alt filer. En mappe er egentlig bare en fil, der henviser til en samling af filer, og hardware er præsenteret ved hjælp af en fil. F.eks. har den første partition på den første SATA disk i systemet filadressen <span class="inl_cmd">/dev/sda1</span>, den næste <span class="inl_cmd">/dev/sda2</span> osv. Selve harddisken hedder i filsystemet <span class="inl_cmd">/dev/sda</span>.</p>
+<p>Fordelen er, at denne ene fil kan kopieres videre til andre computere, der skal sættes op på samme måde. Og det kan gøres over SSH, som er en tekstbaseret adgang til computere.</p>
 
-<h2>Filsystemets opbygning</h2>
+<h2>Filtyper</h2>
 
-<p>I Linuxsystemer er alt filer og filsystemet tager udgangspunkt i roden (/) hvorfå alle mapper er monteret. Mapperne i roden af filsystemet følger <a href="https://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard" target="_blank">FHS</a> (<span class="bold">F</span>ilesystem <span class="bold">H</span>ierarchy <span class="bold">S</span>tandarden) som bliver vedligeholdt af <a href="https://en.wikipedia.org/wiki/Linux_Foundation" target="_blank">Linux Foundattion</a>. Herunder er de mapper der ligger i roden i Ubuntu, med en kort forklaring om hvad de indeholder. De mapper der er markeret med fed er dem som man ofte vil støde i systemarbejde på Ubuntu.
-</p>
+<p>Man kan se filtypen når man kigger på det første tegn ved rettighederne</p>
 
-<p>En anden stor fordel ved at anvende denne standard er, at man ikke skal bekymre sig om hvor f.eks. konfigurationsfilerne ligger. De vil altid ligge i <span class="inl_cmd">/etc</span>.</p>
+<samp>-rwx--x--x  1 tj tj  841 okt 26  2018 backup.sh</samp>
 
-<p>Herunder er et overblik over mapperne på roden og hvad de indeholder. Mapperne der er markeret med fed, er dem man oftest skal anvende når man laver systemarbejde.</p>
+<p>De mest relevante typer er:</p>
 
-<table class="cmd_table">
-	<thead>
-		<tr>
-			<th scope="col">Placering</th>
-			<th scope="col">Indhold</th>
-		</tr>
-	</thead>	
-	<tbody>
-		<tr>
-			<td>/</td>
-			<td>Roden – det nederste niveau</td>
-		</tr>
-		<tr>
-			<td>/bin</td>
-			<td>Binære filer - Her ligger mange af systemkommandoerne f,eks. ls og cd</td>
-		</tr>
-		<tr>
-			<td>/boot</td>
-			<td>Opstartsfiler f.eks. Linux kernen</td>
-		</tr>
-		<tr>
-			<td>/dev</td>
-			<td>Devices - f.eks. harddiske (sda1) og netkort (eth0)</td>
-		</tr>
-		<tr>
-			<td><span class="bold">/etc</span></td>
-			<td><span class="bold">Konfigurationsfiler til systemet.</span></td>
-		</tr>
-		<tr>
-			<td><span class="bold">/home</span></td>
-			<td><span class="bold">Brugernes hjemmemapper</span></td>
-		</tr>
-		<tr>
-			<td>/lib</td>
-			<td>32bits programbiblioteker (libraries) der bliver delt af computerens programmer</td>
-		</tr>
-		<tr>
-			<td>/lib64</td>
-			<td>64 bits programbiblioteker</td>
-		</tr>
-		<tr>
-			<td>/lost+found</td>
-			<td>Fundne datafragmenter der ikke hører til nogle steder</td>
-		</tr>
-		<tr>
-			<td>/media</td>
-			<td>Mappen hvor transportable enheder monteres. F.eks. USB-og CD/DVD-drev.</td>
-		</tr>
-		<tr>
-			<td>/mnt</td>
-			<td>En mappe hvor man montere midlertidige drev. F.eks. netværksdrev </td>
-		</tr>
-		<tr>
-			<td>/opt</td>
-			<td>Installerede programmer der ikke administreres af apt</td>
-		</tr>
-		<tr>
-			<td>/proc</td>
-			<td>Processer - det er et real-time filsystem, der er placeret i RAM.</td>
-		</tr>
-		<tr>
-			<td>/root</td>
-			<td>Superbrugerens hjemmemappe</td>
-		</tr>
-		<tr>
-			<td>/run</td>
-			<td>En mappe der er placeret i RAM - her lægges tmp filer</td>
-		</tr>
-		<tr>
-			<td>/sbin</td>
-			<td>root's binære filer -</td>
-		</tr>
-		<tr>
-			<td><span class="bold">/srv</span></td>
-			<td><span class="bold">Servermappen. Heri lægges alle filer der deles med andre</span></td>
-		</tr>
-		<tr>
-			<td>/sys</td>
-			<td>En mappe placeret i RAM, der viser informationer om hardware</td>
-		</tr>		
-		<tr>
-			<td>/tmp</td>
-			<td>En mappe til midlertidige filer</td>
-		</tr>
-		<tr>
-			<td>/usr</td>
-			<td>Brugernes værktøjs- og programmappe. Indeholder indstillinger til de installerede programmer</td>
-		</tr>
-		<tr>
-			<td><span class="bold">/var</span></td>
-			<td><span class="bold">Variable filer - filer der ændrer sig ofte f.eks. logfiler. Det er også i denne mappe at man finder Apaches www mappe.</span></td>
-		</tr>		
-	</tbody>
-</table>
+<dl class="">
+	<dt>-</dt>
+	<dd>Almindelig fil</dd>
+	<dt>d</dt>
+	<dd>Mappe</dd>
+	<dt>b</dt>
+	<dd>Blok enhed (block device)</dd>
+	<dt>l</dt>
+	<dd>Symbolsk link</dd>
+</dl>
+
+
+<p>Du kan læse mere om Linux-filtyper her <a href="https://en.wikipedia.org/wiki/Unix_file_types" target="_blank">Wikipediaside om Linuxfiltyper</a></p>
 
 <h2>Mappestruktur</h2>
 
-<p>Herunder er mappestrukturen for <span class="inl_cmd">/home</span>.</p>
+<p>Herunder er mappestrukturen for <span class="inl_cmd">/home</span> på en Ubuntu workstation.</p>
 
 <pre class="black">
 /
@@ -182,6 +147,7 @@
 	<li>niveau - Hentet</li>
 </ol>
 
+
 <h2>Filer</h2>
 
 <p>Linux anvender modsat windows både de store og små bogstaver i alfabetet. Derfor vil der under Linux være forskel på filerne <em>data</em> og <em>Data</em> og brugerne <em>tj</em> og <em>Tj</em>.</p>
@@ -199,132 +165,7 @@
 
 <p>Man anvender også efternavne på filer i Linux, for at de bliver læsbare for brugeren. Det gælder f.eks for tekstfiler som: <em>*.pdf</em> og <em>*.odt</em>, grafikformater som <em>*.jpg</em> og <em>*.png</em> og til at kende forskellige filtyper fra hinanden f.eks: <em>.sh</em> til shellscript og <em>.py</em> til Python-filer.</p>
 
-<h2>Navigation</h2>
 
-<p>For at navigere rundt i og orientere sig i filsystemet anvender man følgende kommandoer:</p>
-
-<ul class="disc">
-	<li><em>cd</em> - change directory</li>
-	<li><em>ls</em> - list</li>
-	<li><em>pwd</em> - print working directory</li>
-	<li><em>tree</em> - viser filerne i træstruktur </li>
-</ul>
-
-<p>Herunder angives eksempler med kommandoerne:</p>
-
-<h2>cd - change directory</h2>
-
-
-<ul class="disc">
-	<li><code class="bash">cd /etc/apt</code> - Skift til mappen <em>/etc/apt</em></li>
-	<li><code class="bash">cd /</code> - Skift til roden af filstrukturen</li>
-	<li><code class="bash">cd ..</code> - Gå et mappeniveau ned</li>
-	<li><code class="bash">cd ~</code> - Skift til din hjemmemappe</li>
-</ul>
-
-
-<h2>ls - list</h2>
-
-<ul class="disc">
-	<li><code class="bash">li</code> - Viser filer og mappenavne</li>
-	<li><code class="bash">ls -l</code> - Udvidet visning (rettigheder, ejerskab, størrelse og dato)</li>
-	<li><code class="bash">ls -al</code> - Udvidet visning med skulte filer/mapper</li>
-	<li><code class="bash">ls -al /etc/log</code> - Udvidet visning af <em>/etc/log</em></li>
-	<li><code class="bash">ls -d</code> - viser kun filer</li>
-	<li><code class="bash">ls -d .*</code> - viser kun skjulte</li>
-	<li><code class="bash">ls -d */</code> - viser kun skjulte mapper</li>
-</ul>
-
-
-
-<h2>pwd - print working directory</h2>
-
-<ul class="disc">
-<li><code class="bash">pwd</code> - viser hvor man er i filsystemet</li></ul>
-
-<h2>tree</h2>
-
-<p><code class="bash">tree</code> viser indholdet af en mappe i en træstruktur. Det følger ikke med som standard og skal derfor installeres.</p>
-
-<code class="bash">sudo apt install tree -y</code>
-
-<p>Det kan f.eks. bruges til vise filstrukturen, f.eks: <code class="bash">tree /usr -d -L 1</code></p>
-
-<pre class="ubuntu_terminal">
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ tree /usr -d -L 1	
-<span class="blue1">/usr</span>
-├── <span class="blue1">bin</span>
-├── <span class="blue1">games</span>
-├── <span class="blue1">include</span>
-├── <span class="blue1">lib</span>
-├── <span class="blue1">local</span>
-├── <span class="blue1">sbin</span>
-├── <span class="blue1">share</span>
-└── <span class="blue1">src</span>
-
-9 directories
-</pre>
-
-<p>Kommandoen udvider ls ved at man kan vise det i flere niveauer. Prøv f.eks. at køre kommandoen: <code class="bash">tree /usr -d -L 2</code></p>
-
-<ul class="disc">
-	<li><code class="bash">tree</code> - Viser filerne i træstruktur</li>
-	<li><code class="bash">tree /usr</code> - Viser filerne i mappen <em>/usr</em></li>
-	<li><code class="bash">tree /usr -d</code> - Viser kun mapper i <em>/usr</em></li>
-	<li><code class="bash">tree /usr -d -L 1</code> - Viser kun mapper i <em>/usr</em> i et niveau</li>
-	<li><code class="bash">tree /usr -du -L 1</code> - Viser kun mapper i <em>/usr</em> i et niveau med ejerskab</li>
-	<li><code class="bash">tree /usr -du -L 1</code> - Viser kun mapper i <em>/usr</em> i et niveau med filstørrelse</li>
-	<li><code class="bash">tree /usr -dirsfirst -L 1</code> - Viser alle filer i <em>/usr</em> med mapperne først</li>
-	<li><code class="bash">tree /usr -pua -dirsfirst</code> - viser filerne med rettigheder og ejer ... og sætter mapperne først</li>
-
-</ul>
-
-<h2>Størrelse af filer</h2>
-
-<h3>du - Disk usage</h3>
-
-<p>For at se hvor meget filerne i en folder fylder anvendes <code class="bash">du</code>.</p>
-
-<code class="cmd">du -hs ~</code>
-
-<p>Herunder kan du se output fra mit eget system.</p>
-
-<pre class="ubuntu_terminal">
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ du -hs ~
-2,6M	/home/thoj
-</pre>
-
-<h3>df - disk free</h3>
-
-<p>For at se den brugte plads på en partition anvendes kommandoen <code class="bash">df</code></p>
-
-<code class="cmd">df -h *partition*</code>
-
-<p><span class="inl_cmd">-h</span> gør at, størrelsen vises i MB og GB i stedet for Kb.</p>
-
-<ul class="disc">
-	<li><code class="bash">df -h</code> - Viser brugt plads på alle monterede partitioner</li>
-	<li><code class="bash">df -h /</code> - Viser brugt plads på <em>/</em></li>
-	<li><code class="bash">df -h -t ext4</code> - Viser informationer om partitioner der er formateret med ext4</li>
-	<li><code class="bash">df -h -x tmpfs</code> - Viser informationer om partitioner der <em>IKKE</em> er formateret med tmpfs</li>
-	<li><code class="bash">df -hT</code> - Viser anvendt filsystem</li>
-	
-	
-</ul>
-
-
-<p>Læg mærke til at <code class="bash">df</code> viser pladsforbrug på den valgte partition, hvis du vælger en mappe derpå.</p>
-
-<pre class="ubuntu_terminal">
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ df -h -t ext4
-Filsystem      Størr Brugt  Tilb Brug% Monteret på
-/dev/sda1        91G  5,3G   81G    7% /
-/dev/sdb1        99G   60M   94G    1% /data
-</pre>
-
-
-
-	
 </div><!-- end: col-md-9 -->
 
 <footer>

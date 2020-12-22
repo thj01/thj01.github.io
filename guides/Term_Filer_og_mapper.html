@@ -109,6 +109,18 @@
 
 <samp><span class="terminal_green">tj@server1</span>:<span class="terminal_tilde">~</span>$ </samp>
 
+<dl class="">
+	<dt>cd /etc/apt</dt>
+	<dd>Skift til mappen <em>/etc/apt</em></dd>
+	<dt>cd /</dt>
+	<dd>Skift til roden af filstrukturen</dd>
+	<dt>cd ..</dt>
+	<dd>Gå et mappeniveau ned</dd>
+	<dt>cd ~</dt>
+	<dd>Skift til din hjemmemappe</dd>
+</dl>
+
+
 <h3>clear</h3>
 
 <p>Bliver terminalvinduet for rodet kan man rense det med kommandoen <em>clear</em></p>
@@ -163,6 +175,25 @@ drwxr-xr-x  2 root root 4096 Apr  9  2020 <span class="red">sources</span>.list.
 
 <p>Så kan man designe sin visning til nøjagtigt det man leder efter.</p>
 
+<p><strong>Eksempler</strong></p>
+
+<dl class="">
+	<dt>li</dt>
+	<dd>Viser filer og mappenavne</dd>
+	<dt>ls -l</dt>
+	<dd>Udvidet visning (rettigheder, ejerskab, størrelse og dato)</dd>
+	<dt>ls -al</dt>
+	<dd>Udvidet visning med skulte filer/mapper</dd>
+	<dt>ls -al /etc/log</dt>
+	<dd>Udvidet visning af <em>/etc/log</em></dd>
+	<dt>ls -d</dt>
+	<dd>viser kun filer</dd>
+	<dt>ls -d .*</dt>
+	<dd>viser kun skjulte</dd>
+	<dt>ls -d */</dt>
+	<dd>viser kun skjulte mapper</dd>
+</dl>
+
 <h3>tree</h3>
 
 <p>En anden måde at få overblik er ved hjælp af <em>tree</em>. <em>tree</em> skal først installeres. <em>tree</em> bliver gennemgået senere.</p>
@@ -213,6 +244,26 @@ drwxr-xr-x  2 root root 4096 Apr  9  2020 <span class="red">sources</span>.list.
 ├── <span class="terminal_tilde">sources.list.d</span>
 └── <span class="terminal_tilde">trusted.gpg.d</span></samp>
 
+<p>Et sidste eksempel er at begrænse visningen kun til undermapper.</p>
+
+<pre><code>tree -d /usr -L 1</code></pre>
+
+<samp><span class="terminal_tilde">/usr</span>
+├── <span class="terminal_tilde">bin</span>
+├── <span class="terminal_tilde">games</span>
+├── <span class="terminal_tilde">include</span>
+├── <span class="terminal_tilde">lib</span>
+├── <span class="terminal_tilde">lib32</span>
+├── <span class="terminal_tilde">lib64</span>
+├── <span class="terminal_tilde">libexec</span>
+├── <span class="terminal_tilde">libx32</span>
+├── <span class="terminal_tilde">local</span>
+├── <span class="terminal_tilde">sbin</span>
+├── <span class="terminal_tilde">share</span>
+└── <span class="terminal_tilde">share</span></samp>
+
+<p>Effekten kan du se ved at køre kommandoen med <em>-L 2</em>.</p>
+
 <details>
 
 	<summary>Avancerede visninger</summary>
@@ -241,6 +292,29 @@ drwxr-xr-x  2 root root 4096 Apr  9  2020 <span class="red">sources</span>.list.
 </details>
 
 <p>læs mere om tree: <a href="http://manpages.ubuntu.com/manpages/focal/en/man1/tree.1.html" target="_blank">http://manpages.ubuntu.com/manpages/focal/en/man1/tree.1.html</a></p>
+
+<p><strong>Eksempler</strong></p>
+
+<dl class="">
+	<dt>tree</dt>
+	<dd>Viser filer og mapper i træstruktur</dd>
+	<dt>tree /usr</dt>
+	<dd>Viser filerne i mappen <em>/usr</em></dd>
+	<dt>tree /usr -d</dt>
+	<dd>Viser kun mapper i <em>/usr</em></dd>
+	<dt>tree /usr -d -L 1</dt>
+	<dd>Viser kun mapper i <em>/usr</em> i et niveau</dd>
+	<dt>tree /usr -du -L 1</dt>
+	<dd>Viser kun mapper i <em>/usr</em> i et niveau med ejerskab</dd>
+	<dt>tree /usr -du -L 1</dt>
+	<dd>Viser kun mapper i <em>/usr</em> i et niveau med filstørrelse</dd>
+	<dt>tree /usr -dirsfirst -L 1</dt>
+	<dd>Viser alle filer i <em>/usr</em> med mapperne først</dd>
+	<dt>tree /usr -pua -dirsfirst</dt>
+	<dd>viser filerne med rettigheder og ejer ... og sætter mapperne først</dd>
+</dl>
+
+
 
 <h3>Piping</h3>
 
@@ -664,6 +738,82 @@ rm: use --no-preserve-root to override this failsafe</samp>
 2 directories, 4 files
 </samp>
 
+<h2>Filstørrelse</h2>
+
+<dl class="">
+	<dt>du</dt>
+	<dd>Viser mappestørrelsen</dd>
+	<dt>dd</dt>
+	<dd>Viser plads på filsystemet</dd>
+</dl>
+
+
+<h3>du</h3>
+
+<p><em>du</em> bruges til at vise størrelsen på mapper.</p>
+
+<p>Her undersøger vi <em>/etc/apt</em></p>
+
+<pre><code>du -h /etc/apt</code></pre>
+
+<samp>4.0K	/etc/apt/sources.list.d
+60K	/etc/apt/apt.conf.d
+4.0K	/etc/apt/preferences.d
+4.0K	/etc/apt/auth.conf.d
+16K	/etc/apt/trusted.gpg.d
+100K	/etc/apt</samp>
+
+<p>For at se alle filer og det samlede pladsforbrug anvendes <em>-ch</em></p>
+
+<pre><code>du -ch /etc/apt</code></pre>
+
+<samp>4.0K	/etc/apt/sources.list.d
+60K	/etc/apt/apt.conf.d
+4.0K	/etc/apt/preferences.d
+4.0K	/etc/apt/auth.conf.d
+16K	/etc/apt/trusted.gpg.d
+100K	/etc/apt
+100K	total</samp>
+
+<p>For kun at se mappens størrelsen bruger vi <em>-hs</em></p>
+
+<pre><code>du -hs /etc/apt</code></pre>
+
+<samp>100K	/etc/apt</samp>
+
+<h3>df</h3>
+
+<p><em>df</em> bruges for at se den brugte plads på partitioner.</p>
+
+<pre><code>df -h /dev/sda</code></pre>
+
+<samp>Filesystem      Size  Used Avail Use% Mounted on
+udev            952M     0  952M   0% /dev</samp>
+
+<p><em>-ht ext4</em> giver et komplet overblik over alle partitioner med filsystemet <em>ext4</em>.</p>
+
+<pre><code>df -ht ext4</code></pre>
+
+<samp>Filesystem                         Size  Used Avail Use% Mounted on
+/dev/mapper/ubuntu--vg-ubuntu--lv   30G  4.9G   24G  18% /
+/dev/sda2                          976M  104M  806M  12% /boot
+/dev/sdb2                           69G   53M   66G   1% /srv/data
+/dev/sdb1                           30G   45M   28G   1% /srv/backup
+</samp>
+
+
+<dl class="">
+	<dt>df -h</dt>
+	<dd>Viser brugt plads på alle monterede partitioner</dd>
+	<dt>df -h /</dt>
+	<dd>Viser brugt plads på <em>/</em></dd>
+	<dt>df -h -t ext4</dt>
+	<dd>Viser informationer om partitioner der er formateret med ext4</dd>
+	<dt>df -ht</dt>
+	<dd>Viser alle blok enheder</dd>
+	<dt>df -hT</dt>
+	<dd>Viser alle blok enheder + deres filsystem</dd>
+</dl>
 
 
 <h2>Hente</h2>
@@ -1173,18 +1323,18 @@ Hans</samp>
 
 <h3>Redirect -omdirigering</h3>
 
-<p>I linux bruges tegnet <em>></em> (større end) til at omdirigere indhold. I denne sammenhæng skal det ses som en pil der peger til højre.</p>
+<p>I linux bruges tegnet <em>></em> (større end) eller <em>>></em> til at omdirigere indhold. I denne sammenhæng skal det ses som en pil der peger til højre.</p>
+
+<p>Anvender vi 1 pil (<em>></em>), så erstattes alt indholdet i filen med output. Anvendes der 2 pile (<em>>></em>), så tilføjes ouput til slutningen af filen.</p>
 
 <p>Som standard vises output i terminalen. Men det kan være at man gerne vil have output i en fil, så man kan arbejde videre med den.</p>
 
 <p>Output kan have 2 former:</p>
 
-<dl class="">
-	<dt>stdout</dt>
-	<dd>Output fra en kommando</dd>
-	<dt>stderr</dt>
-	<dd>Fejlmeddelelse fra en kommando</dd>
-</dl>
+<ul class="disc">
+	<li><em>stdout</em> - Output fra en kommando</li>
+	<li><em>stderr</em> - Fejlmeddelelse fra kommando</li>
+</ul>
 
 <p>Det kan bruges på følgende måder:</p>
 
@@ -1203,461 +1353,225 @@ Hans</samp>
 
 
 
-<p>Her er en kort oversigt:</p>
+<p><strong>Eksempel</strong>: Vi vil gerne have træstrukturen fra <em>/etc/apt</em>lagt ind i en fil.</p>
+
+<pre><code>tree -d > træstruktur</code></pre>
+
+<samp><span class="terminal_green">tj@server1</span>:<span class="terminal_tilde">~</span>$ tree -d > træstruktur
+<span class="terminal_green">tj@server1</span>:<span class="terminal_tilde">~</span>$ cat træstruktur
+/etc/apt
+├── apt.conf.d
+├── auth.conf.d
+├── preferences.d
+├── sources.list.d
+└── trusted.gpg.d
+
+5 directories</samp>
+
+<p><strong>Eksempel</strong>: Vi vil gerne have lagt fejlmeddelser fra en kommando ind i en filen <em>fejlmeddelelser</em>:</p>
+
+<pre><code>cat fil_findes_ikke 2>fejlmeddelelser</code></pre>
+
+<samp><span class="terminal_green">tj@server1</span>:<span class="terminal_tilde">~</span>$ cat fil_findes_ikke 2>fejlmeddelelser
+<span class="terminal_green">tj@server1</span>:<span class="terminal_tilde">~</span>$ cat fejlmeddelelser
+cat: fil_findes_ikke: No such file or directory</samp>
+
+<p><strong>Eksempler</strong></p>
 
 <dl class="">
-	<dt>> file</dt>
-	<dd>Omdirigerer </dd>
-	<dt></dt>
-	<dd></dd>
-	<dt></dt>
-	<dd></dd>
+	<dt>cat fil1 > fil2</dt>
+	<dd>Erstatter indholdet af <em>fil2</em> med indholdet af <em>fil1</em></dd>
+	<dt>cat fil1 >> fil2</dt>
+	<dd>Tilføjer indholdet af <em>fil1</em> til indholdet af <em>fil2</em></dd>
+	<dt>cat -n fil1 > fil2</dt>
+	<dd>Erstatter indholdet af <em>fil2</em> med indholdet fra <em>fil1</em>, med linienumre</dd>
 </dl>
-
-
-
-
-
-
-
-<p>Der gælder følgende:</p>
-
-<dl class="">
-	<dt>></dt>
-	<dd>Flyt til (erstatter indhold hvis der er noget i forvejen)</dd>
-	<dt>>></dt>
-	<dd>Tilføj til slutningen</dd>
-</dl>
-
-
-
-
-
-
-<p>Nogle gange har man brug for ens output bliver brugt</p>
-
-
-
-<p>Nogen gange har man brug for at omdirigere indhold. Det kan f.eks. være at indsætte et output i en fil. Til at omdirigere anvender man <code class="bash">&gt;</code> og <code class="bash">&gt;&gt;</code>. En pil erstatter alt indhold og 2 pile tilføjer til slutningen af filen. </p>
-
-<ul class="disc">
-	<li><code class="bash">cat fil1 > fil2</code> - Erstat indholdet af fil2 med indholdet af fil1</li>
-	<li><code class="bash">cat fil1 >> fil2</code> - Tilføj indholdet af fil1 til slutningen af fil2</li>
-	<li><code class="bash">cat -n fil >> fil_med_numre</code> - sæt linienumre i file</li>
-</ul>
-
-<p>Omdirigering anvendes også til at omdirigere fejlmeddelelser. Her anvender man <em>1</em>, <em>2</em> og <em>&</em> til at angive typen af output man vil omdirigere. Se følgende skema</p>
-
-<ul class="disc">
-	<li><code class="bash">1 &gt; fil</code> - Sætter "godkendte" output ind i fil</li>
-	<li><code class="bash">2 &gt; fil</code> - Sætter fejl-output ind i fil</li>
-	<li><code class="bash">& &gt; fil</code> - sætter både rigtig og fejl-output ind i fil</li>
-</ul>
-
-<p>Herunder er vist nogle eksempler med eksempler med kommandoen <code class="bash">id</code>:</p>
-
-<p>Her bliver output fra kommandoen ledt direkte ind i filen <em>~/test</em>, hvilket vi viser ved at køre <code class="bash">cat ~/test</code>.</p>
-
-<pre class="ubuntu_terminal">
-<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ id tj 1> ~/test
-<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ cat ~/test
-uid=1000(tj) gid=1000(tj) grupper=1000(tj),4(adm),24(cdrom),27(sudo),30(dip), 46(plugdev),108(lpadmin),124(sambashare)
-</pre>
-
-<p>Her leder vi fejloutput ind i filen <em>~/test</em>. Derfor bliver output fra kommandoen vist, men der er intet i filen <em>~/test</em>, fordi der ikke er noget fejloutput</p>
-
-<pre class="ubuntu_terminal">
-<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ id tj 2> ~/test
-uid=1000(tj) gid=1000(tj) grupper=1000(tj),4(adm),24(cdrom),27(sudo),30(dip), 46(plugdev),108(lpadmin),124(sambashare)
-<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ cat ~/test
-</pre>
-
-
-<p>Her leder vi et fejloutput ind i filen <em>~/test</em>. Læg mærke til at det ikke bliver betragtet som en fejl at <em>~/test</em> ikke ikke finder en bruger. Herunder prøver vi at anvende en kommando systemet ikke kender. I stedet for at vise fejlen i terminalen skubber den fejl-output ind i filen <em>~/test</em></p>
-
-
-<pre class="ubuntu_terminal">
-<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ id hugo 2>/dev/null
-id: 'hugo': ingen sådan bruger
-<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ cat ~/test
-</pre>
-
-<p>Man kan også sende output til <em>/dev/null</em>, som bedst kan beskrives som sort hul. På den måde kan man fjerne meddelelser fra et program. Det kan være praktisk hvis man anvender kommandoer i scripts eller man ønsker at køre programmer usynligt i baggrunden.</p>
-
-
-<pre class="ubuntu_terminal">
-<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ ifd hugo 2> ~/test
-<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ cat ~/test
-Ingen kommando ved navn "ifd" blev fundet. Mente du istedet:
- Kommandoen "fid" fra pakken "id-utils" (universe)
- Kommandoen "id" fra pakken "coreutils" (main)
- Kommandoen "xfd" fra pakken "x11-utils" (main)
- Kommandoen "if1" fra pakken "ctsim" (universe)
- Kommandoen "if2" fra pakken "ctsim" (universe)
- Kommandoen "fd" fra pakken "fdclone" (universe)
- Kommandoen "ifp" fra pakken "ifp-line-libifp" (universe)
-ifd: kommando ikke fundet
-<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ 
-</pre>
-
-<p>Vil man kvæle alle putput fra en kommando anvender man <em>/dev/null</em>. Anvender man <code class="bash">&</code> som argument i et scripts, så kan man se at intentionen er at kvæle alle output.</p>
-
-<pre class="ubuntu_terminal">
-<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ id tj 
-uid=1000(tj) gid=1000(tj) grupper=1000(tj),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),108(lpadmin),124(sambashare)
-<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ id tj 1>/dev/null
-<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ id hugo 2>/dev/null
-</pre>
-
-
-<p>En sidste praktisk måde at anvende omdirigering er til at indsætte tekststrenge ved hjælp af <code class="bash">echo</code>. På denne måde kan man indsætte tekstrenge i filer:</p>
-
-<ul class="disc">
-	<li><code class="bash">echo "tekststreng" > *fil_navn*</code> - Sletter filens indhold og indsætter "tekststreng" som nyt indhold</li>
-	<li><code class="bash">echo "tekststreng" >> *fil_navn*</code> - Indsæt "tekststreng" i bunden af en fil - anvendeligt til logs.</li>
-</ul>
 
 <p>Læs mere: <a href="http://askubuntu.com/questions/350208/what-does-2-dev-null-mean" target="_blank">
 http://askubuntu.com/questions/350208/what-does-2-dev-null-mean</a></p>
 
 <h3>echo</h3>
 
-<h3>tee</h3>
+<p><em>echo</em> er bashfortolkerens printfunktion</p>
 
-<h3>sed</h3>
+<pre><code>echo "Hej med dig"</code></pre>
 
-<h2>Pakning af filer</h2>
+<samp>Hej med dig</samp>
 
-<dl class="">
-	<dt>tar</dt>
-	<dd>tarballs - Linux pakkeformat</dd>
-	<dt>gzip</dt>
-	<dd>Komprimeringsalgoritme</dd>
-	<dt>bzip</dt>
-	<dd>Komprimeringsalgoritme</dd>
-	<dt>lzma</dt>
-	<dd>Komprimeringsalgoritme</dd>
-</dl>
+<p>Vi kan f.eks. bruge den til at indsætte datoen i slutningen af en fil (fejlmeddelelser fra før)</p>
 
-<h3>tar</h3>
-<h3>gzip</h3>
-<h3>bzip2</h3>
-<h3>lzma</h3>
-	
-<h2>genstarte og slukke</h2>
+<pre><code>echo $(date) >> fejlmeddelelser</code></pre>
 
-<dl class="">
-	<dt>reboot</dt>
-	<dd>Genstart computeren</dd>
-	<dt>shutdown</dt>
-	<dd>Luk computeren</dd>
-</dl>
+<samp><span class="terminal_green">tj@server1</span>:<span class="terminal_tilde">~</span>$ echo $(date) >> fejlmeddelelser
+<span class="terminal_green">tj@server1</span>:<span class="terminal_tilde">~</span>$ cat fejlmeddelelser
+cat: fil_findes_ikke: No such file or directory
+Sun 20 Dec 2020 12:21:29 PM UTC</samp>
 
-<h3>reboot</h3>
-
-<h3>shutdown</h3>
-
-
-<h2>Arbejde med filer</h2>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	
-<h2>Se og redigere rettigheder</h2>
-
-<p>I Linux er der 3 grundlæggende rettigheder vi kan give filer og mapper: read, write og execute (læse, skrive og udføre).</p>
-
-<ul class="disc">
-	<li>Læse - man kan se indholdet.</li>
-	<li>Skrive - man kan ændre indholdet</li>
-	<li>Eksekvere - kan kan køre filen som et progam</li>
-</ul>
-
-
-<p>Ved hjælp af disse 3 parametre styres alle filer, mapper og enheder på computere. Lad os kigge på et eksempel nemlig <em>/etc/passwd</em> som er den fil der styrer brugerne på Linux .</p>
-
-<pre><code>ls -al /etc/passwd</code></pre>
-
-<samp>-rw-r--r-- 1 root root 2013 mar 16 20:05 /etc/passwd</samp>
-
-<!--
-<samp><span class="terminal_green">tj@server1</span>:<span class="terminal_tilde">~</span>$ ls -al /etc/passwd
--rw-r--r-- 1 root root 2013 mar 16 20:05 /etc/passwd</samp>
-
-<samp class="terminal"><span class="terminal_green">tj@server1</span>:<span class="terminal_tilde">~</span>$ ls -al /etc/passwd
--rw-r--r-- 1 root root 2013 mar 16 20:05 /etc/passwd</samp>
--->
-
-<p>Den linie giver os alle de informationer om rettigheder vi har behov for</p>
-
-<dl class="">
-	<dt>-</dt>
-	<dd>en streg fortæller det er en fil</dd>
-	<dt>rw-r--r--</dt>
-	<dd>Oversigt over filens retttigheder</dd>
-	<dt>1</dt>
-	<dd>Antal hard links (se note nedenfor)</dd>
-	<dt>root root</dt>
-	<dd>Brugeren og gruppen</dd>
-	<dt>2013</dt>
-	<dd>Filens størrelse</dd>
-	<dt>mar 16 20:05</dt>
-	<dd>Tidsstempel</dd>
-	<dt>/etc/passwd</dt>
-	<dd>Filens navn</dd>
-</dl>
-
-
-<p>I Linux kan man have <em>hard</em> og <em>symbolic</em> links. Forskellen er, at hvis man sletter et hardlink, så forsvinder filen. Hvis man sletter et softlink, så er det kun henvisningen til filen man sletter. Filen er altså uskadt</p>
-
-<p>Læg mærke til, at der både findes en bruger og en gruppe der hedder <em>root</em>. Alle brugere har som standard både tildelt en gruppe med deres egen navn. Det betyder at alle brugere har mulighed for at tilføje brugere til deres grupper så de selv kan tildele rettigheder til filer og mapper.</p>
-
-<h3>Aflæsning af rettigheder</h3>
-
-<p>Rettighederne ovenfor var: <em>- r w - r - - r - -</em>. Der er altså 10 felter vi skal forholde os til.</p>
-
-<p>Det første felt viser filtypen. En streg betyder at det er en standardfil. Hvis er var et <em>d</em> var det en mappe.</p>
-
-<p>De sidste tegn viser rettighederne i grupper af 3 for brugeren (2-4), gruppen (5-7) og alle (8-10). </p>
-
-<ul class="disc">
-	<li>Brugeren har rettigheden: <em>r w -</em> (læse, skrive)</li>
-	<li>Gruppen har rettigheden <em>r - -</em> (læse)</li>
-	<li>Alle har rettigheden <em>r - -</em> (læse)</li>
-</ul>
-
-
-<p>Vi kan altså sige om denne fil at brugeren er <em>root</em>, som må læse og skrive i filen. Alle andre (gruppe og alle). De er nødvendigt for alle at kunne læse denne fil, da det er den der administrere adgangen til systemet. Kigger vi ind i filen kan vise hvad den har at sige om vores bruger, her <em>tj</em>. Da alle har ret til at læse i filen kan jeg som almindelig bruger se den - men kun brugeren root ændre i den.</p>
-
-<pre><code>cat /etc/passwd | grep tj</code></pre>
-
-<samp><span class="red">tj</span>:x:1000:1000:Thomas Jensen,,,:/home/<span class="red">tj</span>:/bin/bash</samp>
-
-
-<p>Den linie fortæller os om vores bruger, hvilket bruger- og gruppe id man har, ens hjemmemappe og hvilken kommandofortolker vi har adgang til. Det lille x i starten henviser til vores kodeord, som er lagret i filen <span class="inl_cmd">/etc/shadow</span>.</p>
-
-<p>Et andet eksempel er vores hjemmemappe, i dette tilfælde <span class="inl_cmd">/home/tj</span>. Vi kan se rettighedern ved at køre:</p>
-
-<pre><code>ls -al /home</code></pre>
-
-<samp>totalt 12
-drwxr-xr-x  3 root root 4096 maj 30 13:33 .
-drwxr-xr-x 24 root root 4096 maj 30 13:51 ..
-drwxr-xr-x 16 tj   tj   4096 jun  2 09:47 tj</samp>
-
-
-<h3>Root - superbrugeren</h3>
-
-<p><em>root</em>-brugeren er ikke underlagt de rettigheder der er sat på på de enkelte filer. <em>root</em> kan og skal kunne alt. At have <em>root</em>-rettigheder på et system handler ikke kun om at man er god til Linux, men forudsætter også at man gør sig overvejelser om hvad man bruger disse rettigheder til.</p>
-
-<p>Den danske grundlov (<a href="http://grundloven.dk/" target="_blank">http://grundloven.dk/</a>) siger følgende:</p>
-
-<blockquote>
-	
-	<p><strong>§ 72</strong></p>
-
-	<p>Boligen er ukrænkelig. Husundersøgelser, beslaglæggelse og undersøgelse af breve og andre papirer samt brud på post-, telegraf- og telefonhemmeligheden må, hvor ingen lov hjemler en særegen undtaglse, alene ske efter en retskendelse. 
-	</p>
-	
-</blockquote>
-
-<p>Grundloven har gode retningslinier til superbrugeren. Du må alt der ikke krænker brugeren, dvs. hjælpe brugeren med at løse sin opgave. Det gælder også selvom brugeren er dit barn, din partner eller kollega. Brugerens personlige filer og mapper er vedkommendes ejendom, og hvis man som administrator krænker dem ved at læse dem - så er det et grundlovsbrud! </p>
-
-<p>Den eneste undtagelse er, når brugeren har fået at vide at det ikke er brugerens private ejendom, f.eks. hvor en virksomhed eller skole stiller ressourcen til rådighed for dig.</p>
-
-
-
-
-
-
-<h2>Luk computeren</h2>
-	
-<h3>reboot</h3>	
-	
-<p>Denne kommando genstarter computeren. Den skal køres med root-rettigheder.</p>	
-
-<code class="bash">sudo reboot</code>
-	
-
-<h3>shutdown</h3>
-
-<p>En server lukkes ned med kommandoen:</p>
-
-<code class="cmd">sudo shutdown [Optioner] tid [besked]</code>
-
-<p>Eksempel</p>
-
-<ul class="disc">
-	<li><code class="bash">shutdown -h 0</code> - Computeren lukkes ned nu</li>
-	<li><code class="bash">shutdown -h 10 Computeren lukkes ned om 10 minutter</code> - Computeren lukkes ned om 10 minutter med budskabet ”Computeren lukkes ned om 10 minutter”</li>
-	<li><code class="bash">shutdown -r 0</code> - Computeren genstartes om 0 minutter</li>
-</ul>
-
-
-<p>man-page shutdown: <a href="http://manpages.ubuntu.com/manpages/focal/en/man8/shutdown.8.html" target="_blank">
-http://manpages.ubuntu.com/manpages/focal/en/man8/shutdown.8.html</a></p>
-
-<p>man-page reboot: <a href="http://manpages.ubuntu.com/manpages/focal/man8/reboot.8.html" target="_blank">
-http://manpages.ubuntu.com/manpages/focal/man8/reboot.8.html</a></p>
-
-
-
-
-
-<h2>Redirect</h2>
-
-
-
-<h2>Erstat indhold</h2>
-
-
-<h3>echo</h3>
-
-<p><code class="bash">echo</code> er en simpel kommando som blot gentager sit input f.eks:</p>
-
-<pre class="ubuntu_terminal"><span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ echo "hej"
-hej
-<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ echo "En længere tekstreng"
-En længere tekstreng
-</pre>
-
-<p>Vi skal bruge <code class="bash">echo</code> til at indsætte tekststrenge ind i andre kommandoer</p>
-
+<p>man-page echo: 
+	<a href="http://manpages.ubuntu.com/manpages/focal/man1/echo.1.html" target="_blank">
+	http://manpages.ubuntu.com/manpages/focal/man1/echo.1.html</a></p>
 
 <h3>tee</h3>
 
-<p>Kommandoen virker lidt som <code class="bash">>></code>, men arbejder med output af en forudgående kommandoe f.eks:</p>
+<p><em>tee</em> bruges til omdirigering, og fungerer ligesom <em>></em>. Ved at indsætte <em>-a</em> fungerer den lige som <em>>></em> og indsætter i bunden af filen.</p>
 
-<code class="cmd">date | tee ~/klokken</code>
+<p>Tee skal bruges sammen med piping.</p>
 
-<p>Kommandoen vil skrive tidsangivelsen ind i filen <em>klokken</em>. Herunder er mit output fra filen ved hjælp af <code class="bash">cat ~/klokken</code>:</p>
+<p><strong>Eksempler</strong></p>
 
-<pre class="black">
-tir apr 12 08:35:42 CEST 2016
-</pre>
+<dl class="">
+	<dt>date | tee ny_fil</dt>
+	<dd>Indsætter datoen i <em>ny_fil</em></dd>
+	<dt>date | tee -a ny_fil</dt>
+	<dd>indsætter datoen i bunden af <em>ny_fil</em></dd>
+</dl>
 
-<p>Hvis du kører kommandoen flere gange vil du opdage, at den erstatter filens indhold, så der hele tiden kun er en en linie i filen. Hvis du gerne vil have det nye output lagt ind neders i filen anvender du optionen <code class="bash">-a</code></p>
+<p><em>tee</em> giver os mulighed for at indsætte tekstrenge i filer vi ikke selv ejer. Det kan vi gøre ved at indsætte <em>sudo</em> foran <em>tee</em></p>
 
-<code class="cmd">date | tee -a ~/klokken</code>
-
-<p>Herunder er filens indhold efter 3 kørsler:</p>
-
-<pre class="black">
-tir apr 12 08:36:33 CEST 2016
-tir apr 12 08:39:19 CEST 2016
-tir apr 12 08:39:21 CEST 2016
-</pre>
-
-<p><span class="inl_cmd">tee</span> kan også anvendes til at indsætte tekstrenge i filer. Herunder opretter vi filen <em>testtee</em> i vores hjemmemappe og indsætter tekststrengen <em>hej</em>.</p>
-
-<code class="cmd">touch ~/testtee</code>
-<code class="more_cmd">echo "hej" | tee ~/testtee</code>
-
-<pre class="ubuntu_terminal">
-<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ touch ~/testtee
-<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ echo "hej" | tee ~/testtee
-hej
-<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ tail ~/testtee
-hej
-</pre>
-
-<p>Vær opmærksom på at <code class="bash">tee</code> som standard erstatter indholdet af filen. Hvis vi vil indsætte en ny linie skal vi anvende omdirigering (markeret med rødt herunder):</p>
-
-<pre class="ubuntu_terminal">
-<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ echo "hej (linie nummer 2)" | tee <span class="red">>></span> ~/testtee
-hej (linie nummer 2)
-<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ tail ~/testtee
-hej
-hej (linie nummer 2)
-</pre>
-
-<p>Hvis man vil indsætte tekststrenge i filer der ikke er ejet af en selv skal man også anvende <code class="bash">tee</code>.</p>
-
-<code class="cmd">echo "hejsa root" | sudo tee /root/hej</code>
-
-<pre class="ubuntu_terminal">
-<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ echo "hejsa root" | sudo tee /root/hej
-hejsa root
-<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ sudo cat /root/hej
-hejsa root
-</pre>
-
-<p>Læg mærke til at der først skal <code class="bash">sudo</code> på efter pipen. Det skyldes at det først er under skrivningen af filen vi skal anvende root's rettigheder.</p>
+<p>man-page sort: 
+	<a href="http://manpages.ubuntu.com/manpages/focal/man1/tee.1.html" target="_blank">
+	http://manpages.ubuntu.com/manpages/focal/man1/tee.1.html</a></p>
 
 <h3>sed</h3>
 
-<p><code class="bash">sed</code> anvendes til at filtrere og transformere tekst i filer. Her vil vi kun se hvordan vi kan erstatte tekst ved hjælp af <code class="bash">sed</code>. Generelt fungerer kommandoen på følgende måde hvis man vil erstatte <em>a</em> med <em>b</em>:</p>
+<p><em>sed</em> anvendes til at ændre tekst.</p>
 
-<code class="cmd">sed -i s,a,b,*filnavn*</code>
+<p>Kommandoen fungerer på følgende måde:</p>
 
-<ol class="disc">
-	<li>Opret <span class="inl_cmd">sedfil</span> <code class="bash">touch sedfil</code></li>
-	
-	<li>Skriv tekst ind i filen: <code class="bash">echo "Hej jeg hedder Kurt-Georg" > sedfil</code></li>
-	
-	<li>Erstat <span class="inl_cmd">Kurt-Georg</span> med dit eget navn: <code class="bash">sed -i s,Kurt-Georg,Thomas, sedfil</code></li>
-	
-</ol>
+<pre><code>sed -i s/*NUVÆRENDE_TEKST*/*NY_TEKST*/g</code></pre>
 
-<pre class="ubuntu_terminal">
-<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ touch sedfil
-<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ echo 'Mit navn er Kurt-Georg' > sedfil
-<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ cat sedfil
-Mit navn er Kurt-Georg
-<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ sed -i s,Kurt-Georg,Thomas, sedfil 
-<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ cat sedfil
-Mit navn er Thomas
-</pre>
+<p>Her vil vi ændre alle forekomster af <em>Anders</em> til <em>Thomas</em>:</p>
 
-<p>Hvis du kommer i en situation, hvor du skal indsætte kommaer i teksten kan du bruge <em>/</em> som escape character.</p>
+<pre><code>touch sedfil</code></pre>
 
-<code class="cmd">sed -i s/a/b/*filnavn*</code>
+<pre><code>echo "Mit navn er Anders" > sedfil</code></pre>
 
-<p><span class="inl_cmd">sed</span> er velegnet til at bruge i scripts.</p>
+<pre><code>cat sedfil</code></pre>
 
-<h2>Redigere filer</h2>
+<samp>Mit navn er Anders</samp>
+
+<pre><code>sed -i s/Anders/Thomas/g sedfil</code></pre>
+
+<pre><code>cat sedfil</code></pre>
+
+<samp>Mit navn er Thomas</samp>
+
+<p><strong>Et eksempel på en kommando der erstatter en tekststreng</strong></p>
+
+
+<pre><code>find . -type f | xargs sed -i 's/tocify({ selectors: "h1, h2, h3, h4" })/tocify({ selectors: "h2, h3, h4" })/g'</code></pre>
 
 
 
+<p>man-page tail: 
+	<a href="http://manpages.ubuntu.com/manpages/focal/en/man1/sed.1.html" target="_blank">
+	http://manpages.ubuntu.com/manpages/focal/en/man1/sed.1.html</a></p>
 
 <h2>Pakke programmer</h2>
 
-<h3>tar</h3>
+<p>På Linux pakker man filer ved hjælp af <em>tar</em>. De pakkede filer kaldes for <em>tarballs</em>.</p>
 
-<p>Når man skal downloade Linuxprogrammer vil man ofte downloade dem som <span class="inl_cmd">tar</span>-filer. <span class="inl_cmd">tar</span> står for <span class="inl_cmd">T</span>ape <span class="inl_cmd">Archive</span> og er i sin oprindelige form blot en måde at lægger sekventielt efter hinanden, så de kan læses fra et bånd. Selvom man ikke anvender bånd til at lagre filer mere, er komprimerede <span class="inl_cmd">tar</span>-pakker standard for at pakke programmer på Linux. <span class="inl_cmd">tar</span>-filer bliver også kaldt <span class="inl_cmd">tarballs</span>.</p>
+<p>Som standard pakker man mapper med filer. På den måde sikrer man sig også at filerne ligger i den samme mappestruktur, som det blev pakket ned i.</p>
 
-<p>Som standard pakker man filer ned i mapper. På den måde sikrer man sig også at filerne ligger i den samme mappestruktur, som det blev pakket ned i.</p>
+<p>Når man pakker tarballs, så navngiver man den på følgende måde: <em>*PAKKENAVN*.tar.*PAKKEFORMAT*</em></p>
 
-<p>Man pakker filer ned på følgende måde:</p>
+<p>Tar anvendes på følgende måde:</p>
 
-<code class="cmd">tar *optioner* *denPakkedeFil* *mappenDerSkalPakkes*</code>
+<pre><code>tar *OPTIONER* *NAVN_PÅ_PAKKET_FIL* *FILER_DER_SKAL_PAKKES*</code></pre>
 
-<p>For at pakke ud (her tar.gz) anvendes:</p>
+<p><strong>Eksempel</strong></p>
 
-<code class="cmd">tar *optioner* *denPakkedeFil*</code>
+<pre><code>tar cvfz gif_backup.tar.gz gif</code></pre>
 
-<p>Man kan kende komprimeringsalgoritmen på endelse efter tar f.eks. <span class="inl_cmd">tar.gz</span>. Herunder er de mest anvendte algoritmer gennemgået efter graden de komprimerer, samt eksempler hvor mappen <span class="inl_cmd">gif</span> bliver pakket og udpakket igen.</p>
+<p><strong>Optioner</strong></p>
 
-<h4>Se indhold</h4>
+<dl class="">
+	<dt>c</dt>
+	<dd>lav (create) et arkiv</dd>
+	<dt>x</dt>
+	<dd>udpak (extract)</dd>
+	<dt>v</dt>
+	<dd>vis fremgang</dd>
+	<dt>f</dt>
+	<dd>filarkivets navn</dd>
+	<dt>t</dt>
+	<dd>se indholdet af filen</dd>
+	<dt>j</dt>
+	<dd>opret en <em>bzip2</em> pakket fil</dd>
+	<dt>z</dt>
+	<dd>opret en <em>gzip</em> pakket fil</dd>
+</dl>
 
-<p>For at se indholdet af tar filer anvendes optionerne <span class="inl_cmd">-tvf</span></p>
 
-<pre class="ubuntu_terminal">
-<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ tar -tvf gif_backup.tar.gz
-drwxr-xr-x tj/tj         0 2016-07-10 12:26 gif/
+<h3>Pakning af filer</h3>
+
+<p>Her vil vi gennemgå komprimeringsformaterne <em>gzip</em> og <em>lzma</em>.</p>
+
+<p><strong>Pakning med gzip</strong></p>
+
+<pre><code>tar cvfz gif_backup.tar.gz gif</code></pre>
+
+<p>gzip-filer navngives <em>tar.gz</em> som afslutning.</p>
+
+
+<p><strong>Pakning med lzma</strong></p>
+
+<pre><code>tar cvf gif_backup.tar.lz --lzma gif</code></pre>
+
+<p>lzma-filer navngives <em>tar.lz</em> som afslutning.</p>
+
+<p>Til daglig brug bør du anvende <em>gzip</em>, som komprimere ca. til &frac13; (33%)af den oprindelige størrelse. <em>gzip</em> har den bedste størrelse/hastigheds ratio.</p>
+
+<p><em>lzma</em> anvendes til større backup opgaver. <em>lzma</em> pakker meget mere effektiv til ca. &frac14; (25%) af den oprindelige størrelse, men bruger også længere tid på det. Selvom <em>lzma</em> bruger længere tid på at pakke, så pakker det ud hurtigt.</p>
+
+<details>
+
+	<summary>Eksempel med Libreoffice</summary>
+
+	<p>Her er et eksempel hvor jeg har har pakket Llibreoffice ned <em>usr/lib/libreoffice</em>. Det fylder ialt 316,6 MB</p>
+	
+	<table class="_">
+		<thead>
+			<tr>
+				<th scope="col">Algoritme</th>
+				<th scope="col">Størrelse</th>
+				<th scope="col">forskel i MB</th>
+				<th scope="col">forskel i %</th>
+				<th scope="col">Tid indpak</th>
+				<th scope="col">Tid udpak</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>gz</td>
+				<td>111,4</td>
+				<td>205,2</td>
+				<td>35%</td>
+				<td>11s</td>
+				<td>1,7s</td>
+			</tr>
+			<tr>
+				<td>lz</td>
+				<td>84 MB</td>
+				<td>232,6 MB</td>
+				<td>26%</td>
+				<td>1m37s</td>
+				<td>4,8s</td>
+			</tr>
+		</tbody>
+	</table>
+
+</details>
+
+
+
+<h3>Se indhold</h3>
+
+<p>For at se indholdet af <em>tar</em> filer anvendes optionerne <em>tvf</em></p>
+
+<pre><code>tar tvf gif_backup.tar.gz</code></pre>
+
+<samp>drwxr-xr-x tj/tj         0 2016-07-10 12:26 gif/
 -rw-r----- tj/tj    805949 2016-07-10 12:26 gif/slow_clap_citizen_kane.gif
 drwxr-xr-x tj/tj         0 2016-07-10 12:26 gif/tegnefilm/
 -rw-r----- tj/tj    986614 2016-07-10 12:26 gif/tegnefilm/run_simpson_run.gif
@@ -1667,231 +1581,85 @@ drwxr-xr-x tj/tj         0 2016-07-10 12:26 gif/the bird/
 -rw-r----- tj/tj    121990 2016-07-10 12:26 gif/the bird/thebird03.gif
 -rw-r----- tj/tj   6313886 2016-07-10 12:26 gif/the bird/thebird04.gif
 -rw-r----- tj/tj    954706 2016-07-10 12:26 gif/mordor.gif
--rw-r----- tj/tj    137685 2016-07-10 12:26 gif/lachifre.gif
-</pre>
+-rw-r----- tj/tj    137685 2016-07-10 12:26 gif/lachifre.gif</samp>
 
-<p>Man kan også finde teksstrenge i tar-filerne ved hjælp af <span class="inl_cmd">grep</span>.</p>
+<p>Man kan også bruge <em>grep</em></p>
 
-<pre class="ubuntu_terminal">
-<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ tar -tvf gif_backup.tar.gz | grep simpson
--rw-r----- tj/tj    986614 2016-07-10 12:26 gif/tegnefilm/run_<span class="red">simpson</span>_run.gif
+<pre><code>tar tvf gif_backup.tar.gz | grep simpson</code></pre>
 
-</pre>
+<samp>-rw-r----- tj/tj    986614 2016-07-10 12:26 gif/tegnefilm/run_<span class="red">simpson</span>_run.gif</samp>
+
+<h3>Udpakning af filer</h3>
+
+<p>Man kan vælge mellem at udpakke alle filer eller blot enkelte</p>
+
+<p>Man udpakker filer på følgende måde - uanset komprimeringsformat.</p>
+
+<pre><code>tar xvf *PAKKEFIL*</code></pre>
+
+<p>Her udpakkes filen <em>gif_backup.tar.lz</em></p>
+
+<pre><code>tar xvf gif_backup.tar.lz</code></pre>
+
+<samp>gif/
+gif/slow_clap_citizen_kane.gif
+gif/tegnefilm/
+gif/tegnefilm/run_simpson_run.gif
+gif/the bird/
+gif/the bird/thebird02.gif
+gif/the bird/thebird01.gif
+gif/the bird/thebird03.gif
+gif/the bird/thebird04.gif
+gif/mordor.gif
+gif/lachifre.gif</samp>
 
 <h4>Udpak enkeltfiler</h4>
 
-<p>For pakke en enkelt fil ud sætter man blot filnavnet til sidst. Læg mærke til at man skal bruge den fulde sti.</p>
+<p>For pakke en enkelt fil ud sætter man blot filnavnet til sidst med den fulde sti.</p>
 
-<pre class="ubuntu_terminal">
-<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ tar -xvf gif_backup.tar.gz gif/tegnefilm/run_simpson_run.gif
-gif/tegnefilm/run_simpson_run.gif
-</pre>
+<pre><code>tar -xvf gif_backup.tar.gz gif/tegnefilm/run_simpson_run.gif</code></pre>
 
 <p>Hvis man vil udpakke flere filer sætter man blot hvert filnavn ind som en tekststreng:</p>
 
-<pre class="ubuntu_terminal">
-<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ tar -xvf gif_backup.tar.gz gif/tegnefilm/run_simpson_run.gif gif/mordor.gif
-gif/tegnefilm/run_simpson_run.gif
-gif/mordor.gif
-</pre>
+<pre><code>tar -xvf gif_backup.tar.gz gif/tegnefilm/run_simpson_run.gif gif/mordor.gif</code></pre>
 
-<p>Eller med wildcards <span class="inl_cmd">*</span></p>
+<p>Du kan også udpakke alle filer der hedder noget med <em>bird</em></p>
 
-<pre class="ubuntu_terminal">
-<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ tar -xvf gif_backup.tar.gz --wildcards *bird*
-gif/the bird/
-gif/the bird/thebird02.gif
-gif/the bird/thebird01.gif
-gif/the bird/thebird03.gif
-gif/the bird/thebird04.gif
-</pre>
-
-<p>Generelt gælder følgende options:</p>
-
-<ul class="disc">
-	<li><code class="bash">c</code> - lav (create) et arkiv</li>
-	<li><code class="bash">x</code> - udpak (extract)</li>
-	<li><code class="bash">v</code> - vis fremgang</li>
-	<li><code class="bash">f</code> - filarkivets navn</li>
-	<li><code class="bash">t</code> - se indholdet af filen</li>
-	<li><code class="bash">j</code> - opret en <em>bzip2</em> pakket fil</li>
-	<li><code class="bash">z</code> - opret en <em>gzip</em> pakket fil</li>
-</ul>
-
+<pre><code>tar -xvf gif_backup.tar.gz --wildcards *bird*</code></pre>
 
 <p>Læs mere: <a href="http://www.tecmint.com/18-tar-command-examples-in-linux/" target="_blank">http://www.tecmint.com/18-tar-command-examples-in-linux/</a></p>
 
-<h3>gzip</h3>
-
-<p><span class="inl_cmd">gzip</span> er en simpel og effektiv komprimeringsalgoritme. Den har den bedste hastigheds/filstørelses ratio. Kan genkendes på at <span class="inl_cmd">gz</span> eller <span class="inl_cmd">gzip</span> indgår i den pakkede fils navn.</p>
-
-<span class="afsnit">Pakning med gzip</span>
-
-<code class="cmd">tar cvfz gif_backup.tar.gz gif</code>
-
-<pre class="ubuntu_terminal">
-<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ tar cvzf gif_backup.tar.gz gif
-gif/
-gif/slow_clap_citizen_kane.gif
-gif/tegnefilm/
-gif/tegnefilm/run_simpson_run.gif
-gif/the bird/
-gif/the bird/thebird02.gif
-gif/the bird/thebird01.gif
-gif/the bird/thebird03.gif
-gif/the bird/thebird04.gif
-gif/mordor.gif
-gif/lachifre.gif
-</pre>
-
-<span class="afsnit">Udpakning af gzip</span>
-
-<code class="cmd">tar xvf gif_backup.tar.gz</code>
-
-<pre class="ubuntu_terminal">
-<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ tar xvf gif_backup.tar.gz
-gif/
-gif/slow_clap_citizen_kane.gif
-gif/tegnefilm/
-gif/tegnefilm/run_simpson_run.gif
-gif/the bird/
-gif/the bird/thebird02.gif
-gif/the bird/thebird01.gif
-gif/the bird/thebird03.gif
-gif/the bird/thebird04.gif
-gif/mordor.gif
-gif/lachifre.gif
-</pre>
-
-<h3>bzip2</h3>
-
-<p><span class="inl_cmd">bzip2</span> er komprimerer hårdere end <span class="inl_cmd">gzip</span> - men også langsommere. Algoritmen kræver også mere CPU og RAM end gzip. Kan genkendes på at <span class="inl_cmd">bz2</span> eller <span class="inl_cmd">bzip2</span> indgår i den pakkede fils navn.</p>
-
-<span class="afsnit">Pakning med bzip2</span>
-
-<code class="cmd">tar cvfj gif_backup.tar.bz gif</code>
-
-<pre class="ubuntu_terminal">
-<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ tar cvzf gif_backup.tar.gz gif
-gif/
-gif/slow_clap_citizen_kane.gif
-gif/tegnefilm/
-gif/tegnefilm/run_simpson_run.gif
-gif/the bird/
-gif/the bird/thebird02.gif
-gif/the bird/thebird01.gif
-gif/the bird/thebird03.gif
-gif/the bird/thebird04.gif
-gif/mordor.gif
-gif/lachifre.gif
-</pre>
-
-<span class="afsnit">Udpakning af bzip2</span>
-
-<code class="cmd">tar xvf gif_backup.tar.bz</code>
-
-<pre class="ubuntu_terminal">
-<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ tar xvf gif_backup.tar.gz
-gif/
-gif/slow_clap_citizen_kane.gif
-gif/tegnefilm/
-gif/tegnefilm/run_simpson_run.gif
-gif/the bird/
-gif/the bird/thebird02.gif
-gif/the bird/thebird01.gif
-gif/the bird/thebird03.gif
-gif/the bird/thebird04.gif
-gif/mordor.gif
-gif/lachifre.gif
-</pre>
-
-<h3>lzma</h3>
-
-<p><span class="inl_cmd">lzma</span> komprimerer hårdest af disse 3, men er også meget langsommere. Til gengæld dekomprimerer det rigtigt hurtigt. Fordelen ved at anvende <span class="inl_cmd">lzma</span> er, at man har en meget hård komprimering, og en rimelig hurtig udpakningstid. Formatet er især velegnet til backup af store mængder data. Kan genkendes på at <span class="inl_cmd">lz</span> eller <span class="inl_cmd">lzma</span> indgår i filnavnet.</p>
-
-<span class="afsnit">Pakning med lzma</span>
-
-<code class="cmd">tar cvf gif_backup.tar.lz --lzma gif</code>
-
-<p>Læg mærke til at <span class="inl_cmd">--lzma</span> skal stå før mappen der skal pakkes</p>
-
-<pre class="ubuntu_terminal">
-<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ tar cvf gif_backup.tar.lz --lzma gif
-gif/
-gif/slow_clap_citizen_kane.gif
-gif/tegnefilm/
-gif/tegnefilm/run_simpson_run.gif
-gif/the bird/
-gif/the bird/thebird02.gif
-gif/the bird/thebird01.gif
-gif/the bird/thebird03.gif
-gif/the bird/thebird04.gif
-gif/mordor.gif
-gif/lachifre.gif
-</pre>
-
-<span class="afsnit">Udpakning af lzma</span>
-
-<code class="cmd">tar xvf gif_backup.tar.lz</code>
-
-<pre class="ubuntu_terminal">
-<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ tar xvf gif_backup.tar.lz
-gif/
-gif/slow_clap_citizen_kane.gif
-gif/tegnefilm/
-gif/tegnefilm/run_simpson_run.gif
-gif/the bird/
-gif/the bird/thebird02.gif
-gif/the bird/thebird01.gif
-gif/the bird/thebird03.gif
-gif/the bird/thebird04.gif
-gif/mordor.gif
-gif/lachifre.gif
-</pre>
 
 
-<p>Herunder kan du se en sammenligning taget fra: <a href="http://tukaani.org/lzma/benchmarks.html" target="_blank">http://tukaani.org/lzma/benchmarks.html</a>. Testen er lavet på en mappe med i alt 203 Mb filer:</p>
+<h2>Lukning af computeren</h2>
+	
+<h3>reboot</h3>	
+	
+<p><em>reboot</em> genstarter computeren. Den skal køres med root-rettigheder.</p>	
 
-<table class="">
-	<thead>
-		<tr>
-			<th scope="col">Algoritme</th>
-			<th scope="col">Pakket</th>
-			<th scope="col">af oprindelig</th>
-			<th scope="col">Pakning</th>
-			<th scope="col">Udpakning</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>gzip</td>
-			<td>79,2 MB</td>
-			<td>37,2%</td>
-			<td>24,5 s &rArr; 8,3 MB/s</td>
-			<td>3,2 s &rArr; 63 MB/s</td>
-		</tr>
-		<tr>
-			<td>bzip</td>
-			<td>72,2 MB</td>
-			<td>34%</td>
-			<td>2m 37s &rArr; 1,3 MB/s</td>
-			<td>38,2s &rArr; 0,4 MB/s</td>
-		</tr>
-		<tr>
-			<td>lzma</td>
-			<td>54,1 MB</td>
-			<td>26,1%</td>
-			<td>8m 24s &rArr; 0,4 MB/s</td>
-			<td>10,1s &rArr; 20 MB/s</td>
-		</tr>		
-	</tbody>
-</table>
+<pre><code>sudo reboot</code></pre>
 
-<span class="afsnit">Kort opsumeret</span>
-
-<p>Brug <em>gzip</em> til dagligdags arbejde, og brug <em>lzma</em> når der tages backup af store mængder, f.eks. backups af drev eller store projekter.</p>
+<p>man-page reboot: <a href="http://manpages.ubuntu.com/manpages/focal/man8/reboot.8.html" target="_blank">
+http://manpages.ubuntu.com/manpages/focal/man8/reboot.8.html</a></p>
 
 
+<h3>shutdown</h3>
+
+<p><em>shutdown</em> lukker computeren ned. Kommandoen fungerer på følgende måde</p>
+
+<pre><code>sudo shutdown [Optioner] tid [besked]</code></pre>
+
+<dl class="">
+	<dt>shutdown -h 0</dt>
+	<dd>Computeren lukkes ned nu</dd>
+	<dt>shutdown -h 10 Computeren lukkes ned om 10 minutter</dt>
+	<dd>Computeren lukkes ned om 10 minutter med budskabet ”Computeren lukkes ned om 10 minutter”</dd>
+	<dt>shutdown -r 0</dt>
+	<dd>Computeren genstartes om 0 minutter</dd>
+</dl>
+
+<p>man-page shutdown: <a href="http://manpages.ubuntu.com/manpages/focal/en/man8/shutdown.8.html" target="_blank">
+http://manpages.ubuntu.com/manpages/focal/en/man8/shutdown.8.html</a></p>
 	
 </div><!-- end: col-md-9 -->
 

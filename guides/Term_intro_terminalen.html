@@ -40,27 +40,90 @@
 <div class="col-xs-9">
 	
 <h1>Terminalen - Linux' kraftværk</h1>
-	
-<p>Dette kapitel giver en grundlæggende gennemgang af filsystemet, superbrugeren og terminalen (kommandolinien) og kommandostrukturen i Linux.</p>
 
-<p>Terminalen er en tekstbaseret tilgang til Linux. Normalt ser vi en <abbr title="Graphical User Interface">GUI</abbr> (Graphical User I>nterface) som styresystemet, men det er reelt blot en skal hvor vi kan arbejde med programmer grafisk. På et UNIX-system som Linux, der er GUI reelt set en brugerflade der kører på Linux, hvor systemer som  Mac og Windows ikke har den adskillese. Her er GUI'en reelt set styresystemet og kommandolinien noget der er bygget ovenpå.</p>
+<p>Linux er oprindeligt designet til at køre ved hjælp af skrevne kommandoer. Her vil du lære hvordan du tilgår og anvender terminalen til at administrere computeren, og arbejde med filer.</p>
 
-<p>Terminalen kan gøre systemarbejde hurtigere og mere effektivt, fordi man ved scripts og præcise kommandoer kan udføre noget som kræver mange klik i en GUI.</p>
+<h2>Terminalen</h2>
 
-<h2>Tilgå terminalen</h2>
+<p>Når du starter Ubuntu op, så kører den det vi kalder sessions. På en server starter du i TTY1, og på en desktop starter du i en grafisk brugerflade. Uanset om du logger ind på en server eller en desktop, så starter du i brugerens hjem.</p>
 
-<p>Terminalen kan tilgås på 2 måder. Igennem <abbr title="TeleTYpewriter">TTY</abbr> (<b>T</b>ele<b>TY</b>pewriter) eller en session.</p>
+<p>På en server ser det sådan ud:</p>
 
-<h3>TTY</h3>
+<samp class="terminal">Ubuntu 20.04.1 server1 tty1
 
-<p>Når Ubuntu er startet op kører der 7 terminalsessions, som man kan logge ind på. Som standard starer man op i session 7 som er den grafiske brugerflade (GUI).</p>
+server1 login: _
 
-<p>På den måde kan du logge på din maskine selvom f.eks. GUI'en går ned. Det kan f.eks. være hvis man tester en ny grafikdriver, og den låser systemet.</p>
 
-<p>Du skifter TTY ved hjælp af tastekombinationen: <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>F1</kbd> til <kbd>F7</kbd>.</p>
 
-<p>Oversigt over TTY'er</p>
 
+</samp>
+
+<h2>Sessions</h2>
+
+<p>Alle Linux-systemer kører flere sessions som kører i hver deres TTY (Tele TYpewriters ). Hver session kan have forskellige brugere logget på.</p>
+
+<p>Der er lidt forskel på Ubuntu desktop og Ubuntu server, som du kan se i tabellen herunder.</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th scope="col">Session</th>
+			<th scope="col">Ubuntu desktop</th>
+			<th scope="col">Ubuntu Server</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>TTY1</td>
+			<td>GUI til ekstra brugere</td>
+			<td>Terminal 1</td>
+		</tr>
+		<tr>
+			<td>TTY2</td>
+			<td>Opstarts GUI</td>
+			<td>Terminal 2</td>			
+		</tr>
+		<tr>
+			<td>TTY3</td>
+			<td>Terminal 1</td>
+			<td>Terminal 3</td>			
+		</tr>
+		<tr>
+			<td>TTY4</td>
+			<td>Terminal 2</td>
+			<td>Terminal 4</td>			
+		</tr>
+		<tr>
+			<td>TTY5</td>
+			<td>Terminal 3</td>
+			<td>Terminal 5</td>			
+		</tr>
+		<tr>
+			<td>TTY6</td>
+			<td>Terminal 4</td>
+			<td>Terminal 6</td>			
+		</tr>
+		<tr>
+			<td>TTY7</td>
+			<td>GUI 2</td>
+			<td>N/a</td>			
+		</tr>
+		<tr>
+			<td>TTY8</td>
+			<td>GUI 3</td>
+			<td>N/a</td>			
+		</tr>
+	</tbody>
+</table>
+
+<p>Du kan skifte mellem sessions ved at bruge følgende tastekombination.</p>
+
+<p><kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>F1</kbd> til <kbd>F8</kbd></p>
+
+<p>Har du din server kørende i VirtualBox skal du anvende:</p>
+
+<p><kbd>Højre Ctrl</kbd>+<kbd>F1</kbd> til <kbd>F8</kbd></p>
+<!--
 <ul class="disc">
 	<li>TTY1 - Login til ekstra brugeres GUI'er</li>
 	<li>TTY2 - Den primære grafiske GUI</li>
@@ -71,32 +134,23 @@
 	<li>TTY7 - Den 2. GUI bruger</li>
 	<li>TTY8 - Den 3. GUI bruger</li>
 </ul>
-
-<p>Jeg har ikke testet med mere end 2 ekstra brugere, og har ikke kunne finde dokumentation for dette. </p>
-
-<p>Kører du med VirtualBox skal du anvende højre <kbd>Ctrl</kbd>.</p>
+-->
 
 
-<h3>Terminalsession</h3>
 
-<p>Terminalsessions er forskellige fra <abbr title="TeleTYpewriter">TTY</abbr>, da de kører ovenpå GUI'en. En session giver altså adgang til kommandolinien uden at man forlader sin GUI.</p>
+<h2>Overblik over terminalen</h2>
 
-
-<p>Hvis man har startet Ubuntu op kan man tilgå en terminalsession ved hjælp af tastekombinationen <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>T</kbd>. Det vil starte en termial op i et nyt vindue, og hvor din bruger er logget ind.</p>
-
-<pre class="ubuntu_terminal">
-<span class="green1">tj@tj-VirtualBox</span>:<span class="blue1">~</span>$ 
+<samp class=""><span class="terminal_green">tj@server1</span>:<span class="terminal_tilde">~</span>$ 
 
 
 
 
 
 
-</pre>
+</samp>
 
-<p>jo længere tid man bruger Linux - jo mere vil man anvende terminalen. Simpelthen fordi det er smartere og langt mere effektivt end at klikke sig frem. </p>
 
-<h2>Overblik</h2>
+
 
 <p>Når man er logget ind får man følgende information fra kommandolinien</p>
 
@@ -104,7 +158,7 @@
 	<li>Hvem man er,</li>
 	<li>Computerens navn,</li>
 	<li>hvor man er i filsystemet og </li>
-	<li>Hvilken type bruger man er</li>
+	<li>Hvilken type bruger man er. <em>$</em> for almindelige bruger, og <em>#</em> for root</li>
 </ol>
 
 <p>Linien <em>tj@tj-VirtualBox:~$</em> fortæller altså:</p>
@@ -113,15 +167,23 @@
 	<li>Brugeren er <em>tj</em></li>
 	<li>Computerens navn er <em>tj-virtualBox</em></li>
 	<li>Man er i ens personlige mappe. Angives med <em>~</em></li>
-	<li>Man er en almindelig bruger. Angives med <em>$</em></li>
+	<li>Man er en almindelig bruger. </li>
 	
 </ol>
 
-<p><em>$</em> bliver erstattet af <em>#</em> hvis man er superbruger (root):</p>
+<p><em>$</em> bliver erstattet af <em>#</em> hvis man er root (se nedenfor):</p>
 
 <samp><span class="terminal_green">tj@server1</span>:<span class="terminal_tilde">~</span>$ sudo su
 [sudo] password for tj: 
 root@tj-VirtualBox:/home/tj# </samp>
+
+
+
+
+
+
+
+<h2>Kommandoer</h2>
 
 <p>De fleste kommandoer har tre sektioner:</p>
 
@@ -165,11 +227,9 @@ real	0m3.041s
 user	0m0.004s
 sys	0m0.000s</samp>
 
-<h2>Superbrugeren</h2>
+<h2>root</h2>
 
-<p>Alle Linux har en superbruger (<em>root</em>), som har rettigheder til at gøre alt på maskinen. Denne bruger anvender man til at lave systemarbejde med f.eks. at konfigurere programmer og installere programmer. På Ubuntu er <em>root</em>-kontoen ikke aktiveret, men man kan "opgradere" sin bruger til at have administratorrettigheder ved hjælp af kommandoen <em>sudo</em>. <em>sudo</em> kommandoen undersøger om man er medlem af sudo-gruppen og giver igennem denne gruppe adgang til at man kan udføre administrationsarbejde.</p>
-
-<p>Superbrugren har følgende rettigheder/opogaver</p>
+<p><em>root</em> er Linuxsystemets superbruger, som har rettigheder til at gøre alt. Det kan f.eks. være:</p>
 
 <ul class="disc">
 	<li>Opdatering af systemet</li>
@@ -179,35 +239,65 @@ sys	0m0.000s</samp>
 	<li>Tilføjelse og ændring af brugere</li>
 </ul>
 
+<p>Af sikkerhedshensyn kan det ikke lade sig gøre at logge på som root. For at klare dette problem har man lavet en gruppe, hvor man kan tilføje brugere der kan få <em>root</em>-rettigheder. Gruppen kaldes <em>sudo</em>.</p>
 
-<p>Se eksemplet herunder hvor jeg vil have informationer om den første harddisk (<code class="bash">/dev/sda</code>) ved hjælp af fdisk kommandoen <code class="bash">fdisk -d /dev/sda</code>:</p>
+<p>Brugeren du oprettede da du installerede computeren er automatisk medlem af denne gruppe.</p>
 
-<samp><span class="terminal_green">tj@server1</span>:<span class="terminal_tilde">~</span>$ disk -l /dev/sda
-fdisk: kunne ikke åbne /dev/sda: Adgang nægtet
-<span class="terminal_green">tj@server1</span>:<span class="terminal_tilde">~</span>$ sudo fdisk -l /dev/sda
-[sudo] adgangskode for tj: 
-<b>Disk /dev/sda: 100 GiB, 107374182400 bytes, 209715200 sectors</b>
-Units: sectors of 1 * 512 = 512 bytes
-Sector size (logical/physical): 512 bytes / 512 bytes
-I/O size (minimum/optimal): 512 bytes / 512 bytes
-Disklabel type: dos
-Disk identifier: 0xf5fc72dc
+<div class="alert">
+	
+	<p>Når du udfører kommandoer med <em>sudo</em>, så har du ret til at gøre alt.</p>
+	
+	<p>Det betyder også at du kan ødelægge og slette vigtige filer på computeren.</p>
+	
+</div>
 
-<b>Enhed      Opstart     Start      Slut  Sektorer Size Id Type</b>
-/dev/sda1  *            2048 192939547 192937500  92G 83 Linux
-/dev/sda2          192942078 209713151  16771074   8G  5 Udvidet
-/dev/sda5          192942080 209713151  16771072   8G 82 Linux swap / Solaris</samp>
+<h3>Et eksempel</h3>
 
-<p>Under første kørsel bliver det gjort med brugeren tj's rettigheder. Det medfører at <code class="bash">fdisk</code> ikke har ret til at kigge på harddiskens data. I det andet tilfælde "løfter" jeg rettighedsniveauet til root-niveau, som så giver mig de informationer jeg ønsker.</p>
+<p>Her vil en bruger have informationer om harddiskens partitioner</p>
 
-<h3>Noget om sikkerhed</h3>
+<pre><code>parted -l</code></pre>
 
-<p>Når man anvender <em>sudo</em> så vil computeren huske kodeordet i et kort stykke tid. Derfor bør man altid afslutte en terminal når man er færdig med sit arbejde. Det gør man ved at køre kommandoen <em>exit</em> eller bruge tastekombinationen <kbd>Alt</kbd>+<kbd>F4</kbd>.</p>
+<samp><span class="terminal_green">tj@server1</span>:<span class="terminal_tilde">~</span>$ parted -l
+/dev/mapper/control: open failed: Permission denied
+Failure to communicate with kernel device-mapper driver.
+Incompatible libdevmapper 1.02.167 (2019-11-30) and kernel driver (unknown version).
+</samp>
+
+<p>Første linie fortæller: <em>Permission denied</em>, fordi brugeren ikke har adgang.</p>
+
+<p>Bruger vi <em>sudo</em> foran kommandoen bliver vi bedt om vores password.</p>
+
+<samp><span class="terminal_green">tj@server1</span>:<span class="terminal_tilde">~</span>$ sudo parted -l
+[sudo] password for tj: </samp>
+
+<p>Når vi har indtastet det, får vi </p>
+
+<samp>Model: ATA VBOX HARDDISK (scsi)
+Disk /dev/sda: 107GB
+Sector size (logical/physical): 512B/512B
+Partition Table: gpt
+Disk Flags: 
+
+Number  Start   End     Size    File system  Name  Flags
+ 1      1049kB  2097kB  1049kB                     bios_grub
+ 2      2097kB  1076MB  1074MB  ext4
+ 3      1076MB  107GB   106GB
+
+Model: Linux device-mapper (linear) (dm)
+Disk /dev/mapper/ubuntu--vg-ubuntu--lv: 32.2GB
+Sector size (logical/physical): 512B/512B
+Partition Table: loop
+Disk Flags: 
+
+Number  Start  End     Size    File system  Flags
+ 1      0.00B  32.2GB  32.2GB  ext4</samp>
 
 
-<h2>root-shell</h2>
+<h3>root-shell</h3>
 
 <p>Hvis der skal udføres meget administrationsarbejde vælger man ofte at bruge kommandoen <em>sudo su</em>. Denne kommando ændrer ens bruger til root, og man får adgang til root-shell:</p>
+
+<p>I en <em>root-shell</em> udføres alle kommandoer som root.</p>
 
 <pre><code>sudo su</code></pre>
 
@@ -215,16 +305,9 @@ Disk identifier: 0xf5fc72dc
 [sudo] password for tj: 
 root@tj-VirtualBox:/home/tj# </samp>
 
-<p>Hvis man skal lave systemarbejde kan det nogle gange være optimalt at anvende root-shell. Der er to ting man skal være opmærksom på.</p>
+<p>Hvis man skal lave systemarbejde kan det nogle gange være optimalt at anvende root-shell. </p>
 
-<ol class="">
-	<li>alt man opretter vil blive oprettet med root som ejer og gruppe.</li>
-	<li>root kan alt ... Det betyder man skal tænke sig om, for man kan også komme til at lave ændringer som ødelægger.</li>
-</ol>
-
-
-
-<h3>Noget om sikkerhed</h3>
+<h3>Husk at lukke ned</h3>
 
 <p>Man skal altid lukke en terminal-session ned når man er færdig med sit arbejde. Det gøres ligesom ovenfor ved hjælp af kommandoen: <em>exit</em>.</p>
 
@@ -285,7 +368,7 @@ kommandoen bruges (Synopsis) og de optioner man kan tilføje (Descriptions). Her
 
 <pre><code>ubuntu man ls</code></pre>
 
-<p>Så er første link som regel til man-siderne</p>
+<p>Her vil det første link som regel være direkte til Ubuntu's manpages.</p>
 
 <figure id="">
 
