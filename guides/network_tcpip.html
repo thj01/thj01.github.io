@@ -42,100 +42,29 @@
 
 <h1>TCP/IP</h1>
 
+<p>TCP/IP er den netværksprotokol, der anvendes stort set alle steder. Derfor kan det være vigtigt at du har en forståelse for den dens opbygning og funktion.</p>
+
+<p>TCP/IP modellen blev oprindeligt beskrevet i 1974 af Vint Cerf og Bob Kahn, og den version vi anvender i dag er <em>RFC 1122 Internet STD3</em>.</p>
+
+<p>TCP/IP sørger for, at data kommer frem frem til det rigtige sted og at der ikke er fejl i de data der modtages:</p>
+
 <h2>TCP/IP modellen</h2>
 
-<p>Herunder vil jeg kort gennemgå TCP/IP modellen. Det er vigtigt for at forstå den måde et TCP/IP netværk fungerer, så man senere kan fejlsøge og fejlrette. </p>
+<p>TCP/IP modellen er opdelt i 4 lag (arbejdsgange), som vi kan opstille på følgende måde:</p>
 
-<p>TCP/IP modellen blev oprindeligt beskrevet i 1974 af Vint Cerf og Bob Kahn, og den version vi anvender i dag er <span class="inl_cmd">RFC 1122 Internet STD3</span>. TCP/IP modellen beskriver hvordan nettet fungerer ved hjælp af lag. </p>
-
-<p>Grundlæggende sørger TCP/IP for, at data der skal sendes frem og tilbage over netværk kommer frem til det rigtige sted og at der ikke er fejl i de data der modtages:</p>
-
-<h3>Modellens opbygning</h3>
-
-<p><span class="inl_cmd">TCP/IP</span> modellen er opdelt i 4 lag, hvor data bliver klargjort til at blive sendt ud på et netværk. </p>
-
-<ul class="disc">
+<ol class="">
 	<li>Applikation</li>
 	<li>Transport</li>
 	<li>Internet</li>
-	<li>Link</li>
-</ul>
+	<li>Link</li>			
+</ol>
 
-<p>Herunder er der en illustration der viser hvordan lagene er pakket ind i hinanden.</p>
+<p>Applikation og transport foregår på enheden (kaldet en host). Internet og Link foregår på selve netværket.</p>
 
-<figure id="">
+<!--
+<p> Grafisk kan processen opstilles på følgende måde.</p>
 
-	<img class="p80" src="images/network_tcpip_alle_lag.svg" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-
-<h4>Applikation</h4>
-
-<p>Sørger for at data inddeles i mindre pakker når de skal sendes og samler dem igen når de modtages.</p>
-
-<figure id="">
-
-	<img class="p60" src="images/network_tcpip_lag1_applikation.svg" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-
-
-<h4>Transport</h4>
-
-<p>På transportlaget får datapakkerne en <span class="inl_cmd">TCP</span>- eller <span class="inl_cmd">UDP</span>header. I modellen anvendes <span class="inl_cmd">TCP</span>, men det kunne lige så godt være <span class="inl_cmd">UDP</span>.</p>
-
-<figure id="">
-
-	<img class="p60" src="images/network_tcpip_lag2_transport.svg" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-
-<span class="afsnit">TCP</span>
-
-<p> <span class="inl_cmd">TCP</span> står for <span class="bold">T</span>ransmission <span class="bold">C</span>ontrol <span class="bold">P</span>rotocol (Forsendelses-kontrol-protokol). Dette lag sørger for at pakken indeholder de korrekte data. Hvis data ikke er korrekt afviser <span class="inl_cmd">TCP</span> pakken og anmoder om at få den sendt igen. <span class="inl_cmd">TCP</span> kan altså ikke fejlkorrigere, men blot sikre at data er korrekt.</p>
-
-<span class="afsnit">UDP</span>
-
-<p><span class="inl_cmd">UDP</span> står for <span class="bold">U</span>ser <span class="bold">D</span>ontrol<span class="bold"> P</span>rotocol. Protokollen er fungere lidt anderledes en <span class="inl_cmd">TCP</span>, da den er designet til at levere en konstant datastrøm, f.eks. til Internetbaserede filmtjenester. Når man anvender <span class="inl_cmd">UDP</span> risikerer man at tabe datapakker, hvilket ikke betyder så meget når vi taler om lyd og video, når det kun er få datapakker der tabes. Selve kontrollen af <span class="inl_cmd">UDP pakker foregår på applikations</span>-laget (lag 4), sådan at pakkerne blot bliver afvist af systemet hvis de er fejlbehæftede. På den måde sikres de korrekte data, uden at datastrømmen afbrydes.</p>
-
-<h4>Internet</h4>
-
-<p>På Internet laget får hver datapakke en <span class="inl_cmd">IP</span>-adresse. <span class="inl_cmd">IP</span> står for <span class="bold">I</span>nternet <span class="bold">P</span>rotocol. Indtil videre har <span class="inl_cmd">TCP/IP</span> protokollen kun handlet om at sikre og organisere data, men her sættes der en adresse på, så det er den rigtige computer der modtager pakken. Det kan f.eks. være IP-adressen: <span class="inl_cmd">192.168.0.65</span>.</p>
-
-<figure id="">
-
-	<img class="p60" src="images/network_tcpip_lag3_internet.svg" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-
-
-<h4>Link</h4>
-
-<p>De ovenstående link sørger for at <span class="inl_cmd">TCP/IP</span> protokollen kan sørge for data på et netværk hvor computere anvender protokollen. Med link-laget kan man gøre datapakkerne protokoluafhængige, sådan at pakkerne kan behandles af hardware. Det gøres ved hjælp af <span class="inl_cmd">MAC</span>-adresser. <span class="inl_cmd">MAC</span> står for <span class="bold">M</span>edia <span class="bold">A</span>ccess <span class="bold">C</span>ontrol.</p>
-
-<p><span class="inl_cmd">MAC</span>-adresser er unikke identifikationer på hardware, hvilket betyder at datapakkerne kan finde den rigtige modtager kun baseret på hardware. Hvilket er den måde Internettet er opbygget på.</p>
-
-<figure id="">
-
-	<img class="p60" src="images/network_tcpip_lag4_link.svg" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-
-
-
-<h3>Dataflow</h3>
-
-<p>Herunder er der et diagram der viser hvordan data kommer fra en computer til en anden. Afsendercomputeren sender data igennem <span class="inl_cmd">TCP/IP</span>-protokollen. I det pakkerne kommer ud på lokalnettet finder de ud af modtageren findes på et andet netværk.</p>
+<p>Herunder kan du se hvordan de forskellige lag anvendes på nettet</p>
 
 <figure id="">
 
@@ -145,119 +74,207 @@
 
 </figure>
 
-<p>For at få adgang til det andet netværk bliver pakkerne ledt igennem routeren ud på internettet, hvor der er DNS-servere der ved hvor den router der giver adgang til modtagercomputerens netværk er. Her bliver pakkerne sendt hen, for at modtager-routeren kan sende pakkerne videre til modtageren. Her bliver data fra <span class="inl_cmd">TCP/IP</span> pakkerne gendannet.</p>
 
-<h3>Adskillelse mellem lagene</h3>
+<h2>TCP/IP pakker</h2>
+-->
 
-<p>Internettet består af en masse mindre netværk, som er forbundet ved hjælp af routere. Hver gang vi passerer en laver vi et hop, som faktisk er det begreb man anvender for at tælle antallet af routere man har passeret. Når du sidder ved computeren og skal have kontakt med f.eks. dr.dk, så går du igennem 7 routere. Prøv at se nedestående kommando.</p>
+<p>Opbygningen af TCP/IP pakkerne kan vises på følgende måde:</p>
 
-<pre class="ubuntu_terminal">
-<span class="green1">thoj@thoj-VirtualBox</span>:<span class="blue1">~</span>$ sudo traceroute -I -n dr.dk
-traceroute to dr.dk (159.20.6.38), 30 hops max, 60 byte packets
- 1  192.168.0.1  0.162 ms  0.209 ms  0.312 ms <span class="red">&lt;-- min router</span>
- 2  10.29.0.1  7.623 ms  12.167 ms  12.554 ms <span class="red">&lt;-- min udbyders router</span>
- 3  94.189.51.68  12.959 ms  13.353 ms  13.732 ms <span class="red">&lt;-- øhhh</span>
- 4  83.88.21.83  14.107 ms  14.502 ms  14.884 ms
- 5  194.19.204.22  16.196 ms  17.106 ms  17.549 ms
- 6  194.19.207.18  16.640 ms  16.864 ms  17.268 ms
- 7  159.20.6.38  28.036 ms  21.827 ms  17.294 ms <span class="red">&lt;-- dr.dk ;)</span>
-</pre>
+<figure id="">
 
-<p>Hvis du i en browser vælger at indtaste IP'en <a href="http:\\159.20.6.38" target="_blank">159.20.6.38</a>, så får du fat i dr.dk</p>
+	<img class="p80" src="images/network_tcpip_alle_lag.svg" alt="" title="" />
 
-<p>Fordelen ved laginddelingen er, at hver af de computere</p>
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Lad os se hvad der sker på de enkelte trin, når data gøres klar til netværket. Når pakken modtages fra netværket går processen den anden vej.</p>
+
+<h3>Applikation</h3>
+
+<p>På dette lag bliver filen inddelt i mindre pakker der er maks 1500 bytes.</p>
+
+<figure id="">
+
+	<img class="p60" src="images/network_tcpip_lag1_applikation.svg" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h3>Transport</h3>
+
+<p>Pakken får tildelt enten en TCP-header eller en UDP-header:</p>
+
+<dl class="">
+	<dt>TCP - Transmission Control Protocol</dt>
+	<dd>Fejlkontrol - sikrer at pakken indeholder de korrekte data</dd>
+	<dt>UDP - User Datagram Protocol</dt>
+	<dd>Har modsat TCP ingen fejlkontrol. Bruges til f.eks. streamning af tv signal. Evt. kontrol foregår på applikationsniveau</dd>
+</dl>
+
+<figure id="">
+
+	<img class="p60" src="images/network_tcpip_lag2_transport.svg" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h3>Internet</h3>
+
+<p>Modtagerens IP-adresse sættes på (IP-header)</p>
+
+<figure id="">
+
+	<img class="p60" src="images/network_tcpip_lag3_internet.svg" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h3>Link</h3>
+
+<p>Her sætter computeren modtagerens MAC-adresse på. Er det på det lukkede netværk finder computeren selv ud af hvad Mac-adressen er. Findes adressen ikke her, anvendes MAC-adressen på netværkets gateway, som kan få pakken korrekt frem.</p>
+
+<figure id="">
+
+	<img class="p60" src="images/network_tcpip_lag4_link.svg" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h2>Det fysiske netværket</h2>
+
+<p>Det fysisk netværk består af switche og routere, når vi ser bort fra kabler og trådløse forbindelser.</p>
+
+<p><b>Switche</b></p>
+
+<p>Switche ved hvor netværkets enheder er ved hjælp af MAC-adresser. Så snart en enhed kobler sig på netværket husker switchen det. Switchen kan kun denne ene ting, men er rigtig effektiv til det.</p>
+
+<p>I forhold til datapakken gør switchen det, at den kikker  i dens <em>Frame header</em>, lukker den igen og sender den til modtageren</p>
+
+<p><b>Routere</b></p>
+
+<p>Routeren fungerer som en adgangsportal (gateway) mellem to netværk, og har en tabel over de computere der er i dem.</p>
+
+<p>Routeren har adgang til andre netværk, og har en tabel over de adresser den skal sende til, for at nå modtageradressen. Findes modtageradressen ikke i det netværk den sidder på, så sender den til dette netværks gateway. Denne proces fortsætter indtil pakken kommer til modtageren.</p>
+
+<details>
+
+	<summary>Et konkret eksempel</summary>
+	
+<p>Herunder er et output fra en <em>traceroute</em> forspørgsel, der viser de hop der skal til for at nå <em>www.google.com</em>.</p>	
+
+<p>På Ubuntu skal tracerouter installeres først:</p>
+
+<pre><code>sudo apt install traceroute -y</code></pre>
+
+<samp><span class="terminal_green">tj@server1</span>:<span class="terminal_tilde">~</span>$ traceroute www.google.dk
+traceroute to www.google.dk (172.217.23.131), 30 hops max, 60 byte packets
+ 1  _gateway (192.168.0.1)  2.588 ms  6.301 ms  6.363 ms
+ 2  100.73.128.3 (100.73.128.3)  5.921 ms  5.875 ms  6.015 ms
+ 3  be201.aba-pe31.link.stofa.net (178.155.255.250)  6.689 ms  6.645 ms  7.344 ms
+ 4  be208.koldt-cor03.link.stofa.net (178.155.255.225)  7.995 ms  8.083 ms  8.361 ms
+ 5  be101.koldt-br01.link.stofa.net (212.10.45.200)  8.116 ms  8.053 ms  8.704 ms
+ 6  100.127.255.233 (100.127.255.233)  8.395 ms  4.773 ms  6.673 ms
+ 7  be300-4094.koldt-br01.link.stofa.net (212.112.132.26)  6.574 ms  6.696 ms  6.653 ms
+ 8  * be102.koldb-cor03.link.stofa.net (212.10.45.203)  16.896 ms be101.koldt-cor03.link.stofa.net (212.10.45.201)  16.991 ms
+ 9  89.184.134.181 (89.184.134.181)  16.956 ms  17.280 ms  17.244 ms
+10  212.10.11.15 (212.10.11.15)  17.706 ms  18.179 ms  19.138 ms
+11  108.170.252.65 (108.170.252.65)  20.315 ms 108.170.251.193 (108.170.251.193)  20.125 ms 108.170.252.65 (108.170.252.65)  20.176 ms
+12  216.239.54.63 (216.239.54.63)  15.359 ms  15.300 ms  15.291 ms
+13  fra16s18-in-f131.1e100.net (172.217.23.131)  15.249 ms  14.653 ms  14.700 ms</samp>
+
+<p>Der er i alt 13 hop</p>
+
+<dl class="">
+	<dt>Hop 1</dt>
+	<dd>Til min lokale gateway</dd>
+	<dt>Hop 2-8</dt>
+	<dd>Interne hop i Stofas netværk</dd>
+	<dt>Hop 9-12</dt>
+	<dd>Hop udenfor Stofas netværk</dd>
+	<dt>Hop 13</dt>
+	<dd>Endeligt fremme ved www.google.dk</dd>
+</dl>
+
+</details>
 
 
 
-<h2>Andre modeller</h2>
 
-<p>Netværk er en kompliceret størrelse, og selvom <span class="inl_cmd">TCP/IP</span>-modellen er den der anvendes på Internettet, så er der en anden model, som bliver anvendt meget. Bl.a. af Cisco, som er storleverandør af netværksudstyr. De anvender OSI modellen ( <span class="bold">O</span>pen <span class="bold">S</span>ystems <span class="bold">I</span>nterconnection ) som arbejder med 7 lag.</p>
+<p>Her vil vi se på hvad der sker i to forskellige sammenhænge:</p>
 
-<p>Nedestående skema er en modificeret udgave af: <a href="http://en.wikipedia.org/wiki/OSI_model" target="_blank">http://en.wikipedia.org/wiki/OSI_model</a></p>	
+<ol class="">
+	<li>Lukket netværk, der ikke har adgang til andre netværk</li>
+	<li>Det routede netværk Et netværk der har adgang til andre netværk.</li>
+</ol>
+
+<h3>Det lukkede netværk</h3>
+
+<p>På et lukket netværk bliver pakken genkendt af switchen og sendt direkte videre til modtageren.</p>
+
+<p>Det sker ved at switchen kigger i pakkens frame-header.</p>
+
+<figure id="">
+
+	<img class="p60" src="images/TCP_IP_closed_network.svg" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h3>Det routede netværk</h3>
+
+<p>På det routede netværk vil pakker med ukendte MAC-adresser blive sendt til gateway'en. Den sørger så for, at sende den videre i den netværk.</p>
+
+<p>I illustrationen herunder har jeg udeladt switchen, da den ikke er relevant for hvordan TCP/IP pakkerne bliver routed.</p>
+
+<figure id="">
+
+	<img class="p90" src="images/TCP_IP_routed_network.svg" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Læg mærke til, at routerne på nettet ikke åbner hele TCP/IP pakken. Så snart de har tjekket IP-adressen, så ved routen om pakken skal sendes videre eller sendes ind i routerens eget netværk.</p>
+
+
+<h2>OSI</h2>
+
+<p>Læser du om netværk, vil du støde på OSI modellen (Operation Interconnection Reference). OSI modellen består af 7 trin:</p>
+
+<ol class="">
+	<li>Application</li>
+	<li>Presentation</li>
+	<li>Session</li>
+	<li>Transport</li>
+	<li>Network</li>
+	<li>Data link</li>
+	<li>Physical</li>
+</ol>
+
+<p>Du kan se sammenhængen med TCP/IP modellen i tabellen herunder, som er en modificeret udgave af: <a href="http://en.wikipedia.org/wiki/OSI_model" target="_blank">http://en.wikipedia.org/wiki/OSI_model</a></p>	
+
 
 <table class="">
 	<thead>
-
 		<tr>
-			<th colspan="3">Lag</th>
-			<th>TCP/IP</th>
-			<th>Lag</th>
+			<th scope="col"></th>
+			<th scope="col">OSI</th>
+			<th scope="col">TCP/IP<br/>RFC 1122 Internet STD3</th>
+			<th scope="col">Cisco <br/>Acadamy</th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr>
-			<td rowspan="4">Værts lag</td>
-			<td>7</td>
-			<td>Application</td>
-			<td rowspan="3"><br/><br/>Applikation</td>
-			<td rowspan="3">4</td>
-		</tr>
-		<tr>
-			<td>6</td>
-			<td>Presentation</td>
-
-		</tr>
-		<tr>
-			<td>5</td>
-			<td>Session</td>
-
-		</tr>
-		<tr>
-			<td>4</td>
-			<td>Transport</td>
-			<td>Transport</td>
-			<td>3</td>
-		</tr>
-		<tr>
-			<td rowspan="3">Medie lag</td>
-			<td>3</td>
-			<td>Network</td>
-			<td>Internet</td>
-			<td>2</td>
-		</tr>
-		<tr>
-			<td>2</td>
-			<td>Data Link</td>
-			<td>Link</td>
-			<td>1</td>
-		
-		</tr>
-		<tr>
-			<td>1</td>
-			<td>Physical</td>
-			<td>-- n/a --</td>
-			<td>-- n/a --</td>
-		</tr>
-	</tbody>
-</table>
-
-<p>Hvis man sammenligner <span class="inl_cmd">OSI</span>-modellen med <span class="inl_cmd">TCP/IP</span>modellen, så lægger man mærke til tre ting.</p>
-
-<ul class="disc">
-	<li>Der er lavet en adskillelse mellem værts- og medielag, hvor medielagene</li>
-	<li>Applikationslaget er blevet splittet op i 3</li>
-	<li>der er tilføjet det fysiske lag (kabler, hardware osv.)</li>
-</ul>
-
-<h3>En oversigt over modeller</h3>
-
-<p>Der igennem tiden blevet udviklet andre modeller, og herunder har jeg sidestillet de to ovenfor gennemgåede modeller med dem. Alle modellerne sigter mod det samme mål: sikker datatransmission. Bagved dem ligger der arbejdspapirer der går ind i de tekniske detaljer hvis man ønsker at udvikle nyt programmel efter dem.</p>
-
-<table class="">
-	<thead>
-		<tr>
-			<th>OSI</th>
-			<th>TCP/IP<br/>RFC 1122 Internet STD3</th>
-			<th>Cisco <br/>Acadamy</th>
-			<th>RFC871 <br/>Arpanet ref model</th>			
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
+			<td rowspan="4">Host <br/>Layer</td>
 			<td>Application</td>
 			<td rowspan="3">Applikation</td>
 			<td rowspan="3">Applikation</td>
-			<td rowspan="3">Applikation/Proces</td>
 		</tr>
 		<tr>
 			<td>Presentation</td>
@@ -269,9 +286,9 @@ traceroute to dr.dk (159.20.6.38), 30 hops max, 60 byte packets
 			<td>Transport</td>
 			<td>Transport</td>
 			<td>Transport</td>
-			<td rowspan="2">Host-to-host</td>
 		</tr>
 		<tr>
+			<td rowspan="3">Media <br/>Layer</td>
 			<td>Network</td>
 			<td>Internet</td>
 			<td>Internetwork</td>
@@ -280,153 +297,30 @@ traceroute to dr.dk (159.20.6.38), 30 hops max, 60 byte packets
 			<td>Data link</td>
 			<td>Link</td>
 			<td rowspan="2">Network Interface</td>
-			<td rowspan="2">Network Interface</td>
 		</tr>
 		<tr>
 			<td>Physical</td>
 			<td>(n/a)</td>
-
-		</tr>
-		
-	</tbody>
-</table>
-
-<p><a href="http://en.wikipedia.org/wiki/Internet_protocol_suite#cite_note-21" target="_blank">http://en.wikipedia.org/wiki/Internet_protocol_suite#cite_note-21</a></p>
-
-
-<h2>IP - Internet Protokoller</h2>
-
-<p>Der findes 2 IP protokoller: <span class="inl_cmd">IPv4</span> og <span class="inl_cmd">IPv6</span>. <span class="inl_cmd">IPv4</span> er den oprindelige og var designet til at have <span class="math">\( 2^32 = 4294967296 \)</span> unikke adresser. Designet har været effektivt, men den digitale udvikling har gjort at der skal bruges flere adresser.<\p>
-
-<p>For at imødekomme dette behov har man udviklet <span class="inl_cmd">IPv6</span> som på mange områder minder om <span class="inl_cmd">IPv4</span>, men er blevet tilpasset og designet til den digitale fremtid vi er på vej ind i. F.eks. er der nu <span class="math">\( 2^128 = 3,402 \cdot 10^{38} \)</span> adresser. <span class="inl_cmd">IPv6</span> er så smart designet, at de gamle <span class="inl_cmd">IPv4</span> adresser kan køre videre upåvirket på <span class="inl_cmd">IPv6</span> netværk. Vevd hjælp af <span class="inl_cmd">IPv6</span> kan man nu sætte alle de ting man vil på internettet.</p>
-
-<h3>IP-adresser</h3>
-
-<p>Som du kunne læse ovenfor er antallet af mulige adresser enorm både i <span class="inl_cmd">IPv4</span> og <span class="inl_cmd">Ipv6</span>. For lettere at kunne arbejde med disse adresser bliver de omskrevet. <span class="inl_cmd">IPv4</span> bliver omskrevet til 10-tals systemet og <span class="inl_cmd">Ipv6</span> til det hexadecimale system. Herunder er der et eksempel på hver af adresserne:</p>
-
-<p><span class="inl_cmd"><span class="bold">IPv4</span></span>: 192.168.1.17</p>
-
-<p><span class="inl_cmd"><span class="bold">IPv6</span></span>: 2001:DB8:AC10:FE01::20</p>
-
-<p>Tegnene . og : som bruges i IP-adresserne er sat for at gøre adresserne læselige for os . Computeren arbejder med disse adresser binært dvs med 32 bit (32 cifre) for IPv4 og 128 bit (128 cifre)for IPv6.</p>
-
-<p>Herunder kan du se forskellige repræsentationer for den samme <span class="inl_cmd">IPv4</span> adresse:</p>
-
-<table class="">
-	<thead>
-		<tr>
-			<th colspan="5">Menneskelæsbart</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>Decimal oktet</td>
-			<td>192</td>
-			<td>168</td>
-			<td>1</td>
-			<td>17</td>
-		</tr>
-		<tr>
-			<td>Binær samlet</td>
-			<td colspan="4">11000000101010000000000100010001</td>
-		</tr>
-		<tr>
-			<td>binær oktet</td>
-			<td>11000000</td>
-			<td>10101000</td>
-			<td>00000001</td>
-			<td>00010001</td>
-		</tr>
-
-		<tr>
-			<td>Decimal samlet</td>
-			<td colspan="4">3232235793</td>
-		</tr>
-		<tr>
-			<td>hexadecimal oktet</td>
-			<td>0xC0</td>
-			<td>0xA8</td>
-			<td>0x01</td>
-			<td>0x11</td>
-		</tr>		
-		<tr>
-			<td>hexadecimalt samlet</td>
-			<td colspan="4">0xC0A80111</td>
 		</tr>
 	</tbody>
 </table>
 
 
+<h2>IP versioner (IPv4 og IPv6)</h2>
 
-<h3>IPv6</h3>
+<p>Oprindeligt blev IP systemet designet til at have 4,3 mia. forskellige adresser (<span class="math">\( 32 bit = 2^{32} \)</span>). Det har man forlængst erkendt var for få, så derfor har man designet IPv6 der mange flere adresser, nemlig <span class="math">\( 128 bit = 2^{128} = 3,402 \cdot 10^{38} \). Det antal er så stort at der er rigeligt.</p>
 
-<p>IPv6 protokollener lavet som en reaktion på, at man er ved at løbe tør for IPv4 adresserne og består af en 128 bits adresse mod IPv4' 32 bit. En IPv6 adresse vil således bestå af 128 binære cifre. For at en IPv6 adresse bliver læsbar, skrives den med 8 felter med et 4 cifrede hexcadecimale tal adskilt af kolon (:).</p>
+<p>Du kan se et eksempel på adresser her</p>
 
-<table class="">
-	<tbody>
-		<tr>
-			<td></td>
-			<td>2001</td>
-			<td>0DB8</td>
-			<td>AC10</td>
-			<td>FE01</td>
-			<td>0</td>
-			<td>0</td>
-			<td>0</td>
-			<td>20</td>
-		</tr>
-		<tr>
-			<td>Eks.</td>
-			<td>2001</td>
-			<td>0DB8</td>
-			<td>AC10</td>
-			<td>FE01</td>
-			<td>0</td>
-			<td>0</td>
-			<td>0</td>
-			<td>20</td>
-		</tr>
-		<tr>
-			<td>antal Hex</td>
-			<td>0xFFFF</td>
-			<td>0xFFFF</td>
-			<td>0xFFFF</td>
-			<td>0xFFFF</td>
-			<td>0xFFFF</td>
-			<td>0xFFFF</td>
-			<td>0xFFFF</td>
-			<td>0xFFFF</td>
-		</tr>
-		<tr>
-			<td>Antal dec</td>
-			<td>65.536 <br/>(16⁴)</td>
-			<td>65.536 <br/>(16⁴)</td>
-			<td>65.536 <br/>(16⁴)</td>
-			<td>65.536 <br/>(16⁴)</td>
-			<td>65.536 <br/>(16⁴)</td>
-			<td>65.536 <br/>(16⁴)</td>
-			<td>65.536 <br/>(16⁴)</td>
-			<td>65.536 <br/>(16⁴)</td>
-		</tr>
-		<tr>
-			<td>i alt</td>
-			<td colspan="4">3,4 &middot; 10<sup>38</sup></td>
-			<td colspan="4">7,9 &middot; 10<sup>28</sup> mere end IPv6</td>
-		</tr>
-	</tbody>
-</table>
+<dl class="">
+	<dt>IPv4</dt>
+	<dd>192.168.1.17</dd>
+	<dt>IPv6</dt>
+	<dd>2001:DB8:AC10:FE01::20</dd>
+</dl>
 
-<p>Den ovenstående IPv6 adresse: <span class="inl_cmd">2001:ODB8:AC10:FE01:0:0:0:20</span>, kan omskrives til <span class="inl_cmd">2001:ODB8:AC10:FE01::20</span>. Man kan altså fjerne en længere række af nuller ved at indsætte et dobbelt Kolon, dog kun en gang.</p>
 
-<p>IPv6 bliver også kaldet IPng (Internet Protokol next generation), og det skal ses som et udtryk for at man har forsøgt at imødekomme de mange problemstillinger der er ved IPv4 protokollen. En af disse er opbygningen af IPv6 adresser:</p>
-
-<figure id="">
-
-	<img src="images/IPv6_b.svg" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
+<!--
 
 <h3>Faste IP-adresser</h3>
 
@@ -465,15 +359,16 @@ traceroute to dr.dk (159.20.6.38), 30 hops max, 60 byte packets
 		</tr>
 		<tr>
 			<td><span class="inl_cmd">2001:0DB8::/32</span></td>
-			<td><span class="inl_cmd">192.0.2.0/24</span><br/>
+			<td><span class="inl_cmd">192.168.2.0/24</span><br/>
 			<span class="inl_cmd">198.51.100.0/24</span><br/>
 			<span class="inl_cmd">203.0.113.0/24</span></td>
 			<td>Anvendes i dokumentation</td>
 		</tr>
 	</tbody>
 </table>
+-->
+<!--
 
-<p>Skråstregen efter IP-adressen er CIDR adressen. Den vil blive gennemgået senere</p>
 
 <h2>Det binære, decimale og hexadecimale talsystem</h2>
 
@@ -796,11 +691,55 @@ traceroute to dr.dk (159.20.6.38), 30 hops max, 60 byte packets
 	</tbody>
 </table>
 
-
-
-
+-->
 
 <h2>Subnetting</h2>
+
+<p><span class="red">Her kommer et afsnit om subnetting</span></p>
+
+<div class="alert">
+	
+	<p>Forudsætningen for at læse dette afsnit er, at du kender til ovenstående og grundlæggende netværk (se: <a href="network.html" target="_blank">network.html</a>)</p>
+
+</div>
+
+<!--
+<p>TCP/IP er designet til at der kan skabes mindre netværk i netværket. Dette kaldes segmentering, og det netværk du sidder på er næsten med garanti subnettet. Lad os kigge på et konkret eksempel, hvor jeg tager udgangspunkt en computer i et standard hjemmenetværk med følgende opsætning.</p>
+
+<ul class="none">
+	<li>IP-adresse: 192.168.0.65</li>
+	<li>Netværks-adresse: 192.168.0.0</li>
+	<li>Netmaske: 255.255.255.0 (eller CIDR /24)</li>
+	<li>Broadcast-adresse: 192.168.0.255</li>
+	<li>Gateway: 192.168.0.1</li>
+</ul>
+
+<p><em>192.168.x.x</em> er et private netværk, som ikke kan routes. Den første adresse i dette netværk er <em>192.168.0.0</em> (netværksadressen), og den sidste er <em>192.168.255.255</em> (Broadcast). Det betyder at der reelt er plads til <span class="math">\( 2^{16} = 65536 \)</span> enheder.Dette private netværk er kendetegnet ved:</p>
+
+<ul class="disc">
+	<li>Netværksadresse: 192.168.0.0 (første adresse)</li>
+	<li>Netmaske: 255.255.0.0</li>
+	<li>Broadcastadresse: 192.168.255.255 (sidste adresse)</li>
+</ul>
+
+<p>Dette netværk kan altå have ip-adresser der ser ud som herinder</p>
+
+<ul class="disc">
+	<li>192.168.2.534</li>
+	<li>192.168.179.117</li>
+	<li>192.168.254.3</li>
+</ul>
+
+<p>Sådan er eksemplet ikke sat op.</p>
+
+<p>For at undgå det, så laver vi subnetting, så netværket bliver mindre og mere overskueligt. Det gør vi ved at "låse" nogle en del af netværksadressen ved hjælp af netmasken. I dette tilfælde låser vi den 3. oktet til at være nul, så vi kun kan bruge den sidste oktet:</p>
+
+
+
+
+
+
+
 
 <p>Efterhånden som der kom flere og flere computere på de enkelte netværk blev det nødvendigt at kunne opdele/segmentere netværk. Problemet er, at jo flere computere der er på netværket jo mere trafik kommer der. Derfor er det fornuftigt at inddele netværket i mindre enheder adskilt af routere.</p>
 
@@ -1360,6 +1299,7 @@ traceroute to dr.dk (159.20.6.38), 30 hops max, 60 byte packets
 
 </div><!-- Pagebreak end -->
 
+<!--
 <h3>Et praktisk eksempel</h3>
 
 <p>Lad os kigge på et eksempel: 10.129.56.0/26 (svarer til en netmaske på 255.255.255.192. I binært hedder netværket: 00001010.10000001.00111000.00000000, hvoraf de første 26 bit tilhører netværket og de sidste 6 tilhører værterne. De røde er netværkets bits og de grønne er værterne</p>
@@ -1458,20 +1398,11 @@ traceroute to dr.dk (159.20.6.38), 30 hops max, 60 byte packets
 		</tr>
 	</tbody>
 </table>
+-->
 
 <h2>Beregninger i netværk</h2>
 
 <p>Til at lave beregninger til et IP netværk findes der smarte programmer. F.eks. <a href="http://www.iptools.dk/ip-calc/" target="_blank">http://www.iptools.dk/ip-calc/</a></p>
-
-<p>Eller nedestående til Android.</p>
-
-<figure id="">
-
-	<img class="p60" src="images/IP_Network_Calculator.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
 
 <p>Når man starter programmet op får man en menu hvor man kan taste sin netværksadresse ind, og trække en skyder indtil man opnår den ønskede mængde adresser i sit subnet.</p>
 

@@ -46,6 +46,8 @@
 
 <p>Denne guide sigter mod at give dig et indblik i hvordan et netværk er bygget op og et overblik over netværksbegreber. Der vil være en del teori og fagbegreber, som er nødvendige for at forstå, konfigurere og fejlfinde på et netværk.</p>
 
+<p>Denne guide tager udgangspunkt i TCP/IP protokollen, som er standardprotokollen på Internettet.</p>
+
 <h3>Lidt historie</h3>
 
 <p>John Cage, der var ledende forsker hos SUN, er kendt for følgende to citater, som her </p>
@@ -69,188 +71,126 @@
 
 <p>Internettet som vi kender det i dag startede som projekt under det amerikanske forsvar i starten af 1960'erne </p>
 
-<h2>Netværk</h2>
+<h2>Et netværk</h2>
 
-<p>TCP/IP protokollen er i dag standarden på netværk. Det er den der driver Internettet og holder styr på de mange computere der er på internettet.</p>
-
-<h3>Et overblik</h3>
-
-<p>For at beskrive en enhed og dets netværk skal vi have følgende parametre.</p>
-
-<ul class="none">
-	<li>IP-adresse: Enhedens unikke ID</li>
-	<li>Netmaske: De IP-adresser der er i netværket</li>
-	<li>Netværksadresse: den først tilgængelige IP-adresse i netværket</li>
-	<li>Broadcastadresse: den sidst tilgængelige IP-adresse i netværket</li>
-	<li>Gateway: IP-adressen på den enhed der giver adgang til andre netværk</li>
-</ul>
-
-
-<h3>IP-adresser</h3>
-
-<p>Alle computer på netværket har en unik IP-adresse, sådan at man kan sende data mellem dem. Her i denne guide vil vi tage udgangspunkt i IPv4 (herefter blot omtalt som IP), som er den mest udbredte, og den version din Ubuntu computer anvender (IPv6 vil blive gennemgået længere nede).</p>
-
-<p>IP adresser består af 4 oktetter af binære tal der tilsammen danner en unik adresse. Normal vil man ikke anvende binære tal, men 10-talsystemet til at skrive værdierne. Det betyder at hver oktet kan have værdierne 0 - 255 (svarende til de binære værdier 00000000 og 11111111), da man tæller fra 0 når man arbejder med computere.</p>
-
-<p>IP-adressen <span class="inl_cmd">192.168.0.65</span> svarer altså til <span class="inl_cmd">11000000.10101000.00000000.01000001</span></p>
-
-<p>For at finde din computers IP-adresse bruger du nedestående kommando. Ip-adressen er markeret med rødt:</p>
-
-<code class="cmd">ip addr</code>
-
-<pre class="ubuntu_terminal">
-1: lo: &lt;LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1
-    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
-    inet 127.0.0.1/8 scope host lo
-       valid_lft forever preferred_lft forever
-    inet6 ::1/128 scope host 
-       valid_lft forever preferred_lft forever
-2: enp0s3: &lt;BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
-    link/ether 08:00:27:63:8e:71 brd ff:ff:ff:ff:ff:ff
-    <span class="red">inet 192.168.0.65/24 brd 192.168.0.255 scope global dynamic enp0s3</span>
-       valid_lft 2704sec preferred_lft 2704sec
-    inet6 fe80::fce5:928a:b597:7f4e/64 scope link 
-       valid_lft forever preferred_lft forever
-</pre>
-
-<p>Den ovenstående IP adresse (<span class="inl_cmd">192.168.0.65</span>) ville på binær være: <span class="inl_cmd">11000000.10101000.00000000.01000001</span>. </p>
-
-<p>Ved hjælp af den linie får jeg alle de informationer der skal til for at jeg kender min maskines adresse og det netværk den befinder sig på. De informationer der kan læses ud af denne linie er:</p>
-
-<ul class="none">
-	<li>IP-adresse: 192.168.0.65</li>
-	<li>Netmaske: /24 (eller 255.255.255.0)</li>
-	<li>Broadcast-adresse: 192.168.0.255</li>
-	<li>Netværks-adresse: 192.168.0.0</li>
-</ul>
-
-<p>Da vi har gennemgået hvad selve IP-adressen er så lad os kigge på de andre:</p>
-
-<h3>Netmaske</h3>
-
-<p>Netmasken beskriver netværket ved at angive de bits netværket kan anvende. Prøv at se nedestående skema, hvor <span class="bold"><span class="red">N</span></span> står for de bits netværket kan bruge og <span class="bold"><span class="blue">L</span></span> for de bits der er utilgængelige (låste).</p>
-
-<table id="">
-	<thead>
-		<tr>
-			<th colspan="2">Netmaske</th>
-			<th>Oversigt</th>
-			<th>Antal <br/>adresser</th>
-			<th>Mulige <br/>hosts</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>/8</td>
-			<td>255.0.0.0</td>
-			<td><span class="blue">LLLLLLLL</span> . <span class="red">NNNNNNNN</span> . <span class="red">NNNNNNNN</span> . <span class="red">NNNNNNNN</span></td>
-			<td><span class="math">\( 2^{24} = 16.777.216 \)</span></td>
-			<td><span class="math">\( 16.777.214 \)</span></td>
-		</tr>
-		<tr>
-			<td>/16</td>
-			<td>255.255.0.0</td>
-			<td><span class="blue">LLLLLLLL</span>  . <span class="blue">LLLLLLLL</span>  . <span class="red">NNNNNNNN</span>. <span class="red">NNNNNNNN</span></td>
-			<td><span class="math">\( 2^{16} = 65.536 \)</span></td>
-			<td><span class="math">\( 65.534 \)</span></td>
-		</tr>
-		<tr>
-			<td>/24</td>
-			<td>255.255.255.0</td>
-			<td><span class="blue">LLLLLLLL</span>  . <span class="blue">LLLLLLLL</span>  . <span class="blue">LLLLLLLL</span>  . <span class="red">NNNNNNNN</span></td>
-			<td><span class="math">\( 2^8 = 256 \)</span></td>
-			<td><span class="math">\( 254 \)</span></td>
-		</tr>
-	</tbody>
-</table>
-
-<p>Man kan angive det på to måder. Enten ved hjælp af CIDR, som tæller antallet af låste bits og derved også angiver hvor mange tilgængelige der er ved hjælp af formlen <span class="math">\( 32 - CIDR \)</span>. Lad os kigge på det netværk som oftest anvendes i private hjem, nemlig dem som starter med <span class="inl_cmd">192.168.0</span> og har en værdi på 0-255 derefter f.eks. <span class="inl_cmd">192.168.0.65</span></p>
-
-<p>Hvis vi bruge farvesystemet ovenfor fille det se ud som følger: <span class="inl_cmd"><span class="blue">192</span> . <span class="blue">168</span> . <span class="blue">0</span>  . <span class="red">65</span></span>, hvilket svarer til <span class="inl_cmd">/24</span> da de første 24 bit er låst. Den mindste adresse i dette netværk er altså: <span class="inl_cmd"><span class="blue">192</span> . <span class="blue">168</span> . <span class="blue">0</span>  . <span class="red">0</span></span>, og den største: <span class="inl_cmd"><span class="blue">192</span> . <span class="blue">168</span> . <span class="blue">0</span>  . <span class="red">255</span></span>. Der er altså 255 IP-adresser på dette netværk.</p>
-
-<p>Ved hjælp af CIDR metoden kan vi altså beskrive en enheds unikke adresse, men også omfanget af det netværk enheden er på, f.eks:</p>
-
-<p><span class="inl_cmd">10.23.45.2/8</span> = <span class="inl_cmd"><span class="blue">10</span> . <span class="red">23</span> . <span class="red">45</span>  . <span class="red">2</span></span> ( Mindst: <span class="inl_cmd"><span class="blue">10</span> . <span class="red">0</span> . <span class="red">0</span>  . <span class="red">0</span></span>  - Størst: <span class="inl_cmd"><span class="blue">10</span> . <span class="red">255</span> . <span class="red">255</span>  . <span class="red">255</span></span>)</p>
-
-<p>Man kan også segmentere (indele) netværk mere avanceret, men det går ud over dette materiale.</p>
-
-
-
-<h3>Netværks- og broadcastadresse</h3>
-
-<p>Man anvender den først tilgængelige adresse i netværket som netværkets navn. I det ovenstående tilfælde vil det altså være den første af de tilgængelige adresser. Og da computere tæller fra 0 bliver det <span class="inl_cmd"><span class="blue">192</span> . <span class="blue">168</span> . <span class="blue">0</span>  . <span class="red">0</span></span> i vores hjemmenetværk. Denne adresse beskriver netværket (netværksnavnet), og må ikke anvendes af nogle enheder.</p>
-
-<p>Den sidste adresse i et netværk anvendes til <span class="inl_cmd">broadcast</span>. Det er en adresse alle computerne i netværket lytter til, og som kan anvendes til at sende globale beskeder igennem. I vores hjemmenetværk vil det altså være: <span class="inl_cmd"><span class="blue">192</span> . <span class="blue">168</span> . <span class="blue">0</span>  . <span class="red">255</span></span>. Denne adresse  må ikke anvendes af nogle enheder</p>
-
-<h3>Porte</h3>
-
-<p>For at holde styr på de data der sendes kan man målrette dem forskellige tjenester.</p>
-
-<table class="_">
-	<thead>
-		<tr>
-			<th>Port</th>
-			<th>Tjeneste</th>
-			<th>Beskrivelse</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td></td>
-			<td>_</td>
-		</tr>
-	</tbody>
-</table>
-
-<p><a href="https://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers" target="_blank">https://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers</a></p>
-
-<h2>Netværkets hardware</h2>
-
-<p>I et fysisk netværk indgår der noget hardware, som udfører forskellige opgaver. Herunder kommer vi ind på de to vigtigste enheder på et simpelt netværk: <span class="inl_cmd">Routere</span> og <span class="inl_cmd">switche</span>.</p>
-
-<h3>Switch'en</h3>
-
-<p></p>
-
-<ul class="none">
-	<li><span class="bold">Anvender</span>: MAC-adresser</li>
-	<li><span class="bold">Lag</span>: Link</li>
-</ul>
-
-<p>En switch forbinder computere ved at anvende <span class="code">MAC</span>-adresserne i de modtagne frames. Ved hjælp af MAC-adresser sendes pakkerne til den rette destination. Switche er uafhængige af protokoller, da de arbejder på <span class="inl_cmd">link</span>-laget (binær data).</p>
-
-<p>Grunden til at vi anvender switche på vores netværk er, at de er effektive til at sende data-trafik det rigtige sted hen. Den ved hvilken af sine porte modtagercomputeren er forbundet til. Er det et kablet netværk kan datatrafikken kontrolleres effektivt.</p>
-
-<span class="afsnit">Trådløse switche</span>
-
-<p>Når vi anvender det trådløse netværk anvender vi reelt nogle virtuelle porte. De er langt mindre effektive end de kablede, da der ikke er selvstændige sendere og modtagere til hver enhed. Der arbejdes konstant på at forbedre hastigheden og effektiviteten af trådløse de trådløse switche</p>
-
-<h3>Routeren</h3>
-
-<p></p>
-
-<ul class="none">
-	<li><span class="bold">Anvender</span>: IP-adresser</li>
-	<li><span class="bold">Lag</span>: Internet</li>
-</ul>
-
-<p>Router skaber forbindelse mellem netværk. Den enhed vi har monteret i vores hjem, skaber forbindelse mellem internettet og det netværk vi har i hjemmet. Routere er afhængig af protokoller og arbejder på <span class="inl_cmd">Internet</span>-laget.</p>
-
-<h3>En hjemme-"router"</h3>
-
-<p>En hjemmerouter er reelt en router og en switch der er pakket ind i den samme kasse. Se nedestående diagram</p>
+<p>Herunder har jeg tegnet et mindre netværk, som det kunne se ud i et almindeligt hjem eller en mindre virksomhed.</p>
 
 <figure id="">
 
-	<img class="p60" src="images/network_hjemmerouter.svg" alt="" title="" />
+	<img class="p90"  src="images/Komplet_netværk.svg" alt="" title="" />
 
 	<figcaption></figcaption>
 
 </figure>
 
+<p>Vi arbejder grundlæggende med 3 netværkstyper</p>
+
+<dl class="">
+	<dt>LAN - Local Area Network</dt>
+	<dd>Et mindre lukket og kablet netværk, f.eks. i et hjem eller en virksomhed</dd>
+	<dt>WLAN - Wireless Local Area Network</dt>
+	<dd>Samme som ovenfor, men trådløst (WiFi)</dd>
+	<dt>WAN - Wide Area Network</dt>
+	<dd>Et netværk, som f.eks. Internettet, der strækker sig over store områder</dd>
+</dl>
+
+<h3>VPN</h3>
+
+<p>VPN (Virtual Private Network) bruges til at skabe sikre forbindelser  over åbne netværk, f.eks. Internettet. Ved at bruge VPN, kan man kryptere data, så dataforbindelsen er sikker.</p>
+
+<p>Man laver en punkt til punkt forbindelse, som kaldes for tunneler, så trafikken ikke kan kan læses på det åbne netværk.</p>
+
+<h2>Netværkets hardware</h2>
+
+<dl class="">
+	<dt>Router</dt>
+	<dd><ul class="disc">
+		<li>Forbinder 2 netværk med hinanden</li>
+		<li>Anvender <em>internet</em>-laget i TCP/IP modellen (OSI lag 3)</li>
+	</ul></dd>
+	<dt>Switch</dt>
+	<dd><ul class="disc">
+		<li>Forbinder enheder i et netværk med hinanden ved hjælp af kabler</li>
+		<li>Anvender <em>link</em>-laget i TCP/IP modellen (OSI lag 2)</li>
+	</ul></dd>
+	<dt>Access point</dt>
+	<dd><ul class="disc">
+		<li>Forbinder enheder i et netværk med hinanden ved hjælp af WiFi</li>
+		<li>Anvender <em>link</em>-laget i TCP/IP modellen (OSI lag 2)</li>
+	</ul></dd>
+	<dt>Hjemmerouter</dt>
+	<dd>En boks der indeholder alle hardwarekomponenter ovenfor.</dd>
+	<dt>Kabler</dt>
+	<dd>De fysiske kabler der anvendes</dd>
+</dl>
+
+<p>Derudover har vi selve kablerne som også vil blive gennemgået.</p>
+
+<p><a href="tcpip_modellen.html" target="_blank">Du kan læse mere om TCP/IP her.</a></p>
+
+<h3>Mac-adresser</h3>
+
+<p><em>MAC-adresser</em> er en hexadecimalt tal der identificerer enhederne på netværket. Ved hjælp af MAC-adressen holder netværket styr på de enheder der er tilsluttet.</p>
+
+<p>En MAC-adresse kan f.eks. være: 77:88:99:aa:bb:cc</p>
+
+
+<h3>Router</h3>
+
+<figure id="">
+
+	<img class="p50" src="images/router.svg" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Routerens funktion er at lave en rute mellem 2 netværk, og konfigurere trafikken imellem dem. Routeren har altså en WAN og en LAN side.</p>
+
+<p>Routeren holder styr på trafikken ved hjælp af NAT (Network Address translation). NAT sørger for at netværkssignalerne kommer til den rigtige computer.</p>
+
+<h3>Switch</h3>
+
+<figure id="">
+
+	<img class="p60" src="images/switch_8_ports.svg" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Switchens funktion er at sende data mellem enhederne på netværket. Det gør den ved at kende macadresserne på de enheder den har tilsluttet. Når switchen modtager en datapakke, kigger den på hvor den skal hen og sender den videre.</p>
+
+<p>En switch (link laget/ OSI 2)har ikke en MAC-adresse, da dens eneste funktion er at holde styr på hvor hver enhed er.</p>
+
+<h4>Layer 3 switch</h4>
+
+<p>En layer 3 switch er reelt en router, hvor nogle eller alle porte kan fungere som router. Disse switche er dyrere, og skal sættes på for at fungere korrekt.</p>
+
+<p>De anvendes i større netværk, hvor man skal forbinde to eksterne netværk, f.eks. et netværk til computere og et til printere, eller bare mellem forskellige afdelinger. </p>
+
+
+
+<h3>Access point</h3>
+
+<p>Fungerer som en switch, men trådløst.</p>
+
+<h3>Hjemmerouter</h3>
+
+<p>Hjemmerouteren har alle funktionerne fra routeren, switchen og access pointet indbygget.</p>
+
+<figure id="">
+
+	<img class="p60" src="images/Hjemme_router.svg" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+
 <h3>Kabler</h3>
 
-<p>til almindelige netværk anvendes der ethernet, og det stik man anvender kaldes RJ45. Et ethernet kabel har 8 ledere, som parvist er snoet om hinanden, hvilket er årsagen til at man også kalder kablerne for <span class="bold">T</span>wisteds <span class="bold">P</span>air (<span class="inl_cmd">TP</span>). Det gør man for at forhindre elektromagnetisk støj. Efterhånden er den metode ikke effektiv nok, så man er begyndt yderligere at skærme kablerne for elektromagnetisk støj (se længere nede).</p>
+<p>Kablerne i et netværk har 8 ledere, som parvist er snoet om hinanden. kablerne kaldes <em>Twisted Pair</em>. Stikkene er af typen <em>RJ45</em>.</p>
 
 <figure id="">
 
@@ -260,138 +200,230 @@
 
 </figure>
 
-<p>Det man skal være opmærksom på er typen af kabler man anvender. Herunder er der en tabel over kablernes egenskaber. Hastigheden der er angivet henviser til den hastighed de er specificeret til. Hvis man f.eks. har GiB (gigabit) internet, så skal man altså som minimum anvende kategori 5e.</p>
+<p>Kablerne opdeles i kategorier og efter elektromagnetisk skærmning.</p>
 
-<table class="">
-	<thead>
-		<tr>
-			<th colspan="4">Kabel kategorier</th>
-		</tr>
+<p>Kategorierne angiver hvor høje data-hastigheder kablerne kan trække:</p>
 
-	</thead>
-	<tbody>
-		<tr>
-			<td>Kategori</td>
-			<td>Type</td>
-			<td>Hastighed</td>
-			<td>Båndbredde</td>
-		</tr>
-		<tr>
-			<td>cat 3</td>
-			<td>UTP</td>
-			<td>10 Mbps</td>
-			<td>16 MHz</td>
-		</tr>
-		<tr>
-			<td>cat 5</td>
-			<td>UTP</td>
-			<td>10/100 Mbps</td>
-			<td>100 MHz</td>
-		</tr>
-		<tr>
-			<td>cat 5e</td>
-			<td>UTP</td>
-			<td>1000 Mbps</td>
-			<td>100 MHz</td>
-		</tr>
-		<tr>
-			<td>cat 6</td>
-			<td>UTP/STP</td>
-			<td>1000 Mbps</td>
-			<td>250 MHz</td>
-		</tr>
-		<tr>
-			<td>cat 6a</td>
-			<td>STP</td>
-			<td>10.000 Mbps</td>
-			<td>500 MHz</td>
-		</tr>
-		<tr>
-			<td>cat 7</td>
-			<td>SSTP</td>
-			<td>10.000 Mbps</td>
-			<td>600 MHz</td>
-		</tr>
-	</tbody>
-</table>
+<dl class="">
+	<dt>Cat 5</dt>
+	<dd>
+		<ul class="disc">
+		<li>Båndbredde: 100 MHz </li>
+		<li>Hastighed: 1 Gbit/s</li>
+		</ul>
+	</dd>
+	<dt>Cat 6</dt>
+	<dd>
+		<ul class="disc">
+		<li>Båndbredde: 250 MHz </li>
+		<li>Hastighed: 10 Gbit/s</li>
+		</ul>
+	</dd>
+	<dt>Cat 6a</dt>
+	<dd>
+		<ul class="disc">
+		<li>Båndbredde: 500 MHz </li>
+		<li>Hastighed: 10 Gbit/s</li>
+		</ul>
+	</dd>
+	<dt>Cat 7</dt>
+	<dd>
+		<ul class="disc">
+		<li>Båndbredde: 600 MHz </li>
+		<li>Hastighed: 10 Gbit/s</li>
+		</ul>
+	</dd>
+	<dt>Cat 8</dt>
+	<dd>
+		<ul class="disc">
+		<li>Båndbredde: 1600 og 2000 MHz </li>
+		<li>Hastighed: 40 Gbit/s</li>
+		</ul>
+	</dd>
+</dl>
 
-<div class="ordforkl"><span class="bold">UTP</span> : Unshielded Twisted Pair; 
-<span class="bold">STP</span> : Shielded Twisted Pair, 
-<span class="bold">SSTP</span>: Screened Shielded Twisted Pair
-</div>
+<p>Kablerne kan også være skærmet for elektromagnetisk støj. Der bruges følgende betegnelser:</p>
 
-<p></p>
+<dl class="">
+	<dt>UTP</dt>
+	<dd>Unshielded Twisted Pair (uskærmet)</dd>
+	<dt>STP</dt>
+	<dd>Shielded Twisted Pair (Skærmet)</dd>
+	<dt>SSTP</dt>
+	<dd>Screened shielded Twisted Pair (2x skærm)</dd>
+</dl>
 
-<span class="afsnit">Skærmede kabler</span>
+<p>Til almindelige forbindelse er UTP kabler rigeligt. Har man mange kabler liggende sammen eller over store afstande bør man bruge STP og SSTP kabler.</p>
 
-<p>Når man sender data igennem kabler så kan de blive udsat for elektromagnetisk støj. Det kan betyde at data-signalet bliver ødelagt. Det kan f.eks. være tilfældet hvis der ligger mange netværkskabler samlet. For at omgå dette problem skærmer man kablerne for den elektromagnetiske støj.</p>
+<p>Læs mere om kabler her: <a href="https://www.av-cables.dk/artikel/netvaerkskabel.html" target="_blank">https://www.av-cables.dk/artikel/netvaerkskabel.html</a></p>
 
-<p>Jo mere elektronik vi får, og jo flere kabler vi lægger samlet, jo større bliver problemet med elektromagnetisk støj. For at imødegå problemet begyndte man at skærme (<span class="inl_cmd">STP</span>) kablerne. De nye kategorier er endda dobbeltskærmet (<span class="inl_cmd">SSTP</span>)for at sikre dataoverførslen. En problematik man også skal tage med i denne sammenhæng er, at det reelt er muligt at aflytte den data-trafik der er i kablerne, og det er også en af årsagerne til at man vælger at skærme kablerne.</p>
+<h2>Netværksadresser</h2>
 
-<p>Til almindeligt hjemmebrug er <span class="inl_cmd">Cat5e</span> rigeligt og praktisk. Problemet med at gå op i cat6 og derover er, at de bliver for stive og har svært ved at "knække" rundt om hjørner. Men arbejder man et sted hvor data-strømmen er kritisk og at den skal sikres mest muligt, så skal man op i SSTP kabler.</p>
+<p>TCP/IP protokollen er i dag standarden på netværk. Her vil der være fokus på IPv4, som er mest anvendt i lukkede netværk.</p>
 
-<h2>Netværkstyper</h2>
+<h3>Et overblik</h3>
 
-<p>For at adskille og beskrive de forskellige typer af netværk anvender man følgende betegnelser:</p>
+<p>For at beskrive en enhed og dets netværk skal vi have følgende parametre.</p>
 
-<table class="">
-	<thead>
-		<tr>
-			<th>Netværkstype</th>
-			<th></th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td><span class="bold">LAN</span></td>
-			<td><span class="bold">L</span>ocal <span class="bold">A</span>rea <span class="bold">N</span>etwork</td>
-		</tr>
-		<tr>
-			<td><span class="bold">WAN</span></td>
-			<td><span class="bold">W</span>ide <span class="bold">A</span>rea <span class="bold">N</span>etwork</td>
-		</tr>
-		<tr>
-			<td><span class="bold">WLAN</span></td>
-			<td><span class="bold">W</span>ireless <span class="bold">L</span>ocal <span class="bold">A</span>rea <span class="bold">N</span>etwork</td>
-		</tr>
-		<tr>
-			<td><span class="bold">SAN</span></td>
-			<td><span class="bold">S</span>torage <span class="bold">L</span>ocal <span class="bold">A</span>rea <span class="bold">N</span>etwork</td>
-		</tr>
-		<tr>
-			<td><span class="bold">VPN</span></td>
-			<td><span class="bold">V</span>irtual <span class="bold">P</span>rivate <span class="bold">N</span>etwork</td>
-		</tr>
-	</tbody>
-</table>
+<ul class="none">
+	<li>IP-adresse: Enhedens unikke ID</li>
+	<li>Netværksadresse: den først tilgængelige IP-adresse i netværket</li>
+	<li>Netmaske: De IP-adresser der er i netværket</li>
+	<li>Broadcastadresse: den sidst tilgængelige IP-adresse i netværket</li>
+	<li>Gateway: IP-adressen på den enhed der giver adgang til andre netværk</li>
+</ul>
 
-<span class="afsnit">LAN og WAN</span>
+<p>Det kan f.eks. være:</p>
 
-<p>Dette er de to grundlæggende netværkstyper. Forskellen mellem dem er, at <span class="inl_cmd">LAN</span> er afgrænset og <span class="inl_cmd">WAN</span> ikke er det. Det kan f.eks. være et firmanetværk (LAN) og Internettet (WAN). Disse netværk er adskilt af routere.</p>
+<ul class="none">
+	<li>IP-adresse: 192.168.0.65</li>
+	<li>Netværks-adresse: 192.168.0.0</li>
+	<li>Netmaske: 255.255.255.0 eller /24 (CIDR)</li>
+	<li>Broadcast-adresse: 192.168.0.255</li>
+	<li>Gateway: 192.168.0.1</li>
+</ul>
 
-<p>Her er vist et eksempel:</p>
+<h3>IP-adressen</h3>
 
-<figure id="">
+<p>IP-adressen er computerens unikke adresse/navn på netværket.</p>
 
-	<img class="p70" src="images/network_WAN_LAN.svg" alt="" title="" />
+<p>Netværksadresser består af 4 oktetter afskilt af et punktum. De kaldes oktetter fordi de dannes fra et 8-cifret binært tal.</p>
 
-	<figcaption></figcaption>
+<div class="latex">$$ \underbrace {XXXXXXXX}_\text{1. oktet}~.~\underbrace {XXXXXXXX}_\text{2. oktet}~.~\underbrace {XXXXXXXX}_\text{3. oktet}~.~\underbrace {XXXXXXXX}_\text{4. oktet} $$</div>
 
-</figure>
+<p>IP-adressen 192.168.0.65 kan altså skrives som 11000000.10101000.00000000.01000001</p>
+
+<div class="latex">$$ \underbrace {1~1~0~0~0~0~0~0~}_\text{1. oktet}~.~\underbrace {1~0~1~0~1~0~0~0~}_\text{2. oktet}~.~\underbrace {0~0~0~0~0~0~0~0~}_\text{3. oktet}~.~\underbrace {0~1~0~0~0~0~0~1~}_\text{4. oktet} $$</div>
+
+<p>Dette er vigtig baggrundsviden til at forstå opbygningen og begreberne indenfor netværk.</p>
+
+<details>
+
+	<summary>Binære tal</summary>
+
+	<p>Binære tal anvender kun cifrene 0 og 1, hvor vi i titalsystemet anvender tallene 0-9</p>
+	
+	<p>Tallet 255 er bygget op af:</p>
+	
+	<div class="latex">$$  2 \cdot 100 + 2\cdot 10 + 5 \cdot 1 = 255 $$</div>
+	
+	<p>Det vil vi også kunne skrive som:</p>
+	
+	<div class="latex">$$ 2 \cdot 10^2 + 2\cdot 10^1 + 5 \cdot 10^0 = 255$$</div>
+	
+	<p>Skal vi skrive det med et binært tal vil det være: <em>11111111</em>. Værdien af dette tal vil være:</p>
+	
+	<div class="latex">$$ 2 \cdot 2^7 + 2 \cdot 2^6 + 2 \cdot 2^5 + 2 \cdot 2^4 + 2 \cdot 2^3 + 2 \cdot 2^2 + 2 \cdot 2^1 + 2 \cdot 2^0 = 255 $$</div>
+	
+	<p>11111111(binær) = 255 (decimal)</p>
+	
+	<p>Det er derfor at oktetterne har værdier imellem 0 og 255, altså i alt 256 forskellige værdier (<span class="math">\( 2^8 \)</span>)</p>
+	
+</details>
 
 
+<h3>Netværksadressen og netmasken</h3>
 
-<span class="afsnit">WLAN og SAN</span>
+<p>Netværksadressen er den første IP-adresse på netværket, og netmasken fortæller hvor stort netværket er. Lad os se på eksemplet ovenfor.</p>
 
-<p>Disse to er egentlig bare afarter af <span class="inl_cmd">LAN</span>, hvor <span class="inl_cmd">WLAN</span> beskriver trådløse netværk og <span class="inl_cmd">SAN</span> beskriver netværk der indeholder harddisk-arrays, som er servere der kun er beregnet til at opbevare data.</p>
+<p>Netværksadressen i vores eksempel er: 192.168.0.0</p>
 
-<span class="afsnit">VPN</span>
+<p>Netværksmasken fortæller hvilke bits der er låst og som netværket ikke har adgang til.</p>
 
-<p>VPN er en netværksforbindelse der skabes mellem to computeren uafhængig af netværket omkring dem. Denne form for netværk bliver også omtalt som en "tunnel". Det har den fordel at resten af netværket ikke kan se trafikken. Hvis man ønsker at sikre datastrømmen yderligere kan man kryptere den. Det kan f.eks. være en fordel hvis man som rejsenden sælger skal kunne tilgå sine filer sikkert på serveren i virksomheden.</p>
+<ul class="disc">
+	<li>Netværks-adresse: 192.168.0.0</li>
+	<li>Netmaske: 255.255.255.0 eller 192.168.0.0/24 (CIDR)</li>
+</ul>
 
-<p>VPN bliver også misbrugt f.eks. til nogle af de "smarte" programmer man downloader til sin browser for at kunne få adgang til bestemte typer filer. Det betyder f.eks. at ens datatrafik ikke bliver administreret af ens lokale netværk, men af udbyderen. I realititen kan udbyderen vælge at anvende denne dataforbindelse til at opbevare data på den lokale PC. Nogle af disse "smarte" programmer anvender kun VPN funktionen når programmet kører, hvorimod andre helt overtager ens datatrafik.</p>
+<p>Netværksadressen og netmasken sammenskrives ofte, så den vil hedde: <em>192.168.0.0/24</em>.</p>
 
-<p>Når man installerer programmer fra nettet der lover at forbedre ens ydelse, eller som giver adgang til specielle typer af programmer, så bør man undersøge om det gøres gennem VPN.</p>
+<p>Tallet <em>/24</em> fortæller hvor mange bits der er låst og ikke tilhører netværket. Det kan vi vise på denne måde</p>
+
+<!--
+<div class="latex">$$ \underbrace {LLLLLLLL}_\text{1. oktet}~.~\underbrace {LLLLLLLL}_\text{2. oktet}~.~\underbrace {LLLLLLLL}_\text{3. oktet}~.~\underbrace {NNNNNNNN}_\text{4. oktet} $$</div>
+-->
+
+<div class="latex">$$ \underbrace {1~1~1~1~1~1~1~1~}_\text{1. oktet}~.~\underbrace {1~1~1~1~1~1~1~1~}_\text{2. oktet}~.~\underbrace {1~1~1~1~1~1~1~1~}_\text{3. oktet}~.~\underbrace {0~0~0~0~0~0~0~0~}_\text{4. oktet} $$</div>
+
+<p>De første 24 bits er låst og kan ikke ændres. På dette netværk er der altså 8 bit tilgængelig, svarende til 256 adresser (<span class="math">\( 2^8 \)</span>).</p>
+
+<p>Ud af de tilnængelige adresser bruges der to til henholdsvis netværksadressen og netmasken. Så antallet af tilgængelige adresser kan beregnes ved at sige <span class="math">\( 2^8 - 2 = 254\)</span></p>
+
+<h3>Broadcast adressen</h3>
+
+<p>Broadcast adressen er den sidst tilgængelige adresse i netværket. Her: 192.168.0.255.</p>
+
+<p>Adressen bruges til at sende signal ud til alle enheder.</p>
+
+<p>Det sker f.eks. når en computer starter og beder om en IP-adresse. Så vil DHCP serveren sende en IP-adresse tilbage, som maskinen så anvender resten af tiden. Denne proces kaldes meget sigende et <em>handshake</em></p>
+
+<h3>Gateway</h3>
+
+<p>Netværkets gateway er den enhed, som forbinder 2 net. I et hjemmenetværl vil det være routeren, der skaber forbindelse mellem hjemmenetværket og Internetudbyderen.</p>
+
+<h3>Private netværk</h3>
+
+<p>Der er nogle private netværk som skiller sig ud ved, at man ikke kan få kontakt med dem fra andre netværk, med mindre man gør en maskine synlig ved at programmere routeren.</p>
+
+<p>På netværkssprog siger man at LAN ikke routes til WAN.</p>
+
+<p>På den måde kan man have computere, hvor man selv styrer adgangen.</p>
+
+<p>Det drejer sig om:</p>
+
+<ol class="disc">
+	<li>10.0.0.0/8</li>
+	<li>172.16.0.0/12</li>
+	<li>192.168.0.0/16</li>
+	<li>FC00::/7 (IPv6)</li>
+</ol>
+
+<p>Netværket som vi bruger som eksempel er det tredie, blot er det låst (subnettet) til kun at anvende den sidste oktet. Hjemmenetværk er ofte konfigureret på denne måde.</p>
+
+<h3>Specielle IP-adresser</h3>
+
+<dl class="">
+	<dt>Loopback</dt>
+	<dd><ul class="disc">
+		<li>127.0.0.1/8</li>
+	</ul>
+	Fungerer som et virtuel netværkskort og kan anvendes til computerens interne TCP/IP funktioner. Kan bruges til at tilgå egen computers webserver.</dd>
+	<dt>Local Link</dt>
+	<dd><ul class="disc">
+		<li>169.254.0.0/16</li>
+	</ul>
+	Hvis netværkskortet ikke kan sættes korrekt op, tildeler styresystemet computeren en adresse fra dette netværk.</dd>
+	<dt>Private netværk</dt>
+	<dd><ul class="disc">
+		<li>10.0.0.0/8</li>
+		<li>172.16.0.0/12</li>
+		<li>192.168.0.0/16</li>
+	</ul>
+	Private netværk(se ovenfor)</dd>
+	<dt>Adresser til dokumentation</dt>
+	<dd><ul class="disc">
+		<li>192.168.2.0/24</li>
+		<li>198.51.100.0/24</li>
+		<li>203.0.113.0/24</li>
+	</ul>
+	Anbefales til dokumentation.</dd>
+</dl>
+
+<p>En sidste adresse der skal nævnes er en IPv6 adresse: <em>::FFFF:0:0/96</em>. Denne adresse kan bruges til at indeholde en IPv4 adresse.</p>
+
+
+<h3>Porte</h3>
+
+<p>På en computer kan der være mange forskellige netværkstjenester, og de tilgås ved hjælp af porte.</p>
+
+<p>Lige nu hvor du læser på internettet, så er det en tjeneste du får enten fra port 80 (HTTP) eller 443 (HTTPS).</p>
+
+<p>Det er bl.a. disse porte man kan tænde og slukke for ved hjælp af en router. Hvis man blokerede for port <em>80</em> og <em>443</em> på en webserver, så kan man ikke se hjemmesiderne på den.</p>
+
+<p>Du kan se en oversigt over porte her:</p>
+
+<p><a href="https://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers" target="_blank">https://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers</a></p>
+<!--
 
 <h2>Netværkstopologier</h2>
 
@@ -433,247 +465,7 @@
 </figure>
 
 <p>Mere om topologier: <a href="https://en.wikipedia.org/wiki/Network_topology" target="_blank">https://en.wikipedia.org/wiki/Network_topology</a></p>
-
-<h2>TCP/IP</h2>
-
-<p>Den netværksprotokol vi i dag anvender i vores netværk er oprindeligt skabt af det amerikanske forsvarsministerium. Ideen var, at netværket skulle være i stand til at fungere selv hvis dele af netværket blev ødelagt. Det blev så til TCP/IP netværket. TCP står for <span class="inl_cmd"><b>T</b>ransmission <b>C</b>ontrol <b>P</b>rotocol</span> og er den del der sikrer at det er de korrekte data der afsendes og modtages. IP står for <span class="inl_cmd"><b>I</b>nternet <b>P</b>rotocol</span>, og er den del der sørger for at data kommer det rigtige sted hen.</p>
-
-<h3>Protokoller</h3>
-
-<p>Netværk er en kompliceret størrelse, og selvom <span class="inl_cmd">TCP/IP</span>-modellen er den der anvendes på Internettet, så er der en anden model, som bliver anvendt meget. Bl.a. af Cisco, som er storleverandør af netværksudstyr. De anvender OSI modellen ( <span class="bold">O</span>pen <span class="bold">S</span>ystems <span class="bold">I</span>nterconnection ) som arbejder med 7 lag.</p>
-
-<p>Nedestående skema er en modificeret udgave af: <a href="http://en.wikipedia.org/wiki/OSI_model" target="_blank">http://en.wikipedia.org/wiki/OSI_model</a></p>	
-
-<table class="">
-	<thead>
-
-		<tr>
-			<th>Lag</th>
-			<th colspan="2">OSI <br/>Open Systems Interconnection</th>
-			<th>TCP/IP <br/>RFC 1122 Internet STD3</th>
-			<th>RFC871 <br/>Arpanet ref model</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td rowspan="4">Værts lag</td>
-			<td>7</td>
-			<td>Application</td>
-			<td rowspan="3"><br/><br/>Applikation</td>
-			<td rowspan="3">Applikation/Proces</td>
-		</tr>
-		<tr>
-			<td>6</td>
-			<td>Presentation</td>
-
-		</tr>
-		<tr>
-			<td>5</td>
-			<td>Session</td>
-
-		</tr>
-		<tr>
-			<td>4</td>
-			<td>Transport</td>
-			<td>Transport</td>
-			<td rowspan="2">Host-to-Host</td>
-		</tr>
-		<tr>
-			<td rowspan="3">Medie lag</td>
-			<td>3</td>
-			<td>Network</td>
-			<td>Internet</td>
-		</tr>
-		<tr>
-			<td>2</td>
-			<td>Data Link</td>
-			<td>Link</td>
-			<td rowspan="2">Network Interface</td>
-		
-		</tr>
-		<tr>
-			<td>1</td>
-			<td>Physical</td>
-			<td>-- n/a --</td>
-		</tr>
-	</tbody>
-</table>
-
-<p><a href="http://en.wikipedia.org/wiki/Internet_protocol_suite#cite_note-21" target="_blank">http://en.wikipedia.org/wiki/Internet_protocol_suite#cite_note-21</a></p>
-
-
-
-<h3>IP-adresser</h3>
-
-<p>En IP-adresse er en unik talkombination der entydigt indentificerer en enhed på et netværk. I dag arbejder man med to versioner af TCP/IP: IPv4 og IPv6. IPv4 er den "gamle" protokol, som i dag har det problem at man er ved at løbe tør for unikke IP-adresser, da den "kun" har <span class="math">\( 2^{32} = 4,3 \)</span> mia selvstændige adresser. IPv6 har til sammenligning <span class="math">\( 2^{128} = 3,4 \cdot 10^{38} \)</span> mulige kombinationer.</p>
-
-<p>Danmarks Radio (<a href="http:\\159.20.6.38" target="_blank">www.dr.dk</a>) har således IP-adressen: <span class="inl_cmd">159.20.6.38</span>.</p>
-
-<h3>TCP/IP pakker</h3>
-
-<p>En TCP/IP pakke af fire lag:</p>
-
-<ul class="none fat_li">
-	<li>Applikation</li>
-	
-		<p>På applikationslaget sørger programmet for at pakke data ned så det er klar til at blive sendt.</p>
-		
-		<figure id="">
-		
-			<img class="p50" src="images/network_tcpip_lag1_applikation.svg" alt="" title="" />
-		
-			<figcaption></figcaption>
-		
-		</figure>
-	
-	<li>Transport</li>
-	
-		<p>På transport laget sørger netværksprotokollen for at data kan tjekkes for fejl og mangler. Hvis data er blevet ødelagt under transporten vil TCP sørge for at pakken bliver gensendt.</p>
-		
-		<p>Egentlig anvendes der både det som hedder TCP og UDP (<span class="inl_cmd"><b>U</b>ser <b>D</b>atagram <b>P</b>rotocol</span>). Forskellen er, at der ikke er en fejlkontrol i UDP, hvilket gør den effektiv til streaming, da enkelte fejl ikke har nogen større betydning.</p>
-		
-		<figure id="">
-		
-			<img class="p50" src="images/network_tcpip_lag2_transport.svg" alt="" title="" />
-		
-			<figcaption></figcaption>
-		
-		</figure>
-	
-	<li>Internet</li>
-	
-		<p>På Internetlaget får hver pakke en IP-adresse, så den ved hvor den skal hen.</p>
-		
-		<figure id="">
-		
-			<img class="p50" src="images/network_tcpip_lag3_internet.svg" alt="" title="" />
-		
-			<figcaption></figcaption>
-		
-		</figure>
-		
-	<li>Link</li>
-	
-		<p>På Link får pakken en MAC-adresse, som er en unik identifikation, som alle netværksenheder har. På den måde ved din datapakke hvilket router den skal finde frem til på netværket. Og det uanset om det er lokalt eller på Internettet.</p>
-		
-		<figure id="">
-		
-			<img class="p50" src="images/network_tcpip_lag4_link.svg" alt="" title="" />
-		
-			<figcaption></figcaption>
-		
-		</figure>
-		
-</ul>
-
-<p>Måden det virker på kan illustreres med nedestående model:</p>
-
-<figure id="">
-
-	<img class="p60" src="images/network_TCPIP_Dataflow.svg" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-
-<p>Når afsendercomputeren sender sin pakke afsted på lokalnetværket bliver den sendt til routeren. Hvis routeren ikke kender adressen spørger den på Internettet (DNS), hvor modtager computeren er. DNS servere sørger for at guide pakken frem til det rigtige sted, hvor pakken så bliver leveret til den rigtige computer.</p>
-
-<p>Det virker ret forvirrende at forstå, men vi ved alle hvor effektivt dette system er, da Internettet kører problemfrit.</p>
-
-<h3>Private netværk</h3>
-
-<p>Som en del af <span class="inl_cmd">IPv4</span> specifikationen er der lavet nogle netværksadresser der er forbeholdt private netværk. Det specielle ved private netværk er, at IP-adresserne i netværket ikke kan routes. Det betyder, at en IP-adresse der tilhører et privat netværk ikke kan tilgås fra <span class="inl_cmd">WAN</span> siden af et netværk. De private netværk er:</p>
-
-<table id="">
-	<thead>
-		<tr>
-			<th>Version</th>
-			<th>Netværk</th>
-			<th>Netværks <br/>bit</th>
-			<th>Antal IP-adresser</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>IPv4</td>
-			<td>10.0.0.0/8</td>
-			<td>24</td>
-			<td><span class="math">\( 2^{24}  = 16,777,216 \)</span></td>
-		</tr>
-		<tr>
-			<td>IPv4</td>
-			<td>172.16.0.0/12</td>
-			<td>20</td>
-			<td><span class="math">\( 2^{20} = 1,048,576 \)</span></td>
-		</tr>
-		<tr>
-			<td>IPv4</td>
-			<td>192.168.0.0/16</td>
-			<td>16</td>
-			<td><span class="math">\( 2^{16} = 65,536 \)</span></td>
-		</tr>
-		<tr>
-			<td>IPv6</td>
-			<td>FC00::/7</td>
-			<td>121</td>
-			<td><span class="math">\( 2^{121} = 2,658 \cdot 10^{36} \)</span></td>
-		</tr>
-	</tbody>
-</table>
-
-<p>IP-adresserne i et privat netværk er usynlige fra <span class="inl_cmd">WAN</span>-siden, og kræver at derer en router med <span class="inl_cmd">NAT</span> ( <span class="bold">N</span>etwork <span class="bold">A</span>ddress <span class="bold">T</span>ranslation ). <span class="inl_cmd">NAT</span> funktionen gør, at routeren har en tabel, hvor den holder styr på hvilke IP-adresser på <span class="inl_cmd">LAN</span> siden der har kontakt med hvilke IP-adresser på <span class="inl_cmd">WAN</span> siden.</p>
-
-<p>Du kan læse mere om IPv4 her: <a href="http://en.wikipedia.org/wiki/IPv4" target="_blank">http://en.wikipedia.org/wiki/IPv4</a></p>
-
-<details>
-
-	<summary>Låste IP-adresser</summary>
-
-<p>I både IPv4 og IPv6 er der nogle adresser der er låst til nogle helt specifikke formål anvendelse. Kig i skemaet herunder</p>
-
-<table class="">
-	<thead>
-		<tr>
-			<th>IPv4</th>
-			<th>IPv6</th>
-			<th>Beskrivelse</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td><span class="inl_cmd">127.0.0.1/8</span></td>
-			<td><span class="inl_cmd">::1/128</span></td>
-			<td>Denne adresse kaldes <span class="inl_cmd">Loopback</span>. Det fungerer som et virtuel netværkskort, som den lokale computer kan anvende til interne <span class="inl_cmd">TCP/IP</span> funktioner </td>
-		</tr>
-		<tr>
-			<td><span class="inl_cmd">169.254.0.0/16</span></td>
-			<td><span class="inl_cmd">FE80::/10</span></td>
-			<td>Denne adresse kaldes <span class="inl_cmd">Lokal Link</span>. Hvis netværkskortet ikke får en IP-adresse fra netværket eller ikke er konfigureret korrekt vil <span class="inl_cmd">IPv4</span> sørge for at give netkortet en vilkårlig adresse i dette netværk</td>
-		</tr>
-		<tr>
-			<td><span class="inl_cmd">10.0.0.0/8</span><br/>
-			<span class="inl_cmd">172.16.0.0/12</span><br/>
-			<span class="inl_cmd">192.168.0.0/16</span></td>
-			<td><span class="inl_cmd">FC00::/7</span></td>
-			<td>Private netværk (se ovenfor)</td>
-		</tr>
-		<tr>
-			<td>n/a</td>
-			<td><span class="inl_cmd">::FFFF:0:0/96</span></td>
-			<td>Denne <span class="inl_cmd">IPv6</span>-adresse indeholder en <span class="inl_cmd">IPv4</span>-adresse. På denne måde sikrer man sig at netværk der stadig kører med <span class="inl_cmd">IPv4</span> er tilgængelige når <span class="inl_cmd">IPv6</span> slår helt igennem</td>
-		</tr>
-		<tr>
-			<td><span class="inl_cmd">192.0.2.0/24</span><br/>
-			<span class="inl_cmd">198.51.100.0/24</span><br/>
-			<span class="inl_cmd">203.0.113.0/24</span></td>
-			<td><span class="inl_cmd">2001:0DB8::/32</span></td>
-			<td>Disse IP-adresser anbefales til dokumentation.</td>
-		</tr>
-	</tbody>
-</table>
-
-</details>
-
+-->
 
 
 

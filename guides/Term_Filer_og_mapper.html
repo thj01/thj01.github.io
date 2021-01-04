@@ -45,6 +45,142 @@
 	<p>Denne side er skrevet som en manual du kan køre igennem fra start til slut. </p>
 </div>
 
+<h2>Filsystemet</h2>
+
+<p>I Linux er alt filer. Selv din harddisk bliver behandlet som om det var en fil. Sådan er det faktisk også i Windows, men det godt skjult for brugeren, og det er svært tilgængeligt.</p>
+
+<p>Uanset om du sidder på en Ubuntu workstation eller server, så har de nøjagtig samme filstruktur. Filstrukturen følger <a href="https://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard" target="_blank">FHS</a> (Filesystem Hierarchy Standarden) som bliver vedligeholdt af <a href="https://en.wikipedia.org/wiki/Linux_Foundation" target="_blank">Linux Foundattion</a>. Alle Linuxsystemer har samme opbygning og placering af filer.</p>
+
+<samp><span class="terminal_tilde">/</span>
+├── <font color="#06989A">bin</font> -&gt; <span class="terminal_tilde">usr/bin</span>
+├── <span class="terminal_tilde">boot</span>
+├── <span class="terminal_tilde">cdrom</span>
+├── <span class="terminal_tilde">dev</span>
+├── <span class="terminal_tilde">etc</span>
+├── <span class="terminal_tilde">home</span>
+├── <font color="#06989A">lib</font> -&gt; <span class="terminal_tilde">usr/lib</span>
+├── <font color="#06989A">lib32</font> -&gt; <span class="terminal_tilde">usr/lib32</span>
+├── <font color="#06989A">lib64</font> -&gt; <span class="terminal_tilde">usr/lib64</span>
+├── <font color="#06989A">libx32</font> -&gt; <span class="terminal_tilde">usr/libx32</span>
+├── <span class="terminal_tilde">lost+found</span>
+├── <span class="terminal_tilde">media</span>
+├── <span class="terminal_tilde">mnt</span>
+├── <span class="terminal_tilde">opt</span>
+├── <span class="terminal_tilde">proc</span>
+├── <span class="terminal_tilde">root</span>
+├── <span class="terminal_tilde">run</span>
+├── <font color="#06989A">sbin</font> -&gt; <span class="terminal_tilde">usr/sbin</span>
+├── <span class="terminal_tilde">snap</span>
+├── <span class="terminal_tilde">srv</span>
+├── <span class="terminal_tilde">sys</span>
+├── <span style="background-color:#4E9A06"><span color="#2E3436">tmp</span></span>
+├── <span class="terminal_tilde">usr</span>
+└── <span class="terminal_tilde">var</span></samp>
+
+<p>Her kommer en gennemgang af de mapper, som du mest sandsynligt vil komme til at arbejde i:</p>
+
+<dl class="">
+	<dt>/bin</dt>
+	<dd>Her ligger systemkommandoerne. Laver du egne scripts og de skal være tilgængelig for alle, så skal de ligge her</dd>
+	<dt>/dev</dt>
+	<dd>Her ligger alle blok enheder (harddisk)</dd>
+	<dt>/etc</dt>
+	<dd>Konfigurationsfiler til systemet</dd>
+	<dt>/home</dt>
+	<dd>Brugernes hjemmemapper</dd>
+	<dt>/media</dt>
+	<dd>Her monteres eksterne harddiske, USBdrev og CD/DVD/BR-drev</dd>
+	<dt>/mnt</dt>
+	<dd>Her monteres netværksdrev</dd>
+	<dt>/srv</dt>
+	<dd>Her lægges (server))drev der deles med andre</dd>
+	<dt>/var</dt>
+	<dd>Variable filer der ændrer sig ofte. Det kan være logfiler, men også www filer.</dd>
+</dl>
+
+<h3>Alt er filer</h3>
+	
+<p>Til forskel fra Windows der har en registreringsdatabase, styres Linux af konfigurations filer. Så hvis der f.eks. skal ændres i opsætningen af et netværkskort, så skal man gå ind i filen og lave ændringer.</p>
+
+<p>Fordelen er, at denne ene fil kan kopieres videre til andre computere, der skal sættes op på samme måde. Og det kan gøres over SSH, som er en tekstbaseret adgang til computere.</p>
+
+<h3>Filtyper</h3>
+
+<p>Man kan se filtypen når man kigger på det første tegn ved rettighederne</p>
+
+<samp>-rwx--x--x  1 tj tj  841 okt 26  2018 backup.sh</samp>
+
+<p>De mest relevante typer er:</p>
+
+<dl class="">
+	<dt>-</dt>
+	<dd>Almindelig fil</dd>
+	<dt>d</dt>
+	<dd>Mappe</dd>
+	<dt>b</dt>
+	<dd>Blok enhed (block device)</dd>
+	<dt>l</dt>
+	<dd>Symbolsk link</dd>
+</dl>
+
+
+<p>Du kan læse mere om Linux-filtyper her <a href="https://en.wikipedia.org/wiki/Unix_file_types" target="_blank">Wikipediaside om Linuxfiltyper</a></p>
+
+<h3>Mappestruktur</h3>
+
+<p>Herunder er mappestrukturen for <span class="inl_cmd">/home</span> på en Ubuntu workstation.</p>
+
+<pre class="black">
+/
+└── home
+	└── tj
+		├── Billeder
+		├── Dokumenter
+		├── Hentet
+		├── Musik
+		├── Offentligt
+		├── Skabeloner
+		├── Skrivebord
+		├── Videoklip
+</pre>
+
+<p>Stien til mappen Hentet er: <em>/home/tj/Hentet</em>.</p>
+
+<ol start="0" class="">
+	<li>niveau - / (roden)</li>
+	<li>niveau - home</li>
+	<li>niveau - tj</li>
+	<li>niveau - Hentet</li>
+</ol>
+
+
+<h3>Filer</h3>
+
+<p>Linux skelner mellem store og små bogstaver. Det betyder at brugerne <em>tj</em> og <em>TJ</em> er forskellige og filen <em>data</em> er forskellig fra <em>Data</em>.</p>
+
+
+<h3>Rettigheder</h3>
+
+<p>Der er 3 grundlæggende filrettigheder: <em>read (r)</em>, <em>write (w)</em> og <em>execute (x)</em>. Execute betyder at filen kan køres som et program. Rettighederne kan sættes på 3 niveauer: brugeren, gruppe og alle.</p>
+
+<p>Vi kan se rettigehederne på de første 10 tegn. Vi tager eksemplet fra før.</p>
+
+<samp>-rwx--x--x  1 tj tj  841 okt 26  2018 backup.sh</samp>
+
+<p>Tegnene skal læses på følgende måde:</p>
+
+<dl class="">
+	<dt>-</dt>
+	<dd>Viser filtypen</dd>
+	<dt>rwx</dt>
+	<dd>Viser brugerens rettigheder - her read, write og execute</dd>
+	<dt>--x</dt>
+	<dd>Viser gruppens rettigheder - gruppen kan køre filen som et udføre programmet</dd>
+	<dt>--x</dt>
+	<dd>Viser alles rettigheder - Alle kan køre filen som et program.</dd>
+</dl>
+
+
 <p>Terminalen bruger vi til at udføre grundlæggende systemarbejde med filer. Det kan være at:</p>
 
 <ul class="disc">

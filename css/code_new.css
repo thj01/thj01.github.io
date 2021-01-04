@@ -20,6 +20,22 @@ border:1px solid #ccc;
 border-radius:4px
 }
 
+li>pre {
+margin-top: .5em;
+
+}
+
+code.list {
+tab-size: 4;
+margin: 0em 2em 2em 0em;
+padding: .2em .6em;
+background-color:#FFFFFF;
+border:1px solid #ccc;
+border-radius:4px;
+}
+
+
+
 samp {
 display:block;
 white-space: pre;

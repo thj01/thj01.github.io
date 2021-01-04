@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <title>VirtualBox - virtuelle maskiner</title>
+  <link rel="icon" href="../images/favicon.png">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono|Ubuntu|Ubuntu+Condensed' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/jquery-ui.min.css">
+  <link rel="stylesheet" href="../css/jquery.tocify.css">
+  <link rel="stylesheet" href="../css/style_new.css" />
+<!-- Scripts in bottom to speed up pageload-->
+ 
+
+</head>
+<body>
+	
+	
+<div class="container-fluid">
+
+<div class="row-fluid">
+	
+<div class="col-xs-3">
+	
+	<nav>
+		
+		<div id="toc">
+		
+			<div id="toc_headline"></div>
+		
+		</div>
+		
+	</nav>
+
+</div><!-- Start slut 1. kolonne - TOC -->
+	
+<div class="col-xs-9">
+	
+<h1>VirtualBox</h1>
+
+<p>Dette er en kort guide til anvende VirtualBox til at virtualisere computere.</p>
+
+<p><strong>Indhold</strong></p>
+
+<ol class="">
+	<li>Installering</li>
+	<li>Virtuel Ubuntuserver (et eksempel)</li>
+	<li>Avanceret brug</li>
+</ol>
+
+<h2>Installering</h2>
+
+<h3>På Ubuntu</h3>
+
+<p>For at installere på Ubuntu skal du køre følgende kommandoer:</p>
+
+<ol class="">
+	<li><pre><code>sudo apt-get update && sudo apt-get dist-upgrade -y
+	</code></pre></li>
+	<li><pre><code>sudo sh -c 'echo "deb http://download.virtualbox.org/virtualbox/debian $(lsb_release -cs) contrib" >> /etc/apt/sources.list.d/virtualbox.list'</code></pre></li>
+	<li><pre><code>wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | sudo apt-key add -</code></pre></li>
+	<li><pre><code>sudo apt-get update -y</code></pre></li>
+	<li><pre><code>sudo apt-get install dkms virtualbox-6.1 -y</code></pre></li>
+	<li><pre><code>sudo adduser *din_bruger* vboxusers
+	</code></pre></li>
+</ol>
+
+
+
+<h3>Windows/Mac</h3>
+
+<p>Hent virtualbox på downloadsiden og installer:</p>
+
+<p><a href="https://www.virtualbox.org/wiki/Downloads" target="_blank">VirtualBox downloadside</a></p>
+
+
+<h2>Virtuel Ubuntuserver</h2>
+
+<p>Her vil vi oprette en virtuel maskine til en Ubuntuserver. Du kan hente installationsmediet (<em>ISO fil</em>) her: <a href="https://ubuntu.com/download/server" target="_blank">https://ubuntu.com/download/server</a>. Du skal vælge <button type="">Option 3</button>.</p>
+
+<h3>Opstart af VirtualBox</h3>
+
+<p>Når du lige har startet VirtualBox op får du følgende skærmbillede.</p>
+
+<figure id="">
+
+	<img class="p90" src="images/Virtualbox_ny_maskine_01_nyopstartet.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h3>Opret en virtuel maskine</h3>
+
+<p>Her vil vi oprette en virtuel maskine til en Ubuntuserver.</p>
+
+<p>For at oprette en ny virtuel maskine trykker klikker du på <button type="">Ny</button> eller genvejen <kbd>Ctrl</kbd>+<kbd>n</kbd> </p>
+	
+<figure id="">
+
+	<img class="p60" src="images/Virtualbox_ny_maskine_02_Opret_virtuel_maskine_01.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Klik på <button type="">Ekspert-tilstand</button></p>
+
+<figure id="">
+
+	<img class="p70" src="images/Virtualbox_ny_maskine_02_Opret_virtuel_maskine_02.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Ændr følgende:</p>
+
+<ul class="disc">
+	<li>Name: <em>Ubuntuserver 20.04</em></li>
+	<li>Hukommelsesstørrelse holdes på <em>2048</em></li>
+</ul>
+
+<p>Klik <button type="">Opret</button></p>
+
+<p>Her skal du oprette den virtuelle harddisk. Ændr filstørrelsen til <em>100 GB</em>. Da den virtuelle harddisk er <em>dynamisk allokeret</em>, vil den ikke fylde mere end der ligger på den.</p>
+
+<p>Klik <button type="">Opret</button></p>
+
+<figure id="">
+
+	<img class="p70" src="images/Virtualbox_ny_maskine_02_Opret_virtuel_maskine_03.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Nu er den virtuelle maskine oprettet.</p>
+
+<figure id="">
+
+	<img class="p90" src="images/Virtualbox_ny_maskine_02_Opret_virtuel_maskine_04.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+
+<h3>Ændr på indstillingerne</h3>
+
+<p>Efter den virtuelle maskine er oprettet har du mulighed for at lave nogle ændringer til opsætningen.</p>
+
+<p>Vi skal i et standardsetup lave 3 ændringer:</p>
+
+<ul class="disc">
+	<li>Tilføje Installations mediet</li>
+	<li>Ændre netværksopsætningen</li>
+</ul>
+
+<p>Start med at klikke på knappen <em>Indstillinger</em>.</p>
+
+<figure id="">
+
+	<img class="p70" src="images/Virtualbox_ny_maskine_03_ændr_indstillinger_01.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h4>Tilføj installationsmediet</h4>
+
+<ul class="disc">
+	<li>Klik på <em>Lagerenhed</em></li>
+	<li>Klik på <em>Tom</em> der er under <em>Styreenhed: IDE</em></li>
+	<li>Klik på den blå disk yderst og vælg <em>Chose a disk file</em></li>
+	<li>Naviger til den hentede ISO-fil og åbn den</li>
+</ul>
+
+<h4>Ændr netværksopsætningen</h4>
+
+<p>I dette setup vil vi sætte den virtuelle maskine på det samme netværk som værtscomputeren.</p>
+
+<ul class="disc">
+	<li>Ændr <em>Forbundet til</em>, så der står <em>Netværksbro</em></li>
+</ul>
+
+<div class="alert">
+	
+	<p>Hvis du ikke ønsker din virtuelle maskine på det åbne netværk, så beholder du indstillingen <em>NAT</em>. Det betyder, at du ikke kan tilgå din virtuelle maskine ved hjælp af netværket.</p>
+	
+	
+</div>
+
+<h4>Gem ændringer</h4>
+
+<p>Når du har lavet alle dine ændringer, så trykker du <button type="">OK</button></p>
+
+<p>Den virtuelle maskine er nu klar til at blive startet op.</p>
+
+<h2>Gode råd til opsætning</h2>
+
+<p>En af fordelene ved at anvende virtuelle maskiner er, at vi kan indstille computeren ressourcer løbende og efter behov.</p>
+
+<p>Det man skal være opmærksom på er, at den virtuelle maskine kun bruger det den har behov for - ikke hvad der er afsat til den. Derfor skal det man afsætter ses som det maksimale den virtuelle maskine bruger.</p>
+
+<div class="alert">
+	
+	<p>Rådene her er lavet ud fra at din CPU har +8 kerner, og at computeren har mindst +8 GB RAM. Anvender du Windows og vil arbejde med virtuelle maskiner vil jeg anbefale at du opgraderer til mindst 16GB RAM.</p>
+	
+	<p>VirtualBox kan godt køre på mindre hardware, men så skal du køre med minimale indstillinger</p>
+
+</div>
+
+<p>Her kommer nogle overvejelser til, hvordan du kan sætte dine virtuelle maskiner op. Rådene omfatter:</p>
+
+<ul class="disc">
+	<li>CPU (processor)</li>
+	<li>RAM</li>
+	<li>Skærm</li>
+	<li>Harddiske</li>
+	<li>Netværk</li>
+	<li>Udklipsholder</li>
+</ul>
+
+<h3>CPU</h3>
+
+<p><em>CPU'en opsættes i menuen: <button type="">Indstillinger</button>  &rarr; System &rarr; Processor</em>.</p>
+
+<figure id="">
+
+	<img class="p90" src="images/Virtualbox_system_CPU.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+
+<p>Du kan indstille 2 ting:</p>
+
+<ol class="">
+	<li>Antal processorer</li>
+	<li>Ydelsesbegrænsning</li>
+</ol>
+
+<h4>Antal processorer</h4>
+
+<p>Antallet af virtuelle processorer er afgørende for hvor effektivt den virtuelle maskine arbejder med data.</p>
+
+<p>Du kan med fordel øge antallet af processorer når du installerer den virtuelle maskine, og så sætte antallet ned når du skal anvende den.</p>
+
+<p>Vælger du mere end det grønne felt (her 1-3 processorer), kan det gå ud over værtens ydeevne.</p>
+
+<p>Til normal drift bruger jeg:</p>
+
+<dl class="">
+	<dt>Ubuntu server</dt>
+	<dd>1 CPU</dd>
+	<dt>Ubuntu desktop</dt>
+	<dd>2 CPU</dd>
+	<dt>Windows 10</dt>
+	<dd>3 CPU</dd>
+</dl>
+
+<p>Grunden til at jeg har sat windows 10 til 3 CPU'er er fordi jeg ofte anvender det til at køre "rigtige" windowsprogrammer for at udføre en opgave.</p>
+
+<h4>Ydelsesbegrænsning</h4>
+
+<p>Her kan du bestemme hvor mange % af CPU'en den virtuelle maskine skal bruge. Den får antallet af procent i køretid på den virtuelle CPU.</p>
+
+<p>Ændr kun på denne hvis du skal have mange virtuelle maskiner kørende på samme enhed.</p>
+
+<h3>RAM</h3>
+
+<p><em>RAM opsættes i: <button type="">Indstillinger</button>  &rarr; System &rarr; Bundkort</em>.</p>
+
+<figure id="">
+
+	<img class="p90" src="images/Virtualbox_system_RAM.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Mine anbefalinger til forskellige operativsystemer er følgende RAM-størrelse. Parentesen angiver RAM-størrelsen hvis din maskine har +16GB RAM</p>
+
+<dl class="">
+	<dt>Ubuntu Server</dt>
+	<dd>1 GB (2 GB)</dd>
+	<dt>Ubuntu Desktop</dt>
+	<dd>2 GB (4 GB)</dd>
+	<dt>Windows</dt>
+	<dd>4 GB (8GB)</dd>
+</dl>
+
+<h3>Skærm</h3>
+
+<p><em>Skærme indstilles i: <button type="">Indstillinger</button> &rarr; System &rarr; Skærm</em></p>
+
+<p>Her skal vi kigge på 2 indstillinger:</p>
+
+<ol class="">
+	<li>Grafikhukommelse</li>
+	<li>3D-acceleration</li>
+	
+</ol>
+
+<figure id="">
+
+	<img class="p90" src="images/Virtualbox_system_skærm.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h4>Grafikhukommelse</h4>
+
+<p>Grafikhukommelsen vil være på maksimalt 128 på Linuxsystemer, men 256 på Windows.</p>
+
+<dl class="">
+	<dt>Ubuntu Server</dt>
+	<dd>16 MB</dd>
+	<dt>Ubuntu Desktop</dt>
+	<dd>128 MB</dd>
+	<dt>Windows</dt>
+	<dd>256 MB</dd>
+</dl>
+
+<h4>3D-acceleration</h4>
+
+<p>Jeg anbefaler at du sætter flueben ved <em>Acceleration - aktiver 3D-acceleration</em>, når du bruger GUI systemer. På den måde kan  Virtualbox bruge din maskines grafikfunktioner</p>
+
+<h3>Harddiske</h3>
+
+<p>Hvis du skal have flere harddiske på din virtuelle maskine skal den først oprettes. Det gør du i <em>Håndtering af virtuelt medie</em></p>
+
+<p>Du får adgang ved at bruge menuen: <em>Fil &rarr; Håndtering af virtuelt medie</em>, eller ved at bruge genvejen: <kbd>Ctrl</kbd>+<kbd>d</kbd>.</p>
+
+<figure id="">
+
+	<img class="p90" src="images/Virtualbox_system_lagerenheder_01_start.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Under <em>Attributter</em> kan du ændre i navn og placering. Under <em>Størrelse</em> kan du ændre i harddiske størrelse.</p>
+
+<h4>Opret ny harddisk</h4>
+
+<p>Klik på <button type="">Create</button>.</p>
+
+<figure id="">
+
+	<img class="p90" src="images/Virtualbox_system_lagerenheder_02_ny_harddisk.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Du skal ændre følgende:</p>
+
+<ul class="disc">
+	<li>Filplacering: Ændr sidste led til et sigende navn</li>
+	<li>Filstørrelse: Ændr til f.eks. 100GB</li>
+	<li>Harddisk-filformat: Behold forvalgte <strong>VDI(...)</strong></li>
+	<li>Lagring på fysisk harddisk: Behold <em>Dynamisk allokeret</em></li>
+</ul>
+
+<p>Du kan altid ændre størrelsen senere hvis den virtuelle harddisk er for lille.</p>
+
+<div class="alert">
+	
+	<p>Har du mange harddiske, så kan det være en god ide at lave en beskrivelse, så du ved hvor de hører hjemme.</p>
+
+</div>
+
+<h4>Opret nye Optiske diske</h4>
+
+<p>Dette er egentlig CD/DVD/BR ISO-filer. Hvis du lige har hentet en fil og den ligger i den <em>Hentet</em> mappe, så opdager VirtualBox dem selv</p>
+
+<p>Ligger de et andet sted, klikker du på <button type="">Tilføj</button> og henter filen.</p>
+
+<h4>Tilføj harddisk</h4>
+
+<p><em>Klik på: <button type="">Indstillinger</button> &rarr; System &rarr; Lagerenheder</em></p>
+
+<p>Klik på <em>Styrenhed SATA</em> og vælg harddiskikonet (sidste knap)</p>
+
+<figure id="">
+
+	<img class="p90" src="images/Virtualbox_system_lagerenheder_03_tilføj_harddisk_01.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Find den nyoprettede harddisk under: <em>Not attached</em>, vælg den og klik <button type="">Choose</button></p>
+
+<figure id="">
+
+	<img class="p70" src="images/Virtualbox_system_lagerenheder_04_tilføj_harddisk_02.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Harddisken er nu tilføjet</p>
+
+<figure id="">
+
+	<img class="p90" src="images/Virtualbox_system_lagerenheder_05_tilføj_harddisk_03.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+
+
+<h3>Netværk</h3>
+
+<p><em>Netværk</em> sættes i menuen: <button type="">Indstillinger</button> &rarr; Netværk</em>.</p>
+
+<p>Her vil der blive gennemgået 3 forskellige netværkstyper:</p>
+
+<ol class="">
+	<li>Netværksbro - Den virtuelle maskine fungerer somom den er sluttet direkte til dit netværk</li>
+	<li>NAT-netværk - Et lukket netværk med adgang til Internettet</li>
+</ol>
+
+<h4>Netværksbro</h4>
+
+<p>Vil du bare have den virtuelle maskine direkte på dit netværk, så vælger du <em>Netværksbro</em>, og netværkskortet på din computer.</p>
+
+<p>Sidder du på en laptop, der er tilsluttet WiFi, skal du vælge dette netværkskort.</p>
+
+<figure id="">
+
+	<img class="p90" src="images/Virtualbox_system_network_bridged.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h4>NAT-netværk</h4>
+
+<p>Et NAT-netværk svarer til det netværk du har hjemme ved dig selv. Der er adgang til Internettet, men ellers er netværket privat og lukket.</p>
+
+<p>Du opretter et NAT-netværk ved at gå til <em>Fil &rarr; Præferencer &rarr; Netværk</em>. Du kan også komme dertil ved at bruge tasterne <kbd>Ctrl</kbd>+<kbd>g</kbd>.</p>
+
+<p>Du opretter et NAT-netværk ved at klikke på + knappen yderst til højre.</p>
+
+<figure id="">
+
+	<img class="p70" src="images/Virtualbox_system_network_NAT_01.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Du kan ændre det ved at klikke på den nederste knap ude til højre. Du kan ændre i:</p>
+
+<ul class="disc">
+	<li>Navn</li>
+	<li>Netværks-CIDR</li>
+	<li>Understøttelse af DHCP</li>
+	<li>Viderestilling af porte</li>
+</ul>
+
+<figure id="">
+
+	<img class="p50" src="images/Virtualbox_system_network_NAT_02_detaljer.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Klik <button type="">OK</button>, når du har konfigureret det.</p>
+
+<p>Gå til din virtuelle maskine og vælg <em>Netværk</em>.</p>
+
+<p>Ændr <em>Forbundet til</em> til <em>NAT-netværk</em> og <em>Navn</em> til det netværk du lige har oprettet, og tryk <button type="">OK</button></p>
+
+<figure id="">
+
+	<img class="p70" src="images/Virtualbox_system_network_NAT_03_Indstil.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Ved du ikke meget om netværk og du bare vil have et lukket netværk til at eksperimentere i, er dette løsningen.</p>
+
+<h4>Flere typer netværk</h4>
+
+<p>VirtualBox understøtter andre netværksmuligheder og du kan skabe et netværk der passer til dine behov.</p>
+
+<p>Du kan se en gennemgang af de forskellige virtuelle netværk, som VirtualBox tilbyder: <a href="Virtualbox_virtuelle_netværk.html" target="_blank">Virtualbox_virtuelle_netværk.html</a></p>
+
+<h3>Udklipsholder</h3>
+<p><em>Udklipsholderen</em> sættes i menuen: <em>Generelt &rarr; Avanceret</em>.</p>
+
+
+
+
+<h2>Genvejstaster</h2>
+
+<p>Alle genvejstaster kræver at man bruger VirtualBox's <em>host controller</em>. Det er som standard sat til den højre <kbd>Ctrl</kbd>. Herefter kaldet <kbd>H_Ctrl</kbd>.</p>
+
+<dl class="with_keys">
+	<dt><kbd>H_Ctrl</kbd>+<kbd>e</kbd></dt>
+	<dd>Tag et skærmbillede af den virtuelle maskine</dd>
+	
+	<dt><kbd>H_Ctrl</kbd>+<kbd>f</kbd></dt>
+	<dd>Gå til fuld skærm</dd>
+
+	<dt><kbd>H_Ctrl</kbd>+<kbd>n</kbd></dt>
+	<dd>Gå til fuld skærm</dd>
+
+	<dt><kbd>H_Ctrl</kbd>+<kbd>m</kbd></dt>
+	<dd>Minimer den virtuelle maskine</dd>
+
+	<dt><kbd>H_Ctrl</kbd>+<kbd>s</kbd></dt>
+	<dd>Opsætning af den virtuelle PC</dd>
+
+	<dt><kbd>H_Ctrl</kbd>+<kbd>t</kbd></dt>
+	<dd>Tag et øjebliksbillede af den virtuelle maskine</dd>
+	
+	<dt><kbd>H_Ctrl</kbd>+<kbd>Home</kbd></dt>
+	<dd>Åbner menuen inde i den virtuelle maskine</dd>
+
+	<dt><kbd>H_Ctrl</kbd>+<kbd>h</kbd></dt>
+	<dd>Send et ACPI nedlukningssignal. Svarer til at trykke på tænd knappen.</dd>
+	
+	<dt><kbd>H_Ctrl</kbd>+<kbd>p</kbd></dt>
+	<dd>Sæt den virtuelle maskine på pause</dd>
+	
+	<dt><kbd>H_Ctrl</kbd>+<kbd>q</kbd></dt>
+	<dd>Giver dig et vindue hvor du kan vælge mellem at: 
+		<ul class="disc">
+		<li>Gemme maskinens tilstand (Lukker maskinens ned, så den kan genstartes fra samme punkt)</li>
+		<li>Sende signal til nedlukning (svarer til at trykke på start knappen)</li>
+		<li>Slukke for maskinen (Svarer til at hive ledningen ud)</li>
+		<li>Indlæse forrige øjebliksbillede.</li>
+	</ul>
+		
+	<dt><kbd>H_Ctrl</kbd>+<kbd>r</kbd></dt>
+	<dd>Genstart den virtuelle maskine ved hjælp af reset</dd>
+	
+	<dt><kbd>H_Ctrl</kbd>+<kbd>Backspace</kbd></dt>
+	<dd>Svarer til <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Backspace</kbd></dd>
+	
+	<dt><kbd>H_Ctrl</kbd>+<kbd>Delete</kbd></dt>
+	<dd>Svarer til <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Delete</kbd></dd>
+	
+</dl>
+
+<h2>Øjebliksbilleder</h2>
+
+<p>Med et øjebliksbillede (snapshot) kan du gemme den virtuelle maskines øjeblikkelige tilstand.</p>
+
+<p>Du kan f.eks. lave et øjebliksbillede af en ny installation, som du kan bruge til at teste forskellige opsætninger.</p>
+
+<p>Du kan også lave et øjebliksbillede af en kørende virtuel maskine. På den måde kan du fjerne ændringer ved at gå tilbage til oprindelige maskine.</p>
+
+<h3>Øjebliksbillede af slukket maskine</h3>
+
+<p>Åbn VirtualBox og vælg: <em>Maskine &rarr; Tools &rarr; Øjebliksbilleder</em>. Vinduet til højre vil ændre sig:</p>
+
+<figure id="">
+
+	<img class="p90" src="images/Virtualbox_øjebliksbillede_01.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>I feltet <em>Attributter</em> kan du læse navn og beskrivelse af øjebliksbillede.</p>
+
+<p>Du tager et øjebliksbillede ved at klippe på knappen <button type="">Tag</button>. Giv øjebliksbilledet et navn og tilføj en beskrivelse. Tryk herefter <button type="">OK</button>.</p>
+
+<figure id="">
+
+	<img class="p50" src="images/Virtualbox_øjebliksbillede_02_tilføj_beskrivelse.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Nu kan du se der er 2 muligheder at vælge imellem: <em>Frisk installation</em> og <em>nuværende tilstand</em>. Læg også mærke til, at der i venstre ved den virtuelle maskines navn er kommet en parantes, hvor det aktuelle øjebliksbilledes navn står.</p>
+
+<figure id="">
+
+	<img class="p90" src="images/Virtualbox_øjebliksbillede_03_efter_tilføjelse_af_øjebliksbillede.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Du kan nu eksperimentere som du har lyst, og du kan vende tilbage til  <em>frisk installation</em> når du ønsker det.</p>
+
+<div class="alert">
+	
+	<p>Det er altid en god ide at give øjebliksbilleder et beskrivende navn og en sigende beskrivelse.</p>
+
+</div>
+
+<h3>Øjebliksbillede af kørende maskine</h3>
+
+<p>For at tage et øjebliksbillede af en kørende maskine vælger du enten menuen: <em>Maskine &rarr; Tag øjebliksbillede</em>, eller genvejstasten <kbd>H_Ctrl</kbd>+<kbd>t</kbd>.</p>
+
+<figure id="">
+
+	<img class="p50" src="images/Virtualbox_øjebliksbillede_04_tilføj_beskrivelse_kørende maskine.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Et kig på VirtualBox viser nu det nye øjebliksbillede.</p>
+
+<figure id="">
+
+	<img class="p90" src="images/Virtualbox_øjebliksbillede_05_efter_tilføjelse.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h3>Kør fra øjebliksbillede</h3>
+
+<p>Marker det øjebliksbillede du vil anvende og klik på <button type="">Restore</button>, og herefter <button type="">OK</button>. Det kan tage lidt tid for computeren at genskabe øjebliksbilledet.</p>
+
+<p>Nu vil den virtuelle maskine starte fra dette øjebliksbillede. Hvis det er af en kørende virtuel maskine, så vil den starte på som kørende.</p>
+
+<h3>Slet et øjebliksbillede</h3>
+
+<p>For at slette et øjebliksbillede skal du markere det og klikke på <button type="">Delete</button>, og herefter <button type="">OK</button>.</p>
+
+<p>Det kan tage lidt tid</p>
+
+<h2>Kloning</h2>
+
+<p>Du kan også lave <em>klon</em> af din virtuelle maskine. En klon er en kopi af den oprindelige. Du laver en klon ved at klikke på <button type="">Klon</button>.</p>
+
+<figure id="">
+
+	<img class="p90" src="images/Virtualbox_kloning_01.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h3>Kloningstype</h3>
+
+<p>Du kan vælge at laven en <em>fuld</em> eller en <em>koblet</em> klon.</p>
+
+<p><strong>Fuld klon</strong></p>
+
+<p>En fuld klon er en nøjagtig kopi af den oprindelige, og den fylder lige så meget på harddisken.</p>
+
+<p>Den fulde klon kan kopieres til andre computere </p>
+
+<p><strong>Den koblede klon</strong></p>
+
+<p>En koblet klon indeholder kun ændringerne fra den oprindelige. Den kræver altså at den oprindelige virtuelle maskine også er tilgængelig. Til gengæld fylder den langt mindre.</p>
+
+<h3>Klonens øjebliksbilleder</h3>
+
+<p>Du kan vælge at tilføje alle øjebliksbilleder, eller kun den nuværende tilstand.</p>
+
+<h3>Additional options</h3>
+
+<p>Her kan du ændre i konfigurering af hardwaren. Det er kun til avanceret brug.</p>
+
+<figure id="">
+
+	<img class="p90" src="images/Virtualbox_kloning_02.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+
+
+</div><!-- end: col-md-9 -->
+
+<footer>
+
+	<p onclick="parentNode.remove()"><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons licens" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>Indholdet på Vidas.dk er  er licenseret under <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> og er skrevet af Thomas Jensen. (<a href="../hvem_er_jeg.html" target="_blank">Læs mere</a>)</p>
+
+</footer>
+	
+	
+</div><!-- end: row-fluid -->
+
+</div> <!-- end: container-fluid -->
+
+
+<!-- SCRIPT SECTION -->
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script type="text/javascript" src="../js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="../js/jquery.tocify.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+
+<!-- PRETTYFY-->
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+
+
+<!-- HIGHLIGHT -->
+	<script src="../js/highlight.pack.js" type="text/javascript"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+
+<!-- MATHJAX -->
+<script type="text/javascript" 
+	src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  displayAlign: "left",
+  displayIndent: "0em"
+});
+</script>
+
+
+<!-- TOCIFY -->
+<script>
+	$(function() {var toc = $("#toc").tocify({ selectors: "h2, h3, h4" }).data("toc-tocify"); });
+</script>
+<!-- GOOGLE ANALYTICS -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-89933285-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</body>
+</html>
