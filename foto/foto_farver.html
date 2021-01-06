@@ -41,32 +41,51 @@
 	
 <h1>Digitale farver</h1>
 
-<p>Denne guide har fokus på at forklare hvordan digitale farver dannes og genereres digitalt. Jeg har gjort mit bedste for at forklare de tekniske begreber og modeller på en måde, så det skulle være til at forstå. Det betyder samtidig at tingene ikke bliver forklaret superskarpt og nøjagtigt, men det er et valg jeg har truffet for at alle kan være med. Der vil i flere tilfælde være henvisninger til andre hjemmesider, som jeg selv har anvendt i min proces med at forstå hvordan digital fotografering hænger sammen.</p>
+<p>Denne guide vil give dig en forståelse for anvendelse af farver i digital sammenhæng. Guiden er på ingen måde fyldestgørende, men giver dig et indblik.</p>
 
-<p>Det er også vigtigt at forstå de betingelser som denne guide er baseret. Den er baseret på, at farver på en computer, tablet eller telefon bliver  dannet af et program og ledt ud til skærmen ved hjælp af et grafikmodul (grafikkort).</p>
+<p>Du skal være opmærksom på to ting mens du læser:</p>
 
-<span class="afsnit">Program &#8594; Grafikdriver &#8594; Grafikmodul &#8594; Skærm</span>
+<ol class="">
+	<li>Digitale farver er afhængig af din skærm/printer. Så hvis du skal sikre dig at farverne er ens, så kræver det at skærm og print er i samme <em>farverum</em>.</li>
+	<li>Din skærm og printer arbejder efter to forskellige principper:
+		<ul class="disc">
+			<li>Skærme arbejder med additive farver og danner farver ved at blande dem sammen</li>
+			<li>Printer arbejder med substraktive farver, og laver farverne ved at forhindre farver i at træde igennem. </li>
+		</ul>
+	</li>
+</ol>
 
 <p>Følgende vil blive gennemgået:</p>
 
-<ol class="fat_li">
-	<li>Farvemodeller</li>
-	
-	<p>Kapitlet handler om den farvemodeller vi anvender ved digital billedbehandling. Den additive farvemodel <span class="inl_cmd">RGB</span> (<span class="bold">R</span>ed <span class="bold">G</span>reen <span class="bold">B</span>lue) vil blive gennemgået grundigt. <span class="inl_cmd">CMYK</span> (<span class="bold">C</span>yan, <span class="bold">M</span>agenta, <span class="bold">Y</span>ellow og <span class="bold">K</span>ey) vil kort blive forklaret, da den anvendes når billeder skal printes.</p>
-	
-	<li>Farverum</li>
-	
-	<p>Dette kapitel handler om de forskellige måder RGB-farverne omsættes til farver på. Her vil de tre mest almindelige farverum blive behandlet: <span class="inl_cmd">sRGB</span>, <span class="inl_cmd">aRGB</span> og <span class="inl_cmd">ProPhoto-RGB</span>.</p>
-</ol>
+<p><b>Farvemodeller</b></p>
+
+<p>Her vil du blive introduceret til hvordan farver bliver dannet. Dannelse af farver ved hjælp RGB (Red Green Blue), som laver farver ved at blande dem sammen (<em>additiv farvedannelse</em>) og ved hjælp af CMYK, som laver farver ved at trække farver væk (<em>substraktiv farvedannelse</em>)</p>
+
+<p><b>Farverum</b></p>
+
+<p>Hvad er et farverum, og hvordan kan vi anvende den viden. Farverummet kaldes for <em>gamut</em></p>
+
+<p>Vi kommer til at kigge på de 4 forskellige farverum:</p>
+
+<ul class="disc">
+	<li>sRGB</li>
+	<li>aRGB</li>
+	<li>ProPhoto-RGB</li>
+	<li>DCI-P3</li>
+</ul>
+
+<p>DCI-P3 farverummet er det nyeste, og det er designet til digitale medier - altså digitale skærme.</p>
 
 
 <h2>Farver</h2>
 
-<p>Farver er noget vi alle har erfaring med, men også noget som vi har svært ved at definere. Er en farve f.eks. grønblå, blågrøn eller tyrkis? ... og hvad farve har en postkasse egentlig? Problemet er, at en genstands farve ikke defineres af materialet, men at det lys det udsender. Derfor vil postkasserød være forskellig på en solskinsdag og en dag hvor det er overskyet.</p>
+<p>Farver er noget vi alle har erfaring med, men også noget som vi har svært ved at definere. Er en farve f.eks. grønblå, blågrøn eller tyrkis? ... og hvilken rød farve har en postkasse egentlig? Problemet er, at farve ikke defineres af materialet, men af lys som det kaster tilbage. Derfor vil postkasserød være forskellig på en solskinsdag og en dag hvor det er overskyet.</p>
 
-<p>For at gøre det endnu mere bøvlet så har naturen indrettet vores øjne med 3 fotoreceptorer der kan aflæse rød, grøn og blå, hvor grøn er en blandingsfarve beståede af gul og blå. Gul er altså vores hjernes måde at tolke det lys, Der ligger imellem det som øjets røde og grønne fotoreceptorerne ikke kan fange.</p>
+<p>... og dit printede billede vil se forskelligt ud alt efter om man ser det i neon- eller dagslys.</p>
 
-<p>Som det kan ses herunder fylder den gule farve meget lidt, og den grønne farve meget. Evolutionsmæssigt giver det god mening, at vi er gode til at se grønne nuancer. På den måde kan vi se selv meget små bevægelser i det grønne... og dermed opdage sabeltigeren før den æder os.</p>
+<p>For at gøre det endnu mere bøvlet, så har naturen indrettet vores øjne med 3 fotoreceptorer der kan aflæse rød, grøn og blå. Grøn er som du måske ved en blandingsfarve beståede af gul og blå. Gul er altså vores hjernes måde at tolke det lys, Der ligger imellem det som øjets røde og grønne fotoreceptorerne ikke kan fange.</p>
+
+<p>Som det kan ses herunder fylder den gule farve meget lidt, og den grønne farve meget. Evolutionsmæssigt giver det god mening, at vi er gode til at se grønne nuancer. På den måde kan vi se selv meget små bevægelser i det grønne... og dermed opdage slangen i græsset, før den bider os.</p>
 
 <figure id="">
 
@@ -76,7 +95,7 @@
 
 </figure>
 
-<p>Derudover er udfordringen at farverne rent fysisk består af lys og det er bølgelængden af dette lys fotoreceptorerne i vores øjne opfanger og tolker. For at beskrive de farver der er synlige for det menneskelige øje anvender vi modellen med det mundrette navn <a href="https://en.wikipedia.org/wiki/CIE_1931_color_space" target="_blank">CIE 1931 color space</a>.</p>
+<p>For at beskrive de farver der er synlige for det menneskelige øje anvender vi modellen med det mundrette navn <a href="https://en.wikipedia.org/wiki/CIE_1931_color_space" target="_blank">CIE 1931 color space</a>.</p>
 
 <figure id="">
 
@@ -86,31 +105,20 @@
 
 </figure>
 
-<p>Vær opmærksom på, at modellen herover ikke gengiver farver og nuancer rigtigt, men blot er tilnærmede. Derfor bliver f.eks. det grønne område gengivet som stort set en ensfarvet grøn plamage.</p>
+<div class="alert">
+	
+	<p>Farvemodellerne herover ... og herefter viser ikke de "<em>korrekte</em>" farver. De viser det som teknologien - altså billedernes data og din skærm/printers evner til at gengive disse farver ... i forhold til det lys det genspejler...</p>
+	
+	<p>... ingen har sagt at det skal være nemt ;)</p>
 
-
+</div>
 
 <p>Det som vi anvender modellen til i denne sammenhæng er at vise hvilke farver øjet kan se og skelne. Vi vil senere placere de farverum vi arbejder i. Det farverum vi kan anvendes kaldes for gamut.</p>
 
 
-<h2>Dannelse af farve</h2>
+<h2>Grundfarver</h2>
 
-<!--
-<p>Når vi taler om digitale farver taler vi om <span class="inl_cmd">additive</span> farver - altså farver der bliver lagt sammen.</p>
-
-<figure id="">
-
-	<img class="p40" src="images/from_wikipedia_Synthese+.svg" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-
-<p>På illustrationen herover er taget fra <a href="https://da.wikipedia.org/wiki/Farvesystem" target="_blank">https://da.wikipedia.org/wiki/Farvesystem</a>, som kort gennemgang af farvesystemer.</p>
--->
-
-
-<h3>Grundfarver</h3>
+<p>Grundfarverne er: Rød, gul og blå. Vi kalder dem grundfarver fordi vi ved at blande dem (som lys), kan danne alle farver.</p>
 
 <table class="centreret fixed">
 	<tbody>
@@ -122,13 +130,23 @@
 	</tbody>
 </table>
 
-<p>I farvelæren definerer vi grundfarverne som dem, vi ikke kan blande ved hjælp af andre. Det er dog ikke ensbetydende med at vi kan blande alle andre farver med dem. For som nævnt ovenfor så er vores syn ikke bygget op på samme måde. Evolutionen har udviklet planterne til at udnytte det lys der er mest af nemlig det grønne. Da vi kom til langt senere har vores syn indrettet os på en verden hvor det er langt mere praktisk at kunne skelne grønne nuancer fra hinanden, så vi bedre kunne jage dyr i naturen ... eller opdage rovdyr før de angreb os.</p>
+<p>Grundfarver er definerede ved, at vi ikke kan blande ved hjælp af andre.</p>
 
-<p>På rigtig mange måder ville det have været bedre om vi aldrig havde lært at rød, gul og blå var grundfarver, for det er en sandhed med modifikationer. For reelt har vi også brug for indtil flere grønne nuancer for at kunne blande de farver vores øje ser.</p>
+<p>Det med at det kun gælder lys ved vi jo godt af praktisk erfaring. For da vi i formning skulle blande farver endte vi altid med ... brun. Det skyldes at maling består af farvepigment ... ikke lys. Af samme grund anvender malere langt flere blandingsfarver end 3 ... og rigtig mange af dem er grønne nuancer.</p>
 
-<p>Når vi blander fysiske farver er det egentlig blot en hvis pasta med farvede partikler i, og langt de fleste af os har prøvet at tilpasse en farveblanding, for at ende ud med en brun plamage. Det som sker når vi forsøger at blande en ny farve er, at vi ændre på den kemiske sammensætning der er i malingen - og i stedet for at "sluge" og "spærre" for det lys vi har tænkt så mister malingen evnen til at kunne tilbagekaste lyset som vi vil. Malingen kaster så mange nuancer fra sig, at vores hjerne blandet det sammen og gør den brun. Det er disse begrænsninger man må lære at leve med når man skal arbejde med kemiske farver, og det er årsagen til at gode printere anvender mange farvepatroner med forskellige nuancer.</p>
+<p>Det som sker når vi forsøger at blande en ny farve med farvepigmenter er, at vi ændre på den kemiske sammensætning der er i malingen - og i stedet for at "sluge" og "spærre" for det lys vi har tænkt så mister malingen evnen til at kunne tilbagekaste lyset som vi vil. Malingen kaster så mange nuancer fra sig, at vores hjerne blandet det sammen og gør den brun.</p>
 
-<p>Herunder er der et farvehjul, som viser de farveblandinger vi kan få hvis vi tager udgangspunkt i 4 farver: rød, gul, grøn og blå. Her kan man også se at de grønlige nuancer fylder rigtig meget </p>
+
+<p>Herunder er der vist hvad der sker når vi tager udgangspunkt i 6 blandingsfarver - RGBCMY:</p>
+
+<ul class="disc">
+	<li>R - Rød</li>
+	<li>Y - Gul</li>
+	<li>G - Grøn</li>
+	<li>C - Cyan</li>
+	<li>B - Blå</li>
+	<li>M - Magenta</li>
+</ul>
 
 <figure id="">
 
@@ -138,43 +156,62 @@
 
 </figure>
 
-<p>Sort og hvid er også ret specielle, da "ægte" sort er defineret ved at der intet lys kastes tilbage. Hvid er defineret ved, at alle farver kastes tilbage. Det viser sig at der skal anvendes to forskellige tilgange til farveblanding. En til skærm og en til print. På en skærm bliver de enkelte punkter indstillet ved hjælp af lys (energi) og man kan lysne en farve ved blot at skrue op for lystyrken. Ved en udskrift på papir skal farvens transperans lysne billedet, ved at papirets farve slår igennem. Disse to principper beskrives som additiv og substraktiv farvedannelse</p>
+<p>Du kan se en video om dette her:</p>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/cQCsDfEqr9o" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
+<h3>Sort og hvid</h3>
+
+<p>Sort og hvis er også to specielle farver. Her skal vi tage udgangspunkt i at farver er det synlige lys der kastes tilbage fra en genstand.</p>
+
+<p><em>Sort</em> er ideelt set, at der ikke kastes noget lys tilbage. "Ægte" sort vil altså blive opfattet som et hul eller ingenting.</p>
+
+<p>Så når vi taler om sort, så er det en tolkning vores hjerner laver, og derfor kan en skærm godt se sort ud ... selvom den reelt set er en ekstrem mørkegrå farve.</p>
+
+<p><em>Hvid</em> er ideelt at alle farver kastes tilbage. På en computerskærm svarer det til at alle 3 farver er på fuld styrke. Denne vide farve er heller ikke ideel, men vores hjerner tror på det.</p>
 
 <h3>Det rigtige farvehjul</h3>
 
-<p>I den ovenstående model mode har man sat grundfarverne overfor hinanden, og den model giver fin mening, når vi taler om en teoretisk forståelse. Problemet er bare, at det ikke svarer til den måde vi ser farverne på. Altså den måde fysiske farver (pigmenter) præsenterer sig.</p>
+<p>Lad os kigge på et chromatisk farvehjul der er lavet med "rigtige" farver. Her er det Michel Chavreul's udgave</p>
 
 <figure id="">
 
-	<img class="p30" src="http://colourstudio.com/wp-content/uploads/2012/09/chevreul.jpg" alt="" title="" />
+	<img class="p60" src="images/chromatic_colorwheel_michel_chevreul.jpg" alt="" title="" />
 
-	<figcaption></figcaption>
-
-</figure>
-
-<p>Læg mærke til at de grønne farve nuancer fylder over <span class="math">\( \frac{ 1 }{ 3 } \)</span> af cirklen, hvilket ikke stemmer overens med modellen ovenfor ... men med <a href="https://en.wikipedia.org/wiki/CIE_1931_color_space" target="_blank">CIE 1931 color space</a>, som vi gennemgik ovenfor. Så et mere korrekt farvehjul skulle nok se ud som herunder</p>
-
-<figure id="">
-
-	<img class="p20" src="https://i0.wp.com/blog.asmartbear.com/wp-content/uploads/4-color-wheel.gif" alt="" title="" />
-
-	<figcaption><a href="https://blog.asmartbear.com/color-wheels.html" target="_blank">https://blog.asmartbear.com/color-wheels.html</a></figcaption>
+	<a href="https://commons.wikimedia.org/wiki/File:Cercle_chromatique_Chevreul_3.jpg#/media/File:Cercle_chromatique_Chevreul_3.jpg" target="_blank"><figcaption>Public domain - taget fra Wikimedia</figcaption></a>
 
 </figure>
 
 
-<span class="afsnit">Læs mere</span>
+<p>Læg mærke til at de grønne farve nuancer fylder over &frac13; af cirklen, hvilket ikke stemmer overens med modellen ovenfor ... men med <em>CIE 1931 color space</em>, som vi gennemgik ovenfor. Så et mere korrekt farvehjul skulle nok se ud som herunder</p>
+
+
+<p><b>Læs mere</b></p>
 
 <p><a href="https://blog.asmartbear.com/color-wheels.html" target="_blank">https://blog.asmartbear.com/color-wheels.html</a></p>
 
-<p><a href="http://colourstudio.com/history-of-the-color-wheel/" target="_blank">http://colourstudio.com/history-of-the-color-wheel/</a></p>
-
-<p></p>
+<p><a href="https://www.routledge.com/downloads/K29081/K29081_Ch_1.pdf" target="_blank">https://www.routledge.com/downloads/K29081/K29081_Ch_1.pdf</a></p>
 
 
-<h3>Additive farver</h3>
 
-<p>Den additive farveblanding er den vi kender fra skærme. Her bliver farverne dannet ved at skærmen laver det korrekte mix mellem RGB farver. Se herunder. Lad os prøve at beskrive hvad der skaber den gule farve.</p>
+
+
+<h2>Digitale farver</h2>
+
+
+<p>Skærme danner farver ved hjælp af farverne rød, grøn og blå. Det er heraf forkortelsen RGB kommer. Disse kommer fra små pixels der sidder tæt sammen i skærmen.</p>
+
+<figure id="">
+
+	<img class="p50" src="https://upload.wikimedia.org/wikipedia/commons/a/a4/LCD_TFT_Screen_Closeup.jpg" alt="" title="" />
+
+	<a href="https://upload.wikimedia.org/wikipedia/commons/a/a4/LCD_TFT_Screen_Closeup.jpg" target="_blank"><figcaption>Publick domain</figcaption></a>
+
+</figure>
+
+<p>Ved at skrue op og ned for styrken på de enkelte farver kan skærmen danne farver. Den måde at danne farver på kaldes <em>additiv farveblanding</em>. Og hertil bruger vi RGB.</p>
+
 
 <table class="centreret fixed">
 	<tbody>
@@ -186,17 +223,502 @@
 	</tbody>
 </table>
 
-<p>Her skal vi forestille os at vi har et sort stykke karton, hvor vi får to lamper til at lyse på papiret. Den ene lampe sender rødt lys ud, den anden grøn (blandingsfarve gul/blå). Tricket er, at den grønne farve består af både gul og blå. Men når den røde farve er der kan den blå ikke komme igennem. Den vil altså blive elimineret. Den røde farve kan ikke trænge igennem den grønne, og dermed er den eneste farve der ikke er blokeret den gule.</p>
+<h3>Additive farver</h3>
 
-<p>Når der der intet lys er bliver farven sort, og når RGB farverne har samme niveau udelukker de hinanden og vi får en grå nuance (se længere nede). Den ægte hvide farver opstår når alle farver er tilstede.Kigger du nærmere på din skærm vil du opdage at selv de hvide flader ikke er helt hvide. De er "beskidt" hvide. Det skyldes simpelthen at din skærm ikke kan producere alle farver med en nødvendig intensitet. På samme måde er den sorte farve på din skræm begrænset af hvor mørkt materialet din skærm er bygget af. "Rigtig" sort, er så mørkt at man ikke kan se nogen dybde overhovedet, og det er en ikke-farve der er meget svær at lave.</p>
+<p>Her kan du se en visning af hvad der sker når vi blander farverne. Du skal forestille dig at det er i et helt mørkt rum, hvor der kun er disse 3 lyskilder.</p>
 
 <figure id="">
 
-	<img class="" src="images/farver_AdditiveColor.svg" alt="" title="" />
+	<img class="" src="https://upload.wikimedia.org/wikipedia/commons/c/c2/AdditiveColor.svg" alt="" title="" />
 
-	<figcaption>"<a href="https://commons.wikimedia.org/wiki/File:AdditiveColor.svg#/media/File:AdditiveColor.svg">AdditiveColor</a>" by <a href="//en.wikipedia.org/wiki/User:SharkD" class="extiw" title="wikipedia:User:SharkD">SharkD</a> at <a href="//en.wikipedia.org/wiki/" class="extiw" title="wikipedia:">engelsk Wikipedia</a> Later versions were uploaded by <a href="//en.wikipedia.org/wiki/User:Jacobolus" class="extiw" title="en:User:Jacobolus">Jacobolus</a> at <a class="external text" href="http://en.wikipedia.org">en.wikipedia</a>. - Transferred from&nbsp;<span class="plainlinks"><a class="external text" href="http://en.wikipedia.org">en.wikipedia</a></span>&nbsp;to Commons.. Licensed under Public Domain via <a href="https://commons.wikimedia.org/wiki/">Wikimedia Commons</a>.</figcaption>
+	<figcaption><a href="https://commons.wikimedia.org/wiki/File:AdditiveColor.svg" target="_blank">Public domain</a></figcaption>
 
 </figure>
+
+<p>Lad os prøve at beskrive hvad der skaber den gule farve. Husk farverne er det lys der bliver kastet tilbage. Vi lader bruger en rød og en grøn lampe. Grøn er en blandingsfarve vi får når vi blander gul og blå. Når det røde lys rammer det grønne, så bliver det blå i det grønne ikke kastet tilbage. Kun det gule kan reflekteres.</p>
+
+<p>Som du kan se på illustrationen ovenfor, så er der sort der hvor lyset ikke rammer og hvidt der hvor alle farver rammer.</p>
+
+<p>Grå dannes ved at sænke lysstyrken på alle lamperne ens. Jo lavere lysttyrke ... jo mørkere grå.</p>
+
+<h3>RGB farver</h3>
+
+<p>Nu har vi den fornødne viden der skal til for at tale om de digitale farver - Det som vi kalder RGB.</p>
+
+<p>RGB farver bliver som standard beskrevet ved hjælp af 24 bit. Vi skriver dem som ved hjælp af et <em>#</em> og 3 hexadecimale par, hvor det første angiver rød, det andet angiver grøn, og det tredie blå. På den måde angives hver af RGB farverne i 256 niveauer</p>
+
+<div class="latex">$$ \#\underbrace {XX}_\text{RØD}\underbrace {XX}_\text{GRØN}\underbrace {XX}_\text{BLÅ} $$</div>
+
+<p><em>00</em> er den laveste værdi og <em>FF</em> er den højste.</p>
+
+<p>Du kan se dette hvis du søger på <em>colorpicker</em> med google, og her kan du se både <em>HEX</em> og <em>RGB</em> værdien af den farve du vælger.</p>
+
+<figure id="">
+
+	<img class="p90" src="images/chrome_colorpicker.png" alt="" title="" />
+
+	<figcaption><a href="https://www.google.com/search?q=colorpicker" target="_blank">https://www.google.com/search?q=colorpicker</a></figcaption>
+
+</figure>
+
+<p>I illustrationen herunder kan du se RGB farvernes værdier, samt værdierne på sort og hvid.</p>
+
+
+<table class="centreret fixed">
+	<tbody>
+		<tr>
+			<td style="background-color:#000000"><span class="white"><br/>Sort <br/><br/>#000000 <br/><br/></span></td>
+			<td style="background-color:#FF0000"><span class="white"><br/>Rød <br/><br/>#<b>FF</b>0000</span><br/><br/></td>
+			<td style="background-color:#00FF00"><br/>Grøn <br/><br/>#00<b>FF</b>00<br/><br/></td>
+			<td style="background-color:#0000FF"><br/>Blå <br/><br/><span class="white">#0000<b>FF</b></span><br/><br/></td>
+			<td style="background-color:#FFFFFF"><br/>Hvid <br/><br/>#<span class="bold">FFFFFF</span><br/><br/></td>
+		</tr>
+	</tbody>
+</table>
+
+
+<p>For at se nuancerne kan vi anvende CSS3 til at vise alle 256 nuancer. Herunder er browseren programmeret til at starte med den laveste værdi (<span class="inl_cmd">00</span> og lave en glidende overgang til den højeste værdi (<span class="inl_cmd">FF</span>).</p>
+
+
+<p>Rød ( #00 - #FF )</p>
+
+<div id="grad_red"></div>
+
+<p>Grøn ( #00 - #FF )</p>
+
+<div id="grad_green"></div>
+
+<p>Blå ( #00 - #FF )</p>
+
+<div id="grad_blue"></div>
+
+<div id="spectrum"></div>
+
+
+
+<p>For at danne de grå nuancer skal RGBværdierne sættes ens f.eks. <span class="inl_cmd">#AAAAAA</span>, som <span style="color: #AAAAAA" class="">danner denne grå nuance</span>. Herunder er de grå farvers nuanceforløb vist.</p>
+
+<p>Gråtoner ( #<span class="red">000000</span> - #<span class="red">FFFFFF</span> )</p>
+
+<div id="grad_grey"></div>
+
+<h3>Lav farver</h3>
+
+<p>Der er mange måder man kan lave farver på, da det er de færreste af os der kan kan blande farver ud fra teorien.</p>
+
+<p>Ofte vil man bruge en form for farvehjul, som f.eks. det fra <em>canva.com</em>, som du kan finde her: <a href="https://www.canva.com/colors/color-wheel/" target="_blank">https://www.canva.com/colors/color-wheel/</a></p>
+
+<p>Hvis du vil prøve at eksperimentere med at blande farver, så kan du gøre det i disse link herunder. </p>
+
+
+<p>Eksperimenter med RGB: <a href="https://www.w3schools.com/colors/colors_rgb.asp" target="_blank">https://www.w3schools.com/colors/colors_rgb.asp</a></p>
+
+<p>Eksperimenter med HSL: <a href="https://www.w3schools.com/colors/colors_hsl.asp" target="_blank">https://www.w3schools.com/colors/colors_hsl.asp</a></p>
+
+
+<p>Eksperimenter med CMYK: <a href="https://www.w3schools.com/colors/colors_cmyk.asp" target="_blank">https://www.w3schools.com/colors/colors_cmyk.asp</a></p>
+
+
+
+
+
+<h2>Output - skærm og printer</h2>
+
+<p>De digitale farver er meget præcise. En rød med værdien <em>#FF0000</em> er så rød som noget kan være. Problemet er at denne røde farve kan se forskellig ud på forskellige enheder, på forskellig printere, og det kan farven kan endda ændre sig i forhold til belysningen det bliver set.</p>
+
+<p>Det betyder reelt, at med mindre du bestemmer hvad farven skal præsenteres på - og under hvilke lysforhold, så aner du ikke hvilke nuancer de vil se.</p>
+
+<p>I forhold til printere er det endnu mere kritisk, da ikke arbejder ud fra additiv farvedannelse som RGB gør, men ud fra substraktiv farvedannelse, nemlig CMYK, som bliver gennemgået længere nede.</p>
+
+<p>Lad os tage skærme som et eksempel:</p>
+
+<p>Herunder kan du se et forstørret billede taget af en god DELL skærm (øverst), og en rimelig Asus skærm (nederst). Billedet er taget med en mobiltelefon.</p>
+
+<figure id="">
+
+	<img class="p90" src="images/farver_rgb_dell_top_asus_bottom.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Her er det ret tydeligt at der er forskel ... selvom det er nøjagtigt samme output. Farverne er de samme, men måden de ser ud på er meget forskellig. Bølgeeffekten på DELL skærmen skyldes <a href="https://en.wikipedia.org/wiki/Moir%C3%A9_pattern" target="_blank">moire</a> effekten pga. Dellskærmens høje DPI-opløsning</p>
+
+<p>Outputenheden er noget du skal indtænke fra start, hvis de farver du arbejder med kunne vises på mange forskellige enheder. Vi skal have nogle standarder for farver, som udstyr skal leve op til.</p>
+
+<p>De standarder tilhører det vi daglig tale kalder farverum.</p>
+
+
+
+<h2>Farverum (gamut)</h2>
+
+<p>Ovenfor nævnte jeg CIE-1931 diagrammet som viser alle de farver som det menneskelige øje kan opfange.</p>
+
+<figure id="">
+
+	<img class="p70" class="" src="images/farver_CIE-1931_diagram_in_LAB_space.svg" alt="" title="" />
+
+	<figcaption><a href="https://commons.wikimedia.org/wiki/File:CIE-1931_diagram_in_LAB_space.svg#/media/File:CIE-1931_diagram_in_LAB_space.svg">CIE-1931 diagram in LAB space</a>" by <a href="//en.wikipedia.org/wiki/User:Paulschou" class="extiw" title="en:User:Paulschou">Paulschou</a> at <a class="external text" href="http://en.wikipedia.org">en.wikipedia</a>. Licensed under <a href="http://creativecommons.org/licenses/by-sa/3.0" title="Creative Commons Attribution-Share Alike 3.0">CC BY-SA 3.0</a> via <a href="https://commons.wikimedia.org/wiki/">Commons</a>.</figcaption>
+
+</figure>
+
+<p>Illustrationen ovenfor er på ingen måde korrekt, fordi:</p>
+
+<ol class="">
+	<li>Den bliver vist på en skærm, der ikke kan vise alle farver</li>
+	<li>Vores sanser er analoge - ikke digitale</li>
+</ol>
+
+<p>Men det er den model vi vil bruge til at vise de standardiserede farverum, og de hedder i alfabetisk rækkefølge:</p>
+
+<dl class="">
+
+	<dt>aRGB - Adobe RGB farverum (ofte forkortet aRGB)</dt>
+	
+		<dd>Udviklet af Adobe (<a href="https://en.wikipedia.org/wiki/Adobe_RGB_color_space" target="_blank">https://en.wikipedia.org/wiki/Adobe_RGB_color_space)</a></dd>
+	
+	<dt>CMYK - Cyan, Magenta, Yellow, Key (sort)</dt>
+
+		<dd>Udviklet til 4 farvet tryk (<a href="https://en.wikipedia.org/wiki/CMYK_color_model" target="_blank">https://en.wikipedia.org/wiki/CMYK_color_model</a>)</dd>				
+
+	<dt>DCI-P3 - Standard til digitale film</dt>
+	
+		<dd>Standard udviklet af DCI (<b>D</b>igital <b>C</b>inema <b>i</b>nitiatives) (<a href="https://en.wikipedia.org/wiki/DCI-P3" target="_blank">https://en.wikipedia.org/wiki/DCI-P3</a>)</dd>
+
+	<dt>ProPhoto RGB - </dt>
+		
+		<dd>Udviklet af Kodak (<a href="https://en.wikipedia.org/wiki/ProPhoto_RGB_color_space" target="_blank">https://en.wikipedia.org/wiki/ProPhoto_RGB_color_space</a>)</dd>
+
+	<dt>sRGB - Standard RGB farverum</dt>
+	
+		<dd>Udviklet af HP og Microsoft (<a href="https://en.wikipedia.org/wiki/ProPhoto_RGB_color_space" target="_blank">https://en.wikipedia.org/wiki/ProPhoto_RGB_color_space</a>)</dd>	
+</dl>
+
+<p>Ved hjælp af disse farverum, kan man sige præcist hvordan grøn (#00FF00) ser ud. Men som vi lidt senere skal se, så er det på ingen måde den samme farve - i nogle af systemerne. </p>
+
+<p>Herunder er CIE-1931 diagrammet kan du se hvad de forskellige farverum nogenlunde dækker (ikke nøjagtig):</p>
+
+<figure id="">
+
+	<img class="p90" src="images/farver_CIE-1931_diagram_in_LAB_space_all_color_spaces.svg" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Som udgangspunkt er der nøjagtigt samme antal farver i alle farverum, da RGB som udgangspunkt arbejder med 256 nuancer (8 bit) for hver farve. Det betyder at der i alt 16,8 mio forskellige nuancer (<span class="math">\( 256^3 \)</span>). Billedet har altså i alt</p>
+
+<p>Det kan vi vise på denne måde ved at sammenligne <em>sRGB</em> og <em>ProPhoto</em>:</p>
+
+<figure class="">
+
+	<img class="p90" src="images/farver_illustration_af_nuance_spring.svg" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Der er langt flere grønne nuancer i <em>ProPhoto</em>, en der er i sRGB. Derfor vil der være længere spring mellem de nuancer <em>Prophoto</em> kan vise.</p>
+
+<p>Det problem løser man ved at hæve antallet af nuancer hver farve (RGB) kan have. Konkret bruger man 16 bit til hver farve, hvilket reelt betyder at hver af de oprindelige trin bliver inddelt i 256 </p>
+
+<p>Lad os lige kigge på den glidende overgang i grøn igen:</p>
+
+<div id="grad_green"></div>
+
+<p>Her er den vist med 256 forskellige nuancer fordi den er 8 bit. Ved at gå op til 16 bit bliver den vist med 65.536 forskellige nuancer. Det betyder at:</p>
+
+<p>Et 24 bit billede ( 8 bit på hver farvekanal) har 16.8 mio farver</p>
+
+<p>Et 48 bit billede ( 16 bit på hver farvekanal) har <span class="math">\( 0,2 \cdot 10^{15} \)</span></p>
+
+<p>Prisen for at hæve antallet af bits er også at filen bliver større. Og det kan få betydning, hvis man f.eks. vil anvende det over nettet.</p>
+
+<h3>Det bedste farverum</h3>
+
+<p>Det bedste farverum er det som kan vise de farver du har behov for at vise. Og som vi har set ovenfor, så er det grundlæggende en afvejning mellem 2 ting:</p>
+
+<ul class="disc">
+	<li>Hvilke nuancer skal vises, og</li>
+	<li>På hvilket medie/enhed</li>
+</ul>
+
+<p>Du kan bruge denne rangstige til at overveje hvad det er det bedste format:</p>
+
+<ol class="">
+	<li>sRGB</li>
+	<li>DCI-P3</li>
+	<li>aRGB/CMYK</li>
+	<li>ProPhoto RGB</li>
+</ol>
+
+<p>Som udgangspunkt bør du arbejde i det farverum som passer til dit udstyr OG din målgruppe. Hvis du f.eks. arbejder i aRGB, men billederne anvendes på sRGB skærme/printere, så vil farvene miste "energi" og virke flade:</p>
+
+<p>Dette skyldes at farverne "konverteres" til enhedens output. Hvis der ligger en farveprofil i billedet, så vil nogle programmer "oversætte" billedet til enhedsskærmens farveprofil - og endeligt vil computerens hardware tolke farverne efter det formåen. Det er især tydligt at se på nogle hjemmesider, hvor farverne er blevet "udtænkt" på aRGB skærme, og står levende. Kigger man på den samme hjemmeside på sRGB udstyr, så er siden blevet mat og kedelig.</p>
+
+<p>Et andet eksempel er når man konverterer fra RGB til CMYK. Eksemplet her ligger på Wikipedia</p>
+
+<p><a href="https://commons.wikimedia.org/wiki/File:RGB_and_CMYK_comparison.png#/media/File:RGB_and_CMYK_comparison.png"><img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/RGB_and_CMYK_comparison.png" alt="RGB and CMYK comparison.png" width="300px"></a><br>By <a href="//commons.wikimedia.org/wiki/File:RGB_CMYK_4.jpg" title="File:RGB CMYK 4.jpg" >RGB_CMYK_4.jpg</a>: Annette Shacklett
+derivative work: <a href="//commons.wikimedia.org/wiki/User:Marluxia.Kyoshu" title="User:Marluxia.Kyoshu">Marluxia.Kyoshu</a> (<a href="//commons.wikimedia.org/wiki/User_talk:Marluxia.Kyoshu" title="User talk:Marluxia.Kyoshu"><span class="signature-talk">talk</span></a>) - Made in Photoshop. <a href="//commons.wikimedia.org/wiki/File:RGB_CMYK_4.jpg" title="File:RGB CMYK 4.jpg">Original</a> was also made in Photoshop in 2003., Public Domain, <a href="https://commons.wikimedia.org/w/index.php?curid=9396397">Link</a></p>
+
+
+
+
+<h4>Digitale enheder</h4>
+
+<ul class="disc">
+	<li>telefoner</li>
+	<li>tablets</li>
+	<li>computer- og fjernsynsskærme</li>
+</ul>
+
+<p>Langt de fleste enheder lever ikke op til <em>sRGB</em>. Derfor bør du arbejde i sRGB og 8 bit.</p>
+
+<p>Arbejder du til highendudstyr som f.eks. projektorer og store skærme bør du overveje DCI-P3, da det er en ny digital standard, der er tilpasset den teknologiske udvikling. </p>
+
+<p><strong>Anbefaling</strong></p>
+
+<ul class="disc">
+	<li>Farverum: sRGB, DCI-P3</li>
+	<li>bit: 8 bit</li>
+</ul>
+
+<h4>Sociale medier</h4>
+
+<p>Mange sociale medier konvertere billeder til deres eget format.</p>
+
+<p>Det gør de for at spare plads, nedsætte datatrafikken og sikre en god brugeroplevelse.</p>
+
+<p>Test selv af med at sænke billedet størrelse, f.eks. ved farvereduktion og indstilling på komprimeringsgraden. Gør du det ikke... så gør de.</p>
+
+<p><strong>Anbefaling</strong></p>
+
+<ul class="disc">
+	<li>Farverum: sRGB</li>
+	<li>bit: 8 bit</li>
+</ul>
+
+
+<h4>Print</h4>
+
+<p>Her skal du tilpasse dig den printer du skal udskrive på. Er det en sRGB printer - så arbejd i sRGB. Er det en aRGB printer - så arbejd i aRGB.</p>
+
+<p>Skal du levere billeder der skal printes på CMYK-udstyr, så skal du arbejde i aRGB, da det er det eneste format som kan vise alle farverne.</p>
+
+<p><strong>Anbefaling</strong></p>
+
+<ul class="disc">
+	<li>Farverum: Din printers farverum</li>
+	<li>bit: 16 bit</li>
+</ul>
+
+<h4>Generelt</h4>
+
+<p>Man går aldrig galt med <em>sRGB</em>, og <em>DCI-P3</em> er fremtidens digitale farverum</p>
+
+
+
+<p>Skrevet lidt nørded: <span class="inl_cmd">sRGB <b>F</b>or <b>T</b>he <b>W</b>in, DCI-P3 <b>F</b>or <b>T</b>he <b>F</b>uture</span></p>
+
+
+
+
+<!--
+<h3>sRGB</h3>
+
+<figure class="skub_th">
+
+	<img class="p80" src="images/farver_CIE-1931_diagram_in_LAB_space_srgb.svg" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p><span class="inl_cmd">sRGB</span> (<b>S</b>tandard <b>RGB</b>) blev udviklet i et samarbejde mellem Microsoft og HP i 1996 til at blive anvendt på monitors, printere og Internettet. Standarden er understøttet af <span class="inl_cmd">W3C</span>, <span class="inl_cmd">Intel</span>, <span class="inl_cmd">Pantone</span> og mange andre spillere på markedet.</p>
+
+<p>Hvis dit slutprodukt er web, så er <span class="inl_cmd">sRGB</span> det farverum man bør anvende, simpelthen fordi dette er det standardiserede farverum. En anden vægtig årsag til at vælge dette farverum er, at langt de fleste monitors er justeret og kontrueret til at dække <span class="inl_cmd">sRGB</span> farverummet. Ved at anvende <span class="inl_cmd">sRGB</span> har man den største kontrol over hvordan det vil se ud hos flertallet af brugerne.</p>
+
+
+<p><b>Læs mere:</b> <a href="https://en.wikipedia.org/wiki/SRGB" target="_blank">https://en.wikipedia.org/wiki/SRGB</a></p>
+-->
+
+<h3>sRGB</h3>
+
+<div class="row">
+
+	<div class="col-md-6">
+		
+		<p><em>sRGB</em> (<b>S</b>tandard <b>RGB</b>) blev udviklet i et samarbejde mellem Microsoft og HP i 1996 til at blive anvendt på monitors, printere og Internettet. Standarden er understøttet af <em>W3C</em>, <em>Intel</em>, <em>Pantone</em> og mange andre spillere på markedet.</p>
+
+		<p>Hvis dit slutprodukt er web, så er <span class="inl_cmd">sRGB</span> det farverum man bør anvende, simpelthen fordi dette er det standardiserede farverum. En anden vægtig årsag til at vælge dette farverum er, at langt de fleste monitors er justeret og konstrueret til at dække <span class="inl_cmd">sRGB</span> farverummet. Ved at anvende <span class="inl_cmd">sRGB</span> har man den største kontrol over hvordan det vil se ud hos flertallet af brugerne.</p>
+
+		<p><b>Læs mere:</b> <a href="https://en.wikipedia.org/wiki/SRGB" target="_blank">https://en.wikipedia.org/wiki/SRGB</a></p>
+	
+	</div>
+	
+	<div class="col-md-6">
+	
+	<figure >
+
+	<img width="100%" src="images/farver_CIE-1931_diagram_in_LAB_space_srgb.svg" alt="" title="" />
+
+	<figcaption></figcaption>
+
+	</figure>
+	
+	
+	</div>
+
+</div> <!-- End row -->
+
+<h3>DCI-P3</h3>
+
+<div class="row">
+
+	<div class="col-md-6">
+		
+		<p><em>DCI-p3</em> (<b>D</b>igital <b>Cinema</b> <b>I</b>nitiatives) er udviklet af den amerikanske filmindustri, og bruges i highend telefoner og computerdisplays bl.a. fra Apple, Microsoft og Samsung.</p>
+		
+		<p>Formatet er udviklet til digitale teknologier der kan anvendes til fremvisning af film og billeder, og har flere røde nuancer end sRGB og aRGB. Den nye <span class="inl_cmd">Ultra HD Premium</span> standard kræver at displayet kan vise mindst 90% af farverummet.</p>
+
+		<p><b>Læs mere:</b> <a href="https://en.wikipedia.org/wiki/DCI-P3" target="_blank">https://en.wikipedia.org/wiki/DCI-P3</a></p>
+	
+	</div>
+	
+	<div class="col-md-6">
+	
+<figure class="">
+
+	<img width="100%" src="images/farver_CIE-1931_diagram_in_LAB_space_DCI-p3.svg" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+	
+	
+	</div>
+
+</div> <!-- End row -->
+
+
+
+
+<h3>aRGB </h3>
+
+<div class="row">
+
+	<div class="col-md-6">
+		
+	<p><em>aRGB</em> (Adobe RGB color space) er udviklet af Adobe Systems i 1998 for at kunne arbejde med de farver en <em>CMYK</em>-printer kan producere. I forhold til <em>sRGB</em> er det især blandt cyan og grøn, at man får flere nuancer. <em>aRGB</em> dækker omkring 50% af <em>CIE 1931</em>.</p>
+
+<p>Hvis dit slutprodukt er <em>CMYK</em>-print eller <em>aRGB</em>-kompatibelt udstyr, så kan kan dette format anbefales. Når man arbejder med <em>aRGB</em> skal man være meget bevidst om, at der er forskel på de farver man selv kan se på sin <em>aRGB</em> skærm og de farver som bliver fremvist på en <em>sRGB</em> skærm. Især de blå og de grønne farver vil miste spændvidde og billedet går hen og bliver kedeligt. Vil man selv have kontrollen med output, bør man redigere en version til print og en til web. </p>
+
+<p><b>Læs mere:</b> <a href="https://en.wikipedia.org/wiki/Adobe_RGB_color_space" target="_blank">https://en.wikipedia.org/wiki/Adobe_RGB_color_space</a></p>
+
+	</div>
+	
+	<div class="col-md-6">
+	
+<figure class="">
+
+	<img width="100%" src="images/farver_CIE-1931_diagram_in_LAB_space_argb.svg" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+	
+	
+	</div>
+
+</div> <!-- End row -->
+
+<h3>Prophoto RGB</h3>
+
+<div class="row">
+
+	<div class="col-md-6">
+		
+<p><em>ProPhoto color space</em> er udviklet af Kodak til fotografier der kræver et stort farverum. Som de to andre formater bliver farverne dannet ved hjælp af RGB og pga den store afstand der er imellem de enkelte nuancer anbefales det at arbejde i 16bit farver. Når man arbejder med <em>ProPhoto</em> skal man være opmærksom på at ca 13% af farverne ikke findes i det synlige felt.</p>
+
+<p>Det giver kun mening arbejde i <em>ProPhoto</em>, hvis man har udstyret til det, og det gælder både in- og output - altså både kamera og skærm/printer.</p>
+
+<p><b>Læs mere:</b> <a href="https://en.wikipedia.org/wiki/ProPhoto_RGB_color_space" target="_blank">https://en.wikipedia.org/wiki/ProPhoto_RGB_color_space</a></p>
+	</div>
+	
+	<div class="col-md-6">
+	
+<figure class="">
+
+	<img width="100%" src="images/farver_CIE-1931_diagram_in_LAB_space_prophotorgb.svg" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+	
+	</div>
+
+</div> <!-- End row -->
+
+<h3>CMYK</h3>
+
+<div class="row">
+
+	<div class="col-md-6">
+		
+<p><em>CMYK</em> er oprindeligt udviklet til tryk på papir, og danner farver ved hjælp af at blande <b>C</b>yan, <b>M</b>agenta, <b>Y</b>ellow og <b>K</b>ey (sort) . Fordelen ved at anvende CMYK er, at man opnår en relativ bred farvepalet, ved et lille forbrug af farver.</p>
+
+<p>På nedestående billede er en illustration af hvad der sker når man konverterer RGB til CMYK</p>
+
+<p><a href="https://commons.wikimedia.org/wiki/File:RGB_and_CMYK_comparison.png#/media/File:RGB_and_CMYK_comparison.png"><img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/RGB_and_CMYK_comparison.png" alt="RGB and CMYK comparison.png" width="300px"></a><br>By <a href="//commons.wikimedia.org/wiki/File:RGB_CMYK_4.jpg" title="File:RGB CMYK 4.jpg" >RGB_CMYK_4.jpg</a>: Annette Shacklett
+derivative work: <a href="//commons.wikimedia.org/wiki/User:Marluxia.Kyoshu" title="User:Marluxia.Kyoshu">Marluxia.Kyoshu</a> (<a href="//commons.wikimedia.org/wiki/User_talk:Marluxia.Kyoshu" title="User talk:Marluxia.Kyoshu"><span class="signature-talk">talk</span></a>) - Made in Photoshop. <a href="//commons.wikimedia.org/wiki/File:RGB_CMYK_4.jpg" title="File:RGB CMYK 4.jpg">Original</a> was also made in Photoshop in 2003., Public Domain, <a href="https://commons.wikimedia.org/w/index.php?curid=9396397">Link</a></p>
+
+<p><b>Læs mere:</b> <a href="https://en.wikipedia.org/wiki/CMYK_color_model" target="_blank">https://en.wikipedia.org/wiki/CMYK_color_model</a></p>
+	</div>
+	
+	<div class="col-md-6">
+	
+<figure class="">
+
+	<img width="100%" src="images/farver_CIE-1931_diagram_in_LAB_space_CMYK.svg" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+	
+	</div>
+
+</div> <!-- End row -->
+
+
+
+
+
+
+<h2>Gode henvisninger</h2>
+
+<p><a href="http://www.huevaluechroma.com/041.php" target="_blank">http://www.huevaluechroma.com/041.php</a></p>
+
+
+
+
+
+<p>Problemet med digitale farver ligger ikke i billedfilens informationer eller den teknologi. Problemet ligger i de output-enheder vi anvender som f.eks. kan være, skærm, projektor eller print. </p>
+
+<p>Løsningen på dette problem er, at man har defineret nogle <span class="inl_cmd">farverum</span> (også kaldet <span class="inl_cmd">gamut</span>). I denne guide vil vi kigge på tre af dem: <span class="inl_cmd">sRGB</span>, <span class="inl_cmd">Adobe RGB</span> og <span class="inl_cmd">ProPhoto</span> og forklare hvad forskellen er mellem dem.</p>
+
+<p>Ovenfor har vi gennemgået hvordan farverne blandes og dannes, men hvordan de ser ud hos dig når du læser denne side er ikke til at sige. Og det skyldes at skærmen du kigger på også har stor betydning for farven.</p>
+
+
+
+
+<p>Hvis vi kun vælger at forholde os til farverne på de to skærme er det tydeligt at se at der er forskel på dem. De "ens" farver repræsenterer nøjagtigt de samme værdier, da de begge er beregnet af computeren ud fra hjemmesiden og vist på skærmen. Men det er tydeligt at se at farverne er mere klare og "levende" ved Dell skærmen. På samme måde risikerer man, at et billede der er perfekt hos en selv, kan være trist og kedeligt på en anden skærm. </p>
+
+<h3>Problemet med digitale farver</h3>
+
+
+
+<h2>Printeren</h2>
+
 
 <h3>Substraktive farver</h3>
 
@@ -229,467 +751,6 @@
 	<figcaption>"<a href="https://commons.wikimedia.org/wiki/File:SubtractiveColor.svg#/media/File:SubtractiveColor.svg">SubtractiveColor</a>" by <a href="//en.wikipedia.org/wiki/User:SharkD" class="extiw" title="wikipedia:User:SharkD">SharkD</a> at <a href="//en.wikipedia.org/wiki/" class="extiw" title="wikipedia:">English Wikipedia</a> Later version uploaded by <a href="//en.wikipedia.org/wiki/User:Jacobolus" class="extiw" title="en:User:Jacobolus">Jacobolus</a>, <a href="//en.wikipedia.org/wiki/User:Dacium" class="extiw" title="en:User:Dacium">Dacium</a> at <a class="external text" href="http://en.wikipedia.org">en.wikipedia</a>. - Transferred from&nbsp;<span class="plainlinks"><a class="external text" href="http://en.wikipedia.org">en.wikipedia</a></span>&nbsp;to Commons.. Licensed under Public Domain via <a href="https://commons.wikimedia.org/wiki/">Commons</a>.</figcaption>
 
 </figure>
-
-<h3>Digitale farver</h3>
-
-<p>Digitale farverdannelse anvender den substraktive farvemodel, dvs. <span class="inl_cmd">RGB</span> (<span class="bold">R</span>ed <span class="bold">G</span>reen <span class="bold">B</span>lue) farver. Hver af disse farver kan beskrives 256 niveauer og det gøres med <span class="inl_cmd">hexadecimale</span>tal, hvor hver position har værdien op til 16 (hexa).For at beskrive tallen anvendes værdierne 1, 2 ... 9, A, B, C, D, E, F.</p>
-
-<p><span class="inl_cmd">RGB</span> farver er beskrevet ved hjælp af hashtag (<span class="inl_cmd">#</span>) efterfulgt af 6 hexadecimale cifre, der parvist definerer hver farve: #<span class="bold"><span class="red">XX</span><span class="green">XX</span><span class="blue">XX</span></span>. Herunder er farverne vist hver for sig. Læg mærke til sort, som er defineret ved at skærmen reelt set er slukket (intet signal) og at hvis er fuld udblæsning på alle RGB farver.</p>
-
-<table class="centreret fixed">
-	<tbody>
-		<tr>
-			<td style="background-color:#000000"><span class="white"><br/>Sort <br/><br/>#000000 <br/><br/></span></td>
-			<td style="background-color:#FF0000"><span class="white"><br/>Rød <br/><br/>#<span class="bold">FF</span>0000</span><br/><br/></td>
-			<td style="background-color:#00FF00"><br/>Grøn <br/><br/>#00<span class="bold">FF</span>00<br/><br/></td>
-			<td style="background-color:#0000FF"><br/>Blå <br/><br/><span class="white">#0000<span class="bold">FF</span></span><br/><br/></td>
-			<td style="background-color:#FFFFFF"><br/>Hvid <br/><br/>#<span class="bold">FFFFFF</span><br/><br/></td>
-		</tr>
-	</tbody>
-</table>
-
-<p>For at se nuancerne kan vi anvende CSS3 til at vise alle 256 nuancer. Herunder er browseren programmeret til at starte med den laveste værdi (<span class="inl_cmd">00</span> og lave en glidende overgang til den højeste værdi (<span class="inl_cmd">FF</span>).</p>
-
-
-<p>Rød ( #<span class="red">00</span>0000 - #<span class="red">FF</span>0000 )</p>
-
-<div id="grad_red"></div>
-
-<p>Grøn ( #00<span class="red">00</span>00 - #00<span class="red">FF</span>00 )</p>
-
-<div id="grad_green"></div>
-
-<p>Blå ( #0000<span class="red">00</span> - #0000<span class="red">FF</span> )</p>
-
-<div id="grad_blue"></div>
-
-<div id="spectrum"></div>
-
-<span class="afsnit">De grå nuancer</span>
-
-
-
-<p>For at danne de grå nuancer skal RGBværdierne sættes ens f.eks. <span class="inl_cmd">#AAAAAA</span>, som <span style="color: #AAAAAA" class="">danner denne grå nuance</span>. Herunder er de grå farvers nuanceforløb vist.</p>
-
-<p>Gråtoner ( #<span class="red">000000</span> - #<span class="red">FFFFFF</span> )</p>
-
-<div id="grad_grey"></div>
-
-
-<p>Hvis du ønsker at eksperimentere med farverne kan du prøve nedenstående side:</p>
-
-<p><a href="http://www.colorsontheweb.com/colorwizard.asp" target="_blank">http://www.colorsontheweb.com/colorwizard.asp</a></p>
-
-<h3>Farveoutput</h3>
-
-<p>Har du forskellige enheder hos dig, f.eks. andre computere, bærbare, tablets og telefoner kan du prøve at kigge på hvordan farverne, farveovergangene og gråtonerne bliver vist. Herunder kan du se et eksempel fra min DELL 100% sRGB skærm (øverst) og en god standard Asus skærm (nederst). Billedet er taget med en Nexus 5 telefon, hvor skærmene er under samme lysforhold. De farvenuance bølger du kan se ved output fra Dell skærmen skyldes <a href="https://en.wikipedia.org/wiki/Moir%C3%A9_pattern" target="_blank">moire</a> effekten pga. Dellskærmens høje DPI-opløsning</p>
-
-<p></p>
-
-<p class="center"><span class="bold">Dell 24" skærm</span></p>
-
-<figure id="">
-
-	<img class="p90" src="images/farver_rgb_dell_top_asus_bottom.png" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-
-<p class="center"><span class="bold">Asus 23" skærm</span></p>
-
-<p>Hvis vi kun vælger at forholde os til farverne på de to skærme er det tydeligt at se at der er forskel på dem. De "ens" farver repræsenterer nøjagtigt de samme værdier, da de begge er beregnet af computeren ud fra hjemmesiden og vist på skærmen. Men det er tydeligt at se at farverne er mere klare og "levende" ved Dell skærmen. På samme måde risikerer man, at et billede der er perfekt hos en selv, kan være trist og kedeligt på en anden skærm. </p>
-
-<h3>Problemet med digitale farver</h3>
-
-<p>Problemet med digitale farver ligger ikke i billedfilens informationer eller den teknologi. Problemet ligger i de output-enheder vi anvender som f.eks. kan være, skærm, projektor eller print. </p>
-
-<p>Løsningen på dette problem er, at man har defineret nogle <span class="inl_cmd">farverum</span> (også kaldet <span class="inl_cmd">gamut</span>). I denne guide vil vi kigge på tre af dem: <span class="inl_cmd">sRGB</span>, <span class="inl_cmd">Adobe RGB</span> og <span class="inl_cmd">ProPhoto</span> og forklare hvad forskellen er mellem dem.</p>
-
-
-
-<h2>Farverum (gamut)</h2>
-
-<p>Ovenfor nævnte jeg CIE-1931 diagrammet som viser de farver som det menneskelige øje kan opfange.</p>
-
-<figure id="">
-
-	<img class="p70" class="" src="images/farver_CIE-1931_diagram_in_LAB_space.svg" alt="" title="" />
-
-	<figcaption><a href="https://commons.wikimedia.org/wiki/File:CIE-1931_diagram_in_LAB_space.svg#/media/File:CIE-1931_diagram_in_LAB_space.svg">CIE-1931 diagram in LAB space</a>" by <a href="//en.wikipedia.org/wiki/User:Paulschou" class="extiw" title="en:User:Paulschou">Paulschou</a> at <a class="external text" href="http://en.wikipedia.org">en.wikipedia</a>. Licensed under <a href="http://creativecommons.org/licenses/by-sa/3.0" title="Creative Commons Attribution-Share Alike 3.0">CC BY-SA 3.0</a> via <a href="https://commons.wikimedia.org/wiki/">Commons</a>.</figcaption>
-
-</figure>
-
-<p>For at kunne sikre de samme farver igennem hele arbejdsprocessen, altså lige fra produktion &#8594;
- forarbejdning &#8594; output, har man indført nogle standarder, som man kalder <span class="inl_cmd">farverum</span> (<span class="inl_cmd">colorspace</span>/<span class="inl_cmd">gamut</span>). Vi vil her arbejde med:</p>
- 
-<ul class="none fat_li">
-	<li>sRGB - Standard RGB farverum</li>
-	
-		<p>Udviklet af HP og Microsoft (<a href="https://en.wikipedia.org/wiki/ProPhoto_RGB_color_space" target="_blank">https://en.wikipedia.org/wiki/ProPhoto_RGB_color_space</a>)</p>
-	
-	<li>DCI-P3 - Standard til digitale film</li>
-	
-		<p>Standard udviklet af DCI (<b>D</b>igital <b>C</b>inema <b>i</b>nitiatives) (<a href="https://en.wikipedia.org/wiki/DCI-P3" target="_blank">https://en.wikipedia.org/wiki/DCI-P3</a>)</p>
-	
-	<li>aRGB - Adobe RGB farverum (ofte forkortet aRGB)</li>
-	
-		<p>Udviklet af Adobe (<a href="https://en.wikipedia.org/wiki/Adobe_RGB_color_space" target="_blank">https://en.wikipedia.org/wiki/Adobe_RGB_color_space</a></p>	
-		
-	<li>ProPhoto RGB - </li>
-		
-		<p>Udviklet af Kodak (<a href="https://en.wikipedia.org/wiki/ProPhoto_RGB_color_space" target="_blank">https://en.wikipedia.org/wiki/ProPhoto_RGB_color_space</a>)</p>
-
-	<li>CMYK - Cyan, Magenta, Yellow, Key (sort)</li>
-
-		<p>Udviklet til 4 farvet tryk (<a href="https://en.wikipedia.org/wiki/CMYK_color_model" target="_blank">https://en.wikipedia.org/wiki/CMYK_color_model</a>)</p>
-
-</ul>
-
-
-
-<p>Herunder er CIE-1931 diagrammet kan du se hvad de forskellige farverum dækker:</p>
-
-<figure id="">
-
-	<img class="p70" src="images/farver_CIE-1931_diagram_in_LAB_space_all_color_spaces.svg" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-
-<p>Her vi vi ikke gå i dybden med teorien, men for at forklare trekanterne, så fremkommer de ved, at hjørnerne beskriver de reneste RGB (<b>R</b>ød <b>G</b>røn <b>B</b>lå). Det er også her at man kan se forklaringen på hvorfor man siger at <span class="inl_cmd">aRGB</span> og <span class="inl_cmd">ProPhoto</span> har større farverum end <span class="inl_cmd">sRGB</span>, selvom alle farverummene har samme antal farvenuancer nemlig 16777216 (256³).</p>
-
-<h3>Større farverum, samme antal farver</h3>
-
-<p>Som vi lærte ovenfor bliver farverne dannet ud fra en kombination af <span class="inl_cmd">RGB</span>, og hver af disse farver kan antage 256 forskellige værdier. For at forstå betydningen af dette vil vi her kigge på den grønne farve. Herunder forsøger CSS at vise alle nuancerne hvor kun den grønne farve er i spil. </p>
-
-<p>Grøn ( #00<span class="red">00</span>00 - #00<span class="red">FF</span>00 )</p>
-
-<div id="grad_green"></div>
-
-<p>Hvis vi sammenligner den spændvidde den grønne farve har fra spidsen og indtil den grønne farve er væk så har <span class="inl_cmd">ProPhoto</span> næsten dobbel så storspændvidde end <span class="inl_cmd">srgb</span>. Da begge længder er inddelt i 256 forskellige nuancer, så vil der altså være dobbelt så langt mellem nuancerne i <span class="inl_cmd">ProPhoto</span> end i <span class="inl_cmd">sRGB</span>. Se illustrationen herunder, hvor jeg illustrerer de manglende nuancer:</p>
-
-
-<figure class="">
-
-	<img class="p90" src="images/farver_illustration_af_nuance_spring.svg" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-
-<p>Problemet er, at det "rigtige" farverum ikke findes, for de har alle forskellige egenskaber, styrker og svagheder.  </p>
-
-<h3>Flere bits</h3>
-
-<p>For at løse dette problem anvender man billeder der har en højere farveopløsning end 8 bit. Det er f.eks. ikke unormalt at kamera i mellemprisniveau kameraer kan optage RAW-filer i 12, 14 og 16 bit. mod de "normale" 8 bit. Det betyder at der bliver endnu flere niveauer at inddele farverne i farverummet: </p>
-
-<table class="">
-	<thead>
-		<tr>
-			<th>bits</th>
-			<th>Nuancer/kanal</th>
-			<th>Nuancer i alt</th>
-			<th>Ekstra nuancer pr 8 bits nuance</th>
-
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>8 bit</td>
-			<td><span class="math">\( 2^{8} = 256 \)</span></td>
-			<td><span class="math">\( (2^{8})^3 = 1,678 \cdot 10^6 \)</span></td>
-			<td><span class="math">\( 0 \)</span></td>
-		</tr>
-		<tr>
-			<td>10 bit</td>
-			<td><span class="math">\( 2^{10} = 1.024 \)</span></td>
-			<td><span class="math">\( (2^{10})^3 = 1,074 \cdot 10^9 \)</span></td>
-			<td><span class="math">\( 4 \)</span></td>
-		</tr>
-		<tr>
-			<td>12 bit</td>
-			<td><span class="math">\( 2^{12} = 4.096 \)</span></td>
-			<td><span class="math">\( (2^{12})^3 = 68,71 \cdot 10^9 \)</span></td>
-			<td><span class="math">\( 16 \)</span></td>
-		</tr>
-		<tr>
-			<td>14 bit</td>
-			<td><span class="math">\( 2^{14} = 16.384 \)</span></td>
-			<td><span class="math">\( (2^{14})^3 = 4,398 \cdot 10^{12} \)</span></td>
-			<td><span class="math">\( 64 \)</span></td>
-		</tr>
-		<tr>
-			<td>16 bit</td>
-			<td><span class="math">\( 2^{16} = 65.536 \)</span></td>
-			<td><span class="math">\( (2^{16})^3 = 2,815 \cdot 10^{14} \)</span></td>
-			<td><span class="math">\( 256 \)</span></td>
-		</tr>
-	</tbody>
-</table>
-
-<p>Ved at hæve billedet fra 8 til f.eks. 14 bit er der altså går man fra at arbejde med 256 farvenuancer til 16.538 nuancer, og så er farveopløsningen så god, at det menneskelige øje oplever der som glidende overgang. Prisen for de ekstra bits er, at filerne billedfilerne fylder mere, at programmerne skal være mere avancerede og at det kræver flere kræfter af computeren. Gevinsten er den forøgede mængde af nuancer.</p>
-
-<!--
-<h3>sRGB</h3>
-
-<figure class="skub_th">
-
-	<img class="p80" src="images/farver_CIE-1931_diagram_in_LAB_space_srgb.svg" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-
-<p><span class="inl_cmd">sRGB</span> (<b>S</b>tandard <b>RGB</b>) blev udviklet i et samarbejde mellem Microsoft og HP i 1996 til at blive anvendt på monitors, printere og Internettet. Standarden er understøttet af <span class="inl_cmd">W3C</span>, <span class="inl_cmd">Intel</span>, <span class="inl_cmd">Pantone</span> og mange andre spillere på markedet.</p>
-
-<p>Hvis dit slutprodukt er web, så er <span class="inl_cmd">sRGB</span> det farverum man bør anvende, simpelthen fordi dette er det standardiserede farverum. En anden vægtig årsag til at vælge dette farverum er, at langt de fleste monitors er justeret og kontrueret til at dække <span class="inl_cmd">sRGB</span> farverummet. Ved at anvende <span class="inl_cmd">sRGB</span> har man den største kontrol over hvordan det vil se ud hos flertallet af brugerne.</p>
-
-
-<p><b>Læs mere:</b> <a href="https://en.wikipedia.org/wiki/SRGB" target="_blank">https://en.wikipedia.org/wiki/SRGB</a></p>
--->
-
-<h3>sRGB</h3>
-
-<div class="row">
-
-	<div class="col-md-6">
-		
-		<p><span class="inl_cmd">sRGB</span> (<b>S</b>tandard <b>RGB</b>) blev udviklet i et samarbejde mellem Microsoft og HP i 1996 til at blive anvendt på monitors, printere og Internettet. Standarden er understøttet af <span class="inl_cmd">W3C</span>, <span class="inl_cmd">Intel</span>, <span class="inl_cmd">Pantone</span> og mange andre spillere på markedet.</p>
-
-		<p>Hvis dit slutprodukt er web, så er <span class="inl_cmd">sRGB</span> det farverum man bør anvende, simpelthen fordi dette er det standardiserede farverum. En anden vægtig årsag til at vælge dette farverum er, at langt de fleste monitors er justeret og konstrueret til at dække <span class="inl_cmd">sRGB</span> farverummet. Ved at anvende <span class="inl_cmd">sRGB</span> har man den største kontrol over hvordan det vil se ud hos flertallet af brugerne.</p>
-
-		<p><b>Læs mere:</b> <a href="https://en.wikipedia.org/wiki/SRGB" target="_blank">https://en.wikipedia.org/wiki/SRGB</a></p>
-	
-	</div>
-	
-	<div class="col-md-6">
-	
-	<figure >
-
-	<img width="100%" src="images/farver_CIE-1931_diagram_in_LAB_space_srgb.svg" alt="" title="" />
-
-	<figcaption></figcaption>
-
-	</figure>
-	
-	
-	</div>
-
-</div> <!-- End row -->
-
-<h3>DCI-P3</h3>
-
-<div class="row">
-
-	<div class="col-md-6">
-		
-		<p><span class="inl_cmd">DCI-p3</span> (<b>D</b>igital <b>Cinema</b> <b>I</b>nitiatives) er udviklet af den amerikanske filmindustri, og er ved at blive implementeret i highend telefoner og computerdisplays bl.a. fra Apple, Microsoft og Samsung.</p>
-		
-		<p>Formatet er udviklet til digitale teknologier der kan anvendes til fremvisning af film og billeder, og har flere røde nuancer end sRGB og aRGB. Den nye <span class="inl_cmd">Ultra HD Premium</span> standard kræver at displayet kan vise mindst 90% af farverummet.</p>
-
-		<p><b>Læs mere:</b> <a href="https://en.wikipedia.org/wiki/DCI-P3" target="_blank">https://en.wikipedia.org/wiki/DCI-P3</a></p>
-	
-	</div>
-	
-	<div class="col-md-6">
-	
-<figure class="">
-
-	<img width="100%" src="images/farver_CIE-1931_diagram_in_LAB_space_DCI-p3.svg" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-	
-	
-	</div>
-
-</div> <!-- End row -->
-
-
-
-
-<h3>aRGB </h3>
-
-<div class="row">
-
-	<div class="col-md-6">
-		
-	<p><span class="inl_cmd">Adobe RGB color space</span> er udviklet af Adobe Systems i 1998 for at kunne arbejde med de farver en <span class="inl_cmd">CMYK</span>-printer kan producere. Farverne bliver dannet ved at anvende RGB farverne. I forhold til <span class="inl_cmd">sRGB</span> er det især blandt cyan og grøn, at man får flere nuancer. <span class="inl_cmd">aRGB</span> dækker omkring 50% af <span class="inl_cmd">CIE 1931</span>.</p>
-
-<p>Hvis dit slutprodukt er <span class="inl_cmd">CMYK</span>-print eller <span class="inl_cmd">aRGB</span>-kompatibelt udstyr, så kan kan dette format anbefales. Når man arbejder med <span class="inl_cmd">aRGB</span> skal man være meget bevidst om, at der er forskel på de farver man selv kan se på sin <span class="inl_cmd">aRGB</span> skærm og de farver som bliver fremvist på en <span class="inl_cmd">sRGB</span> skærm. Især de blå og de grønne farver vil miste spændvidde og billedet går hen og bliver kedeligt. Vil man selv have kontrollen med output, bør man redigere en version til print og en til web. </p>
-
-<p><b>Læs mere:</b> <a href="https://en.wikipedia.org/wiki/Adobe_RGB_color_space" target="_blank">https://en.wikipedia.org/wiki/Adobe_RGB_color_space</a></p>
-
-	</div>
-	
-	<div class="col-md-6">
-	
-<figure class="">
-
-	<img width="100%" src="images/farver_CIE-1931_diagram_in_LAB_space_argb.svg" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-	
-	
-	</div>
-
-</div> <!-- End row -->
-
-<h3>Prophoto RGB</h3>
-
-<div class="row">
-
-	<div class="col-md-6">
-		
-<p><span class="inl_cmd">ProPhoto color space</span> er udviklet af Kodak til fotografier der kræver et stort farverum. Som de to andre formater bliver farverne dannet ved hjælp af RGB og pga det den efterhåndens store afstand der er imellem de enkelte nuacner anbefales det at arbejde i 16bit farver. Når man arbejder med <span class="inl_cmd">ProPhoto</span> skal man være opmærksom på at ca 13% af farverne er imaginære - de er ikke inde for det synlige felt.</p>
-
-<p>Da <span class="inl_cmd">ProPhoto</span>'s farver har en stor spændvidde anbefales det at arbejde med 16bits farver dvs. <span class="math">\( 65536^3 = 2,815 \cdot 10^{14} \)</span> nuancer.</p>
-
-<p>Det giver kun mening arbejde i <span class="inl_cmd">ProPhoto</span>, hvis man har udstyret til det, og det gælder både in- og output - altså både kamera og skærm/printer.</p>
-
-<p><b>Læs mere:</b> <a href="https://en.wikipedia.org/wiki/ProPhoto_RGB_color_space" target="_blank">https://en.wikipedia.org/wiki/ProPhoto_RGB_color_space</a></p>
-	</div>
-	
-	<div class="col-md-6">
-	
-<figure class="">
-
-	<img width="100%" src="images/farver_CIE-1931_diagram_in_LAB_space_prophotorgb.svg" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-	
-	</div>
-
-</div> <!-- End row -->
-
-<h3>CMYK</h3>
-
-<div class="row">
-
-	<div class="col-md-6">
-		
-<p><span class="inl_cmd">CMYK</span> er oprindeligt udviklet til tryk på papir, og danner farver ved hjælp af at blande <b>C</b>yan, <b>M</b>agenta, <b>Y</b>ellow og <b>K</b>ey (sort) . Fordelen ved at anvende CMYK er, at man opnår en relativ bred farvepalet, ved et lille forbrug af farver.</p>
-
-<p>På nedestående billede er en illustration af hvad der sker når man konverterer RGB til CMYK</p>
-
-<p><a href="https://commons.wikimedia.org/wiki/File:RGB_and_CMYK_comparison.png#/media/File:RGB_and_CMYK_comparison.png"><img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/RGB_and_CMYK_comparison.png" alt="RGB and CMYK comparison.png" width="300px"></a><br>By <a href="//commons.wikimedia.org/wiki/File:RGB_CMYK_4.jpg" title="File:RGB CMYK 4.jpg" >RGB_CMYK_4.jpg</a>: Annette Shacklett
-derivative work: <a href="//commons.wikimedia.org/wiki/User:Marluxia.Kyoshu" title="User:Marluxia.Kyoshu">Marluxia.Kyoshu</a> (<a href="//commons.wikimedia.org/wiki/User_talk:Marluxia.Kyoshu" title="User talk:Marluxia.Kyoshu"><span class="signature-talk">talk</span></a>) - Made in Photoshop. <a href="//commons.wikimedia.org/wiki/File:RGB_CMYK_4.jpg" title="File:RGB CMYK 4.jpg">Original</a> was also made in Photoshop in 2003., Public Domain, <a href="https://commons.wikimedia.org/w/index.php?curid=9396397">Link</a></p>
-
-<p><b>Læs mere:</b> <a href="https://en.wikipedia.org/wiki/CMYK_color_model" target="_blank">https://en.wikipedia.org/wiki/CMYK_color_model</a></p>
-	</div>
-	
-	<div class="col-md-6">
-	
-<figure class="">
-
-	<img width="100%" src="images/farver_CIE-1931_diagram_in_LAB_space_CMYK.svg" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-	
-	</div>
-
-</div> <!-- End row -->
-
-<h2>Det bedste farverum</h2>
-
-<p>Efter at have sat dig ind i farverum kan det måske være lidt mærkeligt at lave et afsnit der hedder "Det bedste farverum". Men jeg synes det er vigtigt, fordi man bliver som fotograf/grafiker gøre sig den overvejelse. Farverummet kan bare ikke stå for sig selv, men outputs skal tænkes ind.</p>
-
-<p>Herunder er der lavet en tabel med de fordele de enkelte farverum har</p>
-
-<table class="">
-	<thead>
-		<tr>
-			<th>Farverum</th>
-			<th>Fordele</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>sRGB</td>
-			<td>
-				<ul class="none">
-					<li>Defacto standard for digitale skærme.</li>
-					<li>Vær opmærksom på at selv "gode" skærme, også de skærme der findes på Macbooks ikke er sRGB kompatible</li>
-				</ul>
-			</td>
-		</tr>
-		<tr>
-			<td>DCI-P3</td>
-			<td>
-				<ul class="none">
-					<li>Filmindustriens standard, som bliver implementeret af alle store spillere på markedet (Apple, Dell, Eizo, Microsoft, Samsung ...)</li>
-					<li>Flere grønne og røde nuancer end sRGB, som passer bedre til vores øjne</li>
-					<li>Er lavet med udgangspunkt i den digitale teknologiske udvikling.</li>
-				</ul>
-			</td>
-		</tr>
-		<tr>
-			<td>aRGB</td>
-			<td>
-				<ul class="none">
-					<li>Flere cyan-grønne nuancer end sRGB</li>
-					<li>Rummer hele CMYK farverummet</li>
-					<li> </li>
-				</ul>
-			</td>
-		</tr>
-		<tr>
-			<td>ProPhoto RGB</td>
-			<td>
-				<ul class="none">
-					<li>Giver adgang til ca. <span class="math">\( \frac{ 9 }{ 10 } \)</span> af de farver som øjet kan se</li>
-					<li></li>
-				</ul>
-			</td>
-		</tr>
-		<tr>
-			<td>CMYK</td>
-			<td>
-				<ul class="none">
-					<li>Standardiseret 4 farvet print teknologi</li>
-					<li>Billige produktionsomkostninger</li>
-				</ul>
-	
-			</td>
-		</tr>
-	</tbody>
-</table>
-
-<h3>Anbefaling</h3>
-
-<p>Min anbefaling er betingen af tiden og den teknologi det skal anvendes på, og ud fra den betragtning at modtageren skal se det, du som afsender har ønsket. </p>
-
-<p>Derfor er det min anbefaling at du primært arbejder med <span class="inl_cmd">sRGB</span>, da det sikrer at din modtager ser det du arbejde med, og at du forbereder dig til at begynde at arbejde i <span class="inl_cmd">DCI-P3</span>, så dine billeder får den bedste fremtoning for den standard der efterhånden bliver hvermandseje på den digitale hardware. Jeg tager udgangspunkt i:</p>
-
-<ul class="">
-	<li>Vi er stort set gået fra print til digital fremvisning</li>
-	<li>Selvom det er muligt, at købe hardware der understøtter aRGB og DCI-P3, er det stadig ikke normalen for langt størsteparten af brugere.</li>
-	<li>Modsat hvad mange påstår, så er sRGB fuldt ud i stand til at give os en god oplevelse af farvernuancer - også på print</li>
-	<li>Man bør altid arbejde i det farverum, man vil have sit output i.</li>
-	<li>WYSIWYG - <b>W</b>hat <b>Y</b>ou <b>S</b>ee <b>I</b>s <b>W</b>hat <b>Y</b>ou <b>G</b>et - hvis man laver noget i et farverum og eksporterer der til at andet, så aner man ikke hvad output vil være</li>
-</ul>
-
-<p>Det giver ingen mening at redigere sine billeder i 14 bit aRGB (hvis det er fra RAW), for at eksportere det til 8 bit sRGB (som Adobe kalder "web-safe"). Mange af de nuancer man har finjusteret og tilpasset forsvinder, og man risikerer det som før var en flot overgang mellem nuacner, kommer til at se ud som om det er malet på med en bred pensel.</p>
-
-<p>Skrevet lidt nørded: <span class="inl_cmd">sRGB <b>F</b>or <b>T</b>he <b>W</b>in, DCI-P3 <b>F</b>or <b>T</b>he <b>F</b>uture</span></p>
-
-
-
-
-<h2>Gode henvisninger</h2>
-
-<p><a href="http://www.huevaluechroma.com/041.php" target="_blank">http://www.huevaluechroma.com/041.php</a></p>
-
-
 
 	
 </div><!-- end: col-md-9 -->
