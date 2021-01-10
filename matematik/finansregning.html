@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <title>Finansregning</title>
+  <link rel="icon" href="../images/favicon.png">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono|Ubuntu|Ubuntu+Condensed' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/jquery-ui.min.css">
+  <link rel="stylesheet" href="../css/jquery.tocify.css">
+  <link rel="stylesheet" href="../css/style_new.css" />
+<!-- Scripts in bottom to speed up pageload-->
+ 
+
+</head>
+<body>
+	
+	
+<div class="container-fluid">
+
+<div class="row-fluid">
+	
+<div class="col-xs-3">
+	
+	<nav>
+		
+		<div id="toc">
+		
+			<div id="toc_headline"></div>
+		
+		</div>
+		
+	</nav>
+
+</div><!-- Start slut 1. kolonne - TOC -->
+	
+<div class="col-xs-9">
+	
+<h1>Finansregning</h1>
+
+<h2>Renter</h2>
+
+<p>Der findes 5 forskellige typer renter:</p>
+
+<ul class="none fat_li">
+	<li>Årlig rente</li>
+	
+		<p>Angives med <span class="inl_cmd">pa.</span> (pro anno / per år), f.eks: <span class="math">\( 8\% ~p.a. \)</span></p>
+	
+	<li>Terminsrente</li>
+	
+		<p>Angiver den rente der gælder for hver tilskrivning. Hvis et lån f.eks. er <span class="math">\( 8 \% ~p.a. \)</span>, så vil den månedlige rente (terminsrenten) være på <span class="math">\( \frac{ 8 }{ 12 } = 0,66 ~\%\)</span></p>
+		
+		<details>
+		
+			<summary>Den korrekte beregningsmetode</summary>
+		
+			<p>Når vi regner til dagligt anvender vi den ovenstående metode, hvor vi bare deler den årlige rente med antallet af terminer. Den korrekte måde at beregne terminsrentener ved følgende formel: </p>
+		
+			<div class="latex">$$ (1+r_{termin})^{terminer} =  1+r_{år}
+			\\
+			\Updownarrow
+			
+			\\
+			1 + r_{termin} = \sqrt [terminer] {(1+r_{år})}
+			
+			\\
+			\Updownarrow
+			\\
+			
+			r_{termin} = \sqrt [terminer] {(1+r_{år})} -1 $$</div>
+		
+			<p>Dvs. hvor vi normalt vil ansætte 6% rente pa = \frac{ 6 }{ 12 } % = 0,5% pm, vil den rigtige måndedlige rente være:</p>
+		
+			<div class="latex">$$ r_{termin} = \sqrt[12]{(1+0,06)} -1 = 0,004867 $$</div>
+		
+			<p>Det er en forskel på 0,000265% svarende til 0,265 &permil;, som i vores sammenhæng bliver betragtet som ubetydelig. </p>
+		
+		</details>
+		
+	<li>Effektiv rente</li>
+	
+		<p>Den rente man reelt betaler pr år. I formlen herunder er: </p>
+
+		<ul class="none">
+			<li><span class="math">\( r_t \)</span> = Renten per termin.</li>
+			<li><span class="math">\( n_{pa} \)</span> = Terminer pr år</li>
+			<li><span class="math">\( i \)</span> = Den effektive rente</li>
+		</ul>
+		
+		<p><span class="math">\( i = (1+r_t)^{n_{pa}} - 1 \)</span></p>
+		
+		<p>I eksemplet ovefor vil det altså være <span class="math">\( i = (1+0,0066)^{12} - 1 = 0,0821 = 8,21\% \)</span></p>
+	
+	<li>Gennemsnitlig rente</li>
+	
+		<p>Den rentetilskrivning der gennemsnitligt har været i hele perioden</p>
+		
+		<p><span class="math">\( r =  \sqrt [n]{(1+r_1 ) \cdot (1+r_2) \cdot ~ ... ~\cdot (1+r_n)} -1 \)</span></p>
+	
+	<li>ÅOP</li>
+	
+		<p>De samlede udgifter (rente, gebyr og administration) der er på et lån pr år. Det er ofte ÅOP på det første år der er angivet i dokumenter.</p>
+	
+		<p>Vær opmærksom på at ÅOP skal tages med et grand salt, især når der tales om mindre lån, da oprettelsesgebyrer kan have stor indvirkning på ÅOP. Se nedestående regneark</p>
+	
+		<p><a href="files/AOP_beregning.xls" target="_blank">AOP_beregning.xls</a></p>
+	
+</ul>
+
+
+
+
+
+
+<h2>Rentes rente.</h2>
+
+<p>Formlen for renters rente er givet ved:</p>
+
+<span class="math">\( K_n = K_0 \cdot (1+r)^n \)</span>
+
+<p>Hvor:</p>
+
+<ul class="none">
+	<li><span class="math">\( n \)</span> er antallet af terminer</li>
+	<li><span class="math">\( K_n \)</span> er kapitalen efter <span class="math">\( n \)</span> terminer</li>
+	<li><span class="math">\( K_0\)</span> er startkapitalen</li>
+	<li><span class="math">\( r \)</span> er renten pr. termin</li>
+
+</ul>
+
+<h3>Induktionsbevis</h3>
+
+<p>For at bevise formlen anvender vi et induktionsbevis. For et induktionsbevis er gældende skal man vise at et udsagn <span class="math">\( P(n) \)</span> er sandt for <span class="math">\( n \in \mathbb{N}  \)</span>. Det gør man ved at gennemløbe 3 punkter</p>
+
+<ol type="a" class="">
+	<li>Vis at det gælder for <span class="math">\( n=1 \)</span></li>
+	<li>Antag at <span class="math">\( P(n) \)</span> er sand og </li>
+	<li>vis at det gælder for <span class="math">\( P(n+1) \)</span></li>
+</ol>
+
+<p>Har vi vist <span class="inl_cmd">a, b</span> og <span class="inl_cmd">c</span> må det gælde at <span class="math">\( P(1), P(2), P(3), ... \)</span>er sand. </p>
+
+<h3>Bevis: Rentes rente formlen</h3>
+
+<p>Formlen vi gerne vil bevise er:</p>
+
+<div class="latex">$$ K_n = K_0 \cdot (1+r)^n $$</div>
+
+<span class="afsnit">Punkt a</span>
+
+<p>Først vi vi vise at det gælder for <span class="math">\( n=1 \)</span>. Vi ved at:</p>
+
+<div class="latex">$$ K_1 = K_0 \cdot (1+r)^1 $$</div>
+
+<span class="afsnit">Punkt b</span>
+
+<p>Nu antager vi at det gælder for ethvert <span class="math">\( n \)</span>:</p>
+
+<div class="latex">$$ K_n = K_0 \cdot (1+r)^n $$</div>
+
+<span class="afsnit">Punkt c</span>
+
+<p>Vi fremskriver <span class="math">\( K_n \)</span> med en termin:</p>
+
+<div class="latex">$$ K_{n+1} = K_n \cdot (1+r)^1 $$</div>
+
+<details>
+
+	<summary><span class="math">\( K_0 = K_n\)</span>?</summary>
+
+	<p>Grunden til at vi kan erstatte <span class="math">\( K_0 \)</span> med <span class="math">\( K_n \)</span> er, at udtrykket <span class="math">\( K_{n+1} \)</span> svarer til at skrive <span class="math">\( K_n \)</span> + en termin.</p>
+	
+	<div class="latex">$$ \overbrace {K_0 \cdot (1+r) \cdot (1+r) \cdot (1+r) \cdot (1+r) }^\text{n terminer} \cdot \require{overbracket}\overbracket{(1+r)}^\text{1. termin} $$</div>
+	
+	<p><span class="math">\( K_n \)</span> kan altså tolkes som vores nye start kapital (<span class="math">\( K_0 \)</span>)</p>
+
+</details>
+
+
+
+<p>Vi erstatter<span class="math">\( K_n \)</span> med <span class="math">\( K_0 \cdot (1+r)^n \)</span></p>
+
+<div class="latex">$$ K_{n+1} = K_0 \cdot (1+r)^n \cdot (1+r)^1 $$</div>
+
+<p>... og anvender potensreglen (<span class="math">\( a^m \cdot a^n = a^{m+n} \)</span>):</p>
+
+<div class="latex">$$ K_{n+1} = K_0 \cdot (1+r)^{n+1} $$</div>
+
+<p>Nu har vi ved induktionsmetoden bevist rentesrente formlen:</p>
+
+<div class="latex">\( K_n = K_0 \cdot (1+r)^n \)</div>
+
+<h3>Find K<sub>0</sub></h3>
+
+<p>Formlen for <span class="math">\( K_0 \)</span> er:</p>
+
+<p>1)</p>
+<div class="latex">$$ K_0 = \frac{K_n}{(1+r)^n} $$</div>
+<p>2)</p>
+<div class="latex">$$ K_0 = K_n \cdot (1+r)^{-n} $$</div>
+
+<h4>Bevis 1)</h4>
+
+<div class="latex">$$ K_0 \cdot (1+r)^n = K_n \\ \Updownarrow\\
+
+K_0 = \frac{K_n}{(1+r)^n}
+
+$$</div>
+
+<h4>Bevis 2)</h4>
+
+<p>For at vise den anden formel skal udtrykket omskrives:</p>
+
+<div class="latex">$$ K_0 = \frac{K_n}{(1+r)^n} \\ \Updownarrow\\
+
+K_0 = K_n \cdot \frac{1}{(1+r)^n} 
+
+$$</div>
+
+<p>Da det gælder at <span class="math">\( \frac{ 1 }{ x } = x^{-1}\)</span> kan det omskrives til:</p>
+
+<div class="latex">$$ K_0 = K_n \cdot \left( (1+r)^n  \right)^{-1} $$</div>
+
+<p>Da <span class="math">\( (x^a)^b = x^{a \cdot b} \)</span> </p>
+
+<div class="latex">$$ K_0 = K_n \cdot (1+r)^{-n} $$</div>
+
+
+
+
+<h3>Find renten</h3>
+
+<p>Formlen til at finde renten er:</p>
+
+<div class="latex">$$ r = \sqrt [n] { \frac{ K_n}{K_0} } -1$$</div>
+
+<span class="afsnit">Bevis</span>
+
+<div class="latex">$$ K_0 \cdot (1+r)^n = K_n \\ \Updownarrow\\
+
+(1+r)^n = \frac{K_n}{K_0} \\ \Updownarrow \\
+
+\sqrt [n] {(1+r)^n} = \sqrt [n] { \frac{K_n}{K_0} } \\ \Updownarrow \\
+
+1+r = \sqrt [n] { \frac{K_n}{K_0} } \\ \Updownarrow \\
+
+r = \sqrt [n]  { \frac{K_n}{K_0} } - 1
+
+
+$$</div>
+
+<div class="latex">$$  $$</div>
+
+
+<h3>Find terminer</h3>
+
+<p>Formlen til at finde antal terminer er:</p>
+
+<div class="latex">$$ n =  \frac{ ln \left( \frac{K_n}{K_0} \right) } { ln(1+r) }$$</div>
+
+<span class="afsnit">Bevis</span>
+
+<div class="latex">$$ K_0 \cdot (1+r)^n = K_n \\ \Updownarrow\\
+
+(1+r)^n = \frac{K_n}{K_0} \\ \Updownarrow \\
+
+n \cdot ln(1+r) = ln \left( \frac{K_n}{K_0} \right) \\ \Updownarrow \\
+
+n= \frac{ ln \left( \frac{K_n}{K_0} \right)  } { ln(1+r)  }
+
+$$</div>
+
+<h3>Effektiv rente</h3>
+
+<p>Den effektive rente beskriver den reelt betalte rente over et år</p>
+
+<div class="latex">$$ i = (1+r)^n - 1 $$</div>
+
+<p>Lad os kigge på et eksempel med en årlig rente på <span class="math">\( 6% \)</span> med månedlig rentetilskrivning. Dvs. <span class="math">\( \frac{ 0,06 }{ 12 } = 0,005 \)</span>. Da der også bliver betalt rente af de tilskrevne renter i forløbet bliver den effektive rente altså lidt større:</p>
+
+<div class="latex">$$ i = (1+0,005)^{12} - 1 = 0,0617 = 6,17\% $$</div>
+
+<h3>Gennemsnitlig rente</h3>
+
+<p>Hvis der er forskellige renter i løbetiden kan den gennemsnitlige rente udregnes med ved at anvende renten for den enkelte periode med følgende formel:</p>
+
+<div class="latex">$$ r =  \sqrt [n]{(1+r_1 ) \cdot (1+r_2) \cdot ~ ... ~\cdot (1+r_n)} -1 $$</div>
+
+<p>Lad os kigge på en opsparing over 3 år, med årlig rentetilskrivning og hvor renterne var: 6%, 8% og 2%.</p>
+
+<div class="latex">$$ r =  \sqrt [n]{(1+0,06 ) \cdot (1+0,08) \cdot (1+0,02)} -1 = 0,0530 = 5,30 \% $$</div>
+
+
+
+<h2>Annuitetsregning</h2>
+
+
+
+<p>Annuitetsregning indeholder både ydelse og renter, som skal medtages, og den beskriver over tid (terminer) den udvikling der sker. Her taler vi om to begreber: </p>
+
+<ul class="none">
+	<li><span class="inl_cmd">Fremtidsværdien </span>(<span class="math">\( A_n \)</span>)</li>
+	<li><span class="inl_cmd">Nutidsværdien </span>(<span class="math">\( A_0 \)</span>)</li>
+</ul>
+
+<p><span class="math">\( A_n \)</span> beskriver det beløb der står på en konto efter en ydelse er blevet indbetalt i <span class="math">\( n \)</span> terminer og <span class="math">\( A_0 \)</span> beskriver det tidspunkt hvor et lån går i nul.</p>
+
+<h3>Fremtidsværdien</h3>
+
+<p>Formlen for <span class="math">\( A_n \)</span> er:</p>
+
+<div class="latex">$$ A_n = y \cdot \frac{(1+r)^n - 1}{r} $$</div>
+
+<h4>Udledning af formlen</h4>
+
+<p>For at få et overblik over formlen laver vi følgende skema:</p>
+
+<table class="">
+	<tbody>
+		<tr>
+			<td rowspan="2">Termin</td>
+			<td><span class="math">\( 0 \)</span></td>
+			<td><span class="math">\( 1 \)</span></td>
+			<td><span class="math">\( 2 \)</span></td>
+			<td><span class="math">\( ... \)</span></td>
+			<td><span class="math">\( n-1 \)</span></td>
+			<td><span class="math">\( n \)</span></td>
+		</tr>
+		<tr>
+			<td><span class="math">\( A_0 \)</span></td>
+			<td><span class="math">\( A_1 \)</span></td>
+			<td><span class="math">\( A_2 \)</span></td>
+			<td><span class="math">\( ... \)</span></td>
+			<td><span class="math">\( A_{n-1} \)</span></td>
+			<td><span class="math">\( A_n \)</span></td>
+		</tr>
+		<tr>
+			<td>Ydelse</td>
+			<td><span class="math">\( ingen \)</span></td>
+			<td><span class="math">\( y \)</span></td>
+			<td><span class="math">\( y \)</span></td>
+			<td><span class="math">\( ... \)</span></td>
+			<td><span class="math">\( y \)</span></td>
+			<td><span class="math">\( y \)</span></td>
+		</tr>
+
+	</tbody>
+</table>
+
+<p>Det som skemaet viser er måden ydelsen falder i forhold til terminen.</p>
+
+<p>Det vi ved er at rentesregning formlen er:</p>
+
+<div class="latex">$$ K_n = K_0 \cdot (1+r)^n $$</div>
+
+
+<p>Derfor har vi nu et udtryk for hvad der sker i den enkelte termin. For at finde en formel vil vi skrive ned hvordan den endelige ydelse vil være, og vi gør det baglæns. Dvs:</p>
+
+<table class="">
+	<tbody>
+		<tr>
+			<td rowspan="2">Termin</td>
+			<td><span class="math">\( n \)</span></td>
+			<td><span class="math">\( n-1 \)</span></td>
+			<td><span class="math">\( ... \)</span></td>
+			<td><span class="math">\( 2 \)</span></td>
+			<td><span class="math">\( 1 \)</span></td>
+			<td><span class="math">\( 0 \)</span></td>
+		</tr>
+		<tr>
+			<td><span class="math">\( A_n \)</span></td>
+			<td><span class="math">\( A_{n-1} \)</span></td>
+			<td><span class="math">\( ... \)</span></td>
+			<td><span class="math">\( A_2 \)</span></td>
+			<td><span class="math">\( A_1 \)</span></td>
+			<td><span class="math">\( A_0 \)</span></td>
+		</tr>
+		<tr>
+			<td>Ydelse</td>
+			<td><span class="math">\( y \)</span></td>
+			<td><span class="math">\( y \)</span></td>
+			<td><span class="math">\( ... \)</span></td>
+			<td><span class="math">\( y \)</span></td>
+			<td><span class="math">\( y \)</span></td>
+			<td><span class="math">\( ingen \)</span></td>
+		</tr>
+		<tr>
+			<td>antal terminers rente</td>
+			<td><span class="math">\( 0 \)</span></td>
+			<td><span class="math">\( 1 \)</span></td>
+			<td><span class="math">\( ... \)</span></td>
+			<td><span class="math">\( n-2 \)</span></td>
+			<td><span class="math">\( n-1 \)</span></td>
+			<td><span class="math">\( ... \)</span></td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Da vi kender formlen for rentes regning kan vi anvende den til at finde det endelige beløb ved at addere hver termin. Vi starter med den sidste ydelse og beregner terminerne enkeltvis:</p>
+
+<div class="latex">$$ A_n = y \cdot (1+r)^0 + y \cdot (1+r)^1 + y \cdot (1+r)^2+... + y \cdot (1+r)^{n-2} + y \cdot (1+r)^{n-1} $$</div>
+
+<p>Grunden til at sidste led er <span class="math">\( n-1 \)</span> er, at der i den <span class="inl_cmd">n'te</span> termin ikke er påløbet nogen rente. For at få overblik erstatter vi <span class="math">\( (1+r) \)</span> med <span class="math">\( a \)</span>:</p>
+
+<div class="latex">$$ A_n = y + y \cdot a^1 + y \cdot a^2 + ... + y \cdot a^{n-2} + y \cdot a^{n-1} $$</div>
+
+<p><span class="math">\( y \)</span> sættes uden for parantes:</p>
+
+<div class="latex">$$ A_n = y \cdot (1+a^1+a^2+ ... +a^{n-2}+a^{n-1}) $$</div>
+
+<p>For at komme videre laver vi et lille "trick". Vi ganger og dividerer med <span class="math">\( a-1 \)</span>:</p>
+
+<div class="latex">$$ A_n = y \cdot \frac{(1+a+a^2 + ... +a^{n-2}+a^{n-1}) \cdot (a-1)}{a-1}	 $$</div>
+
+<p>Gang paranteserne i tælleren sammen:</p>
+
+<div class="latex">$$ A_n = y \cdot \frac{a+a^2+a^3 + ...+a^{n-1}+a^n- 1 \cdot (1+a+...+a^{n-2}+a^{n-1})}  {a-1}	 $$</div>
+
+<p>Gang ind i den sidste parantes:</p>
+
+<div class="latex">$$ A_n = y \cdot \frac{a+a^2+a^3 + ...+a^{n-1}+a^n- 1 -a-a^2-...-a^{n-2}-a^{n-1}}{a-1}	 $$</div>
+
+<p>Forkort:</p>
+
+<div class="latex">$$ A_n = y \cdot \frac{a^{n}-1}{a-1} $$</div>
+
+<p>Erstat <span class="math">\( a \)</span> med <span class="math">\( (1+r) \)</span>:</p>
+
+<div class="latex">$$ A_n = y \cdot \frac{(1+r)^{n}-1}{(1+r)-1}$$</div>
+
+<p>Forkort tælleren:</p>
+
+<div class="latex">$$ A_n = y \cdot \frac{(1+r)^{n}-1}{r} $$</div>
+
+<p>Hermed er beviset gennemført.</p>
+
+<h3>Nutidsværdien</h3>
+
+<p>Formlen for <span class="math">\( A_0 \)</span> er:</p>
+
+<div class="latex">$$ A_0 = y \cdot \frac{1-(1+r)^{-n}}{r} $$</div>
+
+<h4>Udledning af formlen</h4>
+
+<p>For at få et overblik over formlen kigger vi igen på skemaet for at få et overblik.:</p>
+
+<table class="">
+	<tbody>
+		<tr>
+			<td rowspan="2">Termin</td>
+			<td><span class="math">\( 0 \)</span></td>
+			<td><span class="math">\( 1 \)</span></td>
+			<td><span class="math">\( 2 \)</span></td>
+			<td><span class="math">\( ... \)</span></td>
+			<td><span class="math">\( n-1 \)</span></td>
+			<td><span class="math">\( n \)</span></td>
+		</tr>
+		<tr>
+			<td><span class="math">\( A_0 \)</span></td>
+			<td><span class="math">\( A_1 \)</span></td>
+			<td><span class="math">\( A_2 \)</span></td>
+			<td><span class="math">\( ... \)</span></td>
+			<td><span class="math">\( A_{n-1} \)</span></td>
+			<td><span class="math">\( A_n \)</span></td>
+		</tr>
+		<tr>
+			<td>Ydelse</td>
+			<td><span class="math">\( ingen \)</span></td>
+			<td><span class="math">\( y \)</span></td>
+			<td><span class="math">\( y \)</span></td>
+			<td><span class="math">\( ... \)</span></td>
+			<td><span class="math">\( y \)</span></td>
+			<td><span class="math">\( y \)</span></td>
+		</tr>
+
+	</tbody>
+</table>
+
+<p>Fra vi har den sidste ydelse (<span class="math">\( A_n \)</span>) og tilbage til den første har vi n terminer. Dvs. vi kan igen anvende det udtryk vi kender fra rentesregning til at beregne <span class="math">\( A_0 \)</span>:</p>
+
+<div class="latex">$$ K_0 = K_n \cdot (1+r)^{-n} \Rightarrow A_0 = A_n \cdot (1+r)^{-n}$$</div>
+
+<p>Grunden til at vi kan gøre dette er, at <span class="math">\( K_0 \)</span> er startkapitalen (hvilket svarer til nutidsværdien) og <span class="math">\( K_n \)</span> er slutkapitalen (hvilket svarer til fremtidsværdien).</p>
+
+
+<p>Da vi kender <span class="math">\( A_n \)</span> fra før indsætter vi det i udtrykket:</p>
+
+<div class="latex">$$ A_0 = y \cdot \frac{(1+r)^{n}-1}{r} \cdot (1+r)^{-n} $$</div>
+
+<p>Vi sætter på samme brøkstreg:</p>
+
+<div class="latex">$$ A_0 = y \cdot \frac{ \left( (1+r)^{n}-1 \right) \cdot (1+r)^{-n} }{r}  $$</div>
+
+<p>Vi ganger ind i parantesen</p>
+
+<div class="latex">$$ A_0 = y \cdot \frac{  (1+r)^{n} \cdot (1+r)^{-n} - 1  \cdot (1+r)^{-n} }{r}  $$</div>
+
+<p>Vi anvender potensregler:</p>
+
+<div class="latex">$$ A_0 = y \cdot \frac{  (1+r)^{n - n} - (1+r)^{-n} }{r} $$</div>
+
+<p>... og samler udtrykket:</p>
+
+<div class="latex">$$ A_0 = y \cdot \frac{  1 - (1+r)^{-n} }{r} $$</div>
+
+
+<p>Hermed er beviset gennemført.</p>
+
+<h3>Ydelsen </h3>
+
+<p>Formlen til at finde ydelsen er:</p>
+
+<p>1) Hvis vi kender <span class="math">\( A_n \)</span></p>
+
+<div class="latex">$$ y = A_n \cdot \frac{ r }{ (1+r)^n-1 } $$</div>
+
+<p>2) Hvis vi kender <span class="math">\( A_0 \)</span></p>
+
+<div class="latex">$$ y = A_0 \cdot \frac{ r }{ 1-(1+r)^{-n}}   $$</div>
+
+<h4>Udledning af formlen ved An</h4>
+
+<div class="latex">$$ 
+
+y \cdot \frac{ (1+r)^n - 1 }{ r } = A_n
+
+\\ \Updownarrow \\
+
+y \cdot ((1+r)^n - 1) = A_n \cdot r
+
+\\ \Updownarrow \\
+
+y = A_n \cdot \frac{ r }{ (1+r)^n - 1 }
+
+ $$</div>
+
+
+
+<h4>Udledning af formlen ved Ao</h4>
+
+<div class="latex">$$ 
+
+y \cdot \frac{  1 - (1+r)^{-n} }{r} = A_0
+
+\\ \Updownarrow \\
+
+y \cdot ( 1 - (1+r)^{-n})= A_0 \cdot r
+
+\\ \Updownarrow \\
+
+y = A_0 \cdot  \frac{ r }{ 1 - (1+r)^{-n} }
+
+ $$</div>
+
+<p>Hermed er beviset gennemført.</p>
+
+
+
+<h3>Antal terminer</h3>
+
+<p>Formlen til at finde antal terminer er:</p>
+
+<p>1) hvis vi kender <span class="math">\( A_n \)</span></p>
+
+<div class="latex">$$ n = \frac{ ln \left( \frac{ A_n \cdot r }{ y } +1 \right) }{ ln(1+r) } $$</div>
+
+<p>2) hvis vi kender <span class="math">\( A_0 \)</span></p>
+
+<div class="latex">$$ n = - \frac {  ln \left(  1 - \frac{ A_0 \cdot r  } {  y }   \right) } { ln(1+r)  } $$</div>
+
+
+<h4>Udledning af formlen ved An</h4>
+
+<div class="latex">$$ 
+
+y \cdot \frac{ (1+r)^n-1 }{ r } = A_n
+
+\\ \Updownarrow \\
+
+\frac{ (1+r)^n-1 }{ r } = \frac{ A_n }{ y }
+
+\\ \Updownarrow \\
+
+(1+r)^n-1 = \frac{ A_n \cdot r}{ y }
+
+\\ \Updownarrow \\
+
+(1+r)^n = \frac{ A_n \cdot r}{ y } + 1
+
+\\ \Updownarrow \\
+
+n \cdot ln(1+r) = ln \left(  \frac{ A_n \cdot r}{ y } + 1 \right)
+
+\\ \Updownarrow \\
+
+n = \frac{  ln \left(  \frac{ A_n \cdot r}{ y } + 1 \right)    }{ ln(1+r) }
+
+ $$</div>
+
+<p>Hermed er beviset gennemført.</p>
+
+
+
+<h4>Udledning af formlen ved Ao</h4>
+
+<div class="latex">$$ 
+
+y \cdot \frac{  1 - (1+r)^{-n} }{r} = A_0
+
+\\ \Updownarrow \\
+
+\frac{  1 - (1+r)^{-n} }{r} = \frac{ A_0 }{ y }
+
+\\ \Updownarrow \\
+
+1 - (1+r)^{-n} = \frac{ A_0 \cdot r }{ y }
+
+\\ \Updownarrow \\
+
+- (1+r)^{-n} = \frac{ A_0 \cdot r }{ y } - 1
+
+\\ \Updownarrow \\
+
+(1+r)^{-n} = 1 - \frac{ A_0 \cdot r }{ y }
+
+\\ \Updownarrow \\
+
+-n \cdot ln(1+r) = ln \left( 1 - \frac{ A_0 \cdot r }{ y } \right)
+
+\\ \Updownarrow \\
+
+-n = \frac{ ln \left( 1 - \frac{ A_0 \cdot r }{ y } \right) }{ ln(1+r) }
+
+\\ \Updownarrow \\
+
+n = - \frac{ ln \left( 1 - \frac{ A_0 \cdot r }{ y } \right) }{ ln(1+r) }
+ $$</div>
+ 
+ <p>Hermed er beviset gennemført.</p>
+
+<h2>Amortisationstabel</h2>
+
+<p>En amortisationstabel viser hvordan et lån afvikler sig over tid. Dette gøres ved hjælp af regne ark.</p>
+
+<p>Du kan finde materialet om amortisationstabeller her: <a href="regneark.html#Financielle_funktioner" target="_blank">regneark.html#Financielle_funktioner</a></p>
+
+<h2>Opsparingstabel</h2>
+
+<p>Ligesom man kan kan lave tabeller over afvikling af lån, kan man også lave tabeller over udviklingen af en opsparing.</p>
+
+<p>Her kan du hente et regneark, der viser udviklingen af et lån: <a href="files/udvikling_af_opsparing.xls" download>udvikling_af_opsparing.xls</a></p>
+
+
+<h2>Økonomiske grundligninger</h2>
+
+<p>I de økonomiske enheder taler vi om overskud og fortjeneste og her bruger man følgende betegnelser:</p>
+
+<ul class="none">
+	<li><span class="math">\( R(x) \)</span> (Indtægt/Revenue)</li>
+	<li><span class="math">\( O(x) \)</span> (Overskud)</li>
+	<li><span class="math">\( p(x) \)</span> (Pris/Price)</li>
+	<li><span class="math">\( C(x) \)</span> (Udgift/Cost)</li>
+</ul>
+
+<p>Der er følgende to grundligninger:</p>
+
+<ul class="none">
+	<li><b>Indtægt: </b> <span class="math">\( R(x)= p(x) \cdot x \)</li>
+	
+		<p><span class="math">\( Indtægt = pris ~per ~enhed \cdot antal~enheder \)</span></p>
+		
+	<li><b>Overskud: </b><span class="math">\( O(x) = R(x) - C(x) \)</span></li>
+	
+		<p><span class="math">\( Overskud = Indtægt \cdot Udgift \)</span></p>
+	
+</ul>
+
+
+<p>Det betyder altså at en overkudsvirksomhed er kendetegnet ved:</p>
+
+<div class="latex">$$ R(x) > C(x) $$</div>
+
+<h3>Prisfunktionen</h3>
+
+<p>Når man kender prisen på et produkt <span class="math">\( p(x) \)</span>, så kan man beregne prisen for <span class="math">\( x \)</span> antal enheder. Dette gælder både som produktions og som salgspris. Denne enhedspris kan være beskrevet ved hjælp af forskellige funktionstyper, som vi har gennemgået tidligere.</p>
+
+<ul class="none">
+	<li>Konstant: <span class="math">\( a \cdot x =  ax \)</span></li>
+	<li>Lineær: </li>
+	<li>Eksponential: <span class="math">\(  \)</span></li>
+	<li>Potens: <span class="math">\(  \)</span></li>
+</ul>
+
+
+
+
+
+
+<h4>Konstant pris</h4>
+
+<p>Ved den konstante pris koster et produkt det samme uanset mængden man køber. Det kan angives ved følgende formel:</p>
+
+<div class="latex">$$ a \cdot x =  ax $$</div>
+
+<h4>Linær pris-funktion</h4>	
+
+<p>Ved den lineære funktion er prisen givet ved at man har en startværdi der er forskellig fra 0, og hvor produktet enten kan blive billigere ellere dyrere for hver enhed man køber ved at falde med en konstant værdi. Det vil henholdsvis give en positiv eller en negativ hældningskoefficient</p>
+
+<div class="latex">$$  (ax+b) \cdot x = ax^2 + bx  $$</div>
+
+<h4>Eksponentiel prisfunktion</h4>
+
+<p>Ved den eksponentielle funktion er priseng givet ved at man har en startværdi der er forskellig fra 0 og hvor der er en fremskrivningsfaktor, der er forskellig fra 1. Prisen vil altså udvikle sig enten med en ned- eller opadgående tendens</p>
+
+<div class="latex">$$ (b \cdot a^x) \cdot x = b \cdot a^x \cdot x = b \cdot log(a) \cdot x^2 $$</div>
+
+
+
+<h4>Potentiel prisfunktion</h4>
+
+<p>Ved den potentielle funktion vil prisen vokse ved hjælp af en exponent. Her vil prisen enten til- eller aftage mere og mere for hver enhed der sælges. </p>
+
+<div class="latex">$$ (b \cdot x^a) \cdot x = b \cdot x^{(a+1)} $$</div>
+
+<p>Grunden til at vi i matematik lærer alle disse funktionstyper at kende, er fordi vi får brug for dem for at kunne tolke en pris- eller kursudvikling.</p>
+
+
+
+
+<h2>Model</h2>
+
+<p>For at få et overblik over hvilke formler man skal anvende kan du udfylde denne model. Du skal anvende den formel der tilhører den betegnelse du ikke har nogen værdi på.</p>
+
+<p></p>
+
+<figure id="">
+
+	<img class="p60" src="images/finaciering_model_til_at_skabe_overblik.svg" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+	
+</div><!-- end: col-md-9 -->
+
+<footer>
+
+	<p onclick="parentNode.remove()"><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons licens" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>Indholdet på Vidas.dk er licenseret under <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> og er skrevet af Thomas Jensen. (<a href="../hvem_er_jeg.html" target="_blank">Læs mere</a>)</p>
+
+</footer>
+	
+	
+</div><!-- end: row-fluid -->
+
+</div> <!-- end: container-fluid -->
+
+
+<!-- SCRIPT SECTION -->
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script type="text/javascript" src="../js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="../js/jquery.tocify.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+
+<!-- PRETTYFY-->
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+
+
+<!-- HIGHLIGHT -->
+	<script src="../js/highlight.pack.js" type="text/javascript"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+
+<!-- MATHJAX -->
+<script type="text/javascript" 
+	src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  displayAlign: "left",
+  displayIndent: "0em"
+});
+</script>
+
+
+<!-- TOCIFY -->
+<script>
+	$(function() {var toc = $("#toc").tocify({ selectors: "h2, h3, h4" }).data("toc-tocify"); });
+</script>
+<!-- GOOGLE ANALYTICS -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-89933285-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</body>
+</html>

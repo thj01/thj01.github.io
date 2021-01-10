@@ -1,0 +1,1748 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <title>Regneark</title>
+  <link rel="icon" href="../images/favicon.png">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono|Ubuntu|Ubuntu+Condensed' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/jquery-ui.min.css">
+  <link rel="stylesheet" href="../css/jquery.tocify.css">
+  <link rel="stylesheet" href="../css/style_new.css" />
+<!-- Scripts in bottom to speed up pageload-->
+ 
+
+</head>
+<body>
+	
+	
+<div class="container-fluid">
+
+<div class="row-fluid">
+	
+<div class="col-xs-3">
+	
+	<nav>
+		
+		<div id="toc">
+		
+			<div id="toc_headline"></div>
+		
+		</div>
+		
+	</nav>
+
+</div><!-- Start slut 1. kolonne - TOC -->
+	
+<div class="col-xs-9">
+	
+<h1>Regneark</h1>
+
+<p>I dette dokument er der en oversigt over anvendelige funktioner for matematik C EUX Merkantil og HHX. Regnearksfunktionerne vil blive gennemgået for Microsoft Excel, Libreoffice Calc og Google Sheets.</p>
+
+<h2>Almindelige funktioner</h2>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Excel/Calc</th>
+			<th>Sheets*</th>
+			<th>Beskrivelse</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>SUM(Område)</td>
+			<td>SUM(Område)</td>
+			<td>Lægger tallene i et område sammen</td>
+		</tr>
+		<tr>
+			<td>ABS(Tal)</td>
+			<td>ABS(Tal)</td>
+			<td>Returnerer den positive værdi af et tal</td>
+		</tr>
+		<tr>
+			<td>AFRUND(Tal;Decimaler)</td>
+			<td>ROUND(tal;Decimaler)</td>
+			<td>Afrunder et tal med det valgte antal decimaler</td>
+		</tr>
+		<tr>
+			<td>REST(tal;division)</td>
+			<td>MOD(tal;division)</td>
+			<td>Finder rest (modulus) efter division f.eks. <span class="inl_cmd">modulus 5/4 = 1</span> </td>
+		</tr>
+		<tr>
+			<td>AFKORT(Tal;decimaler)</td>
+			<td>TRUNC(tal;decimaler)</td>
+			<td>Afkort et med til det valgte antal decimaler</td>
+		</tr>
+		<tr>
+			<td>HELTAL(Tal)</td>
+			<td>INT(tal)</td>
+			<td>Ændrer decimaltal til heltal</td>
+		</tr>
+		<tr>
+			<td>LIGE(Tal)</td>
+			<td>EVEN(Tal)</td>
+			<td>Runder op til næste hele tal</td>
+		</tr>
+		<tr>
+			<td>ULIGE(Tal)</td>
+			<td>ODD(Tal)</td>
+			<td>Runder op til næste ulige tal</td>
+		</tr>
+		
+	</tbody>
+</table>
+
+<p>* Hvis man indtaster de danske funktioner i Google Sheets, så bliver de omdannet til de engelske funktioner.</p>
+
+<h2>Tællere</h2>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Excel/Calc</th>
+			<th>Sheets*</th>
+			<th>Beskrivelse</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>TÆL(Område)</td>
+			<td>COUNT(Område)</td>
+			<td>Tæller antallet af celler med talværdier i et område</td>
+		</tr>
+		<tr>
+			<td>TÆLV(Område)</td>
+			<td>COUNTA(Område)</td>
+			<td>Tæller antallet af celler med talværdier og strenge i et område</td>
+		</tr>
+		<tr>
+			<td>TÆL.HVIS(Område;Betingelse)</td>
+			<td>COUNTIF(Område;Betingelse)</td>
+			<td>Tæller antallet af celler med talværdier og strenge i et område</td>
+		</tr>
+
+	</tbody>
+</table>
+
+
+<h2>Fejlmeddelelser</h2>
+
+<p>Når man arbejder med regneark sker der at man laver fejl i sine indtastninger og beregninger. Excel og andre regneark anvender primært to fejlmeddelelser til at vise hvad type fejl det er.</p>
+
+<ul class="fat_li none">
+	
+	<li>#DIV/0!</li>
+
+		<p>Formlen forsøger at dividere med 0.</p>
+		
+	<li>#I/T</li>
+	
+		<p>Det som formlen skulle vise i det konkrete felt er <span class="inl_cmd">Ikke Tilgængelig</span> ( #I/T )</p>
+		
+	<li>#NA!</li>
+	
+		<p>Værdien er ikke tilgængelige</p>
+
+	<li>#NAME?</li>
+	
+		<p>Der er fejl i funktionen du anvender.</p>
+	
+		<p>Eks:</p>
+		
+		<p>TÆLHVIS() = #NAME? (Skulle hedde TÆL.HVIS)</p>
+
+	<li>#NULL!</li>
+	
+		<p>Formlen har ingen løsninger</p>
+		
+	<li>#NUM!</li>
+		
+		<p>Tallet i formlen er ugyldig</p>
+		
+		<p>Eks:</p>
+		
+			<p>=SQRT(-2) = #NUM!</p>
+			
+	<li>#REF</li>
+	
+		<p>En eller flere af referencerne i formlen kan ikke findes.</p>
+	
+	<li>#VÆRDI!</li>
+	
+		<p>Funktionen kan ikke udføres fordi felterne er inkompatible. Det kan f.eks. være hvis du forsøger at lægget et tal og en tekst sammen</p>
+		
+		<p>Eks:</p>
+		
+		<p>1 + F = #VÆRDI!</p>
+	
+
+		
+</ul>
+
+<blockquote>
+	<p>
+		Excel er ikke god til at fortælle <span class="inl_cmd">hvad</span> og <span class="inl_cmd">hvor</span> en fejl optræder. Det eneste du kan gøre er at kontrollere om dine indtastninger og værdier er korrekte.
+	</p>
+</blockquote>
+
+
+<h2>Logiske funktioner</h2>
+
+<p>Logiske funktioner anvendes til at undersøge felter ud fra nogle betingelser. Hertil anvender man relationer</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Matematisk funktion</th>
+			<th>Excel/Calc/Sheets</th>
+			<th>Forklaring</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>=</td>
+			<td>=</td>
+			<td>Det samme som</td>
+		</tr>
+		<tr>
+			<td>&ne;</td>
+			<td>&lt;&gt;</td>
+			<td>Forskellig fra</td>
+		</tr>
+		<tr>
+			<td>&lt;</td>
+			<td>&lt;</td>
+			<td>Mindre end</td>
+		</tr>
+		<tr>
+			<td>&le;</td>
+			<td>&lt;=</td>
+			<td>Mindre end og lige med</td>
+		</tr>
+		<tr>
+			<td>&gt;</td>
+			<td>&gt;</td>
+			<td>Større end</td>
+		</tr>
+		<tr>
+			<td>&ge;</td>
+			<td>&gt;=</td>
+			<td>Større end og lig med</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Herunder bliver følgende funktioner gennemgået:</p>
+
+<table class="_">
+	<thead>
+		<tr>
+			<th>Excel/Calc</th>
+			<th>Sheets</th>
+			<th>Beskrivelse</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>HVIS()</td>
+			<td></td>
+			<td>Undersøger om en betingelse er opfyldt, og sætter en værdi for disse</td>
+		</tr>
+		<tr>
+			<td>HVISER()</td>
+			<td>N/A</td>
+			<td>Undersøger mange forskellige ting, og sætter en værdi for hvert punkt der er opfyldt</td>
+		</tr>
+		<tr>
+			<td>ELLER()</td>
+			<td>OR()</td>
+			<td>Undersøger en række betingelser. Blot en betingelse skal være opfyldt for at den svarer med <b>SAND</b>.</td>
+		</tr>
+		<tr>
+			<td>OG()</td>
+			<td>AND()</td>
+			<td>Undersøger en række betingelser. Alle betingelser skal være opfyldt for at den svarer med <b>SAND</b>.</td>
+		</tr>
+		<tr>
+			<td>ER.TAL()</td>
+			<td>ISNUMBER</td>
+			<td>Undersøger om indholdet er et tal eller en tekststreng.</td>
+		</tr>
+	</tbody>
+</table>
+
+
+
+<p>Alle funktionerner er vist i dette regneark: <a href="files/regneark_logiske funktioner.xls" target="_blank">regneark_logiske funktioner.xls</a></p>
+
+
+
+
+<h3>HVIS()</h3>
+
+<p>Bruges til at undersøge om en betingelse er opfyldt. Man vælger selv om det skal skrives ved hjælp af et tal eller en streng</p>
+
+
+<p><b>Anvendelse (excel/Calc):</b></p>
+
+<code class="cmd">HVIS( *betingelse* ; *Værdi_for_sand* ; *værdi_for_falsk* )</code>
+
+<p><b>Anvendelse (Sheets): </b></p>
+
+<code class="cmd">IF( *betingelse* ; *Værdi_for_sand* ; *værdi_for_falsk* ) </code>
+
+
+<p><b>Eksempel (B-kolonnen): </b></p>
+
+<code class="cmd">HVIS(A1 &lt; 25;”Under 25”;”Over 25”)</code>
+
+<p><b>Eksempel (C-kolonnen): </b></p>
+
+<code class="cmd">HVIS(A1=20;SAND;FALSK)</code>
+
+<table class="regneark">
+	<thead>
+		<tr>
+			<th></th>
+			<th>A</th>
+			<th>B</th>
+			<th>C</th>
+			<th>D</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1</td>
+			<td>10</td>
+			<td>Under 25</td>
+			<td>FALSK</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>20</td>
+			<td>Under 25</td>
+			<td>SAND</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>30</td>
+			<td>Over 25</td>
+			<td>FALSK</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>4</td>
+			<td>40</td>
+			<td>Over 25</td>
+			<td>FALSK</td>
+			<td></td>
+
+		</tr>
+	</tbody>
+</table>
+
+
+
+
+<blockquote>
+	<p>Man kan også lave en "shorthand" til en HVIS(), ved blot at skrive et semikolon (<span class="inl_cmd">;</span>) efter betingelsen.</p>
+	
+		
+		<code class="cmd">HVIS(A1="kvinde";)</code>
+		
+	<p>Her vil funktionen svare med <span class="inl_cmd">O</span> hvis det er sandt og <span class="inl_cmd">FALSK</span> hvis det ikke rigtigt.</p>	
+	
+</blockquote>
+
+<h3>HVISER()</h3>
+
+<p>Bruges til at undersøge flere betingelser på en gang.</p>
+
+
+<p><b>Anvendelse (excel/Calc): </b></p>
+
+<code class="cmd">HVISER( *betingelse1* ; *værdi for sand* ; *betingelse2* ; *værdi for sand* ;….)</code>
+
+<blockquote>
+	<p>
+		Funktionen virker ikke på Mac og Sheets
+	</p>
+</blockquote>
+
+
+<p><b>Eksempel (B-kolonne): </b></p>
+
+<code class="cmd">=HVISER(A1="lille";0;A1="mellem";1;A1="stor";2)</code>
+
+<table class="regneark">
+	<thead>
+		<tr>
+			<th></th>
+			<th>A</th>
+			<th>B</th>
+			<th>C</th>
+			<th>D</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1</td>
+			<td>lille</td>
+			<td>0</td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>mellem</td>
+			<td>1</td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>mellem</td>
+			<td>1</td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>4</td>
+			<td>stor</td>
+			<td>2</td>
+			<td></td>
+			<td></td>
+		</tr>
+	</tbody>
+</table>
+
+
+<h3>ELLER()</h3>
+
+<p>Undersøger om en række betingelser er sande. Hvis blot en af dem er sande vil svarer funktionen tilbage med <b>SAND</b> ellers <b>FALSK</b>.</p>
+
+
+<p><b>Anvendelse: </b></p>
+
+<code class="cmd">ELLER( *betingelse1* ; *betingelse2* ;...)</code>
+
+
+<p><b>Eksempel (B-kolonne): </b></p>
+
+<code class="cmd">ELLER(A1="lille";A1="stor")</code>
+
+<table class="regneark">
+	<thead>
+		<tr>
+			<th></th>
+			<th>A</th>
+			<th>B</th>
+			<th>C</th>
+			<th>D</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1</td>
+			<td>lille</td>
+			<td>SAND</td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>mellem</td>
+			<td>FALSK</td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>mellem</td>
+			<td>FALSK</td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>4</td>
+			<td>stor</td>
+			<td>SAND</td>
+			<td></td>
+			<td></td>
+		</tr>
+	</tbody>
+</table>
+
+<h3>OG()</h3>
+
+<p>Undersøger om alle givne betingelser er sande. Hvis de alle er sande vil svarer funktionen tilbage med <span class="bold">SAND</span> ellers <span class="bold">FALSK</span>. </p>
+
+<p><b>Anvendelse: </b></p>
+
+<code class="cmd">og( *betingelse1* ; *betingelse2* ;...)</code>
+
+
+
+<p><b>Eksempel (C-kolonne) </b></p>
+
+<code class="cmd">OG(A1="lille";A2="blå")</code>
+
+<table class="regneark">
+	<thead>
+		<tr>
+			<th></th>
+			<th>A</th>
+			<th>B</th>
+			<th>C</th>
+			<th>D</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1</td>
+			<td>lille</td>
+			<td>grøn</td>
+			<td>FALSK</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>lille</td>
+			<td>gul</td>
+			<td>FALSK</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>lille</td>
+			<td>blå</td>
+			<td>SAND</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>4</td>
+			<td>lille</td>
+			<td>orange</td>
+			<td>FALSK</td>
+			<td></td>
+		</tr>
+	</tbody>
+</table>
+
+<h3>Find tekststreng</h3>
+
+<p>For at finde en tekststreng skal man bruge funktionerne <span class="inl_cmd">ER.TAL()</span> og <span class="inl_cmd">FIND()</span>.</p>
+
+<h4>FIND()</h4>
+
+<p>Denne funktion finder ud af hvor en tekststreng står i et felt. Forestil dig at vi har navnet <span class="inl_cmd">Allan Hansen</span> i feltet <span class="inl_cmd">A1</span>:</p>
+
+<table class="_">
+	<thead>
+		<tr>
+			<th>Funktion</th>
+			<th></th>
+			<th>Position</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>FIND("A";A1)</td>
+			<td><b>A</b>llan</td>
+			<td>1</td>
+		</tr>
+		<tr>
+			<td>FIND("a";A1)</td>
+			<td>All<b>a</b>n</td>
+			<td>4</td>
+		</tr>
+		<tr>
+			<td>FIND("s";A1)</td>
+			<td>Allan Han<b>s</b>en</td>
+			<td>10</td>
+		</tr>
+		<tr>
+			<td>FIND("ø";A1)</td>
+			<td>Allan Hansen</td>
+			<td>#VÆRDI!</td>
+		</tr>
+	</tbody>
+</table>
+
+<h4>ER.TAL()</h4>
+
+<p>Funktionen undersøger om feltet har en værdi.</p>
+
+<p><b>Eksempel (B-kolonne):</b></p>
+
+<code class="cmd">ER.TAL(A1)</code>
+
+<table class="regneark">
+	<thead>
+		<tr>
+			<th></th>
+			<th>A</th>
+			<th>B</th>
+			<th>C</th>
+			<th>D</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1</td>
+			<td>Hans</td>
+			<td>FALSK</td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>35</td>
+			<td>SAND</td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>Gurli</td>
+			<td>FALSK</td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>4</td>
+			<td>3,14159265359</td>
+			<td>SAND</td>
+			<td></td>
+			<td></td>
+		</tr>
+	</tbody>
+</table>
+
+<h4>Kombiner</h4>
+
+<p>Ved at anvende <span class="inl_cmd">FIND()</span> inde i <span class="inl_cmd">ER.TAL()</span> kan vi altså finde ud af om en tekststreng findes. Hvis <span class="inl_cmd">FIND()</span> returnerer et tal, så findes tekststrengen, og <span class="inl_cmd">ER.TAL()</span> returnerer <span class="inl_cmd">SAND</span></p>
+
+
+<p><b>Anvendelse (excel/Calc): </b></p>
+
+<code class="cmd">ER.TAL( FIND( *tekststreng/værdi* ; *felt* ) )</code>
+
+<p><b>Eksempel (B-kolonne): </b></p>
+
+<code class="cmd">ER.TAL(find("e";A1))</code>
+
+<table class="regneark">
+	<thead>
+		<tr>
+			<th></th>
+			<th>A</th>
+			<th>B</th>
+			<th>C</th>
+			<th>D</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1</td>
+			<td>Hans</td>
+			<td>FALSK</td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>Grethe</td>
+			<td>SAND</td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>Børge</td>
+			<td>SAND</td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>4</td>
+			<td>Gurli</td>
+			<td>FALSK</td>
+			<td></td>
+			<td></td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Funktionen kan indlejres i <span class="inl_cmd">HVIS(), HVISER(), ELLER()</span> og <span class="inl_cmd">OG()</span>. På den måde kan man både finde ud af om noget står i teksten, og få Excel til at returnere en værdi.</p>
+
+<h3>Flere funktioner </h3>
+
+<p>Her kan du finde Microsofts gennemgang af logiske funktioner.</p>
+
+<p><a href="https://support.office.com/da-dk/article/Logiske-funktioner-reference-e093c192-278b-43f6-8c3a-b6ce299931f5" target="_blank">Logiske funktioner i Excel</a></p>
+
+<h3>Betinget formatering</h3>
+
+<p>For at skabe bedre overblik over ens data, kan man lave formatering af felterne med udgangspunkt i nogle betingelser. Funktionen tilgås ved at gå til:</p>
+
+<p><span class="inl_cmd">Hjem &rarr; Betinget formatering &rarr; Regler for <u>f</u>remhævning af celler</span></p>
+
+<p>Her vælger man så kriterierne for betingelsen.</p>
+
+<figure id="">
+
+	<img class="p60" src="images/regneark_excel_betinget_formatering.png" alt="_" title="_" />
+
+	<figcaption>_</figcaption>
+
+</figure>
+
+<p>I det næste vindue sættes betingelsen og formateringen.</p>
+
+<span class="afsnit">Excel 2016 - Windows</span>
+
+
+<figure id="">
+
+	<img class="p40" src="images/regneark_excel_betinget_formatering2.png" alt="_" title="_" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<span class="afsnit">Excel 2016 - Mac</span>
+
+<figure id="">
+
+	<img class="p35" src="images/regneark_excel_betinget_formatering3.png" alt="_" title="_" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h2>Strenge</h2>
+
+<p>Man kan skære i tekster ved hjælp af:</p>
+
+<table class="_">
+	<thead>
+		<tr>
+			<th>Excel/Calc</th>
+			<th>Sheets</th>
+			<th>Beskrivelse</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>VENSTRE()</td>
+			<td>LEFT()</td>
+			<td>Returnerer antal tegn fra henstre.</td>
+		</tr>
+		<tr>
+			<td>HØJRE()</td>
+			<td>RIGHT()</td>
+			<td>Returnerer antal tegn fra højre.</td>
+		</tr>
+		<tr>
+			<td>MIDT()</td>
+			<td>MID()</td>
+			<td>Returnerer antal tegn fra en position.</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>I eksemplerne herunder er alle funktionerne vist med <span class="inl_cmd">A1 = fr 5/1 2. modul</span>, hvor positionen kan ses i nedenstående tabel.</p>
+
+<table class="centreret">
+	<thead>
+		<tr>
+			<th>Retning</th>
+			<th>f</th>
+			<th>r</th>
+			<th></th>
+			<th>5</th>
+			<th>/</th>
+			<th>1</th>
+			<th></th>
+			<th>2</th>
+			<th>.</th>
+			<th></th>
+			<th>m</th>
+			<th>o</th>
+			<th>d</th>
+			<th>u</th>
+			<th>l</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Venstre til højre</td>
+			<td>1</td>
+			<td>2</td>
+			<td>3</td>
+			<td>4</td>
+			<td>5</td>
+			<td>6</td>
+			<td>7</td>
+			<td>8</td>
+			<td>9</td>
+			<td>10</td>
+			<td>11</td>
+			<td>12</td>
+			<td>13</td>
+			<td>14</td>
+			<td>15</td>
+		</tr>
+		<tr>
+			<td>Højre mod Venstre</td>
+			<td>15</td>
+			<td>14</td>
+			<td>13</td>
+			<td>12</td>
+			<td>11</td>
+			<td>10</td>
+			<td>9</td>
+			<td>8</td>
+			<td>7</td>
+			<td>6</td>
+			<td>5</td>
+			<td>4</td>
+			<td>3</td>
+			<td>2</td>
+			<td>1</td>
+		</tr>
+	</tbody>
+</table>
+
+
+<h3>VENSTRE()</h3>
+
+<p>Bruges til at vise et antal tegn fra venstre mod højre</p>
+
+
+<p><b>Anvendelse (excel/Calc)</b></p>
+
+<code class="cmd">VENSTRE( *tekststreng* ; *antal_tegn*)</code>
+
+<p><b>Anvendelse (Sheets)</b></p>
+
+<code class="cmd">LEFT( *tekststreng* ; *antal_tegn*)</code>
+
+
+<p><b>Eksempel</b></p>
+
+<code class="cmd">VENSTRE(A1;2)</code>
+
+
+<table class="regneark">
+	<thead>
+		<tr>
+			<th></th>
+			<th>A</th>
+			<th>B</th>
+			<th>C</th>
+			<th>D</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1</td>
+			<td>Hans</td>
+			<td>Ha</td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>Grethe</td>
+			<td>Gr</td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>Børge</td>
+			<td>Bø</td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>4</td>
+			<td>Gurli</td>
+			<td>Gu</td>
+			<td></td>
+			<td></td>
+		</tr>
+	</tbody>
+</table>
+
+
+<h3>HØJRE()</h3>
+
+<p>Bruges til at vise et antal tegn fra højre mod venstre.</p>
+
+
+<p><b>Anvendelse (excel/Calc)</b></p>
+
+<code class="cmd">HØJRE( *tekststreng* ; *antal_tegn*)</code>
+
+<p><b>Anvendelse (Sheets)</b></p>
+
+<code class="cmd">RIGHT( *tekststreng* ; *antal_tegn*)</code>
+
+
+<p><b>Eksempel</b></p>
+
+<code class="cmd">HØJRE(A1;2)</code>
+
+
+<table class="regneark">
+	<thead>
+		<tr>
+			<th></th>
+			<th>A</th>
+			<th>B</th>
+			<th>C</th>
+			<th>D</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1</td>
+			<td>Hans</td>
+			<td>ns</td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>Grethe</td>
+			<td>he</td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>Børge</td>
+			<td>ge</td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>4</td>
+			<td>Gurli</td>
+			<td>li</td>
+			<td></td>
+			<td></td>
+		</tr>
+	</tbody>
+</table>
+
+<h3>MIDT()</h3>
+
+<p>Bruges til at vise et antal tegn fra venstre mod højre</p>
+
+
+<p><b>Anvendelse (excel/Calc)</b></p>
+
+<code class="cmd">MIDT( *tekststreng* ; *start_position* ; *antal_tegn*)</code>
+
+<p><b>Anvendelse (Sheets)</b></p>
+
+<code class="cmd">MID( *tekststreng* ; *start_position* ;  *antal_tegn*)</code>
+
+<blockquote>
+	<p>
+		Udelades <span class="inl_cmd"> *antal_tegn* </span> udskriver funktionen resten af tegnene i strengen
+	</p>
+</blockquote>
+
+<p><b>Eksempel (B-kolonne) - dag</b></p>
+
+<code class="cmd">=MIDT(A1;5;2)</code>
+
+<p><b>Eksempel (C-kolonne) - månede</b></p>
+
+<code class="cmd">=MIDT(A1;7;2)</code>
+
+<p><b>Eksempel (D-kolonne) - år</b></p>
+
+<code class="cmd">=MIDT(A1;9;4)</code>
+
+<table class="regneark">
+	<thead>
+		<tr>
+			<th></th>
+			<th>A</th>
+			<th>B</th>
+			<th>C</th>
+			<th>D</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1</td>
+			<td>ons 03012018</td>
+			<td>03</td>
+			<td>01</td>
+			<td>2018</td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>fre 05012018</td>
+			<td>05</td>
+			<td>01</td>
+			<td>2018</td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>man 08012018</td>
+			<td>08</td>
+			<td>01</td>
+			<td>2018</td>
+		</tr>
+		<tr>
+			<td>4</td>
+			<td>tir 09012018</td>
+			<td>09</td>
+			<td>01</td>
+			<td>2018</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Du kan læse mere om disse funktioner</p>
+
+<p><a href="https://support.office.com/da-dk/article/Opdel-tekst-i-forskellige-kolonner-med-guiden-Konverter-tekst-til-kolonner-30b14928-5550-41f5-97ca-7a3e9c363ed7?ui=da-DK&rs=da-DK&ad=DK" target="_blank">https://support.office.com/da-dk/article/Opdel-tekst-i-forskellige-kolonner-med-guiden-Konverter-tekst-til-kolonner-30b14928-5550-41f5-97ca-7a3e9c363ed7?ui=da-DK&rs=da-DK&ad=DK</a></p>
+
+<h1 id="Financielle_funktioner">Finansielle funktioner</h2>
+
+<p>Herunder er en tabel med betegnelser der anvendes ved regnearksfunktioner.</p>
+
+
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Betegnelse</th>
+			<th>Forklaring</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Rente</td>
+			<td>Rente pr periode</td>
+		</tr>
+		<tr>
+			<td>Periode</td>
+			<td>Den valgte periode</td>
+		</tr>
+		<tr>
+			<td>Nper</td>
+			<td>Samlet antal perioder</td>
+		</tr>
+		<tr>
+			<td>Nv</td>
+			<td>Startværdien på lånet</td>
+		</tr>
+		<tr>
+			<td>Fv</td>
+			<td>Værdien der skal opnås</td>
+		</tr>
+		<tr>
+			<td>Type</td>
+			<td>Hvornår ydelsen skal falder. <span class="inl_cmd">0</span> er afslutning af perioden (default) og <span class="inl_cmd">1</span> er starten.</td>
+		</tr>
+	</tbody>
+</table>
+
+<p><span class="bold">NB</span>: Vær opmærksom på at regneark anvender konventionerne (vedtagne standarder) at penge man udbetaler (Debit) er negative og penge man modtager (CREDIT) er positive. Derfor vil penge man <span class="bold">udbetaler</span> til en opsparing være et negativt beløb, men de penge man <span class="bold">modtager</span> være positivt.</p>
+
+<p>Herunder bliver beregningerne gennemgået med udgangspunkt i et lån på 10.000,-, der afbetales over 3 år med en rente på 5,6% pa., samt en opsparing på 20000 der løber over 3 år med en rente på 2%</p>
+
+<p>Dvs:</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Lån</th>
+			<th>Opsparing</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Rente = 0,056/12 &asymp; 0,46667% <br/>
+				Nper = 3*12 = 36 <br/>
+				Nv = 10000 <br/>
+				Fv = 0 <br/>
+				Type = 0 (udelades da det er default
+			</td>
+			<td>Rente = 0,002/12 &asymp; 0,00167 <br/>
+				Nper = 3*12 = 36 <br/>
+				Nv = 0 <br/>
+				Fv = 20000 <br/>
+				Type = 0 (udelades da det er default
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<h3>YDELSE</h3>
+
+<p>Funktionen <span class="inl_cmd">YDELSE</span> bliver brugt til beregne lån og opsparinger. Herunder vil følgende blive gennemgået:</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Excel/Calc</th>
+			<th>Sheets*</th>
+			<th>Beskrivelse</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><span class="inl_cmd">YDELSE()</span></td>
+			<td><span class="inl_cmd">PMT()</span></td>
+			<td>Den samlede ydelse på lån/opsparing</td>
+		</tr>
+		<tr>
+			<td><span class="inl_cmd">R.YDELSE()</span></td>
+			<td><span class="inl_cmd">IPMT()</span></td>
+			<td>Renten i den konkrete periode</td>
+		</tr>
+		<tr>
+			<td><span class="inl_cmd">H.YDELSE()</span></td>
+			<td><span class="inl_cmd">PPMT()</span></td>
+			<td>Ydelsen på lånet/opsparingen i perioden</td>
+		</tr>
+
+	</tbody>
+</table>
+
+
+<p></p>
+
+<h4>YDELSE()</h4>
+
+<p>Giver det beløb man skal betale hver periode. Her skal man ikke angive perioden, da ydelsen er den samme i alle perioder.</p>
+
+<p>Funktion i Sheets: <span class="inl_cmd">PMT()</span></p>
+
+<p><span class="bold">Anvendelse: </span><span class="inl_cmd">ydelse(rente;Nper;Nv;Fv;Type)</span></p>
+
+<p><span class="bold">Lån</span>: <span class="inl_cmd">YDELSE(0,056/12;3*12;10000;0)</span> = <span class="red">-302,41</span></p>
+
+<p><span class="bold">Opsparing</span>: <span class="inl_cmd">YDELSE(0,002/12;3*12;0;20000)</span> = <span class="red">-553,94</span></p>
+
+<p>Tallene bliver negative da det er noget du skal indbetale - altså noget du har mindre.</p>
+
+<ul class="none">
+	<li>Afdrag på lån pr månede: 302,41</li>
+	<li>Indbetaling til opsparing: 553,94</li>
+</ul>
+
+<p></p>
+
+<h4>R.YDELSE()</h4>
+
+<p><span class="bold">Anvendelse: </span>R.YDELSE(Rente;Periode;Nper;Nv;Fv;Type)</p>
+  
+<p><span class="bold">Lån (13. periode)</span>: <span class="inl_cmd">R.YDELSE(0,056/12;13;3*12;10000;0)</span> = <span class="red">-31,97</span></p>
+
+<p><span class="bold">Opsparing (13. periode)</span>: <span class="inl_cmd">R.YDELSE(0,002/12;13;3*12;0;20000)</span> = 1,11</p>
+
+<ul class="none">
+	<li>Rente i 13 periode: <span class="red">-31,97</span></li>
+	<li>Rente i 13 periode: 1,11</li>
+</ul>
+
+<p></p>
+
+<h4>H.YDELSE()</h4>
+
+<p>Giver Afdraget i den konkrete periode</p>
+
+<p><span class="bold">Anvendelse: </span>H.YDELSE(Rente;Periode;Nper;Nv;Fv;Type)</p>
+
+<p><span class="bold">Lån (13. periode)</span>: <span class="inl_cmd">H.YDELSE(0,056/12;13;3*12;10000;0)</span> = <span class="red">-270,44</span></p>
+
+<p><span class="bold">Opsparing (13. periode)</span>: <span class="inl_cmd">H.YDELSE(0,002/12;13;3*12;0;20000)</span> = <span class="red">-555,05</span></p>
+
+<ul class="none">
+	<li>Afdrag i 13 periode: <span class="red">-270,44</span></li>
+	<li>Bidrag i 13 periode: <span class="red">-555,05</span> (553,94+1,11 = 555.05)</li>
+</ul>
+
+<p>Her er et regneark med eksemplerne ovenfor <a href="files/regneark_eksempler_01.xls" target="_blank">regneark_eksempler_01.xls</a></p>
+
+<p></p>
+
+<h3>RENTE</h3>
+
+<h4>RENTE()</h4>
+
+<p>Giver renten på et lån ud fra løbetid.</p>
+
+<p>Funktion i Libreoffice Calc: RENTE()</p>
+<p>Funktion i Sheets: </p>
+
+<p><span class="bold">Anvendelse: </span>RENTE(nper;ydelse;NV)</p>
+
+<p>Et lån på 15.000,- over 24 mdr, med en ydelse 650,-</p>
+
+<p><b>EKsempel: </b>RENTE(24;-650;15000) = 0,3162%</p>
+
+<p>Dvs. den årlige rente er på 12 &middot; 0,3162 = 3,794% pa</p>
+
+
+<h4>EFFEKTIV.RENTE()</h4>
+
+<p>Giver den effektive rente pr. år</p>
+
+<p>Funktion i Libreoffice Calc: EFFEKTIV.RENTE_ADD()</p>
+<p>Funktion i Sheets: EFFECT()</p>
+
+<p><span class="bold">Anvendelse: </span>EFFEKTIV.RENTE(rente pa;terminer)</p>
+
+<p><span class="bold">Den effektive rente pr. år:</span> <span class="inl_cmd">EFFEKTIV.RENTE(0,056;12)</span> = 5,746%</p>
+
+<p>Læg mærke til at jeg amortisationstabellen har indsat den effektive rente.</p>
+
+<p></p>
+
+<span class="afsnit">Gode henvisninger</span>
+
+<p><a href="https://youtu.be/am37BuhqQ54" target="_blank">https://youtu.be/am37BuhqQ54</a></p>
+
+<h3>FV()</h3>
+
+<p>Giver Fremtidsværdien af en investering baseret på faste ydelser og fast rente</p>
+
+<p>Funktion i Sheets: FV().</p>
+
+<p><span class="bold">Anvendelse: </span><span class="inl_cmd">FV(rente;Nper;Ydelse;NV)</span></p>
+
+<p>Husk ydelsen skal angives negativ, da det er noget man udbetaler til lånet.</p>
+
+<p><span class="bold">Lån</span>: <span class="inl_cmd">FV(0,002/12;3*12;-1500;0)</span> = kr. 54.157.80</p>
+
+<h3>NV()</h3>
+
+<p>Giver nutidsværdien på et lån baseret på fast ydelse og fast rente</p>
+
+<p>Funktion i Sheets: NV().</p>
+
+<p><span class="bold">Anvendelse: </span><span class="inl_cmd">NV(rente;Nper;Ydelse)</span></p>
+
+<p>Husk ydelsen skal angives negativ, da det er noget man udbetaler til lånet.</p>
+
+<p>En fast ydelse på kr. 650, over 24 mdr med en rente på 0,31%</p>
+
+<p><span class="bold">Lån</span>: <span class="inl_cmd">NV(0,0031;24;-650)</span> = kr. 15.011,41</p>
+
+
+<h3>NPER()</h3>
+
+<p>Giver antallet af ydelser for et lån eller en investering:</p>
+
+<p>Funktion i Sheets: NPER().</p>
+
+<p><span class="bold">Anvendelse: </span><span class="inl_cmd">NPER(rente;Ydelse;NV;FV;Type)</span></p>
+
+<p>Herunder er udregningen på et lån på kr. 20.000, 2% pa. og en ydelse på kr. 1.500,-. Husk ydelsen skal angives negativ, da det er noget man udbetaler til lånet/opsparingen.</p>
+
+<p><span class="bold">Lån</span>: <span class="inl_cmd">NPER(0,002/12;-1500;20000;0)</span> = 13,35 ydelser</p>
+
+<!--
+<h3>NV()</h3> <span class="red">IKKE FÆRDIG</span>
+
+<p>Angiver nyværdien af et lån eller en opsparing</p>
+
+<p>Funktion i Sheets: NV().</p>
+
+<p><span class="bold">Anvendelse: </span><span class="inl_cmd">NV(rente;Nper;ydelse;Fv;Type)</span></p>
+
+<p>Hvad skal der stå på kontoen hvis man vil have kr. 50.000 efter 3 år med en månedlig ydelse på kr. 1500,- på en konto med 2% pa.</p>
+
+<p><span class="bold">Lån</span>: <span class="inl_cmd">NPER(0,002/12;-1500;20000;0)</span> = 13,35 ydelser</p>
+-->
+
+<h3>Amortisationstabel</h3>
+
+<p>Amortisationstabeller beskriver hvordan et lån udvikler sig/afskrives. Selve ordet amortisation stammer fra det franske <span class="inl_cmd">amortir</span>, som betyder "dræbe" ("bring to death").</p>
+
+<p>Normalt vil en amortisationstabel være opbygget efter følgende skabelon:</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Termin</th>
+			<th>Primo restgæld</th>
+			<th>Ydelse</th>
+			<th>Rente</th>
+			<th>Afdrag</th>
+			<th>Ultimo Restgæld</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Den gældende periode</td>
+			<td>Gælden i starten af perioden</td>
+			<td>Ydelse i perioden</td>
+			<td>Renten i perioden</td>
+			<td>Afdraget (Ydelse-Rente)</td>
+			<td>Gæld efter afdrag</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Forklaring til på kolonnerne</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Kolonne</th>
+			<th>Beskrivelse</th>
+			<th>Handling</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Termin</td>
+			<td>Den gældende periode</td>
+			<td>Indsættes manuelt</td>
+		</tr>
+		<tr>
+			<td>Primo restgæld</td>
+			<td>Gælden i starten af perioden</td>
+			<td>Indsættes manuelt første gang, men overføres herefter fra <span class="italic bold">ultimo restgæld</span></td>
+		</tr>
+		<tr>
+			<td>Ydelse</td>
+			<td>Ydelsen i perioden</td>
+			<td>Beregnes med <span class="inl_cmd">YDELSE()</span></td>
+		</tr>
+		<tr>
+			<td>Rente</td>
+			<td>Renten i perioden</td>
+			<td>Beregnes med <span class="inl_cmd">R.YDELSE()</span></td>
+		</tr>
+		<tr>
+			<td>Afdrag</td>
+			<td>Periodens afdrag på gælden</td>
+			<td>Beregnes med <span class="inl_cmd">H.YDELSE()</span> eller  - <span class="italic bold">Ydelse - Rente</span></td>
+		</tr>
+		<tr>
+			<td>Ultimo Restgæld</td>
+			<td>Gælden efter afdrag</td>
+			<td>Beregnes med <span class="italic bold">Primo restgæld - Afdrag</span></td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Herunder er et eksempel på en amortisationstabel, og det kan downloades her: <a href="files/regneark_amortisationstabel.xls" target="_blank">regneark_amortisationstabel.xls</a></p>
+
+<figure id="">
+
+	<img class="p90" src="images/regneark_amoritationstabel_eksempel.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h3>Serielån</h3>
+
+<p>Et Serielån er et lån hvor man hver månede afbetaler samme beløb på lånet, og hvor renten falder over tid. Lad os tage eksemplet med billånet ovenfor.</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Termin</th>
+			<th>Primo restgæld</th>
+			<th>Rente</th>
+			<th>Afdrag</th>
+			<th>Ydelse</th>
+			<th>Ultimo Restgæld</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Den gældende periode</td>
+			<td>Gælden i starten af perioden</td>
+			<td>Renten i perioden</td>
+			<td>Afdraget (Ydelse-Rente)</td>
+			<td>Ydelse i perioden</td>
+			<td>Gæld efter afdrag</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Forklaring af kolonner</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Kolonne</th>
+			<th>Beskrivelse</th>
+			<th>Handling</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Termin</td>
+			<td>Den gældende periode</td>
+			<td>Indsættes manuelt</td>
+		</tr>
+		<tr>
+			<td>Primo restgæld</td>
+			<td>Gælden i starten af perioden</td>
+			<td>Indsættes manuelt første gang, men overføres herefter fra <span class="italic bold">ultimo restgæld</span></td>
+		</tr>
+		<tr>
+			<td>Rente</td>
+			<td>Renten i perioden</td>
+			<td>Beregnes med <span class="inl_cmd">Restgæld*Renten</span></td>
+		</tr>
+		<tr>
+			<td>Afdrag</td>
+			<td>Periodens afdrag på gælden</td>
+			<td>Afdraget er <span class="inl_cmd">Restgæld/Antal terminer</span></td>
+		</tr>
+		<tr>
+			<td>Ydelse</td>
+			<td>Ydelsen i perioden</td>
+			<td>Ydelsen er <span class="inl_cmd">Rente + Afdrag</span></td>
+		</tr>
+
+		<tr>
+			<td>Ultimo Restgæld</td>
+			<td>Gælden efter afdrag</td>
+			<td>Beregnes med <span class="inl_cmd">Primo restgæld - Afdrag</span></td>
+		</tr>
+	</tbody>
+</table>
+
+
+<p>Herunder er et eksempel på en serielånsstabel, og det kan downloades her: <a href="files/regneark_serielånsstabel.xls" target="_blank">regneark_serielånsstabel.xls</a></p>
+
+
+<figure id="">
+
+	<img class="p90" src="images/regneark_serielånstabel_eksempel.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+
+<h2>Matematiske funktioner</h2>
+
+<h3>Almindelige funktioner</h3>
+
+<p></p>
+
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Matematisk funktion</th>
+			<th>Regneark (excel/calc/Sheets)</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><span class="math">\( a^b \)</span></td>
+			<td>potens(a;b) eller a^b</td>
+		</tr>
+		<tr>
+			<td><span class="math">\( \sqrt a \)</span></td>
+			<td>kvrod(a)</td>
+		</tr>
+		<tr>
+			<td><span class="math">\( \sqrt[b]a \)</span></td>
+			<td>a^(1/b)</td>
+		</tr>
+		<tr>
+			<td><span class="math">\( log_{10}(a) \)</span></td>
+			<td>log10(a)</td>
+		</tr>
+		<tr>
+			<td><span class="math">\( log_{b}(a) \)</span></td>
+			<td>log(a;b)</td>
+		</tr>
+		<tr>
+			<td><span class="math">\( ln(a) \)</span></td>
+			<td>ln(x)</td>
+		</tr>
+		<tr>
+			<td><span class="math">\( \pi \)</span></td>
+			<td>pi()</td>
+		</tr>
+		
+
+	</tbody>
+</table>
+
+<!--
+<h3>Trigonometri</h3>
+
+<p><span class="red">*** Under udarbejdelse ***</span></p>
+
+<p>Regneark anvender trigonometriske funktioner ligesom en almindelig regnemaskine. Man skal dog være opmærksom på at regneark anvender <span class="inl_cmd">rad</span> (radianer) som standard - ikke vinkler. Derfor kan det være nødvendigt at omregne vinkler til <span class="inl_cmd">rad</span>. </p>
+
+<p>Det gør man med følgende formel:</p>
+
+<p><img src="images/regneark_grad_to_rad.svg" alt="" title="" /></p>
+
+<p>eller i et regneark ved hjælp af udregningen: <span class="inl_cmd">grad * pi()/180</span>, eller funktionen: <span class="inl_cmd">RADIANER(gradtal)</span>.</p>
+
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Trigonometrisk funktion</th>
+			<th>Regneark (excel/calc/Sheets)</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><img src="images/regneark_sinx.svg" alt="" title="" /></td>
+			<td>sin(x)</td>
+		</tr>
+		<tr>
+			<td><img src="images/regneark_sin-1x.svg" alt="" title="" /></td>
+			<td>arcsin()</td>
+		</tr>
+		<tr>
+			<td><img src="images/regneark_cosx.svg" alt="" title="" /></td>
+			<td>cos(x)</td>
+		</tr>
+		<tr>
+			<td><img src="images/regneark_cos-1x.svg" alt="" title="" /></td>
+			<td>arccos(x)</td>
+		</tr>
+		<tr>
+			<td><img src="images/regneark_tanx.svg" alt="" title="" /></td>
+			<td>tan(x)</td>
+		</tr>
+		<tr>
+			<td><img src="images/regneark_sin-1x.svg" alt="" title="" /></td>
+			<td>arctan(x)</td>
+		</tr>
+	</tbody>
+</table>
+-->
+
+<h2>Statistik</h2>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Statistisk funktion</th>
+			<th>Beskrivelse</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>tæl(Område)</td>
+			<td>Antal observationer (værdier)</td>
+		</tr>
+		<tr>
+			<td>tælv(Område)</td>
+			<td>Antal observationer (ikke tomme felter)</td>
+		</tr>
+		<tr>
+			<td>tæl.hvis(Område;Betingelse)</td>
+			<td>Antal observationer i området der opfylder betingelsen. Hvis betingelsen er et tegn skal det omgives med anførselstegn (f.eks: <span class="inl_cmd">"</span>) .</td>
+		</tr>
+		<tr>
+			<td>middel(Område)</td>
+			<td>Gennemsnit</td>
+		</tr>
+		<tr>
+			<td>min(Område)</td>
+			<td>Mindste værdi</td>
+		</tr>
+		<tr>
+			<td>maks(Område)</td>
+			<td>Største værdi</td>
+		</tr>
+		<tr>
+			<td>hyppigst(Område)</td>
+			<td>hyppigste værdi</td>
+		</tr>
+		<tr>
+			<td>median(Område)</td>
+			<td>Medianen</td>
+		</tr>
+		<tr>
+			<td>kvartil(Område;1/2/3)</td>
+			<td>Første, anden og tredje kvartil</td>
+		</tr>
+	</tbody>
+</table>
+
+<h3>Varians og standardafvigelse</h3>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Statistisk funktion</th>
+			<th>Beskrivelse</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>varians.s(Område)</td>
+			<td>variansen for en stikprøve</td>
+		</tr>
+		<tr>
+			<td>varians.p(Område)</td>
+			<td>variansen for en population</td>
+		</tr>
+		<tr>
+			<td>stdafv.s(område)</td>
+			<td>Standardafvigelsen/spredningen for en stikprøve</td>
+		</tr>
+		<tr>
+			<td>stdafv.p(område)</td>
+			<td>Standardafvigelsen/spredningen for en population</td>
+		</tr>
+	</tbody>
+</table>
+
+
+
+<h3>Tilfædige tal</h3>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Excel/Calc</th>
+			<th>Sheets*</th>
+			<th>Beskrivelse</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>SLUMP()</td>
+			<td>RAND()</td>
+			<td>Laver et tilfældigt tal i intervallet [0;1]</td>
+		</tr>
+		<tr>
+			<td>SLUMPMELLEM(start;slut)</td>
+			<td>RANDBETWEEN(start;slut)</td>
+			<td>Returnerer den positive værdi af et tal</td>
+		</tr>
+
+		
+	</tbody>
+</table>
+
+
+<h2>Talsystemer</h2>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Konvertering</th>
+			<th>Beskrivelse</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>bin.til.dec()</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>bin.til.hex()</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>dec.til.bin()</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>dec.til.hex()</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>hex.til.bin</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>hex.til.dec</td>
+			<td></td>
+		</tr>
+	</tbody>
+</table>
+
+
+	
+</div><!-- end: col-md-9 -->
+
+<footer>
+
+	<p onclick="parentNode.remove()"><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons licens" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>Indholdet på Vidas.dk er licenseret under <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> og er skrevet af Thomas Jensen. (<a href="../hvem_er_jeg.html" target="_blank">Læs mere</a>)</p>
+
+</footer>
+	
+	
+</div><!-- end: row-fluid -->
+
+</div> <!-- end: container-fluid -->
+
+
+<!-- SCRIPT SECTION -->
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script type="text/javascript" src="../js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="../js/jquery.tocify.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+
+<!-- PRETTYFY-->
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+
+
+<!-- HIGHLIGHT -->
+	<script src="../js/highlight.pack.js" type="text/javascript"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+
+<!-- MATHJAX -->
+<script type="text/javascript" 
+	src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  displayAlign: "left",
+  displayIndent: "0em"
+});
+</script>
+
+
+<!-- TOCIFY -->
+<script>
+	$(function() {var toc = $("#toc").tocify({ selectors: "h2, h3, h4" }).data("toc-tocify"); });
+</script>
+<!-- GOOGLE ANALYTICS -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-89933285-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</body>
+</html>

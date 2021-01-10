@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <title>Andengradsfunktion</title>
+  <link rel="icon" href="../images/favicon.png">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono|Ubuntu|Ubuntu+Condensed' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/jquery-ui.min.css">
+  <link rel="stylesheet" href="../css/jquery.tocify.css">
+  <link rel="stylesheet" href="../css/style_new.css" />
+<!-- Scripts in bottom to speed up pageload-->
+ 
+
+</head>
+<body>
+	
+	
+<div class="container-fluid">
+
+<div class="row-fluid">
+	
+<div class="col-xs-3">
+	
+	<nav>
+		
+		<div id="toc">
+		
+			<div id="toc_headline"></div>
+		
+		</div>
+		
+	</nav>
+
+</div><!-- Start slut 1. kolonne - TOC -->
+	
+<div class="col-xs-9">
+	
+<h1>Andengradsligningen</h1>
+
+
+<figure id="">
+
+	<img class="p60" src="images/funktioner_andengradsligning_arbejdstegning.svg" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Andengradsligningens normalform er:</p>
+
+	<div class="latex">$$ y = ax^2 + bx +c $$</div>
+
+<p>For at løse andengradsliningen anvendes følgende formel </p>
+
+	<div class="latex">$$ x= \frac{-b \pm \sqrt D}{2a}, ~~ hvor~ D = b^2-4ac$$</div>
+	
+<!--
+<p>Eller skrevet på en anden måde:</p>
+
+<div class="latex">$$ x_1 = \frac{-b - \sqrt D}{2a}  ~~~~~~~~~~~~~~~~~~~~~~~~  x_2 = \frac{-b + \sqrt D}{2a} $$</div>
+-->
+
+<p>Diskriminanten (<span class="math">\( D \)</span>) beskriver også antallet af rødder andengradsligning har. Altså hvor ligningen giver nul (<span class="math">\( ax^2 + bx +c = 0 \)</span>)</p>
+
+<figure id="">
+
+	<img class="p90" src="images/funktioner_andengradsligning_diskriminanten_forskelle.svg" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Derudover skal vi være opmærksom på fortegnet for <span class="math">\( a \)</span>. Hvis <span class="math">\( a \)</span> er positiv vender parablens gafler opad og hvis <span class="math">\( a \)</span> er negativ vender de nedad.</p>
+
+<figure id="">
+
+	<img class="p60" src="images/funktioner_andengradsligning_a_forskelle.svg" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>For at finde parablens toppunkt anvendes følgende formel</p>
+
+	<div class="latex">$$ TP = \left( \frac{-b}{2a} , \frac{-D}{4a} \right) $$</div>
+<h2>Kvadratsætningerne</h2>
+
+<p>Før vi går igang med at arbejde med udredningen af formlerne for andengradsliningen skal vi have et overblik over kvadratsætningerne.</p>
+
+<p>Sætning 1:</p>
+
+	<div class="latex">$$ (a+b)^2 = a^2+b^2+2ab $$</div>
+	
+	<blockquote>
+		<p>Når det er en plus parentes er det:</p>
+	
+		<ol class="">
+			<li>Det første led i anden plus det andet led i anden </li>
+			<li><b>plus</b></li>
+			<li>det dobbelte produkt af ledene</li>
+		</ol>
+	</blockquote>
+
+<p>Sætning 2:</p>
+
+	<div class="latex">$$ (a-b)^2 = a^2+b^2-2ab $$</div>
+	
+	<blockquote>
+		<p>Når det er en minus parentes er det:</p>
+		
+		<ol class="">
+			<li>Det første led i anden plus det andet led i anden </li>
+			<li><b>minus</b></li>
+			<li>det dobbelte produkt af ledene</li>
+		</ol>
+	</blockquote>
+
+<p>Sætning 3:</p>
+
+
+	<div class="latex">$$ (a+b)(a-b) = a^2 - b^2 $$</div>
+	
+	<blockquote>
+		<p>Når det er en plus og en minus parentes er det:</p>
+		
+		<ol class="">
+			<li>Det første led i anden minus det andet led i anden </li>
+		</ol>
+	</blockquote>
+	
+<details>
+
+	<summary>Eksempler med kvadratsætninger</summary>
+
+	<p>Plus parantes</p>
+	
+	<p><span class="math">\( (2x+4)^2 = (2x)^2 + (4)^2 + 2 \cdot (2x \cdot 4) = 4x^2 + 16 + 16x\)</span></p>
+	
+	<p>Minus parantes</p>
+	
+	<p><span class="math">\( (2x-4)^2 = (2x)^2 + (4)^2 - 2 \cdot (2x \cdot 4) = 4x^2 + 16 - 16x \)</span></p>
+	
+	<p>Plus og minus parantes</p>
+	
+	<p><span class="math">\( (2x+4) \cdot (2x-4) = (2x)^2 - (4)^2 = 4x^2 - 16 \)</span></p>
+
+</details>
+
+
+<p><span class="afsnit">Udregning af kvadratsætninger</span><p>
+
+
+<p>Sætning 1:</p>
+
+	<div class="latex">$$ (a+b)^2 =(a+b) \cdot (a+b) = a^2 + ab +ab+b^2 = a^2+2ab+b^2 = a^2+b^2+2ab $$</div>
+
+
+<p>Sætning 2:</p>
+
+	<div class="latex">$$ (a-b)^2 =(a-b) \cdot (a-b) = a^2 - ab - ab + b^2 = a^2-2ab+b^2 = a^2+b^2-2ab $$</div>
+
+<p>Sætning 3:</p>
+
+	<div class="latex">$$ (a+b) \cdot (a-b) = a^2 - ab + ab - b^2 = a^2 - b^2 $$</div>
+
+<h2>Bevis andengradsligningen</h2>
+
+<p>Vi skriver normalformen for andengradsligningen:</p>
+
+	<div class="latex">$$ ax^2 + bx +c = 0$$</div>
+
+<p>Gang med <span class="math">\( 4a \)</span> på begge sider (i alle ledene)</p>
+
+	<div class="latex">$$ 4a^2x^2 + 4abx + 4ac = 0$$</div>
+
+
+<p>Læg diskriminanten <span class="math">\( D = b^2-4ac \)</span> til på begge sider</p>
+
+	<div class="latex">$$ 4a^2x^2 + 4abx + 4ac + b^2 - 4ac= D$$</div>
+
+<p>Reducer den venstre side</p>
+
+	<div class="latex">$$ 4a^2x^2 + 4abx + b^2= D$$</div>
+
+<p>For at komme videre skal vi lave en omskrivning af udtrykket</p>
+
+	<div class="latex">$$ (2ax)^2 + 2 \cdot (2ax) \cdot b + b^2 = D $$</div>
+
+<p>For at få et overblik erstatter vi <span class="math">\( 2ax \)</span> med <span class="math">\( \alpha \)</span></p>
+
+	<div class="latex">$$ \alpha^2 + 2 \cdot {\alpha} \cdot b + b^2 = D $$</div>
+	
+<p>For at "opdage" tricket ændrer vi på rækkefølgen af ledene:</p>
+
+	<div class="latex">$$ \alpha^2  + b^2 + 2 \cdot {\alpha} \cdot b= D $$</div>
+	
+<p>Her opdager vi at vi, at det er det samme som i kvadratsætning 1:</p>	
+	
+	<blockquote>
+		<p>Når det er en plus parentes er det:</p>
+	
+		<ol class="">
+			<li>Det første led i anden plus det andet led i anden </li>
+			<li><b>plus</b></li>
+			<li>det dobbelte produkt af ledene</li>
+		</ol>
+	</blockquote>	
+
+<p>Vi kan altså omskrive det ovenstående ved hjælp af kvadratsætning 1</p>
+
+	<div class="latex">$$ (\alpha + b)^2 = D $$</div>
+
+
+<p>Vi erstatter <span class="math">\( \alpha \)</span> med det oprindelige udtryk (<span class="math">\( 2ax \)</span>)</p>
+
+	<div class="latex">$$ (2ax + b)^2 = D $$</div>
+<p>Vi kvadrerer på begge sider. Vi skal huske at der er både en positiv og en negativ værdi når vi kvadrerer, da både <span class="math">\( 3^2 \)</span> og <span class="math">\( (-3)^2 \)</span> er lig med <span class="math">\( 9 \)</span>.</p>
+
+	<div class="latex">$$ 2ax + b = \pm \sqrt D $$</div>
+
+<p>Herefter isoleres x</p>
+
+	<div class="latex">$$ 2ax= -b \pm \sqrt D 
+	
+	\\ \Updownarrow \\
+	
+	 x= \frac {-b \pm \sqrt D}{2a} $$</div>
+
+<h2>Bevis toppunktsformel</h2>
+
+<p>For at finde toppunktet skal vi anvende en matematisk viden, som man ikke anvender på C-niveauet, nemlig differentialregning. Kort fortalt anvender man differentiering til at beskrive hældningen i et givent punkt i en kontinuerlig funktioner. I sammenhæng med toppunktet i en andengradsligning giver det mening, da tangentens hældning i toppunktet er <span class="math">\( 0 \)</span> både for <span class="math">\( a>0 \)</span> og <span class="math">\( a<0 \)</span>.</p>
+
+<figure id="">
+
+	<img class="p50" src="images/funktioner_andengradsligning_tp_tangent.svg" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Den differentierede funktion af <span class="math">\( f(x) \)</span> kaldes for <span class="math">\( f'(x) \)</span> - "f mærke af x". Læg mærke til at <span class="math">\( c \)</span>-leddet forsvinder i den differentierede funktion. Vi kan altså ikke gå fra <span class="math">\( f'(x) \)</span> til <span class="math">\( f(x) \)</span> igen.</p>
+
+	<div class="latex">$$ f(x) = ax^2 + bx + c ~~~~ \Rightarrow ~~~~ f'(x) = 2ax + b $$</div>
+
+<p>Da vi ved at den differentierede værdi i toppunktet er <span class="math">\( 0 \)</span>, kan vi altså lave følgende udsagn:</p>
+
+	<div class="latex">$$ 2ax + b = 0 $$</div>
+
+
+<p>Vi isolerer <span class="math">\( x \)</span></p>
+
+	<div class="latex">$$ x = \frac{-b}{2a} $$</div>
+
+
+	
+<p>Da vi nu kender <span class="math">\( x \)</span>, kan vi indsætte denne værdi i den oprindelige ligning:</p>
+
+	<div class="latex">$$ y= a \cdot \left( \frac{-b}{2a} \right)^2 + b \cdot \frac{-b}{2a} + c  $$</div>
+
+
+
+<p>Vi kvadrerer den første parantes </p>
+
+	<div class="latex">$$ y = a \cdot \left( \frac{b^2}{4a^2} \right) + b \cdot \frac{-b}{2a} + c$$</div>
+	
+<p>Vi ganger ind i brøker og ændrer fortegn </p>
+
+	<div class="latex">$$ y = \frac{ab^2}{4a^2} + \frac{-b^2}{2a} + c$$</div>
+
+
+<p>Vi forkorter</p>
+
+	<div class="latex">$$ y = \frac{b^2}{4a} - \frac{b^2}{2a} + c$$</div>
+
+<p>Vi giver alle ledene fællesnævneren <span class="math">\( 4a \)</span>:</p>
+
+	<div class="latex">$$ y = \frac{b^2}{4a} - \frac{2 \cdot b^2}{2 \cdot 2a} + \frac{4a \cdot c}{4a} \\ \Updownarrow \\ y = \frac{b^2}{4a} - \frac{2b^2}{4a} + \frac{4ac}{4a} $$</div>
+
+	
+<p>Vi samler på en brøkstreg</p>
+
+	<div class="latex">$$ y = \frac{b^2 - 2b^2 + 4ac}{4a} $$</div>
+	
+<p>Forkorter</p>	
+
+	<div class="latex">$$ y = \frac{-b^2 + 4ac}{4a} $$</div>
+	
+<p>Vi lægger mærke til at tælleren (<span class="math">\( -b^2+4ac \)</span>) er det samme som <span class="math">-D</span></p>
+
+	<div class="latex">$$ y = \frac{-D}{4a} $$</div>
+
+<p>Hermed har vi både <span class="math">\( x \)</span> og <span class="math">\( y \)</span> værdien for toppunktet:</p>
+
+	<div class="latex">$$ TP = \left( \frac{-b}{2a} , \frac{-D}{4a} \right) $$</div>
+
+<h2>Konstruktion af andengradsfunktioner</h2>
+
+<p>Man kan konstruere en andengradsfunktion ved hjælp af følgende formel:</p>
+
+<div class="latex">$$ y = a(x-x_1)(x-x_2) $$</div>
+
+<p>Hvor det gælder at:</p>
+
+<div class="latex">$$ D > 0 : x_1 = \frac{ -b + \sqrt{D} }{ 2a } ~~~ og  ~~~ x_2 = \frac{ -b - \sqrt{D} }{ 2a }$$</div>
+
+<p>Måden man beviser det på er ved at regne videre</p>
+
+<div class="latex">$$ y = a \cdot (x-x_1) \cdot (x-x_2) 
+
+\\ \Updownarrow \\
+
+y = a \cdot (x^2 - x_1 \cdot x - x_2 \cdot x + x_1 \cdot x_2)
+
+$$</div>
+
+<p>Her opdager vi at de to midterste led begge bliver ganget med <span class="math">\( x \)</span>, hvilket vi udnytter, ved at sætte <span class="math">\( x \)</span> udenfor parantes. Læg mærke til at <span class="math">\( x_2 \) </span>skifter fortegn. Det skyldes at det er en minus parantes.</p>
+
+<div class="latex">$$ y = a \cdot (x^2 - (x_1 + x_2) \cdot x + x_1 \cdot x_2) $$</div>
+
+
+
+<p>Nu kan vi ikke komme længere med det ovenstående, men vi ved noget om <span class="math">\( x_1 \)</span> og <span class="math">\( x_2 \)</span> da det er nulpunkter. Vi kan altså opstille følgende:</p>
+
+<div class="latex">$$ x_1 + x_2 = \frac{ -b + \sqrt{D} }{ 2a } + \frac{ -b - \sqrt{D} }{ 2a } 
+
+\\ \Updownarrow \\
+
+x_1 + x_2 = \frac{ -b + \sqrt{D} -b - \sqrt{D} }{ 2a } 
+
+\\ \Updownarrow \\
+
+x_1 + x_2 = \frac{ -b - b }{ 2a }
+
+\\ \Updownarrow \\
+
+x_1 + x_2 = \frac{ -2b }{ 2a }
+
+\\ \Updownarrow \\
+
+x_1 + x_2 = \frac{ -b }{ a }
+
+
+$$</div>
+
+<p>Og vi kan opstille følgende</p>
+
+<div class="latex">$$ x_1 \cdot x_2 = \frac{ -b + \sqrt{D} }{ 2a } \cdot \frac{ -b - \sqrt{D} }{ 2a } 
+
+\\ \Updownarrow \\
+
+x_1 \cdot x_2 = \frac{ (-b + \sqrt{D})\cdot ( -b - \sqrt{D}) }{ 4a^2 }
+
+$$</div>
+
+<p>Ved hjælp af kvadratsætning 3 ovenfor kan det omskrives til:</p>
+
+<div class="latex">$$ x_1 \cdot x_2 = \frac {(-b)^2 - ( \sqrt{D})^2} {4a^2}
+
+\\ \Updownarrow \\
+
+x_1 \cdot x_2 = \frac {b^2 - D} {4a^2}
+
+\\ \Updownarrow \\
+
+x_1 \cdot x_2 = \frac {b^2 - (b^2 - 4ac)} {4a^2}
+
+\\ \Updownarrow \\
+
+x_1 \cdot x_2 = \frac {b^2 - b^2 + 4ac} {4a^2}
+
+\\ \Updownarrow \\
+
+
+x_1 \cdot x_2 = \frac {4ac} {4a^2}
+
+\\ \Updownarrow \\
+
+x_1 \cdot x_2 = \frac { c} {a}
+
+$$</div>
+
+<p>Lad os nu gå tilbage:</p>
+
+<div class="latex">$$y = a \cdot (x^2 - (x_1 + x_2) \cdot x + x_1 \cdot x_2)
+
+ \\ \Updownarrow \\
+
+y = a \cdot (x^2 - (\frac{ -b }{ a }) \cdot x + \frac { c} {a})
+
+\\ \Updownarrow \\
+
+y = a \cdot x^2 - a \cdot \frac{ -b }{ a } \cdot x + a \cdot \frac { c} {a}
+
+\\ \Updownarrow \\
+
+
+y = ax^2 + bx + c
+
+$$</div>
+
+<p>Beviset er hermed gennemført.</p>
+
+<!--
+<p>Hvis tallene <span class="math">\( \alpha \)</span> og <span class="math">\( \beta \)</span> er rødder i andengradfunktionen <span class="math">\(y = ax^2 + bx +c \)</span> gælder der:</p>
+
+<p>1. <span class="math">\( y=a(x- \alpha)(y-\beta) \)</span></p>
+
+<p>2. <span class="math">\( \alpha+\beta = \frac{ -b }{ a } \)</span> og <span class="math">\( \alpha \cdot \beta = \frac{ c }{ a } \)</span> </p>
+
+
+<h3>Bevis</h3>
+
+<p>Lad <span class="math">\( \alpha \)</span> og <span class="math">\( \beta \)</span> være andengradsfunktionens skæringer med <span class="inl_cmd">x-aksen</span>:</p>
+
+<div class="latex">$$ \alpha = \frac {-b + \sqrt D}{2a} $$</div>
+
+<div class="latex">$$ \beta= \frac {-b - \sqrt D}{2a} $$</div>
+
+<p>Ud fra det finder vi:</p>
+
+<p>1)</p>
+
+<div class="latex">$$ \alpha \cdot \beta = \frac {-b + \sqrt D}{2a} \cdot \frac {-b - \sqrt D}{2a} = \frac{ -2b }{ 2a } = \frac{ -b }{ a }$$</div>
+
+<p>2)</p>
+
+<div class="latex">$$ \alpha + \beta = \frac {-b + \sqrt D}{2a} + \frac {-b - \sqrt D}{2a} = \frac{ b^2 - D}{ 4a^2 } = \frac{ b^2 -(b^2 -4ac) }{ 4a^2 } = \frac{ 4ac }{ 4a^2 } = \frac{ c }{ a }$$</div>
+
+<p>Vi omskriver normalformen:</p>
+
+<div class="latex">$$ y = ax^2 + bx + c  $$</div>
+
+<p>Sæt <span class="math">\( a \)</span> udenfor parantesen</p>
+
+<div class="latex">$$ y= a \left(x^2+ \frac{ b }{ a }x + \frac{ c }{ a } \right) $$</div>
+
+<p>Erstat 2. og 3. led med <span class="math">\( \alpha \)</span> og <span class="math">\( \beta \)</span>:</p>
+
+<div class="latex">$$ y=a(x^2-(\alpha + \beta)x+\alpha \cdot \beta) $$</div>
+
+<p>Anvend kvadratsætning 2 der siger at <span class="math">\( (a-b)\cdot(a-b)= a^2 - 2ab + b^2\)</span>:</p>
+
+<div class="latex">$$ y = a(x-\alpha)(x-\beta) $$</div>
+-->
+
+
+	
+</div><!-- end: col-md-9 -->
+
+<footer>
+
+	<p onclick="parentNode.remove()"><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons licens" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>Indholdet på Vidas.dk er licenseret under <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> og er skrevet af Thomas Jensen. (<a href="../hvem_er_jeg.html" target="_blank">Læs mere</a>)</p>
+
+</footer>
+	
+	
+</div><!-- end: row-fluid -->
+
+</div> <!-- end: container-fluid -->
+
+
+<!-- SCRIPT SECTION -->
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script type="text/javascript" src="../js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="../js/jquery.tocify.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+
+<!-- PRETTYFY-->
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+
+
+<!-- HIGHLIGHT -->
+	<script src="../js/highlight.pack.js" type="text/javascript"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+
+<!-- MATHJAX -->
+<script type="text/javascript" 
+	src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  displayAlign: "left",
+  displayIndent: "0em"
+});
+</script>
+
+
+<!-- TOCIFY -->
+<script>
+	$(function() {var toc = $("#toc").tocify({ selectors: "h2, h3, h4" }).data("toc-tocify"); });
+</script>
+<!-- GOOGLE ANALYTICS -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-89933285-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</body>
+</html>

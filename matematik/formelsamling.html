@@ -1,0 +1,1486 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <title>Formelsamling</title>
+  <link rel="icon" href="../images/favicon.png">
+  <link rel="icon" href="../images/favicon.png">
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono|Ubuntu|Ubuntu+Condensed' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/jquery-ui.min.css">
+  <link rel="stylesheet" href="../css/jquery.tocify.css">
+  <link rel="stylesheet" href="../css/style_new.css" />
+<!-- Scripts in bottom to speed up pageload-->
+ 
+
+</head>
+<body>
+	
+	
+<div class="container-fluid">
+
+<div class="row-fluid">
+	
+<div class="col-xs-3">
+	
+	<nav>
+		
+		<div id="toc">
+		
+			<div id="toc_headline"></div>
+		
+		</div>
+		
+	</nav>
+
+</div><!-- Start slut 1. kolonne - TOC -->
+	
+<div class="col-xs-9">
+	
+<h1>Formelsamling</h1>
+
+<h2>Regneregler</h2>
+
+	<div class="latex">$$ a+b=b+a $$</div>
+	<div class="latex">$$ a-b \neq b-a $$</div>
+	<div class="latex">$$ a \cdot b = b \cdot a $$</div>
+	<div class="latex">$$ \frac{a}{b} \neq \frac{b}{a} $$</div>
+	
+<p>Man siger at <span class="math">\( + \)</span> og <span class="math">\( \cdot \)</span> er <span class="inl_cmd">kommunikative</span> da rækkefølgen er uden betydning. </p>
+
+<p>Man kan omskrive negative tal og brøker, så man kan arbejde kommunikativt med dem.</p>	
+
+	<div class="latex">$$ a - b = a + ^-b $$</div>
+
+	<div class="latex">$$ \frac{a}{b} = a \cdot \frac{1}{b} $$</div>
+	
+<h3>Matematiske sætninger</h3>
+
+<p>For at kunne snakke om matematik anvender vi et fagsprog, hvor vi anvender begreber som <span class="inl_cmd">led</span> og <span class="inl_cmd">sætning</span>. Led er adskilt af <span class="math">\( + \)</span> eller <span class="math">\( - \)</span> og en sætning opdeles i led. Lad os kigge på nedestående matematiske udtryk:</p> 
+
+<div class="latex">$$ \overbrace{ \underbrace{ax}_\text{1. led} + \underbrace{bx}_\text{2. led} - \underbrace{3(a+x)}_\text{3. led} }^\text{Sætning} $$</div>
+
+
+
+<p>Denne sætning består af 3 led. Positive led kan flyttes rundt efter behov, hvilket kræver en omskrivning af de negative led:</p>
+
+<div class="latex">$$ ax+bx-3(a+x) = ax+bx+ {^-}3(a+x)  $$</div>
+
+
+
+<h3>Brøkregneregler</h3>
+
+<p>Brøker tilhører talmængden <span class="math">\( \mathbb{Q} \)</span>. For at kunne beskrive brøker anvender vi begreberne tæller og nævner:</p>
+
+	<div class="latex">$$ \frac{tæller}{nævner} $$</div>
+
+<h4>Addition og substraktion</h4>
+
+<p>For at kunne lægge brøker sammen skal de have samme nævner</p>
+
+	<div class="latex">$$ \frac{a}{c} + \frac{b}{c} = \frac{a+b}{c} $$</div>
+
+	<div class="latex">$$ \frac{a}{c} - \frac{b}{c} = \frac{a-b}{c} $$</div>
+	
+<h4>Multiplikation</h4>
+
+	<div class="latex">$$ a \cdot \frac{c}{d} = \frac{a \cdot c}{d} $$</div>
+	
+	<div class="latex">$$ \frac{ a }{ b } \cdot \frac{c}{d} = \frac{a \cdot c}{b \cdot d} $$</div>
+	
+<h4>Division</h4>
+
+<p>Når man dividerer med en brøk så ganger man med den <span class="inl_cmd">reciprokke</span> (modsatte) værdi</p>
+
+	<div class="latex">$$ a : \frac{b}{c} = a \cdot \frac{c}{b} =  \frac{a \cdot c}{b} $$</div>
+
+	<div class="latex">$$ \frac{a}{b} : c = \frac{a}{b} : \frac{c}{1} = \frac{a}{b} \cdot \frac{1}{c} =  \frac{a}{b \cdot c} $$</div>
+	
+	<div class="latex">$$ \frac{a}{b} : \frac{c}{d} = \frac{a}{b} \cdot \frac{d}{c} $$</div>
+
+<details>
+
+	<summary>Eksempler med brøker</summary>
+
+	<p>Addition</p>
+	
+		<div class="latex">$$ \frac{ 2 }{ 4 } + \frac{ 3 }{ 4 } = \frac{ 5 }{ 4 } = 1 \frac{ 1 }{ 4 }$$</div>
+	
+		<div class="latex">$$ \frac{ 2 }{ 3 } + \frac{ 3 }{ 4 } = \frac{ 2 \cdot 4 }{ 3 \cdot 4 } + \frac{ 3 \cdot 3 }{ 4 \cdot 3 } = \frac{ 8 }{ 12 } + \frac{ 9 }{ 12 } = \frac{ 17 }{ 12 } = 1 \frac{ 5 }{ 12 }$$</div>
+	
+	<p>Substraktion</p>
+
+		<div class="latex">$$ \frac{ 3 }{ 4 } - \frac{ 2 }{ 4 } = \frac{ 1 }{ 4 } $$</div>
+		
+	<p>Multiplikation</p>
+	
+		<div class="latex">$$ \frac{ 2 }{ 3 } \cdot \frac{ 4 }{ 5 } = \frac{ 8 }{ 15 }$$</div>
+		
+	<p>Division</p>
+
+		<div class="latex">$$ 2 : \frac{ 3 }{ 4 } = 2 \cdot \frac{ 4 }{ 3 } = \frac{ 8 }{ 3 } = 2 \frac{ 2 }{ 3 }$$</div>
+		
+		<div class="latex">$$ \frac{ 2 }{ 3 } : \frac{ 4 }{ 5 } = \frac{ 2 }{ 3 } \cdot \frac{ 5 }{ 4 } = \frac{ 2 \cdot 5 }{ 3 \cdot 4 } = \frac{ 10 }{ 12 } = \frac{ 2 \cdot 5 }{ 2 \cdot 6 } = \frac{ 5 }{ 6 }$$</div>
+	
+</details>
+
+
+<h3>Faktorering</h3>
+
+<p>Tal der ganges med hinanden kaldes faktorer. </p>
+
+<p>I matematik kan man have fordel af at faktorere tal ved hjælp af primtalsfaktorer. Primtal er tal, hvor kun en og tallet selv går op i tallet. Herunder er de første 17 primtal:</p>
+
+<div class="latex">$$ 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, ... $$</div>
+
+<p>Se nedestående eksempel:</p>
+
+<div class="latex">$$ 30 = 2 \cdot 3 \cdot 5 $$</div>
+
+<p>Det kan f.eks. anvendes til at forkorte brøker.</p>
+
+<div class="latex">$$\require{cancel} \frac{ 30 }{ 75 } = \frac{ 2 \cdot 3 \cdot 5  }{ 3 \cdot 5 \cdot 5 } = \frac{ 2 \cdot \cancel{3} \cdot \cancel{5}  }{ \cancel{3} \cdot \cancel{5} \cdot 5 } = \frac{ 2 }{ 5 }$$</div>
+	
+<h3>Numeriske værdier</h3>
+
+<p>For at sikre et tal kommer ud som en positiv værdi anvender man nummeriske værdier:</p>
+
+<div class="latex">$$ \left| \pm a \right| = a $$</div>
+
+<h3>Kvadratsætningerne</h3>
+
+<p>Sætning 1:</p>
+
+	<div class="latex">$$ (a+b)^2 = a^2+b^2+2ab $$</div>
+	
+	<blockquote>
+		<p>Når det er en plus parentes er det:</p>
+	
+		<ol class="">
+			<li>Det første led i anden plus det andet led i anden </li>
+			<li><b>plus</b></li>
+			<li>det dobbelte produkt af ledene</li>
+		</ol>
+	</blockquote>
+	
+<p>Sætning 2:</p>
+
+	<div class="latex">$$ (a-b)^2 = a^2+b^2-2ab $$</div>
+	
+	<blockquote>
+		<p>Når det er en minus parentes er det:</p>
+		
+		<ol class="">
+			<li>Det første led i anden plus det andet led i anden </li>
+			<li><b>minus</b></li>
+			<li>det dobbelte produkt af ledene</li>
+		</ol>
+	</blockquote>
+	
+
+
+<p>Sætning 3:</p>
+
+	<div class="latex">$$ (a+b)(a-b) = a^2 - b^2 $$</div>
+	
+	<blockquote>
+		<p>Når det er en plus og en minus parentes er det:</p>
+		
+		<ol class="">
+			<li>Det første led i anden minus det andet led i anden </li>
+		</ol>
+	</blockquote>
+
+<details>
+
+	<summary>Eksempler med kvadratsætninger</summary>
+
+	<p>Plus parantes</p>
+	
+	<p><span class="math">\( (2x+4)^2 = (2x)^2 + (4)^2 + 2 \cdot (2x \cdot 4) = 4x^2 + 16 + 16x\)</span></p>
+	
+	<p>Minus parantes</p>
+	
+	<p><span class="math">\( (2x-4)^2 = (2x)^2 + (4)^2 - 2 \cdot (2x \cdot 4) = 4x^2 + 16 - 16x \)</span></p>
+	
+	<p>Plus og minus parantes</p>
+	
+	<p><span class="math">\( (2x+4) \cdot (2x-4) = (2x)^2 - (4)^2 = 4x^2 - 16 \)</span></p>
+
+</details>
+
+<h3>Potensregler</h3>
+
+<h4>Definitioner</h4>
+
+<p>Definition 1</p>
+
+	<div class="latex">$$ a^n = \overbrace{a \cdot a \cdot a \cdot .... \cdot a}^{n ~ gange} $$</div>
+
+<p>Definition 2</p>
+	
+	<div class="latex">$$ a = \sqrt [n] {a^n} $$</div>
+
+<p>Definition 3</p>
+
+	<div class="latex">$$ a^{-n} = \frac{1}{a^n} $$</div>
+
+<p>Definition 4</p>
+
+	<div class="latex">$$ a^0 = 1 $$</div>
+
+<h4>Benævnelser</h4>
+	
+<p>Benævnelsen for tallene <span class="math">\( a^x = y \)</span> er:</p>	
+
+<ul class="none">
+	<li><span class="math">\( a \)</span> = rodtallet (basen)</li>
+	<li><span class="math">\( x \)</span> = exponenten</li>
+	<li><span class="math">\( y \)</span> = potensen</li>
+</ul>
+	
+	
+
+<h4>Regneregler</h4>
+
+	<div class="latex">$$ 1)~~a^n \cdot a^m = a^{n + m} $$</div>
+	
+	<div class="latex">$$ 2)~~{(a^n)}^m = a^{n \cdot m} $$</div>
+
+	<div class="latex">$$ 3)~~(a \cdot b)^n = a^n \cdot b^n  $$</div>
+	
+	<div class="latex">$$ 4)~~\frac{a^n}{a^m} = a^{n - m}$$</div>
+
+	<div class="latex">$$ 5)~~\frac{a^n}{b^n} = \left( \frac{a}{b} \right)^n $$</div>
+
+	<div class="latex">$$ 6)~~\sqrt [n] a = a^{\frac{1}{n}} $$</div>
+	
+	<div class="latex">$$ 7)~~\sqrt [n] {a^m} = a^{\frac{m}{n}}$$</div>
+
+<details>
+
+	<summary>Eksempler med potensregneregler</summary>
+
+	<p>Regneregel 1</p>
+	
+	<p><span class="math">\( 2^3 \cdot 2^4 = 2^{3+4} = 2^7 \)</span></p>
+	
+	<p>Regneregel 2</p>
+	
+	<p><span class="math">\( (2^3)^4 = 2^{3 \cdot 4} = 2^{12} \)</span></p>
+	
+	<p>Regneregel 3</p>
+	
+	<p><span class="math">\( (2 \cdot 3)^4 = 2^4 \cdot 3^4 &larr; regneregel 1 \)</span></p>
+
+	<p>Regneregel 4</p>
+	
+	<p><span class="math">\( \frac{ 2^3 }{ 2^4 } = 2^{3-4} = 2^{-1} \)</span></p>
+
+	<p>Regneregel 5</p>
+	
+	<p><span class="math">\( \frac{ 2^4 }{ 3^4 } = \left( \frac{ 2 }{ 3 }\right)^4 \)</span></p>
+
+	<p>Regneregel 6</p>
+	
+	<p><span class="math">\( \sqrt[3]{2} = 2^{\frac{ 1 }{ 3 }} \)</span></p>
+
+	<p>Regneregel 7</p>
+	
+	<p><span class="math">\( \sqrt[3]{2^4} = 2^{\frac{ 4 }{ 3 }} \)</span></p>
+
+
+</details>
+
+	
+<h3>Logaritmer</h3>
+
+<h4>Definitioner</h4>
+
+<p>Logaritmefunktionen <span class="math">\( log_a(x) \)</span> er defineret på følgende måde, hvor <span class="math">\( a \)</span> er grundtallet:</p>
+
+<p>Definition 1</p>
+
+	<div class="latex">$$ log_a(a^x) = x $$</div>
+
+<p>Definition 2</p>
+
+
+	<div class="latex">$$ log_a(x) = y \Leftrightarrow a^y = x $$</div>
+
+<p>Definition 3</p>
+
+	<div class="latex">$$ log_a(1) = 0 $$</div>
+
+<p>Definition 4</p>
+
+	<div class="latex">$$ log_a(a) = 1 $$</div>
+	
+<h4>Den naturlige logaritme</h4>
+
+<p>Indenfor matematik anvender man ofte den naturlige logaritme hvor grundtallet er <span class="math">\( e \approx 2,718281828 \)</span>. Den kaldes også for <span class="inl_cmd">ln</span>, hvor det gælder at <span class="math">\( ln(e) = 1 \)</span></p>
+
+<p>Formlerne herunde er lavet med ln</p>
+
+
+<h4>Regneregler (omskrivninger)</h4>
+
+<p>De generelle regnereglerne for logaritmer er:</p>
+
+	<div class="latex">$$ for ~ a,b > 0 \wedge x \in \mathbb{R} $$</div>
+	
+<p>Ved alle de nedestående formler kan <span class="math">\( ln \)</span> erstattes med <span class="math">\( log \)</span>.</p>
+
+	<div class="latex">$$ 1)~~ln(a \cdot b) = ln(a) + ln(b) $$</div>
+
+	<div class="latex">$$ 2)~~ln(\frac{a}{b}) = ln(a) - ln(b) $$</div>
+
+	<div class="latex">$$ 3)~~ln(a^x) = x \cdot ln(a) $$</div>
+	
+<details>
+
+	<summary>Eksempler med logaritmer (omskrivninger)</summary>
+
+	<p>Regneregel 1</p>
+	
+	<p><span class="math">\( ln(3 \cdot 7) = ln(3) + ln(7) \)</span></p>
+	
+	<p>Regneregel 2</p>
+	
+	<p><span class="math">\( ln(\frac{3}{7}) = ln(3) - ln(7) \)</span></p>
+	
+	<p>Regneregel 3</p>
+	
+	<p><span class="math">\( ln(3^7) = 7 \cdot ln(3) \)</span></p>
+
+</details>
+
+<!--
+<p>Hvis man har behov for at omregne en logaritme fra en base til en anden anvendes følgende formel:</p>
+
+<p>4)</p>
+
+	<div class="latex">$$ log_a(x) = \frac{ log_b(x) }{ log_b(a)} $$</div>
+-->
+
+<h2>Ligningsløsning</h2>
+
+<p>Når man løser ligninger bruger man følgende fremgangsmåde</p>
+
+<ol class="">
+	<li>Reducer utrykket og sæt udenfor parantes (hvis det er smart)</li>
+	<li>Isoler den ubekendte</li>
+</ol>
+
+<p>Når man isolerer den ubekendte gælder der den regel, at der skal være "ligevægt" i ligningen. Det betyder at man skal gøre det samme på begge sider, f.eks:</p>
+
+<div class="latex">$$ 4x + 7 = 23 $$</div>
+
+<p>Først trækker vi <span class="math">\( 7 \)</span> fra på begge sider:</p>
+
+<div class="latex">$$ 4x + 7 - 7 = 23 - 7  ~~~~\Leftrightarrow~~~~ 4x = 16
+$$</div>
+
+<p>Herefter dividerer vi med <span class="math">\( 4 \)</span> på begge sider:</p>
+
+<div class="latex">$$ \frac{ 4x }{ 4 } = \frac{ 16 }{ 4 } ~~~~\Leftrightarrow~~~~ x = 4$$</div>
+
+<p>Her bliver det meget pindet ud, men man bør skrive det uden melemregningere, når det er simpel hovedregning (her noteret lodret: </p>
+
+<div class="latex">$$ 4x+7=23 \\ \Updownarrow \\ 4x = 16 \\ \Updownarrow \\ x=4$$</div>
+
+<p>Når man løser ligninger anvender man tegnene: </p>
+
+<ul class="none">
+	<li>ensbetydende:  <span class="math">\( \Leftrightarrow ~~ \Updownarrow \)</span> (biimplikation)</li>
+	<li>medfører: <span class="math">\( \Rightarrow  ~~ \Downarrow \)</span> implikation</li>
+</ul>
+
+<p>Forskellen mellem dem er følgende</p>
+
+<h3>Ensbetydende (bimplikation)</h3>
+
+<div class="latex">$$  \Leftrightarrow ~~~~ \Updownarrow  $$</div>
+
+<p>Man bruger enbestydende når udtrykkene på hver side  </p>
+
+<p>Lad os kigge på følgende eksempel på en ligningsløsning</p>
+
+<div class="latex">$$ 3x + 7 = 22 ~~~~\Leftrightarrow~~~~ 3x = 15 ~~~~\Leftrightarrow~~~~ x= 5 $$</div>
+
+<p>Her anvende vi ensbetydende, fordi de efterfølgende udtryk alle kommer fra det første. Det betyder også at vi kan sige nedestående fordi de kan afledes af hinanden:</p>
+
+<div class="latex">$$ 3x + 7 = 22 ~~~~\Leftrightarrow~~~~ x= 5 $$</div>
+
+<p>Sagt på en anden måde ... uanset om vi tager udtrykket til venstre eller til højre, så kan vi føre dem hen til det andet.</p>
+
+<h3>Medfører (implikation)</h3>
+
+<div class="latex">$$ \Rightarrow ~~~~ \Downarrow $$</div>
+
+<p>Nogle gange kan vi ikke gå begge veje. Det gælder f.eks. i følgende tilfælde:</p>
+
+<div class="latex">$$ x = 3 ~~~~\Rightarrow~~~~ x^2 = 9  $$</div>
+
+<p>Det er korrekt, at <span class="math">\( 3^2 = 9 \)</span>, men <span class="math">\( \sqrt{9} \)</span> kan være både <span class="math">\( 3 \)</span> og <span class="math">\( -3 \)</span>.</p>
+
+<h3>Skema</h3>
+
+<p>Hovedregel: Man skal gøre det samme på begge sider</p>
+<table>
+	<thead>
+		<tr>
+			<th>Hvad skal fjernes/tilføjes</th>
+			<th>Løsning</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Led</td>
+			<td>lægge til / trække fra</td>
+		</tr>
+		<tr>
+			<td>Faktorer</td>
+			<td>gange / dividere</td>
+		</tr>
+		<tr>
+			<td>Eksponenter</td>
+			<td>Logaritmer</td>
+		</tr>
+		<tr>
+			<td>Potenser</td>
+			<td>rødder</td>
+		</tr>
+		<tr>
+			<td>Parenteser</td>
+			<td>samler led</td>
+		</tr>
+		<tr>
+			<td>Ændre fortegn</td>
+			<td>gange med <span class="math">\( -1 \)</span></td>
+		</tr>
+	</tbody>
+</table>
+
+
+<details>
+
+	<summary>Praktiske eksempler</summary>
+
+	<span class="afsnit">Led</span>
+
+	<div class="latex">$$ x - 4 = 7 \\ \Updownarrow \\ x - 4 + 4 = 7 + 4 \\ \Updownarrow \\ x = 11 $$</div>
+
+	<span class="afsnit">Faktorering</span>
+	
+	<p>a)</p>
+
+	<div class="latex">$$ 3x = 21 \\ \Updownarrow \\ \frac 33 \cdot x = \frac{ 21 }{ 3 } \\ \Updownarrow \\ x = 7 $$</div>
+	
+	<p>b)</p>
+	
+	<div class="latex">$$ \frac{ 1 }{ 7 } x = 2 \\ \Updownarrow \\ 7 \cdot \frac{ 1 }{ 7 } x = 2  \cdot 7 \\ \Updownarrow \\ x = 14 $$</div>
+
+	<span class="afsnit">Eksponenter</span>
+
+	<div class="latex">$$ a^x = 3 \\ \Updownarrow \\ ln(a^x) = ln(3) \\ \Updownarrow \\ x \cdot ln(a) = ln(3) \\ \Updownarrow \\ x = \frac{ ln(3) }{ ln(a) } $$</div>
+
+	<span class="afsnit">Potenser</span>
+	
+	<p>a)</p>
+	
+	<div class="latex">$$ x^3 = 27 \\ \Updownarrow \\ \sqrt[3]{x^3} = \sqrt[3]{27} \\ \Updownarrow \\ x = 3 $$</div>
+	
+	<p>b)</p>
+	
+	<div class="latex">$$ \sqrt{x} = 4 \\ \Updownarrow \\ \sqrt{x}^2 = 4^2 \\ \Updownarrow \\ x = 16 $$</div>
+	
+	<span class="afsnit">Paranteser</span>
+	
+	<div class="latex">$$ \frac{ 4 }{ 2x - 1 } = 4 \\ \Updownarrow \\ (2x-1) \cdot \frac{ 4 }{ 2x-1 } = 4 \cdot (2x - 1) \\ \Updownarrow \\ 4 = 8x - 4 \\ \Updownarrow \\ 4 + 4 = 8x - 4 + 4 \\ \Updownarrow \\ 8 = 8x \\ \Updownarrow \\ 8 = x  $$</div>
+
+	<span class="afsnit">Ændre fortegn</span>
+
+	<div class="latex">$$ -x = 4 \\ \Updownarrow \\ -1 \cdot -x = 4 \cdot -1 \\ \Updownarrow \\ x = -4 $$</div>
+
+</details>
+
+
+<h2>Mængdelære</h2>
+
+<p>Lad os antage at vi har mængerne:</p>
+	
+<div class="latex">$$ A = \{1,2,3\} \\ B=\{2,3,4\} $$</div>
+
+<h3>Foreningsmængde</h3>
+
+<div class="latex">$$ A \cup B = \{1,2,3,4\}$$</div>
+
+<details>
+
+	<summary>Venn-diagram</summary>
+
+	<figure id="">
+	
+		<img class="p20" src="images/maengder_A_faelles_B.svg" alt="" title="" />
+	
+		<figcaption></figcaption>
+	
+	</figure>
+
+</details>
+
+<h3>Fællesmængde</h3>
+
+<div class="latex">$$ A \cap B = \{2,3\}$$</div>
+
+<details>
+
+	<summary>Venn-diagram</summary>
+
+	<figure id="">
+	
+		<img class="p20" src="images/maengder_A_forening_B.svg" alt="" title="" />
+	
+		<figcaption></figcaption>
+	
+	</figure>
+
+</details>
+
+<h3>Symetrisk differens</h3>
+
+<div class="latex">$$ A \Delta B = \{1,4\}$$</div>
+
+<details>
+
+	<summary>Venn-diagram</summary>
+
+	<figure id="">
+	
+		<img class="p20" src="images/maengder_A_sym_B.svg" alt="" title="" />
+	
+		<figcaption></figcaption>
+	
+	</figure>
+
+</details>
+
+<h3>Mængdedifferens</h3>
+
+<div class="latex">$$ A \backslash B = \{1\} $$</div>
+
+<div class="latex">$$ B \backslash A = \{4\} $$</div>
+
+<details>
+
+	<summary>Venn-diagram</summary>
+
+	<figure id="">
+	
+		<img class="p40" src="images/maengder_A_dif_B.svg" alt="" title="" />
+	
+		<figcaption></figcaption>
+	
+	</figure>
+
+</details>
+
+<h3>Komplementærmængde</h3>
+
+<p>Tal der ikke findes i mængden.</p>
+
+<div class="latex">$$ A^C = \{4\} $$</div>
+<div class="latex">$$ B^C = \{1\} $$</div>
+
+<details>
+
+	<summary>Venn-diagram</summary>
+
+	<figure id="">
+	
+		<img class="p40" src="images/maengder_A_komplementaer_B.svg" alt="" title="" />
+	
+		<figcaption></figcaption>
+	
+	</figure>
+
+</details>
+
+<h2>Talmængder</h2>
+
+<h3>Hele tal</h3>
+
+<p><span class="math">\( \mathbb{N} = \{1, 2, 3 ...\} \)</span></p>
+
+<p><span class="math">\( \mathbb{N_0} = \{0, 1, 2, 3 ...\} \)</span></p>
+
+<p><span class="math">\( \mathbb{Z} = \{...-2, -1, 0, 1, 2...\} \)</span></p>
+
+<h3>Rationelle og reelle tal</h3>
+
+<p>Rationel betyder: "styret af eller baseret på fornuft, logik og materiel virkelighed" (<a href="http://ordnet.dk/ddo/ordbog?query=rationel" target="_blank">DDO</a>). Kort fortalt - brøker.</p>
+
+<p>Der findes dog nogle tal som ikke kan skrives som brøker f.eks.: <span class="math">\( \pi \)</span> og <span class="math">\( \sqrt{2} \)</span>. Da de tal ikke kan skrive som brøker kalder man dem irrationelle tal - altså tal der ikke er styret af "fornuft, logik og materiel virkelighed". I daglig tale kaldes disse for de reelle tal.</p>
+
+
+<span class="afsnit">Rationelle tal</span>
+
+<p><span class="math">\( \mathbb{Q} = \ \left\{ \frac{ a }{ b } ~\middle| ~a,b \in \mathbb{Z} \wedge b \neq 0\right\} \)</span></p>
+
+<p>Den ovenstående matematisk sætning læses som følger: </p>
+
+<p>"Talmængden <span class="math">\( \mathbb{Q} \)</span> er brøker (<span class="math">\( \frac{ a }{ b } \)</span>), hvorom det gælder (<span class="math">\( \left.	\right| \)</span>), at a og b (<span class="math">\( a,b \)</span>) tilhører (<span class="math">\( \in \)</span>) talmængden <span class="math">\( \mathbb{Z} \)</span>, og at b skal være forskelligt fra 0 (<span class="math">\( b \neq 0 \)</span>)"</p>
+
+<span class="afsnit">Irationelle tal</span>
+
+<p>De tal som ikke er repræsenteret af <span class="math">\( \mathbb{N},\mathbb{N_0}, \mathbb{Z} \)</span> og <span class="math">\( \mathbb{Q} \)</span> kaldes for de irationelle tal. Talmængden har ikke sit eget symbol, men kan skrives som <span class="math">\( \mathbb{R} \)</span>\<span class="math">\( \mathbb{Q} \)</span>. Det læses som <span class="inl_cmd"> alle elementer i de relle tal uden elementerne i de rationelle tal</span>.</p>
+
+
+<span class="afsnit">Reelle tal</span>
+
+<p>De reelle tal er alle de tal der reelt findes. Dvs. alle de ovenstående talmængder og de irrationelle tal. De reelle tal angives med symbolet <span class="math">\( \mathbb{R} \)</span></p>
+
+
+
+<h3>Komplekse tal</h3>
+
+<p>Der findes dog endnu en talmængde nemlig de komplekse tal, som er opbygget af en reel og en imaginær del. Imaginær betyder "Findes kun i eller udspringer af en persons fantasi" (<a href="http://ordnet.dk/ddo/ordbog?query=imagin%C3%A6r" target="_blank">DDO</a> ). Den imaginære del er tallet, hvorom det gælder at <span class="math">\( i^2 = -1 \)</span>. Denne talmængde skrives med <span class="math">\( \mathbb{C} \)</span></p>
+
+
+<h2>Intervaller</h2>
+
+<p>Her er nogle eksempler på intervaller.</p>
+
+<p><span class="math">\( [ ~a~;~ b ~] \)</span> eller <span class="math">\( a \leq x \leq b \)</span></p>
+
+
+<figure id="">
+
+	<img class="p50" src="images/mat_interval_a_closed_b_closed.svg" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p><span class="math">\( ] ~a~; ~b~ ] \)</span> eller <span class="math">\( a < x \leq b \)</span></p>
+
+<figure id="">
+
+	<img class="p50" src="images/mat_interval_a_open_b_closed.svg" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p><span class="math">\( ] ~a~; ~b~ [ \)</span> eller <span class="math">\( a < x < b \)</span></p>
+
+<figure id="">
+
+	<img class="p50" src="images/mat_interval_a_open_b_open.svg" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p><span class="math">\( ] ~-\infty~ ; ~a~ ] \)</span> eller <span class="math">\( x \leq a \)</span></p>
+
+<figure id="">
+
+	<img class="p50" src="images/mat_interval_negative_infinity_a_closed.svg" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h2>Funktionsbegrebet</h2>
+
+<figure id="">
+
+	<img class="p70" src="images/funktioner_funktionsbegrebet_arbejdstegning.svg" alt="" title="" />
+
+	<figcaption>Funktionen <span class="inl_cmd"><i>f(x)</i></span></figcaption>
+
+</figure>
+
+<p>En funktion er defineret ved at der til hvert <span class="math">\( x \)</span> tilhører et, og kun et <span class="math">\( y \)</span>.</p>
+
+<h3>Koordinatsystemet</h3>
+
+<figure id="">
+
+	<img class="p40" src="images/funktioner_standard_koordinatsystem.svg" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+
+<h3>Funktionsværdi</h3>
+
+<p><span class="inl_cmd">Funktionsværdien</span>, <span class="math">\( f(x) = y \)</span>, er den værdi funktionen antager, når man anvender <span class="math">\( x \)</span> i funktionen.</p>
+
+<h3>Definitionsmængden (Dm)</h3>
+
+<p><span class="inl_cmd">Definitionsmængden</span> beskriver de værdier på <span class="inl_cmd">x-aksen</span>, hvor funktionen er gyldig. Her:</p>
+
+<p><span class="math">\( Dm(f) = ] ~a~;~d~ ] \)</span> &nbsp;&nbsp;&nbsp;&nbsp; eller &nbsp;&nbsp;&nbsp;&nbsp; <span class="math">\( Dm(f) = a < x \leq d \)</span> </p>
+
+<h3>Værdimængden (Vm)</h3>
+
+<p><span class="inl_cmd">Værdimængden</span> beskriver de værdier på <span class="inl_cmd">y-aksen</span>, som funktionen kan antage. Her: </p>
+
+<p><span class="math">\( Vm(f) = [ ~e~;~g~] \)</span> &nbsp;&nbsp;&nbsp;&nbsp; eller &nbsp;&nbsp;&nbsp;&nbsp; <span class="math">\( Vm(f) = e \leq y \leq g \)</span></p>
+
+<h3>Ekstrema</h3>
+
+<p>Ekstrama angiver de steder hvor funktionen har sine højeste og laveste værdier. Den højeste værdi kalder for <span class="inl_cmd">maximum</span> den laveste for <span class="inl_cmd">minimum</span>. Er der flere kaldes de for <span class="inl_cmd">ekstrema</span></p>
+
+<p>Den ovenstående funktion har ekstrema i x-værdierne <span class="math">\( b \)</span> og  <span class="math">\( c \)</span></p>
+
+<ul class="none">
+	<li>Højeste værdi i <span class="math">\( b \)</span></li>
+	<li>Laveste værdi i <span class="math">\( c \)</span></li>
+</ul>
+
+<p>Når en funktion har en absolut mindste eller største værdi (f.eks. en parabel), taler man om et "globalt ekstrema"</p>
+
+
+
+
+
+<h3>Monotoniforhold</h3>
+
+<p>For funktionen <span class="math">\( f \)</span> gælder følgende monotoniforhold</p>
+
+<ul class="none">
+	<li><span class="math">\( f \)</span> er aftagende/faldende for <span class="math">\( ]~a~;~e~] \)</span>.</li>
+	<li><span class="math">\( f \)</span> er tiltagende/voksende for <span class="math">\( [~e~;~c~] \)</span>.</li>
+	<li><span class="math">\( f \)</span> er aftagende/faldende for <span class="math">\( [~c~;~d~] \)</span>.</li>
+</ul>
+
+<h2>Funktionsanalyse</h2>
+
+<p>Når man laver en funktionsanalyse beskriver man en funktion ud fra 6 punkter:</p>
+
+<ol class="fat_li">
+	
+	<li>En graf af funktionen</li>
+	
+	<p>Tegn grafen i en graftegner så du kan se funktionen med du arbejder med den.</p>
+
+	<li>Definitionsmængde (<span class="inl_cmd">Dm</span>)</li>
+	
+	<p>Hvilke <span class="inl_cmd">x-værdier</span> kan anvendes</p>
+	
+	<li>Værdimængde (<span class="inl_cmd">Vm</span>)</li>
+	
+	<p>Hvilke <span class="inl_cmd">y-værdier</span> kan funktionen have</p>
+	
+	<li>Nulpunkter og fortegn</li>
+	
+	<p>Det man undersøger er, hvornår:</p>
+	
+	<ul class="none">
+		<li><span class="math">\( f(x) = 0 \)</span></li>
+		<li><span class="math">\( f(x) > 0 \)</span></li>
+		<li><span class="math">\( f(x) < 0 \)</span></li>
+	</ul>
+	<p></p>
+	
+	<li>Monotoniforhold</li>
+	
+	<p>Hvor er funktionen stigende og faldende</p>
+
+	<li>Ekstrema</li>
+	
+	<p>Hvor har funktionen sin største eller mindste værdi. Hvis en funktion har flere "toppe" eller "dale" kan man beskrive lokale ekstrema</p>
+	
+	
+
+	
+	
+</ol>
+
+
+<h2>Funktioner</h2>
+
+
+
+
+
+
+<h3>Linjen</h3>
+
+<p>Lineære funktioners normalform er:</p>
+<div class="latex">$$ y=ax+b $$</div>
+
+<figure id="">
+
+	<img class="p70" src="images/funktioner_lineaerfunktion_arbejdstegning.svg" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Man kan finde ligningen til den lineære funktionen ved hjælp af to punkter på linjen.</p>
+
+<div class="latex">$$ P=(x_1,y_1) ~~~~~~~~~~~~~~~~~~~~~~~~  Q=(x_2,y_2) $$</div>
+	
+<p>Formlerne for <span class="math">\( a \)</span> og <span class="math">\( b \)</span></p>
+
+<div class="latex">$$ a=\frac{y_2-y_1}{x_2-x_1} ~~~~~~~~~~~~~~~~~~~~~~~~ b= y_1 - ax_1$$</div>
+	
+<h3>Eksponentielle funktioner</h3>
+
+<p>Eksponentialfunktioner normalform er:</p>
+
+	<div class="latex">$$ y= b \cdot a^x, ~hvor~ b > 0, a > 0, a \neq 1 $$</div>
+
+<figure id="">
+
+	<img class="p60" src="images/funktioner_exponentialfunktion_arbejdstegning.svg" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p><span class="math">\( a \)</span> kaldes for <span class="inl_cmd">fremskrivningsfaktoren</span> og <span class="math">\( b \)</span> for <span class="inl_cmd">begyndelsesværdien</span>.</p>
+
+<p>Man kan finde ligningen til eksponentialfunktionen ved hjælp af to punkter.</p>
+
+	<div class="latex">$$ P=(x_1,y_1) ~~~~~~~~~~~~~~~~~~~~~~~~  Q=(x_2,y_2) $$</div>
+	
+<p>Formlerne for <span class="math">\( a \)</span> og <span class="math">\( b \)</span></p>
+
+	<div class="latex">$$ a=\sqrt[x_2-x_1]{\frac{y_2}{y_1}} ~~~~~~~~~~~~~~~~~~~~~~~~ b = \frac{y_1}{a^{x_1}}$$</div>
+	
+<p>Formlerne for fordoblingskonstanten (<span class="math">\( T_2 \)</span>) og halveringskonstanten (<span class="math">\( T_{\frac{1}{2}} \)</span>) er</p>	
+
+	<div class="latex">$$ T_2 = \frac{ln(2)}{ln(a)} ~~~~~~~~~~~~~~~~~~~~~~~~ T_{\frac{1}{2}} = \frac{ln(\frac{1}{2})}{ln(a)}$$</div>
+
+	
+<h3>Potensfunktioner</h3>
+
+<p>Potensfunktionens normalform er:</p>
+
+	<div class="latex">$$ y = b \cdot x^a $$</div>
+
+<figure id="">
+
+	<img class="p60" src="images/funktioner_potensfunktion_arbejdstegning.svg" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+	
+<p>Man kan finde ligningen til eksponentialfunktionen ved hjælp af to punkter.</p>
+
+	<div class="latex">$$ P=(x_1,y_1) ~~~~~~~~~~~~~~~~~~~~~~~~  Q=(x_2,y_2) $$</div>
+	
+<p>Formlerne for <span class="math">\( a \)</span> og <span class="math">\( b \)</span></p>
+
+	<div class="latex">$$ a = \frac{ ln \left(\frac{y_2}{y_1}\right) }{ ln\left(\frac{x_2}{x_1}\right) } ~~~~~~~~~~~~~~~~~~~~~~~~ b = \frac{y_1}{{x_1}^a} $$</div>
+
+<h3>Andengradsligningen</h3>
+
+<p>Andengradsligningens normalform er:</p>
+
+	<div class="latex">$$ y = ax^2 + bx +c $$</div>
+
+<figure id="">
+
+	<img class="p60" src="images/funktioner_andengradsligning_arbejdstegning.svg" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+	
+<p>For at løse andengradsliningen anvendes følgende formel </p>
+
+	<div class="latex">$$ x= \frac{-b \pm \sqrt D}{2a}, ~~ hvor~ D = b^2-4ac$$</div>
+	
+<!--
+<p>Eller skrevet på en anden måde:</p>
+
+<div class="latex">$$ x_1 = \frac{-b - \sqrt D}{2a}  ~~~~~~~~~~~~~~~~~~~~~~~~  x_2 = \frac{-b + \sqrt D}{2a} $$</div>
+-->
+
+<h4>Toppunkt</h4>
+
+<p>For at finde parablens toppunkt anvendes følgende formel</p>
+
+	<div class="latex">$$ TP = \left( \frac{-b}{2a} , \frac{-D}{4a} \right) $$</div>
+
+
+<h4>Antal rødder</h4>
+
+<p>Diskriminanten (<span class="math">\( D \)</span>) beskriver antallet af rødder andengradsligning har.</p>
+
+<figure id="">
+
+	<img class="p90" src="images/funktioner_andengradsligning_diskriminanten_forskelle.svg" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h4>Gaflernes orrientering</h4>
+
+<p>Fortegnet for <span class="math">\( a \)</span> angiver gaflernes orrientering. Hvis <span class="math">\( a \)</span> er positiv vender parablens gafler opad og hvis <span class="math">\( D \)</span> er negativ vender de nedad.</p>
+
+<figure id="">
+
+	<img class="p60" src="images/funktioner_andengradsligning_a_forskelle.svg" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h4>Konstruktion af andegradsligninger</h4>
+
+<p>Man kan konstruere andengradsligninger med følgende formel:</p>
+
+<div class="latex">$$ y = a \cdot (x-x_1) \cdot (x-x_2) $$</div>
+
+<h2>Statistik</h2>
+
+<h3>Begreber</h3>
+
+<h4>Observation, hændelse og udfald</h4>
+
+<p><span class="inl_cmd">Observation:</span> Noget man aktivt observerer.</p>
+
+<p><span class="inl_cmd">Hændelse: </span> Noget som sker f.eks. et biluheld.</p>
+
+<p><span class="inl_cmd">Udfald:</span> Noget der sker pga. en sandsynlighed f.eks. terningkast.</p>
+
+
+<h4>Population og stikprøve</h4>
+
+<p>En <span class="inl_cmd">population</span> er et datasæt der indeholder alle data... Har man ikke alle data taler man om <span class="inl_cmd">stikprøve</span>.</p>
+
+<h4>Repræsentativt datasæt</h4>
+
+<p>Et <span class="inl_cmd">datasæt</span> (stikprøve) der har data nok til at lave en nøjagtig beskrivelse af populationen.</p>
+
+<h4>Diskret og kontinuert data</h4>
+
+<p><span class="inl_cmd">Diskret data</span> er eksakte værdier, hvor <span class="inl_cmd">kontinuert data</span> er grupperede værdier.</p>
+
+<h4>Symboler</h4>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Symbol</th>
+			<th>Begreb</th>
+			<th>Definition</th>
+			<th>Talmængde</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><span class="math">\( x \)</span></td>
+			<td>Observation</td>
+			<td>Anvendt data</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td><span class="math">\( h(x) \)</span></td>
+			<td>Hyppighed</td>
+			<td>Hvor ofte en observation/hændelse optræder</td>
+			<td><span class="math">\( \mathbb{N}_0 \)</span></td>
+		</tr>
+		<tr>
+			<td><span class="math">\( H(x) \)</span></td>
+			<td>Summeret hyppighed</td>
+			<td>Hvor ofte denne og forgående observationer/hændelser optræder</td>
+			<td><span class="math">\( \mathbb{N}_0 \)</span></td>
+		</tr>
+		<tr>
+			<td><span class="math">\( f(x) \)</span></td>
+			<td>Frekenvens</td>
+			<td>Hvor ofte en observation/hændelse optræder i forhold til det samlede antal observationer</td>
+			<td><span class="math">\( \mathbb{R} \)</span></td>
+		</tr>
+		<tr>
+			<td><span class="math">\( F(x) \)</span></td>
+			<td>Summeret frekenvens</td>
+			<td>Hvor ofte denne og forgående observationer/hændelser optræder i forhold til det samlede antal observationer</td>
+			<td><span class="math">\( \mathbb{R} \)</span></td>
+		</tr>
+	</tbody>
+</table>
+
+<h4>Deskriptorer</h4>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Deskriptor</th>
+			<th>Forklaring</th>
+			<th>Metode</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Typetal (diskret data)</td>
+			<td>Den obeservation der forekommer flest gange</td>
+			<td>Aflæsning</td>
+		</tr>
+		<tr>
+			<td>Typeinterval (kontinuert data)</td>
+			<td>Den samling af observationer der er flest af</td>
+			<td>Aflæsning</td>
+		</tr>
+		<tr>
+			<td>Mindste værdi</td>
+			<td>Den mindst observerede værdi</td>
+			<td>Aflæsning</td>
+		</tr>
+		<tr>
+			<td>Største værdi</td>
+			<td>Den størst observerede værdi</td>
+			<td>Aflæsning</td>
+		</tr>
+		<tr>
+			<td>Median</td>
+			<td>Den midterste observation. Er det samme som 50% kvartilen (se nedenfor)</td>
+			<td>Aflæsning</td>
+		</tr>
+		<tr>
+			<td>Middelværdi</td>
+			<td>Gennemsnit</td>
+			<td>Beregning</td>
+		</tr>
+
+	</tbody>
+</table>
+
+<h4>Notation</h4>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Notation</th>
+			<th>Forklaring</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><span class="math">\( n \)</span></td>
+			<td>Antallet af observationer</td>
+		</tr>
+		<tr>
+			<td><span class="math">\( k \)</span></td>
+			<td>Antal observationssæt/værdier</td>
+		</tr>
+		<tr>
+			<td><span class="math">\( \overline x \)</span></td>
+			<td>Gennemsnitsværdien af <span class="math">\( x \)</span></td>
+		</tr>
+		<tr>
+			<td><span class="math">\( m \)</span></td>
+			<td>Interval midtpunkt. Den midterste værdi i et interval f.eks. <span class="math">\( ]160;170] = \frac{161+170}{2} = 165.5 \)</span> </td>
+		</tr>
+		<tr>
+			<td><span class="math">\( \sigma^2 \)</span>/<span class="math">\( s^2 \)</span></td>
+			<td>Variansen. <span class="math">\( \sigma^2 \)</span> anvendes når det er en population og <span class="math">\( s^2 \)</span> når det er en stikprøve.</td>
+		</tr>
+		<tr>
+			<td><span class="math">\( \sigma \)</span>/<span class="math">\( s \)</span></td>
+			<td>Spredningen.<span class="math">\( \sigma \)</span> anvendes når det er en population og <span class="math">\( s \)</span> når det er en stikprøve. </td>
+		</tr>
+		<tr>
+			<td><span class="math">\( \sum \)</span></td>
+			<td>Summen af .... .Dette er det store bogstav <span class="inl_cmd">sigma</span> fra det græske alfabet</td>
+		</tr>
+
+	</tbody>
+</table>
+
+<h4><span class="math">\( \sum \)</span> - opsummer</h4>
+
+<p>Lad os kigge på et simpelt datasæt over karakterer. For at danne os et overblik over tabellen vælger vi at lave to rækker (<span class="math">\( x \)</span> og <span class="math">\( x_i \)</span>). En hvor tallene står og en hvor vi angiver positionerne ved hjælp af værdierne <span class="math">\( x_1 \)</span> til <span class="math">\( x_k \)</span>, hvor <span class="math">\( k \)</span> er den sidste observation.</p>
+
+<table class="fixed">
+	<thead>
+		<tr>
+			<th colspan="7">Generelt datasæt</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><span class="math">\( x_i \)</span></td>
+			<td><span class="math">\( x_1 \)</span></td>
+			<td><span class="math">\( x_2 \)</span></td>
+			<td><span class="math">\( x_3 \)</span></td>
+			<td><span class="math">\( ... \)</span></td>
+			<td><span class="math">\( x_{k-1} \)</span></td>
+			<td><span class="math">\( x_k\)</span></td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Hvis vi ville opsummere tallene ville vi altså lave regnestykket: <span class="math">\( x_1+x_2+x_3+...+x_{k-1}+{x_k}  \)</span></p>
+
+<p>Dette kan skrives som:</p>
+
+<div class="latex">$$ \sum_{i=1}^{k} x_i = x_1+x_2+x_3+...+x_{k-1}+{x_k}$$</div>
+
+<p>Udtrykket læses på denne måde: Opsummer <span class="math">\( x_i \)</span>, mens i gennemløber værdierne fra <span class="math">\( i=i \rightarrow k\)</span>.</p>
+
+<p><span class="math">\( \sum \)</span> anvendes som ethvert andet tegn i matematikken f.eks:</p>
+
+<div class="latex">$$ \sum_{i=1}^k x_i \cdot 2 = 2 \cdot \sum_{i=k}^3 x_i$$</div>
+
+
+
+
+
+
+<h3>Diagrammer</h3>
+
+<p>For at skabe et hurtig overblik over sin undersøgelse kan man lave diagrammer. De to mest anvendelige i denne sammenhæng er <span class="inl_cmd">søjle-</span> og <span class="inl_cmd">lagkagediagrammet</span></p>
+
+<h4>Søjlediagram</h4>
+
+<figure id="">
+
+	<img class="p50" src="images/statistik_søjlediagram_usynlig baggund.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h4>Cirkeldiagram</h4>
+
+<figure id="">
+
+	<img class="p50" src="images/statistik_lagkagediagram_usynlig baggund.png" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h3>Diskret fordeling</h3>
+
+<h4>Eksempel på tabel</h4>
+
+<p>Denne tabel indeholder karakterfordelingen for 10 elever.</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th colspan="10">Tabel 2 (Kontinuerte observationer): Karakterer</th>
+		</tr>
+		<tr>
+			<th>x</th>
+			<th><span class="math">\( h(x) \)</span></th>
+			<th><span class="math">\( f(x) \)</span></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><span class="math">\( 02 \)</span></td>
+			<td><span class="math">\( 1 \)</span></td>
+			<td><span class="math">\( 0,1 \)</span></td>
+		</tr>
+		<tr>
+			<td><span class="math">\( 4 \)</span></td>
+			<td><span class="math">\( 2 \)</span></td>
+			<td><span class="math">\( 0,2 \)</span></td>
+		</tr>
+		<tr>
+			<td><span class="math">\( 7 \)</span></td>
+			<td><span class="math">\( 4 \)</span></td>
+			<td><span class="math">\( 0,4 \)</span></td>
+		</tr>
+		<tr>
+			<td><span class="math">\( 10 \)</span></td>
+			<td><span class="math">\( 2 \)</span></td>
+			<td><span class="math">\( 0,2 \)</span></td>
+		</tr>
+		<tr>
+			<td><span class="math">\( 12 \)</span></td>
+			<td><span class="math">\( 1 \)</span></td>
+			<td><span class="math">\( 0,1 \)</span></td>
+		</tr>
+	</tbody>
+</table>
+
+<h4>Antal observationer</h4>
+
+<div class="latex">$$ n =  \sum_{i=1}^{k} h_i $$</div>
+
+<h4>Middelværdi (gennemsnit)</h4>
+
+<p>1)</p>
+
+<div class="latex">$$ \overline x = \sum_{i=1}^{k} x_i \cdot f_i $$</div>
+
+<p>2)</p>
+
+<div class="latex">$$ \overline x = \frac{1}{n} \cdot \sum_{i=1}^{k} x_i \cdot h_i $$</div>
+
+<h4>Varians</h4>
+
+<p>For en population:</p>
+
+<p>1) </p>
+
+<div class="latex">$$ \sigma^2 = \sum_{i=1}^k (x_i- \overline x)^2 \cdot f_i$$</div>
+
+<p>2) ( da: <span class="math">\( f_i = \frac{1}{n} \cdot h_i \)</span> )</p>
+
+<div class="latex">$$ \sigma^2 = \frac{1}{n} \cdot \sum_{i=1}^k (x_i- \overline x)^2 \cdot h_i$$</div>
+
+<p>For en stikprøve </p>
+
+<div class="latex">$$ s^2 = \frac{1}{n-1} \cdot \sum_{i=1}^k (x_i- \overline x)^2 \cdot h_i$$</div>
+
+<h4>Spredning/standardafvigelse</h4>
+
+<p>For en population:</p>
+
+<div class="latex">$$ \sigma = \sqrt {Var(x)} $$</div>
+
+<p>For en stikprøve </p>
+
+<div class="latex">$$ s = \sqrt {Var(x)} $$</div>
+
+<h3>Kontinuert data</h3>
+
+<p></p>
+
+<h4>Eksempel på tabel</h4>
+
+<p>Denne tabel indeholder højdefordelingen mellem 20 basketspillere.</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Højde <br/><span class="math">\( ]x_{i-1};x_i] \)</span></th>
+			<th>Antal <br/><span class="math">\( h(x) \)</span></th>
+			<th>Frekvens <br/><span class="math">\( f(x) \)</span></th>
+			<th>Interval midtpunkt <br/><span class="math">\( m(x) \)</span></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><span class="math">\( ]160;170] \)</span></td>
+			<td><span class="math">\( 3 \)</span></td>
+			<td><span class="math">\( 0,15 \)</span></td>
+			<td><span class="math">\( 165 \)</span></td>
+		</tr>
+		<tr>
+			<td><span class="math">\( ]170;180] \)</span></td>
+			<td><span class="math">\( 9 \)</span></td>
+			<td><span class="math">\( 0,45 \)</span></td>
+			<td><span class="math">\(  175\)</span></td>
+		</tr>		
+		<tr>
+			<td><span class="math">\( ]180;190] \)</span></td>
+			<td><span class="math">\( 4 \)</span></td>
+			<td><span class="math">\( 0,2 \)</span></td>
+			<td><span class="math">\( 185 \)</span></td>
+		</tr>
+		<tr>
+			<td><span class="math">\( ]190;200] \)</span></td>
+			<td><span class="math">\( 4 \)</span></td>
+			<td><span class="math">\( 0,2 \)</span></td>
+			<td><span class="math">\( 195 \)</span></td>
+		</tr>
+		<tr>
+			<td><span class="math">\( ]200;210] \)</span></td>
+			<td><span class="math">\( 1 \)</span></td>
+			<td><span class="math">\( 0,05 \)</span></td>
+			<td><span class="math">\( 205 \)</span></td>
+		</tr>
+	</tbody>
+</table>
+
+<h4>Antal observationer</h4>
+
+<div class="latex">$$ n =  \sum_{i=1}^{k} h_i $$</div>
+
+<h4>Interval midtpunkt</h4>
+
+<div class="latex">$$ m_i = \frac{1}{2} \cdot (x_i +x_{i+1}) $$</div>
+
+<h4>Middelværdi (gennemsnit)</h4>
+
+<p>1)</p>
+
+<div class="latex">$$ \overline x = \sum_{i=1}^{k} m_i \cdot f_i $$</div>
+
+<p>2)</p>
+<div class="latex">$$ \overline x = \frac{1}{n} \cdot \sum_{i=1}^{k} m_i \cdot h_i  $$</div>
+
+<p>For en population er formlen:</p>
+
+<p>1) </p>
+
+<div class="latex">$$ \sigma^2 = \sum_{i=1}^k (m_i- \overline x)^2 \cdot f_i$$</div>
+
+<p>2) ( da: <span class="math">\( f_i = \frac{1}{n} \cdot h_i \)</span> )</p>
+
+<div class="latex">$$ \sigma^2 = \frac{1}{n} \cdot \sum_{i=1}^k (m_i- \overline x)^2 \cdot h_i$$</div>
+
+<p>For en stikprøve </p>
+
+<div class="latex">$$ s^2 = \frac{1}{n-1} \cdot \sum_{i=1}^k (m_i- \overline x)^2 \cdot h_i$$</div>
+
+<h4>Spredning/standardafvigelse</h4>
+
+<p>For en population:</p>
+
+<div class="latex">$$ \sigma = \sqrt {\sigma^2} $$</div>
+
+<p>For en stikprøve:</p>
+
+<div class="latex">$$ s = \sqrt {s^2} $$</div>
+
+<h2>Finans</h2>
+
+<h3>Generelle betegnelser</h3>
+
+<ul class="none">
+	<li><span class="math">\( n \)</span> er antallet af terminer</li>
+	<li><span class="math">\( K_n \)</span> er kapitalen efter <span class="math">\( n \)</span> terminer</li>
+	<li><span class="math">\( K_0\)</span> er startkapitalen</li>
+	<li><span class="math">\( r \)</span> er renten per termin</li>
+	<li><span class="math">\( y \)</span> er ydelsen per termin</li>
+</ul>
+
+<p><b>Nutidsværdi: </b>Den værdi et lån/opsparing har lige nu.</p>
+
+<p><b>Fremtidsværdi: </b>Den værdi et lån/opsparing har efter den aftalte løbetid.</p>
+
+
+<h3>Rentes rente</h3>
+
+<span class="math">\( K_n = K_0 \cdot (1+r)^n \)</span>
+
+<h4>Nutidsværdien</h4>
+
+<p><span class="math">\( K_0 \)</span> udregnes på følgende måde:</p>
+
+<p>1)</p>
+<div class="latex">$$ K_0 = \frac{K_n}{(1+r)^n} $$</div>
+<p>2)</p>
+<div class="latex">$$ K_0 = K_n \cdot (1+r)^{-n} $$</div>
+
+<h4>Rente</h4>
+
+<div class="latex">$$ r = \sqrt [n] { \frac{ K_n}{K_0} } -1$$</div>
+
+<h4>Antal terminer</h4>
+
+<div class="latex">$$ n =  \frac{ ln \left( \frac{K_n}{K_0} \right) } { ln(1+r) }$$</div>
+
+<h4>Effektiv rente</h4>
+
+<div class="latex">$$ i = (1+r)^n - 1 $$</div>
+
+<h4>Gennemsnitlig rente</h4>
+
+<div class="latex">$$ r =  \sqrt [n]{(1+r_1 ) \cdot (1+r_2) \cdot ~ ... ~\cdot (1+r_n)} -1 $$</div>
+
+<p>... hvor <span class="math">\( r_x \)</span> er renten i den gældende termin.</p>
+
+<h3>Annuitet</h3>
+
+<h4>Fremtidsværdien</h4>
+
+<div class="latex">$$ A_n = y \cdot \frac{(1+r)^n - 1}{r} $$</div>
+
+<h4>Nutidsværdien</h4>
+
+<div class="latex">$$ A_0 = y \cdot \frac{1-(1+r)^{-n}}{r} $$</div>
+
+<h4>Ydelsen</h4>
+
+<p>1) Hvis vi kender <span class="math">\( A_n \)</span></p>
+
+<div class="latex">$$ y = A_n \cdot \frac{ r }{ (1+r)^n-1 } $$</div>
+
+<p>2) Hvis vi kender <span class="math">\( A_0 \)</span></p>
+
+<div class="latex">$$ y = A_0 \cdot \frac{ r }{ 1-(1+r)^{-n}}   $$</div>
+
+<h4>Antal terminer</h4>
+
+<p>1) hvis vi kender <span class="math">\( A_n \)</span></p>
+
+<div class="latex">$$ n = \frac{ ln \left( \frac{ A_n \cdot r }{ y } +1 \right) }{ ln(1+r) } $$</div>
+
+<p>2) hvis vi kender <span class="math">\( A_0 \)</span></p>
+
+<div class="latex">$$ n = - \frac {  ln \left(  1 - \frac{ A_0 \cdot r  } {  y }   \right) } { ln(1+r)  } $$</div>
+
+
+</div><!-- end: col-md-9 -->
+
+<footer>
+
+	<p onclick="parentNode.remove()"><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons licens" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>Indholdet på Vidas.dk er licenseret under <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> og er skrevet af Thomas Jensen. (<a href="../hvem_er_jeg.html" target="_blank">Læs mere</a>)</p>
+
+</footer>
+	
+	
+</div><!-- end: row-fluid -->
+
+</div> <!-- end: container-fluid -->
+
+
+<!-- SCRIPT SECTION -->
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script type="text/javascript" src="../js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="../js/jquery.tocify.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+
+<!-- PRETTYFY-->
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+
+
+<!-- HIGHLIGHT -->
+	<script src="../js/highlight.pack.js" type="text/javascript"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+
+<!-- MATHJAX -->
+<script type="text/javascript" 
+	src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  displayAlign: "left",
+  displayIndent: "0em"
+});
+</script>
+
+
+<!-- TOCIFY -->
+<script>
+	$(function() {var toc = $("#toc").tocify({ selectors: "h2, h3, h4" }).data("toc-tocify"); });
+</script>
+<!-- GOOGLE ANALYTICS -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-89933285-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</body>
+</html>

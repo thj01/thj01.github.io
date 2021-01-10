@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <title>Økonomiske grundligninger</title>
+  <link rel="icon" href="../images/favicon.png">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono|Ubuntu|Ubuntu+Condensed' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/jquery-ui.min.css">
+  <link rel="stylesheet" href="../css/jquery.tocify.css">
+  <link rel="stylesheet" href="../css/style_new.css" />
+<!-- Scripts in bottom to speed up pageload-->
+ 
+
+</head>
+<body>
+	
+	
+<div class="container-fluid">
+
+<div class="row-fluid">
+	
+<div class="col-xs-3">
+	
+	<nav>
+		
+		<div id="toc">
+		
+			<div id="toc_headline"></div>
+		
+		</div>
+		
+	</nav>
+
+</div><!-- Start slut 1. kolonne - TOC -->
+	
+<div class="col-xs-9">
+	
+<h1>Økonomiske grundligninger</h1>
+
+<p>I de økonomiske enheder taler vi om overskud og fortjeneste og her bruger man følgende betegnelser:</p>
+
+<ul class="none">
+	<li><span class="math">\( R(x) \)</span> (Indtægt/Revenue)</li>
+	<li><span class="math">\( O(x) \)</span> (Overskud)</li>
+	<li><span class="math">\( p(x) \)</span> (Pris/Price)</li>
+	<li><span class="math">\( C(x) \)</span> (Udgift/Cost)</li>
+</ul>
+
+<p>Der er følgende to grundligninger:</p>
+
+<p><b>Indtægt</b></p>
+
+<div class="latex">$$ R(x)= p(x) \cdot x $$</div>
+
+<div class="latex">$$ Indtægt = pris ~per ~enhed \cdot antal~enheder $$</div>
+
+<p><b>Overskud</b></p>
+
+<div class="latex">$$ O(x) = R(x) - C(x) $$</div>
+
+<div class="latex">$$ Overskud = Indtægt - Udgift $$</div>
+
+<h2>Prisfunktionen</h2>
+
+<p>Prisfunktionen er det matematiske udtryk der opstår når man vil lave økonomiske beregninger.</p>
+
+<p>Ved vi f.eks. at prisen på en liter mælk er <span class="math">\( a \)</span>, så vil vi kunne beregne den samlede pris ved at sige: <span class="math">\( a\cdot x \)</span>. Der gælder altså følgende:</p>
+
+<table class="_">
+	<thead>
+		<tr>
+			<th colspan="2">Udgangspunkt</th>
+			<th>matematisk udtryk</th>
+			<th>Endeligt udtryk</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>konstant</td>
+			<td><span class="math">\( a \)</span></td>
+			<td><span class="math">\( a \cdot x = ax \)</span></td>
+			<td>Linje</td>
+		</tr>
+		<tr>
+			<td>Linje</td>
+			<td><span class="math">\( ax+b \)</span></td>
+			<td><span class="math">\( (ax+b)\cdot x = ax^2+bx \)</span></td>
+			<td>Andengradsfunktion</td>
+		</tr>
+		<tr>
+			<td>Exponential</td>
+			<td><span class="math">\( b\cdot a^x \)</span></td>
+			<td><span class="math">\( (b \cdot a^x) \cdot x = b \cdot a^x \cdot x = b \cdot log(a) \cdot x^2 \)</span></td>
+			<td>Andengradsfunktion</td>
+		</tr>
+		<tr>
+			<td>Potens</td>
+			<td><span class="math">\( b \cdot x^a \)</span></td>
+			<td><span class="math">\( (b \cdot x^a) \cdot x = b \cdot x^{(a+1)} \)</span></td>
+			<td>Potensfunktion</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Denne viden kan anvendes til analyser af materiale hvor man kender til udviklingen i pris per enhed. VEd at indtaste sit materiale og udføre en regressionsanalyse kan man få en formel der beskriver prisudviklingen. Denne kan så bruges til at lave estimater og træffe beslutninger ud fra.</p>
+
+
+</div><!-- end: col-md-9 -->
+
+<footer>
+
+	<p onclick="parentNode.remove()"><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons licens" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>Indholdet på Vidas.dk er licenseret under <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> og er skrevet af Thomas Jensen. (<a href="../hvem_er_jeg.html" target="_blank">Læs mere</a>)</p>
+
+</footer>
+	
+	
+</div><!-- end: row-fluid -->
+
+</div> <!-- end: container-fluid -->
+
+
+<!-- SCRIPT SECTION -->
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script type="text/javascript" src="../js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="../js/jquery.tocify.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+
+<!-- PRETTYFY-->
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+
+
+<!-- HIGHLIGHT -->
+	<script src="../js/highlight.pack.js" type="text/javascript"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+
+<!-- MATHJAX -->
+<script type="text/javascript" 
+	src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  displayAlign: "left",
+  displayIndent: "0em"
+});
+</script>
+
+
+<!-- TOCIFY -->
+<script>
+	$(function() {var toc = $("#toc").tocify({ selectors: "h2, h3, h4" }).data("toc-tocify"); });
+</script>
+<!-- GOOGLE ANALYTICS -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-89933285-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</body>
+</html>
