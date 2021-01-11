@@ -4,65 +4,34 @@
 }
 
 
-figure {
+figure {padding: .3em 0em .2em .5em;}
 
-padding: .3em 0em .2em .5em;
-
-
-}
-
-img.raw_HTML_output {
-border: 3px #DD4814 ridge;
-
-}
+img.raw_HTML_output {border: 3px #DD4814 ridge;}
 
 figure img {
-
 display: block;
 margin-left: auto;
 margin-right: auto;
-
 }
 
-figure figcaption {
-
-text-align: center;
-
-}
+figure figcaption {text-align: center;}
 
 figcaption {
-
 padding: 1em 0em;
 font-size: .8em;
-
-
 }
 
 
 figure.skub_th {
-
-
 float:right;
 margin-top: -40px;
 padding-left: 20px;
-
 }
-
-
-
-
-/* figcaption:before {
-
-content: "Screenshot: ";
-
-}*/
 
 img.frame {
 border: 1px #bbbbbb solid;
 border-radius: 5px;
-
 }
-
 
 figure img.p10 {width: 10%;}
 figure img.p15 {width: 15%;}
@@ -78,7 +47,6 @@ figure img.p80 {width: 80%;}
 figure img.p90 {width: 90%;}
 figure img.p100 {width: 100%;}
 
-
 img.p10 {width: 10%;}
 img.p15 {width: 15%;}
 img.p20 {width: 20%;}
@@ -93,19 +61,7 @@ img.p80 {width: 80%;}
 img.p90 {width: 90%;}
 img.p100 {width: 100%;}
 
-img.math {
-position: relative;
-margin-left: 140px;
-margin-top: 5px;
-padding-bottom:15px;
 
-
-}
-
-
-div#pixels_576::before {
-content:"hej":
-}
 
 
 
