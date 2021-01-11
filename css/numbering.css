@@ -3,34 +3,19 @@
 */
 
 
-html {
-	counter-reset: section;
-}
+html {counter-reset: section;}
 
-nav {
-	counter-reset: section;
-}
+nav {counter-reset: section;}
 
-div.col-xs-9 {
-	counter-reset: section;
-}
+div.col-sm-9 {counter-reset: section;}
 
+h2 {counter-reset: subsection;}
 
-h2 {
-    counter-reset: subsection;
-}
+h3 {counter-reset: subsubsection;}
 
-h3 {
-	counter-reset: subsubsection;
-}
+h4 {counter-reset: subsubsubsection;}
 
-h4 {
-	counter-reset: subsubsubsection;
-}
-
-h5 {
-	counter-reset: subsubsubsubsection;
-}
+h5 {counter-reset: subsubsubsubsection;}
 
 h2::before {
     counter-increment: section;
@@ -71,9 +56,6 @@ h5::before {
 .tocify-header li :nth-child(1):before {
     counter-increment: section;
     content: ; 
-/*
-    content: counter(section) " ";
-*/
    }
 
 
@@ -84,9 +66,6 @@ counter-reset:subsection;
 .tocify-subheader li :nth-child(1):before {
     counter-increment: subsection;
     content: counter(subsection) " ";
-/*
-    content: counter(section) "." counter(subsection) " ";
-*/
    }
 
 
@@ -97,9 +76,6 @@ counter-reset:subsubsection;
 .tocify-subheader .tocify-subheader li :nth-child(1):before {
     counter-increment: subsubsection;
     content: counter(subsection) "." counter(subsubsection) " "
-/*
-    content: counter(section) "." counter(subsection) "." counter(subsubsection) " ";
-*/
    }
 
 .tocify-subheader .tocify-subheader .tocify-subheader {
@@ -109,7 +85,4 @@ counter-reset:subsubsubsection;
 .tocify-subheader .tocify-subheader .tocify-subheader li :nth-child(1):before {
     counter-increment: subsubsubsection;
     content: counter(subsection) "." counter(subsubsection) "." counter(subsubsubsection) " "
-/*
-    content: counter(section) "." counter(subsection) "." counter(subsubsection) "." counter(subsubsubsection) " ";
-*/
    }

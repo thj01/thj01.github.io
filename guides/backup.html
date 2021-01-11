@@ -174,7 +174,7 @@
 	<li>konfigurere netværk</li>
 </ul>
 
-<span class="afsnit"><span class="inl_cmd">root</span>-password</span>
+<p><strong>root-password</strong></p>
 
 <p>Opret password til root på SystemrescueCD. Koden skal være af en vis længde og indeholde både små og store bogstaver f.eks. <span class="inl_cmd">123qweASD</span>:</p>
 
@@ -190,7 +190,7 @@ Re-enter new password:
 passwd: password changed.
 </pre>
 
-<span class="afsnit">Konfigurere netværk</span>
+<p><strong>Konfigurere netværk</strong></p>
 
 <p>For at få et overblik over netværket anvendes <span class="inl_cmd">ifconfig</span></p>
 
@@ -231,7 +231,7 @@ enp0s3: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
 		...
 </pre>
 
-<span class="afsnit">SSH adgang</span>
+<p><strong>SSH adgang</strong></p>
 
 <p>For at få SSH adgang til computeren med SystemrescueCD (IP: 192.168.0.63) anvendes kommandoen:</p>
 
@@ -409,15 +409,15 @@ sda               100G
 
 <p><span class="inl_cmd">fsarchiver</span> (<span class="bold">F</span>ile<span class="bold">S</span>ystem <span class="bold">A</span>rchiever) er grundlæggende et program der gemmer indholdet af et filsystem til et pakket arkiv. Herunder er nogle af dets features:</p>
 
-<span class="afsnit">Kan udnytte flere kerner</span>
+<p><strong>Kan udnytte flere kerner</strong></p>
 
 <p>Man kan selv vælge hvor mange af CPU'ens kerner der skal afsættes til opgaven. Det betyder både at man fuldt ud kan benytte moderne CPU'er, men også at man kan nøjes med at anvende ledige CPU'er - f.eks. på et server med mange kerner.</p>
 
-<span class="afsnit">Arbejder på filniveau</span>
+<p><strong>_</strong></p>
 
 <p><span class="inl_cmd">fsarchiver</span> tager backup af filer, hvor der også er kørt checksum. Det betyder bl.a. at selvom der er fejl i enkelte filer, så kan <span class="inl_cmd">fsarchiver</span> stadig udpakke resten af filerne. Det betyder også at du kan udpakke filerne på et andet filsystem end det oprindelige.</p>
 
-<span class="afsnit">Et eksempel</span>
+<p><strong>Et eksempel</strong></p>
 
 <p>Herinder er et eksempel hvor der tages backup af en Windows 7 installation (boot og systemdrev) på en partition der er monteret på <span class="inl_cmd">/mnt/backup</span>:</p>
 

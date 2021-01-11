@@ -3,7 +3,8 @@
 @import url("reset.css");
 @import url("indholdsfortegnelse.css");
 @import url("table.css");
-
+@import url("toc.css");
+@import url("footer.css");
 */
 
 /***** kode til highlightJS *****/
@@ -15,12 +16,11 @@
 @import url("table.css");
 @import url("css3.css");
 @import url("print.css");
-@import url("footer.css");
-@import url("toc.css");
 @import url("details.css");
 @import url("boxes.css");
 @import url("numbering.css");
 @import url("color.css");
+@import url("elimineres.css");
 
 
 
@@ -31,13 +31,7 @@
 @import url("styles/googlecode.css")
 */
 
-
-
-
-
 /* Siden generelt */
-
-
 
 html {padding-bottom: 100px;}
 
@@ -59,15 +53,6 @@ h2{font-size: 1.6em;padding-top: .6em;}
 h3{font-size: 1.3em;padding-top: 0em;}
 h4{font-size: 1.1em; padding-top: .6em;}
 
-span.afsnit {
-display: inline-block; 
-font-family: Ubuntu; 
-font-weight: 900; 
-font-size: 1.2em; 
-margin-top: 16px; 
-margin-bottom: 12px;
-}
-
 /*  font størrelser  */
 
 p, li, dd, dt {
@@ -77,22 +62,7 @@ line-height: 1.4em;
 font-size: 1em;
 }
 
-div.fed{
-font-family: Ubuntu, sans-serif;
-font-weight: 700;
-font-size: 1.1em;
-padding-top: 1em;
-}
-
-/* Formatering af billeder */
-
-div.ordforkl {
-	font-family: Ubuntu, sans-serif;
-	font-size: .8em;
-	margin-left: 2em;
-}
-
-/* generelle padding og marginer  */
+a {color: #337ab7;}
 
 p {padding: .4em .0em .3em .0em;}
 
@@ -106,19 +76,57 @@ p.right:before {content: "Eksempel: ";}
 
 p.center { text-align: center;}
 
+/* TOC */
+
+#toc {
+margin-top: 1em;
+margin-left: -20px;
+border-color: #337ab7;
+}
+
+#toc_headline:before {content:"Indhold";}
+
+#toc_headline {
+font-weight: 500;
+font-size: 1em;
+padding-top: .7em;
+padding-bottom: .7em;
+padding-left: .7em ;
+color: white;
+background-color: #337ab7;
+}
+
+#toc a{color: #337ab7;}
+
+/* Footer */
+
+footer {
+text-align: center;
+position: fixed;
+padding: 20px 10px 0px 10px;
+width: 100%;
+bottom: 0;
+font-family: Ubuntu, sans-serif;
+margin-top: 100px;
+font-size: .8em;
+Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+17,ffffff+100&0+0,1+31 
+background: -moz-linear-gradient(top,  rgba(255,255,255,0) 0%, rgba(255,255,255,0.55) 17%, rgba(255,255,255,1) 31%, rgba(255,255,255,1) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(255,255,255,0.55) 17%,rgba(255,255,255,1) 31%,rgba(255,255,255,1) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom,  rgba(255,255,255,0) 0%,rgba(255,255,255,0.55) 17%,rgba(255,255,255,1) 31%,rgba(255,255,255,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
+}
+
+footer img {
+margin-right: 20px;
+height:20px;
+}
+
 
 /*
  * 
  * Afsnit om fonte
  * 
  * */
-
-div.fonts {
-border: 1px solid black;
-margin: 1em 4em;
-padding: 1em 4em 1em 4em;
-
-}
 
 div.paper .afsnit {font-family: arial;font-size: 1.8em;}
 div.paper p {font-family: times;}

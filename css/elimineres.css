@@ -1,0 +1,29 @@
+/*
+Indhold der skal elimineres
+* 
+* grep -rnw '/home/tj/git/thj01.github.io/' -e 'class="fonts"'
+* 
+*/
+
+span.afsnit {
+display: inline-block; 
+font-family: Ubuntu; 
+font-weight: 900; 
+font-size: 1.2em; 
+margin-top: 16px; 
+margin-bottom: 12px;
+}
+
+div.fonts {
+border: 1px solid black;
+margin: 1em 4em;
+padding: 1em 4em 1em 4em;
+
+}
+
+div.fed{
+font-family: Ubuntu, sans-serif;
+font-weight: 700;
+font-size: 1.1em;
+padding-top: 1em;
+}
