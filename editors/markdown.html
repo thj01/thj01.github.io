@@ -51,31 +51,18 @@
 
 <h1>Markdown -  [M↓]</h1>
 	
-<p>Markdown er et formateringssprog, der er langt lettere at beherske end f.eks. HTML, som kræver tags både før og efter. På mange måder er markdown langt mere intuitiv og effektivt at arbejde med i den daglige produktion af tekst.</p>
+<p>Markdown er et simpelt formateringssprog, der er hurtigt at lære. Ved hjælp af Markdown og en oversætter kan du lave lave HTML, PDF, Worddokumenter og meget mere på meget kort tid. Ved at anvende skabeloner (CSS og JavaScript til HTML og Words standardskabelon) kan du hurtigt lave dokumenter der også er webtilgængelige.</p>
 
-<p>Fordelen ved Markdown sproget er, at det kan oversættes direkte til f.eks. HTML, og derfor kan man ved hjælp af CSS og JavaScript skabe nogle effektive skabeloner.</p>
-
-<p>I denne gennemgang vil jeg tage udgangspunt i markdown editoren <a href="http://abricotine.brrd.fr" target="_blank">Abricotine</a>, som er opensource og kan hentes til Linux, Mac og Windows. Jeg har også tilpasset en række af konfigurationsfilerne, for at lave et output der:</p>
-
-<ul class="none">
-	<li>... svarer til output på vidas.dk</li>
-	<li>... lever op til de krav der stilles til dokumentationer og mindre opgaver i gymnasiet, med understøttelse for Latex og visning af programmeringskode.</li>
-	<li>Der kan gemmes som PDF ved at printe fra HTML-output</li>
-</ul>
+<p>I denne gennemgang vil jeg tage udgangspunt i markdown editoren <a href="abricotine.html" target="_blank">Abricotine</a>, som er opensource og kan hentes til Linux, Mac og Windows. </p>
 
 <p>En lille sjov ting er, at markdown logoet også kan skrives ved hjælp af almindelige tegn -  [M↓]. På den måde er logoet holdt i markdown sprogets ånd.</p>
 
 
-<h2>Markdown formatet</h2>
-
-<p>I gennemgangen af koden har jeg anvendt output fra <a href="#abricotine_afsnit" target="_blank">Abricotine</a>, med de de ændringer der foreslås i dette dokument. Du kan med fordel gå ned og installere <a href="#abricotine_afsnit" target="_blank">Abricotine</a> og prøve de enkelte formateringskoder af.</p>
-
-<h2>Tekst</h2>
-
+<h2>Standard tekst</h2>
 
 <h3>Overskrifter</h3>
 
-<p>kurt</p>
+<p>Overskrifter laves ved at indsætte <em>hashtags (#)</em> og et mellemrum foran. Et # svarer til h1,to ## svarer til h2 osv: </p>
 
 <pre><code class="markdown"># Overskrift 1
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
@@ -100,35 +87,51 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 </div>
 
+
+
 <div class="alert">
 	
-	<p>hvis man skriver dokumenter, så er <code class="html">h1</code> overskriften det samme som titlen på ens dokument.</p>
+	<p>hvis man skriver dokumenter, så er <code class="html">h1</code> overskriften det samme som titlen på ens dokument. Der må altså kun være en h1 i hvert dokument.</p>
 	
-	<p>Det er den overskrift dokumentet er lavet under.</p>
-
 </div>
 
 
 <h3>Formatering af tekst</h3>
 
-<pre><code class="markdown">_Kursiv tekst_ (*Kursiv tekst*)
-__Fed tekst__ (**Fed tekst**)
-___Fed kursig tekst___ (***Fed kursiv tekst***)
+<p>Tekst formatteres ved hjælp af streger, som sættes foran og bagved ord/sætninger.</p>
+
+<dl class="">
+	<dt>_ (1 x underscore)</dt>
+	<dd>Fremhævet tekst (kursiv)</dd>
+	<dt>_ _ (2 x underscore)</dt>
+	<dd>Fed tekst (strong)</dd>
+	<dt>_ _ _ (3 x underscore)</dt>
+	<dd>Fed og kursiv tekst</dd>
+	<dt>~ ~ (2 x tilde)</dt>
+	<dd>Overstreget tekst</dd>
+	
+</dl>
+
+<pre><code class="markdown">_Fremhævet tekst_
+__Fed tekst__
+___Fed kursiv tekst___
 ~~Overstreget tekst~~</code></pre>
 
 <div class="eksempel">
 
-	<p><i>Kursiv tekst</i></p>
+	<p><em>Fremhævet tekst</em></p>
 	
-	<p><b>Fed tekst</b></p>
+	<p><strong>Fed tekst</strong></p>
 	
-	<p><b><i>Fed kursiv tekst</i></b></p>
+	<p><strong><em>Fed kursiv tekst</em></strong></p>
 	
-	<p><del>Overstreget tekst	</del></p>
+	<p><del>Overstreget tekst</del></p>
 
 </div>
 
 <h3>Citater</h3>
+
+<p>Citater laves ved at sætte <em>større end (>)</em> foran citatet.</p>
 
 <pre><code class="markdown">Dette er et citat
 
@@ -150,7 +153,9 @@ ___Fed kursig tekst___ (***Fed kursiv tekst***)
 
 <h3>Tværgående linier</h3>
 
-<pre><code class="markdown">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+<p>Tværgående linier laves ved at sætte 2 stjerner efter hinanden <em>(***)</em>.</p>
+
+<pre><code class="">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
 ***
 Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </code></pre>
 
@@ -166,11 +171,11 @@ Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliqu
 
 <h3>Fodnoter</h3>
 
-<p>Fodnoter indsættes som referencer i teksten. Abricotine sørger for at henvisningerne fungerer korrekt.</p>
+<p>Fodnoter indsættes som referencer i teksten, og ved at skrive fodnoten i bunden af teksten. Abricotine sørger for at henvisningerne fungerer korrekt. Se eksemplet herunder</p>
 	
-<pre><code class="markdown">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.[^1]
+<pre><code class="markdown">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua[^1]. 
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.[^2]
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat[^2].
 
 ***
 
@@ -179,9 +184,9 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 <div class="eksempel">
 
-	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<sup><a href="#fn_1" id="reffn_1">1</a></sup></p>
+	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <sup><a href="#fn_1" id="reffn_1">1</a></sup>.</p>
 		
-	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<sup><a href="#fn_2" id="reffn_2">2</a></sup></p>
+	<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat<sup><a href="#fn_2" id="reffn_2">2</a></sup>.</p>
 
 	<hr>
 	
@@ -195,13 +200,23 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 <h2>Lister</h2>
 
-<p>Lister laves enten med -, + eller *. I alle tilfældene får man en liste med bullits</p>
+<p>Ordnede lister (fortløbende tal) laves ved at skrive 1., 2. osv. Uordnede lister (bullits) laves enten med <em>-</em>, <em>+</em> eller <em>*</em> - alle laver lister med bullits</p>
 
-<pre><code class="Markdown">- element 1
+<pre><code class="Markdown">1. første element
+2. andet element
+3. tredie element
+	
+- element 1
 - element 2
 - element 3</code></pre>
 
 <div class="eksempel">
+
+	<ol>
+		<li>første element</li>
+		<li>andet element</li>
+		<li>tredie element</li>
+	</ol>
 
 	<ul class="disc">
 		<li>element 1</li>
@@ -211,8 +226,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 </div>
 
-
-<p>Hvis man vil have den til at anvende tal eller bogstaver skriver man det i stedet de ovenstående tegn. Da joblin er et simpelt notesværktøj arbejder det ikke med indlejrede lister, som markup,language ellers gør.</p>
+<p>Abricotine kan ikke arbejde med lister der bruger bogstaver.</p>
 
 <h3>Afkrydsnings lister</h3>
 
@@ -243,12 +257,12 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 <h3>Indlejrede lister</h3>
 
-<p>Man indlejrer og blande lister ved at sætte en tabulatorer foran de liste element man vil have ind under de andre.</p>
+<p>Man indlejrer og blande lister ved at rykke de indlejrede liste elementer ind.</p>
 
 <pre><code class="markdown">- element 1
 - element 2
-    - Underelement 1
-    - Underelement 2
+    - underelement 1
+    - underelement 2
 - element 3
     - [] undervalg 1
     - [x] valgt undervalg 2</code></pre>
@@ -261,8 +275,8 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 		<li>element 2
 		
 			<ul>
-				<li>Underelement 1</li>
-				<li>Underelement 2</li>
+				<li>underelement 1</li>
+				<li>underelement 2</li>
 			</ul>
 		
 		</li>
@@ -279,37 +293,31 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 </div>
 
-<h2>Henvisninger</h2>
+<h2>Links</h2>
 
-<p>Links kan indtastes direkte på følgende måder:</p>
+<p>Links kan indsættes ved at kopiere direkte:</p>
 
-<pre><code class="markdown">https://www.google.com
-
-www.google.com
-
-google.com</code></pre>
+<pre><code class="markdown">https://www.google.com</code></pre>
 
 <div class="eksempel">
 
 	<p>	<a href="https://www.google.com" target="_blank">https://www.google.com</a></p>
-	
-	<p><a href="www.google.com" target="_blank">www.google.com</a></p>
-	
-	<p><a href="google.com" target="_blank">google.com</a></p>
 
 </div>
 
-<p>Vil man lave den inline kan det gøres som her. Læg mærke til, at det skal være den fulde sti. </p>
+<p>Skal linket have et andet navn, eller indsættes midt i tekst skal det gøres på følgende måde:</p>
 
-<pre><code class="markdown">Her er et link du kan klikke på til [Google](https://www.google.com)
+<pre><code>[Linkets navn](linkets fulde adresse)</code></pre>
 
-Her er et link du kan klikke på til [Google](https://www.google.com "Googles hjemmeside"), og som får en titel når du holder musen over linket.</code></pre>
+<pre><code class="markdown">Du kan søge på nettet ved at bruge [Google](https://www.google.com).
+
+Du kan gå til forsiden på Vidas.dk [ved at klikke her](https://www.google.com "Googles hjemmeside"), og du får vist titlen når du holder musen over linket.</code></pre>
 
 <div class="eksempel">
 
-	<p>Her er et link du kan klikke på til <a href="https://www.google.com">Google</a></p>
+	<p>Du kan søge på nettet ved at bruge <a href="https://www.google.com">Google.</a></p>
 			
-	<p>Her er et link du kan klikke på til <a href="https://www.google.com" title="Googles hjemmeside">Google</a>, og som får en titel når du holder musen over linket.</p>
+	<p>Du kan gå til forsiden på Vidas.dk <a href="https://www.google.com" title="Googles hjemmeside">ved at klikke her</a>, og du får vist titlen når du holder musen over linket.</p>
 
 
 </div>
@@ -332,9 +340,9 @@ Det kan også bare være [den rene reference]
 <div class="eksempel">
 
 	<p>Hjemmeside <a href="http://www.vidas.dk">vidas</a></p>
-
-	<p><a href="http://www.vestfyns.dk">Det blå gymnasium</a></p>
-
+	
+	<p><a href="http://www.dr.dk">Danmarks Radio</a></p>
+	
 	<p>Det kan også bare være <a href="https://www.google.com">den rene reference</a></p>
 
 </div>
@@ -351,9 +359,9 @@ Det kan også bare være [den rene reference]
 [Gå til bunden](#bund)
 
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
 
 [Gå til toppen](#top)
 &lt;a id="bund">&lt;/a></code></pre>
@@ -362,9 +370,9 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 	<p><a id="top" href="#bund">Gå til bunden</a></p>
 
-	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
 
-	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+	<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 
 	<p><a id="bund" href="#top">Gå til toppen</a></p>
 
@@ -449,7 +457,7 @@ Felt 2,1 | Felt 2,2 | Felt 2,3 </code></pre>
 
 <h2>Billeder</h2>
 
-<p>Hvis man ønkser at indsætte et billede kan det gøres enten inline eller med refenrence:</p>
+<p>Hvis man ønkser at indsætte et billede kan det gøres enten inline eller med reference:</p>
 
 <pre><code class="markdown">Billede af Tux		
 		
@@ -482,7 +490,7 @@ Felt 2,1 | Felt 2,2 | Felt 2,3 </code></pre>
 
 <p>Rigtig mange markup language programmer giver adgang til at skrive <span class="math">\( L_aT^eX \)</span> direkte ind i koden. Det gøres ved at skrive Latex koden imellem 2 <span class="inl_cmd">$$</span> (dollartegn).</p>
 
-<pre><code class="markdown">Løsningen for en andengradsligning: $$ x = \frac{-b \pm \sqrt D}{2a} $$		
+<pre><code class="">Løsningen for en andengradsligning: $$ x = \frac{-b \pm \sqrt D}{2a} $$		
 		
 Herunder er formlen for varians ved en stikprøve
 

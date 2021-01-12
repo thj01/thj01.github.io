@@ -48,68 +48,56 @@
 
 <h2>Koden</h2>
 	
-<p>Herunder kan du se HTML-koden, hvori der også er indsat både Latex. Selve markup sproget indsættes i <span class="inl_cmd">&lt;textarea></span>-sektionen.</p>	
+<p>Herunder kan du se HTML-koden, hvori der også er indsat både Latex. Selve markup sproget indsættes i <em>&lt;textarea></em>-sektionen.</p>	
 	
 	
-<pre>
-	<code class="html">
-&lt;!DOCTYPE html>
+<pre><code class="html">&lt;!DOCTYPE html>
 &lt;html>
-  &lt;head>
-    &lt;title>Title&lt;/title>	&lt;!-- Presentation titel -->
-    &lt;meta charset="utf-8">
-    &lt;style>
-      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono);
+&lt;head>
+	&lt;title>Title&lt;/title>	&lt;!-- Navn i browserens tab -->
+	&lt;meta charset="utf-8">
+	&lt;!-- Formater indholdet med CSS -->
+	&lt;style>
+	.remark-slide-content h1 { font-size: 3em; }
+	.remark-slide-content h2 { font-size: 2em; }
+	.remark-slide-content p { font-size: 1.3em; }
+	&lt;/style>
+&lt;/head>
 
-      body { font-family: 'Ubuntu'; }
-
-      h1, h2, h3 {
-        font-weight: 700;
-      }
-      
-
-      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
-    &lt;/style>
-  &lt;/head>
-  &lt;body>
-	  
-	&lt;!-- Insert Markdown code here -->  
-	&lt;textarea id="source">
-
-class: center, middle
-
-# Title
-
-$$ \frac 12 $$
-```
-for i in range (1,7):
-	print(i)
-```
+&lt;body>
+&lt;textarea id="source"> &lt;!-- indsæt markdown herunder -->
+class: middle, center
+		
+# Møde d. 24.12.2020
+(tekst centreret og i midten)
 ---
 
-# Agenda
+# Dagsorden (punktopstilling)
 
-1. Introduction
-2. Deep-dive
-3. ...
+1. Gennemgang af referat
+2. Punkt 1
+3. Punkt 2
+4. ...
 
 ---
+#Justering af tekst og billeder
 
-# Introduction
+.left[Denne tekst er venstrestillet]
+.center[Denne tekst er centreret]
+.right[Denne tekst er højrestillet]
 
+##Justering af billeder
 
-    &lt;/textarea>	
+Her er et billede indsat i midten
+
+.center[![http://www.vidas.dk/images/favicon.png](http://www.vidas.dk/images/favicon.png)]
+&lt;/textarea>	
     
-    
-    &lt;script src="https://remarkjs.com/downloads/remark-latest.min.js">&lt;/script>
-    &lt;script>var slideshow = remark.create();&lt;/script>
-    &lt;script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML">&lt;/script>
-	&lt;link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
-	&lt;script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js">&lt;/script>
-	&lt;script>hljs.initHighlightingOnLoad();&lt;/script>
-  &lt;/body>
-&lt;/html>
-	</code>
+&lt;script src="https://remarkjs.com/downloads/remark-latest.min.js">&lt;/script>
+&lt;script>var slideshow = remark.create();&lt;/script>
+
+&lt;/body>
+&lt;/html></code>
 </pre>
 
 <p>Hent HTML filen: <a href="files/remark_template.html" target="_blank">remark_template.html</a></p>
@@ -125,34 +113,17 @@ for i in range (1,7):
 
 <p>Markdown: <a href="https://github.com/gnab/remark/wiki/Markdown" target="_blank">https://github.com/gnab/remark/wiki/Markdown</a></p>
 
-<h3>Sideskift</h3>
+<p>3. hurtige</p>
 
-<table class="_">
-	<thead>
-		<tr>
-			<th></th>
-			<th>_</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td> --- </td>
-			<td>Markerer overgangen til det næste slide</td>
-		</tr>
-		<tr>
-			<td>--</td>
-			<td>Gør at næste slide hører til det forgående</td>
-		</tr>
-		<tr>
-			<td>???</td>
-			<td>Det som står efter spørgsmålstegnene bliver til kommentarer</td>
-		</tr>
-		<tr>
-			<td>_</td>
-			<td>_</td>
-		</tr>
-	</tbody>
-</table>
+<dl class="">
+	<dt>- - -</dt>
+	<dd>Markerer overgang til ny side</dd>
+	<dt>- -</dt>
+	<dd>Markerer overgang til indhold der blive vist ved at klikke videre</dd>
+	<dt>? ? ?</dt>
+	<dd>Alt der skrives herunder er noter.</dd>
+</dl>
+
 
 <h3>Positionering</h3>
 
@@ -164,46 +135,21 @@ for i in range (1,7):
 
 <p><b>Horisontalt: </b> <span class="inl_cmd">left (standard), center, right</span></p>
 
-<p>Det kan gøres på to forskellige måder. Enten hvor det gælder hele det pågældende slide eller hvor det kun gælder det enkelte element.</p>
+<p>Skal det gælde hele siden indsættes det på følgende måde:</p>
 
-<h3>Hele slides</h3>
+<pre><code class="markdown">class: middle, center
 
-<span class="afsnit">Hele slides</span>
-
-<p>Her anvendes en <span class="inl_cmd">class</span>:</p>
-
-<p>I eksemplet herunder centrerer jeg overskriften både horisontalt og vertikalt.</p>
-
-<pre>
-	<code class="markdown">
-class: middle, center
-
-#Mit slide
-	</code>
-</pre>
+#Mit slide</code></pre>
 
 <h3>Tekst blokke og billeder</h3>
 <p>Dette angives i brackets </p>
 
-<ul class="none">
-	<li><b>Venstrestillet: </b> .left[ ** selve teksten ** / billede ]</li>
-	<li><b>centreret tekst: </b> .center[ ** selve teksten ** / billede]</li>
-	<li><b>Højrestillet tekst: </b> .right[ ** selve teksten ** / billede]</li>
-</ul>
+<p>Skal det kun gælde det enkelte element indsættes det på følgende måde</p>
 
-<p>Eksempel:</p>
+<pre><code class="markdown">.middle[Denne tekst ... eller billede er centreret]
 
-<pre>
-	<code class="markdown">
-.left[Denne tekst er venstrestillet]
-.center[Denne tekst er centreret]
-.right[Denne tekst er højrestillet]
+.right[Denne tekst ... eller billede er højrestillet]</code></pre>
 
-.left[![http://www.vidas.dk/images/favicon.png](http://www.vidas.dk/images/favicon.png)]
-.center[![http://www.vidas.dk/images/favicon.png](http://www.vidas.dk/images/favicon.png)]
-.right[![http://www.vidas.dk/images/favicon.png](http://www.vidas.dk/images/favicon.png)]
-	</code>
-</pre>
 
 <p><b>Læs mere: </b><a href="https://github.com/gnab/remark/wiki/Markdown" target="_blank">https://github.com/gnab/remark/wiki/Markdown</a></p>
 	

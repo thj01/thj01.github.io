@@ -1,66 +1,49 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Title</title>	<!-- Presentation titel -->
-    <meta charset="utf-8">
-    <style>
-      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono);
+<head>
+	<title>Title</title>	<!-- Navn i browserens tab -->
+	<meta charset="utf-8">
+	<!-- Formater indholdet med CSS -->
+	<style>
+	.remark-slide-content h1 { font-size: 3em; }
+	.remark-slide-content h2 { font-size: 2em; }
+	.remark-slide-content p { font-size: 1.3em; }
+	</style>
+</head>
 
-      body { font-family: 'Ubuntu'; }
+<body>
+<textarea id="source"> <!-- indsæt markdown herunder -->
 
-      h1, h2, h3 {
-        font-weight: 700;
-      }
-      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
-    </style>
-  </head>
-  <body>
-	  
-	<!-- Insert Markdown code here -->  
-	<textarea id="source">
-		
-class: center, middle
-
-# Title
-
-$$ \frac 12 $$
-```
-for i in range (1,7):
-	print(i)
-```
----
-
-# Agenda
-
-1. Introduction
-2. Deep-dive
-3. ...
-
----
-
-# Introduction
-
----
 class: middle, center
 
-#Mit slide
+#Møde d. 24.12.2020
+(tekst centreret og i midten)
+
 ---
+
+# Dagsorden (punktopstilling)
+
+1. Gennemgang af referat
+2. Punkt 1
+3. Punkt 2
+4. ...
+
+---
+#Justering af tekst og billeder
+
 .left[Denne tekst er venstrestillet]
 .center[Denne tekst er centreret]
 .right[Denne tekst er højrestillet]
 
-.left[![http://www.vidas.dk/images/favicon.png](http://www.vidas.dk/images/favicon.png)]
-.center[![http://www.vidas.dk/images/favicon.png](http://www.vidas.dk/images/favicon.png)]
-.right[![http://www.vidas.dk/images/favicon.png](http://www.vidas.dk/images/favicon.png)]
+##Justering af billeder
 
-    </textarea>	
+Her er et billede indsat i midten
+
+.center[![http://www.vidas.dk/images/favicon.png](http://www.vidas.dk/images/favicon.png)]
+</textarea>	
     
-    
-    <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
-    <script>var slideshow = remark.create();</script>
-    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
-	<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
-	<script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-	<script>hljs.initHighlightingOnLoad();</script>
-  </body>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create();</script>
+
+</body>
 </html>
