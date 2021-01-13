@@ -50,48 +50,71 @@
 
 <h1>Sidens opbygning</h1>
 
-
-
 <h2>HTML5</h2>
 
-<p><abbr title="Hyper Text Markup Language">HTML</abbr> står for <b>H</b>yper <b>T</b>ext <b>M</b>arkup <b>L</b>anguage og version 5 er designet med fokus på det semantiske web, hvor fokus er på betydningen af tekst og ord. Det skyldes at Internettet har udviklet sig fra at være en platform til at vise tekst, til at det skal kunne læses af ikke bare mennesker men også computere. Ved at markere semantikken i et dokument gør man dokumenterne søgbare i en lang højere grad. F.eks. kan man opmarkere:
+<p><abbr title="Hyper Text Markup Language">HTML</abbr> står for Hyper Text Markup Language og version 5 er designet med fokus på det semantiske web, hvor fokus er på betydningen af tekst og ord. Det skyldes at Internettet har udviklet sig fra at være en platform til at vise tekst, til at det skal kunne læses af ikke bare mennesker men også computere. Ved at markere semantikken i et dokument gør man dokumenterne søgbare i en lang højere grad. F.eks. kan man opmarkere:</p>
 
-<ul class="none">
-	<li>Forkortelser - <span class="inl_cmd">&lt;abbr></span> f.eks CIA</li>
-	<li>Titler - <span class="inl_cmd">&lt;cite></span> f.eks. Eiffeltårnet</li>
-</ul> 
+<dl class="">
+	<dt>Forkortelser</dt>
+	<dd><em>&lt;abbr></em> f.eks CIA</dd>
+	<dt>Title på kreataivt værk, f.eks: bog, maleri, skulptur, film)</dt>
+	<dd><em>&lt;cite></em>f.eks. Eiffeltårnet</dd>
+</dl>
+
 
 <p>Det er ord og begreber vi godt kan læse og omsætte som mennesker, men computeren opfatter  bare tegnene som et ord (en samling af bogstaver), uden at vide hvad de står for. Ved hjælp af disse elementer kan man lave "intelligente" søgemaskiner.</p>
 
-<p>En anden stor fordel ved elementerne er, at de kan gøre skriveprocessen mere struktureret. Når man skriver vil man hele tiden være bevidst om hvad man er i gang med. Det man skal lære er, at se og forstå <abbr title="Hyper Text Markup Language">HTML</abbr>-koden.</p>
+<p>En anden stor fordel ved elementerne er, at de kan gøre skriveprocessen mere struktureret. Når man skriver vil man hele tiden være bevidst om hvad man er i gang med. Det man skal lære er, at se og forstå HTML-koden.</p>
 
-<p>Man anvender elementer ved at pakke ord/ordene ind i dem. Man anvender elementets betegnelse både før og efter det man vil have markeret, hvor man sætter en <span class="inl_cmd">/</span> foran det afsluttende elementnavn . Se eksemplet herunder</p>
+<p>Man anvender elementer ved at pakke ord/ordene ind i dem. Man anvender elementets betegnelse både før og efter det man vil have markeret, hvor man sætter en <em>/</em> foran det afsluttende elementnavn . Se eksemplet herunder</p>
 
-<pre>
-	<code class="html">
-&lt;p>  <span class="red">**** en tekststreng ****</span>     &lt;/p>
-	</code>
-</pre>
+<pre><code class="html">&lt;p>  **** en tekststreng ****    &lt;/p>	</code></pre>
 
-<p><span class="inl_cmd">&lt;p></span> beskriver indholdes som værende et tekst afsnit (en paragraf). På det afsluttende <span class="inl_cmd">p</span> er der en  skråstrege <span class="inl_cmd">/</span> for at markere afslutningen.</p>
+<p><em>&lt;p></em> beskriver indholdes som værende et tekst afsnit (en paragraf). På det afsluttende <em>p</em> er der en  skråstrege <em>/</em> for at markere afslutningen.</p>
 
+<p>Herunder er et eksempel hvor vi bruger <em>p, abbr og cite</em></p>
 
+<pre><code class="html">&lt;p>&lt;abbr title="Central Intelligense Agency">CIA&lt;/abbr> er en forkortelse for &lt;b>C&lt;/b>entral &lt;b>I&lt;/b>ntelligense &lt;b>A&lt;/b>gency, som er en del af &lt;abbr title="United States of America">USA&lt;/abbr>'s efterretningstjeneste.&lt;/p>
 
-<p>Herunder ern lidt længere <abbr title="">HTML</abbr>-kode, der viser det i anvendelse:</p>
-
-<pre>
-	<code class="html">
-&lt;abbr title="Central Intelligense Agency">CIA&lt;/abbr> er en forkortelse for &lt;b>C&lt;/b>entral &lt;b>I&lt;/b>ntelligense &lt;b>A&lt;/b>gency, som er en del af &lt;abbr title="United States of America">USA&lt;/abbr>'s efterretningstjeneste.
-	</code>
-</pre>
+&lt;p>&lt;cite>Eiffeltårnet&lt;/cite> ligger i Paris.&lt;/p></code></pre>
 
 <p><strong>Resultat af koden</strong></p>
 
-<p id="html_intro_kode_resulat"><abbr title="Central Intelligense Agency">CIA</abbr> er en forkortelse for <b>C</b>entral <b>I</b>ntelligense <b>A</b>gency, som er en del af <abbr title="United States of America">USA</abbr>'s efterretningstjeneste.</p>
+<p><abbr title="Central Intelligense Agency">CIA</abbr> er en forkortelse for <b>C</b>entral <b>I</b>ntelligense <b>A</b>gency, som er en del af <abbr title="United States of America">USA</abbr>'s efterretningstjeneste.<cite>Eiffeltårnet</cite> ligger i Paris.</p>
 
-<p>Læg mærke til at der kommer en stiplet linie under de forkortelser der er pakket ind i <span class="inl_cmd">&lt;abbr></span>. Det er din browser som markere forkortelser på den måde. Holder du musen hen over feltet forvandler den sig til et spørgsmålstegn og der kommer en sort boks der viser hvad der står i <span class="inl_cmd">title=""</span> feltet.</p>
+<p>Læg mærke til at der kommer en stiplet linie under de forkortelser der er pakket ind i <em>&lt;abbr></em>. Det er din browser som markere forkortelser på den måde. Holder du musen hen over feltet forvandler den sig til et spørgsmålstegn og der kommer en sort boks der viser hvad der står i <em>title=""</em> feltet.</p>
 
-<p><span class="inl_cmd">&lt;b></span> ændrer indholdet så det bliver skrevet med fed skrift, og det er igen noget browseren gør. Formateringen af teksten inde i <span class="inl_cmd">elementerne</span> kan ændres ved hjælp af <abbr title="Cascading Style Sheets">CSS</abbr></p>
+<h2>Det sematiske web</h2>
+
+<p>Bag denne kryptiske overskrift ligger der en vigtig forståelse for HTML5. Indholdet skal være "sorteret" efter de enkelte deles betydning (semantik). Det er ved hjælp af koden, at ord, tal og illustrationer bliver forstået og vist korrekt.</p>
+
+<p>Her er en kort list over nogle af de mest brugte tags der handler om betydning:</p>
+
+<dl class="">
+	<dt>&lt;p></dt>
+	<dd>Paragraf - almindelig tekst</dd>
+	<dt>&lt;a></dt>
+	<dd>Links og henvisninger</dd>
+	<dt>&lt;h1> - &lt;h6></dt>
+	<dd>Overskrifter i niveau 1 til 6</dd>
+	<dt>&lt;img></dt>
+	<dd>Billeder</dd>
+	<dt>&lt;em></dt>
+	<dd>Fremhævet (emphasized) - tekst der skal stå frem fra teksten. Bliver vist som kursiv.</dd>
+	<dt>&lt;strong></dt>
+	<dd>Stærkt fremhævet tekst - tekst der skal stå mere frem fra teksten en fremhævet. Bliver vist som fed</dd>
+	<dt>&lt;code></dt>
+	<dd>kode - kodeeksempler</dd>
+	<dt>&lt;ol></dt>
+	<dd>Ordnede lister - lister hvor rækkefølge er vigtigt</dd>
+	<dt>&lt;ul></dt>
+	<dd>uordnede lister - lister med opremsninger</dd>
+	<dt>&lt;dl></dt>
+	<dd>Beskrivelsesluster</dd>
+	<dt>&lt;table></dt>
+	<dd></dd>
+
+</dl>
 
 <p>Du kan se en komplet liste over elementer her: <a href="http://www.w3schools.com/tags/" target="_blank">http://www.w3schools.com/tags/</a>.</p>
 
@@ -110,7 +133,7 @@
 
 <p>Et tomt element har ingen tekstreng, og anvendes f.eks. til at angive en indstilling, som f.eks. <span class="inl_cmd">&lt;!DOCTYPE HTML></span> der fortælller angiver at det er et <abbr title="">HTML5</abbr> dokument eller <span class="inl_cmd">&lt;img></span> der angiver stien til et billede/illustration.</p>
 
-<p>Tomme elementer afsluttes ikke, og har derfor ikke behov for <span class="inl_cmd">/</span> til sidst.</p>
+<p>Tomme elementer afsluttes ikke, og har derfor ikke behov for <em>/</em> til sidst.</p>
 
 <h3>Ikke-tomme elementer</h3>
 
