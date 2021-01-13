@@ -57,8 +57,8 @@
 &lt;table class="">
 	&lt;thead>
 		&lt;tr>
-			&lt;th>Tabelhovede  1&lt;/th>
-			&lt;th>Tabelhovede  2&lt;/th>
+			&lt;th scope="col">Tabelhovede  1&lt;/th>
+			&lt;th scope="col">Tabelhovede  2&lt;/th>
 		&lt;/tr>
 	&lt;/thead>
 	&lt;tfoot>
@@ -84,43 +84,41 @@
 &lt;/table></code>
 </pre>
 
-<p>Eksempel uden CSS:</p>
+<p>I første niveau er tabellen opdelt i 3 dele:</p>
 
-<p><a href="files/html_table_01.html" target="_blank">html_table_01.html</a></p>
-
-<p>Eksempel med rammer og kant: </p>
-
-<p>For at få rammer på skal vi anvende følgende</p>
-
-<pre>
-	<code class="CSS">
-table, th, td {
-    border: 1px solid black;
-}
-
-table {
-    border-collapse: collapse;
-}
-	</code>
-</pre>
-
-<p>Det koden fortæller er at:</p>
-
-<ul class="none">
-	<li>Der skal være en ramme omkring hele tabellen (<span class="inl_cmd">table</span>)</li>
-	<li>Der skal være en ramme om alle <span class="inl_cmd">th</span>-elementer</li>
-	<li>Der skal være en ramme om alle <span class="inl_cmd">td</span>-elementer</li>
+<ul class="disc">
+	<li><em>&lt;thead></em> - tabelhovedet</li>
+	<li><em>&lt;tfoot></em> - tabelfoden (sidste række)</li>
+	<li><em>&lt;tbody></em> - tabelkroppen - tabelindholdet</li>
 </ul>
 
-<p>Derudover fortæller <span class="inl_cmd">border-collapse</span>, at det skal være en enkelt ramme. Oprindeligt er rammerne på en hjemmeside med dobbelte streger.</p>
+<p>I hver af disse indsættes en tabelrække (<em>&lt;tr></em> - tablerow), som indeholder data (<em>&lt;td></em> - tabeldata) </p>
 
 
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>	
+<div class="alert">
+	
+	<p>I tabelhovedet har jeg indsat <em>scope="col"</em> i <em>&lt;th></em>. Det hjælper skærmlæsere til at tydeliggøre, at de er overskrifter for kolonnerne</p>
+
+</div>
+
+<p>Som standard bliver tabeller vist uden rammer. se eksempel uden CSS: <a href="files/html_table_uden_CSS.html" target="_blank">html_table_uden_CSS.html</a></p>
+
+<p>For at få rammer på skal vi indsætte fælgende CSS-kode anvende følgende</p>
+
+<pre><code class="CSS">table, th, td {
+	border: 1px solid black;
+	}
+table {
+	border-collapse: collapse;
+	}</code></pre>
+
+<p><a href="files/html_table_med_CSS.html" target="_blank">html_table_med_CSS.html</a></p>
+
+<p>Det koden fortæller er at der skal være ramme om <em>&lt;table>, &lt;th> og &lt;td></em> elementerne</p>
+
+<p>Derudover fortæller <em>border-collapse</em>, at det skal være en enkelt streg. Som standard tegnes der dobbelstreger.</p>
+
+
 
 
 </div><!-- end: col-md-9 -->

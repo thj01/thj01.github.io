@@ -54,25 +54,28 @@
 
 <h2>Vigtige tags</h2>
 
-<p>Herunder er de vigtigste tags nævnt.</p>
+<p>Herunder er de mest almindelige tags nævnt.</p>
 
-<ul class="none">
-	<li><b>&lt;h1> - &lt;h6></b> &nbsp;- &nbsp; overskrifter</li>
-	<li><b>&lt;p></b> &nbsp;- &nbsp; brødtekst/paragraffer</li>
-	<li><b>&lt;a></b> &nbsp;- &nbsp; henvisninger</li>
-	<li><b>&lt;img></b> &nbsp;- &nbsp; billeder</li>
-</ul>
+<dl class="">
+	<dt>&lt;h1> - &lt;h6></dt>
+	<dd>Overskrifter</dd>
+	<dt>&lt;p></dt>
+	<dd>Brødtekst/paragraffer</dd>
+	<dt>&lt;a></dt>
+	<dd>Links</dd>
+	<dt>&lt;img></dt>
+	<dd>Billeder</dd>
+</dl>
 
 <h2>Overskrifter og brødtekst</h2>
 
 <p>De to mest almindelige former for tekst er overskrifter og brødtekst. </p>
 
-<p>Der er indbygget 6 niveauer af overskrifter i <abbr title="">HTML5</abbr>, der som udgangspunkt blot får en mindre skriftstørrelse jo lavere niveau den er på. <span class="inl_cmd">&lt;h2></span> er det højeste niveau og man kan gå ned til <span class="inl_cmd">&lt;h6></span>.</p>
+<p>Der er indbygget 6 niveauer af overskrifter i HTML5, der som udgangspunkt blot får en mindre skriftstørrelse jo lavere niveau den er på. &lt;h1> er det højeste niveau og man kan gå ned til &lt;h6>.</p>
 
-<p>Brødtekst pakkes ind i <span class="inl_cmd">&lt;p></span> tags. Se f.eks. nedestående kode:</p>
+<p>Brødtekst pakkes ind i <em>&lt;p></em> tags. Se f.eks. nedestående kode:</p>
 
-<pre>
-	<code class="html">&lt;h1>Overskrift&lt;/h1>
+<pre><code class="html">&lt;h1>Overskrift&lt;/h1>
 	
 &lt;p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur condimentum ac nisi a sagittis. Pellentesque fringilla quis turpis vitae congue. Integer vel eleifend ex. Quisque ultricies tempor sem a facilisis.&lt;/p>
 	
@@ -82,8 +85,7 @@
 	
 &lt;h2>Under-under-overskrift&lt;/h2>
 	
-&lt;p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur condimentum ac nisi a sagittis. Pellentesque fringilla quis turpis vitae congue. Integer vel eleifend ex.&lt;/p></code>
-</pre>
+&lt;p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur condimentum ac nisi a sagittis. Pellentesque fringilla quis turpis vitae congue. Integer vel eleifend ex.&lt;/p></code></pre>
 
 <p>Ovenstående kode ser ud som følger:</p>
 
@@ -97,49 +99,33 @@
 
 <p>Vrøvleteksten i eksemplet er <cite>Lorem Ipsum</cite>, og er blvet anvendt af typografer siden 1500-tallet. Du kan finde mere om den her: <a href="http://da.lipsum.com/" target="_blank">http://da.lipsum.com/</a>.</p>
 
-<p><b>Se eksempel med overskrifter og brødtekst:</b> <a href="files/html_eksempel_overskrifter_og_broedtekst.html" target="_blank">html_eksempel_overskrifter_og_broedtekst.html</a></p>
+<p>Se eksempel med overskrifter og brødtekst: <a href="files/html_eksempel_overskrifter_og_broedtekst.html" target="_blank">html_eksempel_overskrifter_og_broedtekst.html</a></p>
 
 <h2>Henvisninger (links)</h2>
 
-<p>En af styrkerne ved <abbr title="">HTML5</abbr> er, at man kan skabe forbindelse mellem dokumenterne. Det gør man ved at anvende <span class="inl_cmd">&lt;a></span>. Se eksemplet herunder, hvor der indsættes en henvisning. Når man klikker på det vil <span class="inl_cmd">google.com</span> åbnes i den samme fane man står i:</p>
+<p>En af styrkerne ved HTML5 er, at man kan skabe forbindelse mellem dokumenterne. Det gør man ved at anvende <em>&lt;a></em>. Se eksemplet herunder, hvor der indsættes en henvisning. Når man klikker på det vil google åbnes i den samme fane man står i:</p>
 
-<pre>
-	<code class="html">
-&lt;a href="http:\\www.google.com">google.com&lt;/a>
-	</code>
-</pre>
+<pre><code class="html">&lt;a href="http:\\www.google.com">google.com&lt;/a></code></pre>
 
-<p><b>Se resultatet: </b>&nbsp;&nbsp;<a href="http:\\www.google.com">google.com - Samme vindue</a></p>
+<p>Se resultatet: <a href="http:\\www.google.com">google.com - Samme vindue</a></p>
 
 <p><span class="inl_cmd">&lt;a></span> kan sættes op så henvisningen bliver åbnet i en anden tab, ved at man tilføjer attributten <span class="inl_cmd">target="_blank"</span></p>
 
-<pre>
-	<code class="html">
-&lt;a href="http:\\www.google.com" target="_blank">google.com&lt;/a>
-	</code>
-</pre>
+<pre><code class="html">&lt;a href="http:\\www.google.com" target="_blank">google.com&lt;/a></code></pre>
 
-<p><b>Se resultatet: </b>&nbsp;&nbsp;<a href="http:\\www.google.com" target="_blank">google.com - i ny tab</a></p>
+<p>Se resultatet: <a href="http:\\www.google.com" target="_blank">google.com - i ny tab</a></p>
 
 <p>Vil man lave et download link tilføjer man <span class="inl_cmd">download</span> til <span class="inl_cmd">&lt;a></span>.</p>
 
-<pre>
-	<code class="html">
-&lt;a href="https://www.w3.org/html/logo/downloads/HTML5_Logo_512.png" download>HTML5 logo&lt;/a>
-	</code>
-</pre>
+<pre><code class="html">&lt;a href="https://www.w3.org/html/logo/downloads/HTML5_Logo_512.png" download>HTML5 logo&lt;/a></code></pre>
 
-<p><b>Se resultatet: </b>&nbsp;&nbsp;<a href="https://www.w3.org/html/logo/downloads/HTML5_Logo_512.png" download>Download HTML5 logo</a></p>
+<p>Se resultatet: <a href="https://www.w3.org/html/logo/downloads/HTML5_Logo_512.png" download>Download HTML5 logo</a></p>
 
 <h2>Billeder</h2>
 
-<p>For at vise billeder anvender man <span class="inl_cmd">&lt;img></span>. For at opfylde <abbr title="">HTML5</abbr> skal den indeholde både <span class="inl_cmd">src=""</span> og <span class="inl_cmd">alt=""</span> attributten. I eksemplet herunder åbnes <abbr title="">HTML5</abbr> logoet fra <a href="https://www.w3.org/html/logo/" target="_blank">https://www.w3.org/html/logo/</a>:</p>
+<p>For at vise billeder anvender man <em>&lt;img></em>. For at opfylde <em>HTML5-standarden</em> skal den indeholde både <em>src=""</em> og <em>alt=""</em> attributten. I eksemplet herunder åbnes HTML5-logoet fra <a href="https://www.w3.org/html/logo/" target="_blank">https://www.w3.org/html/logo/</a>:</p>
 
-<pre>
-	<code class="html">
-&lt;img src="https://www.w3.org/html/logo/downloads/HTML5_Logo_512.png" alt="HTML5 logo" />
-	</code>
-</pre>
+<pre><code class="html">&lt;img src="https://www.w3.org/html/logo/downloads/HTML5_Logo_512.png" alt="HTML5 logo" /></code></pre>
 
 <details>
 
@@ -153,19 +139,15 @@
 
 <p></p>
 
-<p>For at kontrollere størrelsen på billedet indsættes attributten <span class="inl_cmd">height=""</span> eller <span class="inl_cmd">width=""</span> i <span class="inl_cmd">&lt;img></span>. Browseren vil automatisk tilpasse billedets proportioner, når man kun vælger den ene.</p>
+<p>For at kontrollere størrelsen på billedet indsættes attributten <em>height=""</em> eller <em>width=""</em> i <em>&lt;img></em>. Browseren vil automatisk tilpasse billedets proportioner, når man kun vælger den ene.</p>
 
-<p><b>Eksempel med <span class="inl_cmd"><b>width=""</b></span></b></p>
+<p>Eksempel med <em>width=""</em></p>
 
-<pre>
-	<code class="html">
-&lt;img src="https://www.w3.org/html/logo/downloads/HTML5_Logo_512.png" alt="HTML5 logo" width="200px"/>
-	</code>
-</pre>
+<pre><code class="html">&lt;img src="https://www.w3.org/html/logo/downloads/HTML5_Logo_512.png" alt="HTML5 logo" width="200px"/></code></pre>
 
 <details>
 
-	<summary>Se resultatet med <span class="inl_cmd">width="200px"</span>.</summary>
+	<summary>Se resultatet med <em>width="200px"</em>.</summary>
 
 	<br/><hr/><br/><br/>
 
@@ -173,19 +155,13 @@
 
 </details>
 
-<p></p>
+<p>Eksempel med <em>height=""</em></p>
 
-<p>Eksempel med <span class="inl_cmd">height=""</span></p>
-
-<pre>
-	<code class="html">
-&lt;img src="https://www.w3.org/html/logo/downloads/HTML5_Logo_512.png" alt="HTML5 logo" height="300px"/>
-	</code>
-</pre>
+<pre><code class="html">&lt;img src="https://www.w3.org/html/logo/downloads/HTML5_Logo_512.png" alt="HTML5 logo" height="300px"/></code></pre>
 
 <details>
 
-	<summary>Se resultatet med <span class="inl_cmd">height="300px"</span>.</summary>
+	<summary>Se resultatet med <em>height="300px"</em>.</summary>
 	
 	<br/><hr/><br/><br/>
 
@@ -193,19 +169,13 @@
 
 </details>
 
-<p></p>
-
 <p>Det er vigtigt at man nøjes med at sætte enten <span class="inl_cmd">width</span> eller <span class="inl_cmd">height</span>. Hvis man ikke får sat de rette forhold "vrider" man billedet i stykker</p>
 
-<pre>
-	<code class="html">
-&lt;img src="https://www.w3.org/html/logo/downloads/HTML5_Logo_512.png" alt="HTML5 logo" width="800" height="100px"/>
-	</code>
-</pre>
+<pre><code class="html">&lt;img src="https://www.w3.org/html/logo/downloads/HTML5_Logo_512.png" alt="HTML5 logo" width="800" height="100px"/></code></pre>
 
 <details>
 
-	<summary>Se resultatet med <span class="inl_cmd">width="800"</span> og <span class="inl_cmd">height="100px"</span>.</summary>
+	<summary>Se resultatet med <em>width="800"</em> og <em>height="100px"</em>.</summary>
 
 	<br/><hr/><br/><br/>
 
@@ -213,28 +183,57 @@
 
 </details>
 
-<h3>Billedformater</h3>
+<h2>Billedformater</h2>
 
-<p>Når man arbejder med websider bør man grundlæggende anvende følgende 3 billedformater: <span class="inl_cmd">png</span>, <span class="inl_cmd">jpg</span> og <span class="inl_cmd">svg</span>. Herunder er en kort beskrivelse af hvert af formaterne inklusiv et eksempeludsnit af <span class="inl_cmd">HTML5</span>-logoet <a href="https://www.w3.org/html/logo/downloads/HTML5_Logo.svg" target="_blank">https://www.w3.org/html/logo/downloads/HTML5_Logo.svg</a>. Grunden til at der er valgt et <span class="inl_cmd">svg</span> billede som udgangspunkt er, for at vise de resultater man får ved at gemme i formaterne</p>
-
-<h4>png - <b>P</b>ortable <b>N</b>etwork <b>G</b>raphics</h4>
-<p></p>
+<h3>jpg - Joint Photographic Experts Group</h3>
 
 <details>
 
-	<summary>Udsnit af HTML5 logo i <span class="inl_cmd">png</span> format.</summary>
+	<summary>Udsnit af HTML5 logo i jpg format.</summary>
+
+	<img class="" src="images/HTML5_Logo_jpg_udsnit.jpg" alt="" title="" width="800"/>
+
+</details>
+
+<dl class="">
+	<dt>Grafiktype:</dt>
+	<dd>Pixelbaseret, ingen usynlig baggrund</dd>
+	<dt>Kompression:</dt>
+	<dd>Ja (destruktiv - mister data)</dd>
+</dl>
+
+
+<p><strong>Velegnet til:</strong></p>
+
+<ul class="disc">
+	<li>Billeder med mange farver</li>
+</ul>
+
+<p>jpg er formatet man skal anvende til billeder der skal vises på en hjemmeside, med mindre det er vigtigt at der ikke sker datatab.</p>
+
+<p>Læs mere om jpg: <a href="https://da.wikipedia.org/wiki/JPEG" target="_blank">https://da.wikipedia.org/wiki/JPEG</a></p>
+
+
+<p>Når man arbejder med websider bør man grundlæggende anvende følgende 3 billedformater: jpg, png og svg. Herunder er en kort beskrivelse af hvert af formaterne inklusiv et eksempeludsnit af HTML5-logoet <a href="https://www.w3.org/html/logo/downloads/HTML5_Logo.svg" target="_blank">https://www.w3.org/html/logo/downloads/HTML5_Logo.svg</a>. Grunden til at der er valgt et svg billede som udgangspunkt er, for at vise de resultater man får ved at gemme i formaterne</p>
+
+<h3>png - Portable Network Graphics</h3>
+
+<details>
+
+	<summary>Udsnit af HTML5 logo i png format.</summary>
 
 	<img class="" src="images/HTML5_Logo_png_udsnit.png" alt="" title="" width="800"/>
 
 </details>
 
-<p></p>
+<dl class="">
+	<dt>Grafiktype:</dt>
+	<dd>Pixelbaseret, med mulighed for usynlig baggrund (alfa-kanal)</dd>
+	<dt>Kompression:</dt>
+	<dd>Ja (non-destruktiv - mister ikke data)</dd>
+</dl>
 
-<p><b>Grafiktype:</b> Pixelbaseret, med mulighed for usynlig baggrund</p>
-
-<p><b>Kompression:</b> Ja (non-destruktiv - mister ikke data)</p>
-
-<p><b>Velegnet til:</b></p>
+<p><strong>Velegnet til:</strong></p>
 
 <ul class="disc">
 	<li>Billeder med få farver</li>
@@ -244,59 +243,30 @@
 	<li>Billeder der ikke må miste data ved komprimering</li>
 </ul>
 
-<p><b>Beskrivelse:</b></p>
+<p>png er skabt til internettet og bør anvendes i de tilfælde der står ovenfor. Hvis det drejer sig om illustrationer kan man gemme dem i en større opløsning end den som skal vises og derved kan browseren tegne illustrationen skarpere. En anden stor fordel er, at man kan lave en usynlig baggrund og derved lade baggrunden danne baggrund for ens illustration.</p>
 
-<p><span class="inl_cmd">png</span> er skabt til internettet og bør anvendes i de tilfælde der står ovenfor. Hvis det drejer sig om illustrationer kan man gemme dem i en større opløsning end den som skal vises og derved kan browseren tegne illutrationen skarpere. En anden stor fordel er, at man kan lave en usynlig baggrund og derved lade bagrunden danne baggrund for ens illustration.</p>
+<p>Hvis det er almindelige billeder bør man gemme dem i <em>jpg</em> med mindre det er vigtigt at der ikke sker datatab.</p>
 
-<p>Hvis det er almindelige billeder bør man gemme dem i <span class="inl_cmd">jpg</span> med mindre det er vigtigt at der ikke sker datatab.</p>
+<p>Læs mere om png: <a href="https://da.wikipedia.org/wiki/Portable_Network_Graphics" target="_blank">https://da.wikipedia.org/wiki/Portable_Network_Graphics</a></p>
 
-<p><b>Læs mere:</b> <a href="https://da.wikipedia.org/wiki/Portable_Network_Graphics" target="_blank">https://da.wikipedia.org/wiki/Portable_Network_Graphics</a></p>
-
-<h4>jpg - <b>J</b>oint <b>P</b>hotographic <b>E</b>xperts <b>G</b>roup</h4>
-<p></p>
-<details>
-
-	<summary>Udsnit af HTML5 logo i <span class="inl_cmd">jpg</span> format.</summary>
-
-	<img class="" src="images/HTML5_Logo_jpg_udsnit.jpg" alt="" title="" width="800"/>
-
-</details>
-
-<p></p>
-
-<p><b>Grafiktype:</b> Pixelbaseret, ingen usynlig baggrund</p>
-
-<p><b>Kompression:</b> Ja (destruktiv - mister data)</p>
-
-<p><b>Velegnet til:</b></p>
-
-<ul class="disc">
-	<li>Billeder med mange farver</li>
-</ul>
-
-<p><span class="inl_cmd">jpg</span> er formatet man skal anvende til billeder der skal vises på en hjemmeside, med mindre det er vigtigt at der ikke sker datatab.</p>
-
-<p><b>Læs mere:</b> <a href="https://da.wikipedia.org/wiki/JPEG" target="_blank">https://da.wikipedia.org/wiki/JPEG</a></p>
-
-
-<h4>svg - <b>S</b>calable <b>V</b>ector <b>G</b>raphics</h4>
-<p></p>
+<h3>svg - Scalable Vector Graphics</h3>
 
 <details>
 
-	<summary>Udsnit af HTML5 logo i <span class="inl_cmd">svg</span> format.</summary>
+	<summary>Udsnit af HTML5 logo i svg format.</summary>
 
 	<img class="" src="images/HTML5_Logo_svg_udsnit.svg" alt="" title="" width="800"/>
 
 </details>
 
-<p></p>
+<dl class="">
+	<dt>Grafiktype:</dt>
+	<dd>Pixelbaseret, med mulighed for usynlig baggrund (alfa-kanal)</dd>
+	<dt>Kompression:</dt>
+	<dd>Nej - men koden kan renses</dd>
+</dl>
 
-<p><b>Grafiktype: </b>Vektorbaseret, med mulighed for usynlig baggrund</p>
-
-<p><b>Kompression:</b> Nej</p>
-
-<p><b>Velegnet til:</b></p>
+<p><strong>Velegnet til:</strong></p>
 
 <ul class="disc">
 	<li>Stregtegninger</li>
@@ -305,24 +275,28 @@
 	<li>Tegninger og illustrationer der skal skaleres</li>
 </ul>
 
-<p><span class="inl_cmd">svg</span> er udviklet af <a href="https://www.w3.org/" target="_blank">World Wide Web Consortium</a> til at kunne vise vektorbaseret grafik. Fordelen ved vektorbaseret grafik er, at det kan skaleres både op og ned uden at billedkvaliteten forringes.</p>
+<p>svg er udviklet af <a href="https://www.w3.org/" target="_blank">World Wide Web Consortium</a> til at kunne vise vektorbaseret grafik. Fordelen ved vektorbaseret grafik er, at det kan skaleres både op og ned uden at billedkvaliteten forringes. Og man kan indlejre både tekst og grafik i svg-filer.</p>
 
-<p>Derudover kan man indlejre både tekst og grafik i <span class="inl_cmd">svg</span>-filer.</p>
+<p>Læs mere:<a href="https://da.wikipedia.org/wiki/Scalable_Vector_Graphics" target="_blank">https://da.wikipedia.org/wiki/Scalable_Vector_Graphics</a></p>
 
-<p><b>Læs mere:</b> <a href="https://da.wikipedia.org/wiki/Scalable_Vector_Graphics" target="_blank">https://da.wikipedia.org/wiki/Scalable_Vector_Graphics</a></p>
+<h3>Sammenligning af formaterne</h3>
 
-<h4>Samenligning af formaterne</h4>
+<p>Herunder er der et eksempel på hvordan jpg, png og svg bliver når man anvender formaterne. Til eksemplerne har jeg anvendt et udsnit af HTML5-logoet <a href="https://www.w3.org/html/logo/downloads/HTML5_Logo.svg" target="_blank">https://www.w3.org/html/logo/downloads/HTML5_Logo.svg</a>, som jeg har gemt i henholdsvis jpg og png. Ved disse to billeder vil der være en forklaring på de konsekvenser der er ved at gemme i formaterne</p>
 
-<p>Herunder er der et eksempel på hvordan <span class="inl_cmd">jpg</span>, <span class="inl_cmd">png</span> og <span class="inl_cmd">svg</span> bliver når man anvender formaterne. Til eksemplerne har jeg anvendt et udsnit af <span class="inl_cmd">HTML5</span>-logoet <a href="https://www.w3.org/html/logo/downloads/HTML5_Logo.svg" target="_blank">https://www.w3.org/html/logo/downloads/HTML5_Logo.svg</a>, som jeg har gemt i henholdsvis <span class="inl_cmd">jpg</span> og <span class="inl_cmd">png</span>. Ved disse to billeder vil der være en forklaring på de konsekvenser der er ved at gemme i formaterne</p>
 
-<p></p>
 
 <p><strong>jpg &nbsp;- 1,4 kB</strong></p>
 
+<p>Kanterne er forvitrede og der er pixelering vidt omkring kanterne</p>
+
 <p><img class="" src="images/HTML5_Logo_jpg_udsnit.jpg" alt="" title="" width="800"/></p>
+
+<p>Kanterne er pixilerede</p>
 
 <p><strong>png &nbsp;- 18,2 kB</strong></p>
 <p><img class="" src="images/HTML5_Logo_png_udsnit.png" alt="" title="" width="800"/></p>
+
+<p>Kanter står knivskarpt - uanset hvor meget du zoomer</p>
 
 <p><strong>svg &nbsp;- 5,6 kB</strong></p>
 <p><img class="" src="images/HTML5_Logo_svg_udsnit.svg" alt="" title="" width="800"/></p>

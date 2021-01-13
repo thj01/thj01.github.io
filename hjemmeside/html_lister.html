@@ -49,18 +49,41 @@
 <h1>Lister og tabeller</h1>
 
 
-<p><abbr title="">HTML5</abbr> har to typer lister: den ordnede <span class="inl_cmd">&lt;ol></span>og den uordnede <span class="inl_cmd">&lt;ul></span>. Forskellen mellem dem er, at den ordnede sætter dem i nummerisk orden, hvor den uordende sætter dem på punktform.</p>
+<p>HTML5 har 3 typer lister:</p>
+
+<ul class="disc">
+	<li>Ordnede lister</li>
+	<li>uordnede lister</li>
+	<li>datalister</li>
+</ul>
+
+<dl class="">
+	<dt>Ordnede lister</dt>
+	<dd>En liste hvor rækkefølgen er vigtig. Det kan f.eks. være en prioriteret rækkefølge.</dd>
+	<dt>Uordnede lister</dt>
+	<dd>En liste hvor rækkefølgen ikke er vigtig. Det kan f.eks være en liste over tilbehør eller gruppemedlemmer.</dd>
+	<dt>Beskrivelsesliste (dataliste)</dt>
+	<dd>En liste der indeholder beskrivelser. Det kan f.eks. være en ordliste, eller en liste der beskriver begreber (ligesom denne liste).</dd>
+</dl>
+
+<div class="alert">
+	
+	<p>Det er vigtigt at du vælger en rigtige type liste. Den du skal være ekstra opmærksom på er beskrivelseslisten. Den sikrer at folk der bruger skærmlæsere fra start af ved at det er en liste af beskrivelser ... og ikke en opremsning.</p>
+
+</div>
+
+
 
 <h2>Ordnede lister</h2>
 
-<pre><code class="html">
-&lt;ol>
+<p>Ordnede lister er indkapslet af en <em>&lt;ol></em> -tag. De enkelte listepunkter er er indkapslet af <em>&lt;li></em></p>
+
+<pre><code class="html">&lt;ol>
 	&lt;li>Første punkt&lt;/li>
 	&lt;li>Andet punkt&lt;/li>
 	&lt;li>Tredie punkt&lt;/li>
 	...
-&lt;/ol></code>
-</pre>
+&lt;/ol></code></pre>
 
 <p><strong>Resultat</strong></p>
 
@@ -75,14 +98,12 @@
 
 <p>Man kan indsætte andet end tal ved at anvende attributten <span class="inl_cmd">type=""</span> f.eks:</p>
 
-<pre><code class="html">
-&lt;ol type="a">
+<pre><code class="html">&lt;ol type="a">
 	&lt;li>Første punkt&lt;/li>
 	&lt;li>Andet punkt&lt;/li>
 	&lt;li>Tredie punkt&lt;/li>
 	...
-&lt;/ol></code>
-</pre>
+&lt;/ol></code></pre>
 
 <p><strong>Resultat</strong></p>
 
@@ -95,73 +116,80 @@
 
 <p>Mulighederne er:</p>
 
-<table class="">
-	<thead>
-		<tr>
-			<th><i>type="a"</i></th>
-			<th><i>type="A"</i></th>
-			<th><i>type="i"</i></th>
-			<th><i>type="I"</i></th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>
-				<ol type="a">
-					<li>Første punkt</li>
-					<li>Andet punkt</li>
-					<li>Tredie punkt</li>
-					<li>Fjerde punkt</li>
-					<li>Femte punkt</li>
-				</ol>
-			</td>
-			<td>
-				<ol type="A">
-					<li>Første punkt</li>
-					<li>Andet punkt</li>
-					<li>Tredie punkt</li>
-					<li>Fjerde punkt</li>
-					<li>Femte punkt</li>
-				</ol>
-			</td>
-			<td>
-				<ol type="i">
-					<li>Første punkt</li>
-					<li>Andet punkt</li>
-					<li>Tredie punkt</li>
-					<li>Fjerde punkt</li>
-					<li>Femte punkt</li>
-				</ol>
-			</td>
-			<td>
-				<ol type="I">
-					<li>Første punkt</li>
-					<li>Andet punkt</li>
-					<li>Tredie punkt</li>
-					<li>Fjerde punkt</li>
-					<li>Femte punkt</li>
-				</ol>
-			</td>
-		</tr>
-	</tbody>
-</table>
+<div class="row">
 
-<h3>Flere indstillinger</h3>
+	<div class="col-lg-3">
+		
+		<p style="padding-left: 1.5em">type="a"</p>	
+		
+	<ol type="a">
+		<li>Første punkt</li>
+		<li>Andet punkt</li>
+		<li>Tredie punkt</li>
+		<li>Fjerde punkt</li>
+		<li>Femte punkt</li>
+	</ol>
 
-<p>Det kan også lade sig gøre at lave lister, hvor man tæller ned eller hvor man starter med en anden værdi.</p>
+	</div>
 
-<p><strong>Start med en anden værdi</strong></p>
+	<div class="col-lg-3">
 
-<p>For at starte med en anden værdi indsætter man attributten <span class="inl_cmd">start=""</span>.</p>
+		<p style="padding-left: 1.5em">type="A"</p>	
+		
+		<ol type="A">
+			<li>Første punkt</li>
+			<li>Andet punkt</li>
+			<li>Tredie punkt</li>
+			<li>Fjerde punkt</li>
+			<li>Femte punkt</li>
+		</ol>	
 
-<pre><code class="html">
-&lt;ol start="5">
+	</div>
+
+	<div class="col-lg-3">
+		
+		<p style="padding-left: 1.5em">type="i"</p>	
+		
+		<ol type="i">
+			<li>Første punkt</li>
+			<li>Andet punkt</li>
+			<li>Tredie punkt</li>
+			<li>Fjerde punkt</li>
+			<li>Femte punkt</li>
+		</ol>	
+
+	</div>
+
+	<div class="col-lg-3">
+
+		<p style="padding-left: 1.5em">type="I"</p>	
+
+		<ol type="I">
+			<li>Første punkt</li>
+			<li>Andet punkt</li>
+			<li>Tredie punkt</li>
+			<li>Fjerde punkt</li>
+			<li>Femte punkt</li>
+		</ol>
+
+	</div>
+
+
+</div>
+
+
+<h3>Startværdien</h3>
+
+<p>Har du brug for at listen starter med en anden værdi en 1, så kan du bruge attributten <em>start=""</em>.</p>
+
+<p>I eksemplet herunder starter listen med værdien 5.</p>
+
+<pre><code class="html">&lt;ol start="5">
 	&lt;li>Første punkt&lt;/li>
 	&lt;li>Andet punkt&lt;/li>
 	&lt;li>Tredie punkt&lt;/li>
 	...
-&lt;/ol></code>
-</pre>
+&lt;/ol></code></pre>
 
 <p><strong>Resultat</strong></p>
 
@@ -172,22 +200,18 @@
 	<b>...	 </b>
 </ol>
 
-<p><strong>Tæl ned</strong></p>
+<h3>Nedtælling</h3>
 
-<p>For at tælle den modsatte vej indsættes attributten <span class="inl_cmd">reversed</span></p>
+<p>For at tælle den modsatte vej indsættes attributten <span class="inl_cmd">reversed</span>. Se eksempel herunder.</p>
 
-<pre><code class="html">
-&lt;ol reversed>
+<pre><code class="html">&lt;ol reversed>
 	&lt;li>Første punkt&lt;/li>
 	&lt;li>Andet punkt&lt;/li>
 	&lt;li>Tredie punkt&lt;/li>
 	...
-&lt;/ol></code>
-</pre>
+&lt;/ol></code></pre>
 
 <p><strong>Resultat</strong></p>
-
-<p><strong>_</strong></p>
 
 <ol reversed>
 	<li>Første punkt</li>
@@ -196,16 +220,35 @@
 	<b>...	 </b>
 </ol>
 
-<h2>Uordnede lister</h2>
+<p>Hvis du sætter <em>start="0"</em>, så vil listen lave negative tal:</p>
 
-<pre><code class="html">
-&lt;ul>
+<pre><code class="html">&lt;ol reversed start="0">
 	&lt;li>Første punkt&lt;/li>
 	&lt;li>Andet punkt&lt;/li>
 	&lt;li>Tredie punkt&lt;/li>
 	...
-&lt;/ul></code>
-</pre>
+&lt;/ol></code></pre>
+
+<p><strong>Resultat</strong></p>
+
+<ol reversed start="0">
+	<li>Første punkt</li>
+	<li>Andet punkt</li>
+	<li>Tredie punkt</li>
+	<b>...	 </b>
+</ol>
+
+
+<h2>Uordnede lister</h2>
+
+<p>Ordnede lister er indkapslet af en <em>&lt;ul></em> -tag. De enkelte listepunkter er er indkapslet af <em>&lt;li></em></p>
+
+<pre><code class="html">&lt;ul>
+	&lt;li>Første punkt&lt;/li>
+	&lt;li>Andet punkt&lt;/li>
+	&lt;li>Tredie punkt&lt;/li>
+	...
+&lt;/ul></code></pre>
 
 <p><strong>Resultat</strong></p>
 
@@ -215,6 +258,41 @@
 	<li>Tredie punkt</li>
 	<b>...	 </b>
 </ul>
+
+<h2>Beskrivelsesliste (dataliste)</h2>
+
+<p>Ordnede lister er indkapslet af en <em>&lt;dl></em> -tag. Denne liste indeholder 2 indholdstags: </p>
+
+<dl class="">
+	<dt>&lt;dt></dt>
+	<dd>Begreb, navn, definition, ... (DataTerm)</dd>
+	<dt>&lt;dd></dt>
+	<dd>beskrivelse af begreb, navn, definition, ... </dd>
+</dl>
+
+<pre><code>&lt;dl>
+	&lt;dt>Begreb 1&lt;/dt>
+	&lt;dd>Beskrivelse af begreb 1&lt;/dd>
+	&lt;dt>Begreb 2&lt;/dt>
+	&lt;dd>Beskrivelse af begreb 2&lt;/dd>
+	&lt;dt>Begreb 3&lt;/dt>
+	&lt;dd>Beskrivelse af begreb 3&lt;/dd>
+&lt;/dl></code></pre>
+
+<p><strong>Resultat</strong></p>
+
+
+<dl>
+	<dt>Begreb 1</dt>
+	<dd>Beskrivelse af begreb 1</dd>
+	<dt>Begreb 2</dt>
+	<dd>Beskrivelse af begreb 2</dd>
+	<dt>Begreb 3</dt>
+	<dd>Beskrivelse af begreb 3</dd>
+</dl>
+
+
+
 
 <h2>Lister i flere niveauer</h2>
 
@@ -250,90 +328,20 @@
 	<li>Tredie punkt</li>
 </ol>
 
+<div class="alert">
+	
+	<p>Store lister og lister med mange niveauer er svære at overskue - især hvis du får dem læst op.</p>
+	
+	<p>Hvis du sidder med en stor liste, så overvej at bryde den ned i flere mindre lister, og beskriv strukturen med ord.</p>
+
+</div>
+
+
+
 <h2>CSS af lister</h2>
 
 <p><a href="https://www.w3schools.com/css/css_list.asp" target="_blank">https://www.w3schools.com/css/css_list.asp</a></p>
 
-<h2>Tabeller</h2>
-
-<p>Tabeller vil blive gennemgået ud fra en praktisk anvendelse. Det betyder at du skal klikke på linket under koden for at se resulatet af den.</p>
-
-<p>Vi vil i første omgang anvende nedestående kode og så CSS'e den løbende.</p>
-
-<pre><code class="html">
-&lt;table class="">
-	&lt;thead>
-		&lt;tr>
-			&lt;th>Tabelhovede  1&lt;/th>
-			&lt;th>Tabelhovede  2&lt;/th>
-		&lt;/tr>
-	&lt;/thead>
-	&lt;tfoot>
-		&lt;tr>
-			&lt;td>Tabelfod1&lt;/td>
-			&lt;td>Tabelfod2&lt;/td>
-		&lt;/tr>
-	&lt;/tfoot>
-	&lt;tbody>
-		&lt;tr>
-			&lt;td>Indhold A1&lt;/td>
-			&lt;td>Indhold B1&lt;/td>
-		&lt;/tr>
-		&lt;tr>
-			&lt;td>Indhold A2&lt;/td>
-			&lt;td>Indhold B2&lt;/td>
-		&lt;/tr>
-		&lt;tr>
-			&lt;td>Indhold A3&lt;/td>
-			&lt;td>Indhold B3&lt;/td>
-		&lt;/tr>
-	&lt;/tbody>
-&lt;/table></code>
-</pre>
-
-<p>Eksempel uden CSS:</p>
-
-<p><a href="files/html_table_00.html" target="_blank">html_table_00.html</a></p>
-
-<h2>Rammer og kanter</h2>
-
-<p>For at få rammer på skal vi indsætte følgende i vores CSS-fil</p>
-
-<pre>
-	<code class="CSS">
-table, th, td {
-    border: 1px solid black;
-}
-
-table {
-    border-collapse: collapse;
-}
-	</code>
-</pre>
-
-<p>Det koden fortæller er at:</p>
-
-<ul class="none">
-	<li>Der skal være en ramme omkring hele tabellen (<span class="inl_cmd">table</span>)</li>
-	<li>Der skal være en ramme om alle <span class="inl_cmd">th</span>-elementer</li>
-	<li>Der skal være en ramme om alle <span class="inl_cmd">td</span>-elementer</li>
-</ul>
-
-<p>Derudover fortæller <span class="inl_cmd">border-collapse</span>, at det skal være en enkelt ramme. Oprindeligt er rammerne på en hjemmeside med dobbelte streger.</p>
-
-<p>Eksempel CSS:</p>
-
-<p><a href="files/html_table_01.html" target="_blank">html_table_01.html</a></p>
-
-<h2>Fletning af celler</h2>
-
-
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>
-<p></p>	
 	
 </div><!-- end: col-md-9 -->
 
