@@ -1,16 +1,5 @@
-
-/*
-@import url("reset.css");
-@import url("indholdsfortegnelse.css");
-@import url("table.css");
-@import url("toc.css");
-@import url("footer.css");
-*/
-
-/***** kode til highlightJS *****/
-
-@import url("styles/xcode.css");
-@import url("code_new.css");
+@import url("ext_styles/xcode.css"); /* Kode til highlight */
+@import url("code.css");
 @import url("list.css");
 @import url("img.css");
 @import url("table.css");
@@ -18,12 +7,16 @@
 @import url("print.css");
 @import url("details.css");
 @import url("boxes.css");
+/*
 @import url("numbering.css");
+*/
 @import url("color.css");
 @import url("elimineres.css");
 
 
 
+
+/* IKKE BRUGTE highlightkoder */
 
 /*
 @import url("styles/vs.css");
@@ -31,9 +24,11 @@
 @import url("styles/googlecode.css")
 */
 
-/* Siden generelt */
+[00 - SIDEN GENERELT]
 
 html {padding-bottom: 100px;}
+body {max-width: 1400px; margin:auto}
+.tocify {max-width: 300px}
 
 body.print {
 margin:auto;
@@ -77,6 +72,7 @@ p.right:before {content: "Eksempel: ";}
 p.center { text-align: center;}
 
 /* TOC */
+[00 - TOC]
 
 #toc {
 margin-top: 1em;
@@ -93,12 +89,71 @@ padding-top: .7em;
 padding-bottom: .7em;
 padding-left: .7em ;
 color: white;
-background-color: #337ab7;
+background-color: #337ab7;}
+
+.tocify-header {
+	display:inline;
 }
 
 #toc a{color: #337ab7;}
 
-/* Footer */
+[00 - TOC - NUMBERING]
+
+/* Reset Counter */
+html {counter-reset: section;}
+nav {counter-reset: section;}
+div.col-sm-9 {counter-reset: section;}
+h2 {counter-reset: subsection;}
+h3 {counter-reset: subsubsection;}
+h4 {counter-reset: subsubsubsection;}
+h5 {counter-reset: subsubsubsubsection;}
+
+/* Nummerering i teksten*/
+h2::before {
+    counter-increment: section;
+    content: counter(section) ". ";
+}
+h3::before {
+    counter-increment: subsection;
+    content: counter(section) "." counter(subsection) " ";
+}
+h4::before {
+    counter-increment: subsubsection;
+    content: counter(section) "." counter(subsection) "." counter(subsubsection) " ";
+}
+h5::before {
+    counter-increment: subsubsubsection;
+    content: counter(section) "." counter(subsection) "." counter(subsubsection)  "." counter(subsubsubsection) " ";
+}
+
+/* nummerering i jquery.tocify */
+.tocify-header li :nth-child(1):before {
+    counter-increment: section;
+    content: counter(section) " "; 
+   }
+.tocify-subheader {
+counter-reset:subsection;
+}
+.tocify-subheader li :nth-child(1):before {
+    counter-increment: subsection;
+    content: counter(section) "." counter(subsection) " ";
+   }
+.tocify-subheader .tocify-subheader {
+counter-reset:subsubsection;
+}
+.tocify-subheader .tocify-subheader li :nth-child(1):before {
+    counter-increment: subsubsection;
+    content: counter(section) "." counter(subsection) "." counter(subsubsection) " "
+   }
+.tocify-subheader .tocify-subheader .tocify-subheader {
+counter-reset:subsubsubsection;
+}
+.tocify-subheader .tocify-subheader .tocify-subheader li :nth-child(1):before {
+    counter-increment: subsubsubsection;
+    content: counter(section) "." counter(subsection) "." counter(subsubsection) "." counter(subsubsubsection) " "
+   }
+
+[00 - footer]
 
 footer {
 text-align: center;

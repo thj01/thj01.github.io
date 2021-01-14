@@ -7,10 +7,78 @@
  * 
 */
 
+code, output, pre, samp {
+font-family: ubuntu mono, mono-type, courier;
+}
+
+pre {
+tab-size: 4;
+margin: 0em 2em 2em 0em;
+padding: .2em .6em;
+background-color:#FFFFFF;
+border:1px solid #ccc;
+border-radius:4px
+}
+
+li>pre {
+margin-top: .5em;
+
+}
+
+code.list {
+tab-size: 4;
+margin: 0em 2em 2em 0em;
+padding: .2em .6em;
+background-color:#FFFFFF;
+border:1px solid #ccc;
+border-radius:4px;
+}
+
+
+
+samp {
+display:block;
+white-space: pre;
+background: #f6f6f6;
+border: 1px solid lightgrey;
+border-radius: .5em;
+padding: 2em 1em 1.5em 2em;
+margin: 2em 2em 2em 2em;
+line-height: 1.1em
+}
+
+samp::before {
+content: "  Output  ";
+display:block;
+margin: -3.9em 0em 1em 0em;
+padding: .2em 1.2em;
+background: #f6f6f6;
+border: 1px solid lightgrey;
+border-radius: .8em;
+width: 8.5em;
+font-size: .7em;
+font-weight: 700;
+letter-spacing: .1em
+}
+
+samp.terminal{
+background-color: #300a24 ;
+color: white;
+}
+
+samp.terminal::before {
+background-color: #474640;
+color:white;
+border: 0px solid #474640;
+
+
+
+
+}
+
 
 code.term {
 
-font-family: ubuntu mono, mono-type;
 display:table;
 margin:0 auto ;
 font-size: 1.05em;
@@ -21,34 +89,28 @@ white-space: pre-wrap;
 
 code.cmd {
 
-font-family: ubuntu mono, mono-type;
-display:inline-block;
+display:block;
 font-size: 1.05em;
 font-weight: 100;
-padding: .5em 1em;
-margin: 8px 10px 20px 0px;
+padding: 0.5em 1em;
+margin: .8em 1em .8em 1em;
 color: #404040;
 background-color: #D8D8D8 ;
-width: 880px;
 border-left-style: ridge;
 border-left-width: .5em;
 white-space: pre-wrap;
 }
 
 
-
-
 code.more_cmd {
 
-font-family: ubuntu mono, mono-type;
-display:inline-block;
+display:block;
 font-size: 1.05em;
 font-weight: 100;
-padding: .5em 1em;
-margin: -3px 10px 20px 0px;
+padding: 0.5em 1em;
+margin: -.1em 1em .8em 1em;
 color: #404040;
 background-color: #D8D8D8 ;
-width: 880px;
 border-left-style: ridge;
 border-left-width: .5em;
 white-space: pre-wrap;
@@ -56,7 +118,6 @@ white-space: pre-wrap;
 
 ol code.cmd {
 
-font-family: ubuntu mono, mono-type;
 display:inline-block;
 font-size: 1.05em;
 font-weight: 100;
@@ -72,7 +133,6 @@ white-space: pre-wrap;
 
 ol code.more_cmd {
 
-font-family: ubuntu mono, mono-type;
 display:inline-block;
 font-size: 1.05em;
 font-weight: 100;
@@ -88,7 +148,6 @@ white-space: pre-wrap;
 
 ul code.cmd {
 
-font-family: ubuntu mono, mono-type;
 display:inline-block;
 font-size: 1.05em;
 font-weight: 100;
@@ -104,7 +163,6 @@ white-space: pre-wrap;
 
 ul code.more_cmd {
 
-font-family: ubuntu mono, mono-type;
 display:inline-block;
 font-size: 1.05em;
 font-weight: 100;
@@ -125,7 +183,7 @@ white-space: pre-wrap;
 
 code.black {
 
-font-family:ubuntu+mono, courier  ;
+color: white;
 display:inline-block ;
 margin: auto;
 font-size: 1.15em;
@@ -140,20 +198,22 @@ white-space: pre-wrap;
 
 }
 
+
+
 pre.black {
 
-font-family:ubuntu+mono, courier  ;
+color: white;
 display: inline-block, table;
-font-size: 1.15em;
+font-size: 1em;
 font-weight: 100;
 line-height:20px;
-color: white;
 padding: 10px 8px;
 background-color: #300a24 ;
-width: 900px;
+width: 90%;
 white-space: pre-wrap;
 margin: auto;
-
+margin-top: 20px;
+margin-bottom: 16px;
 }
 
 
@@ -161,73 +221,80 @@ margin: auto;
 
 pre.ubuntu_terminal {
 
-font-family:ubuntu+mono, courier  ;
+font-family:ubuntu mono, courier  ;
+color: white;
 display:inline-block, table;
-font-size: 1.15em;
+font-size: 1em;
 font-weight: 100;
 line-height:20px;
-color: white;
 padding: 10px 5px 12px 5px;
 background-color: #300a24 ;
-width: 900px;
+width: 90%;
 border-top: 22px solid #474640;
 border-radius: 7px 7px 3px 3px;
 white-space: pre-wrap;
 margin:auto;
+margin-top: 20px;
 margin-bottom: 16px;
 }
 
-pre code {
 
+
+
+
+
+
+p.browser {
+font-family:ubuntu+mono, courier;
+color: darkblue;
+font-size: 1em;
+font-weight: 900;
+padding-left: 2px;
+margin-bottom: -2px;
+margin-top: 20px;
+background-color: grey ;
+color: white;
+
+}
+p.browser::before {
+content: "Browser Output:";
+
+}
+
+
+
+pre.browser {
 font-family:ubuntu+mono, courier  ;
 display:inline-block, table;
-margin: auto;
-font-size: 1.15em;
+font-size: 1em;
 font-weight: 100;
-color: white;
-padding: .4em .2em;
-background-color: #300a24 ;
-border-style: ridge;
-border-width: .2em;
+line-height:20px;
+padding: 10px 5px 12px 5px;
+background-color: white;
 white-space: pre-wrap;
-line-height: 150%
+margin-bottom: 20px;
+
+
 }
 
 
-
-blockquote.center {
-
-text-align: center;
-
-}
 
 blockquote {
-font-family: buntu, arial;
-background-color: LightBlue   ;
+font-family: ubuntu, arial;
+background-color: #f7f7f7  ;
 padding: 1.4em 1.4em;
 margin: 1.4em;
-font-size: 1.2em;
 line-height: 1.5em;
 border-radius: 24px;
-}
-
-blockquote a {
-
-font-size: 0.7em;
-text-align: center;
+font-size: 1.1em;
 }
 
 blockquote.alert{
 
 background-color: #FAFAD2   ;
 
+
 }
-
-blockquote.alert:before {
-
-content: "Vær opmærksom på";
-}
-
 
 blockquote.center{
 
@@ -235,39 +302,17 @@ text-align: center;
 
 }
 
+blockquote p a {
+width:90%;
+font-size: .7em;
+margin-bottom:;
+}
+
 
 /* http://www.w3schools.com/html/html_colornames.asp */
 
 
-span.green {color: green;}
 
-span.green1 {color: #78e234;}
-
-span.red {color: #ef2929;}
-
-span.blue {color: blue;}
-
-span.blue1 {color:#729fcf;}
-
-span.violet {color: Orchid   ;}
-
-span.purple {color: #300a24  ;}
-
-span.brown {color: #c4a000  ;}
-
-span.yellow {color: yellow  ;}
-
-span.cyan {color: DarkCyan  ;}
-
-span.turk {color: #34e2e2  ;}
-
-span.grey {color: grey}
-
-span.white {color: white;}
-
-span.white_bg {background-color: white; color: #300a24;}
-
-span.green1_bg {background-color:#78e234 ;}
 
 
 span.small {font-size: 1em;}
@@ -321,9 +366,9 @@ border-left: 1.5px solid #b6b6b6;
 border-top: 1.5px solid #b6b6b6;
 border-right: 1.5px solid #b6b6b6;
 border-bottom: 1.5px solid #949494;
-margin: 0px 5px 0px 5px;
+margin: 0em .3em 0em .3em;
 color: #333333;
-padding: 2px 10px 2px 10px;
+padding: 0px 10px 2px 10px;
 border-radius: 6px;
 
 /* IE10+ */ 
@@ -356,6 +401,7 @@ margin: 0px 5px 0px 5px;
 color: #333333;
 padding: 2px 6px 2px 6px;
 border-radius: 6px;
+white-space: nowrap;
 
 /* IE10+ */ 
 background-image: -ms-linear-gradient(top, #FDFDFD 0%, #ededeb 100%);
@@ -444,5 +490,32 @@ content: ">";
 
 }
 
+p#html_intro_kode_resulat{
 
+background-color: #EEEEEE;
+padding: 1em;
+
+}
+
+
+
+
+
+div.eksempel .headline1 {
+	font-family: Ubuntu, sans-serif;
+	font-weight: 700;
+	font-size: 2.3em;
+}
+
+div.eksempel .headline2 {
+	font-family: Ubuntu, sans-serif;
+	font-weight: 700;
+	font-size: 1.6em;
+}
+
+div.eksempel .headline3 {
+	font-family: Ubuntu, sans-serif;
+	font-weight: 700;
+	font-size: 1.3em;
+}
 

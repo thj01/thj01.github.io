@@ -1,5 +1,5 @@
 /*
- * jquery.tocify.css 1.9.0
+ * jquery.tocify.css 1.8.0
  * Author: @gregfranko
  */
 
@@ -60,59 +60,3 @@
 .nav-list > li > a {
     padding: 5px;
 }
-
-
-/*
-
-* nummerering i jquery.tocify
-* 
-* Er indsat i numbering.css
-* 
-* 	 
-	 
-	 
-
-.tocify-header li :nth-child(1):before {
-    counter-increment: section;
-    content: counter(section) " ";
-   }
-
-
-.tocify-subheader {
-counter-reset:subsection;
-}
-
-.tocify-subheader li :nth-child(1):before {
-    counter-increment: subsection;
-    content: counter(section) "." counter(subsection) " ";
-   }
-
-
-.tocify-subheader .tocify-subheader {
-counter-reset:subsubsection;
-}
-
-.tocify-subheader .tocify-subheader li :nth-child(1):before {
-    counter-increment: subsubsection;
-    content: counter(section) "." counter(subsection) "." counter(subsubsection) " ";
-   }
-
-.tocify-subheader .tocify-subheader .tocify-subheader {
-counter-reset:subsubsubsection;
-}
-
-.tocify-subheader .tocify-subheader .tocify-subheader li :nth-child(1):before {
-    counter-increment: subsubsubsection;
-    content: counter(section) "." counter(subsection) "." counter(subsubsection) "." counter(subsubsubsection) " ";
-   }
-
-
-*/
-
-
-
-
-
-
-
-

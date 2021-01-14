@@ -2,21 +2,16 @@
 	Her sættes nummereringen ved hjælp af CSS
 */
 
-
+/* Reset Counter */
 html {counter-reset: section;}
-
 nav {counter-reset: section;}
-
 div.col-sm-9 {counter-reset: section;}
-
 h2 {counter-reset: subsection;}
-
 h3 {counter-reset: subsubsection;}
-
 h4 {counter-reset: subsubsubsection;}
-
 h5 {counter-reset: subsubsubsubsection;}
 
+/* Nummerering i teksten*/
 h2::before {
     counter-increment: section;
     content: counter(section) ". ";
@@ -25,64 +20,38 @@ h3::before {
     counter-increment: subsection;
     content: counter(section) "." counter(subsection) " ";
 }
-
 h4::before {
     counter-increment: subsubsection;
     content: counter(section) "." counter(subsection) "." counter(subsubsection) " ";
 }
-
 h5::before {
     counter-increment: subsubsubsection;
     content: counter(section) "." counter(subsection) "." counter(subsubsection)  "." counter(subsubsubsection) " ";
 }
 
-/*
-	nummerering i jquery.tocify
-*/
-
-/*
- 
- Koden er herunder er blevet modificeret, så den kun tæller fra niveau 2
-
- Dvs. at den første
-  
- "counter(section) "." 
-
- ... er blevet fjernet
- 
-*/
-
-
+/* nummerering i jquery.tocify */
 .tocify-header li :nth-child(1):before {
     counter-increment: section;
-    content: ; 
+    content: counter(section) " "; 
    }
-
-
 .tocify-subheader {
 counter-reset:subsection;
 }
-
 .tocify-subheader li :nth-child(1):before {
     counter-increment: subsection;
-    content: counter(subsection) " ";
+    content: counter(section) "." counter(subsection) " ";
    }
-
-
 .tocify-subheader .tocify-subheader {
 counter-reset:subsubsection;
 }
-
 .tocify-subheader .tocify-subheader li :nth-child(1):before {
     counter-increment: subsubsection;
-    content: counter(subsection) "." counter(subsubsection) " "
+    content: counter(section) "." counter(subsection) "." counter(subsubsection) " "
    }
-
 .tocify-subheader .tocify-subheader .tocify-subheader {
 counter-reset:subsubsubsection;
 }
-
 .tocify-subheader .tocify-subheader .tocify-subheader li :nth-child(1):before {
     counter-increment: subsubsubsection;
-    content: counter(subsection) "." counter(subsubsection) "." counter(subsubsubsection) " "
+    content: counter(section) "." counter(subsection) "." counter(subsubsection) "." counter(subsubsubsection) " "
    }

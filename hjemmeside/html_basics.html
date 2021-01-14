@@ -105,12 +105,14 @@
 	<dd>Stærkt fremhævet tekst - tekst der skal stå mere frem fra teksten en fremhævet. Bliver vist som fed</dd>
 	<dt>&lt;code></dt>
 	<dd>kode - kodeeksempler</dd>
+	<dt>&lt;dnf></dt>
+	<dd>Definition - begreb der defineres indenfor den samme kontakte (f.eks. et p-element)</dd>
 	<dt>&lt;ol></dt>
 	<dd>Ordnede lister - lister hvor rækkefølge er vigtigt</dd>
 	<dt>&lt;ul></dt>
 	<dd>uordnede lister - lister med opremsninger</dd>
 	<dt>&lt;dl></dt>
-	<dd>Beskrivelsesluster</dd>
+	<dd>Beskrivelsesliste (dataliste)</dd>
 	<dt>&lt;table></dt>
 	<dd></dd>
 
@@ -131,17 +133,15 @@
 
 <h3>Tomme elementer</h3>
 
-<p>Et tomt element har ingen tekstreng, og anvendes f.eks. til at angive en indstilling, som f.eks. <span class="inl_cmd">&lt;!DOCTYPE HTML></span> der fortælller angiver at det er et <abbr title="">HTML5</abbr> dokument eller <span class="inl_cmd">&lt;img></span> der angiver stien til et billede/illustration.</p>
-
-<p>Tomme elementer afsluttes ikke, og har derfor ikke behov for <em>/</em> til sidst.</p>
+<p>Et tomt element har ingen tekstreng, og anvendes f.eks. til at angive en indstilling, som f.eks. <em>&lt;!DOCTYPE HTML></em> der fortælller angiver at det er et <em>HTML5</em> dokument eller <em>&lt;img></em></span> der angiver stien til et billede/illustration.</p>
 
 <h3>Ikke-tomme elementer</h3>
 
-<p>De ikke-tomme elementer indeholder tekstrenge som f.eks. <span class="inl_cmd">&lt;p><span class="red"> *** TEKSTSTRENG *** </span><span class="inl_cmd">&lt;/p></span>(se ovenfor).</p>
+<p>De ikke-tomme elementer indeholder tekstrenge som f.eks. &lt;p>, &lt;em> og &lt;strong>(se ovenfor).</p>
 .
 <h3>Blok-elementer</h3>
 
-<p>Et <span class="inl_cmd">blok-element</span> resulterer i et linieskift når det slutter. <span class="inl_cmd">Blok-elementer</span> er f.eks:</p>
+<p>Et <em>blok-element</em> resulterer i et linieskift når det slutter. <em>Blok-elementer</em> er f.eks:</p>
 
 <ul class="disc">
 	<li>&lt;div></li>
@@ -149,9 +149,11 @@
 	<li>&lt;p></li>
 </ul>
 
+
+
 <h3>Inline-elementer</h3>
 
-<p><span class="inl_cmd">Inline-elementer</span> er afgrænset til tekststrengen, og kan anvendes inde i <span class="inl_cmd">blok-elementer</span>. <span class="inl_cmd">Inline-elementer</span> er f.eks:</p>
+<p><em>Inline-elementer</em> er afgrænset til tekststrengen, og kan anvendes inde i <em>blok-elementer</em>. <em>Inline-elementer</em> er f.eks:</p>
 
 <ul class="disc">
 	<li>&lt;span></li>
@@ -163,7 +165,7 @@
 
 <h2>Opbygning</h2>
 
-<p>Illustrationen herunder viser hvordan en webside er bygget op efter HTML5 specifikationen. Siden starter med at sige at det er en HTML5 side (<span class="inl_cmd">&lt;!DOCTYPE></span>). Denne linie sørger for at browseren vil læse dokumentet som et HTML5 dokument. Når dokumenttypen er erklæret, kommer indholdet, som er pakket ind i <span class="inl_cmd">elementer</span>.</p>
+<p>Illustrationen herunder viser hvordan en webside er bygget op efter HTML5 specifikationen. Siden starter med at sige at det er en HTML5 side (<em>&lt;!DOCTYPE></em>). Denne linie sørger for at browseren vil læse dokumentet som et HTML5 dokument. Når dokumenttypen er erklæret, kommer indholdet, som er pakket ind i <em>elementer</em>.</p>
 
 <p>Du kan se grundopbygningen af et HTML dokument herunder</p>
 
@@ -181,23 +183,23 @@
 
 <h3>&lt;!DOCTYPE html></h3>
 
-<p><span class="inl_cmd">&lt;!DOCTYPE html></span> er den tag, der fortæller at det er HTML5 dokument. Det gør browseren og søge maskiner opmærksom på hvordan siden er struktureret og dermed også hvordan der kan søges i den. Den angiver også versionen for hjemmesideprogrammøren. </p>
+<p><em>&lt;!DOCTYPE html></em> er den tag, der fortæller at det er HTML5 dokument. Det gør browseren og søge maskiner opmærksom på hvordan siden er struktureret og dermed også hvordan der kan søges i den. Den angiver også versionen for hjemmesideprogrammøren. </p>
 
 <h3>&lt;html></h3>
 
-<p>Selve HTML dokumentet skal være pakket ind i et <span class="inl_cmd">html</span> element. På den måde ved browseren hvornår html-koden starter og stopper.</p>
+<p>Selve HTML dokumentet skal være pakket ind i et <em>html></em> element. På den måde ved browseren hvornår html-koden starter og stopper.</p>
 
 <h3>&lt;head></h3>
 
-<p>I <span class="inl_cmd">head</span> sættes alle de paramtrere der overordnet gælder for hele dokumentet. Det er her sidens titel, sprog, tegnsæt, opsætning og scripts sættes og aktiveres.</p>
+<p>I <em>&lt;head></em> sættes alle de paramtrere der overordnet gælder for hele dokumentet. Det er her sidens titel, sprog, tegnsæt, opsætning og scripts sættes og aktiveres.</p>
 
-<p>Det som står i <span class="inl_cmd">&lt;title></span> er det som vil blive vist i den fane der hører til siden i browseren.</p>
+<p>Det som står i <em>&lt;title></em> er det som vil blive vist i den fane der hører til siden i browseren.</p>
 
-<p>Man kan med fordel sætte javascripts i bunden af dokumentet efter <span class="inl_cmd">&lt;body></span>, da det kan gøre kørslen af koden hurtigere.</p>
+<p>Man kan med fordel sætte javascripts i bunden af dokumentet efter <em>&lt;body></em>, da det kan gøre kørslen af koden hurtigere.</p>
 
 <h3>&lt;body></h3>
 
-<p>I <span class="inl_cmd">body</span> er de data der vises af browseren.</p>
+<p>I <em>&lt;body></em> er de data der vises af browseren.</p>
 
 <h2>En simpel skabelon</h2>
 
@@ -205,7 +207,7 @@
 
 <p><b>Download skabelon: </b><a href="files/html_skabelon.zip" target="_blank">html_skabelon.zip</a></p>
 
-<p>Zip-filen indeholder mappem <span class="inl_cmd">html</span>, der har følgende struktur:</p>
+<p>Zip-filen indeholder mappen <em>html></em>, der har følgende struktur:</p>
 
 <figure id="">
 
@@ -215,37 +217,25 @@
 
 </figure>
 
-<p>I selve roden (<span class="inl_cmd">html</span>) ligger filen <span class="inl_cmd">index.html</span>. Dette er navnestandarden for hovedsiden. Vær opmærksom på at det skal være med små bogstaver.</p>
+<p>I selve roden (<em>html></em>) ligger filen <em>index.html</em>. Dette er navnestandarden for hovedsiden. Vær opmærksom på at det skal være med små bogstaver.</p>
 
 <p>I rodmappen ligger også mapperne:</p>
 
-<ul class="none fat_li">
-
-	<li>css</li>
-	
-		<p>Indeholder alle <abbr title="Cascading Style Sheets ">CSS</abbr> (<b>C</b>ascading <b>S</b>tyle <b>S</b>heets). Det er i disse filer at sidens udseende og design skal sættes op.</p>
-		
-		<p>Her er filen <span class="inl_cmd">style.css</span> allerede oprettet, så man kan indsætte CSS kode deri.</p>
-	
-	<li>files</li>
-	
-		<p>Indeholder alle filer der kan downloades fra hjemmesiden, f.eks. <span class="inl_cmd">PDF-</span> eller <span class="inl_cmd">zip-</span>filer.</p>
-		
-	<li>images</li>
-	
-		<p>Indeholder alle de billed og grafikfiler der anvendes på hjemmesiden</p>
-		
-	<li>js</li>
-	
-		<p><abbr title="Java Script">js</abbr> (<b>J</b>ava <b>S</b>cript) mappen indeholder de lokale Java Script filer der anvendes på siden.</p>
-
-</ul>
-
+<dl class="">
+	<dt>css</dt>
+	<dd>Indeholder alle CSS-filer. Det er i disse filer at sidens udseende og design skal sættes op. Her er filen <em>style.css</em> allerede oprettet, så man kan indsætte CSS kode deri.</dd>
+	<dt>files</dt>
+	<dd>Indeholder alle filer der kan downloades fra hjemmesiden, f.eks. PDF- eller zipfiler.</dd>
+	<dt>images</dt>
+	<dd>Indeholder alle de billed og grafikfiler der anvendes på hjemmesiden</dd>
+	<dt>js</dt>
+	<dd><abbr title="Java Script">js</abbr> (Java Script) mappen indeholder de lokale Java Script filer der anvendes på siden.</dd>
+</dl>
 
 
 <h3>index.html</h3>
 
-<p>Skabelonens <span class="inl_cmd">index.html</span> er vist herunder. De vigtigste ting (sprog, stylesheet og titel) er konfigureret i <span class="inl_cmd">&lt;head></span> og selve hjemmesiden har en overskrift og en brødtekst.</p>
+<p>Skabelonens <em>index.html</em> er vist herunder. De vigtigste ting (sprog, stylesheet og titel) er konfigureret i <em>&lt;head></em> og selve hjemmesiden har en overskrift og en brødtekst.</p>
 
 
 
