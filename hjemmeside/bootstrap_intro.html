@@ -109,7 +109,9 @@
 
 <p>Selve sidens indhold bygges op ved hjælp af <em>containere</em></p>
 
-<h3>Containers</h3>
+
+
+<h2>Containers</h2>
 
 <p>Bootstrap sider opbygges af <em>&lt;div&lt;</em> -elementer, der får tildelt klassen <code class="">container</code>.</p>
 
@@ -158,83 +160,6 @@
 
 <p><a href="https://www.w3schools.com/bootstrap4/bootstrap_jumbotron.asp" target="_blank">https://www.w3schools.com/bootstrap4/bootstrap_jumbotron.asp</a></p>
 
-<h2>Sidens bredde</h2>
-
-<p>Du kan designe containerens størrelse ved hjælp af klasser.</p>
-
-<table class="w-100">
-  <thead>
-    <tr>
-      <th>Class</th>
-      <th>
-        Extra small<br>
-        &lt;576px
-      </th>
-      <th>
-        Small<br>
-        &#8805;576px
-      </th>
-      <th>
-        Medium<br>
-        &#8805;768px
-      </th>
-      <th>
-        Large<br>
-        &#8805;992px
-      </th>
-      <th>
-        Extra large<br>
-        &#8805;1200px
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code class="html">.container-sm</code></td>
-      <td>100%</td>
-      <td>540px</td>
-      <td>720px</td>
-      <td>960px</td>
-      <td>1140px</td>
-    </tr>
-    <tr>
-      <td><code class="html">.container-md</code></td>
-      <td>100%</td>
-      <td>100%</td>
-      <td>720px</td>
-      <td>960px</td>
-      <td>1140px</td>
-    </tr>
-    <tr>
-      <td><code class="html">.container-lg</code></td>
-      <td>100%</td>
-      <td>100%</td>
-      <td>100%</td>
-      <td>960px</td>
-      <td>1140px</td>
-    </tr>
-    <tr>
-      <td><code class="html">.container-xl</code></td>
-      <td>100%</td>
-      <td>100%</td>
-      <td>100%</td>
-      <td>100%</td>
-      <td>1140px</td>
-    </tr>
-    <tr>
-      <td><code class="html">.container-fluid</code></td>
-      <td>100%</td>
-      <td>100%</td>
-      <td>100%</td>
-      <td>100%</td>
-      <td>100%</td>
-    </tr>    
-  </tbody>
-</table>
-
-<p>Hvis du laver en container med klassen <code class="">container-md</code> betyder det, at siden vil have 100% bredde på enheder med skærmstørrelse mindre en 992px. Er skærmen over 1200px, så vil maxstørrelse blive sat til 1140px</p>
-
-<p>Sætter du skærmen til <code class="">container-fluid</code>, så vil hjemmesiden altid fylde 100% af skærmen, med mindre du har givet <em>&lt;body></em> elementet en <code class="">max-width</code>.</p>
 
 <h2>Containerens proportioner og udseende</h2>
 
@@ -347,9 +272,9 @@
 
 <p>Her er margin vist med det grå område. Den grå ramme omkring teksten angiver margin hvor selve elementet er.</p>
 
-<div class="alert alert-success">
+<div class="alert">
 	
-	<p>Hej</p>
+	<p>Vær opmærksom på at marginer kan gå ind over hinanden. Hvis et element har en bundmargin på 3 og elementet nedenunder har et top element på 3, så vil margin mellem dem kun være 3.</p>
 
 </div>
 
@@ -417,15 +342,199 @@
 
 <p>Størrelser: <a href="https://www.w3schools.com/cssref/css_units.asp" target="_blank">https://www.w3schools.com/cssref/css_units.asp</a></p>
 
+<h2>Responsive design</h2>
+
+<p>En af Bootstraps helt store fordele er, at du kan designe hvordan dine sider skal se ud på forskellige enheder. Det gør Bootstrap efter følgende skema:</p>
 
 
+<table class="w-100">
+  <thead>
+    <tr>
+      <th>Class</th>
+      <th>
+        Extra small<br>
+        &lt;576px
+      </th>
+      <th>
+        Small<br>
+        &#8805;576px
+      </th>
+      <th>
+        Medium<br>
+        &#8805;768px
+      </th>
+      <th>
+        Large<br>
+        &#8805;992px
+      </th>
+      <th>
+        Extra large<br>
+        &#8805;1200px
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="html">.container-sm</code></td>
+      <td>100%</td>
+      <td>540px</td>
+      <td>720px</td>
+      <td>960px</td>
+      <td>1140px</td>
+    </tr>
+    <tr>
+      <td><code class="html">.container-md</code></td>
+      <td>100%</td>
+      <td>100%</td>
+      <td>720px</td>
+      <td>960px</td>
+      <td>1140px</td>
+    </tr>
+    <tr>
+      <td><code class="html">.container-lg</code></td>
+      <td>100%</td>
+      <td>100%</td>
+      <td>100%</td>
+      <td>960px</td>
+      <td>1140px</td>
+    </tr>
+    <tr>
+      <td><code class="html">.container-xl</code></td>
+      <td>100%</td>
+      <td>100%</td>
+      <td>100%</td>
+      <td>100%</td>
+      <td>1140px</td>
+    </tr>
+    <tr>
+      <td><code class="html">.container-fluid</code></td>
+      <td>100%</td>
+      <td>100%</td>
+      <td>100%</td>
+      <td>100%</td>
+      <td>100%</td>
+    </tr>    
+  </tbody>
+</table>
+
+<p>Hvis du laver en container med klassen <code class="">container-md</code> betyder det, at siden vil have 100% bredde på enheder med skærmstørrelse mindre en 992px. Er skærmen over 1200px, så vil maxstørrelse blive sat til 1140px</p>
+
+<p>Sætter du skærmen til <code class="">container-fluid</code>, så vil hjemmesiden altid fylde 100% af skærmen, med mindre du har givet <em>&lt;body></em> elementet en <code class="">max-width</code>.</p>
+
+
+<p>Uden at gøre noget vil siden opføre sig ud fra, at den kan tilpasse sig mobile enheder - det som kaldes <code class="">.container-sm</code></p>
+
+<p>Jeg har lavet en række eksempelside hvor du løbende kan afprøve det der lige er gennemgået. Siden bliver åbnet i et nyt vindue med størrelsen 1300x800px, og du kan se bredden af siden øverst.</p>
+
+<p>Testside 1: Uden tilpasning af responsive design (<a href="BS-examples/BSS-only_containers.html" target="popup" onclick="window.open('BS-examples/BSS-only_containers.html','name','width=1300,height=800')">BS-examples/BSS-only_containers.html</a>)</p>
+
+<p>Her vises en testside, hvor hver af containerne fået hver deres klasse fra skemaet</p>
+
+<p>Testside 2: Med simpel tilpasning efter skema (<a href="BS-examples/BSS-only_containers_responsive_simple.html" target="popup" onclick="window.open('BS-examples/BSS-only_containers_responsive_simple.html','name','width=1300,height=800')">BSS-only_containers_responsive_simple.html</a>)</p>
+
+<p>Du kan designe containerens størrelse ved hjælp af klasser.</p>
 
 <h2>Grid</h2>
 
-<p>Du kan designe opbygningen af siden på forskellige enheder, med Gridsystemet.</p>
+<p>Indtil nu har vi kun kigget på den horisontale opbygning af bootstrapsider. Her vil vi kigge på hvordan vi kan designe sider vertikalt (lodret). Det gør vi ved hjælp af et <em>grid</em> - system (spalter).</p>
+
+<p>Bootstrap arbejder med 12 spalter.og man vælger selv hvordan man vil sætte dem sammen.</p>
+
+<table class="bootstrap_grid_table centreret w-100" style="height:160px">
+	<tr >
+		<td>span-1</td>
+		<td>span-1</td>
+		<td>span-1</td>
+		<td>span-1</td>
+		<td>span-1</td>
+		<td>span-1</td>
+		<td>span-1</td>
+		<td>span-1</td>
+		<td>span-1</td>
+		<td>span-1</td>
+		<td>span-1</td>
+		<td>span-1</td>
+	</tr>
+</table>
+
+<p>Lad os tage udgangspunkt i denne hjemmeside <a href="http://www.vidas.dk/" target="_blank">http://www.vidas.dk/</a>. Her har jeg valgt at inddele siden i  2 kolonner, hvor menuen har 3 spalter, og indholdet har 9 spalter</p>
+
+<table class="bootstrap_grid_table centreret w-100" style="height:160px">
+	<tr>
+		<td class="h-25">span-1</td>
+		<td>span-1</td>
+		<td>span-1</td>
+		<td>span-1</td>
+		<td>span-1</td>
+		<td>span-1</td>
+		<td>span-1</td>
+		<td>span-1</td>
+		<td>span-1</td>
+		<td>span-1</td>
+		<td>span-1</td>
+		<td>span-1</td>
+	</tr>
+	<tr>
+		<td colspan="3">Menu: 3 kolonner<br>(col-3)</td>
+		<td colspan="9">Indhold: 9 kolonner<br>(col-9)</td>
+	</tr>
+</table>
+
+<p>Måden man gør det på er at oprette en <em>&lt;div></em> med klassen <code class="">.row</code>. Inde i den div opretter man sin opdeling ved at oprette en <em>&lt;div></em> med klassen <code class="">col-X</code>, hvor <em>X</em> beskriver antallet af kolonner</p>
+
+<pre><code>&lt;div class="row">
+	&lt;div class="col-3">
+		[Her ligger menuen på vidas.dk]
+	&lt;/div>
+	&lt;div class="col-9">
+		[Her ligger indholdet på vidas.dk]
+	&lt;/div>
+&lt;/div></code></pre>
 
 
 
+<h2>Underindelinger</h2>
+
+
+
+
+
+<!--
+
+
+<table class="bootstrap_grid_table centreret">
+    <tr>
+        <td>span 1</td>
+        <td>span 1</td>
+        <td>span 1</td>
+        <td>span 1</td>
+        <td>span 1</td>
+        <td>span 1</td>
+        <td>span 1</td>
+        <td>span 1</td>
+        <td>span 1</td>
+        <td>span 1</td>
+        <td>span 1</td>
+        <td>span 1</td>
+    </tr>
+    <tr>
+        <td colspan="4">span 4</td>
+        <td colspan="4">span 4</td>
+        <td colspan="4">span 4</td>
+    </tr>
+    <tr>
+        <td colspan="4">span 4</td>
+        <td colspan="8">span 8</td>
+    </tr>
+    <tr>
+        <td colspan="6">span 6</td>
+        <td colspan="6">span 6</td>
+    </tr>
+    <tr>
+        <td colspan="12">span 12</td>
+    </tr>
+</table>
+-->
 
 
 
