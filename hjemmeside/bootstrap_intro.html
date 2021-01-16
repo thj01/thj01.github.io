@@ -41,90 +41,394 @@
 	
 <h1>Bootstrap - Intro</h1>
 
-<h2>Hvad er bootstrap</h2>
+<p>Bootstrap er et <em>HTML-framework</em>, som oprindeligt er blevet udviklet af <em>Twitter</em>. Fordelene ved bootstrap er:</p>
 
-<p>Bootstrap er et <span class="inl_cmd">HTML-Framework</span> der oprindeligt blev udvilket af Twitter, men som er gået hen og blevet et meget aktivt opensource projekt.</p>
+<dl class="">
+	<dt>Responsive design og mobile first</dt>
+	<dd>Simpel styring af design på forskellige enheder: telefoner, tablets, små og store skærme.</dd>
+	<dt>Modular opbygning</dt>
+	<dd>Sider opbygges ved at oprette fortløbende moduler. Kaldes <em>containers</em> i bootstrap.</dd>
+	<dt>Grundlæggende design af udseende</dt>
+	<dd>Bootstrap har nogle visuelle design, som kan bruges direkte og uden det store kendskab til CSS.</dd>
+	<dt>Open source</dt>
+	<dd>Bootstrap frit anvendeligt, og kan bruges uden forbehold.</dd>
+	<dt>Gode guides på nettet</dt>
+	<dd>Der findes en masse gode guides på nettet, og google kan hjælpe med at finde løsninger på mange af dine udfordringer.</dd>
+</dl>
 
-<p>Ved hjælp af bootstrap kan man hurtigt udvikle websider og applikationer.</p>
+<p>I dette materiale tager jeg udgangspunkt i Bootstrap 4 og guides fra <em>w3schools</em>: <a href="https://www.w3schools.com/bootstrap4/" target="_blank">https://www.w3schools.com/bootstrap4/</a>. Der vil løbende blive henvist til sider herfra:</p>
 
-<h3>Dette materiale</h3>
+<div class="alert">
+	
+	<p>Dette afsnit forudsætter at du har kendskab til basale ting om HTML. Du kan finde mine guides om dette her:</p>
+	
+	<dl class="">
+		<dt>HTML basics</dt>
+		<dd><a href="file:///home/tj/git/thj01.github.io/hjemmeside/html_basics.html" target="_blank">html_basics.html</a></dd>
+		<dt>HTML tekst og billeder</dt>
+		<dd><a href="file:///home/tj/git/thj01.github.io/hjemmeside/html_tekst_og_billeder.html" target="_blank">html_tekst_og_billeder.html</a></dd>
+		<dt>HTML CSS</dt>
+		<dd><a href="file:///home/tj/git/thj01.github.io/hjemmeside/html_CSS.html" target="_blank">html_CSS.html</a></dd>
+		<dt>HTML lister</dt>
+		<dd><a href="file:///home/tj/git/thj01.github.io/hjemmeside/html_lister.html" target="_blank">html_lister.html</a></dd>
+		<dt>HTML tabeller</dt>
+		<dd><a href="file:///home/tj/git/thj01.github.io/hjemmeside/html_tabeller.html" target="_blank">html_tabeller.html</a></dd>
 
-<p>Dette materiale tager udgangspunkt i dokumentationen fra <a href="http://www.w3schools.com/bootstrap/default.asp" target="_blank">w3schools</a>.</p>
+	</dl>
 
-<p>Der vil blive henvist til nogle sider som der skal arbejdes med og så vil der blive stillet nogle </p>
+</div>
 
 
-<h3>Bootstrap prototyper</h3>
+<h2>Bootstrap - opbygning</h2>
 
-<p></p>
+<p>Bootstrap sider har følgende opbygning:</p>
 
-<p>Det er også muligt at downloade en prototyper, som man kan anvende til hurtigt at lave sider med, og den skal vi kigge på når der er forståelse for den underliggende formatering.</p>
+<pre><code class="html">&lt;!DOCTYPE html>
+&lt;html lang="da">
+&lt;head>
+  &lt;title>Bootstrap Example&lt;/title>
+  &lt;meta charset="utf-8">
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1">
+  &lt;link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  &lt;script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">&lt;/script>
+  &lt;script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js">&lt;/script>
+&lt;/head>
+&lt;body>
 
-<p><b>Pingendo:</b> <a href="http://www.pingendo.com/" target="_blank">http://www.pingendo.com/</a></p>
+*** bootstrap indhold ***
 
-<h2>Overblik over w3schools</h2>
 
-<p><span class="inl_cmd">W3schools</span> er den online ressource man har brug for som webudvikler. Når man kommer ind på hovedsiden har den henvisinger til sine tutorials. Gå ind på: <a href="http://www.w3schools.com/" target="_blank">http://www.w3schools.com/</a>.</p>
+&lt;/body>
+&lt;/html></code></pre>
+
+<div class="alert">
+	
+	<p>Det kan være en fordel at anvende tjenester som <em>maxcdn</em> eller <em>cloudflare</em> til at hente CSS og JS filer, da mange brugere allerede har dem liggende på deres enheder - fordi bootstrap er så udbredt som det er.</p>
+
+</div>
+
+<p>Selve sidens indhold bygges op ved hjælp af <em>containere</em></p>
+
+<h3>Containers</h3>
+
+<p>Bootstrap sider opbygges af <em>&lt;div&lt;</em> -elementer, der får tildelt klassen <code class="">container</code>.</p>
 
 <figure id="">
 
-	<img class="p90" src="images/bootstrap_w3schools_01.png" alt="" title="" />
+	<img class="p90" src="images/bootstrap_containers.svg" alt="_" title="_" />
+
+	<figcaption>_</figcaption>
+
+</figure>
+
+<p>Sidens indhold lægges i disse containers</p>
+
+<pre><code class="html">&lt;div class="container">
+
+	*** Indhold af første container ***
+	
+&lt;/div>
+
+&lt;div class="container">
+
+	*** Indhold af første container ***
+	
+&lt;/div>
+
+&lt;div class="container">
+
+	*** Indhold af første container ***
+	
+&lt;/div></code></pre>
+
+<p>Bootstrap har en indbygget <em>Call to action</em> -container der kaldes en <em>jumbotron</em>. Den skal altid lægges øverst på siden.</p>
+
+<pre><code class="html">&lt;div class="container">
+  &lt;div class="jumbotron">
+    &lt;h1>Overskrift&lt;/h1>      
+    &lt;p>Beskrivelse af sidens indhold&lt;/p>
+  &lt;/div>
+&lt;/div></code></pre>
+
+<p>Fordelen ved at anvende <em>jumbotrons</em> er, at du kan designe sidehovedet, da <em>jumbotron</em> -klassen har en masse standardindstillinger.</p>
+
+<p><strong>Læs mere om containers</strong></p>
+
+<p><a href="https://www.w3schools.com/bootstrap4/bootstrap_containers.asp" target="_blank">https://www.w3schools.com/bootstrap4/bootstrap_containers.asp</a></p>
+
+<p><a href="https://www.w3schools.com/bootstrap4/bootstrap_jumbotron.asp" target="_blank">https://www.w3schools.com/bootstrap4/bootstrap_jumbotron.asp</a></p>
+
+<h2>Sidens bredde</h2>
+
+<p>Du kan designe containerens størrelse ved hjælp af klasser.</p>
+
+<table class="w-100">
+  <thead>
+    <tr>
+      <th>Class</th>
+      <th>
+        Extra small<br>
+        &lt;576px
+      </th>
+      <th>
+        Small<br>
+        &#8805;576px
+      </th>
+      <th>
+        Medium<br>
+        &#8805;768px
+      </th>
+      <th>
+        Large<br>
+        &#8805;992px
+      </th>
+      <th>
+        Extra large<br>
+        &#8805;1200px
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="html">.container-sm</code></td>
+      <td>100%</td>
+      <td>540px</td>
+      <td>720px</td>
+      <td>960px</td>
+      <td>1140px</td>
+    </tr>
+    <tr>
+      <td><code class="html">.container-md</code></td>
+      <td>100%</td>
+      <td>100%</td>
+      <td>720px</td>
+      <td>960px</td>
+      <td>1140px</td>
+    </tr>
+    <tr>
+      <td><code class="html">.container-lg</code></td>
+      <td>100%</td>
+      <td>100%</td>
+      <td>100%</td>
+      <td>960px</td>
+      <td>1140px</td>
+    </tr>
+    <tr>
+      <td><code class="html">.container-xl</code></td>
+      <td>100%</td>
+      <td>100%</td>
+      <td>100%</td>
+      <td>100%</td>
+      <td>1140px</td>
+    </tr>
+    <tr>
+      <td><code class="html">.container-fluid</code></td>
+      <td>100%</td>
+      <td>100%</td>
+      <td>100%</td>
+      <td>100%</td>
+      <td>100%</td>
+    </tr>    
+  </tbody>
+</table>
+
+<p>Hvis du laver en container med klassen <code class="">container-md</code> betyder det, at siden vil have 100% bredde på enheder med skærmstørrelse mindre en 992px. Er skærmen over 1200px, så vil maxstørrelse blive sat til 1140px</p>
+
+<p>Sætter du skærmen til <code class="">container-fluid</code>, så vil hjemmesiden altid fylde 100% af skærmen, med mindre du har givet <em>&lt;body></em> elementet en <code class="">max-width</code>.</p>
+
+<h2>Containerens proportioner og udseende</h2>
+
+<p>Udover siden bredde, kan du også designe de enkelte containeres proportioner og udseende. Herunder er fra <em>boks-modellen</em>.</p>
+
+<figure id="">
+
+	<img class="w-75" src="images/HTML5_css_boksmodel.svg" alt="" title="">
 
 	<figcaption></figcaption>
 
 </figure>
 
-<p>Vælg <span class="inl_cmd">Tutorials</span> og klik på <span class="inl_cmd">Learn Bootstrap</span></p>
+<h3>Grundliggende om proportioner og udseende</h3>
 
-<figure id="">
+<p>Bootstrap bruger en konstant måde at navngive sine klasser. Klasserne bliver gennemgået længere nede.</p>
 
-	<img class="p90" src="images/bootstrap_w3schools_02.png" alt="" title="" />
+<dl class="not_strong">
+	<dt><code class="">.w-XX</code></dt>
+	<dd><em>width</em> (bredde) - kan være 25,50,75,100%, auto</dd>
+	<dt><code class="">h-XX</code></dt>
+	<dd><em>height</em> (højde) - kan være 25,50,75,100%, auto</dd>
+	<dt><code class="">p-XX</code></dt>
+	<dd><em>padding</em> - kan være 0, 1, 2, 3, 4, 5, som størrelse i fht. sidens standardskrift </dd>
+	<dt><code class="">m-XX</code></dt>
+	<dd><em>margin</em> - kan være 0, 1, 2, 3, 4, 5</dd>
+	<dt><code class="">border</code></dt>
+	<dd><em>rammen</em> - hvordan rammen skal se ud</dd>
+</dl>
 
-	<figcaption></figcaption>
 
-</figure>
+<h3>width og height</h3>
 
-<p>De tutorials der skal arbejdes med står ude i venstre side</p>
+<p><em>width</em> og <em>height</em> bliver sat i % af sidens bredde.</p>
 
-<figure id="">
+<p><em>width:</em></p>
 
-	<img class="p90" src="images/bootstrap_w3schools_03.png" alt="" title="" />
+<p class="w-25 bg-success">w-25</p>
+<p class="w-50 bg-success">w-50</p>
+<p class="w-75 bg-success">w-75</p>
+<p class="w-100 bg-success">w-100</p>
+<p class="w-auto bg-success">w-auto</p>
 
-	<figcaption></figcaption>
+<details>
 
-</figure>
+	<summary>Se koden til <em>width</em></summary>
 
-<h2>Din første Bootstrap side</h2>
+<pre><code class="html">&lt;p class="w-25 bg-success">w-25&lt;/p>
+&lt;p class="w-50 bg-success">w-50&lt;/p>
+&lt;p class="w-75 bg-success">w-75&lt;/p>
+&lt;p class="w-100 bg-success">w-100&lt;/p>
+&lt;p class="w-auto bg-success">w-auto&lt;/p></code></pre>
 
-<p>For at prøve din første bootstrap side af skal du scrolle lidt ned på <span class="inl_cmd">BS HOME</span> siden indtil du når til <span class="inl_cmd">Bootstrap Example</span>. Her kan du se et eksempel på den måde Bootstrap er opbygget.</p>
+</details>
 
-<figure id="">
+<p><em>height</em></p>
 
-	<img class="p90" src="images/bootstrap_w3schools_04.png" alt="" title="" />
+<p>Herunder kan du se hvad <em>h-XX</em> klassen gør. Rækken herunder er sat til 200px i højden. <em>h-XX</em> bruges så til at sætte højden på hver af rækkerne.</p>
 
-	<figcaption></figcaption>
 
-</figure>
+<div class="row" style="height:200px" >
 
-<p>Når du klikker på <span class="inl_cmd">Try it Yourself >></span>, kommer du ind på en interaktiv side, hvor du kan se resulatet af koden. Læg mærke til at der nu er kommet en <span class="inl_cmd">Header</span> på med henvisning til CSS- og JavaScriptfiler der skal hentes fra nettet.</p>
+	<div class="col-3 h-100 border bg-light" >h100</div>
+	<div class="col-3 h-75 border bg-light">h-75</div>
+	<div class="col-3 h-50 border bg-light">h-50</div>
+	<div class="col-3 h-25 border bg-light" >h-25</div>
 
-<figure id="">
+</div>
 
-	<img class="p90" src="images/bootstrap_w3schools_05.png" alt="" title="" />
+<details>
 
-	<figcaption></figcaption>
+	<summary>Se koden til <em>height</em></summary>
 
-</figure>
+<pre><code class="html">&lt;div class="row" style="height:200px" >
 
-<p>Vil du ikke have siden opdelt højre-venstre, kan du klikke på ikonet i øverste linie så det bliver øverst-nederst.</p>
+	&lt;div class="col-3 h-100 border bg-light" >h100&lt;/div>
+	&lt;div class="col-3 h-75 border bg-light">h-75&lt;/div>
+	&lt;div class="col-3 h-50 border bg-light">h-50&lt;/div>
+	&lt;div class="col-3 h-25 border bg-light" >h-25&lt;/div>
 
-<figure id="">
+&lt;/div></code></pre>
 
-	<img class="p90" src="images/bootstrap_w3schools_06.png" alt="" title="" />
+</details>
 
-	<figcaption></figcaption>
+<h3>Ramme</h3>
 
-</figure>
+<p>I eksemplet ovenfor er der sat en ramme omkring de enkelte kolonner. De er sat med klassen <code class="">border</code></p>
+
+<h3>Padding</h3>
+
+<p>Padding fortæller hvor stor afstanden er fra indholdet til elementets kant. Her er det vist med afstand fra tekst til kanten.</p>
+
+<dl class="not_strong">
+	<dt>p-0 : Ingen afstand </dt>
+	<dd><div class="border bg-light p-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla metus mauris, rutrum sit amet condimentum vitae, faucibus ac urna. Duis eget erat dapibus, cursus dolor in, finibus purus.</div></dd>
+	<dt>p-1 : 0,25 &sdot; fontstørrelse (<code class=""> .25rem </code>)</dt>
+	<dd><div class="border bg-light p-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla metus mauris, rutrum sit amet condimentum vitae, faucibus ac urna. Duis eget erat dapibus, cursus dolor in, finibus purus. </div></dd>
+	<dt>p-2 : 0,5 &sdot;fontstørrelse (<code class=""> .5rem </code>)</dt>
+	<dd><div class="border bg-light p-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla metus mauris, rutrum sit amet condimentum vitae, faucibus ac urna. Duis eget erat dapibus, cursus dolor in, finibus purus. </div></dd>
+	<dt>p-3 : 1 &sdot; fontstørrelse (<code class=""> 1rem </code>)</dt>
+	<dd><div class="border bg-light p-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla metus mauris, rutrum sit amet condimentum vitae, faucibus ac urna. Duis eget erat dapibus, cursus dolor in, finibus purus. </div></dd>
+	<dt>p-4 : 1,5 &sdot; fontstørrelse (<code class=""> 1,5 rem</code>)</dt>
+	<dd><div class="border bg-light p-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla metus mauris, rutrum sit amet condimentum vitae, faucibus ac urna. Duis eget erat dapibus, cursus dolor in, finibus purus. </div></dd>
+	<dt>p-5: 3 &sdot; fontstørrelse (<code class=""> 3rem </code>)</dt>
+	<dd><div class="border bg-light p-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla metus mauris, rutrum sit amet condimentum vitae, faucibus ac urna. Duis eget erat dapibus, cursus dolor in, finibus purus. </div></dd>
+
+</dl>
+
+<h3>Margin</h3>
+
+<p>Her er margin vist med det grå område. Den grå ramme omkring teksten angiver margin hvor selve elementet er.</p>
+
+<div class="alert alert-success">
+	
+	<p>Hej</p>
+
+</div>
+
+<dl class="not_strong dd_lightgrey" >
+	<dt>m-0 : Ingen afstand </dt>
+	<dd>
+		<div class="bg-light">
+			<div class="bg-white border p-1 m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla metus mauris, rutrum sit amet condimentum vitae, faucibus ac urna. Duis eget erat dapibus, cursus dolor in, finibus purus.
+			</div>
+		</div>
+	</dd>
+	
+	<dt>m-1 : 0,25 &sdot; fontstørrelse (<code class=""> .25rem </code>)</dt>
+	<dd>
+		<div class="bg-light p-1">
+			<div class="bg-white border p-1 m-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla metus mauris, rutrum sit amet condimentum vitae, faucibus ac urna. Duis eget erat dapibus, cursus dolor in, finibus purus. 
+			</div>
+		</div>
+	</dd>
+	
+	<dt>m-2 : 0,5 &sdot;fontstørrelse (<code class=""> .5rem </code>)</dt>
+	<dd>
+		<div class="bg-light p-1">
+			<div class="bg-white border p-1 m-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla metus mauris, rutrum sit amet condimentum vitae, faucibus ac urna. Duis eget erat dapibus, cursus dolor in, finibus purus. 
+			</div>
+		</div>
+	</dd>
+	
+	<dt>m-3 : 1 &sdot; fontstørrelse (<code class=""> 1rem </code>)</dt>
+	<dd>
+		<div class="bg-light p-1">
+			<div class="bg-white border p-1 m-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla metus mauris, rutrum sit amet condimentum vitae, faucibus ac urna. Duis eget erat dapibus, cursus dolor in, finibus purus. 
+			</div>
+		</div>
+	</dd>
+	
+	<dt>m-4 : 1,5 &sdot; fontstørrelse (<code class=""> 1,5rem </code>)</dt>
+	<dd>
+		<div class="bg-light p-1">
+			<div class="bg-white border p-1 m-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla metus mauris, rutrum sit amet condimentum vitae, faucibus ac urna. Duis eget erat dapibus, cursus dolor in, finibus purus. 
+			</div>
+		</div>
+	</dd>
+	
+	<dt>m-5: 3 &sdot; fontstørrelse (<code class=""> 3rem </code>)</dt>
+	<dd>
+		<div class="bg-light p-1">
+			<div class="bg-white border m-5 p-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla metus mauris, rutrum sit amet condimentum vitae, faucibus ac urna. Duis eget erat dapibus, cursus dolor in, finibus purus. 
+			</div>
+		</div>
+	</dd>
+</dl>
+
+
+
+
+<p>Hvis du gerne vil have</p>
+
+
+<p><strong>Læs mere om proportioner</strong></p>
+
+<p>Overblik over design af elementer: <a href="https://www.w3schools.com/bootstrap4/bootstrap_utilities.asp" target="_blank">https://www.w3schools.com/bootstrap4/bootstrap_utilities.asp</a></p>
+
+<p>Alle klasser: <a href="https://www.w3schools.com/bootstrap4/bootstrap_ref_all_classes.asp" target="_blank">https://www.w3schools.com/bootstrap4/bootstrap_ref_all_classes.asp</a></p>
+
+<p>Størrelser: <a href="https://www.w3schools.com/cssref/css_units.asp" target="_blank">https://www.w3schools.com/cssref/css_units.asp</a></p>
+
+
+
+
+<h2>Grid</h2>
+
+<p>Du kan designe opbygningen af siden på forskellige enheder, med Gridsystemet.</p>
+
+
+
+
+
+
 
 <h2>Opbygning af Bootstrap side</h2>
 

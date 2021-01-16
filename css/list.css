@@ -12,8 +12,6 @@ padding-left: 3.5em
 
 }
 
-
-
 dl.accessibility dt {
 
 padding: .6em 0em;
@@ -31,10 +29,16 @@ margin-bottom: 1em;
 
 }
 
+dl.not_strong dt {
+font-weight: 500;
+
+}
+
+dd.no_margin {
+margin: none;
 
 
-
-
+}
 
 ul.disc {
 

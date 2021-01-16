@@ -1077,6 +1077,15 @@ wget_testfil        100%[===================>]      63  --.-KB/s    in 0s
 	<p>Der må ikke være mellemrum mellem i <em>backup\|tj</em></p>
 </div>
 
+<p>Hvis du skal finde en tekststrenge i en række dokumenter (f.eks. i html-filer på din hjemmeside) kan du gøre følgende:</p>
+
+<pre><code>grep alert  -r ~/hjemmeside --include=*.css</code></pre>
+
+<p>Erstattes stien med et <em>.</em> (punktum), så søges der i den mappe du laver kommandoen.</p>
+
+<pre><code>grep alert  -r . --include=*.css</code></pre>
+
+
 <p>man-page grep: 
 	<a href="http://manpages.ubuntu.com/manpages/focal/man1/grep.1.html" target="_blank">
 	http://manpages.ubuntu.com/manpages/focal/man1/grep.1.html</a></p>

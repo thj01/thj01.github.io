@@ -9,7 +9,9 @@ margin: 3em .7em;
 color: #333333;
 padding: 2px 6px 2px 6px;
 border-radius: 15px;
+background-color:#f8f9fa;
 
+/*
 background-image: -ms-linear-gradient(top, #eeeeee 0%, #e0e0e0 100%);
 
 background-image: -moz-linear-gradient(top, #eeeeee 0%, #e0e0e0 100%);
@@ -21,12 +23,16 @@ background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, 
 background-image: -webkit-linear-gradient(top, #eeeeee 0%, #e0e0e0 100%);
 
 background-image: linear-gradient(to bottom, #eeeeee 0%, #e0e0e0 100%);
+*/
 
 -webkit-box-shadow: 4px 4px 10px 1px rgba(0,0,0,0.4) ;
 box-shadow: 4px 4px 6px 1px rgba(0,0,0,0.4) ;
+
 }
 
+
 details:hover {
+/*
 font-family: Ubuntu, sans-serif;
 font-size: .9em;
 border-left: 1.5px solid #b6b6b6;
@@ -37,6 +43,7 @@ margin: 3em .7em;
 color: #333333;
 padding: 2px 6px 2px 6px;
 border-radius: 15px;
+
 
 background-image: -ms-linear-gradient(top, #e8e8e8 0%, #d9d9d9 100%);
 
@@ -49,9 +56,10 @@ background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, 
 background-image: -webkit-linear-gradient(top, #e8e8e8 0%, #d9d9d9 100%);
 
 background-image: linear-gradient(to bottom, #e8e8e8 0%, #d9d9d9 100%);
+*/
 
 -webkit-box-shadow: 4px 4px 10px 1px rgba(0,0,0,0.4) ;
-box-shadow: 3px 3px 5px 1px rgba(0,0,0,0.4) ;
+box-shadow: 1px 1px 3px 0px rgba(0,0,0,0.4) ;
 }
 
 
@@ -61,11 +69,7 @@ padding: 10px 5px;
 
 }
 
-details code.cmd {
 
-background-color: #CCCCCC;
-
-}
 
 details div.latex {
 font-size: .1em;
