@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>BS - only containers</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <style>body {font-size:.9rem}</style>  
+</head>
+<body>
+
+<div class="jumbotron bg-light p-3">
+			
+	<h2>Eksempel på enhedsdesign 01 <br>(Bredde: <span id="dimensions"></span>px - <span id="bs_term"></span>)</h2>
+	
+	<input type="button" class="btn btn-success" value="Luk vinduet" onclick="self.close()">
+	
+	<p>Ændre på vinduets bredde og se hvordan siden ændrer sig</p>
+			
+</div>
+
+
+<div class="container mt-5">
+
+<h2 class="mt-5">Uden tilpasning</h2>
+
+<ul class="disc">
+	<li><code class="">.container</code></li>
+	<li>Inddeling: <code class="">col-6 + col-6</code></li>
+</ul>
+
+	<div class="row">
+	
+		<div class="col-6">
+			
+			<h3>Overskrift</h3>
+			
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam nec consequat sem, id tristique massa. Ut euismod gravida fermentum. Maecenas ut iaculis turpis. </p>
+			
+			<p>Læs mere om :<a href="#">Overskrift</a></p>
+		
+		</div>
+		
+		<div class="col-6">
+		
+		<img class="w-100" src="../images/prototyping_picture.svg" alt="" title="">
+		
+		</div>
+	
+	</div>
+	
+		<div class="row">
+	
+		<div class="col-6">
+			
+			<h3>Overskrift</h3>
+			
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam nec consequat sem, id tristique massa. Ut euismod gravida fermentum. Maecenas ut iaculis turpis. </p>
+			
+			<p>Læs mere om :<a href="#">Overskrift</a></p>
+		
+		</div>
+		
+		<div class="col-6">
+		
+		<img class="w-100" src="../images/prototyping_picture.svg" alt="" title="">
+		
+		</div>
+	
+	</div>
+
+</div>
+
+  
+
+
+<script>
+	$(window).resize(function() {
+    $("#dimensions").html($(window).width());
+    if ($(window).width()<576) {
+		$("#bs_term").html("Extra small");
+		} else if ($(window).width()<767) { 
+		$("#bs_term").html("Small");
+		} else if ($(window).width()<991) { 
+		$("#bs_term").html("Medium");
+		} else if ($(window).width()<1199) { 
+		$("#bs_term").html("Large");
+		} else {
+		$("#bs_term").html("Extra large");}
+    }).resize();
+</script>
+
+</body>
+</html>
