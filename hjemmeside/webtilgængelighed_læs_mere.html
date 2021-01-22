@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="da">
 <head>
-  <title>HTML index</title>
+  <title>Tilgængelighed</title>
   <link rel="icon" href="../images/favicon.png">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -38,42 +38,12 @@
 </div><!-- Start slut 1. kolonne - TOC -->
 	
 <div class="col-sm-9">
-
-<figure id="">
-
-	<img class="p25" src="images/HTML5_Logo.svg" alt="" title="" />
-
-	<figcaption></figcaption>
-
-</figure>
-
-
-<h1>HTML5</h1>
 	
-<h2>HTML5</h2>
+<h1>Læs mere</h1>
 
-<ol class="">
-	<li><a href="../editors/geany.html" target="_blank">Introduktion til Geany</a></li>
-	<li><a href="html_userver.html" target="_blank">Introduktion til webserver og FTP</a></li>
-	<li><a href="html_basics.html" target="_blank">Introduktion til HTML5</a></li>
-	<li><a href="html_tekst_og_billeder.html" target="_blank">Tekst, links og billeder</a></li>
-	<li><a href="html_lister.html" target="_blank">Lister</a></li>
-	<li><a href="html_CSS.html" target="_blank">CSS - design af HTML</a></li>
-	<li><a href="html_tabeller.html" target="_blank">Tabeller</a></li>
-	<li><a href="bootstrap_intro.html" target="_blank">Introduktion til Bootstrap</a></li>
-	<li><a href="bootstrap_responsive_design.html" target="_blank">Bootstrap og responsive design</a></li>
-</ol>
+<p>Web accessibiliti Tutorials</p>
 
-
-
-<h2>Webtilgængelighed</h2>
-
-<ol class="">
-	<li><a href="webtilgængelighed_introduktion.html" target="_blank">Introduktion til webtilgængelighed</a></li>
-	<li><a href="webtilgængelighed_word.html" target="_blank">Opsætning af Word</a></li>
-	
-</ol>
-
+<p><a href="https://www.w3.org/WAI/tutorials/" target="_blank">https://www.w3.org/WAI/tutorials/</a></p>
 
 	
 </div><!-- end: col-md-9 -->
@@ -103,21 +73,12 @@
 	<script>hljs.initHighlightingOnLoad();</script>
 
 <!-- MATHJAX -->
-<script type="text/javascript" 
-	src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+<script type="text/javascript" async 		src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+		MathJax.Hub.Config({ jax: ["input/TeX","output/HTML-CSS"], displayAlign: "left"	});
 </script>
-
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-  displayAlign: "left",
-  displayIndent: "0em"
-});
-</script>
-
-
 <!-- TOCIFY -->
 <script>
-	$(function() {var toc = $("#toc").tocify({ selectors: "h2, h3, h4" }).data("toc-tocify"); });
+	$(function() {var toc = $("#toc").tocify({ selectors: "h1, h2, h3, h4" }).data("toc-tocify"); });
 </script>
 <!-- GOOGLE ANALYTICS -->
 <script>

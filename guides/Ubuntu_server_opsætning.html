@@ -41,7 +41,32 @@
 	
 <h1>Ubuntuserver 20.04</h1>
 
+<h2>Apache webserver</h2>
+
+<pre><code>sudo systemctl status apache2</code></pre>
+
+<pre><code>sudo ufw allow 'Apache'</code></pre>
+
+<pre><code>sudo ufw status</code></pre>
+
+<samp>Status: active
+
+To                         Action      From
+--                         ------      ----
+OpenSSH                    ALLOW       Anywhere                  
+Apache                     ALLOW       Anywhere                  
+OpenSSH (v6)               ALLOW       Anywhere (v6)             
+Apache (v6)                ALLOW       Anywhere (v6) </samp>
+
+
 <h2>Cockpit</h2>
+
+<p>Hjemmeside: <a href="https://cockpit-project.org/" target="_blank">https://cockpit-project.org/</a></p>
+
+<pre><code>sudo apt install cockpit -y</code></pre>
+
+<pre><code>sudo ufw allow 9090/tcp</code></pre>
+
 
 <p><a href="https://computingforgeeks.com/manage-ubuntu-linux-with-cockpit-web-console/" target="_blank">https://computingforgeeks.com/manage-ubuntu-linux-with-cockpit-web-console/</a></p>
 
@@ -49,7 +74,7 @@
 
 <p>For at få LVM modulet til at virke skal du gøre følgende:</p>
 
-<pre><code>sudo apt install udisks2</code></pre>
+<pre><code>sudo apt install udisks2-lvm2 -y</code></pre>
 
 <pre><code>sudo systemctl restart udisks2.service 
 </code></pre>
@@ -58,15 +83,40 @@
 
 <p>Der findes ikke en docker plugin til ubuntu 20.04 lige pt, men versionen til 19.10 fungerer som den skal.</p>
 
-<pre><code>wget https://launchpad.net/ubuntu/+source/cockpit/215-1~ubuntu19.10.1/+build/18889196/+files/cockpit-docker_215-1~ubuntu19.10.1_all.deb
-sudo apt install ./cockpit-docker_215-1~ubuntu19.10.1_all.deb
-rm cockpit-docker_215-1\~ubuntu19.10.1_all.deb</code></pre>
+<pre><code>wget https://launchpad.net/ubuntu/+source/cockpit/215-1~ubuntu19.10.1/+build/18889196/+files/cockpit-docker_215-1~ubuntu19.10.1_all.deb</code></pre>
+
+<pre><code>sudo apt install ./cockpit-docker_215-1~ubuntu19.10.1_all.deb -y</code></pre>
+
+<pre><code>rm cockpit-docker_215-1\~ubuntu19.10.1_all.deb</code></pre>
 
 
+<h2>Docker images</h2>
 
+<p><a href="https://hub.docker.com/" target="_blank">https://hub.docker.com/</a></p>
 
 	
 
+
+
+<h2>Komplet install script</h2>
+
+<pre><code>!/bin/bash
+#~ Opdater server
+sudo apt update -y
+sudo apt upgrade -y
+#~ Apache web server
+sudo apt install apache2
+sudo ufw allow 'Apache'
+#~ Cockpit
+sudo apt install cockpit -y
+sudo ufw allow 9090/tcp
+#~ Aktiver LVM modul
+sudo apt install udisks2-lvm2 -y
+sudo systemctl restart udisks2.service 
+#~ Installer docker plugin
+wget https://launchpad.net/ubuntu/+source/cockpit/215-1~ubuntu19.10.1/+build/18>
+sudo apt install ./cockpit-docker_215-1~ubuntu19.10.1_all.deb -y
+rm cockpit-docker_215-1\~ubuntu19.10.1_all.deb</code></pre>
 
 
 
