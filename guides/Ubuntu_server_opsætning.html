@@ -118,6 +118,32 @@ wget https://launchpad.net/ubuntu/+source/cockpit/215-1~ubuntu19.10.1/+build/18>
 sudo apt install ./cockpit-docker_215-1~ubuntu19.10.1_all.deb -y
 rm cockpit-docker_215-1\~ubuntu19.10.1_all.deb</code></pre>
 
+<h2>Administrative opgaver</h2>
+
+<h3>Ændre IP-adresse</h3>
+
+<pre><code>sudo nano /etc/netplan/00-installer-config.yaml</code></pre>
+
+<samp><font color="#06989A"># This is the network config written by &apos;subiquity&apos;</font>
+network:
+  ethernets:
+    enp0s3:
+      addresses:
+      - 192.168.87.10/24
+      gateway4: 192.168.87.1
+      nameservers:
+        addresses:
+        - 8.8.8.8
+        - 8.8.4.4
+  version: 2</samp>
+  
+<p>Ændr linien med IP-adresse f.eks. til <em>192.168.87.11/24</em>.</p>  
+
+<p>Gem filen og start ny opsætning</p>
+
+<pre><code>sudo netplan apply</code></pre>
+
+<p>Done</p>
 
 
 	

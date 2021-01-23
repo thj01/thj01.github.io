@@ -39,7 +39,7 @@
 	
 <div class="col-sm-9">
 	
-<h1>Tilgængelighed</h1>
+<h1>Hvad er tilgængelighed</h1>
 
 <p>Tilgængelighed handler om at indhold skal være let at læse for alle brugere. Det er altså ikke kun til synshandikappede, men også dig og mig. Der gælder altså:</p>
 
@@ -71,7 +71,64 @@
 
 <p>Tilgængelighed handler ikke kun om blinde brugere. Tilgængelighed handler om at gøre information let tilgængelige for alle. Det skal være overskueligt og man skal kunne finde det man vil læse.</p>
 
-<h2>Hvordan virker tilgængelighed</h2>
+<h2>Hvordan gør man websider tilgængelige</h2>
+
+<p>Kogt ned til det centrale man sikrer tilgængelighed ved at have fokus på tre ting:</p>
+
+<ul class="">
+	<li><strong>Godt indhold: </strong>Ved at lave godt indhold (tekst, billeder, lister og billeder)</li>
+	<li><strong>God kode: </strong>Ved at det kodemæssigt kommunikerer korrekt</li>
+	<li><strong>Godt design: </strong>Ved at det visuelt kommunikerer korrekt</li>
+</ul>
+	
+<p>Ved at gøre det med ovenstående fremgangsmåde, så skaber man den bedste brugeroplevelse for alle.</p>
+
+<h3>Godt indhold</h3>
+
+<p>Tekst og billeder skal være målrettet modtagergruppen. Sproget skal være aktivt, f.eks: "Du skal udfylde svararket" ikke "svararket skal udfyldes".</p>
+
+<p>Skal teksten ramme en bred brugergruppe kan du overveje om det tekstuelle niveau skal målrettes folk på folkeskole eller gymnasieniveau.</p>
+
+<p>Er teksten ikke rettet mod fagpersoner kan du overveje at forklare fagbegreber eller beskrive dem med andre ord.</p>
+
+<p>Lav beskrivelser til billeder, illustrationer, lister og tabeller. Billeder der er centrale og indeholder beskrivelser/instruktioner skal også have en forklarende tekst, der kan bruges ved oplæsning eller synsudfordrede.</p>
+
+<p>Sørg for at det vigtige står først, så brugeren lettest muligt får de informationer som siden skal give, og at de skaber nysgerrighed på resten af indholdet.</p>
+
+<div class="alert">
+	
+	<p>Brugere læser ikke hjemmesider de skimmer dem. Finder brugeren ikke hurtigt (på få sekunder) de de søger efter, så søger de andre steder hen.</p>
+
+</div>
+
+<h3>God kode</h3>
+
+<p>Sørg for at indholdet er kodet korrekt. Det er vigtigt for to ting:</p>
+
+<ol class="">
+	<li>Oplæsningprogrammer kan læse indholdet korrekt</li>
+	<li>Designere kan fremhæve forskelligt indhold så det visuelt fremstår korrekt</li>
+</ol>
+
+<p>Med den rigtige kodebase, så skal man ikke ind senere og rette i koden..</p>
+
+<h3>Godt design</h3>
+
+<p>Sørg for at indholdet fremstår visuelt korrekt, så brugeren kan finde det indhold de skal bruge. Centrale ord skal opmærkes og designet skal få brugeren til at fokusere de rigtige steder.</p>
+
+<p>Overhold god typografiopsætning, så størrelse på teksten bruges til at indikere overskrifter. <em>Kursiv</em>, <em>tekstfarver</em>, <em>markeringer</em> bruges til at fremhæve tekst og funktionalitet. <em>Fed (strong)</em> bør kun anvendes når noget skal fremhæves ekstra meget. </p>
+
+<div class="alert">
+	
+	<p>Når man arbejder med udvikling af hjemmesider er det godt hvis man sørger for at niveauerne arbejder parvist sammen</p>
+
+</div>
+
+
+
+
+
+<h2>Hvordan gøres websider tilgængelig</h2>
 
 <p>Man gør indhold tilgængelig ved at fortælle computeren hvad indholdet er. Det gør man ved at pakke teksten ind i <em>elementer</em> (kaldet <em>tags</em> på engelsk).</p>
 
@@ -172,7 +229,35 @@
 
 <p>Det kan alle have <em>en</em> mening om ... som sagt ... brug ord og tal alt efter budskabet.</p>
 
+<h2>Overblik over vigtige elementer</h2>
 
+<p>Her er der et overblik over de mest anvendte elementer</p>
+
+<dl class="not_strong">
+	<dt><code>&lt;h1></code></dt>
+	<dd>Dokumentets Titel/navn</dd>
+	<dt><code>&lt;h2>, &lt;h3>, &lt;h4>, &lt;h5>, &lt;h6></code></dt>
+	<dd>Overskrifts niveauer i dokumenter</dd>
+	<dt><code>&lt;p></code></dt>
+	<dd>Brødtekst/afsnit</dd>
+	<dt><code>&lt;a></code></dt>
+	<dd>Links/henvisninger</dd>
+	<dt><code>&lt;ul>, &lt;ol>, &lt;dl></code></dt>
+	<dd>Forskellige typer lister (punktlister, ordenslister, beskrivelseslister)</dd>
+	<dt><code>&lt;Table></code></dt>
+	<dd>Tabeller</dd>
+	<dt><code>&lt;img></code></dt>
+	<dd>Billeder og illustrationer</dd>
+	<dt><code>&lt;nav></code></dt>
+	<dd>Navigationsmenuen</dd>
+	<dt><code>&lt;abbr>, &lt;cite>, &lt;q>, &lt;dfn>, ...</code></dt>
+	<dd>Forkortelser, titler på værker, citater, defintioner, ...</dd>
+</dl>
+
+
+<p>Du kan få det fulde overblik, ved at gå til siden: <a href="https://www.w3schools.com/tags/default.asp" target="_blank">HTML Element Reference</a>.</p>
+
+<p>Der findes f.eks. tags for <button type="_">Knapper</button> (prøv at klikke) og <kbd>Taster</kbd>. Når man bruger disse tags kan computeren læse siden korrekt for den blinde ... og vi kan som seende se de samme ting.</p>
 
 <h2>Oversigter - Lister og tabeller</h2>
 
@@ -935,87 +1020,9 @@
 
 <p>En væsentlig pointe ved denne gennemgang er: For at gøre data tilgængeligt kan det være nødvendigt at lave flere udgaver, og man kan med fordel indrage dem som har forstand på at ændre udseende på indholdet, så det både bliver flot at se på og tilgængeligt på samme tid.</p>
 
-<h3>Billeder</h3>
+<h2>Billeder</h2>
 
 
-
-
-
-
-<p><strong>Almindelig tekst</strong></p>
-
-<p>Almindelig tekst anvendes til al brødteksten. Skriv kort, præcist og letforståeligt.</p>
-
-<p><strong>Fed tekst</strong> og <em>kursiv tekst</em></p>
-
-
-
-
-
-
-<ul class="disc">
-	<li>Almindelig tekst (p-element)</li>
-	<li><strong>Fed tekst</strong> (strong-element)</li>
-	<li>_</li>
-</ul>
-
-
-<table class="_">
-	<thead>
-		<tr>
-			<th scope="col">Tag</th>
-			<th scope="col">Beskrivelse</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>h1</td>
-			<td>overskrift niveau 1</td>
-		</tr>
-		<tr>
-			<td>h2, h3, h4, h5</td>
-			<td>overskrift niveau 2, 3, 4, 5</td>
-		</tr>
-		<tr>
-			<td>p</td>
-			<td>paragraf/afsnit</td>
-		</tr>
-		<tr>
-			<td>a</td>
-			<td>link</td>
-		</tr>
-		<tr>
-			<td>ul / ol</td>
-			<td>lister (punktliste/ordensliste)</td>
-		</tr>
-		<tr>
-			<td>table</td>
-			<td>tabel</td>
-		</tr>
-		<tr>
-			<td>img</td>
-			<td>billede</td>
-		</tr>
-		<tr>
-			<td>nav</td>
-			<td>navigationsmenu</td>
-		</tr>
-	</tbody>
-</table>
-
-<p>Du kan få det fulde overblik, ved at gå til siden: <a href="https://www.w3schools.com/tags/default.asp" target="_blank">HTML Element Reference</a>.</p>
-
-<p>Der findes f.eks. tags for <button type="_">Knapper</button> (prøv at klikke) og <kbd>Taster</kbd>. Når man bruger disse tags kan computeren læse siden korrekt for den blinde ... og vi kan som seende se de samme ting.</p>
-
-<h2>Hvordan sikrer man tilgængelighed</h2>
-
-<p>Man sikrer tilgængelighed ved at have fokus på to ting:</p>
-
-<ol class="">
-	<li>Ved at lave godt indhold (tekst, billeder, lister og billeder)</li>
-	<li>Ved at formatere det korrekt.</li>
-</ol>
-	
 <h2>Tilgængelighed i word</h2>	
 
 <p>Hvis du vil lave en simpel måde at arbejde med tilgængelighed i Word, så kan du lave dit eget panel.</p>
