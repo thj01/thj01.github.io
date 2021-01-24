@@ -94,18 +94,146 @@ Apache (v6)                ALLOW       Anywhere (v6) </samp>
 
 <p><a href="https://hub.docker.com/" target="_blank">https://hub.docker.com/</a></p>
 
-	
+<h2>dnsmasq - DNS og DHCP</h2>	
 
+<p>Her laver vi en opsætning med <em>dnsmasq</em></p>
+
+<h3>Klargøring af server</h3>
+
+<p>Først skal vi have fjernet standardsystemet.</p>
+
+<pre><code>systemctl disable --now systemd-resolved</code></pre>
+
+<pre><code>sudo systemctl stop systemd-resolved</code></pre>
+
+<pre><code>sudo rm -rf /etc/resolv.conf</code></pre>
+
+<p>Indsæt Google's DNS så vi kan installere <em>dnsmasq</em> senere.</p>
+
+<pre><code>echo "nameserver 8.8.8.8" | sudo tee /etc/resolv.conf</code></pre>
+
+<h3>Åbn firewall'en</h3>
+
+<p>Serveren skal have åbnet <em>port 53</em> i firewall'en, så andre computere kan komme til DNS'en</p>
+
+<pre><code>sudo ufw allow 53</code></pre>
+
+<p>Vil du tjekke firewall'ens status kører du kommandoen:</p>
+
+<pre><code>sudo ufw status</code></pre>
+
+
+
+
+<h3>Installer dnsmasq</h3>
+
+<pre><code>sudo apt install dnsmasq dnsutils ldnsutils -y</code></pre>
+
+
+<p>Rediger filen <em>/etc/dnsmasq.conf</em></p>
+
+<pre><code>sudo nano /etc/dnsmasq.conf</code></pre>
+
+<p>Indsæt følgende øverst i filen, for at</p>
+
+<samp>port=53
+domain-needed
+bogus-priv
+no-resolv
+cache-size=250
+server=8.8.8.8
+server=8.8.4.4
+#use two lines below to resolve local domains (eg .home)
+local=/home/
+domain=home</samp>
+
+<p>Tjek at <em>dnsmasq</em> er sat korrekt op og genstart <em>dnsmasq</em> med den nye konfiguration</p>
+
+<pre><code>dnsmasq --test</code></pre>
+
+<p>Sæt navneserveren til den lokale computer:</p>
+
+<pre><code>echo "nameserver 127.0.0.1" | sudo tee /etc/resolv.conf</code></pre>
+
+<p>Ret filen <em>/etc/hosts</em>, så serveren får adressen <em>server1.home</em>.</p>
+
+<samp>127.0.0.1 localhost
+127.0.1.1 server1
+192.168.87.11 server1.home
+
+# The following lines are desirable for IPv6 capable hosts
+::1     ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters</samp>
+
+<p>Genstart dnsmasq</p>
+
+<pre><code>systemctl restart dnsmasq</code></pre>
+
+<p>Tjek at DNS'en virker</p>
+
+<pre><code>dig server1.home +short</code></pre>
+
+<samp><span class="terminal_green">tj@server1</span>:<span class="terminal_tilde">~</span>$ dig server1.home +short
+192.168.87.11</samp>
+
+<p>Done!</p>
+
+
+<details>
+
+	<summary>Indhold af filer</summary>
+	
+	<p><em>/etc/hosts</em></p>
+
+	<samp>127.0.0.1 localhost    
+127.0.1.1 server1
+192.168.87.11 server1.home
+
+
+# The following lines are desirable for IPv6 capable hosts
+::1     ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters</samp>
+
+<p><em>/etc/hostname</em></p>
+
+<samp>server1</samp>
+
+<p><em>/etc/resolv.conf </em></p>
+
+<samp>nameserver 127.0.0.1</samp>
+
+
+
+
+</details>
+
+
+
+
+
+
+
+<p><a href="https://www.howtoforge.com/how-to-setup-local-dns-server-using-dnsmasq-on-ubuntu-20-04/" target="_blank">https://www.howtoforge.com/how-to-setup-local-dns-server-using-dnsmasq-on-ubuntu-20-04/</a></p>
+
+<p><a href="https://computingforgeeks.com/install-and-configure-dnsmasq-on-ubuntu-18-04-lts/" target="_blank">https://computingforgeeks.com/install-and-configure-dnsmasq-on-ubuntu-18-04-lts/</a></p>
+
+<p><a href="https://askubuntu.com/questions/1092727/how-can-i-create-a-local-dns-that-is-seen-from-other-computers-on-my-local-netwo" target="_blank">https://askubuntu.com/questions/1092727/how-can-i-create-a-local-dns-that-is-seen-from-other-computers-on-my-local-netwo</a></p>
 
 
 <h2>Komplet install script</h2>
 
-<pre><code>!/bin/bash
+<pre><code>#!/bin/bash
 #~ Opdater server
 sudo apt update -y
 sudo apt upgrade -y
 #~ Apache web server
-sudo apt install apache2
+sudo apt install apache2 -y
 sudo ufw allow 'Apache'
 #~ Cockpit
 sudo apt install cockpit -y
@@ -114,7 +242,7 @@ sudo ufw allow 9090/tcp
 sudo apt install udisks2-lvm2 -y
 sudo systemctl restart udisks2.service 
 #~ Installer docker plugin
-wget https://launchpad.net/ubuntu/+source/cockpit/215-1~ubuntu19.10.1/+build/18>
+wget https://launchpad.net/ubuntu/+source/cockpit/215-1~ubuntu19.10.1/+build/18889196/+files/cockpit-docker_215-1~ubuntu19.10.1_all.deb
 sudo apt install ./cockpit-docker_215-1~ubuntu19.10.1_all.deb -y
 rm cockpit-docker_215-1\~ubuntu19.10.1_all.deb</code></pre>
 
@@ -144,6 +272,48 @@ network:
 <pre><code>sudo netplan apply</code></pre>
 
 <p>Done</p>
+
+<h3>Ændr hostname</h3>
+
+<p>For at ændre hostname, skal der ændres i to filer: </p>
+
+<ul class="disc">
+	<li><em>/etc/hosts</em></li>
+	<li><em>/etc/hostname</em></li>
+</ul>
+
+<p>I begge filer skal det nuværende hostname ændres til det nye.</p>
+
+<p>Tjek dit nuværende hostname:</p>
+
+<pre><code>hostname</code></pre>
+
+<samp><span class="terminal_green">tj@server1</span>:<span class="terminal_tilde">~</span>$ hostname
+server1</samp>
+
+<p>Ændr dette til det nye navn i begge ovenstående filer ved hjælp af <em>nano</em>. Her ændres det til <em>minserver</em>:</p>
+
+<pre><code>sudo nano /etc/hosts</code></pre>
+
+<samp>127.0.0.1 localhost
+127.0.1.1 minserver
+
+# The following lines are desirable for IPv6 capable hosts
+::1     ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters</samp>
+
+<pre><code>sudo nano /etc/hostname</code></pre>
+
+<samp>minserver</samp>
+
+<p>Genstart serveren med <em>sudo reboot</em>, og tjek at alt fungere med kommandoen <em>hostname</em>.</p>
+
+<samp><span class="terminal_green">tj@myserver</span>:<span class="terminal_tilde">~</span>$ hostname
+minserver</samp>
+
 
 
 	
