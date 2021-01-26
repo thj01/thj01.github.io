@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="da">
 <head>
-  <title>Ubuntu serveradministration</title>
+  <title>Serveradministration</title>
   <link rel="icon" href="../images/favicon.png">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -39,41 +39,78 @@
 	
 <div class="col-sm-9">
 	
-<h1>Opsætning af Ubuntuserver 20.04</h1>
+	
+<h1>Administrative opgaver</h1>
 
-<h2>Administration</h2>
+<h2 id="id_hostname">Ændring af hostname</h2>
 
-<ul class="disc">
-	<li><a href="server_administration.html#id_hostname" target="_blank">Ændring af hostename</a></li>
-	<li><a href="server_administration.html#id_IP" target="_blank">Ændring af IP-adresse</a></li>
-</ul>
-
-<p>Hele dokumentet: <a href="server_administration.html" target="_blank">server_administration.html</a></p>
-
-<h2>Sikkerhed</h2>
+<p>For at ændre hostname, skal der ændres i to filer: </p>
 
 <ul class="disc">
-	<li><a href="server_sikkerhed.html#id_SSH" target="_blank">Opsætning af SSH</a></li>
+	<li><em>/etc/hosts</em></li>
+	<li><em>/etc/hostname</em></li>
 </ul>
 
-<p>Hele dokumentet: <a href="server_sikkerhed.html" target="_blank">server_sikkerhed.html</a></p>
+<p>I begge filer skal det nuværende hostname ændres til det nye.</p>
 
-<h2>Tjenester</h2>
+<p>Tjek dit nuværende hostname:</p>
 
-<ul class="disc">
-	<li><a href="server_tjenester.html#id_dnsmasq" target="_blank">Opsætning af <em>dnsmasq</em> (DNS)</a></li>
-</ul>
+<pre><code>hostname</code></pre>
 
-<p>Hele dokumentet: <a href="server_tjenester.html" target="_blank">server_tjenester.html</a></p>
+<samp><span class="terminal_green">tj@server1</span>:<span class="terminal_tilde">~</span>$ hostname
+server1</samp>
 
-<h2>Webserver</h2>
+<p>Ændr dette til det nye navn i begge ovenstående filer ved hjælp af <em>nano</em>. Her ændres det til <em>minserver</em>:</p>
 
-<ul class="disc">
-	<li><a href="server_webserver.html#id_apache.html" target="_blank">Opsætning af  Apache webserver</a></li>
-	<li><a href="server_webserver.html#id_cockpit" target="_blank">Opsætning af Cockpit (server administrations Web-GUI)</a></li>
-</ul>
+<pre><code>sudo nano /etc/hosts</code></pre>
 
-<p>Hele dokumentet: <a href="server_webserver.html" target="_blank">server_webserver.html</a></p>
+<samp>127.0.0.1 localhost
+127.0.1.1 minserver
+
+# The following lines are desirable for IPv6 capable hosts
+::1     ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters</samp>
+
+<pre><code>sudo nano /etc/hostname</code></pre>
+
+<samp>minserver</samp>
+
+<p>Genstart serveren med <em>sudo reboot</em>, og tjek at alt fungere med kommandoen <em>hostname</em>.</p>
+
+<samp><span class="terminal_green">tj@minserver</span>:<span class="terminal_tilde">~</span>$ hostname
+minserver</samp>
+
+<h2 id="id_IP">Ændring af IP-adresse</h2>
+
+<pre><code>sudo nano /etc/netplan/00-installer-config.yaml</code></pre>
+
+<samp><font color="#06989A"># This is the network config written by &apos;subiquity&apos;</font>
+network:
+  ethernets:
+    enp0s3:
+      addresses:
+      - 192.168.87.10/24
+      gateway4: 192.168.87.1
+      nameservers:
+        addresses:
+        - 8.8.8.8
+        - 8.8.4.4
+  version: 2</samp>
+  
+<p>Ændr linien med IP-adresse f.eks. til <em>192.168.87.11/24</em>.</p>  
+
+<p>Gem filen og start ny opsætning</p>
+
+<pre><code>sudo netplan apply</code></pre>
+
+<p>Done</p>
+
+
+
+
 	
 </div><!-- end: col-md-9 -->
 

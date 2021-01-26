@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <title>SSH opsætning</title>
+  <link rel="icon" href="../images/favicon.png">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono|Ubuntu|Ubuntu+Condensed' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/stylesheets/jquery.tocify.min.css">
+  <link rel="stylesheet" href="../css/style_new.css" />
+<!-- Scripts in bottom to speed up pageload-->
+ 
+
+</head>
+<body>
+	
+	
+<div class="container-fluid">
+
+<div class="row">
+	
+<div class="col-sm-3">
+	
+	<nav>
+		
+		<div id="toc">
+		
+			<div id="toc_headline"></div>
+		
+		</div>
+		
+	</nav>
+
+</div><!-- Start slut 1. kolonne - TOC -->
+	
+<div class="col-sm-9">
+	
+<h1>Sikkerhed</h1>	
+	
+<h2 id="id_SSH">SSH - ekstra sikkerhed</h2>
+
+<p>Her vil du lære at opgradere sikkerheden, så man skal have en nøgle for at kunne tilgå serveren</p>
+
+<details>
+
+	<summary>Hvad sker der</summary>
+
+	<p>SSH keys fungerer ved at man har en privat og en offentlig nøglefil (<em>public key</em>). Den private ligger på din computer, og den offentlige på den computer du har SSH adgang til.</p>
+		
+	<p>Du bliver som bruger verificeret ved at de to nøgler passer sammen.</p>
+	
+	<p>Det smarte ved systemet er, at din offentlige nøgle kan ligge mange steder, men din private nøgle ligger kun på dine enheder</p>
+
+</details>
+
+<p><strong>Hvad skal der gøres</strong></p>
+
+<ul class="disc">
+	<li>Oprettelse af nøgle</li>
+	<li>Kopiere nøgle over på server</li>
+	<li>tjekke at det virker</li>
+	<li>Fjerne password authentication på serveren</li>
+</ul>
+
+<h3>Opret nøgle</h3>
+
+<pre><code>ssh-keygen</code></pre>
+
+<samp>Generating public/private rsa key pair.
+Enter file in which to save the key (/home/tj/.ssh/id_rsa): 
+</samp>
+
+<p>Tryk <kbd>Enter</kbd>, da vi ikke vil ændre den adresse</p>
+
+<samp>Enter passphrase (empty for no passphrase): 
+Enter same passphrase again: </samp>
+
+<p>Indtast et kodeord til SSH 2 gange (der kommer ingen tegn når du taster)</p>
+
+<samp>Your identification has been saved in /home/tj/.ssh/id_rsa
+Your public key has been saved in /home/tj/.ssh/id_rsa.pub
+The key fingerprint is:
+SHA256:ui6kjLjISee1NZT/GF1HwfYYLc337UPHbcN5wMThGjk tj@tj-VirtualBox
+The key's randomart image is:
++---[RSA 3072]----+
+|             ++* |
+|             o*o*|
+|            E +BB|
+|        .    +o=X|
+|       oS   ...++|
+|    . ... . . ...|
+|.+ + ..o o .    .|
+|* * o o.. +      |
+|o+ . +o  . .     |
++----[SHA256]-----+</samp>
+
+<p>Nøglerne er oprettet.</p>
+
+<h3>Kopier nøglen over på serveren</h3>
+
+<pre><code>ssh-copy-id [Brugernavn]@[IP-adresse på server]</code></pre>
+
+<p>I mit tilfælde vil det være:</p>
+
+<pre><code>ssh-copy-id tj@192.168.87.10</code></pre>
+
+<samp>The authenticity of host '192.168.87.10 (192.168.87.10)' can't be established.
+ECDSA key fingerprint is SHA256:xjdwZI/eseEeqa6BKK1d5/FpyO2IrkIobD94p/6lI1s.
+Are you sure you want to continue connecting (yes/no/[fingerprint])?</samp>
+
+<p>Hertil svarer du <em>yes</em></p>
+
+<samp>/usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
+/usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install the new keys
+tj@192.168.87.10's password: </samp>
+
+<p>Indtast din brugers adgangskode på serveren</p>
+
+<samp>Number of key(s) added: 1
+
+Now try logging into the machine, with:   "ssh 'tj@192.168.87.11'"
+and check to make sure that only the key(s) you wanted were added.
+
+<span class="terminal_green">tj@desktop</span>:<span class="terminal_tilde">~</span>$ </samp>
+
+<h3>Tjek det virker</h3>
+
+<p>Login på din server ved hjælp af SSH</p>
+
+<pre><code>ssh tj@192.168.87.10</code></pre>
+
+<p>Her kommer der et vindue op hvor du skal indtaste den passphrase du lavede i starten</p>
+
+<figure id="">
+
+	<img class="w-50" src="images/SSH-privatekey_passwd.png" alt="" title="">
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Herefter er du logget ind på din server</p>
+
+<samp>Welcome to Ubuntu 20.04.1 LTS (GNU/Linux 5.4.0-64-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+  System information as of Mon 25 Jan 2021 03:32:47 PM UTC
+
+  System load:  0.0                Processes:                141
+  Usage of /:   24.6% of 29.40GB   Users logged in:          0
+  Memory usage: 8%                 IPv4 address for docker0: 172.17.0.1
+  Swap usage:   0%                 IPv4 address for enp0s3:  192.168.87.11
+
+
+0 updates can be installed immediately.
+0 of these updates are security updates.
+
+
+Web console: https://server1:9090/ or https://192.168.87.11:9090/
+
+Last login: Mon Jan 25 07:57:27 2021 from 192.168.87.131
+<span class="terminal_green">tj@server1</span>:<span class="terminal_tilde">~</span>$ </samp>
+
+<p>Log af (skriv <code class="">exit</code>)og tjek at du kan logge på igen uden at skrive password</p>
+
+<h3>Fjern muligheden for at bruge password med SSH</h3>
+
+<p>Ved at fjerne muligheden for at bruge password med SSH kan man ikke lave et <em>bruteforce</em> angreb.</p>
+
+<p>Åbn filen <em>/etc/ssh/sshd_config</em></p>
+
+<pre><code>sudo nano /etc/ssh/sshd_config</code></pre>
+
+<p>Find linien:</p>
+
+<samp>#PasswordAuthentication yes</samp>
+
+<p>... fjern <em>#</em> og ændr yes til <em>no</em>.</p>
+
+<samp>PasswordAuthentication no</samp>
+
+<p>Gem filen og genstart SSH</p>
+
+<pre><code>sudo systemctl restart ssh</code></pre>
+
+<p>Done!</p>
+
+
+
+	
+
+
+
+
+	
+</div><!-- end: col-md-9 -->
+
+<footer>
+
+	<p onclick="parentNode.remove()"><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons licens" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>Indholdet på Vidas.dk er  er licenseret under <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> og er skrevet af Thomas Jensen. (<a href="../hvem_er_jeg.html" target="_blank">Læs mere</a>)</p>
+
+</footer>
+	
+	
+</div><!-- end: row -->
+
+</div> <!-- end: container-fluid -->
+
+
+<!-- SCRIPT SECTION -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/js/bootstrap.min.js"></script>
+
+
+
+<!-- HIGHLIGHT -->
+	<script src="../js/highlight.pack.js" type="text/javascript"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+
+<!-- MATHJAX -->
+<script type="text/javascript" 
+	src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  displayAlign: "left",
+  displayIndent: "0em"
+});
+</script>
+
+
+<!-- TOCIFY -->
+<script>
+	$(function() {var toc = $("#toc").tocify({ selectors: "h2, h3, h4" }).data("toc-tocify"); });
+</script>
+<!-- GOOGLE ANALYTICS -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-89933285-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</body>
+</html>
