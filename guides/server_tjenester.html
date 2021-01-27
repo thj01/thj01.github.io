@@ -69,7 +69,14 @@
 
 <pre><code>sudo ufw status</code></pre>
 
+<samp>Status: active
 
+To                         Action      From
+--                         ------      ----
+OpenSSH                    ALLOW       Anywhere                  
+<em>53                         ALLOW       Anywhere </em>                 
+OpenSSH (v6)               ALLOW       Anywhere (v6)             
+<em>53 (v6)                    ALLOW       Anywhere (v6)</em> </samp>
 
 
 <h3>Installer dnsmasq</h3>
@@ -102,11 +109,13 @@ domain=home</samp>
 
 <pre><code>echo "nameserver 127.0.0.1" | sudo tee /etc/resolv.conf</code></pre>
 
-<p>Ret filen <em>/etc/hosts</em>, så serveren får adressen <em>server1.home</em>.</p>
+<p>Ret filen <em>/etc/hosts</em>, så serveren får adressen <em>server.home</em>.</p>
+
+<pre><code>sudo nano /etc/hosts</code></pre>
 
 <samp>127.0.0.1 localhost
 127.0.1.1 server1
-192.168.87.11 server1.home
+192.168.87.11 server.home
 
 # The following lines are desirable for IPv6 capable hosts
 ::1     ip6-localhost ip6-loopback
@@ -121,10 +130,16 @@ ff02::2 ip6-allrouters</samp>
 
 <p>Tjek at DNS'en virker</p>
 
-<pre><code>dig server1.home +short</code></pre>
+<pre><code>dig server.home +short</code></pre>
 
-<samp><span class="terminal_green">tj@server1</span>:<span class="terminal_tilde">~</span>$ dig server1.home +short
+<samp><span class="terminal_green">tj@server1</span>:<span class="terminal_tilde">~</span>$ dig server.home +short
 192.168.87.11</samp>
+
+<div class="alert">
+	
+	<p>Hvis du vil ændre din computers navn (fra server1 til f.eks. server.home), så skal du bruge guiden her: <a href="server_administration.html#id_hostname" target="_blank">Ændring af hostename</a> </p>
+
+</div>
 
 <p>Done!</p>
 
@@ -137,7 +152,7 @@ ff02::2 ip6-allrouters</samp>
 
 	<samp>127.0.0.1 localhost    
 127.0.1.1 server1
-192.168.87.10 server1.home
+192.168.87.10 server.home
 
 
 # The following lines are desirable for IPv6 capable hosts

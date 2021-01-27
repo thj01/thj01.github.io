@@ -342,7 +342,7 @@
 
 <h3>Installering</h3>
 
-<p>nu går installationen igang </p>
+<p>Nu går installationen igang </p>
 
 <figure id="">
 
@@ -352,9 +352,7 @@
 
 </figure>
 
-<p>Lad installationen køre uden at vælge <em>Cancel update and reboot</em>. På den måde har serveren fået alle sikkerhedsopdateringer når installationen er færdig.</p>	
-
-<p>Når der står <em>Reboot</em>, så vælger du den.</p>
+<p>Lad installationen køre indtil <em>Cancel update and reboot</em> er blevet erstattet af <em>Reboot</em>. På den måde har serveren fået alle sikkerhedsopdateringer når installationen er færdig.</p>	
 
 <figure id="">
 
@@ -364,21 +362,31 @@
 
 </figure>
 
+<div class="alert">
+	
+	<p>Fra nu af bruger vi kun SSH adgang til serveren.</p>
+	
+	<p>Første opstarte tager lidt tid fordi serveren konfigurerer sig selv. Så vær lidt tålmodig</p>
+	
+</div>
+
 <h2>Første opstart</h2>
 
-<p>Første gang Ubuntuserveren starter er der nogle ting der bliver konfigureret. Det ser lidt forvirrende ud, men er som det skal være. Tryk <kbd>Enter</kbd>, når det er færdigt, så får du en login-prompt.</p>
+<p>Login med ssh fra din desktop. Du finder terminalen på din computer på følgende måde:</p>
 
-<p>Herfra vil vi tilgå vores server ved hjælp af SSH. Hvis du har installeret på en fysisk computer, kan du nu pille skærm og tastetur af.</p>
+<details>
 
-<p>Herfra kan vi arbejde på computeren ved hjælp af terminalen.</p>
+	<summary>Hvor finder jeg terminalen/kommandolinien)</summary>
 
-<ul class="disc">
-	<li>På Ubuntu: brug genvejstasterne <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>t</kbd></li>
-	<li>På Windows: søg efter <em>cmd</em></li>
-	<li>På Mac: søg efter <em>Terminal</em></li>
-</ul>
+	<p>Du finder terminalen på din computer på følgende måde:</p>
 
-<p>Gå til terminalen og skriv følgende kommando (med din valgte IP-adresse)</p>
+	<ul class="disc">
+		<li>På Ubuntu: brug genvejstasterne <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>t</kbd></li>
+		<li>På Windows: søg efter <em>cmd</em></li>
+		<li>På Mac: søg efter <em>Terminal</em></li>
+	</ul>
+
+</details>
 
 <pre><code>ssh tj@192.168.87.10</code></pre>
 
@@ -423,6 +431,12 @@ See "man sudo_root" for details.
 <span class="terminal_green">tj@server1</span>:<span class="terminal_tilde">~</span>$ </samp>	
 
 
+<div class="alert">
+	
+	<p>Hvis dder ikke har været nogle problemer med at logge ind kan du nu pille tastetur og skærm af din server.</p>
+
+</div>
+
 <h3>Almindelige opdateringer</h3>
 
 <p>Vi starter med at opdatere serveren - da det kun var sikkerhedsopdateringer installationen lavede.</p>
@@ -439,9 +453,9 @@ See "man sudo_root" for details.
 
 <h3>Opstart af Firewall</h3>
 
-<p>Da vi gerne vil styre hvad der kan blive brugt på serveren konfigurerer vi firewall'en <em>ufw</em>.</p>
+<p>Da vi gerne vil styre adgangen til serveren skal vi starte <em>ufw</em>, som er Ubuntus standard firewall.</p>
 
-<p>Først så tillader vi SSH:</p>
+<p>I første omgang åbner vi for OpenSSH, så vi ikke mister forbindelsen når vi starter firewall'en.</p>
 
 <pre><code class="">sudo ufw allow OpenSSH</code></pre>
 
@@ -473,7 +487,48 @@ To                         Action      From
 OpenSSH                    ALLOW       Anywhere                  
 OpenSSH (v6)               ALLOW       Anywhere (v6)</samp>
 
+<h2>Tjek at alt virker</h2>
 
+<p>Log af serveren</p>
+
+<pre><code>exit</code></pre>
+
+<samp>logout
+Connection to 192.168.87.10 closed.</samp>
+
+<p>Og login igen</p>
+
+<pre><code>ssh tj@192.168.87.10</code></pre>
+
+<samp>tj@192.168.87.10's password: 
+Welcome to Ubuntu 20.04.1 LTS (GNU/Linux 5.4.0-65-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+  System information as of Wed 27 Jan 2021 09:41:25 AM UTC
+
+  System load:  0.01             Processes:                153
+  Usage of /:   0.2% of 2.95TB   Users logged in:          0
+  Memory usage: 5%               IPv4 address for docker0: 172.17.0.1
+  Swap usage:   0%               IPv4 address for enp1s0:  192.168.87.10
+  Temperature:  40.0 C
+
+
+0 updates can be installed immediately.
+0 of these updates are security updates.
+
+
+*** System restart required ***
+Last login: Wed Jan 27 09:16:14 2021 from 192.168.87.131
+<span class="terminal_green">tj@server1</span>:<span class="terminal_tilde">~</span>$ </samp>
+
+<p>Hvis linien <em>*** System restart required ***</em> er der skal du genstarte din server</p>
+
+<pre><code>sudo reboot</code></pre>
+
+<p>Login over SSH, og tjek at alt er som det skal være.</p>
 
 <p>Tillykke. din server er nu klar.</p>
 

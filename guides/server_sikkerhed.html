@@ -47,7 +47,7 @@
 
 <details>
 
-	<summary>Hvad sker der</summary>
+	<summary>Hvordan fungerer nøgler i SSH</summary>
 
 	<p>SSH keys fungerer ved at man har en privat og en offentlig nøglefil (<em>public key</em>). Den private ligger på din computer, og den offentlige på den computer du har SSH adgang til.</p>
 		
@@ -122,7 +122,7 @@ tj@192.168.87.10's password: </samp>
 
 <samp>Number of key(s) added: 1
 
-Now try logging into the machine, with:   "ssh 'tj@192.168.87.11'"
+Now try logging into the machine, with:   "ssh 'tj@192.168.87.10'"
 and check to make sure that only the key(s) you wanted were added.
 
 <span class="terminal_green">tj@desktop</span>:<span class="terminal_tilde">~</span>$ </samp>
@@ -174,11 +174,17 @@ Last login: Mon Jan 25 07:57:27 2021 from 192.168.87.131
 
 <p>Ved at fjerne muligheden for at bruge password med SSH kan man ikke lave et <em>bruteforce</em> angreb.</p>
 
+<div class="alert">
+	
+	<p>Vær opmærksom på at SSH herefter kun bruges fra computere der har din nøglefil</p>
+
+</div>
+
 <p>Åbn filen <em>/etc/ssh/sshd_config</em></p>
 
 <pre><code>sudo nano /etc/ssh/sshd_config</code></pre>
 
-<p>Find linien:</p>
+<p>Find linien (Brug <kbd>Ctrl</kbd>+<kbd>w</kbd> til at søge):</p>
 
 <samp>#PasswordAuthentication yes</samp>
 

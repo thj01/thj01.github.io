@@ -63,12 +63,18 @@ Apache (v6)                ALLOW       Anywhere (v6) </samp>
 
 <h2 id="id_nextcloud">Nextcloud</h2>	
 
-<p>tekst</p>
+<p>Nextcloud er en Opensource fildelings- og samarbejdsplatform. Her vil vi installere den ved hjælp af <em>snap</em>, som samtidig sørger for at webserveren er korrekt sat op.</p>
+
+<h3>Installer og tilføj administrator</h3>
+
+<p>Installer <em>Nextcloud</em></p>
 
 <pre><code>sudo snap install nextcloud</code></pre>
 
 <samp>[sudo] password for tj: 
 nextcloud 20.0.4snap2 from Nextcloud✓ installed</samp>
+
+<p>Konfiguerer Nextcloud med din administratorbruger</p>
 
 <pre><code>sudo nextcloud.manual-install admin 123456</code></pre>
 
@@ -82,20 +88,112 @@ nextcloud 20.0.4snap2 from Nextcloud✓ installed</samp>
 
 <samp>Nextcloud was successfully installed</samp>
 
+<h3>Tilføj <em>trusted domains</em></h3>
+
+<p>Her skal du tilføje <em>trusted domains</em> - altså det man skal skrive i browseren for at få adgang til NextCloud.</p>
+
 <pre><code>sudo nextcloud.occ config:system:set trusted_domains 1 --value=192.168.87.10</code></pre>
 
-<samp><span class="terminal_green">System config value trusted_domains =&gt; 1 set to string 192.168.87.10</span>
-</samp>
+<samp><span class="terminal_green">System config value trusted_domains =&gt; 1 set to string 192.168.87.10</span></samp>
+
+<p>Har du opsat <em>dnsmasq</em> efter denne guide skal du også tilføje serverens domænenavn: server.home. Læg mærke til at det nu er <em>trusted_domains 2</em>.</p>
+
+<pre><code>sudo nextcloud.occ config:system:set trusted_domains 2 --value=server.home</code></pre>
+
+<samp><span class="terminal_green">System config value trusted_domains =&gt; 2 set to string server.home</span></samp>
+
+<p>Tjek domæner der <em>trusted</em>.</p>
 
 <pre><code>sudo nextcloud.occ config:system:get trusted_domains
 </code></pre>
 
 <samp>localhost
-192.168.87.10</samp>
+192.168.87.10
+server.home</samp>
+
+<h3>Tilføj certifikat</h3>
+
+<p>Da det er en server på et lokalt netværk, så laver vi et <em>self-signed</em> certifikat. </p>
 
 <pre><code>sudo nextcloud.enable-https self-signed</code></pre>
 
 <samp>Generating key and self-signed certificate... done</samp>
+
+<h3>Åbn firewall'en</h3>
+
+<p>Her skal du åbne firewall'en så der er åbent for adgang til <em>Nextcloud</em></p>
+
+<pre><code>sudo ufw allow 80,443/tcp</code></pre>
+
+<p>Tjek status:</p>
+
+<samp>Status: active
+
+To                         Action      From
+--                         ------      ----
+OpenSSH                    ALLOW       Anywhere                  
+53                         ALLOW       Anywhere                  
+<em>80,443/tcp                 ALLOW       Anywhere         </em>         
+OpenSSH (v6)               ALLOW       Anywhere (v6)             
+53 (v6)                    ALLOW       Anywhere (v6)             
+<em>80,443/tcp (v6)            ALLOW       Anywhere (v6)</em> </samp>
+
+<h3>Tjek at det virker</h3>
+
+<p>Da vi har åbnet for at <em>Nextcloud</em> kan tilgås fra dit eget netværk (her 192.168.87.0/24), så kan du nu åbne en browser på din computer og logge ind på <em>Nextcloud</em></p>
+
+<p>Skriv serverens IP-adresse i søgefeltet</p>
+
+<figure id="">
+
+	<img class="w-75" src="images/webserver_nextcloud_001.png" alt="" title="">
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Klik på <button type="">Avanceret</button></p>
+
+
+<figure id="">
+
+	<img class="w-75" src="images/webserver_nextcloud_002.png" alt="" title="">
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Klik på linket <em><u>Fortsæt til 192.168.87.10 Usikkert</u></em></p>
+
+<figure id="">
+
+	<img class="w-75" src="images/webserver_nextcloud_003.png" alt="" title="">
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Indtast brugernavn og kode på din administrator.</p>
+
+<figure id="">
+
+	<img class="w-75" src="images/webserver_nextcloud_004.png" alt="" title="">
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Du er logget på og kan begynde at oprette brugere.</p>
+
+<figure id="">
+
+	<img class="w-75" src="images/webserver_nextcloud_005.png" alt="" title="">
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p><strong>Guiden der er taget udgangspunkt i:</strong></p>
 
 
 <p><a href="https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-nextcloud-on-ubuntu-20-04" target="_blank">https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-nextcloud-on-ubuntu-20-04</a></p>
