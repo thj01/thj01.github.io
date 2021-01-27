@@ -431,6 +431,12 @@ See "man sudo_root" for details.
 
 <pre><code>sudo apt update -y && sudo apt upgrade -y</code></pre>
 
+<h3>Fjern gamle kerner</h3>
+
+<p>Du kan fjerne gamle linuxkerner (Ældre versioner af Linux) ved at køre følgende kommando:</p>
+
+<pre><code>sudo apt purge $(dpkg -l linux-{image,headers}-"[0-9]*" | awk '/ii/{print $2}' | grep -ve $(uname -r | sed -r 's/-[a-z]+//') | sed ':a;N;$!ba;s/\n/ /g')</code></pre>
+
 <h3>Opstart af Firewall</h3>
 
 <p>Da vi gerne vil styre hvad der kan blive brugt på serveren konfigurerer vi firewall'en <em>ufw</em>.</p>
