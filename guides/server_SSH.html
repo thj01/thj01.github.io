@@ -76,7 +76,21 @@
 
 <samp>Generating public/private rsa key pair.</samp>
 
-<p>Indtast et kodeord til SSH 2 gange (der kommer ingen tegn når du taster)</p>
+<p>Herefter bliver du sat overfor et valg</p>
+
+<samp>Enter passphrase (empty for no passphrase):</samp>
+
+<p>Her har du mulighed for at indtaste et kordeord, som skal anvendes i hver SSH-session. Kodeordet skal ses som en ekstra sikkerhed hvis nogen får fat i din private nøgle.</p>
+
+<dl class="">
+	<dt>Med <em>passphrase</em></dt>
+	<dd>Indtast kodeordet og tast <kbd>Enter</kbd></dd>
+	<dt>Uden <em>passphrase</em></dt>
+	<dd>Tast kun <kbd>Enter</kbd></dd>
+</dl>
+
+<p>Gentag</p>
+
 
 <samp>Enter passphrase (empty for no passphrase): 
 Enter same passphrase again: </samp>
@@ -144,7 +158,7 @@ and check to make sure that only the key(s) you wanted were added.
 
 <pre><code>ssh server</code></pre>
 
-<p>Her kommer der et vindue op hvor du skal indtaste den passphrase du lavede i starten</p>
+<p>Har du indtastet en <em>passphrase</em>, kommer der et vindue op hvor du skal indtaste din <em>passphrase</em> du lavede i starten</p>
 
 <figure id="">
 
