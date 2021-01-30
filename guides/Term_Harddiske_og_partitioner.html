@@ -336,13 +336,22 @@ sda                         8:0    0   100G  0 disk
   └─ubuntu--vg-ubuntu--lv 253:0    0    30G  0 lvm  /
 sr0                        11:0    1  1024M  0 rom  </samp>
 
-<div class="alert">
-	<p>Herefter udelader jeg loops fra udskrifterne, for at give et bedre overblik</p>
-</div>
+<p>For undgå at få alle <em>loop</em>-enhederne med tilføjer vi optionen <em>-e7</em></p>
+
+<pre><code>lsblk -e7</code></pre>
+
+<samp>NAME                      MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
+sda                         8:0    0   100G  0 disk 
+├─sda1                      8:1    0     1M  0 part 
+├─sda2                      8:2    0     1G  0 part /boot
+└─sda3                      8:3    0    99G  0 part 
+  └─ubuntu--vg-ubuntu--lv 253:0    0    30G  0 lvm  /
+sr0                        11:0    1  1024M  0 rom  </samp>
+
 
 <p><em>lsblk</em> kan give langt flere informationer ved at angive nogle options. Kommandoen skal køres som root, da nogle af informationerne kræver root-rettigheder </p>
 
-<pre><code>sudo lsblk -o name,type,fstype,size,ro,type,mountpoint</code></pre>
+<pre><code>sudo lsblk -e7 -o name,type,fstype,size,ro,type,mountpoint</code></pre>
 
 <samp>NAME                      TYPE FSTYPE        SIZE RO TYPE MOUNTPOINT
 sda                       disk               100G  0 disk 
@@ -356,7 +365,7 @@ sr0                       rom               1024M  0 rom  </samp>
 
 <p>Vi kan også gøre output mere brugervenligt, f.eks. hvis vi kun vil se navn (placering), fstype (filtype) og monteringspunkt (mountpoint)</p>
 
-<pre><code>sudo lsblk -o name,fstype,mountpoint</code></pre>
+<pre><code>sudo lsblk -e7 -o name,fstype,mountpoint</code></pre>
 
 <samp>NAME                      FSTYPE      MOUNTPOINT
 sda                                   
@@ -368,7 +377,7 @@ sr0              </samp>
 
 <p>Vi kan også filtrere ved hjælp af <em>grep</em>, så vi kun finder de linier der indeholder vores søgning.</p>
 
-<pre><code>sudo lsblk -o name,fstype,mountpoint | grep sda</code></pre>
+<pre><code>sudo lsblk -e7 -o name,fstype,mountpoint | grep sda</code></pre>
 
 <samp>NAME                      FSTYPE      MOUNTPOINT
 <span class="red">sda</span>                                   
@@ -376,11 +385,9 @@ sr0              </samp>
 ├─<span class="red">sda</span>2                    ext4        /boot
 └─<span class="red">sda</span>3                    LVM2_member</samp>
 
-<pre><code>sudo lsblk -o name,fstype,mountpoint | grep sda\|LVM</code></pre>
-
 <p>Eller hvis vi vil finde alle partitioner der er på sda og/eller der er formateret med ext</p>
 
-<pre><code>sudo lsblk -o name,fstype,mountpoint | grep "sda\|ex4"</code></pre>
+<pre><code>sudo lsblk -e7 -o name,fstype,mountpoint | grep "sda\|ex4"</code></pre>
 
 <samp>sda                                   
 ├─<span class="red">sda</span>1                                
@@ -609,8 +616,7 @@ Number  Start   End     Size    File system  Name  Flags
  2      2097kB  1076MB  1074MB  ext4
  3      1076MB  107GB   106GB
 
-
-<span class="green">Model: ATA VBOX HARDDISK (scsi)
+<span class="terminal_green">Model: ATA VBOX HARDDISK (scsi)
 Disk /dev/sdb: 107GB
 Sector size (logical/physical): 512B/512B
 Partition Table: gpt

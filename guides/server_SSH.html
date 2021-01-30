@@ -39,11 +39,15 @@
 	
 <div class="col-sm-9">
 	
-<h1>Sikkerhed</h1>	
+<h1>Opsætning af SSH</h1>	
 	
 <h2 id="id_SSH">SSH: Sikkerhed med nøglefiler</h2>
 
-<p>Her vil du lære at opgradere sikkerheden, så man skal have en nøgle for at kunne tilgå serveren</p>
+<p>Her opsætter vi en SSH-nøgler til at få adgang til vores hjemmeserver.</p>
+
+<p>Vi gør det på en måde så du senere kan tilføje flere SSH-nøgler til andre tjenester - f.eks. Github</p>
+
+
 
 <details>
 
@@ -68,23 +72,21 @@
 
 <h3>Opret nøgle</h3>
 
-<pre><code>ssh-keygen</code></pre>
+<pre><code>ssh-keygen -t rsa -f ~/.ssh/server-key</code></pre>
 
-<samp>Generating public/private rsa key pair.
-Enter file in which to save the key (/home/tj/.ssh/id_rsa): 
-</samp>
+<samp>Generating public/private rsa key pair.</samp>
 
-<p>Tryk <kbd>Enter</kbd>, da vi ikke vil ændre den adresse</p>
+<p>Indtast et kodeord til SSH 2 gange (der kommer ingen tegn når du taster)</p>
 
 <samp>Enter passphrase (empty for no passphrase): 
 Enter same passphrase again: </samp>
 
-<p>Indtast et kodeord til SSH 2 gange (der kommer ingen tegn når du taster)</p>
+<p>Herefter oprettes nøglen</p>
 
-<samp>Your identification has been saved in /home/tj/.ssh/id_rsa
-Your public key has been saved in /home/tj/.ssh/id_rsa.pub
+<samp>Your identification has been saved in /home/tj/.ssh/server-key
+Your public key has been saved in /home/tj/.ssh/server-key.pub
 The key fingerprint is:
-SHA256:ui6kjLjISee1NZT/GF1HwfYYLc337UPHbcN5wMThGjk tj@tj-VirtualBox
+SHA256:ui6kjLjISee1NZT/GF1HwfYYLc337UPHbcN5wMThGjk tj@desktop
 The key's randomart image is:
 +---[RSA 3072]----+
 |             ++* |
@@ -100,19 +102,15 @@ The key's randomart image is:
 
 <p>Nøglerne er oprettet.</p>
 
-<h3>Kopier nøglen over på serveren</h3>
+<h3>Kopier <em>pub</em>-nøglen over på serveren</h3>
 
-<pre><code>ssh-copy-id [Brugernavn]@[IP-adresse på server]</code></pre>
+<p>For at serveren kan verificere brugen skal den have den offentlig nøgle, som har endelsen <em>pub</em>. Den hedder i vores tilfælde <em>server-key.pub</em></p>
 
-<p>I mit tilfælde vil det være:</p>
+<p>Den kopieres i dette tilfælde over med kommandoen :</p>
 
-<pre><code>ssh-copy-id tj@192.168.87.10</code></pre>
+<pre><code>ssh-copy-id -i ~/.ssh/server-key.pub tj@192.168.87.10</code></pre>
 
-<samp>The authenticity of host '192.168.87.10 (192.168.87.10)' can't be established.
-ECDSA key fingerprint is SHA256:xjdwZI/eseEeqa6BKK1d5/FpyO2IrkIobD94p/6lI1s.
-Are you sure you want to continue connecting (yes/no/[fingerprint])?</samp>
-
-<p>Hertil svarer du <em>yes</em></p>
+<p>Hertil svarer serveren</p>
 
 <samp>/usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
 /usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install the new keys
@@ -127,11 +125,24 @@ and check to make sure that only the key(s) you wanted were added.
 
 <span class="terminal_green">tj@desktop</span>:<span class="terminal_tilde">~</span>$ </samp>
 
+<h3>Opret config fil</h3>
+
+<p>Opret filen <em>~/.ssh/config</em> og indsæt følgende:</p>
+
+<samp>Host server
+	HostName 192.168.87.10
+	User tj
+	Port 22
+	IdentityFile ~/.ssh/server-key
+</samp>
+
+<p>Herefter kan du anvende <em>ssh server</em> i stedet for <em>ssh server</em></p>
+
 <h3>Tjek det virker</h3>
 
 <p>Login på din server ved hjælp af SSH</p>
 
-<pre><code>ssh tj@192.168.87.10</code></pre>
+<pre><code>ssh server</code></pre>
 
 <p>Her kommer der et vindue op hvor du skal indtaste den passphrase du lavede i starten</p>
 

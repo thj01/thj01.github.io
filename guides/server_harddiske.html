@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="da">
 <head>
-  <title>Ubuntu serveradministration</title>
+  <title>Serveradministration harddiske</title>
   <link rel="icon" href="../images/favicon.png">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -39,61 +39,73 @@
 	
 <div class="col-sm-9">
 	
-<h1>Opsætning af Ubuntuserver 20.04</h1>
+<h1>Serveradministraion harddiske</h1>
 
-<p>Følgende rækkefølge er min anbefaling hvis du vil lave en hjemmeserver med fildeling</p>
+<h2>LVM</h2>
 
-<ol class="">
-	<li><a href="server_administration.html#id_hostname" target="_blank">Ændring af hostename</a></li>
-	<li><a href="server_SSH.html#id_SSH" target="_blank">Sikkerhed med nøglefiler (SSH)</a></li>
-	<li><a href="server_tjenester.html#id_dnsmasq" target="_blank">Opsætning af dnsmasq (DNS)</a></li>	
-	<li><a href="server_webserver.html#id_nextcloud" target="_blank">Opsætning af Nextcloud</a></li>
-	<li><a href="server_webserver.html#id_cockpit" target="_blank">Opsætning af Cockpit (server administrations Web-GUI)</a></li>	
-	
-	
-	
-</ol>
+<p>LVM (Logical Volume Management) som bruges til at administrere harddiske på Ubuntuserveren.</p>
 
-
-
-<h2>Administration</h2>
+<p>Ved hjælp af LVM kan du: </p>
 
 <ul class="disc">
-	<li><a href="server_administration.html#id_hostname" target="_blank">Ændring af hostename</a></li>
-	<li><a href="server_administration.html#id_IP" target="_blank">Ændring af IP-adresse</a></li>
+	<li>Udvide og indskrænke størrelsen på dine partitioner.</li>
+	<li>Tilføje og udskifte harddiske efter behov.</li>
 </ul>
 
-<p>Hele dokumentet: <a href="server_administration.html" target="_blank">server_administration.html</a></p>
-
-<h2>Sikkerhed</h2>
+<p>LVM har ikke indbygget mirroring (backup) ligesom RAID, hvilket i forhold til en hjemmeserver ikke er det store problem, da man altid har brug for ekstern backup hvis. For at sikre sine data med LVM kan man: </p>
 
 <ul class="disc">
-	<li><a href="server_SSH.html#id_SSH" target="_blank">Opsætning af SSH</a></li>
+	<li>Købe nye harddiske med jævne mellemrum, for at sikre sig at selve hardwaren ikke fejler </li>
+	<li>Sørge for ekstern backup, så man kan gendanne data. (også et behov ved RAID)</li>
 </ul>
 
-<p>Hele dokumentet: <a href="server_SSH.html" target="_blank">server_SSH.html</a></p>
+<h2>Opbygning af LVM</h2>
 
-<h2>Tjenester</h2>
+<p>For at forstå LVMs opbygning skal du have styr på nogle grundbegreber</p>
 
-<ul class="disc">
-	<li><a href="server_tjenester.html#id_dnsmasq" target="_blank">Opsætning af <em>dnsmasq</em> (DNS)</a></li>
-</ul>
+<dl class="">
+	<dt>PV - Physical Volumes (fysiske drev)</dt>
+	<dd>PV'en er selve harddiskene (block devices). I LVM kan man tilføje og fjerne harddiske løbende og efter behov</dd>
+	<dt>VG - Volume Groups (Gruppering af fysiske partitioner)</dt>
+	<dd>VG'en består af en eller flere PV'er. Ved at tilføje harddiske (PV) kan man udvide størrelsen </dd>
+	<dt>LV - Logical Volumes (Logiske drev)</dt>
+	<dd>LV'erne er det vi normalt ville betegne som partitioner. I et LVM kan partitionerne spænde sig over mange harddiske. LV'er kan udvides efter behov.</dd>
+</dl>
 
+<figure id="">
 
-<p>Hele dokumentet: <a href="server_tjenester.html" target="_blank">server_tjenester.html</a></p>
+	<img class="w-100" src="images/LVM_opbygning.svg" alt="" title="">
 
-<h2>Webserver</h2>
+	<figcaption></figcaption>
 
-<ul class="disc">
-<!--
-	<li><a href="server_webserver.html#id_apache.html" target="_blank">Opsætning af  Apache webserver</a></li>
--->
-	<li><a href="server_webserver.html#id_nextcloud" target="_blank">Opsætning af <em>Nextcloud</em></a></li>
-	<li><a href="server_webserver.html#id_cockpit" target="_blank">Opsætning af Cockpit (server administrations Web-GUI)</a></li>
-</ul>
+</figure>
 
-<p>Hele dokumentet: <a href="server_webserver.html" target="_blank">server_webserver.html</a></p>
+<h2>Harddiskadministration</h2>
+
+<p>Resten af gennemgangen forudsætter at du har en grundlæggende forståelse for hvordan man opsætter harddiske på Ubuntu.</p>
+
+<p>Du kan læse en gennemgang her: <a href="Term_Harddiske_og_partitioner.html" target="_blank">Term_Harddiske_og_partitioner.html</a></p>
+
+<div class="alert">
 	
+	<p>Alle output i denne guide kommer fra serveren der bliver installeret fra Ubuntu guiden: <a href="Ubuntuserver_20.04_installation.html" target="_blank">Ubuntuserver_20.04_installation.html</a></p>
+	
+	<p>Til denne guide er der blevet tilføjet en ekstra harddisk på 100G til serveren.</p>
+
+</div>
+
+<h2>Overblik over harddiske</h2>
+
+
+
+<h2>Physical Volumes - PV</h2>
+
+<h3>Overblik over PV</h3>
+
+<pre><code>sudo pvscan</code></pre>
+
+
+
 </div><!-- end: col-md-9 -->
 
 <footer>
