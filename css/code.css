@@ -71,10 +71,19 @@ background-color: #474640;
 color:white;
 border: 0px solid #474640;
 
-
-
-
 }
+
+samp.thonny_shell::before {
+content: "Thonny shell";
+width: 10em;
+}
+
+span.thonny_print {
+
+line-height: 2em;
+padding-left: 1em;
+}
+
 
 
 code.term {
