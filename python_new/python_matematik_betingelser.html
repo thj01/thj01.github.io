@@ -66,29 +66,26 @@
 
 <p>Betingelser bruges når man vil have koden til at udføre noget i specielle tilfælde. Det kan f.eks. være at man vil undersøge om et tal er lige. Altså om tallet <span class="math">x%2 = 0</span>.</p>
 
-<pre class="ubuntu_terminal">
->>> for i in range(1,11):
-...&nbsp;&nbsp;&nbsp;&nbsp;if i%2==0:
-...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("{0} er lige".format(i))
+<pre><code class="python">>>> for i in range(1,11):
+...    if i%2==0:
+...        print("{0} er lige".format(i))
 ... 
 2 er lige
 4 er lige
 6 er lige
 8 er lige
-10 er lige
-</pre>
+10 er lige</code></pre>
 
 <h3>if/else</h3>
 
 <p>Herunder udvider vi koden, så der udskrives om tallet er lige eller ulige</p>
 
-<pre class="ubuntu_terminal">
->>> for i in range(1,11):
-...&nbsp;&nbsp;&nbsp;&nbsp;if i%2==0:
-...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tal="lige"
-...&nbsp;&nbsp;&nbsp;&nbsp;else:
-...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tal="ulige"
-...&nbsp;&nbsp;&nbsp;&nbsp;print("{0} er {1}".format(i,tal))
+<pre><code class="python">>>> for i in range(1,11):
+...    if i%2==0:
+...        tal="lige"
+...    else:
+...        tal="ulige"
+...    print("{0} er {1}".format(i,tal))
 ... 
 1 er ulige
 2 er lige
@@ -99,22 +96,19 @@
 7 er ulige
 8 er lige
 9 er ulige
-10 er lige
-
-</pre>
+10 er lige</code></pre>
 
 <h3>if/elif/else</h3>
 
 <p>I dette eksempel udskriver koden om tallet <em>i</em> er positivt, 0 eller negativt</p>
 
-<pre class="ubuntu_terminal">
->>>for i in range(-5,6):
-...&nbsp;&nbsp;&nbsp;&nbsp;if i==0:
-...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("{0} er hverken negativt eller positivt".format(i))
-...&nbsp;&nbsp;&nbsp;&nbsp;elif i&lt;0:
-...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("{0} er negativt".format(i))
-...&nbsp;&nbsp;&nbsp;&nbsp;else:
-...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("{0} er positivt".format(i))
+<pre><code class="python">>>>for i in range(-5,6):
+...    if i==0:
+...        print("{0} er hverken negativt eller positivt".format(i))
+...    elif i&lt;0:
+...        print("{0} er negativt".format(i))
+...    else:
+...        print("{0} er positivt".format(i))
 ...
 -5 er negativt
 -4 er negativt
@@ -126,9 +120,7 @@
  2 er positivt
  3 er positivt
  4 er positivt
- 5 er positivt
-</pre>
-
+ 5 er positivt</code></pre>
 
 
 
@@ -164,25 +156,22 @@
 
 <p>I eksemplet herunder er der en kode der finder de lige tal i en talmængde (her op til 11). Læg mærke til at jeg anvender en <em>for</em>-løkke til at gennemløbe tallene og indlejrer <em>while</em>-løkken deri. Koden er forklaret med rødt:</p>
 
-<pre class="ubuntu_terminal">
->>> for i in range(1,11): <span class="red">--&gt; sørger for at tallene fra 1-10 bliver anvendt</span>
-...&nbsp;&nbsp;&nbsp;&nbsp;while i%2==0: <span class="red">--&gt; Så længe 2 går op (rest=0)</span>
-...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print(i) <span class="red">--&gt; Udskriv i</span>
-...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break <span class="red">--&gt; Bryder while-løkken og så range-løkken kan tælle videre</span>
+<pre><code class="python">>>> for i in range(1,11): <span class="red">--&gt; sørger for at tallene fra 1-10 bliver anvendt</span>
+...    while i%2==0: <span class="red">--&gt; Så længe 2 går op (rest=0)</span>
+...        print(i) <span class="red">--&gt; Udskriv i</span>
+...        break <span class="red">--&gt; Bryder while-løkken og så range-løkken kan tælle videre</span>
 ... 
 2
 4
 6
 8
-10
-</pre>
+10</code></pre>
 
 <p>Grunden til at whileløkken skal brydes er, at i aldrig når at vokse. Den vil blive ved med at køre indtil koden afbrydes af brugeren med tasterne <span class="knap">Ctrl</span>+<span class="knap">c</span>. Prøv selv</p>
 
-<pre class="ubuntu_terminal">
->>> for i in range(1,11):
-...&nbsp;&nbsp;&nbsp;&nbsp;while i%2==0:
-...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print(i)
+<pre><code class="python">>>> for i in range(1,11):
+...    while i%2==0:
+...        print(i)
 ... 
 2
 2
@@ -194,8 +183,7 @@
 <span class="red">^CTraceback (most recent call last):
   File "&lt;stdin>", line 3, in &lt;module>
 KeyboardInterrupt</span>
-2
-</pre>
+2</code></pre>
 
 
 
@@ -205,12 +193,10 @@ KeyboardInterrupt</span>
 
 <p>Lav funktionen <code>lilletabel()</code> der udskriver de 10 første tal i den tabel der angives i parantesen.</p>
 
-<pre class="ubuntu_terminal">
->>> lilletabel(5)
+<pre><code class="python">>>> lilletabel(5)
 5 - 10 - 15 - 20 - 25 - 30 - 35 - 40 - 45 - 50 - 
 >>> lilletabel(7)
-7 - 14 - 21 - 28 - 35 - 42 - 49 - 56 - 63 - 70 -
-</pre>
+7 - 14 - 21 - 28 - 35 - 42 - 49 - 56 - 63 - 70 -</code></pre>
 
 <span class="afsnit">Opgave 2 - BUM</span>
 

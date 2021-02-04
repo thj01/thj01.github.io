@@ -39,7 +39,6 @@
 	
 <div class="col-sm-9">
 	
-<div class="title">Matematik med Python</div>	
 
 <figure id="">
 
@@ -53,40 +52,34 @@
 
 <h1>Regneregler</h1>
 
-<p>Regningsarterne fungerer ved at anvende tegnene: <em>+</em>, <em>-</em>, <em>*</em> og <em>/</em>. Se herunder:</p>
+<p>Regningsarterne fungerer ved at anvende tegnene: <em>+</em> , <em>-</em> , <em>*</em>  og <em>/</em> . Se herunder:</p>
 
-<pre class="ubuntu_terminal">
->>> 6+3
+<pre><code class="python">>>> 6+3
 9
 >>> 6-3
 3
 >>> 6*3
 18
 >>> 6/3
-2.0
-</pre>
+2.0</code></pre>
 
 <p>Læg mærke til at der bliver anvendt <em>int</em> i alle eksemplerne, og at resultatet bliver leveret på samme måde ved <em>+</em>, <em>-</em> og <em>*</em>. Men ved division bliver resulatet ændret til <em>float</em>. Se nedestående eksempel</p>
 
-<pre class="ubuntu_terminal">
->>> 2/3
-0.6666666666666666
-</pre>
+<pre><code class="python">>>> 2/3
+0.6666666666666666</code></pre>
 
 <h2>Regningsregler</h2>
 
 <p>Python anvender korrekte regningsregler, hvilket vil sige at <em>+</em> og <em>-</em> adskiller ledene, og at de skal sættes paranteser for at omgå dette. Se eksemplerne herunder:</p>
 
-<pre class="ubuntu_terminal">
->>> 3+2*6
+<pre><code class="python">>>> 3+2*6
 15
 >>> (3+2)*6
 30
 >>> 3+6/2
 6.0
 >>> (3+6)/2
-4.5
-</pre>
+4.5</code></pre>
 
 <h3>opgaver</h3>
 
@@ -141,23 +134,18 @@
 
 <p>Eksempler med 2<sup>4</sup> og kvadratroden af 4:</p>
 
-<pre class="ubuntu_terminal">
->>> pow(2,4) 
+<pre><code class="python">>>> pow(2,4) 
 16
 >>> pow(4,1/2)
-2.0
-</pre>
+2.0</code></pre>
 
 <p>Man kan have funktioner inde i funktioner, f.eks:</p>
 
 <div class="latex">$$ \sqrt[5]{7^2} = (7^2)^{\frac{1}{5}} = pow(~pow(7,2)~,~1/5~)$$</div>
 
 
-<pre class="ubuntu_terminal">
->>> pow( pow(7,2) , 1/5 )
-2.17790642448278
-</pre>
-
+<pre><code class="python">>>> pow( pow(7,2) , 1/5 )
+2.17790642448278</code></pre>
 
 <h4>Opgave</h4>
 
@@ -200,17 +188,13 @@
 	</tbody>
 </table>
 
-<p></p>
-
-<pre class="ubuntu_terminal">
->>> import math
+<pre><code class="python">>>> import math
 >>> math.log10(100)
 2.0
 >>> math.log10(pow(10,2))
 2.0
 >>> math.log(pow(math.e,2))
-2.0
-</pre>
+2.0</code></pre>
 
 <h3>Konstanter</h3>
 
@@ -240,13 +224,11 @@
 
 <p>De kan kaldes ved at importere dem fra pakken <code>math</code></p>
 
-<pre class="ubuntu_terminal">
->>> import math
+<pre><code class="python">>>> import math
 >>> math.pi
 3.141592653589793
 >>> math.e
-2.718281828459045
-</pre>
+2.718281828459045</code></pre>
 
 <h3>Modulus og floor division</h3>
 
@@ -277,14 +259,12 @@
 	</tbody>
 </table>
 
-<p></p>
 
-<pre class="ubuntu_terminal">
->>> 9%5
+
+<pre><code class="python">>>> 9%5
 4
 >>> 9//5
-1
-</pre>
+1</code></pre>
 
 <p>Man kan ved hjælp af <em>modulus</em> og <em>floor division</em> omskrive en uægte brøk til en blandet brøk efter følgende model:</p>
 
@@ -303,10 +283,8 @@
 
 <p>Hvis man vil arbejde med absolutte tal anvender man funktionen <code>abs()</code>. Det gør at resultatet bliver repræsenteret med sin positive værdi. Se eksemplerne:</p>
 
-<pre class="ubuntu_terminal">
->>> abs(-2)
-2
-</pre>
+<pre><code class="python">>>> abs(-2)
+2</code></pre>
 
 <h2>Taltyper</h2>
 
@@ -369,10 +347,8 @@
 
 <p><em>float</em> er simple decimaltal og kan anvendes til langt de fleste beregninger. Men taller er ikke præcist se nedestående eksempel: </p>
 
-<pre class="ubuntu_terminal">
->>> 3*0.1-0.3
-5.551115123125783e-17
-</pre>
+<pre><code class="python">>>> 3*0.1-0.3
+5.551115123125783e-17</code></pre>
 
 <p>Resultatet burde give <em>0</em> men giver en rest. Det er ikke fordi computeren ikke kan regne, men skyldes at <em>float</em> er binært defineret, hvilket giver disse afvigelser - i dette tilfælde efter den 17 decimal. Men anvender man få decimaler er float rigeligt. <!--I forhold til <em>decimal</em> fylder det mindre i hukommelsen og er lettere at beregne for computeren.--></p>
 
@@ -417,8 +393,7 @@ Decimal('2.5000')
 
 <p>Først skal <em>fraction</em>importeres:</p>
 
-<pre class="ubuntu_terminal">
->>> from fractions import Fraction
+<pre><code class="python">>>> from fractions import Fraction
 >>> brøk1 = Fraction(2,3)
 >>> brøk2 = Fraction(3,4)
 >>> brøk1*brøk2
@@ -426,15 +401,13 @@ Fraction(1, 2)
 >>> float1=float(2/3)
 >>> float2=float(3/4)
 >>> float1*float2
-0.5
-</pre>
+0.5</code></pre>
 
 <h2>Konvertering af taltyper</h2>
 
 <p>Hvis man vil undersøge hvilken taltype en variabel er anvender man funktionen <code>type()</code>. Lad os prøve det ved at anvende variablerne fra eksemplet ovenfor:</p>
 
-<pre class="ubuntu_terminal">
->>> a=7
+<pre><code class="python">>>> a=7
 >>> b=3/4
 >>> c=3.14
 >>> type(a)
@@ -442,18 +415,15 @@ Fraction(1, 2)
 >>> type(b)
 &lt;class 'float'&gt;
 >>> type(c)
-&lt;class 'float'&gt;
-</pre>
+&lt;class 'float'&gt;</code></pre>
 
 <p>Herunder angiver vi variablen <em>d</em>, som er det samme som c - blot i taltypen <em>fraction</em>. Vi lægger også mærke til at variablen d nu er funktionsværdien af <code>Fraction(2,3)</code></p>
 
-<pre class="ubuntu_terminal">
->>> d=Fraction(2,3)
+<pre><code class="python">>>> d=Fraction(2,3)
 >>> type(d)
 &lt;class 'fractions.Fraction'>
 >>> d
-Fraction(2, 3)
-</pre>
+Fraction(2, 3)</code></pre>
 
 <p>Python er designet til hele tiden at vælge den bedst mulige taltype, hvilket betyder at tal der fremkommer ved hjælp af division automatisk bliver konverteret til <em>float</em>. Det vi skal kigge på her er hvordan vi konverterer mellem taltyper og finder ud af hvilken taltype det er.</p>
 
@@ -470,8 +440,7 @@ Fraction(2, 3)
 
 <p>Man skal være opmærksom på at man ved en omskrivning kan miste decimaler. Hvis man omskriver en brøk eller et decimaltal til en <em>int</em>, så mister man alle decimalerne. Se eksemplerne herunder:</p>
 
-<pre class="ubuntu_terminal">
->>> a=3.14
+<pre><code class="python">>>> a=3.14
 >>> b=9/10
 >>> c=11/10
 >>> int(a)
@@ -479,15 +448,13 @@ Fraction(2, 3)
 >>> int(b)
 0
 >>> int(c)
-1
-</pre>
+1</code></pre>
 
 <h3>... til float (ℝ - Relle tal)</h3>
 
 <p>Når der omskrives til <em>float</em> sættes der minimum en decimal på.</p>
 
-<pre class="ubuntu_terminal">
->>> a=1
+<pre><code class="python">>>> a=1
 >>> b=3.14
 >>> c=2/3
 >>> float(a)
@@ -495,8 +462,7 @@ Fraction(2, 3)
 >>> float(b)
 3.14
 >>> float(c)
-0.6666666666666666
-</pre>
+0.6666666666666666</code></pre>
 
 <!--
 
@@ -520,8 +486,7 @@ Decimal('0.66666666666666662965923251249478198587894439697265625')
 
 <p>For at arbejde med <em>Fraction</em> skal funktionen først importeres:</p>
 
-<pre class="ubuntu_terminal">
->>> from fractions import Fraction
+<pre><code class="python">>>> from fractions import Fraction
 >>> a=1
 >>> b=3.14
 >>> c=2/3
@@ -530,8 +495,7 @@ Fraction(1, 1)
 >>> Fraction(b)
 Fraction(7070651414971679, 2251799813685248)
 >>> Fraction(c)
-Fraction(6004799503160661, 9007199254740992)
-</pre>
+Fraction(6004799503160661, 9007199254740992)</code></pre>
 
 <p>Læg mærke til at omskrivningen fra <em>2/3</em> bliver til <em>6004799503160661/9007199254740992</em>. Det skyldes at variablen c ikke bliver gemt som en brøk (<em>Fraction</em>), men som et <em>float</em>. Derved kommer der en unøjagtighed ind i decimalerne som bliver nedarvet.</p>
 

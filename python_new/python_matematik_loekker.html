@@ -182,27 +182,23 @@
 
 <p>Når man er færdig med at skrive sin kode trykker man <kbd>Enter</kbd> 2 gange og koden udføres. Generelt ser koden ud som herunder:</p>
 
-<pre class="ubuntu_terminal">
-<span class="bold">*udsagn_1*:</span>
+<pre><code class="python"><span class="bold">*udsagn_1*:</span>
 
 ...&nbsp;&nbsp;&nbsp;&nbsp;*kode der skal køres når udsagn_1 er sandt*
     
 <span class="bold">*udsagn_2*:</span>
 
-...&nbsp;&nbsp;&nbsp;&nbsp;*kode der skal køres når udsagn_2 er sandt*
-</pre>
+...&nbsp;&nbsp;&nbsp;&nbsp;*kode der skal køres når udsagn_2 er sandt*</code></pre>
 
 <p>Man kan også indsætte udsagn i udsagn:</p>
 
-<pre class="ubuntu_terminal">
-<span class="bold">*udsagn_a*:</span>
+<pre><code class="python"><span class="bold">*udsagn_a*:</span>
 
 ...&nbsp;&nbsp;&nbsp;&nbsp;*kode der skal køres*
     
 ...&nbsp;&nbsp;&nbsp;&nbsp;<span class="bold">*udsagn_b*:</span>
 
-...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*kode der skal køres hvis udsagn_b er sandt*
-</pre>
+...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*kode der skal køres hvis udsagn_b er sandt*</code></pre>
 
 
 <h2>for - løkker</h2>
@@ -218,42 +214,36 @@
 
 <p>Herunder er nogle eksempler hvor nogle funktioner køres et bestemt antal gange. Herunder printes de første 5 værdier af <em>i</em>. Læg mærke til at Python tæller fra værdien <em>0</em> og så 5 værdier frem.</p>
 
-<pre class="ubuntu_terminal">
->>> for i in range(5):
+<pre><code class="python">>>> for i in range(5):
 ...&nbsp;&nbsp;&nbsp;&nbsp;print(i)
 ...	
 0
 1
 2
 3
-4
-</pre>
+4</code></pre>
 
 <p>Denne funktion kan f.eks. anvendes til at skrive de første 5 kvadrattal. For at i starter med være en sætter sætter jeg både start- og slutværdi på <em>range</em>. Den går fra 1 til 6 for at jeg får 5 værdier, da den 6. værdi ikke er med.</p>
 
-<pre class="ubuntu_terminal">
->>> for i in range(1,6):
+<pre><code class="python">>>> for i in range(1,6):
 ...&nbsp;&nbsp;&nbsp;&nbsp;print(pow(i,2))
 ...
 1
 4
 9
 16
-25
-</pre>
+25</code></pre>
 
 <p>Man kan også få den til at springe i værdierne. Herunder udskriver jeg de lige tal i intervallet 1-10. Jeg definerer den første og den sidste værdi og til sidst hvor meget den skal springe pr. gang.</p>
 
-<pre class="ubuntu_terminal">
->>> for i in range(2,11,2):
+<pre><code class="python">>>> for i in range(2,11,2):
 ...&nbsp;&nbsp;&nbsp;&nbsp;print(i)
 ...
 2
 4
 6
 8
-10
-</pre>
+10</code></pre>
 
 <p>Når man anvender <em>for</em> løkker skal man definere talområdet meget præcist. Det er både det som er fordelen og udfordringen ved at anvende <em>for</em>-løkker.</p>
 
@@ -261,16 +251,14 @@
 
 <p>For at tælle baglæns anvendes <code>reversed()</code></p>
 
-<pre class="ubuntu_terminal">
->>> for i in reversed(range(1,6)):
+<pre><code class="python">>>> for i in reversed(range(1,6)):
 ...&nbsp;&nbsp;&nbsp;&nbsp;print(i)
 ...
 5 
 4
 3
 2
-1
-</pre>
+1</code></pre>
 
 <h2>while-løkker</h2>
 
@@ -282,8 +270,7 @@
 
 <p>Koden er forklaret med rødt.</p>
 
-<pre class="ubuntu_terminal">
->>> i=0 <span class="red">--&gt; variablen i sættes til 0</span>
+<pre><code class="python">>>> i=0 <span class="red">--&gt; variablen i sættes til 0</span>
 >>> while i&lt;5: <span class="red">--&gt; Så længe i er mindre end 5</span>
 ...&nbsp;&nbsp;&nbsp;&nbsp;print(i) <span class="red">--&gt; udskriv i</span>
 ...&nbsp;&nbsp;&nbsp;&nbsp;i +=1 <span class="red">--&gt; læg 1 til i</span>
@@ -292,8 +279,7 @@
 1
 2
 3
-4 
-</pre>
+4 </code></pre>
 
 <p>For hver gang løkken kører bliver der lagt en til <em>i</em>. Når <em>i</em> rammer værdien <em>5</em> køres <em>while</em>-løkken ikke mere.</p>
 
@@ -301,8 +287,7 @@
 
 <p>Her vi vi anvende en <em>while</em>-løkke i et <em>for</em>-løkke til at udskrive tallene i 4 tabellen:</p>
 
-<pre class="ubuntu_terminal">
->>> for i in range(1,41):
+<pre><code class="python">>>> for i in range(1,41):
 ...&nbsp;&nbsp;&nbsp;&nbsp;while i%4==0:
 ...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print(i)
 ...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break
@@ -316,27 +301,23 @@
 28
 32
 36
-40
-</pre>
+40</code></pre>
 
 
 <h2>Output på en række</h2>
 
 <p>Nogle gange kan det være uhensigtsmæssigt at resultaterne udskrives på en lang række. Det gøres ved at tilføje <code>end="*separator*"</code> i print parantesen. Herudskrives tallene fra 1 - 10 vandret.</p>
 
-<pre class="ubuntu_terminal">
->>> for i in range(1,11):
+<pre><code class="python">>>> for i in range(1,11):
 ...&nbsp;&nbsp;&nbsp;&nbsp;print(i, end=" - ")
 ... 
-1 - 2 - 3 - 4 - 5 - 6 - 7 - 8 - 9 - 10 -
-</pre>
+1 - 2 - 3 - 4 - 5 - 6 - 7 - 8 - 9 - 10 -</code></pre>
 
 <h2>Opsummering af resultater</h2>
 
 <p>Ofte har man brug for at opsummere resultatet af ens udregning. Herunder vil vi lave et eksempel hvor vi opsummerer tallene fra 1-5:</p>
 
-<pre class="ubuntu_terminal">
->>> a = 0 
+<pre><code class="python">>>> a = 0 
 >>> for i in range(1,6):
 ...&nbsp;&nbsp;&nbsp;&nbsp;a+= i
 ...&nbsp;&nbsp;&nbsp;&nbsp;print(a)
@@ -345,19 +326,16 @@
 3
 6
 10
-15
-</pre>
+15</code></pre>
 
 <p>Først laver man en variabel, som man sætter til <em>0</em>. I løkken kører vi den ønskede matematiske beregning, og lægger resultatet til <em>a</em>. Herefter udskrives <em>a</em>. Ulempen ved at anvende denne kode i <em>Idle</em> er, at Python udskriver resultatet efter hvert gennemløb af <em>i</em>. For at undgå dette må vi ændre i koden, og selv hente resultatet:</p>
 
-<pre class="ubuntu_terminal">
->>> a = 0
+<pre><code class="python">>>> a = 0
 >>> for i in range(1,6):
 ...&nbsp;&nbsp;&nbsp;&nbsp;a+=i
 ... 
 >>> a
-15
-</pre>
+15</code></pre>
 
 <p>Forklaringen er, at <em>Idle</em> kun kan tage en kommando ad gangen. Så vi bliver nød til først at opmsummere vores tal, og til sidst bede Python om at udskrive værdien.</p>
 
@@ -372,10 +350,8 @@
 
 <span class="afsnit">Output</span>
 
-<pre class="ubuntu_terminal">
-1 - 3 - 6 - 10 - 15 - 21 - 28 - 36 - 45 - 55 - 66 - 78 - 91 - 105 - 120 - 136 - 153 - 171 - 190 - 210 - 
-</pre>
-
+<pre><code class="python">1 - 3 - 6 - 10 - 15 - 21 - 28 - 36 - 45 - 55 - 66 - 78 - 91 - 105 - 120 - 136 - 153 - 171 - 190 - 210 - 
+</code></pre>
 
 	
 </div><!-- end: col-md-9 -->

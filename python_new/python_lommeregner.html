@@ -55,16 +55,14 @@
 
 <p>Eksempler</p>
 
-<pre>
-	<code class="python">>>> 5+4
+<pre><code class="python">>>> 5+4
 9
 >>> 6-2
 4
 >>> 5*2
 10
 >>> 6/3
-2.0</code>
-</pre>
+2.0</code></pre>
 
 <p>Læg mærke til at Python svarer tilbage med et decimaltal når man dividerer, og at der anvendes punktum til at adskille heltallet fra decimalen. Står der kun et 0 efter punktummet betyder det at tallet er et heltal</p>
 
@@ -74,10 +72,8 @@
 
 <p>Pythons kommandolinie består af input og output. Når kommandofortolkeren starter op angiver man sit input ved de 3 "større end" tegn (<span class="inl_cmd">>>></span>). Python viser output (resultatet) i linien under. </p>
 
-<pre>
-	<code class="python">>>> 7 <span class="red">&larr; input</span>
-7 <span class="blue">&larr; output</span></code>
-</pre>
+<pre><code class="python">>>> 7 <span class="red">&larr; input</span>
+7 <span class="blue">&larr; output</span></code></pre>
 
 <h2>Decimaler</h2>
 
@@ -97,12 +93,10 @@
 
 <p>Vi kan indsætte det forrige output (resultat) ved hjælp af <span class="inl_cmd">_</span> (underscore ). Underscore kommer ved at anvende tastekombinationen <kbd>Shift</kbd> + <kbd>-</kbd>.</p>
 
-<pre>
-	<code class="python">>>> 7
+<pre><code class="python">>>> 7
 7
 >>> _+2
-9</code>
-</pre>
+9</code></pre>
 
 <h2>Paranteser</h2>
 
@@ -110,30 +104,24 @@
 
 <div class="latex">$$ \frac{ 1 }{ 2*8 } $$</div>
 
-<pre>
-	<code class="python">>>> 1/(2*8)
-0.0625</code>
-</pre>
+<pre><code class="python">>>> 1/(2*8)
+0.0625</code></pre>
 
 <h2>Negative værdier</h2>
 
 <p>Negative værdier angives ved at sætte <span class="inl_cmd">-</span> foran værdien. Det skal ikke i parantes selvom det er første værdi i regnestykket (som ved Texas lommeregneren)</p>
 
-<pre>
-	<code class="python">>>> -2*7
+<pre><code class="python">>>> -2*7
 -14
 >>> 7/-4
--1.75</code>
-</pre>
+-1.75</code></pre>
 
 <h2>Absolutte tal</h2>
 
 <p>Hvis man vil sikre sig et positivt resultat anvendes <span class="inl_cmd">abs()</span></p>
 
-<pre>
-	<code class="python">>>> abs(-7)
-7</code>
-</pre>
+<pre><code class="python">>>> abs(-7)
+7</code></pre>
 
 
 
@@ -143,37 +131,29 @@
 
 <p>Her kan du vælge at indtaste <span class="math">\( højde \)</span> og <span class="math">\( bredde \)</span> som variabler på følgende måde og udregne arealet:</p>
 
-<pre>
-	<code class="python">>>> højde = 3
+<pre><code class="python">>>> højde = 3
 >>> bredde = 5
 >>> højde * bredde
-15</code>
-</pre>
+15</code></pre>
 
 <p>Det kan være rigtigt smart, hvis man skal udregne en masse regnestykker hvor noget bliver ved med at være ens. Hvis vi senere skal udregne et rektangel, hvor højden er den sammen, men bredden er 7, skal vi kun ændre variablen for bredden. Det gør vi ved at indtaste en ny bredde (ændre variablen)</p>
 
-<pre>
-	<code class="python">>>> bredde = 7
+<pre><code class="python">>>> bredde = 7
 >>> højde * bredde
-21</code>
-</pre>
+21</code></pre>
 
 <p>Kan man ikke huske variablen, så finder man værdien ved at skrive den, f.eks:</p>
 
-<pre>
-	<code class="python">>>> højde
+<pre><code class="python">>>> højde
 3
 >>> bredde
-7</code>
-</pre>
+7</code></pre>
 
 <p>Variabler kan være beregnet både ved hjælp af værdier og ved hjælp af variabler, f.eks:</p>
 
-<pre>
-	<code class="python">>>> areal = bredde*højde
+<pre><code class="python">>>> areal = bredde*højde
 >>> areal
-21</code>
-</pre>
+21</code></pre>
 
 
 
@@ -183,20 +163,15 @@
 
 <p>Det gør vi på følgende måde:</p>
 
-<pre>
-	<code class="python">>>> from math import pi</code>
-</pre>
+<pre><code class="python">>>> from math import pi</code></pre>
 
 <p>Herefter kan vi vise hvad <img width="12" src="https://upload.wikimedia.org/wikipedia/commons/2/2e/Pi-symbol.svg" alt="_" title="_" /> er og regne med det:</p>
 
-<pre>
-	<code class="python">>>> from math import pi
+<pre><code class="python">>>> from math import pi
 >>> pi
 3.141592653589793
 >>> 3*pi
-9.42477796076938
-</code>
-</pre>
+9.42477796076938</code></pre>
 
 <h1>Brøker</h1>
 
@@ -221,8 +196,7 @@
 
 
 
-<pre>
-	<code class="python">>>>3/4
+<pre><code class="python">>>>3/4
 0.75	
 >>> 3/4 + 4
 4.75
@@ -231,8 +205,7 @@
 >>> 2/3*3/4
 0.5
 >>> (2+1/2)+3/4
-3.25</code>
-</pre>
+3.25</code></pre>
 
 <p><span class="red">VIGTIGT!: </span>Læg mærke til, at jeg sætter den blandede brøk i en parantes, før jeg regner videre med den</p>
 
@@ -250,8 +223,7 @@
 
 <p>Her er vist hvordan vi udregner regnestykkerne ovenfor:</p>
 
-<pre>
-	<code class="python">>>> from fractions import Fraction
+<pre><code class="python">>>> from fractions import Fraction
 >>> Fraction(3,4)
 Fraction(3, 4)
 >>> Fraction(3,4) + 4
@@ -261,8 +233,7 @@ Fraction(31, 20)
 >>> Fraction(2,3)*Fraction(3,4)
 Fraction(1, 2)
 >>> (2+Fraction(1,2))+Fraction(3,4)
-Fraction(13, 4)</code>
-</pre>
+Fraction(13, 4)</code></pre>
 
 <p>Læg mærke til at jeg stadig skal samle den blandende brøk i en parantes.</p>
 
@@ -294,12 +265,10 @@ Fraction(13, 4)</code>
 
 <p>Lad os kigge på sidste resultat ovenfor: <span class="inl_cmd">Fraction(13/4)</span>, hvilket er brøken <span class="math">\( \frac {13} {4} \)</span>. Herunder udregner jeg først heltallet, og derefter restproduktet.</p>
 
-<pre>
-	<code class="python">>>> 13//4
+<pre><code class="python">>>> 13//4
 3
 >>> 13%4
-1</code>
-</pre>
+1</code></pre>
 
 <p><span class="math">\( \frac{ 13 }{ 4 } \)</span> kan altså omskrives til <span class="math">\( 3 \frac 1 4 \)</span>, hvor 3 er heltallet og 1 er restproduktet (tælleren). Nævneren er den oprindelige nævner.</p>
 
@@ -311,11 +280,9 @@ Fraction(13, 4)</code>
 
 <p>Men hvad hvis den brøk kan forkortes til noget smartere? Det kan vi undersøge med Python.</p>
 
-<pre>
-	<code class="python">>>>from fractions import Fraction
+<pre><code class="python">>>>from fractions import Fraction
 >>> Fraction(0.125)
-Fraction(1, 8)</code>
-</pre>
+Fraction(1, 8)</code></pre>
 
 <p><span class="math">\( 0.125 \)</span> kan altså omskrives til <span class="math">\( \frac{ 1 }{ 8 } \)</span></p>
 
@@ -330,12 +297,10 @@ Fraction(1, 8)</code>
 	<li><span class="math">\( a**b \)</span></li>
 </ul>
 
-<pre>
-	<code class="python">>>> pow(8,2)
+<pre><code class="python">>>> pow(8,2)
 64
 >>> 8**2
-64</code>
-</pre>
+64</code></pre>
 
 <h2>Rødder</h2>
 
@@ -345,19 +310,15 @@ Fraction(1, 8)</code>
 
 <p>Dvs. at <span class="math">\( \sqrt[3]{27} \)</span> bliver til:</p>
 
-<pre>
-	<code class="python">>>> pow(27,1/3)
+<pre><code class="python">>>> pow(27,1/3)
 3.0
 >>> 27**(1/3)
-3.0</code>
-</pre>
+3.0</code></pre>
 
 <p>Læg mærke til, at <span class="math">\( \frac{ 1 }{ 3 } \)</span> skal være i parantes, hvis man anvender <span class="inl_cmd">**</span> metoden. Ellers vil Python fortolke regnestykket som <span class="math">\( \frac{ 27^1 }{ 3 } = 9\)</span></p>
 
-<pre>
-	<code class="python">>>> 27**1/3
-9.0</code>
-</pre>
+<pre><code class="python">>>> 27**1/3
+9.0</code></pre>
 
 <p>Den sikre metode er <span class="inl_cmd">pow(a,b))</span></p>
 
@@ -365,15 +326,13 @@ Fraction(1, 8)</code>
 
 <p>Man afrunder tal ved hjælp af funktionen <span class="inl_cmd">round(a,b)</span>, hvor a er tallet og b er antallet af decimaler. det gøres på følgende måde:</p>
 
-<pre>
-	<code class="python">>>> from math import pi
+<pre><code class="python">>>> from math import pi
 >>> pi
 3.141592653589793
 >>> round(pi,2)
 3.14
 >>> round(pi,4)
-3.1416</code>
-</pre>
+3.1416</code></pre>
 
 <h2>afrunding til nærmeste hele tal</h2>
 
@@ -386,15 +345,13 @@ Fraction(1, 8)</code>
 
 <p>Herunder laver jeg afrundinger af pi.</p>
 	
-<pre>
-	<code class="python">>>> from math import pi, ceil, floor
+<pre><code class="python">>>> from math import pi, ceil, floor
 >>> pi
 3.141592653589793
 >>> ceil(pi)
 4
 >>> floor(pi)
-3</code>
-</pre>	
+3</code></pre>	
 
 <p>Læg mærke til at jeg kan importere flere funktioner fra samme pakke ved at adskille dem med <span class="inl_cmd">,</span> (komma))</p>
 
@@ -440,9 +397,7 @@ Fraction(1, 8)</code>
 
 <h2>Importer math</h2>
 
-<pre>
-	<code class="python">import math</code>
-</pre>
+<pre><code class="python">import math</code></pre>
 
 <h2>Grad til radian</h2>
 
@@ -463,21 +418,17 @@ Fraction(1, 8)</code>
 
 <p><b>Eksempel:</b> konverter 90&deg; og 45&deg;</p>
 
-<pre>
-	<code class="python">>>> math.radians(90)
+<pre><code class="python">>>> math.radians(90)
 1.5707963267948966
 >>> math.radians(45)
-0.7853981633974483</code>
-</pre>
+0.7853981633974483</code></pre>
 
 <p><b>Eksempel:</b> konverter 0.45 rad og 0.789 rad til grader</p>
 
-<pre>
-	<code class="python">>>> math.degrees(0.45)
+<pre><code class="python">>>> math.degrees(0.45)
 25.783100780887047
 >>> math.degrees(0.789)
-45.206370035821955</code>
-</pre>
+45.206370035821955</code></pre>
 
 <h2>trigonometriske funktioner</h2>
 
@@ -532,31 +483,25 @@ Fraction(1, 8)</code>
 
 <p>Ved hjælp af sinus</p>
 
-<pre>
-	<code class="python">>>> import math
+<pre><code class="python">>>> import math
 >>> math.asin(3/5) <span class="red"><b>&larr; beregnet ved hjælp af asin</b></span>
 0.6435011087932844 <span class="blue1"><b>&larr; resultat i radianer</b></span>
 >>> math.degrees(_)<span class="green"><b>&larr; omdanner radianer til grader ( _ henter forrige output)</b></span>
-36.86989764584402 <span class="blue"><b>&larr; resultat i radianer</b></span></code>
-</pre>
+36.86989764584402 <span class="blue"><b>&larr; resultat i radianer</b></span></code></pre>
 
 <p>Ved hjælp af cosinus</p>
 
-<pre>
-	<code class="python">>>> math.acos(4/5)
+<pre><code class="python">>>> math.acos(4/5)
 0.6435011087932843
 >>> math.degrees(_)
-36.86989764584401</code>
-</pre>
+36.86989764584401</code></pre>
 
 <p>Ved hjælp af tangens</p>
 
-<pre>
-	<code class="python">>>> math.atan(3/4)
+<pre><code class="python">>>> math.atan(3/4)
 0.6435011087932844
 >>> math.degrees(_)
-36.86989764584402</code>
-</pre>
+36.86989764584402</code></pre>
 
 <p>Vinkel A er altså 36,9&deg;</p>
 
@@ -571,8 +516,7 @@ Fraction(1, 8)</code>
 </ol>
 
 
-<pre>
-	<code class="python">>>> import math
+<pre><code class="python">>>> import math
 >>> a = 3
 >>> b = 4
 >>> c = 5
@@ -582,8 +526,7 @@ Fraction(1, 8)</code>
 >>> vinkel_grad
 36.86989764584402
 >>> round(_,2)
-36.87</code>
-</pre>
+36.87</code></pre>
 
 <table class="_">
 	<thead>

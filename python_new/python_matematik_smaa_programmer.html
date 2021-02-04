@@ -57,25 +57,21 @@
 
 <p>Funktionen gør nøjagtigt det som den siger. Den printer indholdet af parantesen. Indholdet i parantesen skal være være enten en værdi (angives med talværdier) eller en tekststreng</p>
 
-<pre class="ubuntu_terminal">
->>> a=1
+<pre><code class="python">>>> a=1
 >>> print(a)
 1
 >>> print(a*2)
 2
 >>> print("Dette er en sætning")
-Dette er en sætning
-</pre>
+Dette er en sætning</code></pre>
 
 <h2>Pladsholdere</h2>
 
 <p>Man kan indsætte variabler i en teksstreng ved hjælp af pladsholdere. Se herunder:</p>
 
-<pre class="ubuntu_terminal">
->>> navn="Thomas"
+<pre><code class="python">>>> navn="Thomas"
 >>> print("Variablens navn er {0}".format(navn))
-Variablens navn er Thomas
-</pre>
+Variablens navn er Thomas</code></pre>
 
 <p>Pladsholderne angives ved hjælp af <code>{0}</code>, <code>{1}</code>,<code>{2}</code>  ... og indsættes ved hjælp af at sætte <code>.format()</code> på tekststrengen. I parantesen angives variablerne i rækkefølge adskilt af <em>,</em>.</p>
 
@@ -93,14 +89,12 @@ Variablens navn er Thomas
 
 <p>I dette eksempel er brugerens input farvet blå for at tydeliggøre det som sker.</p>
 
-<pre class="ubuntu_terminal">
->>> navn=input("Skriv dit navn: ")
+<pre><code class="python">>>> navn=input("Skriv dit navn: ")
 Skriv dit navn: <span class="blue1">Thomas</span>
 >>> tal=int(input("Skriv et tal: ")) <span class="red">&lt;-- Husk to paranteser til sidst</span>
 Skriv et tal: <span class="blue1">6</span>
 >>> print("Det dobbelte af {0} er {1}".format(tal,tal*2)) <span class="red">&lt;-- Husk to paranteser til sidst</span>
-Det dobbelte af 6 er 12
-</pre>
+Det dobbelte af 6 er 12</code></pre>
 
 <p>Hvad er det vi gør:</p>
 
@@ -122,16 +116,14 @@ Det dobbelte af 6 er 12
 
 <p>Hvis vi f.eks. ville udregne en brøk kan vi få brugeren til først at indtaste tælleren og derefter nævneren:</p>
 
-<pre class="ubuntu_terminal">
->>> tæller=int(input("Indtast tæller: "))
+<pre><code class="python">>>> tæller=int(input("Indtast tæller: "))
 Indtast tæller: 3
 >>> nævner=int(input("Indtast nævner: "))
 Indtast nævner: 4
 >>> tæller/nævner
 0.75
 >>> type(_)
-&lt;class 'float'&gt;
-</pre>
+&lt;class 'float'&gt;</code></pre>
 
 <p>Læg mærke til 2 ting:</p>
 
