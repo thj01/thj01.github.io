@@ -86,7 +86,7 @@
 	
 	<ul class="disc">
 		<li>fnavn (læsbar forkortelse)</li>
-		<li>for_navn (snake case - underscore til at adskille ord)</li>
+		<li>fornavn (snake case - underscore til at adskille ord)</li>
 		<li>forNavn (camel casing - Stort bogstab til at adskille ord)</li>
 	</ul>
 
@@ -98,16 +98,16 @@
 
 <p>Her opretter vi 2 variabler. En for fornavn og en for alder. Herefter printer vi dem ud.</p>
 
-<pre><code class="python">>>> for_navn="Thomas"
+<pre><code class="python">>>> fornavn="Thomas"
 >>> alder=50
->>> print(for_navn)
+>>> print(fornavn)
 <span class="thonny_print">Thomas</span>
 >>> print(alder)
 <span class="thonny_print">50</span></code></pre>
 
 <p>Læg mærke til at der er sat anførselstegn omkring <em>"Thomas"</em>. Det er fordi det er en tekststreng. Hvis jeg glemmer laver Python en fejlmeddelelse:</p>
 
-<pre><code class="python">>>> for_navn=Thomas
+<pre><code class="python">>>> fornavn=Thomas
 <span class="red">Traceback (most recent call last):
   File "&lt;pyshell>", line 1, in &lt;module>
 NameError: name 'Thomas' is not defined</span></code></pre>
@@ -121,22 +121,7 @@ NameError: name 'Thomas' is not defined</span></code></pre>
 >>> a + b
 5</code></pre>
 
-<h2>Printe variabler</h2>
-
-<p>Vi kan også udskrive variablerne. Det gøres ved at bruge det man kalder <em>fancy print</em>:</p>
-
-<pre><code class="python">>>> for_navn="Thomas"
->>> alder=50
->>> print (f"Hej. Jeg hedder {for_navn}. Jeg er {alder} år gammel")
-<span class="thonny_print">Hej. Jeg hedder Thomas. Jeg er 50 år gammel</span></code></pre>
-
-<p>Lad os kigge på det der står inde i print funktionen:</p>
-
-<pre><code>f"Hej. Jeg hedder {for_navn}. Jeg er {alder} år gammel"</code></pre>
-
-<p><em>f</em> aktiverer <em>fancy print</em>. I hver af de krøllede parenteser har jeg indsat et af variabelnavnene, som så bliver skrevet ud af print-funktionen.</p>
-
-<h2>Input (tekst)</h2>
+<h2>Input - tekst</h2>
 
 <p>Vi kan lave inputs i programmet ved at bruge funktionen <code class="">input()</code>. I eksemplet laver vi variablen <em>nyt_navn</em>, som gemmer det navn brugere indtaster</p>
 
@@ -158,7 +143,7 @@ NameError: name 'Thomas' is not defined</span></code></pre>
 
 </div>
 
-<p>Input (tal)</p>
+<h2>Input - tal</h2>
 
 <p>Lad os sige vi gerne vil lave et lille program der beregner prisen på x antal pizzaer, hvis de koster 70 kr stykket. Programmet skal gøre følgende:</p>
 
@@ -176,55 +161,164 @@ NameError: name 'Thomas' is not defined</span></code></pre>
 <pre><code class="python">>>> antal=input("Hvor mange pizzaer vil du købe: ")
 Hvor mange pizzaer vil du købe: 10</code></pre>
 
-<p>Dernæst: "Hvad koster en pizza"</p>
+<p>Hvis vi nu forsøger at udregne den samlede pris ved at gange antal med 70, så får vi en fejl:</p>
 
-<pre><code class="python">pris=input("Hvad koster en pizza: ")</code></pre>
+<pre><code class="python">>>> antal*70
+'10101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010'</code></pre>
 
-<p>Jeg kører koden og indtaster: 72</p>
+<p>Antallet - altså de 10 - bliver skrevet 70 gange. Det er fordi variablen <em>antal</em> bliver tolket som en tekststreng. Og den har vi lige bedt om at få vist 70 gange.</p>
 
-<pre><code class="python">>>> pris=input("Hvad koster en pizza: ")
-Hvad koster en pizza: 72</code></pre>
+<p>Det vi skal gøre er at ændre de 70 til en talværdi, og det kan vi gøre med funktion <code class="">int()</code>, så det bliver til et heltal eller <code class="">float()</code> så det bliver til et decimaltal.</p>
 
-<p>Fordi det er brugerindtastninger så er indtastningerne <em>10 og 72</em> gemt som strenge, og Python kan ikke lave beregninger med dem.</p>
+<p>Her gør vi antallet til en <em>int</em>, fordi man kun kan købe hele pizzaer:</p>
+
+<pre><code class="python">>>> int(antal)*70
+700</code></pre>
+
+<div class="alert">
+	
+	<p>Det kan gøres smartere end ovenfor, ved at konvertere resultatet til den rigtige type tal fra starten af.</p>
+	
+	<p>Det gør man ved at pakke <code class="">input()</code> ind i <code class="">int()</code> - altså <code class="">int(input())</code></p>
+	
+	<p>Variablen antal kunne være lavet på følgende måde:</p>
+	
+	<pre><code class="python">>>> antal=int(input("Hvor mange pizzaer vil du købe: "))
+<span class="thonny_print">Hvor mange pizzaer vil du købe: 10</span>
+>>> antal*70
+700</code></pre>
+	
+
+</div>
+
+<h2>Input - den smarte måde</h2>
+
+<p>Skal man være smart skal lave din <em>input</em> - kode rigtigt fra starten af. Du skal overveje følgende 3 ting.</p>
+
+<dl class="">
+	<dt>Output skal være en tekststreng</dt>
+	<dd>
+		Input skal laves simpel <br><br>
+		<pre><code>var=input("indsæt tekst her: ")</code></pre>
+	</dd>
+	
+	<dt>Output skal være et heltal (int)</dt>
+	<dd>
+		Input skal pakkes ind i <code class="">int()</code> <br><br>
+		<pre><code>var=int(input("indsæt tekst her: "))</code></pre>
+	</dd>
+	
+	<dt>Output skal være et decimaltal (float)</dt>
+	<dd>
+		Input skal pakkes ind i <code class="">float()</code> <br><br>
+		<pre><code>float(var=input("indsæt tekst her: "))</code></pre>
+	</dd>
+</dl>
 
 
+<h2>Printe variabler</h2>
 
-<p>Vi udregner hvad pizzerne kostede i alt</p>
+<p>Vi kan også udskrive variablerne. Det gøres ved at bruge det man kalder <em>fancy print</em>:</p>
 
-<pre><code class="python">pris_i_alt=antal*pris</code></pre>
+<pre><code class="python">>>> fornavn="Thomas"
+>>> alder=50
+>>> print (f"Hej. Jeg hedder {fornavn}. Jeg er {alder} år gammel")
+<span class="thonny_print">Hej. Jeg hedder Thomas. Jeg er 50 år gammel</span></code></pre>
 
+<p>Lad os kigge på det der står inde i print funktionen:</p>
 
+<pre><code>f"Hej. Jeg hedder {fornavn}. Jeg er {alder} år gammel"</code></pre>
 
-<p>Til sidst udskriver vi det pizzaerne koster i alt:</p>
+<p><em>f</em> aktiverer <em>fancy print</em>. I hver af de krøllede parenteser har jeg indsat et af variabelnavnene, som så bliver skrevet ud af print-funktionen.</p>
 
-<pre><code class="python">print</code></pre>
+<h2>Formatere print()</h2>
 
+<p>Det kan også lade sig gøre at styre hvordan output bliver vist. Det kan gøres på to måder:</p>
 
+<ol class="">
+	<li>Ved at bruge <em>escaped characters</em></li>
+	<li>Ved at bruge trippel anførselstegn (<em>'''</em>) eller trippel citationstegn (<em>"""</em>).</li>	
+</ol>
 
+<h3>Escaped characters</h3>
 
-<p>Hvis vi f.eks. vil have brugeren indtaster sin alder, og vil vil bruge alderen til at regne med, så skal det konverteres til et tal.</p>
+<p>Her er der 3 vi vil komme til at anvende:</p>
 
+<dl class="not_strong">
+	<dt><code class="">\t</code></dt>
+	<dd>Tabulator. Svarer til at trykke på <kbd>Tab</kbd>, altså rykke 4 felter frem</dd>
+	<dt><code class="">\n</code></dt>
+	<dd>Ny linie. Svarer til at trykke på <kbd>Enter</kbd></dd>
+	<dt><code class="">\r</code></dt>
+	<dd>Ryk tilbage. Svarer til at skrive på samme linie igen uden at slette det gamle indhold. Kan bruges til at lave nedtællinger hvor tallene erstattet hinanden.</dd>
+</dl>
 
+<p>Et eksempel</p>
 
+<pre><code class="python">print("\nHejsa\n\n\tDenne tekst er formateret\n\nLet ... ikke;)")</code></pre>
 
+<p>Det der står i linien er:</p>
 
-<h2>Streng eller værdi</h2>
+<ol class="">
+	<li>\n - Lav ny linie</li>
+	<li>Skriv: Hejsa</li>
+	<li>\n\n\t - lav ny linie x2 ryk en tabulator frem</li>
+	<li>Skriv: Denne tekst er formateret</li>
+	<li>\n\n\ - Lav ny linie x2</li>
+	<li>Skriv: Let ... ikke;)</li>
+</ol>
 
-<p>I Python er det man arbejder med enten strenge (tekst) eller værdier. Se eksemplet herunder, hvor vi laver variablerne <em>a</em> og <em>b</em>.</p>
+<pre><code class="python">>>> print("\nHejsa\n\n\tDenne tekst er formateret\n\nLet ... ikke;)")
 
-<pre><code class="python">>>> a=1234
->>> b="1234"</code></pre>
+<span class="thonny_print">Hejsa</span>
 
-<p>Hvis vi brøver at lægge a og b sammen sker der følgende:</p>
+<span class="thonny_print">	     Denne tekst er formateret</span>
 
-<pre><code class="python">>>> a+b
-<span class="red">Traceback (most recent call last):
-  File "&lt;pyshell>", line 1, in &lt;module>
-TypeError: unsupported operand type(s) for +: 'int' and 'str'</span></code></pre>
+<span class="thonny_print">Let ... ikke;)</span></code></pre>
 
+<h3>Trippel anførselstegn</h3>
 
+<p>Hvis du laver trippel anførselsteng først og til sidst, så styrer du designet ved hjælp af at lave mellemrum og trykke <kbd>Enter</kbd>:</p>
 
+<pre><code class="python">>>> print("""
+Hejsa
 
+    Denne tekst er formateret
+    
+Let ... ikke
+""")</code></pre>
+
+<p>Denne tekst vil blive udskrevet på følgende måde:</p>
+
+<pre><code class="python">Hejsa
+
+    Denne tekst er formateret
+    
+Let ... ikke</code></pre>
+
+<h2>Escaped characters</h2>
+
+<p>Du kan komme ud for at du skal bruge tegnene <em>\ </em>, <em>'</em> , eller <em>"</em> i dit tekst. For at de bliver skrevet ud som almindelige tegn skal de <em>"escapes"</em>.</p>
+
+<p>Det gøres på følgende måde:</p>
+
+<dl class="">
+	<dt><code class="">\\</code></dt>
+	<dd>
+	Laver tegnet <em>\</em> <br><br>
+	Eksempel: <pre><code>>>> print("Sådan laver du et \\ (backslash)")
+Sådan laver du et \ (backslash)</code></pre></dd>
+	<dt><code class="">\'</code></dt>
+	<dd>
+	Laver tegnet <em>'</em> <br><br>
+	Eksempel: <pre><code>>>> print("Sådan laver du et \' (anførselstegn)")
+Sådan laver du et ' (anførselstegn)</code></pre></dd>
+	<dt><code class="">\"</code></dt>
+	<dd>
+	Laver tegnet <em>"</em> <br><br>
+	Eksempel: <pre><code>>>> print("Sådan laver du et \" (citationstegn)")
+Sådan laver du et " (citationstegn)</code></pre></dd>
+</dl>
 	
 </div><!-- end: col-md-9 -->
 
