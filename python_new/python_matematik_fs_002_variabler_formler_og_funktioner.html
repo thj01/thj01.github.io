@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="da">
 <head>
-  <title>Vidas.dk</title>
+  <title>Matematik med Python</title>
   <link rel="icon" href="../images/favicon.png">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -39,8 +39,6 @@
 	
 <div class="col-sm-9">
 	
-<div class="title">Matematik med Python</div>
-
 <figure id="">
 
 	<img class="" src="images/python-logo-inkscape.svg" alt="" title="" />
@@ -49,55 +47,48 @@
 
 </figure>
 
-<h1>Editors</h1>
+<h1>Variabler, formler og funktioner</h1>
 
-<p>Når man skal til at skrive længere kode kan det betale sig at arbejde i en IDE (<span class="bold">I</span>ntegrated <span class="bold">D</span>evelopment <span class="bold">E</span>nviroment). Her vil jeg anbefale følgende:</p>
+<p>Lad os kigge på den matematiske formel for arealet på en firkant:</p>
 
-<h2>Geany</h2>
+<div class="latex">$$ A_{firkant} = længde \cdot bredde $$</div>
 
-<p>Geany er opensource og en no BS teksteditor.</p>
+<p>Grunden til at vi bruger denne formel er fordi vi nu kan udregne arealet på alle firkanter der findes, ved at erstatte længde og bredde med de rigtige tal. Det samme kan vi gøre når vi programmerer, og her vil vi kalde længde og bredde for variabler.</p>
 
-<p><span class="bold">Operativsystemer:</span> Windows, Mac, Linux</p>
+<p>Prøv at se på eksemplet herunder:</p>
 
-<p><span class="bold">Link:</span> <a href="https://www.geany.org/Download/Releases" target="_blank">https://www.geany.org/Download/Releases</a></p>
+<pre><code class="python">>>> længde = 4
+>>> bredde = 5
+>>> længde * bredde
+20</code></pre>
 
-<h2>Genvejstaster</h2>
+<p>Det vi har gjort er at vi har sat længde til at være 4 og bredde til at være 5. Når vi så ganger <em>længde</em> med <em>bredde</em> så får vi arealet.</p>
 
-<p></p>
+<p>I Python laver vi en variabel ved at koble et ord eller tegn sammen med en værdi. Der gælder følgende regler for variabler:</p>
 
-<table class="">
-	<thead>
-		<tr>
-			<th>Genvejstaste</th>
-			<th>Beskrivesle</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td><kbd>Ctrl</kbd>+<kbd>e</kbd></td>
-			<td>Gør markerede linier til kommentarer</td>
-		</tr>
-		<tr>
-			<td><kbd>Ctrl</kbd>+<kbd>d</kbd></td>
-			<td>Kopier linie eller markering</td>
-		</tr>
-		<tr>
-			<td><kbd>Ctrl</kbd>+<kbd>k</kbd></td>
-			<td>Slet linie</td>
-		</tr>
-	</tbody>
-</table>
+<ul class="disc">
+	<li>Variabler skal starte enten med et bogstav eller _ (underscore)</li>
+	<li>Variabler må ikke starte med tal</li>
+	<li>Der er forskel på store og små bogstaver. <em>Navn</em> og <em>navn</em> er to forskellige variabler</li>
+</ul>
 
-<p>Flere genvejstaster: <a href="https://wiki.geany.org/howtos/sorted_keyboard_shortcuts" target="_blank">https://wiki.geany.org/howtos/sorted_keyboard_shortcuts</a></p>
+<div class="alert">
+	
+	<p>Et godt råd er at give dine variabler læsbare og forståelige navne. Skal du f.eks. lave en variabel til et fornavn kan det være:</p>
+	
+	<ul class="disc">
+		<li>fnavn (læsbar forkortelse)</li>
+		<li>for_navn (snake case - underscore til at adskille ord)</li>
+		<li>forNavn (camel casing - Stort bogstab til at adskille ord)</li>
+	</ul>
+
+	<p>Du skal navngive på den måde det giver bedst læsbarhed for dig og dem der skal læse din kode.</p>
+
+	<p>Jeg bruger <em>snake case</em>, fordi jeg selv synes det er nemmest at læse.</p>
 
 
-<h2>repl.it (online)</h2>
+</div>
 
-<p>Simpel webeditor til Python3</p>
-
-<p><span class="bold">Operativsystemer:</span> Alle</p>
-
-<p><span class="bold">Link:</span> <a href="https://repl.it/languages/python3" target="_blank">https://repl.it/languages/python3</a></p>
 
 
 

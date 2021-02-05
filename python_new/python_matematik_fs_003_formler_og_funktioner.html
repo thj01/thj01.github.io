@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="da">
 <head>
-  <title>Python</title>
+  <title>Matematik med Python</title>
   <link rel="icon" href="../images/favicon.png">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,10 +12,8 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/stylesheets/jquery.tocify.min.css">
   <link rel="stylesheet" href="../css/style_new.css" />
-
 <!-- Scripts in bottom to speed up pageload-->
  
-
 
 </head>
 <body>
@@ -49,82 +47,58 @@
 
 </figure>
 
-<div class="title">Lær Python</div>
+<h1>Funktioner og formler</h1>
 
-<h1>Indhold</h1>
+<p>Lad os kigge på den matematiske formel for arealet på en firkant:</p>
+
+<div class="latex">$$ A_{firkant} = længde \cdot bredde $$</div>
+
+<p>Grunden til at vi bruger denne formel er fordi vi nu kan udregne arealet på alle firkanter der findes, ved at erstatte længde og bredde med de rigtige tal. Det samme kan vi gøre når vi programmerer, og her vil vi kalde længde og bredde for variabler.</p>
+
+<p>Prøv at se på eksemplet herunder:</p>
+
+<pre><code class="python">>>> længde = 4
+>>> bredde = 5
+>>> længde * bredde
+20</code></pre>
+
+<p>Det vi har gjort er at vi har sat længde til at være 4 og bredde til at være 5. Når vi så ganger <em>længde</em> med <em>bredde</em> så får vi arealet.</p>
+
+<p>I Python laver vi en variabel ved at koble et ord eller tegn sammen med en værdi. Der gælder følgende regler for variabler:</p>
+
+<ul class="disc">
+	<li>Variabler skal starte enten med et bogstav eller _ (underscore)</li>
+	<li>Variabler må ikke starte med tal</li>
+	<li>Der er forskel på store og små bogstaver. <em>Navn</em> og <em>navn</em> er to forskellige variabler</li>
+</ul>
+
+<div class="alert">
 	
-<ol class="">
-	<li><a href="python01_intro.html" target="_blank">Introduktion af python og installation</a></li>
-	<li><a href="python02_Strenge_variabler_og_input.html" target="_blank">Strenge, variabler og input</a></li>
-	<li><a href="python03_tal_operatorer_og_matematiske_funktioner.html" target="_blank">Tal, Operatorere og matematik</a></li>
-	<li><a href="python04_valg_og_funktioner.html" target="_blank">Valg (if-else), funktioner og random()</a></li>
-	<li><a href="python05_loekker.html" target="_blank">Løkker</a></li>
-	<li><a href="python06_behandling_af_strenge.html" target="_blank">Behandling af strenge</a></li>
-	<li><a href="python07_lister_dictionaries_og_tuplets.html" target="_blank">Lister, dictionaries og tuplets</a></li>
-	<li><a href="python08_plot.html" target="_blank">Plot med Python</a></li>
-	<li><a href="python09_statistik.html" target="_blank">Statistik med Python</a></li>
-<!--
-	<li><a href="python10_error_handling.html" target="_blank">Error handling</a></li>
--->
-</ol>
-
-<h1>Turtle</h1>
-
-<ol class="_">
-	<li><span class="red">*** UNDER UDVIKLING ***</span><a href="python_turtle01_basics.html" target="_blank">Turtle</a></li>
-</ol>
-
-<h1>Matematik</h1>
-
-<ol class="">
-	<li><a href="../python_new/python_matematik_gr_basisviden.html" target="_blank">Matematik med Python - Introduktion</a></li>
-	<li><a href="../python_new/python_matematik_gr_regningsarter.html" target="_blank">Matematik med Python - Regningsarter</a></li>
-	<li><a href="../python_new/python_matematik_gr_loekker.html" target="_blank">Matematik med Python - Løkker</a></li>
-	<li><a href="../python_new/python_matematik_gr_betingelser.html" target="_blank">Matematik med Python - Betingelser</a></li>
-	<li><a href="../python_new/python_matematik_gr_funktioner.html" target="_blank">Matematik med Python - Funktioner</a></li>
-
-</ol>
-
-<h1>Henvisninger</h1>
-
-<ol class="">
-	<li><a href="https://docs.python.org/3/" target="_blank">Python 3 docs</a></li>
-	<li><a href="https://www.tutorialspoint.com/python3/" target="_blank">Python3 på Tutorialspoint</a></li>
-</ol>
+	<p>Et godt råd er at give dine variabler læsbare og forståelige navne. Skal du f.eks. lave en variabel til et fornavn kan det være:</p>
 	
+	<ul class="disc">
+		<li>fnavn (læsbar forkortelse)</li>
+		<li>for_navn (snake case - underscore til at adskille ord)</li>
+		<li>forNavn (camel casing - Stort bogstab til at adskille ord)</li>
+	</ul>
 
-<!--
+	<p>Du skal navngive på den måde det giver bedst læsbarhed for dig og dem der skal læse din kode.</p>
 
-<h1>Introduktion og installation</h1>
+	<p>Jeg bruger <em>snake case</em>, fordi jeg selv synes det er nemmest at læse.</p>
 
-<p><a href="python01_intro.html" target="_blank">Introduktion af python og installation</a></p>
+</div>
 
-<h1>Strenge, variabler og input</h1>
+<h2>print()</h2>
 
-<p><a href="python02_Strenge_variabler_og_input.html" target="_blank">Strenge, variabler og input</a></p>
+<p>Indtil videre har vi arbejdet i shell. Og hvis du kigger på eksemplet ovenfor, så lagde du måske mærke til, at der ikke var noget svar da vi indtastede variablerne <em>længde</em> og <em>bredde</em>. Det er fordi shell kun udskriver noget automatisk når det er et regnestykke.</p>
 
-<h1>Tal, operatorer og matematik</h1>
+<p>For at tvinge shell til at lave en udskrift skal vi bruge funtionen <code class="">print()</code></p>
 
-<p><a href="python03_tal_operatorer_og_matematiske_funktioner.html" target="_blank">Tal, Operatorere og matematik</a></p>
 
-<h1>Valg, funktioner og random()</h1>
 
-<p><a href="python04_valg_og_funktioner.html" target="_blank">Valg (if-else), funktioner og random()</a></p>
+<p><code class="">print()</code> bruges til at udskrive</p>
 
-<h1>Løkker</h1>
 
-<p><a href="python05_loekker.html" target="_blank">Løkker</a></p>
-
-<h1>Behandling af strenge</h1>
-
-<p><a href="python06_behandling_af_strenge.html" target="_blank">Behandling af strenge</a></p>
-
-<h1>Lister, dictionaries og tuplets</h1>
-
-<p><a href="python07_lister_dictionaries_og_tuplets.html" target="_blank">Lister, dictionaries og tuplets</a></p>
-
-<p></p>	
--->
 
 	
 </div><!-- end: col-md-9 -->

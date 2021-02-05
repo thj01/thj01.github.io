@@ -86,12 +86,12 @@
 
 <dl class="">
 	<dt><em>int</em> (heltal)</dt>
-	<dd><em>int</em> er alle hele tal f.eks: -34, -2, 7, 87 (talmængden &#8484;)</dd>
+	<dd><em>int</em> er alle hele tal. <br><br>F.eks: -34, -2, 7, 87 (talmængden &#8484;)</dd>
 	<dt><em>float</em> (decimaltal)</dt>
-	<dd><em>float</em> er alle decimaltal f.eks: -17.6, 0.666, 3.14 (talmængden &#8477;)<br><br>
+	<dd><em>float</em> er alle decimaltal <br><br>F.eks: -17.6, 0.666, 3.14 (talmængden &#8477;)<br><br>
 	Læg mærke til at man bruger <em>. (punktum)</em> til at adskille heltals- og decimaldelen af tallet</dd>
 	<dt><em>Fraction</em> (brøker)</dt>
-	<dd><em>Fraction</em> er værdier som angives som brøker f.eks: <span class="math">\( - \frac {2}{5}, \frac {1} {3} og \frac {3}{4}\)</span> (talmængden &#8474;)</dd>
+	<dd><em>Fraction</em> er værdier som angives som brøker <br><br>F.eks: <span class="math">\( - \frac {2}{5}, \frac {1} {3} og \frac {3}{4}\)</span> (talmængden &#8474;)</dd>
 </dl>
 
 <p><strong>Vær opmærksom på</strong></p>
@@ -161,7 +161,7 @@
 		<li>Variabler er <em>case-sensitive</em>, hvilket f.eks. betyder at variablen <em>a</em> ikke er den samme som <em>A</em></li>
 	</ul>
 
-	<p>Et godt råd er at give dine variabler læsbare og forståelige navne. Skal du f.eks. lave en variabel der angiver fornavnet kan det være:</p>
+	<p>Et godt råd er at give dine variabler læsbare og forståelige navne. Skal du f.eks. lave en variabel til et fornavn kan det være:</p>
 	
 	<ul class="disc">
 		<li>fnavn (læsbar forkortelse)</li>
@@ -169,7 +169,9 @@
 		<li>forNavn (camel casing - Stort bogstab til at adskille ord)</li>
 	</ul>
 
-	<p>Jeg anbefaler <em>snake case</em>, fordi jeg selv synes det er nemmest at læse, men du skal vælge den metode du mener er lettest at læse.</p>
+	<p>Du skal navngive på den måde det giver bedst læsbarhed for dig og dem der skal læse din kode.</p>
+
+	<p>Jeg bruger <em>snake case</em>, fordi jeg selv synes det er nemmest at læse.</p>
 
 
 </div>
@@ -234,7 +236,7 @@
 
 <pre><code class="python">print(f"Hej. Mit navn er {navn}. Jeg kommer fra {by}")</code></pre>
 
-<p>Det lille <em>f</em> kaldes et <em>fancy</em> output. Når vi skriver det, så får vi adgang til nogle funktioner inden i tekstrengen vi skal printe ud. Bl.a. kan v nu udskrive variabler.</p>
+<p>Det lille <em>f</em>&nbsp;&nbsp;laver et <em>fancy</em> output. Når vi skriver det, så får vi adgang til nogle funktioner inden i tekststrengen vi skal printe ud. Bl.a. kan vi udskrive variabler, men også lave linieskift og indrykninger (se nedenfor).</p>
 
 <p>Variablerne angives med krøllede paranteser og indsættes der hvor de skal udskrives.</p>
 
@@ -246,9 +248,9 @@
 <p>Her er de mest anvendte til at formatere teksten</p>
 
 <dl class="not_strong">
-	<dt><code class="">/t</code></dt>
+	<dt><code class="">\t</code></dt>
 	<dd>Indsætter en tabulater (rykker 4 tegn) i den tekst man udskriver</dd>
-	<dt>/n</dt>
+	<dt><code class="">\n</code></dt>
 	<dd>Indsætter et linieskifte i teksten</dd>
 </dl>
 
@@ -258,21 +260,21 @@
 	<li>Hejsa</li>
 	<li>(indsæt 2 linieskift)</li>
 	<li>Python er let at bruge</li>
-	<li>indsæt 2 linieskift og indryk en tab</li>
+	<li>indsæt 2 linieskift og indryk med en tab</li>
 	<li>Hilsen Thomas</li>
 </ol>
 
 <pre><code class="python">>>> print("Hejsa \n\nPython er let at bruge\n\n\tHilsen Thomas ")
-<span class="thonny_print">Hejsa 
+<span class="thonny_print">Hejsa</span> 
 
-Python er let at bruge
+<span class="thonny_print">Python er let at bruge</span>
 
-	Hilsen Thomas</span> 
+<span class="thonny_print">	   Hilsen Thomas </span>
 >>> </code></pre>
 
 <details>
 
-	<summary>Hvis du skal bruge <em>\</em>&nbsp;&nbsp;&nbsp;, <em>"</em>&nbsp;&nbsp;&nbsp;eller <em>'</em>&nbsp;&nbsp;&nbsp;i nogle output</summary>
+	<summary>Hvis du skal bruge tegnene <em>\</em>&nbsp;&nbsp;&nbsp;, <em>"</em>&nbsp;&nbsp;&nbsp;eller <em>'</em>&nbsp;&nbsp;&nbsp;i output</summary>
 
 	<p>Skal man indsætte specialtegn, som normalt bliver brugt som en del af koden, kan man også <em>escape</em> dem:</p>
 

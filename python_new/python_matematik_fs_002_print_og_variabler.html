@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <title>Matematik med Python</title>
+  <link rel="icon" href="../images/favicon.png">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono|Ubuntu|Ubuntu+Condensed' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/stylesheets/jquery.tocify.min.css">
+  <link rel="stylesheet" href="../css/style_new.css" />
+<!-- Scripts in bottom to speed up pageload-->
+ 
+
+</head>
+<body>
+	
+	
+<div class="container-fluid">
+
+<div class="row">
+	
+<div class="col-sm-3">
+	
+	<nav>
+		
+		<div id="toc">
+		
+			<div id="toc_headline"></div>
+		
+		</div>
+		
+	</nav>
+
+</div><!-- Start slut 1. kolonne - TOC -->
+	
+<div class="col-sm-9">
+	
+<figure id="">
+
+	<img class="" src="images/python-logo-inkscape.svg" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h1>Print og variabler</h1>
+
+<p>Indtil videre har vi arbejdet i shell. Og hvis du kigger på eksemplet ovenfor, så lagde du måske mærke til, at der ikke var noget svar da vi indtastede variablerne <em>længde</em> og <em>bredde</em>. Det er fordi shell kun udskriver noget automatisk når det er et regnestykke.</p>
+
+<p>For at tvinge shell til at lave en udskrift skal vi bruge funtionen <code class="">print()</code></p>
+
+<h2>print()</h2>
+
+<p><code class="">print()</code> funktionen udskriver det som står i parentesen:</p>
+
+<pre><code class="python">print([det som skal udskrives])</code></pre>
+
+<p>I sidste kapitel bruge vi kun tal til at udregne regnestykker. Men Python kan også udskrive tekst. Et stykke tekst kalder man i programmering for en streng. Strenge skal i Python "pakkes ind" i enten anførselstegn (<em>"[Selve strengen]" </em>) eller apostroffer (<em>'[Selve strengen]' </em>).</p>
+
+<p>Her er to eksempler:</p>
+
+<pre><code class="python">>>> print("Dette er en tekststreng")
+<span class="thonny_print">Dette er en tekststreng</span>
+>>> print('Dette er en anden tekststreng')
+<span class="thonny_print">Dette er en anden tekststreng</span></code></pre>
+
+<p>Funktionen gør ikke andet end at printe indholdet af parantesen ud som en en streng (tekst). Det betyder f.eks. at hvis man skriver <code class="">print(3)</code>, så bliver 3-tallet udskrivet som tekst.</p>
+
+<h2>Variabler</h2>
+
+<p>I Python laver vi en variabel ved at koble et ord eller tegn sammen med en værdi. Der gælder følgende regler for variabler:</p>
+
+<ul class="disc">
+	<li>Variabler skal starte enten med et bogstav eller _ (underscore)</li>
+	<li>Variabler må ikke starte med tal</li>
+	<li>Der er forskel på store og små bogstaver. <em>Navn</em> og <em>navn</em> er to forskellige variabler</li>
+</ul>
+
+<div class="alert">
+	
+	<p>Et godt råd er at give dine variabler læsbare og forståelige navne. Skal du f.eks. lave en variabel til et fornavn kan det være:</p>
+	
+	<ul class="disc">
+		<li>fnavn (læsbar forkortelse)</li>
+		<li>for_navn (snake case - underscore til at adskille ord)</li>
+		<li>forNavn (camel casing - Stort bogstab til at adskille ord)</li>
+	</ul>
+
+	<p>Du skal navngive på den måde det giver bedst læsbarhed for dig og dem der skal læse din kode.</p>
+
+	<p>Jeg bruger <em>snake case</em>, fordi jeg synes det er nemmest at læse.</p>
+
+</div>
+
+<p>Her opretter vi 2 variabler. En for fornavn og en for alder. Herefter printer vi dem ud.</p>
+
+<pre><code class="python">>>> for_navn="Thomas"
+>>> alder=50
+>>> print(for_navn)
+<span class="thonny_print">Thomas</span>
+>>> print(alder)
+<span class="thonny_print">50</span></code></pre>
+
+<p>Læg mærke til at der er sat anførselstegn omkring <em>"Thomas"</em>. Det er fordi det er en tekststreng. Hvis jeg glemmer laver Python en fejlmeddelelse:</p>
+
+<pre><code class="python">>>> for_navn=Thomas
+<span class="red">Traceback (most recent call last):
+  File "&lt;pyshell>", line 1, in &lt;module>
+NameError: name 'Thomas' is not defined</span></code></pre>
+
+<p>Det skyldes at Python ikke kan oversætte <em>Thomas</em> til en værdi, men skal have mit navn som en streng.</p>
+
+<p>Hvis variablerne er værdier kan vi regne dem dem:</p>
+
+<pre><code class="python">>>> a = 2
+>>> b = 3
+>>> a + b
+5</code></pre>
+
+<h2>Printe variabler</h2>
+
+<p>Vi kan også udskrive variablerne. Det gøres ved at bruge det man kalder <em>fancy print</em>:</p>
+
+<pre><code class="python">>>> for_navn="Thomas"
+>>> alder=50
+>>> print (f"Hej. Jeg hedder {for_navn}. Jeg er {alder} år gammel")
+<span class="thonny_print">Hej. Jeg hedder Thomas. Jeg er 50 år gammel</span></code></pre>
+
+<p>Lad os kigge på det der står inde i print funktionen:</p>
+
+<pre><code>f"Hej. Jeg hedder {for_navn}. Jeg er {alder} år gammel"</code></pre>
+
+<p><em>f</em> aktiverer <em>fancy print</em>. I hver af de krøllede parenteser har jeg indsat et af variabelnavnene, som så bliver skrevet ud af print-funktionen.</p>
+
+<h2>Input (tekst)</h2>
+
+<p>Vi kan lave inputs i programmet ved at bruge funktionen <code class="">input()</code>. I eksemplet laver vi variablen <em>nyt_navn</em>, som gemmer det navn brugere indtaster</p>
+
+<pre><code class="python">nyt_navn = input("Hvad hedder du: ")</code></pre>
+
+<p>Når vi kører programmet kommer der en line hvor der står: <em>"Hvad hedder du: "</em> hvor du indtaster dit navn</p>
+
+<pre><code class="python">>>> nyt_navn = input("Hvad hedder du: ")
+<span class="thonny_print">Hvad hedder du: </span></code></pre>
+
+<p>Når du har indtastet dit navn sker der ikke mere. For at se resultatet kan vi nu printe variablen <em>nyt_navn</em>:</p>
+
+<pre><code class="python">>>> print(nyt_navn)
+<span class="thonny_print">Thomas</span></code></pre>
+
+<div class="alert">
+	
+	<p>Når vi bruger input, så vil det man svarer altid blive gemt som en streng - altså tekst. Hvis du vil bruge det indtastede til at lave beregninger med, så skal input konverteres til en <em>int</em> eller en <em>float</em>.</p>
+
+</div>
+
+<p>Input (tal)</p>
+
+<p>Lad os sige vi gerne vil lave et lille program der beregner prisen på x antal pizzaer, hvis de koster 70 kr stykket. Programmet skal gøre følgende:</p>
+
+<ol class="">
+	<li>Spørg hvor mange pizzaer man vil købe (heltal)</li>
+	<li>Udskrive den samlede pris (<span class="math">\( antal \cdot 70 \)</span>)</li>
+</ol>
+
+<p>Først spørger vi: "Hvor mange pizzaer vil du købe"</p>
+
+<pre><code class="python">antal=input("Hvor mange pizzaer vil du købe: ")</code></pre>
+
+<p>Jeg kører koden og indtaster: 10</p>
+
+<pre><code class="python">>>> antal=input("Hvor mange pizzaer vil du købe: ")
+Hvor mange pizzaer vil du købe: 10</code></pre>
+
+<p>Dernæst: "Hvad koster en pizza"</p>
+
+<pre><code class="python">pris=input("Hvad koster en pizza: ")</code></pre>
+
+<p>Jeg kører koden og indtaster: 72</p>
+
+<pre><code class="python">>>> pris=input("Hvad koster en pizza: ")
+Hvad koster en pizza: 72</code></pre>
+
+<p>Fordi det er brugerindtastninger så er indtastningerne <em>10 og 72</em> gemt som strenge, og Python kan ikke lave beregninger med dem.</p>
+
+
+
+<p>Vi udregner hvad pizzerne kostede i alt</p>
+
+<pre><code class="python">pris_i_alt=antal*pris</code></pre>
+
+
+
+<p>Til sidst udskriver vi det pizzaerne koster i alt:</p>
+
+<pre><code class="python">print</code></pre>
+
+
+
+
+<p>Hvis vi f.eks. vil have brugeren indtaster sin alder, og vil vil bruge alderen til at regne med, så skal det konverteres til et tal.</p>
+
+
+
+
+
+<h2>Streng eller værdi</h2>
+
+<p>I Python er det man arbejder med enten strenge (tekst) eller værdier. Se eksemplet herunder, hvor vi laver variablerne <em>a</em> og <em>b</em>.</p>
+
+<pre><code class="python">>>> a=1234
+>>> b="1234"</code></pre>
+
+<p>Hvis vi brøver at lægge a og b sammen sker der følgende:</p>
+
+<pre><code class="python">>>> a+b
+<span class="red">Traceback (most recent call last):
+  File "&lt;pyshell>", line 1, in &lt;module>
+TypeError: unsupported operand type(s) for +: 'int' and 'str'</span></code></pre>
+
+
+
+
+	
+</div><!-- end: col-md-9 -->
+
+<footer>
+
+	<p onclick="parentNode.remove()"><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons licens" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>Indholdet på Vidas.dk er licenseret under <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> og er skrevet af Thomas Jensen. (<a href="../hvem_er_jeg.html" target="_blank">Læs mere</a>)</p>
+
+</footer>
+	
+	
+</div><!-- end: row -->
+
+</div> <!-- end: container-fluid -->
+
+
+<!-- SCRIPT SECTION -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/js/bootstrap.min.js"></script>
+
+
+
+<!-- HIGHLIGHT -->
+	<script src="../js/highlight.pack.js" type="text/javascript"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+
+<!-- MATHJAX -->
+<script type="text/javascript" 
+	src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  displayAlign: "left",
+  displayIndent: "0em"
+});
+</script>
+
+
+<!-- TOCIFY -->
+<script>
+	$(function() {var toc = $("#toc").tocify({ selectors: "h2, h3, h4" }).data("toc-tocify"); });
+</script>
+<!-- GOOGLE ANALYTICS -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-89933285-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</body>
+</html>
