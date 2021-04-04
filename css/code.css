@@ -13,12 +13,16 @@ font-family: ubuntu mono, mono-type, courier;
 
 pre {
 tab-size: 4;
-margin: 0em 2em 2em 0em;
+margin: 0em 2em 1em 0em;
 padding: .2em .6em;
 background-color:#FFFFFF;
 border:1px solid #ccc;
 border-radius:4px
+
 }
+
+samp>pre {border: 0px solid #ccc}
+
 
 li>pre {
 margin-top: .5em;
@@ -39,10 +43,12 @@ border-radius:4px;
 samp {
 display:block;
 white-space: pre;
+/*
 background: #f6f6f6;
+*/
 border: 1px solid lightgrey;
 border-radius: .5em;
-padding: 2em 1em 1.5em 2em;
+padding: 2em 1em 0em 2em;
 margin: 2em 2em 2em 2em;
 line-height: 1.1em
 }
@@ -52,7 +58,10 @@ content: "  Output  ";
 display:block;
 margin: -3.9em 0em 1em 0em;
 padding: .2em 1.2em;
+/*
 background: #f6f6f6;
+*/
+background: white;
 border: 1px solid lightgrey;
 border-radius: .8em;
 width: 8.5em;
@@ -80,8 +89,65 @@ width: 10em;
 
 span.thonny_print {
 
-line-height: 2em;
+line-height: 1.4em;
 padding-left: 1em;
+font-family: courier;
+}
+
+span.blinking_cursor { 
+  font-weight: 700;
+  font-size: 1.2em;
+  color: #2E3D48;
+  -webkit-animation: 1.2s blink step-end infinite;
+  -moz-animation: 1.2s blink step-end infinite;
+  -ms-animation: 1.2s blink step-end infinite;
+  -o-animation: 1.2s blink step-end infinite;
+  animation: 1.2s blink step-end infinite;
+}
+
+@keyframes "blink" {
+  from, to {
+    color: transparent;
+  }
+  50% {
+    color: black;
+  }
+}
+
+@-moz-keyframes blink {
+  from, to {
+    color: transparent;
+  }
+  50% {
+    color: black;
+  }
+}
+
+@-webkit-keyframes "blink" {
+  from, to {
+    color: transparent;
+  }
+  50% {
+    color: black;
+  }
+}
+
+@-ms-keyframes "blink" {
+  from, to {
+    color: transparent;
+  }
+  50% {
+    color: black;
+  }
+}
+
+@-o-keyframes "blink" {
+  from, to {
+    color: transparent;
+  }
+  50% {
+    color: black;
+  }
 }
 
 
@@ -238,7 +304,7 @@ font-weight: 100;
 line-height:20px;
 padding: 10px 5px 12px 5px;
 background-color: #300a24 ;
-width: 90%;
+width: 90%;white-space: pre-wrap;
 border-top: 22px solid #474640;
 border-radius: 7px 7px 3px 3px;
 white-space: pre-wrap;
@@ -351,7 +417,7 @@ font-size: .7em;
 }
 
 div.latex {
-font-size: 1.2em;
+font-size: 1.05em;
 margin-left: 60px;
 }
 
