@@ -5,14 +5,27 @@ h1 {
 	
 }
 
-.dring_list li {}
+ul.none {
+
+list-style-type: none;
+
+
+
+}
+
+.dring_list li {
+
+padding-top: -5em;
+
+
+}
 
 
 
 .drink_list li a{
 
 
-font-size: 2em;
+font-size: 1.6em;
 
 
 
