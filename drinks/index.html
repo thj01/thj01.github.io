@@ -17,7 +17,8 @@
 
 	<div data-role="header">
 		<h1>DRINKS</h1>
-		<a href="#rightpanel" class="ui-btn ui-shadow ui-corner-all ui-icon-bars ui-btn-icon-left">Menu</a>
+		<a href="#panel" class="ui-btn ui-shadow ui-corner-all ui-icon-bars ui-btn-icon-left">Menu</a>
+		<a href="" class="ui-btn ui-shadow ui-corner-all ui-icon-back ui-btn-icon-left">Forsiden</a>
 
 	</div><!-- /header -->
 
@@ -25,6 +26,9 @@
 
 		<h1>DRINKS</h1>
 		
+		<p>Denne app indeholder opskriften til ....</p>
+		
+<!--
 		<ul class="drink_list" data-role="listview" >
 		    <li><a href="gin.html">GIN</a></li>
 		    <li><a href="vodka.html">VODKA</a></li>
@@ -33,18 +37,60 @@
 		    <li><a href="cognac.html">COGNAC</a></li>
 		    <li><a href="test.html">COGNAC</a></li>
 		</ul>
+-->
 
 	</div><!-- /content -->
 </div><!-- /page -->
 
 	
 	<!-- rightpanel3  -->
-	<div data-role="panel" id="rightpanel" data-position="left" data-display="overlay" data-theme="a">
+	<nav data-role="panel" id="panel" data-position="left" data-display="overlay" data-theme="a">
 
-		<nav>
-		<h1>DRINKS</h1>
+		<h2>GIN</h2>
 		
-		<ul class="drink_list" data-role="listview" >
+		<ul class="none">
+			<li>Gin Tonic</li>
+			<li>Ramos Gin Fizz</li>
+			<li>Pegu Club</li>
+			<li>Monkey Gland</li>
+		</ul>
+		
+		<h2>VODKA</h2>
+		
+		<ul class="none">
+			<li>White Russian</li>
+			<li>Harvey Wallbanger</li>
+			<li>Cosmopolitan</li>
+		</ul>
+		
+		<h2>ROM</h2>
+		
+		<ul class="none">
+			<li>Daiquiry</li>
+			<li>Mojito</li>
+			<li>Dark'n'Stormy</li>
+			<li>Moscow Mule</li>
+		</ul>
+
+		<h2>TEQUILA</h2>
+		
+		<ul class="none">
+			<li>Tequila Sunrise</li>
+			<li>Margarita</li>
+		</ul>
+		
+		<h2>COGNAC</h2>
+		
+		<ul class="none">
+			<li>Sidecar</li>
+			<li>Suffering Bastard</li>
+		</ul>
+		
+		
+
+
+		
+		<ul class="drink_list none" data-role="listview" >
 		    <li><a href="gin.html">GIN</a></li>
 		    <li><a href="vodka.html">VODKA</a></li>
 		    <li><a href="rom.html">ROM</a></li>
@@ -54,9 +100,10 @@
 		</ul>
 			
 		<a href="rom.html" data-rel="close" class="ui-btn ui-shadow ui-corner-all ui-btn-a ui-icon-delete ui-btn-icon-left ui-btn-inline">Close panel</a>
-			
-		</nav>
 
-	</div><!-- /rightpanel3 -->
+		<a href="rom.html" data-rel="close" class="ui-btn ui-shadow ui-corner-all ui-btn-a ui-icon-delete ui-btn-icon-left ui-btn-inline">Close panel</a>
+			
+	</nav><!-- /panel -->
+	
 </body>
 </html>
