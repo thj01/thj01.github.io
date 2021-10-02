@@ -6,14 +6,16 @@
 <link rel="stylesheet" href="css/styles.css">
 <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-	<script id="panel-init">
-		$(function() {
-			$( "body>[data-role='panel']" ).panel();
-		});
-	</script>
+<script id="panel-init">
+	$(function() {
+		$( "body>[data-role='panel']" ).panel();
+	});
+</script>
+
+
 </head>
 <body>
-<div data-role="page" class="jqm-demos" data-quicklinks="true">
+<div data-role="page" class="" data-quicklinks="true">
 
 	<div data-role="header">
 		<h1>DRINKS</h1>
@@ -46,7 +48,8 @@
 	<div data-role="panel" id="panel" data-position="left" data-display="overlay" data-theme="a">
 
 		<nav>
-			<h3>Drink typer</h3>
+<!--
+			<h2>Drink typer</h2>
 			
 			<p>Her kan du vælge hvilken type af drinks du bedst kan lide.</p>
 			
@@ -58,6 +61,52 @@
 			    <li><a href="cognac.html">COGNAC</a></li>
 			    <li><a href="test.html">COGNAC</a></li>
 			</ul>
+
+			<p>Og igen</p>
+-->
+			
+		<h2>TEQUILA</h2>
+		
+		<ul class="drink_list none" data-role="listview">
+			<li><a href="drink_tequila_sunrise.html">Tequila Sunrise</a></li>
+			<li>Margarita</li>
+		</ul>
+
+		<h2>GIN</h2>
+		
+		<ul class="drink_list none" data-role="listview">
+			<li>Gin Tonic</li>
+			<li>Ramos Gin Fizz</li>
+			<li>Pegu Club</li>
+			<li>Monkey Gland</li>
+		</ul>
+		
+		<h2>VODKA</h2>
+		
+		<ul class="drink_list none" data-role="listview">
+			<li>White Russian</li>
+			<li>Harvey Wallbanger</li>
+			<li>Cosmopolitan</li>
+		</ul>
+		
+		<h2>ROM</h2>
+		
+		<ul class="drink_list none" data-role="listview">
+			<li>Daiquiry</li>
+			<li>Mojito</li>
+			<li>Dark'n'Stormy</li>
+			<li>Moscow Mule</li>
+		</ul>
+
+
+		
+		<h2>COGNAC</h2>
+		
+		<ul class="drink_list none" data-role="listview">
+			<li>Sidecar</li>
+			<li>Suffering Bastard</li>
+		</ul>
+
 			
 			<a href="#demo-links" data-rel="close" class="ui-btn ui-shadow ui-corner-all ui-btn-a ui-icon-delete ui-btn-icon-left ui-btn-inline">Close panel</a>
 			
@@ -76,7 +125,7 @@
 
 		<h2>GIN</h2>
 		
-		<ul class="none" data-role="listview">
+		<ul class="drink_list none" data-role="listview">
 			<li>Gin Tonic</li>
 			<li>Ramos Gin Fizz</li>
 			<li>Pegu Club</li>
@@ -85,7 +134,7 @@
 		
 		<h2>VODKA</h2>
 		
-		<ul class="none" data-role="listview">
+		<ul class="drink_list none" data-role="listview">
 			<li>White Russian</li>
 			<li>Harvey Wallbanger</li>
 			<li>Cosmopolitan</li>
@@ -93,7 +142,7 @@
 		
 		<h2>ROM</h2>
 		
-		<ul class="none" data-role="listview">
+		<ul class="drink_list none" data-role="listview">
 			<li>Daiquiry</li>
 			<li>Mojito</li>
 			<li>Dark'n'Stormy</li>
@@ -102,14 +151,14 @@
 
 		<h2>TEQUILA</h2>
 		
-		<ul class="none" data-role="listview">
+		<ul class="drink_list none" data-role="listview">
 			<li><a href="drink_tequila_sunrise.html" target="_blank">Tequila Sunrise</a></li>
 			<li>Margarita</li>
 		</ul>
 		
 		<h2>COGNAC</h2>
 		
-		<ul class="none" data-role="listview">
+		<ul class="drink_list none" data-role="listview">
 			<li>Sidecar</li>
 			<li>Suffering Bastard</li>
 		</ul>
