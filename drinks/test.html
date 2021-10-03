@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Panel</title>
+      <meta name = "viewport" content = "width = device-width, initial-scale = 1">
+      <link rel = "stylesheet" href = "https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+      <script src = "https://code.jquery.com/jquery-1.11.3.min.js"></script>
+      <script src = "https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+   </head>
+
+   <body>
+      <div data-role = "page" id = "page1">
+
+         
+         <div data-role  =  "header">
+            <h2>Header</h2>
+         </div>
+         
+         <div data-role  =  "main" class  =  "ui-content">
+            <p>Click on the button to open Panel.</p>
+            <a href = "#panel1" class = "ui-btn ui-btn-inline">Open Panel</a>
+         </div>
+         
+         <div data-role = "footer">
+            <h2>Footer</h2>
+         </div>
+      </div>
+      
+      
+         <div data-role = "panel" id = "panel1">
+            <h2>This is Panel Header</h2>
+            <p>You can close this panel by pressing the Esc key or by swiping.</p>
+         </div>      
+   </body>
+</html>
