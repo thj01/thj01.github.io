@@ -4,6 +4,7 @@ list-style-type: none;
 
 }
 
+
 h1 {
 
 text-transform: uppercase;
@@ -11,7 +12,20 @@ text-transform: uppercase;
 
 }
 
-h2 {
+/* nav elements */
+
+nav h2 {
+
+font-size: 1em;
 
 }
+
+nav ul {
+
+margin: -.4em;
+
+
+}
+
+
 
