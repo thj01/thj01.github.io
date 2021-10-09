@@ -36,13 +36,20 @@ inspiration fra: https://demos.jquerymobile.com/1.4.5/panel-external/
 
 	<div role="main" class="ui-content jqm-content jqm-fullwidth">
 
-		<h2>External Panels</h2>
+		<h2>Drinks og cocktails</h2>
 
-		<p>The panels below are all located outside the page. Panels outside of a page must be initalized manually and will not be handled by auto init. Panels outside of pages will remain in the DOM (unless manually removed) as long as you use Ajax navigation, and can be opened or closed from any page.</p>
+		<p>En drink eller cocktail i den rette sammenhæng kan gøre en aften lidt bedre. Så her har du nogle opskrifter som jeg både synes er velsmagende og og ikke kræver det helt store barskab.</p>
+		
+		<p>Menuen er delt op efter hvad den mest fremtrædende ingrediens er. Så har du en ide om hvor du skal kigge.</p>
 
-		<p>Navigate to page 2 to see this behavior. The HTML document for page 2 doesn't contain panel markup, but you can still open the panels.</p>
-
-		<p><a href="page-b.html">Navigate to page 2</a></p>
+		<p>Hovedingredienserne er:</p>
+		
+		<ul class="disc">
+			<li>Cognac</li>
+			<li>Gin</li>
+			<li>Rom</li>
+			<li>Vodka</li>
+		</ul>
 
 	</div><!-- /content -->
 	
@@ -82,46 +89,52 @@ inspiration fra: https://demos.jquerymobile.com/1.4.5/panel-external/
 		</ul>
 -->
 
+		<h2>COGNAC</h2>
+		<ul class="drink_list none" data-role="listview">
+			<li><a href="drink_cognac_sidecar.html">Sidecar</a></li>
+		</ul>
+
 		<h2>GIN</h2>
 		
 		<ul class="drink_list none" data-role="listview">
 			
-			<li><a href="drink_gin_tonic.html">Gin Tonic</a></li>
-			<li><a href="drink_gin_hass.html">Gin Hass</a></li>
-			<li><a href="drink_gin_gimlet.html">Gin Gimlet</a></li>
-			<li><a href="drink_gin_schweppes.html">Gin Schweppes</a></li>
-			<li><a href="drink_monkey_gland.html">Monkey Gland</a></li>
-			<li><a href="drink_pegu_club.html">Pegu Club</a></li>
-			<li><a href="drink_ramos_gin_fizz.html">Ramos Gin Fizz</a></li>
-			<li><a href="drink_suffering_bastard.html">Suffering Bastard</a></li>
+			<li><a href="drink_gin_gin_tonic.html">Gin Tonic</a></li>
+			<li><a href="drink_gin_gin_hass.html">Gin Hass</a></li>
+			<li><a href="drink_gin_gin_gimlet.html">Gin Gimlet</a></li>
+			<li><a href="drink_gin_gin_schweppes.html">Gin Schweppes</a></li>
+			<li><a href="drink_gin_monkey_gland.html">Monkey Gland</a></li>
+			<li><a href="drink_gin_pegu_club.html">Pegu Club</a></li>
+			<li><a href="drink_gin_ramos_gin_fizz.html">Ramos Gin Fizz</a></li>
+			<li><a href="drink_gin_suffering_bastard.html">Suffering Bastard</a></li>
 		</ul>
-		
-		<h2>VODKA</h2>
-		
-		<ul class="drink_list none" data-role="listview">
-			<li><a href="drink_cosmopolitan.html">Cosmopolitan</a></li>
-
-			<li>Cosmopolitan</li>
-			<li>Harvey Wallbanger</li>
-			<li>Moscow Mule</li>
-			<li>White Russian</li>
-		</ul>
-		
+	
 		<h2>ROM</h2>
 		
 		<ul class="drink_list none" data-role="listview">
-			<li>Daiquiry</li>
-			<li>Dark'n'Stormy</li>
-			<li>Mojito</li>
-
+			<li><a href="drink_rom_daiquiry.html">Daiquiry</a></li>
+			<li><a href="drink_rom_darknstormy.html">Dark'n'Stormy</a></li>
+			<li><a href="drink_rom_mojito.html">Mojito</a></li>
 		</ul>
 
-
+		<h2>VODKA</h2>
 		
-		<h2>COGNAC</h2>
 		<ul class="drink_list none" data-role="listview">
-			<li>Sidecar</li>
+			<li><a href="drink_vodka_cosmopolitan.html">Cosmopolitan</a></li>
+			<li><a href="drink_vodka_moscow_mule.html">Moscow mule</a></li>
+			<li><a href="drink_vodka_white_russian.html">White Russian</a></li>
 		</ul>
+		
+		<h2>Teen spirit(s)</h2>
+		
+		<ul class="drink_list none" data-role="listview">
+			<li><a href="drink_teen_spirits_green.html">Green teen spirit</a></li>
+			<li><a href="drink_teen_spirits_yellow.html">Yellow teen spirit</a></li>
+			<li><a href="drink_teen_spirits_red.html">Red teen spirit</a></li>
+			<li><a href="drink_teen_spirits_brandbil.html">Brandbil</a></li>
+			<li></li>
+		</ul>
+		
+
 		
 		<a href="index.html" >Forsiden</a>
 
