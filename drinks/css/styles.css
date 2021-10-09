@@ -12,6 +12,16 @@ text-transform: uppercase;
 
 }
 
+
+
+.margin_bottom_2em {
+
+margin-bottom: 2em!important;
+
+
+}
+
+
 /* nav elements */
 
 nav h2 {
@@ -27,30 +37,9 @@ padding: .2em 1em;
 
 }
 
+nav #panel_hr {
 
-nav ul {
-
-margin: 0em;
-padding: 0em;
-
-}
-
-nav ul li {
-margin-top: .2em;
-
-
-
-}
-
-nav ul li a:link {
-text-decoration: none;
-
-}
-
-nav .ui-btn a {
-
-
-
+border-radius: 2px;
 
 }
 
