@@ -16,7 +16,7 @@ text-transform: uppercase;
 
 nav h2 {
 
-font-size: 1em;
+font-size: .8em;
 margin: 0em;
 margin-top: .5em;
 
@@ -24,12 +24,26 @@ margin-top: .5em;
 
 nav ul {
 
-margin: 0em
+margin: 0em;
+padding: 0em;
 
 }
 
 nav ul li {
 margin-top: .2em;
+
+
+
+}
+
+nav ul li a:link {
+text-decoration: none;
+
+}
+
+nav .ui-btn a {
+
+
 
 
 }
