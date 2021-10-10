@@ -37,9 +37,14 @@ padding: .2em 1em;
 
 }
 
-nav #panel_hr {
+.glasside .ui-grid-a .ui-block-a{
 
-border-radius: 2px;
+width: 20% !important;
 
 }
 
+.glasside .ui-grid-a .ui-block-b{
+
+width: 80% !important;
+
+}
