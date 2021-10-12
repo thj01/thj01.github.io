@@ -9,14 +9,41 @@ h1 {
 
 text-transform: uppercase;
 
+}
+
+
+.glas h2 {
+
+clear: both;
+
+}
+
+.glas .glas-box {
+
+height: 80px;
+vertical-align: baseline
+
+}
+
+.glas img {
+
+float:left;
+height: 80px;
+margin-right: 20px;
+
+
+}
+
+.glas glass-box p {
+
+horizontal-align: 
 
 }
 
 
-
 .margin_bottom_2em {
 
-margin-bottom: 2em!important;
+margin-bottom: 1em!important;
 
 
 }
@@ -37,14 +64,7 @@ padding: .2em 1em;
 
 }
 
-.glasside .ui-grid-a .ui-block-a{
 
-width: 20% !important;
 
-}
 
-.glasside .ui-grid-a .ui-block-b{
 
-width: 80% !important;
-
-}
