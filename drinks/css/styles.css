@@ -63,6 +63,23 @@ margin: 0px 10px
 
 }
 
+.ingredienser_billeder_all {
+
+  display: flex;
+  justify-content: center;
+}
+
+
+.ingredienser_billeder_all img {
+
+width:60px;
+margin: 0px 3px
+
+}
+
+
+
+
 
 .ingredienser>li{
 
@@ -81,7 +98,7 @@ margin-top:1.2em;
 
 
 
-.margin_bottom_2em {
+.button_devider {
 margin-bottom: 1em!important;
 }
 
