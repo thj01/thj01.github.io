@@ -17,6 +17,11 @@ font-size: 1.2em;
 margin: 2em 0em -.5em 0em
 }
 
+h3 {
+font-size: .9em;
+
+}
+
 
 .glas h2 {
 clear: both;
@@ -37,15 +42,24 @@ width:100px
 
 .glas-box-inner img {
 
-width: 40px
+width: 40px;
+
 
 
 
 }
 
-ingredienser_billeder img {
+.ingredienser_billeder {
 
-width: 40px
+  display: flex;
+  justify-content: center;
+}
+
+
+.ingredienser_billeder>img {
+
+width:60px;
+margin: 0px 10px
 
 }
 
