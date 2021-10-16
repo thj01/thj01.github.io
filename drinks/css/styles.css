@@ -29,11 +29,21 @@ height: 80px;
 
 }
 
-.glas-box>.glas-box-inner {
+.glas-box-inner {
 float:left;
 height: 80px;
-min-width:60px!important
+width:100px
 }
+
+.glas-box-inner img {
+
+width: 40px
+
+
+
+}
+
+
 
 .ingredienser>li{
 
