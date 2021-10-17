@@ -56,17 +56,25 @@ width:100px
 
 .glas-box-inner img {
 
-width: 40px;
-
-
-
+width: 70px;
 
 }
 
-.ingredienser_billeder {
+
+
+
+
+.ingredienser_billeder, .ingredienser_billeder_all, .bottles {
 
   display: flex;
   justify-content: center;
+}
+
+.bottles img {
+width: 40px;
+padding: 0px 6px;
+padding-top: 20px;
+
 }
 
 
@@ -77,11 +85,13 @@ margin: 0px 10px
 
 }
 
+/*
 .ingredienser_billeder_all {
 
   display: flex;
   justify-content: center;
 }
+*/
 
 
 .ingredienser_billeder_all img {
@@ -90,14 +100,6 @@ width:60px;
 margin: 0px 3px
 
 }
-
-
-
-
-
-
-
-
 
 .whattodo>li {
 
