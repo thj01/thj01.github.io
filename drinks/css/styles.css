@@ -37,35 +37,61 @@ font-size: .9em;
 }
 
 
-.glas h2 {
-clear: both;
-font-size: 1.3em;
-margin-left: 150px;
-
-}
-
 .glas-box {
-
-height: 80px;
-
+clear: both;
+height: 200px;
 
 }
 
-.glas-box-inner {
+/*
+.glas-box h2 {
 
+font-size: 1.3em;
+display: inline;
+
+}
+
+.glas-box p {
+
+display: inline
+
+}
+*/
+
+.glas-box-image {
 float:left;
-height: 80px;
-width:150px
-}
-
-.glas-box-inner img {
-
-height: 80px
+width:160px;
+height: 100%
 
 }
 
+.glas-box-image img {
+
+width: 40%
 
 
+}
+
+.glas-box-text {
+height: 100%
+
+
+
+}
+
+.glas-box-text h2 {
+
+font-size: 1.3em;
+display: inline-block;
+margin-bottom: 10px;
+
+
+}
+
+.glas-box-text p {
+
+display: inline;
+}
 
 
 .ingredienser_billeder, .ingredienser_billeder_all, .bottles {
