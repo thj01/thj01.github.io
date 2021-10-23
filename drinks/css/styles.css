@@ -8,14 +8,30 @@ text-transform: uppercase;
 }
 
 h2 {
-
+clear: both;
 font-size: 1.2em;
 margin: 2em 0em -.5em 0em
+
 }
 
 h3 {
 font-size: .9em;
 
+}
+
+dt {
+font-size: 1.1em;
+margin-left: 10px;
+
+}
+
+dt:not(:first-child) {
+margin-top: 5px;
+}
+
+dd {
+display: list-item;
+list-style-type: disc;
 }
 
 .glas-box {
@@ -55,15 +71,26 @@ display: inline;
 position: absolute;
 top:46px
 }
+
+/*
 .ingredienser_billeder, .ingredienser_billeder_all, .bottles {
 
   display: flex;
   justify-content: center;
 }
+*/
+
+.bottles {
+
+  display: flex;
+  justify-content: center;
+}
+
+
 
 .bottles img {
-width: 40px;
-padding: 0px 6px;
+width: 50px;
+padding: 0px 1px;
 padding-top: 20px;
 
 }
