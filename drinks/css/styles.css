@@ -1,24 +1,6 @@
 /*
-ul {
-
-list-style-type: none;
-
-}
+@import "styles_test.css";
 */
-
-.ingredienser>li{
-
-margin-top:.4em;
-
-}
-
-dt {
-
-font-weight: 900;
-
-}
-
-
 
 
 h1 {
@@ -36,64 +18,43 @@ font-size: .9em;
 
 }
 
-
 .glas-box {
 clear: both;
-height: 200px;
-
+height: 140px;
+margin:0;
+margin-bottom: 10px
 }
-
-/*
-.glas-box h2 {
-
-font-size: 1.3em;
-display: inline;
-
-}
-
-.glas-box p {
-
-display: inline
-
-}
-*/
 
 .glas-box-image {
 float:left;
-width:160px;
-height: 100%
+width:80px;
+height: 100%;
+position: relative;
 
 }
-
 .glas-box-image img {
-
-width: 40%
-
-
+height: 98%;
+position:absolute;
+bottom: 0px;
 }
-
 .glas-box-text {
-height: 100%
-
-
-
+height: 100%;
+position: relative;
 }
-
 .glas-box-text h2 {
-
 font-size: 1.3em;
+margin:0;
+
 display: inline-block;
-margin-bottom: 10px;
-
+position: absolute;
+top: 3px;
 
 }
-
 .glas-box-text p {
-
 display: inline;
+position: absolute;
+top:46px
 }
-
-
 .ingredienser_billeder, .ingredienser_billeder_all, .bottles {
 
   display: flex;
@@ -144,14 +105,6 @@ margin-top:1.2em;
 margin-bottom: 1em!important;
 }
 
-
-/* nav elements */
-
-
-nav .ui-btn {
-padding: .2em 1em;
-
-}
 
 
 
