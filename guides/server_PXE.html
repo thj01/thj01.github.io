@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <title>PXE server</title>
+  <link rel="icon" href="../images/favicon.png">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono|Ubuntu|Ubuntu+Condensed' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/stylesheets/jquery.tocify.min.css">
+  <link rel="stylesheet" href="../css/style_new.css" />
+<!-- Scripts in bottom to speed up pageload-->
+ 
+
+</head>
+<body>
+	
+	
+<div class="container-fluid">
+
+<div class="row">
+	
+<div class="col-sm-3">
+	
+	<nav>
+		
+		<div id="toc">
+		
+			<div id="toc_headline"></div>
+		
+		</div>
+		
+	</nav>
+
+</div><!-- Start slut 1. kolonne - TOC -->
+	
+<div class="col-sm-9">
+	
+<h1>Opsætning af PXE server</h1>	
+
+<p>Her blive der oprettet en PXE server.</p>
+
+<p>Serveren bliver flyttet til et nyt NAT-netværk (fra 192.167.87.0/24 &rarr; 10.0.2.0/24) i et virtualbox miljø. Det er for at undgå at der kører 2 DHCP klienter på netværket samtidig.</p>
+
+<h2>Forberedelse</h2>
+	
+<p>Installer nødvendige pakker.</p>
+
+<ul class="">
+	<li>apache</li>
+	<li>nfs</li>
+	<li>dnsmasq</li>
+</ul>
+
+<pre><code>sudo apt install apache2 nfs-kernel-server dnsmasq -y</code></pre>
+
+<h3>Download og udpak PXElinux</h3>
+
+<p>Download syslinux</p>
+
+<pre><code>wget https://mirrors.edge.kernel.org/pub/linux/utils/boot/syslinux/syslinux-6.03.tar.xz
+</code></pre>
+
+<p>Udpak</p>
+
+<pre><code>tar xvf syslinux-6.03.tar.xz</code></pre>
+
+<p>Fjern tar pakken</p>
+
+<pre><code>rm syslinux-6.03.tar.xz</code></pre>
+
+<h3>Download UEFI pakkerne</h3>
+
+<pre><code>sudo apt-get download shim.signed grub-efi-amd64-signed</code></pre>
+
+<p>Udpak de hentede filer</p>
+
+<pre><code>dpkg -x shim-signed* shim</code></pre>
+
+<pre><code>dpkg -x grub-efi* grub</code></pre>
+
+<p>Filerne er pakket ud i mapperne <em>~/shim</em> og <em>~/grub</em></p>
+
+<h3>Opret mappe strukturer</h3>
+
+<p>Til <em>TFTP</em>:</p>
+
+<ul class="none">
+	<li><em>/tftp/bios</em></li>
+	<li><em>/tftp/boot</em></li>
+	<li><em>/tftp/grub</em></li>
+</ul>
+
+<pre><code>sudo mkdir -p /tftp/{bios,boot,grub}</code></pre>
+
+<p>Til <em>HTTP</em></p>
+
+<ul class="none">
+	<li>/var/www/html/pxe/ubuntu-desktop-20.04</li>
+	<li>/var/www/html/pxe/ubuntu-server-20.04</li>
+	<li>/var/www/html/pxe/systemrescuecd</li>
+</ul>
+
+
+<pre><code>sudo mkdir -p /var/www/html/pxe/{ubuntu-desktop-20.04,ubuntu-server-20.04,systemrescueCD}</code></pre>
+
+<h3>Fyld TFTP mapperne</h3>
+
+<p>Kør alle kommandoerne herunder</p>
+
+<pre><code>sudo cp ~/syslinux-6.03/bios/com32/elflink/ldlinux/ldlinux.c32  /tftp/bios
+sudo cp ~/syslinux-6.03/bios/com32/libutil/libutil.c32  /tftp/bios  
+sudo cp ~/syslinux-6.03/bios/com32/menu/menu.c32  /tftp/bios
+sudo cp ~/syslinux-6.03/bios/com32/menu/vesamenu.c32  /tftp/bios 
+sudo cp ~/syslinux-6.03/bios/core/pxelinux.0  /tftp/bios
+sudo cp ~/syslinux-6.03/bios/core/lpxelinux.0  /tftp/bios
+sudo cp ~/grub/usr/lib/grub/x86_64-efi-signed/grubnetx64.efi.signed  /tftp/grubx64.efi
+sudo cp ~/shim/usr/lib/shim/shimx64.efi.signed  /tftp/grub/bootx64.efi</code></pre>
+
+<h2>Sæt fast IP</h2>
+
+<p>Du sætter en fast ip ved at ændre i nedestående fil.</p>
+
+<pre><code>sudo nano /etc/netplan/00-installer-config.yaml</code></pre>
+
+<p>Herunder er serveren sat til IP-adressen: <em>10.0.2.10/24</em>.</p>
+
+<samp><font color="#06989A"># This is the network config written by &apos;subiquity&apos;</font>
+network:
+  ethernets:
+    enp0s3:
+      addresses:
+      - 10.0.2.10/24
+      gateway4: 10.0.2.1
+      nameservers:
+        addresses:
+        - 8.8.8.8
+        - 8.8.4.4
+  version: 2</samp>
+  
+<p>Gem filen og genstart netplan</p>
+
+<pre><code>sudo netplan apply</code></pre>
+
+
+
+<h2>Konfigurer NFS-server</h2>
+
+<p>Åbn NFS konfigurationsfilen</p>
+
+<pre><code>sudo nano /etc/exports</code></pre>
+
+<p>Indsæt følgende</p>
+
+<samp>/var/www/html/pxe            10.0.2.0/24(ro)</samp>
+
+<p>Genstart tjenesten</p>
+
+<pre><code>sudo systemctl restart nfs-kernel-server.service</code></pre>
+
+<h2>Konfigurer dnsmasq</h2>
+
+<p>Tjek først navnet på dit netværkskort</p>
+
+<pre><code>ls /sys/class/net</code></pre>
+
+<samp><span class="terminal_green">tj@server1</span>:<span class="terminal_tilde">~</span>$ ls /sys/class/net
+enp0s3 Io</samp>
+
+<pre><code>sudo nano /etc/dnsmasq.conf</code></pre>
+
+<samp><font color="#06989A">#Interface information </font>
+<font color="#06989A">#--use ip addr to see the name of the interface on your system</font>
+interface=enp0s3,lo
+bind-interfaces
+domain=server1
+
+<font color="#06989A">#--------------------------</font>
+<font color="#06989A">#DHCP Settings</font>
+<font color="#06989A">#--------------------------</font>
+<font color="#06989A">#-- Set dhcp scope</font>
+dhcp-range=10.0.2.50,10.0.2.200,255.255.255.0,2h
+
+<font color="#06989A">#-- Set gateway option</font>
+dhcp-option=3,10.0.2.1
+
+<font color="#06989A">#-- Set DNS server option</font>
+dhcp-option=6,10.0.2.10
+
+<font color="#06989A">#-- dns Forwarder info</font>
+server=8.8.8.8
+
+<font color="#06989A">#----------------------#</font>
+<font color="#06989A"># Specify TFTP Options #</font>
+<font color="#06989A">#----------------------#</font>
+
+<font color="#06989A">#--location of the pxeboot file</font>
+dhcp-boot=/bios/pxelinux.0,pxeserver,10.0.2.10
+
+<font color="#06989A">#--enable tftp service</font>
+enable-tftp
+
+<font color="#06989A">#-- Root folder for tptp</font>
+tftp-root=/tftp
+
+<font color="#06989A">#--Detect architecture and send the correct bootloader file</font>
+dhcp-match=set:efi-x86_64,option:client-arch,7
+dhcp-boot=tag:efi-x86_64,grub/bootx64.efi</samp>
+
+<p>Genstart dnsmasq</p>
+
+<pre><code>sudo systemctl restart dnsmasq</code></pre>
+
+<p>Tjek opsætning med</p>
+
+<pre><code>sudo systemctl status dnsmasq</code></pre>
+
+<samp><font color="#4E9A06"><b>tj@server1</b></font>:<font color="#3465A4"><b>~</b></font>$ systemctl status dnsmasq.service
+<font color="#4E9A06"><b>●</b></font> dnsmasq.service - dnsmasq - A lightweight DHCP and caching DNS server
+     Loaded: loaded (/lib/systemd/system/dnsmasq.service; enabled; vendor preset: enabled)
+     Active: <font color="#4E9A06"><b>active (running)</b></font> since Sun 2021-10-24 15:13:41 UTC; 4min 16s ago
+    Process: 2308 ExecStartPre=/usr/sbin/dnsmasq --test (code=exited, status=0/SUCCESS)
+    Process: 2309 ExecStart=/etc/init.d/dnsmasq systemd-exec (code=exited, status=0/SUCCESS)
+    Process: 2331 ExecStartPost=/etc/init.d/dnsmasq systemd-start-resolvconf (code=exited, status=0/SUCCESS)
+   Main PID: 2330 (dnsmasq)
+      Tasks: 1 (limit: 4617)
+     Memory: 992.0K
+     CGroup: /system.slice/dnsmasq.service
+             └─2330 /usr/sbin/dnsmasq -x /run/dnsmasq/dnsmasq.pid -u dnsmasq -7 /etc/dnsmasq.d,.dpkg-dist,.dpkg-old,.dp<span style="background-color:#FFFFFF"><font color="#300A24">&gt;</font></span>
+
+Oct 24 15:13:41 server1 dnsmasq[2330]: compile time options: IPv6 GNU-getopt DBus i18n IDN DHCP DHCPv6 no-Lua TFTP conn<span style="background-color:#FFFFFF"><font color="#300A24">&gt;</font></span>
+Oct 24 15:13:41 server1 dnsmasq-dhcp[2330]: DHCP, IP range 10.0.2.50 -- 10.0.2.200, lease time 2h
+Oct 24 15:13:41 server1 dnsmasq-dhcp[2330]: DHCP, sockets bound exclusively to interface enp0s3
+Oct 24 15:13:41 server1 dnsmasq-tftp[2330]: TFTP root is /tftp
+Oct 24 15:13:41 server1 dnsmasq[2330]: using nameserver 8.8.8.8#53
+Oct 24 15:13:41 server1 dnsmasq[2330]: reading /etc/resolv.conf
+Oct 24 15:13:41 server1 dnsmasq[2330]: using nameserver 8.8.8.8#53
+Oct 24 15:13:41 server1 dnsmasq[2330]: using nameserver 127.0.0.53#53
+Oct 24 15:13:41 server1 dnsmasq[2330]: read /etc/hosts - 7 addresses
+Oct 24 15:13:41 server1 systemd[1]: Started dnsmasq - A lightweight DHCP and caching DNS server.
+<span style="background-color:#FFFFFF"><font color="#300A24">lines 1-22/22 (END)</font></span></samp>
+
+
+
+
+
+<p>Mere læsning: <a href="https://c-nergy.be/blog/?p=16353" target="_blank">https://c-nergy.be/blog/?p=16353</a></p>
+
+	
+</div><!-- end: col-md-9 -->
+
+<footer class="fixed-bottom text-center bg-light">
+
+	<p onclick="parentNode.remove()"><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons licens" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>Indholdet på Vidas.dk er  er licenseret under <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> og er skrevet af Thomas Jensen. (<a href="../hvem_er_jeg.html" target="_blank">Læs mere</a>)</p>
+
+</footer>
+	
+	
+</div><!-- end: row -->
+
+</div> <!-- end: container-fluid -->
+
+
+<!-- SCRIPT SECTION -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/js/bootstrap.min.js"></script>
+
+
+
+<!-- HIGHLIGHT -->
+	<script src="../js/highlight.pack.js" type="text/javascript"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+
+<!-- MATHJAX -->
+<script type="text/javascript" 
+	src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  displayAlign: "left",
+  displayIndent: "0em"
+});
+</script>
+
+
+<!-- TOCIFY -->
+<script>
+	$(function() {var toc = $("#toc").tocify({ selectors: "h2, h3, h4" }).data("toc-tocify"); });
+</script>
+<!-- GOOGLE ANALYTICS -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-89933285-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</body>
+</html>
