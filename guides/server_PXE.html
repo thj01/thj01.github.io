@@ -238,11 +238,7 @@ dhcp-boot=/bios/pxelinux.0,pxeserver,10.0.2.10
 enable-tftp
 
 <font color="#06989A">#-- Root folder for tptp</font>
-tftp-root=/tftp
-
-<font color="#06989A">#--Detect architecture and send the correct bootloader file</font>
-dhcp-match=set:efi-x86_64,option:client-arch,7
-dhcp-boot=tag:efi-x86_64,grub/bootx64.efi</samp>
+tftp-root=/tftp</samp>
 
 <p>Genstart dnsmasq</p>
 
