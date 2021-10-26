@@ -41,7 +41,7 @@
 	
 <h1>Opsætning af PXE server</h1>	
 
-<p>Her blive der oprettet en PXE server, som du kan bruge til at boote systemrescueCD fra.</p>
+<p>Her blive der oprettet en PXE server.</p>
 
 <p>Serveren bliver flyttet til et nyt NAT-netværk (fra 192.167.87.0/24 &rarr; 10.0.2.0/24) i et virtualbox miljø. Det er for at undgå at der kører 2 DHCP klienter på netværket samtidig.</p>
 
@@ -51,126 +51,78 @@
 
 <ul class="">
 	<li>apache</li>
-<!--
 	<li>nfs</li>
--->
 	<li>dnsmasq</li>
 </ul>
 
-<!--
 <pre><code>sudo apt install apache2 nfs-kernel-server dnsmasq -y</code></pre>
--->
 
-<pre><code>sudo apt update -y</code></pre>
-<pre><code>sudo apt install apache2 dnsmasq -y</code></pre>
+<h3>Download og udpak PXElinux</h3>
 
-
-<h2>Opret mappe strukturer</h2>
-
-<pre><code>sudo mkdir -p /tftp/sysresccd/boot/x86_64</code></pre>
-
-<pre><code>sudo mkdir -p /tftp/pxelinux.cfg</code></pre>
-
-<pre><code>sudo mkdir /var/www/html/sysresccd</code></pre>
-
-<p>Med denne kommando har du oprettet hele filtræet</p> 
-
-<samp><font color="#4E9A06"><b>tj@server1</b></font>:<font color="#3465A4"><b>~</b></font>$ tree /tftp/
-<font color="#3465A4"><b>/tftp/</b></font>
-├── <font color="#3465A4"><b>pxelinux.cfg</b></font>
-└── <font color="#3465A4"><b>sysresccd</b></font>
-    └── <font color="#3465A4"><b>boot</b></font>
-        └── <font color="#3465A4"><b>x86_64</b></font>
-
-4 directories, 0 files</samp>
-
-<h2>Hent systemrescueCD</h2>
-
-<pre><code>wget https://sourceforge.net/projects/systemrescuecd/files/sysresccd-x86/8.05/systemrescue-8.05-amd64.iso/download</code></pre>
-
-<p>Ændr navn på den hentede fil</p>
-
-<pre><code>mv download sysresccd.iso</code></pre>
-
-<p>Monter filen</p>
-
-<pre><code>sudo mount sysresccd.iso /media</code></pre>
-
-<h3>Kopier filer</h3>
-
-<pre><code>sudo cp /media/sysresccd/boot/* /tftp/syscresccd/boot/</code></pre>
-
-<pre><code>sudo cp /media/sysresccd/boot/x86_64/* /tftp/syscresccd/boot/x86_64/
-</code></pre>
-
-<pre><code>sudo cp -r /media/sysresccd/x86_64/ /var/www/html/sysresccd/ </code></pre>
-
-<h2>Hent syslinux</h2>
+<p>Download syslinux</p>
 
 <pre><code>wget https://mirrors.edge.kernel.org/pub/linux/utils/boot/syslinux/syslinux-6.03.tar.xz
 </code></pre>
 
-<p>Kør følgende kommandoer:</p>
+<p>Udpak</p>
 
-<pre><code>tar -xvf syslinux-6.03.tar.xz syslinux-6.03/bios/com32/elflink/ldlinux/ldlinux.c32 --strip-components 5</code></pre>
+<pre><code>tar xvf syslinux-6.03.tar.xz</code></pre>
 
-<pre><code>sudo tar -xvf syslinux-6.03.tar.xz syslinux-6.03/bios/core/pxelinux.0 --strip-components 3</code></pre>
+<p>Fjern tar pakken</p>
 
-<p>Du kan finde mere om pakkeprogrammet <em>tar</em> her: <a href="https://www.vidas.dk/guides/Term_Filer_og_mapper.html" target="_blank">https://www.vidas.dk/guides/Term_Filer_og_mapper.html</a></p>
+<pre><code>rm syslinux-6.03.tar.xz</code></pre>
 
-<p>Flyt filerne</p>
+<h3>Download UEFI pakkerne</h3>
 
-<pre><code>sudo mv {ldlinux.c32,pxelinux.0} /tftp/</code></pre>
+<pre><code>sudo apt-get download shim.signed grub-efi-amd64-signed</code></pre>
 
-<p>Tjek at de ligger korrekt</p>
+<p>Udpak de hentede filer</p>
 
-<samp><font color="#4E9A06"><b>tj@server1</b></font>:<font color="#3465A4"><b>~</b></font>$ ls -al /tftp/
-total 184
-drwxr-xr-x  4 root root   4096 Oct 26 06:24 <font color="#3465A4"><b>.</b></font>
-drwxr-xr-x 21 root root   4096 Oct 25 14:43 <font color="#3465A4"><b>..</b></font>
--rwxrwxr-x  1 tj   tj   122308 Oct  6  2014 <font color="#4E9A06"><b>ldlinux.c32</b></font>
--rw-rw-r--  1 1026 1026  46909 Oct  6  2014 pxelinux.0
-drwxr-xr-x  2 root root   4096 Oct 25 14:44 <font color="#3465A4"><b>pxelinux.cfg</b></font>
-drwxr-xr-x  3 root root   4096 Oct 25 14:59 <font color="#3465A4"><b>syscrescd</b></font>
-</samp>
+<pre><code>dpkg -x shim-signed* shim</code></pre>
 
-<details>
+<pre><code>dpkg -x grub-efi* grub</code></pre>
 
-	<summary>Find pakker i tar arkiv</summary>
+<p>Filerne er pakket ud i mapperne <em>~/shim</em> og <em>~/grub</em></p>
 
-	<p>Find pakke: <a href="https://unix.stackexchange.com/questions/34008/find-a-file-within-a-tar-gz-archive" target="_blank">https://unix.stackexchange.com/questions/34008/find-a-file-within-a-tar-gz-archive</a></p>
-	
-	<p>Udpak fil uden sti: <a href="https://stackoverflow.com/questions/14295771/how-do-i-extract-files-without-folder-structure-using-tar" target="_blank">https://stackoverflow.com/questions/14295771/how-do-i-extract-files-without-folder-structure-using-tar</a></p>
+<h3>Opret mappe strukturer</h3>
 
-</details>
+<p>Til <em>TFTP</em>:</p>
 
-<h2>Konfigurer PXE boot</h2>
+<ul class="none">
+	<li><em>/tftp/bios</em></li>
+	<li><em>/tftp/boot</em></li>
+	<li><em>/tftp/grub</em></li>
+</ul>
 
-<p>Opret filen <em>/tftp/pxelinux.cfg/default</em></p>
+<pre><code>sudo mkdir -p /tftp/{bios,boot,grub}</code></pre>
 
-<pre><code>sudo nano /tftp/pxelinux.cfg/default</code></pre>
+<p>Til <em>HTTP</em></p>
 
-<p>Indsæt følgende</p>
-
-<samp>DEFAULT sysresccd
-LABEL sysresccd
-  LINUX sysresccd/boot/x86_64/vmlinuz
-  INITRD sysresccd/boot/intel_ucode.img,sysresccd/boot/amd_ucode.img,sysresccd/boot/x86_64/sysresccd.img
-  APPEND archisobasedir=sysresccd ip=dhcp archiso_http_srv=http://10.0.2.10/ checksum
-  SYSAPPEND 3</samp>
+<ul class="none">
+	<li>/var/www/html/pxe/ubuntu-desktop-20.04</li>
+	<li>/var/www/html/pxe/ubuntu-server-20.04</li>
+	<li>/var/www/html/pxe/systemrescuecd</li>
+</ul>
 
 
+<pre><code>sudo mkdir -p /var/www/html/pxe/{ubuntu-desktop-20.04,ubuntu-server-20.04,systemrescueCD}</code></pre>
 
+<h3>Fyld TFTP mapperne</h3>
 
-<h2>Konfigurer netværk</h2>
+<p>Kør alle kommandoerne herunder</p>
 
-<p>Her skal du konfigurere netværket. </p>
-
-<p>Skal du bruge serveren på dit fysiske netværk, skal du huske at deaktivere DHCP på din router, da din server fremover klarer det.</p>
+<pre><code>sudo cp ~/syslinux-6.03/bios/com32/elflink/ldlinux/ldlinux.c32  /tftp/bios
+sudo cp ~/syslinux-6.03/bios/com32/libutil/libutil.c32  /tftp/bios  
+sudo cp ~/syslinux-6.03/bios/com32/menu/menu.c32  /tftp/bios
+sudo cp ~/syslinux-6.03/bios/com32/menu/vesamenu.c32  /tftp/bios 
+sudo cp ~/syslinux-6.03/bios/core/pxelinux.0  /tftp/bios
+sudo cp ~/syslinux-6.03/bios/core/lpxelinux.0  /tftp/bios
+sudo cp ~/grub/usr/lib/grub/x86_64-efi-signed/grubnetx64.efi.signed  /tftp/grubx64.efi
+sudo cp ~/shim/usr/lib/shim/shimx64.efi.signed  /tftp/grub/bootx64.efi</code></pre>
 
 <h2>Sæt fast IP</h2>
 
-<p>Du ændrer serverens IP-adresse ved at konfigurere følgende fil:</p>
+<p>Du sætter en fast ip ved at ændre i nedestående fil.</p>
 
 <pre><code>sudo nano /etc/netplan/00-installer-config.yaml</code></pre>
 
@@ -189,11 +141,25 @@ network:
         - 8.8.4.4
   version: 2</samp>
   
-<p>Gem filen og genstart netplan.</p>
+<p>Gem filen og genstart netplan</p>
 
 <pre><code>sudo netplan apply</code></pre>
 
 
+
+<h2>Konfigurer NFS-server</h2>
+
+<p>Åbn NFS konfigurationsfilen</p>
+
+<pre><code>sudo nano /etc/exports</code></pre>
+
+<p>Indsæt følgende</p>
+
+<samp>/var/www/html/pxe            10.0.2.0/24(ro)</samp>
+
+<p>Genstart tjenesten</p>
+
+<pre><code>sudo systemctl restart nfs-kernel-server.service</code></pre>
 
 <h2>Konfigurer dnsmasq</h2>
 
@@ -281,14 +247,7 @@ Oct 24 15:13:41 server1 systemd[1]: Started dnsmasq - A lightweight DHCP and cac
 
 
 
-
-
-
-<p><strong>Mere læsning:</strong></p> 
-
-<p><a href="https://c-nergy.be/blog/?p=16353" target="_blank">https://c-nergy.be/blog/?p=16353</a></p>
-
-<p><a href="https://www.system-rescue.org/manual/PXE_network_booting/" target="_blank">https://www.system-rescue.org/manual/PXE_network_booting/</a></p>
+<p>Mere læsning: <a href="https://c-nergy.be/blog/?p=16353" target="_blank">https://c-nergy.be/blog/?p=16353</a></p>
 
 	
 </div><!-- end: col-md-9 -->
