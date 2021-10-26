@@ -39,9 +39,18 @@
 	
 <div class="col-sm-9">
 	
-<h1>Opsætning af PXE server</h1>	
+<h1>Opsætning af PXE server</h1>
 
-<p>Her blive der oprettet en PXE server, som du kan bruge til at boote systemrescueCD fra.</p>
+<p>Her opretter vi en selvstændig PXE server, så vi kan boote computere direkte fra netværket ved hjælp af systemrescueCD <a href="https://www.system-rescue.org/" target="_blank">https://www.system-rescue.org/</a>.
+</p>	
+
+<p>Udgangspunktet er en Ubuntuserver 20.04. Du kan installere den ud fra guiden her: <a href="https://www.vidas.dk/guides/Ubuntuserver_20.04_installation.html" target="_blank">https://www.vidas.dk/guides/Ubuntuserver_20.04_installation.html</a></p>
+
+
+
+
+<p>Her blive der oprettet en PXE server, som du kan bruge til at boote systemrescueCD .</p>
+
 
 <p>Serveren bliver flyttet til et nyt NAT-netværk (fra 192.167.87.0/24 &rarr; 10.0.2.0/24) i et virtualbox miljø. Det er for at undgå at der kører 2 DHCP klienter på netværket samtidig.</p>
 
@@ -86,11 +95,7 @@
 
 <h2>Hent systemrescueCD</h2>
 
-<pre><code>wget https://sourceforge.net/projects/systemrescuecd/files/sysresccd-x86/8.05/systemrescue-8.05-amd64.iso/download</code></pre>
-
-<p>Ændr navn på den hentede fil</p>
-
-<pre><code>mv download sysresccd.iso</code></pre>
+<pre><code>wget -O sysresccd.iso https://sourceforge.net/projects/systemrescuecd/files/sysresccd-x86/8.05/systemrescue-8.05-amd64.iso/download</code></pre>
 
 <p>Monter filen</p>
 
@@ -110,13 +115,11 @@
 <pre><code>wget https://mirrors.edge.kernel.org/pub/linux/utils/boot/syslinux/syslinux-6.03.tar.xz
 </code></pre>
 
-<p>Kør følgende kommandoer:</p>
+<p>Kør følgende kommandoer for at udpakke to vigtige filer ud - <em>ldlinux.c32</em> og <em>pxelinux.0</em>:</p>
 
 <pre><code>tar -xvf syslinux-6.03.tar.xz syslinux-6.03/bios/com32/elflink/ldlinux/ldlinux.c32 --strip-components 5</code></pre>
 
 <pre><code>sudo tar -xvf syslinux-6.03.tar.xz syslinux-6.03/bios/core/pxelinux.0 --strip-components 3</code></pre>
-
-<p>Du kan finde mere om pakkeprogrammet <em>tar</em> her: <a href="https://www.vidas.dk/guides/Term_Filer_og_mapper.html" target="_blank">https://www.vidas.dk/guides/Term_Filer_og_mapper.html</a></p>
 
 <p>Flyt filerne</p>
 
@@ -164,38 +167,11 @@ LABEL sysresccd
 
 <h2>Konfigurer netværk</h2>
 
-<p>Her skal du konfigurere netværket. </p>
+<p>Her vil vi konfigurere <em>dnsmasq</em> og lave en ny IP-adresse hvis det er nødvendigt. </p>
 
 <p>Skal du bruge serveren på dit fysiske netværk, skal du huske at deaktivere DHCP på din router, da din server fremover klarer det.</p>
 
-<h2>Sæt fast IP</h2>
-
-<p>Du ændrer serverens IP-adresse ved at konfigurere følgende fil:</p>
-
-<pre><code>sudo nano /etc/netplan/00-installer-config.yaml</code></pre>
-
-<p>Herunder er serveren sat til IP-adressen: <em>10.0.2.10/24</em>.</p>
-
-<samp><font color="#06989A"># This is the network config written by &apos;subiquity&apos;</font>
-network:
-  ethernets:
-    enp0s3:
-      addresses:
-      - 10.0.2.10/24
-      gateway4: 10.0.2.1
-      nameservers:
-        addresses:
-        - 8.8.8.8
-        - 8.8.4.4
-  version: 2</samp>
-  
-<p>Gem filen og genstart netplan.</p>
-
-<pre><code>sudo netplan apply</code></pre>
-
-
-
-<h2>Konfigurer dnsmasq</h2>
+<h3>Konfigurer dnsmasq</h3>
 
 <p>Tjek først navnet på dit netværkskort</p>
 
@@ -242,6 +218,37 @@ tftp-root=/tftp</samp>
 
 <p>Genstart dnsmasq</p>
 
+
+
+
+<h3>Sæt fast IP</h3>
+
+<p>Du ændrer serverens IP-adresse ved at konfigurere følgende fil:</p>
+
+<pre><code>sudo nano /etc/netplan/00-installer-config.yaml</code></pre>
+
+<p>Herunder er serveren sat til IP-adressen: <em>10.0.2.10/24</em>.</p>
+
+<samp><font color="#06989A"># This is the network config written by &apos;subiquity&apos;</font>
+network:
+  ethernets:
+    enp0s3:
+      addresses:
+      - 10.0.2.10/24
+      gateway4: 10.0.2.1
+      nameservers:
+        addresses:
+        - 8.8.8.8
+        - 8.8.4.4
+  version: 2</samp>
+  
+<p>Gem filen og genstart netplan.</p>
+
+<pre><code>sudo netplan apply</code></pre>
+
+
+<h3>Genstart dnsmasq</h3>
+
 <pre><code>sudo systemctl restart dnsmasq</code></pre>
 
 <p>Tjek opsætning med</p>
@@ -272,7 +279,6 @@ Oct 24 15:13:41 server1 dnsmasq[2330]: using nameserver 127.0.0.53#53
 Oct 24 15:13:41 server1 dnsmasq[2330]: read /etc/hosts - 7 addresses
 Oct 24 15:13:41 server1 systemd[1]: Started dnsmasq - A lightweight DHCP and caching DNS server.
 <span style="background-color:#FFFFFF"><font color="#300A24">lines 1-22/22 (END)</font></span></samp>
-
 
 
 
