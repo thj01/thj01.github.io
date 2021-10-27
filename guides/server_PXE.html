@@ -105,8 +105,9 @@
 
 <pre><code>sudo cp /media/sysresccd/boot/* /tftp/sysresccd/boot/</code></pre>
 
-<pre><code>sudo cp /media/sysresccd/boot/x86_64/* /tftp/sysresccd/boot/x86_64/
-</code></pre>
+<pre><code>sudo cp /media/sysresccd/boot/x86_64/* /tftp/sysresccd/boot/x86_64/</code></pre>
+
+<pre><code>sudo cp /media/sysresccd/* /tftp/sysresccd/</code></pre>
 
 <pre><code>sudo cp -r /media/sysresccd/x86_64/ /var/www/html/sysresccd/ </code></pre>
 
@@ -208,7 +209,7 @@ server=8.8.8.8
 <font color="#06989A">#----------------------#</font>
 
 <font color="#06989A">#--location of the pxeboot file</font>
-dhcp-boot=/bios/pxelinux.0,pxeserver,10.0.2.10
+dhcp-boot=pxelinux.0,pxeserver,10.0.2.10
 
 <font color="#06989A">#--enable tftp service</font>
 enable-tftp
