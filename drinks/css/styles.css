@@ -1,106 +1,66 @@
-/*
+body {
 
-@import "styles_test.css";
-
-*/
-
-
-h1 {
-text-transform: uppercase;
+    padding-bottom: 100px;
 }
 
 h2 {
-clear: both;
-font-size: 1.2em;
-margin: 2em 0em -.5em 0em
-
+    font-size: 1.6em;
+    padding-top: 1em;
 }
 
 h3 {
-font-size: .9em;
+    font-size: 1.2em;
+    padding-top: 1em;
+
+}
+h4 {
+    font-size: 1em;
+    padding-top: 1em;
+}
+
+/* .offcanvas-body */
+
+
+/* glas og shaker billeder */
+
+.img_box { 
+    max-height: 120px;
+    padding-bottom: 1em;
 
 }
 
-dt {
-font-size: 1.1em;
-margin-left: 10px;
+.img_box img{
+
+    width: 16% !important;
+    max-width: 110px !important
 
 }
 
-dt:not(:first-child) {
-margin-top: 5px;
-}
-
-dd {
-display: list-item;
-list-style-type: disc;
-}
-
-.glas-box {
-clear: both;
-height: 140px;
-margin:0;
-margin-bottom: 10px
-}
-
-.glas-box-image {
-float:left;
-width:80px;
-height: 100%;
-position: relative;
-
-}
-.glas-box-image img {
-height: 98%;
-position:absolute;
-bottom: 0px;
-}
-.glas-box-text {
-height: 100%;
-position: relative;
-}
-.glas-box-text h2 {
-font-size: 1.3em;
-margin:0;
-
-display: inline-block;
-position: absolute;
-top: 3px;
-
-}
-.glas-box-text p {
-display: inline;
-position: absolute;
-top:46px
-}
-
-.bottles {
-
-  display: flex;
-  justify-content: center;
-}
-
-
-
-.bottles img {
-width: 56px;
-padding: 0px 1px;
-padding-top: 20px;
+.presentation { 
+    max-height: 300px;
+    padding-bottom: 1em;
 
 }
 
-.whattodo>li {
+.presentation img {
 
-margin-top:1.2em;
+    /* width: 200px !important; */
+    max-width: 70px !important;
+    max-height: 500px !important;
+    vertical-align: top !important;
 
 }
 
-.button_devider {
-margin-bottom: 1em!important;
+.presentation .description {
+
+    margin-top: 20px;
+    margin-left: 4em;
+
+
 }
 
+.presentation .description p {
 
+    margin-bottom: .5em;
 
-
-
-
+}

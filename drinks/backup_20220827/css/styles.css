@@ -1,0 +1,106 @@
+/*
+
+@import "styles_test.css";
+
+*/
+
+
+h1 {
+text-transform: uppercase;
+}
+
+h2 {
+clear: both;
+font-size: 1.2em;
+margin: 2em 0em -.5em 0em
+
+}
+
+h3 {
+font-size: .9em;
+
+}
+
+dt {
+font-size: 1.1em;
+margin-left: 10px;
+
+}
+
+dt:not(:first-child) {
+margin-top: 5px;
+}
+
+dd {
+display: list-item;
+list-style-type: disc;
+}
+
+.glas-box {
+clear: both;
+height: 140px;
+margin:0;
+margin-bottom: 10px
+}
+
+.glas-box-image {
+float:left;
+width:80px;
+height: 100%;
+position: relative;
+
+}
+.glas-box-image img {
+height: 98%;
+position:absolute;
+bottom: 0px;
+}
+.glas-box-text {
+height: 100%;
+position: relative;
+}
+.glas-box-text h2 {
+font-size: 1.3em;
+margin:0;
+
+display: inline-block;
+position: absolute;
+top: 3px;
+
+}
+.glas-box-text p {
+display: inline;
+position: absolute;
+top:46px
+}
+
+.bottles {
+
+  display: flex;
+  justify-content: center;
+}
+
+
+
+.bottles img {
+width: 56px;
+padding: 0px 1px;
+padding-top: 20px;
+
+}
+
+.whattodo>li {
+
+margin-top:1.2em;
+
+}
+
+.button_devider {
+margin-bottom: 1em!important;
+}
+
+
+
+
+
+

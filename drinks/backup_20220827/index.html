@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<!--
+inspiration fra: https://demos.jquerymobile.com/1.4.5/panel-external/
+-->
+
+<html>
+	<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--
+	<title>Drinks</title>
+	<link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
+-->
+	<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>    
+	<link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+	<script id="panel-init">
+		$(function() {
+			$( "body>[data-role='panel']" ).panel();
+		});
+	</script>
+
+	<link rel="stylesheet" href="css/styles.css">
+
+
+</head>
+<body>
+<div data-role="page" data-quicklinks="true">
+
+	<div data-role="header">
+		<h1>Drinks og cocktails</h1>
+		<a href="#panel" class="jqm-navmenu-link ui-btn ui-btn-icon-notext ui-corner-all ui-icon-bars ui-nodisc-icon ui-alt-icon ui-btn-left">Menu</a>
+		<a href="index.html" class="jqm-navmenu-link ui-btn ui-btn-icon-notext ui-corner-all ui-icon-home ui-nodisc-icon ui-alt-icon ui-btn-right">Forside</a>
+	</div><!-- /header -->
+
+	<div role="main" class="ui-content jqm-content jqm-fullwidth">
+
+		<p>En god drink kan gøre en aften lidt bedre og skabe en god stemning</p>
+		
+		<p>Ved alle opskrifterne er der en række ikoner der viser hvad der er i, hvordan den skal laves.</p>
+		
+		<div class="bottles">
+
+			<img class="" src="images/shaked.svg" alt="" title="">
+			<img class="" src="images/stirred.svg" alt="" title="">
+			<img class="" src="images/pour.svg" alt="" title="">
+
+		</div>
+		
+		<p>... og glasset drinken serveres i.</p>
+		
+		<div class="bottles">
+
+
+
+			<img class="" src="images/glas_rock.svg" alt="" title="">
+			<img class="" src="images/glas_collins.svg" alt="" title="">
+			<img class="" src="images/glas_coupe.svg" alt="" title="">
+			<img class="" src="images/glas_martini.svg" alt="" title="">
+			<img class="" src="images/glas_champagne.svg"  alt="" title="">
+			<img class="" src="images/glas_vin.svg" alt="" title="">				
+
+
+		</div>
+
+
+		
+		<h2>Læs mere</h2>
+		
+		<p>Her er en liste med det spiritus du skal have for lave de drinks der er med i app'en.</p>
+		
+			<a class="ui-btn ui-overlay-shadow ui-corner-all margin_bottom_2em" href="barskabet.html" >Barskabet</a>
+			
+			<div class="button_devider"></div>
+						
+			<a class="ui-btn ui-overlay-shadow ui-corner-all" href="alkohol.html" >Gode råd til alkohol</a>
+
+			<div class="button_devider"></div>
+						
+			<a class="ui-btn ui-overlay-shadow ui-corner-all" href="glas.html" >Det rigtige glas</a>
+
+			<div class="button_devider"></div>
+			
+			<a class="ui-btn ui-overlay-shadow ui-corner-all margin_bottom_2em" href="tilbehoer.html" >Tilbehør</a>
+			
+			<div class="button_devider"></div>
+			
+			<a class="ui-btn ui-overlay-shadow ui-corner-all margin_bottom_2em" href="sirup_opskrifter.html" >Sirup opskrifter</a>
+
+
+	</div><!-- /content -->
+	
+</div><!-- /page -->
+
+	<!-- leftpanel3  -->
+<nav data-role="panel" class="jqm-navmenu-panel" id="panel" data-position="left" data-display="overlay" data-theme="a">
+
+	<a class="ui-btn ui-shadow  " href="brandbil.html">Brandbil</a>
+	<a class="ui-btn ui-shadow  " href="drink_cosmopolitan.html">Cosmopolitan</a>
+	<a class="ui-btn ui-shadow  " href="drink_cuba_libre.html">Cuba Libre (rom og cola)</a>
+	<a class="ui-btn ui-shadow  " href="drink_daiquiry.html">Daiquiry</a>
+	<a class="ui-btn ui-shadow  " href="drink_darknstormy.html">Dark'n'Stormy</a>
+	<a class="ui-btn ui-shadow  " href="drink_gimlet.html">Gimlet</a>
+	<a class="ui-btn ui-shadow  " href="drink_gin_hass.html">Gin Hass</a>
+	<a class="ui-btn ui-shadow  " href="drink_gin_schweppes.html">Gin Schweppes</a>
+	<a class="ui-btn ui-shadow  " href="drink_gin_tonic.html">Gin Tonic</a>
+	<a class="ui-btn ui-shadow  " href="drink_green_orange.html">Green Orange</a>
+	<a class="ui-btn ui-shadow  " href="drink_graesplaene.html">Græsplæne</a>
+	<a class="ui-btn ui-shadow  " href="drink_harvey_wallbanger.html">Harvey Wallbanger</a>
+	<a class="ui-btn ui-shadow  " href="drink_kongen_af_danmark.html">Kongen af Danmark</a>
+	<a class="ui-btn ui-shadow  " href="drink_long_island_iced_tea.html">Long Island Iced Tea</a>
+	<a class="ui-btn ui-shadow  " href="drink_mojito.html">Mojito</a>
+	<a class="ui-btn ui-shadow  " href="drink_monkey_gland.html">Monkey Gland</a>
+	<a class="ui-btn ui-shadow  " href="drink_moscow_mule.html">Moscow mule</a>
+	<a class="ui-btn ui-shadow  " href="drink_pegu_club.html">Pegu Club</a>
+	<a class="ui-btn ui-shadow  " href="drink_ramos_gin_fizz.html">Ramos Gin Fizz</a>
+	<a class="ui-btn ui-shadow  " href="drink_sidecar.html">Sidecar</a>
+	<a class="ui-btn ui-shadow  " href="drink_suffering_bastard.html">Suffering Bastard</a>
+	<a class="ui-btn ui-shadow  " href="drink_tequila_sunrise.html">Tequila Sunrise</a>
+	<a class="ui-btn ui-shadow  " href="drink_vodka_sunrise.html">Vodka Sunrise</a>
+	<a class="ui-btn ui-shadow  " href="drink_white_russian.html">White Russian</a>	
+
+	<div class="button_devider"></div>
+	
+	<a class="ui-btn ui-shadow  " href="barskabet.html" >Barskabet</a>
+	
+	<div class="button_devider"></div>
+		
+	<a class="ui-btn ui-shadow  " href="tilbehoer.html" >Tilbehør</a>
+
+	<div class="button_devider"></div>
+					
+	<a class="ui-btn ui-shadow  " href="glas.html" >Det rigtige glas</a>
+
+</nav><!-- /leftpanel3 -->
+
+<div id="sirup-opskrifter" data-role="page" class="jqm-demos">
+
+	<div data-role="header">
+		<h1>Sirup opskrifter</h1>
+		<a href="#panel" class="jqm-navmenu-link ui-btn ui-btn-icon-notext ui-corner-all ui-icon-bars ui-nodisc-icon ui-alt-icon ui-btn-left">Menu</a>
+		<a href="index.html" class="jqm-navmenu-link ui-btn ui-btn-icon-notext ui-corner-all ui-icon-home ui-nodisc-icon ui-alt-icon ui-btn-right">Forside</a>
+	</div><!-- /header -->
+
+	<div role="main" class="ui-content jqm-content jqm-fullwidth">
+
+		<p>Her er en liste med det du skal have, for at kunne lave de drinks der er denne app.</p>
+		
+		<p>Sirupper er lette og en del billigere at lave selv.</p>
+		
+		
+		<h2>Sukkersirup</h2>
+		
+		<h3>Du skal bruge</h3>
+		
+		<ul class="none">
+			<li>150 gr sukker</li>
+			<li>100 ml vand</li>
+		</ul>
+		
+		<h3>Sådan gør du</h3>
+		
+		<ol class="none">
+			<li>Bring vandet i kog</li>
+			<li>Tilsæt sukker</li>
+			<li>rør rundt til det er opløst</li>
+			<li>Afkøl siruppen, fyld på flaske og sæt den på køl</li>
+		</ol>
+		
+		<h2>Limesirup</h2>
+		
+		<p>Følg opskriften på almindelig sukkersirup, og tilsæt 4 cl limesaft underafkølingen</p>
+		
+		<h2>Grenadine</h2>
+		
+		<h3>Du skal bruge</h3>
+		
+		<ul class="none">
+			<li>300 gr sukker</li>
+			<li>225 ml vand</li>
+			<li>1 granatæble</li>
+		</ul>
+		
+		<h3>Sådan gør du</h3>
+		
+		<ol class="">
+			<li>Pil alle kernerne ud af granatæblet</li>
+			<li>blend kernerne og læg de mosede kerner i et klæde. pres saften ud</li>
+			<li>Bring vandet i kog og hæld sukkeret i</li>
+			<li>Når sukkeret er opløst så hældes saften fra granatæblets kerner i</li>
+			<li>Kog det i 4-5 minutter</li>
+			<li>Afkøl siruppen, fyld på flaske og sæt den på køl</li>
+		</ol>
+		
+		<h2>Mintsirup</h2>
+		
+		<h3>Du skal bruge</h3>
+		
+
+		
+		<h3>Sådan gør du</h3>
+		
+	</div><!-- /content -->
+
+</div><!-- /page -->
+
+<div id="tilbehoer" data-role="page" class="jqm-demos">
+
+	<div data-role="header">
+		<h1>Tilbehør</h1>
+		<a href="#panel" class="jqm-navmenu-link ui-btn ui-btn-icon-notext ui-corner-all ui-icon-bars ui-nodisc-icon ui-alt-icon ui-btn-left">Menu</a>
+		<a href="index.html" class="jqm-navmenu-link ui-btn ui-btn-icon-notext ui-corner-all ui-icon-home ui-nodisc-icon ui-alt-icon ui-btn-right">Forside</a>
+	</div><!-- /header -->
+
+	<div role="main" class="ui-content jqm-content jqm-fullwidth">
+		
+		<h2>Det vigtige</h2>
+		
+		<ul class="none">
+			<li>IS ... masser af is</li>
+			<li>En shaker</li>
+			<li>En lang ske</li>
+			<li>Citroner</li>
+			<li>Lime</li>
+		</ul>
+		
+		
+		<h2>Bitter</h2>
+	
+		<p>Angosturabitter... the one and only</p>
+
+		<h2>Sirup</h2>
+		
+		<ul class="none">
+			<li>Sukkersirup</li>
+			<li>Limesirup</li>
+			<li>Grenadine</li>
+			<li>Mintsirup</li>
+		</ul>
+
+		<p>Sødme er vigtig i drinks og sukker sirup kan tilsættes smag. Det er både let og billigt at lave selv.</p>
+		
+		<a class="ui-btn ui-overlay-shadow ui-corner-all" href="sirup_opskrifter.html">Opskrifter til hjemmelavet sirup</a>
+
+		<h2>Tonic</h2>
+		
+		<p>Brug en god tonic. Tommelfingerreglen er, at jo dårligere gin'en er, jo vigtigere er det med en god tonic.</p>
+		
+		<p>Her er favoritten en standard Thomas Henry</p>
+		
+	</div><!-- /content -->
+
+</div><!-- /page -->
+
+<div id="brandbil" data-role="page" class="jqm-demos">
+
+	<div data-role="header">
+		<h1>Brandbil</h1>
+		<a href="#panel" class="jqm-navmenu-link ui-btn ui-btn-icon-notext ui-corner-all ui-icon-bars ui-nodisc-icon ui-alt-icon ui-btn-left">Menu</a>
+		<a href="index.html" class="jqm-navmenu-link ui-btn ui-btn-icon-notext ui-corner-all ui-icon-home ui-nodisc-icon ui-alt-icon ui-btn-right">Forside</a>
+	</div><!-- /header -->
+
+	<div role="main" class="ui-content jqm-content jqm-fullwidth">
+
+		<h2>Du skal bruge</h2>
+
+		<div class="bottles">
+			
+			<img class="" src="images/bottle_jaeger.svg" alt="" title="">
+			<img class="" src="images/can_rod_soda.svg" alt="" title="">
+
+		</div>
+
+		<ul class="ingredienser">
+			<li>2-4 cl Jägermeister</li>
+			<li>Rød sodavand</li>
+			<li>Isterninger</li>
+		</ul>
+		
+		<h2>Sådan gør du</h2>
+
+		<div class="bottles">
+			
+			<img class="" src="images/stirred.svg" alt="" title="">
+			<img class="" src="images/glas_rock.svg" alt="" title="">
+
+		</div>	
+				
+		<ul class="whattodo">
+			<li>Hæld Jägermeister og isterninger i et glas</li>
+			<li>Tilsæt rød sodavand og rør rundt</li>
+		</ul>
+		
+	</div><!-- /content -->
+
+</div><!-- /page -->
+
+
+</body>
+</html>
