@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+<link rel="stylesheet" href="css/styles.css">
+<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+	<script id="panel-init">
+		$(function() {
+			$( "body>[data-role='panel']" ).panel();
+		});
+	</script>
+</head>
+<body>
+<div data-role="page" class="jqm-demos" data-quicklinks="true">
+
+	<div data-role="header">
+		<h1>DRINKS</h1>
+		<a href="#rightpanel" class="ui-btn ui-shadow ui-corner-all ui-icon-bars ui-btn-icon-left">Menu</a>
+
+	</div><!-- /header -->
+
+	<div role="main" class="ui-content jqm-content jqm-fullwidth">
+
+		<h1>COGNAC</h1>
+		
+		<div data-role="collapsible">
+		    <h2>Sidecar</h2>
+		    <p>I'm the collapsible content. By default I'm closed, but you can click the header to open me.</p>
+		</div>
+		
+		<div data-role="collapsible">
+		    <h2>Suffering Bastard</h2>
+		    <p>I'm the collapsible content. By default I'm closed, but you can click the header to open me.</p>
+		</div>		
+
+	</div><!-- /content -->
+
+</div><!-- /page -->
+
+	
+	<!-- rightpanel3  -->
+	<div data-role="panel" id="rightpanel" data-position="left" data-display="overlay" data-theme="a">
+
+		<nav>
+			<h3>Drink typer</h3>
+			
+			<p>Her kan du vælge hvilken type af drinks du bedst kan lide.</p>
+			
+			<a href="#demo-links" data-rel="close" class="ui-btn ui-shadow ui-corner-all ui-btn-a ui-icon-delete ui-btn-icon-left ui-btn-inline">Close panel</a>
+			
+		</nav>
+
+	</div><!-- /rightpanel3 -->
+</body>
+</html>
