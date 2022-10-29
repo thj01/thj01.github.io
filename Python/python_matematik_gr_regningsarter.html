@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <title>Py Regneregler</title>
+  <link rel="icon" href="../images/favicon.png">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono|Ubuntu|Ubuntu+Condensed' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/stylesheets/jquery.tocify.min.css">
+  <link rel="stylesheet" href="../css/style_new.css" />
+<!-- Scripts in bottom to speed up pageload-->
+ 
+
+</head>
+<body>
+	
+	
+<div class="container-fluid">
+
+<div class="row">
+	
+<div class="col-sm-3">
+	
+	<nav>
+		
+		<div id="toc">
+		
+			<div id="toc_headline"></div>
+		
+		</div>
+		
+	</nav>
+
+</div><!-- Start slut 1. kolonne - TOC -->
+	
+<div class="col-sm-9">
+	
+
+<figure id="">
+
+	<img class="" src="images/python-logo-inkscape.svg" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+
+
+<h1>Regneregler</h1>
+
+<p>Regningsarterne fungerer ved at anvende tegnene: <em>+</em> , <em>-</em> , <em>*</em>  og <em>/</em> . Se herunder:</p>
+
+<pre><code class="python">>>> 6+3
+9
+>>> 6-3
+3
+>>> 6*3
+18
+>>> 6/3
+2.0</code></pre>
+
+<p>Læg mærke til at der bliver anvendt <em>int</em> i alle eksemplerne, og at resultatet bliver leveret på samme måde ved <em>+</em>, <em>-</em> og <em>*</em>. Men ved division bliver resulatet ændret til <em>float</em>. Se nedestående eksempel</p>
+
+<pre><code class="python">>>> 2/3
+0.6666666666666666</code></pre>
+
+<h2>Regningsregler</h2>
+
+<p>Python anvender korrekte regningsregler, hvilket vil sige at <em>+</em> og <em>-</em> adskiller ledene, og at de skal sættes paranteser for at omgå dette. Se eksemplerne herunder:</p>
+
+<pre><code class="python">>>> 3+2*6
+15
+>>> (3+2)*6
+30
+>>> 3+6/2
+6.0
+>>> (3+6)/2
+4.5</code></pre>
+
+<h3>opgaver</h3>
+
+<p>I de nedestående opgaver skal du lave regnestykker ved hjælp af tallene, regningsarterne <em>+</em>, <em>-</em>, <em>*</em> og <em>/</em> og paranteser:</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Tal</th>
+			<th>Resultater</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>6, 3, 4</td>
+			<td>-6, 6, 12, 18, 36</td>
+		</tr>
+		<tr>
+			<td>4, 4, 8</td>
+			<td>-16, -7, 0, 1, 2, 6, 28</td>
+		</tr>
+	</tbody>
+</table>
+
+<h3>Potens og rødder</h3>
+
+<p>For at finde potens tal og rødder anvendes funktionen <code>pow(a,b)</code>, hvor <em>a</em> er grundtallet og <em>b</em> er potensen. Se nedestående eksempler:</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Matematisk udtryk</th>
+			<th>Python funktion</th>
+			<th>Alternativ</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><span class="math">\( a^b \)</span></td>
+			<td><code>pow(a,b)</code></td>
+			<td><code>a**b</code></td>
+		</tr>
+		<tr>
+			<td><span class="math">\( \sqrt[b]{a} \)</span></td>
+			<td><code>pow(a,1/b)</code></td>
+			<td><code>a**(1/b)</code></td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Det anbefales at man anvender funktionen <code>pow()</code> fremfor <code>**</code>. Det gør koden mere læselig.</p>
+
+<p>Eksempler med 2<sup>4</sup> og kvadratroden af 4:</p>
+
+<pre><code class="python">>>> pow(2,4) 
+16
+>>> pow(4,1/2)
+2.0</code></pre>
+
+<p>Man kan have funktioner inde i funktioner, f.eks:</p>
+
+<div class="latex">$$ \sqrt[5]{7^2} = (7^2)^{\frac{1}{5}} = pow(~pow(7,2)~,~1/5~)$$</div>
+
+
+<pre><code class="python">>>> pow( pow(7,2) , 1/5 )
+2.17790642448278</code></pre>
+
+<h4>Opgave</h4>
+
+<p> Beregn følgende tal:</p>
+
+<div class="latex">$$ 2^8, ~{19^3}^7,~ \sqrt 9, ~ \sqrt[17] {256}, ~ \sqrt[3]{4}^{17}, ~ 2^{\sqrt17} $$</div>
+
+<h3>Logartimer</h3>
+
+<p>For at anvende logaritmer skal pakken <code>math</code> importeres</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Matematisk udtryk</th>
+			<th>Funktion</th>
+			<th>Inverse funktion</th>
+			<th>Beskrivelse</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><span class="math">\( y^x \)</span></td>
+			<td>pow(y,x)</td>
+			<td>math.log(x,y)</td>
+			<td>Logaritmen (grundtal y)</td>
+		</tr>
+		<tr>
+			<td><span class="math">\( 10^x=y \)</span></td>
+			<td>pow(10,x)</td>
+			<td>math.log10(x)</td>
+			<td>Logaritmen (grundtal 10)</td>
+		</tr>
+		<tr>
+			<td><span class="math">\( e^x = y \)</span></td>
+			<td>math.exp(x)</td>
+			<td>math.log(y)</td>
+			<td>Den naturlige logaritmen (grundtal e)</td>
+		</tr>
+	</tbody>
+</table>
+
+<pre><code class="python">>>> import math
+>>> math.log10(100)
+2.0
+>>> math.log10(pow(10,2))
+2.0
+>>> math.log(pow(math.e,2))
+2.0</code></pre>
+
+<h3>Konstanter</h3>
+
+<p>I matematik er der konstanter som man ikke kommer uden om herunder konstanten <span class="math">&pi;</span> og <span class="math">e</span></p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Konstant</th>
+			<th>Funktion</th>
+			<th>Værdi</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><span class="math">\( \pi \)</span></td>
+			<td>math.pi</td>
+			<td>3.141592...</td>
+		</tr>
+		<tr>
+			<td><span class="math">\( e \)</span></td>
+			<td>math.e</td>
+			<td>2.718281...</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>De kan kaldes ved at importere dem fra pakken <code>math</code></p>
+
+<pre><code class="python">>>> import math
+>>> math.pi
+3.141592653589793
+>>> math.e
+2.718281828459045</code></pre>
+
+<h3>Modulus og floor division</h3>
+
+<p>To funktioner som ikke giver mening normalt i matematik er modulus og "floor division".</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Funktion</th>
+			<th>Tegn</th>
+			<th>Beskrivelse</th>
+			<th>Eksempel</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><em>modulus</em></td>
+			<td><code>%</code></td>
+			<td>Returnere resten efter division</td>
+			<td>9%5 = 4 </td>
+		</tr>
+		<tr>
+			<td><em>floor division</em></td>
+			<td><code>//</code></td>
+			<td>Returnerer heltallet efter division</td>
+			<td>9//5 = 1</td>
+		</tr>
+	</tbody>
+</table>
+
+
+
+<pre><code class="python">>>> 9%5
+4
+>>> 9//5
+1</code></pre>
+
+<p>Man kan ved hjælp af <em>modulus</em> og <em>floor division</em> omskrive en uægte brøk til en blandet brøk efter følgende model:</p>
+
+<div class="latex">$$ \frac{a}{b} = (a//b)~ \frac{a\%b}{b} $$</div>
+
+<span class="afsnit">Anvendelse</span>
+
+<p><em>modulus</em> og <em>floor division</em> virker i første omgang lidt underlige, men har en masse praktiske anvendelser. F.eks: </p>
+
+<ul class="disc">
+	<li>Hvis noget skal ske hver tredie gang: <code>x%3 = 0</code></li>
+	<li>Antal fyldte ølkasser: <code>*antal flasker* // 30</code></li>
+</ul>
+
+<h3>Absolutte tal</h3>
+
+<p>Hvis man vil arbejde med absolutte tal anvender man funktionen <code>abs()</code>. Det gør at resultatet bliver repræsenteret med sin positive værdi. Se eksemplerne:</p>
+
+<pre><code class="python">>>> abs(-2)
+2</code></pre>
+
+<h2>Taltyper</h2>
+
+<p>I Python anvendes grundlæggende 3 taltyper</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Betegnelse</th>
+			<th>Talmængde</th>
+			<th>Beskrivelse</th>
+			<th>Eksempel</th>
+			<th>Læg mærke til</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><em>int</em></td>
+			<td><span class="math">\( \mathbb{Z} \)</span></td>
+			<td>Heltal (kaldes integer på engelsk)</td>
+			<td>1 ; 17 ; 2499</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td><em>float</em></td>
+			<td><span class="math">\( \mathbb{R} \)</span></td>
+			<td>Decimaltal</td>
+			<td>0.5 ; 3,141592 ; 0.6666</td>
+			<td>... at der anvendes punktum og ikke komma</td>
+		</tr>
+
+<!--
+		<tr>
+			<td><em>Decimal</em></td>
+			<td><img src="images/mat_not_mathbbR.svg" alt="" title="" /></td>
+			<td>Decimaltal</td>
+			<td>0.5 ; 3,141592 ; 0.6666</td>
+			<td>... at der anvendes punktum og ikke komma</td>
+		</tr>
+-->
+
+		<tr>
+			<td><em>Fraction</em></td>
+			<td><span class="math">\( \mathbb{Q} \)</span></td>
+			<td>Brøker</td>
+			<td>1/2 ; 22/7 ; 2/3</td>
+			<td>Resultatet kommer ud i formen: Fraction(tæller,nævner)</td>
+		</tr>
+	</tbody>
+</table>
+
+<h3>int</h3>
+
+<p><em>int</em> er heltal og anvendes ofte i programmering til at tælle og holde styr på antallet af gange noget skal ske. Det er samtidig den taltype der fylder mindst i hukommelsen og computeren kan beregne hurtigt.</p>
+
+
+<h3>float</h3>
+
+<!--<p><span class="bold">Anvendelse: </span>Videnskabelige beregninger</p>-->
+
+<p><em>float</em> er simple decimaltal og kan anvendes til langt de fleste beregninger. Men taller er ikke præcist se nedestående eksempel: </p>
+
+<pre><code class="python">>>> 3*0.1-0.3
+5.551115123125783e-17</code></pre>
+
+<p>Resultatet burde give <em>0</em> men giver en rest. Det er ikke fordi computeren ikke kan regne, men skyldes at <em>float</em> er binært defineret, hvilket giver disse afvigelser - i dette tilfælde efter den 17 decimal. Men anvender man få decimaler er float rigeligt. <!--I forhold til <em>decimal</em> fylder det mindre i hukommelsen og er lettere at beregne for computeren.--></p>
+
+<!--
+
+<h3>Decimal</h3>
+
+<p><span class="afsnit">Anvendelse: </span> Financielle beregninger</p>
+
+<p><em>decimal</em> er eksakte tal og kan sættes til en nøjagtighed på 28 cifre og decimaler i alt. Det er en funktion der skal kaldes. Herunder er regnestykket <code>1.30+1.20</code> udregnet både med <em>float</em> og <em>decimal</em>:</p>
+
+<pre class="ubuntu_terminal">
+>>> from decimal import *
+>>> 1.30+1.20
+2.5
+>>> Decimal(1.30)+Decimal(1.20)
+Decimal('2.500000000000000000000000000')
+</pre>
+
+<p>Man kan også sætte antallet af decimaler der skal svares med på følgende måde</p>
+
+<pre class="ubuntu_terminal">
+>>> getcontext().prec=5
+>>> Decimal(1.30)+Decimal(1.20)
+Decimal('2.5000')
+</pre>
+
+<p>Læs mere: <a href="https://docs.python.org/3.5/library/decimal.html" target="_blank">https://docs.python.org/3.5/library/decimal.html</a></p>
+
+-->
+
+<h3>Fraction</h3>
+
+<p>For at arbejde med brøker skal funktionen kaldes og brøker skrives ved at anvende formen: <code>Fraction(a,b)</code> hvor a er tælleren og b er nævneren. Herunder vises udregningen bag Piet Heins digt både som <em>Fraction</em> og som <em>float</em>.</p>
+
+<blockquote class="center">
+	<p>
+		En halv er <br/> tænk nu hvor aparte <br/>to trediedele <br/>af trekvarte <br/><br/>
+		<span class="math">\( \frac{1}{2} = \frac{2}{3} \cdot \frac{3}{4} \)</span>
+	</p>
+</blockquote>
+
+<p>Først skal <em>fraction</em>importeres:</p>
+
+<pre><code class="python">>>> from fractions import Fraction
+>>> brøk1 = Fraction(2,3)
+>>> brøk2 = Fraction(3,4)
+>>> brøk1*brøk2
+Fraction(1, 2)
+>>> float1=float(2/3)
+>>> float2=float(3/4)
+>>> float1*float2
+0.5</code></pre>
+
+<h2>Konvertering af taltyper</h2>
+
+<p>Hvis man vil undersøge hvilken taltype en variabel er anvender man funktionen <code>type()</code>. Lad os prøve det ved at anvende variablerne fra eksemplet ovenfor:</p>
+
+<pre><code class="python">>>> a=7
+>>> b=3/4
+>>> c=3.14
+>>> type(a)
+&lt;class 'int'&gt;
+>>> type(b)
+&lt;class 'float'&gt;
+>>> type(c)
+&lt;class 'float'&gt;</code></pre>
+
+<p>Herunder angiver vi variablen <em>d</em>, som er det samme som c - blot i taltypen <em>fraction</em>. Vi lægger også mærke til at variablen d nu er funktionsværdien af <code>Fraction(2,3)</code></p>
+
+<pre><code class="python">>>> d=Fraction(2,3)
+>>> type(d)
+&lt;class 'fractions.Fraction'>
+>>> d
+Fraction(2, 3)</code></pre>
+
+<p>Python er designet til hele tiden at vælge den bedst mulige taltype, hvilket betyder at tal der fremkommer ved hjælp af division automatisk bliver konverteret til <em>float</em>. Det vi skal kigge på her er hvordan vi konverterer mellem taltyper og finder ud af hvilken taltype det er.</p>
+
+<p>For at omskrive et tall fra en type eller en tekststreng til et tal anvendes funktionerne: <code>int()</code>, <code>float()</code> <!--, <code>Decimal()</code> -->og<code>Fraction()</code>.</p>
+
+<ul class="none">
+	<li><code>int()</code> - omskrivning til heltal</li>
+	<li><code>float()</code> - omskrivning til float</li>
+<!--<li><code>Decimal()</code> - omskrivning til Decimal</li> -->
+	<li><code>Fraction()</code> - omskrivning til brøk</li>
+</ul>
+
+<h3>...til int (ℕ - Integers) </h3>
+
+<p>Man skal være opmærksom på at man ved en omskrivning kan miste decimaler. Hvis man omskriver en brøk eller et decimaltal til en <em>int</em>, så mister man alle decimalerne. Se eksemplerne herunder:</p>
+
+<pre><code class="python">>>> a=3.14
+>>> b=9/10
+>>> c=11/10
+>>> int(a)
+3
+>>> int(b)
+0
+>>> int(c)
+1</code></pre>
+
+<h3>... til float (ℝ - Relle tal)</h3>
+
+<p>Når der omskrives til <em>float</em> sættes der minimum en decimal på.</p>
+
+<pre><code class="python">>>> a=1
+>>> b=3.14
+>>> c=2/3
+>>> float(a)
+1.0
+>>> float(b)
+3.14
+>>> float(c)
+0.6666666666666666</code></pre>
+
+<!--
+
+<span class="afsnit">Omskrivning til Decimal</span>
+
+<p></p>
+
+<pre class="ubuntu_terminal">
+>>> from decimal import *
+>>> Decimal(a)
+Decimal('1')
+>>> Decimal(b)
+Decimal('3.140000000000000124344978758017532527446746826171875')
+>>> Decimal(c)
+Decimal('0.66666666666666662965923251249478198587894439697265625')
+</pre>
+
+-->
+
+<h3>...til Fraction (ℚ - Rationelle tal)</h3>
+
+<p>For at arbejde med <em>Fraction</em> skal funktionen først importeres:</p>
+
+<pre><code class="python">>>> from fractions import Fraction
+>>> a=1
+>>> b=3.14
+>>> c=2/3
+>>> Fraction(a)
+Fraction(1, 1)
+>>> Fraction(b)
+Fraction(7070651414971679, 2251799813685248)
+>>> Fraction(c)
+Fraction(6004799503160661, 9007199254740992)</code></pre>
+
+<p>Læg mærke til at omskrivningen fra <em>2/3</em> bliver til <em>6004799503160661/9007199254740992</em>. Det skyldes at variablen c ikke bliver gemt som en brøk (<em>Fraction</em>), men som et <em>float</em>. Derved kommer der en unøjagtighed ind i decimalerne som bliver nedarvet.</p>
+
+<p>Det man kan lære af det er, at man skal arbejde med de rigtige taltyper hele tiden, da man ellers risikerer unøjagtige resultater.</p>
+
+<h3>Opgave</h3>
+
+<p>Beregn ved hjælp af python hvad forskellen er mellem <em>c</em> og <code>Fraction(c)</code> fra eksemplet ovenfor.</p>
+
+
+
+
+<!--
+
+
+<h3>input()</h3>
+
+<p>For at få brugerinput anvendes funktionen <code>input()</code>. Funktionen udskriver tekststrengen inde i parantensen, og venter på brugerens input. Som standard læses input som en tekststreng. Hvis input er en talværdi konverteres den til den taltype man ønsker ved at pakke input funktionen ind i funktionen for taltypen f.eks:</p>
+
+<code>int(input(*tekststreng*))  <span class="red">&lt;-- Husk to paranteser til sidst</span></code>
+
+<p>Grunden til at jeg fremhæver det med de to paranteser til slut er, at det er en meget typisk fejl, at man glemmer at afslutte alle paranteserne.</p>
+
+<h3>Et eksempel</h3>
+
+<p>I dette eksempel er brugerens input farvet blå for at tydeliggøre det som sker.</p>
+
+<pre class="ubuntu_terminal">
+>>> navn=input("Skriv dit navn: ")
+Skriv dit navn: <span class="blue1">Thomas</span>
+>>> tal=int(input("Skriv et tal: ")) <span class="red">&lt;-- Husk to paranteser til sidst</span>
+Skriv et tal: <span class="blue1">6</span>
+>>> print("Det dobbelte af {0} er {1}".format(tal,tal*2)) <span class="red">&lt;-- Husk to paranteser til sidst</span>
+Det dobbelte af 6 er 12
+</pre>
+
+<p>Hvad er det vi gør:</p>
+
+<ol class="">
+	<li><code>navn=input("Skriv dit navn: ")</code></li>
+	
+	<p>Vi opretter variablen <em>navn</em> og indhenter navnet (en tekststreng) ved hjælp af <code>input()</code></p>
+
+	<li><code>tal=int(input("Skriv et tal: "))</code></li>
+	
+	<p>Vi opretter variablen tal og indhenter tallet (en tekststreng) ved hjælp af <code>input()</code>. Men vi konverterer tekststrengen til et tal med det samme ved at pakke hele funktionen ind i <code>int()</code></p>
+
+	<li><code>print("Det dobbelte af {0} er {1}".format(tal,tal*2)) </code></li>
+	
+	<p>Vi printer resultatet ved hjælp af <code>print()</code>, og indsætter variablerne ved hjælp af pladsholdere</p>
+</ol>
+
+
+
+<p>Hvis vi f.eks. ville udregne en brøk kan vi få brugeren til først at indtaste tælleren og derefter nævneren:</p>
+
+<pre class="ubuntu_terminal">
+>>> tæller=int(input("Indtast tæller: "))
+Indtast tæller: 3
+>>> nævner=int(input("Indtast nævner: "))
+Indtast nævner: 4
+>>> tæller/nævner
+0.75
+>>> type(_)
+&lt;class 'float'&gt;
+</pre>
+
+<p>Læg mærke til 2 ting:</p>
+
+<ul class="disc">
+	<li>Divisionsstykket konvertere de to <em>int</em> tal til <em>float</em></li>
+	<li>Man kan kalde det sidste output ved at anvende <em>_</em> (underscore)</li>
+</ul>
+
+<h3>Opgave</h3>
+
+<p>Lav et program hvor du sætter variablerne med input. Du skal finde ud af:</p>
+
+<ol class="">
+	<li>Fornavn</li>
+	<li>Alder</li>
+	<li>Mobilnr</li>
+</ol>
+
+<p>Lav et output der siger</p>
+
+<pre class="ubuntu_terminal">
+Jeg hedder *fornavn*, og er *alder* år gammel. Mit mobilnr er: *mobilnr*
+</pre>
+
+<p>Overvej om <em>alder</em> og <em>mobilnr</em> skal være tekststrenge eller værdier</span>. Begrund dine valg.</p>
+
+
+
+-->
+
+
+	
+</div><!-- end: col-md-9 -->
+
+<footer class="fixed-bottom text-center bg-light">
+
+	<p onclick="parentNode.remove()"><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons licens" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>Indholdet på Vidas.dk er licenseret under <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> og er skrevet af Thomas Jensen. (<a href="../hvem_er_jeg.html" target="_blank">Læs mere</a>)</p>
+
+</footer>
+	
+	
+</div><!-- end: row -->
+
+</div> <!-- end: container-fluid -->
+
+
+<!-- SCRIPT SECTION -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/js/bootstrap.min.js"></script>
+
+
+
+<!-- HIGHLIGHT -->
+	<script src="../js/highlight.pack.js" type="text/javascript"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+
+<!-- MATHJAX -->
+<script type="text/javascript" 
+	src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  displayAlign: "left",
+  displayIndent: "0em"
+});
+</script>
+
+
+<!-- TOCIFY -->
+<script>
+	$(function() {var toc = $("#toc").tocify({ selectors: "h2, h3, h4" }).data("toc-tocify"); });
+</script>
+<!-- GOOGLE ANALYTICS -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-89933285-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</body>
+</html>

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <title>Py Betingelser</title>
+  <link rel="icon" href="../images/favicon.png">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono|Ubuntu|Ubuntu+Condensed' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/stylesheets/jquery.tocify.min.css">
+  <link rel="stylesheet" href="../css/style_new.css" />
+<!-- Scripts in bottom to speed up pageload-->
+ 
+
+</head>
+<body>
+	
+	
+<div class="container-fluid">
+
+<div class="row">
+	
+<div class="col-sm-3">
+	
+	<nav>
+		
+		<div id="toc">
+		
+			<div id="toc_headline"></div>
+		
+		</div>
+		
+	</nav>
+
+</div><!-- Start slut 1. kolonne - TOC -->
+	
+<div class="col-sm-9">
+	
+<div class="title">Matematik med Python</div>
+
+<figure id="">
+
+	<img class="" src="images/python-logo-inkscape.svg" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h1>Betingelser</h1>
+
+<h2>Betingelser</h2>
+
+<p>Betingelser anvendes til at kunne køre kode når forskellige betingelser er opfyldt. Der er ingen grænse for hvor mange betingelser man kan sætte op. Herunder vil der blive gennemgået hvordan <em>if/elif/else</em> anvnedes.</p>
+
+<h3>IDE</h3>
+
+<p>Det kan anbefales at du overveje et IDE (<span class="bold">I</span>ntegrated <span class="bold">D</span>evelopment <span class="bold">E</span>nviroment). Du kan finde henvisninger til nogle her: <a href="python_matematik_ide.html" target="_blank">python_matematik_ide.html</a></p>
+
+
+
+
+<h3>if</h3>
+
+<p>Betingelser bruges når man vil have koden til at udføre noget i specielle tilfælde. Det kan f.eks. være at man vil undersøge om et tal er lige. Altså om tallet <span class="math">x%2 = 0</span>.</p>
+
+<pre><code class="python">>>> for i in range(1,11):
+...    if i%2==0:
+...        print("{0} er lige".format(i))
+... 
+2 er lige
+4 er lige
+6 er lige
+8 er lige
+10 er lige</code></pre>
+
+<h3>if/else</h3>
+
+<p>Herunder udvider vi koden, så der udskrives om tallet er lige eller ulige</p>
+
+<pre><code class="python">>>> for i in range(1,11):
+...    if i%2==0:
+...        tal="lige"
+...    else:
+...        tal="ulige"
+...    print("{0} er {1}".format(i,tal))
+... 
+1 er ulige
+2 er lige
+3 er ulige
+4 er lige
+5 er ulige
+6 er lige
+7 er ulige
+8 er lige
+9 er ulige
+10 er lige</code></pre>
+
+<h3>if/elif/else</h3>
+
+<p>I dette eksempel udskriver koden om tallet <em>i</em> er positivt, 0 eller negativt</p>
+
+<pre><code class="python">>>>for i in range(-5,6):
+...    if i==0:
+...        print("{0} er hverken negativt eller positivt".format(i))
+...    elif i&lt;0:
+...        print("{0} er negativt".format(i))
+...    else:
+...        print("{0} er positivt".format(i))
+...
+-5 er negativt
+-4 er negativt
+-3 er negativt
+-2 er negativt
+-1 er negativt
+0 er hverken negativt eller positivt
+ 1 er positivt
+ 2 er positivt
+ 3 er positivt
+ 4 er positivt
+ 5 er positivt</code></pre>
+
+
+
+
+<h2>Control statements</h2>
+
+<p>Derudover gælder der også nogle <em>control statements</em> (kontroludsagn), som kan stoppe og ændre udførslen af løkker.</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th style="width:140px">Kontroludsagn</th>
+			<th>Beskrivelse</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><code>break</code></td>
+			<td>Bryder den ingangværende løkke</td>
+		</tr>
+		<tr>
+			<td><code>continue</code></td>
+			<td>Bryder behandlingen af koden, hopper videre til næste værdi og kører løkken derfra</td>
+		</tr>
+		<tr>
+			<td><code>pass</code></td>
+			<td><code>pass</code> er hvad man kalder en <em>null operation</em>. Med den kommando kan man indsætte ekstra kode for enkelttilfælde uden at resten af koden ændres</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>I det ovenstående eksempel kørte koden indtil den ramte en værdi. Men vi kan også køre koden indtil den rammer en sand eller falsk tilstand. Hvis vi f.eks. vil have en kode kører indtil noget er opfyldt</p>
+
+<p>I eksemplet herunder er der en kode der finder de lige tal i en talmængde (her op til 11). Læg mærke til at jeg anvender en <em>for</em>-løkke til at gennemløbe tallene og indlejrer <em>while</em>-løkken deri. Koden er forklaret med rødt:</p>
+
+<pre><code class="python">>>> for i in range(1,11): <span class="red">--&gt; sørger for at tallene fra 1-10 bliver anvendt</span>
+...    while i%2==0: <span class="red">--&gt; Så længe 2 går op (rest=0)</span>
+...        print(i) <span class="red">--&gt; Udskriv i</span>
+...        break <span class="red">--&gt; Bryder while-løkken og så range-løkken kan tælle videre</span>
+... 
+2
+4
+6
+8
+10</code></pre>
+
+<p>Grunden til at whileløkken skal brydes er, at i aldrig når at vokse. Den vil blive ved med at køre indtil koden afbrydes af brugeren med tasterne <span class="knap">Ctrl</span>+<span class="knap">c</span>. Prøv selv</p>
+
+<pre><code class="python">>>> for i in range(1,11):
+...    while i%2==0:
+...        print(i)
+... 
+2
+2
+.
+.
+2
+2
+2
+<span class="red">^CTraceback (most recent call last):
+  File "&lt;stdin>", line 3, in &lt;module>
+KeyboardInterrupt</span>
+2</code></pre>
+
+
+
+<h3>Opgave1</h3>
+
+<span class="afsnit">Opgave 1</span>
+
+<p>Lav funktionen <code>lilletabel()</code> der udskriver de 10 første tal i den tabel der angives i parantesen.</p>
+
+<pre><code class="python">>>> lilletabel(5)
+5 - 10 - 15 - 20 - 25 - 30 - 35 - 40 - 45 - 50 - 
+>>> lilletabel(7)
+7 - 14 - 21 - 28 - 35 - 42 - 49 - 56 - 63 - 70 -</code></pre>
+
+<span class="afsnit">Opgave 2 - BUM</span>
+
+<p>Lav spillet bum, hvor man computeren skal sige "bum" når den rammer et tal i 3 tabellen. Lad det køre fra 1-30.</p>
+
+
+	
+</div><!-- end: col-md-9 -->
+
+<footer class="fixed-bottom text-center bg-light">
+
+	<p onclick="parentNode.remove()"><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons licens" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>Indholdet på Vidas.dk er licenseret under <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> og er skrevet af Thomas Jensen. (<a href="../hvem_er_jeg.html" target="_blank">Læs mere</a>)</p>
+
+</footer>
+	
+	
+</div><!-- end: row -->
+
+</div> <!-- end: container-fluid -->
+
+
+<!-- SCRIPT SECTION -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/js/bootstrap.min.js"></script>
+
+
+
+<!-- HIGHLIGHT -->
+	<script src="../js/highlight.pack.js" type="text/javascript"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+
+<!-- MATHJAX -->
+<script type="text/javascript" 
+	src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  displayAlign: "left",
+  displayIndent: "0em"
+});
+</script>
+
+
+<!-- TOCIFY -->
+<script>
+	$(function() {var toc = $("#toc").tocify({ selectors: "h2, h3, h4" }).data("toc-tocify"); });
+</script>
+<!-- GOOGLE ANALYTICS -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-89933285-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</body>
+</html>

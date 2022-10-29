@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <title>Matematik med Python</title>
+  <link rel="icon" href="../images/favicon.png">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono|Ubuntu|Ubuntu+Condensed' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/stylesheets/jquery.tocify.min.css">
+  <link rel="stylesheet" href="../css/style_new.css" />
+<!-- Scripts in bottom to speed up pageload-->
+ 
+
+</head>
+<body>
+	
+	
+<div class="container-fluid">
+
+<div class="row">
+	
+<div class="col-sm-3">
+	
+	<nav>
+		
+		<div id="toc">
+		
+			<div id="toc_headline"></div>
+		
+		</div>
+		
+	</nav>
+
+</div><!-- Start slut 1. kolonne - TOC -->
+	
+<div class="col-sm-9">
+	
+<figure id="">
+
+	<img class="" src="images/python-logo-inkscape.svg" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h1>Matematik med Python</h1>
+
+<p>Dette afsnit vil give dig en kort introduktion til at bruge Python til matematik.</p>
+
+<p>Jeg tager udgangspunkt i programmet <em>Thonny</em> til at lave Pythonprogrammer. Har du det ikke installeret så følg vejledningen i nedestående link.</p>
+
+<p><a href="Installer_thonny.html" target="_blank">Installer Thonny</a></p>
+
+<p>I dette materiale vil vi bruge både kode- og Shell-vinduet:</p>
+
+<figure id="">
+
+	<img class="p90" src="images/thonny_install_002.png" alt="" title="">
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Eksemplerne i teksten </p>
+
+<h2>Grundbegreber</h2>
+
+<p>Der er 3 grundbegreber, som du skal have styr på for at anvende Python:</p>
+
+<dl class="">
+	<dt>Værdier</dt>
+	<dd>Tal som bruges til at lave beregninger med</dd>
+	<dt>Tekstrenge</dt>
+	<dd>Tegn der vises på skærmen, men som ikke kan regnes med. Det kan være både bogstaver og tal</dd>
+	<dt>Variabler</dt>
+	<dd>En tekststreng der fungerer som en holder for en værdi eller tekststreng</dd>
+</dl>
+
+<h2>Værdier (tal)</h2>
+
+<p>Python arbejder grundlæggende med 3 taltyper: <em>int</em>, <em>float</em> og <em>Fraction</em></p>
+
+<dl class="">
+	<dt><em>int</em> (heltal)</dt>
+	<dd><em>int</em> er alle hele tal. <br><br>F.eks: -34, -2, 7, 87 (talmængden &#8484;)</dd>
+	<dt><em>float</em> (decimaltal)</dt>
+	<dd><em>float</em> er alle decimaltal <br><br>F.eks: -17.6, 0.666, 3.14 (talmængden &#8477;)<br><br>
+	Læg mærke til at man bruger <em>. (punktum)</em> til at adskille heltals- og decimaldelen af tallet</dd>
+	<dt><em>Fraction</em> (brøker)</dt>
+	<dd><em>Fraction</em> er værdier som angives som brøker <br><br>F.eks: <span class="math">\( - \frac {2}{5}, \frac {1} {3} og \frac {3}{4}\)</span> (talmængden &#8474;)</dd>
+</dl>
+
+<p><strong>Vær opmærksom på</strong></p>
+
+<ul class="disc">
+	<li>Hvis man laver en division af to heltal, så vil Python automatisk lave resultatet til <em>float (decimaltal)</em>.</li>
+	<li>Man skal anvende <em>. (punktum)</em>, som seperator mellem hel- og decimaltallet</li>
+</ul>
+
+<h2>Tekststrenge</h2>
+
+<p>I tekststrenge vil alt blive tolket som tegn. Det betyder f.eks. at hvis man skriver: <em>"Jeg er født i 1970"</em>, så bliver <em>1970</em> tolket som tegn, og ikke en værdi man kan bruge til beregninger.</p>
+
+<p>Det er noget man skal være opmærksom på især når man får sit program til at spørge om noget. Som udgangspunkt vil Python behandle alle inputs som tekststrenge.</p>
+
+<p>Spørger man f.eks: "Hvornår er du født: " og brugeren svarer <em>2006</em>, så vil svaret blive tolket som en tekststreng. Du vil senere lære hvordan du konverterer (ændrer) tekstrenge der indeholder tal til at blive værdier, altså en <em>int</em>, <em>float</em> eller <em>Fraction</em>.</p>
+
+<h2>Input af tekstrenge og værdier</h2>
+
+<p>Python kan kende forskel på værdier og tekstrenge ved hjælp af den måde du taster dem ind.</p>
+
+<p>Værdier indtastes direkte f.eks:</p>
+
+<pre><code class="python">>>> 4
+4
+>>> 37
+37</code></pre>
+
+<p>Tekststrenge indtastes med enten <em>anførselstegn (")</em> eller <em>apostrof (')</em> omkring sig. f.eks:</p>
+
+<pre><code class="python">>>> "abc"
+'abc'
+>>> 'def'
+'def'</code></pre>
+
+<p>Det er frit hvilken af de to du anvender. Fordelen ved at have to forskellige er, at vi kan bruge den anden, hvis selve tekstrengen indeholder <em>"</em> eller <em>'</em> f.eks:</p>
+
+<pre><code class="python">>>> 'Det er en "fantastisk" nyhed'
+'Det er en "fantastisk" nyhed'
+>>> "Isn't she lovely"
+"Isn't she lovely"</code></pre>
+
+
+
+
+<h2>Variabler</h2>
+
+<p>En variable er en betegnelse man sætter lig med en værdi eller en tekststreng. I eksemplet herunder sætter jeg <em>a=4</em>. Når jeg herefter indtaster a vil Python svare med 4 </p>
+
+<pre><code class="python">>>> a=4
+>>> a
+4</code></pre>
+
+<p>Hvis jeg vil ændre variablen gør jeg på det samme måde. Her ændrer jeg a til tekststrengen "Python er let at lære"</p>
+
+<pre><code class="python">>>> a="Python er let at lære"
+>>> a
+"Python er let at lære"</code></pre>
+
+<div class="alert">
+	
+	<p>Der gælder nogle regler for variabler:</p>
+	
+	<ul class="disc">
+		<li>Variabler skal starte enten med et bogstav eller <em>_ (underscore)</em></li>
+		<li>Variabler må ikke starte med et tal eller tegn</li>
+		<li>Variabler er <em>case-sensitive</em>, hvilket f.eks. betyder at variablen <em>a</em> ikke er den samme som <em>A</em></li>
+	</ul>
+
+	<p>Et godt råd er at give dine variabler læsbare og forståelige navne. Skal du f.eks. lave en variabel til et fornavn kan det være:</p>
+	
+	<ul class="disc">
+		<li>fnavn (læsbar forkortelse)</li>
+		<li>for_navn (snake case - underscore til at adskille ord)</li>
+		<li>forNavn (camel casing - Stort bogstab til at adskille ord)</li>
+	</ul>
+
+	<p>Du skal navngive på den måde det giver bedst læsbarhed for dig og dem der skal læse din kode.</p>
+
+	<p>Jeg bruger <em>snake case</em>, fordi jeg selv synes det er nemmest at læse.</p>
+
+
+</div>
+
+<p>Et eksempel kan f.eks. være at vi skal beregne arealet af en rektangel med højden 3 og længden 4. Formlen for rektanglets areal er <span class="math">\( A_{firkant}=højde \cdot længde \)</span>. I Python indtaster vi først højde og længe som variabler:</p>
+
+<pre><code class="python">>>> højde=3
+>>> længde=4</code></pre>
+
+<p>Nu kan vi beregne arealet ved at gange de to variabler sammen. Vi bruger tegnet <em>* (stjerne)</em> til at gange med</p>
+
+<pre><code class="python">>>> højde*længde
+12</code></pre>
+
+<p>Hvis vi ændrer længden til 7 kan vi se det nye areal:</p>
+
+<pre><code class="python">>>> længde=7
+>>> højde+længde
+21</code></pre>
+
+<h2>Brug forrige resultat</h2>
+
+<p>Vi kan bruge forrige resultat ved at skrive <em>_ (underscore)</em>.</p>
+
+<p>Her vil vi beregne arealet af en trekant, som har samme sidelænger som rektanglen ovenfor. Vi ved at trekantens areal er: <span class="math">\( A_{trekant} = \frac {1}{2} \cdot højde \cdot længde \)</span>. Altså nøjagtig halvdelen af forrige resultat. Så vi skriver:</p>
+
+<pre><code class="python">>>> _*0.5
+10.5
+</code></pre>
+
+<p>Arealet er altså 10,5.</p>
+
+<h2>print()</h2>
+
+<p>Når vi bruger <em>Shell</em> i Thonny, så kan vi hele tiden se output fra det vi er igang med at kode. Det er fordi Shell automatisk udskriver resultatet.</p>
+
+<p>Når vi senere skal til at lave længere kode, skal vi sørge for at printe output. Det gør vi med funktionen <code class="">print()</code>, hvor man indsætter det som skal skrives ud i parantesen. I eksemplet herunder laver jeg variablen x som har værdien 10, og udskriver den med <code class="">print()</code>.</p>
+
+<pre><code class="python">>>> x=10
+>>> print(x)
+<span class="thonny_print">10</span></code></pre>
+
+<p>Læg mærke til at output nu er placeret anderledes. Det er den måde som Shell tolker en print-sætning. </p>
+
+<p>Indtaster vi nu en tekststreng f.eks: "Hej med dig", så får vi følgende resultat:</p>
+
+<pre><code class="python">>>> print("Hej med dig")
+<span class="thonny_print">Hej med dig</span></code></pre>
+
+<p>Her er apostrofferne fjernet ... fordi det er print-funktionens output vi ser.</p>
+
+<h2>Variabler i output</h2>
+
+<p>Man kan indsætte variabler i en tekststreng ved hjælp af pladsholdere. Se eksemplet herunder hvor vi laver en variabel for navn og by og indsætter de to variabler i tekststrengen:</p>
+
+<pre><code class="python">>>> navn="Thomas"
+>>> by="Haderslev"
+>>> print(f"Hej. Mit navn er {navn}. Jeg kommer fra {by}")
+<span class="thonny_print">Hej. Mit navn er Thomas. Jeg kommer fra Haderslev</span></code></pre>
+
+<p>Lad os kigge på det der sker inde i <code class="">print()</code>:</p>
+
+<pre><code class="python">print(f"Hej. Mit navn er {navn}. Jeg kommer fra {by}")</code></pre>
+
+<p>Det lille <em>f</em>&nbsp;&nbsp;laver et <em>fancy</em> output. Når vi skriver det, så får vi adgang til nogle funktioner inden i tekststrengen vi skal printe ud. Bl.a. kan vi udskrive variabler, men også lave linieskift og indrykninger (se nedenfor).</p>
+
+<p>Variablerne angives med krøllede paranteser og indsættes der hvor de skal udskrives.</p>
+
+
+<h2>Escaped characters</h2>
+
+<p>Escaped characters er tegn, som man sætter en skråstreg foran så Python tolker dem specielt.</p>
+
+<p>Her er de mest anvendte til at formatere teksten</p>
+
+<dl class="not_strong">
+	<dt><code class="">\t</code></dt>
+	<dd>Indsætter en tabulater (rykker 4 tegn) i den tekst man udskriver</dd>
+	<dt><code class="">\n</code></dt>
+	<dd>Indsætter et linieskifte i teksten</dd>
+</dl>
+
+<p>Her er et eksempel hvor vi skriver:</p>
+
+<ol class="">
+	<li>Hejsa</li>
+	<li>(indsæt 2 linieskift)</li>
+	<li>Python er let at bruge</li>
+	<li>indsæt 2 linieskift og indryk med en tab</li>
+	<li>Hilsen Thomas</li>
+</ol>
+
+<pre><code class="python">>>> print("Hejsa \n\nPython er let at bruge\n\n\tHilsen Thomas ")
+<span class="thonny_print">Hejsa</span> 
+
+<span class="thonny_print">Python er let at bruge</span>
+
+<span class="thonny_print">	   Hilsen Thomas </span>
+>>> </code></pre>
+
+<details>
+
+	<summary>Hvis du skal bruge tegnene <em>\</em>&nbsp;&nbsp;&nbsp;, <em>"</em>&nbsp;&nbsp;&nbsp;eller <em>'</em>&nbsp;&nbsp;&nbsp;i output</summary>
+
+	<p>Skal man indsætte specialtegn, som normalt bliver brugt som en del af koden, kan man også <em>escape</em> dem:</p>
+
+<dl class="not_strong">
+	<dt><code class="">\\</code></dt>
+	<dd>Indsætter en skråstreg i output</dd>
+	<dt><code class="">\'</code></dt>
+	<dd>Indsætter et anførselstegn</dd>
+	<dt><code class="">\"</code></dt>
+	<dd>Indsætter et citationstegn</dd>
+</dl>
+
+<p>Her er nogle eksempler.</p>
+
+<pre><code class="">>>> print("Man kan sagtens sætte \" ind hvis man gør det på den rigtige måde")
+Man kan sagtens sætte " ind hvis man gør det på den rigtige måde
+>>> print('Man kan sagtens sætte \' ind hvis man gør det på den rigtige måde')
+Man kan sagtens sætte ' ind hvis man gør det på den rigtige måde
+>>> print("Der skal være \\ foran \", \' eller \\ hvis det skal virke rigtigt")
+ Der skal være \ foran ", ' eller \ hvis det skal virke rigtigt</code></pre>
+
+</details>
+
+
+
+
+
+	
+</div><!-- end: col-md-9 -->
+
+<footer class="fixed-bottom text-center bg-light">
+
+	<p onclick="parentNode.remove()"><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons licens" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>Indholdet på Vidas.dk er licenseret under <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> og er skrevet af Thomas Jensen. (<a href="../hvem_er_jeg.html" target="_blank">Læs mere</a>)</p>
+
+</footer>
+	
+	
+</div><!-- end: row -->
+
+</div> <!-- end: container-fluid -->
+
+
+<!-- SCRIPT SECTION -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/js/bootstrap.min.js"></script>
+
+
+
+<!-- HIGHLIGHT -->
+	<script src="../js/highlight.pack.js" type="text/javascript"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+
+<!-- MATHJAX -->
+<script type="text/javascript" 
+	src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  displayAlign: "left",
+  displayIndent: "0em"
+});
+</script>
+
+
+<!-- TOCIFY -->
+<script>
+	$(function() {var toc = $("#toc").tocify({ selectors: "h2, h3, h4" }).data("toc-tocify"); });
+</script>
+<!-- GOOGLE ANALYTICS -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-89933285-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</body>
+</html>

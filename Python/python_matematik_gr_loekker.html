@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <title>Py Løkker</title>
+  <link rel="icon" href="../images/favicon.png">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono|Ubuntu|Ubuntu+Condensed' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/stylesheets/jquery.tocify.min.css">
+  <link rel="stylesheet" href="../css/style_new.css" />
+<!-- Scripts in bottom to speed up pageload-->
+ 
+
+</head>
+<body>
+	
+	
+<div class="container-fluid">
+
+<div class="row">
+	
+<div class="col-sm-3">
+	
+	<nav>
+		
+		<div id="toc">
+		
+			<div id="toc_headline"></div>
+		
+		</div>
+		
+	</nav>
+
+</div><!-- Start slut 1. kolonne - TOC -->
+	
+<div class="col-sm-9">
+	
+<div class="title">Matematik med Python</div>
+
+<figure id="">
+
+	<img class="" src="images/python-logo-inkscape.svg" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+
+<h1>Løkker</h1>
+
+<p>Når man programmerer har man ofte brug for at programmet undersøger noget igen og igen. Hertil anvender man løkker. Python anvender to typer løkker: <em>for</em> og <em>while</em></p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Type</th>
+			<th>Anvendes når ...</th>
+			<th>Beskrivelse</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><em>for</em></td>
+			<td>Man kender antal gennemløb</td>
+			<td><em>for</em>-løkken anvendes når man ved hvor mange gange den skal gøre. Det kan f.eks. være at vi gerne vil have at den kører 10 gange, eller lige så mange gange der er tegn i en tekststreng</td>
+		</tr>
+		<tr>
+			<td><em>while</em></td>
+			<td>Man ikke kender antal gennemløb</td>
+			<td><em>while</em>-løkken anvendes når vi ikke ved hvornår løkken skal stoppe. Det kan f.eks. være når resultatet overstiger en værdi, eller inde for en tidsramme.</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Før vi når til løkkerne skal vi lærer om <em>Operatorer</em> og <em>Væktstal</em>.</p>
+
+<h2>Operatorer</h2>
+
+<p>For at sætte betingelserne anvendes der <em>operatorer</em>. Operatorerne er angivet i nedestående skema.</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Operator</th>
+			<th>Beskrivelse</th>
+			<th>Eksempel</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>&gt;</td>
+			<td>større end</td>
+			<td>5 &gt; 8 → falsk</td>
+		</tr>
+		<tr>
+			<td>&lt;</td>
+			<td>mindre end</td>
+			<td>5 &lt; 8 → sand</td>
+		</tr>
+		<tr>
+			<td>&gt;=</td>
+			<td>Større end eller lig med</td>
+			<td>5 &gt;= 8 → falsk</td>
+		</tr>
+		<tr>
+			<td>&lt;=</td>
+			<td>Mindre end eller lig med</td>
+			<td>5 &lt;= 8 → sand</td>
+		</tr>
+		<tr>
+			<td>==</td>
+			<td>Lig med</td>
+			<td>5 == 8 → falsk</td>
+		</tr>
+		<tr>
+			<td>!=</td>
+			<td>Ikke lig med</td>
+			<td>5 != 8 → sand</td>
+		</tr>
+		<tr>
+			<td>x and y</td>
+			<td >Både x og y skal være sand</td>
+			<td >x=6 ; y=3<br /><br />(x &lt; 10 and y &gt; 1) →  sand</td>
+		</tr>
+		<tr>
+			<td>x or y</td>
+			<td>Kun en behøver at være sand</td>
+			<td>x=6 ; y=3<br /><br/>(x == 6 or y == 1) → sand</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>I matematik er vi vant til at kunne beskrive intervaller på ved hjælp af udsagn som dette: <em>3 &le; x &le; 7 </em>, men når man programmerer skal man "skille" udsagnet ad, så det bliver: <em>3&lt;=x and 7&lt;=x</em></p>
+
+<h2>Vækst</h2>
+
+<p>Ofte har man brug for at en variabel vokser eller aftager med en konstant eller en faktor. Eksemplet i tabellen tager udgangspunkt i at <code>a = 8</code>.</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Operator</th>
+			<th>Beskrivelse</th>
+			<th>Eksempel (a=8)</th>
+			<th>Ny værdi</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>*tæller* += *konstant*</td>
+			<td>vokser med</td>
+			<td>a += 2</td>
+			<td>10</td>
+		</tr>
+		<tr>
+			<td>*tæller* -= *konstant*</td>
+			<td>formindskes med</td>
+			<td>a -= 2</td>
+			<td>6</td>
+		</tr>
+		<tr>
+			<td>*tæller* *= *konstant*</td>
+			<td>ganges med</td>
+			<td>a *= 2</td>
+			<td>16</td>
+		</tr>
+		<tr>
+			<td>*tæller* /= *Konstant*</td>
+			<td>divideres med</td>
+			<td>a /= 2</td>
+			<td>4</td>
+		</tr>
+	</tbody>
+</table>
+
+<h2>Indrykninger</h2>
+
+<p>Når man skriver kode i Python som er betinget af noget, så gør man det ved at rykke den betingede under betingelsen. Det gør man enten ved at bruge 4x<kbd>Mellemrum</kbd> eller <kbd>Tab</kbd>. Når Python registrerer at der er skrevet en betingelse så sættes der 3 punktummer (<em>...</em>). Det er efter disse punktummer man rykker den næste kodelinie ind. Læg også mærke til at der er kolon (<em>:</em>) efter hver betingelse. Det er dette tegn der fortæller Python at der kommer kode herunder der er afhængig af betingelsen.</p>
+
+<p>Når man er færdig med at skrive sin kode trykker man <kbd>Enter</kbd> 2 gange og koden udføres. Generelt ser koden ud som herunder:</p>
+
+<pre><code class="python"><span class="bold">*udsagn_1*:</span>
+
+...&nbsp;&nbsp;&nbsp;&nbsp;*kode der skal køres når udsagn_1 er sandt*
+    
+<span class="bold">*udsagn_2*:</span>
+
+...&nbsp;&nbsp;&nbsp;&nbsp;*kode der skal køres når udsagn_2 er sandt*</code></pre>
+
+<p>Man kan også indsætte udsagn i udsagn:</p>
+
+<pre><code class="python"><span class="bold">*udsagn_a*:</span>
+
+...&nbsp;&nbsp;&nbsp;&nbsp;*kode der skal køres*
+    
+...&nbsp;&nbsp;&nbsp;&nbsp;<span class="bold">*udsagn_b*:</span>
+
+...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*kode der skal køres hvis udsagn_b er sandt*</code></pre>
+
+
+<h2>for - løkker</h2>
+
+<p></p>
+
+<p><em>for</em>-løkken køres når man kender antallet af gange en kode skal køre. Funktionen anvendes på følgende måde:</p>
+
+<p><code>for *tæller* in range(*startværdi*, *slutværdi*, spring*):</code></p>
+
+<p>I dette materiale anvender jeg <em>i</em> som tælleren. Man anvender <em>i</em> som standard fordi det er første bogstav i heltalsbegrebet man anvender i programmering: <em>integer</em></p>
+
+
+<p>Herunder er nogle eksempler hvor nogle funktioner køres et bestemt antal gange. Herunder printes de første 5 værdier af <em>i</em>. Læg mærke til at Python tæller fra værdien <em>0</em> og så 5 værdier frem.</p>
+
+<pre><code class="python">>>> for i in range(5):
+...&nbsp;&nbsp;&nbsp;&nbsp;print(i)
+...	
+0
+1
+2
+3
+4</code></pre>
+
+<p>Denne funktion kan f.eks. anvendes til at skrive de første 5 kvadrattal. For at i starter med være en sætter sætter jeg både start- og slutværdi på <em>range</em>. Den går fra 1 til 6 for at jeg får 5 værdier, da den 6. værdi ikke er med.</p>
+
+<pre><code class="python">>>> for i in range(1,6):
+...&nbsp;&nbsp;&nbsp;&nbsp;print(pow(i,2))
+...
+1
+4
+9
+16
+25</code></pre>
+
+<p>Man kan også få den til at springe i værdierne. Herunder udskriver jeg de lige tal i intervallet 1-10. Jeg definerer den første og den sidste værdi og til sidst hvor meget den skal springe pr. gang.</p>
+
+<pre><code class="python">>>> for i in range(2,11,2):
+...&nbsp;&nbsp;&nbsp;&nbsp;print(i)
+...
+2
+4
+6
+8
+10</code></pre>
+
+<p>Når man anvender <em>for</em> løkker skal man definere talområdet meget præcist. Det er både det som er fordelen og udfordringen ved at anvende <em>for</em>-løkker.</p>
+
+<h3>Tæl baglæns</h3>
+
+<p>For at tælle baglæns anvendes <code>reversed()</code></p>
+
+<pre><code class="python">>>> for i in reversed(range(1,6)):
+...&nbsp;&nbsp;&nbsp;&nbsp;print(i)
+...
+5 
+4
+3
+2
+1</code></pre>
+
+<h2>while-løkker</h2>
+
+<p>Når man anvender <em>while</em>-løkker, så skal man selv sætte udgangspunktet for betingelsen og selve betingelsen op.</p>
+
+<p><em>while</em>-løkken køres når man ikke kender antallet af gange en kode skal køre. Funktionen anvendes på følgende måde:</p>
+
+<p><code>while *betingelse*:</code></p>
+
+<p>Koden er forklaret med rødt.</p>
+
+<pre><code class="python">>>> i=0 <span class="red">--&gt; variablen i sættes til 0</span>
+>>> while i&lt;5: <span class="red">--&gt; Så længe i er mindre end 5</span>
+...&nbsp;&nbsp;&nbsp;&nbsp;print(i) <span class="red">--&gt; udskriv i</span>
+...&nbsp;&nbsp;&nbsp;&nbsp;i +=1 <span class="red">--&gt; læg 1 til i</span>
+... 
+0
+1
+2
+3
+4 </code></pre>
+
+<p>For hver gang løkken kører bliver der lagt en til <em>i</em>. Når <em>i</em> rammer værdien <em>5</em> køres <em>while</em>-løkken ikke mere.</p>
+
+<h2>Løkker i løkker</h2>
+
+<p>Her vi vi anvende en <em>while</em>-løkke i et <em>for</em>-løkke til at udskrive tallene i 4 tabellen:</p>
+
+<pre><code class="python">>>> for i in range(1,41):
+...&nbsp;&nbsp;&nbsp;&nbsp;while i%4==0:
+...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print(i)
+...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break
+...
+4
+8
+12
+16
+20
+24
+28
+32
+36
+40</code></pre>
+
+
+<h2>Output på en række</h2>
+
+<p>Nogle gange kan det være uhensigtsmæssigt at resultaterne udskrives på en lang række. Det gøres ved at tilføje <code>end="*separator*"</code> i print parantesen. Herudskrives tallene fra 1 - 10 vandret.</p>
+
+<pre><code class="python">>>> for i in range(1,11):
+...&nbsp;&nbsp;&nbsp;&nbsp;print(i, end=" - ")
+... 
+1 - 2 - 3 - 4 - 5 - 6 - 7 - 8 - 9 - 10 -</code></pre>
+
+<h2>Opsummering af resultater</h2>
+
+<p>Ofte har man brug for at opsummere resultatet af ens udregning. Herunder vil vi lave et eksempel hvor vi opsummerer tallene fra 1-5:</p>
+
+<pre><code class="python">>>> a = 0 
+>>> for i in range(1,6):
+...&nbsp;&nbsp;&nbsp;&nbsp;a+= i
+...&nbsp;&nbsp;&nbsp;&nbsp;print(a)
+... 
+1
+3
+6
+10
+15</code></pre>
+
+<p>Først laver man en variabel, som man sætter til <em>0</em>. I løkken kører vi den ønskede matematiske beregning, og lægger resultatet til <em>a</em>. Herefter udskrives <em>a</em>. Ulempen ved at anvende denne kode i <em>Idle</em> er, at Python udskriver resultatet efter hvert gennemløb af <em>i</em>. For at undgå dette må vi ændre i koden, og selv hente resultatet:</p>
+
+<pre><code class="python">>>> a = 0
+>>> for i in range(1,6):
+...&nbsp;&nbsp;&nbsp;&nbsp;a+=i
+... 
+>>> a
+15</code></pre>
+
+<p>Forklaringen er, at <em>Idle</em> kun kan tage en kommando ad gangen. Så vi bliver nød til først at opmsummere vores tal, og til sidst bede Python om at udskrive værdien.</p>
+
+
+<h2>Opgaver</h2>
+
+<h3>Trekanttal</h3>
+
+<p>Udskriv de første 20 trekantal givet ved formlen:</p>
+
+<div class="latex">$$ T_n = 1+2+3+...+n=\frac{n \cdot (n-1)}{2} $$</div>
+
+<span class="afsnit">Output</span>
+
+<pre><code class="python">1 - 3 - 6 - 10 - 15 - 21 - 28 - 36 - 45 - 55 - 66 - 78 - 91 - 105 - 120 - 136 - 153 - 171 - 190 - 210 - 
+</code></pre>
+
+	
+</div><!-- end: col-md-9 -->
+
+<footer class="fixed-bottom text-center bg-light">
+
+	<p onclick="parentNode.remove()"><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons licens" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>Indholdet på Vidas.dk er licenseret under <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> og er skrevet af Thomas Jensen. (<a href="../hvem_er_jeg.html" target="_blank">Læs mere</a>)</p>
+
+</footer>
+	
+	
+</div><!-- end: row -->
+
+</div> <!-- end: container-fluid -->
+
+
+<!-- SCRIPT SECTION -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/js/bootstrap.min.js"></script>
+
+
+
+<!-- HIGHLIGHT -->
+	<script src="../js/highlight.pack.js" type="text/javascript"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+
+<!-- MATHJAX -->
+<script type="text/javascript" 
+	src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  displayAlign: "left",
+  displayIndent: "0em"
+});
+</script>
+
+
+<!-- TOCIFY -->
+<script>
+	$(function() {var toc = $("#toc").tocify({ selectors: "h2, h3, h4" }).data("toc-tocify"); });
+</script>
+<!-- GOOGLE ANALYTICS -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-89933285-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</body>
+</html>
