@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <title>Python: Strenge og input</title>
+  <link rel="icon" href="../images/favicon.png">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono|Ubuntu|Ubuntu+Condensed' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/stylesheets/jquery.tocify.min.css">
+  <link rel="stylesheet" href="../css/style_new.css" />
+<!-- Scripts in bottom to speed up pageload-->
+ 
+
+</head>
+<body>
+	
+	
+<div class="container-fluid">
+
+<div class="row">
+	
+<div class="col-sm-3">
+	
+	<nav>
+		
+		<div id="toc">
+		
+			<div id="toc_headline"></div>
+		
+		</div>
+		
+	</nav>
+
+</div><!-- Start slut 1. kolonne - TOC -->
+	
+<div class="col-sm-9">
+	
+<figure id="">
+
+	<img class="" src="images/python-logo-inkscape.svg" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>	
+
+<h1>Tekst og strenge</h1>
+
+<p>Denne guide handler om det mest basale i alle programmeringssprog, nemlig hvad data er og hvordan man behandler dem.</p>
+
+		
+<h2>Et simpelt program</h2>
+
+<p>Lad os lave et simpelt program der udskriver tekstrengen: "Hej". Indtast nedestående og tryk på <kbd>F5</kbd></p>
+
+<pre><code class="python">>>>print ("Hej")
+<span class="thonny_print">Hej</span></code></pre>
+
+
+<p>Programmet er opbygget af funktionen <em>print()</em>, som laver et output af det som står i parentesen. I dette tilfælde af tekststrengen <em>Hej</em>. Som du kan se i programmet omgiver vi tekststrengen <em>Hej</em> med anførselstegn (<em>""</em>). Det er nødvendigt, fordi Python skal vide om vi indsætter en værdi eller en tekststreng. Vi fortæller altså Python om det er en værdi ved enten at sætte udråbstegn omkring eller at udelade dem.</p>
+
+<pre><code class="python">>>>print ("Hej")
+<span class="thonny_print">Hej</span>
+>>>print (4)
+4</code></pre>
+
+<h2>Kommentarer</h2>
+
+<p>Man kan indsætte kommentarer i sit program, som man kan bruge til at beskrive hvad en kode gør eller blot lave et overblik.</p>
+
+<p>Kommentarer laves ved at skrive <em># (hashtag)</em>, og så skrive selve kommentaren bagefter. Se nedestående program</p>
+
+<pre><code class="python"># Mit første program
+
+print("hej") # udskriver hej</code></pre>
+
+<p>Kommentarerne er til den der læser koden, og det er en god ide at lave kommentarer i sin kode, når den bliver mere omfattende.</p>
+
+<p>Brug kommentarer til at skrive ind hvad koden gør, og hvad den skal kunne.</p>
+
+<h3>Indledende kommentar</h3>
+
+<p>Hvis du i starten af din kode vil have en længere kommantar/tekst kan de laves ved at pakke den ind i trippel anførsels- eller citationstegn:</p>
+
+<pre><code class="python">"""
+
+Formål: Test af forskellige funktioner.
+Dette program er lavet af: Thomas Jensen
+Dato: DD.MM.ÅÅÅÅ
+
+"""
+
+print("mit første program")</code></pre>
+
+<div class="alert">
+	
+	<p>Væn dig til at lave kommentarer i din kode.</p>
+	
+	<p>Her i starten kan det virke ligegyldigt fordi koden er rimelig overskuelig, men senere hen (også i dette materiale) vil du have stor hjælp af dine egne kommentarer.</p>
+	
+	<p>Kommentarer hjælper dig også hvis du bliver forstyrret og bliver nød til at lave noget andet i et stykke tid. Når du så vender tilbage til din kode, så kan kommentarerne hjælpe dig ind i de tanker du gjorde dig om opgaven.</p>
+
+</div>
+
+<h2>Undgå fejl</h2>
+
+<p>Når du anvender Pythonshell kan du ikke starte koden, hvis der er fejl i den. Så vil cursoren bare rykke en linie ned når du trykker <kbd>Enter</kbd>.</p>
+
+<p>Hvis det sker skal du tjekke om du har afsluttet dine tegn. Det gælder for: </p>
+
+<ul class="none">
+	<li>Anførselstegn og apostroffer - " ' </li>
+	<li>paranteser og brackets - (), {}. []</li>
+	<li>Indrykninger</li>
+</ul>
+
+
+<h2>Tekststrenge</h2>
+
+<p>Tekststrenge skal skrives imellem 2 anførselstegn eller apostroffer</p>
+
+<pre>
+	<code class="python">>>> print ("med anførselstegn")
+<span class="thonny_print">med anførselstegn</span>
+>>> print ('med apostroffer')
+<span class="thonny_print">med apostroffer</span></code>
+</pre>
+
+<h2>Formatering af tekst</h2>
+
+<p>I python er der 2 muligheder for at formatere teksten:</p>
+
+<ol class="">
+	<li>Trippel anførselstegn (<em>"""</em>) eller trippel apostroffer (<em>'''</em>)</li>
+	<li>Escape sequences</li>
+</ol>
+
+<h3>Trippel anførselstegn/apostroffer</h3>
+
+<p>Bruger du trippel anførselstegn eller apostroffer, vil teksten blive vist som du har tastet den ind med mellemrum og linieskift</p>
+
+<pre><code class="python">print ("""Dette er en sætning
+med linie skift          og stort mellemrum""")
+<span class="thonny_print">Dette er en sætning
+  med linie skift          og stort mellemrum</span>
+</code></pre>
+
+<p>Det kan anbefales hvis du vil lave længere tekststykker eller en speciel udskrift:</p>
+
+<pre><code class="python">>>> print('''
+***********************
+* Eksempel på et pænt *
+* skilt i starten af  *
+* min kode            *
+***********************
+''')
+<span class="thonny_print">
+  ***********************
+  * Eksempel på et pænt *
+  * skilt i starten af  *
+  * min kode            *
+  ***********************</span>
+</code></pre>
+
+<h3>Escape sequences</h3>
+
+<p>Du kan også gøre det ved at indsætte linieskift og tabulatorer i teksten:</p>
+
+<dl class="">
+	<dt><code class="">\n</code></dt>
+	<dd>Indsætter et linieskift </dd>
+	<dt><code class="">\t</code></dt>
+	<dd>Indsætter en tabulator. <br><br>
+	Der er 8 tegn mellem hvert tabulatorspring</dd>
+</dl>
+
+<pre><code class="python">>>> print("Python er let\n\n\tThomas")
+<span class="thonny_print">Python er let
+
+        Thomas</span></code></pre>
+
+<p>Læg mærke til at der ikke er noget mellemrum mellem <code class="">\t</code> og Thomas</p>
+
+<div class="alert">
+	
+	<p>Når du laver kode gælder det om at gøre koden så let læselig som muligt for alle.</p>
+	
+	<p>Metoden med <em>escape characters</em> fungerer bedst til korte sætninger og metoden med trippel citations- og anførselstegn fungerer bedst ved længere tekststykker.</p>
+	
+</div>
+
+<h2>", ' og \ i tekst </h2>
+
+<p>Hvis du skal anvende en af de 3 tegn i din tekst, så skal vi også bruge <em>escape characters</em>. Det skal vi fordi det er tegn der bruges i selve koden. Vi skal altså ændre programmeringstegnet til et teksttegn.</p>
+
+<p>Tegnene <em>" og '</em> skal du kun ændre hvis du bar brugt tegnet til at pakke printsætningen ind. Se følgende 2 eksempler:</p>
+
+<p><strong>Eksempel 1 - ": </strong> sætningen: <em>Det var en "skør" ide, men det virkede som det skulle.</em>:</p>
+
+<pre><code class="python">>>> print("Det var en \"skør\" ide, men det virkede som det skulle.")
+<span class="thonny_print">Det var en "skør" ide, men det virkede som det skulle.</span></code></pre>
+
+<p>Du skal ændre <em>"</em>, fordi print ellers vil tro at din sætning er færdig lige før <em>skør</em>.</p>
+
+<p>Alternativt kan du pakke sætningen ind i anførselstegn:</p>
+
+<pre><code class="python">>>> print('Det var en \"skør\" ide, men det virkede som det skulle.')
+<span class="thonny_print">Det var en "skør" ide, men det virkede som det skulle.</span></code></pre>
+
+<p><strong>Eksempel 2 - ': </strong> sætningen: <em>Python isn't har to learn</em></p>
+
+<pre><code class="python">>>> print('Python isn\'t hard to learn')
+<span class="thonny_print">Python isn't hard to learn</span></code></pre>
+
+<p>Her kan du også ændre indpakningen til citationstegn, hvis du ikke vil <em>escape</em> anførselstegnet</p>
+
+<pre><code class="python">>>> print("Python isn't hard to learn")
+<span class="thonny_print">Python isn't hard to learn</span></code></pre>
+
+<div class="alert">
+	
+	<p>Læg mærke til det script (<a href="https://highlightjs.org/" target="_blank">https://highlightjs.org/</a>) jeg bruger til vise kode med, ikke kan skelne mellem escaped characters og kode tegn. </p>
+	
+	<p>Selvom scriptet tolker output forkert, så er det korrekt kode :)</p>
+
+</div>
+
+<p>Hvis du skal bruge <em>\ - backslash</em> skal den også <em>escapes.</em>:</p>
+
+<p><strong>Eksempel 3 - \ : </strong>Sætning: <em>Husk at bruge \ når du skal escape kodetegn i tekst.</em></p>
+
+<pre><code class="python">>>> print("Husk at bruge \\ når du skal escape kodetegn i tekst.")
+Husk at bruge \ når du skal escape kodetegn i tekst.</code></pre>
+
+<h2>Unicode tegn</h2>
+
+<p>Hvis du har brug for specialtegn kan du anvende <em>Unicode</em>. Du kan finde en oversigt her: </p>
+
+<p>Overblik over unicode tegn: <a href="https://unicode-table.com/en/" target="_blank">https://unicode-table.com/en/</a></p>
+
+<p>Python kan vise de tegn der hedder noget med <em>u+****</em>.</p>
+
+<p><strong>Eksempel 1 - &#8594; (u+2192)</strong></p>
+
+<pre><code class="python">>>> print("\u2192")
+→</code></pre>
+
+<p>Hvis tegnet hedder noget med <em>u+1****</em>, så skal der indsættes 3 nuller foran 1-tallet f.eks: U+1F608 bliver til <em>\U0001f608</em></p>
+
+<p><strong>Eksempel 2 - &#128520;</strong></p>
+
+<pre><code class="python">>>> print("\U0001F608")
+😈</code></pre>
+
+<p>Det er ikke alle emoticons der starter med U+1 der virker!</p>
+
+
+<!--
+<h4>Carriage return</h4>
+
+<p>Hvis man vil skrive oven i det der lige er printet skal man anvende <code class="">\r</code>. Det kan f.eks. være hvis man vil lave et ur der tæller ned, og man ikke ønsker det gamle tal skal blive stående.</p>
+
+<table class="">
+	<tbody>
+		<tr>
+			<td>\r</td>
+			<td>Carriage return</td>
+		</tr>
+	</tbody>
+</table>
+-->
+
+
+</div><!-- end: col-md-9 -->
+
+<footer class="fixed-bottom text-center bg-light">
+
+	<p onclick="parentNode.remove()"><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons licens" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>Indholdet på Vidas.dk er licenseret under <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> og er skrevet af Thomas Jensen. (<a href="../hvem_er_jeg.html" target="_blank">Læs mere</a>)</p>
+
+</footer>
+	
+	
+</div><!-- end: row -->
+
+</div> <!-- end: container-fluid -->
+
+
+<!-- SCRIPT SECTION -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/js/bootstrap.min.js"></script>
+
+
+
+<!-- HIGHLIGHT -->
+	<script src="../js/highlight.pack.js" type="text/javascript"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+
+<!-- MATHJAX -->
+<script type="text/javascript" 
+	src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  displayAlign: "left",
+  displayIndent: "0em"
+});
+</script>
+
+
+<!-- TOCIFY -->
+<script>
+	$(function() {var toc = $("#toc").tocify({ selectors: "h2, h3, h4" }).data("toc-tocify"); });
+</script>
+<!-- GOOGLE ANALYTICS -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-89933285-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+</body>
+</html>

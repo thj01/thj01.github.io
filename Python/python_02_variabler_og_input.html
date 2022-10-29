@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <title>Python: Strenge og input</title>
+  <link rel="icon" href="../images/favicon.png">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono|Ubuntu|Ubuntu+Condensed' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/stylesheets/jquery.tocify.min.css">
+  <link rel="stylesheet" href="../css/style_new.css" />
+<!-- Scripts in bottom to speed up pageload-->
+ 
+
+</head>
+<body>
+	
+	
+<div class="container-fluid">
+
+<div class="row">
+	
+<div class="col-sm-3">
+	
+	<nav>
+		
+		<div id="toc">
+		
+			<div id="toc_headline"></div>
+		
+		</div>
+		
+	</nav>
+
+</div><!-- Start slut 1. kolonne - TOC -->
+	
+<div class="col-sm-9">
+	
+<figure id="">
+
+	<img class="" src="images/python-logo-inkscape.svg" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>	
+
+
+
+
+<h2>Variabler</h2>
+
+<p>Variabler er små tekstrenge vi kan sætte til at have enten en værdi, en char eller en tekststreng. Fordelen ved at anvende variabler er, at vi hurtigt kan ændre koden til at køre efter nye betingelser, f.eks. antal gang, sprog osv.</p>
+
+<p>Før vi gennemgår hvad variabler er skal du lige læse nedenstående eksempel:</p>
+
+<pre><code class="python">>>> var1 = 1
+>>> var2 = 2
+>>> var1 + var2
+3</code></pre>
+
+<p>Det som sker her er, at vi sætter variablen <em>var1</em> til at have værdien 1 og em var2 til værdien 2. Det kan vi se når vi beder Python om at udskrive summen af variablerne ud - resultatet er 3. Man kan sige at en variable er en stedfortræder for en værdi eller en tekststreng.</p>
+
+<p>Når en variabel er en værdi, skal tallet skrives direkte ind.</p>
+
+<div class="alert">
+	
+	<p>Du behøver ikke at lave en <code class="">print()</code> i den sidste kodelinie. Shell udskriver automatisk <em>output</em> (resulater) af kode.	</p>
+
+</div>
+
+
+
+<h3>Tekst i variabler</h3>
+
+<p>Tekst i variabler skal pakkes ind i enten citationstegn eller anførselstegn. Se herunder:</p>
+
+<pre><code class="python">>>> var1 = "hej"
+>>> var2 = 'verden'</code></pre>
+
+<p>Hvis du forsøger at lægge disse to varibaler sammen, så får du følgende resultat:</p>
+
+<pre><code class="python">>>> var1 + var2
+hejverden</code></pre>
+
+<p>Python "klistrer" simpelthen <em>var2</em> bag på <em>var1</em></p>
+
+<p>For at få et mellemrum mellem variablerne skal vi klistre et på - altså lægge et mellemrum til.</p>
+
+<pre><code class="python">>>> var1 + " " + var2
+'hej verden'</code></pre>
+
+<p>Vi kan også tilsætte ord med samme metode:</p>
+
+
+<pre><code class="python">>>> var1 + " store " + var2
+'hej store verden'</code></pre>
+
+
+<h2>Navngivning af variabler</h2>
+
+<p>Nar man navngiver variabler gælder der følgende regler</p>
+
+<dl class="">
+	<dt>Skal starte med et bogstav eller _ (underscore)</dt>
+	<dd>Eksempler: antal, Position2, _bil</dd>
+	<dt>Må kun indeholde almindelige tegn (<em>A-å, 0-9</em>) og tal, samt underscore (<em>_</em>)</dt>
+	<dd>Du må altså ikke anvende paranteser, delestreger eller andre tegn</dd>
+	<dt>Der er forskel på store og små bogstaver (case sensitive)</dt>
+	<dd><em>var, Var, VAR</em> er alle forskellige variabler</dd>
+	<dt>Variablerne på ikke hedde det samme som kommandoer</dt>
+	<dd></dd>
+</dl>
+
+
+<p>Brug beskrivende navne til dine variabler, så bliver koden lettere at læse. F.eks: <span class="inl_cmd">fnavn</span> til fornavn og <span class="inl_cmd">antal_gæt</span> til antallet af gæt</p>
+
+
+<p>Skal man anvende mere beskrivende variabel navne med flere ord, kan man bruger enten <em>snake-casing</em>, hvor man sætter underscore (<em>_</em>) mellem ordene eller <em>camelCasing</em>, hvor man laver stort forbogstav i det nye ord. Se nedestående eksempel:</p>
+
+<dl class="">
+	<dt>Snake-casing</dt>
+	<dd>Eksempler:
+		<ul class="disc">
+			<li>antal_bogstaver</li>
+			<li>samlet_løn</li>
+			<li>antal_afdrag</li>
+		</ul>
+	</dd>
+	<dt>camel-Casing</dt>
+	<dd>Eksempler:
+		<ul class="disc">
+			<li>antalBogstaver</li>
+			<li>samletLøn</li>
+			<li>antalAfdrag</li>
+		</ul>
+	</dd>
+</dl>
+
+<p>Brug den metode du synes giver bedst overblik og læsbarhed. Jeg foretrækker snake-casing, fordi jeg synes det er lettest at læse.</p>
+
+
+<h2>Ændring af variabler</h2>
+
+<p>Hvis man vil ændre værdien af en variabel gør sætter skriver man den bare en gang til med den nye værdi:</p>
+
+<pre><code class="python">>>> var1 = 1 # sætter var1 til værdien 1
+>>> var1 # udskriver var1
+1
+>>> var1 = 2 # ændrer var1 til værdien 2
+>>> var1 # udskriver var1
+2</code></pre>
+
+
+
+<h2>En til eller fra</h2>
+
+<p>Ofte har man brug for at lade en variabel vokse eller falde med en bestemt enhed. Det kan f.eks. være hvis man vil lade en variabel vokse med 1.</p>
+
+<p>Se eksemplet herunder</p>
+
+<pre><code class="python">>>> a = 1
+>>> a += 1
+>>> a
+2</code></pre>
+
+<p>Denne metode virker også med de andre regningsarter, og med andre væksttal:</p>
+
+<pre><code class="python">>>> a = 6
+>>> a -= 2
+>>> a
+4
+>>> a *= 1.5
+>>> a
+6.0
+>>> a /= 3
+>>> a
+2.0</code></pre>
+
+<p>Man kan også bruge variabler:</p>
+
+<pre><code class="python">>>> a = 1
+>>> alder = 15
+>>> a += alder
+>>> a
+16 </code></pre>
+
+
+<!--
+
+<h2>Fejlkoder</h2>
+
+<p>Man skal være opmærksom på at python forstår + som et logisk plus som lægger to elementer sammen. Det betyder at man ikke skal blande værdier og tekststrenge sammen.</p>
+
+<pre>
+	<code class="python">>>> var1 = "Hej"
+>>> var2 = 2
+>>> var1 + var2</code>
+</pre>
+
+<p>Her vil Python brokke sig på følgende måde</p>
+
+<pre>
+<span class="red"><b>Traceback (most recent call last):
+  File "&lt;pyshell#21>", line 1, in &lt;module>
+    print (var1 + var2)
+TypeError: must be str, not int</b></span>
+</pre>
+
+<p>Den sidste linie fortæller hvad fejlen er:</p>
+
+<p><span class="inl_cmd"><span class="red">TypeError: must be str, not int</span></span></p>
+
+<p>Oversat: Typefejl: Skal være en streng, ikke et tal (integer)</p>
+
+<p>Python fortæller os at det er en type fejl - man kan ikke sige 2 + hej - det giver ingen mening. Grunden til at Python gør det til en <span class="inl_cmd">streng</span> fejl er, at den første variabel er en streng. Havde det været modsat, så ville fejlmeddelelsen have været </p>
+
+<p><span class="inl_cmd"><span class="red">TypeError: unsupported operand type(s) for +: 'int' and 'str'
+</span></span></p>
+
+<h3>Gentagelser</h3>
+
+<p>Som vi så ovenfor kan man ikke lægge tekst og tal sammen. Men man kan godt gentage tekst ved hjælp af gange (<span class="inl_cmd"> * </span>).</p>
+
+<p>Forestil dig at du gerne vil have 35 stjerner efter hinanden. Det kan vi gøre ved at sige til Python at den skal printe tegnet 35 gange</p>
+
+<pre>
+	<code class="python">>>> 35 * "*"
+'***********************************'</code>
+</pre>
+
+<p>Skal man printe den samme ting igen og igen er dette metoden at gøre det på. Det fylder mindre, og man skal ikke tælle antal tegn for at forstå koden.</p>
+-->
+
+
+<h2>Input</h2>
+
+<p>For at få inout fra brugeren skal vi bruge funktionen <code class="">input()</code>.</p>
+
+<p><code class="">input()</code> viser teksten i parentesen og venter til brugeren svarer. For at kunne anvende input skal det gemmes i en variabel.</p>
+
+<pre><code class="python">>>> navn = input("Hvor hedder du: ")
+Hvor hedder du:</code></pre>
+
+<p>Her svarer du så og trykker <kbd>Enter</kbd>. Når du har svaret kan du se hvad variablen er:</p>
+
+<pre><code class="python">>>> navn = input("Hvor hedder du: ")
+Hvor hedder du: <span class="blue">Thomas</span>
+>>> navn
+'Thomas'</code></pre>
+
+<div class="alert">
+	
+	<p>Variabler der laves ved hjælp af <code class="">input()</code> bliver altid gemt som en tekststreng.</p>
+
+</div>
+
+<h2>Input af tal</h2>
+
+<p>Da <code class="">input()</code> danner tekststrenge skal du gøre lidt ekstra når det handler om tal der skal bruges til at regne videre med - altså som værdier.</p>
+
+<p>Hvis det det skal svares med er integers (heltal), så skal funktionen pakkes ind i <code class="">int()</code> og hvis det er decimaltal skal den pakkes ind i <code class="">float()</code>.</p>
+
+<p>Herunder laver vi et program der finder prisen på indkøbte sodavand:</p>
+
+<pre><code class="python">>>> antal = int(input("Antal sodavand: "))
+<span class="thonny_print">Antal sodavand: <span class="blue">30</span></span>
+>>> pris = float(input("pris pr stk: "))
+<span class="thonny_print">pris pr stk: <span class="blue">5.95</span></span>
+>>> antal * pris
+178.5</code></pre>
+
+<p>Antal er blevet lavet til <em>int</em> og prisen til <em>float</em>.</p>
+
+<p>Hvis vi ikke kan huske de enkelte variablers typer, kan vi se det med kommandoen <code class="">type()</code>:</p>
+
+<pre><code class="python">>>> type(navn)
+&lt;class 'str'>
+>>> type(antal)
+&lt;class 'int'>
+>>> type(pris)
+&lt;class 'float'></code></pre>
+
+
+
+
+<div class="alert">
+	
+	<p>Når du beder brugeren om input skal du overveje hvad resultatet skal være og lave koden derefter.</p>
+	
+	<p>Ikke alt som er tal skal ændres til <em>int</em> eller <em>float</em>. Det kan f.eks. gælde telefon, hus og postnumre.</p>
+	
+	<p>Tommelfingerreglen for at det skal gemmes som tal er:</p>
+	
+	<dl class="">
+		<dt>Hvis det bruges til at lave beregninger</dt>
+		<dd>Det kan f.eks. være antal og priser</dd>
+		<dt>Hvis det skal kunne ændres</dt>
+		<dd>Det kan f.eks. være ved at gøre folk et år ældre eller at priser skal stige med en procentsats</dd>
+	</dl>
+</div>
+
+
+<details>
+
+	<summary>Mere om konvertering af datatyper</summary>
+
+	<p>Vi kan konvertere mellem datatyperne ved at bruge følgende funktioner:</p>
+	
+	<dl class="not_strong">
+		<dt><code class="">str()</code></dt>
+		<dd>Konvertere til strenge (tekst)</dd>
+		<dt><code class="">int()</code></dt>
+		<dd>Konverterer til integeres (heltal)</dd>
+		<dt><code class="">float()</code></dt>
+		<dd>Konverterer til decimaltal</dd>
+	</dl>
+	
+	<p>I alle tilfælde indsættes det som skal konverteres i parentesen</p>
+	
+	<p><strong>Eksempler</strong></p>
+	
+	<p>Konverter fra tekst til heltal</p>
+	
+	<pre><code class="python">>>> int("17")
+	17</code></pre>
+	
+	<p>Konverter fra tekst til float</p>
+	
+	<pre><code class="python">>>> float("17.4")
+	17.4</code></pre>
+	
+	<p>Konverter heltal til tekst</p>
+	
+	<pre><code class="python">>>> str(17)
+	'17'</code></pre>
+	
+	
+
+</details>
+
+<h2>Variabler i tekststrenge</h2>
+
+<p>Du kan få brug for at kunne bruge variabler i tekst. Det kan f.eks. være hvis du gerne vil byde brugeren personligt velkommen.</p>
+
+<p>Kig på dette eksempel hvor vi indsætter et fornavn i en tekst.</p>
+
+<pre><code class="python">>>> fornavn = "Thomas"
+>>> print(f"Hej {fornavn}")
+<span class="thonny_print">Hej Thomas</span></code></pre>
+
+<p>Læg mærke til det lille <em>f</em> foran første citationstegn og at variablen er indskrevet i en krøllet parentes. <em>f</em> fortæller Python at det er en <em>f-string</em>. Vi kan indsætte alle de variabler vil vil og endda udføre kommandoer i dem.</p>
+
+<p>Se nedestående eksempel</p>
+
+<pre><code class="python">>>> bog = "The Lord of the Rings"
+>>> forfatter = "J. R. R. Tolkien"
+>>> udgivelsesår = 1954
+>>> print(f"{bog} blev skrevet af {forfatter} og udgivet i {udgivelsesår}. Det er {2021-udgivelsesår} siden")
+<span class="thonny_print">The Lord of the Rings blev skrevet af J. R. R. Tolkien og udgivet i 1954. Det er 67 siden</span>
+</code></pre>
+
+<p>Alderen på bogen bliver regnet ud i printsætningen med <code class="">{2021-udgivelsesår}</code>.</p>
+
+<p><em>F-strings</em> kan også arbejde med argumenter. Her er 2 eksempler:</p>
+
+<p><strong>Afrunding</strong></p>
+
+<pre><code class="python">>>> print(f"1/7 = {decimaltal}.\n\nMed 4 decimaler er 1/7 = {decimaltal:.4f}")
+
+1/7 = 0.14285714285714285.
+Med 4 decimaler er 1/7 = 0.1429</code></pre>
+
+<p>I anden udskrift <code class="">{decimaltal:.4f}</code> fortæller vi Python, at den skal vise tallet med 4 decimaler</p>
+
+<p><strong>Variabel bredde</strong></p>
+
+<p>Senere hen skal vi lære at arbejde med lister, og i den sammenhæng kan vi sætte bredden på den variabel vi vil udskrive. Se følgende kode:</p>
+
+<pre><code class="python">>>> fnavn1 = "Anders"
+>>> fnavn2 = "Bo"
+>>> enavn1 = "Nybo"
+>>> enavn2 = "Holmfeldt"
+>>> print(f"{fnavn1:12}{enavn1:12}\n{fnavn2:12}{enavn2:12}")
+Anders      Nybo        
+Bo          Holmfeldt</code></pre>
+
+<p>Havde vi ikke indsat en bredde på variablerne ville udskriften af set ud som herunder:</p>
+
+<pre><code class="python">print(f"{fnavn1}{enavn1}\n{fnavn2}{enavn2}")
+AndersNybo
+BoHolmfeldt</code></pre>
+
+<p>Mere om f-print: <a href="https://markbrowntuition.co.uk/computing/2017/11/10/fancy-printing-with-python/" target="_blank">https://markbrowntuition.co.uk/computing/2017/11/10/fancy-printing-with-python/</a></p>
+
+
+<p><em>Fancy print</em> kan ikke bare </p>
+
+<h3>Anden afslutning</h3>
+
+<p>Som standard indsætter Python et linieskift (<span class="inl_cmd">\r</span>) efter en print sætning. Dette kan ændres ved at indsætte <span class="inl_cmd">end="*det som der skal gøres*"</span> som en paramter.</p>
+
+<p>Det kan være smart hvis man vil have noget til at udskrive sig efter hinanden, f.eks. en talrække. Her ser du noget kode, som du først vil lære senere, men det går i al sin enkelthed ud på at udføre den samme kommandolinie flere gange. </p>
+
+<pre>
+	<code class="python">>>> for i in range(5):
+    print(i) <span class="red"><b>&larr; Normal afslutning betyder linieskift</b></span>
+
+    
+0
+1
+2
+3
+4
+>>> for i in range(5):
+    print(i, end=" ") <span class="red"><b>&larr; afsluttes med et mellemrum</b></span>
+
+    
+0 1 2 3 4 
+>>> for i in range(5):
+    print(i, end=" : ") <span class="red"><b>&larr; afsluttes af et kolon omgivet af mellemrum</b></span>
+
+    
+0 : 1 : 2 : 3 : 4 :    </code>
+</pre>
+
+
+
+
+<h2>Opgaver</h2>
+
+<h3>Pladsholdere 1</h3>
+
+<p>Lav en kode ved hjælp af variabler, der giver følgende output</p>
+
+<pre><code class="python">Jeg hedder [NAVN].
+Jeg bor i [BY] og er [ALDER] år gammel.
+Mit telefonnr er [TELEFONNR], og det er en [MOBILMÆRKE]</code></pre>
+
+
+
+	
+</div><!-- end: col-md-9 -->
+
+<footer class="fixed-bottom text-center bg-light">
+
+	<p onclick="parentNode.remove()"><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons licens" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>Indholdet på Vidas.dk er licenseret under <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> og er skrevet af Thomas Jensen. (<a href="../hvem_er_jeg.html" target="_blank">Læs mere</a>)</p>
+
+</footer>
+	
+	
+</div><!-- end: row -->
+
+</div> <!-- end: container-fluid -->
+
+
+<!-- SCRIPT SECTION -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/js/bootstrap.min.js"></script>
+
+
+
+<!-- HIGHLIGHT -->
+	<script src="../js/highlight.pack.js" type="text/javascript"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+
+<!-- MATHJAX -->
+<script type="text/javascript" 
+	src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  displayAlign: "left",
+  displayIndent: "0em"
+});
+</script>
+
+
+<!-- TOCIFY -->
+<script>
+	$(function() {var toc = $("#toc").tocify({ selectors: "h2, h3, h4" }).data("toc-tocify"); });
+</script>
+<!-- GOOGLE ANALYTICS -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-89933285-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+</body>
+</html>

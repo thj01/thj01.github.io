@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <title>Python: Dictionaries</title>
+  <link rel="icon" href="../images/favicon.png">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono|Ubuntu|Ubuntu+Condensed' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/stylesheets/jquery.tocify.min.css">
+  <link rel="stylesheet" href="../css/style_new.css" />
+<!-- Scripts in bottom to speed up pageload-->
+ 
+
+</head>
+<body>
+	
+	
+<div class="container-fluid">
+
+<div class="row">
+	
+<div class="col-sm-3">
+	
+	<nav>
+		
+		<div id="toc">
+		
+			<div id="toc_headline"></div>
+		
+		</div>
+		
+	</nav>
+
+</div><!-- Start slut 1. kolonne - TOC -->
+	
+<div class="col-sm-9">
+	
+<figure id="">
+
+	<img class="" src="images/python-logo-inkscape.svg" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+	
+<h1>Dictionaries</h1>
+
+<p>Dictionaries er en liste der laves af par. Herunder har jeg lavet en dictionary bestående af brugerens navn og login.</p>
+
+<ul class="disc">
+	<li>Anne Hansen: ah</li>
+	<li>Bent Ipsen: bi</li>
+	<li>Cecilie Jensen: cj</li>
+</ul>
+
+<p>I python vil det ud som herunder:</p>
+
+<pre><code class="python">bruger_id = {
+    "Anne Hansen": "ah",
+    "Bent Ipsen" : "bi",
+    "Cecilie Jensen" : "cj"
+    }</code></pre>
+    
+<p>Hvert element har altså en nøgle (f.eks. Anne Hansen) og en værdi (ah)</p>    
+
+<p>Efter du har kørt programmet, kan du udskrive listen:</p>
+
+<samp><pre>>>> bruger_id
+{'Anne Hansen': 'ah', 'Bent Ipsen': 'bi', 'Cecilie Jensen': 'cj'}</pre></samp>
+
+<h2>Udskriv et dictionary</h2>
+
+<p>Der findes 3 måder det kan gøres på:</p>
+
+<dl class="not_strong">
+	<dt>Nøgler + værdier</dt>
+	<dd>
+		<pre><code class="python">>>> bruger_id
+{'Anne Hansen': 'ah', 'Bent Ipsen': 'bi', 'Cecilie Jensen': 'cj'}</code></pre>
+	</dd>
+	
+	<dt>Kun nøgler</dt>
+	<dd>
+		<p>Her skal du tilføje <code class="">.keys()</code></p>
+		
+		<pre><code class="python">>>> bruger_id.keys()
+dict_keys(['Anne Hansen', 'Bent Ipsen', 'Cecilie Jensen'])</code></pre>
+	</dd>
+	
+	<dt>Kun værdier</dt>
+	<dd>
+		<p>Her skal du tilføje <code class="">.values()</code></p>
+		
+		<pre><code class="python">>>> bruger_id.values()
+dict_values(['ah', 'bi', 'cj'])</code></pre>
+	</dd>
+</dl>
+
+<h2>Udskriv enkelt element</h2>
+
+<p>For at udskrive en værdi, skal du bruge nøglen. Vil du have udskrivet <em>Anne Hansens</em> login, skal du skrive følgende:</p>
+
+<samp><pre>>>> bruger_id["Anne Hansen"]
+'ah'</pre></samp>
+
+<h2>Tilføj element</h2>
+
+<p>For at tilføje brugeren <em>Dennis Karlsen</em> med brugernavnet <em>dk</em> skriver du:</p>
+
+<pre><code class="python">>>> bruger_id["Dennis Karlsen"] = "dk"
+>>> bruger_id
+{'Anne Hansen': 'ah', 'Bent Ipsen': 'bi', 'Cecilie Jensen': 'cj', 'Dennis Karlsen': 'dk'}</code></pre>
+
+<h2>Ændr element</h2>
+
+<p>Du kan ændre et element på 2 måder. Her ændres <em>Dennis Karlsens</em> brugernavn til <em>ddkk</em></p>
+
+<p><strong>Metode 1</strong></p>
+
+<pre><code class="python">>>> bruger_id["Dennis Karlsen"]
+'dk'
+>>> bruger_id["Dennis Karlsen"] = "ddkk"
+>>> bruger_id["Dennis Karlsen"]
+'ddkk'</code></pre>
+
+<p><strong>Metode 2</strong></p>
+
+<p>Her ændrer vi tilbage igen ved hjælp af <code class="">.update()</code>:</p>
+
+<pre><code class="python">>>> bruger_id.update({"Dennis Karlsen":"dk"})
+>>> bruger_id["Dennis Karlsen"]
+'dk'</code></pre>
+
+<p>Læg mærke til den krøllede parentes om ændringen.</p>
+
+<h2>Fjern element</h2>
+
+<p>For at fjerne et element bruger vi <code class="">del</code>. Her fjerne vi <em>Dennis karlsen</em></p>
+
+<pre><code class="python">>>> del bruger_id["Dennis Karlsen"]
+>>> bruger_id
+{'Anne Hansen': 'ah', 'Bent Ipsen': 'bi', 'Cecilie Jensen': 'cj'}</code></pre>
+
+<p>Ligesom ved lister, tuplets og sets, kan du anvende <code class="">.pop()</code> eller <code class="">.popitem()</code>, hvis du vil bruge bruge output. Forskellen mellem de to er, at <code class="">.pop()</code> fjerner en bestemt nøgle og <code class="">.popitem()</code> fjerner den sidste:</p>
+
+<pre><code class="python">>>> bruger_id.pop("Cecilie Jensen")
+'cj'
+>>> bruger_id
+{'Anne Hansen': 'ah', 'Bent Ipsen': 'bi'}
+>>> bruger_id.popitem()
+('Bent Ipsen', 'bi')
+>>> bruger_id
+{'Anne Hansen': 'ah'}</code></pre>
+
+<h2>Slet dictionary</h2>
+
+<p>For at slette et dictionary bruges du <code class="">del</code> uden at skrive elementet:</p>
+
+<pre><code class="python">>>> del bruger_id
+>>> bruger_id.popitem()
+<span class="red">Traceback (most recent call last):
+  File "&lt;pyshell>", line 1, in &lt;module>
+NameError: name 'bruger_id' is not defined</span></code></pre>
+
+<h2>Kopier dictionary</h2>
+
+<p>Vi indlæser lige den oprindelige dictionary igen:</p>
+
+<pre><code class="python">bruger_id = {
+    "Anne Hansen": "ah",
+    "Bent Ipsen" : "bi",
+    "Cecilie Jensen" : "cj",
+    }</code></pre>
+
+<p>For at kopiere en dictionary bruger du <code class="">.copy()</code></p>
+
+<pre><code class="python">>>> kopi_af_bruger_id = bruger_id.copy()
+>>> kopi_af_bruger_id
+{'Anne Hansen': 'ah', 'Bent Ipsen': 'bi', 'Cecilie Jensen': 'cj'}</code></pre>
+
+<h2>Antal elementer i et dictionary</h2>
+
+
+<p>For at finde antal af elementer i vores dictionary bruger vi <code class="">.len()</code></p>
+
+<pre><code class="python">>>> len(bruger_id)
+3</code></pre>
+
+<h2>Er et element i et dictionary</h2>
+
+<pre><code class="python">>>> "Anne Hansen" in bruger_id
+True</code></pre>
+
+<p>Vil du vide om en bestem værdi findes i et dictionary, skal du bruge <code class="">.values()</code></p>
+
+<pre><code class="python">>>> "ah" in bruger_id.values()
+True</code></pre>
+
+<h2>Kør igennem hele dictionary</h2>
+
+<p>For at køre et dictionary som et loop kan du gøre følgende:</p>
+
+<dl class="">
+	<dt>Udskriv både og værdi</dt>
+	<dd>
+		<pre><code class="python">bruger_id = {
+    "Anne Hansen": "ah",
+    "Bent Ipsen" : "bi",
+    "Cecilie Jensen" : "cj",
+    }
+
+for brugernavn, login in bruger_id.items():
+    print(f"{brugernavn} : {login}")</code></pre>
+    
+    <samp><pre><span class="thonny_print">Anne Hansen : ah</span>
+<span class="thonny_print">Bent Ipsen : bi</span>
+<span class="thonny_print">Cecilie Jensen : cj</span></pre></samp>
+	
+	</dd>
+
+	<dt>Udskriv nøgle</dt>
+	<dd>
+		<pre><code class="python">bruger_id = {
+    "Anne Hansen": "ah",
+    "Bent Ipsen" : "bi",
+    "Cecilie Jensen" : "cj",
+    }
+
+for key in bruger_id.keys():
+    print(key)</code></pre>
+    
+    <samp><pre><span class="thonny_print">Anne Hansen</span>
+<span class="thonny_print">Bent Ipsen</span>
+<span class="thonny_print">Cecilie Jensen</span></pre></samp>
+		
+	</dd>
+
+	<dt></dt>
+	<dd>
+		<pre><code class="python">bruger_id = {
+    "Anne Hansen": "ah",
+    "Bent Ipsen" : "bi",
+    "Cecilie Jensen" : "cj",
+    }
+
+for value in bruger_id.values():
+    print(value)</code></pre>
+	
+	
+	    <samp><pre><span class="thonny_print">ah</span>
+<span class="thonny_print">bi</span>
+<span class="thonny_print">cj</span></pre></samp>
+	</dd>
+</dl>
+
+
+
+
+
+<h2>Nested (indlejrede) directories</h2>
+
+<p>Nogle gange er en nøgleværdi ikke nok se f.eks. dette eksempel</p>
+
+<dl class="">
+	<dt>Ansat1</dt>
+	<dd>
+		<ul class="disc">
+			<li>Navn: Anne Hansen</li>
+			<li>Brugernavn: ah</li>
+		</ul>
+	</dd>
+	<dt>Ansat2</dt>
+	<dd>
+		<ul class="disc">
+			<li>Navn: Bent Ipsen</li>
+			<li>Brugernavn: bi</li>
+		</ul>
+	</dd>
+	<dt>Ansat3</dt>
+	<dd>
+		<ul class="disc">
+			<li>Navn: Cecilie Jensen</li>
+			<li>Brugernavn: cj</li>
+		</ul>	
+	</dd>
+</dl>
+
+<p>Det vil vi i Python skrive på følgende måde:</p>
+
+<pre><code class="python">ansatte = {
+    "ansat1" : {
+        "Navn": "Anne Hansen",
+        "Brugernavn" : "ah",
+        },
+    "ansat2" : {
+        "Navn": "Bent Ipsen",
+        "Brugernavn" : "bi",
+        },
+    "ansat3" : {
+        "Navn": "Cecilie Jensen",
+        "Brugernavn" : "cj",
+        }
+    }</code></pre>
+
+<p>Vi laver en dictionary ... i vores dictionary.</p>
+
+<p>Måden vi rammer de enkelte elementer er på følgende måde:</p>
+
+<samp><pre>>>> ansatte["ansat1"]["Navn"]
+'Anne Hansen'</pre></samp>
+
+<p>Vi går ind i <em>ansatte</em>, fremsøger <em>ansat1</em> og viser <em>Navn</em></p>
+
+<p>Herunder er vist hvordan du manipulerer med nestede dictionaries.</p>
+
+
+<h3>Tilføj nested element</h3>
+
+<pre><code class="python">>>> ansatte["ansat4"] = {"Navn":"Dennis Karlsen","Brugernavn":"dk"}
+>>> ansatte
+{'ansat1': {'Navn': 'Anne Hansen', 'Brugernavn': 'ah'}, 'ansat2': {'Navn': 'Bent Ipsen', 'Brugernavn': 'bi'}, 'ansat3': {'Navn': 'Cecilie Jensen', 'Brugernavn': 'cj'}, 'ansat4': {'Navn': 'Dennis Karlsen', 'Brugernavn': 'dk'}}</code></pre>
+
+<h3>Ændre nested element</h3>
+
+<pre><code class="python">>>> ansatte["ansat4"]["Brugernavn"] = "ddkk"
+>>> ansatte["ansat4"]
+{'Navn': 'Dennis Karlsen', 'Brugernavn': 'ddkk'}</code></pre>
+
+<h3>Fjern nested element</h3>
+
+<pre><code class="python">>>> del ansatte["ansat4"]
+>>> ansatte
+{'ansat1': {'Navn': 'Anne Hansen', 'Brugernavn': 'ah'}, 'ansat2': {'Navn': 'Bent Ipsen', 'Brugernavn': 'bi'}, 'ansat3': {'Navn': 'Cecilie Jensen', 'Brugernavn': 'cj'}}</code></pre>
+
+<h3>Loop igennem nested dictionary</h3>
+
+<p>Du skal bruge samme metode som ved almindelige dictionaries. Her har jeg først lavet variabler af indholdet, for at gøre det lettere at se hvad der sker i printsætningen.</p>
+
+<pre><code class="python">ansatte = {
+    "ansat1" : {
+        "Navn": "Anne Hansen",
+        "Brugernavn" : "ah",
+        },
+    "ansat2" : {
+        "Navn": "Bent Ipsen",
+        "Brugernavn" : "bi",
+        },
+    "ansat3" : {
+        "Navn": "Cecilie Jensen",
+        "Brugernavn" : "cj",
+        }
+    }
+
+for i in ansatte:
+    
+    navn = ansatte[i]["Navn"]
+    login = ansatte[i]["Brugernavn"]
+
+    print(f"{i} - {navn} : {login}")</code></pre>
+
+<samp><pre><span class="thonny_print">ansat1 - Anne Hansen : ah</span>
+<span class="thonny_print">ansat2 - Bent Ipsen : bi</span>
+<span class="thonny_print">ansat3 - Cecilie Jensen : cj</span></pre></samp>
+
+
+<h2>Opgaver</h2>
+
+<h3>Lav et login ved hjælp af en dicionary</h3>
+
+<p>Opret en dicionary med dig selv som bruger og opret en adgangskode. Lav en <span class="inl_cmd">if/else</span> struktur hvor du:</p>
+
+<ol class="">
+	<li>undersøger om brugeren findes</li>
+	<li>om adgangskoden er korrekt</li>
+	<li>Hvis brugeren kan godkendes printes: Velkommen *brugernavn* </li>
+	<li>Hvis ikke: Du har ikke adgang</li>
+</ol>
+
+<h3>Lav en valutaomregner</h3>
+
+<p>Lav en valutaomregnder ved hjælp af en dictionary funktionen <span class="inl_cmd">valuta(a,b)</span>, hvor <span class="inl_cmd">a</span> er valutaen og <span class="inl_cmd">b</span> er beløbet.</p>
+
+	
+</div><!-- end: col-md-9 -->
+
+<footer class="fixed-bottom text-center bg-light">
+
+	<p onclick="parentNode.remove()"><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons licens" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>Indholdet på Vidas.dk er licenseret under <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> og er skrevet af Thomas Jensen. (<a href="../hvem_er_jeg.html" target="_blank">Læs mere</a>)</p>
+
+</footer>
+	
+	
+</div><!-- end: row -->
+
+</div> <!-- end: container-fluid -->
+
+
+<!-- SCRIPT SECTION -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/js/bootstrap.min.js"></script>
+
+
+
+<!-- HIGHLIGHT -->
+	<script src="../js/highlight.pack.js" type="text/javascript"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+
+<!-- MATHJAX -->
+<script type="text/javascript" 
+	src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  displayAlign: "left",
+  displayIndent: "0em"
+});
+</script>
+
+
+<!-- TOCIFY -->
+<script>
+	$(function() {var toc = $("#toc").tocify({ selectors: "h2, h3, h4" }).data("toc-tocify"); });
+</script>
+<!-- GOOGLE ANALYTICS -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-89933285-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</body>
+</html>

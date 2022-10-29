@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <title>Det andet dokument</title>
+  <link rel="icon" href="../images/favicon.png">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono|Ubuntu|Ubuntu+Condensed' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/stylesheets/jquery.tocify.min.css">
+  <link rel="stylesheet" href="../css/style_new.css" />
+<!-- Scripts in bottom to speed up pageload-->
+ 
+
+</head>
+<body>
+	
+	
+<div class="container-fluid">
+
+<div class="row">
+	
+<div class="col-sm-3">
+	
+	<nav>
+		
+		<div id="toc">
+		
+			<div id="toc_headline"></div>
+		
+		</div>
+		
+	</nav>
+
+</div><!-- Start slut 1. kolonne - TOC -->
+	
+<div class="col-sm-9">
+	
+<figure id="">
+
+	<img class="" src="images/python-logo-inkscape.svg" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>	
+
+<h1>Taltyper</h1>
+	
+<p>Dette dokument gennemgår de forskellige taltyper der anvendes i Python.</p>
+
+<ul class="disc">
+	<li>Integers - heltal</li>
+	<li>Float - decimaltal</li>
+	<li>Fractions - brøker</li>
+</ul>
+
+<dl class="">
+	<dt>Integers - heltal</dt>
+	<dd>
+		<ul class="none">
+			<li>Integers er heltal. Det er den talmængde vi i matematik kalder <span class="math">\( \mathbb{Z} \)</span>.</li>
+			<li>Eksempler på heltal kan være: -37, -4, 0, 7, 21, 443.</li>
+		</ul>
+	</dd>
+	<dt>float - decimaltal</dt>
+	<dd>
+		<ul class="disc">
+			<li>Float er decimaltal.  Det er den talmængde vi i matematik kalder <span class="math">\( \mathbb{R} \)</span>.</li>
+			<li>Eksempler på decimaltal kan være: -17,9 ; -2,01 ; 0,007 ; 4,209 ; 356,07 </li>
+		</ul>
+	</dd>
+	<dt>Fractions - brøker</dt>
+	<dd>
+		<ul class="disc">
+			<li>Float er decimaltal.  Det er den talmængde vi i matematik kalder <span class="math">\( \mathbb{R} \)</span>.</li>
+			<li>Eksempler på decimaltal kan være: -17,9 ; -2,01 ; 0,007 ; 4,209 ; 356,07 </li>
+		</ul>
+	</dd>
+</dl>
+
+<h2>Bestem taltype</h2>
+
+<p>Man bestemmer tallets type ved hjælp af kommandoen <code class="">type()</code>. Se eksemplet herunder:</p>
+
+<pre><code class="python">>>> heltal = 4
+>>> decimaltal = 4.1
+>>> from fractions import Fraction
+>>> brøk = Fraction(1,4)
+>>> type(heltal)
+&lt;class 'int'>
+>>> type(decimaltal)
+&lt;class 'float'>
+>>> type(brøk)
+&lt;class 'fractions.Fraction'></code></pre>
+
+<h2>Lidt om float</h2>
+
+<p>I dette materiale bliver <em>float</em> omtalt som decimaltal - hvilket er korrekt "with a twist".</p>
+
+<p>Float er baseret på det binære talsystem, hvilket giver nogle unøjagtigheder, når man når mange decimaler ned. Se nedestående eksempel:</p>
+
+<pre><code class="python">>>> 3*0.1
+0.30000000000000004</code></pre>
+
+<p>Det er jo ikke korrekt, fordi <span class="math">\( 3 \cdot 0,1 = 0,3 \)</span>.</p>
+
+<p>I vores sammenhæng med matematik og fysik, der er float nøjagtig nok, da vi sjældent arbejder på så nøjagtigt niveau, men i finansregning kan det være nødvendig at arbejde med rigtige decimaltal.</p>
+
+<details>
+
+	<summary>brug af Decimal() - ægte decimaltal</summary>
+
+
+	<p><code class="">Decimal()</code> er eksakte tal og kan sættes til en nøjagtighed på 28 cifre og decimaler i alt. Det er en funktion der skal kaldes. Herunder er regnestykket <span class="math">\( 1.30+1.20 \)</span> udregnet både med <em>float</em> (standard) og <em>decimal()</em>:</p>
+
+	<pre><code class="python">>>> 1.30+1.20
+2.5
+>>> from decimal import *
+>>> Decimal(1.30)+Decimal(1.20)
+Decimal('2.500000000000000000000000000')</code></pre>
+
+<p>I eksemplet ovenfor anvendes standard antallet af decimaler, som er 27. Dette kan begrænses til f.eks. 5.</p>
+
+<pre><code class="python">>>> getcontext().prec=8
+>>> Decimal(1.30)+Decimal(1.20)
+Decimal('2.5000000')</code></pre>
+
+
+<p>Læs mere: <a href="https://docs.python.org/3/library/decimal.html" target="_blank">https://docs.python.org/3/library/decimal.html</a></p>
+	
+<p><a href="https://financetrain.com/best-python-librariespackages-finance-financial-data-scientists/" target="_blank">https://financetrain.com/best-python-librariespackages-finance-financial-data-scientists/</a></p>
+
+</details>
+
+
+<h2>Er mit float resultat et heltal</h2>
+
+<p>Hvis man har lavet en beregning der viser resultatet som en float, så kan man tjekke om resultatet er en integer. Svaret kommer som enten <em>True</em> eller <em>False</em>.</p>
+
+<p>Det gøres med kommandoen <code class="">[tallet].is_integer()</code>. Se eksemplet herunder:</p>
+
+<pre><code class="python">>>> 17.0.is_integer()
+True
+>>> 2.5.is_integer()
+False</code></pre>
+
+<p>Hvis man prøver at gøre det samme med en int, så melder programmet fejl:</p>
+
+<pre><code class="python">>>> 17.is_integer()
+<span class="red">  File "&lt;pyshell>", line 1
+    17.is_integer()
+       ^
+SyntaxError: invalid syntax</span></code></pre>
+
+<h2>Konvertering af taltyper</h2>
+
+<p>For at konvertere mellem de forskellige taltyper anvender vi følgende funktioner:</p>
+
+<dl class="">
+	<dt><code class="">int()</code></dt>
+	<dd>
+		Konverterer til integers - Fylder mindst i hukommelsen <br><br>
+		<strong>Eksempel</strong><br><br>
+		<pre><code class="python">>>> int(2.0)
+2</code></pre>
+	</dd>
+	<dt><code class="">float()</code></dt>
+	<dd>
+		Konverterer til decimaltal <br><br>
+		<strong>Eksempel</strong><br><br>
+		<pre><code class="python">>>> float(2)
+		2.0</code></pre>
+	</dd>
+	<dt><code class="">Fraction()</code></dt>
+	<dd>
+		Konverterer til en brøk <br><br>
+		<strong>Eksempel</strong><br><br>
+		<pre><code class="python">>>> from fractions import Fraction
+>>> Fraction(0.125)
+Fraction(1, 8)</code></pre>
+	</dd>
+</dl>
+
+
+
+
+
+<h2>Andre talsystemer</h2>
+
+<p>Vi er vant til at anvende 10-talssystemet, men i programmerings- og computersammenhænge kan det være praktisk at anvende andre talsystemer især det binære (2-talssystem) og det hexadecimale (16-talssystem), som f.eks. anvendes til at beskrive farver. Man siger at talsystemerne har et grundtal/base, som bestemmer hvornår der skiftes position.</p>
+
+<p>Vores tiltalsystem er altså <em>base-10</em> og det binære talystem er <em>base-2</em>.</p>
+
+<!--
+<p>Det kan være smart at anvende f.eks. det binære talsystem, og et eksempel er den måde et Linux-filsystem angiver filers rettigheder. Rettighederne er:</p>
+
+<ol class="">
+	<li>Kan man skrive i filen (write)</li>
+	<li>Kan man læse filen (read)</li>
+	<li>Kan man køre filen som et program (x'ecute - execute)</li>
+</ol>
+
+<p>Man har 3 værdier, som enten kan være aktive eller ej og de vises med <em>rwx</em> eller et 3-cifret binært tal. <em>000</em></p>
+
+<p>Rettighederne er sat med tal fra 0-7, og det gør man ud fra følgende skema:</p>
+
+<table class="centreret">
+	<thead>
+		<tr>
+			<th rowspan="2">Talværdi</th>
+			<th>r</th>
+			<th>w</th>
+			<th>x</th>
+			<th rowspan="2" >Samlet</th>
+			<th rowspan="2">Rettigheder</th>
+		</tr>
+		<tr>
+			<th><span class="math">\( 2^2 = 4 \)</span></th>
+			<th><span class="math">\( 2^1 = 2 \)</span></th>
+			<th><span class="math">\( 2^0 = 1 \)</span></th>
+
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>7</td>
+			<td>1</td>
+			<td>1</td>
+			<td>1</td>
+			<td>rwx</td>
+			<td>Alle (læse, skrive og udføre)</td>
+		</tr>
+		<tr>
+			<td>6</td>
+			<td>1</td>
+			<td>1</td>
+			<td>0</td>
+			<td>-wx</td>
+			<td>Læse og skrive</td>
+		</tr>
+		<tr>
+			<td>5</td>
+			<td>1</td>
+			<td>0</td>
+			<td>1</td>
+			<td>r-x</td>
+			<td>Læse og udføre</td>
+		</tr>
+		<tr>
+			<td>4</td>
+			<td>1</td>
+			<td>0</td>
+			<td>0</td>
+			<td>r--</td>
+			<td>Læse</td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>0</td>
+			<td>1</td>
+			<td>1</td>
+			<td>-wx</td>
+			<td>Skrive og udføre</td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>0</td>
+			<td>1</td>
+			<td>0</td>
+			<td>-w-</td>
+			<td>Skrive</td>
+		</tr>
+		<tr>
+			<td>1</td>
+			<td>0</td>
+			<td>0</td>
+			<td>1</td>
+			<td>--x</td>
+			<td>udføre</td>
+		</tr>
+		<tr>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>0</td>
+			<td>---</td>
+			<td>Ingen</td>
+		</tr>		
+	</tbody>
+</table>
+
+<p>Et femtal beskriver f.eks. at man kan læse og køre filen som et program. Men man kan ikke skrive i den. 5 tallet giver altså ingen mening i sig selv, men oversat til binært <span class="inl_cmd">101</span> kan vi altså se hvad brugeren må og ikke må. I stedet for at skulle analysere 8 forskellige udfald (0-7) i vores program, kan vi altså nøjes med at undersøge 3 mulige udfald.</p>
+
+
+-->
+
+<h3>Base10 til baseX</h3>
+
+<p>Her vil vi kigge på hvordan vi konverterer til det binære (base2)og det hexadecimale (base16) talsystem</p>
+
+<dl class="not_strong">
+	<dt><code class="">bin()</code> - Konvertering til binære tal (base2)</dt>
+	<dd>
+<pre><code class="python">>>> bin(100)
+'0b1100100'</code></pre>
+	</dd>
+	<dt><code class="">hex() - Konvertering til hecadecimale tal (base16)</code></dt>
+	<dd>
+<pre><code class="python">>>> hex(100)
+'0x64'</code></pre>	
+	</dd>
+</dl>
+
+<p>Læg mærke til at talene kommer tilbage som tekststrenge og med et præfix: </p>
+
+<ul class="disc">
+	<li>0b = binær</li>
+	<li>0x = hexadecimal</li>
+</ul>
+
+<p>Python bruger dette præfix til at bestemme hvilket positionssystem tallet er i. Er der ikke noget præfix er det base 10.</p>
+
+<h3>BaseX til base10 talssystem</h3>
+
+<p>For at konvertere tal med anden base til 10 talssystemet anvendes <span class="inl_cmd">int()</span>. Det fungerer ved at man i parantesen skriver tallet man vil konvertere og basen der skal konverteres fra.</p>
+
+<pre><code class="python">>>> int("100",2)
+4
+>>> int("100",8)
+64
+>>> int("100",10)
+100
+>>> int("100",16)
+256	</code></pre>
+
+<div class="alert">
+	
+	<p>Tallene der skal konverteres skal sættes ind som tekststrenge</p>
+	
+	<p>Du skal skrive basen du konverterer til efter , - også selvom du skriver basens prefix.</p>
+
+</div>
+
+<h3>Beregninger med andre talsystemer</h3>
+
+
+<p>Herunder udregnes <span class="math">\( 5 \cdot 5 \)</span> i base5:</p>
+
+<pre><code class="python">>>> bin(5)
+'0b101'
+>>> bin(0b101*0b101)
+'0b11001'</code></pre>
+
+<p>For at tjekke om det er korrekt kan vi konvertere til base10:</p>
+
+<pre><code class="python">>>> int(_,2)
+25</code></pre>
+
+
+
+
+	
+</div><!-- end: col-md-9 -->
+
+<footer class="fixed-bottom text-center bg-light">
+
+	<p onclick="parentNode.remove()"><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons licens" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>Indholdet på Vidas.dk er licenseret under <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> og er skrevet af Thomas Jensen. (<a href="../hvem_er_jeg.html" target="_blank">Læs mere</a>)</p>
+
+</footer>
+	
+	
+</div><!-- end: row -->
+
+</div> <!-- end: container-fluid -->
+
+
+<!-- SCRIPT SECTION -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/js/bootstrap.min.js"></script>
+
+
+
+<!-- HIGHLIGHT -->
+	<script src="../js/highlight.pack.js" type="text/javascript"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+
+<!-- MATHJAX -->
+<script type="text/javascript" 
+	src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  displayAlign: "left",
+  displayIndent: "0em"
+});
+</script>
+
+
+<!-- TOCIFY -->
+<script>
+	$(function() {var toc = $("#toc").tocify({ selectors: "h2, h3, h4" }).data("toc-tocify"); });
+</script>
+<!-- GOOGLE ANALYTICS -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-89933285-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</body>
+</html>

@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <title>Python: Valg og funktioner</title>
+  <link rel="icon" href="../images/favicon.png">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono|Ubuntu|Ubuntu+Condensed' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/stylesheets/jquery.tocify.min.css">
+  <link rel="stylesheet" href="../css/style_new.css" />
+<!-- Scripts in bottom to speed up pageload-->
+ 
+
+</head>
+<body>
+	
+	
+<div class="container-fluid">
+
+<div class="row">
+	
+<div class="col-sm-3">
+	
+	<nav>
+		
+		<div id="toc">
+		
+			<div id="toc_headline"></div>
+		
+		</div>
+		
+	</nav>
+
+</div><!-- Start slut 1. kolonne - TOC -->
+	
+<div class="col-sm-9">
+
+<figure id="">
+
+	<img class="" src="images/python-logo-inkscape.svg" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+	
+<h1>Valg og funktioner</h1>
+
+<p>Herfra begynder vi at arbejde i Thonny's øverste vindue.</p>
+
+<figure id="">
+
+	<img class="p90" src="images/thonny_install_002.png" alt="" title="">
+
+	<figcaption></figcaption>
+
+</figure>
+
+<p>Her kan vi begynde at lave rigtige programmer, som i eksemplet herunder:</p>
+
+<pre><code class="python">"""
+Mit første program
+"""
+
+længde = 10
+højde = 5
+areal_firkant = længde * højde
+print(f"Firkantens areal er: {areal_firkant}")</code></pre>
+
+<p>Når du så trykker <kbd>F5</kbd> kører programmet i shell-vinduet</p>
+
+<p>Er det første gang du kører et program skal du gemme det på harddisken. Her har jeg valgt at kalde programmet <em>test.py</em>.</p>
+
+<samp><pre>>>> %Run test.py
+Firkantens areal er: 50</pre></samp>
+
+<p>Første linie fortæller hvad programmet hedder og linjerne herunder viser programmets output</p>
+
+<div class="alert">
+	
+	<p>Du kan ikke køre programmet før det er gemt på harddisken. Jeg anbefaler dig at gøre følgende:</p>
+	
+	<ol class="">
+		<li>Opret en mappe hvor du gemmer dine pythonprogrammer</li>
+		<li>Opret evt. undermapper til de forskellige programtyper for at få et bedre overblik.</li>
+		<li>Giv programmerne sigende navne f.eks: if_else_program1.py</li>
+		<li>Programmerne skal have endelsen <em>.py</em></li>
+		<li>Programmerne må ikke hedde det samme som kommandoen</li>
+	</ol>
+
+</div>
+
+<p>Nu skal vi til at bruge alt det vi har lært om variabler, input og operatorer</p>
+
+<p>Vi vil lave et program der kan give os forskellige svar alt efter input</p>
+
+<h2>Funktioner</h2>
+
+<p>Funktioner kan kaldes små programmer i programmet. I dette eksempel har jeg lavet programmet i toppen til en funktion:</p>
+
+<pre><code class="python">def areal_firkant(længde, højde):
+    print(f"Firkantens areal er {længde*højde}")
+    
+areal_firkant(4,5)
+areal_firkant(7,8)</code></pre>
+
+<samp><pre>>>> %Run test.py
+Firkantens areal er 20
+Firkantens areal er 56</pre></samp>
+
+<p>Jeg har altså lavet min helt egen smarte måde at regne firkanters areal ud, så jeg bare skal skrive længden og bredden ind i funktionens parentes. I forhold til eksemplet øverst på siden har jeg reduceret koden fra 4 til 2 linier ... og fremover kan jeg udregne alle de arealer jeg vil.</p>
+
+<p>Hvad var det jeg gjorde</p>
+
+<dl class="not_strong">
+	<dt><pre><code class="python">def areal_firkant(længde, højde):</code></pre></dt>
+	<dd>
+		<ol class="">
+			<li><code class="">def</code> fortæller Python at nu kommer der en definition</li>
+			<li><code class="">areal_firkant</code> er funktionens navn</li>
+			<li><code class="">(længde,højde)</code> er de 2 variabler som funktionen skal bruge</li>
+		</ol>
+	</dd>
+	<dt><pre><code class="python">print(f"Firkantens areal er {længde*højde}")</code></pre></dt>
+	<dd>
+		Her udskriver jeg firkantens areal. I den krøllede parantes udregner jeg arealet, som så bliver udskrivet.
+	</dd>
+	<dt><pre><code class="">areal_firkant(4,5)</code></pre></dt>
+	<dd>
+		Her kalder jeg funktionen, hvor jeg har sat længden til 4 og højden til 5. Funktionen sørger for at udskrive arealet for mig.
+	</dd>
+</dl>
+
+<div class="alert">
+	
+	<ul class="none">
+		<li>... alle funktioner i programmet skal stå øverst i koden</li>
+		<li>... at der skal være et kolon i slutningen af første linie</li>
+		<li>... alle de linjer der hører til funktion skal være skubbet ind under den. Enten ved hjælp af <kbd>Tab</kbd> eller <kbd>Mellemrum</kbd>.</li>
+	</ul>
+
+</div>
+
+<h3>Return</h3>
+
+<p>Nogle funktioner skal ikke selv printe sit resultat, men blot levere det videre. Det kan f.eks. være en funktion der laver kvadratal. Se koden herunder:</p>
+
+<pre><code class="python">def kvadrattal(a):
+    tal = pow(a,2)
+    return tal
+
+print(kvadrattal(2))</code></pre>
+
+<samp><pre>>>> %Run test.py
+<span class="thonny_print">4</span></pre></samp>
+
+<p>Funktionen <em>returnerer</em> resultatet <em>2</em> og når vi så printer <code class="">kvadrattal(2)</code>, så printer vi resultatet - altså <em>4</em>.</p>
+
+
+<h3>Tomme funktioner</h3>
+
+<p>Funktioner behøver ikke at have variabler i sig. Funktionen kan også bare starte en eller flere kommandoer.</p>
+
+<p>Det kan f.eks. være en kode der printer kontaktinformationer, som skal stå hver gang programmet melder fejl:</p>
+
+<pre><code class="python">def tekst():
+    print("""Denne software er lavet af : 
+    Thomas Jensen 
+    fakeuser@fakemail.dk""")
+    
+tekst()</code></pre>
+
+<samp><pre>>>> %Run test.py
+Denne software er lavet af : 
+    Thomas Jensen 
+    fakeuser@fakemail.dk</pre></samp>
+    
+<p>En tom funktion kan også bestå af en række kommandoer der skal føres hvis noget sker - f.eks. at man klikker på en knap </p>
+
+
+
+<h2>if - else</h2>
+
+<p><code class="">if-else</code> bruges når progammet skal køre en kode frem for en anden. Et overblik over koden ser ud som følger:</p>
+
+<pre><code class="python">if [BETINGELSE]:
+	** Gør noget **
+else:
+	** Gør noget andet **</code></pre>
+
+<p><code class="">If - else</code> er smart at bruge, når man har en enten eller situation, og det bruger man meget i programmering. Det kan f.eks. være når:</p>
+
+<ul class="disc">
+	<li>Et tal er lige med</li>
+	<li>Et tal er over eller under et andet tal</li>
+	<li>Hvis brugeren har svaret noget</li>
+	<li>Hvis en funktion er noget</li>
+	<li>...</li>
+</ul>
+
+
+<p>Her er et eksempel på et gættespil, hvor brugeren skal gætte et tal. Har brugeren gættet rigtigt skal programmet sige "Godt gættet" og ellers "Det var forkert":</p>
+
+<pre><code class="python">gæt = input("Gæt et tal mellem 1 og 5: ")
+if gæt == "4":
+    print("Godt gættet")
+else:
+    print("Det var forkert")</code></pre>
+
+<p>Her har jeg først gættet på 3 og derefter 4:</p>
+
+<samp><pre>>>> %Run test.py
+Gæt et tal mellem 1 og 5: <span class="blue">3</span>
+Det var forkert
+>>> %Run test.py
+Gæt et tal mellem 1 og 5: <span class="blue">4</span>
+Godt gættet</pre></samp>
+
+<div class="alert">
+	
+	<ul class="none">
+		<li>... brug dobbelt == når noget skal være det samme som</li>
+		<li>... der skal være et kolon til slut</li>
+		<li>... koden der skal udføres skal rykkes ind </li>
+		<li>... der skal ikke være nogen betingelse for <code class="">else</code></li>
+	</ul>
+
+</div>
+
+
+<h2>if - elif - else</h2>
+
+<p>Nogle gange er der flere end to betingelser der skal undersøges. Når der er det kan vi indsætte en <code class="">elif</code>.</p>
+
+<pre><code class="python">if [BETINGELSE 1]:
+	** Gør noget **
+elif [BETINGELSE 2]:
+	** Gør noget andet **
+elif [BETINGELSE 3]:
+	** Gør noget andet **	
+...	
+else:
+	** Gør noget hvis ingen af betingelserne ovenfor er opfyldt **</code></pre>
+
+<p>Her er et eksempel på et program der spørger til personens øjenfarve:</p>
+
+<pre><code class="python">farve = input(""" Hvad farve har dit øje:
+
+- Jeg har brune øjne (brun)
+- Jeg har blå øjne (blå)
+- Jeg har grønne øjne (grøn)
+- Jeg har en anden farve (andet)
+
+Skriv dit svar her: """)
+         
+if farve == "brun":
+    print("\nDu har brune øjne")
+elif farve == "blå":
+    print("\nDu har blå øjne")
+elif farve == "grøn":
+    print("\nDu har grønne øjne")
+else:
+    print("\nDine øjne er hverken brune, blå eller grønne")</code></pre>
+    
+<p>Her har jeg kørt programmet 2 gange og først svaret <em>brun</em> og anden gang <em>andet</em>.</p>
+
+<samp><pre>>>> %Run test.py
+ Hvad farve har dit øje:
+
+- Jeg har brune øjne (brun)
+- Jeg har blå øjne (blå)
+- Jeg har grønne øjne (grøn)
+- Jeg har en anden farve (andet)
+
+Skriv dit svar her: <span class="blue">brun</span>
+Du har brune øjne
+
+>>> %Run test.py
+ Hvad farve har dit øje:
+
+- Jeg har brune øjne (brun)
+- Jeg har blå øjne (blå)
+- Jeg har grønne øjne (grøn)
+- Jeg har en anden farve (andet)
+
+Skriv dit svar her: <span class="blue">andet</span>
+
+Dine øjne er hverken brune, blå eller grønne</pre></samp>
+
+<h2>if - helt for sig selv</h2>
+
+<p>Nogle gange skal et program kun gøre noget i helt specielle situationer. Forestil dig et program der skal tænde strømmen til en blæser når temperaturen når over 20&deg;. </p>
+
+<p>Her vil det være nok med følgende linie:</p>
+
+<pre><code class="python">if temp > 20:
+	start_blæser()</code></pre>
+
+<p><code class="">if</code> bør altid stå for sig selv hvis de betingelser der bliver undersøgt ikke hænger sammen. Tænk på et eksempel hvor koden stiller en masse spørgsmål:</p>
+
+<ul class="disc">
+	<li>Hvor gammel er du</li>
+	<li>Hvor bor du</li>
+	<li>Har du bil</li>
+	<li>...</li>
+</ul>
+
+<p>Her vil det give bedst mening at holde tingene helt adskilt i koden, for at det bliver tydeligt at betingelserne intet har med hinanden at gøre - altså:</p>
+
+<pre><code class="python">if alder >= 18:
+	over_18()
+if by = "København":
+	bopæl_københavn()
+if bil = "ja":
+	har_bil()</code></pre>
+
+<p>Når man læser koden her, så er man ikke i tvivl om at hver af betingelserne udløser hver sine funktioner. Det er tydeligt at de ikke har nogen sammenhæng. Se f.eks. her hvor den er sat på som <em>if - elif - else</em>:</p>
+
+<pre><code class="python">if alder >= 18:
+	over_18()
+elif by = "København":
+	bopæl_københavn()
+elif bil = "ja":
+	har_bil()
+...	</code></pre>
+
+<div class="alert">
+	
+	<p>Kode skal ikke bare virke ... den skal være til at læse... også for andre end dig selv.</p>
+	
+</div>
+
+
+
+
+<h3>Opgaver</h3>
+
+<p>I disse opgaver skal du bruge if-/elif-/elsestrukturer, sammen med operatorer. Der er et overblik over operatorerne herunder.</p>
+
+<details>
+
+	<summary>Overblik over operatorer</summary>
+
+	<table class="">
+		<thead>
+			<tr>
+				<th>Operator</th>
+				<th>Beskrivelse</th>
+				<th>Eksempel</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>==</td>
+				<td>Lig med</td>
+				<td>5 == 8 → falsk</td>
+			</tr>
+			<tr>
+				<td>&gt;</td>
+				<td>større end</td>
+				<td>5 &gt; 8 → falsk</td>
+			</tr>
+			<tr>
+				<td>&lt;</td>
+				<td>mindre end</td>
+				<td>5 &lt; 8 → sand</td>
+			</tr>
+			<tr>
+				<td>&gt;=</td>
+				<td>Større end eller lig med</td>
+				<td>5 &gt;= 8 → falsk</td>
+			</tr>
+			<tr>
+				<td>&lt;=</td>
+				<td>Mindre end eller lig med</td>
+				<td>5 &lt;= 8 → sand</td>
+			</tr>
+
+			<tr>
+				<td>!=</td>
+				<td>Ikke lig med</td>
+				<td>5 != 8 → sand</td>
+			</tr>
+			<tr>
+				<td>x and y</td>
+				<td >Både x og y skal være sand</td>
+				<td >x=6 ; y=3<br /><br />(x &lt; 10 and y &gt; 1) →  sand</td>
+			</tr>
+			<tr>
+				<td>x or y</td>
+				<td>Kun en behøver at være sand</td>
+				<td>x=6 ; y=3<br /><br/>(x == 6 or y == 1) → sand</td>
+			</tr>
+		</tbody>
+	</table>
+
+
+</details>
+
+<h4>Er du myndig?</h4>
+
+<p>Lav en kode der undersøger om man er myndig eller ej (18+)</p>
+
+<h4>Pendlerkort</h4>
+
+<p>Lav en kode der undersøger om personen hos DSB er berettiget til et ungdomskort (under 20), et pensionistkort (over 65) eller skal købe en almindelig billet.</p>
+
+<ul class="disc">
+	<li>Under 20 → ungdomskort</li>
+	<li>20-64 → almindeligt</li>
+	<li>65-110 → Pensionistkort</li>
+	<li>110+ → Spøgelser betaler ikke billetter</li>
+</ul>
+
+<h4>Er det fredag?</h4>
+
+<p>På hjemmesiden <a href="http://www.erdetfredag.dk/" target="_blank"> http://www.erdetfredag.dk/</a> får du at vide om det er fredag. Lav en 	lignende kode, hvor svarene er:</p>
+
+<ul class="disc">
+	<li>Hvis Fredag → YES det er fredag!</li>
+	<li>Hvis Lørdag og Søndag → Nej... Men det er weekend!</li>
+	<li>Ellers → Nope .... :(</li>
+</ul>
+
+
+<p><span class="bold">HINT:</span> For at få det til lykkes skal du importere modulet <span class="inl_cmd">strftime</span> fra pakken <span class="inl_cmd">time</span>. Ved hjælp af den kan man finde:</p>
+
+<details>
+
+	<summary>Overblik over <span class="inl_cmd">strftime()</span></summary>
+	
+
+
+<table class="">
+	<thead>
+		<tr>
+			<th colspan="2">Dato</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>%u</td>
+			<td>dag i ugen (mandag=1, søndag=7)</td>
+		</tr>
+		<tr>
+			<td>%V</td>
+			<td>Ugenr: 00-53 (ISO 8601)</td>
+		</tr>
+		<tr>
+			<td>%d</td>
+			<td>Hvilken dag i måneden</td>
+		</tr>
+		<tr>
+			<td>%m</td>
+			<td>Månede</td>
+		</tr>
+		<tr>
+			<td>%y</td>
+			<td>Årstal - 2 cifre (17)</td>
+		</tr>
+		<tr>
+			<td>%Y</td>
+			<td>Årstal - 4 cifre (2017)</td>
+		</tr>
+		<tr>
+			<td>%D</td>
+			<td>Dato (Måned/dag/år)</td>
+		</tr>
+	</tbody>
+</table>
+
+<table class="">
+	<thead>
+		<tr>
+			<th colspan="2">Tid</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>%H</td>
+			<td>Timetal (0-24)</td>
+		</tr>
+		<tr>
+			<td>%M</td>
+			<td>Minuttal</td>
+		</tr>
+		<tr>
+			<td>%S</td>
+			<td>Sekundtal</td>
+		</tr>
+		<tr>
+			<td>%R</td>
+			<td>Klokken (timer:minutter)</td>
+		</tr>
+		<tr>
+			<td>%T</td>
+			<td>klokken (timer:minutter:sekunder)</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Eksempel på <span class="inl_cmd">strftime()</span> kørt på en onsdag:</p>
+
+<pre>
+	<code class="python">>>> from time import strftime
+>>> strftime("%u")
+'3'</code>
+</pre>
+
+
+<p>Se fuldliste her: <a href="https://www.tutorialspoint.com/python/time_strptime.htm" target="_blank">https://www.tutorialspoint.com/python/time_strptime.htm</a></p>
+
+</details>
+
+<p>Ændr. koden så den fortæller hvor mange dage der er til fredag.</p>
+
+
+<h4>Hvornår har du fri</h4>
+
+<p>Lav en kode der fortæller hvor mange timer og minutter der er til du har fri, for hver dag i ugen.</p>
+
+
+<h2>Try - fang fejl</h2>
+
+<p>I alle eksemplerne ovenfor forudsætter vi at brugeren gør som vi har bedt om. Altså indtaster tingene korrekt. Det kan vi bare ikke altid regne med at de gør. Derfor skal du nu lære om en metode til at fange fejl, og give brugeren besked tilbage.</p>
+
+<p>Funktionen ser ud som herunder:</p>
+
+<pre><code class="python">try:
+	Kode der skal køres
+except:
+	Det der skal køres hvis koden under try laver fejl</code></pre>
+	
+<p>Et konkret eksempel er f.eks. hvis du du vil have brugeren skal indtaste et heltal - f.eks. antallet af sodavand:</p>
+
+<pre><code class="python">antal = 0
+try:
+    antal = int(input("Antal sodavand: "))
+except:
+    print(f"{antal} er ikke et heltal. Prøv igen!")</code></pre>
+
+<p>Her har jeg kørt koden, og indtastet et <em>ja</em>, <em>8.0</em> og 8</p>
+    
+<samp><pre>>>> %Run test.py
+<span class="thonny_print">Antal sodavand: <span class="blue">g</span></span>
+<span class="thonny_print">0 er ikke et heltal. Prøv igen!</span>
+>>> %Run test.py
+<span class="thonny_print">Antal sodavand: <span class="blue">8.0</span></span>
+<span class="thonny_print">0 er ikke et heltal. Prøv igen!</span>
+>>> %Run test.py
+<span class="thonny_print">Antal sodavand: <span class="blue">8</span></span>
+>>></pre></samp>    
+
+<p>Læg mærke til 2 ting:</p>
+
+<ol class="">
+	<li>Variablen skal oprettes før du anvender den i <code class="">try</code></li>
+	<li>Selvom <em>8.0</em> er det samme som <em>8</em>, så brokker koden sig.</li>
+</ol>
+    
+<p>Du vil senere lære hvordan denne teknik kan bruges til at spørgsmålet bliver stillet igen.</p>   
+
+<h3>Raise Exception</h3>
+
+<p>Vil du tvinge en fejl igennem, så kan det gøres ved: <span class="inl_cmd">raise Exception</span></p>
+
+<pre>
+	<code class="python">try:
+	raise Exception
+except:
+	print("Der er fejl i koden")	</code>
+</pre>
+
+<samp><pre>>>> %Run test.py
+Der er fejl i koden</pre></samp>
+
+<p>Dette kan bruges under test, men kan også være brugbart. Det kan f.eks. være brugbart til at afbryde programmet hvis en bruger på flere forsøg ikke gør hvad han skal (eller må!). I stedet for at brugeren bliver ved med at forsøge sig, så vælger du som programmør at afbryde programmet, og kommer med en beskes om hvor brugeren skal henvende sig for at få hjælp.</p>
+
+<h3>Murphy's lov</h3>
+
+<p>Som programmør skal man prøve at forudse den slags problemer, for man skal huske på Murphy's lov: <q cite="Myrphys lov.">Hvis noget kan gå galt, så vil det gå galt</q></p>
+
+
+<h2>X in Y</h2>
+
+<p>Skal du finde ud af om en tekststreng findes i en tekststreng kan du bruge:</p>
+
+<pre><code class="python">[TEKSTSTRENG] in [TEKST]</code></pre>
+
+<p>Hvis ordet står i sætningen vil der blive svaret tilbage med <em>True</em>, og hvis ikke <em>False</em>.</p>
+
+
+<blockquote>
+	<p>Der findes mange forskellige programmeringssprog, og her lærer vi om Python.</p>	
+</blockquote>
+
+<p>Lad os prøve at søge i denne tekst ved hjælp af shell:</p>
+
+<pre><code class="python">>>> tekst = "Der findes mange forskellige programmeringssprog, og her lærer vi om Python."
+
+>>> "Python" in tekst
+True
+>>> "sprog" in tekst
+True
+>>> "Java" in tekst
+False </code></pre>
+
+<p>Læg mærke til at funktionen finder <em>sprog</em>. Funktionen søger kombinationen af bogstaver ... ikke selve ordet sprog.</p>
+
+
+<h3>Opgaver</h3>
+
+<div id="ordtekst1"></div>
+
+<h4>Ord i tekst 1</h4>
+
+<p>Ændr opgaven så du ved hjælp af et input kan få svar på om et ord findes i tekstrengen</p>
+
+<p>Indsæt et større tekst fra nettet og lav søgninger på ord i denne tekst ved hjælp af et brugerinput.</p>
+
+
+
+
+	
+</div><!-- end: col-md-9 -->
+
+<footer class="fixed-bottom text-center bg-light">
+
+	<p onclick="parentNode.remove()"><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons licens" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>Indholdet på Vidas.dk er licenseret under <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> og er skrevet af Thomas Jensen. (<a href="../hvem_er_jeg.html" target="_blank">Læs mere</a>)</p>
+
+</footer>
+	
+	
+</div><!-- end: row -->
+
+</div> <!-- end: container-fluid -->
+
+
+<!-- SCRIPT SECTION -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/js/bootstrap.min.js"></script>
+
+
+
+<!-- HIGHLIGHT -->
+	<script src="../js/highlight.pack.js" type="text/javascript"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+
+<!-- MATHJAX -->
+<script type="text/javascript" 
+	src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  displayAlign: "left",
+  displayIndent: "0em"
+});
+</script>
+
+
+<!-- TOCIFY -->
+<script>
+	$(function() {var toc = $("#toc").tocify({ selectors: "h2, h3, h4" }).data("toc-tocify"); });
+</script>
+<!-- GOOGLE ANALYTICS -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-89933285-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</body>
+</html>

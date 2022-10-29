@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <title>Python: Lister</title>
+  <link rel="icon" href="../images/favicon.png">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono|Ubuntu|Ubuntu+Condensed' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/stylesheets/jquery.tocify.min.css">
+  <link rel="stylesheet" href="../css/style_new.css" />
+<!-- Scripts in bottom to speed up pageload-->
+ 
+
+</head>
+<body>
+	
+	
+<div class="container-fluid">
+
+<div class="row">
+	
+<div class="col-sm-3">
+	
+	<nav>
+		
+		<div id="toc">
+		
+			<div id="toc_headline"></div>
+		
+		</div>
+		
+	</nav>
+
+</div><!-- Start slut 1. kolonne - TOC -->
+	
+<div class="col-sm-9">
+	
+<figure id="">
+
+	<img class="" src="images/python-logo-inkscape.svg" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>
+	
+<h1>Lister i Python</h1>
+
+<p>Lister bruges når vi gerne vil lave en datasamling. Det kan være både tekst, værdier eller True/False. Her er en eksempel med frugt:</p>
+
+<ol class="disc">
+	<li>ananas</li>
+	<li>banan</li>
+	<li>citron</li>
+</ol>
+
+<p>Her har jeg lavet frugt listen i Python (i shell) og printet den ud:</p>
+
+<pre><code class="python">>>> frugt = ["ananas","banan","citron"]
+>>> frugt
+['ananas', 'banan', 'citron']</code></pre>
+
+<p>Læg mærke til at du skal bruge <em>[] (firkantede parenteser)</em> når du laver denne type lister.</p>
+
+<p>Hvis jeg gerne vil udskrive listens elementer kan jeg gøre det ved at skrive placeringen i listen i en firkantet parentes bagefter. Husk at Python tæller fra 0, så index-tallene vil være:</p>
+
+<ol class="disc" start="0">
+	<li>ananas</li>
+	<li>banan</li>
+	<li>citron</li>
+</ol>
+
+<p>Du kan altså ramme elementerne på følgende måde:</p>
+
+<pre><code class="python">>>> frugt[0]
+'ananas'
+>>> frugt[1]
+'banan'
+>>> frugt[2]
+'citron'</code></pre>
+
+
+
+<h2>Arbejde med lister</h2>
+
+<h3>Find placering i listen</h3>
+
+<p>Hvis du gerne vil finde hvad et elements placering skal du bruge <code class="">.index()</code>. Husk at Python tæller fra 0.</p>
+
+<pre><code class="python">>>> frugt = ["ananas","banan","citron"]
+>>> frugt.index("banan")
+1</code></pre>
+
+
+<h3>Tilføj til listen</h3>
+
+<p>For at tilføje til listen tilføjer man <em>.append</em>. Herunder tilføjer vi <em>daddel</em> til vores liste</p>
+
+<pre><code class="python">>>> frugt = ["ananas","banan","citron"]
+>>> frugt.append("daddel")
+>>> frugt
+['ananas', 'banan', 'citron', 'daddel']</code></pre>
+
+<h3>Ændr et element</h3>
+
+<p>Her vil jeg gerne ændre det <em>annanas</em> til <em>appelsin</em>. Det gør jeg på følgende måde:</p>
+
+<pre><code class="python">>>> frugt = ["ananas","banan","citron"]
+>>> frugt[0] = "appelsin"
+>>> frugt
+['appelsin', 'banan', 'citron']</code></pre>
+
+<p><code class="">frugt[0]</code> kan egentlig forstås som en variabel. Tallet 0, der står i den firkantede parentes der er det samme som den første plads i listen. Det svarer til hvad du normalt vil gøre for at ændre en variabel i Python. Her gør du det bare inde i en liste.</p>
+
+<h3>Fjerne element</h3>
+
+<p>Der er 3 måder du kan fjerne et element i liste.</p>
+
+<dl class="not_strong">
+	<dt><code class="">.remove()</code></dt>
+	<dd>Fjerner den første værdi af sammen navn som det der er i parentesen</dd>
+	<dt><code class="">.pop()</code></dt>
+	<dd>Fjerner den placering i listen der er nævnt eller det sidste element</dd>
+	<dt><code class="">del</code></dt>
+	<dd>Fjerner det element der er nævnt i listen</dd>
+	<dt><code class="">.clear()</code></dt>
+	<dd>Fjerner alle elementer fra listen</dd>
+</dl>
+
+<p><a href="https://www.w3schools.com/python/python_lists_remove.asp" target="_blank">https://www.w3schools.com/python/python_lists_remove.asp</a></p>
+
+<h4>.remove()</h4>
+
+<p>Med <code class="">.remove()</code> fjerner du et navngivet element. Her fjerner vi <em>banan</em> fra listen.</p>
+
+<pre><code class="python">>>> frugt = ["ananas","banan","citron"]
+>>> frugt.remove("banan")
+>>> frugt
+['ananas', 'citron']</code></pre>
+
+<p>Hvis listen har flere elementer der hedder det samme, så er det kun det første element der bliver fjernet:</p>
+
+<pre><code class="python">>>> frugt = ["ananas","banan","citron","banan"]
+>>> frugt.remove("banan")
+>>> frugt
+['ananas', 'citron',"banan"]</code></pre>
+
+<h4>del</h4>
+
+<p><code class="">del</code> fjerner det element der bliver nævnt, og kan også bruges til at slettet hele listen.</p>
+
+<p>Her fjerner jeg igen <em>banan</em>:</p>
+
+<pre><code class="python">>>> frugt = ["ananas","banan","citron"]
+>>> del frugt[1]
+>>> frugt
+['ananas', 'citron']</code></pre>
+
+<p>Hvis jeg vil fjerne listen fuldstændig skriver jeg:</p>
+
+<pre><code class="python">>>> frugt = ["ananas","banan","citron"]
+>>> del frugt
+>>> frugt
+<span class="red">Traceback (most recent call last):
+  File "&lt;pyshell>", line 1, in &lt;module>
+NameError: name 'frugt' is not defined</span>
+>>> </code></pre>
+
+<p>Grunden til at der kommer en fejlmeddelelse er, at Python ikke kan udskrive frugt mere ... fordi den er blevet fjernet.</p>
+
+<h4>.clear()</h4>
+
+<p><code class="">.clear()</code> fjerner alle elementer fra en liste:</p>
+
+<pre><code class="python">>>> frugt = ["ananas","banan","citron"]
+>>> frugt.clear()
+>>> frugt
+[]</code></pre>
+
+<h4>Brug og fjern - .pop()</h4>
+
+<p>Hvis du vil bruge et element fra en liste og samtidig fjerne det fra listen kan du bruge <code class="">.pop()</code>, hvor tallet i parentesen fortæller hvilket element der skal arbejdes med. Skriver du ikke et tal, så anvendes det sidste i listen.</p>
+
+<pre><code class="python">>>> frugt = ["ananas","banan","citron"]
+>>> frugt.pop(1)
+'banan'
+>>> frugt
+['ananas', 'citron']</code></pre>
+
+<p>Læg mærke til, at <em>banan</em> bliver udskrevet. Du kan altså gøre to ting med en kommando.</p>
+
+<h3>Kopier liste</h3>
+
+<p>For at lave en kopi af listen bruger du <code class="">.copy()</code></p>
+
+<pre><code class="python">>>> frugt = ["ananas","banan","citron"]
+>>> kopi_af_frugt = frugt.copy()
+>>> frugt
+['ananas', 'banan', 'citron']
+>>> kopi_af_frugt
+['ananas', 'banan', 'citron']</code></pre>
+
+<h3>Antal elementer i listen</h3>
+
+<p>For at finde antallet af elementer i en liste skal du bruge <code class="">len()</code> - ligesom du gjorde ved tekststrengene.</p>
+
+<pre><code class="python">>>> frugt = ["ananas","banan","citron"]
+>>> len(frugt)
+3</code></pre>
+
+<h3>Er et element i listen</h3>
+
+<p>Hvis du vil tjekke om et element er i listen skal du gøre sådan her:</p>
+
+<pre><code class="python">>>> frugt = ["ananas","banan","citron"]
+>>> "ananas" in frugt
+True
+>>> "daddel" in frugt
+False</code></pre>
+
+<h3>Kør igennem hele listen</h3>
+
+<p>Du kan også køre igennem hele listen ved hjælp af en for-løkke:</p>
+
+<pre><code class="python">frugt = ["ananas","banan","citron"]
+for i in frugt:
+	print(i)</code></pre>
+	
+<samp><pre>>>> %Run test.py
+ananas
+banan
+citron</pre></samp>
+	
+<p>Det er altså ikke nødvendigt at kende antallet af elementer for at gøre det.</p>	
+
+<h3>Program - Gæt en frugt</h3>
+
+<p>Prøv at se det gætte-program jeg har lavet her.</p>
+
+<pre><code class="python">frugt = ["ananas","banan","citron"]
+
+while True:
+    gæt = input("Gæt en frugt: ")
+    
+    if gæt in frugt:
+        print("\nDu har gættet rigtigt\n")
+    else:
+        print("\nDet var ikke rigtigt\n")</code></pre>
+
+<samp><pre>>>> %Run test.py
+<span class="thonny_print">Gæt en frugt: <span class="blue">appelsin</span></span>
+
+<span class="thonny_print">Det var ikke rigtigt</span>
+
+<span class="thonny_print">Gæt en frugt: <span class="blue">banan</span></span>
+
+<span class="thonny_print">Du har gættet rigtigt</span>
+
+<span class="thonny_print">Gæt en frugt: </span></pre></samp>
+
+<p>Problemet med det program er at det aldrig vil stoppe med at køre, og man kan gætte på banan alle de gange man vil.</p>
+
+<p>For at fjerne det problem har vi brug for at gøre to ting:</p>
+
+<ul class="disc">
+	<li>Fjerne et element hvis det er gættet rigtigt</li>
+	<li>Stoppe programmet når der ikke er flere elementer tilbage i listen</li>
+</ul>
+
+<pre><code class="python">frugt = ["ananas","banan","citron"]
+
+while True:
+    
+    if len(frugt) == 0:
+        print("Der er ikke mere frugt")
+        break
+
+    gæt = input("Gæt en frugt: ")
+    
+    if gæt in frugt:
+        print("\nDu har gættet rigtigt\n")
+        frugt.remove(gæt)
+    else:
+        print("\nDet var ikke rigtigt\n")</code></pre>
+
+<samp><pre>>>> %Run test.py
+<span class="thonny_print">Gæt en frugt: <span class="blue">ananas</span></span>
+
+<span class="thonny_print">Du har gættet rigtigt</span>
+
+<span class="thonny_print">Gæt en frugt: <span class="blue">banan</span></span>
+
+<span class="thonny_print">Du har gættet rigtigt</span>
+
+<span class="thonny_print">Gæt en frugt: <span class="blue">citron</span></span>
+
+<span class="thonny_print">Du har gættet rigtigt</span>
+
+<span class="thonny_print">Der er ikke mere frugt</span></pre></samp>
+
+<p>Kan du ændre programmet, Så det også fortæller hvor mange stykker frugt der er tilbage?</p>
+
+<p>Output skal ligne det herunder:</p>
+
+<samp><pre>>>> %Run test.py
+<span class="thonny_print">Der er 3 stykker frugt - gæt en af dem: <span class="blue">appelsin</span></span>
+
+<span class="thonny_print">Du har gættet rigtigt</span>
+
+<span class="thonny_print">Der er 2 stykker frugt - gæt en af dem: <span class="blue">banan</span></span>
+
+<span class="thonny_print">Du har gættet rigtigt</span>
+
+<span class="thonny_print">Der er 1 stykker frugt - gæt en af dem: <span class="blue">citron</span></span>
+
+<span class="thonny_print">Du har gættet rigtigt</span>
+
+<span class="thonny_print">Nu er der ikke mere frugt tilbage.</span></pre></samp>
+
+
+<details>
+
+	<summary>Koden til ændring af programmet</summary>
+
+<pre><code class="python">frugt = ["ananas","banan","citron"]
+
+while True:
+    
+    if len(frugt) == 0:
+        print("Nu er der ikke mere frugt tilbage.")
+        break
+
+    gæt = input(f"Der er {len(frugt)} stykker frugt - gæt en af dem: ")
+    
+    if gæt in frugt:
+        print("\nDu har gættet rigtigt\n")
+        frugt.remove(gæt)
+    else:
+        print("\nDet var ikke rigtigt\n")
+            </code></pre>
+
+</details>
+
+<h2>Skrivning af lister</h2>
+
+<p>Herover har jeg brugt en meget kort liste (<em>frugt</em>), som er let at overskue. Men hvis man laver længere lister kan det anbefales at skrive dem på en anden måde:</p>
+
+<pre><code class="python">frugter = [
+	"ananas",
+	"banan",
+	"citron",
+	"daddel",
+	"fersken",
+	"grapefrugt",
+	"hindbær",
+	"jordbær"
+	]</code></pre>
+
+<p>Den liste er noget nemmere at læse end denne:</p>
+
+<pre><code class="python">frugter = ["ananas","banan","citron","daddel","fersken","grapefrugt","hindbær","jordbær"]</code></pre>
+
+<p>Brug denne opskrivning når du har mere end 3 elementer - for overblikkets skyld.</p>
+
+
+<h2>Fyld liste</h2>
+
+<p>Du kan fylde lister ved hjælp af funktioner. Se dette eksempel eksempel</p>
+
+<pre><code class="python">>>> mine_tal = list(range(1,21))
+>>> mine_tal
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]</code></pre>
+
+<p>Du kan også tilføje bogstaver og tegn. Her skal du huske at importere <em>string</em>:</p>
+
+<pre><code class="python">>>> mine_bogstaver = list()</code></pre>
+
+<pre><code class="python">>>> import string
+>>> små_bogstaver = list(string.ascii_lowercase + "æ" + "ø" + "å")
+>>> små_bogstaver
+['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'æ', 'ø', 'å']</code></pre>
+
+<div class="alert">
+	
+	<p>ASCII har kun de engelske bostaver. Derfor skal du huske at lægge de danske bogstaver til, hvis de også skal med.</p>
+	
+	<pre><code class="python">string.ascii_lowercase + "æ" + "ø" + "å"</code></pre>
+
+</div>
+
+<p>Du kan også importere andre tegn og tal lister (husk at tilføje de danske tegn):</p>
+
+<ul class="none">
+	<li>ascii_lowercase = 'abcdefghijklmnopqrstuvwxyz'</li>
+	<li>ascii_uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'</li>
+	<li>digits = '0123456789'</li>
+	<li>ascii_letters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'</li>
+	<li>printable = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTU...</li>
+	<li>punctuation = '!"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~'</li>
+	<li>whitespace = ' \t\n\r\x0b\x0c'</li>
+</ul>
+
+<h2>Sortering af lister</h2>
+
+<p>Nogle gange kan der være et behov for at lister bliver sorteret i alfabetisk orden eller i værdier. Der gør du med <code class="python">.sort()</code> og <code class="python">sorted()</code>.</p>
+
+<dl class="not_strong">
+	<dt><code class="">.sort()</code></dt>
+	<dd>Sortere og ændrer listen</dd>
+	<dt><code class="python">sorted(**list**)</code></dt>
+	<dd>Laver en udskrift af den sorterede liste</dd>
+</dl>
+
+
+<p>Her har jeg lavet et eksempel hvor en liste bliver fyldt med 20 terningkast:</p>
+
+<pre><code class="python">from random import randrange
+
+kast = [] # Her oprettes listen kast
+
+for i in range(20):
+    kast.append(randrange(1,7))
+    
+print(kast) </code></pre>
+
+<samp><pre>>>> %Run test.py
+[6, 5, 3, 3, 6, 5, 3, 1, 3, 2, 6, 5, 6, 4, 5, 4, 3, 1, 6, 3]</pre></samp>
+
+<p>Hvis vi gerne vil have et overblik kan vi sortere listen</p>
+
+<pre><code class="python">>>> kast.sort()
+>>> kast
+[1, 1, 2, 3, 3, 3, 3, 3, 3, 4, 4, 5, 5, 5, 5, 6, 6, 6, 6, 6]</code></pre>
+
+<p>Læg mærke til at jeg lavede programmet øverst, men arbejder videre med det i <em>Shell</em>!</p>
+
+<p>Du skal også være opmærksom på, at vi nu har ændret den oprindelige liste. elementernes rækkefølge er blevet ændret.</p>
+
+<h3>Omvendt sortering</h3>
+
+<p>Hvis du vil have elementerne i modsat rækkefølge, indsætter du <em>reverse=True</em> i parentesen.</p>
+
+<pre><code class="python">>>> kast.sort(reverse=True)
+>>> kast
+[6, 6, 6, 6, 6, 5, 5, 5, 5, 4, 4, 3, 3, 3, 3, 3, 3, 2, 1, 1]</code></pre>
+
+<h3>Sortering efter størrelse</h3>
+
+<p>Du kan også sortere efter størrelse ved at indsætte <em>key=len</em> i parentesen</p>
+
+<pre><code class="python">>>> øer = ["Madagaskar","Fyn","Rømø"]
+>>> øer
+['Madagaskar', 'Fyn', 'Rømø']
+>>> øer.sort(key=len)
+>>> øer
+['Fyn', 'Rømø', 'Madagaskar']</code></pre>
+
+<h2>2-dimensionelle lister</h2>
+
+<p>For at lave 2-dimensionelle lister (rækker og kolonner), skal du indsætte lister i listen.</p>
+
+<p>Her laver jeg 4 rækker svarende til et nummerisk tastetur</p>
+
+<pre><code class="python">grid = [
+    [1,2,3],
+    [4,5,6],
+    [7,8,9],
+    [0]
+]</code></pre>
+
+<p>For at ramme det enkelte listeelemen skal du angive hvor underlisten i listen ligger ... og så skal du angive det element du vil ramme:</p>
+
+<p>Altså <code class="python">*listenavn* [placering i listen] [placering i underlisten]</code></p>
+
+<pre><code class="python">>>> grid[1][2]
+6</code></pre>
+
+
+<h2>Forskellige listetyper</h2>
+
+<p>I Python findes der 3 forskellige typer af lister, som er praktiske at bruge til forskellige forhold. Indtil videre har vi kun kigget på en type, nemlig <code class="">lists</code>. De tre forskellige typer er:</p>
+
+<ul class="disc">
+	<li>Lister - skrives med kantede parenteser/brackets (<em>[]</em>)</li>
+	<li>Tuples - skrives med almindelige parenteser (<em>()</em>)</li>
+	<li>Sets - skrives med krøllede parenteser (<em>{}</em>)</li>
+</ul>
+
+<h3>Forskel mellem lister og tuples</h3>
+
+<p>Lister og Tuples minder om hinanden, men tuples er statiske. Du kan altså ikke ændre indholdet i en tuple. I Python betyder det, at du skal anvende tuples, når vi taler om statiske ting f.eks: månedsnavne, medaler og regioner i Danmark.</p>
+
+<div class="row">
+
+<div class="col-lg-4">
+	
+<pre><code class="python">måneder = (
+	"januar",
+	"februar",
+	"marts",
+	"april",
+	"maj",
+	"juni",
+	"juli",
+	"august",
+	"september",
+	"oktober",	
+	"november",
+	"december"
+)</code></pre>	
+	
+</div>
+	
+<div class="col-lg-4">
+	
+<pre><code class="python">medaljer = (
+	"Guld",
+	"Sølv",
+	"Bronze"
+)</code></pre>	
+	
+</div>
+	
+<div class="col-lg-4">
+	
+<pre><code class="python">regioner_dk = (
+	"Region Nordjylland",
+	"Region Midtjylland",
+	"Region Syddanmark",
+	"Region Hovedstaden",
+	"Region Sjælland"
+)</code></pre>	
+	
+</div>
+
+</div>
+
+<h3>Forskellen mellem lister og set</h3>
+
+<p>Forskellen mellem lister og sets er, at sets ikke kan indeholde elementer der har samme værdi, og at sets ikke er indekserede - har en fast rækkefølge). Det kan vi bruge når vi arbejder med analyser af lister. Sets vil blive gennemgået på sin eden sige, da de er smarte at bruge når der arbejdes med mængder.</p>
+
+<h3>Forskel på listeform</h3>
+
+<dl class="">
+	<dt>Lists</dt>
+	<dd>
+		<ul class="disc">
+			<li>Fast rækkefølge (ordnet)</li>
+			<li>Kan have flere elementer med sammen værdi</li>
+			<li>Kan ændres (ændre, tilføje, fjerne)</li>
+		</ul>
+		
+		<p>Lister laves med <em>[] - kantede parenteser/brackets</em></p>
+		
+			
+	</dd>
+	<dt>Tuples</dt>
+	<dd>
+		<ul class="disc">
+			<li>Fast rækkefølge (ordnet)</li>
+			<li>Kan have flere elementer med sammen værdi</li>
+			<li>Kan ikke ændres</li>
+		</ul>
+		
+		<p>Tuples laves med <em>() - almindelige parenteser</em></p>
+			
+	</dd>
+	<dt>Sets</dt>
+	<dd>
+		<ul class="disc">
+			<li>Vilkårlig rækkefølge (uordnet)</li>
+			<li>Elementer kan ikke have samme værdi</li>
+			<li>Kan ændres (ændre, tilføje, fjerne)</li>
+		</ul>
+		
+		<p>Sets laves med <em>{} - krøllede parenteser</em></p>
+			
+	</dd>
+</dl>
+
+<!--
+
+
+<h3>Opgaver</h3>
+
+<h4>Opgave - lister</h4>
+
+<p>Lav et program hvor brugeren ved hjælp af et input kan:</p>
+
+<ul class="disc">
+	<li>... laver en udskrift af listen</li>
+	<li>... tilføje et navn til listen</li>
+	<li>... fjerne et navn på listen</li>
+	<li>... søge efter navne i listen</li>
+	<li>... afslutte programmet</li>
+</ul>
+
+<p>Det er reelt en lille database du programmerer her ;)</p>
+-->
+
+
+
+
+	
+</div><!-- end: col-md-9 -->
+
+<footer class="fixed-bottom text-center bg-light">
+
+	<p onclick="parentNode.remove()"><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons licens" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>Indholdet på Vidas.dk er licenseret under <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> og er skrevet af Thomas Jensen. (<a href="../hvem_er_jeg.html" target="_blank">Læs mere</a>)</p>
+
+</footer>
+	
+	
+</div><!-- end: row -->
+
+</div> <!-- end: container-fluid -->
+
+
+<!-- SCRIPT SECTION -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/js/bootstrap.min.js"></script>
+
+
+
+<!-- HIGHLIGHT -->
+	<script src="../js/highlight.pack.js" type="text/javascript"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+
+<!-- MATHJAX -->
+<script type="text/javascript" 
+	src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  displayAlign: "left",
+  displayIndent: "0em"
+});
+</script>
+
+
+<!-- TOCIFY -->
+<script>
+	$(function() {var toc = $("#toc").tocify({ selectors: "h2, h3, h4" }).data("toc-tocify"); });
+</script>
+<!-- GOOGLE ANALYTICS -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-89933285-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</body>
+</html>

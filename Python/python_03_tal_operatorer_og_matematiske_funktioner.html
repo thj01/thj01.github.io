@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <title>Python: Tal, operatorer og funktioner</title>
+  <link rel="icon" href="../images/favicon.png">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono|Ubuntu|Ubuntu+Condensed' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/stylesheets/jquery.tocify.min.css">
+  <link rel="stylesheet" href="../css/style_new.css" />
+<!-- Scripts in bottom to speed up pageload-->
+ 
+
+</head>
+<body>
+	
+	
+<div class="container-fluid">
+
+<div class="row">
+	
+<div class="col-sm-3">
+	
+	<nav>
+		
+		<div id="toc">
+		
+			<div id="toc_headline"></div>
+		
+		</div>
+		
+	</nav>
+
+</div><!-- Start slut 1. kolonne - TOC -->
+	
+<div class="col-sm-9">
+	
+<figure id="">
+
+	<img class="" src="images/python-logo-inkscape.svg" alt="" title="" />
+
+	<figcaption></figcaption>
+
+</figure>	
+
+<h1>Tal, operatorer og matematiske funktioner</h1>
+	
+<h2>Tal og operatorer</h2>
+
+<p>I dette afsnit vil du lære om hvordan Python arbejder med tal og værdier.</p>
+
+
+<h2>Hel- og decimaltal</h2>
+
+<p>Python arbejder med 2 forskellige taltyper:</p>
+
+<ul class="disc">
+	<li>Heltal, som kaldes integers</li>
+	<li>Decimaltal, som kaldes float</li>
+</ul>
+
+<p>Vi kan kende taltypen på om der er et <em>. (punktum)</em> i det eller ej, og vi kan få Python til at fortælle det med kommandoen <code class="">type()</code>.</p>
+
+<p>Når man arbejder med tal i Python skal man ikke definere om man arbejder med hel- eller decimaltal (intergers eller floating point). Det holder Python selv styr på ud fra din indtastning. Husk at bruge <em>. (punktum)</em> ved decimaltal.</p>
+
+<pre><code class="python">>>> a = 3
+>>> b = 3.14
+>>> type(a)
+&lt;class 'int'>
+>>> type(b)
+&lt;class 'float'></code></pre>
+
+<h2>Computeren tæller fra 0</h2>
+
+<p>Computere tæller anderledes end os mennesker, fordi 0 er den første værdi. For os er tallet 1 den første værdi, fordi tæller når der er noget at tælle. Vi bruger f.eks. fingrene.</p>
+
+<p>Computere holder styr på tallene ved hjælp af transistorer, som enten kan være tændt eller slukket. Så når computeren skal starte med at tælle, så afsætter den et antal transistorer dertil - Her kigger vi på to.</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th scope="col">Tilstand</th>
+			<th scope="col">Transistor 1</th>
+			<th scope="col">Transistor 2</th>
+			<th scope="col">Computerens Værdi</sub></th>
+			<th scope="col">Vores værdi</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1. tilstand</td>
+			<td>Slukket</td>
+			<td>Slukket</td>
+			<td>00</td>
+			<td>0</td>
+		</tr>
+		<tr>
+			<td>2. tilstand</td>
+			<td>Slukket</td>
+			<td>Tændt</td>
+			<td>01</td>
+			<td>1</td>
+		</tr>
+		<tr>
+			<td>3. tilstand</td>
+			<td>Tændt</td>
+			<td>Slukket</td>
+			<td>10</td>
+			<td>2</td>
+			
+		</tr>
+		<tr>
+			<td>4. tilstand</td>
+			<td>Tændt</td>
+			<td>Tændt</td>
+			<td>11</td></td>
+			<td>3</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Selvom ingen af transistorerne i den første tilstand er tændt, så er det computerens første værdi. Og den er 0 - for der er ingen aktivitet. Tallene <em>00, 01, 10 og 11</em> kaldes for binære tal. I stedet for at skifte position efter 10 værdier (base 10) ... skifter de efter 2 (base 2).</p>
+
+<p>Er du lidt nysgerrig på binære tal kan du bruge Python til at undersøge dem, ved at læse herunder:</p>
+
+<details>
+
+	<summary>Læs mere om konvertering af tal</summary>
+
+	<p><strong>Fra binær tal til 10-talssystemet (base 10)</strong></p>
+
+<pre><code class="python">>>> int("111111",2)
+63
+>>> int("10111001",2)
+185</code></pre>
+
+<p>Læg mærke til at det binære tal skal indsættes som tekst.</p>
+
+<p><strong>Fra decimal til binær</strong></p>
+
+<pre><code class="python">>>> bin(200)
+'0b11001000'
+>>> bin(3)
+'0b11'</code></pre>
+
+<p>Læg mærke til at tallet har en <em>header</em>. <em>0b</em> står for binær</p>
+
+<p>På samme måde kan du også konvertere til og fra hexadecimale tal:</p>
+
+<pre><code class="python">>>> int("ff",16)
+255
+>>> hex(255)
+'0xff'</code></pre>
+
+</details>
+
+
+
+<h2>Regneregler</h2>
+
+<p>Regningsarterne fungerer ved at anvende tegnene: <em>+, -, * og /</em>. Se herunder:</p>
+
+<pre><code class="python">>>> 6+3
+9
+>>> 6-3
+3
+>>> 6*3
+18
+>>> 6/3
+2.0</code></pre>
+
+<p>Læg mærke til at resultatet ved division er en float. Python vil altid konvertere divisionsstykker til float uanset om det giver et heltal eller ej. Er resultatet med et <output>XX.0</output> ligesom her, kan det konverteres til en int med kommandoen <code class="">int(2.0)</code>.</p>
+
+<p>Python anvender korrekte regneregler, hvilket vil sige at <em>+ og -</em> adskiller ledene. Der skal altsåsættes paranteser for at omgå dette. Se eksemplerne herunder:</p>
+
+<pre><code class="python">>>> 3+2*6
+15
+>>> (3+2)*6
+30
+>>> 3+6/2
+6.0
+>>> (3+6)/2
+4.5	</code></pre>
+
+<p><strong>Øvelse</strong></p>
+
+<p>I de nedenstående opgaver skal du lave regnestykker ved hjælp af at bruge alle tallene, regningsarterne <em>+, -, * og /</em> samt parenteser:</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th>Tal</th>
+			<th>Resultater</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>6, 3, 4</td>
+			<td>-6, 6, 8, 18, 21</td>
+<!--
+			-(3*4)+6 = -6
+			(3*4)-6 = 0
+			6/3*4 = 8
+			3*4+6 = 18
+			6*4-3 = 21
+-->
+		</tr>
+		<tr>
+			<td>4, 4, 8</td>
+			<td>-16, -7, 0, 1, 2, 6, 28</td>
+<!--
+			-(8/4)*4 = -16
+			-8+4/4 = -7
+			8-4-4 = 0
+			8/(4+4) = 1
+			4-8/4 = 2
+			4+8/4 = 6
+			8*4-4 = 28
+-->
+		</tr>
+	</tbody>
+</table>
+
+
+
+<h2>Afrunding af decimaler</h2>
+
+<p>Pythons udregninger er med alle cifre. Når vi ser på resultater er vi ofte ikke interesseret i mere end 2-4 decimalers nøjagtighed.</p>
+
+<p>For at afrunde decimaler anvender vi <code class="">round()</code>. Funktionen virker på følgende måde:</p>
+
+<pre><code class="python">round ([Tal],[Antal_decimaler])</code></pre>
+	
+<p>Lad os se et praktisk eksempel:</p>	
+
+<pre><code class="python">>>> 2/3
+0.6666666666666666
+>>> round(_,2)
+0.67</code></pre>
+
+<div class="alert">
+	
+	<p>Her bruger jeg <em>_ (underscore)</em> til at bruge forrige resultat.</p>
+
+</div>
+
+<h2>Afrunding af hele tal</h2>
+
+<p>Nogle gange har vi brug for at afrunde decimaltal til et helt tal, og alt efter situationen skal der rundes op eller ned.</p>
+
+<p>Lad os sige at vi har et resultat på <output>4,3</output>, så kan det have stor betydning om det er antallet af passagerer i en bil eller antallet af sodavand der skal købes ind. Ingen  vil være <output>0,3</output> passager, og de fleste vil blive skuffet hvis alle andre fik en sodavand og man selv blev snydt.</p>
+
+<p>I dette tilfælde har Python 2 funktioner vi kan anvende:</p>
+
+<dl class="not_strong">
+	<dt><code class="">math.floor()</code></dt>
+	<dd>Runder tallet ned til nærmeste hele tal</dd>
+	<dt><code class="">math.ceil()</code></dt>
+	<dd>Runder tallet op til nærmeste hele tal</dd>
+</dl>
+
+<p>For at anvende <code class="">math.floor()</code> og <code class="">math.ceil()</code> skal vi først importere pakken <em>math</em>.</p>
+
+<p>Lad os tage eksemplet fra før med værdien <output>4,3</output></p>
+
+<pre><code class="python">>>> import math #importere math pakkerne
+>>> math.floor(4.3)
+4
+>>> math.ceil(4.3)
+5</code></pre>
+
+<p>Vi kan altså løbende rette vores resultater til alt efter om der skal rundes op eller ned i forhold til heltallet.</p>
+
+<h2>Modulus og floor division</h2>
+
+<p>Hvis man kun har brug for heltallet eller resten efter en beregning. Det gør man med <code class="">//</code> (floor division) og <code class="">%</code> (modulus).</p>
+
+<p>Her vil jeg tage udgangspunkt i disse to brøker: <span class="math">\( \frac 7 4 = 1 \frac 3 4 \)</span> og <span class="math">\( \frac 8 3 = 2 \frac 2 3\)</span>.</p>
+
+<p><strong>Floor division</strong> - <code class="">//</code></p>
+
+<p>Returnerer heltalsdelen af divisionen</p>
+
+<pre><code class="python">>>> 7//4
+1
+>>> 8//3
+2</code></pre>
+
+<p>Som vi kan se returnerer <em>floor division</em> heltalsdelen</p>
+
+<p><strong>Modulus</strong> - <code class="">%</code></p>
+
+<p>Returnerer resten af divisionen</p>
+
+<pre><code class="python">>>> 7%4
+3
+>>> 8%3
+2</code></pre>
+
+<p>Der er altså henholdsvis <span class="math">\( \frac 3 4 \)</span> og <span class="math">\( \frac 2 3 \)</span> tilbage i rest.</p>
+
+<p>Man kan ved hjælp af <span class="inl_cmd">modulus</span> og <span class="inl_cmd">floor division</span> omskrive en uægte brøk til en blandet brøk efter følgende model:</p>
+
+<div class="latex">$$ \frac{a}{b} = (a//b)~ \frac{a\%b}{b} $$</div>
+
+<p><strong>Anvendelse</strong></p>
+
+<p><span class="inl_cmd">modulus</span> og <span class="inl_cmd">floor division</span> virker i første omgang lidt underlige, men har en masse praktiske anvendelser. F.eks: </p>
+
+<ul class="disc">
+	<li>Hvis noget skal ske hver tredie gang: <code class="">x%3 == 0</code></li>
+	<li>Antal fyldte ølkasser: <code class="">*antal flasker* // 30</code></li>
+</ul>
+
+
+
+
+<h2>Brøker</h2>
+
+<p>For at regne med brøker skal man importere funktionen <em>Fraction</em> fra pakken <em>fractions</em>.</p>
+
+<p>Her vælger vi kun at importere en del af pakken og det gør vi på følgende måde:</p>
+
+<pre><code class="python">>>> from fractions import Fraction</code></pre>
+
+<p>For at lave en brøk skriver vi det på følgende måde:</p>
+
+<pre><code class="python">Fraction([TÆLLER],[NÆVNER])</code></pre>
+
+<p>Lad os prøve at kigge på følgende udtryk: <span class="math">\(  \frac{ 2 }{ 3 } \cdot \frac{ 3 }{ 4 } = \frac{ 1 }{ 2 } \)</span></p>
+
+<pre><code class="python">>>> from fractions import Fraction
+>>> brøk1 = Fraction(3,4) # brøken 3/4
+>>> brøk2 = Fraction(2,3) # brøken 2/3
+>>> brøk1 * brøk2
+Fraction(1, 2)</code></pre>
+
+<p>Python svarer at resultatet er <output><span class="math">\( \frac 1 2 \)</span> (<em>fraction(1,2)</em>)</output></p>
+
+<h3>Input med Fraction</h3>
+
+<p>Man kan også lave input med <em>Fraction</em>. Her skal man skrive selve brøken <em>TÆLLER/NÆVNER</em> og ikke (TÆLLER,NÆVNER). </p>
+
+<pre><code class="python">>>> brøk = Fraction(input("Enter Fraction: "))
+Enter Fraction: 4/7
+>>> brøk
+Fraction(4, 7)</code></pre>
+
+<p>Hvis du vil bruge selve brøken som input, så skal den laves som en string.</p>
+
+<pre><code class="python">>>> Fraction("1/3")
+Fraction(1, 3)</code></pre>
+
+
+<h3>Hvad er brøken</h3>
+
+<p>Vi kan også bruge <code class="">Fraction()</code> til at finde en tilnærmet brøk - altså en brøk der ligger så tæt på tallet som muligt.</p>
+
+<p>Hvad er f.eks. <em>0.125</em>?</p>
+
+<pre><code class="python">>>> Fraction(0.125)
+Fraction(1, 8)</code></pre>
+
+<p><em>0,125</em> er altså det sammen som "<span class="math">\( \frac 1 8 \)</span>, hvilket i dette tilfælde er korrekt.</p>
+
+<p>Du kan læse mere om at finde tilnærmede brøker herunder:</p>
+
+<details>
+
+	<summary>Mere om tilnærmede brøker</summary>
+
+<p>Man kan også bruge Python til at finde en tilnærmet brøk. Prøv at se dette eksempel med tallet <em>0.185</em>:</p>
+
+<pre><code class="python">>>> Fraction(0.185)
+Fraction(3332663724254167, 18014398509481984)</code></pre>
+
+<p>Brøken <span class="math">\( \frac {3332663724254167} {18014398509481984} \)</span> giver ingen mening. Brøken giver os ikke en fornemmelse af tallet.</p>
+
+<p>Det kan vi fikse ved at putte en ekstra metode på: <code class="">limit_denominator()</code>. Det gør vi på følgende måde:</p>
+
+<pre><code class="python">>>> Fraction(0.185).limit_denominator()
+Fraction(37, 200)</code></pre>
+
+<p>Det som metoden gør er at finde en tilnærmet brøk, der har en nævner på mindre end en million</p>
+
+<p>Vil du gerne finde en tilnærmet med en nævner mindre end 100 skriver du 100 i parentesen:</p>
+
+<pre><code class="python">>>> Fraction(0.185).limit_denominator(100)
+Fraction(5, 27)</code></pre>
+
+</details>
+
+
+
+
+<!--
+
+
+<p>Lad os prøve at beregne et <a href="https://da.wikipedia.org/wiki/Gruk" target="_blank">GRUK</a> af Piet Hein.</p>
+
+<p>En halv er <br/>
+&nbsp;&nbsp;&nbsp;&nbsp; tænk nu hvor aparte <br/>
+to tredjedele <br/>	
+&nbsp;&nbsp;&nbsp;&nbsp;	af tre kvarte</p>
+
+<p>Altså <span class="math">\( \frac{ 1 }{ 2 } = \frac{ 2 }{ 3 } \cdot \frac{ 3 }{ 4 } \)</span></p>
+
+<p>Selve brøken skrives som: <span class="inl_cmd">Fraction( *tæller* , *nævner* )</span>.</p>
+
+<pre>
+	<code class="python">>>> from fractions import Fraction
+>>> brøk1 = Fraction(3,4) # brøken 3/4
+>>> brøk2 = Fraction(2,3) #brøken 2/3
+>>> det_halve = brøk1 * brøk2
+>>> brøk1 * brøk2
+Fraction(1, 2)	</code>
+</pre>
+
+<p>Ligesom vi bestemte de andre taltyper kan vi også gøre det her:</p>
+
+<pre>
+	<code class="python">>>> type(brøk1)
+&lt;class 'fractions.Fraction'>	</code>
+</pre>
+-->
+
+
+<h2>Tilfældige tal</h2>
+
+<p>Python har to funktioner der kan bruges til at lave tilfælde tal:</p>
+
+<dl class="not_strong">
+	<dt><code class="">randrange([START],[SLUT])</code></dt>
+	<dd>Bruges til at lave hele tilfælde tal mellem <em>start</em> og <em>slut</em>.</dd>
+	<dt><code class="">random()</code></dt>
+	<dd>Bruges til at lave tilfælde tal mellem 0 og 1</dd>
+</dl>
+
+<p>For at bruge funktionerne skal de først importeres. Det gør du sådan her:</p>
+
+<pre><code class="python">from random import random, randrange</code></pre>
+
+<h3>Tilfældige heltal f.eks: terningkast</h3>
+
+<p>For at simulere et terningkast(D6) bruger vi følgende kommando:</p>
+
+<pre><code class="python">>>> randrange(1,7)
+3
+>>> randrange(1,7)
+4</code></pre>
+
+<p>Læg mærke til at jeg har skrevet <code class="">1,7</code> i parentesen. Det er fordi funktionen vælger et tilfældig heltal fra 1 <em>til</em> 7 - altså hvor 7 ikke er med.</p>
+
+<p>Det svarer til når vi siger vi har læst fra kapitel 1 til kapitel 3 i en bog - altså hvor vi har læst kapitel 1 og 2.</p>
+
+<p>Det skal man lige vænne sig til, men som du vil se senere, så er det smart at gøre det på den måde.</p>
+
+<h3>Tilfældige tal</h3>
+
+<p>Til nogle beregninger har man brug for et tilfældig tal mellem i intervallet <span class="math">\( [~0~;1] \)</span>. Dem laver man på følgende måde:</p>
+
+<pre><code class="python">>>> random()
+0.3484349123341326
+>>> random()
+0.19551293791949897</code></pre>
+
+
+<div id="terningspil1"></div>
+
+<h3>Opgaver</h3>
+
+<h4>Terningspil 1</h4>
+
+<p>Lav et program hvor man skal spille terning mod computeren, og hvor den største værdi vinder.</p>
+
+<ul class="disc">
+	<li>Terningen bliver kastet 1 gang</li>
+	<li>Brugeren skal kunne indtaste sit navn</li>
+	<li>Output skal være om computer eller bruger er vinder eller at der er uafgjort</li>
+</ul>
+
+<p><b>Output</b></p>
+
+
+<p><b>Output</b></p>
+
+
+<pre>
+	<code class="python">========================= RESTART: /home/tj/test.py =========================
+Hvad er dit navn: Thomas
+
+Thomas: 4
+Computer: 4
+
+Det blev uafgjort	</code>
+</pre>
+
+
+<h4>Ordsprog</h4>
+
+<p>Lav et program der ved hjælp af <span class="inl_cmd">random()</span> udskriver et ud af mindst 4 forskellige ordsprog.</p>
+
+
+<h2>Potens og rødder</h2>
+
+<p>For at finde potens tal og rødder anvendes funktionen <code class="">pow(a,b)</code>, hvor <em>a</em> er grundtallet og <em>b</em> er potensen.</p>
+
+<p><span class="math">\( a^b \)</span> = <code class="">pow(a,b)</code></p>
+
+<p>For at regne rødder ud skal man anvende følgende omskrivning:</p>
+
+<div class="latex">$$ \sqrt [b] {a} =  a^ {\frac 1 b} $$</div>
+
+<p>Rødder regnes altså ud på følgende måde:</p>
+
+<p><span class="math">\( \sqrt [b] {a} \)</span> = <code class="">pow(a,1/b)</code></p>
+
+<p>Eksempler</p>
+
+<pre><code class="python">>>> pow(4,2)
+16
+>>> pow(16,1/2)
+4.0</code></pre>
+
+
+<p>Man kan have funktioner inde i funktioner, f.eks:</p>
+
+<div class="latex">$$ \sqrt[5]{7^2} = (7^2)^{\frac{1}{5}} = pow(~pow(7,2)~,~1/5~)$$</div>
+
+
+<pre><code class="python">>>> pow(pow(7,2),1/5)
+2.17790642448278
+>>> round(_,4)
+2.1779</code></pre>
+
+<h3>Opgave</h3>
+
+<p> Beregn følgende tal:</p>
+
+<div class="latex">$$ a)~2^8, \\
+b)~{5^3}^2,\\
+c)~ \sqrt 27, \\
+d)~ \sqrt[17] {256}, \\
+e)~ \sqrt[3]{4}^{17}, \\
+f)~ 2^{\sqrt17} $$</div>
+
+<details>
+
+	<summary>Facit liste</summary>
+	
+	<p>Bliv ved indtid du får samme resulater ;)</p>
+	
+	<ol class="a">
+		<li><output>256</output></li>
+		<li><output>1953125</output></li>
+		<li><output>5.1961... </output></li>
+		<li><output>1.3856...</output></li>
+		<li><output>2580.3183...</output></li>
+		<li><output>17.4252...</output></li>
+	</ol>
+	
+</details>
+
+
+
+
+
+<p><strong>Alternativ skrivemåde</strong></p>
+
+<p>På nettet kan du støde ind i denne skrivemåde:</p>
+
+<pre><code>>>> 4**2
+16</code></pre>
+
+<p>Jeg anbefaler at du ikke bruger denne, da den ikke er lige så læselig som <code class="">pow()</code></p>
+
+
+<h2>Konstanter</h2>
+
+<p>I matematik bruger vi konstanter som f.eks. <span class="math">\( \pi \)</span> og <span class="math">\( e \)</span>.</p>
+
+<p>For at få adgang til dem skal vi igen importere <em>math</em>.</p>
+
+<dl class="">
+	<dt><code class="">math.pi</code></dt>
+	<dd>Indeholder tallet <span class="math">\( \pi \)</span></dd>
+	<dt><code class="">math.e</code></dt>
+	<dd>Eulers tal ... eller basen for den naturlige algoritme </dd>
+</dl>
+
+
+<pre><code class="python">>>> import math
+>>> math.pi
+3.141592653589793
+>>> math.e
+2.718281828459045</code></pre>
+
+
+
+<h2>Absolutte tal</h2>
+
+<p>Absolutte tal er altid positive.</p>
+
+<div class="latex">$$ \lvert -5 \rvert = 5 \\
+\lvert 5 \rvert = 5 $$</div>
+
+<p>Det er faktisk mere brugbart end man lige forestiller sig, fordi det kan bruges til at beskrive forskellen mellem 2 tal uanset hvilket man starter med.</p>
+
+<p>Et eksempel kan være temperatur hvor de to målinger er på henholdsvis 18&deg; og 20&deg;.</p>
+
+<pre><code class="python">>>> 18-20
+-2
+>>> 20-18
+2</code></pre>
+
+<p>Du og jeg kan hurtigt se, at temperaturforskellen er på to grader, men for en computer er der 4 grader til forskel. Altså temperaturen fra -2 &rarr; 2.</p>
+
+<p>Det kan vi ordne ved at funktionen <code class="">abs()</code>, som returnerer forskellen mellem 2 tal:</p>
+
+<pre><code class="python">>>> abs(18-20)
+2
+>>> abs(20-18)
+2</code></pre>
+
+<h2>Operatorer</h2>
+
+<p>Når vi skriver at noget er lig med <em>=</em>større end <em>></em>, så bruger vi operatorer. Operatorer beskriver forholdet mellem to værdier.</p>
+
+<p>Når vi bruger operatorer, så svarer Python om det er sandt eller falsk.</p>
+
+<div class="alert">
+	
+	<p>Når du sætter to ting lig med hinanden skal du bruge <em>=</em>-tegnet dobbelt - altså <em>==</em></p>
+	
+	<p>Det er en af de mest almindelige fejl man laver når man starter med at programmere.</p>
+
+</div>
+
+<p>Se nedenstående skema:</p>
+
+<table class="">
+	<thead>
+		<tr>
+			<th scope="col">Operator</th>
+			<th scope="col">Beskrivelse</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><code class="">==</code></td>
+			<td>Lig med</td>
+		</tr>
+		<tr>
+			<td><code class="">!=</code></td>
+			<td>Ikke lig med</td>
+		</tr>
+		<tr>
+			<td><code class="">&gt;</code></td>
+			<td>større end</td>
+		</tr>
+		<tr>
+			<td><code class="">&lt;</code></td>
+			<td>mindre end</td>
+		</tr>
+		<tr>
+			<td><code class="">&gt;=</code></td>
+			<td>Større end eller lig med</td>
+		</tr>
+		<tr>
+			<td><code class="">&lt;=</code></td>
+			<td>Mindre end eller lig med</td>
+		</tr>
+		<tr>
+			<td><code class="">x and y</code></td>
+			<td >Både x og y skal være sand</td>
+		</tr>
+		<tr>
+			<td><code class="">x or y</code></td>
+			<td>Kun en behøver at være sand</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Herunder kan du se nogle eksempler</p>
+
+<dl class="not_strong">
+	<dt><code class="">==</code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Lig med</dt>
+	<dd><pre><code class="python">>>> 5 == 5
+True
+>>> 5 == 8
+False</code></pre></dd>
+	<dt><code class="">!=</code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ikke lig med</dt>
+	<dd><pre><code class="python">>>> 5 != 5
+False
+>>> 5 != 8
+True</code></pre></dd>	<dt><code class="">></code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Større end</dt>
+	<dd><pre><code class="python">>>> 5 > 8
+False
+>>> 8 > 5
+True</code></pre></dd>
+	<dt><code class="">&lt;</code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mindre end</dt>
+	<dd><pre><code class="python">>>> 5 &lt; 8
+True
+>>> 8 &lt; 5
+False</code></pre></dd>
+	<dt><code class="">>=</code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Større end eller lig med</dt>
+	<dd><pre><code class="python">>>> 5 >= 5
+True
+>>> 5 >= 6
+False</code></pre></dd>
+	<dt><code class="">&lt;=</code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Mindre end eller lig med</dt>
+	<dd><pre><code class="python">>>> 5 &lt;= 5
+True
+>>> 5 &lt;= 4
+False</code></pre></dd>
+	<dt><code class="">x and y</code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Både x og y skal være sand</dt>
+	<dd><pre><code class="python">>>> 5 == 5 and 6 > 5
+True
+>>> 5 == 5 and 4 > 5
+False</code></pre></dd>
+	<dt><code class="">x or y</code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Enten x eller y skal være sand</dt>
+	<dd><pre><code class="python">>>> 5 == 5 or 6 > 5
+True
+>>> 5 == 5 or 4 > 5
+True</code></pre></dd>
+</dl>
+
+
+
+<h2>Intervaller</h2>
+
+<p>Man kan beskrive et afgrænset talområde matematisk ved hjælp af sammensatte uligheder f.eks:</p>
+
+<div class="latex">$$ 15 &lt; x &lt; 24 $$</div>
+
+<p>Det udtrykket siger er: "15 er mindre end x, som er mindre end 25". Oversat til 2 udtryk:</p>
+
+<ol class="">
+	<li>x skal være større end 15 og</li>
+	<li>x skal være mindre end 24</li>
+</ol>
+
+<p>I Python skal man skrive det som ovenfor. Altså :</p>
+
+<pre><code class="python">>>> x > 15 and x &lt;= 24</code></pre>
+
+<p>Nu kan vi bruge det til at teste:</p>
+
+<pre><code class="python">>>> x = 20
+>>> x > 15 and x &lt; 24
+True
+>>> x = 30
+>>> x > 15 and x &lt;= 24
+False</code></pre>
+
+
+
+<h2>Logaritmer</h2>
+
+<p>For at regne med logaritmer anvender vi funktionen <code class="">math.log()</code>. Funktionen bruges på følgende måde:</p>
+
+<pre><code class="python">math.log(x,base)</code></pre>
+
+<p>Udelader du basen, bruger Python som standard den naturlige logaritme <span class="math">\( e \)</span>, altså det vi matematik plejer at notere som <span class="math">\( ln(x) \)</span>.</p>
+
+<p>Skal du funde ud af hvad potensen er i udtrykket: <span class="math">\( 10^a = 100 \)</span> er a = <output>100 </output> og basen=<output>10</output>.</p>
+
+<p>For at anvende logaritmer skal pakken <em>math</em> importeres.</p>
+
+<pre><code class="python">>>> import math
+>>> math.log(100,10)
+2.0</code></pre>
+
+<p>Udtrykket <span class="math">\( 0,45^x = 0,83 \)</span> vil altså være:</p>
+
+<pre><code class="python">>>> math.log(0.83,0.45)
+0.23334725397646897</code></pre>
+
+<p>For at tjekke det er korrekt:</p>
+
+<pre><code class="python">>>> pow(.45,_)
+0.83</code></pre>
+
+
+
+
+
+	
+</div><!-- end: col-md-9 -->
+
+<footer class="fixed-bottom text-center bg-light">
+
+	<p onclick="parentNode.remove()"><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons licens" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>Indholdet på Vidas.dk er licenseret under <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> og er skrevet af Thomas Jensen. (<a href="../hvem_er_jeg.html" target="_blank">Læs mere</a>)</p>
+
+</footer>
+	
+	
+</div><!-- end: row -->
+
+</div> <!-- end: container-fluid -->
+
+
+<!-- SCRIPT SECTION -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/js/bootstrap.min.js"></script>
+
+
+
+<!-- HIGHLIGHT -->
+	<script src="../js/highlight.pack.js" type="text/javascript"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+
+<!-- MATHJAX -->
+<script type="text/javascript" 
+	src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  displayAlign: "left",
+  displayIndent: "0em"
+});
+</script>
+
+
+<!-- TOCIFY -->
+<script>
+	$(function() {var toc = $("#toc").tocify({ selectors: "h2, h3, h4" }).data("toc-tocify"); });
+</script>
+<!-- GOOGLE ANALYTICS -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-89933285-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</body>
+</html>

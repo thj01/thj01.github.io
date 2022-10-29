@@ -1,0 +1,1244 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <title>Python rester</title>
+  <link rel="icon" href="../images/favicon.png">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono|Ubuntu|Ubuntu+Condensed' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/stylesheets/jquery.tocify.min.css">
+  <link rel="stylesheet" href="../css/style_new.css" />
+<!-- Scripts in bottom to speed up pageload-->
+ 
+
+</head>
+<body>
+	
+	
+<div class="container-fluid">
+
+<div class="row">
+	
+<div class="col-sm-3">
+	
+	<nav>
+		
+		<div id="toc">
+		
+			<div id="toc_headline"></div>
+		
+		</div>
+		
+	</nav>
+
+</div><!-- Start slut 1. kolonne - TOC -->
+	
+<div class="col-sm-9">
+	
+<h1>REster fra dokumenter</h1>
+
+
+<h2>Funktioner</h2>
+
+<p>Ofte har man behov for at noget skal udføres gentagne gange. Det kan f.eks. være at udskrive et logo, eller en <span class="inl_cmd">if-else</span> struktur der skal køres ofte. Her anvender man funktioner, så man kan skrive koden en gang, men "kalde" på den lige så ofte man vil.</p>
+
+<p>Lad os prøve at lave et simpelt eksempel med funktionen <span class="inl_cmd">produkt()</span>, som udregner produktet af parametrene <span class="inl_cmd">a,b</span>.</p>
+
+<pre>
+	<code class="python">def produkt(a,b):
+	produkt = a*b
+	print("\nProduktet er {0}".format(produkt))
+	
+produkt(2,3) # skal give svaret "Produktet er 6"
+produkt(3,4) # skal give svaret "Produktet er 12"
+	</code>
+</pre>
+
+<p><b>Output</b></p>
+
+<pre>
+	<code class="python output">========================= RESTART: /home/tj/test.py =========================
+
+Produktet er 6
+
+Produktet er 12	</code>
+</pre>
+
+<p>Det som du skal være opmærksom på er:</p>
+
+<ul class="">
+	<li>Den første linie skal starte med <span class="inl_cmd">def</span> og afsluttes med <span class="inl_cmd">:</span></li>
+	<li>Selve funktionen skal afsluttes med parantes indeholdende parametre (<span class="inl_cmd">her produkt(a,b)</span>)</li>
+	<li>Det som hører under funktione skal være rykket ind under den</li>
+	<li>Funktionen anvendes ved at skrive funktionsnavnet og angive de parametre den skal anvende.</li>
+</ul>
+
+<h3>Tomme funktioner</h3>
+
+<p>Man kan også lave tomme funktioner, som ikke er styret af en eller flere parametre. Forestil dig at du gang på gang i din kode skal have det samme output, f.eks. dine grundinformatiner</p>
+
+<pre>
+	<code class="python">def tekst():
+	
+	print("Denne software er lavet af : \n\tThomas Jensen \n\tfakeuser@fakemail.dk")
+	
+tekst()	</code>
+</pre>
+
+<p><b>Output</b></p>
+
+<pre>
+	<code class="python">========================= RESTART: /home/tj/test.py =========================
+Denne software er lavet af : 
+	Thomas Jensen 
+	fakeuser@fakemail.dk	</code>
+</pre>
+
+<h3>Funktioner med parametre</h3>
+
+<p>Forestil dig en situation hvor vi skal have en blæser til at tænde når temperaturen overstiger et vist gradtal. I eksemplet herunder angiver vi selv temperaturen, men temperaturen kunne lige så godt have kommet fra en aflæsning af et digitalt termometer. Vi sætter <span class="inl_cmd">a</span> til at være rummets temperatur og <span class="inl_cmd">b</span> til at være den temperatur der skal til for at tænde blæseren.</p>
+
+<pre>
+	<code class="python">def turn_on (a,b):
+    if a > b:	
+        return True
+	
+rum_temp = 19 # rummets temperatur
+tænd_temp = 18 # Tændningstemperaturen
+
+if turn_on(rum_temp,tænd_temp) is True:
+    #Udfør kommandoer hvis den skal tændes
+    print ("tænd") #kommandoen der tænder for blæseren
+else:
+    #Udfør kommandoer hvis den skal slukkes
+	print ("Sluk") #kommandoen der slukker for blæseren	</code>
+</pre>
+
+<p><b>Output</b></p>
+
+<pre>
+	<code class="python">========================= RESTART: /home/tj/test.py =========================
+tænd	</code>
+</pre>
+
+<p>Ved at angive to konstanter i funktionen kan vi "kalde" parametre fra koden ind i funktionen. På den måde kan vi lave funktioner der er meget fleksible.</p>
+
+<h3>Variabler i funktioner</h3>
+
+<p>Variabler der er lavet i funktioner, gælder kun i selve funktionen.</p> 
+
+<p>Det er smart fordi manså kan kopierer definitioner ind i sit dokument uden at bekymre sig om de indeholder variabel navne der allerede er i anvendelse</p>
+
+<p>Hvis man skal bruge en variabel der bliver dannet i en funktion skal den gøres global. Det gøres på følgende måde:</p>
+
+<pre>
+	<code class="python">def skriv_tal():
+	
+	valgt_tal=int(input("Skriv et tal: "))
+	global dobbelt_a #Her gøres variablen dobbelt_a global
+	dobbelt_a=valgt_tal*2
+	
+skriv_tal()
+print ("Det fordoblede tal er: {0}".format(dobbelt_a))	</code>
+</pre>
+
+<p><b>Output</b></p>
+
+<pre>
+	<code class="python">========================= RESTART: /home/tj/test.py =========================
+Skriv et tal: 5
+Det fordoblede tal er: 10	</code>
+</pre>
+
+
+<p>Prøv at fjerne linien <span class="inl_cmd">global dobbelt_a</span> og undersøg fejlmeddelelsen.</p>
+
+<h3>Return i funktioner</h3>
+
+<p><span class="inl_cmd">Return</span> er en funktion der leverer et output. HVis det er et binært output - dvs. det kun har to muligheder så anvender man <span class="inl_cmd">True / False</span>. Det gør det tydeligt at koden kun har to udfald. </p>
+
+<p>Har man brug for mere end to return værdier, kan man selv angive dem med enten en talværdi eller en tekstreng </p>
+
+
+
+<p>Det smarte ved funktioner er at man kan få dem til at svare med <span class="inl_cmd">True / False</span>, en værdi eller tekstreng. Det gøres ved at bruge <span class="inl_cmd">return</span>.</p>
+
+<p>Se eksemplet herunder:</p>
+
+<pre>
+	<code class="python">def test_tabel(a,b): # a er tallet der undersøges, be er tabellen.
+	if a%b==0: 	# spørger om a er i b tabellen
+		return True
+	else:
+		return False
+	
+print(test_tabel(17,2)) #Printer resultat af funktionen</code>
+</pre>
+
+<p><b>Output</b></p>
+
+<pre>
+	<code class="python">========================= RESTART: /home/tj/test.py =========================
+False	</code>
+</pre>
+
+<h3>Opgaver</h3>
+
+<p>Til disse opgaver skal du anvende matematik.</p>
+
+<details>
+
+	<summary>Generelle regneregler</summary>
+	
+	<p>Regningsarterne fungerer ved at anvende tegnene: <span class="inl_cmd">+</span>, <span class="inl_cmd">-</span>, <span class="inl_cmd">*</span> og <span class="inl_cmd">/</span>. Se herunder:</p>
+
+<pre>
+	<code class="python">>>> 6+3
+9
+>>> 6-3
+3
+>>> 6*3
+18
+>>> 6/3
+2.0	</code>
+</pre>
+
+	<p>Læg mærke til at der bliver anvendt <span class="inl_cmd">int</span> i alle eksemplerne, og at resultatet bliver leveret på samme måde ved <span class="inl_cmd">+</span>, <span class="inl_cmd">-</span> og <span class="inl_cmd">*</span>. Men ved division bliver resulatet ændret til <span class="inl_cmd">float</span>. Se nedestående eksempel</p>
+
+<pre>
+	<code class="python">>>> 2/3
+0.6666666666666666	</code>
+</pre>
+
+	<p>Python anvender korrekte regneregler, hvilket vil sige at <span class="inl_cmd">+</span> og <span class="inl_cmd">-</span> adskiller ledene, og at de skal sættes paranteser for at omgå dette. Se eksemplerne herunder:</p>
+
+<pre>
+	<code class="python">>>> 3+2*6
+15
+>>> (3+2)*6
+30
+>>> 3+6/2
+6.0
+>>> (3+6)/2
+4.5		</code>
+</pre>
+	
+	<p>Læg mærke til at tallene bliver til <span class="inl_cmd">float</span>, når man dividerer.</p>
+
+
+
+</details>
+
+<h4>Er det en faktor</h4>
+
+<p>Til denne opgave skal du anvende modulus og floordivision</p>
+
+<details>
+
+	<summary>Brug af modulus og floor division</summary>
+
+	<p>For at finde restværdien og heltallet af en division anvender man henholdsvis <span class="inl_cmd">% (modulus)</span> og <span class="inl_cmd">// (floordivision)</span>.</p>
+
+	<table class="">
+		<thead>
+			<tr>
+				<th>Funktion</th>
+				<th>Tegn</th>
+				<th>Beskrivelse</th>
+				<th>Eksempel</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td><span class="inl_cmd">modulus</span></td>
+				<td><span class="inl_cmd">%</span></td>
+				<td>Returnere resten efter division</td>
+				<td>9%5 = 4 </td>
+			</tr>
+			<tr>
+				<td><span class="inl_cmd">floor division</span></td>
+				<td><span class="inl_cmd">//</span></td>
+				<td>Returnerer heltallet efter division</td>
+				<td>9//5 = 1</td>
+			</tr>
+		</tbody>
+	</table>
+
+<!--
+	<pre class="ubuntu_terminal">
+	>>> 9%5
+	4
+	>>> 9//5
+	1	</pre>
+
+	<p>Man kan ved hjælp af <span class="inl_cmd">modulus</span> og <span class="inl_cmd">floor division</span> omskrive en uægte brøk til en blandet brøk efter følgende model:</p>
+
+	<div class="latex">$$ \frac{a}{b} = (a//b)~ \frac{a\%b}{b} $$</div>
+-->
+
+	<span class="afsnit">Anvendelse</span>
+
+	<p><span class="inl_cmd">modulus</span> og <span class="inl_cmd">floor division</span> virker i første omgang lidt underlige, men har en masse praktiske anvendelser. F.eks: </p>
+
+	<ul class="disc">
+		<li>Hvis noget skal ske hver tredie gang: <span class="inl_cmd">x%3 = 0</span></li>
+		<li>Antal fyldte ølkasser: <span class="inl_cmd">*antal flasker* // 30</span></li>
+	</ul>
+
+</details>
+
+<p>Lav funktionen <span class="inl_cmd">Factor(a,b)</span> der undersøger om a er en faktor i b. Undersøg følgende to tilfælde:</p>
+
+<ul class="none">
+	<li><span class="inl_cmd">faktor(10,5)</span> &rarr; Ja</li>
+	<li><span class="inl_cmd">faktor(3097,37)</span> &rarr; Nej</li>
+</ul>
+
+<p>Lav et output der ligner nedestående:</p>
+
+<p><b>Output</b></p>
+
+<pre>
+	<code class="python">========================= RESTART: /home/tj/test.py =========================
+Undersøger om 2 er en faktor i 10.
+2 er en faktor i 10.
+
+Undersøger om 37 er en faktor i 3097.
+37 er ikke en faktor i 3097.	</code>
+</pre>
+<h4>Skæring med X aksen</h4>
+
+<p>Lav funktionen <span class="inl_cmd">skæring_x(a,b)</span>, der udregner skæringspunktet med x-aksen ud fra ligningen <span class="math">\( f(x) = ax+b \)</span>, og hvor den skærer y-aksen.</p>
+
+<p>Altså hvor:</p>
+
+<div class="latex">$$ x = \frac{ -b }{ a } $$</div>
+
+<details>
+
+	<summary>Udledning af formel</summary>
+
+	<div class="latex">$$ ax+b = 0 
+
+\\ \Updownarrow \\
+
+ax = -b 
+
+\\ \Updownarrow \\
+
+x = \frac{ -b }{ a }
+
+$$</div>
+
+</details>
+
+<p>Test din kode med linjerne:</p>
+
+<ul class="none">
+	<li>2x+2 <span class="red">&rarr;</span> skæring_x(2,2) <span class="red">&rarr;</span> -1.0</li>
+	<li>2x-2 <span class="red">&rarr;</span> skæring_x(2,-2) <span class="red">&rarr;</span> 1.0</li>
+</ul>
+
+<p><b>Output</b></p>
+
+<pre>
+	<code class="python">========================= RESTART: /home/tj/test.py =========================
+Linjen skærer x-aksen i værdien -1.0
+Linjen skærer x-aksen i værdien 1.0	</code>
+</pre>
+<p>Ændr koden så heltal ikke udskrives som decimaltal, men som <span class="inl_cmd">integers</span>. Du skal bruge funktionen <span class="inl_cmd">is_integer()</span></p>
+
+<details>
+
+	<summary>Brug af <span class="inl_cmd">is_integer()</span></summary>
+
+	<p><span class="inl_cmd">is_integer()</span> undersøger om et tal af typen float, hvis det er returnerer funktionen et <span class="inl_cmd">True</span>.</p>
+	
+	
+	<pre>
+		<code class="python">>>> a = 3.14
+>>> a.is_integer()
+False
+>>> a = 2.0
+>>> a.is_integer()
+True</code>
+	</pre>
+	
+	<p>Det betyder at man kan undersøge om et tal skal laves om til en <span class="inl_cmd">integer</span>:</p>
+	
+	<pre>
+		<code class="python">a = 3.14
+b = 2.0
+
+if a.is_integer():
+	a = int(a)	
+if b.is_integer():
+	b = int(b)
+
+print(a)
+print(b)		</code>
+	</pre>
+	
+<p><b>Output</b></p>	
+
+<pre>
+	<code class="python">========================= RESTART: /home/tj/test.py =========================
+3.14
+2	</code>
+</pre>
+
+</details>
+
+<ul class="none">
+	<li>2x+2 <span class="red">&rarr;</span> skæring_x(2,2) <span class="red">&rarr;</span> -1</li>
+	<li>2x-2 <span class="red">&rarr;</span> skæring_x(2,-2) <span class="red">&rarr;</span> 1</li>
+</ul>
+
+<p><b>Output</b></p>
+
+<pre>
+	<code class="python">========================= RESTART: /home/tj/test.py =========================
+Linjen skærer x-aksen i værdien -1
+Linjen skærer x-aksen i værdien 1	</code>
+</pre>
+
+<h4>Find normalform</h4>
+
+<p>Lav funktionen <span class="inl_cmd">normalform(a,b,c,d)</span>, der udskriver den linie der kører igennem de to punkter <span class="math">\( P = (a,b) \)</span> og <span class="math">\( Q = (c,d) \)</span>.</p>
+
+<p>Funktionen skal udskrive linien på formen: <span class="math">\( y = ax + b \)</span></p>
+
+<p>Altså hvor </p>
+
+<div class="latex">$$ a=\frac{ y_2-y_1 }{ x_2-x_1 } $$</div>
+
+og
+
+<div class="latex">$$ b=y_1-ax_1 $$</div>
+
+<p>Test din kode med funktionerne:</p>
+
+<ul class="none">
+	<li>P = (2,6) og Q = (5,12) <span class="red">&rarr;</span> <span class="inl_cmd">punkter(2,6,5,12)</span> <span class="red">&rarr;</span>  y = 2.0x+2.0</li>
+	<li>P = (2,2) og Q = (-1,-4) <span class="red">&rarr;</span> <span class="inl_cmd">punkter(2,2,-1,-4)</span> <span class="red">&rarr; </span> y = 2.0x-2.0</li>
+</ul>
+<p><b>Output</b></p>
+
+<pre>
+	<code class="python">========================= RESTART: /home/tj/test.py =========================
+Punkterne P=(2,6) og Q=(5,12) gennemskæres af linjen: y = 2.0x+2.0
+
+Punkterne P=(2,2) og Q=(-1,-4) gennemskæres af linjen: y = 2.0x-2.0	</code>
+</pre>
+
+<p>Ændr koden så heltal ikke udskrives som decimaltal, men som <span class="inl_cmd">integers</span>. Du skal bruge funktionen <span class="inl_cmd">is_integer()</span></p>
+
+
+
+<p>Test din kode med funktionerne:</p>
+
+<ul class="none">
+	<li>P = (2,6) og Q = (5,12) <span class="red">&rarr;</span> <span class="inl_cmd">punkter(2,6,5,12)</span> <span class="red">&rarr;</span>  y = 2x+2</li>
+	<li>P = (2,2) og Q = (-1,-4) <span class="red">&rarr;</span> <span class="inl_cmd">punkter(2,2,-1,-4)</span> <span class="red">&rarr; </span> y = 2x-2</li>
+</ul>
+
+<p><b>Output</b></p>
+
+<pre>
+	<code class="python">========================= RESTART: /home/tj/test.py =========================
+Punkterne P=(2,6) og Q=(5,12) gennemskæres af linjen: y = 2x+2
+
+
+Punkterne P=(2,2) og Q=(-1,-4) gennemskæres af linjen: y = 2x-2	</code>
+</pre>
+
+
+<h4>Skæring mellem to linier:</h4>
+
+<p>Lav funktionen <span class="inl_cmd">skaering(a,b,c,d)</span>, der udregner skæringspunktet med x-aksen ud fra ligningen <span class="math">\( f(x) = ax+b \)</span>, og  <span class="math">\( g(x) = cx+d \)</span>.</p>
+
+<p>Altså hvor:</p>
+
+<div class="latex">$$ x= \frac{ d-b }{ a-c } $$</div>
+
+<details>
+
+	<summary>Udledning af formel</summary>
+
+	<div class="latex">$$ ax+b=cx+d
+
+\\ \Updownarrow \\
+
+ax-cx = d - b
+
+\\ \Updownarrow \\
+
+x(a-c)=d-b
+
+\\ \Updownarrow \\
+
+x= \frac{ d-b }{ a-c }
+
+
+ $$</div>
+
+</details>
+
+<p>Test din kode med linierne:</p>
+
+<ul class="none">
+	<li><span class="math">\( y = 2x-3 \)</span> og <span class="math">\( y = -\frac{ 1 }{ 3 }x+4 \)</span> <span class="red">&rarr;</span> skæring(2,-3,-1/3,4) <span class="red">&rarr;</span> P = (3.0,3.0)</li>
+	<li><span class="math">\( y = \frac{ 1 }{ 2 }x-3 \)</span> og <span class="math">\( y = -1\frac{ 1 }{ 2 }x+3 \)</span> <span class="red">&rarr;</span> skæring(1/2,-3,-1.5,3) <span class="red">&rarr;</span> P = (3.0,-1.5)</li>
+</ul>
+
+<pre>
+	<code class="python">========================= RESTART: /home/tj/test.py =========================
+Linjerne skærer hinanden i punktet: P = (3.0,3.0)
+
+Linjerne skærer hinanden i punktet: P = (3.0,-1.5)	</code>
+</pre>
+
+
+<p>Ændr koden så heltal ikke udskrives som decimaltal, men som <span class="inl_cmd">integers</span>. Du skal bruge funktionen <span class="inl_cmd">is_integer()</span></p>
+
+<pre>
+	<code class="python">========================= RESTART: /home/tj/test.py =========================
+Linjerne skærer hinanden i punktet: P = (3,3)
+
+Linjerne skærer hinanden i punktet: P = (3,-1.5)	</code>
+</pre>
+
+<h4>Andengradsligning</h4>
+
+<p>Til denne opgave skal du anvender kvadrarødder og potenser</p>
+
+<details>
+
+	<summary>Brug af kvadratrødder og potenser</summary>
+
+	<p>For at finde potens tal og rødder anvendes funktionen <span class="inl_cmd">pow(a,b)</span>, hvor <span class="inl_cmd">a</span> er grundtallet og <span class="inl_cmd">b</span> er potensen. Se nedestående eksempler:</p>
+
+	<table class="">
+		<thead>
+			<tr>
+				<th>Matematisk udtryk</th>
+				<th>Python funktion</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td><span class="math">\( a^b \)</span></td>
+				<td><span class="inl_cmd">pow(a,b)</span></td>
+			</tr>
+			<tr>
+				<td><span class="math">\( \sqrt[b]{a} = a^{\frac{ 1 }{ b }} \)</span></td>
+				<td><span class="inl_cmd">pow(a,1/b)</span></td>
+			</tr>
+		</tbody>
+	</table>
+
+	<p>Det anbefales at man anvender funktionen <span class="inl_cmd">pow()</span> fremfor <span class="inl_cmd">**</span>. Det gør koden mere læselig.</p>
+
+	<p>Eksempler med <span class="math">\( 2^4 \)</span> og <span class="math">\( \sqrt{4} \)</span>:</p>
+
+	<pre class="ubuntu_terminal">
+	>>> pow(2,4) 
+	16
+	>>> pow(4,1/2)
+	2.0</pre>
+
+
+</details>
+
+<p>Lav funktionen <span class="inl_cmd">andengrad(a,b,c)</span> der udregner parablens skæring(er) med x-aksen ud fra normalformen på en andegradsligning: <span class="math">\( ax^2 + bx + c \)</span>. Anvend formlerne herfra: <a href="../matematik/andengradsfunktion.html" target="_blank">../matematik/andengradsfunktion.html</a></p>
+
+<p>Output skal fortælle:</p>
+
+<ul class="none">
+	<li>... om parablens ben vender op eller ned</li>
+	<li>... hvor mange skæringer der er med x-aksen</li>
+	<li>... hvor den skærer y og x-aksen</li>
+	<li>... hvad toppunktet er</li>
+	<li>... der må kun stå et fortegn for hvert led (altså ikke <span class="inl_cmd">+-</span></li>
+
+</ul>
+
+<p>Test din kode med funktionerne:</p>
+
+<ul class="none">
+	<li><span class="math">\( f(x) = x^2 + 4x +4 \)</span> <span class="red">&rarr;</span> andengrad(1,4,4)</li>
+	<li><span class="math">\( f(x) = -x^2 - x + 6 \)</span> <span class="red">&rarr;</span> andengrad(-1,-1,6)</li></li>
+</ul>
+
+<p>Du skal lave om til <span class="inl_cmd">integers</span>, hvis det er muligt og programmet skal have følgende udskrift:</p>
+
+<pre>
+	<code class="python">========================= RESTART: /home/tj/test.py =========================
+Her undersøges funktionen: f(x) = 1x^2 + 4x + 4
+
+	Andegradsliningen har en løsning og skærer x-aksen i punktet -2
+
+	Parablens ben vender opad
+
+	Parablen skærer y-aksen i punktet 4
+
+	Toppunktet er: Tp = ( -2 , 0 )
+
+
+Her undersøges funktionen: f(x) = -1x^2 - 1x + 6
+
+	Andegradsligningen har 2 løsninger og skærer x-aksen i punkterne -3 og 2
+
+	Parablems ben vender nedad
+
+	Parablen skærer y-aksen i punktet 6
+
+	Toppunktet er: Tp = ( -0.5 , 6.25 )	</code>
+</pre>
+
+
+<div id="terningspil1"></div>
+
+<h3>Opgaver</h3>
+
+<h4>Terningspil 1</h4>
+
+<p>Lav et program hvor man skal spille terning mod computeren, og hvor den største værdi vinder.</p>
+
+<ul class="disc">
+	<li>Terningen bliver kastet 1 gang</li>
+	<li>Brugeren skal kunne indtaste sit navn</li>
+	<li>Output skal være om computer eller bruger er vinder eller at der er uafgjort</li>
+</ul>
+
+<p><b>Output</b></p>
+
+
+<p><b>Output</b></p>
+
+
+<pre>
+	<code class="python">========================= RESTART: /home/tj/test.py =========================
+Hvad er dit navn: Thomas
+
+Thomas: 4
+Computer: 4
+
+Det blev uafgjort	</code>
+</pre>
+
+
+<h4>Ordsprog</h4>
+
+<p>Lav et program der ved hjælp af <span class="inl_cmd">random()</span> udskriver et ud af mindst 4 forskellige ordsprog.</p>
+
+
+
+<h2>Variabler i løkker</h2>
+
+<p>Ofte har man brug for at lave variabler i løkker. Det kan f.eks. være hvis man vil oprette brugere i løkker. Til dette formål anvender man <span class="inl_cmd">dictionaries</span>. En dictionary er en lille tabel med to kolonner hvor første kolonne er opslaget og den anden er værdien.</p>
+
+<p>Forestil dig at vi vil oprette en brugerliste og knytte et brugernummer til dem:</p>
+
+<ul class="none">
+	<li>Anne &rarr; 1</li>
+	<li>Bent &rarr; 2</li>
+</ul>
+
+<p>Herunder viser jeg hvordan man opretter og udskriver dette dictionary.</p>
+
+<pre>
+	<code class="python">>>> brugere={"Anne": 1, "Bent": 2}
+>>> brugere
+{'Bent': 2, 'Anne': 1}	</code>
+</pre>
+
+<p>Vi har altså nu bundet navnet <span class="inl_cmd">Anne</span> til tallet <span class="inl_cmd">1</span> og navnet <span class="inl_cmd">Bent</span> til tallet <span class="inl_cmd">2</span>.</p>
+
+<p>Hvis jeg gerne vil udskrive en af værdierne gør jeg følgende:</p>
+
+<pre>
+	<code class="python">>>> brugere["Anne"]
+1
+>>> brugere["Bent"]
+2	</code>
+</pre>
+
+<p>Fordelen ved at anvende dictionaries er altså, at vi kan binde et opslag til en værdi/tekststreng. Det er altså reelt en <span class="inl_cmd">multivariabel</span>, som kan indeholder flere variabler. I ovenstående tilfælde indeholder den altså <span class="inl_cmd">"Anne" = 1</span> og <span class="inl_cmd">"Bent" = 2</span>.</p>
+
+<p>Det betyder også at vi kan ændre på variablerne løbende. Se herinder hvor jeg lægger <span class="inl_cmd">1</span> til <span class="inl_cmd">"Bent"</span></p>
+
+<pre>
+	<code class="python">>>> brugere["Bent"] +=1
+>>> brugere
+{'Bent': 3, 'Anne': 1}	</code>
+</pre>
+
+<h3>Konstruere dictionaries</h3>
+
+<p>Herunder er vist et eksempel hvor jeg jeg opretter en dictionary</p>
+
+<pre>
+	<code class="python">brugerliste={}
+
+for i in range(3):
+	
+	brugernavn = input("\nHvad er brugerens navn?: ")
+	password = int(input("\n\tIndtast password (kun tal): "))
+	
+	brugerliste["{0}".format(brugernavn)] = password
+	
+print("\n\nHer er din brugerliste: {0}".format(brugerliste))	</code>
+</pre>
+
+<p><b>Output</b></p>
+
+<pre>
+	<code class="python">========================= RESTART: /home/tj/test.py =========================
+
+Hvad er brugerens navn?: Thomas
+
+	Indtast password (kun tal): 123
+
+Hvad er brugerens navn?: Kurt
+
+	Indtast password (kun tal): 234
+
+Hvad er brugerens navn?: Niels
+
+	Indtast password (kun tal): 345
+
+
+Her er din brugerliste: {'Thomas': 123, 'Kurt': 234, 'Niels': 345}</code>
+</pre>
+
+<p>Man kan også skrive et dictionary mere overskueligt:</p>
+
+<pre>
+	<code class="python">
+personer = {
+
+		"Hans" : 1,
+		"Grethe" : 2,
+		"Heks" : 3
+
+	}
+	
+print (personer)
+	</code>
+</pre>
+
+<p><b>Output</b></p>
+
+<pre>
+	<code class="python">========================= RESTART: /home/tj/test.py =========================
+{'Heks': 3, 'Grethe': 2, 'Hans': 1}</code>
+</pre>
+
+
+<h2>Opgaver til for-løkken</h2>
+
+<h3>Lav et program der udskriver 7 tabellen</h3>
+
+<p><b>Output</b></p>
+
+<pre>
+	<code class="python">========================= RESTART: /home/tj/test.py =========================
+Udskriver 7 tabellen
+
+7 14 21 28 35 42 49 56 63 70 </code>
+</pre>
+
+<h3>Udskriv tabellerne fra 1 - 10</h3>
+
+<p>Lav et program der udskriver alle tabellerne mellem 1 og 10</p>
+
+<p><b>Output</b></p>
+
+<pre>
+	<code class="python">========================= RESTART: /home/tj/test.py =========================
+
+*** Udskriver 1 tabellen ***
+1 2 3 4 5 6 7 8 9 10 
+
+*** Udskriver 2 tabellen ***
+2 4 6 8 10 12 14 16 18 20 
+
+*** Udskriver 3 tabellen ***
+3 6 9 12 15 18 21 24 27 30 
+
+... </code>
+</pre>
+
+
+<h3>BUM</h3>
+
+<p>Lav funktionen <span class="inl_cmd">bum(a,b)</span> hvor <span class="inl_cmd">a</span> er det tal der tælles til og <span class="inl_cmd">b</span> er den tabel der arbejdes med:</p>
+
+<p><b>Output</b></p>
+
+<pre>
+	<code class="python">========================= RESTART: /home/tj/test.py =========================
+1  2  BUM  4  5  BUM  7  8  BUM  10  11  BUM  13  14  BUM  </code>
+</pre>
+
+
+<h3>Vinkelsum i polygon</h3>
+
+<p>Lav en løkke der beregner den enkelte vinkel og  den samlede vinkel i en ligesidet polygon med op til 20 sider. Outputtet skal være som nedenfor:</p>
+
+<p>Formlen er:</p>
+
+<div class="latex">$$ Vinkelsum = 180 \cdot (i-2) $$</div>
+
+<p><b>Output</b></p>
+
+<pre>
+	<code class="python">========================= RESTART: /home/tj/test.py =========================
+I en 3-kant er vinkelsummen 180° og den enkelte vinkel er 60.0°
+I en 4-kant er vinkelsummen 360° og den enkelte vinkel er 90.0°
+I en 5-kant er vinkelsummen 540° og den enkelte vinkel er 108°
+I en 6-kant er vinkelsummen 720° og den enkelte vinkel er 120°
+I en 7-kant er vinkelsummen 900° og den enkelte vinkel er 128.57°
+
+...
+
+I en 18-kant er vinkelsummen 2880° og den enkelte vinkel er 160.0°
+I en 19-kant er vinkelsummen 3060° og den enkelte vinkel er 161.05263157894737°	</code>
+</pre>
+
+
+
+<p>Ændr koden, så den ikke udskriver decimaler på heltal ved hjælp af funktionen <span class="inl_cmd">is_integer()</span>, og sådan at der kun er to decimaler på værdierne for den enkelte vinkel ved hjælp af <span class="inl_cmd">round()</span> (se nedefor)</p>
+
+<pre>
+	<code class="python">>>> pi = 3.14159265
+>>> round(pi,2)
+3.142	</code>
+</pre>
+
+
+
+<h3>Mini Google</h3>
+
+<p>Ændr koden i opgaven Ord i tekst 1 (<a href="python04_valg_og_funktioner.html#ordtekst1" target="_blank">henvisning</a>) fra forrige kapitel så det også tæller antallet af gange ordet optræder:</p>
+
+
+
+<h3>Fibonacchi tal</h3>
+
+<p>Fibonaccitallene er en talrække, som har følgende egenskab. Hvis man dividerer et tal i rækken med det forgående tal, så vil dette tal tilnærme sig værdien &phi; (1.6180339...) som også bliver kaldt det gyldne snit. </p>
+
+<p>Fibonaccitalrækken er: 1, 1, 2, 3, 5, 8, 13, 21 ... </p>
+
+<p>Man kan udregne &phi; ud fra følgende formel baseret på fibonaccitallene hvor man tager et fibonaccital og dividerer det med det efterfølgende.</p>
+
+<div class="latex">$$ \phi = \frac{n-1}{n} ~~for~ \to \infty$$</div>
+
+<p>Opgaven er at lave en kode der tager talrækken: 0, 1, 2, 3, 4, 5 .... og laver den om til fibonaccital. på følgende måde:</p>
+
+<ul class="none">
+	<li>0 + 1 = 1</li>
+	<li>1 + 2 = 3</li>
+	<li>2 + 3 = 5</li>
+	<li>3 + 5 = 8</li>
+	<li>5 + 8 = 13</li>	
+</ul>
+
+<p>Koden skal udregne de første 20 fibonaggital: Her er en forklaring på koden:</p>
+
+<ol class="">
+	<li>Lav to variabler a, b og sæt dem til henholdsvis 0 og 1</li>
+	<li>lav en forløkke der kører op til 20 gange baseret på i</li>
+	<li>lad i vokse med en hver gang koden køres</li>
+	<li>Udskriv a, hvis den er større end 0</li>
+	<li>Gem den gamle værdi for a i en ny variabel (f.eks: old_a)</li>
+	<li>Sæt a = b</li>
+	<li>Sæt b = b + den gamle værdi for a</li>
+</ol>
+
+<p>Lav funktionen <span class="inl_cmd">fibo(n)</span> hvor <span class="inl_cmd">n</span> er antallet af fibonaccital. Koden skal give nedestående output</p>
+
+<p><b>Output</b></p>
+
+<pre>
+	<code class="python">========================= RESTART: /home/tj/test.py =========================
+1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987 1597 2584 4181 6765  </code>
+</pre>
+
+<p>Kan du ændre i koden så den også regner &phi; ud og giver nedestǻende output?</p>
+
+<p><b>Output</b></p>
+
+<pre>
+	<code class="python">========================= RESTART: /home/tj/test.py =========================
+Fibonacci taller er: 1 og φ er: 1.0
+Fibonacci taller er: 1 og φ er: 0.5
+Fibonacci taller er: 2 og φ er: 0.6666666666666666
+Fibonacci taller er: 3 og φ er: 0.6
+Fibonacci taller er: 5 og φ er: 0.625
+Fibonacci taller er: 8 og φ er: 0.6153846153846154
+
+...
+
+Fibonacci taller er: 4181 og φ er: 0.6180339985218034
+Fibonacci taller er: 6765 og φ er: 0.618033985017358
+</code>
+</pre>
+
+
+
+<h2>Terningspil </h2>
+
+<h3>Terningspil 1</h3>
+
+<p>Lav et program der slår med en D6 terning (6 sider) det antal gange brugeren ønsker det, og lav en optælling af hvert terningslag</p>
+
+<p><b>Output</b></p>
+
+<pre>
+	<code class="python">========================= RESTART: /home/tj/test.py =========================
+Hvor mange slag?: 100000
+
+Du slog:
+
+	16678 enere
+	16685 toere
+	16552 treere
+	16758 firere
+	16707 femmere
+	16620 seksere</code>
+</pre>
+
+<h3>Terningspil 2</h3>
+
+<p>Ændre koden fra opgaven terningspil 1 (<a href="python04_valg_og_funktioner.html#terningspil1" target="_blank">henvisning</a>)fra forrige kapitel på følgende måde:</p>
+
+<ul class="disc">
+	<li>Brugeren skal vælge mellem en D4, D6, D10 og D20 terning (antallet af sider)</li>
+	<li>Brugeren vælger antallet af slag</li>
+	<li>Programmet udnævner en vinder og laver en udskrift af hvor mange gange bruger og computer har vundet og antallet af uafgjorte runder.</li>
+</ul>
+
+<p>Herunder er et eksempel på en udskrift.</p>
+
+<pre>
+	<code class="python">========================= RESTART: /home/tj/test.py =========================
+Hvad er dit navn: Thomas  <span class="red">&larr; Input</span>
+
+Du kan vælge at slå med 4 forskellige terninger, og du kan vælge mellem:
+
+	1) D4	(4 sider)
+	2) D6	(6 sider)
+	3) D10	(10 sider)
+	4) D20	(20 sider)
+
+
+Hvilken terning vil du spille med?: 3  <span class="red">&larr; Input</span>
+
+	Du valgte en D10.
+
+
+Hvor mange slag vil du lave?: 1000  <span class="red">&larr; Input</span>
+
+	Du valgte 1000 slag.
+
+
+*********************************************
+
+Computeren vandt 438 gange
+
+Thomas vandt 464 gange
+
+Der blev spillet uafgjort 98 gange</code>
+</pre>
+
+
+<p>Hvor lang tid tager det at spiller:</p>
+
+<ul class="none">
+	<li>10.000 slag</li>
+	<li>100.000 slag</li>
+	<li>1.000.000</li>
+	<li>10.000.000</li>
+</ul>
+
+<p>Er der forskel på om du bruger en <span class="inl_cmd">D4</span> eller en <span class="inl_cmd">D20</span>?</p>
+
+
+<h2>Opgaver til while-løkken</h2>
+
+<h3>Opgaver</h3>
+
+
+<p>Her er koden til at program hvor du skal gætte tallet 8</p>
+
+<pre>
+	<code class="python">print("Gæt på et tal mellem 1 og 9\n")
+
+while True:
+	gæt = int(input("Gæt hvilket tal jeg er: "))
+
+	if gæt == 8:
+		print ("\nN I C E")
+		exit()	</code>
+</pre>
+
+<h4>Gæt et tal </h4>
+
+<p>Ændr koden ovenfor så:</p>
+
+<ul class="disc">
+	<li>Tallet der skal gættes laves af funktionen <span class="inl_cmd">randrange()</span></li>
+	<li>Det efter 4 forsøg i input teksten skriver: Kan man virkeligt gætte forkert så mange gange?</li>
+	<li>At koden af afbrydes med beskeden <span class="inl_cmd">Du er vist useriøs</span>, hvis man ikke skriver et tal mellem 1 og 9.</li>
+	<li>At det skriver "Godt gættet :)!" når du rammer rigtigt</li>
+</ul>
+
+
+<p><span class="bold">HINT:</span> for at kunne få en kode til at afbryde anvender man kommandoen <span class="inl_cmd">exit()</span>. Når koden læser denne linie afsluttes kørslen.</p>
+
+<h4>Gæt et tal 2</h4>
+
+<p>Ændr koden ovenfor, så den siger "Du er vist useriøs" 2 gange før den afsluttes</p>
+
+
+<h4>Dril</h4>
+
+<p>Lav en kode der gentager hvad du siger - indtil du siger <span class="inl_cmd">klorofyl</span></p>
+
+<p><b>Output</b></p>
+
+<pre>
+	<code class="python">========================= RESTART: /home/tj/test.py =========================
+Skriv noget: Hej
+
+Hej: Hvad sker der
+
+Hvad sker der: STOP DET DER
+
+STOP DET DER: klorofyl
+
+        Du sagde det magiske ord.</code>
+</pre>
+
+<h4>Affyring</h4>
+
+
+<p>Man kan lave en tidsforsinkelse ved hjælp af funktionen <span class="inl_cmd">sleep</span> der er i pakken <span class="inl_cmd">time()</span></p>
+
+<pre>
+	<code class="python">from time import sleep
+
+while True:
+
+	for i in range(5,-1,-1):
+		
+		if i ==0:
+			print("Fyr")
+			exit()
+		
+		print(i)
+		sleep(1)	</code>
+</pre>
+
+<p><b>Output</b></p>
+
+<pre>
+	<code class="python">========================= RESTART: /home/tj/test.py =========================
+
+5
+4
+3
+2
+1
+Affyr!</code>
+</pre>
+
+<p>Ændr koden, så der tælles ned på samme position. For at opnå det skal du anvende escape character'en <span class="inl_cmd">\r</span> (carrage return). </p>
+
+
+<h4>Tabeltræner</h4>
+
+<p>Lav et program der stiller 5 tilfældige regnestykker fra den lille tabel (1-9). Programmet skal tælle:</p>
+
+<ul class="disc">
+	<li>Antal rigtige</li>
+	<li>Antal forsøg tilbage</li>
+	<li>Udregne antal % rigtige, med en decimal</li>
+</ul>
+
+
+<h4>Erstat bogstaver</h4>
+
+<p>Lav et program der erstatter <span class="inl_cmd">g</span> med <span class="inl_cmd">n</span> i det nedestående tekst.</p>
+
+<pre>
+	<code class="python">Igennem mange generationer har børn og unge hygget sig med gynger.</code>
+</pre>
+
+<p>Altså så outputtet bliver (på en linje):</p>
+
+<p><b>Output</b></p>
+
+<pre>
+	<code class="python">========================= RESTART: /home/tj/test.py =========================
+Inennem manne nenerationer har børn on unne hynnet sin med nynner.</code>
+</pre>
+
+<h2>Opgaver til tekststrenge</h2>
+
+<h3>Mail 1</h3>
+
+<p>Lav en kode hvor du tjekker en indtastet mail ud fra følgende parametre: </p>
+
+<ol class="">
+	<li>Om den har mere end 7 tegn</li>
+	<li>Der kun er et @</li>
+	<li>At det er en ".dk" mail</li>
+	<li>At @ ikke står mellem de 4 sidste tegn</li>
+</ol>
+
+<p>Udskriften skal enten angive om mailen er korrekt eller angive fejlene. Hvis der er fejl skal den bede om en ny indtastning.</p>
+
+<p><b>Output</b></p>
+
+<pre>
+	<code class="python">========================= RESTART: /home/tj/test.py =========================
+Indtast din mail: t_d.g <span class="red">&larr; Brugerinput</span>
+
+        Mailen har for få tegn (mindre end 7)
+        Mailen mangler @
+        Det er ikke en .dk mail
+
+Indtast din mail: fakeuser@fakemail.dk <span class="red">&larr; Brugerinput</span>
+
+	Mailen er konstrueret korrekt</code>
+</pre>
+
+<h3>Mail 2</h3>
+
+<p>En mail består af 3 dele. Brugernavn, domæne og landekode. Her er de angivet med farver. <span class="green1">fakeuser</span>@<span class="blue1">fakemail</span>.<span class="red">dk</span></p>
+
+<p>Ændr koden så den også svarer med alle de data du undersøger for:</p>
+
+<ol class="">
+	<li>Hvad mailen er</li>
+	<li>Hvor mange tegn mailen indeholder</li>
+	<li>Hvad er <span class="green1">brugernavnet</span>, <span class="blue1">domænet</span> og <span class="red">landekoden</span> er, samt deres længde.</li>
+	
+</ol>
+
+<p><b>Output</b></p>
+
+<pre>
+	<code class="python">========================= RESTART: /home/tj/test.py =========================
+Indtast din mail: t_g.k
+
+        Mailen har for få tegn (mindre end 7)
+        Mailen mangler @
+        Det er ikke en .dk mail
+
+Indtast din mail: fakeuser@fakemail.dk
+
+Mailen er konstrueret korrekt
+
+        Mailen er: fakeuser@fakemail.dk
+
+        Mailen har i alt 20 tegn
+
+        Brugernavnet er: fakeuser
+
+        Domænenavnet er: fakemail
+
+        Det er en .dk mail</code>
+</pre>
+
+<h3>IP-adresse</h3>
+
+<p>Lav et program der tjekker IP-Adresse. En IP-adresse består af 4 tal mellem 0 og 255 adskilt af 3 punktummer, f.eks: 192.168.0.13.</p>
+
+<p>Programmet skal undersøge om IP-adressen er privat eller ej. Private IP-adresser er følgende:</p>
+
+<ul class="none">
+	<li><span class="red">10</span>.0.0.0 &rarr; <span class="red">10</span>.255.255.255</li>
+	<li><span class="red">172.16</span>.0.0 &rarr; <span class="red">172.31</span>.255.255</li>
+	<li><span class="red">192.168</span>.0.0 &rarr; <span class="red">192.168</span>.255.255</li>
+</ul>
+
+<p>Du skal altså lave et program der under søger om IP-adressen befinder sig indenfor de intervaller der ovenfor er angivet med rødt.</p>
+
+
+<h3>Bakke snagvendt</h3>
+
+<p>Lav et program hvor brugerens input bliver udskrevet baglæns. Her: <span class="inl_cmd">Ubrugeligt... men sjov</span></p>
+
+<p><b>Output</b></p>
+
+<pre>
+	<code class="python">vojs nem ...tgilegurbU</code>
+</pre>
+
+
+	
+	
+</div><!-- end: col-md-9 -->
+
+<footer>
+
+	<p onclick="parentNode.remove()"><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons licens" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>Indholdet på Vidas.dk er licenseret under <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> og er skrevet af Thomas Jensen. (<a href="../hvem_er_jeg.html" target="_blank">Læs mere</a>)</p>
+
+</footer>
+	
+	
+</div><!-- end: row -->
+
+</div> <!-- end: container-fluid -->
+
+
+<!-- SCRIPT SECTION -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/js/bootstrap.min.js"></script>
+
+
+
+<!-- HIGHLIGHT -->
+	<script src="../js/highlight.pack.js" type="text/javascript"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+
+<!-- MATHJAX -->
+<script type="text/javascript" 
+	src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  displayAlign: "left",
+  displayIndent: "0em"
+});
+</script>
+
+
+<!-- TOCIFY -->
+<script>
+	$(function() {var toc = $("#toc").tocify({ selectors: "h2, h3, h4" }).data("toc-tocify"); });
+</script>
+<!-- GOOGLE ANALYTICS -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-89933285-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</body>
+</html>
