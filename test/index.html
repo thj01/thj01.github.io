@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Dokumentering</title>
+  <meta charset="utf-8">
+  <meta name="Html side til dokumentation">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.2/css/bootstrap.min.css" integrity="sha512-CpIKUSyh9QX2+zSdfGP+eWLx23C8Dj9/XmHjZY2uDtfkdLGo0uY12jgcnkX9vXOgYajEKb/jiw67EYm+kBf+6g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/stylesheets/jquery.tocify.css" integrity="sha512-J1Hqu2MsrxM47jKZ4n5IIo0pW1a1kniLxpdJ+6lUD7I6d9uYLPY/w5IwEsRnf+rRwpovav3zC5ZNCafvW605Lw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="css\styles.css">
+  <link rel="stylesheet" href="css\tocify.css">
+  <link rel="stylesheet" href="css\numbering.css">
+  <!-- <link rel="stylesheet" href="css\prettyfy.css"> -->
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/github.min.css" integrity="sha512-0aPQyyeZrWj9sCA46UlmWgKOP0mUipLQ6OZXu8l4IcAmD2u31EPEy9VcIMvl7SoAaKe8bLXZhYoMaE/in+gcgA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.2/js/bootstrap.min.js" integrity="sha512-5BqtYqlWfJemW5+v+TZUs22uigI8tXeVah5S/1Z6qBLVO7gakAOtkOzUtgq6dsIo5c0NJdmGPs0H9I+2OHUHVQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js" integrity="sha512-57oZ/vW8ANMjR/KQ6Be9v/+/h6bq9/l3f0Oc7vn6qMqyhvPd1cvKBRWWpzu0QoneImqr2SkmO4MSqU+RpHom3Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" integrity="sha512-MmdBVZj8VMd7kbchsQ1w3BiRpmk5SpL4AdsnskA2IQEkEoV/2hQnb4NpCaq3BILglhK95AqT818/Yl9HtJ0eew==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js" integrity="sha512-gU7kztaQEl7SHJyraPfZLQCNnrKdaQi5ndOyt4L4UPL/FHDd/uB9Je6KDARIqwnNNE27hnqoWLBq+Kpe4iHfeQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/languages/python.min.js" integrity="sha512-iDlDwqOvWrZasw1DKx/EN1onOhfSdVh86HnlN64ndFMFtqa4ojwfWMit4B7KmZ7b7bMAaFZA8PnwWMBhfGbS2A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/languages/python-repl.min.js" integrity="sha512-V5aFgzgZIbS837nrVLgtJ1gq7631am9cTZzwL+qQzPI4WCKGN+vxmVGb1F8fVlXTwGtvryUeReOObY7rYvK+aw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/languages/powershell.min.js" integrity="sha512-pnt8OPBTOklRd4/iSW7msOiCVO4uvffF17Egr3c7AaN0h3qFnSu7L6UmdZJUCednMhhruTLRq7X9WbyAWNBegw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/languages/bash.min.js" integrity="sha512-FWlcW5zSwKZtFwpRaPgHX5inFYAnkoIlYjt2Oe/KRsA9A8RzKBnNzOQcsmnC478iKS2HGp16k7oN2A/+qOu1sQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/languages/css.min.js" integrity="sha512-6HN+9Lq8+90wIQXsob6HzRbCPEKKX20cxvrAMUWIU84IPD8mDkgIY+ayQ9OjamhVfWEF8hM3fP69hyX4sWtxPA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/languages/json.min.js" integrity="sha512-nQCa7GcNl4QHBjXtYDFUh60Kl1Ij0Rri2czcHNn0nrDXQzQNdUuLsMQu7XGEI6HO2L+EL9s+dJ8flwn2ITQwvA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/languages/markdown.min.js" integrity="sha512-nH8y5nJsSiML9r3ksXADgdIHXwKYN41qFxthqmx82mH3ITSdD2Ul3raB2flouUnPnTFM6HsCFA0qGvJ/JYxRrg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+  <script>hljs.highlightAll();</script>
+    <script>
+        $(function() {
+            var toc = $("#toc").tocify({ selectors: "h2, h3,h4" }).data("toc-tocify");
+            //prettyPrint();
+            //$(".optionName").popover({ trigger: "hover" });
+        });
+    </script>
+
+
+</head>
+<body>
+    <div class="container-xxl">
+        <div class="row">
+            <div class="col-3" >
+                <div id="toc">
+                    <div id="nav_title">Indhold</div>
+                </div> 
+            </div>
+            <div class="col-9 reset_toc_counter">
+
+<h1>Title_h1</h1>
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+<h2>Overskrift 1</h2>
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+
+<pre><code class="language-python">def kvadrattal(a):
+    tal = pow(a,2)
+    return tal
+
+print(kvadrattal(2))</code></pre>
+
+<h3>Overskrift 2</h3>
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+<h4>Overskrift 3</h4>
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+<h2>Overskrift 2</h2>
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+<h3>Overskrift 2</h3>
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+<h3>Overskrift 2</h3>
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+<h3>Overskrift 2</h3>
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+<h3>Overskrift 2</h3>
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+<h3>Overskrift 2</h3>
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+<h3>Overskrift 2</h3>
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+<h2>Overskrift 2</h2>
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+<h2>Overskrift 2</h2>
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+            </div>
+          </div>
+    </div>
+</body>
+</html>
