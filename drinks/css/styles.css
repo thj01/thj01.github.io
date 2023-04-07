@@ -1,6 +1,7 @@
 body {
 
     padding-bottom: 100px;
+    
 }
 
 h2 {
@@ -18,7 +19,18 @@ h4 {
     padding-top: 1em;
 }
 
-/* .offcanvas-body */
+/* drinks side menu */
+
+a.spirits_category {
+    font-size: 1.2em;
+    
+
+}
+
+ul.specific_drinks li a{
+    font-size: 1.1em;
+
+}
 
 
 /* glas og shaker billeder */
