@@ -54,12 +54,12 @@ function test(n){
 
     document.getElementById('dice_type').innerHTML = n;
     document.getElementById('btn_dice_type').innerHTML = 'D' + n;
-    document.getElementById('Dice_roll').innerHTML = 'Terningen er ikke kastet endnu';
+    document.getElementById('Dice_roll').innerHTML = '?';
 
   } else {
     document.getElementById('dice_type').innerHTML = n;
     document.getElementById('btn_dice_type').innerHTML = 'Møntkast';
-    document.getElementById('Dice_roll').innerHTML = 'Mønten er ikke kastet endnu';
+    document.getElementById('Dice_roll').innerHTML = '?';
 
 
   }

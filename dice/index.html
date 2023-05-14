@@ -48,13 +48,24 @@
 
         <p class="m-5 text-center" id="description">Du slår med en D<span id="dice_type">6</span></p>
 
-        <div id="Dice_roll" class="mt-5 text-center">Terningen er ikke kastet endnu</div>
+      <!-- <div id="dice_box" class="d-flex align-items-center justify-content-center"> -->
+      <div id="dice_box" class="">
+      
+        <svg width="100" height="100" viewBox="0 0 100 100">
+          <rect x="" y="" rx="10px" ry="10px" width="100px" height="100%"
+          style="fill:ivory;stroke:black;stroke-width:1" />
+          <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-size="3em" id="Dice_roll">?</text>
+        </svg>
         
-        <div class="m-5 text-center">
-          <button id="button"  type="button" class="btn btn-success">
-            Kast
-          </button>
-        </div>
+      </div>
+
+      <div class="m-5 text-center">
+
+        <button id="button"  type="button" class="btn btn-success">
+          Kast
+        </button>
+      
+      </div>
 
 
         
