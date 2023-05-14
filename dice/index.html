@@ -13,7 +13,7 @@
     <nav class="navbar navbar-expand-lg bg-light sticky-top">
       <!-- <div class="container-fluid"> -->
       <div class="container">
-        <a class="navbar-brand" href="index.html">Dice</a>
+        <a class="navbar-brand" href="index.html">DICE</a>
         <button 
           class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
           <span class="navbar-toggler-icon " aria-label="Menu"></span>
@@ -46,13 +46,13 @@
         
         <h1 class="m-5 text-center">DICE</h1>
 
-        <p class="m-5 text-center" id="description">Du slår med en D<span id="dice_type">6</span></p>
+        <p class="m-5 text-center" id="description">Terning: D<span id="dice_type">6</span></p>
 
       <!-- <div id="dice_box" class="d-flex align-items-center justify-content-center"> -->
       <div id="dice_box" class="">
       
-        <svg width="100" height="100" viewBox="0 0 100 100">
-          <rect x="" y="" rx="10px" ry="10px" width="100px" height="100%"
+        <svg width="150" height="150" viewBox="0 0 150 150">
+          <rect x="" y="" rx="10px" ry="10px" width="150px" height="150px"
           style="fill:ivory;stroke:black;stroke-width:1" />
           <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-size="3em" id="Dice_roll">?</text>
         </svg>
@@ -61,7 +61,7 @@
 
       <div class="m-5 text-center">
 
-        <button id="button"  type="button" class="btn btn-success">
+        <button id="button"  type="button" class="btn btn-success btn-lg">
           Kast
         </button>
       
@@ -84,29 +84,14 @@
             D6
           </button>
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start">
-              <!-- <li ><a class="dropdown-item" href="#" onclick="loadDoc('barskabet.html')">Barskabet</a></li> -->
-<!--               <li><a class="dropdown-item" href="#" onclick="new_var(4)">D4</a></li>
-              <li><a class="dropdown-item" href="#" onclick="new_var(4)">D6</a></li> -->
-
-              
-              <li><a class="dropdown-item" href="#" onclick="test(4)">D4</a></li>
+              <!-- <li><a class="dropdown-item" href="#" onclick="test(4)">D4</a></li> -->
               <li><a class="dropdown-item" href="#" onclick="test(6)">D6</a></li>
-              <li><a class="dropdown-item" href="#" onclick="test(8)">D8</a></li>
-              <li><a class="dropdown-item" href="#" onclick="test(10)">D10</a></li>
+              <!-- <li><a class="dropdown-item" href="#" onclick="test(8)">D8</a></li>
+              <li><a class="dropdown-item" href="#" onclick="test(10)">D10</a></li> -->
               <li><a class="dropdown-item" href="#" onclick="test(12)">D12</a></li>
               <li><a class="dropdown-item" href="#" onclick="test(20)">D20</a></li>
               <hr>
               <li><a class="dropdown-item" href="#" onclick="test(2)">Plat og Krone</a></li>
-
-
-              <!-- <li><a class="dropdown-item" href="#" onclick="document.getElementById('dice_type').innerHTML = 4">D4</a></li>
-              <li><a class="dropdown-item" href="#" onclick="document.getElementById('dice_type').innerHTML = 6">D6</a></li>
-              <li><a class="dropdown-item" href="#" onclick="document.getElementById('dice_type').innerHTML = 8">D8</a></li>
-              <li><a class="dropdown-item" href="#" onclick="document.getElementById('dice_type').innerHTML = 10">D10</a></li>
-              <li><a class="dropdown-item" href="#" onclick="document.getElementById('dice_type').innerHTML = 12">D12</a></li>
-              <li><a class="dropdown-item" href="#" onclick="document.getElementById('dice_type').innerHTML = 20">D20</a></li> -->
-
-
 
             </ul>
         </div>
