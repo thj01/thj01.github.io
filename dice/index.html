@@ -26,13 +26,13 @@
           <div class="offcanvas-body">
             <!-- <ul class="navbar-nav ms-auto justify-content-end flex-grow-1 pe-5 "> -->
             <ul class="navbar-nav ms-auto justify-content-end pe-5">
-
+              
+              Menu stadig i test
+              <hr>
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle active spirits_category" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Om</a>
-                <ul class="dropdown-menu border-0 specific_drinks ps-2 " data-disableScrolling="false">
-                  <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="Cognac Cointreau" onclick="loadDoc('drinks/drink_sidecar.html')">Sidecar</a></li> 
-                  <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="Gin Cognac Angostura" onclick="loadDoc('drinks/drink_suffering_bastard.html')">Suffering Bastard</a></li>
-                </ul>
+                <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="1 terning" onclick="loadDoc('1dice.html')">1 Terning</a></li> 
+                <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="2 terninger" onclick="loadDoc('2dice.html')">2 terninger</a></li>
+                <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="Plat og krone" onclick="loadDoc('1coin.html')">Plat og Krone</a></li>
               </li>
             </ul>
           </div>
@@ -48,15 +48,24 @@
 
         <p class="m-5 text-center" id="description">Terning: D<span id="dice_type">6</span></p>
 
-      <!-- <div id="dice_box" class="d-flex align-items-center justify-content-center"> -->
-      <div id="dice_box" class="">
-      
-        <svg width="150" height="150" viewBox="0 0 150 150" id="dice_click">
-          <rect x="" y="" rx="10px" ry="10px" width="150px" height="150px"
-          style="fill:ivory;stroke:black;stroke-width:1" />
-          <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-size="3em" id="Dice_roll">?</text>
-        </svg>
+        <div id="dice_box" class="">
         
+          <svg width="150" height="150" viewBox="0 0 150 150" id="dice_click">
+            <rect x="" y="" rx="10px" ry="10px" width="150px" height="150px"
+            style="fill:ivory;stroke:black;stroke-width:1" />
+            <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-size="3em" id="Dice_roll">?</text>
+          </svg>
+          
+        </div>
+
+<!--         <div class="m-5 text-center">
+
+          <button id="button"  type="button" class="btn btn-success btn-lg">
+            Kast
+          </button>
+        
+        </div> -->
+
       </div>
 
       <div class="m-5 text-center">
@@ -68,11 +77,6 @@
       </div>
 
 
-        
-
-
-
-      </div>
 
     </div>
 

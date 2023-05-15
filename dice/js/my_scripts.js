@@ -1,4 +1,4 @@
-/* function loadDoc(doc) {
+function loadDoc(doc) {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
@@ -9,7 +9,7 @@
   xhttp.open("GET", doc , true);
   xhttp.send();
 }
-
+/*
 function rollDice(max) {
   var dice_value = Math.floor(Math.random() * max )+ 1;
   return dice_value
