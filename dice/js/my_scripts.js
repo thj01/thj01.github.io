@@ -9,16 +9,8 @@ function loadDoc(doc) {
   xhttp.open("GET", doc , true);
   xhttp.send();
 }
-/*
-function rollDice(max) {
-  var dice_value = Math.floor(Math.random() * max )+ 1;
-  return dice_value
-}
- */
 
-/* var sides = 6 */
 var dice = {
-  /* var sides = 6; */
   roll: function () {
     var randomNumber = Math.floor(Math.random() * sides) + 1;
     return randomNumber;
