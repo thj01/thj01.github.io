@@ -2,10 +2,17 @@ h1 {font-size: 3em;}
 p {font-size: 1.8em;}
 button {font-size: 5em;}
 
+#dice_section .dices{
+
+float: right;
+
+
+}
+
 div .p_dice {
   /* display:block; */
-  margin-left: auto;
-  margin-right: auto;
+/*   margin-left: auto;
+  margin-right: auto; */
   border: 1px solid black;
   border-radius: 1em;
   background-color: ivory;
@@ -14,6 +21,7 @@ div .p_dice {
   display:flex;
   align-items: center;
   justify-content:center;
+  margin-bottom: 2em;
 }
 
 div .p_dice span {
@@ -21,18 +29,16 @@ font-size: 3em
 }
 
 
-#dice_box {
-  height:150px;
-  width:150px ;
+#dice_section {
+/*   height:200px;
+  width:200px ; */
+/*   margin-left: auto;
+  margin-right: auto; */
+
   margin: 0 auto;
+
 }
 
- #dice_box2 {
-  height:150px;
-  width:100% ;
-  margin: 0 auto;
-}
- 
 
 
 

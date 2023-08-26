@@ -46,11 +46,13 @@
 <fieldset>
 	<legend>Tidsforbrug: </legend>
 	<label>Optimistisk tidsforbrug:</label>
-	<input placeholder="Vo" id="optimistisk" autofocus><br/><br/>
+	<input type="number" placeholder="Vo" id="optimistisk" autofocus><br/><br/>
 	<label>Sandsynligt tidsforbrug:</label>
-	<input placeholder="Vs" id="sandsynligt"><br/><br/>
+	<input type="number"  placeholder="Vs" id="sandsynligt"><br/><br/>
 	<label>Pessimistisk tidsforbrug:</label>
-	<input placeholder="Ea" id="effektiv_arbejdstid"><br/><br/>		
+	<input type="number"  placeholder="Vp" id="pessimistisk"><br/><br/>		
+	<label>Effektiv arbejdstid:</label>
+	<input type="number"  placeholder="Ea" id="effektiv_arbejdstid"><br/><br/>		
 	<button onclick="beregn(), showDiv()">Beregn</button>
 	
 </fieldset>
