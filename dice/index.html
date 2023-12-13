@@ -32,6 +32,7 @@
               <li class="nav-item dropdown">
                 <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="1 terning" onclick="loadDoc('1dice.html')">1 Terning</a></li> 
                 <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="2 terninger" onclick="loadDoc('2dice.html')">2 terninger</a></li>
+                <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="2 terninger" onclick="loadDoc('3dice.html')">3 terninger</a></li>
                 <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="Plat og krone" onclick="loadDoc('1coin.html')">Plat og Krone</a></li>
               </li>
             </ul>
@@ -42,28 +43,15 @@
 
     <div class="container-md content">
 
+      <h1 class="m-5 text-center">DICE</h1>
+
+      <p class="m-5 text-center" id="description">Terning: D<span id="dice_type">6</span></p>
+
       <div id="content">
         
-        <h1 class="m-5 text-center">DICE</h1>
-
-        <p class="m-5 text-center" id="description">Terning: D<span id="dice_type">6</span></p>
-
-
         <div class="p_dice" class="">
-          <span id="Dice_roll">6</span>
+          <span class="DiceNumber" id="dice00">6</span>
         </div>
-
-        <p> </p>
-
-<!--         <div id="dice_box" class="">
-        
-          <svg width="150" height="150" viewBox="0 0 150 150" id="dice_click">
-            <rect x="" y="" rx="10px" ry="10px" width="150px" height="150px"
-            style="fill:ivory;stroke:black;stroke-width:1" />
-            <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-size="3em" id="Dice_roll">?</text>
-          </svg>
-          
-        </div> -->
 
       </div>
 
