@@ -20,8 +20,8 @@ var dice = {
 }
 
 
-function change_background_color() {
-  document.getElementById("p_dice").style.backgroundColor = "lightblue";
+function change_background_color(this_dice) {
+  document.getElementById(this_dice).style.backgroundColor = "lightblue";
 
 
 }
