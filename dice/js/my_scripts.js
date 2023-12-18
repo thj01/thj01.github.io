@@ -28,14 +28,18 @@ function change_background_color() {
 
 
 
-function all_dices(d0,d1,d2){
+function all_dices(d0,d1,d2,d3,d4){
 
   var diceroll00 = document.getElementById('dice00');
   var diceroll01 = document.getElementById('dice01');
   var diceroll02 = document.getElementById('dice02');
+  var diceroll03 = document.getElementById('dice03');
+  var diceroll04 = document.getElementById('dice04');
   diceroll00.innerHTML = d0;
   diceroll01.innerHTML = d1;
   diceroll02.innerHTML = d2;
+  diceroll03.innerHTML = d3;
+  diceroll04.innerHTML = d4;
 
 
 }
@@ -48,7 +52,9 @@ button.onclick = function() {
   var dice00 = dice.roll();
   var dice01 = dice.roll();
   var dice02 = dice.roll();
-  all_dices(dice00,dice01,dice02)
+  var dice03 = dice.roll();
+  var dice04 = dice.roll();
+  all_dices(dice00,dice01,dice02,dice03,dice04)
 
 }
 
