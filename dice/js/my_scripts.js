@@ -18,6 +18,7 @@ function loadDoc(doc) {
 }
 
 var sides = 6;
+var throw_counter = 0;
 var click_counter_dice00 = 0;
 var click_counter_dice01 = 0;
 var click_counter_dice02 = 0;
@@ -105,15 +106,20 @@ function all_dices(d0,d1,d2,d3,d4){
 var button = document.getElementById('button');
 
 button.onclick = function() {
-  // var result = dice.roll();
-  // printNumber(result);
+  
+  throw_counter += 1;
+
+  document.getElementById("ThrowCount").innerHTML = throw_counter;
+  
   var result00 = dice.roll();
   var result00 = dice.roll();
   var result01 = dice.roll();
   var result02 = dice.roll();
   var result03 = dice.roll();
   var result04 = dice.roll();
-  all_dices(result00,result01,result02,result03,result04)
+  all_dices(result00,result01,result02,result03,result04);
+
+  
 
 }
 
