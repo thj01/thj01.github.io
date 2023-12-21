@@ -15,6 +15,9 @@ function loadDoc(doc) {
   click_counter_dice03 = 0;
   click_counter_dice04 = 0;
 
+  throw_counter = 0;
+  document.getElementById("ThrowCount").innerHTML = throw_counter;
+
 }
 
 var sides = 6;
@@ -119,9 +122,40 @@ button.onclick = function() {
   var result04 = dice.roll();
   all_dices(result00,result01,result02,result03,result04);
 
-  
+}
+
+var reset_button = document.getElementById('reset_button');
+
+reset_button.onclick = function() {
+
+  throw_counter = 0;
+  document.getElementById("ThrowCount").innerHTML = throw_counter;
+
+  click_counter_dice00 = 0;
+  click_counter_dice01 = 0;
+  click_counter_dice02 = 0;
+  click_counter_dice03 = 0;
+  click_counter_dice04 = 0;
+
+  const dices = ["dice00","dice01","dice02","dice03","dice04"]
+
+  for (const i of dices){
+    document.getElementById(i).style.backgroundColor = dice_unchosen;  
+    document.getElementById(i).innerHTML = "&#9733;";  
+
+  }
+
+
+
+  // document.getElementById("dice00").style.backgroundColor = dice_unchosen;
+  // document.getElementById("dice01").style.backgroundColor = dice_unchosen;
+  // document.getElementById("dice02").style.backgroundColor = dice_unchosen;
+  // document.getElementById("dice03").style.backgroundColor = dice_unchosen;
+  // document.getElementById("dice04").style.backgroundColor = dice_unchosen;
 
 }
+
+
 
 function new_dice_type(new_sides_var){
   var sides = new_sides_var;
