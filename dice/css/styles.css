@@ -1,6 +1,6 @@
 h1 {font-size: 3em;}
 p {font-size: 1.2em;}
-button {font-size: 10em;}
+/* button {font-size: 10em;} */
 
 .p_dice {
   /* display:block; */
@@ -18,10 +18,9 @@ button {font-size: 10em;}
 }
 
 
-.p_dice .DiceNumber {
-
-  /* font-size: 3.2em; */
-  }
+/* .p_dice .DiceNumber {
+  font-size: 3.2em;
+  } */
 
 .offcanvas{
     width:60% !important;
