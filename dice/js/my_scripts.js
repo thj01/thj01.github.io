@@ -24,7 +24,7 @@ function loadDoc(doc) {
 var sides = 6;
 var throw_counter = 0;
 
-const dices = ["dice00","dice01","dice02","dice03","dice04","dice05"]
+const dices = ["dice00","dice01","dice02","dice03","dice04","dice05"];
 
 var click_counter_dice00 = 0;
 var click_counter_dice01 = 0;
@@ -154,7 +154,7 @@ reset_button.onclick = function clear_data() {
   click_counter_dice04 = 0;
   click_counter_dice05 = 0;
 
-  for (const i of dices){
+  for (var i of dices){
     document.getElementById(i).style.backgroundColor = dice_unchosen;  
     document.getElementById(i).innerHTML = "&#9733;";  
 
@@ -182,28 +182,8 @@ change_to_coin.onclick = function () {
   sides = 2;
 
 }
-  
-// var change_to_dice = document.getElementsByClassName("design_as_dice")
-
-// change_to_dice.onclick = function () {
-
-//   for (const i of dices){
-//     document.getElementById(i).style.borderRadius = ".9em";
-//   }
-
-//   test(2)
-// }
-
-  // for (const i of dices){
-  //   document.getElementById(i).style.borderRadius = ".9em";  
-  //   }
-
-
-
 
 function test(n){
-
-
 
   sides = n;
 
@@ -213,20 +193,27 @@ function test(n){
     document.getElementById('dice_type').innerHTML = 'DICE - D' + n;
     document.getElementById('btn_dice_type').innerHTML = 'D' + n;
     document.getElementById('Dice_roll').innerHTML = 1;
-
-    for (const i of dices){document.getElementById(i).innerHTML = "&#9733;"}
+    document.getElementById("dice00").innerHTML = "T"
+    
+    for (var dice of dices){
+      document.getElementById(dice).innerHTML = "&#9733;";
+      document.getElementById(dice).style.borderRadius = ".3em";
+    }
+      
 
 
 
   } else {
-    document.getElementById('dice_type').innerHTML = 'Møntkast';
-    document.getElementById('btn_dice_type').innerHTML = 'Møntkast';
+    document.getElementById('dice_type').innerHTML = 'Plat og krone';
+    document.getElementById('btn_dice_type').innerHTML = 'Plat og krone';
     document.getElementById('Dice_roll').innerHTML = 1;
 
-    // for (const i of dices){
-    //   document.getElementById(i).style.borderRadius = ".9em";
+    for (var dice of dices){
+      document.getElementById(dice).innerHTML = "&#9733;";
+      document.getElementById(dice).style.borderRadius = ".9em";
+    }
 
-    sides = 2;
+    // sides = 2;
   }
 
 
