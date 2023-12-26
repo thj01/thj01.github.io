@@ -4,6 +4,10 @@ body {
     
 }
 
+.offcanvas{
+    width:60% !important;
+} 
+
 h2 {
     font-size: 1.6em;
     padding-top: 1em;
@@ -94,5 +98,11 @@ ul.specific_drinks li a{
 .presentation .description p {
 
     margin-bottom: .5em;
+
+}
+
+.navbar-brand{
+
+font-size: 1em;
 
 }
