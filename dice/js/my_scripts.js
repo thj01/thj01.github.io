@@ -1,25 +1,4 @@
-function loadDoc(doc) {
-  var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      document.getElementById("content").innerHTML =
-      this.responseText;
-    }
-  };
-  xhttp.open("GET", doc , true);
-  xhttp.send();
-  
-  click_counter_dice00 = 0;
-  click_counter_dice01 = 0;
-  click_counter_dice02 = 0;
-  click_counter_dice03 = 0;
-  click_counter_dice04 = 0;
-  click_counter_dice05 = 0;
 
-  throw_counter = 0;
-  document.getElementById("ThrowCount").innerHTML = throw_counter;
-
-}
 
 var sides = 6;
 var throw_counter = 0;
@@ -42,6 +21,36 @@ var dice = {
     return randomNumber;
   }
 }
+
+function loadDoc(doc) {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("content").innerHTML =
+      this.responseText;
+    }
+  };
+  xhttp.open("GET", doc , true);
+  xhttp.send();
+
+  reset_all_data
+
+}
+
+function reset_all_data(){
+
+  click_counter_dice00 = 0;
+  click_counter_dice01 = 0;
+  click_counter_dice02 = 0;
+  click_counter_dice03 = 0;
+  click_counter_dice04 = 0;
+  click_counter_dice05 = 0;
+
+  throw_counter = 0;
+  document.getElementById("ThrowCount").innerHTML = throw_counter;
+
+}
+
 
 function change_background_color(param) {
 
@@ -171,17 +180,17 @@ reset_button.onclick = function clear_data() {
 
 // }
 
-var change_to_coin = document.getElementById('design_as_coin');
+// var change_to_coin = document.getElementById('design_as_coin');
 
-change_to_coin.onclick = function () {
+// change_to_coin.onclick = function () {
 
-  for (const i of dices){
-    document.getElementById(i).style.borderRadius = ".9em";
-  }
+//   for (const i of dices){
+//     document.getElementById(i).style.borderRadius = ".9em";
+//   }
  
-  sides = 2;
+//   sides = 2;
 
-}
+// }
 
 function test(n){
 
@@ -193,8 +202,7 @@ function test(n){
     document.getElementById('dice_type').innerHTML = 'DICE - D' + n;
     document.getElementById('btn_dice_type').innerHTML = 'D' + n;
     document.getElementById('Dice_roll').innerHTML = 1;
-    document.getElementById("dice00").innerHTML = "T"
-    
+        
     for (var dice of dices){
       document.getElementById(dice).innerHTML = "&#9733;";
       document.getElementById(dice).style.borderRadius = ".3em";
