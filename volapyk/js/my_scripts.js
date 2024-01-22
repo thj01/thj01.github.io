@@ -144,18 +144,18 @@ var chosen_char_list = replacement_char_simple;
 
 function change_charlist(charlist){
 
-  console.log(charlist);
+  // console.log(charlist);
 
   switch(charlist) {
 
     case "simple":
       chosen_char_list = replacement_char_simple;
-      console.log(chosen_char_list)
+      // console.log(chosen_char_list)
       document.getElementById('btn_char_type').innerHTML = 'Simple';
       break
     case "geeky":
       chosen_char_list = replacement_char_geeky;
-      console.log(chosen_char_list)
+      // console.log(chosen_char_list)
       document.getElementById('btn_char_type').innerHTML = 'Geeky';      
 
   }
@@ -198,7 +198,7 @@ function read_text() {
         // console.log("Array Størrelse: " + chosen_char_list[replacement_char_count-1].length);
         var array_position_chosen = Math.floor(Math.random() * (possible_chars-1)) + 1;
         var this_char = chosen_char_list[replacement_char_count-1][array_position_chosen];
-        console.log(this_char)
+        // console.log(this_char)
       }
 
       input_text = input_text.replace(my_char,this_char);
@@ -221,7 +221,7 @@ function copy_to_clipboard(){
   copyText.select();
   copyText.setSelectionRange(0, 99999); // For mobile devices
   navigator.clipboard.writeText(copyText.value);
-  alert("Copied the text: " + copyText.value);
+  // alert("Copied the text: " + copyText.value);
 
 
 }
