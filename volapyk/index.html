@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link rel="icon" href="images/favicon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="En webapp der indeholder opskrifter til gode drinks, samt gode råd til det man har brug for i barskabet, f.eks. glas.">
+    <title>Skabelon</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="css/styles.css" rel="stylesheet">
+  </head>
+  <body class="">
+    <nav class="navbar navbar-expand-lg bg-light sticky-top">
+      <!-- <div class="container-fluid"> -->
+      <div class="container">
+        <a class="navbar-brand" href="index.html">Volapyk</a>
+        <button 
+          class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+          <span class="navbar-toggler-icon " aria-label="Menu"></span>
+        </button>
+        <div class="offcanvas offcanvas-end" tabindex="-2" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Indhold</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <!-- <ul class="navbar-nav ms-auto justify-content-end flex-grow-1 pe-5 "> -->
+            <ul class="navbar-nav ms-auto justify-content-end pe-5">
+              <li class="nav-item dropdown">
+                <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="1 terning" onclick="loadDoc('page1.html');test(6)">page1</a></li>
+                <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="2 terninger" onclick="loadDoc('page2.html');test(6)">page2</a></li>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container-md content">
+
+      <h1 class="m-5 text-center display-1" >Volapyk</h1>
+
+      
+
+      <div id="content">
+        
+        <p>Her kommer de enkelte HTML sider til at ligge</p>
+
+        <div class="m-1 text-center">
+
+          <div class="form-group">
+
+            <label for="text_to_convert">Din tekst</label>
+            <textarea class="form-control" id="text_to_convert" type="text" rows="4" placeholder="Skriv din tekst her"></textarea>
+
+          </div>
+        
+        </div>
+
+
+
+        <div class="m-5 text-center">
+
+          <button id="button" type="button" class="btn btn-success btn-lg w-100 btn-block" onclick="read_text()">
+            Volapyk
+          </button>
+        
+        </div>
+
+
+        <div class="m-1 text-center">
+
+          <div class="form-group">
+
+            <label for="converted_text">Volapyk</label>
+            <textarea class="form-control" id="converted_text" type="text" rows="4" placeholder="Her kommer din tekst"></textarea>
+
+          </div>
+        
+        </div>
+
+      </div>
+
+      <!-- <div class="m-5 text-center">
+
+        <button id="reset_button" type="button" class="btn btn-danger btn-lg">
+          &#x21bb;
+        </button>
+      
+      </div>       -->
+
+    </div>
+
+    <nav class="navbar navbar-expand-lg fixed-bottom navbar-light bg-light">
+      <div class="container">
+        <a class="navbar-brand" href="#">Made By: THOJEN_20240122</a>
+        </div>
+    </nav>
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="js/my_scripts.js"></script>
+
+  </body>
+</html>
