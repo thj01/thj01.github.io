@@ -58,20 +58,20 @@ var replacement_char_simple = [
 var replacement_char_geeky = [
   ["a","&#945;"],
   ["b","&#946;"],
-  ["c","c"], //mangler
+  ["c","&#596;"], //mangler
   ["d","&#948;"],
   ["e","&#949;"],
   ["f","&#402;"],
   ["g","&#947;"],
-  ["j","j"],
+  ["j","&#669;"],
   ["k","&#954;"],
   ["l","&#955;"],
-  ["m","m"],
+  ["m","&#653;"],
   ["n","&#951;"],
   ["o","&#959;"],
   ["p","&#961;"],
-  ["q","q"], //mangler
-  ["r","r"], //Mangler
+  ["q","&#672;"], //mangler
+  ["r","&#638;"], //Mangler
   ["s", "&#963;"],
   ["t","&#964;"],
   ["u","&#965;"],
@@ -141,18 +141,28 @@ var replacement_char_test =[
 
 var test = 1;
 var chosen_char_list = replacement_char_simple;
-var replacement_char_length = chosen_char_list.length;
 
 function change_charlist(charlist){
 
-  if (charlist = "simple") {
-    chosen_char_list = replacement_char_simple;
-  }
-  if (charlist = "geeky") {
-    chosen_char_list = replacement_char_geeky;
-  }
+  console.log(charlist);
 
+  switch(charlist) {
+
+    case "simple":
+      chosen_char_list = replacement_char_simple;
+      console.log(chosen_char_list)
+      document.getElementById('btn_char_type').innerHTML = 'Simple';
+      break
+    case "geeky":
+      chosen_char_list = replacement_char_geeky;
+      console.log(chosen_char_list)
+      document.getElementById('btn_char_type').innerHTML = 'Geeky';      
+
+  }
 }
+
+
+var replacement_char_length = chosen_char_list.length;
 
 
 // console.log("Antal Replacement chars: " + replacement_char_length);
@@ -185,7 +195,7 @@ function read_text() {
         // console.log(chosen_char_list[replacement_char_count-1][i+1]);
         
         var possible_chars = chosen_char_list[replacement_char_count-1].length;
-        console.log("Array Størrelse: " + chosen_char_list[replacement_char_count-1].length);
+        // console.log("Array Størrelse: " + chosen_char_list[replacement_char_count-1].length);
         var array_position_chosen = Math.floor(Math.random() * (possible_chars-1)) + 1;
         var this_char = chosen_char_list[replacement_char_count-1][array_position_chosen];
         console.log(this_char)
@@ -201,6 +211,18 @@ function read_text() {
   }
 
   document.getElementById("converted_text").innerHTML = input_text;
+
+}
+
+function copy_to_clipboard(){
+
+  var copyText = document.getElementById("converted_text");
+
+  copyText.select();
+  copyText.setSelectionRange(0, 99999); // For mobile devices
+  navigator.clipboard.writeText(copyText.value);
+  // alert("Copied the text: " + copyText.value);
+
 
 }
 
