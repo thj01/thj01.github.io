@@ -31,7 +31,7 @@
                 <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="Pladsholder" onclick="loadDoc('page2.html')">Pladsholder</a></li>
               </li>
               <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="index.html" alt="til forsiden">Forside</a></li>
-            </li>
+              </li>
             </ul>
           </div>
         </div>
@@ -46,8 +46,6 @@
 
       <div id="content">
         
-        <p>Her kommer de enkelte HTML sider til at ligge</p>
-
         <div class="m-1 text-center">
 
           <div class="form-group">
@@ -69,12 +67,6 @@
         
         </div>
 
-  
-  
-  
-        </div>
-
-
         <div class="m-1 text-center">
 
           <div class="form-group">
@@ -82,23 +74,20 @@
             <label for="converted_text">Volapyk</label>
             <textarea class="form-control" id="converted_text" type="text" rows="4" placeholder="Her kommer din tekst"></textarea>
 
+            <button id="button" type="button" class="btn btn-light btn-sm w-75 btn-block" onclick="copy_to_clipboard()">
+              Kopier volapykken
+            </button>
+
           </div>
         
         </div>
 
-        <button onclick="copy_to_clipboard()">Copy text</button>
-
       </div>
 
-      <!-- <div class="m-5 text-center">
-
-        <button id="reset_button" type="button" class="btn btn-danger btn-lg">
-          &#x21bb;
-        </button>
-      
-      </div>       -->
 
     </div>
+
+  </div>
 
     <nav class="navbar navbar-expand-lg fixed-bottom navbar-light bg-light">
       <div class="container">
