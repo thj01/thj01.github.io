@@ -39,7 +39,7 @@ var replacement_string_simple = [
   ["o","0"],
   ["u","ü"],
   ["y","ÿ"],
-  ["æ","@","ae"],
+  ["æ","@"],
   // ["ø","oe"],
   // ["å","aa"],
   ["s","$","ß"],
@@ -180,6 +180,8 @@ var replacement_string_length = chosen_string_list.length;
 var list_with_uppercase = false;
 var strings_to_check = [];
 
+var visibility_counter = 4;
+
 
 function change_string_list(charlist){
 
@@ -215,9 +217,71 @@ function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
+var visibility_counter = 2;
+console.log(visibility_counter);
+
+function show_hidden_feature(target_id){
+
+  console.log(visibility_counter);
+
+  // switch (visibility_counter) {
+
+  //   case visibility_counter > 0:
+  //     visibility_counter -= 1;
+  //     // break;
+  //   case visibility_counter == 0:
+  //     document.getElementById(target_id).style.visibility = "visible";
+  //     alert("du har åbnet den skjulte funktion");
+  //     visibility_counter -= 1;
+  //     // break;
+  //   case visibility_counter < -10:
+  //     break;
+  //   case visibility_counter < -9:
+  //     visibility_counter -= 1;
+  //     alert("42");
+  //     // break;
+  //   case visibility_counter < -4:
+  //     alert("Der er ikke flere hemmeligheder");
+  //     visibility_counter -= 1;
+  //     // break;
+
+  // }
 
 
+  if (visibility_counter > 0) {
 
+    visibility_counter -= 1;
+
+  } else if (visibility_counter == 0) {
+
+    document.getElementById(target_id).style.visibility = "visible";
+    alert("du har åbnet den skjulte funktion");
+    visibility_counter -= 1;
+    
+  } else if (visibility_counter < -20){
+
+  } else if (visibility_counter == -4){
+
+    alert("Der er ikke flere hemmeligheder");
+    visibility_counter -= 1;
+
+  } else if (visibility_counter == -9){
+
+      alert("42");
+      visibility_counter -= 1;
+  
+  } else if (visibility_counter == -15){
+
+    alert("En ekspert er en person, som har begået alle de fejl, som det er muligt at begå inden for et begrænset område.\n\nNiels Bohr");
+    visibility_counter -= 1;
+
+  } else {
+    visibility_counter -= 1;
+    
+
+  };
+  
+};
 
 
 

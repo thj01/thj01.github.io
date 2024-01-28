@@ -93,7 +93,7 @@
 
     <nav class="navbar navbar-expand-lg fixed-bottom navbar-light bg-light">
       <div class="container">
-        <a class="navbar-brand" href="#">Made By: THOJEN</a>
+        <a class="navbar-brand" onclick="show_hidden_feature('hidden_menu_item')" href="#">Made By: thj001</a>
         <div class="btn-group dropup">
           <button id="btn_char_type" type="button" class="btn btn-info dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
             Simple
@@ -101,7 +101,7 @@
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start" id="chose_array_dropup">
             <li><a class="dropdown-item" href="#" class="" onclick="change_string_list('simple')">Simple</a></li>
             <li><a class="dropdown-item" href="#" class="" onclick="change_string_list('geeky')">Geeky</a></li>
-            <li><a class="dropdown-item" href="#" class="" onclick="change_string_list('kinky')">kinky</a></li>
+            <li><a class="dropdown-item" id="hidden_menu_item" href="#" onclick="change_string_list('kinky')">kinky</a></li>
             <hr>
             <li><a class="dropdown-item" href="index.html" class="">Reload</a></li>
           </ul>
