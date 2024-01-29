@@ -10,27 +10,7 @@ function loadDoc(doc) {
   };
   xhttp.open("GET", doc , true);
   xhttp.send();
-
-
 }
-
-
-var replacement_string_vocals =[
-  ["a","@"],
-  ["A","@"],
-  ["e","€"],
-  ["E","€"],
-  ["i","!"],
-  ["I","!"],
-  ["o","0"],
-  ["O","0"],
-  ["u","ü"],
-  ["U","Ü"],
-  ["y","ÿ"],
-  ["Y","Ÿ"],
-  ["s","$"],
-  ["S","$"],
-];
 
 var replacement_string_simple = [
   ["a","@","4"],
@@ -88,7 +68,6 @@ var replacement_string_kinky = [
   ["voldtæ","v0ldtæ","v0ldt@"],
   ["voldta","v0ldta","v0ldt@"]
 ];
-
 
 var replacement_string_geeky = [
   ["a","&#945;"],
@@ -150,32 +129,7 @@ var replacement_string_geeky = [
   ["Å","&#8491;"],
 ];
 
-var replacement_string_test =[
-  ["a","@","4"],
-  ["A","@","4"],
-  ["e","€","3"],
-  ["E","€","3"],
-  ["i","!","1"],
-  ["I","!","1"],
-  ["o","0"],
-  ["O","0"],
-  ["u","ü"],
-  ["U","Ü"],
-  ["y","ÿ"],
-  ["Y","Ÿ"],
-  ["æ","@","ae"],
-  ["Æ","@","AE"],
-  ["ø","oe"],
-  ["Ø","OE"],
-  ["å","aa"],
-  ["Å","aa"],
-  ["s","$","ß"],
-  ["S","$","ß"],
-];
-
-
 var chosen_string_list = replacement_string_simple;
-// var chosen_string_list = replacement_string_kinky
 var replacement_string_length = chosen_string_list.length;
 var list_with_uppercase = false;
 var strings_to_check = [];
@@ -184,8 +138,6 @@ var visibility_counter = 4;
 
 
 function change_string_list(charlist){
-
-  // console.log(charlist);
 
   switch(charlist) {
 
@@ -213,19 +165,27 @@ function change_string_list(charlist){
   }
 }
 
+function copy_to_clipboard(){
+
+  var copyText = document.getElementById("converted_text");
+
+  copyText.select();
+  copyText.setSelectionRange(0, 99999); // For mobile devices
+  navigator.clipboard.writeText(copyText.value);
+  // alert("Copied the text: " + copyText.value);
+
+}
+
 function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-// var visibility_counter = 2;
-var visibility_counter = 3;
-
-console.log(visibility_counter);
+var visibility_counter = 2;
+// console.log(visibility_counter);
 
 function show_hidden_feature(target_id){
 
   console.log(visibility_counter);
-
 
   switch (visibility_counter) {
 
@@ -245,43 +205,8 @@ function show_hidden_feature(target_id){
     }
 
     visibility_counter -= 1;
-
-  // if (visibility_counter > 0) {
-
-  //   visibility_counter -= 1;
-
-  // } else if (visibility_counter == 0) {
-
-  //   document.getElementById(target_id).style.visibility = "visible";
-  //   alert("du har åbnet den skjulte funktion");
-  //   visibility_counter -= 1;
-    
-  // } else if (visibility_counter < -20){
-
-  // } else if (visibility_counter == -4){
-
-  //   alert("Der er ikke flere hemmeligheder");
-  //   visibility_counter -= 1;
-
-  // } else if (visibility_counter == -9){
-
-  //     alert("42");
-  //     visibility_counter -= 1;
-  
-  // } else if (visibility_counter == -15){
-
-  //   alert("En ekspert er en person, som har begået alle de fejl, som det er muligt at begå inden for et begrænset område.\n\nNiels Bohr");
-  //   visibility_counter -= 1;
-
-  // } else {
-  //   visibility_counter -= 1;
-    
-
-  // };
   
 };
-
-
 
 // console.log("Antal Replacement chars: " + replacement_string_length);
 
@@ -296,8 +221,6 @@ function read_text() {
   while(replacement_string_count != 0){
 
     var string_from_array = chosen_string_list[replacement_string_count-1][0];
-
-
 
     switch (list_with_uppercase){
 
@@ -318,28 +241,16 @@ function read_text() {
 
     console.log(strings_to_check);
 
-    // var strings_to_check = [
-    //   string_from_array,
-    //   capitalizeFirstLetter(string_from_array)
-    // ];
-
-
     for (let i = 0; i < strings_to_check.length; i++){
 
       my_string = strings_to_check[i];
 
       // console.log("test: " + string_to_check);
 
-    
-
-    
-
       var my_string_count = input_text.split(my_string).length-1;
-
     
       //console.log("Antal " + my_string + "(" + my_string_count + ")" );
       //console.log(chosen_string_list[replacement_string_count-1]);
-    
 
       while(my_string_count != 0){
 
@@ -371,16 +282,6 @@ function read_text() {
 
 };
 
-function copy_to_clipboard(){
 
-  var copyText = document.getElementById("converted_text");
-
-  copyText.select();
-  copyText.setSelectionRange(0, 99999); // For mobile devices
-  navigator.clipboard.writeText(copyText.value);
-  // alert("Copied the text: " + copyText.value);
-
-
-}
 
 
