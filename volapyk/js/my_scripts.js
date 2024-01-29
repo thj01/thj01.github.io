@@ -51,9 +51,11 @@ var replacement_string_kinky = [
   ["lider","l!der","l!d3r"],
   ["lort","l0rt"],
   ["luder","lüder"],
+  ["lussing","lu$$ing","lu$$!ng"]
   ["nøgen","n0gen"],
   ["orgasm","0rgasm","org@sm"],
   ["onan","0nan","on@n","0n@n"],
+  ["oral","0ral","or@l","0r@l"],
   ["patter","p@tter","p@tt€r"],
   ["penis","p3nis","p€nis","p3n!s","p€n!s","pen!s"],
   ["pik","p!k"],
