@@ -41,6 +41,7 @@ var replacement_string_kinky = [
   ["fuck","f@ck"],
   ["homo","h0m0"],
   ["hore","h0r3","h0r€"],
+  ["kink","k!nk"],
   ["klit","kl!t"],
   ["knep","kn3p","kn€p"],
   ["kusse","ku$$e"],
