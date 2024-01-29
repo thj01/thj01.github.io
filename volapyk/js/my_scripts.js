@@ -214,8 +214,11 @@ function show_hidden_feature(target_id){
     case -9:
       alert("42");
       break;
-    case -15:
+    case -12:
       alert("En ekspert er en person, som har begået alle de fejl, som det er muligt at begå inden for et begrænset område.\n\nNiels Bohr");
+      break;
+    case -15:
+      alert("Two things are infinite: the universe and human stupidity; and I'm not sure about the universe.\n\nAlbert Einstein");
       break;
     }
 
