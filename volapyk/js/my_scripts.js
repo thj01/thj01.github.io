@@ -49,6 +49,7 @@ var replacement_string_kinky = [
   ["lem","l3m","l€m"],
   ["lesbisk","l3sbisk","l3sb!sk"],
   ["lider","l!der","l!d3r"],
+  ["lort","l0rt"],
   ["luder","lüder"],
   ["nøgen","n0gen"],
   ["orgasm","0rgasm","org@sm"],
@@ -68,6 +69,7 @@ var replacement_string_kinky = [
   ["sæd","s@d"],
   ["sperm","$perm","sp3rm","sp€rm"],
   ["strapon","str@pon","str@p0n"],
+  ["udløsning","udl0sning","udl0sn!ng"],
   ["voldtæ","v0ldtæ","v0ldt@"],
   ["voldta","v0ldta","v0ldt@"]
 ];
