@@ -147,6 +147,10 @@ function change_string_list(charlist){
       list_with_uppercase = false;
       // console.log("Valgt liste: " + chosen_string_list)
       document.getElementById('btn_char_type').innerHTML = 'Simple';
+      // document.getElementById('volapyk-edition').innerHTML = 'Simple edition';
+      document.getElementById('button').innerHTML = 'Volapyk';
+      document.getElementById('copy_text_button').innerHTML = 'Kopier volapykken';
+      document.getElementById('header_1').innerHTML = 'Volapyk';
       break;
     case "geeky":
       chosen_string_list = replacement_string_geeky;
@@ -154,6 +158,10 @@ function change_string_list(charlist){
       list_with_uppercase = true;
       // console.log("Valgt liste: " + chosen_string_list)
       document.getElementById('btn_char_type').innerHTML = 'Geeky';
+      document.getElementById('volapyk-edition').innerHTML = 'Γεεκϒ ∃δiτiοη';
+      document.getElementById('button').innerHTML = '⋁ολαρϒκ';
+      document.getElementById('copy_text_button').innerHTML = 'Κορiεɾ νολαρϒκκεη';
+      document.getElementById('header_1').innerHTML = '⋁ολαρϒκ';
       break ;     
     case "kinky":
       chosen_string_list = replacement_string_kinky;
@@ -161,6 +169,11 @@ function change_string_list(charlist){
       list_with_uppercase = false;
       // console.log("Valgt liste: " + chosen_string_list)
       document.getElementById('btn_char_type').innerHTML = 'Kinky';
+      let edition_text = "<span style='color:#c41c22;font-weight:900;font-style: oblique;'>KINKY EDITION</span>"; 
+      document.getElementById('volapyk-edition').innerHTML = edition_text;
+      document.getElementById('button').innerHTML = 'Volapyk';
+      document.getElementById('copy_text_button').innerHTML = 'Kopier volapykken';
+      document.getElementById('header_1').innerHTML = 'Volapyk';
       break;
   }
 }
@@ -180,18 +193,18 @@ function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-var visibility_counter = 2;
+var visibility_counter = 5;
 // console.log(visibility_counter);
 
 function show_hidden_feature(target_id){
 
-  console.log(visibility_counter);
+  // console.log(visibility_counter);
 
-  switch (visibility_counter) {
+  switch (visibility_counter -1) {
 
     case 0:
       document.getElementById(target_id).style.visibility = "visible";
-      alert("du har åbnet den skjulte funktion");
+      alert("du har åbnet for Kinky Edition");
       break;
     case -4:
       alert("Der er ikke flere hemmeligheder");
@@ -239,7 +252,7 @@ function read_text() {
         break;
     }
 
-    console.log(strings_to_check);
+    // console.log(strings_to_check);
 
     for (let i = 0; i < strings_to_check.length; i++){
 
