@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link rel="icon" href="images/favicon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="En webapp der indeholder opskrifter til gode drinks, samt gode råd til det man har brug for i barskabet, f.eks. glas.">
+    <title>TidsEstimat</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="css/styles.css" rel="stylesheet">
+  </head>
+  <body class="">
+    <nav class="navbar navbar-expand-lg bg-light sticky-top">
+      <!-- <div class="container-fluid"> -->
+      <div class="container">
+        <a class="navbar-brand" href="index.html">TidsEstimat</a>
+        <button 
+          class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+          <span class="navbar-toggler-icon " aria-label="Menu"></span>
+        </button>
+        <div class="offcanvas offcanvas-end" tabindex="-2" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Indhold</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <!-- <ul class="navbar-nav ms-auto justify-content-end flex-grow-1 pe-5 "> -->
+            <ul class="navbar-nav ms-auto justify-content-end pe-5">
+              <li class="nav-item dropdown">
+                <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="1 terning" onclick="loadDoc('about.html')">Om Tids_estimat</a></li>
+                <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="1 terning" onclick="loadDoc('page1.html')">page1</a></li>
+                <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="2 terninger" onclick="loadDoc('page2.html')">page2</a></li>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container-md content">
+
+      <div id="content">
+        
+        <h1 class="m-5 text-center display-1" >tidsestimat</h1>
+
+        <p>Indtast dine vurderinger (i timer), og klik herefter på knappen "Beregn":</p>
+
+        <form action=""></form>
+
+
+        <fieldset>
+          <legend>Tidsforbrug: </legend>
+          <label>Optimistisk tidsforbrug:</label>
+          <input type="text" placeholder="Vo" id="optimistisk" autofocus><br/><br/>
+          <label>Sandsynligt tidsforbrug:</label>
+          <input type="text"  placeholder="Vs" id="sandsynligt"><br/><br/>
+          <label>Pessimistisk tidsforbrug:</label>
+          <input type="text"  placeholder="Vp" id="pessimistisk"><br/><br/>		
+          <label>Effektiv arbejdstid:</label>
+          <input type="text"  placeholder="Ea" id="effektiv_arbejdstid"><br/><br/>		
+          <button onclick="beregn(), showDiv()">Beregn</button>
+          
+        </fieldset>
+
+        <!-- <form>
+          <div class="form-group">
+            <label for="optimistisk_tidsforbrug">Optimistisk Tidsforbrug</label>
+            <input type="number" class="form-control" id="optimistisk_tidsforbrug" placeholder="Vo">
+          </div>
+          <div class="form-group">
+            <label for="sandsynligt_tidsforbrug">Sandsynligt Tidsforbrug</label>
+            <input type="number" class="form-control" id="sandsynligt_tidsforbrug" placeholder="Vs">
+          </div>
+          <div class="form-group">
+            <label for="pessimistisk_tidsforbrug">Pessimistisk Tidsforbrug</label>
+            <input type="number" class="form-control" id="pessimistisk_tidsforbrug" placeholder="Vp">
+          </div>
+          <div class="form-group">
+            <label for="effektiv_arbejdstid">Effektiv arbejdstid</label>
+            <input type="number" class="form-control" id="effektiv_arbejdstid" placeholder="Ea">
+          </div>          
+
+          <button onclick="beregn(), showDiv()">Beregn</button>
+
+        </form> -->
+
+
+
+        
+        <div id="showoff" style="display:none">
+        
+          <h1>Opgavens estimering</h1>
+        
+          <p><b>Ved en succesrate på 68%</b></p>
+        
+          <p>Projektet estimeres til at tage mellem <span id="succes68_lav"></span> og <span id="succes68_høj"></span> timer </p>
+        
+          <p>I dage vil det være mellem  <span id="succes68_lav_dage"></span> og <span id="succes68_høj_dage"></span> </p>
+        
+        
+          <p><b>Ved en succesrate på 95%</b></p>
+        
+          <p>Projektet estimeres til at tage mellem <span id="succes95_lav"></span> og <span id="succes95_høj"></span> timer </p>
+        
+          <p>I dage vil det være mellem  <span id="succes95_lav_dage"></span> og <span id="succes95_høj_dage"></span> </p>
+        
+          <details>
+        
+            <summary>Kontroltal</summary>
+        
+            <p><b>Input</b></p>
+            
+            <table class="no_lines">
+              <tbody>
+                <tr>
+                  <td>Vo = <span id="Vo"></span></td>
+                  <td>Vs = <span id="Vs"></span></td>
+                  <td>Vp = <span id="Vp"></span></td>
+                  <td>Ea = <span id="Ea"></span></td>
+                </tr>
+              </tbody>
+            </table>
+        
+            <p><b>Beregninger</b></p>	
+        
+            <table class="no_lines">
+              <tbody>
+                <tr>
+                  <td>Vm = <span id="Vm"></span></td>
+                  <td> <span class="math">\( s^2 \)</span> = <span id="s_2"></span></td>
+                  <td><span class="math">\( s \)</span> = <span id="s"></span></td>
+                </tr>
+              </tbody>
+            </table>
+              
+          </details>
+        
+        </div>
+        
+        
+
+
+
+
+      </div>
+
+    </div>
+
+    <nav class="navbar navbar-expand-lg fixed-bottom navbar-light bg-light">
+      <div class="container">
+        <a class="navbar-brand" href="#">Made By: THJ001</a>
+        </div>
+    </nav>
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="js/my_scripts.js"></script>
+
+  </body>
+</html>
