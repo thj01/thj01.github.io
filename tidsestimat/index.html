@@ -43,12 +43,12 @@
         
         <h1 class="m-5 text-center display-1" >tidsestimat</h1>
 
-        <p>Indtast dine vurderinger (i timer), og klik herefter på knappen "Beregn":</p>
+        <p>Indtast tidsestimering i timer.</p>
 
         <form action=""></form>
 
 
-        <fieldset>
+        <!-- <fieldset>
           <legend>Tidsforbrug: </legend>
           <label>Optimistisk tidsforbrug:</label>
           <input type="text" placeholder="Vo" id="optimistisk" autofocus><br/><br/>
@@ -60,57 +60,164 @@
           <input type="text"  placeholder="Ea" id="effektiv_arbejdstid"><br/><br/>		
           <button onclick="beregn(), showDiv()">Beregn</button>
           
-        </fieldset>
+        </fieldset> -->
 
         <!-- <form>
           <div class="form-group">
-            <label for="optimistisk_tidsforbrug">Optimistisk Tidsforbrug</label>
-            <input type="number" class="form-control" id="optimistisk_tidsforbrug" placeholder="Vo">
-          </div>
-          <div class="form-group">
-            <label for="sandsynligt_tidsforbrug">Sandsynligt Tidsforbrug</label>
-            <input type="number" class="form-control" id="sandsynligt_tidsforbrug" placeholder="Vs">
-          </div>
-          <div class="form-group">
-            <label for="pessimistisk_tidsforbrug">Pessimistisk Tidsforbrug</label>
-            <input type="number" class="form-control" id="pessimistisk_tidsforbrug" placeholder="Vp">
-          </div>
-          <div class="form-group">
-            <label for="effektiv_arbejdstid">Effektiv arbejdstid</label>
-            <input type="number" class="form-control" id="effektiv_arbejdstid" placeholder="Ea">
+            <div class="row text-center">
+              <div  class="text-center">
+                <input type="number" class="form-control w-75" id="optimistisk_tidsforbrug" placeholder="Optimistisk Tidsforbrug (Vo)">
+                <input type="number" class="form-control w-75 mt-2" id="sandsynligt_tidsforbrug" placeholder="Sandsynligt Tidsforbrug (Vs)">
+                <input type="number" class="form-control w-75 mt-2" id="pessimistisk_tidsforbrug" placeholder="Pessimistisk Tidsforbrug (Vp)">
+                <input type="number" class="form-control w-75 mt-2" id="effektiv_arbejdstid" placeholder="Effektiv_arbejdstid (Ea)">
+              </div>
+            </div>
           </div>          
-
-          <button onclick="beregn(), showDiv()">Beregn</button>
-
+          <div class="text-center m-3">
+            <button class="btn btn-primary " type="button" onclick="beregn(), showDiv()">Beregn</button>
+          </div>
         </form> -->
+
+
+        <form>
+          <div class="form-group">
+            <div class="row ">
+              <div class="col-2 mt-2">
+                <label class="control-label" for="optimistisk_tidsforbrug">V<sub>o</sub></label>
+              </div>
+              <div class="col-10">
+                <input type="number" class="form-control" id="optimistisk_tidsforbrug" placeholder="Optimistisk Tidsforbrug">
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="row mt-3">
+              <div class="col-2">
+                <label class="control-label" for="sandsynligt_tidsforbrug">V<sub>s</sub></label>
+              </div>
+              <div class="col-10">
+                <input type="number" class="form-control" id="sandsynligt_tidsforbrug" placeholder="Sandsynligt Tidsforbrug">
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="row mt-3">
+              <div class="col-2">
+                <label class="control-label" for="pessimistisk_tidsforbrug">V<sub>p</sub></label>
+              </div>
+              <div class="col-10">
+                <input type="number" class="form-control" id="pessimistisk_tidsforbrug" placeholder="Pessimistisk Tidsforbrug">
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="row mt-3">
+              <div class="col-2">
+                <label class="control-label" for="effektiv_arbejdstid">E<sub>a</sub></label>
+              </div>
+              <div class="col-10">
+                <input type="number" class="form-control" id="effektiv_arbejdstid" placeholder="Effektiv arbejdstid">
+              </div>
+            </div>
+          </div>          
+          <div class="text-center m-3">
+            <button class="btn btn-primary " type="button" onclick="beregn(), showDiv()">Beregn</button>
+          </div>
+        </form>
 
 
 
         
         <div id="showoff" style="display:none">
         
-          <h1>Opgavens estimering</h1>
+          <table class="table">
+            <thead>
+              <tr>
+                <th class="fw-normal" scope="col">succesrate</th>
+                <th class="fw-normal" scope="col">h<sub>low</sub></th>
+                <th class="fw-normal" scope="col">h<sub>high</sub></th>
+                <th class="fw-normal" scope="col">d<sub>low</sub></th>
+                <th class="fw-normal" scope="col">d<sub>high</sub></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td scope="row">68%</td>
+                <td id="succes68_lav"></span></td>
+                <td id="succes68_høj"></span></td>
+                <td id="succes68_lav_dage"></td>
+                <td id="succes68_høj_dage"></td>
+              </tr>
+              <tr>
+                <td scope="row">95%</td>
+                <td id="succes95_lav"></span></td>
+                <td id="succes95_høj"></span></td>
+                <td id="succes95_lav_dage"></td>
+                <td id="succes95_høj_dage"></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <table class="table">
+            <thead>
+              <tr>
+                <th class="fw-normal" scope="col">V<sub>m</sub></th>
+                <th class="fw-normal" scope="col">s<sup>2</sup> </th>
+                <th class="fw-normal" scope="col">s</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td id="Vm"></td>
+                <td id="s_2"></td>
+                <td id="s"></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <!-- <p >Vm = <span id="Vm"></span></p>
+          <p > <span class="math">\( s^2 \)</span> = <span id="s_2"></span></p>
+          <p><span class="math">\( s \)</span> = <span id="s"></span></p> -->
+
+          <!-- <table class="table">
+            <tbody>
+              <tr>
+                <td>Vo = <span id="Vo"></span></td>
+                <td>Vs = <span id="Vs"></span></td>
+                <td>Vp = <span id="Vp"></span></td>
+                <td>Ea = <span id="Ea"></span></td>
+              </tr>
+            </tbody>
+          </table> -->
+<!--           
+          <p><b>Beregninger</b></p>	
         
-          <p><b>Ved en succesrate på 68%</b></p>
-        
-          <p>Projektet estimeres til at tage mellem <span id="succes68_lav"></span> og <span id="succes68_høj"></span> timer </p>
+          <table class="no_lines">
+            <tbody>
+              <tr>
+                <td>Vm = <span id="Vm"></span></td>
+                <td> <span class="math">\( s^2 \)</span> = <span id="s_2"></span></td>
+                <td><span class="math">\( s \)</span> = <span id="s"></span></td>
+              </tr>
+            </tbody>
+          </table> -->
+
+<!-- 
+
+
+          <p><strong>Ved 68%: </strong>mellem <span id="succes68_lav"></span> og <span id="succes68_høj"></span> timer </p>
         
           <p>I dage vil det være mellem  <span id="succes68_lav_dage"></span> og <span id="succes68_høj_dage"></span> </p>
         
+          <p><strong>Ved 95%</strong> mellem <span id="succes95_lav"></span> og <span id="succes95_høj"></span> timer </p>
         
-          <p><b>Ved en succesrate på 95%</b></p>
+          <p>I dage vil det være mellem  <span id="succes95_lav_dage"></span> og <span id="succes95_høj_dage"></span> </p> -->
         
-          <p>Projektet estimeres til at tage mellem <span id="succes95_lav"></span> og <span id="succes95_høj"></span> timer </p>
-        
-          <p>I dage vil det være mellem  <span id="succes95_lav_dage"></span> og <span id="succes95_høj_dage"></span> </p>
-        
-          <details>
+          <!-- <details>
         
             <summary>Kontroltal</summary>
-        
-            <p><b>Input</b></p>
-            
-            <table class="no_lines">
+                   
+            <table class="table">
               <tbody>
                 <tr>
                   <td>Vo = <span id="Vo"></span></td>
@@ -121,19 +228,9 @@
               </tbody>
             </table>
         
-            <p><b>Beregninger</b></p>	
-        
-            <table class="no_lines">
-              <tbody>
-                <tr>
-                  <td>Vm = <span id="Vm"></span></td>
-                  <td> <span class="math">\( s^2 \)</span> = <span id="s_2"></span></td>
-                  <td><span class="math">\( s \)</span> = <span id="s"></span></td>
-                </tr>
-              </tbody>
-            </table>
+
               
-          </details>
+          </details> -->
         
         </div>
         
