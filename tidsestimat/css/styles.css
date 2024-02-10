@@ -1,3 +1,28 @@
 .offcanvas{
     width:60% !important;
 }  
+
+body {
+    padding-bottom: 120px;
+}
+
+canvas.mycanvas {
+
+    width: 200px;
+    height: 100px;
+    border:1px solid grey;
+
+}
+
+input::placeholder {
+    
+    font-size: .7em;
+
+}
+
+.font-oblique {
+
+    font-style: oblique;
+
+}
+

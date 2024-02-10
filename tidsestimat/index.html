@@ -37,116 +37,118 @@
       </div>
     </nav>
 
-    <div class="container-md content">
+    <h1 class="m-2 text-center display-1" >tidsestimat</h1>
+
+
+    <div class="container-md">
 
       <div id="content">
         
-        <h1 class="m-5 text-center display-1" >tidsestimat</h1>
+        
 
-        <p>Indtast tidsestimering i timer.</p>
-
-        <form action=""></form>
+        <p>Tidsestimering i timer.</p>
 
 
-        <!-- <fieldset>
-          <legend>Tidsforbrug: </legend>
-          <label>Optimistisk tidsforbrug:</label>
-          <input type="text" placeholder="Vo" id="optimistisk" autofocus><br/><br/>
-          <label>Sandsynligt tidsforbrug:</label>
-          <input type="text"  placeholder="Vs" id="sandsynligt"><br/><br/>
-          <label>Pessimistisk tidsforbrug:</label>
-          <input type="text"  placeholder="Vp" id="pessimistisk"><br/><br/>		
-          <label>Effektiv arbejdstid:</label>
-          <input type="text"  placeholder="Ea" id="effektiv_arbejdstid"><br/><br/>		
-          <button onclick="beregn(), showDiv()">Beregn</button>
-          
-        </fieldset> -->
+        <div class="container">
+          <div class="row">
+            <div class="col-6">
+              
+              <form action="">
+                <div class="form-group">
+                  <div class="row ">
+                    <div class="col-2 mt-2">
+                      <label class="control-label" for="optimistisk_tidsforbrug">V<sub>o</sub></label>
+                    </div>
+                    <div class="col-10">
+                      <input type="number" class="form-control" id="optimistisk_tidsforbrug" placeholder="Optimistisk skøn">
+                    </div>
+                  </div>
+                </div><!-- End form-group-->
+                <div class="form-group">
+                  <div class="row mt-3">
+                    <div class="col-2">
+                      <label class="control-label" for="sandsynligt_tidsforbrug">V<sub>s</sub></label>
+                    </div>
+                    <div class="col-10">
+                      <input type="number" class="form-control" id="sandsynligt_tidsforbrug" placeholder="Sandsynligt skøn">
+                    </div>
+                  </div>
+                </div> <!-- End form-group-->
 
-        <!-- <form>
-          <div class="form-group">
-            <div class="row text-center">
-              <div  class="text-center">
-                <input type="number" class="form-control w-75" id="optimistisk_tidsforbrug" placeholder="Optimistisk Tidsforbrug (Vo)">
-                <input type="number" class="form-control w-75 mt-2" id="sandsynligt_tidsforbrug" placeholder="Sandsynligt Tidsforbrug (Vs)">
-                <input type="number" class="form-control w-75 mt-2" id="pessimistisk_tidsforbrug" placeholder="Pessimistisk Tidsforbrug (Vp)">
-                <input type="number" class="form-control w-75 mt-2" id="effektiv_arbejdstid" placeholder="Effektiv_arbejdstid (Ea)">
-              </div>
-            </div>
-          </div>          
-          <div class="text-center m-3">
-            <button class="btn btn-primary " type="button" onclick="beregn(), showDiv()">Beregn</button>
+              </form> <!-- end form -->
+            </div> <!--col-6 end -->
+            <div class="col-6">
+              <form action="">
+
+                <div class="form-group">
+                  <div class="row">
+                    <div class="col-2">
+                      <label class="control-label" for="pessimistisk_tidsforbrug">V<sub>p</sub></label>
+                    </div>
+                    <div class="col-10">
+                      <input type="number" class="form-control" id="pessimistisk_tidsforbrug" placeholder="Pessimistisk skøn">
+                    </div>
+                  </div>
+                </div><!-- End form-group-->
+                <div class="form-group">
+                  <div class="row mt-3">
+                    <div class="col-2">
+                      <label class="control-label" for="effektiv_arbejdstid">E<sub>a</sub></label>
+                    </div>
+                    <div class="col-10">
+                      <input type="number" class="form-control" id="effektiv_arbejdstid" placeholder="Effektiv arbejdstid">
+                    </div>
+                  </div>
+                </div><!-- End form-group--> 
+
+
+              </form> <!-- end form -->
+            </div> <!-- col-6 end -->
+
           </div>
-        </form> -->
+        </div> <!-- container end -->
 
-
-        <form>
-          <div class="form-group">
-            <div class="row ">
-              <div class="col-2 mt-2">
-                <label class="control-label" for="optimistisk_tidsforbrug">V<sub>o</sub></label>
-              </div>
-              <div class="col-10">
-                <input type="number" class="form-control" id="optimistisk_tidsforbrug" placeholder="Optimistisk Tidsforbrug">
-              </div>
-            </div>
-          </div>
-          <div class="form-group">
-            <div class="row mt-3">
-              <div class="col-2">
-                <label class="control-label" for="sandsynligt_tidsforbrug">V<sub>s</sub></label>
-              </div>
-              <div class="col-10">
-                <input type="number" class="form-control" id="sandsynligt_tidsforbrug" placeholder="Sandsynligt Tidsforbrug">
-              </div>
-            </div>
-          </div>
-          <div class="form-group">
-            <div class="row mt-3">
-              <div class="col-2">
-                <label class="control-label" for="pessimistisk_tidsforbrug">V<sub>p</sub></label>
-              </div>
-              <div class="col-10">
-                <input type="number" class="form-control" id="pessimistisk_tidsforbrug" placeholder="Pessimistisk Tidsforbrug">
-              </div>
-            </div>
-          </div>
-          <div class="form-group">
-            <div class="row mt-3">
-              <div class="col-2">
-                <label class="control-label" for="effektiv_arbejdstid">E<sub>a</sub></label>
-              </div>
-              <div class="col-10">
-                <input type="number" class="form-control" id="effektiv_arbejdstid" placeholder="Effektiv arbejdstid">
-              </div>
-            </div>
-          </div>          
-          <div class="text-center m-3">
-            <button class="btn btn-primary " type="button" onclick="beregn(), showDiv()">Beregn</button>
-          </div>
-        </form>
+        <div class="text-center m-3">
+          <button class="btn btn-primary " type="button" onclick="beregn(), showDiv()">Beregn</button>
+        </div>
 
 
 
+
+        <!-- <div class="text-center m-3">
+          <canvas id="myCanvas" style="border:1px solid grey;"></canvas>
+        </div>
+         -->
         
         <div id="showoff" style="display:none">
         
           <table class="table">
             <thead>
               <tr>
-                <th class="fw-normal" scope="col">succesrate</th>
-                <th class="fw-normal" scope="col">h<sub>low</sub></th>
-                <th class="fw-normal" scope="col">h<sub>high</sub></th>
-                <th class="fw-normal" scope="col">d<sub>low</sub></th>
-                <th class="fw-normal" scope="col">d<sub>high</sub></th>
+                <th class="fw-normal" scope="col">Succes</th>
+                <th class="fw-normal" scope="col">h<sub>min</sub></th>
+                <th class="fw-normal" scope="col">h<sub>max</sub></th>
+                <th class="fw-normal" scope="col">d<sub>min</sub></th>
+                <th class="fw-normal" scope="col">d<sub>max</sub></th>
+                <th class="fw-normal" scope="col"></th>
               </tr>
             </thead>
             <tbody>
+              <tr>
+                <td scope="row">gns.</td>
+                <td id="gns_lav"></span></td>
+                <td id="gns_høj"></span></td>
+                <td id="gns_lav_dage"></td>
+                <td id="gns_høj_dage"></td>
+                <td class="font-oblique formula">V<sub>m</sub></td>
+              </tr>
               <tr>
                 <td scope="row">68%</td>
                 <td id="succes68_lav"></span></td>
                 <td id="succes68_høj"></span></td>
                 <td id="succes68_lav_dage"></td>
                 <td id="succes68_høj_dage"></td>
+                <td class="font-oblique">V<sub>m</sub>&plusmn;&sigma;</td>
               </tr>
               <tr>
                 <td scope="row">95%</td>
@@ -154,16 +156,60 @@
                 <td id="succes95_høj"></span></td>
                 <td id="succes95_lav_dage"></td>
                 <td id="succes95_høj_dage"></td>
+                <td class="font-oblique">V<sub>m</sub>&plusmn;2&sigma;</td>
+              </tr>
+              <tr>
+                <td scope="row">99%</td>                
+                <td id="succes99_lav"></span></td>
+                <td id="succes99_høj"></span></td>
+                <td id="succes99_lav_dage"></td>
+                <td id="succes99_høj_dage"></td>
+                <td class="font-oblique">V<sub>m</sub>&plusmn;3&sigma;</td>
               </tr>
             </tbody>
           </table>
 
+          <p>Graf under udarbejdelse ...skal være interaktiv</p>
+
+          <svg id="graph" style="width:100%;height:100%;" xmlns="http://www.w3.org/2000/svg">
+            <g>
+              <rect style="width:24%;height:15%" x="38%" y="15%" rx="5" ry="5" fill="green" fill-opacity="35%"/>
+              <text x="40%" y="25%" font-size=".7em">68%</text>
+            </g>
+            <g>
+              <rect style="width:48%;height:15%;" x="26%" y="40%" rx="5" ry="5" fill="green" fill-opacity="45%"/>
+              <text x="29%" y="50%" font-size=".7em">95%</text>
+            </g>
+            <g>
+              <rect style="width:72%;height:15%;" x="14%" y="65%" rx="5" ry="5" fill="green" fill-opacity="60%"/>
+              <text x="17%" y="75%" font-size=".7em">98%</text>
+            </g>
+            <text x="11%" y="15" style="font-size:.7em;">-3&#963;</text>
+            <line x1="14%" y1="15%" x2="14%" y2="85%" style="stroke:black;stroke-width:1; stroke-dasharray:3" />
+            <text x="23%" y="15" style="font-size:.7em;">-2&#963;</text>
+            <line x1="26%" y1="15%" x2="26%" y2="85%" style="stroke:black;stroke-width:1; stroke-dasharray:3" />
+            <text x="36%" y="15" style="font-size:.7em;">-&#963;</text>
+            <line x1="38%" y1="15%" x2="38%" y2="85%" style="stroke:black;stroke-width:1; stroke-dasharray:3" />
+            <text x="48%" y="15" style="font-size:.7em;">gns.</text>
+            <line x1="50%" y1="15%" x2="50%" y2="85%" style="stroke:black;stroke-width:1" />
+            <text x="61%" y="15" style="font-size:.7em;">&#963;</text>
+            <line x1="62%" y1="15%" x2="62%" y2="85%" style="stroke:black;stroke-width:1; stroke-dasharray:3" />
+            <text x="72%" y="15" style="font-size:.7em;">2&#963;</text>
+            <line x1="74%" y1="15%" x2="74%" y2="85%" style="stroke:black;stroke-width:1; stroke-dasharray:3" />
+            <text x="84%" y="15" style="font-size:.7em;">3&#963;</text>
+            <line x1="86%" y1="15%" x2="86%" y2="85%" style="stroke:black;stroke-width:1; stroke-dasharray:3" />
+         
+          </svg>
+
+
+          <p><strong>Kontroltal (tilnærmede værdier)</strong></p>
+
           <table class="table">
             <thead>
               <tr>
-                <th class="fw-normal" scope="col">V<sub>m</sub></th>
-                <th class="fw-normal" scope="col">s<sup>2</sup> </th>
-                <th class="fw-normal" scope="col">s</th>
+                <th class="font-oblique fw-normal" scope="col">V<sub>m</sub></th>
+                <th class="font-oblique fw-normal" scope="col">&sigma;<sup>2</sup></th>
+                <th class="font-oblique fw-normal" scope="col">&sigma;</th>
               </tr>
             </thead>
             <tbody>
@@ -175,69 +221,9 @@
             </tbody>
           </table>
 
-          <!-- <p >Vm = <span id="Vm"></span></p>
-          <p > <span class="math">\( s^2 \)</span> = <span id="s_2"></span></p>
-          <p><span class="math">\( s \)</span> = <span id="s"></span></p> -->
-
-          <!-- <table class="table">
-            <tbody>
-              <tr>
-                <td>Vo = <span id="Vo"></span></td>
-                <td>Vs = <span id="Vs"></span></td>
-                <td>Vp = <span id="Vp"></span></td>
-                <td>Ea = <span id="Ea"></span></td>
-              </tr>
-            </tbody>
-          </table> -->
-<!--           
-          <p><b>Beregninger</b></p>	
-        
-          <table class="no_lines">
-            <tbody>
-              <tr>
-                <td>Vm = <span id="Vm"></span></td>
-                <td> <span class="math">\( s^2 \)</span> = <span id="s_2"></span></td>
-                <td><span class="math">\( s \)</span> = <span id="s"></span></td>
-              </tr>
-            </tbody>
-          </table> -->
-
-<!-- 
-
-
-          <p><strong>Ved 68%: </strong>mellem <span id="succes68_lav"></span> og <span id="succes68_høj"></span> timer </p>
-        
-          <p>I dage vil det være mellem  <span id="succes68_lav_dage"></span> og <span id="succes68_høj_dage"></span> </p>
-        
-          <p><strong>Ved 95%</strong> mellem <span id="succes95_lav"></span> og <span id="succes95_høj"></span> timer </p>
-        
-          <p>I dage vil det være mellem  <span id="succes95_lav_dage"></span> og <span id="succes95_høj_dage"></span> </p> -->
-        
-          <!-- <details>
-        
-            <summary>Kontroltal</summary>
-                   
-            <table class="table">
-              <tbody>
-                <tr>
-                  <td>Vo = <span id="Vo"></span></td>
-                  <td>Vs = <span id="Vs"></span></td>
-                  <td>Vp = <span id="Vp"></span></td>
-                  <td>Ea = <span id="Ea"></span></td>
-                </tr>
-              </tbody>
-            </table>
-        
-
-              
-          </details> -->
-        
+          
+      
         </div>
-        
-        
-
-
-
 
       </div>
 
