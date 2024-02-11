@@ -14,7 +14,7 @@ function loadDoc(doc) {
 
 }
 
-var test = 0;
+var test = 1;
 
 
 function beregn() {
@@ -87,4 +87,128 @@ function showDiv() {
  document.getElementById('showoff').style.display = "block";
 }
 
+new Chart("myChart", {
+  type: "line",
+  data: {
+    // labels: xValues,
+    datasets: [{ 
+      label: "graph",
+      data: [
+        {x:0,y:0},
+        {x:5,y:1},
+        {x:10,y:4},
+        {x:15,y:10},
+        {x:20,y:16},
+        {x:25,y:21},
+        {x:30,y:24},
+        {x:35,y:25},
+        {x:40,y:24},
+        {x:45,y:22},
+        {x:50,y:19},
+        {x:55,y:15},
+        {x:60,y:11},
+        {x:65,y:8},
+        {x:70,y:5.8},
+        {x:75,y:4.2},
+        {x:80,y:3},        
+        {x:85,y:1.8},
+        {x:90,y:1},
+        {x:95,y:.65},
+        {x:100,y:.5},
+      ],
+      borderColor: "blue",
+      borderWidth: .5,
+      fill: false
+
+    }, { 
+      label: "højdebrgrænser",
+      data: [
+        {x:0,y:33},
+      ],
+      borderColor: "red",
+      borderWidth: .5,
+      fill: false,
+
+    }, { 
+      label: "Vm value",
+      data: [
+        {x:45,y:-2},
+        {x:45,y:25},
+      ],
+      borderColor: "red",
+      borderWidth: .5,
+      fill: false,
+
+    }, { 
+      label: "Vo value",
+      data: [
+        {x:5,y:-2},
+        {x:5,y:3},
+      ],
+      borderColor: "red",
+      borderWidth: .5,
+      fill: false,
+
+    }, { 
+      label: "Vs value",
+      data: [
+        {x:35,y:-2},
+        {x:35,y:28},
+      ],
+      borderColor: "red",
+      borderWidth: .5,
+      fill: false,
+
+    }, { 
+      label: "Vm value",
+      data: [
+        {x:92,y:-2},
+        {x:92,y:3},
+      ],
+      borderColor: "red",
+      borderWidth: .5,
+      fill: false,
+
+    }]
+
+  },
+  
+
+  options: {
+    legend: {display: false},
+    elements: {
+      point:{radius: 0}
+    },
+    scales: {
+      xAxes: [{
+          type: 'linear',
+          position: 'bottom',
+          display: true,
+          ticks: {
+            display:false,
+          },
+          // gridLines: {
+          //   display:false,
+          // },
+      }],
+      yAxes: [{
+        type: "linear",
+        position: "left",
+        display: true,
+        ticks: {
+          display:false,
+        },
+        // gridLines: {
+        //   display:false,
+        // },
+      }],
+      // y: {
+      //   suggestedMin: 50,
+      //   suggestedMax: 100
+      // },
+    // datalabels: {display: false,}
+    }
+  }
+
+});
 
