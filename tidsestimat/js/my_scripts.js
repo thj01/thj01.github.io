@@ -26,14 +26,12 @@ function beregn() {
   
   // til test //
 
-  if (test == 1) {
-
+  if (test == 0){
   Vo = 1;
   Vs = 3;
   Vp = 4;
   Ea = 6;
-
-  }
+  };
 
 
   var Vm = (Vo + Vs*2.95 + Vp)/4.95;
