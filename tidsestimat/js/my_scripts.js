@@ -14,7 +14,9 @@ function loadDoc(doc) {
 
 }
 
-var test = 1;
+var test = 0;
+
+
 
 
 function beregn() {
@@ -26,7 +28,7 @@ function beregn() {
   
   // til test //
 
-  if (test == 0){
+  if (test == 1){
   Vo = 1;
   Vs = 3;
   Vp = 4;
@@ -37,8 +39,85 @@ function beregn() {
   var Vm = (Vo + Vs*2.95 + Vp)/4.95;
   var s_2 = Math.pow((Vp-Vo),2)/21.66;
   var s = Math.pow(s_2,1/2);
+  // var Vm
+  var kontrol = s/Vm*20;
 
-  console.log(Vm+s)
+  console.log("Vm: "+Vm );
+  console.log("s²: " + s_2);
+  console.log("s: " + s);
+  console.log("Kontrol-tal: " + kontrol);
+  
+
+  // kontrol = 2.3;
+
+  
+
+  document.getElementById("kontrol").innerHTML = kontrol.toFixed(4);
+  document.getElementById("kontrol_evaluate").innerHTML = kontrol.toFixed(1);
+
+  // https://stackoverflow.com/questions/195951/how-can-i-change-an-elements-class-with-javascript
+
+  var change_kontrol_box_color = document.getElementById("kontrol_box_color");
+
+  var kontrol_jumps = [0,1,2,3]
+
+  if (kontrol > kontrol_jumps[0]) {
+    change_kontrol_box_color.className = "bg-success";
+    change_kontrol_box_color.classList += " text-white";
+  }
+  if (kontrol > kontrol_jumps[1]) {
+    change_kontrol_box_color.className = "bg-info";
+    change_kontrol_box_color.classList += " text-dark";
+  }
+  if (kontrol > kontrol_jumps[2]) {
+    change_kontrol_box_color.className = "bg-warning";
+    change_kontrol_box_color.classList += " text-dark";
+  }
+  if (kontrol > kontrol_jumps[3]) {
+    change_kontrol_box_color.className = "bg-danger";
+  }
+
+
+
+  // if (kontrol < 1) {
+  //   change_alert_type.className = "alert";
+  //   change_alert_type.classList.add("alert-succes");
+  //   // change_alert_type.classList.add("alert-succes");
+  //   change_alert_type.classList.add("text-center");
+
+  //   // document.getElementById("alert_color").classList.add("alert alert-succes text-center");
+  // }
+
+
+  // if (kontrol < 4) {class_element.className = "alert alert-danger text-center";}
+  // if (kontrol < 3) {class_element.className = "alert alert-warning text-center";}
+  // if (kontrol < 2) {class_element.className = "alert alert-primary text-center";}
+  // if (kontrol < 1) {
+  //   document.getElementById("alert_color").className = "alert";
+  //   // document.getElementById("alert_color").classlist.add(" alert-light text-center");
+  // }
+
+
+  // if (kontrol < 2) {document.getElementById("alert_color").className = "alert alert-primary text-center";}
+  // if (kontrol < 3) {document.getElementById("alert_color").className = "alert alert-warning text-center";}
+  // if (kontrol < 4) {document.getElementById("alert_color").className = "alert alert-danger text-center";}
+
+
+
+  // switch(kontrol) {
+
+  //   case (kontrol < 1.2):
+  //     document.getElementById("alert_color").className = "alert alert-primary text-center";
+  //     break;
+  //   case (kontrol >= 1.2):
+  //     document.getElementById("alert_color").className = "alert alert-danger text-center";
+  //     break;
+
+
+
+
+  // };
+
 
 
   var succes68_lav = (Vm-s).toFixed(1);
@@ -60,8 +139,9 @@ document.getElementById('s_2').innerHTML = s_2.toFixed(4);
 document.getElementById('s').innerHTML = s.toFixed(4);
 
 //Output
-document.getElementById('gns_lav').innerHTML = Vm.toFixed(1);
-document.getElementById('gns_høj').innerHTML = Vm.toFixed(1);
+// document.getElementById('gns_lav').innerHTML = Vm.toFixed(1);
+// document.getElementById('gns_høj').innerHTML = Vm.toFixed(1);
+document.getElementById('gns_timer').innerHTML = Vm.toFixed(1);
 document.getElementById('succes68_lav').innerHTML = succes68_lav;
 document.getElementById('succes68_høj').innerHTML = succes68_høj;
 document.getElementById('succes95_lav').innerHTML = succes95_lav;
@@ -69,8 +149,9 @@ document.getElementById('succes95_høj').innerHTML = succes95_høj;
 document.getElementById('succes99_lav').innerHTML = succes99_lav;
 document.getElementById('succes99_høj').innerHTML = succes99_høj;
 
-document.getElementById('gns_lav_dage').innerHTML = (Vm/Ea).toFixed(1);
-document.getElementById('gns_høj_dage').innerHTML = (Vm/Ea).toFixed(1);
+// document.getElementById('gns_lav_dage').innerHTML = (Vm/Ea).toFixed(1);
+// document.getElementById('gns_høj_dage').innerHTML = (Vm/Ea).toFixed(1);
+document.getElementById('gns_dage').innerHTML = (Vm/Ea).toFixed(1);
 document.getElementById('succes68_lav_dage').innerHTML = (succes68_lav/Ea).toFixed(1);
 document.getElementById('succes68_høj_dage').innerHTML = (succes68_høj/Ea).toFixed(1);
 document.getElementById('succes95_lav_dage').innerHTML = (succes95_lav/Ea).toFixed(1);
@@ -114,57 +195,59 @@ new Chart("myChart", {
         {x:95,y:.65},
         {x:100,y:.5},
       ],
-      borderColor: "blue",
-      borderWidth: .5,
+      borderColor: "black",
+      borderWidth: 1,
       fill: false
 
-    }, { 
-      label: "højdebrgrænser",
-      data: [
-        {x:0,y:33},
-      ],
-      borderColor: "red",
-      borderWidth: .5,
-      fill: false,
+    }, 
+    // { 
+    //   label: "højdebrgrænser",
+    //   data: [
+    //     {x:0,y:33},
+    //   ],
+    //   borderColor: "red",
+    //   borderWidth: .5,
+    //   fill: false,
 
-    }, { 
-      label: "Vm value",
-      data: [
-        {x:45,y:-2},
-        {x:45,y:25},
-      ],
-      borderColor: "red",
-      borderWidth: .5,
-      fill: false,
-
-    }, { 
-      label: "Vo value",
+    // }, 
+    { 
+      label: "Vo",
       data: [
         {x:5,y:-2},
         {x:5,y:3},
       ],
-      borderColor: "red",
-      borderWidth: .5,
+      borderColor: "limegreen",
+      borderWidth:5,
       fill: false,
 
     }, { 
-      label: "Vs value",
+      label: "Vs",
       data: [
         {x:35,y:-2},
         {x:35,y:28},
       ],
-      borderColor: "red",
-      borderWidth: .5,
+      borderColor: "DodgerBlue ",
+      borderWidth: 5,
       fill: false,
 
     }, { 
-      label: "Vm value",
+      label: "Vm",
+      data: [
+        {x:45,y:-2},
+        {x:45,y:25},
+      ],
+      borderColor: "Gold ",
+      borderWidth: 5,
+      fill: false,
+
+    },  { 
+      label: "Vp",
       data: [
         {x:92,y:-2},
         {x:92,y:3},
       ],
       borderColor: "red",
-      borderWidth: .5,
+      borderWidth: 5,
       fill: false,
 
     }]
@@ -173,7 +256,7 @@ new Chart("myChart", {
   
 
   options: {
-    legend: {display: false},
+    // legend: {display: false},
     elements: {
       point:{radius: 0}
     },
