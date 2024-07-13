@@ -28,8 +28,8 @@
             <!-- <ul class="navbar-nav ms-auto justify-content-end flex-grow-1 pe-5 "> -->
             <ul class="navbar-nav ms-auto justify-content-end pe-5">
               <li class="nav-item dropdown">
-                <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="****" onclick="loadDoc('page1.html');test(6)">page1</a></li>
-                <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="****" onclick="loadDoc('page2.html');test(6)">page2</a></li>
+                <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="****" onclick="loadDoc('pages/Kinkseksualitet.html');test(6)">Kinkseksualitet</a></li>
+                <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="****" onclick="loadDoc('pages/Samtykke_og_sikkerhed.html');test(6)">Samtykke og sikkerhed</a></li>
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Artikler</a>
                   <ul class="dropdown-menu border-0  ps-2" data-disableScrolling="false">
@@ -43,6 +43,7 @@
                   <ul class="dropdown-menu border-0  ps-2" data-disableScrolling="false">
                     <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="Oversigt over begreber" onclick="loadDoc('pages/Oversigter/oversigt_begreber.html')">Begreber</a></li>
                     <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="Oversigt over forkortelser" onclick="loadDoc('pages/Oversigter/oversigt_forkortelser.html')">Forkortelser</a></li>
+                    <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="Oversigt over forkortelser" onclick="loadDoc('pages/Oversigter/oversigt_forkortelser_list.html')">Forkortelser (liste)</a></li>
                     <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="Oversigt over roller" onclick="loadDoc('pages/Oversigter/oversigt_roller.html')">Roller</a></li>
                   </ul>
                 </li>                    
@@ -107,19 +108,21 @@
         <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4">
     
           <div class="col d-flex">
-            <div class="card w-100">
+            <div class="card w-100 text-center">
               <div class="card-body">
                   <h5 class="card-title">Kinkseksualitet</h5>
                 <p class="card-text">En uddybende artikel om Kinkseksualitet</p>
-              </div>
+                <a class="btn btn-primary" href="#" alt="****" onclick="loadDoc('pages/Kinkseksualitet.html')">Gå til artikel</a>
+                </div>
             </div>
           </div>
         
           <div class="col d-flex">
-            <div class="card w-100">
+            <div class="card w-100 text-center">
               <div class="card-body">
                 <h5 class="card-title">Samtykke og sikkerhed</h5>
                 <p class="card-text">En uddybende artikel om samtykke og sikkerhed</p>
+                <a class="btn btn-primary " href="#" alt="****" onclick="loadDoc('pages/Samtykke_og_sikkerhed.html')">Gå til artikel</a>
               </div>
             </div>
           </div>
@@ -127,17 +130,50 @@
         
         </div>
 
-
-
+<!-- 
         <dl class="row">
           <dt class="col-sm-3">Kinkseksualitet</dt>
           <dl class="col-sm-9">En uddybende artikel om Kinkseksualitet</dl>
+          <dl>Gå til artikel: <a href="pages/Kinkseksualitet.html" alt="****">Kinkseksualitet</a></dl>
           <dt class="col-sm-3">Samtykke og sikkerhed</dt>
           <dl class="col-sm-9">En uddybende artikel om samtykke og sikkerhed</dl>
+          <dl>Gå til artikel: <a href="pages/Samtykke_og_sikkerhed.html" alt="****">Samtykke og sikkerhed</a></dl>
 
-        </dl>
+        </dl> -->
+
+        <h2>Artikler</h2>
 
 
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4">
+    
+          <div class="col d-flex">
+            <div class="card w-100 text-center">
+              <div class="card-body">
+                <h5 class="card-title">Michel Foucault</h5>
+                  <p class="card-text">Michel Foucaults bud på italesættelse af seksualitet</p>
+                  <a class="btn btn-primary" href="#" alt="****" onclick="loadDoc('pages/Artikler/Artikel_Foucault.html')">Gå til artikel</a>
+              </div>
+            </div>
+          </div>
+        
+          <div class="col d-flex">
+            <div class="card w-100 text-center">
+              <div class="card-body">
+                <h5 class="card-title">ICD-11</h5>
+                <p class="card-text">En kort gennemgang af ICD-11 <abbr title="International Classification of Diseases 11th Revision">ICD-11</abbr></p>
+                <a class="btn btn-primary " href="#" alt="****" onclick="loadDoc('pages/Artikler/Artikel_ICD-11.html')">Gå til artikel</a>
+              </div>
+            </div>
+          </div>
+        
+        
+        </div>
+
+        <ul class="dropdown-menu border-0  ps-2" data-disableScrolling="false">
+          <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="Artikel om Foucault" onclick="loadDoc('pages/Artikler/Artikel_Foucault.html')">Foucault</a></li>
+          <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="Artikel om ICD-11" onclick="loadDoc('pages/Artikler/Artikel_ICD-11.html')">ICD-11</a></li>
+          <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="Artikel om RACK, samtykke" onclick="loadDoc('pages/Artikler/Artikel_RACK_vs_SSC.html')">RACK - samtykke</a></li>
+        </ul>
 
 
 <!-- 
