@@ -42,10 +42,10 @@
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Oversigter</a>
                   <ul class="dropdown-menu border-0  ps-2" data-disableScrolling="false">
-                    <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="Oversigt over begreber" onclick="loadDoc('pages/Oversigter/oversigt_begreber.html')">Begreber</a></li>
-                    <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="Oversigt over begreber" onclick="loadDoc('pages/Oversigter/oversigt_begreber_dl.html')">Begreber_dl</a></li>
-                    <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="Oversigt over forkortelser" onclick="loadDoc('pages/Oversigter/oversigt_forkortelser.html')">Forkortelser</a></li>
-                    <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="Oversigt over forkortelser" onclick="loadDoc('pages/Oversigter/oversigt_forkortelser_dl.html')">Forkortelser_dl</a></li>
+                    <!-- <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="Oversigt over begreber" onclick="loadDoc('pages/Oversigter/oversigt_begreber.html')">Begreber</a></li> -->
+                    <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="Oversigt over begreber" onclick="loadDoc('pages/Oversigter/oversigt_begreber_dl.html')">Begreber</a></li>
+                    <!-- <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="Oversigt over forkortelser" onclick="loadDoc('pages/Oversigter/oversigt_forkortelser.html')">Forkortelser</a></li> -->
+                    <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="Oversigt over forkortelser" onclick="loadDoc('pages/Oversigter/oversigt_forkortelser_dl.html')">Forkortelser</a></li>
                   </ul>
                 </li>                    
 
@@ -106,7 +106,14 @@
 
         <p>Uddybende artikler om</p>
 
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4">
+        <dl class="row">
+          <dt class="col-sm-3">Kinkseksualitet</dt>
+          <dl class="col-sm-9">En uddybende artikel om Kinkseksualitet <br><a class="" href="#" alt="Gå til artiklen om Kinkseksualitet" onclick="loadDoc('pages/Kinkseksualitet.html')">Gå til artikel</a></dl>
+          <dt class="col-sm-3">Samtykke og sikkerhed</dt>
+          <dl class="col-sm-9">En uddybende artikel om samtykke og sikkerhed<br><a class="" href="#" alt="Gå til artikel om samtykke og sikkerhed" onclick="loadDoc('pages/Samtykke_og_sikkerhed.html')">Gå til artikel</a></dl>
+        </dl>
+
+        <!-- <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4">
     
           <div class="col d-flex">
             <div class="card w-100 text-center">
@@ -127,25 +134,26 @@
               </div>
             </div>
           </div>
-        
-        
-        </div>
+        </div> -->
 
-<!-- 
-        <dl class="row">
-          <dt class="col-sm-3">Kinkseksualitet</dt>
-          <dl class="col-sm-9">En uddybende artikel om Kinkseksualitet</dl>
-          <dl>Gå til artikel: <a href="pages/Kinkseksualitet.html" alt="****">Kinkseksualitet</a></dl>
-          <dt class="col-sm-3">Samtykke og sikkerhed</dt>
-          <dl class="col-sm-9">En uddybende artikel om samtykke og sikkerhed</dl>
-          <dl>Gå til artikel: <a href="pages/Samtykke_og_sikkerhed.html" alt="****">Samtykke og sikkerhed</a></dl>
 
-        </dl> -->
 
       <h2 class="mt-5 mb-3 display-6">Artikler</h2>
 
+      <dl class="row">
+        <dt class="col-sm-3">Michel Foucault</dt>
+        <dl class="col-sm-9">Michel Foucaults bud på italesættelse af seksualitet <br><a class="" href="#" alt="Gå til artiklen om Michel_Foucault" onclick="loadDoc('pages/Artikler/Artikel_Foucault.html')">Gå til artikel</a></dl>
+        <dt class="col-sm-3">ICD-11</dt>
+        <dl class="col-sm-9">En kort gennemgang af ICD-11 <abbr title="International Classification of Diseases 11th Revision">ICD-11</abbr><br><a class="" href="#" alt="Gå til artikel om ICD-11" onclick="loadDoc('pages/Artikler/Artikel_ICD-11.html')">Gå til artikel</a></dl>
+        <dt class="col-sm-3">RACK - Risk Aware Consensual Kink</dt>
+        <dl class="col-sm-9">En gennemgang af <abbr title="Risk Aware Consensual Kink">RACK</abbr> - Risk Aware Consensual Kink.<br><a class="" href="#" alt="Gå til artikel om ICD-11" onclick="loadDoc('pages/Artikler/Artikel_RACK_vs_SSC.html')">Gå til artikel</a></dl>
+        <dt class="col-sm-3">Rollerne top, bund og switch</dt>
+        <dl class="col-sm-9">En gennemgang af rollerne top, bund og switch<br><a class="" href="#" alt="Gå til artikel om rollerne top, bund og switch ICD-11" onclick="loadDoc('pages/Artikler/Artikel_roller.html')">Gå til artikel</a></dl>
+      </dl>
 
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4">
+
+
+        <!-- <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4">
     
           <div class="col d-flex">
             <div class="card w-100 text-center">
@@ -172,16 +180,23 @@
               <div class="card-body">
                 <h5 class="card-title">RACK - Risk Aware Consensual Kink</h5>
                 <p class="card-text">En gennemgang af <abbr title="Risk Aware Consensual Kink">RACK</abbr> - Risk Aware Consensual Kink - begrebet.</p>
-                <a class="btn btn-primary " href="#" alt="Artikel om RACK - Risk Aware Consensual Kink" onclick="loadDoc('pages/Artikler/Artikel_ICD-11.html')">Gå til artikel</a>
+                <a class="btn btn-primary " href="#" alt="Artikel om RACK - Risk Aware Consensual Kink" onclick="loadDoc('pages/Artikler/Artikel_RACK_vs_SSC.html')">Gå til artikel</a>
               </div>
             </div>
           </div>
 
-        </div>
+        </div> -->
 
       <h2 class="mt-5 mb-3 display-6">Oversigter</H2>
 
-          <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4">
+        <dl class="row">
+          <dt class="col-sm-3">Kink begreber</dt>
+          <dl class="col-sm-9">En oversigt over de begreber der anvendes i kinkseksualitet<br><a class="" href="#" alt="En oversigt over kinkbegreberne" onclick="loadDoc('pages/Oversigter/oversigt_begreber.html')">Gå til oversigt</a></dl>
+          <dt class="col-sm-3">Kink forkortelser</dt>
+          <dl class="col-sm-9">En oversigt over de forkortelser der anvendes i kinkseksualitet<br><a class="" href="#" alt="Gå til artikel om ICD-11" onclick="loadDoc('pages/Oversigter/oversigt_forkortelser.html')">Gå til oversigt</a></dl>
+        </dl>        
+
+          <!-- <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4">
     
             <div class="col d-flex">
               <div class="card w-100 text-center">
@@ -203,7 +218,9 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
+
+
       </div>
 
 <!-- 
