@@ -19,11 +19,13 @@ font-size: 1em;
 
 }
 
-.no_bullit {
+/* lists */
 
+.no_bullit {
 list-style-type: none;
 margin-left: -2em;
-
-
 }
 
+dd > ol {
+    margin-left: -1em;
+}
