@@ -1,57 +1,22 @@
+
+
 h1 {font-size: 3em;}
-p {font-size: 1.8em;}
-button {font-size: 5em;}
+p {font-size: 1.2em;}
 
-#dice_section .dices{
+/* #content {
 
-float: right;
-
-
-}
-
-div .p_dice {
-  /* display:block; */
-/*   margin-left: auto;
-  margin-right: auto; */
-  border: 1px solid black;
-  border-radius: 1em;
-  background-color: ivory;
-  height: 8em;
-  width: 8em;
   display:flex;
   align-items: center;
   justify-content:center;
-  margin-bottom: 2em;
-}
-
-div .p_dice span {
-font-size: 3em
-}
+  font-size: 3em;
 
 
-#dice_section {
-/*   height:200px;
-  width:200px ; */
-/*   margin-left: auto;
-  margin-right: auto; */
-
-  margin: 0 auto;
-
-}
-
-
-
-
-/*   
-  
-  
-  /*height: 100px;
-  width: 100px; */
-  
-/*  border: 1px solid gray;
-  padding-bottom: px;
-  border-radius: 10px;  
-  font-size:80px;
-  
 
 } */
+
+
+
+.offcanvas{
+  width:60% !important;
+}  
+
