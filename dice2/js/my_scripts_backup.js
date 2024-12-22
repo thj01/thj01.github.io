@@ -16,7 +16,7 @@ function loadDoc(doc) {
 // declaring variables
 
 var sides = 6;
-var dice_rolls_to_array = 20;
+var dice_rolls_to_array = 10;
 var roll_counter = 0;
 var dice_array = [];
 var number_of_dices = 1;
@@ -66,16 +66,20 @@ roll_button.onclick = function(){
 
 
     let front_html_tag = '<div style="\
-width: 5em;\
-height: 5em;\
+margin-left: auto; \
+margin-right: auto; \
 border: 1px solid black; \
-border-radius: .8em; \
+border-radius: .3em; \
 background-color: ivory;\
+height: 1.8em;\
+width: 1.8em;\
 display:inline-block;\
 align-items: center;\
 justify-content:center;\
-margin: .5em";\
-><div style="font-size: 3em;\">'
+font-size: 2.5em;\
+margin: .2em";\
+><div  style="">'
+    
     
     let end_html_tag = '</div></div>';
 
@@ -101,7 +105,7 @@ roll_reset.onclick = function() {
 function dices_number_of(n) {
   number_of_dices = n;
   console.log("Antal terninger: " + n)
-  // document.getElementById("number_of_dices").innerHTML = n;
+  document.getElementById("number_of_dices").innerHTML = n;
   document.getElementById("button_number_of_dices").innerHTML = "Terninger: "+n;
 
 }
