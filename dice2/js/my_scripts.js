@@ -19,11 +19,15 @@ var dice_rolls_to_array = 9;
 
 var all_dices = [];
 
+// Danner variabler
+
 for (let i = 0; i<dice_rolls_to_array; i++ ){
 
   all_dices.push("dice_"+i)
 
 };
+
+// Skjuler de terninger der ikke skal være med på startsiden
 
 for (let i = 0; i<dice_rolls_to_array; i++ ){
 
@@ -135,6 +139,20 @@ function reset_dice_counter() {
   roll_counter = 0;
   document.getElementById("roll_counter").innerHTML = roll_counter;
   console.log("roll_counter reset")
+
+  reset_chosen_dices();
+}
+
+function reset_chosen_dices(){
+
+  chosen_dices = [];
+  
+  for (let i = 0; i<dice_rolls_to_array; i++ ){
+  
+    document.getElementById(all_dices[i]).style.backgroundColor = dice_unchosen;
+  
+  };
+
 }
 
 function dices_number_of(n) {
@@ -145,6 +163,8 @@ function dices_number_of(n) {
   roll_counter = 1;
 
   reset_dice_counter();
+
+  reset_chosen_dices();
 
   for (let i = 0; i<dice_rolls_to_array; i++ ){
 
@@ -190,7 +210,7 @@ function dice_change(n) {
 
   
 
-  reset_dice_counter();
+  // reset_dice_counter();
 
   roll_all_dices("first_roll");
   
