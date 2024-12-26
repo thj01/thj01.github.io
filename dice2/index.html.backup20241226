@@ -55,22 +55,13 @@
           <br>
 
           <!-- <div id="dice_roll"><span class="standard_dice"><span class="standard_dice_image"><img src="images/asterisk.svg" alt="" width="24px"></span></span></div> -->
-          <div id="dice_roll">
-            <span class="dice_0" id="dice_0" onclick="change_dice_color('dice_0')"><span  style="font-size: 3em">X</span></span>
-            <span class="dice_1" id="dice_1" onclick="change_dice_color('dice_1')"><span  style="font-size: 3em">X</span></span>
-            <span class="dice_2" id="dice_2" onclick="change_dice_color('dice_2')"><span  style="font-size: 3em">X</span></span>
-          <br>  
-            <span class="dice_3" id="dice_3" onclick="change_dice_color('dice_3')"><span  style="font-size: 3em">X</span></span>
-            <span class="dice_4" id="dice_4" onclick="change_dice_color('dice_4')"><span  style="font-size: 3em">X</span></span>
-            <span class="dice_5" id="dice_5" onclick="change_dice_color('dice_5')"><span  style="font-size: 3em">X</span></span>
-          <br> 
-            <span class="dice_6" id="dice_6" onclick="change_dice_color('dice_6')"><span  style="font-size: 3em">X</span></span>
-            <span class="dice_7" id="dice_7" onclick="change_dice_color('dice_7')"><span  style="font-size: 3em">X</span></span>
-            <span class="dice_8" id="dice_8" onclick="change_dice_color('dice_8')"><span  style="font-size: 3em">X</span></span>
-          <!-- <br> 
-            <span class="dice_9" id="dice_9"><span  style="font-size: 3em">X</span></span>
-            <span class="dice_10" id="dice_10"><span  style="font-size: 3em">X</span></span>
-            <span class="dice_11" id="dice_11"><span  style="font-size: 3em">X</span></span> -->
+          <div id="dice_roll"><span class="standard_dice"><span  style="font-size: 3em">X</span></span></div>
+
+
+
+
+
+
         </div>
 
 
