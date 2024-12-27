@@ -8,22 +8,6 @@ p {font-size: 1.2em;}
   width:60% !important;
 }  
 
-/* #dice_look {
-
-  margin-left: auto;
-  margin-right: auto;
-  border: 1px solid black;
-  border-radius: .3em;
-  background-color: ivory;
-  height: 1.8em;
-  width: 1.8em;
-  display:flex;
-  align-items: center;
-  justify-content:center;
-  font-size: 3em;
-
-} */
-
 .dice_0, .dice_1, .dice_2, .dice_3, .dice_4, .dice_5, .dice_6, .dice_7, .dice_8, .dice_9, .dice_10, .dice_11, .dice_12 {
   width: 5em;
   height: 5em;
@@ -36,7 +20,7 @@ p {font-size: 1.2em;}
   margin: .5em;
 }
 
-.standard_dice_image {
+/* .standard_dice_image {
 
 display:flex;
 align-items: center;
@@ -48,4 +32,4 @@ justify-content:center;
   display:none;
 
 
-}
+} */
