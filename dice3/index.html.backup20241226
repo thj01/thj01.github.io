@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="da">
+  <head>
+    <meta charset="utf-8">
+    <link rel="icon" href="images/favicon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- ***************  CHANGE   ***************  --> 
+    <meta name="description" content="Dice rolling applikation">
+    <!-- ***************  CHANGE   ***************  -->
+    <title>Dice</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="css/styles.css" rel="stylesheet">
+  </head>
+  <body class="">
+    <nav class="navbar navbar-expand-lg bg-light sticky-top">
+      <!-- <div class="container-fluid"> -->
+      <div class="container-fluid">
+        <!-- ***************  CHANGE   ***************  -->
+        <a class="navbar-brand" href="index.html">Dice</a>
+        <button 
+          class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+          <span class="navbar-toggler-icon " aria-label="Menu"></span>
+        </button>
+        <div class="offcanvas offcanvas-end" tabindex="-2" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+          <div class="offcanvas-header">
+            <!-- ***************  CHANGE if not danish  ***************  -->
+            <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Indhold</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <ul class="navbar-nav ms-auto justify-content-end pe-5">
+              <li class="nav-item dropdown">
+                <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="" onclick="loadDoc('subpage00.html')">Subpage00</a></li>
+                <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="" onclick="loadDoc('subpage01.html')">Subpage01</a></li>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container-md content">
+
+      <!-- ***************  CHANGE   ***************  -->
+      <h1 class="mt-3 mb-0 text-center display-1" id="page_header">Dice</h1>
+      <p class="m-1 text-center display-7" id="dice_type">D6</p>
+
+
+
+      <div id="content">
+
+
+        <div class="m-1 text-center" id="results">
+
+          <br>
+
+          <!-- <div id="dice_roll"><span class="standard_dice"><span class="standard_dice_image"><img src="images/asterisk.svg" alt="" width="24px"></span></span></div> -->
+          <div id="dice_roll"><span class="standard_dice"><span  style="font-size: 3em">X</span></span></div>
+
+
+
+
+
+
+        </div>
+
+
+        <div class="m-5 text-center">
+
+          <button id="roll_button" type="button" class="btn btn-success btn-lg w-100 btn-block" onclick="roll_all_dices('normal_roll')">Kast</button>
+        
+        </div>
+
+        <div class="m-5 text-center">
+
+          <p class="text-center">Antal kast <spanc id="roll_counter">0</spanc></p>
+          <!-- <p class="text-center">Antal terninger <spanc id="number_of_dices">1</spanc></p> -->
+          <button id="roll_reset" type="button" class="btn btn-outline-danger btn-sm">
+            &#x21bb;
+          </button>
+        </div>
+
+        <div class="row">
+          <div class="col-6 text-center">
+            <div class="dropup-center dropup">
+              <button id="btn_dice_type" type="button" class="btn btn-info dropdown-toggle w-75" data-bs-toggle="dropdown" aria-expanded="false">
+                D6
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start">
+                  <li><a class="dropdown-item" href="#" onclick="dice_change(2)">Plat og krone</a></li>  
+                  <li><a class="dropdown-item" href="#" onclick="dice_change(4)">D4</a></li>
+                  <li><a class="dropdown-item" href="#" onclick="dice_change(6)">D6</a></li>
+                  <li><a class="dropdown-item" href="#" onclick="dice_change(8)">D8</a></li>
+                  <li><a class="dropdown-item" href="#" onclick="dice_change(10)">D10</a></li>
+                  <li><a class="dropdown-item" href="#" onclick="dice_change(12)">D12</a></li>
+                  <li><a class="dropdown-item" href="#" onclick="dice_change(20)">D20</a></li>
+                </ul>
+            </div>
+          </div>
+          <div class="col-6 text-center">
+            <div class="dropup-center dropup">
+              <button id="button_number_of_dices" type="button" class="btn btn-info dropdown-toggle w-75" data-bs-toggle="dropdown" aria-expanded="false">
+              Terninger: <span id="number_of_dices">1</span>
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start">
+                <li><a class="dropdown-item" href="#" onclick="dices_number_of(1)">Terninger: 1</a></li>  
+                <li><a class="dropdown-item" href="#" onclick="dices_number_of(2)">Terninger: 2</a></li>
+                <li><a class="dropdown-item" href="#" onclick="dices_number_of(3)">Terninger: 3</a></li>  
+                <li><a class="dropdown-item" href="#" onclick="dices_number_of(4)">Terninger: 4</a></li>
+                <li><a class="dropdown-item" href="#" onclick="dices_number_of(5)">Terninger: 5</a></li>  
+                <li><a class="dropdown-item" href="#" onclick="dices_number_of(6)">Terninger: 6</a></li>
+                <li><a class="dropdown-item" href="#" onclick="dices_number_of(7)">Terninger: 7</a></li>
+                <li><a class="dropdown-item" href="#" onclick="dices_number_of(8)">Terninger: 8</a></li>  
+                <li><a class="dropdown-item" href="#" onclick="dices_number_of(9)">Terninger: 9</a></li>
+                <!-- <li><a class="dropdown-item" href="#" onclick="dices_number_of(12)">Terninger: 12</a></li> -->
+              </ul>
+            </div>
+          </div>
+        </div>
+
+
+
+      </div>
+    </div>
+
+      <nav class="navbar navbar-expand-lg fixed-bottom navbar-light bg-light">
+        <div class="container">
+          <!-- ***************  CHANGE   ***************  -->
+          <a class="navbar-brand" href="#">Made By: thj001</a>
+
+        </div>
+      </nav>
+    
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="js/my_scripts.js"></script>
+
+  </body>
+</html>
+
+
+
