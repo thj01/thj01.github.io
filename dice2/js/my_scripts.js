@@ -15,7 +15,7 @@ function loadDoc(doc) {
 // declaring variables
 
 var sides = 6;
-var max_dices_show = 15;
+var max_dices_show = 12;
 var dice_rolls_to_array = 15;
 // var number_of_dices = 1; 
 var roll_counter = 0; 
