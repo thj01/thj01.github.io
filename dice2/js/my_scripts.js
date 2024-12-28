@@ -15,7 +15,8 @@ function loadDoc(doc) {
 // declaring variables
 
 var sides = 6;
-var dice_rolls_to_array = 9;
+var max_dices_show = 15;
+var dice_rolls_to_array = 15;
 // var number_of_dices = 1; 
 var roll_counter = 0; 
 var dice_roll_array = []; // Array for rolls
@@ -131,7 +132,7 @@ function dices_number_of(n) {
   }
 
   for (let i = 0; i<dice_rolls_to_array; i++ ){
-    if ( i < n ){
+    if ( i < n && i < max_dices_show){
       document.getElementById(all_dices[i]).style.display = "inline-block";
     }
   }
@@ -146,12 +147,12 @@ function dice_change(n) {
   console.log("Dice"+ sides);
 
   if (sides > 3){
-    document.getElementById('page_header').innerHTML = "Dice";
+    // document.getElementById('page_header').innerHTML = "Dice";
     document.getElementById('dice_type').innerHTML = 'D' + sides;
     document.getElementById('btn_dice_type').innerHTML = 'D' + sides;
   } else {
-    document.getElementById('page_header').innerHTML = "Plat og krone";
-    document.getElementById('dice_type').innerHTML = "&nbsp;";
+    // document.getElementById('page_header').innerHTML = "Plat og krone";
+    document.getElementById('dice_type').innerHTML = "Plat og krone";
     document.getElementById('btn_dice_type').innerHTML = "Plat og krone";
   }
 

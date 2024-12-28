@@ -42,57 +42,76 @@
     <div class="container-md content">
 
       <!-- ***************  CHANGE   ***************  -->
-      <h1 class="mt-3 mb-0 text-center display-1" id="page_header">Dice</h1>
-      <p class="m-1 text-center display-7" id="dice_type">D6</p>
+      <!-- <h1 class="mt-3 mb-0 text-center display-1" id="page_header">Dice</h1>
+      <p class="m-1 text-center display-7" id="dice_type">D6</p> -->
 
-
+      <h1 class="mt-1 mb-0 text-center display-1" id="dice_type">D6</h1>
 
       <div id="content">
 
-
-        <div class="my-3 text-center" id="results">
+        <div class="my-1 text-center" id="results">
 
           <br>
 
           <!-- <div id="dice_roll"><span class="standard_dice"><span class="standard_dice_image"><img src="images/asterisk.svg" alt="" width="24px"></span></span></div> -->
           <div id="dice_roll">
-            <span class="dice_0" id="dice_0" onclick="change_dice_color('dice_0')"><span  style="font-size: 3em">X</span></span>
-            <span class="dice_1" id="dice_1" onclick="change_dice_color('dice_1')"><span  style="font-size: 3em">X</span></span>
-            <span class="dice_2" id="dice_2" onclick="change_dice_color('dice_2')"><span  style="font-size: 3em">X</span></span>
+            <span class="dice_0" id="dice_0" onclick="change_dice_color('dice_0')"><span style="font-size: 3em">X</span></span>
+            <span class="dice_1" id="dice_1" onclick="change_dice_color('dice_1')"><span style="font-size: 3em">X</span></span>
+            <span class="dice_2" id="dice_2" onclick="change_dice_color('dice_2')"><span style="font-size: 3em">X</span></span>
           <br>  
-            <span class="dice_3" id="dice_3" onclick="change_dice_color('dice_3')"><span  style="font-size: 3em">X</span></span>
-            <span class="dice_4" id="dice_4" onclick="change_dice_color('dice_4')"><span  style="font-size: 3em">X</span></span>
-            <span class="dice_5" id="dice_5" onclick="change_dice_color('dice_5')"><span  style="font-size: 3em">X</span></span>
+            <span class="dice_3" id="dice_3" onclick="change_dice_color('dice_3')"><span style="font-size: 3em">X</span></span>
+            <span class="dice_4" id="dice_4" onclick="change_dice_color('dice_4')"><span style="font-size: 3em">X</span></span>
+            <span class="dice_5" id="dice_5" onclick="change_dice_color('dice_5')"><span style="font-size: 3em">X</span></span>
           <br> 
-            <span class="dice_6" id="dice_6" onclick="change_dice_color('dice_6')"><span  style="font-size: 3em">X</span></span>
-            <span class="dice_7" id="dice_7" onclick="change_dice_color('dice_7')"><span  style="font-size: 3em">X</span></span>
-            <span class="dice_8" id="dice_8" onclick="change_dice_color('dice_8')"><span  style="font-size: 3em">X</span></span>
-          <!-- <br> 
-            <span class="dice_9" id="dice_9"><span  style="font-size: 3em">X</span></span>
-            <span class="dice_10" id="dice_10"><span  style="font-size: 3em">X</span></span>
-            <span class="dice_11" id="dice_11"><span  style="font-size: 3em">X</span></span> -->
+            <span class="dice_6" id="dice_6" onclick="change_dice_color('dice_6')"><span style="font-size: 3em">X</span></span>
+            <span class="dice_7" id="dice_7" onclick="change_dice_color('dice_7')"><span style="font-size: 3em">X</span></span>
+            <span class="dice_8" id="dice_8" onclick="change_dice_color('dice_8')"><span style="font-size: 3em">X</span></span>
+          <br> 
+            <span class="dice_9" id="dice_9" onclick="change_dice_color('dice_9')"><span style="font-size: 3em">X</span></span>
+            <span class="dice_10" id="dice_10" onclick="change_dice_color('dice_10')"><span style="font-size: 3em">X</span></span>
+            <span class="dice_11" id="dice_11" onclick="change_dice_color('dice_11')"><span style="font-size: 3em">X</span></span>
+
+          <br> 
+            <span class="dice_12" id="dice_12" onclick="change_dice_color('dice_12')"><span style="font-size: 3em">X</span></span>
+            <span class="dice_13" id="dice_13" onclick="change_dice_color('dice_13')"><span style="font-size: 3em">X</span></span>
+            <span class="dice_14" id="dice_14" onclick="change_dice_color('dice_14')"><span style="font-size: 3em">X</span></span>
         </div>
 
 
-        <div class="mx-5 my-5 text-center">
+        <div class="my-5  text-center">
 
-          <button id="roll_button" type="button" class="btn btn-success btn-lg w-100 btn-block" onclick="roll_all_dices('normal_roll')">Kast (<spanc id="roll_counter">0</spanc>)</button>
+          <div class="row">
+            <div class="col-3">
+
+              <button id="roll_reset" type="button" class="btn btn-danger btn-lg w-100 mx-5">&#x21bb;</button>
+
+            </div>
+
+            <div class="col-9">
+
+              <button id="roll_button" type="button" class="btn btn-success btn-lg w-75 btn-block mx-5" onclick="roll_all_dices('normal_roll')">Kast (<spanc id="roll_counter">0</spanc>)</button>
+
+            </div>
+
+          </div>
+
+
+
+
+          
         
         </div>
 
-        <div class="mx-3 mt-3 text-center">
+        <!-- <div class="mx-3 mt-3 text-center">
 
-          <!-- <p class="text-center">Antal kast <spanc id="roll_counter">0</spanc></p> -->
-          <button id="roll_reset" type="button" class="btn btn-outline-danger btn-sm">
-            &#x21bb;
-          </button>
+          <button id="roll_reset" type="button" class="btn btn-outline-danger btn-sm">&#x21bb;</button>
         
-        </div>
+        </div> -->
 
         <div class="mt-5 row">
           <div class="col-6 text-center">
             <div class="dropup-center dropup">
-              <button id="btn_dice_type" type="button" class="btn btn-info dropdown-toggle w-75" data-bs-toggle="dropdown" aria-expanded="false">
+              <button id="btn_dice_type" type="button" class="btn btn-info dropdown-toggle w-75 mx-5" data-bs-toggle="dropdown" aria-expanded="false">
                 D6
               </button>
               <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start">
@@ -108,7 +127,7 @@
           </div>
           <div class="col-6 text-center">
             <div class="dropup-center dropup">
-              <button id="button_number_of_dices" type="button" class="btn btn-info dropdown-toggle w-75" data-bs-toggle="dropdown" aria-expanded="false">
+              <button id="button_number_of_dices" type="button" class="btn btn-info dropdown-toggle w-75 " data-bs-toggle="dropdown" aria-expanded="false">
               Terninger: <span id="number_of_dices">1</span>
               </button>
               <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start">
@@ -121,7 +140,13 @@
                 <li><a class="dropdown-item" href="#" onclick="dices_number_of(7)">Terninger: 7</a></li>
                 <li><a class="dropdown-item" href="#" onclick="dices_number_of(8)">Terninger: 8</a></li>  
                 <li><a class="dropdown-item" href="#" onclick="dices_number_of(9)">Terninger: 9</a></li>
-                <!-- <li><a class="dropdown-item" href="#" onclick="dices_number_of(12)">Terninger: 12</a></li> -->
+                <li><a class="dropdown-item" href="#" onclick="dices_number_of(10)">Terninger: 10</a></li>
+                <li><a class="dropdown-item" href="#" onclick="dices_number_of(11)">Terninger: 11</a></li>  
+                <li><a class="dropdown-item" href="#" onclick="dices_number_of(12)">Terninger: 12</a></li>
+                <li><a class="dropdown-item" href="#" onclick="dices_number_of(13)">Terninger: 13</a></li>
+                <li><a class="dropdown-item" href="#" onclick="dices_number_of(14)">Terninger: 14</a></li>  
+                <li><a class="dropdown-item" href="#" onclick="dices_number_of(15)">Terninger: 15</a></li>
+                
               </ul>
             </div>
           </div>
@@ -135,7 +160,7 @@
       <nav class="navbar navbar-expand-lg fixed-bottom navbar-light bg-light">
         <div class="container">
           <!-- ***************  CHANGE   ***************  -->
-          <a class="navbar-brand" href="#">Made By: thj001</a>
+          <a class="navbar-brand" href="#">Made By: thj001 (v20241227)</a>
 
         </div>
       </nav>
