@@ -13,36 +13,43 @@
     <link href="css/styles.css" rel="stylesheet">
   </head>
   <body class="">
-    <nav class="navbar navbar-expand-lg bg-light sticky-top">
-      <!-- <div class="container-fluid"> -->
-      <div class="container-md">
-        <!-- ***************  CHANGE   ***************  -->
-        <a class="navbar-brand" href="index.html">Dice</a>
-        <button 
-          class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
-          <span class="navbar-toggler-icon " aria-label="Menu"></span>
-        </button>
-        <div class="offcanvas offcanvas-end" tabindex="-2" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-          <div class="offcanvas-header">
-            <!-- ***************  CHANGE if not danish  ***************  -->
-            <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Indhold</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-          </div>
-          <div class="offcanvas-body">
-            <ul class="navbar-nav ms-auto justify-content-end pe-5">
-              <li class="nav-item dropdown">
-                <!-- <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="" onclick="loadDoc('subpage00.html')">Subpage00</a></li> -->
-                <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="" onclick="loadDoc('about.html')">Om Dice</a></li>
-              </li>
-            </ul>
-          </div>
+
+    <nav class="navbar navbar-expand-md bg-light sticky-top">
+      <a class="navbar-brand" href="index.html">Dice</a> <!-- ** CHANGE **  -->
+
+      <button 
+        class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+        <span class="navbar-toggler-icon " aria-label="Menu"></span>
+      </button>
+
+      <div class="offcanvas offcanvas-end" tabindex="-2" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+
+        <div class="offcanvas-header">
+          <!-- ***************  CHANGE if not danish  ***************  -->
+          <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Indhold</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
+
+        <div class="offcanvas-body">
+          <ul class="navbar-nav ms-auto justify-content-end pe-5">
+            <li class="nav-item dropdown">
+              <!-- <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="" onclick="loadDoc('subpage00.html')">Subpage00</a></li> -->
+              <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="" onclick="loadDoc('about.html')">Om Dice</a></li>
+            </li>
+          </ul>
+        </div>
+
       </div>
+
     </nav>
+
+
 
     <div class="container-md content">
 
-      <h1 class="mt-1 mb-3 text-center display-1" id="dice_type">D6</h1>
+      <h1 class="text-center display-1" id="dice_type">D6</h1>
+
+    </div>
 
       <div id="content">
 
@@ -71,18 +78,18 @@
         </div>
 
 
-        <div class="my-5  text-center">
+        <div class="">
 
           <div class="row">
-            <div class="col-3">
+            <div class="col-6 text-center">
 
-              <button id="roll_reset" type="button" class="btn btn-danger btn-lg w-100 mx-5" onclick="reset_dices()">&#x21bb;</button>
+              <button id="roll_reset" type="button" class="btn btn-danger btn-lg" onclick="reset_dices()">&#x21bb;</button>
 
             </div>
 
-            <div class="col-9">
+            <div class="col-6 text-center">
 
-              <button id="roll_button" type="button" class="btn btn-success btn-lg w-75 btn-block mx-5" onclick="roll_all_dices('normal_roll')">Kast (<spanc id="roll_counter">0</spanc>)</button>
+              <button id="roll_button" type="button" class="btn btn-success btn-lg btn-block " onclick="roll_all_dices('normal_roll')">Kast (<spanc id="roll_counter">0</spanc>)</button>
 
             </div>
 
@@ -93,7 +100,7 @@
         <div class="mt-5 row">
           <div class="col-6 text-center">
             <div class="dropup-center dropup">
-              <button id="btn_dice_type" type="button" class="btn btn-info dropdown-toggle w-75 mx-5" data-bs-toggle="dropdown" aria-expanded="false">
+              <button id="btn_dice_type" type="button" class="btn btn-info dropdown-toggle w-75" data-bs-toggle="dropdown" aria-expanded="false">
                 D6
               </button>
               <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start">
