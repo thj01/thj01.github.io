@@ -101,7 +101,7 @@ function change_dice_color(dice) {
   console.log(chosen_dices);
 }
 
-roll_reset.onclick = reset_dice_counter;
+// roll_reset.onclick = reset_dice_counter;
 
 function reset_dice_counter() {
   roll_counter = 0;
@@ -117,6 +117,16 @@ function reset_chosen_dices(){
     document.getElementById(all_dices[i]).style.backgroundColor = dice_unchosen;
   };
 }
+
+function reset_dices(){
+  reset_dice_counter();
+  reset_chosen_dices();
+
+  console.log("reset dices")
+
+}
+
+
 
 function dices_number_of(n) {
   number_of_dices = n;
