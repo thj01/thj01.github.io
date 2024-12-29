@@ -1,26 +1,4 @@
-
-
-var sides = 6;
-var throw_counter = 0;
-
-const dices = ["dice00","dice01","dice02","dice03","dice04","dice05"];
-
-var click_counter_dice00 = 0;
-var click_counter_dice01 = 0;
-var click_counter_dice02 = 0;
-var click_counter_dice03 = 0;
-var click_counter_dice04 = 0;
-var click_counter_dice05 = 0;
-
-var dice_unchosen = "Ivory";
-var dice_chosen = "lightblue";
-
-var dice = {
-  roll: function () {
-    var randomNumber = Math.floor(Math.random() * sides) + 1;
-    return randomNumber;
-  }
-}
+// menu page opener
 
 function loadDoc(doc) {
   var xhttp = new XMLHttpRequest();
@@ -32,201 +10,162 @@ function loadDoc(doc) {
   };
   xhttp.open("GET", doc , true);
   xhttp.send();
-
-  reset_all_data
-
 }
 
-function reset_all_data(){
+// declaring variables
 
-  click_counter_dice00 = 0;
-  click_counter_dice01 = 0;
-  click_counter_dice02 = 0;
-  click_counter_dice03 = 0;
-  click_counter_dice04 = 0;
-  click_counter_dice05 = 0;
+var sides = 6;
+var max_dices_show = 12;
+var dice_rolls_to_array = 15;
+// var number_of_dices = 1; 
+var roll_counter = 0; 
+var dice_roll_array = []; // Array for rolls
+var chosen_dices = []; // array for chosen dices
 
-  throw_counter = 0;
-  document.getElementById("ThrowCount").innerHTML = throw_counter;
-
-}
+var dice_unchosen = "Ivory";
+var dice_chosen = "lightblue";
 
 
-function change_background_color(param) {
 
-  if (param == "dice00") {
-    if (click_counter_dice00%2 == 0 ) {  
-      document.getElementById(param).style.backgroundColor = dice_chosen;
-      click_counter_dice00 +=1;
-        } else {
-          document.getElementById(param).style.backgroundColor = dice_unchosen;
-          click_counter_dice00 +=1;
-        }
-      } else if (param == "dice01"){ 
-      if (click_counter_dice01%2 == 0 ) {  
-        document.getElementById(param).style.backgroundColor = dice_chosen;
-        click_counter_dice01 +=1;
-      } else {
-        document.getElementById(param).style.backgroundColor = dice_unchosen;
-        click_counter_dice01 +=1;
-      }
-      } else if (param == "dice02") { 
-        if (click_counter_dice02%2 == 0 ) {  
-          document.getElementById(param).style.backgroundColor = dice_chosen;
-          click_counter_dice02 +=1
-        } else {
-          document.getElementById(param).style.backgroundColor = dice_unchosen;
-          click_counter_dice02 +=1
-        }
-      } else if (param == "dice03"){ 
-        if (click_counter_dice03%2 == 0 ) {  
-          document.getElementById(param).style.backgroundColor = dice_chosen;
-          click_counter_dice03 +=1
-        } else {
-          document.getElementById(param).style.backgroundColor = dice_unchosen;
-          click_counter_dice03 +=1
-        }
-      } else if (param == "dice04"){ 
-        if (click_counter_dice04%2 == 0 ) {  
-          document.getElementById(param).style.backgroundColor = dice_chosen;
-          click_counter_dice04 +=1
-        } else {
-          document.getElementById(param).style.backgroundColor = dice_unchosen;
-          click_counter_dice04 +=1
-        }
-      } else if (param == "dice05"){ 
-        if (click_counter_dice05%2 == 0 ) {  
-          document.getElementById(param).style.backgroundColor = dice_chosen;
-          click_counter_dice05 +=1
-        } else {
-          document.getElementById(param).style.backgroundColor = dice_unchosen;
-          click_counter_dice05 +=1
-        }
-      }
+var all_dices = [];
+
+// Danner variabler
+
+for (let i = 0; i<dice_rolls_to_array; i++ ){
+  all_dices.push("dice_"+i)
+};
+
+// Skjuler de terninger der ikke skal være med på startsiden
+
+for (let i = 0; i<dice_rolls_to_array; i++ ){
+  if (i > 0){ document.getElementById(
+    all_dices[i]).style.display = "none";
+  };
+};
+
+console.log(all_dices)
+
+var dice = {
+  roll: function () {
+    var randomNumber = Math.floor(Math.random() * sides) + 1;
+    return randomNumber;
   }
-
-
-
-function all_dices(d0,d1,d2,d3,d4,d5){
-
-  var diceroll00 = document.getElementById('dice00');
-  var diceroll01 = document.getElementById('dice01');
-  var diceroll02 = document.getElementById('dice02');
-  var diceroll03 = document.getElementById('dice03');
-  var diceroll04 = document.getElementById('dice04');
-  var diceroll05 = document.getElementById('dice05');
-  
-  if (click_counter_dice00%2 == 0 ){
-    diceroll00.innerHTML = d0;}
-  if (click_counter_dice01%2 == 0 ){
-    diceroll01.innerHTML = d1;}
-  if (click_counter_dice02%2 == 0 ){
-    diceroll02.innerHTML = d2;}
-  if (click_counter_dice03%2 == 0 ){
-    diceroll03.innerHTML = d3;}
-  if (click_counter_dice04%2 == 0 ){
-    diceroll04.innerHTML = d4;}
-  if (click_counter_dice05%2 == 0 ){
-    diceroll05.innerHTML = d5;}          
-
-}
-
-var button = document.getElementById('button');
-
-button.onclick = function() {
-  
-  throw_counter += 1;
-
-  document.getElementById("ThrowCount").innerHTML = throw_counter;
-  
-  var result00 = dice.roll();
-  var result01 = dice.roll();
-  var result02 = dice.roll();
-  var result03 = dice.roll();
-  var result04 = dice.roll();
-  var result05 = dice.roll();
-  all_dices(result00,result01,result02,result03,result04,result05);
-
-}
-
-var reset_button = document.getElementById('reset_button');
-
-reset_button.onclick = function clear_data() {
-
-  throw_counter = 0;
-  document.getElementById("ThrowCount").innerHTML = throw_counter;
-
-  click_counter_dice00 = 0;
-  click_counter_dice01 = 0;
-  click_counter_dice02 = 0;
-  click_counter_dice03 = 0;
-  click_counter_dice04 = 0;
-  click_counter_dice05 = 0;
-
-  for (var i of dices){
-    document.getElementById(i).style.backgroundColor = dice_unchosen;  
-    document.getElementById(i).innerHTML = "&#9733;";  
-
-  }
-
 }
 
 
+function roll_all_dices(param){
 
+  dice_roll_array = [];
 
-
-// function new_dice_type(new_sides_var){
-//   var sides = new_sides_var;
-
-// }
-
-// var change_to_coin = document.getElementById('design_as_coin');
-
-// change_to_coin.onclick = function () {
-
-//   for (const i of dices){
-//     document.getElementById(i).style.borderRadius = ".9em";
-//   }
- 
-//   sides = 2;
-
-// }
-
-function test(n){
-
-  sides = n;
-
-
-  if (n != 2) {
-
-    document.getElementById('dice_type').innerHTML = 'DICE - D' + n;
-    document.getElementById('btn_dice_type').innerHTML = 'D' + n;
-    document.getElementById('Dice_roll').innerHTML = 1;
-        
-    for (var dice of dices){
-      document.getElementById(dice).innerHTML = "&#9733;";
-      document.getElementById(dice).style.borderRadius = ".3em";
+  for (let i = 0; i<dice_rolls_to_array; i++ ){
+    switch(param) {
+      case "normal_roll":
+        dice_roll_array.push(dice.roll()) ; 
+        break;
+      case "first_roll":
+        console.log(all_dices[i]);
+        dice_roll_array.push("X") ; 
+        break;
+      }
     }
-      
+  // ikke medtaget ovenfor, for at undgå at hvert slag tæller variablen "dice_rolls_to_array"
+  
+  if (param == "normal_roll"){ roll_counter += 1; }
 
+  console.log(dice_roll_array);
+ 
+  for (let i = 0; i<dice_rolls_to_array; i++ ){
+    let dice_roll_string = '<span style="font-size: 3em">' + dice_roll_array[i] + '</span>';
+    if((chosen_dices.includes(all_dices[i]) == false)){
+      document.getElementById(all_dices[i]).innerHTML = dice_roll_string;
+    }
+  }
 
+  document.getElementById("roll_counter").innerHTML = roll_counter;
+  console.log(roll_counter)
+
+}
+
+function change_dice_color(dice) {
+
+  if (chosen_dices.includes(dice) == false){
+    chosen_dices.push(dice) ; 
+    document.getElementById(dice).style.backgroundColor = dice_chosen;
 
   } else {
-    document.getElementById('dice_type').innerHTML = 'Plat og krone';
-    document.getElementById('btn_dice_type').innerHTML = 'Plat og krone';
-    document.getElementById('Dice_roll').innerHTML = 1;
-
-    for (var dice of dices){
-      document.getElementById(dice).innerHTML = "&#9733;";
-      document.getElementById(dice).style.borderRadius = ".9em";
-    }
-
-    // sides = 2;
+    let index = chosen_dices.indexOf(dice);
+    chosen_dices.splice(index,1);
+    document.getElementById(dice).style.backgroundColor = dice_unchosen;
+    console.log(index);
   }
+  console.log(chosen_dices);
+}
 
+// roll_reset.onclick = reset_dice_counter;
 
+function reset_dice_counter() {
+  roll_counter = 0;
+  document.getElementById("roll_counter").innerHTML = roll_counter;
+  console.log("roll_counter reset")
+  reset_chosen_dices();
+  roll_all_dices("first_roll");
+}
+
+function reset_chosen_dices(){
+  chosen_dices = [];
+  for (let i = 0; i<dice_rolls_to_array; i++ ){
+    document.getElementById(all_dices[i]).style.backgroundColor = dice_unchosen;
+  };
+}
+
+function reset_dices(){
+  reset_dice_counter();
+  reset_chosen_dices();
+
+  console.log("reset dices")
 
 }
 
 
 
+function dices_number_of(n) {
+  number_of_dices = n;
+  console.log("Antal terninger: " + n)
+  document.getElementById("button_number_of_dices").innerHTML = "Terninger: "+n;
+  roll_counter = 1;
+
+  reset_dice_counter();
+  reset_chosen_dices();
+
+  for (let i = 0; i<dice_rolls_to_array; i++ ){
+    document.getElementById(all_dices[i]).style.display = "none";
+  }
+
+  for (let i = 0; i<dice_rolls_to_array; i++ ){
+    if ( i < n && i < max_dices_show){
+      document.getElementById(all_dices[i]).style.display = "inline-block";
+    }
+  }
+
+  roll_all_dices("first_roll");
+
+}
+
+function dice_change(n) {
+
+  sides = n
+  console.log("Dice"+ sides);
+
+  if (sides > 3){
+    // document.getElementById('page_header').innerHTML = "Dice";
+    document.getElementById('dice_type').innerHTML = 'D' + sides;
+    document.getElementById('btn_dice_type').innerHTML = 'D' + sides;
+  } else {
+    // document.getElementById('page_header').innerHTML = "Plat og krone";
+    document.getElementById('dice_type').innerHTML = "Plat og krone";
+    document.getElementById('btn_dice_type').innerHTML = "Plat og krone";
+  }
+
+  reset_dice_counter();
+  roll_all_dices("first_roll");
+}

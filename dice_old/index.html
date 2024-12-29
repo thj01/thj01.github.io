@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link rel="icon" href="images/favicon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Dice rolling applikation">
+    <title>Terningkast</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="css/styles.css" rel="stylesheet">
+  </head>
+  <body class="">
+    <nav class="navbar navbar-expand-lg bg-light sticky-top">
+      <!-- <div class="container-fluid"> -->
+      <div class="container">
+        <a class="navbar-brand" href="index.html">Dice</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+          <span class="navbar-toggler-icon " aria-label="Menu"></span>
+        </button>
+        <div class="offcanvas offcanvas-end" tabindex="-2" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Indhold</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <!-- <ul class="navbar-nav ms-auto justify-content-end flex-grow-1 pe-5 "> -->
+            <ul class="navbar-nav ms-auto justify-content-end pe-5">
+              <li class="nav-item dropdown">
+                <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="1 terning" onclick="loadDoc('1dice.html');test(6)">1 Terning</a></li>
+                <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="2 terninger" onclick="loadDoc('2dice.html');test(6)">2 terninger</a></li>
+                <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="3 terninger" onclick="loadDoc('3dice.html');test(6)">3 terninger</a></li>
+                <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="4 terninger" onclick="loadDoc('4dice.html');test(6)">4 terninger</a></li>
+                <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="5 terninger" onclick="loadDoc('5dice.html');test(6)">5 terninger</a></li>
+                <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="6 terninger" onclick="loadDoc('6dice.html');test(6)">6 terninger</a></li>
+                <!-- <hr>
+                <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="Plat og krone" onclick="loadDoc('1coin.html');test(2)">1 mønt</a></li>
+                <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="Plat og krone" onclick="loadDoc('2coin.html');test(2)">2 mønter</a></li>
+                <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="Plat og krone" onclick="loadDoc('3coin.html');test(2)">3 mønter</a></li>
+                <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="Plat og krone" onclick="loadDoc('4coin.html');test(2)">4 mønter</a></li>
+                <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="Plat og krone" onclick="loadDoc('5coin.html');test(2)">5 mønter</a></li>
+                <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="Plat og krone" onclick="loadDoc('6coin.html');test(2)">6 mønter</a></li>
+                <hr>
+                 -->
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container-md content">
+
+      <h1 class="m-5 text-center display-1" id="dice_type" >DICE - D6</h1>
+
+      <!-- <h2 class="m-5 text-center display-4" id="description">Terning: D<span id="dice_type">6</span></h2> -->
+
+      <div id="content">
+        
+        <!-- <div class="p_dice" onclick="change_background_color('dice00')" id="dice00"> -->
+        <div class="p_dice" id="dice00">
+          &#9733;
+        </div>
+
+      </div>
+
+      <div class="m-5 text-center">
+
+        <button id="button" type="button" class="btn btn-success btn-lg w-100 btn-block">
+          Kast
+        </button>
+      
+      </div>
+
+      <div class="m-5 text-center">
+
+        <p class="text-center">Antal kast <spanc id="ThrowCount">0</spanc></p>
+        <button id="reset_button" type="button" class="btn btn-outline-danger btn-sm">
+          &#x21bb;
+        </button>
+
+
+
+
+      </div>
+
+      <!-- <div class="m-5 text-center">
+
+        <button id="reset_button" type="button" class="btn btn-danger btn-lg">
+          &#x21bb;
+        </button>
+      
+      </div>       -->
+
+    </div>
+
+    <nav class="navbar navbar-expand-lg fixed-bottom navbar-light bg-light">
+      <div class="container">
+        <a class="navbar-brand" href="#">Made By: thj001</a>
+        <div class="btn-group dropup">
+          <button id="btn_dice_type" type="button" class="btn btn-info dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            D6
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start">
+              <li><a class="dropdown-item" href="#" class="design_as_dice" onclick="test(4)">D4</a></li>
+              <li><a class="dropdown-item" href="#" class="design_as_dice" onclick="test(6)">D6</a></li>
+              <li><a class="dropdown-item" href="#" class="design_as_dice" onclick="test(8)">D8</a></li>
+              <li><a class="dropdown-item" href="#" class="design_as_dice" onclick="test(10)">D10</a></li>
+              <li><a class="dropdown-item" href="#" class="design_as_dice" onclick="test(12)">D12</a></li>
+              <li><a class="dropdown-item" href="#" class="design_as_dice" onclick="test(20)">D20</a></li>
+              
+              <!-- 
+                <hr>
+              <li><a class="dropdown-item" href="#" class="design_as_dice" onclick="test(2)">Plat og Krone</a></li> 
+              -->
+
+            </ul>
+        </div>
+      </div>
+    </nav>
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="js/my_scripts.js"></script>
+
+  </body>
+</html>
