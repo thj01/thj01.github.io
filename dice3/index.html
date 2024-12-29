@@ -14,111 +14,119 @@
   </head>
   <body class="">
 
-    <nav class="navbar navbar-expand-md bg-light sticky-top">
-      <a class="navbar-brand" href="index.html">Dice</a> <!-- ** CHANGE **  -->
+    <!-- Upper navigation bar -->
 
-      <button 
-        class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
-        <span class="navbar-toggler-icon " aria-label="Menu"></span>
-      </button>
+    <nav class="navbar navbar-expand-lg bg-light sticky-top">
+      
+      <div class="container">
+        <a class="navbar-brand" href="index.html">Dice</a> <!-- ** CHANGE **  -->
+        
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+          <span class="navbar-toggler-icon " aria-label="Menu"></span>
+        </button>
+        
+        <div class="offcanvas offcanvas-end" tabindex="-2" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
 
-      <div class="offcanvas offcanvas-end" tabindex="-2" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Indhold</h5> <!-- ** CHANGE **  -->
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          </div>
 
-        <div class="offcanvas-header">
-          <!-- ***************  CHANGE if not danish  ***************  -->
-          <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Indhold</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          <div class="offcanvas-body">
+            <ul class="navbar-nav ms-auto justify-content-end pe-5">
+              <li class="nav-item dropdown">
+                <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="" onclick="loadDoc('about.html')">Om Dice</a></li>
+                <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="index.html" alt="" >Tilbage til Dice</a></li>
+              </li>
+            </ul>
+          </div>
+
         </div>
-
-        <div class="offcanvas-body">
-          <ul class="navbar-nav ms-auto justify-content-end pe-5">
-            <li class="nav-item dropdown">
-              <!-- <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="" onclick="loadDoc('subpage00.html')">Subpage00</a></li> -->
-              <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="" onclick="loadDoc('about.html')">Om Dice</a></li>
-            </li>
-          </ul>
-        </div>
-
       </div>
-
     </nav>
 
-
-
-    <div class="container-md content">
-
-      <h1 class="text-center display-1" id="dice_type">D6</h1>
-
-    </div>
-
+    <!-- Content section -->
+    
+    <div class="container-md">
+      
       <div id="content">
+      
+        <h1 class="text-center display-1" id="dice_type">D6</h1>
 
-        <div class="my-1 text-center" id="results">
+        <!-- Dice rolls -->
+
+        <div class="text-center" id="results">
           
           <div id="dice_roll">
-            <span class="dice_0" id="dice_0" onclick="change_dice_color('dice_0')"><span style="font-size: 3em">X</span></span>
-            <span class="dice_1" id="dice_1" onclick="change_dice_color('dice_1')"><span style="font-size: 3em">X</span></span>
-            <span class="dice_2" id="dice_2" onclick="change_dice_color('dice_2')"><span style="font-size: 3em">X</span></span>
+            <div class="dice_0" id="dice_0" onclick="change_dice_color('dice_0')"><div style="font-size: 3em">X</div></div>
+            <div class="dice_1" id="dice_1" onclick="change_dice_color('dice_1')"><div style="font-size: 3em">X</div></div>
+            <div class="dice_2" id="dice_2" onclick="change_dice_color('dice_2')"><div style="font-size: 3em">X</div></div>
 
-            <span class="dice_3" id="dice_3" onclick="change_dice_color('dice_3')"><span style="font-size: 3em">X</span></span>
-            <span class="dice_4" id="dice_4" onclick="change_dice_color('dice_4')"><span style="font-size: 3em">X</span></span>
-            <span class="dice_5" id="dice_5" onclick="change_dice_color('dice_5')"><span style="font-size: 3em">X</span></span>
+            <div class="dice_3" id="dice_3" onclick="change_dice_color('dice_3')"><div style="font-size: 3em">X</div></div>
+            <div class="dice_4" id="dice_4" onclick="change_dice_color('dice_4')"><div style="font-size: 3em">X</div></div>
+            <div class="dice_5" id="dice_5" onclick="change_dice_color('dice_5')"><div style="font-size: 3em">X</div></div>
 
-            <span class="dice_6" id="dice_6" onclick="change_dice_color('dice_6')"><span style="font-size: 3em">X</span></span>
-            <span class="dice_7" id="dice_7" onclick="change_dice_color('dice_7')"><span style="font-size: 3em">X</span></span>
-            <span class="dice_8" id="dice_8" onclick="change_dice_color('dice_8')"><span style="font-size: 3em">X</span></span>
+            <div class="dice_6" id="dice_6" onclick="change_dice_color('dice_6')"><div style="font-size: 3em">X</div></div>
+            <div class="dice_7" id="dice_7" onclick="change_dice_color('dice_7')"><div style="font-size: 3em">X</div></div>
+            <div class="dice_8" id="dice_8" onclick="change_dice_color('dice_8')"><div style="font-size: 3em">X</div></div>
             
-            <span class="dice_9" id="dice_9" onclick="change_dice_color('dice_9')"><span style="font-size: 3em">X</span></span>
-            <span class="dice_10" id="dice_10" onclick="change_dice_color('dice_10')"><span style="font-size: 3em">X</span></span>
-            <span class="dice_11" id="dice_11" onclick="change_dice_color('dice_11')"><span style="font-size: 3em">X</span></span>
+            <div class="dice_9" id="dice_9" onclick="change_dice_color('dice_9')"><div style="font-size: 3em">X</div></div>
+            <div class="dice_10" id="dice_10" onclick="change_dice_color('dice_10')"><div style="font-size: 3em">X</div></div>
+            <div class="dice_11" id="dice_11" onclick="change_dice_color('dice_11')"><div style="font-size: 3em">X</div></div>
 
-            <span class="dice_12" id="dice_12" onclick="change_dice_color('dice_12')"><span style="font-size: 3em">X</span></span>
-            <span class="dice_13" id="dice_13" onclick="change_dice_color('dice_13')"><span style="font-size: 3em">X</span></span>
-            <span class="dice_14" id="dice_14" onclick="change_dice_color('dice_14')"><span style="font-size: 3em">X</span></span>
+            <div class="dice_12" id="dice_12" onclick="change_dice_color('dice_12')"><div style="font-size: 3em">X</div></div>
+            <div class="dice_13" id="dice_13" onclick="change_dice_color('dice_13')"><div style="font-size: 3em">X</div></div>
+            <div class="dice_14" id="dice_14" onclick="change_dice_color('dice_14')"><div style="font-size: 3em">X</div></div>
+          </div>
+
         </div>
 
+        <!-- throw and reset section -->
 
-        <div class="">
+        <div class="mt-5">
 
           <div class="row">
+
             <div class="col-6 text-center">
-
               <button id="roll_reset" type="button" class="btn btn-danger btn-lg" onclick="reset_dices()">&#x21bb;</button>
-
             </div>
 
             <div class="col-6 text-center">
-
-              <button id="roll_button" type="button" class="btn btn-success btn-lg btn-block " onclick="roll_all_dices('normal_roll')">Kast (<spanc id="roll_counter">0</spanc>)</button>
-
+              <button id="roll_button" type="button" class="btn btn-success btn-lg" onclick="roll_all_dices('normal_roll')">Kast (<spanc id="roll_counter">0</spanc>)</button>
             </div>
 
           </div>
         
         </div>
 
+        <!-- Dice settings -->
+
         <div class="mt-5 row">
+          
           <div class="col-6 text-center">
+            
             <div class="dropup-center dropup">
-              <button id="btn_dice_type" type="button" class="btn btn-info dropdown-toggle w-75" data-bs-toggle="dropdown" aria-expanded="false">
-                D6
-              </button>
+              
+              <button id="btn_dice_type" type="button" class="btn btn-info dropdown-toggle w-75" data-bs-toggle="dropdown" aria-expanded="false">D6</button>
+              
               <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start">
-                  <li><a class="dropdown-item" href="#" onclick="dice_change(2)">Plat og krone</a></li>  
-                  <li><a class="dropdown-item" href="#" onclick="dice_change(4)">D4</a></li>
-                  <li><a class="dropdown-item" href="#" onclick="dice_change(6)">D6</a></li>
-                  <li><a class="dropdown-item" href="#" onclick="dice_change(8)">D8</a></li>
-                  <li><a class="dropdown-item" href="#" onclick="dice_change(10)">D10</a></li>
-                  <li><a class="dropdown-item" href="#" onclick="dice_change(12)">D12</a></li>
-                  <li><a class="dropdown-item" href="#" onclick="dice_change(20)">D20</a></li>
-                </ul>
+                <li><a class="dropdown-item" href="#" onclick="dice_change(2)">Plat og krone</a></li>  
+                <li><a class="dropdown-item" href="#" onclick="dice_change(4)">D4</a></li>
+                <li><a class="dropdown-item" href="#" onclick="dice_change(6)">D6</a></li>
+                <li><a class="dropdown-item" href="#" onclick="dice_change(8)">D8</a></li>
+                <li><a class="dropdown-item" href="#" onclick="dice_change(10)">D10</a></li>
+                <li><a class="dropdown-item" href="#" onclick="dice_change(12)">D12</a></li>
+                <li><a class="dropdown-item" href="#" onclick="dice_change(20)">D20</a></li>
+               </ul>
             </div>
+
           </div>
+          
           <div class="col-6 text-center">
+            
             <div class="dropup-center dropup">
-              <button id="button_number_of_dices" type="button" class="btn btn-info dropdown-toggle w-75 " data-bs-toggle="dropdown" aria-expanded="false">
-              Terninger: <span id="number_of_dices">1</span>
-              </button>
+              <button id="button_number_of_dices" type="button" class="btn btn-info dropdown-toggle w-75 " data-bs-toggle="dropdown" aria-expanded="false">Terninger: <span id="number_of_dices">1</span></button>
+              
               <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start">
                 <li><a class="dropdown-item" href="#" onclick="dices_number_of(1)">Terninger: 1</a></li>  
                 <li><a class="dropdown-item" href="#" onclick="dices_number_of(2)">Terninger: 2</a></li>
@@ -137,31 +145,39 @@
                 <li><a class="dropdown-item" href="#" onclick="dices_number_of(15)">Terninger: 15</a></li> -->
                 
               </ul>
+
             </div>
+          
           </div>
+
         </div>
-
-
-
+      
       </div>
 
-      <nav class="navbar navbar-expand-lg fixed-bottom navbar-light bg-light">
-        <div class="container">
-          <!-- ***************  CHANGE   ***************  -->
-          <a class="navbar-brand" href="#">Made By: thj001 (v20241228)</a>
-
-        </div>
-      </nav>
-    
     </div>
 
+    <!-- Footer bar -->
 
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-      <script src="js/my_scripts.js"></script>
+    <footer>
+
+      <nav class="navbar navbar-expand-lg fixed-bottom navbar-light bg-light">
+
+        <div class="container">
+
+          <p class="">Made By: thj001 (v20241229)</p><!-- ** CHANGE **  -->
+
+        </div>
+        
+      </nav>
+
+    </footer>
+
+    <!-- Javascript files -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="js/my_scripts.js"></script>
 
   </body>
-
-  
 
 </html>
 
