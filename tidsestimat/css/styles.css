@@ -26,7 +26,14 @@ input::placeholder {
 
 }
 
-.visual_68 {
+#result, #grunddata {
+
+display:none;
+
+
+}
+
+/* .visual_68 {
     
     background-color: mediumaquamarine;
     
@@ -45,4 +52,4 @@ input::placeholder {
     background-color:green;
     color:rgb(231, 231, 231);
     
-}
+} */
