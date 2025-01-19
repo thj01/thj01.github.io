@@ -27,9 +27,9 @@
             <!-- <ul class="navbar-nav ms-auto justify-content-end flex-grow-1 pe-5 "> -->
             <ul class="navbar-nav ms-auto justify-content-end pe-5">
               <li class="nav-item dropdown">
-                <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="1 terning" onclick="loadDoc('about.html')">Om Tids_estimat</a></li>
-                <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="1 terning" onclick="loadDoc('page1.html')">page1</a></li>
-                <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="2 terninger" onclick="loadDoc('page2.html')">page2</a></li>
+                <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="Om tidsestimat" onclick="loadDoc('about.html')">Om Tids_estimat</a></li>
+                <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="guide" onclick="loadDoc('guide.html')">Guide</a></li>
+                <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="" onclick="loadDoc('page2.html')">page2</a></li>
               </li>
             </ul>
           </div>
@@ -37,7 +37,7 @@
       </div>
     </nav>
 
-    <h1 class="m-2 text-center display-1" >tidsestimat</h1>
+    <h1 class="m-2 text-center display-1" >Tidsestimat</h1>
 
 
     <div class="container-md">
@@ -55,7 +55,7 @@
               
               <form action="">
                 <div class="form-group">
-                  <div class="row ">
+                  <div class="row mt-2">
                     <div class="col-2 mt-2">
                       <label class="control-label" for="optimistisk_tidsforbrug">V<sub>o</sub></label>
                     </div>
@@ -65,8 +65,8 @@
                   </div>
                 </div><!-- End form-group-->
                 <div class="form-group">
-                  <div class="row mt-3">
-                    <div class="col-2">
+                  <div class="row mt-2">
+                    <div class="col-2 mt-2">
                       <label class="control-label" for="sandsynligt_tidsforbrug">V<sub>s</sub></label>
                     </div>
                     <div class="col-10">
@@ -81,8 +81,8 @@
               <form action="">
 
                 <div class="form-group">
-                  <div class="row">
-                    <div class="col-2">
+                  <div class="row mt-2">
+                    <div class="col-2 mt-2">
                       <label class="control-label" for="pessimistisk_tidsforbrug">V<sub>p</sub></label>
                     </div>
                     <div class="col-10">
@@ -91,8 +91,8 @@
                   </div>
                 </div><!-- End form-group-->
                 <div class="form-group">
-                  <div class="row mt-3">
-                    <div class="col-2">
+                  <div class="row mt-2">
+                    <div class="col-2 mt-2">
                       <label class="control-label" for="effektiv_arbejdstid">E<sub>a</sub></label>
                     </div>
                     <div class="col-10">
@@ -114,132 +114,178 @@
         </div>
 
 
-        <!-- <div class="text-center m-5 p-3 border rounded bg-succes" id="my_alert_box" > -->
 
-        <div class="mt-3 text-center text-white  ">
-        
-          <div class="bg-secondary text-white" id="kontrol_box_color">
-            <div class="p-2">Kontroltal: <span id="kontrol_evaluate"></span></div>
-          </div>  
-        
-      </div>
+        <div id="result" style="display:none">
 
+          <!-- <h2 class="m-5 text-center display-6">Resultat</h2> -->
 
-        <div id="showoff" style="display:none">
-        
-          <table class="table mt-3">
-            <thead>
-              <tr class="table-active">
-                <th class="fw-normal" scope="col">Succes</th>
-                <th class="fw-normal font-oblique" scope="col">h<sub>min</sub></th>
-                <th class="fw-normal font-oblique" scope="col">h<sub>max</sub></th>
-                <th class="fw-normal font-oblique" scope="col">d<sub>min</sub></th>
-                <th class="fw-normal font-oblique" scope="col">d<sub>max</sub></th>
-                <th class="fw-normal" scope="col">Math</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="font-oblique" scope="row">V<sub>m</sub></td>
-                <td id="gns_timer" colspan="2" class="text-center"></span></td>
-                <!-- <td id="gns_høj"></span></td> -->
-                <td id="gns_dage" colspan="2" class="text-center"></td>
-                <!-- <td id="gns_høj_dage"></td> -->
-                <td class="font-oblique formula">V<sub>m</sub></td>
-              </tr>
-              <tr class=" table-light">
-                <td class="font-oblique" scope="row">68%</td>
-                <td id="succes68_lav"></span></td>
-                <td id="succes68_høj"></span></td>
-                <td id="succes68_lav_dage"></td>
-                <td id="succes68_høj_dage"></td>
-                <td class="font-oblique">V<sub>m</sub> &plusmn;&sigma;</td>
-              </tr>
-              <tr>
-                <td class="font-oblique" scope="row">95%</td>
-                <td id="succes95_lav"></span></td>
-                <td id="succes95_høj"></span></td>
-                <td id="succes95_lav_dage"></td>
-                <td id="succes95_høj_dage"></td>
-                <td class="font-oblique">V<sub>m</sub> &plusmn;2&sigma;</td>
-              </tr>
-              <tr  class=" table-light">
-                <td class="font-oblique" scope="row">99%</td>                
-                <td id="succes99_lav"></span></td>
-                <td id="succes99_høj"></span></td>
-                <td id="succes99_lav_dage"></td>
-                <td id="succes99_høj_dage"></td>
-                <td class="font-oblique">V<sub>m</sub> &plusmn;3&sigma;</td>
-              </tr>
-            </tbody>
-          </table>
+          <div class="container text-center">
+            <div class="row">
+              <div class="col-4">
+                <p>Succes 68%</p>
+                <p><span id="Vm_68"></span> timer <br>&plusmn; <span id="s_68"></span> timer</p>
+              </div>
+              <div class="col-4">
+                <p>Succes 95%</p>
+                <p><span id="Vm_95"></span> timer <br>&plusmn; <span id="s_95"></span> timer</p>
+              </div>
 
-          <p>Kontroltal:</p>
+              <div class="col-4">
+                <p>Succes 99%</p>
+                <p><span id="Vm_99"></span> timer <br>&plusmn; <span id="s_99"></span> timer</p>
+              </div>
 
-        
+            </div>
 
-          
-
-
-<!-- 
-          <svg id="graph" style="width:100%;height:100%;" xmlns="http://www.w3.org/2000/svg">
-            <g>
-              <rect style="width:24%;height:15%" x="38%" y="15%" rx="5" ry="5" fill="green" fill-opacity="35%"/>
-              <text x="40%" y="25%" font-size=".7em">68%</text>
-            </g>
-            <g>
-              <rect style="width:48%;height:15%;" x="26%" y="40%" rx="5" ry="5" fill="green" fill-opacity="45%"/>
-              <text x="29%" y="50%" font-size=".7em">95%</text>
-            </g>
-            <g>
-              <rect style="width:72%;height:15%;" x="14%" y="65%" rx="5" ry="5" fill="green" fill-opacity="60%"/>
-              <text x="17%" y="75%" font-size=".7em">98%</text>
-            </g>
-            <text x="11%" y="15" style="font-size:.7em;">-3&#963;</text>
-            <line x1="14%" y1="15%" x2="14%" y2="85%" style="stroke:black;stroke-width:1; stroke-dasharray:3" />
-            <text x="23%" y="15" style="font-size:.7em;">-2&#963;</text>
-            <line x1="26%" y1="15%" x2="26%" y2="85%" style="stroke:black;stroke-width:1; stroke-dasharray:3" />
-            <text x="36%" y="15" style="font-size:.7em;">-&#963;</text>
-            <line x1="38%" y1="15%" x2="38%" y2="85%" style="stroke:black;stroke-width:1; stroke-dasharray:3" />
-            <text x="48%" y="15" style="font-size:.7em;">gns.</text>
-            <line x1="50%" y1="15%" x2="50%" y2="85%" style="stroke:black;stroke-width:1" />
-            <text x="61%" y="15" style="font-size:.7em;">&#963;</text>
-            <line x1="62%" y1="15%" x2="62%" y2="85%" style="stroke:black;stroke-width:1; stroke-dasharray:3" />
-            <text x="72%" y="15" style="font-size:.7em;">2&#963;</text>
-            <line x1="74%" y1="15%" x2="74%" y2="85%" style="stroke:black;stroke-width:1; stroke-dasharray:3" />
-            <text x="84%" y="15" style="font-size:.7em;">3&#963;</text>
-            <line x1="86%" y1="15%" x2="86%" y2="85%" style="stroke:black;stroke-width:1; stroke-dasharray:3" />
-         
-          </svg> -->
-
-
-          <p><strong>Beregningstal tilnærmede værdier</strong></p>
-
-
-
-          <table class="table">
-            <thead>
-              <tr>
-                <th class="font-oblique fw-normal" scope="col">V<sub>m</sub></th>
-                <th class="font-oblique fw-normal" scope="col">&sigma;<sup>2</sup></th>
-                <th class="font-oblique fw-normal" scope="col">&sigma;</th>
-                <th class="font-oblique fw-normal" scope="col">Kontroltal</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td id="Vm"></td>
-                <td id="s_2"></td>
-                <td id="s"></td>
-                <td id="kontrol"></td>
-              </tr>
-            </tbody>
-          </table>
-
-
-          <div class="container">
-            <canvas id="myChart" style="width:100%"></canvas>
           </div>
+
+          <div class="mt-3 text-center text-white  ">
+        
+            <div class="bg-secondary text-white" id="kontrol_box_color">
+              <div class="p-2">Kontroltal: <span id="kontrol_evaluate"></span></div>
+            </div>  
+          
+          </div>
+
+
+          <!-- <div class="visual_68 mx-5 mt-3 text-center" >
+            <div class="container">
+
+              <div class="row p-1">
+                <div class="col-12">68% succesrate</div>
+              </div>
+              
+              <div class="row pb-1">
+                <div class="col-5" id="succes68_lav_graphics"></div>
+                <div class="col-2">&lrarr;</div>
+                <div class="col-5" id="succes68_høj_graphics"></div>
+              </div>
+
+            </div>
+
+          </div> -->
+
+          <!-- <div class="visual_95 mx-5 mt-3 text-center" >
+            <div class="container">
+
+              <div class="row p-1">
+                <div class="col-12">95% succesrate</div>
+              </div>
+              
+              <div class="row p-1">
+                <div class="col-5" id="succes95_lav_graphics"></div>
+                <div class="col-2">&lrarr;</div>
+                <div class="col-5" id="succes95_høj_graphics"></div>
+              </div>
+
+            </div>
+
+
+          </div> -->
+<!-- 
+          <div class="visual_99 mx-5 mt-3 text-center" >
+
+            <div class="container">
+
+              <div class="row  p-1">
+                <div class="col-12">99% succesrate</div>
+              </div>
+              
+              <div class="row p-1">
+                <div class="col-5" id="succes99_lav_graphics"></div>
+                <div class="col-2">&lrarr;</div>
+                <div class="col-5" id="succes99_høj_graphics"></div>
+              </div>
+
+            </div>
+
+          </div> -->
+
+ 
+
+
+
+          <h2 class="m-5 text-center display-6">Grunddata</h2>
+
+          <div class="text-center m-3">
+            <button class="btn btn-primary " type="button" onclick="show_grunddata()">Vis Grunddata</button>
+          </div>
+
+
+          <div id="grunddata" style="display:none">
+
+
+
+            <table class="table">
+              <thead>
+                <tr>
+                  <th class="font-oblique fw-normal" scope="col">V<sub>m</sub></th>
+                  <th class="font-oblique fw-normal" scope="col">&sigma;<sup>2</sup></th>
+                  <th class="font-oblique fw-normal" scope="col">&sigma;</th>
+                  <th class="font-oblique fw-normal" scope="col">Kontroltal</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td id="Vm"></td>
+                  <td id="s_2"></td>
+                  <td id="s"></td>
+                  <td id="kontrol"></td>
+                </tr>
+              </tbody>
+            </table>
+
+            <table class="table mt-3">
+              <thead>
+                <tr class="table-active">
+                  <th class="fw-normal" scope="col">Succes</th>
+                  <th class="fw-normal font-oblique" scope="col">h<sub>min</sub></th>
+                  <th class="fw-normal font-oblique" scope="col">h<sub>max</sub></th>
+                  <th class="fw-normal font-oblique" scope="col">d<sub>min</sub></th>
+                  <th class="fw-normal font-oblique" scope="col">d<sub>max</sub></th>
+                  <th class="fw-normal" scope="col">Math</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="font-oblique" scope="row">V<sub>m</sub></td>
+                  <td id="gns_timer" colspan="2" class="text-center"></span></td>
+                  <!-- <td id="gns_høj"></span></td> -->
+                  <td id="gns_dage" colspan="2" class="text-center"></td>
+                  <!-- <td id="gns_høj_dage"></td> -->
+                  <td class="font-oblique formula">V<sub>m</sub></td>
+                </tr>
+                <tr class=" table-light">
+                  <td class="font-oblique" scope="row">68%</td>
+                  <td id="succes68_lav"></td>
+                  <td id="succes68_høj"></td>
+                  <td id="succes68_lav_dage"></td>
+                  <td id="succes68_høj_dage"></td>
+                  <td class="font-oblique">V<sub>m</sub> &plusmn;&sigma;</td>
+                </tr>
+                <tr>
+                  <td class="font-oblique" scope="row">95%</td>
+                  <td id="succes95_lav"></td>
+                  <td id="succes95_høj"></td>
+                  <td id="succes95_lav_dage"></td>
+                  <td id="succes95_høj_dage"></td>
+                  <td class="font-oblique">V<sub>m</sub> &plusmn;2&sigma;</td>
+                </tr>
+                <tr class=" table-light">
+                  <td class="font-oblique" scope="row">99%</td>                
+                  <td id="succes99_lav"></td>
+                  <td id="succes99_høj"></td>
+                  <td id="succes99_lav_dage"></td>
+                  <td id="succes99_høj_dage"></td>
+                  <td class="font-oblique">V<sub>m</sub> &plusmn;3&sigma;</td>
+                </tr>
+              </tbody>
+            </table>
+
+          <!-- <p><strong>Beregningstal tilnærmede værdier</strong></p> -->
+
+        </div>
+          
       
         </div>
 

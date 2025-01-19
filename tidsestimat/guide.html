@@ -1,0 +1,69 @@
+<div class="container content">
+
+  <div id="content">
+
+    <div class="mt-5" id="guide">
+
+      <h2 class="text-center display-6">Guide</h2>
+
+      <p>App'en anvender viden fra forskning til at estimere sandsynligheden for at et projekt lykkes, ud fra de angivne paramtre.</p>
+
+      <p>Sidder man i med et sprint som team, hvor opgaven allerede er nedbrudt vil parametrene være et udtryk for teammedlemmernes vurderinger når opgaven planlægges.</p>
+
+      <p>Scoper man en opgave mere overordnet vil det være en øvelse i at vurdere 3 scenarier:</p>
+
+      <dl class="row">
+        <dt class="col-3-sm ">Det optimistisk tidsforbrug (V<sub>o</sub>)</dt>
+        <dd class="col9-sm">Tiden der skal bruges, hvis der ikke er større forhindringer og problemer</dd>
+        <dt class="col-3-sm">Det sandsynlige tidsforbrug (V<sub>s</sub>)</dt>
+        <dd class="col9-sm">Tiden der skal bruges, når der tages højde for mulige og forudsigelige afbrydelser, forhindringer og problemer.</dd>
+        <dt class="col-3-sm">Det pesimistiske tidsforbrug (V<sub>p</sub>)</dt>
+        <dd class="col9-sm">Tiden der skal bruges, når der tages højde for worst case scenarier, hvor opgaven vil blive ramt af større afbrydelser, forhindringer og problemer</dd>
+      </dl>
+
+      <p>Det som du kan tage højde for er f.eks:</p>
+
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Ressourcer der er tilgængelige til opgaven</li>
+        <li class="list-group-item">Andre opgaver og hændelser der kan påvirket arbejdet</li>
+        <li class="list-group-item">Udfordringer med f.eks: IT-systemer, applikationer, nødvendige leverencer</li>
+        <li class="list-group-item">...</li>
+      </ul>
+
+      <h2 class="text-center display-6">Kontroltallet</h2>
+      
+      <p>Metoden kommer med en værdi for, hvor godt tidsestimeringen er og beskriver forholdet mellem middelværdien (V<sub>m</sub>) og variansen (&sigma;).</p>
+
+      <p>Kontroltallet kan derfor anvendes til at vurdere om opgaven er scopet og nedbrudt tilstrækkeligt for at kunne planlægges og udføres.</p>
+
+      <p>Hvis værdierne V<sub>o</sub>, V<sub>s</sub>, V<sub>p</sub> ligge meget tæt på hinanden, betyder det at opgaven er scopet godt i forhold til de tilgængelige ressourcer. Spredningen (&sigma;) vil være lav - og tidsestimatet vil vil være stort set ens uanset den succesgrad man går efter.</p>
+
+      <p>Det kontrollet gør er at bruge forholdet mellem spredningen og middelværdien (V<sub>m</sub>)</p>
+
+      <h2 class="text-center display-6">Eksempler</h2>
+
+      <p><strong>Eksempel 1</strong></p>
+      
+      <p>Noget personale skal flyttes til nye lokaler. Opgave der er veldefineret og har fået tilført de rette ressourcer:</p>
+
+      <p>Opgaven estimeres til følgende: V<sub>o</sub>: 6 timer, V<sub>s</sub>: 6 timer, V<sub>p</sub>: 7 timer</p>
+
+      <p>V<sub>m</sub> er 6,2 timer og &sigma; er 0,2 timer - spredningen udgør altså 0,2/6,2 = 3% af middelværdien. Uanset om opgaven kommer til at køre perfekt eller om der kommer store problemer bliver den løst indenfor tidsrammen.</p>
+
+      <p><strong>Eksempel 2</strong></p>
+
+      <p>Nogle ældre scripts skal kontrolleres for at sikre de lever op til organisationens ansvar.</p>
+      
+      <p>Opgaven estimeres til følgende: V<sub>o</sub>: 5 timer, V<sub>s</sub>: 7 timer, V<sub>p</sub>: 10 timer</p>
+
+      <p>V<sub>m</sub> er 7,2 timer og &sigma; er 1,07 timer - spredningen udgør altså 1,07/7,2 = 15% af middelværdien. Faktoren her er 5 gange større, og det er reelt et udtryk for, at der er rigtig meget usikkerhed forbundet med opgaveløsningen - der er mange ting der kan gå galt og projektet risikerer ikke at blive færddigjort indenfor tidsrammen.</p>
+
+      <p>Kontroltallet giver en indikation på, at på at opgaven har behov for yderligere afklaring for at kunne sættes igang effektivt.</p>
+
+      <p>I App'en er bliver nøgletallet evalueret ud fra om &sigma; er mindre end en 20'del (5%) af V<sub>m</sub> hvilket er meget idealistisk</p>
+
+    </div>  
+
+  </div>
+
+</div>
