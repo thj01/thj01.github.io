@@ -102,11 +102,12 @@ document.getElementById('s').innerHTML = s.toFixed(4);
 // document.getElementById('gns_lav').innerHTML = Vm.toFixed(1);
 // document.getElementById('gns_høj').innerHTML = Vm.toFixed(1);
 document.getElementById('gns_timer').innerHTML = Vm.toFixed(1);
-document.getElementById('Vm_68').innerHTML = Vm.toFixed(1);
+document.getElementById('Vm_top').innerHTML = Vm.toFixed(1);
+// document.getElementById('Vm_68').innerHTML = Vm.toFixed(1);
 document.getElementById('s_68').innerHTML = 1*parseFloat(s).toFixed(2);
-document.getElementById('Vm_95').innerHTML = Vm.toFixed(1);
+// document.getElementById('Vm_95').innerHTML = Vm.toFixed(1);
 document.getElementById('s_95').innerHTML = 2*parseFloat(s).toFixed(2);
-document.getElementById('Vm_99').innerHTML = Vm.toFixed(1);
+// document.getElementById('Vm_99').innerHTML = Vm.toFixed(1);
 document.getElementById('s_99').innerHTML = 3*parseFloat(s).toFixed(2);
 
 

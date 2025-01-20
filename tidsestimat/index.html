@@ -118,22 +118,27 @@
         <!-- <div id="result" style="display:none"> -->
         <div id="result">
 
-          <!-- <h2 class="m-5 text-center display-6">Resultat</h2> -->
+          <h2 class="mt-5 mb-3 text-center display-6">Beregning</h2>
+
+          <p class="text-center">Vm = <span id="Vm_top"></span> timer</p>
 
           <div class="container text-center">
             <div class="row">
               <div class="col-4">
                 <p>Succes 68%</p>
-                <p><span id="Vm_68"></span> timer <br>&plusmn; <span id="s_68"></span> timer</p>
+                <!-- <p><span id="Vm_68"></span> timer <br>&plusmn; <span id="s_68"></span> timer</p> -->
+                <p>&plusmn; <span id="s_68"></span> timer</p>
               </div>
               <div class="col-4">
                 <p>Succes 95%</p>
-                <p><span id="Vm_95"></span> timer <br>&plusmn; <span id="s_95"></span> timer</p>
+                <!-- <p><span id="Vm_95"></span> timer <br>&plusmn; <span id="s_95"></span> timer</p> -->
+                <p>&plusmn; <span id="s_95"></span> timer</p>
               </div>
 
               <div class="col-4">
                 <p>Succes 99%</p>
-                <p><span id="Vm_99"></span> timer <br>&plusmn; <span id="s_99"></span> timer</p>
+                <!-- <p><span id="Vm_99"></span> timer <br>&plusmn; <span id="s_99"></span> timer</p> -->
+                <p>&plusmn; <span id="s_99"></span> timer</p>
               </div>
 
             </div>
@@ -206,9 +211,9 @@
 
 
 
-          <h2 class="m-5 text-center display-6">Grunddata</h2>
 
-          <div class="text-center m-3">
+
+          <div class="text-center mt-5 mb-3">
             <button class="btn btn-primary " type="button" onclick="show_grunddata()">Vis Grunddata</button>
           </div>
 
@@ -216,11 +221,12 @@
           <!-- <div id="grunddata" style="display:none"> -->
           <div id="grunddata">
 
+            <h2 class="mt-5 mb-3 text-center display-6">Grunddata</h2>
 
 
-            <table class="table">
+            <table class="table mb-5">
               <thead>
-                <tr>
+                <tr class="table-active">
                   <th class="font-oblique fw-normal" scope="col">V<sub>m</sub></th>
                   <th class="font-oblique fw-normal" scope="col">&sigma;<sup>2</sup></th>
                   <th class="font-oblique fw-normal" scope="col">&sigma;</th>
