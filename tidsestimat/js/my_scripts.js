@@ -140,6 +140,7 @@ document.getElementById('succes99_høj_dage').innerHTML = (succes99_høj/Ea).toF
 
 function showDiv() {
  document.getElementById('result').style.display = "block";
+ document.getElementById('grunddata').style.display = "none";
 };
 
 function show_grunddata() {
