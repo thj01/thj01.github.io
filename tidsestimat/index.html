@@ -102,7 +102,7 @@
                       <label class="control-label" for="effektiv_arbejdstid">E<sub>a</sub></label>
                     </div>
                     <div class="col-10">
-                      <input type="number" class="form-control" id="effektiv_arbejdstid" placeholder="Effektiv arbejdstid">
+                      <input type="number" class="form-control" id="effektiv_arbejdstid" placeholder="Effektive timer pr dag">
                     </div>
                   </div>
                 </div><!-- End form-group--> 
@@ -126,7 +126,7 @@
 
           <h2 class="mt-5 mb-3 text-center display-6">Beregning</h2>
 
-          <p class="text-center">Vm = <span id="Vm_top"></span> timer</p>
+          <p class="text-center">Vm = <span id="Vm_top"></span> timer / <span id="gns_dage"></span> dage</p>
 
           <div class="container text-center">
             <div class="row">
@@ -220,7 +220,7 @@
 
 
           <div class="text-center mt-5 mb-3">
-            <button class="btn btn-primary " type="button" onclick="show_grunddata()">Vis Grunddata</button>
+            <button class="btn btn-primary " type="button" onclick="show_grunddata()"><span id="data_button_text">Vis Grunddata</span></button>
           </div>
 
 
@@ -228,6 +228,25 @@
           <div id="grunddata">
 
             <h2 class="mt-5 mb-3 text-center display-6">Grunddata</h2>
+
+            <table class="table">
+              <thead>
+                <tr class="table-active">
+                  <th class="font-oblique fw-normal" scope="col">V<sub>o</sub></th>
+                  <th class="font-oblique fw-normal" scope="col">V<sub>s</sub></th>
+                  <th class="font-oblique fw-normal" scope="col">V<sub>p</sub></th>
+                  <th class="font-oblique fw-normal" scope="col">E<sub>a</sub></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td id="Vo"></td>
+                  <td id="Vs"></td>
+                  <td id="Vp"></td>
+                  <td id="Ea"></td>
+                </tr>
+              </tbody>
+            </table>
 
 
             <table class="table">
@@ -261,14 +280,12 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
+                <!-- <tr>
                   <td class="font-oblique" scope="row">V<sub>m</sub></td>
                   <td id="gns_timer" colspan="2" class="text-center"></span></td>
-                  <!-- <td id="gns_høj"></span></td> -->
                   <td id="gns_dage" colspan="2" class="text-center"></td>
-                  <!-- <td id="gns_høj_dage"></td> -->
                   <td class="font-oblique formula">V<sub>m</sub></td>
-                </tr>
+                </tr> -->
                 <tr class=" table-light">
                   <td class="font-oblique" scope="row">68%</td>
                   <td id="succes68_lav"></td>

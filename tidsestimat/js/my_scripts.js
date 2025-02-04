@@ -14,11 +14,9 @@ function loadDoc(doc) {
 
 }
 
-var test = 0;
+var test = 1; // Set værdi til 0 for normal anvendelse og 1 for test.
 
-  // til test //
-
-
+var show_data_selector = true;
 
 
 function beregn() {
@@ -29,10 +27,10 @@ function beregn() {
   var Ea = parseFloat(document.getElementById('effektiv_arbejdstid').value);
 
   if (test == 1){
-    Vo = 1;
-    Vs = 3;
-    Vp = 4;
-    Ea = 6;
+    Vo = 5;
+    Vs = 6;
+    Vp = 7;
+    Ea = 4;
     };
   
   var Vm = (Vo + Vs*2.95 + Vp)/4.95;
@@ -88,10 +86,10 @@ function beregn() {
   var succes99_høj = (Vm+3*s).toFixed(1);
 
 //Input
-// document.getElementById('Vo').innerHTML = Vo;
-// document.getElementById('Vs').innerHTML = Vs;
-// document.getElementById('Vp').innerHTML = Vp
-// document.getElementById('Ea').innerHTML = Ea;
+document.getElementById('Vo').innerHTML = Vo;
+document.getElementById('Vs').innerHTML = Vs;
+document.getElementById('Vp').innerHTML = Vp
+document.getElementById('Ea').innerHTML = Ea;
 
 //Calculations
 document.getElementById('Vm').innerHTML = Vm.toFixed(4);
@@ -101,8 +99,9 @@ document.getElementById('s').innerHTML = s.toFixed(4);
 //Output
 // document.getElementById('gns_lav').innerHTML = Vm.toFixed(1);
 // document.getElementById('gns_høj').innerHTML = Vm.toFixed(1);
-document.getElementById('gns_timer').innerHTML = Vm.toFixed(1);
+// document.getElementById('gns_timer').innerHTML = Vm.toFixed(1);
 document.getElementById('Vm_top').innerHTML = Vm.toFixed(1);
+document.getElementById('gns_dage').innerHTML = (Vm/Ea).toFixed(1);
 // document.getElementById('Vm_68').innerHTML = Vm.toFixed(1);
 document.getElementById('s_68').innerHTML = 1*parseFloat(s).toFixed(2);
 // document.getElementById('Vm_95').innerHTML = Vm.toFixed(1);
@@ -127,7 +126,7 @@ document.getElementById('succes99_høj').innerHTML = succes99_høj;
 
 // document.getElementById('gns_lav_dage').innerHTML = (Vm/Ea).toFixed(1);
 // document.getElementById('gns_høj_dage').innerHTML = (Vm/Ea).toFixed(1);
-document.getElementById('gns_dage').innerHTML = (Vm/Ea).toFixed(1);
+// document.getElementById('gns_dage').innerHTML = (Vm/Ea).toFixed(1);
 document.getElementById('succes68_lav_dage').innerHTML = (succes68_lav/Ea).toFixed(1);
 document.getElementById('succes68_høj_dage').innerHTML = (succes68_høj/Ea).toFixed(1);
 document.getElementById('succes95_lav_dage').innerHTML = (succes95_lav/Ea).toFixed(1);
@@ -145,6 +144,23 @@ function showDiv() {
 
 function show_grunddata() {
   document.getElementById('grunddata').style.display = "block";
+
+  if (show_data_selector == true) {
+
+    document.getElementById("data_button_text").innerHTML = "Skjul Grunddata";
+    show_data_selector = false;
+
+  } else {
+
+    document.getElementById("data_button_text").innerHTML = "Vis Grunddata";
+    document.getElementById('grunddata').style.display = "none";
+    show_data_selector = true;
+
+
+  }
+
+
+
  };
  
 
