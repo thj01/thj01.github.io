@@ -14,7 +14,7 @@ function loadDoc(doc) {
 
 }
 
-var test = 1; // Set værdi til 0 for normal anvendelse og 1 for test.
+var test = 0; // Set værdi til 0 for normal anvendelse og 1 for test.
 
 var show_data_selector = true;
 
