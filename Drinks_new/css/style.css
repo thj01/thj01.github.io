@@ -34,19 +34,6 @@ h4 {
     padding-top: 1em;
 }
 
-.img_box {
-    max-height: 100px;
-    padding-bottom: 1em;
-
-}
-
-.img_box img{
-
-    /* margin: 15px; */
-    
-    max-width: 100px !important
-
-}
 
 .img_box_method {
     max-height: 100px;
@@ -72,8 +59,43 @@ h4 {
 
 }
 
+
+.img_box_drinks img{
+    max-height: 100px;
+    padding-bottom: 1em;
+
+}
+
+.img_box_drinks img{
+
+    /* margin: 15px; */
+    
+    max-width: 100px !important
+
+}
+
+.card-deck .card{
+
+    margin-top: .5em;
+
+} 
+
+
+
+
+
+
+/* 
+
 .presentation img {
 
     max-width: 20%;
 
 }
+
+.book_presentation img{
+
+    max-width: 20%
+
+} */
+

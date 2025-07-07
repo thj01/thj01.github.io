@@ -108,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             ${drink.ingredients.map(item => `<li class="list-group-item">${item}</li>`).join('')}
                         </ul>
                         <h3>Sådan gør du</h3>
-                        <div class="d-flex img_box">
+                        <div class="d-flex img_box_drinks">
                         ${drink.action.map(item => `<img class="m-2" src="img/${item}.svg" alt="${item}">`).join('')}
                         <img class="m-2"  src="img/${drink.glass}.svg" alt="${drink.glass}">
                         </div>
