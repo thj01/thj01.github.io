@@ -1,0 +1,499 @@
+[
+    {
+        "name": "Sidecar",
+        "spirits": ["Cognac"],
+        "ingredients": [
+            "4 cl cognac",
+            "1,5 cl Contreau",
+            "2 cl citronsaft",
+            "1 cl Sukkersirup",
+            "Isterninger"
+        ],
+        "preparation": [
+            "Hæld cognac, Contreau og sukkersirup i en shaker med is",
+            "Shake i 10 sekunder",
+            "Si op i et champagneglas og med knust is"
+        ],
+        "history": "",
+        "action": ["shake"],
+        "glass":"glass_coupe"
+    },
+    {
+        "name": "Suffering Bastard",
+        "spirits": ["Gin","Cognac","Angostura"],
+        "ingredients": [
+            "3 cl gin",
+            "3 cl cognac",
+            "2 stænk Angostura",
+            "1,5 cl limesirup",
+            "Ginger ale",
+            "Isterninger"
+        ],
+        "preparation": [
+            "Hæld gin, cognac, Angostura og limesirup i en shaker med is",
+            "Ryst til blandingen er kold",
+            "Si drinken op i et glas med frisk is",
+            "Top op med gingerbeer",
+            "Rør let rundt"
+        ],
+        "history": "",
+        "action": ["shake"],
+        "glass":"glass_collins"
+    },
+    {
+        "name": "Gimlet",
+        "spirits": ["Gin"],
+        "ingredients": [
+            "6 cl Gin",
+            "4 cl limesirup",
+            "Isterninger"
+        ],
+        "preparation": [
+            "Hæld Gin og limesirup i shakeren",
+            "Tilsæt is og ryst til den er godt kold",
+            "Server med ekstra is og en skive lime på glaskanten"
+        ],
+        "history": "",
+        "action": ["shake"],
+        "glass":"glass_rock_ice"
+    },
+    {
+        "name": "Gin Hass",
+        "spirits": ["Gin"],
+        "ingredients": [
+            "3-6 cl Gin",
+            "2 cl mangosirup",
+            "Schweppes",
+            "Isterninger"
+        ],
+        "preparation": [
+            "Hæld Gin og is i glasset",
+            "Tilsæt mangosirup",
+            "Fyld efter med Schweppes",
+            "Rør let i drinken",
+            "Server med en skive lime"
+        ],
+        "history": "",
+        "action": ["stir"],
+        "glass":"glass_collins"
+    },
+    {
+        "name": "Gin Schweppes",
+        "spirits": ["Gin"],
+        "ingredients": [
+            "3-6 cl Gin",
+            "Schweppes",
+            "Isterninger"
+        ],
+        "preparation": [
+            "Hæld gin i glasset",
+            "Tilsæt is og en skive lime",
+            "Fyld efter med Schweppes og rør let rundt"
+        ],
+        "history": "",
+        "action": ["pour"],
+        "glass":"glass_collins"
+    },
+    {
+        "name": "Gin Tonic Classic",
+        "spirits": ["Gin"],
+        "ingredients": [
+            "3-6 cl Gin",
+            "isterninger",
+            "Tonic",
+            "1 skive citron eller lime"
+        ],
+        "preparation": [
+            "Hæld gin i glasset",
+            "Tilsæt is og en skive citron",
+            "Fyld efter med tonic",
+            "Rør let rundt"
+        ],
+        "history": "",
+        "action": ["pour"],
+        "glass":"glass_collins"
+    },
+    {
+        "name": "Gin Tonic Dirty",
+        "spirits": ["Gin"],
+        "ingredients": [
+            "3 cl gin",
+            "Tonic",
+            "3-4 tynde skiver lemon",
+            "Isterninger"
+        ],
+        "preparation": [
+            "Put lemonskiverne i et Collins glas",
+            "Knus skiverne med muddleren",
+            "Hæld gin i glasset",
+            "Tilsæt is og fyld efter med tonic",
+            "Rør let rundt"
+        ],
+        "history": "Ideen med denne G&T er, at den ikke kræver en dyr gin eller Tonic. <br><br>        Serveret kold er den perfekt til de varme sommerdage.",
+        "action": ["muddle","pour"],
+        "glass":"glass_collins"
+    },
+    {
+        "name": "Long island Iced Tea",
+        "spirits": ["Gin", "Rom", "Tequila","Vodka"],
+        "ingredients": [
+            "2 cl mørk rom",
+            "2 cl gin",
+            "2 cl tequila",
+            "2 cl Cointreau",
+            "2 cl vodka",
+            "2 cl limesaft",
+            "1,5 cl sukkersirup",
+            "8 cl cola",
+            "Isterninger"
+        ],
+        "preparation": [
+            "Hæld is i et højt glas",
+            "Tilsæt rom, gin, tequila, Contreau, vodka, limesaft og sukkersirup",
+            "Tilsæt cola",
+            "Rør rundt i drinken og server"
+        ],
+        "history": "",
+        "action": ["stir"],
+        "glass":"glass_collins"
+    },
+    {
+        "name": "Monkey gland",
+        "spirits": ["Gin"],
+        "ingredients": [
+            "5 cl gin",
+            "1 tsk absint",
+            "5 cl appelsinsaft",
+            "1 tsk sukkersirup",
+            "1 tsk Grenadine",
+            "Isterninger"
+        ],
+        "preparation": [
+            "Fyld alle ingredienserne op i en shaker sammen med is",
+            "Ryst i 10 sekunder",
+            "Si cocktailen op i et glas"
+        ],
+        "history": "",
+        "action": ["shake"],
+        "glass":"glass_rock_ice"
+    },
+    {
+        "name": "Pegu Club",
+        "spirits": ["Gin"],
+        "ingredients": [
+            "6 cl gin",
+            "1 stænk Angostura",
+            "2 cl Cointreau",
+            "1½ cl limesirup",
+            "Isterninger"
+        ],
+        "preparation": [
+            "Hæld gin, Contreau og limesirup op i en shaker med is",
+            "Stænk Angostura i",
+            "Shake i 20 sekunder",
+            "Si cocktailen op i et glas"
+        ],
+        "history": "",
+        "action": ["shake"],
+        "glass":"glass_rock_ice"
+    },
+    {
+        "name": "Ramos Gin Fizz",
+        "spirits": ["Gin"],
+        "ingredients": [
+            "6 cl gin",
+            "3 cl citronsaft",
+            "2 cl sukkersirup",
+            "Danskvand",
+            "Isterninger"
+        ],
+        "preparation": [
+            "Hæld gin, citronsaft og sukkersirup i en shaker med is",
+            "Shake i 15-20 sekunder",
+            "Si cocktailen op i et glas med frisk is",
+            "Fyld efter med Danskvand",
+            "Server med en skive citron og et sugerør"
+        ],
+        "history": "",
+        "action": ["shake"],
+        "glass":"glass_collins"
+    },
+    {
+        "name": "Cuba Libre",
+        "spirits": ["Rom"],
+        "ingredients": [
+            "2-4 cl mørk eller lys rom",
+            "Cola",
+            "Isterninger"
+        ],
+        "preparation": [
+            "Fyld et glas med is og rom",
+            "Fyld efter med Cola i",
+            "Server med en citron- eller limeskive"
+        ],
+        "history": "",
+        "action": ["pour"],
+        "glass":"glass_collins"
+    },
+    {
+        "name": "Daiquiry",
+        "spirits": ["Rom"],
+        "ingredients": [
+            "2-4 cl mørk eller lys rom",
+            "Cola",
+            "Isterninger"
+        ],
+        "preparation": [
+            "Hæld Rom, sukkersirup og limesaft op i en shaker",
+            "Tilsæt is og shake i 15 sekunder",
+            "Si blandinge op i et coupeglas",
+            "Server med knust is"
+        ],
+        "history": "",
+        "action": ["shake"],
+        "glass":"glass_coupe"
+    },
+    {
+        "name": "Dark and Stormy",
+        "spirits": ["Rom"],
+        "ingredients": [
+            "4 cl mørk Rom",
+            "1 cl limesirup",
+            "Ginger beer",
+            "Isterninger"
+        ],
+        "preparation": [
+            "Hæld Rom, limesirup og isterninger i et glas og rør rundt",
+            "Tilsæt Gingerbeer og rør rundt",
+            "Server med is og en skive lime"
+        ],
+        "history": "",
+        "action": ["stir"],
+        "glass":"glass_rock_ice"
+    },
+    {
+        "name": "Mojito",
+        "spirits": ["Rom"],
+        "ingredients": [
+            "5 cl lys rom",
+            "1 cl limesir",
+            "3-4 stilke mynte",
+            "Danskvan",
+            "2 tsk sukker",
+            "Isternin"
+        ],
+        "preparation": [
+            "Læg mynten imellem håndfladerne og rul mynten til det dufter",
+            "Put mynte og limesirup i et glas og brug mudleren forsigtigt på mynten",
+            "Tilsæt rom og knust is og rør rundt",
+            "Tilsæt Angostura hvis den skal have mere smag",
+            "Tilsæt danskvand og rør let rundt"
+        ],
+        "history": "",
+        "action": ["muddle","stir"],
+        "glass":"glass_collins"
+    },
+    {
+        "name": "Tequila Sunrise",
+        "spirits": ["Tequila"],
+        "ingredients": [
+            "4 cl tequila",
+            "9 cl appelsinsaft",
+            "1 cl Grenadine",
+            "Isterninger"
+        ],
+        "preparation": [
+            "Hæld tequila og appelsinsaft i et glas med is",
+            "Rør rundt med en ske så drinken bliver kold",
+            "Hæld Grenadine i glasset i en tynd stråle. så det lægger sig på bunden"
+        ],
+        "history": "",
+        "action": ["pour"],
+        "glass":"glass_collins"
+    },
+    {
+        "name": "Cosmopolitan",
+        "spirits": ["Vodka"],
+        "ingredients": [
+            "4 cl vodka",
+            "1 tsk citronsaft",
+            "1,5 cl Cointreau",
+            "3 cl tranebærjuice",
+            "1,5 cl limesirup",
+            "Isterninger"
+        ],
+        "preparation": [
+            "Hæld vodka, citronsaft, Cointreau, tranebærjuice og limesirup i en shaker",
+            "Tilsæt is, shake og si op i et glas",
+            "Server med knust is"
+        ],
+        "history": "",
+        "action": ["shake"],
+        "glass":"glass_coupe"
+    },
+    {
+        "name": "Green Orange",
+        "spirits": ["Vodka"],
+        "ingredients": [
+            "4 cl vodka",
+            "2 cl Pisan Ambon",
+            "Appelsinjuice",
+            "Isterninger"
+        ],
+        "preparation": [
+            "Hæld vodka, appelsinjuice og isterninger i et collinsglas",
+            "Hæld Pisan Ambon i henover bagsiden på en ske med en, så der dannes en grøn bund",
+            "Serveres med sugerør, papirparaply og hele balladen."
+        ],
+        "history": "",
+        "action": ["pour"],
+        "glass":"glass_coupe"
+    },
+    {
+        "name": "Græsplæne",
+        "spirits": ["Vodka"],
+        "ingredients": [
+            "2 cl vodka",
+            "3 cl Pisang Ambon",
+            "Sprite, 7 UP eller Faxe Kondi",
+            "Isterninger"
+        ],
+        "preparation": [
+            "Hæld Vodka og Pisang Ambon og isterninger i et glas",
+            "Tilsæt Sodavand og rør let rundt"
+        ],
+        "history": "",
+        "action": ["stir"],
+        "glass":"glass_rock_ice"
+    },
+    {
+        "name": "Harvey Wallbanger",
+        "spirits": ["Vodka"],
+        "ingredients": [
+            "4 cl vodka",
+            "3 cl Galliano",
+            "Appelsinjuice",
+            "Isterninger"
+        ],
+        "preparation": [
+            "Hæld vodka, isterninger og appelsinjuice op i glasset",
+            "Rør rundt så glasset dugger",
+            "Tilsæt Galliano",
+            "Server med et sugerør"
+        ],
+        "history": "",
+        "action": ["pour"],
+        "glass":"glass_collins"
+    },
+    {
+        "name": "Moscow mule",
+        "spirits": ["Vodka"],
+        "ingredients": [
+            "4 cl Vodka",
+            "1 cl limesirup",
+            "Ginger beer",
+            "Isterninger"
+        ],
+        "preparation": [
+            "Hæld vodka, limesirup og isterninger op i et glas og rør rundt",
+            "Tilsæt ginger beer og rør rundt"
+        ],
+        "history": "",
+        "action": ["stir"],
+        "glass":"glass_rock_ice"
+    },
+    {
+        "name": "Vodka sunrise",
+        "spirits": ["Vodka"],
+        "ingredients": [
+            "4 cl vodka",
+            "2 cl Grenadine",
+            "Appelsinjuice",
+            "Isterninger"
+        ],
+        "preparation": [
+            "Hæld vodka og appelsingsaft i et glas med is",
+            "Rør rundt med en ske så drinken bliver kold",
+            "Hæld Grenadine i glasset i en tynd stråle. så det lægger sig på bunden"
+        ],
+        "history": "",
+        "action": ["pour"],
+        "glass":"glass_collins"
+    },
+    {
+        "name": "White russian",
+        "spirits": ["Vodka"],
+        "ingredients": [
+            "4 cl vodka",
+            "2 cl Kahlúa",
+            "Mælk (evt blandet op med lidt fløde)",
+            "Isterninger"
+        ],
+        "preparation": [
+            "Hæld vodka, Kahlúa og isterninger op i et glas",
+            "Tilsæt Mælk (og evt fløde)",
+            "Rør rundt så drinken bliver kold"
+        ],
+        "history": "",
+        "action": ["stir"],
+        "glass":"glass_rock_ice"
+    },
+    {
+        "name": "Old Fashioned",
+        "spirits": ["Whiskey","Angostura"],
+        "ingredients": [
+            "6 cl whisky",
+            "Angostura",
+            "1 cl sukkersirup",
+            "1 ubehandlet appelsin",
+            "Is"
+        ],
+        "preparation": [
+            "Hæld sukkersirup og tilføj 2-3 strimler appelsinskal i et røreglas",
+            "Hæld 2-3 dråber Angostura over og muddle det, til det dufter god af appelsin",
+            "Tilsæt whisky og is",
+            "Rør rundt i 20 sekunder og si over i et Rockglas",
+            "Tag et stykke appelsinskal og vrid det over glasset",
+            "Stryg glassets kan med den vredne appelsinskal.",
+            "Tilføj is - gerne en stor isklump"
+        ],
+        "history": "",
+        "action": ["muddle","stir"],
+        "glass":"glass_rock_ice"
+    },
+    {
+        "name": "Kongen af Danmark",
+        "spirits": ["Rød sodavand"],
+        "ingredients": [
+            "2-4 cl Pernod",
+            "Rød sodavand",
+            "Isterninger"
+        ],
+        "preparation": [
+            "Hæld Pernod og isterninger i et glas",
+            "Tilsæt rød sodavand",
+            "Rør rundt med sugerør"
+        ],
+        "history": "",
+        "action": ["stir"],
+        "glass":"glass_collins"
+    },
+    {
+        "name": "Brandbil",
+        "spirits": ["Rød sodavand"],
+        "ingredients": [
+            "2-4 cl Jägermeister",
+            "Rød sodavand",
+            "Isterninger"
+        ],
+        "preparation": [
+            "Hæld Jägermeister og isterninger i et glas",
+            "Tilsæt rød sodavand",
+            "Rør rundt"
+        ],
+        "history": "",
+        "action": ["stir"],
+        "glass":"glass_collins"
+    }
+
+]

@@ -1,0 +1,79 @@
+/* Add any custom styles here if needed */
+/* For example, to adjust offcanvas width */
+
+body {
+
+    padding-bottom: 100px;
+
+}
+
+/* .offcanvas{
+    width:60% !important;
+    max-width: 20%;
+} */
+
+.navbar-brand{
+
+font-size: 1em;
+
+}
+
+
+h2 {
+    font-size: 1.6em;
+    padding-top: 1em;
+}
+
+h3 {
+    font-size: 1.2em;
+    padding-top: 1em;
+
+}
+h4 {
+    font-size: 1em;
+    padding-top: 1em;
+}
+
+.img_box {
+    max-height: 100px;
+    padding-bottom: 1em;
+
+}
+
+.img_box img{
+
+    /* margin: 15px; */
+    
+    max-width: 100px !important
+
+}
+
+.img_box_method {
+    max-height: 100px;
+    padding-bottom: 1em;
+
+}
+
+.img_box_method img{
+    
+    max-width: 20% !important
+
+}
+
+.img_box_glass {
+    max-height: 100px;
+    padding-bottom: 1em;
+
+}
+
+.img_box_glass img{
+    
+    max-width: 16% !important
+
+}
+
+.presentation img {
+
+    max-width: 20%;
+
+}
