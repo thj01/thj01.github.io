@@ -1,235 +1,129 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <link rel="icon" href="images/favicon.png">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="En webapp der indeholder opskrifter til gode drinks, samt gode råd til det man har brug for i barskabet, f.eks. glas.">
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="En webapp der indeholder opskrifter til gode drinks, samt gode råd til det man har brug for i barskabet, f.eks. glas.">
     <title>Drinks og Cocktails</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link href="css/styles.css" rel="stylesheet" >
-  </head>
-  <body class="">
-    <nav class="navbar navbar-expand-lg bg-light sticky-top">
-      <!-- <div class="container-fluid"> -->
-      <div class="container">
-        <a class="navbar-brand" href="index.html">Drinks og cocktails</a>
-        <button 
-          class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
-          <span class="navbar-toggler-icon " aria-label="Menu"></span>
-        </button>
-        <div class="offcanvas offcanvas-end" tabindex="-2" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-          <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Indhold</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-          </div>
-          <div class="offcanvas-body">
-            <!-- <ul class="navbar-nav ms-auto justify-content-end flex-grow-1 pe-5 "> -->
-            <ul class="navbar-nav ms-auto justify-content-end pe-5">
-              <!--
-                  ** ALLE DRINKS **
-                
-                  <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="jägermeister" onclick="loadDoc('drinks/drink_brandbil.html')">Brandbil</a></li>
-                  <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="Vodka Cointreau" onclick="loadDoc('drinks/drink_cosmopolitan.html')">Cosmopolitan</a></li>
-                  <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="Rom" onclick="loadDoc('drinks/drink_cuba_libre.html')">Cuba_libre</a></li>
-                  <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="Rom" onclick="loadDoc('drinks/drink_daiquiry.html')">Daiquiry</a></li>                                   
-                  <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="Rom" onclick="loadDoc('drinks/drink_darknstormy.html')">Dark'n'Stormy</a></li>
-                  <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="Gin" onclick="loadDoc('drinks/drink_gimlet.html')">Gimlet</a></li>
-                  <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="Gin" onclick="loadDoc('drinks/drink_gin_hass.html')">Gin Hass</a></li> 
-                  <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="Gin" onclick="loadDoc('drinks/drink_gin_schweppes.html')">Gin Schweppes</a></li>
-                  <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="Gin" onclick="loadDoc('drinks/drink_gin_tonic.html')">Gin Tonic</a></li>
-                  <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="Vodka Pisan" onclick="loadDoc('drinks/drink_green_orange.html')">Green Orange</a></li>
-                  <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="Vodka Pisan" onclick="loadDoc('drinks/drink_graesplaene.html')">Græsplæne</a></li>
-                  <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="Vodka galliano " onclick="loadDoc('drinks/drink_harvey_wallbanger.html')">Harvey Wallbanger</a></li>
-                  <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="pernod" onclick="loadDoc('drinks/drink_kongen_af_danmark.html')">Kongen af Danmark</a></li> 
-                  <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="Gin Rom tequila Cointreau Vodka" onclick="loadDoc('drinks/drink_long_island_iced_tea.html')">Long Island Iced Tea</a></li>
-                  <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="Rom" onclick="loadDoc('drinks/drink_mojito.html')">Mojito</a></li> 
-                  <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="Gin Absint" onclick="loadDoc('drinks/drink_monkey_gland.html')">Monkey Gland</a></li> 
-                  <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="Vodka" onclick="loadDoc('drinks/drink_moscow_mule.html')">Moscow Mule</a></li> 
-                  <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="whisky Angostura" onclick="loadDoc('drinks/drink_old_fashioned.html')">Old Fashioned</a></li>
-                  <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="Gin Cointreau" onclick="loadDoc('drinks/drink_pegu_club.html')">Pegu Club</a></li> 
-                  <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="Gin" onclick="loadDoc('drinks/drink_ramos_gin_fizz.html')">Ramos Gin Fizz</a></li> 
-                  <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="Cognac Cointreau" onclick="loadDoc('drinks/drink_sidecar.html')">Sidecar</a></li> 
-                  <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="Gin Cognac Angostura" onclick="loadDoc('drinks/drink_suffering_bastard.html')">Suffering Bastard</a></li>
-                  <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="Tequila" onclick="loadDoc('drinks/drink_tequila_sunrise.html')">Tequila Sunrise</a></li>
-                  <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="Vodka" onclick="loadDoc('drinks/drink_vodka_sunrise.html')">Vodka Sunrise</a></li>
-                  <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="Vodka KahLúa" onclick="loadDoc('drinks/drink_white_russian.html')">White Russian</a></li> 
-              -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+</head>
 
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle active spirits_category" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Cognac</a>
-                <ul class="dropdown-menu border-0 specific_drinks ps-2 " data-disableScrolling="false">
-                  <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="Cognac Cointreau" onclick="loadDoc('drinks/drink_sidecar.html')">Sidecar</a></li> 
-                  <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="Gin Cognac Angostura" onclick="loadDoc('drinks/drink_suffering_bastard.html')">Suffering Bastard</a></li>
-                </ul>
-              </li>
+<body>
+    <nav class="navbar navbar-expand-md bg-light sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Drinks og cocktails</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+                aria-controls="offcanvasNavbar">
+                <span class="navbar-toggler-icon" aria-label="Toggle navigation"></span>
+            </button>
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
+                aria-labelledby="offcanvasNavbarLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Drinks</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3" id="drinkMenu">
+                        <!-- Her kommer automatikken (id) med at hente en side under opstart -->
+                    </ul>
 
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle active spirits_category" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Gin</a>
-                <ul class="dropdown-menu border-0 specific_drinks ps-2" data-disableScrolling="false">
-                  <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="Gin" onclick="loadDoc('drinks/drink_gimlet.html')">Gimlet</a></li>
-                  <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="Gin" onclick="loadDoc('drinks/drink_gin_hass.html')">Gin Hass</a></li> 
-                  <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="Gin" onclick="loadDoc('drinks/drink_gin_schweppes.html')">Gin Schweppes</a></li>
-                  <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="Gin" onclick="loadDoc('drinks/drink_gin_tonic_classic.html')">Gin Tonic Classic</a></li>
-                  <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="Gin" onclick="loadDoc('drinks/drink_gin_tonic_dirty.html')">Gin Tonic Dirty</a></li>
-                  <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="Gin Rom tequila Cointreau Vodka" onclick="loadDoc('drinks/drink_long_island_iced_tea.html')">Long Island Iced Tea</a></li>
-                  <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="Gin Absint" onclick="loadDoc('drinks/drink_monkey_gland.html')">Monkey Gland</a></li> 
-                  <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="Gin Cointreau" onclick="loadDoc('drinks/drink_pegu_club.html')">Pegu Club</a></li> 
-                  <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="Gin" onclick="loadDoc('drinks/drink_ramos_gin_fizz.html')">Ramos Gin Fizz</a></li> 
-                  <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="Gin Cognac Angostura" onclick="loadDoc('drinks/drink_suffering_bastard.html')">Suffering Bastard</a></li>
-                </ul>
-              </li>
+                </div>
 
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle active spirits_category" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Rom</a>
-                <ul class="dropdown-menu border-0 specific_drinks ps-2" data-disableScrolling="false">
-                  <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="Rom" onclick="loadDoc('drinks/drink_cuba_libre.html')">Cuba_libre</a></li>
-                  <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="Rom" onclick="loadDoc('drinks/drink_daiquiry.html')">Daiquiry</a></li>                                   
-                  <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="Rom" onclick="loadDoc('drinks/drink_darknstormy.html')">Dark'n'Stormy</a></li>
-                  <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="Gin Rom tequila Cointreau Vodka" onclick="loadDoc('drinks/drink_long_island_iced_tea.html')">Long Island Iced Tea</a></li>
-                  <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="Rom" onclick="loadDoc('drinks/drink_mojito.html')">Mojito</a></li>
-
-                </ul>
-              </li>
-
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle active spirits_category" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Tequila</a>
-                <ul class="dropdown-menu border-0 specific_drinks ps-2" data-disableScrolling="false">
-                  <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="Gin Rom tequila Cointreau Vodka" onclick="loadDoc('drinks/drink_long_island_iced_tea.html')">Long Island Iced Tea</a></li>
-                  <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="Tequila" onclick="loadDoc('drinks/drink_tequila_sunrise.html')">Tequila Sunrise</a></li>
-                </ul>
-              </li>
-
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle active spirits_category" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Vodka</a>
-                <ul class="dropdown-menu border-0 specific_drinks ps-2" data-disableScrolling="false">
-                  <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="Vodka Cointreau" onclick="loadDoc('drinks/drink_cosmopolitan.html')">Cosmopolitan</a></li>
-                  <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="Vodka Pisan" onclick="loadDoc('drinks/drink_green_orange.html')">Green Orange</a></li>
-                  <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="Vodka Pisan" onclick="loadDoc('drinks/drink_graesplaene.html')">Græsplæne</a></li>
-                  <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="Vodka galliano " onclick="loadDoc('drinks/drink_harvey_wallbanger.html')">Harvey Wallbanger</a></li>
-                  <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="Gin Rom tequila Cointreau Vodka" onclick="loadDoc('drinks/drink_long_island_iced_tea.html')">Long Island Iced Tea</a></li>
-                  <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="Vodka" onclick="loadDoc('drinks/drink_moscow_mule.html')">Moscow Mule</a></li> 
-                  <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="Vodka" onclick="loadDoc('drinks/drink_vodka_sunrise.html')">Vodka Sunrise</a></li>
-                  <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="Vodka KahLúa" onclick="loadDoc('drinks/drink_white_russian.html')">White Russian</a></li> 
-                </ul>
-              </li>
-
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle active spirits_category" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Whisky</a>
-                <ul class="dropdown-menu border-0 specific_drinks ps-2" data-disableScrolling="false">
-                  <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="whisky Angostura" onclick="loadDoc('drinks/drink_old_fashioned.html')">Old Fashioned</a></li>
-                </ul>
-              </li>
-
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle active spirits_category" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Angostura</a>
-                <ul class="dropdown-menu border-0 specific_drinks ps-2" data-disableScrolling="false">
-                  <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="whisky Angostura" onclick="loadDoc('drinks/drink_old_fashioned.html')">Old Fashioned</a></li>
-                  <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="Gin Cognac Angostura" onclick="loadDoc('drinks/drink_suffering_bastard.html')">Suffering Bastard</a></li>
-                </ul>
-              </li>
-
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle active spirits_category" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Rød Sodavand</a>
-                <ul class="dropdown-menu border-0 specific_drinks ps-2" data-disableScrolling="false">
-                  <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="pernod" onclick="loadDoc('drinks/drink_kongen_af_danmark.html')">Kongen af Danmark</a></li> 
-                  <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="jägermeister" onclick="loadDoc('drinks/drink_brandbil.html')">Brandbil</a></li>
-                </ul>
-              </li>
-
-              <!-- <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Pernod</a>
-                <ul class="dropdown-menu border-0" data-disableScrolling="false">
-                  <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="pernod" onclick="loadDoc('drinks/drink_kongen_af_danmark.html')">Kongen af Danmark</a></li> 
-                </ul>
-              </li>    
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Absint</a>
-                <ul class="dropdown-menu border-0" data-disableScrolling="false">
-                  <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="Gin Absint" onclick="loadDoc('drinks/drink_monkey_gland.html')">Monkey Gland</a></li> 
-                </ul>
-              </li>    
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Jägermeister</a>
-                <ul class="dropdown-menu border-0" data-disableScrolling="false">
-                  <li class="nav-item" data-bs-dismiss="offcanvas"> <a class="nav-link active" href="#" alt="jägermeister" onclick="loadDoc('drinks/drink_brandbil.html')">Brandbil</a></li>
-                </ul>
-              </li> -->
-            </ul>
-          </div>
+            </div>
         </div>
-      </div>
     </nav>
 
-    <div class="container-md content">
+    <div class="container">
+        <div class="container-md">
+            <div id="drinkDetails">
 
-      <div id="content">
-        
-        <p>Her kan du finde opskrifter på lækre drinks.</p>
+                <p>Her kan du finde opskrifter på lækre drinks.</p>
 
-        <p>Opskrifterne er de klassiske, og derfor vil derfor være mere smagfulde og stærkere end dem du kender fra turen i byen.</p>
+                <p>Opskrifterne er de klassiske, og derfor vil derfor være mere smagfulde og stærkere end dem du kender
+                    fra turen i byen.</p>
 
-        <p>Ved opskrifterne kan du se drinkens ingredienser, hvordan den mixes...</p>
-        
-        
-        <div class="d-flex img_box">
-  
-          <img class="" src="images/muddler.svg" alt="Muddle engredients" title="Mudler">
-          <img class="" src="images/shaked.svg" alt="Shaken drink" title="Shaken drink">
-          <img class="" src="images/stirred.svg" alt="Stirred drink" title="Stirred drink">
-          <img class="" src="images/pour.svg" alt="Poured drink" title="Poured drink">
-  
+                <p>Ved opskrifterne kan du se drinkens ingredienser, hvordan den mixes...</p>
+
+                    <div class="d-flex img_box_method">
+
+                        <img class="mx-2" src="img/muddle.svg" alt="Muddle engredients" title="Mudler">
+                        <img class="mx-2" src="img/shake.svg" alt="Shaken drink" title="Shaken drink">
+                        <img class="mx-2" src="img/stir.svg" alt="Stirred drink" title="Stirred drink">
+                        <img class="mx-2" src="img/pour.svg" alt="Poured drink" title="Poured drink">
+
+                    </div>
+
+                    <p>... og det anbefalede glas</p>
+
+                    <div class="d-flex img_box_glass">
+
+                        <img class="" src="img/glass_rock_ice.svg" alt="Rock glass" title="Rock glass">
+                        <img class="" src="img/glass_collins.svg" alt="Collins glass" title="Collins glass">
+                        <img class="" src="img/glass_coupe.svg" alt="Coupe glass" title="Coupe glass">
+                        <img class="" src="img/glass_martini.svg" alt="Martine glass" title="Martine glass">
+                        <img class="" src="img/glass_champagne.svg" alt="Champaigne glass" title="Champaigne glass">
+                        <img class="" src="img/glass_wine.svg" alt="Wine glass" title="Wine glass">
+
+                    </div>
+
+                    <p>Du kan læse mere om glassene her: <button type="button" class="btn btn-link"
+                            onclick="loadDoc('Barskabet/glas.html')">Det rigtige glas</button></p>
+
+
+
+
+
+
+                </div>
+            </div>
         </div>
-        
-        <p>... og det anbefalede glas.</p>
 
-        <div class="d-flex img_box">
-  
-          <img class="" src="images/glas_rock_ice.svg" alt="Rock glass" title="Rock glass">
-          <img class="" src="images/glas_collins.svg" alt="Collins glass" title="Collins glass">
-          <img class="" src="images/glas_coupe.svg" alt="Coupe glass" title="Coupe glass">
-          <img class="" src="images/glas_martini.svg" alt="Martine glass" title="Martine glass">
-          <img class="" src="images/glas_champagne.svg" alt="Champaigne glass" title="Champaigne glass">
-          <img class="" src="images/glas_vin.svg" alt="Wine glass" title="Wine glass">				
-  
-        </div>
 
-        
-        <p>Du kan læse mere om glassene her: <button type="button" class="btn btn-link" onclick="loadDoc('glas.html')">Det rigtige glas</button></p>
+        <nav class="navbar navbar-expand-lg fixed-bottom navbar-light bg-light">
+            <div class="container">
+                <a class="navbar-brand" id="made_by" href="#">thj001 (v20250112)</a>
+                <div class="btn-group dropup">
+                    <button type="button" class="btn btn-light dropdown-toggle offcanvas-end" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Barskabet
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start">
+                        <!-- <li ><a class="dropdown-item" href="#" onclick="loadDoc('Barskabet/barskabet.html')" data-bs-target="collapse" data-bs-target=".navbar-collapse.show">Barskabet</a></li>
+              <li><a class="dropdown-item" href="#" onclick="loadDoc('Barskabet/barskabet_udstyr.html')">Udstyr</a></li> -->
 
-      </div>
+                        <!-- <li><a class="dropdown-item" href="#" onclick="loadDoc('Barskabet/barskabet_likoer.html')">Likører</a></li>
+              <li><a class="dropdown-item" href="#" onclick="loadDoc('Barskabet/barskabet_bitter.html')">Bitter</a></li>
+              <li><a class="dropdown-item" href="#" onclick="loadDoc('Barskabet/barskabet_sirup.html')">Sirup</a></li>
+              <li><a class="dropdown-item" href="#" onclick="loadDoc('Barskabet/barskabet_tonic.html')">Tonic</a></li> -->
+                        <!-- <hr> -->
+                        <li><a class="dropdown-item" href="#"
+                                onclick="loadDoc('Barskabet/barskabet.html')">Barskabet</a></li>
+                        <li><a class="dropdown-item" href="#" onclick="loadDoc('Barskabet/glas.html')">Det rigtige
+                                glas</a></li>
+                        <li><a class="dropdown-item" href="#" onclick="loadDoc('Barskabet/alkohol.html')">Gode råd til
+                                spiritus</a></li>
+                        <li><a class="dropdown-item" href="#"
+                                onclick="loadDoc('Barskabet/alkohol_det_bedste_af_det_billige.html')">Det bedste af det
+                                billige</a></li>
 
-    </div>
+                        <!-- <li><a class="dropdown-item" href="#" onclick="loadDoc('Barskabet/sirup.html')">Hjemmelavet sirup</a></li> -->
 
-    <nav class="navbar navbar-expand-lg fixed-bottom navbar-light bg-light">
-      <div class="container">
-        <a class="navbar-brand" id="made_by" href="#">thj001 (v20250112)</a>
-        <div class="btn-group dropup">
-          <button type="button" class="btn btn-info dropdown-toggle offcanvas-end" data-bs-toggle="dropdown" aria-expanded="false">
-            Barskabet
-          </button>
-          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start">
-              <!-- <li ><a class="dropdown-item" href="#" onclick="loadDoc('barskabet.html')">Barskabet</a></li> -->
-              <li><a class="dropdown-item" href="#" onclick="loadDoc('barskabet_udstyr.html')">Udstyr</a></li>
-              <li><a class="dropdown-item" href="#" onclick="loadDoc('barskabet_spiritus.html')">Spiritus</a></li>
-              <li><a class="dropdown-item" href="#" onclick="loadDoc('barskabet_likoer.html')">Likører</a></li>
-              <li><a class="dropdown-item" href="#" onclick="loadDoc('barskabet_bitter.html')">Bitter</a></li>
-              <!-- <li><a class="dropdown-item" href="#" onclick="loadDoc('barskabet_sirup.html')">Sirup</a></li> -->
-              <li><a class="dropdown-item" href="#" onclick="loadDoc('barskabet_tonic.html')">Tonic</a></li>
-              <hr>
-              <li><a class="dropdown-item" href="#" onclick="loadDoc('alkohol.html')">Gode råd til spiritus</a></li>
-              <li><a class="dropdown-item" href="#" onclick="loadDoc('alkohol_det_bedste_af_det_billige.html')">Det bedste af det billige</a></li>
-              <li><a class="dropdown-item" href="#" onclick="loadDoc('glas.html')">Det rigtige glas</a></li>
-              <li><a class="dropdown-item" href="#" onclick="loadDoc('sirup.html')">Hjemmelavet sirup</a></li>  
-              <li><a class="dropdown-item" href="#" onclick="loadDoc('books.html')">Bøger</a></li>  
-          </ul>
-        </div>
-      </div>
-    </nav>
-    
-    
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-    <script src="js/my_scripts.js"></script>
+                        <li><a class="dropdown-item" href="#" onclick="loadDoc('Barskabet/books.html')">Bøger</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
 
-  </body>
+
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+            crossorigin="anonymous"></script>
+        <script src="js/script.js"></script>
+</body>
+
 </html>
