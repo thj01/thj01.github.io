@@ -127,3 +127,4 @@ document.addEventListener('DOMContentLoaded', () => {
     // Kald funktionen for at indlæse drinks, når siden er klar
     loadDrinks();
 });
+
