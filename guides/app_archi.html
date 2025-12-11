@@ -41,27 +41,33 @@
 	
 <h1>Installer archi på Ubuntu</h1>
 
-<p>Proces for at installere Archi på Ubuntu.</p>
+<p>Desværre findes der ikke en apt eller en snap pakke til Archi på Ubuntu, så den skal installeres manuelt. Og for at gøre det en tand mere bøvlet, så kræver Archi X11 som windowmanager.</p>
+
+<p>Denne guide er testet med Ubuntu 24.04.2 og Archi-Linuc64-5.7.0.tgz</p>
 
 <h2>Forberedelse</h2>
 
-<p>Desværre understøtter Archi ikke Wayland, men kun X11. Det betyder at for at få programmet til at køre skal der skiftes "grafisk motor" på Ubuntu. Det gøres ved at ændre i <code>/etc/gdm3/custom.conf</code>.</p>
+<p>Kontroller om du kører med Wayland eller X11</p>
+
+<pre>echo $XDG_SESSION_TYPE</pre>
+
+<p>Hvis output er <code>x11</code> skal du ikke ændre noget. Hvis output er <code>wayland</code> skal du gøre følgende:</p>
 
 <pre>sudo nano /etc/gdm3/custom.conf</pre>
 
-<p>Fjern # ved linien: <code>#WaylandEnable=False</code> og gem med <kbd>Ctrl</kbd>+<kbd>X</kbd> og <kbd>j</kbd></p>
-
-<p>Genstart GUI (log af og log på).</p>
+<p>Fjern # ved linien: <code>#WaylandEnable=False</code> og gem med <kbd>Ctrl</kbd>+<kbd>X</kbd> og <kbd>j</kbd> - og genstart GUI (log af og log på).</p>
 
 <h2>Hent og installer Archi</h2>
 
-<p>Hent nyeste Linux 64-bit udgave: <a href="https://www.archimatetool.com/download/"></a>. Filen gemmes som standard i <code>~/Hentet</code></p>
+<p>Hent nyeste <a href="https://www.archimatetool.com/download/">64-bit udgave her</a>. </p>
 
-<p>Denne guide er testet med Archi-Linuc64-5.3.0.tgz</p>
+<p>Guiden tager udgangspunkt i at du gemmer downloadede filer i <code>~/Hentet</code>.</p>
 
-<p>Naviger til mappen og dobbeltklik og udpak filen i <code>~/Hentet</code> </p>
+<p>Udpak filen med følgende kommando:</p>
 
-<p>Åbn terminalen og skriv følgende kommando</p>
+<pre>tar --extract --file ~/Hentet/Archi-Linux64-5.7.0.tgz</pre>
+
+<p>Flyt Archi og lav et symbolsk link i <code>~/bin</code></p>
 
 <pre>sudo mv ~/Hentet/Archi /opt/archi
 ln -s /opt/archi/Archi ~/bin/archi
@@ -69,7 +75,7 @@ ln -s /opt/archi/Archi ~/bin/archi
 
 <p>Filen kan herefter åbnes fra terminalen med kommandoen: <code>archi</code></p>
 
-<h2>Gør tilgængelig i GUI</h2>
+<h2>Gør Archi tilgængelig i GUI</h2>
 
 <p>For at få filen gjort tilgængelig i GUI skal du lægge en konfigurationsfil ind i <code>/usr/share/applications</code></p>
 
@@ -80,14 +86,14 @@ ln -s /opt/archi/Archi ~/bin/archi
 <p>Indsæt følgende i filen:</p>
 
 <pre>
-    [Desktop Entry]
-    Type=Application
-    Terminal=False
-    Name=Archi
-    Exec=/opt/archi/Archi
-    Icon=/opt/archi/icon.xpm
-    Comment=Application for the Archimate enterprise architecture language
-    Comment[da]=Application til Archimate enterprise architecture sproget
+[Desktop Entry]
+Type=Application
+Terminal=False
+Name=Archi
+Exec=/opt/archi/Archi
+Icon=/opt/archi/icon.xpm
+Comment=Application for the Archimate enterprise architecture language
+Comment[da]=Application til Archimate enterprise architecture sproget
 </pre>
 
 <p>Genstart herefter GUI (log af og log på), så kan Archi fremsøges som alle andre programmer og lægges i favorit menuen.</p>
